@@ -677,7 +677,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "Doc Frank wants to fix him. The patches stay crooked. The patches are the point."
+      "note": "Doc Frank wants to fix him. The patches stay crooked. The patches are the point.",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "P+K": {
       "name": "Hidden Toolbox [WH SIGNATURE]",
@@ -701,7 +706,12 @@
       "note": "DXMMII has hidden his toolbox three times. A grab assembled from whatever was in it.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true
+      "isGrab": true,
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Crooked Patch [WH SIGNATURE]",
@@ -721,7 +731,12 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "Doc Frank wants to fix him. The patches stay crooked. The patches are the point.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "DXMMII PATCHWORK DJ 1+2 (T3 jin r32)",
@@ -765,7 +780,12 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+2": {
       "name": "DXMMII PATCHWORK DJ f+2 (T3 jin r220)",
@@ -3603,7 +3623,12 @@
       "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
       "input_remapped_from": "S",
       "merge_source": "donor:dxmmii:1+2",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.dxmmii": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -3629,7 +3654,12 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:dxmmii:1+4",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.dxmmii.2": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -3650,7 +3680,12 @@
       "wh_original": true,
       "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
       "merge_source": "donor:dxmmii:S",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.dxmmii.3": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -3676,7 +3711,12 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:dxmmii:P+K",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.dxmmii.2": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -3698,7 +3738,12 @@
       "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
       "input_remapped_from": "S",
       "merge_source": "donor:dxmmii:1+2",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.dxmmii.2": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -3724,7 +3769,12 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:dxmmii:1+4",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.dxmmii.4": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -3745,7 +3795,12 @@
       "wh_original": true,
       "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
       "merge_source": "donor:dxmmii:S",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.dxmmii.5": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -3771,7 +3826,12 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:dxmmii:P+K",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.dxmmii.3": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -3793,7 +3853,12 @@
       "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
       "input_remapped_from": "S",
       "merge_source": "donor:dxmmii:1+2",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.dxmmii.3": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -3819,7 +3884,12 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:dxmmii:1+4",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.dxmmii.6": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -3840,7 +3910,12 @@
       "wh_original": true,
       "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
       "merge_source": "donor:dxmmii:S",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.dxmmii.7": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -3866,7 +3941,12 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:dxmmii:P+K",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.dxmmii.4": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -3888,7 +3968,12 @@
       "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
       "input_remapped_from": "S",
       "merge_source": "donor:dxmmii:1+2",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.dxmmii.4": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -3914,7 +3999,12 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:dxmmii:1+4",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.dxmmii.8": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -3935,7 +4025,12 @@
       "wh_original": true,
       "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
       "merge_source": "donor:dxmmii:S",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.dxmmii.9": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -3961,7 +4056,12 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:dxmmii:P+K",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.dxmmii.5": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -3983,7 +4083,12 @@
       "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
       "input_remapped_from": "S",
       "merge_source": "donor:dxmmii:1+2",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.dxmmii.5": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -4009,7 +4114,12 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:dxmmii:1+4",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     }
   },
   "restored_from_sweep_338": {

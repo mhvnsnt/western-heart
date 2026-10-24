@@ -1273,7 +1273,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "The tide announces itself. The current doesn't. The sweep you don't see until you're in it."
+      "note": "The tide announces itself. The current doesn't. The sweep you don't see until you're in it.",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 0,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "S": {
       "name": "Tide-Song [WH SIGNATURE]",
@@ -1292,7 +1297,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "She followed the music here. The trial's war-drums have started syncing to her. Rhythmic ginga flurry."
+      "note": "She followed the music here. The trial's war-drums have started syncing to her. Rhythmic ginga flurry.",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 222,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/b+4": {
       "name": "Undertow [WH SIGNATURE]",
@@ -1312,7 +1322,12 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "The tide announces itself. The current doesn't. The sweep you don't see until you're in it.",
-      "input_remapped_from": "d/b+K"
+      "input_remapped_from": "d/b+K",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 149,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "d/b+4__main": {
       "name": "STAR d/b+4 (T3 xiaoyu r149)",
@@ -1352,7 +1367,12 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "She followed the music here. The trial's war-drums have started syncing to her. Rhythmic ginga flurry.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 314,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "STAR 1+2 (T3 xiaoyu r314)",
@@ -1414,7 +1434,12 @@
         "f+3"
       ],
       "move_class": "strike",
-      "note": "High; on block -5"
+      "note": "High; on block -5",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 237,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+4": {
       "name": "STAR f+4 (T3 xiaoyu r309)",
@@ -1456,7 +1481,12 @@
         "f+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -8"
+      "note": "Mid; on block -8",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 105,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "u+3": {
       "name": "STAR u+3 (T3 xiaoyu r275)",
@@ -1498,7 +1528,12 @@
         "u+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +0; knockdown on hit"
+      "note": "Mid; on block +0; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d/f+4": {
       "name": "STAR d/f+4 (T3 xiaoyu r297)",
@@ -1560,7 +1595,12 @@
       "input_slots": [
         "f+1+2"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f+3+4": {
       "name": "STAR f+3+4 (T3 xiaoyu r335)",
@@ -3961,7 +4001,12 @@
       ],
       "move_class": "strike",
       "note": "Mid; on block +3c",
-      "t8_input": "1+2"
+      "t8_input": "1+2",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 90,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1,2": {
       "name": "One Two Galopantes",
@@ -3990,7 +4035,12 @@
         ],
         "total": 17
       },
-      "note": "High; on block -3"
+      "note": "High; on block -3",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,3": {
       "name": "One Two Lunging Brush Fire",
@@ -4021,7 +4071,12 @@
         ],
         "total": 38
       },
-      "note": "High; on block -9; knockdown on hit"
+      "note": "High; on block -9; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2+3+4": {
       "name": "Ki Charge",
@@ -4041,7 +4096,12 @@
       "input_slots": [
         "1+2+3+4"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1,2,4": {
       "name": "One Two Galopantes (4)",
@@ -4071,7 +4131,12 @@
         ],
         "total": 17
       },
-      "note": "on block +6"
+      "note": "on block +6",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,4~3": {
       "name": "Chute Baixo",
@@ -4102,7 +4167,12 @@
         ],
         "total": 37
       },
-      "note": "Low; on block -14c; knockdown on hit"
+      "note": "Low; on block -14c; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1,2,4~4": {
       "name": "Chute Alto",
@@ -4133,7 +4203,12 @@
         ],
         "total": 44
       },
-      "note": "High; on block +8~+10"
+      "note": "High; on block +8~+10",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1,3": {
       "name": "Céu Gafanhoto",
@@ -4162,7 +4237,12 @@
         ],
         "total": 21
       },
-      "note": "Mid; on block -14"
+      "note": "Mid; on block -14",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 243,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "2,1": {
       "name": "Move 1 (1)",
@@ -4191,7 +4271,12 @@
         ],
         "total": 23
       },
-      "note": "High; on block -9"
+      "note": "High; on block -9",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,1,4": {
       "name": "Combo Furacão",
@@ -4222,7 +4307,12 @@
         ],
         "total": 44
       },
-      "note": "Mid; on block -12~-10; knockdown on hit"
+      "note": "Mid; on block -12~-10; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2+3": {
       "name": "Heat Burst",
@@ -4250,7 +4340,12 @@
         ],
         "total": 24
       },
-      "note": "Mid; on block +1"
+      "note": "Mid; on block +1",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "2,3": {
       "name": "Batida de Compasso",
@@ -4279,7 +4374,12 @@
         ],
         "total": 30
       },
-      "note": "Mid; on block -8"
+      "note": "Mid; on block -8",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3,3": {
       "name": "Sincelo",
@@ -4308,7 +4408,12 @@
         ],
         "total": 34
       },
-      "note": "Mid; on block -3"
+      "note": "Mid; on block -3",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,4": {
       "name": "Lufada",
@@ -4337,7 +4442,12 @@
         ],
         "total": 30
       },
-      "note": "Mid; on block -7"
+      "note": "Mid; on block -7",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1": {
       "name": "Move b+1 (b+1)",
@@ -4358,7 +4468,12 @@
         "b+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -7"
+      "note": "Mid; on block -7",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1+2": {
       "name": "Back Bananeira",
@@ -4378,7 +4493,12 @@
       "input_slots": [
         "b+1+2"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 89,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "b+1,4": {
       "name": "Move 4 (4)",
@@ -4407,7 +4527,12 @@
         ],
         "total": 25
       },
-      "note": "Mid; on block -8"
+      "note": "Mid; on block -8",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1,4,3": {
       "name": "Move 3 (3)",
@@ -4438,7 +4563,12 @@
         ],
         "total": 33
       },
-      "note": "Mid; on block -13"
+      "note": "Mid; on block -13",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1,4,3,3+4": {
       "name": "Aú do Sol",
@@ -4472,7 +4602,12 @@
         ],
         "total": 60
       },
-      "note": "Mid, Mid; on block -12; knockdown on hit"
+      "note": "Mid, Mid; on block -12; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+1,4,3+4": {
       "name": "Aú da Lua",
@@ -4504,7 +4639,12 @@
         ],
         "total": 39
       },
-      "note": "Low; on block -24c"
+      "note": "Low; on block -24c",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+2": {
       "name": "Move b+2 (b+2)",
@@ -4525,7 +4665,12 @@
         "b+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -8"
+      "note": "Mid; on block -8",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 92,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+2,3": {
       "name": "Move 3 (3)",
@@ -4554,7 +4699,12 @@
         ],
         "total": 25
       },
-      "note": "Mid; on block -11"
+      "note": "Mid; on block -11",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+2,3,3": {
       "name": "Combo Martelo",
@@ -4585,7 +4735,12 @@
         ],
         "total": 50
       },
-      "note": "Mid; on block -14; knockdown on hit"
+      "note": "Mid; on block -14; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+2,4": {
       "name": "Calcanheira",
@@ -4614,7 +4769,12 @@
         ],
         "total": 35
       },
-      "note": "High; on block -7; knockdown on hit"
+      "note": "High; on block -7; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+3": {
       "name": "Move b+3 (b+3)",
@@ -4635,7 +4795,12 @@
         "b+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 107,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+3,3": {
       "name": "Relâmpago",
@@ -4664,7 +4829,12 @@
         ],
         "total": 31
       },
-      "note": "Mid; on block -15; knockdown on hit"
+      "note": "Mid; on block -15; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+3+4": {
       "name": "Lunging Brush Fire",
@@ -4685,7 +4855,12 @@
         "b+3+4"
       ],
       "move_class": "strike",
-      "note": "High; on block -9; knockdown on hit"
+      "note": "High; on block -9; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 95,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "b+4": {
       "name": "Move b+4 (b+4)",
@@ -4706,7 +4881,12 @@
         "b+4"
       ],
       "move_class": "strike",
-      "note": "High; on block +0"
+      "note": "High; on block +0",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+4,4": {
       "name": "Move 4 (4)",
@@ -4736,7 +4916,12 @@
         ],
         "total": 26
       },
-      "note": "Mid, Mid; on block -9"
+      "note": "Mid, Mid; on block -9",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+4,4,3": {
       "name": "Leg Whip Mars Attack Flip",
@@ -4768,7 +4953,12 @@
         ],
         "total": 36
       },
-      "note": "Mid; on block +4c; knockdown on hit"
+      "note": "Mid; on block +4c; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Back throw": {
       "name": "Back Rodeo Spin",
@@ -4789,7 +4979,12 @@
         "Back throw"
       ],
       "move_class": "strike",
-      "note": "th(h)"
+      "note": "th(h)",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "(back to wall).b,b,UB": {
       "name": "Wall Jump Backflip",
@@ -4810,7 +5005,12 @@
         "(back to wall).b,b,UB"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +1"
+      "note": "Mid; on block +1",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b,B+2+3": {
       "name": "Fruit Picker",
@@ -4838,7 +5038,12 @@
         ],
         "total": 55
       },
-      "note": "h!, h!; knockdown on hit"
+      "note": "h!, h!; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b,ub": {
       "name": "Flic Flac",
@@ -4858,7 +5063,12 @@
       "input_slots": [
         "b,ub"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d+1+3": {
       "name": "Vingativa Zanga",
@@ -4879,7 +5089,12 @@
         "d+1+3"
       ],
       "move_class": "strike",
-      "note": "th(m)"
+      "note": "th(m)",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d+2": {
       "name": "Move d+2 (d+2)",
@@ -4900,7 +5115,12 @@
         "d+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+2,3": {
       "name": "Palmares Giro",
@@ -4929,7 +5149,12 @@
         ],
         "total": 30
       },
-      "note": "Mid; on block -4c"
+      "note": "Mid; on block -4c",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+2+4": {
       "name": "Vingativa Funeral",
@@ -4950,7 +5175,12 @@
         "d+2+4"
       ],
       "move_class": "strike",
-      "note": "th(m)"
+      "note": "th(m)",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d+3": {
       "name": "Sismo",
@@ -4971,7 +5201,12 @@
         "d+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -14c"
+      "note": "Low; on block -14c",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 130,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d+3+4": {
       "name": "Negativa",
@@ -4991,7 +5226,12 @@
       "input_slots": [
         "d+3+4"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 129,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "d+4,3": {
       "name": "Aú de Bico",
@@ -5020,7 +5260,12 @@
         ],
         "total": 30
       },
-      "note": "Mid; on block -13c"
+      "note": "Mid; on block -13c",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+1+2": {
       "name": "Double Arm Stinger",
@@ -5041,7 +5286,12 @@
         "db+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -8"
+      "note": "Mid; on block -8",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "db+2": {
       "name": "Move db+2 (db+2)",
@@ -5062,7 +5312,12 @@
         "db+2"
       ],
       "move_class": "strike",
-      "note": "Low; on block -18c"
+      "note": "Low; on block -18c",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+2,3": {
       "name": "Twister Mirage",
@@ -5091,7 +5346,12 @@
         ],
         "total": 33
       },
-      "note": "Mid; on block -18; knockdown on hit"
+      "note": "Mid; on block -18; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+3": {
       "name": "Rasteira Forte",
@@ -5112,7 +5372,12 @@
         "db+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -14c"
+      "note": "Low; on block -14c",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+3+4": {
       "name": "Move db+3+4 (db+3+4)",
@@ -5140,7 +5405,12 @@
         ],
         "total": 24
       },
-      "note": "Mid, Mid; on block -6"
+      "note": "Mid, Mid; on block -6",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "db+3+4,4": {
       "name": "Move 4 (4)",
@@ -5170,7 +5440,12 @@
         ],
         "total": 34
       },
-      "note": "Mid; on block -8"
+      "note": "Mid; on block -8",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+3+4,4,3": {
       "name": "Meia-Lua de Compasso",
@@ -5202,7 +5477,12 @@
         ],
         "total": 60
       },
-      "note": "Mid; on block -14; knockdown on hit"
+      "note": "Mid; on block -14; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+4": {
       "name": "Move db+4 (db+4)",
@@ -5223,7 +5503,12 @@
         "db+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -8"
+      "note": "Mid; on block -8",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+4,4": {
       "name": "Rabo de Arraia",
@@ -5252,7 +5537,12 @@
         ],
         "total": 41
       },
-      "note": "High; on block +1; knockdown on hit"
+      "note": "High; on block +1; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1": {
       "name": "Move df+1 (df+1)",
@@ -5273,7 +5563,12 @@
         "df+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -3"
+      "note": "Mid; on block -3",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1,3": {
       "name": "Gêiser",
@@ -5302,7 +5597,12 @@
         ],
         "total": 31
       },
-      "note": "High; on block -7; knockdown on hit"
+      "note": "High; on block -7; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+2": {
       "name": "Elbow Uppercut",
@@ -5323,7 +5623,12 @@
         "df+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -5"
+      "note": "Mid; on block -5",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3": {
       "name": "Mirage",
@@ -5344,7 +5649,12 @@
         "df+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -18~-16; knockdown on hit"
+      "note": "Mid; on block -18~-16; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3+4": {
       "name": "Aú Reversão",
@@ -5372,7 +5682,12 @@
         ],
         "total": 26
       },
-      "note": "Mid, Mid; on block -3~+0; knockdown on hit"
+      "note": "Mid, Mid; on block -3~+0; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "df+4": {
       "name": "Kneecap Crusher",
@@ -5393,7 +5708,12 @@
         "df+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -12"
+      "note": "Low; on block -12",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+2": {
       "name": "Move f+2 (f+2)",
@@ -5414,7 +5734,12 @@
         "f+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 102,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+2,4": {
       "name": "Ventania",
@@ -5443,7 +5768,12 @@
         ],
         "total": 32
       },
-      "note": "Low; on block -14c"
+      "note": "Low; on block -14c",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3+4_t8": {
       "name": "Xangô",
@@ -5465,7 +5795,12 @@
       ],
       "move_class": "strike",
       "note": "Mid; on block -9; knockdown on hit",
-      "t8_input": "f+3+4"
+      "t8_input": "f+3+4",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 104,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+3,4": {
       "name": "Combo do Funâmbolo",
@@ -5494,7 +5829,12 @@
         ],
         "total": 41
       },
-      "note": "Mid; on block -11~-9; knockdown on hit"
+      "note": "Mid; on block -11~-9; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+4,3": {
       "name": "Move 3 (3)",
@@ -5523,7 +5863,12 @@
         ],
         "total": 21
       },
-      "note": "Mid; on block -13"
+      "note": "Mid; on block -13",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+4,3,3+4": {
       "name": "Aú do Sol",
@@ -5555,7 +5900,12 @@
         ],
         "total": 48
       },
-      "note": "Mid, Mid; on block -12; knockdown on hit"
+      "note": "Mid, Mid; on block -12; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f+4,3+4": {
       "name": "Aú da Lua",
@@ -5585,7 +5935,12 @@
         ],
         "total": 27
       },
-      "note": "Low, Low; on block -24c; knockdown on hit"
+      "note": "Low, Low; on block -24c; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 318,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "FC.4": {
       "name": "Move FC.4 (FC.4)",
@@ -5606,7 +5961,12 @@
         "FC.4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -15"
+      "note": "Low; on block -15",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.df+3": {
       "name": "Gafanhoto",
@@ -5627,7 +5987,12 @@
         "FC.df+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +6"
+      "note": "Mid; on block +6",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.df+4": {
       "name": "Tornada",
@@ -5648,7 +6013,12 @@
         "FC.df+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -21c"
+      "note": "Low; on block -21c",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+3": {
       "name": "Terremoto",
@@ -5669,7 +6039,12 @@
         "f,F+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -14c"
+      "note": "Low; on block -14c",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+3+4": {
       "name": "Roda Gigante",
@@ -5697,7 +6072,12 @@
         ],
         "total": 30
       },
-      "note": "Mid, Mid; on block +5; knockdown on hit"
+      "note": "Mid, Mid; on block +5; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f,F+4": {
       "name": "Folha Ataque",
@@ -5718,7 +6098,12 @@
         "f,F+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -12; knockdown on hit"
+      "note": "Mid; on block -12; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,F+3": {
       "name": "Trovão",
@@ -5739,7 +6124,12 @@
         "f,f,F+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +8; knockdown on hit"
+      "note": "Mid; on block +8; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FUFT.b+3+4": {
       "name": "Whirling Spring Kick",
@@ -5760,7 +6150,12 @@
         "FUFT.b+3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -15~-27; knockdown on hit"
+      "note": "Mid; on block -15~-27; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "H.2+3": {
       "name": "Caveirinha Zangada",
@@ -5781,7 +6176,12 @@
         "H.2+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +6"
+      "note": "Mid; on block +6",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "H.3+4": {
       "name": "Guerreiro Explosivo",
@@ -5802,7 +6202,12 @@
         "H.3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +5; knockdown on hit"
+      "note": "Mid; on block +5; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "H.qcf+4": {
       "name": "Rabo de Arraia Liberado",
@@ -5823,7 +6228,12 @@
         "H.qcf+4"
       ],
       "move_class": "strike",
-      "note": "High; on block +7; knockdown on hit"
+      "note": "High; on block +7; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HSP.1": {
       "name": "Godeme Trovoada",
@@ -5844,7 +6254,12 @@
         "HSP.1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +6"
+      "note": "Mid; on block +6",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HSP.1+2": {
       "name": "Cabeçada Direta",
@@ -5865,7 +6280,12 @@
         "HSP.1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -12"
+      "note": "Mid; on block -12",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "HSP.1+3": {
       "name": "Batucada",
@@ -5886,7 +6306,12 @@
         "HSP.1+3"
       ],
       "move_class": "strike",
-      "note": "th(h)"
+      "note": "th(h)",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "HSP.2": {
       "name": "Move HSP.2 (HSP.2)",
@@ -5907,7 +6332,12 @@
         "HSP.2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -8"
+      "note": "Mid; on block -8",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HSP.2,3": {
       "name": "Combo Escorão",
@@ -5936,7 +6366,12 @@
         ],
         "total": 38
       },
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HSP.3": {
       "name": "Move HSP.3 (HSP.3)",
@@ -5957,7 +6392,12 @@
         "HSP.3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -8"
+      "note": "Mid; on block -8",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HSP.3,3": {
       "name": "Move 3 (3)",
@@ -5986,7 +6426,12 @@
         ],
         "total": 20
       },
-      "note": "High; on block -3"
+      "note": "High; on block -3",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HSP.3,3,3": {
       "name": "Enxurrada",
@@ -6017,7 +6462,12 @@
         ],
         "total": 43
       },
-      "note": "High; on block -5"
+      "note": "High; on block -5",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HSP.4": {
       "name": "Move HSP.4 (HSP.4)",
@@ -6038,7 +6488,12 @@
         "HSP.4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -1"
+      "note": "Mid; on block -1",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HSP.4,2": {
       "name": "Lança de Braço",
@@ -6067,7 +6522,12 @@
         ],
         "total": 31
       },
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HSP.4,2~3": {
       "name": "Salto Yotori",
@@ -6096,7 +6556,12 @@
         ],
         "total": 30
       },
-      "note": "Mid; on block +4c"
+      "note": "Mid; on block +4c",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "HSP.b+3": {
       "name": "Chapa Esquivando",
@@ -6117,7 +6582,12 @@
         "HSP.b+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -12; knockdown on hit"
+      "note": "Mid; on block -12; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HSP.n,d": {
       "name": "Negativa",
@@ -6137,7 +6607,12 @@
       "input_slots": [
         "HSP.n,d"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "HSP.n,f": {
       "name": "Move Forward",
@@ -6157,7 +6632,12 @@
       "input_slots": [
         "HSP.n,f"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "Left throw": {
       "name": "Missile Launcher",
@@ -6178,7 +6658,12 @@
         "Left throw"
       ],
       "move_class": "strike",
-      "note": "th(h); on block -3"
+      "note": "th(h); on block -3",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "MD1.HSP.3+4": {
       "name": "Yansan Mandinga",
@@ -6207,7 +6692,12 @@
         ],
         "total": 28
       },
-      "note": "Low, Mid, Mid; on block -14"
+      "note": "Low, Mid, Mid; on block -14",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "MD1.HSP.b+4": {
       "name": "Ogum Mandinga",
@@ -6228,7 +6718,12 @@
         "MD1.HSP.b+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +5"
+      "note": "Mid; on block +5",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "MD2.HSP.3+4": {
       "name": "Yansan Mandinga",
@@ -6249,7 +6744,12 @@
         "MD2.HSP.3+4"
       ],
       "move_class": "strike",
-      "note": "Low, Mid, Mid; on block -14; knockdown on hit"
+      "note": "Low, Mid, Mid; on block -14; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "MD2.HSP.b+4": {
       "name": "Ogum Mandinga",
@@ -6270,7 +6770,12 @@
         "MD2.HSP.b+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +5; knockdown on hit"
+      "note": "Mid; on block +5; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "qcb+4": {
       "name": "Voragem",
@@ -6291,7 +6796,12 @@
         "qcb+4"
       ],
       "move_class": "strike",
-      "note": "High; on block +3; knockdown on hit"
+      "note": "High; on block +3; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "R.df+1+2": {
       "name": "Enchente de Axé",
@@ -6312,7 +6822,12 @@
         "R.df+1+2"
       ],
       "move_class": "special",
-      "note": "Mid, Throw; on block -18"
+      "note": "Mid, Throw; on block -18",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "Right throw": {
       "name": "Shadow Dancer",
@@ -6333,7 +6848,12 @@
         "Right throw"
       ],
       "move_class": "strike",
-      "note": "th(h); on block -3"
+      "note": "th(h); on block -3",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "RLX.1": {
       "name": "Move RLX.1 (RLX.1)",
@@ -6354,7 +6874,12 @@
         "RLX.1"
       ],
       "move_class": "strike",
-      "note": "Low; on block -11c"
+      "note": "Low; on block -11c",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "RLX.1+2": {
       "name": "Cabeçada Fixa",
@@ -6375,7 +6900,12 @@
         "RLX.1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -8; knockdown on hit"
+      "note": "Mid; on block -8; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "RLX.1,3": {
       "name": "Terra Gafanhoto",
@@ -6404,7 +6934,12 @@
         ],
         "total": 28
       },
-      "note": "Mid; on block -14"
+      "note": "Mid; on block -14",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "RLX.2": {
       "name": "Move RLX.2 (RLX.2)",
@@ -6425,7 +6960,12 @@
         "RLX.2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -2"
+      "note": "Mid; on block -2",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "RLX.2,4": {
       "name": "Move 4 (4)",
@@ -6454,7 +6994,12 @@
         ],
         "total": 33
       },
-      "note": "High; on block -5"
+      "note": "High; on block -5",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "RLX.2,4,4": {
       "name": "Maré Cheia",
@@ -6485,7 +7030,12 @@
         ],
         "total": 58
       },
-      "note": "Mid; on block -14; knockdown on hit"
+      "note": "Mid; on block -14; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "RLX.3": {
       "name": "Move RLX.3 (RLX.3)",
@@ -6506,7 +7056,12 @@
         "RLX.3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -26c"
+      "note": "Low; on block -26c",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "RLX.3,3": {
       "name": "Iemanjá",
@@ -6535,7 +7090,12 @@
         ],
         "total": 42
       },
-      "note": "High; on block -13; knockdown on hit"
+      "note": "High; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "RLX.3+4": {
       "name": "Troca e Ataque",
@@ -6556,7 +7116,12 @@
         "RLX.3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -18; knockdown on hit"
+      "note": "Mid; on block -18; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "RLX.4": {
       "name": "Move RLX.4 (RLX.4)",
@@ -6577,7 +7142,12 @@
         "RLX.4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -8"
+      "note": "Mid; on block -8",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "RLX.4,3": {
       "name": "Chibata Ardente",
@@ -6606,7 +7176,12 @@
         ],
         "total": 39
       },
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "RLX.4,3+4": {
       "name": "Chibata Avalanche",
@@ -6635,7 +7210,12 @@
         ],
         "total": 41
       },
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "RLX.n,d": {
       "name": "Bananeira",
@@ -6655,7 +7235,12 @@
       "input_slots": [
         "RLX.n,d"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "RLX.n,f": {
       "name": "Move Forward",
@@ -6675,7 +7260,12 @@
       "input_slots": [
         "RLX.n,f"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "RLX.uf+1+2": {
       "name": "Rodeo Spin",
@@ -6696,7 +7286,12 @@
         "RLX.uf+1+2"
       ],
       "move_class": "strike",
-      "note": "th(h); on block -6"
+      "note": "th(h); on block -6",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "SS.3": {
       "name": "Hot Plate Special",
@@ -6717,7 +7312,12 @@
         "SS.3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +0"
+      "note": "Mid; on block +0",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SS.3+4": {
       "name": "Faísca",
@@ -6745,7 +7345,12 @@
         ],
         "total": 16
       },
-      "note": "High, High; on block -7; knockdown on hit"
+      "note": "High, High; on block -7; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "SS.4": {
       "name": "Troca Baixa",
@@ -6773,7 +7378,12 @@
         ],
         "total": 17
       },
-      "note": "Low, Low; on block -13c"
+      "note": "Low, Low; on block -13c",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u+1+2": {
       "name": "Vassoura",
@@ -6794,7 +7404,12 @@
         "u+1+2"
       ],
       "move_class": "strike",
-      "note": "High; on block +0; knockdown on hit"
+      "note": "High; on block +0; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "u+4": {
       "name": "Back Summy",
@@ -6815,7 +7430,12 @@
         "u+4"
       ],
       "move_class": "special",
-      "note": "sp"
+      "note": "sp",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 109,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u+4~3": {
       "name": "Chute Baixo",
@@ -6836,7 +7456,12 @@
         "u+4~3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -14c; knockdown on hit"
+      "note": "Low; on block -14c; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "u+4~4": {
       "name": "Chute Alto",
@@ -6857,7 +7482,12 @@
         "u+4~4"
       ],
       "move_class": "strike",
-      "note": "High; on block +8"
+      "note": "High; on block +8",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "ub+3": {
       "name": "Perna da Lua",
@@ -6878,7 +7508,12 @@
         "ub+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +4c; knockdown on hit"
+      "note": "Mid; on block +4c; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ub+4": {
       "name": "Satellite Moon",
@@ -6899,7 +7534,12 @@
         "ub+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -17"
+      "note": "Mid; on block -17",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+1": {
       "name": "Move uf+1 (uf+1)",
@@ -6920,7 +7560,12 @@
         "uf+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -5"
+      "note": "Mid; on block -5",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+1+2": {
       "name": "Cabra Macaco Throw",
@@ -6941,7 +7586,12 @@
         "uf+1+2"
       ],
       "move_class": "strike",
-      "note": "th(h); on block -6; knockdown on hit"
+      "note": "th(h); on block -6; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "uf+1,3": {
       "name": "Oxóssi",
@@ -6970,7 +7620,12 @@
         ],
         "total": 35
       },
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+1,4": {
       "name": "Oxum",
@@ -6999,7 +7654,12 @@
         ],
         "total": 37
       },
-      "note": "High; on block -8"
+      "note": "High; on block -8",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+2": {
       "name": "Asfixiante",
@@ -7020,7 +7680,12 @@
         "uf+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+3": {
       "name": "Move uf+3 (uf+3)",
@@ -7041,7 +7706,12 @@
         "uf+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -10c"
+      "note": "Mid; on block -10c",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+3,3": {
       "name": "Jumping Jacks Mirage",
@@ -7070,7 +7740,12 @@
         ],
         "total": 35
       },
-      "note": "Mid; on block -18; knockdown on hit"
+      "note": "Mid; on block -18; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+3+4": {
       "name": "Meia-Lua Pulando",
@@ -7098,7 +7773,12 @@
         ],
         "total": 24
       },
-      "note": "Mid, High; on block -13; knockdown on hit"
+      "note": "Mid, High; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "uf+3,4": {
       "name": "Baixo",
@@ -7127,7 +7807,12 @@
         ],
         "total": 25
       },
-      "note": "Low; on block -14c"
+      "note": "Low; on block -14c",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+4": {
       "name": "Chapa Giratória",
@@ -7148,7 +7833,12 @@
         "uf+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf,n,4": {
       "name": "Delayed Rising Toe Kick",
@@ -7169,7 +7859,12 @@
         "uf,n,4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws1": {
       "name": "Move ws1 (ws1)",
@@ -7190,7 +7885,12 @@
         "ws1"
       ],
       "move_class": "strike",
-      "note": "High; on block -6"
+      "note": "High; on block -6",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws1,3": {
       "name": "Fuzilação",
@@ -7219,7 +7919,12 @@
         ],
         "total": 20
       },
-      "note": "Mid; on block -15; knockdown on hit"
+      "note": "Mid; on block -15; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws1,4": {
       "name": "Chapeu de Couro",
@@ -7248,7 +7953,12 @@
         ],
         "total": 29
       },
-      "note": "High; on block -7"
+      "note": "High; on block -7",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws2": {
       "name": "Machado",
@@ -7269,7 +7979,12 @@
         "ws2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -18; knockdown on hit"
+      "note": "Mid; on block -18; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws3": {
       "name": "Martelo",
@@ -7290,7 +8005,12 @@
         "ws3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws3+4": {
       "name": "Front Stinger",
@@ -7311,7 +8031,12 @@
         "ws3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +5c"
+      "note": "Mid; on block +5c",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "ws4": {
       "name": "Move ws4 (ws4)",
@@ -7332,7 +8057,12 @@
         "ws4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -4"
+      "note": "Mid; on block -4",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws4,4": {
       "name": "Move 4 (4)",
@@ -7361,7 +8091,12 @@
         ],
         "total": 23
       },
-      "note": "High; on block -4"
+      "note": "High; on block -4",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws4,4,4": {
       "name": "Move 4 (4)",
@@ -7393,7 +8128,12 @@
         ],
         "total": 35
       },
-      "note": "Mid, Mid; on block -9"
+      "note": "Mid, Mid; on block -9",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws4,4,4,3": {
       "name": "Tempestade",
@@ -7427,7 +8167,12 @@
         ],
         "total": 45
       },
-      "note": "Mid; on block +4c; knockdown on hit"
+      "note": "Mid; on block +4c; knockdown on hit",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1~t8.xiaoyu": {
       "name": "Jab",
@@ -7633,8 +8378,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "same-notation"
+        "row": 380,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "1+3+4": {
@@ -7700,8 +8445,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit with 5F delay; Interrupt with i1 from 1st block; 3rd and 4th active frames are inactive when transitioning to BT or HYP (i20~21 actual startup); Move can be del",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 270,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,d+2,1+2": {
@@ -7907,8 +8652,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 361,
-        "match": "same-notation"
+        "row": 381,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "3~t8.xiaoyu": {
@@ -8046,8 +8791,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to HYP r21 with B (-2/+9); +6c on crouching hit&lt;/div&gt",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 243,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 93,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "AOP.1+2": {
@@ -8153,8 +8898,8 @@
       "throw_break": "1",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "AOP.1,4": {
@@ -8188,8 +8933,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 91,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "AOP.2": {
@@ -9234,8 +9979,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WALL.b,b,U/B": {
@@ -9305,8 +10050,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Elbow&lt;/div",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 243,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 93,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "BT.1+2": {
@@ -10090,8 +10835,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "BT.f+2+3": {
@@ -10127,8 +10872,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "BT.f+3+4": {
@@ -10241,8 +10986,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "BT.u/f+1": {
@@ -10275,8 +11020,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to AOP; Cancel to FC r42 with D at frame 27; &lt;/div&gt",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 257,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 93,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "CHAOP.d+1": {
@@ -10312,8 +11057,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+1": {
@@ -10525,8 +11270,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 91,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+4~t8.xiaoyu": {
@@ -10906,8 +11651,8 @@
       "throw_break": "2",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3": {
@@ -11078,8 +11823,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Jail from 1st block; Combo from 1st hit; Transition to HYP r21 with B (+0/+11/+13); * r19 +0/+11 when performing HYP.2; * -2/+9/+11 effective frame advantage when performing other",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 363,
-        "match": "same-notation"
+        "row": 103,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "f+2,1,4": {
@@ -11185,8 +11930,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+3~t8.xiaoyu": {
@@ -11887,8 +12632,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 257,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 93,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,F+3~t8.xiaoyu": {
@@ -12250,8 +12995,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit CH; Interrupt with i3 from 1st block; Whiffs vs SSL, SWL from 1st block&lt;/div&gt",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 270,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "hFC.3,2,1": {
@@ -12599,8 +13344,8 @@
       "throw_break": "1",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "R.d/f+1+2": {
@@ -12636,8 +13381,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "SIDE_R.2+4": {
@@ -12674,8 +13419,8 @@
       "throw_break": "2",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "SS.4~t8.xiaoyu": {
@@ -12854,8 +13599,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow spike&quot;; &gt;Spike&lt;",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 91,
-        "match": "same-notation"
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u+4,1": {
@@ -13064,8 +13809,8 @@
       "throw_break": "1+2",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 242,
-        "match": "same-notation"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+2": {
@@ -13212,8 +13957,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow spike&quot;; &gt;Spike&lt;",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 92,
-        "match": "same-notation"
+        "row": 293,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "u/f,n,4": {
@@ -13898,8 +14643,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 362,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1,d+2,1+2~t7.xiaoyu.2": {
@@ -14070,8 +14815,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 270,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+2~t7.xiaoyu": {
@@ -14659,8 +15404,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 92,
-        "match": "same-notation"
+        "row": 293,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "u/f+4,D": {
@@ -14783,8 +15528,8 @@
       },
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 363,
-        "match": "same-notation"
+        "row": 103,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "f+2,1~t7.xiaoyu.2": {
@@ -14822,8 +15567,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 363,
-        "match": "same-notation"
+        "row": 103,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "f+2,1,4~t7.xiaoyu": {
@@ -15556,8 +16301,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 257,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 93,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,F+4~t7.xiaoyu": {
@@ -16058,8 +16803,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 91,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+1~t7.xiaoyu": {
@@ -16340,8 +17085,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 91,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/b+3+4~t7.xiaoyu": {
@@ -18545,8 +19290,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 270,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,1~t7.xiaoyu": {
@@ -18678,8 +19423,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 270,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+1+2,B": {
@@ -19223,8 +19968,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 270,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "FC.d/f+2,D/F": {
@@ -19262,8 +20007,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 270,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "FC.d/f+2,1,D/F": {
@@ -19308,8 +20053,8 @@
       },
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 270,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS.1,4~t7.xiaoyu": {
@@ -19519,8 +20264,8 @@
       },
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 270,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "AOP.1,2~t7.xiaoyu.2": {
@@ -19721,8 +20466,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 243,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 93,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "BT.2~t7.xiaoyu": {
@@ -21684,8 +22429,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 257,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 93,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "AOP.d/f": {
@@ -22082,8 +22827,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 243,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 93,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "AOP.2~t7.xiaoyu": {
@@ -23402,8 +24147,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "same-notation"
+        "row": 380,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "2+4~t7.xiaoyu": {
@@ -23445,8 +24190,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 361,
-        "match": "same-notation"
+        "row": 381,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f+1+3": {
@@ -23488,8 +24233,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+2+3~t7.xiaoyu": {
@@ -23531,8 +24276,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+2+4": {
@@ -23574,8 +24319,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+1+2": {
@@ -23617,8 +24362,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 117,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "D/F+2+4": {
@@ -23660,8 +24405,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "SIDE_L.1+3~t7.xiaoyu": {
@@ -23703,8 +24448,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "SIDE_R.1+3": {
@@ -23746,8 +24491,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "BACK.1+3~t7.xiaoyu": {
@@ -23789,8 +24534,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "AOP.1+3~t7.xiaoyu": {
@@ -23832,8 +24577,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "BT.1+3": {
@@ -23875,8 +24620,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "BT.f,F+1+3": {
@@ -23918,8 +24663,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "BT.f,F+3+4~t7.xiaoyu": {

@@ -1070,7 +1070,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "TOU is battle itself. No motive, no prize - the fight is the whole sentence."
+      "note": "TOU is battle itself. No motive, no prize - the fight is the whole sentence.",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 100,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "P+K": {
       "name": "No Motive [WH SIGNATURE]",
@@ -1094,7 +1099,12 @@
       "note": "Battle without motive. The most honest grab in the trial - it wants nothing from you but the hold.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true
+      "isGrab": true,
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 100,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Exists to Fight [WH SIGNATURE]",
@@ -1114,7 +1124,12 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "TOU is battle itself. No motive, no prize - the fight is the whole sentence.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 105,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "TOU 1+2 (T3 heihachi r37)",
@@ -1158,7 +1173,12 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 100,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+2": {
       "name": "TOU b+2 (T3 heihachi r207)",
@@ -3895,8 +3915,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1+2**": {
@@ -3930,8 +3950,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1,2": {
@@ -4031,8 +4051,8 @@
       "merge_source": "t8:Paul-1+2+3+4",
       "anim_t3": {
         "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1+3~t8.paul": {
@@ -4169,8 +4189,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Burst",
       "anim_t3": {
         "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "2,3": {
@@ -4519,8 +4539,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
       "anim_t3": {
         "bank": "paul",
-        "row": 208,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+1+3": {
@@ -4554,8 +4574,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Parry; &lt;/div&gt",
       "anim_t3": {
         "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+1+4": {
@@ -4976,8 +4996,8 @@
       "t8_alias": "qcf+1+2",
       "anim_t3": {
         "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "CS.2": {
@@ -5084,8 +5104,8 @@
       "t8_alias": "qcf+3+4",
       "anim_t3": {
         "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d+1~t8.paul": {
@@ -5404,8 +5424,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Elbow&lt;/div",
       "anim_t3": {
         "bank": "paul",
-        "row": 185,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+4,2,1+2": {
@@ -5440,8 +5460,8 @@
       "t8_alias": "Demoman",
       "anim_t3": {
         "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d+4,2:1+2": {
@@ -5475,8 +5495,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/b+1": {
@@ -5544,8 +5564,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Shoulder&lt;/",
       "anim_t3": {
         "bank": "paul",
-        "row": 130,
-        "match": "same-notation"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/b+2": {
@@ -6318,8 +6338,8 @@
       "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* DPD.3+4\n* DD.3+4\n&lt;/div&gt;",
       "anim_t3": {
         "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "DPD.d/f+4": {
@@ -6424,8 +6444,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f+1+4~t8.paul": {
@@ -6458,8 +6478,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f+2~t8.paul": {
@@ -6502,8 +6522,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "paul",
-        "row": 115,
-        "match": "same-notation"
+        "row": 130,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+3~t8.paul": {
@@ -6606,8 +6626,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "paul",
-        "row": 208,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+3+4": {
@@ -6953,8 +6973,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+3": {
@@ -7240,8 +7260,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "H.1+2*": {
@@ -7275,8 +7295,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "H.1+2**": {
@@ -7310,8 +7330,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "H.2+3": {
@@ -7606,8 +7626,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "hFC.1+2": {
@@ -7968,8 +7988,8 @@
       "t8_alias": "qcb+1+2",
       "anim_t3": {
         "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SWA.2": {
@@ -8437,8 +8457,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "paul",
-        "row": 44,
-        "match": "same-notation"
+        "row": 130,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+2": {
@@ -8681,8 +8701,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Move can be delayed 10f; Input can be delayed 10f; Combo from 1st CH with 10f delay; Transition to t59 r19 SWA +1 +14g +15 from 39~44f with b; &lt;/div&gt",
       "anim_t3": {
         "bank": "paul",
-        "row": 208,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS.1,2~b": {
@@ -8819,8 +8839,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "paul",
-        "row": 185,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS.4": {
@@ -9871,8 +9891,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "paul",
-        "row": 242,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/f+1~t7.paul": {
@@ -10093,8 +10113,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "paul",
-        "row": 208,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+1,1,2~t7.paul.3": {
@@ -11103,8 +11123,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d+4,2,1+2~t7.paul.2": {
@@ -11150,8 +11170,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d+4,2,1+2~t7.paul.3": {
@@ -11190,8 +11210,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d+4,2:1+2~t7.paul": {
@@ -11230,8 +11250,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d+4,2:1+2~t7.paul.2": {
@@ -11270,8 +11290,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d+1+2~t7.paul": {
@@ -11475,8 +11495,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "paul",
-        "row": 208,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+2~t7.paul": {
@@ -13137,8 +13157,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "qcb+1": {
@@ -13692,8 +13712,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "BT.1": {
@@ -13975,8 +13995,8 @@
       "input_note": "(60f)",
       "anim_t3": {
         "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "FC.d/f+1+2": {
@@ -14015,8 +14035,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "FC.d/f+1+2,B": {
@@ -14505,8 +14525,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "paul",
-        "row": 185,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS.4~t7.paul": {
@@ -14866,8 +14886,8 @@
       "input_note": "Face Up, Feet Towards+",
       "anim_t3": {
         "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "t7.paul_145": {
@@ -15274,8 +15294,8 @@
       "input_note": "(During Rage)",
       "anim_t3": {
         "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "R.1+2,B": {
@@ -15355,8 +15375,8 @@
       "input_note": "(During Rage) (close)",
       "anim_t3": {
         "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "R.qcf+1+2~t7.paul": {
@@ -15396,8 +15416,8 @@
       "input_note": "(During Rage) (far)",
       "anim_t3": {
         "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "t7.paul_158": {
@@ -15564,8 +15584,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "paul",
-        "row": 339,
-        "match": "same-notation"
+        "row": 130,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+2+4": {
@@ -15607,8 +15627,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "paul",
-        "row": 342,
-        "match": "same-notation"
+        "row": 130,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "SIDE_L.1+3~t7.paul": {
@@ -15865,8 +15885,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "paul",
-        "row": 120,
-        "match": "same-notation"
+        "row": 130,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+1+3~t7.paul": {
@@ -16406,8 +16426,8 @@
       "input_note": "(During Tackle)",
       "anim_t3": {
         "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "TACKLE.2,d+1,1,n,4,1,1+2": {
@@ -16456,8 +16476,8 @@
       "input_note": "(During Tackle)",
       "anim_t3": {
         "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "TACKLE.1+2": {
@@ -16497,8 +16517,8 @@
       "input_note": "(During Tackle)",
       "anim_t3": {
         "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "t7.paul_183": {
@@ -16615,8 +16635,8 @@
       "input_note": "Time with enemy attack...",
       "anim_t3": {
         "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u+1+2": {
@@ -20300,7 +20320,12 @@
       "t8_input": "3,2,~b",
       "merge_source": "t8:Paul-3,2~b",
       "set": "FIGHT",
-      "note": "startup absent in T8 source; Sidestep u can be buffered from 45f * SWA attacks can be buffered from 54f * Transition to cs1~ r9 -13 +4 +47a [[Paul_movelist#DPD_(Deep Dive)|DPD]] from 61f with df"
+      "note": "startup absent in T8 source; Sidestep u can be buffered from 45f * SWA attacks can be buffered from 54f * Transition to cs1~ r9 -13 +4 +47a [[Paul_movelist#DPD_(Deep Dive)|DPD]] from 61f with df",
+      "anim_t3": {
+        "bank": "paul",
+        "row": 185,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d,df": {
       "name": "Crouch Dash",
@@ -20330,7 +20355,12 @@
       "t8_input": "d,df",
       "merge_source": "t8:Paul-cd",
       "set": "FIGHT",
-      "note": "startup absent in T8 source; Cannot be buffered * 1.12 movement over 20f * Transition to [[Paul_movelist#Paul-qcf|CS]] from 2f with f * Transition to r9 [[Paul_movelist#DPD_(Deep_Dive)|DPD]] from 3~19f with df * Transition to r6? hFC with alternate"
+      "note": "startup absent in T8 source; Cannot be buffered * 1.12 movement over 20f * Transition to [[Paul_movelist#Paul-qcf|CS]] from 2f with f * Transition to r9 [[Paul_movelist#DPD_(Deep_Dive)|DPD]] from 3~19f with df * Transition to r6? hFC with alternate",
+      "anim_t3": {
+        "bank": "paul",
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "df+1,~b": {
       "name": "TOU df+1,~b",
@@ -20360,7 +20390,12 @@
       "t8_input": "df+1,~b",
       "merge_source": "t8:Paul-df+1~b",
       "set": "FIGHT",
-      "note": "startup absent in T8 source; Sidestep u can be buffered from 16f * SWA attacks can be buffered from 24f * Transition to cs1~ r9 -1 -12 [[Paul_movelist#DPD_(Deep Dive)|DPD]] from 32f with df"
+      "note": "startup absent in T8 source; Sidestep u can be buffered from 16f * SWA attacks can be buffered from 24f * Transition to cs1~ r9 -1 -12 [[Paul_movelist#DPD_(Deep Dive)|DPD]] from 32f with df",
+      "anim_t3": {
+        "bank": "paul",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CD.df": {
       "name": "Deep Dive",
@@ -20390,7 +20425,12 @@
       "t8_input": "CD.df",
       "merge_source": "t8:Paul-DPD",
       "set": "FIGHT",
-      "note": "startup absent in T8 source; Buffer window 2~9f (3~9f from SWA) * Sidestep can be buffered with u * DPD attacks can be buffered * While standing attacks can be buffered * Cancel to r1 block from 10f with b"
+      "note": "startup absent in T8 source; Buffer window 2~9f (3~9f from SWA) * Sidestep can be buffered with u * DPD attacks can be buffered * While standing attacks can be buffered * Cancel to r1 block from 10f with b",
+      "anim_t3": {
+        "bank": "paul",
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+2,H.1*": {
       "name": "Crushing Wind (Hold)",
@@ -20420,7 +20460,12 @@
       "t8_input": "b+2,H.1*",
       "merge_source": "t8:Paul-H.b+2,1*",
       "set": "FIGHT",
-      "note": "Balcony Break * Guard Break * Consumes Heat * Chip damage (13) * Charge begins on frame 18 * Requires 42f charge * Interrupt with i29 WS from 1st block * Interrupt with i20 WS from 1st hit * Whiffs vs SSR, SW from 1st bl"
+      "note": "Balcony Break * Guard Break * Consumes Heat * Chip damage (13) * Charge begins on frame 18 * Requires 42f charge * Interrupt with i29 WS from 1st block * Interrupt with i20 WS from 1st hit * Whiffs vs SSR, SW from 1st bl",
+      "anim_t3": {
+        "bank": "paul",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+1,H.2": {
       "name": "Phoenix Smasher",
@@ -20450,7 +20495,12 @@
       "t8_input": "d+1,H.2",
       "merge_source": "t8:Paul-H.d+1,2",
       "set": "FIGHT",
-      "note": "Balcony Break * Reversal Break * Consumes Heat * Move can be delayed 14f (i43) * Charge begins on frame 16 * Requires 0~26f charge * Delayed startup from 1~26f charge * Combo from 1st CH with 0~6f charge * Interrupt with"
+      "note": "Balcony Break * Reversal Break * Consumes Heat * Move can be delayed 14f (i43) * Charge begins on frame 16 * Requires 0~26f charge * Delayed startup from 1~26f charge * Combo from 1st CH with 0~6f charge * Interrupt with",
+      "anim_t3": {
+        "bank": "paul",
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+1,H.2*": {
       "name": "Phoenix Smasher (Hold)",
@@ -20480,7 +20530,12 @@
       "t8_input": "d+1,H.2*",
       "merge_source": "t8:Paul-H.d+1,2*",
       "set": "FIGHT",
-      "note": "Balcony Break * Guard Break * Reversal Break * Consumes Heat * Chip damage (13) * Charge begins on frame 16 * Requires 27f charge * Interrupt with i24 from 1st block * Interrupt with i13 from 1st hit * Interrupt with i9 "
+      "note": "Balcony Break * Guard Break * Reversal Break * Consumes Heat * Chip damage (13) * Charge begins on frame 16 * Requires 27f charge * Interrupt with i24 from 1st block * Interrupt with i13 from 1st hit * Interrupt with i9 ",
+      "anim_t3": {
+        "bank": "paul",
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1+3,H.qcf+2": {
       "name": "Phoenix Smasher",
@@ -20510,7 +20565,12 @@
       "t8_input": "df+1+3,H.qcf+2",
       "merge_source": "t8:Paul-H.df+1+3,qcf+2",
       "set": "FIGHT",
-      "note": "Balcony Break * Consumes Heat * Strict qcf input required (d,F does not work) * Perfect input window 55-56f"
+      "note": "Balcony Break * Consumes Heat * Strict qcf input required (d,F does not work) * Perfect input window 55-56f",
+      "anim_t3": {
+        "bank": "paul",
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1+3,:H.qcf+2": {
       "name": "Phoenix Smasher (Perfect Input)",
@@ -20540,7 +20600,12 @@
       "t8_input": "df+1+3,:H.qcf+2",
       "merge_source": "t8:Paul-H.df+1+3:qcf+2",
       "set": "FIGHT",
-      "note": "Balcony Break * Consumes Heat * Strict qcf input required (d,F does not work) * Perfect input window 55-56f * Perfect input increases damage, wall carry"
+      "note": "Balcony Break * Consumes Heat * Strict qcf input required (d,F does not work) * Perfect input window 55-56f * Perfect input increases damage, wall carry",
+      "anim_t3": {
+        "bank": "paul",
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "LeftThrow": {
       "name": "Dragon Screw",
@@ -20573,7 +20638,12 @@
       "note": "Throw break 1",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "paul",
+        "row": 130,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d,df,f": {
       "name": "Cormorant Step",
@@ -20603,7 +20673,12 @@
       "t8_input": "d,df,f",
       "merge_source": "t8:Paul-qcf",
       "set": "FIGHT",
-      "note": "startup absent in T8 source; Cannot be buffered * t35 from 1+2~f * Exits crouching state on frame 1 * 1.63 movement over 25f (includes CD) * 1.98 movement over 35f from 1+2 cancel * Transition to r9 [[Paul_movelist#DPD_(Deep Dive)|DPD]] from 2f with"
+      "note": "startup absent in T8 source; Cannot be buffered * t35 from 1+2~f * Exits crouching state on frame 1 * 1.63 movement over 25f (includes CD) * 1.98 movement over 35f from 1+2 cancel * Transition to r9 [[Paul_movelist#DPD_(Deep Dive)|DPD]] from 2f with",
+      "anim_t3": {
+        "bank": "paul",
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "RightThrow": {
       "name": "Fall Away",
@@ -20636,7 +20711,12 @@
       "note": "Throw break 2 * Side switch",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "paul",
+        "row": 130,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HFC.1+2,1+2,1+2": {
       "name": "Arm Breaker",
@@ -20669,7 +20749,12 @@
       "note": "Throw break 1+2",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "paul",
+        "row": 130,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HFC.1+2,2,1,2,1": {
       "name": "Ultimate Punch",
@@ -20702,7 +20787,12 @@
       "note": "Throw break 1 or 2 * Alternate input 1,2,1,2",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "paul",
+        "row": 130,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HFC.1+2,2,d+1,1,1+2": {
       "name": "Ultimate Punishment",
@@ -20735,7 +20825,12 @@
       "note": "Throw break 1 * Transition to Arm Breaker with 1+2 after third hit",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "paul",
+        "row": 130,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,2,~b": {
       "name": "TOU WS.1,2,~b",
@@ -20765,7 +20860,12 @@
       "t8_input": "WS.1,2,~b",
       "merge_source": "t8:Paul-ws1,2~b",
       "set": "FIGHT",
-      "note": "startup absent in T8 source; Sidestep u can be buffered from 44f * SWA attacks can be buffered from 51f * Transition to cs1~ r9 -10 +4 +5 [[Paul_movelist#DPD_(Deep Dive)|DPD]] from 60f with df"
+      "note": "startup absent in T8 source; Sidestep u can be buffered from 44f * SWA attacks can be buffered from 51f * Transition to cs1~ r9 -10 +4 +5 [[Paul_movelist#DPD_(Deep Dive)|DPD]] from 60f with df",
+      "anim_t3": {
+        "bank": "paul",
+        "row": 185,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.D*(60f),u+3+4": {
       "name": "Incomplete Somersault",
@@ -20800,7 +20900,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:paul_122",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "WR.f,f,F(FullScreen)": {
       "name": "TOU WR.f,f,F(FullScreen)",
@@ -20835,7 +20940,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:paul_127",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "WR.f,f,F(FullScreen)(OnGroundedOpponent)": {
       "name": "TOU WR.f,f,F(FullScreen)(OnGroundedOpponent)",
@@ -20870,7 +20980,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:paul_128",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "WR.4": {
       "name": "TOU WR.4",
@@ -20905,7 +21020,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:paul_129",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WR.1+2": {
       "name": "TOU WR.1+2",
@@ -20940,7 +21060,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:paul_130",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "FaceUp,FeetTowards+3or(AfterRollingForward)": {
       "name": "TOU FaceUp,FeetTowards+3or(AfterRollingForward)",
@@ -20975,7 +21100,12 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:paul_141",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FaceUp,FeetTowards+4or(AfterRollingForward)": {
       "name": "TOU FaceUp,FeetTowards+4or(AfterRollingForward)",
@@ -21010,7 +21140,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:paul_142",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FaceUp,FeetTowards,d+3(or4)": {
       "name": "TOU FaceUp,FeetTowards,d+3(or4)",
@@ -21045,7 +21180,12 @@
       "t7_on_ch": "-3",
       "merge_source": "t7:paul_143",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "FaceUp,FeetTowards+3+4": {
       "name": "TOU FaceUp,FeetTowards+3+4",
@@ -21080,7 +21220,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:paul_144",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "FaceUp,FeetTowards,RollForward+1+2": {
       "name": "TOU FaceUp,FeetTowards,RollForward+1+2",
@@ -21115,7 +21260,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:paul_145",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "FaceDown,FeetAway+3": {
       "name": "TOU FaceDown,FeetAway+3",
@@ -21150,7 +21300,12 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:paul_146",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FaceDown,FeetAway+4(close)": {
       "name": "TOU FaceDown,FeetAway+4(close)",
@@ -21185,7 +21340,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:paul_147",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FaceDown,FeetAway+4(far)": {
       "name": "TOU FaceDown,FeetAway+4(far)",
@@ -21220,7 +21380,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:paul_148",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(DuringRage)1+2,B": {
       "name": "TOU (DuringRage)1+2,B",
@@ -21255,7 +21420,12 @@
       "t7_on_ch": "GROUND BOUNCE",
       "merge_source": "t7:paul_155",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "(DuringRage)qcf+1+2(close)": {
       "name": "Rage Drive",
@@ -21290,7 +21460,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:paul_156",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "(DuringRage)qcf+1+2(far)": {
       "name": "TOU (DuringRage)qcf+1+2(far)",
@@ -21325,7 +21500,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:paul_157",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b,B+1+2(u,utocancel)": {
       "name": "Burning Fist",
@@ -21360,7 +21540,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:paul_158",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "WR.f,f,F(MidScreen)": {
       "name": "TOU WR.f,f,F(MidScreen)",
@@ -21395,7 +21580,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:paul_175",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "(DuringTackle)1/2,1/2": {
       "name": "TOU (DuringTackle)1/2,1/2",
@@ -21438,7 +21628,12 @@
         "total": 10
       },
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "note": "startup absent in T7 source"
+      "note": "startup absent in T7 source",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "(DuringTackle)1/2,1/2,1/2": {
       "name": "TOU (DuringTackle)1/2,1/2,1/2",
@@ -21482,7 +21677,12 @@
         "total": 15
       },
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "note": "startup absent in T7 source"
+      "note": "startup absent in T7 source",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "(DuringTackle)1/2,1/2,1/2,1/2": {
       "name": "Ultimate Punch",
@@ -21527,7 +21727,12 @@
         "total": 30
       },
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "note": "startup absent in T7 source"
+      "note": "startup absent in T7 source",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "(DuringTackle)2,1,2,1+2": {
       "name": "Ultimate Punch to Arm Breaker",
@@ -21572,7 +21777,12 @@
         "total": 40
       },
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "note": "startup absent in T7 source"
+      "note": "startup absent in T7 source",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "(DuringTackle)2,d+1,1,n,4,1,1+2": {
       "name": "Ultimate Punishment",
@@ -21617,7 +21827,12 @@
         "total": 56
       },
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "note": "startup absent in T7 source"
+      "note": "startup absent in T7 source",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "D(Holdfor160f)": {
       "name": "TOU D(Holdfor160f)",
@@ -21652,7 +21867,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:paul_183",
       "set": "FIGHT",
-      "note": "startup absent in T7 source"
+      "note": "startup absent in T7 source",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 73,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Timewithenemyattack...b+1+3orb+2+4": {
       "name": "Attack Reversal",
@@ -21688,7 +21908,12 @@
       "merge_source": "t7:paul_185",
       "set": "FIGHT",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "note": "startup absent in T7 source"
+      "note": "startup absent in T7 source",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     }
   },
   "restored_from_sweep_338": {

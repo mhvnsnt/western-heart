@@ -777,7 +777,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "He calls himself wizard of the mic. The mic-drop elbow - undeniable."
+      "note": "He calls himself wizard of the mic. The mic-drop elbow - undeniable.",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "P+K": {
       "name": "Certified Slam [WH SIGNATURE]",
@@ -801,7 +806,12 @@
       "note": "The undeniable rapper, Enzo Amore style. Certified: a showboating slam with the ad-libs.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true
+      "isGrab": true,
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Wizard of the Mic [WH SIGNATURE]",
@@ -821,7 +831,12 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "He calls himself wizard of the mic. The mic-drop elbow - undeniable.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "REALIZZT 1+2 (T3 jin r32)",
@@ -865,7 +880,12 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+2": {
       "name": "REALIZZT f+2 (T3 jin r220)",

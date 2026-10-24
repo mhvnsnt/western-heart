@@ -2524,7 +2524,12 @@
       "note": "RIN is the baseline, the still point. One perfectly fundamental palm strike.",
       "input_remapped_from": "S",
       "merge_source": "donor:demonio:1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4": {
       "name": "The Unbowed [WH SIGNATURE]",
@@ -2550,7 +2555,12 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:demonio:1+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "qcf+1": {
       "name": "Apology Burned Away [WH SIGNATURE]",
@@ -2572,7 +2582,12 @@
       "note": "The trial is burning the guilt out of him. A straight punch with nothing left to atone for.",
       "input_remapped_from": "qcf+P",
       "merge_source": "donor:demonio:qcf+1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+1+2": {
       "name": "DEMONIO d+1+2 (T3 jin r92)",
@@ -2857,7 +2872,12 @@
       "isGrab": true,
       "throw_break": "1",
       "merge_source": "donor:demonio:qcb+1+3__main",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 117,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,1,4": {
       "name": "DEMONIO 2,1,4 (T3 jin r230)",
@@ -2917,7 +2937,12 @@
       },
       "note": "Mid; on block -10",
       "merge_source": "donor:demonio:2,1,4__main",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 67,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,1,2,2": {
       "name": "DEMONIO 2,1,2,2 (T3 jin r223)",
@@ -3410,7 +3435,12 @@
       "note": "Mid, Mid, Mid; on block -14; knockdown on hit",
       "t8_input": "1+2",
       "merge_source": "donor:demonio:1+2_t8",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1,2": {
       "name": "Left Right Combo",
@@ -3441,7 +3471,12 @@
       },
       "note": "High; on block -3",
       "merge_source": "donor:demonio:1,2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,1": {
       "name": "Black Wing Rondo",
@@ -3474,7 +3509,12 @@
       },
       "note": "Mid; on block -16; knockdown on hit",
       "merge_source": "donor:demonio:1,2,1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,3": {
       "name": "Axe Kick",
@@ -3507,7 +3547,12 @@
       },
       "note": "Mid; on block +0",
       "merge_source": "donor:demonio:1,2,3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2+3+4": {
       "name": "Ki Charge",
@@ -3529,7 +3574,12 @@
       ],
       "move_class": "special",
       "merge_source": "donor:demonio:1+2+3+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1,2,4": {
       "name": "Spinning Hook Kick",
@@ -3562,7 +3612,12 @@
       },
       "note": "High; on block -4; knockdown on hit",
       "merge_source": "donor:demonio:1,2,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,3": {
       "name": "Single Low",
@@ -3593,7 +3648,12 @@
       },
       "note": "Low; on block -12",
       "merge_source": "donor:demonio:1,3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+3+4": {
       "name": "State of Zanshin",
@@ -3616,7 +3676,12 @@
       "move_class": "special",
       "note": "Mental Alertness",
       "merge_source": "donor:demonio:1+3+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1,3,4": {
       "name": "Double Low",
@@ -3649,7 +3714,12 @@
       },
       "note": "Low; on block -13",
       "merge_source": "donor:demonio:1,3,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,1,4~donor.demonio.2": {
       "name": "Low Trick Kick",
@@ -3682,7 +3752,12 @@
       },
       "note": "Low; on block -12",
       "merge_source": "donor:demonio:2,1,4~4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "2+3": {
       "name": "Heat Burst",
@@ -3712,7 +3787,12 @@
       },
       "note": "Mid; on block +1",
       "merge_source": "donor:demonio:2+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "2,4": {
       "name": "Switchblade",
@@ -3743,7 +3823,12 @@
       },
       "note": "High; on block -13",
       "merge_source": "donor:demonio:2,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3,1": {
       "name": "Move 1 (1)",
@@ -3774,7 +3859,12 @@
       },
       "note": "High; on block -1",
       "merge_source": "donor:demonio:3,1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3,1,4": {
       "name": "Kishin Rekko",
@@ -3807,7 +3897,12 @@
       },
       "note": "Low; on block -13",
       "merge_source": "donor:demonio:3,1,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4~donor.demonio.2": {
       "name": "Spinning Flare Kick",
@@ -3830,7 +3925,12 @@
       "move_class": "strike",
       "note": "Mid; on block -11~-2; knockdown on hit",
       "merge_source": "donor:demonio:4~3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+1~donor.demonio": {
       "name": "Move b+1 (b+1)",
@@ -3854,7 +3954,12 @@
       "note": "High; on block -9",
       "t8_input": "b+1",
       "merge_source": "donor:demonio:b+1_t8",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 216,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+1+2": {
       "name": "Suigetsu Strike",
@@ -3877,7 +3982,12 @@
       "move_class": "strike",
       "note": "Mid; on block -12",
       "merge_source": "donor:demonio:b+1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 119,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "b+1,2": {
       "name": "Shun Maten",
@@ -3908,7 +4018,12 @@
       },
       "note": "High; on block -10; knockdown on hit",
       "merge_source": "donor:demonio:b+1,2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1+3": {
       "name": "Parry",
@@ -3930,7 +4045,12 @@
       ],
       "move_class": "parry",
       "merge_source": "donor:demonio:b+1+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+2": {
       "name": "Move b+2 (b+2)",
@@ -3953,7 +4073,12 @@
       "move_class": "strike",
       "note": "Mid; on block -11",
       "merge_source": "donor:demonio:b+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 97,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+2,1": {
       "name": "Shun Masatsu",
@@ -3984,7 +4109,12 @@
       },
       "note": "Mid; on block -9",
       "merge_source": "donor:demonio:b+2,1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+3": {
       "name": "Left Knee",
@@ -4007,7 +4137,12 @@
       "move_class": "strike",
       "note": "Mid; on block -6",
       "merge_source": "donor:demonio:b+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 103,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+3,2": {
       "name": "Right Thrust",
@@ -4038,7 +4173,12 @@
       },
       "note": "Mid; on block -9",
       "merge_source": "donor:demonio:b+3,2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+3+4": {
       "name": "Zanshin",
@@ -4061,7 +4201,12 @@
       "move_class": "special",
       "note": "Crouching Demon Stance (CDS) / Mental Alertness (2)",
       "merge_source": "donor:demonio:b+3+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 110,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "b+4": {
       "name": "Spinning Sidekick",
@@ -4084,7 +4229,12 @@
       "move_class": "strike",
       "note": "Mid; on block -7; knockdown on hit",
       "merge_source": "donor:demonio:b+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 112,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "BACK.1+3": {
       "name": "Pivoting Hip Throw",
@@ -4111,7 +4261,12 @@
       "isGrab": true,
       "throw_break": "1+2",
       "merge_source": "donor:demonio:Back throw",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b,f+2": {
       "name": "Move b,f+2 (b,f+2)",
@@ -4134,7 +4289,12 @@
       "move_class": "strike",
       "note": "Mid; on block -7",
       "merge_source": "donor:demonio:b,f+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b,f+2,1": {
       "name": "Move 1 (1)",
@@ -4165,7 +4325,12 @@
       },
       "note": "High; on block -5",
       "merge_source": "donor:demonio:b,f+2,1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b,f+2,1,2": {
       "name": "Evil Intent",
@@ -4198,7 +4363,12 @@
       },
       "note": "Mid; on block -5; knockdown on hit",
       "merge_source": "donor:demonio:b,f+2,1,2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b,f+2,1,d/f+2": {
       "name": "Geyser",
@@ -4231,7 +4401,12 @@
       },
       "note": "Mid; on block -14; knockdown on hit",
       "merge_source": "donor:demonio:b,f+2,1,df+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b,f+2,3": {
       "name": "Keito",
@@ -4262,7 +4437,12 @@
       },
       "note": "Mid; on block -9",
       "merge_source": "donor:demonio:b,f+2,3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "donor.demonio.CD.df#1": {
       "name": "Electric Thrusting Uppercut",
@@ -4331,7 +4511,12 @@
       "move_class": "strike",
       "note": "Mid; on block -13; knockdown on hit",
       "merge_source": "donor:demonio:CD.df+1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CD.d/f+2": {
       "name": "Wind Hook Fist",
@@ -4354,7 +4539,12 @@
       "move_class": "strike",
       "note": "High; on block -10; knockdown on hit",
       "merge_source": "donor:demonio:CD.df+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CD.D/F+4": {
       "name": "Move CD.DF+4 (CD.DF+4)",
@@ -4377,7 +4567,12 @@
       "move_class": "strike",
       "note": "Low; on block -31",
       "merge_source": "donor:demonio:CD.DF+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CD.D/F+4,2": {
       "name": "Depraved Savagery",
@@ -4408,7 +4603,12 @@
       },
       "note": "Mid; on block -16; knockdown on hit",
       "merge_source": "donor:demonio:CD.DF+4,2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+1": {
       "name": "Black Wing Flash",
@@ -4442,7 +4642,12 @@
       "isGrab": true,
       "throw_break": "1",
       "merge_source": "donor:demonio:d+1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 139,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d+2": {
       "name": "Scourge",
@@ -4465,7 +4670,12 @@
       "move_class": "strike",
       "note": "Low; on block -14",
       "merge_source": "donor:demonio:d+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 137,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d+3": {
       "name": "Move d+3 (d+3)",
@@ -4488,7 +4698,12 @@
       "move_class": "strike",
       "note": "Low; on block -14",
       "merge_source": "donor:demonio:d+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3+4": {
       "name": "Double Lift Kick",
@@ -4518,7 +4733,12 @@
       },
       "note": "Mid, Mid; on block -19; knockdown on hit",
       "merge_source": "donor:demonio:d+3+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 127,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "d+3,4": {
       "name": "Move 4 (4)",
@@ -4549,7 +4769,12 @@
       },
       "note": "High; on block -11",
       "merge_source": "donor:demonio:d+3,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3,4,3": {
       "name": "Kazama Style Three-Quarter Kick",
@@ -4582,7 +4807,12 @@
       },
       "note": "Mid; on block -12",
       "merge_source": "donor:demonio:d+3,4,3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3,4~donor.demonio": {
       "name": "Mid Sidekick",
@@ -4613,7 +4843,12 @@
       },
       "note": "Mid; on block -12; knockdown on hit",
       "merge_source": "donor:demonio:d+3,4~4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d+4": {
       "name": "Right Sweep",
@@ -4636,7 +4871,12 @@
       "move_class": "strike",
       "note": "Low; on block -12",
       "merge_source": "donor:demonio:d+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 339,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d/b+1": {
       "name": "Crouch Jab",
@@ -4659,7 +4899,12 @@
       "move_class": "strike",
       "note": "Special low; on block -5",
       "merge_source": "donor:demonio:db+1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/b+1+2": {
       "name": "Power Stance",
@@ -4682,7 +4927,12 @@
       "move_class": "special",
       "note": "Mid; on block -11~+4",
       "merge_source": "donor:demonio:db+1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d/b+2": {
       "name": "Move db+2 (db+2)",
@@ -4705,7 +4955,12 @@
       "move_class": "strike",
       "note": "Mid; on block -10",
       "merge_source": "donor:demonio:db+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/b+2,2": {
       "name": "Move 2 (2)",
@@ -4736,7 +4991,12 @@
       },
       "note": "High; on block -12",
       "merge_source": "donor:demonio:db+2,2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/b+2,2,3": {
       "name": "Savage Sword",
@@ -4769,7 +5029,12 @@
       },
       "note": "Mid; on block -9; knockdown on hit",
       "merge_source": "donor:demonio:db+2,2,3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/b+2,3": {
       "name": "Cascade Kick",
@@ -4800,7 +5065,12 @@
       },
       "note": "Mid; on block -8; knockdown on hit",
       "merge_source": "donor:demonio:db+2,3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/b+3": {
       "name": "Left Spinning Back Kick",
@@ -4823,7 +5093,12 @@
       "move_class": "strike",
       "note": "High; on block -10~-8; knockdown on hit",
       "merge_source": "donor:demonio:db+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/b+4": {
       "name": "Right Low Roundhouse",
@@ -4846,7 +5121,12 @@
       "move_class": "strike",
       "note": "Low; on block -13",
       "merge_source": "donor:demonio:db+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1~donor.demonio": {
       "name": "Mid Left Punch",
@@ -4869,7 +5149,12 @@
       "move_class": "strike",
       "note": "Mid; on block -3",
       "merge_source": "donor:demonio:df+1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1,4~donor.demonio": {
       "name": "High Roundhouse Kick",
@@ -4900,7 +5185,12 @@
       },
       "note": "High; on block -9",
       "merge_source": "donor:demonio:df+1,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 67,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1,4~donor.demonio.2": {
       "name": "Mid Sidekick",
@@ -4931,7 +5221,12 @@
       },
       "note": "Mid; on block -12; knockdown on hit",
       "merge_source": "donor:demonio:df+1,4~4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d/f+2~donor.demonio": {
       "name": "Fiendish Rend",
@@ -4954,7 +5249,12 @@
       "move_class": "strike",
       "note": "Mid; on block -9",
       "merge_source": "donor:demonio:df+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+2+4": {
       "name": "Shun Ren Dan",
@@ -4981,7 +5281,12 @@
       "isGrab": true,
       "throw_break": "2",
       "merge_source": "donor:demonio:df+2+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+2,4": {
       "name": "Fiendish Talon Rend",
@@ -5012,7 +5317,12 @@
       },
       "note": "Mid; on block -12",
       "merge_source": "donor:demonio:df+2,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+2,H.1+2": {
       "name": "Awakened Fiendish Claw",
@@ -5043,7 +5353,12 @@
       },
       "note": "Mid; on block +2; knockdown on hit",
       "merge_source": "donor:demonio:df+2,H.1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d/f+3": {
       "name": "Left Roundhouse",
@@ -5066,7 +5381,12 @@
       "move_class": "strike",
       "note": "Mid; on block -8",
       "merge_source": "donor:demonio:df+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+3~donor.demonio": {
       "name": "Brazilian Kick",
@@ -5089,7 +5409,12 @@
       "move_class": "strike",
       "note": "Mid; on block +6c",
       "merge_source": "donor:demonio:df+3~3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d/f+4~donor.demonio": {
       "name": "Right Spinning Axe Kick",
@@ -5112,7 +5437,12 @@
       "move_class": "strike",
       "note": "Mid; on block +0",
       "merge_source": "donor:demonio:df+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 67,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DVS.1": {
       "name": "Awakened Thunder God Fist",
@@ -5135,7 +5465,12 @@
       "move_class": "strike",
       "note": "Mid; on block -9",
       "merge_source": "donor:demonio:DVS.1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DVS.2": {
       "name": "Awakened Wind God Fist",
@@ -5158,7 +5493,12 @@
       "move_class": "strike",
       "note": "Special mid; on block +4; knockdown on hit",
       "merge_source": "donor:demonio:DVS.2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DVS.3": {
       "name": "Awakened Demon's Hoof",
@@ -5181,7 +5521,12 @@
       "move_class": "strike",
       "note": "Mid; on block +2c; knockdown on hit",
       "merge_source": "donor:demonio:DVS.3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DVS.4": {
       "name": "Move DVS.4 (DVS.4)",
@@ -5204,7 +5549,12 @@
       "move_class": "strike",
       "note": "Low; on block -12",
       "merge_source": "donor:demonio:DVS.4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DVS.4,4": {
       "name": "Awakened Spinning Demon",
@@ -5235,7 +5585,12 @@
       },
       "note": "Mid; on block -14",
       "merge_source": "donor:demonio:DVS.4,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DVS.D/F+3": {
       "name": "Awakened Demon's Tail",
@@ -5258,7 +5613,12 @@
       "move_class": "strike",
       "note": "Low; on block -23; knockdown on hit",
       "merge_source": "donor:demonio:DVS.DF+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+1+2": {
       "name": "Double Chamber Punch",
@@ -5288,7 +5648,12 @@
       },
       "note": "High, High; on block -6; knockdown on hit",
       "merge_source": "donor:demonio:f+1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 357,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+3": {
       "name": "Left Sidekick",
@@ -5311,7 +5676,12 @@
       "move_class": "strike",
       "note": "Mid; on block -16",
       "merge_source": "donor:demonio:f+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 79,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+3,1": {
       "name": "Tanden Nidan-uchi",
@@ -5342,7 +5712,12 @@
       },
       "note": "Mid; on block -12",
       "merge_source": "donor:demonio:f+3,1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3,3": {
       "name": "Stinger",
@@ -5373,7 +5748,12 @@
       },
       "note": "High; on block -8",
       "merge_source": "donor:demonio:f+3,3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3+4": {
       "name": "Zenshin",
@@ -5395,7 +5775,12 @@
       ],
       "move_class": "special",
       "merge_source": "donor:demonio:f+3+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f+4~donor.demonio": {
       "name": "Front Thrust Kick",
@@ -5419,7 +5804,12 @@
       "note": "Mid; on block -8",
       "t8_input": "f+4",
       "merge_source": "donor:demonio:f+4_t8",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 214,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "FC.d/f+4": {
       "name": "Right Sweep (2)",
@@ -5442,7 +5832,12 @@
       "move_class": "strike",
       "note": "Low; on block -26",
       "merge_source": "donor:demonio:FC.df+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+2": {
       "name": "Demon's Paw",
@@ -5465,7 +5860,12 @@
       "move_class": "strike",
       "note": "Mid; on block -8; knockdown on hit",
       "merge_source": "donor:demonio:f,F+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+3": {
       "name": "Left Axe Kick",
@@ -5488,7 +5888,12 @@
       "move_class": "strike",
       "note": "Mid; on block -4; knockdown on hit",
       "merge_source": "donor:demonio:f,F+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+3,1": {
       "name": "Left Jab",
@@ -5519,7 +5924,12 @@
       },
       "note": "High; on block +1",
       "merge_source": "donor:demonio:f,F+3,1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+4": {
       "name": "Battery Sidekick",
@@ -5542,7 +5952,12 @@
       "move_class": "strike",
       "note": "Mid; on block -7; knockdown on hit",
       "merge_source": "donor:demonio:f,F+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,F+3": {
       "name": "Leaping Side Kick",
@@ -5565,7 +5980,12 @@
       "move_class": "strike",
       "note": "Mid; on block +6; knockdown on hit",
       "merge_source": "donor:demonio:f,f,F+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,n,d,d/f": {
       "name": "Crouch Dash",
@@ -5588,7 +6008,12 @@
       "move_class": "special",
       "note": "Breaking Step",
       "merge_source": "donor:demonio:f,n,d,df",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f,n,d,d/f,U/F": {
       "name": "Crouch Dash (UF)",
@@ -5612,7 +6037,12 @@
       "move_class": "special",
       "note": "Breaking Step; Stance: Crouch Dash",
       "merge_source": "donor:demonio:f,n,d,df,UF",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "H.2+3": {
       "name": "Hellfire Trespass Slayer",
@@ -5635,7 +6065,12 @@
       "move_class": "strike",
       "note": "Mid, High, Mid; on block +3",
       "merge_source": "donor:demonio:H.2+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "H.2+3,4": {
       "name": "Hellfire Darkside Slayer",
@@ -5658,7 +6093,12 @@
       "move_class": "strike",
       "note": "Mid, High, Mid; on block +9; knockdown on hit",
       "merge_source": "donor:demonio:H.2+3,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "H.d/b+1+2": {
       "name": "Awakened Power Stance",
@@ -5681,7 +6121,12 @@
       "move_class": "special",
       "note": "Mid; on block +4",
       "merge_source": "donor:demonio:H.db+1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "H.f,F+1+2": {
       "name": "Awakened Black Wing",
@@ -5704,7 +6149,12 @@
       "move_class": "strike",
       "note": "Mid; on block +5",
       "merge_source": "donor:demonio:H.f,F+1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "SIDE_L.1+3": {
       "name": "Shoulder Flip",
@@ -5731,7 +6181,12 @@
       "isGrab": true,
       "throw_break": "1",
       "merge_source": "donor:demonio:Left throw",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "OTG.d+1+2": {
       "name": "Black Out",
@@ -5754,7 +6209,12 @@
       "move_class": "strike",
       "note": "Low; on block -13",
       "merge_source": "donor:demonio:OTG.d+1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "R.d/f+1+2": {
       "name": "Polar Demon Gouge",
@@ -5777,7 +6237,12 @@
       "move_class": "special",
       "note": "Mid, Throw; on block -18",
       "merge_source": "donor:demonio:R.df+1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "SIDE_R.2+4": {
       "name": "Over the Limit",
@@ -5804,7 +6269,12 @@
       "isGrab": true,
       "throw_break": "1",
       "merge_source": "donor:demonio:Right throw",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/b+1+2": {
       "name": "Avenger",
@@ -5827,7 +6297,12 @@
       "move_class": "strike",
       "note": "m!; Konshin Seikenzuki; knockdown on hit",
       "merge_source": "donor:demonio:ub+1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "u/b+4~donor.demonio": {
       "name": "Move ub+4 (ub+4)",
@@ -5850,7 +6325,12 @@
       "move_class": "strike",
       "note": "Mid; on block -13; knockdown on hit",
       "merge_source": "donor:demonio:ub+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 67,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/f+1+2": {
       "name": "Tidal Wave",
@@ -5877,7 +6357,12 @@
       "isGrab": true,
       "throw_break": "1+2",
       "merge_source": "donor:demonio:uf+1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/f+2": {
       "name": "Evading Middle Strike",
@@ -5900,7 +6385,12 @@
       "move_class": "strike",
       "note": "Mid; on block -10~-9",
       "merge_source": "donor:demonio:uf+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/f+3~donor.demonio.2": {
       "name": "Left Spinning Jump Kick",
@@ -5923,7 +6413,12 @@
       "move_class": "strike",
       "note": "Mid; on block -9",
       "merge_source": "donor:demonio:uf+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 51,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/f+4~donor.demonio": {
       "name": "Front Jump Kick",
@@ -5946,7 +6441,12 @@
       "move_class": "strike",
       "note": "Mid; on block -13; knockdown on hit",
       "merge_source": "donor:demonio:uf+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 67,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/f,n,4": {
       "name": "Delayed Rising Toe Kick",
@@ -5969,7 +6469,12 @@
       "move_class": "strike",
       "note": "Mid; on block -13; knockdown on hit",
       "merge_source": "donor:demonio:uf,n,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1": {
       "name": "Solar Plexus Strike",
@@ -5992,7 +6497,12 @@
       "move_class": "strike",
       "note": "Mid; on block -6",
       "merge_source": "donor:demonio:ws1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,2": {
       "name": "Twin Lancer",
@@ -6023,7 +6533,12 @@
       },
       "note": "Mid; on block -8",
       "merge_source": "donor:demonio:ws1,2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,3": {
       "name": "Solar Plexus Strike (3)",
@@ -6054,7 +6569,12 @@
       },
       "note": "High; on block -6",
       "merge_source": "donor:demonio:ws1,3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,3,2": {
       "name": "Solar Plexus Strike (2)",
@@ -6087,7 +6607,12 @@
       },
       "note": "Mid; on block -11",
       "merge_source": "donor:demonio:ws1,3,2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,3,2,1": {
       "name": "Solar Plexus Strike (1)",
@@ -6122,7 +6647,12 @@
       },
       "note": "Mid; on block -11",
       "merge_source": "donor:demonio:ws1,3,2,1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,3,2,1,4": {
       "name": "Solar Plexus Strike (4)",
@@ -6159,7 +6689,12 @@
       },
       "note": "Low; on block -31",
       "merge_source": "donor:demonio:ws1,3,2,1,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,3,2,1,4,2": {
       "name": "Kazama Style 6 Hit Combo Redux",
@@ -6198,7 +6733,12 @@
       },
       "note": "Mid; on block -16; knockdown on hit",
       "merge_source": "donor:demonio:ws1,3,2,1,4,2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,3~donor.demonio": {
       "name": "Brazilian Kick",
@@ -6229,7 +6769,12 @@
       },
       "note": "Mid; on block +6",
       "merge_source": "donor:demonio:ws1,3~3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "WS.2": {
       "name": "Crouching Uppercut",
@@ -6252,7 +6797,12 @@
       "move_class": "strike",
       "note": "Mid; on block -12; knockdown on hit",
       "merge_source": "donor:demonio:ws2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.3": {
       "name": "Bamboo Splitter",
@@ -6275,7 +6825,12 @@
       "move_class": "strike",
       "note": "Mid; on block -9",
       "merge_source": "donor:demonio:ws3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.4": {
       "name": "Move ws4 (ws4)",
@@ -6298,7 +6853,12 @@
       "move_class": "strike",
       "note": "Mid; on block -3",
       "merge_source": "donor:demonio:ws4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.4,4": {
       "name": "Double Cross Kicks",
@@ -6329,7 +6889,12 @@
       },
       "note": "High; on block -7",
       "merge_source": "donor:demonio:ws4,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.1": {
       "name": "Move ZEN.1 (ZEN.1)",
@@ -6352,7 +6917,12 @@
       "move_class": "strike",
       "note": "Mid; on block -3",
       "merge_source": "donor:demonio:ZEN.1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.1+2": {
       "name": "Karmic Epicenter",
@@ -6386,7 +6956,12 @@
       "isGrab": true,
       "throw_break": "1+2",
       "merge_source": "donor:demonio:ZEN.1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.1,2": {
       "name": "Brimstone Bite",
@@ -6417,7 +6992,12 @@
       },
       "note": "Mid; on block -14; knockdown on hit",
       "merge_source": "donor:demonio:ZEN.1,2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.1,3": {
       "name": "Kazama Style Leg Strike Flurry",
@@ -6453,7 +7033,12 @@
       "isGrab": true,
       "throw_break": "1",
       "merge_source": "donor:demonio:ZEN.1,3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 139,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.2": {
       "name": "Fiendish Claw",
@@ -6476,7 +7061,12 @@
       "move_class": "strike",
       "note": "High; on block -5; knockdown on hit",
       "merge_source": "donor:demonio:ZEN.2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.3": {
       "name": "Halberd Heel",
@@ -6499,7 +7089,12 @@
       "move_class": "strike",
       "note": "Mid; on block -9",
       "merge_source": "donor:demonio:ZEN.3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.3+4": {
       "name": "Black Wing Bolt",
@@ -6522,7 +7117,12 @@
       "move_class": "strike",
       "note": "High; on block +9g~+15g; knockdown on hit",
       "merge_source": "donor:demonio:ZEN.3+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.4": {
       "name": "Corpse Crusher",
@@ -6545,7 +7145,12 @@
       "move_class": "strike",
       "note": "Mid; on block +2~+8",
       "merge_source": "donor:demonio:ZEN.4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.u+1": {
       "name": "Black Wing Rondo",
@@ -6568,7 +7173,12 @@
       "move_class": "strike",
       "note": "Mid; on block -16; knockdown on hit",
       "merge_source": "donor:demonio:ZEN.u+1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.demonio.2": {
       "name": "RIN's Baseline [WH SIGNATURE]",
@@ -6589,7 +7199,12 @@
       "wh_original": true,
       "note": "RIN is the baseline, the still point. One perfectly fundamental palm strike.",
       "merge_source": "donor:demonio:S",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.demonio.3": {
       "name": "The Unbowed [WH SIGNATURE]",
@@ -6615,7 +7230,12 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:demonio:P+K",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.demonio.4": {
       "name": "Apology Burned Away [WH SIGNATURE]",
@@ -6638,7 +7258,12 @@
       "wh_original": true,
       "note": "The trial is burning the guilt out of him. A straight punch with nothing left to atone for.",
       "merge_source": "donor:demonio:qcf+P",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.demonio.3": {
       "name": "RIN's Baseline [WH SIGNATURE]",
@@ -6660,7 +7285,12 @@
       "note": "RIN is the baseline, the still point. One perfectly fundamental palm strike.",
       "input_remapped_from": "S",
       "merge_source": "donor:demonio:1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.demonio": {
       "name": "The Unbowed [WH SIGNATURE]",
@@ -6686,7 +7316,12 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:demonio:1+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "qcf+1~donor.demonio": {
       "name": "Apology Burned Away [WH SIGNATURE]",
@@ -6708,7 +7343,12 @@
       "note": "The trial is burning the guilt out of him. A straight punch with nothing left to atone for.",
       "input_remapped_from": "qcf+P",
       "merge_source": "donor:demonio:qcf+1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1~donor.demonio": {
       "name": "Jab",
@@ -6847,8 +7487,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Jail from 1st block with 2f delay; Combo from 1st hit with 2f delay; Same animation as df+1; &lt;/div&gt",
       "anim_t3": {
         "bank": "jin",
-        "row": 221,
-        "match": "same-notation"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -7446,8 +8086,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 197,
-        "match": "same-notation"
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -7486,8 +8126,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 197,
-        "match": "same-notation"
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -7628,8 +8268,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 221,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -7668,8 +8308,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 234,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -7999,8 +8639,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 193,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -8046,8 +8686,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 207,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -8086,8 +8726,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 207,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -8133,8 +8773,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 197,
-        "match": "same-notation"
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -8173,8 +8813,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 197,
-        "match": "same-notation"
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -8636,8 +9276,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -8723,8 +9363,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 221,
-        "match": "same-notation"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -8763,8 +9403,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 221,
-        "match": "same-notation"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -8811,8 +9451,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 230,
-        "match": "same-notation"
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -8858,8 +9498,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 230,
-        "match": "same-notation"
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -8898,8 +9538,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 230,
-        "match": "same-notation"
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -9252,8 +9892,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 191,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -9598,8 +10238,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 226,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -9897,8 +10537,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "jin",
-        "row": 273,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 357,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -10229,8 +10869,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "jin",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -10270,8 +10910,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "jin",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -10513,8 +11153,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -10561,8 +11201,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "jin",
-        "row": 117,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -10602,8 +11242,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "jin",
-        "row": 117,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -11112,8 +11752,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 117,
-        "match": "same-notation"
+        "row": 123,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -11455,8 +12095,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 233,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -11845,8 +12485,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 117,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -11932,8 +12572,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 57,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -13146,8 +13786,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 233,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -13308,8 +13948,8 @@
       "input_note": "Face Up, Feet Towards+",
       "anim_t3": {
         "bank": "jin",
-        "row": 273,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -13431,8 +14071,8 @@
       "input_note": "Face Down, Feet Away+ (close)",
       "anim_t3": {
         "bank": "jin",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -13473,8 +14113,8 @@
       "input_note": "Face Down, Feet Away+ (far)",
       "anim_t3": {
         "bank": "jin",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -13552,8 +14192,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 273,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 92,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -13592,8 +14232,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 184,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 216,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -13686,8 +14326,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 221,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -13726,8 +14366,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 233,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -13773,8 +14413,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 221,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -14037,8 +14677,8 @@
       "input_note": "(or CDS)",
       "anim_t3": {
         "bank": "jin",
-        "row": 233,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -14295,8 +14935,8 @@
       "input_note": "(or CDS)",
       "anim_t3": {
         "bank": "jin",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -14344,8 +14984,8 @@
       "input_note": "(or CDS)",
       "anim_t3": {
         "bank": "jin",
-        "row": 273,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -14386,8 +15026,8 @@
       "input_note": "(or CDS)",
       "anim_t3": {
         "bank": "jin",
-        "row": 117,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -14434,8 +15074,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "jin",
-        "row": 117,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 51,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -14476,8 +15116,8 @@
       "input_note": "(During Rage)",
       "anim_t3": {
         "bank": "jin",
-        "row": 273,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -14525,8 +15165,8 @@
       "input_note": "(During Rage)",
       "anim_t3": {
         "bank": "jin",
-        "row": 275,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -14847,8 +15487,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "jin",
-        "row": 33,
-        "match": "same-notation"
+        "row": 290,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -14935,8 +15575,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "jin",
-        "row": 372,
-        "match": "same-notation"
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -15286,8 +15926,8 @@
       "input_note": "(During Tackle)",
       "anim_t3": {
         "bank": "jin",
-        "row": 184,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -15336,8 +15976,8 @@
       "input_note": "(During Tackle)",
       "anim_t3": {
         "bank": "jin",
-        "row": 184,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -15387,8 +16027,8 @@
       "input_note": "(During Tackle)",
       "anim_t3": {
         "bank": "jin",
-        "row": 184,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -15429,8 +16069,8 @@
       "input_note": "(During Tackle)",
       "anim_t3": {
         "bank": "jin",
-        "row": 273,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -15549,8 +16189,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 273,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -15590,8 +16230,8 @@
       "input_note": "Time with enemy attack... (or b+2+4)",
       "anim_t3": {
         "bank": "jin",
-        "row": 273,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -19707,7 +20347,12 @@
       "wh_original": true,
       "note": "RIN is the baseline, the still point. One perfectly fundamental palm strike.",
       "merge_source": "donor:demonio:S",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.demonio.6": {
       "name": "The Unbowed [WH SIGNATURE]",
@@ -19733,7 +20378,12 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:demonio:P+K",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.demonio.7": {
       "name": "Apology Burned Away [WH SIGNATURE]",
@@ -19756,7 +20406,12 @@
       "wh_original": true,
       "note": "The trial is burning the guilt out of him. A straight punch with nothing left to atone for.",
       "merge_source": "donor:demonio:qcf+P",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.demonio.7": {
       "name": "RIN's Baseline [WH SIGNATURE]",
@@ -19778,7 +20433,12 @@
       "note": "RIN is the baseline, the still point. One perfectly fundamental palm strike.",
       "input_remapped_from": "S",
       "merge_source": "donor:demonio:1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.demonio.4": {
       "name": "The Unbowed [WH SIGNATURE]",
@@ -19804,7 +20464,12 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:demonio:1+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "qcf+1~donor.demonio.2": {
       "name": "Apology Burned Away [WH SIGNATURE]",
@@ -19826,7 +20491,12 @@
       "note": "The trial is burning the guilt out of him. A straight punch with nothing left to atone for.",
       "input_remapped_from": "qcf+P",
       "merge_source": "donor:demonio:qcf+1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.demonio.8": {
       "name": "RIN's Baseline [WH SIGNATURE]",
@@ -19847,7 +20517,12 @@
       "wh_original": true,
       "note": "RIN is the baseline, the still point. One perfectly fundamental palm strike.",
       "merge_source": "donor:demonio:S",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.demonio.9": {
       "name": "The Unbowed [WH SIGNATURE]",
@@ -19873,7 +20548,12 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:demonio:P+K",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.demonio.10": {
       "name": "Apology Burned Away [WH SIGNATURE]",
@@ -19896,7 +20576,12 @@
       "wh_original": true,
       "note": "The trial is burning the guilt out of him. A straight punch with nothing left to atone for.",
       "merge_source": "donor:demonio:qcf+P",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.demonio.8": {
       "name": "RIN's Baseline [WH SIGNATURE]",
@@ -19918,7 +20603,12 @@
       "note": "RIN is the baseline, the still point. One perfectly fundamental palm strike.",
       "input_remapped_from": "S",
       "merge_source": "donor:demonio:1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.demonio.5": {
       "name": "The Unbowed [WH SIGNATURE]",
@@ -19944,7 +20634,12 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:demonio:1+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "qcf+1~donor.demonio.3": {
       "name": "Apology Burned Away [WH SIGNATURE]",
@@ -19966,7 +20661,12 @@
       "note": "The trial is burning the guilt out of him. A straight punch with nothing left to atone for.",
       "input_remapped_from": "qcf+P",
       "merge_source": "donor:demonio:qcf+1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.demonio.11": {
       "name": "RIN's Baseline [WH SIGNATURE]",
@@ -19987,7 +20687,12 @@
       "wh_original": true,
       "note": "RIN is the baseline, the still point. One perfectly fundamental palm strike.",
       "merge_source": "donor:demonio:S",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.demonio.12": {
       "name": "The Unbowed [WH SIGNATURE]",
@@ -20013,7 +20718,12 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:demonio:P+K",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.demonio.13": {
       "name": "Apology Burned Away [WH SIGNATURE]",
@@ -20036,7 +20746,12 @@
       "wh_original": true,
       "note": "The trial is burning the guilt out of him. A straight punch with nothing left to atone for.",
       "merge_source": "donor:demonio:qcf+P",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.demonio.9": {
       "name": "RIN's Baseline [WH SIGNATURE]",
@@ -20069,7 +20784,12 @@
         "wired": true
       },
       "merge_source": "donor:demonio:1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.demonio.6": {
       "name": "The Unbowed [WH SIGNATURE]",
@@ -20095,7 +20815,12 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:demonio:1+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "qcf+1~donor.demonio.4": {
       "name": "Apology Burned Away [WH SIGNATURE]",
@@ -20117,7 +20842,12 @@
       "note": "The trial is burning the guilt out of him. A straight punch with nothing left to atone for.",
       "input_remapped_from": "qcf+P",
       "merge_source": "donor:demonio:qcf+1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     }
   },
   "strings": [

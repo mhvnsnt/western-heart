@@ -1474,7 +1474,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "RETSU is violence without morality. Just force. Just the hit."
+      "note": "RETSU is violence without morality. Just force. Just the hit.",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "P+K": {
       "name": "No Mission [WH SIGNATURE]",
@@ -1498,7 +1503,12 @@
       "note": "Violence doesn't punish. It just arrives. An unadorned grab with nothing to prove.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true
+      "isGrab": true,
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Pure Force [WH SIGNATURE]",
@@ -1518,7 +1528,12 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "RETSU is violence without morality. Just force. Just the hit.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 41,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "RETSU 1+2 (T3 bryan r41)",
@@ -1562,7 +1577,12 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+2": {
       "name": "RETSU b+2 (T3 bryan r158)",
@@ -3554,8 +3574,8 @@
       "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;/div&gt",
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 41,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "1,2": {
@@ -3761,8 +3781,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Can&#039;t block for 5 seconds; CH state on your next attack for 5 seconds &#039;&#039;(Tekken 7 and prior games)&#039;&#039;; 10% damage increase on the next attack for 5 seconds",
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 41,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1,2,4": {
@@ -3867,8 +3887,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Cancellable with any input on frames 1~31; Gain SNE; -34 if not cancelled; &lt;/div&gt",
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 41,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1,4": {
@@ -4385,8 +4405,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "bryan",
-        "row": 153,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3,2,1,4": {
@@ -4904,8 +4924,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Parries high or mid punches&lt;/div&gt",
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 41,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+1+3,P.2": {
@@ -5007,8 +5027,8 @@
       "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow spike&quot;; &gt;Spike&lt;/div&gt",
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 41,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+2~t8.bryan": {
@@ -5250,8 +5270,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 41,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+3,2": {
@@ -5353,8 +5373,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "bryan",
-        "row": 153,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+3,2,1,4": {
@@ -5910,8 +5930,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit; Can be canceled into stances after 24 frames; Enter SLS -3 +10g r13 with f; Enter SWA -5 +8 r15 with b; Opponent is further away on CH; Can be done from Crouch",
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 41,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d+1+2~2": {
@@ -6049,8 +6069,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "bryan",
-        "row": 169,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+3": {
@@ -6186,8 +6206,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
       "anim_t3": {
         "bank": "bryan",
-        "row": 153,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+4": {
@@ -6914,8 +6934,8 @@
       "t8_alias": "SNE.f+2,1,2,3",
       "anim_t3": {
         "bank": "bryan",
-        "row": 169,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+2,1,SNE.2,3,2": {
@@ -7642,8 +7662,8 @@
       "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* qcf+1+2\n* d,df,f+1+2\n&lt;/div&gt;",
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SLS.2": {
@@ -7967,8 +7987,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SNE.FC.d/f+3": {
@@ -8037,8 +8057,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "t8.Bryan-SNE.f,F+1+2,P": {
@@ -8804,8 +8824,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "bryan",
-        "row": 42,
-        "match": "same-notation"
+        "row": 138,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u/f+2": {
@@ -8940,8 +8960,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Knee&lt;/div&",
       "anim_t3": {
         "bank": "bryan",
-        "row": 169,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+2,2,2,SNE.2": {
@@ -9046,8 +9066,8 @@
       "t8_alias": "SNE.uf+2,2,2,2,2,3",
       "anim_t3": {
         "bank": "bryan",
-        "row": 169,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+3~t8.bryan": {
@@ -10606,8 +10626,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "bryan",
-        "row": 153,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,4,2,1,2~t7.bryan.5": {
@@ -11936,8 +11956,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "bryan",
-        "row": 153,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3,2,1,4~t7.bryan": {
@@ -12943,8 +12963,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 41,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "1+2,2~t7.bryan": {
@@ -14805,8 +14825,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "bryan",
-        "row": 169,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+3~t7.bryan": {
@@ -15017,8 +15037,8 @@
       "note": "TC 6f",
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 41,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d+1+2~t7.bryan.2": {
@@ -15057,8 +15077,8 @@
       "input_note": "(second hit only)",
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 41,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d+1+2,3~t7.bryan": {
@@ -15316,8 +15336,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "bryan",
-        "row": 153,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+3+4,2~t7.bryan.2": {
@@ -15765,8 +15785,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "bryan",
-        "row": 153,
-        "match": "same-notation"
+        "row": 41,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+2,1,u,u": {
@@ -15900,8 +15920,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "bryan",
-        "row": 153,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+2,1,2~t7.bryan.3": {
@@ -16245,8 +16265,8 @@
       },
       "anim_t3": {
         "bank": "bryan",
-        "row": 153,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+3,2~t7.bryan.2": {
@@ -16465,8 +16485,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "bryan",
-        "row": 153,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+3,2,1,2~t7.bryan.2": {
@@ -16600,8 +16620,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "bryan",
-        "row": 153,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+3,2,1,4~t7.bryan": {
@@ -16913,8 +16933,8 @@
       "note": "can be delayed 12f, combo can be delayed 8f from CH",
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 41,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+3,1+2~t7.bryan.2": {
@@ -16953,8 +16973,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 41,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+3,1+2,D": {
@@ -17771,8 +17791,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "bryan",
-        "row": 170,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "SS.2,3~t7.bryan": {
@@ -17975,8 +17995,8 @@
       "input_note": "WR",
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 41,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "WS.1~t7.bryan": {
@@ -18055,8 +18075,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "bryan",
-        "row": 153,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "WS.2:f+2": {
@@ -18310,8 +18330,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "bryan",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "WS.3+4": {
@@ -18350,8 +18370,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+3,4,1,2,1,4,2,1,4,2~t7.bryan": {
@@ -18390,8 +18410,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "bryan",
-        "row": 153,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+3,4,1,2,1,4,3,3,2": {
@@ -18430,8 +18450,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "bryan",
-        "row": 153,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "t7.bryan_212": {
@@ -18588,8 +18608,8 @@
       "input_note": "Face Up, Feet Towards+",
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "t7.bryan_216": {
@@ -18627,8 +18647,8 @@
       "input_note": "Face Up, Feet Towards, descriptive: ROLL.Forward+1+2",
       "anim_t3": {
         "bank": "bryan",
-        "row": 153,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "FDFA.3": {
@@ -18865,8 +18885,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "bryan",
-        "row": 153,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+1+2,F": {
@@ -19502,8 +19522,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "qcb": {
@@ -19870,8 +19890,8 @@
       "input_note": "(During Rage) (or FC d/f+1+2)",
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "R.b+1+2": {
@@ -19910,8 +19930,8 @@
       "input_note": "(During Rage)",
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f+1+4~t7.bryan": {
@@ -20028,8 +20048,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 41,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1+3~t7.bryan": {
