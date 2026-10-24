@@ -5,7 +5,6 @@
    ============================================================ */
 import './t7-ui-private.js';
 import './select-t7-layout.js';
-import './menu-t7-layout.js';
 import { Game } from './game.js';
 import { InputManager } from './input.js';
 import { audio } from './audio.js';
@@ -658,8 +657,12 @@ document.addEventListener('click', (e) => {
   }
 });
 
-/* T8 main menu router (data-mm, worker 36): the T8-style menu uses data-mm
-   attributes, not data-action. This delegated listener wires them up.
+/* T7 main menu router (data-mm): the T7 menu uses data-mm attributes.
+   T7 flow (SW_UI_MainMenu.bin): Main -> SubMenu -> destination.
+   Items with submenus (story, training, collection, options, online)
+   are owned by mainmenu.js's submenu controller — this router MUST NOT
+   also navigate, or the submenu can never be seen. Only direct items
+   (versus -> select, creation -> suite via data-action) navigate here.
    Each navigates to a real screen — no dead ends. */
 document.addEventListener('click', (e) => {
   const t = e.target;
@@ -667,41 +670,12 @@ document.addEventListener('click', (e) => {
   if (!el) return;
   unlockAudio();
   audio.uiClick();
-  // T7 SubMenu_mc (owner, PR #901 follow-up): a main-menu rail item opens
-  // its mode-select submenu (mainmenu.js) instead of jumping straight to a
-  // mode; the submenu's cards then route through data-action as before.
-  if (el.closest('#mm-list') && document.getElementById('mm-submenu')) return;
   const m = el.dataset.mm;
-  if (m === 'story') {
-    getModes().then(modes => modes.startMode('story'));
-  }
-  else if (m === 'versus') {
+  if (m === 'versus') {
     getModes().then(modes => modes.startMode('versus'));
   }
-  else if (m === 'online') {
-    show('online');
-  }
-  else if (m === 'arcade') {
-    getModes().then(modes => modes.startMode('arcade'));
-  }
-  else if (m === 'sidegames') {
-    show('sidegames');
-  }
-  else if (m === 'training') {
-    getModes().then(modes => modes.startMode('training'));
-  }
-  else if (m === 'creation') {
-    window.location.href = '../customization/creation-suite-ui/index.html';
-  }
-  else if (m === 'collection') {
-    show('collection');
-  }
-  else if (m === 'daily') {
-    show('daily');
-  }
-  else if (m === 'options') {
-    show('howto'); // Options: howto screen has settings
-  }
+  // story / training / collection / options / online open their T7
+  // submenu via mainmenu.js — intentionally no direct navigation here.
 });
 
 /* Confirm routing: the mode controller owns the select flow

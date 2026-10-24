@@ -1,16 +1,18 @@
 /* ============================================================
-   WESTERN HEART — T8-style main menu (worker 37, 2026-10-22)
-   Tekken 8 visual grammar adapted for phone:
-   - full-bleed hero backdrop w/ cinematic wash + ember drift
-   - top player bar: player card · Soul Urge pips · rank badge
-   - vertical rail of large italic condensed items (T8 left rail
-     becomes a bottom-anchored list in portrait, true left rail
-     in landscape)
-   - T8 red slash accent on the active item, angular card panels
-   - slide-in submenus, rank ladder, player card editor,
-     "in the forge" panel for modes still being built
-   Palette: WH dusk-shrine base (#14091f) under T8's near-black,
-   white type, T8 crimson accent, ember gold for rank.
+   WESTERN HEART — Tekken 7 main menu (2026-10-23, T7 rebuild)
+   Measured from T7's actual Steam files (see
+   teardown/tekken7-steam-ui/T7-MAINMENU-MEASUREMENTS.md):
+   - SW_UI_MainMenu.bin: 14 Main buttons (Style + Text + Glow),
+     10 Sub buttons, News panel. Navigation: Main -> Sub -> dest.
+   - Base_OnlineMenu.png 572x1080: dark glass vertical column,
+     deep blue-teal core #214758 (93%), feathered to transparent
+     edges, rounded corners. "Soft blue core."
+   Phone-first: full-width glass column in portrait; left column
+   (T7's 0.53 aspect) in landscape. Touch via Pointer Events
+   (pressing class); touch-action: manipulation; 44px+ targets.
+   No hover-dependent UI.
+   Palette: T7 abyss #0a1420, glass core #214758, glow #7fb8d9,
+   white italic type. WH brand (logo, ember gold) preserved.
    All animation is transform/opacity only (60fps, phone-safe).
    ============================================================ */
 
@@ -21,7 +23,7 @@
   justify-content: flex-start;
   padding: 0;
   overflow: hidden;
-  background: #0b0614;
+  background: #070d16;
   font-family: "Arial Narrow", "Helvetica Neue Condensed", "Trebuchet MS", system-ui, sans-serif;
 }
 #screen-menu.mm.active { display: flex; }
@@ -36,12 +38,12 @@
 .mm-hero-wash {
   position: absolute; inset: 0;
   background:
-    linear-gradient(180deg, rgba(11,6,20,.62) 0%, rgba(11,6,20,.18) 26%, rgba(11,6,20,.30) 62%, rgba(11,6,20,.94) 100%),
-    linear-gradient(100deg, rgba(20,9,31,.88) 0%, rgba(20,9,31,.25) 45%, rgba(60,8,16,.28) 100%);
+    linear-gradient(180deg, rgba(7,13,22,.66) 0%, rgba(7,13,22,.20) 26%, rgba(7,13,22,.32) 62%, rgba(7,13,22,.95) 100%),
+    linear-gradient(100deg, rgba(10,20,32,.90) 0%, rgba(10,20,32,.25) 45%, rgba(33,71,88,.30) 100%);
 }
 .mm-embers i {
   position: absolute; bottom: -12px; border-radius: 50%;
-  background: radial-gradient(circle, #ffb14d 0%, rgba(255,122,60,.55) 45%, transparent 70%);
+  background: radial-gradient(circle, #ffd9a0 0%, rgba(255,177,77,.55) 45%, transparent 70%);
   opacity: 0; animation: mm-ember 9s linear infinite;
 }
 .mm-embers i:nth-child(1) { left: 8%;  width: 7px; height: 7px;  animation-delay: 0s; }
@@ -58,27 +60,34 @@
   100% { transform: translateY(-72vh) translateX(4vw); opacity: 0; }
 }
 
-/* ---------- Top player bar (T8 profile strip) ---------- */
+/* ---------- Top player bar ---------- */
 .mm-topbar {
   position: relative; z-index: 2;
   display: flex; align-items: center; gap: 10px;
   padding: calc(8px + env(safe-area-inset-top)) 12px 8px;
-  background: linear-gradient(180deg, rgba(8,4,14,.88), rgba(8,4,14,.55) 70%, transparent);
+  background: linear-gradient(180deg, rgba(7,13,22,.90), rgba(7,13,22,.55) 70%, transparent);
+}
+.mm-pcard, .mm-rank, .mm-back, .mm-item, .mm-card, .mm-save,
+.mm-forge-box .btn-primary, .mm-soulurge {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
 }
 .mm-pcard {
   display: flex; align-items: center; gap: 9px;
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(33,71,88,.28);
+  border: 1px solid rgba(127,184,217,.35);
   border-radius: 12px; padding: 6px 12px 6px 6px;
   color: #fff; text-align: left; min-height: 48px;
 }
-.mm-pcard:active { transform: scale(.97); }
+.mm-pcard.pressing, .mm-rank.pressing { transform: scale(.97); filter: brightness(1.25); }
 .mm-avatar {
   width: 38px; height: 38px; border-radius: 10px; flex: 0 0 auto;
   display: flex; align-items: center; justify-content: center;
   font-size: 20px; font-weight: 900; font-style: italic;
-  color: #fff; background: linear-gradient(140deg, #8b2bd8, #3d1068);
-  border: 1px solid rgba(255,177,77,.5);
+  color: #fff; background: linear-gradient(140deg, #2e5a74, #10222f);
+  border: 1px solid rgba(127,184,217,.55);
 }
 .mm-pmeta { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
 .mm-pname { font-weight: 800; letter-spacing: 1.5px; font-size: 15px; white-space: nowrap; }
@@ -86,7 +95,7 @@
 
 .mm-soulurge {
   flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px;
-  min-width: 0;
+  min-width: 0; background: none; border: none; color: inherit; font: inherit;
 }
 .mm-su-label {
   font-size: 10px; letter-spacing: 3px; color: rgba(255,255,255,.65); font-weight: 700;
@@ -95,22 +104,21 @@
 .mm-pips i {
   width: 11px; height: 11px; border-radius: 50%;
   background: rgba(255,255,255,.10);
-  border: 1px solid rgba(139,43,216,.65);
+  border: 1px solid rgba(127,184,217,.65);
 }
 .mm-pips i.lit {
-  background: radial-gradient(circle at 35% 35%, #ffd9a0, #ff7a3c 60%, #cc2222);
-  border-color: #ffb14d;
-  box-shadow: 0 0 8px rgba(255,122,60,.8);
+  background: radial-gradient(circle at 35% 35%, #cfeafb, #7fb8d9 60%, #2e5a74);
+  border-color: #cfeafb;
+  box-shadow: 0 0 8px rgba(127,184,217,.8);
 }
 
 .mm-rank {
   display: flex; flex-direction: column; align-items: flex-end; gap: 2px;
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,177,77,.4);
+  background: rgba(33,71,88,.28);
+  border: 1px solid rgba(255,177,77,.40);
   border-radius: 12px; padding: 7px 12px; color: #fff; min-height: 48px;
   max-width: 38vw;
 }
-.mm-rank:active { transform: scale(.97); }
 .mm-rank-name {
   font-weight: 900; font-style: italic; letter-spacing: 1px; font-size: 14px;
   color: var(--gold); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;
@@ -126,29 +134,31 @@
   transform: skewX(-6deg);
 }
 .mm-logo span {
-  background: linear-gradient(180deg, #ffd9a0 5%, #ff7a3c 55%, #cc2222 100%);
+  background: linear-gradient(180deg, #cfeafb 5%, #7fb8d9 55%, #2e5a74 100%);
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
 }
 
-/* ---------- T8 rail list ---------- */
+/* ---------- T7 glass column: the button list ---------- */
 .mm-list {
   position: relative; z-index: 1;
   flex: 1 1 auto; min-height: 0;
   display: flex; flex-direction: column; justify-content: flex-end;
   gap: 2px; padding: 8px 0 calc(6px + env(safe-area-inset-bottom));
   overflow-y: auto; overflow-x: hidden; touch-action: pan-y;
+  background:
+    linear-gradient(180deg, rgba(33,71,88,0) 0%, rgba(33,71,88,.28) 18%, rgba(33,71,88,.34) 50%, rgba(33,71,88,.28) 82%, rgba(33,71,88,0) 100%);
   -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 26px);
   mask-image: linear-gradient(180deg, transparent 0, #000 26px);
 }
 .mm-item {
   position: relative; display: flex; align-items: center; gap: 14px;
-  background: transparent; border: none; color: #8f8f96;
+  background: transparent; border: none; color: #9fb3c4;
   padding: 9px 20px 9px 22px; text-align: left; width: 100%;
   transition: color .12s ease; min-height: 52px;
 }
 .mm-item i {
   font-style: italic; font-weight: 800; font-size: 13px; letter-spacing: 1px;
-  color: rgba(255,255,255,.28); min-width: 26px;
+  color: rgba(127,184,217,.40); min-width: 26px;
 }
 .mm-item span {
   font-size: clamp(21px, 6vw, 30px); font-weight: 900; font-style: italic;
@@ -160,38 +170,41 @@
   font-size: 11px; letter-spacing: 1.5px; color: rgba(255,255,255,.38);
   margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.mm-item small.soon { color: #e63229; }
-/* T8 red slash on the active item */
 .mm-item::before {
   content: ""; position: absolute; left: 8px; top: 14%; bottom: 14%; width: 5px;
-  background: #e63229; transform: skewX(-14deg) scaleY(0);
-  transition: transform .14s ease; box-shadow: 0 0 12px rgba(230,50,41,.8);
+  background: #7fb8d9; transform: skewX(-14deg) scaleY(0);
+  transition: transform .14s ease; box-shadow: 0 0 12px rgba(127,184,217,.9);
 }
-.mm-item.sel, .mm-item:active { color: #fff; }
-.mm-item.sel::before, .mm-item:active::before { transform: skewX(-14deg) scaleY(1); }
-.mm-item.sel i, .mm-item:active i { color: #e63229; }
-.mm-item.sel small, .mm-item:active small { color: rgba(255,255,255,.65); }
+.mm-item.sel, .mm-item.pressing { color: #fff; }
+.mm-item.sel::before, .mm-item.pressing::before { transform: skewX(-14deg) scaleY(1); }
+.mm-item.sel i, .mm-item.pressing i { color: #7fb8d9; }
+.mm-item.sel small, .mm-item.pressing small { color: rgba(255,255,255,.65); }
+.mm-item.sel {
+  background: linear-gradient(90deg, rgba(127,184,217,.16), transparent 70%);
+}
 
 /* ---------- Bottom status bar ---------- */
 .mm-bottombar {
   position: relative; z-index: 2;
   display: flex; align-items: center; gap: 12px;
   padding: 8px 14px calc(10px + env(safe-area-inset-bottom));
-  background: linear-gradient(0deg, rgba(8,4,14,.9), transparent);
+  background: linear-gradient(0deg, rgba(7,13,22,.92), transparent);
   font-size: 10px; letter-spacing: 2px; color: rgba(255,255,255,.45);
   min-height: 34px;
 }
 .mm-ver { white-space: nowrap; font-weight: 700; }
 .mm-news {
   flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  color: rgba(255,177,77,.75);
+  color: rgba(127,184,217,.85);
 }
 
-/* ---------- Slide-in submenu (T8 panel) ---------- */
+/* ---------- T7 submenu (SubMenu_mc): glass panel ---------- */
 .mm-submenu {
   position: absolute; inset: 0; z-index: 5;
   display: flex; flex-direction: column;
-  background: linear-gradient(168deg, rgba(14,7,24,.97), rgba(10,5,16,.985));
+  background:
+    linear-gradient(180deg, rgba(33,71,88,0) 0%, rgba(33,71,88,.22) 12%, rgba(33,71,88,.30) 50%, rgba(33,71,88,.22) 88%, rgba(33,71,88,0) 100%),
+    linear-gradient(168deg, rgba(12,20,30,.97), rgba(8,14,22,.985));
   animation: mm-slidein .22s ease;
 }
 .mm-submenu[hidden] { display: none; }
@@ -199,8 +212,8 @@
 .mm-sub-head {
   display: flex; align-items: center; gap: 12px;
   padding: calc(10px + env(safe-area-inset-top)) 14px 10px;
-  border-bottom: 2px solid rgba(230,50,41,.55);
-  background: rgba(8,4,14,.6);
+  border-bottom: 2px solid rgba(127,184,217,.55);
+  background: rgba(7,13,22,.6);
 }
 .mm-sub-head h2 {
   margin: 0; font-size: clamp(20px, 5.5vw, 30px); font-weight: 900; font-style: italic;
@@ -208,10 +221,10 @@
 }
 .mm-back {
   width: 48px; height: 48px; border-radius: 12px; font-size: 30px; line-height: 1;
-  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16);
+  background: rgba(33,71,88,.35); border: 1px solid rgba(127,184,217,.40);
   color: #fff;
 }
-.mm-back:active { transform: scale(.94); }
+.mm-back.pressing { transform: scale(.94); filter: brightness(1.3); }
 .mm-cards {
   flex: 1; overflow-y: auto; touch-action: pan-y;
   display: grid; grid-template-columns: 1fr; gap: 12px;
@@ -220,17 +233,17 @@
 }
 .mm-card {
   position: relative; text-align: left; color: #fff;
-  background: linear-gradient(120deg, rgba(38,20,60,.92), rgba(20,10,34,.94));
-  border: 1px solid rgba(139,43,216,.4);
+  background: linear-gradient(120deg, rgba(33,71,88,.55), rgba(16,32,44,.92));
+  border: 1px solid rgba(127,184,217,.40);
   border-radius: 4px; padding: 16px 16px 14px 20px; min-height: 84px;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
 }
 .mm-card::before {
   content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
-  background: linear-gradient(180deg, #8b2bd8, #5b1a94);
+  background: linear-gradient(180deg, #7fb8d9, #2e5a74);
 }
-.mm-card.hot::before { background: linear-gradient(180deg, #e63229, #8f1410); }
-.mm-card:active { transform: scale(.985); filter: brightness(1.2); }
+.mm-card.hot::before { background: linear-gradient(180deg, #ffd9a0, #b97a2e); }
+.mm-card.pressing { transform: scale(.985); filter: brightness(1.25); }
 .mm-card h3 {
   margin: 0 0 6px; font-size: 19px; font-weight: 900; font-style: italic;
   letter-spacing: 1.5px; transform: skewX(-5deg);
@@ -240,7 +253,7 @@
   position: absolute; top: 10px; right: 12px;
   font-size: 10px; font-weight: 800; letter-spacing: 2px;
   padding: 4px 9px; border-radius: 4px; transform: skewX(-8deg);
-  background: rgba(230,50,41,.16); border: 1px solid #e63229; color: #ff8a80;
+  background: rgba(127,184,217,.14); border: 1px solid #7fb8d9; color: #cfeafb;
 }
 .mm-badge.soon { background: rgba(255,177,77,.12); border-color: #ffb14d; color: #ffb14d; }
 .mm-badge.live { background: rgba(77,255,136,.10); border-color: #4dff88; color: #4dff88; }
@@ -249,11 +262,11 @@
 .mm-cardedit { flex: 1; overflow-y: auto; padding: 20px 18px; display: flex; flex-direction: column; gap: 16px; }
 .mm-field { display: flex; flex-direction: column; gap: 8px; font-size: 12px; letter-spacing: 2px; color: rgba(255,255,255,.6); font-weight: 700; }
 .mm-field input, .mm-field select {
-  background: rgba(255,255,255,.07); border: 1px solid rgba(139,43,216,.5);
+  background: rgba(33,71,88,.35); border: 1px solid rgba(127,184,217,.5);
   border-radius: 10px; color: #fff; font-size: 17px; padding: 14px 12px;
   font-family: inherit; letter-spacing: 1px; min-height: 52px;
 }
-.mm-field select option { background: #1a0f2e; }
+.mm-field select option { background: #0e1a26; }
 .mm-save { width: 100%; min-height: 54px; }
 .mm-note { font-size: 12px; color: rgba(255,255,255,.45); line-height: 1.6; text-align: center; }
 
@@ -261,20 +274,20 @@
 .mm-forge {
   position: absolute; inset: 0; z-index: 8;
   display: flex; align-items: center; justify-content: center;
-  background: rgba(8,4,14,.78); backdrop-filter: blur(3px); padding: 20px;
+  background: rgba(7,13,22,.80); backdrop-filter: blur(3px); padding: 20px;
 }
 .mm-forge[hidden] { display: none; }
 .mm-forge-box {
   width: min(92vw, 430px); text-align: center;
-  background: linear-gradient(160deg, #1c0f30, #100818);
-  border: 1px solid rgba(255,177,77,.45); border-radius: 6px;
+  background: linear-gradient(160deg, #14232f, #0a141d);
+  border: 1px solid rgba(127,184,217,.45); border-radius: 6px;
   padding: 28px 24px;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
   animation: mm-pop .2s ease;
 }
 @keyframes mm-pop { from { transform: scale(.94); opacity: 0; } }
 .mm-forge-kicker {
-  font-size: 11px; letter-spacing: 4px; color: #ffb14d; font-weight: 800; margin-bottom: 10px;
+  font-size: 11px; letter-spacing: 4px; color: #7fb8d9; font-weight: 800; margin-bottom: 10px;
 }
 .mm-forge-box h2 {
   margin: 0 0 12px; font-size: 24px; font-weight: 900; font-style: italic;
@@ -287,7 +300,7 @@
 .mm-toast {
   position: absolute; left: 50%; bottom: calc(54px + env(safe-area-inset-bottom));
   transform: translateX(-50%) translateY(16px); z-index: 9;
-  background: rgba(10,5,18,.94); border: 1px solid rgba(230,50,41,.6);
+  background: rgba(8,14,22,.94); border: 1px solid rgba(127,184,217,.6);
   color: #fff; font-size: 13px; letter-spacing: 1px; font-weight: 700;
   padding: 12px 20px; border-radius: 10px; opacity: 0; pointer-events: none;
   transition: opacity .2s ease, transform .2s ease; white-space: nowrap;
@@ -295,7 +308,7 @@
 }
 .mm-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-/* ---------- Landscape: true T8 left rail ---------- */
+/* ---------- Landscape: T7 left glass column ---------- */
 @media (orientation: landscape) and (min-height: 320px) {
   #screen-menu.mm { flex-direction: row; flex-wrap: wrap; }
   .mm-topbar { flex: 1 1 100%; order: 0; }
@@ -303,11 +316,13 @@
   .mm-list {
     order: 1; flex: 0 0 min(46vw, 430px); justify-content: center;
     -webkit-mask-image: none; mask-image: none; padding: 8px 0;
+    background:
+      linear-gradient(90deg, rgba(33,71,88,0) 0%, rgba(33,71,88,.30) 18%, rgba(33,71,88,.36) 50%, rgba(33,71,88,.30) 82%, rgba(33,71,88,0) 100%);
   }
   .mm-item { min-height: 46px; padding-top: 7px; padding-bottom: 7px; }
   .mm-item span { font-size: clamp(18px, 3.4vw, 26px); }
   .mm-bottombar { flex: 1 1 100%; order: 2; }
-  .mm-submenu { left: auto; width: min(62vw, 560px); border-left: 2px solid rgba(230,50,41,.55); }
+  .mm-submenu { left: auto; width: min(62vw, 560px); border-left: 2px solid rgba(127,184,217,.55); }
   .mm-cards { grid-template-columns: 1fr 1fr; }
 }
 /* Short portrait screens: tighten the rail */

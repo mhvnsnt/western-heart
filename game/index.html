@@ -15,7 +15,6 @@
   <link rel="stylesheet" href="menus.css" />
   <link rel="stylesheet" href="mainmenu.css" />
   <link rel="stylesheet" href="t7-skin.css" />
-  <link rel="stylesheet" href="menu-t7.css" />
   <!-- Worker 35: colorblind-safe HUD palettes (worker-35 identity lane) -->
   <link rel="stylesheet" href="css/colorblind.css" />
   <!-- MENU FALLBACK CSS (2026-10-22, PR #676 rebase): if every stylesheet
@@ -53,13 +52,14 @@
   <canvas id="game-canvas"></canvas>
 
   <!-- ====================== MAIN MENU ======================
-       TEKKEN 8-style main menu (2026-10-22, worker 37): T8 visual
-       grammar adapted for phone — hero backdrop, top player bar
-       (player card + Soul Urge pips + rank badge), vertical rail of
-       large italic condensed items, bottom status bar; submenus
-       slide in T8-style. T7 hierarchy underneath:
-       STORY / VERSUS / ONLINE / ARCADE / SIDE GAMES / TRAINING /
-       CREATION SUITE / COLLECTION / DAILY / OPTIONS.
+       TEKKEN 7 main menu (2026-10-23, T7 rebuild): measured from T7's
+       actual Steam files — SW_UI_MainMenu.bin (14 Main + 10 Sub buttons,
+       News panel) and Base_OnlineMenu.png (572x1080 blue-glass column).
+       See teardown/tekken7-steam-ui/T7-MAINMENU-MEASUREMENTS.md.
+       Phone-first: full-width glass column in portrait, left column in
+       landscape. 7 items: FIGHT / STORY·ARCADE / TRAINING·GUNGAKU /
+       CUSTOMIZATION / GALLERY / OPTIONS / ONLINE. Touch via Pointer
+       Events; 44px+ targets; submenus follow T7's Main->Sub flow.
        Ranked modes ride worker 30's rank system (js/ranks.js,
        data/ranks.json): mode-rankbattle + show-ranks hub. -->
   <section id="screen-menu" class="screen active mm">
@@ -71,7 +71,7 @@
       </div>
     </div>
 
-    <!-- T8 top bar: player card · Soul Urge · rank -->
+    <!-- T7 top bar: player card · Soul Urge · rank -->
     <header class="mm-topbar">
       <button class="mm-pcard" id="mm-pcard" aria-label="Player card">
         <span class="mm-avatar" id="mm-avatar">W</span>
@@ -95,16 +95,13 @@
     </div>
 
     <nav class="mm-list" id="mm-list" aria-label="Main menu">
-      <button class="mm-item" data-mm="story"><i>01</i><span>STORY<small>The Trial · Episodes · Heart &amp; Mind Within</small></span></button>
-      <button class="mm-item" data-mm="versus"><i>02</i><span>VERSUS<small>1v1 · Team Battle</small></span></button>
-      <button class="mm-item" data-mm="online"><i>03</i><span>ONLINE<small>Ranked Battle · Rank Hall · Tournament</small></span></button>
-      <button class="mm-item" data-mm="arcade"><i>04</i><span>ARCADE<small>Ladder · Survival · Time Attack</small></span></button>
-      <button class="mm-item" data-mm="sidegames"><i>05</i><span>SIDE GAMES<small>Qombat · Soul Surge · Trader</small></span></button>
-      <button class="mm-item" data-mm="training"><i>06</i><span>TRAINING<small>Lab · Gungaku fight lab</small></span></button>
-      <button class="mm-item" data-action="mode-create"><i>07</i><span>CREATION SUITE<small>Create Fighter</small></span></button>
-      <button class="mm-item" data-mm="collection"><i>08</i><span>COLLECTION<small>Gallery · Jukebox · Replays</small></span></button>
-      <button class="mm-item" data-mm-forge="daily"><i>09</i><span>DAILY CHALLENGES<small class="soon">IN THE FORGE</small></span></button>
-      <button class="mm-item" data-mm="options"><i>10</i><span>OPTIONS<small>Settings · Records · How to play</small></span></button>
+      <button class="mm-item" data-mm="versus"><i>01</i><span>FIGHT<small>1v1 Versus · Team Battle</small></span></button>
+      <button class="mm-item" data-mm="story"><i>02</i><span>STORY · ARCADE<small>The Trial · Episodes · Heart &amp; Mind Within · Ladder</small></span></button>
+      <button class="mm-item" data-mm="training"><i>03</i><span>TRAINING · GUNGAKU<small>Lab · Programmable dummy</small></span></button>
+      <button class="mm-item" data-action="mode-create"><i>04</i><span>CUSTOMIZATION<small>Create a fighter</small></span></button>
+      <button class="mm-item" data-mm="collection"><i>05</i><span>GALLERY<small>Endings · Art · Jukebox · Replays</small></span></button>
+      <button class="mm-item" data-mm="options"><i>06</i><span>OPTIONS<small>Settings · Records · How to play</small></span></button>
+      <button class="mm-item" data-mm="online"><i>07</i><span>ONLINE<small>Ranked Battle · Rank Hall</small></span></button>
     </nav>
 
     <footer class="mm-bottombar">
