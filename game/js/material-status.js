@@ -93,8 +93,6 @@ export const MATERIAL_STATUS = {
   "michiko": "1 placeholder",
   "nightwolf": "2 untextured",
   "saku-ra_alt1": "31 untextured",
-  "tobi": "1 placeholder",
-  "tobi-attire1": "1 placeholder",
   "torch": "1 placeholder",
   "yukihyo": "14 untextured",
   "zen-body": "2 untextured"
