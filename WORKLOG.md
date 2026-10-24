@@ -1,3 +1,22 @@
+## 2026-10-24 — Animation strategy documented: DECODED vs MADE (docs only)
+
+**Owner instruction (verbatim):** "log in the documents the right way to do this" (2026-10-24), plus "for every character even the ones that aren't in t7."
+
+**What this entry records:** the animation strategy is now written down in the repo, so no lane has to re-decide it or re-guess it. Decision doc: `docs/decisions/2026-10-24-animation-strategy-decoded-vs-made.md`. Owner-directives append: `docs/owner-directives.md` under `## 2026-10-24` (newest-first). The two lanes are DECODED (motion bytes from a shipped game, recorded source + row + exact move) vs MADE (motion created for canon moves with no Tekken equivalent, by adapting/blending decoded clips, building from recorded properties, or community libraries with provenance). Extraction vs creation decision tree, the 940 blocked slots, and the merged-PR statuses below are all in the decision doc.
+
+**Joystick fix PR #1001 (merged):** "fix(input): joystick center — dynamic mode + deadzone, any-touch=down fixed" (`game/js/input.js`). Dynamic mode + deadzone; every touch reading as DOWN fixed.
+
+**Joystick fix PR #1003 (Claude's, merged):** "Fix touch joystick (every touch read as DOWN) + decoded T3 hit reactions/throws + combat right-way doc" — merged as main tip `374a6a462`. Joystick part: `dynamicPage: true` in nipplejs, so the stick centre is re-read on every touch instead of stored once at boot while the fight HUD was hidden (stored `{0,0}` vs real centre). Also in PR #1003: decoded T3 hit reactions/throws (22 banks, 7,368 clips) and `docs/handoffs/COMBAT-RIGHT-WAY-2026-10-24.md`. Both joystick PRs are in — do NOT duplicate; verify live only.
+
+**MOD damage PR #1002 (merged):** "Wire TheBigTuna MOD damage values into remaining WH moveset T7 blocks." With PR #1000 (8 fighters, merged), all T7 characters' moveset blocks are now wired with MOD damage values. Damage wiring is done; it does not fix animations.
+
+**Animation strategy doc creation (this PR):** `docs/decisions/2026-10-24-animation-strategy-decoded-vs-made.md` — DECODED vs MADE definitions, which characters have decoded sets (T3: 22 banks; T7: 0 of 51 in the repo), extraction paths (live TKMovesets authoritative, mot.bin RE parallel, Steam pak fallback, TTT2 for Jun), creation methods and verification, the decision tree, the 940 blocked slots (Pond/Raven, Ryusan/Lucky Chloe, Megami/Jun) and their unblock paths, joystick/MOD/editor merged statuses, and the non-T7 characters directive.
+
+**#866 requests posted (2026-10-24):** issue #866 comment `6388949909` — live TKMovesets extraction for ALL T7 characters (King first), animations-only path; comment `6389250251` — live TKMovesets extraction for Raven, Lucky Chloe, Jun, blocking 940 slots. Note recorded in the decision doc: Jun is a TTT2 character, not a T7 roster character, so the Jun part of comment `6389250251` needs retargeting to a TTT2 extraction. Output destination for both: private repo `mhvnsnt/game-reverse-engineering`, never raw game files in the public repo.
+
+**Verification for this docs-only change:** all three files are new-or-surgical (one new decision doc, one inserted `## 2026-10-24` section in `docs/owner-directives.md`, one prepended entry in `WORKLOG.md`); no game code, moveset, or asset file touched; no deletions. PR body carries the instruction-gate six sections. Merge only when clean and green via `git_merge.py`.
+
+---
 ## 2026-10-23 ~19:30 CDT — batch9 moveset pull: thor/menajerii/baek-master-white/dorowani/zen (SHOW-ANIMATION LOCK)
 
 **Owner instruction (verbatim):** "Now we need to get that done for every other character" (2026-10-23) — replicate the proven Law/Lars pattern (PR #823 merged, PR #806 green).
