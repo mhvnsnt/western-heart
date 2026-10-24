@@ -112,14 +112,35 @@ export class Arena {
     if (fighterA && fighterB) {
       const p1x = fighterA.root.position.x, p2x = fighterB.root.position.x;
       const desiredCenter = (p1x + p2x) * 0.5;
-      const desiredSpan = Math.max(Math.abs(p2x - p1x), 4.5);
+      const desiredSpan = Math.max(Math.abs(p2x - p1x), this.camera.aspect < 1 ? 2.6 : 4.5);
       const k = 1 - Math.exp(-Math.max(dt, 0) * 7.5);
       this._camRig.centerX += (desiredCenter - this._camRig.centerX) * k;
       this._camRig.span += (desiredSpan - this._camRig.span) * k;
-      const vFov = this.camera.fov * Math.PI / 180;
+      if (this._baseFov === undefined) this._baseFov = this.camera.fov;
+      const vFov = this._baseFov * Math.PI / 180;
       const hFov = 2 * Math.atan(Math.tan(vFov / 2) * this.camera.aspect);
-      const fitDist = (this._camRig.span + 3.0) / (2 * Math.tan(hFov / 2));
-      baseZ = Math.max(10.5, fitDist) * camScale;
+      // Portrait (owner 2026-10-23 "make fighters larger in portrait"): the narrow
+      // horizontal frustum pushed the camera ~2.5x farther out, shrinking fighters to
+      // specks. In portrait fit only the fighters' bodies (span + 1.8 m instead of + 3 m),
+      // with a closer minimum distance; landscape keeps the original fit.
+      // Moving the camera back past ~10.5 m puts it behind the arena walls, so the
+      // portrait view showed only a wall. In portrait the camera stays inside the
+      // arena; when the fighters don't fit, the FOV widens instead of the camera
+      // pulling back.
+      const portrait = this.camera.aspect < 1;
+      const pad = portrait ? 1.8 : 3.0;
+      let fitDist = (this._camRig.span + pad) / (2 * Math.tan(hFov / 2));
+      if (portrait) {
+        const maxD = 10.5;
+        let wantFov = this._baseFov;
+        if (fitDist > maxD) {
+          const needH = 2 * Math.atan((this._camRig.span + pad) / (2 * maxD));
+          wantFov = Math.min(80, 2 * Math.atan(Math.tan(needH / 2) / this.camera.aspect) * 180 / Math.PI);
+          fitDist = maxD;
+        }
+        if (Math.abs(wantFov - this.camera.fov) > 0.05) { this.camera.fov = wantFov; this.camera.updateProjectionMatrix(); }
+      } else if (this.camera.fov !== this._baseFov) { this.camera.fov = this._baseFov; this.camera.updateProjectionMatrix(); }
+      baseZ = Math.max(portrait ? 6.0 : 10.5, fitDist) * camScale;
       baseX = this._camRig.centerX;
       const maxY = Math.max(fighterA.root.position.y, fighterB.root.position.y);
       baseY = 1.75 + maxY * 0.45;

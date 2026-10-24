@@ -1,3 +1,27 @@
+## 2026-10-23 ~18:15 CDT — batch3 T8 moveset pull: pond/tobi/megami/sakura/phantom (SHOW-ANIMATION LOCK)
+
+**Owner instruction (verbatim):** "Now we need to get that done for every other character" (2026-10-23) — replicate the proven Law/Lars pattern (PR #823 merged, PR #806 green).
+
+**Method:** T8 frame-data diff per fighter (`docs/t7t8-reference/frame-data-t8-full/<char>.json`, wavu) against existing `moves` dict keys; genuinely-missing moves added in Tekken notation via the canonical `tools/moveset-merge/merge_sources.py` `conv_t8` conversion (frames/60 -> seconds, damage scaled T8 180HP -> WH 100HP, raw kept in `damage_raw`); dedup by source-record identity (`t8_id`), key = notation when free else `<notation>~t8.<body>`; additions only (guard: 0 payload changes, 0 removals across all files).
+
+**Moveset (done):**
+- `game/assets/movesets/megami.json` (Jun Kazama): 150 -> **299** (+149 T8 Jun moves, all `"set": "FIGHT"`; TTT2-documented kit untouched; strings 0->18, specials 0->7)
+- `game/assets/movesets/pond.json` (Raven): 620 -> 620 (+0 — the merge lane's T8+T7 merge already covered all 177 T8 Raven moves; diff verified clean)
+- `game/assets/movesets/tobi.json` (Hwoarang): 729 -> 729 (+0 — merge lane already covered all 209 T8 Hwoarang moves; diff verified clean)
+- `game/assets/movesets/sakura.json` (Xiaoyu): 764 -> 764 (+0 — all 175 T8 Xiaoyu moves merged 2026-10-21)
+- `game/assets/movesets/phantom.json` (Yoshimitsu): 1019 -> 1019 (+0 — all 312 T8 Yoshimitsu moves merged 2026-10-21)
+- `index.json` moves/inputs/bytes updated for all 5. Provenance in `merge_sources.added.t8_pull_20261023`.
+
+**SHOW-ANIMATION LOCK (owner 2026-10-23):** file-level `anim_set_lock` added to all 5 files (previously missing everywhere); the 149 moves this lane pulled stamped `"set": "FIGHT"`. No SHOW content entered any moveset.
+
+**Animations (banks checked, gaps filed not stubbed):** `game/assets/anim/t3/hwoarang/`, `xiaoyu/`, `yoshimitsu/` exist (full 30-clip sets) — tobi/sakura/phantom wire to their own banks, no substitution. `t3/raven/` and `t3/jun/` do NOT exist (Raven debuted T5, Jun not in T3; T3 fallback empty per source priority) — precise gaps filed: `docs/anim/RAVEN-ANIM-GAP-20261023.md`, `docs/anim/JUN-ANIM-GAP-20261023.md` (FIGHT vs SHOW split, TTT2/T7/T8-first priority, unblock sequence for the extraction coordinator lane).
+
+**Verification:** new-move schema validated (all 13 required fields incl. `set: FIGHT`); semantic diff guard green (0 field losses, 0 removals); per-file byte-exact JSON serialization preserved (diffs are pure additions). CI's 6 checks gate the merge.
+
+**Anti-clobber:** rebuilt on current main tip after the merge lane's T8+T7 merge landed mid-task (53 commits; only `pond.json`/`tobi.json`/`index.json` overlapped — re-diffed on the new base, zero duplicated moves, their payloads untouched); surgical additions only; no deletions. Branch via Git Database API (no GitHub connector for git ops).
+
+---
+
 ## 2026-10-23 ~15:55 CDT — Repo Co Dev: owner rules (disk offload + merge rule)
 
 **Task:** add Oct 23 owner rules (a) disk offload, (b) merge rule to AGENTS.md, RULES_NO_GUESSING, HOW-TO-CONTINUE, Muse handoff.
@@ -2481,3 +2505,44 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Verification:** semantic diff audit — 0 field losses, 0 removals, additions only; all 17 new moves tagged; `node --test game/tests/fighter-completeness.test.mjs` green.
 
 **Deviations:** none — the 17 pulled moves are all combat moves (FIGHT); no SHOW content entered the moveset.
+
+## 2026-10-23 — Priority-5 moveset pull: burger/purplerain/pantera/torch/michiko (T8+T7 diff, SHOW-ANIMATION LOCK, anim-bank gaps)
+
+**Owner instruction (verbatim):** "Now we need to get that done for every other character" (2026-10-23) — the Law/Lars full pulls (PR #806 / PR #823 pattern).
+
+**Method:** For each of the 5 priority fighters, read `game/assets/movesets/<fighter>.json` and diffed `game/data/t8_frame_tables.json` → `chars.<source>` (exact key match against the builder's parent-chain join) plus the full wavu rows in `docs/t7t8-reference/frame-data-t8-full/<source>.json` against every reachable notation in the file (key/input/input_slots/t7_command canonicalized + slots + t8_id identity). T7 rows in `docs/t7t8-reference/frame-data-t7/<source>.json` diffed by move id. Genuinely-missing = input not reachable by any existing move.
+
+**Result — 0 genuinely-missing moves on all 5 (nothing re-added):**
+- `game/assets/movesets/burger.json`: 552 → 552 (T8 bob 161/161 inputs reachable; T7 bob 281/281 rows by id)
+- `game/assets/movesets/purplerain.json`: 569 → 569 (T8 lee 156/156; T7 lee 265/265)
+- `game/assets/movesets/pantera.json`: 873 → 873 (T8 king 215/215; T7 king 297/297)
+- `game/assets/movesets/torch.json`: 892 → 892 (T8 anna 165/165; T7 anna 354/354)
+- `game/assets/movesets/michiko.json`: 344 → 344 (T7 katarina 189/189 by id; T8 has no Katarina — verified, `chars` has no `katarina` key)
+
+**Changes:**
+- All 5 files: file-level `anim_set_lock` metadata (SHOW-ANIMATION LOCK, owner 2026-10-23; chordz.json pattern) + `merge_sources.added.<fighter>_pull_20261023` provenance with per-source coverage counts.
+- `docs/anim/BOB-ANIM-GAP-20261023.md`, `docs/anim/LEE-ANIM-GAP-20261023.md`, `docs/anim/KATARINA-ANIM-GAP-20261023.md`: FIGHT vs SHOW intake manifests for the extraction coordinator (no T3 bank exists for Bob/Lee/Katarina — Bob debuted T6, Lee skipped T3, Katarina debuted T7; current bryan/jin/jin proxies flagged, not blessed).
+- `game/assets/movesets/index.json`: bytes updated for all 5.
+- Pantera (king bank `game/assets/anim/t3/king_on_pantera_leoman/`) and Torch (`anim_bank: "anna"` → `game/assets/anim/t3/anna/`) already wired — no gap docs, no t3anims.js changes.
+
+**Verification:** exact-match diff audit (every T8 compact key joined to its source row); semantic check — 0 field losses, 0 removals, additions only (lock + provenance); all 10 JSON files parse; `node --test game/tests/fighter-completeness.test.mjs` green.
+
+**Deviations:** none — no SHOW content entered any moveset; no wrong-bank substitution (proxies left untouched, flagged in gap docs).
+
+---
+
+## 2026-10-23 — Track 4 (advanced systems): Project Chrono grappling lane
+
+**Owner instruction (verbatim):** "Pull all of this stuff in and wire it up and put it to work the best way possible"
+
+**Architecture decision: AUGMENT, not replace.** Chrono fills one gap — articulated joint constraints with torque readout for grappling. cannon-es keeps visuals-only rigid bodies, Jolt keeps XPBD soft tissue, PhysicsServo keeps the muscle layer. Full Chrono C++ → WASM is SPEC ONLY (official Emscripten tutorial path documented); no maintained JS/npm Chrono package exists, and a multi-MB WASM engine is wrong-sized for a ~6-body subsystem that must be bit-deterministic for rollback.
+
+**Changes:**
+- `game/js/chrono-grapple.js` (new, ~700 lines, zero deps, no three.js): Chrono-inspired joint taxonomy (FIXED/SPHERICAL/REVOLUTE/PRISMATIC/UNIVERSAL), ChronoEngine (torque/speed/position), ChronoSpring (runtime-variable stiffness muscle model), per-link torque nodes (reactionForce/reactionTorque), MuscleStrain (real-time strain calc, tap-out, bone-snap), SubmissionChain (data-driven: armbar/kimura/triangle/rear-naked choke), GrappleRig + ChronoGrapple facade with PhysicsServo contract (`getServoTargets()` → per-limb PD targets, null while idle).
+- `game/tests/chrono-grapple.test.mjs` (new): 18 tests, all green.
+- `game/js/integration.js`: additive block 8 (`tryInit('grapple', './chrono-grapple.js', …)`) + `S.grapple.update(dt)` in the frame loop. No existing logic touched.
+- `docs/research/CHRONO-PHYSICS-2026-10-23.md` (new): evaluation, license (BSD-3-Clause, verified), replace-vs-augment table, [WIRED]/[RESEARCHED]/[SPEC ONLY] marking, WASM vendor path, open questions.
+
+**Verification:** `node --test game/tests/chrono-grapple.test.mjs` 18/18 green; full suite 80/84 with the same 4 pre-existing full-suite-mode failures as pristine main (fighter-completeness/v-system parallel-run flakes — verified by stashing). All four submission chains measured end-to-end: entry → control → lock → tap with in-band torques. Determinism asserted (identical runs ⇒ identical snapshots).
+
+**Deviations:** none. License note: user lifted the license firewall 2026-10-23; Chrono is BSD-3-Clause regardless, and the wired module is WH-original code (architecture-inspired, not a derivative).

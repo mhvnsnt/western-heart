@@ -113,3 +113,6 @@ may run it by hand: `bash tools/agent/autosave.sh manual`. `wip(autosave)` commi
 **(a) Disk offload.** Once local work is verified 100% pushed (0 dirty, 0 untracked, 0 stash, every local branch on the remote at the same or a later SHA, submodules included) or stored in box-storage, clear it off the box disk as you go, and log each removal (path, repo, HEAD SHA, date) in agent-ops `BOX-OFFLOAD-LOG.md`. If any check fails or ownership is unclear, keep it on disk and list it.
 
 **(b) Merge rule.** Merge only when GitHub shows the PR as MERGEABLE/CLEAN, every check is verified green through the Actions runs API (a timeout, 403 or unreadable result counts as a FAIL), `git diff --diff-filter=D --name-only origin/main...HEAD` is empty, and the PR is not freeze-marked. No batch merges: one PR at a time. Claim the work in agent-ops `CLAIMS.md` first. Never force-push or rebase pushed work. If any check is unverifiable, leave the PR open.
+
+## Team workflow — Tekken data sources
+Where the Tekken 7/8 data comes from and how any agent pulls it (T8 movesets, T7 frame data, owner's Steam T7 files, HUD/announcer): `docs/team/TEKKEN-DATA-SOURCES.md`.

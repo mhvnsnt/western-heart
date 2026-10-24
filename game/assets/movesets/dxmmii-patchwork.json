@@ -3915,6 +3915,101 @@
       "throw_break": "1+2",
       "merge_source": "donor:dxmmii:1+4",
       "donor_fighter": "dxmmii"
+    },
+    "None~donor.dxmmii.8": {
+      "name": "Tongue In, Run [WH SIGNATURE]",
+      "input": "S",
+      "startup": 0.31,
+      "active": 0.1,
+      "recovery": 0.92,
+      "damage": 19,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 13,
+      "anim_ref": "wh:dxmmii:sig:tongue-in-run",
+      "input_slots": [
+        "S"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
+      "merge_source": "donor:dxmmii:S",
+      "donor_fighter": "dxmmii"
+    },
+    "None~donor.dxmmii.9": {
+      "name": "Everybody's Sample [WH SIGNATURE]",
+      "input": "P+K",
+      "startup": 0.29,
+      "active": 0.05,
+      "recovery": 0.88,
+      "damage": 20,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "anim_ref": "wh:dxmmii:sig:everybodys-sample",
+      "input_slots": [
+        "P+K",
+        "P",
+        "K"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Everybody's style is my style. A mimic grab - your hold, his beat.",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "merge_source": "donor:dxmmii:P+K",
+      "donor_fighter": "dxmmii"
+    },
+    "1+2~donor.dxmmii.5": {
+      "name": "Tongue In, Run [WH SIGNATURE]",
+      "input": "1+2",
+      "startup": 0.31,
+      "active": 0.1,
+      "recovery": 0.92,
+      "damage": 19,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 13,
+      "anim_ref": "wh:dxmmii:sig:tongue-in-run",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
+      "input_remapped_from": "S",
+      "merge_source": "donor:dxmmii:1+2",
+      "donor_fighter": "dxmmii"
+    },
+    "1+4~donor.dxmmii.5": {
+      "name": "Everybody's Sample [WH SIGNATURE]",
+      "input": "1+4",
+      "startup": 0.29,
+      "active": 0.05,
+      "recovery": 0.88,
+      "damage": 20,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "anim_ref": "wh:dxmmii:sig:everybodys-sample",
+      "input_slots": [
+        "1+4"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Everybody's style is my style. A mimic grab - your hold, his beat.",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "input_remapped_from": "P+K",
+      "throw_break": "1+2",
+      "merge_source": "donor:dxmmii:1+4",
+      "donor_fighter": "dxmmii"
     }
   },
   "restored_from_sweep_338": {
@@ -3986,7 +4081,7 @@
     "u/f+4,4,4,4": "u/f+4,4,4,4"
   },
   "merge_sources": {
-    "date": "2026-10-21",
+    "date": "2026-10-23",
     "by": "tools/moveset-merge/merge_sources.py",
     "bases": {
       "donors": [
@@ -3995,8 +4090,8 @@
     },
     "why": "attire variant of dxmmii",
     "exclude_proxy": false,
-    "moves_before": 162,
-    "moves_after": 166,
+    "moves_before": 166,
+    "moves_after": 170,
     "added": {
       "donor": 4
     },
@@ -4165,7 +4260,9 @@
     "None~donor.dxmmii.5": 2048,
     "1+4~donor.dxmmii.3": 2048,
     "None~donor.dxmmii.7": 2048,
-    "1+4~donor.dxmmii.4": 2048
+    "1+4~donor.dxmmii.4": 2048,
+    "None~donor.dxmmii.9": 2048,
+    "1+4~donor.dxmmii.5": 2048
   },
   "stance_after": {}
 }
