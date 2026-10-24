@@ -22,7 +22,8 @@
       "t3_rows": [
         203,
         220
-      ]
+      ],
+      "input_lp": "RP2,LP1"
     },
     {
       "input": "d+1+2,2",
@@ -32,7 +33,8 @@
       ],
       "t3_rows": [
         98
-      ]
+      ],
+      "input_lp": "d+LP1+RP2,RP2"
     },
     {
       "input": "d/f+4,2",
@@ -42,7 +44,8 @@
       ],
       "t3_rows": [
         196
-      ]
+      ],
+      "input_lp": "d/f+RK4,RP2"
     },
     {
       "input": "d/f+4,4",
@@ -52,7 +55,8 @@
       ],
       "t3_rows": [
         197
-      ]
+      ],
+      "input_lp": "d/f+RK4,RK4"
     },
     {
       "input": "d+1+2,2,1",
@@ -63,7 +67,8 @@
       ],
       "t3_rows": [
         198
-      ]
+      ],
+      "input_lp": "d+LP1+RP2,RP2,LP1"
     },
     {
       "input": "d+1+2,2,1,1",
@@ -75,7 +80,8 @@
       ],
       "t3_rows": [
         257
-      ]
+      ],
+      "input_lp": "d+LP1+RP2,RP2,LP1,LP1"
     },
     {
       "input": "d+1+2,2,1,1,2",
@@ -88,7 +94,8 @@
       ],
       "t3_rows": [
         258
-      ]
+      ],
+      "input_lp": "d+LP1+RP2,RP2,LP1,LP1,RP2"
     },
     {
       "input": "d+1+2,2,1,1,3",
@@ -101,7 +108,8 @@
       ],
       "t3_rows": [
         264
-      ]
+      ],
+      "input_lp": "d+LP1+RP2,RP2,LP1,LP1,LK3"
     },
     {
       "input": "d+1+2,2,1,1,2,4",
@@ -115,7 +123,8 @@
       ],
       "t3_rows": [
         259
-      ]
+      ],
+      "input_lp": "d+LP1+RP2,RP2,LP1,LP1,RP2,RK4"
     },
     {
       "input": "d+1+2,2,1,1,3,3",
@@ -129,7 +138,8 @@
       ],
       "t3_rows": [
         265
-      ]
+      ],
+      "input_lp": "d+LP1+RP2,RP2,LP1,LP1,LK3,LK3"
     },
     "1,2",
     "1+2,1",
@@ -165,7 +175,8 @@
         "4",
         "4"
       ],
-      "merge_source": "t7:king_94"
+      "merge_source": "t7:king_94",
+      "input_lp": "CH.d+LK3+RK4,RK4,RK4,RK4"
     },
     {
       "input": "FC.1,2",
@@ -173,7 +184,8 @@
         "1",
         "2"
       ],
-      "merge_source": "t7:king_115"
+      "merge_source": "t7:king_115",
+      "input_lp": "FC.LP1,RP2"
     },
     {
       "input": "FC.d/f+4,4",
@@ -181,7 +193,8 @@
         "d/f+4",
         "4"
       ],
-      "merge_source": "t7:king_124"
+      "merge_source": "t7:king_124",
+      "input_lp": "FC.d/f+RK4,RK4"
     },
     {
       "input": "FC.d/f+4,4,4",
@@ -190,7 +203,8 @@
         "4",
         "4"
       ],
-      "merge_source": "t7:king_125"
+      "merge_source": "t7:king_125",
+      "input_lp": "FC.d/f+RK4,RK4,RK4"
     },
     {
       "input": "1,2,1,1,2,4,4,4,1,3",
@@ -206,7 +220,8 @@
         "1",
         "3"
       ],
-      "merge_source": "t7:king_138"
+      "merge_source": "t7:king_138",
+      "input_lp": "LP1,RP2,LP1,LP1,RP2,RK4,RK4,RK4,LP1,LK3"
     },
     {
       "input": "1,2,1,1,3,3,4,3,2,1+2",
@@ -222,7 +237,8 @@
         "2",
         "1+2"
       ],
-      "merge_source": "t7:king_139"
+      "merge_source": "t7:king_139",
+      "input_lp": "LP1,RP2,LP1,LP1,LK3,LK3,RK4,LK3,RP2,LP1+RP2"
     },
     {
       "input": "PILE_DRIVER.1+2,1+2",
@@ -230,7 +246,8 @@
         "1+2",
         "1+2"
       ],
-      "merge_source": "t7:king_211"
+      "merge_source": "t7:king_211",
+      "input_lp": "PILE_DRIVER.LP1+RP2,LP1+RP2"
     },
     {
       "input": "PILE_DRIVER.1+2,3,4,1+2",
@@ -240,7 +257,8 @@
         "4",
         "1+2"
       ],
-      "merge_source": "t7:king_212"
+      "merge_source": "t7:king_212",
+      "input_lp": "PILE_DRIVER.LP1+RP2,LK3,RK4,LP1+RP2"
     },
     {
       "input": "DOUBLE_HEEL_HOLD.1+2,1+2",
@@ -248,7 +266,8 @@
         "1+2",
         "1+2"
       ],
-      "merge_source": "t7:king_245"
+      "merge_source": "t7:king_245",
+      "input_lp": "DOUBLE_HEEL_HOLD.LP1+RP2,LP1+RP2"
     },
     {
       "input": "DOUBLE_HEEL_HOLD.2,1,3,4",
@@ -258,7 +277,8 @@
         "3",
         "4"
       ],
-      "merge_source": "t7:king_246"
+      "merge_source": "t7:king_246",
+      "input_lp": "DOUBLE_HEEL_HOLD.RP2,LP1,LK3,RK4"
     },
     {
       "input": "STANDING_HEEL_HOLD.1+2,1,3,1+2",
@@ -268,7 +288,8 @@
         "3",
         "1+2"
       ],
-      "merge_source": "t7:king_249"
+      "merge_source": "t7:king_249",
+      "input_lp": "STANDING_HEEL_HOLD.LP1+RP2,LP1,LK3,LP1+RP2"
     },
     {
       "input": "INDIAN_DEATH_LOCK.1,3,4,1+2,3+4",
@@ -279,7 +300,8 @@
         "1+2",
         "3+4"
       ],
-      "merge_source": "t7:king_250"
+      "merge_source": "t7:king_250",
+      "input_lp": "INDIAN_DEATH_LOCK.LP1,LK3,RK4,LP1+RP2,LK3+RK4"
     },
     {
       "input": "STANDING_HEEL_HOLD.1,2,3,1+2",
@@ -289,7 +311,8 @@
         "3",
         "1+2"
       ],
-      "merge_source": "t7:king_251"
+      "merge_source": "t7:king_251",
+      "input_lp": "STANDING_HEEL_HOLD.LP1,RP2,LK3,LP1+RP2"
     },
     {
       "input": "STANDING_HEEL_HOLD.1+2,3,1,1+3",
@@ -299,7 +322,8 @@
         "1",
         "1+3"
       ],
-      "merge_source": "t7:king_252"
+      "merge_source": "t7:king_252",
+      "input_lp": "STANDING_HEEL_HOLD.LP1+RP2,LK3,LP1,LP1+LK3"
     },
     {
       "input": "ARM_BREAKER.1+2,1+2",
@@ -307,7 +331,8 @@
         "1+2",
         "1+2"
       ],
-      "merge_source": "t7:king_254"
+      "merge_source": "t7:king_254",
+      "input_lp": "ARM_BREAKER.LP1+RP2,LP1+RP2"
     },
     {
       "input": "ARM_BREAKER.1+2,4,2+4",
@@ -316,7 +341,8 @@
         "4",
         "2+4"
       ],
-      "merge_source": "t7:king_255"
+      "merge_source": "t7:king_255",
+      "input_lp": "ARM_BREAKER.LP1+RP2,RK4,RP2+RK4"
     },
     {
       "input": "HEAD_JAMMER.4,3,4,3+4,1+2",
@@ -327,7 +353,8 @@
         "3+4",
         "1+2"
       ],
-      "merge_source": "t7:king_256"
+      "merge_source": "t7:king_256",
+      "input_lp": "HEAD_JAMMER.RK4,LK3,RK4,LK3+RK4,LP1+RP2"
     },
     {
       "input": "ARM_BREAKER.2,1,1+2",
@@ -336,7 +363,8 @@
         "1",
         "1+2"
       ],
-      "merge_source": "t7:king_257"
+      "merge_source": "t7:king_257",
+      "input_lp": "ARM_BREAKER.RP2,LP1,LP1+RP2"
     },
     {
       "input": "CHICKEN_WING_FACE_LOCK.2,1,3,1+2+4,1+2+4",
@@ -347,7 +375,8 @@
         "1+2+4",
         "1+2+4"
       ],
-      "merge_source": "t7:king_258"
+      "merge_source": "t7:king_258",
+      "input_lp": "CHICKEN_WING_FACE_LOCK.RP2,LP1,LK3,LP1+RP2+RK4,LP1+RP2+RK4"
     },
     {
       "input": "CHICKEN_WING_FACE_LOCK.1+3,3+4,2+4,1+2,1+2+3",
@@ -358,7 +387,8 @@
         "1+2",
         "1+2+3"
       ],
-      "merge_source": "t7:king_259"
+      "merge_source": "t7:king_259",
+      "input_lp": "CHICKEN_WING_FACE_LOCK.LP1+LK3,LK3+RK4,RP2+RK4,LP1+RP2,LP1+RP2+LK3"
     },
     {
       "input": "REVERSE_ARM_SLAM.2,1,1+2",
@@ -367,7 +397,8 @@
         "1",
         "1+2"
       ],
-      "merge_source": "t7:king_261"
+      "merge_source": "t7:king_261",
+      "input_lp": "REVERSE_ARM_SLAM.RP2,LP1,LP1+RP2"
     },
     {
       "input": "BACKDROP.3+4,1+2",
@@ -375,7 +406,8 @@
         "3+4",
         "1+2"
       ],
-      "merge_source": "t7:king_262"
+      "merge_source": "t7:king_262",
+      "input_lp": "BACKDROP.LK3+RK4,LP1+RP2"
     },
     {
       "input": "GERMAN_SUPLEX.1,2,3+4",
@@ -384,7 +416,8 @@
         "2",
         "3+4"
       ],
-      "merge_source": "t7:king_263"
+      "merge_source": "t7:king_263",
+      "input_lp": "GERMAN_SUPLEX.LP1,RP2,LK3+RK4"
     },
     {
       "input": "POWER_BOMB.2,1,3,4",
@@ -394,7 +427,8 @@
         "3",
         "4"
       ],
-      "merge_source": "t7:king_264"
+      "merge_source": "t7:king_264",
+      "input_lp": "POWER_BOMB.RP2,LP1,LK3,RK4"
     },
     {
       "input": "POWER_BOMB.3,1,2,3+4,1+2+3+4",
@@ -405,7 +439,8 @@
         "3+4",
         "1+2+3+4"
       ],
-      "merge_source": "t7:king_265"
+      "merge_source": "t7:king_265",
+      "input_lp": "POWER_BOMB.LK3,LP1,RP2,LK3+RK4,LP1+RP2+LK3+RK4"
     },
     {
       "input": "REVERSE_SPECIAL_STRETCH_BOMB.2,2,1+2",
@@ -414,7 +449,8 @@
         "2",
         "1+2"
       ],
-      "merge_source": "t7:king_270"
+      "merge_source": "t7:king_270",
+      "input_lp": "REVERSE_SPECIAL_STRETCH_BOMB.RP2,RP2,LP1+RP2"
     },
     {
       "input": "CANNONBALL_BUSTER.3+4,1+2,1+2+4",
@@ -423,7 +459,8 @@
         "1+2",
         "1+2+4"
       ],
-      "merge_source": "t7:king_271"
+      "merge_source": "t7:king_271",
+      "input_lp": "CANNONBALL_BUSTER.LK3+RK4,LP1+RP2,LP1+RP2+RK4"
     },
     {
       "input": "MANHATTAN_DROP.1,2,3+4,1+2",
@@ -433,7 +470,8 @@
         "3+4",
         "1+2"
       ],
-      "merge_source": "t7:king_272"
+      "merge_source": "t7:king_272",
+      "input_lp": "MANHATTAN_DROP.LP1,RP2,LK3+RK4,LP1+RP2"
     },
     {
       "input": "VICTORY_BOMB.2,1,3,4",
@@ -443,7 +481,8 @@
         "3",
         "4"
       ],
-      "merge_source": "t7:king_273"
+      "merge_source": "t7:king_273",
+      "input_lp": "VICTORY_BOMB.RP2,LP1,LK3,RK4"
     },
     {
       "input": "VICTORY_BOMB.3,1,2,3+4,1+2+3+4",
@@ -454,7 +493,8 @@
         "3+4",
         "1+2+3+4"
       ],
-      "merge_source": "t7:king_274"
+      "merge_source": "t7:king_274",
+      "input_lp": "VICTORY_BOMB.LK3,LP1,RP2,LK3+RK4,LP1+RP2+LK3+RK4"
     },
     {
       "input": "COBRA_CLUTCH.2+4,1+2,1+2",
@@ -463,7 +503,8 @@
         "1+2",
         "1+2"
       ],
-      "merge_source": "t7:king_276"
+      "merge_source": "t7:king_276",
+      "input_lp": "COBRA_CLUTCH.RP2+RK4,LP1+RP2,LP1+RP2"
     },
     {
       "input": "COBRA_CLUTCH.3+4,3+4,1+2",
@@ -472,7 +513,8 @@
         "3+4",
         "1+2"
       ],
-      "merge_source": "t7:king_277"
+      "merge_source": "t7:king_277",
+      "input_lp": "COBRA_CLUTCH.LK3+RK4,LK3+RK4,LP1+RP2"
     },
     {
       "input": "SLEEPER.1,1,1+2",
@@ -481,7 +523,8 @@
         "1",
         "1+2"
       ],
-      "merge_source": "t7:king_278"
+      "merge_source": "t7:king_278",
+      "input_lp": "SLEEPER.LP1,LP1,LP1+RP2"
     },
     {
       "input": "SLEEPER.3,4,1+2,3+4",
@@ -491,7 +534,8 @@
         "1+2",
         "3+4"
       ],
-      "merge_source": "t7:king_279"
+      "merge_source": "t7:king_279",
+      "input_lp": "SLEEPER.LK3,RK4,LP1+RP2,LK3+RK4"
     },
     {
       "input": "COBRA_CLUTCH.1,4,2,3",
@@ -501,7 +545,8 @@
         "2",
         "3"
       ],
-      "merge_source": "t7:king_281"
+      "merge_source": "t7:king_281",
+      "input_lp": "COBRA_CLUTCH.LP1,RK4,RP2,LK3"
     },
     {
       "input": "COBRA_TWIST.2,1,1+3",
@@ -510,7 +555,8 @@
         "1",
         "1+3"
       ],
-      "merge_source": "t7:king_282"
+      "merge_source": "t7:king_282",
+      "input_lp": "COBRA_TWIST.RP2,LP1,LP1+LK3"
     },
     {
       "input": "REVERSE_DDT.1+2,1,2,1+2+3",
@@ -520,7 +566,8 @@
         "2",
         "1+2+3"
       ],
-      "merge_source": "t7:king_283"
+      "merge_source": "t7:king_283",
+      "input_lp": "REVERSE_DDT.LP1+RP2,LP1,RP2,LP1+RP2+LK3"
     },
     {
       "input": "REVERSE_DDT.2,3,1,1+2",
@@ -530,7 +577,8 @@
         "1",
         "1+2"
       ],
-      "merge_source": "t7:king_284"
+      "merge_source": "t7:king_284",
+      "input_lp": "REVERSE_DDT.RP2,LK3,LP1,LP1+RP2"
     },
     {
       "input": "REVERSE_SPECIAL_STRETCH_BOMB.3+4,1+2",
@@ -538,7 +586,8 @@
         "3+4",
         "1+2"
       ],
-      "merge_source": "t7:king_285"
+      "merge_source": "t7:king_285",
+      "input_lp": "REVERSE_SPECIAL_STRETCH_BOMB.LK3+RK4,LP1+RP2"
     },
     {
       "input": "BACKDROP.1+2,4,1+2,1+2+3",
@@ -548,7 +597,8 @@
         "1+2",
         "1+2+3"
       ],
-      "merge_source": "t7:king_286"
+      "merge_source": "t7:king_286",
+      "input_lp": "BACKDROP.LP1+RP2,RK4,LP1+RP2,LP1+RP2+LK3"
     },
     {
       "input": "BACKDROP.1+2,3,4,1+3",
@@ -558,7 +608,8 @@
         "4",
         "1+3"
       ],
-      "merge_source": "t7:king_287"
+      "merge_source": "t7:king_287",
+      "input_lp": "BACKDROP.LP1+RP2,LK3,RK4,LP1+LK3"
     },
     {
       "input": "BURNING_HAMMER.2+4,3+4,1+3,1+2,1+2+3",
@@ -569,7 +620,8 @@
         "1+2",
         "1+2+3"
       ],
-      "merge_source": "t7:king_288"
+      "merge_source": "t7:king_288",
+      "input_lp": "BURNING_HAMMER.RP2+RK4,LK3+RK4,LP1+LK3,LP1+RP2,LP1+RP2+LK3"
     },
     {
       "input": "TACKLE.1,1",
@@ -577,7 +629,8 @@
         "1",
         "1"
       ],
-      "merge_source": "t7:king_291"
+      "merge_source": "t7:king_291",
+      "input_lp": "TACKLE.LP1,LP1"
     },
     {
       "input": "TACKLE.1,1,1",
@@ -586,7 +639,8 @@
         "1",
         "1"
       ],
-      "merge_source": "t7:king_292"
+      "merge_source": "t7:king_292",
+      "input_lp": "TACKLE.LP1,LP1,LP1"
     },
     {
       "input": "TACKLE.1,1,1,1",
@@ -596,7 +650,8 @@
         "1",
         "1"
       ],
-      "merge_source": "t7:king_293"
+      "merge_source": "t7:king_293",
+      "input_lp": "TACKLE.LP1,LP1,LP1,LP1"
     }
   ],
   "specials": [
@@ -5047,7 +5102,7 @@
       "startup": 0.3,
       "active": 0.033,
       "recovery": 0.55,
-      "damage": 38,
+      "damage": 28,
       "limb": "armL",
       "heavy": true,
       "knock": 5.0,
@@ -5078,7 +5133,8 @@
         "mod_damage": "24,28",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "LP1+RP2,LP1"
     },
     "1,2,1": {
       "name": "Palm Strike Uppercut",
@@ -5089,7 +5145,7 @@
       "startup": 0.1667,
       "active": 0.033,
       "recovery": 0.317,
-      "damage": 30,
+      "damage": 13,
       "limb": "armL",
       "heavy": true,
       "knock": 5.0,
@@ -5122,7 +5178,8 @@
         "mod_damage": "9,20,13",
         "on_ch": "+10",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "LP1,RP2,LP1"
     },
     "1,2,1,2+4": {
       "name": "Suplex",
@@ -5133,7 +5190,7 @@
       "startup": 0.1667,
       "active": 0.033,
       "recovery": 0.433,
-      "damage": 70,
+      "damage": 40,
       "limb": "both",
       "heavy": true,
       "knock": 6.5,
@@ -5171,7 +5228,8 @@
         "wired": true,
         "mod_damage": "9,20,13,40",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "LP1,RP2,LP1,RP2+RK4"
     },
     "1,2,1,d+2+4": {
       "name": "V Driver",
@@ -5182,7 +5240,7 @@
       "startup": 0.1667,
       "active": 0.033,
       "recovery": 0.417,
-      "damage": 65,
+      "damage": 45,
       "limb": "both",
       "heavy": true,
       "knock": 6.5,
@@ -5220,7 +5278,8 @@
         "wired": true,
         "mod_damage": "9,20,13,45",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "LP1,RP2,LP1,d+RP2+RK4"
     },
     "1,2,2+4": {
       "name": "Head Jammer",
@@ -5231,7 +5290,7 @@
       "startup": 0.1667,
       "active": 0.033,
       "recovery": 0.433,
-      "damage": 50,
+      "damage": 30,
       "limb": "both",
       "heavy": true,
       "knock": 6.5,
@@ -5267,7 +5326,8 @@
         "wired": true,
         "mod_damage": "9,20,30",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "LP1,RP2,RP2+RK4"
     },
     "1+2,3": {
       "name": "Brutal Sting",
@@ -5278,7 +5338,7 @@
       "startup": 0.3,
       "active": 0.033,
       "recovery": 0.617,
-      "damage": 42,
+      "damage": 33,
       "limb": "legL",
       "heavy": true,
       "knock": 5.0,
@@ -5309,7 +5369,8 @@
         "mod_damage": "24,33",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "LP1+RP2,LK3"
     },
     "1+2+3+4": {
       "name": "Ki Charge",
@@ -5340,7 +5401,7 @@
       "startup": 0.1667,
       "active": 0.033,
       "recovery": 0.467,
-      "damage": 55,
+      "damage": 45,
       "limb": "both",
       "heavy": true,
       "knock": 6.5,
@@ -5376,7 +5437,8 @@
         "wired": true,
         "mod_damage": "9,20,45",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "LP1,RP2,d+RP2+RK4"
     },
     "2+3_t8": {
       "name": "Heat Burst",
@@ -5847,7 +5909,7 @@
       "startup": 0.2,
       "active": 0.033,
       "recovery": 0.45,
-      "damage": 13,
+      "damage": 17,
       "limb": "armL",
       "heavy": false,
       "knock": 4.2,
@@ -5869,7 +5931,8 @@
         "id": "king_100",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "b+LP1"
     },
     "b+1,2": {
       "name": "Uppercut",
@@ -5880,7 +5943,7 @@
       "startup": 0.2,
       "active": 0.033,
       "recovery": 0.567,
-      "damage": 33,
+      "damage": 27,
       "limb": "armR",
       "heavy": true,
       "knock": 5.0,
@@ -5911,7 +5974,8 @@
         "mod_damage": "17,27",
         "on_ch": "+5?",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "b+LP1,RP2"
     },
     "b+1+2,1+2": {
       "name": "Back Swing",
@@ -5964,7 +6028,7 @@
       "startup": 0.2,
       "active": 0.033,
       "recovery": 0.667,
-      "damage": 36,
+      "damage": 33,
       "limb": "legR",
       "heavy": true,
       "knock": 5.0,
@@ -5995,7 +6059,8 @@
         "mod_damage": "17,33",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "b+LP1,RK4"
     },
     "b+2": {
       "name": "Chupacabra",
@@ -6078,7 +6143,7 @@
       "startup": 0.2,
       "active": 0.033,
       "recovery": 0.45,
-      "damage": 38,
+      "damage": 29,
       "limb": "both",
       "heavy": true,
       "knock": 5.0,
@@ -6109,7 +6174,8 @@
         "mod_damage": "16,29",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "b+RP2,LP1+RP2"
     },
     "b+2+4": {
       "name": "Spinning Heel Hold",
@@ -6141,7 +6207,7 @@
       "startup": 0.167,
       "active": 0.033,
       "recovery": 0.433,
-      "damage": 54,
+      "damage": 24,
       "limb": "legR",
       "heavy": true,
       "knock": 6.5,
@@ -6151,7 +6217,7 @@
         "b+2",
         "b+2,4"
       ],
-      "move_class": "throw",
+      "move_class": "string",
       "multi_hit": {
         "hits": [
           16,
@@ -6160,11 +6226,11 @@
         ],
         "total": 54
       },
-      "note": "Mid, Throw; on block -8",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "throw_break": "1"
+      "note": "Mid, Throw; on block -8 | T7-vs-T8: T7 frame data lists a strike here; T8 record listed a throw. Fixed to T7 strike 2026-10-24 (see docs/research/PANTERA-STRING-AUDIT-2026-10-24.md).",
+      "throw": false,
+      "unblockable": false,
+      "isGrab": false,
+      "input_lp": "b+RP2,RK4"
     },
     "b+2+4:3+4": {
       "name": "Figure Four Leg Lock",
@@ -6633,7 +6699,7 @@
       "startup": 0.167,
       "active": 0.033,
       "recovery": 0.4,
-      "damage": 5,
+      "damage": 6,
       "limb": "armL",
       "heavy": false,
       "knock": 2.2,
@@ -6643,7 +6709,8 @@
         "d+1"
       ],
       "move_class": "strike",
-      "note": "Special low; on block -5"
+      "note": "Special low; on block -5",
+      "input_lp": "d+LP1"
     },
     "d+1,2": {
       "name": "Uppercut",
@@ -6654,7 +6721,7 @@
       "startup": 0.167,
       "active": 0.033,
       "recovery": 0.467,
-      "damage": 18,
+      "damage": 17,
       "limb": "armR",
       "heavy": true,
       "knock": 4.2,
@@ -6672,7 +6739,8 @@
         ],
         "total": 18
       },
-      "note": "Mid; on block -11"
+      "note": "Mid; on block -11",
+      "input_lp": "d+LP1,RP2"
     },
     "d+1+3": {
       "name": "Iron Lariat",
@@ -6833,7 +6901,7 @@
       "startup": 0.2667,
       "active": 0.033,
       "recovery": 0.733,
-      "damage": 14,
+      "damage": 18,
       "limb": "both",
       "heavy": false,
       "knock": 4.2,
@@ -6854,7 +6922,8 @@
         "notation": "d+3+4",
         "id": "king_88",
         "wired": true
-      }
+      },
+      "input_lp": "d+LK3+RK4"
     },
     "d+3+4,4": {
       "name": "Move 4 (4)",
@@ -6865,7 +6934,7 @@
       "startup": 0.2667,
       "active": 0.033,
       "recovery": 0.733,
-      "damage": 21,
+      "damage": 9,
       "limb": "legR",
       "heavy": true,
       "knock": 5.0,
@@ -6897,7 +6966,8 @@
         "mod_damage": "18,9",
         "on_ch": "-9",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "d+LK3+RK4,RK4"
     },
     "d+3+4,4,4": {
       "name": "Stagger Kicks",
@@ -6908,7 +6978,7 @@
       "startup": 0.2667,
       "active": 0.033,
       "recovery": 0.733,
-      "damage": 28,
+      "damage": 9,
       "limb": "legR",
       "heavy": true,
       "knock": 5.0,
@@ -6942,7 +7012,8 @@
         "mod_damage": "18,9,9",
         "on_ch": "+12",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "d+LK3+RK4,RK4,RK4"
     },
     "d+3+4,4,4,2": {
       "name": "Stagger Kick Spinning Uppercut",
@@ -6986,7 +7057,7 @@
       "startup": 0.167,
       "active": 0.033,
       "recovery": 0.75,
-      "damage": 35,
+      "damage": 8,
       "limb": "legR",
       "heavy": true,
       "knock": 5.0,
@@ -7009,7 +7080,8 @@
         ],
         "total": 35
       },
-      "note": "Low, Low; on block -26"
+      "note": "Low, Low; on block -26",
+      "input_lp": "d+LK3+RK4,RK4,RK4,RK4"
     },
     "d+4": {
       "name": "Move d+4 (d+4)",
@@ -7217,7 +7289,7 @@
       "startup": 0.233,
       "active": 0.033,
       "recovery": 0.433,
-      "damage": 15,
+      "damage": 20,
       "limb": "armL",
       "heavy": false,
       "knock": 4.2,
@@ -7227,7 +7299,8 @@
         "df+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -1"
+      "note": "Mid; on block -1",
+      "input_lp": "d/f+LP1"
     },
     "df+1,2": {
       "name": "Elbow Sting",
@@ -7238,7 +7311,7 @@
       "startup": 0.167,
       "active": 0.033,
       "recovery": 0.483,
-      "damage": 30,
+      "damage": 19,
       "limb": "armR",
       "heavy": true,
       "knock": 5.0,
@@ -7256,7 +7329,8 @@
         ],
         "total": 30
       },
-      "note": "Mid; on block -10"
+      "note": "Mid; on block -10",
+      "input_lp": "d/f+LP1,RP2"
     },
     "df+1+3": {
       "name": "Reverse Arm Slam (RAS1)",
@@ -7292,7 +7366,7 @@
       "startup": 0.217,
       "active": 0.033,
       "recovery": 0.417,
-      "damage": 12,
+      "damage": 16,
       "limb": "armR",
       "heavy": false,
       "knock": 4.2,
@@ -7302,7 +7376,8 @@
         "df+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -6"
+      "note": "Mid; on block -6",
+      "input_lp": "d/f+RP2"
     },
     "df+2,1": {
       "name": "Double Hook Disaster",
@@ -7313,7 +7388,7 @@
       "startup": 0.167,
       "active": 0.033,
       "recovery": 0.467,
-      "damage": 27,
+      "damage": 20,
       "limb": "armL",
       "heavy": true,
       "knock": 5.0,
@@ -7331,7 +7406,8 @@
         ],
         "total": 27
       },
-      "note": "High; on block -4; knockdown on hit"
+      "note": "High; on block -4; knockdown on hit",
+      "input_lp": "d/f+RP2,LP1"
     },
     "df+2+3": {
       "name": "Knee Bash",
@@ -7392,7 +7468,7 @@
       "startup": 0.233,
       "active": 0.033,
       "recovery": 0.467,
-      "damage": 17,
+      "damage": 22,
       "limb": "legL",
       "heavy": false,
       "knock": 4.2,
@@ -7402,7 +7478,8 @@
         "df+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "input_lp": "d/f+LK3"
     },
     "df+3+4": {
       "name": "Frankensteiner",
@@ -7445,7 +7522,7 @@
       "startup": 0.167,
       "active": 0.033,
       "recovery": 0.417,
-      "damage": 40,
+      "damage": 28,
       "limb": "legR",
       "heavy": true,
       "knock": 5.0,
@@ -7463,7 +7540,8 @@
         ],
         "total": 40
       },
-      "note": "High; on block +0"
+      "note": "High; on block +0",
+      "input_lp": "d/f+LK3,RK4"
     },
     "df+4": {
       "name": "Move df+4 (df+4)",
@@ -7474,7 +7552,7 @@
       "startup": 0.233,
       "active": 0.033,
       "recovery": 0.533,
-      "damage": 10,
+      "damage": 13,
       "limb": "legR",
       "heavy": false,
       "knock": 4.2,
@@ -7484,7 +7562,8 @@
         "df+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -14"
+      "note": "Low; on block -14",
+      "input_lp": "d/f+RK4"
     },
     "df+4,3": {
       "name": "Move 3 (3)",
@@ -7495,7 +7574,7 @@
       "startup": 0.167,
       "active": 0.033,
       "recovery": 0.4,
-      "damage": 21,
+      "damage": 14,
       "limb": "legL",
       "heavy": true,
       "knock": 5.0,
@@ -7513,7 +7592,8 @@
         ],
         "total": 21
       },
-      "note": "High; on block -5"
+      "note": "High; on block -5",
+      "input_lp": "d/f+RK4,LK3"
     },
     "df+4,3,4": {
       "name": "Mincer",
@@ -7524,7 +7604,7 @@
       "startup": 0.167,
       "active": 0.033,
       "recovery": 0.633,
-      "damage": 48,
+      "damage": 36,
       "limb": "legR",
       "heavy": true,
       "knock": 5.0,
@@ -7544,7 +7624,8 @@
         ],
         "total": 48
       },
-      "note": "Mid; on block -15; knockdown on hit"
+      "note": "Mid; on block -15; knockdown on hit",
+      "input_lp": "d/f+RK4,LK3,RK4"
     },
     "df+4,3,d+4": {
       "name": "Mincer Low",
@@ -7555,7 +7636,7 @@
       "startup": 0.167,
       "active": 0.033,
       "recovery": 0.45,
-      "damage": 41,
+      "damage": 21,
       "limb": "legR",
       "heavy": true,
       "knock": 5.0,
@@ -7575,7 +7656,8 @@
         ],
         "total": 41
       },
-      "note": "Low; on block -10d; knockdown on hit"
+      "note": "Low; on block -10d; knockdown on hit",
+      "input_lp": "d/f+RK4,LK3,d+RK4"
     },
     "f+1+2": {
       "name": "Shadow Lariat",
@@ -7652,7 +7734,7 @@
       "startup": 0.25,
       "active": 0.033,
       "recovery": 0.483,
-      "damage": 12,
+      "damage": 16,
       "limb": "armR",
       "heavy": false,
       "knock": 4.2,
@@ -7674,7 +7756,8 @@
         "id": "king_36",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "f+RP2"
     },
     "f+2,1": {
       "name": "Elbow Impact",
@@ -7685,7 +7768,7 @@
       "startup": 0.25,
       "active": 0.033,
       "recovery": 0.55,
-      "damage": 37,
+      "damage": 27,
       "limb": "armL",
       "heavy": true,
       "knock": 5.0,
@@ -7716,7 +7799,8 @@
         "wired": true,
         "mod_damage": "16,27",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "f+RP2,LP1"
     },
     "f+2+3": {
       "name": "Shoulder Tackle",
@@ -7760,7 +7844,7 @@
       "startup": 0.167,
       "active": 0.033,
       "recovery": 0.633,
-      "damage": 27,
+      "damage": 22,
       "limb": "armL",
       "heavy": true,
       "knock": 5.0,
@@ -7778,7 +7862,8 @@
         ],
         "total": 27
       },
-      "note": "Mid; on block -13c"
+      "note": "Mid; on block -13c",
+      "input_lp": "f+RP2,d+LP1"
     },
     "f+2,d+1,2": {
       "name": "Jaguar Smash Combo",
@@ -7789,7 +7874,7 @@
       "startup": 0.25,
       "active": 0.033,
       "recovery": 0.6,
-      "damage": 43,
+      "damage": 21,
       "limb": "armR",
       "heavy": true,
       "knock": 5.0,
@@ -7822,7 +7907,8 @@
         "mod_damage": "16,22,21",
         "on_ch": "Launch (JG?)",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "f+RP2,d+LP1,RP2"
     },
     "f+3": {
       "name": "Front Kick",
@@ -8117,7 +8203,7 @@
       "startup": 0.3667,
       "active": 0.033,
       "recovery": 0.467,
-      "damage": 21,
+      "damage": 29,
       "limb": "armL",
       "heavy": true,
       "knock": 5.0,
@@ -8139,7 +8225,8 @@
         "id": "king_48",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "f,F+LP1"
     },
     "f,F+2": {
       "name": "Beast Elbow",
@@ -8150,7 +8237,7 @@
       "startup": 0.5167,
       "active": 0.033,
       "recovery": 0.5,
-      "damage": 21,
+      "damage": 25,
       "limb": "armR",
       "heavy": true,
       "knock": 5.0,
@@ -8172,7 +8259,8 @@
         "id": "king_49",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "f,F+RP2"
     },
     "f,F+2+3": {
       "name": "Diving Body Press",
@@ -8183,7 +8271,7 @@
       "startup": 0.35,
       "active": 0.033,
       "recovery": 0.317,
-      "damage": 35,
+      "damage": 40,
       "limb": "both",
       "heavy": true,
       "knock": 6.5,
@@ -8192,7 +8280,7 @@
       "input_slots": [
         "f,F+2+3"
       ],
-      "move_class": "throw",
+      "move_class": "strike",
       "multi_hit": {
         "hits": [
           20,
@@ -8200,11 +8288,11 @@
         ],
         "total": 35
       },
-      "note": "Mid, Throw; on block -16c~+2c",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "throw_break": "1"
+      "note": "Mid, Throw; on block -16c~+2c | T7-vs-T8: T7 frame data lists a strike here; T8 record listed a throw. Fixed to T7 strike 2026-10-24 (see docs/research/PANTERA-STRING-AUDIT-2026-10-24.md).",
+      "throw": false,
+      "unblockable": false,
+      "isGrab": false,
+      "input_lp": "f,F+RP2+LK3"
     },
     "f,F+3+4": {
       "name": "Exploder",
@@ -8215,7 +8303,7 @@
       "startup": 0.4667,
       "active": 0.033,
       "recovery": 0.317,
-      "damage": 25,
+      "damage": 33,
       "limb": "both",
       "heavy": true,
       "knock": 5.0,
@@ -8238,7 +8326,8 @@
         "id": "king_58",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "f,F+LK3+RK4"
     },
     "f,F+4": {
       "name": "Konvict Kick",
@@ -8249,7 +8338,7 @@
       "startup": 0.25,
       "active": 0.033,
       "recovery": 0.317,
-      "damage": 25,
+      "damage": 33,
       "limb": "legR",
       "heavy": true,
       "knock": 5.0,
@@ -8271,7 +8360,8 @@
         "id": "king_52",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "f,F+RK4"
     },
     "f,f,F+2+4": {
       "name": "Tomahawk",
@@ -8378,7 +8468,7 @@
       "startup": 0.3,
       "active": 0.033,
       "recovery": 0.533,
-      "damage": 17,
+      "damage": 18,
       "limb": "armR",
       "heavy": false,
       "knock": 4.2,
@@ -8400,7 +8490,8 @@
         "wired": true,
         "on_ch": "Throw",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "f,f,n,RP2"
     },
     "f,hcf+1": {
       "name": "Giant Swing",
@@ -8902,7 +8993,7 @@
       "startup": 0.283,
       "active": 0.3,
       "recovery": 0.317,
-      "damage": 0,
+      "damage": 28,
       "limb": "armL",
       "heavy": false,
       "knock": 0.0,
@@ -8912,7 +9003,8 @@
         "JGS.1"
       ],
       "move_class": "special",
-      "note": "High; on block -7/-1"
+      "note": "High; on block -7/-1",
+      "input_lp": "JGS.LP1"
     },
     "JGS.1+3_2+4": {
       "name": "Cobra Clutch (MMD1)",
@@ -8948,7 +9040,7 @@
       "startup": 0.183,
       "active": 0.3,
       "recovery": 0.45,
-      "damage": 0,
+      "damage": 20,
       "limb": "armR",
       "heavy": false,
       "knock": 0.0,
@@ -8958,7 +9050,8 @@
         "JGS.2"
       ],
       "move_class": "special",
-      "note": "Mid; on block -9/-2/0c"
+      "note": "Mid; on block -9/-2/0c",
+      "input_lp": "JGS.RP2"
     },
     "JGS.3": {
       "name": "Sobat",
@@ -8969,7 +9062,7 @@
       "startup": 0.367,
       "active": 0.3,
       "recovery": 0.317,
-      "damage": 0,
+      "damage": 31,
       "limb": "legL",
       "heavy": false,
       "knock": 0.0,
@@ -8979,7 +9072,8 @@
         "JGS.3"
       ],
       "move_class": "special",
-      "note": "Mid; on block -5/-1; knockdown on hit"
+      "note": "Mid; on block -5/-1; knockdown on hit",
+      "input_lp": "JGS.LK3"
     },
     "JGS.3,2+3": {
       "name": "Sobat & Press",
@@ -8990,7 +9084,7 @@
       "startup": 0.35,
       "active": 0.033,
       "recovery": 0.317,
-      "damage": 35,
+      "damage": 40,
       "limb": "both",
       "heavy": true,
       "knock": 6.5,
@@ -9000,7 +9094,7 @@
         "JGS.3",
         "JGS.3,2+3"
       ],
-      "move_class": "throw",
+      "move_class": "string",
       "multi_hit": {
         "hits": [
           20,
@@ -9008,11 +9102,11 @@
         ],
         "total": 35
       },
-      "note": "Mid, Throw; on block -16c~+2c",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "throw_break": "1"
+      "note": "Mid, Throw; on block -16c~+2c | T7-vs-T8: T7 frame data lists a strike here; T8 record listed a throw. Fixed to T7 strike 2026-10-24 (see docs/research/PANTERA-STRING-AUDIT-2026-10-24.md).",
+      "throw": false,
+      "unblockable": false,
+      "isGrab": false,
+      "input_lp": "JGS.LK3,RP2+LK3"
     },
     "JGS.4": {
       "name": "High Kick",
@@ -9023,7 +9117,7 @@
       "startup": 0.283,
       "active": 0.3,
       "recovery": 0.317,
-      "damage": 0,
+      "damage": 54,
       "limb": "legR",
       "heavy": false,
       "knock": 0.0,
@@ -9033,7 +9127,8 @@
         "JGS.4"
       ],
       "move_class": "special",
-      "note": "High; on block +8/+15; knockdown on hit"
+      "note": "High; on block +8/+15; knockdown on hit",
+      "input_lp": "JGS.RK4"
     },
     "JGS.df+4": {
       "name": "Mid Kick",
@@ -9044,7 +9139,7 @@
       "startup": 0.283,
       "active": 0.3,
       "recovery": 0.317,
-      "damage": 0,
+      "damage": 40,
       "limb": "legR",
       "heavy": false,
       "knock": 0.0,
@@ -9054,7 +9149,8 @@
         "JGS.df+4"
       ],
       "move_class": "special",
-      "note": "Mid; on block -16/+8; knockdown on hit"
+      "note": "Mid; on block -16/+8; knockdown on hit",
+      "input_lp": "JGS.d/f+RK4"
     },
     "(Left side throw)": {
       "name": "Argentina Backbreaker",
@@ -10346,7 +10442,7 @@
       "startup": 0.2333,
       "active": 0.033,
       "recovery": 0.55,
-      "damage": 11,
+      "damage": 14,
       "limb": "armR",
       "heavy": false,
       "knock": 4.2,
@@ -10368,7 +10464,8 @@
         "id": "king_132",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "WS+RP2"
     },
     "ws2,2": {
       "name": "Round Trip Chop",
@@ -10379,7 +10476,7 @@
       "startup": 0.2333,
       "active": 0.033,
       "recovery": 0.55,
-      "damage": 36,
+      "damage": 33,
       "limb": "armR",
       "heavy": true,
       "knock": 5.0,
@@ -10410,7 +10507,8 @@
         "mod_damage": "14,33",
         "on_ch": "+ k",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "WS+RP2,RP2"
     },
     "ws3": {
       "name": "Move ws3 (ws3)",
@@ -10484,7 +10582,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.317,
-      "damage": 3,
+      "damage": 9,
       "damage_raw": 5,
       "limb": "armL",
       "heavy": false,
@@ -10522,7 +10620,8 @@
         "id": "king_2",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "LP1"
     },
     "1+3~t8.king": {
       "name": "Winding Nut",
@@ -10567,7 +10666,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.3,
-      "damage": 6,
+      "damage": 13,
       "damage_raw": 10,
       "limb": "armR",
       "heavy": false,
@@ -10604,7 +10703,8 @@
         "id": "king_22",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "RP2"
     },
     "2,1~t8.king": {
       "name": "Right Jab &gt; Uppercut",
@@ -10612,7 +10712,7 @@
       "startup": 0.1667,
       "active": 0.2,
       "recovery": 0.35,
-      "damage": 8,
+      "damage": 16,
       "damage_raw": 15,
       "limb": "armL",
       "heavy": false,
@@ -10651,7 +10751,8 @@
         "mod_damage": "13,16",
         "on_ch": "+5~+6",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "RP2,LP1"
     },
     "2+4~t8.king": {
       "name": "Suplex",
@@ -10696,7 +10797,7 @@
       "startup": 0.2833,
       "active": 0.033,
       "recovery": 0.45,
-      "damage": 9,
+      "damage": 33,
       "damage_raw": 17,
       "limb": "legL",
       "heavy": false,
@@ -10733,7 +10834,8 @@
         "id": "king_25",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "LK3"
     },
     "4~t8.king": {
       "name": "Right Kick",
@@ -10741,7 +10843,7 @@
       "startup": 0.2167,
       "active": 0.017,
       "recovery": 0.4,
-      "damage": 11,
+      "damage": 27,
       "damage_raw": 20,
       "limb": "legR",
       "heavy": true,
@@ -10781,7 +10883,8 @@
         "id": "king_26",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "RK4"
     },
     "WALL.b,b,u/b": {
       "name": "PANTERA WALL.b,b,u/b",
@@ -13442,7 +13545,7 @@
       "startup": 0.5167,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 26,
+      "damage": 33,
       "damage_raw": 44,
       "limb": "armL",
       "heavy": true,
@@ -13494,7 +13597,8 @@
         "mod_damage": "25,33",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "input_lp": "f,F+RP2,LP1"
     },
     "f,F+2,1~t7.king": {
       "name": "PANTERA f,F+2,1",
@@ -13654,7 +13758,7 @@
       "startup": 0.333,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 12,
+      "damage": 20,
       "damage_raw": 21,
       "limb": "both",
       "heavy": true,
@@ -13682,7 +13786,8 @@
       "merge_source": "t7:king_54",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(close)"
+      "input_note": "(close)",
+      "input_lp": "f,F+LP1+RP2"
     },
     "f,F+1+2~t7.king": {
       "name": "PANTERA f,F+1+2",
@@ -14184,7 +14289,7 @@
       "startup": 0.467,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 24,
+      "damage": 54,
       "damage_raw": 40,
       "limb": "both",
       "heavy": true,
@@ -14212,7 +14317,8 @@
       "merge_source": "t7:king_66",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(or WR 3+4)"
+      "input_note": "(or WR 3+4)",
+      "input_lp": "f,f,f+LK3+RK4"
     },
     "d/f+1~t7.king": {
       "name": "PANTERA d/f+1",
@@ -29292,6 +29398,37 @@
       "move_class": "strike",
       "t3_condition": 2,
       "merge_source": "t3:king:row:632"
+    },
+    "f,F+3": {
+      "name": "Move f,F+3 (f,F+3)",
+      "input": "f,F+3",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 24,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "hit_level": "m",
+      "anim_ref": "t7:king:f,F+3",
+      "anim_unmapped": true,
+      "input_slots": [
+        "f,F+3"
+      ],
+      "move_class": "strike",
+      "t7": {
+        "damage": 24,
+        "startup_frames": 15,
+        "on_block": "-9",
+        "on_hit": "+1",
+        "on_ch": "+9",
+        "hit_level": "mid",
+        "notation": "f, F+3",
+        "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "note": "Mid; on block -9. Animation UNMAPPED (no verified T3 row; runtime match/donor fallback plays best-available clip). Recovery templated from f,F+4, not MOD.",
+      "input_lp": "f,F+LK3"
     }
   },
   "restored_from_sweep_338": {
@@ -29698,7 +29835,16 @@
     "u/f+3": "uf+3",
     "u/f+3+4": "uf+3+4",
     "u/f+4": "uf+4",
-    "u/f,n,4": "uf,n,4"
+    "u/f,n,4": "uf,n,4",
+    "3+4,1": "JGS.1",
+    "3+4,2": "JGS.2",
+    "3+4,3": "JGS.3",
+    "3+4,4": "JGS.4",
+    "3+4,d/f+4": "JGS.df+4",
+    "3+4,3,2+3": "JGS.3,2+3",
+    "df+4,3,d/b+4": "df+4,3,d+4",
+    "d/f+4,3,d/b+4": "df+4,3,d+4",
+    "WS+2,2": "ws2,2"
   },
   "merge_sources": {
     "date": "2026-10-21",
@@ -30412,5 +30558,97 @@
   "stance_after": {
     "b+1+2__main": "JGR",
     "b+1+2,1+2": "JGR"
+  },
+  "string_fix_20261024": {
+    "rule": "WH fires each string STEP as its own attack, so a step move's runtime damage = T7 MOD damage of that step's hit (last hit of the MOD row), not the running total. Singles that fire via slots use MOD damage. T8 multi_hit.total values are left untouched as source records.",
+    "source": "TheBigTuna/Tekken-7-Frame-Data via ~/workspace/mvlt-community-pull/t7-all/t7-king-lp-rp-lk-rk.json",
+    "damage_fixed_keys": [
+      "1+2,1",
+      "1+2,3",
+      "1,2,1",
+      "1,2,1,2+4",
+      "1,2,1,d+2+4",
+      "1,2,2+4",
+      "1,2,d+2+4",
+      "1~t8.king",
+      "2,1~t8.king",
+      "2~t8.king",
+      "3~t8.king",
+      "4~t8.king",
+      "JGS.1",
+      "JGS.2",
+      "JGS.3",
+      "JGS.3,2+3",
+      "JGS.4",
+      "JGS.df+4",
+      "b+1",
+      "b+1,2",
+      "b+1,4",
+      "b+2,1+2",
+      "b+2,4",
+      "d+1",
+      "d+1,2",
+      "d+3+4",
+      "d+3+4,4",
+      "d+3+4,4,4",
+      "d+3+4,4,4,4",
+      "df+1",
+      "df+1,2",
+      "df+2",
+      "df+2,1",
+      "df+3",
+      "df+3,4",
+      "df+4",
+      "df+4,3",
+      "df+4,3,4",
+      "df+4,3,d+4",
+      "f+2",
+      "f+2,1",
+      "f+2,d+1",
+      "f+2,d+1,2",
+      "f,F+1",
+      "f,F+1+2",
+      "f,F+2",
+      "f,F+2+3",
+      "f,F+2,1",
+      "f,F+3+4",
+      "f,F+4",
+      "f,f,f+3+4",
+      "f,f,n,2",
+      "ws2",
+      "ws2,2"
+    ],
+    "throw_flag_fixed_to_T7_strike": [
+      "b+2,4",
+      "f,F+2+3",
+      "JGS.3,2+3"
+    ],
+    "new_moves": [
+      "f,F+3"
+    ],
+    "new_slots_aliases": {
+      "3+4,1": "JGS.1",
+      "3+4,2": "JGS.2",
+      "3+4,3": "JGS.3",
+      "3+4,4": "JGS.4",
+      "3+4,d/f+4": "JGS.df+4",
+      "3+4,3,2+3": "JGS.3,2+3",
+      "df+4,3,d/b+4": "df+4,3,d+4",
+      "d/f+4,3,d/b+4": "df+4,3,d+4",
+      "WS+2,2": "ws2,2"
+    },
+    "not_changed_on_purpose": {
+      "1+2": "WH SIGNATURE (Battle Itself) — canon move, not King's T7 1+2; MOD 24 not applied.",
+      "1,2": "already MOD-correct (20 = last hit).",
+      "plain T3 records (1, 2, 2,1, WS.2,2 shadow keys)": "shadowed by slots; left as T3 source records.",
+      "f,f,2 / f,f,1+2 held spellings": "NOT added: indistinguishable from f,F+2 / f,F+1+2 in the resolver (same [f,f] dirs; held-final-direction rule picks the capital spelling). Playable forms f,f,n,2 and f,f,n,1+2 already fire.",
+      "close/far proximity variants": "not expressible (no proximity system): d/f+3+4 (Close), f,F+2+3 (Close), 3+4,3,2+3 (Close), f,F+1+2 (Far).",
+      "spin scaling": "JGS follow-ups set to 1-spin MOD values; WH has no spin counter, so 2–5-spin damage scaling is UNMAPPED.",
+      "ALI.2 / ALI.1": "T7 ALI row is ambiguous (18,13); left untouched, flagged UNMAPPED.",
+      "d/f+4,3,4,B": "direction ending, not a hit — hits already covered by d/f+4,3,4."
+    },
+    "animations": "No string step maps to T3 row 35 (LP1+RP2 chord) or any chord row in this file (checked: t3_row is None for all T7-wired steps; animation comes from fighter.js match/donor fallback and is UNVERIFIED per move — see research doc).",
+    "runtime_notation": "Runtime keys stay 1/2/3/4 (fighter.js + movesets.js resolve on exact 1/2/3/4 strings; renaming keys to LP1/RP2 would break every lookup). input_lp is display only.",
+    "first_hit_fix_note": "First-hit singles fixed in a second pass (audit caught them): df+1, df+2, d+1, b+1, d+3+4. d+3+4 MOD variance: standalone row 18 (used), wired king_88 record 14, extended ALI row first hit 21."
   }
 }
