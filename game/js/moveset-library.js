@@ -141,8 +141,18 @@ function toV2Move(entry, slot, overrides = {}) {
   return move;
 }
 
+/* Fighters such as DEMONIO ship a complete kit in game/assets/movesets/
+   (the runtime path movesets.js uses) and have no library manifest in
+   game/data/movesets/. Fall back to the assets kit instead of failing. */
+const ASSET_KIT_ROOT = 'game/assets/movesets';
+
 export async function loadManifest(fighter, opts = {}) {
-  return fetchJson(`${MANIFEST_ROOT}/${fighter}.json`, opts.root || null);
+  try {
+    return await fetchJson(`${MANIFEST_ROOT}/${fighter}.json`, opts.root || null);
+  } catch (e) {
+    const kit = await fetchJson(`${ASSET_KIT_ROOT}/${fighter}.json`, opts.root || null);
+    return { ...kit, _assetKit: true };
+  }
 }
 
 /* ---- assemble one fighter ---- */
@@ -150,6 +160,12 @@ export async function assembleFighter(fighter, opts = {}) {
   const lib = await loadLibrary(opts);
   const claimed = await loadClaimedMap(opts);
   const manifest = typeof fighter === 'string' ? await loadManifest(fighter, opts) : fighter;
+  if (manifest && manifest._assetKit && manifest.moves && !Array.isArray(manifest.moves)) {
+    // Already a full schema-v3 kit (game/assets/movesets) — nothing to assemble.
+    const { _assetKit, ...kit } = manifest;
+    return { ...kit, pending: [], unresolved: [],
+      report: { fighter: kit.fighter, display: kit.display, assembled: Object.keys(kit.moves).length, source: `${ASSET_KIT_ROOT}/${kit.fighter}.json` } };
+  }
 
   const law = checkSourceLaw(manifest, claimed);
   const moves = {};
