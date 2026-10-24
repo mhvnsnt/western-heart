@@ -432,6 +432,127 @@
    "code": "",
    "test": "",
    "lane": "BLOCKED (disk)"
+  },
+  {
+   "id": "bannon-live-deform",
+   "source": "Bannon (add-on layer)",
+   "system": "Live deformation / muscle bulge on top of Tekken T7 rigs",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED",
+   "base": "T7 rigs (t7-rigs)",
+   "bannon_src": "mhvnsnt/Bannon: godmode/src/engine/BiomechanicalPhysics.ts, native/include/bannon_rig.h"
+  },
+  {
+   "id": "bannon-active-ragdoll",
+   "source": "Bannon (add-on layer)",
+   "system": "Active ragdoll balance touches on top of Gang Beasts grip/hold + Tekken hit reactions",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED",
+   "base": "gb-grab, t7-hit-reactions",
+   "bannon_src": "mhvnsnt/Bannon: server/modes/activeRagdollSystem.ts, native/include/bannon_ragdoll.h"
+  },
+  {
+   "id": "bannon-grapple",
+   "source": "Bannon (add-on layer)",
+   "system": "Grapple chains/leverage on top of Tekken throws + Gang Beasts hold",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED",
+   "base": "t7-throws, gb-grab",
+   "bannon_src": "mhvnsnt/Bannon: server/modes/grappleSystem.ts, native/include/bannon_grapple.h"
+  },
+  {
+   "id": "bannon-strike",
+   "source": "Bannon (add-on layer)",
+   "system": "Strike impulse / impact physics on top of Tekken hitboxes",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED",
+   "base": "t7-hit-contact",
+   "bannon_src": "mhvnsnt/Bannon: native/include/bannon_strike.h, server/hitboxLogic.ts"
+  },
+  {
+   "id": "bannon-hit-clips",
+   "source": "Bannon (add-on layer)",
+   "system": "973 hit-reaction clip variants (DELAYED/HARD/KNEELING/MIRROR/SITOUT/SLOW/SNAP) layered on Tekken reactions",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED",
+   "base": "t7-hit-reactions",
+   "bannon_src": "mhvnsnt/Bannon: assets/moves/clips/"
+  },
+  {
+   "id": "bannon-weapon",
+   "source": "Bannon (add-on layer)",
+   "system": "Weapon physics on top of Soulcalibur weapon tracks",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED",
+   "base": "sc-models",
+   "bannon_src": "mhvnsnt/Bannon: native/include/bannon_weapon.h, app/src/main/cpp/engine/WeaponPhysics.cpp"
+  },
+  {
+   "id": "bannon-ik",
+   "source": "Bannon (add-on layer)",
+   "system": "CCD IK foot/hand planting on top of Tekken anims",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED",
+   "base": "t7-anims",
+   "bannon_src": "mhvnsnt/Bannon: assets/vendor/CCDIKSolver.js (three.js, MIT)"
+  },
+  {
+   "id": "bannon-caw-rig",
+   "source": "Bannon (add-on layer)",
+   "system": "CAW auto-rigging pipeline on top of 2K19 creation parts",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED",
+   "base": "2k19-parts",
+   "bannon_src": "mhvnsnt/Bannon: server/caw/RiggingPipeline.js, bannon_blender_rig.py"
+  },
+  {
+   "id": "bannon-combat-ai",
+   "source": "Bannon (add-on layer)",
+   "system": "Combat AI touches on top of Fire Pro CPU personality",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED",
+   "base": "fp-cpu",
+   "bannon_src": "mhvnsnt/Bannon: CombatAI.ts, godmode/src/physics/CombatEngine.ts"
+  },
+  {
+   "id": "bannon-ladder",
+   "source": "Bannon (add-on layer)",
+   "system": "Ladder/spatial TLC physics on top of No Mercy/WMXIX arenas",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED",
+   "base": "nm-arenas",
+   "bannon_src": "mhvnsnt/Bannon: app/src/main/cpp/rulesets/TLC_LadderSpatialPhysics.cpp"
+  },
+  {
+   "id": "bannon-combat-harness",
+   "source": "Bannon (add-on layer)",
+   "system": "Playwright combat test harness on top of game-checks",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED",
+   "base": "t7-hit-contact",
+   "bannon_src": "mhvnsnt/Bannon: godmode/src/lib/PlaywrightCombatHarness.ts"
   }
  ]
 }

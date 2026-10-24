@@ -2,7 +2,7 @@
 
 Law: [docs/rules/COMPLETE-WIRING-LAW.md](../rules/COMPLETE-WIRING-LAW.md). Source of truth: `tools/coverage/systems-coverage.json` (edit the JSON, then this table). CI `coverage-guard` fails if a row is removed or its status goes down. Companion: `docs/tech/WIRING-MAP.md` (PR #953).
 
-**Totals: 48 rows — wired 11, partial 22, not-wired 15.**
+**Totals: 59 rows — wired 11, partial 22, not-wired 26.**
 
 Status: **wired** = data loaded, used in gameplay, tested, visible proof. **partial** = some of those missing or still in an open PR. **not-wired** = pulled but not in the game. Lane `UNCLAIMED` = claim it on #866 before starting.
 
@@ -56,3 +56,21 @@ Status: **wired** = data loaded, used in gameplay, tested, visible proof. **part
 | `yyh` | Yu Yu Hakusho Dark Tournament | Models + decoded clips | not-wired | — | — | UNCLAIMED |
 | `urban-reign` | Urban Reign | Multi-opponent brawl data | not-wired | — | — | UNCLAIMED |
 | `nioh` | Nioh 1/2 | Character depth | not-wired | — | — | BLOCKED (disk) |
+
+## Bannon (add-on layer — owner 2026-10-23)
+
+Read-only audit of `mhvnsnt/Bannon` for Western Heart (no work on Bannon itself; no Brutal Fist/AshLane work). Rule: the real game system (Tekken first, then other pulled games / solid open-source) is the **base**; Bannon features **layer on top** as add-ons where they add something. Port clean into `game/js/`, credit `mhvnsnt/Bannon` + source path in the PR and here.
+
+| id | Combo (base + Bannon add-on) | Base row | Bannon source | Status | Lane |
+|---|---|---|---|---|---|
+| `bannon-live-deform` | Live deformation / muscle bulge on top of Tekken T7 rigs | `T7 rigs (t7-rigs)` | mhvnsnt/Bannon: godmode/src/engine/BiomechanicalPhysics.ts, native/include/bannon_rig.h | not-wired | UNCLAIMED |
+| `bannon-active-ragdoll` | Active ragdoll balance touches on top of Gang Beasts grip/hold + Tekken hit reactions | `gb-grab, t7-hit-reactions` | mhvnsnt/Bannon: server/modes/activeRagdollSystem.ts, native/include/bannon_ragdoll.h | not-wired | UNCLAIMED |
+| `bannon-grapple` | Grapple chains/leverage on top of Tekken throws + Gang Beasts hold | `t7-throws, gb-grab` | mhvnsnt/Bannon: server/modes/grappleSystem.ts, native/include/bannon_grapple.h | not-wired | UNCLAIMED |
+| `bannon-strike` | Strike impulse / impact physics on top of Tekken hitboxes | `t7-hit-contact` | mhvnsnt/Bannon: native/include/bannon_strike.h, server/hitboxLogic.ts | not-wired | UNCLAIMED |
+| `bannon-hit-clips` | 973 hit-reaction clip variants (DELAYED/HARD/KNEELING/MIRROR/SITOUT/SLOW/SNAP) layered on Tekken reactions | `t7-hit-reactions` | mhvnsnt/Bannon: assets/moves/clips/ | not-wired | UNCLAIMED |
+| `bannon-weapon` | Weapon physics on top of Soulcalibur weapon tracks | `sc-models` | mhvnsnt/Bannon: native/include/bannon_weapon.h, app/src/main/cpp/engine/WeaponPhysics.cpp | not-wired | UNCLAIMED |
+| `bannon-ik` | CCD IK foot/hand planting on top of Tekken anims | `t7-anims` | mhvnsnt/Bannon: assets/vendor/CCDIKSolver.js (three.js, MIT) | not-wired | UNCLAIMED |
+| `bannon-caw-rig` | CAW auto-rigging pipeline on top of 2K19 creation parts | `2k19-parts` | mhvnsnt/Bannon: server/caw/RiggingPipeline.js, bannon_blender_rig.py | not-wired | UNCLAIMED |
+| `bannon-combat-ai` | Combat AI touches on top of Fire Pro CPU personality | `fp-cpu` | mhvnsnt/Bannon: CombatAI.ts, godmode/src/physics/CombatEngine.ts | not-wired | UNCLAIMED |
+| `bannon-ladder` | Ladder/spatial TLC physics on top of No Mercy/WMXIX arenas | `nm-arenas` | mhvnsnt/Bannon: app/src/main/cpp/rulesets/TLC_LadderSpatialPhysics.cpp | not-wired | UNCLAIMED |
+| `bannon-combat-harness` | Playwright combat test harness on top of game-checks | `t7-hit-contact` | mhvnsnt/Bannon: godmode/src/lib/PlaywrightCombatHarness.ts | not-wired | UNCLAIMED |
