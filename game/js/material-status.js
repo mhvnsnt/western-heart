@@ -76,7 +76,6 @@ export const MATERIAL_STATUS = {
  "quarantine": {
   "armor-king": "1 untextured",
   "armor-king-attire1": "1 untextured",
-  "chatur": "1 placeholder, 1 untextured",
   "cyborg-x": "6 untextured",
   "demonio-bloodline-ember": "2 untextured",
   "jin-bloodline-ember": "2 untextured",
@@ -93,10 +92,9 @@ export const MATERIAL_STATUS = {
   "menajerii-attire1": "55 untextured",
   "michiko": "1 placeholder",
   "nightwolf": "2 untextured",
-  "pond": "4 untextured",
   "saku-ra_alt1": "31 untextured",
-  "tobi": "6 untextured",
-  "tobi-attire1": "6 untextured",
+  "tobi": "1 placeholder",
+  "tobi-attire1": "1 placeholder",
   "torch": "1 placeholder",
   "yukihyo": "14 untextured",
   "zen-body": "2 untextured"

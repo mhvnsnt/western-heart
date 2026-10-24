@@ -206,6 +206,7 @@ def main():
 
     # images / textures / materials
     images, textures, materials, img_idx, mat_idx = [], [], [], {}, {}
+    orig_mats = j.get('materials', [])
 
     def tex(rel):
         if rel not in img_idx:
@@ -291,7 +292,20 @@ def main():
                 if want_uv or 'TEXCOORD_0' not in attrs:
                     na['TEXCOORD_0'] = add_acc(np.array([k[1] for k in uniq], np.float32))
                 ii = np.array(remap, np.uint32)
-                np_ = {'attributes': na, 'material': material(mname), 'mode': 4,
+                if mname == 'default' and 'material' in p:
+                    # no source slot: keep the shipped material (colour only)
+                    om = json.loads(json.dumps(orig_mats[p['material']]))
+                    om.get('pbrMetallicRoughness', {}).pop('baseColorTexture', None)
+                    om.get('pbrMetallicRoughness', {}).pop('metallicRoughnessTexture', None)
+                    for k in ('normalTexture', 'emissiveTexture', 'occlusionTexture'):
+                        om.pop(k, None)
+                    key = '__orig__' + om.get('name', '') + json.dumps(om, sort_keys=True)
+                    if key not in mat_idx:
+                        materials.append(om); mat_idx[key] = len(materials) - 1
+                    mi_ = mat_idx[key]; mname = om.get('name', mname)
+                else:
+                    mi_ = material(mname)
+                np_ = {'attributes': na, 'material': mi_, 'mode': 4,
                        'indices': add_acc(ii, ctype=5125, target=34963)}
                 prims.append(np_)
                 ntri_out += len(tlist)
