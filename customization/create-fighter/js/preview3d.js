@@ -1,10 +1,8 @@
 /* preview3d.js — full-screen fighter preview.
-   Vendored three.js (./vendor/three.module.js + GLTFLoader). The base model
-   is set by the TEMPLATE SELECT screen (customization/templates/) — there is
-   no default character. Roster fighters load their real GLB from
-   game/assets/models/ via loadModel() (data/ROSTER-BASE.json). Fighter
-   ALWAYS visible, full-body, centered slightly left of screen so the right
-   rail never covers it.
+   Vendored three.js (./vendor/three.module.js + GLTFLoader). Soldier.glb base rig
+   for NEW FIGHTER; roster fighters load their real GLB from game/assets/models/
+   via loadModel() (data/ROSTER-BASE.json). Fighter ALWAYS visible, full-body,
+   centered slightly left of screen so the right rail never covers it.
    Slow auto-rotate, drag-orbit, scroll/pinch zoom.
    Equip visuals: labeled socket-proxy rings (honest placeholders — real ymg/obj
    meshes are not wired yet). */
@@ -13,9 +11,7 @@ import { GLTFLoader } from '../vendor/addons/loaders/GLTFLoader.js';
 import { clone as skeletonClone } from '../vendor/addons/utils/SkeletonUtils.js';
 
 const SKIN_TONES = ['#f7c2a1','#e8a87c','#c98d5e','#a06a42','#7c4a2d','#5d3320','#3d2114','#2a150c'];
-// Legacy base rig — kept on disk only. It is NOT a default and NOT a fallback:
-// the template select owns the base model. (Killed as default 2026-10-22,
-// owner directive: WWE 2K-style template system replaces it.)
+const SOLDIER_GLB = 'assets/Soldier.glb';
 
 export class Preview3D {
   constructor(canvas){
@@ -27,7 +23,6 @@ export class Preview3D {
     this.clock = new THREE.Clock();
     this.mixers = [];
     this.proxyRings = new Map();   // slotId -> ring mesh
-    this.partMeshes = new Map();   // slotId -> loaded GLB group (real part geometry)
     this.dummy = null;
     this.dome = null;              // Doc Frank dome preview state (see enterDomePreview)
     this.domeActive = false;
@@ -124,17 +119,13 @@ export class Preview3D {
   }
 
   _loadFighter(){
-    // No default character: the template-select screen sets the base model
-    // via loadModel(). Until then the stage stays empty (not a soldier).
-    if(this.onReady) this.onReady();
+    this.loadModel(SOLDIER_GLB);
   }
 
-  /* ---- dynamic base-model loading: template GLBs from customization/templates/
-     or roster GLBs from game/assets/models/ ----
+  /* ---- dynamic base-model loading: roster GLBs from game/assets/models/ ----
      Disposes the old fighter + dummy, loads the new GLB, re-collects materials
-     and bones, plays Idle (or first clip). On failure it reports through
-     onModelError (the app re-opens template select) — it never silently
-     substitutes another character. */
+     and bones, plays Idle (or first clip). On failure falls back to the Soldier
+     base rig so the suite never bricks on a missing model. */
   loadModel(url){
     if(!url || url===this.modelUrl || this._loading) return;
     this._loading = true;
@@ -142,7 +133,6 @@ export class Preview3D {
     if(this.fighter){ this.scene.remove(this.fighter); this._disposeObj(this.fighter); this.fighter=null; this.mats=null; this.baseColors=null; this.bones=null; }
     if(this.dummy){ this.scene.remove(this.dummy); this.dummy=null; }
     this.clearAllProxies();
-    this.clearAllPartMeshes();
     this.mixers = [];
     new GLTFLoader().load(url, glb=>{
       this.fighter = glb.scene;
@@ -170,9 +160,7 @@ export class Preview3D {
       console.error('model failed to load:', url, err);
       this._loading = false;
       this._hideLoader();
-      // Honest failure: no silent substitution. The app re-opens template
-      // select so the user picks a working base.
-      if(this.onModelError) this.onModelError(url, err);
+      if(url!==SOLDIER_GLB){ this.modelUrl=null; this.loadModel(SOLDIER_GLB); }
     });
   }
 
@@ -255,53 +243,6 @@ export class Preview3D {
     if(r){ this.scene.remove(r); r.geometry.dispose(); r.material.dispose(); this.proxyRings.delete(slotId); }
   }
   clearAllProxies(){ [...this.proxyRings.keys()].forEach(k=>this.clearProxy(k)); }
-
-  /* ---- real part meshes (worker 38): geometryReady parts from the suite
-     library attach as actual GLBs at the category's bone anchor. Position is
-     auto-fit: bbox center->anchor for most categories; full-body parts
-     (part of the figure itself) scale to the fighter's height so they read
-     as the body. On load failure the proxy ring stands in — the UI badges
-     show GEOMETRY PENDING for anything without a real mesh. */
-  setPartMesh(slotId, glbUrl, anchorName, label, catKey){
-    this.clearPartMesh(slotId); this.clearProxy(slotId);
-    new GLTFLoader().load(glbUrl,
-      g=>{
-        const grp = g.scene;
-        const anchor = this.fighter && this.fighter.getObjectByName(anchorName);
-        const box = new THREE.Box3().setFromObject(grp);
-        const size = new THREE.Vector3(); box.getSize(size);
-        const ctr = new THREE.Vector3(); box.getCenter(ctr);
-        if(catKey==='fullbody' && this.fighter){
-          // full-body part: scale to fighter height, floor at origin
-          const fh = new THREE.Box3().setFromObject(this.fighter);
-          const fs = new THREE.Vector3(); fh.getSize(fs);
-          const s = fs.y/Math.max(size.y,1e-6);
-          grp.scale.setScalar(s);
-          box.setFromObject(grp); box.getCenter(ctr);
-          grp.position.sub(ctr);
-          grp.position.y += box.min.y; // floor
-          this.fighter.visible = false;
-        } else if(anchor){
-          // center the part on the bone anchor
-          grp.position.add(new THREE.Vector3().copy(anchor.getWorldPosition(new THREE.Vector3())).sub(ctr));
-        } else {
-          grp.position.set(0,1.1,0);
-        }
-        this.scene.add(grp);
-        this.partMeshes.set(slotId, grp);
-      },
-      undefined,
-      ()=>{ this.setProxy(slotId, anchorName, '#7fd4ff', label); }  // fallback: proxy ring
-    );
-  }
-  clearPartMesh(slotId){
-    const m = this.partMeshes.get(slotId);
-    if(m){ this.scene.remove(m); m.traverse(o=>{ if(o.geometry) o.geometry.dispose(); }); this.partMeshes.delete(slotId); }
-  }
-  clearAllPartMeshes(){
-    [...this.partMeshes.keys()].forEach(k=>this.clearPartMesh(k));
-    if(this.fighter) this.fighter.visible = true;
-  }
 
   /* ---- Doc Frank Wowomomo dome preview (Attire 2 dome editor) ----
      The v5 dome GLB was built in Attire 2's base-model space

@@ -9,21 +9,11 @@ import { Preview3D, SKIN_TONES } from './preview3d.js';
 import { Catalog, CATEGORIES, CONFLICTS } from './catalog.js';
 import { createDomeParamUI, loadDomeParams } from '../../../game/js/dome-params.js';
 import { BODY_MORPHS, FACE_SHAPE_MORPHS, FACE_PARAMS, FACE_PRESETS, FACE_CHECKLIST, facePresetVector } from './morphdata.js';
-/* worker 38 menu pass: WWE flow steps (skin/hair/facial-hair), tool-to-menu
-   wiring + three access layers. Template select itself is owned by
-   js/creation-flow.js (worker 37) — this module does not duplicate it. */
-import { currentTemplate, renderTemplateTab, renderSkinTab, renderHairTab,
-         renderFacialHairTab, renderToolsTab } from './tools.js';
-import { renderArt } from './art.js';
 
 const LS_KEY = 'wh_create_fighter_v1';
 const PRESET_LS_KEY = 'wh_create_fighter_presets';
 const START_MONEY = 12400;
-// Template system (owner 2026-10-22): the Mixamo soldier is DEAD as a default.
-// NEW FIGHTER starts at the template-select screen; the base model comes from
-// customization/templates/body-templates.json. TEMPLATE_JSON is filled at boot.
-let TEMPLATES = { body: [], faces: [], tones: [], parts: [] };
-const templateMeshUrl = t => '../' + String(t.base_mesh).split('customization/')[1];
+const SOLDIER_GLB = 'assets/Soldier.glb';   // WMXIX default CAW base rig
 
 const BODY_TYPES = [
   { name:'Skinny 1', h:1.02, w:0.86, m:0.85 }, { name:'Skinny 2', h:0.98, w:0.88, m:0.85 },
@@ -46,7 +36,7 @@ const TIERS = [['custom','CUSTOM'],['souls','THE NINE SOULS'],['main','MAIN ROST
    (ids/names/tiers trace to game/js/roster-full.js; GLB paths verified in
    game/assets/models/). Filled at boot; the 'new' entry is always present. */
 let ROSTER = [
-  { id:'new', name:'NEW FIGHTER', desc:'Template select — pick your base', glb:null, tier:'custom', modelSrc:'template' },
+  { id:'new', name:'NEW FIGHTER', desc:'WMXIX default CAW base', glb:SOLDIER_GLB, tier:'custom', modelSrc:'exact' },
 ];
 
 /* ---------------- state ---------------- */
@@ -58,8 +48,7 @@ function blankFighter(){
       music:'', titantron:'', soul:'—', element:'—', land:'—',
       title:['',''], picture:'' },
     base:'new',
-    template:null,   // body-templates.json id once the user picks one
-    model:null,      // base GLB — set ONLY by template select. No default.
+    model:SOLDIER_GLB,   // base GLB, relative to customization/create-fighter/
     body:{ body_type:'Medium 1', skin_tone:'#c98d5e', head_shape:'male_3',
       proportions:{ height:1, weight:1, muscle:1 } },
     morphs:{},                       // MPFB2 body morph id -> -1..1 (bakes to MPFB_<id> shape keys)
@@ -145,45 +134,23 @@ function syncPreview(){
     height:(bt?bt.h:1)*p.height, weight:(bt?bt.w:1)*p.weight, muscle:(bt?bt.m:1)*p.muscle });
   if(preview.setMorphValues) preview.setMorphValues(F.morphs || {});
   preview.clearAllProxies();
-  if(preview.clearAllPartMeshes) preview.clearAllPartMeshes();
   const eq = attire().equipped;
   for(const slotId of Object.keys(eq)){
     const cat = catalog.catBySlotId(slotId); if(!cat) continue;
-    const part = catalog.get(eq[slotId]);
     const col = (attire().colors[eq[slotId]]||{}).c1 || '#e8b64c';
-    if(part && part.geometryReady && part.glb && preview.setPartMesh){
-      // real mesh — preview auto-fit at the bone anchor (see preview3d.js)
-      preview.setPartMesh(slotId, resolveUrl(part.glb), cat.anchor, part.displayName, cat.key);
-    } else {
-      preview.setProxy(slotId, cat.anchor, col, part?part.displayName:eq[slotId]);
-    }
+    preview.setProxy(slotId, cat.anchor, col, eq[slotId]);
   }
   if(ui.selPart){ // try-on preview
     const cat = catalog.catForPart(ui.selPart.part_id);
-    if(cat){
-      if(!ui.selPart.geometryPending && ui.selPart.glb && preview.setPartMesh){
-        preview.setPartMesh('tryon', resolveUrl(ui.selPart.glb), cat.anchor, ui.selPart.displayName, cat.key);
-      } else {
-        preview.setProxy('tryon', cat.anchor, '#7fd4ff', ui.selPart.displayName);
-      }
-    }
+    if(cat) preview.setProxy('tryon', cat.anchor, '#7fd4ff', ui.selPart.displayName);
   }
   preview.setDummyVisible(ui.tab==='moveset');
-}
-/* index file_paths are repo-relative ('customization/...', 'teardown/...');
-   this page lives at customization/create-fighter/index.html */
-function resolveUrl(repoPath){
-  if(!repoPath) return repoPath;
-  if(repoPath.startsWith('customization/')) return '../'+repoPath.slice('customization/'.length);
-  if(repoPath.startsWith('/')) return repoPath;
-  return '../../'+repoPath;
 }
 
 /* ---------------- top bar / attire slots ---------------- */
 function renderTopbar(){
   $('#fighter-name').textContent = F.profile.name || 'NEW FIGHTER';
-  const stepNo2 = FLOW_TABS.indexOf(ui.tab)+1;
-  $('#breadcrumb').textContent = `${F.profile.name||'New Fighter'} > Attire ${F.attireIndex+1} > ${stepNo2>0?`Step ${stepNo2}/${FLOW_TABS.length} `:''}${TAB_LABELS[ui.tab]||ui.tab.toUpperCase()}${ui.attireCat?' > '+ui.attireCat.label:''}`;
+  $('#breadcrumb').textContent = `${F.profile.name||'New Fighter'} > Attire ${F.attireIndex+1} > ${ui.tab.toUpperCase()}${ui.attireCat?' > '+ui.attireCat.label:''}`;
   $('#wallet-amt').textContent = F.wallet.toLocaleString();
   const tabs = $('#attire-tabs'); tabs.innerHTML='';
   F.attires.forEach((a,i)=>{
@@ -209,52 +176,20 @@ document.querySelectorAll('.rail-btn').forEach(b=>{ b.onclick=()=>setTab(b.datas
 /* ---------------- panel framework ---------------- */
 function renderAll(){ renderTopbar(); renderPanel(); syncPreview(); persistQuiet(); }
 function persistQuiet(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(F)); }catch(e){} }
-/* WWE creation flow order (owner directive 2026-10-22, worker 38): template
-   first, then body -> head/face -> skin -> hair -> facial hair -> attire ->
-   wardrobe -> profile; moveset / limbs / art / jobs / tools follow. */
-const FLOW_TABS = ['template','body','face','skin','hair','facialhair','attire','wardrobe','profile','moveset','limbs','art','jobs','tools'];
-const TAB_LABELS = { template:'TEMPLATE', body:'BODY', face:'HEAD / FACE', skin:'SKIN', hair:'HAIR',
-  facialhair:'FACIAL HAIR', attire:'ATTIRE', wardrobe:'WARDROBE', profile:'PROFILE',
-  moveset:'MOVESET', limbs:'LIMBS', art:'ART', jobs:'JOBS', tools:'TOOLS' };
-function ctxForTools(){
-  return { F, ui, catalog, preview, esc, modal, closeModal, renderAll, syncPreview,
-    persistQuiet, toast, setTab, isCustom, attire, CATEGORIES, SKIN_TONES, renderItemGrid };
-}
 function renderPanel(){
   const body=$('#panel-body');
-  const stepNo = FLOW_TABS.indexOf(ui.tab)+1;
-  $('#panel-title').textContent = (TAB_LABELS[ui.tab]||ui.tab.toUpperCase());
-  $('#panel-sub').textContent = stepNo>0 ? `Step ${stepNo} of ${FLOW_TABS.length} — WWE creation flow` : '';
+  $('#panel-title').textContent = ui.tab.toUpperCase();
+  $('#panel-sub').textContent = '';
   body.innerHTML='';
-  const ctx = ctxForTools();
-  ({ body:renderBody, face:renderFace, attire:renderAttire, wardrobe:renderWardrobe,
-     profile:renderProfile, moveset:renderMoveset, limbs:renderLimbs,
-     jobs:renderJobsTab, art:(el)=>renderArt(el, ui, { toast }),
-     template:(el)=>renderTemplateTab(ctx, el),
-     skin:(el)=>renderSkinTab(ctx, el),
-     hair:(el)=>renderHairTab(ctx, el),
-     facialhair:(el)=>renderFacialHairTab(ctx, el),
-     tools:(el)=>renderToolsTab(ctx, el),
-  })[ui.tab](body);
-}
-
-/* ================= JOBS (creation-flow module owns the UI) ================= */
-function renderJobsTab(el){
-  $('#panel-sub').textContent='Blender-backed tools — real jobs, live status';
-  if(window.__flow && window.__flow.renderJobs) window.__flow.renderJobs(el);
-  else el.innerHTML='<div class="note">Flow module (js/creation-flow.js) not loaded.</div>';
+  ({ body:renderBody, face:renderFace, attire:renderAttire, wardrobe:renderWardrobe, profile:renderProfile, moveset:renderMoveset, limbs:renderLimbs })[ui.tab](body);
 }
 
 /* ================= BODY ================= */
 function renderBody(el){
   const locked = !isCustom();   // roster fighters' bodies are canon — lock per UI promise
-  $('#panel-sub').textContent = 'Wrestling CAW — proportions + MPFB2 morphs';
-  const curTpl = currentTemplate(ctxForTools());
+  $('#panel-sub').textContent = 'Wrestling CAW — body, skin, head, hair';
   el.innerHTML = `
     ${locked?`<div class="note">🔒 <b>Canon body</b> — ${esc(F.profile.name)}'s body is locked. Switch to NEW FIGHTER for full BODY access. Body type, skin tone, proportions and head shape stay with the custom base.</div>`:''}
-    <div class="sect">TEMPLATE — Step 1 pick</div>
-    <div class="kv"><span>Template</span><b>${curTpl?esc(curTpl.name):'— none —'}</b></div>
-    <div class="btn-row"><button class="btn" id="btn-changetpl" ${locked?'disabled':''}>🧍 CHANGE TEMPLATE</button></div>
     <div class="sect">BODY TYPE — No Mercy 14</div>
     <div class="roster-grid" id="bodytypes"></div>
     <div class="sect">SKIN TONE — 8 tones</div>
@@ -272,13 +207,8 @@ function renderBody(el){
     <div class="sect">FACE SHAPE — MPFB2 regional</div>
     <div id="mpfb-face"></div>
     <div class="sect">BODY PARTS — ${catalog.count('bodies')} meshes</div>
-    <div class="note">220 No Mercy body-part meshes, 303 converted to real GLBs with <span class="real-mesh">REAL MESH</span> badges — those attach live to the 3D preview. The rest equip into the fighter JSON with a socket marker.</div>
+    <div class="note">220 No Mercy body-part meshes. <span class="geo-badge">GEOMETRY PENDING</span> .obj wiring not in this build — equip records the part in your fighter JSON and shows a socket marker.</div>
     <div class="btn-row"><button class="btn" id="btn-bodyparts">BROWSE BODY PARTS</button></div>`;
-  const ct=el.querySelector('#btn-changetpl');
-  if(ct) ct.onclick=()=>{
-    if(window.__flow && window.__flow.openTemplateSelect) window.__flow.openTemplateSelect();
-    else toast('Flow module not loaded');
-  };
   const bt=el.querySelector('#bodytypes');
   BODY_TYPES.forEach(t=>{
     const b=document.createElement('button');
@@ -801,16 +731,11 @@ function renderLimbs(el){
 /* ================= fighter select / presets / photo / save-load ================= */
 function selectBase(id){
   const r=ROSTER.find(x=>x.id===id); if(!r) return;
-  if(r.id==='new'){
-    // NEW FIGHTER -> template select screen FIRST (WWE 2K flow). The flow
-    // module owns the overlay; fall back to a bare fighter if absent.
-    if(window.__flow && window.__flow.openTemplateSelect){ window.__flow.openTemplateSelect(); return; }
-  }
   F.base=r.id;
-  F.model=r.glb||null;
+  F.model=r.glb||SOLDIER_GLB;
   F.profile.name=r.name;
   ui.selPart=null; ui.attireCat=null; ui.domeOpen=false;
-  if(preview && F.model) preview.loadModel(F.model);
+  if(preview) preview.loadModel(F.model);
 }
 
 $('#btn-roster').onclick=()=>{
@@ -822,11 +747,11 @@ $('#btn-roster').onclick=()=>{
       `<div style="font-size:12px;color:var(--dim);font-weight:400;margin-top:4px">${r.desc||r.title||''}</div>`+
       (r.id!=='new'
         ? `<div style="font-size:10px;margin-top:4px"><span class="${r.modelSrc==='exact'?'owned':'price'}">${r.modelSrc==='exact'?'● REAL MODEL':'● BASE MODEL'}</span></div>`
-        : `<div style="font-size:10px;margin-top:4px"><span class="owned">● TEMPLATE BASE</span></div>`)+
+        : `<div style="font-size:10px;margin-top:4px"><span class="owned">● SOLDIER BASE RIG</span></div>`)+
       `</button>`).join('')+`</div>`;
   }).join('');
   modal('FIGHTER SELECT', groups+
-    `<div class="note">Roster fighters load their real GLB from <span class="mono">game/assets/models/</span> — bodies are canon, BODY tab locks. NEW FIGHTER opens the <b>template select</b> first: pick a WWE-style base template, then customize everything. <span class="owned">● REAL MODEL</span> = fighter-specific GLB · <span class="price">● BASE MODEL</span> = shared base until a dedicated extraction lands.</div>`,
+    `<div class="note">Roster fighters load their real GLB from <span class="mono">game/assets/models/</span> — bodies are canon, BODY tab locks. NEW FIGHTER gets full BODY access on the Soldier base rig. <span class="owned">● REAL MODEL</span> = fighter-specific GLB · <span class="price">● BASE MODEL</span> = shared base until a dedicated extraction lands.</div>`,
     [{label:'CLOSE',cls:'btn-gold'}]);
   document.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{
     selectBase(b.dataset.r);
@@ -904,26 +829,21 @@ $('#file-load').onchange=e=>{
 async function boot(){
   const had=loadStored();
   try{
-    const [pi,md,ms,rb,bt,fp,st,fpa]=await Promise.all([
+    const [pi,md,ms,rb]=await Promise.all([
       fetch('data/PARTS-INDEX.json').then(r=>r.json()),
       fetch('data/MOVE-DATABASE.json').then(r=>r.json()),
       fetch('data/MOVE-SLOTS.json').then(r=>r.json()),
       fetch('data/ROSTER-BASE.json').then(r=>r.json()),
-      fetch('../templates/body-templates.json').then(r=>r.json()),
-      fetch('../templates/face-presets.json').then(r=>r.json()),
-      fetch('../templates/skin-tones.json').then(r=>r.json()),
-      fetch('../templates/face-parts.json').then(r=>r.json()),
     ]);
     catalog=new Catalog(pi); moveDb=md; moveSlots=ms;
-    TEMPLATES={ body:bt.templates||[], faces:fp.presets||[], tones:st.tones||[], parts:fpa.categories||[] };
     ROSTER=[
-      { id:'new', name:'NEW FIGHTER', desc:'Template select — pick your base', glb:null, tier:'custom', modelSrc:'template' },
+      { id:'new', name:'NEW FIGHTER', desc:'WMXIX default CAW base', glb:SOLDIER_GLB, tier:'custom', modelSrc:'exact' },
       ...rb.fighters.map(f=>({ id:f.id, name:f.name, desc:f.title, title:f.title, glb:f.glb,
         tier:f.tier, modelSrc:f.modelSrc, style:f.style, archetype:f.archetype, base:f.base })),
     ];
     // a stored fighter may reference a base that no longer exists — fall back to new
-    if(!ROSTER.some(r=>r.id===F.base)){ F.base='new'; F.model=null; F.template=null; }
-    if(F.base==='new' && !F.template){ F.model=null; }  // template select owns it
+    if(!ROSTER.some(r=>r.id===F.base)){ F.base='new'; F.model=SOLDIER_GLB; }
+    if(!F.model) F.model=SOLDIER_GLB;
   }catch(e){
     console.error('data load failed',e);
     document.getElementById('loader').innerHTML='<div>DATA LOAD FAILED — serve over http</div>';
@@ -931,18 +851,10 @@ async function boot(){
   }
   preview=new Preview3D($('#preview3d'));
   window.__preview=preview;   // debug/testing handle
-  // hook for the creation-flow module (template select + WWE step wizard + jobs)
-  window.__suite={ get F(){return F;}, set F(v){F=v;}, get ui(){return ui;},
-    get catalog(){return catalog;}, get preview(){return preview;},
-    get TEMPLATES(){return TEMPLATES;}, templateMeshUrl,
-    renderAll, setTab, selectBase, toast, modal, closeModal, esc,
-    blankFighter, persistQuiet };
   preview.onReady=()=>{ renderAll(); };
-  preview.onModelError=()=>{ if(window.__flow&&window.__flow.openTemplateSelect) window.__flow.openTemplateSelect(true); };
-  // load the stored/current fighter's model (roster GLB or template base)
-  if(F.model) preview.loadModel(F.model);
+  // load the stored/current fighter's model (roster GLB or Soldier base)
+  if(F.model && F.model!==SOLDIER_GLB) preview.loadModel(F.model);
   renderAll();
-  if(!had){ if(window.__flow&&window.__flow.openTemplateSelect) window.__flow.openTemplateSelect(); else toast('New fighter — start with BODY'); }
-  else if(F.base==='new' && !F.template && window.__flow&&window.__flow.openTemplateSelect){ window.__flow.openTemplateSelect(); }
+  if(!had) toast('New fighter — start with BODY');
 }
 boot();
