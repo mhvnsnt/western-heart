@@ -76,22 +76,31 @@ test('rootMotionSample: frame-0 baseline, linear interpolation, end clamp', () =
   assert.ok(close(F.rootMotionSample(null, 30, 0.5), { fwd: 0, lat: 0 }));
 });
 
-test('Pantera LP1 jab (1) plays row:44 and stays in place', async () => {
+test('Pantera LP1 jab (1) plays row:110 (T3 f+1) and steps forward ~0.11 m', async () => {
   const f = await fighter();
   const r = simulate(f, '1');
-  assert.equal(r.plan.name, 'row:44', `LP1 plan: ${r.plan.name} (${r.plan.kind})`);
-  assert.ok(Math.abs(r.x) < 0.02, `LP1 travelled ${r.x} m, expected ~0`);
-  assert.ok(Math.abs(r.z) < 0.02, `LP1 lateral ${r.z} m, expected ~0`);
+  // Row 44 was a jumping-1 clip (feet 0.75/0.78 m off the ground at frame 0),
+  // not a standing jab. Row 110 is T3 f+1: a standing armL jab, active 10 =
+  // T7 i10. Measured through _rootMotionApply: steps in to a 0.265 m peak
+  // and settles at 0.106 m forward, -0.028 m lateral (PR #1022 audit).
+  assert.equal(r.plan.name, 'row:110', `LP1 plan: ${r.plan.name} (${r.plan.kind})`);
+  assert.ok(r.x > 0.09 && r.x < 0.12, `LP1 travelled ${r.x} m, expected 0.09-0.12`);
+  assert.ok(r.z < -0.01 && r.z > -0.05, `LP1 lateral ${r.z} m, expected ~-0.03`);
+  assert.ok(r.peakX > 0.25 && r.peakX < 0.28, `LP1 peak ${r.peakX} m, expected 0.25-0.28`);
 });
 
-test('Pantera RP2 (2) plays row:203 and travels forward ~0.85 m, mirrored when facing left', async () => {
+test('Pantera RP2 (2) plays row:99 (T3 b+2) and travels forward ~0.15 m, mirrored when facing left', async () => {
   const f = await fighter();
   const r = simulate(f, '2', 1);
-  assert.equal(r.plan.name, 'row:203', `RP2 plan: ${r.plan.name} (${r.plan.kind})`);
-  assert.ok(r.x > 0.80 && r.x < 0.90, `RP2 travelled ${r.x} m, expected 0.80-0.90`);
-  assert.ok(r.z < -0.35 && r.z > -0.45, `RP2 lateral ${r.z} m, expected ~-0.40`);
+  // Row 203 was a lunging ducking straight (0.95 m travel, hips dipping to
+  // 0.61 m), not a jab. Row 99 is T3 b+2: a standing armR jab, active 10 =
+  // T7 i10. Measured through _rootMotionApply: 0.151 m forward, -0.138 m
+  // lateral, peak 0.301 m (PR #1022 audit).
+  assert.equal(r.plan.name, 'row:99', `RP2 plan: ${r.plan.name} (${r.plan.kind})`);
+  assert.ok(r.x > 0.13 && r.x < 0.17, `RP2 travelled ${r.x} m, expected 0.13-0.17`);
+  assert.ok(r.z < -0.12 && r.z > -0.16, `RP2 lateral ${r.z} m, expected ~-0.14`);
   const m = simulate(f, '2', -1);
-  assert.ok(m.x < -0.80 && m.x > -0.90, `RP2 mirrored travelled ${m.x} m`);
+  assert.ok(m.x < -0.13 && m.x > -0.17, `RP2 mirrored travelled ${m.x} m`);
 });
 
 test('Pantera f,F+2 Beast Elbow (RP2 dash elbow): donor clip row:111 travels forward (0.15 m net, 0.30 m peak)', async () => {
@@ -161,9 +170,16 @@ test('Wall: _physics clamps root-motion travel to ARENA_LIMIT (8.4) instead of l
   f.root.position.x = 8.3; f.root.position.y = 0; f.root.position.z = 0;
   f.blob = { position: { y: 0 }, scale: { set() {} }, material: { opacity: 0 } };
   const total = (mv.startup || 0) + (mv.active || 0) + (mv.recovery || 0);
-  for (let t = 0; t <= total + 1e-9; t += 1 / 60) { f.stateT = t; f._physics(1 / 60, null); }
+  let peakX = 8.3;
+  for (let t = 0; t <= total + 1e-9; t += 1 / 60) { f.stateT = t; f._physics(1 / 60, null); peakX = Math.max(peakX, f.root.position.x); }
   assert.ok(f.root.position.x <= 8.4 + 1e-9, `wall: x=${f.root.position.x}`);
-  assert.ok(f.root.position.x >= 8.3, `wall: x=${f.root.position.x} (travel lost, not clamped)`);
+  // Row 99 (T3 b+2, PR #1022) peaks at 0.300 m mid-clip then settles to
+  // 0.151 m; at the wall the clamp discards the overshoot above 8.4, so the
+  // clip's natural settle-back lands at 8.4 - (0.300 - 0.151) = 8.251 —
+  // inside the stage, not lost. The old x >= 8.3 assertion assumed row 203's
+  // monotonic 0.85 m travel and is wrong for a peak-and-settle clip.
+  assert.ok(peakX > 8.39, `wall: peak x=${peakX} (clamp never engaged)`);
+  assert.ok(f.root.position.x > 8.24 && f.root.position.x < 8.26, `wall: x=${f.root.position.x}, expected 8.24-8.26`);
 });
 
 test('Turned bank (bosconovitch, baked facing -Z): loaded clips carry the 180 deg root_t flip, so root motion reads the canonical frame', async () => {

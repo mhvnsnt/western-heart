@@ -917,10 +917,10 @@
       }
     },
     "4": {
-      "name": "DIABLO 4 (T3 heihachi r74)",
+      "name": "DIABLO 4 (T3 heihachi r104)",
       "input": "4",
       "t3_source": "heihachi",
-      "t3_row": 74,
+      "t3_row": 104,
       "t3_command": "RK",
       "startup": 0.133,
       "active": 0.033,
@@ -931,7 +931,7 @@
       "heavy": true,
       "knock": 4.2,
       "soulGain": 11,
-      "anim_ref": "t3:heihachi:row:74",
+      "anim_ref": "t3:heihachi:row:104",
       "input_slots": [
         "4"
       ],
@@ -7585,6 +7585,8 @@
     "uf+3,4": {
       "name": "Hell Axle",
       "input": "uf+3,4",
+      "t3_source": "heihachi",
+      "t3_row": 74,
       "t8_source": "heihachi",
       "t8_id": "Heihachi-uf+3,4",
       "t8_damage": ",20",
@@ -7614,6 +7616,8 @@
     "uf+4": {
       "name": "Wind Slicer",
       "input": "uf+4",
+      "t3_source": "heihachi",
+      "t3_row": 74,
       "t8_source": "heihachi",
       "t8_id": "Heihachi-uf+4",
       "t8_damage": "17",
