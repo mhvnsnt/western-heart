@@ -154,13 +154,21 @@ export class InputManager {
     this.axisX = Math.abs(x) > 0.25 ? Math.max(-1, Math.min(1, x)) : 0;
     // Movement: vertical via Tekken tap-vs-hold zones (0.55 threshold),
     // not the octant — a mostly-horizontal push must not crouch.
-    // FIX 2026-10-24: Sideways drag with natural downward thumb arc (x=0.9, yUp=-0.6)
-    // was triggering crouch because vertical exceeded 0.55 even though horizontal
-    // was dominant. Only trigger up/down when vertical is NOT clearly horizontal-dominant.
-    // Horizontal dominant = |x| > |yUp| * 1.2. Diagonals (d/f, u/f) have similar
-    // magnitudes, so they still trigger vertical correctly.
-    const horizontalDominant = Math.abs(x) > Math.abs(yUp) * 1.2;
-    const verticalValue = horizontalDominant ? 0 : -yUp;
+    // FIX 2026-10-24 (joystick center): ANY touch was triggering down, wide drag
+    // needed for up. Root cause: static joystick center — thumb landing below
+    // center starts already in down zone. Combined with magnitude deadzone
+    // (ignore vectors < 0.2) and vertical snap (|yUp| < 0.25 -> 0) to kill
+    // resting-thumb drift. Keep PR #997 horizontalDominant: sideways must not crouch.
+    // Also: nipplejs mode changed static -> dynamic (see _bindJoystick) so touch
+    // point BECOMES center — no fixed-center offset possible.
+    const magnitude = Math.hypot(x, yUp);
+    if (magnitude < 0.2) {
+      this._udStick(0);
+      return;
+    }
+    const snappedY = Math.abs(yUp) < 0.25 ? 0 : yUp;
+    const horizontalDominant = Math.abs(x) > Math.abs(snappedY) * 1.2;
+    const verticalValue = horizontalDominant ? 0 : -snappedY;
     this._udStick(verticalValue);
   }
 
@@ -298,7 +306,7 @@ export class InputManager {
       if (knob) knob.style.display = 'none';
       const manager = window.nipplejs.create({
         zone: base,
-        mode: 'static',                          // fixed stick, bottom-left (fighting-game standard)
+        mode: 'dynamic',                         // stick appears at touch point (fix 2026-10-24: static center caused any-touch=down)
         position: { top: '50%', left: '50%' },    // centered in the #joystick zone
         color: 'white',
         size: 120,                               // 130px zone with a small margin
@@ -401,3 +409,5 @@ export class InputManager {
   }
   _resetJoyKnob() {}
 }
+
+// Joystick center fix 2026-10-24: dynamic mode + deadzone (PR #1001)
