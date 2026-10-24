@@ -154,7 +154,14 @@ export class InputManager {
     this.axisX = Math.abs(x) > 0.25 ? Math.max(-1, Math.min(1, x)) : 0;
     // Movement: vertical via Tekken tap-vs-hold zones (0.55 threshold),
     // not the octant — a mostly-horizontal push must not crouch.
-    this._udStick(-yUp);
+    // FIX 2026-10-24: Sideways drag with natural downward thumb arc (x=0.9, yUp=-0.6)
+    // was triggering crouch because vertical exceeded 0.55 even though horizontal
+    // was dominant. Only trigger up/down when vertical is NOT clearly horizontal-dominant.
+    // Horizontal dominant = |x| > |yUp| * 1.2. Diagonals (d/f, u/f) have similar
+    // magnitudes, so they still trigger vertical correctly.
+    const horizontalDominant = Math.abs(x) > Math.abs(yUp) * 1.2;
+    const verticalValue = horizontalDominant ? 0 : -yUp;
+    this._udStick(verticalValue);
   }
 
   _tekken(btn, t) {
