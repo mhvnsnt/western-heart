@@ -203,10 +203,10 @@ are reported as such, not rewired.
 | Character | Styles / sources in canon | Moveset today | Verdict |
 |---|---|---|---|
 | **ZUI** | Steve Fox boxing + Lei Wulong drunken fist + WH-original (bottle/stumble) | 345 Steve T7 + 40 Lei drunken + 2 WH-original, all labeled in this PR | **WIRED (this PR)** |
-| **RAVE** (Kiko Tanaka / Ghost) | Lei Wulong, full | 526 Lei rows, full Lei movelist | NOT a mix — pure Lei base. Zui's DRU sharing is one-directional; Rave untouched by this PR |
+| **RAVE** (Kiko Tanaka / Ghost) | Lei Wulong, full, plus Byou donor rows (see reconciliation note) | 526 Lei T7 rows + ~158 Byou donor rows + 2 Rave sigs (per pattern audit) | NOT a canon-named style mix — but a file-content MIX under the pattern audit's definition (Lei + Byou donor rows, per owner order quoted there). Zui's DRU sharing is one-directional; Rave untouched by this PR |
 | **BYOU** (soul file) | Lei Wulong | Full Lei set (524 + 47 rbnorway rows) + DRU group | NOT a mix — the Lei-side file of the same BYOU soul. Untouched by this PR |
 | **STEVE FOX** (vessel) | Steve Fox boxing | No separate fighter file; represented by Zui's Steve base (same vessel, same soul, before the monastery) | No action — the duality IS the Zui mix |
-| **DEMONIO / DEMONIO-WINGED** | Mishima-style karate only (Jin's frame, "precise, fundamental, the honest style") | Jin rows + Devil Jin rows (demonio 289 + 45; winged 218 + 199) | NOT a mix per canon — Devil Jin is Jin's devil FORM, not a second fighting style. No wiring change |
+| **DEMONIO / DEMONIO-WINGED** | Mishima-style karate only (Jin's frame, "precise, fundamental, the honest style") | Jin rows + Devil Jin rows (demonio 289 + 45; winged 218 + 199) | NOT a mix per canon-style definition — Devil Jin is Jin's devil FORM, not a second fighting style; BUT the pattern audit counts Devil Jin as a second fighter, so Demonio is MIX under that definition. No wiring change either way |
 | **GYOU** | CONFLICT: T3 conversion record says Hwoarang→GYOU; user decision 2026-10-23 says Paul Phoenix→Gyou; T3 record also says Paul→TOU | File already holds both: 326 Hwoarang `~t7.hwoarang` variant keys (suffixed, non-colliding) + 86 Paul keys + T3 rows | **NEEDS-CANON-DECISION** — owner must resolve Paul vs Hwoarang. No wiring change by this PR; deleting either set would destroy one side of an unresolved conflict |
 | **THE TRADER** (Phantom Marketplace) | Mimicry — "wears the opponent's moveset like a borrowed coat"; ROSTER.md: "Mokujin's mimicry moveset. Copies the opponent's style." | No moveset file | **NEEDS-DATA (systemic)** — mimicry cannot be a fixed mix; needs an opponent-copy system, not a move list |
 | **DXMMII** | Mokujin base; "mimic soul", "a copy that became an original" | Mokujin base file | **NEEDS-DATA (systemic)** — same as Trader: mimicry is a system, not a fixed 2-fighter mix |
@@ -253,3 +253,26 @@ is a system, not a move list — flag NEEDS-DATA, don't fake a fixed mix.
 - `docs/decisions/2026-10-24-zui-mix-per-canon.md` — this file.
 - `docs/owner-directives.md` — MIX PER CANON standing rule.
 - `WORKLOG.md` — entry for this PR.
+
+## Reconciliation with the pattern audit (PR #1021, landed on main during this PR)
+
+`docs/MOVESET-PATTERN-AUDIT-2026-10-24.md` (PR #1021) audits the same roster by a
+different definition: MIX = moves from 2+ distinct named fighters present in the
+FILE, whatever the decode status. By that definition it counts 6 MIX: Zui, Rave,
+Demonio, Gyou, Kronos, Ryuji. This audit counted canon-NAMED fighting styles and
+found 1 confirmed fixed mix (Zui). The two audits do not contradict; they answer
+different questions, and the rows above now carry both verdicts where they differ:
+
+- Rave: this audit originally called Rave pure Lei from its 526 T7 Lei rows; the
+  pattern audit shows ~158 Byou donor rows in the same file (owner order quoted
+  there: "U can add leis and byous moves to rave"). Corrected above.
+- Demonio: form (this audit) vs second fighter (pattern audit rule 7). Both readings
+  are recorded; neither requires a wiring change.
+- Gyou: both audits agree it NEEDS an owner decision (Paul declared base vs
+  Hwoarang-majority file).
+- Zui counts differ by basis only: this PR counts 345 Steve keys (280 unique inputs,
+  chain-variant rows included); the pattern audit cites 286/287 T7 Steve rows
+  (distinct-row basis). Same file, different counting basis.
+- The pattern audit explicitly defers Zui to this lane ("Sibling Zui-mix lane owns
+  Zui's Steve + Lei DRU mix and stance system") and flags the same remaining gap
+  class this PR flags for animation (DRU clip row-mapping).

@@ -447,6 +447,12 @@ Rules derived from this directive:
 - Never call something "fixed" when it is only "less broken."
 - Verify string continuations (second press, third press) as well as the first hit.
 - The user's tokens buy real work, not sloppy work. Slow and right beats fast and wrong every time.
+
+## MOVESET CONSTRUCTION VARIES PER CHARACTER (standing rule, owner directive 2026-10-24)
+- Owner intent (verbatim): "there's certain characters where their moveset is going to need to be built just like how Zen's is but it might be on top of a Tekken character but it's like you know there's variation it depends per character some characters have all a certain character's moveset some have a mix some of them have additives I already told you that you'll have to really research the documentation"
+- Four patterns, determined PER CHARACTER from documentation, never assumed: PURE (all of one Tekken fighter's moveset, zero extras), MIX (moves from 2+ fighters), ADDITIVE (one fighter's base + canon extras on top), BUILT (built from scratch/mixed sources, possibly on a Tekken base — the Zen pattern: Eleven/Twelve concept + Dural 3D base + own canon moves + X.COPY as one super).
+- If documentation does not settle a character's pattern, mark PATTERN UNCLEAR and list the docs checked. NEVER default an unclear character to pure. NEVER assume one pattern for all.
+- Audit of record: docs/MOVESET-PATTERN-AUDIT-2026-10-24.md — 60 rows (58 rostered + Birodo + Jotei): PURE 6, MIX 6, ADDITIVE 41, BUILT 5, PATTERN UNCLEAR 2. Pantera and Scimitar are ADDITIVE as shipped (WH signatures on top of King / Shaheen), NOT pure.
 ## MIX PER CANON (standing rule, 2026-10-24 — Zui mix PR)
 
 - When canon says a fighter fights with 2+ styles, the moveset MUST reflect all of them.
