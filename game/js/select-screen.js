@@ -175,6 +175,16 @@ export class PreviewPane {
       const inst = assets.createInstance(
         modelId, c.colors?.suit ?? 0xffffff, c.colors?.trim ?? 0x888888,
         c.colorize ? (c.tintStrength ?? 0.3) : 0); // TINT FIX: own textures, no palette wash (real colors)
+      // NO RIG = NO T-POSE (t214u): a model with no skinned mesh can only
+      // stand in its bind pose. Show the fighter's posed portrait plate in
+      // the hero pane instead until the re-rig lane rigs it.
+      let skinned = false;
+      inst.model.traverse((o) => { if (o.isSkinnedMesh) skinned = true; });
+      if (!skinned) {
+        this._clearModel();
+        console.warn('[WH] select preview: no rig for', modelId, '- showing portrait plate');
+        return false;
+      }
       this._clearModel();
       this.model = inst.model;
       this.model.rotation.y = this.baseRotY;
