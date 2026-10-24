@@ -27,6 +27,7 @@
 
 import { stickToDir } from './combat-core.js';
 export const CHORD_MS = 50; // 3 frames @60 Hz
+export const HOLD_BTN_MS = 167; // 10 frames @60 Hz: Tekken '*' (hold) threshold
 export class InputManager {
   constructor() {
     this.axisX = 0;
@@ -67,8 +68,14 @@ export class InputManager {
      the late chord whiffed — worse at low fps). Time-based, so frame-rate independent. */
   consume(now = performance.now()) {
     if (this._pend && now - this._pend.t >= CHORD_MS) { const b = this._pend.btn; this._pend = null; this._push(b); }
+    // Hold-button moves ('3+4*', 'u/f+1+2*'): a limb (or chord) still held 10 frames after
+    // its press emits 'hold:<btns>' once; the fighter upgrades the move it is starting.
+    const ld = this._limbDown || {};
+    const held = Object.keys(ld).filter(b => ld[b] && !ld[b].sent && now - ld[b].t >= HOLD_BTN_MS).sort();
+    if (held.length) { for (const b of held) ld[b].sent = true; this._push('hold:' + held.join('+')); }
     const q = this._queue.slice(); this._queue.length = 0; return q;
   }
+  _limbUp(btn) { if (this._limbDown) delete this._limbDown[btn]; }
 
   _push(action) {
     if (!this.enabled) return;
@@ -145,6 +152,7 @@ export class InputManager {
                 : btn === '2' ? [['4', '2+4'], ['1', '1+2'], ['3', '2+3']]
                 : btn === '3' ? [['1', '1+3'], ['4', '3+4'], ['2', '2+3']]
                 : [['2', '2+4'], ['3', '3+4'], ['1', '1+4']];
+    if (this.enabled) (this._limbDown = this._limbDown || {})[btn] = { t: now, sent: false };
     if (this._pend) {
       const name = (pairs.find(([pair]) => pair === this._pend.btn) || [])[1];
       if (name && now - this._pend.t < CHORD_MS) { this._pend = null; this._push(name); return; }
@@ -232,6 +240,7 @@ export class InputManager {
         case 'KeyD': case 'ArrowRight': if (this.axisX > 0) this.axisX = this._keys[this._physicalCode('left')] ? -1 : 0; break;
         case 'KeyW': case 'ArrowUp': case 'KeyS': case 'ArrowDown': this._udRelease(); break;
         case 'Space': this.held.block = false; break;
+        case 'Digit1': case 'Digit2': case 'Digit3': case 'Digit4': this._limbUp(e.code.slice(5)); break;
       }
     });
   }
@@ -358,6 +367,7 @@ export class InputManager {
       const release = (e) => {
         e.preventDefault();
         if (action === 'block') this.held.block = false;
+        else if (/^[1234]$/.test(action)) this._limbUp(action);
       };
       btn.addEventListener('touchstart', press, { passive: false });
       btn.addEventListener('touchend', release, { passive: false });

@@ -52,7 +52,22 @@ for (const s of ['1,2', '1,1,2', '2,1', 'd/f+1,2', 'b+1,2']) {
     fr = fr.concat(F(d, 3, b).map(x => x.b ? { ...x, ctx: i ? { inMove: true } : {} } : x), F('n', 8)); });
   cases.push({ name: 'string ' + s, fid, frames: fr, want: s, last: true });
 }
+// InputManager: chord leniency (1 then 3 two frames later = '1+3', never '1' then '1+3'), at
+// 60/30/15 fps consume rates, and hold-button '*' emission after 10 frames.
+globalThis.window = globalThis.window || {};
+const { InputManager } = await import(join(root, 'game/js/input.js'));
+const imCases = [];
+for (const fps of [60, 30, 15]) {
+  const im = new InputManager(); im.enabled = true; clock = 0; const got = [];
+  const step = 1000 / fps; let t = 0;
+  const events = { 0: () => im._tekken('1'), 33: () => im._tekken('3') }; // 2 frames apart
+  for (let f = 0; f < 20; f++) { const tn = f * step; for (const [at, fn] of Object.entries(events)) if (+at <= tn && !fn.done) { clock = +at; fn(); fn.done = true; } clock = tn; got.push(...im.consume(tn)); }
+  imCases.push({ name: `1+3 chord @${fps}fps`, got: got.filter(x => !x.startsWith('hold:')).join(' '), want: '1+3' });
+}
+{ const im = new InputManager(); im.enabled = true; clock = 0; im._tekken('1'); clock = 400; im._tekken('2'); const g = im.consume(500); imCases.push({ name: 'string 1 then 2 (400ms) stays two presses', got: g.filter(x => !x.startsWith('hold:')).join(' '), want: '1 2' }); }
+{ const im = new InputManager(); im.enabled = true; clock = 0; im._tekken('3'); clock = 10; im._tekken('4'); const g = []; for (let f = 1; f < 20; f++) g.push(...im.consume(f * 16.67)); imCases.push({ name: '3+4 held = 3+4 then hold:3+4', got: g.join(' '), want: '3+4 hold:3+4' }); }
 let fail = 0; const results = [];
+for (const c of imCases) { const ok = c.got === c.want; if (!ok) fail++; results.push({ case: c.name, want: c.want, got: c.got, ok }); console.log(`${ok ? 'PASS' : 'FAIL'}  ${c.name.padEnd(42)} want "${c.want}" got "${c.got}"`); }
 for (const c of cases) {
   const out = run(c.fid, c.frames).filter(x => x !== null && x !== undefined);
   const got = out[out.length - 1] ?? null;

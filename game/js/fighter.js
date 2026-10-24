@@ -1025,6 +1025,18 @@ export class Fighter {
     if (move.isGrab || notation === '1+3' || notation === '2+4') this.vx = this.facing * 2.5; // lunge into the grab
     return true;
   }
+  /* Tekken hold-button ('*'): the limbs of the move being started are still held -> the
+     held version replaces it during startup (3+4 -> 3+4*). Nothing held-only fires from idle. */
+  tryHoldUpgrade(btns) {
+    if (this.state !== 'attack' || this._attackPhase !== 'startup' || !this.attackName) return false;
+    const n = this.attackName;
+    if (!n.endsWith(btns) && !btns.split('+').every(b => n.includes(b))) return false;
+    const move = getRealMove(this._movesetId, n + '*');
+    if (!move) return false;
+    this.tekken._recordMove(n + '*');
+    this.attack = move; this.attackName = n + '*'; this.hasHit = false;
+    return true;
+  }
   /* Start the move for an already-resolved notation (buffered string hits). */
   _fireNotation(notation) {
     const move = getRealMove(this._movesetId, notation);

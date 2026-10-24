@@ -406,6 +406,7 @@ export class Game {
               this.ui.surgeName(this.p1.char.surge?.name ?? 'SOUL SURGE');
             }
           }
+          else if (act.startsWith('hold:')) { if (this.p1.tryHoldUpgrade && this.p1.tryHoldUpgrade(act.slice(5))) rec('hold'); }
           else if (act === 'dodge') { if (this.p1.tryDodge()) rec('dodge'); }
           else if (act === 'vskill') { this._vskillAction(this.p1, rec); }
           else if (act === 'transform') {
