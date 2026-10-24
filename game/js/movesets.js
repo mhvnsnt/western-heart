@@ -252,6 +252,13 @@ export function parseMotion(n) {
     if (MOTION_DIRS[lm[1]]) dirs = dirs.concat(MOTION_DIRS[lm[1]]);
     else dirs.push(lm[1].toLowerCase());
   }
+  // 'b,1' / 'd,1' / 'u/f,n,1': ONE direction, then the button with no direction = tap the
+  // direction, release, press (Tekken). Distinct from b+1 (held). Marked tapRelease so the
+  // resolver requires the stick back at neutral and the direction in the recent history.
+  if (!lm[1] && head.length >= 1 && dirs.filter(d => d !== 'n').length === 1 && head.length === parts.length - 1) {
+    const one = dirs.filter(d => d !== 'n');
+    return { prefix, dirs: one, btn: lm[2], neutral: true, tapRelease: true };
+  }
   if (dirs.filter(d => d !== 'n').length < 2 && !(lm[1] && MOTION_DIRS[lm[1]])) return null; // plain directional
   return { prefix, dirs, btn: lm[2], neutral };
 }
@@ -266,7 +273,7 @@ function _prepare(ms) {
     const m = parseMotion(n);
     if (m) motions.push({ n, ...m });
   }
-  motions.sort((a, b) => b.dirs.length - a.dirs.length); // longest motion wins (qcf+1 over f+1)
+  motions.sort((a, b) => (b.dirs.length - a.dirs.length) || ((!!b.tapRelease && /,n,/.test(b.n)) - (!!a.tapRelease && /,n,/.test(a.n)))); // longest motion wins (qcf+1 over f+1); explicit ',n,' spelling first on ties
   ms._motions = motions;
   // v2: every proper prefix of a string ('d/f+2,1' of 'd/f+2,1,3,2') — lets a string whose
   // intermediate steps are not standalone moves (chain throws, long strings) still be typed.
@@ -538,7 +545,7 @@ export class TekkenBuffer {
     if (ctx.backturned) prefixes.push('BT.');
     if (ctx.sidestep) prefixes.push('SS.');
     if (ctx.crouching) prefixes.push('FC.');
-    if (ctx.rising) prefixes.push('WS.');
+    if (ctx.rising || this.wsWindow()) prefixes.push('WS.'); // WS. from the stick too (Tekken)
     prefixes.push('');
     for (const p of prefixes) {
       // Final step HELD (>= MOTION_HOLD frames) prefers the capital spelling (f,f,F+3), a quick
@@ -554,6 +561,14 @@ export class TekkenBuffer {
         // so a released stick reaches it and a held one still gets b+1 / d+1 first.
         const tapRel = !mo.neutral && !dir && /,[1-4](?:\+[1-4])*\*?$/.test(mo.n) && !/^(f|b)(,\1)+$/i.test(mo.dirs.join(','));
         if (!tapRel && (mo.neutral ? dir : dir !== mo.dirs[mo.dirs.length - 1])) continue;
+        if (mo.tapRelease) {
+          // stick released now; the single direction is the newest non-neutral step, within 12 frames
+          if (dir) continue;
+          let pos = this.hi, w = 0; const h = this.hist;
+          while (w < 12 && h[pos] === 'n') { pos = this._prev(pos); w++; }
+          if (w < 12 && h[pos] === mo.dirs[0] && has(mo.n)) return this._recordMove(mo.n);
+          continue;
+        }
         if (this._motionHeldV2(mo) && has(mo.n)) return this._recordMove(mo.n);
       }
       if (dir) {
@@ -570,6 +585,18 @@ export class TekkenBuffer {
       if (p && opener(p + input)) return null; // stance chain opener ('SLEEPER.1' of 'SLEEPER.1,1,1+2')
     }
     return null;
+  }
+
+  /** Tekken WS. from the stick: newest frames neutral/up/forward/back (not down), and within the
+      last 12 frames a down-family run of >= 8 frames ended. 60 Hz frames. */
+  wsWindow() {
+    const h = this.hist, isD = (d) => d === 'd' || d === 'd/b' || d === 'd/f';
+    let i = this.hi, n = 0;
+    while (n < 12 && !isD(h[i])) { i = this._prev(i); n++; }
+    if (n === 0 || n >= 12) return false;
+    let run = 0;
+    while (run < HIST_LEN && isD(h[i])) { run++; i = this._prev(i); }
+    return run >= 8;
   }
 
   /** Frames the current direction has been held (newest history run). */

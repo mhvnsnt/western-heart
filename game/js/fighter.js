@@ -715,7 +715,10 @@ export class Fighter {
       backturned: st === 'BT',
       sidestep: this.state === 'sidestep',
       crouching: this.state === 'crouch' || st === 'FC',
-      rising: this._risingT > 0,
+      // WS.: the rising window after a real crouch, OR (Tekken reads it from the stick) a down
+      // hold of >= 8 frames released within the last 12 frames — so WS.4 is not lost when the
+      // crouch state was skipped (crouch-move recovery, touch stick lag).
+      rising: this._risingT > 0 || !!(this.tekken && this.tekken.wsWindow && this.tekken.wsWindow()),
       rage: !this._rageUsed && this.hp > 0 && this.hp <= this.maxHp * 0.25,
       urgeOn: !!this._urgeOn,
       urgeAvailable: !this._urgeUsed && !this._urgeOn && this.hp > 0,

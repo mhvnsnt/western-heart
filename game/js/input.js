@@ -26,6 +26,7 @@
    ============================================================ */
 
 import { stickToDir } from './combat-core.js';
+export const CHORD_MS = 50; // 3 frames @60 Hz
 export class InputManager {
   constructor() {
     this.axisX = 0;
@@ -52,7 +53,7 @@ export class InputManager {
   enable(on) { this.enabled = on; if (!on) this.reset(); }
 
   reset() {
-    this.axisX = 0; this.up = false; this.down = false; this.held.block = false; this._queue.length = 0;
+    this.axisX = 0; this.up = false; this.down = false; this.held.block = false; this._queue.length = 0; this._pend = null;
     this._keys = {};
     this._lastPunchT = 0; this._lastKickT = 0;
     this._lastT = { '1': 0, '2': 0, '3': 0, '4': 0 };
@@ -60,7 +61,14 @@ export class InputManager {
     this._resetJoyKnob();
   }
 
-  consume() { const q = this._queue.slice(); this._queue.length = 0; return q; }
+  /* Chord leniency (Tekken: simultaneous presses within ~3 frames). A lone limb press is held
+     CHORD_MS before it is released to the game; a partner limb inside that window upgrades it to
+     the chord IN PLACE, so 1+3 never splits into '1' then '1+3' (the old path fired '1' at once and
+     the late chord whiffed — worse at low fps). Time-based, so frame-rate independent. */
+  consume(now = performance.now()) {
+    if (this._pend && now - this._pend.t >= CHORD_MS) { const b = this._pend.btn; this._pend = null; this._push(b); }
+    const q = this._queue.slice(); this._queue.length = 0; return q;
+  }
 
   _push(action) {
     if (!this.enabled) return;
@@ -137,15 +145,14 @@ export class InputManager {
                 : btn === '2' ? [['4', '2+4'], ['1', '1+2'], ['3', '2+3']]
                 : btn === '3' ? [['1', '1+3'], ['4', '3+4'], ['2', '2+3']]
                 : [['2', '2+4'], ['3', '3+4'], ['1', '1+4']];
-    for (const [pair, name] of pairs) {
-      if (now - this._lastT[pair] < 140) {
-        this._lastT[pair] = 0; this._lastT[btn] = 0;
-        this._push(name);
-        return;
-      }
+    if (this._pend) {
+      const name = (pairs.find(([pair]) => pair === this._pend.btn) || [])[1];
+      if (name && now - this._pend.t < CHORD_MS) { this._pend = null; this._push(name); return; }
+      { const b = this._pend.btn; this._pend = null; this._push(b); } // flush the older press first (strings 1,3 stay ordered)
     }
     this._lastT[btn] = now;
-    this._push(btn);
+    if (!this.enabled) return;
+    this._pend = { btn, t: now };
   }
 
   /* ---- Sidestep tap-vs-hold (Tekken 7 semantics) ----

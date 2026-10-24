@@ -365,7 +365,12 @@ export class Game {
         this.p1.tryCrouch(inp.down && !inp.up); // hold down = crouch; release = WS. window
         // Feed facing-relative direction into the Tekken input buffer
         // (drives motion specials qcf/f,F and directional attacks f+1)
-        this.p1.tekken.noteDirection(stick);
+        // Tekken input history is 60 Hz (one entry per game frame). The sim steps at
+        // FIXED_DT=1/120, so feeding every step halved every motion/double-tap/hold window
+        // (qcf, f,F, WS., D/F+ holds misread). Sample on a 60 Hz accumulator: frame-rate
+        // independent, exact Tekken frame counts (owner t231u input fix).
+        this._p1InAcc = (this._p1InAcc || 0) + dt;
+        while (this._p1InAcc >= 1 / 60 - 1e-9) { this.p1.tekken.noteDirection(stick); this._p1InAcc -= 1 / 60; }
         if (ms && this.p1.isBlocking()) ms.blockTime += dt;
         if (ms) ms.time += dt;
         // Stream 6: while caught in a throw, limb inputs are break attempts.
