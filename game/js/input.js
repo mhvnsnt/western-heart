@@ -33,6 +33,7 @@ export class InputManager {
     this.down = false;
     this.held = { block: false };
     this._lastT = { '1': 0, '2': 0, '3': 0, '4': 0 };
+    this._heldBtns = new Set(); // Tekken buttons currently held (touch/key down, not yet up)
     this._queue = [];
     this._keys = {};
     this._joyActive = false;
@@ -137,12 +138,17 @@ export class InputManager {
   _tekken(btn) {
     const now = performance.now();
     if (this._udDir && !this._udHeld) this._udUsed = true; // the tap fed this attack's direction
+    // Chord = SIMULTANEOUS hold: the pair button must still be HELD when this one lands.
+    // Sequential taps (first released before second pressed) are strings, not chords.
+    // The old 140ms timing window converted string inputs (2 then 1) into chords (1+2),
+    // breaking every multi-hit combo. Fixed 2026-10-24: held-state check, not timing.
+    this._heldBtns.add(btn);
     const pairs = btn === '1' ? [['3', '1+3'], ['2', '1+2'], ['4', '1+4']]
                 : btn === '2' ? [['4', '2+4'], ['1', '1+2'], ['3', '2+3']]
                 : btn === '3' ? [['1', '1+3'], ['4', '3+4'], ['2', '2+3']]
                 : [['2', '2+4'], ['3', '3+4'], ['1', '1+4']];
     for (const [pair, name] of pairs) {
-      if (now - this._lastT[pair] < 140) {
+      if (this._heldBtns.has(pair)) {
         this._lastT[pair] = 0; this._lastT[btn] = 0;
         this._push(name);
         return;
@@ -150,6 +156,11 @@ export class InputManager {
     }
     this._lastT[btn] = now;
     this._push(btn);
+  }
+
+  /* Release a Tekken button (touchend / keyup). Removes from held set. */
+  _tekkenUp(btn) {
+    this._heldBtns.delete(btn);
   }
 
   /* ---- Sidestep tap-vs-hold (Tekken 7 semantics) ----
@@ -229,6 +240,10 @@ export class InputManager {
         case 'KeyD': case 'ArrowRight': if (this.axisX > 0) this.axisX = this._keys[this._physicalCode('left')] ? -1 : 0; break;
         case 'KeyW': case 'ArrowUp': case 'KeyS': case 'ArrowDown': this._udRelease(); break;
         case 'Space': this.held.block = false; break;
+        case 'Digit1': this._tekkenUp('1'); break;
+        case 'Digit2': this._tekkenUp('2'); break;
+        case 'Digit3': this._tekkenUp('3'); break;
+        case 'Digit4': this._tekkenUp('4'); break;
       }
     });
   }
@@ -355,6 +370,7 @@ export class InputManager {
       const release = (e) => {
         e.preventDefault();
         if (action === 'block') this.held.block = false;
+        else if (/^[1234]$/.test(action)) this._tekkenUp(action);
       };
       btn.addEventListener('touchstart', press, { passive: false });
       btn.addEventListener('touchend', release, { passive: false });
