@@ -68,11 +68,21 @@ jobs:
           sparse-checkout-cone-mode: false
       - name: Run game unit tests
         run: |
-          set -euo pipefail
-          for t in test/*.test.mjs; do
-            echo "== $t"
-            node "$t"
-          done
+          set +e
+          {
+            for t in test/*.test.mjs; do
+              echo "== $t"
+              node "$t" 2>&1
+              echo "EXIT:$?"
+            done
+          } > /tmp/tout.txt 2>&1
+          cat /tmp/tout.txt
+          grep -q "EXIT:[1-9]" /tmp/tout.txt && exit 1 || exit 0
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-debug-979
+          path: /tmp/tout.txt
 
   menu-touch-e2e:
     # t122u: phone tap test (hasTouch 390x844): every menu item tappable,
