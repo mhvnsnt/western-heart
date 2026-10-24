@@ -1,3 +1,13 @@
+## 2026-10-24 — Anim-motion audit follow-up: test pins updated to the corrected rows (ANIM-MOTION LANE)
+
+**Why:** CI `game-unit-tests` failed on PR #1022 only because three assertions pinned the OLD buggy rows. The pins enshrined the bugs: row 44 is a jumping-1 clip (feet 0.75/0.78 m off ground at frame 0), not a standing jab; row 203 is a lunging ducking straight (0.95 m travel, hips to 0.61 m), not a jab.
+
+**What changed (test-only, no game data touched):** `test/attack-anim.test.mjs` — Pantera `1` pin row:44 → row:110 (T3 f+1, standing armL jab, active 10 = T7 i10), intent asserts kept (never plays throw row 290, limb armL, row 290 rejected). `test/root-motion.test.mjs` — LP1 pin row:44 → row:110 with measured values (steps in to 0.265 m peak, settles 0.106 m forward, −0.028 m lateral); RP2 pin row:203 → row:99 (T3 b+2, standing armR jab, active 10 = T7 i10) with measured values (0.151 m forward, −0.138 m lateral, mirrored −0.151 m); wall test reframed — row 99 peaks at 0.300 m mid-clip then settles to 0.151 m, so at the wall the clamp discards the overshoot and the settle-back lands at 8.251 m (inside the stage, clamp engaged at peak 8.4 m); the old x ≥ 8.3 assertion assumed row 203's monotonic 0.85 m travel and is wrong for a peak-and-settle clip.
+
+**Verification (local reproduction of CI's per-file run, main tree + PR movesets + updated pins):** all 22 `test/*.test.mjs` files pass, including attack-anim 9/9 and root-motion 9/9. `game/tests/move-melding.test.mjs` references none of the changed fighters or rows. Simulation/scan proof only — NOT play-verified.
+
+---
+
 ## 2026-10-24 — Anim-motion audit: Pantera + 8 MOD fighters, 11 basics rewired, 22 jumping moves bound (ANIM-MOTION LANE)
 
 **Owner instruction (verbatim):** "game is UNPLAYABLE — still doing wrong moves in wrong places, wrong animations. Press button, get wrong move." (user playtest verdict 2026-10-24) + "if your goal was to make things better you would take your time to do it all right" (user directive 2026-10-24: map each move to its EXACT correct animation from the actual Tekken files, never call something "fixed" when it is only "less broken").

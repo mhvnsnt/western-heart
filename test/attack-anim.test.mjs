@@ -117,7 +117,11 @@ test('pressing 1 never plays a throw: Pantera Jab never plays King\'s throw-atte
   const p = plan(f, '1');
   assert.ok(!T.clipIsThrow(f._t3.clips[p.name]), `Pantera 1 plays throw row ${p.name}`);
   assert.equal(p.limb, 'armL');
-  assert.equal(p.name, 'row:44', 'King\'s own T3 1 (i10 jab, decoded hit frame 7)');
+  // Row 44 was NOT a standing jab: its clip starts airborne (feet 0.75/0.78 m
+  // off the ground at frame 0) — it is the T3 jumping-1 family, and the pin
+  // enshrined that bug. Row 110 is T3 f+1: a standing armL jab, active 10 =
+  // T7 i10 (see docs/anim/ANIM-MOTION-AUDIT-2026-10-24.md, PR #1022).
+  assert.equal(p.name, 'row:110', 'King\'s T3 f+1 (standing armL jab, active 10 = T7 i10)');
   // Even with no same-input row to fall back on, the throw row is rejected, never played.
   const q = f._attackClipPlan({ ...mv, animRow: 290, animBank: mv.animBank || 'king', tekkenInput: 'zz', moveKey: null }, 'zz');
   assert.ok(q.rejected.some(r => r.includes('row:290')), JSON.stringify(q.rejected));
