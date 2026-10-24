@@ -33,7 +33,7 @@ def wchunk(d, data):
 def wcp(s, d):
     wchunk(d, open(s, 'rb').read())
     time.sleep(0.1)
-for fn in ['movesets.js', 'rage.js', 'audio.js', 'soulurge.js']:
+for fn in ['movesets.js', 'rage.js', 'audio.js', 'soulurge.js', 'destruction.js']:
     wcp(os.path.join(src, fn), os.path.join(dst, fn))
 wchunk(os.path.join(dst, 'three-stub.js'), '''__THREESTUB__''')
 wchunk(os.path.join(dst, 'fighter-stub.js'),
@@ -47,14 +47,20 @@ wchunk(os.path.join(dst, 'package.json'), '{"type":"module"}')
 print('staged ok')
 `;
 const THREE_STUB = `
-export class Group { constructor(){ this.children = []; this.parent = null; this.name=''; }
+export class _Rot { constructor(){ this.x=0; this.y=0; this.z=0; }
+  set(x,y,z){ this.x=x; this.y=y; this.z=z; return this; } }
+export class Group { constructor(){ this.children = []; this.parent = null; this.name='';
+    this.position = new Vector3(); this.rotation = new _Rot(); }
   add(...o){ for (const x of o){ x.parent = this; this.children.push(x); } }
   remove(x){ this.children = this.children.filter(c => c !== x); }
   clear(){ this.children = []; } }
-export class Mesh { constructor(g=null, m=null){ this.geometry=g; this.material=m||{opacity:1}; this.position=new Vector3(); this.rotation={x:0,y:0,z:0}; this.scale={setScalar(){}}; this.visible=true; this.castShadow=false; this.receiveShadow=false; } }
+export class Mesh { constructor(g=null, m=null){ this.geometry=g; this.material=m||{opacity:1}; this.position=new Vector3(); this.rotation=new _Rot(); this.scale={setScalar(){}}; this.visible=true; this.castShadow=false; this.receiveShadow=false; } }
 export class PlaneGeometry { constructor(){} }
 export class BoxGeometry { constructor(){} }
 export class CircleGeometry { constructor(){} }
+export class Vector2 { constructor(x=0,y=0){ this.x=x; this.y=y; } }
+export class Shape { constructor(pts=[]){ this.points=pts; } }
+export class ExtrudeGeometry { constructor(){} translate(){ return this; } dispose(){} }
 export class MeshBasicMaterial { constructor(o={}){ Object.assign(this, o); if (this.opacity===undefined) this.opacity=1; } }
 export class MeshStandardMaterial { constructor(o={}){ Object.assign(this, o); if (this.opacity===undefined) this.opacity=1; } }
 export class CanvasTexture { constructor(){ this.colorSpace=''; } }
