@@ -66,7 +66,10 @@ Owner rule (2026-10-23): every fighter and every version or transformation is si
 | rave | rave | 176 | 1 | no | Lei Wulong profile |
 | buffalo-bill | buffalo-bill | 175 | 1 | no | Marshall Law profile |
 | vainabel | vainabel | 188 | 1.1 | no | Bass Armstrong profile |
-| cainelias | cainelias | 208 | 1 | no | Undertaker (WWE) profile |
+| cainelias | cainelias | 208 | 1 | no | Undertaker profile |
 | chordz | chordz | 186 | 1 | no | Lars profile |
+| gashadokuro | gashadokuro | 280 | 1 | no | Kuma profile |
+| aotsuki | aotsuki | 277 | 1 | no | Panda profile |
+| silvertongue | silvertongue | 180 | 1 | no | Lili profile |
 
 Proof: `docs/proof/canon-sizing/burger-pantera-390x844.png` (Burger stance height 0.946 -> 1.606 vs Pantera 1.630).

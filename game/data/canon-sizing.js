@@ -55,6 +55,7 @@ const BASE = {
   deathfang: ['Iori Yagami', 182], ryuji: ['Ryuji Yamazaki', 185], koreshi: ['Kakashi', 181], rave: ['Lei Wulong', 176],
   'buffalo-bill': ['Marshall Law', 175], vainabel: ['Bass Armstrong', 188, 1.1], cainelias: ['Undertaker', 208],
   chordz: ['Lars', 186],
+  gashadokuro: ['Kuma', 280, 1, 'Kuma T3 profile 280 cm (Tekkenpedia); GASHADOKURO is the Kuma-bank successor (roster/kuma/CANON.md)'], aotsuki: ['Panda', 277, 1, 'Panda profile 277 cm (Tekkenpedia); AOTSUKI base Panda (roster)'], silvertongue: ['Lili', 180, 1, 'Lili official profile 180 cm (T8); SILVERTONGUE is Lili re-owned (roster)'],
 };
 for (const [id, [body, h, girth = 1, cue]] of Object.entries(BASE)) {
   if (CANON_SIZING[id]) continue;
