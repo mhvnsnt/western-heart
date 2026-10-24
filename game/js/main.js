@@ -605,6 +605,42 @@ window.addEventListener('load', () => {
   setTimeout(() => document.getElementById('tap-to-start').classList.add('show'), 600);
 });
 
+/* Menu tap failure toast (2026-10-24, menu tap fix): a tap must NEVER
+   die silently. Mode loads that reject surface here instead of leaving
+   the user on the menu wondering why nothing happened. */
+function menuFail(msg) {
+  const d = document.createElement('div');
+  d.textContent = msg;
+  d.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);' +
+    'background:#1a0b2e;color:#fff;border:1px solid #e63229;border-radius:12px;' +
+    'padding:12px 18px;z-index:99999;font-size:14px;max-width:90vw;text-align:center;';
+  document.body.appendChild(d);
+  setTimeout(() => d.remove(), 3000);
+}
+
+/* Touch re-dispatch for data-action elements (2026-10-24, menu tap fix):
+   phone taps must route even when the browser does not synthesize a
+   click for the tap. A movement-guarded touchend on a [data-action]
+   element preventDefaults the emulated click and dispatches one real
+   click itself, which the delegated router below handles exactly once.
+   Scroll drags (>12px) are ignored so scrolling never triggers a mode.
+   mainmenu.js deliberately does NOT bind data-action elements, so this
+   cannot double-fire with a card/rail handler. */
+let _docTouchSX = 0, _docTouchSY = 0;
+document.addEventListener('touchstart', (e) => {
+  const t = e.changedTouches[0];
+  if (t) { _docTouchSX = t.clientX; _docTouchSY = t.clientY; }
+}, { passive: true });
+document.addEventListener('touchend', (e) => {
+  const t = e.changedTouches[0];
+  if (!t) return;
+  if (Math.hypot(t.clientX - _docTouchSX, t.clientY - _docTouchSY) > 12) return;
+  const el = (e.target instanceof Element) ? e.target.closest('[data-action]') : null;
+  if (!el) return;
+  e.preventDefault(); // suppress the emulated click — the dispatched click below is the one
+  el.click();
+}, { passive: false });
+
 /* Delegated data-action router (T8 menu, worker 37): one document-level
    listener covers both the static menu and submenu cards created
    dynamically by mainmenu.js. Previously a one-time forEach at eval. */
@@ -613,48 +649,49 @@ document.addEventListener('click', (e) => {
   const el = (t instanceof Element) ? t.closest('[data-action]') : null;
   if (!el) return;
   {
-    unlockAudio();
-    audio.uiClick();
+    // Sound must never block navigation: a throwing audio path used to
+    // kill the whole router before the mode started.
+    try { unlockAudio(); audio.uiClick(); } catch { /* sound is optional */ }
     const a = el.dataset.action;
     if (a === 'play' || a === 'mode-arcade') {
-      getModes().then(m => m.startMode('arcade'));
+      getModes().then(m => m.startMode('arcade')).catch(() => menuFail('Could not load ARCADE — tap again'));
     }
     else if (a === 'mode-versus') {
-      getModes().then(m => m.startMode('versus'));
+      getModes().then(m => m.startMode('versus')).catch(() => menuFail('Could not load VERSUS — tap again'));
     }
     else if (a === 'mode-story') {
-      getModes().then(m => m.startMode('story'));
+      getModes().then(m => m.startMode('story')).catch(() => menuFail('Could not load STORY — tap again'));
     }
     else if (a === 'mode-training') {
-      getModes().then(m => m.startMode('training'));
+      getModes().then(m => m.startMode('training')).catch(() => menuFail('Could not load TRAINING — tap again'));
     }
     else if (a === 'mode-fightlab') {
-      getModes().then(m => m.startMode('fightlab'));
+      getModes().then(m => m.startMode('fightlab')).catch(() => menuFail('Could not load FIGHTLAB — tap again'));
     }
     else if (a === 'mode-survival') {
-      getModes().then(m => m.startMode('survival'));
+      getModes().then(m => m.startMode('survival')).catch(() => menuFail('Could not load SURVIVAL — tap again'));
     }
     else if (a === 'mode-timeattack') {
-      getModes().then(m => m.startMode('timeattack'));
+      getModes().then(m => m.startMode('timeattack')).catch(() => menuFail('Could not load TIMEATTACK — tap again'));
     }
     else if (a === 'mode-team') {
-      getModes().then(m => m.startMode('team'));
+      getModes().then(m => m.startMode('team')).catch(() => menuFail('Could not load TEAM — tap again'));
     }
     else if (a === 'mode-qombat') {
-      getModes().then(m => m.startMode('qombat'));
+      getModes().then(m => m.startMode('qombat')).catch(() => menuFail('Could not load QOMBAT — tap again'));
     }
     else if (a === 'mode-surge') {
-      getModes().then(m => m.startMode('surge'));
+      getModes().then(m => m.startMode('surge')).catch(() => menuFail('Could not load SURGE — tap again'));
     }
     else if (a === 'mode-trader') {
-      getModes().then(m => m.startMode('trader'));
+      getModes().then(m => m.startMode('trader')).catch(() => menuFail('Could not load TRADER — tap again'));
     }
     else if (a === 'mode-rankbattle') {
       rankBattleSelect = true;
-      getRankBattle().then((rb) => rb.start());
+      getRankBattle().then((rb) => rb.start()).catch(() => menuFail('Could not load RANKED — tap again'));
     }
     else if (a === 'show-ranks') {
-      lazy.ranks().then((m) => m.initRanks().then(() => m.openRankHub()));
+      lazy.ranks().then((m) => m.initRanks().then(() => m.openRankHub())).catch(() => menuFail('Could not load RANK HALL — tap again'));
     }
     else if (a === 'mode-create') {
       // Character creation — launches the Create Fighter CAW suite.
@@ -705,22 +742,22 @@ document.addEventListener('click', (e) => {
   if (el.closest('#mm-list') && document.getElementById('mm-submenu')) return;
   const m = el.dataset.mm;
   if (m === 'story') {
-    getModes().then(modes => modes.startMode('story'));
+    getModes().then(modes => modes.startMode('story')).catch(() => menuFail('Could not load STORY — tap again'));
   }
   else if (m === 'versus') {
-    getModes().then(modes => modes.startMode('versus'));
+    getModes().then(modes => modes.startMode('versus')).catch(() => menuFail('Could not load VERSUS — tap again'));
   }
   else if (m === 'online') {
     show('online');
   }
   else if (m === 'arcade') {
-    getModes().then(modes => modes.startMode('arcade'));
+    getModes().then(modes => modes.startMode('arcade')).catch(() => menuFail('Could not load ARCADE — tap again'));
   }
   else if (m === 'sidegames') {
     show('sidegames');
   }
   else if (m === 'training') {
-    getModes().then(modes => modes.startMode('training'));
+    getModes().then(modes => modes.startMode('training')).catch(() => menuFail('Could not load TRAINING — tap again'));
   }
   else if (m === 'creation') {
     window.location.href = '../customization/creation-suite-ui/index.html';
