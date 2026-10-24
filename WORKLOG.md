@@ -2666,3 +2666,17 @@ Owner lane: Cape Jones (secret identity Cyborg X, fighter id `cyborgx`) replaces
 
 **Deviations:** none.
 
+
+## 2026-10-23 — Semantic-Aware Motion Encoding integration (SATA, arXiv:2605.27055)
+
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate"
+
+**What:** Integrated SATA (Semantic-Aware Motion Encoding for Topology-Agnostic Character Animation, Zhang et al., ICML 2026, code Apache-2.0 verified) into the animation pipeline as `tools/anim-retarget/` — a WH-native, numpy-only implementation of the paper's semantic joint alignment core (Sec. 3.1-3.3). Retargets a wh-anim/1 Tekken clip to ANY target rig with no manual joint mapping, no canonical joint set, no paired data.
+
+**Why:** `game/js/t3anims.js` `retargetT3Clips()` maps bones by name against a hardcoded canonical list — creatures / extra limbs / non-standard rigs need manual rig mapping today. This removes that bottleneck.
+
+**Files:** `tools/anim-retarget/{semantic_retarget.py,semantic_tags.py,graph_rep.py,quat.py,README.md,tests/test_semantic_retarget.py}`, `docs/research/SEMANTIC-RETARGET-2026-10-23.md`.
+
+**Tests (real data, all pass):** Paul→Paul identity (22/22, E=0); Paul punch→Gon creature rig (18/18 functional maps, exact rotation transfer, leg-ratio 0.205); synonym-rename name-invariance (18/18 identical — semantic, not name-based); 4-arm+tail rig (16 extra arms inherit motion, tail holds rest); reduced rig (17/17). `python3 tools/anim-retarget/tests/test_semantic_retarget.py` → ALL PASSED.
+
+**Deviations from paper (documented):** training-free analysis mode — no torch/checkpoints; explicit correspondence replaces learned FiLM; direct rotation transfer replaces learned decoder. Upgrade path (SATA checkpoint `--backend sata`) flagged in the research doc, not faked.
