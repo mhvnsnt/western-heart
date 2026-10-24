@@ -3,7 +3,7 @@
 
    Design: docs/research/MOVE-MELDING-2026-10-23.md
    Inspiration (proprietary concept — studied, NOT copied): MDickey's
-   Wrestling Empire "move melding": combine moves in real time
+   Procedural "move melding": combine moves in real time
    (hurricanrana-to-piledriver), physics-based animation where
    "anything can happen at any moment"; every new move adds a new
    counter + a new hybrid.
