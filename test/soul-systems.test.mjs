@@ -5,7 +5,9 @@ const S = await import('../game/js/soul-systems.js');
 const { FULL_ROSTER } = await import('../game/js/roster-full.js');
 const V = JSON.parse(fs.readFileSync(new URL('../game/data/soul-variants.json', import.meta.url)));
 S.setVariants(V);
-const deny = JSON.parse(fs.readFileSync(new URL('../tools/canon/denylist.json', import.meta.url))).terms;
+const _dl = new URL('../tools/canon/denylist.json', import.meta.url);
+// CI game-unit-tests uses a sparse checkout without tools/canon; canon-names job covers the leak check there.
+const deny = fs.existsSync(_dl) ? JSON.parse(fs.readFileSync(_dl)).terms : [];
 let n = 0; const t = (_, f) => { f(); n++; };
 const mk = (id, o = {}) => ({ char: { id }, meter: 0, hp: 100, maxHp: 100, canAct: () => true, receiveHit(m) { this.hp -= m.damage; return 'hit'; }, ...o });
 t('every roster fighter has a variant row', () => { for (const c of FULL_ROSTER) if (c && c.id) assert.ok(V.fighters[c.id], c.id); });
