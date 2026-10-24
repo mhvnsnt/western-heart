@@ -305,6 +305,15 @@ export class InputManager {
         threshold: 0.1,
         fadeTime: 150,
         restOpacity: 0.85,
+        // STICK-CENTRE FIX (owner 2026-10-24: "any touch to the joystick makes it go down, and I have to do a
+        // weird wide drag to make it go up"). In static mode nipplejs stores the stick centre ONCE, when the
+        // manager is created. This runs at boot while the fight HUD is still hidden, so it stored (0,0) - the
+        // screen's top-left corner - while the stick is drawn at the bottom-left (measured live: stored {0,0}
+        // vs real centre {87,299} at 844x390). Every touch was measured from the corner: always DOWN (crouch,
+        // FC/WS moves instead of the pressed move), and UP only far above the stick. dynamicPage re-reads the
+        // stick's on-screen position on every touch (nipplejs processOnMove), so the centre is always right,
+        // after the HUD appears, after rotation, and after resize.
+        dynamicPage: true,
       });
       // nipplejs vector: x is right-positive, y is UP-positive (negated screen y).
       // _udStick takes screen-style ny (down-positive; up zone is ny < -0.55).
