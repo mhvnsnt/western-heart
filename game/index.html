@@ -485,6 +485,10 @@
        module graph so input.js/main.js can consult window.WHIdentity. -->
   <!-- t122u touch failsafe: if the module graph fails, still drop the boot overlay. -->
   <script>setTimeout(function(){var l=document.getElementById('loading');if(l&&!document.body.classList.contains('in-fight'))l.classList.add('hidden');},4000);</script>
+  <!-- nipplejs v0.10.2 (MIT, vendored in game/vendor/nipplejs/): mobile virtual joystick.
+       Classic script so window.nipplejs is ready before the module graph; input.js
+       uses it for the left-thumb stick and falls back to its legacy binding if absent. -->
+  <script src="vendor/nipplejs/nipplejs.min.js"></script>
   <script src="js/identity.js"></script>
   <script src="js/wh-boot.js"></script>
   <script type="module" src="js/online.js"></script>

@@ -17,6 +17,8 @@ import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
 // Creation Suite Pass: generated registry of baked customization overrides
 // (customization/tools/apply_customization.py). Empty map = exact no-op.
 import { ATTIRE_CUSTOMIZATIONS } from './attire-customizations.js';
+// Material gate (every model, every load): game/js/material-runtime.js.
+import { resolveModelMaterials, assertModelUsable } from './material-runtime.js';
 
 export const MODEL_URLS = {
   pantera: 'assets/models/pantera.glb',
@@ -431,17 +433,17 @@ export const MODEL_URLS = {
   // attires-unwired set). Ladder placement lives in game/js/attires.js:
   // successor's own attires first, source-game originals late (slots 5+).
   'bruno-attire1': '../roster/bruno/attires/attire1/source/bruno-a1.glb',
-  'bruno-attire2': '../roster/bruno/attires/attire2/source/bruno-a2-sail-the-sea.glb',
+  'bruno-attire2': '../roster/bruno/attires/attire2/source/bruno-a2-sail-the-sea-rigged.glb',
   'dio-attire1': '../roster/dio/attires/attire1/source/dio-a1-jade-god-rigged.glb',
   'koreshi-attire1': '../roster/koreshi/attires/attire1/model.glb',
-  'negativo-attire1': '../roster/negativo/attires/attire1/source/negativo-a1.glb',
-  'negativo-attire2': '../roster/negativo/attires/attire2/source/negativo-a2.glb',
+  'negativo-attire1': '../roster/negativo/attires/attire1/source/negativo-a1-rigged.glb',
+  'negativo-attire2': '../roster/negativo/attires/attire2/source/negativo-a2-rigged.glb',
   'skull-tripo': '../roster/skull/attires/attire1/model.glb',
   'skull-base': 'assets/models/skull.glb',
   'waterfall-attire1': '../roster/waterfall/attires/attire1/model.glb',
-  'yukihyo-attire1': '../roster/yukihyo/attires/attire1/source/yukihyo-a1.glb',
-  'yukihyo-attire2': '../roster/yukihyo/attires/attire2/source/yukihyo-a2-bobcat-pride.glb',
-  'yukihyo-attire3': '../roster/yukihyo/attires/attire3/source/yukihyo-a3-tiger-king.glb',
+  'yukihyo-attire1': '../roster/yukihyo/attires/attire1/source/yukihyo-a1-rigged.glb',
+  'yukihyo-attire2': '../roster/yukihyo/attires/attire2/source/yukihyo-a2-bobcat-pride-rigged.glb',
+  'yukihyo-attire3': '../roster/yukihyo/attires/attire3/source/yukihyo-a3-tiger-king-rigged.glb',
   'armor-king-attire1': '../roster/armor-king/attires/attire1/model.glb',
   'zangief-attire1': '../roster/zangief/attires/attire1/model.glb',
   // RYUSAN (owner 2026-10-23): SmutBase Mina Ashido intake — WH name RYUSAN,
@@ -1120,6 +1122,7 @@ class AssetManager {
       else opts.signal.addEventListener('abort', () => ctrl.abort(opts.signal.reason), { once: true });
     }
     const url = MODEL_URLS[id];
+    assertModelUsable(id); // quarantined (broken materials) never loads into select or a fight
     const LOAD_TIMEOUT_MS = 90000;
     const attempt = async () => {
       const signal = _anySignal([ctrl.signal, _timeoutSignal(LOAD_TIMEOUT_MS)]);
@@ -1177,6 +1180,12 @@ class AssetManager {
      did (clip pinning, shadow flags, grounding, facing) — factored out so
      fetch+parse shares the identical path. */
   async _ingest(id, gltf) {
+    // Material resolve + verdict before anything can instance this model.
+    this.materialReport = this.materialReport || {};
+    this.materialReport[id] = await resolveModelMaterials(id, gltf, async (d) => {
+      await this.loadModels([d], null, { lane: 'user' }); return this.gltfs[d];
+    });
+    if (!this.materialReport[id].usable) throw new Error(`model ${id} blocked by material gate`);
     this.gltfs[id] = gltf;
     this.clips[id] = {};
     // Bind-pose Hips position (Z-up skeleton): animations must return
