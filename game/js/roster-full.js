@@ -347,6 +347,29 @@ export const FULL_ROSTER = [
   // file + loader listing existed, model sat in attires/attire1/source/).
   { id: 'chordz', name: 'CHORDZ', title: 'The Emo Guitarist', base: 'Lars', moveset: 'chordz', model: 'chordz', tintStrength: 0.25,
     colors: { suit: 0x1a1a2a, trim: 0x8a2a6b }, style: 'Emo Guitarist', archetype: 'Tricky' },
+  // ——— LANDING WAVE 3 (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md): the
+  // bear-bank successors + Silvertongue. Models were wired (wave 1) and
+  // rigged (wave 2); their movesets land this wave
+  // (game/assets/movesets/{id}.json + MOVESET_IDS + index.json), so the
+  // select entries land now that every piece is on main.
+  // GASHADOKURO (owner canon law 2026-10-23, roster/kuma/CANON.md): the
+  // starved-dead giant skeleton, Kuma's proprietary successor. Kuma is
+  // obsolete in canon and never stands alone on this list — the bear bank
+  // is scaffolding only. Moveset: gashadokuro.json (T3 Kuma bank, 530).
+  { id: 'gashadokuro', name: 'GASHADOKURO', title: 'The Starved Dead', base: 'Kuma', moveset: 'gashadokuro', model: 'gashadokuro', tintStrength: 0.25,
+    colors: { suit: 0xe8e0cc, trim: 0x8a1a1a }, style: 'Beast Grappler', archetype: 'Power' },
+  // AOTSUKI (owner canon law 2026-10-23, roster/panda/CANON.md): the blue
+  // moon, Panda's proprietary successor. Panda is obsolete in canon and
+  // never stands alone on this list. Moveset: aotsuki.json (T3 bear bank —
+  // Panda shares Kuma's T3 bank; proxy-flagged in the file).
+  { id: 'aotsuki', name: 'AOTSUKI', title: 'The Blue Moon', base: 'Panda', moveset: 'aotsuki', model: 'aotsuki', tintStrength: 0.25,
+    colors: { suit: 0x2a4a8a, trim: 0xbcd8ff }, style: 'Beast Grappler', archetype: 'Power' },
+  // SILVERTONGUE (owner canon law 2026-10-23, roster/silvertongue/CANON.md):
+  // "The Heiress Soul", the tourist — Lili re-owned; the source name is
+  // retired in this universe and she never appears under it. Moveset:
+  // silvertongue.json (her full kit, authored as her own file this wave).
+  { id: 'silvertongue', name: 'SILVERTONGUE', title: 'The Heiress Soul', base: 'Lili', moveset: 'silvertongue', model: 'silvertongue', tintStrength: 0.25,
+    colors: { suit: 0xf0e8f0, trim: 0xc0a062 }, style: 'Acrobatic Elegance', archetype: 'Stylish' },
 ];
 
 export function getFighter(id) {
