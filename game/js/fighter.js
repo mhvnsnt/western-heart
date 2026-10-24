@@ -28,6 +28,7 @@ import { SoftBody } from './softbody.js';
 import { FaceRig } from './faceRig.js';
 import { HandPoseBlender } from './handPoses.js';
 import { t8Frame, stunFromAdvantage } from './frame-tables.js';
+import { hitWordFor, attackPhase, moveReach, PressBuffer } from './combat-core.js';
 
 // ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
 // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO in Western Heart. The 'jin' moveset family is now 'demonio'.
@@ -190,6 +191,17 @@ export async function loadRealMovesets() {
 }
 
 // Legacy action names -> Tekken notation (AI + old UI keep working)
+/* Donor keys, most to least specific, for borrowing an animated row:
+   exact command, last segment, dir+last button, last button, limb. */
+export function rowDonorKeys(input, limb) {
+  const n = String(input).replace(/^[A-Z_]+\./, '').trim();
+  const last = n.split(',').pop().trim();
+  const m = last.match(/^(d\/f|d\/b|u\/f|u\/b|f|b|u|d)?\+?([1-4](?:\+[1-4])*)/i);
+  const keys = ['c:' + n, 's:' + last];
+  if (m) { keys.push('db:' + (m[1] || 'n').toLowerCase() + '+' + m[2]); keys.push('b:' + m[2]); keys.push('b:' + m[2].split('+').pop()); }
+  if (limb) keys.push('l:' + limb);
+  return keys;
+}
 const LEGACY_TO_TEKKEN = { punch: '1', kick: '4', grab: '1+3' };
 
 export function getRealMove(charId, moveType) {
@@ -215,7 +227,8 @@ export function getRealMove(charId, moveType) {
           t3row: mv.t3_row, t3source: mv.t3_source || (mv.t3_row != null ? ms.t3_source : null), moveName: mv.name,
           animBank: anim ? anim.bank : null, animRow: anim ? anim.row : null,
           // decoded T3 attack word (high 0x412 / mid 0x217 / low 0x10F / s.mid 0x31F / unblockable 0x607)
-          hitWord: ms.hit_words ? ms.hit_words[key] : undefined,
+          hitWord: (ms.hit_words && ms.hit_words[key] != null) ? ms.hit_words[key] : hitWordFor(mv),
+          hitLevel: mv.hit_level, reach: mv.reach,
           stanceAfter: ms.stance_after ? ms.stance_after[key] : undefined,
           launch: !!mv.launch, knockdown: !!mv.knockdown,
           armor: !!mv.armor,
@@ -639,6 +652,14 @@ export class Fighter {
     if (!ok && move.animRow != null && (SOURCE_TO_BANK[move.animBank] || move.animBank) === this._t3.bank) {
       row = move.animRow; ok = true; // T7/T8 move: its base character's decoded T3 row (anim_t3)
     }
+    if (!ok) {
+      // Unanimated T7/T8 move (most of each list): borrow the decoded row of
+      // the closest animated move in the SAME moveset — same command, else
+      // same direction+button, else same button/limb — instead of every
+      // move replaying the generic jab/heavy clip (read as "random moves").
+      const d = this._rowDonor(move);
+      if (d != null) { row = d; ok = true; }
+    }
     if (!ok) return null;
     const name = 'row:' + row;
     if (!this.t3actions[name]) {
@@ -651,6 +672,27 @@ export class Fighter {
     const total = (move.startup || 0) + (move.active || 0) + (move.recovery || 0);
     a.timeScale = total > 0.05 ? a.getClip().duration / total : 1;
     return name;
+  }
+
+  _rowDonor(move) {
+    const ms = getFighterMoveset(this._movesetId);
+    if (!ms || !ms.moves || !this._t3) return null;
+    if (!this._donorIdx || this._donorIdx.ms !== ms) {
+      const idx = new Map();
+      const bank = this._t3.bank;
+      for (const mv of Object.values(ms.moves)) {
+        if (mv.t3_row == null) continue;
+        const src = mv.t3_source || ms.t3_source;
+        if ((SOURCE_TO_BANK[src] || src) !== bank && !(src === 'king' && bank === 'armorking')) continue;
+        for (const k of rowDonorKeys(mv.input || '', mv.limb)) if (!idx.has(k)) idx.set(k, mv.t3_row);
+      }
+      this._donorIdx = { ms, idx };
+    }
+    for (const k of rowDonorKeys(move.tekkenInput || '', move.limb)) {
+      const r = this._donorIdx.idx.get(k);
+      if (r != null && this._t3.clips['row:' + r]) return r;
+    }
+    return null;
   }
 
   tryMove(dir) {
@@ -904,7 +946,21 @@ export class Fighter {
         }
       }
     }
-    return this._tryAttackFresh(name);
+    if (this._tryAttackFresh(name)) { this._pressBuf && this._pressBuf.clear(); return true; }
+    // Tekken input buffer: a press made while still recovering / in
+    // hitstun is held ~10 frames and fires on the first actionable frame.
+    if (/^[1234](\+[1234])*$/.test(name) && !this.dead) {
+      (this._pressBuf ||= new PressBuffer(10)).push(name, this._clock || 0);
+    }
+    return false;
+  }
+  /* Retry a buffered press once the fighter can act (called each update). */
+  _drainPressBuffer() {
+    if (!this._pressBuf || !this.canAct()) return;
+    const name = this._pressBuf.take(this._clock || 0);
+    if (!name) return;
+    this._pressBuf.clear();
+    this._tryAttackFresh(name);
   }
   setRageAura(on) {
     this._rageAura = !!on;
@@ -967,7 +1023,7 @@ export class Fighter {
     this._queuedNext = null;
     if (/^(R|RD)\./.test(notation)) this._rageUsed = true; // rage art/drive: once per round
     this.stance = null; this.stanceT = 0; this._risingT = 0;
-    this.vx = 0; this._enter('attack'); this._attackPhase = 'startup';
+    this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
     if (name === 'surge') this._auraFlash = 0.7;
     if (move.isGrab || notation === '1+3' || notation === '2+4') this.vx = this.facing * 2.5; // lunge into the grab
     return true;
@@ -980,7 +1036,7 @@ export class Fighter {
     this.attack = move; this.attackName = notation; this.hasHit = false;
     this._attackId = (this._attackId || 0) + 1;
     this._queuedNext = null;
-    this.vx = 0; this._enter('attack'); this._attackPhase = 'startup';
+    this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
     return true;
   }
   _enter(state) { this.state = state; this.stateT = 0; }
@@ -1107,12 +1163,14 @@ export class Fighter {
     if ((this.state !== 'attack' && this.state !== 'vskill' && this.state !== 'vreversal') ||
         this._attackPhase !== 'active' || this.hasHit) return null;
     if (this.attack && this.attack.noHitbox) return null;
-    const node = this._weaponBone(); if (!node) return null;
-    node.getWorldPosition(_v1);
+    const node = this._weaponBone();
+    if (node) node.getWorldPosition(_v1);
+    else _v1.set(this.root.position.x + this.facing * 0.8, this.root.position.y + 1.2, this.root.position.z); // no rig bone (T-pose/procedural): frame-data box
     let r = this.attackName === 'surge' ? 1.0 : 0.5;
     if (this.attack?.isGrab || this.attackName === 'grab' || this.attackName === '1+3' || this.attackName === '2+4') r = 0.95; // generous grab sphere
     r *= (this.stats.reachMult || 1); // WOOD force (modes lane): reach extends
-    return { x: _v1.x, y: _v1.y, z: _v1.z, r, move: this.attack };
+    return { x: _v1.x, y: _v1.y, z: _v1.z, r, move: this.attack,
+             reach: moveReach(this.attack, String(this.attackName || '')) * (this.stats.reachMult || 1) };
   }
   getHurtboxes() {
     if (this.invuln > 0 || this.dead) return [];
@@ -1129,6 +1187,7 @@ export class Fighter {
   /* ---------------- per-frame update ---------------- */
   update(dt, opponent) {
     this.stateT += dt;
+    this._clock = (this._clock || 0) + dt;
     // Drive the transformation cinematic timeline.
     if (this._cinematic && !this._cinematic.done) {
       this._cinematic.update(dt);
@@ -1162,6 +1221,7 @@ export class Fighter {
     }
 
     this._tickState();
+    this._drainPressBuffer();
     this._physics(dt, opponent);
     this._animate(dt);
 
@@ -1198,9 +1258,11 @@ export class Fighter {
       // V-System: vskill/vreversal run the same attack timing as 'attack'.
       case 'attack': case 'vskill': case 'vreversal': {
         const m = this.attack, t = this.stateT;
-        if (t < m.startup) this._attackPhase = 'startup';
-        else if (t < m.startup + m.active) this._attackPhase = 'active';
-        else if (t < m.startup + m.active + m.recovery) this._attackPhase = 'recovery';
+        // combat-core: >=3-frame active floor + swept check, so a 30 fps
+        // tick can no longer step over a 1-frame active window (whiffs).
+        const ph = attackPhase(m, t, this._prevAtkT ?? 0);
+        this._prevAtkT = t;
+        if (ph !== 'done') this._attackPhase = ph;
         else {
           const after = m.stanceAfter;
           this.attack = null; this.attackName = null; this._enter('idle');
@@ -1288,7 +1350,10 @@ export class Fighter {
         this.root.position.x += side * a; opponent.root.position.x -= side * b;
       }
       // lateral separation after sidesteps (grounded only)
-      if (!airborne && Math.abs(dz) < 0.7 && Math.abs(dx) < 1.45) {
+      // (contact fix: this used to fire at every touching distance (<1.45),
+      // pushing both fighters 0.7 m off-line so strikes whiffed past the
+      // body; now only when bodies are stacked after a sidestep.)
+      if (!airborne && Math.abs(dz) < 0.7 && Math.abs(dx) < 0.6) {
         const zp = (0.7 - Math.abs(dz)) / 2 * (dz >= 0 ? 1 : -1);
         this.root.position.z += zp; opponent.root.position.z -= zp;
       }

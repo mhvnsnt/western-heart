@@ -105,6 +105,12 @@ def main():
              env={"PYTHONPATH": HERE}, log=log)
     with open(os.path.join(a.report_dir, "smooth_weights.log"), "w") as f:
         f.write(sm.stdout)
+    # Cross-limb weight bleed (one leg's verts carrying the other leg / the arms): the web between the legs and the
+    # arm wobble the owner saw (backends/limb_isolation.py, 2026-10-23).
+    iso = run([sys.executable, os.path.join(HERE, "backends", "limb_isolation.py"), "--in", rig],
+              env={"PYTHONPATH": HERE}, log=log)
+    with open(os.path.join(a.report_dir, "limb_isolation.log"), "w") as f:
+        f.write(iso.stdout)
     val = subprocess.run([sys.executable, os.path.join(HERE, "validate.py"), "--in", rig], capture_output=True, text=True)
     gate = os.path.join(a.report_dir, "anim_check_after_smoothing.json")
     subprocess.run([sys.executable, os.path.join(HERE, "anim_check.py"), "--in", rig, "--json-out", gate,

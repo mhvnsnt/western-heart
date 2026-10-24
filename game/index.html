@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="menus.css" />
   <link rel="stylesheet" href="mainmenu.css" />
   <link rel="stylesheet" href="t7-skin.css" />
+  <link rel="stylesheet" href="menu-t7.css" />
   <!-- Worker 35: colorblind-safe HUD palettes (worker-35 identity lane) -->
   <link rel="stylesheet" href="css/colorblind.css" />
   <!-- MENU FALLBACK CSS (2026-10-22, PR #676 rebase): if every stylesheet
@@ -493,6 +494,14 @@
   <script src="js/wh-boot.js"></script>
   <script type="module" src="js/online.js"></script>
   <script type="module" src="js/main.js"></script>
+  <!-- FIGHT-LOOP REPAIR (worker 54, 2026-10-22): integration.js was merged
+       but never loaded — its header says it loads here after main.js. It
+       lazily wires the vendored systems (three-mesh-bvh hit-verify,
+       springbones jiggle, troika nameplates/damage numbers, cannon-es
+       physics KO tumble, nebula hit-FX layering, lip-sync, cam director).
+       Every init is try/catch — a failing vendor module stays absent,
+       never breaks the fight. -->
+  <script type="module" src="js/integration.js"></script>
 
   <!-- MENU FALLBACK BINDER (2026-10-22, PR #676 rebase): non-module script.
        If the ES module chain fails, the delegated routers in js/main.js never
