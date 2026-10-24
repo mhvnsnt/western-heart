@@ -1332,9 +1332,10 @@ export class Fighter {
     let notation = LEGACY_TO_TEKKEN[name] || name;
     const ctx = this._inputCtx();
     this._chordBase = this.tekken.lastMove;
-    // String grace (2026-10-24, Pantera string fix): a tap landing just after
-    // the previous hit fully recovered still continues the string (touch
-    // cadence) — 200 ms past move end. The window is set in _tickState when
+    // String grace (2026-10-24, Pantera string fix; batch 2026-10-24: 200 -> 500 ms
+    // for touch cadence): a tap landing just after the previous hit fully
+    // recovered still continues the string — 500 ms past move end. The window
+    // is set in _tickState when
     // a non-grab attack completes and cleared on hitstun/knockdown/KO, so
     // getting hit kills it and a throw never chains. canAct-only: it must
     // not chain out of a sidestep-cancel.
@@ -1730,9 +1731,21 @@ export class Fighter {
         if (ph !== 'done') this._attackPhase = ph;
         else {
           const after = m.stanceAfter;
-          this.attack = null; this.attackName = null; this._enter('idle');
+          // BATCH STRING FIX (2026-10-24): a string hit queued during this move
+          // fires on completion, not just during recovery — short moves can jump
+          // active->done in one tick, skipping recovery and dropping the queued
+          // hit, which broke 3+ hit strings (user: longest combo was 1-2).
+          if (this._queuedNext) {
+            const next = this._queuedNext; this._queuedNext = null;
+            this.attack = null; this.attackName = null;
+            if (this._fireNotation(next)) break;
+            this._enter('idle');
+          } else {
+            this.attack = null; this.attackName = null; this._enter('idle');
+          }
           // String grace starts when a non-grab attack completes (see _tryAttackFresh).
-          if (!m.isGrab) this._stringGraceUntil = (typeof performance !== 'undefined' ? performance.now() : 0) + 200;
+          // BATCH: 200 -> 500 ms for touch cadence (phone taps are slower than stick).
+          if (!m.isGrab) this._stringGraceUntil = (typeof performance !== 'undefined' ? performance.now() : 0) + 500;
           // Source notes "Transition to X": the move ends in that stance (FC = crouch).
           if (after === 'FC') { this._enter('crouch'); this.stance = 'FC'; this.stanceT = 0.5; }
           else if (after) { this.stance = after; this.stanceT = 0.8; }
