@@ -1,0 +1,437 @@
+{
+ "_doc": "Source of truth for docs/tech/SYSTEMS-COVERAGE.md. status: wired | partial | not-wired. 'wired' requires code + test that exist on main. CI (coverage-guard) fails if any row disappears or any row's status goes down vs the PR base.",
+ "rows": [
+  {
+   "id": "t7-movesets",
+   "source": "Tekken 7",
+   "system": "Movesets / frame data (mothead active windows)",
+   "status": "wired",
+   "code": "game/js/movesets.js",
+   "test": "test/combat-contact.test.mjs",
+   "lane": "combat (#951/#952)"
+  },
+  {
+   "id": "t7-command-input",
+   "source": "Tekken 7",
+   "system": "Command interpreter: inputs follow each move list, strings, combos",
+   "status": "partial",
+   "code": "game/js/input.js",
+   "test": "test/input-determinism.test.mjs",
+   "lane": "combat (#951/#952)"
+  },
+  {
+   "id": "t7-hit-contact",
+   "source": "Tekken 7",
+   "system": "Hitboxes / contact / hit levels",
+   "status": "partial",
+   "code": "game/js/combat-core.js",
+   "test": "test/combat-contact.test.mjs",
+   "lane": "combat (#951)"
+  },
+  {
+   "id": "t7-hit-reactions",
+   "source": "Tekken 7",
+   "system": "Hit reactions (stagger, launch, crumple, wall/floor)",
+   "status": "partial",
+   "code": "game/js/combat-core.js",
+   "test": "test/combat-contact.test.mjs",
+   "lane": "combat (#951)"
+  },
+  {
+   "id": "t7-throws",
+   "source": "Tekken 7",
+   "system": "Throws / grabs connect + throw breaks",
+   "status": "partial",
+   "code": "game/js/combat-core.js",
+   "test": "test/combat-contact.test.mjs",
+   "lane": "combat (#951)"
+  },
+  {
+   "id": "t7-select",
+   "source": "Tekken 7",
+   "system": "Select screen layout + 3D hero render",
+   "status": "partial",
+   "code": "game/js/select-t7-layout.js",
+   "test": "test/portraits.test.mjs",
+   "lane": "select (#947 follow-ups)"
+  },
+  {
+   "id": "t7-menus",
+   "source": "Tekken 7",
+   "system": "Main menu / mode select / options layout",
+   "status": "wired",
+   "code": "game/js/menu-t7-layout.js",
+   "test": "test/e2e",
+   "lane": "menus (#932/#943)"
+  },
+  {
+   "id": "t7-ui-private",
+   "source": "Tekken 7",
+   "system": "UI textures/fonts from private pack",
+   "status": "wired",
+   "code": "game/js/t7-ui-private.js",
+   "test": "test/e2e",
+   "lane": "menus"
+  },
+  {
+   "id": "t7-customization",
+   "source": "Tekken 7",
+   "system": "Customization item tables -> attire/parts",
+   "status": "wired",
+   "code": "game/js/customization-consumer.js",
+   "test": "test/material-resolve.test.mjs",
+   "lane": "creation suite"
+  },
+  {
+   "id": "t7-stages",
+   "source": "Tekken 7",
+   "system": "Stages (meshes via __WH_PRIVATE_ASSETS)",
+   "status": "wired",
+   "code": "game/js/stages.js",
+   "test": "test/e2e",
+   "lane": "stages"
+  },
+  {
+   "id": "t7-anims",
+   "source": "Tekken 7",
+   "system": "Animation bank + show/move gate",
+   "status": "wired",
+   "code": "game/js/anim-gate.js",
+   "test": "test/anim-gate.test.mjs",
+   "lane": "anims"
+  },
+  {
+   "id": "t7-rigs",
+   "source": "Tekken 7",
+   "system": "Rigs / skin weights for re-rigged fighters",
+   "status": "partial",
+   "code": "game/js/assets.js",
+   "test": "test/no-wrong-body.test.mjs",
+   "lane": "re-rig (#954)"
+  },
+  {
+   "id": "t8-framedata",
+   "source": "Tekken 8",
+   "system": "T8 frame-data diffs for movesets",
+   "status": "partial",
+   "code": "game/js/movesets.js",
+   "test": "test/combat-contact.test.mjs",
+   "lane": "moveset batches (#915-#945)"
+  },
+  {
+   "id": "t8-models",
+   "source": "Tekken 8",
+   "system": "T8 models (xiaoyu-t8 etc.) as attires",
+   "status": "partial",
+   "code": "game/js/attires.js",
+   "test": "test/no-wrong-body.test.mjs",
+   "lane": "select / attire ladder"
+  },
+  {
+   "id": "t8-heat",
+   "source": "Tekken 8",
+   "system": "Heat system (URGE gauge, HEAT button)",
+   "status": "wired",
+   "code": "game/js/combat-core.js",
+   "test": "test/combat-contact.test.mjs",
+   "lane": "combat"
+  },
+  {
+   "id": "ttt2-models",
+   "source": "TTT2",
+   "system": "TTT2 models/anims fallback bank",
+   "status": "wired",
+   "code": "game/js/assets.js",
+   "test": "test/no-wrong-body.test.mjs",
+   "lane": "models"
+  },
+  {
+   "id": "ttt2-tag",
+   "source": "TTT2",
+   "system": "Tag / tag-assist / tag-throw mechanics",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED"
+  },
+  {
+   "id": "ttt2-ghost-ai",
+   "source": "TTT2",
+   "system": "Ghost AI behaviour",
+   "status": "partial",
+   "code": "game/js/ghost-ai.js",
+   "test": "",
+   "lane": "UNCLAIMED"
+  },
+  {
+   "id": "t6-customization",
+   "source": "Tekken 6",
+   "system": "T6 customization catalog",
+   "status": "partial",
+   "code": "game/js/customization-consumer.js",
+   "test": "test/material-resolve.test.mjs",
+   "lane": "creation suite (gap-closure W7)"
+  },
+  {
+   "id": "t6-bound",
+   "source": "Tekken 6",
+   "system": "Bound / scenario-campaign data",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED"
+  },
+  {
+   "id": "t5-customization",
+   "source": "Tekken 5",
+   "system": "T5 customization catalog",
+   "status": "partial",
+   "code": "game/js/customization-consumer.js",
+   "test": "test/material-resolve.test.mjs",
+   "lane": "creation suite (gap-closure W7)"
+  },
+  {
+   "id": "t5-devil-within",
+   "source": "Tekken 5",
+   "system": "Devil Within beat-em-up mode data",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED"
+  },
+  {
+   "id": "t3-framedata",
+   "source": "Tekken 3",
+   "system": "Frame data (logged last resort, no models)",
+   "status": "wired",
+   "code": "game/js/fighter.js",
+   "test": "test/combat-contact.test.mjs",
+   "lane": "combat"
+  },
+  {
+   "id": "fp-cpu",
+   "source": "Fire Pro",
+   "system": "CPU personality (AIParam/AIPriorityAct)",
+   "status": "partial",
+   "code": "game/js/ai/cpu-personality.js",
+   "test": "test/wiring.test.mjs",
+   "lane": "wiring (#953)"
+  },
+  {
+   "id": "fp-sim",
+   "source": "Fire Pro",
+   "system": "Watch / Simulate mode",
+   "status": "partial",
+   "code": "game/js/sim-match.js",
+   "test": "test/wiring.test.mjs",
+   "lane": "wiring (#953)"
+  },
+  {
+   "id": "fp-moveforge",
+   "source": "Fire Pro",
+   "system": "Move Forge (edit/craft data)",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "Muse (#879)"
+  },
+  {
+   "id": "yk-spirit",
+   "source": "Yakuza Kiwami",
+   "system": "魂 ACTION (Spirit Actions, context finishers)",
+   "status": "partial",
+   "code": "game/js/spirit-actions.js",
+   "test": "test/wiring.test.mjs",
+   "lane": "wiring (#953)"
+  },
+  {
+   "id": "yk-motion",
+   "source": "Yakuza Kiwami",
+   "system": "Show/cutscene clip bank (gated from movesets)",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "Track 7 (#936)"
+  },
+  {
+   "id": "yk-story",
+   "source": "Yakuza Kiwami",
+   "system": "Scenario / battle tables -> story brawler",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "Muse (#883)"
+  },
+  {
+   "id": "2k19-parts",
+   "source": "WWE 2K19",
+   "system": "CAW parts + DDS textures -> creation suite",
+   "status": "partial",
+   "code": "game/js/creation-parts-private.js",
+   "test": "test/wiring.test.mjs",
+   "lane": "wiring (#953)"
+  },
+  {
+   "id": "2k19-motion",
+   "source": "WWE 2K19",
+   "system": "Motion decode",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED (decode blocked)"
+  },
+  {
+   "id": "gb-grab",
+   "source": "Gang Beasts",
+   "system": "Grip / Hold + ragdoll release",
+   "status": "partial",
+   "code": "game/js/grab-hold.js",
+   "test": "test/wiring.test.mjs",
+   "lane": "wiring (#953) + chrono (#955)"
+  },
+  {
+   "id": "gb-assets",
+   "source": "Gang Beasts",
+   "system": "AssetRipper export",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED (export pending)"
+  },
+  {
+   "id": "we-world",
+   "source": "Wrestling Empire",
+   "system": "World / career / progress sim",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "Muse (#884)"
+  },
+  {
+   "id": "we-editor",
+   "source": "Wrestling Empire",
+   "system": "Character editor fields",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "Muse (#884)"
+  },
+  {
+   "id": "soul-systems",
+   "source": "Owner design",
+   "system": "KESSHOU / 九魂解放 / 霊放 / 試練の封 + per-fighter variants",
+   "status": "partial",
+   "code": "game/js/soul-systems.js",
+   "test": "test/soul-systems.test.mjs",
+   "lane": "wiring (#953)"
+  },
+  {
+   "id": "nm-arenas",
+   "source": "WWF No Mercy",
+   "system": "17 arena assemblies",
+   "status": "wired",
+   "code": "game/js/stages.js",
+   "test": "test/e2e",
+   "lane": "stages"
+  },
+  {
+   "id": "nm-parts",
+   "source": "WWF No Mercy",
+   "system": "Parts catalog",
+   "status": "wired",
+   "code": "game/js/customization-consumer.js",
+   "test": "test/material-resolve.test.mjs",
+   "lane": "creation suite"
+  },
+  {
+   "id": "nm-moves",
+   "source": "WWF No Mercy",
+   "system": "Wrestling move bank",
+   "status": "partial",
+   "code": "game/js/moveset-library.js",
+   "test": "",
+   "lane": "UNCLAIMED"
+  },
+  {
+   "id": "wmxix-moves",
+   "source": "WWE WrestleMania XIX",
+   "system": "Move bank + arenas",
+   "status": "partial",
+   "code": "game/js/moveset-library.js",
+   "test": "",
+   "lane": "UNCLAIMED"
+  },
+  {
+   "id": "defjam",
+   "source": "Def Jam",
+   "system": "Parts catalog",
+   "status": "partial",
+   "code": "game/js/customization-consumer.js",
+   "test": "",
+   "lane": "UNCLAIMED"
+  },
+  {
+   "id": "doa-stagebreaks",
+   "source": "Dead or Alive 4",
+   "system": "Knock-through / danger zones",
+   "status": "partial",
+   "code": "game/js/stagebreaks.js",
+   "test": "",
+   "lane": "stages"
+  },
+  {
+   "id": "vf5-moves",
+   "source": "Virtua Fighter 5",
+   "system": "Move bank",
+   "status": "partial",
+   "code": "game/js/moveset-library.js",
+   "test": "",
+   "lane": "UNCLAIMED (bank pending)"
+  },
+  {
+   "id": "sc-models",
+   "source": "Soulcalibur",
+   "system": "Models / motion-db / weapon tracks",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED"
+  },
+  {
+   "id": "sfex-models",
+   "source": "Street Fighter EX",
+   "system": "glb models + anims (phases 1-4)",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED"
+  },
+  {
+   "id": "yyh",
+   "source": "Yu Yu Hakusho Dark Tournament",
+   "system": "Models + decoded clips",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED"
+  },
+  {
+   "id": "urban-reign",
+   "source": "Urban Reign",
+   "system": "Multi-opponent brawl data",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED"
+  },
+  {
+   "id": "nioh",
+   "source": "Nioh 1/2",
+   "system": "Character depth",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "BLOCKED (disk)"
+  }
+ ]
+}

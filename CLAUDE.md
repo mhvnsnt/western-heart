@@ -35,3 +35,8 @@ rate/usage limit or API error), `PreCompact`, `SessionEnd`, and after `Write`/`E
 - always exits 0 so it can't block you. Log: `.git/autosave.log`. Off switch: `AUTOSAVE_DISABLE=1`.
 
 The autosave is a net, not the plan: still commit with real messages and open the PR yourself.
+
+
+## Complete Wiring Law (owner 2026-10-23)
+
+Read `docs/rules/COMPLETE-WIRING-LAW.md` and `docs/tech/SYSTEMS-COVERAGE.md`. Push every system or ~30 min; backup branch before long jobs.
