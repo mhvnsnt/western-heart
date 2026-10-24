@@ -25,7 +25,7 @@ assert.equal(S(1, 0, -1), 'b'); assert.equal(S(-0.7, -0.7, -1), 'd/f'); assert.e
 // --- unit: hit levels ---
 assert.equal(C.hitWordFor({ hit_level: 'h' }), 0x412); assert.equal(C.hitWordFor({ hit_level: 'l' }), 0x10F);
 assert.equal(C.hitWordFor({ hit_level: 'm' }), 0x217); assert.equal(C.hitWordFor({ hit_level: 'sm' }), 0x31F);
-assert.equal(C.hitWordFor({ hit_level: 'h,m' }), 0x412); assert.equal(C.hitWordFor({ hit_level: 't' }), undefined);
+assert.equal(C.hitWordFor({ hit_level: 'h,m' }), 0x217); assert.equal(C.hitWordFor({ hit_level: ',h' }), 0x412); assert.equal(C.hitWordFor({ hit_level: 't' }), undefined);
 // --- unit: swept active window at 30 fps on a 1-frame move ---
 { const m = { startup: 0.167, active: 0.017, recovery: 0.3 }; let t = 0, prev = 0, seen = false;
   while (t < 0.6) { t += 1 / 30; if (C.attackPhase(m, t, prev) === 'active') seen = true; prev = t; }

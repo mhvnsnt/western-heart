@@ -23,7 +23,8 @@ export function hitWordFor(mv) {
   if (mv.unblockable) return HIT_WORD.ub;
   const raw = String(mv.hit_level ?? '').trim().toLowerCase();
   if (!raw) return undefined;
-  const c = raw.split(/[ ,]/)[0];
+  const toks = raw.split(/[ ,]+/).filter(Boolean); // ',h' = this hit of a string
+  const c = toks.length ? toks[toks.length - 1] : '';
   if (c.startsWith('t')) return undefined; // throws use isGrab rules
   if (c.startsWith('sm') || c === 's') return HIT_WORD.s;
   if (c.startsWith('h')) return HIT_WORD.h;
