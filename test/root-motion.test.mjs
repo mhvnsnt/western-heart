@@ -20,6 +20,13 @@ const THREE = await import('three');
 const M = await import(join(ROOT, 'game/js/movesets.js'));
 const T = await import(join(ROOT, 'game/js/t3anims.js'));
 const F = await import(join(ROOT, 'game/js/fighter.js'));
+const FT = await import(join(ROOT, 'game/js/frame-tables.js'));
+// Production determinism: fighter.js reads the T8 frame table (game/data)
+// synchronously at plan time, but the table loads async at import. Without
+// this await, plans race the fetch — Konvict Kick (tgt '(t)') flips between
+// strike (table absent) and throw-class (table present) mid-file. The live
+// game boots with the table loaded, so the test awaits it too.
+await FT.frameTablesReady;
 const quiet = { log: console.log, warn: console.warn };
 console.log = () => {}; console.warn = () => {};
 await M.loadFighterMovesets();
@@ -103,13 +110,22 @@ test('Pantera f,F+2 Beast Elbow (RP2 dash elbow): donor clip row:111 travels for
   assert.ok(Math.abs(hit.x - r.x) < 1e-9, `hit (${hit.x}) != whiff (${r.x})`);
 });
 
-test('Pantera f,F+4 Konvict Kick (RK4): donor clip row:114 travels forward ~0.48 m', async () => {
+test('Pantera f,F+4 Konvict Kick (RK4): production plan is throw row:283, travelling forward (0.19 m net, 0.38 m peak)', async () => {
   const f = await fighter();
   const r = simulate(f, 'f,F+4');
-  assert.equal(r.plan.name, 'row:114', `Konvict Kick plan: ${r.plan.name} (${r.plan.kind})`);
-  assert.equal(r.plan.kind, 'donor', 'Konvict Kick has no own T3 row; the donor is King\'s own f+4 row (same direction + RK4 button)');
-  assert.ok(r.x > 0.46 && r.x < 0.50, `Konvict Kick travelled ${r.x} m, expected 0.46-0.50`);
-  assert.ok(r.z < -0.20 && r.z > -0.25, `Konvict Kick lateral ${r.z} m, expected ~-0.225`);
+  // Production classification (NOT this PR): King's T8 table marks f,F+4
+  // tgt '(t)' (throw transition on counter-hit), so Fighter.attackLevel
+  // returns 't' and the plan is grab-class: the match pool's throw rows,
+  // not the strike donor. Row:283 is a decoded throw-attempt row (btn 8).
+  // Root motion applies that clip's travel faithfully; reclassifying the
+  // base kick as mid (which would play donor row:114, 0.48 m) belongs to
+  // the combat/moveset lane, not to a root-motion PR — no distance here
+  // is adjusted to force the 0.48 m number.
+  assert.equal(r.plan.name, 'row:283', `Konvict Kick plan: ${r.plan.name} (${r.plan.kind})`);
+  assert.equal(r.plan.kind, 'match', 'Konvict Kick has no own T3 row; the throw match pool picks row:283');
+  assert.ok(r.x > 0.17 && r.x < 0.21, `Konvict Kick travelled ${r.x} m, expected 0.17-0.21`);
+  assert.ok(r.peakX > 0.36 && r.peakX < 0.40, `Konvict Kick peak ${r.peakX} m, expected 0.36-0.40`);
+  assert.ok(r.z > 0.04 && r.z < 0.07, `Konvict Kick lateral ${r.z} m, expected ~+0.056`);
 });
 
 test('Generic fallback clips get NO root motion (heavy/grab are the row:230 throw-execution clip)', async () => {
