@@ -471,3 +471,20 @@ Rules derived from this directive:
 - Lei Wulong has no Tekken 7 data. Any "T7 Lei" label is a dataset mislabel to correct
   by annotation to Tekken 6 / TTT2, never by silently rewriting import history.
 - Full audit: `docs/decisions/2026-10-24-zui-mix-per-canon.md`.
+## BUTTON NAMES: LP1, RP2, LK3, RK4 (user directive 2026-10-24)
+
+User said (verbatim):
+"you gotta stop talking about it like one and two. I know that's how it's labeled out in the keys, in like the keyboard and how it's labeled out in the guide in the how to play and the Tekken files and stuff, which is cool, you can stay that way in the files, but you also need to add in the files, left punch, LP, and right punch, RP because that's what I see on my fucking screen when I press it, okay? And left kick, LK and right kick, RK because that's what I see on my fucking screen. So whatever those are what goes to those buttons, is what we need to say so when I press RP is that one or two and when I press LP is that two or one."
+
+"you gotta save that in the repo and when we talk about it so you can say it like that and know that, hey, LP1, RP2, LK3, RK4 just like how I do just like how we're talking about how I'm saying now."
+
+Mapping:
+- LP1 = Left Punch = Tekken 1
+- RP2 = Right Punch = Tekken 2
+- LK3 = Left Kick = Tekken 3
+- RK4 = Right Kick = Tekken 4
+
+Rules:
+- Use LP1/RP2/LK3/RK4 format in ALL conversation with the user.
+- Files may keep 1/2/3/4 notation but must also show LP/RP/LK/RK alongside.
+- When the user presses RP2 on their screen, that is Tekken 2. When they press LP1, that is Tekken 1.
