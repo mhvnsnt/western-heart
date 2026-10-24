@@ -101,7 +101,7 @@ export const MODEL_URLS = {
   // copying the GLB into roster/kronos/attires/attire1/model.glb is a follow-up.
   kronos: '../roster/kronos/attires/attire1/model-rerig.glb',
   // SAM-UR-A1 Attire 1 (owner 2026-10-19): Tripo pull replaces the fan-rip placeholder.
-  'sam-ur-a1': '../roster/sam-ur-a1/attires/attire1/model-rigged.glb',
+  'sam-ur-a1': '../roster/sam-ur-a1/attires/attire1/model-rerig.glb',
   // SAKU RA (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   'saku-ra': '../roster/sakura/attires/attire1/model-rerig.glb',
@@ -422,7 +422,9 @@ export const MODEL_URLS = {
   vainabel: '../roster/vainabel/attires/attire1/model-rigged.glb',
   // CHORDZ (owner 2026-10-15: Lars -> Chordz, emo guitarist). His Tripo sits
   // archived as an unrigged static under attires/attire1/source/.
-  chordz: '../roster/chordz/attires/attire1/source/chordz-a1-rigged.glb',
+  // Two rigs of the same Tripo static exist: source/chordz-a1-rigged.glb (crew, Wave 2 B1) and
+  // model-rigged.glb (Claude, same GameRig pipeline + limb isolation; same stance in game, 2026-10-23).
+  chordz: '../roster/chordz/attires/attire1/model-rigged.glb',
   // GASHADOKURO + AOTSUKI (OBSOLETE-ORIGINALS rule, docs/OBSOLETE-ORIGINALS-
   // RULE.md): the Kuma/Panda models ARE the proprietary successors now — the
   // keys are the successors' names; there is no 'kuma'/'panda' fighter key.
@@ -935,6 +937,23 @@ function remapSliceBones(fighterId, model) {
   for (const { node } of driven) {
     desiredPos.set(node, node.getWorldPosition(new THREE.Vector3()));
   }
+  // Original bind relation per skin joint, captured BEFORE any frame
+  // edit: B_i = boneWorld_i * IBM_i (the authored mesh-to-bone bind).
+  // It is identity only when the mesh was bound in the skeleton's own
+  // space (Slice's old export). Blender re-rigs (Burger onto Bob,
+  // 2026-10-23) bind a mesh whose space differs from the bones' (B_i
+  // carries the export's offset/scale), and recomputing IBMs as the
+  // plain inverse of the edited bone worlds threw that relation away:
+  // the bind pose still drew (every bone matrix = I) but every clip
+  // delta pivoted in the wrong space and the body collapsed in fights.
+  // The re-solve below keeps B_i exactly: IBM'_i = inverse(W'_i) * B_i.
+  const bindRel = [];
+  model.traverse((o) => {
+    if (o.isSkinnedMesh && o.skeleton && !bindRel.some(e => e.sk === o.skeleton)) {
+      const sk = o.skeleton;
+      bindRel.push({ sk, B: sk.bones.map((b, i) => new THREE.Matrix4().multiplyMatrices(b.matrixWorld, sk.boneInverses[i])) });
+    }
+  });
 
   // (a) Cancel the wrapper rotations at the model root.
   model.quaternion.premultiply(correction);
@@ -965,13 +984,13 @@ function remapSliceBones(fighterId, model) {
     node.position.copy(desiredPos.get(node).sub(_pw).applyQuaternion(_pq.clone().invert()));
   }
   model.updateMatrixWorld(true);
-  const seenSkeletons = new Set();
-  model.traverse((o) => {
-    if (o.isSkinnedMesh && o.skeleton && !seenSkeletons.has(o.skeleton)) {
-      seenSkeletons.add(o.skeleton);
-      o.skeleton.calculateInverses();
-    }
-  });
+  // Re-solve the inverse binds, preserving each joint's authored bind
+  // relation B_i (see bindRel above): IBM'_i = inverse(W'_i) * B_i.
+  for (const { sk, B } of bindRel) {
+    sk.bones.forEach((b, i) => {
+      sk.boneInverses[i].copy(b.matrixWorld).invert().multiply(B[i]);
+    });
+  }
   // ORIGIN LIFT: kept generic — this rig is authored with its
   // origin at its FEET, so this is a safety no-op; a re-export
   // with a pelvic origin would be lifted until the bind pose's

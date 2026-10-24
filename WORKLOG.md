@@ -2529,6 +2529,16 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 
 **Deviations:** none — no SHOW content entered any moveset; no wrong-bank substitution (proxies left untouched, flagged in gap docs).
 
+## 2026-10-24 — Claude session: limb isolation on all auto-rigs; Chordz + Sam-ur-A1 wired
+- New `tools/auto_rig/backends/limb_isolation.py` (one leg's vertices drop weight from the other leg / the arms; arms
+  likewise; core untouched) — the web between Skull's legs in a high kick. Step of `rig_tripo_static.py` now.
+- Applied in place to the 16 GameRig rigs from 2026-10-23 (git history keeps the previous files); all 16 hold the T3
+  stance in game. Chordz (Claude rig, same stance as the crew's `source/chordz-a1-rigged.glb`, which stays) and
+  Sam-ur-A1 (`model-rerig.glb`, replaces the sideways k-NN rig) wired. Proof: docs/proof/claude-2026-10-23/rerig/.
+- Verified on main + this branch: boot 2.9 s, every game/js module parses, Skull vs Thor arcade fight, no page errors.
+  `node --test game/tests`: the 3 failures (negativo/yukihyo/vainabel resolution, rage + urge inputs) fail identically
+  on main alone.
+
 ---
 
 ## 2026-10-23 — Track 4 (advanced systems): Project Chrono grappling lane
@@ -2546,6 +2556,26 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Verification:** `node --test game/tests/chrono-grapple.test.mjs` 18/18 green; full suite 80/84 with the same 4 pre-existing full-suite-mode failures as pristine main (fighter-completeness/v-system parallel-run flakes — verified by stashing). All four submission chains measured end-to-end: entry → control → lock → tap with in-band torques. Determinism asserted (identical runs ⇒ identical snapshots).
 
 **Deviations:** none. License note: user lifted the license firewall 2026-10-23; Chrono is BSD-3-Clause regardless, and the wired module is WH-original code (architecture-inspired, not a derivative).
+## 2026-10-23 ~19:30 CDT — UniRig auto-rig intake integration (PR #956, branch muse/unirig-autorig-integration)
+
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate" — item: UniRig (SIGGRAPH 2025, MIT license), AI auto-rigging for the Tripo intake pipeline + creation suite auto-rig.
+
+**Pulled:** UniRig cloned to ~/workspace/research-pull/unirig/UniRig (VAST-AI-Research, MIT). Studied the inference API: launch/inference/generate_skeleton.sh (autoregressive skeleton prediction, checkpoint skeleton/articulation-xl_quantization_256/model.ckpt) -> generate_skin.sh (bone-point cross-attention skinning, skin/articulation-xl/model.ckpt) -> merge.sh (bpy merge of skin back onto source mesh). Weights auto-download from Hugging Face VAST-AI/UniRig.
+
+**Wired:**
+- `tools/rig-intake/unirig_intake.py` (new): wrapper driving all 3 stages via subprocess. `rig_model(src, out)` raises on failure; `maybe_autorig(src, workdir)` never raises — returns rigged GLB path or None. Env: UNIRIG_ROOT, WH_UNIRIG (master switch), WH_UNIRIG_SEED. `--check` readiness probe.
+- `tools/rig-intake/UNIRIG-SETUP.md` (new): exact GPU-machine setup (conda, torch+cu, spconv/torch_scatter/torch_cluster/flash_attn version-match notes, weights prefetch, ComfyUI one-click option, wiring, troubleshooting table).
+- `tools/rig-intake/README.md` (new): provider contract for future auto-rig plugins.
+- `tools/rig-intake/tests/test_unirig_intake.py` (new): 10 unit tests, all pass.
+- `tools/import_model.py` (surgical): hook probes incoming GLB; unskinned meshes auto-rig via UniRig when GPU+checkout present, `rep["unirig_autorig"]` recorded; fail message updated with the UniRig setup option.
+- `docs/MODEL_IMPORT_AUTORIG.md` (surgical): step-3 status PARTIAL -> DONE (GPU-gated).
+
+**Verification:** 10/10 pytest pass; --help exits 0; --check correctly reports NOT READY on this GPU-less VM (exit 1); py_compile clean; gitleaks clean. Full GPU inference pending Grok's box (coordination posted on issue #866, comment 6377665231). Note: upstream now points to SkinTokens as UniRig's successor — follow-up candidate, stayed on UniRig per owner item.
+
+**Anti-clobber:** branch from fresh origin/main; sparse checkout in this tree (lab/ etc. excluded) — committed via Git Data API (push_branch_api.py) building from main's real tree + only this task's 6 files; verified via compare API that the branch diff is exactly the 6 files (4 added, 2 modified), 0 deletions. gitleaks clean. No deletions.
+
+**ALL CHARACTERS ARE ADULTS:** n/a — rigging pipeline, no characters.
+
 
 ## 2026-10-23 ~19:45 CDT — Cloth physics: XPBD engine wired (feature/cloth-xpbd-20261023)
 
