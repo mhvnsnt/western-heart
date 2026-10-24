@@ -405,3 +405,12 @@ Decision log: `docs/decisions/2026-10-22-integration-law.md`.
 - **Locked Ashlane→VF5:** Bannon→Jeffry, El Toro→Wolf (+1 clean aerial), Pablo→El Blaze (+powerhouse, comedy-whiff lucha attempts, Black Reign/Abyss dark finishers), NPC Finxsse→Lei-Fei. VF5 bases resolve when worker 45's bank lands.
 ## EM-Jin naming convention (user directive 2026-10-22)
 Eastern Mind Jin is NOT Jin Kazama. In all files, docs, and code: "Jin (Eastern Mind)" or "EM-Jin" — never bare "Jin" where Kazama confusion is possible. (Correction: earlier "Gen (Eastern Mind)" was a mishearing.)
+
+## Multi-agent team protocol (user directive 2026-10-23, verbatim)
+
+"and this is how you should be working with the other IDEs and stuff like that to get stuff done and making this like a real development team of different IDEs and stuff like that to get stuff done faster this is how you should be doing it you should be like learning from how I'm doing it and logging it in the repo so we can keep work going on this autonomously all the time as much as we can for free while I'm using my paid things and credits and we can use all our free resources too"
+
+- Agents work as a real dev team: one finds the root cause, others build on top instead of duplicating.
+- Log the coordination pattern in the repo: `docs/AGENT-TEAM-PROTOCOL.md`.
+- Maximize free resources (VM, open-source, API, background agents); save the user's paid credits.
+- Keep work going autonomously around the clock.
