@@ -26,15 +26,16 @@ const merged = mergeCatalogs(
 );
 const counts = spineCounts(merged);
 
+// +1 vs 6cc479cf2: the T7 generic skull mask (cmn_hef_skull, 79d67ac3b) — mapped + ready.
 test('the runtime now sees every cataloged part (before: registry only, 1,148)', () => {
-  assert.equal(merged.length, 7793);
-  assert.equal(counts.total, 7793);
+  assert.equal(merged.length, 7794);
+  assert.equal(counts.total, 7794);
   assert.equal(counts.mapped + counts.unmapped, counts.total);
   assert.equal(counts.ready + counts.preview + counts.blocked + counts.record, counts.total);
 });
 
-test('spine mapping: 5,576 mapped; the unmapped are named, never dropped', () => {
-  assert.equal(counts.mapped, 5576);
+test('spine mapping: 5,577 mapped; the unmapped are named, never dropped', () => {
+  assert.equal(counts.mapped, 5577);
   assert.equal(counts.unmapped, 2217);
   const unmapped = merged.filter((e) => spineSlotOf(e) === 'unmapped');
   assert.equal(unmapped.filter((e) => e.source_game === 'defjam' && e.slot === 'unknown').length, 2209);
@@ -42,8 +43,8 @@ test('spine mapping: 5,576 mapped; the unmapped are named, never dropped', () =>
   for (const s of SPINE) assert.ok(s.id && s.title, 'every spine row is a real menu row');
 });
 
-test('readiness: 2,871 equippable; blocked and POINTS are never equippable', () => {
-  assert.equal(counts.ready, 2871);
+test('readiness: 2,872 equippable; blocked and POINTS are never equippable', () => {
+  assert.equal(counts.ready, 2872);
   assert.equal(counts.preview, 1201);
   assert.equal(counts.blocked, 3721);
   assert.equal(counts.record, 0);

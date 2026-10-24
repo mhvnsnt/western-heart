@@ -46,7 +46,9 @@ const step = async (sel, want, shot) => {
   if (shot) await p.screenshot({ path: `${SHOTS}/${shot}.png` });
 };
 try {
-  await step('[data-mm="versus"]', 'screen-select', '02-select');
+  // T7 mode select (PR #932): a rail item opens its submenu; tap its first mode card.
+  await step('[data-mm="versus"]');
+  await step('#mm-cards .mm-card[data-action] >> nth=0', 'screen-select', '02-select');
   await step('.char-card >> nth=0'); await step('#confirm-fighter');
   await step('.char-card >> nth=2'); await step('#confirm-fighter', 'screen-stage', '03-stage');
   await p.tap('#confirm-stage');

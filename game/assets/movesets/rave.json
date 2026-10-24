@@ -29356,6 +29356,74 @@
         "row": 298,
         "match": "same-notation"
       }
+    },
+    "FC.DorSLD2(orWhilefacingdown...2)": {
+      "name": "Meng Xian",
+      "input": "FC.DorSLD2(orWhilefacingdown...2)",
+      "startup": 0.333,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 0,
+      "damage_raw": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "-",
+      "on_block": null,
+      "on_hit": null,
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t7:lei:lei_407",
+      "input_slots": [
+        "FC.DorSLD2(orWhilefacingdown...2)"
+      ],
+      "move_class": "special",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "lei_407",
+      "t7_command": "FCD or SLD 2 (or While facing down... 2)",
+      "t7_hit_level": "-",
+      "t7_damage_raw": "-",
+      "t7_startup_frames": "20",
+      "t7_on_block": "-",
+      "t7_on_hit": "-",
+      "t7_on_ch": "-",
+      "merge_source": "t7:lei_407",
+      "set": "FIGHT"
+    },
+    "KNDorPLD2(orWhilefacingdown...2)": {
+      "name": "Meng Xian",
+      "input": "KNDorPLD2(orWhilefacingdown...2)",
+      "startup": 0.333,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 0,
+      "damage_raw": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "-",
+      "on_block": null,
+      "on_hit": null,
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t7:lei:lei_409",
+      "input_slots": [
+        "KNDorPLD2(orWhilefacingdown...2)"
+      ],
+      "move_class": "special",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "lei_409",
+      "t7_command": "KND or PLD 2 (or While facing down... 2)",
+      "t7_hit_level": "-",
+      "t7_damage_raw": "-",
+      "t7_startup_frames": "20",
+      "t7_on_block": "-",
+      "t7_on_hit": "-",
+      "t7_on_ch": "-",
+      "merge_source": "t7:lei_409",
+      "set": "FIGHT"
     }
   },
   "restored_from_sweep_338": {
@@ -29840,7 +29908,21 @@
     "moves_before": 1080,
     "moves_after": 1084,
     "added": {
-      "donor": 4
+      "donor": 4,
+      "lei_pull_20261023": {
+        "date": "2026-10-23",
+        "by": "batch6 pull worker (T8 wavu + T7 t7chicken frame-data diff; T7-only for dio/rave)",
+        "moves_before": 1084,
+        "moves_after": 1086,
+        "added": [
+          "FC.DorSLD2(orWhilefacingdown...2)",
+          "KNDorPLD2(orWhilefacingdown...2)"
+        ],
+        "sources": [
+          "docs/t7t8-reference/frame-data-t7/lei.json"
+        ],
+        "show_lock": "2026-10-23: all 2 moves tagged set=FIGHT per SHOW-ANIMATION LOCK (owner standing law); file-level anim_set_lock added"
+      }
     },
     "slots": 452,
     "slots_by_priority": {
@@ -30882,5 +30964,11 @@
     "1~donor.byou.38": 2048
   },
   "stance_after": {},
-  "anim_bank": "lei"
+  "anim_bank": "lei",
+  "anim_set_lock": {
+    "RAVE": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; tracked in docs/anim/LEI-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
+  }
 }

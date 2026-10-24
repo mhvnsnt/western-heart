@@ -127,6 +127,15 @@ export class PreviewPane {
     const cy = (this._fitCY || 0.95) * s;
     this.camera.position.set(0, cy + 0.18 * s, dist);
     this.camera.lookAt(0, cy, 0);
+    // Landscape (owner: bigger fighters): the pane now runs full height
+    // behind the roster band (select-t7.css) and the body is framed to
+    // ~88% of it, head near the top and legs behind the cards, the way
+    // T7's select renders stand. Height rules here (wide pane).
+    if (innerWidth > innerHeight) {
+      const d2 = THREE.MathUtils.clamp(Math.max((h * 0.57) / tanH, (w * 0.57) / (tanH * aspect)), 2.2, 11);
+      this.camera.position.set(0, cy + 0.12 * s, d2);
+      this.camera.lookAt(0, cy, 0);
+    }
   }
 
   /* Show a fighter (roster entry) with a specific attire model id.
@@ -325,6 +334,7 @@ export function createSelectScreen(deps) {
     p1: new PreviewPane($('pane-canvas-p1'), 'p1'),
     p2: new PreviewPane($('pane-canvas-p2'), 'p2'),
   };
+  window.__whSelectPanes = panes; // proof-script hook (camera framing checks)
   const clock = new THREE.Clock();
   let raf = 0;
   const loop = () => {
@@ -368,7 +378,7 @@ export function createSelectScreen(deps) {
      (renderAttires), not as duplicate cards. */
   const SELECT_HIDDEN = new Set([
     'rin', 'byou', 'tou', 'sha', 'kai', 'jin_soul', 'retsu', 'zen', 'gyou',
-    'ryuji', 'doc-frank-machine-shop',
+    'doc-frank-machine-shop',
   ]);
   const selectRoster = () => deps.roster().filter(c => !SELECT_HIDDEN.has(c.id));
 
@@ -655,6 +665,13 @@ export function createSelectScreen(deps) {
         const last = JSON.parse(localStorage.getItem(LAST_KEY) || '{}');
         const c = last.p1 && deps.findChar(last.p1);
         if (c && cardFor(c.id)) highlight(c, { scroll: true });
+        // No saved pick: T7 parks the P1 cursor on the first slot
+        // (Pantera, attire 1 = the owner's own Leo man model).
+        else {
+          const first = allCards().find(x => x.dataset.id && x.dataset.id !== '__random');
+          const fc = first && deps.findChar(first.dataset.id);
+          if (fc) highlight(fc, { scroll: true });
+        }
       } catch (_) {}
     }
     paintCards();

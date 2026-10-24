@@ -20,9 +20,22 @@
       "status": "sourced",
       "sources": [
         "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md",
-        "gre:tekken7/ui/flash/SW_UI_MainMenu/Base_OnlineMenu.png"
+        "gre:tekken7/ui/flash/SW_UI_MainMenu/Base_OnlineMenu.png",
+        "gre:teardown/tekken7-steam/tkdata/list/SW_UI_MainMenu.bin",
+        "gre:teardown/tekken7-steam/tkdata/list/SW_UI_Option.bin",
+        "gre:tekken7/ui/flash/SW_UI_PauseMenu_Replay/Cursor_Sub.png",
+        "gre:tekken7/ui/flash/SW_UI_PauseMenu_Replay/NavigationBar_Waku.png",
+        "gre:tekken7/ui/flash/SW_UI_ControllerSetup/PanelBase1.png",
+        "gre:tekken7/ui/flash/SW_UI_StoryMode_Option/Win_3line.png"
       ],
-      "files": []
+      "files": [
+        "game/menu-t7.css",
+        "game/js/menu-t7-layout.js",
+        "game/index.html",
+        "game/js/menus.js",
+        "game/js/ui-wh-bridge.js"
+      ],
+      "note": "T7 main menu (Base_OnlineMenu column 29.8% W, MainMenu_mc Main0..13 slot pitch), mode select (SubMenu_mc Sub0..9, Cursor_Sub 688x80 rows) and options (SW_UI_Option ListArea: Name|Value rows, PanelBase1 40px). Ratios in docs/select-redesign/T7-PROPORTIONS.md 'Menus'."
     },
     "screen-modewin": {
       "status": "legacy-unsourced",
