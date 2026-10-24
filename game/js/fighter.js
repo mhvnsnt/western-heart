@@ -25,6 +25,7 @@ import { TransformCinematic } from './transform-cinematic.js';
 import { V, vskillFor, vtriggerEnhance, vreversalMove } from './v-system.js';
 import { JiggleRig } from './jiggle.js';
 import { SoftBody } from './softbody.js';
+import { MpmTissue } from './mpm-tissue.js';
 import { FaceRig } from './faceRig.js';
 import { HandPoseBlender } from './handPoses.js';
 import { t8Frame, stunFromAdvantage } from './frame-tables.js';
@@ -489,16 +490,43 @@ export class Fighter {
     });
     const jiggleIntensity = this.char.jiggleIntensity || 'natural';
     if (this._jiggle) this._jiggle.setIntensity(jiggleIntensity);
-    // Soft-body muscle volume (PBD lane, 2026-10-23): Jolt XPBD torso volume
-    // for muscle deformation on hit + volume-grounded jiggle. Same pattern
-    // as jiggle: inert until Jolt loads, every call guarded, never crashes
-    // the fight. char.softbody === false opts out.
+    // Soft-body muscle volume (tissue backend lane, 2026-10-23): Jolt XPBD
+    // torso volume for muscle deformation on hit + volume-grounded jiggle.
+    // Same pattern as jiggle: inert until the backend is ready, every call
+    // guarded, never crashes the fight. char.softbody === false opts out.
+    //
+    // NEXTGEN-2026-10-23 tissue backends (see
+    // docs/research/SOFTBODY-NEXTGEN-2026-10-23.md):
+    //   'jolt'  (default) — Jolt XPBD lattice (game/js/softbody.js)
+    //   'mpm'             — CPU MPM-lite, SurRoL-inspired (game/js/mpm-tissue.js)
+    //   'femfx'           — FEMFX WASM w/ Jolt fallback (game/js/femfx-adapter.js)
+    // Pick with window.WH_PHYSICS_BACKEND or per-character
+    // char.softbodyBackend. All three share the integration contract and
+    // the 'wh_softbody_v1' quality store, so switching never changes the
+    // visual mapping — only the solver.
     this._softbody = null;
     const softSpec = SoftBody.anatomyFor(this.char);
     if (softSpec) {
+      const backend = (typeof window !== 'undefined' && window.WH_PHYSICS_BACKEND)
+        || this.char.softbodyBackend || 'jolt';
       this.root.traverse(o => {
         if (!this._softbody && o.isSkinnedMesh) {
-          try { this._softbody = SoftBody.fromMesh(o, softSpec); } catch (e) {}
+          try {
+            if (backend === 'mpm') {
+              this._softbody = MpmTissue.fromMesh(o, softSpec);
+            } else if (backend === 'femfx') {
+              // FEMFX WASM is async; the adapter falls back to Jolt when
+              // the module is missing. Import lazily so the default path
+              // pays zero cost.
+              import('./femfx-adapter.js').then((m) => {
+                if (!this._softbody && !this._disposed) {
+                  try { this._softbody = m.FemfxBody.fromMesh(o, softSpec); } catch (e) {}
+                }
+              }).catch(() => {});
+            } else {
+              this._softbody = SoftBody.fromMesh(o, softSpec);
+            }
+          } catch (e) {}
         }
       });
     }

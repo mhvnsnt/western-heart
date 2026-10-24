@@ -2546,3 +2546,29 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Verification:** `node --test game/tests/chrono-grapple.test.mjs` 18/18 green; full suite 80/84 with the same 4 pre-existing full-suite-mode failures as pristine main (fighter-completeness/v-system parallel-run flakes — verified by stashing). All four submission chains measured end-to-end: entry → control → lock → tap with in-band torques. Determinism asserted (identical runs ⇒ identical snapshots).
 
 **Deviations:** none. License note: user lifted the license firewall 2026-10-23; Chrono is BSD-3-Clause regardless, and the wired module is WH-original code (architecture-inspired, not a derivative).
+
+---
+
+## 2026-10-23 — Soft-body nextgen lane (SurRoL MPM / Isaac Healthcare Newton / Neural Deformation Gradients)
+
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate"
+
+**What was evaluated (all three, no cherry-picking):**
+- **SurRoL** (arXiv:2402.01181v1, Yang et al.): MPM + Neo-Hookean soft-body surgical sim in Taichi (GPU parallel). Open source (med-air/SurRoL). Verdict: Taichi cannot run in the browser (Python-embedded DSL, CUDA/Metal/Vulkan targets, no WASM target) — the portable part is the algorithm core (Lagrangian particles carry F, Eulerian grid solves stress), re-implemented in dependency-free JS.
+- **NVIDIA Isaac for Healthcare** (isaac-for-healthcare.github.io, Newton 1.6.1 + Warp 1.17.0, GA April 2026): Apache-2.0 numerical sim. Verdict: Newton/Warp need CUDA + Python + Docker — cannot run in the browser. The architecture ports: staged solver systems, rigid↔soft coupling, per-layer materials.
+- **Neural Deformation Gradients** (Nolte et al., Eurographics 2026): **CC BY-NC — technique reference only, no code copied.** Per-element deformation gradients (inversion-resistant), stable Neo-Hookean (E_muscle=45kPa / E_fat=15kPa / ν=0.47, λ≈16µ), embedded deformation, Poisson reconstruction.
+
+**Changes:**
+- `game/js/mpm-tissue.js` (NEW, ~950 lines, one dependency-free import): `MpmTissue` CPU MPM-lite backend — quadratic B-spline P2G/G2P, APIC transfer, stable Neo-Hookean stress P(F)=µ(F−F⁻ᵀ)+λ·ln(J)·F⁻ᵀ, explicit substepped solve (h≤1/480 CFL), Newton-style MUSCLE→FAT→SKIN stages, NDG-style inversion guard (rescale F when det<0.35), pinned bone-wrap core (Dirichlet). Same belly region + skinning + integration contract as the Jolt/FEMFX lanes; ready on frame one (no WASM wait). `ENGINE='mpm-lite'`, `VERSION='1.0.0'`.
+- `game/js/tissue-quality.js` (NEW): one shared `wh_softbody_v1` quality store for all three backends — fixes mid-session divergence where each backend had its own quality variable (X-ray gate could disagree with the driving backend).
+- `game/js/softbody.js` (v1.0.0→v1.1.0, surgical): substepped world stepping (2×/frame — SurRoL/Newton technique); NDG-style per-lattice-cell inversion guard (crushed cell relaxes toward rest); quality delegates to the shared store; `ENGINE='jolt-xpbd'` stamp.
+- `game/js/femfx-adapter.js` (surgical): quality delegates to the shared store (was `wh_femfx_v1`).
+- `game/js/fighter.js` (surgical): backend picker wired for real — `window.WH_PHYSICS_BACKEND` ('jolt' default | 'mpm' | 'femfx') or per-character `char.softbodyBackend`. 'mpm' is synchronous; 'femfx' lazy-imports with its Jolt fallback.
+- `game/tests/mpm-tissue.test.mjs` (NEW): 13 tests, all green.
+- `docs/research/SOFTBODY-NEXTGEN-2026-10-23.md` (NEW): full evaluation of all three sources, GPU-vs-browser matrix, what was wired, future work.
+
+**Verification:** `node --test game/tests/mpm-tissue.test.mjs` 13/13 green; `node --test game/tests/*.test.mjs` 144/149 — the 5 failures (fluid-decals, rage/urge input routing, stagebreak flakes) reproduce on clean origin/main, pre-existing and unrelated. `node --check` clean on all touched/new files. Default backend unchanged ('jolt') — existing fights unaffected.
+
+**Deviations:** none from the directive — all three items are wired where they can run; GPU/Python-only parts (Taichi SurRoL, Newton/Warp, Cosmos-H Dreams, NDG trained network) are evaluated and documented as [AWAITS GPU LANE]/[FUTURE], not silently dropped. NDG is CC BY-NC: technique reference only, zero code copied.
+
+**Process note:** mid-task the shared checkout `~/workspace/wh-repo` was concurrently switched to another agent's branch (`feature/cloth-xpbd-20261023`) with their uncommitted work; my uncommitted changes were extracted as a verified-pure patch to /tmp/softbody-save and all further work continued in the clean full worktree `~/workspace/wh-softbody` (67,875 files == HEAD, verified). Their work was not touched.
