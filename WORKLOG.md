@@ -2529,20 +2529,83 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 
 **Deviations:** none — no SHOW content entered any moveset; no wrong-bank substitution (proxies left untouched, flagged in gap docs).
 
----
+## 2026-10-23 ~19:30 CDT — Future Tech prototyping: SCRIPT + AdaHuman/GAIA integration design
 
-## 2026-10-23 — Track 4 (advanced systems): Project Chrono grappling lane
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate"
 
-**Owner instruction (verbatim):** "Pull all of this stuff in and wire it up and put it to work the best way possible"
+**Scope:** Future Tech prototyping lead lane — items 9 (SCRIPT) and 10 (AdaHuman/GAIA) from `docs/research/CUTTING-EDGE-SCOUT-2026-10-23.md`. Both are research-stage (no public code); the deliverable is integration architecture + contract code, per the lane brief ("If no code is available, the design docs ARE the deliverable").
 
-**Architecture decision: AUGMENT, not replace.** Chrono fills one gap — articulated joint constraints with torque readout for grappling. cannon-es keeps visuals-only rigid bodies, Jolt keeps XPBD soft tissue, PhysicsServo keeps the muscle layer. Full Chrono C++ → WASM is SPEC ONLY (official Emscripten tutorial path documented); no maintained JS/npm Chrono package exists, and a multi-MB WASM engine is wrong-sized for a ~6-body subsystem that must be bit-deterministic for rollback.
+**Code-availability verification (2026-10-23):**
+- SCRIPT (arXiv:2605.22894): no GitHub repo (API search), arXiv page has no code link; paper says "Our code will be publicly available for future research". NOT released.
+- AdaHuman (arXiv:2505.24877, ICCV 2025): no GitHub repo (API search); project page (nvlabs.github.io/AdaHuman) says "Code and models will be publicly available for research purposes", no link. NOT released.
+- GAIA (SIGGRAPH 2025): project page (research.nvidia.com/labs/amri/projects/gaia) is research-demonstration only — no code/model links. NOT released.
 
-**Changes:**
-- `game/js/chrono-grapple.js` (new, ~700 lines, zero deps, no three.js): Chrono-inspired joint taxonomy (FIXED/SPHERICAL/REVOLUTE/PRISMATIC/UNIVERSAL), ChronoEngine (torque/speed/position), ChronoSpring (runtime-variable stiffness muscle model), per-link torque nodes (reactionForce/reactionTorque), MuscleStrain (real-time strain calc, tap-out, bone-snap), SubmissionChain (data-driven: armbar/kimura/triangle/rear-naked choke), GrappleRig + ChronoGrapple facade with PhysicsServo contract (`getServoTargets()` → per-limb PD targets, null while idle).
-- `game/tests/chrono-grapple.test.mjs` (new): 18 tests, all green.
-- `game/js/integration.js`: additive block 8 (`tryInit('grapple', './chrono-grapple.js', …)`) + `S.grapple.update(dt)` in the frame loop. No existing logic touched.
-- `docs/research/CHRONO-PHYSICS-2026-10-23.md` (new): evaluation, license (BSD-3-Clause, verified), replace-vs-augment table, [WIRED]/[RESEARCHED]/[SPEC ONLY] marking, WASM vendor path, open questions.
+**Delivered (all new files, 0 deletions, nothing in `game/`):**
+- `docs/research/SCRIPT-INTEGRATION-2026-10-23.md` — JAST-DiT architecture, exact I/O contract (s_t∈R^358, a_t∈R^69, CLIP text, receding-horizon), where-it-wires-in table (describe-a-move flagship; NOT live combat/phone), inference-service REST spec, canon-safe prompt builder rules, frame-data anchoring, whole-roster style-hint table, code-drop checklist, license transparency.
+- `docs/research/PHOTO-TO-FIGHTER-2026-10-23.md` — AdaHuman deep dive (single photo → A-pose 3DGS), GAIA deep dive (identity/expression disentanglement, 43 FPS on RTX A6000), the 3DGS→mesh→rig critical path (SuGaR/2DGS/GOF/MVS options, Inria/MPII NC flag), 7-stage pipeline with consent/adult/no-famous-faces gates, GPU requirements table, companion note to FACE-SCAN-PHOTO-TO-3D-2026-10-23.md (face lane stays the wired-now path).
+- `tools/script-adapter/` — `script_contract.py`, `prompt_builder.py` (canon filter: minors/sexual/famous-names rejected), `smpl_to_wh.py` (69-dim SMPL→WH bone map, action-stream keyframe baking @60fps, wh-anim/1 envelope defaulting to `"set": "SHOW"`), `client.py` (REST client + in-process stub server), `README.md`, `tests/test_script_contract.py` — **22/22 pass** (synthetic data).
+- `tools/photo-to-fighter/` — `stages.py` (IntakeSpec→SplatAvatar→GameMesh→RiggedFighter→TexturedFighter→PhotoFighter contracts), `likeness_policy.py` (gates raise, never warn), `pipeline.py` (injectable backends + stubs), `README.md`, `tests/test_pipeline_contract.py` — **16/16 pass** (stub backends).
 
-**Verification:** `node --test game/tests/chrono-grapple.test.mjs` 18/18 green; full suite 80/84 with the same 4 pre-existing full-suite-mode failures as pristine main (fighter-completeness/v-system parallel-run flakes — verified by stashing). All four submission chains measured end-to-end: entry → control → lock → tap with in-band torques. Determinism asserted (identical runs ⇒ identical snapshots).
+**License transparency:** NVIDIA research code → expected NVIDIA Source Code License-NC (non-commercial, research/evaluation only; verified license text via nvlabs.github.io/stylegan2/license.html). NC-licensed code/weights never enter `game/` or ship — research lane only. This PR's code is WH-original (repo license), contains no NVIDIA code/weights/artifacts.
 
-**Deviations:** none. License note: user lifted the license firewall 2026-10-23; Chrono is BSD-3-Clause regardless, and the wired module is WH-original code (architecture-inspired, not a derivative).
+**Anti-clobber:** sparse checkout (3% of files) — NO local commit. Payload built via Git Database API on current main tree: additions only, 0 deletions. Branch `docs/futuretech-script-phototofighter-20261023`, PR with 6-section body.
+
+**ALL CHARACTERS ARE ADULTS:** enforced in `prompt_builder.canon_filter()` (SCRIPT prompts) and `likeness_policy.check_adult()` (photo intake) — both raise, no override path.
+
+## 2026-10-23 ~19:45 CDT — Cloth physics: XPBD engine wired (feature/cloth-xpbd-20261023)
+
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate"
+
+**Evaluated (docs/research/CLOTH-EVALUATION-2026-10-23.md):**
+- jspdown/cloth — WINNER. MIT (verified, © 2023 Harold Ozouf). WebGPU XPBD, graph-colored parallel Gauss-Seidel, sub-stepping. Web-native, matches Three.js stack.
+- openxrlab/XRTailor — Apache 2.0 (verified). CUDA-only C++, no web path; Swift-mode parameter guidance informed our quality table. Quality Mode noted for a future offline bake pipeline.
+- vitalight/Velvet — MIT (verified). CUDA-only; long-range-attachment idea ported as skip-one bend links in hair chains; capsule colliders added. SDF collision noted as future.
+
+**Wired:**
+- `game/js/fx/cloth.js` (new): XPBD engine porting jspdown/cloth's algorithm to dependency-free JS, CPU backend. XPBDSolver (typed arrays, greedy graph coloring, compliance constraints), extractTopology, buildSheet/buildFromMesh/buildChain builders, 6 fabric presets, quality table + phone-safe detect + LOD sleep (mirrors fx/particles.js), writePositions/writeNormals three.js adapters, availableBackends() WebGPU probe. CPU backend chosen because the game renders WebGL (Effekseer shares the context) and phones can't be assumed WebGPU-capable; color-group layout preserved so a WebGPU port is mechanical later.
+- `game/js/cloth-hair.js` (surgical): verlet core → compatibility facade over the new engine; ClothSheet/HairChain rebuilt on XPBD (bend hinges replace shear hack, compliance fabrics, area mass, inelastic sphere/capsule body colliders, first-placement root translate kills attach whip). Public API unchanged — fighter-depth.js autoAttachCloth wiring untouched, whole roster upgraded.
+- `game/tests/cloth-xpbd.test.mjs` (new): 13 tests, all pass.
+- Fixed a real engine bug found by tests: PBD contact velocity kick launched deep-spawned particles (y=21.6); contacts are now fully inelastic (normal velocity stripped), resting contact stable.
+
+**Verification:** cloth-xpbd 13/13 pass; fighter-depth 43/43 pass; full suite 144/148 (4 failures pre-existing on main: fluid-decals, model-key-guard x2, stagerage — verified via stash). Numerical drape proof: 8x10 cape, 120 steps, top displacement 0.0, bottom hangs -0.902/-0.90, max stretch 0.76%.
+
+**Anti-clobber:** branch from origin/main; commit via Git Data API from main's tree + only this task's files (working tree holds other lanes' uncommitted work — not touched, not committed). gitleaks clean.
+
+## 2026-10-23 ~20:00 CDT — voro++ Voronoi fracture wired into arena destruction (feat/voropp-destruction-20261023)
+
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate"
+
+**Pulled:** voro++ (Chris H. Rycroft, LBL — BSD 3-clause LBNL-modified, license text vendored verbatim at `game/vendor/voropp/LICENSE`; source cloned from https://github.com/chr1shr/voro to /tmp for the license only, C++ NOT vendored — repo stays lean). The game is JS: `game/js/destruction.js` is an original dependency-free JS implementation of voro++'s documented cell-by-plane-cuts algorithm (each Voronoi cell computed individually by carving a bounding box with perpendicular-bisector plane cuts — Sutherland–Hodgman half-plane clipping in 2D), + Lloyd relaxation for organic shards, + seeded RNG for determinism.
+
+**Wired (Foundation Law: Tekken base, this plugs in on top):**
+- `game/js/destruction.js` (new, pure math — no THREE/DOM, node-testable): `voronoiCells`, `lloydRelax`, `fractureRect` (impact-biased seed density), `DestructionSystem` — `registerSurface` / `damage` (accumulates, fractures once at 0 hp) / `step` (ballistics: gravity, spin, rest planes, life decay, live-list pruning). Wall frame: plane XY extruded in Z, rest at y=0. Floor frame: plane XY mounted rotX -90°, gravity local -Z, shards drop to the lower level.
+- `game/js/stagebreaks.js` (surgical): StageBreaks owns a DestructionSystem; walls/floors/balconies register as fracture surfaces in bindStage (hp 100 — one heavy hit still breaks, Tekken-authentic); checkHit routes damage through the engine; `_breakWall/_breakFloor/_breakBalcony` spawn Voronoi shard meshes (ExtrudeGeometry from cell polys, centroid-recentered so rotation pivots correctly) via new `_spawnShards`; update() steps physics and syncs/drops shard meshes; reset() clears.
+- `game/tests/destruction.test.mjs` (new): 9/9 pass — determinism, Voronoi correctness (each vertex closest to its own seed, area tiles bounds), area conservation, impact density bias, damage accumulation + single-fracture, shard ballistics/rest/death, floor -Z fall.
+- `game/tests/stagerage.test.mjs` (surgical fix): stager now copies destruction.js into the sandbox; THREE stub gains Vector2/Shape/ExtrudeGeometry + Group/Mesh position+rotation.set (needed by _spawnShards).
+- `tools/destruction-demo/index.html` (new): tap-to-shatter 2D canvas demo. Proof renders: `tools/destruction-demo/fracture-proof.svg` + `fracture-proof.png` (26 shards, area exactly conserved 27.200/27.200, denser at impact) — viewed the PNG, fracture is correct.
+
+**Verification:** destruction 9/9 pass; stagerage 13/15 (2 failures pre-existing on origin/main — rage/urge pressChord, verified via worktree of main @ PR #949); node --check clean on all touched files. Caught and fixed a real bug during wiring: shard geometry must be centroid-recentered or meshes render offset.
+
+**Anti-clobber:** branch from origin/main (fresh sync); commit limited to this task's files only (working tree holds other lanes' staged/unstaged work — not touched, not committed). gitleaks clean. No deletions.
+
+**ALL CHARACTERS ARE ADULTS:** n/a — geometry/physics system, no characters.
+
+## 2026-10-23 ~19:30 CDT — UniRig auto-rig intake integration (PR #956, branch muse/unirig-autorig-integration)
+
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate" — item: UniRig (SIGGRAPH 2025, MIT license), AI auto-rigging for the Tripo intake pipeline + creation suite auto-rig.
+
+**Pulled:** UniRig cloned to ~/workspace/research-pull/unirig/UniRig (VAST-AI-Research, MIT). Studied the inference API: launch/inference/generate_skeleton.sh (autoregressive skeleton prediction, checkpoint skeleton/articulation-xl_quantization_256/model.ckpt) -> generate_skin.sh (bone-point cross-attention skinning, skin/articulation-xl/model.ckpt) -> merge.sh (bpy merge of skin back onto source mesh). Weights auto-download from Hugging Face VAST-AI/UniRig.
+
+**Wired:**
+- `tools/rig-intake/unirig_intake.py` (new): wrapper driving all 3 stages via subprocess. `rig_model(src, out)` raises on failure; `maybe_autorig(src, workdir)` never raises — returns rigged GLB path or None. Env: UNIRIG_ROOT, WH_UNIRIG (master switch), WH_UNIRIG_SEED. `--check` readiness probe.
+- `tools/rig-intake/UNIRIG-SETUP.md` (new): exact GPU-machine setup (conda, torch+cu, spconv/torch_scatter/torch_cluster/flash_attn version-match notes, weights prefetch, ComfyUI one-click option, wiring, troubleshooting table).
+- `tools/rig-intake/README.md` (new): provider contract for future auto-rig plugins.
+- `tools/rig-intake/tests/test_unirig_intake.py` (new): 10 unit tests, all pass.
+- `tools/import_model.py` (surgical): hook probes incoming GLB; unskinned meshes auto-rig via UniRig when GPU+checkout present, `rep["unirig_autorig"]` recorded; fail message updated with the UniRig setup option.
+- `docs/MODEL_IMPORT_AUTORIG.md` (surgical): step-3 status PARTIAL -> DONE (GPU-gated).
+
+**Verification:** 10/10 pytest pass; --help exits 0; --check correctly reports NOT READY on this GPU-less VM (exit 1); py_compile clean; gitleaks clean. Full GPU inference pending Grok's box (coordination posted on issue #866, comment 6377665231). Note: upstream now points to SkinTokens as UniRig's successor — follow-up candidate, stayed on UniRig per owner item.
+
+**Anti-clobber:** branch from fresh origin/main; sparse checkout in this tree (lab/ etc. excluded) — committed via Git Data API (push_branch_api.py) building from main's real tree + only this task's 6 files; verified via compare API that the branch diff is exactly the 6 files (4 added, 2 modified), 0 deletions. gitleaks clean. No deletions.
+
+**ALL CHARACTERS ARE ADULTS:** n/a — rigging pipeline, no characters.
