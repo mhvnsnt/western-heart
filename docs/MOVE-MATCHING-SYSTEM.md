@@ -39,3 +39,39 @@ RP2 = Right Punch = Tekken 2
 LK3 = Left Kick = Tekken 3
 RK4 = Right Kick = Tekken 4
 Use LP1/RP2/LK3/RK4 format in ALL conversation with the user.
+
+## Create-A-Move List — WWE-Style Editor with Custom Combos
+
+### What It Is
+Port of WWE's Create-A-Moveset system into Western Heart's creation suite, renamed to Create-A-Move List. Organized in Tekken input style (LP1, RP2, LK3, RK4 + directions).
+
+### Flow
+Select character → Create-A-Move List → Edit → Choose character → See ALL moves in a list (including wrongly mapped ones) → Swap moves to correct slots.
+
+### What the Editor Shows
+For every move slot:
+- Move name (from T7 files)
+- Button input (LP1, RP2, LK3, RK4 + direction)
+- Exact animation (name/ID from T7 files, not a T3 guess)
+- Current mapping status (correct / wrong / approximate / unmapped)
+
+### Custom Combos
+Once moves are organized, the editor lets you:
+- Extend combos: LP1, RP2 → LP1, RP2, LP1 → LP1, RP2, LP1, RP2
+- Shorten combos: Remove hits from long strings
+- Build custom combos: Chain any moves together in any order
+- Not limited to Tekken's preset strings — create your own
+
+### Data Source Priority
+1. WWE 2K22 (most recent, best moveset creator) — when available from Grok's box
+2. WWE 2K19 (pull plan exists) — when available
+3. Older WWE games already torn down (No Mercy, WMXIX) — start here NOW, do not wait for 2K22
+4. T7 files for Tekken moves (kin.mvl and other movelists in private repo)
+
+Do NOT wait for 2K22 to start organizing. Use whatever WWE data is already available, then upgrade to 2K22 when it arrives.
+
+### Button Names
+LP1 = Left Punch = Tekken 1
+RP2 = Right Punch = Tekken 2
+LK3 = Left Kick = Tekken 3
+RK4 = Right Kick = Tekken 4
