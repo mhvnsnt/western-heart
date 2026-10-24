@@ -72,3 +72,35 @@ After the worker-52 PR merges and deploys to https://mhvnsnt.github.io/western-h
 ## Changelog
 - 2026-10-22 ~16:00 CDT: created by worker 52. P0-1 + P0-2 found by code audit of main @ 2af4328.
 - 2026-10-22 ~16:10 CDT: P0-2 fixed on main by PR #677 (mainmenu.css link). P0-1 (duplicate screen-stage id) still open — shipped as worker-52 PR (1 line in `game/index.html`).
+
+---
+
+## Worker 54 — FIGHT-LOOP CRASH REPAIR (2026-10-22 ~16:20–16:40 CDT, main @ 6b3b69d)
+
+Fight-path audit results: the core loop (fight boots → moves fire → hits register → rounds end → winner → rematch/menu) is GREEN by code read + Node-verified, EXCEPT three breaks below (all fixed in this worker's PR, unmerged due to merge freeze).
+
+### Fight-path findings (blocking → fixed)
+
+| # | Finding | Status | Fix |
+|---|---------|--------|-----|
+| F1 | **`game/js/hitfx.js` deleted by stale-base clobber.** #616 (merged 17:47 UTC) added `game/js/hitfx.js` (Tekken hit-effect stack: spark/debris/ring/flash, the owner's "prototype bullshitty" hit-FX replacement) + wired it into `game.js`. Current main has the file GONE and `game.js` reverted to prototype sphere-bursts — the PR #579 clobber pattern. | 🔴→🟢 fixed | Restored `game/js/hitfx.js` byte-identical from the #616 merge tree; re-applied the #616 `game.js` wiring surgically (import, `this.hitfx = new HitFX(...)` in constructor, `hitfx.update(dt=0 during hitstop)` in `_loop`, `hitfx.spawn(...)` at all hit sites, `_spawnImpact` → legacy shim). V-System's later `_spawnImpact` calls route through the shim. |
+| F2 | **`js/integration.js` merged but NEVER LOADED.** Its header says "Loaded from game/index.html as a plain module script AFTER main.js" — index.html had no such tag. The three-mesh-bvh hit-verify layer, springbones jiggle, troika nameplates/damage numbers, cannon-es KO tumble, nebula hit-FX layering, lip-sync, cam director were all dead code. | 🔴→🟢 fixed | Added `<script type="module" src="js/integration.js">` to `game/index.html` after `main.js`, per the module's own header. Every system init is try/catch — a failing vendor module stays absent, never breaks the fight. |
+| F3 | **`await game.startMatch(...)` ran OUTSIDE the try/catch in `startFight`.** Any throw inside startMatch (Fighter build edge, arena.setStage, AI wiring) was an unhandled promise rejection: the player sat on the stage screen forever with "Entering the arena…", no error, no way back. | 🔴→🟢 fixed | Wrapped in try/catch with an error surface on the stage + select hints, re-enabled confirm buttons, `show('stage')`, `return false`. |
+
+### Verified GREEN (fight itself — no changes needed)
+
+- **Fighter loading:** all 49 roster entries' `model` ids + all 16 transform `target:` models resolve in `MODEL_URLS` (script-verified against main). `loadModels` failures surface on the hints (startFight's existing catch); `createInstance` throws only on unknown keys (now guarded by F3).
+- **Inputs fire moves:** `input.js` (touch 1/2/3/4 + chords, joystick untouched) → `TekkenBuffer.press/pressChord` → real T3 moves. Node-verified against the real `pantera.json` (784 KB): all 10 inputs (`1,2,3,4,1+3,2+4,1+2,3+4,1+4,2+3`) resolve to real T3 moves (`3+4` = Jaguar Step, 0-dmg stance — correct Tekken behavior, not a bug). Every limb has the last-resort base-move fallback → no dead buttons.
+- **Hits register:** the #616 sphere-test hit authority (`game.js` `_resolveCombat` + `fighter.js` getHitbox/getHurtboxes, `canBeHitBy` posture rules) is LIVE — that half of #616 was never clobbered. The BVH verify layer becomes live via F2.
+- **Rounds end, winner declared:** `_endRound` → `_afterRound` (best-of-3, `roundsToWin` honored) → `onMatchEnd` → `ui.matchOver` → result screen. All `ui.*` methods called by `game.js` exist in main.js's `ui` object (verified). REMATCH → `modes.rematch()` → stage select; MAIN MENU → `leaveFight()` + `show('menu')`. `getStage` always returns a stage (STAGES[0] fallback); `selectedStage` defaults to `'shrine'`.
+- **Side-switch (Claude's lane — NOT touched):** PR #653 replaced #587's smooth Y-rotation tween with an instant flip (`fighter.js` `update()` ≈line 1066: `if (want !== this.facing) this.facing = want`, applied instantly in `_animate` ≈line 1247 `this.lean.rotation.y = this.facing * Math.PI / 2`; `_faceY` is gone, and `game.js` `_startRound`'s `_faceY` assignment is a harmless dead property). Instant flip only runs when `canAct()` — no crash vector found on the fight path. Visual feel changed (smooth → snap); Claude owns it until Oct 23 11 AM.
+
+### Live-browser steps for the fight (after merge + deploy)
+
+7. Versus fight boots: "Entering the arena…" → HUD (health bars, 60s timer, soul meters), two fighters spawn facing each other (instant side-switch snap, no crash).
+8. Joystick moves P1; tap 1/2/3/4 → real T3 moves fire every time; hits show Tekken gold spark + debris (heavy: ring; KO: flash + ring); block shows pale-blue spark; timer counts; HP bars drain.
+9. K.O. → "K.O." banner → ROUND 2 → 2 round wins → result screen (YOU WIN/YOU LOSE). REMATCH → stage select; MAIN MENU → menu. Console: no red errors; `[WHIntegration] ... ready` lines appear (fail-silent skips logged as warnings only).
+
+### Changelog (append)
+
+- 2026-10-22 ~16:45 CDT: worker 54 fight-loop repair. F1 (hitfx.js clobber restore + re-wire), F2 (integration.js script tag), F3 (startMatch try/catch). Input→move pipeline Node-verified 10/10. Side-switch state flagged (Claude's lane). PR open, NOT merged — merge freeze in effect.
