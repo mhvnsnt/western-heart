@@ -75,3 +75,28 @@ LP1 = Left Punch = Tekken 1
 RP2 = Right Punch = Tekken 2
 LK3 = Left Kick = Tekken 3
 RK4 = Right Kick = Tekken 4
+
+### Context-Appropriate Animation Validation (CORE REQUIREMENT)
+
+The editor MUST enforce that animations match their slot context. This is not optional — it is the core validation that prevents the jumping-jab-in-standing-slot problem.
+
+**Validation Rules:**
+
+- Jumping slots → ONLY jumping animations (jumping LP1, jumping RP2, jumping LK3, jumping RK4)
+- Crouching slots → ONLY crouching animations
+- Standing slots → ONLY standing animations
+- Back/forward/left/down variations → animations matching that direction
+- Diagonal inputs (down-forward + RP2, etc.) → animations matching that diagonal direction
+- Combination inputs → animations matching the full input sequence
+
+**How Validation Works:**
+
+When you try to assign a move to a slot, the editor checks the animation's properties against the slot's context:
+- Animation properties (from clip analysis): jumping/crouching/standing, direction, limb, type
+- Slot context (from input): standing/crouching/jumping, direction, button
+- If properties match context → assignment allowed
+- If properties do NOT match context → assignment BLOCKED or flagged as wrong
+
+User directive (verbatim): "where you can replace the move with the proper animation that goes there not with just like any bullshit animation but like if you're pressing if it's a crouching position that only the crouching animations can get chosen there and such and such"
+
+This means: you cannot put a jumping animation in a standing slot. You cannot put a crouching animation in a jumping slot. The editor validates every assignment against the slot context. No more guessing, no more wrong animations in wrong slots.
