@@ -5,6 +5,7 @@
    ============================================================ */
 import './t7-ui-private.js';
 import './select-t7-layout.js';
+import './menu-t7-layout.js';
 import { Game } from './game.js';
 import { InputManager } from './input.js';
 import { audio } from './audio.js';
@@ -666,6 +667,10 @@ document.addEventListener('click', (e) => {
   if (!el) return;
   unlockAudio();
   audio.uiClick();
+  // T7 SubMenu_mc (owner, PR #901 follow-up): a main-menu rail item opens
+  // its mode-select submenu (mainmenu.js) instead of jumping straight to a
+  // mode; the submenu's cards then route through data-action as before.
+  if (el.closest('#mm-list') && document.getElementById('mm-submenu')) return;
   const m = el.dataset.mm;
   if (m === 'story') {
     getModes().then(modes => modes.startMode('story'));
