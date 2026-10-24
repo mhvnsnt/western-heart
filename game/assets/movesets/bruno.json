@@ -1,6 +1,13 @@
 {
   "fighter": "bruno",
   "display": "BRUNO",
+  "anim_set_lock": {
+    "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; tracked in docs/anim/BRUNO-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set",
+    "batch8_20261023": "batch8 2026-10-23: T7 Miguel pull verified complete (219/219 rows); 0 moves added this lane"
+  },
   "tekken_base": "Miguel",
   "t3_source": "bryan",
   "proxy": false,
