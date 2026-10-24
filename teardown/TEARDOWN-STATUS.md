@@ -1,6 +1,6 @@
 # Chimera Build — Teardown Completion Status
 
-**Updated:** 2026-10-23 (Tekken 5 row added by T5 extraction lane)
+**Updated:** 2026-10-13 22:45 UTC
 **Owner directive:** 100% teardown of every game. No gaps. No deferral.
 
 ---
@@ -22,7 +22,6 @@
 | 11 | Dead or Alive 4 | **~15%** | 30/30 chunks on release `doa4-iso-v1`. **Missing: reassemble + extract** |
 | 12 | Soulcalibur VI | **~10%** | Mechanics doc only. Game binary not acquired (32GB) |
 | 13 | Dead or Alive 6 | **~10%** | Mechanics doc only. Game binary not acquired (50GB+) |
-| 14 | Tekken 5 (PS2) | **~15%** | ISO acquired + surveyed 2026-10-23, DW anim files located (`teardown/tekken5/`). **Missing: model/anim/moveset decode** (romD + TK5DATA0 formats → RE bench) |
 
 ---
 

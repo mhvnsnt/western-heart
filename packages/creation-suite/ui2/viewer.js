@@ -19,18 +19,10 @@ import { applyPart, removePart } from '../src/parts.js';
 import { SLOTS as ATTIRE_SLOTS, applyEdit, detach } from '../src/attire.js';
 import { clone as skeletonClone } from 'three/addons/utils/SkeletonUtils.js';
 import { applyMorphProxies } from '../src/morphs.js';
-import { buildSecondaryRig } from '../src/secondary.js';
-import { swapSkinnedPart, removeSwapped } from '../src/rigswap.js';
 import { effectivePlacement } from '../../../game/js/customization-consumer.js';
 import { customFighterToRoster } from '../../../game/js/custom-fighter.js';
 
-const ROOT = new URL('../../../', import.meta.url);
-// Suite body dials (src/morphs.js ids) -> secondary-physics region sliders
-// (src/regions.js). Gates chest/glute springs and feeds the size scaling.
-export function physicsSliders(m = {}) {
-  const v = (k) => Number(m[k]) || 0;
-  return { chest: v('chest'), belly: v('belly'), glutes: v('hips'), thighs: 0.5 * v('hips') + 0.5 * v('fat'), weight: v('fat') };
-} // repo root, as served
+const ROOT = new URL('../../../', import.meta.url); // repo root, as served
 
 function makeStageDressing() {
   // Stage dressing is OURS (labeled reconstruction in the theme ledger):
@@ -137,8 +129,6 @@ export class Viewer {
       this.targetY + sy * this.dist,
       Math.cos(this.yaw) * cy * this.dist);
     this.camera.lookAt(0, this.targetY, 0);
-    const now = performance.now(), dt = this._last ? (now - this._last) / 1000 : 0; this._last = now;
-    if (this.springs && dt > 0) { this.model?.updateMatrixWorld(true); this.springs.update(dt); }
     this.renderer.render(this.scene, this.camera);
   }
 
@@ -173,7 +163,6 @@ export class Viewer {
     this.dist = Math.max(3.4, size.y * 2.35);
     if (this.record) await this.applyRecord(this.record);
     if (this._state) this.applyMorphs(this._state, this._suiteRecord);
-    this.rebuildPhysics();
     return { height: size.y };
   }
 
@@ -185,7 +174,6 @@ export class Viewer {
     for (const id of Object.keys(this.model.userData.csParts || {})) {
       try { removePart(this.model, id); } catch (e) { /* already gone */ }
     }
-    for (const slot of Object.keys(this.model.userData.csSwapped || {})) removeSwapped(this.model, slot);
     for (const socket of Object.keys(this.model.userData.csAttire || {})) {
       try { detach(this.model, socket); } catch (e) { /* already gone */ }
     }
@@ -205,13 +193,6 @@ export class Viewer {
       try {
         if (entry.part_class === 'mesh_part' || r.glb) {
           if (!r.glb) throw new Error('no GLB yet');
-          if (entry.rig_swap) {
-            // Tekken-style: rebind the part's skin to this rig by bone name.
-            const raw = await this._loadScene(new URL(r.glb, ROOT).href);
-            const res = swapSkinnedPart(this.model, skeletonClone(raw), r.slot);
-            if (res.ok) { status.applied.push(label + ' (rig swap)'); continue; }
-            // not this rig's bones: fall through to the socket attach
-          }
           // Center ONCE per part, on a private geometry copy. The
           // consumer centers the shared cached geometry in place —
           // fine in-fight (attach-once per fighter load; the result is
@@ -282,18 +263,6 @@ export class Viewer {
     this.slotEdits[socket] = next;
     applyEdit(piece, next);
     return true;
-  }
-
-  // Size-adaptive secondary physics (src/secondary.js): spring bones for
-  // chest / glutes / belly / thighs, sized from the measured body and the
-  // body sliders, rebuilt whenever the body changes.
-  rebuildPhysics(sliders = physicsSliders(this._state?.morphs || {})) {
-    this.springs = null;
-    if (!this.model || this.physicsEnabled === false) return null;
-    try { this.springs = buildSecondaryRig(this.model, { sliders }); }
-    catch (e) { console.warn('[CS2] secondary physics unavailable:', e.message || e); }
-    this.physicsCount = this.springs?.springs?.length || 0;
-    return this.springs;
   }
 
   // Morphs + body type: shared proxies + the CAW loader's own conversion.

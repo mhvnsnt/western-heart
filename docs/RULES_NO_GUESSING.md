@@ -14,23 +14,3 @@ Applies to every agent (Grok Bot, Muse/Ashes, Producerbot, Repo Co Dev, Jigglebo
 6. **Proof of real bytes** per Producerbot's `media-proof-standard`: SHA-256 of inputs and outputs, frames/screenshots actually viewed, the command that made them, before/after images. UNKNOWN is never PASS.
 7. Never claim "the real pose" or "from the teardown" unless the bytes trace back to a decoded teardown file. Say "closest real frame" when that is what it is.
 8. Don't hold back owned data over sale worries (see AGENTS.md "Sale status"). Do respect lane ownership: creation suite = Repo Co Dev, physics = Jigglebot.
-
-
-## INSTRUCTION GATE: Owner law, data source priority (Oct 23, 2026, 2:19 PM CT)
-
-> **Western Heart data (moves, animations, frame data, menus, character select) comes from Tekken 5, 6, 7, 8 and TTT2. Tekken 3 is only a last-resort fallback, and every T3 use must be logged with the reason no T5/6/7/8/TTT2 source was available.**
-
-- Search T5/T6/T7/T8/TTT2 teardowns first. Use T3 only when none of them has the data, and log the T3 use (file, clip, reason) in `docs/anim/PROCEDURAL_AUDIT.md`.
-
-## INSTRUCTION GATE: Owner law, no hand-made menus (Oct 23, 2026, 2:21 PM CT)
-
-> **NO hand-made menus. Every Western Heart menu, character select and customization screen, including the creation suite in `packages/creation-suite`, must be built from the actual Tekken teardown files (T5/T6/T7/T8/TTT2) and other game teardowns, and every UI change must cite its teardown source in the PR and WORKLOG.**
-
-- The CI gate for this law is owned by MoneyManBusch; do not add a duplicate gate.
-- The existing hand-built creation suite UI (`packages/creation-suite` suiteMenu, `docs/CREATION-SUITE-UI-*.md`) is **NON-COMPLIANT, pending a teardown-sourced rebuild**. Do not delete it; keep it until the rebuild replaces it in a reviewed PR.
-
-## Owner rules — 2026-10-23 (disk offload + merge rule) — Repo Co Dev
-
-**(a) Disk offload.** Once local work is verified 100% pushed (0 dirty, 0 untracked, 0 stash, every local branch on the remote at the same or a later SHA, submodules included) or stored in box-storage, clear it off the box disk as you go, and log each removal (path, repo, HEAD SHA, date) in agent-ops `BOX-OFFLOAD-LOG.md`. If any check fails or ownership is unclear, keep it on disk and list it.
-
-**(b) Merge rule.** Merge only when GitHub shows the PR as MERGEABLE/CLEAN, every check is verified green through the Actions runs API (a timeout, 403 or unreadable result counts as a FAIL), `git diff --diff-filter=D --name-only origin/main...HEAD` is empty, and the PR is not freeze-marked. No batch merges: one PR at a time. Claim the work in agent-ops `CLAIMS.md` first. Never force-push or rebase pushed work. If any check is unverifiable, leave the PR open.

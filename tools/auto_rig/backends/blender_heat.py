@@ -36,9 +36,6 @@ def parse_args():
     ap.add_argument("--in", dest="inp", required=True)
     ap.add_argument("--out", dest="out", required=True)
     ap.add_argument("--mesh-facing", default="-Z", choices=list(FACING_YAW))
-    ap.add_argument("--max-influences", type=int, default=4,
-                    help="cap skinning influences per vertex (WH standard: 4, "
-                         "glTF vec4 + UE4; 0 = no cap)")
     ap.add_argument("--template",
                     default=os.path.join(HERE, "skeleton_template.json"))
     return ap.parse_args(argv)
@@ -95,11 +92,25 @@ def main():
     bpy.context.view_layer.objects.active = arm
     bpy.ops.object.parent_set(type="ARMATURE_AUTO")
 
-    # weight conventions: island fixup (was inline here; moved verbatim into
-    # weight_conventions.py) + normalize-all-verts. Same defaults as before.
-    sys.path.insert(0, HERE)
-    import weight_conventions
-    weight_conventions.apply(meshes, arm, max_influences=a.max_influences)
+    # fixup: bone heat can leave verts unweighted on disconnected islands;
+    # unweighted verts crash the glTF exporter (neutral_bone path). Assign
+    # them to the nearest bone head with weight 1.0.
+    bpy.ops.object.select_all(action="DESELECT")
+    for m in meshes:
+        m.select_set(True)
+    bpy.context.view_layer.objects.active = meshes[0]
+    bpy.ops.object.mode_set(mode="OBJECT")
+    vgroups = meshes[0].vertex_groups
+    bones = [(b.name, arm.data.bones[b.name].head_local) for b in arm.data.bones]
+    for m in meshes:
+        for v in m.data.vertices:
+            if not v.groups:
+                co = m.matrix_world @ v.co
+                bn, _ = min(bones, key=lambda b: (b[1] - co).length)
+                vg = vgroups.get(bn)
+                if vg is None:
+                    vg = vgroups.new(name=bn)
+                vg.add([v.index], 1.0, "REPLACE")
     bpy.ops.object.select_all(action="DESELECT")
 
     bpy.ops.export_scene.gltf(

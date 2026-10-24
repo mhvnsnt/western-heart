@@ -55,22 +55,6 @@ def main():
     a = ap.parse_args(); cid = a.character
     d = ROOT / "roster" / cid / "imports"; d.mkdir(parents=True, exist_ok=True)
     src = fetch(a.src, d)
-    # BLENDER17-01 fallback import path (worker 80, 2026-10-22): SmutBase
-    # .blend files carrying the 17-byte BLENDER17-01 header (often inside a
-    # zstd stream mislabeled ".blend") route through the direct mesh
-    # extractor instead of failing at the GLB gate. The extractor builds an
-    # unrigged GLB (+ armature/weights JSON sidecars) for the normal
-    # auto-rig pipeline. See tools/blender17-extract/README.md.
-    _b17 = ROOT / "tools" / "blender17-extract" / "route.py"
-    if _b17.exists():
-        import importlib.util
-        _spec = importlib.util.spec_from_file_location("blend17_route", str(_b17))
-        _mod = importlib.util.module_from_spec(_spec)
-        _spec.loader.exec_module(_mod)
-        _routed = _mod.maybe_route(src, d / "blend17")
-        if _routed:
-            print(f"BLEND17-01 fallback: {src} -> {_routed}")
-            src = _routed
     v = 1
     while (d / f"{a.attire}_v{v}.glb").exists(): v += 1           # version, never overwrite
     dst = d / f"{a.attire}_v{v}.glb"; shutil.copy2(src, dst)

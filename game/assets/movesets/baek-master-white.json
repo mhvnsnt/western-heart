@@ -2925,101 +2925,6 @@
       "throw_break": "1+2",
       "merge_source": "donor:baek:1+4",
       "donor_fighter": "baek"
-    },
-    "None~donor.baek.8": {
-      "name": "Kick Is the Question [WH SIGNATURE]",
-      "input": "S",
-      "startup": 0.26,
-      "active": 0.017,
-      "recovery": 0.78,
-      "damage": 17,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 12,
-      "anim_ref": "wh:baek:sig:kick-is-the-question",
-      "input_slots": [
-        "S"
-      ],
-      "move_class": "signature",
-      "wh_original": true,
-      "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
-      "merge_source": "donor:baek:S",
-      "donor_fighter": "baek"
-    },
-    "None~donor.baek.9": {
-      "name": "Homework [WH SIGNATURE]",
-      "input": "P+K",
-      "startup": 0.3,
-      "active": 0.05,
-      "recovery": 0.9,
-      "damage": 21,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 6.5,
-      "soulGain": 13,
-      "anim_ref": "wh:baek:sig:homework",
-      "input_slots": [
-        "P+K",
-        "P",
-        "K"
-      ],
-      "move_class": "signature",
-      "wh_original": true,
-      "note": "Every fight is a lesson; every loss is homework. A teaching throw with corrections.",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "merge_source": "donor:baek:P+K",
-      "donor_fighter": "baek"
-    },
-    "1+2~donor.baek.5": {
-      "name": "Kick Is the Question [WH SIGNATURE]",
-      "input": "1+2",
-      "startup": 0.26,
-      "active": 0.017,
-      "recovery": 0.78,
-      "damage": 17,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 12,
-      "anim_ref": "wh:baek:sig:kick-is-the-question",
-      "input_slots": [
-        "1+2"
-      ],
-      "move_class": "signature",
-      "wh_original": true,
-      "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
-      "input_remapped_from": "S",
-      "merge_source": "donor:baek:1+2",
-      "donor_fighter": "baek"
-    },
-    "1+4~donor.baek.5": {
-      "name": "Homework [WH SIGNATURE]",
-      "input": "1+4",
-      "startup": 0.3,
-      "active": 0.05,
-      "recovery": 0.9,
-      "damage": 21,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 6.5,
-      "soulGain": 13,
-      "anim_ref": "wh:baek:sig:homework",
-      "input_slots": [
-        "1+4"
-      ],
-      "move_class": "signature",
-      "wh_original": true,
-      "note": "Every fight is a lesson; every loss is homework. A teaching throw with corrections.",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "input_remapped_from": "P+K",
-      "throw_break": "1+2",
-      "merge_source": "donor:baek:1+4",
-      "donor_fighter": "baek"
     }
   },
   "restored_from_sweep_338": {
@@ -3070,7 +2975,7 @@
     "u/f+4": "u/f+4"
   },
   "merge_sources": {
-    "date": "2026-10-23",
+    "date": "2026-10-21",
     "by": "tools/moveset-merge/merge_sources.py",
     "bases": {
       "donors": [
@@ -3079,8 +2984,8 @@
     },
     "why": "attire variant of baek",
     "exclude_proxy": false,
-    "moves_before": 134,
-    "moves_after": 138,
+    "moves_before": 130,
+    "moves_after": 134,
     "added": {
       "donor": 4
     },
@@ -3217,9 +3122,7 @@
     "None~donor.baek.5": 2048,
     "1+4~donor.baek.3": 2048,
     "None~donor.baek.7": 2048,
-    "1+4~donor.baek.4": 2048,
-    "None~donor.baek.9": 2048,
-    "1+4~donor.baek.5": 2048
+    "1+4~donor.baek.4": 2048
   },
   "stance_after": {}
 }

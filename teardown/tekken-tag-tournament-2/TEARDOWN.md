@@ -39,52 +39,11 @@ All 13 sub-10MB files extracted with 7-Zip (selective `7z e`, ~3MB total — dis
 
 ---
 
-## 2026-10-23 — Surgical extraction pipeline (Law/Lars priority lane)
-
-**Directive:** T3 is fallback-only — all pulls from T5/T6/T7/TTT2. Law and
-Lars extract FIRST (their modern movesets/animations unblock the Buffalo
-Bill / Chordz pull lane); then the full 59-fighter roster, stages, audio.
-
-**Built:** `tools/surgical/` — stream-extracts 7z members from release
-`ttt2-7z-v1` over HTTP Range **without** downloading the 13.36GB archive
-(VM egress is proxy-throttled to ~0.1 MB/s sustained; full pull ≈ 38h).
-The 7z is one LZMA folder (lc=3,lp=0,pb=2,8MB dict), 72 data files in
-header order: 7 STFS blobs (0–6) → 12 title-update files (7–18) → GoD
-descriptor (19) → Data0000–Data0051 (20–71).
-
-**Verified 2026-10-23:**
-- 7z end-header parsed over HTTP Range (1,970 bytes fetched): 80 entries,
-  byte-matching INVENTORY.md.
-- Member 19 (GoD descriptor, 45,056 bytes) stream-extracted and
-  **byte-identical** to the `extracted-small/` copy (sha256 match).
-- `GodPackage` (title ID `0x4E4D0859` parses) + `StfsPackage` readers
-  sourced from `dfdx047/ZarManager` (`fetch_zarmanager.py`; not vendored —
-  upstream license unverified).
-- Member 0 (155MB STFS blob) stream-decoding in progress.
-
-**Runbook:** [`EXTRACTION-RUNBOOK.md`](EXTRACTION-RUNBOOK.md) — step-by-step
-through the XDVDFS listing (`Data0000`, header index 20, ~4.9GB stream
-prefix = the long pole, run under `nohup`) to Law/Lars carving.
-
----
-
 ## What's Blocked and Why
 
-- **Safe storage: DONE 2026-10-23.** Release `ttt2-7z-v1` holds all 27
-  assets (26 × 500MB parts + loose-files tar, 13.5GB). The local 7z is
-  fully reproducible from the release; per-part deletion after extraction
-  is sanctioned.
-- **Disk: circumvented.** The surgical pipeline (`tools/surgical/`) never
-  holds the full archive + extracted payload simultaneously — members
-  stream-decode straight from the release parts over HTTP Range.
-- **Network (new, 2026-10-23):** VM egress proxy throttles sustained
-  downloads to ~0.1 MB/s. Full 13.36GB pull ≈ 38h; `Data0000` (key to the
-  XDVDFS listing) needs a ~4.9GB stream prefix ≈ 14h — run as a background
-  `nohup` job. Per-member prefix costs: `tools/surgical/README.md`.
-- **Xbox 360 tooling: WIRED 2026-10-23.** `GodPackage`/`StfsPackage`
-  (dfdx047/ZarManager) + `tools/xdvdfs_reader.py` + `tools/god_surgical.py`
-  cover GoD/STFS/XDVDFS. Remaining: Namco X360 model/moveset format docs
-  (same family as Tekken 6 console).
+- **Full extraction BLOCKED by disk space.** Archive (13.3GB) + extracted (13.45GB) = ~27GB needed simultaneously; /home/hatch sits at 90% (11GB free) with an 88% hard ceiling. **Not attempted.**
+- **Safe storage: IN PROGRESS (separate lane).** The 13.3GB archive is being uploaded to a western-heart GitHub Release in 500MB chunks (26 chunks; 5/26 verified as of 2026-10-13 ~09:00 EDT). Until the full archive is verified in the Release, **per NO-DELETE-BEFORE-SAFE-STORAGE LAW the local 7z stays.**
+- **Xbox 360 package decryption:** the Data0000–Data0051 blobs and the 7 large `00000002/` files are Xbox 360 STFS/container format. Extraction needs Xbox 360 tooling (Velocity/Xbox 360 Content Manager equivalent, or Linux STFS parsers). The tekken-decrypt tool hunt (`~/workspace/tools/tekken-decrypt/`) pulled FModel + repak for Tekken 7 (UE4) — TTT2 is NOT UE4, so a different extractor is needed.
 - **Character models inside the blobs:** once extracted, expect Namco proprietary console model format (same family as Tekken 6's, distinct from PSP GMO).
 
 ---
@@ -101,9 +60,7 @@ prefix = the long pole, run under `nohup`) to Law/Lars carving.
 
 ## Next Steps
 
-1. ~~Finish GitHub Release upload~~ — DONE 2026-10-23 (`ttt2-7z-v1`, 27 assets)
-2. ~~Wire Xbox 360 STFS decryption tooling~~ — DONE 2026-10-23 (surgical pipeline)
-3. Extract `Data0000` (background `nohup`, ~14h at throttled egress) → XDVDFS listing
-4. **Law + Lars first:** carve their character bundles (models, move-list binaries, animations, stances, win poses) → new GitHub Release for binaries >50MB + manifests in `roster/`
-5. Continue: full 59-fighter roster → stages (stg00–stg48) → XMA audio banks
-6. Document the Namco X360 model format alongside the Tekken 6 findings
+1. Finish GitHub Release upload of the 13.3GB archive (separate lane in progress); verify all 26 chunks, then decide on local 7z retention
+2. Wire Xbox 360 STFS decryption tooling (Linux) — the blocker for ALL inner content
+3. Extract Data chunks → map internal file structure → pull character models, movesets, stage geometry, audio banks
+4. Document the Namco X360 model format alongside the Tekken 6 findings

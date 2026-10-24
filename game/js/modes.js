@@ -1,7 +1,6 @@
 /* ============================================================
    WESTERN HEART — Game Modes
-   Round-1: VERSUS · ARCADE · STORY (reincarnation) · TRAINING ·
-   FIGHT LAB — GUNGAKU 軍楽 (programmable dummy; builds on training)
+   Round-1: VERSUS · ARCADE · STORY (reincarnation) · TRAINING
    Round-2 (Lane G): SURVIVAL · TIME ATTACK · TEAM BATTLE (Tekken,
    researched — docs/modes/TEKKEN-MODES-RESEARCH.md) ·
    不死クォンバット · SOUL SURGE GAUNTLET · TRADER'S MIMIC
@@ -221,7 +220,7 @@ export function buildAssembledSoul(playerChar) {
     title: 'Yourself, Assembled',
     base: playerChar.base || 'You',
     moveset: playerChar.moveset || 'jin',
-    model: playerChar.model,
+    model: playerChar.model || 'pantera',
     tintStrength: 0.65,
     colors: { suit: 0x0a0a14, trim: 0xb28dff },
     style: 'All Nine Styles',
@@ -399,7 +398,6 @@ export class ModeController {
     this.arcade = null;        // { idx, fighterId, wins }
     this.story = null;         // { stage, forces, deaths, vesselId, acc, startTime }
     this.training = null;      // { fighterId }
-    this.fightlab = null;      // { fighterId } — GUNGAKU (軍楽) programmable dummy
     // Round-2 (Lane G): tekken modes + canon-original modes
     this.survival = null;      // { wave, fighterId, hp }
     this.timeattack = null;    // { idx, fighterId, totalMs, fightStart, _watch }
@@ -418,14 +416,12 @@ export class ModeController {
     this.mode = null;
     this.vsStep = 0; this.vsP1 = null; this._lastVersus = null;
     this.arcade = null; this.story = null; this.training = null;
-    this.fightlab = null;
     this.survival = null; this.timeattack = null; this.team = null;
     this.qombat = null; this.surge = null; this.trader = null;
     this._teamPending = [];
     if (this._teamTray) { this._teamTray.remove(); this._teamTray = null; }
     this.game.onMatchEnd = null;
     this.game.training = false;
-    this.game.fightlab = false;
     this._badge('');
     this._showQuit(false);
   }
@@ -443,8 +439,6 @@ export class ModeController {
       hint.textContent = 'STORY — choose your soul. Death is not the end. It is reincarnation.';
     } else if (mode === 'training') {
       hint.textContent = 'TRAINING — pick your fighter. The dummy will not fight back. H toggles hints.';
-    } else if (mode === 'fightlab') {
-      hint.textContent = 'FIGHT LAB · GUNGAKU 軍楽 — pick your fighter. Program the dummy: presets or record your own sequence. G opens the lab panel.';
     } else if (mode === 'survival') {
       hint.textContent = 'SURVIVAL — pick your fighter. One round each, health carries over. How many can you beat?';
     } else if (mode === 'timeattack') {
@@ -494,11 +488,6 @@ export class ModeController {
     if (this.mode === 'training') {
       this.training = { fighterId: selectedId };
       this._beginTraining(selectedId);
-      return true;
-    }
-    if (this.mode === 'fightlab') {
-      this.fightlab = { fighterId: selectedId };
-      this._beginFightLab(selectedId);
       return true;
     }
     if (this.mode === 'survival') {
@@ -615,11 +604,7 @@ export class ModeController {
     }
   }
   _arcadeClear() {
-    // Story endings layer BESIDE win taunts — the taunt already played in-fight.
-    const endingBtn = {
-      label: 'WATCH ENDING', fn: () => this._playEnding(this.arcade.fighterId),
-    };
-    this._modeWin(true, 'ARCADE CLEARED', 'Six fights. One soul. The shrine remembers your name.', [endingBtn]);
+    this._modeWin(true, 'ARCADE CLEARED', 'Six fights. One soul. The shrine remembers your name.', []);
   }
 
   /* ---------- STORY: the Trial + reincarnation ---------- */
@@ -639,7 +624,7 @@ export class ModeController {
     const fl = document.getElementById('stage-forces');
     if (fl) fl.textContent = 'FORCES HELD: ' + (this.story.forces.length ? this.story.forces.map((k) => FORCES[k].name).join(' · ') : 'none yet');
     this._badge(`STORY · ${st.title}`);
-    this.show('stageIntro');
+    this.show('stage');
     const btn = this._el('stage-fight');
     if (btn) btn.onclick = () => {
       this.audio && this.audio.uiClick && this.audio.uiClick();
@@ -682,27 +667,9 @@ export class ModeController {
   }
   _storyComplete() {
     const mins = Math.round((Date.now() - this.story.startTime) / 60000);
-    const endingBtn = {
-      label: 'WATCH ENDING', fn: () => this._playEnding(this.story.vesselId),
-    };
     this._modeWin(true, 'THE KATANA IS FORGED',
       `Five forces claimed. The Assembled Soul faced — and it was you. ` +
-      `Deaths: ${this.story.deaths}. Time: ${mins} min. The soul is nearly whole.`, [endingBtn]);
-  }
-
-  /* Per-character story ending cinematic (game/js/story-endings.js).
-     Plays AFTER the run completes — intros and win taunts are
-     owner-protected and untouched; the ending is a separate beat. */
-  async _playEnding(fighterId) {
-    try {
-      const { StoryEndingPlayer } = await import('./story-endings.js');
-      const char = this.getChar(fighterId) || {};
-      const player = new StoryEndingPlayer({
-        game: this.game, ui: this.ui,
-        onDone: () => { /* ending dismissed; the clear screen stays behind */ },
-      });
-      player.play(fighterId, char.name);
-    } catch (e) { console.warn('[WH] story ending failed:', e?.message || e); }
+      `Deaths: ${this.story.deaths}. Time: ${mins} min. The soul is nearly whole.`, []);
   }
 
   /* ---------- Reincarnation screen ---------- */
@@ -784,36 +751,6 @@ export class ModeController {
     this.game.training = true;
     this.game.onMatchEnd = null; // training never "ends" — rounds auto-reset
     this.startFight(fighterId, null, { mode: 'training', enemyChar: dummy });
-  }
-
-  /* ---------- FIGHT LAB · GUNGAKU (軍楽): the programmable dummy ----------
-     Owner-locked name 2026-10-22. Builds on worker 29's training mode:
-     same endless-round shell, but the dummy runs a GUNGAKU program
-     (Combot-style: presets + record-your-own) instead of standing still.
-     The GungakuAI is instantiated in game.js when enemyChar.ai.gungaku. */
-  async _beginFightLab(fighterId) {
-    const foe = this._pickFoe(fighterId, null, 0.3);
-    const dummy = { ...foe, ai: { aggression: 0, grabBias: 0, reaction: 0, gungaku: true, gungakuPreset: 'idle' } };
-    this._badge('FIGHT LAB · GUNGAKU 軍楽 — G OPENS THE LAB PANEL');
-    this._showQuit(true);
-    this.game.training = true;
-    this.game.fightlab = true;
-    this.game.onMatchEnd = null; // fight lab never "ends" — rounds auto-reset
-    this.startFight(fighterId, null, { mode: 'fightlab', enemyChar: dummy });
-    // Mount the lab panel once the fight's AI exists (game.js wires GungakuAI).
-    try {
-      const { mountGungakuPanel, GUNGAKU_LABEL } = await import('./fightlab-gungaku.js');
-      let tries = 0;
-      const wait = setInterval(() => {
-        tries++;
-        const ai = this.game.ai;
-        if (ai && ai.gungaku) {
-          clearInterval(wait);
-          mountGungakuPanel(this.game, ai);
-          this.ui.banner(`${GUNGAKU_LABEL} — PROGRAM THE DUMMY`);
-        } else if (tries > 40) clearInterval(wait);
-      }, 250);
-    } catch (e) { console.warn('[WH] fight lab panel failed:', e?.message || e); }
   }
 
   /* ---------- SURVIVAL (Tekken 2+): endless, HP carries, small restore ----------

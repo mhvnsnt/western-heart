@@ -69,46 +69,7 @@ def _exists(repo_root, p):
     return r.returncode == 0
 
 
-HEX_COMMIT = re.compile(r"^[0-9a-f]{7,40}$", re.I)
-DIGEST = re.compile(r"^(sha256:)?([0-9a-f]{64}|[0-9a-f]{4,}(\u2026|\.\.\.)[0-9a-f]+)$", re.I)
-
-
-def proof_kind(p):
-    """How a Proof entry is verified: path (file in the diff/repo), commit (SHA in this repo),
-    ref (tag, release or branch of this repo), url, or digest (a checksum: identifies bytes,
-    never looked up). Workers cite archived originals by release tag and commit SHA."""
-    if re.match(r"https?://", p):
-        return "url"
-    if DIGEST.match(p):
-        return "digest"
-    if HEX_COMMIT.match(p):
-        return "commit"
-    if "/" in p or "." in p.rsplit("/", 1)[-1]:
-        return "path"
-    return "ref"
-
-
-def _is_commit(repo_root, sha):
-    r = subprocess.run(["git", "-C", repo_root, "cat-file", "-e", f"{sha}^{{commit}}"], capture_output=True)
-    return r.returncode == 0
-
-
-def gh_resolver(repo):
-    """Look a commit / tag / release / branch up on GitHub (the CI checkout is shallow)."""
-    def resolve(kind, ref):
-        if kind == "commit":
-            urls = [f"repos/{repo}/commits/{ref}"]
-        else:
-            urls = [f"repos/{repo}/git/ref/tags/{ref}", f"repos/{repo}/releases/tags/{ref}",
-                    f"repos/{repo}/branches/{ref}"]
-        for u in urls:
-            if subprocess.run(["gh", "api", u, "--silent"], capture_output=True).returncode == 0:
-                return True
-        return False
-    return resolve
-
-
-def check(body, changed_files, repo_root=".", labels=(), author="", resolve_ref=None):
+def check(body, changed_files, repo_root=".", labels=(), author=""):
     labels = {l.lower() for l in labels}
     if author.lower() in {"dependabot[bot]", "dependabot"}:
         return []
@@ -144,71 +105,26 @@ def check(body, changed_files, repo_root=".", labels=(), author="", resolve_ref=
     if not paths:
         errors.append("Proof lists no paths. Put each file/frame/test-output path in backticks.")
     changed = set(changed_files)
-    resolved = 0
     for p in paths:
-        kind = proof_kind(p)
-        if kind == "digest":
-            continue  # a checksum identifies bytes; it is not a reference to look up
-        if kind == "url" or p in changed or _exists(repo_root, p):
-            resolved += 1
-            continue
-        if kind in ("commit", "ref") and (_is_commit(repo_root, p) if kind == "commit" else False):
-            resolved += 1
-            continue
-        if kind in ("commit", "ref") and resolve_ref is not None and resolve_ref(kind, p):
-            resolved += 1
-            continue
-        if kind == "commit":
-            errors.append(f"Proof commit not found in this repo: {p}")
-        elif kind == "ref":
-            errors.append(f"Proof ref is not a file, commit, tag, release or branch of this repo: {p}")
-        else:
+        if p not in changed and not _exists(repo_root, p):
             errors.append(f"Proof path not in this PR's diff or the repo: {p}")
-    if paths and not resolved and not errors:
-        errors.append("Proof lists only checksums. Add the file, commit, tag/release or URL they belong to.")
 
     if not re.search(r"^\s*[-*]\s+\[[xX]\]", sec["selfcheck"], re.M):
         errors.append("Self-check box is not ticked ([x]).")
     return errors
 
 
-def _gh_get_pr(repo, number):
-    r = subprocess.run(["gh", "api", f"repos/{repo}/pulls/{number}"], capture_output=True, text=True)
-    return json.loads(r.stdout) if r.returncode == 0 else None
-
-
-def live_pr(pr, repo, fetch=_gh_get_pr):
-    """Use the PR's CURRENT body and labels, not the event snapshot.
-
-    The event payload is frozen when the run is queued. Two quick body edits
-    plus cancel-in-progress can leave the surviving run holding the older body,
-    and "Re-run" replays that same stale payload, so a body that is already
-    fixed keeps failing. Falls back to the payload if the API call fails.
-    """
-    try:
-        cur = fetch(repo, pr["number"])
-    except Exception:  # noqa: BLE001
-        cur = None
-    if not cur:
-        return pr
-    merged = dict(pr)
-    merged["body"] = cur.get("body")
-    if "labels" in cur:
-        merged["labels"] = cur["labels"]
-    return merged
-
-
 def main():
     with open(os.environ["GITHUB_EVENT_PATH"]) as f:
         ev = json.load(f)
+    pr = ev["pull_request"]
     repo = ev["repository"]["full_name"]
-    pr = live_pr(ev["pull_request"], repo)
     files = subprocess.run(["gh", "api", "--paginate", f"repos/{repo}/pulls/{pr['number']}/files",
                             "-q", ".[].filename"],
                            capture_output=True, text=True, check=True).stdout.split("\n")
     files = [f for f in files if f]
     errs = check(pr.get("body") or "", files, ".",
-                 [l["name"] for l in pr.get("labels", [])], pr["user"]["login"], gh_resolver(repo))
+                 [l["name"] for l in pr.get("labels", [])], pr["user"]["login"])
     if errs:
         print("INSTRUCTION GATE FAILED (AGENTS.md law 15: Lock the method)")
         for e in errs:

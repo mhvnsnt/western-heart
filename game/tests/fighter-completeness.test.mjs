@@ -28,7 +28,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 // --- Load the real chain modules (sandbox copy: same pattern as
 // --- model-key-guard.test.mjs; these modules are pure ESM).
 const sandbox = mkdtempSync(join(process.env.TMPDIR || '/tmp', 'wh-fighter-completeness-'));
-for (const f of ['roster-full.js', 'attires.js', 'movesets.js', 'material-status.js'])
+for (const f of ['roster-full.js', 'attires.js', 'movesets.js'])
   cpSync(join(ROOT, 'game/js', f), join(sandbox, f));
 writeFileSync(join(sandbox, 'package.json'), '{"type":"module"}');
 const { FULL_ROSTER } = await import(pathToFileURL(join(sandbox, 'roster-full.js')).href);
@@ -48,12 +48,12 @@ const OVERRIDES = parseExportedObject(join(ROOT, 'game/js/attire-customizations.
 for (const [k, u] of Object.entries(OVERRIDES || {})) if (u) MODEL_URLS[k] = u;
 
 /* Audit-owned-elsewhere gaps (docs/FIGHTER-COMPLETENESS-AUDIT-2026-10-21.md):
- * ryuji = stale pre-rename entry owned by the CornerStone lane.
- * (doc-frank-wowomomo/hood removed 2026-10-22: the dedup lane folded those
- * standalone cards into the docfrank ladder, so they are no longer roster ids
- * and cannot be moveset gaps.) */
+ * doc-frank-* = the Doc Frank lane's family rework; ryuji = stale pre-rename
+ * entry owned by the CornerStone lane. */
 const KNOWN_GAPS = {
-  'ryuji': 'id-keyed check only: roster entry plays his own loaded set ryuji-rock (129 moves)',
+  'doc-frank-wowomomo': 'file exists, not in MOVESET_IDS (Doc Frank lane)',
+  'doc-frank-hood': 'file exists, not in MOVESET_IDS (Doc Frank lane)',
+  'ryuji': 'file exists, not in MOVESET_IDS (CornerStone lane)',
 };
 
 test('every roster fighter\'s own moveset file is actually loaded (or a documented gap)', () => {

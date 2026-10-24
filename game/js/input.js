@@ -11,8 +11,7 @@
      pressed: queue of one-shot actions  // 1/2/3/4 (Tekken limbs),
                                          // 1+3/2+4/1+2/3+4/1+4/2+3 chords,
                                          // ss-up/ss-down (sidestep),
-                                         // surge/dodge/transform (WH),
-                                         // vskill (V-System: KeyV / V button)
+                                         // surge/dodge/transform (WH)
 
    TEKKEN INPUTS: 1/2/3/4 = left punch / right punch / left kick / right kick
    (LP/RP/LK/RK touch buttons). Any two limbs within 140ms = chord
@@ -25,7 +24,6 @@
    COMMAND GRAB (legacy): press P+K together (touch) or J+K together / U (keyboard).
    ============================================================ */
 
-import { stickToDir } from './combat-core.js';
 export class InputManager {
   constructor() {
     this.axisX = 0;
@@ -62,34 +60,7 @@ export class InputManager {
 
   consume() { const q = this._queue.slice(); this._queue.length = 0; return q; }
 
-  _push(action) {
-    if (!this.enabled) return;
-    // Worker 35: difficulty assists (input layer). translate() handles
-    // throw-break assist; after() handles auto-combo / one-button special.
-    if (window.WHAssists) action = window.WHAssists.translate(action, this) || action;
-    this._queue.push(action);
-    if (window.WHAssists) window.WHAssists.after(action, this);
-  }
-
-  /* Worker 35: button remapping. Translates the physical key through the
-     player's remap table to the canonical action code the switch below
-     dispatches on. Joystick is never remapped (owner-approved). */
-  _remapCode(code) {
-    if (!window.WHIdentity) return code;
-    const I = window.WHIdentity;
-    const keys = (I.getRemap && I.getRemap().keys) || {};
-    const def = I.REMAP_DEFAULT_KEYS || {};
-    // cur(): '' means explicitly unbound (conflict-cleared) — do NOT fall back.
-    const cur = (a) => (a in keys ? keys[a] : def[a]);
-    for (const action of Object.keys(def)) {
-      if (cur(action) === code) return def[action];
-    }
-    // A default key whose action moved elsewhere is dead (true rebind, not alias).
-    for (const action of Object.keys(def)) {
-      if (def[action] === code && cur(action) !== code) return '__unbound__';
-    }
-    return code;
-  }
+  _push(action) { if (this.enabled) this._queue.push(action); }
 
   /* P+K chord => command grab. Tracks the most recent strike press;
      if the other one lands within 140ms, the pair becomes a grab. */
@@ -114,20 +85,6 @@ export class InputManager {
     if (this.up) return 'up';
     if (this.down) return 'down';
     return this._udDir || null;
-  }
-
-  /* 8-way octant stick (tekken-command-interpreter lane): the old axis
-     thresholds (x 0.25, y 0.55) read a d/f push as 'f' or 'd' depending on
-     angle and fed jitter near centre as directions, so f+1 / d/f+2 / qcf
-     came out as random moves. One magnitude gate + 45° octants instead.
-     x right-positive, yUp up-positive (screen-agnostic). */
-  _stick8(x, yUp) {
-    const d = stickToDir(x, yUp, 1, 0.38);
-    this.stickDir = d;
-    const right = d === 'f' || d === 'u/f' || d === 'd/f';
-    const left = d === 'b' || d === 'u/b' || d === 'd/b';
-    this.axisX = right ? 1 : left ? -1 : 0;
-    this._udStick(d.startsWith('u') ? -1 : d.startsWith('d') ? 1 : 0);
   }
 
   _tekken(btn) {
@@ -164,23 +121,6 @@ export class InputManager {
       this._udHeld = true;
     }, 200);
   }
-  /* Touch stick vertical zone (owner t116u fix). Legacy kept 'down' latched when the stick
-     re-centred after a HELD crouch (only taps were released), so every neutral 3/4 came out
-     as d+3/d+4/FC; and d->u without lifting was ignored. V2: leaving the zone always releases,
-     switching u<->d releases then presses. localStorage wh_input_resolver='legacy' = old path. */
-  _udStick(ny) {
-    let legacy = false;
-    try { legacy = localStorage.getItem('wh_input_resolver') === 'legacy'; } catch (e) {}
-    const want = ny < -0.55 ? 'up' : ny > 0.55 ? 'down' : null;
-    if (legacy) {
-      if (want) this._udPress(want);
-      else if (this._udDir && !this._udHeld) this._udRelease();
-      return;
-    }
-    if (want && this._udDir === want) return;
-    if (this._udDir) this._udRelease();
-    if (want) this._udPress(want);
-  }
   _udRelease() {
     if (!this._udDir) return;
     const dir = this._udDir;
@@ -198,8 +138,7 @@ export class InputManager {
       if (this._keys[e.code]) return; // ignore auto-repeat
       this._keys[e.code] = true;
       if (!this.enabled) return;
-      // Worker 35: remap physical key -> canonical action code first.
-      switch (this._remapCode(e.code)) {
+      switch (e.code) {
         case 'KeyA': case 'ArrowLeft': this.axisX = -1; break;
         case 'KeyD': case 'ArrowRight': this.axisX = 1; break;
         case 'KeyW': case 'ArrowUp': this._udPress('up'); break;
@@ -214,78 +153,24 @@ export class InputManager {
         case 'Digit4': this._tekken('4'); break;
         case 'Space': this.held.block = true; e.preventDefault(); break;
         case 'ShiftLeft': case 'ShiftRight': this._push('dodge'); break;
-        case 'KeyV': this._push('vskill'); break; // V-System (owner 2026-10-22)
       }
     });
     window.addEventListener('keyup', (e) => {
       this._keys[e.code] = false;
-      // Worker 35: translate through the remap so held keys release correctly.
-      switch (this._remapCode(e.code)) {
-        case 'KeyA': case 'ArrowLeft': if (this.axisX < 0) this.axisX = this._keys[this._physicalCode('right')] ? 1 : 0; break;
-        case 'KeyD': case 'ArrowRight': if (this.axisX > 0) this.axisX = this._keys[this._physicalCode('left')] ? -1 : 0; break;
+      switch (e.code) {
+        case 'KeyA': case 'ArrowLeft': if (this.axisX < 0) this.axisX = this._keys['KeyD'] ? 1 : 0; break;
+        case 'KeyD': case 'ArrowRight': if (this.axisX > 0) this.axisX = this._keys['KeyA'] ? -1 : 0; break;
         case 'KeyW': case 'ArrowUp': case 'KeyS': case 'ArrowDown': this._udRelease(); break;
         case 'Space': this.held.block = false; break;
       }
     });
   }
 
-  /* Worker 35: physical key currently bound to an action (for held-key checks). */
-  _physicalCode(action) {
-    if (!window.WHIdentity) return action;
-    const I = window.WHIdentity;
-    const keys = (I.getRemap && I.getRemap().keys) || {};
-    const def = I.REMAP_DEFAULT_KEYS || {};
-    const cur = (action in keys) ? keys[action] : def[action];
-    return cur || '';
-  }
-
-  /* ---------------- Virtual joystick ----------------
-     Primary path: nipplejs (MIT, vendored in game/vendor/nipplejs/) drives the
-     left-thumb stick. Its directional vector feeds the SAME state the legacy
-     binding fed — axisX (0.25 deadzone) and _udStick (Tekken tap-vs-hold) — so
-     fighter behavior is unchanged. Multi-touch is safe: nipplejs only binds
-     inside #joystick; the .act-btn buttons are separate DOM elements with
-     their own touchstart handlers, so stick + buttons work simultaneously.
-     Fallback: if the vendored build failed to load, the previous hand-rolled
-     binding runs unchanged. */
+  /* ---------------- Virtual joystick ---------------- */
   _bindJoystick() {
     const base = document.getElementById('joystick');
     const knob = document.getElementById('joystick-knob');
     if (!base) return;
-    this._resetJoyKnob = () => { if (knob) knob.style.transform = 'translate(0,0)'; };
-
-    if (window.nipplejs) {
-      // nipplejs draws its own base + knob UI inside the zone; retire the legacy knob.
-      if (knob) knob.style.display = 'none';
-      const manager = window.nipplejs.create({
-        zone: base,
-        mode: 'static',                          // fixed stick, bottom-left (fighting-game standard)
-        position: { top: '50%', left: '50%' },    // centered in the #joystick zone
-        color: 'white',
-        size: 120,                               // 130px zone with a small margin
-        threshold: 0.1,
-        fadeTime: 150,
-        restOpacity: 0.85,
-      });
-      // nipplejs vector: x is right-positive, y is UP-positive (negated screen y).
-      // _udStick takes screen-style ny (down-positive; up zone is ny < -0.55).
-      manager.on('move', (evt, data) => {
-        const nx = Math.max(-1, Math.min(1, data.vector.x || 0));
-        this._stick8(nx, (data.vector.y || 0));
-      });
-      manager.on('end', () => {
-        this.axisX = 0;
-        this._udRelease(); // resolve any pending tap/hold
-      });
-      this._joyManager = manager;
-      return;
-    }
-    this._bindJoystickLegacy(base, knob);
-  }
-
-  /* Legacy hand-rolled touch binding — fallback when nipplejs is unavailable
-     (vendor script blocked or failed to load). Behavior identical to before. */
-  _bindJoystickLegacy(base, knob) {
     const maxR = 46;
 
     const start = (id, x, y) => {
@@ -305,9 +190,12 @@ export class InputManager {
       const ky = Math.sin(ang) * clamped;
       knob.style.transform = `translate(${kx}px, ${ky}px)`;
       const nx = (Math.cos(ang) * clamped) / maxR;
+      this.axisX = Math.abs(nx) > 0.25 ? Math.max(-1, Math.min(1, nx)) : 0;
       // Tekken tap-vs-hold: tap u/d = sidestep, hold = jump/crouch.
       const ny = (Math.sin(ang) * clamped) / maxR;
-      this._stick8(nx, -ny);
+      if (ny < -0.55) this._udPress('up');
+      else if (ny > 0.55) this._udPress('down');
+      else if (this._udDir && !this._udHeld) this._udRelease(); // left the vertical zone: count the tap
     };
     const end = () => {
       this._joyActive = false; this._joyId = null;
@@ -315,6 +203,7 @@ export class InputManager {
       this._udRelease(); // resolve any pending tap/hold
       this._resetJoyKnob();
     };
+    this._resetJoyKnob = () => { if (knob) knob.style.transform = 'translate(0,0)'; };
 
     base.addEventListener('touchstart', (e) => {
       const t = e.changedTouches[0]; start(t.identifier, t.clientX, t.clientY); e.preventDefault();

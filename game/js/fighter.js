@@ -22,13 +22,6 @@ import { assets } from './assets.js';
 import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK } from './t3anims.js';
 import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove } from './movesets.js';
 import { TransformCinematic } from './transform-cinematic.js';
-import { V, vskillFor, vtriggerEnhance, vreversalMove } from './v-system.js';
-import { JiggleRig } from './jiggle.js';
-import { SoftBody } from './softbody.js';
-import { FaceRig } from './faceRig.js';
-import { HandPoseBlender } from './handPoses.js';
-import { t8Frame, stunFromAdvantage } from './frame-tables.js';
-import { hitWordFor, attackPhase, moveReach, PressBuffer } from './combat-core.js';
 
 // ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
 // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO in Western Heart. The 'jin' moveset family is now 'demonio'.
@@ -75,7 +68,7 @@ const MOVESET_MAP = {
   // roster ids whose per-fighter files landed with the full-moveset wiring.
   kronos: 'king', 'kronos-attire2': 'king',
   'demonio-human': 'demonio', 'doc-frank-wowomomo': 'gunjack',
-  'doc-frank-hood': 'gunjack',
+  'doc-frank-hood': 'gunjack', 'doc-frank-frankenstein': 'gunjack',
   // Late additions (anim audit 2026-10-19): were missing from the map.
   'demonio-winged': 'demonio', deathfang: 'heihachi', 'ryuji-rock': 'king',
   koreshi: 'heihachi',
@@ -139,9 +132,6 @@ export function bankIdFor(charId, movesetId) {
     awapop: 'nina', torch: 'anna', kingtyrant: 'eddy', kai: 'eddy',
     tou: 'paul', gyou: 'hwoarang', zen: 'julia', rave: 'lei',
     yukihyo: 'armorking', nightwolf: 'julia',
-    // 2026-10-23 (Claude session): the last decoded T3 banks (tools/anim/t3_bake_bank.py). These movesets
-    // name their source as a teardown path or not at all, so bind each to its base's own bank here.
-    chatur: 'ogre', dorowani: 'gon', menajerii: 'kuma',
   };
   if (Object.prototype.hasOwnProperty.call(FIGHTER_BANK, charId)) return FIGHTER_BANK[charId];
   let src = null;
@@ -183,17 +173,6 @@ export async function loadRealMovesets() {
 }
 
 // Legacy action names -> Tekken notation (AI + old UI keep working)
-/* Donor keys, most to least specific, for borrowing an animated row:
-   exact command, last segment, dir+last button, last button, limb. */
-export function rowDonorKeys(input, limb) {
-  const n = String(input).replace(/^[A-Z_]+\./, '').trim();
-  const last = n.split(',').pop().trim();
-  const m = last.match(/^(d\/f|d\/b|u\/f|u\/b|f|b|u|d)?\+?([1-4](?:\+[1-4])*)/i);
-  const keys = ['c:' + n, 's:' + last];
-  if (m) { keys.push('db:' + (m[1] || 'n').toLowerCase() + '+' + m[2]); keys.push('b:' + m[2]); keys.push('b:' + m[2].split('+').pop()); }
-  if (limb) keys.push('l:' + limb);
-  return keys;
-}
 const LEGACY_TO_TEKKEN = { punch: '1', kick: '4', grab: '1+3' };
 
 export function getRealMove(charId, moveType) {
@@ -219,17 +198,9 @@ export function getRealMove(charId, moveType) {
           t3row: mv.t3_row, t3source: mv.t3_source || (mv.t3_row != null ? ms.t3_source : null), moveName: mv.name,
           animBank: anim ? anim.bank : null, animRow: anim ? anim.row : null,
           // decoded T3 attack word (high 0x412 / mid 0x217 / low 0x10F / s.mid 0x31F / unblockable 0x607)
-          hitWord: (ms.hit_words && ms.hit_words[key] != null) ? ms.hit_words[key] : hitWordFor(mv),
-          hitLevel: mv.hit_level, reach: mv.reach,
+          hitWord: ms.hit_words ? ms.hit_words[key] : undefined,
           stanceAfter: ms.stance_after ? ms.stance_after[key] : undefined,
           launch: !!mv.launch, knockdown: !!mv.knockdown,
-          armor: !!mv.armor,
-          rageArt: !!mv.rageArt, rageDrive: !!mv.rageDrive,
-          urgeEngager: !!mv.urgeEngager,
-          urgeBurst: !!mv.urgeBurst, urgeSmash: !!mv.urgeSmash,
-          // T8 frame tables (wavu.wiki CC0): block/hit/CH advantage + throw break.
-          t8: t8Frame(ms, tekken),
-          throw_break: mv.throw_break || (t8Frame(ms, tekken) || {}).brk || undefined,
         };
       }
     } else {
@@ -250,10 +221,7 @@ export function getRealMove(charId, moveType) {
   return null;
 }
 
-const GROUND_Y_DEFAULT = 0;
-let GROUND_Y = 0; // stage-break lane: floor/balcony breaks drop the fighting level
-export function setGroundY(v) { GROUND_Y = v; }
-export function getGroundY() { return GROUND_Y; }
+const GROUND_Y = 0;
 let ARENA_LIMIT = 8.4; // default: shrine.json arena 16.8 wide; set per-stage via setArenaLimit()
 /* Lane 4: collision bounds come from the stage def (stages.js dims.wallDistance). */
 export function setArenaLimit(v) { ARENA_LIMIT = v; }
@@ -314,20 +282,11 @@ export class Fighter {
     // stick = facing-relative direction (guard + posture), juggle = hits taken airborne.
     this.stance = null; this.stanceT = 0; this._risingT = 0; this._stickDir = 'n';
     this._juggle = 0; this._rageUsed = false; this._queuedNext = null;
-    this._rageOn = false;
-    this._urgeOn = false; this._urgeUsed = false; this._urgeT = 0; this._urgePips = 0;
-    this._urgeDashT = 0;
 
     // Stream 6: throw-lock (throw break window). When a throw connects,
     // attacker enters 'throwing' and victim 'thrown' for THROW_LOCK_T;
     // the victim may break with the matching input (see tryThrowBreak).
     this.lockT = 0; this.lockMove = null; this.lockPartner = null;
-
-    // V-System (owner 2026-10-22): Nine-Soul meter resource game.
-    // _vtriggerT = install timer, _vbreakT = V-Shift Break window,
-    // _vparryT = V-Skill parry active window, _vshiftProc = shift evaded.
-    this._vtriggerT = 0; this._vbreakT = 0; this._vparryT = 0;
-    this._vshiftProc = false;
 
     // smoothed lean (body english)
     this._lean = { x: 0, z: 0 };
@@ -368,7 +327,7 @@ export class Fighter {
     // char.tintStrength ?? 0.45 default washed both fighters in a constant
     // suit color; real texture colors now render for the whole fight.)
     const inst = assets.createInstance(
-      this.char.model,
+      this.char.model || 'pantera',
       this.char.colors.suit, this.char.colors.trim,
       this.char.colorize ? (this.char.tintStrength ?? 0.3) : 0
     );
@@ -475,37 +434,6 @@ export class Fighter {
       transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false
     }));
     this.trail.visible = false; this.root.add(this.trail);
-
-    // Secondary systems (teardown wiring 2026-10-22): jiggle spring bones,
-    // face morph driver + blink timer, hand pose library.
-    // Jiggle: family from char data (default by model); intensity presets.
-    const jiggleFamily = this.char.jiggleFamily || 'female';
-    this._jiggle = null;
-    // Find first skinned mesh for jiggle rig
-    this.root.traverse(o => {
-      if (!this._jiggle && o.isSkinnedMesh) {
-        try { this._jiggle = JiggleRig.fromMesh(o, jiggleFamily); } catch (e) {}
-      }
-    });
-    const jiggleIntensity = this.char.jiggleIntensity || 'natural';
-    if (this._jiggle) this._jiggle.setIntensity(jiggleIntensity);
-    // Soft-body muscle volume (PBD lane, 2026-10-23): Jolt XPBD torso volume
-    // for muscle deformation on hit + volume-grounded jiggle. Same pattern
-    // as jiggle: inert until Jolt loads, every call guarded, never crashes
-    // the fight. char.softbody === false opts out.
-    this._softbody = null;
-    const softSpec = SoftBody.anatomyFor(this.char);
-    if (softSpec) {
-      this.root.traverse(o => {
-        if (!this._softbody && o.isSkinnedMesh) {
-          try { this._softbody = SoftBody.fromMesh(o, softSpec); } catch (e) {}
-        }
-      });
-    }
-    // Face rig: morph driver + blink timer
-    this._face = FaceRig.attach(this.root);
-    // Hand poses: fist default, blended per state
-    this._hands = new HandPoseBlender();
   }
 
   /* ---------------- combat intents ---------------- */
@@ -644,14 +572,6 @@ export class Fighter {
     if (!ok && move.animRow != null && (SOURCE_TO_BANK[move.animBank] || move.animBank) === this._t3.bank) {
       row = move.animRow; ok = true; // T7/T8 move: its base character's decoded T3 row (anim_t3)
     }
-    if (!ok) {
-      // Unanimated T7/T8 move (most of each list): borrow the decoded row of
-      // the closest animated move in the SAME moveset — same command, else
-      // same direction+button, else same button/limb — instead of every
-      // move replaying the generic jab/heavy clip (read as "random moves").
-      const d = this._rowDonor(move);
-      if (d != null) { row = d; ok = true; }
-    }
     if (!ok) return null;
     const name = 'row:' + row;
     if (!this.t3actions[name]) {
@@ -664,27 +584,6 @@ export class Fighter {
     const total = (move.startup || 0) + (move.active || 0) + (move.recovery || 0);
     a.timeScale = total > 0.05 ? a.getClip().duration / total : 1;
     return name;
-  }
-
-  _rowDonor(move) {
-    const ms = getFighterMoveset(this._movesetId);
-    if (!ms || !ms.moves || !this._t3) return null;
-    if (!this._donorIdx || this._donorIdx.ms !== ms) {
-      const idx = new Map();
-      const bank = this._t3.bank;
-      for (const mv of Object.values(ms.moves)) {
-        if (mv.t3_row == null) continue;
-        const src = mv.t3_source || ms.t3_source;
-        if ((SOURCE_TO_BANK[src] || src) !== bank && !(src === 'king' && bank === 'armorking')) continue;
-        for (const k of rowDonorKeys(mv.input || '', mv.limb)) if (!idx.has(k)) idx.set(k, mv.t3_row);
-      }
-      this._donorIdx = { ms, idx };
-    }
-    for (const k of rowDonorKeys(move.tekkenInput || '', move.limb)) {
-      const r = this._donorIdx.idx.get(k);
-      if (r != null && this._t3.clips['row:' + r]) return r;
-    }
-    return null;
   }
 
   tryMove(dir) {
@@ -716,8 +615,6 @@ export class Fighter {
       crouching: this.state === 'crouch' || st === 'FC',
       rising: this._risingT > 0,
       rage: !this._rageUsed && this.hp > 0 && this.hp <= this.maxHp * 0.25,
-      urgeOn: !!this._urgeOn,
-      urgeAvailable: !this._urgeUsed && !this._urgeOn && this.hp > 0,
       inMove: this.state === 'attack',
     };
   }
@@ -770,8 +667,6 @@ export class Fighter {
   tryJump() { if (this.canAct() && this.onGround) { this.vy = this.stats.jump; this.onGround = false; this._enter('jump'); } }
   tryBlock(on) {
     if (this.dead) return;
-    // FIGHTER DEPTH (worker 34): soul kindle flash — cannot block during it (T7).
-    if (on && this.kindle && !this.kindle.canBlock()) return;
     if (on && this.canAct() && this.onGround) { this._enter('block'); this._blendW = 0; }
     else if (!on && this.state === 'block') this._enter('idle');
   }
@@ -780,61 +675,6 @@ export class Fighter {
     this._enter('dodge'); this.invuln = 0.34; this.dodgeDir = -this.facing;
     this._dodgeId = (this._dodgeId || 0) + 1;
     this.vx = this.dodgeDir * this.stats.speed * 1.7;
-  }
-
-  /* ---------------- V-System (owner 2026-10-22) ----------------
-     One input ('vskill': KeyV / V button), three context moves —
-     Tekken-ified from SFV's V-Skill / V-Trigger / V-Reversal, plus
-     V-Shift on block double-tap. Names «TBD» pending user approval. */
-  _startVAttack(move, state, name) {
-    this.attack = move; this.attackName = name; this.hasHit = false;
-    this._attackId = (this._attackId || 0) + 1;
-    this._queuedNext = null;
-    this.vx = 0; this._enter(state); this._attackPhase = 'startup';
-    return true;
-  }
-  tryVSkill() {
-    // Per-character unique V-Skill. V-Trigger enhances it (EX: armored).
-    if (!this.canAct() || !this.onGround) return false;
-    const base = vskillFor(this.char.id);
-    const move = this._vtriggerT > 0 ? vtriggerEnhance(base) : base;
-    if (move.kind === 'parry') this._vparryT = V.PARRY_WINDOW;
-    this.addMeter(V.SKILL_SOUL_ON_USE);
-    return this._startVAttack(move, 'vskill', 'vskill:' + base.id);
-  }
-  tryVTrigger() {
-    // Full-meter install: 12s of +15% damage, chip on block, EX V-Skill.
-    // Allowed from neutral or a calm block — not from blockstun (that's
-    // V-Reversal's lane).
-    const calmBlock = this.state === 'block' && this.stun <= 0.05;
-    if (this.dead || !this.onGround) return false;
-    if (!this.canAct() && !calmBlock) return false;
-    if (this.meter < V.TRIGGER_COST || this._vtriggerT > 0) return false;
-    this.meter = 0;
-    this._vtriggerT = V.TRIGGER_DURATION;
-    this._auraFlash = 1.0;
-    return true;
-  }
-  tryVReversal() {
-    // Guard-cancel counter from blockstun. Strike-invulnerable through
-    // startup+active — the "get off me" that costs 50 souls.
-    if (this.state !== 'block' || this.stun <= 0.05 || !this.onGround) return false;
-    if (this.meter < V.REVERSAL_COST) return false;
-    this.meter -= V.REVERSAL_COST;
-    const move = vreversalMove();
-    this.invuln = move.startup + move.active;
-    return this._startVAttack(move, 'vreversal', 'vreversal');
-  }
-  tryVShift() {
-    // Double-tap block: 0.35s invulnerable backshift. Evading an attack
-    // (game.js) triggers slow-mo + the V-Shift Break window.
-    if (!this.canAct() || !this.onGround) return false;
-    this._enter('vshift');
-    this.invuln = V.SHIFT_DURATION;
-    this.dodgeDir = -this.facing; // vshift rides the dodge presentation
-    this.vx = -this.facing * (V.SHIFT_BACK_DIST / V.SHIFT_DURATION);
-    this._vshiftProc = false;
-    return true;
   }
 
   /* ---------------- Stream 6: sidestep (Tekken) ----------------
@@ -882,8 +722,7 @@ export class Fighter {
     if (this.state !== 'thrown' || !this.lockMove) return false;
     const want = this.lockMove.throw_break || '1';
     const got = (btn === '3+4') ? '1+2' : btn; // mobile: both-kicks = both-punches
-    // T8 tables: 'none' = unbreakable, '1|2' = either punch breaks.
-    if (want === 'none' || !want.split('|').includes(got)) return false;
+    if (got !== want) return false;
     // ESCAPED — both fighters reset, attacker eats whiff recovery
     const attacker = this.lockPartner;
     this.lockT = 0; this.lockMove = null; this.lockPartner = null;
@@ -938,41 +777,7 @@ export class Fighter {
         }
       }
     }
-    if (this._tryAttackFresh(name)) { this._pressBuf && this._pressBuf.clear(); return true; }
-    // Tekken input buffer: a press made while still recovering / in
-    // hitstun is held ~10 frames and fires on the first actionable frame.
-    if (/^[1234](\+[1234])*$/.test(name) && !this.dead) {
-      (this._pressBuf ||= new PressBuffer(10)).push(name, this._clock || 0);
-    }
-    return false;
-  }
-  /* Retry a buffered press once the fighter can act (called each update). */
-  _drainPressBuffer() {
-    if (!this._pressBuf || !this.canAct()) return;
-    const name = this._pressBuf.take(this._clock || 0);
-    if (!name) return;
-    this._pressBuf.clear();
-    this._tryAttackFresh(name);
-  }
-  setRageAura(on) {
-    this._rageAura = !!on;
-    if (this.aura && this.aura.material) this.aura.material.color.set(on ? 0xff2a1a : 0xffffff);
-    if (this.auraLight) this.auraLight.color.set(on ? 0xff2a1a : 0xffffff);
-  }
-  setUrgeAura(on) {
-    this._urgeAura = !!on;
-    if (this.aura && this.aura.material && !this._rageAura) this.aura.material.color.set(on ? 0x3aa8ff : 0xffffff);
-    if (this.auraLight && !this._rageAura) this.auraLight.color.set(on ? 0x3aa8ff : 0xffffff);
-  }
-  tryUrgeDash() {
-    if (!this._urgeOn || this._urgePips < 1 || !this.canAct()) return false;
-    const g = this.game;
-    if (g && g.soulurge) g.soulurge.spendPip(this);
-    else this._urgePips -= 1;
-    this._urgeDashT = 0.45;
-    this.vx = this.facing * 9;
-    this._enter('dash');
-    return true;
+    return this._tryAttackFresh(name);
   }
   _tryAttackFresh(name) {
     if (!this.canAct() && !this.sidestepCancelable) return false;
@@ -988,7 +793,6 @@ export class Fighter {
       // notation so the base-move fallback below still fires (no dead buttons).
       if (resolved) notation = resolved;
     } else if (/^[1234](\+[1234])+$/.test(notation)) {
-      if (notation === '1+2' && ctx.urgeOn && !ctx.rage) return this.tryUrgeDash();
       const resolved = this.tekken.pressChord(notation, ctx);
       if (!resolved) return false; // chord with no matching move: whiff, no action
       notation = resolved;
@@ -1013,9 +817,9 @@ export class Fighter {
     this.attack = move; this.attackName = notation; this.hasHit = false;
     this._attackId = (this._attackId || 0) + 1;
     this._queuedNext = null;
-    if (/^(R|RD)\./.test(notation)) this._rageUsed = true; // rage art/drive: once per round
+    if (/^R\./.test(notation)) this._rageUsed = true; // rage art: once per round
     this.stance = null; this.stanceT = 0; this._risingT = 0;
-    this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
+    this.vx = 0; this._enter('attack'); this._attackPhase = 'startup';
     if (name === 'surge') this._auraFlash = 0.7;
     if (move.isGrab || notation === '1+3' || notation === '2+4') this.vx = this.facing * 2.5; // lunge into the grab
     return true;
@@ -1028,26 +832,21 @@ export class Fighter {
     this.attack = move; this.attackName = notation; this.hasHit = false;
     this._attackId = (this._attackId || 0) + 1;
     this._queuedNext = null;
-    this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
+    this.vx = 0; this._enter('attack'); this._attackPhase = 'startup';
     return true;
   }
-  _enter(state) { this.state = state; this.stateT = 0; }
+  _enter(state) {
+    // Leaving the attack state clears the attack fields, so an interrupted
+    // attack can never latch attackName and stick the aura on permanently.
+    if (this.state === 'attack' && state !== 'attack') { this.attack = null; this.attackName = null; }
+    this.state = state; this.stateT = 0;
+  }
 
   /* ---------------- defense / damage ---------------- */
   isBlocking() { return this.state === 'block'; }
 
   receiveHit(move, attacker) {
     if (this.dead || this.invuln > 0) return 'dodge';
-    // V-System: an armored V-Skill absorbs the hit outright (no damage,
-    // no stun) while it isn't in recovery. game.js shows the spark.
-    if (this.state === 'vskill' && this.attack && this.attack.armor &&
-        this._attackPhase !== 'recovery') {
-      return 'armor';
-    }
-    // Rage lane (T7): armored moves (rage arts, urge burst/smash) absorb the
-    // hit — damage applies, but the move is never interrupted mid-swing.
-    const armored = !!(this.attack && this.attack.armor && this._attackPhase !== 'recovery'
-      && !move.unblockable && !move.isGrab);
     const facingAttacker = Math.sign(attacker.root.position.x - this.root.position.x) === this.facing;
     // T3 HitClassify: guarded when (guard & attack word) != 0 and the defender faces the
     // attacker. Standing guard blocks highs/mids, crouching guard blocks lows; throws and
@@ -1056,80 +855,35 @@ export class Fighter {
     const guarded = !move.unblockable && !move.isGrab && facingAttacker && (this._guardBits() & word) !== 0;
     if (guarded) {
       // FIRE force (modes lane): strikes chip through guard — chipMult on attacker stats.
-      let chip = move.damage * attacker.stats.power * 0.12 * (attacker.stats.chipMult || 1) / this.stats.defense;
-      // V-System: V-Trigger install — EVERYTHING chips through guard.
-      if (attacker._vtriggerT > 0 && !move.isGrab) {
-        chip += move.damage * V.TRIGGER_CHIP_MULT * attacker.stats.power / this.stats.defense;
-      }
-      // Soul Urge lane (T8 Heat): block chip can never kill — floor at 1 HP.
-      this.hp = attacker._urgeOn ? Math.max(1, this.hp - chip) : Math.max(0, this.hp - chip);
-      this.stun = (move.t8 && move.t8.blk != null) ? stunFromAdvantage(move.t8.blk, move)
-        : 0.18 + move.damage * 0.01;
+      const chip = move.damage * attacker.stats.power * 0.12 * (attacker.stats.chipMult || 1) / this.stats.defense;
+      this.hp = Math.max(0, this.hp - chip);
+      this.stun = 0.18 + move.damage * 0.01;
       this.vx = Math.sign(this.root.position.x - attacker.root.position.x) * move.knock * 0.5;
       this.meter = Math.min(this.maxMeter, this.meter + 4); // +4 soul on block
       if (this.hp <= 0) { this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || 1); return 'ko'; }
       return 'block';
     }
     let dmg = move.damage * attacker.stats.power / this.stats.defense;
-    // FIGHTER DEPTH (worker 34): soul kindle — the kindled fighter takes
-    // +10% damage while kindled (Tekken 7 ki charge).
-    if (this.kindle) dmg *= this.kindle.damageTakenMult();
     // T3 HitDamage: counter hit when the defender is in the startup of its own attack:
     // d = e + d*12/10, e = |defender move damage| * 3/10 * 3/10 * (frames into startup / startup).
     let counter = false;
-    // (V-Skill / V-Reversal startups are CH-able like any attack.)
-    if ((this.state === 'attack' || this.state === 'vskill' || this.state === 'vreversal') &&
-        this._attackPhase === 'startup' && this.attack && this.attack.damage > 0) {
+    if (this.state === 'attack' && this._attackPhase === 'startup' && this.attack && this.attack.damage > 0) {
       counter = true;
       const prog = this.attack.startup > 0 ? Math.min(1, this.stateT / this.attack.startup) : 1;
       dmg = this.attack.damage * 0.09 * prog + dmg * 1.2;
-    }
-    // FIGHTER DEPTH (worker 34): soul kindle — the attacker's next landed
-    // hit is a guaranteed counter-hit (Tekken 7 ki charge). Consumes the
-    // kindle; CH damage bump matches the T3 formula's x1.2 term.
-    if (!counter && attacker.kindle && attacker.kindle.consumeOnHitLanded()) {
-      counter = true;
-      dmg = dmg * 1.2;
-    }
-    // V-System: V-Trigger install (+15% damage) and the V-Shift Break
-    // window (+50%, auto counter-hit, consumed by the one attack).
-    if (attacker._vtriggerT > 0 && !move.isGrab) dmg *= V.TRIGGER_DMG_MULT;
-    if (attacker._vbreakT > 0 && !move.isGrab) {
-      dmg *= V.BREAK_DMG_MULT; counter = true; attacker._vbreakT = 0;
     }
     // Juggle scaling: first airborne hit x0.8, later ones x0.5.
     if (!this.onGround && !move.isGrab) { dmg *= this._juggle === 0 ? 0.8 : 0.5; this._juggle++; }
     this.lastCounterHit = counter;
     this.hp = Math.max(0, this.hp - dmg);
-    if (armored) {
-      // Rage lane (T7): armor absorbs — damage lands, the swing continues.
-      this.meter = Math.min(this.maxMeter, this.meter + 6);
-      if (this.hp <= 0) {
-        this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing);
-        return 'ko';
-      }
-      return 'hit';
-    }
     this.meter = Math.min(this.maxMeter, this.meter + 6); // +6 soul on taking damage
     const dir = Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing;
     this.vx = dir * move.knock;
     if (this.hp <= 0) { this._knockout(dir); return 'ko'; }
     if (move.isGrab || move.knock >= 6 || move.launch || (counter && move.knockdown)) {
       this.vy = move.isGrab ? 5.2 : 4.6; this.onGround = false; this.stun = 0.55; this._enter('knockdown');
-    } else {
-      const t8adv = move.t8 ? (counter && move.t8.ch != null ? move.t8.ch : move.t8.hit) : null;
-      this.stun = t8adv != null ? stunFromAdvantage(t8adv, move)
-        : 0.2 + move.damage * 0.012 + (counter ? 0.12 : 0);
-      this._enter('hitstun');
-    }
+    } else { this.stun = 0.2 + move.damage * 0.012 + (counter ? 0.12 : 0); this._enter('hitstun'); }
     this.stance = null;
-    // Soft-body hit injection: dent the muscle volume at the impact point.
-    if (this._softbody) {
-      try {
-        const hb = attacker && attacker.getHitbox ? attacker.getHitbox() : null;
-        if (hb) { _v1.set(hb.x, hb.y, hb.z); this._softbody.hit(_v1, dir, move.damage || 8); }
-      } catch (e) {}
-    }
     return counter ? 'counter' : 'hit';
   }
   _knockout(dir) {
@@ -1150,19 +904,13 @@ export class Fighter {
     return this.bones.RightHand;
   }
   getHitbox() {
-    // V-System: vskill/vreversal are attacks too. Parry-kind V-Skills
-    // (noHitbox) never produce a hitbox.
-    if ((this.state !== 'attack' && this.state !== 'vskill' && this.state !== 'vreversal') ||
-        this._attackPhase !== 'active' || this.hasHit) return null;
-    if (this.attack && this.attack.noHitbox) return null;
-    const node = this._weaponBone();
-    if (node) node.getWorldPosition(_v1);
-    else _v1.set(this.root.position.x + this.facing * 0.8, this.root.position.y + 1.2, this.root.position.z); // no rig bone (T-pose/procedural): frame-data box
+    if (this.state !== 'attack' || this._attackPhase !== 'active' || this.hasHit) return null;
+    const node = this._weaponBone(); if (!node) return null;
+    node.getWorldPosition(_v1);
     let r = this.attackName === 'surge' ? 1.0 : 0.5;
     if (this.attack?.isGrab || this.attackName === 'grab' || this.attackName === '1+3' || this.attackName === '2+4') r = 0.95; // generous grab sphere
     r *= (this.stats.reachMult || 1); // WOOD force (modes lane): reach extends
-    return { x: _v1.x, y: _v1.y, z: _v1.z, r, move: this.attack,
-             reach: moveReach(this.attack, String(this.attackName || '')) * (this.stats.reachMult || 1) };
+    return { x: _v1.x, y: _v1.y, z: _v1.z, r, move: this.attack };
   }
   getHurtboxes() {
     if (this.invuln > 0 || this.dead) return [];
@@ -1179,7 +927,6 @@ export class Fighter {
   /* ---------------- per-frame update ---------------- */
   update(dt, opponent) {
     this.stateT += dt;
-    this._clock = (this._clock || 0) + dt;
     // Drive the transformation cinematic timeline.
     if (this._cinematic && !this._cinematic.done) {
       this._cinematic.update(dt);
@@ -1192,20 +939,11 @@ export class Fighter {
     if (this.stun > 0 && this.state !== 'ko') this.stun -= dt;
     if (this.invuln > 0) this.invuln -= dt;
     if (this.lockT > 0) this.lockT -= dt; // throw-break window
-    // V-System timers.
-    if (this._vtriggerT > 0) this._vtriggerT -= dt;
-    if (this._vbreakT > 0) this._vbreakT -= dt;
-    if (this._vparryT > 0) this._vparryT -= dt;
     if (this._risingT > 0) this._risingT -= dt;
     if (this.stanceT > 0) { this.stanceT -= dt; if (this.stanceT <= 0) this.stance = null; }
     if (this.onGround && this.state !== 'knockdown') this._juggle = 0;
     if (this._comboTimer > 0) { this._comboTimer -= dt; if (this._comboTimer <= 0) this.combo = 0; }
     if (this._auraFlash > 0) this._auraFlash -= dt;
-    if (this._urgeDashT > 0) {
-      this._urgeDashT -= dt;
-      if (this.onGround && this.state === 'dash') this.vx = this.facing * 9;
-      if (this._urgeDashT <= 0 && this.state === 'dash') { this._enter('idle'); this.vx = 0; }
-    }
 
     if (opponent && this.canAct()) {
       const want = opponent.root.position.x >= this.root.position.x ? 1 : -1;
@@ -1213,48 +951,17 @@ export class Fighter {
     }
 
     this._tickState();
-    this._drainPressBuffer();
     this._physics(dt, opponent);
     this._animate(dt);
-
-    // Secondary systems update (after animation, before render)
-    if (this._jiggle) {
-      try { this._jiggle.update(dt); } catch (e) {}
-    }
-    // Soft-body AFTER jiggle: volume deformation rides on the posed mesh.
-    if (this._softbody) {
-      try { this._softbody.update(dt); } catch (e) {}
-    }
-    if (this._face) {
-      // Face expression by state
-      if (this.state === 'victory') this._face.setExpression('victory');
-      else if (this.state === 'ko') this._face.setExpression('ko');
-      else if (this.state === 'hitstun' || this.state === 'knockdown') this._face.setExpression('pain');
-      else if (this.state === 'attack') this._face.setExpression('angry');
-      else this._face.setExpression('neutral');
-      this._face.update(dt, this.state);
-    }
-    if (this._hands) {
-      // Hand pose by state: fist for attacks, open for block/parry, point for victory taunt
-      let pose = 'fist';
-      if (this.state === 'block') pose = 'open';
-      else if (this.state === 'victory') pose = 'point';
-      else if (this.state === 'attack' && this.attackName && /grab|throw/i.test(this.attackName)) pose = 'grip';
-      this._hands.setPose(pose);
-      this._hands.update(this.bones, dt);
-    }
   }
 
   _tickState() {
     switch (this.state) {
-      // V-System: vskill/vreversal run the same attack timing as 'attack'.
-      case 'attack': case 'vskill': case 'vreversal': {
+      case 'attack': {
         const m = this.attack, t = this.stateT;
-        // combat-core: >=3-frame active floor + swept check, so a 30 fps
-        // tick can no longer step over a 1-frame active window (whiffs).
-        const ph = attackPhase(m, t, this._prevAtkT ?? 0);
-        this._prevAtkT = t;
-        if (ph !== 'done') this._attackPhase = ph;
+        if (t < m.startup) this._attackPhase = 'startup';
+        else if (t < m.startup + m.active) this._attackPhase = 'active';
+        else if (t < m.startup + m.active + m.recovery) this._attackPhase = 'recovery';
         else {
           const after = m.stanceAfter;
           this.attack = null; this.attackName = null; this._enter('idle');
@@ -1275,10 +982,6 @@ export class Fighter {
       case 'hitstun': if (this.stun <= 0) this._enter('idle'); break;
       case 'knockdown': if (this.onGround && this.stun <= 0) this._enter('idle'); break;
       case 'dodge': if (this.stateT > 0.34) { this.vx = 0; this._enter('idle'); } break;
-      case 'vshift':
-        // V-Shift: invulnerable backshift; game.js may proc the evade.
-        if (this.stateT >= V.SHIFT_DURATION) { this.vx = 0; this._enter('idle'); }
-        break;
       case 'sidestep':
         if (this.stateT > 0.55) { this.vz = 0; this._enter('idle'); }
         break;
@@ -1316,41 +1019,22 @@ export class Fighter {
     }
     this.root.position.x = Math.max(-ARENA_LIMIT, Math.min(ARENA_LIMIT, this.root.position.x));
 
-    // Body-vs-body pushout, T7/T8 style (owner bug 2026-10-23: cross-ups impossible).
-    // Tekken pushboxes are ground collision cylinders: while airborne the box
-    // shrinks and is off above the opponent's waist, so a jump arc can pass
-    // over and land on the far side (facing re-resolves on landing). Ground
-    // push is split between both bodies; when one is against the stage wall
-    // the remaining push goes to the other body, so nobody leaves the stage.
+    // Body-vs-body pushout — fighters NEVER interpenetrate (x and z).
     if (opponent) {
       const dx = this.root.position.x - opponent.root.position.x;
       const dz = this.root.position.z - opponent.root.position.z;
-      const air = Math.max(this.root.position.y, opponent.root.position.y) - GROUND_Y;
-      const airborne = !this.onGround || !opponent.onGround;
-      // ground: 1.45 wide; airborne: 0.55 low, none once over the waist (0.85)
-      const minDist = !airborne ? 1.45 : (air < 0.85 ? 0.55 : 0);
-      if (minDist > 0 && Math.abs(dx) < minDist && Math.abs(dz) < 0.9) {
-        // side from x, or from travel direction when perfectly stacked
-        const side = dx !== 0 ? Math.sign(dx) : (Math.sign(this.vx - opponent.vx) || this.facing * -1);
-        const total = minDist - Math.abs(dx);
-        let a = total / 2, b = total / 2;
-        const L = ARENA_LIMIT;
-        const roomA = side > 0 ? L - this.root.position.x : this.root.position.x + L;
-        const roomB = side > 0 ? opponent.root.position.x + L : L - opponent.root.position.x;
-        if (a > roomA) { b += a - roomA; a = roomA; }
-        if (b > roomB) { a += b - roomB; b = roomB; }
-        this.root.position.x += side * a; opponent.root.position.x -= side * b;
+      const minDist = 1.45;
+      if (Math.abs(this.root.position.y - opponent.root.position.y) < 1.8) {
+        if (Math.abs(dx) < minDist && Math.abs(dz) < 0.9) {
+          const push = (minDist - Math.abs(dx)) / 2 * (dx >= 0 ? 1 : -1);
+          this.root.position.x += push; opponent.root.position.x -= push;
+        }
+        // lateral separation after sidesteps
+        if (Math.abs(dz) < 0.7 && Math.abs(dx) < minDist) {
+          const zp = (0.7 - Math.abs(dz)) / 2 * (dz >= 0 ? 1 : -1);
+          this.root.position.z += zp; opponent.root.position.z -= zp;
+        }
       }
-      // lateral separation after sidesteps (grounded only)
-      // (contact fix: this used to fire at every touching distance (<1.45),
-      // pushing both fighters 0.7 m off-line so strikes whiffed past the
-      // body; now only when bodies are stacked after a sidestep.)
-      if (!airborne && Math.abs(dz) < 0.7 && Math.abs(dx) < 0.6) {
-        const zp = (0.7 - Math.abs(dz)) / 2 * (dz >= 0 ? 1 : -1);
-        this.root.position.z += zp; opponent.root.position.z -= zp;
-      }
-      this.root.position.x = Math.max(-ARENA_LIMIT, Math.min(ARENA_LIMIT, this.root.position.x));
-      opponent.root.position.x = Math.max(-ARENA_LIMIT, Math.min(ARENA_LIMIT, opponent.root.position.x));
     }
 
     const h = this.root.position.y;
@@ -1448,7 +1132,7 @@ export class Fighter {
       case 'hitstun': t3Wanted = 'hit'; break;
       case 'knockdown': t3Wanted = 'launch'; break;
       case 'ko': t3Wanted = 'ko'; break;
-      case 'attack': case 'vskill': case 'vreversal': t3Wanted = attackClipFor(); break;
+      case 'attack': t3Wanted = attackClipFor(); break;
     }
     if (t3Wanted && !this.t3actions[t3Wanted] && this.t3actions.stance) t3Wanted = 'stance';
     const t3Active = !!(t3Wanted && this.t3actions[t3Wanted]);
@@ -1492,9 +1176,8 @@ export class Fighter {
         if (t3Active) this._playT3(t3Wanted, { loop: true });
         else this._stopT3();
         break;
-      case 'attack': case 'vskill': case 'vreversal': {
+      case 'attack': {
         // Main's move-row mapping first (PR #338), then the attackName fallback.
-        // V-Skill / V-Reversal ride the same attack presentation.
         const t3name = this._moveRowAction(this.attack) || attackClipFor();
         if (t3name && this._playT3Once(t3name, 'atk:' + this.attackName + ':' + this._attackId)) {
           // Real T3 clip playing; add slight lean for body english
@@ -1526,9 +1209,8 @@ export class Fighter {
       case 'victory':
         this._playT3('win', { loop: true });
         break;
-      case 'dodge': case 'vshift':
+      case 'dodge':
         // The dodge moves the fighter backwards: T3's own back-dash
-        // V-Shift rides the same presentation (a fast defensive shift).
         // (b,b branch of the neutral row) when the bank is bound.
         if (!this._playT3Once('backdash', 'dodge:' + this._dodgeId)) {
           this._leanT.z = this.dodgeDir * this.facing * 0.32; this._stopT3();
@@ -1591,7 +1273,7 @@ export class Fighter {
     this.lean.rotation.z = this._lean.z;
 
     // 8) Aura + trail visuals — particles rise and flicker around the body
-    const auraOn = (this.attackName === 'surge') || this._auraFlash > 0 || this._rageAura || this._urgeAura;
+    const auraOn = (this.attackName === 'surge') || this._auraFlash > 0;
     const am = this.aura.material;
     am.opacity += ((auraOn ? 0.95 : 0) - am.opacity) * Math.min(1, dt * 10);
     this.auraLight.intensity += ((auraOn ? 14 : 0) - this.auraLight.intensity) * Math.min(1, dt * 10);

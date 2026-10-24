@@ -11,7 +11,6 @@
 import { loadCatalog, mergeCatalogs, getEntry, sourceOf } from '../src/catalogs.js';
 import { SPINE, SPINE_BY_ID, spineSlotOf, readinessOf, isEquippable, spineCounts } from '../src/slotmap.js';
 import { BODY_MORPHS, FACE_SHAPE_MORPHS } from '../src/morphs.js';
-import { T7_REGION_TABS, T7_SLOT_BY_CODE } from '../src/t7layout.js';
 import * as P from '../ui/profile.js';
 import { Viewer } from './viewer.js';
 import { loadTheme, themeIconUrl, themeSlotUrl } from './theme.js';
@@ -23,11 +22,6 @@ const CATALOG_URLS = [
   '../../../customization/parts-converted/CATALOG.json',
   '../../../customization/parts-converted/defjam/CATALOG.json',
   '../../../customization/parts/tekken7/CATALOG.json',
-  '../../../customization/parts/tekken6/CATALOG.json',
-  '../../../customization/parts/tekken5/CATALOG.json',
-  '../../../customization/parts/wmxix/CATALOG.json',
-  // private builds only (see game/js/customization-consumer.js)
-  ...(globalThis.__WH_PRIVATE_ASSETS ? ['../../../game/assets/private/t7/CATALOG.json'] : []),
 ];
 const LS_SUITE = 'wh_creation_suite_v1';
 const LS_STASH = 'wh_csui_attires_v1';
@@ -178,28 +172,17 @@ function renderRoot() {
   h += sectionLabel('Body & Face — the tools');
   h += row({ action: 'screen', id: 'body', main: 'BODY', sub: `${S.body.body_type} · ${Object.keys(S.morphs).length} morphs`, icon: 'appearance' });
   h += row({ action: 'screen', id: 'face', main: 'FACE', sub: 'Face morphs · Eyes · Face Paint', icon: 'appearance' });
-  // Tekken 7 customize flow: region tab -> item slot (t7layout.js, codes
-  // proven against customize_item_data.bin), then the WH-only slots.
-  const slotRow = (sp) => {
+  h += sectionLabel('Equipment — Tekken slot order');
+  for (const sp of SPINE) {
+    if (sp.id === 'ink') continue;
     const eqRec = S.equipped[sp.id];
     const c = COUNTS?.per?.[sp.id];
-    return row({
+    h += row({
       action: 'items', id: sp.id, main: sp.title.toUpperCase(),
       sub: eqRec ? eqRec.name : '', badge: c ? `${c.ready} ready` : '',
       cls: eqRec ? 'has-eq' : '',
     });
-  };
-  const shown = new Set(['ink', 'skin_tone', 'mirror']);
-  for (const tab of T7_REGION_TABS) {
-    const sps = tab.codes.map((c) => SPINE_BY_ID[T7_SLOT_BY_CODE[c].spine]).filter((sp) => sp && !shown.has(sp.id));
-    if (!sps.length) continue;
-    h += sectionLabel(`${tab.title} — Tekken 7 slots`);
-    for (const sp of sps) { shown.add(sp.id); h += slotRow(sp); }
   }
-  const extra = SPINE.filter((sp) => !shown.has(sp.id));
-  if (extra.length) { h += sectionLabel('Western Heart extra slots'); for (const sp of extra) h += slotRow(sp); }
-  h += sectionLabel('Physics');
-  h += row({ action: 'physics', id: 'physics', main: 'BODY PHYSICS', sub: `size-adaptive springs: ${viewer?.physicsCount ?? 0} (chest · glutes · belly · thighs)`, badge: viewer?.physicsEnabled === false ? 'OFF' : 'ON' });
   h += row({ action: 'screen', id: 'body', main: 'SKIN TONE', sub: S.body.skin_tone, badge: 'TOOL' });
   h += sectionLabel('Layers & Looks');
   h += row({ action: 'screen', id: 'ink', main: 'INK — TATTOOS / IMAGES', sub: `${S.textures.length} layer(s)` });
@@ -618,7 +601,6 @@ document.addEventListener('click', async (e) => {
   if (a === 'screen') go(t.dataset.id);
   else if (a === 'items') go('items', { spine: t.dataset.id });
   else if (a === 'save') save();
-  else if (a === 'physics' && viewer) { viewer.physicsEnabled = viewer.physicsEnabled === false; viewer.rebuildPhysics(); renderMenu(); }
   else if (a === 'item') {
     const entry = getEntry(ENTRIES, t.dataset.id);
     if (!entry) return;
@@ -679,7 +661,7 @@ async function boot() {
   await viewer.setFighter(fighter.glb, fighter.id);
   await syncViewer();
   window.__cs2 = { viewer, get state() { return S; }, get entries() { return ENTRIES; }, counts: COUNTS };
-  console.log(`[CS2] STATE entries=${ENTRIES.length} ready=${COUNTS.ready} fighter=${fighter.id} physics=${viewer?.physicsCount ?? 0} t7=${ENTRIES.filter((e) => e.source_game === "tekken7").length}`);
+  console.log(`[CS2] STATE entries=${ENTRIES.length} ready=${COUNTS.ready} fighter=${fighter.id}`);
 }
 boot().catch((e) => {
   const el = $('#bootError');

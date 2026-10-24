@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Bulk-export the full WWF No Mercy AKI animation bank to NPY + manifest.
 
-Source: WWF No Mercy (USA) (Rev-A).z64, FileTable @0x16C31D8, FirstFile 0x1BD150, 1-based file IDs (game-exact, W3c — FUN_80003ab0/FUN_80003bd0; see anim_extract.py).
+Source: WWF No Mercy (USA) (Rev-A).z64, FileTable @0x16C3238.
 Bank: file IDs 0x2DD9..0x445A (verified 2026-10-13; files before 0x2DD9 /
 after 0x445A do not fit the 4+N*98 AkiAnimation layout).
   0x2DD9..0x3321 = system animations (stances, entrances, taunts, ...)
@@ -14,7 +14,7 @@ Output:
 
 NPY layout, frame = 26 joints in ORDER (see anim_extract.ORDER):
   - PivotRotation joints ("PR", 20 of them): channels = [pivot_x, rotation, pivot_z]
-      [PivotX s12][Rotation u10][PivotZ s10] (W3b Finding 2); rotation unsigned, 1024 = full turn
+      pivot_x, pivot_z: s12 fixed-point; rotation: s8 degrees-ish
   - OverallMovement ("OM", 1): channels = [overall_x, overall_y, overall_z]
       (12-bit X/Z signed, 8-bit Y unsigned)
   - MovementXYZ ("MV", 6): channels = [move_x, move_y, move_z] (raw u8 each)
@@ -39,12 +39,13 @@ def encode_frame(fr):
     o = 0
     for i, (name, kind) in enumerate(ORDER):
         if kind == "PR":
-            w = int.from_bytes(fr[o:o + 4], 'big'); o += 4
-            px = w >> 20
+            b = fr[o:o + 4]; o += 4
+            px = (b[0] << 4) | ((b[1] & 0xF0) >> 4)
             if px & 0x800: px -= 0x1000
-            r = (w >> 10) & 0x3FF
-            pz = w & 0x3FF
-            if pz & 0x200: pz -= 0x400
+            r = ((b[1] & 0x0F) << 4) | ((b[2] & 0xF0) >> 4)
+            if r & 0x80: r -= 0x100
+            pz = ((b[2] & 0x0F) << 8) | b[3]
+            if pz & 0x800: pz -= 0x1000
             out[i] = (px, r, pz)
         elif kind == "OM":
             b = fr[o:o + 4]; o += 4

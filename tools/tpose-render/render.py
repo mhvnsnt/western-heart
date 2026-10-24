@@ -46,7 +46,7 @@ def launch():
 # ---------------------------------------------------------------- blender half
 def run_blender():
     import bpy, math, re, json
-    from mathutils import Vector, Matrix, Quaternion
+    from mathutils import Vector, Matrix
     a = sys.argv[sys.argv.index("--blender")+1:]
     import argparse
     p = argparse.ArgumentParser()
@@ -90,28 +90,6 @@ def run_blender():
     # --- armature: reset to rest, try T-pose if needed ---
     arms = [o for o in sc.objects if o.type == "ARMATURE"]
     posed = []
-
-    def _true_world(arm, pb):
-        # True world matrix, chaining parent pose matrices.
-        m = pb.matrix.copy()
-        p = pb.parent
-        while p is not None:
-            m = p.matrix @ m
-            p = p.parent
-        return arm.matrix_world @ m
-
-    def _parent_chain(arm, pb):
-        # arm.matrix_world @ (product of ancestor pose matrices)
-        m = Matrix.Identity(4)
-        chain = []
-        p = pb.parent
-        while p is not None:
-            chain.append(p)
-            p = p.parent
-        for p in reversed(chain):
-            m = m @ p.matrix
-        return arm.matrix_world @ m
-
     for arm in arms:
         bpy.context.view_layer.objects.active = arm
         bpy.ops.object.mode_set(mode="POSE")
@@ -139,33 +117,27 @@ def run_blender():
                 s = 1
             else:
                 continue
-            if re.search(r"hand", n):
-                continue
             bpy.context.view_layer.update()
-            dg = bpy.context.evaluated_depsgraph_get()
-            eval_arm = arm.evaluated_get(dg)
-            head = eval_arm.pose.bones[pb.name].head.copy()
+            mw = arm.matrix_world @ pb.matrix
+            head = mw.translation
             kids = [k for k in pb.children
                     if re.search(r"arm|hand|wrist|elbow", k.name, re.I)
                     and not re.search(r"twt|twist|mus|drv|adr|pmp|adj|unused|sleeve|lace|finger", k.name, re.I)]
-            if not kids:
+            if re.search(r"hand", n) or not kids:
                 continue
-            # Use child head for direction: in these rips the bone's own tail
-            # is often short/misplaced; the child joint marks the true limb end.
-            tail = eval_arm.pose.bones[kids[0].name].head.copy()
+            tail = arm.matrix_world @ kids[0].head
             cur = tail - head
             if cur.length < 1e-6:
                 continue
-            # NOTE: no "already horizontal" early-out. After a parent is posed,
-            # a child's rest-bend can read as horizontal while still bent at the
-            # joint; always drive to the target (identity rotation = no-op).
+            # only rotate if not already roughly horizontal
+            horiz = Vector((cur.x, cur.y, 0))
+            if horiz.length > 1e-6 and abs(cur.z) / cur.length < 0.15:
+                continue  # already T-posed
             sx = 1 if head.x > 0 else -1
             tgt = Vector((sx, 0, 0))
             q = cur.normalized().rotation_difference(tgt)
-            mw = _true_world(arm, pb)
-            R = Matrix.Translation(mw.translation) @ q.to_matrix().to_4x4() @ Matrix.Translation(-mw.translation)
-            C = _parent_chain(arm, pb)
-            pb.matrix = C.inverted() @ R @ C @ pb.matrix
+            R = Matrix.Translation(head) @ q.to_matrix().to_4x4() @ Matrix.Translation(-head)
+            pb.matrix = arm.matrix_world.inverted() @ R @ mw
             posed.append(pb.name)
         bpy.ops.object.mode_set(mode="OBJECT")
     bpy.context.view_layer.update()

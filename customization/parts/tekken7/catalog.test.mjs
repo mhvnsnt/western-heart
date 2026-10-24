@@ -4,8 +4,8 @@
 //
 // Proves, against real files (no fixtures, no copies):
 //  1. The T7 catalog loads through the runtime's own loadCatalog validation.
-//  2. Merging it into the real PARTS-REGISTRY adds exactly the landed parts.
-//  3. The skull-mask named gap FLIPPED 2026-10-21 (W6 lane): a profile assigning its
+//  2. Merging it into the real PARTS-REGISTRY disturbs nothing (0 parts today).
+//  3. The skull-mask named gap behaves honestly: a profile assigning its
 //     part_id resolves as 'unresolved' — reported, never silently dropped —
 //     and the gap entry is NOT in parts[] (the runtime can never show a
 //     phantom part). When the real part is extracted and appended to parts[],
@@ -38,30 +38,27 @@ const T7_SLOTS = [
   'EXTRA', 'Effects', 'Aura',
 ];
 
-test('catalog loads through the real loadCatalog with the landed skull mask', async () => {
+test('catalog loads through the real loadCatalog and is honestly empty', async () => {
   const catalog = await loadCatalog('tekken7-catalog', fetcherFor(catalogUrl));
   assert.ok(Array.isArray(catalog.parts), 'catalog must carry parts[]');
   assert.equal(catalog._meta.total, catalog.parts.length);
-  // FLIPPED 2026-10-21 (W6 piecewise lane): the skull mask was really
-  // extracted from the T7 game tree and landed in parts[] — the survey's
-  // §3.5 flip, recorded here as instructed there.
-  assert.equal(catalog.parts.length, 1, 'one landed part: the skull mask');
-  // every slot class present in the mapping; only FULL_HEAD has landed so far
+  assert.equal(catalog.parts.length, 0, 'survey verdict: 0 T7 part meshes in holdings');
+  // every slot class surveyed, all zero
   for (const slot of T7_SLOTS) {
-    assert.equal(catalog._meta.by_slot[slot], slot === 'FULL_HEAD' ? 1 : 0, `by_slot.${slot}`);
+    assert.equal(catalog._meta.by_slot[slot], 0, `by_slot.${slot}`);
     assert.ok(catalog._meta.suite_slot_mapping.includes(slot), `mapping covers ${slot}`);
   }
 });
 
-test('merging into the real registry adds exactly the landed part', async () => {
+test('merging into the real registry disturbs nothing', async () => {
   const registry = JSON.parse(await readFile(registryUrl, 'utf8'));
   const catalog = await loadCatalog('tekken7-catalog', fetcherFor(catalogUrl));
   const merged = mergeCatalogs(registry, catalog);
-  assert.equal(merged.length, registry.parts.length + 1, 'T7 catalog adds the skull mask');
-  assert.equal(entriesForSource(merged, 'tekken7').length, 1);
+  assert.equal(merged.length, registry.parts.length, 'T7 catalog adds 0 entries today');
+  assert.equal(entriesForSource(merged, 'tekken7').length, 0);
 });
 
-test('skull mask: named gap RESOLVED — the runtime now resolves the real part', async () => {
+test('skull mask: named gap, unresolved by the runtime, never a phantom part', async () => {
   const registry = JSON.parse(await readFile(registryUrl, 'utf8'));
   const catalog = await loadCatalog('tekken7-catalog', fetcherFor(catalogUrl));
   const merged = mergeCatalogs(registry, catalog);
@@ -74,18 +71,15 @@ test('skull mask: named gap RESOLVED — the runtime now resolves the real part'
   assert.equal(gap.scope, 'generic');
   assert.equal(gap.player_cus_id, 0);
   assert.equal(gap.suite_slot, 'full_head');
-  assert.equal(gap.status, 'resolved_in_parts');
+  assert.equal(gap.status, 'named_gap_not_in_holdings');
 
-  // FLIPPED 2026-10-21 (W6): the real part landed in parts[] — the runtime
-  // resolves it with its GLB, exactly as the survey §3.5/§4 promised.
-  const entry = getEntry(merged, SKULL_MASK_ID);
-  assert.ok(entry, 'skull mask entry must exist in parts[]');
-  assert.equal(entry.glb, 'customization/parts/tekken7/full_head/skull-mask/skull-mask.glb');
+  // …but it is NOT a part: the runtime cannot resolve or display it
+  assert.equal(getEntry(merged, SKULL_MASK_ID), null);
   const resolved = resolveProfileParts(merged, {
     parts: { full_head: { part_id: SKULL_MASK_ID } },
   });
   assert.equal(resolved.length, 1);
   assert.equal(resolved[0].part_id, SKULL_MASK_ID, 'assignment is reported, not dropped');
-  assert.equal(resolved[0].status, 'resolved');
-  assert.equal(resolved[0].glb, 'customization/parts/tekken7/full_head/skull-mask/skull-mask.glb');
+  assert.equal(resolved[0].status, 'unresolved');
+  assert.equal(resolved[0].glb, null);
 });

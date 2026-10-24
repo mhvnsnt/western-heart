@@ -209,19 +209,3 @@ input[type=range]{width:100%;height:44px;accent-color:var(--gold);cursor:pointer
   .item-grid{grid-template-columns:1fr;}
   .tb-fighter{font-size:16px;}
 }
-
-/* ============ worker 38 menu pass: template select, wizard, tool cards ============ */
-.tpl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:14px;}
-.tpl-card{min-height:104px;border-radius:14px;background:var(--panel2);border:1px solid var(--edge);
-  color:var(--ink);cursor:pointer;padding:12px;text-align:left;font-size:14px;font-weight:700;}
-.tpl-card .tpl-name{font-size:15px;margin-bottom:4px;}
-.tpl-card .tpl-desc{font-size:11px;color:var(--dim);font-weight:400;margin-bottom:6px;}
-.tpl-card .tpl-stats{font-size:11px;color:var(--accent);font-weight:600;font-variant-numeric:tabular-nums;}
-.tpl-card.active{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold);}
-.tpl-card:active{transform:scale(.98);}
-.wz-dots{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;}
-.wzdot{width:28px;height:28px;border-radius:50%;border:1px solid var(--edge);display:flex;
-  align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--dim);background:var(--panel2);}
-.wzdot.active{border-color:var(--gold);color:var(--gold);}
-.wzdot.done{background:#12341c;border-color:var(--green);color:var(--green);}
-.mono{font-family:ui-monospace,monospace;font-size:11px;background:#0e1320;padding:2px 6px;border-radius:6px;}

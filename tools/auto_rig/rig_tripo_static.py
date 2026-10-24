@@ -58,26 +58,12 @@ def main():
     ap.add_argument("--facing", default=None, help="mesh facing for gamerig_backend (e.g. +Z) when the feet cue is unsure")
     ap.add_argument("--height", default="1.8")
     ap.add_argument("--keep-work", action="store_true")
-    ap.add_argument("--smooth-gate", default="2.5",
-                    help="smooth_weights p99.9 edge-stretch gate (default 2.5). Long coats/capes/detached parts stretch "
-                         "more under the boxing stress clip; raise it only with the in-game check as the verdict")
     a = ap.parse_args()
-    # Blender renders need libEGL/libGL; this VM keeps them in ~/workspace/tools/syslibs
-    # (setup_toolchain.sh). Add to LD_LIBRARY_PATH when present so render_poses works.
-    for _sl in ("egl", "gl"):
-        _p = os.path.expanduser("~/workspace/tools/syslibs/%s/usr/lib/x86_64-linux-gnu" % _sl)
-        if os.path.isdir(_p) and _p not in os.environ.get("LD_LIBRARY_PATH", ""):
-            os.environ["LD_LIBRARY_PATH"] = _p + ":" + os.environ.get("LD_LIBRARY_PATH", "")
     blender = os.environ.get("WH_BLENDER") or os.path.expanduser(
         "~/workspace/tools/blender/blender-4.0.2-linux-x64/blender")
     out = a.out or os.path.splitext(a.inp)[0] + "-rigged.glb"
     os.makedirs(a.report_dir, exist_ok=True)
     work = tempfile.mkdtemp(prefix="wh-rig-")
-    if not a.keep_work:
-        # A failed step exits through sys.exit(); without this its work dir (160-780 MB each) stays in /tmp.
-        # 2026-10-23: thirteen leftovers filled the disk.
-        import atexit
-        atexit.register(shutil.rmtree, work, True)
     log = os.path.join(work, "steps.log")
     dec, rig = os.path.join(work, "decoded.glb"), os.path.join(work, "rigged.glb")
     # ES modules ignore NODE_PATH: run a copy of the codec beside a node_modules link instead.
@@ -87,8 +73,7 @@ def main():
         os.makedirs(cdir)
         os.symlink(os.environ["NODE_PATH"].split(os.pathsep)[0], os.path.join(cdir, "node_modules"))
         codec = shutil.copy(CODEC, os.path.join(cdir, "gltf_codec.mjs"))
-    bl = ["xvfb-run", "-a", "env", "-u", "PYTHONPATH", "XDG_RUNTIME_DIR=/tmp", blender, "-b", "--factory-startup",
-          "--python-exit-code", "1", "--python"]
+    bl = ["xvfb-run", "-a", "env", "-u", "PYTHONPATH", "XDG_RUNTIME_DIR=/tmp", blender, "-b", "--factory-startup", "--python"]
 
     run(["node", codec, "decode", a.inp, dec], log=log)
     cmd = bl + [os.path.join(HERE, "backends", "gamerig_backend.py"), "--", "--in", dec, "--out", rig,
@@ -101,16 +86,10 @@ def main():
     subprocess.run([sys.executable, os.path.join(HERE, "anim_check.py"), "--in", rig, "--json-out", gate_before,
                     "--max-frames", "18", "--quiet"], capture_output=True)
     sm = run([sys.executable, os.path.join(HERE, "backends", "smooth_weights.py"), "--in", rig, "--threshold", "2.0",
-              "--rounds", "12", "--frames-per-clip", "10", "--gate", a.smooth_gate],
+              "--rounds", "12", "--frames-per-clip", "10", "--gate", "2.5"],
              env={"PYTHONPATH": HERE}, log=log)
     with open(os.path.join(a.report_dir, "smooth_weights.log"), "w") as f:
         f.write(sm.stdout)
-    # Cross-limb weight bleed (one leg's verts carrying the other leg / the arms): the web between the legs and the
-    # arm wobble the owner saw (backends/limb_isolation.py, 2026-10-23).
-    iso = run([sys.executable, os.path.join(HERE, "backends", "limb_isolation.py"), "--in", rig],
-              env={"PYTHONPATH": HERE}, log=log)
-    with open(os.path.join(a.report_dir, "limb_isolation.log"), "w") as f:
-        f.write(iso.stdout)
     val = subprocess.run([sys.executable, os.path.join(HERE, "validate.py"), "--in", rig], capture_output=True, text=True)
     gate = os.path.join(a.report_dir, "anim_check_after_smoothing.json")
     subprocess.run([sys.executable, os.path.join(HERE, "anim_check.py"), "--in", rig, "--json-out", gate,

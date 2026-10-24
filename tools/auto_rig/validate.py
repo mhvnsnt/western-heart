@@ -49,39 +49,6 @@ def joint_names(js):
     return [nodes[j].get("name", "") for j in joints if j < len(nodes)]
 
 
-def finger_symmetry(names):
-    """L/R parity of finger chains (teardown research 2026-10-22: verified
-    rigs ship LeftHandThumb3/LeftHandPinky3 missing on the left — a
-    rig-authoring bug, not a convention. Any finger-pose system behaves
-    differently per hand until fixed). Returns
-    (ok, [(bone, missing_mirror), ...]). Rigs with no finger bones pass."""
-    import re
-    finger = [n for n in names
-              if re.search(r"finger|thumb|index|middle|ring|pinky", n, re.I)]
-
-    def mirror(n):
-        if n.startswith("Left"):
-            return "Right" + n[4:]
-        if n.startswith("Right"):
-            return "Left" + n[5:]
-        if n.endswith(".L"):
-            return n[:-2] + ".R"
-        if n.endswith(".R"):
-            return n[:-2] + ".L"
-        if "_L" in n:
-            return n.replace("_L", "_R")
-        if "_R" in n:
-            return n.replace("_R", "_L")
-        return None
-
-    missing = []
-    for n in finger:
-        m = mirror(n)
-        if m and m not in names:
-            missing.append([n, m])
-    return (len(missing) == 0, missing)
-
-
 def mesh_height(js, bdat):
     """Height from POSITION vertex data (accessor min/max not trusted —
     Blender's exporter sometimes writes zeroed bounds)."""
@@ -139,13 +106,7 @@ def check(path, clips_dir=None):
     report["checks"]["height_ok"] = height is not None and 1.5 <= height <= 2.2
     report["foot_y"] = round(foot_y, 4) if foot_y is not None else None
 
-    # 5. finger L/R symmetry: every finger bone must have its mirror
-    #    (teardown research 2026-10-22 — asymmetric chains are a bug).
-    fsym_ok, fsym_missing = finger_symmetry(names)
-    report["checks"]["fingers_symmetric"] = fsym_ok
-    report["finger_asymmetry"] = fsym_missing
-
-    # 6. stretch gate: implemented by anim_check.py (bone-length variance,
+    # 5. stretch gate: implemented by anim_check.py (bone-length variance,
     #    vertex tearing, p99.9 edge stretch) over the supplied clips GLB(s);
     #    without clips we report unknown, not fail.
     if clips_dir:

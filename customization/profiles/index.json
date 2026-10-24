@@ -1,4 +1,0 @@
-{
-  "_doc": "Ids that have a repo profile at customization/profiles/<id>.json. game/js/customization-consumer.js reads this first so fighters without a profile (e.g. phantom) never request a 404. Add the id here when adding a profile; test/profiles-index.test.mjs enforces it.",
-  "profiles": ["pantera"]
-}

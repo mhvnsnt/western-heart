@@ -17,25 +17,3 @@ Read first: `lab/README.md` (milestones), `docs/PLAYTEST-METHOD.md` (how to play
 
 ## No-data-loss rules (MANDATORY)
 Read and follow [`docs/NO-DATA-LOSS-RULES.md`](NO-DATA-LOSS-RULES.md) (canonical: mhvnsnt/agent-ops). No force-push, no rebase/amend of pushed work, no history rewrite, no branch/asset deletion without backup + owner approval, PRs only, empty D-filter + gitleaks + green CI before merge, push incrementally, keep WORKLOG, back up and sha256-verify before disk cleanup, never touch other agents' or Muse's work.
-
-## Owner laws (Oct 23, 2026)
-- **2:19 PM CT, data sources:**
-> **Western Heart data (moves, animations, frame data, menus, character select) comes from Tekken 5, 6, 7, 8 and TTT2. Tekken 3 is only a last-resort fallback, and every T3 use is logged with its reason.**
-  Search T5/T6/T7/T8/TTT2 teardowns first; log every T3 use (file, clip, reason) in `docs/anim/PROCEDURAL_AUDIT.md` and WORKLOG. Next-step references to King's T3 rows above are fallback-only until a T5–TTT2 source replaces them.
-- **2:21 PM CT, no hand-made menus:**
-> **NO hand-made menus. Every Western Heart menu, character select and customization screen, including the creation suite in `packages/creation-suite`, must be built from the actual Tekken teardown files (T5/T6/T7/T8/TTT2) and other game teardowns, and every UI change must cite its teardown source in the PR and WORKLOG.**
-  CI gate is MoneyManBusch's (no duplicate). Current hand-built creation suite UI is NON-COMPLIANT, pending teardown-sourced rebuild; do not delete it.
-## Teardown-integration lane status (Grok Bot, 2026-10-23 15:45 CT)
-- Merged: #812 input V2, #821 phone menu touch fix + menu-touch-e2e CI job, #830 select phone layout, #834 ui_sources gate (game/ui_sources.json + tools/ui-sources/check.py). All 14 screens are legacy-unsourced, and changing one now requires a teardown source.
-- Open: #831 coverage audit (tools/teardown-coverage/audit.py REF OUT: 27.2% integrated, 31.7% docs-only, 41.0% unreferenced of 51234 files), #835 roster map (node tools/roster-map/build.mjs; 67 owner issues).
-- BLOCKER for the menu rebuild and T3 replacement: neither repo has T5/T7/T8/TTT2 menu/UI or move extractions (T6 UI is 2 PSP icons, T6 moves are still being decrypted, and there are no ISOs on the box). Next: extract them (game-reverse-engineering tools such as tekken5/tools/vendor/tim2dump), then cite them in ui_sources.json and rebuild the screens, keeping the old ones as Legacy (off by default).
-- The WORKLOG is a conflict hotspot. After each merge, re-merge main into the other open PRs (keep both sides, never force-push).
-
-## Input resolver V2 (2026-10-23 14:15 CT)
-Read docs/input/INPUT-RESOLVER-V2.md. Run `node test/input-determinism.test.mjs --report /tmp/r.json` after any moveset/input change; it must print PASS. Next: the 107 long-string cases, 34 duplicate-spelling conflicts, hold-button (`*`) input, DOA 2/4 slots from the DOA4 decode, port to AshLane + Brutal Fist.
-
-## Owner rules — 2026-10-23 (disk offload + merge rule) — Repo Co Dev
-
-**(a) Disk offload.** Once local work is verified 100% pushed (0 dirty, 0 untracked, 0 stash, every local branch on the remote at the same or a later SHA, submodules included) or stored in box-storage, clear it off the box disk as you go, and log each removal (path, repo, HEAD SHA, date) in agent-ops `BOX-OFFLOAD-LOG.md`. If any check fails or ownership is unclear, keep it on disk and list it.
-
-**(b) Merge rule.** Merge only when GitHub shows the PR as MERGEABLE/CLEAN, every check is verified green through the Actions runs API (a timeout, 403 or unreadable result counts as a FAIL), `git diff --diff-filter=D --name-only origin/main...HEAD` is empty, and the PR is not freeze-marked. No batch merges: one PR at a time. Claim the work in agent-ops `CLAIMS.md` first. Never force-push or rebase pushed work. If any check is unverifiable, leave the PR open.

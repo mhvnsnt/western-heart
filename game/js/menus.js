@@ -7,14 +7,13 @@
    Wiring contract (additive — touches nothing existing):
    - main.js calls initMenus() once at boot (2-line hook).
    - Reads window.__game / window.__modes (set by main.js).
-   - Imports { audio } (same singleton main.js uses).
-   - LOADSPEED: modes.js / heartmind.js / episodes.js are NOT boot code —
-     they stream through lazy.js on first use (records screen, their mode
-     buttons). See game/js/lazy.js.
+   - Imports { audio } (same singleton main.js uses) and
+     { whGetRecords } from modes.js for the records screen.
    ============================================================ */
 import { audio } from './audio.js';
-import { lazy } from './lazy.js';
-import { initMainMenu } from './mainmenu.js';
+import { whGetRecords } from './modes.js';
+import { HeartmindController } from './heartmind.js';
+import { EpisodesController } from './episodes.js';
 
 /* ---------------- Settings ---------------- */
 const SETTINGS_KEY = 'wh_settings_v1';
@@ -227,10 +226,9 @@ export function closeOptions() {
 }
 
 /* ---------------- Records ---------------- */
-export async function openRecords() {
+export function openRecords() {
   const o = document.getElementById('wh-records');
   if (!o) return;
-  const { whGetRecords } = await lazy.modes();
   const rec = whGetRecords();
   const list = o.querySelector('.wh-rec-list');
   list.innerHTML = '';
@@ -277,8 +275,7 @@ export function playStoryBeats(beats, done, kicker) {
     o.querySelector('.wh-story-text').textContent = b.text || '';
     const img = o.querySelector('.wh-story-card .sportrait img');
     img.style.display = '';
-    if (!b.charId) { img.style.display = 'none'; img.removeAttribute('src'); } // model-pending: no borrowed portrait
-    else img.src = `assets/portraits/${b.charId}.png`;
+    img.src = `assets/portraits/${b.charId || 'pantera'}.png`;
     img.onerror = () => { img.style.display = 'none'; };
     o.querySelector('.wh-story-hint').textContent =
       `TAP TO CONTINUE · ${i + 1}/${beats.length}`;
@@ -408,32 +405,21 @@ function buildMenuButtons() {
   mk('RECORDS', null, 'mode-records', true,
     document.querySelector('[data-action="mode-options"]') || howto);
 
-  // Special actions dispatch to their controllers, built on first tap
-  // (LOADSPEED: heartmind.js / episodes.js stream via lazy.js, not boot).
-  // Delegated (T8 menu, worker 37): also covers submenu cards created
-  // dynamically by mainmenu.js.
-  if (!document._whSpecialDelegated) {
-    document._whSpecialDelegated = true;
-    document.addEventListener('click', async (e) => {
-      const t = e.target;
-      const b = (t instanceof Element) ? t.closest('[data-action="mode-options"],[data-action="mode-records"],[data-action="mode-heartmind"],[data-action="mode-episodes"]') : null;
-      if (!b) return;
-      const a = b.dataset.action;
-      audio.unlock();
-      if (a === 'mode-options') { audio.uiClick && audio.uiClick(); openOptions(); }
-      else if (a === 'mode-records') { audio.uiClick && audio.uiClick(); openRecords(); }
-      else if (a === 'mode-heartmind') {
-        audio.uiClick && audio.uiClick();
-        await ensureHeartmind();
-        window.__heartmind && window.__heartmind.beginSelect();
-      }
-      else if (a === 'mode-episodes') {
-        audio.uiClick && audio.uiClick();
-        await ensureEpisodes();
-        window.__episodes && window.__episodes.beginSelect();
-      }
-    });
-  }
+  document.querySelectorAll('[data-action="mode-options"]').forEach((b) =>
+    b.addEventListener('click', () => { audio.unlock(); openOptions(); }));
+  document.querySelectorAll('[data-action="mode-records"]').forEach((b) =>
+    b.addEventListener('click', () => { audio.unlock(); openRecords(); }));
+  // New-mode entries dispatch to their controllers (registered below).
+  document.querySelectorAll('[data-action="mode-heartmind"]').forEach((b) =>
+    b.addEventListener('click', () => {
+      audio.unlock(); audio.uiClick && audio.uiClick();
+      window.__heartmind && window.__heartmind.beginSelect();
+    }));
+  document.querySelectorAll('[data-action="mode-episodes"]').forEach((b) =>
+    b.addEventListener('click', () => {
+      audio.unlock(); audio.uiClick && audio.uiClick();
+      window.__episodes && window.__episodes.beginSelect();
+    }));
 }
 
 /* ---------------- Mode tag ---------------- */
@@ -496,41 +482,14 @@ function hookAudioUnlock() {
 
 /* ---------------- Boot ---------------- */
 let booted = false;
-let _cdeps = null;
-/* LOADSPEED: controller deps captured at initMenus; the modules stream
-   on first use. Concurrent taps share one import promise each. */
-let _hmPromise = null, _epPromise = null;
-export function ensureHeartmind() {
-  if (window.__heartmind) return Promise.resolve(window.__heartmind);
-  if (!_hmPromise) {
-    _hmPromise = lazy.heartmind().then(({ HeartmindController }) => {
-      window.__heartmind = new HeartmindController(_cdeps);
-      return window.__heartmind;
-    }).catch((e) => { _hmPromise = null; throw e; });
-  }
-  return _hmPromise;
-}
-export function ensureEpisodes() {
-  if (window.__episodes) return Promise.resolve(window.__episodes);
-  if (!_epPromise) {
-    _epPromise = lazy.episodes().then(({ EpisodesController }) => {
-      window.__episodes = new EpisodesController(_cdeps);
-      return window.__episodes;
-    }).catch((e) => { _epPromise = null; throw e; });
-  }
-  return _epPromise;
-}
 export function initMenus(deps = {}) {
   if (booted) return;
   booted = true;
   buildOverlays();
   buildMenuButtons();
-  initMainMenu(); // T8-style main menu controller (additive; no-ops if markup absent)
   hookAudioUnlock();
   // Stream-4 mode controllers (standalone; they reuse Game patterns).
-  // LOADSPEED: built on first tap via ensureHeartmind/ensureEpisodes —
-  // not at boot. The card-tracking + confirm hooks are cheap and run now.
-  _cdeps = {
+  const cdeps = {
     game: deps.game || window.__game,
     ui: deps.ui || window.__ui,
     show: deps.show || showScreen,
@@ -539,8 +498,12 @@ export function initMenus(deps = {}) {
     getChar: deps.getChar || ((id) => null),
     audio: deps.audio || audio,
   };
-  hookCardTracking();
-  hookConfirmIntercept();
+  if (!window.__heartmind) {
+    window.__heartmind = new HeartmindController(cdeps);
+    hookCardTracking();
+    hookConfirmIntercept();
+  }
+  if (!window.__episodes) window.__episodes = new EpisodesController(cdeps);
   // game/modes arrive on window a beat after module eval — hook when present.
   const tryHook = () => {
     if (window.__game) { hookStartMatch(); hookConfirm(); applySettings(); }

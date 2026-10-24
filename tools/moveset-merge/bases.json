@@ -1,7 +1,6 @@
 {
  "_doc": "Which real characters each WH fighter is built on, per source. Read by tools/moveset-merge/merge_sources.py. 'auto' rows are derived from the file's tekken_base via BASE_TABLE in merge_sources.py; 'override' rows carry the owner's words that set them. t8 = docs/t7t8-reference/frame-data-t8-full/<t8>.json (wavu, CC0); t7 = docs/t7t8-reference/frame-data-t7/<t7>.json (t7chicken); t3 = teardown/tekken3/movesets/moveset_<t3>.json via tools/gen-movesets-t3.py; donors = other WH moveset files whose moves this fighter also gets (attire variants share the main fighter's kit). exclude_proxy = moves from a T3 bank that is NOT one of this fighter's bases never take a default input slot (they stay in the file and in the editor).",
  "override": {
-  "buffalo-bill": {"t8": ["law"], "t7": ["law"], "t3": ["law", "forestlaw"], "why": "owner 2026-10-23: \"So marshall law and firrest law moves both go to ashes/buffalo bill\""},
   "star": {
    "t8": [
     "xiaoyu"

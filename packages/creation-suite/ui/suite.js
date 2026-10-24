@@ -35,9 +35,7 @@ let ENTRIES = [], COUNTS = null;
 let attireNo = 1;
 const attires = {};                 // 1..4 -> profile state
 let S = null;                       // active profile state
-const ui = { tab: 'body', cat: null, search: '', src: 'all', inkPick: false, inkEntry: null, inkRect: [0.1, 0.1, 0.3, 0.3], swapRegion: null, swapSearch: '' };
-let SWAP_SOURCES = [];
-const REGION_LABEL = { head: 'HEAD', torso: 'TORSO', arm_l: 'ARM · LEFT', arm_r: 'ARM · RIGHT', legs: 'LEGS' };
+const ui = { tab: 'body', cat: null, search: '', src: 'all', inkPick: false, inkEntry: null, inkRect: [0.1, 0.1, 0.3, 0.3] };
 
 const $ = (sel) => document.querySelector(sel);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -86,7 +84,7 @@ function renderStage() {
   const dots = [S.body.skin_tone, S.colors.hair].filter(Boolean)
     .map((c) => `<span class="dot" style="background:${esc(c)}"></span>`).join('');
   $('#stageMeta').innerHTML =
-    `${dots} ${esc(S.body.body_type)} · ${Object.keys(S.equipped).length} parts equipped · ${S.region_swaps.length} piece swap(s) · ${S.textures.length} ink layer(s) · wardrobe ${Object.keys(S.wardrobe).length}/10`;
+    `${dots} ${esc(S.body.body_type)} · ${Object.keys(S.equipped).length} parts equipped · ${S.textures.length} ink layer(s) · wardrobe ${Object.keys(S.wardrobe).length}/10`;
 }
 
 /* ---------------- shared bits ---------------- */
@@ -188,44 +186,6 @@ function renderAttire() {
     <div class="item-list">${list.slice(0, CAP).map(itemRow).join('') || '<p class="note">No parts match.</p>'}</div>`;
   const inp = $('#partSearch');
   inp?.addEventListener('input', () => { ui.search = inp.value; renderSheetKeepScroll(); });
-}
-
-/* ---------------- PIECES (round 2: Tekken-style region swaps) ---------------- */
-function renderPieces() {
-  if (ui.swapRegion) {
-    const region = ui.swapRegion;
-    let list = SWAP_SOURCES.filter((x) => x.path && x.path !== S.base_glb);
-    if (ui.swapSearch) {
-      const q = ui.swapSearch.toLowerCase();
-      list = list.filter((x) => x.path.toLowerCase().includes(q));
-    }
-    list.sort((a, b) => a.path.localeCompare(b.path));
-    $('#sheet').innerHTML = `
-      <button type="button" class="pick" data-action="swap-back">‹ REGIONS</button>
-      <h2>${REGION_LABEL[region]} — PICK A SOURCE</h2>
-      <div class="toolbar"><input type="search" id="swapSearch" placeholder="Search ${list.length} roster models…" value="${esc(ui.swapSearch)}"></div>
-      <p class="note">Tap a fighter's model to take its ${REGION_LABEL[region]} — Tekken cuts at the bone: the region is cut from them and from you, fit to your neck/anchor point, and re-skinned onto your skeleton at bake. Your original comes back by removing the swap and re-baking.</p>
-      <div class="item-list">${list.slice(0, CAP).map((x) => `
-        <button type="button" class="item" data-action="swap-pick" data-path="${esc(x.path)}" data-fighter="${esc(x.fighter || '')}" data-attire="${esc(x.attire || '')}">
-        <span class="nm">${esc(x.fighter || '?')} · ${esc(x.attire || '')}<span class="id">${esc(x.file)}${x.skinned === false ? ' · unskinned (head only)' : ''}${x.skinned ? ` · ${x.bones} bones` : ''}</span></span></button>`).join('') || '<p class="note">No sources loaded — region-sources.json missing?</p>'}</div>`;
-    const inp = $('#swapSearch');
-    inp?.addEventListener('input', () => { ui.swapSearch = inp.value; renderSheetKeepScroll(); });
-    return;
-  }
-  $('#sheet').innerHTML = `
-    <h2>PIECE SWAPS — CUT &amp; GRAFT</h2>
-    <p class="note">Tekken-style: take a whole region from another fighter. WWE calls it body-part swapping; here it saves into this attire's record and the bake does the cut. One source per region.</p>
-    <div class="item-list">${P.SWAP_REGIONS.map((r) => {
-      const cur = S.region_swaps.find((x) => x.region === r);
-      return `<div class="item"><span class="nm">${REGION_LABEL[r]}<span class="id">${cur ? `${esc(cur.from_fighter || '')} · ${esc(cur.from_attire || '')} — ${esc(cur.from_glb.split('/').pop())}` : 'original (yours)'}</span></span>
-      <button type="button" class="pick" data-action="swap-open" data-region="${r}">${cur ? 'CHANGE' : 'SWAP'}</button>
-      ${cur ? `<button type="button" class="pick" data-action="swap-remove" data-region="${r}">RESTORE</button>` : ''}</div>`;
-    }).join('')}</div>
-    <h2>BASE MODEL</h2>
-    <div class="slider-row"><label for="hideHairChk">Hide base hair (bake)</label>
-    <input type="checkbox" id="hideHairChk" ${S.hide_base_hair ? 'checked' : ''} style="width:32px;height:32px"><output></output></div>
-    <p class="note">For models whose own hair is a separate named mesh: the bake leaves it out of the game model so an attached hairstyle sits clean. Your base file is never touched.</p>`;
-  $('#hideHairChk')?.addEventListener('change', (e) => { P.setHideBaseHair(S, e.target.checked); renderStage(); });
 }
 
 /* ---------------- INK ---------------- */
@@ -339,16 +299,6 @@ function openDetail(entry) {
       ${sliderRow('place', 'ry', 'Yaw °', eq.placement.ry, -180, 180, 1)}
       ${sliderRow('place', 'rz', 'Roll °', eq.placement.rz, -180, 180, 1)}
       ${sliderRow('place', 's', 'Scale', eq.placement.s, 0.25, 2.5, 0.05)}
-      ${sliderRow('place', 'sx', 'Scale X', eq.placement.sx ?? eq.placement.s, 0.25, 2.5, 0.05)}
-      ${sliderRow('place', 'sy', 'Scale Y', eq.placement.sy ?? eq.placement.s, 0.25, 2.5, 0.05)}
-      ${sliderRow('place', 'sz', 'Scale Z', eq.placement.sz ?? eq.placement.s, 0.25, 2.5, 0.05)}
-      <h2>NUDGE (tap — fine steps)</h2>
-      <div class="row">${[['px', 'X', 0.01], ['py', 'Y', 0.01], ['pz', 'Z', 0.01]].map(([k, lbl, st]) =>
-        `<span style="display:flex;gap:4px;align-items:center"><b>${lbl}</b><button type="button" class="pick" data-action="nudge" data-nudge="${k}:${-st}">−</button><button type="button" class="pick" data-action="nudge" data-nudge="${k}:${st}">+</button></span>`).join('')}</div>
-      <div class="row">${[['rx', 'Pitch', 1], ['ry', 'Yaw', 1], ['rz', 'Roll', 1]].map(([k, lbl, st]) =>
-        `<span style="display:flex;gap:4px;align-items:center"><b>${lbl}</b><button type="button" class="pick" data-action="nudge" data-nudge="${k}:${-st}">−</button><button type="button" class="pick" data-action="nudge" data-nudge="${k}:${st}">+</button></span>`).join('')}</div>
-      <div class="actions"><button type="button" class="btn" data-action="place-reset">RESET PLACEMENT</button></div>
-      <p class="note">Placement is bone-local and exact: what you set here is what the bake applies — 0 is the part's native seat on the bone.</p>
       <div class="slider-row"><label for="mirrorChk">Mirror L/R</label><input type="checkbox" id="mirrorChk" ${S.mirrored[suiteSlot] ? 'checked' : ''} style="width:32px;height:32px"><output></output></div>
       <h2>COLOR CHANNELS (Tekken: up to 5)</h2>
       <div class="row">${[0, 1, 2, 3, 4].map((i) =>
@@ -382,7 +332,7 @@ function tryEquip(force) {
 
 /* ---------------- render dispatch ---------------- */
 function renderSheet() {
-  ({ body: renderBody, face: renderFace, attire: renderAttire, pieces: renderPieces, ink: renderInk, wardrobe: renderWardrobe, profile: renderProfile })[ui.tab]();
+  ({ body: renderBody, face: renderFace, attire: renderAttire, ink: renderInk, wardrobe: renderWardrobe, profile: renderProfile })[ui.tab]();
 }
 function renderSheetKeepScroll() {
   const active = document.activeElement;
@@ -409,26 +359,6 @@ document.addEventListener('click', (ev) => {
     else if (a === 'equip-force') tryEquip(true);
     else if (a === 'remove-part') { P.unequip(S, spineSlotOf(detailEntry)); closeDetail(); renderAll(); }
     else if (a === 'eyelayer') { const e = getEntry(ENTRIES, b.dataset.id); P.addLayer(S, e, {}); toast('Eye layer added — see INK'); renderAll(); }
-    else if (a === 'swap-open') { ui.swapRegion = b.dataset.region; ui.swapSearch = ''; renderSheet(); }
-    else if (a === 'swap-back') { ui.swapRegion = null; renderSheet(); }
-    else if (a === 'swap-remove') { P.removeRegionSwap(S, b.dataset.region); toast('Swap removed — re-bake restores the original'); renderAll(); }
-    else if (a === 'swap-pick') {
-      P.setRegionSwap(S, { region: ui.swapRegion, from_glb: b.dataset.path, from_fighter: b.dataset.fighter || null, from_attire: b.dataset.attire || null });
-      toast(`${REGION_LABEL[ui.swapRegion]} swap set — applies at bake`);
-      ui.swapRegion = null; renderAll();
-    }
-    else if (a === 'nudge' && detailEntry) {
-      const [k, d] = b.dataset.nudge.split(':');
-      const spine = spineSlotOf(detailEntry);
-      const cur = S.equipped[spine]?.placement?.[k] ?? (k === 's' ? 1 : 0);
-      P.setPlacement(S, spine, { [k]: Math.round((cur + Number(d)) * 1000) / 1000 });
-      openDetail(detailEntry); renderStage();
-    }
-    else if (a === 'place-reset' && detailEntry) {
-      const spine = spineSlotOf(detailEntry);
-      P.setPlacement(S, spine, { px: 0, py: 0, pz: 0, rx: 0, ry: 0, rz: 0, s: 1, sx: 1, sy: 1, sz: 1 });
-      openDetail(detailEntry); renderStage();
-    }
     else if (a === 'ink-open') { ui.inkPick = true; ui.search = ''; renderSheet(); }
     else if (a === 'ink-back') { ui.inkPick = false; renderSheet(); }
     else if (a === 'ink-pick') { ui.inkEntry = b.dataset.id; ui.inkPick = false; renderSheet(); }
@@ -497,10 +427,6 @@ $('#saveBtn').addEventListener('click', save);
       return r.json();
     }));
     ENTRIES = mergeCatalogs(...datas);
-    try {
-      const rs = await fetch('../../../customization/region-sources.json');
-      if (rs.ok) SWAP_SOURCES = (await rs.json()).sources || [];
-    } catch { /* swaps tab explains itself when the index is missing */ }
     COUNTS = spineCounts(ENTRIES);
     let stashRecs = null;
     try { stashRecs = JSON.parse(localStorage.getItem(LS_STASH) || 'null'); } catch { /* fresh */ }

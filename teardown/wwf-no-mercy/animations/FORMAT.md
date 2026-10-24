@@ -1,7 +1,7 @@
 # Animation export format — WWF No Mercy AKI keyframe bank
 
 Source ROM: `WWF No Mercy (USA) (Rev-A).z64` (CRC32 `BACEEA13`).
-Bank: FileTable @ `0x16C31D8`, FirstFile `0x1BD150`, file IDs **1-based** (game-exact W3c correction — FUN_80003ab0/FUN_80003bd0; the old `0x16C3238`/`0x1BD1B0` 0-based window read game file fid+0x19 spliced at +0x60, see `docs/anim/AKI-BAKE-ROCK-2026-10-21.md` W3b Finding 1). File IDs **`0x2DD9`–`0x445A`** = **5,762 clips**. NOTE: only the 11 Rock clips + manifest entries were re-extracted in W3c; the rest of the .npy bank still holds the old shifted decode and must be re-extracted before use.
+Bank: FileTable @ `0x16C3238`, file IDs **`0x2DD9`–`0x445A`** = **5,762 clips**.
 Tool: `../tools/extract_all_anims.py` (decodes with `anim_extract.py` logic).
 
 Note: prior docs said "~1,360 clips" — that count came from a survey capped
@@ -37,10 +37,9 @@ Index 0–25, kinds PR = PivotRotation, OM = OverallMovement, MV = MovementXYZ:
 
 ## Channel semantics per joint kind
 
-- **PR** (PivotRotation): `[pivot_x, rotation, pivot_z]` — packed `[PivotX s12][Rotation u10][PivotZ s10]` (W3b Finding 2; the old 12/8/12 split truncated rotation and corrupted PivotZ)
-  - `pivot_x`: signed 12-bit fixed-point pivot offset
-  - `rotation`: unsigned 10-bit, 1024 = full turn
-  - `pivot_z`: signed 10-bit pivot offset
+- **PR** (PivotRotation): `[pivot_x, rotation, pivot_z]`
+  - `pivot_x`, `pivot_z`: signed 12-bit fixed-point pivot offsets
+  - `rotation`: signed 8-bit rotation value
 - **OM** (OverallMovement): `[overall_x, overall_y, overall_z]`
   - root/body translation: 12-bit signed X/Z, 8-bit unsigned Y
 - **MV** (MovementXYZ): `[move_x, move_y, move_z]`

@@ -12,6 +12,3 @@ export function applyDNA(root, dna) {
 }
 export * from './menu.js';
 export * from './parts.js';
-export * from './rigpose.js';
-export * from './t7layout.js';
-export * from './rigswap.js';

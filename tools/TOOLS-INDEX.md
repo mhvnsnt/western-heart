@@ -34,7 +34,6 @@ installs them. The method write-ups are in `docs/handoffs/CLAUDE_TO_MUSE_FIXES_2
 |---|---|
 | `tools/auto_rig/backends/gamerig_backend.py` | GameRig (vendored Rigify feature set) in Blender 4.0.2. This session added exact `--facing`, the bone-heat proxy (world-unit voxel remesh + decimate + Data Transfer weights) and A-pose droop fitting |
 | `tools/auto_rig/rig_tripo_static.py` | 2026-10-21. One command for an unrigged Tripo static: codec decode, then gamerig_backend, then smooth_weights, then validate + anim_check, then render_poses, then codec encode. Writes `<name>-rigged.glb` beside the original and never modifies it. Report, renders and logs go to `--report-dir`. Wiring into assets.js stays a reviewed step. Used for Zui A1, which passed. Diablo A1 failed: A-pose winged demon, see `docs/proof/claude-2026-10-21/auto-rig-diablo/README.md` |
-| `tools/tripo-intake/` | 2026-10-21. Tripo auto-intake (owner: "rig new Tripo models ASAP to their character rig"). `inbox/<fighter>/attire<N>.glb` → env check → claim (fighter id = roster dir, never guessed; never clobbers; unrigged statics only) → sha256 + `ledger.json` → codec decode → `facing_check.py` (two-geometry-cue facing determination with confidence gate; REFUSEs instead of guessing) → `rig_tripo_static.py --facing` (Blender 4.0.2 + GameRig) → validate (hard gate) + anim_check (flags recorded) → stages `roster/<fighter>/attires/attire<N>/model-rigged.glb` + `WIRING-CHECKLIST.md`. Wiring stays a reviewed step. Runbook: `tools/tripo-intake/README.md`; suite dropzone: `game/tripo-intake.html` |
 | `tools/auto_rig/render_poses.py` | 2026-10-21. Blender workbench front/back/side renders of a rigged GLB at given clip times (the anim_check spike frames) |
 | `tools/model-audit/gamerig_debug.py`, `gamerig_debug_heat.py` | Blender debug runs that found the facing-estimate failure that left bone heat empty |
 
@@ -63,11 +62,6 @@ Every image cited in a PR was opened and looked at before it was cited.
 | `tools/moveset-restore/restore_sweep_338.py` | restored 49 movesets wiped by merge commit 8ebdc527 from its parent 4cc6b41b |
 
 ## 7. Safety
-- `tools/git-merge/git_merge.py` merges a PR as a real merge commit via the Git
-  Database API (for machines where SSH is blocked and the merge endpoint is
-  unusable): `git_merge.py <PR> [--yes]`. Refuses unless the PR is open,
-  not a draft, mergeable_state is clean, and CI is green; 3-way merges every
-  touched file and aborts on any conflict instead of clobbering.
 
 - `gitleaks` 8.21.2 runs before every push: `gitleaks detect --no-git --source <changed files>`
   and `gitleaks git --log-opts=origin/main..HEAD`.
@@ -81,13 +75,3 @@ Every image cited in a PR was opened and looked at before it was cited.
 Blender 4.0.2 · GameRig (vendored, tools/auto_rig/vendor) · @gltf-transform 4.1.1 · meshoptimizer 0.22.0 ·
 n0madic/Tekken3Remake @ e59c4da1 (T3 RE: fight_sim, pose, motion) · Playwright Chromium ·
 gitleaks 8.21.2 · numpy / scipy / pygltflib.
-
-## 9. Procedural world generation (TRACK 5, 2026-10-23)
-
-| tool | does | writes |
-|---|---|---|
-| `tools/worldgen/build-wfc-bundle.mjs` | bundles vendored wavefunctioncollapse CJS → `game/js/worldgen/vendor/wfc.bundle.mjs` (ESM). Mechanical wrap; sources untouched. | `game/js/worldgen/vendor/wfc.bundle.mjs` |
-| `tools/worldgen/generate.mjs` | demo CLI: `generateZone()` → proof artifacts (layout json/txt/ppm, heightmap ppm, standalone demo.html, timings json) | `tools/worldgen/demo/` |
-| `game/js/worldgen/` | runtime: WFC layouts (`wfc.js`), FastNoiseLite terrain (`terrain.js`), prop scatter (`props.js`), `generateZone()` entry (`worldgen.js`); rule sets in `game/js/worldgen/rulesets/` | — |
-
-Vendored (MIT, provenance in `game/js/worldgen/vendor/VENDOR.md`): wavefunctioncollapse 2.1.0 (kchapelier port of mxgmn/WaveFunctionCollapse), fastnoise-lite 1.1.1 (JS port of Auburn's FastNoiseLite). FastNoise2 proper is C++/SIMD with no JS/WASM build — [RESEARCHED], emscripten path documented. Research: `docs/research/WORLD-GENERATION-2026-10-23.md`. Tests: `test/worldgen.test.mjs` (29).

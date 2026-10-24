@@ -28,8 +28,8 @@ spiky black circular shape; a nose; **NO mouth on the face — the mouth is
 on his chest**. The tentacle IMAGES on his clothes are imagery only at
 rest: no protruding tentacles in base form. His clothes are part of his
 spirit body, and the tentacle images can become REAL tentacles (that is
-Tentacle Mode, below). His fighting base is **no longer Julia** — owner 2026-10-22: "Zen can't use Julia's moves ... night wolf uses
-Julia's moves" (see *Fighting base (owner 2026-10-22)* below).
+Tentacle Mode, below). His Tekken fighting base stays Julia's animation
+bank (`zen → julia`).
 
 ## The spirit (803f4cf1) — its own entity
 
@@ -92,32 +92,3 @@ tentacles. This is a real stage of the transformation.
   spirit entity animation, flame-flow appendages, the spine attachment)
   are design requirements logged in RIG-NOTES.md — the wired models are
   static Tripo meshes that receive their rigs at the rig stage.
-
-## Fighting base (owner 2026-10-22)
-
-- **Base = Twelve** (Street Fighter III: 3rd Strike) — the faceless shapeshifting fighter — and his **3D relative
-  Eleven** (Street Fighter V). Owner: "Twelve/eleven stance and moves from the street fighter games", "use his 3d
-  relative eleven instead too". Zen's stance and move list come from them.
-- **X.COPY** (Twelve's Super Art: he becomes a copy of the opponent for a while) is one of Zen's abilities — owner
-  chose it — but Zen is NOT only a copier: "he has to have his own stuff as well that fits his canon". His own kit =
-  Twelve/Eleven's moves + his canon spirit-stand attacks + Tentacle Mode + Oversoul (above).
-- **Not Julia** (Nightwolf owns Julia's moves) and **not Heihachi** (Heihachi becomes Diablo).
-- **Data status (checked 2026-10-22):** no Twelve or Eleven data is in the repo. SF3:3S holds Twelve only as 2D sprites
-  (stance/move animation must be lifted to 3D from them); SFV (Eleven, 3D) is in the SFV pull, still blocked on
-  downloads (teardown/street-fighter-5/CAST-STATUS.md). Until it lands, `game/js/fighter.js` FIGHTER_BANK still maps
-  `zen -> julia` and his 639-move list (game/assets/movesets/zen.json) is built on T3 Heihachi rows — both are
-  interim and owned by the moveset/inputs lane (PR #615 crew) to replace with the Twelve/Eleven data.
-
-### Base mix: Dural (Virtua Fighter 5) + Twelve/Eleven on top, owner 2026-10-22
-
-Owner: "not a interim base ... a base mix with everything else ... once we get that stuff from 11 and 12s converted
-over from 2D to 3D we can just add it on top ... I want him to have some of the similar movements from them like that
-weird dancing idol stance"; "the person ... from virtual fighter they might have a cool stance too ... to use for now".
-So **Dural's stance is Zen's stance for now**, Dural is a permanent layer of his base mix (with his canon kit and
-X.COPY), and Twelve's/Eleven's movement (incl. Twelve's dancing idle stance) is added ON TOP once converted 2D->3D.
-**Dural** (VF5): a chrome, faceless humanoid with
-inhuman movement, the closest match to Twelve in the teardown files (Muse lane survey: Alpha-152's moves were never
-extracted from DOA4, Charade is missing from SC2, the free T3 fighters are too human). Her model is on the VF5
-release (`dur.farc`). **Data note:** the VF5 extraction holds models; VF5 motion data has not been converted yet
-(see the Nightwolf note in game/js/fighter.js bankIdFor), so Dural's moves need VF5 motion extracted before they can
-drive Zen. Owned by the moveset/inputs lane.

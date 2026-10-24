@@ -1,6 +1,0 @@
-T1 boot->menu (blocking JS/CSS/HTML): 38 files, 1.78 MB, wall 725 ms | V8 parse 344 ms
-T1b boot async fetches (facing, tripo, title-bg; moves JSON now fight-time): 3 files, 0.05 MB, wall 29 ms
-T2 menu->select: select paints instantly; idle warm (3 base GLBs, non-blocking): 3 files, 24.07 MB, wall 489 ms
-T3 select->stage (stage thumbs): 41 files, 3.25 MB, wall 303 ms
-T4 highlight preview GLB (charger ~18MB tripo): 1 files, 17.17 MB, wall 529 ms
-T4b T3 anim bank (king): 34 files, 3.24 MB, wall 287 ms

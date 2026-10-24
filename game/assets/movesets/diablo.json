@@ -728,7 +728,7 @@
       "t3_source": "heihachi",
       "t3_row": 46,
       "t3_command": "LP",
-      "startup": 0.1667,
+      "startup": 0.117,
       "active": 0.017,
       "recovery": 0.467,
       "damage": 11,
@@ -741,18 +741,7 @@
       "input_slots": [
         "1"
       ],
-      "move_class": "strike",
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "+1",
-        "on_hit": "+8",
-        "on_ch": "+8",
-        "hit_level": "high",
-        "notation": "1",
-        "id": "heihachi_2",
-        "wired": true
-      }
+      "move_class": "strike"
     },
     "2": {
       "name": "DIABLO 2 (T3 heihachi r157)",
@@ -760,7 +749,7 @@
       "t3_source": "heihachi",
       "t3_row": 157,
       "t3_command": "RP",
-      "startup": 0.1667,
+      "startup": 0.2,
       "active": 0.017,
       "recovery": 0.483,
       "damage": 4,
@@ -773,18 +762,7 @@
       "input_slots": [
         "2"
       ],
-      "move_class": "strike",
-      "t7": {
-        "damage": 10,
-        "startup_frames": 10,
-        "on_block": "0",
-        "on_hit": "+9",
-        "on_ch": "+9",
-        "hit_level": "high",
-        "notation": "2",
-        "id": "heihachi_28",
-        "wired": true
-      }
+      "move_class": "strike"
     },
     "2,1": {
       "name": "DIABLO 2,1 (T3 heihachi r158)",
@@ -841,7 +819,7 @@
       "t3_source": "heihachi",
       "t3_row": 153,
       "t3_command": "LK",
-      "startup": 0.2333,
+      "startup": 0.317,
       "active": 0.083,
       "recovery": 0.633,
       "damage": 14,
@@ -854,18 +832,7 @@
       "input_slots": [
         "3"
       ],
-      "move_class": "strike",
-      "t7": {
-        "damage": 15,
-        "startup_frames": 14,
-        "on_block": "-10",
-        "on_hit": "+1",
-        "on_ch": "+1",
-        "hit_level": "high",
-        "notation": "3",
-        "id": "heihachi_34",
-        "wired": true
-      }
+      "move_class": "strike"
     },
     "4": {
       "name": "DIABLO 4 (T3 heihachi r74)",
@@ -946,7 +913,7 @@
       "t3_source": "heihachi",
       "t3_row": 179,
       "t3_command": "3+RP",
-      "startup": 0.25,
+      "startup": 0.183,
       "active": 0.033,
       "recovery": 0.633,
       "damage": 15,
@@ -959,18 +926,7 @@
       "input_slots": [
         "d/f+2"
       ],
-      "move_class": "strike",
-      "t7": {
-        "damage": 14,
-        "startup_frames": 15,
-        "on_block": "-7",
-        "on_hit": "+4",
-        "on_ch": "LAUNCH",
-        "hit_level": "mid",
-        "notation": "d/f+2",
-        "id": "heihachi_79",
-        "wired": true
-      }
+      "move_class": "strike"
     },
     "u/f+4": {
       "name": "DIABLO u/f+4 (T3 heihachi r86)",
@@ -991,19 +947,7 @@
       "input_slots": [
         "u/f+4"
       ],
-      "move_class": "strike",
-      "t7": {
-        "damage": 25,
-        "startup_frames": 24,
-        "on_block": "-5",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "crush": "low",
-        "notation": "u/f+4",
-        "id": "heihachi_41",
-        "wired": true
-      }
+      "move_class": "strike"
     },
     "d,d/b,d,d/b+1+2": {
       "name": "DIABLO d,d/b,d,d/b+1+2 throw (T3 heihachi r243)",
@@ -1150,7 +1094,7 @@
     "1+2": {
       "name": "Declaration of Conquest [WH SIGNATURE]",
       "input": "1+2",
-      "startup": 0.2,
+      "startup": 0.38,
       "active": 0.05,
       "recovery": 1.0,
       "damage": 21,
@@ -1165,18 +1109,7 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "He doesn't trash-talk; he makes declarations. Overhead boss smash announced before it lands.",
-      "input_remapped_from": "S",
-      "t7": {
-        "damage": 25,
-        "startup_frames": 12,
-        "on_block": "-12",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "notation": "1+2",
-        "id": "heihachi_38",
-        "wired": true
-      }
+      "input_remapped_from": "S"
     },
     "1+2__main": {
       "name": "DIABLO 1+2 (T3 heihachi r37)",
@@ -1184,7 +1117,7 @@
       "t3_source": "heihachi",
       "t3_row": 37,
       "t3_command": "LP+RP",
-      "startup": 0.2,
+      "startup": 0.3,
       "active": 0.017,
       "recovery": 0.567,
       "damage": 7,
@@ -1196,18 +1129,7 @@
       "input_slots": [
         "1+2"
       ],
-      "move_class": "strike",
-      "t7": {
-        "damage": 25,
-        "startup_frames": 12,
-        "on_block": "-12",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "notation": "1+2",
-        "id": "heihachi_38",
-        "wired": true
-      }
+      "move_class": "strike"
     },
     "qcf+1": {
       "name": "Membrane Tear [WH SIGNATURE]",
@@ -1287,7 +1209,7 @@
       "t3_source": "heihachi",
       "t3_row": 207,
       "t3_command": "4+RP",
-      "startup": 0.3667,
+      "startup": 0.367,
       "active": 0.017,
       "recovery": 0.717,
       "damage": 12,
@@ -1300,19 +1222,7 @@
       "input_slots": [
         "b+2"
       ],
-      "move_class": "strike",
-      "t7": {
-        "damage": 20,
-        "startup_frames": 22,
-        "on_block": "-2",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "crush": "high",
-        "notation": "b+2",
-        "id": "heihachi_97",
-        "wired": true
-      }
+      "move_class": "strike"
     },
     "b+2__main": {
       "name": "Rashomon",
@@ -1320,7 +1230,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-b+2",
       "t8_damage": "20",
-      "startup": 0.3667,
+      "startup": 0.367,
       "active": 0.033,
       "recovery": 0.567,
       "damage": 20,
@@ -1333,19 +1243,7 @@
         "b+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +2",
-      "t7": {
-        "damage": 20,
-        "startup_frames": 22,
-        "on_block": "-2",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "crush": "high",
-        "notation": "b+2",
-        "id": "heihachi_97",
-        "wired": true
-      }
+      "note": "Mid; on block +2"
     },
     "d+1": {
       "name": "DIABLO d+1 (T3 heihachi r123)",
@@ -1353,7 +1251,7 @@
       "t3_source": "heihachi",
       "t3_row": 123,
       "t3_command": "2+LP",
-      "startup": 0.2833,
+      "startup": 0.233,
       "active": 0.05,
       "recovery": 0.6,
       "damage": 9,
@@ -1366,18 +1264,7 @@
       "input_slots": [
         "d+1"
       ],
-      "move_class": "strike",
-      "t7": {
-        "damage": 16,
-        "startup_frames": 17,
-        "on_block": "-9",
-        "on_hit": "+2",
-        "on_ch": "+2",
-        "hit_level": "mid",
-        "notation": "d+1",
-        "id": "heihachi_82",
-        "wired": true
-      }
+      "move_class": "strike"
     },
     "d+1__main": {
       "name": "Hammer Punch",
@@ -1385,7 +1272,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-d+1",
       "t8_damage": "12",
-      "startup": 0.2833,
+      "startup": 0.267,
       "active": 0.033,
       "recovery": 0.467,
       "damage": 12,
@@ -1398,18 +1285,7 @@
         "d+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9",
-      "t7": {
-        "damage": 16,
-        "startup_frames": 17,
-        "on_block": "-9",
-        "on_hit": "+2",
-        "on_ch": "+2",
-        "hit_level": "mid",
-        "notation": "d+1",
-        "id": "heihachi_82",
-        "wired": true
-      }
+      "note": "Mid; on block -9"
     },
     "f+1": {
       "name": "DIABLO f+1 (T3 heihachi r133)",
@@ -1438,7 +1314,7 @@
       "t3_source": "heihachi",
       "t3_row": 178,
       "t3_command": "6+RP",
-      "startup": 0.25,
+      "startup": 0.217,
       "active": 0.033,
       "recovery": 0.767,
       "damage": 18,
@@ -1451,18 +1327,7 @@
       "input_slots": [
         "f+2"
       ],
-      "move_class": "strike",
-      "t7": {
-        "damage": 13,
-        "startup_frames": 15,
-        "on_block": "-9",
-        "on_hit": "+2",
-        "on_ch": "+2",
-        "hit_level": "high",
-        "notation": "f+2",
-        "id": "heihachi_42",
-        "wired": true
-      }
+      "move_class": "strike"
     },
     "f+2__main": {
       "name": "DIABLO f+2 (T3 heihachi r178)",
@@ -1470,7 +1335,7 @@
       "t3_source": "heihachi",
       "t3_row": 178,
       "t3_command": "6+RP",
-      "startup": 0.25,
+      "startup": 0.217,
       "active": 0.033,
       "recovery": 0.767,
       "damage": 18,
@@ -1482,18 +1347,7 @@
       "input_slots": [
         "f+2"
       ],
-      "move_class": "strike",
-      "t7": {
-        "damage": 13,
-        "startup_frames": 15,
-        "on_block": "-9",
-        "on_hit": "+2",
-        "on_ch": "+2",
-        "hit_level": "high",
-        "notation": "f+2",
-        "id": "heihachi_42",
-        "wired": true
-      }
+      "move_class": "strike"
     },
     "f+3": {
       "name": "DIABLO f+3 (T3 heihachi r135)",
@@ -1501,7 +1355,7 @@
       "t3_source": "heihachi",
       "t3_row": 135,
       "t3_command": "4/6+LK",
-      "startup": 0.3,
+      "startup": 0.267,
       "active": 0.017,
       "recovery": 0.733,
       "damage": 16,
@@ -1514,18 +1368,7 @@
       "input_slots": [
         "f+3"
       ],
-      "move_class": "strike",
-      "t7": {
-        "damage": 20,
-        "startup_frames": 18,
-        "on_block": "-3",
-        "on_hit": "KND",
-        "on_ch": "STUN",
-        "hit_level": "mid",
-        "notation": "f+3",
-        "id": "heihachi_47",
-        "wired": true
-      }
+      "move_class": "strike"
     },
     "f+3__main": {
       "name": "Lightning Crush",
@@ -1546,18 +1389,7 @@
         "f+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -5",
-      "t7": {
-        "damage": 20,
-        "startup_frames": 18,
-        "on_block": "-3",
-        "on_hit": "KND",
-        "on_ch": "STUN",
-        "hit_level": "mid",
-        "notation": "f+3",
-        "id": "heihachi_47",
-        "wired": true
-      }
+      "note": "Mid; on block -5"
     },
     "f+4": {
       "name": "DIABLO f+4 (T3 heihachi r156)",
@@ -1565,7 +1397,7 @@
       "t3_source": "heihachi",
       "t3_row": 156,
       "t3_command": "6+RK",
-      "startup": 0.3167,
+      "startup": 0.317,
       "active": 0.033,
       "recovery": 0.617,
       "damage": 16,
@@ -1578,18 +1410,7 @@
       "input_slots": [
         "f+4"
       ],
-      "move_class": "strike",
-      "t7": {
-        "damage": 20,
-        "startup_frames": 19,
-        "on_block": "+4 (OC)",
-        "on_hit": "+7 (OC)",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "notation": "f+4",
-        "id": "heihachi_48",
-        "wired": true
-      }
+      "move_class": "strike"
     },
     "f+4__main": {
       "name": "DIABLO f+4 (T3 heihachi r156)",
@@ -1597,7 +1418,7 @@
       "t3_source": "heihachi",
       "t3_row": 156,
       "t3_command": "6+RK",
-      "startup": 0.3167,
+      "startup": 0.317,
       "active": 0.033,
       "recovery": 0.617,
       "damage": 16,
@@ -1609,18 +1430,7 @@
       "input_slots": [
         "f+4"
       ],
-      "move_class": "strike",
-      "t7": {
-        "damage": 20,
-        "startup_frames": 19,
-        "on_block": "+4 (OC)",
-        "on_hit": "+7 (OC)",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "notation": "f+4",
-        "id": "heihachi_48",
-        "wired": true
-      }
+      "move_class": "strike"
     },
     "b+1+2": {
       "name": "DIABLO b+1+2 (T3 heihachi r98)",
@@ -1628,7 +1438,7 @@
       "t3_source": "heihachi",
       "t3_row": 98,
       "t3_command": "4+LP+RP",
-      "startup": 0.2833,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.483,
       "damage": 3,
@@ -1641,18 +1451,7 @@
       "input_slots": [
         "b+1+2"
       ],
-      "move_class": "strike",
-      "t7": {
-        "damage": 18,
-        "startup_frames": 17,
-        "on_block": "-9",
-        "on_hit": "+2",
-        "on_ch": "+2",
-        "hit_level": "mid",
-        "notation": "b+1+2",
-        "id": "heihachi_102",
-        "wired": true
-      }
+      "move_class": "strike"
     },
     "b+1+2__main": {
       "name": "Heaven's Merciless Wrath",
@@ -1660,7 +1459,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-b+1+2",
       "t8_damage": "20",
-      "startup": 0.2833,
+      "startup": 0.7,
       "active": 0.033,
       "recovery": 0.55,
       "damage": 20,
@@ -1673,18 +1472,7 @@
         "b+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -11; knockdown on hit",
-      "t7": {
-        "damage": 18,
-        "startup_frames": 17,
-        "on_block": "-9",
-        "on_hit": "+2",
-        "on_ch": "+2",
-        "hit_level": "mid",
-        "notation": "b+1+2",
-        "id": "heihachi_102",
-        "wired": true
-      }
+      "note": "Mid; on block -11; knockdown on hit"
     },
     "d+1+4": {
       "name": "DIABLO d+1+4 (T3 heihachi r198)",
@@ -1705,14 +1493,7 @@
       "input_slots": [
         "d+1+4"
       ],
-      "move_class": "strike",
-      "t7": {
-        "damage": 50,
-        "hit_level": "mid",
-        "notation": "d+1+4",
-        "id": "heihachi_163",
-        "wired": true
-      }
+      "move_class": "strike"
     },
     "d+1+4__main": {
       "name": "Lightning Hammer",
@@ -1733,14 +1514,7 @@
         "d+1+4"
       ],
       "move_class": "strike",
-      "note": "m!; knockdown on hit",
-      "t7": {
-        "damage": 50,
-        "hit_level": "mid",
-        "notation": "d+1+4",
-        "id": "heihachi_163",
-        "wired": true
-      }
+      "note": "m!; knockdown on hit"
     },
     "d/f+1": {
       "name": "DIABLO d/f+1 (T3 heihachi r173)",
@@ -1748,7 +1522,7 @@
       "t3_source": "heihachi",
       "t3_row": 173,
       "t3_command": "3+LP",
-      "startup": 0.2167,
+      "startup": 0.317,
       "active": 0.117,
       "recovery": 0.7,
       "damage": 21,
@@ -1761,18 +1535,7 @@
       "input_slots": [
         "d/f+1"
       ],
-      "move_class": "strike",
-      "t7": {
-        "damage": 10,
-        "startup_frames": 13,
-        "on_block": "-1",
-        "on_hit": "+9",
-        "on_ch": "+9",
-        "hit_level": "mid",
-        "notation": "d/f+1",
-        "id": "heihachi_74",
-        "wired": true
-      }
+      "move_class": "strike"
     },
     "d/f+3": {
       "name": "DIABLO d/f+3 (T3 heihachi r181)",
@@ -1780,7 +1543,7 @@
       "t3_source": "heihachi",
       "t3_row": 181,
       "t3_command": "3+LK",
-      "startup": 0.2833,
+      "startup": 0.55,
       "active": 0.017,
       "recovery": 0.817,
       "damage": 12,
@@ -1793,18 +1556,7 @@
       "input_slots": [
         "d/f+3"
       ],
-      "move_class": "strike",
-      "t7": {
-        "damage": 17,
-        "startup_frames": 17,
-        "on_block": "-7",
-        "on_hit": "+4",
-        "on_ch": "+4",
-        "hit_level": "mid",
-        "notation": "d/f+3",
-        "id": "heihachi_80",
-        "wired": true
-      }
+      "move_class": "strike"
     },
     "d/f+4": {
       "name": "DIABLO d/f+4 (T3 heihachi r183)",
@@ -1812,7 +1564,7 @@
       "t3_source": "heihachi",
       "t3_row": 183,
       "t3_command": "2/3+RK",
-      "startup": 0.2,
+      "startup": 0.267,
       "active": 0.017,
       "recovery": 0.767,
       "damage": 10,
@@ -1825,18 +1577,7 @@
       "input_slots": [
         "d/f+4"
       ],
-      "move_class": "strike",
-      "t7": {
-        "damage": 15,
-        "startup_frames": 12,
-        "on_block": "-6",
-        "on_hit": "+5",
-        "on_ch": "+5",
-        "hit_level": "mid",
-        "notation": "d/f+4",
-        "id": "heihachi_81",
-        "wired": true
-      }
+      "move_class": "strike"
     },
     "f+1+2": {
       "name": "DIABLO f+1+2 (T3 heihachi r223)",
@@ -1857,18 +1598,7 @@
       "input_slots": [
         "f+1+2"
       ],
-      "move_class": "strike",
-      "t7": {
-        "damage": 15,
-        "startup_frames": 12,
-        "on_block": "-14",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "high",
-        "notation": "f+1+2",
-        "id": "heihachi_49",
-        "wired": true
-      }
+      "move_class": "strike"
     },
     "f+1+2__main": {
       "name": "Chrome Dome",
@@ -1889,18 +1619,7 @@
         "f+1+2"
       ],
       "move_class": "strike",
-      "note": "High; on block -14; knockdown on hit",
-      "t7": {
-        "damage": 15,
-        "startup_frames": 12,
-        "on_block": "-14",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "high",
-        "notation": "f+1+2",
-        "id": "heihachi_49",
-        "wired": true
-      }
+      "note": "High; on block -14; knockdown on hit"
     },
     "u/b+1": {
       "name": "DIABLO u/b+1 (T3 heihachi r39)",
@@ -1992,7 +1711,7 @@
       "t3_source": "heihachi",
       "t3_row": 60,
       "t3_command": "6/9+LK",
-      "startup": 0.4667,
+      "startup": 0.15,
       "active": 0.017,
       "recovery": 0.717,
       "damage": 15,
@@ -2005,19 +1724,7 @@
       "input_slots": [
         "u/f+3"
       ],
-      "move_class": "strike",
-      "t7": {
-        "damage": 17,
-        "startup_frames": 28,
-        "on_block": "-10",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "crush": "low",
-        "notation": "u/f+3",
-        "id": "heihachi_39",
-        "wired": true
-      }
+      "move_class": "strike"
     },
     "d/f+1+2": {
       "name": "DIABLO d/f+1+2 (T3 heihachi r110)",
@@ -2025,7 +1732,7 @@
       "t3_source": "heihachi",
       "t3_row": 110,
       "t3_command": "3+LP+RP",
-      "startup": 0.4,
+      "startup": 0.133,
       "active": 0.017,
       "recovery": 0.483,
       "damage": 2,
@@ -2038,18 +1745,7 @@
       "input_slots": [
         "d/f+1+2"
       ],
-      "move_class": "strike",
-      "t7": {
-        "damage": 25,
-        "startup_frames": 24,
-        "on_block": "-14",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "notation": "d/f+1+2",
-        "id": "heihachi_156",
-        "wired": true
-      }
+      "move_class": "strike"
     },
     "u/b+3+4": {
       "name": "DIABLO u/b+3+4 (T3 heihachi r58)",
@@ -2247,7 +1943,7 @@
       "t3_source": "heihachi",
       "t3_row": 240,
       "t3_command": "RP",
-      "startup": 0.2833,
+      "startup": 0.483,
       "active": 0.017,
       "recovery": 0.783,
       "damage": 15,
@@ -2263,17 +1959,7 @@
         "2"
       ],
       "move_class": "string",
-      "string_hit": "d+1",
-      "t7": {
-        "damage": 16,
-        "startup_frames": 17,
-        "on_block": "-9",
-        "on_hit": "+6",
-        "hit_level": "mid, mid",
-        "notation": "d+1, 2",
-        "id": "heihachi_84",
-        "wired": true
-      }
+      "string_hit": "d+1"
     },
     "d+1,2__main": {
       "name": "Hammer Beating",
@@ -2281,7 +1967,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-d+1,2",
       "t8_damage": ",14",
-      "startup": 0.2833,
+      "startup": 0.167,
       "active": 0.033,
       "recovery": 0.467,
       "damage": 26,
@@ -2302,17 +1988,7 @@
         ],
         "total": 26
       },
-      "note": "Mid; on block -9",
-      "t7": {
-        "damage": 16,
-        "startup_frames": 17,
-        "on_block": "-9",
-        "on_hit": "+6",
-        "hit_level": "mid, mid",
-        "notation": "d+1, 2",
-        "id": "heihachi_84",
-        "wired": true
-      }
+      "note": "Mid; on block -9"
     },
     "b+1+2,1": {
       "name": "DIABLO b+1+2,1 (T3 heihachi r145)",
@@ -4425,7 +4101,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-1,1",
       "t8_damage": ",6",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.033,
       "recovery": 0.4,
       "damage": 11,
@@ -4446,17 +4122,7 @@
         ],
         "total": 11
       },
-      "note": "High; on block -5",
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-1",
-        "on_hit": "+8",
-        "hit_level": "high, high",
-        "notation": "1, 1",
-        "id": "heihachi_3",
-        "wired": true
-      }
+      "note": "High; on block -5"
     },
     "1,1,2": {
       "name": "Flash Punch Combo",
@@ -4464,7 +4130,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-1,1,2",
       "t8_damage": ",16",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.033,
       "recovery": 0.617,
       "damage": 27,
@@ -4487,17 +4153,7 @@
         ],
         "total": 27
       },
-      "note": "Mid; on block -17; knockdown on hit",
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-17",
-        "on_hit": "KND",
-        "hit_level": "high, high, mid",
-        "notation": "1, 1, 2",
-        "id": "heihachi_5",
-        "wired": true
-      }
+      "note": "Mid; on block -17; knockdown on hit"
     },
     "1,1,WAR.2": {
       "name": "Ultimate Flash Punch Combo",
@@ -4550,18 +4206,7 @@
       ],
       "move_class": "strike",
       "note": "Mid; on block -10; knockdown on hit",
-      "t8_input": "1+2",
-      "t7": {
-        "damage": 25,
-        "startup_frames": 12,
-        "on_block": "-12",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "notation": "1+2",
-        "id": "heihachi_38",
-        "wired": true
-      }
+      "t8_input": "1+2"
     },
     "1,2": {
       "name": "One Two Strike",
@@ -4569,7 +4214,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-1,2",
       "t8_damage": ",8",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.033,
       "recovery": 0.367,
       "damage": 13,
@@ -4590,17 +4235,7 @@
         ],
         "total": 13
       },
-      "note": "High; on block -3",
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-1",
-        "on_hit": "+7",
-        "hit_level": "high, high",
-        "notation": "1, 2",
-        "id": "heihachi_8",
-        "wired": true
-      }
+      "note": "High; on block -3"
     },
     "1,2,2": {
       "name": "Back Fist Combo",
@@ -4608,7 +4243,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-1,2,2",
       "t8_damage": ",12",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.033,
       "recovery": 0.55,
       "damage": 25,
@@ -4631,17 +4266,7 @@
         ],
         "total": 25
       },
-      "note": "High; on block -12",
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-12",
-        "on_hit": "+4",
-        "hit_level": "high, high, high",
-        "notation": "1, 2, 2",
-        "id": "heihachi_10",
-        "wired": true
-      }
+      "note": "High; on block -12"
     },
     "1,2,2~1": {
       "name": "One Two Strike (2~1)",
@@ -4733,7 +4358,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-1,2,4",
       "t8_damage": ",21",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.033,
       "recovery": 0.55,
       "damage": 34,
@@ -4756,17 +4381,7 @@
         ],
         "total": 34
       },
-      "note": "High; on block -9",
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-9",
-        "on_hit": "KND",
-        "hit_level": "high, high, high",
-        "notation": "1, 2, 4",
-        "id": "heihachi_17",
-        "wired": true
-      }
+      "note": "High; on block -9"
     },
     "1,2,4*": {
       "name": "Wailing Demon Otoko Geri (charged)",
@@ -4805,7 +4420,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-1,b+2",
       "t8_damage": ",17",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.033,
       "recovery": 0.5,
       "damage": 22,
@@ -4826,17 +4441,7 @@
         ],
         "total": 22
       },
-      "note": "Mid; on block -2",
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-2",
-        "on_hit": "+8",
-        "hit_level": "high, mid",
-        "notation": "1, b+2",
-        "id": "heihachi_20",
-        "wired": true
-      }
+      "note": "Mid; on block -2"
     },
     "1,b+2,1": {
       "name": "Demon Massacre",
@@ -4844,7 +4449,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-1,b+2,1",
       "t8_damage": ",20",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.033,
       "recovery": 0.5,
       "damage": 42,
@@ -4867,17 +4472,7 @@
         ],
         "total": 42
       },
-      "note": "Mid; on block -15; knockdown on hit",
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-15",
-        "on_hit": "KND",
-        "hit_level": "high, mid, mid",
-        "notation": "1, b+2, 1",
-        "id": "heihachi_22",
-        "wired": true
-      }
+      "note": "Mid; on block -15; knockdown on hit"
     },
     "1,b+2,2": {
       "name": "Demon Basara",
@@ -4916,7 +4511,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-1,b+2,4",
       "t8_damage": ",30",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.033,
       "recovery": 0.683,
       "damage": 52,
@@ -4939,17 +4534,7 @@
         ],
         "total": 52
       },
-      "note": "Mid; on block +5; knockdown on hit",
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "+5",
-        "on_hit": "KND",
-        "hit_level": "high, mid, mid",
-        "notation": "1, b+2, 4",
-        "id": "heihachi_25",
-        "wired": true
-      }
+      "note": "Mid; on block +5; knockdown on hit"
     },
     "1,b+2,WAR.2": {
       "name": "Ultimate Demon Basara",
@@ -4988,7 +4573,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-2,2",
       "t8_damage": ",13",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.033,
       "recovery": 0.55,
       "damage": 23,
@@ -5009,17 +4594,7 @@
         ],
         "total": 23
       },
-      "note": "Mid; on block -8",
-      "t7": {
-        "damage": 10,
-        "startup_frames": 10,
-        "on_block": "-13",
-        "on_hit": "-2",
-        "hit_level": "high, high",
-        "notation": "2, 2",
-        "id": "heihachi_29",
-        "wired": true
-      }
+      "note": "Mid; on block -8"
     },
     "2+3": {
       "name": "Heat Burst",
@@ -5067,12 +4642,7 @@
       "input_slots": [
         "2+3+4"
       ],
-      "move_class": "special",
-      "t7": {
-        "notation": "2+3+4",
-        "id": "heihachi_182",
-        "wired": true
-      }
+      "move_class": "special"
     },
     "3,2": {
       "name": "Byakko Gekishin",
@@ -5151,7 +4721,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-b+1",
       "t8_damage": "12",
-      "startup": 0.25,
+      "startup": 0.233,
       "active": 0.033,
       "recovery": 0.5,
       "damage": 12,
@@ -5164,18 +4734,7 @@
         "b+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9",
-      "t7": {
-        "damage": 14,
-        "startup_frames": 15,
-        "on_block": "-11",
-        "on_hit": "-5",
-        "on_ch": "-5",
-        "hit_level": "high",
-        "notation": "b+1",
-        "id": "heihachi_91",
-        "wired": true
-      }
+      "note": "Mid; on block -9"
     },
     "b+1,4": {
       "name": "Oni Yarai",
@@ -5254,7 +4813,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-b+3",
       "t8_damage": "14",
-      "startup": 0.2333,
+      "startup": 0.233,
       "active": 0.033,
       "recovery": 0.45,
       "damage": 14,
@@ -5267,18 +4826,7 @@
         "b+3"
       ],
       "move_class": "strike",
-      "note": "High; on block -9",
-      "t7": {
-        "damage": 14,
-        "startup_frames": 14,
-        "on_block": "-4",
-        "on_hit": "+7",
-        "on_ch": "+7",
-        "hit_level": "high",
-        "notation": "b+3",
-        "id": "heihachi_98",
-        "wired": true
-      }
+      "note": "High; on block -9"
     },
     "b+3,2": {
       "name": "Hooking Crescent Thrust",
@@ -5315,7 +4863,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-b+3,3",
       "t8_damage": ",25",
-      "startup": 0.2333,
+      "startup": 0.167,
       "active": 0.033,
       "recovery": 0.55,
       "damage": 39,
@@ -5336,17 +4884,7 @@
         ],
         "total": 39
       },
-      "note": "Mid; on block -12c; knockdown on hit",
-      "t7": {
-        "damage": 14,
-        "startup_frames": 14,
-        "on_block": "-12",
-        "on_hit": "KND",
-        "hit_level": "high, mid",
-        "notation": "b+3, 3",
-        "id": "heihachi_99",
-        "wired": true
-      }
+      "note": "Mid; on block -12c; knockdown on hit"
     },
     "b+3,3,H.2": {
       "name": "Hooking Battering Ram",
@@ -5398,18 +4936,7 @@
         "b+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -8; knockdown on hit",
-      "t7": {
-        "damage": 20,
-        "startup_frames": 18,
-        "on_block": "-9",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "notation": "b+4",
-        "id": "heihachi_101",
-        "wired": true
-      }
+      "note": "Mid; on block -8; knockdown on hit"
     },
     "Back throw": {
       "name": "Atomic Drop",
@@ -5920,18 +5447,7 @@
       ],
       "move_class": "strike",
       "note": "High; on block -9",
-      "t8_input": "f+2",
-      "t7": {
-        "damage": 13,
-        "startup_frames": 15,
-        "on_block": "-9",
-        "on_hit": "+2",
-        "on_ch": "+2",
-        "hit_level": "high",
-        "notation": "f+2",
-        "id": "heihachi_42",
-        "wired": true
-      }
+      "t8_input": "f+2"
     },
     "f+2~1": {
       "name": "Move f+2~1 (f+2~1)",
@@ -6030,12 +5546,7 @@
       "input_slots": [
         "f+3+4"
       ],
-      "move_class": "special",
-      "t7": {
-        "notation": "f+3+4",
-        "id": "heihachi_150",
-        "wired": true
-      }
+      "move_class": "special"
     },
     "f+4_t8": {
       "name": "Right Splits Kick",
@@ -6043,7 +5554,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-f+4",
       "t8_damage": "20",
-      "startup": 0.3167,
+      "startup": 0.317,
       "active": 0.033,
       "recovery": 0.45,
       "damage": 20,
@@ -6057,18 +5568,7 @@
       ],
       "move_class": "strike",
       "note": "Mid; on block +4",
-      "t8_input": "f+4",
-      "t7": {
-        "damage": 20,
-        "startup_frames": 19,
-        "on_block": "+4 (OC)",
-        "on_hit": "+7 (OC)",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "notation": "f+4",
-        "id": "heihachi_48",
-        "wired": true
-      }
+      "t8_input": "f+4"
     },
     "FC.df+2": {
       "name": "Ascension Upper",
@@ -6139,7 +5639,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-f,F+2",
       "t8_damage": "22",
-      "startup": 0.3167,
+      "startup": 0.317,
       "active": 0.033,
       "recovery": 0.55,
       "damage": 22,
@@ -6152,19 +5652,7 @@
         "f,F+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -16; knockdown on hit",
-      "t7": {
-        "damage": 22,
-        "startup_frames": 19,
-        "on_block": "-16",
-        "on_hit": "LAUNCH",
-        "on_ch": "LAUNCH",
-        "hit_level": "mid",
-        "crush": "high",
-        "notation": "f, F+2",
-        "id": "heihachi_50",
-        "wired": true
-      }
+      "note": "Mid; on block -16; knockdown on hit"
     },
     "f,F+3": {
       "name": "Left Splits Kick",
@@ -6172,7 +5660,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-f,F+3",
       "t8_damage": "21",
-      "startup": 0.3333,
+      "startup": 0.333,
       "active": 0.033,
       "recovery": 0.467,
       "damage": 21,
@@ -6185,18 +5673,7 @@
         "f,F+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -3c; knockdown on hit",
-      "t7": {
-        "damage": 25,
-        "startup_frames": 20,
-        "on_block": "-3",
-        "on_hit": "STUN",
-        "on_ch": "STUN",
-        "hit_level": "mid",
-        "notation": "f, F+3",
-        "id": "heihachi_51",
-        "wired": true
-      }
+      "note": "Mid; on block -3c; knockdown on hit"
     },
     "f,f,F+1+2": {
       "name": "Roaring Stonehead",
@@ -7043,7 +6520,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-qcf+2",
       "t8_damage": "30",
-      "startup": 0.25,
+      "startup": 0.233,
       "active": 0.033,
       "recovery": 0.6,
       "damage": 30,
@@ -7056,18 +6533,7 @@
         "qcf+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -17; knockdown on hit",
-      "t7": {
-        "damage": 30,
-        "startup_frames": 15,
-        "on_block": "-17",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "notation": "qcf+2",
-        "id": "heihachi_114",
-        "wired": true
-      }
+      "note": "Mid; on block -17; knockdown on hit"
     },
     "RAI.1": {
       "name": "Hidden Thunder God Fist",
@@ -7682,7 +7148,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-ws1",
       "t8_damage": "17",
-      "startup": 0.2333,
+      "startup": 0.217,
       "active": 0.033,
       "recovery": 0.483,
       "damage": 17,
@@ -7695,18 +7161,7 @@
         "ws1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -14; knockdown on hit",
-      "t7": {
-        "damage": 20,
-        "startup_frames": 14,
-        "on_block": "-14",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "notation": "WS 1",
-        "id": "heihachi_129",
-        "wired": true
-      }
+      "note": "Mid; on block -14; knockdown on hit"
     },
     "ws2": {
       "name": "Dark Thrust",
@@ -7727,18 +7182,7 @@
         "ws2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -8",
-      "t7": {
-        "damage": 20,
-        "startup_frames": 18,
-        "on_block": "-6",
-        "on_hit": "+11",
-        "on_ch": "STUN",
-        "hit_level": "mid",
-        "notation": "WS 2",
-        "id": "heihachi_130",
-        "wired": true
-      }
+      "note": "Mid; on block -8"
     },
     "ws3": {
       "name": "Move ws3 (ws3)",
@@ -7759,18 +7203,7 @@
         "ws3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -11",
-      "t7": {
-        "damage": 10,
-        "startup_frames": 18,
-        "on_block": "-11",
-        "on_hit": "0",
-        "on_ch": "0",
-        "hit_level": "mid",
-        "notation": "WS 3",
-        "id": "heihachi_131",
-        "wired": true
-      }
+      "note": "Mid; on block -11"
     },
     "ws3,1+2": {
       "name": "Holy Demon Cross",
@@ -7778,7 +7211,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-ws3,1+2",
       "t8_damage": ",20",
-      "startup": 0.3,
+      "startup": 0.167,
       "active": 0.033,
       "recovery": 0.533,
       "damage": 30,
@@ -7799,18 +7232,7 @@
         ],
         "total": 30
       },
-      "note": "Mid; on block -9; knockdown on hit",
-      "t7": {
-        "damage": 10,
-        "startup_frames": 18,
-        "on_block": "-14",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid, mid",
-        "notation": "WS 3, 1+2",
-        "id": "heihachi_132",
-        "wired": true
-      }
+      "note": "Mid; on block -9; knockdown on hit"
     },
     "ws4": {
       "name": "Move ws4 (ws4)",
@@ -7818,7 +7240,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-ws4",
       "t8_damage": "13",
-      "startup": 0.1833,
+      "startup": 0.183,
       "active": 0.033,
       "recovery": 0.35,
       "damage": 13,
@@ -7831,18 +7253,7 @@
         "ws4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -3",
-      "t7": {
-        "damage": 13,
-        "startup_frames": 11,
-        "on_block": "-3",
-        "on_hit": "+8",
-        "on_ch": "+8",
-        "hit_level": "mid",
-        "notation": "WS 4",
-        "id": "heihachi_134",
-        "wired": true
-      }
+      "note": "Mid; on block -3"
     },
     "ws4,4": {
       "name": "Tsunami Kick",
@@ -7850,7 +7261,7 @@
       "t8_source": "heihachi",
       "t8_id": "Heihachi-ws4,4",
       "t8_damage": ",16",
-      "startup": 0.1833,
+      "startup": 0.167,
       "active": 0.033,
       "recovery": 0.617,
       "damage": 29,
@@ -7871,22 +7282,12 @@
         ],
         "total": 29
       },
-      "note": "Mid; on block -15",
-      "t7": {
-        "damage": 13,
-        "startup_frames": 11,
-        "on_block": "-15",
-        "on_hit": "0 (OC)",
-        "hit_level": "mid, mid",
-        "notation": "WS 4, 4",
-        "id": "heihachi_135",
-        "wired": true
-      }
+      "note": "Mid; on block -15"
     },
     "1~t8.heihachi": {
       "name": "Jab",
       "input": "1",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.317,
       "damage": 3,
@@ -7915,17 +7316,6 @@
         "bank": "heihachi",
         "row": 209,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "+1",
-        "on_hit": "+8",
-        "on_ch": "+8",
-        "hit_level": "high",
-        "notation": "1",
-        "id": "heihachi_2",
-        "wired": true
       }
     },
     "1+3~t8.heihachi": {
@@ -7968,7 +7358,7 @@
     "2~t8.heihachi": {
       "name": "DIABLO 2",
       "input": "2",
-      "startup": 0.1667,
+      "startup": 0.183,
       "active": 0.017,
       "recovery": 0.317,
       "damage": 6,
@@ -7997,17 +7387,6 @@
         "bank": "heihachi",
         "row": 157,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 10,
-        "startup_frames": 10,
-        "on_block": "0",
-        "on_hit": "+9",
-        "on_ch": "+9",
-        "hit_level": "high",
-        "notation": "2",
-        "id": "heihachi_28",
-        "wired": true
       }
     },
     "2+4~t8.heihachi": {
@@ -8050,7 +7429,7 @@
     "3~t8.heihachi": {
       "name": "DIABLO 3",
       "input": "3",
-      "startup": 0.2333,
+      "startup": 0.25,
       "active": 0.017,
       "recovery": 0.483,
       "damage": 6,
@@ -8079,17 +7458,6 @@
         "bank": "heihachi",
         "row": 153,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 15,
-        "startup_frames": 14,
-        "on_block": "-10",
-        "on_hit": "+1",
-        "on_ch": "+1",
-        "hit_level": "high",
-        "notation": "3",
-        "id": "heihachi_34",
-        "wired": true
       }
     },
     "4~t8.heihachi": {
@@ -8130,7 +7498,7 @@
     "f,n,d,D/F+3": {
       "name": "Earth Scraper Kick",
       "input": "f,n,d,D/F+3",
-      "startup": 0.45,
+      "startup": 0.55,
       "active": 0.033,
       "recovery": 0.683,
       "damage": 13,
@@ -8160,18 +7528,6 @@
         "bank": "heihachi",
         "row": 237,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 30,
-        "startup_frames": 27,
-        "on_block": "+7",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "crush": "low",
-        "notation": "f, n, d, d/f+3",
-        "id": "heihachi_57",
-        "wired": true
       }
     },
     "WALL.b,b,u/b": {
@@ -8196,7 +7552,7 @@
         "WALL.b,b,u/b"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_1",
       "t7_command": "Back towards wall... b, b, u/b",
       "t7_hit_level": "mid",
@@ -8218,7 +7574,7 @@
     "1~t7.heihachi": {
       "name": "DIABLO 1",
       "input": "1",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.317,
       "damage": 4,
@@ -8237,7 +7593,7 @@
         "1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_2",
       "t7_command": "1",
       "t7_hit_level": "high",
@@ -8252,23 +7608,12 @@
         "bank": "heihachi",
         "row": 209,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "+1",
-        "on_hit": "+8",
-        "on_ch": "+8",
-        "hit_level": "high",
-        "notation": "1",
-        "id": "heihachi_2",
-        "wired": true
       }
     },
     "1,1~t7.heihachi": {
       "name": "DIABLO 1,1",
       "input": "1,1",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.4,
       "damage": 8,
@@ -8287,7 +7632,7 @@
         "1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_3",
       "t7_command": "1, 1",
       "t7_hit_level": "high, high",
@@ -8309,22 +7654,12 @@
         "bank": "heihachi",
         "row": 219,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-1",
-        "on_hit": "+8",
-        "hit_level": "high, high",
-        "notation": "1, 1",
-        "id": "heihachi_3",
-        "wired": true
       }
     },
     "1,1~t7.heihachi.2": {
       "name": "DIABLO 1,1",
       "input": "1,1",
-      "startup": 0.1667,
+      "startup": 0.25,
       "active": 0.017,
       "recovery": 0.4,
       "damage": 4,
@@ -8343,7 +7678,7 @@
         "1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_4",
       "t7_command": "(1), 1",
       "t7_hit_level": "high",
@@ -8358,22 +7693,12 @@
         "bank": "heihachi",
         "row": 219,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-1",
-        "on_hit": "+8",
-        "hit_level": "high, high",
-        "notation": "1, 1",
-        "id": "heihachi_3",
-        "wired": true
       }
     },
     "1,1,2~t7.heihachi": {
       "name": "Flash Punch Combo",
       "input": "1,1,2",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.617,
       "damage": 16,
@@ -8392,7 +7717,7 @@
         "1,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_5",
       "t7_command": "1, 1, 2",
       "t7_hit_level": "high, high, mid",
@@ -8416,22 +7741,12 @@
         "bank": "heihachi",
         "row": 100,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-17",
-        "on_hit": "KND",
-        "hit_level": "high, high, mid",
-        "notation": "1, 1, 2",
-        "id": "heihachi_5",
-        "wired": true
       }
     },
     "1,1,2~t7.heihachi.2": {
       "name": "DIABLO 1,1,2",
       "input": "1,1,2",
-      "startup": 0.1667,
+      "startup": 0.25,
       "active": 0.017,
       "recovery": 0.617,
       "damage": 12,
@@ -8450,7 +7765,7 @@
         "1,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_6",
       "t7_command": "(1), 1, 2",
       "t7_hit_level": "high, mid",
@@ -8473,22 +7788,12 @@
         "bank": "heihachi",
         "row": 129,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-17",
-        "on_hit": "KND",
-        "hit_level": "high, high, mid",
-        "notation": "1, 1, 2",
-        "id": "heihachi_5",
-        "wired": true
       }
     },
     "1,1,2~t7.heihachi.3": {
       "name": "DIABLO 1,1,2",
       "input": "1,1,2",
-      "startup": 0.1667,
+      "startup": 0.217,
       "active": 0.017,
       "recovery": 0.617,
       "damage": 7,
@@ -8507,7 +7812,7 @@
         "1,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_7",
       "t7_command": "(1), (1), 2",
       "t7_hit_level": "mid",
@@ -8523,22 +7828,12 @@
         "bank": "heihachi",
         "row": 178,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-17",
-        "on_hit": "KND",
-        "hit_level": "high, high, mid",
-        "notation": "1, 1, 2",
-        "id": "heihachi_5",
-        "wired": true
       }
     },
     "1,2~t7.heihachi": {
       "name": "DIABLO 1,2",
       "input": "1,2",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.367,
       "damage": 9,
@@ -8557,7 +7852,7 @@
         "1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_8",
       "t7_command": "1, 2",
       "t7_hit_level": "high, high",
@@ -8579,22 +7874,12 @@
         "bank": "heihachi",
         "row": 100,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-1",
-        "on_hit": "+7",
-        "hit_level": "high, high",
-        "notation": "1, 2",
-        "id": "heihachi_8",
-        "wired": true
       }
     },
     "1,2~t7.heihachi.2": {
       "name": "DIABLO 1,2",
       "input": "1,2",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.367,
       "damage": 5,
@@ -8613,7 +7898,7 @@
         "1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_9",
       "t7_command": "(1), 2",
       "t7_hit_level": "high",
@@ -8628,22 +7913,12 @@
         "bank": "heihachi",
         "row": 100,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-1",
-        "on_hit": "+7",
-        "hit_level": "high, high",
-        "notation": "1, 2",
-        "id": "heihachi_8",
-        "wired": true
       }
     },
     "1,2,2~t7.heihachi": {
       "name": "Demon Slayer",
       "input": "1,2,2",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.55,
       "damage": 16,
@@ -8662,7 +7937,7 @@
         "1,2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_10",
       "t7_command": "1, 2, 2",
       "t7_hit_level": "high, high, high",
@@ -8685,22 +7960,12 @@
         "bank": "heihachi",
         "row": 100,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-12",
-        "on_hit": "+4",
-        "hit_level": "high, high, high",
-        "notation": "1, 2, 2",
-        "id": "heihachi_10",
-        "wired": true
       }
     },
     "1,2,2~t7.heihachi.2": {
       "name": "DIABLO 1,2,2",
       "input": "1,2,2",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.55,
       "damage": 12,
@@ -8719,7 +7984,7 @@
         "1,2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_11",
       "t7_command": "(1), 2, 2",
       "t7_hit_level": "high, high",
@@ -8741,22 +8006,12 @@
         "bank": "heihachi",
         "row": 100,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-12",
-        "on_hit": "+4",
-        "hit_level": "high, high, high",
-        "notation": "1, 2, 2",
-        "id": "heihachi_10",
-        "wired": true
       }
     },
     "1,2,2~t7.heihachi.3": {
       "name": "DIABLO 1,2,2",
       "input": "1,2,2",
-      "startup": 0.1667,
+      "startup": 0.283,
       "active": 0.017,
       "recovery": 0.55,
       "damage": 7,
@@ -8775,7 +8030,7 @@
         "1,2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_12",
       "t7_command": "(1), (2), 2",
       "t7_hit_level": "high",
@@ -8790,22 +8045,12 @@
         "bank": "heihachi",
         "row": 108,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-12",
-        "on_hit": "+4",
-        "hit_level": "high, high, high",
-        "notation": "1, 2, 2",
-        "id": "heihachi_10",
-        "wired": true
       }
     },
     "1,2,2~1+2": {
       "name": "Demon Executioner",
       "input": "1,2,2~1+2",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 24,
@@ -8824,7 +8069,7 @@
         "1,2,2~1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_13",
       "t7_command": "1, 2, 2~1+2",
       "t7_hit_level": "high, high, mid",
@@ -8848,22 +8093,12 @@
         "bank": "heihachi",
         "row": 247,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-6",
-        "on_hit": "KND",
-        "hit_level": "high, high, mid",
-        "notation": "1, 2, 2~1+2",
-        "id": "heihachi_13",
-        "wired": true
       }
     },
     "1,2,2~1+2~t7.heihachi": {
       "name": "DIABLO 1,2,2~1+2",
       "input": "1,2,2~1+2",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 19,
@@ -8882,7 +8117,7 @@
         "1,2,2~1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_14",
       "t7_command": "(1), 2, 2~1+2",
       "t7_hit_level": "high, mid",
@@ -8905,22 +8140,12 @@
         "bank": "heihachi",
         "row": 247,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-6",
-        "on_hit": "KND",
-        "hit_level": "high, high, mid",
-        "notation": "1, 2, 2~1+2",
-        "id": "heihachi_13",
-        "wired": true
       }
     },
     "1,2,2~1+2~t7.heihachi.2": {
       "name": "DIABLO 1,2,2~1+2",
       "input": "1,2,2~1+2",
-      "startup": 0.1667,
+      "startup": 0.217,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 15,
@@ -8939,7 +8164,7 @@
         "1,2,2~1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_15",
       "t7_command": "(1), (2), 2~1+2",
       "t7_hit_level": "mid",
@@ -8955,16 +8180,6 @@
         "bank": "heihachi",
         "row": 241,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-6",
-        "on_hit": "KND",
-        "hit_level": "high, high, mid",
-        "notation": "1, 2, 2~1+2",
-        "id": "heihachi_13",
-        "wired": true
       }
     },
     "1,2,2~1+2,u": {
@@ -8989,7 +8204,7 @@
         "1,2,2~1+2,u"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_16",
       "t7_command": "1, 2, 2~1+2, u (or d)",
       "t7_hit_level": "-",
@@ -9010,7 +8225,7 @@
     "1,2,4~t7.heihachi": {
       "name": "Demon Kicker",
       "input": "1,2,4",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.55,
       "damage": 21,
@@ -9029,7 +8244,7 @@
         "1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_17",
       "t7_command": "1, 2, 4",
       "t7_hit_level": "high, high, high",
@@ -9053,22 +8268,12 @@
         "bank": "heihachi",
         "row": 152,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-9",
-        "on_hit": "KND",
-        "hit_level": "high, high, high",
-        "notation": "1, 2, 4",
-        "id": "heihachi_17",
-        "wired": true
       }
     },
     "1,2,4~t7.heihachi.2": {
       "name": "DIABLO 1,2,4",
       "input": "1,2,4",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.55,
       "damage": 17,
@@ -9087,7 +8292,7 @@
         "1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_18",
       "t7_command": "(1), 2, 4",
       "t7_hit_level": "high, high",
@@ -9110,22 +8315,12 @@
         "bank": "heihachi",
         "row": 152,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-9",
-        "on_hit": "KND",
-        "hit_level": "high, high, high",
-        "notation": "1, 2, 4",
-        "id": "heihachi_17",
-        "wired": true
       }
     },
     "1,2,4~t7.heihachi.3": {
       "name": "DIABLO 1,2,4",
       "input": "1,2,4",
-      "startup": 0.1667,
+      "startup": 0.367,
       "active": 0.017,
       "recovery": 0.55,
       "damage": 12,
@@ -9144,7 +8339,7 @@
         "1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_19",
       "t7_command": "(1), (2), 4",
       "t7_hit_level": "high",
@@ -9160,22 +8355,12 @@
         "bank": "heihachi",
         "row": 86,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-9",
-        "on_hit": "KND",
-        "hit_level": "high, high, high",
-        "notation": "1, 2, 4",
-        "id": "heihachi_17",
-        "wired": true
       }
     },
     "1,b+2~t7.heihachi": {
       "name": "DIABLO 1,b+2",
       "input": "1,b+2",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 16,
@@ -9194,7 +8379,7 @@
         "1,b+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_20",
       "t7_command": "1, b+2",
       "t7_hit_level": "high, mid",
@@ -9216,22 +8401,12 @@
         "bank": "heihachi",
         "row": 100,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-2",
-        "on_hit": "+8",
-        "hit_level": "high, mid",
-        "notation": "1, b+2",
-        "id": "heihachi_20",
-        "wired": true
       }
     },
     "1,b+2~t7.heihachi.2": {
       "name": "DIABLO 1,b+2",
       "input": "1,b+2",
-      "startup": 0.1667,
+      "startup": 0.367,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 12,
@@ -9250,7 +8425,7 @@
         "1,b+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_21",
       "t7_command": "(1), b+2",
       "t7_hit_level": "mid",
@@ -9265,22 +8440,12 @@
         "bank": "heihachi",
         "row": 163,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-2",
-        "on_hit": "+8",
-        "hit_level": "high, mid",
-        "notation": "1, b+2",
-        "id": "heihachi_20",
-        "wired": true
       }
     },
     "1,b+2,1~t7.heihachi": {
       "name": "Demon Massacre",
       "input": "1,b+2,1",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 28,
@@ -9299,7 +8464,7 @@
         "1,b+2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_22",
       "t7_command": "1, b+2, 1",
       "t7_hit_level": "high, mid, mid",
@@ -9323,22 +8488,12 @@
         "bank": "heihachi",
         "row": 98,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-15",
-        "on_hit": "KND",
-        "hit_level": "high, mid, mid",
-        "notation": "1, b+2, 1",
-        "id": "heihachi_22",
-        "wired": true
       }
     },
     "1,b+2,1~t7.heihachi.2": {
       "name": "DIABLO 1,b+2,1",
       "input": "1,b+2,1",
-      "startup": 0.1667,
+      "startup": 0.367,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 24,
@@ -9357,7 +8512,7 @@
         "1,b+2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_23",
       "t7_command": "(1), b+2, 1",
       "t7_hit_level": "high, mid",
@@ -9380,22 +8535,12 @@
         "bank": "heihachi",
         "row": 207,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-15",
-        "on_hit": "KND",
-        "hit_level": "high, mid, mid",
-        "notation": "1, b+2, 1",
-        "id": "heihachi_22",
-        "wired": true
       }
     },
     "1,b+2,1~t7.heihachi.3": {
       "name": "DIABLO 1,b+2,1",
       "input": "1,b+2,1",
-      "startup": 0.1667,
+      "startup": 0.417,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 12,
@@ -9414,7 +8559,7 @@
         "1,b+2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_24",
       "t7_command": "(1), (b+2), 1",
       "t7_hit_level": "mid",
@@ -9430,22 +8575,12 @@
         "bank": "heihachi",
         "row": 188,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-15",
-        "on_hit": "KND",
-        "hit_level": "high, mid, mid",
-        "notation": "1, b+2, 1",
-        "id": "heihachi_22",
-        "wired": true
       }
     },
     "1,b+2,4~t7.heihachi": {
       "name": "Demon Lair",
       "input": "1,b+2,4",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.683,
       "damage": 34,
@@ -9464,7 +8599,7 @@
         "1,b+2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_25",
       "t7_command": "1, b+2, 4",
       "t7_hit_level": "high, mid, mid",
@@ -9488,22 +8623,12 @@
         "bank": "heihachi",
         "row": 152,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "+5",
-        "on_hit": "KND",
-        "hit_level": "high, mid, mid",
-        "notation": "1, b+2, 4",
-        "id": "heihachi_25",
-        "wired": true
       }
     },
     "1,b+2,4~t7.heihachi.2": {
       "name": "DIABLO 1,b+2,4",
       "input": "1,b+2,4",
-      "startup": 0.1667,
+      "startup": 0.367,
       "active": 0.017,
       "recovery": 0.683,
       "damage": 30,
@@ -9522,7 +8647,7 @@
         "1,b+2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_26",
       "t7_command": "(1), b+2, 4",
       "t7_hit_level": "high, mid",
@@ -9545,22 +8670,12 @@
         "bank": "heihachi",
         "row": 86,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "+5",
-        "on_hit": "KND",
-        "hit_level": "high, mid, mid",
-        "notation": "1, b+2, 4",
-        "id": "heihachi_25",
-        "wired": true
       }
     },
     "1,b+2,4~t7.heihachi.3": {
       "name": "DIABLO 1,b+2,4",
       "input": "1,b+2,4",
-      "startup": 0.1667,
+      "startup": 0.483,
       "active": 0.017,
       "recovery": 0.683,
       "damage": 18,
@@ -9579,7 +8694,7 @@
         "1,b+2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_27",
       "t7_command": "(1), (b+2), 4",
       "t7_hit_level": "mid",
@@ -9595,22 +8710,12 @@
         "bank": "heihachi",
         "row": 86,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "+5",
-        "on_hit": "KND",
-        "hit_level": "high, mid, mid",
-        "notation": "1, b+2, 4",
-        "id": "heihachi_25",
-        "wired": true
       }
     },
     "2~t7.heihachi": {
       "name": "DIABLO 2",
       "input": "2",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.317,
       "damage": 6,
@@ -9629,7 +8734,7 @@
         "2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_28",
       "t7_command": "2",
       "t7_hit_level": "high",
@@ -9644,23 +8749,12 @@
         "bank": "heihachi",
         "row": 157,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 10,
-        "startup_frames": 10,
-        "on_block": "0",
-        "on_hit": "+9",
-        "on_ch": "+9",
-        "hit_level": "high",
-        "notation": "2",
-        "id": "heihachi_28",
-        "wired": true
       }
     },
     "2,2~t7.heihachi": {
       "name": "Demon Backhand Spin",
       "input": "2,2",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.55,
       "damage": 16,
@@ -9679,7 +8773,7 @@
         "2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_29",
       "t7_command": "2, 2",
       "t7_hit_level": "high, high",
@@ -9701,22 +8795,12 @@
         "bank": "heihachi",
         "row": 100,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 10,
-        "startup_frames": 10,
-        "on_block": "-13",
-        "on_hit": "-2",
-        "hit_level": "high, high",
-        "notation": "2, 2",
-        "id": "heihachi_29",
-        "wired": true
       }
     },
     "2,2~t7.heihachi.2": {
       "name": "DIABLO 2,2",
       "input": "2,2",
-      "startup": 0.1667,
+      "startup": 0.283,
       "active": 0.017,
       "recovery": 0.55,
       "damage": 11,
@@ -9735,7 +8819,7 @@
         "2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_30",
       "t7_command": "(2), 2",
       "t7_hit_level": "high",
@@ -9750,22 +8834,12 @@
         "bank": "heihachi",
         "row": 108,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 10,
-        "startup_frames": 10,
-        "on_block": "-13",
-        "on_hit": "-2",
-        "hit_level": "high, high",
-        "notation": "2, 2",
-        "id": "heihachi_29",
-        "wired": true
       }
     },
     "2,2~1+2": {
       "name": "Quick Executioner",
       "input": "2,2~1+2",
-      "startup": 0.1667,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 21,
@@ -9784,7 +8858,7 @@
         "2,2~1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_31",
       "t7_command": "2, 2~1+2",
       "t7_hit_level": "high, mid",
@@ -9807,22 +8881,12 @@
         "bank": "heihachi",
         "row": 247,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 10,
-        "startup_frames": 10,
-        "on_block": "-6",
-        "on_hit": "KND",
-        "hit_level": "high, mid",
-        "notation": "2, 2~1+2",
-        "id": "heihachi_31",
-        "wired": true
       }
     },
     "2,2~1+2~t7.heihachi": {
       "name": "DIABLO 2,2~1+2",
       "input": "2,2~1+2",
-      "startup": 0.1667,
+      "startup": 0.217,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 15,
@@ -9841,7 +8905,7 @@
         "2,2~1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_32",
       "t7_command": "(2), 2~1+2",
       "t7_hit_level": "mid",
@@ -9857,16 +8921,6 @@
         "bank": "heihachi",
         "row": 241,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 10,
-        "startup_frames": 10,
-        "on_block": "-6",
-        "on_hit": "KND",
-        "hit_level": "high, mid",
-        "notation": "2, 2~1+2",
-        "id": "heihachi_31",
-        "wired": true
       }
     },
     "2,2~1+2,u": {
@@ -9891,7 +8945,7 @@
         "2,2~1+2,u"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_33",
       "t7_command": "2, 2~1+2, u (or d)",
       "t7_hit_level": "-",
@@ -9912,7 +8966,7 @@
     "3~t7.heihachi": {
       "name": "DIABLO 3",
       "input": "3",
-      "startup": 0.2333,
+      "startup": 0.233,
       "active": 0.017,
       "recovery": 0.483,
       "damage": 9,
@@ -9931,7 +8985,7 @@
         "3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_34",
       "t7_command": "3",
       "t7_hit_level": "high",
@@ -9946,23 +9000,12 @@
         "bank": "heihachi",
         "row": 153,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 15,
-        "startup_frames": 14,
-        "on_block": "-10",
-        "on_hit": "+1",
-        "on_ch": "+1",
-        "hit_level": "high",
-        "notation": "3",
-        "id": "heihachi_34",
-        "wired": true
       }
     },
     "3,4": {
       "name": "Monzenbarai",
       "input": "3,4",
-      "startup": 0.2333,
+      "startup": 0.233,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 21,
@@ -9981,7 +9024,7 @@
         "3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_35",
       "t7_command": "3, 4",
       "t7_hit_level": "high, mid",
@@ -10003,22 +9046,12 @@
         "bank": "heihachi",
         "row": 72,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 15,
-        "startup_frames": 14,
-        "on_block": "-14",
-        "on_hit": "+3",
-        "hit_level": "high, mid",
-        "notation": "3, 4",
-        "id": "heihachi_35",
-        "wired": true
       }
     },
     "3,4~t7.heihachi": {
       "name": "DIABLO 3,4",
       "input": "3,4",
-      "startup": 0.2333,
+      "startup": 0.4,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 12,
@@ -10037,7 +9070,7 @@
         "3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_36",
       "t7_command": "(3), 4",
       "t7_hit_level": "mid",
@@ -10052,16 +9085,6 @@
         "bank": "heihachi",
         "row": 86,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 15,
-        "startup_frames": 14,
-        "on_block": "-14",
-        "on_hit": "+3",
-        "hit_level": "high, mid",
-        "notation": "3, 4",
-        "id": "heihachi_35",
-        "wired": true
       }
     },
     "4~3~t7.heihachi": {
@@ -10086,7 +9109,7 @@
         "4~3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_37",
       "t7_command": "4~3 (or WS 4~3)",
       "t7_hit_level": "mid",
@@ -10127,7 +9150,7 @@
         "1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_38",
       "t7_command": "1+2",
       "t7_hit_level": "mid",
@@ -10143,23 +9166,12 @@
         "bank": "heihachi",
         "row": 223,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 25,
-        "startup_frames": 12,
-        "on_block": "-12",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "notation": "1+2",
-        "id": "heihachi_38",
-        "wired": true
       }
     },
     "u/f+3~t7.heihachi": {
       "name": "DIABLO u/f+3",
       "input": "u/f+3",
-      "startup": 0.4667,
+      "startup": 0.467,
       "active": 0.017,
       "recovery": 0.6,
       "damage": 10,
@@ -10178,7 +9190,7 @@
         "u/f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_39",
       "t7_command": "u/f+3",
       "t7_hit_level": "mid",
@@ -10194,24 +9206,12 @@
         "bank": "heihachi",
         "row": 71,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 17,
-        "startup_frames": 28,
-        "on_block": "-10",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "crush": "low",
-        "notation": "u/f+3",
-        "id": "heihachi_39",
-        "wired": true
       }
     },
     "u/f+3,4": {
       "name": "Hell Axle",
       "input": "u/f+3,4",
-      "startup": 0.4667,
+      "startup": 0.467,
       "active": 0.017,
       "recovery": 0.567,
       "damage": 18,
@@ -10230,7 +9230,7 @@
         "u/f+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_40",
       "t7_command": "u/f+3, 4",
       "t7_hit_level": "mid, mid",
@@ -10252,16 +9252,6 @@
         "bank": "heihachi",
         "row": 171,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 17,
-        "startup_frames": 28,
-        "on_block": "+3",
-        "on_hit": "S!",
-        "hit_level": "mid, mid",
-        "notation": "u/f+3, 4",
-        "id": "heihachi_40",
-        "wired": true
       }
     },
     "u/f+4~t7.heihachi": {
@@ -10286,7 +9276,7 @@
         "u/f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_41",
       "t7_command": "u/f+4",
       "t7_hit_level": "mid",
@@ -10302,18 +9292,6 @@
         "bank": "heihachi",
         "row": 86,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 25,
-        "startup_frames": 24,
-        "on_block": "-5",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "crush": "low",
-        "notation": "u/f+4",
-        "id": "heihachi_41",
-        "wired": true
       }
     },
     "f+2~t7.heihachi": {
@@ -10338,7 +9316,7 @@
         "f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_42",
       "t7_command": "f+2",
       "t7_hit_level": "high",
@@ -10353,17 +9331,6 @@
         "bank": "heihachi",
         "row": 108,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 13,
-        "startup_frames": 15,
-        "on_block": "-9",
-        "on_hit": "+2",
-        "on_ch": "+2",
-        "hit_level": "high",
-        "notation": "f+2",
-        "id": "heihachi_42",
-        "wired": true
       }
     },
     "f+2,3": {
@@ -10388,7 +9355,7 @@
         "f+2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_43",
       "t7_command": "f+2, 3",
       "t7_hit_level": "high, mid",
@@ -10411,22 +9378,12 @@
         "bank": "heihachi",
         "row": 132,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 13,
-        "startup_frames": 15,
-        "on_block": "-3",
-        "on_hit": "KND",
-        "hit_level": "high, mid",
-        "notation": "f+2, 3",
-        "id": "heihachi_43",
-        "wired": true
       }
     },
     "f+2,3~t7.heihachi": {
       "name": "DIABLO f+2,3",
       "input": "f+2,3",
-      "startup": 0.25,
+      "startup": 0.3,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 12,
@@ -10445,7 +9402,7 @@
         "f+2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_44",
       "t7_command": "(f+2), 3",
       "t7_hit_level": "mid",
@@ -10461,22 +9418,12 @@
         "bank": "heihachi",
         "row": 153,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 13,
-        "startup_frames": 15,
-        "on_block": "-3",
-        "on_hit": "KND",
-        "hit_level": "high, mid",
-        "notation": "f+2, 3",
-        "id": "heihachi_43",
-        "wired": true
       }
     },
     "f+2~1+2": {
       "name": "Demon Shout",
       "input": "f+2~1+2",
-      "startup": 0.2167,
+      "startup": 0.217,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 15,
@@ -10495,7 +9442,7 @@
         "f+2~1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_45",
       "t7_command": "f+2~1+2",
       "t7_hit_level": "mid",
@@ -10511,17 +9458,6 @@
         "bank": "heihachi",
         "row": 241,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 25,
-        "startup_frames": 13,
-        "on_block": "-6",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "notation": "f+2~1+2",
-        "id": "heihachi_45",
-        "wired": true
       }
     },
     "f+2~1+2,u": {
@@ -10546,7 +9482,7 @@
         "f+2~1+2,u"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_46",
       "t7_command": "f+2~1+2, u (or d)",
       "t7_hit_level": "-",
@@ -10586,7 +9522,7 @@
         "f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_47",
       "t7_command": "f+3",
       "t7_hit_level": "mid",
@@ -10602,23 +9538,12 @@
         "bank": "heihachi",
         "row": 153,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 20,
-        "startup_frames": 18,
-        "on_block": "-3",
-        "on_hit": "KND",
-        "on_ch": "STUN",
-        "hit_level": "mid",
-        "notation": "f+3",
-        "id": "heihachi_47",
-        "wired": true
       }
     },
     "f+4~t7.heihachi": {
       "name": "Right Splits Kick",
       "input": "f+4",
-      "startup": 0.3167,
+      "startup": 0.317,
       "active": 0.017,
       "recovery": 0.45,
       "damage": 12,
@@ -10637,7 +9562,7 @@
         "f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_48",
       "t7_command": "f+4",
       "t7_hit_level": "mid",
@@ -10653,17 +9578,6 @@
         "bank": "heihachi",
         "row": 104,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 20,
-        "startup_frames": 19,
-        "on_block": "+4 (OC)",
-        "on_hit": "+7 (OC)",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "notation": "f+4",
-        "id": "heihachi_48",
-        "wired": true
       }
     },
     "f+1+2~t7.heihachi": {
@@ -10688,7 +9602,7 @@
         "f+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_49",
       "t7_command": "f+1+2",
       "t7_hit_level": "high",
@@ -10704,23 +9618,12 @@
         "bank": "heihachi",
         "row": 107,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 15,
-        "startup_frames": 12,
-        "on_block": "-14",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "high",
-        "notation": "f+1+2",
-        "id": "heihachi_49",
-        "wired": true
       }
     },
     "f,F+2~t7.heihachi": {
       "name": "Demon Uppercut",
       "input": "f,F+2",
-      "startup": 0.3167,
+      "startup": 0.317,
       "active": 0.017,
       "recovery": 0.55,
       "damage": 13,
@@ -10739,7 +9642,7 @@
         "f,F+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_50",
       "t7_command": "f, F+2",
       "t7_hit_level": "mid",
@@ -10755,24 +9658,12 @@
         "bank": "heihachi",
         "row": 222,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 22,
-        "startup_frames": 19,
-        "on_block": "-16",
-        "on_hit": "LAUNCH",
-        "on_ch": "LAUNCH",
-        "hit_level": "mid",
-        "crush": "high",
-        "notation": "f, F+2",
-        "id": "heihachi_50",
-        "wired": true
       }
     },
     "f,F+3~t7.heihachi": {
       "name": "Left Splits Kick",
       "input": "f,F+3",
-      "startup": 0.3333,
+      "startup": 0.333,
       "active": 0.017,
       "recovery": 0.467,
       "damage": 15,
@@ -10791,7 +9682,7 @@
         "f,F+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_51",
       "t7_command": "f, F+3",
       "t7_hit_level": "mid",
@@ -10806,17 +9697,6 @@
         "bank": "heihachi",
         "row": 226,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 25,
-        "startup_frames": 20,
-        "on_block": "-3",
-        "on_hit": "STUN",
-        "on_ch": "STUN",
-        "hit_level": "mid",
-        "notation": "f, F+3",
-        "id": "heihachi_51",
-        "wired": true
       }
     },
     "f,f,f+3": {
@@ -10841,7 +9721,7 @@
         "f,f,f+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_52",
       "t7_command": "f, f, f+3 (or WR 3)",
       "t7_hit_level": "mid",
@@ -10863,7 +9743,7 @@
     "f,n,d/f:1": {
       "name": "DIABLO f,n,d/f:1",
       "input": "f,n,d/f:1",
-      "startup": 0.2167,
+      "startup": 0.217,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 21,
@@ -10882,7 +9762,7 @@
         "f,n,d/f:1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_53",
       "t7_command": "f, n, d/f:1",
       "t7_hit_level": "mid",
@@ -10897,24 +9777,12 @@
         "bank": "heihachi",
         "row": 66,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 35,
-        "startup_frames": 13,
-        "on_block": "-10",
-        "on_hit": "+9",
-        "on_ch": "+9",
-        "hit_level": "mid",
-        "crush": "high",
-        "notation": "f, n, d/f:1",
-        "id": "heihachi_53",
-        "wired": true
       }
     },
     "f,n,d,d/f+1": {
       "name": "Dragon Uppercut",
       "input": "f,n,d,d/f+1",
-      "startup": 0.3167,
+      "startup": 0.317,
       "active": 0.017,
       "recovery": 0.533,
       "damage": 15,
@@ -10933,7 +9801,7 @@
         "f,n,d,d/f+1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_54",
       "t7_command": "f, n, d, d/f+1",
       "t7_hit_level": "mid",
@@ -10949,24 +9817,12 @@
         "bank": "heihachi",
         "row": 184,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 25,
-        "startup_frames": 19,
-        "on_block": "-15",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "crush": "high",
-        "notation": "f, n, d, d/f+1",
-        "id": "heihachi_54",
-        "wired": true
       }
     },
     "f,n,d,d/f+2": {
       "name": "Wind God Fist",
       "input": "f,n,d,d/f+2",
-      "startup": 0.1833,
+      "startup": 0.183,
       "active": 0.017,
       "recovery": 0.467,
       "damage": 12,
@@ -10985,7 +9841,7 @@
         "f,n,d,d/f+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_55",
       "t7_command": "f, n, d, d/f+2",
       "t7_hit_level": "high",
@@ -11001,24 +9857,12 @@
         "bank": "heihachi",
         "row": 179,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 20,
-        "startup_frames": 11,
-        "on_block": "-10",
-        "on_hit": "LAUNCH",
-        "on_ch": "LAUNCH",
-        "hit_level": "high",
-        "crush": "high",
-        "notation": "f, n, d, d/f+2",
-        "id": "heihachi_55",
-        "wired": true
       }
     },
     "f,n,d,d/f:2": {
       "name": "Electric Wind God Fist",
       "input": "f,n,d,d/f:2",
-      "startup": 0.1833,
+      "startup": 0.183,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 12,
@@ -11037,7 +9881,7 @@
         "f,n,d,d/f:2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_56",
       "t7_command": "f, n, d, d/f:2",
       "t7_hit_level": "high",
@@ -11053,18 +9897,6 @@
         "bank": "heihachi",
         "row": 179,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 20,
-        "startup_frames": 11,
-        "on_block": "+5",
-        "on_hit": "LAUNCH",
-        "on_ch": "LAUNCH",
-        "hit_level": "high",
-        "crush": "high",
-        "notation": "f, n, d, d/f:2",
-        "id": "heihachi_56",
-        "wired": true
       }
     },
     "f,n,d,d/f+3": {
@@ -11089,7 +9921,7 @@
         "f,n,d,d/f+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_57",
       "t7_command": "f, n, d, d/f+3",
       "t7_hit_level": "mid",
@@ -11105,24 +9937,12 @@
         "bank": "heihachi",
         "row": 230,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 30,
-        "startup_frames": 27,
-        "on_block": "+7",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "crush": "low",
-        "notation": "f, n, d, d/f+3",
-        "id": "heihachi_57",
-        "wired": true
       }
     },
     "f,n,d,D/F+3~t7.heihachi": {
       "name": "Jumping Low Kick",
       "input": "f,n,d,D/F+3",
-      "startup": 0.45,
+      "startup": 0.55,
       "active": 0.017,
       "recovery": 0.683,
       "damage": 14,
@@ -11141,7 +9961,7 @@
         "f,n,d,D/F+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_58",
       "t7_command": "f, n, d, D/F+3",
       "t7_hit_level": "low",
@@ -11157,24 +9977,12 @@
         "bank": "heihachi",
         "row": 237,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 30,
-        "startup_frames": 27,
-        "on_block": "+7",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "crush": "low",
-        "notation": "f, n, d, d/f+3",
-        "id": "heihachi_57",
-        "wired": true
       }
     },
     "f,n,d,d/f+4": {
       "name": "DIABLO f,n,d,d/f+4",
       "input": "f,n,d,d/f+4",
-      "startup": 0.2667,
+      "startup": 0.267,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 9,
@@ -11193,7 +10001,7 @@
         "f,n,d,d/f+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_59",
       "t7_command": "f, n, d, d/f+4",
       "t7_hit_level": "low",
@@ -11208,24 +10016,12 @@
         "bank": "heihachi",
         "row": 152,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 15,
-        "startup_frames": 16,
-        "on_block": "-23",
-        "on_hit": "+5 (OC)",
-        "on_ch": "STUN",
-        "hit_level": "low",
-        "crush": "high",
-        "notation": "f, n, d, d/f+4",
-        "id": "heihachi_59",
-        "wired": true
       }
     },
     "f,n,d,d/f+4,1": {
       "name": "Spinning Demon Uppercut",
       "input": "f,n,d,d/f+4,1",
-      "startup": 0.2667,
+      "startup": 0.267,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 21,
@@ -11244,7 +10040,7 @@
         "f,n,d,d/f+4,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_60",
       "t7_command": "f, n, d, d/f+4, 1",
       "t7_hit_level": "low, mid",
@@ -11267,22 +10063,12 @@
         "bank": "heihachi",
         "row": 184,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 15,
-        "startup_frames": 16,
-        "on_block": "-15",
-        "on_hit": "KND",
-        "hit_level": "low, mid",
-        "notation": "f, n, d, d/f+4, 1",
-        "id": "heihachi_60",
-        "wired": true
       }
     },
     "f,n,d,d/f+4,1~t7.heihachi": {
       "name": "DIABLO f,n,d,d/f+4,1",
       "input": "f,n,d,d/f+4,1",
-      "startup": 0.2667,
+      "startup": 0.467,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 12,
@@ -11301,7 +10087,7 @@
         "f,n,d,d/f+4,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_61",
       "t7_command": "(f, n, d, d/f+4), 1",
       "t7_hit_level": "mid",
@@ -11317,22 +10103,12 @@
         "bank": "heihachi",
         "row": 188,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 15,
-        "startup_frames": 16,
-        "on_block": "-15",
-        "on_hit": "KND",
-        "hit_level": "low, mid",
-        "notation": "f, n, d, d/f+4, 1",
-        "id": "heihachi_60",
-        "wired": true
       }
     },
     "f,n,d,d/f+4,n,4": {
       "name": "DIABLO f,n,d,d/f+4,n,4",
       "input": "f,n,d,d/f+4,n,4",
-      "startup": 0.2667,
+      "startup": 0.267,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 15,
@@ -11351,7 +10127,7 @@
         "f,n,d,d/f+4,n,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_62",
       "t7_command": "f, n, d, d/f+4, n, 4",
       "t7_hit_level": "low, mid",
@@ -11373,22 +10149,12 @@
         "bank": "heihachi",
         "row": 152,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 15,
-        "startup_frames": 16,
-        "on_block": "-23",
-        "on_hit": "+8",
-        "hit_level": "low, mid",
-        "notation": "f, n, d, d/f+4, n, 4",
-        "id": "heihachi_62",
-        "wired": true
       }
     },
     "f,n,d,d/f+4,n,4~t7.heihachi": {
       "name": "DIABLO f,n,d,d/f+4,n,4",
       "input": "f,n,d,d/f+4,n,4",
-      "startup": 0.2667,
+      "startup": 0.4,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 6,
@@ -11407,7 +10173,7 @@
         "f,n,d,d/f+4,n,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_63",
       "t7_command": "(f, n, d, d/f+4), n, 4",
       "t7_hit_level": "mid",
@@ -11422,22 +10188,12 @@
         "bank": "heihachi",
         "row": 150,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 15,
-        "startup_frames": 16,
-        "on_block": "-23",
-        "on_hit": "+8",
-        "hit_level": "low, mid",
-        "notation": "f, n, d, d/f+4, n, 4",
-        "id": "heihachi_62",
-        "wired": true
       }
     },
     "f,n,d,d/f+4,n,4,4": {
       "name": "Tsunami Kick",
       "input": "f,n,d,d/f+4,n,4,4",
-      "startup": 0.2667,
+      "startup": 0.267,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 26,
@@ -11456,7 +10212,7 @@
         "f,n,d,d/f+4,n,4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_64",
       "t7_command": "f, n, d, d/f+4, n, 4, 4",
       "t7_hit_level": "low, mid, mid",
@@ -11479,22 +10235,12 @@
         "bank": "heihachi",
         "row": 152,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 15,
-        "startup_frames": 16,
-        "on_block": "-23",
-        "on_hit": "-5 (OC)",
-        "hit_level": "low, mid, mid",
-        "notation": "f, n, d, d/f+4, n, 4, 4",
-        "id": "heihachi_64",
-        "wired": true
       }
     },
     "f,n,d,d/f+4,n,4,4~t7.heihachi": {
       "name": "DIABLO f,n,d,d/f+4,n,4,4",
       "input": "f,n,d,d/f+4,n,4,4",
-      "startup": 0.2667,
+      "startup": 0.4,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 18,
@@ -11513,7 +10259,7 @@
         "f,n,d,d/f+4,n,4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_65",
       "t7_command": "(f, n, d, d/f+4), n, 4, 4",
       "t7_hit_level": "low, mid",
@@ -11535,22 +10281,12 @@
         "bank": "heihachi",
         "row": 150,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 15,
-        "startup_frames": 16,
-        "on_block": "-23",
-        "on_hit": "-5 (OC)",
-        "hit_level": "low, mid, mid",
-        "notation": "f, n, d, d/f+4, n, 4, 4",
-        "id": "heihachi_64",
-        "wired": true
       }
     },
     "f,n,d,d/f+4,n,4,4~t7.heihachi.2": {
       "name": "DIABLO f,n,d,d/f+4,n,4,4",
       "input": "f,n,d,d/f+4,n,4,4",
-      "startup": 0.2667,
+      "startup": 0.25,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 12,
@@ -11569,7 +10305,7 @@
         "f,n,d,d/f+4,n,4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_66",
       "t7_command": "(f, n, d, d/f+4), n, (4), 4",
       "t7_hit_level": "mid",
@@ -11584,22 +10320,12 @@
         "bank": "heihachi",
         "row": 152,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 15,
-        "startup_frames": 16,
-        "on_block": "-23",
-        "on_hit": "-5 (OC)",
-        "hit_level": "low, mid, mid",
-        "notation": "f, n, d, d/f+4, n, 4, 4",
-        "id": "heihachi_64",
-        "wired": true
       }
     },
     "f,n,d,D/F+4,4": {
       "name": "DIABLO f,n,d,D/F+4,4",
       "input": "f,n,d,D/F+4,4",
-      "startup": 0.2667,
+      "startup": 0.267,
       "active": 0.017,
       "recovery": 0.583,
       "damage": 15,
@@ -11618,7 +10344,7 @@
         "f,n,d,D/F+4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_67",
       "t7_command": "f, n, d, D/F+4, 4",
       "t7_hit_level": "low, low",
@@ -11641,22 +10367,12 @@
         "bank": "heihachi",
         "row": 152,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 15,
-        "startup_frames": 16,
-        "on_block": "-23",
-        "on_hit": "KND",
-        "hit_level": "low, low",
-        "notation": "f, n, d, D/F+4, 4",
-        "id": "heihachi_67",
-        "wired": true
       }
     },
     "f,n,d,D/F+4,4~t7.heihachi": {
       "name": "DIABLO f,n,d,D/F+4,4",
       "input": "f,n,d,D/F+4,4",
-      "startup": 0.2667,
+      "startup": 0.4,
       "active": 0.017,
       "recovery": 0.583,
       "damage": 6,
@@ -11675,7 +10391,7 @@
         "f,n,d,D/F+4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_68",
       "t7_command": "(f, n, d, D/F+4), 4",
       "t7_hit_level": "low",
@@ -11691,16 +10407,6 @@
         "bank": "heihachi",
         "row": 150,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 15,
-        "startup_frames": 16,
-        "on_block": "-23",
-        "on_hit": "KND",
-        "hit_level": "low, low",
-        "notation": "f, n, d, D/F+4, 4",
-        "id": "heihachi_67",
-        "wired": true
       }
     },
     "f,n,d,D/F+4,4,1": {
@@ -11725,7 +10431,7 @@
         "f,n,d,D/F+4,4,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_69",
       "t7_command": "(f, n, d, D/F+4), (4), 1",
       "t7_hit_level": "mid",
@@ -11746,7 +10452,7 @@
     "f,n,d,D/F+4,4,4": {
       "name": "Spinning Demon",
       "input": "f,n,d,D/F+4,4,4",
-      "startup": 0.2667,
+      "startup": 0.267,
       "active": 0.017,
       "recovery": 0.583,
       "damage": 18,
@@ -11765,7 +10471,7 @@
         "f,n,d,D/F+4,4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_70",
       "t7_command": "f, n, d, D/F+4, 4, 4",
       "t7_hit_level": "low, low, low",
@@ -11789,22 +10495,12 @@
         "bank": "heihachi",
         "row": 152,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 15,
-        "startup_frames": 16,
-        "on_block": "-23",
-        "on_hit": "KND",
-        "hit_level": "low, low, low",
-        "notation": "f, n, d, D/F+4, 4, 4",
-        "id": "heihachi_70",
-        "wired": true
       }
     },
     "f,n,d,D/F+4,4,4~t7.heihachi": {
       "name": "DIABLO f,n,d,D/F+4,4,4",
       "input": "f,n,d,D/F+4,4,4",
-      "startup": 0.2667,
+      "startup": 0.4,
       "active": 0.017,
       "recovery": 0.583,
       "damage": 11,
@@ -11823,7 +10519,7 @@
         "f,n,d,D/F+4,4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_71",
       "t7_command": "(f, n, d, D/F+4), 4, 4",
       "t7_hit_level": "low, low",
@@ -11846,22 +10542,12 @@
         "bank": "heihachi",
         "row": 150,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 15,
-        "startup_frames": 16,
-        "on_block": "-23",
-        "on_hit": "KND",
-        "hit_level": "low, low, low",
-        "notation": "f, n, d, D/F+4, 4, 4",
-        "id": "heihachi_70",
-        "wired": true
       }
     },
     "f,n,d,D/F+4,4,4~t7.heihachi.2": {
       "name": "DIABLO f,n,d,D/F+4,4,4",
       "input": "f,n,d,D/F+4,4,4",
-      "startup": 0.2667,
+      "startup": 0.4,
       "active": 0.017,
       "recovery": 0.583,
       "damage": 5,
@@ -11880,7 +10566,7 @@
         "f,n,d,D/F+4,4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_72",
       "t7_command": "(f, n, d, D/F+4), (4), 4",
       "t7_hit_level": "low",
@@ -11896,16 +10582,6 @@
         "bank": "heihachi",
         "row": 150,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 15,
-        "startup_frames": 16,
-        "on_block": "-23",
-        "on_hit": "KND",
-        "hit_level": "low, low, low",
-        "notation": "f, n, d, D/F+4, 4, 4",
-        "id": "heihachi_70",
-        "wired": true
       }
     },
     "f,n,d,D/F+4,4,4,1": {
@@ -11930,7 +10606,7 @@
         "f,n,d,D/F+4,4,4,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_73",
       "t7_command": "(f, n, d, D/F+4), (4), (4), 1",
       "t7_hit_level": "mid",
@@ -11951,7 +10627,7 @@
     "d/f+1~t7.heihachi": {
       "name": "DIABLO d/f+1",
       "input": "d/f+1",
-      "startup": 0.2167,
+      "startup": 0.217,
       "active": 0.017,
       "recovery": 0.367,
       "damage": 6,
@@ -11970,7 +10646,7 @@
         "d/f+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_74",
       "t7_command": "d/f+1",
       "t7_hit_level": "mid",
@@ -11985,23 +10661,12 @@
         "bank": "heihachi",
         "row": 173,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 10,
-        "startup_frames": 13,
-        "on_block": "-1",
-        "on_hit": "+9",
-        "on_ch": "+9",
-        "hit_level": "mid",
-        "notation": "d/f+1",
-        "id": "heihachi_74",
-        "wired": true
       }
     },
     "d/f+1,1": {
       "name": "Double Palm Strike",
       "input": "d/f+1,1",
-      "startup": 0.2167,
+      "startup": 0.217,
       "active": 0.017,
       "recovery": 0.35,
       "damage": 11,
@@ -12020,7 +10685,7 @@
         "d/f+1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_75",
       "t7_command": "d/f+1, 1",
       "t7_hit_level": "mid, high",
@@ -12042,22 +10707,12 @@
         "bank": "heihachi",
         "row": 128,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 10,
-        "startup_frames": 13,
-        "on_block": "-2",
-        "on_hit": "+4",
-        "hit_level": "mid, high",
-        "notation": "d/f+1, 1",
-        "id": "heihachi_75",
-        "wired": true
       }
     },
     "d/f+1,1~t7.heihachi": {
       "name": "DIABLO d/f+1,1",
       "input": "d/f+1,1",
-      "startup": 0.2167,
+      "startup": 0.25,
       "active": 0.017,
       "recovery": 0.35,
       "damage": 5,
@@ -12076,7 +10731,7 @@
         "d/f+1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_76",
       "t7_command": "(d/f+1), 1",
       "t7_hit_level": "high",
@@ -12091,22 +10746,12 @@
         "bank": "heihachi",
         "row": 62,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 10,
-        "startup_frames": 13,
-        "on_block": "-2",
-        "on_hit": "+4",
-        "hit_level": "mid, high",
-        "notation": "d/f+1, 1",
-        "id": "heihachi_75",
-        "wired": true
       }
     },
     "d/f+1,2": {
       "name": "Muso Tettsui",
       "input": "d/f+1,2",
-      "startup": 0.2167,
+      "startup": 0.217,
       "active": 0.017,
       "recovery": 0.6,
       "damage": 20,
@@ -12125,7 +10770,7 @@
         "d/f+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_77",
       "t7_command": "d/f+1, 2",
       "t7_hit_level": "mid, mid",
@@ -12148,22 +10793,12 @@
         "bank": "heihachi",
         "row": 178,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 10,
-        "startup_frames": 13,
-        "on_block": "-13",
-        "on_hit": "KND",
-        "hit_level": "mid, mid",
-        "notation": "d/f+1, 2",
-        "id": "heihachi_77",
-        "wired": true
       }
     },
     "d/f+1,2~t7.heihachi": {
       "name": "DIABLO d/f+1,2",
       "input": "d/f+1,2",
-      "startup": 0.2167,
+      "startup": 0.35,
       "active": 0.017,
       "recovery": 0.6,
       "damage": 14,
@@ -12182,7 +10817,7 @@
         "d/f+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_78",
       "t7_command": "(d/f+1), 2",
       "t7_hit_level": "mid",
@@ -12198,16 +10833,6 @@
         "bank": "heihachi",
         "row": 222,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 10,
-        "startup_frames": 13,
-        "on_block": "-13",
-        "on_hit": "KND",
-        "hit_level": "mid, mid",
-        "notation": "d/f+1, 2",
-        "id": "heihachi_77",
-        "wired": true
       }
     },
     "d/f+2~t7.heihachi": {
@@ -12232,7 +10857,7 @@
         "d/f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_79",
       "t7_command": "d/f+2",
       "t7_hit_level": "mid",
@@ -12248,23 +10873,12 @@
         "bank": "heihachi",
         "row": 111,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 14,
-        "startup_frames": 15,
-        "on_block": "-7",
-        "on_hit": "+4",
-        "on_ch": "LAUNCH",
-        "hit_level": "mid",
-        "notation": "d/f+2",
-        "id": "heihachi_79",
-        "wired": true
       }
     },
     "d/f+3~t7.heihachi": {
       "name": "DIABLO d/f+3",
       "input": "d/f+3",
-      "startup": 0.2833,
+      "startup": 0.283,
       "active": 0.017,
       "recovery": 0.4,
       "damage": 10,
@@ -12283,7 +10897,7 @@
         "d/f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_80",
       "t7_command": "d/f+3",
       "t7_hit_level": "mid",
@@ -12298,17 +10912,6 @@
         "bank": "heihachi",
         "row": 130,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 17,
-        "startup_frames": 17,
-        "on_block": "-7",
-        "on_hit": "+4",
-        "on_ch": "+4",
-        "hit_level": "mid",
-        "notation": "d/f+3",
-        "id": "heihachi_80",
-        "wired": true
       }
     },
     "d/f+4~t7.heihachi": {
@@ -12333,7 +10936,7 @@
         "d/f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_81",
       "t7_command": "d/f+4",
       "t7_hit_level": "mid",
@@ -12348,23 +10951,12 @@
         "bank": "heihachi",
         "row": 121,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 15,
-        "startup_frames": 12,
-        "on_block": "-6",
-        "on_hit": "+5",
-        "on_ch": "+5",
-        "hit_level": "mid",
-        "notation": "d/f+4",
-        "id": "heihachi_81",
-        "wired": true
       }
     },
     "d+1~t7.heihachi": {
       "name": "Hammer Punch",
       "input": "d+1",
-      "startup": 0.2833,
+      "startup": 0.283,
       "active": 0.017,
       "recovery": 0.467,
       "damage": 9,
@@ -12383,7 +10975,7 @@
         "d+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_82",
       "t7_command": "d+1",
       "t7_hit_level": "mid",
@@ -12398,23 +10990,12 @@
         "bank": "heihachi",
         "row": 123,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 16,
-        "startup_frames": 17,
-        "on_block": "-9",
-        "on_hit": "+2",
-        "on_ch": "+2",
-        "hit_level": "mid",
-        "notation": "d+1",
-        "id": "heihachi_82",
-        "wired": true
       }
     },
     "d+1,D": {
       "name": "DIABLO d+1,D",
       "input": "d+1,D",
-      "startup": 0.2833,
+      "startup": 0.283,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 9,
@@ -12433,7 +11014,7 @@
         "d+1,D"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_83",
       "t7_command": "d+1, D",
       "t7_hit_level": "mid",
@@ -12448,23 +11029,12 @@
         "bank": "heihachi",
         "row": 108,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 16,
-        "startup_frames": 17,
-        "on_block": "-9",
-        "on_hit": "+2",
-        "on_ch": "+2",
-        "hit_level": "mid",
-        "notation": "d+1, D",
-        "id": "heihachi_83",
-        "wired": true
       }
     },
     "d+1,2~t7.heihachi": {
       "name": "Hammer Beating",
       "input": "d+1,2",
-      "startup": 0.2833,
+      "startup": 0.283,
       "active": 0.017,
       "recovery": 0.467,
       "damage": 19,
@@ -12483,7 +11053,7 @@
         "d+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_84",
       "t7_command": "d+1, 2",
       "t7_hit_level": "mid, mid",
@@ -12505,22 +11075,12 @@
         "bank": "heihachi",
         "row": 240,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 16,
-        "startup_frames": 17,
-        "on_block": "-9",
-        "on_hit": "+6",
-        "hit_level": "mid, mid",
-        "notation": "d+1, 2",
-        "id": "heihachi_84",
-        "wired": true
       }
     },
     "d+1,2~t7.heihachi.2": {
       "name": "DIABLO d+1,2",
       "input": "d+1,2",
-      "startup": 0.2833,
+      "startup": 0.45,
       "active": 0.017,
       "recovery": 0.467,
       "damage": 10,
@@ -12539,7 +11099,7 @@
         "d+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_85",
       "t7_command": "(d+1), 2",
       "t7_hit_level": "mid",
@@ -12555,16 +11115,6 @@
         "bank": "heihachi",
         "row": 240,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 16,
-        "startup_frames": 17,
-        "on_block": "-9",
-        "on_hit": "+6",
-        "hit_level": "mid, mid",
-        "notation": "d+1, 2",
-        "id": "heihachi_84",
-        "wired": true
       }
     },
     "d+3~t7.heihachi": {
@@ -12589,7 +11139,7 @@
         "d+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_86",
       "t7_command": "d+3 (or d/f+3+4)",
       "t7_hit_level": "mid",
@@ -12630,7 +11180,7 @@
         "d+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_87",
       "t7_command": "d+4",
       "t7_hit_level": "low",
@@ -12645,24 +11195,12 @@
         "bank": "heihachi",
         "row": 127,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 12,
-        "on_block": "-13",
-        "on_hit": "-2",
-        "on_ch": "-2",
-        "hit_level": "low",
-        "crush": "high",
-        "notation": "d+4",
-        "id": "heihachi_87",
-        "wired": true
       }
     },
     "d/b+2": {
       "name": "Eishomon",
       "input": "d/b+2",
-      "startup": 0.3833,
+      "startup": 0.383,
       "active": 0.017,
       "recovery": 0.483,
       "damage": 14,
@@ -12681,7 +11219,7 @@
         "d/b+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_88",
       "t7_command": "d/b+2",
       "t7_hit_level": "low",
@@ -12696,18 +11234,6 @@
         "bank": "heihachi",
         "row": 124,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 23,
-        "startup_frames": 23,
-        "on_block": "-18",
-        "on_hit": "+5",
-        "on_ch": "+5",
-        "hit_level": "low",
-        "crush": "high",
-        "notation": "d/b+2",
-        "id": "heihachi_88",
-        "wired": true
       }
     },
     "d/b+1+2": {
@@ -12732,7 +11258,7 @@
         "d/b+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_89",
       "t7_command": "d/b+1+2",
       "t7_hit_level": "mid, mid",
@@ -12754,24 +11280,12 @@
         "bank": "heihachi",
         "row": 122,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 10,
-        "startup_frames": 21,
-        "on_block": "-13",
-        "on_hit": "+5",
-        "on_ch": "+5",
-        "hit_level": "mid, mid",
-        "crush": "high",
-        "notation": "d/b+1+2",
-        "id": "heihachi_89",
-        "wired": true
       }
     },
     "d/b+1+2~t7.heihachi": {
       "name": "DIABLO d/b+1+2",
       "input": "d/b+1+2",
-      "startup": 0.35,
+      "startup": 0.617,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 12,
@@ -12790,7 +11304,7 @@
         "d/b+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_90",
       "t7_command": "d/b+1+2 (second hit only)",
       "t7_hit_level": "mid",
@@ -12806,18 +11320,6 @@
         "bank": "heihachi",
         "row": 122,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 10,
-        "startup_frames": 21,
-        "on_block": "-13",
-        "on_hit": "+5",
-        "on_ch": "+5",
-        "hit_level": "mid, mid",
-        "crush": "high",
-        "notation": "d/b+1+2",
-        "id": "heihachi_89",
-        "wired": true
       }
     },
     "b+1~t7.heihachi": {
@@ -12842,7 +11344,7 @@
         "b+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_91",
       "t7_command": "b+1",
       "t7_hit_level": "high",
@@ -12857,17 +11359,6 @@
         "bank": "heihachi",
         "row": 62,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 14,
-        "startup_frames": 15,
-        "on_block": "-11",
-        "on_hit": "-5",
-        "on_ch": "-5",
-        "hit_level": "high",
-        "notation": "b+1",
-        "id": "heihachi_91",
-        "wired": true
       }
     },
     "b+1,2": {
@@ -12892,7 +11383,7 @@
         "b+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_92",
       "t7_command": "b+1, 2",
       "t7_hit_level": "high, high",
@@ -12914,22 +11405,12 @@
         "bank": "heihachi",
         "row": 129,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 14,
-        "startup_frames": 15,
-        "on_block": "-9",
-        "on_hit": "+15",
-        "hit_level": "high, high",
-        "notation": "b+1, 2",
-        "id": "heihachi_92",
-        "wired": true
       }
     },
     "b+1,2~t7.heihachi": {
       "name": "DIABLO b+1,2",
       "input": "b+1,2",
-      "startup": 0.25,
+      "startup": 0.267,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 12,
@@ -12948,7 +11429,7 @@
         "b+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_93",
       "t7_command": "(b+1), 2",
       "t7_hit_level": "high",
@@ -12963,16 +11444,6 @@
         "bank": "heihachi",
         "row": 108,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 14,
-        "startup_frames": 15,
-        "on_block": "-9",
-        "on_hit": "+15",
-        "hit_level": "high, high",
-        "notation": "b+1, 2",
-        "id": "heihachi_92",
-        "wired": true
       }
     },
     "b+1,2~1+2": {
@@ -12997,7 +11468,7 @@
         "b+1,2~1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_94",
       "t7_command": "b+1, 2~1+2",
       "t7_hit_level": "high, mid",
@@ -13020,22 +11491,12 @@
         "bank": "heihachi",
         "row": 241,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 14,
-        "startup_frames": 15,
-        "on_block": "-6",
-        "on_hit": "KND",
-        "hit_level": "high, mid",
-        "notation": "b+1, 2~1+2",
-        "id": "heihachi_94",
-        "wired": true
       }
     },
     "b+1,2~1+2~t7.heihachi": {
       "name": "DIABLO b+1,2~1+2",
       "input": "b+1,2~1+2",
-      "startup": 0.25,
+      "startup": 0.217,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 15,
@@ -13054,7 +11515,7 @@
         "b+1,2~1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_95",
       "t7_command": "(b+1), 2~1+2",
       "t7_hit_level": "mid",
@@ -13070,16 +11531,6 @@
         "bank": "heihachi",
         "row": 241,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 14,
-        "startup_frames": 15,
-        "on_block": "-6",
-        "on_hit": "KND",
-        "hit_level": "high, mid",
-        "notation": "b+1, 2~1+2",
-        "id": "heihachi_94",
-        "wired": true
       }
     },
     "b+1,2~1+2,u": {
@@ -13104,7 +11555,7 @@
         "b+1,2~1+2,u"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_96",
       "t7_command": "b+1, 2~1+2, u (or d)",
       "t7_hit_level": "-",
@@ -13125,7 +11576,7 @@
     "b+2~t7.heihachi": {
       "name": "Rashomon",
       "input": "b+2",
-      "startup": 0.3667,
+      "startup": 0.367,
       "active": 0.017,
       "recovery": 0.567,
       "damage": 12,
@@ -13144,7 +11595,7 @@
         "b+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_97",
       "t7_command": "b+2",
       "t7_hit_level": "mid",
@@ -13160,24 +11611,12 @@
         "bank": "heihachi",
         "row": 100,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 20,
-        "startup_frames": 22,
-        "on_block": "-2",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "crush": "high",
-        "notation": "b+2",
-        "id": "heihachi_97",
-        "wired": true
       }
     },
     "b+3~t7.heihachi": {
       "name": "DIABLO b+3",
       "input": "b+3",
-      "startup": 0.2333,
+      "startup": 0.233,
       "active": 0.017,
       "recovery": 0.45,
       "damage": 8,
@@ -13196,7 +11635,7 @@
         "b+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_98",
       "t7_command": "b+3",
       "t7_hit_level": "high",
@@ -13211,23 +11650,12 @@
         "bank": "heihachi",
         "row": 103,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 14,
-        "startup_frames": 14,
-        "on_block": "-4",
-        "on_hit": "+7",
-        "on_ch": "+7",
-        "hit_level": "high",
-        "notation": "b+3",
-        "id": "heihachi_98",
-        "wired": true
       }
     },
     "b+3,3~t7.heihachi": {
       "name": "Hooking Crescent Kick",
       "input": "b+3,3",
-      "startup": 0.2333,
+      "startup": 0.233,
       "active": 0.017,
       "recovery": 0.55,
       "damage": 23,
@@ -13246,7 +11674,7 @@
         "b+3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_99",
       "t7_command": "b+3, 3",
       "t7_hit_level": "high, mid",
@@ -13269,22 +11697,12 @@
         "bank": "heihachi",
         "row": 103,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 14,
-        "startup_frames": 14,
-        "on_block": "-12",
-        "on_hit": "KND",
-        "hit_level": "high, mid",
-        "notation": "b+3, 3",
-        "id": "heihachi_99",
-        "wired": true
       }
     },
     "b+3,3~t7.heihachi.2": {
       "name": "DIABLO b+3,3",
       "input": "b+3,3",
-      "startup": 0.2333,
+      "startup": 0.367,
       "active": 0.017,
       "recovery": 0.55,
       "damage": 15,
@@ -13303,7 +11721,7 @@
         "b+3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_100",
       "t7_command": "(b+3), 3",
       "t7_hit_level": "mid",
@@ -13319,16 +11737,6 @@
         "bank": "heihachi",
         "row": 236,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 14,
-        "startup_frames": 14,
-        "on_block": "-12",
-        "on_hit": "KND",
-        "hit_level": "high, mid",
-        "notation": "b+3, 3",
-        "id": "heihachi_99",
-        "wired": true
       }
     },
     "b+4~t7.heihachi": {
@@ -13353,7 +11761,7 @@
         "b+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_101",
       "t7_command": "b+4",
       "t7_hit_level": "mid",
@@ -13369,23 +11777,12 @@
         "bank": "heihachi",
         "row": 156,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 20,
-        "startup_frames": 18,
-        "on_block": "-9",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "notation": "b+4",
-        "id": "heihachi_101",
-        "wired": true
       }
     },
     "b+1+2~t7.heihachi": {
       "name": "DIABLO b+1+2",
       "input": "b+1+2",
-      "startup": 0.2833,
+      "startup": 0.283,
       "active": 0.017,
       "recovery": 0.55,
       "damage": 11,
@@ -13404,7 +11801,7 @@
         "b+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_102",
       "t7_command": "b+1+2",
       "t7_hit_level": "mid",
@@ -13419,23 +11816,12 @@
         "bank": "heihachi",
         "row": 98,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 18,
-        "startup_frames": 17,
-        "on_block": "-9",
-        "on_hit": "+2",
-        "on_ch": "+2",
-        "hit_level": "mid",
-        "notation": "b+1+2",
-        "id": "heihachi_102",
-        "wired": true
       }
     },
     "b+1+2,1+2": {
       "name": "Twin Hammer Volley",
       "input": "b+1+2,1+2",
-      "startup": 0.4333,
+      "startup": 0.433,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 25,
@@ -13454,7 +11840,7 @@
         "b+1+2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_103",
       "t7_command": "b+1+2, 1+2",
       "t7_hit_level": "mid, mid",
@@ -13477,22 +11863,12 @@
         "bank": "heihachi",
         "row": 241,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 18,
-        "startup_frames": 26,
-        "on_block": "-13",
-        "on_hit": "KND",
-        "hit_level": "mid, mid",
-        "notation": "b+1+2, 1+2",
-        "id": "heihachi_103",
-        "wired": true
       }
     },
     "b+1+2,1+2~t7.heihachi": {
       "name": "DIABLO b+1+2,1+2",
       "input": "b+1+2,1+2",
-      "startup": 0.4333,
+      "startup": 0.433,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 14,
@@ -13511,7 +11887,7 @@
         "b+1+2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_104",
       "t7_command": "(b+1+2), 1+2",
       "t7_hit_level": "mid",
@@ -13527,16 +11903,6 @@
         "bank": "heihachi",
         "row": 241,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 18,
-        "startup_frames": 26,
-        "on_block": "-13",
-        "on_hit": "KND",
-        "hit_level": "mid, mid",
-        "notation": "b+1+2, 1+2",
-        "id": "heihachi_103",
-        "wired": true
       }
     },
     "b,f+2": {
@@ -13561,7 +11927,7 @@
         "b,f+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_105",
       "t7_command": "b, f+2",
       "t7_hit_level": "mid",
@@ -13576,18 +11942,6 @@
         "bank": "heihachi",
         "row": 129,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 12,
-        "startup_frames": 15,
-        "on_block": "-7",
-        "on_hit": "+4",
-        "on_ch": "+4",
-        "hit_level": "mid",
-        "crush": "high",
-        "notation": "b, f+2",
-        "id": "heihachi_105",
-        "wired": true
       }
     },
     "b,f+2,1": {
@@ -13612,7 +11966,7 @@
         "b,f+2,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_106",
       "t7_command": "b, f+2, 1",
       "t7_hit_level": "mid, high",
@@ -13635,22 +11989,12 @@
         "bank": "heihachi",
         "row": 63,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 12,
-        "startup_frames": 15,
-        "on_block": "-9",
-        "on_hit": "KND",
-        "hit_level": "mid, high",
-        "notation": "b, f+2, 1",
-        "id": "heihachi_106",
-        "wired": true
       }
     },
     "b,f+2,1~t7.heihachi": {
       "name": "DIABLO b,f+2,1",
       "input": "b,f+2,1",
-      "startup": 0.25,
+      "startup": 0.333,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 14,
@@ -13669,7 +12013,7 @@
         "b,f+2,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_107",
       "t7_command": "(b, f+2), 1",
       "t7_hit_level": "high",
@@ -13685,16 +12029,6 @@
         "bank": "heihachi",
         "row": 184,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 12,
-        "startup_frames": 15,
-        "on_block": "-9",
-        "on_hit": "KND",
-        "hit_level": "mid, high",
-        "notation": "b, f+2, 1",
-        "id": "heihachi_106",
-        "wired": true
       }
     },
     "b,f+2,2": {
@@ -13719,7 +12053,7 @@
         "b,f+2,2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_108",
       "t7_command": "b, f+2, 2",
       "t7_hit_level": "mid, mid",
@@ -13741,22 +12075,12 @@
         "bank": "heihachi",
         "row": 129,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 12,
-        "startup_frames": 15,
-        "on_block": "-12",
-        "on_hit": "+1 (OC)",
-        "hit_level": "mid, mid",
-        "notation": "b, f+2, 2",
-        "id": "heihachi_108",
-        "wired": true
       }
     },
     "b,f+2,2~t7.heihachi": {
       "name": "DIABLO b,f+2,2",
       "input": "b,f+2,2",
-      "startup": 0.25,
+      "startup": 0.383,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 12,
@@ -13775,7 +12099,7 @@
         "b,f+2,2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_109",
       "t7_command": "(b, f+2), 2",
       "t7_hit_level": "mid",
@@ -13790,16 +12114,6 @@
         "bank": "heihachi",
         "row": 163,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 12,
-        "startup_frames": 15,
-        "on_block": "-12",
-        "on_hit": "+1 (OC)",
-        "hit_level": "mid, mid",
-        "notation": "b, f+2, 2",
-        "id": "heihachi_108",
-        "wired": true
       }
     },
     "b,f+2,3": {
@@ -13824,7 +12138,7 @@
         "b,f+2,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_110",
       "t7_command": "b, f+2, 3",
       "t7_hit_level": "mid, high",
@@ -13847,22 +12161,12 @@
         "bank": "heihachi",
         "row": 227,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 12,
-        "startup_frames": 15,
-        "on_block": "-9",
-        "on_hit": "KND",
-        "hit_level": "mid, high",
-        "notation": "b, f+2, 3",
-        "id": "heihachi_110",
-        "wired": true
       }
     },
     "b,f+2,3~t7.heihachi": {
       "name": "DIABLO b,f+2,3",
       "input": "b,f+2,3",
-      "startup": 0.25,
+      "startup": 0.383,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 12,
@@ -13881,7 +12185,7 @@
         "b,f+2,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_111",
       "t7_command": "(b, f+2), 3",
       "t7_hit_level": "high",
@@ -13897,22 +12201,12 @@
         "bank": "heihachi",
         "row": 232,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 12,
-        "startup_frames": 15,
-        "on_block": "-9",
-        "on_hit": "KND",
-        "hit_level": "mid, high",
-        "notation": "b, f+2, 3",
-        "id": "heihachi_110",
-        "wired": true
       }
     },
     "b,B+1+2": {
       "name": "Deity Slayer",
       "input": "b,B+1+2",
-      "startup": 0.3667,
+      "startup": 0.367,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 15,
@@ -13931,7 +12225,7 @@
         "b,B+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_112",
       "t7_command": "b, B+1+2",
       "t7_hit_level": "mid",
@@ -13947,17 +12241,6 @@
         "bank": "heihachi",
         "row": 241,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 25,
-        "startup_frames": 22,
-        "on_block": "+8",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "notation": "b, B+1+2",
-        "id": "heihachi_112",
-        "wired": true
       }
     },
     "b,B+3+4": {
@@ -13982,7 +12265,7 @@
         "b,B+3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_113",
       "t7_command": "b, B+3+4",
       "t7_hit_level": "-",
@@ -13997,11 +12280,6 @@
         "bank": "heihachi",
         "row": 241,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "notation": "b, B+3+4",
-        "id": "heihachi_113",
-        "wired": true
       }
     },
     "qcf+2~t7.heihachi": {
@@ -14026,7 +12304,7 @@
         "qcf+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_114",
       "t7_command": "qcf+2",
       "t7_hit_level": "mid",
@@ -14042,17 +12320,6 @@
         "bank": "heihachi",
         "row": 129,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 30,
-        "startup_frames": 15,
-        "on_block": "-17",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "notation": "qcf+2",
-        "id": "heihachi_114",
-        "wired": true
       }
     },
     "BT.1": {
@@ -14077,7 +12344,7 @@
         "BT.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_115",
       "t7_command": "BT 1 (or 2)",
       "t7_hit_level": "high",
@@ -14117,7 +12384,7 @@
         "BT.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_116",
       "t7_command": "BT 3 (or 4)",
       "t7_hit_level": "high",
@@ -14158,7 +12425,7 @@
         "FC.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_117",
       "t7_command": "FC 1",
       "t7_hit_level": "s. mid",
@@ -14197,7 +12464,7 @@
         "FC.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_118",
       "t7_command": "FC 2",
       "t7_hit_level": "s. mid",
@@ -14236,7 +12503,7 @@
         "FC.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_119",
       "t7_command": "FC 3",
       "t7_hit_level": "low",
@@ -14275,7 +12542,7 @@
         "FC.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_120",
       "t7_command": "FC 4",
       "t7_hit_level": "low",
@@ -14314,7 +12581,7 @@
         "FC.d/f+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_121",
       "t7_command": "FC d/f+4",
       "t7_hit_level": "low",
@@ -14354,7 +12621,7 @@
         "SS.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_122",
       "t7_command": "SS 2",
       "t7_hit_level": "mid",
@@ -14393,7 +12660,7 @@
         "SS.2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_123",
       "t7_command": "SS 2, 1",
       "t7_hit_level": "mid, mid",
@@ -14440,7 +12707,7 @@
         "SS.2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_124",
       "t7_command": "SS (2), 1",
       "t7_hit_level": "mid",
@@ -14480,7 +12747,7 @@
         "f,f,F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_125",
       "t7_command": "WR f, f, F (Full Screen)",
       "t7_hit_level": "mid",
@@ -14521,7 +12788,7 @@
         "f,f,F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_126",
       "t7_command": "WR f, f, F (Full Screen) (On Grounded Opponent)",
       "t7_hit_level": "low",
@@ -14562,7 +12829,7 @@
         "4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_127",
       "t7_command": "WR 4",
       "t7_hit_level": "low",
@@ -14584,7 +12851,7 @@
     "1+2~t7.heihachi.2": {
       "name": "DIABLO 1+2",
       "input": "1+2",
-      "startup": 0.2,
+      "startup": 0.3,
       "active": 0.017,
       "recovery": 0.533,
       "damage": 14,
@@ -14603,7 +12870,7 @@
         "1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_128",
       "t7_command": "WR 1+2",
       "t7_hit_level": "mid",
@@ -14620,17 +12887,6 @@
         "bank": "heihachi",
         "row": 223,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 25,
-        "startup_frames": 12,
-        "on_block": "-12",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "notation": "1+2",
-        "id": "heihachi_38",
-        "wired": true
       }
     },
     "WS.1": {
@@ -14655,7 +12911,7 @@
         "WS.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_129",
       "t7_command": "WS 1",
       "t7_hit_level": "mid",
@@ -14695,7 +12951,7 @@
         "WS.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_130",
       "t7_command": "WS 2",
       "t7_hit_level": "mid",
@@ -14734,7 +12990,7 @@
         "WS.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_131",
       "t7_command": "WS 3",
       "t7_hit_level": "mid",
@@ -14773,7 +13029,7 @@
         "WS.3,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_132",
       "t7_command": "WS 3, 1+2",
       "t7_hit_level": "mid, mid",
@@ -14820,7 +13076,7 @@
         "WS.3,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_133",
       "t7_command": "WS (3), 1+2",
       "t7_hit_level": "mid",
@@ -14860,7 +13116,7 @@
         "WS.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_134",
       "t7_command": "WS 4",
       "t7_hit_level": "mid",
@@ -14899,7 +13155,7 @@
         "WS.4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_135",
       "t7_command": "WS 4, 4",
       "t7_hit_level": "mid, mid",
@@ -14945,7 +13201,7 @@
         "WS.4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_136",
       "t7_command": "WS (4), 4",
       "t7_hit_level": "mid",
@@ -14965,7 +13221,7 @@
     "d+4~t7.heihachi": {
       "name": "Geta Stomp",
       "input": "d+4",
-      "startup": 0.2,
+      "startup": 0.3,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 14,
@@ -14984,7 +13240,7 @@
         "d+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_137",
       "t7_command": "(While enemy is down) d+4",
       "t7_hit_level": "low",
@@ -15000,18 +13256,6 @@
         "bank": "heihachi",
         "row": 127,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 7,
-        "startup_frames": 12,
-        "on_block": "-13",
-        "on_hit": "-2",
-        "on_ch": "-2",
-        "hit_level": "low",
-        "crush": "high",
-        "notation": "d+4",
-        "id": "heihachi_87",
-        "wired": true
       }
     },
     "f,f,n,2,1,2,2,3,4,4,1,2,1": {
@@ -15036,7 +13280,7 @@
         "f,f,n,2,1,2,2,3,4,4,1,2,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_138",
       "t7_command": "f, f, n, 2, 1, 2, 2, 3, 4, 4, 1, 2, 1",
       "t7_hit_level": "-",
@@ -15052,21 +13296,12 @@
         "bank": "heihachi",
         "row": 41,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 93,
-        "startup_frames": 12,
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "notation": "f, f, n, 2, 1, 2, 2, 3, 4, 4, 1, 2, 1",
-        "id": "heihachi_138",
-        "wired": true
       }
     },
     "d/f+3,2,2,4,4,1,4,1,2,4": {
       "name": "10 Hit Combo 2",
       "input": "d/f+3,2,2,4,4,1,4,1,2,4",
-      "startup": 0.2833,
+      "startup": 0.283,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 62,
@@ -15085,7 +13320,7 @@
         "d/f+3,2,2,4,4,1,4,1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_139",
       "t7_command": "d/f+3, 2, 2, 4, 4, 1, 4, 1, 2, 4",
       "t7_hit_level": "-",
@@ -15101,21 +13336,12 @@
         "bank": "heihachi",
         "row": 234,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 105,
-        "startup_frames": 17,
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "notation": "d/f+3, 2, 2, 4, 4, 1, 4, 1, 2, 4",
-        "id": "heihachi_139",
-        "wired": true
       }
     },
     "d/f+3,2,2,4,4,1,2,1,2,1": {
       "name": "10 Hit Combo 3",
       "input": "d/f+3,2,2,4,4,1,2,1,2,1",
-      "startup": 0.2833,
+      "startup": 0.283,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 59,
@@ -15134,7 +13360,7 @@
         "d/f+3,2,2,4,4,1,2,1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_140",
       "t7_command": "d/f+3, 2, 2, 4, 4, 1, 2, 1, 2, 1",
       "t7_hit_level": "-",
@@ -15149,19 +13375,12 @@
         "bank": "heihachi",
         "row": 238,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 100,
-        "startup_frames": 17,
-        "notation": "d/f+3, 2, 2, 4, 4, 1, 2, 1, 2, 1",
-        "id": "heihachi_140",
-        "wired": true
       }
     },
     "t7.heihachi_141": {
       "name": "DIABLO Face Up, Feet Towards+3 or (After Rolling Forward)",
       "input": "Face Up, Feet Towards+3 or (After Rolling Forward)",
-      "startup": 0.3667,
+      "startup": 0.367,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 6,
@@ -15178,7 +13397,7 @@
       "anim_ref": "t7:heihachi:heihachi_141",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_141",
       "t7_command": "Face Up, Feet Towards+3 or (After Rolling Forward)",
       "t7_hit_level": "low",
@@ -15195,24 +13414,12 @@
         "bank": "heihachi",
         "row": 163,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 10,
-        "startup_frames": 22,
-        "on_block": "-12",
-        "on_hit": "+5",
-        "on_ch": "LAUNCH",
-        "hit_level": "low",
-        "crush": "high",
-        "notation": "Face Up, Feet Towards+3 or (After Rolling Forward)",
-        "id": "heihachi_141",
-        "wired": true
       }
     },
     "t7.heihachi_142": {
       "name": "DIABLO Face Up, Feet Towards+4 or (After Rolling Forward)",
       "input": "Face Up, Feet Towards+4 or (After Rolling Forward)",
-      "startup": 0.3667,
+      "startup": 0.367,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 11,
@@ -15229,7 +13436,7 @@
       "anim_ref": "t7:heihachi:heihachi_142",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_142",
       "t7_command": "Face Up, Feet Towards+4 or (After Rolling Forward)",
       "t7_hit_level": "mid",
@@ -15246,17 +13453,6 @@
         "bank": "heihachi",
         "row": 163,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 18,
-        "startup_frames": 22,
-        "on_block": "-12",
-        "on_hit": "+5",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "notation": "Face Up, Feet Towards+4 or (After Rolling Forward)",
-        "id": "heihachi_142",
-        "wired": true
       }
     },
     "FUFT.d+3": {
@@ -15281,7 +13477,7 @@
         "FUFT.d+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_143",
       "t7_command": "Face Up, Feet Towards, d+3 (or 4)",
       "t7_hit_level": "low",
@@ -15321,7 +13517,7 @@
         "FUFT.3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_144",
       "t7_command": "Face Up, Feet Towards+3+4",
       "t7_hit_level": "mid",
@@ -15343,7 +13539,7 @@
     "t7.heihachi_145": {
       "name": "DIABLO Face Up, Feet Towards, Roll Forward+1+2",
       "input": "Face Up, Feet Towards, Roll Forward+1+2",
-      "startup": 0.3167,
+      "startup": 0.317,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 9,
@@ -15360,7 +13556,7 @@
       "anim_ref": "t7:heihachi:heihachi_145",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_145",
       "t7_command": "Face Up, Feet Towards, Roll Forward+1+2",
       "t7_hit_level": "mid",
@@ -15377,18 +13573,6 @@
         "bank": "heihachi",
         "row": 222,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 15,
-        "startup_frames": 19,
-        "on_block": "+2",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "crush": "high",
-        "notation": "Face Up, Feet Towards, Roll Forward+1+2",
-        "id": "heihachi_145",
-        "wired": true
       }
     },
     "FDFA.3": {
@@ -15413,7 +13597,7 @@
         "FDFA.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_146",
       "t7_command": "Face Down, Feet Away+3",
       "t7_hit_level": "low",
@@ -15454,7 +13638,7 @@
         "FDFA.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_147",
       "t7_command": "Face Down, Feet Away+4 (close)",
       "t7_hit_level": "mid",
@@ -15495,7 +13679,7 @@
         "FDFA.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_148",
       "t7_command": "Face Down, Feet Away+4 (far)",
       "t7_hit_level": "mid",
@@ -15534,7 +13718,7 @@
       "anim_ref": "t7:heihachi:heihachi_149",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_149",
       "t7_command": "(Upon Landing) f",
       "t7_hit_level": "mid",
@@ -15550,18 +13734,6 @@
         "bank": "heihachi",
         "row": 162,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 4,
-        "startup_frames": 33,
-        "on_block": "-2",
-        "on_hit": "+3",
-        "on_ch": "+3",
-        "hit_level": "mid",
-        "crush": "low",
-        "notation": "(Upon Landing) f",
-        "id": "heihachi_149",
-        "wired": true
       }
     },
     "f+3+4~t7.heihachi": {
@@ -15586,7 +13758,7 @@
         "f+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_150",
       "t7_command": "f+3+4",
       "t7_hit_level": "-",
@@ -15602,11 +13774,6 @@
         "bank": "heihachi",
         "row": 109,
         "match": "same-notation"
-      },
-      "t7": {
-        "notation": "f+3+4",
-        "id": "heihachi_150",
-        "wired": true
       }
     },
     "RAI.U": {
@@ -15631,7 +13798,7 @@
         "RAI.U"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_151",
       "t7_command": "RAI U (or D)",
       "t7_hit_level": "-",
@@ -15671,7 +13838,7 @@
         "RAI.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_152",
       "t7_command": "RAI 1",
       "t7_hit_level": "high",
@@ -15711,7 +13878,7 @@
         "RAI.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_153",
       "t7_command": "RAI 2",
       "t7_hit_level": "mid",
@@ -15751,7 +13918,7 @@
         "RAI.2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_154",
       "t7_command": "RAI 2, 1",
       "t7_hit_level": "mid, mid",
@@ -15798,7 +13965,7 @@
         "RAI.2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_155",
       "t7_command": "RAI (2), 1",
       "t7_hit_level": "mid",
@@ -15838,7 +14005,7 @@
         "d/f+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_156",
       "t7_command": "d/f+1+2",
       "t7_hit_level": "mid",
@@ -15854,17 +14021,6 @@
         "bank": "heihachi",
         "row": 110,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 25,
-        "startup_frames": 24,
-        "on_block": "-14",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "notation": "d/f+1+2",
-        "id": "heihachi_156",
-        "wired": true
       }
     },
     "R.1,b+2,1+2": {
@@ -15889,7 +14045,7 @@
         "R.1,b+2,1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_157",
       "t7_command": "(During Rage) 1, b+2, 1+2",
       "t7_hit_level": "high, mid, high",
@@ -15937,7 +14093,7 @@
         "R.1,b+2,1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_158",
       "t7_command": "(During Rage) (1), b+2, 1+2",
       "t7_hit_level": "mid, high",
@@ -15984,7 +14140,7 @@
         "R.1,b+2,1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_159",
       "t7_command": "(During Rage) (1), (b+2), 1+2",
       "t7_hit_level": "high",
@@ -16024,7 +14180,7 @@
         "R.d+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_160",
       "t7_command": "(During Rage) d+1+2",
       "t7_hit_level": "mid",
@@ -16065,7 +14221,7 @@
         "R.b+2,1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_161",
       "t7_command": "(During Rage) b+2, 1+2",
       "t7_hit_level": "mid, high",
@@ -16112,7 +14268,7 @@
         "R.b+2,1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_162",
       "t7_command": "(During Rage) (b+2), 1+2",
       "t7_hit_level": "high",
@@ -16152,7 +14308,7 @@
         "d+1+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_163",
       "t7_command": "d+1+4",
       "t7_hit_level": "mid",
@@ -16167,13 +14323,6 @@
         "bank": "heihachi",
         "row": 198,
         "match": "same-notation"
-      },
-      "t7": {
-        "damage": 50,
-        "hit_level": "mid",
-        "notation": "d+1+4",
-        "id": "heihachi_163",
-        "wired": true
       }
     },
     "d+2+3": {
@@ -16198,7 +14347,7 @@
         "d+2+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_164",
       "t7_command": "d+2+3",
       "t7_hit_level": "-",
@@ -16214,16 +14363,6 @@
         "bank": "heihachi",
         "row": 241,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "startup_frames": 60,
-        "on_block": "!",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "crush": "high",
-        "notation": "d+2+3",
-        "id": "heihachi_164",
-        "wired": true
       }
     },
     "RAI.1+2": {
@@ -16248,7 +14387,7 @@
         "RAI.1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_165",
       "t7_command": "RAI 1+2",
       "t7_hit_level": "high",
@@ -16287,7 +14426,7 @@
         "1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_166",
       "t7_command": "Approach enemy... 1+3",
       "t7_hit_level": "high throw",
@@ -16330,7 +14469,7 @@
         "2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_167",
       "t7_command": "Approach enemy... 2+4",
       "t7_hit_level": "high throw",
@@ -16373,7 +14512,7 @@
         "f+1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_168",
       "t7_command": "Approach enemy... f+1+3",
       "t7_hit_level": "high throw",
@@ -16416,7 +14555,7 @@
         "f+2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_169",
       "t7_command": "Approach enemy... f+2+4",
       "t7_hit_level": "high throw",
@@ -16459,7 +14598,7 @@
         "f,F+1+2"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_170",
       "t7_command": "Approach enemy... f, F+1+2",
       "t7_hit_level": "high throw",
@@ -16502,7 +14641,7 @@
         "d/f+2+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_171",
       "t7_command": "Approach enemy... d/f+2+3",
       "t7_hit_level": "high throw",
@@ -16545,7 +14684,7 @@
         "qcf+1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_172",
       "t7_command": "Approach enemy... qcf+1+3",
       "t7_hit_level": "high throw",
@@ -16588,7 +14727,7 @@
         "SIDE_L.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_173",
       "t7_command": "Approach from left side... 1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -16631,7 +14770,7 @@
         "SIDE_R.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_174",
       "t7_command": "Approach from right side... 1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -16674,7 +14813,7 @@
         "BACK.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_175",
       "t7_command": "Approach from behind... 1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -16698,7 +14837,7 @@
     "t7.heihachi_176": {
       "name": "DIABLO WR f, f, F (Mid Screen)",
       "input": "WR f, f, F (Mid Screen)",
-      "startup": 0.2667,
+      "startup": 0.267,
       "active": 0.017,
       "recovery": 0.5,
       "damage": 3,
@@ -16715,7 +14854,7 @@
       "anim_ref": "t7:heihachi:heihachi_176",
       "input_slots": [],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_176",
       "t7_command": "WR f, f, F (Mid Screen)",
       "t7_hit_level": "mid throw",
@@ -16734,17 +14873,6 @@
         "bank": "heihachi",
         "row": 241,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "damage": 5,
-        "startup_frames": 16,
-        "on_block": "-5 (BT)",
-        "on_hit": "KND",
-        "hit_level": "mid throw",
-        "crush": "high",
-        "notation": "WR f, f, F (Mid Screen)",
-        "id": "heihachi_176",
-        "wired": true
       }
     },
     "TACKLE.1": {
@@ -16769,7 +14897,7 @@
         "TACKLE.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_177",
       "t7_command": "(During Tackle) 1 (or 2)",
       "t7_hit_level": "-",
@@ -16810,7 +14938,7 @@
         "TACKLE.1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_178",
       "t7_command": "(During Tackle) 1/2, 1/2",
       "t7_hit_level": "-",
@@ -16858,7 +14986,7 @@
         "TACKLE.1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_179",
       "t7_command": "(During Tackle) 1/2, 1/2, 1/2",
       "t7_hit_level": "-",
@@ -16907,7 +15035,7 @@
         "TACKLE.1,1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_180",
       "t7_command": "(During Tackle) 1/2, 1/2, 1/2, 1/2",
       "t7_hit_level": "-",
@@ -16957,7 +15085,7 @@
         "f,n,d,D/F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_181",
       "t7_command": "f, n, d, D/F",
       "t7_hit_level": "-",
@@ -16972,12 +15100,6 @@
         "bank": "heihachi",
         "row": 157,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "crush": "high",
-        "notation": "f, n, d, D/F",
-        "id": "heihachi_181",
-        "wired": true
       }
     },
     "2+3+4~t7.heihachi": {
@@ -17002,7 +15124,7 @@
         "2+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_182",
       "t7_command": "2+3+4",
       "t7_hit_level": "-",
@@ -17017,11 +15139,6 @@
         "bank": "heihachi",
         "row": 241,
         "match": "nearest limb/class/startup (approximate)"
-      },
-      "t7": {
-        "notation": "2+3+4",
-        "id": "heihachi_182",
-        "wired": true
       }
     },
     "REV.b+1+4": {
@@ -17046,7 +15163,7 @@
         "REV.b+1+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_183",
       "t7_command": "Time with enemy attack... b+1+4 (or b+2+3)",
       "t7_hit_level": "-",
@@ -17728,7 +15845,7 @@
       "t3_source": "heihachi",
       "t3_row": 71,
       "t3_command": "9+LK",
-      "startup": 0.4667,
+      "startup": 0.467,
       "active": 0.033,
       "recovery": 0.733,
       "damage": 15,
@@ -17741,19 +15858,7 @@
         "u/f+3"
       ],
       "move_class": "strike",
-      "merge_source": "t3:heihachi:row:71",
-      "t7": {
-        "damage": 17,
-        "startup_frames": 28,
-        "on_block": "-10",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "crush": "low",
-        "notation": "u/f+3",
-        "id": "heihachi_39",
-        "wired": true
-      }
+      "merge_source": "t3:heihachi:row:71"
     },
     "u+4": {
       "name": "HEIHACHI u+4 (T3 heihachi r72)",
@@ -18101,7 +16206,7 @@
       "t3_source": "heihachi",
       "t3_row": 100,
       "t3_command": "4+RP",
-      "startup": 0.3667,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.483,
       "damage": 7,
@@ -18114,19 +16219,7 @@
         "b+2"
       ],
       "move_class": "strike",
-      "merge_source": "t3:heihachi:row:100",
-      "t7": {
-        "damage": 20,
-        "startup_frames": 22,
-        "on_block": "-2",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "crush": "high",
-        "notation": "b+2",
-        "id": "heihachi_97",
-        "wired": true
-      }
+      "merge_source": "t3:heihachi:row:100"
     },
     "b~t3.heihachi": {
       "name": "HEIHACHI b_c37 (T3 heihachi r101)",
@@ -18199,7 +16292,7 @@
       "t3_source": "heihachi",
       "t3_row": 104,
       "t3_command": "6+RK",
-      "startup": 0.3167,
+      "startup": 0.267,
       "active": 0.017,
       "recovery": 0.733,
       "damage": 18,
@@ -18212,18 +16305,7 @@
         "f+4"
       ],
       "move_class": "strike",
-      "merge_source": "t3:heihachi:row:104",
-      "t7": {
-        "damage": 20,
-        "startup_frames": 19,
-        "on_block": "+4 (OC)",
-        "on_hit": "+7 (OC)",
-        "on_ch": "KND",
-        "hit_level": "mid",
-        "notation": "f+4",
-        "id": "heihachi_48",
-        "wired": true
-      }
+      "merge_source": "t3:heihachi:row:104"
     },
     "b~t3.heihachi.3": {
       "name": "HEIHACHI b_c38 (T3 heihachi r106)",
@@ -18253,7 +16335,7 @@
       "t3_source": "heihachi",
       "t3_row": 107,
       "t3_command": "6+LP+RP",
-      "startup": 0.2,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.483,
       "damage": 4,
@@ -18266,18 +16348,7 @@
         "f+1+2"
       ],
       "move_class": "strike",
-      "merge_source": "t3:heihachi:row:107",
-      "t7": {
-        "damage": 15,
-        "startup_frames": 12,
-        "on_block": "-14",
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "hit_level": "high",
-        "notation": "f+1+2",
-        "id": "heihachi_49",
-        "wired": true
-      }
+      "merge_source": "t3:heihachi:row:107"
     },
     "f+2~t3.heihachi": {
       "name": "HEIHACHI f+2 (T3 heihachi r108)",
@@ -18285,7 +16356,7 @@
       "t3_source": "heihachi",
       "t3_row": 108,
       "t3_command": "6+RP",
-      "startup": 0.25,
+      "startup": 0.283,
       "active": 0.017,
       "recovery": 0.717,
       "damage": 12,
@@ -18298,18 +16369,7 @@
         "f+2"
       ],
       "move_class": "strike",
-      "merge_source": "t3:heihachi:row:108",
-      "t7": {
-        "damage": 13,
-        "startup_frames": 15,
-        "on_block": "-9",
-        "on_hit": "+2",
-        "on_ch": "+2",
-        "hit_level": "high",
-        "notation": "f+2",
-        "id": "heihachi_42",
-        "wired": true
-      }
+      "merge_source": "t3:heihachi:row:108"
     },
     "f+3+4~t3.heihachi": {
       "name": "HEIHACHI f+3+4_r2 (T3 heihachi r109)",
@@ -18339,7 +16399,7 @@
       "t3_source": "heihachi",
       "t3_row": 111,
       "t3_command": "3+RP",
-      "startup": 0.25,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.483,
       "damage": 5,
@@ -18352,18 +16412,7 @@
         "d/f+2"
       ],
       "move_class": "strike",
-      "merge_source": "t3:heihachi:row:111",
-      "t7": {
-        "damage": 14,
-        "startup_frames": 15,
-        "on_block": "-7",
-        "on_hit": "+4",
-        "on_ch": "LAUNCH",
-        "hit_level": "mid",
-        "notation": "d/f+2",
-        "id": "heihachi_79",
-        "wired": true
-      }
+      "merge_source": "t3:heihachi:row:111"
     },
     "d/b": {
       "name": "HEIHACHI d/b_c37 (T3 heihachi r112)",
@@ -18535,18 +16584,7 @@
         "d/f+4"
       ],
       "move_class": "strike",
-      "merge_source": "t3:heihachi:row:121",
-      "t7": {
-        "damage": 15,
-        "startup_frames": 12,
-        "on_block": "-6",
-        "on_hit": "+5",
-        "on_ch": "+5",
-        "hit_level": "mid",
-        "notation": "d/f+4",
-        "id": "heihachi_81",
-        "wired": true
-      }
+      "merge_source": "t3:heihachi:row:121"
     },
     "d/b+1+2~t3.heihachi": {
       "name": "HEIHACHI d/b+1+2 (T3 heihachi r122)",
@@ -18554,7 +16592,7 @@
       "t3_source": "heihachi",
       "t3_row": 122,
       "t3_command": "1+LP+RP",
-      "startup": 0.35,
+      "startup": 0.133,
       "active": 0.017,
       "recovery": 0.483,
       "damage": 3,
@@ -18567,19 +16605,7 @@
         "d/b+1+2"
       ],
       "move_class": "strike",
-      "merge_source": "t3:heihachi:row:122",
-      "t7": {
-        "damage": 10,
-        "startup_frames": 21,
-        "on_block": "-13",
-        "on_hit": "+5",
-        "on_ch": "+5",
-        "hit_level": "mid, mid",
-        "crush": "high",
-        "notation": "d/b+1+2",
-        "id": "heihachi_89",
-        "wired": true
-      }
+      "merge_source": "t3:heihachi:row:122"
     },
     "d/b+2~t3.heihachi": {
       "name": "HEIHACHI d/b+2 (T3 heihachi r124)",
@@ -18587,7 +16613,7 @@
       "t3_source": "heihachi",
       "t3_row": 124,
       "t3_command": "1+RP",
-      "startup": 0.3833,
+      "startup": 0.167,
       "active": 0.017,
       "recovery": 0.483,
       "damage": 6,
@@ -18600,19 +16626,7 @@
         "d/b+2"
       ],
       "move_class": "strike",
-      "merge_source": "t3:heihachi:row:124",
-      "t7": {
-        "damage": 23,
-        "startup_frames": 23,
-        "on_block": "-18",
-        "on_hit": "+5",
-        "on_ch": "+5",
-        "hit_level": "low",
-        "crush": "high",
-        "notation": "d/b+2",
-        "id": "heihachi_88",
-        "wired": true
-      }
+      "merge_source": "t3:heihachi:row:124"
     },
     "d/f+3+4~t3.heihachi": {
       "name": "HEIHACHI d/f+3+4_r107_r125 (T3 heihachi r125)",
@@ -18676,19 +16690,7 @@
         "d+4"
       ],
       "move_class": "strike",
-      "merge_source": "t3:heihachi:row:127",
-      "t7": {
-        "damage": 7,
-        "startup_frames": 12,
-        "on_block": "-13",
-        "on_hit": "-2",
-        "on_ch": "-2",
-        "hit_level": "low",
-        "crush": "high",
-        "notation": "d+4",
-        "id": "heihachi_87",
-        "wired": true
-      }
+      "merge_source": "t3:heihachi:row:127"
     },
     "d/f+1+2~t3.heihachi": {
       "name": "HEIHACHI d/f+1+2_r107 (T3 heihachi r128)",
@@ -18739,7 +16741,7 @@
       "t3_source": "heihachi",
       "t3_row": 130,
       "t3_command": "3+LK",
-      "startup": 0.2833,
+      "startup": 0.267,
       "active": 0.017,
       "recovery": 0.733,
       "damage": 10,
@@ -18752,18 +16754,7 @@
         "d/f+3"
       ],
       "move_class": "strike",
-      "merge_source": "t3:heihachi:row:130",
-      "t7": {
-        "damage": 17,
-        "startup_frames": 17,
-        "on_block": "-7",
-        "on_hit": "+4",
-        "on_ch": "+4",
-        "hit_level": "mid",
-        "notation": "d/f+3",
-        "id": "heihachi_80",
-        "wired": true
-      }
+      "merge_source": "t3:heihachi:row:130"
     },
     "d/f+4~t3.heihachi.2": {
       "name": "HEIHACHI d/f+4_r131 (T3 heihachi r131)",
@@ -19171,7 +17162,7 @@
       "t3_source": "heihachi",
       "t3_row": 171,
       "t3_command": "RK",
-      "startup": 0.4667,
+      "startup": 0.467,
       "active": 0.033,
       "recovery": 0.733,
       "damage": 10,
@@ -19184,17 +17175,7 @@
         "u/f+3,4"
       ],
       "move_class": "special",
-      "merge_source": "t3:heihachi:row:171",
-      "t7": {
-        "damage": 17,
-        "startup_frames": 28,
-        "on_block": "+3",
-        "on_hit": "S!",
-        "hit_level": "mid, mid",
-        "notation": "u/f+3, 4",
-        "id": "heihachi_40",
-        "wired": true
-      }
+      "merge_source": "t3:heihachi:row:171"
     },
     "d/f+1~t3.heihachi": {
       "name": "HEIHACHI d/f+1_r30 (T3 heihachi r173)",
@@ -19675,7 +17656,7 @@
       "t3_source": "heihachi",
       "t3_row": 209,
       "t3_command": "any-button",
-      "startup": 0.1667,
+      "startup": 0.367,
       "active": 0.033,
       "recovery": 0.7,
       "damage": 15,
@@ -19688,18 +17669,7 @@
         "1"
       ],
       "move_class": "strike",
-      "merge_source": "t3:heihachi:row:209",
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "+1",
-        "on_hit": "+8",
-        "on_ch": "+8",
-        "hit_level": "high",
-        "notation": "1",
-        "id": "heihachi_2",
-        "wired": true
-      }
+      "merge_source": "t3:heihachi:row:209"
     },
     "f+1+2,b+2,4": {
       "name": "HEIHACHI f+1+2,b+2,4 (T3 heihachi r214)",
@@ -19792,7 +17762,7 @@
       "t3_source": "heihachi",
       "t3_row": 219,
       "t3_command": "any-button",
-      "startup": 0.1667,
+      "startup": 0.65,
       "active": 0.1,
       "recovery": 0.7,
       "damage": 15,
@@ -19805,17 +17775,7 @@
         "1,1"
       ],
       "move_class": "strike",
-      "merge_source": "t3:heihachi:row:219",
-      "t7": {
-        "damage": 7,
-        "startup_frames": 10,
-        "on_block": "-1",
-        "on_hit": "+8",
-        "hit_level": "high, high",
-        "notation": "1, 1",
-        "id": "heihachi_3",
-        "wired": true
-      }
+      "merge_source": "t3:heihachi:row:219"
     },
     "f+1+2,b+2,4~t3.heihachi": {
       "name": "HEIHACHI f+1+2,b+2,4_r220 (T3 heihachi r220)",
@@ -20096,7 +18056,7 @@
       "t3_source": "heihachi",
       "t3_row": 234,
       "t3_command": "RK",
-      "startup": 0.2833,
+      "startup": 0.65,
       "active": 0.017,
       "recovery": 0.817,
       "damage": 21,
@@ -20109,16 +18069,7 @@
         "d/f+3,2,2,4,4,1,4,1,2,4"
       ],
       "move_class": "special",
-      "merge_source": "t3:heihachi:row:234",
-      "t7": {
-        "damage": 105,
-        "startup_frames": 17,
-        "on_hit": "KND",
-        "on_ch": "KND",
-        "notation": "d/f+3, 2, 2, 4, 4, 1, 4, 1, 2, 4",
-        "id": "heihachi_139",
-        "wired": true
-      }
+      "merge_source": "t3:heihachi:row:234"
     },
     "d/f+3,2,2,4,4,1,2": {
       "name": "HEIHACHI d/f+3,2,2,4,4,1,2 (T3 heihachi r235)",
@@ -20189,7 +18140,7 @@
       "t3_source": "heihachi",
       "t3_row": 238,
       "t3_command": "LP",
-      "startup": 0.2833,
+      "startup": 0.7,
       "active": 0.05,
       "recovery": 0.7,
       "damage": 15,
@@ -20202,14 +18153,7 @@
         "d/f+3,2,2,4,4,1,2,1,2,1"
       ],
       "move_class": "special",
-      "merge_source": "t3:heihachi:row:238",
-      "t7": {
-        "damage": 100,
-        "startup_frames": 17,
-        "notation": "d/f+3, 2, 2, 4, 4, 1, 2, 1, 2, 1",
-        "id": "heihachi_140",
-        "wired": true
-      }
+      "merge_source": "t3:heihachi:row:238"
     },
     "d/f+3,2,2,4,4,1,4,1,2,1": {
       "name": "HEIHACHI d/f+3,2,2,4,4,1,4,1,2,1 (T3 heihachi r239)",
@@ -20238,7 +18182,7 @@
       "t3_source": "heihachi",
       "t3_row": 240,
       "t3_command": "RP",
-      "startup": 0.2833,
+      "startup": 0.483,
       "active": 0.017,
       "recovery": 0.783,
       "damage": 15,
@@ -20251,17 +18195,7 @@
         "d+1,2"
       ],
       "move_class": "strike",
-      "merge_source": "t3:heihachi:row:240",
-      "t7": {
-        "damage": 16,
-        "startup_frames": 17,
-        "on_block": "-9",
-        "on_hit": "+6",
-        "hit_level": "mid, mid",
-        "notation": "d+1, 2",
-        "id": "heihachi_84",
-        "wired": true
-      }
+      "merge_source": "t3:heihachi:row:240"
     },
     "1+3~t3.heihachi": {
       "name": "HEIHACHI 1+3 (T3 heihachi r241)",
@@ -20817,9 +18751,7 @@
     "4*": "4*",
     "BACK.1+3": "Back throw",
     "BT.1": "BT.1",
-    "BT.2": "BT.1",
     "BT.3": "BT.3",
-    "BT.4": "BT.3",
     "FC.1": "FC.1",
     "FC.2": "FC.2",
     "FC.3": "FC.3",
@@ -21089,7 +19021,7 @@
     "moves_before": 642,
     "moves_after": 642,
     "added": {},
-    "slots": 299,
+    "slots": 297,
     "slots_by_priority": {
       "signature": 3,
       "t8": 135,

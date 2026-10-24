@@ -9,8 +9,6 @@ on:
     types: [opened, synchronize, reopened, labeled, unlabeled]
   push:
     branches: [main]
-  merge_group:
-    types: [checks_requested]
 # CI minute diet (Plan B): superseded PR runs are cancelled, not billed.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

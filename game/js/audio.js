@@ -141,22 +141,6 @@ class AudioEngine {
     this._noise(t, 0.5, 0.4, 600);
   }
 
-  rage() { // Tekken-style rage ignition: rising snarl + sub thump
-    const t = this.now;
-    this._osc('sawtooth', 90, t, t + 0.5, 0.4);
-    this._osc('sawtooth', 135, t + 0.05, t + 0.55, 0.3);
-    this._osc('sine', 55, t + 0.1, t + 0.7, 0.65);
-    this._noise(t + 0.15, 0.4, 0.35, 1400);
-  }
-
-  urge() { // Soul Urge ignition (T8 Heat): bright rising surge + shimmer
-    const t = this.now;
-    this._osc('sawtooth', 220, t, t + 0.4, 0.3);
-    this._osc('sawtooth', 330, t + 0.04, t + 0.45, 0.25);
-    this._osc('sine', 110, t + 0.08, t + 0.6, 0.5);
-    this._noise(t + 0.1, 0.35, 0.3, 3600);
-  }
-
   bell() { // round start
     const t = this.now;
     this._osc('sine', 880, t, t + 0.5, 0.4);

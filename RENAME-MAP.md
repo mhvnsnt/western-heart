@@ -379,13 +379,3 @@ the coordinator — it was not executed by the wiring lane.
 - Design sources named by the owner that are NOT yet in the teardown holdings, recorded so they are never silently dropped or faked: the **WWE All Stars** Rock Bottom version (All Stars is queued on the teardown-idle queue — not acquired, not torn down) and **Younger Toguro's fingernail blast** (Yu Yu Hakusho — no YYH game in the holdings). Both wire in when their sources exist.
 
 <!-- END CORNERSTONE SECTION -->
-
-<!-- BEGIN EM-JIN NAMING CONVENTION (owner 2026-10-22) -->
-### NAMING CONVENTION — Jin (Eastern Mind)
-
-There is an Eastern Mind character named Jin. This is **NOT Jin Kazama** (Tekken) — completely separate character.
-
-**Convention:** in all files, docs, and code, refer to this character as **"Jin (Eastern Mind)"** or **"EM-Jin"** — never bare "Jin" where confusion with Jin Kazama is possible. This matters because Demonio already uses Jin's moveset as a base, so the name collision is real.
-
-*(Correction 2026-10-22: earlier note said "Gen (Eastern Mind)" — that was a mishearing. It is Jin.)*
-<!-- END EM-JIN NAMING CONVENTION -->

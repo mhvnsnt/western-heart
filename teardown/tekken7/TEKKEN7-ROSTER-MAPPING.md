@@ -121,25 +121,22 @@ Mishima Dojo, Forgotten Realm, Jungle Outpost, Arctic Snowfall, Twilight Conflic
 
 Tekken 7's customization uses CCI (Customize Character Item) and CI (Character Item) assets. Each character has a CS (Character Set) defining available customization slots. This is the system to study for Western Heart's WWE-style attires.
 
-## Extraction Status (updated 2026-10-23 — full matrix in TEKKEN7-ROSTER-COVERAGE.md)
+## Extraction Status
 
 - [x] tekkenmods-docs cloned (character IDs, stage IDs, file naming, extraction guides)
 - [x] UModel (UE Viewer) working on Linux — at `tools/umodel_linux`
 - [x] QuickBMS extraction method documented (in tekkenmods-docs)
-- [x] Community-rip model library: **25 of 51 T7 fighters held** (releases `tekken-models-batch-2`, `tekken-models-batch-3`, `tekken7-full-v1`; repo `teardown/models/tekken7/` + `king/`) — full index at `teardown/models/tekken7/MODELS-INDEX.md`
-- [ ] Tekken 7 game files (~47GB) — BLOCKED: never acquired; 18GB free on disk, need 47GB. No paks ever held — umodel/QuickBMS have nothing to run on
-- [ ] Character movesets / animations / stances / win poses (T7-native) — **0/51**, blocked on game files
-- [ ] Stage extraction — 1/34 partial (`arenas/mishima-dojo_2024-map.rar`); rest blocked on game files
-- [ ] Customization item meshes — 0 in all 16 slot classes (surveyed 2026-10-21); blocked on game files
-- [ ] Audio (Wwise) — 0, blocked on game files
+- [ ] Tekken 7 game files (~47GB) — BLOCKED: only 18GB free on disk, need 47GB
+- [ ] Character model extraction — pending game files
+- [ ] Stage extraction — pending game files
+- [ ] Customization item extraction — pending game files
 
-## Next Steps
+## Next Steps (when disk is available)
 
-1. User confirms T7 ownership → acquire the ~47GB PC game to external storage (not the repo tree, not this disk)
-2. Extract PAKs with QuickBMS or browse directly with UModel (both ready at `tools/`)
-3. Extract SK/SKT per fighter — dedupe against the 25-fighter model library first
-4. Extract animation sets, stances, win poses per fighter (0/51 today)
-5. Extract T (textures) and MI (material instances) for fighters missing them
-6. Extract customization items (CCI/CI) for the creation-suite study (0 meshes today)
-7. Extract stages (prioritize: Mishima Dojo, Arena, Devil's Pit) and Wwise audio
-8. Without game files: pull the 5 obtainable-but-missing models (Paul, Lili, Lucky Chloe, Eliza, Lidia — sources in TEKKEN7-ROSTER-COVERAGE.md §2); needs a browser-capable agent
+1. Free 47GB+ disk space (disk cleanup per standing rules)
+2. Download Tekken 7 PC (~47GB)
+3. Extract PAK files with QuickBMS or browse directly with UModel
+4. Extract SK (skeletal mesh) for each fighter, starting with owner's named 7
+5. Extract T (textures) and MI (material instances) for each
+6. Extract customization items (CCI/CI) for the customization system study
+7. Extract stages (prioritize: Mishima Dojo, Arena, Devil's Pit)
