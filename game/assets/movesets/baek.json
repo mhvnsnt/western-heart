@@ -373,7 +373,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot."
+      "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "P+K": {
       "name": "Homework [WH SIGNATURE]",
@@ -397,7 +402,12 @@
       "note": "Every fight is a lesson; every loss is homework. A teaching throw with corrections.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true
+      "isGrab": true,
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Kick Is the Question [WH SIGNATURE]",
@@ -417,7 +427,12 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 41,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "BAEK 1+2 (T3 bryan r41)",
@@ -461,7 +476,12 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+2": {
       "name": "BAEK b+2 (T3 bryan r158)",

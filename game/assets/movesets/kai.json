@@ -2001,7 +2001,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "The sea doesn't stop. Rhythmic, unstoppable - the wave that keeps its own time."
+      "note": "The sea doesn't stop. Rhythmic, unstoppable - the wave that keeps its own time.",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+K": {
       "name": "Lowest Point [WH SIGNATURE]",
@@ -2022,7 +2027,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "Water finds the lowest point and fills it. A low kick that was always going to land."
+      "note": "Water finds the lowest point and fills it. A low kick that was always going to land.",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Doesn't Stop [WH SIGNATURE]",
@@ -2042,7 +2052,12 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "The sea doesn't stop. Rhythmic, unstoppable - the wave that keeps its own time.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "KAI 1+2 (T3 jin r32)",
@@ -2082,7 +2097,12 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "Water finds the lowest point and fills it. A low kick that was always going to land.",
-      "input_remapped_from": "d/f+K"
+      "input_remapped_from": "d/f+K",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 205,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+4": {
       "name": "KAI f+4 (T3 jin r214)",
@@ -4929,8 +4949,8 @@
       "merge_source": "t8:Eddy-1+2+3+4",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1,2,4": {
@@ -5239,8 +5259,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Burst",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "2,3": {
@@ -5546,8 +5566,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to HSP; Combo from 1st CH with 8F delay; Interrupt with i10 from 1st block; &lt;/div&gt",
       "anim_t3": {
         "bank": "eddy",
-        "row": 109,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+1,4,3": {
@@ -5622,8 +5642,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 3rd CH with 5F delay; Interrupt with i8 from 3rd block; Move can be delayed by 8F; Input can be delayed by 11F; &lt;/div&gt",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+1,4,3+4": {
@@ -5663,8 +5683,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st CH or 2nd hit with 3F delay; Interrupt with i2 from 1st block; Move cannot be delayed; Input can be delayed by 3F; &lt;/div&gt",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+2": {
@@ -5801,8 +5821,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit with 7F delay; Interrupt with i4 from 1st block; Move can be delayed by 6F; Input can be delayed by 7F; &lt;/div&gt",
       "anim_t3": {
         "bank": "eddy",
-        "row": 109,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+3": {
@@ -5870,8 +5890,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to RLX; Combo from 1st CH with 7F delay; Interrupt with i6 from 1st block; &lt;/div&gt",
       "anim_t3": {
         "bank": "eddy",
-        "row": 248,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+3+4": {
@@ -6128,8 +6148,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b,u/b": {
@@ -6754,8 +6774,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "eddy",
-        "row": 255,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+1~t8.eddy": {
@@ -6822,8 +6842,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
       "anim_t3": {
         "bank": "eddy",
-        "row": 248,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+2~t8.eddy": {
@@ -7002,8 +7022,8 @@
       "t8_alias": "Handstand Position",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f+2": {
@@ -7284,8 +7304,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f+4,3+4": {
@@ -7506,8 +7526,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+4": {
@@ -7610,8 +7630,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "H.2+3": {
@@ -7644,8 +7664,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Smash",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "H.3+4": {
@@ -7679,8 +7699,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "H.qcf+4": {
@@ -7783,8 +7803,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow spike&quot;; &gt;Spike&lt;",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "HSP.1+3": {
@@ -7888,8 +7908,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "eddy",
-        "row": 248,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "HSP.3": {
@@ -8276,8 +8296,8 @@
       },
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "MD1.HSP.b+4": {
@@ -8356,8 +8376,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "MD2.HSP.b+4": {
@@ -8570,8 +8590,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "RLX.1,3": {
@@ -8605,8 +8625,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to RLX; Combo from 1st CH with 5F delay; Interrupt with i6 from 1st block; Move can be delayed by 9F; Input can be delayed by 10F; &lt;/div&gt",
       "anim_t3": {
         "bank": "eddy",
-        "row": 248,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "RLX.2": {
@@ -8777,8 +8797,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "eddy",
-        "row": 248,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "RLX.3+4": {
@@ -8812,8 +8832,8 @@
       "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado&lt;/div&gt",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "RLX.4": {
@@ -8916,8 +8936,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "RLX.n,d": {
@@ -9098,8 +9118,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to FC; &lt;/div&gt",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SS.4": {
@@ -9449,8 +9469,8 @@
       "throw_break": "1+2",
       "anim_t3": {
         "bank": "eddy",
-        "row": 27,
-        "match": "same-notation"
+        "row": 334,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+1,3": {
@@ -9484,8 +9504,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "eddy",
-        "row": 52,
-        "match": "same-notation"
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+1,4": {
@@ -9518,8 +9538,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Engag",
       "anim_t3": {
         "bank": "eddy",
-        "row": 62,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+2": {
@@ -9974,8 +9994,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "WS.4": {
@@ -10041,8 +10061,8 @@
       "note": "Combos from 1st hit",
       "anim_t3": {
         "bank": "eddy",
-        "row": 109,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS.4,4,4": {
@@ -10717,8 +10737,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "3~4,4,1+2~t7.eddy": {
@@ -10763,8 +10783,8 @@
       },
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "3~4,4,1+2~t7.eddy.2": {
@@ -10802,8 +10822,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "3~4,4,1+2,1+2": {
@@ -10852,8 +10872,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "3~4,4,1+2,1+2~t7.eddy": {
@@ -10900,8 +10920,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "3~4,4,1+2,1+2~t7.eddy.2": {
@@ -10947,8 +10967,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "3~4,4,1+2,1+2~t7.eddy.3": {
@@ -10987,8 +11007,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 336,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "3~4,3+4": {
@@ -11034,8 +11054,8 @@
       },
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "3~4,3+4~t7.eddy": {
@@ -11074,8 +11094,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "4~t7.eddy": {
@@ -11661,8 +11681,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 248,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+3,3~t7.eddy.2": {
@@ -12264,8 +12284,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f+4,3,3+4~t7.eddy.2": {
@@ -12312,8 +12332,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f+4,3,3+4~t7.eddy.3": {
@@ -12359,8 +12379,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f+3+4~t7.eddy": {
@@ -13276,8 +13296,8 @@
       },
       "anim_t3": {
         "bank": "eddy",
-        "row": 223,
-        "match": "same-notation"
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+3,3~t7.eddy": {
@@ -13316,8 +13336,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 223,
-        "match": "same-notation"
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+3,4": {
@@ -13363,8 +13383,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 260,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+3,4~t7.eddy": {
@@ -13403,8 +13423,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 260,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+3,d/b+4": {
@@ -13488,8 +13508,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "eddy",
-        "row": 255,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "t7.eddy_80": {
@@ -13580,8 +13600,8 @@
       },
       "anim_t3": {
         "bank": "eddy",
-        "row": 255,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+3,d/b+4,4~t7.eddy": {
@@ -13619,8 +13639,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "eddy",
-        "row": 255,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+3,d/b+4,1+2": {
@@ -13666,8 +13686,8 @@
       },
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/b+3,d/b+4,1+2~t7.eddy": {
@@ -13712,8 +13732,8 @@
       },
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/b+3,d/b+4,1+2~t7.eddy.2": {
@@ -13751,8 +13771,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/b+3,d/b+4,1+2,1+2": {
@@ -13800,8 +13820,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/b+3,d/b+4,1+2,1+2~t7.eddy": {
@@ -13848,8 +13868,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/b+3,d/b+4,1+2,1+2~t7.eddy.2": {
@@ -13895,8 +13915,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/b+3,d/b+4,1+2,1+2~t7.eddy.3": {
@@ -13935,8 +13955,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 336,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/b+4~t7.eddy": {
@@ -14022,8 +14042,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 255,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+4,4~t7.eddy.2": {
@@ -14062,8 +14082,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 255,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+4,4,4": {
@@ -14716,8 +14736,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "eddy",
-        "row": 109,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+2~t7.eddy": {
@@ -14842,8 +14862,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 109,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+3~t7.eddy": {
@@ -15196,8 +15216,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+4,4,3+4~t7.eddy": {
@@ -15244,8 +15264,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+4,4,3+4~t7.eddy.2": {
@@ -15283,8 +15303,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+1+2~t7.eddy": {
@@ -15484,8 +15504,8 @@
       "note": "TJ 18f",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "FC.1": {
@@ -15720,8 +15740,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "FC.1+2,1+2": {
@@ -15768,8 +15788,8 @@
       "note": "can be delayed, combo can be delayed 14f",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "FC.1+2,1+2~t7.eddy": {
@@ -15808,8 +15828,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 336,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "FC.3+4": {
@@ -15849,8 +15869,8 @@
       "note": "TJ 12f",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SS.2": {
@@ -16020,8 +16040,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "eddy",
-        "row": 235,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "SS.4~3": {
@@ -16107,8 +16127,8 @@
       },
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SS.4,3+4~t7.eddy": {
@@ -16147,8 +16167,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SS.1+4": {
@@ -16187,8 +16207,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SS.3+4~t7.eddy": {
@@ -16235,8 +16255,8 @@
       "note": "TJ 11f",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SS.3+4,D": {
@@ -16331,8 +16351,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SS.3+4,3+4~t7.eddy": {
@@ -16371,8 +16391,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SS.3+4,3+4,3+4": {
@@ -16420,8 +16440,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SS.3+4,3+4,3+4~t7.eddy": {
@@ -16467,8 +16487,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SS.3+4,3+4,3+4~t7.eddy.2": {
@@ -16507,8 +16527,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SS.3+4,3+4,3+4,u/f+3+4": {
@@ -16557,8 +16577,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SS.3+4,3+4,3+4,u/f+3+4~t7.eddy": {
@@ -16605,8 +16625,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SS.3+4,3+4,3+4,u/f+3+4~t7.eddy.2": {
@@ -16652,8 +16672,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SS.3+4,3+4,3+4,u/f+3+4~t7.eddy.3": {
@@ -16692,8 +16712,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f,F": {
@@ -17140,8 +17160,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "4~3,4,2,4,3": {
@@ -17338,8 +17358,8 @@
       "input_note": "Face Up, Feet Towards+",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "t7.eddy_170": {
@@ -18326,8 +18346,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+3,B": {
@@ -18413,8 +18433,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+3,B+3+4~t7.eddy": {
@@ -18453,8 +18473,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+4~t7.eddy": {
@@ -18846,8 +18866,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 109,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+4,b+4~t7.eddy": {
@@ -18885,8 +18905,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "eddy",
-        "row": 109,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+1,4,B": {
@@ -19050,8 +19070,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SS.3,B": {
@@ -19178,8 +19198,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SS.3,n,B+3+4~t7.eddy": {
@@ -19218,8 +19238,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SS.4,B": {
@@ -19683,8 +19703,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "RLX.f+3+4,B": {
@@ -19761,8 +19781,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "HSP.f+1+2": {
@@ -19800,8 +19820,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "HSP.F+1+2": {
@@ -19840,8 +19860,8 @@
       "input_note": "(or f, F+1+2)",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "HSP.2~t7.eddy": {
@@ -19972,8 +19992,8 @@
       },
       "anim_t3": {
         "bank": "eddy",
-        "row": 109,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "HSP.4~t7.eddy": {
@@ -20139,8 +20159,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "HSP.D": {
@@ -20219,8 +20239,8 @@
       "note": "TC 15f",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "HSP.u,n": {
@@ -20981,8 +21001,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u/f+3,3+4~t7.eddy": {
@@ -21021,8 +21041,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f+4,3+4~t7.eddy": {
@@ -21715,8 +21735,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 248,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+4,4,D": {
@@ -22331,8 +22351,8 @@
       "note": "TC 4f",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "HSP.4,3+4~t7.eddy": {
@@ -22370,8 +22390,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "HSP.u+3,D": {
@@ -22953,8 +22973,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 248,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 45,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "RLX.2,4~t7.eddy": {
@@ -23290,8 +23310,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "RLX.4,3+4~t7.eddy.2": {
@@ -23330,8 +23350,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "RLX.1+2~t7.eddy": {
@@ -23369,8 +23389,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "RLX.1+2,1+2": {
@@ -23416,8 +23436,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "RLX.1+2,1+2~t7.eddy": {
@@ -23456,8 +23476,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 336,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "RLX.3+4~t7.eddy": {
@@ -23496,8 +23516,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "RLX.f+3+4": {
@@ -23536,8 +23556,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u/b+3~t7.eddy": {
@@ -23659,8 +23679,8 @@
       "input_note": "(During Rage)",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "R.f,F+3+4": {
@@ -23706,8 +23726,8 @@
       "input_note": "(During Rage)",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "R.f,F+3+4~t7.eddy": {
@@ -23746,8 +23766,8 @@
       "input_note": "(During Rage) (second hit only)",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "t7.eddy_322": {
@@ -23834,8 +23854,8 @@
       "input_note": "Approach enemy...",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "same-notation"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "2+4~t7.eddy": {
@@ -23875,8 +23895,8 @@
       "input_note": "Approach enemy...",
       "anim_t3": {
         "bank": "eddy",
-        "row": 335,
-        "match": "same-notation"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f+1+3": {
@@ -23916,8 +23936,8 @@
       "input_note": "Approach enemy...",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f+2+4~t7.eddy": {
@@ -23957,8 +23977,8 @@
       "input_note": "Approach enemy...",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/f+1+2~t7.eddy": {
@@ -24039,8 +24059,8 @@
       "input_note": "Approach enemy...",
       "anim_t3": {
         "bank": "eddy",
-        "row": 336,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SIDE_L.1+3~t7.eddy": {
@@ -24080,8 +24100,8 @@
       "input_note": "Approach from left side... (or 2+4)",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SIDE_R.1+3": {
@@ -24121,8 +24141,8 @@
       "input_note": "Approach from right side... (or 2+4)",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "BACK.1+3~t7.eddy": {
@@ -24162,8 +24182,8 @@
       "input_note": "Approach from behind... (or 2+4)",
       "anim_t3": {
         "bank": "eddy",
-        "row": 334,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 30,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "t7.eddy_332": {
@@ -29102,7 +29122,12 @@
       "note": "startup absent in T8 source; Throw break: none * Opponent recovers in FUFA",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 334,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(backtowall).b,b,UB": {
       "name": "Wall Jump Backflip",
@@ -29131,7 +29156,12 @@
       "t8_damage": "21",
       "t8_input": "(backtowall).b,b,UB",
       "merge_source": "t8:Eddy-(back to wall).b,b,UB",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 26,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "Leftthrow": {
       "name": "Missile Launcher",
@@ -29164,7 +29194,12 @@
       "note": "startup absent in T8 source; Throw break: 1 * Opponent recovers FUFR",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 334,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Rightthrow": {
       "name": "Shadow Dancer",
@@ -29197,7 +29232,12 @@
       "note": "startup absent in T8 source; Throw break: 2 * Opponent recovers in FDFL",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "eddy",
+        "row": 334,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "TC4f": {
       "name": "Thong Bikini to Low Kick 2",
@@ -29240,7 +29280,12 @@
         ],
         "total": 40
       },
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/b+4,4,4,4...(repeatinfinitely)": {
       "name": "KAI d/b+4,4,4,4...(repeatinfinitely)",
@@ -29283,7 +29328,12 @@
         ],
         "total": 40
       },
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WR.f,f,F(FullScreen)": {
       "name": "KAI WR.f,f,F(FullScreen)",
@@ -29318,7 +29368,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:eddy_154",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "WR.f,f,F(FullScreen)(OnGroundedOpponent)": {
       "name": "KAI WR.f,f,F(FullScreen)(OnGroundedOpponent)",
@@ -29353,7 +29408,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:eddy_155",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "WR.4": {
       "name": "KAI WR.4",
@@ -29388,7 +29448,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:eddy_156",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WR.1+2": {
       "name": "KAI WR.1+2",
@@ -29423,7 +29488,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:eddy_157",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "FaceUp,FeetTowards+3or(AfterRollingForward)": {
       "name": "KAI FaceUp,FeetTowards+3or(AfterRollingForward)",
@@ -29458,7 +29528,12 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:eddy_166",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FaceUp,FeetTowards+4or(AfterRollingForward)": {
       "name": "KAI FaceUp,FeetTowards+4or(AfterRollingForward)",
@@ -29493,7 +29568,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:eddy_167",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FaceUp,FeetTowards,d+3(or4)": {
       "name": "KAI FaceUp,FeetTowards,d+3(or4)",
@@ -29528,7 +29608,12 @@
       "t7_on_ch": "-3",
       "merge_source": "t7:eddy_168",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "FaceUp,FeetTowards+3+4": {
       "name": "KAI FaceUp,FeetTowards+3+4",
@@ -29563,7 +29648,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:eddy_169",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "FaceUp,FeetTowards,RollForward+1+2": {
       "name": "KAI FaceUp,FeetTowards,RollForward+1+2",
@@ -29598,7 +29688,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:eddy_170",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "FaceDown,FeetAway+3": {
       "name": "KAI FaceDown,FeetAway+3",
@@ -29633,7 +29728,12 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:eddy_171",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FaceDown,FeetAway+4(close)": {
       "name": "KAI FaceDown,FeetAway+4(close)",
@@ -29668,7 +29768,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:eddy_172",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FaceDown,FeetAway+4(far)": {
       "name": "KAI FaceDown,FeetAway+4(far)",
@@ -29703,7 +29808,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:eddy_173",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Whiledown(facingup)1+2": {
       "name": "Down to Handstand",
@@ -29738,7 +29848,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:eddy_219",
       "set": "FIGHT",
-      "note": "startup absent in T7 source"
+      "note": "startup absent in T7 source",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "RLX.BorF": {
       "name": "KAI RLX.BorF",
@@ -29773,7 +29888,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:eddy_294",
       "set": "FIGHT",
-      "note": "startup absent in T7 source"
+      "note": "startup absent in T7 source",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "WR.f,f,F(MidScreen)": {
       "name": "KAI WR.f,f,F(MidScreen)",
@@ -29808,7 +29928,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:eddy_333",
       "set": "FIGHT",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "(DuringTackle)1/2,1/2": {
       "name": "KAI (DuringTackle)1/2,1/2",
@@ -29851,7 +29976,12 @@
         "total": 10
       },
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "note": "startup absent in T7 source"
+      "note": "startup absent in T7 source",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "(DuringTackle)1/2,1/2,1/2": {
       "name": "KAI (DuringTackle)1/2,1/2,1/2",
@@ -29895,7 +30025,12 @@
         "total": 15
       },
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "note": "startup absent in T7 source"
+      "note": "startup absent in T7 source",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "(DuringTackle)1/2,1/2,1/2,1/2": {
       "name": "KAI (DuringTackle)1/2,1/2,1/2,1/2",
@@ -29940,7 +30075,12 @@
         "total": 30
       },
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "note": "startup absent in T7 source"
+      "note": "startup absent in T7 source",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     }
   },
   "restored_from_sweep_338": {

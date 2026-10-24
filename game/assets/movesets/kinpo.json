@@ -1197,7 +1197,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "Blossom leads. Buttercup finishes. Forward-pressure finisher, no wasted charm."
+      "note": "Blossom leads. Buttercup finishes. Forward-pressure finisher, no wasted charm.",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+P": {
       "name": "Plus-One Pressure [WH SIGNATURE]",
@@ -1218,7 +1223,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "She believes she's the plus-one. She fights like the main event anyway. Sharp thorn elbow."
+      "note": "She believes she's the plus-one. She fights like the main event anyway. Sharp thorn elbow.",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Buttercup Finishes [WH SIGNATURE]",
@@ -1252,6 +1262,11 @@
         "notation": "1+2",
         "id": "asuka_37",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "1+2__main": {
@@ -1321,6 +1336,11 @@
         "notation": "f+1",
         "id": "asuka_67",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 67,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f+1__main": {
@@ -1357,6 +1377,11 @@
         "notation": "f+1",
         "id": "asuka_67",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 67,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f+4": {
@@ -1470,7 +1495,12 @@
         "d+1+2"
       ],
       "move_class": "strike",
-      "note": "Low; on block -18; knockdown on hit"
+      "note": "Low; on block -18; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 92,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1": {
       "name": "KINPO d/f+1 (T3 jin r179)",
@@ -4236,6 +4266,11 @@
         "notation": "1, 1",
         "id": "asuka_3",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,1,3": {
@@ -4267,7 +4302,12 @@
         ],
         "total": 37
       },
-      "note": "Mid; on block -5"
+      "note": "Mid; on block -5",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2_t8": {
       "name": "Inner Strength",
@@ -4303,6 +4343,11 @@
         "notation": "1+2",
         "id": "asuka_37",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "1,2": {
@@ -4345,6 +4390,11 @@
         "notation": "1, 2",
         "id": "asuka_5",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,3": {
@@ -4389,6 +4439,11 @@
         "notation": "1, 2, 3",
         "id": "asuka_7",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,3*": {
@@ -4433,6 +4488,11 @@
         "notation": "1, 2, 3*",
         "id": "asuka_210",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+2+3+4": {
@@ -4453,7 +4513,12 @@
       "input_slots": [
         "1+2+3+4"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1+2+3+4,1+2": {
       "name": "Naniwa Ultimate Tackle (Tackle)",
@@ -4482,7 +4547,12 @@
         ],
         "total": 0
       },
-      "note": "Mid, Throw; on block -6"
+      "note": "Mid, Throw; on block -6",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1,2,4": {
       "name": "Front Kick",
@@ -4526,6 +4596,11 @@
         "notation": "1, 2, 4",
         "id": "asuka_12",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,3": {
@@ -4568,6 +4643,11 @@
         "notation": "1, 3",
         "id": "asuka_15",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+4": {
@@ -4610,6 +4690,11 @@
         "notation": "1+4",
         "id": "asuka_38",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "1+4,2": {
@@ -4653,6 +4738,11 @@
         "notation": "1+4, 2",
         "id": "asuka_40",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+4,2,4": {
@@ -4698,6 +4788,11 @@
         "notation": "1+4, 2, 4",
         "id": "asuka_47",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+4,2,d+4": {
@@ -4743,6 +4838,11 @@
         "notation": "1+4, 2, d+4",
         "id": "asuka_51",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+4,3": {
@@ -4786,6 +4886,11 @@
         "notation": "1+4, 3",
         "id": "asuka_55",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,1,d+1+2": {
@@ -4830,6 +4935,11 @@
         "notation": "2, 1, d+1+2",
         "id": "asuka_26",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "2+3": {
@@ -4873,6 +4983,11 @@
         "notation": "2+3",
         "id": "asuka_60",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "2,3": {
@@ -4915,6 +5030,11 @@
         "notation": "2, 3",
         "id": "asuka_29",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3,1": {
@@ -4957,6 +5077,11 @@
         "notation": "3, 1",
         "id": "asuka_32",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3+4": {
@@ -5000,6 +5125,11 @@
         "notation": "3+4",
         "id": "asuka_61",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 51,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "b+1_t8": {
@@ -5038,6 +5168,11 @@
         "notation": "b+1",
         "id": "asuka_129",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 216,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "b+1+3": {
@@ -5058,7 +5193,12 @@
       "input_slots": [
         "b+1+3"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+1+3*": {
       "name": "Attack Reversal (Hold)",
@@ -5078,7 +5218,12 @@
       "input_slots": [
         "b+1+3*"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+1+4": {
       "name": "Move b+1+4 (b+1+4)",
@@ -5120,6 +5265,11 @@
         "notation": "b+1+4",
         "id": "asuka_155",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+1+4,3": {
@@ -5163,6 +5313,11 @@
         "notation": "b+1+4, 3",
         "id": "asuka_157",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+1+4,4": {
@@ -5206,6 +5361,11 @@
         "notation": "b+1+4, 4",
         "id": "asuka_160",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+2": {
@@ -5241,6 +5401,11 @@
         "notation": "b+2",
         "id": "asuka_131",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 97,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "b+2,1": {
@@ -5283,6 +5448,11 @@
         "notation": "b+2, 1",
         "id": "asuka_132",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+2,1+2": {
@@ -5325,6 +5495,11 @@
         "notation": "b+2, 1+2",
         "id": "asuka_137",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+2,1+2,4": {
@@ -5369,6 +5544,11 @@
         "notation": "b+2, 1+2, 4",
         "id": "asuka_140",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+2+3": {
@@ -5390,7 +5570,12 @@
         "b+2+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+2,4": {
       "name": "Swallow Mallet Leg Cutter",
@@ -5432,6 +5617,11 @@
         "notation": "b+2, 4",
         "id": "asuka_134",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+3": {
@@ -5468,6 +5658,11 @@
         "notation": "b+3",
         "id": "asuka_143",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 103,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "b+3,2": {
@@ -5503,6 +5698,11 @@
         "notation": "b+3, 2",
         "id": "asuka_144",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+3,4": {
@@ -5545,6 +5745,11 @@
         "notation": "b+3, 4",
         "id": "asuka_147",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+4": {
@@ -5581,6 +5786,11 @@
         "notation": "b+4",
         "id": "asuka_149",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 112,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "b+4,2": {
@@ -5623,6 +5833,11 @@
         "notation": "b+4, 2",
         "id": "asuka_150",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+4,2,3": {
@@ -5667,6 +5882,11 @@
         "notation": "b+4, 2, 3",
         "id": "asuka_152",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "Back throw": {
@@ -5692,7 +5912,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(Back to wall).b,b,UB": {
       "name": "[[Wall Jump Attack]]",
@@ -5713,7 +5938,12 @@
         "(Back to wall).b,b,UB"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +4c~+6c; knockdown on hit"
+      "note": "Mid; on block +4c~+6c; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d+2": {
       "name": "Heaven's Hammer",
@@ -5748,6 +5978,11 @@
         "notation": "d+2",
         "id": "asuka_104",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 137,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d+3+4": {
@@ -5792,6 +6027,11 @@
         "notation": "d+3+4",
         "id": "asuka_107",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 127,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "db+1": {
@@ -5813,7 +6053,12 @@
         "db+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -10"
+      "note": "Mid; on block -10",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+1+2": {
       "name": "Raging Storm",
@@ -5841,7 +6086,12 @@
         ],
         "total": 30
       },
-      "note": "Mid, Mid; on block +10g; knockdown on hit"
+      "note": "Mid, Mid; on block +10g; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "db+1,2": {
       "name": "Swallow Vortex",
@@ -5870,7 +6120,12 @@
         ],
         "total": 33
       },
-      "note": "High; on block -9; knockdown on hit"
+      "note": "High; on block -9; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+1,4": {
       "name": "Swallow Torrent",
@@ -5899,7 +6154,12 @@
         ],
         "total": 38
       },
-      "note": "Mid; on block -15; knockdown on hit"
+      "note": "Mid; on block -15; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+2": {
       "name": "Funeral Palm",
@@ -5920,7 +6180,12 @@
         "db+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -11; knockdown on hit"
+      "note": "Mid; on block -11; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+3": {
       "name": "Enchanted Circle",
@@ -5941,7 +6206,12 @@
         "db+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -12"
+      "note": "Low; on block -12",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+4": {
       "name": "Move db+4 (db+4)",
@@ -5962,7 +6232,12 @@
         "db+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -11"
+      "note": "Low; on block -11",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+4,1+4": {
       "name": "Kariashi Hakuro",
@@ -5992,7 +6267,12 @@
         ],
         "total": 27
       },
-      "note": "Special low, High; on block --3"
+      "note": "Special low, High; on block --3",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "db+4,3": {
       "name": "Kariashi Shiranui",
@@ -6021,7 +6301,12 @@
         ],
         "total": 35
       },
-      "note": "High; on block -3; knockdown on hit"
+      "note": "High; on block -3; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+4,4": {
       "name": "Move 4 (4)",
@@ -6050,7 +6335,12 @@
         ],
         "total": 29
       },
-      "note": "Low; on block -7"
+      "note": "Low; on block -7",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+4,4,4": {
       "name": "Leg Cutter",
@@ -6081,7 +6371,12 @@
         ],
         "total": 45
       },
-      "note": "Low; on block -7"
+      "note": "Low; on block -7",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1": {
       "name": "Move df+1 (df+1)",
@@ -6102,7 +6397,12 @@
         "df+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -3"
+      "note": "Mid; on block -3",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1,2": {
       "name": "Falling Tower",
@@ -6136,7 +6436,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 277,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1,4": {
       "name": "Kyara Boku",
@@ -6165,7 +6470,12 @@
         ],
         "total": 32
       },
-      "note": "Mid; on block -12; knockdown on hit"
+      "note": "Mid; on block -12; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+2": {
       "name": "Rising Palm",
@@ -6186,7 +6496,12 @@
         "df+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -6; knockdown on hit"
+      "note": "Mid; on block -6; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+2+3": {
       "name": "White Mountain",
@@ -6211,7 +6526,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3": {
       "name": "Kagamino",
@@ -6232,7 +6552,12 @@
         "df+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -8; knockdown on hit"
+      "note": "Mid; on block -8; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3+4": {
       "name": "Sacred Blade",
@@ -6253,7 +6578,12 @@
         "df+3+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -26; knockdown on hit"
+      "note": "Low; on block -26; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "df+4": {
       "name": "Front Kick",
@@ -6274,7 +6604,12 @@
         "df+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DST.2": {
       "name": "Compulsory Reform",
@@ -6295,7 +6630,12 @@
         "DST.2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -3; knockdown on hit"
+      "note": "Mid; on block -3; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DST.4": {
       "name": "Inescapable Tirade",
@@ -6316,7 +6656,12 @@
         "DST.4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -14; knockdown on hit"
+      "note": "Low; on block -14; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+1+2": {
       "name": "Exorcisor",
@@ -6351,6 +6696,11 @@
         "notation": "f+1+2",
         "id": "asuka_207",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 357,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "f+1+3": {
@@ -6372,7 +6722,12 @@
         "f+1+3"
       ],
       "move_class": "special",
-      "note": "Throw"
+      "note": "Throw",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 436,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+1,3": {
       "name": "Toe Kick",
@@ -6414,6 +6769,11 @@
         "notation": "f+1, 3",
         "id": "asuka_68",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+1,4": {
@@ -6456,6 +6816,11 @@
         "notation": "f+1, 4",
         "id": "asuka_73",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+2": {
@@ -6492,6 +6857,11 @@
         "notation": "f+2",
         "id": "asuka_79",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 220,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f+2+3": {
@@ -6513,7 +6883,12 @@
         "f+2+3"
       ],
       "move_class": "strike",
-      "note": "High; on block +0; knockdown on hit"
+      "note": "High; on block +0; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f+2,NWG.1+2": {
       "name": "Demon Slayer Vigil",
@@ -6542,7 +6917,12 @@
         ],
         "total": 35
       },
-      "note": "Mid; on block -8; knockdown on hit"
+      "note": "Mid; on block -8; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f+3": {
       "name": "Spinning Heel Drop (One Spin)",
@@ -6576,6 +6956,11 @@
         "notation": "f+3",
         "id": "asuka_81",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 79,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f+3*": {
@@ -6610,6 +6995,11 @@
         "notation": "f+3*",
         "id": "asuka_211",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+3**": {
@@ -6631,7 +7021,12 @@
         "f+3**"
       ],
       "move_class": "strike",
-      "note": "m!; knockdown on hit"
+      "note": "m!; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3+4": {
       "name": "Naniwa Gusto",
@@ -6652,7 +7047,12 @@
         "f+3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -1; knockdown on hit"
+      "note": "Mid; on block -1; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f+4_t8": {
       "name": "Back Spin Kick",
@@ -6689,6 +7089,11 @@
         "notation": "f+4",
         "id": "asuka_84",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 214,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "FC.db+1+2": {
@@ -6722,7 +7127,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.df+2": {
       "name": "Grace",
@@ -6743,7 +7153,12 @@
         "FC.df+2"
       ],
       "move_class": "strike",
-      "note": "Low; on block -11"
+      "note": "Low; on block -11",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.df+3": {
       "name": "Minazuki",
@@ -6764,7 +7179,12 @@
         "FC.df+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9; knockdown on hit"
+      "note": "Mid; on block -9; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.df+3*": {
       "name": "Minazuki (Charged)",
@@ -6785,7 +7205,12 @@
         "FC.df+3*"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +8; knockdown on hit"
+      "note": "Mid; on block +8; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+1": {
       "name": "Burning Lantern",
@@ -6820,6 +7245,11 @@
         "notation": "f, F+1",
         "id": "asuka_85",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,F+1+2": {
@@ -6841,7 +7271,12 @@
         "f,F+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -6; knockdown on hit"
+      "note": "Mid; on block -6; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 0,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f,F+2": {
       "name": "Move f,F+2 (f,F+2)",
@@ -6878,6 +7313,11 @@
         "notation": "f, F+2",
         "id": "asuka_86",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,F+2,1": {
@@ -6920,6 +7360,11 @@
         "notation": "f, F+2, 1",
         "id": "asuka_87",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,F+2,1+2": {
@@ -6962,6 +7407,11 @@
         "notation": "f, F+2, 1+2",
         "id": "asuka_91",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+2,3": {
@@ -7004,6 +7454,11 @@
         "notation": "f, F+2, 3",
         "id": "asuka_89",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,F+2,3*": {
@@ -7033,7 +7488,12 @@
         ],
         "total": 42
       },
-      "note": "Mid; on block +7; knockdown on hit"
+      "note": "Mid; on block +7; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+3": {
       "name": "Matoi Hiragi",
@@ -7070,6 +7530,11 @@
         "notation": "f, F+3",
         "id": "asuka_93",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,F+4": {
@@ -7106,6 +7571,11 @@
         "notation": "f, F+4",
         "id": "asuka_94",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,f,F+1+2": {
@@ -7127,7 +7597,12 @@
         "f,f,F+1+2"
       ],
       "move_class": "strike",
-      "note": "High; on block +4; knockdown on hit"
+      "note": "High; on block +4; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f,f,F+3": {
       "name": "Ame-no-Uzume",
@@ -7148,7 +7623,12 @@
         "f,f,F+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +3~+7; knockdown on hit"
+      "note": "Mid; on block +3~+7; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "H.2+3": {
       "name": "Triple Ascension Kicks",
@@ -7181,7 +7661,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "hFC.1": {
       "name": "Crouch Jab",
@@ -7202,7 +7687,12 @@
         "hFC.1"
       ],
       "move_class": "strike",
-      "note": "Special low; on block -5"
+      "note": "Special low; on block -5",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "hFC.2": {
       "name": "Crouch Straight",
@@ -7223,7 +7713,12 @@
         "hFC.2"
       ],
       "move_class": "strike",
-      "note": "Special low; on block -4"
+      "note": "Special low; on block -4",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "hFC.3": {
       "name": "Crouch Spin Kick",
@@ -7244,7 +7739,12 @@
         "hFC.3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -17"
+      "note": "Low; on block -17",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "hFC.3+4": {
       "name": "Move hFC.3+4 (hFC.3+4)",
@@ -7272,7 +7772,12 @@
         ],
         "total": 20
       },
-      "note": "Mid, Mid; on block -6"
+      "note": "Mid, Mid; on block -6",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "hFC.4": {
       "name": "Crouch Shin Kick",
@@ -7293,7 +7798,12 @@
         "hFC.4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -15"
+      "note": "Low; on block -15",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Left throw": {
       "name": "Cloud Taste",
@@ -7318,7 +7828,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "NWG.f,F+1+2": {
       "name": "Tenjin Festival Upward Strike",
@@ -7339,7 +7854,12 @@
         "NWG.f,F+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +2; knockdown on hit"
+      "note": "Mid; on block +2; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "NWG.f,f,F+1+2": {
       "name": "Aizen Festival Swing",
@@ -7360,7 +7880,12 @@
         "NWG.f,f,F+1+2"
       ],
       "move_class": "strike",
-      "note": "High; on block +7; knockdown on hit"
+      "note": "High; on block +7; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "NWG.u+1+2": {
       "name": "Sumiyoshi Festival Plunge",
@@ -7381,7 +7906,12 @@
         "NWG.u+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +8~+9; knockdown on hit"
+      "note": "Mid; on block +8~+9; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "R.df+1+2": {
       "name": "Naniwa Peacemaker Knuckle",
@@ -7402,7 +7932,12 @@
         "R.df+1+2"
       ],
       "move_class": "special",
-      "note": "Mid, Throw; on block -18"
+      "note": "Mid, Throw; on block -18",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "Right throw": {
       "name": "Wind Wheel",
@@ -7427,7 +7962,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SS.2": {
       "name": "Mist Palm Thrust",
@@ -7448,7 +7988,12 @@
         "SS.2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SS.4": {
       "name": "Camellia",
@@ -7469,7 +8014,12 @@
         "SS.4"
       ],
       "move_class": "strike",
-      "note": "High; on block -6~-2"
+      "note": "High; on block -6~-2",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Tackle.2,1,2,1": {
       "name": "Eternal Punishment",
@@ -7499,7 +8049,12 @@
         ],
         "total": 25
       },
-      "note": "on block +3c"
+      "note": "on block +3c",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "u+1+2": {
       "name": "Sumiyoshi Plunge",
@@ -7520,7 +8075,12 @@
         "u+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13c~-12c; knockdown on hit"
+      "note": "Mid; on block -13c~-12c; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 31,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "u+4": {
       "name": "Move u+4 (u+4)",
@@ -7540,7 +8100,12 @@
       "input_slots": [
         "u+4"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 89,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "ub+1+2": {
       "name": "Momiji Oroshi",
@@ -7561,7 +8126,12 @@
         "ub+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -3"
+      "note": "Mid; on block -3",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "ub+4": {
       "name": "Move ub+4 (ub+4)",
@@ -7582,7 +8152,12 @@
         "ub+4"
       ],
       "move_class": "special",
-      "note": "on block -15; knockdown on hit"
+      "note": "on block -15; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ub,b": {
       "name": "Back Handspring",
@@ -7603,7 +8178,12 @@
         "ub,b"
       ],
       "move_class": "special",
-      "note": "sp"
+      "note": "sp",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "uf+1": {
       "name": "Move uf+1 (uf+1)",
@@ -7624,7 +8204,12 @@
         "uf+1"
       ],
       "move_class": "strike",
-      "note": "High; on block -9"
+      "note": "High; on block -9",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+1+2": {
       "name": "Cherry Blossom",
@@ -7649,7 +8234,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+1,2": {
       "name": "Ikutama Bash",
@@ -7678,7 +8268,12 @@
         ],
         "total": 31
       },
-      "note": "Mid; on block -11"
+      "note": "Mid; on block -11",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+1,NWG.2": {
       "name": "Move uf+1,NWG.2 (uf+1,NWG.2)",
@@ -7699,7 +8294,12 @@
         "uf+1,NWG.2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +0; knockdown on hit"
+      "note": "Mid; on block +0; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "uf+2": {
       "name": "Rangetsu",
@@ -7731,7 +8331,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 277,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+3": {
       "name": "Iwato",
@@ -7752,7 +8357,12 @@
         "uf+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -3"
+      "note": "Mid; on block -3",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+4": {
       "name": "Night Sky",
@@ -7773,7 +8383,12 @@
         "uf+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws1": {
       "name": "Move ws1 (ws1)",
@@ -7808,6 +8423,11 @@
         "notation": "WS 1",
         "id": "asuka_185",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "ws1+2": {
@@ -7845,6 +8465,11 @@
         "notation": "WS 1+2",
         "id": "asuka_193",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "ws1,4": {
@@ -7887,6 +8512,11 @@
         "notation": "WS 1, 4",
         "id": "asuka_186",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "ws2": {
@@ -7923,6 +8553,11 @@
         "notation": "WS 2",
         "id": "asuka_188",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "ws2,1": {
@@ -7965,6 +8600,11 @@
         "notation": "WS 2, 1",
         "id": "asuka_189",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "ws2,1,1": {
@@ -7996,7 +8636,12 @@
         ],
         "total": 36
       },
-      "note": "Mid; on block -23"
+      "note": "Mid; on block -23",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws2,1,1,1": {
       "name": "4th Hit",
@@ -8029,7 +8674,12 @@
         ],
         "total": 44
       },
-      "note": "High; on block -25"
+      "note": "High; on block -25",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws2,1,1,1,2": {
       "name": "5th Hit",
@@ -8064,7 +8714,12 @@
         ],
         "total": 50
       },
-      "note": "Mid; on block -11"
+      "note": "Mid; on block -11",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws2,1,1,1,2,1": {
       "name": "6th Hit",
@@ -8101,7 +8756,12 @@
         ],
         "total": 55
       },
-      "note": "Special mid; on block -10"
+      "note": "Special mid; on block -10",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws2,1,1,1,2,1+4": {
       "name": "6th & 7th Hit (2)",
@@ -8139,7 +8799,12 @@
         ],
         "total": 62
       },
-      "note": "sll, High; on block -33"
+      "note": "sll, High; on block -33",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "ws2,1,1,1,2,1,4": {
       "name": "7th Hit",
@@ -8178,7 +8843,12 @@
         ],
         "total": 62
       },
-      "note": "Mid; on block -16"
+      "note": "Mid; on block -16",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws2,1,1,1,2,1+4,1": {
       "name": "8th Hit (2)",
@@ -8218,7 +8888,12 @@
         ],
         "total": 68
       },
-      "note": "High; on block -10"
+      "note": "High; on block -10",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws2,1,1,1,2,1+4,1,3+4": {
       "name": "10 Hit Combo 2",
@@ -8270,6 +8945,11 @@
         "notation": "WS 2, 1, 1, 1, 2, 1+4, 1, 3+4",
         "id": "asuka_196",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "ws2,1,1,1,2,1,4,3": {
@@ -8311,7 +8991,12 @@
         ],
         "total": 69
       },
-      "note": "Low; on block -25"
+      "note": "Low; on block -25",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws2,1,1,1,2,1,4,3,3+4": {
       "name": "10 Hit Combo 1",
@@ -8364,6 +9049,11 @@
         "notation": "WS 2, 1, 1, 1, 2, 1, 4, 3, 3+4",
         "id": "asuka_195",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "ws2,1,1,3": {
@@ -8409,6 +9099,11 @@
         "notation": "WS 2, 1, 1, 3",
         "id": "asuka_197",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "ws2,1+2": {
@@ -8442,7 +9137,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws3": {
       "name": "Moon Scent",
@@ -8477,6 +9177,11 @@
         "notation": "WS 3",
         "id": "asuka_191",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "ws4": {
@@ -8512,6 +9217,11 @@
         "notation": "WS 4",
         "id": "asuka_192",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1~t8.asuka": {
@@ -8554,6 +9264,11 @@
         "notation": "1",
         "id": "asuka_2",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "1+3~t8.asuka": {
@@ -8586,7 +9301,12 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 288,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "2~t8.asuka": {
       "name": "KINPO 2",
@@ -8628,6 +9348,11 @@
         "notation": "2",
         "id": "asuka_20",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "2,1~t8.asuka": {
@@ -8670,6 +9395,11 @@
         "notation": "2, 1",
         "id": "asuka_21",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,1,2~t8.asuka": {
@@ -8700,7 +9430,12 @@
       "t8_input": "2,1,2",
       "merge_source": "t8:Asuka-2,1,2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado"
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2+4~t8.asuka": {
       "name": "Katanuki",
@@ -8732,7 +9467,12 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 289,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "3~t8.asuka": {
       "name": "KINPO 3",
@@ -8774,6 +9514,11 @@
         "notation": "3",
         "id": "asuka_31",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "4~t8.asuka": {
@@ -8818,6 +9563,11 @@
         "notation": "4",
         "id": "asuka_36",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "WALL.b,b,u/b": {
@@ -8855,7 +9605,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
       "note": "air status 5f, invincibility 8 to 13f",
-      "input_note": "Back towards wall..."
+      "input_note": "Back towards wall...",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1~t7.asuka": {
       "name": "KINPO 1",
@@ -8904,6 +9659,11 @@
         "notation": "1",
         "id": "asuka_2",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "1,1~t7.asuka": {
@@ -8958,6 +9718,11 @@
         "notation": "1, 1",
         "id": "asuka_3",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,1~t7.asuka.2": {
@@ -9006,6 +9771,11 @@
         "notation": "1, 1",
         "id": "asuka_3",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2~t7.asuka": {
@@ -9060,6 +9830,11 @@
         "notation": "1, 2",
         "id": "asuka_5",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2~t7.asuka.2": {
@@ -9108,6 +9883,11 @@
         "notation": "1, 2",
         "id": "asuka_5",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,3~t7.asuka": {
@@ -9163,6 +9943,11 @@
         "notation": "1, 2, 3",
         "id": "asuka_7",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,3~t7.asuka.2": {
@@ -9217,6 +10002,11 @@
         "notation": "1, 2, 3",
         "id": "asuka_7",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,3~t7.asuka.3": {
@@ -9265,6 +10055,11 @@
         "notation": "1, 2, 3",
         "id": "asuka_7",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "t7.asuka_10": {
@@ -9313,6 +10108,11 @@
         "notation": "(1), (2), 3* (2 spins)",
         "id": "asuka_10",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,3*,B": {
@@ -9347,7 +10147,12 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:asuka_11",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,4~t7.asuka": {
       "name": "Jab Uppercut to Front Kick",
@@ -9403,6 +10208,11 @@
         "notation": "1, 2, 4",
         "id": "asuka_12",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,4~t7.asuka.2": {
@@ -9458,6 +10268,11 @@
         "notation": "1, 2, 4",
         "id": "asuka_12",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,4~t7.asuka.3": {
@@ -9506,6 +10321,11 @@
         "notation": "1, 2, 4",
         "id": "asuka_12",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,3~t7.asuka": {
@@ -9560,6 +10380,11 @@
         "notation": "1, 3",
         "id": "asuka_15",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,3~t7.asuka.2": {
@@ -9608,6 +10433,11 @@
         "notation": "1, 3",
         "id": "asuka_15",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,4": {
@@ -9662,6 +10492,11 @@
         "notation": "1, 4",
         "id": "asuka_17",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,4~t7.asuka": {
@@ -9710,6 +10545,11 @@
         "notation": "1, 4",
         "id": "asuka_17",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,4,D": {
@@ -9749,6 +10589,11 @@
         "notation": "1, 4, D",
         "id": "asuka_19",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2~t7.asuka": {
@@ -9798,6 +10643,11 @@
         "notation": "2",
         "id": "asuka_20",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "2,1~t7.asuka": {
@@ -9852,6 +10702,11 @@
         "notation": "2, 1",
         "id": "asuka_21",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,1~t7.asuka.2": {
@@ -9900,6 +10755,11 @@
         "notation": "2, 1",
         "id": "asuka_21",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,1,1+2": {
@@ -9956,6 +10816,11 @@
         "notation": "2, 1, 1+2",
         "id": "asuka_23",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "2,1,1+2~t7.asuka": {
@@ -10011,6 +10876,11 @@
         "notation": "2, 1, 1+2",
         "id": "asuka_23",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "2,1,1+2~t7.asuka.2": {
@@ -10065,6 +10935,11 @@
         "notation": "2, 1, 1+2",
         "id": "asuka_23",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "2,1,d+1+2~t7.asuka": {
@@ -10120,6 +10995,11 @@
         "notation": "2, 1, d+1+2",
         "id": "asuka_26",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "2,1,d+1+2~t7.asuka.2": {
@@ -10174,6 +11054,11 @@
         "notation": "2, 1, d+1+2",
         "id": "asuka_26",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "2,1,d+1+2~t7.asuka.3": {
@@ -10221,6 +11106,11 @@
         "notation": "2, 1, d+1+2",
         "id": "asuka_26",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "2,3~t7.asuka": {
@@ -10276,6 +11166,11 @@
         "notation": "2, 3",
         "id": "asuka_29",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,3~t7.asuka.2": {
@@ -10324,6 +11219,11 @@
         "notation": "2, 3",
         "id": "asuka_29",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3~t7.asuka": {
@@ -10373,6 +11273,11 @@
         "notation": "3",
         "id": "asuka_31",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "3,1~t7.asuka": {
@@ -10428,6 +11333,11 @@
         "notation": "3, 1",
         "id": "asuka_32",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3,1~t7.asuka.2": {
@@ -10476,6 +11386,11 @@
         "notation": "3, 1",
         "id": "asuka_32",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3~4": {
@@ -10527,6 +11442,11 @@
         "notation": "3~4",
         "id": "asuka_34",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3~4,D/F": {
@@ -10566,6 +11486,11 @@
         "notation": "3~4, D/F",
         "id": "asuka_35",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4~t7.asuka": {
@@ -10615,6 +11540,11 @@
         "notation": "4",
         "id": "asuka_36",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "1+2~t7.asuka": {
@@ -10664,6 +11594,11 @@
         "notation": "1+2",
         "id": "asuka_37",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "1+4~t7.asuka": {
@@ -10720,6 +11655,11 @@
         "notation": "1+4",
         "id": "asuka_38",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "1+4~t7.asuka.2": {
@@ -10770,6 +11710,11 @@
         "notation": "1+4",
         "id": "asuka_38",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "1+4,2~t7.asuka": {
@@ -10825,6 +11770,11 @@
         "notation": "1+4, 2",
         "id": "asuka_40",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+4,2~t7.asuka.2": {
@@ -10881,6 +11831,11 @@
         "notation": "1+4, 2",
         "id": "asuka_40",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+4,2~t7.asuka.3": {
@@ -10929,6 +11884,11 @@
         "notation": "1+4, 2",
         "id": "asuka_40",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+4,2,1": {
@@ -10985,6 +11945,11 @@
         "notation": "1+4, 2, 1",
         "id": "asuka_43",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 187,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "1+4,2,1~t7.asuka": {
@@ -11041,6 +12006,11 @@
         "notation": "1+4, 2, 1",
         "id": "asuka_43",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 187,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "1+4,2,1~t7.asuka.2": {
@@ -11095,6 +12065,11 @@
         "notation": "1+4, 2, 1",
         "id": "asuka_43",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 187,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "1+4,2,1~t7.asuka.3": {
@@ -11143,6 +12118,11 @@
         "notation": "1+4, 2, 1",
         "id": "asuka_43",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 187,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "1+4,2,4~t7.asuka": {
@@ -11199,6 +12179,11 @@
         "notation": "1+4, 2, 4",
         "id": "asuka_47",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+4,2,4~t7.asuka.2": {
@@ -11255,6 +12240,11 @@
         "notation": "1+4, 2, 4",
         "id": "asuka_47",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+4,2,4~t7.asuka.3": {
@@ -11309,6 +12299,11 @@
         "notation": "1+4, 2, 4",
         "id": "asuka_47",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+4,2,4~t7.asuka.4": {
@@ -11357,6 +12352,11 @@
         "notation": "1+4, 2, 4",
         "id": "asuka_47",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+4,2,d+4~t7.asuka": {
@@ -11413,6 +12413,11 @@
         "notation": "1+4, 2, d+4",
         "id": "asuka_51",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+4,2,d+4~t7.asuka.2": {
@@ -11469,6 +12474,11 @@
         "notation": "1+4, 2, d+4",
         "id": "asuka_51",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+4,2,d+4~t7.asuka.3": {
@@ -11523,6 +12533,11 @@
         "notation": "1+4, 2, d+4",
         "id": "asuka_51",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+4,2,d+4~t7.asuka.4": {
@@ -11571,6 +12586,11 @@
         "notation": "1+4, 2, d+4",
         "id": "asuka_51",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+4,3~t7.asuka": {
@@ -11627,6 +12647,11 @@
         "notation": "1+4, 3",
         "id": "asuka_55",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+4,3~t7.asuka.2": {
@@ -11683,6 +12708,11 @@
         "notation": "1+4, 3",
         "id": "asuka_55",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+4,3~t7.asuka.3": {
@@ -11731,6 +12761,11 @@
         "notation": "1+4, 3",
         "id": "asuka_55",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+4,3,B": {
@@ -11785,6 +12820,11 @@
         "notation": "1+4, 3, B",
         "id": "asuka_58",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+4,3,B~t7.asuka": {
@@ -11834,6 +12874,11 @@
         "notation": "1+4, 3, B",
         "id": "asuka_58",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2+3~t7.asuka": {
@@ -11885,6 +12930,11 @@
         "notation": "2+3",
         "id": "asuka_60",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "3+4~t7.asuka": {
@@ -11943,6 +12993,11 @@
         "notation": "3+4",
         "id": "asuka_61",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 51,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "3+4~t7.asuka.2": {
@@ -11994,6 +13049,11 @@
         "notation": "3+4",
         "id": "asuka_61",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 51,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "3+4,D": {
@@ -12033,6 +13093,11 @@
         "notation": "3+4, D",
         "id": "asuka_63",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+2": {
@@ -12089,6 +13154,11 @@
         "notation": "u/f+2",
         "id": "asuka_64",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+3~t7.asuka": {
@@ -12140,6 +13210,11 @@
         "notation": "u/f+3",
         "id": "asuka_65",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 55,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "u/f+4~t7.asuka": {
@@ -12190,6 +13265,11 @@
         "notation": "u/f+4",
         "id": "asuka_66",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 80,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f+1~t7.asuka": {
@@ -12240,6 +13320,11 @@
         "notation": "f+1",
         "id": "asuka_67",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 67,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f+1,3~t7.asuka": {
@@ -12294,6 +13379,11 @@
         "notation": "f+1, 3",
         "id": "asuka_68",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+1,3~t7.asuka.2": {
@@ -12342,6 +13432,11 @@
         "notation": "f+1, 3",
         "id": "asuka_68",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+1,3,1": {
@@ -12397,6 +13492,11 @@
         "notation": "f+1, 3, 1",
         "id": "asuka_70",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+1,3,1~t7.asuka": {
@@ -12451,6 +13551,11 @@
         "notation": "f+1, 3, 1",
         "id": "asuka_70",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+1,3,1~t7.asuka.2": {
@@ -12499,6 +13604,11 @@
         "notation": "f+1, 3, 1",
         "id": "asuka_70",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+1,4~t7.asuka": {
@@ -12556,6 +13666,11 @@
         "notation": "f+1, 4",
         "id": "asuka_73",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+1,4~t7.asuka.2": {
@@ -12611,6 +13726,11 @@
         "notation": "f+1, 4",
         "id": "asuka_73",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+1,4~t7.asuka.3": {
@@ -12660,6 +13780,11 @@
         "notation": "f+1, 4",
         "id": "asuka_73",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+1,d+4": {
@@ -12715,6 +13840,11 @@
         "notation": "f+1, d+4",
         "id": "asuka_76",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+1,d+4~t7.asuka": {
@@ -12763,6 +13893,11 @@
         "notation": "f+1, d+4",
         "id": "asuka_76",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+1,d+4,D/B": {
@@ -12802,6 +13937,11 @@
         "notation": "f+1, d+4, D/B",
         "id": "asuka_78",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+2~t7.asuka": {
@@ -12852,6 +13992,11 @@
         "notation": "f+2",
         "id": "asuka_79",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 220,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f+2,D": {
@@ -12891,6 +14036,11 @@
         "notation": "f+2, D",
         "id": "asuka_80",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 176,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f+3~t7.asuka": {
@@ -12939,6 +14089,11 @@
         "notation": "f+3",
         "id": "asuka_81",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 79,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "t7.asuka_82": {
@@ -12986,6 +14141,11 @@
         "notation": "f+3* (two spins)",
         "id": "asuka_82",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+3*,B": {
@@ -13026,6 +14186,11 @@
         "notation": "f+3*, B",
         "id": "asuka_83",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+4~t7.asuka": {
@@ -13076,6 +14241,11 @@
         "notation": "f+4",
         "id": "asuka_84",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 214,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f,F+1~t7.asuka": {
@@ -13125,6 +14295,11 @@
         "notation": "f, F+1",
         "id": "asuka_85",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,F+2~t7.asuka": {
@@ -13176,6 +14351,11 @@
         "notation": "f, F+2",
         "id": "asuka_86",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,F+2,1~t7.asuka": {
@@ -13232,6 +14412,11 @@
         "notation": "f, F+2, 1",
         "id": "asuka_87",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,F+2,1~t7.asuka.2": {
@@ -13280,6 +14465,11 @@
         "notation": "f, F+2, 1",
         "id": "asuka_87",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,F+2,3~t7.asuka": {
@@ -13336,6 +14526,11 @@
         "notation": "f, F+2, 3",
         "id": "asuka_89",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,F+2,3~t7.asuka.2": {
@@ -13384,6 +14579,11 @@
         "notation": "f, F+2, 3",
         "id": "asuka_89",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,F+2,1+2~t7.asuka": {
@@ -13440,6 +14640,11 @@
         "notation": "f, F+2, 1+2",
         "id": "asuka_91",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+2,1+2~t7.asuka.2": {
@@ -13488,6 +14693,11 @@
         "notation": "f, F+2, 1+2",
         "id": "asuka_91",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+3~t7.asuka": {
@@ -13538,6 +14748,11 @@
         "notation": "f, F+3",
         "id": "asuka_93",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,F+4~t7.asuka": {
@@ -13588,6 +14803,11 @@
         "notation": "f, F+4",
         "id": "asuka_94",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,f,f+3": {
@@ -13625,7 +14845,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
       "note": "TJ 3f",
-      "input_note": "(or u/b, b, 3)"
+      "input_note": "(or u/b, b, 3)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1~t7.asuka": {
       "name": "KINPO d/f+1",
@@ -13675,6 +14900,11 @@
         "notation": "d/f+1",
         "id": "asuka_96",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 179,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d/f+1,2": {
@@ -13732,6 +14962,11 @@
         "notation": "d/f+1, 2",
         "id": "asuka_97",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+1,2~t7.asuka": {
@@ -13787,6 +15022,11 @@
         "notation": "d/f+1, 2",
         "id": "asuka_97",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+1,4~t7.asuka": {
@@ -13843,6 +15083,11 @@
         "notation": "d/f+1, 4",
         "id": "asuka_99",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+1,4~t7.asuka.2": {
@@ -13891,6 +15136,11 @@
         "notation": "d/f+1, 4",
         "id": "asuka_99",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+2~t7.asuka": {
@@ -13940,6 +15190,11 @@
         "notation": "d/f+2",
         "id": "asuka_101",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 269,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d/f+3": {
@@ -13989,6 +15244,11 @@
         "notation": "d/f+3",
         "id": "asuka_102",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 143,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d/f+4~t7.asuka": {
@@ -14038,6 +15298,11 @@
         "notation": "d/f+4",
         "id": "asuka_103",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 205,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d+2~t7.asuka": {
@@ -14086,6 +15351,11 @@
         "notation": "d+2",
         "id": "asuka_104",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 137,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d+4": {
@@ -14138,6 +15408,11 @@
         "notation": "d+4",
         "id": "asuka_105",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 339,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d+1+2~t7.asuka": {
@@ -14175,7 +15450,12 @@
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
       "note": "TC 15f",
-      "input_note": "(or FC 1+2)"
+      "input_note": "(or FC 1+2)",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 92,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "d+3+4~t7.asuka": {
       "name": "Double Lift Kicks",
@@ -14234,6 +15514,11 @@
         "notation": "d+3+4",
         "id": "asuka_107",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 127,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "d+3+4~t7.asuka.2": {
@@ -14286,6 +15571,11 @@
         "notation": "d+3+4",
         "id": "asuka_107",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 127,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "d/b+1": {
@@ -14338,6 +15628,11 @@
         "notation": "d/b+1",
         "id": "asuka_109",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 145,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d/b+1,2": {
@@ -14393,6 +15688,11 @@
         "notation": "d/b+1, 2",
         "id": "asuka_110",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+1,2~t7.asuka": {
@@ -14441,6 +15741,11 @@
         "notation": "d/b+1, 2",
         "id": "asuka_110",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+2": {
@@ -14491,6 +15796,11 @@
         "notation": "d/b+2",
         "id": "asuka_112",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 146,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d/b+3": {
@@ -14542,6 +15852,11 @@
         "notation": "d/b+3",
         "id": "asuka_113",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 138,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d/b+4": {
@@ -14594,6 +15909,11 @@
         "notation": "d/b+4",
         "id": "asuka_114",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 148,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d/b+4,D": {
@@ -14643,6 +15963,11 @@
         "notation": "d/b+4, D",
         "id": "asuka_115",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+4,4": {
@@ -14697,6 +16022,11 @@
         "notation": "d/b+4, 4",
         "id": "asuka_116",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+4,4~t7.asuka": {
@@ -14745,6 +16075,11 @@
         "notation": "d/b+4, 4",
         "id": "asuka_116",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+4,4,D": {
@@ -14799,6 +16134,11 @@
         "notation": "d/b+4, 4, D",
         "id": "asuka_118",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+4,4,D~t7.asuka": {
@@ -14847,6 +16187,11 @@
         "notation": "d/b+4, 4, D",
         "id": "asuka_118",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+4,4,4": {
@@ -14902,6 +16247,11 @@
         "notation": "d/b+4, 4, 4",
         "id": "asuka_120",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+4,4,4~t7.asuka": {
@@ -14956,6 +16306,11 @@
         "notation": "d/b+4, 4, 4",
         "id": "asuka_120",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+4,4,4~t7.asuka.2": {
@@ -15004,6 +16359,11 @@
         "notation": "d/b+4, 4, 4",
         "id": "asuka_120",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+4,4,4,D": {
@@ -15059,6 +16419,11 @@
         "notation": "d/b+4, 4, 4, D",
         "id": "asuka_123",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+4,4,4,D~t7.asuka": {
@@ -15113,6 +16478,11 @@
         "notation": "d/b+4, 4, 4, D",
         "id": "asuka_123",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+4,4,4,D~t7.asuka.2": {
@@ -15161,6 +16531,11 @@
         "notation": "d/b+4, 4, 4, D",
         "id": "asuka_123",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "LCT.3": {
@@ -15196,7 +16571,12 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:asuka_126",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "LCT.1+4": {
       "name": "Kariashi Hakuro",
@@ -15237,6 +16617,11 @@
           8
         ],
         "total": 13
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "LCT.1+4~t7.asuka": {
@@ -15273,7 +16658,12 @@
       "merge_source": "t7:asuka_128",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "(second hit only)"
+      "input_note": "(second hit only)",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+1~t7.asuka": {
       "name": "Violet",
@@ -15325,6 +16715,11 @@
         "notation": "b+1",
         "id": "asuka_129",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 216,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "b+1~t7.asuka.2": {
@@ -15385,6 +16780,11 @@
         "notation": "b+1",
         "id": "asuka_129",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+2~t7.asuka": {
@@ -15434,6 +16834,11 @@
         "notation": "b+2",
         "id": "asuka_131",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 97,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "b+2,1~t7.asuka": {
@@ -15488,6 +16893,11 @@
         "notation": "b+2, 1",
         "id": "asuka_132",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+2,1~t7.asuka.2": {
@@ -15536,6 +16946,11 @@
         "notation": "b+2, 1",
         "id": "asuka_132",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+2,4~t7.asuka": {
@@ -15590,6 +17005,11 @@
         "notation": "b+2, 4",
         "id": "asuka_134",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+2,4~t7.asuka.2": {
@@ -15638,6 +17058,11 @@
         "notation": "b+2, 4",
         "id": "asuka_134",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+2,4,D": {
@@ -15677,6 +17102,11 @@
         "notation": "b+2, 4, D",
         "id": "asuka_136",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+2,1+2~t7.asuka": {
@@ -15732,6 +17162,11 @@
         "notation": "b+2, 1+2",
         "id": "asuka_137",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+2,1+2~t7.asuka.2": {
@@ -15780,6 +17215,11 @@
         "notation": "b+2, 1+2",
         "id": "asuka_137",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+2,1+2,D": {
@@ -15834,6 +17274,11 @@
         "notation": "b+2, 1+2, D",
         "id": "asuka_139",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+2,1+2,4~t7.asuka": {
@@ -15890,6 +17335,11 @@
         "notation": "b+2, 1+2, 4",
         "id": "asuka_140",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+2,1+2,4~t7.asuka.2": {
@@ -15945,6 +17395,11 @@
         "notation": "b+2, 1+2, 4",
         "id": "asuka_140",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+2,1+2,4~t7.asuka.3": {
@@ -15993,6 +17448,11 @@
         "notation": "b+2, 1+2, 4",
         "id": "asuka_140",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+3~t7.asuka": {
@@ -16044,6 +17504,11 @@
         "notation": "b+3",
         "id": "asuka_143",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 103,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "b+3,2~t7.asuka": {
@@ -16099,6 +17564,11 @@
         "notation": "b+3, 2",
         "id": "asuka_144",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+3,2~t7.asuka.2": {
@@ -16147,6 +17617,11 @@
         "notation": "b+3, 2",
         "id": "asuka_144",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+3,2,D/F": {
@@ -16182,7 +17657,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:asuka_146",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+3,4~t7.asuka": {
       "name": "Dragon Wheel Leg Cutter",
@@ -16237,6 +17717,11 @@
         "notation": "b+3, 4",
         "id": "asuka_147",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+3,4~t7.asuka.2": {
@@ -16285,6 +17770,11 @@
         "notation": "b+3, 4",
         "id": "asuka_147",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+4~t7.asuka": {
@@ -16335,6 +17825,11 @@
         "notation": "b+4",
         "id": "asuka_149",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 112,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "b+4,2~t7.asuka": {
@@ -16390,6 +17885,11 @@
         "notation": "b+4, 2",
         "id": "asuka_150",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+4,2~t7.asuka.2": {
@@ -16437,6 +17937,11 @@
         "notation": "b+4, 2",
         "id": "asuka_150",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+4,2,3~t7.asuka": {
@@ -16494,6 +17999,11 @@
         "notation": "b+4, 2, 3",
         "id": "asuka_152",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+4,2,3~t7.asuka.2": {
@@ -16549,6 +18059,11 @@
         "notation": "b+4, 2, 3",
         "id": "asuka_152",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+4,2,3~t7.asuka.3": {
@@ -16597,6 +18112,11 @@
         "notation": "b+4, 2, 3",
         "id": "asuka_152",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+1+4~t7.asuka": {
@@ -16653,6 +18173,11 @@
         "notation": "b+1+4",
         "id": "asuka_155",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+1+4~t7.asuka.2": {
@@ -16703,6 +18228,11 @@
         "notation": "b+1+4",
         "id": "asuka_155",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+1+4,3~t7.asuka": {
@@ -16758,6 +18288,11 @@
         "notation": "b+1+4, 3",
         "id": "asuka_157",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+1+4,3~t7.asuka.2": {
@@ -16813,6 +18348,11 @@
         "notation": "b+1+4, 3",
         "id": "asuka_157",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+1+4,3~t7.asuka.3": {
@@ -16861,6 +18401,11 @@
         "notation": "b+1+4, 3",
         "id": "asuka_157",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+1+4,4~t7.asuka": {
@@ -16916,6 +18461,11 @@
         "notation": "b+1+4, 4",
         "id": "asuka_160",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+1+4,4~t7.asuka.2": {
@@ -16971,6 +18521,11 @@
         "notation": "b+1+4, 4",
         "id": "asuka_160",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+1+4,4~t7.asuka.3": {
@@ -17018,6 +18573,11 @@
         "notation": "b+1+4, 4",
         "id": "asuka_160",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "BT.1": {
@@ -17054,7 +18614,12 @@
       "merge_source": "t7:asuka_163",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "(or 2)"
+      "input_note": "(or 2)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.3": {
       "name": "KINPO BT.3",
@@ -17090,7 +18655,12 @@
       "merge_source": "t7:asuka_164",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "(or 4)"
+      "input_note": "(or 4)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.1": {
       "name": "KINPO FC.1",
@@ -17126,7 +18696,12 @@
       "merge_source": "t7:asuka_165",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "note": "TC 4f"
+      "note": "TC 4f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.2": {
       "name": "KINPO FC.2",
@@ -17161,7 +18736,12 @@
       "t7_on_ch": "+7",
       "merge_source": "t7:asuka_166",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.3": {
       "name": "KINPO FC.3",
@@ -17197,7 +18777,12 @@
       "merge_source": "t7:asuka_167",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "note": "TC 4f"
+      "note": "TC 4f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.4": {
       "name": "KINPO FC.4",
@@ -17233,7 +18818,12 @@
       "merge_source": "t7:asuka_168",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "note": "TC 4f"
+      "note": "TC 4f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.3+4": {
       "name": "KINPO FC.3+4",
@@ -17275,7 +18865,12 @@
         ],
         "total": 20
       },
-      "note": "TJ 13f"
+      "note": "TJ 13f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "FC.3+4~t7.asuka": {
       "name": "KINPO FC.3+4",
@@ -17310,7 +18905,12 @@
       "t7_on_ch": "+5 (OC)",
       "merge_source": "t7:asuka_170",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(second hit only)"
+      "input_note": "(second hit only)",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "FC.3+4,D": {
       "name": "KINPO FC.3+4,D",
@@ -17344,7 +18944,12 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:asuka_171",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.3+4,3": {
       "name": "Twin Cloud Kicks",
@@ -17388,7 +18993,12 @@
         ],
         "total": 40
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.3+4,3~t7.asuka": {
       "name": "KINPO FC.3+4,3",
@@ -17432,7 +19042,12 @@
         "total": 30
       },
       "knockdown": true,
-      "input_note": "(second hit only)"
+      "input_note": "(second hit only)",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.3+4,3~t7.asuka.2": {
       "name": "Twin Cloud Kicks",
@@ -17474,7 +19089,12 @@
         ],
         "total": 20
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.3+4,3~t7.asuka.3": {
       "name": "KINPO FC.3+4,3",
@@ -17510,7 +19130,12 @@
       "merge_source": "t7:asuka_175",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(second hit only)"
+      "input_note": "(second hit only)",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.3+4,3,D": {
       "name": "KINPO FC.3+4,3,D",
@@ -17544,7 +19169,12 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:asuka_176",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.d/f+2": {
       "name": "Grace",
@@ -17579,7 +19209,12 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:asuka_177",
       "recovery_from": "same-notation T8 recv",
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.d/f+3": {
       "name": "Minazuki",
@@ -17614,7 +19249,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:asuka_178",
       "recovery_from": "same-notation T8 recv",
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SS.2~t7.asuka": {
       "name": "Mist Palm Thrust",
@@ -17649,7 +19289,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:asuka_179",
       "recovery_from": "same-notation T8 recv",
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SS.4~t7.asuka": {
       "name": "Camellia",
@@ -17684,7 +19329,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:asuka_180",
       "recovery_from": "same-notation T8 recv",
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,F": {
       "name": "KINPO f,f,F",
@@ -17720,7 +19370,12 @@
       "merge_source": "t7:asuka_181",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "WR (Full Screen)"
+      "input_note": "WR (Full Screen)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,F~t7.asuka": {
       "name": "KINPO f,f,F",
@@ -17756,7 +19411,12 @@
       "merge_source": "t7:asuka_182",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "WR (Full Screen) (On Grounded Opponent)"
+      "input_note": "WR (Full Screen) (On Grounded Opponent)",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4~t7.asuka.2": {
       "name": "KINPO 4",
@@ -17806,6 +19466,11 @@
         "notation": "4",
         "id": "asuka_36",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "1+2~t7.asuka.2": {
@@ -17856,6 +19521,11 @@
         "notation": "1+2",
         "id": "asuka_37",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "WS.1": {
@@ -17891,7 +19561,12 @@
       "t7_on_ch": "+4",
       "merge_source": "t7:asuka_185",
       "recovery_from": "same-notation T8 recv",
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,4": {
       "name": "Shikeitai",
@@ -17933,7 +19608,12 @@
         ],
         "total": 32
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,4~t7.asuka": {
       "name": "KINPO WS.1,4",
@@ -17968,7 +19648,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:asuka_187",
       "recovery_from": "same-notation T8 recv",
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.2": {
       "name": "Rising Elbow",
@@ -18003,7 +19688,12 @@
       "t7_on_ch": "+8",
       "merge_source": "t7:asuka_188",
       "recovery_from": "same-notation T8 recv",
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.2,1": {
       "name": "KINPO WS.2,1",
@@ -18044,6 +19734,11 @@
           10
         ],
         "total": 28
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS.2,1~t7.asuka": {
@@ -18079,7 +19774,12 @@
       "t7_on_ch": "+9",
       "merge_source": "t7:asuka_190",
       "recovery_from": "same-notation T8 recv",
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.3": {
       "name": "Moon Scent",
@@ -18114,7 +19814,12 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:asuka_191",
       "recovery_from": "same-notation T8 recv",
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.4": {
       "name": "KINPO WS.4",
@@ -18149,7 +19854,12 @@
       "t7_on_ch": "+8",
       "merge_source": "t7:asuka_192",
       "recovery_from": "same-notation T8 recv",
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1+2": {
       "name": "Sudare Nagashi",
@@ -18184,7 +19894,12 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:asuka_193",
       "recovery_from": "same-notation T8 recv",
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "WS.1+2,D": {
       "name": "KINPO WS.1+2,D",
@@ -18218,7 +19933,12 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:asuka_194",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.2,1,1,1,2,1,4,3,3+4": {
       "name": "10 Hit Combo 1",
@@ -18253,7 +19973,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:asuka_195",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "WS.2,1,1,1,2,1+4,1,3+4": {
       "name": "10 Hit Combo 2",
@@ -18288,7 +20013,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:asuka_196",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "WS.2,1,1,3": {
       "name": "10 Hit Combo 3",
@@ -18323,7 +20053,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:asuka_197",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "t7.asuka_198": {
       "name": "KINPO Face Up, Feet Towards+3 or (After Rolling Forward)",
@@ -18373,6 +20108,11 @@
         "notation": "Face Up, Feet Towards+3 or (After Rolling Forward)",
         "id": "asuka_198",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "t7.asuka_199": {
@@ -18422,6 +20162,11 @@
         "notation": "Face Up, Feet Towards+4 or (After Rolling Forward)",
         "id": "asuka_199",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "FUFT.d+3": {
@@ -18458,7 +20203,12 @@
       "merge_source": "t7:asuka_200",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "Face Up, Feet Towards, (or 4)"
+      "input_note": "Face Up, Feet Towards, (or 4)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FUFT.3+4": {
       "name": "KINPO FUFT.3+4",
@@ -18494,7 +20244,12 @@
       "merge_source": "t7:asuka_201",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "Face Up, Feet Towards+"
+      "input_note": "Face Up, Feet Towards+",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "t7.asuka_202": {
       "name": "KINPO Face Up, Feet Towards, Roll Forward+1+2",
@@ -18543,6 +20298,11 @@
         "notation": "Face Up, Feet Towards, Roll Forward+1+2",
         "id": "asuka_202",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "FDFA.3": {
@@ -18579,7 +20339,12 @@
       "merge_source": "t7:asuka_203",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "Face Down, Feet Away+"
+      "input_note": "Face Down, Feet Away+",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FDFA.4": {
       "name": "KINPO FDFA.4",
@@ -18615,7 +20380,12 @@
       "merge_source": "t7:asuka_204",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "Face Down, Feet Away+ (close)"
+      "input_note": "Face Down, Feet Away+ (close)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FDFA.4~t7.asuka": {
       "name": "KINPO FDFA.4",
@@ -18651,7 +20421,12 @@
       "merge_source": "t7:asuka_205",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "Face Down, Feet Away+ (far)"
+      "input_note": "Face Down, Feet Away+ (far)",
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "t7.asuka_206": {
       "name": "KINPO (Upon Landing) f",
@@ -18699,6 +20474,11 @@
         "notation": "(Upon Landing) f",
         "id": "asuka_206",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+1+2~t7.asuka": {
@@ -18749,6 +20529,11 @@
         "notation": "f+1+2",
         "id": "asuka_207",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 357,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "R.d/f+1+2": {
@@ -18786,7 +20571,12 @@
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
       "note": "PC 8f",
-      "input_note": "(During Rage)"
+      "input_note": "(During Rage)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "R.f,F+1+2": {
       "name": "Rage Drive",
@@ -18822,7 +20612,12 @@
       "merge_source": "t7:asuka_209",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Rage)"
+      "input_note": "(During Rage)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1,2,3*~t7.asuka": {
       "name": "KINPO 1,2,3*",
@@ -18870,6 +20665,11 @@
         "notation": "1, 2, 3*",
         "id": "asuka_210",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+3*~t7.asuka": {
@@ -18918,6 +20718,11 @@
         "notation": "f+3*",
         "id": "asuka_211",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+3~t7.asuka": {
@@ -18956,7 +20761,12 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 288,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "2+4~t7.asuka": {
       "name": "Katanuki",
@@ -18994,7 +20804,12 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 289,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+1+3~t7.asuka": {
       "name": "Aki Nage",
@@ -19032,7 +20847,12 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+2+4~t7.asuka": {
       "name": "Katanuki",
@@ -19070,7 +20890,12 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "asuka",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+2+3": {
       "name": "White Mountain",
@@ -19108,7 +20933,12 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/b+1+2": {
       "name": "Destabilizer",
@@ -19146,7 +20976,12 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1+2": {
       "name": "Cherry Blossom",
@@ -19184,7 +21019,12 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SIDE_L.1+3": {
       "name": "Cloud Taste",
@@ -19222,7 +21062,12 @@
       "input_note": "Approach from left side... (or 2+4)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SIDE_R.1+3": {
       "name": "Wind Wheel",
@@ -19260,7 +21105,12 @@
       "input_note": "Approach from right side... (or 2+4)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BACK.1+3": {
       "name": "Twisted Limbs",
@@ -19298,7 +21148,12 @@
       "input_note": "Approach from behind... (or 2+4)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.d/f,d,d/f+1+2": {
       "name": "Falling Rain",
@@ -19335,7 +21190,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "t7.asuka_223": {
       "name": "KINPO WR f, f, F (Mid Screen)",
@@ -19383,6 +21243,11 @@
         "notation": "WR f, f, F (Mid Screen)",
         "id": "asuka_223",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "TACKLE.1": {
@@ -19419,7 +21284,12 @@
       "merge_source": "t7:asuka_224",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Tackle) (or 2)"
+      "input_note": "(During Tackle) (or 2)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "TACKLE.1,1": {
       "name": "KINPO TACKLE.1,1",
@@ -19462,7 +21332,12 @@
         "total": 10
       },
       "knockdown": true,
-      "input_note": "(During Tackle)"
+      "input_note": "(During Tackle)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "TACKLE.1,1,1": {
       "name": "KINPO TACKLE.1,1,1",
@@ -19506,7 +21381,12 @@
         "total": 15
       },
       "knockdown": true,
-      "input_note": "(During Tackle)"
+      "input_note": "(During Tackle)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "TACKLE.1,1,1,1": {
       "name": "KINPO TACKLE.1,1,1,1",
@@ -19551,7 +21431,12 @@
         "total": 30
       },
       "knockdown": true,
-      "input_note": "(During Tackle)"
+      "input_note": "(During Tackle)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CHARGE.d/f+3+4,3+4,1+2": {
       "name": "Naniwa Ultimate Tackle",
@@ -19589,7 +21474,12 @@
       "input_note": "(During Charge)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "NANIWA_ULTIMATE_TACKLE.2,1,2,1": {
       "name": "KINPO NANIWA_ULTIMATE_TACKLE.2,1,2,1",
@@ -19634,7 +21524,12 @@
         "total": 25
       },
       "knockdown": true,
-      "input_note": "(During Naniwa Ultimate Tackle)"
+      "input_note": "(During Naniwa Ultimate Tackle)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "NANIWA_ULTIMATE_TACKLE.2,1,1,2": {
       "name": "KINPO NANIWA_ULTIMATE_TACKLE.2,1,1,2",
@@ -19679,7 +21574,12 @@
         "total": 32
       },
       "knockdown": true,
-      "input_note": "(During Naniwa Ultimate Tackle)"
+      "input_note": "(During Naniwa Ultimate Tackle)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/b,b": {
       "name": "KINPO u/b,b",
@@ -19719,6 +21619,11 @@
         "notation": "u/b, b",
         "id": "asuka_231",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "REV.b+1+3": {
@@ -19763,7 +21668,12 @@
       },
       "knockdown": true,
       "note": "parries highs and mids from 3 - 12f, can be chickened with f+1+3 or f+2+4",
-      "input_note": "Time with enemy attack... (or b+2+4)"
+      "input_note": "Time with enemy attack... (or b+2+4)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     }
   },
   "restored_from_sweep_338": {
