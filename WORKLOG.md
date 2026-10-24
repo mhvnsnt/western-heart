@@ -1,3 +1,27 @@
+## 2026-10-23 ~18:15 CDT — batch3 T8 moveset pull: pond/tobi/megami/sakura/phantom (SHOW-ANIMATION LOCK)
+
+**Owner instruction (verbatim):** "Now we need to get that done for every other character" (2026-10-23) — replicate the proven Law/Lars pattern (PR #823 merged, PR #806 green).
+
+**Method:** T8 frame-data diff per fighter (`docs/t7t8-reference/frame-data-t8-full/<char>.json`, wavu) against existing `moves` dict keys; genuinely-missing moves added in Tekken notation via the canonical `tools/moveset-merge/merge_sources.py` `conv_t8` conversion (frames/60 -> seconds, damage scaled T8 180HP -> WH 100HP, raw kept in `damage_raw`); dedup by source-record identity (`t8_id`), key = notation when free else `<notation>~t8.<body>`; additions only (guard: 0 payload changes, 0 removals across all files).
+
+**Moveset (done):**
+- `game/assets/movesets/megami.json` (Jun Kazama): 150 -> **299** (+149 T8 Jun moves, all `"set": "FIGHT"`; TTT2-documented kit untouched; strings 0->18, specials 0->7)
+- `game/assets/movesets/pond.json` (Raven): 620 -> 620 (+0 — the merge lane's T8+T7 merge already covered all 177 T8 Raven moves; diff verified clean)
+- `game/assets/movesets/tobi.json` (Hwoarang): 729 -> 729 (+0 — merge lane already covered all 209 T8 Hwoarang moves; diff verified clean)
+- `game/assets/movesets/sakura.json` (Xiaoyu): 764 -> 764 (+0 — all 175 T8 Xiaoyu moves merged 2026-10-21)
+- `game/assets/movesets/phantom.json` (Yoshimitsu): 1019 -> 1019 (+0 — all 312 T8 Yoshimitsu moves merged 2026-10-21)
+- `index.json` moves/inputs/bytes updated for all 5. Provenance in `merge_sources.added.t8_pull_20261023`.
+
+**SHOW-ANIMATION LOCK (owner 2026-10-23):** file-level `anim_set_lock` added to all 5 files (previously missing everywhere); the 149 moves this lane pulled stamped `"set": "FIGHT"`. No SHOW content entered any moveset.
+
+**Animations (banks checked, gaps filed not stubbed):** `game/assets/anim/t3/hwoarang/`, `xiaoyu/`, `yoshimitsu/` exist (full 30-clip sets) — tobi/sakura/phantom wire to their own banks, no substitution. `t3/raven/` and `t3/jun/` do NOT exist (Raven debuted T5, Jun not in T3; T3 fallback empty per source priority) — precise gaps filed: `docs/anim/RAVEN-ANIM-GAP-20261023.md`, `docs/anim/JUN-ANIM-GAP-20261023.md` (FIGHT vs SHOW split, TTT2/T7/T8-first priority, unblock sequence for the extraction coordinator lane).
+
+**Verification:** new-move schema validated (all 13 required fields incl. `set: FIGHT`); semantic diff guard green (0 field losses, 0 removals); per-file byte-exact JSON serialization preserved (diffs are pure additions). CI's 6 checks gate the merge.
+
+**Anti-clobber:** rebuilt on current main tip after the merge lane's T8+T7 merge landed mid-task (53 commits; only `pond.json`/`tobi.json`/`index.json` overlapped — re-diffed on the new base, zero duplicated moves, their payloads untouched); surgical additions only; no deletions. Branch via Git Database API (no GitHub connector for git ops).
+
+---
+
 ## 2026-10-23 ~15:55 CDT — Repo Co Dev: owner rules (disk offload + merge rule)
 
 **Task:** add Oct 23 owner rules (a) disk offload, (b) merge rule to AGENTS.md, RULES_NO_GUESSING, HOW-TO-CONTINUE, Muse handoff.
