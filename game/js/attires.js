@@ -7,6 +7,10 @@
    ============================================================ */
 
 import { FULL_ROSTER } from './roster-full.js';
+import { MATERIAL_STATUS } from './material-status.js';
+// Material gate (tools/assets/material_gate.mjs): quarantined models are never offered.
+const QUARANTINED = new Set(Object.keys(MATERIAL_STATUS.quarantine || {}));
+const isModelUsable = (key) => !QUARANTINED.has(key);
 
 const LS_KEY = 'wh_attires_v1';
 // Fighter ids: a model key that is another fighter's own id is that fighter's body.
@@ -38,8 +42,10 @@ export const ATTIRE_VARIANTS = {
     { model: 'torch', label: 'ANNA BASE (TEKKEN BASE)' },
   ],
   'demonio': [
-    { model: 'demonio', label: 'BASE' },
+    // t133u: attire 1 = the owner's own Demonio (roster model demonio-a1);
+    // the old 'BASE' demonio.glb rendered the wrong body on select.
     { model: 'demonio-a1', label: 'ATTIRE 1' },
+    { model: 'demonio', label: 'BASE' },
     { model: 'demonio-winged', label: 'WINGED DEVIL' },
     { model: 'demonio-human', label: 'HUMAN' },
     { model: 'demonio-bloodline-ember', label: 'BLOODLINE EMBER' },
@@ -157,7 +163,6 @@ export const ATTIRE_VARIANTS = {
   'phantom': [
     { model: 'phantom', label: 'BASE' },
     { model: 'phantom-t8', label: 'T8' },
-    { model: 'steve-fox', label: 'JIN · BLADE SOUL' },
     { model: 'jin-bloodline-ember', label: 'JIN KAZAMA · BLOODLINE EMBER (TEKKEN RESKIN)' },
   ],
   /* CHARGER's ladder (dedup 2026-10-22): the standalone 'charger-attire2'
@@ -308,7 +313,6 @@ export const ATTIRE_VARIANTS = {
   'zui': [
     { model: 'zui-attire1', label: 'ATTIRE 1 · DRUNKEN MONK (TRIPO)' },
     { model: 'zui-attire2', label: 'ATTIRE 2 · REWORK V2' },
-    { model: 'steve-fox', label: 'BASE · STEVE FOX (CANON)' },
     { model: 'zui_alt1', label: 'ALT 1 · T7 STEVE RESKIN' },
     { model: 'zui_alt2', label: 'ALT 2 · T7 STEVE RESKIN' },
   ],
@@ -325,16 +329,16 @@ export const ATTIRE_VARIANTS = {
   ],
   'yukihyo': [
     { model: 'yukihyo', label: 'ATTIRE 1' },
-    { model: 'yukihyo-attire1', label: 'ATTIRE 2 (UNRIGGED)' },
-    { model: 'yukihyo-attire2', label: 'ATTIRE 3 · BOBCAT PRIDE (UNRIGGED)' },
-    { model: 'yukihyo-attire3', label: 'ATTIRE 4 · TIGER KING (UNRIGGED)' },
+    { model: 'yukihyo-attire1', label: 'ATTIRE 2' },
+    { model: 'yukihyo-attire2', label: 'ATTIRE 3 · BOBCAT PRIDE' },
+    { model: 'yukihyo-attire3', label: 'ATTIRE 4 · TIGER KING' },
     { model: 'armor-king', label: 'ARMOR KING · ORIGINAL MODEL (TEKKEN)' },
     { model: 'armor-king-attire1', label: 'ARMOR KING · SOURCE MODEL (UNRIGGED)' },
   ],
   'bruno': [
     { model: 'bruno', label: 'ATTIRE 1' },
     { model: 'bruno-attire1', label: 'ATTIRE 2 (UNRIGGED)' },
-    { model: 'bruno-attire2', label: 'ATTIRE 3 · SAIL THE SEA (UNRIGGED)' },
+    { model: 'bruno-attire2', label: 'ATTIRE 3 · SAIL THE SEA' },
   ],
   'dio': [
     { model: 'dio', label: 'ATTIRE 1' },
@@ -342,8 +346,8 @@ export const ATTIRE_VARIANTS = {
   ],
   'negativo': [
     { model: 'n3g4tiv0', label: 'ATTIRE 1' },
-    { model: 'negativo-attire1', label: 'ATTIRE 2 (UNRIGGED)' },
-    { model: 'negativo-attire2', label: 'ATTIRE 3 (UNRIGGED)' },
+    { model: 'negativo-attire1', label: 'ATTIRE 2' },
+    { model: 'negativo-attire2', label: 'ATTIRE 3' },
   ],
   /* SKULL (roster/skull/attires/ATTIRE-SLOTS.md): A1 = his Tripo; the live
      default stays the rigged build of it (the default swap rides the rig
@@ -370,14 +374,19 @@ function saveMap(m) {
 /** Attires available for a roster fighter (by model, falls back to roster id). */
 export function attiresFor(fighter) {
   if (!fighter) return [];
+  // MODEL PENDING (owner 2026-10-23): no own model yet -> no attire, never another fighter's body.
+  if (fighter.modelPending || !fighter.model) return [];
   // A soul riding another fighter's body (TOU / KAI / RETSU / GYOU on 'pantera') keeps that base model:
   // the body owner's ladder (Pantera's Tripo-first reorder, 2026-10-21) is his, not the riders'
   // (game/tests/model-key-guard.test.mjs "declared-base riders stay on their declared base").
   const ridesOther = fighter.model && fighter.model !== fighter.id && FIGHTER_IDS.has(fighter.model);
   const list = ridesOther ? ATTIRE_VARIANTS[fighter.id] : (ATTIRE_VARIANTS[fighter.model] || ATTIRE_VARIANTS[fighter.id]);
-  if (list && list.length) return list;
+  // Material gate: attires whose model failed the material audit are never offered.
+  // If the fighter's OWN attire-1 is quarantined, the fighter is hidden until it is fixed;
+  // never promote a later (often unrigged/private) attire into the attire-1 slot.
+  if (list && list.length) return isModelUsable(list[0].model) ? list.filter(a => isModelUsable(a.model)) : [];
   // Default: single attire = the fighter's own model
-  return [{ model: fighter.model || 'pantera', label: 'ATTIRE 1' }];
+  return [{ model: fighter.model, label: 'ATTIRE 1' }].filter(a => isModelUsable(a.model));
 }
 
 /** The persisted attire model id for this fighter (or their base). */
@@ -386,7 +395,7 @@ export function selectedAttireModel(fighter) {
   const list = attiresFor(fighter);
   const saved = map[fighter.id];
   if (saved && list.some(a => a.model === saved)) return saved;
-  return list[0].model;
+  return list.length ? list[0].model : null;
 }
 
 /** Persist the attire choice for a fighter. */

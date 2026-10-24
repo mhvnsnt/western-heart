@@ -111,6 +111,16 @@ async function boot() {
     return new m.WHLipSyncPlayer();
   });
 
+  // 8. Chrono grapple joint-constraint subsystem (Track 4, 2026-10-23):
+  //    deterministic joint locks / submission chains / torque nodes for
+  //    the ground game. Sleeps while idle (zero cost). The fight state
+  //    machine calls grapple.stepCombat(fixedDt, inputs) on the combat
+  //    tick; this loop only runs the cosmetic joint solve for the servo
+  //    layer via getServoTargets() → PhysicsServo PD controllers.
+  await tryInit('grapple', './chrono-grapple.js', async (m) => {
+    return new m.ChronoGrapple();
+  });
+
   WHIntegration.ready = true;
   window.WHIntegration = WHIntegration;
 
@@ -124,6 +134,7 @@ async function boot() {
     const S = WHIntegration.systems;
     try {
       if (S.physics) S.physics.step(dt);
+      if (S.grapple) S.grapple.update(dt);
       if (S.hitfx) S.hitfx.update(dt);
       // Attach spring chains + nameplates to newly spawned fighters.
       for (const key of ['p1', 'p2']) {
