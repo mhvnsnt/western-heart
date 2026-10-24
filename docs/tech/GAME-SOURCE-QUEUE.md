@@ -24,7 +24,7 @@ App and depot IDs and sizes were verified on 2026-10-23 via api.steamcmd.net and
 
 | # | Game | App | Main depot | Size | Take | Wires into (as a module on the Tekken base) | Status |
 |---|---|---|---|---|---|---|---|
-| 1 | Fire Pro Wrestling World | 564230 | 564231 | 3.97 GB | Unity: edit/moveset data, CPU logic (Assembly-CSharp) | sim/CPU AI, creation suite | next |
+| 1 | Fire Pro Wrestling World | 564230 | 564231 | 3.97 GB | Unity: edit/moveset data, CPU logic (Assembly-CSharp) | sim/CPU AI, creation suite | decompiled; private PR game-reverse-engineering#53 |
 | 2 | Wrestling Empire | 1620340 | 1620341 | 0.52 GB | Unity: roster/world tables, match variety | HMW world | queued |
 | 3 | Yakuza Kiwami (Legacy) | 834530 | 834531 | 12.6 GB | PAR archives: heat actions, styles, story | HMW brawler/story | queued, filelist |
 | 4 | Gang Beasts | 285900 | 285903 linux / 285901 win | 1.3 GB | Unity active-ragdoll joint/spring configs | partial ragdoll | queued |
@@ -36,6 +36,9 @@ App and depot IDs and sizes were verified on 2026-10-23 via api.steamcmd.net and
 | 10 | Red Faction Guerrilla SE | 20500 | 20501 | 8.1 GB | vpp_pc destruction params | arena destruction (no color/light change) | later |
 | 11 | Overgrowth | 25000 | 25002 | 21.3 GB | open-source engine (WolfireGames/overgrowth) | traversal/parkour | prefer source repo |
 | 12 | DCS World | 223750 | 1024701+ | 3.5 GB+ | flight sim, little character content | assess | assess |
-| 13 | Red Dead Online | 1404210 | 1404213 | 78.8 GB | Euphoria is closed middleware, RAGE archives encrypted | doc only | infeasible |
-| 14 | Destiny 2 | 1085660 | 1085661 | 161 GB | Tiger engine, encrypted | doc only | infeasible |
+| 13 | Red Dead Online | 1404210 | 1404213 | 78.8 GB | ragdoll/Euphoria behaviour tuning data, anims, rigs (RPF via CodeWalker / OpenIV-style readers + community RPF key docs) | rebuilt on PhysicsServo active ragdoll (Euphoria runtime is licensed, not copied) | end of queue, filelist only |
+| 14 | Destiny 2 | 1085660 | 1085661 | 161 GB | customization parts, shaders, anim sets (Tiger packages via Charm / DestinyUnpacker) | creation suite | end of queue (after 15), filelist only |
 | 15 | Creativerse | 280790 | 280792 | 3.0 GB | voxel builder | assess | assess |
+
+## RDO and Destiny 2 (owner owns both; last in the queue)
+Work offline only, on files downloaded with his Steam login. Never launch the games, touch anti-cheat, or connect to online services. Pull only the files that are needed via the manifest and small `-filelist` batches, never below 8 GB free. Outputs go to the private repo only, and the canon-name rule applies. Community tools: CodeWalker (github.com/dexyfex/CodeWalker) and OpenIV-style RPF readers for RAGE; Charm (github.com/MontagueM/Charm) and DestinyUnpacker for Tiger packages. Ghidra plus an MCP bridge is used only for format gaps. Exact 2026 tool support for RDR2 still needs to be confirmed at pull time.
