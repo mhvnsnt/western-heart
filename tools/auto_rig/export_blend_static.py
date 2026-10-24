@@ -59,6 +59,7 @@ for o in bpy.data.objects:
     if arm and not hidden:
         keep.append(o)
 
+assign_missing = argv[argv.index('--assign-missing') + 1] if '--assign-missing' in argv else None
 dg = bpy.context.evaluated_depsgraph_get()
 coll = bpy.data.collections.new('wh_export')
 bpy.context.scene.collection.children.link(coll)
@@ -66,7 +67,24 @@ baked = []
 for o in keep:
     me = bpy.data.meshes.new_from_object(o.evaluated_get(dg), preserve_all_data_layers=True, depsgraph=dg)
     me.transform(o.matrix_world)
-    nb = bpy.data.objects.new(o.name, me)
+    # The auto-rig joins every mesh into one object: a join keeps UVs only for layers whose NAME matches the active
+    # object's, so a mesh whose UV layer is named differently (Rahkasa's hair, converted from a curve) lost its UVs
+    # and the exporter dropped its texture. One UV layer per mesh, named "UVMap".
+    if me.uv_layers:
+        act = me.uv_layers.active or me.uv_layers[0]
+        for uv in [u for u in me.uv_layers if u != act]:
+            me.uv_layers.remove(uv)
+        me.uv_layers[0].name = 'UVMap'
+    # A mesh the artist left without any material renders Blender's grey default; --assign-missing gives it one of
+    # the character's own materials instead (logged).
+    if assign_missing and not len(me.materials):
+        mat = bpy.data.materials.get(assign_missing)
+        if mat:
+            me.materials.append(mat)
+            print('ASSIGN', o.name, '->', assign_missing)
+    name = o.name
+    o.name = name + '__src'  # free the name so the exported mesh keeps the artist's object name (no ".001")
+    nb = bpy.data.objects.new(name, me)
     coll.objects.link(nb)
     baked.append(nb)
 for o in bpy.data.objects:
