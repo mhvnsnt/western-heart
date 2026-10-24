@@ -388,7 +388,17 @@ export class Game {
               act === '1' || act === '2' || act === '3' || act === '4' ||
               act === '1+3' || act === '2+4' || act === '1+2' || act === '3+4' ||
               act === '1+4' || act === '2+3') {
-            if (this.p1.tryAttack(act)) { audio.whiff(); rec(act); }
+            // Directional input: combine stick direction with button press.
+            // Tekken: holding f + pressing 2 = f+2, not neutral 2.
+            // Try directional first; fall back to neutral if no such move.
+            let fired = false;
+            if (/^[1234]$/.test(act) && inp.stickDir && inp.stickDir !== 'n') {
+              const dirNotation = inp.stickDir + '+' + act;
+              if (this.p1.tryAttack(dirNotation)) {
+                audio.whiff(); rec(dirNotation); fired = true;
+              }
+            }
+            if (!fired && this.p1.tryAttack(act)) { audio.whiff(); rec(act); }
           }
           else if (act === 'ss-up') { if (this.p1.trySidestep(-1)) rec('sidestep'); }
           else if (act === 'ss-down') { if (this.p1.trySidestep(1)) rec('sidestep'); }
