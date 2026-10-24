@@ -2598,7 +2598,7 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 
 **ALL CHARACTERS ARE ADULTS:** n/a — rigging pipeline, no characters.
 
-## 2026-10-23 ~22:10 CDT — merge-tree-guard: merge-time guard against fake stale-tree merges (branch muse/merge-tree-guard; PR number filled after opening)
+## 2026-10-23 ~22:10 CDT — merge-tree-guard: merge-time guard against fake stale-tree merges (PR #983, branch muse/merge-tree-guard)
 
 **Owner instruction (verbatim):** "REPO: mhvnsnt/western-heart. TASK: build a merge-time guard that stops fake/stale-tree merges from deleting files on main."
 
