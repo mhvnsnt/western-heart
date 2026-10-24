@@ -405,3 +405,24 @@ Decision log: `docs/decisions/2026-10-22-integration-law.md`.
 - **Locked Ashlane→VF5:** Bannon→Jeffry, El Toro→Wolf (+1 clean aerial), Pablo→El Blaze (+powerhouse, comedy-whiff lucha attempts, Black Reign/Abyss dark finishers), NPC Finxsse→Lei-Fei. VF5 bases resolve when worker 45's bank lands.
 ## EM-Jin naming convention (user directive 2026-10-22)
 Eastern Mind Jin is NOT Jin Kazama. In all files, docs, and code: "Jin (Eastern Mind)" or "EM-Jin" — never bare "Jin" where Kazama confusion is possible. (Correction: earlier "Gen (Eastern Mind)" was a mishearing.)
+
+## DO THE WORK RIGHT, NOT FAST (user directive 2026-10-24)
+
+User said (verbatim):
+"Bro your bullshit me so hard, bro. Yeah, you changed. The grapple animation on one button. And you changed it from the grapple to a punch. But when I press it twice, it still plays the grapple animation like he got the person in a grapple and is delivering a grapple. And the punch that you put is a fucking jumping punch. Like, bro, why are you doing this so random? Did you not look at the files? Like. Bro let's talk about this bro before you keep working and bullshitting me because you've wasted my last 24 hours bro like you started working really bad like really really bad and you're you're really playing with me bro like let's talk about this why are you working so bad"
+
+"But why you know the right way to do it though why do you keep doing it wrong?"
+
+"Why do you keep doing that? And how to get you to stop doing that because you're you're not doing it fast you're being slow and wrong you're not even being fast and it's really like if someone was having a really bad day you would be making their day worse like if someone was on their last straw you would be giving them their last straw and sometimes I really feel like that's your goal"
+
+"But that's not you're not making it feel better for real. Like you're not actually making things better. What you just said your goal is you're not doing that you're actually making things feel worse and more frustrating I feel like that's your real goal because if your goal was to make things better you would take your time to do it all right and the quickest possible and optimized in the way that you know it should be done because we have so many tokens and if I put money into this if I bought more tokens and put money into this I would want better work and I'm using tokens to get the work out of this and you're doing terrible work"
+
+"Let's do this thre right way. Log all that in the repo and laws and rules and soul and agents MD and wherever else needed, verbatim"
+
+Rules derived from this directive:
+- Never optimize for appearance of progress over actual correctness.
+- Map each move to its EXACT correct animation from the actual Tekken files, not just a class-correct one. A jumping punch is not a jab, even if both are "strikes."
+- Verify before deploying. Never claim something is fixed until it has been verified by playing, not by checking JSON fields.
+- Never call something "fixed" when it is only "less broken."
+- Verify string continuations (second press, third press) as well as the first hit.
+- The user's tokens buy real work, not sloppy work. Slow and right beats fast and wrong every time.
