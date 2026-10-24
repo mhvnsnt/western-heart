@@ -2575,3 +2575,24 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Anti-clobber:** branch from fresh origin/main; sparse checkout in this tree (lab/ etc. excluded) — committed via Git Data API (push_branch_api.py) building from main's real tree + only this task's 6 files; verified via compare API that the branch diff is exactly the 6 files (4 added, 2 modified), 0 deletions. gitleaks clean. No deletions.
 
 **ALL CHARACTERS ARE ADULTS:** n/a — rigging pipeline, no characters.
+
+---
+
+## 2026-10-23 — Fighting game AI methodology (FightingICE + Tencent)
+
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate"
+
+**Changes:**
+- `docs/research/FIGHTING-AI-METHODOLOGY-2026-10-23.md` (new): what FightingICE teaches (16.67ms budget, 15-frame human-reaction delay, forward model, MCTS era, ERHEAPI 2020's RHEA + live opponent model), what Tencent validates (AI in-between frames, self-play agents "millions of rounds", Naruto Mobile HESP), wiring map, beatability contract, future lanes.
+- `game/js/ai/frame-data.js` (new): 60fps frame math, seconds<->frames normalization, T7 advantage-string parsing, bestPunish() Tekken punish math.
+- `game/js/ai/reaction-delay.js` (new): FightingICE's 15-frame human-reaction rule — brains decide from a delayed snapshot; 15f rookie → 8f boss, never 0.
+- `game/js/ai/mcts-select.js` (new): UCB1 MCTS through the frame-data forward model (depth-2 rollouts, 3ms hard budget) + live OpponentModel (frequency table: guard height, mash rate, sidesteps, foe fastest button, learned mid-match).
+- `game/js/ai.js` (surgical): FIXED foeStartupFrames fed in SECONDS to brains reasoning in FRAMES (the 15f-plus sidestep window could never open); combat/grapple/reversal brains decide from the delayed human-view snapshot, execution stays live; whiff-punish lane picks the hardest punish fitting the foe's real recovery window; attack lanes use MCTS at higher tiers (tier-gated below difficulty 0.35).
+- `game/js/modes.js` (surgical): scaledAi() passes difficulty through; AIController maps it via delayFramesForDifficulty() / mctsRolloutsForDifficulty().
+- `game/tests/fighting-ai.test.mjs` (new, 21 tests), `game/tests/fighting-ai-integration.test.mjs` (new, 7 tests incl. 300-tick mock-fighter AIController.update() soak).
+
+**Verification:** 21/21 + 7/7 + 24/24 (yuka-combat-ai) green; full node --test game/tests 164/169 with 5 pre-existing failures reproduced identically with this change stashed (fluid-decals, fighter model-URL resolution, stagerage rage/urge mapping — unrelated). node --input-type=module --check clean on all touched modules. Gitleaks: no leaks found. Live tools/proof-harness/fight.mjs not run — no Chromium/Playwright in this environment; task said "if available".
+
+**Deviations:** none.
+
+**ALL CHARACTERS ARE ADULTS:** n/a — AI logic only, no character content.
