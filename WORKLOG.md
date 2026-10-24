@@ -2529,6 +2529,16 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 
 **Deviations:** none — no SHOW content entered any moveset; no wrong-bank substitution (proxies left untouched, flagged in gap docs).
 
+## 2026-10-24 — Claude session: limb isolation on all auto-rigs; Chordz + Sam-ur-A1 wired
+- New `tools/auto_rig/backends/limb_isolation.py` (one leg's vertices drop weight from the other leg / the arms; arms
+  likewise; core untouched) — the web between Skull's legs in a high kick. Step of `rig_tripo_static.py` now.
+- Applied in place to the 16 GameRig rigs from 2026-10-23 (git history keeps the previous files); all 16 hold the T3
+  stance in game. Chordz (Claude rig, same stance as the crew's `source/chordz-a1-rigged.glb`, which stays) and
+  Sam-ur-A1 (`model-rerig.glb`, replaces the sideways k-NN rig) wired. Proof: docs/proof/claude-2026-10-23/rerig/.
+- Verified on main + this branch: boot 2.9 s, every game/js module parses, Skull vs Thor arcade fight, no page errors.
+  `node --test game/tests`: the 3 failures (negativo/yukihyo/vainabel resolution, rage + urge inputs) fail identically
+  on main alone.
+
 ---
 
 ## 2026-10-23 — Track 4 (advanced systems): Project Chrono grappling lane
