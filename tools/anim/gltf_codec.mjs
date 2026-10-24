@@ -33,7 +33,10 @@ if (mode === 'decode') {
     if (['EXT_meshopt_compression', 'KHR_mesh_quantization'].includes(ext.extensionName)) ext.dispose();
   }
 } else {
-  await doc.transform(prune(), meshopt({ encoder: MeshoptEncoder, level: 'medium' }));
+  // keepSolidTextures: prune() otherwise folds a one-colour texture into the material factor, and a solid WHITE
+  // texture (Rahkasa's hair, 2026-10-24) becomes the default factor, which the material gate reads as "no colour
+  // authored" and quarantines the fighter. Keep the artist's texture as it is.
+  await doc.transform(prune({ keepSolidTextures: true }), meshopt({ encoder: MeshoptEncoder, level: 'medium' }));
 }
 await io.write(out, doc);
 console.log(`${mode} ok -> ${out}`);

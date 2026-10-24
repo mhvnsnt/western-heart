@@ -19,7 +19,8 @@
    ============================================================ */
 import * as THREE from 'three';
 import { assets } from './assets.js';
-import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK } from './t3anims.js';
+import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK,
+  clipStrikeProfile, clipHitWindow, bankAttackPool, attackLevelOfWord, attackClipTime, clipIsThrow, BUTTON_LIMB } from './t3anims.js';
 import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove } from './movesets.js';
 import { TransformCinematic } from './transform-cinematic.js';
 import { V, vskillFor, vtriggerEnhance, vreversalMove } from './v-system.js';
@@ -631,47 +632,223 @@ export class Fighter {
     console.log(`[WH] Fighter ${this.char.id}: ${Object.keys(this.t3actions).length} real T3 actions from bank '${bank}' (retargeted onto ${modelKey})`);
   }
 
-  /* The move's OWN decoded T3 animation (its t3_row in this fighter's
-     bank, tools/anim/t3_row_bake.py), retargeted on first use and
-     time-scaled so the clip spans the move's startup+active+recovery.
-     Returns the action name, or null when the move has no row clip. */
-  _moveRowAction(move) {
-    if (!this._t3 || !move) return null;
-    let row = move.t3row;
-    let ok = false;
-    if (row != null) {
-      const srcBank = move.t3source ? SOURCE_TO_BANK[move.t3source] : this._t3.bank;
-      // king/armorking family (anim-bank wiring lane, 2026-10-20): the
-      // 'armorking' bank is the SAME divmot03_king motion stream baked on
-      // King's own rig (PR #405), and its rows.pack carries the king-row
-      // clips — so king-sourced move rows are native to the armorking bank,
-      // not foreign clips. Every other source/bank mismatch still blocks.
-      const kingFamily = srcBank === 'king' && this._t3.bank === 'armorking';
-      ok = srcBank === this._t3.bank || kingFamily;
+  /* ATTACK CLIP SELECTION (lane D, 2026-10-24; owner: "the different move inputs from the move
+     lists ... aren't working ... just random stuff is happening"). Before this, every move with no
+     row clip played the bank's generic light/medium/heavy (Skull: 205 of 293 inputs), so different
+     inputs looked the same, and those clips ran at timeScale 1, unsynced to the move's startup.
+     The move that resolved now plays a clip of the fighter's OWN bank, first match wins (never
+     another character's per-move clips; docs/RULES_NO_GUESSING.md — nothing authored):
+       own       the move's decoded T3 row: t3_row (a string's list names one row per hit; the key
+                 fires the last), when its t3_source maps to the bound bank
+       notation  the decoded T3 row (own t3_row) of the move this fighter's moveset binds to the SAME
+                 input — the T3 copy of the move a merged T7/T8 move replaced in its slot (Skull's
+                 T3 '1' = row 50, the i10 jab, for the T8 Jab)
+       anim      anim_t3 {bank,row} 'same-notation' (tools/moveset-merge: the first T3 move found with
+                 that notation, any stance) — merge-time guess, so after notation. anim_t3 'nearest'
+                 (approximate) is tried only after match: it disagrees with the pressed button 43%.
+       match     the bank's decoded attack row (hit_frames.json) started by the SAME buttons (decoded
+                 branch command; 1/2/3/4 = L/R punch, L/R kick), then the same limb, at the move's
+                 height (decoded attack word / T8 / T7 hit level), nearest decoded hit frame to its
+                 startup — closest real clip of the same character, flagged 'match'
+       generic   the bank's light/medium/heavy (grab for throws) striking with that limb (measured)
+     STRIKE vs THROW (owner: "pressing 1 ... can show a THROW"): every candidate's decoded row type
+     (hit_frames.json throw flag) must agree with the move — a strike never plays a throw row, a throw
+     (isGrab / throw level / 1+3 / 2+4, as the game treats it) never plays a strike row. A conflicting
+     row is skipped and logged in plan.rejected (moveset data to fix), e.g. Pantera's T8 Jab, whose
+     anim_t3 'same-notation' row 290 is King's decoded throw attempt. Throws without a throw row of
+     their own match the bank's decoded throw-attempt rows instead of the strike pool.
+     Returns { name, kind, why, limb, level, timing, rejected } or null (no bank: procedural).
+     timing = clip hit window -> move active frames (see _applyAttackWarp). Pure: no actions made. */
+  static attackLimb(move, attackName) {
+    const L = move && move.limb;
+    if (L === 'armL' || L === 'armR' || L === 'legL' || L === 'legR') return L;
+    const hit = String(attackName || (move && move.tekkenInput) || '').split(/[,.]/).pop();
+    const b = (hit.match(/[1-4]/) || [])[0];
+    return { 1: 'armL', 2: 'armR', 3: 'legL', 4: 'legR' }[b] || (L === 'both' && /[34]/.test(hit) ? 'legR' : 'armR');
+  }
+  /* Button mask of the hit a notation fires (its last hit, after any stance prefix):
+     1 LP, 2 RP, 4 LK, 8 RK (the T3 command bits); else the move's limb as one button; 0 unknown. */
+  static attackButtons(move, attackName) {
+    const hit = String(attackName || (move && move.tekkenInput) || '').split(/[,.~:]/).pop();
+    let m = 0;
+    for (const b of hit.match(/(?<![a-z/])[1-4](?![0-9])/gi) || []) m |= 1 << (+b - 1);
+    if (m) return m;
+    return { armL: 1, armR: 2, legL: 4, legR: 8 }[move && move.limb] || 0;
+  }
+  static attackLevel(move, raw) {
+    if (move && move.hitWord != null) { const l = attackLevelOfWord(move.hitWord); if (l) return l; }
+    const lab = (move && move.t8 && move.t8.tgt) || (raw && (raw.hit_level || (raw.t7 && raw.t7.hit_level))) || '';
+    const tok = String(lab).split(',').map(s => s.trim()).filter(Boolean).pop() || '';
+    const t = tok.toLowerCase().replace(/[!()\s.]/g, '');
+    if (!t || t === '-') return null;
+    if (/throw|^th|^t/.test(t)) return 't';
+    if (/^s(m|mid)/.test(t)) return 's';
+    return { h: 'h', m: 'm', l: 'l' }[t[0]] || ({ high: 'h', mid: 'm', low: 'l' })[t] || (t.startsWith('sl') ? 'l' : null);
+  }
+  _attackRowIndex() {
+    // This fighter's own decoded T3 rows (t3_row in the bound bank) by input, from its moveset:
+    // a move keyed by the notation first, then the slots table, then the moves' input fields.
+    const t3 = this._t3, msId = this._movesetId;
+    if (t3.rowIdx && t3.rowIdx.ms === msId) return t3.rowIdx;
+    const idx = { ms: msId, byInput: new Map() };
+    const ms = getFighterMoveset(msId);
+    if (ms && ms.moves) {
+      const add = (n, name) => { if (!n) return; const l = idx.byInput.get(n) || []; if (!l.includes(name)) l.push(name); idx.byInput.set(n, l); };
+      const keyRow = {};
+      for (const [k, m] of Object.entries(ms.moves)) {
+        const r = m && this._ownRow({ t3row: m.t3_row, t3source: m.t3_source || (m.t3_row != null ? ms.t3_source : null) }, 'own');
+        if (r) keyRow[k] = r.name;
+      }
+      for (const [k, name] of Object.entries(keyRow)) add(k, name);
+      for (const [n, k] of Object.entries(ms.slots || {})) if (keyRow[k]) add(n, keyRow[k]);
+      for (const [k, name] of Object.entries(keyRow)) add(ms.moves[k].input, name);
     }
-    if (!ok && move.animRow != null && (SOURCE_TO_BANK[move.animBank] || move.animBank) === this._t3.bank) {
-      row = move.animRow; ok = true; // T7/T8 move: its base character's decoded T3 row (anim_t3)
+    t3.rowIdx = idx;
+    return idx;
+  }
+  _ownRow(move, which = null) {
+    const t3 = this._t3, clips = t3.clips;
+    const last = (r) => (Array.isArray(r) ? r[r.length - 1] : r);
+    // king/armorking family (anim-bank wiring lane, 2026-10-20): the 'armorking' bank is the SAME
+    // divmot03_king motion stream baked on King's own rig (PR #405), so king rows are native to it.
+    const same = (b) => b === t3.bank || (b === 'king' && t3.bank === 'armorking');
+    if (which !== 'anim' && move.t3row != null) {
+      const r = last(move.t3row);
+      if (same(move.t3source ? SOURCE_TO_BANK[move.t3source] : t3.bank) && clips['row:' + r]) return { name: 'row:' + r, kind: 'own' };
     }
-    if (!ok) {
-      // Unanimated T7/T8 move (most of each list): borrow the decoded row of
-      // the closest animated move in the SAME moveset — same command, else
-      // same direction+button, else same button/limb — instead of every
-      // move replaying the generic jab/heavy clip (read as "random moves").
-      const d = this._rowDonor(move);
-      if (d != null) { row = d; ok = true; }
+    if (which !== 'own' && move.animRow != null) {
+      const r = last(move.animRow);
+      if (same(SOURCE_TO_BANK[move.animBank] || move.animBank) && clips['row:' + r]) return { name: 'row:' + r, kind: 'anim' };
     }
-    if (!ok) return null;
-    const name = 'row:' + row;
-    if (!this.t3actions[name]) {
-      if (!this._t3.clips[name]) return null;
+    return null;
+  }
+  _attackClipPlan(move, attackName) {
+    if (!this._t3 || !this._t3.clips) return null;
+    const { bank, clips } = this._t3;
+    const ms = getFighterMoveset(this._movesetId);
+    const raw = move && move.moveKey && ms && ms.moves ? ms.moves[move.moveKey] : null;
+    const limb = Fighter.attackLimb(move, attackName);
+    const level = Fighter.attackLevel(move, raw);
+    // Throw as the game treats it (_tryAttackFresh lunge / getHitbox grab sphere / canBeHitBy).
+    const grab = !!(move && move.isGrab) || /^(grab|1\+3|2\+4)$/.test(String(attackName || '')) || level === 't';
+    const S = move && Number.isFinite(move.startup) ? move.startup : 0;
+    const rejected = [];
+    // A row whose decoded type disagrees with the move is skipped (strike <-> throw).
+    const fits = (c) => {
+      if (!c || !clips[c.name]) return null;
+      const thr = clipIsThrow(clips[c.name]), atk = !!(clips[c.name].userData.hit && clips[c.name].userData.hit[0] > 0);
+      if (grab ? thr : !thr) return c;
+      if (grab && !atk) return c; // a throw on a non-attack row (no decoded hit at all): nothing contradicts it
+      rejected.push(`${c.kind} ${c.name} is a ${thr ? 'throw' : 'strike'} row`);
+      return null;
+    };
+    let pick = move ? fits(this._ownRow(move, 'own')) : null;
+    if (!pick) {
+      const idx = this._attackRowIndex();
+      for (const n of [move && move.tekkenInput, attackName, raw && raw.input]) {
+        for (const name of (n && idx.byInput.get(n)) || []) {
+          pick = fits({ name, kind: 'notation', why: `same input '${n}'` });
+          if (pick) break;
+        }
+        if (pick) break;
+      }
+    }
+    // anim_t3 'nearest' rows (merge-time limb/class/startup guess, flagged approximate) show a
+    // different button than the input on 43% of slots (measured 2026-10-24); they come after match.
+    const animNearest = !!(raw && raw.anim_t3 && /nearest/.test(String(raw.anim_t3.match || '')));
+    if (!pick && move && !animNearest) pick = fits(this._ownRow(move, 'anim'));
+    // Main's animated-row donor (combat pt198u, kept): the decoded row of the closest animated move in the SAME
+    // moveset (same command, else same direction+button, else same button/limb), strike/throw-checked like the rest.
+    if (!pick && move) { const d = this._rowDonor(move); if (d != null) pick = fits({ name: 'row:' + d, kind: 'donor', why: `donor row ${d}` }); }
+    // The move's buttons (last hit of its notation: 1 LP, 2 RP, 3 LK, 4 RK) and the limb they name.
+    const btn = Fighter.attackButtons(move, attackName);
+    const btnLimb = BUTTON_LIMB[btn] || limb;
+    if (!pick) {
+      // Same buttons first, then the same limb, each at the move's height then any height;
+      // nearest decoded hit frame to the move's startup inside the first tier that has rows.
+      const NEAR = { h: ['h', 'm'], m: ['m', 's', 'u'], s: ['s', 'l', 'm'], l: ['l', 's'], u: ['u', 'm'] };
+      const all = bankAttackPool(bank, { throws: grab });
+      const tiers = [];
+      for (const pool of [btn ? all.filter(c => c.btn === btn) : [], all.filter(c => c.limb === btnLimb)]) {
+        if (!grab && level && NEAR[level]) for (const l of NEAR[level]) tiers.push(pool.filter(c => c.level === l));
+        tiers.push(pool);
+      }
+      if (grab) tiers.push(all); // throw reach: any decoded throw attempt of this character
+      for (const tier of tiers) {
+        if (!tier.length) continue;
+        let best = tier[0];
+        for (const c of tier) if (Math.abs(c.t0 - S) < Math.abs(best.t0 - S)) best = c;
+        pick = { name: best.name, kind: 'match', why: `${grab ? 'throw ' : ''}btn ${best.btn || '?'} ${best.limb}${best.limbSrc === 'measured' ? '(measured)' : ''} ${best.level || '?'}${level && best.level !== level ? ` (move ${level})` : ''} hit@${Math.round(best.t0 * 60)}f` };
+        break;
+      }
+    }
+    if (!pick && move && animNearest) pick = fits(this._ownRow(move, 'anim'));
+    if (!pick) {
+      // Generic action clips, by the button of the row each one plays (decoded), else measured limb.
+      const cands = (grab ? ['grab'] : []).concat(['light', 'medium', 'heavy']).filter(n => clips[n] && clipIsThrow(clips[n]) === grab);
+      const limbOf = (n) => { const h = clips[n].userData.hit; const p = clipStrikeProfile(bank, clips[n]); return BUTTON_LIMB[h && h[5]] || (p && p.dominant); };
+      const arm = (l) => l && l.startsWith('arm');
+      let best = grab && clips.grab && clipIsThrow(clips.grab) ? 'grab' : null;
+      for (const want of [(d) => d === btnLimb, (d) => arm(d) === arm(btnLimb)]) {
+        if (best) break;
+        for (const n of cands) if (want(limbOf(n))) { best = n; break; }
+      }
+      // Last resort (a bank with no decoded throw row baked): the bank's own grab action, flagged.
+      best = best || (grab ? 'grab' : arm(btnLimb) ? 'light' : 'medium');
+      if (clips[best]) pick = { name: best, kind: 'generic', why: `generic ${best} for ${btnLimb}${grab && !clipIsThrow(clips[best]) ? ' (NOT a throw row)' : ''}` };
+    }
+    if (!pick) return null;
+    // Timing: the clip's hit window (decoded T3 active frames, else the measured extension peak of
+    // the move's limb) is placed on the move's active frames; recovery fills the move's total.
+    const src = clips[pick.name];
+    const A = move && Number.isFinite(move.active) ? move.active : 0;
+    const R = move && Number.isFinite(move.recovery) ? move.recovery : 0;
+    let timing = null;
+    if (src && S + A + R > 0.05) {
+      const w = clipHitWindow(bank, src, limb);
+      const D = src.duration;
+      const t0 = w ? Math.min(w.t0, D) : D * S / (S + A + R);
+      const t1 = w ? Math.min(Math.max(w.t1, t0), D) : D * (S + A) / (S + A + R);
+      timing = { S, A, R, t0, t1, D, src: w ? w.src : 'proportional' };
+    }
+    return { ...pick, limb, level, grab, timing, rejected };
+  }
+
+  /* The action for the current attack (plan cached per attack id; row clips retarget lazily on
+     first use, same captured rest pose). */
+  _attackClip(move, attackName) {
+    if (!this._t3) return null;
+    const p = this._atkPlan;
+    if (p && p.id === this._attackId && p.move === move) return p.name;
+    const plan = this._attackClipPlan(move, attackName);
+    let name = plan ? plan.name : null;
+    if (name && !this.t3actions[name] && name.startsWith('row:')) {
       const rc = retargetT3Clips(this._t3.clips, this._t3.bank, this._t3.model, THREE, this._t3.modelKey, [name]);
-      if (!rc || !rc[name]) return null;
-      Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
+      if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
     }
-    const a = this.t3actions[name];
-    const total = (move.startup || 0) + (move.active || 0) + (move.recovery || 0);
-    a.timeScale = total > 0.05 ? a.getClip().duration / total : 1;
+    if (name && !this.t3actions[name]) name = null;
+    this._atkPlan = { id: this._attackId, move, name, kind: plan && plan.kind, why: plan && plan.why,
+      limb: plan && plan.limb, timing: plan && plan.timing, rejected: plan && plan.rejected };
     return name;
+  }
+
+  /* Drive the attack clip's time from the move's own clock (stateT), before the mixer samples:
+     clip hit window -> the move's active frames (attackClipTime). The clip is held at timeScale 0
+     while warped; released (timeScale 1) when the attack ends or another clip takes over. */
+  _applyAttackWarp() {
+    const w = this._atkWarp;
+    const attacking = this.state === 'attack' || this.state === 'vskill' || this.state === 'vreversal';
+    if (w && (!attacking || w.id !== this._attackId || this._t3current !== w.action)) {
+      w.action.timeScale = 1;
+      this._atkWarp = null;
+    }
+    const p = this._atkPlan;
+    if (!attacking || !p || p.id !== this._attackId || !p.name || !p.timing) return;
+    const a = this.t3actions[p.name];
+    if (!a || this._t3current !== a) return; // starts in this frame's state switch
+    if (!this._atkWarp) this._atkWarp = { id: p.id, action: a };
+    a.timeScale = 0;
+    a.time = attackClipTime(p.timing, this.stateT);
   }
 
   _rowDonor(move) {
@@ -1543,16 +1720,9 @@ export class Fighter {
     // at load. Headless diag on the old code: t3 stance t=0 w=0 while the
     // mixer advanced the embedded Idle at w=1; bone movement over 2 s
     // measured 0.0-1.0 deg on every bone.)
-    const T3_ATTACK_MAP = { punch: 'light', kick: 'medium', grab: 'grab', surge: 'heavy', heavy: 'heavy',
-      '1': 'light', '2': 'light', '3': 'medium', '4': 'medium', '1+3': 'grab', '2+4': 'grab' };
-    const attackClipFor = () => {
-      let n = T3_ATTACK_MAP[this.attackName];
-      if (!n && typeof this.attackName === 'string') {
-        const lastBtn = this.attackName.split(',').pop().split('+').pop();
-        n = T3_ATTACK_MAP[lastBtn] || 'heavy'; // strings -> last hit's clip; specials -> heavy
-      }
-      return n;
-    };
+    // Attacks: the resolved move's own clip, else the closest real clip of this bank
+    // (_attackClipPlan, lane D 2026-10-24 — replaces the T3_ATTACK_MAP button -> light/medium/heavy map).
+    const attackClipFor = () => this._attackClip(this.attack, this.attackName);
     // Reverse the walk cycle when backing away so retreating reads
     // as a back-step instead of a moonwalk.
     const dirSign = Math.abs(this.vx) > 0.05 ? (Math.sign(this.vx) === this.facing ? 1 : -1) : 1;
@@ -1593,7 +1763,9 @@ export class Fighter {
     if (this.actions.Walk) this.actions.Walk.timeScale = dirSign;
     if (this.actions.Run) this.actions.Run.timeScale = dirSign;
 
-    // 4) Advance clips (writes the posed skeleton into bones)
+    // 4) Advance clips (writes the posed skeleton into bones). The attack clip's time is set from
+    // the move clock first, so its hit frame lands on the move's active frames (lane D).
+    this._applyAttackWarp();
     this.mixer.update(dt);
 
     // 5) Refresh world matrices so IK reads the posed skeleton
@@ -1611,9 +1783,9 @@ export class Fighter {
         else this._stopT3();
         break;
       case 'attack': case 'vskill': case 'vreversal': {
-        // Main's move-row mapping first (PR #338), then the attackName fallback.
+        // The move's own row / closest real clip (_attackClipPlan), time-warped onto its frames.
         // V-Skill / V-Reversal ride the same attack presentation.
-        const t3name = this._moveRowAction(this.attack) || attackClipFor();
+        const t3name = attackClipFor();
         if (t3name && this._playT3Once(t3name, 'atk:' + this.attackName + ':' + this._attackId)) {
           // Real T3 clip playing; add slight lean for body english
           this._leanT.x = -0.1;
