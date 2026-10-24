@@ -365,6 +365,7 @@ export class Fighter {
     // stick = facing-relative direction (guard + posture), juggle = hits taken airborne.
     this.stance = null; this.stanceT = 0; this._risingT = 0; this._stickDir = 'n';
     this._juggle = 0; this._rageUsed = false; this._queuedNext = null;
+    this._stringGraceUntil = 0; // wall-clock end of the post-move string window (see _tryAttackFresh)
     this._rageOn = false;
     this._urgeOn = false; this._urgeUsed = false; this._urgeT = 0; this._urgePips = 0;
     this._urgeDashT = 0;
@@ -1308,6 +1309,17 @@ export class Fighter {
     let notation = LEGACY_TO_TEKKEN[name] || name;
     const ctx = this._inputCtx();
     this._chordBase = this.tekken.lastMove;
+    // String grace (2026-10-24, Pantera string fix): a tap landing just after
+    // the previous hit fully recovered still continues the string (touch
+    // cadence) — 200 ms past move end. The window is set in _tickState when
+    // a non-grab attack completes and cleared on hitstun/knockdown/KO, so
+    // getting hit kills it and a throw never chains. canAct-only: it must
+    // not chain out of a sidestep-cancel.
+    if (this.canAct() && /^[1234](\+[1234])*$/.test(notation) &&
+        (typeof performance !== 'undefined' ? performance.now() : 0) < this._stringGraceUntil) {
+      const grace = this.tekken.continuation(notation);
+      if (grace && this._fireNotation(grace)) return true;
+    }
     if (/^[1234]$/.test(notation)) {
       const resolved = this.tekken.pressButton(notation, ctx);
       // Stream 6: if the fighter has no move on this limb, keep the raw
@@ -1453,11 +1465,14 @@ export class Fighter {
     this.vx = dir * move.knock;
     if (this.hp <= 0) { this._knockout(dir); return 'ko'; }
     if (move.isGrab || move.knock >= 6 || move.launch || (counter && move.knockdown)) {
-      this.vy = move.isGrab ? 5.2 : 4.6; this.onGround = false; this.stun = 0.55; this._enter('knockdown');
+      this.vy = move.isGrab ? 5.2 : 4.6; this.onGround = false; this.stun = 0.55;
+      this._queuedNext = null; this._stringGraceUntil = 0; // getting hit kills your string
+      this._enter('knockdown');
     } else {
       const t8adv = move.t8 ? (counter && move.t8.ch != null ? move.t8.ch : move.t8.hit) : null;
       this.stun = t8adv != null ? stunFromAdvantage(t8adv, move)
         : 0.2 + move.damage * 0.012 + (counter ? 0.12 : 0);
+      this._queuedNext = null; this._stringGraceUntil = 0; // getting hit kills your string
       this._enter('hitstun');
     }
     this.stance = null;
@@ -1499,6 +1514,7 @@ export class Fighter {
   }
   _knockout(dir) {
     this.dead = true; this.vx = dir * 5.5; this.vy = 6; this.onGround = false;
+    this._queuedNext = null; this._stringGraceUntil = 0; // getting hit kills your string
     this._enter('ko'); this.stun = 999;
   }
   victory() { if (!this.dead) this._enter('victory'); }
@@ -1692,6 +1708,8 @@ export class Fighter {
         else {
           const after = m.stanceAfter;
           this.attack = null; this.attackName = null; this._enter('idle');
+          // String grace starts when a non-grab attack completes (see _tryAttackFresh).
+          if (!m.isGrab) this._stringGraceUntil = (typeof performance !== 'undefined' ? performance.now() : 0) + 200;
           // Source notes "Transition to X": the move ends in that stance (FC = crouch).
           if (after === 'FC') { this._enter('crouch'); this.stance = 'FC'; this.stanceT = 0.5; }
           else if (after) { this.stance = after; this.stanceT = 0.8; }
