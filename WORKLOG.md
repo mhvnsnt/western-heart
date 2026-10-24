@@ -2734,6 +2734,13 @@ Owner: "random stuff is happening", "left punch does a grab", "any touch to the 
 - 0x8000 extraction requested: western-heart issue #866 comment 6390169912 ([Muse]) — frv/dnc main MOTA from Grok's pakchunk data to game-reverse-engineering teardown/tekken7-steam/tkdata/.
 - game-reverse-engineering PR #61 (frv.json + dnc.json) still OPEN, not force-merged; needs a lane with checks access to confirm green.
 
+## 2026-10-24 — Verification: PR #1005 (hit detection) + PR #1007 (strings) + PR #1008 (root motion) together on main
+Simulation only — live touch playtest still owed; nothing here claims the live game is fixed or play-verified.
+- Base: main HEAD 61809f57 (PR #1011 merge). PR #1011 touched only game/assets/movesets/megami.json + torch.json — no code impact on these three systems, no Pantera data touched.
+- Suites on current-main files/data (node, sparse checkout): test/root-motion.test.mjs 9/9 PASS; test/hitbox.test.mjs PASS (0 fails; LP1 hits 1.45 m, whiffs 3.5 m; 14 swept capsules); test/combat-contact.test.mjs PASS (strings 39/39); test/input-timing.test.mjs 13/13 PASS. test/attack-anim.test.mjs 7/9 locally — the 2 failures are null-moveset artifacts for fighters whose JSONs were not fetched locally (Chatur/Buffalo-Bill/Demonio); CI full checkout covers them.
+- Interaction sim 7/7 (real Pantera moveset + King bank, real _attackClipPlan/_rootMotionApply/_physics/getHitbox): (a) RP2 whiffs at 2.50 m from start, connects after +0.847 m travel; wall clamp + pushout resolve travel the same frame (pushout probe: min gap exactly 1.450 m, never crossed). (b) String step 2 starts where step 1 ended, no double-count (RP2 0.847 + 2,1-step 3.245 = 4.092 exactly). (c) 1,2 step-2 hitbox is its own (armR RP2, 20 dmg, reach 2.05). (d) Whiff travel == hit travel (0.8470 m). (e) Root motion only in attack/vskill/vreversal — off in block/hitstun/knockdown/sidestep/dodge/jump/crouch/idle/throwExec. (f) 3+4,LP1 resolves via slot alias to JGS.1 for 28 (armL); PR #1007 string_fix_20261024 lists exactly 54 damage_fixed_keys on main.
+- Gaps/observations (not regressions, no fix): 200 ms post-move string grace has no suite test (code-verified only); 2,1 step-2 clip row:220 carries 3.245 m decoded root_t travel (bank data eye-check, #1008 applies root_t verbatim); LP1 runtime damage 9 via slot 1~t8.king vs shadowed T3 record 11 (documented #1007 MOD behaviour).
+- Regressions found: none. Full report: docs/decisions/2026-10-24-verify-1005-1007-1008-together.md (PR #1015).
 ## 2026-10-24 — Zui MIX PER CANON (Steve Fox T7 base + Lei Wulong drunken + WH originals)
 
 - Zui's moveset labeled as the canon mix in `game/assets/movesets/zui.json`: 345 Steve
