@@ -368,7 +368,7 @@ export function createSelectScreen(deps) {
      (renderAttires), not as duplicate cards. */
   const SELECT_HIDDEN = new Set([
     'rin', 'byou', 'tou', 'sha', 'kai', 'jin_soul', 'retsu', 'zen', 'gyou',
-    'ryuji', 'doc-frank-machine-shop',
+    'doc-frank-machine-shop',
   ]);
   const selectRoster = () => deps.roster().filter(c => !SELECT_HIDDEN.has(c.id));
 
