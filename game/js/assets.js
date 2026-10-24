@@ -851,8 +851,28 @@ const SLICE_T3_BONE_REMAP = {
    numerically from the GLB).
    Returns true when the full scheme signature matched and the
    remap was applied; false (no-op) for every other model. */
+/* TEKKEN-SKELETON RE-RIGS (2026-10-23, docs/tech/ROSTER-MODEL-AUDIT.md).
+   Fighters whose own mesh was re-rigged onto a real Tekken 7 skeleton
+   (232-bone T7 layout, same joint names as Slice's). Tekken skeleton data
+   is a Bandai Namco asset, so the GLBs live ONLY in the private
+   mhvnsnt/game-reverse-engineering repo (rigs/<id>/attire1/model-t7.glb);
+   a private build copies them to game/assets/private/rigs/ and sets
+   globalThis.__WH_PRIVATE_ASSETS = true. The public build keeps the
+   fighter's existing own-model URL. These URLs share Slice's T7 -> T3
+   remap (same signature guard: every T7 source name present, no T3 name). */
+const PRIVATE_T7_RIGS = {
+  burger: 'assets/private/rigs/burger/attire1/model-t7.glb',
+};
+const T7_RIG_URLS = new Set([SLICE_MODEL_URL]);
+if (globalThis.__WH_PRIVATE_ASSETS) {
+  for (const [id, url] of Object.entries(PRIVATE_T7_RIGS)) {
+    MODEL_URLS[id] = url;
+    T7_RIG_URLS.add(url);
+  }
+}
+
 function remapSliceBones(fighterId, model) {
-  if (MODEL_URLS[fighterId] !== SLICE_MODEL_URL) return false;
+  if (!T7_RIG_URLS.has(MODEL_URLS[fighterId])) return false;
   const byName = {};
   model.traverse((o) => { if (o.isBone) byName[o.name] = o; });
   // Scheme signature: ALL T7 source names must be present, and
