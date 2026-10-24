@@ -53,7 +53,7 @@ const BASE = {
   chatur: ['True Ogre', 240, 1.25], pond: ['Raven', 185], ryusan: ['Lucky Chloe', 155], tobi: ['Hwoarang', 181],
   megami: ['Jun Kazama', 163], menajerii: ['Roger Jr.', 150], kronos: ['Zangief + Golem', 211, 1.25],
   deathfang: ['Iori Yagami', 182], ryuji: ['Ryuji Yamazaki', 185], koreshi: ['Kakashi', 181], rave: ['Lei Wulong', 176],
-  'buffalo-bill': ['Marshall Law', 175], vainabel: ['Bass Armstrong', 188, 1.1], cainelias: ['Undertaker (WWE)', 208],
+  'buffalo-bill': ['Marshall Law', 175], vainabel: ['Bass Armstrong', 188, 1.1], cainelias: ['Undertaker', 208],
   chordz: ['Lars', 186],
 };
 for (const [id, [body, h, girth = 1, cue]] of Object.entries(BASE)) {
