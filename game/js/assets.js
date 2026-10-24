@@ -871,6 +871,40 @@ if (globalThis.__WH_PRIVATE_ASSETS) {
   }
 }
 
+/* PRIVATE T7 skin textures (Yukihyo). Yukihyo's materials are T7
+   MI_CH_malebody_<part>_02_skin, which share the generic T7 male body UVs.
+   The diffuse maps (T_CH_male_<part>_D) are Bandai Namco assets kept ONLY in
+   the private game-reverse-engineering repo (teardown/pakchunk0/textures/
+   Character/Common/shader/Texture/skin/male/); a private build copies them to
+   game/assets/private/textures/t7-skin/male/. Public builds skip this and the
+   fighter stays quarantined. The King-face (MI_CH_knk_*) maps were not found
+   in any private pull, so the material gate still decides usability. */
+const PRIVATE_SKIN_TEXTURES = {
+  yukihyo: {
+    base: 'assets/private/textures/t7-skin/male/',
+    match: /^MI_CH_malebody_(arm|body|foot|hand|head|leg|neck)_02_skin/i,
+    file: (part) => `T_CH_male_${part}_D.webp`,
+  },
+};
+async function applyPrivateSkinTextures(id, gltf) {
+  const spec = globalThis.__WH_PRIVATE_ASSETS && PRIVATE_SKIN_TEXTURES[id];
+  if (!spec) return;
+  const loader = new THREE.TextureLoader();
+  const cache = new Map();
+  const mats = [];
+  gltf.scene.traverse((o) => { if (o.isMesh) mats.push(...[].concat(o.material)); });
+  for (const m of mats) {
+    const hit = m && spec.match.exec(m.name || '');
+    if (!hit || m.map) continue;
+    const url = spec.base + spec.file(hit[1].toLowerCase());
+    if (!cache.has(url)) cache.set(url, loader.loadAsync(url).catch(() => null));
+    const tex = await cache.get(url);
+    if (!tex) continue;
+    tex.flipY = false; tex.colorSpace = THREE.SRGBColorSpace;
+    m.map = tex; m.color && m.color.set(0xffffff); m.needsUpdate = true;
+  }
+}
+
 function remapSliceBones(fighterId, model) {
   if (!T7_RIG_URLS.has(MODEL_URLS[fighterId])) return false;
   const byName = {};
@@ -1204,6 +1238,7 @@ class AssetManager {
   async _ingest(id, gltf) {
     // Material resolve + verdict before anything can instance this model.
     this.materialReport = this.materialReport || {};
+    await applyPrivateSkinTextures(id, gltf);
     this.materialReport[id] = await resolveModelMaterials(id, gltf, async (d) => {
       await this.loadModels([d], null, { lane: 'user' }); return this.gltfs[d];
     });
