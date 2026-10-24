@@ -2726,6 +2726,14 @@ Owner: "random stuff is happening", "left punch does a grab", "any touch to the 
 - docs/handoffs/COMBAT-RIGHT-WAY-2026-10-24.md: the method every agent follows (touch testing, real causes, data
   source order, one pipeline for all characters, same-hour deploy).
 
+## 2026-10-24 — T7 mot.bin clip keys wired into Pond + Ryusan movesets (frv/dnc)
+- Added top-level `t7_motbin_clips` tables to game/assets/movesets/pond.json (frv, Master Raven) and ryusan.json (dnc, Lucky Chloe): every decoded internal move's clip key (anim_ref = bank + MOTA index). Pond: 2,338 rows (745 resolved, 1,593 UNMAPPED); Ryusan: 2,183 rows (656 resolved, 1,527 UNMAPPED).
+- Wired = banks 0x0000 (mot.bin slot-0 MOTA) + 0x4000 (rotsm.arc section-0 MOTA), clip bytes in tkdata, all starting 00 64 / 00 C8. Bank 0x8000 rows are UNMAPPED with reason "0x8000 clip bytes pending Grok pakchunk extraction"; lookup key anim_ref - 0x8000 (0..1701) is in the table.
+- Deliberately NO playable wiring: no WH move's anim_ref changed, no string continuation wired. The display-title -> internal-move join is not play-verified (30 frv + 11 dnc deterministic walks, colliding landings, dnc walks landing on walk state Dc_sWALKF). See docs/anim/T7-MOTBIN-CLIP-WIRING-2026-10-24.md.
+- Simulation ALL PASS: pure-insertion diff (0 lines removed/changed), exact CSV round-trip, 0 strikes on throw rows changed, 0 throws on strike rows changed, 0 generic fallbacks, all 271 Pond + 104 Ryusan string-class moves byte-identical. Simulation is NOT play verification; play verification still owed before any clip becomes a WH move's animation.
+- 0x8000 extraction requested: western-heart issue #866 comment 6390169912 ([Muse]) — frv/dnc main MOTA from Grok's pakchunk data to game-reverse-engineering teardown/tekken7-steam/tkdata/.
+- game-reverse-engineering PR #61 (frv.json + dnc.json) still OPEN, not force-merged; needs a lane with checks access to confirm green.
+
 ## 2026-10-24 — Verification: PR #1005 (hit detection) + PR #1007 (strings) + PR #1008 (root motion) together on main
 Simulation only — live touch playtest still owed; nothing here claims the live game is fixed or play-verified.
 - Base: main HEAD 61809f57 (PR #1011 merge). PR #1011 touched only game/assets/movesets/megami.json + torch.json — no code impact on these three systems, no Pantera data touched.
