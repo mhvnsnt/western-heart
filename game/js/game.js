@@ -9,6 +9,7 @@
    good for watching AI-vs-AI or unattended verification.
    ============================================================ */
 import { inReach, moveReach } from './combat-core.js';
+import { testSweptHit } from './hitbox.js';
 import * as THREE from 'three';
 import { Arena } from './scene.js';
 // LOADSPEED (2026-10-22): fighter.js (rigs, T3 wiring, movesets) is fight-only —
@@ -582,18 +583,28 @@ export class Game {
       }
     }
     const hurts = defender.getHurtboxes();
-    // Contact (tekken-command-interpreter lane): frame-data reach is the
-    // authority (root spacing vs the move's range class, same line), the
-    // animated bone sphere is a secondary path. Bone-only contact whiffed
-    // whenever a clip didn't extend the limb or a rig was in T-pose.
-    const spheres = hurts.some((hu) => {
-      const dx = hb.x - hu.x, dy = hb.y - hu.y, dz = hb.z - hu.z, rr = hb.r + hu.r;
-      return dx * dx + dy * dy + dz * dz <= rr * rr;
-    });
+    // Contact (HITBOX LANE 2026-10-24): TWO paths, either connects —
+    // (1) GEOMETRY: the swept weapon segment (limb segment + travel,
+    // hitbox.js) against all 14 hurt capsules. This is the path the
+    // old code lacked: it tested one sphere against hurts[0] only.
+    // (2) RANGE fallback (tekken-command-interpreter lane): root
+    // spacing vs the move's range class, same line. Kept for
+    // fighters whose animation does not extend the limb (the
+    // documented T-pose case) and for mids against a croucher,
+    // whose lowered torso the geometry may only graze. Geometry
+    // can only ADD hits the fallback missed, never remove one.
+    // The hb.reach / moveReach ratio preserves the advancing-input
+    // bonus that getHitbox already folded into hb.reach (moveReach
+    // with name '' would otherwise drop it). Posture / hit-level
+    // gating still happens in canBeHitBy below, for both paths.
+    const geo = testSweptHit(hb, hurts);
     const ap = attacker.root.position, dp = defender.root.position;
     const reachHit = hurts.length > 0 && hb.reach > 0 && (dp.y - ap.y) < 1.6 &&
       inReach(ap.x, ap.z, attacker.facing, dp.x, dp.z, hb.move, '', hb.reach / Math.max(0.01, moveReach(hb.move, '')));
-    for (const hu of ((spheres || reachHit) ? hurts.slice(0, 1) : [])) {
+    if (geo.hit || reachHit) {
+      const hu = geo.segment || hurts[0];
+      attacker._lastHitSegment = hu ? hu.id : null;
+      defender._lastHitSegment = hu ? hu.id : null;
       {
         // Decoded T3 posture rule: highs pass over crouchers, lows under jumpers,
         // standing throws whiff crouching fighters (fighter.js canBeHitBy).
