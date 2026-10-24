@@ -471,3 +471,9 @@ Rules derived from this directive:
 - Lei Wulong has no Tekken 7 data. Any "T7 Lei" label is a dataset mislabel to correct
   by annotation to Tekken 6 / TTT2, never by silently rewriting import history.
 - Full audit: `docs/decisions/2026-10-24-zui-mix-per-canon.md`.
+## ZEN BASE (user decision 2026-10-24)
+- Zen is NEITHER Heihachi NOR Julia. Heihachi is Diablo's base; Julia is Nightwolf's base.
+- Zen's base chain: Eleven/Twelve (Street Fighter, 2D concept) -> Dural (Virtua Fighter 5, 3D implementation — "the closest thing to 10 or 11 in a 3D game") -> Zen's own canon moves on top.
+- X.COPY is ONE super (copies opponent briefly), NOT Zen's identity. Zen is not just a copycat.
+- Until VF5 Dural motion exists, Zen's bank is UNMAPPED (game/js/fighter.js FIGHTER_BANK zen: null). Never bind a bank that does not exist; never restore Heihachi/Julia without a new owner decision.
+- Full doc: docs/decisions/2026-10-24-zen-base-decision.md.
