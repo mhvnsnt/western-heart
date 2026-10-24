@@ -1,0 +1,41 @@
+# Move Matching System — How Tekken Does It Right
+
+## The Four Things That Must Align
+
+Every move has four sides that must match:
+
+1. **Input** — What button you press and what state you're in. LP1 (Left Punch = Tekken 1), RP2 (Right Punch = Tekken 2), LK3 (Left Kick = Tekken 3), RK4 (Right Kick = Tekken 4). States: standing, crouching, jumping, while rising, while running.
+
+2. **Animation** — What the clip ACTUALLY does, verified by analyzing bone data, not by reading JSON labels. Properties to check:
+   - Hip height over time (does it jump? does it crouch?)
+   - Limb trajectory (which arm/leg moves? LP1/RP2/LK3/RK4?)
+   - Root movement (does it move forward/back? does it stay in place?)
+   - Type (strike, throw, block, etc.)
+
+3. **Move List Placement** — Where the move sits in the Create-A-Move List editor, what slot it's assigned to. The editor must show all moves including wrongly mapped ones, so the user can see and fix them by swapping.
+
+4. **Row Matching** — How a move connects to its animation row. This is where bulk JSON matching fails.
+
+## How Tekken Does Row Matching Right
+
+In real Tekken, there is no "matching" step. Each move in the movelist directly references its own animation. King's jab entry says "play animation X" — and animation X IS King's jab. The move and animation are one thing, linked directly. No guessing, no metadata matching.
+
+## How Our Game Got It Wrong
+
+PR #988 matched T7/T8 moves to T3 animation rows by comparing JSON fields (input, class, limb). This is guessing. Example: Pantera's LP1 (jab) was mapped to T3 King row 38 because the JSON said "input 1, strike, left arm." But the actual animation clip for row 38 jumps — it's a jumping jab, not a standing jab. The JSON label said "jab" but the clip does a jump AND a jab. JSON matching cannot detect this.
+
+## The Right Way Going Forward
+
+1. Analyze ACTUAL animation clip data for every row: hip height over time, limb trajectories, root movement.
+2. Tag each row with what it ACTUALLY does: jumping/standing/crouching, which limb, what type.
+3. When mapping a move to a row, check: does this row's actual properties match this move's input context? Standing slot gets standing animations only. Jumping slot gets jumping animations only.
+4. The Create-A-Move List editor shows all four pieces together: input, animation properties, placement, and row. When any don't align, the user can see it and fix it by swapping.
+5. Do this one character at a time, starting with Pantera. Verify by playing, not by checking JSON fields.
+
+## Button Names
+
+LP1 = Left Punch = Tekken 1
+RP2 = Right Punch = Tekken 2
+LK3 = Left Kick = Tekken 3
+RK4 = Right Kick = Tekken 4
+Use LP1/RP2/LK3/RK4 format in ALL conversation with the user.
