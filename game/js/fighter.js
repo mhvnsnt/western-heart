@@ -142,6 +142,14 @@ export function bankIdFor(charId, movesetId) {
     // 2026-10-23 (Claude session): the last decoded T3 banks (tools/anim/t3_bake_bank.py). These movesets
     // name their source as a teardown path or not at all, so bind each to its base's own bank here.
     chatur: 'ogre', dorowani: 'gon', menajerii: 'kuma',
+    // 2026-10-23 (landing wave 3): the bear-bank successors + Silvertongue.
+    // Their index entries name the bank (anim_bank/t3_source), but the
+    // portrait-capture page resolves banks without the moveset index
+    // loaded, so bind them here like the 2026-10-23 additions above.
+    //   gashadokuro -> kuma (CANON: his base is the Kuma bank)
+    //   aotsuki     -> kuma (CANON: Panda shares Kuma's T3 bank)
+    //   silvertongue -> xiaoyu (her kit's T3 bank, per lili.json t3_source)
+    gashadokuro: 'kuma', aotsuki: 'kuma', silvertongue: 'xiaoyu',
   };
   if (Object.prototype.hasOwnProperty.call(FIGHTER_BANK, charId)) return FIGHTER_BANK[charId];
   let src = null;
@@ -1055,11 +1063,16 @@ export class Fighter {
     const word = move.hitWord ?? Fighter.defaultWord(move);
     const guarded = !move.unblockable && !move.isGrab && facingAttacker && (this._guardBits() & word) !== 0;
     if (guarded) {
-      // FIRE force (modes lane): strikes chip through guard — chipMult on attacker stats.
-      let chip = move.damage * attacker.stats.power * 0.12 * (attacker.stats.chipMult || 1) / this.stats.defense;
-      // V-System: V-Trigger install — EVERYTHING chips through guard.
-      if (attacker._vtriggerT > 0 && !move.isGrab) {
-        chip += move.damage * V.TRIGGER_CHIP_MULT * attacker.stats.power / this.stats.defense;
+      // GAME OPTION / VERSUS SETUP: GUARD DAMAGE OFF = no chip at all.
+      // (V-Trigger chip is part of guard damage too.)
+      let chip = 0;
+      if (!this.game || this.game.guardDamage !== false) {
+        // FIRE force (modes lane): strikes chip through guard — chipMult on attacker stats.
+        chip = move.damage * attacker.stats.power * 0.12 * (attacker.stats.chipMult || 1) / this.stats.defense;
+        // V-System: V-Trigger install — EVERYTHING chips through guard.
+        if (attacker._vtriggerT > 0 && !move.isGrab) {
+          chip += move.damage * V.TRIGGER_CHIP_MULT * attacker.stats.power / this.stats.defense;
+        }
       }
       // Soul Urge lane (T8 Heat): block chip can never kill — floor at 1 HP.
       this.hp = attacker._urgeOn ? Math.max(1, this.hp - chip) : Math.max(0, this.hp - chip);

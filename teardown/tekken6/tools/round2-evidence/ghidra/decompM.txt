@@ -1,0 +1,636 @@
+==== SEED off 0x1f48 func=fn_1f48
+
+/* WARNING: Control flow encountered bad instruction data */
+
+void fn_1f48(void)
+
+{
+  int in_t4;
+  int in_t9;
+  
+  if (in_t9 - in_t4 < 1) {
+                    /* WARNING: Bad instruction - Truncating control flow here */
+    halt_baddata();
+  }
+                    /* WARNING: Bad instruction - Truncating control flow here */
+  halt_baddata();
+}
+
+
+==== SEED off 0x1fa4 func=fn_1fa4
+
+/* WARNING: Control flow encountered bad instruction data */
+/* WARNING: Removing unreachable block (ram,0x0000211c) */
+
+void fn_1fa4(undefined4 param_1,undefined4 param_2,int param_3)
+
+{
+  ushort uVar1;
+  uint extraout_at;
+  int iVar2;
+  uint uVar3;
+  uint uVar4;
+  int in_t5;
+  short *psVar5;
+  short *unaff_s4;
+  uint in_t8;
+  int in_t9;
+  
+  unaff_s4[0x1c] = 0;
+  unaff_s4[0x1d] = 0;
+  unaff_s4[0x16] = 0;
+  unaff_s4[0x17] = 0;
+  unaff_s4[0x1a] = 0;
+  unaff_s4[0x1b] = 0;
+  if (-1 < -(in_t5 + 1)) {
+    unaff_s4[0x18] = 0;
+    unaff_s4[0x19] = 0;
+    if (in_t5 + 1 == 0) {
+      unaff_s4[0x10] = 0;
+      unaff_s4[0x11] = 0;
+      unaff_s4[0x12] = 0;
+      unaff_s4[0x13] = 0;
+      iVar2 = -1;
+      unaff_s4[0x14] = 0;
+      unaff_s4[0x15] = 0;
+      psVar5 = unaff_s4;
+      while (unaff_s4 != psVar5) {
+        iVar2 = iVar2 + 1;
+        uVar1 = psVar5[0x1e];
+        if (unaff_s4 != psVar5 + 1) {
+          psVar5[0x1f] = psVar5[0x1f] + uVar1;
+                    /* WARNING: Bad instruction - Truncating control flow here */
+          halt_baddata();
+        }
+        psVar5[0x1e] = uVar1 & 0x1ff;
+        psVar5 = psVar5 + 1;
+        if ((uint)(int)(short)uVar1 >> 9 != 0) {
+          *unaff_s4 = -(short)((uint)(int)(short)uVar1 >> 9);
+                    /* WARNING: Bad instruction - Truncating control flow here */
+          halt_baddata();
+        }
+      }
+      if (iVar2 == 0) {
+        unaff_s4[0xf] = -1;
+        return;
+      }
+    }
+                    /* WARNING: Bad instruction - Truncating control flow here */
+    halt_baddata();
+  }
+  uVar3 = func_0x08b55f48();
+  if ((int)(uVar3 - 0x10) < 1) {
+    if (uVar3 == 0x10) {
+      uVar3 = in_t9 + 2;
+      if ((int)extraout_at < 1) {
+        halt_baddata();
+      }
+      uVar4 = (in_t8 >> (uVar3 & 0x1f)) + (in_t8 << 0x20 - (uVar3 & 0x1f));
+      if (0 < (int)uVar3) {
+        uVar4 = uVar4 << (uVar3 & 0x1f) & 0xffff0000 | *(uint *)(param_3 + 4) & 0xffff;
+        uVar3 = in_t9 - 0x1eU & 0x1f;
+        uVar4 = (uVar4 >> uVar3) + (uVar4 << 0x20 - uVar3);
+      }
+      if ((extraout_at & 0x1ff) != extraout_at) {
+        uVar3 = extraout_at;
+        do {
+          unaff_s4[0x1e] = (short)uVar3;
+          uVar3 = uVar3 + 1;
+          unaff_s4 = unaff_s4 + 1;
+        } while (uVar3 != (uVar4 >> 0x1e) + 3 + extraout_at);
+                    /* WARNING: Bad instruction - Truncating control flow here */
+        halt_baddata();
+      }
+    }
+    else {
+      unaff_s4[0x1e] = (ushort)extraout_at & 0x81ff | (ushort)((uVar3 & 0x3f) << 9);
+    }
+  }
+                    /* WARNING: Bad instruction - Truncating control flow here */
+  halt_baddata();
+}
+
+
+==== SEED off 0x1fa8 func=fn_1fa4
+
+/* WARNING: Control flow encountered bad instruction data */
+/* WARNING: Removing unreachable block (ram,0x0000211c) */
+
+void fn_1fa4(undefined4 param_1,undefined4 param_2,int param_3)
+
+{
+  ushort uVar1;
+  uint extraout_at;
+  int iVar2;
+  uint uVar3;
+  uint uVar4;
+  int in_t5;
+  short *psVar5;
+  short *unaff_s4;
+  uint in_t8;
+  int in_t9;
+  
+  unaff_s4[0x1c] = 0;
+  unaff_s4[0x1d] = 0;
+  unaff_s4[0x16] = 0;
+  unaff_s4[0x17] = 0;
+  unaff_s4[0x1a] = 0;
+  unaff_s4[0x1b] = 0;
+  if (-1 < -(in_t5 + 1)) {
+    unaff_s4[0x18] = 0;
+    unaff_s4[0x19] = 0;
+    if (in_t5 + 1 == 0) {
+      unaff_s4[0x10] = 0;
+      unaff_s4[0x11] = 0;
+      unaff_s4[0x12] = 0;
+      unaff_s4[0x13] = 0;
+      iVar2 = -1;
+      unaff_s4[0x14] = 0;
+      unaff_s4[0x15] = 0;
+      psVar5 = unaff_s4;
+      while (unaff_s4 != psVar5) {
+        iVar2 = iVar2 + 1;
+        uVar1 = psVar5[0x1e];
+        if (unaff_s4 != psVar5 + 1) {
+          psVar5[0x1f] = psVar5[0x1f] + uVar1;
+                    /* WARNING: Bad instruction - Truncating control flow here */
+          halt_baddata();
+        }
+        psVar5[0x1e] = uVar1 & 0x1ff;
+        psVar5 = psVar5 + 1;
+        if ((uint)(int)(short)uVar1 >> 9 != 0) {
+          *unaff_s4 = -(short)((uint)(int)(short)uVar1 >> 9);
+                    /* WARNING: Bad instruction - Truncating control flow here */
+          halt_baddata();
+        }
+      }
+      if (iVar2 == 0) {
+        unaff_s4[0xf] = -1;
+        return;
+      }
+    }
+                    /* WARNING: Bad instruction - Truncating control flow here */
+    halt_baddata();
+  }
+  uVar3 = func_0x08b55f48();
+  if ((int)(uVar3 - 0x10) < 1) {
+    if (uVar3 == 0x10) {
+      uVar3 = in_t9 + 2;
+      if ((int)extraout_at < 1) {
+        halt_baddata();
+      }
+      uVar4 = (in_t8 >> (uVar3 & 0x1f)) + (in_t8 << 0x20 - (uVar3 & 0x1f));
+      if (0 < (int)uVar3) {
+        uVar4 = uVar4 << (uVar3 & 0x1f) & 0xffff0000 | *(uint *)(param_3 + 4) & 0xffff;
+        uVar3 = in_t9 - 0x1eU & 0x1f;
+        uVar4 = (uVar4 >> uVar3) + (uVar4 << 0x20 - uVar3);
+      }
+      if ((extraout_at & 0x1ff) != extraout_at) {
+        uVar3 = extraout_at;
+        do {
+          unaff_s4[0x1e] = (short)uVar3;
+          uVar3 = uVar3 + 1;
+          unaff_s4 = unaff_s4 + 1;
+        } while (uVar3 != (uVar4 >> 0x1e) + 3 + extraout_at);
+                    /* WARNING: Bad instruction - Truncating control flow here */
+        halt_baddata();
+      }
+    }
+    else {
+      unaff_s4[0x1e] = (ushort)extraout_at & 0x81ff | (ushort)((uVar3 & 0x3f) << 9);
+    }
+  }
+                    /* WARNING: Bad instruction - Truncating control flow here */
+  halt_baddata();
+}
+
+
+==== SEED off 0x20b4 func=fn_1fa4
+
+/* WARNING: Control flow encountered bad instruction data */
+/* WARNING: Removing unreachable block (ram,0x0000211c) */
+
+void fn_1fa4(undefined4 param_1,undefined4 param_2,int param_3)
+
+{
+  ushort uVar1;
+  uint extraout_at;
+  int iVar2;
+  uint uVar3;
+  uint uVar4;
+  int in_t5;
+  short *psVar5;
+  short *unaff_s4;
+  uint in_t8;
+  int in_t9;
+  
+  unaff_s4[0x1c] = 0;
+  unaff_s4[0x1d] = 0;
+  unaff_s4[0x16] = 0;
+  unaff_s4[0x17] = 0;
+  unaff_s4[0x1a] = 0;
+  unaff_s4[0x1b] = 0;
+  if (-1 < -(in_t5 + 1)) {
+    unaff_s4[0x18] = 0;
+    unaff_s4[0x19] = 0;
+    if (in_t5 + 1 == 0) {
+      unaff_s4[0x10] = 0;
+      unaff_s4[0x11] = 0;
+      unaff_s4[0x12] = 0;
+      unaff_s4[0x13] = 0;
+      iVar2 = -1;
+      unaff_s4[0x14] = 0;
+      unaff_s4[0x15] = 0;
+      psVar5 = unaff_s4;
+      while (unaff_s4 != psVar5) {
+        iVar2 = iVar2 + 1;
+        uVar1 = psVar5[0x1e];
+        if (unaff_s4 != psVar5 + 1) {
+          psVar5[0x1f] = psVar5[0x1f] + uVar1;
+                    /* WARNING: Bad instruction - Truncating control flow here */
+          halt_baddata();
+        }
+        psVar5[0x1e] = uVar1 & 0x1ff;
+        psVar5 = psVar5 + 1;
+        if ((uint)(int)(short)uVar1 >> 9 != 0) {
+          *unaff_s4 = -(short)((uint)(int)(short)uVar1 >> 9);
+                    /* WARNING: Bad instruction - Truncating control flow here */
+          halt_baddata();
+        }
+      }
+      if (iVar2 == 0) {
+        unaff_s4[0xf] = -1;
+        return;
+      }
+    }
+                    /* WARNING: Bad instruction - Truncating control flow here */
+    halt_baddata();
+  }
+  uVar3 = func_0x08b55f48();
+  if ((int)(uVar3 - 0x10) < 1) {
+    if (uVar3 == 0x10) {
+      uVar3 = in_t9 + 2;
+      if ((int)extraout_at < 1) {
+        halt_baddata();
+      }
+      uVar4 = (in_t8 >> (uVar3 & 0x1f)) + (in_t8 << 0x20 - (uVar3 & 0x1f));
+      if (0 < (int)uVar3) {
+        uVar4 = uVar4 << (uVar3 & 0x1f) & 0xffff0000 | *(uint *)(param_3 + 4) & 0xffff;
+        uVar3 = in_t9 - 0x1eU & 0x1f;
+        uVar4 = (uVar4 >> uVar3) + (uVar4 << 0x20 - uVar3);
+      }
+      if ((extraout_at & 0x1ff) != extraout_at) {
+        uVar3 = extraout_at;
+        do {
+          unaff_s4[0x1e] = (short)uVar3;
+          uVar3 = uVar3 + 1;
+          unaff_s4 = unaff_s4 + 1;
+        } while (uVar3 != (uVar4 >> 0x1e) + 3 + extraout_at);
+                    /* WARNING: Bad instruction - Truncating control flow here */
+        halt_baddata();
+      }
+    }
+    else {
+      unaff_s4[0x1e] = (ushort)extraout_at & 0x81ff | (ushort)((uVar3 & 0x3f) << 9);
+    }
+  }
+                    /* WARNING: Bad instruction - Truncating control flow here */
+  halt_baddata();
+}
+
+
+==== SEED off 0x1dd0 func=fn_1bf0
+
+/* WARNING: Control flow encountered bad instruction data */
+/* WARNING: Control flow encountered unimplemented instructions */
+
+int fn_1bf0(undefined1 *param_1,int param_2,uint param_3,int *param_4)
+
+{
+  bool bVar1;
+  uint uVar2;
+  uint uVar3;
+  uint uVar4;
+  undefined1 *puVar5;
+  uint *puVar6;
+  int iVar7;
+  short sVar8;
+  ushort uVar9;
+  short *psVar10;
+  short *psVar11;
+  undefined4 uVar12;
+  undefined4 *puVar13;
+  undefined4 *puVar14;
+  undefined4 *puVar15;
+  undefined1 *puVar16;
+  undefined1 *puVar17;
+  uint uVar18;
+  int iVar19;
+  uint uVar20;
+  uint uVar21;
+  short asStack_380 [30];
+  undefined2 uStack_344;
+  undefined1 auStack_104 [60];
+  short asStack_c8 [32];
+  undefined1 auStack_88 [16];
+  
+  psVar11 = asStack_380;
+  puVar13 = (undefined4 *)0x8bd6340;
+  puVar6 = (uint *)(param_3 - (param_3 & 3));
+  uVar18 = *puVar6;
+  iVar19 = (param_3 & 3) * 8;
+  uVar20 = iVar19 - 0x1d;
+  uVar3 = (uVar18 >> (uVar20 & 0x1f)) + (uVar18 << 0x20 - (uVar20 & 0x1f));
+  if (0 < (int)uVar20) {
+    puVar6 = puVar6 + 1;
+    uVar18 = *puVar6;
+    uVar4 = uVar20 & 0x1f;
+    uVar20 = iVar19 - 0x3d;
+    uVar3 = uVar3 << uVar4 & 0xffff0000 | uVar18 & 0xffff;
+    uVar3 = (uVar3 >> (uVar20 & 0x1f)) + (uVar3 << 0x20 - (uVar20 & 0x1f));
+  }
+  uVar4 = uVar3 >> 0x1e;
+  if (uVar4 == 0) {
+    iVar19 = (int)puVar6 - (-uVar20 >> 3);
+    uVar18 = iVar19 + 7U & 3;
+    uVar4 = iVar19 + 4U & 3;
+    uVar18 = (*(int *)((iVar19 + 7U) - uVar18) << (3 - uVar18) * 8 |
+             -uVar20 >> 3 & 0xffffffffU >> (uVar18 + 1) * 8) & -1 << (4 - uVar4) * 8 |
+             *(uint *)((iVar19 + 4U) - uVar4) >> uVar4 * 8;
+    if ((param_1 + (uVar18 & 0xffff) <= param_1 + param_2) &&
+       (puVar5 = param_1, (~uVar18 >> 0x10) + ~uVar18 * 0x10000 == uVar18)) {
+      do {
+        iVar7 = iVar19;
+        puVar16 = puVar5 + 1;
+        *puVar5 = *(undefined1 *)(iVar7 + 8);
+        puVar5 = puVar16;
+        iVar19 = iVar7 + 1;
+      } while (param_1 + (uVar18 & 0xffff) != puVar16);
+      if ((int)(uVar3 << 2) < 0) {
+        if (param_4 != (int *)0x0) {
+          *param_4 = iVar7 + 9;
+        }
+        return (int)puVar16 - (int)param_1;
+      }
+                    /* WARNING: Bad instruction - Truncating control flow here */
+      halt_baddata();
+    }
+  }
+  else if (uVar4 == 2) {
+    uVar3 = uVar20 + 0xe;
+    uVar4 = (uVar18 >> (uVar3 & 0x1f)) + (uVar18 << 0x20 - (uVar3 & 0x1f));
+    if (0 < (int)uVar3) {
+      puVar6 = puVar6 + 1;
+      uVar18 = *puVar6;
+      uVar21 = uVar3 & 0x1f;
+      uVar3 = uVar20 - 0x12;
+      uVar20 = uVar4 << uVar21 & 0xffff0000 | uVar18 & 0xffff;
+      uVar4 = (uVar20 >> (uVar3 & 0x1f)) + (uVar20 << 0x20 - (uVar3 & 0x1f));
+    }
+    puVar5 = auStack_88;
+    iVar19 = 0x8bd633c;
+    while (bVar1 = iVar19 != (uVar4 >> 0x1c) + 0x8bd6340, iVar19 = iVar19 + 1, bVar1) {
+      uVar21 = uVar3 + 3;
+      uVar20 = (uVar18 >> (uVar21 & 0x1f)) + (uVar18 << 0x20 - (uVar21 & 0x1f));
+      if (0 < (int)uVar21) {
+        puVar6 = puVar6 + 1;
+        uVar18 = *puVar6;
+        uVar2 = uVar21 & 0x1f;
+        uVar21 = uVar3 - 0x1d;
+        uVar3 = uVar20 << uVar2 & 0xffff0000 | uVar18 & 0xffff;
+        uVar20 = (uVar3 >> (uVar21 & 0x1f)) + (uVar3 << 0x20 - (uVar21 & 0x1f));
+      }
+      uVar3 = uVar21;
+      if (uVar20 >> 0x1d != 0) {
+                    /* WARNING: Bad instruction - Truncating control flow here */
+        halt_baddata();
+      }
+    }
+    func_0x08b560b4();
+    if ((iVar19 != 0) && (func_0x08b55fa8(), psVar11 = asStack_380, iVar19 != 0)) {
+      do {
+        uVar9 = (ushort)*(byte *)((int)psVar11 + 0x3c);
+        puVar16 = (undefined1 *)((int)psVar11 + 2);
+        puVar13 = (undefined4 *)
+                  ((uint)puVar13 & 0xffffffc1 | (*(byte *)((int)psVar11 + 0x3c) & 0x1f) << 1);
+        if (*(char *)((int)psVar11 + 0x3d) != '\0') {
+          uVar9 = *(ushort *)(puVar13 + 0xf);
+        }
+        *(ushort *)((int)psVar11 + 0x3c) = uVar9;
+        psVar11 = (short *)puVar16;
+      } while (puVar16 != puVar5);
+      func_0x08b55fa4();
+      puVar16 = auStack_104;
+      do {
+        puVar17 = puVar16 + 2;
+        puVar13 = (undefined4 *)
+                  ((uint)puVar13 & 0xffffffc1 | ((int)*(short *)(puVar16 + 0x3c) & 0x1fU) << 1);
+        *(undefined2 *)(puVar16 + 0x3c) = *(undefined2 *)(puVar13 + 0x1f);
+        puVar16 = puVar17;
+      } while (puVar17 != puVar5);
+      func_0x08b55f48();
+                    /* WARNING: Unimplemented instruction - Truncating control flow here */
+      halt_unimplemented();
+    }
+  }
+  else if ((int)(uVar4 - 2) < 1) {
+    do {
+      puVar14 = puVar13;
+      psVar10 = psVar11 + 2;
+      *(undefined4 *)psVar11 = *puVar14;
+      psVar11 = psVar10;
+      puVar13 = puVar14 + 1;
+    } while (puVar14 + 1 != (undefined4 *)0x8bd63ac);
+    iVar19 = 0;
+    do {
+      sVar8 = (short)iVar19;
+      *psVar10 = sVar8;
+      iVar19 = iVar19 + 1;
+      psVar10[0x98] = sVar8 + 0x90;
+      psVar10 = psVar10 + 1;
+    } while (iVar19 != 0x90);
+    puVar13 = (undefined4 *)0x8bd63ac;
+    do {
+      puVar15 = puVar13;
+      psVar11 = psVar10 + 2;
+      puVar13 = puVar15 + 1;
+      *(undefined4 *)psVar10 = *puVar15;
+      psVar10 = psVar11;
+    } while (puVar14 + 5 != puVar13);
+    do {
+      uVar12 = *puVar13;
+      puVar13 = puVar13 + 1;
+      *(undefined4 *)(psVar11 + 0x8e) = uVar12;
+      psVar11 = psVar11 + 2;
+    } while (puVar15 + 0x11 != puVar13);
+                    /* WARNING: Bad instruction - Truncating control flow here */
+    halt_baddata();
+  }
+                    /* WARNING: Bad instruction - Truncating control flow here */
+  halt_baddata();
+}
+
+
+==== LISTING 0x1dd0-0x2300 ====
+00001dd0  lhu v1,0x1e(sp)
+00001dd4  jal 0x08b55f48
+00001dd8  _addiu t0,sp,0x2
+00001ddc  addiu t0,sp,0x27e
+00001de0  bgez v0,0x00001e60
+00001e60  beq a0,a1,0x000021a4
+00001e64  _addiu a0,a0,0x1
+00001e68  j 0x08b55dd0
+00001e6c  _sb v0,-0x1(a0)
+00001ec0  beq a3,zero,0x00001ed8
+00001ec4  _subu v0,a0,t6
+00001ec8  addiu t9,t9,0x27
+00001ecc  srl t1,t9,0x3
+00001ed0  addu a2,a2,t1
+00001ed4  sw a2,0x0(a3)
+00001ed8  lw ra,0x310(sp)
+00001edc  lw s4,0x308(sp)
+00001ee0  jr ra
+00001ee4  _addiu sp,sp,0x380
+00001ee8  addiu a2,a2,0x4
+00001eec  lw t8,0x0(a2)
+00001ef0  sllv v0,v0,t9
+00001ef4  addiu t9,t9,-0x20
+00001ef8  ins v0,t8,0x0,0x10
+00001efc  rotrv v0,v0,t9
+00001f00  j 0x08b55f18
+00001f04  _ins v0,zero,0x0,0x10
+00001f48  srlv v0,t8,t9
+00001f4c  subu t9,t9,t4
+00001f50  bgtz t9,0x00001ee8
+00001f54  _sllv v0,v0,t4
+00001fa4  addiu t5,t5,0x1
+00001fa8  sw zero,0x38(s4)
+00001fac  clear at
+00001fb0  li t1,0x7
+00001fb4  sw zero,0x2c(s4)
+00001fb8  move t3,s4
+00001fbc  mthi ra
+00001fc0  lb t4,0x2f8(sp)
+00001fc4  sw zero,0x34(s4)
+00001fc8  andi t0,at,0x1ff
+00001fcc  subu t0,t0,t5
+00001fd0  bgez t0,0x000020a8
+00001fd4  _lhu v1,0x316(sp)
+00001fd8  jal 0x08b55f48
+00001fdc  _addiu t0,sp,0x2fa
+00001fe0  addiu t0,v0,-0x10
+00001fe4  blez t0,0x00002024
+00001fe8  _daddu t2,t0,t1
+00001fec  addu t9,t9,t2
+00001ff0  blez t9,0x00002010
+00001ff4  _rotrv v0,t8,t9
+00001ff8  addiu a2,a2,0x4
+00001ffc  lw t8,0x0(a2)
+00002000  sllv v0,v0,t9
+00002004  addiu t9,t9,-0x20
+00002008  ins v0,t8,0x0,0x10
+0000200c  rotrv v0,v0,t9
+00002010  subu t2,zero,t2
+00002014  srlv v0,v0,t2
+00002018  addu t0,t0,v0
+0000201c  j 0x08b55fc8
+00002020  _addu at,at,t0
+00002024  beq t0,zero,0x00002040
+00002028  _addiu t2,t3,0x2
+0000202c  ins at,v0,0x9,0x6
+00002030  sh at,0x3c(t3)
+00002034  addiu at,at,0x1
+00002038  j 0x08b55fc8
+0000203c  _movn t3,t2,v0
+00002040  blez at,0x00002198
+00002044  _addiu t9,t9,0x2
+00002048  blez t9,0x00002068
+0000204c  _rotrv v0,t8,t9
+00002050  addiu a2,a2,0x4
+00002054  lw t8,0x0(a2)
+00002058  sllv v0,v0,t9
+0000205c  addiu t9,t9,-0x20
+00002060  ins v0,t8,0x0,0x10
+00002064  rotrv v0,v0,t9
+00002068  srl v0,v0,0x1e
+0000206c  andi t0,at,0x1ff
+00002070  beq t0,at,0x0000201c
+00002074  _addiu t0,v0,0x3
+00002078  addu t0,t0,at
+0000207c  sh at,0x3c(t3)
+00002080  addiu at,at,0x1
+00002084  bne at,t0,0x0000207c
+00002088  _addiu t3,t3,0x2
+0000208c  j 0x08b55fcc
+00002090  _andi t0,at,0x1ff
+00002094  srlv v0,at,t0
+00002098  bne v0,zero,0x00002198
+0000209c  _li at,-0x1
+000020a0  jr ra
+000020a4  _sh at,0x1c(t1)
+000020a8  sw zero,0x30(s4)
+000020ac  bne t0,zero,0x00002198
+000020b0  _mfhi ra
+000020b4  sw zero,0x20(s4)
+000020b8  clear t0
+000020bc  move t5,s4
+000020c0  sw zero,0x24(s4)
+000020c4  addiu t1,s4,0x2
+000020c8  li at,-0x1
+000020cc  sw zero,0x28(s4)
+000020d0  beq t3,t5,0x00002094
+000020d4  _addiu t4,t5,0x2
+000020d8  addiu at,at,0x1
+000020dc  lh v0,0x3c(t5)
+000020e0  lh v1,0x3c(t4)
+000020e4  beq t3,t4,0x000020fc
+000020e8  _addiu t4,t4,0x2
+000020ec  dadd t2,v1,v0
+000020f0  sh t2,0x3a(t4)
+000020f4  j 0x08b560e0
+000020f8  _daddu v0,v1,v0
+000020fc  srl t4,v0,0x9
+00002100  andi v0,v0,0x1ff
+00002104  sh v0,0x3c(t5)
+00002108  beq t0,t4,0x000020d0
+0000210c  _addiu t5,t5,0x2
+00002110  subu t2,t0,t4
+00002114  beq t0,zero,0x00002138
+00002118  _move t0,t4
+0000211c  sh at,0x1c(t1)
+00002120  rotrv at,at,t2
+00002124  addu t2,t2,t2
+00002128  subu t1,t1,t2
+0000212c  subu t2,t5,at
+00002130  subu t2,t2,at
+00002134  subu t2,t1,t2
+00002138  j 0x08b560d0
+0000213c  _sh t2,-0x2(t1)
+00002140  subu t0,zero,t9
+00002144  srl t0,t0,0x3
+00002148  subu a2,a2,t0
+0000214c  lwl t0,0x7(a2)
+00002150  lwr t0,0x4(a2)
+00002154  andi v1,t0,0xffff
+00002158  addu v1,v1,a0
+0000215c  sltu t1,a1,v1
+00002160  bne t1,zero,0x000021a4
+00002164  _nor t1,t0,zero
+00002168  rotr t1,t1,0x10
+0000216c  bne t1,t0,0x00002198
+00002170  _nop
+00002174  lbu t1,0x8(a2)
+00002178  addiu a2,a2,0x1
+0000217c  addiu a0,a0,0x1
+00002180  bne v1,a0,0x00002174
+00002184  _sb t1,-0x1(a0)
+00002188  bne t2,zero,0x00001ec0
+0000218c  _li t9,0x20
+00002190  j 0x08b55c0c
+00002194  _addiu a2,a2,0x8
+00002198  lui v0,0x8000
+0000219c  j 0x08b55ed8
+000021a0  _ori v0,v0,0x108
+000021a4  lui v0,0x8000
+000021a8  j 0x08b55ed8
+000021ac  _ori v0,v0,0x104

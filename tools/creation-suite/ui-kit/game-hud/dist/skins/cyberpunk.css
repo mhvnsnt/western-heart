@@ -1,0 +1,116 @@
+/*! game-hud v0.1.0 — skin: cyberpunk
+ * https://github.com/aronprins/game-hud
+ * MIT License */
+/* ---- CYBERPUNK : hot magenta neon, deep purple, scanlines, glitch ---- */
+body[data-skin="cyberpunk"]{
+  --page-bg:#f1eef6;
+  --font-head:'Audiowide',cursive;
+  --font-body:'Share Tech Mono',monospace;
+  --panel:#190a24; --panel-2:#251034; --panel-3:#0e0516;
+  --line:#3d1f56; --line-2:#54307a;
+  --edge:#ff2d78; --edge-dim:#8a1a44;
+  --accent:#ff2d78; --accent-2:#29e6ff;
+  --text:#f6ecff; --text-dim:#9b85b8;
+  --hp:#ff2d5e; --hp-2:#ff6b90;
+  --mp:#29e6ff; --mp-2:#7cf1ff;
+  --en:#c5f542; --en-2:#dcff7e;
+  --xp:#ff2d78; --xp-2:#ff7cae;
+  --gold:#ffd23f; --gem-b:#29e6ff; --gem-g:#c5f542;
+  --danger:#ff2d5e; --ok:#9ed432;
+  --glow:0 0 10px rgba(255,45,120,.6),0 0 26px rgba(255,45,120,.25);
+  --slot-shape:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));
+  --btn-shape:polygon(0 0,calc(100% - 14px) 0,100% 100%,14px 100%);
+  --scene:radial-gradient(1100px 460px at 50% 116%, #3a0f4e 0%, transparent 62%),
+          radial-gradient(700px 300px at 82% 6%, rgba(41,230,255,.16), transparent 55%),
+          linear-gradient(180deg,#070211 0%,#150826 45%,#2a0e3c 75%,#160a24 100%);
+}
+
+/* ============================================================
+   SKIN: CYBERPUNK — deep purple glass, magenta neon edge-light,
+   cyan counterpoint, scanlines, slash-cut corners
+   ============================================================ */
+[data-skin="cyberpunk"] .panel{
+  background:transparent;clip-path:none;box-shadow:none;
+}
+[data-skin="cyberpunk"] .panel .p-bg{
+  display:block;position:absolute;inset:0;z-index:-1;
+  clip-path:polygon(0 0,calc(100% - 26px) 0,100% 26px,100% 100%,26px 100%,0 calc(100% - 26px));
+  background:linear-gradient(180deg,#4a2168,#2a1240 45%,#1c0b2e);
+}
+[data-skin="cyberpunk"] .panel .p-bg::before{
+  content:"";position:absolute;inset:2px;
+  clip-path:polygon(0 0,calc(100% - 25px) 0,100% 25px,100% 100%,25px 100%,0 calc(100% - 25px));
+  background:
+    repeating-linear-gradient(0deg,rgba(255,45,120,.045) 0 1px,transparent 1px 4px),
+    radial-gradient(140% 80% at 50% -10%,rgba(255,45,120,.14),transparent 55%),
+    linear-gradient(180deg,#1d0c2e,#130722 65%,#170a28);
+}
+[data-skin="cyberpunk"] .panel .p-bg::after{
+  content:"";position:absolute;inset:2px;pointer-events:none;
+  clip-path:polygon(0 0,calc(100% - 25px) 0,100% 25px,100% 100%,25px 100%,0 calc(100% - 25px));
+  background:
+    linear-gradient(90deg,#ff2d78 0 42%,transparent 42%) top left/100% 3px no-repeat,
+    linear-gradient(90deg,transparent 58%,#29e6ff 58%) bottom right/100% 2px no-repeat;
+  opacity:.9;filter:drop-shadow(0 0 6px rgba(255,45,120,.8));
+}
+/* neon corner brackets — magenta tl, cyan br (matches the light bars) */
+[data-skin="cyberpunk"] .panel .corner{display:none;width:15px;height:15px;z-index:3}
+[data-skin="cyberpunk"] .corner.tl{
+  display:block;top:8px;left:8px;
+  border-top:2px solid #ff2d78;border-left:2px solid #ff2d78;
+  filter:drop-shadow(0 0 5px rgba(255,45,120,.8));
+}
+[data-skin="cyberpunk"] .corner.br{
+  display:block;bottom:8px;right:8px;
+  border-bottom:2px solid #29e6ff;border-right:2px solid #29e6ff;
+  filter:drop-shadow(0 0 5px rgba(41,230,255,.8));
+}
+[data-skin="cyberpunk"] .panel .p-head{
+  margin:0 0 10px;padding:2px 2px 9px;justify-content:flex-start;gap:10px;
+  border-bottom:1px solid #3d1f56;
+}
+[data-skin="cyberpunk"] .panel .p-head h3{
+  font-weight:400;font-size:15px;letter-spacing:.18em;color:var(--edge);
+  text-shadow:0 0 10px rgba(255,45,120,.7),0 0 26px rgba(255,45,120,.3);
+}
+[data-skin="cyberpunk"] .panel .p-head .p-hico{color:#29e6ff}
+[data-skin="cyberpunk"] .grp-body{padding-top:18px}
+[data-skin="cyberpunk"] .quests .q-bullet{background:#29e6ff;box-shadow:0 0 8px rgba(41,230,255,.7)}
+[data-skin="cyberpunk"] .btn{
+  clip-path:var(--btn-shape);text-shadow:0 0 8px rgba(0,0,0,.6);
+  font-weight:400;letter-spacing:.18em;
+}
+[data-skin="cyberpunk"] .btn-primary{background:linear-gradient(180deg,#ff4d8c,#c2185e);box-shadow:inset 0 0 12px rgba(255,255,255,.2)}
+[data-skin="cyberpunk"] .btn-neutral{background:linear-gradient(180deg,#3a1a54,#241033);box-shadow:inset 0 0 0 1.5px #ff2d78}
+[data-skin="cyberpunk"] .btn-danger{background:linear-gradient(180deg,#e02a4e,#9e1030)}
+[data-skin="cyberpunk"] .btn-ok{background:linear-gradient(180deg,#2ad4c8,#0f8a92);color:#04222a;text-shadow:none}
+[data-skin="cyberpunk"] .btn .b-ico{display:none}
+[data-skin="cyberpunk"] .avatar{box-shadow:0 0 0 2px #ff2d78,0 0 16px rgba(255,45,120,.5)}
+[data-skin="cyberpunk"] .lvl-badge{color:#29e6ff;box-shadow:0 0 0 2px #1a6e80,0 0 10px rgba(41,230,255,.5)}
+[data-skin="cyberpunk"] .vital .v-track{box-shadow:inset 0 0 0 1px #3d1f56}
+[data-skin="cyberpunk"] .vital .v-ico{box-shadow:inset 0 0 0 1px #3d1f56}
+[data-skin="cyberpunk"] .compass .c-body,[data-skin="cyberpunk"] .currency{box-shadow:inset 0 0 0 1.5px #3d1f56}
+[data-skin="cyberpunk"] .compass .c-cell.dir.n{color:#29e6ff;text-shadow:0 0 10px rgba(41,230,255,.8)}
+[data-skin="cyberpunk"] .minimap .mm-ring{box-shadow:0 6px 16px rgba(0,0,0,.5), inset 0 0 0 2px #ff2d78, 0 0 22px rgba(255,45,120,.35)}
+[data-skin="cyberpunk"] .minimap .mm-hole{box-shadow:inset 0 0 22px rgba(255,45,120,.3), inset 0 0 0 2px #8a1a44}
+[data-skin="cyberpunk"] .minimap .mm-map svg{filter:hue-rotate(210deg) saturate(1.1)}
+[data-skin="cyberpunk"] .hslot.sel{box-shadow:inset 0 0 0 2px #29e6ff,0 0 12px rgba(41,230,255,.4)}
+[data-skin="cyberpunk"] .hslot.sel::after{background:#29e6ff;box-shadow:0 0 8px rgba(41,230,255,.8)}
+[data-skin="cyberpunk"] .hotbar,[data-skin="cyberpunk"] .dialogue,[data-skin="cyberpunk"] .bossbar .bb-body,
+[data-skin="cyberpunk"] .ammo-box,[data-skin="cyberpunk"] .wave-plate,[data-skin="cyberpunk"] .castbar,
+[data-skin="cyberpunk"] .prompt{box-shadow:inset 0 0 0 1.5px #3d1f56}
+[data-skin="cyberpunk"] .dl-name{background:#29e6ff;color:#071a26;box-shadow:0 0 10px rgba(41,230,255,.5)}
+/* glitch skew on the boss bar */
+[data-skin="cyberpunk"] .bossbar .bb-body{transform:skewX(-8deg)}
+[data-skin="cyberpunk"] .bossbar .bb-name{letter-spacing:.22em;text-shadow:2px 0 0 rgba(41,230,255,.55),-2px 0 0 rgba(255,45,120,.55)}
+[data-skin="cyberpunk"] .tab-btn{
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 100%,10px 100%);
+  box-shadow:inset 0 0 0 1.5px #3d1f56;background:#170a26;
+}
+[data-skin="cyberpunk"] .tab-btn.on{
+  color:var(--edge);background:#2a1040;box-shadow:inset 0 0 0 1.5px #ff2d78;
+  text-shadow:0 0 10px rgba(255,45,120,.6);
+}
+[data-skin="cyberpunk"] .pips .pip.on{background:#29e6ff;box-shadow:0 0 8px rgba(41,230,255,.7)}
+[data-skin="cyberpunk"] .waypoint .wp-pin{filter:drop-shadow(0 0 8px rgba(255,45,120,.8))}
+[data-skin="cyberpunk"] .st-node.learned .g-ico{filter:drop-shadow(0 0 6px currentColor)}
