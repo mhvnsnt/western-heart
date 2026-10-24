@@ -564,7 +564,8 @@ function stopSelectTimer() {
 function randomEnemy(excludeId) {
   // Never field a MODEL PENDING fighter (no own model; owner 2026-10-23).
   const pool = ROSTER.filter(c => c.id !== excludeId && !c.modelPending && c.model);
-  return pool[Math.floor(Math.random() * pool.length)];
+  // Owner pt213u: enemies wear attire 1 (owner model first), not the raw roster key.
+  return resolveFighterAttire(pool[Math.floor(Math.random() * pool.length)]);
 }
 
 /* ---------------- Menu button wiring ---------------- */
@@ -879,7 +880,7 @@ async function startFight(playerId, enemyId, opts = {}) {
   // MODEL PENDING fighters (no own model yet) never enter a fight on another body.
   if (player.modelPending || !player.model) player = resolveFighterAttire(getCharacterWithCustom(firstReady));
   let enemy = opts.enemyChar ||
-    (typeof enemyId === 'string' && enemyId !== player.id ? getCharacterWithCustom(enemyId) : randomEnemy(player.id));
+    (typeof enemyId === 'string' && enemyId !== player.id ? resolveFighterAttire(getCharacterWithCustom(enemyId)) : randomEnemy(player.id));
   if (!enemy || enemy.modelPending || !enemy.model) enemy = randomEnemy(player.id);
   // On-demand: load only the 2 fighters for this fight (Tekken 3 pattern).
   // Models may already be prefetched from select-screen highlight.
