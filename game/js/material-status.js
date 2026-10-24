@@ -92,7 +92,6 @@ export const MATERIAL_STATUS = {
   "menajerii": "55 untextured",
   "menajerii-attire1": "55 untextured",
   "michiko": "1 placeholder",
-  "n3g4tiv0": "3 untextured",
   "nightwolf": "2 untextured",
   "pond": "4 untextured",
   "saku-ra_alt1": "31 untextured",
