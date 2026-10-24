@@ -362,16 +362,13 @@ export const MODEL_URLS = {
   // spirit, temple dancer who refused to die. SmutBase intake (roster/rahkasa/).
   // Unrigged static (1 mesh; rig widgets live in the .blend); k-NN auto-rig
   // from donor is the planned path.
-  // Rigged 2026-10-23 (PR #780, 52-joint canonical skeleton): model-rigged.glb, kept. Its static lost every texture
-  // at export, so the material gate quarantined Chatur out of fights. 2026-10-24: re-exported TEXTURED from the
-  // artist's own RahkasaV1.1.blend (tools/auto_rig/export_blend_static.py) and rigged (rig_tripo_static.py).
-  chatur: '../roster/rahkasa/attires/attire1/model-rerig.glb',
+  // Rigged 2026-10-23 (PR #780, 52-joint canonical skeleton, verified).
+  chatur: '../roster/rahkasa/attires/attire1/model-rigged.glb',
   // POND (owner 2026-10-23): Raven's WH replacement — swamp boundary watcher,
   // found Dorowani as an egg. SmutBase intake (roster/tsuyu-asui/). Unrigged
   // static (9 meshes, clothing separate); k-NN auto-rig from donor is the planned path.
-  // Rigged 2026-10-23 (PR #780, 52-joint canonical skeleton): model-rigged.glb, kept (untextured, quarantined).
-  // 2026-10-24: re-exported TEXTURED from the artist's Tsuyu Asui IK.blend and rigged, as for Chatur.
-  pond: '../roster/tsuyu-asui/attires/attire1/model-rerig.glb',
+  // Rigged 2026-10-23 (PR #780, 52-joint canonical skeleton, verified).
+  pond: '../roster/tsuyu-asui/attires/attire1/model-rigged.glb',
   // CHARGER Attire 2 (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   'charger-attire2': '../roster/charger/attires/attire2/model-rigged.glb',

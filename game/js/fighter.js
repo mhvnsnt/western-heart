@@ -20,7 +20,7 @@
 import * as THREE from 'three';
 import { assets } from './assets.js';
 import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK,
-  clipStrikeProfile, clipHitWindow, bankAttackPool, attackLevelOfWord, attackClipTime, clipIsThrow } from './t3anims.js';
+  clipStrikeProfile, clipHitWindow, bankAttackPool, attackLevelOfWord, attackClipTime, clipIsThrow, BUTTON_LIMB } from './t3anims.js';
 import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove } from './movesets.js';
 import { TransformCinematic } from './transform-cinematic.js';
 import { V, vskillFor, vtriggerEnhance, vreversalMove } from './v-system.js';
@@ -622,12 +622,13 @@ export class Fighter {
        notation  the decoded T3 row (own t3_row) of the move this fighter's moveset binds to the SAME
                  input — the T3 copy of the move a merged T7/T8 move replaced in its slot (Skull's
                  T3 '1' = row 50, the i10 jab, for the T8 Jab)
-       anim      anim_t3 {bank,row} (tools/moveset-merge: the first T3 move found with that notation,
-                 any stance, or 'nearest' = approximate) — merge-time guess, so after notation
-       match     the bank's decoded attack row (hit_frames.json) whose MEASURED striking limb is the
-                 move's (limb, else button 1/2/3/4 = L/R punch, L/R kick) at the move's height
-                 (decoded attack word / T8 / T7 hit level), nearest hit time to its startup —
-                 closest real clip of the same character, flagged 'match'
+       anim      anim_t3 {bank,row} 'same-notation' (tools/moveset-merge: the first T3 move found with
+                 that notation, any stance) — merge-time guess, so after notation. anim_t3 'nearest'
+                 (approximate) is tried only after match: it disagrees with the pressed button 43%.
+       match     the bank's decoded attack row (hit_frames.json) started by the SAME buttons (decoded
+                 branch command; 1/2/3/4 = L/R punch, L/R kick), then the same limb, at the move's
+                 height (decoded attack word / T8 / T7 hit level), nearest decoded hit frame to its
+                 startup — closest real clip of the same character, flagged 'match'
        generic   the bank's light/medium/heavy (grab for throws) striking with that limb (measured)
      STRIKE vs THROW (owner: "pressing 1 ... can show a THROW"): every candidate's decoded row type
      (hit_frames.json throw flag) must agree with the move — a strike never plays a throw row, a throw
@@ -643,6 +644,15 @@ export class Fighter {
     const hit = String(attackName || (move && move.tekkenInput) || '').split(/[,.]/).pop();
     const b = (hit.match(/[1-4]/) || [])[0];
     return { 1: 'armL', 2: 'armR', 3: 'legL', 4: 'legR' }[b] || (L === 'both' && /[34]/.test(hit) ? 'legR' : 'armR');
+  }
+  /* Button mask of the hit a notation fires (its last hit, after any stance prefix):
+     1 LP, 2 RP, 4 LK, 8 RK (the T3 command bits); else the move's limb as one button; 0 unknown. */
+  static attackButtons(move, attackName) {
+    const hit = String(attackName || (move && move.tekkenInput) || '').split(/[,.~:]/).pop();
+    let m = 0;
+    for (const b of hit.match(/(?<![a-z/])[1-4](?![0-9])/gi) || []) m |= 1 << (+b - 1);
+    if (m) return m;
+    return { armL: 1, armR: 2, legL: 4, legR: 8 }[move && move.limb] || 0;
   }
   static attackLevel(move, raw) {
     if (move && move.hitWord != null) { const l = attackLevelOfWord(move.hitWord); if (l) return l; }
@@ -722,35 +732,46 @@ export class Fighter {
         if (pick) break;
       }
     }
-    if (!pick && move) pick = fits(this._ownRow(move, 'anim'));
+    // anim_t3 'nearest' rows (merge-time limb/class/startup guess, flagged approximate) show a
+    // different button than the input on 43% of slots (measured 2026-10-24); they come after match.
+    const animNearest = !!(raw && raw.anim_t3 && /nearest/.test(String(raw.anim_t3.match || '')));
+    if (!pick && move && !animNearest) pick = fits(this._ownRow(move, 'anim'));
+    // The move's buttons (last hit of its notation: 1 LP, 2 RP, 3 LK, 4 RK) and the limb they name.
+    const btn = Fighter.attackButtons(move, attackName);
+    const btnLimb = BUTTON_LIMB[btn] || limb;
     if (!pick) {
+      // Same buttons first, then the same limb, each at the move's height then any height;
+      // nearest decoded hit frame to the move's startup inside the first tier that has rows.
       const NEAR = { h: ['h', 'm'], m: ['m', 's', 'u'], s: ['s', 'l', 'm'], l: ['l', 's'], u: ['u', 'm'] };
       const all = bankAttackPool(bank, { throws: grab });
-      const pool = all.filter(c => c.limb === limb);
-      const tiers = !grab && level && NEAR[level] ? NEAR[level].map(l => pool.filter(c => c.level === l)) : [];
-      tiers.push(pool);
+      const tiers = [];
+      for (const pool of [btn ? all.filter(c => c.btn === btn) : [], all.filter(c => c.limb === btnLimb)]) {
+        if (!grab && level && NEAR[level]) for (const l of NEAR[level]) tiers.push(pool.filter(c => c.level === l));
+        tiers.push(pool);
+      }
       if (grab) tiers.push(all); // throw reach: any decoded throw attempt of this character
       for (const tier of tiers) {
         if (!tier.length) continue;
         let best = tier[0];
         for (const c of tier) if (Math.abs(c.t0 - S) < Math.abs(best.t0 - S)) best = c;
-        pick = { name: best.name, kind: 'match', why: `${grab ? 'throw ' : ''}${best.limb} ${best.level || '?'}${level && best.level !== level ? ` (move ${level})` : ''} hit@${Math.round(best.t0 * 60)}f` };
+        pick = { name: best.name, kind: 'match', why: `${grab ? 'throw ' : ''}btn ${best.btn || '?'} ${best.limb}${best.limbSrc === 'measured' ? '(measured)' : ''} ${best.level || '?'}${level && best.level !== level ? ` (move ${level})` : ''} hit@${Math.round(best.t0 * 60)}f` };
         break;
       }
     }
+    if (!pick && move && animNearest) pick = fits(this._ownRow(move, 'anim'));
     if (!pick) {
-      // Generic action clips, by the limb their own frames strike with (measured, not by name).
+      // Generic action clips, by the button of the row each one plays (decoded), else measured limb.
       const cands = (grab ? ['grab'] : []).concat(['light', 'medium', 'heavy']).filter(n => clips[n] && clipIsThrow(clips[n]) === grab);
-      const sp = (n) => clipStrikeProfile(bank, clips[n]);
+      const limbOf = (n) => { const h = clips[n].userData.hit; const p = clipStrikeProfile(bank, clips[n]); return BUTTON_LIMB[h && h[5]] || (p && p.dominant); };
       const arm = (l) => l && l.startsWith('arm');
       let best = grab && clips.grab && clipIsThrow(clips.grab) ? 'grab' : null;
-      for (const want of [(d) => d === limb, (d) => arm(d) === arm(limb)]) {
+      for (const want of [(d) => d === btnLimb, (d) => arm(d) === arm(btnLimb)]) {
         if (best) break;
-        for (const n of cands) { const p = sp(n); if (p && want(p.dominant)) { best = n; break; } }
+        for (const n of cands) if (want(limbOf(n))) { best = n; break; }
       }
       // Last resort (a bank with no decoded throw row baked): the bank's own grab action, flagged.
-      best = best || (grab ? 'grab' : arm(limb) ? 'light' : 'medium');
-      if (clips[best]) pick = { name: best, kind: 'generic', why: `generic ${best} for ${limb}${grab && !clipIsThrow(clips[best]) ? ' (NOT a throw row)' : ''}` };
+      best = best || (grab ? 'grab' : arm(btnLimb) ? 'light' : 'medium');
+      if (clips[best]) pick = { name: best, kind: 'generic', why: `generic ${best} for ${btnLimb}${grab && !clipIsThrow(clips[best]) ? ' (NOT a throw row)' : ''}` };
     }
     if (!pick) return null;
     // Timing: the clip's hit window (decoded T3 active frames, else the measured extension peak of
@@ -782,7 +803,8 @@ export class Fighter {
       if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
     }
     if (name && !this.t3actions[name]) name = null;
-    this._atkPlan = { id: this._attackId, move, name, kind: plan && plan.kind, timing: plan && plan.timing };
+    this._atkPlan = { id: this._attackId, move, name, kind: plan && plan.kind, why: plan && plan.why,
+      limb: plan && plan.limb, timing: plan && plan.timing, rejected: plan && plan.rejected };
     return name;
   }
 
@@ -1036,59 +1058,27 @@ export class Fighter {
     return null;
   }
   tryAttack(name) {
-    // TEKKEN STRING BUFFER (lane B, 2026-10-24; owner: "combos don't work ... random stuff is
-    // happening"). A press while a move plays either continues THAT move's string or does nothing
-    // until the move ends (Tekken). The next hit is buffered and fires when this hit's active
-    // frames end (_tickState). Rules, all deterministic:
-    //  - the string cursor is the notation now playing (attackName), or a pending string step in
-    //    the buffer — never tekken.lastMove, which a surge / AI / raw-fallback move leaves stale
-    //    (a press during those used to continue some older string);
-    //  - one buffered hit at a time: the first valid press wins; a later press during the same
-    //    hit no longer overwrites it (1, 2, 1 inside one jab used to turn 1,2 into 1,1);
-    //  - a press that types a string step with no move of its own (10-hit strings) advances the
-    //    string path and plays nothing new; the string's move fires on the step that has one.
-    if (!/^[1234](\+[1234])*$/.test(name)) { this._lastPress = null; return this._tryAttackFresh(name); }
-    const tb = this.tekken, now = performance.now();
-    const FIELDS = ['state', 'stateT', 'attack', 'attackName', '_attackPhase', 'hasHit', '_queuedNext',
-      'stance', 'stanceT', '_risingT', '_rageUsed', 'meter', 'vx'];
-    const grab = () => { const o = { buf: tb.snapshot() }; for (const k of FIELDS) o[k] = this[k]; return o; };
-    const put = (o, all) => { tb.restore(o.buf); if (all) for (const k of FIELDS) this[k] = o[k]; else this._queuedNext = o._queuedNext; };
-    // CHORD = the single just pressed + one more button. input.js emits the first button at once
-    // and the chord when the second lands inside CHORD_WINDOW_MS (50 ms), so '1' then '1+2' means
-    // the player pressed 1+2: undo what the single did (a fresh move still in startup with nothing
-    // hit, a buffered string hit, a string step) and play the chord from the state before it —
-    // a fresh 1+2, or a chord step inside a string (b+3,1+2; chain throws). A second button later
-    // than that window (60 ms = the window + one 1/120 tick) is never a chord: when the pair
-    // continues the string it is the next string step (1 then 2 = 1,2, not 1+2). A chord with no
-    // move keeps the single and tries the other button as the string step.
-    const lp = this._lastPress;
-    if (name.includes('+') && lp && name.split('+').includes(lp.btn)) {
-      const rest = name.split('+').filter(b => b !== lp.btn).join('+');
-      const sameMove = (this._attackId || 0) === lp.attackId;
-      const justStarted = (this._attackId || 0) === lp.attackId + 1 && this.state === 'attack'
-        && this._attackPhase === 'startup' && !this.hasHit;
-      if (now - lp.t <= 60 && (sameMove || justStarted)) {
-        const after = grab();
-        put(lp.before, justStarted); this._lastPress = null;
-        if (this.tryAttack(name)) return true;
-        put(after, true);
+    // A press during a string-capable move buffers the next hit (Tekken input buffer):
+    // it fires when the current hit's active frames end.
+    if (this.state === 'attack' && this.attack && /^[1234](\+[1234])*$/.test(name)) {
+      const cont = this.tekken.continuation(name);
+      if (cont) { this._queuedNext = cont; return true; }
+      // Chord upgrade: input.js emits the first button at once and the chord when the second
+      // lands inside its 140 ms window, so '1' then '1+3' means the player pressed 1+3. If the
+      // single that just started is part of this chord, the chord replaces it.
+      if (name.includes('+') && this.stateT <= 0.14 && this._attackPhase === 'startup' && !this.hasHit) {
+        const single = String(this.attackName || '').split(/[,.]/).pop();
+        const btn = single.split('+').pop();
+        if (/^[1234]$/.test(btn) && name.split('+').includes(btn)) {
+          this.tekken.lastMove = this._chordBase || null;
+          const saved = { state: this.state, attack: this.attack, attackName: this.attackName, stateT: this.stateT };
+          this.state = 'idle';
+          if (this._tryAttackFresh(name)) return true;
+          Object.assign(this, saved);
+        }
       }
-      this._lastPress = null;
-      if (!rest) return false;
-      name = rest;
     }
-    const before = grab(), id0 = this._attackId || 0;
-    let ok;
-    if (this.state === 'attack' && this.attack) {
-      if (this._queuedNext) ok = false;
-      else {
-        const step = tb.continueString(name, this._inputCtx(), this.attackName);
-        ok = !!(step && !step.pending); // pending: a string step with no move — the path advanced
-        if (ok) this._queuedNext = step.notation;
-      }
-    } else ok = this._tryAttackFresh(name);
-    this._lastPress = /^[1234]$/.test(name) ? { btn: name, t: now, attackId: id0, before } : null;
-    return ok;
+    return this._tryAttackFresh(name);
   }
   setRageAura(on) {
     this._rageAura = !!on;
@@ -1117,15 +1107,12 @@ export class Fighter {
     // via the fighter's TekkenBuffer + its moveset's notation table.
     let notation = LEGACY_TO_TEKKEN[name] || name;
     const ctx = this._inputCtx();
+    this._chordBase = this.tekken.lastMove;
     if (/^[1234]$/.test(notation)) {
       const resolved = this.tekken.pressButton(notation, ctx);
-      if (resolved) notation = resolved;
-      // The press only typed a string step that has no move of its own (resolver V2 pendingStep:
-      // the string's move fires on its next press). Never the raw button's move instead — that
-      // played a jab and left the string cursor somewhere else ("random stuff", lane B).
-      else if (this.tekken.pendingStep) return false;
       // Stream 6: if the fighter has no move on this limb, keep the raw
       // notation so the base-move fallback below still fires (no dead buttons).
+      if (resolved) notation = resolved;
     } else if (/^[1234](\+[1234])+$/.test(notation)) {
       if (notation === '1+2' && ctx.urgeOn && !ctx.rage) return this.tryUrgeDash();
       const resolved = this.tekken.pressChord(notation, ctx);

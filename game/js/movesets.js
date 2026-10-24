@@ -283,29 +283,7 @@ function _prepare(ms) {
     for (const j of cuts) pre.add(n.slice(0, j));
   }
   ms._strPrefixes = pre;
-  // STRING TREE (lane B, 2026-10-24): base notation -> the notations one press further down the
-  // string ('1' -> {'1,2','1,4'}, '1,2' -> {'1,2,1'} ...) — the same tree T8's `parent` chains
-  // describe, rebuilt from the comma notation every moveset already uses. A step boundary is a
-  // separator right after a button ('f,F+2,1' cuts after 'f,F+2', never inside the motion).
-  const kids = new Map();
-  for (const n of Object.keys(slots)) {
-    if (MERGE_KEY.test(n)) continue; // '1~t8.bryan', 'b+3,2~t7.bryan.2': merge-source keys, not inputs
-    let prev = null;
-    for (let j = 0; j <= n.length; j++) {
-      if (j < n.length && !',~:'.includes(n[j])) continue;
-      const head = n.slice(0, j);
-      if (j < n.length && !STEP_END.test(head)) continue;
-      if (prev !== null) {
-        if (!kids.has(prev)) kids.set(prev, new Set());
-        kids.get(prev).add(head);
-      }
-      prev = head;
-    }
-  }
-  ms._strKids = kids;
 }
-const STEP_END = /(?:^|[+.,~:])[1-4](?:\+[1-4])*\*?$/;
-const MERGE_KEY = /~[a-z][a-z0-9_-]*\./;
 
 /* Player loadouts from the moveset editor: localStorage wh_moveset_loadout_v1
    = { fighterId: { notation: moveKey } }. Read live so edits apply next press. */
@@ -529,7 +507,6 @@ export class TekkenBuffer {
     const ms = playedMoveset(this.fighterId);
     if (!ms || !ms.moves) return input; // no data — raw passthrough
     _prepare(ms);
-    this.pendingStep = null; // V2 sets it when this press only typed a string step (nothing fires)
     if (inputResolverV2()) return this._pressV2(input, ctx, ms);
     return this._pressLegacy(input, ctx, ms);
   }
@@ -550,42 +527,26 @@ export class TekkenBuffer {
     const withDir = dir ? `${dir}+${input}` : input;
     const holdDir = dir ? `${dir.toUpperCase()}+${input}` : null;
     const now = performance.now();
-    // 0) Soul Urge (T8 Heat) reservation, restored from the legacy resolver (V2 had dropped it, so
-    //    the HEAT button fired the fighter's ordinary 2+3): while the gauge is live, 2+3 is the Urge
-    //    Burst (fresh gauge) or the Urge Smash (urging), never a normal move or a string step.
-    if (input === '2+3' && (ctx.urgeOn || ctx.urgeAvailable)) {
-      const sys = has(ctx.urgeOn ? 'US.2+3' : 'UB.2+3');
-      if (sys) return this._recordMove(sys);
-    }
     const contOk = ctx.inMove !== undefined ? ctx.inMove : (now - this.lastMoveT < 800);
-    // 1) String cursor: the notation typed so far — a pending partial string (a step that is not
-    //    a standalone move) for STRING_PENDING ms, else the last move while it still plays.
-    //    _stringStep walks the string tree (one press = one step, held-direction / plain fallback).
+    // String cursor: the notation typed so far — the last move, or a pending partial string
+    // (an intermediate step that is not a standalone move) for STRING_PENDING ms.
     const pendingOk = this._strPath && now - this._strPathT < STRING_PENDING;
     const bases = [];
     if (pendingOk) bases.push(this._strPath);
     if (this.lastMove && contOk) bases.push(this.lastMove);
     for (const base of bases) {
-      const c = this._stringStep(base, input, ms);
-      if (!c) continue;
-      if (has(c)) return this._recordMove(c);
-      this._strPath = c; this._strPathT = now; this.pendingStep = c; // step with no move of its own
-      return null;
+      for (const sep of [',', '~', ':']) {
+        const cands = dir ? [`${base}${sep}${withDir}`, `${base}${sep}${holdDir}`] : [`${base}${sep}${input}`];
+        for (const c of cands) if (has(c)) { this._strPath = null; return this._recordMove(c); }
+        for (const c of cands) if (ms._strPrefixes && ms._strPrefixes.has(c)) { this._strPath = c; this._strPathT = now; return null; }
+      }
     }
     this._strPath = null;
-    // Opening step of a string that has no standalone move ('BM.2' of 'BM.2,1,2,1', 'u/b+1' of
-    // 'u/b+1,1'): remember it as the string path and keep resolving — the press still plays the
-    // move this priority order gives without it (Tekken: the first hit of a string always plays),
-    // and the next press continues the string. Nothing else resolves = the press only opened it.
-    let opened = null;
-    const opener = (c) => { if (!opened && ms._strKids && ms._strKids.has(c) && !has(c)) opened = c; return false; };
-    const fire = (c) => { this._recordMove(c); if (opened) { this._strPath = opened; this._strPathT = now; } return c; };
+    // Opening step of a string that has no standalone move: open the string cursor, fire nothing.
+    const opener = (c) => (ms._strPrefixes && ms._strPrefixes.has(c) ? (this._strPath = c, this._strPathT = now, true) : false);
     const prefixes = [];
     if (ctx.stance) prefixes.push(ctx.stance + '.');
     if (ctx.rage) prefixes.push('R.');
-    // Rage lane (T7): the rage drive lives on 3+4 while raging (synthesized RD., rage.js) —
-    // restored from the legacy resolver, V2 had dropped the prefix.
-    if (ctx.rage) prefixes.push('RD.');
     if (ctx.backturned) prefixes.push('BT.');
     if (ctx.sidestep) prefixes.push('SS.');
     if (ctx.crouching) prefixes.push('FC.');
@@ -602,84 +563,20 @@ export class TekkenBuffer {
         // neutral-ending motions ('f,n,2') need the stick released; the rest need the last
         // step still held at the press (f,F+2 = f held).
         if (mo.neutral ? dir : dir !== mo.dirs[mo.dirs.length - 1]) continue;
-        if (this._motionHeldV2(mo) && has(mo.n)) return fire(mo.n);
+        if (this._motionHeldV2(mo) && has(mo.n)) return this._recordMove(mo.n);
       }
       if (dir) {
         // Held spelling ('D/F+2') when the direction has been held >= HOLD_FRAMES, tap otherwise.
         const held = this._heldFrames() >= HOLD_FRAMES;
         const order = held ? [p + holdDir, p + withDir] : [p + withDir, p + holdDir];
-        // A held 'D/B+3' that only opens 'D/B+3,4,...' is remembered before the tap move plays.
-        for (const c of order) { if (has(c)) return fire(c); opener(c); }
-        // Crouching: holding down IS the crouch, so FC.1 is pressed with the stick at d / d/b /
-        // d/f — it must not fall through to the standing d+1 of the next prefix (lane B).
-        if (p === 'FC.' && dir[0] === 'd') {
-          for (const c of [p + input, p + input + '*']) if (has(c)) return fire(c);
-          opener(p + input);
-        }
+        for (const c of order) if (has(c)) return this._recordMove(c);
+        for (const c of order) if (opener(c)) return null;
       }
     }
     for (const p of prefixes) {
-      if (has(p + input)) return fire(p + input);
-      if (has(p + input + '*')) return fire(p + input + '*');
-      opener(p + input); // stance chain opener ('SLEEPER.1' of 'SLEEPER.1,1,1+2')
-    }
-    if (opened) { this._strPath = opened; this._strPathT = now; this.pendingStep = opened; }
-    return null;
-  }
-
-  /** One press further down the string from `base` (lane B, 2026-10-24): the child notation in
-      the string tree this press types, or null. Tekken order: a motion step, then the direction
-      as held (held/tap spelling by HOLD_FRAMES), then the plain button — a follow-up with no
-      directional version still comes out while the stick is held — then a step that starts in
-      the stance the move transitions to ('3+4,SNE.2'). Separators: ',' then '~' then ':'. */
-  _stringStep(base, input, ms) {
-    const kids = ms._strKids && ms._strKids.get(base);
-    if (!kids) return null;
-    const dir = this.lastDir && this.lastDir !== 'n' ? this.lastDir : '';
-    const L = base.length + 1;
-    for (const c of kids) { // motion step ('b+2,f,F+1')
-      const s = c.slice(L);
-      if (!s.includes(',')) continue;
-      const mo = parseMotion(s);
-      if (!mo || mo.prefix || mo.btn !== input) continue;
-      if (mo.neutral ? dir : dir !== mo.dirs[mo.dirs.length - 1]) continue;
-      if (this._motionHeldV2(mo)) return c;
-    }
-    const steps = [];
-    if (dir) {
-      const tap = `${dir}+${input}`, hold = `${dir.toUpperCase()}+${input}`;
-      steps.push(...(this._heldFrames() >= HOLD_FRAMES ? [hold, tap] : [tap, hold]));
-    }
-    steps.push(input, input + '*');
-    for (const s of steps) for (const sep of [',', '~', ':']) if (kids.has(base + sep + s)) return base + sep + s;
-    for (const s of steps) {
-      for (const c of kids) { const m = STATE_PREFIX.exec(c.slice(L)); if (m && /^[A-Z]/.test(m[1]) && m[2] === s) return c; }
-    }
-    return null;
-  }
-
-  /** Fighter API (lane B): the press `input` while the move `base` plays (Fighter.tryAttack).
-      { notation, pending:false } = the string's next hit (buffer it, it fires when this hit's
-      active frames end); { notation, pending:true } = a string step with no move of its own (the
-      string path advances, nothing new plays); null = not a continuation (Tekken: the press does
-      nothing until the move ends). A pending path (_strPath) is continued before `base`.
-      peek = look only, change nothing. The urge chord (2+3 while the gauge is live) never
-      continues a string. */
-  continueString(input, ctx = {}, base = this.lastMove, peek = false) {
-    const ms = playedMoveset(this.fighterId);
-    if (!ms || !ms.moves) return null;
-    _prepare(ms);
-    if (input === '2+3' && (ctx.urgeOn || ctx.urgeAvailable)) return null;
-    const now = performance.now();
-    const bases = [];
-    if (this._strPath && now - this._strPathT < STRING_PENDING) bases.push(this._strPath);
-    if (base && base !== this._strPath) bases.push(base);
-    for (const b of bases) {
-      const c = this._stringStep(b, input, ms);
-      if (!c) continue;
-      const pending = !resolveMoveKey(this.fighterId, c);
-      if (!peek) { this._strPath = pending ? c : null; this._strPathT = now; }
-      return { notation: c, pending };
+      if (has(p + input)) return this._recordMove(p + input);
+      if (has(p + input + '*')) return this._recordMove(p + input + '*');
+      if (p && opener(p + input)) return null; // stance chain opener ('SLEEPER.1' of 'SLEEPER.1,1,1+2')
     }
     return null;
   }
@@ -801,12 +698,10 @@ export class TekkenBuffer {
     if (!ms || !ms.moves) return chord; // no data — raw passthrough
     _prepare(ms);
     if (inputResolverV2()) {
-      // V2: the notation table with the real stance/stick decides (stance chords like REV.b+1+3
-      // used to lose to a context-blind legacy special). Its answer is final (lane B 2026-10-24):
-      // the legacy fallbacks below re-ran press() a second time and matched specials against a
-      // loose 650 ms wall-clock direction list, so a chord V2 rejected (or that only typed a
-      // string step) could still fire some special — the "random move" the owner reported.
-      return this.press(chord, ctx);
+      // V2: the notation table with the real stance/stick decides first (stance chords like
+      // REV.b+1+3 used to lose to a context-blind legacy special); legacy specials are the fallback.
+      const v = this.press(chord, ctx);
+      if (v) return v;
     }
     // 1) motion specials (legacy ms.specials entries, incl. ones the slots
     //    table doesn't cover): motion in the direction history + this chord.
@@ -829,25 +724,21 @@ export class TekkenBuffer {
     return null;
   }
 
-  /** Would `input` continue the string `base` (default: the last move) with a real move? Returns
-      that notation or null; looks only (Fighter.tryAttack uses continueString). It used to ignore
-      V2's pending string path and the held-direction spelling. */
-  continuation(input, ctx = {}, base = this.lastMove) {
-    const r = this.continueString(input, ctx, base, true);
-    return r && !r.pending ? r.notation : null;
-  }
-
-  /** Snapshot / restore of the string state (Fighter's chord upgrade undoes the single press). */
-  snapshot() { return { lastMove: this.lastMove, lastMoveT: this.lastMoveT, strPath: this._strPath || null, strPathT: this._strPathT || 0 }; }
-  restore(s) {
-    if (!s) return;
-    this.lastMove = s.lastMove; this.lastMoveT = s.lastMoveT; this._strPath = s.strPath; this._strPathT = s.strPathT;
+  /** Would `input` continue the current string? (lets a press during a move buffer the next hit) */
+  continuation(input) {
+    if (!this.lastMove) return null;
+    const dir = this.lastDir && this.lastDir !== 'n' ? this.lastDir : '';
+    for (const sep of [',', '~', ':']) {
+      for (const c of [dir ? `${this.lastMove}${sep}${dir}+${input}` : null, `${this.lastMove}${sep}${input}`]) {
+        if (c && resolveMoveKey(this.fighterId, c)) return c;
+      }
+    }
+    return null;
   }
 
   _recordMove(notation) {
     this.lastMove = notation;
     this.lastMoveT = performance.now();
-    this._strPath = null; // a move that plays ends any pending string path (V2 re-opens it after a stand-in)
     return notation;
   }
 

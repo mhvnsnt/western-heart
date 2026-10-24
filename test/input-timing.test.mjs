@@ -68,7 +68,7 @@ function advance(t) {
   NOW = t;
 }
 
-const CODE = { d: 'KeyS', u: 'KeyW', f: 'KeyD', b: 'KeyA', 1: 'Digit1', 2: 'Digit2', 3: 'Digit3', 4: 'Digit4' };
+const CODE = { d: 'KeyS', u: 'KeyW', f: 'KeyD', b: 'KeyA', 1: 'Digit1', 2: 'Digit2', 3: 'Digit3', 4: 'Digit4', J: 'KeyJ', K: 'KeyK' };
 const LIMB = /^[1-4](\+[1-4])*$/;
 const MOVE_BUSY_MS = 450; // a started move keeps the fighter busy (strings buffer, other presses drop)
 
@@ -80,7 +80,7 @@ const MOVE_BUSY_MS = 450; // a started move keeps the fighter busy (strings buff
  * just started, otherwise pressButton / pressChord with the crouch context).
  * Returns { queue: InputManager actions in order, fired: notations started }.
  */
-function play(fighterId, events, { hz = 60, dt = FIXED_DT } = {}) {
+function play(fighterId, events, { hz = 60, dt = FIXED_DT, stamps = true } = {}) {
   for (const k of Object.keys(listeners)) if (k !== 'storage') listeners[k] = [];
   timers = []; NOW = 0;
   simClock(true);
@@ -92,7 +92,9 @@ function play(fighterId, events, { hz = 60, dt = FIXED_DT } = {}) {
     const queue = [], fired = [];
     let moveEnd = -1, last = null;
     const t0 = 1000; // the round has been running for a second (neutral history)
-    const evs = events.map(([t, kind, key]) => [t0 + t, kind, CODE[key]]).sort((a, b) => a[0] - b[0]);
+    // [ms, kind, key, handledAt?]: a busy page runs the handler late (handledAt) but the event keeps
+    // its real e.timeStamp (ms); stamps:false = no timeStamp on the event (handler-time fallback).
+    const evs = events.map(([t, kind, key, h]) => [t0 + (h ?? t), kind, CODE[key], t0 + t]).sort((a, b) => a[0] - b[0]);
     const end = evs[evs.length - 1][0] + 300;
     const frame = 1000 / hz;
     let acc = 0, ei = 0;
@@ -122,9 +124,11 @@ function play(fighterId, events, { hz = 60, dt = FIXED_DT } = {}) {
     for (let T = 0; T <= end; T += frame) {
       // input events that happened since the last rAF; each handler runs at its own time
       while (ei < evs.length && evs[ei][0] <= T) {
-        const [t, kind, code] = evs[ei++];
+        const [t, kind, code, stamp] = evs[ei++];
         advance(t);
-        for (const fn of listeners[kind === 'down' ? 'keydown' : 'keyup'] || []) fn({ code, preventDefault() {} });
+        const ev = { code, preventDefault() {} };
+        if (stamps) ev.timeStamp = stamp;
+        for (const fn of listeners[kind === 'down' ? 'keydown' : 'keyup'] || []) fn(ev);
       }
       advance(T);
       acc += frame / 1000;
@@ -221,18 +225,88 @@ test('a true simultaneous press (0-16 ms apart, and 2-frame leniency) is the cho
   }
 });
 
-test('holding d/f ~200 ms then pressing reads the HELD spelling; a quick d/f tap reads the tap one', () => {
+// Held vs tapped is a TIME rule: HOLD_FRAMES = 8 frames (133 ms). The holds below stop at 170 ms,
+// before input.js's 200 ms tap/hold rule turns a held down into a crouch: from a crouch the
+// resolver's FC. priority decides (FC.1 for a fighter that has one), which is not a timing question.
+test('holding d/f (or d/b) ~170 ms then pressing reads the HELD spelling; a quick 70 ms tap reads the tap one', () => {
   const heldDF1 = M.resolveMoveKey('skull', 'D/F+1'), tapDF1 = M.resolveMoveKey('skull', 'd/f+1');
   const heldDB2 = M.resolveMoveKey('jin_soul', 'D/B+2'), tapDB2 = M.resolveMoveKey('jin_soul', 'd/b+2');
   assert.ok(heldDF1 && tapDF1 && heldDF1 !== tapDF1 && heldDB2 && tapDB2 && heldDB2 !== tapDB2, 'fixture movesets changed');
   for (const r of RATES) {
-    const held = play('skull', [[0, 'down', 'd'], [0, 'down', 'f'], [210, 'down', '1']], r);
-    assert.equal(M.resolveMoveKey('skull', lastFired(held)), heldDF1, `skull hold d/f 210 ms +1 @ ${rateName(r)}: ${show(held)}`);
+    const held = play('skull', [[0, 'down', 'd'], [0, 'down', 'f'], [170, 'down', '1']], r);
+    assert.equal(M.resolveMoveKey('skull', lastFired(held)), heldDF1, `skull hold d/f 170 ms +1 @ ${rateName(r)}: ${show(held)}`);
     const tap = play('skull', [[0, 'down', 'd'], [0, 'down', 'f'], [70, 'down', '1']], r);
     assert.equal(M.resolveMoveKey('skull', lastFired(tap)), tapDF1, `skull d/f+1 tapped (70 ms) @ ${rateName(r)}: ${show(tap)}`);
-    const heldB = play('jin_soul', [[0, 'down', 'd'], [0, 'down', 'b'], [210, 'down', '2']], r);
-    assert.equal(M.resolveMoveKey('jin_soul', lastFired(heldB)), heldDB2, `jin_soul hold d/b 210 ms +2 @ ${rateName(r)}: ${show(heldB)}`);
+    const heldB = play('jin_soul', [[0, 'down', 'd'], [0, 'down', 'b'], [170, 'down', '2']], r);
+    assert.equal(M.resolveMoveKey('jin_soul', lastFired(heldB)), heldDB2, `jin_soul hold d/b 170 ms +2 @ ${rateName(r)}: ${show(heldB)}`);
     const tapB = play('jin_soul', [[0, 'down', 'd'], [0, 'down', 'b'], [70, 'down', '2']], r);
     assert.equal(M.resolveMoveKey('jin_soul', lastFired(tapB)), tapDB2, `jin_soul d/b+2 tapped (70 ms) @ ${rateName(r)}: ${show(tapB)}`);
   }
+});
+
+test('legacy J then K (P+K command grab) uses the same 50 ms chord window: a quick J,K is 1,4, not a throw', () => {
+  for (const r of RATES.slice(0, 2)) {
+    for (const gap of [80, 120]) {
+      const res = play('pantera', [[0, 'down', 'J'], [gap, 'down', 'K']], r);
+      assert.deepEqual(res.queue, ['punch', 'kick'], `J,K (${gap} ms) @ ${rateName(r)}: ${show(res)}`);
+    }
+    for (const gap of [0, 10, 30]) {
+      const res = play('pantera', [[0, 'down', 'J'], [gap, 'down', 'K']], r);
+      assert.deepEqual(res.queue, ['punch', 'grab'], `J+K (${gap} ms) @ ${rateName(r)}: ${show(res)}`);
+    }
+  }
+});
+
+test('a busy page cannot merge presses: the chord gap uses e.timeStamp, not the handler time', () => {
+  for (const r of RATES.slice(0, 2)) {
+    // 1 at 0 ms and 3 at 90 ms, both handlers delayed to 130 ms (a long render / GC task)
+    const late = play('pantera', [[0, 'down', '1', 130], [90, 'down', '3', 130]], r);
+    assert.deepEqual(late.queue, ['1', '3'], `stalled 1,3 @ ${rateName(r)}: ${show(late)}`);
+    const lateJK = play('pantera', [[0, 'down', 'J', 130], [90, 'down', 'K', 130]], r);
+    assert.deepEqual(lateJK.queue, ['punch', 'kick'], `stalled J,K @ ${rateName(r)}: ${show(lateJK)}`);
+    // a real simultaneous press stays a chord however late its handlers run
+    const both = play('pantera', [[0, 'down', '1', 130], [10, 'down', '2', 131]], r);
+    assert.deepEqual(both.fired, ['1+2'], `stalled 1+2 @ ${rateName(r)}: ${show(both)}`);
+    // no timeStamp on the event: the handler time is used (same results when nothing stalls)
+    const s1 = play('pantera', [[0, 'down', '1'], [100, 'down', '2']], { ...r, stamps: false });
+    assert.deepEqual(s1.queue, ['1', '2'], `no-stamp 1,2 @ ${rateName(r)}: ${show(s1)}`);
+    const s2 = play('pantera', [[0, 'down', '1'], [8, 'down', '2']], { ...r, stamps: false });
+    assert.ok(s2.queue.includes('1+2'), `no-stamp 1+2 @ ${rateName(r)}: ${show(s2)}`);
+  }
+  // unusable stamps (0, epoch ms, future) fall back to performance.now()
+  simClock(true);
+  try {
+    NOW = 5000;
+    const inp = new InputManager(); inp.enable(true);
+    for (const bad of [0, Date.now(), 9e9, NaN, undefined]) { inp._lastT['1'] = 0; inp._tekken('1', bad); assert.equal(inp._lastT['1'], 5000, `stamp ${bad}`); }
+    inp._lastT['1'] = 0; inp._tekken('2', 4990); assert.equal(inp._lastT['2'], 4990, 'a valid stamp is used as is');
+  } finally { simClock(false); }
+});
+
+test('a fast qcf does not sidestep: d released under 200 ms while the stick is forward is a motion, a plain d tap still sidesteps', () => {
+  for (const r of RATES) {
+    // keyboard qcf+1 in 180 ms: down is held only 130 ms (a tap by the 200 ms rule)
+    const qcf = play('pantera', [[0, 'down', 'd'], [60, 'down', 'f'], [130, 'up', 'd'], [180, 'down', '1'], [240, 'up', 'f']], r);
+    assert.ok(!qcf.queue.includes('ss-down'), `fast qcf must not sidestep @ ${rateName(r)}: ${show(qcf)}`);
+    assert.equal(motionOf(lastFired(qcf)), 'd,d/f,f+1', `fast qcf+1 @ ${rateName(r)}: ${show(qcf)}`);
+    // qcb rolls into back the same way
+    const qcb = play('pantera', [[0, 'down', 'd'], [60, 'down', 'b'], [130, 'up', 'd'], [200, 'up', 'b']], r);
+    assert.ok(!qcb.queue.includes('ss-down'), `qcb must not sidestep @ ${rateName(r)}: ${show(qcb)}`);
+    // a d or u tap that returns to neutral is still a sidestep
+    const tap = play('pantera', [[0, 'down', 'd'], [100, 'up', 'd']], r);
+    assert.deepEqual(tap.queue, ['ss-down'], `d tap @ ${rateName(r)}: ${show(tap)}`);
+    const tapU = play('pantera', [[0, 'down', 'u'], [100, 'up', 'u']], r);
+    assert.deepEqual(tapU.queue, ['ss-up'], `u tap @ ${rateName(r)}: ${show(tapU)}`);
+  }
+  // touch stick (_udStick): d -> d/f -> f without lifting = no sidestep; d -> centre = sidestep
+  simClock(true);
+  try {
+    timers = []; NOW = 1000;
+    const inp = new InputManager(); inp.enable(true);
+    inp.axisX = 0; inp._udStick(0.9); NOW = 1060; inp.axisX = 0.7; inp._udStick(0.7);
+    NOW = 1120; inp.axisX = 1; inp._udStick(0.1);
+    assert.deepEqual(inp.consume(), [], 'touch qcf: no sidestep');
+    NOW = 2000; inp.axisX = 0; inp._udStick(0.9); NOW = 2090; inp._udStick(0);
+    assert.deepEqual(inp.consume(), ['ss-down'], 'touch d tap: sidestep');
+  } finally { simClock(false); }
 });

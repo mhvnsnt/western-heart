@@ -557,11 +557,16 @@ export function attackLevelOfWord(w) {
   return 'm';
 }
 
+/* Button mask (1 LP, 2 RP, 4 LK, 8 RK — T3 command bits) -> limb, for single-button masks. */
+export const BUTTON_LIMB = { 1: 'armL', 2: 'armR', 4: 'legL', 8: 'legR' };
+
 /* The baked move rows of a loaded bank that fighter.js may match a move with no row clip of its own
-   against (closest real clip of the same character), as { name, row, limb, level, t0, ext } sorted
-   by row. Strikes (default): decoded attack rows (active window) that are NOT throw rows and whose
-   measured striking limb clearly leaves the guard (ext >= 0.1 limb lengths). { throws: true }: the
-   decoded throw ATTEMPT rows (throw flag + active window: the reach that grabs). Cached per bank. */
+   against (closest real clip of the same character), as { name, row, btn, limb, limbSrc, level, t0 }
+   sorted by row. btn = the buttons that start the row (hit_frames.json: decoded branch commands, else
+   the movesets' t3_command); limb = BUTTON_LIMB[btn], or for rows with no known button the limb its
+   own frames extend most (clipStrikeProfile, limbSrc 'measured', kept only when ext >= 0.1 limb
+   lengths). Strikes (default): decoded attack rows (active window) that are NOT throw rows.
+   { throws: true }: the decoded throw ATTEMPT rows (throw flag + active window). Cached per bank. */
 const _poolCache = new Map(); // clips object -> { strike, throw }
 export function bankAttackPool(bankId, { throws = false } = {}) {
   const clips = _t3clipCache[bankId];
@@ -571,12 +576,17 @@ export function bankAttackPool(bankId, { throws = false } = {}) {
     for (const [name, clip] of Object.entries(clips)) {
       const h = clip.userData.hit;
       if (!name.startsWith('row:') || !h || !(h[0] > 0)) continue;
-      const sp = clipStrikeProfile(bankId, clip);
-      const L = sp && sp.dominant && sp.limbs[sp.dominant];
-      if (!L || (!h[4] && L.ext < 0.1)) continue;
-      const w = clipHitWindow(bankId, clip, sp.dominant);
-      (h[4] ? pools.throw : pools.strike).push({ name, row: +name.slice(4), limb: sp.dominant,
-        level: h[4] ? 't' : attackLevelOfWord(h[3]), t0: w ? w.t0 : L.peakT, ext: L.ext });
+      const btn = h[5] || 0;
+      let limb = BUTTON_LIMB[btn] || null, limbSrc = 'button';
+      if (!limb && !btn) {
+        const sp = clipStrikeProfile(bankId, clip);
+        const L = sp && sp.dominant && sp.limbs[sp.dominant];
+        if (L && (h[4] || L.ext >= 0.1)) { limb = sp.dominant; limbSrc = 'measured'; }
+        else if (!h[4]) continue;
+      }
+      const w = clipHitWindow(bankId, clip, limb);
+      (h[4] ? pools.throw : pools.strike).push({ name, row: +name.slice(4), btn, limb, limbSrc,
+        level: h[4] ? 't' : attackLevelOfWord(h[3]), t0: w ? w.t0 : 0 });
     }
     pools.strike.sort((a, b) => a.row - b.row); pools.throw.sort((a, b) => a.row - b.row);
     _poolCache.set(clips, pools);

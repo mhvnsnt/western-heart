@@ -102,15 +102,26 @@ export class InputManager {
     return code;
   }
 
-  /* P+K chord => command grab. Tracks the most recent strike press;
-     if the other one lands within 140ms, the pair becomes a grab. */
-  _strike(kind) {
+  /* Press time for the chord gap. Handlers pass the event's e.timeStamp: when the key / touch
+     really went down, in the performance.now() timebase. A busy page runs queued handlers back
+     to back, so stamping with performance.now() inside the handler shrank the gap and merged
+     two presses (1 then 3 -> 1+3 throw). Falls back to performance.now() without a usable stamp
+     (direct calls, tests, old browsers that stamp epoch ms or 0). */
+  _pressT(t) {
     const now = performance.now();
+    return (typeof t === 'number' && t > 0 && t <= now + 1) ? t : now;
+  }
+
+  /* P+K chord => command grab (legacy J/K keys, hidden P/K touch buttons). Tracks the most
+     recent strike press; if the other one lands within CHORD_WINDOW_MS, the pair becomes a
+     grab (was 140 ms: a quick J,K = 1,4 came out as a throw). */
+  _strike(kind, t) {
+    const now = this._pressT(t);
     if (kind === 'punch') {
-      if (now - this._lastKickT < 140) { this._lastKickT = 0; this._push('grab'); return; }
+      if (now - this._lastKickT < CHORD_WINDOW_MS) { this._lastKickT = 0; this._push('grab'); return; }
       this._lastPunchT = now;
     } else {
-      if (now - this._lastPunchT < 140) { this._lastPunchT = 0; this._push('grab'); return; }
+      if (now - this._lastPunchT < CHORD_WINDOW_MS) { this._lastPunchT = 0; this._push('grab'); return; }
       this._lastKickT = now;
     }
     this._push(kind);
@@ -127,8 +138,8 @@ export class InputManager {
     return this._udDir || null;
   }
 
-  _tekken(btn) {
-    const now = performance.now();
+  _tekken(btn, t) {
+    const now = this._pressT(t); // e.timeStamp from the handler, else performance.now()
     if (this._udDir && !this._udHeld) this._udUsed = true; // the tap fed this attack's direction
     const pairs = btn === '1' ? [['3', '1+3'], ['2', '1+2'], ['4', '1+4']]
                 : btn === '2' ? [['4', '2+4'], ['1', '1+2'], ['3', '2+3']]
@@ -185,8 +196,12 @@ export class InputManager {
     clearTimeout(this._udTimer);
     this._udDir = null; this._udHeld = false;
     const used = this._udUsed; this._udUsed = false;
+    // Tekken sidesteps only on a u/d tap that returns to neutral. A tap that ROLLS into a
+    // horizontal (d -> d/f -> f = qcf, d -> d/b -> b = qcb, f held + d tap) is a motion: the
+    // stick is still forward/back when u/d lets go, so no sidestep (a fast qcf used to sidestep).
+    const rolled = this.axisX !== 0;
     if (this.up || this.down) { this.up = false; this.down = false; }
-    else if (!held && !used) this._push(dir === 'up' ? 'ss-up' : 'ss-down');
+    else if (!held && !used && !rolled) this._push(dir === 'up' ? 'ss-up' : 'ss-down');
   }
 
   /* ---------------- Keyboard ---------------- */
@@ -201,14 +216,15 @@ export class InputManager {
         case 'KeyD': case 'ArrowRight': this.axisX = 1; break;
         case 'KeyW': case 'ArrowUp': this._udPress('up'); break;
         case 'KeyS': case 'ArrowDown': this._udPress('down'); break;
-        case 'KeyJ': this._strike('punch'); break;
-        case 'KeyK': this._strike('kick'); break;
+        case 'KeyJ': this._strike('punch', e.timeStamp); break;
+        case 'KeyK': this._strike('kick', e.timeStamp); break;
         case 'KeyU': this._push('grab'); break;
         case 'KeyL': this._push('surge'); break;
-        case 'Digit1': this._tekken('1'); break;
-        case 'Digit2': this._tekken('2'); break;
-        case 'Digit3': this._tekken('3'); break;
-        case 'Digit4': this._tekken('4'); break;
+        // e.timeStamp = when the key went down (chord gap; see _pressT)
+        case 'Digit1': this._tekken('1', e.timeStamp); break;
+        case 'Digit2': this._tekken('2', e.timeStamp); break;
+        case 'Digit3': this._tekken('3', e.timeStamp); break;
+        case 'Digit4': this._tekken('4', e.timeStamp); break;
         case 'Space': this.held.block = true; e.preventDefault(); break;
         case 'ShiftLeft': case 'ShiftRight': this._push('dodge'); break;
         case 'KeyV': this._push('vskill'); break; // V-System (owner 2026-10-22)
@@ -340,8 +356,8 @@ export class InputManager {
       const press = (e) => {
         e.preventDefault();
         if (action === 'block') this.held.block = true;
-        else if (action === 'punch' || action === 'kick') this._strike(action);
-        else if (/^[1234]$/.test(action)) this._tekken(action); // LP/RP/LK/RK limbs
+        else if (action === 'punch' || action === 'kick') this._strike(action, e.timeStamp);
+        else if (/^[1234]$/.test(action)) this._tekken(action, e.timeStamp); // LP/RP/LK/RK limbs (touch time, see _pressT)
         // TRANSFORM touch button: tap = transform up; tap while crouching
         // (joystick held down) = rare transform-down. No keyboard input.
         else if (action === 'transform') this._push(this.down ? 'transform-down' : 'transform');
