@@ -405,7 +405,17 @@ export class Game {
             if (act === '2+3' && this.p1._urgeOn && this._spiritCheck(this.p1, this.p2)) { rec('spirit'); continue; }
             // SOUL-SYSTEMS: 霊放 Reihou on 1+4 only while the foe is raging.
             if (act === '1+4' && this.soul && this.soul.tryReihou(this.p1, this.p2)) { rec('reihou'); continue; }
-            if (this.p1.tryAttack(act)) { audio.whiff(); rec(act); }
+            // Directional input: combine stick direction with button press.
+            // Tekken: holding f + pressing 2 = f+2, not neutral 2.
+            // Try directional first; fall back to neutral if no such move.
+            let fired = false;
+            if (/^[1234]$/.test(act) && stick && stick !== 'n') {
+              const dirNotation = stick + '+' + act;
+              if (this.p1.tryAttack(dirNotation)) {
+                audio.whiff(); rec(dirNotation); fired = true;
+              }
+            }
+            if (!fired && this.p1.tryAttack(act)) { audio.whiff(); rec(act); }
           }
           else if (act === 'ss-up') { if (this.p1.trySidestep(-1)) rec('sidestep'); }
           else if (act === 'ss-down') { if (this.p1.trySidestep(1)) rec('sidestep'); }
