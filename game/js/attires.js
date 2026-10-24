@@ -373,6 +373,13 @@ export const ATTIRE_VARIANTS = {
     { model: 'waterfall', label: 'ATTIRE 1' },
     { model: 'waterfall-attire1', label: 'ATTIRE 1 · TRIPO SOURCE (UNRIGGED)' },
   ],
+  /* CAPE JONES (cyborgx; roster/cyborg-x/ATTIRE-SLOTS.md): Attire 1 = the
+     rigged build of his own model (rig QA 2026-10-23, muse/cape-jones-fight).
+     No Tekken Alisa original exists in the repo, so the 5-7 ladder-back rule
+     has nothing to seat yet. */
+  'cyborgx': [
+    { model: 'cape-jones-attire1', label: 'ATTIRE 1 · CAPE JONES (RIGGED)' },
+  ],
 };
 
 function loadMap() {

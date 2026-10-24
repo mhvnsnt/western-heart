@@ -2578,6 +2578,7 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Verification:** `node --test game/tests/chrono-grapple.test.mjs` 18/18 green; full suite 80/84 with the same 4 pre-existing full-suite-mode failures as pristine main (fighter-completeness/v-system parallel-run flakes — verified by stashing). All four submission chains measured end-to-end: entry → control → lock → tap with in-band torques. Determinism asserted (identical runs ⇒ identical snapshots).
 
 **Deviations:** none. License note: user lifted the license firewall 2026-10-23; Chrono is BSD-3-Clause regardless, and the wired module is WH-original code (architecture-inspired, not a derivative).
+
 ## 2026-10-23 ~19:30 CDT — UniRig auto-rig intake integration (PR #956, branch muse/unirig-autorig-integration)
 
 **Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate" — item: UniRig (SIGGRAPH 2025, MIT license), AI auto-rigging for the Tripo intake pipeline + creation suite auto-rig.
@@ -2598,6 +2599,32 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 
 **ALL CHARACTERS ARE ADULTS:** n/a — rigging pipeline, no characters.
 
+
+
+## 2026-10-23 21:30 CT — Cape Jones playable on Alisa's select slot (muse/cape-jones-fight)
+
+Owner lane: Cape Jones (secret identity Cyborg X, fighter id `cyborgx`) replaces Tekken's Alisa — takes her select slot, her moveset + animations, plus his own extras. Proof owed: select screenshot + fight frame of one of Alisa's moves.
+
+**What changed (branch `muse/cape-jones-fight`, additive + 3 surgical edits, 0 deletions):**
+- NEW `roster/cyborg-x/attires/attire1/model-rigged.glb` — staged from the auto-rigged Round-2 build of `game/assets/models/cape-jones.glb` (49 bones, 1.75 m); byte-identical, sha256 e19e94e9… (no re-rig).
+- `game/js/assets.js` (surgical): MODEL_URLS += `cape-jones-attire1` → `../roster/cyborg-x/attires/attire1/model-rigged.glb`.
+- `game/js/attires.js` (surgical): ATTIRE_VARIANTS += `cyborgx` → Attire 1 = cape-jones-attire1 (RIGGED).
+- `roster/cyborg-x/ATTIRE-SLOTS.md` (surgical): rig QA result recorded.
+- `docs/decisions/2026-10-23-cape-jones-fight-wiring.md` (new): decision log.
+
+**Rig QA (tools/model-audit/rig_qa.py on meshopt-decoded GLB):** 49 joints, facing -Z, arm/leg sides OK, knees forward; weight-bleed heuristic flags hand-proximity verts only (no face→spine bleed). PASSED — no re-rig needed.
+
+**Teardown search:** no Alisa animation bank exists in the repo teardowns (T5/T6/T7/T8/TTT2) — only frame data (docs/t7t8-reference, rbnorway CSVs). The gunjack T3 fallback for cyborgx stays, as already logged in `game/data/cape-alisa-binding.json` (last resort, owner t121u). Real Alisa motions await the T7 extraction lane (owner bought T7 2026-10-23; Grok's box).
+
+**Verified by playing (phone portrait 390x844, Playwright + swiftshader):**
+- Select: CAPE JONES renders on the grid (CA card), 3D preview shows his textured model, "Attire 1" picker wired.
+- Fight cyborgx vs pantera: 10/10 states `"round":"fight"`, P1 `model: cape-jones-attire1`, repeated `st:"attack" atk:"1"` (Jab) with `cur: t3_gunjack_row44@cape-jones-attire1`; idle shows `t3_gunjack_stance` (not T-pose). **0 pageerrors.**
+- Known unrelated issue visible: camera-bounds zoom (fighters small at screen edges in portrait) — owned by another lane, not touched.
+
+**Commit method:** Git Data API via tree SHAs (no-sparse-commit law; /tmp too small for full clone — worked from a blob:none sparse tree, commits built from main's real tree). gitleaks clean.
+
+**ALL CHARACTERS ARE ADULTS:** confirmed — Cape Jones is male (user confirmed 2026-10-23), adult character, no minors involved.
+
 ## 2026-10-23 ~22:10 CDT — merge-tree-guard: merge-time guard against fake stale-tree merges (PR #983, branch muse/merge-tree-guard)
 
 **Owner instruction (verbatim):** "REPO: mhvnsnt/western-heart. TASK: build a merge-time guard that stops fake/stale-tree merges from deleting files on main."
@@ -2612,3 +2639,4 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Verification:** 6/6 unit tests pass. Read-only sweep of the last 30 merge commits on main: 29 CLEAN, exactly 1 flagged — 1b2dabfed (PR #974) with 150 violations + FAKE MERGE banner (known incident, already recovered via #981/#982). Manual secret-pattern scan clean (gitleaks binary not on this box; CI runs it).
 
 **Deviations:** none.
+
