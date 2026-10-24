@@ -899,8 +899,10 @@ export class Fighter {
     return true;
   }
   completeThrow() {
-    // Break window expired — the throw lands for real. Clears both sides of
-    // the lock, then routes through the normal receiveHit path.
+    // Break window expired — the throw lands for real. Both fighters enter
+    // the throw execution: attacker lifts and slams, victim is thrown.
+    // (Owner playtest bug 2026-10-23: was routing through receiveHit, which
+    // launched the victim across the room with no throw animation.)
     const throwing = this.state === 'throwing';
     const attacker = throwing ? this : this.lockPartner;
     const victim = throwing ? this.lockVictim : this;
@@ -911,11 +913,46 @@ export class Fighter {
       f.lockT = 0; f.lockMove = null; f.lockPartner = null; f.lockVictim = null;
     }
     if (attacker && victim && move && inLock) {
-      attacker._enter('idle'); attacker.vx = 0; attacker.vz = 0;
-      return victim.receiveHit(move, attacker);
+      attacker._enterThrowExec(victim, move);
+      const result = victim._enterThrownExec(attacker, move);
+      return result; // 'throw' or 'ko'
     }
     if (inLock) this._enter('idle');
     return null;
+  }
+  /* Throw execution (Tekken): after the break window, the attacker performs
+     the throw — lift (0-0.45s), slam (0.45-0.6s), recover (0.6-0.9s).
+     Damage lands at the slam. The victim stays near the attacker; no launch. */
+  _enterThrowExec(victim, move) {
+    this.state = 'throwExec'; this.stateT = 0;
+    this._throwVictim = victim; this._throwMove = move;
+    this._throwHitDone = false;
+    this.vx = 0; this.vz = 0; this.vy = 0;
+    const want = Math.sign(victim.root.position.x - this.root.position.x) || this.facing;
+    this.facing = want;
+  }
+  _enterThrownExec(attacker, move) {
+    this.state = 'thrownExec'; this.stateT = 0;
+    this._throwAttacker = attacker; this._throwMove = move;
+    this.vx = 0; this.vz = 0; this.vy = 0;
+    this.onGround = false; // lifted during the throw
+    const want = Math.sign(attacker.root.position.x - this.root.position.x) || this.facing;
+    this.facing = want;
+    this.meter = Math.min(this.maxMeter, this.meter + 6); // +6 soul on taking damage
+    return 'throw';
+  }
+  _throwSlamDamage() {
+    // Damage at the slam moment, from the attacker's stored throw.
+    const attacker = this._throwAttacker, move = this._throwMove;
+    if (!attacker || !move || this._throwHitDone) return null;
+    this._throwHitDone = true;
+    let dmg = move.damage * attacker.stats.power / this.stats.defense;
+    this.hp = Math.max(0, this.hp - dmg);
+    if (this.hp <= 0) {
+      this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing);
+      return 'ko';
+    }
+    return 'throw';
   }
   tryAttack(name) {
     // A press during a string-capable move buffers the next hit (Tekken input buffer):
@@ -1167,7 +1204,8 @@ export class Fighter {
   getHurtboxes() {
     if (this.invuln > 0 || this.dead) return [];
     // Throw cinematic: both locked fighters are committed, not hittable.
-    if (this.state === 'thrown' || this.state === 'throwing') return [];
+    if (this.state === 'thrown' || this.state === 'throwing' ||
+        this.state === 'thrownExec' || this.state === 'throwExec') return [];
     const out = [];
     if (this.bones.Spine1) { this.bones.Spine1.getWorldPosition(_v1); out.push({ x: _v1.x, y: _v1.y, z: _v1.z, r: 0.58 }); }
     if (this.bones.Head) { this.bones.Head.getWorldPosition(_v1); out.push({ x: _v1.x, y: _v1.y, z: _v1.z, r: 0.34 }); }
@@ -1287,6 +1325,53 @@ export class Fighter {
         // Throw-lock: game.js resolves the lock when the break window
         // (lockT) expires, so hit feedback stays in one place.
         break;
+      case 'throwExec': {
+        // Attacker performing the throw: lift, slam, recover (0.9s total).
+        // Damage lands at the slam (t=0.55s) via the victim's _throwSlamDamage.
+        if (this.stateT >= 0.9) {
+          this._throwVictim = null; this._throwMove = null;
+          this._enter('idle');
+        }
+        break;
+      }
+      case 'thrownExec': {
+        // Victim being thrown: lifted by the attacker, then slammed down
+        // in front of them. Stays near the attacker — no launch across the room.
+        const t = this.stateT, attacker = this._throwAttacker;
+        if (attacker) {
+          const dir = Math.sign(this.root.position.x - attacker.root.position.x) || 1;
+          const ax = attacker.root.position.x;
+          if (t < 0.45) {
+            // Lift phase: rise up in the attacker's grip
+            const k = t / 0.45;
+            this.root.position.y = GROUND_Y + Math.sin(k * Math.PI * 0.5) * 1.3;
+            this.root.position.x = ax + dir * 0.85;
+            this.root.position.z = attacker.root.position.z;
+          } else if (t < 0.6) {
+            // Slam phase: driven down in front of the attacker
+            const k = (t - 0.45) / 0.15;
+            this.root.position.y = GROUND_Y + 1.3 * (1 - k);
+            this.root.position.x = ax + dir * (0.85 + k * 0.75);
+            this.root.position.z = attacker.root.position.z;
+            if (!this._throwHitDone && k >= 0.9) this._throwSlamDamage();
+          } else {
+            // On the ground, recovering
+            this.root.position.y = GROUND_Y;
+            this.onGround = true;
+          }
+        }
+        if (t >= 0.9) {
+          const res = this._throwHitDone ? null : this._throwSlamDamage();
+          this._throwAttacker = null; this._throwMove = null;
+          // KO'd by the slam: _throwSlamDamage already ran _knockout.
+          if (!this.dead) {
+            this.stun = 0.55;
+            this._enter('knockdown');
+          }
+          break;
+        }
+        break;
+      }
       case 'idle': case 'walk':
         this.state = (Math.abs(this.vx) > 0.4 && this.onGround) ? 'walk' : 'idle';
         break;
@@ -1294,7 +1379,12 @@ export class Fighter {
   }
 
   _physics(dt, opponent) {
-    if (!this.onGround) this.vy -= 22 * dt;
+    // Throw execution: positions are driven by _tickState (lift/slam),
+    // so physics must not integrate velocity or gravity here.
+    const inThrowAnim = this.state === 'throwExec' || this.state === 'thrownExec';
+    if (!inThrowAnim) {
+      if (!this.onGround) this.vy -= 22 * dt;
+    }
     if (this.onGround && this.state !== 'walk' && this.state !== 'dodge' && this.state !== 'sidestep' && !(this.state === 'attack' && this.attackName === 'grab')) {
       this.vx *= Math.pow(0.0001, dt);
       if (Math.abs(this.vx) < 0.05) this.vx = 0;
@@ -1304,9 +1394,11 @@ export class Fighter {
       this.vz *= Math.pow(0.0001, dt);
       if (Math.abs(this.vz) < 0.05) this.vz = 0;
     }
-    this.root.position.x += this.vx * dt;
-    this.root.position.y += this.vy * dt;
-    this.root.position.z += this.vz * dt;
+    if (!inThrowAnim) {
+      this.root.position.x += this.vx * dt;
+      this.root.position.y += this.vy * dt;
+      this.root.position.z += this.vz * dt;
+    }
     // Sidestep range: about one body width into the background/foreground.
     this.root.position.z = Math.max(-2.4, Math.min(2.4, this.root.position.z));
 
@@ -1566,6 +1658,25 @@ export class Fighter {
         this._leanT.x = 0.3;
         if (!this._playT3Once('hit', 'thrown')) this._stopT3();
         break;
+      case 'throwExec': {
+        // Attacker performing the throw: heave back to lift (0-0.45s),
+        // drive forward for the slam (0.45-0.6s), settle (0.6-0.9s).
+        const t = this.stateT;
+        if (t < 0.45) this._leanT.x = -0.35 * (t / 0.45); // lean back, lifting
+        else if (t < 0.6) this._leanT.x = -0.35 + 0.75 * ((t - 0.45) / 0.15); // slam forward
+        else this._leanT.x = 0.4 * (1 - (t - 0.6) / 0.3); // settle
+        // Keep the grab clip if bound; otherwise the procedural snatch pose.
+        if (this.t3actions.grab) this._playT3('grab', { loop: false });
+        else this._animThrowExec(t);
+        break;
+      }
+      case 'thrownExec': {
+        // Victim being thrown: lifted, then slammed. T3 launch clip sells
+        // the airborne part; the position is driven by _tickState.
+        this._leanT.x = 0.25;
+        if (!this._playT3Once('launch', 'thrownExec')) this._stopT3();
+        break;
+      }
       case 'jump': {
         const jn = Math.abs(this.vx) < 0.4 ? 'jumpUp' : (Math.sign(this.vx) === this.facing ? 'jumpFwd' : 'jumpBack');
         if (!this._playT3Once(this.t3actions[jn] ? jn : 'jumpUp', 'jump')) { this._animJump(); this._stopT3(); }
@@ -1669,6 +1780,21 @@ export class Fighter {
     this._ik(['RightArm', 'RightForeArm'], 'RightHand', _v2, this._blendW);
     _v2.copy(_v1).addScaledVector(fwd, 0.42); _v2.y = _v1.y + 0.2;
     this._ik(['LeftArm', 'LeftForeArm'], 'LeftHand', _v2, this._blendW);
+  }
+  /* Procedural throw execution (no T3 throw clip bound): arms haul the
+     victim up overhead during the lift, then drive down for the slam. */
+  _animThrowExec(t) {
+    const fwd = _v3.set(this.facing, 0, 0);
+    this.bones.Spine2.getWorldPosition(_v1);
+    let lift, push;
+    if (t < 0.45) { const k = t / 0.45; lift = k; push = 0.3 + k * 0.3; }
+    else if (t < 0.6) { const k = (t - 0.45) / 0.15; lift = 1 - k * 0.9; push = 0.6 + k * 0.6; }
+    else { lift = 0.1; push = 1.2 * (1 - (t - 0.6) / 0.3); }
+    _v2.copy(_v1).addScaledVector(fwd, push); _v2.y = _v1.y + 0.2 + lift * 0.9;
+    this._ik(['RightArm', 'RightForeArm'], 'RightHand', _v2, 0.95);
+    _v2.copy(_v1).addScaledVector(fwd, push * 0.92); _v2.y = _v1.y + 0.1 + lift * 0.85;
+    this._ik(['LeftArm', 'LeftForeArm'], 'LeftHand', _v2, 0.95);
+    this._showTrail(this.bones.RightHand, Math.min(1, lift + 0.3));
   }
   _animJump() {
     this.bones.Hips.getWorldPosition(_v1);
