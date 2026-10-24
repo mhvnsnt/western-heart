@@ -35,3 +35,7 @@ rate/usage limit or API error), `PreCompact`, `SessionEnd`, and after `Write`/`E
 - always exits 0 so it can't block you. Log: `.git/autosave.log`. Off switch: `AUTOSAVE_DISABLE=1`.
 
 The autosave is a net, not the plan: still commit with real messages and open the PR yourself.
+
+
+## Handoff playbook (2026-10-23)
+All agents (Claude Code, Muse, others): follow [docs/handoff/HOW-TO-WORK-LIKE-GROK.md](docs/handoff/HOW-TO-WORK-LIKE-GROK.md) and the lane table in [docs/handoff/HANDOFF-2026-10-23.md](docs/handoff/HANDOFF-2026-10-23.md).
