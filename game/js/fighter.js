@@ -24,8 +24,10 @@ import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove } from './
 import { TransformCinematic } from './transform-cinematic.js';
 import { V, vskillFor, vtriggerEnhance, vreversalMove } from './v-system.js';
 import { JiggleRig } from './jiggle.js';
+import { SoftBody } from './softbody.js';
 import { FaceRig } from './faceRig.js';
 import { HandPoseBlender } from './handPoses.js';
+import { t8Frame, stunFromAdvantage } from './frame-tables.js';
 
 // ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
 // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO in Western Heart. The 'jin' moveset family is now 'demonio'.
@@ -212,6 +214,9 @@ export function getRealMove(charId, moveType) {
           rageArt: !!mv.rageArt, rageDrive: !!mv.rageDrive,
           urgeEngager: !!mv.urgeEngager,
           urgeBurst: !!mv.urgeBurst, urgeSmash: !!mv.urgeSmash,
+          // T8 frame tables (wavu.wiki CC0): block/hit/CH advantage + throw break.
+          t8: t8Frame(ms, tekken),
+          throw_break: mv.throw_break || (t8Frame(ms, tekken) || {}).brk || undefined,
         };
       }
     } else {
@@ -350,7 +355,7 @@ export class Fighter {
     // char.tintStrength ?? 0.45 default washed both fighters in a constant
     // suit color; real texture colors now render for the whole fight.)
     const inst = assets.createInstance(
-      this.char.model || 'pantera',
+      this.char.model,
       this.char.colors.suit, this.char.colors.trim,
       this.char.colorize ? (this.char.tintStrength ?? 0.3) : 0
     );
@@ -471,6 +476,19 @@ export class Fighter {
     });
     const jiggleIntensity = this.char.jiggleIntensity || 'natural';
     if (this._jiggle) this._jiggle.setIntensity(jiggleIntensity);
+    // Soft-body muscle volume (PBD lane, 2026-10-23): Jolt XPBD torso volume
+    // for muscle deformation on hit + volume-grounded jiggle. Same pattern
+    // as jiggle: inert until Jolt loads, every call guarded, never crashes
+    // the fight. char.softbody === false opts out.
+    this._softbody = null;
+    const softSpec = SoftBody.anatomyFor(this.char);
+    if (softSpec) {
+      this.root.traverse(o => {
+        if (!this._softbody && o.isSkinnedMesh) {
+          try { this._softbody = SoftBody.fromMesh(o, softSpec); } catch (e) {}
+        }
+      });
+    }
     // Face rig: morph driver + blink timer
     this._face = FaceRig.attach(this.root);
     // Hand poses: fist default, blended per state
@@ -822,7 +840,8 @@ export class Fighter {
     if (this.state !== 'thrown' || !this.lockMove) return false;
     const want = this.lockMove.throw_break || '1';
     const got = (btn === '3+4') ? '1+2' : btn; // mobile: both-kicks = both-punches
-    if (got !== want) return false;
+    // T8 tables: 'none' = unbreakable, '1|2' = either punch breaks.
+    if (want === 'none' || !want.split('|').includes(got)) return false;
     // ESCAPED — both fighters reset, attacker eats whiff recovery
     const attacker = this.lockPartner;
     this.lockT = 0; this.lockMove = null; this.lockPartner = null;
@@ -988,7 +1007,8 @@ export class Fighter {
       }
       // Soul Urge lane (T8 Heat): block chip can never kill — floor at 1 HP.
       this.hp = attacker._urgeOn ? Math.max(1, this.hp - chip) : Math.max(0, this.hp - chip);
-      this.stun = 0.18 + move.damage * 0.01;
+      this.stun = (move.t8 && move.t8.blk != null) ? stunFromAdvantage(move.t8.blk, move)
+        : 0.18 + move.damage * 0.01;
       this.vx = Math.sign(this.root.position.x - attacker.root.position.x) * move.knock * 0.5;
       this.meter = Math.min(this.maxMeter, this.meter + 4); // +4 soul on block
       if (this.hp <= 0) { this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || 1); return 'ko'; }
@@ -1040,8 +1060,20 @@ export class Fighter {
     if (this.hp <= 0) { this._knockout(dir); return 'ko'; }
     if (move.isGrab || move.knock >= 6 || move.launch || (counter && move.knockdown)) {
       this.vy = move.isGrab ? 5.2 : 4.6; this.onGround = false; this.stun = 0.55; this._enter('knockdown');
-    } else { this.stun = 0.2 + move.damage * 0.012 + (counter ? 0.12 : 0); this._enter('hitstun'); }
+    } else {
+      const t8adv = move.t8 ? (counter && move.t8.ch != null ? move.t8.ch : move.t8.hit) : null;
+      this.stun = t8adv != null ? stunFromAdvantage(t8adv, move)
+        : 0.2 + move.damage * 0.012 + (counter ? 0.12 : 0);
+      this._enter('hitstun');
+    }
     this.stance = null;
+    // Soft-body hit injection: dent the muscle volume at the impact point.
+    if (this._softbody) {
+      try {
+        const hb = attacker && attacker.getHitbox ? attacker.getHitbox() : null;
+        if (hb) { _v1.set(hb.x, hb.y, hb.z); this._softbody.hit(_v1, dir, move.damage || 8); }
+      } catch (e) {}
+    }
     return counter ? 'counter' : 'hit';
   }
   _knockout(dir) {
@@ -1128,6 +1160,10 @@ export class Fighter {
     // Secondary systems update (after animation, before render)
     if (this._jiggle) {
       try { this._jiggle.update(dt); } catch (e) {}
+    }
+    // Soft-body AFTER jiggle: volume deformation rides on the posed mesh.
+    if (this._softbody) {
+      try { this._softbody.update(dt); } catch (e) {}
     }
     if (this._face) {
       // Face expression by state
@@ -1218,22 +1254,38 @@ export class Fighter {
     }
     this.root.position.x = Math.max(-ARENA_LIMIT, Math.min(ARENA_LIMIT, this.root.position.x));
 
-    // Body-vs-body pushout — fighters NEVER interpenetrate (x and z).
+    // Body-vs-body pushout, T7/T8 style (owner bug 2026-10-23: cross-ups impossible).
+    // Tekken pushboxes are ground collision cylinders: while airborne the box
+    // shrinks and is off above the opponent's waist, so a jump arc can pass
+    // over and land on the far side (facing re-resolves on landing). Ground
+    // push is split between both bodies; when one is against the stage wall
+    // the remaining push goes to the other body, so nobody leaves the stage.
     if (opponent) {
       const dx = this.root.position.x - opponent.root.position.x;
       const dz = this.root.position.z - opponent.root.position.z;
-      const minDist = 1.45;
-      if (Math.abs(this.root.position.y - opponent.root.position.y) < 1.8) {
-        if (Math.abs(dx) < minDist && Math.abs(dz) < 0.9) {
-          const push = (minDist - Math.abs(dx)) / 2 * (dx >= 0 ? 1 : -1);
-          this.root.position.x += push; opponent.root.position.x -= push;
-        }
-        // lateral separation after sidesteps
-        if (Math.abs(dz) < 0.7 && Math.abs(dx) < minDist) {
-          const zp = (0.7 - Math.abs(dz)) / 2 * (dz >= 0 ? 1 : -1);
-          this.root.position.z += zp; opponent.root.position.z -= zp;
-        }
+      const air = Math.max(this.root.position.y, opponent.root.position.y) - GROUND_Y;
+      const airborne = !this.onGround || !opponent.onGround;
+      // ground: 1.45 wide; airborne: 0.55 low, none once over the waist (0.85)
+      const minDist = !airborne ? 1.45 : (air < 0.85 ? 0.55 : 0);
+      if (minDist > 0 && Math.abs(dx) < minDist && Math.abs(dz) < 0.9) {
+        // side from x, or from travel direction when perfectly stacked
+        const side = dx !== 0 ? Math.sign(dx) : (Math.sign(this.vx - opponent.vx) || this.facing * -1);
+        const total = minDist - Math.abs(dx);
+        let a = total / 2, b = total / 2;
+        const L = ARENA_LIMIT;
+        const roomA = side > 0 ? L - this.root.position.x : this.root.position.x + L;
+        const roomB = side > 0 ? opponent.root.position.x + L : L - opponent.root.position.x;
+        if (a > roomA) { b += a - roomA; a = roomA; }
+        if (b > roomB) { a += b - roomB; b = roomB; }
+        this.root.position.x += side * a; opponent.root.position.x -= side * b;
       }
+      // lateral separation after sidesteps (grounded only)
+      if (!airborne && Math.abs(dz) < 0.7 && Math.abs(dx) < 1.45) {
+        const zp = (0.7 - Math.abs(dz)) / 2 * (dz >= 0 ? 1 : -1);
+        this.root.position.z += zp; opponent.root.position.z -= zp;
+      }
+      this.root.position.x = Math.max(-ARENA_LIMIT, Math.min(ARENA_LIMIT, this.root.position.x));
+      opponent.root.position.x = Math.max(-ARENA_LIMIT, Math.min(ARENA_LIMIT, opponent.root.position.x));
     }
 
     const h = this.root.position.y;

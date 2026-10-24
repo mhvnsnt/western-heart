@@ -3,6 +3,8 @@
    Screen flow, character select, HUD bindings (Nine-Soul Meter
    with 9 soul segments), Soul Surge screen flash.
    ============================================================ */
+import './t7-ui-private.js';
+import './select-t7-layout.js';
 import { Game } from './game.js';
 import { InputManager } from './input.js';
 import { audio } from './audio.js';
@@ -25,6 +27,7 @@ import { STAGES, STAGE_TIERS, getStage, randomStageId } from './stages.js';
 // small next to the deferred modules. Stage THUMBS are the real cost there
 // (see the thumb atlas, assets/stages/thumbs/atlas.png + thumbs.json).
 import { initMenus } from './menus.js';
+import './load-progress.js'; // real loading bar (owner pt134u)
 
 // LOADSPEED: the real Tekken moveset JSONs (~300KB) used to fetch at boot.
 // They are fight data — they load when a fight starts (startFight awaits
@@ -558,7 +561,8 @@ function stopSelectTimer() {
 
 /* Random opponent different from the player */
 function randomEnemy(excludeId) {
-  const pool = ROSTER.filter(c => c.id !== excludeId);
+  // Never field a MODEL PENDING fighter (no own model; owner 2026-10-23).
+  const pool = ROSTER.filter(c => c.id !== excludeId && !c.modelPending && c.model);
   return pool[Math.floor(Math.random() * pool.length)];
 }
 
@@ -864,13 +868,17 @@ async function startFight(playerId, enemyId, opts = {}) {
   // modes lane: opts may carry full char-entry overrides (force-buffed
   // player, scaled-AI foe, the Assembled Soul boss, training dummy).
   // Stream 4: the player's selected attire applies in every mode.
-  const player = resolveFighterAttire(
-    opts.playerChar || getCharacterWithCustom(selectedChar || ROSTER[0].id));
-  const enemy = opts.enemyChar ||
+  const firstReady = (ROSTER.find(c => !c.modelPending && c.model) || ROSTER[0]).id;
+  let player = resolveFighterAttire(
+    opts.playerChar || getCharacterWithCustom(selectedChar || firstReady));
+  // MODEL PENDING fighters (no own model yet) never enter a fight on another body.
+  if (player.modelPending || !player.model) player = resolveFighterAttire(getCharacterWithCustom(firstReady));
+  let enemy = opts.enemyChar ||
     (typeof enemyId === 'string' && enemyId !== player.id ? getCharacterWithCustom(enemyId) : randomEnemy(player.id));
+  if (!enemy || enemy.modelPending || !enemy.model) enemy = randomEnemy(player.id);
   // On-demand: load only the 2 fighters for this fight (Tekken 3 pattern).
   // Models may already be prefetched from select-screen highlight.
-  const need = [...new Set([player.model || 'pantera', enemy.model || 'pantera'])];
+  const need = [...new Set([player.model, enemy.model].filter(Boolean))];
   // Mid-match transform targets must be preloaded (createInstance is sync).
   for (const c of [player, enemy]) {
     if (c.transform && c.transform.targetModel) need.push(c.transform.targetModel);
@@ -899,6 +907,7 @@ async function startFight(playerId, enemyId, opts = {}) {
     if (tBtn) tBtn.style.display = (player.transform || player.forms) ? '' : 'none';
     if (confirmBtn) confirmBtn.disabled = true;
     await assets.loadModels(need, (p, loaded, total) => {
+      if (window.__whLoadProgress) window.__whLoadProgress(p, loaded, total);
       if (!hint) return;
       if (loaded && total) {
         const mbL = (loaded / 1048576).toFixed(1);

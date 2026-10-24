@@ -221,7 +221,7 @@ export function buildAssembledSoul(playerChar) {
     title: 'Yourself, Assembled',
     base: playerChar.base || 'You',
     moveset: playerChar.moveset || 'jin',
-    model: playerChar.model || 'pantera',
+    model: playerChar.model,
     tintStrength: 0.65,
     colors: { suit: 0x0a0a14, trim: 0xb28dff },
     style: 'All Nine Styles',

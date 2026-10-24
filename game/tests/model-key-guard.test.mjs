@@ -70,7 +70,7 @@ const OWNERSHIP = {
     ]
   },
   "byou": {
-    "base": "steve-fox"
+    "pending": true
   },
   "charger": {
     "own": [
@@ -191,13 +191,13 @@ const OWNERSHIP = {
     ]
   }, // table was stale vs the re-keyed ladder (Tripo default Slot 1); fixed 2026-10-22
   "gyou": {
-    "base": "pantera"
+    "pending": true
   },
   "jin_soul": {
     "base": "steve-fox"
   },
   "kai": {
-    "base": "pantera"
+    "pending": true
   },
   "kingtyrant": {
     "own": [
@@ -289,12 +289,16 @@ const OWNERSHIP = {
     ]
   },
   "retsu": {
-    "base": "pantera"
+    "pending": true
   },
   "rin": {
-    "base": "steve-fox"
+    "pending": true
   },
-  "ryuji": {},
+  "ryuji": {
+    "own": [
+      "ryuji-rock"
+    ]
+  },
   "ryuji-rock": {
     "own": [
       "ryuji-rock"
@@ -319,7 +323,7 @@ const OWNERSHIP = {
     ]
   },
   "sha": {
-    "base": "steve-fox"
+    "pending": true
   },
   "skull": {
     "own": [
@@ -366,7 +370,7 @@ const OWNERSHIP = {
     ]
   }, // wave 1 2026-10-23: select entry + base key landed (base = Attire 2; A1 Tripo not on disk)
   "tou": {
-    "base": "pantera"
+    "pending": true
   },
   "waterfall": {
     "own": [
@@ -405,9 +409,14 @@ const OWNERSHIP = {
 const sandbox = mkdtempSync(join(tmpdir(), 'wh-model-key-guard-'));
 cpSync(join(ROOT, 'game/js/roster-full.js'), join(sandbox, 'roster-full.js'));
 cpSync(join(ROOT, 'game/js/attires.js'), join(sandbox, 'attires.js'));
+cpSync(join(ROOT, 'game/js/material-status.js'), join(sandbox, 'material-status.js')); // material gate data
 writeFileSync(join(sandbox, 'package.json'), '{"type":"module"}');
 const { FULL_ROSTER } = await import(pathToFileURL(join(sandbox, 'roster-full.js')).href);
 const { selectedAttireModel } = await import(pathToFileURL(join(sandbox, 'attires.js')).href);
+// Material gate (tools/assets/material_gate.mjs): quarantined models are never offered,
+// so a fighter's player path skips them; a fighter with none left is not selectable.
+const { MATERIAL_STATUS } = await import(pathToFileURL(join(sandbox, 'material-status.js')).href);
+const QUARANTINED = new Set(Object.keys(MATERIAL_STATUS.quarantine || {}));
 
 // --- MODEL_URLS parsed from the real assets.js source (authored table of
 // --- plain string literals), with the ATTIRE_CUSTOMIZATIONS override layer
@@ -434,6 +443,7 @@ test('every fighter with a wired own model resolves to their OWN model on both r
     if (!o || !o.own) continue; // no own model wired: declared-base / fallback riders are covered below
     const playerKey = selectedAttireModel(f);
     const enemyKey = f.model;
+    if (playerKey === null && !o.own.some(k => !QUARANTINED.has(k))) continue; // material-gated out of select
     if (!o.own.includes(playerKey)) bad.push(`${f.id}: player/select path resolves '${playerKey}' (not their own)`);
     if (!o.own.includes(enemyKey)) bad.push(`${f.id}: enemy/raw path resolves '${enemyKey}' (not their own)`);
   }
@@ -456,8 +466,9 @@ test('every resolved model URL points at a file that exists in the repo', () => 
   const bad = [];
   for (const f of FULL_ROSTER) {
     const o = OWNERSHIP[f.id] || {};
-    if (o.pending) continue; // documented pending drop-in (ryuji-rock)
+    if (o.pending || f.modelPending) continue; // MODEL PENDING: no own model yet (owner 2026-10-23)
     for (const [path, key] of [['player', selectedAttireModel(f)], ['enemy', f.model]]) {
+      if (key === null) continue; // material-gated out of select (no usable attire)
       const url = MODEL_URLS[key];
       if (!url) { bad.push(`${f.id}: ${path} key '${key}' has no MODEL_URLS entry`); continue; }
       if (!existsSync(join(ROOT, urlToRepoPath(url)))) bad.push(`${f.id}: ${path} key '${key}' -> ${url} (file missing)`);

@@ -1,3 +1,59 @@
+## 2026-10-23 ~18:15 CDT — batch3 T8 moveset pull: pond/tobi/megami/sakura/phantom (SHOW-ANIMATION LOCK)
+
+**Owner instruction (verbatim):** "Now we need to get that done for every other character" (2026-10-23) — replicate the proven Law/Lars pattern (PR #823 merged, PR #806 green).
+
+**Method:** T8 frame-data diff per fighter (`docs/t7t8-reference/frame-data-t8-full/<char>.json`, wavu) against existing `moves` dict keys; genuinely-missing moves added in Tekken notation via the canonical `tools/moveset-merge/merge_sources.py` `conv_t8` conversion (frames/60 -> seconds, damage scaled T8 180HP -> WH 100HP, raw kept in `damage_raw`); dedup by source-record identity (`t8_id`), key = notation when free else `<notation>~t8.<body>`; additions only (guard: 0 payload changes, 0 removals across all files).
+
+**Moveset (done):**
+- `game/assets/movesets/megami.json` (Jun Kazama): 150 -> **299** (+149 T8 Jun moves, all `"set": "FIGHT"`; TTT2-documented kit untouched; strings 0->18, specials 0->7)
+- `game/assets/movesets/pond.json` (Raven): 620 -> 620 (+0 — the merge lane's T8+T7 merge already covered all 177 T8 Raven moves; diff verified clean)
+- `game/assets/movesets/tobi.json` (Hwoarang): 729 -> 729 (+0 — merge lane already covered all 209 T8 Hwoarang moves; diff verified clean)
+- `game/assets/movesets/sakura.json` (Xiaoyu): 764 -> 764 (+0 — all 175 T8 Xiaoyu moves merged 2026-10-21)
+- `game/assets/movesets/phantom.json` (Yoshimitsu): 1019 -> 1019 (+0 — all 312 T8 Yoshimitsu moves merged 2026-10-21)
+- `index.json` moves/inputs/bytes updated for all 5. Provenance in `merge_sources.added.t8_pull_20261023`.
+
+**SHOW-ANIMATION LOCK (owner 2026-10-23):** file-level `anim_set_lock` added to all 5 files (previously missing everywhere); the 149 moves this lane pulled stamped `"set": "FIGHT"`. No SHOW content entered any moveset.
+
+**Animations (banks checked, gaps filed not stubbed):** `game/assets/anim/t3/hwoarang/`, `xiaoyu/`, `yoshimitsu/` exist (full 30-clip sets) — tobi/sakura/phantom wire to their own banks, no substitution. `t3/raven/` and `t3/jun/` do NOT exist (Raven debuted T5, Jun not in T3; T3 fallback empty per source priority) — precise gaps filed: `docs/anim/RAVEN-ANIM-GAP-20261023.md`, `docs/anim/JUN-ANIM-GAP-20261023.md` (FIGHT vs SHOW split, TTT2/T7/T8-first priority, unblock sequence for the extraction coordinator lane).
+
+**Verification:** new-move schema validated (all 13 required fields incl. `set: FIGHT`); semantic diff guard green (0 field losses, 0 removals); per-file byte-exact JSON serialization preserved (diffs are pure additions). CI's 6 checks gate the merge.
+
+**Anti-clobber:** rebuilt on current main tip after the merge lane's T8+T7 merge landed mid-task (53 commits; only `pond.json`/`tobi.json`/`index.json` overlapped — re-diffed on the new base, zero duplicated moves, their payloads untouched); surgical additions only; no deletions. Branch via Git Database API (no GitHub connector for git ops).
+
+---
+
+## 2026-10-23 ~15:55 CDT — Repo Co Dev: owner rules (disk offload + merge rule)
+
+**Task:** add Oct 23 owner rules (a) disk offload, (b) merge rule to AGENTS.md, RULES_NO_GUESSING, HOW-TO-CONTINUE, Muse handoff.
+**Source:** owner (Marquis) via MoneyManBusch relay, 2026-10-23. Docs only; nothing deleted.
+
+---
+
+## 2026-10-23 ~15:20 CDT — TTT2 extraction worker: surgical pipeline (Law/Lars lane)
+
+**Task:** Push TTT2 extraction toward 100% (standing directive: T3 fallback-only, pulls from T5/T6/T7/TTT2). Law + Lars FIRST — their full modern movesets/animations unblock the Buffalo Bill / Chordz pull lane. Then the full 59-fighter roster, stages, audio.
+
+**Built — `teardown/tekken-tag-tournament-2/tools/surgical/`** (no full 13.36GB download needed):
+- `fetch_assets.py` — release-asset downloader via GitHub data API (Accept: application/octet-stream + surrogate credential, 302 followed without auth, Range resume).
+- `vfile.py` — `PartVirtualFile`: seekable virtual file over the 26 release parts via HTTP Range. py7zr parses the 7z end-header with ~2KB transferred.
+- `stream_decode.py` — LZMA stream decoder (folder: lc=3,lp=0,pb=2,8MB dict) that splits the 72 members by known uncompressed sizes and writes only wanted members + MANIFEST.txt (sha256).
+- `seg_dl.py` — parallel segmented stream-prefix downloader (resume-safe per segment) for staging long poles locally.
+- `extract_member.py` — single-member extract via py7zr over the virtual file.
+- `fetch_zarmanager.py` — fetches GodPackage/StfsPackage (`core/xbox/{god,stfs}.py`) from dfdx047/ZarManager (not vendored — upstream license unverified).
+- `README.md` — cost model + usage.
+
+**Also:** `teardown/tekken-tag-tournament-2/EXTRACTION-RUNBOOK.md` (step-by-step: header verify → STFS blobs → Data0000 → XDVDFS listing → Law/Lars carve → roster); TEARDOWN.md status updated (safe storage DONE, disk blocker circumvented, network throttle documented).
+
+**Verified 2026-10-23:**
+- End-header over HTTP Range: 80 entries, byte-matching INVENTORY.md (1,970 bytes fetched).
+- Member 19 (GoD descriptor, 45,056 bytes) stream-extracted — byte-identical to `extracted-small/` copy.
+- GodPackage parses title ID 0x4E4D0859; member 0 (155MB STFS blob) stream-decoding.
+- **No Tekken 3 touched** — instruction gate compliant (T3 fallback-only).
+
+**Blocker:** VM egress proxy throttles sustained downloads to ~0.1 MB/s. Data0000 (header idx 20, key to the XDVDFS file listing → Law/Lars carve) needs a ~4.9GB stream prefix ≈ 14h — queued as a background nohup job. Per-member prefix costs in tools/surgical/README.md.
+
+**Deviations:** none from the surgical plan. No game binaries committed (owner law — large artifacts go to Releases, repo carries tools/docs only). Pushed via Git Database API (NO-SPARSE-COMMIT LAW — no commits from the sparse checkout).
+
 ---
 
 ## 2026-10-22 ~13:45 CDT — Worker 26: AUDIO — voice mapping + announcer + music system
@@ -2398,6 +2454,12 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Verification:** all 17 new moves resolve via the game's own `resolveMove('chordz', …)`; `node --test game/tests/fighter-completeness.test.mjs` green (4/4); new-move schema + source-id refs validated; jin bank clip files all parse with frames. Live-browser play verification (animations on Chordz in-game) is queued for a browser-capable lane — subagent has no live browser.
 
 **Anti-clobber:** branched from main tip; sibling lane's WIP stashed intact; JSON edits via round-trip-safe scripted merges (diffs are additions-only); no deletions. Branch pushed via Git Database API (no GitHub connector for git ops).
+
+## Cape Jones replaces Alisa — binding (owner t118u #4, t121u, 2026-10-23 14:20 CT)
+- Additive `game/data/cape-alisa-binding.json` (built by `tools/cape/build_cape_alisa_binding.py`) binds all 188 Alisa T8 frame-data moves to fighter `cyborgx` (CAPE JONES, secret identity CYBORG X). Alisa source files untouched.
+- Owner law t121u: no Tekken 3 source. Alisa motions must be decoded from T5/T6/T7/T8/TTT2 teardowns; current gunjack T3 fallback is logged as last resort in the binding file.
+- Canon: `game/js/roster-full.js:145`, `game/js/fighter.js:57`, `game/ui-wh/roster_canon.json` (CYBORG X bio), `CANON.md` 821-849 and 1129-1152, `docs/bios/BIOS-HARVEST-2026-10-19.md` s3.
+- Gaps (not invented): Cape-only extra moves; Alisa animation bank.
 ## 2026-10-23 — Claude session: T3 banks ogre/kuma/gon/law decoded; SmutBase rigs wired; loader race
 
 - SmutBase: Chatur, Pond, Megami (crew rigs, facing +Z), Menajerii (crew rig minus a skinned 4.23 m floor plane),
@@ -2425,3 +2487,44 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 - CI: `test/anim-gate.test.mjs` (picked up by rig-guard game-unit-tests) simulates 600-frame fights for every roster fighter with show clips injected, asserts 0 show clips played, and checks allowlist-only crossover. Mutation check: removing the gate line makes it fail (104 fails).
 
 - 2026-10-23 14:25 CT Grok Bot (Repo Co Dev): recorded owner laws (relayed via MoneyManBusch). (1) 2:19 PM CT — data from T5/T6/T7/T8/TTT2; T3 last-resort fallback, every use logged with reason. (2) 2:21 PM CT — NO hand-made menus; all menus/char select/customization incl. packages/creation-suite built from teardowns, every UI change cites its teardown source; CI gate owned by MoneyManBusch; existing creation suite UI marked NON-COMPLIANT pending rebuild (not deleted). Updated RULES_NO_GUESSING, HOW-TO-CONTINUE, AGENTS.md, IMPORTERS.md, creation-suite README. Source: owner via MoneyManBusch.
+
+
+---
+
+## 2026-10-23 — Lars pull follow-up: SHOW-ANIMATION LOCK tagging
+
+**Owner instruction (verbatim, new standing law 2026-10-23):** "Show animations and fight moves are SEPARATE LOCKED SETS. Tag everything you pull as FIGHT (moveset moves, stances used in combat → movesets and combat animation bank) or SHOW (win poses, intro poses, taunts, cutscene animations → intros/cutscenes ONLY, NEVER enter Chordz's moveset without the user's explicit approval). Keep the two sets separated in output files so the game-code lock can enforce the separation. Win poses and intro poses are SHOW — wire them to intro/win slots, not the moveset."
+
+**Changes (follow-up PR to #797, which is merged):**
+- `docs/anim/LARS-ANIM-GAP-20261023.md`: the missing-bank file list is now split into **FIGHT clips** (combat bank + moveset: neutral/stance idles, strikes, block/hit/ko, locomotion, rows.pack.json, skeleton.json) and **SHOW clips** (intro/win slots + cutscenes only: `t3_stance.json` → intro slot, `t3_win_rp.json` → win slot; taunts/cutscenes future). Unblock sequence now requires FIGHT/SHOW tagging at intake before anything lands.
+- `game/assets/movesets/chordz.json`: file-level `anim_set_lock` metadata (law, FIGHT/SHOW definitions, approval requirement) + `"set": "FIGHT"` stamped on all 17 moves pulled this lane. The file itself is the FIGHT set.
+- `game/assets/movesets/index.json`: bytes updated.
+
+**Source priority redirect (owner 2026-10-23):** TTT2/T6 FIRST, T3 LAST (T3 has no Lars). Gap doc now states the priority and names the T5/T6/TTT2/T7 extraction coordinator lane as the manifest consumer; re-checked — no fresh Lars extractions on disk yet.
+
+**Verification:** semantic diff audit — 0 field losses, 0 removals, additions only; all 17 new moves tagged; `node --test game/tests/fighter-completeness.test.mjs` green.
+
+**Deviations:** none — the 17 pulled moves are all combat moves (FIGHT); no SHOW content entered the moveset.
+
+## 2026-10-23 — Priority-5 moveset pull: burger/purplerain/pantera/torch/michiko (T8+T7 diff, SHOW-ANIMATION LOCK, anim-bank gaps)
+
+**Owner instruction (verbatim):** "Now we need to get that done for every other character" (2026-10-23) — the Law/Lars full pulls (PR #806 / PR #823 pattern).
+
+**Method:** For each of the 5 priority fighters, read `game/assets/movesets/<fighter>.json` and diffed `game/data/t8_frame_tables.json` → `chars.<source>` (exact key match against the builder's parent-chain join) plus the full wavu rows in `docs/t7t8-reference/frame-data-t8-full/<source>.json` against every reachable notation in the file (key/input/input_slots/t7_command canonicalized + slots + t8_id identity). T7 rows in `docs/t7t8-reference/frame-data-t7/<source>.json` diffed by move id. Genuinely-missing = input not reachable by any existing move.
+
+**Result — 0 genuinely-missing moves on all 5 (nothing re-added):**
+- `game/assets/movesets/burger.json`: 552 → 552 (T8 bob 161/161 inputs reachable; T7 bob 281/281 rows by id)
+- `game/assets/movesets/purplerain.json`: 569 → 569 (T8 lee 156/156; T7 lee 265/265)
+- `game/assets/movesets/pantera.json`: 873 → 873 (T8 king 215/215; T7 king 297/297)
+- `game/assets/movesets/torch.json`: 892 → 892 (T8 anna 165/165; T7 anna 354/354)
+- `game/assets/movesets/michiko.json`: 344 → 344 (T7 katarina 189/189 by id; T8 has no Katarina — verified, `chars` has no `katarina` key)
+
+**Changes:**
+- All 5 files: file-level `anim_set_lock` metadata (SHOW-ANIMATION LOCK, owner 2026-10-23; chordz.json pattern) + `merge_sources.added.<fighter>_pull_20261023` provenance with per-source coverage counts.
+- `docs/anim/BOB-ANIM-GAP-20261023.md`, `docs/anim/LEE-ANIM-GAP-20261023.md`, `docs/anim/KATARINA-ANIM-GAP-20261023.md`: FIGHT vs SHOW intake manifests for the extraction coordinator (no T3 bank exists for Bob/Lee/Katarina — Bob debuted T6, Lee skipped T3, Katarina debuted T7; current bryan/jin/jin proxies flagged, not blessed).
+- `game/assets/movesets/index.json`: bytes updated for all 5.
+- Pantera (king bank `game/assets/anim/t3/king_on_pantera_leoman/`) and Torch (`anim_bank: "anna"` → `game/assets/anim/t3/anna/`) already wired — no gap docs, no t3anims.js changes.
+
+**Verification:** exact-match diff audit (every T8 compact key joined to its source row); semantic check — 0 field losses, 0 removals, additions only (lock + provenance); all 10 JSON files parse; `node --test game/tests/fighter-completeness.test.mjs` green.
+
+**Deviations:** none — no SHOW content entered any moveset; no wrong-bank substitution (proxies left untouched, flagged in gap docs).

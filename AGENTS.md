@@ -90,3 +90,29 @@ On 2026-10-23, cape-jones PR #219 wiped main: the merge was built from a sparse/
 3. Default recovery path for a bad merge: revert the merge commit (`-m 1`) and re-add the branch's real payload. Never "fix forward" on top of a wiped tree.
 4. When in doubt, build the commit via the Git Data API from verified tree SHAs — never from a working tree you haven't verified.
 5. GOTCHA: `gh`'s `-f content=@file` does NOT expand `@file` for the blobs API — base64 the content explicitly.
+
+## OWNER LAW: ui_sources gate (t123u, Oct 23 2026)
+> **Every menu screen must list the exact Tekken/teardown file it came from. Any menu change without that source is blocked from merging, whichever agent made it.**
+- The manifest is `game/ui_sources.json`. Each `<section id="screen-*">` gets `{status, sources[], files[]}`. A source is a `teardown/...` path in this repo or `gre:<path>` in game-reverse-engineering.
+- The gate is `.github/workflows/ui-sources.yml`, which runs `tools/ui-sources/check.py BASE HEAD`. It FAILS when a new screen, changed `<section>` markup, or a changed UI file (index.html, game/*.css, *menu*/*-screen*/*-ui*/ui-* js, game/ui/**, creation-suite UI) has no existing teardown source. It also fails when a changed UI file isn't listed under some screen's `files`.
+- `legacy-unsourced` marks the pre-law hand-made screens. They are grandfathered only while untouched. To change one, first rebuild it from a teardown source and cite that source.
+- Make this check **required** in branch protection (owner setting).
+
+## Never strand work locally — push early, push often (owner rule, 2026-10-23)
+Applies to Muse, Claude, Grok and every agent. Usage limits and crashes have left finished work
+(e.g. a 16-rig batch) stuck on one agent's disk. So: commit + push every finished piece immediately;
+commit any script/tool used to generate assets under `tools/`; open the PR right after the first
+commit; follow the merge rules (clean merge, every check green via the Actions runs API, no
+deletions, nothing frozen, no batch merges). On resume, first push anything left over, then
+reconcile with other agents' branches via agent-ops `CLAIMS.md`. Claude Code also has an automatic
+safety net: `.claude/settings.json` hooks → `tools/agent/autosave.sh` (see `CLAUDE.md`). Other agents
+may run it by hand: `bash tools/agent/autosave.sh manual`. `wip(autosave)` commits are allowed.
+
+## Owner rules — 2026-10-23 (disk offload + merge rule) — Repo Co Dev
+
+**(a) Disk offload.** Once local work is verified 100% pushed (0 dirty, 0 untracked, 0 stash, every local branch on the remote at the same or a later SHA, submodules included) or stored in box-storage, clear it off the box disk as you go, and log each removal (path, repo, HEAD SHA, date) in agent-ops `BOX-OFFLOAD-LOG.md`. If any check fails or ownership is unclear, keep it on disk and list it.
+
+**(b) Merge rule.** Merge only when GitHub shows the PR as MERGEABLE/CLEAN, every check is verified green through the Actions runs API (a timeout, 403 or unreadable result counts as a FAIL), `git diff --diff-filter=D --name-only origin/main...HEAD` is empty, and the PR is not freeze-marked. No batch merges: one PR at a time. Claim the work in agent-ops `CLAIMS.md` first. Never force-push or rebase pushed work. If any check is unverifiable, leave the PR open.
+
+## Team workflow — Tekken data sources
+Where the Tekken 7/8 data comes from and how any agent pulls it (T8 movesets, T7 frame data, owner's Steam T7 files, HUD/announcer): `docs/team/TEKKEN-DATA-SOURCES.md`.

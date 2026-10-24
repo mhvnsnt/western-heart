@@ -28,3 +28,9 @@ Applies to every agent (Grok Bot, Muse/Ashes, Producerbot, Repo Co Dev, Jigglebo
 
 - The CI gate for this law is owned by MoneyManBusch; do not add a duplicate gate.
 - The existing hand-built creation suite UI (`packages/creation-suite` suiteMenu, `docs/CREATION-SUITE-UI-*.md`) is **NON-COMPLIANT, pending a teardown-sourced rebuild**. Do not delete it; keep it until the rebuild replaces it in a reviewed PR.
+
+## Owner rules — 2026-10-23 (disk offload + merge rule) — Repo Co Dev
+
+**(a) Disk offload.** Once local work is verified 100% pushed (0 dirty, 0 untracked, 0 stash, every local branch on the remote at the same or a later SHA, submodules included) or stored in box-storage, clear it off the box disk as you go, and log each removal (path, repo, HEAD SHA, date) in agent-ops `BOX-OFFLOAD-LOG.md`. If any check fails or ownership is unclear, keep it on disk and list it.
+
+**(b) Merge rule.** Merge only when GitHub shows the PR as MERGEABLE/CLEAN, every check is verified green through the Actions runs API (a timeout, 403 or unreadable result counts as a FAIL), `git diff --diff-filter=D --name-only origin/main...HEAD` is empty, and the PR is not freeze-marked. No batch merges: one PR at a time. Claim the work in agent-ops `CLAIMS.md` first. Never force-push or rebase pushed work. If any check is unverifiable, leave the PR open.
