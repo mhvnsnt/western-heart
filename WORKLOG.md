@@ -2680,3 +2680,16 @@ Owner lane: Cape Jones (secret identity Cyborg X, fighter id `cyborgx`) replaces
 **Tests (real data, all pass):** Paul→Paul identity (22/22, E=0); Paul punch→Gon creature rig (18/18 functional maps, exact rotation transfer, leg-ratio 0.205); synonym-rename name-invariance (18/18 identical — semantic, not name-based); 4-arm+tail rig (16 extra arms inherit motion, tail holds rest); reduced rig (17/17). `python3 tools/anim-retarget/tests/test_semantic_retarget.py` → ALL PASSED.
 
 **Deviations from paper (documented):** training-free analysis mode — no torch/checkpoints; explicit correspondence replaces learned FiLM; direct rotation transfer replaces learned decoder. Upgrade path (SATA checkpoint `--backend sata`) flagged in the research doc, not faked.
+
+## 2026-10-24 — Claude session: combat ship (#996), touch joystick fix (#1003), T3 hit reactions + throws data
+Owner: "random stuff is happening", "left punch does a grab", "any touch to the joystick makes it go down".
+- #996: chord window 140 -> 50 ms with event timestamps; direction history weighted by time (120 Hz feed vs 60 fps
+  windows); every move plays its own decoded row, strike/throw types enforced (585/546 -> 0/0), generic fallback
+  7,237 -> 0; 521 rows added to 19 banks.
+- #1003: nipplejs stored the stick centre at (0,0) (created while the HUD was hidden), so every touch read as DOWN;
+  dynamicPage: true. Proof: tools/proof-harness/stick_probe.mjs on the live site vs the fix.
+- This PR: lane E's decoded T3 hit reactions, throw-victim and thrower clips for all 22 banks (7,368 clips, 0
+  missing; decode verified against the remake port and an independent extractor), contract
+  docs/anim/T3-REACTIONS.md, test/t3-reactions.test.mjs. Not wired yet (lane C wires it after contact).
+- docs/handoffs/COMBAT-RIGHT-WAY-2026-10-24.md: the method every agent follows (touch testing, real causes, data
+  source order, one pipeline for all characters, same-hour deploy).
