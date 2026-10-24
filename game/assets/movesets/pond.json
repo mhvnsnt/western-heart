@@ -38731,31 +38731,36 @@
       "name": "TONGUE LASH",
       "input": "f+1+2",
       "damage": 18,
-      "note": "Canon: the frog tongue — a strike with far more range than her arms. Snaps back fast."
+      "note": "Canon: the frog tongue — a strike with far more range than her arms. Snaps back fast.",
+      "anim_ref": "wh:pond:tongue-lash"
     },
     {
       "name": "STILL WATER",
       "input": "d+1+2",
       "damage": 0,
-      "note": "Canon: she goes perfectly still — a counter stance. The pond does not chase; it waits, then answers."
+      "note": "Canon: she goes perfectly still — a counter stance. The pond does not chase; it waits, then answers.",
+      "anim_ref": "wh:pond:still-water"
     },
     {
       "name": "EGG GUARD",
       "input": "b+1+4",
       "damage": 12,
-      "note": "Canon: the spin she used to guard Dorowani's egg. A protective whirl — hits all around, then settles."
+      "note": "Canon: the spin she used to guard Dorowani's egg. A protective whirl — hits all around, then settles.",
+      "anim_ref": "wh:pond:egg-guard"
     },
     {
       "name": "MIST VEIL",
       "input": "qcb+3+4",
       "damage": 10,
-      "note": "Canon: from MIST, a burst of swamp mist — blinds, then the strike lands from inside it."
+      "note": "Canon: from MIST, a burst of swamp mist — blinds, then the strike lands from inside it.",
+      "anim_ref": "wh:pond:mist-veil"
     },
     {
       "name": "BOUNDARY CROSSING",
       "input": "f,f+3+4",
       "damage": 20,
-      "note": "Canon: the boundary watcher crosses her own boundary — a rushing shoulder through the mist. Armored."
+      "note": "Canon: the boundary watcher crosses her own boundary — a rushing shoulder through the mist. Armored.",
+      "anim_ref": "wh:pond:boundary-crossing"
     },
     {
       "input": "b,B+2",
@@ -39844,5 +39849,118 @@
     "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
     "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; tracked in docs/anim/RAVEN-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
     "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
+  },
+  "canon_moves": [
+    {
+      "name": "BOUNDARY CROSSING",
+      "input": "f,f+3+4",
+      "display_input": "f,f+LK3+RK4",
+      "input_original": "`f,f+3+4`",
+      "anim_ref": "wh:pond:boundary-crossing",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "special",
+      "damage": 20,
+      "canon": true,
+      "canon_owner": "POND",
+      "properties": {
+        "stance": "standing",
+        "direction": "f",
+        "type": "strike",
+        "limb": null,
+        "source": "canon"
+      },
+      "wiring": "existing entry (anim_ref backfilled)"
+    },
+    {
+      "name": "EGG GUARD",
+      "input": "b+1+4",
+      "display_input": "b+LP1+RK4",
+      "input_original": "`b+1+4`",
+      "anim_ref": "wh:pond:egg-guard",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "special",
+      "damage": 12,
+      "canon": true,
+      "canon_owner": "POND",
+      "properties": {
+        "stance": "standing",
+        "direction": "b",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry (anim_ref backfilled)"
+    },
+    {
+      "name": "MIST VEIL",
+      "input": "qcb+3+4",
+      "display_input": "qcb+LK3+RK4",
+      "input_original": "`qcb+3+4`",
+      "anim_ref": "wh:pond:mist-veil",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "special",
+      "damage": 10,
+      "canon": true,
+      "canon_owner": "POND",
+      "properties": {
+        "stance": "standing",
+        "direction": "qcb",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry (anim_ref backfilled)"
+    },
+    {
+      "name": "STILL WATER",
+      "input": "d+1+2",
+      "display_input": "d+LP1+RP2",
+      "input_original": "`d+1+2`",
+      "anim_ref": "wh:pond:still-water",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "special",
+      "damage": 0,
+      "canon": true,
+      "canon_owner": "POND",
+      "properties": {
+        "stance": "crouching",
+        "direction": "d",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry (anim_ref backfilled)"
+    },
+    {
+      "name": "TONGUE LASH",
+      "input": "f+1+2",
+      "display_input": "f+LP1+RP2",
+      "input_original": "`f+1+2`",
+      "anim_ref": "wh:pond:tongue-lash",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "special",
+      "damage": 18,
+      "canon": true,
+      "canon_owner": "POND",
+      "properties": {
+        "stance": "standing",
+        "direction": "f",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry (anim_ref backfilled)"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
   }
 }

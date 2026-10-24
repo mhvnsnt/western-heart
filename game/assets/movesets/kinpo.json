@@ -20923,5 +20923,59 @@
     "t7.asuka_223": 2048,
     "CHARGE.d/f+3+4,3+4,1+2": 2048
   },
-  "stance_after": {}
+  "stance_after": {},
+  "canon_moves": [
+    {
+      "name": "Buttercup Finishes",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:kinpo:sig:buttercup-finishes",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 18,
+      "startup_frames": 16,
+      "canon": true,
+      "canon_owner": "KINPO",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Plus-One Pressure",
+      "input": "f+1",
+      "display_input": "f+LP1",
+      "input_original": "`f+1`",
+      "anim_ref": "wh:kinpo:sig:plus-one-pressure",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armL",
+      "damage": 14,
+      "startup_frames": 12,
+      "canon": true,
+      "canon_owner": "KINPO",
+      "properties": {
+        "stance": "standing",
+        "direction": "f",
+        "type": "strike",
+        "limb": "armL",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  }
 }

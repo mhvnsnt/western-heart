@@ -30650,5 +30650,83 @@
     "animations": "No string step maps to T3 row 35 (LP1+RP2 chord) or any chord row in this file (checked: t3_row is None for all T7-wired steps; animation comes from fighter.js match/donor fallback and is UNVERIFIED per move — see research doc).",
     "runtime_notation": "Runtime keys stay 1/2/3/4 (fighter.js + movesets.js resolve on exact 1/2/3/4 strings; renaming keys to LP1/RP2 would break every lookup). input_lp is display only.",
     "first_hit_fix_note": "First-hit singles fixed in a second pass (audit caught them): df+1, df+2, d+1, b+1, d+3+4. d+3+4 MOD variance: standalone row 18 (used), wired king_88 record 14, extended ALI row first hit 21."
+  },
+  "canon_moves": [
+    {
+      "name": "Battle Itself",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:pantera:sig:battle-itself",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armL",
+      "damage": 19,
+      "startup_frames": 21,
+      "canon": true,
+      "canon_owner": "PANTERA",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Honest Hold",
+      "input": "1+4",
+      "display_input": "LP1+RK4",
+      "input_original": "`1+4`",
+      "anim_ref": "wh:pantera:sig:honest-hold",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 22,
+      "startup_frames": 19,
+      "canon": true,
+      "canon_owner": "PANTERA",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "system_note": "System note: LP1+RK4 is also Reihou, but ONLY while the foe is in RAGE (otherwise the moveset LP1+RK4 plays). No in-game conflict outside foe-RAGE.",
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Tail-Tip Lunge",
+      "input": "f+1",
+      "display_input": "f+LP1",
+      "input_original": "`f+1`",
+      "anim_ref": "wh:pantera:sig:tail-tip-lunge",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 16,
+      "startup_frames": 13,
+      "canon": true,
+      "canon_owner": "PANTERA",
+      "properties": {
+        "stance": "standing",
+        "direction": "f",
+        "type": "strike",
+        "limb": "armL",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
   }
 }

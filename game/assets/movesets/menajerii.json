@@ -1577,7 +1577,8 @@
       "note": "Menajerii canon: the heron's consultation \u2014 a parry stance. Beats highs/mids, feeds the boar.",
       "canon_layer": true,
       "parry": true,
-      "enter_stance": "HRN"
+      "enter_stance": "HRN",
+      "anim_ref": "wh:menajerii:heron-s-patience"
     },
     "HRN 1": {
       "name": "Heron Strike",
@@ -1596,7 +1597,8 @@
       "tekken_base": "Roger Jr. (TTT2)",
       "note": "Menajerii canon: from Heron's Patience \u2014 a single precise beak-strike.",
       "canon_layer": true,
-      "stance": "HRN"
+      "stance": "HRN",
+      "anim_ref": "wh:menajerii:heron-strike"
     },
     "f+2+3": {
       "name": "Boar's Commit",
@@ -1615,7 +1617,8 @@
       "tekken_base": "Roger Jr. (TTT2)",
       "note": "Menajerii canon: the boar's consultation \u2014 armored shoulder charge, power crush.",
       "canon_layer": true,
-      "powercrush": true
+      "powercrush": true,
+      "anim_ref": "wh:menajerii:boar-s-commit"
     },
     "d/b+2+3": {
       "name": "Serpent's Economy",
@@ -1635,7 +1638,8 @@
       "note": "Menajerii canon: the snake's consultation \u2014 low crush counter, minimal motion.",
       "canon_layer": true,
       "counter": true,
-      "lowcrush": true
+      "lowcrush": true,
+      "anim_ref": "wh:menajerii:serpent-s-economy"
     },
     "1+2": {
       "name": "Double Paw Slam",
@@ -3340,5 +3344,105 @@
       "merge_source": "ttt2:roger",
       "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
     }
+  },
+  "canon_moves": [
+    {
+      "name": "Boar's Commit",
+      "input": "f+2+3",
+      "display_input": "f+RP2+LK3",
+      "input_original": "`f+2+3`",
+      "anim_ref": "wh:menajerii:boar-s-commit",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "strike",
+      "limb": "armR",
+      "damage": 34,
+      "startup_frames": 24,
+      "canon": true,
+      "canon_owner": "MENAJERII",
+      "properties": {
+        "stance": "standing",
+        "direction": "f",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry (anim_ref backfilled)"
+    },
+    {
+      "name": "Heron Strike",
+      "input": "HRN 1",
+      "display_input": "HRN LP1",
+      "input_original": "`HRN 1`",
+      "anim_ref": "wh:menajerii:heron-strike",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "strike",
+      "limb": "armR",
+      "damage": 26,
+      "startup_frames": 16,
+      "canon": true,
+      "canon_owner": "MENAJERII",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": null,
+        "source": "canon"
+      },
+      "wiring": "existing entry (anim_ref backfilled)"
+    },
+    {
+      "name": "Heron's Patience",
+      "input": "b+1+3",
+      "display_input": "b+LP1+LK3",
+      "input_original": "`b+1+3`",
+      "anim_ref": "wh:menajerii:heron-s-patience",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "stance",
+      "limb": "armR",
+      "damage": 0,
+      "startup_frames": 14,
+      "canon": true,
+      "canon_owner": "MENAJERII",
+      "properties": {
+        "stance": "standing",
+        "direction": "b",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry (anim_ref backfilled)"
+    },
+    {
+      "name": "Serpent's Economy",
+      "input": "d/b+2+3",
+      "display_input": "d/b+RP2+LK3",
+      "input_original": "`d/b+2+3`",
+      "anim_ref": "wh:menajerii:serpent-s-economy",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "strike",
+      "limb": "legL",
+      "damage": 22,
+      "startup_frames": 16,
+      "canon": true,
+      "canon_owner": "MENAJERII",
+      "properties": {
+        "stance": "crouching",
+        "direction": "d/b",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry (anim_ref backfilled)"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
   }
 }

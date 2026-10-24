@@ -20789,5 +20789,67 @@
   },
   "stance_after": {
     "ws2": "SBT"
+  },
+  "canon_moves": [
+    {
+      "name": "Lullaby Hum",
+      "input": "d+1+2",
+      "display_input": "d+LP1+RP2",
+      "input_original": "`d+1+2`",
+      "anim_ref": "wh:cyborgx:sig:lullaby-hum",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armL",
+      "damage": 16,
+      "startup_frames": 15,
+      "canon": true,
+      "canon_owner": "CYBORGX",
+      "properties": {
+        "stance": "crouching",
+        "direction": "d",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "collisions": [
+        {
+          "kind": "specials-input",
+          "key": "d+1+2",
+          "entry_name": null,
+          "entry_anim_ref": null
+        }
+      ],
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Motion Mandatory",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:cyborgx:sig:motion-mandatory",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 19,
+      "startup_frames": 18,
+      "canon": true,
+      "canon_owner": "CYBORGX",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
   }
 }

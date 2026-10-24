@@ -1231,5 +1231,128 @@
   "d/f+4,2": 271,
   "d/f+4,4": 271
  },
- "stance_after": {}
+ "stance_after": {},
+ "canon_moves": [
+  {
+   "name": "Chokeslam",
+   "input": "b+1+2",
+   "display_input": "b+LP1+RP2",
+   "input_original": "`b+1+2`",
+   "anim_ref": "wh:cainelias:sig:chokeslam",
+   "method": "ADAPT",
+   "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+   "move_class": "signature",
+   "limb": "armR",
+   "damage": 26,
+   "startup_frames": 24,
+   "canon": true,
+   "canon_owner": "CAINELIAS",
+   "properties": {
+    "stance": "standing",
+    "direction": "b",
+    "type": "strike",
+    "limb": "both",
+    "source": "canon"
+   },
+   "wiring": "existing entry"
+  },
+  {
+   "name": "Hell's Gate",
+   "input": "d+1+2",
+   "display_input": "d+LP1+RP2",
+   "input_original": "`d+1+2`",
+   "anim_ref": "wh:cainelias:sig:hells-gate",
+   "method": "ADAPT",
+   "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+   "move_class": "signature",
+   "limb": "armR",
+   "damage": 22,
+   "startup_frames": 21,
+   "canon": true,
+   "canon_owner": "CAINELIAS",
+   "properties": {
+    "stance": "crouching",
+    "direction": "d",
+    "type": "strike",
+    "limb": "both",
+    "source": "canon"
+   },
+   "wiring": "existing entry"
+  },
+  {
+   "name": "Last Ride",
+   "input": "f,f+1+2",
+   "display_input": "f,f+LP1+RP2",
+   "input_original": "`f,f+1+2`",
+   "anim_ref": "wh:cainelias:sig:last-ride",
+   "method": "ADAPT",
+   "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+   "move_class": "signature",
+   "limb": "armR",
+   "damage": 30,
+   "startup_frames": 30,
+   "canon": true,
+   "canon_owner": "CAINELIAS",
+   "properties": {
+    "stance": "standing",
+    "direction": "f",
+    "type": "strike",
+    "limb": null,
+    "source": "canon"
+   },
+   "wiring": "existing entry"
+  },
+  {
+   "name": "Old School",
+   "input": "u+1+2",
+   "display_input": "u+LP1+RP2",
+   "input_original": "`u+1+2`",
+   "anim_ref": "wh:cainelias:sig:old-school",
+   "method": "ADAPT",
+   "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+   "move_class": "signature",
+   "limb": "armR",
+   "damage": 20,
+   "startup_frames": 23,
+   "canon": true,
+   "canon_owner": "CAINELIAS",
+   "properties": {
+    "stance": "jumping",
+    "direction": "u",
+    "type": "strike",
+    "limb": "both",
+    "source": "canon"
+   },
+   "wiring": "existing entry"
+  },
+  {
+   "name": "Tombstone Piledriver",
+   "input": "d/b+1+2",
+   "display_input": "d/b+LP1+RP2",
+   "input_original": "`d/b+1+2`",
+   "anim_ref": "wh:cainelias:sig:tombstone-piledriver",
+   "method": "ADAPT",
+   "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+   "move_class": "signature",
+   "limb": "armR",
+   "damage": 32,
+   "startup_frames": 27,
+   "canon": true,
+   "canon_owner": "CAINELIAS",
+   "properties": {
+    "stance": "crouching",
+    "direction": "d/b",
+    "type": "strike",
+    "limb": "both",
+    "source": "canon"
+   },
+   "wiring": "existing entry"
+  }
+ ],
+ "canon_wiring": {
+  "wired": "2026-10-24",
+  "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+  "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+  "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+ }
 }

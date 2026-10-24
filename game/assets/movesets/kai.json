@@ -31230,5 +31230,59 @@
     "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
     "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; tracked in docs/anim/EDDY-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
     "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
+  },
+  "canon_moves": [
+    {
+      "name": "Doesn't Stop",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:kai:sig:doesnt-stop",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "legR",
+      "damage": 18,
+      "startup_frames": 18,
+      "canon": true,
+      "canon_owner": "KAI",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Lowest Point",
+      "input": "d/f+4",
+      "display_input": "d/f+RK4",
+      "input_original": "`d/f+4`",
+      "anim_ref": "wh:kai:sig:lowest-point",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "legL",
+      "damage": 16,
+      "startup_frames": 16,
+      "canon": true,
+      "canon_owner": "KAI",
+      "properties": {
+        "stance": "crouching",
+        "direction": "d/f",
+        "type": "strike",
+        "limb": "legR",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
   }
 }

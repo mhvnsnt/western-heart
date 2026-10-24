@@ -12925,5 +12925,60 @@
   "stance_after": {},
   "t7_base": "josie",
   "t7_dataset": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-  "t7_import_note": "T7 Josie Rizal movelist (195 rows, t7chicken) imported by prior lane; batch7 (2026-10-23) verified 0 missing ids and appended 25 genuinely-missing rows from rbnorway T7 frame data (verified absent from t7chicken: CD (f,n,d) moves, SS/BT basics, jump moves). No T8 data used."
+  "t7_import_note": "T7 Josie Rizal movelist (195 rows, t7chicken) imported by prior lane; batch7 (2026-10-23) verified 0 missing ids and appended 25 genuinely-missing rows from rbnorway T7 frame data (verified absent from t7chicken: CD (f,n,d) moves, SS/BT basics, jump moves). No T8 data used.",
+  "canon_moves": [
+    {
+      "name": "I'm Sorry",
+      "input": "1+4",
+      "display_input": "LP1+RK4",
+      "input_original": "`1+4`",
+      "anim_ref": "wh:waterfall:sig:im-sorry",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "legR",
+      "damage": 21,
+      "startup_frames": 17,
+      "canon": true,
+      "canon_owner": "WATERFALL",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "system_note": "System note: LP1+RK4 is also Reihou, but ONLY while the foe is in RAGE (otherwise the moveset LP1+RK4 plays). No in-game conflict outside foe-RAGE.",
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Nine Souls' Grief",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:waterfall:sig:nine-souls-grief",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "legL",
+      "damage": 19,
+      "startup_frames": 20,
+      "canon": true,
+      "canon_owner": "WATERFALL",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  }
 }

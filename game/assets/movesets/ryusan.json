@@ -23084,5 +23084,151 @@
    "damage": "25 + 45",
    "note": "'Don't Tell Me To Calm Down' armors through, Meltdown ends it. Full meter required."
   }
- ]
+ ],
+ "canon_moves": [
+  {
+   "name": "Acid Rain Dance",
+   "input": "SCT,b+3+4",
+   "display_input": "SCT,b+LK3+RK4",
+   "input_original": "`SCT,b+3+4`",
+   "anim_ref": "wh:ryusan:acid-rain-dance",
+   "method": "BUILD",
+   "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+   "move_class": "string",
+   "limb": "legR",
+   "damage": 28,
+   "startup_frames": 18,
+   "canon": true,
+   "canon_owner": "RYUSAN",
+   "properties": {
+    "stance": "standing",
+    "direction": "none",
+    "type": "strike",
+    "limb": null,
+    "source": "canon"
+   },
+   "wiring": "existing entry"
+  },
+  {
+   "name": "Corrosion Claw",
+   "input": "d/b+3+4",
+   "display_input": "d/b+LK3+RK4",
+   "input_original": "`d/b+3+4`",
+   "anim_ref": "wh:ryusan:corrosion-claw",
+   "method": "BUILD",
+   "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+   "move_class": "strike",
+   "limb": "armL",
+   "damage": 22,
+   "startup_frames": 17,
+   "canon": true,
+   "canon_owner": "RYUSAN",
+   "properties": {
+    "stance": "crouching",
+    "direction": "d/b",
+    "type": "strike",
+    "limb": "both",
+    "source": "canon"
+   },
+   "wiring": "existing entry"
+  },
+  {
+   "name": "Don't Tell Me To Calm Down",
+   "input": "b+2+3",
+   "display_input": "b+RP2+LK3",
+   "input_original": "`b+2+3`",
+   "anim_ref": "wh:ryusan:calm-down",
+   "method": "BUILD",
+   "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+   "move_class": "special",
+   "limb": "both",
+   "damage": 25,
+   "startup_frames": 25,
+   "canon": true,
+   "canon_owner": "RYUSAN",
+   "properties": {
+    "stance": "standing",
+    "direction": "b",
+    "type": "strike",
+    "limb": "both",
+    "source": "canon"
+   },
+   "wiring": "existing entry"
+  },
+  {
+   "name": "Jotei's Receipt",
+   "input": "hcb+1",
+   "display_input": "hcb+LP1",
+   "input_original": "`hcb+1`",
+   "anim_ref": "wh:ryusan:joteis-receipt",
+   "method": "ADAPT",
+   "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+   "move_class": "throw",
+   "limb": "both",
+   "damage": 40,
+   "startup_frames": 12,
+   "canon": true,
+   "canon_owner": "RYUSAN",
+   "properties": {
+    "stance": "standing",
+    "direction": "hcb",
+    "type": "grapple",
+    "limb": "armL",
+    "source": "canon"
+   },
+   "wiring": "existing entry"
+  },
+  {
+   "name": "Meltdown",
+   "input": "d+1+2",
+   "display_input": "d+LP1+RP2",
+   "input_original": "`d+1+2`",
+   "anim_ref": "wh:ryusan:meltdown",
+   "method": "BUILD",
+   "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+   "move_class": "special",
+   "limb": "both",
+   "damage": 45,
+   "startup_frames": 33,
+   "canon": true,
+   "canon_owner": "RYUSAN",
+   "properties": {
+    "stance": "crouching",
+    "direction": "d",
+    "type": "strike",
+    "limb": "both",
+    "source": "canon"
+   },
+   "wiring": "existing entry"
+  },
+  {
+   "name": "Vitriol Spit",
+   "input": "qcf+1",
+   "display_input": "qcf+LP1",
+   "input_original": "`qcf+1`",
+   "anim_ref": "wh:ryusan:vitriol-spit",
+   "method": "BUILD",
+   "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+   "move_class": "special",
+   "limb": "armR",
+   "damage": 18,
+   "startup_frames": 20,
+   "canon": true,
+   "canon_owner": "RYUSAN",
+   "properties": {
+    "stance": "standing",
+    "direction": "qcf",
+    "type": "strike",
+    "limb": "armL",
+    "source": "canon"
+   },
+   "wiring": "existing entry"
+  }
+ ],
+ "canon_wiring": {
+  "wired": "2026-10-24",
+  "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+  "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+  "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+ }
 }
