@@ -1,8 +1,9 @@
 [http 404] http://127.0.0.1:8977/game/assets/ui/title-bg.png
-nov page.click: Timeout 30000ms exceeded.
+v locator.click: Timeout 5000ms exceeded.
 Call log:
-  - waiting for locator('[data-action="mode-versus"]')
+  - waiting for getByText('VERSUS', { exact: true }).first()
 
+url http://127.0.0.1:8977/game/index.html
 negativo selected attire model=negativo-attire1
 dio selected attire model=dio-attire1
 bruno selected attire model=bruno-attire2
