@@ -139,7 +139,7 @@ decoded `root_t`, not authored distances.
 | LP1 jab (`1`) | `row:44` (own) | 0.00 m forward, 0.00 m lateral | stays in place, as a jab should |
 | RP2 (`2`) | `row:203` (notation) | +0.85 m forward, -0.40 m lateral | travels; mirrored when facing -1 |
 | f,F+2 Beast Elbow (RP2 dash elbow) | `row:111` (donor: King's own f+2) | +0.15 m net, +0.30 m peak, -0.14 m lateral | travels forward; the donor is a standing f+2, so its travel is modest — the T7 dash-elbow's full lunge is a moveset-lane question, not a number to invent here |
-| f,F+4 Konvict Kick (RK4) | `row:114` (donor: King's own f+4) | +0.48 m forward, -0.225 m lateral | travels far |
+| f,F+4 Konvict Kick (RK4) | `row:283` (match: throw-attempt row, btn 8) | +0.19 m net, +0.38 m peak, +0.056 m lateral | travels forward; see classification note below |
 | generic fallback (`heavy`) | — | 0.00 m | excluded by the row-only guard |
 | block / sidestep / idle / jump with a stale attack plan | — | 0.00 m, cursor reset | never runs outside attacks |
 | RP2 at x = 8.3 through `_physics` | `row:203` | clamped to ≤ 8.4 (`ARENA_LIMIT`) | wall-safe |
@@ -152,6 +152,21 @@ verified here: Pantera (plus the bosconovitch flip check) is the
 simulated proof; every other bound bank flows through the same
 bank-agnostic code path, and a per-roster sweep is follow-up work.
 
+## Classification note: Konvict Kick plays a throw row in production
+
+King's T8 frame table (`game/data/t8_frame_tables.json`) marks
+`f,F+4` tgt `(t)` — a throw transition on counter-hit
+(Konvict Kick to DDT). `Fighter.attackLevel` strips that to `t`,
+so the plan is grab-class and the match pool picks the decoded
+throw-attempt row `row:283`, not the strike donor `row:114`
+(King's own f+4, 0.48 m). Whether the *base* kick should be
+mid-class (donor 114) with only its counter-hit followup as a
+throw is a combat/moveset-lane question: this PR changes no
+classification and invents no distance to force the 0.48 m number.
+The test awaits `frameTablesReady` so it asserts production
+behaviour deterministically (without the table, the plan races
+between strike and throw-class mid-file).
+
 ## UNMAPPED / follow-up (not guessed, not in this PR)
 
 - Moves that fall back to generic light/medium/heavy/grab clips:
@@ -163,7 +178,9 @@ bank-agnostic code path, and a per-roster sweep is follow-up work.
 - Per-roster travel audit: simulate every bound fighter's
   slot moves and tabulate clip travel vs. the T7/T8 move's
   expected travel; flag mismatches (e.g. a lunging move playing
-  a retreating row) for the moveset lane.
+  a retreating row) for the moveset lane. First known case:
+  Konvict Kick's throw-row travel (0.19 m net) vs. its donor
+  kick-row travel (0.48 m) — see classification note above.
 - Grab lunge interaction (above): playtest whether clip travel +
   legacy lunge overshoots throw range; if so, zero the lunge for
   row-clip grabs in the throw lane.
