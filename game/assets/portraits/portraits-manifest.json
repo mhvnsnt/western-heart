@@ -5,97 +5,45 @@
    "model": "demonio-a1",
    "bones": 73,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "jin/stance",
+   "stanceSource": "tekken-aim:jin/stance",
    "framed": true,
    "bank": "jin",
    "armDeg": {
-    "L": 23,
-    "R": 12
+    "L": 42,
+    "R": 40
    }
   },
   "rin": {
    "id": "rin",
-   "model": "steve-fox",
-   "bones": 49,
-   "stance": true,
-   "stanceSource": "tekken-bank",
-   "framed": true,
-   "bank": "jin",
-   "armDeg": {
-    "L": 39,
-    "R": 42
-   }
+   "error": "page.evaluate: TypeError: Cannot read properties of undefined (reading 'model')\n    at window.capture (http://127.0.0.1:8851/game/js/portrait-capture.js:30:33)\n    at eval (eval at evaluate (:370:30),"
   },
   "byou": {
    "id": "byou",
-   "model": "steve-fox",
-   "bones": 49,
-   "stance": true,
-   "stanceSource": "tekken-bank",
-   "framed": true,
-   "bank": "jin",
-   "armDeg": {
-    "L": 39,
-    "R": 42
-   }
+   "error": "page.evaluate: TypeError: Cannot read properties of undefined (reading 'model')\n    at window.capture (http://127.0.0.1:8851/game/js/portrait-capture.js:30:33)\n    at eval (eval at evaluate (:370:30),"
   },
   "tou": {
    "id": "tou",
-   "model": "pantera",
-   "bones": 49,
-   "stance": true,
-   "stanceSource": "cmu-14_01",
-   "framed": true,
-   "bank": "paul",
-   "armDeg": {
-    "L": 23,
-    "R": 12
-   }
+   "error": "page.evaluate: TypeError: Cannot read properties of undefined (reading 'model')\n    at window.capture (http://127.0.0.1:8851/game/js/portrait-capture.js:30:33)\n    at eval (eval at evaluate (:370:30),"
   },
   "sha": {
    "id": "sha",
-   "model": "steve-fox",
-   "bones": 49,
-   "stance": true,
-   "stanceSource": "cmu-14_01",
-   "framed": true,
-   "bank": "xiaoyu",
-   "armDeg": {
-    "L": 23,
-    "R": 12
-   }
+   "error": "page.evaluate: TypeError: Cannot read properties of undefined (reading 'model')\n    at window.capture (http://127.0.0.1:8851/game/js/portrait-capture.js:30:33)\n    at eval (eval at evaluate (:370:30),"
   },
   "kai": {
    "id": "kai",
-   "model": "pantera",
-   "bones": 49,
-   "stance": true,
-   "stanceSource": "cmu-14_01",
-   "framed": true,
-   "bank": "eddy",
-   "armDeg": {
-    "L": 23,
-    "R": 12
-   }
+   "error": "page.evaluate: TypeError: Cannot read properties of undefined (reading 'model')\n    at window.capture (http://127.0.0.1:8851/game/js/portrait-capture.js:30:33)\n    at eval (eval at evaluate (:370:30),"
   },
   "retsu": {
    "id": "retsu",
-   "model": "pantera",
-   "bones": 49,
-   "stance": true,
-   "stanceSource": "tekken-bank",
-   "framed": true,
-   "bank": "bryan",
-   "armDeg": {
-    "L": 43,
-    "R": 35
-   }
+   "error": "page.evaluate: TypeError: Cannot read properties of undefined (reading 'model')\n    at window.capture (http://127.0.0.1:8851/game/js/portrait-capture.js:30:33)\n    at eval (eval at evaluate (:370:30),"
   },
   "zen": {
    "id": "zen",
    "model": "zen-attire1",
    "bones": 73,
    "stance": true,
+   "poseKey": "cmu#0",
    "stanceSource": "cmu-14_01",
    "framed": true,
    "bank": "julia",
@@ -106,41 +54,48 @@
   },
   "gyou": {
    "id": "gyou",
-   "model": "pantera",
-   "bones": 49,
-   "stance": true,
-   "stanceSource": "cmu-14_01",
-   "framed": true,
-   "bank": "hwoarang",
-   "armDeg": {
-    "L": 23,
-    "R": 12
-   }
+   "error": "page.evaluate: TypeError: Cannot read properties of undefined (reading 'model')\n    at window.capture (http://127.0.0.1:8851/game/js/portrait-capture.js:30:33)\n    at eval (eval at evaluate (:370:30),"
   },
   "pantera": {
    "id": "pantera",
    "model": "pantera-leoman",
    "bones": 22,
    "stance": true,
+   "poseKey": "king/stance",
    "stanceSource": "tekken-bank",
    "framed": true,
    "bank": "king",
    "armDeg": {
     "L": 47,
     "R": 44
-   }
+   },
+   "metrics": {
+    "coverage": 0.466318359375,
+    "cx": 0.5189669457184143,
+    "top": 0.184375,
+    "left": 0.121875,
+    "right": 0.996875,
+    "upperRow": 0.571875,
+    "lumStd": 0.12727095502294972,
+    "lumMean": 0.3083535053777746
+   },
+   "framingIssues": [],
+   "tries": [
+    "king/stance: PASS"
+   ]
   },
   "phantom": {
    "id": "phantom",
    "model": "phantom",
    "bones": 73,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "yoshimitsu/stance",
+   "stanceSource": "tekken-aim:yoshimitsu/stance",
    "framed": true,
    "bank": "yoshimitsu",
    "armDeg": {
-    "L": 23,
-    "R": 12
+    "L": 36,
+    "R": 34
    }
   },
   "diablo": {
@@ -148,6 +103,7 @@
    "model": "diablo",
    "bones": 53,
    "stance": true,
+   "poseKey": "heihachi/stance",
    "stanceSource": "tekken-bank",
    "framed": true,
    "bank": "heihachi",
@@ -161,6 +117,7 @@
    "model": "skull",
    "bones": 73,
    "stance": true,
+   "poseKey": "bryan/stance",
    "stanceSource": "tekken-bank",
    "framed": true,
    "bank": "bryan",
@@ -174,25 +131,50 @@
    "model": "sam-ur-a1",
    "bones": 49,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "cmu#1",
+   "stanceSource": "cmu-14_01:cmu#1",
    "framed": true,
    "bank": "gunjack",
    "armDeg": {
-    "L": 23,
-    "R": 12
-   }
+    "L": 12,
+    "R": 23
+   },
+   "metrics": {
+    "coverage": 0.590361328125,
+    "cx": 0.5702800109175723,
+    "top": 0.146875,
+    "left": 0.05,
+    "right": 0.996875,
+    "upperRow": 0.946875,
+    "lumStd": 0.12861549940451275,
+    "lumMean": 0.2663867322412864
+   },
+   "framingIssues": [],
+   "tries": [
+    "gunjack/stance: coverage 0.90, top 0.00, wide silhouette (T-pose/clipped)",
+    "gunjack/intro: top 0.00, wide silhouette (T-pose/clipped)",
+    "gunjack/win_rp: coverage 1.00, top 0.00, wide silhouette (T-pose/clipped)",
+    "gunjack/win_lp: coverage 1.00, top 0.00, wide silhouette (T-pose/clipped)",
+    "gunjack/win_lk: coverage 1.00, top 0.00, wide silhouette (T-pose/clipped)",
+    "gunjack/win_rk: coverage 0.88, top 0.00, wide silhouette (T-pose/clipped)",
+    "gunjack/stance_b: coverage 0.89, top 0.00, wide silhouette (T-pose/clipped)",
+    "gunjack/stance_c: coverage 0.94, top 0.00, wide silhouette (T-pose/clipped)",
+    "gunjack/block: coverage 0.92, top 0.00, wide silhouette (T-pose/clipped)",
+    "cmu#1: PASS"
+   ]
   },
   "sakura": {
    "id": "sakura",
    "model": "saku-ra",
    "bones": 73,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "xiaoyu/stance",
+   "stanceSource": "tekken-aim:xiaoyu/stance",
    "framed": true,
    "bank": "xiaoyu",
    "armDeg": {
-    "L": 23,
-    "R": 12
+    "L": 38,
+    "R": 84
    }
   },
   "zui": {
@@ -200,12 +182,13 @@
    "model": "zui-attire1",
    "bones": 73,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "jin/intro",
+   "stanceSource": "tekken-aim:jin/intro",
    "framed": true,
    "bank": "jin",
    "armDeg": {
-    "L": 23,
-    "R": 12
+    "L": 64,
+    "R": 52
    }
   },
   "kinpo": {
@@ -213,12 +196,13 @@
    "model": "kinpo",
    "bones": 73,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "jin/win_rp",
+   "stanceSource": "tekken-aim:jin/win_rp",
    "framed": true,
    "bank": "jin",
    "armDeg": {
-    "L": 23,
-    "R": 12
+    "L": 64,
+    "R": 76
    }
   },
   "waterfall": {
@@ -226,12 +210,13 @@
    "model": "waterfall",
    "bones": 49,
    "stance": true,
-   "stanceSource": "tekken-bank",
+   "poseKey": "jin/win_lp",
+   "stanceSource": "tekken-aim:jin/win_lp",
    "framed": true,
    "bank": "jin",
    "armDeg": {
-    "L": 42,
-    "R": 39
+    "L": 43,
+    "R": 35
    }
   },
   "kingtyrant": {
@@ -239,6 +224,7 @@
    "model": "king-tyrant-attire1",
    "bones": 0,
    "stance": false,
+   "poseKey": null,
    "stanceSource": null,
    "framed": false,
    "bank": "eddy",
@@ -252,12 +238,13 @@
    "model": "burger",
    "bones": 49,
    "stance": true,
-   "stanceSource": "tekken-bank",
+   "poseKey": "bryan/intro",
+   "stanceSource": "tekken-aim:bryan/intro",
    "framed": true,
    "bank": "bryan",
    "armDeg": {
-    "L": 35,
-    "R": 43
+    "L": 55,
+    "R": 60
    }
   },
   "awapop": {
@@ -265,25 +252,50 @@
    "model": "awa-pop",
    "bones": 49,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "cmu#2",
+   "stanceSource": "cmu-14_01:cmu#2",
    "framed": true,
    "bank": "nina",
    "armDeg": {
     "L": 23,
     "R": 12
-   }
+   },
+   "metrics": {
+    "coverage": 0.3058203125,
+    "cx": 0.4829235654298122,
+    "top": 0.234375,
+    "left": 0.178125,
+    "right": 0.7625,
+    "upperRow": 0.446875,
+    "lumStd": 0.14076957374259955,
+    "lumMean": 0.2238299952330554
+   },
+   "framingIssues": [],
+   "tries": [
+    "nina/stance: top 0.00",
+    "nina/intro: top 0.00",
+    "nina/win_rp: top 0.00",
+    "nina/win_lp: top 0.00",
+    "nina/win_lk: top 0.00",
+    "nina/win_rk: top 0.00",
+    "nina/stance_b: top 0.00",
+    "nina/stance_c: top 0.00",
+    "nina/block: top 0.00",
+    "cmu#2: PASS"
+   ]
   },
   "scimitar": {
    "id": "scimitar",
    "model": "scimitar",
    "bones": 49,
    "stance": true,
-   "stanceSource": "tekken-bank",
+   "poseKey": "jin/win_lk",
+   "stanceSource": "tekken-aim:jin/win_lk",
    "framed": true,
    "bank": "jin",
    "armDeg": {
-    "L": 39,
-    "R": 42
+    "L": 92,
+    "R": 61
    }
   },
   "purplerain": {
@@ -291,12 +303,13 @@
    "model": "purple-rain",
    "bones": 73,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "jin/win_rk",
+   "stanceSource": "tekken-aim:jin/win_rk",
    "framed": true,
    "bank": "jin",
    "armDeg": {
-    "L": 23,
-    "R": 12
+    "L": 10,
+    "R": 111
    }
   },
   "nightwolf": {
@@ -304,6 +317,7 @@
    "model": "nightwolf-attire1",
    "bones": 0,
    "stance": false,
+   "poseKey": null,
    "stanceSource": null,
    "framed": false,
    "bank": "julia",
@@ -317,7 +331,8 @@
    "model": "dio",
    "bones": 174,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "heihachi/intro",
+   "stanceSource": "tekken-aim:heihachi/intro",
    "framed": false,
    "bank": "heihachi",
    "armDeg": {
@@ -330,12 +345,13 @@
    "model": "cape-jones",
    "bones": 49,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "gunjack/intro",
+   "stanceSource": "tekken-aim:gunjack/intro",
    "framed": true,
    "bank": "gunjack",
    "armDeg": {
-    "L": 23,
-    "R": 12
+    "L": 8,
+    "R": 15
    }
   },
   "michiko": {
@@ -343,12 +359,13 @@
    "model": "michiko-attire1",
    "bones": 73,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "jin/stance_b",
+   "stanceSource": "tekken-aim:jin/stance_b",
    "framed": true,
    "bank": "jin",
    "armDeg": {
-    "L": 23,
-    "R": 12
+    "L": 42,
+    "R": 40
    }
   },
   "star": {
@@ -356,6 +373,7 @@
    "model": "star-attire1",
    "bones": 0,
    "stance": false,
+   "poseKey": null,
    "stanceSource": null,
    "framed": false,
    "bank": "xiaoyu",
@@ -369,12 +387,13 @@
    "model": "torch-tripo-a1",
    "bones": 73,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "anna/stance",
+   "stanceSource": "tekken-aim:anna/stance",
    "framed": true,
    "bank": "anna",
    "armDeg": {
-    "L": 23,
-    "R": 12
+    "L": 60,
+    "R": 32
    }
   },
   "bruno": {
@@ -382,12 +401,13 @@
    "model": "bruno",
    "bones": 142,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "bryan/win_rp",
+   "stanceSource": "tekken-aim:bryan/win_rp",
    "framed": false,
    "bank": "bryan",
    "armDeg": {
-    "L": 23,
-    "R": 12
+    "L": 53,
+    "R": 53
    }
   },
   "negativo": {
@@ -395,12 +415,13 @@
    "model": "n3g4tiv0",
    "bones": 50,
    "stance": true,
-   "stanceSource": "tekken-bank",
+   "poseKey": "bryan/win_lp",
+   "stanceSource": "tekken-aim:bryan/win_lp",
    "framed": true,
    "bank": "bryan",
    "armDeg": {
-    "L": 43,
-    "R": 35
+    "L": 60,
+    "R": 58
    }
   },
   "thor": {
@@ -408,12 +429,13 @@
    "model": "thor",
    "bones": 73,
    "stance": true,
-   "stanceSource": "tekken-bank",
+   "poseKey": "bryan/win_lk",
+   "stanceSource": "tekken-aim:bryan/win_lk",
    "framed": true,
    "bank": "bryan",
    "armDeg": {
-    "L": 35,
-    "R": 43
+    "L": 57,
+    "R": 64
    }
   },
   "yukihyo": {
@@ -421,6 +443,7 @@
    "model": "yukihyo",
    "bones": 328,
    "stance": true,
+   "poseKey": "armorking/stance",
    "stanceSource": "tekken-bank",
    "framed": true,
    "bank": "armorking",
@@ -434,12 +457,13 @@
    "model": "slice-attire1",
    "bones": 73,
    "stance": true,
-   "stanceSource": "tekken-bank",
+   "poseKey": "bryan/win_rk",
+   "stanceSource": "tekken-aim:bryan/win_rk",
    "framed": true,
    "bank": "bryan",
    "armDeg": {
-    "L": 35,
-    "R": 43
+    "L": 75,
+    "R": 51
    }
   },
   "docfrank": {
@@ -447,25 +471,50 @@
    "model": "doc-frank-big",
    "bones": 178,
    "stance": true,
-   "stanceSource": "tekken-bank",
+   "poseKey": "cmu#3",
+   "stanceSource": "cmu-14_01:cmu#3",
    "framed": true,
    "bank": "gunjack",
    "armDeg": {
-    "L": 41,
-    "R": 41
-   }
+    "L": 13,
+    "R": 27
+   },
+   "metrics": {
+    "coverage": 0.455615234375,
+    "cx": 0.3540225458150252,
+    "top": 0.165625,
+    "left": 0,
+    "right": 0.996875,
+    "upperRow": 0.44375,
+    "lumStd": 0.18919204594020234,
+    "lumMean": 0.4650036178512376
+   },
+   "framingIssues": [],
+   "tries": [
+    "gunjack/win_rp: coverage 0.99, top 0.00, wide silhouette (T-pose/clipped)",
+    "gunjack/stance: cx 0.34",
+    "gunjack/intro: coverage 0.80, top 0.00",
+    "gunjack/win_lp: coverage 0.97, top 0.00, wide silhouette (T-pose/clipped)",
+    "gunjack/win_lk: coverage 0.98, top 0.00, wide silhouette (T-pose/clipped)",
+    "gunjack/win_rk: coverage 0.96, top 0.00, wide silhouette (T-pose/clipped)",
+    "gunjack/stance_b: coverage 0.97, top 0.00, wide silhouette (T-pose/clipped)",
+    "gunjack/stance_c: coverage 0.85, top 0.00, wide silhouette (T-pose/clipped)",
+    "gunjack/block: coverage 0.97, top 0.00, wide silhouette (T-pose/clipped)",
+    "cmu#3: PASS"
+   ]
   },
   "baek-master-white": {
    "id": "baek-master-white",
    "model": "kevin-tripo",
    "bones": 73,
    "stance": true,
-   "stanceSource": "tekken-bank",
+   "poseKey": "bryan/stance_b",
+   "stanceSource": "tekken-aim:bryan/stance_b",
    "framed": true,
    "bank": "bryan",
    "armDeg": {
-    "L": 35,
-    "R": 43
+    "L": 49,
+    "R": 22
    }
   },
   "mariposa-monarch": {
@@ -473,7 +522,8 @@
    "model": "mariposa-butterfly-default",
    "bones": 246,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "xiaoyu/win_rp",
+   "stanceSource": "tekken-aim:xiaoyu/win_rp",
    "framed": false,
    "bank": "xiaoyu",
    "armDeg": {
@@ -486,12 +536,13 @@
    "model": "dxmmii-tripo",
    "bones": 73,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "jin/stance_c",
+   "stanceSource": "tekken-aim:jin/stance_c",
    "framed": true,
    "bank": "jin",
    "armDeg": {
-    "L": 23,
-    "R": 12
+    "L": 24,
+    "R": 41
    }
   },
   "charger": {
@@ -499,11 +550,12 @@
    "model": "charger",
    "bones": 49,
    "stance": true,
-   "stanceSource": "tekken-bank",
+   "poseKey": "bryan/stance_c",
+   "stanceSource": "tekken-aim:bryan/stance_c",
    "framed": true,
    "bank": "bryan",
    "armDeg": {
-    "L": 35,
+    "L": 46,
     "R": 43
    }
   },
@@ -512,123 +564,295 @@
    "model": "dorowani",
    "bones": 73,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "cmu#5",
+   "stanceSource": "cmu-14_01:cmu#5",
    "framed": true,
    "bank": "gon",
    "armDeg": {
-    "L": 23,
-    "R": 12
-   }
+    "L": 18,
+    "R": 30
+   },
+   "metrics": {
+    "coverage": 0.384921875,
+    "cx": 0.4769792089506799,
+    "top": 0.25,
+    "left": 0,
+    "right": 0.996875,
+    "upperRow": 0.5375,
+    "lumStd": 0.11762570928977456,
+    "lumMean": 0.38533918743062406
+   },
+   "framingIssues": [],
+   "tries": [
+    "gon/stance: top 0.00",
+    "gon/intro: top 0.00",
+    "gon/win_rp: top 0.00",
+    "gon/win_lp: top 0.00",
+    "gon/win_lk: top 0.00",
+    "gon/win_rk: top 0.00",
+    "gon/stance_b: top 0.00",
+    "gon/stance_c: top 0.00",
+    "gon/block: top 0.00",
+    "cmu#5: PASS"
+   ]
   },
   "chatur": {
    "id": "chatur",
    "model": "chatur",
    "bones": 52,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "cmu#6",
+   "stanceSource": "cmu-14_01:cmu#6",
    "framed": true,
    "bank": "ogre",
    "armDeg": {
     "L": 23,
     "R": 12
-   }
+   },
+   "metrics": {
+    "coverage": 0.4703515625,
+    "cx": 0.5200444704551117,
+    "top": 0.04375,
+    "left": 0,
+    "right": 0.996875,
+    "upperRow": 0.5,
+    "lumStd": 0.10463609459184094,
+    "lumMean": 0.7653471282486297
+   },
+   "framingIssues": [],
+   "tries": [
+    "ogre/stance: coverage 0.88, top 0.00, wide silhouette (T-pose/clipped)",
+    "ogre/intro: coverage 0.84, top 0.00, wide silhouette (T-pose/clipped)",
+    "ogre/win_rp: coverage 0.91, top 0.00, wide silhouette (T-pose/clipped)",
+    "ogre/win_lp: coverage 0.94, top 0.00, wide silhouette (T-pose/clipped)",
+    "ogre/win_lk: coverage 0.95, top 0.00, wide silhouette (T-pose/clipped)",
+    "ogre/win_rk: coverage 0.95, top 0.00, wide silhouette (T-pose/clipped)",
+    "ogre/stance_b: coverage 0.88, top 0.00, wide silhouette (T-pose/clipped)",
+    "ogre/stance_c: coverage 0.90, top 0.00, wide silhouette (T-pose/clipped)",
+    "ogre/block: coverage 0.86, top 0.00, wide silhouette (T-pose/clipped)",
+    "cmu#6: PASS"
+   ]
   },
   "pond": {
    "id": "pond",
    "model": "pond",
    "bones": 52,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "cmu#7",
+   "stanceSource": "cmu-14_01:cmu#7",
    "framed": true,
    "bank": null,
    "armDeg": {
-    "L": 23,
-    "R": 12
-   }
+    "L": 6,
+    "R": 23
+   },
+   "metrics": {
+    "coverage": 0.456748046875,
+    "cx": 0.48722585843792093,
+    "top": 0,
+    "left": 0.115625,
+    "right": 0.896875,
+    "upperRow": 0.61875,
+    "lumStd": 0.13448437126523916,
+    "lumMean": 0.7068044929801726
+   },
+   "framingIssues": [
+    "top 0.00"
+   ],
+   "tries": [
+    "cmu#7: top 0.00",
+    "cmu#8: top 0.01",
+    "cmu#9: top 0.00",
+    "cmu#10: top 0.01",
+    "cmu#11: top 0.00",
+    "cmu#12: top 0.01",
+    "cmu#13: top 0.00",
+    "cmu#14: top 0.01"
+   ]
   },
   "ryusan": {
    "id": "ryusan",
    "model": "ryusan",
    "bones": 73,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "cmu#8",
+   "stanceSource": "cmu-14_01:cmu#8",
    "framed": true,
    "bank": null,
    "armDeg": {
     "L": 23,
     "R": 12
-   }
+   },
+   "metrics": {
+    "coverage": 0.35208984375,
+    "cx": 0.5196509922616076,
+    "top": 0.2125,
+    "left": 0.078125,
+    "right": 0.91875,
+    "upperRow": 0.46875,
+    "lumStd": 0.09686533534287682,
+    "lumMean": 0.6774476266718443
+   },
+   "framingIssues": [],
+   "tries": [
+    "cmu#8: PASS"
+   ]
   },
   "tobi": {
    "id": "tobi",
    "model": "tobi",
    "bones": 73,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "hwoarang/stance",
+   "stanceSource": "tekken-aim:hwoarang/stance",
    "framed": true,
    "bank": null,
    "armDeg": {
-    "L": 23,
-    "R": 12
-   }
+    "L": 43,
+    "R": 35
+   },
+   "metrics": {
+    "coverage": 0.29517578125,
+    "cx": 0.5699809352875008,
+    "top": 0.234375,
+    "left": 0.178125,
+    "right": 0.996875,
+    "upperRow": 0.203125,
+    "lumStd": 0.09196049825263547,
+    "lumMean": 0.7809351253238846
+   },
+   "framingIssues": [],
+   "tries": [
+    "hwoarang/stance: PASS"
+   ]
   },
   "megami": {
    "id": "megami",
    "model": "megami",
    "bones": 52,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "cmu#9",
+   "stanceSource": "cmu-14_01:cmu#9",
    "framed": true,
    "bank": null,
    "armDeg": {
-    "L": 23,
-    "R": 12
-   }
+    "L": 9,
+    "R": 29
+   },
+   "metrics": {
+    "coverage": 0.3991796875,
+    "cx": 0.4916502042763479,
+    "top": 0.0625,
+    "left": 0.165625,
+    "right": 0.884375,
+    "upperRow": 0.703125,
+    "lumStd": 0.1681410249338009,
+    "lumMean": 0.38051249530703585
+   },
+   "framingIssues": [],
+   "tries": [
+    "cmu#9: PASS"
+   ]
   },
   "menajerii": {
    "id": "menajerii",
    "model": "menajerii",
    "bones": 52,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "cmu#10",
+   "stanceSource": "cmu-14_01:cmu#10",
    "framed": true,
    "bank": "kuma",
    "armDeg": {
     "L": 23,
     "R": 12
-   }
+   },
+   "metrics": {
+    "coverage": 0.431884765625,
+    "cx": 0.5130382278123233,
+    "top": 0.0375,
+    "left": 0.034375,
+    "right": 0.990625,
+    "upperRow": 0.46875,
+    "lumStd": 0.28175700595654324,
+    "lumMean": 0.6619458872299671
+   },
+   "framingIssues": [],
+   "tries": [
+    "kuma/stance: coverage 0.82, top 0.00",
+    "kuma/intro: top 0.00, wide silhouette (T-pose/clipped)",
+    "kuma/win_rp: coverage 0.94, top 0.00, wide silhouette (T-pose/clipped)",
+    "kuma/win_lp: coverage 0.90, top 0.00, wide silhouette (T-pose/clipped)",
+    "kuma/win_lk: top 0.00, wide silhouette (T-pose/clipped)",
+    "kuma/win_rk: coverage 0.90, top 0.00, wide silhouette (T-pose/clipped)",
+    "kuma/stance_b: coverage 0.82, top 0.00",
+    "kuma/stance_c: coverage 0.77, top 0.00",
+    "kuma/block: coverage 0.88, top 0.00, wide silhouette (T-pose/clipped)",
+    "cmu#10: PASS"
+   ]
   },
   "kronos": {
    "id": "kronos",
    "model": "kronos",
    "bones": 73,
    "stance": true,
-   "stanceSource": "tekken-bank",
+   "poseKey": "king/intro",
+   "stanceSource": "tekken-aim:king/intro",
    "framed": true,
    "bank": "king",
    "armDeg": {
-    "L": 47,
+    "L": 50,
     "R": 44
-   }
+   },
+   "metrics": {
+    "coverage": 0.48947265625,
+    "cx": 0.4817710411595707,
+    "top": 0.221875,
+    "left": 0.03125,
+    "right": 0.9875,
+    "upperRow": 0.678125,
+    "lumStd": 0.1764816632841676,
+    "lumMean": 0.43419408277788873
+   },
+   "framingIssues": [],
+   "tries": [
+    "king/intro: PASS"
+   ]
   },
   "deathfang": {
    "id": "deathfang",
    "model": "deathfang",
    "bones": 73,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "heihachi/win_rp",
+   "stanceSource": "tekken-aim:heihachi/win_rp",
    "framed": true,
    "bank": "heihachi",
    "armDeg": {
-    "L": 23,
-    "R": 12
-   }
+    "L": 62,
+    "R": 11
+   },
+   "metrics": {
+    "coverage": 0.3590625,
+    "cx": 0.5400643052382507,
+    "top": 0.21875,
+    "left": 0.1625,
+    "right": 0.996875,
+    "upperRow": 0.321875,
+    "lumStd": 0.16900536147697046,
+    "lumMean": 0.3458351820565802
+   },
+   "framingIssues": [],
+   "tries": [
+    "heihachi/win_rp: PASS"
+   ]
   },
   "ryuji": {
    "id": "ryuji",
    "model": "ryuji-rock",
    "bones": 73,
    "stance": true,
+   "poseKey": "cmu#0",
    "stanceSource": "cmu-14_01",
    "framed": true,
    "bank": null,
@@ -642,79 +866,192 @@
    "model": "koreshi",
    "bones": 49,
    "stance": true,
-   "stanceSource": "tekken-bank",
+   "poseKey": "heihachi/win_lp",
+   "stanceSource": "tekken-aim:heihachi/win_lp",
    "framed": true,
    "bank": "heihachi",
    "armDeg": {
-    "L": 12,
-    "R": 55
-   }
+    "L": 62,
+    "R": 75
+   },
+   "metrics": {
+    "coverage": 0.35619140625,
+    "cx": 0.46033501603882215,
+    "top": 0.221875,
+    "left": 0,
+    "right": 0.996875,
+    "upperRow": 0.51875,
+    "lumStd": 0.18180651549962287,
+    "lumMean": 0.3933865684966372
+   },
+   "framingIssues": [],
+   "tries": [
+    "heihachi/win_lp: PASS"
+   ]
   },
   "rave": {
    "id": "rave",
    "model": "kiko-tanaka",
    "bones": 49,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "lei/stance_c",
+   "stanceSource": "tekken-aim:lei/stance_c",
    "framed": true,
    "bank": "lei",
    "armDeg": {
-    "L": 23,
-    "R": 12
-   }
+    "L": 95,
+    "R": 104
+   },
+   "metrics": {
+    "coverage": 0.628330078125,
+    "cx": 0.4530604999145179,
+    "top": 0.20625,
+    "left": 0,
+    "right": 0.996875,
+    "upperRow": 0.709375,
+    "lumStd": 0.15598493417802745,
+    "lumMean": 0.5323739028153935
+   },
+   "framingIssues": [],
+   "tries": [
+    "lei/stance: coverage 0.85, top 0.00",
+    "lei/intro: top 0.00, wide silhouette (T-pose/clipped)",
+    "lei/win_rp: coverage 0.76, top 0.00, wide silhouette (T-pose/clipped)",
+    "lei/win_lp: coverage 0.89, top 0.00",
+    "lei/win_lk: coverage 0.74, wide silhouette (T-pose/clipped)",
+    "lei/win_rk: top 0.00",
+    "lei/stance_b: coverage 0.85, top 0.00",
+    "lei/stance_c: PASS"
+   ]
   },
   "buffalo-bill": {
    "id": "buffalo-bill",
    "model": "buffalo-bill",
    "bones": 73,
    "stance": true,
+   "poseKey": "cmu#0",
    "stanceSource": "cmu-14_01",
    "framed": true,
    "bank": null,
    "armDeg": {
     "L": 23,
     "R": 12
-   }
+   },
+   "metrics": {
+    "coverage": 0.414482421875,
+    "cx": 0.5304573192281412,
+    "top": 0.221875,
+    "left": 0.159375,
+    "right": 0.915625,
+    "upperRow": 0.425,
+    "lumStd": 0.13316499150310687,
+    "lumMean": 0.2388669833081786
+   },
+   "framingIssues": [],
+   "tries": [
+    "cmu#0: PASS"
+   ]
   },
   "vainabel": {
    "id": "vainabel",
    "model": "vainabel-attire1",
    "bones": 73,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "cmu#11",
+   "stanceSource": "cmu-14_01:cmu#11",
    "framed": true,
    "bank": null,
    "armDeg": {
-    "L": 23,
-    "R": 12
-   }
+    "L": 8,
+    "R": 25
+   },
+   "metrics": {
+    "coverage": 0.37921875,
+    "cx": 0.46193200839513804,
+    "top": 0.228125,
+    "left": 0.071875,
+    "right": 0.840625,
+    "upperRow": 0.471875,
+    "lumStd": 0.14054404813569998,
+    "lumMean": 0.20786656648649224
+   },
+   "framingIssues": [],
+   "tries": [
+    "cmu#11: PASS"
+   ]
   },
   "cainelias": {
    "id": "cainelias",
    "model": "cain-elias",
    "bones": 0,
    "stance": false,
+   "poseKey": "king/win_rp",
    "stanceSource": null,
    "framed": false,
    "bank": "king",
    "armDeg": {
     "L": null,
     "R": null
-   }
+   },
+   "metrics": {
+    "coverage": 0.254384765625,
+    "cx": 0.49640893124496144,
+    "top": 0.25,
+    "left": 0.278125,
+    "right": 0.721875,
+    "upperRow": 0.303125,
+    "lumStd": 0.22724309390176908,
+    "lumMean": 0.4000024589154148
+   },
+   "framingIssues": [
+    "no stance (bind pose)"
+   ],
+   "tries": [
+    "king/win_rp: no stance (bind pose)",
+    "king/win_lp: no stance (bind pose)",
+    "king/win_lk: no stance (bind pose)",
+    "king/win_rk: no stance (bind pose)",
+    "king/stance_b: no stance (bind pose)",
+    "king/stance_c: no stance (bind pose)",
+    "king/block: no stance (bind pose)",
+    "cmu#12: no stance (bind pose)",
+    "cmu#13: no stance (bind pose)",
+    "cmu#14: no stance (bind pose)",
+    "cmu#15: no stance (bind pose)",
+    "cmu#16: no stance (bind pose)",
+    "cmu#17: no stance (bind pose)",
+    "cmu#18: no stance (bind pose)",
+    "cmu#19: no stance (bind pose)"
+   ]
   },
   "chordz": {
    "id": "chordz",
    "model": "chordz",
    "bones": 73,
    "stance": true,
-   "stanceSource": "cmu-14_01",
+   "poseKey": "cmu#12",
+   "stanceSource": "cmu-14_01:cmu#12",
    "framed": true,
    "bank": null,
    "armDeg": {
     "L": 23,
     "R": 12
-   }
+   },
+   "metrics": {
+    "coverage": 0.294482421875,
+    "cx": 0.5074348159509203,
+    "top": 0.234375,
+    "left": 0.2,
+    "right": 0.81875,
+    "upperRow": 0.390625,
+    "lumStd": 0.12059104793496683,
+    "lumMean": 0.18626170017002733
+   },
+   "framingIssues": [],
+   "tries": [
+    "cmu#12: PASS"
+   ]
   }
  },
- "_doc": "Generated by tools/portraits/capture.mjs (attire-1 model via attires.js, posed by its moveset bank stance through select-screen PreviewPane). Checked by test/portraits.test.mjs."
+ "_doc": "Generated by tools/portraits/capture_poses.mjs (attire-1 model, unique own-bank select pose, framed and checked against the Pantera card). Checked by test/portraits.test.mjs + test/select-poses.test.mjs."
 }

@@ -35,6 +35,31 @@ import { attiresFor, selectedAttireModel, setAttire, attireLabel } from './attir
 import { loadT3Clips, createT3Actions, retargetT3Clips } from './t3anims.js';
 import { bankIdFor } from './fighter.js';
 import { getMovesetInfo } from './movesets.js';
+import { assignSelectPoses, poseBankFor, bankAimData, cmuVariant } from './select-poses.js';
+
+/* Select pose map (select-poses.js): id -> unique pose. Built over the
+   visible roster by the controller / portrait capture. LOCKED poses are
+   the owner's references (t199u steering): Pantera's bank stance and
+   Buffalo Bill's plain CMU guard stay exactly as approved. */
+export const LOCKED_POSES = { pantera: 'tekken-bank:stance', 'buffalo-bill': 'cmu#0' };
+let _poseMap = new Map();
+export function setSelectRoster(fighters) {
+  const locked = fighters.filter(c => c.id === 'buffalo-bill');
+  const rest = fighters.filter(c => c.id !== 'buffalo-bill');
+  _poseMap = assignSelectPoses([...locked, ...rest], (c) => (c.id === 'buffalo-bill' ? null : poseBankFor(c, bankIdFor, getMovesetInfo)));
+  for (const [id, p] of Object.entries(_overrides)) _poseMap.set(id, p);
+  return _poseMap;
+}
+export function selectPoseMap() { return _poseMap; }
+/* Per-fighter pose picks validated against the Pantera card framing by
+   tools/portraits/capture_poses.mjs (data/select-poses.json). Applied over
+   the deterministic assignment so select, hero render and card portrait
+   always show the same pose. */
+let _overrides = {};
+export function setPoseOverrides(o) { _overrides = o || {}; for (const [id, p] of Object.entries(_overrides)) _poseMap.set(id, p); }
+export function setPose(id, p) { _poseMap.set(id, p); }
+export const poseOverridesReady = fetch('data/select-poses.json').then(r => (r.ok ? r.json() : null))
+  .then(j => { if (j && j.poses) setPoseOverrides(j.poses); }).catch(() => {});
 
 const DEFAULT_STATS = { speed: 2.8, jump: 7.2, power: 1.1, defense: 1.05 };
 const clamp01 = (v) => Math.max(0, Math.min(1, v));
@@ -161,6 +186,9 @@ export class PreviewPane {
       this.scene.add(this.model);
       this.mixer = inst.mixer;
       this.hasStance = false;
+      // QA/CI hooks: which model, bank and pose clip this pane shows.
+      this.modelId = modelId; this.fighterId = c.id; this.inst = inst;
+      this.bank = null; this.poseKey = null;
       // REAL TEKKEN IDLE (owner: use the teardown files; NO-T-POSE
       // law): where this fighter's moveset source has a decoded T3
       // bank, play the bank's looping stance clip on the preview
@@ -180,9 +208,12 @@ export class PreviewPane {
           RightShoulder: inst.bones.RightShoulder.getWorldQuaternion(new THREE.Quaternion()),
         };
       }
-      try {
+      const pose = _poseMap.get(c.id) || null;
+      this.pose = pose;
+      if (!pose || pose.clip === 'stance') try {
         // The fighter's OWN moveset file decides its bank (its base's motion), same as in the fight.
         const bank = bankIdFor(c.id, getMovesetInfo(c.id) ? c.id : (c.moveset || c.id));
+        this.bank = bank || null;
         const clips = bank ? await loadT3Clips(THREE, bank) : null;
         if (token !== this._token) return true; // superseded while loading
         if (clips && clips.stance && inst.bones && inst.bones.Hips && inst.bones.RightArm && inst.bones.Head) {
@@ -244,20 +275,31 @@ export class PreviewPane {
       } catch (e) {
         console.warn('[WH] select preview: T3 stance unavailable for', c.id, e.message || e);
       }
-      // NO-T-POSE backup (Tekken bank first, CMU mocap backup): when the
-      // bank stance is missing or failed the fit gates, drive the rig with
-      // the bind-independent CMU 14_01 guard (stance-aim.js).
+      // UNIQUE SELECT POSE (select-poses.js): the fighter's assigned clip
+      // from its own source bank, aim-retargeted (bind-independent), or —
+      // with no decoded source bank — its own CMU window. Also the NO-T-POSE
+      // backup when the bank stance failed the fit gates above.
       if (!this.hasStance && inst.bones) {
         try {
-          const g = await loadGuardStance();
+          let data = null, src = null;
+          if (pose && pose.bank) {
+            data = await bankAimData(THREE, pose.bank, pose.file || 't3_neutral.json');
+            src = data ? `tekken-aim:${pose.bank}/${pose.clip}` : null;
+          }
+          if (!data) {
+            const g = await loadGuardStance();
+            const cm = (pose && pose.cmu) || { mirror: false, phase: 0 };
+            data = g && cmuVariant(g, cm); src = `cmu-14_01${pose && pose.clip !== 'cmu#0' ? ':' + (pose.clip || '') : ''}`;
+          }
           if (token !== this._token) return true;
-          const aim = createAimStance(THREE, this.model, inst.bones, g);
+          const aim = data && createAimStance(THREE, this.model, inst.bones, data);
           if (aim) {
             if (inst.actions && inst.actions.Idle) inst.actions.Idle.setEffectiveWeight(0);
-            this.aim = aim; this._aimT = 0; this.hasStance = true; this.stanceSource = 'cmu-14_01';
+            this.aim = aim; this._aimT = (data.phase || 0); this.hasStance = true; this.stanceSource = src;
+            this.poseKey = pose ? (pose.bank ? `${pose.bank}/${pose.clip}` : pose.clip) : 'cmu#0';
           }
-        } catch (e) { console.warn('[WH] select preview: CMU guard unavailable for', c.id, e.message || e); }
-      } else if (this.hasStance) this.stanceSource = 'tekken-bank';
+        } catch (e) { console.warn('[WH] select preview: pose unavailable for', c.id, e.message || e); }
+      } else if (this.hasStance) { this.stanceSource = 'tekken-bank'; this.poseKey = `${this.bank}/stance`; }
       return true;
     } catch (e) {
       if (token === this._token) {
@@ -317,6 +359,11 @@ export class PreviewPane {
    that have tripo 3D models ... first at the top ... not people ... that don't have models in the
    top rows"). The list is generated from the registry + the GLB files themselves by
    tools/roster/tripo_fighters.py -> data/tripo-fighters.json (no hand-picked order). */
+export const SELECT_HIDDEN = new Set([
+    'rin', 'byou', 'tou', 'sha', 'kai', 'jin_soul', 'retsu', 'zen', 'gyou',
+    'ryuji', 'doc-frank-machine-shop',
+  ]);
+
 let TRIPO_IDS = null;
 const _tripoReady = fetch('data/tripo-fighters.json')
   .then(r => (r.ok ? r.json() : null))
@@ -376,11 +423,11 @@ export function createSelectScreen(deps) {
      models — they stay in the roster data for story/other modes, but never
      as separate select cards. Attire variants live in the attire ladder
      (renderAttires), not as duplicate cards. */
-  const SELECT_HIDDEN = new Set([
-    'rin', 'byou', 'tou', 'sha', 'kai', 'jin_soul', 'retsu', 'zen', 'gyou',
-    'ryuji', 'doc-frank-machine-shop',
-  ]);
-  const selectRoster = () => deps.roster().filter(c => !SELECT_HIDDEN.has(c.id));
+  const selectRoster = () => {
+    const r = deps.roster().filter(c => !SELECT_HIDDEN.has(c.id));
+    setSelectRoster(r);
+    return r;
+  };
 
   function build() {
     if (!strip) return;

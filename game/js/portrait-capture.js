@@ -5,7 +5,7 @@
    (t3anims retarget + fit gates). Driven by tools/portraits/capture.mjs,
    which writes game/assets/portraits/<id>.png + portraits-manifest.json. */
 import * as THREE from 'three';
-import { PreviewPane } from './select-screen.js';
+import { PreviewPane, setSelectRoster, SELECT_HIDDEN, setPose, selectPoseMap } from './select-screen.js';
 import { ROSTER } from './characters.js';
 import { attiresFor } from './attires.js';
 import { bankIdFor } from './fighter.js';
@@ -13,6 +13,7 @@ import { getMovesetInfo } from './movesets.js';
 
 const pane = new PreviewPane(document.getElementById('c'), 'p1');
 pane.baseRotY = 0.25;
+setSelectRoster(ROSTER.filter(c => !SELECT_HIDDEN.has(c.id)));
 
 function armDropDeg(inst, side) {
   const b = inst.bones || {};
@@ -27,10 +28,11 @@ window.capture = async (id, opts = {}) => {
   const c = ROSTER.find(r => r.id === id);
   if (!c) return { id, error: 'not in roster' };
   const model = attiresFor(c)[0].model;
+  if (opts.pose) setPose(id, opts.pose);
   const ok = await pane.show(c, model);
   if (!ok) return { id, model, error: 'model failed to load' };
   if (pane.mixer) for (let i = 0; i < 12; i++) pane.mixer.update(1 / 30);
-  if (pane.aim) pane.aim.apply(0.4);
+  if (pane.aim) pane.aim.apply((pane._aimT || 0) + 0.4);
   pane.model.updateWorldMatrix(true, true);
   let bones = 0; pane.model.traverse(o => { if (o.isBone) bones++; });
   const inst = { bones: {} };
@@ -67,10 +69,31 @@ window.capture = async (id, opts = {}) => {
   pane.renderer.render(pane.scene, pane.camera);
   const png = pane.canvas.toDataURL('image/png');
   return {
-    id, model, bones, stance: pane.hasStance, stanceSource: pane.stanceSource || null, framed,
+    id, model, bones, stance: pane.hasStance, poseKey: pane.poseKey || null, stanceSource: pane.stanceSource || null, framed,
     bank: bankIdFor(c.id, getMovesetInfo(c.id) ? c.id : (c.moveset || c.id)) || null,
     armDeg: { L: armDropDeg(inst, 'Left'), R: armDropDeg(inst, 'Right') }, png,
   };
 };
 window.rosterIds = () => ROSTER.map(r => r.id);
+window.visibleIds = () => ROSTER.filter(c => !SELECT_HIDDEN.has(c.id)).map(c => c.id);
+window.assigned = () => Object.fromEntries(selectPoseMap());
+/* Card framing metrics (alpha mask of the 320x320 render), compared by
+   capture_poses.mjs against Pantera's card (the owner's quality bar). */
+window.score = async (png) => {
+  const img = new Image(); img.src = png; await img.decode();
+  const cv = document.createElement('canvas'); cv.width = img.width; cv.height = img.height;
+  const g = cv.getContext('2d'); g.drawImage(img, 0, 0);
+  const { data, width: W, height: H } = g.getImageData(0, 0, cv.width, cv.height);
+  let n = 0, sx = 0, minX = W, maxX = 0, minY = H, maxY = 0, lum = 0, lum2 = 0;
+  const rowW = new Array(H).fill(0);
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    const o = (y * W + x) * 4; if (data[o + 3] < 40) continue;
+    n++; sx += x; rowW[y]++; if (x < minX) minX = x; if (x > maxX) maxX = x; if (y < minY) minY = y; if (y > maxY) maxY = y;
+    const l = (data[o] + data[o + 1] + data[o + 2]) / 765; lum += l; lum2 += l * l;
+  }
+  const m = n ? lum / n : 0;
+  return { coverage: n / (W * H), cx: n ? sx / n / W : 0, top: minY / H, left: minX / W, right: maxX / W,
+    upperRow: Math.max(...rowW.slice(Math.round(H * 0.25), Math.round(H * 0.45))) / W,
+    lumStd: n ? Math.sqrt(Math.max(0, lum2 / n - m * m)) : 0, lumMean: m };
+};
 window.ready = true;

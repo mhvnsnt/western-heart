@@ -1,0 +1,291 @@
+{
+ "_doc": "Unique select pose per visible fighter (owner t199u). Written by tools/portraits/capture_poses.mjs; validated by test/select-poses.test.mjs. Keys: bank/clip from the fighter's own source T3 bank, or cmu#N windows where no source bank is decoded yet. pantera and buffalo-bill are owner-locked references.",
+ "reference": {
+  "pantera": {
+   "coverage": 0.466318359375,
+   "cx": 0.5189669457184143,
+   "top": 0.184375,
+   "left": 0.121875,
+   "right": 0.996875,
+   "upperRow": 0.571875,
+   "lumStd": 0.12727095502294972,
+   "lumMean": 0.3083535053777746
+  }
+ },
+ "poses": {
+  "buffalo-bill": {
+   "bank": null,
+   "clip": "cmu#0",
+   "cmu": {
+    "mirror": false,
+    "phase": 0
+   }
+  },
+  "pantera": {
+   "bank": "king",
+   "clip": "stance",
+   "file": "t3_neutral.json"
+  },
+  "demonio": {
+   "bank": "jin",
+   "clip": "stance",
+   "file": "t3_neutral.json"
+  },
+  "phantom": {
+   "bank": "yoshimitsu",
+   "clip": "stance",
+   "file": "t3_neutral.json"
+  },
+  "diablo": {
+   "bank": "heihachi",
+   "clip": "stance",
+   "file": "t3_neutral.json"
+  },
+  "skull": {
+   "bank": "bryan",
+   "clip": "stance",
+   "file": "t3_neutral.json"
+  },
+  "samura1": {
+   "bank": null,
+   "clip": "cmu#1",
+   "cmu": {
+    "mirror": true,
+    "phase": 0
+   }
+  },
+  "sakura": {
+   "bank": "xiaoyu",
+   "clip": "stance",
+   "file": "t3_neutral.json"
+  },
+  "zui": {
+   "bank": "jin",
+   "clip": "intro",
+   "file": "t3_stance.json"
+  },
+  "kinpo": {
+   "bank": "jin",
+   "clip": "win_rp",
+   "file": "t3_win_rp.json"
+  },
+  "waterfall": {
+   "bank": "jin",
+   "clip": "win_lp",
+   "file": "t3_win_lp.json"
+  },
+  "kingtyrant": {
+   "bank": "eddy",
+   "clip": "stance",
+   "file": "t3_neutral.json"
+  },
+  "burger": {
+   "bank": "bryan",
+   "clip": "intro",
+   "file": "t3_stance.json"
+  },
+  "awapop": {
+   "bank": null,
+   "clip": "cmu#2",
+   "cmu": {
+    "mirror": false,
+    "phase": 0.37
+   }
+  },
+  "scimitar": {
+   "bank": "jin",
+   "clip": "win_lk",
+   "file": "t3_win_lk.json"
+  },
+  "purplerain": {
+   "bank": "jin",
+   "clip": "stance_b",
+   "file": "t3_stance_b.json"
+  },
+  "nightwolf": {
+   "bank": "julia",
+   "clip": "stance",
+   "file": "t3_neutral.json"
+  },
+  "dio": {
+   "bank": "heihachi",
+   "clip": "intro",
+   "file": "t3_stance.json"
+  },
+  "cyborgx": {
+   "bank": "gunjack",
+   "clip": "intro",
+   "file": "t3_stance.json"
+  },
+  "michiko": {
+   "bank": "jin",
+   "clip": "stance_c",
+   "file": "t3_stance_c.json"
+  },
+  "star": {
+   "bank": "xiaoyu",
+   "clip": "intro",
+   "file": "t3_stance.json"
+  },
+  "torch": {
+   "bank": "anna",
+   "clip": "stance",
+   "file": "t3_neutral.json"
+  },
+  "bruno": {
+   "bank": "bryan",
+   "clip": "win_rp",
+   "file": "t3_win_rp.json"
+  },
+  "negativo": {
+   "bank": "bryan",
+   "clip": "win_lk",
+   "file": "t3_win_lk.json"
+  },
+  "thor": {
+   "bank": "bryan",
+   "clip": "win_lp",
+   "file": "t3_win_lp.json"
+  },
+  "yukihyo": {
+   "bank": "armorking",
+   "clip": "stance",
+   "file": "t3_neutral.json"
+  },
+  "slice": {
+   "bank": "bryan",
+   "clip": "win_rk",
+   "file": "t3_win_rk.json"
+  },
+  "docfrank": {
+   "bank": null,
+   "clip": "cmu#3",
+   "cmu": {
+    "mirror": true,
+    "phase": 0.37
+   }
+  },
+  "baek-master-white": {
+   "bank": "bryan",
+   "clip": "stance_b",
+   "file": "t3_stance_b.json"
+  },
+  "mariposa-monarch": {
+   "bank": "xiaoyu",
+   "clip": "win_rp",
+   "file": "t3_win_rp.json"
+  },
+  "dxmmii-patchwork": {
+   "bank": "jin",
+   "clip": "block",
+   "file": "t3_block.json"
+  },
+  "charger": {
+   "bank": null,
+   "clip": "cmu#4",
+   "cmu": {
+    "mirror": false,
+    "phase": 0.74
+   }
+  },
+  "dorowani": {
+   "bank": null,
+   "clip": "cmu#5",
+   "cmu": {
+    "mirror": true,
+    "phase": 0.74
+   }
+  },
+  "chatur": {
+   "bank": null,
+   "clip": "cmu#6",
+   "cmu": {
+    "mirror": false,
+    "phase": 1.1099999999999999
+   }
+  },
+  "pond": {
+   "bank": null,
+   "clip": "cmu#7",
+   "cmu": {
+    "mirror": true,
+    "phase": 1.1099999999999999
+   }
+  },
+  "ryusan": {
+   "bank": null,
+   "clip": "cmu#8",
+   "cmu": {
+    "mirror": false,
+    "phase": 1.48
+   }
+  },
+  "tobi": {
+   "bank": "hwoarang",
+   "clip": "stance",
+   "file": "t3_neutral.json",
+   "order": 0
+  },
+  "megami": {
+   "bank": null,
+   "clip": "cmu#9",
+   "cmu": {
+    "mirror": true,
+    "phase": 1.48
+   }
+  },
+  "menajerii": {
+   "bank": null,
+   "clip": "cmu#10",
+   "cmu": {
+    "mirror": false,
+    "phase": 1.85
+   }
+  },
+  "kronos": {
+   "bank": "king",
+   "clip": "intro",
+   "file": "t3_stance.json",
+   "order": 1
+  },
+  "deathfang": {
+   "bank": "heihachi",
+   "clip": "win_rp",
+   "file": "t3_win_rp.json",
+   "order": 2
+  },
+  "koreshi": {
+   "bank": "heihachi",
+   "clip": "win_lp",
+   "file": "t3_win_lp.json",
+   "order": 3
+  },
+  "rave": {
+   "bank": "lei",
+   "clip": "stance_c",
+   "file": "t3_stance_c.json"
+  },
+  "vainabel": {
+   "bank": null,
+   "clip": "cmu#11",
+   "cmu": {
+    "mirror": true,
+    "phase": 1.85
+   }
+  },
+  "cainelias": {
+   "bank": "king",
+   "clip": "win_rp",
+   "file": "t3_win_rp.json",
+   "order": 2
+  },
+  "chordz": {
+   "bank": null,
+   "clip": "cmu#12",
+   "cmu": {
+    "mirror": false,
+    "phase": 0.21999999999999975
+   }
+  }
+ }
+}
