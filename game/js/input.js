@@ -409,3 +409,5 @@ export class InputManager {
   }
   _resetJoyKnob() {}
 }
+
+// Joystick center fix 2026-10-24: dynamic mode + deadzone (PR #1001)
