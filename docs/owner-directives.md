@@ -488,3 +488,9 @@ Rules:
 - Use LP1/RP2/LK3/RK4 format in ALL conversation with the user.
 - Files may keep 1/2/3/4 notation but must also show LP/RP/LK/RK alongside.
 - When the user presses RP2 on their screen, that is Tekken 2. When they press LP1, that is Tekken 1.
+## ZEN BASE (user decision 2026-10-24)
+- Zen is NEITHER Heihachi NOR Julia. Heihachi is Diablo's base; Julia is Nightwolf's base.
+- Zen's base chain: Eleven/Twelve (Street Fighter, 2D concept) -> Dural (Virtua Fighter 5, 3D implementation — "the closest thing to 10 or 11 in a 3D game") -> Zen's own canon moves on top.
+- X.COPY is ONE super (copies opponent briefly), NOT Zen's identity. Zen is not just a copycat.
+- Until VF5 Dural motion exists, Zen's bank is UNMAPPED (game/js/fighter.js FIGHTER_BANK zen: null). Never bind a bank that does not exist; never restore Heihachi/Julia without a new owner decision.
+- Full doc: docs/decisions/2026-10-24-zen-base-decision.md.

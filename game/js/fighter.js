@@ -54,7 +54,7 @@ let MOVES = {
 const MOVESET_MAP = {
   // THE NINE SOULS
   rin: 'demonio', byou: 'demonio', tou: 'heihachi', sha: 'xiaoyu', kai: 'demonio',
-  jin_soul: 'yoshimitsu', retsu: 'bryan', zen: 'heihachi', gyou: 'demonio',
+  jin_soul: 'yoshimitsu', retsu: 'bryan', zen: 'heihachi', gyou: 'demonio', // zen 'heihachi' here is INTERIM frame-data provenance ONLY (his 639 interim rows) — his BANK is UNMAPPED (see FIGHTER_BANK), NOT Heihachi as a base.
   // MAIN ROSTER
   pantera: 'king', demonio: 'demonio', phantom: 'yoshimitsu', diablo: 'heihachi',
   skull: 'bryan', samura1: 'gunjack', sakura: 'xiaoyu',
@@ -120,7 +120,7 @@ export function bankIdFor(charId, movesetId) {
   //   tou        -> paul     (nine-souls appendix: TOU's vessel base = Paul)
   //   byou       -> lei      (nine-souls appendix: BYOU's vessel base = Lei)
   //   gyou       -> hwoarang (nine-souls appendix: GYOU's vessel base = Hwoarang)
-  //   zen        -> julia    (nine-souls appendix: ZEN's vessel base = Julia)
+  //   zen        -> UNMAPPED (owner decision 2026-10-24: Zen is NEITHER Heihachi NOR Julia — see FIGHTER_BANK note)
   //   rave       -> lei      (CANON: Rave base = Lei Wulong)
   //   yukihyo    -> armorking (CANON: Yukihyo base = Armor King; same
   //                 rationale as the armor-king override above — the 'king'
@@ -136,12 +136,21 @@ export function bankIdFor(charId, movesetId) {
   //                 revert is deleting this one line.)
   // byou -> lei REMOVED 2026-10-21 (owner: "Lei wulong is not byou, he is Rave/Kiko tanaka, that's
   // been clarified"). Byou keeps its own moveset's bank until the owner names Byou's base.
-  // zen -> julia kept as the anim-bank lane set it; CANON.md appendix lists Julia -> NIGHTWOLF /
-  // soul ZEN as an unresolved three-way conflict while roster-full.js says Zen = Heihachi —
-  // put to the owner, not decided here.
+  // ZEN CONFLICT RESOLVED 2026-10-24 (owner decision, docs/decisions/2026-10-24-zen-base-decision.md):
+  // Zen is NEITHER Heihachi NOR Julia. Heihachi is Diablo's base; Julia is Nightwolf's base
+  // (CANON.md appendix: Julia -> NIGHTWOLF / soul ZEN). Zen's base chain is Eleven/Twelve
+  // (Street Fighter, 2D concept) -> Dural (Virtua Fighter 5, 3D implementation: the closest
+  // 3D thing to Eleven/Twelve) -> Zen's own canon moves on top, with X.COPY as ONE super.
+  // No Dural bank exists in the repo (no game/assets/anim/vf5/, no 'dural' in SOURCE_TO_BANK)
+  // and no Twelve 2D->3D conversion exists, so zen maps to null (UNMAPPED) here: bankIdFor
+  // returns null and Zen falls back to embedded locomotion + procedural combat — never
+  // another character's clips. When VF5 Dural motion lands, bind 'dural' here.
   const FIGHTER_BANK = {
+    // zen: null = UNMAPPED (owner decision 2026-10-24). A null value is intentional:
+    // hasOwnProperty('zen') is true, so bankIdFor returns null before any Heihachi/Julia
+    // fallback can bind. Do NOT restore 'julia' or 'heihachi' here without a new owner decision.
     awapop: 'nina', torch: 'anna', kingtyrant: 'eddy', kai: 'eddy',
-    tou: 'paul', gyou: 'hwoarang', zen: 'julia', rave: 'lei',
+    tou: 'paul', gyou: 'hwoarang', zen: null, rave: 'lei',
     yukihyo: 'armorking', nightwolf: 'julia',
     // 2026-10-23 (Claude session): the last decoded T3 banks (tools/anim/t3_bake_bank.py). These movesets
     // name their source as a teardown path or not at all, so bind each to its base's own bank here.

@@ -42,7 +42,7 @@ anna, armorking, bosconovitch, bryan, eddy, forestlaw_on_law, gon, gunjack, heih
 | menajerii | Roger Jr. | kuma | Via FIGHTER_BANK override (Roger shares Kuma bank) |
 | gashadokuro | Kuma | kuma | Via FIGHTER_BANK override |
 | aotsuki | Panda | kuma | Via FIGHTER_BANK override (Panda shares Kuma bank) |
-| zen | Heihachi* | julia | CONFLICT: roster says Heihachi, FIGHTER_BANK says Julia (nine-souls appendix). Kept julia per existing override; flagged for owner. See below. |
+| zen | Heihachi* | julia | CONFLICT (see below) — RESOLVED 2026-10-24 by PR #1019: zen -> UNMAPPED (null). |
 
 ### FIXED IN THIS PR (3) — banks existed, overrides missing
 | Char | Base | Was | Now | Notes |
@@ -123,6 +123,7 @@ These characters currently share a bank (via moveset fallback) or use CMU fallba
 - FIGHTER_BANK: zen -> julia (nine-souls appendix: ZEN's vessel base = Julia)
 - CANON.md appendix: Julia -> NIGHTWOLF / soul ZEN as unresolved three-way conflict
 - Current: kept julia per existing override. Owner must resolve: is Zen's stance Heihachi's or Julia's?
+- RESOLVED 2026-10-24 (owner decision, PR #1019, docs/decisions/2026-10-24-zen-base-decision.md): Zen is NEITHER Heihachi NOR Julia. Base chain: Eleven/Twelve (SF, 2D concept) -> Dural (VF5, 3D implementation) -> Zen's own canon moves on top, X.COPY as ONE super. FIGHTER_BANK zen is now null (UNMAPPED) because no Dural bank exists in the repo yet. The "Does NOT resolve Zen conflict" line under "What this PR does NOT do" below describes PR #1016's scope only; it is superseded for Zen by PR #1019.
 
 ## What this PR does
 1. Adds 3 FIGHTER_BANK overrides (docfrank, tobi, buffalo-bill) — each gets its own base's bank, distinct stance, no longer shared or null.
