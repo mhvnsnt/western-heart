@@ -2614,3 +2614,5 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Anti-clobber:** branch from origin/main (fresh sync); commit limited to this task's files only (working tree holds other lanes' staged/unstaged work — not touched, not committed). gitleaks clean. No deletions.
 
 **ALL CHARACTERS ARE ADULTS:** n/a — geometry/physics system, no characters.
+
+**Outcome (2026-10-23 ~21:30 CDT):** PR #961 OPEN, not merged. 10/11 checks green (incl. instruction-gate, deletion/clobber guards, unit tests covering this PR's files). game-unit-tests is red from a PRE-EXISTING main failure: test/soul-systems.test.mjs asserts gashadokuro has a soul-variants.json row; main ec3d50e9 ships 55 rows, none for gashadokuro (wave3 lane added the fighter without its variant data). None of this PR's files touch roster/soul/variant code. Blocker comment posted on the PR naming it; per the merge-it-yourself law the PR stays open until the owning lane fills the row. No merge attempted on red.
