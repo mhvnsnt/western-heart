@@ -26,6 +26,7 @@
    ============================================================ */
 
 // All fighter ids with a wired moveset file (36 playable + 9 staged for lane 2)
+import { installAddedMoves } from './full-movelist.js';
 export const MOVESET_IDS = [
   'pantera', 'demonio', 'phantom', 'diablo', 'skull', 'samura1', 'sakura',
   'rin', 'byou', 'tou', 'sha', 'kai', 'jin_soul', 'retsu', 'zen', 'gyou',
@@ -174,6 +175,7 @@ export function getMovesetInfo(fighterId) {
 
 /** Register a moveset object directly (fetch path + Node test harness). */
 export function registerMoveset(fighterId, data) {
+  installAddedMoves(fighterId, data); // pt217u: EMWH additions (additive, never overwrites a slot)
   _prepare(data);
   _movesets[fighterId] = data;
   _g.WH_MOVESETS = _g.WH_MOVESETS || {};
@@ -530,6 +532,7 @@ export class TekkenBuffer {
     // Opening step of a string that has no standalone move: open the string cursor, fire nothing.
     const opener = (c) => (ms._strPrefixes && ms._strPrefixes.has(c) ? (this._strPath = c, this._strPathT = now, true) : false);
     const prefixes = [];
+    for (const sp of ctx.soulStates || []) prefixes.push(sp + '.'); // pt217u soul systems
     if (ctx.stance) prefixes.push(ctx.stance + '.');
     if (ctx.rage) prefixes.push('R.');
     if (ctx.backturned) prefixes.push('BT.');
@@ -547,7 +550,10 @@ export class TekkenBuffer {
         if (mo.prefix !== p || mo.btn !== input) continue;
         // neutral-ending motions ('f,n,2') need the stick released; the rest need the last
         // step still held at the press (f,F+2 = f held).
-        if (mo.neutral ? dir : dir !== mo.dirs[mo.dirs.length - 1]) continue;
+        // pt217u: 'b,1' / 'd,1' (comma, then a bare button) = tap the direction, RELEASE, press —
+        // so a released stick reaches it and a held one still gets b+1 / d+1 first.
+        const tapRel = !mo.neutral && !dir && /,[1-4](?:\+[1-4])*\*?$/.test(mo.n) && !/^(f|b)(,\1)+$/i.test(mo.dirs.join(','));
+        if (!tapRel && (mo.neutral ? dir : dir !== mo.dirs[mo.dirs.length - 1])) continue;
         if (this._motionHeldV2(mo) && has(mo.n)) return this._recordMove(mo.n);
       }
       if (dir) {
@@ -622,6 +628,7 @@ export class TekkenBuffer {
       }
     }
     const prefixes = [];
+    for (const sp of ctx.soulStates || []) prefixes.push(sp + '.'); // pt217u soul systems
     if (ctx.stance) prefixes.push(ctx.stance + '.');
     if (ctx.rage) prefixes.push('R.');
     // Rage lane (T7): rage drive lives on 3+4 while raging (synthesized RD.).

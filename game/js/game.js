@@ -8,7 +8,8 @@
    Demo mode: open with ?demo=1 and P1 is also CPU-driven —
    good for watching AI-vs-AI or unattended verification.
    ============================================================ */
-import { inReach, moveReach } from './combat-core.js';
+import { inReach, moveReach, attackPhase } from './combat-core.js';
+import { reactionFor, feelFor, emit as emitCombat, isCounter } from './combat-systems.js';
 import * as THREE from 'three';
 import { Arena } from './scene.js';
 // LOADSPEED (2026-10-22): fighter.js (rigs, T3 wiring, movesets) is fight-only —
@@ -604,6 +605,19 @@ export class Game {
           audio.grunt(defender.isPlayer ? 1.05 : 0.9);
           this.arena.shake((isGrab ? 0.45 : isHeavy ? 0.35 : 0.18) * this.feel.shake, (isGrab ? 0.28 : 0.18) * this.feel.shake);
           this._hitStop = (isGrab ? 0.1 : isHeavy ? 0.08 : 0.05) * this.feel.hitstop;
+          // pt217u: Tekken reaction table (stagger/crumple/launch/screw/wall splat/floor bound/
+          // knockdown, counter-hit) drives hitstop + shake + spark + sound hooks.
+          try {
+            const counter = isCounter(defender._lastPhase || (defender.state === 'attack' ? 'startup' : 'idle'));
+            const reaction = reactionFor(hb.move, { counter, airborne: !defender.onGround, crouching: defender.state === 'crouch',
+              nearWall: !!(this.arena && this.arena.nearWall && this.arena.nearWall(defender)), juggleHits: attacker.combo || 0 });
+            const fx = feelFor(reaction, { counter });
+            this._hitStop = Math.max(this._hitStop, fx.stopSec * this.feel.hitstop);
+            if (fx.shake) this.arena.shake(fx.shake * 5 * this.feel.shake, 0.2 * this.feel.shake);
+            defender._reaction = reaction;
+            if (hb.move.purgeRage) { defender._rageUsed = true; if (defender.setRageAura) defender.setRageAura(false); } // 霊放 purifies rage
+            emitCombat({ type: 'hit', reaction, counter, spark: fx.spark, sound: fx.sound, attacker: attacker.char && attacker.char.id, move: attacker.attackName });
+          } catch (e) { /* reaction layer is advisory; never break a hit */ }
           const col = attacker.attackName === 'surge'
             ? (attacker.char.surge?.color ?? attacker.char.colors.trim ?? 0xffffff)
             : (attacker.char.colors.trim || 0xffffff);
