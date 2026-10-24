@@ -7,6 +7,12 @@
   "proxy_note": null,
   "schema_version": 2,
   "variant": 7,
+  "anim_set_lock": {
+    "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; tracked in docs/anim/VAINABEL-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp the lock state (batch10-special-pull 2026-10-23); taunt entries tagged SHOW"
+  },
   "moves": {
     "1": {
       "name": "Palm Jab (DOA Bass P)",
@@ -28,7 +34,8 @@
       "move_class": "strike",
       "input_slots": [
         "1"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "2": {
       "name": "Triple Jab (DOA Bass PP)",
@@ -50,7 +57,8 @@
       "move_class": "strike",
       "input_slots": [
         "2"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "3": {
       "name": "Low Kick (DOA Bass 2K)",
@@ -72,7 +80,8 @@
       "move_class": "strike",
       "input_slots": [
         "3"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "4": {
       "name": "High Kick (DOA Bass K)",
@@ -94,7 +103,8 @@
       "move_class": "strike",
       "input_slots": [
         "4"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "d/f+1": {
       "name": "Elbow Smash (DOA Bass 3P)",
@@ -115,7 +125,8 @@
       "move_class": "strike",
       "input_slots": [
         "d/f+1"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "d+1": {
       "name": "Low Knuckle (DOA Bass 2P)",
@@ -136,7 +147,8 @@
       "move_class": "strike",
       "input_slots": [
         "d+1"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "d/f+4": {
       "name": "Front Kick (DOA Bass 3K)",
@@ -157,7 +169,8 @@
       "move_class": "strike",
       "input_slots": [
         "d/f+4"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "u+1": {
       "name": "One Hand Hammer (DOA Bass 8P)",
@@ -178,7 +191,8 @@
       "move_class": "strike",
       "input_slots": [
         "u+1"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "b+1": {
       "name": "Muscle Elbow (DOA Bass 4P+K)",
@@ -199,7 +213,8 @@
       "move_class": "strike",
       "input_slots": [
         "b+1"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "f+1+2": {
       "name": "Bass Lariat (DOA Bass 6P+K)",
@@ -220,7 +235,8 @@
       "move_class": "strike",
       "input_slots": [
         "f+1+2"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "d+1+2": {
       "name": "Axe Bomber (DOA Bass 2P+K)",
@@ -241,7 +257,8 @@
       "move_class": "strike",
       "input_slots": [
         "d+1+2"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "f,f+1": {
       "name": "Smash Gong (DOA Bass 66P)",
@@ -264,7 +281,8 @@
         "f,f+1",
         "f",
         "f+1"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "f,f+4": {
       "name": "Kenka Kick (DOA Bass 66K)",
@@ -287,7 +305,8 @@
         "f,f+4",
         "f",
         "f+4"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "f,f+1+2": {
       "name": "Flying Cross Chop (DOA Bass 66P+K)",
@@ -310,7 +329,8 @@
         "f,f+1+2",
         "f",
         "f+1+2"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "d/f,d/f+1": {
       "name": "Buffalo Crash (DOA Bass 33P)",
@@ -333,7 +353,8 @@
         "d/f,d/f+1",
         "d/f",
         "d/f+1"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "b,f+1": {
       "name": "Rolling Axe (DOA Bass 64P)",
@@ -356,7 +377,8 @@
         "b,f+1",
         "b",
         "f+1"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "d/b+3": {
       "name": "Leg Break (DOA Bass 1K)",
@@ -377,7 +399,8 @@
       "move_class": "strike",
       "input_slots": [
         "d/b+3"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "u+4": {
       "name": "Jumping High Kick (DOA Bass 8K)",
@@ -398,7 +421,8 @@
       "move_class": "strike",
       "input_slots": [
         "u+4"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "u+1+2": {
       "name": "Double Knee Stomp (DOA Bass 8P+K)",
@@ -419,7 +443,8 @@
       "move_class": "strike",
       "input_slots": [
         "u+1+2"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "1,1": {
       "name": "Triple Jab (DOA Bass PPP)",
@@ -443,7 +468,8 @@
         "1,1",
         "1",
         "1"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "1,1,4": {
       "name": "Combo High Kick (DOA Bass PPK)",
@@ -468,7 +494,8 @@
         "1",
         "1",
         "4"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "1,1,d+1": {
       "name": "Combo Hammer (DOA Bass PP2P)",
@@ -493,7 +520,8 @@
         "1",
         "1",
         "d+1"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "f+1,1": {
       "name": "Wild Swing (DOA Bass 6PP)",
@@ -516,7 +544,8 @@
         "f+1,1",
         "f+1",
         "1"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "b+1,1": {
       "name": "Stungun Chop (DOA Bass 4PP)",
@@ -539,7 +568,8 @@
         "b+1,1",
         "b+1",
         "1"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "d/b+1,1": {
       "name": "Power Gong (DOA Bass 1PP)",
@@ -562,7 +592,8 @@
         "d/b+1,1",
         "d/b+1",
         "1"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "f+4,1": {
       "name": "Knee Hammer (DOA Bass 6KP)",
@@ -585,7 +616,8 @@
         "f+4,1",
         "f+4",
         "1"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "d/f+4,4": {
       "name": "Kick Rush (DOA Bass 3KK)",
@@ -609,7 +641,8 @@
         "d/f+4,4",
         "d/f+4",
         "4"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "u/b+1,1": {
       "name": "Hell Scissors (DOA Bass 7PP)",
@@ -632,7 +665,8 @@
         "u/b+1,1",
         "u/b+1",
         "1"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "1+3": {
       "name": "Falcon Arrow (DOA Bass F+P (5T))",
@@ -657,7 +691,8 @@
       "input_slots": [
         "1+3"
       ],
-      "throw_break": "1"
+      "throw_break": "1",
+      "set": "FIGHT"
     },
     "2+4": {
       "name": "Water Mill (DOA Bass 4F+P (4T))",
@@ -682,7 +717,8 @@
       "input_slots": [
         "2+4"
       ],
-      "throw_break": "2"
+      "throw_break": "2",
+      "set": "FIGHT"
     },
     "f+1+3": {
       "name": "Bass Tornado (DOA Bass 6F+P (6T))",
@@ -707,7 +743,8 @@
       "input_slots": [
         "f+1+3"
       ],
-      "throw_break": "1"
+      "throw_break": "1",
+      "set": "FIGHT"
     },
     "f,f+1+3": {
       "name": "Powerslam (DOA Bass 66F+P (66T))",
@@ -732,7 +769,8 @@
       "input_slots": [
         "f,f+1+3"
       ],
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "set": "FIGHT"
     },
     "d+1+3": {
       "name": "Bass Bomb (DOA Bass 2F+P (2T))",
@@ -757,7 +795,8 @@
       "input_slots": [
         "d+1+3"
       ],
-      "throw_break": "1"
+      "throw_break": "1",
+      "set": "FIGHT"
     },
     "d/f,d/f+1+3": {
       "name": "Double Arm DDT (DOA Bass 33F+P)",
@@ -782,7 +821,8 @@
       "input_slots": [
         "d/f,d/f+1+3"
       ],
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "set": "FIGHT"
     },
     "qcf+1+3": {
       "name": "Spear Grapple (DOA Bass 236F+P)",
@@ -807,7 +847,8 @@
       "input_slots": [
         "qcf+1+3"
       ],
-      "throw_break": "1"
+      "throw_break": "1",
+      "set": "FIGHT"
     },
     "b,f+1+3": {
       "name": "Dynamite Lariat (DOA Bass 64F+P)",
@@ -832,7 +873,8 @@
       "input_slots": [
         "b,f+1+3"
       ],
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "set": "FIGHT"
     },
     "hcb+1+3": {
       "name": "Powerbomb (DOA Bass 63214T)",
@@ -857,7 +899,8 @@
       "input_slots": [
         "hcb+1+3"
       ],
-      "throw_break": "1"
+      "throw_break": "1",
+      "set": "FIGHT"
     },
     "qcb+1+3": {
       "name": "Manhattan Driver (DOA Bass 214F+P,2F+P,2,8F+P)",
@@ -882,7 +925,8 @@
       "input_slots": [
         "qcb+1+3"
       ],
-      "throw_break": "1"
+      "throw_break": "1",
+      "set": "FIGHT"
     },
     "u+1+3": {
       "name": "Super Freak (DOA Bass 8F+P (8T))",
@@ -907,7 +951,8 @@
       "input_slots": [
         "u+1+3"
       ],
-      "throw_break": "1"
+      "throw_break": "1",
+      "set": "FIGHT"
     },
     "1+2": {
       "name": "Front Facelock (DOA Bass H (offensive hold))",
@@ -933,7 +978,8 @@
       "input_slots": [
         "1+2"
       ],
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "set": "FIGHT"
     },
     "qcf+1+2": {
       "name": "Headlock (DOA Bass 236H)",
@@ -959,7 +1005,8 @@
       "input_slots": [
         "qcf+1+2"
       ],
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "set": "FIGHT"
     },
     "u/b+1+2": {
       "name": "Buffalo Rampage (DOA Bass 7P+K held)",
@@ -980,7 +1027,8 @@
       "move_class": "special",
       "input_slots": [
         "u/b+1+2"
-      ]
+      ],
+      "set": "FIGHT"
     },
     "1+4": {
       "name": "Elias Brothers' Chokeslam [WH SIGNATURE]",
@@ -1004,7 +1052,8 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "set": "FIGHT"
     },
     "3+4": {
       "name": "Purple Light Sermon [WH SIGNATURE]",
@@ -1024,7 +1073,8 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "He enters under purple lights to distorted church organ. A false-gospel sermon with the spiked glove.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "set": "FIGHT"
     },
     "2,1": {
       "name": "VAIN ABEL ELIAS 2,1 (T3 bryan r153)",
@@ -1041,7 +1091,8 @@
       "heavy": false,
       "knock": 2.2,
       "soulGain": 8,
-      "string_hit": "2"
+      "string_hit": "2",
+      "set": "FIGHT"
     },
     "2,1,2": {
       "name": "VAIN ABEL ELIAS 2,1,2 (T3 bryan r151)",
@@ -1058,7 +1109,8 @@
       "heavy": false,
       "knock": 2.2,
       "soulGain": 8,
-      "string_hit": "2,1"
+      "string_hit": "2,1",
+      "set": "FIGHT"
     },
     "P+K": {
       "name": "Elias Brothers' Chokeslam [WH SIGNATURE]",
@@ -1082,7 +1134,8 @@
       "note": "He teams with Kane Abel as the Elias Brothers. The double chokeslam, solo edition - the devil's favorite demon.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true
+      "isGrab": true,
+      "set": "FIGHT"
     },
     "S": {
       "name": "Purple Light Sermon [WH SIGNATURE]",
@@ -1101,7 +1154,8 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "He enters under purple lights to distorted church organ. A false-gospel sermon with the spiked glove."
+      "note": "He enters under purple lights to distorted church organ. A false-gospel sermon with the spiked glove.",
+      "set": "FIGHT"
     },
     "d,d/f,d,d/f+1+2": {
       "name": "VAIN ABEL ELIAS d,d/f,d,d/f+1+2 throw (T3 bryan r211)",
@@ -1121,7 +1175,8 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "set": "FIGHT"
     },
     "d/f+2": {
       "name": "VAIN ABEL ELIAS d/f+2 (T3 bryan r149)",
@@ -1137,7 +1192,8 @@
       "limb": "armR",
       "heavy": false,
       "knock": 2.2,
-      "soulGain": 8
+      "soulGain": 8,
+      "set": "FIGHT"
     },
     "n,d/b,n,f+1+2": {
       "name": "VAIN ABEL ELIAS n,d/b,n,f+1+2 throw (T3 bryan r211)",
@@ -1157,7 +1213,8 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "set": "FIGHT"
     },
     "u/f+4": {
       "name": "VAIN ABEL ELIAS u/f+4 (T3 bryan r183)",
@@ -1173,7 +1230,185 @@
       "limb": "legR",
       "heavy": false,
       "knock": 4.2,
-      "soulGain": 8
+      "soulGain": 8,
+      "set": "FIGHT"
+    },
+    "1,2": {
+      "name": "Double Palm (DOA Bass PP)",
+      "input": "1,2",
+      "doa_move": "Double Palm",
+      "doa_input": "PP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "doa:bass/pp",
+      "input_slots": [
+        "1,2",
+        "1",
+        "2"
+      ],
+      "move_class": "string",
+      "note": "DOAU: PP ??.12 — first hit estimated.",
+      "set": "FIGHT"
+    },
+    "1,2,1": {
+      "name": "Combo Gong (DOA Bass PPP)",
+      "input": "1,2,1",
+      "doa_move": "Combo Gong",
+      "doa_input": "PPP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.6,
+      "damage": 16,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.6,
+      "soulGain": 8,
+      "anim_ref": "doa:bass/combo-gong",
+      "input_slots": [
+        "1,2,1",
+        "1",
+        "2"
+      ],
+      "move_class": "string",
+      "doa_damage": 32,
+      "note": "DOAU Combo Gong PPP (H,H,M) final 32.",
+      "set": "FIGHT"
+    },
+    "1+2_doa": {
+      "name": "Hell Stab (DOA Bass P+K)",
+      "input": "1+2",
+      "doa_move": "Hell Stab",
+      "doa_input": "P+K",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.567,
+      "damage": 9,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.6,
+      "soulGain": 8,
+      "anim_ref": "doa:bass/hell-stab",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "special",
+      "note": "Damage estimated. Input 1+2 collides with Front Facelock (DOA Bass H offensive hold) in this file; key disambiguated.",
+      "set": "FIGHT"
+    },
+    "qcf+3": {
+      "name": "Drop Kick (DOA Bass 236K)",
+      "input": "qcf+3",
+      "doa_move": "Drop Kick",
+      "doa_input": "236K",
+      "startup": 0.333,
+      "active": 0.067,
+      "recovery": 0.633,
+      "damage": 13,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 8,
+      "anim_ref": "doa:bass/drop-kick",
+      "input_slots": [
+        "qcf+3"
+      ],
+      "move_class": "special",
+      "note": "Damage estimated.",
+      "set": "FIGHT"
+    },
+    "hcf+1+3": {
+      "name": "Fisherman's Buster (DOA Bass 41236T)",
+      "input": "hcf+1+3",
+      "doa_move": "Fisherman's Buster",
+      "doa_input": "41236T",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 22,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 7.2,
+      "soulGain": 8,
+      "anim_ref": "doa:bass/fishermans-buster",
+      "input_slots": [
+        "hcf+1+3"
+      ],
+      "move_class": "throw",
+      "throw": true,
+      "isGrab": true,
+      "unblockable": true,
+      "note": "Damage estimated.",
+      "throw_break": "1",
+      "set": "FIGHT"
+    },
+    "b+1+2": {
+      "name": "Arm Whip (DOA Bass 4H)",
+      "input": "b+1+2",
+      "doa_move": "Arm Whip (mid punch hold)",
+      "doa_input": "4H",
+      "startup": 0.05,
+      "active": 0.2,
+      "recovery": 0.333,
+      "damage": 15,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "doa:bass/arm-whip",
+      "input_slots": [
+        "b+1+2"
+      ],
+      "move_class": "special",
+      "note": "DOA signature counter-hold -> Tekken parry-style reversal. Damage estimated.",
+      "set": "FIGHT"
+    },
+    "u/b+1+2_doa": {
+      "name": "Locking Hammer (DOA Bass 8H)",
+      "input": "u/b+1+2",
+      "doa_move": "Locking Hammer (high hold)",
+      "doa_input": "8H",
+      "startup": 0.05,
+      "active": 0.2,
+      "recovery": 0.333,
+      "damage": 13,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "doa:bass/locking-hammer",
+      "input_slots": [
+        "u/b+1+2"
+      ],
+      "move_class": "special",
+      "note": "DOA signature counter-hold. Damage estimated. Input u/b+1+2 collides with Buffalo Rampage (DOA Bass 7P+K held) in this file; key disambiguated.",
+      "set": "FIGHT"
+    },
+    "d/b+1+2": {
+      "name": "Leg Split (DOA Bass 2H)",
+      "input": "d/b+1+2",
+      "doa_move": "Leg Split (low kick hold)",
+      "doa_input": "2H",
+      "startup": 0.05,
+      "active": 0.2,
+      "recovery": 0.333,
+      "damage": 13,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "doa:bass/leg-split",
+      "input_slots": [
+        "d/b+1+2"
+      ],
+      "move_class": "special",
+      "note": "DOA signature counter-hold. Damage estimated.",
+      "set": "FIGHT"
     }
   },
   "strings": [
