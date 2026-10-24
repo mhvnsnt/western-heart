@@ -31,10 +31,11 @@ import { setAnimContext, getAnimContext, CTX } from './anim-gate.js';
 
 /* A finisher definition (authored in the creation suite):
    { name, beats: [ { btn: '1'|'2'|'3'|'4'|null, dur, pose,
-                     xray?: { limb, power } } ... ],
+                     xray?: { limb, power, fluid?: { preset, intensity } } } ... ],
      meterCost: 1.0, victimHpGate: 0.25 }
    The optional per-beat `xray` field marks the killing blow: when that
-   beat plays, the X-ray hook fires (see _xrayFlash below). */
+   beat plays, the X-ray hook fires (see _xrayFlash below) and the fluid
+   hook fires a viscous splash (see _fluidBurst below). */
 export function gatesOpen(game, def) {
   const p1 = game.p1, p2 = game.p2;
   if (!p1 || !p2 || p1.dead || p2.dead) return false;
@@ -70,7 +71,7 @@ export function tryFinisher(game, def) {
       const at = t;
       setTimeout(() => {
         try {
-          if (beat.xray) _xrayFlash(game, p1, p2, beat.xray);
+          if (beat.xray) { _xrayFlash(game, p1, p2, beat.xray); _fluidBurst(game, p1, p2, beat.xray); }
           if (beat.btn) p1.tryAttack(beat.btn);
           else if (beat.pose && p1.playPose) p1.playPose(beat.pose);
         } catch (e) { /* a dropped beat never breaks the fight */ }
@@ -101,6 +102,26 @@ function _xrayFlash(game, attacker, victim, xray) {
         if (mod && typeof mod.xrayFlash === 'function') mod.xrayFlash(spec);
       } catch (e) { /* a bad flash never breaks the fight */ }
     }).catch(() => { /* xray.js not landed yet — finisher continues */ });
+  } catch (e) { /* sync import failure — never break the finisher */ }
+}
+
+/* Fluid hook: viscous splash (blood/mud/ink) at the killing blow.
+   game/js/fx/fluid.js is built on the fluids track — the dynamic import is
+   fire-and-forget with a try/catch fallback, so the finisher plays
+   identically whether or not that module has landed. A missed splash
+   never breaks the fight. The beat's xray field may carry an optional
+   `fluid: { preset: 'blood'|'mud'|'ink', intensity }` to tune the burst;
+   without it the hook defaults to a blood splash scaled by xray.power.
+   Stylized impact splash only — no dismemberment, no gore systems, per
+   the PR #872 constraint (impact viz = X-ray reveal + deformation). */
+function _fluidBurst(game, attacker, victim, xray) {
+  try {
+    const spec = Object.assign({ attacker, victim, game }, xray || {});
+    import('./fx/fluid.js').then((mod) => {
+      try {
+        if (mod && typeof mod.fluidBurst === 'function') mod.fluidBurst(spec);
+      } catch (e) { /* a bad splash never breaks the fight */ }
+    }).catch(() => { /* fx/fluid.js not landed yet — finisher continues */ });
   } catch (e) { /* sync import failure — never break the finisher */ }
 }
 

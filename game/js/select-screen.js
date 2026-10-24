@@ -361,7 +361,7 @@ export class PreviewPane {
    tools/roster/tripo_fighters.py -> data/tripo-fighters.json (no hand-picked order). */
 export const SELECT_HIDDEN = new Set([
     'rin', 'byou', 'tou', 'sha', 'kai', 'jin_soul', 'retsu', 'zen', 'gyou',
-    'ryuji', 'doc-frank-machine-shop',
+    'doc-frank-machine-shop', // ryuji restored on main (#947)
   ]);
 
 let TRIPO_IDS = null;

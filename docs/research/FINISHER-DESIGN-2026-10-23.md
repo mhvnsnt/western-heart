@@ -162,3 +162,137 @@ New optional per-beat field `xray`: marks the beat as the killing blow.
 - `tryFinisher`: beats scheduled, meter spent, victim lock released,
   **X-ray hook never throws when `xray.js` is absent** (the parallel-module
   fallback), context save/restore around the beats.
+
+## 10. Eastern Mind naming proposals (owner decision needed)
+
+Owner law: finishers are NOT called "fatalities" and nobody dies. The system
+needs its own Eastern Mind / Western Heart name — canon-grounded (Nine Souls,
+the Trial, Tong-Nou cosmology), short enough for a HUD callout, and
+non-lethal by etymology. Four proposals:
+
+1. **KESSHOU (結章) — "the Closing Chapter"** *(recommended)*
+   Each fight is a trial chapter in the Nine Souls journey; the finisher
+   closes the chapter. The opponent's fighting spirit is *sealed*, not
+   destroyed — non-lethal by construction. Short, ownable, works shouted
+   by an announcer and printed on a select-screen card.
+
+2. **NINE-SOUL CLIMAX (九魂極, Kyūkon-kyoku) — "Soul Climax"**
+   Fires from the Nine-Soul Meter, so the name teaches the resource.
+   A *climax* is a peak, not a killing — the meter's ultimate expression.
+   Pairs with a UI state callout: meter full → "SOUL CLIMAX READY".
+   Recommendation: use this as the *meter-state* name even if Kesshou
+   wins as the system name (§11's ready window).
+
+3. **REIHOU (霊放) — "Spirit Release"**
+   The non-lethal framing made literal: the fighter releases their spirit
+   in one burst; the X-ray beat shows spirit channels flaring with light
+   through intact anatomy; the victim is *released* — purified of fighting
+   rage — and collapses. Deepest fit with the Buddhist/Hindu purification
+   cosmology in the art direction.
+
+4. **TRIAL'S SEAL (試練の封, Shiren no Fū) — "Seal"**
+   Canon-grounded in the Trial itself: the finisher seals the bout's
+   verdict. The victim's defeat is recorded, not their death. Most
+   formal/ceremonial of the four; fits win-pose flow (the seal precedes
+   the victor's taunt).
+
+**Proposed pairing (pending owner pick):** system = **KESSHOU**; the
+gated window announces **"SOUL CLIMAX READY"**; the KO resolves as a
+*seal*/*release*. All four stay clear of MK's "fatality" and of any
+death language.
+
+## 11. Tekken-style input scheme (owner directive)
+
+Owner constraint: finishers are **executed Tekken-style — complex inputs
+like Tekken super moves (Rage Arts), NOT one-button kills**. MKX fires on
+BL+FK+BK and MK11 on R2+L2 — single presses. WH does not copy that.
+
+### 11a. Proposed input
+
+- **Ready window:** Nine-Soul meter full + victim < 25% HP (the existing
+  `gatesOpen` conditions). The HUD announces the window
+  ("SOUL CLIMAX READY" / fighter-specific flash) — but **the victim is
+  not frozen and the timer does not stop**. The flow never breaks, Tekken
+  law; unlike MK's "FINISH HIM" daze state, the opponent can still act.
+- **Input:** **f, F + LP+RP** — a quick forward dash motion, then both
+  punch buttons together. Tekken's Rage Art is 1+2; the added dash makes
+  it a deliberate complex input that can't be mashed out by accident.
+- **Mobile (MOBILE INPUT LAW):** forward = swipe-forward or double-tap
+  forward on the left side; LP+RP = two-finger tap on the right side.
+  All targets stay thumb-sized; the input is a gesture + tap, never a
+  pixel-precise sequence.
+- **Per-fighter customs:** the suite can author a custom input per
+  finisher via `getCustomFinisher()` — extend the def format with an
+  `input` field (e.g. `input: ['f','F','1+2']`). The synthesized default
+  stays f, F + LP+RP for every fighter.
+
+### 11b. Divergence note (implementation status: PROPOSED, not built)
+
+`game/js/finisher.js` as merged (PR #872) **fires the finisher
+automatically** when the gates open (§3: "No separate input mode").
+That matches Def Jam's beat-bank teardown but **not** this owner
+directive. The input scheme above is therefore a proposed additional
+layer, not a description of current behavior:
+
+- Add an input listener armed only inside the ready window; outside the
+  window, `f, F + LP+RP` falls through to the normal Rage Art / no-op.
+- Keep `gatesOpen` as the *arming* condition; the input becomes the
+  *trigger*. `tryFinisher` stays the executor.
+- Whiff/miss: the input consumes the window (meter drains, window
+  closes) — mirroring MK11's whiffed-Fatal-Blow cooldown at Tekken pace.
+
+No code in this PR; the scheme is specified here for the input lane to
+build against.
+
+## 12. Non-lethal framing: what happens instead of death
+
+The finisher ends the round with a KO — never a death, never gore. The
+in-world framing, consistent with the art direction (psychedelic
+Buddhist/Hindu cosmology, Nine Souls, the Trial):
+
+1. **The burst.** The attacker releases their fighting spirit in a single
+   Nine-Soul burst — the Kesshou / Soul Climax.
+2. **The reveal.** The X-ray beat (§5, `game/js/xray.js`) shows the
+   victim's anatomy layers **intact and illuminated**: spirit channels
+   (meridian-like light paths) flare through MUSCLE → BONE → ORGAN as
+   the blow lands. The spectacle is *illumination*, not destruction —
+   MK shows what breaks; WH shows what *surges*.
+3. **The seal/release.** The victim's fighting spirit is released and
+   sealed — they collapse purified of rage. The KO resolves out of the
+   beat; the victor's win taunt plays; **next round they rise again** —
+   the Trial continues. (This is also why broken-bone continuity jokes
+   from MK reviews can't apply here: nothing was broken.)
+4. **No blood, no tearing, no dismemberment.** The `softbody.js` law
+   ("no cutting/tearing/destruction") and the anim-gate's render-only
+   contract hold for every finisher beat.
+
+## 13. MKX/MK11 technique applied (from MKX-MK11-FINISHERS-2026-10-23.md)
+
+| MK mechanic | WH take |
+|---|---|
+| MKX: full 3-bar meter, spent on fire | → Nine-Soul meter full gate, meter spent (`finisher.js` gates) |
+| MKX: armored startup | → keep: finisher beat carries armor (Tekken-paced, not hyper) |
+| MKX: multi-beat camera zoom per hit, "several seconds" | → compress to a **single ~1.9 s beat** (`xray.js` DURATION) — NRS's own lesson via Lebaron: *"we want [these attacks] to be really quick and instant"* |
+| MKX: BL+FK+BK one-press super | → rejected; replaced by §11's motion + button input |
+| MK11: ≤30% HP gate (wider bar telegraph) | → victim < 25% HP gate (`victimHpGate`); HUD telegraphs the window |
+| MK11: one landed Fatal Blow per match; whiff → cooldown | → once per round (round ends at KO); whiffed input drains the window (§11b) |
+| MK11: Krushing Blow — conditional X-ray visual, no mode switch | → **the `xray.js` pattern**: hook on R./US.2+3 KO blows, quick beat, fight resumes |
+| MK1: X-ray effects back inside the big cinematic | → the X-ray beat lives *inside* the KO blow, not as a separate cinematic |
+| MK: "FINISH HIM" daze-state mode switch, 10–20 s cinematics | → rejected; flow never breaks (Tekken law) |
+| MK: fatalities — death as the payoff | → rejected; seal/release framing (§12) |
+
+## 14. Integration map (as-built APIs)
+
+- `game/js/finisher.js`: `gatesOpen(game, def)` (arming),
+  `tryFinisher(game, def)` (executor), `ensureFinisherMoves(fighterId,
+  msApi)` (synthesized per-fighter blow), `getCustomFinisher()`
+  (suite-authored override), `FINISHER_NOTATION = 'F.FIN'`.
+- `game/js/xray.js`: `XraySystem.onHitKO(attacker, defender, hb)`
+  (fires the beat), `xray.update(dt)` (per-frame), `xray.cancel()`
+  (round reset); `XRAY.DURATION = 1.9`, `SKIN_OPACITY = 0.25`,
+  reveal order MUSCLE → BONE → ORGAN, `CAM_DIST = 1.6`.
+- **Docs drift flagged:** §5 of this file specifies an `xrayFlash(opts)`
+  contract, but the merged `xray.js` (PR #874) exports the
+  class-based `XraySystem` API instead. The finisher lane should target
+  the as-built API (or the xray lane should reconcile the doc) — do not
+  build new callers against `xrayFlash` until that's resolved.
