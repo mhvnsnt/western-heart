@@ -1,14 +1,18 @@
 // Batch string + moveset verification (2026-10-24, batch one-pass).
 // User report: longest combo doable was 1-2 (LP1,RP2); 3+ hit strings broke.
 // Root causes found (not guessed):
-//  1. SHADOW KEYS broke chaining: slots['1'] = '1~t8.king' (MOD damage), so
-//     lastMove became '1~t8.king' and continuation tried '1~t8.king,2'
-//     (nonexistent) instead of '1,2'. Fix: continuation tries the stripped
-//     base too ('1' -> '1,2', '1,2' -> '1,2,1').
-//  2. Timing too tight for touch: grace 200ms, continuation 800ms.
+//  1. Timing too tight for touch: string grace 200ms, continuation window 800ms.
+//     Phone taps are slower than stick inputs, so 3rd+ hits landed after the
+//     windows expired and fired as fresh singles instead of string steps.
 //     Fix: grace 500ms, STRING_PENDING 1500ms.
-//  3. Queued string hit dropped if recovery phase skipped (short move jumps
-//     active->done in one tick). Fix: fire queued hit on completion.
+//  2. Queued string hit dropped when recovery skipped: short moves can jump
+//     active->done in one tick; _tickState only fired _queuedNext during
+//     recovery, so the queued hit was lost on completion. Fix: fire it on
+//     completion too.
+//  3. DEFENSIVE (not the root cause): _pressV2 records clean notation
+//     (p + input), so lastMove is already clean in normal flow — but if any
+//     path ever records a ~shadow key, continuation now also tries the
+//     stripped base, so chaining cannot break that way.
 // This test verifies:
 //  1. The timing constants + shadow-strip code in the edited engine files.
 //  2. Pantera (T7 King) string chains resolve to TRUE STRING moves (keys
@@ -118,9 +122,17 @@ for (const [fighter, t7] of Object.entries(MAP)) {
   const nStrings = (data.strings || []).length;
   ok(nMoves > 50, `${fighter} (T7 ${t7}): ${nMoves} moves`);
   ok(nStrings > 0, `${fighter} (T7 ${t7}): ${nStrings} strings listed`);
-  const hasLp = Object.values(data.moves || {}).some(m => m.input_lp) ||
-    (data.strings || []).some(s => s && s.input_lp);
-  ok(hasLp, `${fighter}: LP1/RP2/LK3/RK4 display present`);
+  // MOD damage wiring (PR #1000/#1002): at least one move carries a t7 block.
+  const hasT7 = Object.values(data.moves || {}).some(m => m && m.t7 && m.t7.damage != null);
+  ok(hasT7, `${fighter}: T7 MOD damage wired (t7 block present)`);
+  // LP1/RP2 display: only Pantera is known to carry input_lp on strings
+  // (PR #1007); other fighters use Tekken notation keys which the editor
+  // displays as LP1/RP2/LK3/RK4. Assert input_lp only where it exists.
+  if (fighter === 'pantera') {
+    const hasLp = Object.values(data.moves || {}).some(m => m.input_lp) ||
+      (data.strings || []).some(s => s && s.input_lp);
+    ok(hasLp, `${fighter}: LP1/RP2/LK3/RK4 display present`);
+  }
 }
 
 console.log('');
