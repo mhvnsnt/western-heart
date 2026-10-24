@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" data-cb="none">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#14091f" />
+  <title>WESTERN HEART — Side Games</title>
+  <link rel="stylesheet" href="css/identity.css" />
+  <script src="js/identity.js"></script>
+</head>
+<body class="wh-page">
+<div class="wh-wrap">
+  <div class="wh-topbar">
+    <a class="wh-back" href="index.html">← GAME</a>
+    <h1>SIDE <span class="soul">GAMES</span></h1>
+  </div>
+
+  <div class="wh-card">
+    <div class="wh-tag">🜏 PASTIMES OF THE HEAD-WORLD</div>
+    <h2>What souls do for fun</h2>
+    <p class="sub">Tekken Bowl-style, but these aren't bowling. Every game below is drawn from
+      traditional mythologies — mainly Japanese, mixed with world traditions per the NORTH STAR —
+      and rooted in the Five Lands, the Phantom Marketplace, the Trial, and the Nine Souls.
+      Two are playable prototypes now; the rest await your pick.</p>
+    <div class="wh-approval"><b>⏳ ALL CONCEPTS AWAIT OWNER APPROVAL.</b> Nothing is locked — names,
+      rules, and which games ship are the owner's call. Playable prototypes are marked 🎮.</div>
+  </div>
+
+  <div class="wh-card">
+    <div class="wh-tag">🎮 PLAYABLE NOW</div>
+    <h2>Prototypes</h2>
+    <p class="sub">Winnings pay out in <span class="cur-name">Soul Shards</span>.</p>
+
+    <div class="wh-game">
+      <div class="home">TREE OF LIFE · LAND OF WOOD</div>
+      <h3>🜃 Soul-Fruit Harvest <span class="root">· tamaire, Japanese undōkai</span></h3>
+      <p><b>Myth root:</b> <i>tamaire</i> — the festival ball-toss, hurling balls into the high basket.<br>
+      <b>WH identity:</b> the Tree of Life "holds glowing souls like fruit" (canon). Souls gather at
+      festivals to toss spirit-orbs back into the branches — every orb returned is a soul guided home.<br>
+      <b>How it plays:</b> tap to launch a spirit-orb; arcs with real physics. Land orbs in the glowing
+      fruit clusters. 10 orbs, 45 seconds.</p>
+      <canvas id="sg-harvest" width="640" height="360"></canvas>
+      <div class="playrow">
+        <button class="wh-btn" id="sg-harvest-start">BEGIN HARVEST</button>
+        <span id="sg-harvest-score" style="align-self:center;color:var(--wh-gold);font-weight:800"></span>
+      </div>
+    </div>
+
+    <div style="height:12px"></div>
+
+    <div class="wh-game">
+      <div class="home">PHANTOM MARKETPLACE · UNDER THE EYEBALL MOUNTAINS</div>
+      <h3>🎲 The Trader's Chō-han <span class="root">· chō-han bakuchi, Japanese dice gambling</span></h3>
+      <p><b>Myth root:</b> <i>chō-han</i> — the classic dice gamble: even (chō) or odd (han).<br>
+      <b>WH identity:</b> the Trader runs the table himself. "Nothing here is real, but the prices are."
+      Bet shards; the house takes its cut — the Trader always eats.<br>
+      <b>How it plays:</b> stake shards, call CHŌ (even) or HAN (odd). Two dice. Win pays 1:1 minus the Trader's 5%.</p>
+      <div class="wh-row">
+        <input id="sg-bet" class="wh-input" type="number" min="10" value="50" style="max-width:130px" />
+        <button class="wh-btn" id="sg-cho">CHŌ · EVEN</button>
+        <button class="wh-btn" id="sg-han">HAN · ODD</button>
+      </div>
+      <div style="height:10px"></div>
+      <div class="wh-row"><span class="wh-dice" id="sg-d1">🎲</span><span class="wh-dice" id="sg-d2">🎲</span>
+      <b id="sg-dice-msg" style="color:var(--wh-gold)"></b></div>
+    </div>
+  </div>
+
+  <div class="wh-card">
+    <div class="wh-tag">🜁 THE FIVE LANDS</div>
+    <h2>Games of the Lands</h2>
+    <div class="wh-games" id="games-lands"></div>
+  </div>
+
+  <div class="wh-card">
+    <div class="wh-tag">🜂 MARKETPLACE &amp; TRIAL</div>
+    <h2>Trader's Games &amp; Mini-Trials</h2>
+    <div class="wh-games" id="games-trial"></div>
+  </div>
+
+  <div class="wh-card">
+    <div class="wh-tag">🜄 FESTIVAL &amp; SOULS</div>
+    <h2>Matsuri &amp; Soul Games</h2>
+    <div class="wh-games" id="games-souls"></div>
+  </div>
+
+  <div class="wh-approval">
+    <b>⏳ AWAITING OWNER APPROVAL</b> — every concept above: name, rules, home land, and which ship.
+    The two prototypes are playable now so the feel can be judged; the rest are design proposals.
+    Suggested first full build (pending approval): <b>Daruma Drop — Stack of the Nine</b> (simple
+    physics, strong soul-kanji identity) and <b>Oni Hunt</b> (projectile scoring reuses fight input).
+  </div>
+</div>
+<div class="wh-toast" id="toast"></div>
+
+<script>
+(function () {
+  'use strict';
+  var I = window.WHIdentity;
+  function toast(m){ var t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); setTimeout(function(){t.classList.remove('show');},2400); }
+  document.querySelectorAll('.cur-name').forEach(function(e){ e.textContent = I.CURRENCY_NAME; });
+
+  /* ================= CONCEPT CARDS ================= */
+  var CONCEPTS = {
+    lands: [
+      { home: 'OCTAGONAL SHRINE · EARTH', name: '🗿 Daruma Drop — Stack of the Nine',
+        root: 'daruma otoshi, Japanese New Year game',
+        body: 'Nine soul-blocks etched with the kanji of the Nine Souls (凛病闘沙海刃烈禅行), stacked high. ' +
+        'Hammer blocks out from below without toppling the stack — but the souls remember: knocking out TOU ' +
+        'enrages the tower, knocking out ZEN steadies it. Each block changes the physics. How it plays: tap a ' +
+        'block to strike it out; tower sways with real rigid-body physics; clear all nine to "purify the stack".' },
+      { home: 'PALACE OF DREAMING · WATER', name: '🎣 Koi-Scooping of the Dreaming',
+        root: 'kingyo-sukui, matsuri goldfish scooping',
+        body: 'The Dreaming palace\'s pools ripple with spirit-koi — each one a dream someone in the head-world ' +
+        'is having right now. Scoop them with a paper poi that tears a little more with every catch, like the ' +
+        'festival original. How it plays: drag the poi; koi dart with water-ripple AI; the poi has a tear meter; ' +
+        'rare Prism-koi are worth a fortune in shards. The palace won\'t stay still — the pool tilts as you play.' },
+      { home: 'PLAINS OF CHI-U · FIRE', name: '👹 Oni Hunt',
+        root: 'setsubun mamemaki — "Oni wa soto! Fuku wa uchi!"',
+        body: 'On the scorched plains, effigies of the intruder-oni (Diablo, RETSU-unbound) rise from the ash. ' +
+        'Souls pelt them with roasted fortune-beans to drive out evil and invite fortune — the oldest exorcism ' +
+        'as a carnival game. How it plays: first-person bean barrages; effigies advance in waves; golden beans ' +
+        'are rare pickups; a perfect volley (no misses) shouts FUKU WA UCHI and pays bonus shards.' },
+      { home: 'HELIX PALACE · METAL', name: '🕯️ Hyakumonogatari — One Hundred Soul Tales',
+        root: 'hyakumonogatari kaidankai, Edo-period ghost-story game',
+        body: 'In the Helix Palace\'s Immortality room, souls gather the old way: one hundred candles, one tale ' +
+        'each, a candle snuffed per story. The palace reflects every telling back wrong. How it plays: each tale ' +
+        'is a 60-second trial vignette or riddle drawn from canon (the Trader\'s first deal, Waterfall\'s grief); ' +
+        'finish it before your candle gutters. At zero candles… something from the Destruction room arrives. ' +
+        'Survive it for the rarest cache in the game.' },
+    ],
+    trial: [
+      { home: 'PHANTOM MARKETPLACE', name: '👁️ Eyeball Auction',
+        root: 'world-market haggling; the Eyeball Mountains audience (canon)',
+        body: 'The Trader auctions sealed Soul Caches to the highest bidder — and the Eyeball Mountains are ' +
+        'watching, the way King Tyrant plays to them. How it plays: blind-bid shards against AI souls with ' +
+        'tells (Scimitar always overbids Jade; Burger bids emotionally on food-adjacent lots); the mountains ' +
+        'rumble approval or scorn, shifting your luck. Winning lots contain chest-only cosmetics.' },
+      { home: 'OCTAGONAL SHRINE', name: '⚖️ The Nine Trials',
+        root: 'the Trial itself, bite-sized; Shugendō mountain ordeals',
+        body: 'One mini-trial per soul, each a parable of its nature: TOU — survive 30 seconds of endless waves; ' +
+        'ZEN — score by not moving (stillness is the weapon); GYOU — never stop moving; RIN — win with dignity ' +
+        '(no blocking, no running); BYOU — mirrored controls, unreadable foe; SHA — the floor is sand and shifts; ' +
+        'KAI — strike on the drumbeat; JIN — one-hit duels, the blade decides; RETSU — break everything, scored ' +
+        'on destruction. How it plays: 60–90 second trials, medal ranks, soul-specific leaderboards.' },
+      { home: 'PHANTOM MARKETPLACE', name: '🃏 Scimitar\'s Ledger',
+        root: 'hanafuda / kabufuda gambling halls; the Trader\'s vizier (canon)',
+        body: 'Scimitar — the Trader\'s vizier, born in the marketplace — deals a WH card game from his private ' +
+        'ledger of the merchant\'s weaknesses. How it plays: a fast hanafuda-style matching game where every card ' +
+        'is a deal the Trader once made; match the pair and the ledger tells you the story. High-stakes tables ' +
+        'cost shards; the final boss table is Scimitar himself, and he cheats the way the marketplace cheats.' },
+    ],
+    souls: [
+      { home: 'OCTAGONAL SHRINE · FESTIVAL', name: '⭕ Kagome Circle',
+        root: 'kagome kagome, Japanese children\'s circle game',
+        body: 'Eight souls join hands in the octagonal shrine\'s circle — eight sides, eight souls, one of them ' +
+        '"it", the way the song goes: "kago no naka no tori wa" (the bird in the cage). How it plays: rhythm ' +
+        'game — the circle dances; when the song stops, the caged soul guesses who stands behind them. Guess ' +
+        'right and the cage passes on; the last soul caged when the candles burn out faces Phantom\'s Fiend-laugh.' },
+      { home: 'OCTAGONAL SHRINE · FESTIVAL', name: '🀄 Soul Karuta',
+        root: 'uta-garuta, competitive card-grabbing (Chihayafuru)',
+        body: 'One hundred cards: the nine soul kanji and verses from every fighter\'s story, read aloud by the ' +
+        'shrine. Slap the matching card before your rival soul. How it plays: speed reading + slap timing; ' +
+        'higher difficulties read the verses with Phantom\'s three voices to throw you off. Tournament brackets ' +
+        'at festival time.' },
+      { home: 'TREE OF LIFE · FESTIVAL', name: '🦵 Kemari of the Nine',
+        root: 'kemari, Heian-period aristocratic football',
+        body: 'The oldest football in Japan: keep the ball aloft in a circle, no hands, grace above all. The ' +
+        'Nine Souls play it the way courtiers did — the orb is a soul, and dropping it is a small death. ' +
+        'How it plays: circle keepie-uppie with Tekken Ball-style physics; each soul kicks with its nature ' +
+        '(TOU smashes, ZEN barely touches, GYOU never lets it rest); rallies build a festival multiplier.' },
+    ],
+  };
+  Object.keys(CONCEPTS).forEach(function (zone) {
+    var host = document.getElementById('games-' + zone);
+    CONCEPTS[zone].forEach(function (c) {
+      var d = document.createElement('div'); d.className = 'wh-game';
+      d.innerHTML = '<div class="home">' + c.home + '</div><h3>' + c.name +
+        '</h3><p><span class="root">Myth root: ' + c.root + '.</span><br>' + c.body + '</p>';
+      host.appendChild(d);
+    });
+  });
+
+  /* ================= PROTOTYPE 1: Soul-Fruit Harvest ================= */
+  (function () {
+    var cv = document.getElementById('sg-harvest'), ctx = cv.getContext('2d');
+    var W = cv.width, H = cv.height, orbs = [], parts = [], clusters = [];
+    var running = false, score = 0, ammo = 10, t0 = 0, raf = 0;
+    var scoreEl = document.getElementById('sg-harvest-score');
+
+    function reset() {
+      orbs = []; parts = []; score = 0; ammo = 10; t0 = performance.now();
+      clusters = [];
+      for (var i = 0; i < 5; i++)
+        clusters.push({ x: 90 + i * 115, y: 70 + (i % 2) * 36, r: 34, glow: Math.random() * 6 });
+    }
+    function branchTree() {
+      ctx.fillStyle = '#1d5c34';
+      ctx.fillRect(0, 0, W, H);
+      // trunk + branches
+      ctx.strokeStyle = '#4a2f1d'; ctx.lineWidth = 16; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(W / 2, H); ctx.lineTo(W / 2, 150); ctx.stroke();
+      ctx.lineWidth = 8;
+      clusters.forEach(function (c) {
+        ctx.beginPath(); ctx.moveTo(W / 2, 170); ctx.quadraticCurveTo((W / 2 + c.x) / 2, 190, c.x, c.y + 20); ctx.stroke();
+      });
+    }
+    function draw() {
+      branchTree();
+      var now = performance.now();
+      clusters.forEach(function (c) {
+        var g = 0.5 + 0.5 * Math.sin(now / 400 + c.glow);
+        var grad = ctx.createRadialGradient(c.x, c.y, 4, c.x, c.y, c.r + 14);
+        grad.addColorStop(0, 'rgba(255,235,150,' + (0.85 * g + 0.15) + ')');
+        grad.addColorStop(1, 'rgba(255,235,150,0)');
+        ctx.fillStyle = grad; ctx.beginPath(); ctx.arc(c.x, c.y, c.r + 14, 0, 7); ctx.fill();
+        ctx.fillStyle = '#ffe996'; ctx.beginPath(); ctx.arc(c.x, c.y, 10, 0, 7); ctx.fill();
+        ctx.strokeStyle = 'rgba(255,233,150,0.8)'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(c.x, c.y, c.r, 0, 7); ctx.stroke();
+      });
+      orbs.forEach(function (o) {
+        ctx.fillStyle = '#9ad7ff'; ctx.beginPath(); ctx.arc(o.x, o.y, 7, 0, 7); ctx.fill();
+        ctx.fillStyle = 'rgba(154,215,255,0.35)'; ctx.beginPath(); ctx.arc(o.x, o.y, 12, 0, 7); ctx.fill();
+      });
+      parts.forEach(function (p) {
+        ctx.globalAlpha = Math.max(0, p.life); ctx.fillStyle = p.color;
+        ctx.beginPath(); ctx.arc(p.x, p.y, 3, 0, 7); ctx.fill(); ctx.globalAlpha = 1;
+      });
+      // launcher
+      ctx.fillStyle = '#8b2bd8'; ctx.beginPath(); ctx.arc(W / 2, H - 24, 14, 0, 7); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.75)'; ctx.font = '13px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('orbs: ' + ammo + '   score: ' + score, W / 2, 22);
+      var left = Math.max(0, 45 - (now - t0) / 1000);
+      ctx.fillText(left.toFixed(0) + 's', W - 40, 22);
+    }
+    function step() {
+      if (!running) return;
+      var now = performance.now();
+      if (now - t0 > 45000 || (ammo <= 0 && orbs.length === 0)) { end(); return; }
+      orbs.forEach(function (o) {
+        o.vy += 0.28; o.x += o.vx; o.y += o.vy;
+        clusters.forEach(function (c) {
+          var dx = o.x - c.x, dy = o.y - c.y;
+          if (dx * dx + dy * dy < c.r * c.r) {
+            o.dead = true; score += 100;
+            for (var i = 0; i < 14; i++) parts.push({ x: c.x, y: c.y, vx: (Math.random() - .5) * 5, vy: (Math.random() - .5) * 5, life: 1, color: '#ffe996' });
+            I.addShards(12, 'harvest');
+          }
+        });
+        if (o.y > H + 20) o.dead = true;
+      });
+      orbs = orbs.filter(function (o) { return !o.dead; });
+      parts.forEach(function (p) { p.x += p.vx; p.y += p.vy; p.vy += 0.1; p.life -= 0.03; });
+      parts = parts.filter(function (p) { return p.life > 0; });
+      draw();
+      scoreEl.textContent = 'score ' + score;
+      raf = requestAnimationFrame(step);
+    }
+    function end() {
+      running = false; cancelAnimationFrame(raf); draw();
+      var p = I.get(); p.stats.sideGames++; I.save();
+      toast('Harvest complete: ' + score + ' — the Tree remembers.');
+      scoreEl.textContent = 'final ' + score;
+    }
+    cv.addEventListener('pointerdown', function (e) {
+      if (!running || ammo <= 0) return;
+      var r = cv.getBoundingClientRect();
+      var tx = (e.clientX - r.left) * (W / r.width), ty = (e.clientY - r.top) * (H / r.height);
+      var sx = W / 2, sy = H - 24;
+      var dx = tx - sx, dy = ty - sy, d = Math.hypot(dx, dy) || 1;
+      var power = Math.min(1, d / 300);
+      orbs.push({ x: sx, y: sy, vx: (dx / d) * 13 * power, vy: (dy / d) * 13 * power - 4 });
+      ammo--;
+    });
+    document.getElementById('sg-harvest-start').addEventListener('click', function () {
+      reset(); running = true; step(); toast('Toss spirit-orbs into the glowing fruit.');
+    });
+    reset(); draw();
+  })();
+
+  /* ================= PROTOTYPE 2: The Trader's Chō-han ================= */
+  (function () {
+    var DICE = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+    function roll(call) {
+      var bet = Math.max(10, parseInt(document.getElementById('sg-bet').value, 10) || 10);
+      var p = I.get();
+      if (p.shards < bet) { toast('Not enough ' + I.CURRENCY_NAME + '. Win battles first.'); return; }
+      I.spendShards(bet);
+      var d1 = 1 + Math.floor(Math.random() * 6), d2 = 1 + Math.floor(Math.random() * 6);
+      document.getElementById('sg-d1').textContent = DICE[d1 - 1];
+      document.getElementById('sg-d2').textContent = DICE[d2 - 1];
+      var even = (d1 + d2) % 2 === 0;
+      var won = (call === 'cho') === even;
+      var msg = document.getElementById('sg-dice-msg');
+      if (won) {
+        var payout = Math.floor(bet * 2 * 0.95); // Trader's 5% cut
+        I.addShards(payout, 'cho-han');
+        msg.textContent = (even ? 'CHŌ!' : 'HAN!') + ' The Trader pays ' + payout + '.';
+        toast('The Trader smiles. The Trader always smiles.');
+      } else {
+        msg.textContent = (even ? 'CHŌ.' : 'HAN.') + ' The house keeps your ' + bet + '.';
+      }
+      p = I.get(); p.stats.sideGames++; I.save();
+    }
+    document.getElementById('sg-cho').addEventListener('click', function () { roll('cho'); });
+    document.getElementById('sg-han').addEventListener('click', function () { roll('han'); });
+  })();
+
+  if (window.WHColorblind) window.WHColorblind.apply();
+})();
+</script>
+</body>
+</html>

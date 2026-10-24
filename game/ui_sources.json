@@ -1,0 +1,145 @@
+{
+  "_doc": "owner law t123u (Oct 23 2026): every menu screen cites the Tekken/teardown file it is built from. legacy-unsourced = pre-law hand-made screen, grandfathered only while untouched. See tools/ui-sources/check.py and AGENTS.md.",
+  "screens": {
+    "screen-collection": {
+      "status": "legacy-unsourced",
+      "sources": [],
+      "files": []
+    },
+    "screen-daily": {
+      "status": "legacy-unsourced",
+      "sources": [],
+      "files": []
+    },
+    "screen-howto": {
+      "status": "legacy-unsourced",
+      "sources": [],
+      "files": []
+    },
+    "screen-menu": {
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md",
+        "gre:tekken7/ui/flash/SW_UI_MainMenu/Base_OnlineMenu.png",
+        "gre:teardown/tekken7-steam/tkdata/list/SW_UI_MainMenu.bin",
+        "gre:teardown/tekken7-steam/tkdata/list/SW_UI_Option.bin",
+        "gre:tekken7/ui/flash/SW_UI_PauseMenu_Replay/Cursor_Sub.png",
+        "gre:tekken7/ui/flash/SW_UI_PauseMenu_Replay/NavigationBar_Waku.png",
+        "gre:tekken7/ui/flash/SW_UI_ControllerSetup/PanelBase1.png",
+        "gre:tekken7/ui/flash/SW_UI_StoryMode_Option/Win_3line.png"
+      ],
+      "files": [
+        "game/menu-t7.css",
+        "game/js/menu-t7-layout.js",
+        "game/index.html",
+        "game/js/menus.js",
+        "game/js/ui-wh-bridge.js"
+      ],
+      "note": "T7 main menu (Base_OnlineMenu column 29.8% W, MainMenu_mc Main0..13 slot pitch), mode select (SubMenu_mc Sub0..9, Cursor_Sub 688x80 rows) and options (SW_UI_Option ListArea: Name|Value rows, PanelBase1 40px). Ratios in docs/select-redesign/T7-PROPORTIONS.md 'Menus'."
+    },
+    "screen-modewin": {
+      "status": "legacy-unsourced",
+      "sources": [],
+      "files": []
+    },
+    "screen-movelist": {
+      "status": "legacy-unsourced",
+      "sources": [],
+      "files": []
+    },
+    "screen-online": {
+      "status": "legacy-unsourced",
+      "sources": [],
+      "files": []
+    },
+    "screen-reincarnate": {
+      "status": "legacy-unsourced",
+      "sources": [],
+      "files": []
+    },
+    "screen-result": {
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md",
+        "gre:tekken7/ui/flash/SW_UI_Result_Lightning/Result_Lightning_02.png"
+      ],
+      "files": []
+    },
+    "screen-select": {
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md",
+        "teardown/tekken8/ui/CHARACTER-SELECT.md",
+        "teardown/tekken8/ui/refs/t8-select-ref-1.png",
+        "teardown/tekken8/ui/refs/t8-select-ref-2.png",
+        "teardown/tekken8/ui/refs/t8-select-ref-3.png",
+        "gre:tekken7/ui/flash/SW_UI_CharacterSelect/SlotRed_OnGradient.png",
+        "gre:tekken7/ui/flash/SW_UI_CharacterSelect/SlotBlue_OnGradient.png",
+        "gre:tekken7/ui/flash/SW_UI_CharacterSelect/Rep_CS_CH_PANEL_00.png"
+      ],
+      "files": [
+        "game/select-t8.css",
+        "game/select.css",
+        "game/js/select-screen.js",
+        "game/index.html",
+        "game/t7-skin.css",
+        "game/js/t7-ui-private.js",
+        "game/select-t7.css",
+        "game/js/select-t7-layout.js"
+      ],
+      "reuse": [
+        "mhvnsnt/Brutal-Fist@f455322:src/components/CharacterSelect.tsx (phone-portrait stage/grid split)",
+        "mhvnsnt/AshLanev2:public/concept-art/menu/menu-character-select.webp (reference only; no select code exists)"
+      ]
+    },
+    "screen-sidegames": {
+      "status": "legacy-unsourced",
+      "sources": [],
+      "files": []
+    },
+    "screen-stage": {
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md",
+        "gre:tekken7/ui/flash/SW_UI_StageSelect/InfoRed_Base.png",
+        "gre:tekken7/ui/flash/SW_UI_StageSelect/RedPanel_Base.png"
+      ],
+      "files": []
+    },
+    "screen-stage-intro": {
+      "status": "legacy-unsourced",
+      "sources": [],
+      "files": []
+    },
+    "screen-trader": {
+      "status": "legacy-unsourced",
+      "sources": [],
+      "files": []
+    },
+    "screen-vssetup": {
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7/ui/GAME-OPTION-VS-MENU.md"
+      ],
+      "files": [
+        "game/js/versus-setup.js",
+        "game/js/mainmenu.js",
+        "game/js/menus.js",
+        "game/styles.css",
+        "game/submenus.css"
+      ]
+    },
+    "hud-fight": {
+      "status": "sourced",
+      "sources": [
+        "teardown/western-heart-design/king-tekken3-ingame.jpg",
+        "teardown/tekken7/tekkenmods-docs/files/en/Tekken_8/Basic_Information/Overview/Moveset/Structures/Input_Sequence/index.md"
+      ],
+      "files": [
+        "game/styles.css",
+        "game/menus.css"
+      ],
+      "note": "In-fight HUD + touch pad. Tekken in-game reference: round timer top-centre, nothing drawn over it (mode badge / VERSUS chip sit below the health-bar row). Touch pad uses T8 1/2/3/4 limb notation; Heat = 2+3, Rage Art = 1+2."
+    }
+  }
+}

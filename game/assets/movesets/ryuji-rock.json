@@ -1,0 +1,2804 @@
+{
+  "fighter": "ryuji-rock",
+  "display": "CORNERSTONE",
+  "tekken_base": "Ryuji Yamazaki (KOF) x The Rock",
+  "t3_source": "king",
+  "proxy": true,
+  "proxy_note": "Ryuji Yamazaki (KOF) has no T3 bank - King proxy (grappler; owner: Rock Bottom frame data from King in Tekken, chain row 281). Model pending owner Tripo link - see roster/ryuji-rock/attires/attire1/README.md. WH name pending owner pick. Name locked CORNERSTONE by owner 2026-10-21; model landed the same day (owner Tripo — see README). 2026-10-21 union: the full Yamazaki set from ryuji.json is wired into this file (see cornerstone_build).",
+  "variant": 1,
+  "moves": {
+    "1": {
+      "name": "RYUJI 1 (T3 king r44)",
+      "input": "1",
+      "t3_source": "king",
+      "t3_row": 44,
+      "t3_command": "LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:44",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "2": {
+      "name": "RYUJI 2 (T3 king r46)",
+      "input": "2",
+      "t3_source": "king",
+      "t3_row": 46,
+      "t3_command": "RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:46",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "3": {
+      "name": "RYUJI 3 (T3 king r52)",
+      "input": "3",
+      "t3_source": "king",
+      "t3_row": 52,
+      "t3_command": "LK",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 13,
+      "t3_damage": 22,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:52",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "4": {
+      "name": "RYUJI 4 (T3 king r58)",
+      "input": "4",
+      "t3_source": "king",
+      "t3_row": 58,
+      "t3_command": "RK",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 12,
+      "t3_damage": 20,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:58",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "5": {
+      "name": "RYUJI 5 (T3 king r64)",
+      "input": "f+1",
+      "t3_source": "king",
+      "t3_row": 64,
+      "t3_command": "f+LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 14,
+      "t3_damage": 23,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:64",
+      "input_slots": [
+        "f+1"
+      ],
+      "move_class": "strike"
+    },
+    "6": {
+      "name": "RYUJI 6 (T3 king r70)",
+      "input": "f+2",
+      "t3_source": "king",
+      "t3_row": 70,
+      "t3_command": "f+RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 12,
+      "t3_damage": 20,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:70",
+      "input_slots": [
+        "f+2"
+      ],
+      "move_class": "strike"
+    },
+    "7": {
+      "name": "RYUJI 7 (T3 king r76)",
+      "input": "d+1",
+      "t3_source": "king",
+      "t3_row": 76,
+      "t3_command": "d+LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:76",
+      "input_slots": [
+        "d+1"
+      ],
+      "move_class": "strike"
+    },
+    "8": {
+      "name": "RYUJI 8 (T3 king r82)",
+      "input": "d+2",
+      "t3_source": "king",
+      "t3_row": 82,
+      "t3_command": "d+RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 13,
+      "t3_damage": 22,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:82",
+      "input_slots": [
+        "d+2"
+      ],
+      "move_class": "strike"
+    },
+    "9": {
+      "name": "RYUJI 9 (T3 king r88)",
+      "input": "b+1",
+      "t3_source": "king",
+      "t3_row": 88,
+      "t3_command": "b+LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 14,
+      "t3_damage": 23,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:88",
+      "input_slots": [
+        "b+1"
+      ],
+      "move_class": "strike"
+    },
+    "10": {
+      "name": "RYUJI 10 (T3 king r94)",
+      "input": "b+2",
+      "t3_source": "king",
+      "t3_row": 94,
+      "t3_command": "b+RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 16,
+      "t3_damage": 27,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:94",
+      "input_slots": [
+        "b+2"
+      ],
+      "move_class": "strike"
+    },
+    "1+3": {
+      "name": "RYUJI 1+3 throw (T3 king r127)",
+      "input": "1+3",
+      "t3_source": "king",
+      "t3_row": 127,
+      "t3_command": "LP+LK",
+      "startup": 0.433,
+      "active": 0.017,
+      "recovery": 0.1,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "anim_ref": "t3:king:row:127",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw"
+    },
+    "2+4": {
+      "name": "RYUJI 2+4 throw (T3 king r128)",
+      "input": "2+4",
+      "t3_source": "king",
+      "t3_row": 128,
+      "t3_command": "RP+RK",
+      "startup": 0.1,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "anim_ref": "t3:king:row:128",
+      "input_slots": [
+        "2+4"
+      ],
+      "move_class": "throw"
+    },
+    "qcf+1": {
+      "name": "SERPENT SLASH",
+      "input": "qcf+1",
+      "startup": 0.22,
+      "active": 0.033,
+      "recovery": 0.6,
+      "damage": 20,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 4.5,
+      "soulGain": 12,
+      "anim_ref": "wh:ryuji-rock:sig:serpent-slash",
+      "input_slots": [
+        "qcf+1"
+      ],
+      "move_class": "special",
+      "wh_signature": true,
+      "wh_note": "Yamazaki's snake-arm strike (Jaja Hebi Hanzoku): long slashing hand strikes, whipping extendable arms."
+    },
+    "d/b+2": {
+      "name": "SAND KICK",
+      "input": "d/b+2",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.7,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 10,
+      "anim_ref": "wh:ryuji-rock:sig:sand-kick",
+      "input_slots": [
+        "d/b+2"
+      ],
+      "move_class": "special",
+      "wh_signature": true,
+      "wh_note": "Yamazaki's Suna Kake: kicks sand in the opponent's face. Unfair and dishonest, just like him."
+    },
+    "f+1+2": {
+      "name": "KNIFE SLASH",
+      "input": "f+1+2",
+      "startup": 0.17,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 15,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 3.0,
+      "soulGain": 10,
+      "anim_ref": "wh:ryuji-rock:sig:knife-slash",
+      "input_slots": [
+        "f+1+2"
+      ],
+      "move_class": "special",
+      "wh_signature": true,
+      "wh_note": "Yamazaki's ever-present hidden knife. Quick, dirty, and he laughs while he uses it."
+    },
+    "b,n,f+1+2": {
+      "name": "ROCK BOTTOM",
+      "input": "b,n,f+1+2",
+      "t3_source": "king",
+      "t3_row": 281,
+      "t3_command": "[4 5 6+LP+RP](30f)",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 30,
+      "t3_damage": 35,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "note": "ROCK BOTTOM: The Rock's finisher, hoist-and-slam uranage. Frame data from T3 King chain-starter row 281 per owner (King carries it in Tekken). If ya smeeeeell what Ryuji is cooking.",
+      "anim_ref": "t3:king:row:281",
+      "input_slots": [
+        "b,n,f+1+2"
+      ],
+      "move_class": "throw",
+      "wh_signature": true
+    },
+    "d,d/b,d,d/b+1+2": {
+      "name": "THE GUILLOTINE",
+      "input": "d,d/b,d,d/b+1+2",
+      "t3_source": "king",
+      "t3_row": 287,
+      "t3_command": "[2 1 2 1+LP+RP](59f)",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 26,
+      "t3_damage": 35,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "note": "Yamazaki's Drill (The Guillotine): grabs the head and smashes it into the ground. Chain timing from T3 King row 287.",
+      "anim_ref": "t3:king:row:287",
+      "input_slots": [
+        "d,d/b,d,d/b+1+2"
+      ],
+      "move_class": "throw",
+      "wh_signature": true
+    },
+    "d,d/f,d,d/f+1+2": {
+      "name": "SHARPSHOOTER",
+      "input": "d,d/f,d,d/f+1+2",
+      "t3_source": "king",
+      "t3_row": 284,
+      "t3_command": "[2 3 2 3+LP+RP](59f)",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 22,
+      "t3_damage": 35,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "note": "The Rock's submission hold, applied with Yamazaki's sadistic glee. Chain timing from T3 King row 284.",
+      "anim_ref": "t3:king:row:284",
+      "input_slots": [
+        "d,d/f,d,d/f+1+2"
+      ],
+      "move_class": "throw",
+      "wh_signature": true
+    },
+    "u/f+2": {
+      "name": "PEOPLE'S ELBOW",
+      "input": "u/f+2",
+      "startup": 0.33,
+      "active": 0.05,
+      "recovery": 0.9,
+      "damage": 24,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.0,
+      "soulGain": 13,
+      "anim_ref": "wh:ryuji-rock:sig:peoples-elbow",
+      "input_slots": [
+        "u/f+2"
+      ],
+      "move_class": "special",
+      "wh_signature": true,
+      "wh_note": "The Rock's corner-to-corner elbow drop, preceded by Yamazaki's obnoxious tongue-out run.",
+      "t7_source": {
+        "character": "King (Tekken 7)",
+        "move": "High Elbow Drop",
+        "notation": "u/f+2",
+        "damage": "35 [42]",
+        "speed": 47,
+        "on_block": "-17",
+        "on_hit": "KND",
+        "crush": "low, mid, high",
+        "ref": "docs/t7t8-reference/frame-data-t7/king.json (id king_31)"
+      },
+      "canon_note": "Owner 2026-10-21: this entry is King's jumping diving elbow attack — Tekken 7 King's High Elbow Drop (u/f+2) — wired as CornerStone's diving People's Elbow. The grounded People's Elbow (d+1+2) and the flying variant (u/f+2+4, modeled on King's High Elbow Drop air version) arrive in the same union from ryuji.json."
+    },
+    "f,f+2": {
+      "name": "BRAHMA BULL LARIAT",
+      "input": "f,f+2",
+      "startup": 0.28,
+      "active": 0.05,
+      "recovery": 0.75,
+      "damage": 19,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.0,
+      "soulGain": 12,
+      "anim_ref": "wh:ryuji-rock:sig:brahma-bull-lariat",
+      "input_slots": [
+        "f,f+2"
+      ],
+      "move_class": "special",
+      "wh_signature": true,
+      "wh_note": "The Rock's charging lariat. Yamazaki runs through people like they owe him money."
+    },
+    "S": {
+      "name": "TONGUE OUT [WH SIGNATURE]",
+      "input": "S",
+      "startup": 0.26,
+      "active": 0.5,
+      "recovery": 0.4,
+      "damage": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 4,
+      "anim_ref": "wh:ryuji-rock:sig:tongue-out",
+      "input_slots": [
+        "S"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Taunt: sticks his tongue out, obnoxious like Yamazaki, one eyebrow raised like The Rock. Zero damage, maximum disrespect."
+    },
+    "P+K": {
+      "name": "LAYIN' THE SMACKDOWN [WH SIGNATURE]",
+      "input": "P+K",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.9,
+      "damage": 21,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "anim_ref": "wh:ryuji-rock:sig:smackdown",
+      "input_slots": [
+        "P+K",
+        "P",
+        "K"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "The Rock's spinebuster into Yamazaki's stomps. Know your role.",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true
+    },
+    "d/f+1+2": {
+      "name": "RYUJI ROCK 13 — ROCK BOTTOM",
+      "input": "d/f+1+2",
+      "t3_source": "king",
+      "t3_row": 210,
+      "t3_command": "d/f+1+2",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 34,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:210",
+      "input_slots": [
+        "d/f+1+2"
+      ],
+      "move_class": "throw"
+    },
+    "f,f+1": {
+      "name": "RYUJI ROCK 18 — TONGUE-OUT RUSH",
+      "input": "f,f+1",
+      "t3_source": "king",
+      "t3_row": 88,
+      "t3_command": "f,F+LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 16,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:88",
+      "input_slots": [
+        "f,f+1"
+      ],
+      "move_class": "strike"
+    },
+    "far_1": {
+      "name": "Standing LP (Far)",
+      "input": "far 1",
+      "kof_motion": "5A (far)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:far_1",
+      "input_slots": [
+        "far 1"
+      ],
+      "move_class": "strike",
+      "note": ""
+    },
+    "far_2": {
+      "name": "Standing RP (Far)",
+      "input": "far 2",
+      "kof_motion": "5B (far)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:far_2",
+      "input_slots": [
+        "far 2"
+      ],
+      "move_class": "strike",
+      "note": ""
+    },
+    "far_3": {
+      "name": "Standing LK (Far)",
+      "input": "far 3",
+      "kof_motion": "5C (far)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:far_3",
+      "input_slots": [
+        "far 3"
+      ],
+      "move_class": "strike",
+      "note": ""
+    },
+    "far_4": {
+      "name": "Standing RK (Far)",
+      "input": "far 4",
+      "kof_motion": "5D (far)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:far_4",
+      "input_slots": [
+        "far 4"
+      ],
+      "move_class": "strike",
+      "note": ""
+    },
+    "close_1": {
+      "name": "Standing LP (Close)",
+      "input": "1 (close)",
+      "kof_motion": "cl.A",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:close_1",
+      "input_slots": [
+        "1 (close)"
+      ],
+      "move_class": "strike",
+      "note": ""
+    },
+    "close_2": {
+      "name": "Standing RP (Close)",
+      "input": "2 (close)",
+      "kof_motion": "cl.B",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:close_2",
+      "input_slots": [
+        "2 (close)"
+      ],
+      "move_class": "strike",
+      "note": ""
+    },
+    "close_3": {
+      "name": "Standing LK (Close)",
+      "input": "3 (close)",
+      "kof_motion": "cl.C",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:close_3",
+      "input_slots": [
+        "3 (close)"
+      ],
+      "move_class": "strike",
+      "note": ""
+    },
+    "close_4": {
+      "name": "Standing RK (Close)",
+      "input": "4 (close)",
+      "kof_motion": "cl.D",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:close_4",
+      "input_slots": [
+        "4 (close)"
+      ],
+      "move_class": "strike",
+      "note": ""
+    },
+    "cr_1": {
+      "name": "Crouching LP",
+      "input": "d+1 (crouch)",
+      "kof_motion": "2A",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:crouch_1",
+      "input_slots": [
+        "d+1 (crouch)"
+      ],
+      "move_class": "strike",
+      "note": ""
+    },
+    "cr_2": {
+      "name": "Crouching RP",
+      "input": "d+2 (crouch)",
+      "kof_motion": "2B",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:crouch_2",
+      "input_slots": [
+        "d+2 (crouch)"
+      ],
+      "move_class": "strike",
+      "note": ""
+    },
+    "cr_3": {
+      "name": "Crouching LK",
+      "input": "d+3 (crouch)",
+      "kof_motion": "2C",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:crouch_3",
+      "input_slots": [
+        "d+3 (crouch)"
+      ],
+      "move_class": "strike",
+      "note": "Low"
+    },
+    "cr_4": {
+      "name": "Crouching RK",
+      "input": "d+4 (crouch)",
+      "kof_motion": "2D",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:crouch_4",
+      "input_slots": [
+        "d+4 (crouch)"
+      ],
+      "move_class": "strike",
+      "note": "Low"
+    },
+    "jump_1": {
+      "name": "Jumping LP",
+      "input": "u/f+1",
+      "kof_motion": "j.A (jumping)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:jump_1",
+      "input_slots": [
+        "u/f+1"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "jump_3": {
+      "name": "Jumping LK",
+      "input": "u/f+3",
+      "kof_motion": "j.C (jumping)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:jump_3",
+      "input_slots": [
+        "u/f+3"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "jump_4": {
+      "name": "Jumping RK",
+      "input": "u/f+4",
+      "kof_motion": "j.D (jumping)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:jump_4",
+      "input_slots": [
+        "u/f+4"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "njump_1": {
+      "name": "Neutral Jump LP",
+      "input": "u+1",
+      "kof_motion": "j.A (neutral jump)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:njump_1",
+      "input_slots": [
+        "u+1"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "njump_2": {
+      "name": "Neutral Jump RP",
+      "input": "u+2",
+      "kof_motion": "j.B (neutral jump)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:njump_2",
+      "input_slots": [
+        "u+2"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "njump_3": {
+      "name": "Neutral Jump LK",
+      "input": "u+3",
+      "kof_motion": "j.C (neutral jump)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:njump_3",
+      "input_slots": [
+        "u+3"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "njump_4": {
+      "name": "Neutral Jump RK",
+      "input": "u+4",
+      "kof_motion": "j.D (neutral jump)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:njump_4",
+      "input_slots": [
+        "u+4"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "hop_1": {
+      "name": "Hop LP",
+      "input": "hop u/f+1",
+      "kof_motion": "j.A (hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:hop_1",
+      "input_slots": [
+        "hop u/f+1"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "hop_2": {
+      "name": "Hop RP",
+      "input": "hop u/f+2",
+      "kof_motion": "j.B (hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:hop_2",
+      "input_slots": [
+        "hop u/f+2"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "hop_3": {
+      "name": "Hop LK",
+      "input": "hop u/f+3",
+      "kof_motion": "j.C (hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:hop_3",
+      "input_slots": [
+        "hop u/f+3"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "hop_4": {
+      "name": "Hop RK",
+      "input": "hop u/f+4",
+      "kof_motion": "j.D (hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:hop_4",
+      "input_slots": [
+        "hop u/f+4"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "nhop_1": {
+      "name": "Neutral Hop LP",
+      "input": "hop u+1",
+      "kof_motion": "j.A (neutral hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:nhop_1",
+      "input_slots": [
+        "hop u+1"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "nhop_2": {
+      "name": "Neutral Hop RP",
+      "input": "hop u+2",
+      "kof_motion": "j.B (neutral hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:nhop_2",
+      "input_slots": [
+        "hop u+2"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "nhop_3": {
+      "name": "Neutral Hop LK",
+      "input": "hop u+3",
+      "kof_motion": "j.C (neutral hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:nhop_3",
+      "input_slots": [
+        "hop u+3"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "nhop_4": {
+      "name": "Neutral Hop RK",
+      "input": "hop u+4",
+      "kof_motion": "j.D (neutral hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:nhop_4",
+      "input_slots": [
+        "hop u+4"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "cd_stand": {
+      "name": "Blowback Attack",
+      "input": "3+4 (blowback)",
+      "kof_motion": "C+D",
+      "startup": 0.233,
+      "active": 0.067,
+      "recovery": 0.467,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:blowback",
+      "input_slots": [
+        "3+4 (blowback)"
+      ],
+      "move_class": "strike",
+      "note": "Soft knockdown; special-cancelable"
+    },
+    "cd_jump": {
+      "name": "Jumping Blowback Attack",
+      "input": "u/f+3+4",
+      "kof_motion": "j.C+D",
+      "startup": 0.167,
+      "active": 0.067,
+      "recovery": 0.3,
+      "damage": 3,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 2,
+      "anim_ref": "kofxv:ryuji:jump_blowback",
+      "input_slots": [
+        "u/f+3+4"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air); soft knockdown"
+    },
+    "cd_hop": {
+      "name": "Hop Blowback Attack",
+      "input": "hop u/f+3+4",
+      "kof_motion": "hop j.C+D",
+      "startup": 0.167,
+      "active": 0.067,
+      "recovery": 0.3,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:hop_blowback",
+      "input_slots": [
+        "hop u/f+3+4"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air); soft knockdown"
+    },
+    "evade_fwd": {
+      "name": "Emergency Evasion (Forward)",
+      "input": "f,f (roll)",
+      "kof_motion": "A+B",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:ryuji:evade_fwd",
+      "input_slots": [
+        "f,f (roll)"
+      ],
+      "move_class": "special",
+      "note": "Forward roll; invulnerable startup (KOF XV system)"
+    },
+    "evade_back": {
+      "name": "Emergency Evasion (Back)",
+      "input": "b,b (roll)",
+      "kof_motion": "b+A+B",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:ryuji:evade_back",
+      "input_slots": [
+        "b,b (roll)"
+      ],
+      "move_class": "special",
+      "note": "Back roll (KOF XV system)"
+    },
+    "gc_blowback": {
+      "name": "Guard Cancel Blowback",
+      "input": "b+1+2 (guard)",
+      "kof_motion": "b+C+D (guard)",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 2,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:gc_blowback",
+      "input_slots": [
+        "b+1+2 (guard)"
+      ],
+      "move_class": "strike",
+      "note": "Guard-cancel blowback; costs 1 stock (KOF XV system)"
+    },
+    "gc_roll_fwd": {
+      "name": "Guard Cancel Evasion (Forward)",
+      "input": "f+1+2 (guard)",
+      "kof_motion": "A+B (guard)",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:ryuji:gc_roll_fwd",
+      "input_slots": [
+        "f+1+2 (guard)"
+      ],
+      "move_class": "special",
+      "note": "Guard-cancel roll forward; costs 1 stock (KOF XV system)"
+    },
+    "gc_roll_back": {
+      "name": "Guard Cancel Evasion (Back)",
+      "input": "b+3+4 (guard)",
+      "kof_motion": "b+A+B (guard)",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:ryuji:gc_roll_back",
+      "input_slots": [
+        "b+3+4 (guard)"
+      ],
+      "move_class": "special",
+      "note": "Guard-cancel roll back; costs 1 stock (KOF XV system)"
+    },
+    "shatter": {
+      "name": "Shatter Strike",
+      "input": "qcf+3+4",
+      "kof_motion": "236+C+D",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 2,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:shatter",
+      "input_slots": [
+        "qcf+3+4"
+      ],
+      "move_class": "special",
+      "note": "KOF XV Shatter Strike; guard point, crumple on counter hit"
+    },
+    "maxmode": {
+      "name": "MAX Mode",
+      "input": "1+2+3+4 (MAX)",
+      "kof_motion": "B+C (MAX Mode)",
+      "startup": 0.5,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:ryuji:maxmode",
+      "input_slots": [
+        "1+2+3+4 (MAX)"
+      ],
+      "move_class": "special",
+      "note": "KOF XV MAX Mode activation; +damage, EX access"
+    },
+    "taunt": {
+      "name": "Taunt",
+      "input": "2+3 (taunt)",
+      "kof_motion": "Start (taunt)",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:ryuji:taunt",
+      "input_slots": [
+        "2+3 (taunt)"
+      ],
+      "move_class": "special",
+      "note": "Taunt"
+    },
+    "fallbreaker": {
+      "name": "Fallbreaker (Recovery Roll)",
+      "input": "1+2 (grounded)",
+      "kof_motion": "any button (downed)",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:ryuji:fallbreaker",
+      "input_slots": [
+        "1+2 (grounded)"
+      ],
+      "move_class": "special",
+      "note": "Recovery roll on knockdown (KOF system)"
+    },
+    "throw_escape": {
+      "name": "Throw Escape",
+      "input": "3+4 (throw escape)",
+      "kof_motion": "C+D (on throw)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:ryuji:throw_escape",
+      "input_slots": [
+        "3+4 (throw escape)"
+      ],
+      "move_class": "special",
+      "note": "Throw tech (KOF system)"
+    },
+    "dash": {
+      "name": "Forward Dash",
+      "input": "f,f (dash)",
+      "kof_motion": "f,f",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:ryuji:dash",
+      "input_slots": [
+        "f,f (dash)"
+      ],
+      "move_class": "special",
+      "note": "KOF run/dash step"
+    },
+    "backdash": {
+      "name": "Backdash",
+      "input": "b,b (backdash)",
+      "kof_motion": "b,b",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:ryuji:backdash",
+      "input_slots": [
+        "b,b (backdash)"
+      ],
+      "move_class": "special",
+      "note": "KOF backstep"
+    },
+    "rush_l1": {
+      "name": "Light Rush 1",
+      "input": "1 (Rush)",
+      "kof_motion": "A x1 (Rush)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:rush_l1",
+      "input_slots": [
+        "1 (Rush)"
+      ],
+      "move_class": "string",
+      "note": "KOF XV Rush auto-combo (light chain)"
+    },
+    "rush_l2": {
+      "name": "Light Rush 2",
+      "input": "1,1 (Rush)",
+      "kof_motion": "A x2 (Rush)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:rush_l2",
+      "input_slots": [
+        "1,1 (Rush)"
+      ],
+      "move_class": "string",
+      "note": "KOF XV Rush auto-combo (light chain)"
+    },
+    "rush_l3": {
+      "name": "Light Rush 3",
+      "input": "1,1,1 (Rush)",
+      "kof_motion": "A x3 (Rush)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:rush_l3",
+      "input_slots": [
+        "1,1,1 (Rush)"
+      ],
+      "move_class": "string",
+      "note": "KOF XV Rush auto-combo (light chain)"
+    },
+    "rush_l4": {
+      "name": "Light Rush 4",
+      "input": "1,1,1,1 (Rush)",
+      "kof_motion": "A x4 (Rush)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:rush_l4",
+      "input_slots": [
+        "1,1,1,1 (Rush)"
+      ],
+      "move_class": "string",
+      "note": "KOF XV Rush auto-combo (light chain)"
+    },
+    "rush_h1": {
+      "name": "Heavy Rush 1",
+      "input": "2 (Rush)",
+      "kof_motion": "C x1 (Rush)",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:rush_h1",
+      "input_slots": [
+        "2 (Rush)"
+      ],
+      "move_class": "string",
+      "note": "KOF XV Rush auto-combo (heavy chain)"
+    },
+    "rush_h2": {
+      "name": "Heavy Rush 2",
+      "input": "2,2 (Rush)",
+      "kof_motion": "C x2 (Rush)",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:rush_h2",
+      "input_slots": [
+        "2,2 (Rush)"
+      ],
+      "move_class": "string",
+      "note": "KOF XV Rush auto-combo (heavy chain)"
+    },
+    "rush_h3": {
+      "name": "Heavy Rush 3",
+      "input": "2,2,2 (Rush)",
+      "kof_motion": "C x3 (Rush)",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 3,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 2,
+      "anim_ref": "kofxv:ryuji:rush_h3",
+      "input_slots": [
+        "2,2,2 (Rush)"
+      ],
+      "move_class": "string",
+      "note": "KOF XV Rush auto-combo (heavy chain)"
+    },
+    "rush_h4": {
+      "name": "Heavy Rush 4",
+      "input": "2,2,2,2 (Rush)",
+      "kof_motion": "C x4 (Rush)",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 3,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 2,
+      "anim_ref": "kofxv:ryuji:rush_h4",
+      "input_slots": [
+        "2,2,2,2 (Rush)"
+      ],
+      "move_class": "string",
+      "note": "KOF XV Rush auto-combo (heavy chain)"
+    },
+    "dokan": {
+      "name": "Dokan",
+      "input": "f+3",
+      "kof_motion": "6+B",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.433,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:dokan",
+      "input_slots": [
+        "f+3"
+      ],
+      "move_class": "strike",
+      "note": "Side kick with abandon. Original KOF motion: f+B"
+    },
+    "shimeage": {
+      "name": "Shime Age",
+      "input": "1+2",
+      "kof_motion": "C/D (close)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.367,
+      "damage": 3,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:ryuji:shimeage",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "throw",
+      "note": "Lift by neck, slam front-first (KOF '98-2002UM legacy). Original KOF motion: f/b+C or D",
+      "throw": true,
+      "throw_break": "1",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "hebi_joudan": {
+      "name": "Hebi Tsukai (Joudan)",
+      "input": "qcb+1",
+      "kof_motion": "214+A (hold)",
+      "startup": 0.3,
+      "active": 0.067,
+      "recovery": 0.5,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:hebi",
+      "input_slots": [
+        "qcb+1"
+      ],
+      "move_class": "special",
+      "note": "Far-reaching arm fling, strikes high. Original KOF motion: 214+A+P (hold)"
+    },
+    "hebi_chuudan": {
+      "name": "Hebi Tsukai (Chuudan)",
+      "input": "qcb+2",
+      "kof_motion": "214+C (hold)",
+      "startup": 0.3,
+      "active": 0.067,
+      "recovery": 0.5,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:hebi",
+      "input_slots": [
+        "qcb+2"
+      ],
+      "move_class": "special",
+      "note": "Far-reaching arm fling, strikes mid. Original KOF motion: 214+C+P (hold)"
+    },
+    "hebi_gedan": {
+      "name": "Hebi Tsukai (Gedan)",
+      "input": "qcb+3 (gedan)",
+      "kof_motion": "214+B (hold)",
+      "startup": 0.3,
+      "active": 0.067,
+      "recovery": 0.5,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:hebi",
+      "input_slots": [
+        "qcb+3 (gedan)"
+      ],
+      "move_class": "special",
+      "note": "Far-reaching arm fling, strikes low. Original KOF motion: 214+B+P (hold)"
+    },
+    "hebi_ex": {
+      "name": "Hebi Tsukai (EX)",
+      "input": "qcb+1+2",
+      "kof_motion": "214+A+C",
+      "startup": 0.267,
+      "active": 0.1,
+      "recovery": 0.5,
+      "damage": 4,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:ryuji:hebi_ex",
+      "input_slots": [
+        "qcb+1+2"
+      ],
+      "move_class": "special",
+      "note": "EX: hits twice, low then mid, pulls victim up (SNK wiki KOF XV). Original KOF motion: 214+AC"
+    },
+    "hebi_keep": {
+      "name": "Hebi Tsukai (Keep)",
+      "input": "qcb+3 (hold)",
+      "kof_motion": "214+K (hold)",
+      "startup": 0.167,
+      "active": 0.667,
+      "recovery": 0.167,
+      "damage": 0,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 8,
+      "anim_ref": "kofxv:ryuji:hebi_keep",
+      "input_slots": [
+        "qcb+3 (hold)"
+      ],
+      "move_class": "special",
+      "note": "Taunting arm-swing feint; can cancel into strikes. Original KOF motion: 214+P (hold, feint)"
+    },
+    "hebi_damashi": {
+      "name": "Hebi Damashi",
+      "input": "4 (during Keep)",
+      "kof_motion": "D (during Keep)",
+      "startup": 0.1,
+      "active": 0.033,
+      "recovery": 0.167,
+      "damage": 0,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 8,
+      "anim_ref": "kofxv:ryuji:hebi_damashi",
+      "input_slots": [
+        "4 (during Keep)"
+      ],
+      "move_class": "special",
+      "note": "Return to neutral from Hebi Tsukai (Keep)"
+    },
+    "orochi": {
+      "name": "Orochi",
+      "input": "qcb+1+2 (max)",
+      "kof_motion": "214+A+C (max)",
+      "startup": 0.333,
+      "active": 0.2,
+      "recovery": 0.667,
+      "damage": 6,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 3,
+      "anim_ref": "kofxv:ryuji:orochi",
+      "input_slots": [
+        "qcb+1+2 (max)"
+      ],
+      "move_class": "special",
+      "note": "All 3 Hebi Tsukai variants in succession (KOF '98UM legacy)"
+    },
+    "sadomazo_l": {
+      "name": "Sadomazo (Light)",
+      "input": "hcf+3",
+      "kof_motion": "41236+B",
+      "startup": 0.5,
+      "active": 0.333,
+      "recovery": 0.333,
+      "damage": 3,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:ryuji:sadomazo_l",
+      "input_slots": [
+        "hcf+3"
+      ],
+      "move_class": "special",
+      "note": "Tongue-taunt counter; counterattacks when hit during taunt (headbutt in XIV/XV). Original KOF motion: 41236+K"
+    },
+    "sadomazo_h": {
+      "name": "Sadomazo (Heavy)",
+      "input": "hcf+4",
+      "kof_motion": "41236+D",
+      "startup": 0.5,
+      "active": 0.333,
+      "recovery": 0.333,
+      "damage": 3,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:ryuji:sadomazo_h",
+      "input_slots": [
+        "hcf+4"
+      ],
+      "move_class": "special",
+      "note": "Tongue-taunt counter; counterattacks when hit during taunt (headbutt in XIV/XV). Original KOF motion: 41236+K"
+    },
+    "sadomazo_ex": {
+      "name": "Sadomazo (EX)",
+      "input": "hcf+3+4",
+      "kof_motion": "41236+B+D",
+      "startup": 0.433,
+      "active": 0.4,
+      "recovery": 0.3,
+      "damage": 4,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:ryuji:sadomazo_ex",
+      "input_slots": [
+        "hcf+3+4"
+      ],
+      "move_class": "special",
+      "note": "EX tongue-taunt counter; longer window. Original KOF motion: 41236+BD"
+    },
+    "baigaeshi_h": {
+      "name": "Bai Gaeshi (Heavy)",
+      "input": "qcf+2",
+      "kof_motion": "236+C",
+      "startup": 0.267,
+      "active": 0.067,
+      "recovery": 0.5,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:baigaeshi_h",
+      "input_slots": [
+        "qcf+2"
+      ],
+      "move_class": "special",
+      "note": "Reflects mid-level projectiles faster, sets up juggle. Original KOF motion: 236+P"
+    },
+    "baigaeshi_ex": {
+      "name": "Bai Gaeshi (EX)",
+      "input": "qcf+1+2",
+      "kof_motion": "236+A+C",
+      "startup": 0.233,
+      "active": 0.083,
+      "recovery": 0.467,
+      "damage": 3,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:ryuji:baigaeshi_ex",
+      "input_slots": [
+        "qcf+1+2"
+      ],
+      "move_class": "special",
+      "note": "EX projectile reflect. Original KOF motion: 236+AC"
+    },
+    "sunakake_l": {
+      "name": "Suna Kake (Light)",
+      "input": "qcb+3 (tap)",
+      "kof_motion": "214+B",
+      "startup": 0.283,
+      "active": 0.05,
+      "recovery": 0.4,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:sunakake_l",
+      "input_slots": [
+        "qcb+3 (tap)"
+      ],
+      "move_class": "special",
+      "note": "Kicks sand at opponent with back leg; builds meter. Original KOF motion: 214+K Tapped (not held) to distinguish from Hebi Tsukai hold variants."
+    },
+    "sunakake_h": {
+      "name": "Suna Kake (Heavy)",
+      "input": "qcb+4",
+      "kof_motion": "214+D",
+      "startup": 0.283,
+      "active": 0.05,
+      "recovery": 0.4,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:sunakake_h",
+      "input_slots": [
+        "qcb+4"
+      ],
+      "move_class": "special",
+      "note": "Kicks sand at opponent with back leg; builds meter. Original KOF motion: 214+K"
+    },
+    "sunakake_ex": {
+      "name": "Suna Kake (EX)",
+      "input": "qcb+3+4",
+      "kof_motion": "214+B+D",
+      "startup": 0.25,
+      "active": 0.067,
+      "recovery": 0.367,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:sunakake_ex",
+      "input_slots": [
+        "qcb+3+4"
+      ],
+      "move_class": "special",
+      "note": "EX sand scatter; cancels into Hebi Tsukai on hit. Original KOF motion: 214+BD"
+    },
+    "yakiire": {
+      "name": "Yaki'ire",
+      "input": "f,n,d,d/f+3",
+      "kof_motion": "623+B",
+      "startup": 0.333,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 3,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:ryuji:yakiire",
+      "input_slots": [
+        "f,n,d,d/f+3"
+      ],
+      "move_class": "special",
+      "note": "Slams front heel atop opponent; overhead. Original KOF motion: 623+K"
+    },
+    "yakiire_ex": {
+      "name": "Yaki'ire (EX)",
+      "input": "f,n,d,d/f+3+4",
+      "kof_motion": "623+B+D",
+      "startup": 0.3,
+      "active": 0.067,
+      "recovery": 0.5,
+      "damage": 4,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:ryuji:yakiire_ex",
+      "input_slots": [
+        "f,n,d,d/f+3+4"
+      ],
+      "move_class": "special",
+      "note": "EX heel stomp; knockdown. Original KOF motion: 623+BD"
+    },
+    "bakudan_l": {
+      "name": "Bakudan Pachiki (Light)",
+      "input": "hcb,f+1",
+      "kof_motion": "632146+A",
+      "startup": 0.2,
+      "active": 0.067,
+      "recovery": 0.5,
+      "damage": 4,
+      "limb": "head",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:ryuji:bakudan_l",
+      "input_slots": [
+        "hcb,f+1"
+      ],
+      "move_class": "throw",
+      "note": "Grabs by shirt/neck, exploding headbutt. Original KOF motion: 632146+P (near)",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "bakudan_h": {
+      "name": "Bakudan Pachiki (Heavy)",
+      "input": "hcb,f+2",
+      "kof_motion": "632146+C",
+      "startup": 0.267,
+      "active": 0.1,
+      "recovery": 0.567,
+      "damage": 5,
+      "limb": "head",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:ryuji:bakudan_h",
+      "input_slots": [
+        "hcb,f+2"
+      ],
+      "move_class": "throw",
+      "note": "Two extra headbutts before the final exploding headbutt. Original KOF motion: 632146+P (near)",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "bakudan_ex": {
+      "name": "Bakudan Pachiki (EX)",
+      "input": "hcb,f+1+2",
+      "kof_motion": "632146+A+C",
+      "startup": 0.2,
+      "active": 0.133,
+      "recovery": 0.533,
+      "damage": 6,
+      "limb": "head",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 3,
+      "anim_ref": "kofxv:ryuji:bakudan_ex",
+      "input_slots": [
+        "hcb,f+1+2"
+      ],
+      "move_class": "throw",
+      "note": "EX command-grab headbutt. Original KOF motion: 632146+AC",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "todome_l": {
+      "name": "Todome (Light)",
+      "input": "f,n,d,d/f+1 (downed)",
+      "kof_motion": "623+A (downed)",
+      "startup": 0.233,
+      "active": 0.067,
+      "recovery": 0.4,
+      "damage": 3,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:ryuji:todome_l",
+      "input_slots": [
+        "f,n,d,d/f+1 (downed)"
+      ],
+      "move_class": "special",
+      "note": "Stomps downed opponent twice then kicks them away (KOF XV). Heavy kicks them in front. Grounded-only. Original KOF motion: 623+P on downed"
+    },
+    "todome_h": {
+      "name": "Todome (Heavy)",
+      "input": "f,n,d,d/f+2 (downed)",
+      "kof_motion": "623+C (downed)",
+      "startup": 0.233,
+      "active": 0.067,
+      "recovery": 0.4,
+      "damage": 3,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:ryuji:todome_h",
+      "input_slots": [
+        "f,n,d,d/f+2 (downed)"
+      ],
+      "move_class": "special",
+      "note": "Stomps downed opponent twice then kicks them away (KOF XV). Heavy kicks them in front. Grounded-only. Original KOF motion: 623+P on downed"
+    },
+    "todome_ex": {
+      "name": "Todome (EX)",
+      "input": "f,n,d,d/f+1+2 (downed)",
+      "kof_motion": "623+A+C (downed)",
+      "startup": 0.2,
+      "active": 0.1,
+      "recovery": 0.4,
+      "damage": 4,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:ryuji:todome_ex",
+      "input_slots": [
+        "f,n,d,d/f+1+2 (downed)"
+      ],
+      "move_class": "special",
+      "note": "EX Todome; grounded-only. Original KOF motion: 623+AC on downed"
+    },
+    "sabaki_l": {
+      "name": "Sabaki no Aikuchi (Light)",
+      "input": "f,n,d,d/f+1 (knife)",
+      "kof_motion": "623+A (knife)",
+      "startup": 0.233,
+      "active": 0.1,
+      "recovery": 0.5,
+      "damage": 3,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:ryuji:sabaki_l",
+      "input_slots": [
+        "f,n,d,d/f+1 (knife)"
+      ],
+      "move_class": "special",
+      "note": "Butterfly-knife: 2 slashes (KOF '97-2003 legacy; Hydra's Judgement in CvS2). Original KOF motion: 623+P"
+    },
+    "sabaki_h": {
+      "name": "Sabaki no Aikuchi (Heavy)",
+      "input": "f,n,d,d/f+2 (knife)",
+      "kof_motion": "623+C (knife)",
+      "startup": 0.267,
+      "active": 0.167,
+      "recovery": 0.567,
+      "damage": 5,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:ryuji:sabaki_h",
+      "input_slots": [
+        "f,n,d,d/f+2 (knife)"
+      ],
+      "move_class": "special",
+      "note": "Butterfly-knife: 4 slashes (KOF '97-2003 legacy). Original KOF motion: 623+P"
+    },
+    "sabaki_ex": {
+      "name": "Sabaki no Aikuchi (EX)",
+      "input": "f,n,d,d/f+1+2 (knife)",
+      "kof_motion": "623+A+C (knife)",
+      "startup": 0.233,
+      "active": 0.2,
+      "recovery": 0.533,
+      "damage": 6,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 3,
+      "anim_ref": "kofxv:ryuji:sabaki_ex",
+      "input_slots": [
+        "f,n,d,d/f+1+2 (knife)"
+      ],
+      "move_class": "special",
+      "note": "EX knife slashes (legacy). Original KOF motion: 623+AC"
+    },
+    "nejikomi_l": {
+      "name": "Nejikomi (Light)",
+      "input": "hcb+1",
+      "kof_motion": "63214+A",
+      "startup": 0.267,
+      "active": 0.05,
+      "recovery": 0.467,
+      "damage": 3,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:ryuji:nejikomi_l",
+      "input_slots": [
+        "hcb+1"
+      ],
+      "move_class": "special",
+      "note": "Rears back leading fist, punches stomach (KOF 2002UM legacy). Original KOF motion: 63214+P"
+    },
+    "nejikomi_h": {
+      "name": "Nejikomi (Heavy)",
+      "input": "hcb+2",
+      "kof_motion": "63214+C",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 3,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:ryuji:nejikomi_h",
+      "input_slots": [
+        "hcb+2"
+      ],
+      "move_class": "special",
+      "note": "Heavy stomach punch (KOF 2002UM legacy). Original KOF motion: 63214+P"
+    },
+    "guillotine_l": {
+      "name": "Guillotine (Light)",
+      "input": "qcf,qcf+1",
+      "kof_motion": "236236+A",
+      "startup": 0.15,
+      "active": 0.2,
+      "recovery": 0.833,
+      "damage": 6,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 3,
+      "anim_ref": "kofxv:ryuji:guillotine_l",
+      "input_slots": [
+        "qcf,qcf+1"
+      ],
+      "move_class": "special",
+      "note": "Super: jumping uppercut, grabs face, drags across floor, throws up high. Original KOF motion: 236236+P"
+    },
+    "guillotine_h": {
+      "name": "Guillotine (Heavy)",
+      "input": "qcf,qcf+2",
+      "kof_motion": "236236+C",
+      "startup": 0.15,
+      "active": 0.267,
+      "recovery": 0.917,
+      "damage": 8,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 4,
+      "anim_ref": "kofxv:ryuji:guillotine_h",
+      "input_slots": [
+        "qcf,qcf+2"
+      ],
+      "move_class": "special",
+      "note": "Super: heavy version slams head into floor 4x then double-punts (XIV/XV). Original KOF motion: 236236+P"
+    },
+    "guillotine_ex": {
+      "name": "Guillotine (EX)",
+      "input": "qcf,qcf+1+2",
+      "kof_motion": "236236+A+C",
+      "startup": 0.117,
+      "active": 0.333,
+      "recovery": 0.917,
+      "damage": 10,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 5,
+      "anim_ref": "kofxv:ryuji:guillotine_ex",
+      "input_slots": [
+        "qcf,qcf+1+2"
+      ],
+      "move_class": "special",
+      "note": "EX Guillotine; anti-air invuln startup. Original KOF motion: 236236+AC"
+    },
+    "pitviper_l": {
+      "name": "Pit Viper (Light)",
+      "input": "qcb,qcf+1",
+      "kof_motion": "214,236+A",
+      "startup": 0.167,
+      "active": 0.133,
+      "recovery": 0.917,
+      "damage": 7,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 4,
+      "anim_ref": "kofxv:ryuji:pitviper_l",
+      "input_slots": [
+        "qcb,qcf+1"
+      ],
+      "move_class": "special",
+      "note": "Super: glowing-hand finger strike into midsection, rips out, leaves poison (KOF XIV/XV). Input motion not independently verified; name + properties verified (SNK wiki)."
+    },
+    "pitviper_h": {
+      "name": "Pit Viper (Heavy)",
+      "input": "qcb,qcf+2",
+      "kof_motion": "214,236+C",
+      "startup": 0.167,
+      "active": 0.167,
+      "recovery": 0.967,
+      "damage": 8,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 4,
+      "anim_ref": "kofxv:ryuji:pitviper_h",
+      "input_slots": [
+        "qcb,qcf+2"
+      ],
+      "move_class": "special",
+      "note": "Heavy: push-kicks victim to back wall, poisoned (KOF XIV/XV). Input motion not independently verified."
+    },
+    "drill": {
+      "name": "Drill (Climax)",
+      "input": "hcb,hcb+1+2 (near)",
+      "kof_motion": "6321463214+A+C (near)",
+      "startup": 0.133,
+      "active": 0.333,
+      "recovery": 1.167,
+      "damage": 12,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 6,
+      "anim_ref": "kofxv:ryuji:drill",
+      "input_slots": [
+        "hcb,hcb+1+2 (near)"
+      ],
+      "move_class": "throw",
+      "note": "CLIMAX: grabs head, slams to floor; tap P for 4 levels (stomp combo / cinematic stomps / random object: fish, sign, ladder / Serpent Slash barrage), ends with energy drill blast. Original KOF motion: 6321463214+AC near, tap P",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "drill_l1": {
+      "name": "Drill (Climax, Level 1)",
+      "input": "hcb,hcb+1+2 (near), tap 1",
+      "kof_motion": "Drill, tap P x1",
+      "startup": 0.133,
+      "active": 0.333,
+      "recovery": 1.167,
+      "damage": 13,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 6,
+      "anim_ref": "kofxv:ryuji:drill_l1",
+      "input_slots": [
+        "hcb,hcb+1+2 (near), tap 1"
+      ],
+      "move_class": "throw",
+      "note": "Climax Level 1: stomp-and-kick combo ender",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "drill_l2": {
+      "name": "Drill (Climax, Level 2)",
+      "input": "hcb,hcb+1+2 (near), tap 1x2",
+      "kof_motion": "Drill, tap P x2",
+      "startup": 0.133,
+      "active": 0.333,
+      "recovery": 1.167,
+      "damage": 13,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 6,
+      "anim_ref": "kofxv:ryuji:drill_l2",
+      "input_slots": [
+        "hcb,hcb+1+2 (near), tap 1x2"
+      ],
+      "move_class": "throw",
+      "note": "Climax Level 2: cinematic stomping combo ender",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "drill_l3": {
+      "name": "Drill (Climax, Level 3)",
+      "input": "hcb,hcb+1+2 (near), tap 1x3",
+      "kof_motion": "Drill, tap P x3",
+      "startup": 0.133,
+      "active": 0.333,
+      "recovery": 1.167,
+      "damage": 14,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 7,
+      "anim_ref": "kofxv:ryuji:drill_l3",
+      "input_slots": [
+        "hcb,hcb+1+2 (near), tap 1x3"
+      ],
+      "move_class": "throw",
+      "note": "Climax Level 3: bashes with random object (fish, sign, or ladder)",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "drill_l4": {
+      "name": "Drill (Climax, Level 4)",
+      "input": "hcb,hcb+1+2 (near), tap 1x4",
+      "kof_motion": "Drill, tap P x4",
+      "startup": 0.133,
+      "active": 0.4,
+      "recovery": 1.167,
+      "damage": 14,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 7,
+      "anim_ref": "kofxv:ryuji:drill_l4",
+      "input_slots": [
+        "hcb,hcb+1+2 (near), tap 1x4"
+      ],
+      "move_class": "throw",
+      "note": "Climax Level 4: Serpent Slash barrage; scooping blow drills opponent into ground, fist-pound drill blast",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "rock_bottom": {
+      "name": "ROCK BOTTOM",
+      "input": "FC d/b,d,d/b+1+2",
+      "kof_motion": "Clothesline Press (Rock Bottom)",
+      "startup": 0.2,
+      "active": 0.067,
+      "recovery": 0.667,
+      "damage": 9,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 4,
+      "anim_ref": "kofxv:ryuji:rock_bottom",
+      "input_slots": [
+        "FC d/b,d,d/b+1+2"
+      ],
+      "move_class": "throw",
+      "note": "Modeled on King's Clothesline Press (Rock Bottom): FC.db,d,db+1+2, 45 dmg, 1+2 break, Floor Break (wavu T7 King movelist). Owner canon 2026-10-19: Ryuji does The Rock's finisher.",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true,
+      "tekken_source": "King (Tekken 7)"
+    },
+    "peoples_elbow": {
+      "name": "PEOPLE'S ELBOW",
+      "input": "d+1+2",
+      "kof_motion": "Elbow Drop (grounded)",
+      "startup": 0.333,
+      "active": 0.067,
+      "recovery": 0.6,
+      "damage": 4,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 2,
+      "anim_ref": "kofxv:ryuji:peoples_elbow",
+      "input_slots": [
+        "d+1+2"
+      ],
+      "move_class": "strike",
+      "note": "Modeled on King's Elbow Drop d+1+2, the People's Elbow analog (hits grounded opponents; 'similar to the Rock's People's Elbow' — Tekken Hybrid King guide). Owner canon 2026-10-19.",
+      "tekken_source": "King (Tekken 7)"
+    },
+    "peoples_elbow_air": {
+      "name": "PEOPLE'S ELBOW (FLYING)",
+      "input": "u/f+2+4",
+      "kof_motion": "High Elbow Drop (air)",
+      "startup": 0.3,
+      "active": 0.067,
+      "recovery": 0.633,
+      "damage": 5,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 2,
+      "anim_ref": "kofxv:ryuji:peoples_elbow_air",
+      "input_slots": [
+        "u/f+2+4"
+      ],
+      "move_class": "strike",
+      "note": "Modeled on King's High Elbow Drop u/f+2+4 (jumping elbow pounce). Owner canon 2026-10-19.",
+      "tekken_source": "King (Tekken 7)"
+    },
+    "rock_ddt": {
+      "name": "ROCK'S DDT",
+      "input": "d/b,d/b+1+2",
+      "kof_motion": "DDT (crouch)",
+      "startup": 0.2,
+      "active": 0.067,
+      "recovery": 0.6,
+      "damage": 6,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 3,
+      "anim_ref": "kofxv:ryuji:rock_ddt",
+      "input_slots": [
+        "d/b,d/b+1+2"
+      ],
+      "move_class": "throw",
+      "note": "Modeled on King's classic DDT (tap DB, DB+LP+RP, Tekken series). Owner canon 2026-10-19.",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true,
+      "wh_original": true
+    },
+    "getup_low": {
+      "name": "Getup Low Kick",
+      "input": "(grounded) d+3",
+      "kof_motion": "3 (grounded)",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.367,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:getup_low",
+      "input_slots": [
+        "(grounded) d+3"
+      ],
+      "move_class": "strike",
+      "note": "Tekken universal getup kick, low"
+    },
+    "getup_mid": {
+      "name": "Getup Mid Kick",
+      "input": "(grounded) d+4",
+      "kof_motion": "4 (grounded)",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.367,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:getup_mid",
+      "input_slots": [
+        "(grounded) d+4"
+      ],
+      "move_class": "strike",
+      "note": "Tekken universal getup kick, mid"
+    },
+    "facedown_kick": {
+      "name": "Face-Down Kick",
+      "input": "(face down) 3+4",
+      "kof_motion": "3+4 (face down)",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.367,
+      "damage": 2,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:facedown_kick",
+      "input_slots": [
+        "(face down) 3+4"
+      ],
+      "move_class": "strike",
+      "note": "Tekken universal face-down getup attack"
+    },
+    "bt_strike": {
+      "name": "Back-Turned Strike",
+      "input": "(BT) 2",
+      "kof_motion": "C (back-turned)",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.367,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:ryuji:bt_strike",
+      "input_slots": [
+        "(BT) 2"
+      ],
+      "move_class": "strike",
+      "note": "Tekken universal back-turned strike"
+    },
+    "rock_bottom_nm": {
+      "name": "ROCK BOTTOM (NO MERCY)",
+      "input": "f+2+4",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.53,
+      "damage": 30,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "throw": true,
+      "isGrab": true,
+      "anim_ref": "mk:MK-1240",
+      "input_slots": [
+        "f+2+4"
+      ],
+      "move_class": "throw",
+      "source": "WWF No Mercy (mat-kings) — [Front Special Grapple] Rock Bottom P1, MK-1240 / anim_37FA.npy (49f); P2 side MK-1241 / anim_37FB.npy (48f). DB Tekken input f+2+4 (frontFinisherSlot).",
+      "note": "The Rock's OWN Rock Bottom animation from the No Mercy teardown — the uranage as he performed it, beside the King-sourced versions in this file. WH data-layer values: the mat-kings DB carries no power join for Rock entries — damage/timing are CornerStone's balancing values; the animation clip is the source of truth.",
+      "aki_bake": {
+        "converter": "teardown/wwf-no-mercy/aki_to_tekken3_v3.py (W3c: game-exact extraction FT 0x16C31D8/First 0x1BD150 1-based + [PivotX s12][Rotation u10][PivotZ s10], period-1024 unwrap)",
+        "poses": "teardown/wwf-no-mercy/aki-rock-v3/mk-1240-anim_37FA.json",
+        "source_frames": 70,
+        "bank_bake": "tools/anim/aki_row_bake.py — GATE FAIL on TRUE data (W3c), no row written (pack byte-identical)",
+        "gate_detail": "worst bone RightArm mean step 65.5 deg/f (gate 60.6) + peak root height 0.49 m (gate 0.70) — step FAIL + height FAIL",
+        "status": "poses-only (corrected true-clip poses supersede W3's wrong-file artifacts) — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
+        "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md (W3c addendum)",
+        "supersedes": "W3 aki_bake record (wrong-file data: W3 converted game file +0x19 spliced at +0x60 under the 12/8/12 split)"
+      }
+    },
+    "peoples_elbow_nm": {
+      "name": "PEOPLE'S ELBOW (NO MERCY)",
+      "input": "2+4 (grounded)",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.45,
+      "damage": 22,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 8,
+      "anim_ref": "mk:MK-2843",
+      "input_slots": [
+        "2+4 (grounded)"
+      ],
+      "move_class": "special",
+      "source": "WWF No Mercy (mat-kings) — [Special Ground Head Grapple] People's Elbow P1, MK-2843 / anim_3E3D.npy (7f); P2 MK-2844 / anim_3E3E.npy (13f). DB Tekken input '2+4 [opponent grounded]'.",
+      "note": "The Rock's grounded People's Elbow from the No Mercy teardown. WH data-layer values: the mat-kings DB carries no power join for Rock entries — damage/timing are CornerStone's balancing values; the animation clip is the source of truth.",
+      "aki_bake": {
+        "converter": "teardown/wwf-no-mercy/aki_to_tekken3_v3.py (W3c: game-exact extraction FT 0x16C31D8/First 0x1BD150 1-based + [PivotX s12][Rotation u10][PivotZ s10], period-1024 unwrap)",
+        "poses": "teardown/wwf-no-mercy/aki-rock-v3/mk-2843-anim_3E3D.json",
+        "source_frames": 112,
+        "bank_bake": "tools/anim/aki_row_bake.py — GATE FAIL on TRUE data (W3c), no row written (pack byte-identical)",
+        "gate_detail": "worst bone RightArm mean step 51.1 deg/f (gate 60.6) + peak root height 0.48 m (gate 0.70) — step ok, height FAIL",
+        "status": "poses-only (corrected true-clip poses supersede W3's wrong-file artifacts) — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
+        "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md (W3c addendum)",
+        "supersedes": "W3 aki_bake record (wrong-file data: W3 converted game file +0x19 spliced at +0x60 under the 12/8/12 split)"
+      }
+    },
+    "peoples_elbow_running_nm": {
+      "name": "PEOPLE'S ELBOW (RUNNING, NO MERCY)",
+      "input": "f,f+3",
+      "startup": 0.35,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 18,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 3.0,
+      "soulGain": 6,
+      "anim_ref": "mk:MK-3473",
+      "input_slots": [
+        "f,f+3"
+      ],
+      "move_class": "special",
+      "source": "WWF No Mercy (mat-kings) — [Running Ground Attack] People's Elbow P1, MK-3473 / anim_40B3.npy (16f). DB Tekken input f,f+3.",
+      "note": "The running People's Elbow variant from the No Mercy teardown. WH data-layer values: the mat-kings DB carries no power join for Rock entries — damage/timing are CornerStone's balancing values; the animation clip is the source of truth.",
+      "aki_bake": {
+        "converter": "teardown/wwf-no-mercy/aki_to_tekken3_v3.py (W3c: game-exact extraction FT 0x16C31D8/First 0x1BD150 1-based + [PivotX s12][Rotation u10][PivotZ s10], period-1024 unwrap)",
+        "poses": "teardown/wwf-no-mercy/aki-rock-v3/mk-3473-anim_40B3.json",
+        "source_frames": 39,
+        "bank_bake": "tools/anim/aki_row_bake.py — GATE FAIL on TRUE data (W3c), no row written (pack byte-identical)",
+        "gate_detail": "worst bone RightArm mean step 71.9 deg/f (gate 60.6) + peak root height 0.49 m (gate 0.70) — step FAIL + height FAIL",
+        "status": "poses-only (corrected true-clip poses supersede W3's wrong-file artifacts) — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
+        "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md (W3c addendum)",
+        "supersedes": "W3 aki_bake record (wrong-file data: W3 converted game file +0x19 spliced at +0x60 under the 12/8/12 split)"
+      }
+    },
+    "rock_taunt_nm": {
+      "name": "ROCK TAUNT (NO MERCY)",
+      "input": "1+2+3+4",
+      "startup": 0.1,
+      "active": 0.83,
+      "recovery": 0.1,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 6,
+      "anim_ref": "mk:MK-4353",
+      "input_slots": [
+        "1+2+3+4"
+      ],
+      "move_class": "special",
+      "source": "WWF No Mercy (mat-kings) — five Rock-named taunts, all DB input 1+2+3+4: MK-4353 [Taunt] Rock 01 / anim_4423.npy (62f, primary ref), MK-4347 Rock 02 / anim_441D.npy (49f), MK-4354 Rock 03 / anim_4424.npy (55f), MK-4233 [Entry Way Taunt] Rock / anim_43AB.npy (34f), MK-4269 [In The Ring Taunt] Rock / anim_43CF.npy (35f).",
+      "note": "The Rock's early-Attitude-Era persona antics, from his own named taunt clips in the No Mercy teardown — the showmanship layer over Yamazaki's menace. WH data-layer values: the mat-kings DB carries no power join for Rock entries — damage/timing are CornerStone's balancing values; the animation clip is the source of truth.",
+      "aki_bake": {
+        "converter": "teardown/wwf-no-mercy/aki_to_tekken3_v3.py (W3c: game-exact extraction FT 0x16C31D8/First 0x1BD150 1-based + [PivotX s12][Rotation u10][PivotZ s10], period-1024 unwrap)",
+        "poses": "teardown/wwf-no-mercy/aki-rock-v3/ (mk-4353 primary; mk-4347, mk-4354, mk-4233, mk-4269 variants)",
+        "source_frames": 17,
+        "bank_bake": "tools/anim/aki_row_bake.py — GATE FAIL on TRUE data (W3c), no row written (pack byte-identical)",
+        "gate_detail": "worst bone RightArm mean step 57.6 deg/f (gate 60.6) + peak root height 0.48 m (gate 0.70) — step ok, height FAIL",
+        "status": "poses-only (corrected true-clip poses supersede W3's wrong-file artifacts) — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
+        "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md (W3c addendum)",
+        "supersedes": "W3 aki_bake record (wrong-file data: W3 converted game file +0x19 spliced at +0x60 under the 12/8/12 split)",
+        "taunt_variants_gate": {
+          "MK-4347": "82f, worst RightUpLeg 18.3 deg/f, peak ry 0.48 m — step ok, height FAIL",
+          "MK-4354": "24f, worst RightArm 94.0 deg/f, peak ry 0.48 m — step FAIL + height FAIL",
+          "MK-4233": "102f, worst RightUpLeg 16.1 deg/f, peak ry 0.48 m — step ok, height FAIL",
+          "MK-4269": "103f, worst RightArm 40.4 deg/f, peak ry 0.49 m — step ok, height FAIL"
+        }
+      }
+    },
+    "rock_spinebuster_nm": {
+      "name": "ROCK SPINEBUSTER (NO MERCY)",
+      "input": "1+3 (Irish-whip variant)",
+      "startup": 0.22,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 26,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 9,
+      "throw": true,
+      "isGrab": true,
+      "anim_ref": "mk:MK-1885",
+      "input_slots": [
+        "1+3 (Irish-whip variant)"
+      ],
+      "move_class": "throw",
+      "source": "WWF No Mercy (mat-kings) — [Special Irish Whip Grapple] Rock Spinebuster P1, MK-1885 / anim_3A7F.npy (16f); reversals MK-1883/1884. DB Tekken input '1+3 (Irish-whip variant)'.",
+      "note": "The Rock's spinebuster — the Rock Bottom's set-up in his matches. WH data-layer values: the mat-kings DB carries no power join for Rock entries — damage/timing are CornerStone's balancing values; the animation clip is the source of truth.",
+      "aki_bake": {
+        "converter": "teardown/wwf-no-mercy/aki_to_tekken3_v3.py (W3c: game-exact extraction FT 0x16C31D8/First 0x1BD150 1-based + [PivotX s12][Rotation u10][PivotZ s10], period-1024 unwrap)",
+        "poses": "teardown/wwf-no-mercy/aki-rock-v3/mk-1885-anim_3A7F.json",
+        "source_frames": 13,
+        "bank_bake": "tools/anim/aki_row_bake.py — GATE FAIL on TRUE data (W3c), no row written (pack byte-identical)",
+        "gate_detail": "worst bone RightArm mean step 51.6 deg/f (gate 60.6) + peak root height 0.48 m (gate 0.70) — step ok, height FAIL",
+        "status": "poses-only (corrected true-clip poses supersede W3's wrong-file artifacts) — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
+        "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md (W3c addendum)",
+        "supersedes": "W3 aki_bake record (wrong-file data: W3 converted game file +0x19 spliced at +0x60 under the 12/8/12 split)"
+      }
+    },
+    "rock_stomp_nm": {
+      "name": "ROCK STOMP (NO MERCY)",
+      "input": "d+3 (ground)",
+      "startup": 0.18,
+      "active": 0.04,
+      "recovery": 0.35,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 1.5,
+      "soulGain": 4,
+      "anim_ref": "mk:MK-3120",
+      "input_slots": [
+        "d+3 (ground)"
+      ],
+      "move_class": "strike",
+      "source": "WWF No Mercy (mat-kings) — Rock Stomp, MK-3120 / anim_3F52.npy (also MK-3167 sitting-down, MK-3453 ground contexts). DB Tekken input d+3.",
+      "note": "The Rock's ground stomp from the No Mercy teardown. WH data-layer values: the mat-kings DB carries no power join for Rock entries — damage/timing are CornerStone's balancing values; the animation clip is the source of truth.",
+      "aki_bake": {
+        "converter": "teardown/wwf-no-mercy/aki_to_tekken3_v3.py (W3c: game-exact extraction FT 0x16C31D8/First 0x1BD150 1-based + [PivotX s12][Rotation u10][PivotZ s10], period-1024 unwrap)",
+        "poses": "teardown/wwf-no-mercy/aki-rock-v3/mk-3120-anim_3F52.json",
+        "source_frames": 20,
+        "bank_bake": "tools/anim/aki_row_bake.py — GATE FAIL on TRUE data (W3c), no row written (pack byte-identical)",
+        "gate_detail": "worst bone RightUpLeg mean step 76.8 deg/f (gate 60.6) + peak root height 0.48 m (gate 0.70) — step FAIL + height FAIL",
+        "status": "poses-only (corrected true-clip poses supersede W3's wrong-file artifacts) — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
+        "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md (W3c addendum)",
+        "supersedes": "W3 aki_bake record (wrong-file data: W3 converted game file +0x19 spliced at +0x60 under the 12/8/12 split)"
+      }
+    },
+    "rock_spinning_ddt_nm": {
+      "name": "ROCK SPINNING DDT (NO MERCY)",
+      "input": "f,f+1+3",
+      "startup": 0.28,
+      "active": 0.05,
+      "recovery": 0.55,
+      "damage": 28,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "throw": true,
+      "isGrab": true,
+      "anim_ref": "mk:MK-3659",
+      "input_slots": [
+        "f,f+1+3"
+      ],
+      "move_class": "throw",
+      "source": "WWF No Mercy (mat-kings) — [Front Running Grapple] Rock Spinning DDT P1, MK-3659 / anim_416D.npy (set MK-3659–MK-3663 incl. P2 + reversals). DB Tekken input f,f+1+3.",
+      "note": "The Rock's spinning DDT from the No Mercy teardown — pairs with ROCK'S DDT (wh_original, King-modeled) in this file. WH data-layer values: the mat-kings DB carries no power join for Rock entries — damage/timing are CornerStone's balancing values; the animation clip is the source of truth.",
+      "aki_bake": {
+        "converter": "teardown/wwf-no-mercy/aki_to_tekken3_v3.py (W3c: game-exact extraction FT 0x16C31D8/First 0x1BD150 1-based + [PivotX s12][Rotation u10][PivotZ s10], period-1024 unwrap)",
+        "poses": "teardown/wwf-no-mercy/aki-rock-v3/mk-3659-anim_416D.json",
+        "source_frames": 28,
+        "bank_bake": "tools/anim/aki_row_bake.py — GATE FAIL on TRUE data (W3c), no row written (pack byte-identical)",
+        "gate_detail": "worst bone RightUpLeg mean step 81.8 deg/f (gate 60.6) + peak root height 0.48 m (gate 0.70) — step FAIL + height FAIL",
+        "status": "poses-only (corrected true-clip poses supersede W3's wrong-file artifacts) — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
+        "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md (W3c addendum)",
+        "supersedes": "W3 aki_bake record (wrong-file data: W3 converted game file +0x19 spliced at +0x60 under the 12/8/12 split)"
+      }
+    }
+  },
+  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+  "schema_version": 2,
+  "specials": [
+    {
+      "input": "hcb+1+2",
+      "t3_row": 210,
+      "damage": 34,
+      "throw": true,
+      "name": "ROCK BOTTOM (super)"
+    },
+    {
+      "input": "d,d/f,d,d/f+2",
+      "t3_row": 90,
+      "damage": 22,
+      "name": "PEOPLE'S ELBOW DROP"
+    }
+  ],
+  "union_merge": {
+    "date": "2026-10-20",
+    "method": "additive union of all historical versions of this file (548 versions / 60 commits / all refs) over current main; identity = canonical input (entry.input, else key); main preserved verbatim, main wins contested inputs (PR #357 precedent)",
+    "versions_considered": 3,
+    "moves_added": 2,
+    "strings_added": 0,
+    "specials_added": 0,
+    "specials_alt_appended": 0,
+    "added_move_keys": [
+      "d/f+1+2",
+      "f,f+1"
+    ],
+    "era_note": "final set era census: T8/WH-newest=10, T3=14; additions selected newest-era first (T8/T7/TTT2/T6+other teardowns), T3 payloads used only where no newer expression exists; union-first, no-loss absolute"
+  },
+  "cornerstone_build": {
+    "date": "2026-10-21",
+    "owner_instruction": "u get 3d ryuji moves and stance and data to wire into him (owner 2026-10-21, CornerStone design drop)",
+    "method": "additive union of game/assets/movesets/ryuji.json (full KOF Yamazaki set, 103 moves) into this file; identity = canonical input; pre-existing entries win contested inputs and are preserved verbatim (deep-equal verified against origin/main)",
+    "added_from_ryuji_json": 98,
+    "skipped_input_collisions_main_wins": [
+      {
+        "input": "u/f+2",
+        "ryuji_name": "Jumping RP",
+        "held_by": "PEOPLE'S ELBOW"
+      },
+      {
+        "input": "f+1",
+        "ryuji_name": "Bussashi",
+        "held_by": "RYUJI 5 (T3 king r64)"
+      },
+      {
+        "input": "1+3",
+        "ryuji_name": "Kachikomi",
+        "held_by": "RYUJI 1+3 throw (T3 king r127)"
+      },
+      {
+        "input": "2+4",
+        "ryuji_name": "Bun'nage",
+        "held_by": "RYUJI 2+4 throw (T3 king r128)"
+      },
+      {
+        "input": "qcf+1",
+        "ryuji_name": "Bai Gaeshi (Light)",
+        "held_by": "SERPENT SLASH"
+      }
+    ],
+    "stance": {
+      "name": "Yamazaki stance",
+      "canon": "Ryuji Yamazaki's stance — the Hakkesshu slouch: hands loose, head tilted, tongue flicking out (Sadomazo). Taunt layer wired in this file: 'S' TONGUE OUT [WH SIGNATURE], '2+3 (taunt)' KOF Taunt, and the Sadomazo family (hcf+3 / hcf+4 / hcf+3+4) — tongue-stick-out taunts that are also attacks (counter-hit headbutt).",
+      "data_source": "game/assets/movesets/ryuji.json — KOF XV frame data (dreamcancel / SNK wiki / supercombo KOF '98), converted per that file's frame_convention",
+      "in_game_clip": "King T3 bank stance clips (game/js/fighter.js MOVESET_MAP: 'ryuji-rock' -> 'king') — proxy until KOF animation clips exist. NO KOF game teardown exists in the holdings (attire-1 README model hunt, 2026-10-19), so no Yamazaki clip was fabricated."
+    },
+    "rock_bottom_sources": {
+      "owner_order": "the uranage/rock bottom from King (Tekken), from WWE All Stars, and from The Rock's own animations in the WWE teardown games",
+      "king_tekken": "WIRED — 'b,n,f+1+2' ROCK BOTTOM (T3 King chain-starter row 281) + 'd,f+1+2' ROCK BOTTOM (T3 King row 210) + specials 'hcb+1+2' ROCK BOTTOM (super, T3 King row 210); plus, added in this union from ryuji.json: 'FC d/b,d,d/b+1+2' ROCK BOTTOM (modeled on T7 King's Clothesline Press, wavu T7 King movelist).",
+      "rock_wwe_teardowns": "SURVEYED 2026-10-21 (full report: docs/CORNERSTONE-BUILD-2026-10-21.md). NO MERCY (mat-kings): The Rock's own clips EXIST, named in the source data, decoded — Rock Bottom MK-1240/MK-1241 (anim_37FA/37FB.npy), People's Elbow MK-2843/MK-2844 + running MK-3473, five Rock taunts (MK-4233/4269/4347/4353/4354), Spinebuster MK-1885, Punch MK-2102, Clothesline MK-2216, Stomp MK-3120/3167/3453, Spinning DDT MK-3659-3663 — wired into this file as mk: entries where their DB Tekken inputs were free (Rock Punch '2' and Rock Clothesline 'f,f+2' collide with inputs this file already owns and stay DB-side, recorded here). Playback status: DATA-ONLY today — the runtime bank/loader are Tekken-3-only (game/js/t3anims.js); the AKI->Tekken retarget (teardown/wwf-no-mercy/aki_to_tekken3.py) is proven on one clip (0x339A on T3 King) and the Rock clips have not been baked yet — that bake is the anim lanes' named next step, not faked here. WMXIX (mat-legends): NOTHING Rock-identifiable — all 169 library moves are provisional unnamed grapples; per-clip identity undecoded (only wrestler slot 000 = Triple H is confirmed). No WMXIX Rock data was invented.",
+      "wwe_all_stars": "PENDING SOURCE — WWE All Stars is queued on the teardown-idle queue (owner 2026-10-20), NOT acquired and NOT torn down. Its Rock Bottom version wires in when the teardown exists. Not fabricated."
+    },
+    "toguro_fingernail_blast": "DESIGN INTENT ONLY (owner 2026-10-21): Younger Toguro (Yu Yu Hakusho) is a further inspiration, incl. the fingernail blast. No Yu Yu Hakusho game exists in the teardown holdings, so no move data was invented; it wires in when a YYH source is acquired/torn down.",
+    "kof_animation_gap": "Yamazaki-sourced entries carry anim_ref 'kofxv:ryuji:*' naming their source animation in KOF XV. No KOF teardown exists in the holdings, so those specific clips are not yet playable; at runtime the fighter plays his King bank (MOVESET_MAP 'king'). The data — inputs, frame values, damage — is real KOF frame data (converted) and is wired now per the owner's order; the clips land with a KOF teardown.",
+    "no_mercy_wired": {
+      "date": "2026-10-21",
+      "entries_added": [
+        "rock_bottom_nm",
+        "peoples_elbow_nm",
+        "peoples_elbow_running_nm",
+        "rock_taunt_nm",
+        "rock_spinebuster_nm",
+        "rock_stomp_nm",
+        "rock_spinning_ddt_nm"
+      ],
+      "entries_skipped_input_owned": [
+        {
+          "input": "2",
+          "name": "Rock Punch (MK-2102)",
+          "held_by": "RYUJI 2 (T3 king r46) — Rock Punch data stays in the mat-kings DB"
+        },
+        {
+          "input": "f,f+2",
+          "name": "Rock Clothesline (MK-2216)",
+          "held_by": "BRAHMA BULL LARIAT — CornerStone's clothesline spot already owns this input"
+        }
+      ],
+      "playback": "data wired; clips (anim_*.npy, AKI 26-joint) await the AKI->Tekken3 bake — see rock_bottom_sources.rock_wwe_teardowns"
+    },
+    "aki_bake_v3": {
+      "date": "2026-10-21",
+      "lane": "gap-closure W3 (owner order 2026-10-21 08:19 CDT: finish the AKI bake)",
+      "converter": "aki_to_tekken3_v3.py — v2 + s8 modulo-256 unwrap fix (measured: system clip 0x2DDA pelvis wraps 121 -> -103); poses for all 11 Rock clips in teardown/wwf-no-mercy/aki-rock-v3/",
+      "bank_bake": "tools/anim/aki_row_bake.py ran the full game pipeline (PoseBuildMatrices -> pose_assemble FK -> frame_globals -> t3 retarget -> wh-anim-pack/1) behind a two-metric gate calibrated on the king pack's 176 real rows. ALL 11 clips FAIL (limb IK whip + collapsed root height); zero rows written, pack byte-identical, no t3_row wiring added — wiring now would point at rows that do not exist.",
+      "blocker": "AKI FK -> T3 IK targets (T3 limb slots are IK-overwritten; Euler overlay cannot drive them). Needs the AKI player-code FK (Ghidra route). Full measurements: docs/anim/AKI-BAKE-ROCK-2026-10-21.md",
+      "playback_today": "mk moves resolve through the King bank as before (stance + King's real rows incl. Rock Bottom row 281)"
+    },
+    "aki_bake_w3c": {
+      "date": "2026-10-21",
+      "lane": "gap-closure W3c corrective bake — supersedes the W3 aki_bake_v3 run, whose input clips were the wrong game files (W3b Finding 1) decoded with the wrong record split (W3b Finding 2)",
+      "extraction": "game-exact: FileTable 0x16C31D8, FirstFile 0x1BD150, 1-based IDs (FUN_80003ab0/FUN_80003bd0); records [PivotX s12][Rotation u10][PivotZ s10]; 11 Rock clips re-extracted in teardown/wwf-no-mercy/animations/clips/ + manifest corrected; frame counts verified vs W3b true table + 4+98N (10/11 also match the toki2 b3/2+1 header rule; anim_40B3 gives 38 by that rule vs 39 by exact length — length wins, remainder 0)",
+      "bank_bake": "tools/anim/aki_row_bake.py, SAME unloosened gate (worst-bone mean step <= 60.64 deg, peak root height >= 0.70 m, king-pack 176-row calibration). On TRUE data ALL 11 clips FAIL: 6 pass the step gate (was: taunts only, on wrong data), every clip fails height at 0.48-0.49 m. Zero rows written, pack byte-identical, no t3_row added.",
+      "blocker": "AKI FK -> T3 IK targets, unchanged in kind: T3 limb slots are IK-overwritten and the converter drives Euler joints + mean-centered root only, so root height peaks at the stance constant (~0.48-0.49 m) regardless of clip. Needs the AKI player FK from ovl_c/ovl_d (Ghidra import) or an emulator watchpoint on the stance file's RAM copy — spec in docs/anim/AKI-BAKE-ROCK-2026-10-21.md W3b Finding 3 + W3c addendum. No guessed IK mappings shipped.",
+      "playback_today": "mk moves resolve through the King bank as before (stance + King's real rows incl. Rock Bottom row 281)"
+    }
+  },
+  "hit_words": {
+    "1": 535,
+    "2": 535,
+    "3": 535,
+    "4": 535,
+    "5": 271,
+    "6": 535,
+    "7": 535,
+    "8": 535,
+    "9": 535,
+    "10": 535,
+    "1+3": 535,
+    "2+4": 535,
+    "b,n,f+1+2": 1042,
+    "d,d/b,d,d/b+1+2": 1042,
+    "d,d/f,d,d/f+1+2": 1042,
+    "P+K": 2048,
+    "d/f+1+2": 271,
+    "f,f+1": 535
+  },
+  "stance_after": {}
+}

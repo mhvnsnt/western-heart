@@ -1,0 +1,102 @@
+/*! game-hud v0.1.0 — layout
+ * https://github.com/aronprins/game-hud
+ * MIT License */
+/* ============================================================
+   IN-GAME VIEW
+   ============================================================ */
+.stage{
+  position:relative;height:calc(100dvh - var(--tbh,54px));min-height:640px;overflow:hidden;
+  background:var(--scene);
+}
+.stage .scene-deco{position:absolute;inset:0;pointer-events:none;opacity:.9}
+.hud{position:absolute;inset:0;padding:22px 26px;pointer-events:none}
+.hud>*{pointer-events:auto}
+.hud .hz-tl{position:absolute;top:22px;left:26px;transform-origin:top left}
+.hud .hz-tc{position:absolute;top:14px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px}
+.hud .hz-tr{position:absolute;top:22px;right:34px;display:flex;flex-direction:column;align-items:flex-end;gap:16px}
+.hud .hz-ml{position:absolute;top:276px;left:26px}
+.hud .hz-bl{position:absolute;bottom:26px;left:26px}
+.hud .hz-bc{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px}
+.hud .hz-br{position:absolute;bottom:20px;right:26px;display:flex;align-items:flex-end;gap:18px}
+.hud .hz-consum{position:absolute;bottom:246px;right:30px;display:flex;gap:10px}
+.hud .quests{width:330px}
+.hud .quests .q-item{padding:8px 2px}
+.hud .compass{width:440px}
+.hud .currency{width:360px;height:40px}
+.hud .xpbar{width:560px}
+.hud .stamina{width:280px}
+.hud .icon-row.menu-mini .icon-btn{width:52px;height:52px}
+.hud .icon-row.menu-mini .icon-btn .g-ico{width:24px;height:24px}
+.hz-consum .icon-btn{width:56px;height:56px}
+.hz-consum .icon-btn .g-ico{width:26px;height:26px}
+@media (max-width:1500px){.hud .hz-ml{display:none}}
+@media (max-width:1250px){.hud .compass{width:340px}.hud .xpbar{width:420px}}
+
+/* pause overlay + message overlay in game view */
+.overlay{
+  position:absolute;inset:0;z-index:60;display:none;place-items:center;
+  background:rgba(4,6,10,.55);backdrop-filter:blur(3px);
+}
+.overlay.open{display:grid}
+.overlay .pause{width:360px}
+.overlay .tabbed{width:min(720px,92vw);max-height:90vh}
+.overlay .tabbed .tab-page.bigmap .bm-view{height:min(52vh,420px)}
+.msg-float{
+  position:absolute;z-index:70;left:50%;top:18%;transform:translateX(-50%) scale(.8);
+  opacity:0;pointer-events:none;transition:all .3s cubic-bezier(.2,.9,.3,1.3);
+}
+.msg-float.show{opacity:1;transform:translateX(-50%) scale(1);pointer-events:auto}
+.pause-hint{
+  position:absolute;top:24px;right:246px;z-index:5;
+}
+@media (max-width:1250px){.pause-hint{right:220px}}
+
+/* small screen fallback */
+@media (max-width:1000px){
+  .hud .hz-bl{display:none}
+  .hud .quests{width:280px}
+}
+
+/* damage flash */
+.flash{position:absolute;inset:0;z-index:40;pointer-events:none;opacity:0;background:radial-gradient(ellipse at center,transparent 45%,rgba(216,40,40,.5) 100%)}
+.flash.hit{animation:hitflash .45s ease-out}
+@keyframes hitflash{0%{opacity:0}18%{opacity:1}100%{opacity:0}}
+.stage .center-note{
+  position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);
+  color:rgba(255,255,255,.5);font-family:var(--font-head);font-size:13px;letter-spacing:.3em;
+  text-transform:uppercase;text-align:center;pointer-events:none;text-shadow:0 2px 8px rgba(0,0,0,.6);
+}
+
+/* expansion elements in game view */
+.hud .hz-boss{position:absolute;top:128px;left:50%;transform:translateX(-50%)}
+.hud .hz-boss .bossbar{width:480px}
+.hud .hz-buffs{position:absolute;top:152px;left:26px}
+.hud .hz-wp{position:absolute;top:210px;left:59%;pointer-events:none}
+.hud .hz-prompt{position:absolute;bottom:198px;left:50%;transform:translateX(-50%)}
+.hud .hz-ammo{position:absolute;bottom:318px;right:30px}
+.hud .hz-wave{position:absolute;top:24px;right:320px}
+.hud .hz-tr .feed{width:280px}
+.hud .hz-tr .feed .f-row{padding:5px 12px;font-size:12.5px}
+/* genre-mode layouts */
+.hud .hz-bc .cardzone{width:780px;max-width:90vw}
+.hud .hz-ml .turnpanel{width:290px}
+.hud .hz-ml .survival{flex-direction:column;align-items:flex-start}
+.hud .hz-bc .initiative{align-items:center}
+.hud .hz-br .cmdcard{grid-template-columns:repeat(4,48px)}
+.hud .hz-br .cmdcard .cmd{width:48px;height:48px}
+.hud[data-mode="cards"] .hz-tr{top:76px}
+.reticle{position:absolute;left:50%;top:44%;z-index:30;width:30px;height:30px;pointer-events:none;
+  transform:translate(-50%,-50%);color:var(--accent);opacity:.85;filter:drop-shadow(0 1px 2px rgba(0,0,0,.6))}
+.reticle::before{content:"";position:absolute;left:50%;top:0;width:2.4px;height:100%;transform:translateX(-50%);
+  background:linear-gradient(180deg,currentColor 0 32%,transparent 32% 68%,currentColor 68%)}
+.reticle::after{content:"";position:absolute;top:50%;left:0;height:2.4px;width:100%;transform:translateY(-50%);
+  background:linear-gradient(90deg,currentColor 0 32%,transparent 32% 68%,currentColor 68%)}
+.lowhp-vig{position:absolute;inset:0;z-index:45;pointer-events:none;opacity:0;transition:opacity .4s;
+  background:radial-gradient(ellipse at center,transparent 42%,rgba(180,20,30,.55) 100%)}
+.lowhp-vig.on{opacity:1;animation:lowpulse 1.1s ease-in-out infinite}
+@keyframes lowpulse{50%{opacity:.5}}
+.dlg-float{position:absolute;left:50%;bottom:154px;z-index:55;
+  transform:translateX(-50%) translateY(16px);opacity:0;pointer-events:none;transition:all .25s}
+.dlg-float.show{opacity:1;transform:translateX(-50%);pointer-events:auto}
+@media (max-width:1500px){.hud .hz-wp,.hud .hz-wave{display:none}}
+@media (max-width:1250px){.hud .hz-boss,.hud .hz-prompt{display:none}}
