@@ -101,7 +101,7 @@ export const MODEL_URLS = {
   // copying the GLB into roster/kronos/attires/attire1/model.glb is a follow-up.
   kronos: '../roster/kronos/attires/attire1/model-rerig.glb',
   // SAM-UR-A1 Attire 1 (owner 2026-10-19): Tripo pull replaces the fan-rip placeholder.
-  'sam-ur-a1': '../roster/sam-ur-a1/attires/attire1/model-rigged.glb',
+  'sam-ur-a1': '../roster/sam-ur-a1/attires/attire1/model-rerig.glb',
   // SAKU RA (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   'saku-ra': '../roster/sakura/attires/attire1/model-rerig.glb',
@@ -422,7 +422,9 @@ export const MODEL_URLS = {
   vainabel: '../roster/vainabel/attires/attire1/model-rigged.glb',
   // CHORDZ (owner 2026-10-15: Lars -> Chordz, emo guitarist). His Tripo sits
   // archived as an unrigged static under attires/attire1/source/.
-  chordz: '../roster/chordz/attires/attire1/source/chordz-a1-rigged.glb',
+  // Two rigs of the same Tripo static exist: source/chordz-a1-rigged.glb (crew, Wave 2 B1) and
+  // model-rigged.glb (Claude, same GameRig pipeline + limb isolation; same stance in game, 2026-10-23).
+  chordz: '../roster/chordz/attires/attire1/model-rigged.glb',
   // GASHADOKURO + AOTSUKI (OBSOLETE-ORIGINALS rule, docs/OBSOLETE-ORIGINALS-
   // RULE.md): the Kuma/Panda models ARE the proprietary successors now — the
   // keys are the successors' names; there is no 'kuma'/'panda' fighter key.
