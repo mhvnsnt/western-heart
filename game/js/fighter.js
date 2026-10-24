@@ -17,6 +17,7 @@
    Hitboxes vs hurtboxes, blocking w/ 12% chip + blockstun,
    hitstop, knockback, launchers, camera shake.
    ============================================================ */
+import { applyCharOverrides, applyPoseOverlay } from './studio/studio-apply.js';
 import * as THREE from 'three';
 import { assets } from './assets.js';
 import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK } from './t3anims.js';
@@ -292,6 +293,8 @@ export class Fighter {
     // Clamp explicit stats too — no fighter should move at teleport speed
     if (this.stats.speed > 3.5) this.stats.speed = 3.5;
     this.aiProfile = charData.ai || { aggression: 0.6, grabBias: 0.15, reaction: 0.55 };
+    // STUDIOS (Bannon port): AI DNA / Strike Lab saves ride on the real profile.
+    try { applyCharOverrides(this); } catch (e) { /* studio data optional */ }
 
     // vitals
     this.maxHp = 100; this.hp = 100;
@@ -1477,6 +1480,10 @@ export class Fighter {
 
     // 4) Advance clips (writes the posed skeleton into bones)
     this.mixer.update(dt);
+    // 4b) POSE STUDIO fight stance: additive overlay on the bank stance (idle/walk only).
+    if (this.studio && this.studio.fightPose && this.model && (this.state === 'idle' || this.state === 'walk')) {
+      try { applyPoseOverlay(this.model, this.studio.fightPose, 1, (this._studioCache ||= {})); } catch (e) {}
+    }
 
     // 5) Refresh world matrices so IK reads the posed skeleton
     this.root.updateWorldMatrix(true, true);

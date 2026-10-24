@@ -629,6 +629,11 @@ document.addEventListener('click', (e) => {
     else if (a === 'show-ranks') {
       lazy.ranks().then((m) => m.initRanks().then(() => m.openRankHub()));
     }
+    else if (a === 'mode-studios') {
+      // STUDIOS (Bannon port): Pose / Move Forge / Mocap / Strike Lab ... saves feed select + fights.
+      audio.uiClick();
+      window.location.href = 'studio.html';
+    }
     else if (a === 'mode-create') {
       // Character creation — launches the Create Fighter CAW suite.
       // Returns to game menu via the BACK TO GAME button in the creator.

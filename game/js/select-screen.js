@@ -28,6 +28,7 @@
    (fighter.js: { speed: 2.8, jump: 7.2, power: 1.1,
    defense: 1.05 }, speed clamped to 3.5).
    ============================================================ */
+import { applyPoseOverlay, studioPoseFor } from './studio/studio-apply.js';
 import * as THREE from 'three';
 import { assets } from './assets.js';
 import { loadGuardStance, createAimStance } from './stance-aim.js';
@@ -161,6 +162,7 @@ export class PreviewPane {
       this.scene.add(this.model);
       this.mixer = inst.mixer;
       this.hasStance = false;
+      this._studioPose = studioPoseFor(c.id, 'selectPose'); this._studioCache = {}; // POSE STUDIO select pose
       // REAL TEKKEN IDLE (owner: use the teardown files; NO-T-POSE
       // law): where this fighter's moveset source has a decoded T3
       // bank, play the bank's looping stance clip on the preview
@@ -293,6 +295,7 @@ export class PreviewPane {
     if (!this.renderer || !this.scene || !this.camera) return;
     if (this.mixer) this.mixer.update(dt);
     if (this.aim) { this._aimT += dt; this.aim.apply(this._aimT); }
+    if (this._studioPose && this.model) { try { applyPoseOverlay(this.model, this._studioPose, 1, this._studioCache); } catch (e) {} }
     // Unless a validated teardown-bank stance is playing, the model
     // presents on a slow turntable (the pre-existing preview
     // presentation) — live 3D, never a still image. The GLBs'
