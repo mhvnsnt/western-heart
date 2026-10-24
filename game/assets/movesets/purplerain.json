@@ -1326,7 +1326,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "He fights in 4/4 time. The kicks land on the beat. No one has ever found the rhythm twice."
+      "note": "He fights in 4/4 time. The kicks land on the beat. No one has ever found the rhythm twice.",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u+K": {
       "name": "Encore Bow [WH SIGNATURE]",
@@ -1347,7 +1352,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "His standing bet with Silvertongue: who bows lower after a win. Rising showman kick, bow included."
+      "note": "His standing bet with Silvertongue: who bows lower after a win. Rising showman kick, bow included.",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Four-Four Time [WH SIGNATURE]",
@@ -1367,7 +1377,12 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "He fights in 4/4 time. The kicks land on the beat. No one has ever found the rhythm twice.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "PURPLE RAIN 1+2 (T3 jin r32)",
@@ -1407,7 +1422,12 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "His standing bet with Silvertongue: who bows lower after a win. Rising showman kick, bow included.",
-      "input_remapped_from": "u+K"
+      "input_remapped_from": "u+K",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 89,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+2": {
       "name": "PURPLE RAIN f+2 (T3 jin r220)",
@@ -1449,7 +1469,12 @@
         "f+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 220,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+4": {
       "name": "PURPLE RAIN f+4 (T3 jin r214)",
@@ -1847,7 +1872,12 @@
         ],
         "total": 34
       },
-      "note": "High; on block -10"
+      "note": "High; on block -10",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 219,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "d+1+2,1": {
       "name": "PURPLE RAIN d+1+2,1 (T3 jin r177)",
@@ -4247,7 +4277,12 @@
       ],
       "move_class": "strike",
       "note": "Mid; on block -1",
-      "t8_input": "1+2"
+      "t8_input": "1+2",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1,2": {
       "name": "Left Right Combo",
@@ -4276,7 +4311,12 @@
         ],
         "total": 14
       },
-      "note": "High; on block -3"
+      "note": "High; on block -3",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,2": {
       "name": "Left Right Combo (2)",
@@ -4307,7 +4347,12 @@
         ],
         "total": 28
       },
-      "note": "Mid; on block -13"
+      "note": "Mid; on block -13",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,2,3": {
       "name": "Revolution Zwei",
@@ -4340,7 +4385,12 @@
         ],
         "total": 51
       },
-      "note": "High; on block -3; knockdown on hit"
+      "note": "High; on block -3; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2+3+4": {
       "name": "Ki Charge",
@@ -4360,7 +4410,12 @@
       "input_slots": [
         "1+2+3+4"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1,2,4": {
       "name": "Left Right Mid Kick",
@@ -4391,7 +4446,12 @@
         ],
         "total": 24
       },
-      "note": "Mid; on block -12"
+      "note": "Mid; on block -12",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,&amp;#58;4": {
       "name": "Left Right Mid Kick",
@@ -4422,7 +4482,12 @@
         ],
         "total": 26
       },
-      "note": "Mid; on block -12"
+      "note": "Mid; on block -12",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,3": {
       "name": "Jab (3)",
@@ -4451,7 +4516,12 @@
         ],
         "total": 10
       },
-      "note": "High; on block -11"
+      "note": "High; on block -11",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,3,&amp;#58;3": {
       "name": "Jab (&amp;#58;3)",
@@ -4482,7 +4552,12 @@
         ],
         "total": 14
       },
-      "note": "Mid; on block -11"
+      "note": "Mid; on block -11",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,3,&amp;#58;3,&amp;#58;3": {
       "name": "[[Acid Rain]]",
@@ -4515,7 +4590,12 @@
         ],
         "total": 28
       },
-      "note": "High; on block -17; knockdown on hit"
+      "note": "High; on block -17; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,1": {
       "name": "Right Cross (1)",
@@ -4544,7 +4624,12 @@
         ],
         "total": 18
       },
-      "note": "High; on block -5"
+      "note": "High; on block -5",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,1,1": {
       "name": "Combination Drei",
@@ -4575,7 +4660,12 @@
         ],
         "total": 36
       },
-      "note": "Mid; on block -12"
+      "note": "Mid; on block -12",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,1,3": {
       "name": "Combination Fünf",
@@ -4606,7 +4696,12 @@
         ],
         "total": 38
       },
-      "note": "High; on block -4; knockdown on hit"
+      "note": "High; on block -4; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,1,4": {
       "name": "Combination Vier",
@@ -4637,7 +4732,12 @@
         ],
         "total": 36
       },
-      "note": "Low; on block -15"
+      "note": "Low; on block -15",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,2": {
       "name": "Right Cross (2)",
@@ -4666,7 +4766,12 @@
         ],
         "total": 24
       },
-      "note": "Mid; on block -13"
+      "note": "Mid; on block -13",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,2,3": {
       "name": "Revolution Zwei",
@@ -4697,7 +4802,12 @@
         ],
         "total": 47
       },
-      "note": "High; on block -3; knockdown on hit"
+      "note": "High; on block -3; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2+3": {
       "name": "Heat Burst",
@@ -4725,7 +4835,12 @@
         ],
         "total": 24
       },
-      "note": "Mid; on block +1"
+      "note": "Mid; on block +1",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "2+3+4": {
       "name": "Taunt",
@@ -4745,7 +4860,12 @@
       "input_slots": [
         "2+3+4"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "3,3": {
       "name": "Mist Wolf Combination",
@@ -4774,7 +4894,12 @@
         ],
         "total": 34
       },
-      "note": "High; on block -10"
+      "note": "High; on block -10",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3~3": {
       "name": "Mist Trap",
@@ -4795,7 +4920,12 @@
         "3~3"
       ],
       "move_class": "strike",
-      "note": "High; on block -9"
+      "note": "High; on block -9",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "3~3,&amp;#58;4": {
       "name": "Mist Trap Throw",
@@ -4829,7 +4959,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 140,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3+4": {
       "name": "Hitman",
@@ -4849,7 +4984,12 @@
       "input_slots": [
         "3+4"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 51,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "4,3": {
       "name": "Head Kick (3)",
@@ -4871,7 +5011,12 @@
         "4,3"
       ],
       "move_class": "string",
-      "note": "High; on block -14"
+      "note": "High; on block -14",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,3,3": {
       "name": "Spinning Hammer Kick",
@@ -4894,7 +5039,12 @@
         "4,3,3"
       ],
       "move_class": "string",
-      "note": "Mid; on block -13"
+      "note": "Mid; on block -13",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,3,4": {
       "name": "Spin Kick Somersault Combo",
@@ -4917,7 +5067,12 @@
         "4,3,4"
       ],
       "move_class": "string",
-      "note": "Mid; on block -9; knockdown on hit"
+      "note": "Mid; on block -9; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,4": {
       "name": "Head Kick (4)",
@@ -4939,7 +5094,12 @@
         "4,4"
       ],
       "move_class": "string",
-      "note": "High; on block -13"
+      "note": "High; on block -13",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,4,4": {
       "name": "Machinegun Kicks",
@@ -4962,7 +5122,12 @@
         "4,4,4"
       ],
       "move_class": "string",
-      "note": "High; on block -13"
+      "note": "High; on block -13",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,4,&amp;#58;4": {
       "name": "Machinegun Kicks Cardinal",
@@ -4985,7 +5150,12 @@
         "4,4,&amp;#58;4"
       ],
       "move_class": "string",
-      "note": "High; on block -9; knockdown on hit"
+      "note": "High; on block -9; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,u+3": {
       "name": "Lee Somersault",
@@ -5014,7 +5184,12 @@
         ],
         "total": 37
       },
-      "note": "Mid; on block -1; knockdown on hit"
+      "note": "Mid; on block -1; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1_t8": {
       "name": "Move b+1 (b+1)",
@@ -5036,7 +5211,12 @@
       ],
       "move_class": "strike",
       "note": "High; on block -0",
-      "t8_input": "b+1"
+      "t8_input": "b+1",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 216,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+1,1": {
       "name": "Move 1 (1)",
@@ -5065,7 +5245,12 @@
         ],
         "total": 15
       },
-      "note": "Mid; on block -5"
+      "note": "Mid; on block -5",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1&amp;#58;1": {
       "name": "Move b+1&amp;#58;1 (b+1&amp;#58;1)",
@@ -5093,7 +5278,12 @@
         ],
         "total": 18
       },
-      "note": "High, Mid; on block -5"
+      "note": "High, Mid; on block -5",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+1,1,2": {
       "name": "Triple Fang",
@@ -5124,7 +5314,12 @@
         ],
         "total": 33
       },
-      "note": "High; on block -11"
+      "note": "High; on block -11",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1&amp;#58;1+2": {
       "name": "Double Fang Cardinal",
@@ -5152,7 +5347,12 @@
         ],
         "total": 37
       },
-      "note": "High, High; on block -6"
+      "note": "High, High; on block -6",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+1&amp;#58;1,2": {
       "name": "Triple Fang Cardinal",
@@ -5182,7 +5382,12 @@
         ],
         "total": 41
       },
-      "note": "High; on block -6"
+      "note": "High; on block -6",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1+3": {
       "name": "Mist Illusion",
@@ -5202,7 +5407,12 @@
       "input_slots": [
         "b+1+3"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+1+3,4": {
       "name": "Illusion Edge",
@@ -5224,7 +5434,12 @@
         "b+1+3,4"
       ],
       "move_class": "string",
-      "note": "Mid; knockdown on hit"
+      "note": "Mid; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+2": {
       "name": "Rear Cross Punch",
@@ -5245,7 +5460,12 @@
         "b+2"
       ],
       "move_class": "strike",
-      "note": "High; on block -5"
+      "note": "High; on block -5",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 97,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+2,4": {
       "name": "Rear Cross Punch (4)",
@@ -5274,7 +5494,12 @@
         ],
         "total": 25
       },
-      "note": "High; on block -9"
+      "note": "High; on block -9",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+2,4,3": {
       "name": "Super High Combination",
@@ -5305,7 +5530,12 @@
         ],
         "total": 46
       },
-      "note": "High; on block -0; knockdown on hit"
+      "note": "High; on block -0; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+3": {
       "name": "Move b+3 (b+3)",
@@ -5326,7 +5556,12 @@
         "b+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -14"
+      "note": "Low; on block -14",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 103,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+3,3": {
       "name": "Stinging Rush",
@@ -5355,7 +5590,12 @@
         ],
         "total": 21
       },
-      "note": "High; on block -12"
+      "note": "High; on block -12",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+3+4": {
       "name": "Silver Revolution",
@@ -5376,7 +5616,12 @@
         "b+3+4"
       ],
       "move_class": "strike",
-      "note": "High; on block -9; knockdown on hit"
+      "note": "High; on block -9; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 110,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "b+4": {
       "name": "Silver Heel",
@@ -5397,7 +5642,12 @@
         "b+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -3"
+      "note": "Mid; on block -3",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 112,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "Back Throw": {
       "name": "Face Crusher",
@@ -5422,7 +5672,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(back to wall).b,b,UB": {
       "name": "Wall Jump Backflip",
@@ -5443,7 +5698,12 @@
         "(back to wall).b,b,UB"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +1"
+      "note": "Mid; on block +1",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b,B+4": {
       "name": "Lee Cutter",
@@ -5464,7 +5724,12 @@
         "b,B+4"
       ],
       "move_class": "strike",
-      "note": "High; on block +2; knockdown on hit"
+      "note": "High; on block +2; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+2": {
       "name": "Gut Polisher",
@@ -5485,7 +5750,12 @@
         "d+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -6"
+      "note": "Mid; on block -6",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 137,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d+3": {
       "name": "Silver Low",
@@ -5506,7 +5776,12 @@
         "d+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -15"
+      "note": "Low; on block -15",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+4": {
       "name": "Shin",
@@ -5527,7 +5802,12 @@
         "d+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -13"
+      "note": "Low; on block -13",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 339,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d+4,4": {
       "name": "Shin (4)",
@@ -5556,7 +5836,12 @@
         ],
         "total": 15
       },
-      "note": "Low; on block -15"
+      "note": "Low; on block -15",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+4,4,4": {
       "name": "Shin (4)",
@@ -5587,7 +5872,12 @@
         ],
         "total": 20
       },
-      "note": "Low; on block -15"
+      "note": "Low; on block -15",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+4,4,4,4": {
       "name": "Laser Edge Kick Combo",
@@ -5620,7 +5910,12 @@
         ],
         "total": 41
       },
-      "note": "Mid; on block -20; knockdown on hit"
+      "note": "Mid; on block -20; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+4,n,4": {
       "name": "Head Kick",
@@ -5649,7 +5944,12 @@
         ],
         "total": 23
       },
-      "note": "High; on block -9"
+      "note": "High; on block -9",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+1": {
       "name": "Crouch Jab",
@@ -5670,7 +5970,12 @@
         "db+1"
       ],
       "move_class": "strike",
-      "note": "Special low; on block -5"
+      "note": "Special low; on block -5",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+2": {
       "name": "Move db+2 (db+2)",
@@ -5691,7 +5996,12 @@
         "db+2"
       ],
       "move_class": "strike",
-      "note": "Special low; on block -4"
+      "note": "Special low; on block -4",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+3": {
       "name": "Bump Kick",
@@ -5712,7 +6022,12 @@
         "db+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -12"
+      "note": "Low; on block -12",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+3+4": {
       "name": "Grass Snake",
@@ -5733,7 +6048,12 @@
         "db+3+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -13"
+      "note": "Low; on block -13",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "db+4": {
       "name": "Move db+4 (db+4)",
@@ -5754,7 +6074,12 @@
         "db+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -15"
+      "note": "Low; on block -15",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1": {
       "name": "Quick Upper",
@@ -5775,7 +6100,12 @@
         "df+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -1"
+      "note": "Mid; on block -1",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1,2": {
       "name": "2nd Hit",
@@ -5804,7 +6134,12 @@
         ],
         "total": 15
       },
-      "note": "High; on block -10"
+      "note": "High; on block -10",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1,2,2": {
       "name": "3rd Hit",
@@ -5835,7 +6170,12 @@
         ],
         "total": 21
       },
-      "note": "High; on block -18"
+      "note": "High; on block -18",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1,2,2,1": {
       "name": "4th Hit",
@@ -5868,7 +6208,12 @@
         ],
         "total": 26
       },
-      "note": "High; on block -10"
+      "note": "High; on block -10",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1,2,2,1,3": {
       "name": "5th Hit",
@@ -5903,7 +6248,12 @@
         ],
         "total": 33
       },
-      "note": "High; on block -26~-25"
+      "note": "High; on block -26~-25",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1,2,2,1,3,3": {
       "name": "6th Hit",
@@ -5940,7 +6290,12 @@
         ],
         "total": 39
       },
-      "note": "Low; on block -25"
+      "note": "Low; on block -25",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+2": {
       "name": "Silver Uppercut",
@@ -5961,7 +6316,12 @@
         "df+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -7; knockdown on hit"
+      "note": "Mid; on block -7; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3": {
       "name": "Lee Left Middle Kick",
@@ -5982,7 +6342,12 @@
         "df+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -8"
+      "note": "Mid; on block -8",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,2": {
       "name": "Lee Left Middle Kick (2)",
@@ -6011,7 +6376,12 @@
         ],
         "total": 26
       },
-      "note": "High; on block -10"
+      "note": "High; on block -10",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,2,3": {
       "name": "Mercury Drive",
@@ -6042,7 +6412,12 @@
         ],
         "total": 46
       },
-      "note": "Mid; on block -14"
+      "note": "Mid; on block -14",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+4": {
       "name": "Front Kick",
@@ -6063,7 +6438,12 @@
         "df+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+4,4": {
       "name": "Fabulous Whip",
@@ -6092,7 +6472,12 @@
         ],
         "total": 33
       },
-      "note": "High; on block -9"
+      "note": "High; on block -9",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+1+2": {
       "name": "Aggressive One-Two",
@@ -6120,7 +6505,12 @@
         ],
         "total": 32
       },
-      "note": "High, High; on block -13; knockdown on hit"
+      "note": "High, High; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 357,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+3": {
       "name": "Move f+3 (f+3)",
@@ -6141,7 +6531,12 @@
         "f+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -18"
+      "note": "Mid; on block -18",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 79,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+3,3": {
       "name": "Move 3 (3)",
@@ -6170,7 +6565,12 @@
         ],
         "total": 9
       },
-      "note": "Mid; on block -18"
+      "note": "Mid; on block -18",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3,3,3": {
       "name": "Move 3 (3)",
@@ -6201,7 +6601,12 @@
         ],
         "total": 12
       },
-      "note": "High; on block -18"
+      "note": "High; on block -18",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3,3,3,3": {
       "name": "Move 3 (3)",
@@ -6234,7 +6639,12 @@
         ],
         "total": 15
       },
-      "note": "High; on block -18"
+      "note": "High; on block -18",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3,3,3,3,3": {
       "name": "Move 3 (3)",
@@ -6269,7 +6679,12 @@
         ],
         "total": 18
       },
-      "note": "High; on block -18; knockdown on hit"
+      "note": "High; on block -18; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3,3,3,3,3,4": {
       "name": "Acid Storm",
@@ -6305,7 +6720,12 @@
         ],
         "total": 18
       },
-      "note": "High; on block -9; knockdown on hit"
+      "note": "High; on block -9; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3,3,3,3,3,&amp;#58;4": {
       "name": "Acid Storm Cardinal",
@@ -6341,7 +6761,12 @@
         ],
         "total": 18
       },
-      "note": "High; on block -9; knockdown on hit"
+      "note": "High; on block -9; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3+4": {
       "name": "Feather Landing",
@@ -6369,7 +6794,12 @@
         ],
         "total": 30
       },
-      "note": "Mid, Mid; on block +4c"
+      "note": "Mid, Mid; on block +4c",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f+4_t8": {
       "name": "Silver Whip",
@@ -6391,7 +6821,12 @@
       ],
       "move_class": "strike",
       "note": "High; on block -7",
-      "t8_input": "f+4"
+      "t8_input": "f+4",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 214,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+4,1": {
       "name": "Deadly Revolution",
@@ -6420,7 +6855,12 @@
         ],
         "total": 37
       },
-      "note": "High; on block -5; knockdown on hit"
+      "note": "High; on block -5; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+4,&amp;#58;1": {
       "name": "Deadly Revolution Cardinal",
@@ -6449,7 +6889,12 @@
         ],
         "total": 40
       },
-      "note": "High; on block +5; knockdown on hit"
+      "note": "High; on block +5; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+4,3": {
       "name": "Deadly Arc",
@@ -6478,7 +6923,12 @@
         ],
         "total": 31
       },
-      "note": "Mid; on block -8"
+      "note": "Mid; on block -8",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 245,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "FC.1": {
       "name": "Move FC.1 (FC.1)",
@@ -6499,7 +6949,12 @@
         "FC.1"
       ],
       "move_class": "strike",
-      "note": "Special low; on block -5"
+      "note": "Special low; on block -5",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.2": {
       "name": "Move FC.2 (FC.2)",
@@ -6520,7 +6975,12 @@
         "FC.2"
       ],
       "move_class": "strike",
-      "note": "Special low; on block -4"
+      "note": "Special low; on block -4",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.3": {
       "name": "Move FC.3 (FC.3)",
@@ -6541,7 +7001,12 @@
         "FC.3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -17"
+      "note": "Low; on block -17",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.4": {
       "name": "Move FC.4 (FC.4)",
@@ -6562,7 +7027,12 @@
         "FC.4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -15"
+      "note": "Low; on block -15",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.df+4": {
       "name": "Silver Tail",
@@ -6583,7 +7053,12 @@
         "FC.df+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -14"
+      "note": "Low; on block -14",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.df,d,DF": {
       "name": "Slide Step",
@@ -6603,7 +7078,12 @@
       "input_slots": [
         "FC.df,d,DF"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "FC.df,d,DF#3": {
       "name": "Friction Spear Cardinal",
@@ -6624,7 +7104,12 @@
         "FC.df,d,DF#3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -15~-9"
+      "note": "Low; on block -15~-9",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.df,d,DF+3": {
       "name": "Friction Spear",
@@ -6645,7 +7130,12 @@
         "FC.df,d,DF+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -15~-9"
+      "note": "Low; on block -15~-9",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.UF+3+4": {
       "name": "Catapult Drop",
@@ -6666,7 +7156,12 @@
         "FC.UF+3+4"
       ],
       "move_class": "strike",
-      "note": "Mid, Mid; on block -4; knockdown on hit"
+      "note": "Mid, Mid; on block -4; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "FC.UF+4": {
       "name": "Catapult Kick",
@@ -6687,7 +7182,12 @@
         "FC.UF+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -17; knockdown on hit"
+      "note": "Mid; on block -17; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+2": {
       "name": "Jostle Wolf",
@@ -6708,7 +7208,12 @@
         "f,F+2"
       ],
       "move_class": "strike",
-      "note": "High; on block +2"
+      "note": "High; on block +2",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f&amp;#58;F+2": {
       "name": "Jostle Wolf Cardinal",
@@ -6729,7 +7234,12 @@
         "f&amp;#58;F+2"
       ],
       "move_class": "strike",
-      "note": "High; on block +2"
+      "note": "High; on block +2",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+3": {
       "name": "Pulse Blast",
@@ -6750,7 +7260,12 @@
         "f,F+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9; knockdown on hit"
+      "note": "Mid; on block -9; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+4": {
       "name": "Deadly Edge",
@@ -6771,7 +7286,12 @@
         "f,F+4"
       ],
       "move_class": "strike",
-      "note": "High; on block -5; knockdown on hit"
+      "note": "High; on block -5; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,F+3": {
       "name": "Move f,f,F+3 (f,f,F+3)",
@@ -6792,7 +7312,12 @@
         "f,f,F+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9; knockdown on hit"
+      "note": "Mid; on block -9; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,F+3,4": {
       "name": "Waxing Crescent",
@@ -6814,7 +7339,12 @@
         "f,f,F+3,4"
       ],
       "move_class": "string",
-      "note": "Mid; on block +3; knockdown on hit"
+      "note": "Mid; on block +3; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,n": {
       "name": "Mist Step",
@@ -6834,7 +7364,12 @@
       "input_slots": [
         "f,n"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "H.2+3": {
       "name": "Paradigm Breaker",
@@ -6862,7 +7397,12 @@
         ],
         "total": 22
       },
-      "note": "l(t), Mid, Mid; on block -14"
+      "note": "l(t), Mid, Mid; on block -14",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "H.d+1+2": {
       "name": "Phantom Rose",
@@ -6883,7 +7423,12 @@
         "H.d+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +4; knockdown on hit"
+      "note": "Mid; on block +4; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "H.df+3+4": {
       "name": "Crimson Howl",
@@ -6904,7 +7449,12 @@
         "H.df+3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +2; knockdown on hit"
+      "note": "Mid; on block +2; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "HMS.1": {
       "name": "Freaker Jab",
@@ -6925,7 +7475,12 @@
         "HMS.1"
       ],
       "move_class": "strike",
-      "note": "High; on block +2"
+      "note": "High; on block +2",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HMS.1,1": {
       "name": "Freaker Jab (1)",
@@ -6954,7 +7509,12 @@
         ],
         "total": 14
       },
-      "note": "High; on block -2"
+      "note": "High; on block -2",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HMS.1,1,1": {
       "name": "Amazing Swipe",
@@ -6985,7 +7545,12 @@
         ],
         "total": 34
       },
-      "note": "High; on block -7"
+      "note": "High; on block -7",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HMS.1+2": {
       "name": "Poison Touch",
@@ -7013,7 +7578,12 @@
         ],
         "total": 25
       },
-      "note": "Mid, Mid; on block -5"
+      "note": "Mid, Mid; on block -5",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "HMS.1,4": {
       "name": "Excellent Combo",
@@ -7042,7 +7612,12 @@
         ],
         "total": 24
       },
-      "note": "Mid; on block -8"
+      "note": "Mid; on block -8",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HMS.2": {
       "name": "Scatter Blow",
@@ -7063,7 +7638,12 @@
         "HMS.2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HMS.3": {
       "name": "Scatter Kick",
@@ -7095,7 +7675,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 139,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HMS.4": {
       "name": "Shin Slicer",
@@ -7116,7 +7701,12 @@
         "HMS.4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -13"
+      "note": "Low; on block -13",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HMS.u+3": {
       "name": "Silver Slash",
@@ -7137,7 +7727,12 @@
         "HMS.u+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HMS.u+4": {
       "name": "Silver Circle",
@@ -7158,7 +7753,12 @@
         "HMS.u+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +5c"
+      "note": "Mid; on block +5c",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Left Throw": {
       "name": "Lee Harassment",
@@ -7183,7 +7783,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "MS.3": {
       "name": "Move MS.3 (MS.3)",
@@ -7204,7 +7809,12 @@
         "MS.3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -12"
+      "note": "Mid; on block -12",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "MS.3+4": {
       "name": "Friction Spear",
@@ -7225,7 +7835,12 @@
         "MS.3+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -15~-9"
+      "note": "Low; on block -15~-9",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "MS.3,4": {
       "name": "Inverted Axle",
@@ -7254,7 +7869,12 @@
         ],
         "total": 20
       },
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "MS.b,n": {
       "name": "Sway",
@@ -7274,7 +7894,12 @@
       "input_slots": [
         "MS.b,n"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "MS.b,n,4": {
       "name": "Axe Sweep",
@@ -7296,7 +7921,12 @@
         "MS.b,n,4"
       ],
       "move_class": "string",
-      "note": "Low; on block -13"
+      "note": "Low; on block -13",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "qcf+4": {
       "name": "Blazing Kick",
@@ -7317,7 +7947,12 @@
         "qcf+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -17; knockdown on hit"
+      "note": "Mid; on block -17; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "R.df+1+2": {
       "name": "The Marvelous Rose",
@@ -7338,7 +7973,12 @@
         "R.df+1+2"
       ],
       "move_class": "special",
-      "note": "Mid, Throw; on block -18"
+      "note": "Mid, Throw; on block -18",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "Right Throw": {
       "name": "Lee Stunner",
@@ -7363,7 +8003,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u+3": {
       "name": "Fake",
@@ -7383,7 +8028,12 @@
       "input_slots": [
         "u+3"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ub+3": {
       "name": "Wheel of Fate",
@@ -7404,7 +8054,12 @@
         "ub+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ub+3+4": {
       "name": "Silver Cyclone",
@@ -7425,7 +8080,12 @@
         "ub+3+4"
       ],
       "move_class": "strike",
-      "note": "h!; knockdown on hit"
+      "note": "h!; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "ub,b": {
       "name": "Hitman",
@@ -7445,7 +8105,12 @@
       "input_slots": [
         "ub,b"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "uf+1+2": {
       "name": "Knee Drive",
@@ -7470,7 +8135,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+3": {
       "name": "Move uf+3 (uf+3)",
@@ -7491,7 +8161,12 @@
         "uf+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+3,1": {
       "name": "Brilliant Rosé",
@@ -7520,7 +8195,12 @@
         ],
         "total": 30
       },
-      "note": "Mid; on block -12"
+      "note": "Mid; on block -12",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+3+4": {
       "name": "Silver Bullet",
@@ -7541,7 +8221,12 @@
         "uf+3+4"
       ],
       "move_class": "strike",
-      "note": "High; on block +5"
+      "note": "High; on block +5",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "uf+3,4": {
       "name": "Double Mazurek",
@@ -7570,7 +8255,12 @@
         ],
         "total": 35
       },
-      "note": "High; on block -3; knockdown on hit"
+      "note": "High; on block -3; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+4": {
       "name": "Silver Arrow",
@@ -7591,7 +8281,12 @@
         "uf+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf,n,4": {
       "name": "Delayed Rising Toe Kick",
@@ -7612,7 +8307,12 @@
         "uf,n,4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws1": {
       "name": "Move ws1 (ws1)",
@@ -7633,7 +8333,12 @@
         "ws1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -2"
+      "note": "Mid; on block -2",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws1,2": {
       "name": "Wonderful Spin Blow",
@@ -7662,7 +8367,12 @@
         ],
         "total": 29
       },
-      "note": "High; on block -7"
+      "note": "High; on block -7",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws1,4": {
       "name": "Wonderful Combo",
@@ -7691,7 +8401,12 @@
         ],
         "total": 32
       },
-      "note": "High; on block -5"
+      "note": "High; on block -5",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws1,&amp;#58;4": {
       "name": "Wonderful Combo Cardinal",
@@ -7720,7 +8435,12 @@
         ],
         "total": 35
       },
-      "note": "High; on block -5"
+      "note": "High; on block -5",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws2": {
       "name": "Move ws2 (ws2)",
@@ -7741,7 +8461,12 @@
         "ws2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -8"
+      "note": "Mid; on block -8",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws2,3": {
       "name": "Rocket Heel",
@@ -7770,7 +8495,12 @@
         ],
         "total": 36
       },
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws2,4": {
       "name": "Twister Heel",
@@ -7799,7 +8529,12 @@
         ],
         "total": 35
       },
-      "note": "High; on block -2"
+      "note": "High; on block -2",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws3": {
       "name": "Move ws3 (ws3)",
@@ -7820,7 +8555,12 @@
         "ws3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -21"
+      "note": "Mid; on block -21",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws3,3": {
       "name": "Move 3 (3)",
@@ -7849,7 +8589,12 @@
         ],
         "total": 27
       },
-      "note": "Mid; on block -15"
+      "note": "Mid; on block -15",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws3,3,D+3": {
       "name": "Move D+3 (D+3)",
@@ -7880,7 +8625,12 @@
         ],
         "total": 35
       },
-      "note": "Low; on block -19"
+      "note": "Low; on block -19",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws3,3,D+3,3 ...": {
       "name": "Infinite Kick Chain: Low",
@@ -7913,7 +8663,12 @@
         ],
         "total": 45
       },
-      "note": "High; on block -16"
+      "note": "High; on block -16",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws3,3,DF+3": {
       "name": "Move DF+3 (DF+3)",
@@ -7944,7 +8699,12 @@
         ],
         "total": 37
       },
-      "note": "Mid; on block -19"
+      "note": "Mid; on block -19",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws3,3,DF+3,3 ...": {
       "name": "Infinite Kick Chain: Middle",
@@ -7977,7 +8737,12 @@
         ],
         "total": 47
       },
-      "note": "High; on block -16"
+      "note": "High; on block -16",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws4": {
       "name": "Toe Smash",
@@ -7998,7 +8763,12 @@
         "ws4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -6"
+      "note": "Mid; on block -6",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1~t8.lee": {
       "name": "Jab",
@@ -8027,7 +8797,12 @@
       "t8_damage": "5",
       "t8_input": "1",
       "merge_source": "t8:Lee-1",
-      "note": "Recovers 2f faster on hit or block (t27 r17)"
+      "note": "Recovers 2f faster on hit or block (t27 r17)",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "1+3~t8.lee": {
       "name": "Forearm Drop",
@@ -8059,7 +8834,12 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 288,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "2~t8.lee": {
       "name": "Right Cross",
@@ -8087,7 +8867,12 @@
       "t8_id": "Lee-2",
       "t8_damage": "10",
       "t8_input": "2",
-      "merge_source": "t8:Lee-2"
+      "merge_source": "t8:Lee-2",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "2+4~t8.lee": {
       "name": "Axle Throw",
@@ -8119,7 +8904,12 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 289,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "3~t8.lee": {
       "name": "Mist Kick",
@@ -8148,7 +8938,12 @@
       "t8_damage": "16",
       "t8_input": "3",
       "merge_source": "t8:Lee-3",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to HMS r27 with 4 (-8/+7); * Cancel to r10 standing or FC with b_db_d_df (Cannot block i18); * Cancel to r2? standing or r7 FC with u_d~b_db_d_df; &lt;/div&gt"
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to HMS r27 with 4 (-8/+7); * Cancel to r10 standing or FC with b_db_d_df (Cannot block i18); * Cancel to r2? standing or r7 FC with u_d~b_db_d_df; &lt;/div&gt",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "4~t8.lee": {
       "name": "Head Kick",
@@ -8177,7 +8972,12 @@
       "t8_damage": "14",
       "t8_input": "4",
       "merge_source": "t8:Lee-4",
-      "t8_alias": "Magic Four"
+      "t8_alias": "Magic Four",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "WALL.b,b,u/b": {
       "name": "PURPLE RAIN WALL.b,b,u/b",
@@ -8213,7 +9013,12 @@
       "merge_source": "t7:lee_1",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Back towards wall..."
+      "input_note": "Back towards wall...",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1~t7.lee": {
       "name": "PURPLE RAIN 1",
@@ -8247,7 +9052,12 @@
       "t7_on_hit": "+8",
       "t7_on_ch": "+8",
       "merge_source": "t7:lee_2",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "1,2~t7.lee": {
       "name": "Left Right Combo",
@@ -8288,6 +9098,11 @@
           9
         ],
         "total": 16
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2~t7.lee.2": {
@@ -8322,7 +9137,12 @@
       "t7_on_hit": "+5",
       "t7_on_ch": "+5",
       "merge_source": "t7:lee_4",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,2~t7.lee": {
       "name": "PURPLE RAIN 1,2,2",
@@ -8364,6 +9184,11 @@
           14
         ],
         "total": 30
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,2~t7.lee.2": {
@@ -8405,6 +9230,11 @@
           14
         ],
         "total": 23
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,2~t7.lee.3": {
@@ -8439,7 +9269,12 @@
       "t7_on_hit": "-2",
       "t7_on_ch": "-2",
       "merge_source": "t7:lee_7",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,2,3~t7.lee": {
       "name": "Left Right Combo to Revolution Zwei",
@@ -8483,7 +9318,12 @@
         ],
         "total": 53
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,2,3~t7.lee.2": {
       "name": "PURPLE RAIN 1,2,2,3",
@@ -8526,7 +9366,12 @@
         ],
         "total": 46
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,2,3~t7.lee.3": {
       "name": "PURPLE RAIN 1,2,2,3",
@@ -8568,7 +9413,12 @@
         ],
         "total": 37
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,2,3~t7.lee.4": {
       "name": "PURPLE RAIN 1,2,2,3",
@@ -8603,7 +9453,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_11",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,4~t7.lee": {
       "name": "Left Right Mid Kick",
@@ -8645,6 +9500,11 @@
           10
         ],
         "total": 26
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,4~t7.lee.2": {
@@ -8686,6 +9546,11 @@
           10
         ],
         "total": 19
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,4~t7.lee.3": {
@@ -8720,7 +9585,12 @@
       "t7_on_hit": "-1",
       "t7_on_ch": "-1",
       "merge_source": "t7:lee_14",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,4*": {
       "name": "Left Right Max Mid",
@@ -8762,6 +9632,11 @@
           22
         ],
         "total": 38
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,4*~t7.lee": {
@@ -8796,7 +9671,12 @@
       "t7_on_hit": "0",
       "t7_on_ch": "STUN",
       "merge_source": "t7:lee_16",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,3~t7.lee": {
       "name": "PURPLE RAIN 1,3",
@@ -8837,6 +9717,11 @@
           5
         ],
         "total": 12
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,3~t7.lee.2": {
@@ -8871,7 +9756,12 @@
       "t7_on_hit": "0",
       "t7_on_ch": "0",
       "merge_source": "t7:lee_18",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,3:3": {
       "name": "PURPLE RAIN 1,3:3",
@@ -8913,6 +9803,11 @@
           4
         ],
         "total": 16
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,3:3:3": {
@@ -8957,7 +9852,12 @@
         ],
         "total": 28
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2~t7.lee": {
       "name": "PURPLE RAIN 2",
@@ -8991,7 +9891,12 @@
       "t7_on_hit": "+7",
       "t7_on_ch": "+7",
       "merge_source": "t7:lee_21",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "2,1~t7.lee": {
       "name": "PURPLE RAIN 2,1",
@@ -9032,6 +9937,11 @@
           8
         ],
         "total": 18
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,1~t7.lee.2": {
@@ -9066,7 +9976,12 @@
       "t7_on_hit": "+6",
       "t7_on_ch": "+6",
       "merge_source": "t7:lee_23",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,1,1~t7.lee": {
       "name": "Combination Drei",
@@ -9108,6 +10023,11 @@
           18
         ],
         "total": 36
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,1,1~t7.lee.2": {
@@ -9149,6 +10069,11 @@
           18
         ],
         "total": 26
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,1,1~t7.lee.3": {
@@ -9184,7 +10109,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_26",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,1,3~t7.lee": {
       "name": "Combination Funf",
@@ -9227,7 +10157,12 @@
         ],
         "total": 38
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,1,3~t7.lee.2": {
       "name": "PURPLE RAIN 2,1,3",
@@ -9269,7 +10204,12 @@
         ],
         "total": 28
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,1,3~t7.lee.3": {
       "name": "PURPLE RAIN 2,1,3",
@@ -9304,7 +10244,12 @@
       "t7_on_ch": "S!",
       "merge_source": "t7:lee_29",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,1,4~t7.lee": {
       "name": "Combination Vier",
@@ -9346,6 +10291,11 @@
           18
         ],
         "total": 36
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,1,4~t7.lee.2": {
@@ -9387,6 +10337,11 @@
           18
         ],
         "total": 26
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,1,4~t7.lee.3": {
@@ -9421,7 +10376,12 @@
       "t7_on_hit": "0",
       "t7_on_ch": "+10",
       "merge_source": "t7:lee_32",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,2~t7.lee": {
       "name": "PURPLE RAIN 2,2",
@@ -9462,6 +10422,11 @@
           14
         ],
         "total": 24
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,2~t7.lee.2": {
@@ -9496,7 +10461,12 @@
       "t7_on_hit": "-2",
       "t7_on_ch": "-2",
       "merge_source": "t7:lee_34",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,2,3~t7.lee": {
       "name": "Right Cross to Revolution Zwei",
@@ -9539,7 +10509,12 @@
         ],
         "total": 47
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,2,3~t7.lee.2": {
       "name": "PURPLE RAIN 2,2,3",
@@ -9581,7 +10556,12 @@
         ],
         "total": 37
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,2,3~t7.lee.3": {
       "name": "PURPLE RAIN 2,2,3",
@@ -9616,7 +10596,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_37",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3~t7.lee": {
       "name": "Mist Kick",
@@ -9650,7 +10635,12 @@
       "t7_on_hit": "+7",
       "t7_on_ch": "+7",
       "merge_source": "t7:lee_38",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "3,3~t7.lee": {
       "name": "Mist Wolf Combination",
@@ -9691,6 +10681,11 @@
           18
         ],
         "total": 34
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3,3~t7.lee.2": {
@@ -9725,7 +10720,12 @@
       "t7_on_hit": "+1",
       "t7_on_ch": "+1",
       "merge_source": "t7:lee_40",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3~3~t7.lee": {
       "name": "Trick Kick",
@@ -9759,7 +10759,12 @@
       "t7_on_hit": "+1",
       "t7_on_ch": "+1",
       "merge_source": "t7:lee_41",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4~t7.lee": {
       "name": "PURPLE RAIN 4",
@@ -9794,7 +10799,12 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:lee_42",
       "recovery_from": "same-notation T8 recv",
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "4,3~t7.lee": {
       "name": "PURPLE RAIN 4,3",
@@ -9835,6 +10845,11 @@
           14
         ],
         "total": 30
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4,3~t7.lee.2": {
@@ -9869,7 +10884,12 @@
       "t7_on_hit": "-3",
       "t7_on_ch": "+2",
       "merge_source": "t7:lee_44",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,3,3~t7.lee": {
       "name": "Spinning Hammer Kick",
@@ -9912,7 +10932,12 @@
         ],
         "total": 50
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,3,3~t7.lee.2": {
       "name": "PURPLE RAIN 4,3,3",
@@ -9954,7 +10979,12 @@
         ],
         "total": 34
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,3,3~t7.lee.3": {
       "name": "PURPLE RAIN 4,3,3",
@@ -9989,7 +11019,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_47",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,3,4~t7.lee": {
       "name": "Spin Kick Somersault Combo",
@@ -10032,7 +11067,12 @@
         ],
         "total": 55
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,3,4~t7.lee.2": {
       "name": "PURPLE RAIN 4,3,4",
@@ -10074,7 +11114,12 @@
         ],
         "total": 39
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,3,4~t7.lee.3": {
       "name": "PURPLE RAIN 4,3,4",
@@ -10109,7 +11154,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_50",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,4~t7.lee": {
       "name": "PURPLE RAIN 4,4",
@@ -10150,6 +11200,11 @@
           6
         ],
         "total": 22
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4,4~t7.lee.2": {
@@ -10185,7 +11240,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_52",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,4,4~t7.lee": {
       "name": "Machinegun Kicks",
@@ -10227,6 +11287,11 @@
           8
         ],
         "total": 30
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4,4,4~t7.lee.2": {
@@ -10268,6 +11333,11 @@
           8
         ],
         "total": 14
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4,4,4~t7.lee.3": {
@@ -10303,7 +11373,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_55",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,u+3~t7.lee": {
       "name": "Lee Somersault",
@@ -10345,7 +11420,12 @@
         ],
         "total": 41
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,u+3~t7.lee.2": {
       "name": "PURPLE RAIN 4,u+3",
@@ -10380,7 +11460,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_57",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2~t7.lee": {
       "name": "Pirouette Punch",
@@ -10415,7 +11500,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_58",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "u/f+3~t7.lee": {
       "name": "PURPLE RAIN u/f+3",
@@ -10449,7 +11539,12 @@
       "t7_on_hit": "+2",
       "t7_on_ch": "+2",
       "merge_source": "t7:lee_59",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 55,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "u/f+3,1": {
       "name": "Brilliant Rosé",
@@ -10490,6 +11585,11 @@
           18
         ],
         "total": 30
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+3,1~t7.lee": {
@@ -10525,7 +11625,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_61",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/f+3,4": {
       "name": "Double Mazurek",
@@ -10567,7 +11672,12 @@
         ],
         "total": 35
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/f+3,4~t7.lee": {
       "name": "PURPLE RAIN u/f+3,4",
@@ -10602,7 +11712,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_63",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/f+4~t7.lee": {
       "name": "Silver Arrow",
@@ -10637,7 +11752,12 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:lee_64",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 80,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "u/f+3+4~t7.lee": {
       "name": "Silver Bullet",
@@ -10672,7 +11792,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_65",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 52,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+2~t7.lee": {
       "name": "PURPLE RAIN f+2",
@@ -10706,7 +11831,12 @@
       "t7_on_hit": "+2",
       "t7_on_ch": "+2",
       "merge_source": "t7:lee_66",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 220,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+2,1~t7.lee": {
       "name": "Double Signal",
@@ -10748,7 +11878,12 @@
         ],
         "total": 36
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 219,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+2,1~t7.lee.2": {
       "name": "PURPLE RAIN f+2,1",
@@ -10783,7 +11918,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_68",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 219,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+3~t7.lee": {
       "name": "PURPLE RAIN f+3",
@@ -10817,7 +11957,12 @@
       "t7_on_hit": "-7",
       "t7_on_ch": "-7",
       "merge_source": "t7:lee_69",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 79,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+3,3~t7.lee": {
       "name": "PURPLE RAIN f+3,3",
@@ -10858,6 +12003,11 @@
           3
         ],
         "total": 9
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+3,3,3~t7.lee": {
@@ -10900,6 +12050,11 @@
           3
         ],
         "total": 12
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+3,3,3,3~t7.lee": {
@@ -10943,6 +12098,11 @@
           3
         ],
         "total": 15
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+3,3,3,3,3~t7.lee": {
@@ -10987,6 +12147,11 @@
           3
         ],
         "total": 18
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+3,3,3,3,3,4~t7.lee": {
@@ -11032,6 +12197,11 @@
           14
         ],
         "total": 32
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+4~t7.lee": {
@@ -11066,7 +12236,12 @@
       "t7_on_hit": "+4",
       "t7_on_ch": "+4",
       "merge_source": "t7:lee_75",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 214,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+4.1": {
       "name": "Deadly Cyclone",
@@ -11107,6 +12282,11 @@
           16
         ],
         "total": 29
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+4.1~t7.lee": {
@@ -11141,7 +12321,12 @@
       "t7_on_hit": "+13",
       "t7_on_ch": "+13",
       "merge_source": "t7:lee_77",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+4,3~t7.lee": {
       "name": "Deadly Arc",
@@ -11182,6 +12367,11 @@
           18
         ],
         "total": 31
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 245,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "f+4,3~t7.lee.2": {
@@ -11216,7 +12406,12 @@
       "t7_on_hit": "+6 (OC)",
       "t7_on_ch": "GROUND BOUNCE",
       "merge_source": "t7:lee_79",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 245,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+1+2~t7.lee": {
       "name": "Aggressive One-Two",
@@ -11258,7 +12453,12 @@
         ],
         "total": 34
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 357,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+1+2~t7.lee.2": {
       "name": "PURPLE RAIN f+1+2",
@@ -11294,7 +12494,12 @@
       "merge_source": "t7:lee_81",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "input_note": "(second hit only)"
+      "input_note": "(second hit only)",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 357,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+3+4~t7.lee": {
       "name": "Feather Landing",
@@ -11335,6 +12540,11 @@
           20
         ],
         "total": 30
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+3~t7.lee": {
@@ -11370,7 +12580,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_83",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+4~t7.lee": {
       "name": "Deadly Edge",
@@ -11405,7 +12620,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_84",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,f+3": {
       "name": "PURPLE RAIN f,f,f+3",
@@ -11441,7 +12661,12 @@
       "merge_source": "t7:lee_85",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(or WR 3)"
+      "input_note": "(or WR 3)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,f+3,4": {
       "name": "Waxing Crescent",
@@ -11484,7 +12709,12 @@
         "total": 32
       },
       "knockdown": true,
-      "input_note": "(or WR 3, 4)"
+      "input_note": "(or WR 3, 4)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "t7.lee_87": {
       "name": "PURPLE RAIN f, f, f+(3), 4 (or WR (3), 4)",
@@ -11518,7 +12748,12 @@
       "merge_source": "t7:lee_87",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(or WR (3) unparsed: 4)"
+      "input_note": "(or WR (3) unparsed: 4)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1~t7.lee": {
       "name": "PURPLE RAIN d/f+1",
@@ -11552,7 +12787,12 @@
       "t7_on_hit": "+5",
       "t7_on_ch": "+5",
       "merge_source": "t7:lee_88",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 179,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d/f+2~t7.lee": {
       "name": "PURPLE RAIN d/f+2",
@@ -11587,7 +12827,12 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:lee_89",
       "recovery_from": "same-notation T8 recv",
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 269,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d/f+3": {
       "name": "PURPLE RAIN d/f+3",
@@ -11621,7 +12866,12 @@
       "t7_on_hit": "+3",
       "t7_on_ch": "+3",
       "merge_source": "t7:lee_90",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 143,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d/f+3,2": {
       "name": "PURPLE RAIN d/f+3,2",
@@ -11662,6 +12912,11 @@
           11
         ],
         "total": 25
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,2~t7.lee": {
@@ -11696,7 +12951,12 @@
       "t7_on_hit": "+5",
       "t7_on_ch": "+5",
       "merge_source": "t7:lee_92",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+3,2,3": {
       "name": "Mercury Drive",
@@ -11739,7 +12999,12 @@
         ],
         "total": 48
       },
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+3,2,3~t7.lee": {
       "name": "PURPLE RAIN d/f+3,2,3",
@@ -11781,7 +13046,12 @@
         ],
         "total": 34
       },
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+3,2,3~t7.lee.2": {
       "name": "PURPLE RAIN d/f+3,2,3",
@@ -11816,7 +13086,12 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:lee_95",
       "recovery_from": "same-notation T8 recv",
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+4~t7.lee": {
       "name": "Front Kick",
@@ -11850,7 +13125,12 @@
       "t7_on_hit": "+2",
       "t7_on_ch": "+2",
       "merge_source": "t7:lee_96",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 205,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1+2": {
       "name": "PURPLE RAIN d/f+1+2",
@@ -11884,7 +13164,12 @@
       "t7_on_hit": "-2",
       "t7_on_ch": "-2",
       "merge_source": "t7:lee_97",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 123,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1+2,3": {
       "name": "Revolution Zwei",
@@ -11926,7 +13211,12 @@
         ],
         "total": 41
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1+2,3~t7.lee": {
       "name": "PURPLE RAIN d/f+1+2,3",
@@ -11961,7 +13251,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_99",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+2~t7.lee": {
       "name": "Gut Polisher",
@@ -11995,7 +13290,12 @@
       "t7_on_hit": "+8",
       "t7_on_ch": "+8",
       "merge_source": "t7:lee_100",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 137,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d+3~t7.lee": {
       "name": "Silver Low",
@@ -12030,7 +13330,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_101",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+4,n,4~t7.lee": {
       "name": "Shin to Head Kick",
@@ -12071,6 +13376,11 @@
           16
         ],
         "total": 23
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+4,n,4,3": {
@@ -12113,6 +13423,11 @@
           12
         ],
         "total": 35
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+4,n,4,3,3": {
@@ -12157,7 +13472,12 @@
         ],
         "total": 52
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+4,n,4,3,3~t7.lee": {
       "name": "PURPLE RAIN d+4,n,4,3,3",
@@ -12192,7 +13512,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_105",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+4,n,4,3,4": {
       "name": "Shin to Spin Kick Somersault Combo",
@@ -12236,7 +13561,12 @@
         ],
         "total": 60
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "t7.lee_107": {
       "name": "PURPLE RAIN d+4, n, 4, 4,",
@@ -12277,7 +13607,12 @@
         ],
         "total": 29
       },
-      "input_note": "unparsed:"
+      "input_note": "unparsed:",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "t7.lee_108": {
       "name": "PURPLE RAIN (d+4), n, 4, 4,",
@@ -12318,7 +13653,12 @@
         "total": 22
       },
       "knockdown": true,
-      "input_note": "unparsed:"
+      "input_note": "unparsed:",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "t7.lee_109": {
       "name": "PURPLE RAIN (d+4), n, (4), 4,",
@@ -12352,7 +13692,12 @@
       "merge_source": "t7:lee_109",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "unparsed:"
+      "input_note": "unparsed:",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+4,n,4,4,4": {
       "name": "Laser Edge Machine Gun Kick",
@@ -12395,6 +13740,11 @@
           8
         ],
         "total": 37
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+4,n,4,u+3": {
@@ -12438,7 +13788,12 @@
         ],
         "total": 48
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d,D/B+4": {
       "name": "Blazing Kick",
@@ -12473,7 +13828,12 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:lee_112",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/b+3~t7.lee": {
       "name": "Wheel of Fate",
@@ -12508,7 +13868,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_113",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 56,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "D+4": {
       "name": "PURPLE RAIN D+4",
@@ -12542,7 +13907,12 @@
       "t7_on_hit": "-2",
       "t7_on_ch": "-2",
       "merge_source": "t7:lee_114",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 339,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "D+4,4": {
       "name": "PURPLE RAIN D+4,4",
@@ -12583,6 +13953,11 @@
           8
         ],
         "total": 15
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "D+4,4,4": {
@@ -12625,6 +14000,11 @@
           5
         ],
         "total": 20
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "D+4,4,4,4": {
@@ -12669,7 +14049,12 @@
         ],
         "total": 41
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/b+3": {
       "name": "Bump Kick",
@@ -12703,7 +14088,12 @@
       "t7_on_hit": "+2",
       "t7_on_ch": "+2",
       "merge_source": "t7:lee_118",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 138,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d/b+3+4": {
       "name": "Grass Snake",
@@ -12738,7 +14128,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_119",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 248,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "d/b+1+2,u,u": {
       "name": "Death Touch Cancel",
@@ -12772,7 +14167,12 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_120",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1~t7.lee": {
       "name": "PURPLE RAIN b+1",
@@ -12806,7 +14206,12 @@
       "t7_on_hit": "+6",
       "t7_on_ch": "+6",
       "merge_source": "t7:lee_121",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 216,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+1,1~t7.lee": {
       "name": "PURPLE RAIN b+1,1",
@@ -12847,6 +14252,11 @@
           6
         ],
         "total": 14
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+1,1~t7.lee.2": {
@@ -12881,7 +14291,12 @@
       "t7_on_hit": "+6",
       "t7_on_ch": "+6",
       "merge_source": "t7:lee_123",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1,1,2~t7.lee": {
       "name": "Triple Fang",
@@ -12923,6 +14338,11 @@
           15
         ],
         "total": 29
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+1,1,2~t7.lee.2": {
@@ -12964,6 +14384,11 @@
           15
         ],
         "total": 21
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+1,1,2~t7.lee.3": {
@@ -12998,7 +14423,12 @@
       "t7_on_hit": "+1",
       "t7_on_ch": "+1",
       "merge_source": "t7:lee_126",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+2~t7.lee": {
       "name": "Rear Cross Punch",
@@ -13032,7 +14462,12 @@
       "t7_on_hit": "+1",
       "t7_on_ch": "+1",
       "merge_source": "t7:lee_127",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 97,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+2,4~t7.lee": {
       "name": "PURPLE RAIN b+2,4",
@@ -13073,6 +14508,11 @@
           12
         ],
         "total": 25
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+2,4~t7.lee.2": {
@@ -13108,7 +14548,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_129",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+2,4,3~t7.lee": {
       "name": "Super High Combination",
@@ -13151,7 +14596,12 @@
         ],
         "total": 46
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+2,4,3~t7.lee.2": {
       "name": "PURPLE RAIN b+2,4,3",
@@ -13193,7 +14643,12 @@
         ],
         "total": 33
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+2,4,3~t7.lee.3": {
       "name": "PURPLE RAIN b+2,4,3",
@@ -13228,7 +14683,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_132",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+3~t7.lee": {
       "name": "PURPLE RAIN b+3",
@@ -13262,7 +14722,12 @@
       "t7_on_hit": "-3",
       "t7_on_ch": "-3",
       "merge_source": "t7:lee_133",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 103,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+3,3~t7.lee": {
       "name": "Stinging Rush",
@@ -13303,6 +14768,11 @@
           15
         ],
         "total": 24
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+3,3~t7.lee.2": {
@@ -13337,7 +14807,12 @@
       "t7_on_hit": "-3",
       "t7_on_ch": "-3",
       "merge_source": "t7:lee_135",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+4~t7.lee": {
       "name": "Silver Heel",
@@ -13371,7 +14846,12 @@
       "t7_on_hit": "+7 (OC)",
       "t7_on_ch": "GROUND BOUNCE",
       "merge_source": "t7:lee_136",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 112,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b,B+4~t7.lee": {
       "name": "Lee Cutter",
@@ -13406,7 +14886,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_137",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.1": {
       "name": "PURPLE RAIN BT.1",
@@ -13441,7 +14926,12 @@
       "t7_on_ch": "+3",
       "merge_source": "t7:lee_138",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(or 2)"
+      "input_note": "(or 2)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.3": {
       "name": "PURPLE RAIN BT.3",
@@ -13477,7 +14967,12 @@
       "merge_source": "t7:lee_139",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(or 4)"
+      "input_note": "(or 4)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.1~t7.lee": {
       "name": "PURPLE RAIN FC.1",
@@ -13511,7 +15006,12 @@
       "t7_on_hit": "+6",
       "t7_on_ch": "+6",
       "merge_source": "t7:lee_140",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.2~t7.lee": {
       "name": "PURPLE RAIN FC.2",
@@ -13545,7 +15045,12 @@
       "t7_on_hit": "+7",
       "t7_on_ch": "+7",
       "merge_source": "t7:lee_141",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.3~t7.lee": {
       "name": "PURPLE RAIN FC.3",
@@ -13579,7 +15084,12 @@
       "t7_on_hit": "-3",
       "t7_on_ch": "-3",
       "merge_source": "t7:lee_142",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.4~t7.lee": {
       "name": "PURPLE RAIN FC.4",
@@ -13613,7 +15123,12 @@
       "t7_on_hit": "-4",
       "t7_on_ch": "-4",
       "merge_source": "t7:lee_143",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.u+4": {
       "name": "PURPLE RAIN FC.u+4",
@@ -13648,7 +15163,12 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:lee_144",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.u/f+4": {
       "name": "Catapult Kick Low",
@@ -13683,7 +15203,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_145",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.d/f+4": {
       "name": "Silver Tail",
@@ -13718,7 +15243,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_146",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.d/f,d,D/F+3": {
       "name": "Sliding",
@@ -13753,7 +15283,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_147",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.u/b+4": {
       "name": "PURPLE RAIN FC.u/b+4",
@@ -13787,7 +15322,12 @@
       "t7_on_hit": "-6",
       "t7_on_ch": "-6",
       "merge_source": "t7:lee_148",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.U+4": {
       "name": "PURPLE RAIN FC.U+4",
@@ -13822,7 +15362,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_149",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.U/F+4": {
       "name": "Catapult Kick High",
@@ -13857,7 +15402,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_150",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.U/F+3+4": {
       "name": "Catapult Drop",
@@ -13892,7 +15442,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_151",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "FC.U/B+4": {
       "name": "PURPLE RAIN FC.U/B+4",
@@ -13926,7 +15481,12 @@
       "t7_on_hit": "-20",
       "t7_on_ch": "-20",
       "merge_source": "t7:lee_152",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.2": {
       "name": "PURPLE RAIN WS.2",
@@ -13960,7 +15520,12 @@
       "t7_on_hit": "+3",
       "t7_on_ch": "+3",
       "merge_source": "t7:lee_153",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.2,3": {
       "name": "Rocket Heel",
@@ -14002,7 +15567,12 @@
         ],
         "total": 36
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.2,3~t7.lee": {
       "name": "PURPLE RAIN WS.2,3",
@@ -14037,7 +15607,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_155",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.2,4": {
       "name": "Twister Heel",
@@ -14078,6 +15653,11 @@
           23
         ],
         "total": 35
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS.2,4~t7.lee": {
@@ -14112,7 +15692,12 @@
       "t7_on_hit": "STUN",
       "t7_on_ch": "STUN",
       "merge_source": "t7:lee_157",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.3": {
       "name": "PURPLE RAIN WS.3",
@@ -14146,7 +15731,12 @@
       "t7_on_hit": "-10",
       "t7_on_ch": "-10",
       "merge_source": "t7:lee_158",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.3,3": {
       "name": "PURPLE RAIN WS.3,3",
@@ -14187,6 +15777,11 @@
           11
         ],
         "total": 27
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS.3,3,D+3": {
@@ -14229,6 +15824,11 @@
           8
         ],
         "total": 35
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS.3,3,D+3,n,3": {
@@ -14272,6 +15872,11 @@
           10
         ],
         "total": 45
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "t7.lee_162": {
@@ -14315,7 +15920,12 @@
         ],
         "total": 55
       },
-      "input_note": "unparsed: 3..."
+      "input_note": "unparsed: 3...",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.3,3,D/F+3": {
       "name": "PURPLE RAIN WS.3,3,D/F+3",
@@ -14357,6 +15967,11 @@
           10
         ],
         "total": 37
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS.3,3,D/F+3,n,3": {
@@ -14400,6 +16015,11 @@
           10
         ],
         "total": 47
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "t7.lee_165": {
@@ -14443,7 +16063,12 @@
         ],
         "total": 57
       },
-      "input_note": "unparsed: 3..."
+      "input_note": "unparsed: 3...",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "t7.lee_166": {
       "name": "Low Variation",
@@ -14483,7 +16108,12 @@
         ],
         "total": 20
       },
-      "input_note": "(During Infinite Kick Chain) unparsed: 3..."
+      "input_note": "(During Infinite Kick Chain) unparsed: 3...",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "t7.lee_167": {
       "name": "High Variation",
@@ -14523,7 +16153,12 @@
         ],
         "total": 25
       },
-      "input_note": "(During Infinite Kick Chain) unparsed: 3..."
+      "input_note": "(During Infinite Kick Chain) unparsed: 3...",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.4": {
       "name": "PURPLE RAIN WS.4",
@@ -14557,7 +16192,12 @@
       "t7_on_hit": "+5",
       "t7_on_ch": "+5",
       "merge_source": "t7:lee_168",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SSL.3+4": {
       "name": "Lee Screw Right",
@@ -14592,7 +16232,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_169",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "SSR.3+4": {
       "name": "Lee Screw Left",
@@ -14627,7 +16272,12 @@
       "t7_on_ch": "SCREW",
       "merge_source": "t7:lee_170",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1,2,2,1,3,3,3,4,3,4": {
       "name": "10 Hit Combo",
@@ -14662,7 +16312,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_171",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "t7.lee_172": {
       "name": "PURPLE RAIN Face Up, Feet Towards+3 or (After Rolling Forward)",
@@ -14695,7 +16350,12 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:lee_172",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "Face Up, Feet Towards+ descriptive: 3 or After Rolling Forward"
+      "input_note": "Face Up, Feet Towards+ descriptive: 3 or After Rolling Forward",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "t7.lee_173": {
       "name": "PURPLE RAIN Face Up, Feet Towards+4 or (After Rolling Forward)",
@@ -14729,7 +16389,12 @@
       "merge_source": "t7:lee_173",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Up, Feet Towards+ descriptive: 4 or After Rolling Forward"
+      "input_note": "Face Up, Feet Towards+ descriptive: 4 or After Rolling Forward",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FUFT.d+3": {
       "name": "PURPLE RAIN FUFT.d+3",
@@ -14764,7 +16429,12 @@
       "t7_on_ch": "-3",
       "merge_source": "t7:lee_174",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "Face Up, Feet Towards, (or 4)"
+      "input_note": "Face Up, Feet Towards, (or 4)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FUFT.3+4": {
       "name": "PURPLE RAIN FUFT.3+4",
@@ -14800,7 +16470,12 @@
       "merge_source": "t7:lee_175",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Up, Feet Towards+"
+      "input_note": "Face Up, Feet Towards+",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "t7.lee_176": {
       "name": "PURPLE RAIN Face Up, Feet Towards, Roll Forward+1+2",
@@ -14834,7 +16509,12 @@
       "merge_source": "t7:lee_176",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Up, Feet Towards, descriptive: ROLL.Forward+1+2"
+      "input_note": "Face Up, Feet Towards, descriptive: ROLL.Forward+1+2",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FDFA.3": {
       "name": "PURPLE RAIN FDFA.3",
@@ -14869,7 +16549,12 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:lee_177",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "Face Down, Feet Away+"
+      "input_note": "Face Down, Feet Away+",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FDFA.4": {
       "name": "PURPLE RAIN FDFA.4",
@@ -14905,7 +16590,12 @@
       "merge_source": "t7:lee_178",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Down, Feet Away+ (close)"
+      "input_note": "Face Down, Feet Away+ (close)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FDFA.4~t7.lee": {
       "name": "PURPLE RAIN FDFA.4",
@@ -14941,7 +16631,12 @@
       "merge_source": "t7:lee_179",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Down, Feet Away+ (far)"
+      "input_note": "Face Down, Feet Away+ (far)",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "t7.lee_180": {
       "name": "PURPLE RAIN (Upon Landing) f",
@@ -14974,7 +16669,12 @@
       "t7_on_ch": "+3",
       "merge_source": "t7:lee_180",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "descriptive: Upon Landing f"
+      "input_note": "descriptive: Upon Landing f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/b,b": {
       "name": "Back Handspring to Hitman",
@@ -15008,7 +16708,12 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_181",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3+4~t7.lee": {
       "name": "Hitman",
@@ -15042,7 +16747,12 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_182",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 51,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1,2,2,3,4": {
       "name": "PURPLE RAIN 1,2,2,3,4",
@@ -15086,7 +16796,12 @@
         ],
         "total": 53
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,4,3": {
       "name": "PURPLE RAIN 1,2,4,3",
@@ -15128,6 +16843,11 @@
           10
         ],
         "total": 26
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,1,3+4": {
@@ -15169,6 +16889,11 @@
           8
         ],
         "total": 18
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "2,2,3,4": {
@@ -15212,7 +16937,12 @@
         ],
         "total": 47
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3,4": {
       "name": "PURPLE RAIN 3,4",
@@ -15246,7 +16976,12 @@
       "t7_on_hit": "-3",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_187",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 317,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2,3+4": {
       "name": "PURPLE RAIN 1+2,3+4",
@@ -15281,7 +17016,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_188",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "u+3,3+4": {
       "name": "PURPLE RAIN u+3,3+4",
@@ -15315,7 +17055,12 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_189",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "u/f+3+4,3+4": {
       "name": "PURPLE RAIN u/f+3+4,3+4",
@@ -15350,7 +17095,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:lee_190",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f+3,3,3,3,3,4,3": {
       "name": "PURPLE RAIN f+3,3,3,3,3,4,3",
@@ -15395,6 +17145,11 @@
           14
         ],
         "total": 32
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+4,3,4": {
@@ -15436,6 +17191,11 @@
           18
         ],
         "total": 31
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,f,f+3,4,3+4": {
@@ -15479,7 +17239,12 @@
         "total": 32
       },
       "knockdown": true,
-      "input_note": "(or WR 3, 4, 3+4)"
+      "input_note": "(or WR 3, 4, 3+4)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1+2,3,4": {
       "name": "PURPLE RAIN d/f+1+2,3,4",
@@ -15521,7 +17286,12 @@
         ],
         "total": 41
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3,4": {
       "name": "PURPLE RAIN d+3,4",
@@ -15555,7 +17325,12 @@
       "t7_on_hit": "-1",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_195",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "D+4,4,4,4,3": {
       "name": "PURPLE RAIN D+4,4,4,4,3",
@@ -15599,7 +17374,12 @@
         ],
         "total": 41
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3+4,d+3+4": {
       "name": "PURPLE RAIN d+3+4,d+3+4",
@@ -15633,7 +17413,12 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_197",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+1,1,3+4": {
       "name": "Triple Fang to Hitman",
@@ -15674,6 +17459,11 @@
           6
         ],
         "total": 14
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+2,4,3+4": {
@@ -15715,6 +17505,11 @@
           12
         ],
         "total": 25
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+2,4,3+4~t7.lee": {
@@ -15750,7 +17545,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_200",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+4,3": {
       "name": "PURPLE RAIN b+4,3",
@@ -15784,7 +17584,12 @@
       "t7_on_hit": "-3 (OC)",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_201",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b,B+4,3": {
       "name": "PURPLE RAIN b,B+4,3",
@@ -15819,7 +17624,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:lee_202",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.u/f+4,3": {
       "name": "PURPLE RAIN FC.u/f+4,3",
@@ -15854,7 +17664,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:lee_203",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.d/f+4,3": {
       "name": "PURPLE RAIN FC.d/f+4,3",
@@ -15888,7 +17703,12 @@
       "t7_on_hit": "-3",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_204",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.3,3,4": {
       "name": "PURPLE RAIN WS.3,3,4",
@@ -15929,6 +17749,11 @@
           11
         ],
         "total": 27
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS.4,3": {
@@ -15963,7 +17788,12 @@
       "t7_on_hit": "-14",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_206",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SSL.3+4,3": {
       "name": "PURPLE RAIN SSL.3+4,3",
@@ -15998,7 +17828,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:lee_207",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SSR.3+4,4": {
       "name": "PURPLE RAIN SSR.3+4,4",
@@ -16033,7 +17868,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:lee_208",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HMS.1,4,3": {
       "name": "PURPLE RAIN HMS.1,4,3",
@@ -16074,6 +17914,11 @@
           17
         ],
         "total": 27
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "HMS.1,4,3~t7.lee": {
@@ -16108,7 +17953,12 @@
       "t7_on_hit": "-12",
       "t7_on_ch": "STUN",
       "merge_source": "t7:lee_210",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HMS.u": {
       "name": "PURPLE RAIN HMS.u",
@@ -16142,7 +17992,12 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_211",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HMS.d/b": {
       "name": "PURPLE RAIN HMS.d/b",
@@ -16176,7 +18031,12 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_212",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HMS.b": {
       "name": "PURPLE RAIN HMS.b",
@@ -16210,7 +18070,12 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_213",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HMS.1~t7.lee": {
       "name": "Freaker Jab",
@@ -16244,7 +18109,12 @@
       "t7_on_hit": "+7",
       "t7_on_ch": "+7",
       "merge_source": "t7:lee_214",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HMS.1,1~t7.lee": {
       "name": "PURPLE RAIN HMS.1,1",
@@ -16285,6 +18155,11 @@
           10
         ],
         "total": 20
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "HMS.1,1,1~t7.lee": {
@@ -16327,6 +18202,11 @@
           10
         ],
         "total": 30
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "HMS.1,1,1,1": {
@@ -16370,6 +18250,11 @@
           10
         ],
         "total": 40
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "HMS.1,4~t7.lee": {
@@ -16411,6 +18296,11 @@
           17
         ],
         "total": 27
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "HMS.1,4~t7.lee.2": {
@@ -16445,7 +18335,12 @@
       "t7_on_hit": "0",
       "t7_on_ch": "STUN",
       "merge_source": "t7:lee_219",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HMS.2~t7.lee": {
       "name": "Scatter Blow",
@@ -16480,7 +18375,12 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:lee_220",
       "recovery_from": "same-notation T8 recv",
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HMS.3~t7.lee": {
       "name": "Scatter Kick",
@@ -16524,7 +18424,12 @@
       },
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HMS.4~t7.lee": {
       "name": "Shin Slicer",
@@ -16559,7 +18464,12 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:lee_222",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HMS.1+2~t7.lee": {
       "name": "Poison Touch",
@@ -16600,6 +18510,11 @@
           15
         ],
         "total": 25
+      },
+      "anim_t3": {
+        "bank": "lee",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "HMS.u/f+3": {
@@ -16635,7 +18550,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_224",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HMS.u/f+3,D": {
       "name": "PURPLE RAIN HMS.u/f+3,D",
@@ -16670,7 +18590,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_225",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HMS.u/f+4": {
       "name": "Silver Circle",
@@ -16705,7 +18630,12 @@
       "t7_on_ch": "GROUND BOUNCE",
       "merge_source": "t7:lee_226",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,n~t7.lee": {
       "name": "Mist Step",
@@ -16739,7 +18669,12 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_227",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,f,n": {
       "name": "Left Right Combo to Mist Step",
@@ -16780,6 +18715,11 @@
           9
         ],
         "total": 16
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,f,n~t7.lee": {
@@ -16814,7 +18754,12 @@
       "t7_on_hit": "-8",
       "t7_on_ch": "-8",
       "merge_source": "t7:lee_229",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,u+3,f,n": {
       "name": "Lee Somersault to Mist Step",
@@ -16856,7 +18801,12 @@
         ],
         "total": 41
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+4,n,4,u+3,f,n": {
       "name": "Laser Edge Lee Somersault to Mist Step",
@@ -16899,7 +18849,12 @@
         ],
         "total": 48
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1,1~f,n": {
       "name": "Triple Fang to Mist Step",
@@ -16933,7 +18888,12 @@
       "t7_on_hit": "-23",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_232",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+2,f,n": {
       "name": "Rear Cross Punch to Mist Step",
@@ -16967,7 +18927,12 @@
       "t7_on_hit": "-7",
       "t7_on_ch": "-7",
       "merge_source": "t7:lee_233",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+3,3,f,n": {
       "name": "Stinging Rush to Mist Step",
@@ -17008,6 +18973,11 @@
           15
         ],
         "total": 24
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "HMS.f": {
@@ -17042,7 +19012,12 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_235",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HMS.1,1,f,n": {
       "name": "PURPLE RAIN HMS.1,1,f,n",
@@ -17076,7 +19051,12 @@
       "t7_on_hit": "-18",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_236",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "MS.b,n~t7.lee": {
       "name": "Sway",
@@ -17110,7 +19090,12 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_237",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "MS.b,n,4~t7.lee": {
       "name": "Spinning Axe Kick",
@@ -17144,7 +19129,12 @@
       "t7_on_hit": "+3",
       "t7_on_ch": "STUN",
       "merge_source": "t7:lee_238",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "MS.3~t7.lee": {
       "name": "PURPLE RAIN MS.3",
@@ -17178,7 +19168,12 @@
       "t7_on_hit": "-1",
       "t7_on_ch": "-1",
       "merge_source": "t7:lee_239",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "MS.3,4~t7.lee": {
       "name": "Inverted Axle",
@@ -17220,7 +19215,12 @@
         ],
         "total": 20
       },
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "MS.3+4~t7.lee": {
       "name": "Lee Sliding",
@@ -17255,7 +19255,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_241",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+3+4~t7.lee": {
       "name": "Mist Flash",
@@ -17289,7 +19294,12 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_242",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 110,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "R.d+1+2": {
       "name": "Rage Art",
@@ -17325,7 +19335,12 @@
       "merge_source": "t7:lee_243",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Rage) (or HMS)"
+      "input_note": "(During Rage) (or HMS)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "R.d/f+3+4": {
       "name": "PURPLE RAIN R.d/f+3+4",
@@ -17360,7 +19375,12 @@
       "t7_on_ch": "S!",
       "merge_source": "t7:lee_244",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Rage)"
+      "input_note": "(During Rage)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "R.d/f+3+4,f,n": {
       "name": "Rage Drive",
@@ -17395,7 +19415,12 @@
       "t7_on_ch": "S!",
       "merge_source": "t7:lee_245",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Rage)"
+      "input_note": "(During Rage)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3+4": {
       "name": "Silver Cyclone",
@@ -17430,7 +19455,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_246",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 127,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "t7.lee_247": {
       "name": "Death Touch",
@@ -17471,7 +19501,12 @@
         "total": 50
       },
       "knockdown": true,
-      "input_note": "descriptive: d/b+1+2 u, u, to cancel"
+      "input_note": "descriptive: d/b+1+2 u, u, to cancel",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3~3:4": {
       "name": "Mist Trap Throw",
@@ -17508,7 +19543,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+3~t7.lee": {
       "name": "Forearm Drop",
@@ -17546,7 +19586,12 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 288,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "2+4~t7.lee": {
       "name": "Axle Throw",
@@ -17584,7 +19629,12 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 289,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+1+3": {
       "name": "Forearm Drop",
@@ -17622,7 +19672,12 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+2+4~t7.lee": {
       "name": "Axle Throw",
@@ -17660,7 +19715,12 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "lee",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+3+4": {
       "name": "Knee Drive",
@@ -17698,7 +19758,12 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SIDE_L.1+3": {
       "name": "Lee Harassment",
@@ -17736,7 +19801,12 @@
       "input_note": "Approach from left side... (or 2+4)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SIDE_R.1+3": {
       "name": "Lee Stunner",
@@ -17774,7 +19844,12 @@
       "input_note": "Approach from right side... (or 2+4)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BACK.1+3": {
       "name": "Face Crusher",
@@ -17812,7 +19887,12 @@
       "input_note": "Approach from behind... (or 2+4)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "t7.lee_257": {
       "name": "PURPLE RAIN WR f, f, F (Mid Screen)",
@@ -17848,7 +19928,12 @@
       "input_note": "WR descriptive: f, f, F Mid Screen",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "TACKLE.1": {
       "name": "PURPLE RAIN TACKLE.1",
@@ -17884,7 +19969,12 @@
       "merge_source": "t7:lee_258",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Tackle) (or 2)"
+      "input_note": "(During Tackle) (or 2)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "TACKLE.1,1": {
       "name": "PURPLE RAIN TACKLE.1,1",
@@ -17927,7 +20017,12 @@
         "total": 10
       },
       "knockdown": true,
-      "input_note": "(During Tackle)"
+      "input_note": "(During Tackle)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "TACKLE.1,1,1": {
       "name": "PURPLE RAIN TACKLE.1,1,1",
@@ -17971,7 +20066,12 @@
         "total": 15
       },
       "knockdown": true,
-      "input_note": "(During Tackle)"
+      "input_note": "(During Tackle)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "TACKLE.1,1,1,1": {
       "name": "PURPLE RAIN TACKLE.1,1,1,1",
@@ -18016,7 +20116,12 @@
         "total": 30
       },
       "knockdown": true,
-      "input_note": "(During Tackle)"
+      "input_note": "(During Tackle)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "t7.lee_262": {
       "name": "Mist Illusion",
@@ -18049,7 +20154,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:lee_262",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(or FC b+1+2) descriptive: Time with enemy punch... b+1+2"
+      "input_note": "(or FC b+1+2) descriptive: Time with enemy punch... b+1+2",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "t7.lee_263": {
       "name": "PURPLE RAIN After successful parry... 4",
@@ -18083,7 +20193,12 @@
       "merge_source": "t7:lee_263",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "descriptive: After successful parry... 4"
+      "input_note": "descriptive: After successful parry... 4",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u+3~t7.lee": {
       "name": "Fake",
@@ -18117,7 +20232,12 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_264",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "lee",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u+3,D": {
       "name": "PURPLE RAIN u+3,D",
@@ -18151,7 +20271,12 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_265",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     }
   },
   "restored_from_sweep_338": {

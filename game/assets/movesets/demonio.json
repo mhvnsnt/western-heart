@@ -1887,7 +1887,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "RIN is the baseline, the still point. One perfectly fundamental palm strike."
+      "note": "RIN is the baseline, the still point. One perfectly fundamental palm strike.",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "P+K": {
       "name": "The Unbowed [WH SIGNATURE]",
@@ -1911,7 +1916,12 @@
       "note": "He bows to every opponent. He has never bowed to Diablo. Standing choke that refuses to kneel.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true
+      "isGrab": true,
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "qcf+P": {
       "name": "Apology Burned Away [WH SIGNATURE]",
@@ -1932,7 +1942,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "The trial is burning the guilt out of him. A straight punch with nothing left to atone for."
+      "note": "The trial is burning the guilt out of him. A straight punch with nothing left to atone for.",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "RIN's Baseline [WH SIGNATURE]",
@@ -1963,6 +1978,11 @@
         "notation": "1+2",
         "id": "jin_57",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "1+2__main": {
@@ -2018,7 +2038,12 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "qcf+1": {
       "name": "Apology Burned Away [WH SIGNATURE]",
@@ -2038,7 +2063,12 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "The trial is burning the guilt out of him. A straight punch with nothing left to atone for.",
-      "input_remapped_from": "qcf+P"
+      "input_remapped_from": "qcf+P",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+4": {
       "name": "DEMONIO f+4 (T3 jin r214)",
@@ -2409,7 +2439,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 275,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "2,1,4": {
       "name": "DEMONIO 2,1,4 (T3 jin r230)",
@@ -2485,6 +2520,11 @@
         "notation": "2, 1, 4",
         "id": "jin_41",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,1,2,2": {
@@ -4927,6 +4967,11 @@
         "notation": "1+2",
         "id": "jin_57",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "1,2": {
@@ -4966,6 +5011,11 @@
         "notation": "1, 2",
         "id": "jin_3",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,1": {
@@ -4997,7 +5047,12 @@
         ],
         "total": 37
       },
-      "note": "Mid; on block -16; knockdown on hit"
+      "note": "Mid; on block -16; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,3": {
       "name": "Axe Kick",
@@ -5038,6 +5093,11 @@
         "notation": "1, 2, 3",
         "id": "jin_5",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+2+3+4": {
@@ -5058,7 +5118,12 @@
       "input_slots": [
         "1+2+3+4"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1,2,4": {
       "name": "Spinning Hook Kick",
@@ -5099,6 +5164,11 @@
         "notation": "1, 2, 4",
         "id": "jin_8",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,3": {
@@ -5138,6 +5208,11 @@
         "notation": "1, 3",
         "id": "jin_11",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+3+4": {
@@ -5164,6 +5239,11 @@
         "notation": "1+3+4",
         "id": "jin_197",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1,3,4": {
@@ -5195,7 +5275,12 @@
         ],
         "total": 31
       },
-      "note": "Low; on block -13"
+      "note": "Low; on block -13",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,1,4~4": {
       "name": "Low Trick Kick",
@@ -5236,6 +5321,11 @@
         "notation": "2, 1, 4~4",
         "id": "jin_44",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "2+3": {
@@ -5264,7 +5354,12 @@
         ],
         "total": 24
       },
-      "note": "Mid; on block +1"
+      "note": "Mid; on block +1",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "2,4": {
       "name": "Switchblade",
@@ -5303,6 +5398,11 @@
         "notation": "2, 4",
         "id": "jin_47",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3,1": {
@@ -5342,6 +5442,11 @@
         "notation": "3, 1",
         "id": "jin_50",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3,1,4": {
@@ -5383,6 +5488,11 @@
         "notation": "3, 1, 4",
         "id": "jin_52",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4~3": {
@@ -5404,7 +5514,12 @@
         "4~3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -11~-2; knockdown on hit"
+      "note": "Mid; on block -11~-2; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+1_t8": {
       "name": "Move b+1 (b+1)",
@@ -5431,6 +5546,11 @@
         "notation": "b+1",
         "id": "jin_153",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 216,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "b+1+2": {
@@ -5452,7 +5572,12 @@
         "b+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -12"
+      "note": "Mid; on block -12",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 119,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "b+1,2": {
       "name": "Shun Maten",
@@ -5481,7 +5606,12 @@
         ],
         "total": 31
       },
-      "note": "High; on block -10; knockdown on hit"
+      "note": "High; on block -10; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1+3": {
       "name": "Parry",
@@ -5501,7 +5631,12 @@
       "input_slots": [
         "b+1+3"
       ],
-      "move_class": "parry"
+      "move_class": "parry",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+2": {
       "name": "Move b+2 (b+2)",
@@ -5533,6 +5668,11 @@
         "notation": "b+2",
         "id": "jin_112",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 97,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "b+2,1": {
@@ -5572,6 +5712,11 @@
         "notation": "b+2, 1",
         "id": "jin_113",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+3": {
@@ -5604,6 +5749,11 @@
         "notation": "b+3",
         "id": "jin_115",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 103,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "b+3,2": {
@@ -5633,7 +5783,12 @@
         ],
         "total": 37
       },
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+3+4": {
       "name": "Zanshin",
@@ -5654,7 +5809,12 @@
         "b+3+4"
       ],
       "move_class": "special",
-      "note": "Crouching Demon Stance (CDS) / Mental Alertness (2)"
+      "note": "Crouching Demon Stance (CDS) / Mental Alertness (2)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 110,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "b+4": {
       "name": "Spinning Sidekick",
@@ -5686,6 +5846,11 @@
         "notation": "b+4",
         "id": "jin_116",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 112,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "Back throw": {
@@ -5711,7 +5876,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b,f+2": {
       "name": "Move b,f+2 (b,f+2)",
@@ -5743,6 +5913,11 @@
         "notation": "b, f+2",
         "id": "jin_117",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b,f+2,1": {
@@ -5782,6 +5957,11 @@
         "notation": "b, f+2, 1",
         "id": "jin_118",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b,f+2,1,2": {
@@ -5823,6 +6003,11 @@
         "notation": "b, f+2, 1, 2",
         "id": "jin_120",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b,f+2,1,df+2": {
@@ -5854,7 +6039,12 @@
         ],
         "total": 51
       },
-      "note": "Mid; on block -14; knockdown on hit"
+      "note": "Mid; on block -14; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b,f+2,3": {
       "name": "Keito",
@@ -5893,6 +6083,11 @@
         "notation": "b, f+2, 3",
         "id": "jin_123",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "CD.df#1": {
@@ -5914,7 +6109,12 @@
         "CD.df#1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CD.df#2": {
       "name": "Electric Wind Hook Fist",
@@ -5935,7 +6135,12 @@
         "CD.df#2"
       ],
       "move_class": "strike",
-      "note": "High; on block +5~+6; knockdown on hit"
+      "note": "High; on block +5~+6; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CD.df+1": {
       "name": "Thrusting Uppercut",
@@ -5956,7 +6161,12 @@
         "CD.df+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CD.df+2": {
       "name": "Wind Hook Fist",
@@ -5977,7 +6187,12 @@
         "CD.df+2"
       ],
       "move_class": "strike",
-      "note": "High; on block -10; knockdown on hit"
+      "note": "High; on block -10; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CD.DF+4": {
       "name": "Move CD.DF+4 (CD.DF+4)",
@@ -5998,7 +6213,12 @@
         "CD.DF+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -31"
+      "note": "Low; on block -31",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CD.DF+4,2": {
       "name": "Depraved Savagery",
@@ -6027,7 +6247,12 @@
         ],
         "total": 40
       },
-      "note": "Mid; on block -16; knockdown on hit"
+      "note": "Mid; on block -16; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+1": {
       "name": "Black Wing Flash",
@@ -6071,6 +6296,11 @@
         "notation": "d+1",
         "id": "jin_95",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 139,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d+2": {
@@ -6092,7 +6322,12 @@
         "d+2"
       ],
       "move_class": "strike",
-      "note": "Low; on block -14"
+      "note": "Low; on block -14",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 137,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d+3": {
       "name": "Move d+3 (d+3)",
@@ -6124,6 +6359,11 @@
         "notation": "d+3",
         "id": "jin_96",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+3+4": {
@@ -6163,6 +6403,11 @@
         "notation": "d+3+4",
         "id": "jin_100",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 127,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "d+3,4": {
@@ -6192,7 +6437,12 @@
         ],
         "total": 17
       },
-      "note": "High; on block -11"
+      "note": "High; on block -11",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3,4,3": {
       "name": "Kazama Style Three-Quarter Kick",
@@ -6223,7 +6473,12 @@
         ],
         "total": 38
       },
-      "note": "Mid; on block -12"
+      "note": "Mid; on block -12",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3,4~4": {
       "name": "Mid Sidekick",
@@ -6252,7 +6507,12 @@
         ],
         "total": 31
       },
-      "note": "Mid; on block -12; knockdown on hit"
+      "note": "Mid; on block -12; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d+4": {
       "name": "Right Sweep",
@@ -6285,6 +6545,11 @@
         "notation": "d+4",
         "id": "jin_99",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 339,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "db+1": {
@@ -6306,7 +6571,12 @@
         "db+1"
       ],
       "move_class": "strike",
-      "note": "Special low; on block -5"
+      "note": "Special low; on block -5",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+1+2": {
       "name": "Power Stance",
@@ -6327,7 +6597,12 @@
         "db+1+2"
       ],
       "move_class": "special",
-      "note": "Mid; on block -11~+4"
+      "note": "Mid; on block -11~+4",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "db+2": {
       "name": "Move db+2 (db+2)",
@@ -6348,7 +6623,12 @@
         "db+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -10"
+      "note": "Mid; on block -10",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+2,2": {
       "name": "Move 2 (2)",
@@ -6377,7 +6657,12 @@
         ],
         "total": 23
       },
-      "note": "High; on block -12"
+      "note": "High; on block -12",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+2,2,3": {
       "name": "Savage Sword",
@@ -6408,7 +6693,12 @@
         ],
         "total": 44
       },
-      "note": "Mid; on block -9; knockdown on hit"
+      "note": "Mid; on block -9; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+2,3": {
       "name": "Cascade Kick",
@@ -6437,7 +6727,12 @@
         ],
         "total": 35
       },
-      "note": "Mid; on block -8; knockdown on hit"
+      "note": "Mid; on block -8; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+3": {
       "name": "Left Spinning Back Kick",
@@ -6458,7 +6753,12 @@
         "db+3"
       ],
       "move_class": "strike",
-      "note": "High; on block -10~-8; knockdown on hit"
+      "note": "High; on block -10~-8; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+4": {
       "name": "Right Low Roundhouse",
@@ -6479,7 +6779,12 @@
         "db+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -13"
+      "note": "Low; on block -13",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1": {
       "name": "Mid Left Punch",
@@ -6500,7 +6805,12 @@
         "df+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -3"
+      "note": "Mid; on block -3",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1,4": {
       "name": "High Roundhouse Kick",
@@ -6529,7 +6839,12 @@
         ],
         "total": 28
       },
-      "note": "High; on block -9"
+      "note": "High; on block -9",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1,4~4": {
       "name": "Mid Sidekick",
@@ -6558,7 +6873,12 @@
         ],
         "total": 34
       },
-      "note": "Mid; on block -12; knockdown on hit"
+      "note": "Mid; on block -12; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "df+2": {
       "name": "Fiendish Rend",
@@ -6579,7 +6899,12 @@
         "df+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+2+4": {
       "name": "Shun Ren Dan",
@@ -6604,7 +6929,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "2"
+      "throw_break": "2",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+2,4": {
       "name": "Fiendish Talon Rend",
@@ -6633,7 +6963,12 @@
         ],
         "total": 31
       },
-      "note": "Mid; on block -12"
+      "note": "Mid; on block -12",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+2,H.1+2": {
       "name": "Awakened Fiendish Claw",
@@ -6662,7 +6997,12 @@
         ],
         "total": 37
       },
-      "note": "Mid; on block +2; knockdown on hit"
+      "note": "Mid; on block +2; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "df+3": {
       "name": "Left Roundhouse",
@@ -6683,7 +7023,12 @@
         "df+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -8"
+      "note": "Mid; on block -8",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3~3": {
       "name": "Brazilian Kick",
@@ -6704,7 +7049,12 @@
         "df+3~3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +6c"
+      "note": "Mid; on block +6c",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "df+4": {
       "name": "Right Spinning Axe Kick",
@@ -6725,7 +7075,12 @@
         "df+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +0"
+      "note": "Mid; on block +0",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DVS.1": {
       "name": "Awakened Thunder God Fist",
@@ -6746,7 +7101,12 @@
         "DVS.1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DVS.2": {
       "name": "Awakened Wind God Fist",
@@ -6767,7 +7127,12 @@
         "DVS.2"
       ],
       "move_class": "strike",
-      "note": "Special mid; on block +4; knockdown on hit"
+      "note": "Special mid; on block +4; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DVS.3": {
       "name": "Awakened Demon's Hoof",
@@ -6788,7 +7153,12 @@
         "DVS.3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +2c; knockdown on hit"
+      "note": "Mid; on block +2c; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DVS.4": {
       "name": "Move DVS.4 (DVS.4)",
@@ -6809,7 +7179,12 @@
         "DVS.4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -12"
+      "note": "Low; on block -12",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DVS.4,4": {
       "name": "Awakened Spinning Demon",
@@ -6838,7 +7213,12 @@
         ],
         "total": 35
       },
-      "note": "Mid; on block -14"
+      "note": "Mid; on block -14",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DVS.DF+3": {
       "name": "Awakened Demon's Tail",
@@ -6859,7 +7239,12 @@
         "DVS.DF+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -23; knockdown on hit"
+      "note": "Low; on block -23; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+1+2": {
       "name": "Double Chamber Punch",
@@ -6898,6 +7283,11 @@
         "notation": "f+1+2",
         "id": "jin_66",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 357,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "f+3": {
@@ -6930,6 +7320,11 @@
         "notation": "f+3",
         "id": "jin_61",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 79,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f+3,1": {
@@ -6959,7 +7354,12 @@
         ],
         "total": 29
       },
-      "note": "Mid; on block -12"
+      "note": "Mid; on block -12",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3,3": {
       "name": "Stinger",
@@ -6999,6 +7399,11 @@
         "notation": "f+3~3",
         "id": "jin_62",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+3+4": {
@@ -7019,7 +7424,12 @@
       "input_slots": [
         "f+3+4"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f+4_t8": {
       "name": "Front Thrust Kick",
@@ -7052,6 +7462,11 @@
         "notation": "f+4",
         "id": "jin_65",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 214,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "FC.df+4": {
@@ -7073,7 +7488,12 @@
         "FC.df+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -26"
+      "note": "Low; on block -26",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+2": {
       "name": "Demon's Paw",
@@ -7105,6 +7525,11 @@
         "notation": "f, F+2",
         "id": "jin_67",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,F+3": {
@@ -7137,6 +7562,11 @@
         "notation": "f, F+3",
         "id": "jin_68",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,F+3,1": {
@@ -7176,6 +7606,11 @@
         "notation": "f, F+3, 1",
         "id": "jin_69",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,F+4": {
@@ -7208,6 +7643,11 @@
         "notation": "f, F+4",
         "id": "jin_74",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,f,F+3": {
@@ -7229,7 +7669,12 @@
         "f,f,F+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +6; knockdown on hit"
+      "note": "Mid; on block +6; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,n,d,df": {
       "name": "Crouch Dash",
@@ -7250,7 +7695,12 @@
         "f,n,d,df"
       ],
       "move_class": "special",
-      "note": "Breaking Step"
+      "note": "Breaking Step",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f,n,d,df,UF": {
       "name": "Crouch Dash (UF)",
@@ -7272,7 +7722,12 @@
         "f,n,d,df,UF"
       ],
       "move_class": "special",
-      "note": "Breaking Step; Stance: Crouch Dash"
+      "note": "Breaking Step; Stance: Crouch Dash",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "H.2+3": {
       "name": "Hellfire Trespass Slayer",
@@ -7293,7 +7748,12 @@
         "H.2+3"
       ],
       "move_class": "strike",
-      "note": "Mid, High, Mid; on block +3"
+      "note": "Mid, High, Mid; on block +3",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "H.2+3,4": {
       "name": "Hellfire Darkside Slayer",
@@ -7314,7 +7774,12 @@
         "H.2+3,4"
       ],
       "move_class": "strike",
-      "note": "Mid, High, Mid; on block +9; knockdown on hit"
+      "note": "Mid, High, Mid; on block +9; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "H.db+1+2": {
       "name": "Awakened Power Stance",
@@ -7335,7 +7800,12 @@
         "H.db+1+2"
       ],
       "move_class": "special",
-      "note": "Mid; on block +4"
+      "note": "Mid; on block +4",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "H.f,F+1+2": {
       "name": "Awakened Black Wing",
@@ -7356,7 +7826,12 @@
         "H.f,F+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +5"
+      "note": "Mid; on block +5",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "Left throw": {
       "name": "Shoulder Flip",
@@ -7381,7 +7856,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "OTG.d+1+2": {
       "name": "Black Out",
@@ -7402,7 +7882,12 @@
         "OTG.d+1+2"
       ],
       "move_class": "strike",
-      "note": "Low; on block -13"
+      "note": "Low; on block -13",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "R.df+1+2": {
       "name": "Polar Demon Gouge",
@@ -7423,7 +7908,12 @@
         "R.df+1+2"
       ],
       "move_class": "special",
-      "note": "Mid, Throw; on block -18"
+      "note": "Mid, Throw; on block -18",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "Right throw": {
       "name": "Over the Limit",
@@ -7448,7 +7938,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ub+1+2": {
       "name": "Avenger",
@@ -7469,7 +7964,12 @@
         "ub+1+2"
       ],
       "move_class": "strike",
-      "note": "m!; Konshin Seikenzuki; knockdown on hit"
+      "note": "m!; Konshin Seikenzuki; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "ub+4": {
       "name": "Move ub+4 (ub+4)",
@@ -7490,7 +7990,12 @@
         "ub+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+1+2": {
       "name": "Tidal Wave",
@@ -7515,7 +8020,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+2": {
       "name": "Evading Middle Strike",
@@ -7536,7 +8046,12 @@
         "uf+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -10~-9"
+      "note": "Mid; on block -10~-9",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+3": {
       "name": "Left Spinning Jump Kick",
@@ -7557,7 +8072,12 @@
         "uf+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+4": {
       "name": "Front Jump Kick",
@@ -7578,7 +8098,12 @@
         "uf+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf,n,4": {
       "name": "Delayed Rising Toe Kick",
@@ -7599,7 +8124,12 @@
         "uf,n,4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws1": {
       "name": "Solar Plexus Strike",
@@ -7631,6 +8161,11 @@
         "notation": "WS 1",
         "id": "jin_136",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "ws1,2": {
@@ -7670,6 +8205,11 @@
         "notation": "WS 1, 2",
         "id": "jin_137",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "ws1,3": {
@@ -7699,7 +8239,12 @@
         ],
         "total": 15
       },
-      "note": "High; on block -6"
+      "note": "High; on block -6",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws1,3,2": {
       "name": "Solar Plexus Strike (2)",
@@ -7730,7 +8275,12 @@
         ],
         "total": 19
       },
-      "note": "Mid; on block -11"
+      "note": "Mid; on block -11",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws1,3,2,1": {
       "name": "Solar Plexus Strike (1)",
@@ -7763,7 +8313,12 @@
         ],
         "total": 22
       },
-      "note": "Mid; on block -11"
+      "note": "Mid; on block -11",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws1,3,2,1,4": {
       "name": "Solar Plexus Strike (4)",
@@ -7798,7 +8353,12 @@
         ],
         "total": 27
       },
-      "note": "Low; on block -31"
+      "note": "Low; on block -31",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws1,3,2,1,4,2": {
       "name": "Kazama Style 6 Hit Combo Redux",
@@ -7835,7 +8395,12 @@
         ],
         "total": 37
       },
-      "note": "Mid; on block -16; knockdown on hit"
+      "note": "Mid; on block -16; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws1,3~3": {
       "name": "Brazilian Kick",
@@ -7864,7 +8429,12 @@
         ],
         "total": 27
       },
-      "note": "Mid; on block +6"
+      "note": "Mid; on block +6",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "ws2": {
       "name": "Crouching Uppercut",
@@ -7896,6 +8466,11 @@
         "notation": "WS 2",
         "id": "jin_139",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "ws3": {
@@ -7928,6 +8503,11 @@
         "notation": "WS 3",
         "id": "jin_140",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "ws4": {
@@ -7949,7 +8529,12 @@
         "ws4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -3"
+      "note": "Mid; on block -3",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws4,4": {
       "name": "Double Cross Kicks",
@@ -7978,7 +8563,12 @@
         ],
         "total": 28
       },
-      "note": "High; on block -7"
+      "note": "High; on block -7",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.1": {
       "name": "Move ZEN.1 (ZEN.1)",
@@ -7999,7 +8589,12 @@
         "ZEN.1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -3"
+      "note": "Mid; on block -3",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.1+2": {
       "name": "Karmic Epicenter",
@@ -8031,7 +8626,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.1,2": {
       "name": "Brimstone Bite",
@@ -8060,7 +8660,12 @@
         ],
         "total": 35
       },
-      "note": "Mid; on block -14; knockdown on hit"
+      "note": "Mid; on block -14; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.1,3": {
       "name": "Kazama Style Leg Strike Flurry",
@@ -8094,7 +8699,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 139,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.2": {
       "name": "Fiendish Claw",
@@ -8115,7 +8725,12 @@
         "ZEN.2"
       ],
       "move_class": "strike",
-      "note": "High; on block -5; knockdown on hit"
+      "note": "High; on block -5; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.3": {
       "name": "Halberd Heel",
@@ -8136,7 +8751,12 @@
         "ZEN.3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.3+4": {
       "name": "Black Wing Bolt",
@@ -8157,7 +8777,12 @@
         "ZEN.3+4"
       ],
       "move_class": "strike",
-      "note": "High; on block +9g~+15g; knockdown on hit"
+      "note": "High; on block +9g~+15g; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.4": {
       "name": "Corpse Crusher",
@@ -8178,7 +8803,12 @@
         "ZEN.4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +2~+8"
+      "note": "Mid; on block +2~+8",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.u+1": {
       "name": "Black Wing Rondo",
@@ -8199,7 +8829,12 @@
         "ZEN.u+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -16; knockdown on hit"
+      "note": "Mid; on block -16; knockdown on hit",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1~t8.jin": {
       "name": "Jab",
@@ -8357,8 +8992,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Jail from 1st block with 2f delay; Combo from 1st hit with 2f delay; Same animation as df+1; &lt;/div&gt",
       "anim_t3": {
         "bank": "jin",
-        "row": 221,
-        "match": "same-notation"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 9,
@@ -9065,8 +9700,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 197,
-        "match": "same-notation"
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 7,
@@ -9114,8 +9749,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 197,
-        "match": "same-notation"
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 7,
@@ -9283,8 +9918,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 221,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 7,
@@ -9332,8 +9967,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 234,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 7,
@@ -9726,8 +10361,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 193,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 7,
@@ -9782,8 +10417,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 207,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 7,
@@ -9831,8 +10466,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 207,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 7,
@@ -9887,8 +10522,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 197,
-        "match": "same-notation"
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 7,
@@ -9936,8 +10571,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 197,
-        "match": "same-notation"
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 7,
@@ -10489,8 +11124,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 7,
@@ -10595,8 +11230,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 221,
-        "match": "same-notation"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 9,
@@ -10644,8 +11279,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 221,
-        "match": "same-notation"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 9,
@@ -10701,8 +11336,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 230,
-        "match": "same-notation"
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 9,
@@ -10757,8 +11392,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 230,
-        "match": "same-notation"
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 9,
@@ -10806,8 +11441,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 230,
-        "match": "same-notation"
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 9,
@@ -11233,8 +11868,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 191,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 19,
@@ -11645,8 +12280,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 226,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+4~t7.jin": {
@@ -12002,8 +12637,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "jin",
-        "row": 273,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 357,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 14,
@@ -12400,8 +13035,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "jin",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 20,
@@ -12450,8 +13085,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "jin",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 19,
@@ -12758,8 +13393,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 10,
@@ -12817,8 +13452,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "jin",
-        "row": 117,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 10,
@@ -12868,8 +13503,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "jin",
-        "row": 117,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 10,
@@ -13491,8 +14126,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 117,
-        "match": "same-notation"
+        "row": 123,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 20,
@@ -13914,8 +14549,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 233,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 12,
@@ -14388,8 +15023,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 117,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       },
       "t7": {
         "startup_frames": 25,
@@ -14494,8 +15129,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 57,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 12,
@@ -15829,8 +16464,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 233,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 105,
@@ -16017,8 +16652,8 @@
       "input_note": "Face Up, Feet Towards+",
       "anim_t3": {
         "bank": "jin",
-        "row": 273,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "t7.jin_147": {
@@ -16149,8 +16784,8 @@
       "input_note": "Face Down, Feet Away+ (close)",
       "anim_t3": {
         "bank": "jin",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "FDFA.4~t7.jin": {
@@ -16190,8 +16825,8 @@
       "input_note": "Face Down, Feet Away+ (far)",
       "anim_t3": {
         "bank": "jin",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "t7.jin_151": {
@@ -16279,8 +16914,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 273,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 92,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       },
       "t7": {
         "notation": "d+1+2",
@@ -16323,8 +16958,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 184,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 216,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       },
       "t7": {
         "notation": "b+1",
@@ -16430,8 +17065,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 221,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 19,
@@ -16479,8 +17114,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 233,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 21,
@@ -16536,8 +17171,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 221,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 7,
@@ -16825,8 +17460,8 @@
       "input_note": "(or CDS)",
       "anim_t3": {
         "bank": "jin",
-        "row": 233,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "ZEN.1,2~t7.jin.2": {
@@ -17077,8 +17712,8 @@
       "input_note": "(or CDS)",
       "anim_t3": {
         "bank": "jin",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "ZEN.1+2~t7.jin": {
@@ -17125,8 +17760,8 @@
       "input_note": "(or CDS)",
       "anim_t3": {
         "bank": "jin",
-        "row": 273,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "ZEN.3+4~t7.jin": {
@@ -17166,8 +17801,8 @@
       "input_note": "(or CDS)",
       "anim_t3": {
         "bank": "jin",
-        "row": 117,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "3+4": {
@@ -17213,8 +17848,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "jin",
-        "row": 117,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 51,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 10,
@@ -17265,8 +17900,8 @@
       "input_note": "(During Rage)",
       "anim_t3": {
         "bank": "jin",
-        "row": 273,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "R.f,n,d,d/f+1+2": {
@@ -17313,8 +17948,8 @@
       "input_note": "(During Rage)",
       "anim_t3": {
         "bank": "jin",
-        "row": 275,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "R.f,n,d,d/f+1+2,D/F": {
@@ -17639,8 +18274,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "jin",
-        "row": 33,
-        "match": "same-notation"
+        "row": 290,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f+1+3": {
@@ -17725,8 +18360,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "jin",
-        "row": 372,
-        "match": "same-notation"
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+2+3": {
@@ -18077,8 +18712,8 @@
       "input_note": "(During Tackle)",
       "anim_t3": {
         "bank": "jin",
-        "row": 184,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "TACKLE.1,1,1": {
@@ -18126,8 +18761,8 @@
       "input_note": "(During Tackle)",
       "anim_t3": {
         "bank": "jin",
-        "row": 184,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "TACKLE.1,1,1,1": {
@@ -18176,8 +18811,8 @@
       "input_note": "(During Tackle)",
       "anim_t3": {
         "bank": "jin",
-        "row": 184,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "TACKLE.1+2": {
@@ -18217,8 +18852,8 @@
       "input_note": "(During Tackle)",
       "anim_t3": {
         "bank": "jin",
-        "row": 273,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,n,d,d/f": {
@@ -18344,8 +18979,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 273,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       },
       "t7": {
         "notation": "1+3+4",
@@ -18389,8 +19024,8 @@
       "input_note": "Time with enemy attack... (or b+2+4)",
       "anim_t3": {
         "bank": "jin",
-        "row": 273,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u+1+2": {
@@ -22512,7 +23147,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
       "knockdown": true,
-      "input_note": "WS"
+      "input_note": "WS",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "BT.2": {
       "name": "DEMONIO BT.2",
@@ -22548,7 +23188,12 @@
       "merge_source": "t7:jin_126",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "input_note": "BT"
+      "input_note": "BT",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.4": {
       "name": "DEMONIO BT.4",
@@ -22585,7 +23230,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
       "knockdown": true,
-      "input_note": "BT"
+      "input_note": "BT",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WR.4": {
       "name": "DEMONIO WR.4",
@@ -22622,7 +23272,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
       "knockdown": true,
-      "input_note": "WR"
+      "input_note": "WR",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WR.1+2": {
       "name": "DEMONIO WR.1+2",
@@ -22659,7 +23314,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
       "knockdown": true,
-      "input_note": "WR"
+      "input_note": "WR",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "FUFT.3": {
       "name": "DEMONIO FUFT.3",
@@ -22694,7 +23354,12 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:jin_143",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FUFT.4": {
       "name": "DEMONIO FUFT.4",
@@ -22729,7 +23394,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jin_144",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FUFT.+3+4": {
       "name": "DEMONIO FUFT.+3+4",
@@ -22765,7 +23435,12 @@
       "merge_source": "t7:jin_146",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "FUFT.1+2": {
       "name": "DEMONIO FUFT.1+2",
@@ -22802,7 +23477,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
       "knockdown": true,
-      "input_note": "Roll Forward"
+      "input_note": "Roll Forward",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "GROUNDED.3": {
       "name": "DEMONIO GROUNDED.3",
@@ -22837,7 +23517,12 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:jin_148",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "GROUNDED.4": {
       "name": "DEMONIO GROUNDED.4",
@@ -22872,7 +23557,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jin_149",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WR.f,f,F": {
       "name": "DEMONIO WR.f,f,F",
@@ -22909,7 +23599,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
       "knockdown": true,
-      "input_note": "WR"
+      "input_note": "WR",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "TACKLE.2": {
       "name": "DEMONIO TACKLE.2",
@@ -22945,7 +23640,12 @@
       "merge_source": "t7:jin_190",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "TACKLE.2,2": {
       "name": "DEMONIO TACKLE.2,2",
@@ -22981,7 +23681,12 @@
       "merge_source": "t7:jin_191",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "TACKLE.2,2,2": {
       "name": "DEMONIO TACKLE.2,2,2",
@@ -23017,7 +23722,12 @@
       "merge_source": "t7:jin_192",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "TACKLE.2,2,2,2": {
       "name": "DEMONIO TACKLE.2,2,2,2",
@@ -23053,7 +23763,12 @@
       "merge_source": "t7:jin_193",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CD.d/f:1": {
       "name": "Electric Thrusting Uppercut",
@@ -23082,7 +23797,12 @@
       "t8_damage": "22",
       "t8_input": "CD.df#1",
       "merge_source": "t8:Jin-CD.df${justFrame}1",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CD.d/f:2": {
       "name": "Electric Wind Hook Fist",
@@ -23111,7 +23831,12 @@
       "t8_damage": "25",
       "t8_input": "CD.df#2",
       "merge_source": "t8:Jin-CD.df${justFrame}2",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,3": {
       "name": "DEMONIO WS.1,3",
@@ -23140,7 +23865,12 @@
       "t8_damage": ",8",
       "t8_input": "ws1,3",
       "merge_source": "t8:Jin-ws1,3",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,3,2": {
       "name": "DEMONIO WS.1,3,2",
@@ -23169,7 +23899,12 @@
       "t8_damage": ",4",
       "t8_input": "ws1,3,2",
       "merge_source": "t8:Jin-ws1,3,2",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,3,2,1": {
       "name": "DEMONIO WS.1,3,2,1",
@@ -23198,7 +23933,12 @@
       "t8_damage": ",3",
       "t8_input": "ws1,3,2,1",
       "merge_source": "t8:Jin-ws1,3,2,1",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,3,2,1,4": {
       "name": "DEMONIO WS.1,3,2,1,4",
@@ -23227,7 +23967,12 @@
       "t8_damage": ",5",
       "t8_input": "ws1,3,2,1,4",
       "merge_source": "t8:Jin-ws1,3,2,1,4",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,3,2,1,4,2": {
       "name": "Kazama Style 6 Hit Combo Redux",
@@ -23256,7 +24001,12 @@
       "t8_damage": ",10",
       "t8_input": "ws1,3,2,1,4,2",
       "merge_source": "t8:Jin-ws1,3,2,1,4,2",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,3~3": {
       "name": "Solar Plexus Strike > Brazilian Kick",
@@ -23285,7 +24035,12 @@
       "t8_damage": ",20",
       "t8_input": "ws1,3~3",
       "merge_source": "t8:Jin-ws1,3~3",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.4": {
       "name": "DEMONIO WS.4",
@@ -23314,7 +24069,12 @@
       "t8_damage": "13",
       "t8_input": "ws4",
       "merge_source": "t8:Jin-ws4",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.4,4": {
       "name": "Double Cross Kicks",
@@ -23343,7 +24103,12 @@
       "t8_damage": ",15",
       "t8_input": "ws4,4",
       "merge_source": "t8:Jin-ws4,4",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,1": {
       "name": "DEMONIO 1,1",
@@ -23378,7 +24143,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:deviljin_3",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,1,2": {
       "name": "Flash Punch Combo",
@@ -23414,7 +24184,12 @@
       "merge_source": "t7:deviljin_5",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,2": {
       "name": "Demon Slayer",
@@ -23449,7 +24224,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:deviljin_10",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,3,4": {
       "name": "Shoot the Works",
@@ -23485,7 +24265,12 @@
       "merge_source": "t7:deviljin_16",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+4,2,4": {
       "name": "Three Ring Circus",
@@ -23520,7 +24305,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:deviljin_34",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+4,2,d+4": {
       "name": "Three Ring Circus Combo",
@@ -23555,7 +24345,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:deviljin_38",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+2,4": {
       "name": "893P Knee Kick",
@@ -23590,7 +24385,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:deviljin_49",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 260,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+4,3": {
       "name": "Twisted Samsara",
@@ -23626,7 +24426,12 @@
       "merge_source": "t7:deviljin_53",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 245,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+1+2,B": {
       "name": "DEMONIO f+1+2,B",
@@ -23661,7 +24466,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:deviljin_57",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f+3,1,f,F": {
       "name": "DEMONIO f,f+3,1,f,F",
@@ -23696,7 +24506,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:deviljin_64",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f+3,1,2": {
       "name": "Emperor's Sword",
@@ -23732,7 +24547,12 @@
       "merge_source": "t7:deviljin_65",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f+3,1,4": {
       "name": "Hell Spiral",
@@ -23768,7 +24588,12 @@
       "merge_source": "t7:deviljin_71",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f+3,1,d/b+1+2": {
       "name": "Demon Cyclone Spear",
@@ -23803,7 +24628,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:deviljin_74",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f,f+3+4": {
       "name": "Phantom Spear",
@@ -23839,7 +24669,12 @@
       "merge_source": "t7:deviljin_78",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "WR.3": {
       "name": "Leaping Side Kick",
@@ -23876,7 +24711,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
       "knockdown": true,
-      "input_note": "WR"
+      "input_note": "WR",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1,2,f,F": {
       "name": "DEMONIO d/f+1,2,f,F",
@@ -23911,7 +24751,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:deviljin_84",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+3,2": {
       "name": "DEMONIO d/f+3,2",
@@ -23946,7 +24791,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:deviljin_87",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+3,2,4": {
       "name": "Rengoku",
@@ -23982,7 +24832,12 @@
       "merge_source": "t7:deviljin_89",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1,2,B": {
       "name": "DEMONIO b+1,2,B",
@@ -24017,7 +24872,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:deviljin_108",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+2,1:u/f": {
       "name": "Rakshasa's Rampage to Heaven's Door",
@@ -24055,7 +24915,12 @@
       "set": "FIGHT",
       "knockdown": true,
       "isGrab": true,
-      "throw": true
+      "throw": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+2,3": {
       "name": "Rakshasa's Fury",
@@ -24091,7 +24956,12 @@
       "merge_source": "t7:deviljin_114",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b,f+2,1,4": {
       "name": "Laser Cannon",
@@ -24127,7 +24997,12 @@
       "merge_source": "t7:deviljin_127",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,n,d,d/f+1:u/f": {
       "name": "Heaven's Door",
@@ -24163,7 +25038,12 @@
       "merge_source": "t7:deviljin_133",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,n,d,d/f+1,3": {
       "name": "Dragon Uppercut to Middle Kick",
@@ -24199,7 +25079,12 @@
       "merge_source": "t7:deviljin_134",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,n,d,d/f+1,4": {
       "name": "Dragon Uppercut to Spinning Low Kick",
@@ -24234,7 +25119,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:deviljin_136",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,n,d,d/f+4,4": {
       "name": "Spinning Demon",
@@ -24270,7 +25160,12 @@
       "merge_source": "t7:deviljin_143",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,n,2": {
       "name": "DEMONIO f,f,n,2",
@@ -24305,7 +25200,12 @@
       "t7_on_ch": "+1",
       "merge_source": "t7:deviljin_145",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SS.2": {
       "name": "Devil Twister",
@@ -24342,7 +25242,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
       "launch": true,
-      "input_note": "SS"
+      "input_note": "SS",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SS.2:u": {
       "name": "Hell's Gate",
@@ -24379,7 +25284,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
       "knockdown": true,
-      "input_note": "SS"
+      "input_note": "SS",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,4": {
       "name": "Twin Revival",
@@ -24416,7 +25326,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
       "knockdown": true,
-      "input_note": "WS"
+      "input_note": "WS",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3,2,4,3,1+4,1,2,1,2": {
       "name": "10 Hit Combo 1",
@@ -24452,7 +25367,12 @@
       "merge_source": "t7:deviljin_170",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,n,2,1,2,2,3,4,4,1,2,1": {
       "name": "10 Hit Combo 2",
@@ -24488,7 +25408,12 @@
       "merge_source": "t7:deviljin_171",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u+4,U": {
       "name": "DEMONIO u+4,U",
@@ -24523,7 +25448,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:deviljin_182",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+4,3,U": {
       "name": "DEMONIO f+4,3,U",
@@ -24558,7 +25488,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:deviljin_183",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+3,2,4,U": {
       "name": "DEMONIO d/f+3,2,4,U",
@@ -24593,7 +25528,12 @@
       "t7_on_ch": "-",
       "merge_source": "t7:deviljin_184",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FLY.1": {
       "name": "Near Death",
@@ -24629,7 +25569,12 @@
       "merge_source": "t7:deviljin_185",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "input_note": "FLY"
+      "input_note": "FLY",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FLY.3": {
       "name": "Amara",
@@ -24666,7 +25611,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
       "knockdown": true,
-      "input_note": "FLY"
+      "input_note": "FLY",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "R.f,n,d,d/f+4,3+4": {
       "name": "Rage Drive",
@@ -24702,7 +25652,12 @@
       "merge_source": "t7:deviljin_190",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+1+4": {
       "name": "Lightning Uppercut",
@@ -24738,7 +25693,12 @@
       "merge_source": "t7:deviljin_194",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "FLY.2": {
       "name": "Infernal Annihilation",
@@ -24775,7 +25735,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
       "knockdown": true,
-      "input_note": "FLY"
+      "input_note": "FLY",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FLY.1+2": {
       "name": "Infernal Destruction",
@@ -24812,7 +25777,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
       "knockdown": true,
-      "input_note": "FLY"
+      "input_note": "FLY",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "FLY.f+1+2": {
       "name": "Cross Infernal Destruction",
@@ -24849,7 +25819,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
       "knockdown": true,
-      "input_note": "FLY"
+      "input_note": "FLY",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f,b,d/b,d,d/f,f+1+2": {
       "name": "Obliteration",
@@ -24888,7 +25863,12 @@
       "knockdown": true,
       "isGrab": true,
       "throw": true,
-      "input_note": "Approach enemy"
+      "input_note": "Approach enemy",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f+1+2": {
       "name": "Stonehead",
@@ -24927,7 +25907,12 @@
       "knockdown": true,
       "isGrab": true,
       "throw": true,
-      "input_note": "Approach enemy"
+      "input_note": "Approach enemy",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.d/f+1+2": {
       "name": "Ultimate Tackle",
@@ -24964,7 +25949,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
       "knockdown": true,
-      "input_note": "FC"
+      "input_note": "FC",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "3,1,2": {
       "name": "Hell Cyclone",
@@ -24993,7 +25983,12 @@
       "t8_damage": ",20",
       "t8_input": "3,1,2",
       "merge_source": "t8:Devil Jin-3,1,2",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3,1,f,F": {
       "name": "Demon March",
@@ -25022,7 +26017,12 @@
       "t8_damage": null,
       "t8_input": "3,1,f,F",
       "merge_source": "t8:Devil Jin-3,1,f,F",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4~3,H.1+2": {
       "name": "Wheel of Pain > Annihilation Beam",
@@ -25051,7 +26051,12 @@
       "t8_damage": ",15",
       "t8_input": "4~3,H.1+2",
       "merge_source": "t8:Devil Jin-4~3,1+2",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "1+2",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b,f+1+2": {
       "name": "DEMONIO b,f+1+2",
@@ -25080,7 +26085,12 @@
       "t8_damage": "6,6,6,6,6,6",
       "t8_input": "b,f+1+2",
       "merge_source": "t8:Devil Jin-b,f+1+2",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b,f+1+2,2": {
       "name": "Gates of Hades",
@@ -25109,7 +26119,12 @@
       "t8_damage": ",30 (9)",
       "t8_input": "b,f+1+2,2",
       "merge_source": "t8:Devil Jin-b,f+1+2,2",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b,f+2,1,4,H.1+2": {
       "name": "Laser Crush > Annihilation Beam",
@@ -25138,7 +26153,12 @@
       "t8_damage": ",15",
       "t8_input": "b,f+2,1,4,H.1+2",
       "merge_source": "t8:Devil Jin-b,f+2,1,4,1+2",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d/b+1+4": {
       "name": "Hellfire Blast",
@@ -25169,7 +26189,12 @@
       "merge_source": "t8:Devil Jin-db+1+4",
       "set": "FIGHT",
       "input_note": "(During Rage)",
-      "note": "Rage Art; T7 (During Rage) b+1+2 dmg 55 [57] i20 ob -22"
+      "note": "Rage Art; T7 (During Rage) b+1+2 dmg 55 [57] i20 ob -22",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f,hcf+1+2": {
       "name": "Obliteration",
@@ -25200,7 +26225,12 @@
       "merge_source": "t8:Devil Jin-f,hcf+1+2",
       "set": "FIGHT",
       "isGrab": true,
-      "throw": true
+      "throw": true,
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FLY.4": {
       "name": "DEMONIO FLY.4",
@@ -25229,7 +26259,12 @@
       "t8_damage": "10",
       "t8_input": "FLY.4",
       "merge_source": "t8:Devil Jin-FLY.4",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FLY.4,1": {
       "name": "Forsaken Soul",
@@ -25258,7 +26293,12 @@
       "t8_damage": ",20",
       "t8_input": "FLY.4,1",
       "merge_source": "t8:Devil Jin-FLY.4,1",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FLY.4,2": {
       "name": "DEMONIO FLY.4,2",
@@ -25287,7 +26327,12 @@
       "t8_damage": ",20 (14)",
       "t8_input": "FLY.4,2",
       "merge_source": "t8:Devil Jin-FLY.4,2",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FLY.4,2,1": {
       "name": "DEMONIO FLY.4,2,1",
@@ -25316,7 +26361,12 @@
       "t8_damage": ",20 (14/10)",
       "t8_input": "FLY.4,2,1",
       "merge_source": "t8:Devil Jin-FLY.4,2,1",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FLY.4,2,1+2": {
       "name": "Devil Starstorm",
@@ -25345,7 +26395,12 @@
       "t8_damage": ",14 (10/7), 20 (10/8)",
       "t8_input": "FLY.4,2,1+2",
       "merge_source": "t8:Devil Jin-FLY.4,2,1+2",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "FLY.4,2,1,u/f": {
       "name": "Cursed Starstorm",
@@ -25376,7 +26431,12 @@
       "merge_source": "t8:Devil Jin-FLY.4,2,1,UF",
       "set": "FIGHT",
       "isGrab": true,
-      "throw": true
+      "throw": true,
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,n,d,d/f+1+2": {
       "name": "Spiral of Madness",
@@ -25405,7 +26465,12 @@
       "t8_damage": "25",
       "t8_input": "f,n,d,df+1+2",
       "merge_source": "t8:Devil Jin-f,n,d,df+1+2",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f,n,d,d/f+1+2,H.1+2": {
       "name": "Spiral of Madness > Annihilation Beam",
@@ -25434,7 +26499,12 @@
       "t8_damage": ",20",
       "t8_input": "f,n,d,df+1+2,H.1+2",
       "merge_source": "t8:Devil Jin-f,n,d,df+1+2,1+2",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f,n,d,d/f+1,u/f": {
       "name": "Heaven's Door",
@@ -25465,7 +26535,12 @@
       "merge_source": "t8:Devil Jin-f,n,d,df+1,UF",
       "set": "FIGHT",
       "isGrab": true,
-      "throw": true
+      "throw": true,
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,n,d,d/f+4,1+2": {
       "name": "Spinning Demon Hellfire Beam",
@@ -25494,7 +26569,12 @@
       "t8_damage": ",14 (9)",
       "t8_input": "f,n,d,DF+4,1+2",
       "merge_source": "t8:Devil Jin-f,n,d,DF+4,1+2",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f,n,d,d/f+4,H.3": {
       "name": "Spinning Demon Leviathan",
@@ -25523,7 +26603,12 @@
       "t8_damage": ",26 (18)",
       "t8_input": "f,n,d,DF+4,H.3",
       "merge_source": "t8:Devil Jin-f,n,d,DF+4,H.3",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FUFT.u+3+4": {
       "name": "Yomigaeri",
@@ -25552,7 +26637,12 @@
       "t8_damage": null,
       "t8_input": "FUFT.u+3+4",
       "merge_source": "t8:Devil Jin-FUFT.u+3+4",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "H.MCR.1+2": {
       "name": "Inner Purgatory",
@@ -25582,7 +26672,12 @@
       "t8_input": "H.MCR.1+2",
       "merge_source": "t8:Devil Jin-H.MCR.1+2",
       "set": "FIGHT",
-      "input_note": "(Heat)"
+      "input_note": "(Heat)",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "MCR.1": {
       "name": "Tiger Thrush",
@@ -25611,7 +26706,12 @@
       "t8_damage": "20",
       "t8_input": "MCR.1",
       "merge_source": "t8:Devil Jin-MCR.1",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "MCR.1+2": {
       "name": "Inner Turmoil",
@@ -25640,7 +26740,12 @@
       "t8_damage": "12",
       "t8_input": "MCR.1+2",
       "merge_source": "t8:Devil Jin-MCR.1+2",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "MCR.2": {
       "name": "DEMONIO MCR.2",
@@ -25669,7 +26774,12 @@
       "t8_damage": "12",
       "t8_input": "MCR.2",
       "merge_source": "t8:Devil Jin-MCR.2",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "MCR.2,2": {
       "name": "Dark Arachnid Twister",
@@ -25698,7 +26808,12 @@
       "t8_damage": ",20",
       "t8_input": "MCR.2,2",
       "merge_source": "t8:Devil Jin-MCR.2,2",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "MCR.3": {
       "name": "Venomous Torment",
@@ -25727,7 +26842,12 @@
       "t8_damage": "26",
       "t8_input": "MCR.3",
       "merge_source": "t8:Devil Jin-MCR.3",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "MCR.4": {
       "name": "DEMONIO MCR.4",
@@ -25756,7 +26876,12 @@
       "t8_damage": "10",
       "t8_input": "MCR.4",
       "merge_source": "t8:Devil Jin-MCR.4",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "MCR.4,1": {
       "name": "Forsaken Soul",
@@ -25785,7 +26910,12 @@
       "t8_damage": ",20",
       "t8_input": "MCR.4,1",
       "merge_source": "t8:Devil Jin-MCR.4,1",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "MCR.4,2": {
       "name": "DEMONIO MCR.4,2",
@@ -25814,7 +26944,12 @@
       "t8_damage": ",20 (14)",
       "t8_input": "MCR.4,2",
       "merge_source": "t8:Devil Jin-MCR.4,2",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "MCR.4,2,1": {
       "name": "DEMONIO MCR.4,2,1",
@@ -25843,7 +26978,12 @@
       "t8_damage": ",20 (14/10)",
       "t8_input": "MCR.4,2,1",
       "merge_source": "t8:Devil Jin-MCR.4,2,1",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "MCR.4,2,1+2": {
       "name": "Devil Starstorm",
@@ -25872,7 +27012,12 @@
       "t8_damage": ",14 (10/7), 20 (10/8)",
       "t8_input": "MCR.4,2,1+2",
       "merge_source": "t8:Devil Jin-MCR.4,2,1+2",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "MCR.4,2,1,u/f": {
       "name": "Cursed Starstorm",
@@ -25903,7 +27048,12 @@
       "merge_source": "t8:Devil Jin-MCR.4,2,1,UF",
       "set": "FIGHT",
       "isGrab": true,
-      "throw": true
+      "throw": true,
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SS.2,U": {
       "name": "Hell's Gate",
@@ -25932,7 +27082,12 @@
       "t8_damage": ",35 (24), 40 (20)",
       "t8_input": "SS.2,U",
       "merge_source": "t8:Devil Jin-SS.2,U",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/f+3+4,H.1+2": {
       "name": "Hisou > Annihilation Beam",
@@ -25963,7 +27118,12 @@
       "merge_source": "t8:Devil Jin-uf+3+4,1+2",
       "set": "FIGHT",
       "isGrab": true,
-      "throw": true
+      "throw": true,
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,1": {
       "name": "Solo Piston > Infernal Shackle",
@@ -25992,7 +27152,12 @@
       "t8_damage": ",10",
       "t8_input": "ws1,1",
       "merge_source": "t8:Devil Jin-ws1,1",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "devil_jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     }
   },
   "restored_from_sweep_338": {

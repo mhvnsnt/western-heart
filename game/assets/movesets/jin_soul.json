@@ -2044,7 +2044,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "The blood ends with me. Devil-gene burst punch thrown like an exorcism."
+      "note": "The blood ends with me. Devil-gene burst punch thrown like an exorcism.",
+      "anim_t3": {
+        "bank": "yoshimitsu",
+        "row": 175,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u+P": {
       "name": "Red-Eye Warning [WH SIGNATURE]",
@@ -2065,7 +2070,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "When the Gene stirs his eyes go red and the arena goes quiet - out of respect for the fight he's fighting."
+      "note": "When the Gene stirs his eyes go red and the arena goes quiet - out of respect for the fight he's fighting.",
+      "anim_t3": {
+        "bank": "yoshimitsu",
+        "row": 175,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Blood Ends With Me [WH SIGNATURE]",
@@ -2085,7 +2095,12 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "The blood ends with me. Devil-gene burst punch thrown like an exorcism.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "anim_t3": {
+        "bank": "yoshimitsu",
+        "row": 265,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "JIN 1+2 (T3 yoshimitsu r265)",
@@ -2125,7 +2140,12 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "When the Gene stirs his eyes go red and the arena goes quiet - out of respect for the fight he's fighting.",
-      "input_remapped_from": "u+P"
+      "input_remapped_from": "u+P",
+      "anim_t3": {
+        "bank": "yoshimitsu",
+        "row": 208,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "u+1__main": {
       "name": "JIN u+1 (T3 yoshimitsu r208)",
@@ -4365,8 +4385,8 @@
       "note": "Recovers 2f faster on hit or block (t27 r17)",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "same-notation"
+        "row": 54,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "1,1": {
@@ -4469,8 +4489,8 @@
       "t8_alias": "1SS.1+2+3",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1+2+3+4~t8.yoshimitsu": {
@@ -4616,8 +4636,8 @@
       "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.1+4\n* Flash\n&lt;/div&gt;",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 314,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1,NSS.1": {
@@ -4789,8 +4809,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Burst",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "2,3": {
@@ -5074,8 +5094,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "3,2,NSS.1+2": {
@@ -5110,8 +5130,8 @@
       "t8_alias": "NSS.3,2,1+2",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "3+4~t8.yoshimitsu": {
@@ -5462,8 +5482,8 @@
       "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.4,4,2,2,1~1\n* 4,4,2,2,1SS.1~1\n&lt;/div&gt;",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 227,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4,4,2,2,NSS.1": {
@@ -5533,8 +5553,8 @@
       "t8_alias": "NSS.4,4,2,2,1~1",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 237,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4,4,4": {
@@ -5874,8 +5894,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Cannot block during transition; &lt;/div&gt",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+2": {
@@ -5944,8 +5964,8 @@
       "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.b+2,1\n* b+2,1SS.1\n&lt;/div&gt;",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 227,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+2,2": {
@@ -6363,8 +6383,8 @@
       "t8_alias": "1SS.b,B+1+4",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b,B+1+4,B": {
@@ -6676,8 +6696,8 @@
       "t8_alias": "1SS.BT.d+1",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 224,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+1": {
@@ -6780,8 +6800,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Unavailable in NSS; Cancel to r38 standing with db (FLE.db)&lt;/div&gt",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "t8.Yoshimitsu-d+1*(2),n": {
@@ -7231,8 +7251,8 @@
       "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.d+2,1\n* d+2,1SS.1\n&lt;/div&gt;",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 227,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+2,2": {
@@ -7302,8 +7322,8 @@
       "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.d+2,2,1\n* d+2,2,1SS.1\n&lt;/div&gt;",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 237,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+2,2,2": {
@@ -7408,8 +7428,8 @@
       "t8_alias": "NSS.d+2,2,1",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 224,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+2,2,NSS.d+1": {
@@ -7547,8 +7567,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; All stance moves are bufferable; &lt;/div&gt",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d+4": {
@@ -7682,8 +7702,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Continues as long as DB is held; Transition to r25 releasing db; Actionable after 10f, mashing delays follow-ups; Follow-ups are fastest with inputs timed on frame 11; &lt;/div&gt",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 146,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "d/b+2~t8.yoshimitsu": {
@@ -8224,8 +8244,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 244,
-        "match": "same-notation"
+        "row": 69,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+1,2,1": {
@@ -8366,8 +8386,8 @@
       "t8_alias": "1SS.df+1+4",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/f+1,4": {
@@ -8470,8 +8490,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/f+3~t8.yoshimitsu": {
@@ -8677,8 +8697,8 @@
       "merge_source": "t8:Yoshimitsu-DGF.1+2",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "DGF.2": {
@@ -8891,8 +8911,8 @@
       "merge_source": "t8:Yoshimitsu-DGF.d+3+4",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "DGF.f": {
@@ -8968,8 +8988,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "DGF.f+2": {
@@ -9144,8 +9164,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Input can be delayed 2f; Move cannot be delayed; Leads to db+2 extensions; &lt;/div&gt",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 175,
-        "match": "same-notation"
+        "row": 69,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+2,NSS.1": {
@@ -9400,8 +9420,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+1+4": {
@@ -9435,8 +9455,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+1+4,F": {
@@ -9642,8 +9662,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+3+4,1+2": {
@@ -9677,8 +9697,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+3+4,1+2,3+4": {
@@ -9713,8 +9733,8 @@
       "t8_alias": "Shark Attack",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+4": {
@@ -9851,8 +9871,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "FLE.2": {
@@ -9955,8 +9975,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "FLE.d": {
@@ -10022,8 +10042,8 @@
       "merge_source": "t8:Yoshimitsu-FLE.d+3+4",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "FLE.d/b": {
@@ -10269,8 +10289,8 @@
       "merge_source": "t8:Yoshimitsu-FLE.u+1+2",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "FLE.u+3+4": {
@@ -10304,8 +10324,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "FLE.u/f": {
@@ -10375,8 +10395,8 @@
       "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.f,n,d,df+1\n* CD+1\n&lt;/div&gt;",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 224,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,n,d,d/f+2": {
@@ -10444,8 +10464,8 @@
       "merge_source": "t8:Yoshimitsu-FUFT.d+3+4",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "H.2+3": {
@@ -10479,8 +10499,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Smash",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "H.DGF.1": {
@@ -10557,8 +10577,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "hFC.1": {
@@ -10828,8 +10848,8 @@
       "note": "Unavailable in NSS",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "IND.2": {
@@ -10897,8 +10917,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 275,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 200,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "IND.3,3+4": {
@@ -10932,8 +10952,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "IND.3+4": {
@@ -10973,8 +10993,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "IND.4": {
@@ -11042,8 +11062,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Allows 8-way directional movement in IND; Continues as long as 3+4 is held; Holding a directional input and pressing 1, 2 or 1+2 will play different voicelines; Yoshimitsu must re",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "IND.f": {
@@ -11178,8 +11198,8 @@
       "note": "Unavailable in NSS",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "KIN.1": {
@@ -11212,8 +11232,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 224,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "KIN.1,1": {
@@ -11298,8 +11318,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "KIN.1+4": {
@@ -11333,8 +11353,8 @@
       "t8_alias": "1SS.KIN.1+4",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 314,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "KIN.1,NSS.1": {
@@ -11447,8 +11467,8 @@
       "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.KIN.2,1+2\n* KIN.2,1SS.1+2\n&lt;/div&gt;",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "KIN.2,1+2*": {
@@ -11483,8 +11503,8 @@
       "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.KIN.2,1+2*\n* KIN.2,1SS.1+2*\n&lt;/div&gt;",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "KIN.2,NSS.1+2": {
@@ -11519,8 +11539,8 @@
       "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* NSS.KIN.2,1+2\n* KIN.NSS.2,1+2\n&lt;/div&gt;",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "KIN.2,NSS.1+2*": {
@@ -11555,8 +11575,8 @@
       "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* NSS.KIN.2,1+2*\n* KIN.NSS.2,1+2*\n&lt;/div&gt;",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "KIN.3": {
@@ -11659,8 +11679,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "KIN.b+2": {
@@ -11841,8 +11861,8 @@
       "t8_alias": "1SS.KIN.f+1",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 224,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "KIN.f+1*": {
@@ -11888,8 +11908,8 @@
       "t8_alias": "1SS.KIN.f+1*",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 224,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "KIN.f+1+2": {
@@ -11924,8 +11944,8 @@
       "t8_alias": "1SS.KIN.f+1+2",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "KIN.f+2": {
@@ -11994,8 +12014,8 @@
       "t8_alias": "1SS.KIN.u+1+2",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SIDE_L.1+3": {
@@ -12101,8 +12121,8 @@
       "note": "Recovers 12 base health",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "MED.1+4": {
@@ -12136,8 +12156,8 @@
       "t8_alias": "1SS.MED.1+4",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 314,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "MED.3": {
@@ -12211,8 +12231,8 @@
       "merge_source": "t8:Yoshimitsu-MED.3+4",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "MED.d": {
@@ -12348,8 +12368,8 @@
       "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Balcony Break&lt;/div&gt",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.1+4": {
@@ -12384,8 +12404,8 @@
       "t8_alias": "NSS Flash",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 314,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.b+1+2": {
@@ -12418,8 +12438,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Cannot block during transition; &lt;/div&gt",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.b,B+1+4": {
@@ -12453,8 +12473,8 @@
       "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Balcony Break&lt;/div&gt",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.b,B+1+4,B": {
@@ -12591,8 +12611,8 @@
       "merge_source": "t8:Yoshimitsu-NSS.d+1+2",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.d+1+4": {
@@ -12625,8 +12645,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Yoshimitsu is invisible on frames 50~64, but can still be hit; Transition to 1SS.IND with D; Transition to DGF with U; &lt;/div&gt",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.d/b+1": {
@@ -12694,8 +12714,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Enter KIN r37 with 1+2; Can be buffered; Can be performed in FC; Power up input NSS.f,n,d,df+1; Replaced by 1SS.df+1+4 when performed in BT&lt;/div&gt",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.f+1+2": {
@@ -12729,8 +12749,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Engag",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.f+3+4": {
@@ -12764,8 +12784,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.FC.D/F+1": {
@@ -12906,8 +12926,8 @@
       "t8_alias": "NSS.CD+1",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 224,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "NSS.IND.1": {
@@ -12978,8 +12998,8 @@
       "t8_alias": "KIN.NSS.1+4",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.KIN.d+1": {
@@ -13058,8 +13078,8 @@
       "t8_alias": "KIN.NSS.f+1",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 224,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "NSS.KIN.f+1*": {
@@ -13105,8 +13125,8 @@
       "t8_alias": "KIN.NSS.f+1*",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 224,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "NSS.KIN.f+1+2": {
@@ -13140,8 +13160,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.qcf+1": {
@@ -13245,8 +13265,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.u/b+1": {
@@ -13314,8 +13334,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.u/b+1+3": {
@@ -13348,8 +13368,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Punishable on close hit with FUFT.3&lt;/div&gt",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.u/b+1+3,1+2": {
@@ -13383,8 +13403,8 @@
       "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Floor Break&lt;/div&gt",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.u/b+1+3,n,1": {
@@ -13418,8 +13438,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 237,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "NSS.u/f+1+3": {
@@ -13451,8 +13471,8 @@
       "merge_source": "t8:Yoshimitsu-NSS.uf+1+3",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "qcb,f+2": {
@@ -13683,8 +13703,8 @@
       "note": "Sidestep adds minimum 9f, effective startup i26~27",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 224,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "SS.2": {
@@ -13824,8 +13844,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Cancel to r12 with db_d_df (js1~10); Unavailable in NSS; Actionable after 15 frames, except when using DGF.2 which can be performed after 10 frames; &lt;/div&gt",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u+3+4": {
@@ -13972,8 +13992,8 @@
       "t8_alias": "1SS.ub+1+3",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u/b+1+3,1+2": {
@@ -14008,8 +14028,8 @@
       "t8_alias": "1SS.ub+1+3,1+2",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u/b+1+3,n,1": {
@@ -14044,8 +14064,8 @@
       "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.ub+1+3,n,1\n* ub+1+3,1SS.n,1\n&lt;/div&gt;",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 227,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/b+4~t8.yoshimitsu": {
@@ -14186,8 +14206,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 261,
-        "match": "same-notation"
+        "row": 313,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+1+3": {
@@ -14222,8 +14242,8 @@
       "t8_alias": "1SS.uf+1+3",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u/f+1+3,b": {
@@ -14537,8 +14557,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u/f+3+4,1,4": {
@@ -14686,8 +14706,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 275,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 73,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+3+4,3+4": {
@@ -14721,8 +14741,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u/f+4~t8.yoshimitsu": {
@@ -15135,8 +15155,8 @@
       "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.ws2,1\n* ws2,1SS.1\n&lt;/div&gt;",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 227,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS.2,NSS.1": {
@@ -15381,8 +15401,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "same-notation"
+        "row": 54,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "1,1~t7.yoshimitsu": {
@@ -16195,8 +16215,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "t7.yoshimitsu_21": {
@@ -16524,8 +16544,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u/f+3+4,3+4~t7.yoshimitsu.2": {
@@ -16564,8 +16584,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u/f+3+4,u+3+4": {
@@ -16611,8 +16631,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u/f+3+4,u+3+4~t7.yoshimitsu": {
@@ -16658,8 +16678,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u/f+3+4,b+1": {
@@ -16704,8 +16724,8 @@
       },
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 218,
-        "match": "same-notation"
+        "row": 54,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+3+4,b+1,4": {
@@ -16751,8 +16771,8 @@
       },
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 219,
-        "match": "same-notation"
+        "row": 88,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+3+4,b+1,4,d+1": {
@@ -16846,8 +16866,8 @@
       },
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "t7.yoshimitsu_36": {
@@ -17548,8 +17568,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+3+4,1+2~t7.yoshimitsu": {
@@ -17595,8 +17615,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+3+4,1+2~t7.yoshimitsu.2": {
@@ -17635,8 +17655,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+3+4,1+2,3+4~t7.yoshimitsu": {
@@ -17683,8 +17703,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+3+4,1+2,3+4~t7.yoshimitsu.2": {
@@ -17730,8 +17750,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+3+4,1+2,3+4~t7.yoshimitsu.3": {
@@ -17770,8 +17790,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f,f+3": {
@@ -17851,8 +17871,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 224,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,n,d,d/f+2~t7.yoshimitsu": {
@@ -17975,8 +17995,8 @@
       },
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 244,
-        "match": "same-notation"
+        "row": 69,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+1,2~t7.yoshimitsu.2": {
@@ -18014,8 +18034,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 244,
-        "match": "same-notation"
+        "row": 69,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+1,4~t7.yoshimitsu": {
@@ -18593,8 +18613,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 227,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+2,2,1~t7.yoshimitsu": {
@@ -18728,8 +18748,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 237,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+2,2,d+1~t7.yoshimitsu": {
@@ -18907,8 +18927,8 @@
       },
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d+2,2,2+3~t7.yoshimitsu": {
@@ -18946,8 +18966,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/b+1~t7.yoshimitsu": {
@@ -19032,8 +19052,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 176,
-        "match": "same-notation"
+        "row": 54,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+1,1~t7.yoshimitsu": {
@@ -19072,8 +19092,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 176,
-        "match": "same-notation"
+        "row": 54,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "D/B+2": {
@@ -19837,8 +19857,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 227,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+2,2~t7.yoshimitsu": {
@@ -20198,8 +20218,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 224,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "SS.2~t7.yoshimitsu": {
@@ -21459,8 +21479,8 @@
       "input_note": "Face Up, Feet Towards+",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "t7.yoshimitsu_143": {
@@ -21697,8 +21717,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 146,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "BDS.3~t7.yoshimitsu": {
@@ -21980,8 +22000,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+1+4,n~t7.yoshimitsu": {
@@ -22137,8 +22157,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.f,F+1+4": {
@@ -22176,8 +22196,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "WALL.b,b,u/b": {
@@ -23116,8 +23136,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "INS.1+2": {
@@ -23155,8 +23175,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "DGF.1+2~t7.yoshimitsu": {
@@ -23194,8 +23214,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "POI.d+1+2": {
@@ -23240,8 +23260,8 @@
       },
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "FLE.f~t7.yoshimitsu": {
@@ -23604,8 +23624,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "FLE.3+4~t7.yoshimitsu": {
@@ -23644,8 +23664,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "FLE.u+3+4~t7.yoshimitsu": {
@@ -23684,8 +23704,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "WFL.3~t7.yoshimitsu": {
@@ -23803,8 +23823,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f+3,3,d+3+4": {
@@ -23850,8 +23870,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "t7.yoshimitsu_201": {
@@ -23927,8 +23947,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "DGF.d+3+4~t7.yoshimitsu": {
@@ -23966,8 +23986,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "MANJI_SPIN_LOW_KICKS.d+3+4": {
@@ -24006,8 +24026,8 @@
       "input_note": "(During Manji Spin Low Kicks)",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.u+1+2~t7.yoshimitsu": {
@@ -24045,8 +24065,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.d+1+2~t7.yoshimitsu": {
@@ -24084,8 +24104,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "POI.d+3+4": {
@@ -24123,8 +24143,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "INS.n": {
@@ -24201,8 +24221,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "t7.yoshimitsu_210": {
@@ -24508,8 +24528,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 275,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 200,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "INS.3,3+4": {
@@ -24555,8 +24575,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "INS.3,3+4~t7.yoshimitsu": {
@@ -24595,8 +24615,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "INS.4": {
@@ -24759,8 +24779,8 @@
       },
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 314,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,n,d,d/f+1,1+2": {
@@ -24799,8 +24819,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+3,1+2": {
@@ -24838,8 +24858,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+2,1+2": {
@@ -24877,8 +24897,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+2,1,1+2": {
@@ -24924,8 +24944,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SS.4,1+2": {
@@ -24964,8 +24984,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "KIN.4,1+2": {
@@ -25004,8 +25024,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "KIN.F": {
@@ -25121,8 +25141,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 224,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "KIN.1,1~t7.yoshimitsu": {
@@ -25301,8 +25321,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "KIN.2,1+2~t7.yoshimitsu.2": {
@@ -25341,8 +25361,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "KIN.2,1+2*~t7.yoshimitsu": {
@@ -25388,8 +25408,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "KIN.3~t7.yoshimitsu": {
@@ -25516,8 +25536,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "KIN.f+2~t7.yoshimitsu": {
@@ -25767,8 +25787,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "WS.2,1~t7.yoshimitsu": {
@@ -25854,8 +25874,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 227,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "DEATH_COPTER.1+2": {
@@ -25894,8 +25914,8 @@
       "input_note": "(During Death Copter)",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "DEATH_COPTER.b,n+1+2": {
@@ -25934,8 +25954,8 @@
       "input_note": "(During Death Copter)",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "FLE.u+1+2~t7.yoshimitsu": {
@@ -25973,8 +25993,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "INS.u+1+2": {
@@ -26012,8 +26032,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "KIN.u+1+2~t7.yoshimitsu": {
@@ -26051,8 +26071,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "POISON_WIND.1+2": {
@@ -26091,8 +26111,8 @@
       "input_note": "(During Poison Wind)",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "DGF.f~t7.yoshimitsu": {
@@ -26445,8 +26465,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "KIN.4,3+4": {
@@ -26485,8 +26505,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "MED.f~t7.yoshimitsu": {
@@ -26565,8 +26585,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 275,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 200,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2+3~t7.yoshimitsu": {
@@ -26604,8 +26624,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.1": {
@@ -27033,8 +27053,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.1+2,1": {
@@ -27113,8 +27133,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.u/f+1+2": {
@@ -27152,8 +27172,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.u/f+3+4": {
@@ -27192,8 +27212,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.u/f+3+4,b+1": {
@@ -27539,8 +27559,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.d/f+1+2,2": {
@@ -27703,8 +27723,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.d+2": {
@@ -27788,8 +27808,8 @@
       },
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 227,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "t7.yoshimitsu_296": {
@@ -27867,8 +27887,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.d/b+2": {
@@ -28108,8 +28128,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "t7.yoshimitsu_304": {
@@ -28438,8 +28458,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.4~1": {
@@ -29138,8 +29158,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "R.b+1+2": {
@@ -29179,8 +29199,8 @@
       "input_note": "(During Rage)",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "t7.yoshimitsu_329": {
@@ -29257,8 +29277,8 @@
       "input_note": "(During Rage)",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u/f+1+2~t7.yoshimitsu": {
@@ -29455,8 +29475,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+1+4,F~t7.yoshimitsu": {
@@ -30278,8 +30298,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u/b+1+2~t7.yoshimitsu": {
@@ -30357,8 +30377,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u/b+1+2,n,1": {
@@ -30397,8 +30417,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 237,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "t7.yoshimitsu_360": {
@@ -30594,8 +30614,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "MED.1+2~t7.yoshimitsu": {
@@ -30634,8 +30654,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "MED.1+4~t7.yoshimitsu": {
@@ -30674,8 +30694,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "DGF.3+4~t7.yoshimitsu": {
@@ -30714,8 +30734,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.b,B+1+4~t7.yoshimitsu": {
@@ -30754,8 +30774,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.u/b+1+2~t7.yoshimitsu": {
@@ -30794,8 +30814,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 102,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "NSS.u/b+1+2,1": {
@@ -30834,8 +30854,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 237,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 54,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+3~t7.yoshimitsu": {

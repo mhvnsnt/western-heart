@@ -1273,7 +1273,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "Stillness does not compete. A counter thrown from total stillness - he barely moved."
+      "note": "Stillness does not compete. A counter thrown from total stillness - he barely moved.",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "S": {
       "name": "Refused Seat [WH SIGNATURE]",
@@ -1292,7 +1297,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "The still soul refused the trial - and showed up anyway. One strike, no wasted motion, no interest."
+      "note": "The still soul refused the trial - and showed up anyway. One strike, no wasted motion, no interest.",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 100,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1+2": {
       "name": "Does Not Compete [WH SIGNATURE]",
@@ -1312,7 +1322,12 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "Stillness does not compete. A counter thrown from total stillness - he barely moved.",
-      "input_remapped_from": "b+S"
+      "input_remapped_from": "b+S",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Refused Seat [WH SIGNATURE]",
@@ -1332,7 +1347,12 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "The still soul refused the trial - and showed up anyway. One strike, no wasted motion, no interest.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 105,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "ZEN 1+2 (T3 heihachi r37)",
@@ -4190,8 +4210,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 161,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,1,WAR.2": {
@@ -4226,8 +4246,8 @@
       "t8_alias": "WAR.1,1,2",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 161,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 100,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+2~t8.heihachi": {
@@ -4295,8 +4315,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit with 4f delay; Move can be delayed 3f; Input can be delayed by 4F; &lt;/div&gt",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 100,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,2": {
@@ -4398,8 +4418,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1+2+3+4": {
@@ -4432,8 +4452,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Can&#039;t block for 5 seconds; CH state on your next attack for 5 seconds &#039;&#039;(Tekken 7 and prior games)&#039;&#039;; 10% damage increase on the next attack for 5 seconds",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1,2,4": {
@@ -4467,8 +4487,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 86,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,4*": {
@@ -4502,8 +4522,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 150,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+3~t8.heihachi": {
@@ -4573,8 +4593,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue reversal-break&quot;; &gt;Re",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1,b+2": {
@@ -4711,8 +4731,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 150,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,b+2,WAR.2": {
@@ -4849,8 +4869,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Burst",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "2+3+4": {
@@ -4883,8 +4903,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;/div&gt",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "2+4~t8.heihachi": {
@@ -5058,8 +5078,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 86,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4~3": {
@@ -5197,8 +5217,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 86,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+2~t8.heihachi": {
@@ -5231,8 +5251,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Balcony break on airborne hit; Chip damage on block; &lt;/div&gt",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 100,
-        "match": "same-notation"
+        "row": 96,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "b+2*": {
@@ -5266,8 +5286,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange sat&quot;; &gt;Strong Aeri",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 162,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b:2*": {
@@ -5404,8 +5424,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow spike&quot;; &gt;Spike&lt;",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 236,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+3,3,H.2": {
@@ -5579,8 +5599,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Actionable after 30f; &lt;/div&gt",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 98,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "d+1,2~t8.heihachi": {
@@ -5925,8 +5945,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue reversal-break&quot;; &gt;Re",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 162,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+1:2*": {
@@ -6141,8 +6161,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Jail from 1st attack; &lt;/div&gt",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1+2,1": {
@@ -6382,8 +6402,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f+2,2": {
@@ -6624,8 +6644,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Engag",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+2": {
@@ -6730,8 +6750,8 @@
       "t8_alias": "wr1+2",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f,F+3": {
@@ -7083,8 +7103,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; +26a if previous hit connects; &lt;/div&gt",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 150,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 194,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,n,d,D/F+4,4,4": {
@@ -7118,8 +7138,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; +26a if previous hit connects; &lt;/div&gt",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 150,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 194,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,n,d,D/F+4,4,4,1": {
@@ -7222,8 +7242,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Can be performed after any number of f,n,d,DF+4 lows; &lt;/div&gt",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 150,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 194,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,n,d,D/F+4,4,4,n,4,4": {
@@ -7394,8 +7414,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Engag",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 147,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "FUJ.1+2": {
@@ -7429,8 +7449,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "FUJ.1,2": {
@@ -7571,8 +7591,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 171,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 226,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "FUJ.3,4": {
@@ -7709,8 +7729,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Smash",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "H.2+3,F": {
@@ -7778,8 +7798,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Consumes all of the remaining Heat time; Tremendous backwards travel; &lt;/div&gt",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "t8.Heihachi-H.d+1+2,P": {
@@ -7850,8 +7870,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "H.FUJ.1+3": {
@@ -7996,8 +8016,8 @@
       "t8_alias": "d,df,f+2",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 158,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 100,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "RAI.1": {
@@ -8352,8 +8372,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u/b+2": {
@@ -8386,8 +8406,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 161,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+1~t8.heihachi": {
@@ -8458,8 +8478,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 38,
-        "match": "same-notation"
+        "row": 241,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+1+4": {
@@ -8634,8 +8654,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange sat&quot;; &gt;Strong Aeri",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 171,
-        "match": "same-notation"
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+4~t8.heihachi": {
@@ -8669,8 +8689,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 86,
-        "match": "same-notation"
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+4,H.1": {
@@ -8740,8 +8760,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "WAR.f,F+2": {
@@ -8846,8 +8866,8 @@
       "t8_alias": "WAR.wr1+2",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "WAR.f,n,d,D/F+4": {
@@ -9020,8 +9040,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Balcony break on airborne hit; 8F evasion?; &lt;/div&gt",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 161,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 100,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS.3": {
@@ -9089,8 +9109,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "WS.4": {
@@ -9370,8 +9390,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 100,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,1,2~t7.heihachi.2": {
@@ -9503,8 +9523,8 @@
       },
       "anim_t3": {
         "bank": "heihachi",
-        "row": 100,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2~t7.heihachi.2": {
@@ -9542,8 +9562,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 100,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,2~t7.heihachi": {
@@ -9589,8 +9609,8 @@
       },
       "anim_t3": {
         "bank": "heihachi",
-        "row": 100,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,2~t7.heihachi.2": {
@@ -9635,8 +9655,8 @@
       },
       "anim_t3": {
         "bank": "heihachi",
-        "row": 100,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,2~t7.heihachi.3": {
@@ -9722,8 +9742,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 247,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1,2,2~1+2~t7.heihachi": {
@@ -9769,8 +9789,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 247,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1,2,2~1+2~t7.heihachi.2": {
@@ -9809,8 +9829,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1,2,2~1+2,u": {
@@ -9897,8 +9917,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 152,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,4~t7.heihachi.2": {
@@ -9944,8 +9964,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 152,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,4~t7.heihachi.3": {
@@ -9984,8 +10004,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 86,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,b+2~t7.heihachi": {
@@ -10030,8 +10050,8 @@
       },
       "anim_t3": {
         "bank": "heihachi",
-        "row": 100,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,b+2~t7.heihachi.2": {
@@ -10204,8 +10224,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 188,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,b+2,4~t7.heihachi": {
@@ -10252,8 +10272,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 152,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,b+2,4~t7.heihachi.2": {
@@ -10299,8 +10319,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 86,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,b+2,4~t7.heihachi.3": {
@@ -10339,8 +10359,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 86,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2~t7.heihachi": {
@@ -10424,8 +10444,8 @@
       },
       "anim_t3": {
         "bank": "heihachi",
-        "row": 100,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,2~t7.heihachi.2": {
@@ -10510,8 +10530,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 247,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "2,2~1+2~t7.heihachi": {
@@ -10550,8 +10570,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "2,2~1+2,u": {
@@ -10714,8 +10734,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 86,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 213,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "4~3~t7.heihachi": {
@@ -10881,8 +10901,8 @@
       },
       "anim_t3": {
         "bank": "heihachi",
-        "row": 171,
-        "match": "same-notation"
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+4~t7.heihachi": {
@@ -10921,8 +10941,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 86,
-        "match": "same-notation"
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+2~t7.heihachi": {
@@ -11087,8 +11107,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f+2~1+2,u": {
@@ -11817,8 +11837,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 150,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 194,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,n,d,d/f+4,n,4,4": {
@@ -11910,8 +11930,8 @@
       },
       "anim_t3": {
         "bank": "heihachi",
-        "row": 150,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 194,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,n,d,d/f+4,n,4,4~t7.heihachi.2": {
@@ -12036,8 +12056,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 150,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 194,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,n,d,D/F+4,4,1": {
@@ -12171,8 +12191,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 150,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 194,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,n,d,D/F+4,4,4~t7.heihachi.3": {
@@ -12211,8 +12231,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 150,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 194,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,n,d,D/F+4,4,4,1~t7.heihachi": {
@@ -13120,8 +13140,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+1,2~1+2~t7.heihachi": {
@@ -13160,8 +13180,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+1,2~1+2,u": {
@@ -13240,8 +13260,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 100,
-        "match": "same-notation"
+        "row": 96,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "b+3~t7.heihachi": {
@@ -13366,8 +13386,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 236,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+4~t7.heihachi": {
@@ -13492,8 +13512,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+1+2,1+2~t7.heihachi": {
@@ -13532,8 +13552,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b,f+2": {
@@ -13870,8 +13890,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b,B+3+4": {
@@ -13909,8 +13929,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "qcf+2~t7.heihachi": {
@@ -14595,8 +14615,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 161,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 100,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS.3~t7.heihachi": {
@@ -14681,8 +14701,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "WS.3,1+2~t7.heihachi.2": {
@@ -14721,8 +14741,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "WS.4~t7.heihachi": {
@@ -14806,8 +14826,8 @@
       },
       "anim_t3": {
         "bank": "heihachi",
-        "row": 152,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS.4,4~t7.heihachi.2": {
@@ -15163,8 +15183,8 @@
       "input_note": "Face Up, Feet Towards+",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "t7.heihachi_145": {
@@ -15363,8 +15383,8 @@
       "input_note": "descriptive: Upon Landing f",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 162,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 100,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+3+4~t7.heihachi": {
@@ -15698,8 +15718,8 @@
       "input_note": "(During Rage)",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 247,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "R.1,b+2,1+2~t7.heihachi": {
@@ -15745,8 +15765,8 @@
       "input_note": "(During Rage)",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "R.1,b+2,1+2~t7.heihachi.2": {
@@ -15785,8 +15805,8 @@
       "input_note": "(During Rage)",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "R.d+1+2": {
@@ -15826,8 +15846,8 @@
       "input_note": "(During Rage)",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "R.b+2,1+2": {
@@ -15873,8 +15893,8 @@
       "input_note": "(During Rage)",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "R.b+2,1+2~t7.heihachi": {
@@ -15913,8 +15933,8 @@
       "input_note": "(During Rage)",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d+1+4~t7.heihachi": {
@@ -15992,8 +16012,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "RAI.1+2": {
@@ -16031,8 +16051,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1+3~t7.heihachi": {
@@ -16768,8 +16788,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "REV.b+1+4": {
@@ -16808,8 +16828,8 @@
       "input_note": "Time with enemy attack... (or b+2+3)",
       "anim_t3": {
         "bank": "heihachi",
-        "row": 241,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u+1+2": {

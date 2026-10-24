@@ -1724,7 +1724,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "Her fighting philosophy, one syllable long. Bubbles rise. Bubbles pop."
+      "note": "Her fighting philosophy, one syllable long. Bubbles rise. Bubbles pop.",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "P+K": {
       "name": "Last Thing You Hear [WH SIGNATURE]",
@@ -1748,7 +1753,12 @@
       "note": "She hums while she fights. Survivors say the humming is the last thing you hear before the pop.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true
+      "isGrab": true,
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Pop! [WH SIGNATURE]",
@@ -1768,7 +1778,12 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "Her fighting philosophy, one syllable long. Bubbles rise. Bubbles pop.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 32,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "AWA POP 1+2 (T3 jin r32)",
@@ -1812,7 +1827,12 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4__main": {
       "name": "Ivory Cutter",
@@ -1840,7 +1860,12 @@
         ],
         "total": 24
       },
-      "note": "Mid, Mid; on block -5"
+      "note": "Mid, Mid; on block -5",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f+2": {
       "name": "AWA POP f+2 (T3 jin r220)",
@@ -1882,7 +1907,12 @@
         "f+2"
       ],
       "move_class": "strike",
-      "note": "High; on block -3"
+      "note": "High; on block -3",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 116,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+4": {
       "name": "AWA POP f+4 (T3 jin r214)",
@@ -2357,7 +2387,12 @@
         ],
         "total": 24
       },
-      "note": "Mid; on block -13"
+      "note": "Mid; on block -13",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 219,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "d+1+2,1": {
       "name": "AWA POP d+1+2,1 (T3 jin r177)",
@@ -2636,7 +2671,12 @@
         ],
         "total": 46
       },
-      "note": "High; on block -3~-1; knockdown on hit"
+      "note": "High; on block -3~-1; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+1+2,1,2": {
       "name": "AWA POP d+1+2,1,2 (T3 jin r183)",
@@ -4875,7 +4915,12 @@
       ],
       "move_class": "strike",
       "note": "Mid; on block -3",
-      "t8_input": "1+2"
+      "t8_input": "1+2",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 103,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1,2": {
       "name": "Left Right Combo",
@@ -4904,7 +4949,12 @@
         ],
         "total": 15
       },
-      "note": "High; on block -3"
+      "note": "High; on block -3",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,1": {
       "name": "Left Right Combo (1)",
@@ -4935,7 +4985,12 @@
         ],
         "total": 32
       },
-      "note": "High; on block -3"
+      "note": "High; on block -3",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,1,1+2": {
       "name": "Biting Kiss Shot",
@@ -4970,7 +5025,12 @@
         ],
         "total": 50
       },
-      "note": "High, High, High; on block -9"
+      "note": "High, High, High; on block -9",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1,2,1+2": {
       "name": "Double Explosion",
@@ -5001,7 +5061,12 @@
         ],
         "total": 37
       },
-      "note": "Mid; on block -14; knockdown on hit"
+      "note": "Mid; on block -14; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1,2,1,H.1+2": {
       "name": "Biting Kiss Shot",
@@ -5036,7 +5101,12 @@
         ],
         "total": 50
       },
-      "note": "High, High, High, High, High; on block -2; knockdown on hit"
+      "note": "High, High, High, High, High; on block -2; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1+2+3+4": {
       "name": "Ki Charge",
@@ -5056,7 +5126,12 @@
       "input_slots": [
         "1+2+3+4"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1,2,4": {
       "name": "Bermuda Triangle",
@@ -5087,7 +5162,12 @@
         ],
         "total": 37
       },
-      "note": "High; on block -6; knockdown on hit"
+      "note": "High; on block -6; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,4": {
       "name": "PK Combo",
@@ -5116,7 +5196,12 @@
         ],
         "total": 22
       },
-      "note": "High; on block -4"
+      "note": "High; on block -4",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,4,1": {
       "name": "Assassin's Blade",
@@ -5147,7 +5232,12 @@
         ],
         "total": 43
       },
-      "note": "Mid; on block -11"
+      "note": "Mid; on block -11",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,3": {
       "name": "Spider Knee",
@@ -5176,7 +5266,12 @@
         ],
         "total": 25
       },
-      "note": "Mid; on block -13"
+      "note": "Mid; on block -13",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2+4,2": {
       "name": "Shoulder Through Buster (STB)",
@@ -5201,7 +5296,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "2"
+      "throw_break": "2",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3,2": {
       "name": "Spiral Explosion",
@@ -5230,7 +5330,12 @@
         ],
         "total": 36
       },
-      "note": "Mid; on block -9; knockdown on hit"
+      "note": "Mid; on block -9; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3,3": {
       "name": "Move 3 (3)",
@@ -5259,7 +5364,12 @@
         ],
         "total": 18
       },
-      "note": "High; on block -14"
+      "note": "High; on block -14",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3,3,3": {
       "name": "Move 3 (3)",
@@ -5290,7 +5400,12 @@
         ],
         "total": 24
       },
-      "note": "High; on block -14"
+      "note": "High; on block -14",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3,3,3,4": {
       "name": "Flash Kicks",
@@ -5323,7 +5438,12 @@
         ],
         "total": 44
       },
-      "note": "High; on block -6; knockdown on hit"
+      "note": "High; on block -6; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3+4": {
       "name": "Fatal Blow",
@@ -5344,7 +5464,12 @@
         "3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -10"
+      "note": "Mid; on block -10",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "3,4": {
       "name": "Head Ringer",
@@ -5373,7 +5498,12 @@
         ],
         "total": 34
       },
-      "note": "High; on block -6; knockdown on hit"
+      "note": "High; on block -6; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,2": {
       "name": "Spiral Explosion",
@@ -5402,7 +5532,12 @@
         ],
         "total": 37
       },
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,3": {
       "name": "Easy Prey Kick Combo",
@@ -5431,7 +5566,12 @@
         ],
         "total": 35
       },
-      "note": "Mid; on block -2c"
+      "note": "Mid; on block -2c",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,4": {
       "name": "High Kick (4)",
@@ -5460,7 +5600,12 @@
         ],
         "total": 36
       },
-      "note": "High; on block -7"
+      "note": "High; on block -7",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,4,3+4": {
       "name": "Deadly Assault",
@@ -5492,7 +5637,12 @@
         ],
         "total": 65
       },
-      "note": "Mid, Mid; on block -6~+0; knockdown on hit"
+      "note": "Mid, Mid; on block -6~+0; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "4,4,4": {
       "name": "Deadly Hunter",
@@ -5523,7 +5673,12 @@
         ],
         "total": 56
       },
-      "note": "Low; on block -12"
+      "note": "Low; on block -12",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ABK.1": {
       "name": "Double Arm Break",
@@ -5544,7 +5699,12 @@
         "ABK.1"
       ],
       "move_class": "special",
-      "note": "Throw; on block -3"
+      "note": "Throw; on block -3",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ABK.2": {
       "name": "Falling Arm Break",
@@ -5565,7 +5725,12 @@
         "ABK.2"
       ],
       "move_class": "special",
-      "note": "Throw; on block -3"
+      "note": "Throw; on block -3",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 475,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1_t8": {
       "name": "Throat Slasher",
@@ -5587,7 +5752,12 @@
       ],
       "move_class": "strike",
       "note": "High; on block -7",
-      "t8_input": "b+1"
+      "t8_input": "b+1",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1+2": {
       "name": "Shockwave Palm",
@@ -5615,7 +5785,12 @@
         ],
         "total": 25
       },
-      "note": "Mid, Mid; on block -4; knockdown on hit"
+      "note": "Mid, Mid; on block -4; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 119,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "b+1+3_b+2+4": {
       "name": "Attack Reversal",
@@ -5636,7 +5811,12 @@
         "b+1+3_b+2+4"
       ],
       "move_class": "special",
-      "note": "on block -6"
+      "note": "on block -6",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+1+4": {
       "name": "Reverse Ivory Cutter",
@@ -5664,7 +5844,12 @@
         ],
         "total": 18
       },
-      "note": "Mid, Mid; on block -15; knockdown on hit"
+      "note": "Mid, Mid; on block -15; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+1,4": {
       "name": "Glass Jaw",
@@ -5693,7 +5878,12 @@
         ],
         "total": 32
       },
-      "note": "Mid; on block -12"
+      "note": "Mid; on block -12",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+2": {
       "name": "Move b+2 (b+2)",
@@ -5714,7 +5904,12 @@
         "b+2"
       ],
       "move_class": "strike",
-      "note": "High; on block -14"
+      "note": "High; on block -14",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 120,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+2,2": {
       "name": "Move 2 (2)",
@@ -5743,7 +5938,12 @@
         ],
         "total": 24
       },
-      "note": "High; on block -6"
+      "note": "High; on block -6",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 240,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+2,2,2": {
       "name": "Backhand Combo",
@@ -5774,7 +5974,12 @@
         ],
         "total": 44
       },
-      "note": "High; on block -9"
+      "note": "High; on block -9",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+3": {
       "name": "Move b+3 (b+3)",
@@ -5795,7 +6000,12 @@
         "b+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -6"
+      "note": "Mid; on block -6",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+3+4": {
       "name": "Out of Sight",
@@ -5816,7 +6026,12 @@
         "b+3+4"
       ],
       "move_class": "strike",
-      "note": "High; on block -5"
+      "note": "High; on block -5",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 110,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "b+3,4": {
       "name": "Stinger Heel Kick Combo",
@@ -5845,7 +6060,12 @@
         ],
         "total": 27
       },
-      "note": "High; on block -8"
+      "note": "High; on block -8",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+3+4,1+2": {
       "name": "Kiss Shot",
@@ -5876,7 +6096,12 @@
         ],
         "total": 34
       },
-      "note": "High, High, High; on block -5"
+      "note": "High, High, High; on block -5",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+3+4,3": {
       "name": "Assassin Somersault Kick",
@@ -5905,7 +6130,12 @@
         ],
         "total": 36
       },
-      "note": "Mid; on block -15~-14; knockdown on hit"
+      "note": "Mid; on block -15~-14; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+3+4,H.1+2": {
       "name": "Kiss Shot",
@@ -5936,7 +6166,12 @@
         ],
         "total": 34
       },
-      "note": "High, High, High, High, High; on block -2; knockdown on hit"
+      "note": "High, High, High, High, High; on block -2; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+4": {
       "name": "Spear Kick",
@@ -5957,7 +6192,12 @@
         "b+4"
       ],
       "move_class": "strike",
-      "note": "High; on block -9"
+      "note": "High; on block -9",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 112,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "Back throw": {
       "name": "Leaping Triangle Hold",
@@ -5982,7 +6222,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(back to wall).b,b,UB": {
       "name": "Wall Jump Backflip",
@@ -6003,7 +6248,12 @@
         "(back to wall).b,b,UB"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +1"
+      "note": "Mid; on block +1",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b,B+2+3": {
       "name": "Hunting Swan",
@@ -6024,7 +6274,12 @@
         "b,B+2+3"
       ],
       "move_class": "strike",
-      "note": "m!; Power Charge; knockdown on hit"
+      "note": "m!; Power Charge; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "BHS.1": {
       "name": "Arm Break (ABK)",
@@ -6045,7 +6300,12 @@
         "BHS.1"
       ],
       "move_class": "special",
-      "note": "Throw; on block -3"
+      "note": "Throw; on block -3",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BHS.1+2": {
       "name": "Seoi Gyaku Juji-gatame",
@@ -6070,7 +6330,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BHS.2": {
       "name": "Stomach Lock (TSS)",
@@ -6091,7 +6356,12 @@
         "BHS.2"
       ],
       "move_class": "special",
-      "note": "Throw; on block -3"
+      "note": "Throw; on block -3",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 475,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT+1": {
       "name": "Twist Jab",
@@ -6112,7 +6382,12 @@
         "BT+1"
       ],
       "move_class": "strike",
-      "note": "High; on block -8"
+      "note": "High; on block -8",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BTR.1": {
       "name": "Arm Break (ABK)",
@@ -6133,7 +6408,12 @@
         "BTR.1"
       ],
       "move_class": "special",
-      "note": "Throw; on block -3"
+      "note": "Throw; on block -3",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BTR.2": {
       "name": "Twisted Nightmare (NTM)",
@@ -6154,7 +6434,12 @@
         "BTR.2"
       ],
       "move_class": "special",
-      "note": "Throw; on block -3"
+      "note": "Throw; on block -3",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 475,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CD.1": {
       "name": "Hellbringer",
@@ -6175,7 +6460,12 @@
         "CD.1"
       ],
       "move_class": "strike",
-      "note": "High; on block +1~+3"
+      "note": "High; on block +1~+3",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CD.2": {
       "name": "Shut Up",
@@ -6196,7 +6486,12 @@
         "CD.2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -8; knockdown on hit"
+      "note": "Mid; on block -8; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CD.2+3": {
       "name": "Evil Mist",
@@ -6224,7 +6519,12 @@
         ],
         "total": 20
       },
-      "note": "h!"
+      "note": "h!",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "CD.3": {
       "name": "Sideslip",
@@ -6245,7 +6545,12 @@
         "CD.3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -20~-11"
+      "note": "Low; on block -20~-11",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CD.4": {
       "name": "Move CD.4 (CD.4)",
@@ -6266,7 +6571,12 @@
         "CD.4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -8"
+      "note": "Mid; on block -8",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CD.4,3": {
       "name": "Move 3 (3)",
@@ -6295,7 +6605,12 @@
         ],
         "total": 38
       },
-      "note": "High; on block -10; knockdown on hit"
+      "note": "High; on block -10; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CD.4,3,1+2": {
       "name": "Lapwing Kiss Shot",
@@ -6328,7 +6643,12 @@
         ],
         "total": 56
       },
-      "note": "High, High, High; on block -9"
+      "note": "High, High, High; on block -9",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "CHD.1": {
       "name": "Commando Arm Lock",
@@ -6349,7 +6669,12 @@
         "CHD.1"
       ],
       "move_class": "special",
-      "note": "Throw; on block +0d"
+      "note": "Throw; on block +0d",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CHD.2": {
       "name": "Heel Hold (HHD)",
@@ -6370,7 +6695,12 @@
         "CHD.2"
       ],
       "move_class": "special",
-      "note": "Throw; on block +0d"
+      "note": "Throw; on block +0d",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 475,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+1": {
       "name": "Low Jab",
@@ -6391,7 +6721,12 @@
         "d+1"
       ],
       "move_class": "strike",
-      "note": "Special low; on block -5"
+      "note": "Special low; on block -5",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+1,4": {
       "name": "Mid Kick",
@@ -6420,7 +6755,12 @@
         ],
         "total": 15
       },
-      "note": "Mid; on block -11"
+      "note": "Mid; on block -11",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+2": {
       "name": "Move d+2 (d+2)",
@@ -6441,7 +6781,12 @@
         "d+2"
       ],
       "move_class": "strike",
-      "note": "Low; on block -12"
+      "note": "Low; on block -12",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 137,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d+2,2": {
       "name": "Vertical Slitter",
@@ -6470,7 +6815,12 @@
         ],
         "total": 33
       },
-      "note": "Mid; on block -12; knockdown on hit"
+      "note": "Mid; on block -12; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3": {
       "name": "Left Spin Low Kick",
@@ -6491,7 +6841,12 @@
         "d+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -17"
+      "note": "Low; on block -17",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3,2": {
       "name": "Right Upper",
@@ -6520,7 +6875,12 @@
         ],
         "total": 28
       },
-      "note": "Mid; on block -11~-9"
+      "note": "Mid; on block -11~-9",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3,4": {
       "name": "Left Spin Low Kick (4)",
@@ -6549,7 +6909,12 @@
         ],
         "total": 24
       },
-      "note": "High; on block -8"
+      "note": "High; on block -8",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3,4,3": {
       "name": "Easy Prey",
@@ -6580,7 +6945,12 @@
         ],
         "total": 44
       },
-      "note": "Mid; on block -7; knockdown on hit"
+      "note": "Mid; on block -7; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+4": {
       "name": "Right Low Kick",
@@ -6601,7 +6971,12 @@
         "d+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -15"
+      "note": "Low; on block -15",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 139,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d+4,1": {
       "name": "Back Spin Chop",
@@ -6630,7 +7005,12 @@
         ],
         "total": 16
       },
-      "note": "High; on block +0"
+      "note": "High; on block +0",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+1+2": {
       "name": "Reverberation Palm Bomb",
@@ -6658,7 +7038,12 @@
         ],
         "total": 27
       },
-      "note": "High, Mid; on block -14; knockdown on hit"
+      "note": "High, Mid; on block -14; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "db+2": {
       "name": "Right Backhand Body Blow",
@@ -6679,7 +7064,12 @@
         "db+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -5"
+      "note": "Mid; on block -5",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+3": {
       "name": "Stiletto Heel",
@@ -6700,7 +7090,12 @@
         "db+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -13"
+      "note": "Low; on block -13",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+3+4": {
       "name": "Geyser Cannon",
@@ -6721,7 +7116,12 @@
         "db+3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -17; knockdown on hit"
+      "note": "Mid; on block -17; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "db+4": {
       "name": "Slicer",
@@ -6742,7 +7142,12 @@
         "db+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -9a"
+      "note": "Low; on block -9a",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+4,3": {
       "name": "Geyser Cannon Combo",
@@ -6771,7 +7176,12 @@
         ],
         "total": 26
       },
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db,qcf,n,DB+2+3": {
       "name": "Move db,qcf,n,DB+2+3 (db,qcf,n,DB+2+3)",
@@ -6791,7 +7201,12 @@
       "input_slots": [
         "db,qcf,n,DB+2+3"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d,DF+4": {
       "name": "Wipe the Floor",
@@ -6812,7 +7227,12 @@
         "d,DF+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -37; knockdown on hit"
+      "note": "Low; on block -37; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1": {
       "name": "Uppercut",
@@ -6833,7 +7253,12 @@
         "df+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -1"
+      "note": "Mid; on block -1",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1,2": {
       "name": "Jab",
@@ -6862,7 +7287,12 @@
         ],
         "total": 20
       },
-      "note": "High; on block -5"
+      "note": "High; on block -5",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1,2,1": {
       "name": "Jab",
@@ -6893,7 +7323,12 @@
         ],
         "total": 37
       },
-      "note": "High; on block -3"
+      "note": "High; on block -3",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1,2,1,1+2": {
       "name": "Biting Kiss Shot",
@@ -6928,7 +7363,12 @@
         ],
         "total": 55
       },
-      "note": "High, High, High; on block -9"
+      "note": "High, High, High; on block -9",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "df+1,2,1+2": {
       "name": "Double Explosion",
@@ -6959,7 +7399,12 @@
         ],
         "total": 42
       },
-      "note": "Mid; on block -14; knockdown on hit"
+      "note": "Mid; on block -14; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "df+1,2,1,H.1+2": {
       "name": "Biting Kiss Shot",
@@ -6994,7 +7439,12 @@
         ],
         "total": 55
       },
-      "note": "High, High, High, High, High; on block -2; knockdown on hit"
+      "note": "High, High, High, High, High; on block -2; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "df+1,2,4": {
       "name": "Bermuda Triangle",
@@ -7025,7 +7475,12 @@
         ],
         "total": 42
       },
-      "note": "High; on block -6; knockdown on hit"
+      "note": "High; on block -6; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1+3": {
       "name": "Arm Grab Flip",
@@ -7050,7 +7505,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+2": {
       "name": "Silent Uppercut",
@@ -7071,7 +7531,12 @@
         "df+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -7; knockdown on hit"
+      "note": "Mid; on block -7; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+2+4": {
       "name": "Reverse Neck Breaker",
@@ -7096,7 +7561,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "2"
+      "throw_break": "2",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3": {
       "name": "Move df+3 (df+3)",
@@ -7117,7 +7587,12 @@
         "df+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -11"
+      "note": "Mid; on block -11",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,1": {
       "name": "Move 1 (1)",
@@ -7146,7 +7621,12 @@
         ],
         "total": 23
       },
-      "note": "High; on block -8"
+      "note": "High; on block -8",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,1,2": {
       "name": "Dead Drop Combo",
@@ -7177,7 +7657,12 @@
         ],
         "total": 43
       },
-      "note": "Mid; on block -12c"
+      "note": "Mid; on block -12c",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,2": {
       "name": "Move 2 (2)",
@@ -7206,7 +7691,12 @@
         ],
         "total": 22
       },
-      "note": "High; on block +1"
+      "note": "High; on block +1",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,2,1": {
       "name": "Move 1 (1)",
@@ -7237,7 +7727,12 @@
         ],
         "total": 28
       },
-      "note": "High; on block -3"
+      "note": "High; on block -3",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,2,1,2": {
       "name": "Move 2 (2)",
@@ -7270,7 +7765,12 @@
         ],
         "total": 34
       },
-      "note": "High"
+      "note": "High",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,2,1,2,1+2": {
       "name": "Move 1+2 (1+2)",
@@ -7305,7 +7805,12 @@
         ],
         "total": 56
       },
-      "note": "Mid; on block -14; knockdown on hit"
+      "note": "Mid; on block -14; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "df+3,2,1,4": {
       "name": "Creeping Snake",
@@ -7338,7 +7843,12 @@
         ],
         "total": 40
       },
-      "note": "Low; on block -13"
+      "note": "Low; on block -13",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,2,3": {
       "name": "Geyser Cannon",
@@ -7369,7 +7879,12 @@
         ],
         "total": 43
       },
-      "note": "Mid; on block -17; knockdown on hit"
+      "note": "Mid; on block -17; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,2,4": {
       "name": "Right High Kick",
@@ -7400,7 +7915,12 @@
         ],
         "total": 44
       },
-      "note": "High; on block -6; knockdown on hit"
+      "note": "High; on block -6; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,3": {
       "name": "Bisection Combo",
@@ -7429,7 +7949,12 @@
         ],
         "total": 27
       },
-      "note": "Mid; on block -10"
+      "note": "Mid; on block -10",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3+4": {
       "name": "Move df+3+4 (df+3+4)",
@@ -7449,7 +7974,12 @@
       "input_slots": [
         "df+3+4"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "df+4": {
       "name": "Move df+4 (df+4)",
@@ -7470,7 +8000,12 @@
         "df+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -4"
+      "note": "Mid; on block -4",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df,df+1": {
       "name": "Elbow Smash",
@@ -7495,7 +8030,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 288,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f+1+2": {
       "name": "Blonde Bomb",
@@ -7516,7 +8056,12 @@
         "f+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -14; knockdown on hit"
+      "note": "Mid; on block -14; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 230,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+1+3": {
       "name": "Crab Hold (CHD)",
@@ -7541,7 +8086,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+2,1,3": {
       "name": "Swallowtail",
@@ -7572,7 +8122,12 @@
         ],
         "total": 44
       },
-      "note": "Mid; on block -15~-13; knockdown on hit"
+      "note": "Mid; on block -15~-13; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+2+4_t8": {
       "name": "Backhand Slap (BHS)",
@@ -7598,7 +8153,12 @@
       "unblockable": true,
       "isGrab": true,
       "throw_break": "2",
-      "t8_input": "f+2+4"
+      "t8_input": "f+2+4",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3": {
       "name": "Siren's Kiss",
@@ -7626,7 +8186,12 @@
         ],
         "total": 30
       },
-      "note": "High, High; on block +3~+4; knockdown on hit"
+      "note": "High, High; on block +3~+4; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 252,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+3+4": {
       "name": "Move f+3+4 (f+3+4)",
@@ -7647,7 +8212,12 @@
         "f+3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -6"
+      "note": "Mid; on block -6",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 117,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+3+4,1": {
       "name": "Impact Palm Bomb",
@@ -7676,7 +8246,12 @@
         ],
         "total": 34
       },
-      "note": "Mid; on block -14; knockdown on hit"
+      "note": "Mid; on block -14; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3+4,2": {
       "name": "Quick Kiss Shot",
@@ -7706,7 +8281,12 @@
         ],
         "total": 36
       },
-      "note": "Special mid, Special mid; on block -9"
+      "note": "Special mid, Special mid; on block -9",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3+4,H.2": {
       "name": "Quick Kiss Shot",
@@ -7738,7 +8318,12 @@
         ],
         "total": 46
       },
-      "note": "Special mid, Special mid, Special mid, Special mid; on block -6; knockdown on hit"
+      "note": "Special mid, Special mid, Special mid, Special mid; on block -6; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+4_t8": {
       "name": "Move f+4 (f+4)",
@@ -7760,7 +8345,12 @@
       ],
       "move_class": "strike",
       "note": "Mid; on block -5",
-      "t8_input": "f+4"
+      "t8_input": "f+4",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 118,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+4,2": {
       "name": "Aconite",
@@ -7789,7 +8379,12 @@
         ],
         "total": 37
       },
-      "note": "High; on block -9"
+      "note": "High; on block -9",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.df+2": {
       "name": "Sadistic Cupid",
@@ -7821,7 +8416,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 288,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f,F+1+2": {
       "name": "Bombshell Blast",
@@ -7842,7 +8442,12 @@
         "f,F+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -5; knockdown on hit"
+      "note": "Mid; on block -5; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f,F+1+2*": {
       "name": "Bombshell Blast",
@@ -7863,7 +8468,12 @@
         "f,F+1+2*"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +8g; knockdown on hit"
+      "note": "Mid; on block +8g; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f,F+2": {
       "name": "Sunset Strike",
@@ -7884,7 +8494,12 @@
         "f,F+2"
       ],
       "move_class": "strike",
-      "note": "High; on block -4; knockdown on hit"
+      "note": "High; on block -4; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+3": {
       "name": "Bad Habit",
@@ -7905,7 +8520,12 @@
         "f,F+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -14"
+      "note": "Mid; on block -14",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+4": {
       "name": "Kneel Kick",
@@ -7926,7 +8546,12 @@
         "f,F+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -10~-6"
+      "note": "Mid; on block -10~-6",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,F+1+2": {
       "name": "Spiral Bombshell Blast",
@@ -7947,7 +8572,12 @@
         "f,f,F+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +4; knockdown on hit"
+      "note": "Mid; on block +4; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f,f,F+3": {
       "name": "Move f,f,F+3 (f,f,F+3)",
@@ -7968,7 +8598,12 @@
         "f,f,F+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -8"
+      "note": "Mid; on block -8",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,F+3,3": {
       "name": "Electric Ray",
@@ -7997,7 +8632,12 @@
         ],
         "total": 30
       },
-      "note": "Mid; on block -4~-1; knockdown on hit"
+      "note": "Mid; on block -4~-1; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,F+3,4": {
       "name": "Stingray",
@@ -8026,7 +8666,12 @@
         ],
         "total": 31
       },
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "H.2+3": {
       "name": "Bullet Assassination",
@@ -8054,7 +8699,12 @@
         ],
         "total": 29
       },
-      "note": "Mid, High, High, High, High, Mid; on block +5~+6"
+      "note": "Mid, High, High, High, High, Mid; on block +5~+6",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "H.b+1+2": {
       "name": "Kiss Shot Penetrator",
@@ -8086,7 +8736,12 @@
         ],
         "total": 35
       },
-      "note": "Mid, Mid, High, High, High, High; on block +0; knockdown on hit"
+      "note": "Mid, Mid, High, High, High, High; on block +0; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "CD.4,3,H.1+2": {
       "name": "Lapwing Kiss Shot",
@@ -8116,7 +8771,12 @@
         ],
         "total": 38
       },
-      "note": "High, High, High, High, High; on block -2; knockdown on hit"
+      "note": "High, High, High, High, High; on block -2; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "hFC.1": {
       "name": "Crouch Jab",
@@ -8137,7 +8797,12 @@
         "hFC.1"
       ],
       "move_class": "strike",
-      "note": "Special low; on block -5"
+      "note": "Special low; on block -5",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "hFC.1,4": {
       "name": "Crouch Jab (4)",
@@ -8166,7 +8831,12 @@
         ],
         "total": 15
       },
-      "note": "Mid; on block -11"
+      "note": "Mid; on block -11",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "hFC.2": {
       "name": "Crouch Straight",
@@ -8187,7 +8857,12 @@
         "hFC.2"
       ],
       "move_class": "strike",
-      "note": "Special low; on block -4"
+      "note": "Special low; on block -4",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "hFC.3": {
       "name": "Crouch Spin Kick",
@@ -8208,7 +8883,12 @@
         "hFC.3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -17"
+      "note": "Low; on block -17",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "hFC.4": {
       "name": "Crouch Shin Kick",
@@ -8229,7 +8909,12 @@
         "hFC.4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -15"
+      "note": "Low; on block -15",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HHD.1": {
       "name": "Kneebar",
@@ -8250,7 +8935,12 @@
         "HHD.1"
       ],
       "move_class": "special",
-      "note": "Throw; on block -9"
+      "note": "Throw; on block -9",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HHD.2": {
       "name": "Double Heel Hold",
@@ -8271,7 +8961,12 @@
         "HHD.2"
       ],
       "move_class": "special",
-      "note": "Throw; on block -9"
+      "note": "Throw; on block -9",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 475,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Left throw": {
       "name": "Kneebar",
@@ -8296,7 +8991,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "NTM.1": {
       "name": "Neck Crusher",
@@ -8317,7 +9017,12 @@
         "NTM.1"
       ],
       "move_class": "special",
-      "note": "Throw; on block -3"
+      "note": "Throw; on block -3",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "NTM.2": {
       "name": "Leg Stretch Arm Lock",
@@ -8338,7 +9043,12 @@
         "NTM.2"
       ],
       "move_class": "special",
-      "note": "Throw; on block -3"
+      "note": "Throw; on block -3",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 475,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "OTG.d+3+4": {
       "name": "Twisted Mind",
@@ -8359,7 +9069,12 @@
         "OTG.d+3+4"
       ],
       "move_class": "special",
-      "note": "Low; on block -17"
+      "note": "Low; on block -17",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "qcb": {
       "name": "Sway",
@@ -8379,7 +9094,12 @@
       "input_slots": [
         "qcb"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "qcb,B+1+3": {
       "name": "Betrayer (BTR)",
@@ -8404,7 +9124,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "qcf": {
       "name": "Ducking Step",
@@ -8424,7 +9149,12 @@
       "input_slots": [
         "qcf"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "R.df+1+2": {
       "name": "Death by Degrees",
@@ -8445,7 +9175,12 @@
         "R.df+1+2"
       ],
       "move_class": "special",
-      "note": "Mid, Throw; on block -18"
+      "note": "Mid, Throw; on block -18",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "Right throw": {
       "name": "Hammer Throw",
@@ -8470,7 +9205,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SS.1": {
       "name": "Snakeshot",
@@ -8491,7 +9231,12 @@
         "SS.1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -10"
+      "note": "Mid; on block -10",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SS.1+2": {
       "name": "Spiral Explosion",
@@ -8512,7 +9257,12 @@
         "SS.1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -8"
+      "note": "Mid; on block -8",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "SS.1,2": {
       "name": "Double Shot",
@@ -8541,7 +9291,12 @@
         ],
         "total": 30
       },
-      "note": "Mid; on block -3"
+      "note": "Mid; on block -3",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SS.1+2,1+2": {
       "name": "Spiral Kiss Shot",
@@ -8571,7 +9326,12 @@
         ],
         "total": 38
       },
-      "note": "Special mid, Special mid; on block -9; knockdown on hit"
+      "note": "Special mid, Special mid; on block -9; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "SS.1+2,H.1+2": {
       "name": "Spiral Kiss Shot",
@@ -8601,7 +9361,12 @@
         ],
         "total": 38
       },
-      "note": "Special mid, Special mid, Special mid, Special mid; on block -2; knockdown on hit"
+      "note": "Special mid, Special mid, Special mid, Special mid; on block -2; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "SS.2": {
       "name": "Lift Shot",
@@ -8622,7 +9387,12 @@
         "SS.2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -14; knockdown on hit"
+      "note": "Mid; on block -14; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SS.4": {
       "name": "Heel Slicer",
@@ -8643,7 +9413,12 @@
         "SS.4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -14"
+      "note": "Low; on block -14",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SS.4,2": {
       "name": "Tranquilizer",
@@ -8672,7 +9447,12 @@
         ],
         "total": 36
       },
-      "note": "High; on block -7"
+      "note": "High; on block -7",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "STB.2": {
       "name": "Shoulder Through Arm Breaker",
@@ -8693,7 +9473,12 @@
         "STB.2"
       ],
       "move_class": "special",
-      "note": "Throw; on block +0"
+      "note": "Throw; on block +0",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 475,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SWA.b+4": {
       "name": "Ice Pick",
@@ -8714,7 +9499,12 @@
         "SWA.b+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -12; knockdown on hit"
+      "note": "Mid; on block -12; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "TSS.1": {
       "name": "Neck Crusher",
@@ -8735,7 +9525,12 @@
         "TSS.1"
       ],
       "move_class": "special",
-      "note": "Throw; on block -3"
+      "note": "Throw; on block -3",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "TSS.2": {
       "name": "Leg Stretch Arm Lock",
@@ -8756,7 +9551,12 @@
         "TSS.2"
       ],
       "move_class": "special",
-      "note": "Throw"
+      "note": "Throw",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 475,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u+3": {
       "name": "Move u+3 (u+3)",
@@ -8777,7 +9577,12 @@
         "u+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -15; knockdown on hit"
+      "note": "Mid; on block -15; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u+4": {
       "name": "Leaping Axe Kick",
@@ -8798,7 +9603,12 @@
         "u+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +0c~+5c"
+      "note": "Mid; on block +0c~+5c",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "ub+1": {
       "name": "Left Backhand Body Blow",
@@ -8819,7 +9629,12 @@
         "ub+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -16; knockdown on hit"
+      "note": "Mid; on block -16; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ub+3": {
       "name": "Move ub+3 (ub+3)",
@@ -8840,7 +9655,12 @@
         "ub+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -15"
+      "note": "Mid; on block -15",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+1": {
       "name": "Skull Splitter",
@@ -8861,7 +9681,12 @@
         "uf+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -5; knockdown on hit"
+      "note": "Mid; on block -5; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+1+2": {
       "name": "Jumping Flip",
@@ -8893,7 +9718,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+2": {
       "name": "Move uf+2 (uf+2)",
@@ -8914,7 +9744,12 @@
         "uf+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -10"
+      "note": "Mid; on block -10",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+2,1": {
       "name": "Binding Whip",
@@ -8943,7 +9778,12 @@
         ],
         "total": 20
       },
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+3": {
       "name": "Catapult Kick",
@@ -8964,7 +9804,12 @@
         "uf+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -10; knockdown on hit"
+      "note": "Mid; on block -10; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+3+4": {
       "name": "Running Jump Kick",
@@ -8996,7 +9841,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+4": {
       "name": "Move uf+4 (uf+4)",
@@ -9017,7 +9867,12 @@
         "uf+4"
       ],
       "move_class": "strike",
-      "note": "High; on block -9"
+      "note": "High; on block -9",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+4,3": {
       "name": "Move 3 (3)",
@@ -9046,7 +9901,12 @@
         ],
         "total": 32
       },
-      "note": "Low; on block -19"
+      "note": "Low; on block -19",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+4,3,4": {
       "name": "Can Opener",
@@ -9077,7 +9937,12 @@
         ],
         "total": 46
       },
-      "note": "High; on block -6"
+      "note": "High; on block -6",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf,n,D+3": {
       "name": "Move uf,n,D+3 (uf,n,D+3)",
@@ -9098,7 +9963,12 @@
         "uf,n,D+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -17"
+      "note": "Low; on block -17",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf,n,D+3,2": {
       "name": "Hopping Low Kick to Right Uppercut",
@@ -9127,7 +9997,12 @@
         ],
         "total": 33
       },
-      "note": "Mid; on block -11~-9"
+      "note": "Mid; on block -11~-9",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf,n,D+3,4": {
       "name": "Move 4 (4)",
@@ -9156,7 +10031,12 @@
         ],
         "total": 29
       },
-      "note": "High; on block -8"
+      "note": "High; on block -8",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf,n,D+3,4,3": {
       "name": "Hopping Low Kick to Easy Prey",
@@ -9187,7 +10067,12 @@
         ],
         "total": 49
       },
-      "note": "Mid; on block -7; knockdown on hit"
+      "note": "Mid; on block -7; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws1": {
       "name": "Move ws1 (ws1)",
@@ -9208,7 +10093,12 @@
         "ws1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -6"
+      "note": "Mid; on block -6",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws1,1+2": {
       "name": "Fluttering Kiss Shot",
@@ -9239,7 +10129,12 @@
         ],
         "total": 35
       },
-      "note": "High, High, High; on block -9"
+      "note": "High, High, High; on block -9",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "ws1,4": {
       "name": "Diving Hornet",
@@ -9268,7 +10163,12 @@
         ],
         "total": 37
       },
-      "note": "Mid; on block -3c"
+      "note": "Mid; on block -3c",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws1,H.1+2": {
       "name": "Fluttering Kiss Shot",
@@ -9299,7 +10199,12 @@
         ],
         "total": 35
       },
-      "note": "High, High, High, High, High; on block -2; knockdown on hit"
+      "note": "High, High, High, High, High; on block -2; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "ws2": {
       "name": "Palm Uppercut",
@@ -9320,7 +10225,12 @@
         "ws2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws3": {
       "name": "Spider Knee",
@@ -9345,7 +10255,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 288,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "ws3+4": {
       "name": "Geyser Cannon",
@@ -9366,7 +10281,12 @@
         "ws3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -17; knockdown on hit"
+      "note": "Mid; on block -17; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "ws4": {
       "name": "Toe Smash",
@@ -9387,7 +10307,12 @@
         "ws4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -4"
+      "note": "Mid; on block -4",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws4,2": {
       "name": "Spiral Explosion",
@@ -9416,7 +10341,12 @@
         ],
         "total": 37
       },
-      "note": "Mid; on block -9; knockdown on hit"
+      "note": "Mid; on block -9; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 104,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws4,3": {
       "name": "Flashing Escape",
@@ -9445,7 +10375,12 @@
         ],
         "total": 39
       },
-      "note": "High; on block -10; knockdown on hit"
+      "note": "High; on block -10; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws4,3,1+2": {
       "name": "Haematopus Kiss Shot",
@@ -9475,7 +10410,12 @@
         ],
         "total": 39
       },
-      "note": "High, High, High; on block -9"
+      "note": "High, High, High; on block -9",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "ws4,3,H.1+2": {
       "name": "Haematopus Kiss Shot",
@@ -9505,7 +10445,12 @@
         ],
         "total": 39
       },
-      "note": "High, High, High, High, High; on block -2; knockdown on hit"
+      "note": "High, High, High, High, High; on block -2; knockdown on hit",
+      "anim_t3": {
+        "bank": "nina",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1~t8.nina": {
       "name": "Jab",
@@ -10946,8 +11891,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 291,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1,2,1+2~t7.nina.2": {
@@ -10993,8 +11938,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 291,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1,2,1+2~t7.nina.3": {
@@ -11033,8 +11978,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1,2,1,2,1+2": {
@@ -11083,8 +12028,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 291,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1,2,1,2,1+2~t7.nina": {
@@ -11132,8 +12077,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 291,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1,2,1,2,1+2~t7.nina.2": {
@@ -11180,8 +12125,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1,2,1,2,1+2~t7.nina.3": {
@@ -11227,8 +12172,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1,2,1,2,1+2~t7.nina.4": {
@@ -11267,8 +12212,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "2~t7.nina": {
@@ -11742,8 +12687,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 291,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "2,1+2~t7.nina": {
@@ -11782,8 +12727,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "3~t7.nina": {
@@ -11906,8 +12851,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "nina",
-        "row": 250,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3,3,2": {
@@ -12269,8 +13214,8 @@
       },
       "anim_t3": {
         "bank": "nina",
-        "row": 250,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3,3,4,3~t7.nina.2": {
@@ -12315,8 +13260,8 @@
       },
       "anim_t3": {
         "bank": "nina",
-        "row": 265,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3,3,4,3~t7.nina.3": {
@@ -12354,8 +13299,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "nina",
-        "row": 222,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3,4~t7.nina": {
@@ -12527,8 +13472,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "3,d+1+2~t7.nina": {
@@ -12567,8 +13512,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "4~t7.nina": {
@@ -13101,8 +14046,8 @@
       },
       "anim_t3": {
         "bank": "nina",
-        "row": 265,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4,3,4,3~t7.nina.3": {
@@ -13140,8 +14085,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "nina",
-        "row": 222,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4,u": {
@@ -13267,8 +14212,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 291,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "4,u+1+2~t7.nina": {
@@ -13307,8 +14252,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1+4~t7.nina": {
@@ -13353,8 +14298,8 @@
       },
       "anim_t3": {
         "bank": "nina",
-        "row": 296,
-        "match": "same-notation"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1+4~t7.nina.2": {
@@ -13393,8 +14338,8 @@
       "input_note": "(second hit only)",
       "anim_t3": {
         "bank": "nina",
-        "row": 296,
-        "match": "same-notation"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u+4~t7.nina": {
@@ -13759,8 +14704,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "nina",
-        "row": 251,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+4,3,4": {
@@ -14713,8 +15658,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 247,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+3~t7.nina": {
@@ -14981,8 +15926,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 222,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+4,3,3~t7.nina.2": {
@@ -15021,8 +15966,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 222,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+4,4": {
@@ -15308,8 +16253,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+1+2*~t7.nina": {
@@ -15348,8 +16293,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f,f+3": {
@@ -15429,8 +16374,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/f+1~t7.nina": {
@@ -15829,8 +16774,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/f+1,2,1+2~t7.nina": {
@@ -15876,8 +16821,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/f+1,2,1+2~t7.nina.2": {
@@ -15916,8 +16861,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/f+2~t7.nina": {
@@ -16300,8 +17245,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,2,1+2~t7.nina": {
@@ -16348,8 +17293,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,2,1+2~t7.nina.2": {
@@ -16395,8 +17340,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,2,1+2~t7.nina.3": {
@@ -16435,8 +17380,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,2": {
@@ -17408,8 +18353,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "nina",
-        "row": 246,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,2,d+3,2": {
@@ -17768,8 +18713,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "nina",
-        "row": 222,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,3": {
@@ -18438,8 +19383,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,4,3+4~t7.nina": {
@@ -18486,8 +19431,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,4,3+4~t7.nina.2": {
@@ -18533,8 +19478,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,f+4": {
@@ -18752,8 +19697,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 265,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+2,3~t7.nina": {
@@ -18792,8 +19737,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 228,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+3,2~t7.nina": {
@@ -19058,8 +20003,8 @@
       },
       "anim_t3": {
         "bank": "nina",
-        "row": 265,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+3,4,3~t7.nina.3": {
@@ -19097,8 +20042,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "nina",
-        "row": 222,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+4~t7.nina": {
@@ -19426,8 +20371,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 247,
-        "match": "same-notation"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+4,3~t7.nina": {
@@ -19466,8 +20411,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 247,
-        "match": "same-notation"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+3+4": {
@@ -19678,8 +20623,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+1+4~t7.nina.2": {
@@ -19719,8 +20664,8 @@
       "input_note": "(second hit only)",
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+2~t7.nina": {
@@ -21734,8 +22679,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "WS.1,1+2~t7.nina": {
@@ -21781,8 +22726,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "WS.1,4": {
@@ -22191,8 +23136,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SS.1,F": {
@@ -22474,8 +23419,8 @@
       "input_note": "(While enemy is down)",
       "anim_t3": {
         "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1,2,1,2,3,3,2,1,2,4": {
@@ -22712,8 +23657,8 @@
       "input_note": "Face Up, Feet Towards+",
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "t7.nina_303": {
@@ -22993,8 +23938,8 @@
       "input_note": "(During Rage)",
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "R.f+2+3": {
@@ -23034,8 +23979,8 @@
       "input_note": "(During Rage)",
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "R.f+2+3,D/F": {
@@ -23154,8 +24099,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1+3~t7.nina": {
@@ -23326,8 +24271,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 436,
-        "match": "same-notation"
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+2+4~t7.nina": {
@@ -23369,8 +24314,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 438,
-        "match": "same-notation"
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+3+4~t7.nina": {
@@ -23419,8 +24364,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "nina",
-        "row": 90,
-        "match": "same-notation"
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f,d/f+1": {
@@ -23970,8 +24915,8 @@
       "input_note": "(During Backhand Slap)",
       "anim_t3": {
         "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "BACKHAND_SLAP.2,3,4,2,2": {
@@ -24052,8 +24997,8 @@
       "input_note": "(During Triple Slaps)",
       "anim_t3": {
         "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "TRIPLE_SLAPS.1,2,4,3,1+2+3": {
@@ -24093,8 +25038,8 @@
       "input_note": "(During Triple Slaps)",
       "anim_t3": {
         "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "BETRAYER.2,1,1+2,1+2+3": {
@@ -24134,8 +25079,8 @@
       "input_note": "(During Betrayer)",
       "anim_t3": {
         "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "BETRAYER.1,3,2,1": {
@@ -24216,8 +25161,8 @@
       "input_note": "(During Twisted Nightmare)",
       "anim_t3": {
         "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "TWISTED_NIGHTMARE.1,2,4,3,1+2+3": {
@@ -24257,8 +25202,8 @@
       "input_note": "(During Twisted Nightmare)",
       "anim_t3": {
         "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "ARM_BREAK.3,1,4,1+2,1+2": {
@@ -24298,8 +25243,8 @@
       "input_note": "(During Arm Break)",
       "anim_t3": {
         "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "ARM_BREAK.2,1,3,4,1+2": {
@@ -24339,8 +25284,8 @@
       "input_note": "(During Arm Break)",
       "anim_t3": {
         "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "CRAB_HOLD.3+4,3,4,1+2": {
@@ -24380,8 +25325,8 @@
       "input_note": "(During Crab Hold)",
       "anim_t3": {
         "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "CRAB_HOLD.3+4,4,2,1+2": {
@@ -24421,8 +25366,8 @@
       "input_note": "(During Crab Hold)",
       "anim_t3": {
         "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "HEEL_HOLD.3,1,4,2+4": {
@@ -24462,8 +25407,8 @@
       "input_note": "(During Heel Hold)",
       "anim_t3": {
         "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "HEEL_HOLD.1,3,2+4,3+4,1+2": {
@@ -24503,8 +25448,8 @@
       "input_note": "(During Heel Hold)",
       "anim_t3": {
         "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "TACKLE.1": {
@@ -24732,8 +25677,8 @@
       "input_note": "(During Tackle)",
       "anim_t3": {
         "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "qcf~t7.nina": {
@@ -24889,8 +25834,8 @@
       "input_note": "Time with enemy attack... (or b+2+4)",
       "anim_t3": {
         "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u+1+2": {

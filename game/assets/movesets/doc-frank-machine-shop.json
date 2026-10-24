@@ -538,7 +538,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "Straight out of the machine shop. A gadget blast with the serial numbers filed off."
+      "note": "Straight out of the machine shop. A gadget blast with the serial numbers filed off.",
+      "anim_t3": {
+        "bank": "gunjack",
+        "row": 355,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "P+K": {
       "name": "Warranty Void [WH SIGNATURE]",
@@ -562,7 +567,12 @@
       "note": "Upgraded past the point of warranty. A wrench-turn grab - no refunds.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true
+      "isGrab": true,
+      "anim_t3": {
+        "bank": "gunjack",
+        "row": 355,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Shop Upgrade [WH SIGNATURE]",
@@ -582,7 +592,12 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "Straight out of the machine shop. A gadget blast with the serial numbers filed off.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "anim_t3": {
+        "bank": "gunjack",
+        "row": 49,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "DOC FRANK MACHINE SHOP 1+2 (T3 gunjack r49)",
@@ -626,7 +641,12 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "gunjack",
+        "row": 355,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+1": {
       "name": "DOC FRANK MACHINE SHOP d+1 (T3 gunjack r169)",
@@ -9152,8 +9172,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 96,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 203,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "donor.docfrank.ground_f,f_b+1+2": {
@@ -9304,8 +9324,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "donor.docfrank.badstomach_1+2_a": {
@@ -9718,8 +9738,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "donor.docfrank.iw_2,2,1+2": {
@@ -10073,8 +10093,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "donor.docfrank.med_3": {
@@ -10455,8 +10475,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f~donor.docfrank": {
@@ -10483,8 +10503,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "donor.docfrank.fr_f+1+2": {
@@ -10696,8 +10716,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+1+4": {
@@ -10893,8 +10913,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d~donor.docfrank": {
@@ -10921,8 +10941,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u~donor.docfrank": {
@@ -10949,8 +10969,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f+1,4,3,2,1": {
@@ -11212,8 +11232,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f+3+4": {
@@ -11240,8 +11260,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f,N,2": {
@@ -11422,8 +11442,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "donor.docfrank.bk_3,3": {
@@ -11923,8 +11943,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d,d/f,f+1+2": {
@@ -12012,8 +12032,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/f+1+2~donor.docfrank": {
@@ -12347,8 +12367,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 96,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 203,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.2": {
@@ -12379,8 +12399,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 174,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 203,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1+2~donor.docfrank.3": {
@@ -12499,8 +12519,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.5": {
@@ -12563,8 +12583,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 96,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 203,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.7": {
@@ -12828,8 +12848,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.11": {
@@ -12913,8 +12933,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.13": {
@@ -12970,8 +12990,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.15": {
@@ -13031,8 +13051,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.17": {
@@ -13059,8 +13079,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.18": {
@@ -13088,8 +13108,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.19": {
@@ -13268,8 +13288,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.20": {
@@ -13398,8 +13418,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.22": {
@@ -13482,8 +13502,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.25": {
@@ -13538,8 +13558,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.27": {
@@ -13650,8 +13670,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f~donor.docfrank.2": {
@@ -13678,8 +13698,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.29": {
@@ -13735,8 +13755,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b~donor.docfrank.2": {
@@ -13891,8 +13911,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+1+4~donor.docfrank": {
@@ -14088,8 +14108,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d~donor.docfrank.2": {
@@ -14116,8 +14136,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u~donor.docfrank.3": {
@@ -14144,8 +14164,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f+1,4,3,2,1~donor.docfrank": {
@@ -14350,8 +14370,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f+3~donor.docfrank": {
@@ -14407,8 +14427,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f+3+4~donor.docfrank": {
@@ -14435,8 +14455,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f,N,2~donor.docfrank": {
@@ -14617,8 +14637,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.37": {
@@ -14699,8 +14719,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 128,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 53,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.39": {
@@ -14745,8 +14765,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 128,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 53,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.40": {
@@ -14773,8 +14793,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.41": {
@@ -14801,8 +14821,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.42": {
@@ -14829,8 +14849,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.43": {
@@ -14885,8 +14905,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.45": {
@@ -14913,8 +14933,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.46": {
@@ -14941,8 +14961,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.47": {
@@ -14997,8 +15017,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.49": {
@@ -15025,8 +15045,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.50": {
@@ -15053,8 +15073,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "3+4,u/f+1,3,3,3,f+3,3,3,3,3,3,4,4,4,3,3,3,3,3,2,1~donor.docfrank": {
@@ -15118,8 +15138,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d,d/f,f+1+2~donor.docfrank": {
@@ -15207,8 +15227,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/f+1+2~donor.docfrank.2": {
@@ -15542,8 +15562,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 96,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 203,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.53": {
@@ -15574,8 +15594,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 174,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 203,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1+2~donor.docfrank.5": {
@@ -15694,8 +15714,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.56": {
@@ -15758,8 +15778,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 96,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 203,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.58": {
@@ -16023,8 +16043,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.62": {
@@ -16108,8 +16128,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.64": {
@@ -16165,8 +16185,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.66": {
@@ -16226,8 +16246,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.68": {
@@ -16254,8 +16274,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.69": {
@@ -16283,8 +16303,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.70": {
@@ -16463,8 +16483,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.71": {
@@ -16593,8 +16613,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.73": {
@@ -16677,8 +16697,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.76": {
@@ -16733,8 +16753,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.78": {
@@ -16845,8 +16865,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f~donor.docfrank.3": {
@@ -16873,8 +16893,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.80": {
@@ -16930,8 +16950,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b~donor.docfrank.3": {
@@ -17086,8 +17106,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+1+4~donor.docfrank.2": {
@@ -17283,8 +17303,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d~donor.docfrank.3": {
@@ -17311,8 +17331,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u~donor.docfrank.5": {
@@ -17339,8 +17359,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f+1,4,3,2,1~donor.docfrank.2": {
@@ -17545,8 +17565,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f+3~donor.docfrank.2": {
@@ -17602,8 +17622,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f+3+4~donor.docfrank.2": {
@@ -17630,8 +17650,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f,N,2~donor.docfrank.2": {
@@ -17812,8 +17832,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.88": {
@@ -17894,8 +17914,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 128,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 53,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.90": {
@@ -17940,8 +17960,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 128,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 53,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.91": {
@@ -17968,8 +17988,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.92": {
@@ -17996,8 +18016,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.93": {
@@ -18024,8 +18044,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.94": {
@@ -18080,8 +18100,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.96": {
@@ -18108,8 +18128,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.97": {
@@ -18136,8 +18156,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.98": {
@@ -18192,8 +18212,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.100": {
@@ -18220,8 +18240,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.101": {
@@ -18248,8 +18268,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "3+4,u/f+1,3,3,3,f+3,3,3,3,3,3,4,4,4,3,3,3,3,3,2,1~donor.docfrank.2": {
@@ -18313,8 +18333,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d,d/f,f+1+2~donor.docfrank.2": {
@@ -18402,8 +18422,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/f+1+2~donor.docfrank.3": {
@@ -18737,8 +18757,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 96,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 203,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.104": {
@@ -18769,8 +18789,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 174,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 203,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1+2~donor.docfrank.7": {
@@ -18889,8 +18909,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.107": {
@@ -18953,8 +18973,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 96,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 203,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.109": {
@@ -19218,8 +19238,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.113": {
@@ -19303,8 +19323,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.115": {
@@ -19360,8 +19380,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.117": {
@@ -19421,8 +19441,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.119": {
@@ -19449,8 +19469,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.120": {
@@ -19478,8 +19498,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.121": {
@@ -19658,8 +19678,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.122": {
@@ -19788,8 +19808,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.124": {
@@ -19872,8 +19892,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.127": {
@@ -19928,8 +19948,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.129": {
@@ -20040,8 +20060,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f~donor.docfrank.4": {
@@ -20068,8 +20088,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.131": {
@@ -20125,8 +20145,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b~donor.docfrank.4": {
@@ -20281,8 +20301,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+1+4~donor.docfrank.3": {
@@ -20478,8 +20498,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d~donor.docfrank.4": {
@@ -20506,8 +20526,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u~donor.docfrank.7": {
@@ -20534,8 +20554,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f+1,4,3,2,1~donor.docfrank.3": {
@@ -20740,8 +20760,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f+3~donor.docfrank.3": {
@@ -20797,8 +20817,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f+3+4~donor.docfrank.3": {
@@ -20825,8 +20845,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f,N,2~donor.docfrank.3": {
@@ -21007,8 +21027,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.139": {
@@ -21089,8 +21109,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 128,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 53,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.141": {
@@ -21135,8 +21155,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 128,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 53,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.142": {
@@ -21163,8 +21183,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.143": {
@@ -21191,8 +21211,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.144": {
@@ -21219,8 +21239,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.145": {
@@ -21275,8 +21295,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.147": {
@@ -21303,8 +21323,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.148": {
@@ -21331,8 +21351,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.149": {
@@ -21387,8 +21407,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.151": {
@@ -21415,8 +21435,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.152": {
@@ -21443,8 +21463,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "3+4,u/f+1,3,3,3,f+3,3,3,3,3,3,4,4,4,3,3,3,3,3,2,1~donor.docfrank.3": {
@@ -21508,8 +21528,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d,d/f,f+1+2~donor.docfrank.3": {
@@ -21597,8 +21617,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/f+1+2~donor.docfrank.4": {
@@ -21932,8 +21952,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 96,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 203,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.155": {
@@ -21964,8 +21984,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 174,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 203,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1+2~donor.docfrank.9": {
@@ -22084,8 +22104,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.158": {
@@ -22148,8 +22168,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 96,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 203,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.160": {
@@ -22413,8 +22433,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.164": {
@@ -22498,8 +22518,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.166": {
@@ -22555,8 +22575,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.168": {
@@ -22616,8 +22636,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.170": {
@@ -22644,8 +22664,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.171": {
@@ -22673,8 +22693,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.172": {
@@ -22853,8 +22873,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.173": {
@@ -22983,8 +23003,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.175": {
@@ -23067,8 +23087,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.178": {
@@ -23123,8 +23143,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.180": {
@@ -23235,8 +23255,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f~donor.docfrank.5": {
@@ -23263,8 +23283,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.182": {
@@ -23320,8 +23340,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b~donor.docfrank.5": {
@@ -23476,8 +23496,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "b+1+4~donor.docfrank.4": {
@@ -23673,8 +23693,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d~donor.docfrank.5": {
@@ -23701,8 +23721,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "u~donor.docfrank.9": {
@@ -23729,8 +23749,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f+1,4,3,2,1~donor.docfrank.4": {
@@ -23935,8 +23955,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f+3~donor.docfrank.4": {
@@ -23992,8 +24012,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f+3+4~donor.docfrank.4": {
@@ -24020,8 +24040,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,f,N,2~donor.docfrank.4": {
@@ -24202,8 +24222,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.190": {
@@ -24284,8 +24304,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 128,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 53,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.192": {
@@ -24330,8 +24350,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 128,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 53,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.193": {
@@ -24358,8 +24378,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.194": {
@@ -24386,8 +24406,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.195": {
@@ -24414,8 +24434,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.196": {
@@ -24470,8 +24490,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.198": {
@@ -24498,8 +24518,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.199": {
@@ -24526,8 +24546,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.200": {
@@ -24582,8 +24602,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.202": {
@@ -24610,8 +24630,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.203": {
@@ -24638,8 +24658,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 19,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "3+4,u/f+1,3,3,3,f+3,3,3,3,3,3,4,4,4,3,3,3,3,3,2,1~donor.docfrank.4": {
@@ -24703,8 +24723,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d,d/f,f+1+2~donor.docfrank.4": {
@@ -24792,8 +24812,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 23,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d/f+1+2~donor.docfrank.5": {
