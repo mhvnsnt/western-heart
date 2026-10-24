@@ -1,0 +1,41 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<!-- Face/neck proof renderer for tools/rig/weight_audit.py.
+     ?model=<url>&pose=<name>  poses: bind | stance | jab | uppercut | hook | lean
+     Bends spine/neck/head like fight animations do; face verts weighted to
+     spine/pelvis lag behind the head and show the "face cone". -->
+<style>html,body{margin:0;background:#888}</style>
+<script type="importmap">{"imports":{"three":"/game/vendor/three.module.js","three/addons/":"/game/vendor/addons/"}}</script>
+</head><body><script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from '/game/vendor/addons/libs/meshopt_decoder.js';
+const q=new URLSearchParams(location.search);
+const R=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
+R.setSize(900,450);document.body.appendChild(R.domElement);
+const S=new THREE.Scene();S.background=new THREE.Color(0x777777);
+S.add(new THREE.HemisphereLight(0xffffff,0x444444,2.2));
+const d=new THREE.DirectionalLight(0xffffff,1.5);d.position.set(1,2,3);S.add(d);
+const P={bind:{},stance:{spine:[15,10,0],neck:[10,-15,0],head:[10,-20,0]},
+ jab:{spine:[20,-30,0],spine1:[10,-15,0],neck:[0,25,0],head:[-10,20,5]},
+ uppercut:{hips:[-15,0,0],spine:[-25,25,0],spine1:[-15,0,0],neck:[25,0,10],head:[30,-20,0]},
+ hook:{spine:[10,50,10],spine1:[0,30,0],neck:[0,-40,0],head:[0,-30,-10]},
+ lean:{spine:[40,0,20],spine1:[20,0,0],neck:[-30,0,0],head:[-30,0,0]}};
+const g=await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).loadAsync(q.get('model'));
+const root=g.scene;S.add(root);root.updateMatrixWorld(true);
+const pose=P[q.get('pose')||'bind'];let head=null;
+root.traverse(o=>{if(!o.isBone)return;const n=o.name.toLowerCase().replace(/mixamorig:?/,'').replace(/^.*[_:]/,'');
+ if(n==='head'&&!head)head=o;const r=pose[n];
+ if(r)o.rotation.set(o.rotation.x+r[0]*Math.PI/180,o.rotation.y+r[1]*Math.PI/180,o.rotation.z+r[2]*Math.PI/180);});
+root.updateMatrixWorld(true);
+root.traverse(o=>{if(o.isSkinnedMesh){o.frustumCulled=false;o.skeleton.update();}});
+const box=new THREE.Box3();root.traverse(o=>{if(o.isMesh)box.expandByObject(o,true);});
+const sz=box.getSize(new THREE.Vector3()),H=sz.y;
+const hp=head?head.getWorldPosition(new THREE.Vector3()):new THREE.Vector3(0,box.max.y-0.1*H,0);
+const tgt=hp.clone().add(new THREE.Vector3(0,-0.06*H,0));
+const views=[[0,0,1],[1,0,0]];const zf=+(q.get('facez')||1);
+const W=450;R.setScissorTest(true);
+views.forEach((v,i)=>{const c=new THREE.PerspectiveCamera(30,1,0.01,1000);
+ c.position.copy(tgt).add(new THREE.Vector3(v[0],v[1],v[2]*zf).multiplyScalar(0.75*H));c.lookAt(tgt);
+ R.setViewport(i*W,0,W,450);R.setScissor(i*W,0,W,450);R.render(S,c);});
+document.title='DONE';
+</script></body></html>

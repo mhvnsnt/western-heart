@@ -198,14 +198,30 @@ def live_pr(pr, repo, fetch=_gh_get_pr):
     return merged
 
 
+
+def pr_files(repo, pr):
+    """PR file list. GitHub's /pulls/N/files returns 422 ("diff is taking too
+    long") on PRs with many large binaries, so fall back to the tree diff."""
+    r = subprocess.run(["gh", "api", "--paginate", f"repos/{repo}/pulls/{pr['number']}/files",
+                        "-q", ".[].filename"], capture_output=True, text=True)
+    if r.returncode == 0:
+        return r.stdout.split("\n")
+    base, head = pr["base"]["sha"], pr["head"]["sha"]
+    out = []
+    for sha in (base, head):
+        t = subprocess.run(["gh", "api", f"repos/{repo}/git/trees/{sha}?recursive=1",
+                            "-q", '.tree[]|select(.type=="blob")|"\\(.path)\\t\\(.sha)"'],
+                           capture_output=True, text=True, check=True).stdout
+        out.append(dict(l.split("\t", 1) for l in t.split("\n") if "\t" in l))
+    b, h = out
+    return sorted(p for p in set(b) | set(h) if b.get(p) != h.get(p))
+
 def main():
     with open(os.environ["GITHUB_EVENT_PATH"]) as f:
         ev = json.load(f)
     repo = ev["repository"]["full_name"]
     pr = live_pr(ev["pull_request"], repo)
-    files = subprocess.run(["gh", "api", "--paginate", f"repos/{repo}/pulls/{pr['number']}/files",
-                            "-q", ".[].filename"],
-                           capture_output=True, text=True, check=True).stdout.split("\n")
+    files = pr_files(repo, pr)
     files = [f for f in files if f]
     errs = check(pr.get("body") or "", files, ".",
                  [l["name"] for l in pr.get("labels", [])], pr["user"]["login"], gh_resolver(repo))
