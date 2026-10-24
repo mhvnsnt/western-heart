@@ -262,8 +262,8 @@
   },
   "awapop": {
    "id": "awapop",
-   "model": "awa-pop",
-   "bones": 49,
+   "model": "awa-pop-attire2",
+   "bones": 73,
    "stance": true,
    "stanceSource": "cmu-14_01",
    "framed": true,
@@ -314,15 +314,15 @@
   },
   "dio": {
    "id": "dio",
-   "model": "dio",
-   "bones": 174,
+   "model": "dio-attire1",
+   "bones": 73,
    "stance": true,
    "stanceSource": "cmu-14_01",
-   "framed": false,
+   "framed": true,
    "bank": "heihachi",
    "armDeg": {
-    "L": null,
-    "R": null
+    "L": 23,
+    "R": 12
    }
   },
   "cyborgx": {
@@ -379,28 +379,28 @@
   },
   "bruno": {
    "id": "bruno",
-   "model": "bruno",
-   "bones": 142,
-   "stance": true,
-   "stanceSource": "cmu-14_01",
-   "framed": false,
-   "bank": "bryan",
-   "armDeg": {
-    "L": 23,
-    "R": 12
-   }
-  },
-  "negativo": {
-   "id": "negativo",
-   "model": "n3g4tiv0",
-   "bones": 50,
+   "model": "bruno-attire2",
+   "bones": 73,
    "stance": true,
    "stanceSource": "tekken-bank",
    "framed": true,
    "bank": "bryan",
    "armDeg": {
-    "L": 43,
-    "R": 35
+    "L": 35,
+    "R": 43
+   }
+  },
+  "negativo": {
+   "id": "negativo",
+   "model": "negativo-attire1",
+   "bones": 73,
+   "stance": true,
+   "stanceSource": "tekken-bank",
+   "framed": true,
+   "bank": "bryan",
+   "armDeg": {
+    "L": 35,
+    "R": 43
    }
   },
   "thor": {
@@ -418,8 +418,8 @@
   },
   "yukihyo": {
    "id": "yukihyo",
-   "model": "yukihyo",
-   "bones": 328,
+   "model": "yukihyo-attire1",
+   "bones": 73,
    "stance": true,
    "stanceSource": "tekken-bank",
    "framed": true,
