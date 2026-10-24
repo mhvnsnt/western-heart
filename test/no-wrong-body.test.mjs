@@ -25,6 +25,8 @@ const MODEL_URLS = parseObj('game/js/assets.js', 'MODEL_URLS');
 // Shared starter bodies that riders used to fall back onto.
 const SHARED_BODIES = { 'steve-fox': null, pantera: 'pantera' }; // key -> the one fighter allowed to own it
 const SHARED_FILES = ['assets/models/steve-fox.glb', 'assets/models/pantera.glb'];
+const { MATERIAL_STATUS } = await import('../game/js/material-status.js');
+const MATERIAL_QUARANTINE = new Set(Object.keys(MATERIAL_STATUS.quarantine));
 const ids = new Set(FULL_ROSTER.map(f => f.id));
 const fails = [];
 
@@ -47,6 +49,8 @@ for (const f of FULL_ROSTER) {
   }
   checkKey(f, f.model, 'roster model');
   const a1 = attiresFor(f)[0];
+  // Material gate: every attire quarantined -> fighter is hidden from select/fight (characters.js ROSTER).
+  if (!a1 && MATERIAL_QUARANTINE.has(f.model)) continue;
   checkKey(f, a1 && a1.model, 'attire 1');
 }
 // Loader fallbacks onto a starter body are banned in game/js.

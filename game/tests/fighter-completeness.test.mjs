@@ -28,7 +28,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 // --- Load the real chain modules (sandbox copy: same pattern as
 // --- model-key-guard.test.mjs; these modules are pure ESM).
 const sandbox = mkdtempSync(join(process.env.TMPDIR || '/tmp', 'wh-fighter-completeness-'));
-for (const f of ['roster-full.js', 'attires.js', 'movesets.js'])
+for (const f of ['roster-full.js', 'attires.js', 'movesets.js', 'material-status.js'])
   cpSync(join(ROOT, 'game/js', f), join(sandbox, f));
 writeFileSync(join(sandbox, 'package.json'), '{"type":"module"}');
 const { FULL_ROSTER } = await import(pathToFileURL(join(sandbox, 'roster-full.js')).href);
