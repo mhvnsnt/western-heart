@@ -496,10 +496,10 @@
   },
   "moves": {
     "1": {
-      "name": "SKULL 1 (T3 bryan r50)",
+      "name": "SKULL 1 (T3 bryan r172)",
       "input": "1",
       "t3_source": "bryan",
-      "t3_row": 50,
+      "t3_row": 172,
       "t3_command": "LP",
       "startup": 0.1667,
       "active": 0.017,
@@ -510,7 +510,7 @@
       "heavy": false,
       "knock": 2.2,
       "soulGain": 8,
-      "anim_ref": "t3:bryan:row:50",
+      "anim_ref": "t3:bryan:row:172",
       "input_slots": [
         "1"
       ],
@@ -529,10 +529,10 @@
       }
     },
     "2": {
-      "name": "SKULL 2 (T3 bryan r152)",
+      "name": "SKULL 2 (T3 bryan r100)",
       "input": "2",
       "t3_source": "bryan",
-      "t3_row": 152,
+      "t3_row": 100,
       "t3_command": "RP",
       "startup": 0.1667,
       "active": 0.017,
@@ -543,7 +543,7 @@
       "heavy": false,
       "knock": 2.2,
       "soulGain": 8,
-      "anim_ref": "t3:bryan:row:152",
+      "anim_ref": "t3:bryan:row:100",
       "input_slots": [
         "2"
       ],
@@ -644,10 +644,10 @@
       }
     },
     "4": {
-      "name": "SKULL 4 (T3 bryan r76)",
+      "name": "SKULL 4 (T3 bryan r104)",
       "input": "4",
       "t3_source": "bryan",
-      "t3_row": 76,
+      "t3_row": 104,
       "t3_command": "RK",
       "startup": 0.2,
       "active": 0.033,
@@ -658,7 +658,7 @@
       "heavy": true,
       "knock": 4.2,
       "soulGain": 11,
-      "anim_ref": "t3:bryan:row:76",
+      "anim_ref": "t3:bryan:row:104",
       "input_slots": [
         "4"
       ],
@@ -7925,6 +7925,8 @@
     "ub+1+2,1,2,1,2,1,2,1,2,1,4": {
       "name": "Gatling Rush",
       "input": "ub+1+2,1,2,1,2,1,2,1,2,1,4",
+      "t3_source": "bryan",
+      "t3_row": 76,
       "t8_source": "bryan",
       "t8_id": "Bryan-ub+1+2,1,2,1,2,1,2,1,2,1,4",
       "t8_damage": ",14",
@@ -8280,6 +8282,8 @@
     "uf+4": {
       "name": "Orbital Heel Kick",
       "input": "uf+4",
+      "t3_source": "bryan",
+      "t3_row": 76,
       "t8_source": "bryan",
       "t8_id": "Bryan-uf+4",
       "t8_damage": "20",
@@ -8301,6 +8305,8 @@
     "uf,n,4": {
       "name": "Delayed Rising Toe Kick",
       "input": "uf,n,4",
+      "t3_source": "bryan",
+      "t3_row": 76,
       "t8_source": "bryan",
       "t8_id": "Bryan-uf,n,4",
       "t8_damage": "20",
@@ -18709,6 +18715,8 @@
     "u/b+1+2,1,2,1,2,1,2,1,2,1,4": {
       "name": "Gatling Rush",
       "input": "u/b+1+2,1,2,1,2,1,2,1,2,1,4",
+      "t3_source": "bryan",
+      "t3_row": 76,
       "startup": 0.25,
       "active": 0.017,
       "recovery": 1.0,
