@@ -1261,6 +1261,11 @@ export class Fighter {
     if (opponent && this.canAct()) {
       const want = opponent.root.position.x >= this.root.position.x ? 1 : -1;
       if (want !== this.facing) this.facing = want;
+      // QA 2026-10-23 targeting fix (T7 tracking): in neutral a fighter turns to
+      // face the opponent in 3D, not just along x, so after a sidestep the
+      // body and the next attack point at the opponent.
+      this._faceYaw = Math.atan2(opponent.root.position.x - this.root.position.x,
+        opponent.root.position.z - this.root.position.z);
     }
 
     this._tickState();
@@ -1406,6 +1411,14 @@ export class Fighter {
     if (this.state !== 'sidestep') {
       this.vz *= Math.pow(0.0001, dt);
       if (Math.abs(this.vz) < 0.05) this.vz = 0;
+      // QA 2026-10-23 targeting fix: T7 rotates the fight axis after a
+      // sidestep so both fighters are back on one line. Our camera axis is
+      // fixed, so a fighter in neutral drifts back to the line (z=0). Before
+      // this, one sidestep left |dz| > 0.75 forever and every strike whiffed.
+      if (this.canAct() && this.onGround && this.vz === 0) {
+        this.root.position.z *= Math.pow(0.004, dt);
+        if (Math.abs(this.root.position.z) < 0.01) this.root.position.z = 0;
+      }
     }
     if (!inThrowAnim) {
       this.root.position.x += this.vx * dt;
@@ -1520,8 +1533,8 @@ export class Fighter {
 
   /* ---------------- animation ---------------- */
   _animate(dt) {
-    // 1) Facing
-    this.lean.rotation.y = this.facing * Math.PI / 2;
+    // 1) Facing (3D yaw toward the opponent when known; sign convention kept)
+    this.lean.rotation.y = (typeof this._faceYaw === 'number') ? this._faceYaw : this.facing * Math.PI / 2;
 
     // 2) Which REAL T3 clip owns this state? (FROZEN-IDLE FIX 2026-10-20:
     // the bank's animated stance/walk clips existed but were NEVER played
