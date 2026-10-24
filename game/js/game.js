@@ -351,8 +351,10 @@ export class Game {
         this._p1BlockWas = blockNow;
         this.p1.tryCrouch(inp.down && !inp.up); // hold down = crouch; release = WS. window
         // Feed facing-relative direction into the Tekken input buffer
-        // (drives motion specials qcf/f,F and directional attacks f+1)
-        this.p1.tekken.noteDirection(stick);
+        // (drives motion specials qcf/f,F and directional attacks f+1).
+        // Pass the tick length: the buffer's windows are T3 frames of 1/60 s and it
+        // weighs each entry by dt, so they stay real-time at FIXED_DT = 1/120 (or any rate).
+        this.p1.tekken.noteDirection(stick, dt);
         if (ms && this.p1.isBlocking()) ms.blockTime += dt;
         if (ms) ms.time += dt;
         // Stream 6: while caught in a throw, limb inputs are break attempts.

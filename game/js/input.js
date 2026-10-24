@@ -15,7 +15,7 @@
                                          // vskill (V-System: KeyV / V button)
 
    TEKKEN INPUTS: 1/2/3/4 = left punch / right punch / left kick / right kick
-   (LP/RP/LK/RK touch buttons). Any two limbs within 140ms = chord
+   (LP/RP/LK/RK touch buttons). Any two limbs within CHORD_WINDOW_MS (50ms) = chord
    (1+3 / 2+4 throws, 1+2 / 3+4 specials, 1+4 / 2+3 command inputs).
    Motions (qcf, f,F) tracked via direction history in the fighter's
    TekkenBuffer (see movesets.js).
@@ -24,6 +24,18 @@
    out the tap window before committing to jump/crouch — exactly like Tekken.
    COMMAND GRAB (legacy): press P+K together (touch) or J+K together / U (keyboard).
    ============================================================ */
+
+/* CHORD WINDOW (input-timing fix 2026-10-24; was 140 ms). Tekken reads input once per 60 Hz
+   frame, and two limbs are ONE command (1+2, 1+3 ...) only when both go down on the same frame
+   (the same-frame rule behind just-frame inputs such as the EWGF). 140 ms (8.4 frames) turned
+   ordinary fast strings into chords: 1,2 -> 1+2, 1,3 / 2,4 -> throws, 3,4 -> 3+4.
+   50 ms = the press frame + 2 frames of leniency. The leniency absorbs two presses that straddle
+   a frame boundary, and the JS timestamp jitter: each keydown/touchstart is stamped with
+   performance.now() when its handler runs, and a render task between two events delays the second
+   by up to one display frame (~16 ms). A deliberate string press is >= ~70 ms after the previous
+   one, so it stays a string. Touch HEAT (2+3) / RAGE (1+2) push their chord directly (_push), so
+   this window does not apply to them. Test: test/input-timing.test.mjs. */
+export const CHORD_WINDOW_MS = 50;
 
 export class InputManager {
   constructor() {
@@ -104,7 +116,7 @@ export class InputManager {
     this._push(kind);
   }
 
-  /* Tekken chords: any two limbs within 140ms.
+  /* Tekken chords: any two limbs within CHORD_WINDOW_MS (50 ms, see the constant).
      1+3 / 2+4 = throws; 1+2 / 3+4 = specials; 1+4 / 2+3 = command inputs.
      Throw pairs keep priority (most deliberate), then specials, then commands. */
   /* Vertical intent right now, including a u/d still inside its 200ms tap window: a limb
@@ -123,7 +135,7 @@ export class InputManager {
                 : btn === '3' ? [['1', '1+3'], ['4', '3+4'], ['2', '2+3']]
                 : [['2', '2+4'], ['3', '3+4'], ['1', '1+4']];
     for (const [pair, name] of pairs) {
-      if (now - this._lastT[pair] < 140) {
+      if (now - this._lastT[pair] < CHORD_WINDOW_MS) {
         this._lastT[pair] = 0; this._lastT[btn] = 0;
         this._push(name);
         return;
