@@ -425,7 +425,7 @@ export class ChronoEngine {
 
 /* ---------------- ChronoSpring: the muscle model ----------------
    ChLinkTSDA / ChLinkRSDA analog. stiffness/damping are RUNTIME
-   VARIABLES (the Euphoria lesson): the behavior layer + the escape
+   VARIABLES (the variable-stiffness principle): the behavior layer + the escape
    minigame modulate them live; PhysicsServo's driveScale blends the
    result with authored animation. */
 
@@ -814,8 +814,8 @@ export class GrappleRig {
     if (!this.chain || this.chain.done) return null;
     const step = this.chain.step;
     const targets = {};
-    // defender limb goes limp-then-tense with strain (Euphoria lesson:
-    // stiffness is the control signal)
+    // defender limb goes limp-then-tense with strain (stiffness is the
+    // control signal: muscles fight back harder as danger rises)
     const strain = this.strain ? this.strain.progress : 0;
     targets.defFore = {
       joint: 'elbow',
