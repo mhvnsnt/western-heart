@@ -125,6 +125,23 @@ class CleanMerge(TempRepo):
         self.assertEqual(violations, [])
         self.assertTrue(any("not a merge" in n for n in notes))
 
+    def test_unrelated_history_skipped(self):
+        # Branch with no common history: deletions unverifiable -> skip,
+        # never false-flag.
+        sh(self.repo, "checkout", "-q", "--orphan", "alien")
+        sh(self.repo, "rm", "-q", "-rf", ".")
+        write(self.repo, "alien.txt")
+        sh(self.repo, "add", "alien.txt")
+        sh(self.repo, "commit", "-qm", "alien root")
+        alien = sh(self.repo, "rev-parse", "HEAD").stdout.strip()
+        sh(self.repo, "checkout", "-q", "master")
+        tree = sh(self.repo, "rev-parse", f"{alien}^{{tree}}").stdout.strip()
+        m = sh(self.repo, "commit-tree", tree, "-p", self.main_tip,
+               "-p", alien, "-m", "alien merge").stdout.strip()
+        violations, notes = check_merge_commit(self.repo, m, self.no_labels)
+        self.assertEqual(violations, [])
+        self.assertTrue(any("unverifiable" in n for n in notes))
+
 
 if __name__ == "__main__":
     unittest.main()

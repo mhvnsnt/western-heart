@@ -123,9 +123,10 @@ def check_merge_commit(repo, sha, label_lookup):
     for p2 in branches:
         b = merge_base(repo, p1, p2)
         if b is None:
-            print(f"::warning::{sha[:8]}: no merge-base for parent "
-                  f"{p2[:8]}; its deletions unverifiable")
-            continue
+            # Without a fork point we cannot tell the PR's own deletions
+            # from dropped files -- skipping is safer than false-flagging.
+            return [], [f"{sha[:8]}: no merge-base for branch parent "
+                          f"{p2[:8]}; deletions unverifiable, skipped"]
         bases[p2] = b
         d2 |= deleted_files(repo, b, p2)
 
