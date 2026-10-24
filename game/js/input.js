@@ -25,6 +25,7 @@
    COMMAND GRAB (legacy): press P+K together (touch) or J+K together / U (keyboard).
    ============================================================ */
 
+import { stickToDir } from './combat-core.js';
 export class InputManager {
   constructor() {
     this.axisX = 0;
@@ -113,6 +114,20 @@ export class InputManager {
     if (this.up) return 'up';
     if (this.down) return 'down';
     return this._udDir || null;
+  }
+
+  /* 8-way octant stick (tekken-command-interpreter lane): the old axis
+     thresholds (x 0.25, y 0.55) read a d/f push as 'f' or 'd' depending on
+     angle and fed jitter near centre as directions, so f+1 / d/f+2 / qcf
+     came out as random moves. One magnitude gate + 45° octants instead.
+     x right-positive, yUp up-positive (screen-agnostic). */
+  _stick8(x, yUp) {
+    const d = stickToDir(x, yUp, 1, 0.38);
+    this.stickDir = d;
+    const right = d === 'f' || d === 'u/f' || d === 'd/f';
+    const left = d === 'b' || d === 'u/b' || d === 'd/b';
+    this.axisX = right ? 1 : left ? -1 : 0;
+    this._udStick(d.startsWith('u') ? -1 : d.startsWith('d') ? 1 : 0);
   }
 
   _tekken(btn) {
@@ -256,8 +271,7 @@ export class InputManager {
       // _udStick takes screen-style ny (down-positive; up zone is ny < -0.55).
       manager.on('move', (evt, data) => {
         const nx = Math.max(-1, Math.min(1, data.vector.x || 0));
-        this.axisX = Math.abs(nx) > 0.25 ? nx : 0;
-        this._udStick(-(data.vector.y || 0));
+        this._stick8(nx, (data.vector.y || 0));
       });
       manager.on('end', () => {
         this.axisX = 0;
@@ -291,10 +305,9 @@ export class InputManager {
       const ky = Math.sin(ang) * clamped;
       knob.style.transform = `translate(${kx}px, ${ky}px)`;
       const nx = (Math.cos(ang) * clamped) / maxR;
-      this.axisX = Math.abs(nx) > 0.25 ? Math.max(-1, Math.min(1, nx)) : 0;
       // Tekken tap-vs-hold: tap u/d = sidestep, hold = jump/crouch.
       const ny = (Math.sin(ang) * clamped) / maxR;
-      this._udStick(ny);
+      this._stick8(nx, -ny);
     };
     const end = () => {
       this._joyActive = false; this._joyId = null;
