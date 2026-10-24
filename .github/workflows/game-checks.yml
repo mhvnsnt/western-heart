@@ -108,3 +108,26 @@ jobs:
         with:
           name: menu-touch-shots
           path: menu-touch-shots
+
+  material-gate:
+    # Every MODEL_URLS model must pass game/js/material-resolve.js (no missing,
+    # placeholder or exporter-default materials) or be listed in the generated
+    # quarantine game/js/material-status.js, which keeps it out of select + fight.
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            game/js
+            tools/assets
+          sparse-checkout-cone-mode: false
+      - name: Material gate (all roster models)
+        run: node tools/assets/material_gate.mjs --json material-gate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: material-gate
+          path: material-gate.json

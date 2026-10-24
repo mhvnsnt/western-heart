@@ -7,6 +7,10 @@
    ============================================================ */
 
 import { FULL_ROSTER } from './roster-full.js';
+import { MATERIAL_STATUS } from './material-status.js';
+// Material gate (tools/assets/material_gate.mjs): quarantined models are never offered.
+const QUARANTINED = new Set(Object.keys(MATERIAL_STATUS.quarantine || {}));
+const isModelUsable = (key) => !QUARANTINED.has(key);
 
 const LS_KEY = 'wh_attires_v1';
 // Fighter ids: a model key that is another fighter's own id is that fighter's body.
@@ -325,16 +329,16 @@ export const ATTIRE_VARIANTS = {
   ],
   'yukihyo': [
     { model: 'yukihyo', label: 'ATTIRE 1' },
-    { model: 'yukihyo-attire1', label: 'ATTIRE 2 (UNRIGGED)' },
-    { model: 'yukihyo-attire2', label: 'ATTIRE 3 · BOBCAT PRIDE (UNRIGGED)' },
-    { model: 'yukihyo-attire3', label: 'ATTIRE 4 · TIGER KING (UNRIGGED)' },
+    { model: 'yukihyo-attire1', label: 'ATTIRE 2' },
+    { model: 'yukihyo-attire2', label: 'ATTIRE 3 · BOBCAT PRIDE' },
+    { model: 'yukihyo-attire3', label: 'ATTIRE 4 · TIGER KING' },
     { model: 'armor-king', label: 'ARMOR KING · ORIGINAL MODEL (TEKKEN)' },
     { model: 'armor-king-attire1', label: 'ARMOR KING · SOURCE MODEL (UNRIGGED)' },
   ],
   'bruno': [
     { model: 'bruno', label: 'ATTIRE 1' },
     { model: 'bruno-attire1', label: 'ATTIRE 2 (UNRIGGED)' },
-    { model: 'bruno-attire2', label: 'ATTIRE 3 · SAIL THE SEA (UNRIGGED)' },
+    { model: 'bruno-attire2', label: 'ATTIRE 3 · SAIL THE SEA' },
   ],
   'dio': [
     { model: 'dio', label: 'ATTIRE 1' },
@@ -342,8 +346,8 @@ export const ATTIRE_VARIANTS = {
   ],
   'negativo': [
     { model: 'n3g4tiv0', label: 'ATTIRE 1' },
-    { model: 'negativo-attire1', label: 'ATTIRE 2 (UNRIGGED)' },
-    { model: 'negativo-attire2', label: 'ATTIRE 3 (UNRIGGED)' },
+    { model: 'negativo-attire1', label: 'ATTIRE 2' },
+    { model: 'negativo-attire2', label: 'ATTIRE 3' },
   ],
   /* SKULL (roster/skull/attires/ATTIRE-SLOTS.md): A1 = his Tripo; the live
      default stays the rigged build of it (the default swap rides the rig
@@ -377,9 +381,12 @@ export function attiresFor(fighter) {
   // (game/tests/model-key-guard.test.mjs "declared-base riders stay on their declared base").
   const ridesOther = fighter.model && fighter.model !== fighter.id && FIGHTER_IDS.has(fighter.model);
   const list = ridesOther ? ATTIRE_VARIANTS[fighter.id] : (ATTIRE_VARIANTS[fighter.model] || ATTIRE_VARIANTS[fighter.id]);
-  if (list && list.length) return list;
+  // Material gate: attires whose model failed the material audit are never offered.
+  // If the fighter's OWN attire-1 is quarantined, the fighter is hidden until it is fixed;
+  // never promote a later (often unrigged/private) attire into the attire-1 slot.
+  if (list && list.length) return isModelUsable(list[0].model) ? list.filter(a => isModelUsable(a.model)) : [];
   // Default: single attire = the fighter's own model
-  return [{ model: fighter.model, label: 'ATTIRE 1' }];
+  return [{ model: fighter.model, label: 'ATTIRE 1' }].filter(a => isModelUsable(a.model));
 }
 
 /** The persisted attire model id for this fighter (or their base). */
