@@ -1,0 +1,25 @@
+{
+ "version": 1,
+ "app": "wh-creation-suite",
+ "fighter": "baek",
+ "attire": "round2-swap",
+ "base_glb": "baek-master-white-rigged.glb",
+ "out_glb": "model-kevin-head-swap.glb",
+ "body": {
+  "body_type": "Medium 1",
+  "skin_tone": "#dba06e"
+ },
+ "morphs": {},
+ "textures": [],
+ "colors": {},
+ "parts": {},
+ "region_swaps": [
+  {
+   "region": "head",
+   "from_glb": "roster/baek/attires/attire1/model.glb",
+   "from_fighter": "baek",
+   "from_attire": "attire1",
+   "yaw_deg": -90
+  }
+ ]
+}

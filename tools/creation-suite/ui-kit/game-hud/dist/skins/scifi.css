@@ -1,0 +1,327 @@
+/*! game-hud v0.1.0 — skin: scifi
+ * https://github.com/aronprins/game-hud
+ * MIT License */
+/* ---- SCIFI : blue steel, glossy saturated buttons, orange energy ---- */
+body[data-skin="scifi"]{
+  --page-bg:#eef1f6;
+  --font-head:'Exo 2',sans-serif;
+  --font-body:'Exo 2',sans-serif;
+  --panel:#1b2740; --panel-2:#25355c; --panel-3:#131c30;
+  --line:#3c5183; --line-2:#5670ab;
+  --edge:#38b6ff; --edge-dim:#2b6ea8;
+  --accent:#ffb52e; --accent-2:#38b6ff;
+  --text:#f2f6ff; --text-dim:#94a5c9;
+  --hp:#e5364a; --hp-2:#ff6f68;
+  --mp:#2b7bea; --mp-2:#57a5ff;
+  --en:#ffb52e; --en-2:#ffd257;
+  --xp:#ffb52e; --xp-2:#ffd257;
+  --gold:#ffbb2e; --gem-b:#41a3ff; --gem-g:#3fe06c;
+  --danger:#e03042; --ok:#42c24d;
+  --glow:0 0 12px rgba(56,182,255,.5),0 0 30px rgba(56,182,255,.18);
+  --slot-shape:polygon(24% 0,76% 0,100% 24%,100% 76%,76% 100%,24% 100%,0 76%,0 24%);
+  --btn-shape:polygon(12px 0,calc(100% - 12px) 0,100% 50%,calc(100% - 12px) 100%,12px 100%,0 50%);
+  --scene:radial-gradient(900px 420px at 78% 8%, rgba(120,200,255,.28), transparent 55%),
+          linear-gradient(180deg,#0b1f3d 0%,#14355e 40%,#1c5f86 72%,#123a55 100%);
+}
+
+/* ============================================================
+   SKIN: SCI-FI — angular steel plates: light rim, dark outline,
+   navy fill; corner caps, cyan light tubes, glossy candy buttons
+   ============================================================ */
+[data-skin="scifi"]{--s-rim-t:#93a5c9;--s-rim-m:#5a6c96;--s-rim-b:#42517c;--s-ink:#0d1526;--s-fill-t:#24345a;--s-fill-b:#16223a}
+/* ---- panels ---- */
+[data-skin="scifi"] .panel{background:transparent;clip-path:none;box-shadow:none}
+[data-skin="scifi"] .panel .p-bg{
+  display:block;position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,var(--s-rim-t),var(--s-rim-m) 30%,var(--s-rim-b));
+  clip-path:polygon(18px 0,calc(100% - 18px) 0,100% 18px,100% calc(100% - 18px),calc(100% - 18px) 100%,18px 100%,0 calc(100% - 18px),0 18px);
+  filter:drop-shadow(0 0 14px rgba(56,182,255,.28));
+}
+[data-skin="scifi"] .panel .p-bg::before{
+  content:"";position:absolute;inset:3px;
+  clip-path:polygon(16px 0,calc(100% - 16px) 0,100% 16px,100% calc(100% - 16px),calc(100% - 16px) 100%,16px 100%,0 calc(100% - 16px),0 16px);
+  background:var(--s-ink);
+}
+[data-skin="scifi"] .panel .p-bg::after{
+  content:"";position:absolute;inset:6px;
+  clip-path:polygon(14px 0,calc(100% - 14px) 0,100% 14px,100% calc(100% - 14px),calc(100% - 14px) 100%,14px 100%,0 calc(100% - 14px),0 14px);
+  background:
+    var(--noise),
+    radial-gradient(130% 90% at 50% -12%,rgba(56,182,255,.16),transparent 58%),
+    repeating-linear-gradient(115deg,transparent 0 24px,rgba(255,255,255,.022) 24px 26px),
+    linear-gradient(180deg,var(--s-fill-t),var(--s-fill-b) 70%,#121c31);
+}
+/* chunky L-shaped steel corner caps wrapping the chamfered corners */
+[data-skin="scifi"] .panel .corner{
+  width:52px;height:52px;z-index:3;
+  background:linear-gradient(135deg,#0d1526,#0d1526);
+  clip-path:polygon(20px 0,100% 0,100% 15px,28px 15px,15px 28px,15px 100%,0 100%,0 20px);
+  filter:drop-shadow(0 2px 3px rgba(0,0,0,.55));
+}
+[data-skin="scifi"] .panel .corner::before{
+  content:"";position:absolute;inset:0;
+  clip-path:polygon(21px 2px,calc(100% - 2px) 2px,calc(100% - 2px) 13px,26px 13px,13px 26px,13px calc(100% - 2px),2px calc(100% - 2px),2px 21px);
+  background:linear-gradient(135deg,#b6c6e4,var(--s-rim-m) 55%,#39476e);
+}
+[data-skin="scifi"] .panel .corner::after{
+  content:"";position:absolute;inset:0;
+  clip-path:polygon(23px 4px,calc(100% - 5px) 4px,calc(100% - 5px) 7px,24px 7px,7px 24px,4px 24px,4px 23px);
+  background:linear-gradient(135deg,rgba(255,255,255,.75),rgba(255,255,255,.2));
+}
+[data-skin="scifi"] .corner.tl{top:-6px;left:-6px}
+[data-skin="scifi"] .corner.tr{top:-6px;right:-6px;transform:scaleX(-1)}
+[data-skin="scifi"] .corner.bl{bottom:-6px;left:-6px;transform:scaleY(-1)}
+[data-skin="scifi"] .corner.br{bottom:-6px;right:-6px;transform:scale(-1,-1)}
+[data-skin="scifi"] .grp-body{padding-top:26px}
+/* cyan light tubes on pause panel edges */
+[data-skin="scifi"] .pause .edge{
+  display:block;width:5px;height:34%;top:52%;
+  background:linear-gradient(180deg,rgba(57,219,255,.1),#7ceaff 50%,rgba(57,219,255,.1));
+  border-radius:3px;box-shadow:0 0 12px rgba(56,182,255,.95), 0 0 26px rgba(56,182,255,.4);
+}
+[data-skin="scifi"] .pause .edge.el{left:11px;transform:translateY(-50%)}
+[data-skin="scifi"] .pause .edge.er{right:11px;transform:translateY(-50%)}
+/* orange accent notches on quest panel */
+[data-skin="scifi"] .quests .edge{
+  display:block;width:28px;height:5px;border-radius:2px;z-index:3;
+  background:linear-gradient(90deg,#ffe089,#f0a018);
+  box-shadow:0 0 9px rgba(255,181,46,.85);
+}
+[data-skin="scifi"] .quests .edge.er{top:13px;right:26px}
+[data-skin="scifi"] .quests .edge.el{left:26px;bottom:13px;top:auto}
+/* ---- headers: bordered tab plates overlapping the top edge ---- */
+[data-skin="scifi"] .panel .p-head{
+  position:relative;z-index:4;width:max-content;min-width:200px;
+  margin:-34px auto 14px;padding:10px 34px 12px;justify-content:center;
+  color:#fff;
+}
+[data-skin="scifi"] .panel .p-head::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,var(--s-rim-t),var(--s-rim-b));
+  clip-path:polygon(12px 0,calc(100% - 12px) 0,100% 12px,100% calc(100% - 12px),calc(100% - 12px) 100%,12px 100%,0 calc(100% - 12px),0 12px);
+}
+[data-skin="scifi"] .panel .p-head::after{
+  content:"";position:absolute;inset:3px;z-index:-1;
+  clip-path:polygon(10px 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),calc(100% - 10px) 100%,10px 100%,0 calc(100% - 10px),0 10px);
+  background:
+    linear-gradient(90deg,transparent 10%,rgba(56,182,255,.7) 50%,transparent 90%) bottom/100% 2px no-repeat,
+    radial-gradient(120% 100% at 50% 0,rgba(56,182,255,.2),transparent 60%),
+    linear-gradient(180deg,#1b2946,#111a30);
+}
+[data-skin="scifi"] .panel .p-head h3{font-size:18px;text-shadow:0 2px 3px rgba(0,0,0,.6),0 0 14px rgba(56,182,255,.5)}
+[data-skin="scifi"] .quests .p-head{margin:-34px auto 14px}
+/* gold "!" hex badge with steel rim, overlapping quest top-left */
+[data-skin="scifi"] .quests .corner.tl{display:none}
+[data-skin="scifi"] .quests .p-head .p-hico{
+  position:absolute;left:-52px;top:-8px;width:52px;height:56px;z-index:6;
+  display:grid;place-items:center;
+  background:linear-gradient(180deg,var(--s-rim-t),var(--s-rim-b));
+  clip-path:polygon(50% 0,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);
+  color:#6b4a0e!important;font-size:26px!important;font-weight:900;
+  text-shadow:0 1px 0 rgba(255,255,255,.45);
+  filter:drop-shadow(0 3px 4px rgba(0,0,0,.5))!important;
+}
+[data-skin="scifi"] .quests .p-head .p-hico::before{
+  content:"";position:absolute;inset:4px;z-index:-1;
+  clip-path:polygon(50% 0,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);
+  background:linear-gradient(180deg,#ffe089,#f0a018);
+}
+/* ---- avatar + vitals ---- */
+[data-skin="scifi"] .avatar{background:linear-gradient(180deg,var(--s-rim-t),var(--s-rim-b))}
+[data-skin="scifi"] .avatar::before{inset:4px;background:linear-gradient(180deg,#1f2c49,#111a30)}
+[data-skin="scifi"] .avatar::after{
+  content:"";position:absolute;inset:4px;z-index:1;
+  clip-path:polygon(50% 0,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);
+  background:linear-gradient(200deg,rgba(56,182,255,.2),transparent 48%);
+}
+[data-skin="scifi"] .lvl-badge{
+  background:linear-gradient(180deg,#2a3b60,#141f38);color:#ffd257;
+  box-shadow:0 0 0 2px var(--s-ink), 0 0 0 4px var(--s-rim-m);
+}
+[data-skin="scifi"] .vital .v-ico{
+  background:linear-gradient(180deg,#2a3b60,#141f38);border-radius:5px 0 0 5px;
+  box-shadow:inset 0 0 0 2px var(--s-ink), 0 0 0 1.5px var(--s-rim-b);
+}
+[data-skin="scifi"] .vital .v-track{
+  clip-path:none;border-radius:0 6px 6px 0;
+  box-shadow:inset 0 0 0 2px rgba(6,10,20,.65), 0 0 0 1.5px var(--s-rim-b);
+}
+[data-skin="scifi"] .vital[data-k="en"] .v-ico{color:#ffd257}
+/* ---- compass: framed plate with cyan glow segments ---- */
+[data-skin="scifi"] .compass .c-marker{border-top-color:#ffb52e;filter:drop-shadow(0 0 5px rgba(255,181,46,.8))}
+[data-skin="scifi"] .compass .c-body{
+  clip-path:polygon(20px 0,calc(100% - 20px) 0,100% 50%,calc(100% - 20px) 100%,20px 100%,0 50%);
+  background:linear-gradient(180deg,var(--s-rim-t),var(--s-rim-b));box-shadow:none;
+}
+[data-skin="scifi"] .compass .c-body::before{
+  content:"";position:absolute;inset:3px;z-index:0;
+  clip-path:polygon(18px 0,calc(100% - 18px) 0,100% 50%,calc(100% - 18px) 100%,18px 100%,0 50%);
+  background:
+    linear-gradient(90deg,transparent,#39dbff,transparent) top center/42% 3px no-repeat,
+    linear-gradient(90deg,transparent,#39dbff,transparent) bottom center/42% 3px no-repeat,
+    var(--noise),
+    linear-gradient(180deg,#131b2e,#0e1524);
+}
+[data-skin="scifi"] .compass .c-body::after{
+  background:linear-gradient(90deg,#0f1626 2%,transparent 20%,transparent 80%,#0f1626 98%);
+}
+[data-skin="scifi"] .compass .c-cell.dir.n{color:#ffb52e;text-shadow:0 0 10px rgba(255,181,46,.8)}
+/* ---- currency ---- */
+[data-skin="scifi"] .currency{
+  clip-path:polygon(16px 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,16px 100%,0 50%);
+  background:linear-gradient(180deg,var(--s-rim-t),var(--s-rim-b));box-shadow:none;
+}
+[data-skin="scifi"] .currency::before{
+  content:"";position:absolute;inset:3px;z-index:0;
+  clip-path:polygon(14px 0,calc(100% - 14px) 0,100% 50%,calc(100% - 14px) 100%,14px 100%,0 50%);
+  background:var(--noise),linear-gradient(180deg,#1a2540,#111a30);
+}
+[data-skin="scifi"] .currency .cur+.cur::before{width:0;border-left:2px solid #3c5183;transform:skewX(-18deg)}
+/* ---- minimap ---- */
+[data-skin="scifi"] .minimap .mm-ring{
+  background:linear-gradient(180deg,var(--s-rim-t),#33436b);
+  box-shadow:0 6px 16px rgba(0,0,0,.45), inset 0 0 0 3px var(--s-ink), 0 0 24px rgba(56,182,255,.4);
+  padding:10px;
+}
+[data-skin="scifi"] .minimap .mm-hole{box-shadow:inset 0 0 0 2.5px #38b6ff, inset 0 0 26px rgba(56,182,255,.45)}
+[data-skin="scifi"] .minimap .mm-n{
+  clip-path:none;border-radius:6px;background:#131c30;
+  box-shadow:0 0 0 2px var(--s-ink), 0 0 0 4px var(--s-rim-m);
+}
+[data-skin="scifi"] .minimap .mm-zoom button{
+  z-index:0;clip-path:var(--slot-shape);border-radius:0;
+  background:linear-gradient(180deg,var(--s-rim-t),var(--s-rim-b));box-shadow:none;
+}
+[data-skin="scifi"] .minimap .mm-zoom button::before{
+  content:"";position:absolute;inset:3px;z-index:-1;clip-path:var(--slot-shape);
+  background:linear-gradient(180deg,#2a3b60,#141f38);
+}
+/* ---- quests list ---- */
+[data-skin="scifi"] .quests .q-bullet{background:linear-gradient(135deg,#ffd257,#f5a012);box-shadow:0 0 6px rgba(255,181,46,.55)}
+[data-skin="scifi"] .quests .q-item{border-bottom:1px solid #2b3c61}
+/* ---- buttons: chamfered candy plates with steel rim ---- */
+[data-skin="scifi"] .btn{
+  position:relative;z-index:0;height:50px;text-shadow:0 2px 2px rgba(0,0,0,.5);
+  clip-path:polygon(11px 0,calc(100% - 11px) 0,100% 11px,100% calc(100% - 11px),calc(100% - 11px) 100%,11px 100%,0 calc(100% - 11px),0 11px);
+  background:linear-gradient(180deg,var(--s-rim-t),var(--s-rim-b));
+  border-radius:0;box-shadow:none;
+}
+[data-skin="scifi"] .btn::before{
+  content:"";position:absolute;inset:2.5px;z-index:-1;
+  clip-path:polygon(10px 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),calc(100% - 10px) 100%,10px 100%,0 calc(100% - 10px),0 10px);
+  background:var(--s-ink);
+}
+[data-skin="scifi"] .btn::after{
+  content:"";position:absolute;inset:5px;z-index:-1;
+  clip-path:polygon(8px 0,calc(100% - 8px) 0,100% 8px,100% calc(100% - 8px),calc(100% - 8px) 100%,8px 100%,0 calc(100% - 8px),0 8px);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.36),rgba(255,255,255,.08) 44%,rgba(0,0,0,.14) 46%,rgba(0,0,0,0) 72%),
+    var(--btn-fill,linear-gradient(180deg,#4fa2f2,#1d5cb4));
+}
+[data-skin="scifi"] .btn-primary{--btn-fill:linear-gradient(180deg,#4fa2f2,#1d5cb4)}
+[data-skin="scifi"] .btn-neutral{--btn-fill:linear-gradient(180deg,#4fa2f2,#1d5cb4)}
+[data-skin="scifi"] .btn-danger{--btn-fill:linear-gradient(180deg,#f2564d,#b41d28)}
+[data-skin="scifi"] .btn-ok{--btn-fill:linear-gradient(180deg,#63cc4e,#2f9427)}
+[data-skin="scifi"] .btn .b-ico{display:block;filter:drop-shadow(0 1px 1px rgba(0,0,0,.5))}
+/* ---- icon slots: 3-layer octagon plates ---- */
+[data-skin="scifi"] .icon-btn .s-bg{background:linear-gradient(180deg,var(--s-rim-t),var(--s-rim-b))}
+[data-skin="scifi"] .icon-btn .s-bg::before{inset:2.5px;background:var(--s-ink)}
+[data-skin="scifi"] .icon-btn .s-bg::after{
+  content:"";position:absolute;inset:5px;clip-path:var(--slot-shape);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.09),transparent 40%),
+    linear-gradient(180deg,#2c3c62,#182340);
+}
+/* ---- actions: hex steel rims, glowing icons ---- */
+[data-skin="scifi"] .action{background:linear-gradient(180deg,var(--s-rim-t),var(--s-rim-b))}
+[data-skin="scifi"] .action::before{inset:4px;background:radial-gradient(circle at 50% 30%,#28395e,#101a30 78%)}
+[data-skin="scifi"] .action>.g-ico{filter:drop-shadow(0 0 8px currentColor)}
+/* ---- d-pad ---- */
+[data-skin="scifi"] .dpad{background:linear-gradient(180deg,var(--s-rim-t),#33436b)}
+[data-skin="scifi"] .dpad::before{inset:7px;background:radial-gradient(circle at 50% 35%,#223350,#101a30 80%)}
+[data-skin="scifi"] .dpad .d-stick{
+  background:radial-gradient(circle at 35% 30%,#4c5f8c,#1a2740 72%);
+  box-shadow:0 5px 10px rgba(0,0,0,.5), inset 0 2px 3px rgba(255,255,255,.2), 0 0 0 3px var(--s-ink), 0 0 0 4.5px var(--s-rim-b);
+}
+/* ---- xp / stamina ---- */
+[data-skin="scifi"] .xpbar{
+  clip-path:polygon(12px 0,calc(100% - 12px) 0,100% 50%,calc(100% - 12px) 100%,12px 100%,0 50%);
+  background:linear-gradient(180deg,var(--s-rim-t),var(--s-rim-b));box-shadow:none;
+}
+[data-skin="scifi"] .xpbar::before{
+  content:"";position:absolute;inset:3px;z-index:0;
+  clip-path:polygon(10px 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,10px 100%,0 50%);
+  background:var(--noise),linear-gradient(180deg,#131b2e,#0e1524);
+}
+[data-skin="scifi"] .xpbar>*{position:relative}
+[data-skin="scifi"] .xpbar .xp-track{border-radius:4px;box-shadow:inset 0 0 0 2px rgba(6,10,20,.7)}
+[data-skin="scifi"] .stamina{
+  clip-path:polygon(9px 0,calc(100% - 9px) 0,100% 50%,calc(100% - 9px) 100%,9px 100%,0 50%);
+  background:linear-gradient(180deg,var(--s-rim-t),var(--s-rim-b));box-shadow:none;
+}
+[data-skin="scifi"] .stamina::before{
+  content:"";position:absolute;inset:2.5px;z-index:0;
+  clip-path:polygon(8px 0,calc(100% - 8px) 0,100% 50%,calc(100% - 8px) 100%,8px 100%,0 50%);
+  background:linear-gradient(180deg,#131b2e,#0e1524);
+}
+[data-skin="scifi"] .stamina>*{position:relative}
+[data-skin="scifi"] .stamina .st-fill{background:linear-gradient(180deg,#7ceaff,#2ba8d8);box-shadow:0 0 8px rgba(56,182,255,.8);border-radius:2px}
+[data-skin="scifi"] .stamina .ico{color:#38b6ff}
+/* ---- hotbar ---- */
+[data-skin="scifi"] .hotbar{
+  clip-path:none;border-radius:7px;padding:8px;gap:6px;
+  background:linear-gradient(180deg,#131c30,#0d1526);
+  box-shadow:0 0 0 2.5px var(--s-rim-m), 0 0 0 4.5px var(--s-ink), 0 6px 14px rgba(0,0,0,.45);
+}
+[data-skin="scifi"] .hslot{
+  border-radius:5px;background:linear-gradient(180deg,#243354,#141f38);
+  box-shadow:inset 0 0 0 1.5px #45588a, inset 0 0 0 3px #0f1830;
+}
+[data-skin="scifi"] .hslot .h-num{color:#8fa3c9}
+[data-skin="scifi"] .hslot.sel{box-shadow:inset 0 0 0 2px #ffb52e, 0 0 12px rgba(255,181,46,.45)}
+[data-skin="scifi"] .hslot.sel::after{background:#ffb52e;box-shadow:0 0 8px rgba(255,181,46,.8)}
+/* ---- message ---- */
+[data-skin="scifi"] .message .p-bg::after{
+  background:
+    linear-gradient(90deg,transparent,#39dbff,transparent) bottom center/58% 3px no-repeat,
+    var(--noise),
+    radial-gradient(130% 90% at 50% -12%,rgba(56,182,255,.16),transparent 58%),
+    linear-gradient(180deg,var(--s-fill-t),var(--s-fill-b) 70%,#121c31);
+}
+[data-skin="scifi"] .message .m-close{
+  z-index:5;clip-path:var(--slot-shape);border-radius:0;top:-10px;right:-10px;width:42px;height:42px;
+  background:linear-gradient(180deg,var(--s-rim-t),var(--s-rim-b));box-shadow:none;
+}
+[data-skin="scifi"] .message .m-close::before{
+  content:"";position:absolute;inset:3px;z-index:0;clip-path:var(--slot-shape);
+  background:linear-gradient(180deg,#3b7bd4,#1d4fa0);
+}
+[data-skin="scifi"] .message .m-close .ico{position:relative;z-index:1}
+[data-skin="scifi"] .message .corner.tr{display:none}
+/* ---- pips ---- */
+[data-skin="scifi"] .pips .pip.on{background:linear-gradient(135deg,#ffd257,#f5a012);box-shadow:0 0 8px rgba(255,181,46,.7)}
+/* steel rims on clipped plates — box-shadow can't follow clip-path */
+[data-skin="scifi"] .castbar,[data-skin="scifi"] .ammo-box,[data-skin="scifi"] .wave-plate,
+[data-skin="scifi"] .prompt,[data-skin="scifi"] .bossbar .bb-body{
+  position:relative;z-index:0;box-shadow:none;
+  background:linear-gradient(180deg,var(--s-rim-t),var(--s-rim-b));
+}
+[data-skin="scifi"] .castbar::before,[data-skin="scifi"] .ammo-box::before,
+[data-skin="scifi"] .wave-plate::before,[data-skin="scifi"] .prompt::before,
+[data-skin="scifi"] .bossbar .bb-body::before{
+  content:"";position:absolute;inset:2.5px;z-index:-1;
+  background:linear-gradient(180deg,#131b2e,#0e1524);
+}
+[data-skin="scifi"] .castbar::before,[data-skin="scifi"] .prompt::before{
+  clip-path:polygon(7px 0,calc(100% - 7px) 0,100% 50%,calc(100% - 7px) 100%,7px 100%,0 50%);
+}
+[data-skin="scifi"] .ammo-box::before,[data-skin="scifi"] .wave-plate::before,
+[data-skin="scifi"] .bossbar .bb-body::before{
+  clip-path:polygon(9px 0,calc(100% - 9px) 0,100% 50%,calc(100% - 9px) 100%,9px 100%,0 50%);
+}
+[data-skin="scifi"] .feed .f-row{position:relative;z-index:0;background:linear-gradient(180deg,var(--s-rim-t),var(--s-rim-b))}
+[data-skin="scifi"] .feed .f-row::before{
+  content:"";position:absolute;inset:2px;z-index:-1;
+  clip-path:polygon(7px 0,100% 0,calc(100% - 7px) 100%,0 100%);
+  background:rgba(16,22,38,.94);
+}

@@ -1,0 +1,15 @@
+# Fighter-completeness proof — console excerpt, real match boot (Pantera vs Demonio, demo mode).
+# Source: game/customization-harness.html booting the game's own path (assets.loadModels,
+# loadT3Clips, Game.startMatch) with the suite UI's built profile seeded as wh_creation_suite_v1.
+# Full log retained by the lane; key lines verbatim below.
+[log] [HARNESS] seeded wh_creation_suite_v1 from the suite UI proof profile
+[log] [WH] stage loaded: SHRINE OF THE BLADE (shrine)
+[log] [WH] Real T3 movesets loaded for 36 fighters (7 T3 sources)
+[log] [WH] Per-fighter movesets wired: 82 fighters
+[log] [HARNESS] ready
+[log] [WH] stage loaded: SHRINE OF THE BLADE (shrine)
+[log] [WH-CS] catalogs merged: 1795 part entries
+[log] [WH-CS] pantera part attached: no-mercy:0x1171:body_parts/model_1171.obj at socket 'torso' (scale 0.01) tint #c0241c
+[log] [WH-CS] pantera texture applied: eye-classic-original (eye)
+[log] [WH-CS] STATE char=pantera profile_applied=[upper_body:no-mercy:0x1171:body_parts/model_1171.obj, texture:eye-classic-original] skipped=[]
+[log] [HARNESS] STATE {"roundState":"fight","timer":60,"round":1,"wins":{"p1":0,"p2":0},"simSteps":0,"p1":{"id":"pantera","name":"PANTERA","hp":100,"maxHp":100,"x":-3.5,"z":0,"state":"idle","bank":"king","movesetId":"pantera","csParts":["no-mercy:0x1171:body_parts/model_1171.obj","eye-classic-original"],"csAttire":["torso"]},"p2":{"id":"demonio","name":"DEMONIO","hp":100,"maxHp":100,"x":3.5,"z":0,"state":"idle","bank":"jin","movesetId":"demonio","csParts":[],"csAttire":[]}}
