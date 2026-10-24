@@ -15,6 +15,9 @@ import { Arena } from './scene.js';
 // it streams via lazy.js on first startMatch, not at boot. See js/lazy.js.
 import { lazy } from './lazy.js';
 import { AIController } from './ai.js';
+import { personalityForChar } from './ai/cpu-personality.js'; // WIRING-MAP: CPU personality layer
+import { trySpirit } from './spirit-actions.js'; // WIRING-MAP: 魂 ACTION
+import { SoulSystems, loadVariants } from './soul-systems.js'; // SOUL-SYSTEMS.md
 // FIGHT LAB · GUNGAKU (軍楽): loaded on demand so the boot path stays lean.
 let _GungakuAI = null;
 async function gungakuAI() {
@@ -124,7 +127,7 @@ export class Game {
 
     // Lane 4: stage selection drives arena, collision bounds, spawns.
     const stage = getStage(stageId || 'shrine');
-    setArenaLimit(stage.dims.wallDistance);
+    setArenaLimit(stage.dims.wallDistance); this._arenaLimit = stage.dims.wallDistance;
     this._stageId = stage.id;
     this._stageName = stage.name;
 
@@ -176,9 +179,10 @@ export class Game {
       const GAI = await gungakuAI();
       this.ai = new GAI(this.p2, enemyChar.ai);
     } else {
-      this.ai = new AIController(this.p2, enemyChar.ai);
+      this.ai = new AIController(this.p2, personalityForChar(enemyChar));
     }
-    this.ai1 = this.demo ? new AIController(this.p1, playerChar.ai) : null;
+    this.soul = new SoulSystems(this); loadVariants(); // SOUL-SYSTEMS.md
+    this.ai1 = this.demo ? new AIController(this.p1, personalityForChar(playerChar)) : null;
 
     this.wins = { p1: 0, p2: 0 };
     this.round = 1;
@@ -382,12 +386,18 @@ export class Game {
           const whQueue = inp.consume();
           // FIGHTER DEPTH (worker 34): soul kindle (ki charge) watches the
           // raw queue for the 1+2+3+4 press.
-          if (this._whDepth) this._whDepth.onPlayerQueue(this.p1, whQueue, dt);
+          // SOUL-SYSTEMS: 九魂解放 at a full meter claims the 1+2+3+4 press before soul kindle.
+          if (this.soul && this.soul.claimRelease(this.p1, this.p2, whQueue)) { rec('nine-soul-release'); }
+          else if (this._whDepth) this._whDepth.onPlayerQueue(this.p1, whQueue, dt);
           for (const act of whQueue) {
           if (act === 'punch' || act === 'kick' || act === 'grab' ||
               act === '1' || act === '2' || act === '3' || act === '4' ||
               act === '1+3' || act === '2+4' || act === '1+2' || act === '3+4' ||
               act === '1+4' || act === '2+3') {
+            // 魂 ACTION: 2+3 while the URGE/HEAT gauge is on + a context trigger.
+            if (act === '2+3' && this.p1._urgeOn && this._spiritCheck(this.p1, this.p2)) { rec('spirit'); continue; }
+            // SOUL-SYSTEMS: 霊放 Reihou on 1+4 only while the foe is raging.
+            if (act === '1+4' && this.soul && this.soul.tryReihou(this.p1, this.p2)) { rec('reihou'); continue; }
             if (this.p1.tryAttack(act)) { audio.whiff(); rec(act); }
           }
           else if (act === 'ss-up') { if (this.p1.trySidestep(-1)) rec('sidestep'); }
@@ -472,6 +482,7 @@ export class Game {
       this.ui.updateMeter(this.p1, this.p2);
 
       // --- Win check ---
+      if (this.soul) this.soul.update();
       if (this.p1.hp <= 0 || this.p2.hp <= 0) this._endRound();
     } else if (this.roundState === 'over') {
       this._roundLockT -= dt;
@@ -500,6 +511,18 @@ export class Game {
 
   /* V-System: one 'vskill' input, three context moves (Tekken-ified SFV).
      Blockstun + 50 souls -> V-Reversal | full meter -> V-Trigger | else V-Skill. */
+
+  /* WIRING-MAP 魂 ACTION: build context, fire, apply damage. Never alters bodies. */
+  _spiritCheck(a, d) {
+    if (!a || !d || !a.root || !d.root) return false;
+    const dx = d.root.position.x - a.root.position.x, lim = this._arenaLimit || 6;
+    const r = trySpirit(a, { urgeOn: !!a._urgeOn, spiritUsed: !!a._spiritUsed, dist: Math.abs(dx),
+      foeWall: lim - Math.abs(d.root.position.x), foeDowned: d.state === 'down', foeStun: d.stun || 0 }, this.ui);
+    if (!r) return false;
+    if (typeof d.receiveHit === 'function') { try { d.receiveHit({ damage: r.damage, level: 'mid', spirit: r.id, name: r.label }, a); } catch (e) {} }
+    return true;
+  }
+
   _vskillAction(f, rec) {
     const d = vskillDispatch({ state: f.state, stun: f.stun, meter: f.meter });
     if (d === 'vreversal') {
@@ -694,6 +717,7 @@ export class Game {
 
     this.ui.setRounds(this.wins);
     this.ui.updateHP(this.p1, this.p2);
+    if (this.soul) this.soul.onRoundEnd(p1Down, p2Down); // 試練の封 Trial's Seal
   }
 
   _afterRound() {
