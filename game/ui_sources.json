@@ -107,10 +107,10 @@
     "screen-result": {
       "status": "sourced",
       "sources": [
-        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md",
-        "teardown/tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_Result_Lightning/Result_Lightning_02.png"
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md"
       ],
-      "files": []
+      "files": [],
+      "note": "Result screen structure per T7-UI-LAYOUT.md (SW_UI_Result_Lightning win screen). REMOVED 2026-10-25 (#1056): the pakchunk0 win-screen texture citation (teardown/tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_Result_Lightning/Result_Lightning_02.png) never resolves on main — PR #863 is the abandoned public copy (assets live in private game-reverse-engineering per T7-STEAM-EXTRACTION.md) and the texture is not verifiable there either. Re-point to a gre: path or re-add if the texture lands in the private repo."
     },
     "screen-select": {
       "status": "sourced",
