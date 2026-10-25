@@ -1,0 +1,147 @@
+{
+ "_meta": {
+  "universe": "mat-legends",
+  "game": "WWE WrestleMania XIX (GameCube, GW9E78)",
+  "purpose": "WMXIX-by-move-name survey fragment for CornerStone (ryuji-rock). NEW FILE ONLY - game/assets/movesets/ryuji-rock.json was NOT edited; integration is central.",
+  "survey_doc": "teardown/wmxix/WMXIX-MOVE-NAME-SURVEY-2026-10-21.md",
+  "date": "2026-10-21",
+  "hypothesis_verdict": "PARTIALLY CONFIRMED - WMXIX carries move names as data (menu.mpq per-wrestler profile specials; Entrance/EMotName.dat code->name table), and its loose animation files are indexed by the EMotName A/B/C/D codes. For entrances those codes are wrestler-keyed, which is how The Rock is identified below. Gameplay grapple/strike animations live in motion/*.mpc YANM packages under a numeric container index; the name->clip mapping for gameplay moves is NOT yet decoded and no gameplay clip is claimed for any named move in this fragment."
+ },
+ "wrestler": {
+  "name": "THE ROCK",
+  "defwres_record": {
+   "file": "//Entrance/Defwres.dat",
+   "iso_offset": "0x08F10000",
+   "record_offset": "0xB0",
+   "record_size": 128,
+   "codes_ascii": "A0020000C000D106",
+   "codes": {
+    "A": "A002",
+    "B": "0000 (none)",
+    "C": "C000",
+    "D": "D106"
+   }
+  },
+  "emotname_entries": {
+   "A002": "ROCK",
+   "C000": "ROCK",
+   "D105": "ROCK_01",
+   "D106": "ROCK_02"
+  },
+  "menu_mpq_profile": {
+   "file": "//menu/menu.mpq",
+   "iso_offset": "0x093E8460",
+   "profile_name_offset": "0x5B539",
+   "nickname": "The People's Champion",
+   "height": "6' 5\"",
+   "weight": "275 lbs",
+   "dob": "1976/05/02",
+   "hometown": "Miami, Florida"
+  }
+ },
+ "identified_with_animation": [
+  {
+   "name": "The Rock - entrance (single)",
+   "kind": "entrance",
+   "emotname_code": "A002",
+   "emotname_label": "ROCK",
+   "source_file": "//ringmotion/a002_0a.yag",
+   "iso_offset": "0x1132EE30",
+   "size_bytes": 27996,
+   "atr_companion": {
+    "file": "//ringmotion/a002_0a.atr",
+    "iso_offset": "0x1132EE0C",
+    "size_bytes": 36
+   },
+   "canon_id": "ML-A002-0A",
+   "decoded_clip": "teardown/wmxix/animations/a002_0a.json",
+   "decoded_est_seconds": 33.856,
+   "n_tracks": 29,
+   "cornerstone_feed": "Persona/entrance layer: new ml:ML-A002-0A entry for CornerStone's entrance; sits alongside the No Mercy Rock taunt entry mk:MK-4353 (Taunt, 1+2+3+4) already wired in ryuji-rock.json - it does not replace any mk: entry.",
+   "decoded_sha": "4c274458792bbdf1939e74fbfb0e953754276be5",
+   "decoded_size_bytes": 129832
+  },
+  {
+   "name": "The Rock - entrance (trio/stable variant)",
+   "kind": "entrance",
+   "emotname_code": "C000",
+   "emotname_label": "ROCK",
+   "source_file": "//ringmotion/c000_0a.yag",
+   "iso_offset": "0x1154CC28",
+   "size_bytes": 68876,
+   "atr_companion": {
+    "file": "//ringmotion/c000_0a.atr",
+    "iso_offset": "0x1154C824",
+    "size_bytes": 1028
+   },
+   "canon_id": "ML-C000-0A",
+   "decoded_clip": "teardown/wmxix/animations/c000_0a.json",
+   "decoded_est_seconds": 173.244,
+   "n_tracks": 29,
+   "cornerstone_feed": "Entrance variant of ML-A002-0A (C-series = multi-wrestler entrance set in EMotName): alternate entrance for CornerStone; no existing mk:/CornerStone entry - new ml: entry only.",
+   "decoded_sha": "e623c16cb083bb2c3f457c2326952a3c9bb3ce7a",
+   "decoded_size_bytes": 323925
+  }
+ ],
+ "named_specials_name_and_slot_only": [
+  {
+   "name": "Rock Bottom",
+   "slot_category": "Front Grapple",
+   "menu_mpq_name_offset": "0x5B6FF",
+   "menu_mpq_category_offset": "0x5B6EF",
+   "animation_status": "NOT IDENTIFIED - gameplay grapple animations are inside //motion/move.mpc + common*.mpc YANM packages (move.mpc alone: 1,905 YANM markers) under a numeric container index; no name->clip mapping decoded yet. No clip is claimed.",
+   "cornerstone_feed": "Would feed the same CornerStone slot the No Mercy clip feeds today: front finisher grapple, mk:MK-1240 (Rock Bottom P1, f+2+4, frontFinisherSlot) - as a future ml: entry beside it, not a replacement."
+  },
+  {
+   "name": "People's Elbow",
+   "slot_category": "Upper Down Grapple Facing Up",
+   "menu_mpq_name_offset": "0x5B72E",
+   "menu_mpq_category_offset": "0x5B70F",
+   "animation_status": "NOT IDENTIFIED - same .mpc situation as Rock Bottom. (A second People's Elbow profile entry exists for VINCE McMAHON at menu.mpq 0x60984.)",
+   "cornerstone_feed": "Would feed the same slot as mk:MK-2843 (People's Elbow P1, Special Ground Head Grapple) / running variant mk:MK-3473 in ryuji-rock.json."
+  },
+  {
+   "name": "People's Spine Buster",
+   "slot_category": "Irish Whip Grapple",
+   "menu_mpq_name_offset": "0x5B756",
+   "menu_mpq_category_offset": "0x5B741",
+   "animation_status": "NOT IDENTIFIED - same .mpc situation as Rock Bottom.",
+   "cornerstone_feed": "Would feed the same slot as mk:MK-1885 (Rock Spinebuster, Special Irish Whip Grapple) in ryuji-rock.json."
+  }
+ ],
+ "identified_by_name_no_extracted_animation": [
+  {
+   "emotname_code": "D105",
+   "emotname_label": "ROCK_01",
+   "status": "Named in Entrance/EMotName.dat; no //ringmotion/d105 file exists and no Defwres.dat wrestler record uses D105. D-series animation source package not yet decoded."
+  },
+  {
+   "emotname_code": "D106",
+   "emotname_label": "ROCK_02",
+   "status": "Named in EMotName; assigned to THE ROCK in Defwres.dat (D field) and also to CHRIS JERICHO (shared D-motion). No //ringmotion/d106 file exists; D-series animation source package not yet decoded."
+  }
+ ],
+ "searched_no_hit_for_rock": [
+  {
+   "term": "uranage",
+   "where": "menu.mpq profile for THE ROCK + all searched text surfaces",
+   "note": "No uranage entry exists for The Rock in WMXIX data; his Front Grapple special is named Rock Bottom (the uranage-class throw itself)."
+  },
+  {
+   "term": "Samoan drop",
+   "where": "THE ROCK profile + all searched text surfaces",
+   "note": "Not among The Rock's three named WMXIX specials."
+  },
+  {
+   "term": "floatover DDT / DDT (Rock)",
+   "where": "THE ROCK profile",
+   "note": "DDT-named specials exist for other wrestlers in the 99-entry profile table (e.g. Reverse DDT); none for The Rock."
+  }
+ ],
+ "vocabulary_counts": {
+  "emotname_pairs_total": 177,
+  "profile_special_entries_total": 99,
+  "profile_wrestlers_total": 45,
+  "ringmotion_clips_name_mapped": "115 of 170 (remainder: c100-c147 series has no EMotName entries; b013/b017/d101 have blank names)"
+ }
+}

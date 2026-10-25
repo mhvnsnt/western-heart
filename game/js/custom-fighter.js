@@ -68,6 +68,7 @@ export function customFighterToRoster(F) {
     moveset: 'jin', // Default; TODO: wire custom moveset slots
     model: 'custom',
     tintStrength: 0.3,
+    colorize: true, // the CAW skin tone is applied as a tint (player's choice)
     colors: { suit: suitColor, trim: 0xe8b64c },
     style: F.fighting_style?.archetype || 'Balanced',
     archetype: 'Custom',

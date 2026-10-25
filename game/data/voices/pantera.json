@@ -1,0 +1,810 @@
+{
+  "fighter": "pantera",
+  "displayName": "PANTERA",
+  "direction": "Black panther luchador, pro-wrestling showman. Snarling barks, crowd-working roars.",
+  "language": "soul-voice",
+  "source": {
+    "game": "Tekken",
+    "character": "King",
+    "bank": "AkBankVoiceKIN.bnk",
+    "via": "TekkenMods mod 681 (King Classic Sounds) and TekkenMods mod 1242 (King Grunts from Tekken 2)",
+    "preferredSet": "t2-grunts (TekkenMods mod 1242) - owner ear-checked 2026-10-24, better quality, preferred",
+    "alternateSet": "classic (TekkenMods mod 681)",
+    "decodedFrom": "Loudness-normalized decodes in king-mods/f2-t2grunts/norm/ (Set B) and king-mods/f1-classic/norm/ (Set A); converted to OGG Vorbis q5 with loudnorm by king-mods/kaggle_batch_audio.py",
+    "why": "Pantera is the King-moveset panther wrestler; King's voice bank is his voice source.",
+    "bankNote": "The bank carries slot IDs (WEM IDs), not content names. Clips are identified by position number only; no spoken line is claimed for any clip."
+  },
+  "recordingStatus": "Verified King voice bank (owner ear-checked 2026-10-24 for set quality and preference). Trigger assignment is by duration rank only; clip content is NOT transcribed or verified by ear - to be confirmed at the owner voice session.",
+  "replaced": {
+    "date": "2026-10-24",
+    "removed": "9 suspect F_KING stage-sound files (intro-01, intro-02, win-01, win-02, taunt-01, taunt-02, hit-01, ko-01, select-01) - prior project record states those F_KING clips were music/SFX, not King voice, so they were deleted, not reused.",
+    "added": "52 OGG clips (26 T2 grunts + 26 Classic), 1.58 MB combined"
+  },
+  "triggerRule": "Per set, independently, by duration rank: longest 3 -> intro; next 4 -> win; next 4 -> ko; remaining clips >= 1.0s -> taunt; remaining sub-1s clips -> hit; shortest clip -> select. No clip content was listened to for this assignment.",
+  "variantMap": {
+    "intro": {
+      "pool": [
+        "pantera-t2-02",
+        "pantera-t2-09",
+        "pantera-t2-16",
+        "pantera-classic-02",
+        "pantera-classic-09",
+        "pantera-classic-16"
+      ],
+      "preferredT2VariantIdx": [
+        0,
+        1,
+        2
+      ],
+      "classicVariantIdx": [
+        3,
+        4,
+        5
+      ],
+      "note": "voice.js play(fighter, trigger, variantIdx) picks pool[variantIdx % pool.length]; variantIdx in the preferred range plays the T2 set, variantIdx in the classic range plays the Classic alternate. Default play() with no variantIdx picks at random from the full pool (both sets)."
+    },
+    "win": {
+      "pool": [
+        "pantera-t2-11",
+        "pantera-t2-14",
+        "pantera-t2-18",
+        "pantera-t2-19",
+        "pantera-classic-11",
+        "pantera-classic-14",
+        "pantera-classic-18",
+        "pantera-classic-19"
+      ],
+      "preferredT2VariantIdx": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "classicVariantIdx": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "note": "voice.js play(fighter, trigger, variantIdx) picks pool[variantIdx % pool.length]; variantIdx in the preferred range plays the T2 set, variantIdx in the classic range plays the Classic alternate. Default play() with no variantIdx picks at random from the full pool (both sets)."
+    },
+    "taunt": {
+      "pool": [
+        "pantera-t2-03",
+        "pantera-t2-07",
+        "pantera-t2-08",
+        "pantera-t2-26",
+        "pantera-classic-07",
+        "pantera-classic-12",
+        "pantera-classic-15"
+      ],
+      "preferredT2VariantIdx": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "classicVariantIdx": [
+        4,
+        5,
+        6
+      ],
+      "note": "voice.js play(fighter, trigger, variantIdx) picks pool[variantIdx % pool.length]; variantIdx in the preferred range plays the T2 set, variantIdx in the classic range plays the Classic alternate. Default play() with no variantIdx picks at random from the full pool (both sets)."
+    },
+    "hit": {
+      "pool": [
+        "pantera-t2-01",
+        "pantera-t2-04",
+        "pantera-t2-05",
+        "pantera-t2-12",
+        "pantera-t2-17",
+        "pantera-t2-20",
+        "pantera-t2-21",
+        "pantera-t2-23",
+        "pantera-t2-24",
+        "pantera-t2-25",
+        "pantera-classic-01",
+        "pantera-classic-03",
+        "pantera-classic-04",
+        "pantera-classic-05",
+        "pantera-classic-17",
+        "pantera-classic-20",
+        "pantera-classic-21",
+        "pantera-classic-23",
+        "pantera-classic-24",
+        "pantera-classic-25",
+        "pantera-classic-26"
+      ],
+      "preferredT2VariantIdx": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "classicVariantIdx": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "note": "voice.js play(fighter, trigger, variantIdx) picks pool[variantIdx % pool.length]; variantIdx in the preferred range plays the T2 set, variantIdx in the classic range plays the Classic alternate. Default play() with no variantIdx picks at random from the full pool (both sets)."
+    },
+    "ko": {
+      "pool": [
+        "pantera-t2-06",
+        "pantera-t2-10",
+        "pantera-t2-13",
+        "pantera-t2-15",
+        "pantera-classic-06",
+        "pantera-classic-08",
+        "pantera-classic-10",
+        "pantera-classic-13"
+      ],
+      "preferredT2VariantIdx": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "classicVariantIdx": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "note": "voice.js play(fighter, trigger, variantIdx) picks pool[variantIdx % pool.length]; variantIdx in the preferred range plays the T2 set, variantIdx in the classic range plays the Classic alternate. Default play() with no variantIdx picks at random from the full pool (both sets)."
+    },
+    "select": {
+      "pool": [
+        "pantera-t2-22",
+        "pantera-classic-22"
+      ],
+      "preferredT2VariantIdx": [
+        0
+      ],
+      "classicVariantIdx": [
+        1
+      ],
+      "note": "voice.js play(fighter, trigger, variantIdx) picks pool[variantIdx % pool.length]; variantIdx in the preferred range plays the T2 set, variantIdx in the classic range plays the Classic alternate. Default play() with no variantIdx picks at random from the full pool (both sets)."
+    }
+  },
+  "clips": [
+    {
+      "id": "pantera-t2-01",
+      "trigger": "hit",
+      "set": "t2-grunts",
+      "position": 1,
+      "bankSlot": "1003837159",
+      "durationSeconds": 0.801088,
+      "text": "King voice bank, position 1 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-01.ogg"
+    },
+    {
+      "id": "pantera-t2-02",
+      "trigger": "intro",
+      "set": "t2-grunts",
+      "position": 2,
+      "bankSlot": "1036113453",
+      "durationSeconds": 6.266667,
+      "text": "King voice bank, position 2 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-02.ogg"
+    },
+    {
+      "id": "pantera-t2-03",
+      "trigger": "taunt",
+      "set": "t2-grunts",
+      "position": 3,
+      "bankSlot": "1038614577",
+      "durationSeconds": 1.123265,
+      "text": "King voice bank, position 3 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-03.ogg"
+    },
+    {
+      "id": "pantera-t2-04",
+      "trigger": "hit",
+      "set": "t2-grunts",
+      "position": 4,
+      "bankSlot": "1041454593",
+      "durationSeconds": 0.526,
+      "text": "King voice bank, position 4 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-04.ogg"
+    },
+    {
+      "id": "pantera-t2-05",
+      "trigger": "hit",
+      "set": "t2-grunts",
+      "position": 5,
+      "bankSlot": "235945735",
+      "durationSeconds": 0.64,
+      "text": "King voice bank, position 5 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-05.ogg"
+    },
+    {
+      "id": "pantera-t2-06",
+      "trigger": "ko",
+      "set": "t2-grunts",
+      "position": 6,
+      "bankSlot": "279611602",
+      "durationSeconds": 2.189932,
+      "text": "King voice bank, position 6 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-06.ogg"
+    },
+    {
+      "id": "pantera-t2-07",
+      "trigger": "taunt",
+      "set": "t2-grunts",
+      "position": 7,
+      "bankSlot": "328585857",
+      "durationSeconds": 1.338,
+      "text": "King voice bank, position 7 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-07.ogg"
+    },
+    {
+      "id": "pantera-t2-08",
+      "trigger": "taunt",
+      "set": "t2-grunts",
+      "position": 8,
+      "bankSlot": "366622006",
+      "durationSeconds": 1.509297,
+      "text": "King voice bank, position 8 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-08.ogg"
+    },
+    {
+      "id": "pantera-t2-09",
+      "trigger": "intro",
+      "set": "t2-grunts",
+      "position": 9,
+      "bankSlot": "37512952",
+      "durationSeconds": 5.162,
+      "text": "King voice bank, position 9 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-09.ogg"
+    },
+    {
+      "id": "pantera-t2-10",
+      "trigger": "ko",
+      "set": "t2-grunts",
+      "position": 10,
+      "bankSlot": "378194677",
+      "durationSeconds": 2.470023,
+      "text": "King voice bank, position 10 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-10.ogg"
+    },
+    {
+      "id": "pantera-t2-11",
+      "trigger": "win",
+      "set": "t2-grunts",
+      "position": 11,
+      "bankSlot": "402346307",
+      "durationSeconds": 3.741333,
+      "text": "King voice bank, position 11 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-11.ogg"
+    },
+    {
+      "id": "pantera-t2-12",
+      "trigger": "hit",
+      "set": "t2-grunts",
+      "position": 12,
+      "bankSlot": "427436342",
+      "durationSeconds": 0.74449,
+      "text": "King voice bank, position 12 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-12.ogg"
+    },
+    {
+      "id": "pantera-t2-13",
+      "trigger": "ko",
+      "set": "t2-grunts",
+      "position": 13,
+      "bankSlot": "453627518",
+      "durationSeconds": 2.136,
+      "text": "King voice bank, position 13 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-13.ogg"
+    },
+    {
+      "id": "pantera-t2-14",
+      "trigger": "win",
+      "set": "t2-grunts",
+      "position": 14,
+      "bankSlot": "460445785",
+      "durationSeconds": 3.166667,
+      "text": "King voice bank, position 14 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-14.ogg"
+    },
+    {
+      "id": "pantera-t2-15",
+      "trigger": "ko",
+      "set": "t2-grunts",
+      "position": 15,
+      "bankSlot": "463573614",
+      "durationSeconds": 1.782132,
+      "text": "King voice bank, position 15 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-15.ogg"
+    },
+    {
+      "id": "pantera-t2-16",
+      "trigger": "intro",
+      "set": "t2-grunts",
+      "position": 16,
+      "bankSlot": "46466028",
+      "durationSeconds": 3.874667,
+      "text": "King voice bank, position 16 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-16.ogg"
+    },
+    {
+      "id": "pantera-t2-17",
+      "trigger": "hit",
+      "set": "t2-grunts",
+      "position": 17,
+      "bankSlot": "479375596",
+      "durationSeconds": 0.218,
+      "text": "King voice bank, position 17 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-17.ogg"
+    },
+    {
+      "id": "pantera-t2-18",
+      "trigger": "win",
+      "set": "t2-grunts",
+      "position": 18,
+      "bankSlot": "496614466",
+      "durationSeconds": 3.568,
+      "text": "King voice bank, position 18 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-18.ogg"
+    },
+    {
+      "id": "pantera-t2-19",
+      "trigger": "win",
+      "set": "t2-grunts",
+      "position": 19,
+      "bankSlot": "68450745",
+      "durationSeconds": 2.950667,
+      "text": "King voice bank, position 19 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-19.ogg"
+    },
+    {
+      "id": "pantera-t2-20",
+      "trigger": "hit",
+      "set": "t2-grunts",
+      "position": 20,
+      "bankSlot": "703890652",
+      "durationSeconds": 0.439728,
+      "text": "King voice bank, position 20 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-20.ogg"
+    },
+    {
+      "id": "pantera-t2-21",
+      "trigger": "hit",
+      "set": "t2-grunts",
+      "position": 21,
+      "bankSlot": "718397289",
+      "durationSeconds": 0.635646,
+      "text": "King voice bank, position 21 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-21.ogg"
+    },
+    {
+      "id": "pantera-t2-22",
+      "trigger": "select",
+      "set": "t2-grunts",
+      "position": 22,
+      "bankSlot": "741838950",
+      "durationSeconds": 0.216,
+      "text": "King voice bank, position 22 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-22.ogg"
+    },
+    {
+      "id": "pantera-t2-23",
+      "trigger": "hit",
+      "set": "t2-grunts",
+      "position": 23,
+      "bankSlot": "786104316",
+      "durationSeconds": 0.683537,
+      "text": "King voice bank, position 23 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-23.ogg"
+    },
+    {
+      "id": "pantera-t2-24",
+      "trigger": "hit",
+      "set": "t2-grunts",
+      "position": 24,
+      "bankSlot": "812504634",
+      "durationSeconds": 0.439728,
+      "text": "King voice bank, position 24 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-24.ogg"
+    },
+    {
+      "id": "pantera-t2-25",
+      "trigger": "hit",
+      "set": "t2-grunts",
+      "position": 25,
+      "bankSlot": "853156273",
+      "durationSeconds": 0.863492,
+      "text": "King voice bank, position 25 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-25.ogg"
+    },
+    {
+      "id": "pantera-t2-26",
+      "trigger": "taunt",
+      "set": "t2-grunts",
+      "position": 26,
+      "bankSlot": "926471152",
+      "durationSeconds": 1.123265,
+      "text": "King voice bank, position 26 (T2 grunts)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-t2-26.ogg"
+    },
+    {
+      "id": "pantera-classic-01",
+      "trigger": "hit",
+      "set": "classic",
+      "position": 1,
+      "bankSlot": "1003837159",
+      "durationSeconds": 0.667574,
+      "text": "King voice bank, position 1 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-01.ogg"
+    },
+    {
+      "id": "pantera-classic-02",
+      "trigger": "intro",
+      "set": "classic",
+      "position": 2,
+      "bankSlot": "1036113453",
+      "durationSeconds": 6.266667,
+      "text": "King voice bank, position 2 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-02.ogg"
+    },
+    {
+      "id": "pantera-classic-03",
+      "trigger": "hit",
+      "set": "classic",
+      "position": 3,
+      "bankSlot": "1038614577",
+      "durationSeconds": 0.712562,
+      "text": "King voice bank, position 3 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-03.ogg"
+    },
+    {
+      "id": "pantera-classic-04",
+      "trigger": "hit",
+      "set": "classic",
+      "position": 4,
+      "bankSlot": "1041454593",
+      "durationSeconds": 0.526,
+      "text": "King voice bank, position 4 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-04.ogg"
+    },
+    {
+      "id": "pantera-classic-05",
+      "trigger": "hit",
+      "set": "classic",
+      "position": 5,
+      "bankSlot": "235945735",
+      "durationSeconds": 0.64,
+      "text": "King voice bank, position 5 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-05.ogg"
+    },
+    {
+      "id": "pantera-classic-06",
+      "trigger": "ko",
+      "set": "classic",
+      "position": 6,
+      "bankSlot": "279611602",
+      "durationSeconds": 2.189932,
+      "text": "King voice bank, position 6 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-06.ogg"
+    },
+    {
+      "id": "pantera-classic-07",
+      "trigger": "taunt",
+      "set": "classic",
+      "position": 7,
+      "bankSlot": "328585857",
+      "durationSeconds": 1.338,
+      "text": "King voice bank, position 7 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-07.ogg"
+    },
+    {
+      "id": "pantera-classic-08",
+      "trigger": "ko",
+      "set": "classic",
+      "position": 8,
+      "bankSlot": "366622006",
+      "durationSeconds": 2.590476,
+      "text": "King voice bank, position 8 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-08.ogg"
+    },
+    {
+      "id": "pantera-classic-09",
+      "trigger": "intro",
+      "set": "classic",
+      "position": 9,
+      "bankSlot": "37512952",
+      "durationSeconds": 5.162,
+      "text": "King voice bank, position 9 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-09.ogg"
+    },
+    {
+      "id": "pantera-classic-10",
+      "trigger": "ko",
+      "set": "classic",
+      "position": 10,
+      "bankSlot": "378194677",
+      "durationSeconds": 2.470023,
+      "text": "King voice bank, position 10 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-10.ogg"
+    },
+    {
+      "id": "pantera-classic-11",
+      "trigger": "win",
+      "set": "classic",
+      "position": 11,
+      "bankSlot": "402346307",
+      "durationSeconds": 3.734059,
+      "text": "King voice bank, position 11 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-11.ogg"
+    },
+    {
+      "id": "pantera-classic-12",
+      "trigger": "taunt",
+      "set": "classic",
+      "position": 12,
+      "bankSlot": "427436342",
+      "durationSeconds": 1.259683,
+      "text": "King voice bank, position 12 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-12.ogg"
+    },
+    {
+      "id": "pantera-classic-13",
+      "trigger": "ko",
+      "set": "classic",
+      "position": 13,
+      "bankSlot": "453627518",
+      "durationSeconds": 2.136,
+      "text": "King voice bank, position 13 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-13.ogg"
+    },
+    {
+      "id": "pantera-classic-14",
+      "trigger": "win",
+      "set": "classic",
+      "position": 14,
+      "bankSlot": "460445785",
+      "durationSeconds": 3.166667,
+      "text": "King voice bank, position 14 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-14.ogg"
+    },
+    {
+      "id": "pantera-classic-15",
+      "trigger": "taunt",
+      "set": "classic",
+      "position": 15,
+      "bankSlot": "463573614",
+      "durationSeconds": 1.782132,
+      "text": "King voice bank, position 15 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-15.ogg"
+    },
+    {
+      "id": "pantera-classic-16",
+      "trigger": "intro",
+      "set": "classic",
+      "position": 16,
+      "bankSlot": "46466028",
+      "durationSeconds": 3.874667,
+      "text": "King voice bank, position 16 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-16.ogg"
+    },
+    {
+      "id": "pantera-classic-17",
+      "trigger": "hit",
+      "set": "classic",
+      "position": 17,
+      "bankSlot": "479375596",
+      "durationSeconds": 0.218,
+      "text": "King voice bank, position 17 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-17.ogg"
+    },
+    {
+      "id": "pantera-classic-18",
+      "trigger": "win",
+      "set": "classic",
+      "position": 18,
+      "bankSlot": "496614466",
+      "durationSeconds": 3.568617,
+      "text": "King voice bank, position 18 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-18.ogg"
+    },
+    {
+      "id": "pantera-classic-19",
+      "trigger": "win",
+      "set": "classic",
+      "position": 19,
+      "bankSlot": "68450745",
+      "durationSeconds": 3.046168,
+      "text": "King voice bank, position 19 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-19.ogg"
+    },
+    {
+      "id": "pantera-classic-20",
+      "trigger": "hit",
+      "set": "classic",
+      "position": 20,
+      "bankSlot": "703890652",
+      "durationSeconds": 0.48907,
+      "text": "King voice bank, position 20 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-20.ogg"
+    },
+    {
+      "id": "pantera-classic-21",
+      "trigger": "hit",
+      "set": "classic",
+      "position": 21,
+      "bankSlot": "718397289",
+      "durationSeconds": 0.54712,
+      "text": "King voice bank, position 21 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-21.ogg"
+    },
+    {
+      "id": "pantera-classic-22",
+      "trigger": "select",
+      "set": "classic",
+      "position": 22,
+      "bankSlot": "741838950",
+      "durationSeconds": 0.216,
+      "text": "King voice bank, position 22 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-22.ogg"
+    },
+    {
+      "id": "pantera-classic-23",
+      "trigger": "hit",
+      "set": "classic",
+      "position": 23,
+      "bankSlot": "786104316",
+      "durationSeconds": 0.683537,
+      "text": "King voice bank, position 23 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-23.ogg"
+    },
+    {
+      "id": "pantera-classic-24",
+      "trigger": "hit",
+      "set": "classic",
+      "position": 24,
+      "bankSlot": "812504634",
+      "durationSeconds": 0.5239,
+      "text": "King voice bank, position 24 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-24.ogg"
+    },
+    {
+      "id": "pantera-classic-25",
+      "trigger": "hit",
+      "set": "classic",
+      "position": 25,
+      "bankSlot": "853156273",
+      "durationSeconds": 0.48907,
+      "text": "King voice bank, position 25 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-25.ogg"
+    },
+    {
+      "id": "pantera-classic-26",
+      "trigger": "hit",
+      "set": "classic",
+      "position": 26,
+      "bankSlot": "926471152",
+      "durationSeconds": 0.53551,
+      "text": "King voice bank, position 26 (Classic)",
+      "note": "Trigger assigned by duration rank only; clip content not verified by ear - to be confirmed at owner voice session. Bank carries slot IDs, not content names; clip identified by position number.",
+      "status": "verified-bank",
+      "file": "assets/voices/pantera/pantera-classic-26.ogg"
+    }
+  ]
+}
