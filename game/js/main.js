@@ -272,6 +272,11 @@ const game = new Game(canvas, input, ui);
 // fight. Loaded on demand; no-op until first toggled.
 import('./photomode.js').then(({ installPhotoMode }) => installPhotoMode(game))
   .catch(() => {});
+/* Free camera during scenes (2026-10-24): live orbit/pan/zoom while the
+   fight keeps playing — never pauses, never overwrites the authored
+   camera. Lazy import so a failure here cannot block the fight. */
+import('./free-camera.js').then(({ installFreeCamera }) => installFreeCamera(game))
+  .catch((e) => console.warn('[WH] free camera unavailable:', e?.message || e));
 ui._buildMeter('p1');
 ui._buildMeter('p2');
 
