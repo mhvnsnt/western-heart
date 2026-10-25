@@ -906,7 +906,7 @@ export class Game {
       this.wins = { p1: 0, p2: 0 };
       this.ui.setRounds(this.wins, this.roundsToWin);
       this.round = 1;
-      this.ui.banner('RESET — DUMMY RESTORED');
+      this.ui.hudNote('RESET — DUMMY RESTORED');
       this._startRound();
       return;
     }

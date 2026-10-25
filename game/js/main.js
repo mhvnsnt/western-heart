@@ -176,6 +176,19 @@ const ui = {
     b.classList.add('show');
     setTimeout(() => b.classList.remove('show'), 1400);
   },
+  hudNote(text) {
+    // HUD-side note (owner immersion law, closed 2026-10-25): transient
+    // info that used to be a center-screen banner now lands here — small
+    // text under the health bars, never the middle of the screen. Same
+    // 1400 ms beat as banner(). Guards a missing element: converted call
+    // sites run in modes whose UI object may be a stub.
+    const el = document.getElementById('hud-note');
+    if (!el) return;
+    el.textContent = text;
+    el.classList.remove('show'); void el.offsetWidth;
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 1400);
+  },
   surgeFlash(color, accent) {
     const el = document.getElementById('surge-flash');
     const c = '#' + color.toString(16).padStart(6, '0');
