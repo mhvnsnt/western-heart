@@ -3180,3 +3180,11 @@ one-line JOBS-tab tool-dropdown addition (creation-flow.js — worker 37's lane,
 - Batch checker: tools/combat-qa/wiring_batch_verify.py (130 checks, one run; --gpu prints the GPU job spec instead of faking GPU work).
 
 Files: game/assets/movesets/*.json (30), game/data/moveset-library/banks/wrestling.json, game/data/moveset-library/index.json, tools/combat-qa/wiring_batch_verify.py (new). Additions only except the 36 removed wrong-claim lines.
+## 2026-10-25 — Claude session: checkpoints so a container restart can't wipe work again
+- A container restart reset the working tree to the last pushed commit and wiped the scratchpad: six lanes of
+  uncommitted agent work (strings, hit contact, canon movesets, select/stage, reaction wiring, gap audit) were lost;
+  the agents re-apply from their transcripts. Lesson: unverified work must still leave the machine.
+- tools/agent/checkpoint.sh (hooked like autosave.sh) pushes uncommitted repo work + the scratchpad + a re-download
+  manifest to <branch>-checkpoints via plumbing; tools/agent/restore.sh (SessionStart) brings it back without
+  clobbering. Tested: checkpoint pushed (402 scratch files + wip.patch); restore into an empty folder put all 402
+  back and refused to apply the patch over a dirty tree.
