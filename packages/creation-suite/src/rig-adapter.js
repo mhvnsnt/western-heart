@@ -22,13 +22,16 @@
          shoulder.L, upper_arm.L, forearm.L, hand.L, thumb.01.L,
          f_index.01.L, f_middle.01.L, f_ring.01.L, f_pinky.01.L, thigh.L,
          shin.L, foot.L, toe.L — Blender Rigify convention.
-       * MB-Lab / MPFB / MakeHuman family: pelvis, spine01/02/03, neck,
-         head, clavicle_L, upperarm_L, forearm_L, hand_L, thigh_L, shin_L,
-         foot_L — MakeHuman skeleton convention. FINGER names for this family
-         are NOT confirmed from a baked mesh yet (template GLBs are 9MB and
-         their joint lists were not readable from this VM) — the resolver
-         REPORTS them missing for MB-Lab-style rigs instead of guessing.
-         That is a documented gap, not a silent skip (see RIG-COMPAT doc).
+       * MB-Lab / MPFB / MakeHuman family, CONFIRMED 2026-10-24 from the
+         real template GLBs (customization/templates/meshes/*.glb — all 9
+         share one 71-joint skeleton, read from the GLB skin joints):
+         pelvis, spine01/02/03, neck, head, clavicle_L, upperarm_L,
+         lowerarm_L (not forearm_L), hand_L, thumb01_L/index01_L/
+         middle01_L/ring01_L/pinky01_L (+00/02/03 segments), thigh_L,
+         calf_L (not shin_L), foot_L, toes_L (plural). The appended
+         MB-Lab aliases below map exactly these names; the old
+         convention-guess fixture (forearm_L/shin_L, no fingers) is kept
+         in the test only as a backward-compat check.
    - Normalization: lowercase, strip mixamorig:/mixamorig prefix, drop
      spaces/dots/dashes, KEEP underscores. Underscores are load-bearing:
      Cape spine_1 (lowest spine) must NOT collide with T7 Spine1 (mid spine).
@@ -64,28 +67,28 @@ export const BONE_ALIASES = {
   clavicleR: ['rightshoulder', 'clavicle_r', 'shoulder_r', 'shoulderr'],
   upperArmL: ['leftarm', 'upperarm_l', 'upper_arml', 'upperarml'],
   upperArmR: ['rightarm', 'upperarm_r', 'upper_armr', 'upperarmr'],
-  forearmL: ['leftforearm', 'forearm_l', 'forearml'],
-  forearmR: ['rightforearm', 'forearm_r', 'forearmr'],
+  forearmL: ['leftforearm', 'forearm_l', 'forearml', 'lowerarm_l'],
+  forearmR: ['rightforearm', 'forearm_r', 'forearmr', 'lowerarm_r'],
   handL: ['lefthand', 'hand_l', 'handl'],
   handR: ['righthand', 'hand_r', 'handr'],
-  thumbL: ['lefthandthumb1', 'finger_thumb_1_l', 'thumb01l', 'thumb1_l'],
-  thumbR: ['righthandthumb1', 'finger_thumb_1_r', 'thumb01r', 'thumb1_r'],
-  indexL: ['lefthandindex1', 'finger_index_1_l', 'findex01l', 'f_index01l', 'index1_l'],
-  indexR: ['righthandindex1', 'finger_index_1_r', 'findex01r', 'f_index01r', 'index1_r'],
-  middleL: ['lefthandmiddle1', 'finger_middle_1_l', 'fmiddle01l', 'f_middle01l', 'middle1_l'],
-  middleR: ['righthandmiddle1', 'finger_middle_1_r', 'fmiddle01r', 'f_middle01r', 'middle1_r'],
-  ringL: ['lefthandring1', 'finger_ring_1_l', 'fring01l', 'f_ring01l', 'ring1_l'],
-  ringR: ['righthandring1', 'finger_ring_1_r', 'fring01r', 'f_ring01r', 'ring1_r'],
-  pinkyL: ['lefthandpinky1', 'finger_pinky_1_l', 'fpinky01l', 'f_pinky01l', 'pinky1_l'],
-  pinkyR: ['righthandpinky1', 'finger_pinky_1_r', 'fpinky01r', 'f_pinky01r', 'pinky1_r'],
+  thumbL: ['lefthandthumb1', 'finger_thumb_1_l', 'thumb01l', 'thumb1_l', 'thumb01_l'],
+  thumbR: ['righthandthumb1', 'finger_thumb_1_r', 'thumb01r', 'thumb1_r', 'thumb01_r'],
+  indexL: ['lefthandindex1', 'finger_index_1_l', 'findex01l', 'f_index01l', 'index1_l', 'index01_l'],
+  indexR: ['righthandindex1', 'finger_index_1_r', 'findex01r', 'f_index01r', 'index1_r', 'index01_r'],
+  middleL: ['lefthandmiddle1', 'finger_middle_1_l', 'fmiddle01l', 'f_middle01l', 'middle1_l', 'middle01_l'],
+  middleR: ['righthandmiddle1', 'finger_middle_1_r', 'fmiddle01r', 'f_middle01r', 'middle1_r', 'middle01_r'],
+  ringL: ['lefthandring1', 'finger_ring_1_l', 'fring01l', 'f_ring01l', 'ring1_l', 'ring01_l'],
+  ringR: ['righthandring1', 'finger_ring_1_r', 'fring01r', 'f_ring01r', 'ring1_r', 'ring01_r'],
+  pinkyL: ['lefthandpinky1', 'finger_pinky_1_l', 'fpinky01l', 'f_pinky01l', 'pinky1_l', 'pinky01_l'],
+  pinkyR: ['righthandpinky1', 'finger_pinky_1_r', 'fpinky01r', 'f_pinky01r', 'pinky1_r', 'pinky01_r'],
   thighL: ['leftupleg', 'thigh_l', 'thighl'],
   thighR: ['rightupleg', 'thigh_r', 'thighr'],
-  shinL: ['leftleg', 'shin_l', 'shinl'],
-  shinR: ['rightleg', 'shin_r', 'shinr'],
+  shinL: ['leftleg', 'shin_l', 'shinl', 'calf_l'],
+  shinR: ['rightleg', 'shin_r', 'shinr', 'calf_r'],
   footL: ['leftfoot', 'foot_l', 'footl'],
   footR: ['rightfoot', 'foot_r', 'footr'],
-  toeL: ['lefttoebase', 'toe_l', 'toel'],
-  toeR: ['righttoebase', 'toe_r', 'toer'],
+  toeL: ['lefttoebase', 'toe_l', 'toel', 'toes_l'],
+  toeR: ['righttoebase', 'toe_r', 'toer', 'toes_r'],
 };
 
 /* Suite sockets -> canonical bones to try, in order. */
