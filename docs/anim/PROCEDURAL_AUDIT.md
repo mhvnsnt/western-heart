@@ -268,3 +268,55 @@ canonicals; the file's only old-vs-corrected diff, 3~4,D/F, is NOT Batch
 T8-sourced prefixes with no T3 row get their correct clips from #988 Step
 2 (original T8 refs), never from a T3 row recorded as correct.
 
+
+## Kinpo Batch 4 (triples/quads + rest, 2026-10-25) — T3 FALLBACK, not the correct mapping
+
+70 canonicals (29 triples/quads + 41 rest) + 50 twins = 120 CSV rows;
+28 planned canonicals + 34 variants = 62 plan keys, added to the
+existing 115-key block (47 Batch 1 + 20 Batch 2 + 48 Batch 3, all
+deep-equal). Contexts: standing 49, ws 11, crouch 8, jump 2.
+Provenance: 64 in main moves, 6 quarantined-only ((Back to
+wall).b,b,UB; 1+2+3+4,1+2; ws2,1,1,1,2,1+4; ws2,1,1,1,2,1+4,1;
+ws2,1,1,1,2,1,4; ws2,1,1,1,2,1,4,3 — live when #988 merges).
+Steps: 247 = 131 planned + 3 throw-CSV-only + 113 rest. Planned: 27
+verified / 2 review / 102 unmapped (2 suspended-drift + 6
+rejected-candidate + 96 no-candidate). Verified rows (10 distinct, all
+baked in main's jin pack AND the Batch 3 branch pack): 92 (b+2,1+2,4
+step 1+2, the batch's ONLY Job 3 fill — exact + FULL incl.
+moveset_kinpo:d+1+2, HARD + SOFT proxy pass window [3.0,7.0]), 186
+(4,1,2 step 3, recorded-path), 220/221/222/223 (2,1,2,2,3 steps 1-4,
+prefix-move own rows), 224 (2,1,2,2,3 step 5, recorded-dest), 230
+(2,1,4 family step 3, recorded-dest), 232/233 (2,1,4,4,2 / 2,1,4,4,2,4
+last steps, recorded-dest). Verified-all canonicals: 2,1,2,2,3 and
+2,1,4. Verified-last-step keys exactly: 2,1,2,2,3; 2,1,4; 2,1,4,4,2;
+2,1,4,4,2,4; 4,1,2. Review last-step key exactly: 2,1,2,2,3,4.
+Review: 2,1,2,2,3,4 step 4 candidate 225 SOFT limb-peak proxy fail
+(window [16.5,21.5], legR peak 6); 4,1,2 step 1 candidate 199 SOFT fail
+(window [3.5,7.5], legR peak 3 — same row, same result as Batch 3's
+4,1 step 1 hold). Suspended-drift: 1,2,3 / 1,2,4 step 1 (prefix move 1
+ROW-CHANGED 35->None; stale row 35 documented, never wired).
+Rejected-candidate: 2,1,4,4-family step 4 row 231 (button 12 != step
+bits 8 — kick-chord row for a single RK4 step; same row, same result
+as demonio Batch 4's 2,1,4,4 step 4 gate failure); 4,1,2 step 1 row 184
+(button 9 != step bits 1 — chord row for a single LP1 step; same row,
+same result as Batch 3's 4,1 step 2 rejection). No gate-note cases:
+all 27 verified steps are standing-context steps on standing rows.
+Job 3 fills wired: 1 (row 92, above); report entries 13 (other entries:
+rows 92/105 exact ROW-ONLY for targets 1+4,2,1 / 1 / ws2,1, plus
+suspension blocks fills; rows 101/116/131/132 soft-nofiled for the two
+3+4 last steps — documented, never wired; no agreement note fires, the
+only exact+FULL candidate IS the fill; dedupe fires zero times). Job 4
+joins: 2, both no-action on already-verified steps (row 232 on
+2,1,4,4,2 / 2,1,4,4,2,4 step 2), 0 promoting. Orphans: jin rows 85, 91,
+99, 100, 104, 127, 170, 171, 172, 209, 216, 226, 239, 250, 256, 262
+(same set as Batches 1-3). Canonicalization is the CORRECTED rule
+(strip only a trailing ~t[378] source-variant suffix): kinpo Batch 4
+contains EXACTLY ONE input-~ canonical, 3~4,D/F, filed as its own rest
+canonical with NO plan (never a variant of 3; asserted in the Batch 4
+test) — discharging the Batches 2-3 scope rulings. COVERAGE-COMPLETE:
+135 canonical comma keys = 32 (B1) + 12 (B2) + 21 (B3) + 70 (B4),
+uncovered [] extra []; plan keys total 177. Rest keys (41) are
+CSV-audited only — planning them needs engine support for non-attack
+prefix steps. T8-sourced prefixes with no T3 row get their correct
+clips from #988 Step 2 (original T8 refs), never from a T3 row recorded
+as correct.
