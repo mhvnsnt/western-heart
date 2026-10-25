@@ -36,6 +36,14 @@ import json
 import os
 import sys
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+if HERE not in sys.path:
+    sys.path.insert(0, HERE)
+try:
+    from gpu_measure import base_report  # noqa: E402 (stdlib-only, safe under Blender)
+except ImportError:
+    base_report = None
+
 try:
     import bpy  # noqa: F401  (only present inside Blender)
     IN_BLENDER = True
@@ -52,6 +60,10 @@ def main():
         print("MBLAB-BLENDER-JOB: not inside Blender — prepared only.")
         print("MBLAB-BLENDER-JOB: run: blender --background --python "
               "tools/gpu-lane/mblab-blender-job.py -- --preset <preset.json> --out <model.glb>")
+        print("MBLAB-BLENDER-JOB: on run, the report MUST carry gpu_measure proofs "
+              "(nvidia-smi + torch.cuda, captured fresh), input size, output, "
+              "wall time, and CPU-baseline time (same batch, Blender CPU device) "
+              "where available; speedup is computed, never claimed.")
         return 0
     # ---- Inside Blender: the lane that runs this fills in the
     # generator-specific calls (MB-Lab API / MPFB API) from the
