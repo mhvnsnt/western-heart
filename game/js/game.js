@@ -340,7 +340,10 @@ export class Game {
     // Tekken hitstop freezes EVERYTHING (hitfx 2026-10-22): the effect stack
     // gets dt=0 while the sim is frozen, so the spark holds then bursts.
     this.hitfx.update(this._hitStop > 0 ? 0 : frameDt);
-    this.arena.update(frameDt, this.p1, this.p2);
+    this.arena.update(frameDt, this.p1, this.p2,
+      // fight camera follows the fighting level: floor/balcony breaks
+      // drop stageBreaks.groundY below 0 (owner 2026-10-25).
+      this.stageBreaks ? this.stageBreaks.groundY : 0);
     // X-ray: camera + anatomy-layer overlay, AFTER the fight camera so the
     // zoom wins for this frame. Rendering only — no animation clips.
     if (this.xray) this.xray.update(realDt);

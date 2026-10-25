@@ -11,6 +11,7 @@ import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { getStage, buildStage, disposeStage } from './stages.js';
+import { fightCameraY } from './fight-camera-math.js';
 // Per-stage color grade (worker 27 lighting rig): tone-mapping exposure +
 // bloom strength from the stage's lighting.grade block. Serves the bible's
 // "luminous darkness" — each land gets its own grade.
@@ -95,7 +96,7 @@ export class Arena {
      the camera, the authored fight camera must not overwrite it. */
   setFreeCamera(active) { this.freeCameraActive = !!active; }
 
-  update(dt, fighterA, fighterB) {
+  update(dt, fighterA, fighterB, groundY = 0) {
     const t = performance.now() * 0.001;
     if (this._stage) this._stage.update(dt, t, fighterA, fighterB);
     // Free-camera takeover (game/js/free-camera.js): the authored fight
@@ -153,8 +154,12 @@ export class Arena {
       baseZ = Math.max(portrait ? 6.0 : 10.5, fitDist) * camScale;
       baseX = this._camRig.centerX;
       const maxY = Math.max(fighterA.root.position.y, fighterB.root.position.y);
-      baseY = 1.75 + maxY * 0.45;
-      lookY = 1.0 + maxY * 0.25;
+      // Level-following vertical framing (owner 2026-10-25: camera stayed
+      // up top after floor/balcony breaks): anchor to the current ground
+      // and track only height above it — see fight-camera-math.js.
+      const _cy = fightCameraY(groundY, maxY);
+      baseY = _cy.baseY;
+      lookY = _cy.lookY;
     }
     if (camAng) {  // orbit the camera around the target (cluttered stages)
       const rx = baseX * Math.cos(camAng) + baseZ * Math.sin(camAng);
