@@ -18,7 +18,7 @@
 
 **Verification (simulation/scan only — NOT play-verified):** same audit code both sides: 2019 → 1554 pressable HARD (−465): pantera 308→236, burger 281→151, diablo 210→156, phantom 623→553, skull 261→122; demonio/kinpo/scimitar unchanged (no verified rewire exists for their basics). All 22 bound jumping moves verify CLEAN. Remaining regressions: exactly 10, all pantera LOW RP2 moves (MED→HARD level grade when the donor moved from mid row 203 to high row 99; no verified low RP2 row exists in the king bank — row 130's only user is a kick move). Motion-verified HARD string-enders on chord rows: 35 post-fix (literal branch-mask scan: 66; legacy `strings` arrays: 6 per-hit violations, arrays not consumed at runtime, documented not edited). 9 UNMAPPED basics still play broken clips (demonio/kinpo/scimitar/diablo LP1, phantom LP1/RP2/RK4, burger/skull LK3) and 1554/4696 pressable moves remain HARD — documented, NOT bulk-rewired, because no verified replacement exists per move. Live-browser phone play verification remains open (subagent cannot drive the live browser) — handed back to the parent agent.
 
-**Remaining (explicitly NOT done):** play verification on a phone; string sequence clips (engine lane: a string plays ONE clip, so no single row can ever be a correct multi-hit string); T7/T8 motion replacements for all T3 fallback rows (blocked: T7 0 of 51 decoded, T6 encrypted, TTT2 not extracted); slots overrides (demonio/diablo `4`→`4~3`, phantom `3`→`3~4`/`4`→`4~3`) — reported, not changed; the 10 pantera low RP2 moves pending a low RP2 clip.
+**Remaining (explicitly NOT done):** play verification on a phone; string sequence clips (engine lane: a string plays ONE clip, so no single row can ever be a correct multi-hit string); T7/T8 motion replacements for all T3 fallback rows (not available from VM+browser sources checked: T7 motion 0 of 51 decoded in-repo, T6 containers encrypted, TTT2 not extracted in-repo; next self-service step: check community T7 motion sources via browser); slots overrides (demonio/diablo `4`→`4~3`, phantom `3`→`3~4`/`4`→`4~3`) — reported, not changed; the 10 pantera low RP2 moves are UNMAPPED: no low RP2 clip available from VM+browser sources checked (king bank searched; only row 130 exists and the file attaches it to the `d/f+4` kick move).
 
 ---
 
@@ -88,6 +88,43 @@
 **Verification:** `node --test game/tests/fighter-completeness.test.mjs` 4/4 pass; full suite 95/99 (4 pre-existing failures in model-key-guard/stagerage/v-system, verified failing on pristine tree); all JSONs parse; semantic additions-only (0 field losses, 0 removals, 0 file deletions).
 
 **Anti-clobber:** rebuilt on current main tip (cf88ed5fe) after main moved mid-task — main added 4 donor.baek signature moves to baek-master-white (kept) and reformatted dorowani.json (re-applied anim_set_lock surgically onto new base); no main-side changes dropped. Branch `moveset/batch9-pull` via worktree (shared clone was in use by another lane); push via Git Database API.
+## 2026-10-24 ~00:55 UTC — TTT2 extraction worker TAKE 2 (Law/Lars lane)
+
+**Task:** Resume after take-1 worker died mid-download. Verify inherited state, resume the pull, Law + Lars FIRST (their modern movesets/animations unblock the Buffalo Bill / Chordz pull lane). T3 fallback-only — this entire take touches TTT2 only.
+
+**Inherited-state audit (all at ~/workspace/ttt2-extract/):**
+- `parts/`: part_01 was an 8MB stale partial (NOT the claimed 524,288,000 complete); part_02 never existed. No reassemble.state, no combined 7z. `ttt2-loose-files.tar` complete at 165,601,280 bytes ✓ (kept).
+- **Toolkit PR #833 was ALREADY MERGED** (commit d6f88f8, merge af4039c) — take-1 opened and merged it before dying. Only unmerged delta: `tools/surgical/decode_local.py`.
+- Local branch reset to origin/main (95dd2b6); worktree clean.
+- Disk: 11GB free — the full 13.36GB 7z can NEVER fit. Surgical prefix approach instead (same payloads, no local archive).
+
+**Download resume:**
+- Found dead session's seg_dl alive (PID 4197, range [32, 5200000032)); my restart collided on seg files — both killed, segs wiped (interleaved writes unrecoverable), ONE clean `seg_dl.py 0 5200000000 6 work/prefix` relaunched via supervisor (`work/supervise-seg-dl.sh`, runtime-backgrounded). 5.2GB covers through Data0001 (uncompressed end 5,046,128,640).
+- A detached setsid seg_dl died mysteriously mid-run; the runtime-backgrounded supervisor survived to completion. A later xz decode was killed by a service restart — re-ran successfully.
+- Rate ~2.3MB/s; 5.2GB in ~37 min.
+
+**Decode (the long pole):**
+- Python `decode_local.py` too slow under VM load (15% CPU, ~1MB/s). Switched to `xz -dc --format=raw --lzma1=lc=3,lp=0,pb=2,dict=8MiB` — byte-identical output (verified on 1MB head), 5-10x faster.
+- Decoded Data0000, Data0001 (340MB) from 5.2GB prefix. CRC32-verified vs INVENTORY.md.
+- Extended prefix to 5.9GB ([5.2, 5.9) via seg_dl), decoded Data0002, Data0003, Data0004. All CRC32 match INVENTORY.md.
+- Total: 5 STFS Data members (850MB), all verified.
+
+**XDVDFS listing (via new `tools/surgical/god_carve.py`):**
+- Title ID 4E4D0859 confirmed, GoD probe OK (base=0x2000, lead=0).
+- 78 files: $SystemUpdate/ (32 files), AvatarAssetPack, Default.xex, data000.bin–data053.bin (43 archives, gaps in numbering), nrfo.bin, nxeart.
+- Full listing + sector→Data map in `teardown/tekken-tag-tournament-2/XDVDFS-LISTING.md`.
+
+**Format findings:**
+- data043.bin (302MB), data046.bin (222MB), data034.bin (199MB): MP4 movies (`ftypnrfi` brand) — not character data.
+- data000.bin (4MB), data006.bin (20MB): proprietary Namco `0ff512ed` archive format (magic `0ff512ed`, v1). Content is compressed/encrypted (not zlib/lzma); format not publicly documented.
+- Character data (Law, Lars, etc.) is inside the dataNNN.bin archives. Specific file identification requires reverse-engineering the `0ff512ed` format or decoding more Data members.
+
+**New tools (in this PR):**
+- `tools/surgical/decode_local.py` — decode 7z members from locally-staged prefix (no network).
+- `tools/surgical/god_carve.py` — carve files from GoD using local Data members; `--list` → XDVDFS listing, `--pull` → files + MANIFEST.txt.
+- `XDVDFS-LISTING.md` — full file listing with format analysis.
+
+**Status:** Infrastructure complete, 850MB extracted and verified, format families identified. Law/Lars specific files NOT yet isolated — blocked on `0ff512ed` reverse-engineering (pull lane can continue from the extracted bins + tools). No Tekken 3 touched. No game binaries in repo (tools + docs only).
 
 ---
 ## 2026-10-23 ~18:15 CDT — batch3 T8 moveset pull: pond/tobi/megami/sakura/phantom (SHOW-ANIMATION LOCK)
@@ -2691,6 +2728,26 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 
 **ALL CHARACTERS ARE ADULTS:** n/a — rigging pipeline, no characters.
 
+---
+
+## 2026-10-23 — Moveset batch8 pull: bruno / docfrank / chatur / samura1 / star (PR pattern #823/#806)
+
+**Task:** replicate the Law/Lars pull pattern for 5 fighters (TTT2/T6/T5/T3 sources, no T8 data for these).
+
+**Method:** `tools/moveset-merge/merge_sources.py` (the proven pipeline — guard enforces additions-only, every new move carries `merge_source`). Dry-ran all 5, wrote only where genuinely-missing moves existed.
+
+**Per-fighter results:**
+- **bruno** ← Miguel (T7): pull already complete — 219/219 T7 rows merged (`docs/t7t8-reference/frame-data-t7/miguel.json`; 206 curated with Miguel's real move names + 13 `t7:miguel_*`). +0 moves. Motion gap filed: `docs/anim/BRUNO-ANIM-GAP-20261023.md` (no Miguel bank; bryan T3 proxy flagged; unblock = T7 pull on owner's Steam purchase).
+- **docfrank** ← Bosconovitch: T3 rows 100% covered (all 251 source rows present). +0 moves. TTT2 Bosconovitch movelist has no data on disk (extraction blocked) — noted, not faked.
+- **chatur** ← True Ogre (T3): **+129 moves** (152 → 281), all `merge_source: t3:ogre:row:N`, all tagged `"set": "FIGHT"`. `anim_bank: ogre` now set by annotate(). T3 use logged per INSTRUCTION GATE in `docs/anim/PROCEDURAL_AUDIT.md` (True Ogre is T3-only — cut from T5/6/7/8/TTT2; no newer source exists).
+- **samura1** ← Gun Jack: T8 Jack-8 + T7 Jack-7 + T3 Gun Jack pulls all complete. +0 moves.
+- **star** ← Christie: Christie T5/TTT2 movelist unavailable (no data on disk; TTT2 extraction blocked). +0 moves. Motion gap filed: `docs/anim/STAR-ANIM-GAP-20261023.md`. **Owner decision flagged:** bases.json 2026-10-20 override says "Xiaoyu's moveset goes to Star" but canon base is Christie — both can't be permanent; left untouched for the owner.
+
+**SHOW-ANIMATION LOCK:** `anim_set_lock` metadata added to all 5 files (law/FIGHT/SHOW/note + batch8 pull note). Per-move `"set": "FIGHT"` stamped on the 129 chatur additions. Banks already wired: `T3_BANKS` + `SOURCE_TO_BANK` + `FIGHTER_BANK` cover bosconovitch/gunjack/ogre (docfrank/chatur/samura1); win clips (`t3_win_*.json`) present in all three banks = SHOW set.
+
+**Tool fixes (needed for the pull, shipped in this PR):** `tools/moveset-merge/merge_sources.py` — `identity()` crashed with `TypeError: unhashable type: 'list'` on older files whose `t3_row` is a list (chatur's 21 multi-row string moves); added `_hashable()` coercion (upstream fixed the sibling `bank_attack_word` spot in parallel). `tools/moveset-merge/bases.json` — added `bruno: {t7: [miguel]}` and `chatur: {t3: [ogre]}` overrides.
+
+**Verification:** guard PASS on every run (no move/string/special/input lost); semantic diff audit — 0 field losses, 0 removals, additions only; `node --test game/tests/fighter-completeness.test.mjs` green; gitleaks clean.
 
 ## 2026-10-23 ~19:45 CDT — Cloth physics: XPBD engine wired (feature/cloth-xpbd-20261023)
 
@@ -2891,3 +2948,25 @@ Owner: "u join them make sure everything getting pushed and merged clean no clob
 **Deviations:** none.
 
 **ALL CHARACTERS ARE ADULTS:** n/a — AI logic only, no character content.
+## 2026-10-22 — VF5 full integration, worker 57 (re-dispatch)
+
+Re-dispatch after previous worker killed by runtime daemon failure mid-batch
+(van's render). Verified on resume: PR #692 + #696 merged to main; 17/18
+renders complete + uploaded.
+
+- Completed van + wol T-pose renders (Blender 4.5.3, same pipeline).
+- **Wolf's head fix:** wolitm000 (whole batch's source) has NO face — only
+  an eye band. Face (kao) mesh is in wolitm001_obj.bin under a SECOND
+  vertex-header layout (headers @~0x94, no chunk table; same model space).
+  Merged 921 face verts / 1311 tris into wol.obj (dropped 7 stray non-face
+  verts that stretched artifact triangles). Repro: tools/vf5/merge_wol_head.py.
+- All 18 VF5 fighters now have complete T-pose renders; van + wol uploaded
+  to remote storage, URLs relayed to parent for user delivery.
+- Verified claimed-map.json (w47 lane, read-only): vf5_mappings_locked +
+  Dural->Zen already recorded, no Tekken conflicts. No edit needed.
+- Gaps unchanged: motion data (see docs/research/VF5-MOTION-GAP-2026-10-22.md),
+  38 stg*.farc -> arena pipeline, TXP textures unextracted.
+- MERGE FREEZE: pushed to w57/vf5-redispatch-20261022, PR opened, NOT merged.
+
+Files: docs/decisions/2026-10-22-vf5-w57-redispatch.md (new),
+tools/vf5/merge_wol_head.py (new). Additions only.
