@@ -190,6 +190,60 @@ class MusicEngine {
     return this._nextRotation(key, pool);
   }
 
+  /* ---- Jukebox UI choices (PR #1056 contract, engine side) ----
+     The UI lane (game/js/ui-gaps.js, PR #1056) stores one soundtrack
+     choice per UI mode in localStorage key wh_jukebox_v1:
+       { menu: <track title or id>, arcade: ..., treasure: ..., versus: ... }
+     or null = engine default rotation. This engine reads that SAME key
+     directly — no import of ui-gaps.js, so this file works whether
+     #1056 has landed or not, and there is no import cycle (ui-gaps.js
+     itself imports music.js). The stored value is a track title, with
+     id as fallback (see ui-gaps.js setJukeboxSoundtrack), so resolution
+     tries exact id first, then exact title. If an id matches at all,
+     the title fallback is NOT tried: a stored choice naming a
+     pending-download track must fall back to rotation, never play a
+     different track that happens to share the title. A choice that
+     does not resolve, or that resolves to a pending-download track,
+     returns null and the caller falls back to rotation — a missing
+     file can never silence or break a fight, and a stale choice
+     (track removed from the library) degrades to rotation, not
+     to silence. UI-mode mapping: playMenu title/select/online use
+     the 'menu' choice, playMenu versus uses the 'versus' choice,
+     credits/results have no owning UI mode and stay on rotation;
+     playBattle uses opts.uiMode when the caller knows it
+     ('arcade' | 'versus' | 'treasure'), else the arcade choice if
+     set, else the versus choice (bare startFight calls carry no
+     mode; arcade is the default fight path). 'treasure' has no music
+     call site yet, so a stored treasure choice is read but currently
+     unplayed — recorded, not faked. The victory jingle is untouched. */
+  _readJukeboxChoice(uiMode) {
+    try {
+      const raw = localStorage.getItem('wh_jukebox_v1');
+      if (!raw) return null;
+      const s = JSON.parse(raw);
+      const v = s && s[uiMode];
+      return (typeof v === 'string' && v) ? v : null;
+    } catch (e) { return null; }
+  }
+
+  _resolveJukeboxChoice(choice) {
+    const lib = this.library;
+    if (!lib || !Array.isArray(lib.tracks) || !choice) return null;
+    const byId = lib.tracks.find(t => t.id === choice);
+    if (byId) return this._available(byId) ? byId : null;
+    const byTitle = lib.tracks.find(t => t.title === choice);
+    return (byTitle && this._available(byTitle)) ? byTitle : null;
+  }
+
+  _jukeboxBattleTrack(uiMode) {
+    const modes = uiMode ? [uiMode] : ['arcade', 'versus'];
+    for (const mm of modes) {
+      const t = this._resolveJukeboxChoice(this._readJukeboxChoice(mm));
+      if (t) return t;
+    }
+    return null;
+  }
+
   /* ---- buffers (local file first, remote URL fallback) ---- */
 
   async _bufferFor(track) {
@@ -301,11 +355,12 @@ class MusicEngine {
   /* Battle: rotating stage pool (Tekken jukebox rule), intensity reset.
      The pool advances per fight and persists across sessions, so the same
      stage does not repeat the same track every fight. */
-  async playBattle(stageId) {
+  async playBattle(stageId, opts = {}) {
     await this.loadLibrary();
     this._seq = null;
     if (stageId) this._lastStage = stageId;
-    const track = this.pickRotationTrack({ stage: stageId, mode: 'battle' });
+    const chosen = this._jukeboxBattleTrack(opts.uiMode);
+    const track = chosen || this.pickRotationTrack({ stage: stageId, mode: 'battle' });
     this.setIntensity(0.55);
     if (track) await this._playTrack(track);
     else this._fallback();
@@ -317,7 +372,10 @@ class MusicEngine {
     await this.loadLibrary();
     this._seq = null;
     const mode = which === 'title' ? 'title' : which;
-    const track = this.pickRotationTrack({ mode });
+    const uiMode = (which === 'versus') ? 'versus'
+      : (['title', 'select', 'online'].includes(which) ? 'menu' : null);
+    const chosen = uiMode ? this._resolveJukeboxChoice(this._readJukeboxChoice(uiMode)) : null;
+    const track = chosen || this.pickRotationTrack({ mode });
     this.setIntensity(0.35);
     if (track) await this._playTrack(track);
     else this._fallback();

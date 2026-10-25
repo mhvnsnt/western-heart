@@ -185,6 +185,73 @@ ok(manifest.groups['tekken-data-only-5'].tracks.length === 5 &&
 ok(manifest.signInRule.includes('mhvnsnt') && manifest.signInRule.includes('fmmg.mars@gmail.com'),
   'manifest carries the standing GitHub/Google sign-in rule');
 
+// ---- 7. Jukebox UI choices (PR #1056 contract, engine side) ----
+console.log('== jukebox ui choices ==');
+const playedJuke = [];
+music._playTrack = async (t) => { playedJuke.push(t.id); };
+music._rotation = {};
+music._rotationLoaded = true;
+music.library = {
+  rotation: { mode: 'sequential' },
+  tracks: [
+    { id: 'menu-song', title: 'Menu Song', file: 'menu.mp3', remote: null, modes: ['title', 'select'], stages: [] },
+    { id: 'battle-song', title: 'Battle Song', file: 'battle.mp3', remote: null, modes: ['battle'], stages: ['shrine'] },
+    { id: 'versus-song', title: 'Versus Song', file: 'versus.mp3', remote: null, modes: ['battle'], stages: [] },
+    { id: 't7-select', title: 'Blood, Sweat, and Fists', file: null, remote: null, modes: ['select'], stages: [], status: 'pending-download' },
+    { id: 'ending-song', title: 'Ending Song', file: 'end.mp3', remote: null, modes: ['results'], stages: [] },
+  ],
+};
+const setJukeboxStore = (obj) => { globalThis.localStorage.setItem('wh_jukebox_v1', JSON.stringify(obj)); };
+const clearJukeboxStore = () => { globalThis.localStorage.setItem('wh_jukebox_v1', JSON.stringify({})); };
+clearJukeboxStore();
+playedJuke.length = 0;
+await music.playMenu('title');
+ok(playedJuke[0] === 'menu-song', 'no stored choice: menu plays rotation (no behavior change)');
+setJukeboxStore({ menu: 'Menu Song' });
+playedJuke.length = 0;
+await music.playMenu('title');
+ok(playedJuke[0] === 'menu-song', 'menu choice resolves by TITLE (UI stores title-or-id)');
+setJukeboxStore({ menu: 'menu-song' });
+playedJuke.length = 0;
+await music.playMenu('select');
+ok(playedJuke[0] === 'menu-song', 'menu choice resolves by ID on select screen too');
+setJukeboxStore({ menu: 'Blood, Sweat, and Fists' });
+playedJuke.length = 0;
+await music.playMenu('select');
+ok(playedJuke[0] === 'menu-song', 'pending-download choice NEVER plays: falls back to rotation, not silence');
+setJukeboxStore({ menu: 'No Such Track' });
+playedJuke.length = 0;
+await music.playMenu('title');
+ok(playedJuke[0] === 'menu-song', 'unknown choice degrades to rotation, not silence');
+setJukeboxStore({ menu: 'Menu Song' });
+playedJuke.length = 0;
+await music.playMenu('results');
+ok(playedJuke[0] === 'ending-song', 'results has no owning UI mode: stays on rotation, menu choice does not hijack it');
+setJukeboxStore({ arcade: 'Battle Song' });
+playedJuke.length = 0;
+await music.playBattle('shrine', { uiMode: 'arcade' });
+ok(playedJuke[0] === 'battle-song', 'battle with explicit arcade uiMode plays the arcade choice');
+setJukeboxStore({ versus: 'Versus Song' });
+playedJuke.length = 0;
+await music.playBattle('shrine', { uiMode: 'versus' });
+ok(playedJuke[0] === 'versus-song', 'battle with explicit versus uiMode plays the versus choice');
+setJukeboxStore({ arcade: 'Battle Song', versus: 'Versus Song' });
+playedJuke.length = 0;
+await music.playBattle('shrine');
+ok(playedJuke[0] === 'battle-song', 'battle with no uiMode prefers arcade choice (documented default)');
+setJukeboxStore({ versus: 'Versus Song' });
+playedJuke.length = 0;
+await music.playBattle('shrine');
+ok(playedJuke[0] === 'versus-song', 'battle with no uiMode falls back to versus choice when no arcade choice exists');
+setJukeboxStore({ versus: 'Versus Song' });
+playedJuke.length = 0;
+await music.playMenu('versus');
+ok(playedJuke[0] === 'versus-song', 'versus SCREEN menu uses the versus choice');
+clearJukeboxStore();
+playedJuke.length = 0;
+await music.playBattle('shrine', { uiMode: 'treasure' });
+ok(playedJuke[0] === 'battle-song', 'treasure uiMode with no stored treasure choice falls back to rotation (not faked)');
+
 if (failures.length) {
   console.error(`\nFAILURES (${failures.length}):`);
   for (const f of failures) console.error('  - ' + f);

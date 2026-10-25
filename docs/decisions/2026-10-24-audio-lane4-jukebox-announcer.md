@@ -190,3 +190,30 @@ advances; it just does not play score audio yet.
    fmmg.mars@gmail.com tap-to-sign-in for Kaggle).
 3. Live audio playtest on the user's phone after merge + deploy
    (coordinator/deployer lane, not this lane).
+
+## Update: Jukebox engine wiring (PR #1056 contract, commit 2 on PR #1058)
+
+- PR #1056 (UI lane, open) stores one soundtrack choice per UI mode
+  in localStorage key `wh_jukebox_v1` (`menu` / `arcade` / `treasure`
+  / `versus`), value = track title with id as fallback, or null =
+  engine default rotation. `game/js/music.js` now reads that SAME
+  key directly (no import of `game/js/ui-gaps.js`, so the engine
+  works whether #1056 has landed or not, with no import cycle).
+- Resolution: exact id first, then exact title; an id match that is
+  pending-download returns null (never plays a different track
+  sharing the title). Unresolvable or pending choices fall back to
+  existing rotation — never silence, never a break.
+- Mapping: `playMenu` title/select/online use the `menu` choice,
+  `playMenu` versus uses the `versus` choice, credits/results have
+  no owning UI mode and stay on rotation; `playBattle` uses
+  `opts.uiMode` when the caller knows it, else arcade choice if
+  set, else versus choice. `game/js/main.js` passes the real mode
+  through at the fight-start call site (`opts.mode` versus /
+  arcade / treasure, else undefined). Treasure has no music call
+  site yet, so a stored treasure choice is read but unplayed
+  (recorded, not faked). The victory jingle is untouched.
+- Tests: 12 new checks in
+  `test/jukebox-eras-announcer.test.mjs` (title/id resolution,
+  pending fallback, unknown fallback, results isolation, explicit
+  arcade/versus, no-mode default order, versus screen, treasure
+  fallback) — all passing locally alongside the rotation test.
