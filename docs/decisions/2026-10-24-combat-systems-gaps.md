@@ -156,3 +156,12 @@ against it as the authoritative source.
   benefited from it. Recorded in the PR body as part of the specified
   method ("for any batch verification/processing that benefits"), not
   as a deviation.
+- ui-sources fix (after the merge commit): the gate failed because
+  main's manifest rewrite cites a teardown path that does not exist
+  in this repo at all (`teardown/tekken7-steam/pakchunk0/.../
+  Base_OnlineMenu.png`; the whole `teardown/tekken7-steam/` tree is
+  absent at HEAD). screen-menu is touched by this PR because it owns
+  the changed bridge file, so the gate validates its sources. Fix:
+  remove just that one missing source line from screen-menu; it
+  keeps a valid teardown source plus its gre: sources, still
+  sourced. No menu, code, or other manifest entry changed for this.
