@@ -68,7 +68,10 @@ const input = {
 };
 const ui = {
   setNames(){}, setRounds(){}, setStageName(){}, updateHP(){}, updateMeter(){},
-  setTimer(){}, combo(){}, surgeFlash(){}, surgeName(){},
+  setTimer(){}, combo(){}, surgeFlash(){},
+  // NOTE: no surgeName here on purpose — the real main.js ui has none
+  // (removed in #1078; brawler.js dead calls fixed in the surgeName
+  // follow-up). If brawler.js ever calls it again, the sim throws.
   throwBreakPrompt(){}, throwEscape(){}, matchOver(){},
   hudNote(m){ hudNotes.push(m); },
 };
