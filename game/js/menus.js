@@ -22,6 +22,9 @@ const SETTINGS_KEY = 'wh_settings_v1';
 export const DEFAULT_SETTINGS = {
   master: 0.9, music: 0.28, sfx: 0.85,
   muted: false, quality: 'high', hints: true,
+  // Lane 3 UI gaps (Gap 14 / Gap 21): T7 5.10 tournament lock +
+  // streaming mode toggles, in-fight frame overlay toggle.
+  frameOverlay: false, tournamentLock: false, streamingMode: false,
 };
 export function getSettings() {
   try {
@@ -121,6 +124,44 @@ export function showVs(pChar, eChar, stageName, modeLabel) {
     o.querySelector('.wh-vs-inner').after(st);
   }
   st.textContent = stageName || '';
+  // Lane 3 UI gaps (Gap 15): rank / W-L / connection meta under the
+  // VS cards. Rank resolves async via lazy.ranks (same store mainmenu
+  // reads); W-L is the versusWL record modes.js writes on every
+  // versus bout. Local bouts show LOCAL BOUT — no bars invented.
+  let meta = o.querySelector('.wh-vs-meta');
+  if (!meta) { meta = document.createElement('div'); meta.className = 'wh-vs-meta'; o.appendChild(meta); }
+  meta.textContent = '';
+  (async () => {
+    try {
+      const { vsMetaLines, readVersusWL } = await import('./ui-gaps.js');
+      const rec = JSON.parse(localStorage.getItem('wh_records') || '{}');
+      let rankName = null;
+      try {
+        const r = await lazy.ranks(); await r.initRanks();
+        const store = JSON.parse(localStorage.getItem('wh_ranks') || '{}');
+        let best = -1;
+        for (const track of ['offline', 'online']) {
+          const tt = store[track] || {};
+          for (const id of Object.keys(tt)) { const fr = tt[id]; if (fr && fr.tierId) best = Math.max(best, r.tierIndexById(fr.tierId)); }
+        }
+        if (best >= 0) rankName = r.displayName(r.tierAt(best));
+      } catch { /* rank stays blank */ }
+      const wl = readVersusWL(rec);
+      meta.textContent = vsMetaLines({ rankName, wins: wl ? wl.w : null, losses: wl ? wl.l : null, connection: null }).join(' · ');
+      // Lane 3 UI gaps (Gap 15, versus-banter UI side): banter data
+      // existed (versus-banter.js) but no screen rendered it. The VS
+      // screen now shows the picked exchange under the cards.
+      try {
+        const vb = await import('./versus-banter.js');
+        const pick = await vb.pickVersusBanter(pChar && pChar.id, eChar && eChar.id);
+        if (pick && pick.kind === 'banter' && pick.variant && pick.variant.beats) {
+          let ban = o.querySelector('.wh-vs-banter');
+          if (!ban) { ban = document.createElement('div'); ban.className = 'wh-vs-banter'; o.appendChild(ban); }
+          ban.textContent = pick.variant.beats.map((b) => `${String(b.speaker || '').toUpperCase()}: ${b.line}`).join('  ·  ');
+        }
+      } catch { /* banter stays blank, VS screen still works */ }
+    } catch { /* meta stays blank, VS screen still works */ }
+  })();
   o.classList.remove('hide');
   o.classList.add('show');
 }
@@ -219,6 +260,10 @@ export function openOptions() {
     [['low', 'LOW'], ['med', 'MED'], ['high', 'HIGH']]), back);
   sheet.insertBefore(toggleRow('MUTE ALL', 'muted'), back);
   sheet.insertBefore(toggleRow('CONTROL HINTS', 'hints'), back);
+  // Lane 3 UI gaps (Gap 14 / Gap 21).
+  sheet.insertBefore(toggleRow('FRAME DATA OVERLAY (IN FIGHT)', 'frameOverlay'), back);
+  sheet.insertBefore(toggleRow('TOURNAMENT LOCK (NO FAVORITES / ATTIRE)', 'tournamentLock'), back);
+  sheet.insertBefore(toggleRow('STREAMING MODE (FIGHTER NAME, NO PLAYER ID)', 'streamingMode'), back);
   o.classList.add('show');
   audio.uiClick && audio.uiClick();
 }
@@ -554,6 +599,9 @@ export function initMenus(deps = {}) {
     const h = document.getElementById('control-hints');
     if (h) h.classList.add('fade');
   }
+  // Lane 3 UI gaps: favorites bar, frame overlay, gallery/jukebox/
+  // replay screens (dynamic import — never blocks menu boot).
+  import('./ui-gaps.js').then((m) => m.initUiGaps()).catch(() => {});
 }
 
 /* Track char-card taps (capture phase) so standalone modes know the pick.
