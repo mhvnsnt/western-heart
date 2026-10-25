@@ -179,7 +179,7 @@ damages differ (e.g. pantera `3` damage 33) — damage is the MOD lane, untouche
 | scimitar | 184, chord btn 9 (LP1+RK4), armR, level s, travel 1.63 m — **UNMAPPED** (single-on-chord-row + limb-mismatch + jab-travels HARD) | 220 — **KEPT** | 195 — **KEPT** (T7 Shaheen 3 = high; shape high ✓, word m ✗) | 199 — **KEPT, soft level mismatch** (T7 Shaheen Hallux Kick = high) |
 
 **UNMAPPED basics (no verified replacement row in-bank; row unchanged, reason
-documented — removing the row would fall to donor/match, possibly worse):**
+documented — not available from VM+browser sources checked; removing the row would fall to donor/match, possibly worse):**
 demonio LP1, kinpo LP1, scimitar LP1, diablo LP1 (no clean jin/heihachi LP1
 row: slot-318 back-step right-arm punch (armR 0.83 / armL 0.10 — wrong arm),
 `2,1` ender uppercut (row 221/158, travel 0.67, active 14), long string
@@ -337,7 +337,7 @@ from mid row 203 to high row 99, so the level grade vs LOW went MED→HARD):
 `t7.king_235`, `t7.king_236`, `t7.king_237`, `t7.king_238`, `t7.king_239`.
 No verified low RP2 row exists in the king bank (only row 130, travel 0.84,
 whose only user is the `d/f+4` kick move — not a verified low punch).
-These 10 are UNMAPPED pending a low RP2 clip. No other regressions: every
+These 10 are UNMAPPED: no low RP2 clip available from VM+browser sources checked (king bank searched; only row 130 exists and the file attaches it to the `d/f+4` kick move, so the file does not specify a low RP2 punch clip). No other regressions: every
 other ok→HARD flip from the basics fix was restored via the 22 bindings
 above (verified: remaining regression count is exactly these 10).
 
