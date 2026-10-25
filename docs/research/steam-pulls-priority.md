@@ -19,7 +19,7 @@ Frame data / MOD damage: UNMAPPED unless a source file in the pack contains it â
 as measured. License firewall OFF per user override: pull everything regardless of license,
 document copyleft, never block â€” but that override does not create game files that do not exist here.
 
-Partition: this PR touches NEW files under `game/assets/pulls/<game>/` + `docs/research/` only.
+Partition: this PR touches NEW files under `docs/research/pulls/<game>/` + `docs/research/` only.
 Existing moveset banks and lane-owned files are NOT edited; where a bank already exists, the pack
 is a wire note for the owning lane.
 
