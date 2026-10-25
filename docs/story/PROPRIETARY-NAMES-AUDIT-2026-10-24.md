@@ -49,7 +49,7 @@ nothing is renamed.
 | Wall Break | KEEP | Stays as-is in code/docs/UI. No longer a needs-name item. Owner: "they can still be called the same stuff". |
 | Floor Break | KEEP | Same as Wall Break. |
 | Balcony Break | KEEP | Same as Wall Break. |
-| Rage Art | RENAME-PENDING | Owner decided it changes; the new name is NOT yet picked. Not NEEDS NAME anymore — the rename decision is made, the replacement is not. |
+| Rage Art | LOCKED 2026-10-24 21:51 CDT | Renamed to Ikari Jishin (怒り自身, "Rage Itself" in Japanese) — the super / Rage Art equivalent, the cinematic comeback unleashed FROM the Rinne state. See the 2026-10-24 21:51 CDT section below. Supersedes the RENAME-PENDING label from 21:38 CDT. |
 | Rage Drive | RENAME-PENDING | Same as Rage Art. |
 | Power Crush | RENAME-PENDING | Same as Rage Art. The audit's implementation question (is armored-attack behaviour present generically?) is unchanged by this message. |
 | V-System | RENAME-PENDING | Umbrella decided to change; member names are NOT yet picked (see still-open list). |
@@ -142,11 +142,18 @@ big mid-fight banner. The popup law still applies.
   Ikari Jishin appearing both as a Japanese "Rage Itself"
   candidate and as a Rage-state option. It now names
   nothing yet.
+- STATUS UPDATE 2026-10-24 21:51 CDT: this banked status
+  is SUPERSEDED — Ikari Jishin is now LOCKED as the super
+  / Rage Art equivalent (see the 21:51 CDT section below).
+  It is no longer a banked name assigned to nothing, and
+  it is still NOT the Rage state (Rinne owns that).
 - Consequence for the 21:40–21:42 CDT options list below:
   Rinne / Rinne Tensei / Tensei are no longer options —
   they are the lock. Amatsu Rinne and Ikari Jishin are no
   longer Rage-state options either — Amatsu Rinne is the
-  reserved future form, Ikari Jishin is the banked name.
+  reserved future form, Ikari Jishin is the banked name
+  (as of 21:46 CDT; superseded 21:51 CDT — see the
+  STATUS UPDATE note above).
   The options list below is kept as history of what was
   proposed 21:40–21:42 CDT; it no longer describes a live
   pick.
@@ -202,6 +209,151 @@ renamed to Rinne in this PR:
 - This audit doc itself — the Rage (state) rows and the Options section above (updated in this PR only as status labels, not as code wiring).
 - NOT a state touchpoint: the synthesized `RAGE ART` / `RAGE DRIVE` move names in `game/js/rage.js` belong to the still-RENAME-PENDING Rage Art / Rage Drive items, not to the Rinne state lock. Wiring the Rinne state tag does NOT rename them.
 
+## Owner decisions — 2026-10-24 21:51 CDT (Ikari Jishin lock; docs only, NO wiring yet)
+
+Recorded exactly from the owner's 2026-10-24 21:49–21:51 CDT
+messages. This section changes STATUS labels only. It does
+not rename any code tag, HUD string, or doc string, does
+not implement any mechanic, and does not wire Ikari Jishin
+into the game. Wiring is a FOLLOW-UP step, not this PR.
+When wired, the super's cinematic beats / HUD indicators
+carry the name — NEVER a big mid-fight banner for the name
+itself (popup law still applies: the super's cinematic is
+not banner text).
+
+### Locked — the super
+
+- Ikari Jishin (怒り自身, "Rage Itself" in Japanese) is now
+  LOCKED as the super, i.e. the Rage Art equivalent: the
+  cinematic comeback move unleashed FROM the Rinne state.
+  Rage Art moves from RENAME-PENDING (2026-10-24 21:38 CDT)
+  to LOCKED (renamed to Ikari Jishin).
+- System structure, stated explicitly: Rinne (state, low HP)
+  → Ikari Jishin (super, used from Rinne). Rinne is the
+  state; Ikari Jishin is the move used from that state —
+  the same shape as Tekken, where Art/Drive require Rage.
+- History of this pick, kept straight: at 21:49 CDT the user
+  self-corrected mid-message — Ikari Jishin "can be the
+  rage state... hold on, no, it's something else" — and
+  CONFIRMED it is NOT the rage state, then asked "so what
+  are we going to make the Ikari Jishin?" The options
+  delivered at 21:49 CDT were: (1) RECOMMENDED — the super
+  / Rage Art equivalent (the cinematic comeback unleashed
+  FROM Rinne; "Rage Itself" = the ultimate expression of
+  rage); (2) the drive move / Rage Drive equivalent
+  (powered-up move from Rinne, weaker fit); (3) NOT a
+  transformation — Amatsu Rinne already owns the
+  leveled-up/transformed-form-of-Rinne slot, so Ikari
+  Jishin as a transformation would collide. At 21:51 CDT
+  the user PICKED option (1) by widget. This lock is a
+  USER PICK, not a lane recommendation recorded as an
+  assignment — the 21:49 recommendation is now the user's
+  assignment. Options (2) and (3) are rejected / ruled
+  out by this pick, not live alternatives.
+
+### Superseded banked status — history, not a current item
+
+- Ikari Jishin's 21:46 CDT BANKED status (reserved name
+  only, assigned to nothing) is SUPERSEDED by this
+  assignment. Record it as superseded history, NOT as a
+  current banked item. There is no longer a banked Ikari
+  Jishin waiting for an assignment — it has one.
+- What this does NOT change: Ikari Jishin is still NOT
+  the Rage state. Rinne (輪廻) / Rinne Tensei (輪廻転生)
+  owns the Rage state, locked 21:46 CDT.
+
+### No collision with Amatsu Rinne
+
+- Amatsu Rinne (天津輪廻) remains the RESERVED future
+  form of Rinne — extra-powerful / leveled-up /
+  transformed form, mechanic NOT designed, NOT wired.
+  It is NOT the super, and Ikari Jishin does NOT take a
+  transformation slot: the 21:49 CDT collision note stands
+  (Amatsu Rinne already owns that slot), and this pick
+  avoids it by assigning Ikari Jishin to the super instead.
+
+### Still rename-pending after this lock
+
+- Rage Drive, Power Crush, V-System — still
+  RENAME-PENDING (2026-10-24 21:38 CDT); new names still
+  NOT picked, options still owed to the user.
+- Shared break/guard-break name — still
+  SHARED-NAME-PENDING (one term, not picked).
+- Spin Juggle (descriptive name for Screw / Tailspin /
+  Tornado) — still PROPOSED, not locked. A 👍 reaction is
+  NOT confirmation; this lock does not confirm it.
+- All other still-open items from PR #1085 are preserved,
+  NOT dropped: Bound; Slow-mo finish; WWE entrance-tool
+  repurpose; V-System members V-Skill / V-Trigger /
+  V-Reversal / V-Shift (including V-Skill/parry); Urge
+  Smash tension (still open — this task does NOT resolve
+  it; owner to confirm); proposed Soul Kindle for Ki
+  Charge and Soul Relay for Tag; Nine-Soul Climax vs
+  Release variance; 魂 ACTION chord question (RP2+LK3,
+  i.e. Right Punch + Left Kick, Tekken 2+3, vs
+  2+3+context).
+- Screw / Tailspin / Tornado entries are left UNTOUCHED
+  by this update: their EXPLAINED-NOT-NAMED /
+  MECHANIC-NOT-ON-MAIN labels are the subject of a
+  separate drift-correction lane (main has since merged
+  Lane 1 combat PR #1060 wiring Screw/Tornado, so those
+  labels are stale), and that lane's correction — if it
+  lands on this branch — is preserved verbatim, not
+  duplicated here. If it has not landed, the correction
+  is still owed and is flagged, not taken over, here.
+- NOTHING here blocks the #1076 popup deploy — #1076 has
+  merged to main, this docs PR sequences AFTER it, and
+  naming changes nothing about banners (already gone).
+
+### Code touchpoints LISTED for future Ikari wiring — NOT changed in this PR
+
+The following sites were found by searching current main
+(head dc3039918b22d3e685bfe20ba0356714fbe4034f, at the
+time of this commit); they are listed here so the wiring
+lane can confirm them. NO file below was edited in this
+PR, and no string below was renamed to Ikari Jishin in
+this PR. The synthesized `RAGE ART` names that the 21:46
+CDT section noted as belonging to the then-RENAME-PENDING
+Rage Art item are NOW the Ikari touchpoints:
+
+- `game/js/rage.js` (verified on current main) — header
+  L7: "RAGE ART: cinematic armored super. Input 1+2 while
+  raging" (LP1+RP2, i.e. Left Punch + Right Punch, Tekken
+  1+2); L59 `ensureRageMoves` synthesizes + registers
+  R.1+2 (rage art) and RD.3+4 (rage drive) per fighter
+  from their own real T3 strike data; L79 the synthesized
+  move name `${...} — RAGE ART` with `rageArt: true` (L85)
+  and `RAGE_ART_DAMAGE = 32` (L28, notation `R.1+2` L30);
+  L183–190 `rageArtHit` — the cinematic beat (hitstop +
+  flash + brief slow-mo) calling `ui.rageArtFlash()`.
+  When wired, these `RAGE ART` strings / the `rageArt`
+  flag / the `rageArtHit` beat become Ikari Jishin; the
+  Rage Drive strings in the same file (`RAGE DRIVE`,
+  `rageDrive`) do NOT — Rage Drive is still
+  rename-pending.
+- `game/js/main.js` (verified on current main) — UI
+  `rageArtFlash()` (L190, toggling the `#rage-flash`
+  element): the flash-indicator hook for the super's
+  cinematic beat. This is a flash/HUD indicator, not
+  banner text, and wiring must keep it that way.
+- `game/js/fighter.js` (verified on current main) — L285
+  `rageArt: !!mv.rageArt` flag passthrough, and L1742
+  comment "unblockables and Rage Arts break it".
+- `docs/design/SOUL-SYSTEMS.md` (verified on current
+  main) — L15 "a purged fighter cannot re-enter rage
+  that round (no Rage Art)" and L17 "Release 30 dmg ≈
+  a T7 Rage Art at WH scale (rage.js 32)": both sentences
+  to be reworded to Ikari Jishin when wired, not now.
+- This audit doc itself — the Rage Art rows and the
+  Options section (updated in this PR only as status
+  labels, not as code wiring).
+- NOT an Ikari touchpoint: the Rinne state sites listed
+  in the 21:46 CDT section (`RAGE_THRESHOLD`, `isRaging`,
+  `RageSystem`, `ui.setRage`, `_rageOn`, `setRageAura`)
+  belong to the Rinne state lock, not to the super.
+  Wiring Ikari Jishin does NOT rename them, and wiring
+  Rinne did NOT rename the super strings.
+
 ## Options pending — user 2026-10-24 21:40–21:42 CDT (ALL PROPOSED, NONE DECIDED)
 
 This section is SEPARATE from the 2026-10-24 21:38 CDT
@@ -214,9 +366,13 @@ SUPERSESSION NOTE 2026-10-24 21:46 CDT: the Rage-state
 options below are SUPERSEDED as a live pick — see the
 2026-10-24 21:46 CDT section above. Rinne / Rinne Tensei /
 Tensei are now the LOCKED Rage state name; Amatsu Rinne is
-the reserved future form; Ikari Jishin is banked and names
-nothing yet. The Spin Juggle proposal below is NOT
-superseded — it remains PROPOSED, not locked.
+the reserved future form; Ikari Jishin was banked 21:46 CDT
+and names nothing yet AS OF THAT SECTION — SUPERSEDED
+2026-10-24 21:51 CDT (see 21:51 CDT section): Ikari Jishin
+is now LOCKED as the super / Rage Art equivalent. It is
+still NOT the Rage state name. The Spin Juggle proposal
+below is NOT superseded — it remains PROPOSED, not
+locked.
 
 ### Rage state (low HP) — direction + options (user pick pending)
 
@@ -243,7 +399,7 @@ superseded — it remains PROPOSED, not locked.
   3. Tensei (転生) — user pick pending 21:40–21:42 CDT; LOCKED 2026-10-24 21:46 CDT as an acceptable short form.
   4. Amatsu Rinne (天津輪廻, constructed compound from real
      words, not a set phrase) — user pick pending 21:40–21:42 CDT; RESERVED FUTURE FORM 2026-10-24 21:46 CDT, mechanic not designed, NOT the Rage state name.
-  5. Ikari Jishin (怒り自身) — user pick pending 21:40–21:42 CDT; BANKED 2026-10-24 21:46 CDT, reserved name only, assigned to NOTHING.
+  5. Ikari Jishin (怒り自身) — user pick pending 21:40–21:42 CDT; BANKED 2026-10-24 21:46 CDT, reserved name only, assigned to NOTHING; LOCKED 2026-10-24 21:51 CDT as the super / Rage Art equivalent (see 21:51 CDT section) — banked status SUPERSEDED, not current.
 - Status effect (updated 2026-10-24 21:46 CDT): the Rage
   state is no longer OPEN/UNDECIDED — it is LOCKED as
   Rinne / Rinne Tensei (Tensei acceptable short form).
@@ -283,7 +439,7 @@ superseded — it remains PROPOSED, not locked.
 | Ki Charge (T7) | Soul Kindle — PROPOSAL ONLY | NEEDS OWNER PICK |
 | Tag (TTT2) | Soul Relay — PROPOSAL ONLY | NEEDS OWNER PICK |
 | Rage (state) | Rinne 輪廻 (full: Rinne Tensei 輪廻転生; Tensei 転生 also acceptable short form) | LOCKED 2026-10-24 21:46 CDT (was OPEN/UNDECIDED 21:38 CDT; options pending 21:40–21:42 CDT, now resolved — see 21:46 CDT section; pronunciation note: user says "Rene" by voice dictation, correct romanization Rinne) |
-| Rage Art | — | RENAME-PENDING (2026-10-24 21:38 CDT; new name not yet picked) |
+| Rage Art | Ikari Jishin 怒り自身 "Rage Itself" | LOCKED 2026-10-24 21:51 CDT as the super / Rage Art equivalent, the cinematic comeback unleashed FROM the Rinne state (was RENAME-PENDING 21:38 CDT; banked-name history 21:46 CDT superseded — see 21:51 CDT section) |
 | Rage Drive | — | RENAME-PENDING (2026-10-24 21:38 CDT; new name not yet picked) |
 | Power Crush | — | RENAME-PENDING (2026-10-24 21:38 CDT; new name not yet picked; implementation question unchanged) |
 | Screw | — | EXPLAINED-NOT-NAMED / MECHANIC-NOT-ON-MAIN (2026-10-24 21:38 CDT; "Spin Juggle" proposal pending 21:40–21:42 CDT — NOT decided) |
@@ -447,7 +603,7 @@ None is canon until the owner picks it. Each row states
 what was searched so the owner can see the gap is real.
 
 ### Rage (state: ≤ 25% HP, once per round)
-> STATUS UPDATE 2026-10-24 21:46 CDT: LOCKED — Rinne (輪廻), full name Rinne Tensei (輪廻転生), Tensei (転生) also acceptable as a short form. Pronunciation note (voice dictation only): the user pronounces it "Rene" — correct romanization is Rinne; never use "Rene" as the name. This supersedes the 2026-10-24 21:38 CDT OPEN/UNDECIDED label and the 21:40–21:42 CDT options-pending label. The options below (Trial Wrath, Last Ember, Soul Blaze) are superseded audit history, NOT picks. Amatsu Rinne (天津輪廻) is a RESERVED future form (mechanic not designed, not wired); Ikari Jishin (怒り自身) is BANKED (reserved name only, assigned to nothing). Code/HUD wiring is HELD until the naming lane confirms the touchpoints listed in the 21:46 CDT section; when wired, small HUD tag/gauge only, never a big mid-fight banner.
+> STATUS UPDATE 2026-10-24 21:46 CDT: LOCKED — Rinne (輪廻), full name Rinne Tensei (輪廻転生), Tensei (転生) also acceptable as a short form. Pronunciation note (voice dictation only): the user pronounces it "Rene" — correct romanization is Rinne; never use "Rene" as the name. This supersedes the 2026-10-24 21:38 CDT OPEN/UNDECIDED label and the 21:40–21:42 CDT options-pending label. The options below (Trial Wrath, Last Ember, Soul Blaze) are superseded audit history, NOT picks. Amatsu Rinne (天津輪廻) is a RESERVED future form (mechanic not designed, not wired); Ikari Jishin (怒り自身) was BANKED 2026-10-24 21:46 CDT (reserved name only, assigned to nothing) — SUPERSEDED 2026-10-24 21:51 CDT: Ikari Jishin is now LOCKED as the super / Rage Art equivalent (see 21:51 CDT section); it is still NOT the Rage state. Code/HUD wiring is HELD until the naming lane confirms the touchpoints listed in the 21:46 CDT section; when wired, small HUD tag/gauge only, never a big mid-fight banner.
 - Found as Tekken name only: `game/js/rage.js` L7 header,
   L25 (`RAGE_THRESHOLD = 0.25`), L34 (`isRaging`).
 - Options: (a) Trial Wrath — the trial's anger at the
@@ -461,6 +617,7 @@ what was searched so the owner can see the gap is real.
 
 ### Rage Art (R.1+2 while raging; cinematic armored super, 32 dmg)
 > STATUS UPDATE 2026-10-24 21:38 CDT: RENAME-PENDING — owner decided it changes; new name NOT yet picked. Options below are still proposals, not picks.
+> STATUS UPDATE 2026-10-24 21:51 CDT: LOCKED — renamed to Ikari Jishin (怒り自身, "Rage Itself" in Japanese), the super / Rage Art equivalent, the cinematic comeback unleashed FROM the Rinne state (user widget pick 21:51 CDT, from the 21:49 CDT options; the 21:49 recommendation is now the user's assignment). This supersedes the RENAME-PENDING label above and the 21:46 CDT banked status of Ikari Jishin. The options below (Ember Verdict, Final Word, Wrath Blow) are superseded proposals, kept only as audit history — they are NOT picks. Code/HUD wiring to Ikari Jishin is a FOLLOW-UP step (touchpoints listed in the 21:51 CDT section); when wired, cinematic beats / HUD indicators only, never a big mid-fight banner for the name itself.
 - Found as Tekken name only: `game/js/rage.js` L7, L15,
   L59, L79; `game/js/fighter.js` L1551 (comment), L1587.
 - Options: (a) Ember Verdict — the wounded soul's
@@ -627,16 +784,20 @@ what was searched so the owner can see the gap is real.
 2. Owner picks outstanding (updated 2026-10-24 21:38 CDT,
   options added 2026-10-24 21:40–21:42 CDT):
   Wall Break / Floor Break / Balcony Break are now KEEP and
-  are no longer outstanding; Rage Art / Rage Drive /
-  Power Crush / V-System are RENAME-PENDING (decision made,
-  replacement not picked); break + guard-breaking mechanics
-  are SHARED-NAME-PENDING (one term, not picked); Rage
+  are no longer outstanding; Rage Art is LOCKED
+  2026-10-24 21:51 CDT as Ikari Jishin (the super / Rage
+  Art equivalent, from Rinne) — its RENAME-PENDING label
+  and Ikari Jishin's 21:46 CDT banked status are both
+  superseded; Rage Drive / Power Crush / V-System are
+  still RENAME-PENDING (decision made, replacement not
+  picked); break + guard-breaking mechanics are
+  SHARED-NAME-PENDING (one term, not picked); Rage
   (low-HP state) is LOCKED 2026-10-24 21:46 CDT as Rinne /
   Rinne Tensei (Tensei acceptable short form) — the five
   21:40–21:42 CDT options are resolved as: Rinne family =
   lock, Amatsu Rinne = reserved future form (mechanic not
-  designed), Ikari Jishin = banked name (assigned to
-  nothing); Screw / Tailspin / Tornado are
+  designed), Ikari Jishin = locked 21:51 CDT as the super
+  (no longer banked); Screw / Tailspin / Tornado are
   EXPLAINED-NOT-NAMED and the mechanic is not on main,
   with the "Spin Juggle" descriptive proposal pending (NOT
   decided — a 👍 reaction is not confirmation). Still outstanding: Bound, Slow-mo
