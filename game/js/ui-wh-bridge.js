@@ -42,7 +42,7 @@ export function mountWhUi(api) {
     stopHud();
     hudT = setInterval(() => {
       const g = game; if (!g.p1 || !g.p2) return;
-      const pf = (x) => ({ hp: x.hp, maxHp: x.maxHp, meter: x.meter, maxMeter: x.maxMeter });
+      const pf = (x) => ({ hp: x.hp, maxHp: x.maxHp, meter: x.meter, maxMeter: x.maxMeter, recoverable: x._recoverable || 0 });
       post({ type: 'hud', p1: pf(g.p1), p2: pf(g.p2), timer: Math.max(0, Math.ceil(g.timer)), wins: g.wins, round: g.round });
     }, 100);
   };
