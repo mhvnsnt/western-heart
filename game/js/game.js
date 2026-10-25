@@ -429,7 +429,6 @@ export class Game {
               rec('surge');
               audio.soulSurge(this.p1.char.id);
               this.ui.surgeFlash(this.p1.char.surge?.color ?? this.p1.char.colors.trim, this.p1.char.surge?.accent ?? 0xffffff);
-              this.ui.surgeName(this.p1.char.surge?.name ?? 'SOUL SURGE');
             }
           }
           else if (act === 'dodge') { if (this.p1.tryDodge()) rec('dodge'); }
@@ -738,7 +737,6 @@ export class Game {
   surgePresentation(fighter) {
     audio.soulSurge(fighter.char.id);
     this.ui.surgeFlash(fighter.char.surge?.color ?? fighter.char.colors.trim, fighter.char.surge?.accent ?? 0xffffff);
-    this.ui.surgeName(fighter.char.surge?.name ?? 'SOUL SURGE');
   }
 
   /* ---------------- Round flow ---------------- */
