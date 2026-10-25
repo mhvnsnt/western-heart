@@ -1,6 +1,6 @@
 // WH contextual ragdoll — cannon-es edition.
 // Wiring target in repo: game/lib/ragdoll.js (drop-in; game passes its CANNON).
-// Vision (user): Euphoria + Gang Beasts + Human Fall Flat + Tekken, but
+// Vision (user): natural-motion ragdoll + floppy-physics brawler feel + Tekken, but
 // ragdoll ONLY in the moments Tekken would do it: launches, KOs, wall
 // splats. Every other frame the animation drives the body.
 // This is the cannon-es counterpart to the Rapier ragdoll in
