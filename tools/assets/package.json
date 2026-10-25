@@ -1,0 +1,14 @@
+{
+  "name": "wh-asset-pipeline",
+  "private": true,
+  "type": "module",
+  "description": "Western Heart web asset pipeline (meshopt/WebP, optional Draco/KTX2); run `npm i` here",
+  "dependencies": {
+    "@gltf-transform/core": "^4.5.1",
+    "@gltf-transform/extensions": "^4.5.1",
+    "@gltf-transform/functions": "^4.5.1",
+    "meshoptimizer": "^1.3.0",
+    "sharp": "^0.35.5"
+  },
+  "optionalDependencies": { "draco3dgltf": "^1.5.7" }
+}

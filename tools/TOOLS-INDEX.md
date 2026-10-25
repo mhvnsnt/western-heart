@@ -81,3 +81,13 @@ Every image cited in a PR was opened and looked at before it was cited.
 Blender 4.0.2 · GameRig (vendored, tools/auto_rig/vendor) · @gltf-transform 4.1.1 · meshoptimizer 0.22.0 ·
 n0madic/Tekken3Remake @ e59c4da1 (T3 RE: fight_sim, pose, motion) · Playwright Chromium ·
 gitleaks 8.21.2 · numpy / scipy / pygltflib.
+
+## 9. Procedural world generation (TRACK 5, 2026-10-23)
+
+| tool | does | writes |
+|---|---|---|
+| `tools/worldgen/build-wfc-bundle.mjs` | bundles vendored wavefunctioncollapse CJS → `game/js/worldgen/vendor/wfc.bundle.mjs` (ESM). Mechanical wrap; sources untouched. | `game/js/worldgen/vendor/wfc.bundle.mjs` |
+| `tools/worldgen/generate.mjs` | demo CLI: `generateZone()` → proof artifacts (layout json/txt/ppm, heightmap ppm, standalone demo.html, timings json) | `tools/worldgen/demo/` |
+| `game/js/worldgen/` | runtime: WFC layouts (`wfc.js`), FastNoiseLite terrain (`terrain.js`), prop scatter (`props.js`), `generateZone()` entry (`worldgen.js`); rule sets in `game/js/worldgen/rulesets/` | — |
+
+Vendored (MIT, provenance in `game/js/worldgen/vendor/VENDOR.md`): wavefunctioncollapse 2.1.0 (kchapelier port of mxgmn/WaveFunctionCollapse), fastnoise-lite 1.1.1 (JS port of Auburn's FastNoiseLite). FastNoise2 proper is C++/SIMD with no JS/WASM build — [RESEARCHED], emscripten path documented. Research: `docs/research/WORLD-GENERATION-2026-10-23.md`. Tests: `test/worldgen.test.mjs` (29).

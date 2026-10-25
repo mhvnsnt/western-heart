@@ -3,6 +3,8 @@ name: instruction-gate
 on:
   pull_request:
     types: [opened, edited, synchronize, reopened, labeled, unlabeled, ready_for_review]
+  merge_group:
+    types: [checks_requested]
 # CI minute diet (Plan B): superseded PR runs are cancelled, not billed.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

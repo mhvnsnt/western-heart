@@ -7,6 +7,10 @@
    ============================================================ */
 
 import { FULL_ROSTER } from './roster-full.js';
+import { MATERIAL_STATUS } from './material-status.js';
+// Material gate (tools/assets/material_gate.mjs): quarantined models are never offered.
+const QUARANTINED = new Set(Object.keys(MATERIAL_STATUS.quarantine || {}));
+const isModelUsable = (key) => !QUARANTINED.has(key);
 
 const LS_KEY = 'wh_attires_v1';
 // Fighter ids: a model key that is another fighter's own id is that fighter's body.
@@ -54,8 +58,10 @@ export const ATTIRE_VARIANTS = {
     { model: 'torch', label: 'ANNA BASE (TEKKEN BASE)' },
   ],
   'demonio': [
-    { model: 'demonio', label: 'BASE' },
+    // t133u: attire 1 = the owner's own Demonio (roster model demonio-a1);
+    // the old 'BASE' demonio.glb rendered the wrong body on select.
     { model: 'demonio-a1', label: 'ATTIRE 1' },
+    { model: 'demonio', label: 'BASE' },
     { model: 'demonio-winged', label: 'WINGED DEVIL' },
     { model: 'demonio-human', label: 'HUMAN' },
     { model: 'demonio-bloodline-ember', label: 'BLOODLINE EMBER' },
@@ -63,6 +69,9 @@ export const ATTIRE_VARIANTS = {
   'deathfang': [
     { model: 'deathfang', label: 'ATTIRE 1 · CHAINED PRISONER' },
     { model: 'deathfang-werewolf', label: 'ATTIRE 2 · WEREWOLF' },
+    // OBSOLETE-ORIGINALS rule (2026-10-23): the Iori model ladders here,
+    // behind Deathfang's own attires — never a standalone fighter.
+    { model: 'iori', label: 'IORI · ORIGINAL MODEL (KOF)' },
   ],
   /* DOC FRANK's ladder — keyed by fighter id ('docfrank'), same pattern as
      Kevin's ladder below: attiresFor() looks up fighter.model, then
@@ -128,6 +137,7 @@ export const ATTIRE_VARIANTS = {
     { model: 'cain-elias-attire2', label: 'ATTIRE 2 · FIGHT GEAR' },
   ],
   'vainabel': [
+    { model: 'vainabel-attire1', label: 'ATTIRE 1 · DEFAULT (TRIPO)' },
     { model: 'vainabel-attire2', label: 'ATTIRE 2' },
     { model: 'vainabel-attire3', label: 'ATTIRE 3 · MASKED DEMON OF THE PURPLE HAZE' },
     { model: 'vainabel-attire4', label: 'ATTIRE 4 · HALF MASK HORROR OF THE HAZE' },
@@ -169,7 +179,6 @@ export const ATTIRE_VARIANTS = {
   'phantom': [
     { model: 'phantom', label: 'BASE' },
     { model: 'phantom-t8', label: 'T8' },
-    { model: 'steve-fox', label: 'JIN · BLADE SOUL' },
     { model: 'jin-bloodline-ember', label: 'JIN KAZAMA · BLOODLINE EMBER (TEKKEN RESKIN)' },
   ],
   /* CHARGER's ladder (dedup 2026-10-22): the standalone 'charger-attire2'
@@ -179,6 +188,9 @@ export const ATTIRE_VARIANTS = {
   'charger': [
     { model: 'charger', label: 'ATTIRE 1 · ICE MONSTER' },
     { model: 'charger-attire2', label: 'ATTIRE 2 · WILD CURRENT' },
+    // OBSOLETE-ORIGINALS rule (2026-10-23): the Blanka model is NOT a
+    // fighter — it ladders here, behind Charger's own attires.
+    { model: 'blanka', label: 'BLANKA · ORIGINAL MODEL (STREET FIGHTER)' },
   ],
   /* KINPO's ladder — slot order per roster/kinpo/ATTIRE-SLOTS.md (owner 2026-10-20):
      Slot 1 = Tripo main, Slot 2 = "Goth Sport" Tripo (was wired as a MODEL_URLS
@@ -222,6 +234,10 @@ export const ATTIRE_VARIANTS = {
     { model: 'kronos', label: 'ATTIRE 1' },
     { model: 'kronos-attire2', label: 'ATTIRE 2 · TIMBERWOLF' },
     { model: 'kronos-attire3', label: 'ATTIRE 3 · TIMBERWOLF FULLY SUITED' },
+    // OBSOLETE-ORIGINALS rule (2026-10-23): the Zangief models ladder here,
+    // behind Kronos's own attires — never a standalone fighter.
+    { model: 'zangief', label: 'ZANGIEF · ORIGINAL MODEL (STREET FIGHTER)' },
+    { model: 'zangief-attire1', label: 'ZANGIEF · SOURCE MODEL (UNRIGGED)' },
   ],
   /* MICHIKO's ladder (owner 2026-10-21, Tripo-first rule): her two Tripo
      originals lead — Attire 1 "bone goddess amazonian M rated nude attire
@@ -237,9 +253,11 @@ export const ATTIRE_VARIANTS = {
   /* AWA POP's ladder (fighter-completeness audit 2026-10-21): Attire 2's
      GLB sat in roster/awa-pop/attires/attire2/ with no MODEL_URLS key and
      no variant list. Key added in assets.js. First entry = current default. */
-  'awa-pop': [
-    { model: 'awa-pop', label: 'ATTIRE 1' },
-    { model: 'awa-pop-attire2', label: 'ATTIRE 2' },
+  // OWNER-MODEL-FIRST (t213u): her rigged Tripo (roster/awa-pop/ATTIRE-SLOTS.md slot 2) leads;
+  // awa-pop.glb (T7-style Nina port, b94aa61c) ladders back. Her slot-1 Tripo GLB is not on main (see audit doc).
+  'awapop': [ // keyed by fighter id (roster model is now 'awa-pop-attire2')
+    { model: 'awa-pop-attire2', label: 'ATTIRE 1 · TRIPO' },
+    { model: 'awa-pop', label: 'NINA BASE (T7-STYLE PORT)' },
   ],
   /* PANTERA's ladder — owner reorder 2026-10-21: his TRIPO ORIGINALS at
      the forefront (slots 1-2), the Tekken-version reskins ladder BACK
@@ -313,9 +331,70 @@ export const ATTIRE_VARIANTS = {
   'zui': [
     { model: 'zui-attire1', label: 'ATTIRE 1 · DRUNKEN MONK (TRIPO)' },
     { model: 'zui-attire2', label: 'ATTIRE 2 · REWORK V2' },
-    { model: 'steve-fox', label: 'BASE · STEVE FOX (CANON)' },
     { model: 'zui_alt1', label: 'ALT 1 · T7 STEVE RESKIN' },
     { model: 'zui_alt2', label: 'ALT 2 · T7 STEVE RESKIN' },
+  ],
+  /* ——— LANDING WAVE 1 ladders (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md):
+     fighters whose on-main attire GLBs had keys (or get them in assets.js
+     this wave) but no ATTIRE_VARIANTS entry, so the picker never offered
+     them. First entry = the current default in every ladder — no default
+     changes. Source-game originals sit at the back per the
+     OBSOLETE-ORIGINALS rule. ——— */
+  'koreshi': [
+    { model: 'koreshi', label: 'ATTIRE 1' },
+    { model: 'koreshi-attire1', label: 'ATTIRE 1 · TRIPO SOURCE (UNRIGGED)' },
+    { model: 'vega', label: 'VEGA · ORIGINAL MODEL (STREET FIGHTER)' },
+  ],
+  // OWNER-MODEL-FIRST (t213u): owner Tripo models lead; the T8 Armor King port (yukihyo.glb) ladders back.
+  'yukihyo': [
+    { model: 'yukihyo-attire1', label: 'ATTIRE 1 (TRIPO)' },
+    { model: 'yukihyo-attire2', label: 'ATTIRE 2 · BOBCAT PRIDE (TRIPO)' },
+    { model: 'yukihyo-attire3', label: 'ATTIRE 3 · TIGER KING (TRIPO)' },
+    { model: 'yukihyo', label: 'ARMOR KING T8 PORT' },
+    { model: 'armor-king', label: 'ARMOR KING · ORIGINAL MODEL (TEKKEN)' },
+    { model: 'armor-king-attire1', label: 'ARMOR KING · SOURCE MODEL (UNRIGGED)' },
+  ],
+  // OWNER-MODEL-FIRST (t213u): owner Tripo models lead. Sail the Sea is the
+  // rigged one so it is the playable default; his unrigged Tripo A1 stays next
+  // (auto-rig failed, docs/proof/2026-10-23/auto-rig-bruno-a1); the Miguel-source bruno.glb ladders back.
+  'bruno': [
+    { model: 'bruno-attire2', label: 'ATTIRE 1 · SAIL THE SEA (TRIPO)' },
+    { model: 'bruno-attire1', label: 'ATTIRE 2 · TRIPO (UNRIGGED)' },
+    { model: 'bruno', label: 'MIGUEL BASE (SOURCE PORT)' },
+  ],
+  // OWNER-MODEL-FIRST (t213u): owner Tripo Jade God leads; the Akuma-source dio.glb ladders back.
+  'dio': [
+    { model: 'dio-attire1', label: 'ATTIRE 1 · JADE GOD (TRIPO)' },
+    { model: 'dio', label: 'AKUMA BASE (SOURCE PORT)' },
+  ],
+  /* OWNER-MODEL-FIRST (owner t213u, 2026-10-23): NEGATIVO's own tribal
+     Tripo models lead (roster/negativo/attires/attire{1,2}/source/manifest.json,
+     Tripo 7853a4d6 red eyes / 2a13dd2b white eyes). The Negan-derived
+     n3g4tiv0 retexture ladders BACK — kept, never cut.
+     docs/roster/OWNER-MODEL-FIRST-AUDIT.md */
+  'negativo': [
+    { model: 'negativo-attire1', label: 'ATTIRE 1 · RED EYES (TRIPO)' },
+    { model: 'negativo-attire2', label: 'ATTIRE 2 · BEFORE THE TRIALS (TRIPO)' },
+    { model: 'n3g4tiv0', label: 'NEGAN BASE (TEKKEN RESKIN)' },
+  ],
+  /* SKULL (roster/skull/attires/ATTIRE-SLOTS.md): A1 = his Tripo; the live
+     default stays the rigged build of it (the default swap rides the rig
+     pass, per the slot map); Bryan Fury's in-game base ladders back. */
+  'skull': [
+    { model: 'skull', label: 'ATTIRE 1 · RIGGED BUILD' },
+    { model: 'skull-tripo', label: 'ATTIRE 1 · SKULL (TRIPO, UNRIGGED)' },
+    { model: 'skull-base', label: 'BRYAN FURY BASE (TEKKEN)' },
+  ],
+  'waterfall': [
+    { model: 'waterfall', label: 'ATTIRE 1' },
+    { model: 'waterfall-attire1', label: 'ATTIRE 1 · TRIPO SOURCE (UNRIGGED)' },
+  ],
+  /* CAPE JONES (cyborgx; roster/cyborg-x/ATTIRE-SLOTS.md): Attire 1 = the
+     rigged build of his own model (rig QA 2026-10-23, muse/cape-jones-fight).
+     No Tekken Alisa original exists in the repo, so the 5-7 ladder-back rule
+     has nothing to seat yet. */
+  'cyborgx': [
+    { model: 'cape-jones-attire1', label: 'ATTIRE 1 · CAPE JONES (RIGGED)' },
   ],
 };
 
@@ -330,14 +409,19 @@ function saveMap(m) {
 /** Attires available for a roster fighter (by model, falls back to roster id). */
 export function attiresFor(fighter) {
   if (!fighter) return [];
+  // MODEL PENDING (owner 2026-10-23): no own model yet -> no attire, never another fighter's body.
+  if (fighter.modelPending || !fighter.model) return [];
   // A soul riding another fighter's body (TOU / KAI / RETSU / GYOU on 'pantera') keeps that base model:
   // the body owner's ladder (Pantera's Tripo-first reorder, 2026-10-21) is his, not the riders'
   // (game/tests/model-key-guard.test.mjs "declared-base riders stay on their declared base").
   const ridesOther = fighter.model && fighter.model !== fighter.id && FIGHTER_IDS.has(fighter.model);
   const list = ridesOther ? ATTIRE_VARIANTS[fighter.id] : (ATTIRE_VARIANTS[fighter.model] || ATTIRE_VARIANTS[fighter.id]);
-  if (list && list.length) return list;
+  // Material gate: attires whose model failed the material audit are never offered.
+  // If the fighter's OWN attire-1 is quarantined, the fighter is hidden until it is fixed;
+  // never promote a later (often unrigged/private) attire into the attire-1 slot.
+  if (list && list.length) return isModelUsable(list[0].model) ? list.filter(a => isModelUsable(a.model)) : [];
   // Default: single attire = the fighter's own model
-  return [{ model: fighter.model || 'pantera', label: 'ATTIRE 1' }];
+  return [{ model: fighter.model, label: 'ATTIRE 1' }].filter(a => isModelUsable(a.model));
 }
 
 /** The persisted attire model id for this fighter (or their base).
@@ -349,7 +433,7 @@ export function selectedAttireModel(fighter) {
   const list = selectableAttires(fighter);
   const saved = map[fighter.id];
   if (saved && list.some(a => a.model === saved)) return saved;
-  return list[0].model;
+  return list.length ? list[0].model : null;
 }
 
 /** Attire slots the picker may offer: pending (not yet playable) slots stay
