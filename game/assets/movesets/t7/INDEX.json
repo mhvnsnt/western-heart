@@ -1,0 +1,2481 @@
+{
+ "format": "wh-t7-overlay-index/1",
+ "main_sha_at_build": "0674326528df69f6479b7792039a16d108dbe94d",
+ "branch_base_at_push": "b509f179c975aec036e0cf8f54e244d6bb443cb8 (main moved during this lane; this PR adds NEW files only, so no existing file is rewritten and the before-counts above remain the 06743265 measurement \u2014 re-measure before-counts on the merge base if the coordinator wants them refreshed)",
+ "button_map": "LP1=Tekken 1=Left Punch, RP2=Tekken 2=Right Punch, LK3=Tekken 3=Left Kick, RK4=Tekken 4=Right Kick",
+ "what_this_is": "RESCOPED 2026-10-24 per coordinator reconciliation update: Additive T7 overlay dataset under game/assets/movesets/t7/ (+ game/assets/anim/t7/). It does NOT edit any existing moveset file: no file is rewritten, so there is zero clobber surface. Each overlay file is keyed by Tekken fighter slug + notation_lp + row context (notes/stance) \u2014 notation_lp ALONE is not unique in the source data (duplicate notations exist for stance/context variants; the validator counts them per fighter). This INDEX maps every WH moveset file to its overlay slug(s). The inline-merge step (writing t7 blocks into the 157 files themselves) is a follow-up merge once the combat lane confirms this schema \u2014 see 'deviation' in the PR body. SHIP RULE (user 2026-10-24 20:22 CDT, supersedes narrower framings): WH ships with NO famous names + proprietary canon names. Tekken fighter slugs/names in this directory are TECHNICAL source identifiers only (the same rule as Tekken names in technical files, never in canon writing) \u2014 they are not shipped roster names and this PR never ships the original game itself. We USE the owned files to wire OUR OWN game; we do not supply or redistribute full games. SOURCE HIERARCHY (same directive): work must be 100% from the files, from the FULL GAME FILES where available \u2014 owned full files are authoritative, not community approximations. That is why the frv/dnc mot.bin tables (from the owned T7 files, MERGED PR #61) outrank community frame rows for ANIMATION mapping, while FRAME data here remains community-sourced (TheBigTuna / TekkenDocs) until full-file frame extraction lands via GPU Job 1's mot.bin batch. SCOPE OF THIS PR: T7 coverage for fighters OTHER than the 8 T7-mapped fighters (+torch) in PR #1039's scope, DLC frame data (9 chars), T7 anim banks/lookup maps, per-character patterns, 29 UNMAPPED stances, and the 188 canon MADE moves \u2014 all of which the coordinator update explicitly keeps in this lane.",
+ "errata_source_artifacts_preserved_verbatim": {
+  "notation_lp_bare_digits": "7 rows across 4 fighters still carry bare digits in notation_lp after the prior lane's conversion, preserved verbatim here (not silently fixed): lidia 8 rows with stance tag 'CF0' (a stance label, not a button \u2014 legitimate, do not 'fix' by deleting the stance); ling 1 row 'f, F+RK4, When guarded4' (source note leaked into the notation string); steve 5 rows with '12~' shorthand (e.g. 'f+12~RP2' \u2014 the 1,2 buttons written without '+' in the source); yoshimitsu 1 row 'f, F+RP2 Hit in front1+RP2' (source note leaked into the notation string). The inline-merge lane must normalize the steve/ling/yoshimitsu artifacts (with a documented mapping, never by deleting rows) before engine use, and must never treat those rows as validated LP1/RP2/LK3/RK4 rows. The validator (validate-t7-overlay.mjs) lists every such row.",
+  "duplicate_notations": "Most fighters contain duplicate notation_lp values (same input, different rows \u2014 stance/context variants, e.g. 'WS+LP1' twice, 'f+LK3' twice). These are source-faithful, NOT deduped here: the prior lane removed only EXACT duplicate rows. Any consumer joining on notation alone will collide; join on notation_lp + notes/stance context, or take the first row and flag the collision. Per-fighter duplicate counts are printed by the validator.",
+  "string_prefix_rows": "Most T7 strings do NOT have every proper prefix as a standalone row (King: 53 of 77 strings lack at least one prefix row). That is normal frame-data shape (full strings listed, continuations not always standalone) \u2014 it is NOT a missing-data error, but the engine must never fall back from a missing prefix row to a chord row. See the validator's string checks."
+ },
+ "before": {
+  "definition": "Moves in a file's moves dict carrying a 't7' key, counted from main @ 06743265 (wh-clone). This CORRECTS the gap doc's '8-9 files' shorthand: 10 files carry substantial T7 blocks (124-350 moves each) + 3 demonio variants carry 1 each; 142 files carry zero.",
+  "files_with_substantial_t7_blocks": {
+   "torch.json": 350,
+   "skull.json": 327,
+   "phantom.json": 309,
+   "zui.json": 305,
+   "burger.json": 301,
+   "pantera.json": 258,
+   "kinpo.json": 247,
+   "demonio.json": 218,
+   "diablo.json": 198,
+   "scimitar.json": 124
+  },
+  "files_with_1_t7_block": [
+   "demonio-bloodline-ember.json",
+   "demonio-human.json",
+   "demonio-winged.json"
+  ],
+  "files_with_zero": 142,
+  "total_t7_blocked_moves_before": 2640
+ },
+ "after": {
+  "overlay_fighters": 36,
+  "overlay_moves": 5392,
+  "base_thebigtuna_moves": 5648,
+  "dlc_tekkendocs_moves": 1261,
+  "kuma_stub_moves": 0,
+  "wh_files_mapped_to_at_least_one_overlay": 57,
+  "wh_files_with_no_overlay": 99,
+  "note": "DATA LANDED in this PR (rescoped): 36 fighters, 5392 moves. The other 9 slugs (1,517 moves) are held for the reconciliation handoff (see reconciliation_handoff) and are NOT in this PR. Inline t7 blocks inside the 157 files are unchanged by design; the inline merge is a follow-up once the combat lane confirms the overlay schema."
+ },
+ "t7_fighters": {
+  "akuma": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-akuma-1.json",
+   "move_count": 120,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-akuma-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "alisa": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-alisa-1.json",
+   "move_count": 192,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-alisa-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "claudio": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-claudio-1.json",
+   "move_count": 98,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-claudio-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "dragunov": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-dragunov-1.json",
+   "move_count": 141,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-dragunov-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "eddy": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-eddy-1.json",
+   "move_count": 224,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-eddy-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "eliza": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-eliza-1.json",
+   "move_count": 87,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-eliza-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "feng": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-feng-1.json",
+   "move_count": 166,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-feng-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "gigas": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-gigas-1.json",
+   "move_count": 103,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-gigas-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "hwoarang": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-hwoarang-1.json",
+   "move_count": 221,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-hwoarang-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "jack-7": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-jack-7-1.json",
+   "move_count": 182,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-jack-7-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "josie": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-josie-1.json",
+   "move_count": 135,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-josie-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "katarina": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-katarina-1.json",
+   "move_count": 109,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-katarina-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "kazumi": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-kazumi-1.json",
+   "move_count": 101,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-kazumi-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "kazuya": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-kazuya-1.json",
+   "move_count": 125,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-kazuya-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "lars": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-lars-1.json",
+   "move_count": 127,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-lars-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "law": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-law-1.json",
+   "move_count": 225,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-law-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "lee": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-lee-1.json",
+   "move_count": 202,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-lee-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "leo": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-leo-1.json",
+   "move_count": 167,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-leo-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "lili": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-lili-1.json",
+   "move_count": 144,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-lili-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "ling": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-ling-1.json",
+   "move_count": 220,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-ling-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "lucky-chloe": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-lucky-chloe-1.json",
+   "move_count": 141,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-lucky-chloe-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "master-raven": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-master-raven-1.json",
+   "move_count": 191,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-master-raven-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "miguel": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-miguel-1.json",
+   "move_count": 157,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-miguel-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "nina": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-nina-1.json",
+   "move_count": 189,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-nina-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "paul": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-paul-1.json",
+   "move_count": 125,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-paul-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "steve": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+   "source_file": "frames-json/t7-steve-1.json",
+   "move_count": 239,
+   "damage_source": "MOD (TheBigTuna)",
+   "overlay_file": "game/assets/movesets/t7/t7-steve-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "fahkumram": {
+   "source_repo": "TekkenDocs T7 JSON API (via ~/workspace/dlc-frame-data)",
+   "source_file": "t7-fahkumram-lp-rp-lk-rk.json",
+   "move_count": 137,
+   "damage_source": "TekkenDocs sheet (NOT MOD)",
+   "overlay_file": "game/assets/movesets/t7/t7-fahkumram-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "ganryu": {
+   "source_repo": "TekkenDocs T7 JSON API (via ~/workspace/dlc-frame-data)",
+   "source_file": "t7-ganryu-lp-rp-lk-rk.json",
+   "move_count": 139,
+   "damage_source": "TekkenDocs sheet (NOT MOD)",
+   "overlay_file": "game/assets/movesets/t7/t7-ganryu-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "geese": {
+   "source_repo": "TekkenDocs T7 JSON API (via ~/workspace/dlc-frame-data)",
+   "source_file": "t7-geese-lp-rp-lk-rk.json",
+   "move_count": 106,
+   "damage_source": "TekkenDocs sheet (NOT MOD)",
+   "overlay_file": "game/assets/movesets/t7/t7-geese-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "kunimitsu": {
+   "source_repo": "TekkenDocs T7 JSON API (via ~/workspace/dlc-frame-data)",
+   "source_file": "t7-kunimitsu-lp-rp-lk-rk.json",
+   "move_count": 185,
+   "damage_source": "TekkenDocs sheet (NOT MOD)",
+   "overlay_file": "game/assets/movesets/t7/t7-kunimitsu-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "leroy": {
+   "source_repo": "TekkenDocs T7 JSON API (via ~/workspace/dlc-frame-data)",
+   "source_file": "t7-leroy-lp-rp-lk-rk.json",
+   "move_count": 124,
+   "damage_source": "TekkenDocs sheet (NOT MOD)",
+   "overlay_file": "game/assets/movesets/t7/t7-leroy-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "lidia": {
+   "source_repo": "TekkenDocs T7 JSON API (via ~/workspace/dlc-frame-data)",
+   "source_file": "t7-lidia-lp-rp-lk-rk.json",
+   "move_count": 157,
+   "damage_source": "TekkenDocs sheet (NOT MOD)",
+   "overlay_file": "game/assets/movesets/t7/t7-lidia-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "negan": {
+   "source_repo": "TekkenDocs T7 JSON API (via ~/workspace/dlc-frame-data)",
+   "source_file": "t7-negan-lp-rp-lk-rk.json",
+   "move_count": 119,
+   "damage_source": "TekkenDocs sheet (NOT MOD)",
+   "overlay_file": "game/assets/movesets/t7/t7-negan-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "noctis": {
+   "source_repo": "TekkenDocs T7 JSON API (via ~/workspace/dlc-frame-data)",
+   "source_file": "t7-noctis-lp-rp-lk-rk.json",
+   "move_count": 106,
+   "damage_source": "TekkenDocs sheet (NOT MOD)",
+   "overlay_file": "game/assets/movesets/t7/t7-noctis-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "zafina": {
+   "source_repo": "TekkenDocs T7 JSON API (via ~/workspace/dlc-frame-data)",
+   "source_file": "t7-zafina-lp-rp-lk-rk.json",
+   "move_count": 188,
+   "damage_source": "TekkenDocs sheet (NOT MOD)",
+   "overlay_file": "game/assets/movesets/t7/t7-zafina-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  },
+  "kuma": {
+   "source_repo": "TheBigTuna/Tekken-7-Frame-Data (stub)",
+   "source_file": "frames-json/t7-kuma-1.json",
+   "move_count": 0,
+   "damage_source": "none (stub)",
+   "overlay_file": "game/assets/movesets/t7/t7-kuma-lp-rp-lk-rk.json",
+   "name_join": "PENDING",
+   "anim_status": "UNMAPPED"
+  }
+ },
+ "t7_missing_fighters": {
+  "anna": "No t7-anna file in TheBigTuna frames-json/ (36 files upstream, kuma stub included). Affects: torch (Anna). Anim side: annmot.bin (4,019,360 bytes) is in GPU Job 1's remaining 52 \u2014 move table pending, clip bytes still bank-0x8000-blocked.",
+  "armor-king": "No t7-armor-king file in TheBigTuna. Affects: yukihyo (Armor King), armor-king (source file). Anim side: arbmot.bin (2,425,636 bytes) is in Job 1's remaining 52.",
+  "julia": "No t7-julia file in TheBigTuna. Affects: nightwolf (Julia). Anim side: Job 1 table is authoritative for the julia mot.bin code \u2014 do not guess it here.",
+  "lei": "No t7-lei file in TheBigTuna. Affects: byou (file carries Lei, owner-disputed), rave (Lei + Byou donors), zui (Lei DRU part). Anim side: leemot.json ALREADY EXISTS in game-reverse-engineering (pre-existing extraction; Job 1 validation gold file family) \u2014 move-level only, clip bytes still bank-0x8000-blocked. Frame data and anim tables are separate gaps.",
+  "marduk": "No t7-marduk file in TheBigTuna. Affects: marduk (source file), and jotei (claimed base, no file \u2014 see no_file_characters).",
+  "kuma": "t7-kuma-1.json EXISTS upstream but moves=[] (stub). Shipped as a 0-move record. Affects: gashadokuro, aotsuki (Kuma/Panda lines). Fill from wavu.wiki T7 Kuma movelist or TekkenDocs \u2014 never by copying another bear's rows as Kuma's.",
+  "dlc_mod_damage": "TheBigTuna has NO rows for the 9 DLC fighters, so NO MOD damage exists for Fahkumram, Ganryu, Geese, Kunimitsu, Leroy, Lidia, Negan, Noctis, Zafina. Their overlay files carry TekkenDocs sheet damage and are flagged damage_source='TekkenDocs sheet (NOT MOD)' on every move. Do NOT relabel sheet damage as MOD."
+ },
+ "name_join": {
+  "status": "PENDING \u2014 0 of 6,909 overlay moves carry a wavu.wiki name in this PR. name is null on every move.",
+  "why_not_joined_here": "TheBigTuna source carries notation only (its own files warn: 'NO move names in source'). WH files' own t7 blocks also carry no names (ids like king_2 only; display names like 'PANTERA 1 (T3 king r110)' are generated placeholders, NOT move names, and were deliberately NOT copied as names). A wavu.wiki T7 page was text-fetched for King (https://wavu.wiki/t/King_movelist_(Tekken_7)) and it IS real T7 data with names \u2014 but its text rendering flattens tables so row order (name vs input vs stats) cannot be resolved reliably from the fetch alone (e.g. whether 'Palm Strike' names input 1 or 1,2). Joining names off flattened text would invent attributions, which the exactness rule forbids.",
+  "method_for_the_join_lane": "For each of the 45 overlay fighters: fetch that fighter's wavu.wiki T7 movelist page (same /t/<Name>_movelist_(Tekken_7) pattern as King, verified per fighter, never guessed in bulk), parse the WIKI TABLE STRUCTURE (not flattened text) so Name/Input/Hit level/Damage columns stay aligned, join to overlay rows on normalized notation ONLY (never on damage \u2014 wavu sheet damage differs from TheBigTuna MOD damage, e.g. King LP1: wavu 7 vs MOD 9), and report join rate per fighter. Unmatched rows keep name=null. Alternative join source already in-repo: the 52 mot.bin JSONs from GPU Job 1 carry T7 internal move names (e.g. frv/dnc 'name' fields) \u2014 those are internal ids, not display names, and must not be presented as wavu names without a mapping table.",
+  "also_pending": "geppopotamus.info / tekken.fandom.com DLC cross-checks named in the lane brief were NOT run: the DLC files were already converted from TekkenDocs in a prior lane (~/workspace/dlc-frame-data, 1,261 moves, full README + manifest) and re-sourcing them here would duplicate that lane. The DLC gap that remains is MOD damage (see t7_missing_fighters.dlc_mod_damage), which none of those three sites supply as MOD."
+ },
+ "patterns": {
+  "note": "Per-file patterns are in wh_files[].pattern (pattern audit for the 58 roster files; VARIANT / LIBRARY / PATTERN UNCLEAR elsewhere \u2014 never defaulted to PURE). Headline from the audit, confirmed here: the roster is overwhelmingly ADDITIVE (41/58), not PURE (6/58: dorowani, chatur, pond, buffalo-bill, gashadokuro, aotsuki \u2014 and gashadokuro/aotsuki are Kuma-line, so their 'pure' T7 overlay is the kuma stub). Pantera and Scimitar are ADDITIVE, not PURE (prior claims corrected). Zui is MIX and its stance is KEEP. Zen is BUILT by design with a shipped-file mismatch (see zen.json note).",
+  "pure_roster": [
+   "dorowani.json",
+   "chatur.json",
+   "pond.json",
+   "buffalo-bill.json",
+   "gashadokuro.json",
+   "aotsuki.json"
+  ]
+ },
+ "no_file_characters": {
+  "birodo": {
+   "pattern": "PATTERN UNCLEAR",
+   "claimed_base": "Feng Wei (owner-directives.md + CANON.md intake canon)",
+   "docs_checked": [
+    "docs/owner-directives.md",
+    "CANON.md",
+    "game/assets/movesets/index.json (no birodo entry)",
+    "repo tree (no birodo.json)"
+   ],
+   "status": "No decoded Feng Wei set was in the repo at audit time \u2014 BUT this PR now lands a Feng overlay file (t7-feng, 205 raw TheBigTuna rows -> converted count in t7_fighters) from the upstream frames-json pull. What is STILL missing: a birodo.json build + a pattern decision (pure vs additive). NOT defaulted to PURE.",
+   "unblock": "Build birodo.json from t7-feng overlay + owner pattern decision."
+  },
+  "jotei": {
+   "pattern": "PATTERN UNCLEAR",
+   "claimed_base": "Craig Marduk (owner-directives.md + CANON.md intake canon)",
+   "docs_checked": [
+    "docs/owner-directives.md",
+    "CANON.md",
+    "game/assets/movesets/index.json (no jotei entry)",
+    "repo tree (marduk.json EXISTS as a source file, no jotei.json)"
+   ],
+   "status": "Still missing: a jotei.json build from marduk.json + a pattern decision. Marduk T7 frame data is also absent from TheBigTuna, so the build cannot be a T7-overlay build today.",
+   "unblock": "Build jotei.json from marduk.json + owner pattern decision; source Marduk T7 frame data separately (wavu/TekkenDocs) if a T7 layer is wanted."
+  }
+ },
+ "wh_files": {
+  "aotsuki.json": {
+   "tekken_base_index": "Panda",
+   "file_moves_index": 530,
+   "pattern": "PURE",
+   "note": "Kuma line only (Panda slot), 0 extras, proxy=True. Same Kuma stub caveat as gashadokuro. Canon law 2026-10-23: proprietary successor to the Panda slot.",
+   "t7_slugs": [
+    "kuma"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-kuma-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 530
+  },
+  "armor-king.json": {
+   "tekken_base_index": "Armor King (Tekken)",
+   "file_moves_index": 500,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Tekken source bank file (Armor King). Not a roster character per pattern audit exclusions. Armor King frame data absent from TheBigTuna.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 500
+  },
+  "awapop.json": {
+   "tekken_base_index": "Nina",
+   "file_moves_index": 909,
+   "pattern": "ADDITIVE",
+   "note": "Nina + 2 WH sigs.",
+   "t7_slugs": [
+    "nina"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-nina-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 189,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 909
+  },
+  "baek-master-white.json": {
+   "tekken_base_index": "Baek",
+   "file_moves_index": 291,
+   "pattern": "ADDITIVE",
+   "note": "Baek (TTT2) + donor:baek + 4 WH sigs. Roster slot uses this variant file. Base CONFLICTED in stance audit (roster says Kevin, file says Baek) \u2014 owner input required before any target bank is named. No T7 overlay row (Baek is not a T7 roster fighter).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 291
+  },
+  "baek.json": {
+   "tekken_base_index": "Baek",
+   "file_moves_index": 111,
+   "pattern": "VARIANT \u2014 inherits baek-master-white.json (ADDITIVE); not independently audited",
+   "note": "Variant/attire/form file of baek-master-white.json.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 111
+  },
+  "blanka.json": {
+   "tekken_base_index": "Blanka (SF)",
+   "file_moves_index": 199,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Street Fighter source bank file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 199
+  },
+  "bob.json": {
+   "tekken_base_index": "Bob Richards (Tekken)",
+   "file_moves_index": 557,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Tekken source bank file (Bob). Not a roster character per pattern audit exclusions. RECONCILIATION HANDOFF: slug(s) bob are NOT in this PR \u2014 handed to the coordinator for the reconciliation lane (PR #1039 merge scope).",
+   "t7_slugs": [
+    "bob"
+   ],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 557
+  },
+  "bruno.json": {
+   "tekken_base_index": "Miguel",
+   "file_moves_index": 328,
+   "pattern": "ADDITIVE",
+   "note": "Miguel + 2 WH sigs.",
+   "t7_slugs": [
+    "miguel"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-miguel-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 157,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 328
+  },
+  "buffalo-bill.json": {
+   "tekken_base_index": "Law",
+   "file_moves_index": 795,
+   "pattern": "PURE",
+   "note": "Law lineage only (T8 Law + T7 Law + T3 Forest Law), 0 extras. One of only 6 PURE roster rows.",
+   "t7_slugs": [
+    "law"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-law-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 225,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 795
+  },
+  "burger-demon.json": {
+   "tekken_base_index": "Bob",
+   "file_moves_index": 466,
+   "pattern": "VARIANT \u2014 inherits burger.json (ADDITIVE); not independently audited",
+   "note": "Variant/attire/form file of burger.json. RECONCILIATION HANDOFF: slug(s) bob are NOT in this PR \u2014 handed to the coordinator for the reconciliation lane (PR #1039 merge scope).",
+   "t7_slugs": [
+    "bob"
+   ],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 466
+  },
+  "burger-speed-demon.json": {
+   "tekken_base_index": "Bob",
+   "file_moves_index": 454,
+   "pattern": "VARIANT \u2014 inherits burger.json (ADDITIVE); not independently audited",
+   "note": "Variant/attire/form file of burger.json. RECONCILIATION HANDOFF: slug(s) bob are NOT in this PR \u2014 handed to the coordinator for the reconciliation lane (PR #1039 merge scope).",
+   "t7_slugs": [
+    "bob"
+   ],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 454
+  },
+  "burger-the-mouth.json": {
+   "tekken_base_index": "Bob",
+   "file_moves_index": 454,
+   "pattern": "VARIANT \u2014 inherits burger.json (ADDITIVE); not independently audited",
+   "note": "Variant/attire/form file of burger.json. RECONCILIATION HANDOFF: slug(s) bob are NOT in this PR \u2014 handed to the coordinator for the reconciliation lane (PR #1039 merge scope).",
+   "t7_slugs": [
+    "bob"
+   ],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 454
+  },
+  "burger.json": {
+   "tekken_base_index": "Bob",
+   "file_moves_index": 552,
+   "pattern": "ADDITIVE",
+   "note": "Bob + 2 WH sigs. Base form only; variants are Bob-only variant files. RECONCILIATION HANDOFF: slug(s) bob are NOT in this PR \u2014 handed to the coordinator for the reconciliation lane (PR #1039 merge scope).",
+   "t7_slugs": [
+    "bob"
+   ],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 301,
+   "file_moves_before": 552
+  },
+  "byou.json": {
+   "tekken_base_index": "Lei Wulong",
+   "file_moves_index": 728,
+   "pattern": "ADDITIVE",
+   "note": "File carries Lei Wulong T7 set, BUT owner order (SOURCE-MERGE 2026-10-21) says Lei = Rave, Byou base unrecorded. CONFLICT: no t7 overlay wired until owner names Byou's base. Lei frame data itself is absent from TheBigTuna in any case (see t7_missing_fighters).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 728
+  },
+  "cainelias.json": {
+   "tekken_base_index": "Undertaker (WWE)",
+   "file_moves_index": 41,
+   "pattern": "BUILT",
+   "note": "Curated Undertaker (WWE) signature kit on a King T3 proxy bank (proxy=True). No decoded WWE set. Second source undecided in CANON.md (Glen Kluger / Urban Reign, or a fitting Tekken character) \u2014 owner decision pending. No T7 overlay row.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 46
+  },
+  "charger-attire2.json": {
+   "tekken_base_index": "Blanka (SF) \u2014 fighter replaced by CHARGER (owner 2026-10-20)",
+   "file_moves_index": 199,
+   "pattern": "VARIANT \u2014 inherits charger.json (ADDITIVE); not independently audited",
+   "note": "Variant/attire/form file of charger.json.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 199
+  },
+  "charger.json": {
+   "tekken_base_index": "Blanka (SF) \u2014 fighter replaced by CHARGER (owner 2026-10-20)",
+   "file_moves_index": 199,
+   "pattern": "ADDITIVE",
+   "note": "Blanka (SF) set carried over, renamed signatures, ice+electric identity. SF 3D-native CHARGER moves NOT yet invented. No T7 overlay row (non-Tekken).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 203
+  },
+  "chatur.json": {
+   "tekken_base_index": "True Ogre (Tekken 3)",
+   "file_moves_index": 281,
+   "pattern": "PURE",
+   "note": "True Ogre, Tekken 3 only, 0 extras (four-arm body translation noted in canon_note, not added moves). No T7 overlay row.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 281
+  },
+  "chordz.json": {
+   "tekken_base_index": "Lars",
+   "file_moves_index": 469,
+   "pattern": "ADDITIVE",
+   "note": "Lars + 2 WH sigs.",
+   "t7_slugs": [
+    "lars"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-lars-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 127,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 469
+  },
+  "cyborgx.json": {
+   "tekken_base_index": "Alisa",
+   "file_moves_index": 624,
+   "pattern": "ADDITIVE",
+   "note": "Alisa + 2 WH sigs (Lullaby Hum, Motion Mandatory). Cape Jones = Cyborg X Attire 1 (CANON.md owner-lock). KEEP explicit stance clip \u2014 DO NOT CHANGE.",
+   "t7_slugs": [
+    "alisa"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-alisa-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 192,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 624
+  },
+  "deathfang-werewolf.json": {
+   "tekken_base_index": "Iori Yagami (KOF)",
+   "file_moves_index": 127,
+   "pattern": "VARIANT \u2014 inherits deathfang.json (BUILT); not independently audited",
+   "note": "Variant/attire/form file of deathfang.json.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 127
+  },
+  "deathfang.json": {
+   "tekken_base_index": "Iori Yagami (KOF)",
+   "file_moves_index": 122,
+   "pattern": "BUILT",
+   "note": "Curated Iori Yagami (KOF) kit on a Heihachi T3 proxy bank (proxy=True). No decoded KOF set. Non-Tekken: no T7 overlay row.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 127
+  },
+  "demonio-bloodline-ember.json": {
+   "tekken_base_index": "Jin Kazama",
+   "file_moves_index": 686,
+   "pattern": "VARIANT \u2014 inherits demonio.json (MIX); not independently audited",
+   "note": "Variant/attire/form file of demonio.json. RECONCILIATION HANDOFF: slug(s) jin, devil-jin are NOT in this PR \u2014 handed to the coordinator for the reconciliation lane (PR #1039 merge scope).",
+   "t7_slugs": [
+    "jin",
+    "devil-jin"
+   ],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 1,
+   "file_moves_before": 686
+  },
+  "demonio-human.json": {
+   "tekken_base_index": "Demonio",
+   "file_moves_index": 683,
+   "pattern": "VARIANT \u2014 inherits demonio.json (MIX); not independently audited",
+   "note": "Variant/attire/form file of demonio.json. RECONCILIATION HANDOFF: slug(s) jin, devil-jin are NOT in this PR \u2014 handed to the coordinator for the reconciliation lane (PR #1039 merge scope).",
+   "t7_slugs": [
+    "jin",
+    "devil-jin"
+   ],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 1,
+   "file_moves_before": 683
+  },
+  "demonio-winged.json": {
+   "tekken_base_index": "Jin",
+   "file_moves_index": 1063,
+   "pattern": "VARIANT \u2014 inherits demonio.json (MIX); not independently audited",
+   "note": "Variant/attire/form file of demonio.json. RECONCILIATION HANDOFF: slug(s) jin, devil-jin are NOT in this PR \u2014 handed to the coordinator for the reconciliation lane (PR #1039 merge scope).",
+   "t7_slugs": [
+    "jin",
+    "devil-jin"
+   ],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 1,
+   "file_moves_before": 1063
+  },
+  "demonio.json": {
+   "tekken_base_index": "Jin Kazama",
+   "file_moves_index": 764,
+   "pattern": "MIX",
+   "note": "Jin Kazama + Devil Jin (distinct Tekken roster entry, counts as second fighter) + 3 WH sigs. RECONCILIATION HANDOFF: slug(s) jin, devil-jin are NOT in this PR \u2014 handed to the coordinator for the reconciliation lane (PR #1039 merge scope).",
+   "t7_slugs": [
+    "jin",
+    "devil-jin"
+   ],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 218,
+   "file_moves_before": 764
+  },
+  "diablo.json": {
+   "tekken_base_index": "Heihachi",
+   "file_moves_index": 661,
+   "pattern": "ADDITIVE",
+   "note": "Heihachi + 3 WH sigs. RECONCILIATION HANDOFF: slug(s) heihachi are NOT in this PR \u2014 handed to the coordinator for the reconciliation lane (PR #1039 merge scope).",
+   "t7_slugs": [
+    "heihachi"
+   ],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 198,
+   "file_moves_before": 661
+  },
+  "dio.json": {
+   "tekken_base_index": "Akuma",
+   "file_moves_index": 275,
+   "pattern": "ADDITIVE",
+   "note": "Akuma + 2 WH sigs.",
+   "t7_slugs": [
+    "akuma"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-akuma-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 120,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 275
+  },
+  "doa-ayane.json": {
+   "tekken_base_index": "Ayane (DOA4 / DOA Ultimate)",
+   "file_moves_index": 23,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "DOA source bank file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 23
+  },
+  "doa-bass.json": {
+   "tekken_base_index": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "file_moves_index": 22,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "DOA source bank file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 22
+  },
+  "doa-hayabusa.json": {
+   "tekken_base_index": "Ryu Hayabusa (DOA5 Last Round)",
+   "file_moves_index": 18,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "DOA source bank file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 18
+  },
+  "doa-jannlee.json": {
+   "tekken_base_index": "Jann Lee (DOA4 / DOA Ultimate)",
+   "file_moves_index": 21,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "DOA source bank file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 21
+  },
+  "doa-kasumi.json": {
+   "tekken_base_index": "Kasumi (DOA5 Last Round)",
+   "file_moves_index": 20,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "DOA source bank file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 20
+  },
+  "doa-tina.json": {
+   "tekken_base_index": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "file_moves_index": 26,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "DOA source bank file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 26
+  },
+  "doc-frank-frankenstein.json": {
+   "tekken_base_index": "Doc Frank",
+   "file_moves_index": 788,
+   "pattern": "VARIANT \u2014 inherits docfrank.json (ADDITIVE); not independently audited",
+   "note": "Variant/attire/form file of docfrank.json.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 788
+  },
+  "doc-frank-hood.json": {
+   "tekken_base_index": "Doc Frank",
+   "file_moves_index": 892,
+   "pattern": "VARIANT \u2014 inherits docfrank.json (ADDITIVE); not independently audited",
+   "note": "Variant/attire/form file of docfrank.json.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 892
+  },
+  "doc-frank-machine-shop.json": {
+   "tekken_base_index": "Bosconovitch",
+   "file_moves_index": 933,
+   "pattern": "VARIANT \u2014 inherits docfrank.json (ADDITIVE); not independently audited",
+   "note": "Variant/attire/form file of docfrank.json.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 933
+  },
+  "doc-frank-wowomomo.json": {
+   "tekken_base_index": "Doc Frank",
+   "file_moves_index": 892,
+   "pattern": "VARIANT \u2014 inherits docfrank.json (ADDITIVE); not independently audited",
+   "note": "Variant/attire/form file of docfrank.json.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 892
+  },
+  "docfrank.json": {
+   "tekken_base_index": "Bosconovitch",
+   "file_moves_index": 380,
+   "pattern": "ADDITIVE",
+   "note": "Bosconovitch (T3) + 5 Gero-inspired originals + 2 WH sigs. No T7 Bosconovitch exists, so no T7 overlay row.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 380
+  },
+  "dorowani.json": {
+   "tekken_base_index": "Gon (Tekken 3)",
+   "file_moves_index": 175,
+   "pattern": "PURE",
+   "note": "Gon, Tekken 3 only, 0 extras. No T7 overlay row (Gon is not in T7).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 175
+  },
+  "dxmmii-patchwork.json": {
+   "tekken_base_index": "Mokujin",
+   "file_moves_index": 170,
+   "pattern": "BUILT",
+   "note": "Mokujin CONCEPT, authored patchwork kit (no decoded Mokujin set in file) + 4 WH sigs. Four-arm stance system is built per CANON.md. Mokujin stance needs a MIX decision (mimics others, not a fixed stance).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 170
+  },
+  "dxmmii.json": {
+   "tekken_base_index": "Mokujin",
+   "file_moves_index": 150,
+   "pattern": "VARIANT \u2014 inherits dxmmii-patchwork.json (BUILT); not independently audited",
+   "note": "Variant/attire/form file of dxmmii-patchwork.json.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 150
+  },
+  "gashadokuro.json": {
+   "tekken_base_index": "Kuma",
+   "file_moves_index": 530,
+   "pattern": "PURE",
+   "note": "Kuma line only (T8 Kuma + T7 Kuma + T3 Kuma), 0 extras. Kuma overlay file is a 0-move STUB (upstream TheBigTuna t7-kuma-1.json has moves=[]), so the T7 overlay contributes 0 rows until Kuma frame data is sourced elsewhere. Canon law 2026-10-23: proprietary successor to the Kuma slot; Kuma himself is obsolete in-universe (technical scaffolding only).",
+   "t7_slugs": [
+    "kuma"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-kuma-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 530
+  },
+  "gyou-spirit-body.json": {
+   "tekken_base_index": "Paul Phoenix",
+   "file_moves_index": 567,
+   "pattern": "VARIANT \u2014 inherits gyou.json (MIX); not independently audited",
+   "note": "Variant/attire/form file of gyou.json.",
+   "t7_slugs": [
+    "paul"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-paul-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 125,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 567
+  },
+  "gyou.json": {
+   "tekken_base_index": "Paul",
+   "file_moves_index": 1005,
+   "pattern": "MIX",
+   "note": "Declared base Paul + legacy Hwoarang majority. Owner call pending on canonical base; no rows deleted here.",
+   "t7_slugs": [
+    "paul",
+    "hwoarang"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-paul-lp-rp-lk-rk.json",
+    "game/assets/movesets/t7/t7-hwoarang-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 346,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 1005
+  },
+  "hugo.json": {
+   "tekken_base_index": "Hugo Andore (Final Fight/SF)",
+   "file_moves_index": 130,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Final Fight / Street Fighter source file (Hugo Andore).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 130
+  },
+  "iori.json": {
+   "tekken_base_index": "Iori Yagami (KOF)",
+   "file_moves_index": 196,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "KOF source file (Iori Yagami).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 196
+  },
+  "jin_soul.json": {
+   "tekken_base_index": "Yoshimitsu",
+   "file_moves_index": 1012,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Yoshimitsu-line file per index.json tekken_base. RECONCILIATION HANDOFF: slug(s) yoshimitsu are NOT in this PR \u2014 handed to the coordinator for the reconciliation lane (PR #1039 merge scope).",
+   "t7_slugs": [
+    "yoshimitsu"
+   ],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 1012
+  },
+  "kai.json": {
+   "tekken_base_index": "Eddy Gordo",
+   "file_moves_index": 877,
+   "pattern": "ADDITIVE",
+   "note": "Eddy Gordo + 2 WH sigs.",
+   "t7_slugs": [
+    "eddy"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-eddy-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 224,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 877
+  },
+  "kingtyrant.json": {
+   "tekken_base_index": "Eddy Gordo",
+   "file_moves_index": 848,
+   "pattern": "ADDITIVE",
+   "note": "Eddy Gordo + 2 WH sigs. Booker T moves NOT present (needs WWE data).",
+   "t7_slugs": [
+    "eddy"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-eddy-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 224,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 848
+  },
+  "kinpo.json": {
+   "tekken_base_index": "Asuka",
+   "file_moves_index": 525,
+   "pattern": "ADDITIVE",
+   "note": "Asuka + 2 WH sigs. RECONCILIATION HANDOFF: slug(s) asuka are NOT in this PR \u2014 handed to the coordinator for the reconciliation lane (PR #1039 merge scope).",
+   "t7_slugs": [
+    "asuka"
+   ],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 247,
+   "file_moves_before": 525
+  },
+  "koreshi.json": {
+   "tekken_base_index": "Kakashi (Naruto) + Super Saiyan 4/5 + ninja",
+   "file_moves_index": 1080,
+   "pattern": "ADDITIVE",
+   "note": "FILE: Vega (SFV/SF4 donors) + 16 canon:koreshi-flavor rows + 2 wh: entries. DESIGN CONFLICT: index tekken_base claims 'Kakashi + Super Saiyan 4/5 + ninja' \u2014 no Kakashi/SSJ content is in the file. File pattern follows the file; design claim is unverified. No T7 overlay row.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 1080
+  },
+  "kronos-attire2.json": {
+   "tekken_base_index": "Zangief + Golem (Urban Reign)",
+   "file_moves_index": 2600,
+   "pattern": "VARIANT \u2014 inherits kronos.json (MIX); not independently audited",
+   "note": "Variant/attire/form file of kronos.json.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 2600
+  },
+  "kronos.json": {
+   "tekken_base_index": "Zangief + Golem (Urban Reign)",
+   "file_moves_index": 900,
+   "pattern": "MIX",
+   "note": "Zangief (SF) + Golem (Urban Reign) + DOA Bass throws + Armor King chain throw + WH sig entries. Non-Tekken: no T7 overlay row.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 900
+  },
+  "kutz.json": {
+   "tekken_base_index": "Goh Hinogami",
+   "file_moves_index": 160,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Virtua Fighter source file (Goh Hinogami).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 160
+  },
+  "lili.json": {
+   "tekken_base_index": "Lili",
+   "file_moves_index": 508,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Tekken source bank file (Lili). Not a roster character per pattern audit exclusions; silvertongue is the roster Lili.",
+   "t7_slugs": [
+    "lili"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-lili-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 144,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 508
+  },
+  "marduk.json": {
+   "tekken_base_index": "Craig Marduk (Tekken)",
+   "file_moves_index": 340,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Tekken source bank file (Craig Marduk). Marduk T7 frame data absent from TheBigTuna. Jotei's claimed base \u2014 but no jotei.json exists (see no_file_characters).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 340
+  },
+  "mariposa-monarch.json": {
+   "tekken_base_index": "Zafina",
+   "file_moves_index": 518,
+   "pattern": "ADDITIVE",
+   "note": "Zafina (T7 DLC, TekkenDocs sheet damage, NOT MOD) + 2 WH sigs. Roster slot uses this monarch variant; base mariposa.json is Zafina-only as a file.",
+   "t7_slugs": [
+    "zafina"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-zafina-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 188,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 518
+  },
+  "mariposa.json": {
+   "tekken_base_index": "Zafina",
+   "file_moves_index": 372,
+   "pattern": "VARIANT \u2014 inherits mariposa-monarch.json (ADDITIVE); not independently audited",
+   "note": "Variant/attire/form file of mariposa-monarch.json.",
+   "t7_slugs": [
+    "zafina"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-zafina-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 188,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 372
+  },
+  "megami.json": {
+   "tekken_base_index": "Jun Kazama (Tekken Tag Tournament 2)",
+   "file_moves_index": 299,
+   "pattern": "ADDITIVE",
+   "note": "Jun Kazama (TTT2) + canon-layered guardian moves. No T7 overlay row (Jun is not playable in T7; needs TTT2 extraction). 162/311 editor entries unmapped (authored/canon half carries no anim_ref) \u2014 frame data exists, animation slots are the blocker; do not conflate the two.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 304
+  },
+  "menajerii.json": {
+   "tekken_base_index": "Roger Jr. (Tekken Tag Tournament 2)",
+   "file_moves_index": 193,
+   "pattern": "BUILT",
+   "note": "Roger Jr. kit authored FRESH with Tekken inputs + canon-layered moves (Heron/Boar/Serpent). Only 39/193 moves carry TTT2 Roger provenance; 190/193 entries unmapped. Built, not pulled.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 193
+  },
+  "michiko.json": {
+   "tekken_base_index": "Katarina",
+   "file_moves_index": 344,
+   "pattern": "ADDITIVE",
+   "note": "Katarina + 2 WH sigs.",
+   "t7_slugs": [
+    "katarina"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-katarina-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 109,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 344
+  },
+  "negativo.json": {
+   "tekken_base_index": "Negan",
+   "file_moves_index": 292,
+   "pattern": "ADDITIVE",
+   "note": "Negan (T7 DLC, TekkenDocs sheet damage, NOT MOD) + 2 WH sigs.",
+   "t7_slugs": [
+    "negan"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-negan-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 119,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 292
+  },
+  "nightwolf.json": {
+   "tekken_base_index": "Julia",
+   "file_moves_index": 567,
+   "pattern": "ADDITIVE",
+   "note": "Julia + 2 WH sigs. Julia frame data is ABSENT from TheBigTuna (no t7-julia file upstream), so no overlay row exists yet \u2014 see t7_missing_fighters. Julia anim move table is a Job 1 mot.bin item (julmot? \u2014 do not guess the code; Job 1's 52-file table is authoritative).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 554
+  },
+  "pantera.json": {
+   "tekken_base_index": "King",
+   "file_moves_index": 873,
+   "pattern": "ADDITIVE",
+   "note": "King + 3 WH sigs (Honest Hold, Tail-Tip Lunge, Battle Itself). NOT pure: the prior PURE claim is corrected by the pattern audit. RECONCILIATION HANDOFF: slug(s) king are NOT in this PR \u2014 handed to the coordinator for the reconciliation lane (PR #1039 merge scope).",
+   "t7_slugs": [
+    "king"
+   ],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 258,
+   "file_moves_before": 874
+  },
+  "phantom.json": {
+   "tekken_base_index": "Yoshimitsu",
+   "file_moves_index": 1019,
+   "pattern": "ADDITIVE",
+   "note": "Yoshimitsu + 3 WH sigs. RECONCILIATION HANDOFF: slug(s) yoshimitsu are NOT in this PR \u2014 handed to the coordinator for the reconciliation lane (PR #1039 merge scope).",
+   "t7_slugs": [
+    "yoshimitsu"
+   ],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 309,
+   "file_moves_before": 1019
+  },
+  "pond.json": {
+   "tekken_base_index": "Raven (Tekken 7)",
+   "file_moves_index": 620,
+   "pattern": "PURE",
+   "note": "Raven lineage only (T8 Raven + T7 Master Raven), 0 extras. Mot.bin bank: game/assets/anim/t7/frv-pond-motbin-bank.json (MERGED PR #61).",
+   "t7_slugs": [
+    "master-raven"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-master-raven-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 191,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 620
+  },
+  "purplerain.json": {
+   "tekken_base_index": "Lee",
+   "file_moves_index": 569,
+   "pattern": "ADDITIVE",
+   "note": "Lee + 2 WH sigs. Hwoarang is Tobi's, not Purple Rain's.",
+   "t7_slugs": [
+    "lee"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-lee-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 202,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 569
+  },
+  "raiden.json": {
+   "tekken_base_index": "Big Bear / Raiden (Fatal Fury/KOF)",
+   "file_moves_index": 114,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Fatal Fury / KOF source file (Big Bear / Raiden).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 114
+  },
+  "rave.json": {
+   "tekken_base_index": "Lei Wulong",
+   "file_moves_index": 1086,
+   "pattern": "MIX",
+   "note": "Lei Wulong + Byou donor rows (~158, incl. Byou's sigs) + 2 Rave WH sigs. Lei frame data is ABSENT from TheBigTuna, so no overlay row exists yet. Lei anim move table exists (leemot.json, pre-existing in game-reverse-engineering) \u2014 anim move-level only, not frame data, and clip bytes still need bank-0x8000 unblock.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 1086
+  },
+  "realizzt.json": {
+   "tekken_base_index": "Brad Burns",
+   "file_moves_index": 156,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Virtua Fighter source file (Brad Burns).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 156
+  },
+  "retsu.json": {
+   "tekken_base_index": "Bryan Fury",
+   "file_moves_index": 685,
+   "pattern": "ADDITIVE",
+   "note": "Bryan Fury + 2 WH sigs. RECONCILIATION HANDOFF: slug(s) bryan are NOT in this PR \u2014 handed to the coordinator for the reconciliation lane (PR #1039 merge scope).",
+   "t7_slugs": [
+    "bryan"
+   ],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 685
+  },
+  "rin.json": {
+   "tekken_base_index": "Jin Kazama",
+   "file_moves_index": 659,
+   "pattern": "ADDITIVE",
+   "note": "Jin Kazama + 2 WH sigs. RECONCILIATION HANDOFF: slug(s) jin are NOT in this PR \u2014 handed to the coordinator for the reconciliation lane (PR #1039 merge scope).",
+   "t7_slugs": [
+    "jin"
+   ],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 659
+  },
+  "ryuji-rock.json": {
+   "tekken_base_index": "Ryuji Yamazaki (KOF) x The Rock",
+   "file_moves_index": 24,
+   "pattern": "VARIANT \u2014 inherits ryuji.json (MIX); not independently audited",
+   "note": "Variant/attire/form file of ryuji.json.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 129
+  },
+  "ryuji.json": {
+   "tekken_base_index": "Ryuji Yamazaki (KOF XV) / The Rock hybrid",
+   "file_moves_index": 103,
+   "pattern": "MIX",
+   "note": "KOF Yamazaki curated set + The Rock wrestling (King T7 rows per canon_note) + 7 WH sig entries. The King-row subset is the only T7-overlay-adjacent content; the file as a whole is non-Tekken, so no single overlay slug is wired.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 127
+  },
+  "ryusan.json": {
+   "tekken_base_index": "Lucky Chloe (Tekken 7)",
+   "file_moves_index": 211,
+   "pattern": "ADDITIVE",
+   "note": "Lucky Chloe T7 + 6 wh: corrosion moves. Mot.bin bank: game/assets/anim/t7/dnc-ryusan-motbin-bank.json (MERGED PR #61).",
+   "t7_slugs": [
+    "lucky-chloe"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-lucky-chloe-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 141,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 211
+  },
+  "sakura.json": {
+   "tekken_base_index": "Xiaoyu",
+   "file_moves_index": 764,
+   "pattern": "ADDITIVE",
+   "note": "Xiaoyu + 3 WH sigs.",
+   "t7_slugs": [
+    "ling"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-ling-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 220,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 764
+  },
+  "samura1.json": {
+   "tekken_base_index": "Gun Jack",
+   "file_moves_index": 860,
+   "pattern": "ADDITIVE",
+   "note": "Jack line, one fighter across generations (T3 Gunjack + T7 Jack-7 + T8 Jack-8) + 3 WH sigs.",
+   "t7_slugs": [
+    "jack-7"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-jack-7-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 182,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 860
+  },
+  "scimitar.json": {
+   "tekken_base_index": "Shaheen",
+   "file_moves_index": 362,
+   "pattern": "ADDITIVE",
+   "note": "Shaheen + 2 WH sigs. NOT pure (prior PURE claim corrected). RECONCILIATION HANDOFF: slug(s) shaheen are NOT in this PR \u2014 handed to the coordinator for the reconciliation lane (PR #1039 merge scope).",
+   "t7_slugs": [
+    "shaheen"
+   ],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 124,
+   "file_moves_before": 362
+  },
+  "sf-akuma.json": {
+   "tekken_base_index": "Akuma (SF)",
+   "file_moves_index": 168,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Street Fighter source bank file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 168
+  },
+  "sf-blanka.json": {
+   "tekken_base_index": "Blanka (SF)",
+   "file_moves_index": 37,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Street Fighter source bank file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 37
+  },
+  "sf-cammy.json": {
+   "tekken_base_index": "Cammy (SF) \u2014 Akuma-pattern translation",
+   "file_moves_index": 10,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Street Fighter source bank file (Akuma-pattern translation).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 10
+  },
+  "sf-chunli.json": {
+   "tekken_base_index": "Chun-Li (SF) \u2014 Akuma-pattern translation",
+   "file_moves_index": 10,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Street Fighter source bank file (Akuma-pattern translation).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 10
+  },
+  "sf-dhalsim.json": {
+   "tekken_base_index": "Dhalsim (SF) \u2014 Akuma-pattern translation",
+   "file_moves_index": 10,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Street Fighter source bank file (Akuma-pattern translation).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 10
+  },
+  "sf-guile.json": {
+   "tekken_base_index": "Guile (SF) \u2014 Akuma-pattern translation",
+   "file_moves_index": 11,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Street Fighter source bank file (Akuma-pattern translation).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 11
+  },
+  "sf-ken.json": {
+   "tekken_base_index": "Ken (SF)",
+   "file_moves_index": 32,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Street Fighter source bank file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 32
+  },
+  "sf-mbison.json": {
+   "tekken_base_index": "M. Bison (SF) \u2014 Akuma-pattern translation",
+   "file_moves_index": 12,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Street Fighter source bank file (Akuma-pattern translation).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 12
+  },
+  "sf-ryu.json": {
+   "tekken_base_index": "Ryu (SF)",
+   "file_moves_index": 34,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Street Fighter source bank file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 34
+  },
+  "sf-sagat.json": {
+   "tekken_base_index": "Sagat (SF) \u2014 Akuma-pattern translation",
+   "file_moves_index": 10,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Street Fighter source bank file (Akuma-pattern translation).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 10
+  },
+  "sf-vega.json": {
+   "tekken_base_index": "Vega (SF)",
+   "file_moves_index": 36,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Street Fighter source bank file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 36
+  },
+  "sf-zangief.json": {
+   "tekken_base_index": "Zangief (SF)",
+   "file_moves_index": 36,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Street Fighter source bank file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 36
+  },
+  "sha.json": {
+   "tekken_base_index": "Xiaoyu",
+   "file_moves_index": 785,
+   "pattern": "ADDITIVE",
+   "note": "Xiaoyu (T7 slug ling) + 2 WH sigs.",
+   "t7_slugs": [
+    "ling"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-ling-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 220,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 785
+  },
+  "silvertongue.json": {
+   "tekken_base_index": "Lili",
+   "file_moves_index": 508,
+   "pattern": "ADDITIVE",
+   "note": "Lili + 2 WH sigs. Stance APPROXIMATE (xiaoyu bank is the kit's bank, not Lili's own). Canon law 2026-10-23: proprietary re-own of the Lili slot.",
+   "t7_slugs": [
+    "lili"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-lili-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 144,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 508
+  },
+  "skull.json": {
+   "tekken_base_index": "Bryan Fury",
+   "file_moves_index": 688,
+   "pattern": "ADDITIVE",
+   "note": "Bryan Fury + 3 WH sigs. RECONCILIATION HANDOFF: slug(s) bryan are NOT in this PR \u2014 handed to the coordinator for the reconciliation lane (PR #1039 merge scope).",
+   "t7_slugs": [
+    "bryan"
+   ],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 327,
+   "file_moves_before": 688
+  },
+  "slice.json": {
+   "tekken_base_index": "Dragunov",
+   "file_moves_index": 486,
+   "pattern": "ADDITIVE",
+   "note": "Dragunov + 2 WH sigs.",
+   "t7_slugs": [
+    "dragunov"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-dragunov-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 141,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 486
+  },
+  "star.json": {
+   "tekken_base_index": "Christie",
+   "file_moves_index": 908,
+   "pattern": "ADDITIVE",
+   "note": "Christie capoeira line via Xiaoyu data (Christie is not in T7/T8 as her own slot; Xiaoyu is the proxy, one capoeira lineage, not a two-fighter mix) + 2 WH sigs.",
+   "t7_slugs": [
+    "ling"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-ling-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 220,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 908
+  },
+  "sunra.json": {
+   "tekken_base_index": "Pac-Man",
+   "file_moves_index": 139,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Pac-Man-line file per index.json tekken_base. Non-Tekken.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 139
+  },
+  "t3-anna.json": {
+   "tekken_base_index": "Anna Williams",
+   "file_moves_index": 743,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Tekken 3 library bank file (Anna).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 743
+  },
+  "t3-bosconovitch.json": {
+   "tekken_base_index": "Dr. Bosconovitch",
+   "file_moves_index": 266,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Tekken 3 library bank file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 266
+  },
+  "t3-eddy.json": {
+   "tekken_base_index": "Eddy Gordo",
+   "file_moves_index": 707,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Tekken 3 library bank file (Eddy); T7 Eddy overlay also applies by fighter, but this file is a T3 bank, not a WH character.",
+   "t7_slugs": [
+    "eddy"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-eddy-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 224,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 707
+  },
+  "t3-forestlaw.json": {
+   "tekken_base_index": "Forest Law",
+   "file_moves_index": 102,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Tekken 3 library bank file (Forest Law, Law lineage).",
+   "t7_slugs": [
+    "law"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-law-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 225,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 102
+  },
+  "t3-gon.json": {
+   "tekken_base_index": "Gon",
+   "file_moves_index": 151,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Tekken 3 library bank file (Gon).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 151
+  },
+  "t3-hwoarang.json": {
+   "tekken_base_index": "Hwoarang",
+   "file_moves_index": 723,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Tekken 3 library bank file (Hwoarang).",
+   "t7_slugs": [
+    "hwoarang"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-hwoarang-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 221,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 723
+  },
+  "t3-julia.json": {
+   "tekken_base_index": "Julia Chang",
+   "file_moves_index": 419,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Tekken 3 library bank file (Julia). Julia T7 frame data still absent from TheBigTuna.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 419
+  },
+  "t3-kuma.json": {
+   "tekken_base_index": "Kuma",
+   "file_moves_index": 530,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Tekken 3 library bank file (Kuma); T7 Kuma overlay is a 0-move stub.",
+   "t7_slugs": [
+    "kuma"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-kuma-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 530
+  },
+  "t3-law.json": {
+   "tekken_base_index": "Marshall Law",
+   "file_moves_index": 693,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Tekken 3 library bank file (Law).",
+   "t7_slugs": [
+    "law"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-law-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 225,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 693
+  },
+  "t3-lei.json": {
+   "tekken_base_index": "Lei Wulong",
+   "file_moves_index": 790,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Tekken 3 library bank file (Lei). Lei T7 frame data still absent from TheBigTuna.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 790
+  },
+  "t3-nina.json": {
+   "tekken_base_index": "Nina Williams",
+   "file_moves_index": 754,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Tekken 3 library bank file (Nina).",
+   "t7_slugs": [
+    "nina"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-nina-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 189,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 754
+  },
+  "t3-ogre.json": {
+   "tekken_base_index": "Ogre",
+   "file_moves_index": 161,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Tekken 3 library bank file (Ogre).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 161
+  },
+  "t3-paul.json": {
+   "tekken_base_index": "Paul Phoenix",
+   "file_moves_index": 497,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Tekken 3 library bank file (Paul).",
+   "t7_slugs": [
+    "paul"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-paul-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 125,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 497
+  },
+  "t3_input_tables.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Input-table library file, not a character moveset.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "thor.json": {
+   "tekken_base_index": "Ganryu",
+   "file_moves_index": 322,
+   "pattern": "ADDITIVE",
+   "note": "Ganryu (T7 DLC, TekkenDocs sheet damage, NOT MOD) + 2 WH sigs. File also carries TTT2 Ganryu rows + Bryan T3 proxy bank rows.",
+   "t7_slugs": [
+    "ganryu"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-ganryu-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 139,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 322
+  },
+  "tobi.json": {
+   "tekken_base_index": "Hwoarang (Tekken 3)",
+   "file_moves_index": 729,
+   "pattern": "ADDITIVE",
+   "note": "Hwoarang + 6 tobi-canon escape moves (Longleap, Courier's Dash, Tip-Off, Satchel Swing, Escape Soul Flurry, The Undelivered Letter).",
+   "t7_slugs": [
+    "hwoarang"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-hwoarang-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 221,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 729
+  },
+  "torch.json": {
+   "tekken_base_index": "Anna",
+   "file_moves_index": 892,
+   "pattern": "ADDITIVE",
+   "note": "Anna + 2 WH sigs. Anna frame data is ABSENT from TheBigTuna (no t7-anna file upstream), so no overlay row exists yet. Anna anim move table is a Job 1 mot.bin item (annmot.bin, 4,019,360 bytes, in the remaining 52).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 350,
+   "file_moves_before": 892
+  },
+  "tou.json": {
+   "tekken_base_index": "Paul Phoenix",
+   "file_moves_index": 681,
+   "pattern": "ADDITIVE",
+   "note": "Paul Phoenix + 2 WH sigs.",
+   "t7_slugs": [
+    "paul"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-paul-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 125,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 681
+  },
+  "ur-char001.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char002.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char003.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char004.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char016.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char020.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char021.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char022.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char030.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char031.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char032.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char041.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char042.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char043.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char044.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char045.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char046.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char054.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char055.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char056.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char057.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char058.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char059.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char060.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char061.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char062.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "ur-char063.json": {
+   "tekken_base_index": null,
+   "file_moves_index": null,
+   "pattern": "PATTERN UNCLEAR \u2014 Urban Reign library file; no tekken_base in index.json and not audited in the pattern audit. No pattern assigned, no T7 slug guessed.",
+   "note": "Urban Reign library file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 0
+  },
+  "vainabel.json": {
+   "tekken_base_index": "Bass Armstrong",
+   "file_moves_index": 52,
+   "pattern": "ADDITIVE",
+   "note": "Bass Armstrong (DOA real data, 42 real Bass moves) + 2 WH sigs. Non-Tekken: no T7 overlay row.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 60
+  },
+  "vega.json": {
+   "tekken_base_index": "Vega (SF)",
+   "file_moves_index": 207,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Street Fighter source file (Vega).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 207
+  },
+  "vf-akira.json": {
+   "tekken_base_index": "Akira Yuki (Virtua Fighter 5 Final Showdown)",
+   "file_moves_index": 20,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Virtua Fighter source bank file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 20
+  },
+  "vf-elblaze.json": {
+   "tekken_base_index": "El Blaze (Virtua Fighter 5)",
+   "file_moves_index": 28,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Virtua Fighter source bank file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 28
+  },
+  "vf-jeffry.json": {
+   "tekken_base_index": "Jeffry McWild (Virtua Fighter 5)",
+   "file_moves_index": 25,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Virtua Fighter source bank file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 25
+  },
+  "vf-kage.json": {
+   "tekken_base_index": "Kage-Maru (Virtua Fighter 5 Final Showdown)",
+   "file_moves_index": 14,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Virtua Fighter source bank file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 14
+  },
+  "vf-leifei.json": {
+   "tekken_base_index": "Lei-Fei (Virtua Fighter 5)",
+   "file_moves_index": 812,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Virtua Fighter source bank file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 812
+  },
+  "vf-sarah.json": {
+   "tekken_base_index": "Sarah Bryant (Virtua Fighter 5 Final Showdown)",
+   "file_moves_index": 14,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Virtua Fighter source bank file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 14
+  },
+  "vf-wolf.json": {
+   "tekken_base_index": "Wolf Hawkfield (Virtua Fighter 5)",
+   "file_moves_index": 21,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Virtua Fighter source bank file.",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 21
+  },
+  "waterfall.json": {
+   "tekken_base_index": "Josie",
+   "file_moves_index": 365,
+   "pattern": "ADDITIVE",
+   "note": "Josie + 2 WH sigs. No T8 layer (Josie not in T8).",
+   "t7_slugs": [
+    "josie"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-josie-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 135,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 365
+  },
+  "yukihyo.json": {
+   "tekken_base_index": "Armor King",
+   "file_moves_index": 560,
+   "pattern": "ADDITIVE",
+   "note": "Armor King + 2 WH sigs. Armor King frame data is ABSENT from TheBigTuna (no t7-armor-king file upstream), so no overlay row exists yet. Armor King anim move table is a Job 1 mot.bin item (arbmot.bin, 2,425,636 bytes, in the remaining 52).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 560
+  },
+  "zangief.json": {
+   "tekken_base_index": "Zangief (SF)",
+   "file_moves_index": 217,
+   "pattern": "LIBRARY \u2014 source bank, not a WH roster character",
+   "note": "Street Fighter source file (Zangief).",
+   "t7_slugs": [],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 217
+  },
+  "zen.json": {
+   "tekken_base_index": "Heihachi",
+   "file_moves_index": 639,
+   "pattern": "BUILT (design) \u2014 shipped file differs",
+   "note": "DESIGN: Eleven/Twelve concept -> Dural (VF5) 3D base + Zen's own canon stand attacks + X.COPY as ONE super only. SHIPPED FILE is Heihachi + 2 WH sigs, which is NOT the design. The heihachi overlay row below counts the shipped file's rows only and must never be read as 'Zen's base is Heihachi'. FIGHTER_BANK zen is null (UNMAPPED) per PR #1019 \u2014 already resolved, do NOT restore heihachi or julia without a new owner decision. Zen lane owns the rebuild; this lane does not touch fighter.js (combat lane owns it). RECONCILIATION HANDOFF: slug(s) heihachi are NOT in this PR \u2014 handed to the coordinator for the reconciliation lane (PR #1039 merge scope).",
+   "t7_slugs": [
+    "heihachi"
+   ],
+   "t7_overlay_files": [],
+   "t7_overlay_moves_available": 0,
+   "t7_moves_in_file_before": 0,
+   "file_moves_before": 639
+  },
+  "zui.json": {
+   "tekken_base_index": "Steve Fox",
+   "file_moves_index": 654,
+   "pattern": "MIX",
+   "note": "Steve Fox + Lei Wulong DRU drunken fist (Lei frame data absent from TheBigTuna, so the DRU part has no overlay row here). KEEP Zui's hands-up drunken stagger stance \u2014 DO NOT change it. Sibling Zui-mix lane owns Zui.",
+   "t7_slugs": [
+    "steve"
+   ],
+   "t7_overlay_files": [
+    "game/assets/movesets/t7/t7-steve-lp-rp-lk-rk.json"
+   ],
+   "t7_overlay_moves_available": 239,
+   "t7_moves_in_file_before": 305,
+   "file_moves_before": 654
+  }
+ },
+ "made_wiring": {
+  "file": "game/assets/movesets/t7/MADE-WIRING.json",
+  "parsed": 188,
+  "target": 188,
+  "adapt": 147,
+  "build": 41,
+  "clip_files_already_on_disk": 7,
+  "note": "Every MADE move is wired with an individual additive Tekken-style input (LP1/RP2/LK3/RK4 + direction + stance) on top of that character's Tekken base, per character individually. SPECIFIED_ONLY moves have no clip bytes yet; community mocap first-check (Mixamo, CMU, Bandai Namco free, Rokoko) is pending and no specific clip is claimed."
+ },
+ "stance": {
+  "file": "game/assets/anim/t7/STANCE-STATUS.json",
+  "unmapped": 29,
+  "correct": 25,
+  "fixed": 3,
+  "keep": 2,
+  "approximate": 1
+ },
+ "hitbox": {
+  "file": "game/assets/movesets/t7/HITBOX-STATUS.json",
+  "hit_level_covered_moves": "all 6,909 overlay moves carry a hit_level field (some null where the source is null \u2014 counted per fighter in that file)",
+  "boxes": "UNMAPPED for all moves (no coordinates in any source)"
+ },
+ "anim_banks": {
+  "file": "game/assets/anim/t7/INDEX.json",
+  "t7_banks_on_disk": 0,
+  "merged_motbin_banks": [
+   "game/assets/anim/t7/frv-pond-motbin-bank.json",
+   "game/assets/anim/t7/dnc-ryusan-motbin-bank.json"
+  ],
+  "note": "game/assets/anim/ still has no T7 clip banks after this PR \u2014 by design: clip bytes do not exist in any source used here. What this PR adds is the exact lookup map (per-move anim_lookup_key + the two merged mot.bin bank tables) so the extraction lane wires exact clips, never closest-match guesses. PAKCHUNK0 RULED OUT for 0x8000 clips (see anim INDEX pakchunk0_ruling): do not wait on pakchunk0. Primary unblock is live-memory TKMovesets2 extraction (parent delegation)."
+ },
+ "validation": {
+  "script": "game/assets/movesets/t7/validate-t7-overlay.mjs (Node; run: node game/assets/movesets/t7/validate-t7-overlay.mjs). Checks: every move has notation/notation_original/notation_lp + damage key + hit_level key + anim_ref + hitbox; strings resolve to TRUE STRING keys (comma-separated sequences, never chord rows); no string step maps to a chord row; bare-digit audit on notation_lp (repeat counts like 'x 4' are legitimate and exempted); jump-input moves flagged for bone-data (hip-Y) verification because JSON metadata CANNOT detect jumping. Simulation only \u2014 NOT a playtest.",
+  "kaggle_job": "game/assets/movesets/t7/kaggle-verify-overlay.py \u2014 paste-ready for the coordinator's Kaggle notebook (https://www.kaggle.com/code/marsfmmg/notebook2ff3176461/edit, T4 x2) with --require-gpu. NOT run in this lane (no browser/GPU here); do NOT claim a GPU run until real output + metrics exist. GPU lane Jobs 1-5 are already packaged at ~/workspace/gapfill-20261024/gpu-extract/ and are NOT redone here."
+ },
+ "delegations_to_parent": [
+  "PARENT BROWSER / LIVE-GAME (bank 0x8000, primary unblock): TKMovesets2 on a Windows box running owned T7 \u2014 load Raven then Chloe in practice, export P1 each, confirm a ~1,702-entry MOTA before wiring anything; every recovered clip must start 00 64 or 00 C8. pakchunk0 is ruled out (exhaustive proof in ~/workspace/gapfill-20261024/pakchunk8000/PAKCHUNK8000_REPORT.md) \u2014 do not wait on it and do not substitute another bank's clips. frv 1,593 + dnc 1,527 moves stay CLIP-UNRESOLVED until this lands.",
+  "PARENT BROWSER (live play verification): play the live build after merge \u2014 select screen + one fight per newly-mapped base family \u2014 and confirm T7-overlay moves do not regress the existing T3-bank play. This lane verified by simulation on real files only.",
+  "PARENT BROWSER (Kaggle GPU): run game/assets/movesets/t7/kaggle-verify-overlay.py with --require-gpu in the marsfmmg notebook, and separately execute the GPU lane's already-packaged Jobs 1-5 (~/workspace/gapfill-20261024/gpu-extract/jobs/) in order. Report GPU-VERIFICATION.txt + manifests; a CPU run must never pass as a GPU run.",
+  "PARENT BROWSER (wavu name join): parse wavu.wiki T7 movelist table structure per fighter per the method in name_join.method_for_the_join_lane; join on notation only; report per-fighter join rates. Do not join off flattened text.",
+  "COMBAT LANE (owns fighter.js \u2014 this lane did not touch it): confirm FIGHTER_BANK zen is null on current main (stance audit says PR #1019 set it; verify by reading fighter.js, do not restore heihachi/julia); confirm the overlay schema (notation_lp join key) before the inline-merge follow-up; own hitbox.js/hitdetect.js engine work for per-move boxes.",
+  "OWNER DECISIONS (do not guess): Byou's base; Gyou canonical base (Paul vs Paul+Hwoarang); baek-master-white base (Kevin vs Baek); Koreshi design-vs-file; Cainelias second source; dxmmii-patchwork MIX stance; Birodo + Jotei pattern decisions."
+ ],
+ "license_note": "License firewall OFF per user directive 2026-10-24 (pull everything regardless of license, document copyleft, never block). MODDING COMMUNITY AUTHORIZATION EXPANDED 2026-10-24 20:20 CDT: pull whatever is needed from Tekken/WWE/every-game modding communities (TekkenMods, TKMovesets/Kiloutre, wavu.wiki, geppopotamus.info, Nexus Mods mods/tools only, modding wikis, GitHub modding tools) and wire it up. FULL GAME FILES FROM OWNED GAMES = AUTHORIZED, NOT PIRACY (user correction 2026-10-24 20:21 CDT): the user owns Tekken 7 (Steam) and the other teardown games; ownership = authorization, never demand proof; only copies of games NOT owned are out of scope. That authorization covers the pakchunk / live-memory unblock paths in this index for owned T7. Sources: TheBigTuna/Tekken-7-Frame-Data, TekkenDocs API (Google Sheet source of truth), wavu.wiki (pending join; King T7 page URL was search-returned AND text-fetched in this lane \u2014 no guessed URLs cited), game-reverse-engineering mot.bin decodes (private repo). Copyleft status of each source is NOT asserted here \u2014 the coordinator should record it in the PR discussion if the repo requires it; nothing in this PR blocks on it.",
+ "reconciliation_handoff": {
+  "rule": "Coordinator update 2026-10-24: a dedicated reconciliation lane owns merging batch-motbin outputs with mega-batch PR #1039 (OPEN, branch feature/mega-batch-t7-20261024) into ONE correct moveset per fighter for the 8 T7-mapped fighters (+torch). This PR does NOT contain their overlay data and does NOT compete with that merge.",
+  "pr1039_moveset_files_verified": [
+   "burger.json",
+   "demonio.json",
+   "diablo.json",
+   "kinpo.json",
+   "pantera.json",
+   "phantom.json",
+   "scimitar.json",
+   "skull.json"
+  ],
+  "plus_torch": "torch.json (Anna) is the +1: Anna has no TheBigTuna overlay file, so there is no torch overlay to hand over; torch's T7 rows live in PR #1039's scope.",
+  "excluded_slugs": {
+   "asuka": {
+    "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+    "source_file": "frames-json/t7-asuka-1.json",
+    "move_count": 138,
+    "damage_source": "MOD (TheBigTuna)",
+    "overlay_file": "game/assets/movesets/t7/t7-asuka-lp-rp-lk-rk.json",
+    "name_join": "PENDING",
+    "anim_status": "UNMAPPED"
+   },
+   "bob": {
+    "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+    "source_file": "frames-json/t7-bob-1.json",
+    "move_count": 174,
+    "damage_source": "MOD (TheBigTuna)",
+    "overlay_file": "game/assets/movesets/t7/t7-bob-lp-rp-lk-rk.json",
+    "name_join": "PENDING",
+    "anim_status": "UNMAPPED"
+   },
+   "bryan": {
+    "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+    "source_file": "frames-json/t7-bryan-1.json",
+    "move_count": 172,
+    "damage_source": "MOD (TheBigTuna)",
+    "overlay_file": "game/assets/movesets/t7/t7-bryan-lp-rp-lk-rk.json",
+    "name_join": "PENDING",
+    "anim_status": "UNMAPPED"
+   },
+   "devil-jin": {
+    "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+    "source_file": "frames-json/t7-devil-jin-1.json",
+    "move_count": 140,
+    "damage_source": "MOD (TheBigTuna)",
+    "overlay_file": "game/assets/movesets/t7/t7-devil-jin-lp-rp-lk-rk.json",
+    "name_join": "PENDING",
+    "anim_status": "UNMAPPED"
+   },
+   "heihachi": {
+    "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+    "source_file": "frames-json/t7-heihachi-1.json",
+    "move_count": 124,
+    "damage_source": "MOD (TheBigTuna)",
+    "overlay_file": "game/assets/movesets/t7/t7-heihachi-lp-rp-lk-rk.json",
+    "name_join": "PENDING",
+    "anim_status": "UNMAPPED"
+   },
+   "jin": {
+    "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+    "source_file": "frames-json/t7-jin-1.json",
+    "move_count": 144,
+    "damage_source": "MOD (TheBigTuna)",
+    "overlay_file": "game/assets/movesets/t7/t7-jin-lp-rp-lk-rk.json",
+    "name_join": "PENDING",
+    "anim_status": "UNMAPPED"
+   },
+   "king": {
+    "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+    "source_file": "frames-json/t7-king-1.json",
+    "move_count": 157,
+    "damage_source": "MOD (TheBigTuna)",
+    "overlay_file": "game/assets/movesets/t7/t7-king-lp-rp-lk-rk.json",
+    "name_join": "PENDING",
+    "anim_status": "UNMAPPED"
+   },
+   "shaheen": {
+    "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+    "source_file": "frames-json/t7-shaheen-1.json",
+    "move_count": 93,
+    "damage_source": "MOD (TheBigTuna)",
+    "overlay_file": "game/assets/movesets/t7/t7-shaheen-lp-rp-lk-rk.json",
+    "name_join": "PENDING",
+    "anim_status": "UNMAPPED"
+   },
+   "yoshimitsu": {
+    "source_repo": "TheBigTuna/Tekken-7-Frame-Data",
+    "source_file": "frames-json/t7-yoshimitsu-1.json",
+    "move_count": 375,
+    "damage_source": "MOD (TheBigTuna)",
+    "overlay_file": "game/assets/movesets/t7/t7-yoshimitsu-lp-rp-lk-rk.json",
+    "name_join": "PENDING",
+    "anim_status": "UNMAPPED"
+   }
+  },
+  "excluded_moves": 1517,
+  "handoff_location": "~/workspace/gapfill-20261024/movesets/out/movesets_t7/t7-<slug>-lp-rp-lk-rk.json (full 45-fighter set, held locally for the coordinator \u2014 NOT in this PR). The coordinator passes these 9 files to the reconciliation lane; this lane does not PR them separately.",
+  "shared_slug_note": "bryan, jin and heihachi are also bases for non-9 fighters (retsu, rin, zen-shipped-file). Those fighters' rows in wh_files show the slug as handoff too: the slug data goes through reconciliation once, not twice in two PRs."
+ },
+ "wh_files_mapped_note": "wh_files[].t7_overlay_files now lists LANDED overlays only (36 fighters). Files whose only slugs are handoff slugs show an empty landed list plus a RECONCILIATION HANDOFF note."
+}
