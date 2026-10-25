@@ -126,7 +126,9 @@ const ui = {
     const fill = document.getElementById(`${id}-hp`);
     const dmg = document.getElementById(`${id}-hp-dmg`);
     fill.style.width = pct + '%';
-    dmg.style.width = pct + '%';
+    // COMBAT SYSTEMS 2026-10-24: white recoverable segment = hp +
+    // recoverable pool (capped at 100%); empty pool matches fill.
+    dmg.style.width = Math.min(100, pct + Math.max(0, ((f._recoverable || 0) / f.maxHp) * 100)) + '%';
     fill.classList.toggle('low', pct < 30);
   },
   updateMeter(p1, p2) { this._meter('p1', p1); this._meter('p2', p2); },
@@ -629,6 +631,8 @@ function unlockAudio() {
   music.unlock();
 }
 
+// Silent safety net (from #1037): first tap anywhere also unlocks audio, in case a path reaches audio without a menu, mode or fight tap.
+document.body.addEventListener('pointerdown', unlockAudio, { once: true });
 
 /* SETTINGS sound toggle: persists in localStorage, applies on boot
    before any gesture, and gates both the procedural engine and the

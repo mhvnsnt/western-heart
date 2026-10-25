@@ -7107,6 +7107,8 @@
     "db+1+2": {
       "name": "Muscle Armor",
       "input": "db+1+2",
+      "powerCrush": true,
+      "powerCrush_source": "wavu.wiki King movelist (T7): Muscle Armor pc6~59; damage taken during power crush state is recoverable",
       "t8_source": "king",
       "t8_id": "King-db+1+2",
       "t8_damage": null,
@@ -7153,6 +7155,8 @@
     "db+1+2,3+4": {
       "name": "Jaguar Sprint",
       "input": "db+1+2,3+4",
+      "powerCrush": true,
+      "powerCrush_source": "wavu.wiki King movelist (T7): db+1+2,3+4 listed Power Crush",
       "t8_source": "king",
       "t8_id": "King-db+1+2,3+4",
       "t8_damage": null,
@@ -10136,6 +10140,8 @@
     "uf+3+4": {
       "name": "Sole Crusher",
       "input": "uf+3+4",
+      "powerCrush": true,
+      "powerCrush_source": "wavu.wiki King strategy (T7): uf+3+4 is a -14 mid power crush",
       "t8_source": "king",
       "t8_id": "King-uf+3+4",
       "t8_damage": "23",
@@ -17353,6 +17359,8 @@
       "on_block": "-5",
       "on_hit": "S!",
       "on_ch": "S!",
+      "screw": true,
+      "screw_source": "wavu.wiki King movelist (T7): SS 2 Tailspin; repo T7 data on_hit/on_ch S!",
       "crush": null,
       "anim_ref": "t7:king:king_126",
       "input_slots": [
