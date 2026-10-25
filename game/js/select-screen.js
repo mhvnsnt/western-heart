@@ -36,6 +36,8 @@ import { loadT3Clips, createT3Actions, retargetT3Clips } from './t3anims.js';
 import { bankIdFor } from './fighter.js';
 import { getMovesetInfo } from './movesets.js';
 import { warmSelect, warmFight } from './preload.js';
+import { NINE_SOULS, newSoulSpiritPick, vesselMatch, soulSpiritLabel } from './soul-spirit.js';
+
 
 const DEFAULT_STATS = { speed: 2.8, jump: 7.2, power: 1.1, defense: 1.05 };
 const clamp01 = (v) => Math.max(0, Math.min(1, v));
@@ -359,6 +361,11 @@ export function createSelectScreen(deps) {
     teamPicks: [],        // team mode: confirmed ids (all on p1)
     kickCycle: 1,         // K button attire cycling position
     focusIdx: 0,
+    /* SOUL-SPIRIT TOGGLE (owner directive 2026-10-22 ~23:02 CDT): tertiary
+       per-side pick, NOT an attire — { enabled, soulId }. Snapshotted into
+       spiritLocked at confirm time so the fight reads the locked pick. */
+    spirit: { p1: newSoulSpiritPick(), p2: newSoulSpiritPick() },
+    spiritLocked: { p1: null, p2: null },
   };
 
   /* ---------- card strip ---------- */
@@ -377,10 +384,21 @@ export function createSelectScreen(deps) {
      share another fighter's model are hidden until they get their own
      models — they stay in the roster data for story/other modes, but never
      as separate select cards. Attire variants live in the attire ladder
-     (renderAttires), not as duplicate cards. */
+     (renderAttires), not as duplicate cards.
+     NINE SOULS REDESIGN (owner directive 2026-10-22 ~23:02 CDT, refined
+     ~23:03 CDT): the seven VESSELED souls (rin, byou, tou, sha, kai,
+     jin_soul, retsu) come OFF the grid as standalone cards — they have no
+     bodies of their own yet. Only ZEN and GYOU (unvesseled) stay
+     selectable as spirit fighters. The seven stay in the roster data for
+     story/other modes; per the refinement they return LATER as
+     unlockable boss-type characters with vessels/bodies once story modes
+     progress — the unlock path is future design, not this change. Their
+     presence on a fighter is the soul-spirit toggle (js/soul-spirit.js),
+     not a select card. */
   const SELECT_HIDDEN = new Set([
     'rin', 'byou', 'tou', 'sha', 'kai', 'jin_soul', 'retsu', 'zen', 'gyou',
-    'doc-frank-machine-shop',
+    'ryuji', 'doc-frank-machine-shop',
+
   ]);
   const selectRoster = () => deps.roster().filter(c => !SELECT_HIDDEN.has(c.id));
 
@@ -474,7 +492,9 @@ export function createSelectScreen(deps) {
       els.style.textContent = '';
       els.stats.innerHTML = '';
       els.attires.innerHTML = '';
-      { const f = els.root.querySelector('.pane-facts'); if (f) f.innerHTML = ''; }
+{ const f = els.root.querySelector('.pane-facts'); if (f) f.innerHTML = ''; }
+renderSoulSpirit(side, null, false);
+
       els.note.hidden = true;
       return;
     }
@@ -499,6 +519,7 @@ export function createSelectScreen(deps) {
       statRow('JMP', s.jump, s.jump / 10, v => v.toFixed(1)) +
       statRow('DEF', s.defense, (s.defense - 0.5) / 1.5, v => v.toFixed(2));
     renderAttires(side, c, !locked && isActive);
+    renderSoulSpirit(side, c, !locked && isActive);
   }
 
   function renderAttires(side, c, interactive) {
@@ -521,6 +542,85 @@ export function createSelectScreen(deps) {
       });
       els.attires.appendChild(chip);
     });
+  }
+
+  /* ---------- soul-spirit toggle (tertiary, NOT an attire) ----------
+     Owner directive 2026-10-22 ~23:02 CDT: every fighter gets an on/off
+     switch for a soul spirit floating behind them + a 9-soul picker.
+     Picking the soul that vessels into the highlighted fighter empowers
+     them (the buff is applied at fight start; see js/soul-spirit.js). */
+  function spiritPanelEl(side) {
+    const els = plateEls(side);
+    let panel = els.root.querySelector('.soul-spirit-panel');
+    if (!panel) {
+      panel = document.createElement('div');
+      panel.className = 'soul-spirit-panel';
+      const plate = els.root.querySelector('.pane-plate');
+      const attires = els.root.querySelector('.pane-attires');
+      if (plate && attires && attires.nextSibling) plate.insertBefore(panel, attires.nextSibling);
+      else if (plate) plate.appendChild(panel);
+    }
+    return panel;
+  }
+
+  function renderSoulSpirit(side, c, interactive) {
+    const panel = spiritPanelEl(side);
+    const pick = state.spirit[side];
+    panel.innerHTML = '';
+    if (!c) return;
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'spirit-toggle' + (pick.enabled ? ' on' : '');
+    toggle.textContent = soulSpiritLabel(pick);
+    toggle.disabled = !interactive;
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (!interactive) return;
+      audio.uiClick();
+      pick.enabled = !pick.enabled;
+      if (pick.enabled && !pick.soulId) pick.soulId = 'rin';
+      renderPlate('p1'); renderPlate('p2');
+      if (hint) hint.textContent = pick.enabled
+        ? `${c.name} — soul spirit ${soulByIdName(pick.soulId)} behind them`
+        : `${c.name} — soul spirit off`;
+    });
+    panel.appendChild(toggle);
+    if (pick.enabled) {
+      const row = document.createElement('div');
+      row.className = 'spirit-souls';
+      NINE_SOULS.forEach((s) => {
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        const isVessel = vesselMatch(c.id, s.id);
+        chip.className = 'spirit-soul' + (pick.soulId === s.id ? ' on' : '') + (isVessel ? ' vessel' : '');
+        chip.textContent = `${s.name} ${s.kanji}`;
+        chip.title = s.nature + (isVessel ? ' — VESSEL MATCH: empowers ' + c.name : '');
+        chip.disabled = !interactive;
+        chip.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (!interactive) return;
+          audio.uiClick();
+          pick.soulId = s.id;
+          renderPlate('p1'); renderPlate('p2');
+          if (hint) hint.textContent = isVessel
+            ? `${s.name} vessels into ${c.name} — EMPOWERED`
+            : `${c.name} — ${s.name} spirit (no vessel bond)`;
+        });
+        row.appendChild(chip);
+      });
+      panel.appendChild(row);
+      if (vesselMatch(c.id, pick.soulId)) {
+        const badge = document.createElement('div');
+        badge.className = 'spirit-empowered';
+        badge.textContent = '⬢ VESSEL MATCH — EMPOWERED';
+        panel.appendChild(badge);
+      }
+    }
+  }
+
+  function soulByIdName(id) {
+    const s = NINE_SOULS.find((x) => x.id === id);
+    return s ? `${s.name} ${s.kanji}` : '';
   }
 
   /* ---------- preview + attire application ---------- */
@@ -612,6 +712,12 @@ export function createSelectScreen(deps) {
   /* Called by main.js confirmSelection() BEFORE modes.onConfirm runs,
      with the id being confirmed. Mirrors the mode flow: versus locks
      P1 then hands the cursor to P2; team stacks picks on P1. */
+  /* Soul-spirit picks are snapshotted at confirm time: the fight reads
+     spiritLocked, so later select-screen resets can't change a locked pick. */
+  function lockSpirit(side) {
+    state.spiritLocked[side] = { ...state.spirit[side] };
+  }
+
   function notifyConfirm(confirmedId) {
     const c = deps.findChar(confirmedId);
     if (!c) return;
@@ -623,12 +729,14 @@ export function createSelectScreen(deps) {
     if (state.mode === 'versus') {
       if (!state.locked.p1) {
         state.locked.p1 = c;
+        lockSpirit('p1');
         state.highlight.p1 = c;
         state.activeSide = 'p2';
         state.highlight.p2 = null;
         deps.onHighlight(null); // P2 must tap a card to pick
       } else {
         state.locked.p2 = c;
+        lockSpirit('p2');
         state.highlight.p2 = c;
         state.phase = 'done';
       }
@@ -637,10 +745,12 @@ export function createSelectScreen(deps) {
       state.highlight.p1 = c;
       if (state.teamPicks.length >= 3) {
         state.locked.p1 = c;
+        lockSpirit('p1');
         state.phase = 'done';
       }
     } else {
       state.locked.p1 = c;
+      lockSpirit('p1');
       state.highlight.p1 = c;
       state.phase = 'done';
     }
@@ -665,6 +775,8 @@ export function createSelectScreen(deps) {
       state.highlight = { p1: null, p2: null };
       state.locked = { p1: null, p2: null };
       state.teamPicks = [];
+      state.spirit = { p1: newSoulSpiritPick(), p2: newSoulSpiritPick() };
+      state.spiritLocked = { p1: null, p2: null };
       state.kickCycle = 1;
       panes.p1.clear();
       panes.p2.clear();
@@ -736,6 +848,13 @@ export function createSelectScreen(deps) {
   if (pBtn) pBtn.addEventListener('click', punchAttire);
   if (kBtn) kBtn.addEventListener('click', kickAttire);
 
+  /* The fight (main.js startFight) reads each side's locked soul-spirit
+     pick here — null when that side picked nothing / toggle off. */
+  function soulSpiritLocked(side) {
+    const p = state.spiritLocked[side];
+    return p ? { ...p } : null;
+  }
+
   // The Tripo list arrives after the first build: rebuild once so those fighters lead the grid.
   _tripoReady.then(() => { if (strip && strip.children.length) { build(); paintCards(); } });
   /* Stage-show hook (main.js): warm the locked fighters' GLBs during
@@ -749,5 +868,6 @@ export function createSelectScreen(deps) {
     return state.locked;
   }
 
-  return { build, onShow, selectById, notifyConfirm, highlight, warmLockedFighters, _state: state, _panes: panes };
+  return { build, onShow, selectById, notifyConfirm, highlight, warmLockedFighters, soulSpiritLocked, _state: state, _panes: panes };
+
 }
