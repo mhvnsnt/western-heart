@@ -77,7 +77,13 @@ function show(name) {
     if (selectScreen) selectScreen.onShow(modes ? modes.mode : null);
     requestAnimationFrame(() => requestAnimationFrame(() => mark('select-interactive')));
   }
-  else { selectTimerArmed = false; stopSelectTimer(); }
+  else {
+    selectTimerArmed = false; stopSelectTimer();
+    // PRELOAD (2026-10-24): stage-screen dwell warms the locked
+    // fighters' GLBs (via select-screen, which owns attire mapping)
+    // so the FIGHT tap starts warm instead of cold.
+    if (name === 'stage') { try { selectScreen?.warmLockedFighters?.(); } catch (_) {} }
+  }
   // MUSIC (2026-10-24): Tekken screen-change rule — menu screens get their
   // own rotating theme; the fight itself gets the stage pool at fight
   // start (see startFight). Never throws; a missing library just falls
