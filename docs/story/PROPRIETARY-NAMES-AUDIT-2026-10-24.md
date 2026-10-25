@@ -50,14 +50,14 @@ nothing is renamed.
 | Floor Break | KEEP | Same as Wall Break. |
 | Balcony Break | KEEP | Same as Wall Break. |
 | Rage Art | LOCKED 2026-10-24 21:51 CDT | Renamed to Ikari Jishin (怒り自身, "Rage Itself" in Japanese) — the super / Rage Art equivalent, the cinematic comeback unleashed FROM the Rinne state. See the 2026-10-24 21:51 CDT section below. Supersedes the RENAME-PENDING label from 21:38 CDT. |
-| Rage Drive | RENAME-PENDING | Same as Rage Art. |
-| Power Crush | RENAME-PENDING | Same as Rage Art. The audit's implementation question (is armored-attack behaviour present generically?) is unchanged by this message. |
-| V-System | RENAME-PENDING | Umbrella decided to change; member names are NOT yet picked (see still-open list). |
-| Break mechanics + guard-breaking mechanics | SHARED-NAME-PENDING | ONE term covers both, not two separate names. Owner: "can be called the same thing". The term itself is NOT yet picked. |
+| Rage Drive | LOCKED 2026-10-24 22:04 CDT (corrected) as Rinne Kōgeki | Rinne Kōgeki (輪廻攻撃, "Rinne attack") — the powered move from Rinne. HISTORY, in order: proposed 22:01 CDT as Rinne Waza (輪廻技, RECOMMENDED; alt "Rinne Move"); REJECTED 22:03 CDT — user wants a different word than "waza" (the Rinne part was NOT objected to, only "waza"); Rinne Jutsu (輪廻術) was picked by widget 22:04 CDT and then REVERSED / VOID minutes later — Rage Drive is NOT Rinne Jutsu, do NOT wire Rinne Jutsu anywhere, and do NOT wire Rinne Waza anywhere. FINAL lock is Rinne Kōgeki. See the 2026-10-24 22:03–22:04 CDT section below. Supersedes the bare RENAME-PENDING label from 21:38 CDT and the 22:01 CDT proposal. |
+| Power Crush | LOCKED 2026-10-24 22:03 CDT as Kongō | Kongō (金剛) — the armored strike. Proposed 22:01 CDT (RECOMMENDED; alt "Armor Strike"); LOCKED 22:03 CDT (user: "yeah I like that name"). See the 2026-10-24 22:03–22:04 CDT section below. The audit's implementation question (is armored-attack behaviour present generically?) is unchanged. Supersedes the bare RENAME-PENDING label from 21:38 CDT and the 22:01 CDT proposal-only status. |
+| V-System | LOCKED 2026-10-24 22:03 CDT as Ōgi | Ōgi (奥義) — the skill/trigger/reversal/shift toolkit system. Proposed 22:01 CDT (RECOMMENDED; alts "Soul Arts," "Higi (秘技)"); LOCKED 22:03 CDT (user: "yeah I like that name"). V-component renames (Skill / Trigger / Reversal / Shift) are a FUTURE follow-up, NOT a blocker for this PR — do NOT propose component names here. See the 2026-10-24 22:03–22:04 CDT section below. Supersedes the bare RENAME-PENDING label from 21:38 CDT and the 22:01 CDT proposal-only status. |
+| Break mechanics + guard-breaking mechanics | KEEP (corrected 2026-10-24 22:01 CDT) | KEEP existing names — break and guard break "can just stay the same" (user clarification 22:01 CDT). NO new shared name, NO shared term invented. This SUPERSEDES and CORRECTS the SHARED-NAME-PENDING label from 21:38 CDT (owner: "can be called the same thing" — that 21:38 history line is kept, the 22:01 correction immediately follows it in the 22:01 CDT section). Distinct from the Wall / Floor / Balcony Break KEEP (21:38 CDT) — this is an additional, separate KEEP for break + guard-break mechanics. |
 | Rage (low-HP state itself) | LOCKED 2026-10-24 21:46 CDT | Short name Rinne (輪廻); full name Rinne Tensei (輪廻転生); Tensei (転生) also acceptable as a short form. See the 2026-10-24 21:46 CDT section below. Supersedes the OPEN/UNDECIDED label from 21:38 CDT. |
-| Screw | EXPLAINED-NOT-NAMED / MECHANIC-ON-MAIN | T7 spinning-knockdown extender. Mechanic now on main via PR #1060 (merge commit 1b90ba55158b731b6923258fafb5669156642e64, verified 2026-10-24). A WH name is still pending — "Spin Juggle" is proposed, NOT locked. (At 2026-10-24 21:38 CDT, WH on main had NEITHER Screw nor Tornado and used T6 Bound instead of Screw; that presence statement is superseded by the #1060 merge.) |
-| Tailspin | EXPLAINED-NOT-NAMED / MECHANIC-ON-MAIN | T8's rename of Screw. Mechanic now on main via PR #1060 (merge commit 1b90ba55158b731b6923258fafb5669156642e64, verified 2026-10-24); the Screw/Tornado wiring in #1060 recognizes the tailspin flag. A WH name is still pending — "Spin Juggle" is proposed, NOT locked. |
-| Tornado | EXPLAINED-NOT-NAMED / MECHANIC-ON-MAIN | T8's spinning-air extender. Mechanic now on main via PR #1060 (merge commit 1b90ba55158b731b6923258fafb5669156642e64, verified 2026-10-24); no longer missing per gap analysis. A WH name is still pending — "Spin Juggle" is proposed, NOT locked. This explanation supersedes this audit's earlier shorthand that called Tornado "T8's rename of Screw" — Tailspin is the T8 rename of Screw. |
+| Screw | LOCKED 2026-10-24 22:01 CDT as Floor Spin / Floor Form | Floor Form (Floor Spin) = the ground/floor form of the locked umbrella mechanic Spin Juggle. Forms phrasing confirmed 22:03 CDT: Air Form / Floor Form, Air Spin / Floor Spin, and Air Spin / Floor Juggle are all accepted phrasings for the SAME two forms — do NOT create extra forms.  Screw = T7 spinning-knockdown extender. Mechanic on main via PR #1060 (merge commit 1b90ba55158b731b6923258fafb5669156642e64, verified 2026-10-24). This SUPERSEDES the "Spin Juggle proposed, NOT locked" status. See the 2026-10-24 22:01 CDT section below. (At 2026-10-24 21:38 CDT, WH on main had NEITHER Screw nor Tornado and used T6 Bound instead of Screw; that presence statement is superseded by the #1060 merge.) |
+| Tailspin | COLLAPSED 2026-10-24 22:01 CDT into Floor Spin / Floor Form — NO third form | Tailspin was T8's rename of Screw; it does NOT become a separate locked form. It collapses into Floor Form (Floor Spin) (the ground/floor form of Spin Juggle; 22:03 CDT phrasing: Floor Form = Floor Spin = Floor Juggle form, same form).  Mechanic on main via PR #1060 (merge commit 1b90ba55158b731b6923258fafb5669156642e64, verified 2026-10-24); the Screw/Tornado wiring in #1060 recognizes the tailspin flag. This SUPERSEDES the "Spin Juggle proposed, NOT locked" status. See the 2026-10-24 22:01 CDT section below. |
+| Tornado | LOCKED 2026-10-24 22:01 CDT as Air Spin / Air Form | Air Form (Air Spin) = the air form of the locked umbrella mechanic Spin Juggle. Forms phrasing confirmed 22:03 CDT: Air Form / Floor Form, Air Spin / Floor Spin, and Air Spin / Floor Juggle are all accepted phrasings for the SAME two forms — do NOT create extra forms.  Tornado = T8's spinning-air extender (NOT "T8's rename of Screw" — Tailspin is the T8 rename of Screw). Mechanic on main via PR #1060 (merge commit 1b90ba55158b731b6923258fafb5669156642e64, verified 2026-10-24); no longer missing per gap analysis. This SUPERSEDES the "Spin Juggle proposed, NOT locked" status. See the 2026-10-24 22:01 CDT section below. |
 
 ### Nuance preserved, not contradicted
 
@@ -66,7 +66,11 @@ nothing is renamed.
   2026-10-24), wiring Screw/Tornado on main. The names
   question is now live — the mechanic is present, its WH
   name is still pending ("Spin Juggle" proposed, NOT
-  locked). This PR pre-invents NO names for it and changes
+  locked). SUPERSEDED 2026-10-24 22:01 CDT: Spin Juggle is
+  now LOCKED, with forms Air Spin (air, ex-Tornado) and
+  Floor Spin (ground/floor, ex-Screw); Tailspin collapses
+  into Floor Spin, no third form (see the 22:01 CDT section
+  below). This PR pre-invents NO names for it and changes
   NO code; it corrects only the mechanic-presence
   statement in this audit.
 - NOTHING here blocks the #1076 popup deploy. Banners are
@@ -171,6 +175,15 @@ big mid-fight banner. The popup law still applies.
   in OPTIONS-PENDING until the user says so explicitly.
   Do NOT record it as locked; do NOT rename code/HUD/docs
   strings to it.
+- STATUS UPDATE 2026-10-24 22:01 CDT: the proposed status
+  above is SUPERSEDED — Spin Juggle is now LOCKED (umbrella
+  mechanic; forms Air Spin, air form ex-Tornado, and Floor
+  Spin, ground/floor form ex-Screw; Tailspin collapses into
+  Floor Spin, NO third form). See the 22:01 CDT section
+  below. The 👍-reaction history is kept, but the lock is
+  the 22:01 CDT user decision, not the reaction. Do NOT
+  rename code/HUD/docs strings to Spin Juggle / Air Spin /
+  Floor Spin in this docs PR — wiring is a follow-up step.
 
 ### Unchanged by this message
 
@@ -179,9 +192,22 @@ big mid-fight banner. The popup law still applies.
 - RENAME-PENDING (2026-10-24 21:38 CDT): Rage Art, Rage
   Drive, Power Crush, V-System — unchanged; new names
   still NOT picked, options still owed to the user.
+  FINAL UPDATE 2026-10-24 22:03–22:04 CDT (corrected):
+  this snapshot is SUPERSEDED — Rage Art is LOCKED
+  21:51 CDT as Ikari Jishin, Rage Drive is LOCKED
+  22:04 CDT (corrected) as Rinne Kōgeki, Power Crush is
+  LOCKED 22:03 CDT as Kongō, V-System is LOCKED
+  22:03 CDT as Ōgi. NO rename-pending item remains from
+  the 21:38 CDT list. See the 22:03–22:04 CDT section
+  below. Rinne Waza (rejected 22:03 CDT) and Rinne Jutsu
+  (picked then voided 22:04 CDT) are NOT wired anywhere.
 - SHARED-NAME-PENDING (2026-10-24 21:38 CDT): break
   mechanics + guard-breaking mechanics, one term — still
-  NOT picked.
+  NOT picked. CORRECTION 2026-10-24 22:01 CDT: this entry
+  is SUPERSEDED / CORRECTED — break + guard break are now
+  KEEP ("can just stay the same"), NO new shared name.
+  See the 22:01 CDT section below. The 21:38 CDT history
+  line above is kept.
 - All other still-open items from PR #1085 are preserved,
   NOT dropped: Bound; Slow-mo finish; WWE entrance-tool
   repurpose; V-System members V-Skill / V-Trigger /
@@ -280,12 +306,39 @@ not banner text).
 
 - Rage Drive, Power Crush, V-System — still
   RENAME-PENDING (2026-10-24 21:38 CDT); new names still
-  NOT picked, options still owed to the user.
+  NOT picked, options still owed to the user. UPDATE
+  2026-10-24 22:01 CDT: these are now OPTIONS-PENDING
+  PROPOSALS ONLY (not bare RENAME-PENDING, not locked) —
+  Rage Drive → Rinne Waza (輪廻技, RECOMMENDED; alt
+  "Rinne Move"); Power Crush → Kongō (金剛, RECOMMENDED;
+  alt "Armor Strike"); V-System → Ōgi (奥義, RECOMMENDED;
+  alts "Soul Arts," "Higi (秘技)"), system name first,
+  V-component renames WAIT until the system name is picked.
+  See the 22:01 CDT section below. Do NOT wire until the
+  user picks. FINAL UPDATE 2026-10-24 22:03–22:04 CDT:
+  these three are now LOCKED, and NO rename-pending item
+  remains from the 21:38 CDT list — Rage Drive → Rinne
+  Kōgeki (輪廻攻撃, corrected 22:04 CDT; Rinne Waza
+  rejected 22:03 CDT, Rinne Jutsu picked then voided
+  22:04 CDT, neither wired anywhere); Power Crush →
+  Kongō (金剛, locked 22:03 CDT); V-System → Ōgi (奥義,
+  locked 22:03 CDT; V-component renames are a future
+  follow-up, not a blocker). See the 22:03–22:04 CDT
+  section below.
 - Shared break/guard-break name — still
-  SHARED-NAME-PENDING (one term, not picked).
+  SHARED-NAME-PENDING (one term, not picked). CORRECTION
+  2026-10-24 22:01 CDT: this entry is SUPERSEDED /
+  CORRECTED — break + guard break are now KEEP ("can just
+  stay the same"), NO new shared name. See the 22:01 CDT
+  section below. The 21:38 CDT history line is kept.
 - Spin Juggle (descriptive name for Screw / Tailspin /
   Tornado) — still PROPOSED, not locked. A 👍 reaction is
   NOT confirmation; this lock does not confirm it.
+  SUPERSEDED 2026-10-24 22:01 CDT: Spin Juggle is now
+  LOCKED (umbrella; Air Spin + Floor Spin; Tailspin
+  collapses into Floor Spin, NO third form). See the
+  22:01 CDT section below. Do NOT rename code/HUD/docs
+  strings to it in this docs PR — wiring is a follow-up.
 - All other still-open items from PR #1085 are preserved,
   NOT dropped: Bound; Slow-mo finish; WWE entrance-tool
   repurpose; V-System members V-Skill / V-Trigger /
@@ -377,6 +430,13 @@ is now LOCKED as the super / Rage Art equivalent. It is
 still NOT the Rage state name. The Spin Juggle proposal
 below is NOT superseded — it remains PROPOSED, not
 locked.
+SUPERSESSION NOTE 2026-10-24 22:01 CDT: the Spin Juggle
+proposal below IS now superseded — Spin Juggle is LOCKED
+22:01 CDT (umbrella; Air Spin + Floor Spin; Tailspin
+collapses into Floor Spin, NO third form). See the
+22:01 CDT section below. The proposal text below is kept
+as history of what was proposed 21:40–21:42 CDT; it no
+longer describes a live pick.
 
 ### Rage state (low HP) — direction + options (user pick pending)
 
@@ -411,7 +471,9 @@ locked.
   proposals, not a live pick. Do NOT present Amatsu Rinne
   or Ikari Jishin as the Rage state name.
 
-### Juggle spin (Screw / Tailspin / Tornado) — descriptive proposal (user pick pending)
+### Juggle spin (Screw / Tailspin / Tornado) — LOCKED 2026-10-24 22:01 CDT (proposal history below)
+
+> STATUS UPDATE 2026-10-24 22:01 CDT: LOCKED — Spin Juggle is the umbrella mechanic; forms are Air Spin (air form, ex-Tornado) and Floor Spin (ground/floor form, ex-Screw). Tailspin collapses into Floor Spin — NO third form. History preserved: Screw = T7 spinning-knockdown extender; Tailspin = T8's rename of Screw; Tornado = T8's spinning-air extender (Tornado is NOT "T8's rename of Screw"). This supersedes the "Spin Juggle proposed, NOT locked" status in this section. The proposal text below is kept as history; it is NOT a live pick. Do NOT rename code/HUD/docs strings to Spin Juggle / Air Spin / Floor Spin in this docs PR — wiring is a follow-up step, and when wired it must respect popup law (small HUD tag/gauge + cinematic only, never a big mid-fight banner for a name itself).
 
 - The user barely knows these from Tekken's
   titles/descriptions and wants a DESCRIPTIVE name where
@@ -444,17 +506,19 @@ locked.
 | Tag (TTT2) | Soul Relay — PROPOSAL ONLY | NEEDS OWNER PICK |
 | Rage (state) | Rinne 輪廻 (full: Rinne Tensei 輪廻転生; Tensei 転生 also acceptable short form) | LOCKED 2026-10-24 21:46 CDT (was OPEN/UNDECIDED 21:38 CDT; options pending 21:40–21:42 CDT, now resolved — see 21:46 CDT section; pronunciation note: user says "Rene" by voice dictation, correct romanization Rinne) |
 | Rage Art | Ikari Jishin 怒り自身 "Rage Itself" | LOCKED 2026-10-24 21:51 CDT as the super / Rage Art equivalent, the cinematic comeback unleashed FROM the Rinne state (was RENAME-PENDING 21:38 CDT; banked-name history 21:46 CDT superseded — see 21:51 CDT section) |
-| Rage Drive | — | RENAME-PENDING (2026-10-24 21:38 CDT; new name not yet picked) |
-| Power Crush | — | RENAME-PENDING (2026-10-24 21:38 CDT; new name not yet picked; implementation question unchanged) |
-| Screw | — | EXPLAINED-NOT-NAMED / MECHANIC-ON-MAIN (mechanic on main via PR #1060 merge 1b90ba55158b731b6923258fafb5669156642e64, verified 2026-10-24; 2026-10-24 21:38 CDT presence statement superseded; "Spin Juggle" proposal pending 21:40–21:42 CDT — NOT decided) |
-| Tornado (T8 spinning-air extender) | — | EXPLAINED-NOT-NAMED / MECHANIC-ON-MAIN (mechanic on main via PR #1060 merge 1b90ba55158b731b6923258fafb5669156642e64, verified 2026-10-24; 2026-10-24 21:38 CDT presence statement superseded; "Spin Juggle" proposal pending 21:40–21:42 CDT — NOT decided) |
-| Tailspin (T8 rename of Screw) | — | EXPLAINED-NOT-NAMED / MECHANIC-ON-MAIN (mechanic on main via PR #1060 merge 1b90ba55158b731b6923258fafb5669156642e64, verified 2026-10-24; 2026-10-24 21:38 CDT presence statement superseded; "Spin Juggle" proposal pending 21:40–21:42 CDT — NOT decided) |
+| Rage Drive | Rinne Kōgeki (輪廻攻撃, "Rinne attack") | LOCKED 2026-10-24 22:04 CDT (corrected) as Rinne Kōgeki, the powered move from Rinne. History: proposed 22:01 CDT as Rinne Waza (rejected 22:03 CDT — "waza" only, Rinne part not objected to); Rinne Jutsu picked by widget 22:04 CDT then REVERSED / VOID — NOT Rinne Jutsu, do NOT wire Rinne Waza or Rinne Jutsu anywhere. See 22:03–22:04 CDT section. Supersedes the bare RENAME-PENDING label from 21:38 CDT and the 22:01 CDT proposal. |
+| Power Crush | Kongō (金剛) | LOCKED 2026-10-24 22:03 CDT as Kongō, the armored strike. Proposed 22:01 CDT (RECOMMENDED; alt "Armor Strike"). Implementation question unchanged. See 22:03–22:04 CDT section. Supersedes the bare RENAME-PENDING label from 21:38 CDT and the 22:01 CDT proposal-only status. |
+| Spin Juggle (umbrella mechanic) | Spin Juggle | LOCKED 2026-10-24 22:01 CDT (umbrella; forms Air Spin + Floor Spin — see 22:01 CDT section; supersedes the "Spin Juggle proposed, NOT locked" status). Forms phrasing confirmed 22:03 CDT: Air Form + Floor Form, Air Spin / Floor Spin, and Air Spin / Floor Juggle are all accepted phrasings for the SAME two forms — do NOT create extra forms. See 22:03–22:04 CDT section. |
+| Screw | Floor Form (Floor Spin) | LOCKED 2026-10-24 22:01 CDT as Floor Spin, confirmed 22:03 CDT as Floor Form (Floor Spin / Floor Juggle phrasings also accepted, same form), the ground/floor form of Spin Juggle (Screw = T7 spinning-knockdown extender; mechanic on main via PR #1060 merge 1b90ba55158b731b6923258fafb5669156642e64, verified 2026-10-24; 2026-10-24 21:38 CDT presence statement superseded; "Spin Juggle" proposal pending 21:40–21:42 CDT — SUPERSEDED by the 22:01 CDT lock) |
+| Tornado (T8 spinning-air extender) | Air Form (Air Spin) | LOCKED 2026-10-24 22:01 CDT as Air Spin, confirmed 22:03 CDT as Air Form (Air Spin phrasing also accepted, same form), the air form of Spin Juggle (Tornado = T8's spinning-air extender, NOT "T8's rename of Screw"; mechanic on main via PR #1060 merge 1b90ba55158b731b6923258fafb5669156642e64, verified 2026-10-24; 2026-10-24 21:38 CDT presence statement superseded; "Spin Juggle" proposal pending 21:40–21:42 CDT — SUPERSEDED by the 22:01 CDT lock) |
+| Tailspin (T8 rename of Screw) | Floor Form (collapsed) | COLLAPSED 2026-10-24 22:01 CDT into Floor Spin / Floor Form — NO third form (Tailspin was T8's rename of Screw; mechanic on main via PR #1060 merge 1b90ba55158b731b6923258fafb5669156642e64, verified 2026-10-24; 2026-10-24 21:38 CDT presence statement superseded; "Spin Juggle" proposal pending 21:40–21:42 CDT — SUPERSEDED by the 22:01 CDT lock) |
 | Bound | — | NEEDS NAME |
 | Wall Break | Wall Break (kept as-is) | KEEP (2026-10-24 21:38 CDT) |
 | Floor Break | Floor Break (kept as-is) | KEEP (2026-10-24 21:38 CDT) |
 | Balcony Break | Balcony Break (kept as-is) | KEEP (2026-10-24 21:38 CDT) |
+| Break + guard break | break / guard break (kept as-is) | KEEP (corrected 2026-10-24 22:01 CDT; supersedes SHARED-NAME-PENDING from 21:38 CDT — NO new shared name; distinct from the Wall / Floor / Balcony Break KEEP above — see 22:01 CDT section) |
 | Slow-mo finish | — | NEEDS NAME (or owner rules it needs none) |
-| V-System (SFV-derived) | — | RENAME-PENDING (2026-10-24 21:38 CDT; new name not yet picked; member names still open) |
+| V-System (SFV-derived) | Ōgi (奥義) | LOCKED 2026-10-24 22:03 CDT as Ōgi, the skill/trigger/reversal/shift toolkit system. Proposed 22:01 CDT (RECOMMENDED; alts "Soul Arts," "Higi (秘技)"). V-component renames are a FUTURE follow-up, NOT a blocker — do NOT propose component names here. See 22:03–22:04 CDT section. Supersedes the bare RENAME-PENDING label from 21:38 CDT and the 22:01 CDT proposal-only status. |
 | WWE entrance-tool repurpose | — (working title only) | NEEDS NAME |
 
 ## NAMED — with source, line, date
@@ -632,6 +696,8 @@ what was searched so the owner can see the gap is real.
 
 ### Rage Drive (RD.3+4 while raging; powered-up strike)
 > STATUS UPDATE 2026-10-24 21:38 CDT: RENAME-PENDING — owner decided it changes; new name NOT yet picked. Options below are still proposals, not picks.
+> STATUS UPDATE 2026-10-24 22:01 CDT: OPTIONS-PENDING — PROPOSAL ONLY, NOT locked. Proposal delivered 22:01 CDT: Rinne Waza (輪廻技, RECOMMENDED; alt "Rinne Move"). Do NOT wire until the user picks. The options below (Ember Drive, Wrath Strike, Last Surge) are audit history, NOT the 22:01 proposal and NOT picks.
+> STATUS UPDATE 2026-10-24 22:03–22:04 CDT: FINAL LOCK — Rinne Kōgeki (輪廻攻撃, "Rinne attack"). HISTORY, in order: Rinne Waza REJECTED 22:03 CDT — user wants a different word than "waza"; the Rinne part was NOT objected to, only "waza" was. Alternatives then pending: Rinne Jutsu (輪廻術, recommended), Rinne Kōgeki (輪廻攻撃), Rinne Strike, Rinne Move. Rinne Jutsu was picked by widget 22:04 CDT and then REVERSED / VOID minutes later (user: "let's not go with Rinne Jutsu, let's go with Rinne Kōgeki"). Rage Drive is NOT Rinne Jutsu. Do NOT wire Rinne Waza anywhere. Do NOT wire Rinne Jutsu anywhere — that pick is VOID, and Rinne Jutsu is NOT left here as a live pending alternative either; it appears ONLY as voided history. FINAL lock: Rinne Kōgeki. See the 22:03–22:04 CDT section below.
 - Found as Tekken name only: `game/js/rage.js` L10, L59,
   L93; `game/js/movesets.js` L660 (comment).
 - Options: (a) Ember Drive — keeps the drive shape,
@@ -642,6 +708,8 @@ what was searched so the owner can see the gap is real.
 
 ### Power Crush (armored attack that absorbs hits)
 > STATUS UPDATE 2026-10-24 21:38 CDT: RENAME-PENDING — owner decided it changes; new name NOT yet picked. Implementation question below is unchanged.
+> STATUS UPDATE 2026-10-24 22:01 CDT: OPTIONS-PENDING — PROPOSAL ONLY, NOT locked. Proposal delivered 22:01 CDT: Kongō (金剛, RECOMMENDED; alt "Armor Strike"). Do NOT wire until the user picks. The options below (Iron Soul, Unbroken Guard, Ember Wall) are audit history, NOT the 22:01 proposal and NOT picks. Implementation question below is unchanged.
+> STATUS UPDATE 2026-10-24 22:03 CDT: LOCKED as Kongō (金剛), the armored strike (user: "yeah I like that name"). See the 22:03–22:04 CDT section below.
 - NOT found as a system in searched files: zero hits for
   "power crush" in `fighter.js`, `movesets.js`, `game.js`
   (grep 2026-10-24). What DOES exist and must not be
@@ -662,6 +730,8 @@ what was searched so the owner can see the gap is real.
 ### Screw (T7 juggle-spin state)
 > STATUS UPDATE 2026-10-24 21:38 CDT: EXPLAINED-NOT-NAMED / MECHANIC-NOT-ON-MAIN — T7 spinning-knockdown extender; WH on main uses T6 Bound instead. Name needed only when/if implemented. "Spin Juggle" proposal pending 2026-10-24 21:40–21:42 CDT — NOT decided, NOT the name.
 > DRIFT CORRECTION (mechanic presence only, 2026-10-24): the MECHANIC-NOT-ON-MAIN presence statement above is SUPERSEDED — the mechanic is now on main via PR #1060 (merge commit 1b90ba55158b731b6923258fafb5669156642e64, verified). The name status is UNCHANGED: still EXPLAINED-NOT-NAMED, "Spin Juggle" still proposed, NOT locked.
+> STATUS UPDATE 2026-10-24 22:01 CDT: LOCKED as Floor Spin — the ground/floor form of Spin Juggle (umbrella mechanic, locked 22:01 CDT). This SUPERSEDES the drift correction's name-pending statement above (mechanic presence is UNCHANGED: still on main via #1060). Tailspin collapses into Floor Spin, NO third form.
+> FORMS PHRASING 2026-10-24 22:03 CDT: Floor Spin is also accepted as Floor Form (and the Air Spin / Floor Juggle phrasing is accepted for the same two forms). SAME two forms under Spin Juggle — do NOT create extra forms. See the 22:03–22:04 CDT section below. The options below (Soul Spiral, Still Spin, Trial Turn) are superseded history, NOT picks. Do NOT rename code/HUD/docs strings to Spin Juggle / Floor Spin in this docs PR — wiring is a follow-up step.
 - At audit time, NOT found as a system in searched files:
   zero hits in `fighter.js` / `movesets.js` / `game.js`.
   (Superseded for main by PR #1060, which wires Screw /
@@ -675,9 +745,13 @@ what was searched so the owner can see the gap is real.
   before the follow-up; (b) Still Spin — spin at the
   still point of the juggle; (c) Trial Turn.
 
-### Tornado (T8's rename of Screw)
+### Tornado (T8 spinning-air extender)
+
+> HEADING CORRECTION 2026-10-24 22:01 CDT: the prior heading "(T8's rename of Screw)" was an erroneous shorthand and is corrected here. Tornado = T8's spinning-air extender; Tailspin = T8's rename of Screw. Do NOT re-shorthand Tornado as "T8's rename of Screw."
 > STATUS UPDATE 2026-10-24 21:38 CDT: EXPLAINED-NOT-NAMED / MECHANIC-NOT-ON-MAIN — see the 2026-10-24 21:38 CDT section above for the corrected explanation (Tornado = T8's spinning-air extender; Tailspin = T8's rename of Screw). Name needed only when/if implemented. "Spin Juggle" proposal pending — NOT decided.
 > DRIFT CORRECTION (mechanic presence only, 2026-10-24): the MECHANIC-NOT-ON-MAIN presence statement above is SUPERSEDED — the mechanic is now on main via PR #1060 (merge commit 1b90ba55158b731b6923258fafb5669156642e64, verified). The name status is UNCHANGED: still EXPLAINED-NOT-NAMED, "Spin Juggle" still proposed, NOT locked.
+> STATUS UPDATE 2026-10-24 22:01 CDT: LOCKED as Air Spin — the air form of Spin Juggle (umbrella mechanic, locked 22:01 CDT). This SUPERSEDES the drift correction's name-pending statement above (mechanic presence is UNCHANGED: still on main via #1060).
+> FORMS PHRASING 2026-10-24 22:03 CDT: Air Spin is also accepted as Air Form (and the Air Spin / Floor Juggle phrasing is accepted for the same two forms). SAME two forms under Spin Juggle — do NOT create extra forms. See the 22:03–22:04 CDT section below. The options below (same three as Screw, or split Soul Storm / Soul Spiral) are superseded history, NOT picks. Do NOT rename code/HUD/docs strings to Spin Juggle / Air Spin in this docs PR — wiring is a follow-up step.
 - At audit time, NOT found in searched files (same grep as Screw).
   (Superseded for main by PR #1060, which wires Screw /
   Tornado in `game/js/combat-core.js` and `game/js/fighter.js`.)
@@ -734,6 +808,8 @@ what was searched so the owner can see the gap is real.
 
 ### V-System (V-Skill / V-Trigger / V-Reversal / V-Shift)
 > STATUS UPDATE 2026-10-24 21:38 CDT: RENAME-PENDING — owner decided the V-System name changes; the new name and the member names are NOT yet picked. Options below are still proposals, not picks.
+> STATUS UPDATE 2026-10-24 22:01 CDT: OPTIONS-PENDING — PROPOSAL ONLY, NOT locked. Proposal delivered 22:01 CDT: Ōgi (奥義, RECOMMENDED; alts "Soul Arts," "Higi (秘技)") — SYSTEM NAME ONLY. System name FIRST; V-component renames (Skill / Trigger / Reversal / Shift) WAIT until the system name is picked — do NOT propose component names now. Do NOT wire until the user picks.
+> STATUS UPDATE 2026-10-24 22:03 CDT: LOCKED as Ōgi (奥義), the skill/trigger/reversal/shift toolkit system (user: "yeah I like that name"). V-component renames are a FUTURE follow-up, NOT a blocker for this PR. See the 22:03–22:04 CDT section below. The options below (Soul Arts / Vessel Arts / Trial Arts families, with member names) are audit history, NOT the 22:01 proposal and NOT picks; "Soul Arts" appears in the 22:01 proposal only as an alternative SYSTEM name, not as member names.
 - `game/js/v-system.js` L26: "all user-facing names are
   «name TBD» placeholders flagged for user approval
   (owner directive 2026-10-22). Code keys stay neutral
@@ -800,25 +876,50 @@ what was searched so the owner can see the gap is real.
   Art equivalent, from Rinne) — its RENAME-PENDING label
   and Ikari Jishin's 21:46 CDT banked status are both
   superseded; Rage Drive / Power Crush / V-System are
-  still RENAME-PENDING (decision made, replacement not
-  picked); break + guard-breaking mechanics are
-  SHARED-NAME-PENDING (one term, not picked); Rage
+  now LOCKED (2026-10-24 22:03–22:04 CDT, corrected —
+  see 22:03–22:04 CDT section: Rage Drive → Rinne
+  Kōgeki, Power Crush → Kongō, V-System → Ōgi;
+  superseding the bare RENAME-PENDING label and the
+  22:01 CDT proposals-only status; Rinne Waza rejected
+  22:03 CDT, Rinne Jutsu picked then voided 22:04 CDT,
+  neither wired anywhere);
+  break + guard-breaking mechanics are now KEEP
+  (corrected 2026-10-24 22:01 CDT — "can just stay the
+  same", NO new shared name; superseding and correcting
+  SHARED-NAME-PENDING from 21:38 CDT); Rage
   (low-HP state) is LOCKED 2026-10-24 21:46 CDT as Rinne /
   Rinne Tensei (Tensei acceptable short form) — the five
   21:40–21:42 CDT options are resolved as: Rinne family =
   lock, Amatsu Rinne = reserved future form (mechanic not
   designed), Ikari Jishin = locked 21:51 CDT as the super
   (no longer banked); Screw / Tailspin / Tornado are
-  EXPLAINED-NOT-NAMED and the mechanic is NOW on main via
+  now LOCKED 2026-10-24 22:01 CDT as Spin Juggle (umbrella;
+  Air Spin / Air Form, air form ex-Tornado, + Floor Spin /
+  Floor Form, ground/floor form ex-Screw; Tailspin
+  collapses into Floor Spin / Floor Form, NO third form;
+  forms phrasing confirmed 22:03 CDT — Air Form / Floor
+  Form, Air Spin / Floor Spin, and Air Spin / Floor
+  Juggle are the SAME two forms) and the mechanic is NOW
+  on main via
   PR #1060 (merge commit 1b90ba55158b731b6923258fafb5669156642e64,
   verified 2026-10-24 — the 21:38 CDT presence statement
   is superseded), with the "Spin Juggle" descriptive
-  proposal pending (NOT decided — a 👍 reaction is not
-  confirmation). Still outstanding: Bound, Slow-mo
+  proposal SUPERSEDED by the 22:01 CDT lock (the 👍 reaction
+  was history, not the lock). Still outstanding: Bound, Slow-mo
   finish, WWE entrance-tool repurpose, V-System members,
   Soul Kindle + Soul Relay proposals, Climax/Release
   variance, 魂 ACTION chord confirmation. None are decided
-  by this audit.
+  by this audit. FINAL UPDATE 2026-10-24 22:03–22:04 CDT
+  (corrected): NO rename-pending item remains from the
+  21:38 CDT list — Rage Drive is LOCKED as Rinne Kōgeki,
+  Power Crush as Kongō, V-System as Ōgi. V-System
+  members (Skill / Trigger / Reversal / Shift renames)
+  and the Amatsu Rinne mechanic design are FUTURE
+  follow-ups, NOT blockers for this PR. The other items
+  in this list (Bound, Slow-mo finish, WWE entrance-tool
+  repurpose, Soul Kindle / Soul Relay proposals,
+  Climax/Release variance, 魂 ACTION chord confirmation)
+  remain open as listed.
 
 ## Docs drift correction — Screw / Tailspin / Tornado mechanic status (2026-10-24; docs only, NO renaming, NO code)
 
@@ -846,7 +947,13 @@ what was searched so the owner can see the gap is real.
   remain EXPLAINED-NOT-NAMED. "Spin Juggle" remains
   PROPOSED, NOT locked — a 👍 reaction is NOT
   confirmation, and this correction does NOT confirm it.
-  No name is locked, invented, or assigned here. The
+  No name is locked, invented, or assigned here. UPDATE
+  2026-10-24 22:01 CDT: this names-pending statement is
+  SUPERSEDED for names only (mechanic presence above is
+  UNCHANGED) — Spin Juggle is now LOCKED 22:01 CDT
+  (umbrella; Air Spin + Floor Spin; Tailspin collapses
+  into Floor Spin, NO third form). See the 22:01 CDT
+  section below. The
   explanations are preserved exactly: Screw = T7
   spinning-knockdown extender; Tailspin = T8's rename of
   Screw (not Tornado); Tornado = T8's spinning-air
@@ -864,6 +971,24 @@ what was searched so the owner can see the gap is real.
   repurpose; V-System members; Urge Smash tension; Soul
   Kindle / Soul Relay proposals; Nine-Soul Climax vs
   Release variance; 魂 ACTION chord question).
+- UPDATE 2026-10-24 22:01 CDT to the paragraph above: its
+  RENAME-PENDING and SHARED-NAME-PENDING clauses are
+  SUPERSEDED — Rage Drive / Power Crush / V-System are now
+  OPTIONS-PENDING proposals only (Rinne Waza / Kongō /
+  Ōgi, NOT locked), and break + guard break are now KEEP
+  ("can just stay the same", NO new shared name). Its
+  LOCKED Rinne / Ikari Jishin, Amatsu Rinne RESERVED, and
+  still-open items are UNCHANGED.
+- FINAL UPDATE 2026-10-24 22:03–22:04 CDT to the above:
+  the three proposals are now LOCKED — Rage Drive →
+  Rinne Kōgeki (corrected 22:04 CDT; Rinne Waza rejected
+  22:03 CDT, Rinne Jutsu picked then voided 22:04 CDT,
+  neither wired anywhere), Power Crush → Kongō
+  (22:03 CDT), V-System → Ōgi (22:03 CDT). NO
+  rename-pending item remains from the 21:38 CDT list.
+  Spin Juggle forms phrasing is confirmed 22:03 CDT
+  (Air Form / Floor Form = Air Spin / Floor Spin =
+  Air Spin / Floor Juggle, same two forms).
 - Supersession note: the 2026-10-24 21:51 CDT section's
   flag that the Screw / Tailspin / Tornado entries were
   "left UNTOUCHED" pending a separate drift-correction
@@ -880,3 +1005,289 @@ what was searched so the owner can see the gap is real.
   sequences AFTER it, and naming changes nothing about
   banners (already gone). No live-browser visit and no
   play pass applies to a docs correction; none is claimed.
+
+## Owner decisions — 2026-10-24 22:01 CDT (Spin Juggle lock; break/guard-break KEEP correction; three proposals only; docs only, NO wiring yet)
+
+> STATUS UPDATE 2026-10-24 22:03–22:04 CDT: this 22:01 CDT section is HISTORY, not final status. Its Spin Juggle lock and break/guard-break KEEP stand (forms phrasing extended 22:03 CDT — see below); its three proposals are SUPERSEDED as follows: Power Crush → Kongō LOCKED 22:03 CDT; V-System → Ōgi LOCKED 22:03 CDT; Rage Drive → Rinne Waza REJECTED 22:03 CDT, Rinne Jutsu picked then VOID 22:04 CDT, FINAL lock Rinne Kōgeki 22:04 CDT (corrected). No rename-pending item remains from the 21:38 CDT list. See the 22:03–22:04 CDT section at the end of this file for the final locked set. Do NOT read this 22:01 section's "proposals only" language as current status, and do NOT wire Rinne Waza or Rinne Jutsu anywhere.
+
+Recorded exactly from the owner's 2026-10-24 22:01 CDT
+message. This section changes STATUS labels only. It does
+not rename any code tag, HUD string, or doc string, does
+not implement any mechanic, and does not wire Spin Juggle,
+Air Spin, Floor Spin, Rinne Waza, Kongō, or Ōgi into the
+game. Wiring is a FOLLOW-UP step, not this PR. When wired,
+a name must respect popup law: small HUD tag/gauge +
+cinematic only, NEVER a big mid-fight banner for a name
+itself.
+
+### Locked — Spin Juggle (umbrella) + Air Spin + Floor Spin
+
+- Spin Juggle is now LOCKED: the umbrella mechanic.
+  Forms = Air Spin (air form, ex-Tornado) + Floor Spin
+  (ground/floor form, ex-Screw). Exactly two forms.
+- Tailspin collapses into Floor Spin — NO third form.
+  Tailspin does NOT become a separate locked form.
+- History preserved exactly, not rewritten: Screw = T7
+  spinning-knockdown extender; Tailspin = T8's rename of
+  Screw; Tornado = T8's spinning-air extender. Tornado is
+  NOT re-shorthanded as "T8's rename of Screw" — Tailspin
+  is the T8 rename of Screw.
+- This SUPERSEDES the prior "Spin Juggle proposed, NOT
+  locked" status in every place it appears: the updated
+  status table (Screw / Tailspin / Tornado rows), the
+  summary table (Spin Juggle / Screw / Tornado / Tailspin
+  rows), the per-system sections (Screw, Tornado, and the
+  Juggle-spin options section), the 21:46 CDT "Still
+  proposed" note, the 21:51 CDT "Still rename-pending"
+  note, the Options-pending supersession note, the nuance
+  bullet, the closing summary (Gaps item 2), and the
+  drift-correction section's names-pending statement.
+  Each of those places now carries a 22:01 CDT
+  supersession note; the prior proposal text is kept as
+  history, not deleted.
+- Mechanic presence is UNCHANGED by this lock: the
+  mechanic is on main via PR #1060 (merge commit
+  1b90ba55158b731b6923258fafb5669156642e64, verified
+  2026-10-24). This lock names the mechanic; it does not
+  re-implement it.
+- The 👍 reaction history is kept, but the lock is the
+  22:01 CDT user decision, not the reaction.
+
+### Correction — break + guard break: KEEP, no shared name
+
+- 21:38 CDT history, kept verbatim: break mechanics +
+  guard-breaking mechanics were recorded as
+  SHARED-NAME-PENDING, owner: "can be called the same
+  thing", one term, not picked.
+- 22:01 CDT correction, immediately after that history:
+  the user clarified that break and guard break "can just
+  stay the same" — NOT a new shared name. Recorded as
+  KEEP: keep existing names for break + guard-break
+  mechanics. NO shared term is invented here, and no
+  shared term is to be invented from the 21:38 CDT line.
+- This SUPERSEDES / CORRECTS the SHARED-NAME-PENDING
+  entry in every place it appears: the updated status
+  table (Break mechanics + guard-breaking mechanics row),
+  the 21:46 CDT "Unchanged" list, the 21:51 CDT "Still
+  rename-pending" list, the closing summary (Gaps item 2),
+  and the drift-correction section's "Also unchanged"
+  paragraph. Each now carries a 22:01 CDT correction
+  note; the 21:38 CDT history line is kept.
+- Distinct KEEP, not a duplicate: Wall Break / Floor
+  Break / Balcony Break were already KEEP (21:38 CDT,
+  "they can still be called the same stuff"). This
+  break + guard-break KEEP is an additional, distinct
+  KEEP for the break + guard-break mechanics — it does
+  not change, merge with, or re-open the Wall / Floor /
+  Balcony Break KEEP.
+
+### Proposals only — do NOT wire until the user picks; never record as locked
+
+- Rage Drive → Rinne Waza (輪廻技, RECOMMENDED; alt
+  "Rinne Move"). OPTIONS-PENDING / PROPOSAL ONLY.
+- Power Crush → Kongō (金剛, RECOMMENDED; alt "Armor
+  Strike"). OPTIONS-PENDING / PROPOSAL ONLY. The
+  implementation question for Power Crush (is
+  armored-attack behaviour present generically?) is
+  unchanged.
+- V-System → Ōgi (奥義, RECOMMENDED; alts "Soul Arts,"
+  "Higi (秘技)"). OPTIONS-PENDING / PROPOSAL ONLY.
+  System name FIRST; V-component renames (Skill /
+  Trigger / Reversal / Shift) WAIT until the system name
+  is picked — record that sequencing explicitly, and do
+  NOT propose component names now.
+- None of the three proposals above is LOCKED. Do NOT
+  rename any code, HUD, moveset, or banner string to
+  Rinne Waza / Kongō / Ōgi anywhere in this PR, and do
+  NOT present any of them as a lock in any table, section,
+  or summary. The earlier audit options for these systems
+  (Rage Drive: Ember Drive / Wrath Strike / Last Surge;
+  Power Crush: Iron Soul / Unbroken Guard / Ember Wall;
+  V-System: Soul Arts / Vessel Arts / Trial Arts families
+  with member names) are audit history, NOT the 22:01
+  proposals and NOT picks — except that "Soul Arts"
+  appears in the 22:01 V-System proposal only as an
+  alternative SYSTEM name, not as member names.
+
+### Locked so far — consolidated list (verified in this section)
+
+- Rinne / Rinne Tensei (輪廻 / 輪廻転生; Tensei (転生) also
+  acceptable short form) — the Rage state, LOCKED
+  2026-10-24 21:46 CDT. NOT altered here except by this
+  cross-reference.
+- Ikari Jishin (怒り自身) — the super / Rage Art
+  equivalent, the cinematic comeback unleashed FROM the
+  Rinne state, LOCKED 2026-10-24 21:51 CDT. NOT altered
+  here except by this cross-reference.
+- Amatsu Rinne (天津輪廻) — the extra-powerful /
+  leveled-up / transformed form of Rinne. RESERVED
+  concept only: mechanic NOT designed, NOT implemented,
+  NOT wired. Do NOT wire it as a current system.
+- Wall Break / Floor Break / Balcony Break — KEEP
+  (21:38 CDT).
+- Spin Juggle + Air Spin + Floor Spin — LOCKED
+  2026-10-24 22:01 CDT (this section; Tailspin collapses
+  into Floor Spin, NO third form).
+- Break + guard break — KEEP (corrected 2026-10-24
+  22:01 CDT; supersedes SHARED-NAME-PENDING 21:38 CDT).
+
+### Everything else unchanged
+
+- RENAME-PENDING items that remain pending are now ONLY
+  the three proposal items above (Rage Drive, Power
+  Crush, V-System — as proposals, not as bare pending).
+  There is no other bare RENAME-PENDING item left from
+  the 21:38 CDT list, and no proposal above is a lock.
+- All still-open items are preserved unchanged: Bound;
+  Slow-mo finish; WWE entrance-tool repurpose; V-System
+  members (pending the system pick, per the sequencing
+  above); Urge Smash tension; Soul Kindle / Soul Relay
+  proposals; Nine-Soul Climax vs Release variance;
+  魂 ACTION chord question (RP2+LK3, i.e. Right Punch +
+  Left Kick, Tekken 2+3).
+- LOCKED Rinne and Ikari Jishin entries are NOT altered
+  here except to cross-reference this section. Amatsu
+  Rinne stays RESERVED, never wired.
+- Scope: docs only. NO game code, HUD, moveset, or
+  banner file is in this update. NO string was renamed
+  to Spin Juggle / Air Spin / Floor Spin / Rinne Waza /
+  Kongō / Ōgi anywhere in code. NOTHING here blocks any
+  popup deploy — naming changes nothing about banners
+  (already gone). No live-browser visit and no play pass
+  applies to a docs update; none is claimed.
+
+## Owner decisions — 2026-10-24 22:03–22:04 CDT (Ōgi + Kongō locks; Rinne Waza rejected; Rinne Jutsu picked then VOID; Rinne Kōgeki final Drive lock; docs only, NO wiring yet)
+
+Recorded exactly, in order, from the owner's 2026-10-24
+22:03 CDT and 22:04 CDT messages. This section changes
+STATUS labels only. It does not rename any code tag, HUD
+string, or doc string, does not implement any mechanic,
+and does not wire Ōgi, Kongō, Rinne Kōgeki, or any other
+name in this section into the game. Wiring is a FOLLOW-UP
+step, not this PR — for THIS docs PR, still docs only, no
+code/HUD/moveset/banner string changes. When wired, a name
+must respect popup law: small HUD tag/gauge + cinematic
+only, NEVER a big mid-fight banner for a name itself.
+This section does NOT rewrite the 22:01 CDT section to
+hide what happened: the 22:01 proposals, the 22:03
+rejection, and the 22:04 pick-then-reversal are all kept
+as history below, and the FINAL status is the corrected
+set at the end of this section.
+
+### 22:01 CDT — history (proposals only, carried forward from the 22:01 CDT section)
+
+- Rage Drive → Rinne Waza (輪廻技, recommended; alt
+  "Rinne Move") — PROPOSAL ONLY at 22:01 CDT.
+- Power Crush → Kongō (金剛, recommended; alt "Armor
+  Strike") — PROPOSAL ONLY at 22:01 CDT.
+- V-System → Ōgi (奥義, recommended; alts "Soul Arts,"
+  "Higi (秘技)") — PROPOSAL ONLY at 22:01 CDT.
+- Spin Juggle LOCKED at 22:01 CDT (umbrella; Air Spin
+  ex-Tornado + Floor Spin ex-Screw; Tailspin collapses
+  into Floor Spin, no third form).
+- Break + guard break KEEP at 22:01 CDT (correction to
+  the 21:38 CDT SHARED-NAME-PENDING entry).
+
+### 22:03 CDT — locks + rejection
+
+- Spin Juggle forms LOCKED as Air Form + Floor Form.
+  The user accepts either phrasing — Air Spin / Floor
+  Spin, Air Form / Floor Form, or Air Spin / Floor
+  Juggle — for the SAME two forms under the Spin Juggle
+  umbrella. Do NOT create extra forms: there are still
+  exactly two forms (air + ground/floor), whatever
+  phrasing is used. Floor Juggle is a phrasing for the
+  floor form, NOT a third form, and NOT a separate
+  system.
+- V-System → Ōgi (奥義) LOCKED 22:03 CDT (user: "yeah I
+  like that name"). Ōgi is the skill/trigger/reversal/
+  shift toolkit system.
+- Power Crush → Kongō (金剛) LOCKED 22:03 CDT (user:
+  "yeah I like that name"). Kongō is the armored strike.
+- Rage Drive: Rinne Waza REJECTED 22:03 CDT. The user
+  wants a different word than "waza". Note explicitly:
+  the Rinne part of the name was NOT objected to — only
+  "waza" was. Do NOT wire Rinne Waza anywhere.
+- Alternatives then pending user pick (22:03 CDT, as
+  delivered): Rinne Jutsu (輪廻術, recommended), Rinne
+  Kōgeki (輪廻攻撃), Rinne Strike, Rinne Move. These were
+  live alternatives at 22:03 CDT only — see the 22:04 CDT
+  correction below for their final disposition. Do NOT
+  present Rinne Strike or Rinne Move as live alternatives
+  after the round closed.
+
+### 22:04 CDT — widget pick, THEN IMMEDIATELY REVERSED (correction supersedes the pick)
+
+- Rage Drive → Rinne Jutsu (輪廻術) was picked by widget
+  22:04 CDT — and then, minutes later, the user reversed
+  it: "let's not go with Rinne Jutsu, let's go with Rinne
+  Kōgeki."
+- Rage Drive is NOT Rinne Jutsu. Do NOT wire Rinne Jutsu
+  anywhere. That pick is VOID.
+- Do NOT leave Rinne Jutsu in this doc as LOCKED, and do
+  NOT leave it as a live pending alternative either —
+  the naming round is complete, so Rinne Jutsu appears
+  ONLY as voided history (picked then reversed), in this
+  section, in the Rage Drive per-system section, and in
+  the status/summary tables' history notes — never as a
+  current name, never as a pending pick.
+- The correction message supersedes the widget pick.
+  The LAST message wins for final status; the widget
+  pick is history, not the lock.
+
+### FINAL LOCKED SET — this is what the status tables, summary tables, and closing summary show
+
+- State (low HP): Rinne (輪廻), full Rinne Tensei
+  (輪廻転生), Tensei short also OK.
+- Super (from Rinne): Ikari Jishin (怒り自身).
+- Drive (powered move from Rinne): Rinne Kōgeki
+  (輪廻攻撃) — "Rinne attack".
+- Future powered/transformed form of Rinne: Amatsu Rinne
+  (天津輪廻) — mechanic NOT designed, NOT implemented, do
+  NOT wire.
+- Armored strike: Kongō (金剛).
+- System (skill/trigger/reversal/shift toolkit): Ōgi
+  (奥義).
+- Juggle: Spin Juggle (umbrella) → Air Form + Floor
+  Form (Air Spin / Floor Spin phrasings both accepted;
+  Air Spin / Floor Juggle phrasing also accepted as the
+  same two forms).
+- Keep: Wall Break, Floor Break, Balcony Break, break,
+  guard break.
+- No rename-pending items remain from the 21:38 CDT
+  list. Rage Drive is NOT open — it is locked as Rinne
+  Kōgeki.
+- Explicit negatives, so no lane can re-open them by
+  mistake: Rinne Waza is REJECTED (do NOT wire it);
+  Rinne Jutsu is PICKED-THEN-VOIDED (do NOT wire it,
+  do NOT list it as locked or pending); Tailspin is NOT
+  a third form (it collapses into Floor Form); Tornado
+  is NOT "T8's rename of Screw" (Tailspin is).
+
+### Follow-ups — future work, NOT blockers (do not block this PR on them)
+
+- V-component renames under Ōgi (Skill / Trigger /
+  Reversal / Shift renames) — future work.
+- Amatsu Rinne mechanic design — future work.
+- Neither follow-up blocks this docs PR, and neither
+  re-opens any locked name above.
+
+### Everything else unchanged
+
+- All still-open items other than the closed 21:38 CDT
+  rename list are preserved unchanged: Bound; Slow-mo
+  finish; WWE entrance-tool repurpose; Soul Kindle /
+  Soul Relay proposals; Nine-Soul Climax vs Release
+  variance; 魂 ACTION chord question (RP2+LK3, i.e.
+  Right Punch + Left Kick, Tekken 2+3); Urge Smash
+  tension.
+- LOCKED Rinne and Ikari Jishin entries are NOT altered
+  here except to cross-reference this section. Amatsu
+  Rinne stays RESERVED, never wired.
+- Scope: docs only. NO game code, HUD, moveset, or
+  banner file is in this update. NO string was renamed
+  to Rinne Kōgeki / Kongō / Ōgi / Spin Juggle / Air Form /
+  Floor Form anywhere in code. NOTHING here blocks any
+  popup deploy — naming changes nothing about banners
+  (already gone). No live-browser visit and no play pass
+  applies to a docs update; none is claimed.
