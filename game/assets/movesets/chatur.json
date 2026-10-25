@@ -1,13 +1,6 @@
 {
   "fighter": "chatur",
   "display": "CHATUR",
-  "anim_set_lock": {
-    "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
-    "FIGHT": "every move in this file: moveset moves and combat stances \u2014 the combat animation bank",
-    "SHOW": "win poses, intro poses, taunts, cutscene animations \u2014 intro/win slots and cutscenes ONLY; bank assets/anim/t3/ogre/ t3_win_*.json; must NEVER enter this moveset without the user's explicit approval",
-    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set",
-    "batch8_20261023": "batch8 2026-10-23: T3 True Ogre pull \u2014 129 moves added (152 -> 281), tagged \"set\": \"FIGHT\""
-  },
   "tekken_base": "True Ogre (Tekken 3)",
   "t3_source": "teardown/tekken3/movesets/moveset_ogre.json (bank divmot14_ogre.bin, bank_type 14, 330 rows)",
   "proxy": false,
@@ -6275,31 +6268,36 @@
       "name": "FOURFOLD MUDRA",
       "input": "1+2+3+4",
       "damage": 28,
-      "note": "Canon: all four arms strike at once \u2014 the ki-charge input repurposed as an attack. Chatur's signature."
+      "note": "Canon: all four arms strike at once \u2014 the ki-charge input repurposed as an attack. Chatur's signature.",
+      "anim_ref": "wh:chatur:fourfold-mudra"
     },
     {
       "name": "OVERSOUL SURGE",
       "input": "qcf+2",
       "damage": 30,
-      "note": "Canon: the Oversoul spirit fires through her palms \u2014 a spirit blast. Long range, heavy."
+      "note": "Canon: the Oversoul spirit fires through her palms \u2014 a spirit blast. Long range, heavy.",
+      "anim_ref": "wh:chatur:oversoul-surge"
     },
     {
       "name": "GYOU'S MARK",
       "input": "f,f+2",
       "damage": 22,
-      "note": "Canon: GYOU-touched \u2014 once the dash starts she cannot be stopped; armored through the hit. 'Stopping is dying.'"
+      "note": "Canon: GYOU-touched \u2014 once the dash starts she cannot be stopped; armored through the hit. 'Stopping is dying.'",
+      "anim_ref": "wh:chatur:gyou-s-mark"
     },
     {
       "name": "REFUSED TO DIE",
       "input": "d+1+2",
       "damage": 0,
-      "note": "Canon: at low health, a brief armored temple-dance \u2014 she rises through the hit. Comeback tool, long cooldown."
+      "note": "Canon: at low health, a brief armored temple-dance \u2014 she rises through the hit. Comeback tool, long cooldown.",
+      "anim_ref": "wh:chatur:refused-to-die"
     },
     {
       "name": "BRIDGE OF ARMS",
       "input": "b+1+4",
       "damage": 0,
-      "note": "Canon: the four arms weave a bridge \u2014 auto-parries mid attacks for one beat, then ripostes."
+      "note": "Canon: the four arms weave a bridge \u2014 auto-parries mid attacks for one beat, then ripostes.",
+      "anim_ref": "wh:chatur:bridge-of-arms"
     },
     {
       "input": "d/b,3",
@@ -6354,6 +6352,184 @@
       "note": "Parry stance: the arms weave the bridge between the living trial and the spirit realm."
     }
   ],
+  "canon_moves": [
+    {
+      "name": "BRIDGE OF ARMS",
+      "input": "b+1+4",
+      "display_input": "b+LP1+RK4",
+      "input_original": "`b+1+4`",
+      "anim_ref": "wh:chatur:bridge-of-arms",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "special",
+      "damage": 0,
+      "canon": true,
+      "canon_owner": "CHATUR",
+      "properties": {
+        "stance": "standing",
+        "direction": "b",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry (anim_ref backfilled)"
+    },
+    {
+      "name": "FOURFOLD MUDRA",
+      "input": "1+2+3+4",
+      "display_input": "LP1+RP2+LK3+RK4",
+      "input_original": "`1+2+3+4`",
+      "anim_ref": "wh:chatur:fourfold-mudra",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "special",
+      "damage": 28,
+      "canon": true,
+      "canon_owner": "CHATUR",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "system_note": "System collision: LP1+RP2+LK3+RK4 is also Nine-Soul Release at full meter (system super). Canon move is stance/form-gated where noted; resolver precedence is the canon file open question Q5 \u2014 owner decision needed before in-game wiring.",
+      "wiring": "existing entry (anim_ref backfilled)"
+    },
+    {
+      "name": "GYOU'S MARK",
+      "input": "f,f+2",
+      "display_input": "f,f+RP2",
+      "input_original": "`f,f+2`",
+      "anim_ref": "wh:chatur:gyou-s-mark",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "special",
+      "damage": 22,
+      "canon": true,
+      "canon_owner": "CHATUR",
+      "properties": {
+        "stance": "standing",
+        "direction": "f",
+        "type": "strike",
+        "limb": null,
+        "source": "canon"
+      },
+      "wiring": "existing entry (anim_ref backfilled)"
+    },
+    {
+      "name": "OVERSOUL SURGE",
+      "input": "qcf+2",
+      "display_input": "qcf+RP2",
+      "input_original": "`qcf+2`",
+      "anim_ref": "wh:chatur:oversoul-surge",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "special",
+      "damage": 30,
+      "canon": true,
+      "canon_owner": "CHATUR",
+      "properties": {
+        "stance": "standing",
+        "direction": "qcf",
+        "type": "strike",
+        "limb": "armR",
+        "source": "canon"
+      },
+      "wiring": "existing entry (anim_ref backfilled)"
+    },
+    {
+      "name": "REFUSED TO DIE",
+      "input": "d+1+2",
+      "display_input": "d+LP1+RP2",
+      "input_original": "`d+1+2`",
+      "anim_ref": "wh:chatur:refused-to-die",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "special",
+      "damage": 0,
+      "canon": true,
+      "canon_owner": "CHATUR",
+      "properties": {
+        "stance": "crouching",
+        "direction": "d",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry (anim_ref backfilled)"
+    },
+    {
+      "name": "TEMPLE DANCE (stance loop)",
+      "input": "3+4",
+      "display_input": "LK3+RK4",
+      "anim_ref": "wh:chatur:stance:temple-dance",
+      "method": "BUILD",
+      "source": "WH canon stance loop (chatur.json stances array); loop NOT yet authored",
+      "move_class": "stance",
+      "damage": 0,
+      "canon": true,
+      "canon_owner": "CHATUR",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "collisions": [
+        {
+          "kind": "tekken-moves-key",
+          "key": "3+4",
+          "entry_name": "Twin Drum",
+          "entry_anim_ref": "t3:ogre:row:178"
+        }
+      ],
+      "wiring": "canon_moves entry only (no moves-map key added; see docs rationale)"
+    },
+    {
+      "name": "BRIDGE (stance loop)",
+      "input": "1+4",
+      "display_input": "LP1+RK4",
+      "anim_ref": "wh:chatur:stance:bridge",
+      "method": "BUILD",
+      "source": "WH canon stance loop (chatur.json stances array); loop NOT yet authored",
+      "move_class": "stance",
+      "damage": 0,
+      "canon": true,
+      "canon_owner": "CHATUR",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "collisions": [
+        {
+          "kind": "tekken-moves-key",
+          "key": "1+4",
+          "entry_name": "Four-Arm Crush",
+          "entry_anim_ref": "t3:ogre:row:185"
+        }
+      ],
+      "system_note": "System note: LP1+RK4 is also Reihou, but ONLY while the foe is in RAGE (otherwise the moveset LP1+RK4 plays). No in-game conflict outside foe-RAGE.",
+      "wiring": "canon_moves entry only (no moves-map key added; see docs rationale)"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  },
+  "anim_set_lock": {
+    "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances \u2014 the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations \u2014 intro/win slots and cutscenes ONLY; bank assets/anim/t3/ogre/ t3_win_*.json; must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set",
+    "batch8_20261023": "batch8 2026-10-23: T3 True Ogre pull \u2014 129 moves added (152 -> 281), tagged \"set\": \"FIGHT\""
+  },
   "slots": {
     "1": "1",
     "1+2": "1+2",

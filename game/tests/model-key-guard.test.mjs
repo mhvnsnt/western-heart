@@ -41,7 +41,8 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const OWNERSHIP = {
   "awapop": {
     "own": [
-      "awa-pop"
+      "awa-pop",
+      "awa-pop-attire2"
     ]
   },
   "baek-master-white": {
@@ -364,6 +365,7 @@ const OWNERSHIP = {
   "vainabel": {
     "own": [
       "vainabel",
+      "vainabel-attire1",
       "vainabel-attire2",
       "vainabel-attire3",
       "vainabel-attire4"

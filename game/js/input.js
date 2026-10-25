@@ -15,7 +15,7 @@
                                          // vskill (V-System: KeyV / V button)
 
    TEKKEN INPUTS: 1/2/3/4 = left punch / right punch / left kick / right kick
-   (LP/RP/LK/RK touch buttons). Any two limbs within 140ms = chord
+   (LP/RP/LK/RK touch buttons). Any two limbs within CHORD_WINDOW_MS (50ms) = chord
    (1+3 / 2+4 throws, 1+2 / 3+4 specials, 1+4 / 2+3 command inputs).
    Motions (qcf, f,F) tracked via direction history in the fighter's
    TekkenBuffer (see movesets.js).
@@ -26,6 +26,18 @@
    ============================================================ */
 
 import { stickToDir } from './combat-core.js';
+/* CHORD WINDOW (input-timing fix 2026-10-24; was 140 ms). Tekken reads input once per 60 Hz
+   frame, and two limbs are ONE command (1+2, 1+3 ...) only when both go down on the same frame
+   (the same-frame rule behind just-frame inputs such as the EWGF). 140 ms (8.4 frames) turned
+   ordinary fast strings into chords: 1,2 -> 1+2, 1,3 / 2,4 -> throws, 3,4 -> 3+4.
+   50 ms = the press frame + 2 frames of leniency. The leniency absorbs two presses that straddle
+   a frame boundary, and the JS timestamp jitter: each keydown/touchstart is stamped with
+   performance.now() when its handler runs, and a render task between two events delays the second
+   by up to one display frame (~16 ms). A deliberate string press is >= ~70 ms after the previous
+   one, so it stays a string. Touch HEAT (2+3) / RAGE (1+2) push their chord directly (_push), so
+   this window does not apply to them. Test: test/input-timing.test.mjs. */
+export const CHORD_WINDOW_MS = 50;
+
 export class InputManager {
   constructor() {
     this.axisX = 0;
@@ -91,21 +103,32 @@ export class InputManager {
     return code;
   }
 
-  /* P+K chord => command grab. Tracks the most recent strike press;
-     if the other one lands within 140ms, the pair becomes a grab. */
-  _strike(kind) {
+  /* Press time for the chord gap. Handlers pass the event's e.timeStamp: when the key / touch
+     really went down, in the performance.now() timebase. A busy page runs queued handlers back
+     to back, so stamping with performance.now() inside the handler shrank the gap and merged
+     two presses (1 then 3 -> 1+3 throw). Falls back to performance.now() without a usable stamp
+     (direct calls, tests, old browsers that stamp epoch ms or 0). */
+  _pressT(t) {
     const now = performance.now();
+    return (typeof t === 'number' && t > 0 && t <= now + 1) ? t : now;
+  }
+
+  /* P+K chord => command grab (legacy J/K keys, hidden P/K touch buttons). Tracks the most
+     recent strike press; if the other one lands within CHORD_WINDOW_MS, the pair becomes a
+     grab (was 140 ms: a quick J,K = 1,4 came out as a throw). */
+  _strike(kind, t) {
+    const now = this._pressT(t);
     if (kind === 'punch') {
-      if (now - this._lastKickT < 140) { this._lastKickT = 0; this._push('grab'); return; }
+      if (now - this._lastKickT < CHORD_WINDOW_MS) { this._lastKickT = 0; this._push('grab'); return; }
       this._lastPunchT = now;
     } else {
-      if (now - this._lastPunchT < 140) { this._lastPunchT = 0; this._push('grab'); return; }
+      if (now - this._lastPunchT < CHORD_WINDOW_MS) { this._lastPunchT = 0; this._push('grab'); return; }
       this._lastKickT = now;
     }
     this._push(kind);
   }
 
-  /* Tekken chords: any two limbs within 140ms.
+  /* Tekken chords: any two limbs within CHORD_WINDOW_MS (50 ms, see the constant).
      1+3 / 2+4 = throws; 1+2 / 3+4 = specials; 1+4 / 2+3 = command inputs.
      Throw pairs keep priority (most deliberate), then specials, then commands. */
   /* Vertical intent right now, including a u/d still inside its 200ms tap window: a limb
@@ -116,29 +139,48 @@ export class InputManager {
     return this._udDir || null;
   }
 
-  /* 8-way octant stick (tekken-command-interpreter lane): the old axis
-     thresholds (x 0.25, y 0.55) read a d/f push as 'f' or 'd' depending on
-     angle and fed jitter near centre as directions, so f+1 / d/f+2 / qcf
-     came out as random moves. One magnitude gate + 45° octants instead.
-     x right-positive, yUp up-positive (screen-agnostic). */
+  /* 8-way octant stick (tekken-command-interpreter lane): the octant direction
+     feeds the command buffer (stickDir) so f+1 / d/f+2 / qcf resolve cleanly.
+     MOVEMENT (axisX, up/down) keeps the original independent thresholds:
+     x 0.25 deadzone, y 0.55 tap-vs-hold zones. Driving movement from the
+     octant classified any push >22.5° below horizontal as down, so a natural
+     thumb drift while walking kept crouching the fighter (owner playtest
+     bug 2026-10-23: stick "keeps going down"). x right-positive, yUp
+     up-positive (screen-agnostic). */
   _stick8(x, yUp) {
     const d = stickToDir(x, yUp, 1, 0.38);
     this.stickDir = d;
-    const right = d === 'f' || d === 'u/f' || d === 'd/f';
-    const left = d === 'b' || d === 'u/b' || d === 'd/b';
-    this.axisX = right ? 1 : left ? -1 : 0;
-    this._udStick(d.startsWith('u') ? -1 : d.startsWith('d') ? 1 : 0);
+    // Movement: analog x with 0.25 deadzone (pre-8-way behavior).
+    this.axisX = Math.abs(x) > 0.25 ? Math.max(-1, Math.min(1, x)) : 0;
+    // Movement: vertical via Tekken tap-vs-hold zones (0.55 threshold),
+    // not the octant — a mostly-horizontal push must not crouch.
+    // FIX 2026-10-24 (joystick center): ANY touch was triggering down, wide drag
+    // needed for up. Root cause: static joystick center — thumb landing below
+    // center starts already in down zone. Combined with magnitude deadzone
+    // (ignore vectors < 0.2) and vertical snap (|yUp| < 0.25 -> 0) to kill
+    // resting-thumb drift. Keep PR #997 horizontalDominant: sideways must not crouch.
+    // Also: nipplejs mode changed static -> dynamic (see _bindJoystick) so touch
+    // point BECOMES center — no fixed-center offset possible.
+    const magnitude = Math.hypot(x, yUp);
+    if (magnitude < 0.2) {
+      this._udStick(0);
+      return;
+    }
+    const snappedY = Math.abs(yUp) < 0.25 ? 0 : yUp;
+    const horizontalDominant = Math.abs(x) > Math.abs(snappedY) * 1.2;
+    const verticalValue = horizontalDominant ? 0 : -snappedY;
+    this._udStick(verticalValue);
   }
 
-  _tekken(btn) {
-    const now = performance.now();
+  _tekken(btn, t) {
+    const now = this._pressT(t); // e.timeStamp from the handler, else performance.now()
     if (this._udDir && !this._udHeld) this._udUsed = true; // the tap fed this attack's direction
     const pairs = btn === '1' ? [['3', '1+3'], ['2', '1+2'], ['4', '1+4']]
                 : btn === '2' ? [['4', '2+4'], ['1', '1+2'], ['3', '2+3']]
                 : btn === '3' ? [['1', '1+3'], ['4', '3+4'], ['2', '2+3']]
                 : [['2', '2+4'], ['3', '3+4'], ['1', '1+4']];
     for (const [pair, name] of pairs) {
-      if (now - this._lastT[pair] < 140) {
+      if (now - this._lastT[pair] < CHORD_WINDOW_MS) {
         this._lastT[pair] = 0; this._lastT[btn] = 0;
         this._push(name);
         return;
@@ -188,8 +230,12 @@ export class InputManager {
     clearTimeout(this._udTimer);
     this._udDir = null; this._udHeld = false;
     const used = this._udUsed; this._udUsed = false;
+    // Tekken sidesteps only on a u/d tap that returns to neutral. A tap that ROLLS into a
+    // horizontal (d -> d/f -> f = qcf, d -> d/b -> b = qcb, f held + d tap) is a motion: the
+    // stick is still forward/back when u/d lets go, so no sidestep (a fast qcf used to sidestep).
+    const rolled = this.axisX !== 0;
     if (this.up || this.down) { this.up = false; this.down = false; }
-    else if (!held && !used) this._push(dir === 'up' ? 'ss-up' : 'ss-down');
+    else if (!held && !used && !rolled) this._push(dir === 'up' ? 'ss-up' : 'ss-down');
   }
 
   /* ---------------- Keyboard ---------------- */
@@ -204,14 +250,15 @@ export class InputManager {
         case 'KeyD': case 'ArrowRight': this.axisX = 1; break;
         case 'KeyW': case 'ArrowUp': this._udPress('up'); break;
         case 'KeyS': case 'ArrowDown': this._udPress('down'); break;
-        case 'KeyJ': this._strike('punch'); break;
-        case 'KeyK': this._strike('kick'); break;
+        case 'KeyJ': this._strike('punch', e.timeStamp); break;
+        case 'KeyK': this._strike('kick', e.timeStamp); break;
         case 'KeyU': this._push('grab'); break;
         case 'KeyL': this._push('surge'); break;
-        case 'Digit1': this._tekken('1'); break;
-        case 'Digit2': this._tekken('2'); break;
-        case 'Digit3': this._tekken('3'); break;
-        case 'Digit4': this._tekken('4'); break;
+        // e.timeStamp = when the key went down (chord gap; see _pressT)
+        case 'Digit1': this._tekken('1', e.timeStamp); break;
+        case 'Digit2': this._tekken('2', e.timeStamp); break;
+        case 'Digit3': this._tekken('3', e.timeStamp); break;
+        case 'Digit4': this._tekken('4', e.timeStamp); break;
         case 'Space': this.held.block = true; e.preventDefault(); break;
         case 'ShiftLeft': case 'ShiftRight': this._push('dodge'); break;
         case 'KeyV': this._push('vskill'); break; // V-System (owner 2026-10-22)
@@ -259,13 +306,22 @@ export class InputManager {
       if (knob) knob.style.display = 'none';
       const manager = window.nipplejs.create({
         zone: base,
-        mode: 'static',                          // fixed stick, bottom-left (fighting-game standard)
+        mode: 'dynamic',                         // stick appears at touch point (fix 2026-10-24: static center caused any-touch=down)
         position: { top: '50%', left: '50%' },    // centered in the #joystick zone
         color: 'white',
         size: 120,                               // 130px zone with a small margin
         threshold: 0.1,
         fadeTime: 150,
         restOpacity: 0.85,
+        // STICK-CENTRE FIX (owner 2026-10-24: "any touch to the joystick makes it go down, and I have to do a
+        // weird wide drag to make it go up"). In static mode nipplejs stores the stick centre ONCE, when the
+        // manager is created. This runs at boot while the fight HUD is still hidden, so it stored (0,0) - the
+        // screen's top-left corner - while the stick is drawn at the bottom-left (measured live: stored {0,0}
+        // vs real centre {87,299} at 844x390). Every touch was measured from the corner: always DOWN (crouch,
+        // FC/WS moves instead of the pressed move), and UP only far above the stick. dynamicPage re-reads the
+        // stick's on-screen position on every touch (nipplejs processOnMove), so the centre is always right,
+        // after the HUD appears, after rotation, and after resize.
+        dynamicPage: true,
       });
       // nipplejs vector: x is right-positive, y is UP-positive (negated screen y).
       // _udStick takes screen-style ny (down-positive; up zone is ny < -0.55).
@@ -341,8 +397,8 @@ export class InputManager {
       const press = (e) => {
         e.preventDefault();
         if (action === 'block') this.held.block = true;
-        else if (action === 'punch' || action === 'kick') this._strike(action);
-        else if (/^[1234]$/.test(action)) this._tekken(action); // LP/RP/LK/RK limbs
+        else if (action === 'punch' || action === 'kick') this._strike(action, e.timeStamp);
+        else if (/^[1234]$/.test(action)) this._tekken(action, e.timeStamp); // LP/RP/LK/RK limbs (touch time, see _pressT)
         // TRANSFORM touch button: tap = transform up; tap while crouching
         // (joystick held down) = rare transform-down. No keyboard input.
         else if (action === 'transform') this._push(this.down ? 'transform-down' : 'transform');
@@ -362,3 +418,5 @@ export class InputManager {
   }
   _resetJoyKnob() {}
 }
+
+// Joystick center fix 2026-10-24: dynamic mode + deadzone (PR #1001)

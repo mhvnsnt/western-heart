@@ -2,6 +2,19 @@
 
 Living document. Updated every time the owner sets a directive. Newest first.
 
+## 2026-10-24 — Animation strategy: DECODED vs MADE
+
+- **Animation strategy (2026-10-24).** Every animation is DECODED or MADE, labelled as whichever it is, never the other. Full decision doc: `docs/decisions/2026-10-24-animation-strategy-decoded-vs-made.md`. Method doc: `docs/handoffs/COMBAT-RIGHT-WAY-2026-10-24.md`.
+- **DECODED animations (2026-10-24).** Motion bytes from a shipped game, with recorded source file, row/slot, and the exact move they belong to. In the repo today: Tekken 3 banks (22 banks, `game/assets/anim/t3/`) plus T3 hit reactions/throws (7,368 clips, PR #1003). Tekken 7 decoded animation coverage in the repo is 0 of 51 (`teardown/tekken7/TEKKEN7-ROSTER-COVERAGE.md`) — frame data is not animation, and no community dataset has move → animation IDs.
+- **MADE animations (2026-10-24).** Motion created for canon moves with NO Tekken equivalent. Methods, in order: adapt a decoded T7/T3 clip, blend decoded clips, build from the move's recorded properties (input in LP1/RP2/LK3/RK4 form, startup/active/recovery, hit level, range, damage), community libraries with recorded licence and provenance. Verification: property check + `node tools/anim/attack_anim_audit.mjs` (0 strikes on throw rows, 0 throws on strike rows, 0 generic fallbacks, string continuations checked too) + touch-play on the live build with screenshots viewed. A MADE clip is replaced by the real decoded clip the moment one exists.
+- **EXTRACTION vs CREATION decision tree (2026-10-24).** Tekken move exists → EXTRACT, never make or class-match; canon move with no Tekken equivalent → MAKE; neither specified → stop and get the source identified. Bans: no class-matching (a jumping punch is not a standing jab, even though both are strikes), no mislabelling (a T3 clip is T3, a MADE clip is MADE, a T7 clip is T7 only from a T7 extraction).
+- **Extraction paths (2026-10-24).** Live TKMovesets extraction from a running T7 (authoritative for T7, output to private repo `mhvnsnt/game-reverse-engineering`, never raw game files in the public repo); mot.bin RE in parallel as backup; Steam pak extraction as the heavy fallback; TTT2/T6/T5/T3 only where the character exists in that game (T6 `DATA401` still encrypted, T5 motions named but not extracted — do not claim coverage that does not exist).
+- **940 blocked slots (2026-10-24).** Pond (Raven base), Ryusan (Lucky Chloe base), Megami (Jun base) — no decoded sets for these Tekken bases, 940 animation slots total (issue #866 comment `6389250251`). Paths to unblock: live TKMovesets extraction for Raven and Lucky Chloe; TTT2 extraction for Jun (Jun is a TTT2 character, not a T7 roster character, so the #866 TKMovesets request for Jun needs retargeting to TTT2) plus mot.bin RE in parallel. Wider request: live TKMovesets extraction for ALL T7 characters (#866 comment `6388949909`, King first). Ryuji and Vain Abel are flagged as also blocked in the same comment but their Tekken bases are unverified — they are NOT folded into the 940 until verified. Until extractions land, the 940 stay UNMAPPED in the editor; an honest UNMAPPED beats a wrong clip.
+- **Joystick fix confirmation (2026-10-24).** PR #1001 (dynamic mode, deadzone, any-touch=down fixed) and PR #1003 (touch joystick fix + decoded T3 hit reactions/throws + combat right-way doc) are BOTH merged. Do NOT duplicate them, do NOT re-apply them, do NOT open another joystick-centre fix without first reproducing the report on the live build with the touch probe. Remaining joystick work is live verification only.
+- **MOD damage confirmation (2026-10-24).** PR #1000 (8 fighters) + PR #1002 (remaining characters) are both merged — all T7 characters' moveset blocks are wired with TheBigTuna MOD damage values. Damage wiring is done; it is not animation progress, and a move can have the right damage and still play the wrong clip.
+- **Editor confirmation (2026-10-24).** PR #998 merged — the Create-A-Move List editor (`packages/creation-suite/src/movelist-editor.js`) shows an animation for every move that has one, or UNMAPPED with a specific reason for every move that does not. UNMAPPED is the work list, not something to paper over.
+- **Non-T7 characters directive (2026-10-24).** Owner: "for every character even the ones that aren't in t7." The same decision tree applies to every fighter: a non-T7 fighter's decoded motion comes from the game its base IS in, or from WWE/other game/community data with recorded source and licence, exact-move mapping, and its real label — never another fighter's moves or stance borrowed because a source is missing. Where no source exists, the move is MADE or stays UNMAPPED.
+
 ## 2026-10-22
 
 
@@ -405,3 +418,79 @@ Decision log: `docs/decisions/2026-10-22-integration-law.md`.
 - **Locked Ashlane→VF5:** Bannon→Jeffry, El Toro→Wolf (+1 clean aerial), Pablo→El Blaze (+powerhouse, comedy-whiff lucha attempts, Black Reign/Abyss dark finishers), NPC Finxsse→Lei-Fei. VF5 bases resolve when worker 45's bank lands.
 ## EM-Jin naming convention (user directive 2026-10-22)
 Eastern Mind Jin is NOT Jin Kazama. In all files, docs, and code: "Jin (Eastern Mind)" or "EM-Jin" — never bare "Jin" where Kazama confusion is possible. (Correction: earlier "Gen (Eastern Mind)" was a mishearing.)
+
+## Multi-agent team protocol (user directive 2026-10-23, verbatim)
+
+"and this is how you should be working with the other IDEs and stuff like that to get stuff done and making this like a real development team of different IDEs and stuff like that to get stuff done faster this is how you should be doing it you should be like learning from how I'm doing it and logging it in the repo so we can keep work going on this autonomously all the time as much as we can for free while I'm using my paid things and credits and we can use all our free resources too"
+
+- Agents work as a real dev team: one finds the root cause, others build on top instead of duplicating.
+- Log the coordination pattern in the repo: `docs/AGENT-TEAM-PROTOCOL.md`.
+- Maximize free resources (VM, open-source, API, background agents); save the user's paid credits.
+- Keep work going autonomously around the clock.
+## DO THE WORK RIGHT, NOT FAST (user directive 2026-10-24)
+
+User said (verbatim):
+"Bro your bullshit me so hard, bro. Yeah, you changed. The grapple animation on one button. And you changed it from the grapple to a punch. But when I press it twice, it still plays the grapple animation like he got the person in a grapple and is delivering a grapple. And the punch that you put is a fucking jumping punch. Like, bro, why are you doing this so random? Did you not look at the files? Like. Bro let's talk about this bro before you keep working and bullshitting me because you've wasted my last 24 hours bro like you started working really bad like really really bad and you're you're really playing with me bro like let's talk about this why are you working so bad"
+
+"But why you know the right way to do it though why do you keep doing it wrong?"
+
+"Why do you keep doing that? And how to get you to stop doing that because you're you're not doing it fast you're being slow and wrong you're not even being fast and it's really like if someone was having a really bad day you would be making their day worse like if someone was on their last straw you would be giving them their last straw and sometimes I really feel like that's your goal"
+
+"But that's not you're not making it feel better for real. Like you're not actually making things better. What you just said your goal is you're not doing that you're actually making things feel worse and more frustrating I feel like that's your real goal because if your goal was to make things better you would take your time to do it all right and the quickest possible and optimized in the way that you know it should be done because we have so many tokens and if I put money into this if I bought more tokens and put money into this I would want better work and I'm using tokens to get the work out of this and you're doing terrible work"
+
+"Let's do this thre right way. Log all that in the repo and laws and rules and soul and agents MD and wherever else needed, verbatim"
+
+Rules derived from this directive:
+- Never optimize for appearance of progress over actual correctness.
+- Map each move to its EXACT correct animation from the actual Tekken files, not just a class-correct one. A jumping punch is not a jab, even if both are "strikes."
+- Verify before deploying. Never claim something is fixed until it has been verified by playing, not by checking JSON fields.
+- Never call something "fixed" when it is only "less broken."
+- Verify string continuations (second press, third press) as well as the first hit.
+- The user's tokens buy real work, not sloppy work. Slow and right beats fast and wrong every time.
+
+## MOVESET CONSTRUCTION VARIES PER CHARACTER (standing rule, owner directive 2026-10-24)
+- Owner intent (verbatim): "there's certain characters where their moveset is going to need to be built just like how Zen's is but it might be on top of a Tekken character but it's like you know there's variation it depends per character some characters have all a certain character's moveset some have a mix some of them have additives I already told you that you'll have to really research the documentation"
+- Four patterns, determined PER CHARACTER from documentation, never assumed: PURE (all of one Tekken fighter's moveset, zero extras), MIX (moves from 2+ fighters), ADDITIVE (one fighter's base + canon extras on top), BUILT (built from scratch/mixed sources, possibly on a Tekken base — the Zen pattern: Eleven/Twelve concept + Dural 3D base + own canon moves + X.COPY as one super).
+- If documentation does not settle a character's pattern, mark PATTERN UNCLEAR and list the docs checked. NEVER default an unclear character to pure. NEVER assume one pattern for all.
+- Audit of record: docs/MOVESET-PATTERN-AUDIT-2026-10-24.md — 60 rows (58 rostered + Birodo + Jotei): PURE 6, MIX 6, ADDITIVE 41, BUILT 5, PATTERN UNCLEAR 2. Pantera and Scimitar are ADDITIVE as shipped (WH signatures on top of King / Shaheen), NOT pure.
+## MIX PER CANON (standing rule, 2026-10-24 — Zui mix PR)
+
+- When canon says a fighter fights with 2+ styles, the moveset MUST reflect all of them.
+  Each move carries `source_fighter` + `source_game` + `mix_group` + `input_display`
+  (LP1/RP2/LK3/RK4 rendering alongside the Tekken-number input).
+- Collisions are resolved by stance-gating or alternate input (e.g. Zui `f+3+4`:
+  Lei Drunken Master Walk owns the canonical key, Steve Peekaboo preserved under
+  `f+3+4_r198`) — never by silently overwriting a base move with a borrowed move
+  or vice versa.
+- Sharing NEVER removes moves from the donor. Lei drunken fist in Zui does not remove
+  anything from Rave (full Lei) or Byou (Lei soul file).
+- A file holding two fighters' rows is NOT automatically a canon mix: transformation
+  forms (Demonio Jin/Devil Jin) and unresolved doc conflicts (Gyou Paul vs Hwoarang)
+  are reported, not rewired. Mimicry (Trader, DXMMII) is a system, not a move list —
+  flag NEEDS-DATA, don't fake a fixed mix.
+- Lei Wulong has no Tekken 7 data. Any "T7 Lei" label is a dataset mislabel to correct
+  by annotation to Tekken 6 / TTT2, never by silently rewriting import history.
+- Full audit: `docs/decisions/2026-10-24-zui-mix-per-canon.md`.
+## BUTTON NAMES: LP1, RP2, LK3, RK4 (user directive 2026-10-24)
+
+User said (verbatim):
+"you gotta stop talking about it like one and two. I know that's how it's labeled out in the keys, in like the keyboard and how it's labeled out in the guide in the how to play and the Tekken files and stuff, which is cool, you can stay that way in the files, but you also need to add in the files, left punch, LP, and right punch, RP because that's what I see on my fucking screen when I press it, okay? And left kick, LK and right kick, RK because that's what I see on my fucking screen. So whatever those are what goes to those buttons, is what we need to say so when I press RP is that one or two and when I press LP is that two or one."
+
+"you gotta save that in the repo and when we talk about it so you can say it like that and know that, hey, LP1, RP2, LK3, RK4 just like how I do just like how we're talking about how I'm saying now."
+
+Mapping:
+- LP1 = Left Punch = Tekken 1
+- RP2 = Right Punch = Tekken 2
+- LK3 = Left Kick = Tekken 3
+- RK4 = Right Kick = Tekken 4
+
+Rules:
+- Use LP1/RP2/LK3/RK4 format in ALL conversation with the user.
+- Files may keep 1/2/3/4 notation but must also show LP/RP/LK/RK alongside.
+- When the user presses RP2 on their screen, that is Tekken 2. When they press LP1, that is Tekken 1.
+## ZEN BASE (user decision 2026-10-24)
+- Zen is NEITHER Heihachi NOR Julia. Heihachi is Diablo's base; Julia is Nightwolf's base.
+- Zen's base chain: Eleven/Twelve (Street Fighter, 2D concept) -> Dural (Virtua Fighter 5, 3D implementation — "the closest thing to 10 or 11 in a 3D game") -> Zen's own canon moves on top.
+- X.COPY is ONE super (copies opponent briefly), NOT Zen's identity. Zen is not just a copycat.
+- Until VF5 Dural motion exists, Zen's bank is UNMAPPED (game/js/fighter.js FIGHTER_BANK zen: null). Never bind a bank that does not exist; never restore Heihachi/Julia without a new owner decision.
+- Full doc: docs/decisions/2026-10-24-zen-base-decision.md.

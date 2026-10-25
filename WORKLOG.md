@@ -1,3 +1,95 @@
+## 2026-10-24 — Anim-motion audit follow-up: test pins updated to the corrected rows (ANIM-MOTION LANE)
+
+**Why:** CI `game-unit-tests` failed on PR #1022 only because three assertions pinned the OLD buggy rows. The pins enshrined the bugs: row 44 is a jumping-1 clip (feet 0.75/0.78 m off ground at frame 0), not a standing jab; row 203 is a lunging ducking straight (0.95 m travel, hips to 0.61 m), not a jab.
+
+**What changed (test-only, no game data touched):** `test/attack-anim.test.mjs` — Pantera `1` pin row:44 → row:110 (T3 f+1, standing armL jab, active 10 = T7 i10), intent asserts kept (never plays throw row 290, limb armL, row 290 rejected). `test/root-motion.test.mjs` — LP1 pin row:44 → row:110 with measured values (steps in to 0.265 m peak, settles 0.106 m forward, −0.028 m lateral); RP2 pin row:203 → row:99 (T3 b+2, standing armR jab, active 10 = T7 i10) with measured values (0.151 m forward, −0.138 m lateral, mirrored −0.151 m); wall test reframed — row 99 peaks at 0.300 m mid-clip then settles to 0.151 m, so at the wall the clamp discards the overshoot and the settle-back lands at 8.251 m (inside the stage, clamp engaged at peak 8.4 m); the old x ≥ 8.3 assertion assumed row 203's monotonic 0.85 m travel and is wrong for a peak-and-settle clip.
+
+**Verification (local reproduction of CI's per-file run, main tree + PR movesets + updated pins):** all 22 `test/*.test.mjs` files pass, including attack-anim 9/9 and root-motion 9/9. `game/tests/move-melding.test.mjs` references none of the changed fighters or rows. Simulation/scan proof only — NOT play-verified.
+
+---
+
+## 2026-10-24 — Anim-motion audit: Pantera + 8 MOD fighters, 11 basics rewired, 22 jumping moves bound (ANIM-MOTION LANE)
+
+**Owner instruction (verbatim):** "game is UNPLAYABLE — still doing wrong moves in wrong places, wrong animations. Press button, get wrong move." (user playtest verdict 2026-10-24) + "if your goal was to make things better you would take your time to do it all right" (user directive 2026-10-24: map each move to its EXACT correct animation from the actual Tekken files, never call something "fixed" when it is only "less broken").
+
+**What was broken (measured, not guessed):** the audit replicates `game/js/fighter.js` `_attackClipPlan` (own > notation > anim > donor > match > generic) over the decoded T3 banks and checks the played clip with forward kinematics — stance from `root_t` Y trajectory (relative to each bank's own neutral), limb from branch button + participation (for legs the FOOT decides: lift at/near active), level from the decoded attack word vs T7/T8 level. Pre-fix, 2019/4696 pressable moves were HARD-flagged (44%+ per fighter for the worst: phantom 623/937). The buttons the user presses were the worst of it: Pantera LP1 played jumping-1 row 44 (feet 0.75 m off ground at frame 0), RP2 played duck-dipping lunging row 203, LK3 played jump row 54; burger/skull/diablo/phantom basics were airborne/jump/crouch clips; scimitar LP1 played chord row 184 (LP1+RK4, wrong arm, 1.63 m travel). Donor fallback is the amplifier: the largest plan kind for most fighters is donor (pantera 411 donor picks), so one wrong source row poisons dozens of donees.
+
+**What this lane does (33 moveset changes, 77 insertions / 33 deletions, 0 deletions, no damage/startup/t7/t8/slots touched):** 11 basic rewires — pantera `1` 44→110 (T3 f+1, active 10 = T7 startup 10), `2` 203→99 (T3 b+2), `3` 54→264 (string-ender high kick, disclosed); burger/skull `1` 52/50→172 (T3 f+1), `2` 152→100 (T3 b+2), `4` 78/76→104 (moveset's own T7-wired Bryan 4, active 12 = startup 12); diablo `4` 74→104 (T3 f+4); phantom `3` 73→123 (back-3 variant high kick, foot lift +1.09 m). 22 jumping-move restoration bindings (`t3_source` + `t3_row` added, names/`anim_ref` untouched) — burger to its OWN T3 jumping rows 183/87 (the T8 moves missed them via notation spelling `uf` vs `u/f`), diablo/phantom/skull to their verified pre-PR donor rows (74/73/76) — because fixing the standing basics moved the donor source those jumping moves had correctly borrowed. Pantera basics verify CLEAN; burger/skull RK4 + diablo RK4 + phantom LK3 verify CLEAN; burger/skull LP1/RP2 keep a disclosed stepping-jab travel residual (0.53/0.52 m vs 0.50 threshold — standing jabs now, not airborne). Full per-fighter tables, UNMAPPED reasons, rejected alternate wirings, word-vs-shape conflicts, slots overrides, and the honest still-wrong list: `docs/anim/ANIM-MOTION-AUDIT-2026-10-24.md`. Repro tool (matches pre- and post-fix counts exactly): `tools/combat-qa/anim_motion_audit.py`. T3-use logging per the instruction gate: `docs/anim/PROCEDURAL_AUDIT.md` (T3 is last-resort fallback; no T5/6/7/8/TTT2 animation is decoded in-repo).
+
+**Verification (simulation/scan only — NOT play-verified):** same audit code both sides: 2019 → 1554 pressable HARD (−465): pantera 308→236, burger 281→151, diablo 210→156, phantom 623→553, skull 261→122; demonio/kinpo/scimitar unchanged (no verified rewire exists for their basics). All 22 bound jumping moves verify CLEAN. Remaining regressions: exactly 10, all pantera LOW RP2 moves (MED→HARD level grade when the donor moved from mid row 203 to high row 99; no verified low RP2 row exists in the king bank — row 130's only user is a kick move). Motion-verified HARD string-enders on chord rows: 35 post-fix (literal branch-mask scan: 66; legacy `strings` arrays: 6 per-hit violations, arrays not consumed at runtime, documented not edited). 9 UNMAPPED basics still play broken clips (demonio/kinpo/scimitar/diablo LP1, phantom LP1/RP2/RK4, burger/skull LK3) and 1554/4696 pressable moves remain HARD — documented, NOT bulk-rewired, because no verified replacement exists per move. Live-browser phone play verification remains open (subagent cannot drive the live browser) — handed back to the parent agent.
+
+**Remaining (explicitly NOT done):** play verification on a phone; string sequence clips (engine lane: a string plays ONE clip, so no single row can ever be a correct multi-hit string); T7/T8 motion replacements for all T3 fallback rows (blocked: T7 0 of 51 decoded, T6 encrypted, TTT2 not extracted); slots overrides (demonio/diablo `4`→`4~3`, phantom `3`→`3~4`/`4`→`4~3`) — reported, not changed; the 10 pantera low RP2 moves pending a low RP2 clip.
+
+---
+
+
+## 2026-10-24 — MADE animations: Pantera's 3 signatures built, priority specs written (MADE LANE)
+
+**Owner instruction (verbatim, task):** "Build MADE animations for canon moves (priority fighters first), starting with ADAPT path." Button names LP1/RP2/LK3/RK4 everywhere. MADE animations labelled MADE everywhere, never mislabelled as decoded. Systems (KESSHOU, Nine-Soul Release, Reihou, Trial's Seal, Soul Surge) are runtime systems, not clips — none built here.
+
+**What was built (clips, ADAPT, all MADE-labelled):** Pantera's 3 signatures as `wh-anim/1` clips in `game/assets/anim/made/pantera/` — Honest Hold LP1+RK4 (from decoded T3 King grab row 230, piecewise warp anchored on measured RightHand-extension peak frame 19, 38 frames), Tail-Tip Lunge f+LP1 (from King row 111 f+2 armR, peak frame 5, 29 frames), Battle Itself LP1+RP2 (from King row 220 1+2, same input/limb/startup 0.30s, strike segment x3 flurry + 18-degree roar head-pitch, 46 frames). Builder + validator: `tools/anim/made_pantera_build.py` (reproduces all three from the bank on disk; peaks re-measured 19/5/31 on re-run). Per-move table, conflicts and gaps: `docs/anim/MADE-PANTERA-2026-10-24.md`.
+
+**What was NOT built, and why (honest gaps):** the clips are shipped but UNWIRED — `t3anims.js` hardcodes `userData.source = 'REAL T3 decoded motion'` (must become data-driven or MADE clips would be mislabelled at runtime) and `fighter.js` `_attackClipPlan()` never reads `anim_ref`, so wiring needs a new `made` tier + hit-window entries. No moveset `anim_ref` change was made. Tail-Tip Lunge carries a flagged input-vs-limb conflict (f+LP1 vs filed armR; clip follows the filed limb, row 111, not row 110). Tail telegraph not in the clip (no tail joint in the 22-bone rig). Battle Itself repeat seam is 131.0 degrees (above its source's 97.1) — eye-check on the wiring PR. Nothing here is play-verified; validation is structural only (shape, unit quaternions, durations within 1 frame of move totals).
+
+**Specs for the other priority fighters (no clips):** `docs/anim/MADE-PRIORITY-SPECS-2026-10-24.md` — 54 specs: Cape Jones 2, Chatur 7, Pond 5, Megami 4, Menajerii 4, Ryusan 6, Tobi 6, Doc Frank 7, Deathfang werewolf 13. Of those: NEEDS-SPEC 13 (missing rig/prop/timing, nothing invented), BANK-BLOCKED 7 (Pond 3, Megami 3, Ryusan 1 — no own T3 bank, and borrowing another character's clips is forbidden by the own-bank rule), remaining SPEC 34. Community first-check done at library level (Mixamo bipedal-only, Rokoko 6 generic martial-arts clips, CMU/Bandai generic bases): no community clip matches any BUILD move. Doc Frank bank-map conflict flagged (moveset says bosconovitch, fighter.js map says gunjack) — not resolved by guessing.
+## 2026-10-24 — Hitbox / hurtbox hit detection: 14 swept capsules replace 2 spheres (HITBOX LANE)
+
+**Owner instruction (verbatim):** "Hitbox stuff and hurtbox stuff is not making contact right. A lot of contacts not being made during fight." (user playtest report 2026-10-24)
+
+**What was broken (measured on main):** `fighter.js` `getHurtboxes()` returned only Spine1 + Head spheres and `game.js` tested only `hurts[0]`; the range fallback required `hurts.length > 0`, so a defender whose rig lacked those bone names (foreign/Bip001 rigs) returned zero hurtboxes and every strike whiffed at any distance. Hitboxes were a single sphere at the weapon endpoint (fast limbs could step past between 120 Hz ticks), and 'both'-limb moves (275 Pantera moves) swept only the right hand. PR #1003's 633 reaction records were verified to be reactions, not hitboxes — no hitbox/hurtbox table exists anywhere in the repo (700 branches + open PRs searched; Claude's Lane C 14-cylinder model is UNAVAILABLE, so this lane re-derives from live bone data). Full findings: `docs/anim/HITBOX-HURTBOX-2026-10-24.md`.
+
+**What this lane does:** new pure modules `game/js/hitbox.js` (14 hurt capsules over live posed bones, swept limb + travel segments, exact segment-segment capsule test, root-anchored fallback capsules so a live defender never returns []) and `game/js/t3-reaction-select.js` (HitSelectReaction pick over the PR #1003 tables; selection wired, pack-clip playback pending a lazy loader lane — not claimed). `fighter.js`: `getHitbox` returns swept segments + travel (both-limb = 2 segments), `getHurtboxes` returns 14 capsules, `_pickReaction` stores the reaction slot on hit/block. `game.js` `_resolveCombat`: geometry OR range fallback (unchanged formula), all 14 segments tested, hit segment recorded. `combat-core.js` `hitWordFor`: top-level, then T7, then T8 level with parentheses stripped — Pantera hit-word coverage 667/873 -> 708/873 (decoded `hit_words` still wins). Damage, stun, block, chip, throw-lock and KO paths untouched. Buttons in docs/comments use LP1/RP2/LK3/RK4.
+
+**Verification:** `node test/hitbox.test.mjs` — 19 checks pass (pure geometry, hit-word fallback, real `Fighter.prototype` methods with stub bones, real `Game.prototype._resolveCombat` headless: Pantera LP1 hits at 1.45 m, whiffs at 3.5 m; extended fist connects at 1.90 m past the 1.75 range class; f,F+2 hits at 2.10 m; low hits croucher, high whiffs croucher; boneless rig still gets 14 hurtboxes). `node test/combat-contact.test.mjs` still passes. Live-browser phone play verification remains open (subagent cannot drive the live browser) — handed back to the parent agent.
+
+**Remaining (explicitly NOT done):** reaction pack clip playback (needs a lazy ~6.5 MB/bank loader); row attack words for the 165 uncovered Pantera moves (via `hit_frames.json`, async-load problem); T3 hurt-volume decode if a future teardown provides it (radii table in `hitbox.js` is the single replacement point).
+
+---
+## 2026-10-24 — Animation strategy documented: DECODED vs MADE (docs only)
+
+**Owner instruction (verbatim):** "log in the documents the right way to do this" (2026-10-24), plus "for every character even the ones that aren't in t7."
+
+**What this entry records:** the animation strategy is now written down in the repo, so no lane has to re-decide it or re-guess it. Decision doc: `docs/decisions/2026-10-24-animation-strategy-decoded-vs-made.md`. Owner-directives append: `docs/owner-directives.md` under `## 2026-10-24` (newest-first). The two lanes are DECODED (motion bytes from a shipped game, recorded source + row + exact move) vs MADE (motion created for canon moves with no Tekken equivalent, by adapting/blending decoded clips, building from recorded properties, or community libraries with provenance). Extraction vs creation decision tree, the 940 blocked slots, and the merged-PR statuses below are all in the decision doc.
+
+**Joystick fix PR #1001 (merged):** "fix(input): joystick center — dynamic mode + deadzone, any-touch=down fixed" (`game/js/input.js`). Dynamic mode + deadzone; every touch reading as DOWN fixed.
+
+**Joystick fix PR #1003 (Claude's, merged):** "Fix touch joystick (every touch read as DOWN) + decoded T3 hit reactions/throws + combat right-way doc" — merged as main tip `374a6a462`. Joystick part: `dynamicPage: true` in nipplejs, so the stick centre is re-read on every touch instead of stored once at boot while the fight HUD was hidden (stored `{0,0}` vs real centre). Also in PR #1003: decoded T3 hit reactions/throws (22 banks, 7,368 clips) and `docs/handoffs/COMBAT-RIGHT-WAY-2026-10-24.md`. Both joystick PRs are in — do NOT duplicate; verify live only.
+
+**MOD damage PR #1002 (merged):** "Wire TheBigTuna MOD damage values into remaining WH moveset T7 blocks." With PR #1000 (8 fighters, merged), all T7 characters' moveset blocks are now wired with MOD damage values. Damage wiring is done; it does not fix animations.
+
+**Animation strategy doc creation (this PR):** `docs/decisions/2026-10-24-animation-strategy-decoded-vs-made.md` — DECODED vs MADE definitions, which characters have decoded sets (T3: 22 banks; T7: 0 of 51 in the repo), extraction paths (live TKMovesets authoritative, mot.bin RE parallel, Steam pak fallback, TTT2 for Jun), creation methods and verification, the decision tree, the 940 blocked slots (Pond/Raven, Ryusan/Lucky Chloe, Megami/Jun) and their unblock paths, joystick/MOD/editor merged statuses, and the non-T7 characters directive.
+
+**#866 requests posted (2026-10-24):** issue #866 comment `6388949909` — live TKMovesets extraction for ALL T7 characters (King first), animations-only path; comment `6389250251` — live TKMovesets extraction for Raven, Lucky Chloe, Jun, blocking 940 slots. Note recorded in the decision doc: Jun is a TTT2 character, not a T7 roster character, so the Jun part of comment `6389250251` needs retargeting to a TTT2 extraction. Output destination for both: private repo `mhvnsnt/game-reverse-engineering`, never raw game files in the public repo.
+
+**Verification for this docs-only change:** all three files are new-or-surgical (one new decision doc, one inserted `## 2026-10-24` section in `docs/owner-directives.md`, one prepended entry in `WORKLOG.md`); no game code, moveset, or asset file touched; no deletions. PR body carries the instruction-gate six sections. Merge only when clean and green via `git_merge.py`.
+
+---
+## 2026-10-23 ~19:30 CDT — batch9 moveset pull: thor/menajerii/baek-master-white/dorowani/zen (SHOW-ANIMATION LOCK)
+
+**Owner instruction (verbatim):** "Now we need to get that done for every other character" (2026-10-23) — replicate the proven Law/Lars pattern (PR #823 merged, PR #806 green).
+
+**Method:** Per-fighter best-source diff. TTT2 movelists (Catlord v1.12 TTT2 walkthrough, supercheats) parsed with a custom indentation-chaining parser (`~/workspace/batch9-work/parse_ttt2.py`: parent/child chaining, `(a)_(b)` alternative expansion, `(u_x_y)+N` expansion, QCF/HCF→`f,N,d,d/f` normalization, stance-section prefixing ROS/FLA, hold-case-preserving token normalizer); diffed against existing moves with case-aware input normalization (`f,F+1+2` run vs `f,f+1+2` dash kept distinct); genuinely-missing moves added in Tekken notation, all `"set": "FIGHT"`, `ttt2_source` + `merge_source: ttt2:<char>` provenance, real TTT2 move names, no fabricated frame data (documented-not-extracted).
+
+**Moveset (done):**
+- `game/assets/movesets/thor.json` (Ganryu): 244 -> **322** (+78 TTT2 Ganryu moves: 13 throws incl. Jizo Hug/Face Slam/Giant Tackle, Devil Thrusts, Sumo Rush + L/M/H endings, Kabuki Slaps chain, sit-down options, Earthquake unblockable; Ten Palm Slap mash artifact + Julia Hug skipped)
+- `game/assets/movesets/menajerii.json` (Roger Jr.): 154 -> **193** (+39 TTT2 Roger moves: Animal Rush/Hush, Roo Rage, Helicopter Kicks, Bomb Stomp, Satellite Dropkick, Ali Kick chain, ROS extensions, Bobbin Dance charge-ups; 14 TTT2 throws verified already-present under WH names — skipped as duplicates; 2 side-roll options dropped as covered)
+- `game/assets/movesets/baek-master-white.json` (Baek): 138 -> **291** (+153 TTT2 Baek moves: full Flamingo system, 14 throws, Mantis Rush, parries; prior 107 Bryan placeholders retained as provisional)
+- `game/assets/movesets/dorowani.json` (Gon): 175 -> **175** (+0 — auto-merge lane already pulled all 151 T3 Gon inputs; input-coverage audit verified 0 genuinely-missing)
+- `game/assets/movesets/zen.json` (Heihachi): 639 -> **639** (+0 — T8 Heihachi verified 145/145 by `t8_id`; T3 307 + T7 183 already present; 0 Heihachi gaps)
+- `index.json` moves/inputs/bytes updated for all 5.
+
+**SHOW-ANIMATION LOCK (owner 2026-10-23):** file-level `anim_set_lock` added to all 5 files; all 270 added moves stamped `"set": "FIGHT"`. No SHOW content entered any moveset.
+
+**Animations (banks wired or gaps filed, FIGHT vs SHOW split):**
+- dorowani: T3 Gon bank WIRED (`game/assets/anim/t3/gon/`, `T3_BANKS.gon` + `SOURCE_TO_BANK.gon` present, `anim_bank: 'gon'`) — status doc `docs/anim/T3-GON-ANIM-20261023.md` (not a gap).
+- thor/baek-master-white/menajerii: NO T3 streams exist (BANK-TABLE-2026-10-20) — precise gaps filed: `docs/anim/TTT2-GANRYU-ANIM-GAP-20261023.md`, `docs/anim/TTT2-BAEK-ANIM-GAP-20261023.md`, `docs/anim/TTT2-ROGER-ANIM-GAP-20261023.md` (TTT2/T6/T5-first priority, unblock sequence for the extraction coordinator lane).
+- zen: **VF5 Dural motion gap filed** — `docs/anim/VF5-DURAL-ANIM-GAP-20261023.md`. VF5 motion was never converted (model only); Dural is Zen's permanent base per owner directive 2026-10-22 but filed as PENDING, never mixed with the Heihachi kit (sources kept separate per instruction).
+
+**Verification:** `node --test game/tests/fighter-completeness.test.mjs` 4/4 pass; full suite 95/99 (4 pre-existing failures in model-key-guard/stagerage/v-system, verified failing on pristine tree); all JSONs parse; semantic additions-only (0 field losses, 0 removals, 0 file deletions).
+
+**Anti-clobber:** rebuilt on current main tip (cf88ed5fe) after main moved mid-task — main added 4 donor.baek signature moves to baek-master-white (kept) and reformatted dorowani.json (re-applied anim_set_lock surgically onto new base); no main-side changes dropped. Branch `moveset/batch9-pull` via worktree (shared clone was in use by another lane); push via Git Database API.
+
+---
 ## 2026-10-23 ~18:15 CDT — batch3 T8 moveset pull: pond/tobi/megami/sakura/phantom (SHOW-ANIMATION LOCK)
 
 **Owner instruction (verbatim):** "Now we need to get that done for every other character" (2026-10-23) — replicate the proven Law/Lars pattern (PR #823 merged, PR #806 green).
@@ -2506,6 +2598,28 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 
 **Deviations:** none — the 17 pulled moves are all combat moves (FIGHT); no SHOW content entered the moveset.
 
+## SUBMENU REBUILD — versus setup (T7 GAME OPTION <VS GAME>, 2026-10-23, PR #832)
+
+**Owner instruction (verbatim):** "NO hand-tooled menus. EVER. Every menu in the game gets rebuilt FROM the teardown files of actual Tekken games (T5/T6/T7/TTT2, T8 when it lands) and other games' teardown UI." Task: rebuild ALL submenus from Tekken's actual UI — 1. Versus setup (rules, rounds, time, stage select).
+
+**Source:** Tekken 7 / arcade GAME OPTION table (manuals.plus TTT operators manual): FIGHT COUNT <VS GAME> 1-5, ROUND TIME, GUARD DAMAGE ON/OFF; T7 console INFINITY time.
+
+**Built (branch worker-submenus/versus-setup):**
+- `game/js/rules.js` (new) — standalone match-rules store `wh_rules_v1` (difficulty, rounds1p, roundsVs, roundTime 0=∞, guardDamage, stageMode).
+- `game/js/versus-setup.js` (new) + `#screen-vssetup` in `game/index.html` — T7 option-list screen: FIGHT COUNT 1-5, ROUND TIME 30/40/60/90/99/∞, GUARD DAMAGE ON/OFF, STAGE SELECT/RANDOM.
+- `game/submenus.css` (new) — shared T7 option-list grammar (tk-row/tk-seg/tk-tabs, all ≥48px).
+- `game/js/modes.js` — `_beginVersus` reads rules, passes roundsToWin/roundTime/guardDamage through fight opts; STAGE=RANDOM picks a random arena and skips the stage screen (`opts.skipStage`, honored in `game/js/main.js` `startFightViaStage`).
+- `game/js/game.js` — `startMatch` honors per-match `opts.roundTime` (0 = no timeout, HUD shows ∞) and `opts.guardDamage`; `game/js/fighter.js` zeroes chip when guard damage is OFF.
+- `game/js/game.js` ui.setRounds rebuilds round pips to the match's round target; setTimer renders ∞.
+- Routing fix: the legacy data-mm router in `game/js/main.js` fired on rail taps alongside the T8 submenu controller, making every submenu unreachable — rail items now yield to the submenu controller (required for "no dead ends").
+
+**Verification (played, not pushed):** 7/7 menu harness checks (every option tapped, match-rules localStorage asserted, tap targets ≥48px measured, back navigation); 10/10 fight-integration checks (captured fight opts carry roundsToWin/roundTime/guardDamage/stageMode; HUD pips and ∞ timer proven). Screenshots viewed: `game/tests/submenu-versus-setup-proof-20261023/`. `node --check` clean on all 8 touched JS files. gitleaks clean. 8 files modified + 3 new source files + proof dir + `docs/decisions/2026-10-23-submenu-versus-setup.md`; 0 deletions.
+
+**Anti-clobber:** branched from main tip; explicit file list pushed via Git Database API (no GitHub connector for git ops); other workers' untracked docs files excluded from every push.
+
+**Queued next:** PR2 OPTIONS rebuild (T7 GAME OPTION / CONTROLLER SETUP / SOUND / DISPLAY tabs); PR3 mode setup sheets; PR4 gallery (T5 theater + TTT2 gallery); PR5 jukebox (TTT2 Tekken Tunes).
+
+
 ## 2026-10-23 — Priority-5 moveset pull: burger/purplerain/pantera/torch/michiko (T8+T7 diff, SHOW-ANIMATION LOCK, anim-bank gaps)
 
 **Owner instruction (verbatim):** "Now we need to get that done for every other character" (2026-10-23) — the Law/Lars full pulls (PR #806 / PR #823 pattern).
@@ -2556,6 +2670,7 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Verification:** `node --test game/tests/chrono-grapple.test.mjs` 18/18 green; full suite 80/84 with the same 4 pre-existing full-suite-mode failures as pristine main (fighter-completeness/v-system parallel-run flakes — verified by stashing). All four submission chains measured end-to-end: entry → control → lock → tap with in-band torques. Determinism asserted (identical runs ⇒ identical snapshots).
 
 **Deviations:** none. License note: user lifted the license firewall 2026-10-23; Chrono is BSD-3-Clause regardless, and the wired module is WH-original code (architecture-inspired, not a derivative).
+
 ## 2026-10-23 ~19:30 CDT — UniRig auto-rig intake integration (PR #956, branch muse/unirig-autorig-integration)
 
 **Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate" — item: UniRig (SIGGRAPH 2025, MIT license), AI auto-rigging for the Tripo intake pipeline + creation suite auto-rig.
@@ -2596,3 +2711,134 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Tool fixes (needed for the pull, shipped in this PR):** `tools/moveset-merge/merge_sources.py` — `identity()` crashed with `TypeError: unhashable type: 'list'` on older files whose `t3_row` is a list (chatur's 21 multi-row string moves); added `_hashable()` coercion (upstream fixed the sibling `bank_attack_word` spot in parallel). `tools/moveset-merge/bases.json` — added `bruno: {t7: [miguel]}` and `chatur: {t3: [ogre]}` overrides.
 
 **Verification:** guard PASS on every run (no move/string/special/input lost); semantic diff audit — 0 field losses, 0 removals, additions only; `node --test game/tests/fighter-completeness.test.mjs` green; gitleaks clean.
+
+
+## 2026-10-23 21:30 CT — Cape Jones playable on Alisa's select slot (muse/cape-jones-fight)
+
+Owner lane: Cape Jones (secret identity Cyborg X, fighter id `cyborgx`) replaces Tekken's Alisa — takes her select slot, her moveset + animations, plus his own extras. Proof owed: select screenshot + fight frame of one of Alisa's moves.
+
+**What changed (branch `muse/cape-jones-fight`, additive + 3 surgical edits, 0 deletions):**
+- NEW `roster/cyborg-x/attires/attire1/model-rigged.glb` — staged from the auto-rigged Round-2 build of `game/assets/models/cape-jones.glb` (49 bones, 1.75 m); byte-identical, sha256 e19e94e9… (no re-rig).
+- `game/js/assets.js` (surgical): MODEL_URLS += `cape-jones-attire1` → `../roster/cyborg-x/attires/attire1/model-rigged.glb`.
+- `game/js/attires.js` (surgical): ATTIRE_VARIANTS += `cyborgx` → Attire 1 = cape-jones-attire1 (RIGGED).
+- `roster/cyborg-x/ATTIRE-SLOTS.md` (surgical): rig QA result recorded.
+- `docs/decisions/2026-10-23-cape-jones-fight-wiring.md` (new): decision log.
+
+**Rig QA (tools/model-audit/rig_qa.py on meshopt-decoded GLB):** 49 joints, facing -Z, arm/leg sides OK, knees forward; weight-bleed heuristic flags hand-proximity verts only (no face→spine bleed). PASSED — no re-rig needed.
+
+**Teardown search:** no Alisa animation bank exists in the repo teardowns (T5/T6/T7/T8/TTT2) — only frame data (docs/t7t8-reference, rbnorway CSVs). The gunjack T3 fallback for cyborgx stays, as already logged in `game/data/cape-alisa-binding.json` (last resort, owner t121u). Real Alisa motions await the T7 extraction lane (owner bought T7 2026-10-23; Grok's box).
+
+**Verified by playing (phone portrait 390x844, Playwright + swiftshader):**
+- Select: CAPE JONES renders on the grid (CA card), 3D preview shows his textured model, "Attire 1" picker wired.
+- Fight cyborgx vs pantera: 10/10 states `"round":"fight"`, P1 `model: cape-jones-attire1`, repeated `st:"attack" atk:"1"` (Jab) with `cur: t3_gunjack_row44@cape-jones-attire1`; idle shows `t3_gunjack_stance` (not T-pose). **0 pageerrors.**
+- Known unrelated issue visible: camera-bounds zoom (fighters small at screen edges in portrait) — owned by another lane, not touched.
+
+**Commit method:** Git Data API via tree SHAs (no-sparse-commit law; /tmp too small for full clone — worked from a blob:none sparse tree, commits built from main's real tree). gitleaks clean.
+
+**ALL CHARACTERS ARE ADULTS:** confirmed — Cape Jones is male (user confirmed 2026-10-23), adult character, no minors involved.
+
+## 2026-10-23 ~22:10 CDT — merge-tree-guard: merge-time guard against fake stale-tree merges (PR #983, branch muse/merge-tree-guard)
+
+**Owner instruction (verbatim):** "REPO: mhvnsnt/western-heart. TASK: build a merge-time guard that stops fake/stale-tree merges from deleting files on main."
+
+**Root cause (verified by owner):** PR #974's head was clean (0 deletions, all CI green including deletion-guard), but its merge commit 1b2dabfed's tree was byte-identical to the stale branch head's tree — the merge was constructed from the stale branch tree instead of a real 3-way merge, silently dropping 150 files main had gained since the fork point. No PR-time guard can catch this; the damage is created after checks pass, at merge-commit construction.
+
+**Built (3 new files, 0 deletions):**
+- `.github/workflows/merge-tree-guard.yml` (new): runs on push to main. For each merge commit M in before..after (first-parent): P1=first parent, P2=second parent, B=merge-base(P1,P2); D1=files deleted P1→M; D2=files deleted B→P2 (the PR's own deletions); VIOLATION=D1−D2 → fail, printing every file. Escape hatch: `owner-approved-deletion` label on the merged PR (labels via commits API, same as deletion-guard). Extra loud banner when merge tree == branch tree while main added files after the fork ("not a real 3-way merge"). Sparse checkout (.github only) + self-test step, matching clobber-guard.
+- `.github/scripts/merge_tree_guard.py` (new): the check logic (env BEFORE_SHA/AFTER_SHA/REPO/GH_TOKEN; exit 0/1).
+- `.github/scripts/test_merge_tree_guard.py` (new): 6 unit tests building real temp git repos — fake stale-tree merge via commit-tree (must flag + FAKE MERGE banner), real --no-ff merge (must pass), branch's own deletion (must pass), non-merge skipped, owner label escape.
+
+**Verification:** 6/6 unit tests pass. Read-only sweep of the last 30 merge commits on main: 29 CLEAN, exactly 1 flagged — 1b2dabfed (PR #974) with 150 violations + FAKE MERGE banner (known incident, already recovered via #981/#982). Manual secret-pattern scan clean (gitleaks binary not on this box; CI runs it).
+
+**Deviations:** none.
+
+
+## 2026-10-23 — Semantic-Aware Motion Encoding integration (SATA, arXiv:2605.27055)
+
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate"
+
+**What:** Integrated SATA (Semantic-Aware Motion Encoding for Topology-Agnostic Character Animation, Zhang et al., ICML 2026, code Apache-2.0 verified) into the animation pipeline as `tools/anim-retarget/` — a WH-native, numpy-only implementation of the paper's semantic joint alignment core (Sec. 3.1-3.3). Retargets a wh-anim/1 Tekken clip to ANY target rig with no manual joint mapping, no canonical joint set, no paired data.
+
+**Why:** `game/js/t3anims.js` `retargetT3Clips()` maps bones by name against a hardcoded canonical list — creatures / extra limbs / non-standard rigs need manual rig mapping today. This removes that bottleneck.
+
+**Files:** `tools/anim-retarget/{semantic_retarget.py,semantic_tags.py,graph_rep.py,quat.py,README.md,tests/test_semantic_retarget.py}`, `docs/research/SEMANTIC-RETARGET-2026-10-23.md`.
+
+**Tests (real data, all pass):** Paul→Paul identity (22/22, E=0); Paul punch→Gon creature rig (18/18 functional maps, exact rotation transfer, leg-ratio 0.205); synonym-rename name-invariance (18/18 identical — semantic, not name-based); 4-arm+tail rig (16 extra arms inherit motion, tail holds rest); reduced rig (17/17). `python3 tools/anim-retarget/tests/test_semantic_retarget.py` → ALL PASSED.
+
+**Deviations from paper (documented):** training-free analysis mode — no torch/checkpoints; explicit correspondence replaces learned FiLM; direct rotation transfer replaces learned decoder. Upgrade path (SATA checkpoint `--backend sata`) flagged in the research doc, not faked.
+
+## 2026-10-24 — Claude session: combat ship (#996), touch joystick fix (#1003), T3 hit reactions + throws data
+Owner: "random stuff is happening", "left punch does a grab", "any touch to the joystick makes it go down".
+- #996: chord window 140 -> 50 ms with event timestamps; direction history weighted by time (120 Hz feed vs 60 fps
+  windows); every move plays its own decoded row, strike/throw types enforced (585/546 -> 0/0), generic fallback
+  7,237 -> 0; 521 rows added to 19 banks.
+- #1003: nipplejs stored the stick centre at (0,0) (created while the HUD was hidden), so every touch read as DOWN;
+  dynamicPage: true. Proof: tools/proof-harness/stick_probe.mjs on the live site vs the fix.
+- This PR: lane E's decoded T3 hit reactions, throw-victim and thrower clips for all 22 banks (7,368 clips, 0
+  missing; decode verified against the remake port and an independent extractor), contract
+  docs/anim/T3-REACTIONS.md, test/t3-reactions.test.mjs. Not wired yet (lane C wires it after contact).
+- docs/handoffs/COMBAT-RIGHT-WAY-2026-10-24.md: the method every agent follows (touch testing, real causes, data
+  source order, one pipeline for all characters, same-hour deploy).
+
+## 2026-10-24 — T7 mot.bin clip keys wired into Pond + Ryusan movesets (frv/dnc)
+- Added top-level `t7_motbin_clips` tables to game/assets/movesets/pond.json (frv, Master Raven) and ryusan.json (dnc, Lucky Chloe): every decoded internal move's clip key (anim_ref = bank + MOTA index). Pond: 2,338 rows (745 resolved, 1,593 UNMAPPED); Ryusan: 2,183 rows (656 resolved, 1,527 UNMAPPED).
+- Wired = banks 0x0000 (mot.bin slot-0 MOTA) + 0x4000 (rotsm.arc section-0 MOTA), clip bytes in tkdata, all starting 00 64 / 00 C8. Bank 0x8000 rows are UNMAPPED with reason "0x8000 clip bytes pending Grok pakchunk extraction"; lookup key anim_ref - 0x8000 (0..1701) is in the table.
+- Deliberately NO playable wiring: no WH move's anim_ref changed, no string continuation wired. The display-title -> internal-move join is not play-verified (30 frv + 11 dnc deterministic walks, colliding landings, dnc walks landing on walk state Dc_sWALKF). See docs/anim/T7-MOTBIN-CLIP-WIRING-2026-10-24.md.
+- Simulation ALL PASS: pure-insertion diff (0 lines removed/changed), exact CSV round-trip, 0 strikes on throw rows changed, 0 throws on strike rows changed, 0 generic fallbacks, all 271 Pond + 104 Ryusan string-class moves byte-identical. Simulation is NOT play verification; play verification still owed before any clip becomes a WH move's animation.
+- 0x8000 extraction requested: western-heart issue #866 comment 6390169912 ([Muse]) — frv/dnc main MOTA from Grok's pakchunk data to game-reverse-engineering teardown/tekken7-steam/tkdata/.
+- game-reverse-engineering PR #61 (frv.json + dnc.json) still OPEN, not force-merged; needs a lane with checks access to confirm green.
+
+## 2026-10-24 — Verification: PR #1005 (hit detection) + PR #1007 (strings) + PR #1008 (root motion) together on main
+Simulation only — live touch playtest still owed; nothing here claims the live game is fixed or play-verified.
+- Base: main HEAD 61809f57 (PR #1011 merge). PR #1011 touched only game/assets/movesets/megami.json + torch.json — no code impact on these three systems, no Pantera data touched.
+- Suites on current-main files/data (node, sparse checkout): test/root-motion.test.mjs 9/9 PASS; test/hitbox.test.mjs PASS (0 fails; LP1 hits 1.45 m, whiffs 3.5 m; 14 swept capsules); test/combat-contact.test.mjs PASS (strings 39/39); test/input-timing.test.mjs 13/13 PASS. test/attack-anim.test.mjs 7/9 locally — the 2 failures are null-moveset artifacts for fighters whose JSONs were not fetched locally (Chatur/Buffalo-Bill/Demonio); CI full checkout covers them.
+- Interaction sim 7/7 (real Pantera moveset + King bank, real _attackClipPlan/_rootMotionApply/_physics/getHitbox): (a) RP2 whiffs at 2.50 m from start, connects after +0.847 m travel; wall clamp + pushout resolve travel the same frame (pushout probe: min gap exactly 1.450 m, never crossed). (b) String step 2 starts where step 1 ended, no double-count (RP2 0.847 + 2,1-step 3.245 = 4.092 exactly). (c) 1,2 step-2 hitbox is its own (armR RP2, 20 dmg, reach 2.05). (d) Whiff travel == hit travel (0.8470 m). (e) Root motion only in attack/vskill/vreversal — off in block/hitstun/knockdown/sidestep/dodge/jump/crouch/idle/throwExec. (f) 3+4,LP1 resolves via slot alias to JGS.1 for 28 (armL); PR #1007 string_fix_20261024 lists exactly 54 damage_fixed_keys on main.
+- Gaps/observations (not regressions, no fix): 200 ms post-move string grace has no suite test (code-verified only); 2,1 step-2 clip row:220 carries 3.245 m decoded root_t travel (bank data eye-check, #1008 applies root_t verbatim); LP1 runtime damage 9 via slot 1~t8.king vs shadowed T3 record 11 (documented #1007 MOD behaviour).
+- Regressions found: none. Full report: docs/decisions/2026-10-24-verify-1005-1007-1008-together.md (PR #1015).
+
+## 2026-10-24 — Canon moves wired into the Move List Creator (190 entries, 66 files, additive only)
+- Branch `canon-movelist-wiring-2026-10-24`, docs `docs/canon-movelist-wiring-2026-10-24.md`. Owner directive: all extra canon animations get added to the Move List Creator with additive Tekken-style inputs, per character individually.
+- 190 entries: 179 master-table + 9 addendum + 2 Chatur stance loops (67 owner groups; Gero rows into `docfrank.json`, so Doc Frank carries 7). ADAPT 147, BUILD 43. NEEDS-INPUT: none — every move carries a documented input (canon file or PR #1012).
+- Per file: new top-level `canon_moves` array + `canon_wiring` note. No Tekken entry replaced/overwritten/deleted; diffs are surgical (compact JSON preserved, verified byte-level: wired minus additions == original). Only other moveset change: `anim_ref` backfill on 18 existing entries that lacked one (Chatur 5 specials, Pond 5 specials, Megami 4 moves, Menajerii 4 moves).
+- Megami 4 canon moves reuse PR #1012 (open) MADE ids/inputs verbatim. PR #1012's 17 Jun-core MADE specs are NOT new moves (13 already Megami rows, 4 are GEN follow-up rows); no duplicates created.
+- Editor change (`packages/creation-suite/src/movelist-editor.js`, test `movelist-editor.canon-wiring.test.mjs`): reads `canon_moves` (dedup by `anim_ref`), prefers `special.anim_ref`/`special.name`, accepts `properties.source === "canon"` (verification `canon`, never `clip`), aligns slot kind with `throw: true` / `stance` via `slotKindHint()`. Validation (Node, editor's own functions, NOT play-verified): 190/190 canon moves listed, 306 canon rows all `correct` (canon/input verification), 0 wrong/unmapped/missing; serialize clean on 66/66 files; Tekken regression 33,704 rows, 127 flips all wrong→correct (121 throw:true + 6 stance), 0 the other way.
+- Collisions (Tekken entry NEVER overwritten; canon in `canon_moves` only, owner decision needed for in-game resolution): Chatur stance loops vs Twin Drum/Four-Arm Crush keys; Doc Frank sigs vs Bad Stomach/Parry; VF-Akira Eight Extremes translation (P+K→LP1+RK4) vs Mountain Stance LP1+RK4; Sakura d+1 vs D+1 case-variant key; unnamed specials at cyborgx d+1+2, phantom 1+2/d+1+2, samura1 1+4. System collisions recorded, not decided: LP1+RP2+LK3+RK4 (Nine-Soul Release vs FOURFOLD MUDRA / SHACKLE HOWL), LP1+RK4 (Reihou only in foe-RAGE).
+- NOT done here (honest gaps): game-loader wiring of `canon_moves` (editor surface only); Deathfang TRANSFORM (open: animation vs state swap); Chatur/Pond/Menajerii startup timing (not in files); no animation clips created — wh:/made: refs are wiring references pending the animation lane.
+## 2026-10-24 — Zui MIX PER CANON (Steve Fox T7 base + Lei Wulong drunken + WH originals)
+
+- Zui's moveset labeled as the canon mix in `game/assets/movesets/zui.json`: 345 Steve
+  Fox T7 keys (280 unique inputs) + 40 Lei Wulong drunken keys (35 DRU-input + 5
+  transitions) + 2 WH-original canon moves (Bottle's Honest Truth LP1+RP2, Beautiful
+  Stumble d+RK4). Every mix entry (389) now carries `source_fighter`, `source_game`,
+  `mix_group`, `input_display`. 20 `RAVE DRU …` names renamed to `ZUI DRU …`.
+- Stance corrected, not replaced: `stances.default` BOX → DRU (hands-up drunken
+  stagger, owner directive 2026-10-24). DRU entry, entry move `f+3+4`, exit `DRU b`,
+  and all 40 DRU stance-list moves unchanged; BOX remains listed, not default.
+- Source correction: Lei has no T7 data — the 2026-10-21 "T7 Lei" label is corrected
+  by annotation to Tekken 6 / TTT2 (historical `t7_import_note` untouched). TTT2
+  Drunken Master Walk cross-check: all named DRU moves confirmed on name + input;
+  damage differs on 5 rows (file value kept verbatim); Drunken Fox Rotation flagged
+  NEEDS-SOURCE-CHECK. No T8 data used for the mix; pre-existing T8 layer (126 keys)
+  flagged, not deleted.
+- Only Steve ↔ Lei collision is `f+3+4` (Lei walk owns the key; Steve Peekaboo
+  preserved under `f+3+4_r198`). Field-level diff vs main: only the 20 renames +
+  stance fields changed outside the new mix fields; 0 keys deleted, 0 added; Rave
+  untouched. TheBigTuna MOD damage re-verified 117/117 (175 Steve entries carry MOD
+  sourcing; 119 unmatchable by whole-notation matching, left as-is).
+- Move List Creator: additive `source_fighter`/`source_game`/`mix_group` pass-through
+  in `packages/creation-suite/src/movelist-editor.js` `fromMovesetFile()`; node editor
+  test passes (666 library entries; own-slot status `correct` for DRU LP1, DRU
+  LK3,RP2,RK4, DRU LP1+RP2, standing LP1, signature LP1+RP2, `f+3+4`; 0 mix entries
+  unmapped). Simulation/editor proof only — NOT play-verified.
+- Mixed-style audit: only Zui is a canon-named fixed mix. Demonio Jin/Devil Jin = form,
+  not mix. Gyou = NEEDS-CANON-DECISION (Paul vs Hwoarang conflict). Trader + DXMMII =
+  NEEDS-DATA (mimicry is a system). Full report:
+  `docs/decisions/2026-10-24-zui-mix-per-canon.md`; standing rule in
+  `docs/owner-directives.md` (MIX PER CANON).
+## 2026-10-24 — Zen = Eleven/Twelve/Dural + own canon, NOT Heihachi, NOT Julia (Zen conflict resolved)
+- Owner decision 2026-10-24: "Zen's base is neither of those. Zen is like 11 and 12 but not just a copycat he has his own moves he has all these different things that go with him and to his character and his canon" + "Dural was the closest thing to 10 or 11 in a 3D game, that's what it came down to" (Dural = 3D stand-in for Eleven/Twelve, not a separate pick).
+- Resolves the PR #1016 Zen conflict (roster Heihachi vs FIGHTER_BANK Julia vs CANON.md Julia->NIGHTWOLF). Heihachi is Diablo's base; Julia is Nightwolf's base; neither is Zen's.
+- game/js/fighter.js: FIGHTER_BANK zen -> null (UNMAPPED). No Dural bank exists in the repo (no game/assets/anim/vf5/, no dural in SOURCE_TO_BANK), so binding 'dural' would be a guess — UNMAPPED + procedural fallback instead, until VF5 Dural motion is extracted.
+- game/assets/movesets/zen.json: new additive wh_true_moveset, 25 entries, interim 639-move Heihachi map untouched, sources never mixed. Twelve 10 + supers 2 + X.COPY 1 (ONE super, not identity) + Zen signatures 2 (Does Not Compete, Refused Seat, quoted verbatim from the 188 canon-moves file) + Tentacle 3 + Oversoul 1 + Transformation 4 + Spirit-form 2. NEEDS-INPUT 6, UNMAPPED animation 25/25. Eleven contributes 0 distinct moves (SFV: no own moveset, morphs pre-match); Dural contributes 0 attack rows (no published movelist; stance layer pending extraction).
+- Move List Creator (packages/creation-suite/src/movelist-editor.js): fromMovesetFile() now displays wh_true_moveset entries for Zen (id true:<id>), status unmapped, not swap-eligible until an animation lands. Simulation/editor-test proof only — NOT play-verified; Zen's true kit is unplayable until Dural motion / Twelve 2D->3D / MADE animations land.
+- Full decision doc: docs/decisions/2026-10-24-zen-base-decision.md. PR #1016 gets a comment linking the resolution (its branch is not rewritten).

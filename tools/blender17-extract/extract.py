@@ -217,8 +217,195 @@ def extract_materials(data, blocks, structs, types, lengths, struct_order):
         rough, = struct.unpack('<f', buf[rough_off:rough_off + 4])
         metal, = struct.unpack('<f', buf[metal_off:metal_off + 4])
         mats.append({'name': name, 'r': r, 'g': g, 'b': b,
-                     'roughness': rough, 'metallic': metal})
+                     'roughness': rough, 'metallic': metal,
+                     'ptr': blk['ptr']})
     return mats
+
+
+def _ptr(buf, off):
+    return struct.unpack('<Q', buf[off:off + 8])[0]
+
+
+def _cstr(b):
+    return b.split(b'\x00')[0].decode('utf-8', errors='replace')
+
+
+# Principled/BSDF input socket -> MTL channel
+_SOCKET_CHANNEL = {'Base Color': 'map_Kd', 'Color': 'map_Kd',
+                   'Emission': 'map_Ke', 'Emission Color': 'map_Ke',
+                   'Normal': 'norm', 'Roughness': 'map_Pr',
+                   'Metallic': 'map_Pm', 'Alpha': 'map_d'}
+
+
+def _resolve_external(path, src_dir):
+    """Blender '//rel\\path.png' -> existing file under src_dir (or None)."""
+    if not path or not src_dir:
+        return None
+    rel = path[2:] if path.startswith('//') else path
+    rel = rel.replace('\\', '/')
+    while '//' in rel:
+        rel = rel.replace('//', '/')
+    base = os.path.basename(rel)
+    for cand in (os.path.join(src_dir, rel), os.path.join(src_dir, 'textures', base),
+                 os.path.join(src_dir, base)):
+        if os.path.isfile(cand):
+            return cand
+    return None
+
+
+def extract_images(data, blocks, structs, types, lengths, ptr_map,
+                   src_dir=None):
+    """IM blocks -> {old_ptr: {name, packed: bytes|None}} (packed data
+    followed Image.packedfiles -> ImagePackedFile -> PackedFile -> data)."""
+    fo = lambda s, f: (field_offset(structs, types, lengths, s, f) or (None,))[0]
+    id_off = fo('ID', 'name')
+    pfs_off = fo('Image', 'packedfiles')
+    pf_off = fo('Image', 'packedfile')
+    ipf_pf = fo('ImagePackedFile', 'packedfile')
+    pf_size, pf_data = fo('PackedFile', 'size'), fo('PackedFile', 'data')
+    path_off = fo('Image', 'filepath')
+    if path_off is None:
+        path_off = fo('Image', 'name')
+    images = {}
+    for blk in blocks:
+        if blk['code'] != b'IM\x00\x00':
+            continue
+        buf = block_bytes(data, blk)
+        name = _cstr(buf[id_off + 2:id_off + 66])
+        pfb = None
+        if pfs_off is not None:
+            ipf = ptr_map.get(_ptr(buf, pfs_off))
+            if ipf and ipf_pf is not None:
+                pfb = ptr_map.get(_ptr(block_bytes(data, ipf), ipf_pf))
+        if pfb is None and pf_off is not None:
+            pfb = ptr_map.get(_ptr(buf, pf_off))
+        packed = None
+        if pfb is not None:
+            pbuf = block_bytes(data, pfb)
+            size, = struct.unpack('<i', pbuf[pf_size:pf_size + 4])
+            db = ptr_map.get(_ptr(pbuf, pf_data))
+            if db is not None and size > 0:
+                packed = block_bytes(data, db)[:size]
+        filepath = _cstr(buf[path_off:path_off + 1024]) if path_off is not None else ''
+        if packed is None:
+            ext = _resolve_external(filepath, src_dir)
+            if ext:
+                with open(ext, 'rb') as ef:
+                    packed = ef.read()
+        images[blk['ptr']] = {'name': name, 'packed': packed,
+                              'filepath': filepath}
+    return images
+
+
+def material_textures(data, mat_blk, structs, types, lengths, ptr_map,
+                      images):
+    """Walk a Material's node tree: for every Image Texture node, follow
+    links downstream to the shader input it feeds and return
+    {channel: image_ptr}. Unlinked image nodes fall back to map_Kd."""
+    fo = lambda s, f: (field_offset(structs, types, lengths, s, f) or (None,))[0]
+    nt_off = fo('Material', 'nodetree')
+    if nt_off is None:
+        return {}
+    nt = ptr_map.get(_ptr(block_bytes(data, mat_blk), nt_off))
+    if nt is None:
+        return {}
+    nbuf = block_bytes(data, nt)
+    nodes = {}
+    cur = _ptr(nbuf, fo('bNodeTree', 'nodes'))
+    seen = set()
+    o_idn, o_id, o_next = fo('bNode', 'idname'), fo('bNode', 'id'), fo('bNode', 'next')
+    while cur and cur in ptr_map and cur not in seen:
+        seen.add(cur)
+        b = block_bytes(data, ptr_map[cur])
+        nodes[cur] = {'idname': _cstr(b[o_idn:o_idn + 64]),
+                      'id': _ptr(b, o_id)}
+        cur = _ptr(b, o_next)
+    links = []
+    cur = _ptr(nbuf, fo('bNodeTree', 'links'))
+    seen = set()
+    l_next, l_fn, l_tn, l_ts = (fo('bNodeLink', f) for f in
+                                ('next', 'fromnode', 'tonode', 'tosock'))
+    s_name = fo('bNodeSocket', 'name')
+    while cur and cur in ptr_map and cur not in seen:
+        seen.add(cur)
+        b = block_bytes(data, ptr_map[cur])
+        sock = ptr_map.get(_ptr(b, l_ts))
+        sname = _cstr(block_bytes(data, sock)[s_name:s_name + 64]) if sock else ''
+        links.append((_ptr(b, l_fn), _ptr(b, l_tn), sname))
+        cur = _ptr(b, l_next)
+    shaders = ('ShaderNodeBsdf', 'ShaderNodeEmission')
+
+    def downstream(node, depth=0):
+        """-> socket name on the first shader node this node feeds."""
+        if depth > 12:
+            return None
+        best = None
+        for fn, tn, sname in links:
+            if fn != node or tn not in nodes:
+                continue
+            tid = nodes[tn]['idname']
+            if tid.startswith(shaders):
+                if tid == 'ShaderNodeEmission':
+                    return 'Emission'
+                if sname in _SOCKET_CHANNEL:
+                    return sname
+                continue
+            if tid == 'ShaderNodeNormalMap':
+                return 'Normal'
+            r = downstream(tn, depth + 1)
+            if r and (best is None or r in ('Base Color', 'Color')):
+                best = r
+        return best
+
+    out = {}
+    for np_, n in nodes.items():
+        if n['idname'] != 'ShaderNodeTexImage' or n['id'] not in images:
+            continue
+        ch = _SOCKET_CHANNEL.get(downstream(np_) or 'Base Color', 'map_Kd')
+        out.setdefault(ch, n['id'])
+    return out
+
+
+def mesh_material_slots(data, me_buf, totcol, structs, types, lengths,
+                        ptr_map):
+    """Mesh.mat (array of Material*) -> list of MA blocks (or None),
+    indexed by the mesh's own material slot (poly mat_nr)."""
+    off = (field_offset(structs, types, lengths, 'Mesh', 'mat') or (None,))[0]
+    if off is None or totcol <= 0:
+        return []
+    arr = ptr_map.get(_ptr(me_buf, off))
+    if arr is None:
+        return [None] * totcol
+    abuf = block_bytes(data, arr)
+    return [ptr_map.get(_ptr(abuf, i * 8)) if (i + 1) * 8 <= len(abuf)
+            else None for i in range(totcol)]
+
+
+def object_material_overrides(data, blocks, structs, types, lengths,
+                              ptr_map):
+    """{mesh_old_ptr: {slot: MA block}} for Object-linked slots
+    (Object.matbits[i] != 0 means slot i is linked to the object)."""
+    fo = lambda s, f: (field_offset(structs, types, lengths, s, f) or (None,))[0]
+    o_data, o_mat, o_bits, o_tc = (fo('Object', f) for f in
+                                   ('data', 'mat', 'matbits', 'totcol'))
+    res = {}
+    if None in (o_data, o_mat, o_bits, o_tc):
+        return res
+    for blk in blocks:
+        if blk['code'] != b'OB\x00\x00':
+            continue
+        b = block_bytes(data, blk)
+        tc, = struct.unpack('<i', b[o_tc:o_tc + 4])
+        mats, bits = ptr_map.get(_ptr(b, o_mat)), ptr_map.get(_ptr(b, o_bits))
+        if tc <= 0 or not mats or not bits:
+            continue
+        mb, bb = block_bytes(data, mats), block_bytes(data, bits)
+        for i in range(min(tc, len(bb), len(mb) // 8)):
+            if bb[i]:
+                ma = ptr_map.get(_ptr(mb, i * 8))
+                if ma is not None:
+                    res.setdefault(_ptr(b, o_data), {})[i] = ma
+    return res
 
 
 def extract_armatures(data, blocks, structs, types, lengths, struct_order,
@@ -332,7 +519,9 @@ def sanitize(name):
     return s or 'unnamed'
 
 
-def extract_blend17(blend_path, out_dir, include_weights=True):
+def extract_blend17(blend_path, out_dir, include_weights=True, src_dir=None):
+    """src_dir: folder of the ORIGINAL .blend, used to resolve external
+    (non-packed) '//textures/..' image paths."""
     with open(blend_path, 'rb') as f:
         data = f.read()
 
@@ -368,6 +557,32 @@ def extract_blend17(blend_path, out_dir, include_weights=True):
     materials = extract_materials(data, blocks, structs, types, lengths,
                                   struct_order)
     print(f"Materials: {len(materials)}")
+    mat_by_ptr = {m['ptr']: m for m in materials}
+    ma_blocks = {b['ptr']: b for b in blocks if b['code'] == b'MA\x00\x00'}
+    images = extract_images(data, blocks, structs, types, lengths, ptr_map,
+                            src_dir or os.path.dirname(os.path.abspath(blend_path)))
+    tex_dir = os.path.join(out_dir, 'textures')
+    image_files = {}  # image ptr -> relative path
+    for ip, im in images.items():
+        if im['packed'] is None:
+            continue
+        os.makedirs(tex_dir, exist_ok=True)
+        fn = sanitize(os.path.splitext(im['name'])[0])
+        ext = '.png' if im['packed'][:4] == b'\x89PNG' else (
+            '.jpg' if im['packed'][:2] == b'\xff\xd8' else '.bin')
+        rel = f"textures/{fn}{ext}"
+        with open(os.path.join(out_dir, rel), 'wb') as tf:
+            tf.write(im['packed'])
+        image_files[ip] = rel
+    print(f"Images: {len(images)} ({len(image_files)} packed/resolved -> textures/)")
+    for ip, im in images.items():
+        if ip not in image_files and im['name'] not in ('Render Result', 'Viewer Node'):
+            print(f"  [no data] image {im['name']!r} path={im['filepath']!r}")
+    mat_tex = {mp: {ch: image_files[ip] for ch, ip in material_textures(
+        data, mb, structs, types, lengths, ptr_map, images).items()
+        if ip in image_files} for mp, mb in ma_blocks.items()}
+    ob_over = object_material_overrides(data, blocks, structs, types,
+                                        lengths, ptr_map)
     armatures = extract_armatures(data, blocks, structs, types, lengths,
                                   struct_order, ptr_map)
     nbones = sum(count_bones(a['bones']) for a in armatures)
@@ -453,6 +668,15 @@ def extract_blend17(blend_path, out_dir, include_weights=True):
         totcol, = struct.unpack('<H', me_data[tc_off:tc_off + 2])
         mesh_name = unique_name(sanitize(id_name(me_data, id_off)))
         anchor = blk['off']
+        # This mesh's OWN material slots (poly mat_nr indexes these, not
+        # the file-wide MA list); object-linked slots override.
+        slot_blks = mesh_material_slots(data, me_data, totcol, structs,
+                                        types, lengths, ptr_map)
+        for si, ma in ob_over.get(blk['ptr'], {}).items():
+            if si < len(slot_blks):
+                slot_blks[si] = ma
+        slot_mats = [mat_by_ptr.get(b['ptr']) if b else None
+                     for b in slot_blks]
 
         if totvert <= 0 or totloop <= 0 or totpoly <= 0:
             print(f"  [skip] {mesh_name}: {totvert}v {totloop}l {totpoly}p (empty)")
@@ -475,8 +699,22 @@ def extract_blend17(blend_path, out_dir, include_weights=True):
                   f"(pos={pos_b is not None} loopv={lv_b is not None} "
                   f"uv={uv_b is not None} polyoff={po_b is not None})")
             continue
-        mat_b = claim_raw_valid(totpoly, anchor,
-                                lambda b: v_matidx(b, totpoly))
+        # Blender 4.x stores material_index as an int32 attribute; older
+        # saves used a per-poly byte array. Values must index this mesh's
+        # slots.
+        ncol = max(totcol, 1)
+        mat_b = None
+        mat_w = 4
+        if totcol > 1:
+            mat_b = claim_raw_valid(
+                totpoly * 4, anchor,
+                lambda b: all(0 <= v < ncol for v in struct.unpack(
+                    f'<{totpoly}i', b[:totpoly * 4])) and
+                any(struct.unpack(f'<{totpoly}i', b[:totpoly * 4])))
+        if not mat_b:
+            mat_w = 1
+            mat_b = claim_raw_valid(totpoly, anchor,
+                                    lambda b: v_matidx(b, totpoly))
 
         # --- vertices ---
         pbuf = block_bytes(data, pos_b)
@@ -496,7 +734,11 @@ def extract_blend17(blend_path, out_dir, include_weights=True):
         obuf = block_bytes(data, po_b)
         polyoff = [struct.unpack('<i', obuf[p * 4:p * 4 + 4])[0]
                    for p in range(totpoly + 1)]
-        matidx = block_bytes(data, mat_b) if mat_b else None
+        matidx = None
+        if mat_b:
+            mb = block_bytes(data, mat_b)
+            matidx = (struct.unpack(f'<{totpoly}i', mb[:totpoly * 4])
+                      if mat_w == 4 else mb)
         faces = []  # (loop_ids_0based, mat_nr)
         for p in range(totpoly):
             ls, le = polyoff[p], polyoff[p + 1]
@@ -529,14 +771,14 @@ def extract_blend17(blend_path, out_dir, include_weights=True):
                 out.write(f"v {x:.6f} {y:.6f} {z:.6f}\n")
             for u, w in uvs:
                 out.write(f"vt {u:.6f} {w:.6f}\n")
-            cur_mat = -1
+            cur_mat = None
             for lids, mn in faces:
-                slot = mn % max(1, len(materials)) if materials else 0
-                if slot != cur_mat:
-                    mname = sanitize(materials[slot]['name']) if materials \
-                        else 'default'
+                # Blender clamps out-of-range mat_nr to the last slot
+                m = slot_mats[min(mn, len(slot_mats) - 1)] if slot_mats else None
+                mname = sanitize(m['name']) if m else 'default'
+                if mname != cur_mat:
                     out.write(f"usemtl {mname}\n")
-                    cur_mat = slot
+                    cur_mat = mname
                 if uvs:
                     out.write("f " + " ".join(
                         f"{loopverts[l] + 1}/{l + 1}" for l in lids) + "\n")
@@ -545,18 +787,25 @@ def extract_blend17(blend_path, out_dir, include_weights=True):
                         str(loopverts[l] + 1) for l in lids) + "\n")
 
         with open(os.path.join(out_dir, mtl_name), 'w') as mtl:
-            if materials:
-                for m in materials:
-                    mtl.write(f"newmtl {sanitize(m['name'])}\n")
-                    mtl.write(f"Kd {m['r']:.4f} {m['g']:.4f} {m['b']:.4f}\n")
-            else:
+            written = set()
+            for m in slot_mats:
+                if not m or m['name'] in written:
+                    continue
+                written.add(m['name'])
+                mtl.write(f"newmtl {sanitize(m['name'])}\n")
+                mtl.write(f"Kd {m['r']:.4f} {m['g']:.4f} {m['b']:.4f}\n")
+                for ch, rel in sorted(mat_tex.get(m['ptr'], {}).items()):
+                    mtl.write(f"{ch} {rel}\n")
+            if any(m is None for m in slot_mats) or not slot_mats:
                 mtl.write("newmtl default\nKd 0.8 0.8 0.8\n")
 
         meta = {'mesh': mesh_name, 'totvert': totvert, 'totloop': totloop,
                 'totpoly': totpoly, 'faces': len(faces),
                 'has_uv': bool(uvs), 'has_poly_matidx': bool(mat_b),
                 'totcol': totcol,
-                'materials': [m['name'] for m in materials],
+                'materials': [m['name'] if m else None for m in slot_mats],
+                'material_textures': {m['name']: mat_tex.get(m['ptr'], {})
+                                      for m in slot_mats if m},
                 'weighted_verts': len(weights), 'weights': weights}
         with open(os.path.join(out_dir, f"{mesh_name}.json"), 'w') as jf:
             json.dump(meta, jf)
@@ -586,13 +835,14 @@ def main():
         print(f"Usage: {sys.argv[0]} [--auto] <input.blend> <output_dir>")
         sys.exit(1)
     src, out_dir = args[0], args[1]
+    src_dir = os.path.dirname(os.path.abspath(src))
     if auto and detect(src) == 'zstd':
         tmp = tempfile.mkdtemp(prefix='blend17-')
         dec = os.path.join(tmp, 'decompressed.blend')
         print(f"decompressing zstd -> {dec}")
         decompress_zstd(src, dec)
         src = dec
-    extract_blend17(src, out_dir)
+    extract_blend17(src, out_dir, src_dir=src_dir)
 
 
 if __name__ == '__main__':

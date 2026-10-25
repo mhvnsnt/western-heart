@@ -9,6 +9,7 @@
    good for watching AI-vs-AI or unattended verification.
    ============================================================ */
 import { inReach, moveReach } from './combat-core.js';
+import { testSweptHit } from './hitbox.js';
 import * as THREE from 'three';
 import { Arena } from './scene.js';
 // LOADSPEED (2026-10-22): fighter.js (rigs, T3 wiring, movesets) is fight-only —
@@ -48,6 +49,7 @@ import { HitFX } from './hitfx.js';
 // LIGHTING RIG (worker 27): per-fighter character light rig — SFV/T7-style
 // character-vs-stage lighting separation + bible soul glow. Fail-silent.
 import { attachCharacterRig } from './lighting-rig.js';
+import { getRules } from './rules.js';
 
 const ROUND_TIME = 60;
 const ROUNDS_TO_WIN = 2;   // best of 3
@@ -124,6 +126,12 @@ export class Game {
     const { Fighter, setArenaLimit, setGroundY } = await lazy.fighter();
     // Modes lane: per-match round target (default = classic best-of-3).
     this.roundsToWin = opts.roundsToWin || ROUNDS_TO_WIN;
+    // Versus SETUP / GAME OPTION: per-match round time (0 = INFINITY)
+    // and guard damage. Defaults come from the rules store when the
+    // mode doesn't dictate them.
+    const _rules = getRules();
+    this.roundTime = opts.roundTime != null ? opts.roundTime : _rules.roundTime;
+    this.guardDamage = opts.guardDamage != null ? opts.guardDamage : _rules.guardDamage;
 
     // Lane 4: stage selection drives arena, collision bounds, spawns.
     const stage = getStage(stageId || 'shrine');
@@ -188,7 +196,7 @@ export class Game {
     this.round = 1;
     this.ui.setNames(playerChar.name, enemyChar.name);
     if (this.ui.setStageName) this.ui.setStageName(stage.name);
-    this.ui.setRounds(this.wins);
+    this.ui.setRounds(this.wins, this.roundsToWin);
     this.matchStats = { attacks: { punch: 0, kick: 0, grab: 0, surge: 0, dodge: 0 }, blockTime: 0, time: 0, dmgDealt: 0, dmgTaken: 0 };
     this.running = true;
     this.paused = false;
@@ -225,7 +233,7 @@ export class Game {
     // Reset all match state
     this.wins = { p1: 0, p2: 0 };
     this.round = 1;
-    this.timer = ROUND_TIME;
+    this.timer = this.roundTime === 0 ? Infinity : (this.roundTime || ROUND_TIME);
     this.roundState = 'idle';
     this._roundLockT = 0;
     this._hitStop = 0;
@@ -237,8 +245,8 @@ export class Game {
     // Reset input (no stuck keys/buttons from previous match)
     if (this.input) this.input.reset();
     // Reset HUD
-    this.ui.setRounds(this.wins);
-    this.ui.setTimer(ROUND_TIME);
+    this.ui.setRounds(this.wins, this.roundsToWin);
+    this.ui.setTimer(this.roundTime === 0 ? '∞' : (this.roundTime || ROUND_TIME));
     // Stage-break lane: restore bounds/ground when leaving or restarting.
     if (this.stageBreaks) this.stageBreaks.reset();
     if (this.rage) this.rage.resetRound();
@@ -252,7 +260,7 @@ export class Game {
   }
 
   _startRound() {
-    this.timer = ROUND_TIME;
+    this.timer = this.roundTime === 0 ? Infinity : (this.roundTime || ROUND_TIME);
     this.p1.hp = this.p1.maxHp; this.p2.hp = this.p2.maxHp;
     this.p1.meter = this.p2.meter = 0;
     if (this.rage) this.rage.resetRound();
@@ -367,8 +375,10 @@ export class Game {
         this._p1BlockWas = blockNow;
         this.p1.tryCrouch(inp.down && !inp.up); // hold down = crouch; release = WS. window
         // Feed facing-relative direction into the Tekken input buffer
-        // (drives motion specials qcf/f,F and directional attacks f+1)
-        this.p1.tekken.noteDirection(stick);
+        // (drives motion specials qcf/f,F and directional attacks f+1).
+        // Pass the tick length: the buffer's windows are T3 frames of 1/60 s and it
+        // weighs each entry by dt, so they stay real-time at FIXED_DT = 1/120 (or any rate).
+        this.p1.tekken.noteDirection(stick, dt);
         if (ms && this.p1.isBlocking()) ms.blockTime += dt;
         if (ms) ms.time += dt;
         // Stream 6: while caught in a throw, limb inputs are break attempts.
@@ -573,18 +583,28 @@ export class Game {
       }
     }
     const hurts = defender.getHurtboxes();
-    // Contact (tekken-command-interpreter lane): frame-data reach is the
-    // authority (root spacing vs the move's range class, same line), the
-    // animated bone sphere is a secondary path. Bone-only contact whiffed
-    // whenever a clip didn't extend the limb or a rig was in T-pose.
-    const spheres = hurts.some((hu) => {
-      const dx = hb.x - hu.x, dy = hb.y - hu.y, dz = hb.z - hu.z, rr = hb.r + hu.r;
-      return dx * dx + dy * dy + dz * dz <= rr * rr;
-    });
+    // Contact (HITBOX LANE 2026-10-24): TWO paths, either connects —
+    // (1) GEOMETRY: the swept weapon segment (limb segment + travel,
+    // hitbox.js) against all 14 hurt capsules. This is the path the
+    // old code lacked: it tested one sphere against hurts[0] only.
+    // (2) RANGE fallback (tekken-command-interpreter lane): root
+    // spacing vs the move's range class, same line. Kept for
+    // fighters whose animation does not extend the limb (the
+    // documented T-pose case) and for mids against a croucher,
+    // whose lowered torso the geometry may only graze. Geometry
+    // can only ADD hits the fallback missed, never remove one.
+    // The hb.reach / moveReach ratio preserves the advancing-input
+    // bonus that getHitbox already folded into hb.reach (moveReach
+    // with name '' would otherwise drop it). Posture / hit-level
+    // gating still happens in canBeHitBy below, for both paths.
+    const geo = testSweptHit(hb, hurts);
     const ap = attacker.root.position, dp = defender.root.position;
     const reachHit = hurts.length > 0 && hb.reach > 0 && (dp.y - ap.y) < 1.6 &&
       inReach(ap.x, ap.z, attacker.facing, dp.x, dp.z, hb.move, '', hb.reach / Math.max(0.01, moveReach(hb.move, '')));
-    for (const hu of ((spheres || reachHit) ? hurts.slice(0, 1) : [])) {
+    if (geo.hit || reachHit) {
+      const hu = geo.segment || hurts[0];
+      attacker._lastHitSegment = hu ? hu.id : null;
+      defender._lastHitSegment = hu ? hu.id : null;
       {
         // Decoded T3 posture rule: highs pass over crouchers, lows under jumpers,
         // standing throws whiff crouching fighters (fighter.js canBeHitBy).
@@ -715,7 +735,7 @@ export class Game {
     else if (p2Down && !p1Down) { this.wins.p1++; this.p2._knockout(1); this.p1.victory(); this.ui.banner('K.O.'); }
     else { this.wins.p1++; this.wins.p2++; this.ui.banner('DOUBLE K.O.'); }
 
-    this.ui.setRounds(this.wins);
+    this.ui.setRounds(this.wins, this.roundsToWin);
     this.ui.updateHP(this.p1, this.p2);
     if (this.soul) this.soul.onRoundEnd(p1Down, p2Down); // 試練の封 Trial's Seal
   }
@@ -725,7 +745,7 @@ export class Game {
       // TRAINING (modes lane): endless round vs the passive dummy.
       // The round resets instead of the match ending; the dummy is restored.
       this.wins = { p1: 0, p2: 0 };
-      this.ui.setRounds(this.wins);
+      this.ui.setRounds(this.wins, this.roundsToWin);
       this.round = 1;
       this.ui.banner('RESET — DUMMY RESTORED');
       this._startRound();

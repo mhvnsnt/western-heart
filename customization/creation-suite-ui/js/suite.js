@@ -1117,7 +1117,7 @@ $('#btn-roster').onclick=()=>{
 $('#btn-save').onclick=persist;
 { const bsa=$('#btn-save-attire'); if(bsa) bsa.onclick=saveToAttire; }
 /* Stream 4: in-game wiring — back to the game menu (saves first). */
-{ const bg=$('#btn-back-game'); if(bg) bg.onclick=()=>{ persistQuiet(); window.location.href='../../game/index.html'; } }
+{ const bg=$('#btn-back-game'); if(bg) bg.onclick=()=>{ persistQuiet(); window.location.href='../../index.html'; } }
 $('#btn-export').onclick=()=>{
   const blob=new Blob([JSON.stringify(F,null,2)],{type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
