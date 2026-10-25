@@ -270,3 +270,37 @@ so no agreement note fires). Job 3 prefix-vs-__main dedupe fires 0 times
 canonicals in scope. T8-sourced prefixes with no T3 row get their correct
 clips from #988 Step 2 (original T8 refs), never from a T3 row recorded as
 correct.
+
+## Skull Batch 4 fallback (triples/quads/rest strings, 2026-10-25, LAST batch — skull coverage COMPLETE)
+Verified rows 43/76/103/119/150/154/169/170/171/172/176/177/180/187/188/199/201/202/203/204/205/206/208 are FALLBACK
+(T3 bryan rows, bank bryan / NATIVE bank: skull's T7/T8 base is Bryan Fury,
+which debuted in Tekken 3, so a native bryan dir exists under t3/ - same bank
+as burger's fallback, but here it is the character's own T3 bank, and its row
+identities were re-derived from the files, not copied from burger), to be
+re-matched to T7 Bryan rows when extraction lands. Rejected/review rows are
+NOT fallback - review evidence (rows 158/200/207) and suspended evidence (stale
+row 63) are not wired or held as playable. Bryan-bank rules, per-bank
+evidence (documented in docs/movesets/SKULL-BATCH4-STEP-PLANS-2026-10-25.md):
+row 35 does NOT EXIST in this bank (absent from hit_frames AND Job 1); row 220
+EXISTS in hit_frames ([25,26,65,271,0,0], button 0) but is ABSENT from Job 1 -
+it fails every single-button gate; row 216 EXISTS in
+hit_frames ([20,21,30,271,0,0], button 0) but is ABSENT from Job 1 - same
+treatment. LK3 move 3 is ROW-CHANGED 63->None on main, so the three step-1s
+with prefix move 3 are SUSPENDED (3,2,1 / 3,2,1,2 / 3,2,1,4 step 1s; stale jump
+row 63 documented, never wired). Standing rows 103/169/170/177/180 verified
+for crouch-context steps (d/f+3+4,2 family) follow the demonio Batch 1
+precedent: the gate flags crouch rows for non-crouch steps, not standing rows
+for crouch steps. ONE Job 3 fill wired: 3,2,1,4 step 4 <- row 119 (exact level,
+FULL provenance moveset_skull:4~t3.bryan.2(RK), timing 1.33, HARD + SOFT pass
+under the stricter burger fill rule). Job 3: 15 report entries, 1 fill; all
+other candidates ROW-ONLY or soft, never wired; no agreement note fires. Job 4:
+24 joins (8 no-action, 11 CANDIDATE-not-wired, 1 REJECTED row 345, 4 rest-key
+joins documented not adjudicated), 0 orphans, 0 promotions. Canonicalization
+is the CORRECTED rule (strip only a trailing ~t[378] source-variant suffix):
+skull Batch 4 contains ZERO input-~ canonicals in scope. Rest keys (33
+canonicals, >=1 buttonless step) are CSV-audited only, never planned -
+planning needs engine support for non-attack prefix steps (future work, named,
+not guessed). COVERAGE-COMPLETE PROOF: full inventory 188 canonical comma
+keys = B1 57 + B2 12 + B3 31 + B4 88, pairwise overlaps 0, uncovered []
+extra []. T8-sourced prefixes with no T3 row get their correct clips from
+#988 Step 2 (original T8 refs), never from a T3 row recorded as correct.
