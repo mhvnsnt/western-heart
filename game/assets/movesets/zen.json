@@ -8,9 +8,9 @@
   "variant": 2,
   "anim_set_lock": {
     "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
-    "FIGHT": "every move in this file: moveset moves and combat stances \u2014 the combat animation bank",
-    "SHOW": "win poses, intro poses, taunts, cutscene animations \u2014 intro/win slots and cutscenes ONLY; tracked in docs/anim/VF5-DURAL-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval. Heihachi-derived moves are tagged as such; Dural (VF5) base is filed as pending, never mixed in.",
-    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set. Zen's permanent base is Dural (VF5) per owner directive \u2014 Dural motion was never converted; see the VF5 gap doc. 2026-10-24 owner decision: Zen is NEITHER Heihachi NOR Julia \u2014 base chain Eleven/Twelve (2D concept) -> Dural (3D implementation) -> Zen canon on top; FIGHTER_BANK zen is now UNMAPPED (null) until Dural motion lands; the 639 Heihachi rows in this file remain interim data only and are NEVER mixed with the true moveset (wh_true_moveset below)."
+    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; tracked in docs/anim/VF5-DURAL-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval. Heihachi-derived moves are tagged as such; Dural (VF5) base is filed as pending, never mixed in.",
+    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set. Zen's permanent base is Dural (VF5) per owner directive — Dural motion was never converted; see the VF5 gap doc. 2026-10-24 owner decision: Zen is NEITHER Heihachi NOR Julia — base chain Eleven/Twelve (2D concept) -> Dural (3D implementation) -> Zen canon on top; FIGHTER_BANK zen is now UNMAPPED (null) until Dural motion lands; the 639 Heihachi rows in this file remain interim data only and are NEVER mixed with the true moveset (wh_true_moveset below)."
   },
   "strings": [
     {
@@ -9104,7 +9104,7 @@
         "WALL.b,b,u/b"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_1",
       "t7_command": "Back towards wall... b, b, u/b",
       "t7_hit_level": "mid",
@@ -9145,7 +9145,7 @@
         "1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_2",
       "t7_command": "1",
       "t7_hit_level": "high",
@@ -9184,7 +9184,7 @@
         "1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_3",
       "t7_command": "1, 1",
       "t7_hit_level": "high, high",
@@ -9230,7 +9230,7 @@
         "1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_4",
       "t7_command": "(1), 1",
       "t7_hit_level": "high",
@@ -9269,7 +9269,7 @@
         "1,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_5",
       "t7_command": "1, 1, 2",
       "t7_hit_level": "high, high, mid",
@@ -9317,7 +9317,7 @@
         "1,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_6",
       "t7_command": "(1), 1, 2",
       "t7_hit_level": "high, mid",
@@ -9364,7 +9364,7 @@
         "1,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_7",
       "t7_command": "(1), (1), 2",
       "t7_hit_level": "mid",
@@ -9404,7 +9404,7 @@
         "1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_8",
       "t7_command": "1, 2",
       "t7_hit_level": "high, high",
@@ -9450,7 +9450,7 @@
         "1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_9",
       "t7_command": "(1), 2",
       "t7_hit_level": "high",
@@ -9489,7 +9489,7 @@
         "1,2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_10",
       "t7_command": "1, 2, 2",
       "t7_hit_level": "high, high, high",
@@ -9536,7 +9536,7 @@
         "1,2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_11",
       "t7_command": "(1), 2, 2",
       "t7_hit_level": "high, high",
@@ -9582,7 +9582,7 @@
         "1,2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_12",
       "t7_command": "(1), (2), 2",
       "t7_hit_level": "high",
@@ -9621,7 +9621,7 @@
         "1,2,2~1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_13",
       "t7_command": "1, 2, 2~1+2",
       "t7_hit_level": "high, high, mid",
@@ -9664,7 +9664,7 @@
         "1,2,2~1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_14",
       "t7_command": "(1), 2, 2~1+2",
       "t7_hit_level": "high, mid",
@@ -9706,7 +9706,7 @@
         "1,2,2~1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_15",
       "t7_command": "(1), (2), 2~1+2",
       "t7_hit_level": "mid",
@@ -9741,7 +9741,7 @@
         "1,2,2~1+2,u"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_16",
       "t7_command": "1, 2, 2~1+2, u (or d)",
       "t7_hit_level": "-",
@@ -9781,7 +9781,7 @@
         "1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_17",
       "t7_command": "1, 2, 4",
       "t7_hit_level": "high, high, high",
@@ -9829,7 +9829,7 @@
         "1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_18",
       "t7_command": "(1), 2, 4",
       "t7_hit_level": "high, high",
@@ -9876,7 +9876,7 @@
         "1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_19",
       "t7_command": "(1), (2), 4",
       "t7_hit_level": "high",
@@ -9916,7 +9916,7 @@
         "1,b+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_20",
       "t7_command": "1, b+2",
       "t7_hit_level": "high, mid",
@@ -9962,7 +9962,7 @@
         "1,b+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_21",
       "t7_command": "(1), b+2",
       "t7_hit_level": "mid",
@@ -10001,7 +10001,7 @@
         "1,b+2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_22",
       "t7_command": "1, b+2, 1",
       "t7_hit_level": "high, mid, mid",
@@ -10049,7 +10049,7 @@
         "1,b+2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_23",
       "t7_command": "(1), b+2, 1",
       "t7_hit_level": "high, mid",
@@ -10096,7 +10096,7 @@
         "1,b+2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_24",
       "t7_command": "(1), (b+2), 1",
       "t7_hit_level": "mid",
@@ -10136,7 +10136,7 @@
         "1,b+2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_25",
       "t7_command": "1, b+2, 4",
       "t7_hit_level": "high, mid, mid",
@@ -10184,7 +10184,7 @@
         "1,b+2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_26",
       "t7_command": "(1), b+2, 4",
       "t7_hit_level": "high, mid",
@@ -10231,7 +10231,7 @@
         "1,b+2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_27",
       "t7_command": "(1), (b+2), 4",
       "t7_hit_level": "mid",
@@ -10271,7 +10271,7 @@
         "2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_28",
       "t7_command": "2",
       "t7_hit_level": "high",
@@ -10310,7 +10310,7 @@
         "2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_29",
       "t7_command": "2, 2",
       "t7_hit_level": "high, high",
@@ -10356,7 +10356,7 @@
         "2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_30",
       "t7_command": "(2), 2",
       "t7_hit_level": "high",
@@ -10395,7 +10395,7 @@
         "2,2~1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_31",
       "t7_command": "2, 2~1+2",
       "t7_hit_level": "high, mid",
@@ -10437,7 +10437,7 @@
         "2,2~1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_32",
       "t7_command": "(2), 2~1+2",
       "t7_hit_level": "mid",
@@ -10472,7 +10472,7 @@
         "2,2~1+2,u"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_33",
       "t7_command": "2, 2~1+2, u (or d)",
       "t7_hit_level": "-",
@@ -10512,7 +10512,7 @@
         "3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_34",
       "t7_command": "3",
       "t7_hit_level": "high",
@@ -10551,7 +10551,7 @@
         "3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_35",
       "t7_command": "3, 4",
       "t7_hit_level": "high, mid",
@@ -10597,7 +10597,7 @@
         "3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_36",
       "t7_command": "(3), 4",
       "t7_hit_level": "mid",
@@ -10636,7 +10636,7 @@
         "4~3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_37",
       "t7_command": "4~3 (or WS 4~3)",
       "t7_hit_level": "mid",
@@ -10677,7 +10677,7 @@
         "1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_38",
       "t7_command": "1+2",
       "t7_hit_level": "mid",
@@ -10717,7 +10717,7 @@
         "u/f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_39",
       "t7_command": "u/f+3",
       "t7_hit_level": "mid",
@@ -10757,7 +10757,7 @@
         "u/f+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_40",
       "t7_command": "u/f+3, 4",
       "t7_hit_level": "mid, mid",
@@ -10803,7 +10803,7 @@
         "u/f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_41",
       "t7_command": "u/f+4",
       "t7_hit_level": "mid",
@@ -10843,7 +10843,7 @@
         "f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_42",
       "t7_command": "f+2",
       "t7_hit_level": "high",
@@ -10882,7 +10882,7 @@
         "f+2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_43",
       "t7_command": "f+2, 3",
       "t7_hit_level": "high, mid",
@@ -10929,7 +10929,7 @@
         "f+2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_44",
       "t7_command": "(f+2), 3",
       "t7_hit_level": "mid",
@@ -10969,7 +10969,7 @@
         "f+2~1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_45",
       "t7_command": "f+2~1+2",
       "t7_hit_level": "mid",
@@ -11004,7 +11004,7 @@
         "f+2~1+2,u"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_46",
       "t7_command": "f+2~1+2, u (or d)",
       "t7_hit_level": "-",
@@ -11044,7 +11044,7 @@
         "f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_47",
       "t7_command": "f+3",
       "t7_hit_level": "mid",
@@ -11084,7 +11084,7 @@
         "f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_48",
       "t7_command": "f+4",
       "t7_hit_level": "mid",
@@ -11124,7 +11124,7 @@
         "f+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_49",
       "t7_command": "f+1+2",
       "t7_hit_level": "high",
@@ -11164,7 +11164,7 @@
         "f,F+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_50",
       "t7_command": "f, F+2",
       "t7_hit_level": "mid",
@@ -11204,7 +11204,7 @@
         "f,F+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_51",
       "t7_command": "f, F+3",
       "t7_hit_level": "mid",
@@ -11243,7 +11243,7 @@
         "f,f,f+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_52",
       "t7_command": "f, f, f+3 (or WR 3)",
       "t7_hit_level": "mid",
@@ -11284,7 +11284,7 @@
         "f,n,d/f:1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_53",
       "t7_command": "f, n, d/f:1",
       "t7_hit_level": "mid",
@@ -11323,7 +11323,7 @@
         "f,n,d,d/f+1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_54",
       "t7_command": "f, n, d, d/f+1",
       "t7_hit_level": "mid",
@@ -11363,7 +11363,7 @@
         "f,n,d,d/f+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_55",
       "t7_command": "f, n, d, d/f+2",
       "t7_hit_level": "high",
@@ -11403,7 +11403,7 @@
         "f,n,d,d/f:2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_56",
       "t7_command": "f, n, d, d/f:2",
       "t7_hit_level": "high",
@@ -11443,7 +11443,7 @@
         "f,n,d,d/f+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_57",
       "t7_command": "f, n, d, d/f+3",
       "t7_hit_level": "mid",
@@ -11483,7 +11483,7 @@
         "f,n,d,D/F+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_58",
       "t7_command": "f, n, d, D/F+3",
       "t7_hit_level": "low",
@@ -11523,7 +11523,7 @@
         "f,n,d,d/f+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_59",
       "t7_command": "f, n, d, d/f+4",
       "t7_hit_level": "low",
@@ -11562,7 +11562,7 @@
         "f,n,d,d/f+4,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_60",
       "t7_command": "f, n, d, d/f+4, 1",
       "t7_hit_level": "low, mid",
@@ -11609,7 +11609,7 @@
         "f,n,d,d/f+4,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_61",
       "t7_command": "(f, n, d, d/f+4), 1",
       "t7_hit_level": "mid",
@@ -11649,7 +11649,7 @@
         "f,n,d,d/f+4,n,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_62",
       "t7_command": "f, n, d, d/f+4, n, 4",
       "t7_hit_level": "low, mid",
@@ -11695,7 +11695,7 @@
         "f,n,d,d/f+4,n,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_63",
       "t7_command": "(f, n, d, d/f+4), n, 4",
       "t7_hit_level": "mid",
@@ -11734,7 +11734,7 @@
         "f,n,d,d/f+4,n,4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_64",
       "t7_command": "f, n, d, d/f+4, n, 4, 4",
       "t7_hit_level": "low, mid, mid",
@@ -11781,7 +11781,7 @@
         "f,n,d,d/f+4,n,4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_65",
       "t7_command": "(f, n, d, d/f+4), n, 4, 4",
       "t7_hit_level": "low, mid",
@@ -11827,7 +11827,7 @@
         "f,n,d,d/f+4,n,4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_66",
       "t7_command": "(f, n, d, d/f+4), n, (4), 4",
       "t7_hit_level": "mid",
@@ -11866,7 +11866,7 @@
         "f,n,d,D/F+4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_67",
       "t7_command": "f, n, d, D/F+4, 4",
       "t7_hit_level": "low, low",
@@ -11913,7 +11913,7 @@
         "f,n,d,D/F+4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_68",
       "t7_command": "(f, n, d, D/F+4), 4",
       "t7_hit_level": "low",
@@ -11953,7 +11953,7 @@
         "f,n,d,D/F+4,4,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_69",
       "t7_command": "(f, n, d, D/F+4), (4), 1",
       "t7_hit_level": "mid",
@@ -11993,7 +11993,7 @@
         "f,n,d,D/F+4,4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_70",
       "t7_command": "f, n, d, D/F+4, 4, 4",
       "t7_hit_level": "low, low, low",
@@ -12041,7 +12041,7 @@
         "f,n,d,D/F+4,4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_71",
       "t7_command": "(f, n, d, D/F+4), 4, 4",
       "t7_hit_level": "low, low",
@@ -12088,7 +12088,7 @@
         "f,n,d,D/F+4,4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_72",
       "t7_command": "(f, n, d, D/F+4), (4), 4",
       "t7_hit_level": "low",
@@ -12128,7 +12128,7 @@
         "f,n,d,D/F+4,4,4,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_73",
       "t7_command": "(f, n, d, D/F+4), (4), (4), 1",
       "t7_hit_level": "mid",
@@ -12168,7 +12168,7 @@
         "d/f+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_74",
       "t7_command": "d/f+1",
       "t7_hit_level": "mid",
@@ -12207,7 +12207,7 @@
         "d/f+1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_75",
       "t7_command": "d/f+1, 1",
       "t7_hit_level": "mid, high",
@@ -12253,7 +12253,7 @@
         "d/f+1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_76",
       "t7_command": "(d/f+1), 1",
       "t7_hit_level": "high",
@@ -12292,7 +12292,7 @@
         "d/f+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_77",
       "t7_command": "d/f+1, 2",
       "t7_hit_level": "mid, mid",
@@ -12339,7 +12339,7 @@
         "d/f+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_78",
       "t7_command": "(d/f+1), 2",
       "t7_hit_level": "mid",
@@ -12379,7 +12379,7 @@
         "d/f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_79",
       "t7_command": "d/f+2",
       "t7_hit_level": "mid",
@@ -12419,7 +12419,7 @@
         "d/f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_80",
       "t7_command": "d/f+3",
       "t7_hit_level": "mid",
@@ -12458,7 +12458,7 @@
         "d/f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_81",
       "t7_command": "d/f+4",
       "t7_hit_level": "mid",
@@ -12497,7 +12497,7 @@
         "d+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_82",
       "t7_command": "d+1",
       "t7_hit_level": "mid",
@@ -12536,7 +12536,7 @@
         "d+1,D"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_83",
       "t7_command": "d+1, D",
       "t7_hit_level": "mid",
@@ -12575,7 +12575,7 @@
         "d+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_84",
       "t7_command": "d+1, 2",
       "t7_hit_level": "mid, mid",
@@ -12621,7 +12621,7 @@
         "d+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_85",
       "t7_command": "(d+1), 2",
       "t7_hit_level": "mid",
@@ -12661,7 +12661,7 @@
         "d+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_86",
       "t7_command": "d+3 (or d/f+3+4)",
       "t7_hit_level": "mid",
@@ -12702,7 +12702,7 @@
         "d+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_87",
       "t7_command": "d+4",
       "t7_hit_level": "low",
@@ -12741,7 +12741,7 @@
         "d/b+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_88",
       "t7_command": "d/b+2",
       "t7_hit_level": "low",
@@ -12780,7 +12780,7 @@
         "d/b+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_89",
       "t7_command": "d/b+1+2",
       "t7_hit_level": "mid, mid",
@@ -12826,7 +12826,7 @@
         "d/b+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_90",
       "t7_command": "d/b+1+2 (second hit only)",
       "t7_hit_level": "mid",
@@ -12866,7 +12866,7 @@
         "b+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_91",
       "t7_command": "b+1",
       "t7_hit_level": "high",
@@ -12905,7 +12905,7 @@
         "b+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_92",
       "t7_command": "b+1, 2",
       "t7_hit_level": "high, high",
@@ -12951,7 +12951,7 @@
         "b+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_93",
       "t7_command": "(b+1), 2",
       "t7_hit_level": "high",
@@ -12990,7 +12990,7 @@
         "b+1,2~1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_94",
       "t7_command": "b+1, 2~1+2",
       "t7_hit_level": "high, mid",
@@ -13032,7 +13032,7 @@
         "b+1,2~1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_95",
       "t7_command": "(b+1), 2~1+2",
       "t7_hit_level": "mid",
@@ -13067,7 +13067,7 @@
         "b+1,2~1+2,u"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_96",
       "t7_command": "b+1, 2~1+2, u (or d)",
       "t7_hit_level": "-",
@@ -13107,7 +13107,7 @@
         "b+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_97",
       "t7_command": "b+2",
       "t7_hit_level": "mid",
@@ -13147,7 +13147,7 @@
         "b+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_98",
       "t7_command": "b+3",
       "t7_hit_level": "high",
@@ -13186,7 +13186,7 @@
         "b+3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_99",
       "t7_command": "b+3, 3",
       "t7_hit_level": "high, mid",
@@ -13233,7 +13233,7 @@
         "b+3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_100",
       "t7_command": "(b+3), 3",
       "t7_hit_level": "mid",
@@ -13273,7 +13273,7 @@
         "b+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_101",
       "t7_command": "b+4",
       "t7_hit_level": "mid",
@@ -13313,7 +13313,7 @@
         "b+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_102",
       "t7_command": "b+1+2",
       "t7_hit_level": "mid",
@@ -13352,7 +13352,7 @@
         "b+1+2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_103",
       "t7_command": "b+1+2, 1+2",
       "t7_hit_level": "mid, mid",
@@ -13394,7 +13394,7 @@
         "b+1+2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_104",
       "t7_command": "(b+1+2), 1+2",
       "t7_hit_level": "mid",
@@ -13429,7 +13429,7 @@
         "b,f+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_105",
       "t7_command": "b, f+2",
       "t7_hit_level": "mid",
@@ -13468,7 +13468,7 @@
         "b,f+2,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_106",
       "t7_command": "b, f+2, 1",
       "t7_hit_level": "mid, high",
@@ -13515,7 +13515,7 @@
         "b,f+2,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_107",
       "t7_command": "(b, f+2), 1",
       "t7_hit_level": "high",
@@ -13555,7 +13555,7 @@
         "b,f+2,2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_108",
       "t7_command": "b, f+2, 2",
       "t7_hit_level": "mid, mid",
@@ -13601,7 +13601,7 @@
         "b,f+2,2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_109",
       "t7_command": "(b, f+2), 2",
       "t7_hit_level": "mid",
@@ -13640,7 +13640,7 @@
         "b,f+2,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_110",
       "t7_command": "b, f+2, 3",
       "t7_hit_level": "mid, high",
@@ -13687,7 +13687,7 @@
         "b,f+2,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_111",
       "t7_command": "(b, f+2), 3",
       "t7_hit_level": "high",
@@ -13727,7 +13727,7 @@
         "b,B+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_112",
       "t7_command": "b, B+1+2",
       "t7_hit_level": "mid",
@@ -13762,7 +13762,7 @@
         "b,B+3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_113",
       "t7_command": "b, B+3+4",
       "t7_hit_level": "-",
@@ -13796,7 +13796,7 @@
         "qcf+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_114",
       "t7_command": "qcf+2",
       "t7_hit_level": "mid",
@@ -13836,7 +13836,7 @@
         "BT.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_115",
       "t7_command": "BT 1 (or 2)",
       "t7_hit_level": "high",
@@ -13876,7 +13876,7 @@
         "BT.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_116",
       "t7_command": "BT 3 (or 4)",
       "t7_hit_level": "high",
@@ -13917,7 +13917,7 @@
         "FC.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_117",
       "t7_command": "FC 1",
       "t7_hit_level": "s. mid",
@@ -13956,7 +13956,7 @@
         "FC.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_118",
       "t7_command": "FC 2",
       "t7_hit_level": "s. mid",
@@ -13995,7 +13995,7 @@
         "FC.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_119",
       "t7_command": "FC 3",
       "t7_hit_level": "low",
@@ -14034,7 +14034,7 @@
         "FC.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_120",
       "t7_command": "FC 4",
       "t7_hit_level": "low",
@@ -14073,7 +14073,7 @@
         "FC.d/f+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_121",
       "t7_command": "FC d/f+4",
       "t7_hit_level": "low",
@@ -14113,7 +14113,7 @@
         "SS.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_122",
       "t7_command": "SS 2",
       "t7_hit_level": "mid",
@@ -14152,7 +14152,7 @@
         "SS.2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_123",
       "t7_command": "SS 2, 1",
       "t7_hit_level": "mid, mid",
@@ -14199,7 +14199,7 @@
         "SS.2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_124",
       "t7_command": "SS (2), 1",
       "t7_hit_level": "mid",
@@ -14239,7 +14239,7 @@
         "f,f,F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_125",
       "t7_command": "WR f, f, F (Full Screen)",
       "t7_hit_level": "mid",
@@ -14280,7 +14280,7 @@
         "f,f,F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_126",
       "t7_command": "WR f, f, F (Full Screen) (On Grounded Opponent)",
       "t7_hit_level": "low",
@@ -14321,7 +14321,7 @@
         "4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_127",
       "t7_command": "WR 4",
       "t7_hit_level": "low",
@@ -14362,7 +14362,7 @@
         "1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_128",
       "t7_command": "WR 1+2",
       "t7_hit_level": "mid",
@@ -14403,7 +14403,7 @@
         "WS.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_129",
       "t7_command": "WS 1",
       "t7_hit_level": "mid",
@@ -14443,7 +14443,7 @@
         "WS.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_130",
       "t7_command": "WS 2",
       "t7_hit_level": "mid",
@@ -14482,7 +14482,7 @@
         "WS.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_131",
       "t7_command": "WS 3",
       "t7_hit_level": "mid",
@@ -14521,7 +14521,7 @@
         "WS.3,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_132",
       "t7_command": "WS 3, 1+2",
       "t7_hit_level": "mid, mid",
@@ -14563,7 +14563,7 @@
         "WS.3,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_133",
       "t7_command": "WS (3), 1+2",
       "t7_hit_level": "mid",
@@ -14598,7 +14598,7 @@
         "WS.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_134",
       "t7_command": "WS 4",
       "t7_hit_level": "mid",
@@ -14637,7 +14637,7 @@
         "WS.4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_135",
       "t7_command": "WS 4, 4",
       "t7_hit_level": "mid, mid",
@@ -14683,7 +14683,7 @@
         "WS.4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_136",
       "t7_command": "WS (4), 4",
       "t7_hit_level": "mid",
@@ -14722,7 +14722,7 @@
         "d+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_137",
       "t7_command": "(While enemy is down) d+4",
       "t7_hit_level": "low",
@@ -14762,7 +14762,7 @@
         "f,f,n,2,1,2,2,3,4,4,1,2,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_138",
       "t7_command": "f, f, n, 2, 1, 2, 2, 3, 4, 4, 1, 2, 1",
       "t7_hit_level": "-",
@@ -14802,7 +14802,7 @@
         "d/f+3,2,2,4,4,1,4,1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_139",
       "t7_command": "d/f+3, 2, 2, 4, 4, 1, 4, 1, 2, 4",
       "t7_hit_level": "-",
@@ -14842,7 +14842,7 @@
         "d/f+3,2,2,4,4,1,2,1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_140",
       "t7_command": "d/f+3, 2, 2, 4, 4, 1, 2, 1, 2, 1",
       "t7_hit_level": "-",
@@ -14879,7 +14879,7 @@
       "anim_ref": "t7:heihachi:heihachi_141",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_141",
       "t7_command": "Face Up, Feet Towards+3 or (After Rolling Forward)",
       "t7_hit_level": "low",
@@ -14918,7 +14918,7 @@
       "anim_ref": "t7:heihachi:heihachi_142",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_142",
       "t7_command": "Face Up, Feet Towards+4 or (After Rolling Forward)",
       "t7_hit_level": "mid",
@@ -14959,7 +14959,7 @@
         "FUFT.d+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_143",
       "t7_command": "Face Up, Feet Towards, d+3 (or 4)",
       "t7_hit_level": "low",
@@ -14999,7 +14999,7 @@
         "FUFT.3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_144",
       "t7_command": "Face Up, Feet Towards+3+4",
       "t7_hit_level": "mid",
@@ -15033,7 +15033,7 @@
       "anim_ref": "t7:heihachi:heihachi_145",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_145",
       "t7_command": "Face Up, Feet Towards, Roll Forward+1+2",
       "t7_hit_level": "mid",
@@ -15074,7 +15074,7 @@
         "FDFA.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_146",
       "t7_command": "Face Down, Feet Away+3",
       "t7_hit_level": "low",
@@ -15115,7 +15115,7 @@
         "FDFA.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_147",
       "t7_command": "Face Down, Feet Away+4 (close)",
       "t7_hit_level": "mid",
@@ -15156,7 +15156,7 @@
         "FDFA.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_148",
       "t7_command": "Face Down, Feet Away+4 (far)",
       "t7_hit_level": "mid",
@@ -15195,7 +15195,7 @@
       "anim_ref": "t7:heihachi:heihachi_149",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_149",
       "t7_command": "(Upon Landing) f",
       "t7_hit_level": "mid",
@@ -15235,7 +15235,7 @@
         "f+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_150",
       "t7_command": "f+3+4",
       "t7_hit_level": "-",
@@ -15275,7 +15275,7 @@
         "RAI.U"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_151",
       "t7_command": "RAI U (or D)",
       "t7_hit_level": "-",
@@ -15315,7 +15315,7 @@
         "RAI.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_152",
       "t7_command": "RAI 1",
       "t7_hit_level": "high",
@@ -15355,7 +15355,7 @@
         "RAI.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_153",
       "t7_command": "RAI 2",
       "t7_hit_level": "mid",
@@ -15395,7 +15395,7 @@
         "RAI.2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_154",
       "t7_command": "RAI 2, 1",
       "t7_hit_level": "mid, mid",
@@ -15442,7 +15442,7 @@
         "RAI.2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_155",
       "t7_command": "RAI (2), 1",
       "t7_hit_level": "mid",
@@ -15482,7 +15482,7 @@
         "d/f+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_156",
       "t7_command": "d/f+1+2",
       "t7_hit_level": "mid",
@@ -15522,7 +15522,7 @@
         "R.1,b+2,1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_157",
       "t7_command": "(During Rage) 1, b+2, 1+2",
       "t7_hit_level": "high, mid, high",
@@ -15565,7 +15565,7 @@
         "R.1,b+2,1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_158",
       "t7_command": "(During Rage) (1), b+2, 1+2",
       "t7_hit_level": "mid, high",
@@ -15607,7 +15607,7 @@
         "R.1,b+2,1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_159",
       "t7_command": "(During Rage) (1), (b+2), 1+2",
       "t7_hit_level": "high",
@@ -15642,7 +15642,7 @@
         "R.d+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_160",
       "t7_command": "(During Rage) d+1+2",
       "t7_hit_level": "mid",
@@ -15678,7 +15678,7 @@
         "R.b+2,1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_161",
       "t7_command": "(During Rage) b+2, 1+2",
       "t7_hit_level": "mid, high",
@@ -15720,7 +15720,7 @@
         "R.b+2,1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_162",
       "t7_command": "(During Rage) (b+2), 1+2",
       "t7_hit_level": "high",
@@ -15755,7 +15755,7 @@
         "d+1+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_163",
       "t7_command": "d+1+4",
       "t7_hit_level": "mid",
@@ -15794,7 +15794,7 @@
         "d+2+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_164",
       "t7_command": "d+2+3",
       "t7_hit_level": "-",
@@ -15829,7 +15829,7 @@
         "RAI.1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_165",
       "t7_command": "RAI 1+2",
       "t7_hit_level": "high",
@@ -15863,7 +15863,7 @@
         "1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_166",
       "t7_command": "Approach enemy... 1+3",
       "t7_hit_level": "high throw",
@@ -15906,7 +15906,7 @@
         "2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_167",
       "t7_command": "Approach enemy... 2+4",
       "t7_hit_level": "high throw",
@@ -15949,7 +15949,7 @@
         "f+1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_168",
       "t7_command": "Approach enemy... f+1+3",
       "t7_hit_level": "high throw",
@@ -15992,7 +15992,7 @@
         "f+2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_169",
       "t7_command": "Approach enemy... f+2+4",
       "t7_hit_level": "high throw",
@@ -16035,7 +16035,7 @@
         "f,F+1+2"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_170",
       "t7_command": "Approach enemy... f, F+1+2",
       "t7_hit_level": "high throw",
@@ -16078,7 +16078,7 @@
         "d/f+2+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_171",
       "t7_command": "Approach enemy... d/f+2+3",
       "t7_hit_level": "high throw",
@@ -16121,7 +16121,7 @@
         "qcf+1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_172",
       "t7_command": "Approach enemy... qcf+1+3",
       "t7_hit_level": "high throw",
@@ -16164,7 +16164,7 @@
         "SIDE_L.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_173",
       "t7_command": "Approach from left side... 1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -16207,7 +16207,7 @@
         "SIDE_R.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_174",
       "t7_command": "Approach from right side... 1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -16250,7 +16250,7 @@
         "BACK.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_175",
       "t7_command": "Approach from behind... 1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -16291,7 +16291,7 @@
       "anim_ref": "t7:heihachi:heihachi_176",
       "input_slots": [],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_176",
       "t7_command": "WR f, f, F (Mid Screen)",
       "t7_hit_level": "mid throw",
@@ -16334,7 +16334,7 @@
         "TACKLE.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_177",
       "t7_command": "(During Tackle) 1 (or 2)",
       "t7_hit_level": "-",
@@ -16375,7 +16375,7 @@
         "TACKLE.1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_178",
       "t7_command": "(During Tackle) 1/2, 1/2",
       "t7_hit_level": "-",
@@ -16423,7 +16423,7 @@
         "TACKLE.1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_179",
       "t7_command": "(During Tackle) 1/2, 1/2, 1/2",
       "t7_hit_level": "-",
@@ -16472,7 +16472,7 @@
         "TACKLE.1,1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_180",
       "t7_command": "(During Tackle) 1/2, 1/2, 1/2, 1/2",
       "t7_hit_level": "-",
@@ -16522,7 +16522,7 @@
         "f,n,d,D/F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_181",
       "t7_command": "f, n, d, D/F",
       "t7_hit_level": "-",
@@ -16561,7 +16561,7 @@
         "2+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_182",
       "t7_command": "2+3+4",
       "t7_hit_level": "-",
@@ -16595,7 +16595,7 @@
         "REV.b+1+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "heihachi_183",
       "t7_command": "Time with enemy attack... b+1+4 (or b+2+3)",
       "t7_hit_level": "-",
@@ -21055,387 +21055,388 @@
   },
   "anim_bank": "heihachi",
   "wh_true_moveset": {
-    "bank": "UNMAPPED (game/js/fighter.js FIGHTER_BANK zen: null). No Dural bank exists in the repo (no game/assets/anim/vf5/, no 'dural' in t3anims.js SOURCE_TO_BANK) and no Twelve 2D->3D conversion exists, so NO animation in this section is playable yet. Every entry below has anim_ref null and anim_status UNMAPPED on purpose: the interim 639-move Heihachi rows in this file's 'moves' map are separate data and are NEVER mixed with this section (see docs/anim/VF5-DURAL-ANIM-GAP-20261023.md).",
-    "base_chain": "Eleven/Twelve (Street Fighter, 2D concept: shapeshifting mimicry) -> Dural (Virtua Fighter 5, 3D implementation: chrome humanoid, closest 3D thing to Eleven/Twelve) -> Zen's own canon moves on top. Owner rationale (2026-10-24): 'Dural was the closest thing to 10 or 11 in a 3D game, that's what it came down to'. Dural is the 3D stand-in for Eleven/Twelve, NOT a separate pick.",
-    "decision": "Zen = Eleven/Twelve/Dural + own canon, NOT Heihachi, NOT Julia",
-    "dural_note": "Dural (Virtua Fighter 5) has no officially published movelist; her style is an amalgamation of moves from several VF fighters (Video Game Characters Database, Dural). No specific VF5 Dural attack row is wired as a Zen move here \u2014 wiring VF5 rows as Zen moves would make Zen a copycat again. Dural's layer is stance + inhuman movement + amalgam principle, pending VF5 motion extraction (docs/anim/VF5-DURAL-ANIM-GAP-20261023.md).",
-    "eleven_note": "Eleven (Street Fighter V) has NO own moveset: before every SFV match it randomly morphs into another character and fights with that character's kit (Street Fighter Wiki, Eleven). Eleven therefore contributes ZERO distinct moves here \u2014 concept (mimicry) and 3D-form lineage only. Zen does NOT randomly morph; his only mimicry is X.C.O.P.Y. as ONE super below.",
-    "input_convention": "Inputs are Tekken-style (numbers 1=LP1, 2=RP2, 3=LK3, 4=RK4; display forms use LP1/RP2/LK3/RK4). SF inputs are quoted verbatim per move in sf_input. Frame data is NEVER invented: the SuperCombo Twelve frame-data tables were empty when read, so no startup/damage is claimed for Twelve moves. NEEDS-INPUT means the repo docs give no input for that move. NEEDS-SPEC means a binding choice below is provisional and needs owner/spec confirmation.",
-    "moves": [
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "twelve",
-        "display_input": "d, d/f, f+LP1",
-        "id": "ndl",
-        "input": "d,d/f,f+1",
-        "limb": null,
-        "move_class": "special",
-        "name": "N.D.L.",
-        "notes": "Twelve special. SF also has an EX version; no EX data is wired here (NEEDS-SPEC). SF 'P' is any punch; WH binding LP1 is provisional (NEEDS-SPEC). No frame data claimed: SuperCombo frame-data tables were empty.",
-        "sf_input": "D, DF, F + P",
-        "sf_source": "SuperCombo Wiki, Twelve/Archive, Special Moves"
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "twelve",
-        "display_input": "d, d/b, b+LP1",
-        "id": "axe",
-        "input": "d,d/b,b+1",
-        "limb": null,
-        "move_class": "special",
-        "name": "A.X.E.",
-        "notes": "Twelve special, ground version. SF 'P' is any punch; WH binding LP1 is provisional (NEEDS-SPEC). EX version exists in SF; not wired (NEEDS-SPEC).",
-        "sf_input": "D, DB, B + P",
-        "sf_source": "SuperCombo Wiki, Twelve/Archive, Special Moves"
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "twelve",
-        "display_input": "AIR.d, d/b, b+LP1",
-        "id": "axe-air",
-        "input": "AIR.d,d/b,b+1",
-        "limb": null,
-        "move_class": "special",
-        "name": "A.X.E. (Air)",
-        "notes": "Air variant of A.X.E., documented in the same SuperCombo row ('can also be done in air'). AIR prefix gives the editor a jumping slot context.",
-        "sf_input": "D, DB, B + P (can also be done in air)",
-        "sf_source": "SuperCombo Wiki, Twelve/Archive, Special Moves"
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "twelve",
-        "display_input": "AIR.d, d/b, b+LK3",
-        "id": "dra",
-        "input": "AIR.d,d/b,b+3",
-        "limb": "legL",
-        "move_class": "special",
-        "name": "D.R.A.",
-        "notes": "Twelve special, jumping only in SF. SF 'K' is any kick; WH binding LK3 (legL) is provisional (NEEDS-SPEC). EX version exists in SF; not wired (NEEDS-SPEC).",
-        "sf_input": "While jumping, D, DB, B + K",
-        "sf_source": "SuperCombo Wiki, Twelve/Archive, Special Moves"
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "twelve",
-        "display_input": "LP1+LK3",
-        "id": "hug",
-        "input": "1+3",
-        "limb": null,
-        "move_class": "throw",
-        "name": "H.U.G.",
-        "notes": "Twelve throw. LP1+LK3 is the standard Tekken throw input and the editor treats it as a grapple slot.",
-        "sf_input": "LP + LK",
-        "sf_source": "SuperCombo Wiki, Twelve/Archive, Throws"
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "twelve",
-        "display_input": "f+LP1+LK3",
-        "id": "flg",
-        "input": "f+1+3",
-        "limb": null,
-        "move_class": "throw",
-        "name": "F.L.G.",
-        "notes": "Twelve forward throw.",
-        "sf_input": "F + LP + LK",
-        "sf_source": "SuperCombo Wiki, Twelve/Archive, Throws"
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "twelve",
-        "display_input": "b+LP1+LK3",
-        "id": "trw",
-        "input": "b+1+3",
-        "limb": null,
-        "move_class": "throw",
-        "name": "T.R.W.",
-        "notes": "Twelve back throw.",
-        "sf_input": "B + LP + LK",
-        "sf_source": "SuperCombo Wiki, Twelve/Archive, Throws"
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "twelve",
-        "display_input": "b+LK3",
-        "id": "bmk",
-        "input": "b+3",
-        "limb": "legL",
-        "move_class": "strike",
-        "name": "B.M.K.",
-        "notes": "Twelve command normal. SF 'MK' is a medium kick with no left/right side; WH binding LK3 (legL) is provisional (NEEDS-SPEC).",
-        "sf_input": "B + MK",
-        "sf_source": "SuperCombo Wiki, Twelve/Archive, Command Normals"
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "twelve",
-        "display_input": "AIR.f, f",
-        "id": "kokkuu",
-        "input": "AIR.f,f",
-        "limb": null,
-        "move_class": "special",
-        "name": "Kokkuu",
-        "notes": "Twelve air-dash movement, not a strike. Alternate SF input AIR.b,b is the same move in the other direction.",
-        "sf_input": "In air, F, F or B, B",
-        "sf_source": "SuperCombo Wiki, Twelve/Archive, Command Normals"
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "twelve",
-        "display_input": "f",
-        "id": "kabe-haritsuki",
-        "input": "f",
-        "limb": null,
-        "move_class": "special",
-        "name": "Kabe Haritsuki",
-        "notes": "Twelve wall-cling movement, not a strike. The 'against wall, hold' condition is SF context, not part of the WH input string.",
-        "sf_input": "While against wall, hold F",
-        "sf_source": "SuperCombo Wiki, Twelve/Archive, Command Normals"
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "super",
-        "display_input": "d, d/f, f, d, d/f, f+LP1",
-        "id": "xndl",
-        "input": "d,d/f,f,d,d/f,f+1",
-        "limb": null,
-        "move_class": "special",
-        "name": "X.N.D.L.",
-        "notes": "Twelve Super Art I. WH meter mapping for SF '2 stocks' is NEEDS-SPEC. SF 'P' is any punch; WH binding LP1 is provisional (NEEDS-SPEC).",
-        "sf_input": "D, DF, F, D, DF, F + P (Super Art I, 2 stocks)",
-        "sf_source": "SuperCombo Wiki, Twelve/Archive, Super Arts"
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "super",
-        "display_input": "AIR.d, d/f, f, d, d/f, f+RK4",
-        "id": "xflat",
-        "input": "AIR.d,d/f,f,d,d/f,f+4",
-        "limb": "legR",
-        "move_class": "special",
-        "name": "X.F.L.A.T.",
-        "notes": "Twelve Super Art II, jumping only. Name correction: the task brief wrote 'X.FLAT'; the SF name is X.F.L.A.T. (recorded here, not silently renamed). SF 'K' is any kick; WH binding RK4 (legR) is provisional (NEEDS-SPEC). WH meter mapping for '1 stock' is NEEDS-SPEC.",
-        "sf_input": "While jumping, D, DF, F, D, DF, F + K (Super Art II, 1 stock)",
-        "sf_source": "SuperCombo Wiki, Twelve/Archive, Super Arts"
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "xcopy",
-        "display_input": "d, d/f, f, d, d/f, f+LP1+RP2",
-        "id": "xcopy",
-        "input": "d,d/f,f,d,d/f,f+1+2",
-        "limb": null,
-        "move_class": "special",
-        "name": "X.C.O.P.Y.",
-        "notes": "ONE super only \u2014 NOT Zen's identity, NOT every move. Effect: Zen becomes a copy of the opponent briefly (owner-chosen ability, roster/zen/CANON.md). Documented SF limit, quoted from SuperCombo: 'X.C.O.P.Y. does not offer Twelve the ability to execute his opponent's EX and super moves.' WH duration and meter mapping are NEEDS-SPEC. Tekken-style super input: double quarter-circle-forward + LP1+RP2.",
-        "sf_input": "D, DF, F, D, DF, F + P (Super Art III, 1 stock)",
-        "sf_source": "SuperCombo Wiki, Twelve/Archive, Super Arts"
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "zen_signature",
-        "damage": 15,
-        "display_input": "b+LP1+RP2",
-        "id": "does-not-compete",
-        "input": "b+1+2",
-        "limb": "armL",
-        "move_class": "signature",
-        "name": "Does Not Compete",
-        "notes": "WH SIGNATURE, Zen's own canon move (not a Twelve/Dural copy). Description verbatim from canon-moves-needing-made-animations-2026-10-24.md: 'Stillness does not compete. A counter thrown from total stillness - he barely moved.' Limb/damage/startup quoted verbatim from that file (armL / 15 / 15f). Method there is ADAPT (blend/retarget a base row, then re-time to the canon description) \u2014 no existing row is claimed as its animation, so anim_status stays UNMAPPED until a MADE animation lands. Source ref: wh:zen:sig:does-not-compete.",
-        "sf_input": null,
-        "sf_source": null,
-        "startup": "15f"
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "zen_signature",
-        "damage": 16,
-        "display_input": "LP1+RP2",
-        "id": "refused-seat",
-        "input": "1+2",
-        "limb": "armR",
-        "move_class": "signature",
-        "name": "Refused Seat",
-        "notes": "WH SIGNATURE, Zen's own canon move. Description verbatim from canon-moves-needing-made-animations-2026-10-24.md: 'The still soul refused the trial - and showed up anyway. One strike, no wasted motion, no interest.' Limb/damage/startup quoted verbatim (armR / 16 / 17f). Method ADAPT there; no existing row claimed, so UNMAPPED until a MADE animation lands. Source ref: wh:zen:sig:refused-seat.",
-        "sf_input": null,
-        "sf_source": null,
-        "startup": "17f"
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "tentacle",
-        "display_input": "NEEDS-INPUT",
-        "id": "tentacle-pastel-ink",
-        "input": "NEEDS-INPUT",
-        "limb": null,
-        "move_class": "special",
-        "name": "Pastel ink blast",
-        "notes": "Tentacle Mode attack type, documented in roster/zen/CANON.md and RIG-NOTES.md: 'chromatic pastel attacks blasted from the tentacles \u2014 pastel ink, razor beams, waves \u2014 in the tentacles' pastel colors (blue / cyan / pink / green / purple)'. No named move and no input exists in the docs for this type, so the name is the doc phrase and the input is NEEDS-INPUT \u2014 never invented. Tentacle Mode only: NO Oversoul head attached in this mode.",
-        "sf_input": null,
-        "sf_source": null
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "tentacle",
-        "display_input": "NEEDS-INPUT",
-        "id": "tentacle-razor-beam",
-        "input": "NEEDS-INPUT",
-        "limb": null,
-        "move_class": "special",
-        "name": "Razor beam",
-        "notes": "Tentacle Mode attack type from the same canon passage as Pastel ink blast (pastel ink, razor beams, waves). No input in docs: NEEDS-INPUT. Tentacle Mode only.",
-        "sf_input": null,
-        "sf_source": null
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "tentacle",
-        "display_input": "NEEDS-INPUT",
-        "id": "tentacle-wave",
-        "input": "NEEDS-INPUT",
-        "limb": null,
-        "move_class": "special",
-        "name": "Pastel wave",
-        "notes": "Tentacle Mode attack type from the same canon passage (pastel ink, razor beams, waves). No input in docs: NEEDS-INPUT. Tentacle Mode only.",
-        "sf_input": null,
-        "sf_source": null
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "oversoul",
-        "display_input": "NEEDS-INPUT",
-        "id": "oversoul-attack",
-        "input": "NEEDS-INPUT",
-        "limb": null,
-        "move_class": "special",
-        "name": "Oversoul combined-form attack",
-        "notes": "Placeholder for the Oversoul form's kit \u2014 the docs name NO Oversoul attack, so no named move is invented here. Documented Oversoul facts (roster/zen/CANON.md): the spirit moves to the head position, TAKES THE PLACE OF THE HEAD, and the combined form manifests; NO body tentacles out (body tentacles stay imagery \u2014 protruding tentacles belong to Tentacle Mode only); head tentacles wiggle/flow; eyes move independently; wrist/elbow-to-shoulder-blade and hip/pelvis appendages flow like flames/ribbons. Input NEEDS-INPUT.",
-        "sf_input": null,
-        "sf_source": null
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "transformation",
-        "display_input": "TRANSFORM, up",
-        "id": "transform-tentacle",
-        "input": "TRANSFORM,up",
-        "limb": null,
-        "move_class": "special",
-        "name": "TENTACLE MANIFESTATION",
-        "notes": "Transformation, not an attack. Forms chain in game/js/roster-full.js (keyed on both 'zen' and 'zen-attire1'): base up -> zen-tentacle, powerMult 1.15, speedMult 1.0, defenseMult 1.05. Canon: clothing tentacle images become REAL tentacles busting out of him; NO Oversoul head in this mode; spirit floats higher and further back (+0.35 m up, +0.30 m back per RIG-NOTES.md).",
-        "sf_input": null,
-        "sf_source": null,
-        "trigger": "TRANSFORM touch button + full nine-soul meter, up (base -> zen-tentacle)"
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "transformation",
-        "display_input": "TRANSFORM, up",
-        "id": "transform-oversoul",
-        "input": "TRANSFORM,up",
-        "limb": null,
-        "move_class": "special",
-        "name": "OVERSOUL",
-        "notes": "Transformation, not an attack. Forms chain in roster-full.js: tentacle up -> zen-oversoul, powerMult 1.25, speedMult 1.05, defenseMult 1.15. Sequence per CANON.md: spirit moves to the head position and TAKES THE PLACE OF THE HEAD, then the combined form manifests.",
-        "sf_input": null,
-        "sf_source": null,
-        "trigger": "TRANSFORM touch button + full nine-soul meter, up (zen-tentacle -> zen-oversoul)"
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "transformation",
-        "display_input": "TRANSFORM, down",
-        "id": "transform-withdraw",
-        "input": "TRANSFORM,down",
-        "limb": null,
-        "move_class": "special",
-        "name": "WITHDRAW",
-        "notes": "Transformation, not an attack. Forms chain in roster-full.js: tentacle down -> zen-attire1, powerMult 0.87, speedMult 1.0, defenseMult 0.95.",
-        "sf_input": null,
-        "sf_source": null,
-        "trigger": "TRANSFORM touch button + full nine-soul meter, down (zen-tentacle -> zen-attire1)"
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "transformation",
-        "display_input": "TRANSFORM, down",
-        "id": "transform-release",
-        "input": "TRANSFORM,down",
-        "limb": null,
-        "move_class": "special",
-        "name": "OVERSOUL RELEASE",
-        "notes": "Transformation, not an attack. Forms chain in roster-full.js: oversoul down -> zen-tentacle, powerMult 0.8, speedMult 0.95, defenseMult 0.87.",
-        "sf_input": null,
-        "sf_source": null,
-        "trigger": "TRANSFORM touch button + full nine-soul meter, down (zen-oversoul -> zen-tentacle)"
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "spirit",
-        "display_input": "NEEDS-INPUT",
-        "id": "spirit-attack",
-        "input": "NEEDS-INPUT",
-        "limb": null,
-        "move_class": "special",
-        "name": "Spirit-form stand attack",
-        "notes": "Zen's spirit-form stand incorporated into attacks (roster/zen/CANON.md: the spirit is 'incorporated into attacks'; RIG-NOTES.md: 'he is INCORPORATED INTO ATTACKS somehow \u2014 the exact integration is the stand-system design work'). No named spirit attack and no input exists in the docs, so this entry is a NEEDS-INPUT placeholder, not a named canon move. The spirit itself: lemon-shaped octopus-looking entity, face + tentacles, NO arms, NO legs, floats a foot or two behind the spirit body over the RIGHT shoulder.",
-        "sf_input": null,
-        "sf_source": null
-      },
-      {
-        "anim_ref": null,
-        "anim_status": "UNMAPPED",
-        "category": "spirit",
-        "display_input": "NEEDS-INPUT",
-        "id": "spirit-side-switch",
-        "input": "NEEDS-INPUT",
-        "limb": null,
-        "move_class": "special",
-        "name": "Spirit side-switch",
-        "notes": "Spirit placement behaviour, not an attack (RIG-NOTES.md: the spirit 'SWITCHES SIDES sometimes (right shoulder <-> left shoulder)' while hovering behind the body; tentacles wiggle individually, mouth moves, eyes look around). No input in docs: NEEDS-INPUT. In Tentacle Mode the spirit sits higher and further back (+0.35 m up, +0.30 m back).",
-        "sf_input": null,
-        "sf_source": null
-      }
-    ],
-    "owner_quote_2026_10_24": "Zen's base is neither of those. Zen is like 11 and 12 but not just a copycat he has his own moves he has all these different things that go with him and to his character and his canon so his thing is completely built off of that and like a little bit of copy X but like not really copy X",
-    "sources": [
-      "SuperCombo Wiki, Street Fighter 3: 3rd Strike/Twelve/Archive \u2014 https://wiki.supercombo.gg/index.php?title=Street_Fighter_3:_3rd_Strike/Twelve/Archive&oldid=13553 (throws, command normals, specials, Super Arts, X.C.O.P.Y. limits)",
-      "Street Fighter Wiki, Eleven \u2014 https://streetfighter.fandom.com/wiki/Eleven (Eleven has no own moveset; morphs pre-match)",
-      "Video Game Characters Database, Dural \u2014 https://vgcdatabase.fandom.com/wiki/Dural (chrome humanoid, amalgam style, no published movelist)",
-      "roster/zen/CANON.md (Zen canon, transformation modes, fighting base, Dural base mix)",
-      "roster/zen/RIG-NOTES.md (spirit-form stand behaviour, Tentacle Mode attack design, Oversoul features)",
-      "game/js/roster-full.js Zen forms chain (transformation triggers and multipliers)",
-      "canon-moves-needing-made-animations-2026-10-24.md, ZEN section (Does Not Compete, Refused Seat \u2014 limb/damage/startup quoted verbatim)",
-      "docs/anim/VF5-DURAL-ANIM-GAP-20261023.md (Dural motion gap, sources-never-mixed rule)"
-    ],
-    "stance": "Dural's stance is Zen's stance (permanent base layer, owner 2026-10-22); Twelve's dancing idle stance is added ON TOP once converted 2D->3D. Stance itself is UNMAPPED until VF5 Dural motion is extracted.",
-    "version": "2026-10-24-decision"
-  },
-  "canon_moves": [
+  "bank": "UNMAPPED (game/js/fighter.js FIGHTER_BANK zen: null). No Dural bank exists in the repo (no game/assets/anim/vf5/, no 'dural' in t3anims.js SOURCE_TO_BANK) and no Twelve 2D->3D conversion exists, so NO animation in this section is playable yet. Every entry below has anim_ref null and anim_status UNMAPPED on purpose: the interim 639-move Heihachi rows in this file's 'moves' map are separate data and are NEVER mixed with this section (see docs/anim/VF5-DURAL-ANIM-GAP-20261023.md).",
+  "base_chain": "Eleven/Twelve (Street Fighter, 2D concept: shapeshifting mimicry) -> Dural (Virtua Fighter 5, 3D implementation: chrome humanoid, closest 3D thing to Eleven/Twelve) -> Zen's own canon moves on top. Owner rationale (2026-10-24): 'Dural was the closest thing to 10 or 11 in a 3D game, that's what it came down to'. Dural is the 3D stand-in for Eleven/Twelve, NOT a separate pick.",
+  "decision": "Zen = Eleven/Twelve/Dural + own canon, NOT Heihachi, NOT Julia",
+  "dural_note": "Dural (Virtua Fighter 5) has no officially published movelist; her style is an amalgamation of moves from several VF fighters (Video Game Characters Database, Dural). No specific VF5 Dural attack row is wired as a Zen move here — wiring VF5 rows as Zen moves would make Zen a copycat again. Dural's layer is stance + inhuman movement + amalgam principle, pending VF5 motion extraction (docs/anim/VF5-DURAL-ANIM-GAP-20261023.md).",
+  "eleven_note": "Eleven (Street Fighter V) has NO own moveset: before every SFV match it randomly morphs into another character and fights with that character's kit (Street Fighter Wiki, Eleven). Eleven therefore contributes ZERO distinct moves here — concept (mimicry) and 3D-form lineage only. Zen does NOT randomly morph; his only mimicry is X.C.O.P.Y. as ONE super below.",
+  "input_convention": "Inputs are Tekken-style (numbers 1=LP1, 2=RP2, 3=LK3, 4=RK4; display forms use LP1/RP2/LK3/RK4). SF inputs are quoted verbatim per move in sf_input. Frame data is NEVER invented: the SuperCombo Twelve frame-data tables were empty when read, so no startup/damage is claimed for Twelve moves. NEEDS-INPUT means the repo docs give no input for that move. NEEDS-SPEC means a binding choice below is provisional and needs owner/spec confirmation.",
+  "moves": [
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "twelve",
+      "display_input": "d, d/f, f+LP1",
+      "id": "ndl",
+      "input": "d,d/f,f+1",
+      "limb": null,
+      "move_class": "special",
+      "name": "N.D.L.",
+      "notes": "Twelve special. SF also has an EX version; no EX data is wired here (NEEDS-SPEC). SF 'P' is any punch; WH binding LP1 is provisional (NEEDS-SPEC). No frame data claimed: SuperCombo frame-data tables were empty.",
+      "sf_input": "D, DF, F + P",
+      "sf_source": "SuperCombo Wiki, Twelve/Archive, Special Moves"
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "twelve",
+      "display_input": "d, d/b, b+LP1",
+      "id": "axe",
+      "input": "d,d/b,b+1",
+      "limb": null,
+      "move_class": "special",
+      "name": "A.X.E.",
+      "notes": "Twelve special, ground version. SF 'P' is any punch; WH binding LP1 is provisional (NEEDS-SPEC). EX version exists in SF; not wired (NEEDS-SPEC).",
+      "sf_input": "D, DB, B + P",
+      "sf_source": "SuperCombo Wiki, Twelve/Archive, Special Moves"
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "twelve",
+      "display_input": "AIR.d, d/b, b+LP1",
+      "id": "axe-air",
+      "input": "AIR.d,d/b,b+1",
+      "limb": null,
+      "move_class": "special",
+      "name": "A.X.E. (Air)",
+      "notes": "Air variant of A.X.E., documented in the same SuperCombo row ('can also be done in air'). AIR prefix gives the editor a jumping slot context.",
+      "sf_input": "D, DB, B + P (can also be done in air)",
+      "sf_source": "SuperCombo Wiki, Twelve/Archive, Special Moves"
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "twelve",
+      "display_input": "AIR.d, d/b, b+LK3",
+      "id": "dra",
+      "input": "AIR.d,d/b,b+3",
+      "limb": "legL",
+      "move_class": "special",
+      "name": "D.R.A.",
+      "notes": "Twelve special, jumping only in SF. SF 'K' is any kick; WH binding LK3 (legL) is provisional (NEEDS-SPEC). EX version exists in SF; not wired (NEEDS-SPEC).",
+      "sf_input": "While jumping, D, DB, B + K",
+      "sf_source": "SuperCombo Wiki, Twelve/Archive, Special Moves"
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "twelve",
+      "display_input": "LP1+LK3",
+      "id": "hug",
+      "input": "1+3",
+      "limb": null,
+      "move_class": "throw",
+      "name": "H.U.G.",
+      "notes": "Twelve throw. LP1+LK3 is the standard Tekken throw input and the editor treats it as a grapple slot.",
+      "sf_input": "LP + LK",
+      "sf_source": "SuperCombo Wiki, Twelve/Archive, Throws"
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "twelve",
+      "display_input": "f+LP1+LK3",
+      "id": "flg",
+      "input": "f+1+3",
+      "limb": null,
+      "move_class": "throw",
+      "name": "F.L.G.",
+      "notes": "Twelve forward throw.",
+      "sf_input": "F + LP + LK",
+      "sf_source": "SuperCombo Wiki, Twelve/Archive, Throws"
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "twelve",
+      "display_input": "b+LP1+LK3",
+      "id": "trw",
+      "input": "b+1+3",
+      "limb": null,
+      "move_class": "throw",
+      "name": "T.R.W.",
+      "notes": "Twelve back throw.",
+      "sf_input": "B + LP + LK",
+      "sf_source": "SuperCombo Wiki, Twelve/Archive, Throws"
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "twelve",
+      "display_input": "b+LK3",
+      "id": "bmk",
+      "input": "b+3",
+      "limb": "legL",
+      "move_class": "strike",
+      "name": "B.M.K.",
+      "notes": "Twelve command normal. SF 'MK' is a medium kick with no left/right side; WH binding LK3 (legL) is provisional (NEEDS-SPEC).",
+      "sf_input": "B + MK",
+      "sf_source": "SuperCombo Wiki, Twelve/Archive, Command Normals"
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "twelve",
+      "display_input": "AIR.f, f",
+      "id": "kokkuu",
+      "input": "AIR.f,f",
+      "limb": null,
+      "move_class": "special",
+      "name": "Kokkuu",
+      "notes": "Twelve air-dash movement, not a strike. Alternate SF input AIR.b,b is the same move in the other direction.",
+      "sf_input": "In air, F, F or B, B",
+      "sf_source": "SuperCombo Wiki, Twelve/Archive, Command Normals"
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "twelve",
+      "display_input": "f",
+      "id": "kabe-haritsuki",
+      "input": "f",
+      "limb": null,
+      "move_class": "special",
+      "name": "Kabe Haritsuki",
+      "notes": "Twelve wall-cling movement, not a strike. The 'against wall, hold' condition is SF context, not part of the WH input string.",
+      "sf_input": "While against wall, hold F",
+      "sf_source": "SuperCombo Wiki, Twelve/Archive, Command Normals"
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "super",
+      "display_input": "d, d/f, f, d, d/f, f+LP1",
+      "id": "xndl",
+      "input": "d,d/f,f,d,d/f,f+1",
+      "limb": null,
+      "move_class": "special",
+      "name": "X.N.D.L.",
+      "notes": "Twelve Super Art I. WH meter mapping for SF '2 stocks' is NEEDS-SPEC. SF 'P' is any punch; WH binding LP1 is provisional (NEEDS-SPEC).",
+      "sf_input": "D, DF, F, D, DF, F + P (Super Art I, 2 stocks)",
+      "sf_source": "SuperCombo Wiki, Twelve/Archive, Super Arts"
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "super",
+      "display_input": "AIR.d, d/f, f, d, d/f, f+RK4",
+      "id": "xflat",
+      "input": "AIR.d,d/f,f,d,d/f,f+4",
+      "limb": "legR",
+      "move_class": "special",
+      "name": "X.F.L.A.T.",
+      "notes": "Twelve Super Art II, jumping only. Name correction: the task brief wrote 'X.FLAT'; the SF name is X.F.L.A.T. (recorded here, not silently renamed). SF 'K' is any kick; WH binding RK4 (legR) is provisional (NEEDS-SPEC). WH meter mapping for '1 stock' is NEEDS-SPEC.",
+      "sf_input": "While jumping, D, DF, F, D, DF, F + K (Super Art II, 1 stock)",
+      "sf_source": "SuperCombo Wiki, Twelve/Archive, Super Arts"
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "xcopy",
+      "display_input": "d, d/f, f, d, d/f, f+LP1+RP2",
+      "id": "xcopy",
+      "input": "d,d/f,f,d,d/f,f+1+2",
+      "limb": null,
+      "move_class": "special",
+      "name": "X.C.O.P.Y.",
+      "notes": "ONE super only — NOT Zen's identity, NOT every move. Effect: Zen becomes a copy of the opponent briefly (owner-chosen ability, roster/zen/CANON.md). Documented SF limit, quoted from SuperCombo: 'X.C.O.P.Y. does not offer Twelve the ability to execute his opponent's EX and super moves.' WH duration and meter mapping are NEEDS-SPEC. Tekken-style super input: double quarter-circle-forward + LP1+RP2.",
+      "sf_input": "D, DF, F, D, DF, F + P (Super Art III, 1 stock)",
+      "sf_source": "SuperCombo Wiki, Twelve/Archive, Super Arts"
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "zen_signature",
+      "damage": 15,
+      "display_input": "b+LP1+RP2",
+      "id": "does-not-compete",
+      "input": "b+1+2",
+      "limb": "armL",
+      "move_class": "signature",
+      "name": "Does Not Compete",
+      "notes": "WH SIGNATURE, Zen's own canon move (not a Twelve/Dural copy). Description verbatim from canon-moves-needing-made-animations-2026-10-24.md: 'Stillness does not compete. A counter thrown from total stillness - he barely moved.' Limb/damage/startup quoted verbatim from that file (armL / 15 / 15f). Method there is ADAPT (blend/retarget a base row, then re-time to the canon description) — no existing row is claimed as its animation, so anim_status stays UNMAPPED until a MADE animation lands. Source ref: wh:zen:sig:does-not-compete.",
+      "sf_input": null,
+      "sf_source": null,
+      "startup": "15f"
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "zen_signature",
+      "damage": 16,
+      "display_input": "LP1+RP2",
+      "id": "refused-seat",
+      "input": "1+2",
+      "limb": "armR",
+      "move_class": "signature",
+      "name": "Refused Seat",
+      "notes": "WH SIGNATURE, Zen's own canon move. Description verbatim from canon-moves-needing-made-animations-2026-10-24.md: 'The still soul refused the trial - and showed up anyway. One strike, no wasted motion, no interest.' Limb/damage/startup quoted verbatim (armR / 16 / 17f). Method ADAPT there; no existing row claimed, so UNMAPPED until a MADE animation lands. Source ref: wh:zen:sig:refused-seat.",
+      "sf_input": null,
+      "sf_source": null,
+      "startup": "17f"
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "tentacle",
+      "display_input": "NEEDS-INPUT",
+      "id": "tentacle-pastel-ink",
+      "input": "NEEDS-INPUT",
+      "limb": null,
+      "move_class": "special",
+      "name": "Pastel ink blast",
+      "notes": "Tentacle Mode attack type, documented in roster/zen/CANON.md and RIG-NOTES.md: 'chromatic pastel attacks blasted from the tentacles — pastel ink, razor beams, waves — in the tentacles' pastel colors (blue / cyan / pink / green / purple)'. No named move and no input exists in the docs for this type, so the name is the doc phrase and the input is NEEDS-INPUT — never invented. Tentacle Mode only: NO Oversoul head attached in this mode.",
+      "sf_input": null,
+      "sf_source": null
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "tentacle",
+      "display_input": "NEEDS-INPUT",
+      "id": "tentacle-razor-beam",
+      "input": "NEEDS-INPUT",
+      "limb": null,
+      "move_class": "special",
+      "name": "Razor beam",
+      "notes": "Tentacle Mode attack type from the same canon passage as Pastel ink blast (pastel ink, razor beams, waves). No input in docs: NEEDS-INPUT. Tentacle Mode only.",
+      "sf_input": null,
+      "sf_source": null
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "tentacle",
+      "display_input": "NEEDS-INPUT",
+      "id": "tentacle-wave",
+      "input": "NEEDS-INPUT",
+      "limb": null,
+      "move_class": "special",
+      "name": "Pastel wave",
+      "notes": "Tentacle Mode attack type from the same canon passage (pastel ink, razor beams, waves). No input in docs: NEEDS-INPUT. Tentacle Mode only.",
+      "sf_input": null,
+      "sf_source": null
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "oversoul",
+      "display_input": "NEEDS-INPUT",
+      "id": "oversoul-attack",
+      "input": "NEEDS-INPUT",
+      "limb": null,
+      "move_class": "special",
+      "name": "Oversoul combined-form attack",
+      "notes": "Placeholder for the Oversoul form's kit — the docs name NO Oversoul attack, so no named move is invented here. Documented Oversoul facts (roster/zen/CANON.md): the spirit moves to the head position, TAKES THE PLACE OF THE HEAD, and the combined form manifests; NO body tentacles out (body tentacles stay imagery — protruding tentacles belong to Tentacle Mode only); head tentacles wiggle/flow; eyes move independently; wrist/elbow-to-shoulder-blade and hip/pelvis appendages flow like flames/ribbons. Input NEEDS-INPUT.",
+      "sf_input": null,
+      "sf_source": null
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "transformation",
+      "display_input": "TRANSFORM, up",
+      "id": "transform-tentacle",
+      "input": "TRANSFORM,up",
+      "limb": null,
+      "move_class": "special",
+      "name": "TENTACLE MANIFESTATION",
+      "notes": "Transformation, not an attack. Forms chain in game/js/roster-full.js (keyed on both 'zen' and 'zen-attire1'): base up -> zen-tentacle, powerMult 1.15, speedMult 1.0, defenseMult 1.05. Canon: clothing tentacle images become REAL tentacles busting out of him; NO Oversoul head in this mode; spirit floats higher and further back (+0.35 m up, +0.30 m back per RIG-NOTES.md).",
+      "sf_input": null,
+      "sf_source": null,
+      "trigger": "TRANSFORM touch button + full nine-soul meter, up (base -> zen-tentacle)"
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "transformation",
+      "display_input": "TRANSFORM, up",
+      "id": "transform-oversoul",
+      "input": "TRANSFORM,up",
+      "limb": null,
+      "move_class": "special",
+      "name": "OVERSOUL",
+      "notes": "Transformation, not an attack. Forms chain in roster-full.js: tentacle up -> zen-oversoul, powerMult 1.25, speedMult 1.05, defenseMult 1.15. Sequence per CANON.md: spirit moves to the head position and TAKES THE PLACE OF THE HEAD, then the combined form manifests.",
+      "sf_input": null,
+      "sf_source": null,
+      "trigger": "TRANSFORM touch button + full nine-soul meter, up (zen-tentacle -> zen-oversoul)"
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "transformation",
+      "display_input": "TRANSFORM, down",
+      "id": "transform-withdraw",
+      "input": "TRANSFORM,down",
+      "limb": null,
+      "move_class": "special",
+      "name": "WITHDRAW",
+      "notes": "Transformation, not an attack. Forms chain in roster-full.js: tentacle down -> zen-attire1, powerMult 0.87, speedMult 1.0, defenseMult 0.95.",
+      "sf_input": null,
+      "sf_source": null,
+      "trigger": "TRANSFORM touch button + full nine-soul meter, down (zen-tentacle -> zen-attire1)"
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "transformation",
+      "display_input": "TRANSFORM, down",
+      "id": "transform-release",
+      "input": "TRANSFORM,down",
+      "limb": null,
+      "move_class": "special",
+      "name": "OVERSOUL RELEASE",
+      "notes": "Transformation, not an attack. Forms chain in roster-full.js: oversoul down -> zen-tentacle, powerMult 0.8, speedMult 0.95, defenseMult 0.87.",
+      "sf_input": null,
+      "sf_source": null,
+      "trigger": "TRANSFORM touch button + full nine-soul meter, down (zen-oversoul -> zen-tentacle)"
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "spirit",
+      "display_input": "NEEDS-INPUT",
+      "id": "spirit-attack",
+      "input": "NEEDS-INPUT",
+      "limb": null,
+      "move_class": "special",
+      "name": "Spirit-form stand attack",
+      "notes": "Zen's spirit-form stand incorporated into attacks (roster/zen/CANON.md: the spirit is 'incorporated into attacks'; RIG-NOTES.md: 'he is INCORPORATED INTO ATTACKS somehow — the exact integration is the stand-system design work'). No named spirit attack and no input exists in the docs, so this entry is a NEEDS-INPUT placeholder, not a named canon move. The spirit itself: lemon-shaped octopus-looking entity, face + tentacles, NO arms, NO legs, floats a foot or two behind the spirit body over the RIGHT shoulder.",
+      "sf_input": null,
+      "sf_source": null
+    },
+    {
+      "anim_ref": null,
+      "anim_status": "UNMAPPED",
+      "category": "spirit",
+      "display_input": "NEEDS-INPUT",
+      "id": "spirit-side-switch",
+      "input": "NEEDS-INPUT",
+      "limb": null,
+      "move_class": "special",
+      "name": "Spirit side-switch",
+      "notes": "Spirit placement behaviour, not an attack (RIG-NOTES.md: the spirit 'SWITCHES SIDES sometimes (right shoulder <-> left shoulder)' while hovering behind the body; tentacles wiggle individually, mouth moves, eyes look around). No input in docs: NEEDS-INPUT. In Tentacle Mode the spirit sits higher and further back (+0.35 m up, +0.30 m back).",
+      "sf_input": null,
+      "sf_source": null
+    }
+  ],
+  "owner_quote_2026_10_24": "Zen's base is neither of those. Zen is like 11 and 12 but not just a copycat he has his own moves he has all these different things that go with him and to his character and his canon so his thing is completely built off of that and like a little bit of copy X but like not really copy X",
+  "sources": [
+    "SuperCombo Wiki, Street Fighter 3: 3rd Strike/Twelve/Archive — https://wiki.supercombo.gg/index.php?title=Street_Fighter_3:_3rd_Strike/Twelve/Archive&oldid=13553 (throws, command normals, specials, Super Arts, X.C.O.P.Y. limits)",
+    "Street Fighter Wiki, Eleven — https://streetfighter.fandom.com/wiki/Eleven (Eleven has no own moveset; morphs pre-match)",
+    "Video Game Characters Database, Dural — https://vgcdatabase.fandom.com/wiki/Dural (chrome humanoid, amalgam style, no published movelist)",
+    "roster/zen/CANON.md (Zen canon, transformation modes, fighting base, Dural base mix)",
+    "roster/zen/RIG-NOTES.md (spirit-form stand behaviour, Tentacle Mode attack design, Oversoul features)",
+    "game/js/roster-full.js Zen forms chain (transformation triggers and multipliers)",
+    "canon-moves-needing-made-animations-2026-10-24.md, ZEN section (Does Not Compete, Refused Seat — limb/damage/startup quoted verbatim)",
+    "docs/anim/VF5-DURAL-ANIM-GAP-20261023.md (Dural motion gap, sources-never-mixed rule)"
+  ],
+  "stance": "Dural's stance is Zen's stance (permanent base layer, owner 2026-10-22); Twelve's dancing idle stance is added ON TOP once converted 2D->3D. Stance itself is UNMAPPED until VF5 Dural motion is extracted.",
+  "version": "2026-10-24-decision"
+}
+,
+  "canon_moves":   [
     {
       "name": "Does Not Compete",
       "input": "b+1+2",
@@ -21483,13 +21484,13 @@
       "wiring": "existing entry"
     }
   ],
-  "canon_wiring": {
+  "canon_wiring":   {
     "wired": "2026-10-24",
     "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
     "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
     "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
   },
-  "dural_layer": {
+  "dural_layer":   {
     "DURAL:Rapid Mode:001:Jab": {
       "name": "Dural Jab",
       "vf_input": "P",
@@ -29057,7 +29058,7 @@
       "notes": "Sober 3."
     }
   },
-  "twelve_layer": {
+  "twelve_layer":   {
     "N.D.L.": {
       "name": "N.D.L.",
       "input": "f, d, d/f+LP1",
