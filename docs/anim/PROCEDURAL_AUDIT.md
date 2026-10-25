@@ -236,3 +236,35 @@ trailing ~t[378] source-variant suffix): kinpo Batch 2 contains ZERO input-~ can
 the file's only old-vs-corrected diff, 3~4,D/F, is NOT Batch 2 scope (steps 3~4 + D/F; D/F
 buttonless -> rest/Batch 4 scope). T8-sourced prefixes with no T3 row get their correct
 clips from #988 Step 2 (original T8 refs), never from a T3 row recorded as correct.
+## Kinpo Batch 3 (mixed-pair strings, 2026-10-25) — T3 FALLBACK, not the correct mapping
+
+21 canonicals (19 pure + 2 chord-involved: b+1+4,4, db+4,1+4) + 27 twins =
+48 plan keys, added to the existing 67-key block (47 Batch 1 + 20 Batch 2,
+all deep-equal). Pair split: {LP1,LK3} 6, {LP1,RK4} 11, {RP2,LK3} 2,
+{RP2,RK4} 2. Contexts: standing 14, crouch 5, ws 2, jump 0. Provenance: 19
+in main moves, 2 quarantined-only (1,1,3, db+1,4 — live when #988 merges).
+Steps: 44 planned, 2 verified / 1 review / 41 unmapped (3 suspended-drift
++ 6 rejected-candidate + 32 no-candidate). Verified rows (2 distinct, all
+baked in main's jin pack AND the Batch 2 branch pack): 220 (2,3 step 1,
+prefix-move own row, Job 2 CLEAN, standing RP2) and 195 (3,1 step 1,
+prefix-move own row, Job 2 CLEAN, standing LK3). NO verified-last-step
+plan keys — Batch 3 wires first steps only. Review: 4,1 step 1 candidate
+199 held (SOFT limb-peak proxy fail, window [3.5,7.5], legR peak 3).
+Suspended-drift: 1,1,3 / 1,3 / 1,4 step 1 (prefix move 1 ROW-CHANGED
+35->None; stale row 35 documented, never wired). Rejected-candidate: 4,1
+step 2 row 184 (button 9 != step bits 1 — chord row for a single LP1
+step); d/f+1,3 + d/f+1,4 step 1 row 179, d/f+1,3 step 2 row 197, d/f+1,4
+step 2 + df+1,4 step 2 row 204, all airborne jump rows. Job 3 fills wired:
+0 (4 report entries: rows 92/105 exact ROW-ONLY for prefix 1, plus
+suspension blocks fills; rows 92/105 soft-nofiled ROW-ONLY for 3,1 — no
+agreement note fires, since no exact+FULL candidate disagrees with a
+wired gate candidate). Job 4 joins: 4, all REJECTED (rows 179/197/204
+airborne), 0 promoting. Orphans: jin rows 85, 91, 99, 100, 104, 127, 170,
+171, 172, 209, 216, 226, 239, 250, 256, 262 (same set as Batches 1-2).
+Canonicalization is the CORRECTED rule (strip only a trailing
+~t[378] source-variant suffix): kinpo Batch 3 contains ZERO input-~
+canonicals; the file's only old-vs-corrected diff, 3~4,D/F, is NOT Batch
+3 scope (steps 3~4 + D/F; D/F buttonless -> rest/Batch 4 scope).
+T8-sourced prefixes with no T3 row get their correct clips from #988 Step
+2 (original T8 refs), never from a T3 row recorded as correct.
+
