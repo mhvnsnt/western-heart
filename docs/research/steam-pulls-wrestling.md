@@ -19,7 +19,7 @@ Frame data / MOD damage: UNMAPPED unless a source file in the pack contains it �
 as measured. License firewall OFF per user override: pull everything regardless of license,
 document copyleft, never block — but that override does not create game files that do not exist here.
 
-Partition: this PR touches NEW files under `game/assets/pulls/<game>/` + `docs/research/` only.
+Partition: this PR touches NEW files under `docs/research/pulls/<game>/` + `docs/research/` only.
 Existing moveset banks and lane-owned files are NOT edited; where a bank already exists, the pack
 is a wire note for the owning lane.
 
@@ -39,7 +39,7 @@ is a wire note for the owning lane.
 ## Creation-suite complaint — direct answer
 
 User complaint: the suite still uses a Mixamo soldier and has no real WWE 2K / No Mercy /
-WrestleMania XIX templates. This PR's answer is `game/assets/pulls/creation-suite/wwe2k-firepro-template.json`:
+WrestleMania XIX templates. This PR's answer is `docs/research/pulls/creation-suite/wwe2k-firepro-template.json`:
 four template schemas (WWE 2K CAW, No Mercy CAW, Fire Pro edit + Move Craft, Wrestling Empire
 editable defaults) with slots and attribute axes, plus the rule that the suite's default fighter
 MUST be one of these templates, NEVER the Mixamo soldier. Implementation belongs to the
