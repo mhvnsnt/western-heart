@@ -39,9 +39,10 @@ The schema is **additive over the v2 moveset-editor contract** (`docs/movesets/M
 | `wmxix` | WWE WrestleMania XIX YANM clips | 169 | provisional labels — per-clip identity pending hash-set mapping |
 | `doa` | DOA federation conversions (6 chars) | 146 | Tekken-notation federation rule applied |
 | `vf` | VF federation conversions (akira/sarah/kage) | 48 | same |
-| **pending** | vf5, t7, ttt2, t6, soulcalibur, urban_reign, bloody_roar, sf, def_jam | 0 | registered in index.json with status; vf5 format contract in `docs/handoffs/moveset-library-vf5-format.md` |
+| `vf5` | VF5 federation conversions: vf-elblaze (28), vf-jeffry (25), vf-wolf (21), vf-leifei (22) — VF5 PS3 community movelists, Tekken notation | 96 | **live** — seeded from `game/assets/movesets/vf-*.json` (another lane); worker 45's motion extraction may extend/replace rows |
+| **pending** | vf5-motion, t7, ttt2, t6, soulcalibur, urban_reign, bloody_roar, sf, def_jam | 0 | registered in index.json with status |
 
-**Total: 9,420 moves.**
+**Total: 9,516 moves.**
 
 ## Assembly model
 
@@ -65,12 +66,12 @@ A per-fighter manifest (`game/data/movesets/<fighter>.json`, `schema_version: 3`
 
 ## Pre-assembled fighters (locked Ashlane→VF5)
 
-| Fighter | Base (pending vf5) | Overlay (real library moves, resolvable now) |
+| Fighter | Base (live vf5 bank) | Overlay (real library moves) |
 |---|---|---|
-| **bannon** | vf5 jeffry | T3 Ogre heavies (r54, r57 — True Ogre FREE), Oklahoma Slam |
-| **el-toro** | vf5 wolf | Asai Moonsault (one clean aerial — cleaner than Pablo), Super Powerbomb Pin 02 |
-| **pablo** | vf5 el-blaze | Powerhouse (Oklahoma Slam, Brainbuster, Ogre r54) + comedy lucha attempts (Frog Splash, Shooting Star Press, Diving Moonsault — `comedy-whiff-candidate`) + dark thread (Black Reign Ride = Last Ride, Abyss Choke = Chokeslam from Hell — `dark-finisher`) |
-| **npc-finxsse** | vf5 lei-fei | Counter-punch defensive answer (Lei-Fei's counter game) |
+| **bannon** | vf5 jeffry (25) | T3 Ogre heavies (r54, r57 — True Ogre FREE), Oklahoma Slam → **28** |
+| **el-toro** | vf5 wolf (21) | Asai Moonsault (one clean aerial — cleaner than Pablo), Super Powerbomb Pin 02 → **23** |
+| **pablo** | vf5 el-blaze (28) | Powerhouse (Oklahoma Slam, Brainbuster, Ogre r54) + comedy lucha attempts (Frog Splash, Shooting Star Press, Diving Moonsault — `comedy-whiff-candidate`) + dark thread (Black Reign Ride = Last Ride, Abyss Choke = Chokeslam from Hell — `dark-finisher`) → **36** |
+| **npc-finxsse** | vf5 lei-fei (22) | Counter-punch defensive answer (Lei-Fei's counter game) → **23** |
 
 Pablo flavor (owner-locked, refined 2026-10-22): big/fat powerhouse who TRIES to be aerial — wants to be athletic, attempts lucha flyer moves anyway; comedy + heart (Goldust does the same thing). Underneath: Goldust theatricality mixed with dark Black Reign/Abyss/Mankind energy — disturbed masked darkness (matches his PABLO_blackreign variant). El Toro: powerhouse with slight aerial — lands his, the straight man to Pablo's comedy.
 
@@ -84,6 +85,6 @@ Pablo flavor (owner-locked, refined 2026-10-22): big/fat powerhouse who TRIES to
 ## Open items / not duplicating
 
 - **#615 Tekken fidelity engine (merged):** owns runtime input→move fidelity + PSX controls. The library feeds it data; it does not reimplement the engine. T3 per-row input decode is its lane — library entries carry `input: null` + raw words until then.
-- **Worker 45 (VF5 extraction):** format contract in `docs/handoffs/moveset-library-vf5-format.md` — read-only alignment, no edits to their lane.
+- **Worker 45 (VF5 extraction) + the VF5 federation lane:** the `vf5` bank is seeded live from `game/assets/movesets/vf-{elblaze,jeffry,wolf,leifei}.json` (VF5 PS3 community-movelist federation conversions, Tekken notation — another lane's work, reused read-only). Format contract in `docs/handoffs/moveset-library-vf5-format.md` — worker 45's motion extraction may extend/replace rows; no files of theirs touched.
 - **T7/TTT2/T6/Soulcalibur/Urban Reign/Bloody Roar/SF/Def Jam:** banks registered as pending; ingest extends by adding a function + bank entry.
 - **Creation suite moveset tab:** browser is standalone; wiring it into the suite is a follow-up that touches another lane's UI — documented, not done here.

@@ -3,10 +3,10 @@
 ## What was built
 Central, organized moveset/animation library + per-fighter assembly system, per the owner's standing directive (MOVESET LIBRARY SYSTEM, 2026-10-22).
 
-- **Library: 9,420 moves, 5 live banks** (`game/data/moveset-library/`): Tekken 3 (4,648 damaging rows, 20 banks), WWF No Mercy mat-kings (4,409 named moves, Tekken inputs wired), WMXIX (169 clips), DOA federation (146), VF federation (48). 9 more banks registered as pending (vf5, t7, ttt2, t6, soulcalibur, urban_reign, bloody_roar, sf, def_jam).
+- **Library: 9,516 moves, 6 live banks** (`game/data/moveset-library/`): Tekken 3 (4,648 damaging rows, 20 banks), WWF No Mercy mat-kings (4,409 named moves, Tekken inputs wired), WMXIX (169 clips), DOA federation (146), VF federation (48), **VF5 federation (96 — vf-elblaze/jeffry/wolf/leifei, live base kits)**. 8 more banks registered as pending (vf5-motion, t7, ttt2, t6, soulcalibur, urban_reign, bloody_roar, sf, def_jam).
 - **Organization axes** (`axes.json`): type / position / orientation / hit_level / properties / Tekken input / frames / damage — every entry tagged, every estimate flagged in `provenance.estimated`.
 - **Assembler** (`game/js/moveset-library.js`): manifest → v2-contract moveset (same shape `game/js/movesets.js` reads). Enforces the **moveset source law in code** (`claimed-map.json`): refuses pulls from claimed Tekken fighters (tested: `t3:king:row:100` refused — claimed by Pantera; `t3:ogre:row:54` allowed — True Ogre FREE).
-- **Per-fighter manifests** (`game/data/movesets/`): reference library IDs, never copy. Pre-assembled the four locked Ashlane→VF5 mappings: **bannon** (vf5 jeffry + Ogre heavies), **el-toro** (vf5 wolf + one clean Asai Moonsault — cleaner aerials than Pablo), **pablo** (vf5 el-blaze + powerhouse + comedy lucha attempts + dark finishers), **npc-finxsse** (vf5 lei-fei + counter-punch). VF5 bases resolve automatically when worker 45's bank lands.
+- **Per-fighter manifests** (`game/data/movesets/`): reference library IDs, never copy. The four locked Ashlane→VF5 mappings assemble against the LIVE vf5 bank: **bannon** 28 moves (vf5 jeffry 25 + Ogre heavies/Oklahoma Slam), **el-toro** 23 (vf5 wolf 21 + clean Asai Moonsault + Super Powerbomb), **pablo** 36 (vf5 el-blaze 28 + powerhouse + comedy-whiff lucha attempts + Black Reign Ride / Abyss Choke dark thread), **npc-finxsse** 23 (vf5 lei-fei 22 + counter-punch).
 - **UI** (`game/moveset-browser.html`): browse 9,420 moves by axis, inspect (input notation preview, frames, provenance, estimated flags), attach/detach to a fighter, rename overrides, live source-law check, save (download + localStorage).
 
 ## Pablo canon (locked, applied in `game/data/movesets/pablo.json`)
@@ -21,6 +21,6 @@ Big/fat powerhouse who TRIES to be aerial — wants to be athletic, attempts luc
 
 ## Proof
 - `node --check` clean on all three JS files.
-- Ingest run: 9,420 entries, 0 schema/type violations; all 9,420 carry estimated-field flags.
-- Assembler CLI: pablo 8 moves / bannon 3 / el-toro 2 / npc-finxsse 1, all source-law clean, vf5 bases honestly pending.
+- Ingest run: 9,516 entries, 0 schema/type violations; all 9,516 carry estimated-field flags.
+- Assembler CLI: pablo 36 moves / bannon 28 / el-toro 23 / npc-finxsse 23, all source-law clean, vf5 bases live (no pending banks).
 - Source-law unit check: claimed pull refused, free pull allowed (see above).

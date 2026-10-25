@@ -1,1 +1,35 @@
+<<<<<<< 547a13642a84bfffef4dd2d695d00ca2d44cce3c
+{
+ "assembly_notes": "User-locked 2026-10-22 15:19 CDT: NPC Finxsse -> Lei-Fei (VF5). Lei-Fei is a stance/counter technician; the overlay is a single honest counter-punch so Finxsse has a defensive answer while the VF5 bank is pending (worker 45).",
+ "assembly_version": 2,
+ "base": {
+  "bank": "vf5",
+  "character": "lei-fei",
+  "status": "live",
+  "note": "VF5 Lei-Fei federation kit (vf-leifei.json, 22 moves) — stance/counter base."
+ },
+ "claimed_map": "game/data/moveset-library/claimed-map.json",
+ "display": "NPC Finxsse",
+ "fighter": "npc-finxsse",
+ "library": "game/data/moveset-library/index.json",
+ "moves": [
+  {
+   "library_id": "wrestling:mk-2254",
+   "note": "Counter-punch defensive answer — fits Lei-Fei's counter/stance game while the VF5 bank is pending.",
+   "slot": "b+2"
+  }
+ ],
+ "schema_version": 3,
+ "source_law_check": {
+  "exception": null,
+  "note": "VF5 Lei-Fei is not a claimed Tekken fighter.",
+  "passed": true,
+  "sources": [
+   "vf5:lei-fei (VF5, unclaimed)",
+   "wrestling (No Mercy, federation)"
+  ]
+ }
+}
+=======
 {"assembly_notes":"User-locked 2026-10-22 15:19 CDT: NPC Finxsse -> Lei-Fei (VF5). Lei-Fei is a stance/counter technician; the overlay is a single honest counter-punch so Finxsse has a defensive answer while the VF5 bank is pending (worker 45).","assembly_version":1,"base":{"bank":"vf5","character":"lei-fei","note":"VF5 Lei-Fei full kit expected as vf5:lei-fei:<slug> entries.","status":"pending-bank"},"claimed_map":"game/data/moveset-library/claimed-map.json","display":"NPC Finxsse","fighter":"npc-finxsse","library":"game/data/moveset-library/index.json","moves":[{"library_id":"wrestling:mk-2254","note":"Counter-punch defensive answer — fits Lei-Fei's counter/stance game while the VF5 bank is pending.","slot":"b+2"}],"schema_version":3,"source_law_check":{"exception":null,"note":"VF5 Lei-Fei is not a claimed Tekken fighter.","passed":true,"sources":["vf5:lei-fei (VF5, unclaimed)","wrestling (No Mercy, federation)"]}}
+>>>>>>> d95250df

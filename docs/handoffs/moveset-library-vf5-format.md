@@ -45,7 +45,7 @@ Entry fields (full schema: `game/data/moveset-library/schema.json`):
 
 `jeffry` (Bannon), `wolf` (El Toro de Oro), `el-blaze` (Pablo), `lei-fei` (NPC Finxsse).
 
-The four manifests in `game/data/movesets/` declare `"base": {"bank": "vf5", "character": "<name>", "status": "pending-bank"}`. The assembler (`game/js/moveset-library.js`) picks up every `vf5:<character>:*` entry automatically once the bank file exists — no manifest changes needed on your side. If your fighter slugs differ from the four names above, tell me and I'll update the manifests (my lane).
+**Update 2026-10-22:** the bank is SEEDED LIVE from `game/assets/moveset-library` federation conversions — `game/assets/movesets/vf-{elblaze,jeffry,wolf,leifei}.json` (VF5 PS3 community movelists, Tekken notation, v2 contract). The library ingests them as `vf5:<fighter>:<slot>` entries (96 moves). The four manifests in `game/data/movesets/` declare `"base": {"bank": "vf5", "character": "<name>", "status": "live"}` and the assembler resolves the base kits automatically — no manifest changes needed on your side. If your extraction supersedes these rows, keep the `vf5:<fighter>:<slug>` ID namespace so manifests keep resolving. If your fighter slugs differ from the four names above, tell me and I'll update the manifests (my lane).
 
 ## Ingest hook
 

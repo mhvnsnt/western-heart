@@ -141,8 +141,23 @@ function toV2Move(entry, slot, overrides = {}) {
   return move;
 }
 
+<<<<<<< 547a13642a84bfffef4dd2d695d00ca2d44cce3c
+/* Fighters such as DEMONIO ship a complete kit in game/assets/movesets/
+   (the runtime path movesets.js uses) and have no library manifest in
+   game/data/movesets/. Fall back to the assets kit instead of failing. */
+const ASSET_KIT_ROOT = 'game/assets/movesets';
+
+export async function loadManifest(fighter, opts = {}) {
+  try {
+    return await fetchJson(`${MANIFEST_ROOT}/${fighter}.json`, opts.root || null);
+  } catch (e) {
+    const kit = await fetchJson(`${ASSET_KIT_ROOT}/${fighter}.json`, opts.root || null);
+    return { ...kit, _assetKit: true };
+  }
+=======
 export async function loadManifest(fighter, opts = {}) {
   return fetchJson(`${MANIFEST_ROOT}/${fighter}.json`, opts.root || null);
+>>>>>>> d95250df
 }
 
 /* ---- assemble one fighter ---- */
@@ -150,6 +165,15 @@ export async function assembleFighter(fighter, opts = {}) {
   const lib = await loadLibrary(opts);
   const claimed = await loadClaimedMap(opts);
   const manifest = typeof fighter === 'string' ? await loadManifest(fighter, opts) : fighter;
+<<<<<<< 547a13642a84bfffef4dd2d695d00ca2d44cce3c
+  if (manifest && manifest._assetKit && manifest.moves && !Array.isArray(manifest.moves)) {
+    // Already a full schema-v3 kit (game/assets/movesets) — nothing to assemble.
+    const { _assetKit, ...kit } = manifest;
+    return { ...kit, pending: [], unresolved: [],
+      report: { fighter: kit.fighter, display: kit.display, assembled: Object.keys(kit.moves).length, source: `${ASSET_KIT_ROOT}/${kit.fighter}.json` } };
+  }
+=======
+>>>>>>> d95250df
 
   const law = checkSourceLaw(manifest, claimed);
   const moves = {};
@@ -163,8 +187,14 @@ export async function assembleFighter(fighter, opts = {}) {
     if (!bankKnown) {
       pending.push({ bank: base.bank, character: base.character, status: base.status || 'pending', note: base.note || '' });
     } else {
+<<<<<<< 547a13642a84bfffef4dd2d695d00ca2d44cce3c
+      const prefix = `${base.bank}:${base.character}:`.toLowerCase();
+      for (const m of lib.banks[base.bank].moves) {
+        if (base.character && !m.id.toLowerCase().startsWith(prefix)) continue;
+=======
       for (const m of lib.banks[base.bank].moves) {
         if (base.character && m.source_character && m.source_character.toLowerCase() !== String(base.character).toLowerCase()) continue;
+>>>>>>> d95250df
         if (m.input && !moves[m.input]) moves[m.input] = toV2Move(m, m.input);
       }
     }

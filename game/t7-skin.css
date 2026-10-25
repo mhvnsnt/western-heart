@@ -1,0 +1,69 @@
+/* T7 UI skin (Tekken 7 Steam teardown, PR #863: pakchunk0/textures/UI_common/flash/).
+   Layout + colour values are measured from the T7 textures and recorded in
+   teardown/tekken7-steam-ui/T7-UI-LAYOUT.md. PUBLIC build: everything below is drawn
+   with CSS (no Namco pixels ship). PRIVATE build (globalThis.__WH_PRIVATE_ASSETS):
+   js/t7-ui-private.js sets the --t7-* url() vars to the real textures copied into
+   game/assets/private/t7-ui/ and they layer over the CSS-drawn equivalents. */
+:root {
+  --t7-red: #e0182a; --t7-red-glow: rgba(255, 40, 50, .55);
+  --t7-blue: #1a8cff; --t7-blue-glow: rgba(40, 150, 255, .55);
+  --t7-navy: #121a2c; --t7-ink: #05070c;
+  /* Panel gradient sampled from InfoRed_Base / RedPanel_Base: navy top -> black bottom */
+  --t7-panel: linear-gradient(180deg, #1b2740 0%, #0d1322 55%, #04060a 100%);
+}
+/* ---------- MAIN MENU: T7 vertical list (dark glass rows, red highlight bar) ---------- */
+#screen-menu.mm .mm-list .mm-item {
+  background-color: transparent !important;
+  background-image: var(--t7-menu-base, none), linear-gradient(90deg, rgba(18,26,44,.92), rgba(5,7,12,.78));
+  background-size: cover; border: 1px solid rgba(120,140,180,.22); border-left: 4px solid transparent;
+  border-radius: 2px; clip-path: polygon(0 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+}
+#screen-menu.mm .mm-list .mm-item:hover, #screen-menu.mm .mm-list .mm-item:focus-visible, #screen-menu.mm .mm-list .mm-item.kb-focus {
+  border-left-color: var(--t7-red);
+  background-image: linear-gradient(90deg, rgba(224,24,42,.55), rgba(224,24,42,.08) 70%, transparent);
+  box-shadow: 0 0 18px var(--t7-red-glow);
+}
+/* ---------- CHARACTER SELECT: T7 slots (SlotRed/SlotBlue_OnGradient) ---------- */
+#screen-select.t8 .card-grid .char-card { aspect-ratio: 96 / 148; background: var(--t7-panel); }
+#screen-select.t8 .card-grid .char-card.cursor-p1 {
+  outline: 2px solid var(--t7-red); outline-offset: -2px;
+  background-image: var(--t7-slot-red, none), linear-gradient(180deg, rgba(224,24,42,.0), rgba(224,24,42,.45));
+  background-size: 100% 100%; box-shadow: 0 0 14px var(--t7-red-glow);
+}
+#screen-select.t8 .card-grid .char-card.cursor-p2 {
+  outline: 2px solid var(--t7-blue); outline-offset: -2px;
+  background-image: var(--t7-slot-blue, none), linear-gradient(180deg, rgba(26,140,255,0), rgba(26,140,255,.45));
+  background-size: 100% 100%; box-shadow: 0 0 14px var(--t7-blue-glow);
+}
+#screen-select.t8 .pane-p1 .side-tag { color: #fff; text-shadow: 0 0 10px var(--t7-red-glow); }
+#screen-select.t8 .pane-p2 .side-tag { color: #fff; text-shadow: 0 0 10px var(--t7-blue-glow); }
+/* ---------- STAGE SELECT: InfoRed_Base info panel + RedPanel_Base map panels ---------- */
+#screen-stage { background: radial-gradient(120% 80% at 50% 0%, #1a2238 0%, #06080e 70%); }
+#screen-stage .stage-preview-pane {
+  background-image: var(--t7-info-red, none), var(--t7-panel); background-size: 100% 100%;
+  border: 1px solid rgba(224,24,42,.7); box-shadow: inset 0 0 0 1px rgba(255,255,255,.04), 0 0 16px rgba(224,24,42,.25);
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%);
+}
+#screen-stage #stage-preview-name { color: #fff; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; border-bottom: 2px solid var(--t7-red); padding-bottom: 4px; }
+#screen-stage .stage-card { background: var(--t7-panel); border: 1px solid rgba(120,140,180,.25); border-radius: 2px; }
+#screen-stage .stage-card.selected {
+  border-color: var(--t7-red); box-shadow: 0 0 14px var(--t7-red-glow);
+  background-image: var(--t7-red-panel, none), var(--t7-panel); background-size: 100% 100%;
+}
+#screen-stage .stage-card.kb-focus { outline-color: var(--t7-red); }
+#screen-stage .tier-header { color: #fff; border-left: 4px solid var(--t7-red); padding-left: 8px; letter-spacing: 2px; }
+#screen-stage #confirm-stage:not([disabled]) { background: linear-gradient(180deg, #ff3344, #a00c18); border-color: #ff5a66; }
+/* ---------- RESULTS: T7 win screen (Result_Lightning blue-white bolt, big WIN) ---------- */
+#screen-result.active { display: flex; align-items: center; justify-content: center; }
+#screen-result {
+  background-image: var(--t7-result-bolt, none), radial-gradient(60% 70% at 50% 40%, rgba(70,110,255,.35), transparent 70%), linear-gradient(180deg, #070a18, #000);
+  background-size: auto 100%, cover, cover; background-position: center; background-repeat: no-repeat;
+}
+#screen-result .panel { background: transparent; border: 0; box-shadow: none; text-align: center; }
+#screen-result #result-title {
+  font-size: min(16vw, 20vh, 150px); white-space: nowrap; font-weight: 900; font-style: italic; letter-spacing: 4px; margin: 0;
+  color: #fff; -webkit-text-stroke: 2px #6fa8ff;
+  text-shadow: 0 0 18px #5b8cff, 0 0 42px #2a5cff, 0 4px 0 #0b1a50;
+}
+#screen-result #result-sub { color: #cfe0ff; letter-spacing: 2px; text-transform: uppercase; }
+#screen-result .btn-primary { background: linear-gradient(180deg, #ff3344, #a00c18); border-color: #ff5a66; }
