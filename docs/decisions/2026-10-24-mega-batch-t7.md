@@ -90,3 +90,16 @@
   parent browser task.
 - Pre-existing unresolved string hits (7–43 per fighter) are unchanged by
   this patch and remain a follow-up lane.
+
+## Revert-guard resolution (2026-10-25): main's chord rows merged in
+- git_merge.py refused the first merge attempt: main's PR #1043 chord fix
+  (standing LP1+RP2 clips) changed one entry each in demonio.json and
+  diablo.json after this PR's base, and this branch's older copies lacked
+  those lines. Resolved surgically, 3 lines per file, no other changes:
+  demonio `1+2__main` name/anim/t3_row r32 -> r92 (T3 jin row 92);
+  diablo `1+2__main` r37 -> r133 (T3 heihachi row 133). This PR's MOD
+  damage sync on those entries (demonio 5, diablo 33, both equal to their
+  t7.damage) is KEPT — main's change did not touch damage, so there is no
+  field conflict. Verified after the edit: 0 T8 anims, 0 MOD mismatches,
+  quarantine counts unchanged (demonio 93, diablo 66), diablo 4~3 neutral
+  restore intact.
