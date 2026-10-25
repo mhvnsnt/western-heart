@@ -226,6 +226,29 @@
 
 **Status:** PR merged via git_merge.py. Next: voice-clone pipeline replaces tier A/B placeholders; user drops own music into `game/assets/music/`.
 
+## 2026-10-22 — Worker 61: OWNER-REPO MINING (animations + parts + select assets, OSS inventory)
+
+**Owner instruction (verbatim):** "We have a bunch of stuff in the BA and ON repo and AshLane repo and Brutal Fist repo — animations, character customization stuff — to help with our character selection screen building, to make our stuff better, stuff we can all just add in with our teardown file building up stuff, anything that we're missing or that we can pull in or scaffold up from." Plus correction: "I have it in my repos also. I have a lot of those things I just mentioned in my repos if you go look." — specifically catalog OSS fighting-game content already collected in the repos as the FIRST step for worker 62's public OSS survey. Plus standing INTEGRATION LAW: "Wire everything up that you pull in in a way that's aligned with the Tekken systems and menus. Don't just throw in a bunch of random menus and extra systems on top of stuff. … Everything that you pull in, set it up in a Tekken way."
+
+**Inventoried (full recursive trees via API):** brutalfistgrokversiontenpointfive (880 entries), AshLane-prototype (1,174), brutalfistgrokversion (287).
+
+**OSS fighting-game finds (full catalog: docs/research/2026-10-22-oss-fighting-games-in-owner-repos.md — worker 62's input):**
+1. **Schwarzerblitz Engine (AndreaJens, BSD-3)** — not vendored; 5 TS contract shims in bf10p5 (`Schwarzerblitz{CharacterSchema,Compat,Input,MoveCatalog,RuntimeManifest}.ts`): character schema, 60Hz browser/native boundary, input bitmask buffer with motion-command detection (double-tap, quarter-circles), move catalog schema with animationAliases + armor/invincible frames, runtime manifest pointing at upstream `FK_AIManager.cpp`/`EffectHandler.cpp`/`CShaderPre.cpp`. Engine code OK to survey; character/stage/music assets NOT redistributable.
+2. **NightSky Engine (MIT)** — referenced as architecture/frame-data reference only (rollback/netcode heritage).
+3. **YokosukaJS (Allen Ussher, MIT)** — VENDORED in AshLane `src/game3d/yokosuka/` (beat-em-up state machine: punch/kick/walk/turn/hurt/dying/jump) with NOTICE.txt. Scaffold for the locked Heart and Mind Within beat-em-up story mode. Sprites deliberately excluded (unlicensed rips).
+4. **Quaternius Universal Animation Library (CC0)** — VENDORED in AshLane `public/motion/ual/` (UAL1 43 clips + UAL2 43 clips, 65-joint rig) with LICENSE.txt; modular CC0 character parts + `attachPart()` bone-rebind pattern in `src/game3d/quaternius.ts`.
+5. **KayKit/Kenney (CC0)** — vendored model packs (cast/env/weapons/props) for arenas and suite bodies.
+
+**Wired this round (all nested in Tekken structure per INTEGRATION LAW — no parallel systems):**
+- `moveset-library/animations/owner-motion-bank/` — 75 owner motion JSONs (Mixamo 52-bone; boxing, capoeira, suplex family, chokeslam, DDT, hit reactions, stances, taunts, locomotion) + `OWNER-MOTION-BANK.json` index (72 live clips; upstream index had 130 stale entries pointing at removed files — omitted) + `combat_clip_map.json` (140 combat moves → clips, limb/trajectory scored) + README source rows.
+- `moveset-library/animations/UAL-CC0.json` — 86-clip CC0 source entry with build-time fetch URLs (GLBs not copied).
+- `customization/parts/ashlane/` — 40 GLB parts (footwear, gloves, masks, hair, hoods, wristbands, rigged chains) + 7 manifests + 3 FIT_NOTES + README; `build_suite_parts_index.py` gains source #6 (ashlane); `create-fighter/data/PARTS-INDEX.json` 7,920 → 7,960 parts, sources += ashlane (all `geometryReady: true`, real GLBs on disk — honesty rule kept).
+- `game/js/fighter-portraits.js` — owner's AshLane deterministic SVG portrait generator ported to ESM (verified: deterministic per id, distinct per fighter); wired into `game/js/select-screen.js` as the fallback portrait layer under the PNG (real portraits always win) + no-WebGL pane data-URI fallback; `game/select.css` layering rules.
+- Docs: `docs/research/2026-10-22-oss-fighting-games-in-owner-repos.md`, `docs/research/2026-10-22-owner-repo-asset-inventory.md`, `docs/decisions/2026-10-22-owner-repo-mining.md`.
+
+**Deliberately not wired:** Schwarzerblitz input buffer (input work is owner-deferred; wiring now = parallel input path), YokosukaJS (waits for the beat-em-up lane's design), face-paint layer stack + CustomBuild persistence (cataloged as proven patterns for their lanes), character GLBs (canon review first, per #702 precedent), renders (worker 46's lane).
+
+**Proof:** 75/75 motion JSONs parse; 40/40 GLBs carry valid `glTF` magic; portraits module node-verified deterministic; select-screen.js and build script pass syntax checks. MERGE FREEZE: PR pushed, not merged.
 
 ## 2026-10-22 — Worker 51: STAGE SELECT → FIGHT FLOW (repairs + wiring, PLAYABLE TODAY)
 
@@ -3248,6 +3271,61 @@ Design doc: `docs/research/nine-souls-select-redesign-2026-10-22.md`;
 decision log: `docs/decisions/2026-10-22-nine-souls-select-redesign-w83.md`.
 PR: `worker83/nine-souls-select-redesign-20261022` (merge-ready, not merged
 — merge freeze in effect).
+## 2026-10-22 — Worker 64: Clothing remove/change system + labeling standard + Tsuyu frog hat
+
+**Owner directives:** (1) "Make it able to remove and change their clothes in
+the character creation suite and in game when I play it and preview it."
+(2) Labeling standard for every clothing part/accessory across all characters
+going forward (retroactive, starting with Parvati). (3) Hair/hats/accessories
+as SEPARATE INTERCHANGEABLE PARTS; hair = first-class library item.
+(4) Tsuyu catch: "Tsuyu without her frog hat isn't Tsuyu. Get it on her."
+
+**Built:**
+- `game/js/clothing-layers.js` (new): runtime per-mesh visibility engine.
+  Layers match by EXPLICIT raw-mesh-name lists (case-insensitive exact —
+  `Bra` never catches `Bra (2)`). Data-driven via
+  `game/data/clothing-layers.json` (model key → layers); nothing hardcoded.
+  Persistence `wh_clothing_v1` (hidden-set per model key). Hooked into
+  `assets.createInstance` (guarded, fire-and-forget) so saved choices apply
+  to every fight, preview, and harness automatically — incl. transform swaps.
+- Suite: `packages/creation-suite/ui/suite.js` — CLOTHING LAYERS section
+  nested at the top of the ATTIRE tab (integration law: inside the Tekken
+  flow, not parallel); `profile.js` — `clothing` state + `setClothingHidden` /
+  `isClothingHidden`, serialized as additive v1 `clothing_layers.hidden`,
+  mirrored to `wh_clothing_v1` on toggle/save. Wiring-map row added per its
+  rule 2.
+- In-game: pause menu gets a CLOTHING button → sheet with P1/P2 layer lists,
+  live toggles (`game/js/menus.js`).
+- `docs/CLOTHING-ACCESSORY-LABELING-STANDARD.md` (new): the permanent
+  `<category>_<item>_<variant>` standard, 11 categories (hair separate from
+  headwear), intake wiring checklist.
+- Retroactive label maps in `game/data/clothing-layers.json`: Parvati (23
+  source meshes incl. `Bra (2)`→`top_bra_02`, `Gaunlet`[sic]→`gloves_gauntlet_01`;
+  `Stripe`/`Full`/`Triangle` flagged `review: true`) and Tsuyu Asui
+  (`OBsuit`→`fullbody_bodysuit_01`, `OBHair`→`hair_bob_01`, …).
+- Intake pipeline: `docs/SMUTBASE-INTAKE-QUEUE.md` + standard §6 — intake not
+  complete until the label map is filed.
+
+**Tsuyu frog hat investigation:** full object-name scan of her source blend
+(37 objects) — the hat is NOT in the source at all (not hidden, not
+unexported). Crew-modeled it as a separate library part
+(`customization/parts/headwear/frog-hat/frog-hat.glb`, label
+`headwear_frog-hat_01`, 1370 verts) — NOT baked into her model. Her HAIR was
+verified present (`OBHair`, visible in PR #634) — the user's suspicion was
+wrong, no fix needed; registered as `hair_bob_01`.
+Re-rendered T-pose with the hat on (measured fit: head 0.691 wide, top
+z=4.052; dome r=0.42 seated at the forehead): proof at
+`docs/proof/tpose-urgent-2026-10-22/tsuyu-asui.png` (updated). Note: her
+source blends' `Hair`/`Body_*.dmx` data blocks are corrupted (append fails
+with "invalid ID names") — render used `.blend1` explicit object names;
+the rig lane should know.
+
+**Tests:** `node --check` clean on all 5 JS files; engine unit-check
+(exact-match semantics, categories, storage fallback) passes. Render viewed
+before shipping.
+
+**Branch:** `w64/clothing-layer-system` — PR open, MERGE FREEZE: merge-ready,
+not merged.
 ## 2026-10-22 — Worker 29: TRAINING MODE DEPTH + REPLAYS (Gungaku lab depth, replay theater)
 
 **Owner instruction (verbatim):** "Wire up: (3) Training mode depth — frame data display, record/playback dummy, hitbox viewer. (5) Replays — save/watch fights, slow-mo, camera control."
