@@ -1715,6 +1715,42 @@ export class Fighter {
     this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
     return true;
   }
+  /* REPLAYS (worker 29, 2026-10-22): start an already-RESOLVED notation
+     without re-running the TekkenBuffer. The recorder captured the exact
+     notation tryAttack resolved to at record time; re-resolving during
+     replay would be wrong because the buffer's motion windows and chord
+     timing use wall-clock (performance.now), not sim time. This mirrors
+     _tryAttackFresh's post-resolution tail exactly (same move lookup,
+     same WH-prop merge, same meter/rage/stance/vx handling) minus the
+     canAct gate and the resolution itself — both were validated live
+     when the call was recorded. */
+  replayMove(resolved, rawName) {
+    const name = rawName || resolved;
+    let notation = LEGACY_TO_TEKKEN[name] || resolved;
+    let move = getRealMove(this._movesetId, notation) || MOVES[name] || MOVES[notation];
+    if (!move) {
+      const fb = { '1': 'punch', '2': 'punch', '3': 'kick', '4': 'kick',
+                   '1+3': 'grab', '2+4': 'grab', '1+2': 'grab', '3+4': 'grab' }[notation];
+      if (fb) move = MOVES[fb];
+    }
+    if (!move) return false;
+    if (MOVES[name]) {
+      move = { ...move, ...Object.fromEntries(
+        Object.entries(MOVES[name]).filter(([k]) => ['unblockable','isGrab','cost','soulGain'].includes(k))
+      )};
+    }
+    if (move.cost > 0) this.meter = Math.max(0, this.meter - move.cost);
+    this.tekken._recordMove(notation);
+    this.attack = move; this.attackName = notation; this.hasHit = false;
+    this._attackId = (this._attackId || 0) + 1;
+    this._queuedNext = null;
+    if (/^R\./.test(notation)) this._rageUsed = true; // rage art: once per round
+    this.stance = null; this.stanceT = 0; this._risingT = 0;
+    this.vx = 0; this._enter('attack'); this._attackPhase = 'startup';
+    if (name === 'surge') this._auraFlash = 0.7;
+    if (move.isGrab || notation === '1+3' || notation === '2+4') this.vx = this.facing * 2.5; // lunge into the grab
+    return true;
+  }
   _enter(state) { this.state = state; this.stateT = 0; }
 
   /* ---------------- defense / damage ---------------- */

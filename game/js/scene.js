@@ -60,6 +60,10 @@ export class Arena {
     this.freeCameraActive = false;  // game/js/free-camera.js takeover gate
     this._stage = null;      // built stage { group, update, def, skyTex, fog }
     this._stageToken = 0;    // guards against out-of-order async builds
+    /* Free camera (worker 29, 2026-10-22): while set, update() skips the
+       auto-framing fight camera — the Gungaku lab / replay viewer drive
+       arena.camera directly (see js/replay.js FreeCam). */
+    this.freeCam = false;
     this.setStage(stageId);
   }
 
@@ -105,6 +109,16 @@ export class Arena {
     // recomputes it and eases back in.
     if (this.freeCameraActive) return;
 
+    // Free camera (worker 29): the lab / replay viewer own the camera.
+    // Stage animation still runs; shake just decays.
+    if (this.freeCam) {
+      if (this._shakeT > 0) {
+        this._shakeT -= dt;
+        if (this._shakeT <= 0) this._shakeMag = 0;
+      }
+      return;
+    }
+
     // dynamic fighting camera — Tekken CameraRig port
     // (teardown/tekken3/tools/tekken3recompiled/native/src/camera.cpp):
     // track the FULL midpoint of both fighters and zoom so the fighter span
@@ -112,6 +126,7 @@ export class Arena {
     // FOV derives from the live aspect — portrait AND landscape keep both
     // fighters in frame. Replaces the old aspect-blind linear zoom that left
     // fighters off-screen in portrait (NDC |x| up to 3.4).
+
     // Stream 3: stages may declare camDist (cage interiors, backstage rooms)
     // to pull the camera inside their geometry, and camAngle (degrees) to
     // orbit the camera around the target for cluttered stages.
