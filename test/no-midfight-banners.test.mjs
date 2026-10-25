@@ -15,7 +15,7 @@ const src = (p) => readFileSync(new URL('../' + p, import.meta.url), 'utf8');
 /* Files whose banner calls were converted to hudNote in this lane. */
 const CONVERTED = {
   'game/js/team-battle.js': 8,
-  'game/js/brawler.js': 10,
+  'game/js/brawler.js': 11,
   'game/js/training.js': 7,
   'game/js/modes.js': 18,
   'game/js/episodes.js': 1,
@@ -27,6 +27,7 @@ const CONVERTED = {
 for (const [f, min] of Object.entries(CONVERTED)) {
   const s = src(f);
   assert.ok(!/\.banner\(/.test(s), `${f} still calls banner()`);
+  assert.ok(!/\.surgeName\(/.test(s), `${f} still calls surgeName() (dead since #1078)`);
   const notes = (s.match(/hudNote\(/g) || []).length;
   assert.ok(notes >= min,
     `${f} has ${notes} hudNote calls, expected >= ${min} (info must survive as a HUD note, not vanish)`);

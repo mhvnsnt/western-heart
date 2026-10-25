@@ -863,7 +863,12 @@ export class BrawlerGame {
         if (p.tryAttack('surge')) {
           audio.soulSurge(p.char.id);
           this.ui.surgeFlash(p.char.surge.color, p.char.surge.accent);
-          this.ui.surgeName(p.char.surge.name);
+          // The old surge-name writer is gone since #1078 (no such ui
+          // method, no #surge-name element): the surge name survives as
+          // a HUD note,
+          // never center-screen text (owner immersion law, closed
+          // 2026-10-25). This branch had no other text display.
+          this.ui.hudNote('SOUL SURGE — ' + p.char.surge.name);
         }
       }
       else if (act === 'transform') {
@@ -873,7 +878,9 @@ export class BrawlerGame {
         } else if (p.startSurgeForm()) {
           audio.soulSurge(p.char.id);
           this.ui.surgeFlash(p.char.surge.color, p.char.surge.accent);
-          this.ui.surgeName(p.char.surge.name);
+          // Dead surge-name call deleted (gone since #1078): the next
+          // line already posts the identical SOUL SURGE HUD note, so a
+          // replacement here would double-post the same note in one tick.
           this.ui.hudNote('SOUL SURGE — ' + p.char.surge.name);
         }
       }

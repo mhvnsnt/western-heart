@@ -68,6 +68,8 @@ test('V-System UI methods are glow-only, surgeName is gone', () => {
   assert.ok(main.includes('setSoulReady'), 'main.js lacks setSoulReady');
   assert.ok(!src('game/js/game.js').includes('surgeName'),
     'game.js still calls surgeName');
+  assert.ok(!/\.surgeName\(/.test(src('game/js/brawler.js')),
+    'brawler.js still calls surgeName (dead since #1078)');
 });
 
 test("Trial's Seal goes to the HUD note, never center-screen", () => {
