@@ -371,3 +371,375 @@ manifest does not duplicate that lane's work.
    status retired).
 9. 2K22 CAW structure extracted → creation-suite template lane unblocked.
 10. Every §13 dir enumerated and promoted to a full entry.
+11. GPU jobs run (parent browser task): job 01 Gang Beasts mining +
+    job 02 all-bank anim classification; outputs committed to repo;
+    king row 38 classification checked against the LP1 jumping-punch
+    user report.
+12. UI citation gap closed: GRE tekken7/ui/flash paths in ui_sources.json
+    either restored (assets located in pakchunk0/UI_common/flash per
+    T7-UI-LAYOUT.md) or re-pointed; the 7 legacy-unsourced screens
+    sourced from teardown UI data or explicitly re-scoped.
+13. Steam sweep (§18): every GAP title either pulled (teardown started)
+    or explicitly deferred with a reason — none left as "looked at,
+    skipped" without a note.
+14. T8 model archives (83 MB + 30 MB in teardown/tekken8/models/)
+    decoded to WH rigs or explicitly deferred — they are the largest
+    single teardown binaries in the public repo and currently unwired.
+
+## 16. UI / MENU / FRONTEND EXTRACTION — first-class, not an afterthought
+
+UI teardown is uneven: T7/T8 menu data is genuinely measured and wired,
+T3 UI art is extracted but unwired, and seven game screens are still
+hand-made with no teardown source. The gap-fill coordinator wires from
+this section.
+
+### 16a. Tekken 7 UI — MEASURED, EXTRACTED, WIRED (with one citation gap)
+
+- WH `teardown/tekken7-steam-ui/T7-UI-LAYOUT.md` (1,830 bytes, READ this
+  audit): measured layout rules from the T7 Steam extraction (PR #863,
+  branch feat/t7-steam-extraction), source
+  `teardown/tekken7-steam/pakchunk0/textures/UI_common/flash/` +
+  `teardown/tekken7-steam/tkdata/list/SW_UI_*.bin`. Rules recorded (no
+  Namco pixels in the public repo): roster card 96x148, P1 cursor
+  208x336 red #e0182a double frame gradient-up, P2 cursor 208x336 blue
+  #1a8cff, side panels 108x292, stage info 420x656 navy->black gradient
+  red 1px rim notched corner, stage panel 1180x696, result lightning
+  400x580 vertical blue-white bolt behind italic WIN, main menu column
+  572x1080 dark glass vertical list soft blue core, panel gradient
+  #1b2740 -> #0d1322 (55%) -> #04060a. Reproduced in CSS
+  (game/t7-skin.css, game/menu-t7.css, game/js/menu-t7-layout.js).
+- WH `teardown/tekken7/ui/`: GAME-OPTION-VS-MENU.md (1,815 bytes) +
+  UI-EXTRACTION-STATUS.md (2,461 bytes). Docs only.
+- GRE `teardown/tekken7-steam/tkdata/list/` dir EXISTS (dictionary/,
+  list/, mothead/ confirmed) — SW_UI_MainMenu.bin / SW_UI_Option.bin
+  files inside are NOT individually confirmed. Next: list list/ contents.
+- CITATION GAP (verified 404 this audit): `game/ui_sources.json`
+  cites `gre:tekken7/ui/flash/SW_UI_*.png` (MainMenu Base_OnlineMenu,
+  CharacterSelect SlotRed/SlotBlue/Rep_CS_CH_PANEL_00, PauseMenu Replay
+  Cursor_Sub/NavigationBar_Waku, ControllerSetup PanelBase1, StoryMode
+  Win_3line, Result Lightning_02) — but GRE `tekken7/ui/` DOES NOT
+  EXIST (404; GRE tekken7/ holds only arenas, customization, king,
+  models, stages, tools, TEKKEN7-ROSTER-MAPPING.md, tekkenmods-docs).
+  The ui_sources check (tools/ui-sources/check.py) should flag these.
+  The assets' true home per T7-UI-LAYOUT.md is pakchunk0/textures/
+  UI_common/flash/ (PR #863 branch) — next step: confirm
+  UI_common/flash entries in GRE teardown/pakchunk0/manifest.json and
+  re-point ui_sources.json, or restore the flash dir. Until then, the
+  screen-menu/select/result "sourced" status rests on the WH-side
+  measured doc (real) plus broken GRE citations (not real).
+- Wired screens (ui_sources.json, verified this audit): screen-menu
+  SOURCED, screen-select SOURCED, screen-result SOURCED.
+- UNSOURCED screens (ui_sources.json status legacy-unsourced, i.e.
+  pre-law hand-made, grandfathered only while untouched): screen-
+  collection, screen-daily, screen-howto, screen-modewin, screen-
+  movelist, screen-online, screen-reincarnate. THESE are the UI gaps:
+  each needs a teardown source (T7 UI bins, T8 UI docs, or T3/T6 UI
+  art) or an explicit re-scope decision. The movelist screen gap is
+  doubly important: the Create-A-Move List editor (PR #998) is the
+  user's correction tool, and its screen has no teardown source yet.
+
+### 16b. Tekken 8 UI — select doc + refs, wired as reference
+
+- WH `teardown/tekken8/ui/`: CHARACTER-SELECT.md (1,831 bytes) +
+  refs/ (t8-select-ref-1/2/3.png per ui_sources.json). Cited as a
+  screen-select source. Status: docs + reference images, not extracted
+  UI binaries. T8 UI is reference-only for WH (T7 is the select source
+  per standing law); do not wire T8 UI geometry as if it were T7's.
+
+### 16c. Tekken 3 UI — EXTRACTED art, NOT wired into game UI
+
+- WH `teardown/tekken3/ui/`: README.md + character-art/ (1 TIM+PNG pair:
+  tim_8550) + fonts-text/ + menus/ (6 TIM+PNG pairs: tim_0947, tim_1031,
+  tim_5894, tim_7524, tim_7576, tim_8552) + title-screens/. TIM = PSX
+  texture format; PNG previews accompany each TIM. Status: EXTRACTED
+  (real UI art bytes in repo) + DECODED (TIM->PNG previews exist) +
+  NOT WIRED (no game UI screen uses T3 UI art). Experimental use
+  (PROPOSED, not done): T3 retro UI theme / title-screen homage /
+  font reference for a classic-mode menu skin. Never present T3 UI art
+  as T7 UI data.
+
+### 16d. Tekken 6 / 5 / TTT2 UI — art fragments + status docs only
+
+- T6 UI: README.md + UI-EXTRACTION-STATUS.md + psp_ICON0.png
+  (17,590 bytes) + psp_PIC1.png (251,946 bytes, PSP key art). PSP
+  store art only — no menu layouts, no HUD definitions.
+- T5 UI: UI-EXTRACTION-STATUS.md (1,528 bytes) only.
+- TTT2 UI: UI-EXTRACTION-STATUS.md (4,775 bytes) only.
+- Status for all three: docs-level. No extracted menu structures, HUD
+  definitions, or select-screen geometry. Gap-fill: T6/T5/TTT2 menu
+  structure extraction is unstarted work, not a completed pull.
+
+### 16e. Other games' UI — docs-level only (except where noted)
+
+- Urban Reign: UI-SYSTEM.md (in WH teardown/urban-reign/) — system
+  doc, not extracted UI data.
+- WWE 2K CAW flows: creation-suite spec PRs #770/#773/#775/#776/#777/
+  #778 (menus from teardown research) — the creation-suite-fix lane
+  owns wiring these into sub-menus/categories; the underlying 2K22
+  CAW structure extraction gap (§9) still blocks full fidelity.
+- No other game's UI binaries (HUD definitions, frontend flows,
+  loading screens) were found in this audit. Loading screens
+  specifically: no extracted loading-screen data from any game was
+  found — WH loading UX (load-progress.js, 6% creep cap) is hand-made.
+  Tekken loading-flow extraction (what T7 shows while loading, and
+  when) is an open gap for the loading-speed lane (PR #1041).
+
+## 17. GPU JOBS — per-file mapping (scripts in tools/kaggle-teardown-jobs/)
+
+Full index + parent browser run instructions: tools/kaggle-teardown-
+jobs/README.md (working copies in ~/workspace/kaggle-teardown-jobs/).
+Summary (honest split — GPU where it helps, CPU where it does not,
+BLOCKED where no bytes exist):
+
+- GPU job 01 — Gang Beasts dump mining (01-gang-beasts-dump-mine.py):
+  CPU-parallel keyword mining over dump.cs (27 MB) + il2cpp.h (43 MB) +
+  script.json (81 MB) + stringliteral.json; OPTIONAL GPU semantic
+  search (--embed, sentence-transformers). Verified on synthetic
+  inputs (8 hits, correct counts). Parent runs on Kaggle with the four
+  dump files as an input dataset; outputs = physics/ragdoll index for
+  the WH ragdoll system. The script's verification file states GPU
+  acceleration NONE for the mining step — regex does not run on GPU.
+- GPU job 02 — T3 anim batch classification
+  (02-anim-batch-analysis.py): vectorized root-trajectory
+  classification over all 22 bank packs. Scale authority VERIFIED from
+  tools/anim/t3_row_bake.py lines 173-175: rx/ry/rz are base64 int16
+  root translation in MILLIMETRES (metres = value/1000); q is base64
+  int16 quats x32767. Classification: jumping = rise >= 0.15 m and
+  fall >= 0.10 m; crouching = drop >= 0.15 m ending down; else
+  standing. Verified on synthetic inputs (flat -> standing, 0.4 m arc
+  -> jumping, 0.3 m drop -> crouching). First real-run check owed:
+  king bank row 38 (Pantera LP1) must classify jumping if the user's
+  jumping-punch report is right. Torch CUDA when present, else honest
+  CPU report — never a silent CPU pass as GPU.
+- CPU sufficient (no GPU job, and none should be invented): T7 mot.bin
+  decode (51/51 done, seconds/file), T7 .mvl parse, T7 frame-data
+  conversion, T3 reaction bake, No Mercy/WMXIX decode, UI measurement
+  (measurement + CSS, not batch math), gltfpack model optimization
+  (CPU-parallel, studio lane, proven -54% to -65%).
+- Real GPU jobs owned by sibling lanes (do not duplicate): Real-ESRGAN
+  texture upscale (studio lane), UniRig rig/retarget (studio lane),
+  Nosferatu track cutting (music lane, CUDA-proven script with loud
+  failure without CUDA).
+- BLOCKED (no job can run without bytes first): T5 motion, T6 IDX
+  semantics (26 KB, 2 keysets — NOT a brute-force problem; GPU
+  brute-force here would be theater), TTT2 identification, WWE 2K
+  structure, VF5, DOA, Steam titles with no teardown (§18).
+
+## 18. ANYTHING-ELSE SWEEP — every Steam title + every Tekken game
+
+Source: ~/workspace/user/steam-library.md (85 Steam titles, PARTIAL
+snapshot — user owns way more beyond Steam; absence from the list does
+NOT mean not owned; never make the user prove ownership). Status key:
+COVERED = teardown files exist (see manifest section). GAP = no
+teardown files found this audit. PROPOSED = experimental WH use, NOT
+pulled, NOT extracted — a direction for a future pull, never presented
+as game data. Tekken games are listed first (the base), then other
+games.
+
+### 18a. Tekken games — the base (all covered or partial, none skipped)
+
+- Tekken 3 — COVERED (banks wired, §5; UI art extracted, §16c).
+- Tekken 5 — PARTIAL (catalog only, §6). GAP: motion bytes.
+- Tekken 6 — PARTIAL (DINF decrypted, IDX contested, §7; UI art
+  fragments, §16d). GAP: motion + voice attribution.
+- Tekken Tag Tournament 2 — PARTIAL (13 hash files, §8; UI status
+  doc, §16d). GAP: Jun identification.
+- Tekken 7 — COVERED deep (mot/mvl/frame/UI/models, §1-§4, §16a).
+- Tekken 8 — PARTIAL (select doc + refs, 2 SFM model archives:
+  PHANTOM-t8-yoshimitsu-s1.7z 83,173,144 bytes + asuka-kazama-t8_SFM.rar
+  30,027,257 bytes, §16b + §15 item 14). GAP: decoded movesets,
+  animations, UI binaries. T8 mod stuff authorized (user owns T8 on
+  disk; disk not accessible phone-only; access via mods/community).
+
+### 18b. Steam titles WITH teardown coverage (6)
+
+- Fire Pro Wrestling World (133.5h) — COVERED (GRE decompiled +
+  manifest, §13). WH use: simulation/booking systems (already in
+  scope as extra on top of Tekken base).
+- Wrestling Empire (71.4h) — COVERED (GRE decompiled + docs, §13).
+  WH use: mobile audio/UX reference (standing directive) + wrestling
+  systems.
+- Gang Beasts (11.2h) — COVERED (IL2CPP dump, §13 + job 01). WH use:
+  ragdoll physics (standing vision).
+- Yakuza Kiwami (26.7h) — COVERED (GRE extracted + manifest, §13).
+  WH use: beat-em-up adventure structure (Heart and Mind Within
+  reference) + city/stage design.
+- WWE 2K19 (113 min) — COVERED in GRE only (extracted dir, §13);
+  WH side = README stub. WH use: CAW parts + moveset library.
+- TEKKEN 7 — COVERED (see §18a).
+
+### 18c. Steam titles with NO teardown — GAP, each with a PROPOSED use
+
+Nothing below is pulled. Each line is: title — PROPOSED experimental
+use (one phrase). Pull order follows WH priorities (combat, creation,
+story, UI, performance), not playtime.
+
+- WWE 2K20 (57.3h) — PROPOSED: CAW structure + moveset library (same
+  lane as 2K19; WH dir is a README stub, so this is a real gap, not a
+  duplicate of 2K19 coverage).
+- WWE 2K22 (49.2h) — PROPOSED: Create-A-Moveset structure (the
+  unanswered #866 request) + CAW templates for the creation suite.
+  WH dir is a README stub — highest-priority WWE gap.
+- WWE 2K26 + every WWE 2K game (owned per user, absent from Steam
+  list) — PROPOSED: latest CAW + moveset structures once 2K22's gap
+  is closed; do not start 2K26 before 2K22's structure is understood.
+- Yakuza 0 — PROPOSED: beat-em-up adventure structure + city design
+  (same lane as Kiwami).
+- Yakuza Kiwami 2 (19 min) — PROPOSED: same as Kiwami (engine
+  iteration; compare Kiwami vs Kiwami 2 systems).
+- Nioh: Complete Edition (3.1h) — PROPOSED: stance/ki-pulse combat
+  rhythm ideas for WH stance systems. WH dir is a README stub.
+- Nioh 2 (23 min) — PROPOSED: same as Nioh (burst-counter / yokai
+  shift as transformation-system reference for WH transformations).
+- Overgrowth (32 min) — PROPOSED: procedural animation / parkour
+  movement reference for WH locomotion.
+- Spore (6.2h) + Spore: Galactic Adventures + Spore: Creepy & Cute —
+  PROPOSED: creature-creator parametric ideas for the creation suite
+  (creature parts + sliders, same family as MPFB/MB-Lab wiring).
+- Borderlands 3 (85.3h) — PROPOSED: loot/variant generation systems
+  (attire/part variants) + cel-shaded rendering reference.
+- The Elder Scrolls V: Skyrim Special Edition (77.4h) — PROPOSED:
+  open-world quest structure for Heart and Mind Within adventure mode
+  + modding/creation-kit patterns for WH's creation suite.
+- Yu-Gi-Oh! Duel Links (69.2h) + Yu-Gi-Oh! Master Duel (3.8h) —
+  PROPOSED: card/duel side-mode mechanics as a cousin to Go Qombat
+  (grid/card strategy side mode family).
+- Dragon's Dogma: Dark Arisen (39.1h) — PROPOSED: pawn/companion AI
+  + climbing-grapple combat (grapple-system cousin).
+- L.A. Noire (36.8h) — PROPOSED: investigation/dialogue structure
+  for WH story mode (evidence/interrogation as non-fight gameplay).
+- METAL GEAR SOLID V: THE PHANTOM PAIN (24h) + GROUND ZEROES —
+  PROPOSED: stealth/infiltration mission structure + open-base
+  systems for WH side modes.
+- 3on3 FreeStyle: Rebound (18.1h) — PROPOSED: team sports side-mode
+  structure (3v3 arena cousin to tag systems).
+- War Robots (10.6h) — PROPOSED: mech/attire rigging reference
+  (heavy-frame fighters) + team battle structure.
+- The Witcher 3: Wild Hunt (9.9h) — PROPOSED: quest/choice story
+  structure + sign/combat-stance variety for WH story mode.
+- Drunken Wrestlers 2 (7.5h) — PROPOSED: physics-wrestling cousin
+  to Gang Beasts ragdoll (same ragdoll lane, different flavor).
+- Middle-earth: Shadow of War (6.9h) — PROPOSED: nemesis/rival
+  system for WH arcade ladders (rival fighters that remember bouts).
+- Crossout (5.7h) — PROPOSED: vehicle/part-builder cousin to the
+  creation suite (modular part assembly).
+- Max Payne 3 (4.9h) + Max Payne 2 (2.4h) — PROPOSED: bullet-time /
+  slow-motion presentation for WH KO/finisher cameras (KESSHOU
+  presentation, not a combat mechanic).
+- Path of Exile (3.6h) — PROPOSED: skill-tree/progression systems
+  for WH rank ladder + fighter progression.
+- Muck (3.5h) — PROPOSED: survival/co-op side-mode structure.
+- Just Cause 2 (3h) — PROPOSED: grapple/parachute traversal ideas
+  for WH realm travel (roads-not-portals traversal flavor).
+- RuneScape (2.9h) + Old School RuneScape — PROPOSED: skill/progress
+  systems + economy for WH meta-progression.
+- Red Faction: Guerrilla Steam Edition (2.4h) + Red Faction +
+  Red Faction Guerrilla Re-Mars-tered + Red Faction: Armageddon —
+  PROPOSED: destruction physics for WH stage interaction (wall/floor
+  break presentation cousin).
+- Red Dead Online (2.2h) — PROPOSED: open-frontier world structure
+  for WH's Western Heart overworld flavor.
+- STAR WARS: The Old Republic (57 min) — PROPOSED: MMO class/role
+  structure for WH team modes.
+- Pro Wrestling X (55 min) — PROPOSED: wrestling-system cousin
+  (same lane as Fire Pro/Wrestling Empire).
+- Walking Simulator 2020 (55 min) — PROPOSED: none seriously;
+  noted only for completeness (walking-sim structure is the null
+  case — no WH system needs it; recorded so it is not re-asked).
+- Digimon Masters Online (27 min) — PROPOSED: monster-partner
+  progression cousin to WH spirit/stand companions.
+- Drug Dealer Simulator: Free Sample (23 min) — PROPOSED: none
+  seriously; noted for completeness (economy-sim flavor only, no WH
+  system needs it; recorded so it is not re-asked).
+- Tap Ninja (16 min) — PROPOSED: none; idle-game loop is not a WH
+  system (recorded for completeness).
+- Creativerse (14 min) — PROPOSED: voxel building cousin to WH
+  stage/creation tools (block building for custom arenas).
+- Alien Swarm: Reactive Drop (13 min) — PROPOSED: top-down co-op
+  shooter structure for a WH side mode.
+- Crab Game (13 min) — PROPOSED: party-minigame structure for WH
+  side games / for-fun section.
+- Destiny 2 (13 min) — PROPOSED: live-service season/ladder
+  structure for WH daily challenges + ranked seasons.
+- Aimlabs (9 min) — PROPOSED: aim/timing trainer structure for WH
+  training mode (input-timing drills).
+- Fallout 3: Game of the Year Edition (8 min) + Fallout Shelter —
+  PROPOSED: open-world quest structure (Fallout 3) + base-management
+  side mode (Shelter) for WH meta-progression.
+- eFootball (7 min) — PROPOSED: sports side-mode structure.
+- UNDEFEATED (6 min) — PROPOSED: superhero-flight movement
+  reference for WH flying/transformation states.
+- Counter-Strike 2 (5 min) — PROPOSED: round/economy structure
+  cousin to WH round flow (buy-phase ideas do NOT map to Tekken
+  rounds; noted as structure-only reference).
+- Tales of the Neon Sea (4 min) — PROPOSED: detective-puzzle story
+  structure (same lane as L.A. Noire).
+- Master Spy (2 min) — PROPOSED: stealth-puzzle side mode.
+- Game Migrated to Another Steam Page (2 min) — PROPOSED: none;
+  unidentifiable title, recorded for completeness only.
+- Angel Wings — PROPOSED: flight/visual-novel structure (needs
+  identification before any pull; recorded, not skipped silently).
+- Century: Age of Ashes — PROPOSED: dragon-flight combat as
+  transformation-state movement reference.
+- Conqueror's Blade — PROPOSED: large-battle / siege structure
+  for WH multi-fighter modes.
+- DC Universe Online — PROPOSED: superhero MMO power/role systems
+  for WH power customization.
+- DCS World Steam Edition — PROPOSED: flight-sim fidelity
+  reference only (no WH flight system planned; recorded, not skipped).
+- ENDLESS Space – Definitive Edition — PROPOSED: 4X strategy
+  structure as a distant cousin to Go Qombat (strategy side mode).
+- Gorilla Tag — PROPOSED: VR locomotion reference (arm-swing
+  movement; WH is phone-first, so VR-only mechanics do not transfer
+  — recorded with that limitation).
+- H1Z1: Test Server — PROPOSED: battle-royale structure for a WH
+  multi-fighter side mode.
+- Halo Infinite — PROPOSED: arena shooter structure + grapple-shot
+  traversal cousin.
+- Heavy Burger — PROPOSED: party-brawler structure (same family
+  as Gang Beasts / Crab Game side modes).
+- Knightfall: Rivals — PROPOSED: card-battler structure (same
+  family as Yu-Gi-Oh side-mode notes).
+- MechWarrior Online — PROPOSED: mech customization (same lane
+  as War Robots heavy-frame reference).
+- Paladins (+ Public Test) — PROPOSED: hero-shooter role structure
+  for WH team modes.
+- Phantasy Star Online 2 New Genesis — PROPOSED: action-MMO combat
+  rhythm for WH adventure mode.
+- Portal Reloaded — PROPOSED: portal/traversal puzzle ideas for
+  WH realm travel (roads-not-portals flavor — portals as contrast,
+  not as the mechanic).
+- Quantum Replica — PROPOSED: time-manipulation presentation
+  cousin to WH time-break systems (presentation only).
+- Re-Legion — PROPOSED: cult/convert strategy structure (distant
+  cousin to WH soul systems — thematic only, not mechanical).
+- Rogue Company — PROPOSED: hero-shooter role structure (same
+  lane as Paladins).
+- SMITE (+ Public Test) — PROPOSED: god-archetype roster design
+  (divine-being fighters are already WH canon; SMITE's god roster
+  is a design-comparison reference, not a pull source).
+- Splitgate — PROPOSED: portal-arena shooter structure (same
+  traversal note as Portal Reloaded).
+- Z1 Battle Royale — PROPOSED: battle-royale structure (same
+  lane as H1Z1).
+- TEKKEN 8 (owned on disk, absent from Steam list) — see §18a.
+
+### 18d. Non-Steam games already in teardown scope (not in the 85)
+
+- WWF No Mercy, WWE WrestleMania XIX, WWE 2K19/20/22 (see §9) —
+  wrestling base for creation suite + movesets.
+- Virtua Fighter 5, Dead or Alive 4/6, Soulcalibur 2/6, Street
+  Fighter 3D games / EX series / 5, Def Jam Fight for NY, Urban
+  Reign, Yakuza Kiwami, Nioh, Fire Pro, Gang Beasts, Wrestling
+  Empire (see §10-§13) — docs-level or better, each with a named
+  next step in its section.
+- TempleOS (public domain, user-approved 2026-10-24 evening as
+  Shrine体系): pull all of TempleOS + wire three ways (Heart and
+  Mind Within mode, Eastern Mind canon sacred computer-system realm,
+  own playable mode in side games / for-fun section: retro terminal,
+  16-color look, playable mini-game from TempleOS's games). Canon
+  100%, grounded in CANON.md. TempleOS attribution stays in
+  technical docs only — never "TempleOS" in-game. This is a NEW
+  sweep item from the evening's standing directives, not a Steam
+  title, and it belongs in the anything-else list because the user
+  explicitly approved it the same evening as this audit.
