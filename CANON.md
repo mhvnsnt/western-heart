@@ -814,7 +814,7 @@ The shrine stones don't go silent on him, the way they do for SAM-UR-A1. They *c
 
 **Signature detail.** He has no win pose. He has a crime scene. The trial's cleaners refuse to work his arena.
 
-**Owner-locked:** Name DIO. Street Fighter's Akuma as he appears in Tekken 7 (not Kuma the bear — the bear, if ever pulled, is URSA). Master of the Satsui no Hado. Pure destructive force. Akuma base.
+**Owner-locked:** Name DIO. Street Fighter's Akuma as he appears in Tekken 7 (not Kuma the bear — the bear's name is locked: GASHADOKURO, owner name lock 2026-10-22). Master of the Satsui no Hado. Pure destructive force. Akuma base.
 
 ---
 
@@ -1556,8 +1556,7 @@ Hwoarang→GYOU, Julia→NIGHTWOLF / soul ZEN (a three-way doc conflict is flagg
 conversion record, unresolved), Lei→soul BYOU (vessel name pending the owner's Lei naming
 decision, as noted in §4 of this bible), Nina→AWA POP, Anna→TORCH, Dr. Bosconovitch→DOC
 FRANK. Law, Ogre, Gon, Panda, and Mokujin have **no** Western Heart mapping in canon —
-flagged for the owner's decision, never invented. The bear's reserved name, if ever pulled,
-is URSA (per §6, DIO).
+flagged for the owner's decision, never invented. The bear's name is now locked: GASHADOKURO (owner name lock 2026-10-22; internal ID remains `kuma` — plumbing only, never renamed; the game layer resolves the display name).
 
 Diablo is the one T3-sourced member of the Seven whose real animation bank is not yet
 decoded into the game: Heihachi's KMD carries empty vertex rows for parts 2/9/13 in both
