@@ -240,6 +240,13 @@ export function scaledAi(char, diff) {
     aggression: Math.min(1, base.aggression * (0.6 + d * 0.7)),
     grabBias: base.grabBias ?? 0.15,
     reaction: Math.min(1, base.reaction * (0.5 + d * 0.8)),
+    // FIGHTING-AI METHODOLOGY (2026-10-23): the human-reaction delay and
+    // MCTS search scale with the same difficulty knob. The AIController
+    // maps `difficulty` through delayFramesForDifficulty() (15f rookie →
+    // 8f boss, never 0) and mctsRolloutsForDifficulty() (0 below 0.35 —
+    // rookies fight a footsies brain, veterans fight a searching one).
+    // Kept humanlike and beatable at every tier.
+    difficulty: d,
   };
 }
 
