@@ -65,6 +65,10 @@
  * Cumulative update (Diablo Batch 3, 2026-10-25): plan count 132 -> 175; non-Batch-2
  * key count 111 -> 154 (111 Batch 1 + 43 Batch 3); all Batch 2 content assertions
  * preserved verbatim (burger test-evolution rule; Pantera's latent break NOT copied).
+ * Cumulative update (Diablo Batch 4, 2026-10-25): plan count 175 -> 217; non-Batch-2
+ * key count 154 -> 196 (111 Batch 1 + 43 Batch 3 + 42 Batch 4); all Batch 2 content
+ * assertions preserved verbatim (burger test-evolution rule; Pantera's latent break
+ * NOT copied).
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -93,14 +97,14 @@ function stepBits(step) {
 test('diablo move/string counts unchanged by the additive plans block', () => {
   assert.equal(Object.keys(diablo.moves).length, 661);
   assert.equal(diablo.strings.length, 90);
-  assert.equal(Object.keys(plans).length, 175);
+  assert.equal(Object.keys(plans).length, 217);
 });
 
 test('Batch 2 keys are exactly the documented 21', () => {
   assert.equal(B2.length, 21);
   for (const key of B2) assert.ok(plans[key], `Batch 2 key ${key} missing`);
   const b1 = Object.keys(plans).filter((k) => !B2.includes(k));
-  assert.equal(b1.length, 154);
+  assert.equal(b1.length, 196);
 });
 
 test('Batch 2 verified steps carry rows (button == step bits, throw 0, never row 35 on ground); review/unmapped carry row null; no soft flags', () => {

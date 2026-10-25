@@ -257,3 +257,37 @@ exact ROW-ONLY + row 133 soft-filed FULL, none wired under the stricter
 fill rule; zero DISAGREES notes). Job 4 joins: 4, none promoting.
 T8-sourced prefixes with no T3 row get their correct clips from #988 Step
 2 (original T8 refs), never from a T3 row recorded as correct.
+
+## Diablo Batch 4 fallback (triples/quads/rest strings, 2026-10-25 — LAST diablo batch)
+Verified rows 86/150/157/158/159/160/161/163/164/165/223/226/227/228/230/
+231/232/233/235/236/237 and review candidates 229/162/207/214 are FALLBACK
+(T3 heihachi rows, bank heihachi_on_jin / divmot13 on the jin rig), to be
+re-matched to T7 Heihachi rows when extraction lands. Rejected rows
+138/342/166/181/239/215/152 are NOT fallback — rejected evidence (throw
+flags, button mismatches, airborne rows for ground steps), not wired or
+held. Standing rows 226/227/230/231/232/235/236 verified for crouch-context
+steps (d/f+3,2,2,4-family steps) follow the demonio Batch 1 / diablo
+Batch 1 / diablo Batch 3 precedent: the pipeline stance gate flags crouch
+rows for non-crouch steps, not standing rows for crouch steps; if the gate
+is ever tightened these steps must be re-adjudicated. Rows 228 (crouch),
+233 and 237 (duck-dip) pass for crouch context outright — NOT gate-note
+cases. Heihachi-bank rules, per-bank evidence (documented in
+docs/movesets/DIABLO-BATCH4-STEP-PLANS-2026-10-25.md): row 35 does NOT
+EXIST in this bank (absent from hit_frames and Job 1), so no row-35 rule
+applies; row 220 is a JUMP RK4 row here, gate-adjudicated like any row,
+NOT jin's standing RP2 row, NOT king's jumping chord row, NOT bryan's
+button-0 row; heihachi_on_jin row 216 is a DUCK-DIP row, NOT jin row 216's
+jump row and NOT king row 216's dash Konvict Kick. Batch 4 contains 4
+input-~ canonicals, all rest/CSV-only (1,2,2~1+2,u, 2,2~1+2,u, b+1,2~1+2,u,
+f+2~1+2,u), and NO __main records. Suspended-drift: 2 steps — 1,2,4 step 1
+and 1,b+2,4 step 1 (prefix move 1 ROW-CHANGED 46->None; stale candidate
+row 46 documented, never wired). Job 3 fills wired: 0 (4 report entries,
+none wired under the stricter fill rule; one DISAGREES note — f+1+2,b+2,4 and f+1+2,b+2,4,1 step f+1+2: Job 3 exact+FULL candidate row 107 disagrees with wired gate candidate row 223, gate candidate kept (own/recorded row is stronger file evidence). The agreement note fires ONLY for actually-wired gate candidates (demonio Batch 4 fix), and row 223 is wired; no note fires on the suspended 1,2,4 / 1,b+2,4 steps). Job 4
+joins: 30 (23 no-action, 4 CANDIDATE-not-wired, 3 REJECTED), none promoting.
+Rest keys (74 canonicals, 285 steps) get NO plan — planning them needs
+engine support for non-attack prefix steps (future work, named, not
+guessed); their donor clips stand unchanged. T8-sourced prefixes with no T3
+row get their correct clips from #988 Step 2 (original T8 refs), never
+from a T3 row recorded as correct. Diablo string coverage is now COMPLETE:
+201 canonical comma keys = 66 Batch 1 + 11 Batch 2 + 22 Batch 3 + 102
+Batch 4, uncovered [] extra [].
