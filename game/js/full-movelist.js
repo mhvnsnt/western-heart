@@ -59,7 +59,9 @@ export function routeFor(notation, mv, slots) {
 /** Install the EMWH additions into a moveset (additive; idempotent). Returns added notations. */
 export function installAddedMoves(fighterId, ms, opts = {}) {
   if (!ms || !ms.moves) return [];
-  ms.slots = ms.slots || {};
+  // slotless moveset (moves keyed by notation, as movesets.js _prepare reads them): seed the
+  // slots from the moves, or the move list and ai.js would only see the added soul moves
+  ms.slots = ms.slots || Object.fromEntries(Object.keys(ms.moves).map(k => [k, k]));
   const n = variantCount(ms, opts), added = [];
   for (const sys of SOUL_SYSTEMS) {
     for (let i = 0; i < n; i++) {
