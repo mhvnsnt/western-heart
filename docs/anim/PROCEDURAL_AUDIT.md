@@ -180,3 +180,31 @@ All T3-baked clips already in the repo are **fallback, to be replaced from T5/6/
 | Asset | T3 data | Status | Reason T3 was used (no T5/6/7/8/TTT2 source available) |
 |---|---|---|---|
 | `game/assets/movesets/pantera.json` `string_step_plans` (60 keys: 31 canonical LP1/RP2 strings + 26 twins + 3 spelling variants) + `game/js/fighter.js` step-plan branch | King T3 bank rows for verified steps only (rows 36, 38, 39, 40, 50, 51, 52, 97, 98, 198, 200, 202, 203, 110) | fallback, to be replaced from T7 King extraction when clip bytes land | T7 King (`kinmot.bin`, 2,787 moves) is decoded, but 0x8000-bank clip bytes are not in tkdata (pakchunk/live-memory only) and requirement codes (636/811/80/81/72/217) + the aliases table are unresolved, so no T7 step clip can be wired yet. T3 step rows stand in for verified steps only; review/unmapped steps play no bank row. Re-match against T7 King rows when extraction lands. Rows 35/220 are never used for standing steps. |
+
+## Diablo Batch 1 fallback (LP1/RP2-only strings, 2026-10-25)
+Verified rows 157/158/159/160/98/99/147/149/110/204/123/146/40/41/42/52/53/54
+and review candidates 224/207/216/240/178 are FALLBACK (T3 heihachi rows,
+bank heihachi_on_jin / divmot13 on the jin rig), to be re-matched to T7
+Heihachi rows when extraction lands. Rejected rows are NOT fallback —
+rejected evidence, not wired or held. Heihachi-bank rules, per-bank
+evidence (documented in docs/movesets/DIABLO-BATCH1-STEP-PLANS-2026-10-25.md):
+row 35 does NOT EXIST in this bank (absent from hit_frames and Job 1), so
+no row-35 rule applies; row 220 is a JUMP RK4 row here, gate-adjudicated
+like any row, NOT jin's standing RP2 row, NOT king's jumping chord row,
+NOT bryan's button-0 row; heihachi_on_jin row 216 is a DUCK-DIP row, NOT
+jin row 216's jump row and NOT king row 216's dash Konvict Kick. Diablo's
+own LP1 move carries t3_row 46, and Job 1 row 46 is STARTS-AIRBORNE, so
+every ground-context step with candidate row 46 fails the stance gate;
+prefix move 1 is ALSO ROW-CHANGED 46->None (#1096 vs current main), so all
+13 1-family step 1s are SUSPENDED-DRIFT — never wired on stale data.
+Standing rows verified for crouch-context steps (d+1,2 / d+1,2__main step 1
+row 123, d/f+1+2,2 step 1 row 110) follow the demonio Batch 1 precedent:
+the gate flags crouch rows for non-crouch steps, not standing rows for
+crouch steps. Canonicalization is the CORRECTED rule (strip only a
+trailing ~t[378] source-variant suffix): diablo DOES contain input-~
+cancel-notation canonicals (6 own canonicals), unlike Pantera/burger whose
+inventories were provably inert — under the old rule this batch would
+have had 61 canonicals including a bogus single 'f+2'. No verified row is
+affected by the correction. T8-sourced prefixes with no T3 row get their
+correct clips from #988 Step 2 (original T8 refs), never from a T3 row
+recorded as correct.
