@@ -123,3 +123,14 @@ real match. Simulation passing is not a playability claim.
 - Item moves: PARTIAL — gate scaffold + tests DONE; no item data wired (needs item/equipment data, none in repo movesets).
 - Canon names for these systems: NEEDS NAME (owner decision owed).
 - Live playtest: OWED-PLAYTEST (parent/user step; subagent cannot operate a live browser).
+
+## Re-sync note (merge attempt 2026-10-25)
+
+First merge attempt via git_merge.py was REFUSED by the revert guard:
+main had moved and added lines to game/js/fighter.js (248 lines, femfx
+soft-body wiring), game/js/game.js (11 lines) and game/js/main.js
+(18 lines) after the branch base. No work was lost and nothing was
+force-pushed: the branch was re-synced from the then-current main and
+all patches above were re-applied surgically onto the fresh files
+(anchors all matched, tests re-run 8/8), then pushed as a normal
+fast-forward branch commit. The merge below is the re-synced branch.

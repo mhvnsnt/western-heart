@@ -461,7 +461,10 @@ export class Game {
 
       // --- Stream 6: throw-lock resolution (break window expired) ---
       for (const atk of [this.p1, this.p2]) {
-        if (atk.state === 'throwing' && atk.lockT <= 0 && atk.lockMove) {
+        // Paired throws are NOT resolved here: their break window
+        // is the first frames of the pair clips and fighter.js
+        // _tickState advances them to throwExec/thrownExec.
+        if (atk.state === 'throwing' && !atk._throwPair && atk.lockT <= 0 && atk.lockMove) {
           const def = atk === this.p1 ? this.p2 : this.p1;
           const hpBefore = def.hp;
           const result = atk.completeThrow();
@@ -638,8 +641,13 @@ export class Game {
         if (hb.move.isGrab && defender.onGround && defender.state !== 'thrown' &&
             defender.state !== 'throwing') {
           defender.startThrowLock(hb.move, attacker);
-          attacker.startThrowing(defender);
-          this.ui.throwBreakPrompt(defender.isPlayer, hb.move.throw_break || '1');
+          // Paired throw (startThrowLock bound the file pair):
+          // the attacker is already in 'throwing' with lockMove
+          // null — do NOT call startThrowing, which would
+          // overwrite the pair with the legacy lock. Legacy path
+          // only: startThrowing sets the 0.3 s break lock.
+          if (!attacker._throwPair) attacker.startThrowing(defender);
+          this.ui.throwBreakPrompt(defender.isPlayer, defender.throwBreakInput || hb.move.throw_break || '1');
           audio.grab();
           this.arena.shake(0.3 * this.feel.shake, 0.2 * this.feel.shake);
           this._hitStop = 0.06 * this.feel.hitstop;
