@@ -17,7 +17,7 @@
   "recordingStatus": "Verified King voice bank (owner ear-checked 2026-10-24 for set quality and preference). Trigger assignment is by duration rank only; clip content is NOT transcribed or verified by ear - to be confirmed at the owner voice session.",
   "replaced": {
     "date": "2026-10-24",
-    "removed": "9 suspect F_KING stage-sound files (intro-01, intro-02, win-01, win-02, taunt-01, taunt-02, hit-01, ko-01, select-01) - prior project record states those F_KING clips were music/SFX, not King voice, so they were deleted, not reused.",
+    "renamed": "9 suspect F_KING stage-sound files (intro-01, intro-02, win-01, win-02, taunt-01, taunt-02, hit-01, ko-01, select-01) - prior project record states those F_KING clips were music/SFX, not King voice. Owner order 2026-10-24 21:28 CDT: rename, do not delete. Restored under correctly-labeled names in game/assets/archive/pantera-stage-music-sfx/ as stage-music-sfx-<slot>.ogg (see that directory README for the old-name to new-name map), NOT wired into the Pantera voice pools. Music-vs-SFX split not verified by ear.",
     "added": "52 OGG clips (26 T2 grunts + 26 Classic), 1.58 MB combined"
   },
   "triggerRule": "Per set, independently, by duration rank: longest 3 -> intro; next 4 -> win; next 4 -> ko; remaining clips >= 1.0s -> taunt; remaining sub-1s clips -> hit; shortest clip -> select. No clip content was listened to for this assignment.",
