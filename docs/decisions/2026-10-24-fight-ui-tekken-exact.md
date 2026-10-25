@@ -155,10 +155,20 @@ Seal "decisive verdict seal banner" line stays — that banner is kept
 - Grep of edited files: zero remaining mid-fight banner/`surgeName`
   call sites; all kept banners and all Tekken-style indicators
   (auras, tags, gauges, flashes, audio cues) still present.
-- Diff is deletions only: rage −2 lines, soulurge −2, soul-systems
-  0 net (3 inline removals + comment updates), stagebreaks −2 net
-  (−3 banners +1 header note), finisher −1, main −4, game −2,
+- Game-code diff is deletions only: rage −2 lines, soulurge −2,
+  soul-systems 0 net (3 inline removals + comment updates), stagebreaks
+  −2 net (−3 banners +1 header note), finisher −1, main −4, game −2,
   spirit-actions −1. No logic, damage, timing, or animation changed.
+  Plus 2 test contract updates (below) — the only non-deletion changes.
+- Tests updated to the new contract (this PR):
+  `test/soul-systems.test.mjs` 'ready callout once' now asserts the
+  meter-ready indicator fires once with no banner;
+  `test/finisher.test.mjs` now asserts no banner while beats, lock, and
+  context save/restore still work. Neither test was weakened — both
+  assert the new Tekken-exact behavior positively. (These two tests
+  asserted the old banner behavior, which is why the first CI run
+  failed `game-unit-tests`; all other test files were grepped and
+  contain no banner assertions.)
 - Playtest owed (parent browser step, post-deploy): on Netlify, play
   a versus fight and trigger rage (≤25% HP), Soul Urge (2+3 burst),
   a wall break, a Soul Surge, and a Spirit Action — confirm no big
