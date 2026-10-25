@@ -5,6 +5,10 @@
 //        [--tex webp|ktx2|keep] [--max-tex 2048] [--report report.json]
 //   node tools/assets/wh_asset_pipeline.mjs --dir game/assets/fighters --out-dir /tmp/web
 //
+// MATERIAL GATE: every output is audited with game/js/material-resolve.js (shared with the CI
+// gate tools/assets/material_gate.mjs and the runtime loader); broken materials exit non-zero
+// unless --allow-broken-materials (then the model must be quarantined via material_gate --write-status).
+//
 // NOTHING IS CUT: no simplify, no prune of used data, no texture drop. Every mesh, primitive,
 // vertex, joint/bone, skin, morph target, animation, material and node name is kept; the script
 // counts all of them before and after and EXITS NON-ZERO if any count changes (the "no-cut gate").
@@ -23,6 +27,8 @@ import { NodeIO } from '@gltf-transform/core';
 import { ALL_EXTENSIONS } from '@gltf-transform/extensions';
 import { dedup, quantize, meshopt, draco, textureCompress } from '@gltf-transform/functions';
 import { MeshoptEncoder, MeshoptDecoder } from 'meshoptimizer';
+// Shared material resolve (same module as the CI gate and the runtime loader).
+import { auditGltf, parseGlb } from '../../game/js/material-resolve.js';
 
 const args = process.argv.slice(2);
 const opt = (k, d) => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : d; };
@@ -64,10 +70,14 @@ async function one(io, inp, out) {
   const cut = ['nodes', 'primitives', 'vertices', 'triangles', 'morphTargets', 'skins', 'joints',
     'animations', 'channels', 'materials', 'nodeNames'].filter(k => after[k] < before[k]);
   await io.write(out, doc);
-  const rec = { in: inp, out, bytesIn: fs.statSync(inp).size, bytesOut: fs.statSync(out).size,
+  // MATERIAL GATE on every intake: missing / placeholder / exporter-default materials fail.
+  const { json: oj, binLength } = parseGlb(new Uint8Array(fs.readFileSync(out)));
+  const mat = auditGltf(oj, { binLength, fileExists: u => fs.existsSync(path.join(path.dirname(out), u)) });
+  const rec = { material: { ok: mat.ok, counts: mat.counts, t7: mat.t7, findings: mat.findings.slice(0, 20) }, in: inp, out, bytesIn: fs.statSync(inp).size, bytesOut: fs.statSync(out).size,
     geo: GEO, tex: TEX, maxTex: MAXTEX || null, before, after, cut };
   console.log(`${path.basename(inp)}: ${(rec.bytesIn / 1e6).toFixed(2)} MB -> ${(rec.bytesOut / 1e6).toFixed(2)} MB` +
-    ` (${(100 * rec.bytesOut / rec.bytesIn).toFixed(0)}%)  ${cut.length ? 'CUT: ' + cut.join(',') : 'no-cut OK'}`);
+    ` (${(100 * rec.bytesOut / rec.bytesIn).toFixed(0)}%)  ${cut.length ? 'CUT: ' + cut.join(',') : 'no-cut OK'}` +
+    `  ${mat.ok ? 'materials OK' : 'MATERIALS BROKEN: ' + JSON.stringify(mat.counts) + (mat.t7 ? ' (T7: run the T7 MI resolve)' : '')}`);
   return rec;
 }
 
@@ -87,7 +97,7 @@ if (opt('--dir')) {
   jobs.push([pos[0], pos[1] || pos[0].replace(/\.glb$/, '.web.glb')]); }
 const recs = []; let bad = 0;
 for (const [i, o] of jobs) { if (path.resolve(i) === path.resolve(o)) throw new Error('refusing to overwrite original ' + i);
-  try { const r = await one(io, i, o); recs.push(r); if (r.cut.length) bad++; }
+  try { const r = await one(io, i, o); recs.push(r); if (r.cut.length || (!r.material.ok && !args.includes('--allow-broken-materials'))) bad++; }
   catch (e) { bad++; recs.push({ in: i, error: String(e) }); console.error(i, e.message); } }
 const tin = recs.reduce((s, r) => s + (r.bytesIn || 0), 0), tout = recs.reduce((s, r) => s + (r.bytesOut || 0), 0);
 console.log(`TOTAL ${recs.length} files: ${(tin / 1e6).toFixed(1)} MB -> ${(tout / 1e6).toFixed(1)} MB; failures/cuts: ${bad}`);

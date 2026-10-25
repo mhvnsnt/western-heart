@@ -13,6 +13,9 @@ const man = JSON.parse(fs.readFileSync(new URL('portraits-manifest.json', DIR)))
 const blockers = JSON.parse(fs.readFileSync(new URL('../tools/portraits/POSE-BLOCKERS.json', import.meta.url))).blocked;
 const src = fs.readFileSync(new URL('../game/js/select-screen.js', import.meta.url), 'utf8');
 const hidden = new Set([...src.match(/SELECT_HIDDEN = new Set\(\[([^\]]*)\]/)[1].matchAll(/'([^']+)'/g)].map(m => m[1]));
+// Material-quarantined fighters (no usable attire) are dropped from ROSTER
+// (characters.js) so they never reach select; treat them as hidden here too.
+for (const c of FULL_ROSTER) if (!attiresFor(c).length) hidden.add(c.id);
 const fails = []; let n = 0;
 for (const c of FULL_ROSTER) {
   if (hidden.has(c.id)) continue;

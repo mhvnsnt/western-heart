@@ -29356,6 +29356,74 @@
         "row": 298,
         "match": "same-notation"
       }
+    },
+    "FC.DorSLD2(orWhilefacingdown...2)": {
+      "name": "Meng Xian",
+      "input": "FC.DorSLD2(orWhilefacingdown...2)",
+      "startup": 0.333,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 0,
+      "damage_raw": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "-",
+      "on_block": null,
+      "on_hit": null,
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t7:lei:lei_407",
+      "input_slots": [
+        "FC.DorSLD2(orWhilefacingdown...2)"
+      ],
+      "move_class": "special",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "lei_407",
+      "t7_command": "FCD or SLD 2 (or While facing down... 2)",
+      "t7_hit_level": "-",
+      "t7_damage_raw": "-",
+      "t7_startup_frames": "20",
+      "t7_on_block": "-",
+      "t7_on_hit": "-",
+      "t7_on_ch": "-",
+      "merge_source": "t7:lei_407",
+      "set": "FIGHT"
+    },
+    "KNDorPLD2(orWhilefacingdown...2)": {
+      "name": "Meng Xian",
+      "input": "KNDorPLD2(orWhilefacingdown...2)",
+      "startup": 0.333,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 0,
+      "damage_raw": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "-",
+      "on_block": null,
+      "on_hit": null,
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t7:lei:lei_409",
+      "input_slots": [
+        "KNDorPLD2(orWhilefacingdown...2)"
+      ],
+      "move_class": "special",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "lei_409",
+      "t7_command": "KND or PLD 2 (or While facing down... 2)",
+      "t7_hit_level": "-",
+      "t7_damage_raw": "-",
+      "t7_startup_frames": "20",
+      "t7_on_block": "-",
+      "t7_on_hit": "-",
+      "t7_on_ch": "-",
+      "merge_source": "t7:lei_409",
+      "set": "FIGHT"
     }
   },
   "restored_from_sweep_338": {
@@ -29840,7 +29908,21 @@
     "moves_before": 1080,
     "moves_after": 1084,
     "added": {
-      "donor": 4
+      "donor": 4,
+      "lei_pull_20261023": {
+        "date": "2026-10-23",
+        "by": "batch6 pull worker (T8 wavu + T7 t7chicken frame-data diff; T7-only for dio/rave)",
+        "moves_before": 1084,
+        "moves_after": 1086,
+        "added": [
+          "FC.DorSLD2(orWhilefacingdown...2)",
+          "KNDorPLD2(orWhilefacingdown...2)"
+        ],
+        "sources": [
+          "docs/t7t8-reference/frame-data-t7/lei.json"
+        ],
+        "show_lock": "2026-10-23: all 2 moves tagged set=FIGHT per SHOW-ANIMATION LOCK (owner standing law); file-level anim_set_lock added"
+      }
     },
     "slots": 452,
     "slots_by_priority": {
@@ -30882,5 +30964,65 @@
     "1~donor.byou.38": 2048
   },
   "stance_after": {},
-  "anim_bank": "lei"
+  "anim_bank": "lei",
+  "anim_set_lock": {
+    "RAVE": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; tracked in docs/anim/LEI-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
+  },
+  "canon_moves": [
+    {
+      "name": "Entrance Is the Fight",
+      "input": "u+1",
+      "display_input": "u+LP1",
+      "input_original": "`u+1`",
+      "anim_ref": "wh:rave:sig:entrance-is-the-fight",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 17,
+      "startup_frames": 17,
+      "canon": true,
+      "canon_owner": "RAVE",
+      "properties": {
+        "stance": "jumping",
+        "direction": "u",
+        "type": "strike",
+        "limb": "armL",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Green Mist",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:rave:sig:green-mist",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 18,
+      "startup_frames": 18,
+      "canon": true,
+      "canon_owner": "RAVE",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  }
 }

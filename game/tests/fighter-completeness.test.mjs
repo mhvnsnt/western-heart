@@ -28,7 +28,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 // --- Load the real chain modules (sandbox copy: same pattern as
 // --- model-key-guard.test.mjs; these modules are pure ESM).
 const sandbox = mkdtempSync(join(process.env.TMPDIR || '/tmp', 'wh-fighter-completeness-'));
-for (const f of ['roster-full.js', 'attires.js', 'movesets.js'])
+for (const f of ['roster-full.js', 'attires.js', 'movesets.js', 'material-status.js'])
   cpSync(join(ROOT, 'game/js', f), join(sandbox, f));
 writeFileSync(join(sandbox, 'package.json'), '{"type":"module"}');
 const { FULL_ROSTER } = await import(pathToFileURL(join(sandbox, 'roster-full.js')).href);
@@ -53,7 +53,7 @@ for (const [k, u] of Object.entries(OVERRIDES || {})) if (u) MODEL_URLS[k] = u;
  * standalone cards into the docfrank ladder, so they are no longer roster ids
  * and cannot be moveset gaps.) */
 const KNOWN_GAPS = {
-  'ryuji': 'file exists, not in MOVESET_IDS (CornerStone lane)',
+  'ryuji': 'id-keyed check only: roster entry plays his own loaded set ryuji-rock (129 moves)',
 };
 
 test('every roster fighter\'s own moveset file is actually loaded (or a documented gap)', () => {

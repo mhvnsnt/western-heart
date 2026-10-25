@@ -520,5 +520,83 @@
     "f+1+3": 2048,
     "P+K": 2048
   },
-  "stance_after": {}
+  "stance_after": {},
+  "canon_moves": [
+    {
+      "name": "Eight Extremes",
+      "input": "1+4",
+      "display_input": "LP1+RK4",
+      "input_original": "`P+K`",
+      "anim_ref": "wh:vf-akira:sig:eight-extremes",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 22,
+      "startup_frames": 18,
+      "canon": true,
+      "canon_owner": "VF-AKIRA",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "collisions": [
+        {
+          "kind": "tekken-moves-key",
+          "key": "1+4",
+          "entry_name": "Mountain Stance [WH SIGNATURE]",
+          "entry_anim_ref": "wh:vf-akira:sig:mountain-stance"
+        },
+        {
+          "kind": "canon-canon",
+          "key": "1+4",
+          "entry_name": "Mountain Stance",
+          "entry_anim_ref": "wh:vf-akira:sig:mountain-stance"
+        }
+      ],
+      "system_note": "System note: LP1+RK4 is also Reihou, but ONLY while the foe is in RAGE (otherwise the moveset LP1+RK4 plays). No in-game conflict outside foe-RAGE.",
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Mountain Stance",
+      "input": "1+4",
+      "display_input": "LP1+RK4",
+      "input_original": "`1+4`",
+      "anim_ref": "wh:vf-akira:sig:mountain-stance",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 20,
+      "startup_frames": 19,
+      "canon": true,
+      "canon_owner": "VF-AKIRA",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "collisions": [
+        {
+          "kind": "canon-canon",
+          "key": "1+4",
+          "entry_name": "Eight Extremes",
+          "entry_anim_ref": "wh:vf-akira:sig:eight-extremes"
+        }
+      ],
+      "system_note": "System note: LP1+RK4 is also Reihou, but ONLY while the foe is in RAGE (otherwise the moveset LP1+RK4 plays). No in-game conflict outside foe-RAGE.",
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  }
 }

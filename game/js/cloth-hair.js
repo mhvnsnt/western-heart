@@ -4,11 +4,18 @@
    the DESIGN (soft-body secondary motion on hair/costumes) but no
    implementation-level cloth code survived extraction — so this module
    implements the industry-standard approach those games use, adapted for
-   the browser: verlet-integration particles + distance constraints
-   (the same family as DOA's soft engine and SF's cloth), with bone-chain
-   verlet for hair strands (DynamicBone-style).
+   the browser.
+
+   Solver (2026-10-23 upgrade): the verlet core below is now a thin
+   compatibility facade over game/js/fx/cloth.js — a real XPBD solver
+   (ported from jspdown/cloth, MIT) with compliance-based fabric
+   stiffness, stretch + bend constraints from mesh topology, and
+   graph-colored Gauss-Seidel solving. Public API unchanged:
+   VerletSystem / ClothSheet / HairChain / autoAttachCloth keep their
+   signatures, so fighter-depth.js and the whole roster pick up the
+   upgrade with zero call-site changes.
    Performance (browser-first):
-     • Fixed-substep verlet (2 substeps), typed arrays, particle BUDGETS.
+     • Fixed-substep XPBD, typed arrays, particle BUDGETS.
      • Distance LOD: sim sleeps beyond CLOTH_LOD_DIST, resumes on approach.
      • Colliders are analytic spheres/capsules (no mesh collision).
    Pipeline wiring: character pipeline tags meshes via glTF extras ->
@@ -17,110 +24,73 @@
    pipeline copies extras -> userData. autoAttachCloth(scene) finds them.
    ============================================================ */
 
-export const CLOTH_LOD_DIST = 14;      // beyond this, sim sleeps
+import {
+  XPBDSolver, buildSheet, buildChain, writePositions, CLOTH_LOD_DIST,
+} from './fx/cloth.js';
+export { CLOTH_LOD_DIST };
+
 export const CLOTH_SUBSTEPS = 2;
 export const CLOTH_MAX_PARTICLES = 900; // per-system budget
 
-/* ---------- verlet core (typed arrays, no per-frame allocation) ---------- */
+/* ---------- XPBD core (facade over game/js/fx/cloth.js) ----------
+   Same public surface as the old verlet core (addParticle,
+   addConstraint, step, pos/prev/invMass/count/constraints, gravity,
+   damping, wind) so existing call sites keep working; the physics
+   underneath is now XPBD with graph-colored constraint solving. */
 export class VerletSystem {
   constructor(maxParticles) {
     const n = Math.min(maxParticles, CLOTH_MAX_PARTICLES);
     this.n = n;
-    this.pos = new Float32Array(n * 3);
-    this.prev = new Float32Array(n * 3);
-    this.invMass = new Float32Array(n);   // 0 = pinned
-    this.count = 0;
-    this.constraints = []; // [ia, ib, rest]
+    this._solver = new XPBDSolver(n, { substeps: CLOTH_SUBSTEPS, damping: 0.985 });
+    this.prev = new Float32Array(n * 3); // compat: pos at previous step
+    this.constraints = []; // [ia, ib, rest] — introspection only
     this.gravity = -9.8;
     this.damping = 0.985;
     this.wind = { x: 0, y: 0, z: 0, t: 0 };
   }
+  get pos() { return this._solver.pos; }
+  get invMass() { return this._solver.invMass; }
+  get count() { return this._solver.count; }
   addParticle(x, y, z, invMass = 1) {
-    const i = this.count++;
-    this.pos.set([x, y, z], i * 3);
+    const i = this._solver.addParticle(x, y, z, invMass);
     this.prev.set([x, y, z], i * 3);
-    this.invMass[i] = invMass;
     return i;
   }
   addConstraint(a, b, rest = -1) {
+    const s = this._solver;
     if (rest < 0) {
-      const dx = this.pos[a*3]-this.pos[b*3], dy = this.pos[a*3+1]-this.pos[b*3+1], dz = this.pos[a*3+2]-this.pos[b*3+2];
-      rest = Math.hypot(dx, dy, dz);
+      const dx = s.pos[b*3]-s.pos[a*3], dy = s.pos[b*3+1]-s.pos[a*3+1], dz = s.pos[b*3+2]-s.pos[a*3+2];
+      rest = Math.sqrt(dx*dx + dy*dy + dz*dz);
     }
     this.constraints.push([a, b, rest]);
+    // rigid (compliance 0), matching the old solver's inextensible links
+    return s.addConstraint(a, b, 0, rest);
   }
   step(dt, colliders = []) {
-    const sub = CLOTH_SUBSTEPS, h = dt / sub;
-    for (let s = 0; s < sub; s++) {
-      this._integrate(h, colliders);
-      for (let it = 0; it < 3; it++) this._solve();
-    }
-  }
-  _integrate(h, colliders) {
-    const { pos, prev, invMass, count, damping } = this;
-    this.wind.t += h;
-    const wx = this.wind.x * (0.6 + 0.4 * Math.sin(this.wind.t * 2.1));
-    const wz = this.wind.z * (0.6 + 0.4 * Math.cos(this.wind.t * 1.7));
-    for (let i = 0; i < count; i++) {
-      if (invMass[i] === 0) continue;
-      const ix = i * 3;
-      const px = pos[ix], py = pos[ix+1], pz = pos[ix+2];
-      const vx = (px - prev[ix]) * damping, vy = (py - prev[ix+1]) * damping, vz = (pz - prev[ix+2]) * damping;
-      prev[ix] = px; prev[ix+1] = py; prev[ix+2] = pz;
-      pos[ix]   = px + vx + wx * h * h * invMass[i];
-      pos[ix+1] = py + vy + this.gravity * h * h * invMass[i];
-      pos[ix+2] = pz + vz + wz * h * h * invMass[i];
-      // analytic sphere colliders
-      for (const c of colliders) {
-        const dx = pos[ix]-c.x, dy = pos[ix+1]-c.y, dz = pos[ix+2]-c.z;
-        const d2 = dx*dx + dy*dy + dz*dz, r = c.r;
-        if (d2 < r*r && d2 > 1e-9) {
-          const d = Math.sqrt(d2), push = (r - d) / d;
-          pos[ix] += dx*push; pos[ix+1] += dy*push; pos[ix+2] += dz*push;
-        }
-      }
-    }
-  }
-  _solve() {
-    const { pos, invMass, constraints } = this;
-    for (const [a, b, rest] of constraints) {
-      const wa = invMass[a], wb = invMass[b], w = wa + wb;
-      if (w === 0) continue;
-      const ax = a*3, bx = b*3;
-      const dx = pos[bx]-pos[ax], dy = pos[bx+1]-pos[ax+1], dz = pos[bx+2]-pos[ax+2];
-      const d = Math.hypot(dx, dy, dz) || 1e-6;
-      const diff = (d - rest) / d / w;
-      pos[ax] += dx*diff*wa; pos[ax+1] += dy*diff*wa; pos[ax+2] += dz*diff*wa;
-      pos[bx] -= dx*diff*wb; pos[bx+1] -= dy*diff*wb; pos[bx+2] -= dz*diff*wb;
-    }
+    const s = this._solver;
+    this.prev.set(s.pos.subarray(0, s.count * 3));
+    s.gravity = this.gravity;
+    s.damping = this.damping;
+    s.wind.x = this.wind.x; s.wind.y = this.wind.y; s.wind.z = this.wind.z;
+    s.step(dt, colliders);
+    this.wind.t = s.wind.t;
   }
 }
 
 /* ---------- cloth sheet (capes, skirts, sashes) ---------- */
-/* Builds a pinned-top grid cloth. writeTo(geometry) copies sim positions
-   into a THREE.BufferGeometry's position attribute each frame. */
+/* Builds a pinned-top grid cloth on the XPBD engine: rigid stretch
+   constraints on mesh edges + compliance bend constraints on
+   adjacent-triangle hinges (proper fabric drape — cotton default).
+   writeTo(geometry) copies sim positions into a THREE.BufferGeometry's
+   position attribute each frame. */
 export class ClothSheet {
   constructor(cols, rows, width, height, pinTop = true) {
     this.cols = cols; this.rows = rows;
-    this.sys = new VerletSystem(cols * rows);
-    this.idx = [];
-    for (let r = 0; r < rows; r++) {
-      for (let c = 0; c < cols; c++) {
-        const x = (c / (cols-1) - 0.5) * width;
-        const y = -(r / (rows-1)) * height;
-        const pinned = pinTop && r === 0;
-        this.idx.push(this.sys.addParticle(x, y, 0, pinned ? 0 : 1));
-      }
-    }
-    const at = (c, r) => this.idx[r * cols + c];
-    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
-      if (c < cols-1) this.sys.addConstraint(at(c,r), at(c+1,r));
-      if (r < rows-1) this.sys.addConstraint(at(c,r), at(c,r+1));
-      if (c < cols-1 && r < rows-1) { // shear keeps it from over-stretching
-        this.sys.addConstraint(at(c,r), at(c+1,r+1));
-        this.sys.addConstraint(at(c+1,r), at(c,r+1));
-      }
-    }
+    const built = buildSheet(cols, rows, width, height, {
+      pinTop, fabric: 'cotton', substeps: CLOTH_SUBSTEPS,
+    });
+    this.sys = built.solver;
+    this.idx = built.idx;
     this.sleeping = false;
   }
   /* origin: THREE.Vector3-ish world anchor; returns Float32Array positions */
@@ -132,34 +102,39 @@ export class ClothSheet {
   /* Copy sim -> geometry positions with an origin offset. geometry must
      have exactly cols*rows vertices in row-major order. */
   writeTo(positionAttr, ox, oy, oz) {
-    const { pos } = this.sys;
-    for (let i = 0; i < this.idx.length; i++) {
-      const s = this.idx[i] * 3;
-      positionAttr.setXYZ(i, pos[s]+ox, pos[s+1]+oy, pos[s+2]+oz);
-    }
-    positionAttr.needsUpdate = true;
+    writePositions(this.sys, positionAttr, ox, oy, oz);
   }
 }
 
 /* ---------- hair chains (ponytails, long hair, tassels) ---------- */
-/* DynamicBone-style: a verlet chain whose root is pinned to a moving
-   anchor (the head bone). Each frame the caller sets the root from the
-   bone's world position; the chain follows with spring lag. */
+/* XPBD chain on the hair fabric preset: rigid stretch links + soft
+   skip-one bend constraints so strands curve instead of kinking.
+   Root is pinned to a moving anchor (the head bone) via pinTo — the
+   caller sets it from the bone's world position each frame and the
+   chain follows with physical lag. */
 export class HairChain {
   constructor(segments, segLen, thickness = 1) {
     this.segLen = segLen;
-    this.sys = new VerletSystem(segments + 1);
-    this.idx = [];
-    for (let i = 0; i <= segments; i++) this.idx.push(this.sys.addParticle(0, -i*segLen, 0, i === 0 ? 0 : 1));
-    for (let i = 0; i < segments; i++) this.sys.addConstraint(this.idx[i], this.idx[i+1], segLen);
+    const built = buildChain(segments, segLen, { fabric: 'hair', substeps: CLOTH_SUBSTEPS });
+    this.sys = built.solver;
+    this.idx = built.idx;
     this.thickness = thickness;
     this.root = { x: 0, y: 0, z: 0 };
+    this._rootPlaced = false;
   }
   setRoot(x, y, z) {
+    const s = this.sys;
+    if (!this._rootPlaced) {
+      // First placement: rigid-translate the whole strand to the anchor
+      // instead of stretching the root link across the scene — no whip
+      // injected on attach; the strand starts hanging from the bone.
+      const i0 = this.idx[0] * 3;
+      const dx = x - s.pos[i0], dy = y - s.pos[i0+1], dz = z - s.pos[i0+2];
+      for (const i of this.idx) { s.pos[i*3] += dx; s.pos[i*3+1] += dy; s.pos[i*3+2] += dz; }
+      this._rootPlaced = true;
+    }
     this.root = { x, y, z };
-    const i = this.idx[0] * 3;
-    this.sys.pos[i] = x; this.sys.pos[i+1] = y; this.sys.pos[i+2] = z;
-    this.sys.prev[i] = x; this.sys.prev[i+1] = y; this.sys.prev[i+2] = z;
+    s.pinTo(this.idx[0], x, y, z);
   }
   step(dt, colliders = []) { this.sys.step(dt, colliders); }
   /* Strand points for tube/line rendering (world space). */

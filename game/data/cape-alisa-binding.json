@@ -5,16 +5,22 @@
  "display_name": "CAPE JONES",
  "secret_identity": "CYBORG X",
  "replaces": "Alisa",
- "model": "cape-jones",
+ "model": "cyborg-x",
  "source_frame_data": "docs/t7t8-reference/frame-data-t8-full/alisa.json",
  "source_license": "CC0-1.0 (wavu.wiki)",
- "anim_bank_status": "MISSING: no Alisa animation bank in game. Owner law t121u: motions must come from T5/T6/T7/T8/TTT2 teardowns; Tekken 3 is NOT a source. The game currently falls back to the gunjack T3 bank for cyborgx; that fallback is logged here as a last resort only and must be replaced.",
+ "anim_bank_status": "T8/T7 MOTION FILES ABSENT (audit 2026-10-23 CT): no Tekken 8 or Tekken 7 install, .pak/.utoc/.ucas, or extracted anim exists on the box, in western-heart, or in the owner Drive (search \"Tekken\" -> only T3 zip + T6 teardown). teardown/tekken8/ holds 2 fan model archives only; docs/t7t8-reference holds wavu.wiki CC0 frame data (this file's 188 moves). Alisa motion extraction is staged in tools/extract/t8/ and runs the moment the owner's T8 Paks are on the box (docs/tech/T8-EXTRACTION.md).",
  "source_law": "owner t121u 2026-10-23: no Tekken 3 as a source; T5/T6/T7/T8/TTT2 only; T3 = logged last resort.",
  "t3_last_resort_log": [
   {
    "what": "cyborgx fight animation",
    "current_bank": "game/assets/anim/t3/gunjack (T3)",
    "reason": "no Alisa bank decoded from T5-T8/TTT2 yet",
+   "logged": "2026-10-23 CT"
+  },
+  {
+   "what": "cyborgx attack/move clips",
+   "current_bank": "game/assets/anim/t3/gunjack (T3)",
+   "reason": "T8 Alisa motion not on box; stance replaced by CMU guard; attacks still fall back until T8 Paks are extracted",
    "logged": "2026-10-23 CT"
   }
  ],
@@ -30,7 +36,7 @@
    "startup": "i10",
    "target": "h",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-1,1",
@@ -40,7 +46,7 @@
    "startup": ",i21",
    "target": ",h",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-1+2",
@@ -50,7 +56,7 @@
    "startup": "i19~20",
    "target": "m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-1,2",
@@ -60,7 +66,7 @@
    "startup": ",i12",
    "target": ",h",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-1,2,2",
@@ -70,7 +76,7 @@
    "startup": ",i20~35",
    "target": ",h",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-1+2+3",
@@ -80,7 +86,7 @@
    "startup": null,
    "target": null,
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-1+2+3+4",
@@ -90,7 +96,7 @@
    "startup": null,
    "target": null,
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-1+2+4",
@@ -100,7 +106,7 @@
    "startup": null,
    "target": null,
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-1,2,d+2",
@@ -110,7 +116,7 @@
    "startup": ",i27~28",
    "target": ",l",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-1,2,d+2*",
@@ -120,7 +126,7 @@
    "startup": ",i36~37",
    "target": ",l",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-1+3",
@@ -130,7 +136,7 @@
    "startup": "i12~14",
    "target": "t",
    "slot": "grab",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-2",
@@ -140,7 +146,7 @@
    "startup": "i12",
    "target": "h",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-2,2",
@@ -150,7 +156,7 @@
    "startup": ",i18~33",
    "target": ",h",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-2+3",
@@ -160,7 +166,7 @@
    "startup": "i16",
    "target": "m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-2,3",
@@ -170,7 +176,7 @@
    "startup": ",i22~23",
    "target": ",m",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-2,3,3",
@@ -180,7 +186,7 @@
    "startup": ",i20~22",
    "target": ",m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-2,3,4",
@@ -190,7 +196,7 @@
    "startup": ",i42~45",
    "target": ",L",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-2+4",
@@ -200,7 +206,7 @@
    "startup": "i12~14",
    "target": "t",
    "slot": "grab",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-3",
@@ -210,7 +216,7 @@
    "startup": "i13~14",
    "target": "m",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-3,2",
@@ -220,7 +226,7 @@
    "startup": ",i26~27",
    "target": ",h",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-3,f+2",
@@ -230,7 +236,7 @@
    "startup": ",i24~28 i1~4 i1~4 i1~4 i1",
    "target": ",m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-4",
@@ -240,7 +246,7 @@
    "startup": "i13~14",
    "target": "h",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-b+1",
@@ -250,7 +256,7 @@
    "startup": "i15~16",
    "target": "m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-b+1,1+2",
@@ -260,7 +266,7 @@
    "startup": ",i25~40 i26~28",
    "target": ",SL,m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-b+1+2",
@@ -270,7 +276,7 @@
    "startup": "i19~20",
    "target": "m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-b+1+3",
@@ -280,7 +286,7 @@
    "startup": null,
    "target": null,
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-b+1+3,P",
@@ -290,7 +296,7 @@
    "startup": "i20~21",
    "target": "m!",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-b+2",
@@ -300,7 +306,7 @@
    "startup": "i18",
    "target": "m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-b+2,1",
@@ -310,7 +316,7 @@
    "startup": ",i25~26",
    "target": ",m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-b+2,3",
@@ -320,7 +326,7 @@
    "startup": ",i23~24",
    "target": ",m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-b+2,4",
@@ -330,7 +336,7 @@
    "startup": ",i16~17",
    "target": ",h",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-b+3",
@@ -340,7 +346,7 @@
    "startup": "i20~22",
    "target": "m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-b+3+4",
@@ -350,7 +356,7 @@
    "startup": "i18~19",
    "target": "m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-b+3+4,3+4",
@@ -360,7 +366,7 @@
    "startup": ",i56~61",
    "target": ",M",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-b+4",
@@ -370,7 +376,7 @@
    "startup": "i15~16",
    "target": "m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-b+4,3",
@@ -380,7 +386,7 @@
    "startup": ",i29~30",
    "target": ",m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-b+4,4",
@@ -390,7 +396,7 @@
    "startup": ",i25~27",
    "target": ",M",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-Back throw",
@@ -400,17 +406,17 @@
    "startup": null,
    "target": "t",
    "slot": "grab",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
-   "alisa_id": "Alisa-(Back to wall).b,\u200bb,\u200bUB",
+   "alisa_id": "Alisa-(Back to wall).b,​b,​UB",
    "name": "[[Wall Jump Attack]]",
-   "input": "(Back to wall).b,\u200bb,\u200bUB",
+   "input": "(Back to wall).b,​b,​UB",
    "damage": null,
    "startup": null,
    "target": null,
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-b,B+1+4",
@@ -420,7 +426,7 @@
    "startup": "i63~84",
    "target": "h!",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-b,B+2+3",
@@ -430,7 +436,7 @@
    "startup": "i75~76",
    "target": "m!",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-BKP.1",
@@ -440,7 +446,7 @@
    "startup": "i11~13",
    "target": "h",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-BKP.1+2",
@@ -450,7 +456,7 @@
    "startup": "i34~71",
    "target": "h!",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-BKP.2",
@@ -460,7 +466,7 @@
    "startup": "i11~33",
    "target": "h",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-BKP.3",
@@ -470,7 +476,7 @@
    "startup": "i24~27",
    "target": "m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-BKP.4",
@@ -480,7 +486,7 @@
    "startup": "i18~23",
    "target": "m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-BT.4",
@@ -490,7 +496,7 @@
    "startup": "i16~17",
    "target": "m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-CLK.3",
@@ -500,7 +506,7 @@
    "startup": "i13~14",
    "target": "m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-CLK.d+3",
@@ -510,7 +516,7 @@
    "startup": "i30~31",
    "target": "L",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-CLK(Two spins).3",
@@ -520,7 +526,7 @@
    "startup": "i13~14",
    "target": "m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-d+1+2",
@@ -530,7 +536,7 @@
    "startup": null,
    "target": null,
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-d+2",
@@ -540,7 +546,7 @@
    "startup": "i24~26",
    "target": "M",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-d+2,4",
@@ -550,7 +556,7 @@
    "startup": ",i18~21",
    "target": ",M",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-d+3",
@@ -560,7 +566,7 @@
    "startup": "i23~32",
    "target": "L",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-d+3+4",
@@ -570,7 +576,7 @@
    "startup": "i27~i28",
    "target": "L",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-d+4",
@@ -580,7 +586,7 @@
    "startup": "i17~18",
    "target": "L",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-d+4,1+2",
@@ -590,7 +596,7 @@
    "startup": ",i20~21",
    "target": ",h",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-db+1",
@@ -600,7 +606,7 @@
    "startup": null,
    "target": null,
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-db+2",
@@ -610,7 +616,7 @@
    "startup": "i18~19",
    "target": "m",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-db+2,2",
@@ -620,7 +626,7 @@
    "startup": ",i19~20",
    "target": ",m",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-db+3",
@@ -630,7 +636,7 @@
    "startup": "i16",
    "target": "L",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-db+4",
@@ -640,7 +646,7 @@
    "startup": "i20~21",
    "target": "L",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DBT.1",
@@ -650,7 +656,7 @@
    "startup": "i24~28 i1~6 i1~6 i1~6 i1~6 i1~2",
    "target": "h,h,h,h,h,h",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DBT.1+2",
@@ -660,7 +666,7 @@
    "startup": "i12~15 i1~4 i1~5 i1~6",
    "target": "m,m,M,M",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DBT.2",
@@ -670,7 +676,7 @@
    "startup": "i16~18 i1~5 i1~5 i1~5 i1~1",
    "target": "M,M,h,h,h",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DBT.2,1",
@@ -680,7 +686,7 @@
    "startup": "i26~28",
    "target": "h",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DBT.3",
@@ -690,7 +696,7 @@
    "startup": "i16~20, i1~5",
    "target": "L",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DBT.4",
@@ -700,7 +706,7 @@
    "startup": "i17~19",
    "target": "M",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DBT.f+1",
@@ -710,7 +716,7 @@
    "startup": "i19~21",
    "target": "M,t",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DBT.f+1+2",
@@ -720,7 +726,7 @@
    "startup": "i17-18, i8~9, i8~9, i8~9, i8~9",
    "target": "m,m,m,m,m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DBT.f+2",
@@ -730,7 +736,7 @@
    "startup": "i19~20",
    "target": "L",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DBT.f+2,2",
@@ -740,7 +746,7 @@
    "startup": "i35~37",
    "target": ",m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.1",
@@ -750,7 +756,7 @@
    "startup": "i13~18 i1~5 i1~7 i1~5 i1~4 i16~17",
    "target": "m,m,h,h,h,m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.1+2",
@@ -760,7 +766,7 @@
    "startup": "i16~18 i5~7 i9~11",
    "target": "h,h,h",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.2",
@@ -770,7 +776,7 @@
    "startup": "i20~21 i1~2 i1~2",
    "target": "M,M,m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.2,1",
@@ -780,7 +786,7 @@
    "startup": "i28~56",
    "target": ",h!",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.3",
@@ -790,7 +796,7 @@
    "startup": null,
    "target": null,
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.b+2",
@@ -800,7 +806,7 @@
    "startup": "i18~20",
    "target": "m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.b+2,1",
@@ -810,7 +816,7 @@
    "startup": ",i20~21 i1~6 i1~5 i1~5 i1~3",
    "target": ",m,SL,SL,SL,SL",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.b+3",
@@ -820,7 +826,7 @@
    "startup": null,
    "target": null,
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.b,b",
@@ -830,7 +836,7 @@
    "startup": null,
    "target": null,
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.BT.1",
@@ -840,7 +846,7 @@
    "startup": "i19~22 i1~3 i1~3 i1~3 i1~3 i1~3",
    "target": "m,m,m,m,m,m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.d+1",
@@ -850,7 +856,7 @@
    "startup": "i20~24 i1~5 i1~5 i1~5 i1~3",
    "target": "L,L,L,L,L",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.d+2",
@@ -860,7 +866,7 @@
    "startup": "i22~23",
    "target": "L,L,L",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.d+3",
@@ -870,7 +876,7 @@
    "startup": null,
    "target": null,
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.d+3,1",
@@ -880,7 +886,7 @@
    "startup": ",i20~21",
    "target": ",m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.f+1",
@@ -890,7 +896,7 @@
    "startup": "i11~13 i1~3 i1~3 i1~3 i1~3 i1~3 i1~1",
    "target": "h",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.f+1+2",
@@ -900,7 +906,7 @@
    "startup": "i23~27 i1~5 i1~4 i1~4 i1~5 i1~5 i1~4 i1~1",
    "target": "m,m,m,m,m,m,m,m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.f+1+2,1+2",
@@ -910,7 +916,7 @@
    "startup": ",i20~26",
    "target": ",m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.f+2",
@@ -920,7 +926,7 @@
    "startup": "i15 i1~1",
    "target": "m,m",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.f+2,1",
@@ -930,7 +936,7 @@
    "startup": ",i23 i1~1",
    "target": ",m,m",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.f+2,1,2",
@@ -940,7 +946,7 @@
    "startup": ",i23~24 i4~5",
    "target": ",m,m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.f+3",
@@ -950,7 +956,7 @@
    "startup": null,
    "target": null,
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.f,f",
@@ -960,7 +966,7 @@
    "startup": null,
    "target": null,
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.uf+1+2",
@@ -970,7 +976,7 @@
    "startup": "i29~31 i1~3 i1~2",
    "target": "m,M,M",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-DES.uf+2",
@@ -980,7 +986,7 @@
    "startup": "i10~14 i1~5 i1~5 i1~5 i1~1",
    "target": "h,h,h,h,h",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-df+1",
@@ -990,7 +996,7 @@
    "startup": "i13",
    "target": "m",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-df+1,1",
@@ -1000,7 +1006,7 @@
    "startup": ",i30~31",
    "target": ",h",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-df+1,1,2",
@@ -1010,7 +1016,7 @@
    "startup": ",i22~25",
    "target": ",h",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-df+1,4",
@@ -1020,7 +1026,7 @@
    "startup": ",i26~27",
    "target": ",m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-df+2",
@@ -1030,7 +1036,7 @@
    "startup": "i16~17",
    "target": "m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-df+3",
@@ -1040,7 +1046,7 @@
    "startup": "i16",
    "target": "m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-df+3,3",
@@ -1050,7 +1056,7 @@
    "startup": ",i23~24",
    "target": ",L",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-df+4",
@@ -1060,7 +1066,7 @@
    "startup": "i12",
    "target": "m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f+1+2",
@@ -1070,7 +1076,7 @@
    "startup": "i14~15",
    "target": "m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f+2",
@@ -1080,7 +1086,7 @@
    "startup": "i17~18",
    "target": "m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f+2,1",
@@ -1090,7 +1096,7 @@
    "startup": ",i24",
    "target": ",m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f+2,3",
@@ -1100,7 +1106,7 @@
    "startup": ",i22",
    "target": ",h",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f+2,3,3",
@@ -1110,7 +1116,7 @@
    "startup": ",i35~36",
    "target": ",m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f+3",
@@ -1120,7 +1126,7 @@
    "startup": "i14~15",
    "target": "h",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f+3,1+2",
@@ -1130,7 +1136,7 @@
    "startup": ",i24~25",
    "target": ",m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f+3,2",
@@ -1140,7 +1146,7 @@
    "startup": ",i24~26",
    "target": ",h",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f+3+4",
@@ -1150,7 +1156,7 @@
    "startup": null,
    "target": null,
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f+4",
@@ -1160,7 +1166,7 @@
    "startup": "i16",
    "target": "m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f+4,1",
@@ -1170,7 +1176,7 @@
    "startup": ",i25~26",
    "target": ",h",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f+4,1,4",
@@ -1180,7 +1186,7 @@
    "startup": ",i27~65",
    "target": ",m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-FC.d+1",
@@ -1190,7 +1196,7 @@
    "startup": "i10",
    "target": "sl",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-FC.d+2",
@@ -1200,7 +1206,7 @@
    "startup": "i11",
    "target": "sl",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-FC.d+3",
@@ -1210,7 +1216,7 @@
    "startup": "i16",
    "target": "L",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-FC.d+4",
@@ -1220,7 +1226,7 @@
    "startup": "i12",
    "target": "l",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-FC.db+1+2",
@@ -1230,7 +1236,7 @@
    "startup": "i11",
    "target": "t",
    "slot": "grab",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f,F+1+2",
@@ -1240,7 +1246,7 @@
    "startup": "i17~18 i12~13",
    "target": "m,m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f,F+2",
@@ -1250,7 +1256,7 @@
    "startup": "i16~17",
    "target": "m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f,F+2,3",
@@ -1260,7 +1266,7 @@
    "startup": ",i22~24",
    "target": ",m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f,F+2,H.1+2",
@@ -1270,7 +1276,7 @@
    "startup": "i22~23",
    "target": ",m,m,m,m,m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f,F+3",
@@ -1280,7 +1286,7 @@
    "startup": "i18~19",
    "target": "m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f,F+3,4",
@@ -1290,7 +1296,7 @@
    "startup": ",i19~20",
    "target": ",h",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f,F+3,4,4",
@@ -1300,7 +1306,7 @@
    "startup": ",i27~29",
    "target": ",m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f,F+4",
@@ -1310,7 +1316,7 @@
    "startup": "i22~29 i34~39",
    "target": "m,m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f,f,F+1+2",
@@ -1320,7 +1326,7 @@
    "startup": "i18~36",
    "target": "M",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f,f,F+2",
@@ -1330,7 +1336,7 @@
    "startup": "i13~15",
    "target": "h",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f,f,F+3",
@@ -1340,7 +1346,7 @@
    "startup": "i18~19",
    "target": "m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-f,f,F+3,4",
@@ -1350,7 +1356,7 @@
    "startup": ",i20~22",
    "target": ",m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-FUFT.1+2",
@@ -1360,7 +1366,7 @@
    "startup": null,
    "target": null,
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-FUFT.1+2,3",
@@ -1370,7 +1376,7 @@
    "startup": "i22~23",
    "target": ",m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-H.2+3",
@@ -1380,7 +1386,7 @@
    "startup": "i20~21, i1~2, i1, i33",
    "target": "m,m,m,M",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-H.d+1+2",
@@ -1390,7 +1396,7 @@
    "startup": null,
    "target": null,
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-H.f+1+4",
@@ -1400,7 +1406,7 @@
    "startup": null,
    "target": null,
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-hFC.1+2",
@@ -1410,7 +1416,7 @@
    "startup": "i21~23, i6~8",
    "target": "L,L",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-Left throw",
@@ -1420,7 +1426,7 @@
    "startup": null,
    "target": "t",
    "slot": "grab",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-OTG.db+1+2",
@@ -1430,7 +1436,7 @@
    "startup": "i25~27",
    "target": "L",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-R.df+1+2",
@@ -1440,7 +1446,7 @@
    "startup": "i20",
    "target": "m,t",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-Right throw",
@@ -1450,7 +1456,7 @@
    "startup": null,
    "target": "t",
    "slot": "grab",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-SBT.1",
@@ -1460,7 +1466,7 @@
    "startup": "i13~14",
    "target": "m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-SBT.1+2",
@@ -1470,7 +1476,7 @@
    "startup": "i27~28",
    "target": "h!",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-SBT.1,2",
@@ -1480,7 +1486,7 @@
    "startup": ",i18~19",
    "target": ",m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-SBT.1,2,1",
@@ -1490,7 +1496,7 @@
    "startup": ",i20~21",
    "target": ",m",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-SBT.1,2,1,3+4",
@@ -1500,7 +1506,7 @@
    "startup": ",i18",
    "target": ",m,m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-SBT.2",
@@ -1510,7 +1516,7 @@
    "startup": "i16~27",
    "target": "m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-SBT.3",
@@ -1520,7 +1526,7 @@
    "startup": "i16~20, i1~5",
    "target": "L",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-SBT.4",
@@ -1530,7 +1536,7 @@
    "startup": "i17~19",
    "target": "M",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-SBT.D",
@@ -1540,7 +1546,7 @@
    "startup": null,
    "target": null,
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-SS.4",
@@ -1550,7 +1556,7 @@
    "startup": "i24~25",
    "target": "L",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-SS.4,1+2",
@@ -1560,7 +1566,7 @@
    "startup": ",i18~19 i3~5 i5~7 i4~5",
    "target": ",h,h,h,m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-u+1+2",
@@ -1570,7 +1576,7 @@
    "startup": "i33~34",
    "target": "m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ub+1",
@@ -1580,7 +1586,7 @@
    "startup": "i19 i1~2",
    "target": "m,M",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ub+2",
@@ -1590,7 +1596,7 @@
    "startup": "i16~20",
    "target": "h",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ub+3+4",
@@ -1600,7 +1606,7 @@
    "startup": "i37~39",
    "target": "M",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ub+3+4,1+2",
@@ -1610,7 +1616,7 @@
    "startup": ",i26~27",
    "target": ",m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ub+4",
@@ -1620,7 +1626,7 @@
    "startup": "i18",
    "target": "m",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ub+4,1",
@@ -1630,7 +1636,7 @@
    "startup": ",i25~27",
    "target": ",m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ub+4,1,1",
@@ -1640,7 +1646,7 @@
    "startup": ",i21",
    "target": ",m",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ub+4,1,1,2",
@@ -1650,7 +1656,7 @@
    "startup": ",i24~25",
    "target": ",h",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ub+4,1,1,2,1",
@@ -1660,7 +1666,7 @@
    "startup": ",i35~36",
    "target": ",h",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ub+4,1,1,2,1,1",
@@ -1670,7 +1676,7 @@
    "startup": ",i32~33 i1~2 i1~2",
    "target": ",m,M,M",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ub+4,1,1,2,1,1,3+4",
@@ -1680,7 +1686,7 @@
    "startup": ",i27~28",
    "target": ",L",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ub+4,1,1,2,1,1,3+4,3",
@@ -1690,7 +1696,7 @@
    "startup": ",i20~21",
    "target": ",m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ub+4,1,1,2,1,1,3+4,3,2",
@@ -1700,7 +1706,7 @@
    "startup": ",i17~22",
    "target": ",M",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ub+4,1,1,2,1,1,3+4,3,2,2",
@@ -1710,7 +1716,7 @@
    "startup": ",i13~16 1~5 i1~6 i1~8",
    "target": ",M,M,h,h",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ub,b",
@@ -1720,7 +1726,7 @@
    "startup": null,
    "target": "sp",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-uf+1",
@@ -1730,7 +1736,7 @@
    "startup": "i19~20 i25 i17",
    "target": "m,m,m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-uf+1+2",
@@ -1740,7 +1746,7 @@
    "startup": "i12~13",
    "target": "t",
    "slot": "grab",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-uf+2",
@@ -1750,7 +1756,7 @@
    "startup": "i16~17",
    "target": "h",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-uf+3",
@@ -1760,7 +1766,7 @@
    "startup": "i17~18",
    "target": "m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-uf+3,2",
@@ -1770,7 +1776,7 @@
    "startup": ",i17~22",
    "target": ",m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-uf+3+4",
@@ -1780,7 +1786,7 @@
    "startup": "i38~40",
    "target": "M",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-uf+4",
@@ -1790,7 +1796,7 @@
    "startup": "i15~16",
    "target": "m",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-uf+4,4",
@@ -1800,7 +1806,7 @@
    "startup": ",i24~26",
    "target": ",M",
    "slot": "light",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ws1",
@@ -1810,7 +1816,7 @@
    "startup": "i13~14",
    "target": "M",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ws1+2",
@@ -1820,7 +1826,7 @@
    "startup": "i20~21",
    "target": "m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ws1+2*",
@@ -1830,7 +1836,7 @@
    "startup": "i28~29",
    "target": "m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ws1+2**",
@@ -1840,7 +1846,7 @@
    "startup": "i39~40",
    "target": "m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ws1,2",
@@ -1850,7 +1856,7 @@
    "startup": ",i24~25",
    "target": ",h",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ws1,2,3",
@@ -1860,7 +1866,7 @@
    "startup": ",i25~26",
    "target": ",m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ws2",
@@ -1870,7 +1876,7 @@
    "startup": "i17~18",
    "target": "m",
    "slot": "heavy",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ws3",
@@ -1880,7 +1886,7 @@
    "startup": "i19~20",
    "target": "m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ws3,B",
@@ -1890,7 +1896,7 @@
    "startup": "i19~20",
    "target": "m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   },
   {
    "alisa_id": "Alisa-ws4",
@@ -1900,7 +1906,15 @@
    "startup": "i11~12",
    "target": "m",
    "slot": "medium",
-   "anim_source": "PENDING-T5-T8-TTT2"
+   "anim_source": "PENDING-T8-PAKS (tools/extract/t8)"
   }
- ]
+ ],
+ "model_note": "owner pt128u 2026-10-23: rig with the most bones wins. cyborg-x.glb = 160 skin joints (Mixamo-named core + ValveBiped helpers; armature named \"T7\\\\Alisa_ARM\", meshes Alisa.dmx etc. = a Tekken 7 Alisa SFM-port model already in the repo) vs cape-jones.glb 49.",
+ "stance_source": {
+  "clip": "game/assets/anim/oss/cyborgx/stance.glb",
+  "from": "CMU Graphics Lab Motion Capture 13_17 (boxing), frames 120+ @30fps",
+  "license": "CMU mocap: free for commercial and non-commercial use (mocap.cs.cmu.edu)",
+  "tool": "tools/anim-retarget/retarget_rot.py",
+  "approved": "owner pt128u 2026-10-23"
+ }
 }
