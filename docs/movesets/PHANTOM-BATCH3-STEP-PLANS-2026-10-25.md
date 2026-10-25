@@ -119,9 +119,9 @@ f+4,4,2,2,4.
   step 2 + f+4,4,2,2,4 step 2 cand 255 (window [14.5,18.5], legR peak 38);
   f+4,4,2,2 step 4 + f+4,4,2,2,4 step 4 cand 302 (window [9.0,13.5], armR
   peak 26); f+4,4,2,2,4 step 5 cand 303 (window [14.5,18.5], legR peak 39).
-  (Same rows, same results as phantom Batch 2's f+4 family review holds:
-  258/255/256/254 — the f+4 family is the same file evidence re-derived in a
-  new batch scope, not copied.)
+  (Rows 258/255 match phantom Batch 2's f+4 family review holds — same
+  windows, same peaks, independently re-derived in this batch scope, not
+  copied; rows 302/303 are the longer-string continuations' holds.)
 
 ### Suspended-drift (5 steps, row null, stale candidate documented, never wired)
 
