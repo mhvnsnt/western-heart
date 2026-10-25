@@ -37,5 +37,12 @@ rate/usage limit or API error), `PreCompact`, `SessionEnd`, and after `Write`/`E
 The autosave is a net, not the plan: still commit with real messages and open the PR yourself.
 
 
+## Complete Wiring Law (owner 2026-10-23)
+
+Read `docs/rules/COMPLETE-WIRING-LAW.md` and `docs/tech/SYSTEMS-COVERAGE.md`. Push every system or ~30 min; backup branch before long jobs.
+
+
+## Main protection law (2026-10-23, after PR #498)
+main is branch-protected with required checks (pr-safety-guard, clobber-guard, deletion-guard, no-deletion-guard, instruction-gate), admins included. Never merge with pending or red checks, never resolve merges in a sparse checkout, never self-apply `owner-approved-deletion` / `owner-approved-stale`. Full rules: `docs/rules/MAIN-PROTECTION.md`.
 ## Handoff playbook (2026-10-23)
 All agents (Claude Code, Muse, others): follow [docs/handoff/HOW-TO-WORK-LIKE-GROK.md](docs/handoff/HOW-TO-WORK-LIKE-GROK.md) and the lane table in [docs/handoff/HANDOFF-2026-10-23.md](docs/handoff/HANDOFF-2026-10-23.md).
