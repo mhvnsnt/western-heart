@@ -14,6 +14,9 @@
    • Announcer: announce() plays the 'announcer' manifest
      (game/data/voices/announcer.json) — round calls, FIGHT, K.O.,
      PERFECT, TIME UP, Tekken-style.
+   • Cue clips: a clip with cue:[startSec, durSec] slices that range out
+     of a shared sampler file (Pantera Set B sampler — cue table in
+     game/data/audio-events.json). Whole-file clips play as before.
    • Music ducking: music.js sets voice.onSpeech; the engine raises
      it while announcer/intro/win lines speak so the BGM dips.
    ============================================================ */
@@ -189,9 +192,12 @@ class VoiceEngine {
           src.buffer = buf;
           const bus = (typeof audio.voiceBus === 'function') ? audio.voiceBus() : null;
           src.connect(bus || audio.ctx.destination);
-          src.start();
-          console.info(`[WH voice] ${fighterId}/${clip.id} playing (${clip.file})`);
-          await this._wait(Math.min(6000, (buf.duration * 1000) + 350));
+          // CUE (2026-10-24): slice [start, dur] out of a shared sampler
+          // file; whole-file clips (no cue) play exactly as before.
+          const cue = Array.isArray(clip.cue) && clip.cue.length === 2 ? clip.cue : null;
+          if (cue) src.start(0, cue[0], cue[1]); else src.start();
+          console.info(`[WH voice] ${fighterId}/${clip.id} playing (${clip.file}${cue ? ` cue ${cue[0]}+${cue[1]}` : ''})`);
+          await this._wait(Math.min(6000, ((cue ? cue[1] : buf.duration) * 1000) + 350));
           return;
         } catch (e) { /* fall through to subtitle-only */ }
       }

@@ -1,3 +1,17 @@
+## 2026-10-24 — Anim-motion audit follow-up: LP1+RP2 (1+2) chord rewires for demonio + diablo (ANIM-MOTION LANE)
+
+**Why:** Top-donor scan after the main audit showed the `1+2__main` chord moves as the largest remaining fixable donor sources (7 fighters, 102 HARD donees + 7 HARD sources, all playing jump clips). The T3 tables attach the current rows to T3's own 1+2 (king 35, bryan 41, heihachi 37, jin 32, yoshi 265), so the current rows are T3-own attachments — but they measure as jump clips for standing strikes (except yoshi 265).
+
+**What:** 2 rewires, same surgical pattern as the main audit (only `t3_row`, the `(T3 <bank> rNN)` name reference, and `anim_ref` changed; no damage, startup, T7/T8 fields, slots, or other fields touched; byte-verified: inverse-in-block restores the original files byte-for-byte):
+- demonio `1+2__main`: jin 32 → 92. Provenance: demonio moves `d+1+2` and `1+2~t3.jin` (1+2 variant) use row 92. Standing, level h, dominant armL (audit ext 0.53/0.38), travel 0.21, active 10 vs startup 12. Filed level `mmh` (no single-level truth in the audit).
+- diablo `1+2__main`: heihachi 37 → 133. Provenance: T3 table `b_r133` (directional LP+RP) + diablo move `b_r133`. Standing, level m, dominant armL (audit ext armL 0.28 / armR 0.07, disclosed), travel 0.23, active 10 vs startup 12.
+
+**Results (audit tool, same code both sides, current main movesets):** demonio pressable HARD 174 → 161 (−13: 4 notation donees + 9 donor donees), diablo 156 → 134 (−22: 4 notation + 18 donor). Both sources CLEAN. ZERO regressions; no move changed rows except 32 → 92 and 37 → 133. No bindings needed (demonio donees all standing-expect; diablo's only non-standing donees are WS strikes, suited by a standing chord row; neither row has a jumping donee).
+
+**UNMAPPED with file-absence evidence (no verified standing chord row in-bank):** pantera (every standing chord candidate has LP+RP provenance but fails a hard criterion: 143 via pantera b~t3.king.4 fails timing 1.8x; 97 fails level + timing 1.8x; 116/131 fail timing 2.25x + level; 227 fails limb + travel 0.91); burger + skull (bryan 129 fails the audit limb check — dominant armR vs filed armL, a jump-HARD for limb-HARD trade, not a fix; 132 is a back move; 108 level + limb; 116 level + timing + provenance); kinpo + scimitar (jin 134 is a back move + limb fail + travel 0.58; 92/105 fail timing — active 10 vs startup 16/18). **No change needed:** phantom row 265 passes the audit (standing, m, active 22 = startup 22, zero flags; all 33 donees CLEAN) — rewiring would risk 33 clean donees.
+
+**Docs:** `docs/anim/ANIM-MOTION-AUDIT-2026-10-24.md` (follow-up section appended; stale "demonio NO changes" line corrected), `docs/anim/PROCEDURAL_AUDIT.md` (T3-use row appended). Simulation/scan proof only — not play-verified.
+
 ## 2026-10-24 — Anim-motion audit follow-up: test pins updated to the corrected rows (ANIM-MOTION LANE)
 
 **Why:** CI `game-unit-tests` failed on PR #1022 only because three assertions pinned the OLD buggy rows. The pins enshrined the bugs: row 44 is a jumping-1 clip (feet 0.75/0.78 m off ground at frame 0), not a standing jab; row 203 is a lunging ducking straight (0.95 m travel, hips to 0.61 m), not a jab.
@@ -3028,6 +3042,39 @@ tools/vf5/merge_wol_head.py (new). Additions only.
 **Deviations:** none from the directive — all three items are wired where they can run; GPU/Python-only parts (Taichi SurRoL, Newton/Warp, Cosmos-H Dreams, NDG trained network) are evaluated and documented as [AWAITS GPU LANE]/[FUTURE], not silently dropped. NDG is CC BY-NC: technique reference only, zero code copied.
 
 **Process note:** mid-task the shared checkout `~/workspace/wh-repo` was concurrently switched to another agent's branch (`feature/cloth-xpbd-20261023`) with their uncommitted work; my uncommitted changes were extracted as a verified-pure patch to /tmp/softbody-save and all further work continued in the clean full worktree `~/workspace/wh-softbody` (67,875 files == HEAD, verified). Their work was not touched.
+
+## 2026-10-22 ~19:10 CDT — worker 70: disk-cleanup archive sweep (tpose-delivery + render intermediates)
+
+- Coordination: worker 67's PR #715 (`archive/negativo-eye-glow-20261022`) already
+  archives negativo A1/A2 + Cornerstone(Ryuji Rock) A1 immutable originals + manifests
+  + intake note + immutable-original tags. Byte-verified 3/3 GLBs against staging via
+  git blob SHA — exact matches. NOT re-archived here (no duplicate bytes).
+- Byte-check vs PR #703: all 12 buffalo-bill/theory source files (6 GLBs + 6 manifests)
+  match #703's blobs by git SHA exactly; every `tpose-delivery/` buffalo-bill/theory
+  render is byte-identical to #703's `docs/proof/buffalo-bill-theory-2026-10-22/` renders
+  (the `*-v2..v5` variants are duplicate copies of the same bytes). Nothing re-archived.
+- This PR (`archive/negativo-cornerstone-tpose-20261022`, MERGE FREEZE — merge-ready,
+  not merged) archives what NEITHER #703 nor #715 covered:
+  - Proof renders → `docs/proof/tpose-delivery-2026-10-22/`:
+    `negativo-a1-front.png`, `negativo-a2-front.png`, `ryuji-rock-a1-front.png`,
+    `parvati-tpose.png` — all byte-verified against staging.
+  - The 6 `*-render.glb` intermediates from buffalo-bill/theory staging (~87 MB)
+    under each attire's `source/` dir as `*-render.glb` — deliberate deviation from the
+    immutable-originals pattern, called out: the sweep's delete rule
+    ("delete ONLY after 100% byte-confirmed in repo, no exceptions") requires them in
+    the repo before the staging disk can be reclaimed. Regenerable from originals.
+  - Sweep note: `docs/research/disk-cleanup-sweep-2026-10-22.md` (byte-verification
+    record; archive only, no canon invented).
+- `roster/TRIPO-REGISTRY.md`: added ARCHIVE-THEN-CLEAN PIPELINE LAW section
+  (owner directive 2026-10-22 — all future Tripo pulls auto-archive to the repo as
+  immutable originals + manifest + proof renders; staging cleaned only after
+  byte-confirmation) + negativo/ryuji-rock registry rows.
+- Merge note: #715 and this PR both append to WORKLOG.md / touch TRIPO-REGISTRY.md —
+  if #715 merges first, rebase this branch before merging (no content conflicts
+  expected; disjoint file paths otherwise).
+- Disk reclaimed after 100% byte-confirmation: tripo-staging/negativo (49M) +
+  tripo-staging/cornerstone (19M) + tripo-staging/buffalo-bill (68M) +
+  tripo-staging/theory (136M) + tpose-delivery (9.5M).
 ## 2026-10-22 ~18:30 CDT — worker 66: in-suite hand-tooling with headless Blender backend
 
 Owner directives (verbatim): "Set up all the stuff on your side, then when I go into the character
