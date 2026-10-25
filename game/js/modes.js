@@ -507,6 +507,12 @@ export class ModeController {
   /* ---------- character-select confirm routing ---------- */
   onConfirm(selectedId) {
     if (!selectedId) return false;
+    // TTT2 TEAM BATTLE (worker 24): if the select-screen draft completed,
+    // launch the team battle instead of the classic P1/P2 versus flow.
+    if (this.mode === 'versus') {
+      const draft = this._vsDraft();
+      if (draft) { this._beginTeamVersus(draft); return true; }
+    }
     if (this.mode === 'versus' && this.vsStep === 0) {
       this.vsP1 = selectedId;
       this.vsStep = 1;
@@ -626,6 +632,48 @@ export class ModeController {
     }
     this.startFight(p1id, p2id, opts);
   }
+  /* TTT2 TEAM BATTLE (worker 24): read the completed draft from the
+     select screen. Returns { p1:[ids], p2:[ids], size } or null. */
+  _vsDraft() {
+    const ss = window.__selectScreen;
+    const st = ss && ss._state;
+    if (!st || st.vsMode !== 'team' || !st.vsTeamsDone) return null;
+    return st.vsTeamsDone;
+  }
+  _beginTeamVersus(draft) {
+    const { p1, p2, size } = draft;
+    if (size === 2) {
+      // TTT2 tag: 2v2 with tag mechanics.
+      this._lastVersus = [p1[0], p2[0]];
+      this._lastTeamDraft = draft;
+      const n1 = this.getChar(p1[0]), n2 = this.getChar(p2[0]);
+      this._badge(`TAG BATTLE · ${n1 ? n1.name : p1[0]} & ${this.getChar(p1[1]).name} VS ${n2 ? n2.name : p2[0]} & ${this.getChar(p2[1]).name}`);
+      this.game.onMatchEnd = (won) => this._versusEnd(won);
+      this.startFight(p1[0], p2[0], { mode: 'versus', tagTeams: { p1, p2 } });
+    } else {
+      // TTT2 Team Battle elimination: 3-8 per team, KO → next steps in.
+      this._lastTeamDraft = draft;
+      this._teamElim = { p1: [...p1], p2: [...p2], idx1: 0, idx2: 0 };
+      const n1 = this.getChar(p1[0]), n2 = this.getChar(p2[0]);
+      this._badge(`TEAM BATTLE ${size}v${size} · ${n1.name} VS ${n2.name}`);
+      this.game.onMatchEnd = (won) => this._teamElimEnd(won);
+      this.startFight(p1[0], p2[0], { mode: 'versus', hpCarry: null });
+    }
+  }
+  _teamElimEnd(playerWon) {
+    const e = this._teamElim;
+    if (!e) return this._versusEnd(playerWon);
+    // Advance the loser's index; winner stays (TTT2 elimination).
+    if (playerWon) e.idx2++; else e.idx1++;
+    const p1left = e.idx1 < e.p1.length, p2left = e.idx2 < e.p2.length;
+    if (!p1left || !p2left) {
+      this._teamElim = null;
+      return this._versusEnd(p1left && !p2left);
+    }
+    const n1 = this.getChar(e.p1[e.idx1]), n2 = this.getChar(e.p2[e.idx2]);
+    this._badge(`TEAM BATTLE · ${n1.name} VS ${n2.name}`);
+    this.startFight(e.p1[e.idx1], e.p2[e.idx2], { mode: 'versus' });
+  }
   _versusEnd(playerWon) {
     this.game.onMatchEnd = null;
     // Lane 3 UI gaps (Gap 15): versus W-L record feeds the VS screen.
@@ -636,7 +684,10 @@ export class ModeController {
   }
   rematch() {
     // Re-run the current mode's fight setup.
-    if (this.mode === 'versus' && this._lastVersus) {
+    // TTT2: rematch a team battle with the same draft.
+    if (this.mode === 'versus' && this._lastTeamDraft) {
+      this._beginTeamVersus(this._lastTeamDraft);
+    } else if (this.mode === 'versus' && this._lastVersus) {
       this._beginVersus(this._lastVersus[0], this._lastVersus[1]);
     } else if (this.mode === 'arcade' && this.arcade) {
       this._arcadeFight();

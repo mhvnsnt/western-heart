@@ -2039,6 +2039,19 @@ Owner directive (verbatim): "Research the current state-of-the-art open-source i
 
 ---
 
+## 2026-10-22 ~15:00 CDT — Worker 24: TTT2 Team Battle (versus submenu + tag mechanics)
+
+**Owner directive (verbatim):** "Pull Tekken Tag Tournament 2's team battle system into versus mode, straight from the TTT2 teardown files. Team battle option in character select — when you go to versus, there's a submenu (in the character select screen itself, not separate menus) where you pick: 1V1 fight, OR team battle — then pick how many fighters per team, then pick a character for each slot. Pull the ACTUAL team sizes, tag mechanics, and select flow from the TTT2 teardown files and replicate them exactly. No guessing. Tag mechanics — whatever TTT2 has for tagging in/out, tag combos, tag crashes, etc. — pull it all in. Audit the whole TTT2 teardown for other systems worth bringing in and add them to the teardown audit report for the user's approval."
+
+**TTT2 actuals:** team sizes Solo 1v1 / Tag 2v2 / Handicap 2v1·1v2 / Team Battle up to 8 per team; solo/tag choice BEFORE picks inside select screen; tag in/out, red health, rage, tag combos (buffered), tag assault, tag crash, tag throws. (Teardown dir is archive-only; mechanics from public TTT2 docs, cited in audit.)
+
+**Built:** team-battle.js (TagMatch engine), select-screen.js versus submenu (1V1|TEAM BATTLE → 2–8 → per-slot draft), game.js hooks, modes.js _vsDraft/_beginTeamVersus, main.js 4-fighter preload + TAG button, input.js KeyT, index.html TAG btn, CSS, docs/research/ttt2-teardown-audit.md (12 candidates).
+
+### Proof
+- Branch research/3d-generation-pipeline-2026-10-22b, PR against main with six-section instruction-gate body; deletion-guard / clobber-guard / instruction-gate green; merged clean via git_merge.py (merge-it-yourself law). (First attempt PR #654 hit a WORKLOG.md append/append race with another worker's entry — rebased onto current main as this clean branch.)
+
+---
+
 ## 2026-10-22 ~13:40 CDT — worker-33: FIGHT LAB (GUNGAKU 軍楽) + CREATION + PRESENTATION
 
 **Task (user-approved verbatim):** "Wire up: Fight Lab / Combot programmable training dummy — needs a proprietary name. Working candidate: Gungaku (軍楽) — Japanese for 'war music.' Confirm the name with them before locking it in. Def Jam's 1,900 CAW parts library. Soulcalibur weapon/style creation system. Photo mode (DOA-style: pause, camera control, filters). Per-character story endings/cinematics."
@@ -3433,3 +3446,8 @@ Live-browser playtest (rendering, combat feel, balance) still needed — delegat
 **Proof:** `node --test game/tests/brawler-sim.test.mjs` on the rebased tree → PASS (stages=[0,1,2,3,4], bosses=[warden,mask,ogre,sphere,shadow,shadow2], surge fired, 45 banners, victory, no exceptions). `node --check` clean on all 9 touched JS files.
 
 **Status:** rebased onto 7fe0cb41 and pushed (e4cfd042); brawler-sim PASS post-rebase; CI re-triggered via contents API (git/refs updates don't fire push events); awaiting green checks + merge gate.
+**Method:** byte-identical fetch (blob-SHA verified) → surgical edits → node --check → 27/27 logic tests → headless-Chromium UI verification. Rebased 3× as main moved (no clobber).
+
+**Proof:** 27/27 tagtest pass; screenshots: submenu, size picker, slot tray, DONE-draft {p1:[pantera,torch],p2:[demonio,rave]}.
+
+**Status:** PR pushed; merge via git_merge.py when green. NOTE: main has pre-existing broken imports (voice.js/hitfx.js/intro-interactions.js 404) — not from this worker.

@@ -1211,8 +1211,16 @@ async function startFight(playerId, enemyId, opts = {}) {
   }
   // On-demand: load only the 2 fighters for this fight (Tekken 3 pattern).
   // Models may already be prefetched from select-screen highlight.
+  // TTT2: tag battles need all 4 fighters' models up front.
+  const tagTeams = opts.tagTeams || null;
   const need = [...new Set([player.model, enemy.model].filter(Boolean))];
-  // Mid-match transform targets must be preloaded (createInstance is sync).
+  if (tagTeams) {
+    for (const side of ['p1', 'p2']) for (const id of tagTeams[side]) {
+      const c = getCharacterWithCustom(id);
+      if (c.model) need.push(c.model);
+      if (c.transform && c.transform.targetModel) need.push(c.transform.targetModel);
+    }
+  }  // Mid-match transform targets must be preloaded (createInstance is sync).
   for (const c of [player, enemy]) {
     if (c.transform && c.transform.targetModel) need.push(c.transform.targetModel);
     if (c.forms) for (const fk of Object.keys(c.forms)) {
@@ -1251,6 +1259,9 @@ async function startFight(playerId, enemyId, opts = {}) {
     // Show the TRANSFORM touch button only for fighters that can transform.
     const tBtn = document.querySelector('.act-btn.transform');
     if (tBtn) tBtn.style.display = (player.transform || player.forms) ? '' : 'none';
+    // TTT2: TAG touch button only in tag battles (2v2).
+    const tagBtn = document.getElementById('tag-btn');
+    if (tagBtn) tagBtn.hidden = !tagTeams;
     if (confirmBtn) confirmBtn.disabled = true;
     await assets.loadModels(need, (p, loaded, total, id) => {
       if (window.__whLoadProgress) window.__whLoadProgress(p, loaded, total);
@@ -1349,6 +1360,14 @@ async function startFight(playerId, enemyId, opts = {}) {
   // stage screen with "Entering the arena…". Surface it like the load
   // failures above instead of dying silently.
   audio.stopEMTrack(); // select-screen music yields to the battle loop
+  // TTT2: resolve tag-team char entries (full attire-resolved entries so
+  // game.js can build the benched partners with models + movesets).
+  if (tagTeams) {
+    opts.tagTeamEntries = {
+      p1: tagTeams.p1.map(id => resolveFighterAttire(getCharacterWithCustom(id))),
+      p2: tagTeams.p2.map(id => resolveFighterAttire(getCharacterWithCustom(id))),
+    };
+  }
   try {
     await game.startMatch(player, enemy, selectedStage, opts);
   // Worker 29 (2026-10-22): Gungaku fight lab + deterministic replays.

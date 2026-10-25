@@ -281,6 +281,7 @@ export class InputManager {
         case 'Space': this.held.block = true; e.preventDefault(); break;
         case 'ShiftLeft': case 'ShiftRight': this._push('dodge'); break;
         case 'KeyV': this._push('vskill'); break; // V-System (owner 2026-10-22)
+        case 'KeyT': this._push('tag'); break; // TTT2: TAG in/out (worker 24)
       }
     });
     window.addEventListener('keyup', (e) => {
