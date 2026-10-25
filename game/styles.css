@@ -296,12 +296,6 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 }
 .surge-flash.show { animation: surgeFlash 0.9s ease; }
 @keyframes surgeFlash { 0%{opacity:0;} 18%{opacity:1;} 70%{opacity:0.9;} 100%{opacity:0;} }
-.surge-name {
-  position: fixed; left: 0; right: 0; top: 22%; z-index: 30; text-align: center;
-  font-size: clamp(22px,7vw,52px); font-weight: 900; letter-spacing: 3px; pointer-events: none;
-  color: #fff; text-shadow: 0 0 24px var(--accent), 0 4px 14px rgba(0,0,0,0.8); opacity: 0;
-}
-.surge-name.show { animation: surgeNameIn 1.6s ease; }
 .rage-flash {
   position: fixed; inset: 0; z-index: 29; pointer-events: none; opacity: 0;
   background: radial-gradient(circle at 50% 55%, #ff3b2acc 0%, #ff3b2a44 45%, transparent 75%);
@@ -313,7 +307,7 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   letter-spacing: 3px; color: #ff3b2a; text-align: center;
   text-shadow: 0 0 10px rgba(255,59,42,0.8);
 }
-.rage-tag.on { display: block; animation: ragePulse 0.7s ease-in-out infinite; }
+.rage-tag.on { display: block; height: 5px; background: linear-gradient(90deg, transparent, #ff3b2a, transparent); box-shadow: 0 0 10px rgba(255,59,42,0.8); animation: ragePulse 0.7s ease-in-out infinite; }
 @keyframes ragePulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.55;transform:scale(1.12);} }
 .urge-wrap {
   display: none; position: relative; margin-top: 3px; height: 10px;
@@ -331,7 +325,6 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   color: #cfeaff; display: flex; align-items: center; justify-content: center;
   pointer-events: none;
 }
-@keyframes surgeNameIn { 0%{opacity:0;transform:scale(1.6);} 15%{opacity:1;transform:scale(1);} 75%{opacity:1;} 100%{opacity:0;} }
 
 /* ====================== HUD ====================== */
 .hud-top { position: fixed; top: 0; left: 0; right: 0; padding: calc(12px + env(safe-area-inset-top)) 14px 12px; display: flex; gap: 10px; align-items: flex-start; z-index: 11; }
@@ -362,6 +355,8 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   background: linear-gradient(180deg,#ffd9a0,#ff7a3c);
   box-shadow: 0 0 10px rgba(255,122,60,1);
 }
+/* Popup fix 2026-10-24: Nine-Soul Release ready = meter-wrap glow (HUD only). */
+.meter-wrap.soul-ready { box-shadow: 0 0 14px rgba(255,215,160,0.9); }
 .fighter-status .name { margin-top: 4px; font-weight: 800; letter-spacing: 2px; font-size: 13px; opacity: 0.9; }
 
 .hud-center { text-align: center; min-width: 90px; }
@@ -503,7 +498,6 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
    If any boot module failed, main.js never added .hidden and the overlay
    silently ate every tap on the main menu. It never takes input now. */
 .loading { pointer-events: none; }
-.tap-hint { pointer-events: none; }
 .loading-box { text-align: center; width: min(86%, 360px); }
 .loading-title {
   font-size: clamp(24px,7vw,40px); font-weight: 900; letter-spacing: 3px; margin-bottom: 22px;
@@ -513,14 +507,6 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 .loading-fill { height: 100%; width: 0%; background: linear-gradient(90deg,#8b2bd8,#ff7a3c); transition: width 0.2s; }
 .loading-text { margin-top: 14px; font-size: 13px; letter-spacing: 2px; opacity: 0.7; }
 
-/* Tap-to-start sound hint */
-.tap-hint {
-  position: fixed; left: 50%; bottom: 14%; transform: translateX(-50%); z-index: 40;
-  background: rgba(0,0,0,0.7); padding: 10px 18px; border-radius: 30px; font-size: 13px; letter-spacing: 2px;
-  border: 1px solid rgba(255,255,255,0.2); display: none; animation: pulse 1.4s infinite;
-}
-.tap-hint.show { display: block; }
-@keyframes pulse { 0%,100%{opacity:0.6;} 50%{opacity:1;} }
 
 /* ====================== STAGE SELECT (Tekken pattern) ======================
    Sticky header; scrollable arena GRID grouped by tier; LARGE PREVIEW

@@ -20,6 +20,11 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 // separation, soul glow, grade hooks. See game/js/lighting-rig.js for the
 // T7/SFV/DOA6/T8 teardown audit.
 import { buildStageLightRig } from './lighting-rig.js';
+// Lane 5: stage level geometry (pure data) + persistent asset cache.
+// stage-levels.js owns NOTHING about break state — that is the combat
+// lane's stagebreaks.js; it only derives level destinations from defs.
+export { resolveStageLevels, levelAfterBreak, composeLevel, WALL_BREAK_EXTEND } from './stage-levels.js';
+import { getCachedBuffer, putCachedBuffer } from './asset-cache.js';
 
 /* ---------------- minimal OBJ loader ----------------
    Tekken 3 panoramas use v / vt / f (triangles, 1-indexed, faces as
@@ -63,11 +68,73 @@ export function parseStageOBJ(text) {
 const _objCache = {};
 export async function fetchStageOBJ(path) {
   if (_objCache[path]) return _objCache[path].clone();
+  // Lane 5: persistent cache first — a warmed stage OBJ must not be
+  // re-downloaded every session. Cache misses fall through to the
+  // exact network path below; a corrupt/empty cache entry is ignored.
+  const cached = await getCachedBuffer(path);
+  if (cached) {
+    try {
+      const geo = parseStageOBJ(new TextDecoder().decode(cached));
+      _objCache[path] = geo;
+      return geo.clone();
+    } catch { /* fall through to network */ }
+  }
   const res = await fetch(path);
   if (!res.ok) throw new Error(`stage OBJ missing: ${path}`);
-  const geo = parseStageOBJ(await res.text());
+  const buf = await res.arrayBuffer();
+  putCachedBuffer(path, buf);
+  const geo = parseStageOBJ(new TextDecoder().decode(buf));
   _objCache[path] = geo;
   return geo.clone();
+}
+
+/* Lane 5: screen-to-screen stage preload (geometry side only).
+   Warms every fetchable asset a stage def names — its OBJ panorama,
+   its GLB (fetched + cached, NOT parsed: parsing stays the builder's
+   job at fight start), its texture atlas / pano — so the stage is
+   already on disk when FIGHT is pressed. Never throws: a missing
+   asset (e.g. the private-build T7 GLB, absent from the public
+   repo) lands in `failed` and the builder's blockout fallback
+   still applies. In-flight calls for one stage share one promise.
+   Callers: main.js startFight (non-blocking, in parallel with the
+   fighter loads) and the stage screen's show path. Reports the
+   warmed fraction to load-progress.js when it is present, so the
+   bar reflects real stage bytes instead of freezing on fighters. */
+const _stagePreloadInflight = new Map();
+export async function preloadStage(stageId) {
+  const def = typeof stageId === 'string' ? getStage(stageId) : stageId;
+  if (!def || !def.id) return { stage: null, warmed: [], failed: [] };
+  if (_stagePreloadInflight.has(def.id)) return _stagePreloadInflight.get(def.id);
+  const run = (async () => {
+    const warmed = [], failed = [];
+    const warm = async (kind, fn) => {
+      try { await fn(); warmed.push(kind); }
+      catch (e) { failed.push(kind); console.warn(`[WH] stage preload ${def.id} ${kind} failed:`, e.message || e); }
+    };
+    const warmFetch = async (url) => {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
+      putCachedBuffer(url, await res.arrayBuffer());
+    };
+    await Promise.all([
+      def.obj ? warm('obj', () => fetchStageOBJ(def.obj)) : Promise.resolve(),
+      def.glb ? warm('glb', () => warmFetch(def.glb)) : Promise.resolve(),
+      def.map ? warm('map', () => warmFetch(def.map)) : Promise.resolve(),
+      def.pano ? warm('pano', () => warmFetch(def.pano)) : Promise.resolve(),
+    ]);
+    const out = { stage: def.id, warmed, failed };
+    if (typeof window !== 'undefined') {
+      window.__whStagePreload = out;
+      const total = warmed.length + failed.length;
+      if (total && typeof window.__whStageProgress === 'function') {
+        window.__whStageProgress(def.id, warmed.length / total);
+      }
+    }
+    return out;
+  })();
+  _stagePreloadInflight.set(def.id, run);
+  run.finally(() => { if (_stagePreloadInflight.get(def.id) === run) _stagePreloadInflight.delete(def.id); });
+  return run;
 }
 
 /* ---------------- shared procedural textures ---------------- */

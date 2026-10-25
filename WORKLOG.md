@@ -1,3 +1,17 @@
+## 2026-10-24 — Anim-motion audit follow-up: LP1+RP2 (1+2) chord rewires for demonio + diablo (ANIM-MOTION LANE)
+
+**Why:** Top-donor scan after the main audit showed the `1+2__main` chord moves as the largest remaining fixable donor sources (7 fighters, 102 HARD donees + 7 HARD sources, all playing jump clips). The T3 tables attach the current rows to T3's own 1+2 (king 35, bryan 41, heihachi 37, jin 32, yoshi 265), so the current rows are T3-own attachments — but they measure as jump clips for standing strikes (except yoshi 265).
+
+**What:** 2 rewires, same surgical pattern as the main audit (only `t3_row`, the `(T3 <bank> rNN)` name reference, and `anim_ref` changed; no damage, startup, T7/T8 fields, slots, or other fields touched; byte-verified: inverse-in-block restores the original files byte-for-byte):
+- demonio `1+2__main`: jin 32 → 92. Provenance: demonio moves `d+1+2` and `1+2~t3.jin` (1+2 variant) use row 92. Standing, level h, dominant armL (audit ext 0.53/0.38), travel 0.21, active 10 vs startup 12. Filed level `mmh` (no single-level truth in the audit).
+- diablo `1+2__main`: heihachi 37 → 133. Provenance: T3 table `b_r133` (directional LP+RP) + diablo move `b_r133`. Standing, level m, dominant armL (audit ext armL 0.28 / armR 0.07, disclosed), travel 0.23, active 10 vs startup 12.
+
+**Results (audit tool, same code both sides, current main movesets):** demonio pressable HARD 174 → 161 (−13: 4 notation donees + 9 donor donees), diablo 156 → 134 (−22: 4 notation + 18 donor). Both sources CLEAN. ZERO regressions; no move changed rows except 32 → 92 and 37 → 133. No bindings needed (demonio donees all standing-expect; diablo's only non-standing donees are WS strikes, suited by a standing chord row; neither row has a jumping donee).
+
+**UNMAPPED with file-absence evidence (no verified standing chord row in-bank):** pantera (every standing chord candidate has LP+RP provenance but fails a hard criterion: 143 via pantera b~t3.king.4 fails timing 1.8x; 97 fails level + timing 1.8x; 116/131 fail timing 2.25x + level; 227 fails limb + travel 0.91); burger + skull (bryan 129 fails the audit limb check — dominant armR vs filed armL, a jump-HARD for limb-HARD trade, not a fix; 132 is a back move; 108 level + limb; 116 level + timing + provenance); kinpo + scimitar (jin 134 is a back move + limb fail + travel 0.58; 92/105 fail timing — active 10 vs startup 16/18). **No change needed:** phantom row 265 passes the audit (standing, m, active 22 = startup 22, zero flags; all 33 donees CLEAN) — rewiring would risk 33 clean donees.
+
+**Docs:** `docs/anim/ANIM-MOTION-AUDIT-2026-10-24.md` (follow-up section appended; stale "demonio NO changes" line corrected), `docs/anim/PROCEDURAL_AUDIT.md` (T3-use row appended). Simulation/scan proof only — not play-verified.
+
 ## 2026-10-24 — Anim-motion audit follow-up: test pins updated to the corrected rows (ANIM-MOTION LANE)
 
 **Why:** CI `game-unit-tests` failed on PR #1022 only because three assertions pinned the OLD buggy rows. The pins enshrined the bugs: row 44 is a jumping-1 clip (feet 0.75/0.78 m off ground at frame 0), not a standing jab; row 203 is a lunging ducking straight (0.95 m travel, hips to 0.61 m), not a jab.
@@ -3028,3 +3042,149 @@ tools/vf5/merge_wol_head.py (new). Additions only.
 **Deviations:** none from the directive — all three items are wired where they can run; GPU/Python-only parts (Taichi SurRoL, Newton/Warp, Cosmos-H Dreams, NDG trained network) are evaluated and documented as [AWAITS GPU LANE]/[FUTURE], not silently dropped. NDG is CC BY-NC: technique reference only, zero code copied.
 
 **Process note:** mid-task the shared checkout `~/workspace/wh-repo` was concurrently switched to another agent's branch (`feature/cloth-xpbd-20261023`) with their uncommitted work; my uncommitted changes were extracted as a verified-pure patch to /tmp/softbody-save and all further work continued in the clean full worktree `~/workspace/wh-softbody` (67,875 files == HEAD, verified). Their work was not touched.
+
+## 2026-10-22 ~19:10 CDT — worker 70: disk-cleanup archive sweep (tpose-delivery + render intermediates)
+
+- Coordination: worker 67's PR #715 (`archive/negativo-eye-glow-20261022`) already
+  archives negativo A1/A2 + Cornerstone(Ryuji Rock) A1 immutable originals + manifests
+  + intake note + immutable-original tags. Byte-verified 3/3 GLBs against staging via
+  git blob SHA — exact matches. NOT re-archived here (no duplicate bytes).
+- Byte-check vs PR #703: all 12 buffalo-bill/theory source files (6 GLBs + 6 manifests)
+  match #703's blobs by git SHA exactly; every `tpose-delivery/` buffalo-bill/theory
+  render is byte-identical to #703's `docs/proof/buffalo-bill-theory-2026-10-22/` renders
+  (the `*-v2..v5` variants are duplicate copies of the same bytes). Nothing re-archived.
+- This PR (`archive/negativo-cornerstone-tpose-20261022`, MERGE FREEZE — merge-ready,
+  not merged) archives what NEITHER #703 nor #715 covered:
+  - Proof renders → `docs/proof/tpose-delivery-2026-10-22/`:
+    `negativo-a1-front.png`, `negativo-a2-front.png`, `ryuji-rock-a1-front.png`,
+    `parvati-tpose.png` — all byte-verified against staging.
+  - The 6 `*-render.glb` intermediates from buffalo-bill/theory staging (~87 MB)
+    under each attire's `source/` dir as `*-render.glb` — deliberate deviation from the
+    immutable-originals pattern, called out: the sweep's delete rule
+    ("delete ONLY after 100% byte-confirmed in repo, no exceptions") requires them in
+    the repo before the staging disk can be reclaimed. Regenerable from originals.
+  - Sweep note: `docs/research/disk-cleanup-sweep-2026-10-22.md` (byte-verification
+    record; archive only, no canon invented).
+- `roster/TRIPO-REGISTRY.md`: added ARCHIVE-THEN-CLEAN PIPELINE LAW section
+  (owner directive 2026-10-22 — all future Tripo pulls auto-archive to the repo as
+  immutable originals + manifest + proof renders; staging cleaned only after
+  byte-confirmation) + negativo/ryuji-rock registry rows.
+- Merge note: #715 and this PR both append to WORKLOG.md / touch TRIPO-REGISTRY.md —
+  if #715 merges first, rebase this branch before merging (no content conflicts
+  expected; disjoint file paths otherwise).
+- Disk reclaimed after 100% byte-confirmation: tripo-staging/negativo (49M) +
+  tripo-staging/cornerstone (19M) + tripo-staging/buffalo-bill (68M) +
+  tripo-staging/theory (136M) + tpose-delivery (9.5M).
+## 2026-10-22 ~18:30 CDT — worker 66: in-suite hand-tooling with headless Blender backend
+
+Owner directives (verbatim): "Set up all the stuff on your side, then when I go into the character
+creation suite, make it where I can do the hand-tooling part IN the character creation suite —
+where I don't have to actually use Blender, but Blender's just hooked up in the character creation
+suite." + "I'll call that up so it works for all of the models, all the characters, all the parts.
+They're all interchangeable, deletable, replaceable, addable, movable, resizable, scalable,
+reshapeable — full Blender-level capabilities."
+
+What shipped (branch `w66/in-suite-mesh-edit`, MERGE FREEZE — merge-ready, not merged):
+- `tools/mesh-edit/mesh_edit.py` — headless Blender 4.0.2 op driver
+  (`blender -b --factory-startup --python mesh_edit.py -- --job JOB.json`). Op catalog v1:
+  mesh_list, mesh_hide/show, mesh_delete, mesh_transform (bake TRS), mesh_duplicate
+  (+mirror_x), part_import (donor GLB / library:id, socket fit), mesh_sculpt
+  (smooth/grab/inflate/pinch via bmesh), mesh_remodel (remesh/subdivide/decimate).
+  Geometry-changing ops set `reweight_needed`; sources immutable (`out_glb == source_glb`
+  refused); writes `out_glb` + `out_report` + preview PNG.
+- `tools/mesh-edit/run_mesh-edit_job.py` — suite-jobs runner (`tool: "mesh-edit"`),
+  `run_job(spec, log)`; registered in `tools/suite-jobs/server.py` tool registry (one-word
+  additive edit). No parallel server — TOOL UNIFICATION LAW: mesh-edit rides the existing
+  suite queue (:8766) the JOBS tab already polls.
+- `customization/create-fighter/js/meshedit.js` — MODEL EDIT mode for the suite viewport:
+  tap-to-select (raycast, touch-safe), TransformControls gizmo (lazy, numeric-nudge fallback),
+  capture-phase orbit guard (zero edits to preview3d.js), part list, hide/show/delete/duplicate,
+  sculpt-point picking, job submit to the suite queue; falls back to job-spec download when the
+  server is unreachable (GitHub Pages / no backend).
+- `customization/create-fighter/js/tools.js` — registry wiring: `meshedit` SEPARATE_TOOLS
+  entry + `model-edit-system` UNIFIED_SYSTEMS entry + unifiedActions case (ENTER MODEL EDIT,
+  job spec, JOBS tab link). Menu home: TOOLS tab; nests under Appearance → Attire Parts in the
+  WWE flow (worker 65 owns the tree; contract documented).
+- `customization/CHARACTER-CREATION.md` — "Model Edit (hand-tooling)" subsection.
+- Docs: `docs/research/2026-10-22-W66-in-suite-mesh-edit-research.md` (Prisma3D touch
+  vocabulary, TransformControls touch support, Blockbench/MeshySmith evaluated+rejected,
+  blender-remote/mcp-for-blender patterns, teardown editing patterns),
+  `docs/decisions/2026-10-22-W66-mesh-edit-architecture.md` (job schema v1, API, w64/w65
+  contracts, undo/safety, proof plan).
+
+Key integration findings (no duplication): the suite already had `tools/suite-jobs/server.py`
++ JOBS tab (`window.__flow.renderJobs`) — mesh-edit registers as a tool there instead of a new
+server. `window.__suite.preview` is the viewport handle. Labels resolve via worker 64's mesh
+taxonomy (`window.__whMeshTaxonomy`) when present, else raw GLB node names.
+
+Proof: `node --check` on meshedit.js clean; `python3 tools/mesh-edit/tests/test_runner.py`
+10/10 pass (validation, guards, fake-Blender report parse, AST parse of both py files).
+No Blender on this VM — real op runs need `tools/setup/setup_toolchain.sh` (follow-up).
+Follow-ups: vendored TransformControls, real Blender run on a roster GLB, w64/w65 handshake,
+one-line JOBS-tab tool-dropdown addition (creation-flow.js — worker 37's lane, documented).
+## 2026-10-22 ~17:50 CDT — worker 65: WWE teardowns drive the creation suite (CAW menu logic + 100% teardown coverage)
+
+- Owner division locked: Tekken teardowns → game menus/flow; **WWE teardowns → creation suite structure, menus, submenus, flow**. Suite nests inside Tekken's menu structure; WWE CAW logic governs the creator's internal hierarchy.
+- `customization/creation-suite-ui/js/menu-data.js`: +10 `MENU_SRC` entries, +14 new trees/flows — `WWE_ATTIRE_TREE` (8 clothing regions → T7 slot mapping), `WWE_ENTRY_FLOW` (2K22 three doors), `WWE_FACE_TREE`, `WWE_BODY_TREE`, `WWE_PROFILE_TREE`, `WWE_PERFORMANCE_TREE`, `WWE_STATS_TREE`, `SC_CAS_TREE` + `SC_CAS_FLOW` (Soulcalibur VI — closes the SC coverage gap), `DEFJAM_SHOP_TREE` + `DEFJAM_GYM_TREE` (shops + charisma + gym), `NM_CAW_TREE`, `WMXIX_CAW_TREE`, `TOUCH_MAP` (phone-first conversion). `ENTRY_FLOW` extended (not replaced). Every node src-tagged per the file's verbatim convention.
+- `customization/creation-suite-ui/js/suite.js`: ATTIRE tab gains **TEKKEN SLOTS ⇄ WWE REGIONS** browse toggle (`ui.attireMode`, default `tekken` — zero behavior change unless toggled). `renderWweRegions` + `partsForWwe` (union of region slots, deduped); `renderPartGrid` supports `cat.slotFor` so WWE-region equips file under each part's natural T7 slot. `node --check` clean on both files.
+- Docs: `docs/research/CREATION-SYSTEM-AUDIT-2026-10-22.md` — per-game audit matrix (Tekken 5/6/TTT2/7/8, WWE 2K22/26/19/14/16, Soulcalibur III/IV/VI, Def Jam FFNY, WWF No Mercy, WMXIX, DOA6) → what got wired where → open gaps (asset pulls only: WWE 2K pac meshes, WMXIX .ymg decode, Def Jam GLB cleanup).
+- Docs: `docs/decisions/2026-10-22-creation-suite-teardown-blueprint.md` — flow map: 2K22 drives menu logic, 2K26 drives layers/morphs, No Mercy drives the 4-attire model, WMXIX drives proportions; where we extend (MB-Lab/MPFB/GNM/Build-A-Bod, universal mode); Def Jam differences (shop model + charisma); Soulcalibur additions; touch conversion rules; capability checklist (all 5 owner capabilities verified against spec).
+- Coordination: worker 64 (clothing/accessory taxonomy + hair/headwear-as-library-items) — trees carry `wh`/`slots` mappings onto the shared T7 spine so their taxonomy plugs in without rework. Worker 61 (select-screen assets) feeds menu art per `UNIFIED-UI-SPEC.md` §8. Worker 62 (OSS games) — mined worker 22's OSS wave instead of duplicating (game-hud UI kit → suite ui-kit; Material Maker/TEXTtoPBR → textures).
+- MERGE FREEZE: pushed to `worker65/wwe-caw-creation-suite`, PR opened, **not merged** — merge-ready pending coordinator.
+## 2026-10-23 ~19:30 CDT — Future Tech prototyping: SCRIPT + AdaHuman/GAIA integration design
+
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate"
+
+**Scope:** Future Tech prototyping lead lane — items 9 (SCRIPT) and 10 (AdaHuman/GAIA) from `docs/research/CUTTING-EDGE-SCOUT-2026-10-23.md`. Both are research-stage (no public code); the deliverable is integration architecture + contract code, per the lane brief ("If no code is available, the design docs ARE the deliverable").
+
+**Code-availability verification (2026-10-23):**
+- SCRIPT (arXiv:2605.22894): no GitHub repo (API search), arXiv page has no code link; paper says "Our code will be publicly available for future research". NOT released.
+- AdaHuman (arXiv:2505.24877, ICCV 2025): no GitHub repo (API search); project page (nvlabs.github.io/AdaHuman) says "Code and models will be publicly available for research purposes", no link. NOT released.
+- GAIA (SIGGRAPH 2025): project page (research.nvidia.com/labs/amri/projects/gaia) is research-demonstration only — no code/model links. NOT released.
+
+**Delivered (all new files, 0 deletions, nothing in `game/`):**
+- `docs/research/SCRIPT-INTEGRATION-2026-10-23.md` — JAST-DiT architecture, exact I/O contract (s_t∈R^358, a_t∈R^69, CLIP text, receding-horizon), where-it-wires-in table (describe-a-move flagship; NOT live combat/phone), inference-service REST spec, canon-safe prompt builder rules, frame-data anchoring, whole-roster style-hint table, code-drop checklist, license transparency.
+- `docs/research/PHOTO-TO-FIGHTER-2026-10-23.md` — AdaHuman deep dive (single photo → A-pose 3DGS), GAIA deep dive (identity/expression disentanglement, 43 FPS on RTX A6000), the 3DGS→mesh→rig critical path (SuGaR/2DGS/GOF/MVS options, Inria/MPII NC flag), 7-stage pipeline with consent/adult/no-famous-faces gates, GPU requirements table, companion note to FACE-SCAN-PHOTO-TO-3D-2026-10-23.md (face lane stays the wired-now path).
+- `tools/script-adapter/` — `script_contract.py`, `prompt_builder.py` (canon filter: minors/sexual/famous-names rejected), `smpl_to_wh.py` (69-dim SMPL→WH bone map, action-stream keyframe baking @60fps, wh-anim/1 envelope defaulting to `"set": "SHOW"`), `client.py` (REST client + in-process stub server), `README.md`, `tests/test_script_contract.py` — **22/22 pass** (synthetic data).
+- `tools/photo-to-fighter/` — `stages.py` (IntakeSpec→SplatAvatar→GameMesh→RiggedFighter→TexturedFighter→PhotoFighter contracts), `likeness_policy.py` (gates raise, never warn), `pipeline.py` (injectable backends + stubs), `README.md`, `tests/test_pipeline_contract.py` — **16/16 pass** (stub backends).
+
+**License transparency:** NVIDIA research code → expected NVIDIA Source Code License-NC (non-commercial, research/evaluation only; verified license text via nvlabs.github.io/stylegan2/license.html). NC-licensed code/weights never enter `game/` or ship — research lane only. This PR's code is WH-original (repo license), contains no NVIDIA code/weights/artifacts.
+
+**Anti-clobber:** sparse checkout (3% of files) — NO local commit. Payload built via Git Database API on current main tree: additions only, 0 deletions. Branch `docs/futuretech-script-phototofighter-20261023`, PR with 6-section body.
+
+**ALL CHARACTERS ARE ADULTS:** enforced in `prompt_builder.canon_filter()` (SCRIPT prompts) and `likeness_policy.check_adult()` (photo intake) — both raise, no override path.
+## 2026-10-22 — worker 58: archive Buffalo Bill A1/A2 + Theory A1/A2/A3 (Tripo immutable originals)
+- Archived 5 Tripo pulls as immutable source originals, dorowani #603 pattern:
+  `roster/buffalo-bill/attires/attire1/source/buffalo-bill-a1.glb` (20,391,004 bytes, fantasy character, ram horns),
+  `roster/buffalo-bill/attires/attire2/source/buffalo-bill-a2.glb` (21,441,832 bytes, horned humanoid, ram horns),
+  `roster/theory/attires/attire1/source/theory-a1.glb` (22,369,448 bytes, gothic cat girl),
+  `roster/theory/attires/attire2/source/theory-a2.glb` (18,773,404 bytes, superhero red cape),
+  `roster/theory/attires/attire3/source/theory-a3.glb` (20,769,628 bytes, dark fantasy spiked),
+  each with `manifest.json` (Tripo project UUID, share URL, byte/magic verification).
+- Proof renders: `docs/proof/buffalo-bill-theory-2026-10-22/` (5 T-pose PNGs, 1024x1024, visually verified).
+- Research note: `docs/research/buffalo-bill-theory-intake-2026-10-22.md`.
+- Immutable-original tags on archive commit: `buffalo-bill-a1-original`, `buffalo-bill-a2-original`,
+  `theory-a1-original`, `theory-a2-original`, `theory-a3-original`.
+- No canon entries invented — archive only; canon bridges deferred to owner.
+
+### Addendum — Theory Attire 4 (same session)
+- Archived `roster/theory/attires/attire4/source/theory-a4.glb` (21,511,628 bytes, black leather outfit 3d model,
+  Tripo owner `eqqq57218`) + `manifest.json` + T-pose proof `docs/proof/buffalo-bill-theory-2026-10-22/theory-a4.png`
+  (visually verified). Intake note + tag list updated (`theory-a4-original`).
+## 2026-10-24 — 100% wiring pass: already-decoded extraction data into movesets + library (one PR)
+
+- MOT.BIN clip tables wired: kinpo (asa, 861 resolved + 1,603 unmapped 0x8000 + 4,731 cancel links), burger (bob, 667 + 1,658 + 4,267), purplerain (lee, 710 + 1,593 + 4,813); cancel links appended to pond (frv, +4,670) and ryusan (dnc, +4,119). Playable wiring stays NONE — tables are file keys, not playable WH move animations.
+- Wrestling (No Mercy) bank: input_lp on all 4,153 input-populated rows (mechanical 1→LP1, 2→RP2, 3→LK3, 4→RK4); 256 input-null rows UNMAPPED, no invented inputs; index counts updated.
+- T3 verification fixes in movesets: 18 entries marked UNMAPPED (wrong-claim anim_ref/t3_row removed, former row kept in trace); chord-as-string documented as known gap on 8 fighters (35 motion-HARD enders, left unwired); heihachi_on_jin verified as the live bank (heihachi_ownrig has no rows.pack.json and was not wired).
+- MOD damage: 31 PR #1000/#1002 files verified (2,996 traces + 627 in-place == MOD, 0 diffs); 1,927 new values wired for 19 uncovered fighters. No existing MOD value overwritten; megami t8_source rows untouched.
+- Batch checker: tools/combat-qa/wiring_batch_verify.py (130 checks, one run; --gpu prints the GPU job spec instead of faking GPU work).
+
+Files: game/assets/movesets/*.json (30), game/data/moveset-library/banks/wrestling.json, game/data/moveset-library/index.json, tools/combat-qa/wiring_batch_verify.py (new). Additions only except the 36 removed wrong-claim lines.
+## 2026-10-25 — Claude session: checkpoints so a container restart can't wipe work again
+- A container restart reset the working tree to the last pushed commit and wiped the scratchpad: six lanes of
+  uncommitted agent work (strings, hit contact, canon movesets, select/stage, reaction wiring, gap audit) were lost;
+  the agents re-apply from their transcripts. Lesson: unverified work must still leave the machine.
+- tools/agent/checkpoint.sh (hooked like autosave.sh) pushes uncommitted repo work + the scratchpad + a re-download
+  manifest to <branch>-checkpoints via plumbing; tools/agent/restore.sh (SessionStart) brings it back without
+  clobbering. Tested: checkpoint pushed (402 scratch files + wip.patch); restore into an empty folder put all 402
+  back and refused to apply the patch over a dirty tree.
