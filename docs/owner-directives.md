@@ -568,6 +568,13 @@ Per the AUTO-ARCHIVE standing directive: no wired auto-archive automation was fo
   writing or in-game text — same law as Tekken names.
 - Full record: docs/research/TEMPLEOS-SHRINE-OS-2026-10-24.md.
 
+## KUMA REPLACEMENT NAME LOCK: GASHADOKURO (user directive 2026-10-22)
+
+The Kuma replacement — white bone dragon/kaiju (Godzilla + SkullGreymon + Charizard mix, all white, rainbow-colored eyes, multicolored markings, multicolored Japanese cloud-smoke detail) — is named **GASHADOKURO**, after the giant skeleton yokai from Japanese folklore. This name is LOCKED and replaces the old "URSA" reserved placeholder.
+
+- Display-name mapping: internal ID `kuma` → display name "Gashadokuro". The roster dir and all plumbing keep the internal ID `kuma`; it is never renamed. The game layer resolves the display name from the ID.
+- Canon (recorded as stated; do not invent further): connected to ZUI — Zui fears/respects him, looks up to him like a protector/monster. Kaiju/yokai/spirit monster.
+- Note: Aotsuki/Aokami are Panda's name candidates and do NOT apply to the Kuma replacement. Gashadokuro is the Kuma replacement only.
 ## Scimitar Attire 1 — pauldron-blade design + canon (user directive 2026-10-22, worker 77)
 - **DESIGN (user's words):** Shoulder pauldron on his RIGHT shoulder, comes down across his chest to the left like a cross, past the rib. A scimitar blade is attached to the armor.
 - **CANON (user's words):** The pauldron+blade is attached to his body and soul — he would DIE if he removed it. He can't separate the sword from the pauldron. He fights using the blade's positioning as part of his movements. The blade is positioned so it doesn't interfere with his other moves (not a hitbox problem — it's part of his style).
