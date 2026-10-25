@@ -37,6 +37,10 @@ import os
 import subprocess
 import sys
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+from gpu_measure import base_report, write_report  # noqa: E402
+
 
 def fail(msg):
     print(f"TRIPO-AUTORIG-JOB: FAIL: {msg}", file=sys.stderr)
@@ -58,15 +62,18 @@ def main():
     print("  repo's own README usage and run exactly that, then validate")
     print("  with the rig-compat role check in step 3 of the docstring.")
     print("TRIPO-AUTORIG-JOB: PREPARED ONLY — awaiting coordinator browser run.")
-    report = {
-        "job": "tripo-autorig",
-        "status": "prepared-not-run",
+    print("TRIPO-AUTORIG-JOB: on run, the report MUST carry gpu_measure proofs "
+          "(nvidia-smi + torch.cuda, captured fresh), input size, output, "
+          "wall time, and CPU-baseline time where available; speedup is "
+          "computed from those numbers, never claimed.")
+    report = base_report("tripo-autorig", capture=False)
+    report.update({
         "input": inp,
         "output_dir": outdir,
-        "note": "Fill in real metrics (rig type, mapped/unmapped roles, verts, GPU, wall time) from the Kaggle run.",
-    }
-    with open(os.path.join(outdir, "tripo-autorig-report.json"), "w") as f:
-        json.dump(report, f, indent=2)
+        "note": "Fill in real metrics (rig type, mapped/unmapped roles, verts, GPU proofs, "
+                "wall time, CPU baseline) from the Kaggle run.",
+    })
+    write_report(os.path.join(outdir, "tripo-autorig-report.json"), report)
     return 0
 
 
