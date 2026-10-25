@@ -22,6 +22,17 @@
 - 4 string-referenced moves were restored from quarantine as UNMAPPED so
   the patch newly breaks zero strings (verified: patched unresolved string
   hits == original unresolved string hits for all 8 fighters).
+- 1 slots-neutral move was restored the same way after CI caught it
+  (2026-10-25): diablo slots['4'] points to '4~3' Demon Scissors, which
+  the first patch run had quarantined — neutral RK4 then fell through to
+  '4*' and failed input-determinism (the test's only gating failure).
+  Restoring '4~3' as UNMAPPED preserves main's neutral-RK4 behavior and
+  makes the gate green. Rule added to the patch script: neutral slots
+  ('1'/'2'/'3'/'4') targets are never left quarantined.
+- Broader follow-up (NOT done here): 556 quarantined slot VALUES remain
+  across the 8 files. Their notations are T8-only until T7 clips land,
+  so they stay unplayable; the resolver falling back to another move
+  (rather than null) for an unmapped slot target is a resolver-lane fix.
 - Deliberately NOT quarantined on guesswork alone: JGR (Reverse Jaguar
   Step) follow-ups stay quarantined because T7's own display list attests
   the stance but NOT follow-ups; Ki Charge stays quarantined (no T7 file

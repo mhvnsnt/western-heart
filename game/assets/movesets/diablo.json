@@ -20097,6 +20097,28 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "set": "FIGHT",
       "knockdown": true
+    },
+    "4~3": {
+      "name": "Demon Scissors",
+      "input": "4~3",
+      "t8_source": "heihachi",
+      "t8_id": "Heihachi-4~3",
+      "t8_damage": "25",
+      "startup": 0.583,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 25,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "UNMAPPED:t7-clip-pending",
+      "input_slots": [
+        "4~3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -11a; knockdown on hit",
+      "slots_referenced_restore_20261024": true
     }
   },
   "restored_from_sweep_338": {
@@ -21295,27 +21317,6 @@
         "total": 20
       },
       "note": "Mid; on block -13"
-    },
-    "4~3": {
-      "name": "Demon Scissors",
-      "input": "4~3",
-      "t8_source": "heihachi",
-      "t8_id": "Heihachi-4~3",
-      "t8_damage": "25",
-      "startup": 0.583,
-      "active": 0.033,
-      "recovery": 0.467,
-      "damage": 25,
-      "limb": "both",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 12,
-      "anim_ref": "t8:heihachi:heihachi-4~3",
-      "input_slots": [
-        "4~3"
-      ],
-      "move_class": "strike",
-      "note": "Mid; on block -11a; knockdown on hit"
     },
     "b+1,4": {
       "name": "Oni Yarai",
