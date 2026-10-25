@@ -89,9 +89,18 @@ export function ensureUrgeMoves(fighterId, msApi) {
     ms.slots = ms.slots || {};
     ms.slots[bKey] = bKey; ms.slots[sKey] = sKey;
   }
-  // flag the engager (once)
+  // flag the engager (once). GAP-FILL LANE 1: if the moveset
+  // data already flags an Engager (per-character T8 lists, when
+  // the moveset lane authors them), respect it — do NOT crown a
+  // second, synthesized engager on top of the data one. The
+  // strongest-knock synthesis below is only the fallback for
+  // movesets with no data-flagged engager at all.
   if (!ms._urgeEngagerKey) {
-    const ek = _engagerKey(ms);
+    let ek = null;
+    for (const [key, m] of Object.entries(ms.moves)) {
+      if (m && m.urgeEngager && !/^(R\.|RD\.|UB\.|US\.)/.test(key)) { ek = key; break; }
+    }
+    if (!ek) ek = _engagerKey(ms);
     if (ek && ms.moves[ek]) { ms.moves[ek].urgeEngager = true; ms._urgeEngagerKey = ek; }
   }
   return true;
@@ -109,6 +118,16 @@ export class SoulUrge {
       if (!f) continue;
       f._urgeUsed = false; f._urgeOn = false; f._urgePips = 0; f._urgeT = 0;
       if (f.setUrgeAura) f.setUrgeAura(false);
+      // GAP-FILL LANE 1: the per-round combat state that lives
+      // on the fighter is reset here, through this existing
+      // per-round director hook (game.js calls resetRound every
+      // round; fighter.js has no round-reset method of its own).
+      // Recoverable pool is per-round in T8; the extender slot
+      // and wall-splat count never carry across rounds either.
+      f._recoverable = 0;
+      f._extenderUsed = false; f._extenderKind = null;
+      f._inScrew = false; f._inTornado = false;
+      f._wallSplatHits = 0; f._wallSplatArmed = false;
     }
     // Safety net: movesets may finish loading after startMatch.
     try {
