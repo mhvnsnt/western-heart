@@ -214,3 +214,33 @@ html,body{margin:0;padding:0;height:100%;background:var(--bg);color:var(--txt);
 .chip.of-hidden{border-color:var(--dim);color:var(--dim);}
 .chip.of-invisible{border-color:#9a7ff5;color:#9a7ff5;}
 .chip.of-deleted{border-color:var(--red);color:var(--red);}
+
+/* ---- creation-suite fix 2026-10-24: preview visible, no overlap ----
+   User 2026-10-24 19:42 CDT: top bar cramped/overlapping, bottom hints
+   cut off/overlapping, fighter-select modal covered the whole preview.
+   Fixes: top bar actions scroll horizontally instead of overlapping (rail
+   geometry unchanged — topbar height stays 64px); bottom src-note moves to
+   the TOOLS tab on phones and the slot hint ellipsizes instead of
+   overlapping; the fighter-select modal becomes a bottom sheet on phones
+   (max 55dvh — the character stays visible above it) and a right-docked
+   panel on desktop (the character stays visible to its left). The
+   :not([hidden]) qualifier is load-bearing: a plain display:flex here
+   would override the [hidden] attribute and show the modal permanently. */
+@media (max-width:720px){
+  .tb-right{min-width:0;overflow-x:auto;flex-wrap:nowrap;}
+  .tb-right .btn,.tb-right .wallet{flex-shrink:0;}
+  .tb-crumb{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  #bottombar .bb-right{display:none;}
+  .bb-left{min-width:0;flex:1;}
+  #btn-roster{flex-shrink:0;}
+  #slot-status{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}
+  #modal-scrim{background:rgba(0,0,0,.35);}
+  #modal:not([hidden]){left:0;right:0;top:auto;bottom:0;transform:none;width:100%;
+    max-height:55dvh;border-radius:14px 14px 0 0;display:flex;flex-direction:column;}
+  #modal:not([hidden]) #modal-body{max-height:none;flex:1;}
+}
+@media (min-width:721px){
+  #modal:not([hidden]){left:auto;right:0;top:var(--top-h);bottom:var(--bottom-h);transform:none;
+    width:min(480px,92vw);max-height:none;border-radius:0;display:flex;flex-direction:column;}
+  #modal:not([hidden]) #modal-body{max-height:none;flex:1;}
+}

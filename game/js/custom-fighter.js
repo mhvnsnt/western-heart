@@ -44,7 +44,8 @@ export function getCustomFighter() {
 
 /**
  * Convert CAW fighter JSON to a roster-compatible fighter object.
- * Uses Soldier.glb base model with saved appearance applied.
+ * Uses the blank CAW base (Technician MB-Lab bake) from MODEL_URLS.custom,
+ * with saved appearance applied. Mixamo Soldier removed 2026-10-24.
  */
 export function customFighterToRoster(F) {
   if (!F || !F.profile) return null;
