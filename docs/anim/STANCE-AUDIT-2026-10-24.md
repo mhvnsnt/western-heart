@@ -140,3 +140,112 @@ These characters currently share a bank (via moveset fallback) or use CMU fallba
 - Code: FIGHTER_BANK overrides added, syntax verified by reading edited file.
 - Simulation: bankIdFor('docfrank', 'gunjack') now returns 'bosconovitch' (was 'gunjack'); bankIdFor('tobi', 'tobi') now returns 'hwoarang' (was null); bankIdFor('buffalo-bill', 'buffalo-bill') now returns 'law' (was null).
 - Live playtest still owed: select screen must show distinct stances for docfrank, tobi, buffalo-bill; fight idle must show distinct stances. Owner verifying by playing is the final step.
+
+
+## Follow-up 2026-10-24 (T3 stance gap lane)
+
+Scope of this entry: the 29 UNMAPPED characters only. No code changed
+in this entry's PR, no KEEP character touched, no stance clip added.
+
+### Count reconciliation
+
+This audit's UNMAPPED table has 27 rows. The lane total is 29:
+27 + zen (moved to UNMAPPED by PR #1019, owner decision: Zen is
+neither Heihachi nor Julia, FIGHTER_BANK zen is null) + ryuji-rock
+(CORNERSTONE), a roster id in game/js/roster-full.js that this audit
+never lists (audit covers 58 ids, the roster has 59). Sharing groups
+today, corrected: jin 8, bryan 7, xiaoyu 2, heihachi 3, king 3,
+null 6 = 29.
+
+### Headline: fixable NOW from an existing bank = 0 of 29
+
+Every one of the 22 decoded banks under game/assets/anim/t3/ was
+checked against every UNMAPPED base (bank ids, FIGHTER_BANK,
+SOURCE_TO_BANK, moveset index sources, and each bank's
+t3_neutral.json idle clip). No UNMAPPED character's own base has a
+bank on disk, and FIGHTER_BANK holds no entry for any of them
+except zen: null (intentional). There is therefore no valid
+mapping-only fix, and this PR deliberately makes NO FIGHTER_BANK
+change: wiring a cousin bank (Lei for Lee, Eddy for Christie,
+Heihachi for Akuma) as if it were the character's own would repeat
+the sharing error. The idle clip is t3_neutral.json (slot 0x3,
+looped); t3_stance.json is the round-start intro (slot 0x0), not
+the idle.
+
+### Corrections to this audit, verified on main
+
+- chordz is NOT null: chordz.json and the moveset index both give
+  t3_source jin, so chordz shares the jin stance. It joins the jin
+  group (8, not 7).
+- "T3 X bank decode" is impossible for most rows: Asuka, Raven,
+  Dragunov debuted in T5; Bob, Miguel, Lars, Zafina in T6; Josie,
+  Shaheen, Katarina, Chloe, Negan, Akuma in T7; Christie in T4;
+  Lee and Ganryu in T1/T2 (not T3); Jun in T2 (not T3). Their honest
+  path is later-game extraction (T7 in almost every case, TTT2 for
+  Jun), not a T3 bank. Only Mokujin is a genuine T3 case (below).
+- baek-master-white base is CONFLICTED: roster says Kevin, moveset
+  file says Baek. Owner input required before any target bank is
+  named. Current bank bryan (shared) either way.
+- byou index entry is STALE: it still says Lei Wulong, but the
+  owner clarified 2026-10-21 that Lei is Rave, not Byou. Owner must
+  name Byou's base.
+- ryuji fight-path bank is call-site dependent (index: no source,
+  null; roster moveset ryuji-rock names king as proxy). Either way
+  it is NOT Yamazaki's own bank. Verify by playing; do not wire
+  king as a fix.
+- zen index entry is STALE but harmless: it still says Heihachi /
+  anim_bank heihachi, while FIGHTER_BANK zen: null wins. Do not
+  restore heihachi or julia without a new owner decision.
+
+### Per-character status (29)
+
+FIXABLE NOW: none. NEEDS T7 extraction (16): kinpo Asuka, waterfall
+Josie, burger Bob, scimitar Shaheen, purplerain Lee, dio Akuma,
+michiko Katarina, star Christie, bruno Miguel, negativo Negan,
+thor Ganryu, slice Dragunov, mariposa-monarch Zafina, chordz Lars,
+pond Raven, ryusan Lucky Chloe. NEEDS TTT2 extraction (1): megami
+Jun (Jun is not playable in T7; the MADE specs hold NO stance pose,
+and decoded clips must REPLACE them, not sit alongside them).
+NEEDS T3 re-rip / TTT2 / MIX decision (1): dxmmii-patchwork Mokujin
+— divmot15 is size-0 on the owner's disc (BNS entry 295); the
+original-disc entry is 127,368 bytes; Mokujin mimics by canon, so a
+fixed single stance needs an owner MIX decision. NEEDS non-Tekken
+extraction or MADE stance (8): charger Blanka (SF), kronos Zangief
++ Golem (MIX), deathfang Iori (KOF), ryuji Yamazaki (KOF),
+ryuji-rock Yamazaki + Rock (MIX), vainabel Bass (DOA), koreshi
+Kakashi + Super Saiyan (MIX), cainelias Undertaker (WWE). NEEDS
+VF5 Dural extraction or MADE stance (1): zen. OWNER INPUT (2):
+baek-master-white, byou.
+
+### Extraction spec for the T7 rows (so the lane needs no re-research)
+
+Per character: Tekken 7, that character, neutral standing idle
+clip (the standing guard loop — NOT the round intro, NOT a win
+pose), delivered as a new bank dir game/assets/anim/t3/<target>/
+with t3_neutral.json at minimum, wired by ONE FIGHTER_BANK line
+once the bank exists and its idle is verified, then playtested on
+select screen and in fight. Pond / ryusan shortcut: their T7
+mot.bin files are already decoded at move level (PR #61: Raven
+frv, Chloe dnc); only the idle clip bytes remain, via live-memory
+export from a running T7. Future FIGHTER_BANK lines (DO NOT apply
+until each target bank exists): kinpo asuka, waterfall josie,
+burger bob, scimitar shaheen, purplerain lee, dio akuma, michiko
+katarina, star christie, bruno miguel, negativo negan, thor
+ganryu, slice dragunov, mariposa-monarch zafina, pond raven,
+ryusan chloe, megami jun, chordz lars, dxmmii-patchwork mokujin,
+zen dural.
+
+### Batch verification (GPU script, local CPU run)
+
+The lane's batch script verifies all 22 banks' idle clips in one
+batched pass and prints the full 29-row matrix (PASS only if a
+character plays its OWN base's bank). Local run in this lane:
+torch is not installed on that VM, so it ran on CPU (pure-python
+fallback) — a correctness run, NOT a GPU run. Result: bank idle
+clips 18 PASS / 4 CHECK (lei, nina, eddy, bosconovitch — diagnostic
+flags for the bank lane; none of the 4 banks is shared by any of
+the 29); character matrix 0 PASS / 29 FAIL. The GPU run on the
+2x Tesla T4 Kaggle notebook is still owed and must be reported as
+such, not claimed from the CPU run. The script lives in the lane
+workspace (kaggle_batch_stance_verify.py) with --fetch-remote and
+--device cuda modes for the notebook run.
