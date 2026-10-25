@@ -853,6 +853,8 @@
       "knock": 4.2,
       "soulGain": 12,
       "anim_ref": "wh:sha:sig:erodes-mountains",
+      "community_base": "game/assets/anim/oss/community/144_13.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "S"
       ],
@@ -896,6 +898,8 @@
       "knock": 4.2,
       "soulGain": 12,
       "anim_ref": "wh:sha:sig:erodes-mountains",
+      "community_base": "game/assets/anim/oss/community/144_13.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "1+2"
       ],
@@ -7771,7 +7775,9 @@
         "bank": "xiaoyu",
         "row": 254,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "7",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2~t7.xiaoyu": {
       "name": "Bayonet",
@@ -7817,7 +7823,9 @@
         "bank": "xiaoyu",
         "row": 106,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2~t7.xiaoyu.2": {
       "name": "SHA 1,2",
@@ -7856,7 +7864,9 @@
         "bank": "xiaoyu",
         "row": 106,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,1~t7.xiaoyu": {
       "name": "Bayonet Thruster",
@@ -7904,7 +7914,9 @@
         "bank": "xiaoyu",
         "row": 150,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7,8,17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,1~t7.xiaoyu.2": {
       "name": "SHA 1,2,1",
@@ -7951,7 +7963,9 @@
         "bank": "xiaoyu",
         "row": 47,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7,8,17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,1~t7.xiaoyu.3": {
       "name": "SHA 1,2,1",
@@ -7991,7 +8005,9 @@
         "bank": "xiaoyu",
         "row": 59,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7,8,17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,d+2,1+2~t7.xiaoyu": {
       "name": "Fan Dance to Pushing Hands",
@@ -8035,11 +8051,8 @@
         "total": 41
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 362,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "7,10,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,d+2,1+2~t7.xiaoyu.2": {
       "name": "SHA 1,d+2,1+2",
@@ -8082,11 +8095,8 @@
         "total": 34
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "7,10,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,d+2,1+2~t7.xiaoyu.3": {
       "name": "SHA 1,d+2,1+2",
@@ -8122,11 +8132,8 @@
       "merge_source": "t7:xiaoyu_9",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "7,10,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,D+2": {
       "name": "SHA 1,D+2",
@@ -8172,7 +8179,9 @@
         "bank": "xiaoyu",
         "row": 106,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,D+2~t7.xiaoyu": {
       "name": "SHA 1,D+2",
@@ -8211,7 +8220,9 @@
         "bank": "xiaoyu",
         "row": 270,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1+2~t7.xiaoyu": {
       "name": "Birds Flock",
@@ -8251,7 +8262,9 @@
         "bank": "xiaoyu",
         "row": 104,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2~t7.xiaoyu": {
       "name": "Right Jab",
@@ -8290,7 +8303,9 @@
         "bank": "xiaoyu",
         "row": 106,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,D/F+1": {
       "name": "April Showers",
@@ -8336,7 +8351,9 @@
         "bank": "xiaoyu",
         "row": 150,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "8,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,D/F+1~t7.xiaoyu": {
       "name": "SHA 2,D/F+1",
@@ -8375,7 +8392,9 @@
         "bank": "xiaoyu",
         "row": 320,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "8,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3~t7.xiaoyu": {
       "name": "Cloud Kick",
@@ -8415,7 +8434,9 @@
         "bank": "xiaoyu",
         "row": 251,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4~t7.xiaoyu": {
       "name": "Right Kick",
@@ -8455,7 +8476,9 @@
         "bank": "xiaoyu",
         "row": 131,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4~3": {
       "name": "Crescent Moon Kick",
@@ -8494,7 +8517,9 @@
         "bank": "xiaoyu",
         "row": 322,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u+1+2~t7.xiaoyu": {
       "name": "SHA u+1+2",
@@ -8536,11 +8561,8 @@
         ],
         "total": 10
       },
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "5,5",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u+1+2,2~t7.xiaoyu": {
       "name": "SHA u+1+2,2",
@@ -8587,7 +8609,9 @@
         "bank": "xiaoyu",
         "row": 124,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "6,6,16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u+1+2,2,1~t7.xiaoyu": {
       "name": "Fortune Cookie",
@@ -8636,7 +8660,9 @@
         "bank": "xiaoyu",
         "row": 59,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "5,5,12,23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u+1+2,3+4": {
       "name": "Ginger Snap",
@@ -8678,11 +8704,8 @@
         ],
         "total": 10
       },
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "5,5",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+1+2": {
       "name": "Phoenix Flight",
@@ -8721,7 +8744,9 @@
         "bank": "xiaoyu",
         "row": 242,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3~t7.xiaoyu": {
       "name": "Bolting Rabbit",
@@ -8761,7 +8786,9 @@
         "bank": "xiaoyu",
         "row": 276,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+4~t7.xiaoyu": {
       "name": "Cyanide",
@@ -8800,7 +8827,9 @@
         "bank": "xiaoyu",
         "row": 92,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+4,D": {
       "name": "SHA u/f+4,D",
@@ -8839,7 +8868,9 @@
         "bank": "xiaoyu",
         "row": 261,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2~t7.xiaoyu": {
       "name": "SHA f+2",
@@ -8878,7 +8909,9 @@
         "bank": "xiaoyu",
         "row": 121,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,1~t7.xiaoyu": {
       "name": "SHA f+2,1",
@@ -8920,11 +8953,8 @@
         ],
         "total": 26
       },
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 363,
-        "match": "same-notation"
-      }
+      "mod_damage": "12,14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,1~t7.xiaoyu.2": {
       "name": "SHA f+2,1",
@@ -8959,11 +8989,8 @@
       "t7_on_ch": "+10",
       "merge_source": "t7:xiaoyu_29",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 363,
-        "match": "same-notation"
-      }
+      "mod_damage": "12,14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,1,4~t7.xiaoyu": {
       "name": "Bai Yang Zhuan Wu",
@@ -9011,7 +9038,9 @@
         "bank": "xiaoyu",
         "row": 345,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,14,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,1,4~t7.xiaoyu.2": {
       "name": "SHA f+2,1,4",
@@ -9058,7 +9087,9 @@
         "bank": "xiaoyu",
         "row": 289,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,14,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,1,4~t7.xiaoyu.3": {
       "name": "SHA f+2,1,4",
@@ -9098,7 +9129,9 @@
         "bank": "xiaoyu",
         "row": 353,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,14,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3~t7.xiaoyu": {
       "name": "SHA f+3",
@@ -9137,7 +9170,9 @@
         "bank": "xiaoyu",
         "row": 140,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3,1,1+2~t7.xiaoyu": {
       "name": "Wings of Fury",
@@ -9181,11 +9216,8 @@
         ],
         "total": 48
       },
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "14,8,6,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3,1,1+2~t7.xiaoyu.2": {
       "name": "SHA f+3,1,1+2",
@@ -9228,11 +9260,8 @@
         ],
         "total": 34
       },
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "14,8,6,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3,1,1+2~t7.xiaoyu.3": {
       "name": "SHA f+3,1,1+2",
@@ -9274,11 +9303,8 @@
         ],
         "total": 26
       },
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "14,8,6,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+4~t7.xiaoyu": {
       "name": "Swivel Kick",
@@ -9318,7 +9344,9 @@
         "bank": "xiaoyu",
         "row": 123,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+1+2~t7.xiaoyu": {
       "name": "Clouded Peak",
@@ -9358,7 +9386,9 @@
         "bank": "xiaoyu",
         "row": 317,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "25",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+1~t7.xiaoyu": {
       "name": "SHA f,F+1",
@@ -9397,7 +9427,9 @@
         "bank": "xiaoyu",
         "row": 71,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "19",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+1,3~t7.xiaoyu": {
       "name": "Poison Flower",
@@ -9444,7 +9476,9 @@
         "bank": "xiaoyu",
         "row": 130,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "19,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+1,3~t7.xiaoyu.2": {
       "name": "SHA f,F+1,3",
@@ -9484,7 +9518,9 @@
         "bank": "xiaoyu",
         "row": 259,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "19,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+1,4~t7.xiaoyu": {
       "name": "Eclipsing Moon",
@@ -9531,7 +9567,9 @@
         "bank": "xiaoyu",
         "row": 292,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "19,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+1,4~t7.xiaoyu.2": {
       "name": "SHA f,F+1,4",
@@ -9571,7 +9609,9 @@
         "bank": "xiaoyu",
         "row": 292,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "19,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+2~t7.xiaoyu": {
       "name": "SHA f,F+2",
@@ -9610,7 +9650,9 @@
         "bank": "xiaoyu",
         "row": 252,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+2,1~t7.xiaoyu": {
       "name": "Fortune",
@@ -9657,7 +9699,9 @@
         "bank": "xiaoyu",
         "row": 71,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+2,1~t7.xiaoyu.2": {
       "name": "SHA f,F+2,1",
@@ -9697,7 +9741,9 @@
         "bank": "xiaoyu",
         "row": 257,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+4~t7.xiaoyu": {
       "name": "Step Kick",
@@ -9737,7 +9783,9 @@
         "bank": "xiaoyu",
         "row": 292,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "25",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+4,4": {
       "name": "Swallow Dance",
@@ -9812,11 +9860,8 @@
       "t7_on_ch": "+5",
       "merge_source": "t7:xiaoyu_49",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+1+2,1+2~t7.xiaoyu": {
       "name": "X Marks the Spot",
@@ -9858,11 +9903,8 @@
         ],
         "total": 33
       },
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "12,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+1+2,1+2~t7.xiaoyu.2": {
       "name": "SHA f,F+1+2,1+2",
@@ -9897,11 +9939,8 @@
       "t7_on_ch": "GROUND BOUNCE",
       "merge_source": "t7:xiaoyu_51",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "12,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "D/F+1": {
       "name": "Belly Chop",
@@ -9940,7 +9979,9 @@
         "bank": "xiaoyu",
         "row": 73,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+2~t7.xiaoyu": {
       "name": "SHA d/f+2",
@@ -9979,7 +10020,9 @@
         "bank": "xiaoyu",
         "row": 126,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+2~1": {
       "name": "Cross Lifting Palms",
@@ -10026,7 +10069,9 @@
         "bank": "xiaoyu",
         "row": 70,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "8,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+1~t7.xiaoyu": {
       "name": "Sunset Fan",
@@ -10073,7 +10118,9 @@
         "bank": "xiaoyu",
         "row": 137,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "7,7,7",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+3~t7.xiaoyu": {
       "name": "SHA d+3",
@@ -10112,7 +10159,9 @@
         "bank": "xiaoyu",
         "row": 113,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+3,4~t7.xiaoyu": {
       "name": "Giant Slayer",
@@ -10159,7 +10208,9 @@
         "bank": "xiaoyu",
         "row": 371,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+3,4~t7.xiaoyu.2": {
       "name": "SHA d+3,4",
@@ -10199,7 +10250,9 @@
         "bank": "xiaoyu",
         "row": 91,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+1": {
       "name": "Storming Flower",
@@ -10239,7 +10292,9 @@
         "bank": "xiaoyu",
         "row": 250,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "30()",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+3": {
       "name": "Knee Cracker",
@@ -10278,7 +10333,9 @@
         "bank": "xiaoyu",
         "row": 129,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "0",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+4~t7.xiaoyu": {
       "name": "Nutcracker",
@@ -10318,7 +10375,9 @@
         "bank": "xiaoyu",
         "row": 149,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1~t7.xiaoyu": {
       "name": "Great Wall Left",
@@ -10357,7 +10416,9 @@
         "bank": "xiaoyu",
         "row": 460,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+4~t7.xiaoyu": {
       "name": "SHA b+4",
@@ -10396,7 +10457,9 @@
         "bank": "xiaoyu",
         "row": 114,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+4,4": {
       "name": "Pressing Crane",
@@ -10442,7 +10505,9 @@
         "bank": "xiaoyu",
         "row": 371,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+4,4~t7.xiaoyu": {
       "name": "SHA b+4,4",
@@ -10481,7 +10546,9 @@
         "bank": "xiaoyu",
         "row": 91,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/b+3+4~t7.xiaoyu": {
       "name": "Backflip",
@@ -10529,7 +10596,9 @@
         "bank": "xiaoyu",
         "row": 66,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.1": {
       "name": "SHA FC.1",
@@ -10568,7 +10637,9 @@
         "bank": "xiaoyu",
         "row": 48,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "5",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.2": {
       "name": "SHA FC.2",
@@ -10646,7 +10717,9 @@
         "bank": "xiaoyu",
         "row": 130,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "11",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.3,2,1": {
       "name": "SHA FC.3,2,1",
@@ -10693,7 +10766,9 @@
         "bank": "xiaoyu",
         "row": 70,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "11,6,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.3,2,1~t7.xiaoyu": {
       "name": "SHA FC.3,2,1",
@@ -10739,7 +10814,9 @@
         "bank": "xiaoyu",
         "row": 46,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "11,6,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.3,2,1~t7.xiaoyu.2": {
       "name": "SHA FC.3,2,1",
@@ -10778,7 +10855,9 @@
         "bank": "xiaoyu",
         "row": 73,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "11,6,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.3,2,1,4": {
       "name": "Fire Dancer",
@@ -10827,7 +10906,9 @@
         "bank": "xiaoyu",
         "row": 93,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "11,6,6,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.3,2,1,4~t7.xiaoyu": {
       "name": "SHA FC.3,2,1,4",
@@ -10875,7 +10956,9 @@
         "bank": "xiaoyu",
         "row": 297,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "11,6,6,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.3,2,1,4~t7.xiaoyu.2": {
       "name": "SHA FC.3,2,1,4",
@@ -10922,7 +11005,9 @@
         "bank": "xiaoyu",
         "row": 371,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "11,6,6,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.3,2,1,4~t7.xiaoyu.3": {
       "name": "SHA FC.3,2,1,4",
@@ -10962,7 +11047,9 @@
         "bank": "xiaoyu",
         "row": 297,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "11,6,6,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.4": {
       "name": "SHA FC.4",
@@ -11040,7 +11127,9 @@
         "bank": "xiaoyu",
         "row": 252,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.d/f+2,1": {
       "name": "Lotus Twist",
@@ -11086,7 +11175,9 @@
         "bank": "xiaoyu",
         "row": 320,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.d/f+4,4": {
       "name": "Double Map Sweep",
@@ -11132,7 +11223,9 @@
         "bank": "xiaoyu",
         "row": 297,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "SS.3": {
       "name": "Phoenix Tail",
@@ -11171,7 +11264,9 @@
         "bank": "xiaoyu",
         "row": 322,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "SS.4~t7.xiaoyu": {
       "name": "Street Sweeper",
@@ -11210,7 +11305,9 @@
         "bank": "xiaoyu",
         "row": 292,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "19",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,f,F": {
       "name": "SHA f,f,F",
@@ -11331,7 +11428,9 @@
         "bank": "xiaoyu",
         "row": 131,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1+2~t7.xiaoyu.2": {
       "name": "SHA 1+2",
@@ -11372,7 +11471,9 @@
         "bank": "xiaoyu",
         "row": 104,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.1": {
       "name": "Rising Jab",
@@ -11411,7 +11512,9 @@
         "bank": "xiaoyu",
         "row": 74,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.2,b": {
       "name": "Sunflower",
@@ -11452,7 +11555,9 @@
         "bank": "xiaoyu",
         "row": 144,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.2*,b": {
       "name": "Jasmine Blossom",
@@ -11493,7 +11598,9 @@
         "bank": "xiaoyu",
         "row": 106,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.3": {
       "name": "Rising Axe Kick",
@@ -11532,7 +11639,9 @@
         "bank": "xiaoyu",
         "row": 322,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.4": {
       "name": "Skyscraper Kick",
@@ -11572,7 +11681,9 @@
         "bank": "xiaoyu",
         "row": 292,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.b+4": {
       "name": "SHA WS.b+4",
@@ -11844,12 +11955,7 @@
       "merge_source": "t7:xiaoyu_98",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Up, Feet Towards+",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "Face Up, Feet Towards+"
     },
     "t7.xiaoyu_99": {
       "name": "SHA Face Up, Feet Towards, Roll Forward+1+2",
@@ -12083,11 +12189,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:xiaoyu_104",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/b+1+2~t7.xiaoyu": {
       "name": "Hypnotist (SSL)",
@@ -12124,9 +12226,10 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+        "row": 242,
+        "match": "class-verified remap (anim-fix 2026-10-23)"
+      },
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "HYP.1+2~t7.xiaoyu": {
       "name": "Hypnotist",
@@ -12161,11 +12264,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:xiaoyu_106",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "HYP.4~t7.xiaoyu": {
       "name": "Falling Tiger Kick",
@@ -12204,7 +12303,9 @@
         "bank": "xiaoyu",
         "row": 292,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "HYP.2~t7.xiaoyu": {
       "name": "Spin Sticker (One Step)",
@@ -12359,11 +12460,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:xiaoyu_111",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "HYP.2+3,b,b": {
       "name": "Thunder Strike Cancel",
@@ -12438,11 +12535,8 @@
       "merge_source": "t7:xiaoyu_113",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "26",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WALL.b,b,u/b": {
       "name": "SHA WALL.b,b,u/b",
@@ -12519,11 +12613,7 @@
       "merge_source": "t7:xiaoyu_115",
       "recovery_from": "same-notation T8 recv",
       "input_note": "(or FC d/b+3+4)",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "AOP.b+3+4": {
       "name": "SHA AOP.b+3+4",
@@ -12558,11 +12648,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:xiaoyu_116",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "SS.3,B": {
       "name": "Phoenix Tail",
@@ -12601,7 +12687,8 @@
         "bank": "xiaoyu",
         "row": 272,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,d+2~t7.xiaoyu": {
       "name": "Fan Dance",
@@ -12647,7 +12734,9 @@
         "bank": "xiaoyu",
         "row": 106,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,d+2~t7.xiaoyu.2": {
       "name": "SHA 1,d+2",
@@ -12686,7 +12775,9 @@
         "bank": "xiaoyu",
         "row": 270,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,1~t7.xiaoyu": {
       "name": "April Showers",
@@ -12732,7 +12823,9 @@
         "bank": "xiaoyu",
         "row": 255,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "8,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,1~t7.xiaoyu.2": {
       "name": "SHA 2,1",
@@ -12771,7 +12864,9 @@
         "bank": "xiaoyu",
         "row": 255,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "8,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u+1+2,2,1,B": {
       "name": "Fortune Cookie",
@@ -12819,7 +12914,9 @@
         "bank": "xiaoyu",
         "row": 270,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "5,5,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+1+2,B": {
       "name": "Phoenix Flight",
@@ -12858,7 +12955,9 @@
         "bank": "xiaoyu",
         "row": 124,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3+4": {
       "name": "Shooting Star",
@@ -12905,7 +13004,9 @@
         "bank": "xiaoyu",
         "row": 65,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "8,10,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3,1~t7.xiaoyu": {
       "name": "SHA f+3,1",
@@ -12951,7 +13052,9 @@
         "bank": "xiaoyu",
         "row": 59,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3,1~t7.xiaoyu.2": {
       "name": "SHA f+3,1",
@@ -12990,7 +13093,9 @@
         "bank": "xiaoyu",
         "row": 316,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+2,1,B": {
       "name": "Fortune",
@@ -13036,7 +13141,9 @@
         "bank": "xiaoyu",
         "row": 252,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+3~t7.xiaoyu": {
       "name": "Raccoon Swing",
@@ -13075,7 +13182,9 @@
         "bank": "xiaoyu",
         "row": 218,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+3+4~t7.xiaoyu": {
       "name": "Front Layout",
@@ -13111,11 +13220,8 @@
       "merge_source": "t7:xiaoyu_129",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "25",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1": {
       "name": "Belly Chop",
@@ -13154,7 +13260,9 @@
         "bank": "xiaoyu",
         "row": 125,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,2~t7.xiaoyu": {
       "name": "Seven Star Fist",
@@ -13200,7 +13308,9 @@
         "bank": "xiaoyu",
         "row": 124,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,2~t7.xiaoyu.2": {
       "name": "SHA b+2,2",
@@ -13239,7 +13349,9 @@
         "bank": "xiaoyu",
         "row": 252,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+3~t7.xiaoyu": {
       "name": "Peacock Kick",
@@ -13279,7 +13391,9 @@
         "bank": "xiaoyu",
         "row": 113,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.3,2": {
       "name": "SHA FC.3,2",
@@ -13325,7 +13439,9 @@
         "bank": "xiaoyu",
         "row": 124,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "11,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.3,2~t7.xiaoyu": {
       "name": "SHA FC.3,2",
@@ -13364,7 +13480,9 @@
         "bank": "xiaoyu",
         "row": 270,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "11,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.d/f+2,D/F": {
       "name": "SHA FC.d/f+2,D/F",
@@ -13403,7 +13521,9 @@
         "bank": "xiaoyu",
         "row": 270,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.d/f+2,1,D/F": {
       "name": "SHA FC.d/f+2,1,D/F",
@@ -13449,7 +13569,9 @@
         "bank": "xiaoyu",
         "row": 270,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.1,4": {
       "name": "Whirlwind Cross Kick",
@@ -13574,7 +13696,9 @@
         "bank": "xiaoyu",
         "row": 252,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.2*": {
       "name": "Jasmine Blossom",
@@ -13614,7 +13738,9 @@
         "bank": "xiaoyu",
         "row": 252,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "AOP.1,2~t7.xiaoyu": {
       "name": "Double Serving to Rain Dance",
@@ -13660,7 +13786,9 @@
         "bank": "xiaoyu",
         "row": 270,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "11,15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "AOP.1,2~t7.xiaoyu.2": {
       "name": "SHA AOP.1,2",
@@ -13699,7 +13827,9 @@
         "bank": "xiaoyu",
         "row": 252,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "11,15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "AOP.2,1,B": {
       "name": "Phoenix Double Palm to Rain Dance",
@@ -13745,7 +13875,9 @@
         "bank": "xiaoyu",
         "row": 272,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "BT.f+3+4~t7.xiaoyu": {
       "name": "California Roll",
@@ -13779,12 +13911,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:xiaoyu_145",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "BT.b+3+4": {
       "name": "Spin Tornado Back",
@@ -13818,12 +13945,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:xiaoyu_146",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "BT.1~t7.xiaoyu": {
       "name": "Hidden Fortune",
@@ -14061,12 +14183,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:xiaoyu_152",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "launch": true
     },
     "BT.u/f,f": {
       "name": "SHA BT.u/f,f",
@@ -14178,12 +14295,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:xiaoyu_155",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "BT.3+4~t7.xiaoyu": {
       "name": "Spin Tornado Up (Down)",
@@ -14218,12 +14330,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:xiaoyu_156",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(or d+3+4)",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(or d+3+4)"
     },
     "BT.d+1+4": {
       "name": "Rain Dance to Low Parry",
@@ -14257,12 +14364,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:xiaoyu_157",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "BT.1,4": {
       "name": "Hidden Fortune",
@@ -14787,11 +14889,6 @@
           6
         ],
         "total": 12
-      },
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "BT.1+2,1+2~t7.xiaoyu": {
@@ -14835,11 +14932,6 @@
           6
         ],
         "total": 24
-      },
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "BT.1+2,1+2~t7.xiaoyu.2": {
@@ -14881,11 +14973,6 @@
           6
         ],
         "total": 12
-      },
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "BT.f+1+2~t7.xiaoyu": {
@@ -14920,12 +15007,7 @@
       "t7_on_hit": "+3",
       "t7_on_ch": "+5",
       "merge_source": "t7:xiaoyu_172",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "BT.f,F+3": {
       "name": "Peg Leg",
@@ -15209,7 +15291,8 @@
         "bank": "xiaoyu",
         "row": 335,
         "match": "same-notation"
-      }
+      },
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3+4,3+4~t7.xiaoyu": {
       "name": "Somersault to Phoenix Talon",
@@ -15253,11 +15336,8 @@
         "total": 30
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "8,8,14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+1+2~t7.xiaoyu": {
       "name": "Phoenix",
@@ -15292,12 +15372,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:xiaoyu_181",
       "recovery_from": "same-notation T8 recv",
-      "input_note": "(or FC 1+2, BT d+1+2)",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(or FC 1+2, BT d+1+2)"
     },
     "BT.d/f+1+2": {
       "name": "Rain Dance to Phoenix",
@@ -15331,12 +15406,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:xiaoyu_182",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "SOMERSAULT.d+1+2": {
       "name": "Somersault to Phoenix",
@@ -15371,12 +15441,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:xiaoyu_183",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Somersault)",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Somersault)"
     },
     "4~3,d+1+2": {
       "name": "Crescent Moon Kick to Phoenix",
@@ -15411,11 +15476,8 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:xiaoyu_184",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+1~t7.xiaoyu": {
       "name": "Silver Needle to Phoenix",
@@ -15489,11 +15551,8 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:xiaoyu_186",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+1,D": {
       "name": "Poison Flower to Phoenix",
@@ -15532,7 +15591,9 @@
         "bank": "xiaoyu",
         "row": 252,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "19",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,f,f+3": {
       "name": "Diving Falcon to Phoenix",
@@ -15572,7 +15633,9 @@
         "bank": "xiaoyu",
         "row": 322,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "D+1": {
       "name": "Flapping Wings to Phoenix",
@@ -15619,7 +15682,9 @@
         "bank": "xiaoyu",
         "row": 137,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7,7,7",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/b+3+4,d+1+2": {
       "name": "Backflip to Phoenix",
@@ -15655,11 +15720,8 @@
       "merge_source": "t7:xiaoyu_190",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.d/f+4": {
       "name": "Double Map Sweep to Phoenix",
@@ -15698,7 +15760,9 @@
         "bank": "xiaoyu",
         "row": 292,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "SS.3,d+1+2": {
       "name": "Phoenix Tail to Phoenix",
@@ -15733,11 +15797,8 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:xiaoyu_192",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "BT.2,2,1,D": {
       "name": "Turn of Fortune",
@@ -15942,7 +16003,8 @@
         "bank": "xiaoyu",
         "row": 252,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "AOP.f+3+4,d+1+2": {
       "name": "SHA AOP.f+3+4,d+1+2",
@@ -15976,12 +16038,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:xiaoyu_198",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "AOP.u/f+3,1": {
       "name": "Alley-Oop to Phoenix",
@@ -16062,12 +16119,7 @@
       "t7_on_hit": "-4 (BT)",
       "t7_on_ch": "-4 (BT)",
       "merge_source": "t7:xiaoyu_200",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "AOP.f+4~t7.xiaoyu": {
       "name": "Flower Garden",
@@ -16106,7 +16158,9 @@
         "bank": "xiaoyu",
         "row": 292,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "AOP.u/b,u": {
       "name": "SHA AOP.u/b,u",
@@ -16180,11 +16234,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:xiaoyu_203",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "AOP.1~t7.xiaoyu": {
       "name": "Double Serving",
@@ -16223,7 +16273,9 @@
         "bank": "xiaoyu",
         "row": 243,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "11",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "AOP.2~t7.xiaoyu": {
       "name": "SHA AOP.2",
@@ -16262,7 +16314,9 @@
         "bank": "xiaoyu",
         "row": 252,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "AOP.2,1~t7.xiaoyu": {
       "name": "Phoenix Double Palm",
@@ -16309,7 +16363,9 @@
         "bank": "xiaoyu",
         "row": 47,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "AOP.2,1~t7.xiaoyu.2": {
       "name": "SHA AOP.2,1",
@@ -16349,7 +16405,9 @@
         "bank": "xiaoyu",
         "row": 316,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "AOP.3~t7.xiaoyu": {
       "name": "Piercing Spear Kick",
@@ -16388,7 +16446,9 @@
         "bank": "xiaoyu",
         "row": 322,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "19",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "AOP.4~t7.xiaoyu": {
       "name": "Rising Front Kick",
@@ -16427,7 +16487,9 @@
         "bank": "xiaoyu",
         "row": 292,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "AOP.4~3": {
       "name": "Firecracker",
@@ -16467,7 +16529,9 @@
         "bank": "xiaoyu",
         "row": 322,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "25",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "AOP.1+2~t7.xiaoyu": {
       "name": "Phoenix Cannon",
@@ -16503,11 +16567,8 @@
       "merge_source": "t7:xiaoyu_211",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "AOP.u/f+3": {
       "name": "Alley-Oop",
@@ -17043,7 +17104,9 @@
         "bank": "xiaoyu",
         "row": 292,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "AOP.f+4,4~t7.xiaoyu": {
       "name": "Flower Garden",
@@ -17089,7 +17152,9 @@
         "bank": "xiaoyu",
         "row": 297,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "AOP.f+4,4~t7.xiaoyu.2": {
       "name": "SHA AOP.f+4,4",
@@ -17128,7 +17193,9 @@
         "bank": "xiaoyu",
         "row": 292,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "AOP.d+1~t7.xiaoyu": {
       "name": "Phoenix Swipe",
@@ -17168,7 +17235,9 @@
         "bank": "xiaoyu",
         "row": 244,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13(,25)",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "AOP.d+1+2~t7.xiaoyu": {
       "name": "Wave Crest",
@@ -17204,11 +17273,8 @@
       "merge_source": "t7:xiaoyu_228",
       "recovery_from": "same-notation T8 recv",
       "launch": true,
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3": {
       "name": "Swallow Spiral",
@@ -17248,7 +17314,9 @@
         "bank": "xiaoyu",
         "row": 372,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "R.b+1+2": {
       "name": "Rage Art",
@@ -17291,12 +17359,7 @@
         "total": 112
       },
       "knockdown": true,
-      "input_note": "(During Rage) (or WS b+1+2, AOP b+1+2)",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Rage) (or WS b+1+2, AOP b+1+2)"
     },
     "R.BT.d+3,3+4": {
       "name": "Rage Drive",
@@ -17338,12 +17401,7 @@
         ],
         "total": 17
       },
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Rage)"
     },
     "R.BT.d+3,3+4~t7.xiaoyu": {
       "name": "SHA R.BT.d+3,3+4",
@@ -17378,12 +17436,7 @@
       "t7_on_ch": "S!",
       "merge_source": "t7:xiaoyu_232",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Rage)"
     },
     "t7.xiaoyu_233": {
       "name": "Thunder Strike (one step)",
@@ -17758,7 +17811,8 @@
         "bank": "xiaoyu",
         "row": 360,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "D/F+2+4": {
       "name": "Dragon Fall",
@@ -17973,7 +18027,9 @@
         "bank": "xiaoyu",
         "row": 360,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "35",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "BT.1+3": {
       "name": "SHA BT.1+3",
@@ -18094,12 +18150,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:xiaoyu_249",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "t7.xiaoyu_250": {
       "name": "SHA WR f, f, F (Mid Screen)",
@@ -18179,7 +18230,9 @@
         "bank": "xiaoyu",
         "row": 48,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "TACKLE.1,1": {
       "name": "SHA TACKLE.1,1",
@@ -18400,11 +18453,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:xiaoyu_256",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "REV.1+4": {
       "name": "High Mid Parry",
@@ -18439,12 +18488,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:xiaoyu_257",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "Time with enemy attack...",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "Time with enemy attack..."
     },
     "2+3+4~t7.xiaoyu": {
       "name": "Greetings",
@@ -18479,11 +18523,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:xiaoyu_258",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3+4~t7.xiaoyu": {
       "name": "Spinner",
@@ -22679,6 +22719,845 @@
       "move_class": "strike",
       "t3_condition": 2,
       "merge_source": "t3:xiaoyu:row:580"
+    },
+    "WR.f,f,F(FullScreen)": {
+      "name": "SHA WR.f,f,F(FullScreen)",
+      "input": "WR.f,f,F(FullScreen)",
+      "startup": 0.133,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 18,
+      "damage_raw": 30,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "hit_level": "mid",
+      "on_block": "+13",
+      "on_hit": "KND",
+      "on_ch": "KND",
+      "crush": null,
+      "anim_ref": "t7:xiaoyu:xiaoyu_83",
+      "input_slots": [
+        "WR.f,f,F(FullScreen)"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_83",
+      "t7_command": "WR f, f, F (Full Screen)",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "30 [36]",
+      "t7_startup_frames": "8",
+      "t7_on_block": "+13",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:xiaoyu_83",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+    },
+    "Whileenemyisontheground...WRf,f,F(FullScreen)": {
+      "name": "SHA Whileenemyisontheground...WRf,f,F(FullScreen)",
+      "input": "Whileenemyisontheground...WRf,f,F(FullScreen)",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 5,
+      "damage_raw": 8,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "low",
+      "on_block": null,
+      "on_hit": "KND",
+      "on_ch": "KND",
+      "crush": null,
+      "anim_ref": "t7:xiaoyu:xiaoyu_84",
+      "input_slots": [
+        "Whileenemyisontheground...WRf,f,F(FullScreen)"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_84",
+      "t7_command": "While enemy is on the ground... WR f, f, F (Full Screen)",
+      "t7_hit_level": "low",
+      "t7_damage_raw": "8 [9]",
+      "t7_startup_frames": "12",
+      "t7_on_block": "-",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:xiaoyu_84",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+    },
+    "WR.4": {
+      "name": "SHA WR.4",
+      "input": "WR.4",
+      "startup": 0.667,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 10,
+      "damage_raw": 17,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 8,
+      "hit_level": "low",
+      "on_block": "-40",
+      "on_hit": "KND",
+      "on_ch": "KND",
+      "crush": "high",
+      "anim_ref": "t7:xiaoyu:xiaoyu_85",
+      "input_slots": [
+        "WR.4"
+      ],
+      "move_class": "strike",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_85",
+      "t7_command": "WR 4",
+      "t7_hit_level": "low",
+      "t7_damage_raw": "17 [20]",
+      "t7_startup_frames": "40",
+      "t7_on_block": "-40",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:xiaoyu_85",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+    },
+    "WR.1+2": {
+      "name": "SHA WR.1+2",
+      "input": "WR.1+2",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 14,
+      "damage_raw": 24,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "hit_level": "mid",
+      "on_block": "0",
+      "on_hit": "KND",
+      "on_ch": "KND",
+      "crush": "low*",
+      "anim_ref": "t7:xiaoyu:xiaoyu_86",
+      "input_slots": [
+        "WR.1+2"
+      ],
+      "move_class": "strike",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_86",
+      "t7_command": "WR 1+2",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "24 [28]",
+      "t7_startup_frames": "18",
+      "t7_on_block": "0",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:xiaoyu_86",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+    },
+    "FaceUp,FeetTowards+3or(AfterRollingForward)": {
+      "name": "SHA FaceUp,FeetTowards+3or(AfterRollingForward)",
+      "input": "FaceUp,FeetTowards+3or(AfterRollingForward)",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 6,
+      "damage_raw": 10,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "low",
+      "on_block": "-12",
+      "on_hit": "+5",
+      "on_ch": "STUN",
+      "crush": "high",
+      "anim_ref": "t7:xiaoyu:xiaoyu_95",
+      "input_slots": [
+        "FaceUp,FeetTowards+3or(AfterRollingForward)"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_95",
+      "t7_command": "Face Up, Feet Towards+3 or (After Rolling Forward)",
+      "t7_hit_level": "low",
+      "t7_damage_raw": "10 [12]",
+      "t7_startup_frames": "22",
+      "t7_on_block": "-12",
+      "t7_on_hit": "+5",
+      "t7_on_ch": "STUN",
+      "merge_source": "t7:xiaoyu_95",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+    },
+    "FaceUp,FeetTowards+4or(AfterRollingForward)": {
+      "name": "SHA FaceUp,FeetTowards+4or(AfterRollingForward)",
+      "input": "FaceUp,FeetTowards+4or(AfterRollingForward)",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 11,
+      "damage_raw": 18,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 8,
+      "hit_level": "mid",
+      "on_block": "-12",
+      "on_hit": "+5",
+      "on_ch": "KND",
+      "crush": null,
+      "anim_ref": "t7:xiaoyu:xiaoyu_96",
+      "input_slots": [
+        "FaceUp,FeetTowards+4or(AfterRollingForward)"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_96",
+      "t7_command": "Face Up, Feet Towards+4 or (After Rolling Forward)",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "18 [21]",
+      "t7_startup_frames": "22",
+      "t7_on_block": "-12",
+      "t7_on_hit": "+5",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:xiaoyu_96",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+    },
+    "FaceUp,FeetTowards,d+3(or4)": {
+      "name": "SHA FaceUp,FeetTowards,d+3(or4)",
+      "input": "FaceUp,FeetTowards,d+3(or4)",
+      "startup": 0.217,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 2,
+      "damage_raw": 4,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "low",
+      "on_block": "-16",
+      "on_hit": "-3",
+      "on_ch": "-3",
+      "crush": "mid, high",
+      "anim_ref": "t7:xiaoyu:xiaoyu_97",
+      "input_slots": [
+        "FaceUp,FeetTowards,d+3(or4)"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_97",
+      "t7_command": "Face Up, Feet Towards, d+3 (or 4)",
+      "t7_hit_level": "low",
+      "t7_damage_raw": "4",
+      "t7_startup_frames": "13",
+      "t7_on_block": "-16",
+      "t7_on_hit": "-3",
+      "t7_on_ch": "-3",
+      "merge_source": "t7:xiaoyu_97",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+    },
+    "FaceUp,FeetTowards+3+4": {
+      "name": "SHA FaceUp,FeetTowards+3+4",
+      "input": "FaceUp,FeetTowards+3+4",
+      "startup": 0.317,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 12,
+      "damage_raw": 20,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 9,
+      "hit_level": "mid",
+      "on_block": "-21",
+      "on_hit": "KND",
+      "on_ch": "KND",
+      "crush": "low*",
+      "anim_ref": "t7:xiaoyu:xiaoyu_98",
+      "input_slots": [
+        "FaceUp,FeetTowards+3+4"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_98",
+      "t7_command": "Face Up, Feet Towards+3+4",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "20 [24]",
+      "t7_startup_frames": "19",
+      "t7_on_block": "-21",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:xiaoyu_98",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+    },
+    "FaceUp,FeetTowards,RollForward+1+2": {
+      "name": "SHA FaceUp,FeetTowards,RollForward+1+2",
+      "input": "FaceUp,FeetTowards,RollForward+1+2",
+      "startup": 0.317,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 9,
+      "damage_raw": 15,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 7,
+      "hit_level": "mid",
+      "on_block": "+2",
+      "on_hit": "KND",
+      "on_ch": "KND",
+      "crush": "low*",
+      "anim_ref": "t7:xiaoyu:xiaoyu_99",
+      "input_slots": [
+        "FaceUp,FeetTowards,RollForward+1+2"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_99",
+      "t7_command": "Face Up, Feet Towards, Roll Forward+1+2",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "15 [18]",
+      "t7_startup_frames": "19",
+      "t7_on_block": "+2",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:xiaoyu_99",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+    },
+    "FaceDown,FeetAway+3": {
+      "name": "SHA FaceDown,FeetAway+3",
+      "input": "FaceDown,FeetAway+3",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 6,
+      "damage_raw": 10,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "low",
+      "on_block": "-20",
+      "on_hit": "+1",
+      "on_ch": "STUN",
+      "crush": "high",
+      "anim_ref": "t7:xiaoyu:xiaoyu_100",
+      "input_slots": [
+        "FaceDown,FeetAway+3"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_100",
+      "t7_command": "Face Down, Feet Away+3",
+      "t7_hit_level": "low",
+      "t7_damage_raw": "10 [12]",
+      "t7_startup_frames": "21",
+      "t7_on_block": "-20",
+      "t7_on_hit": "+1",
+      "t7_on_ch": "STUN",
+      "merge_source": "t7:xiaoyu_100",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+    },
+    "FaceDown,FeetAway+4(close)": {
+      "name": "SHA FaceDown,FeetAway+4(close)",
+      "input": "FaceDown,FeetAway+4(close)",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 9,
+      "damage_raw": 15,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 7,
+      "hit_level": "mid",
+      "on_block": "-19",
+      "on_hit": "-10",
+      "on_ch": "KND",
+      "crush": null,
+      "anim_ref": "t7:xiaoyu:xiaoyu_101",
+      "input_slots": [
+        "FaceDown,FeetAway+4(close)"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_101",
+      "t7_command": "Face Down, Feet Away+4 (close)",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "15 [18]",
+      "t7_startup_frames": "21",
+      "t7_on_block": "-19",
+      "t7_on_hit": "-10",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:xiaoyu_101",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+    },
+    "FaceDown,FeetAway+4(far)": {
+      "name": "SHA FaceDown,FeetAway+4(far)",
+      "input": "FaceDown,FeetAway+4(far)",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 6,
+      "damage_raw": 10,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "mid",
+      "on_block": "-19",
+      "on_hit": "-10",
+      "on_ch": "KND",
+      "crush": null,
+      "anim_ref": "t7:xiaoyu:xiaoyu_102",
+      "input_slots": [
+        "FaceDown,FeetAway+4(far)"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_102",
+      "t7_command": "Face Down, Feet Away+4 (far)",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "10 [12]",
+      "t7_startup_frames": "21",
+      "t7_on_block": "-19",
+      "t7_on_hit": "-10",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:xiaoyu_102",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+    },
+    "AOP.f,forb,b": {
+      "name": "SHA AOP.f,forb,b",
+      "input": "AOP.f,forb,b",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 0,
+      "damage_raw": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "-",
+      "on_block": null,
+      "on_hit": null,
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t7:xiaoyu:xiaoyu_196",
+      "input_slots": [
+        "AOP.f,forb,b"
+      ],
+      "move_class": "special",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_196",
+      "t7_command": "AOP f, f or b, b",
+      "t7_hit_level": "-",
+      "t7_damage_raw": "-",
+      "t7_startup_frames": "-",
+      "t7_on_block": "-",
+      "t7_on_hit": "-",
+      "t7_on_ch": "-",
+      "merge_source": "t7:xiaoyu_196",
+      "set": "FIGHT",
+      "note": "startup absent in T7 source"
+    },
+    "AOP.u/b,uoru/f": {
+      "name": "SHA AOP.u/b,uoru/f",
+      "input": "AOP.u/b,uoru/f",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 0,
+      "damage_raw": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "-",
+      "on_block": null,
+      "on_hit": null,
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t7:xiaoyu:xiaoyu_202",
+      "input_slots": [
+        "AOP.u/b,uoru/f"
+      ],
+      "move_class": "special",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_202",
+      "t7_command": "AOP u/b, u or u/f",
+      "t7_hit_level": "-",
+      "t7_damage_raw": "-",
+      "t7_startup_frames": "-",
+      "t7_on_block": "-",
+      "t7_on_hit": "-",
+      "t7_on_ch": "-",
+      "merge_source": "t7:xiaoyu_202",
+      "set": "FIGHT",
+      "note": "startup absent in T7 source"
+    },
+    "(DuringRage)BTd+3,3+4": {
+      "name": "Rage Drive",
+      "input": "(DuringRage)BTd+3,3+4",
+      "startup": 0.267,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 10,
+      "damage_raw": 17,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 8,
+      "hit_level": "low, mid",
+      "on_block": "-4",
+      "on_hit": "S!",
+      "on_ch": null,
+      "crush": "low",
+      "anim_ref": "t7:xiaoyu:xiaoyu_231",
+      "input_slots": [
+        "(DuringRage)BTd+3,3+4"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_231",
+      "t7_command": "(During Rage) BT d+3, 3+4",
+      "t7_hit_level": "low, mid",
+      "t7_damage_raw": "7 [8], 10",
+      "t7_startup_frames": "16",
+      "t7_on_block": "-4",
+      "t7_on_hit": "S!",
+      "t7_on_ch": "-",
+      "merge_source": "t7:xiaoyu_231",
+      "set": "FIGHT",
+      "multi_hit": {
+        "hits": [
+          7,
+          10
+        ],
+        "total": 17
+      },
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+    },
+    "(DuringRage)BT(d+3),3+4": {
+      "name": "SHA (DuringRage)BT(d+3),3+4",
+      "input": "(DuringRage)BT(d+3),3+4",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 6,
+      "damage_raw": 10,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "mid",
+      "on_block": "-4",
+      "on_hit": "S!",
+      "on_ch": "S!",
+      "crush": "low",
+      "anim_ref": "t7:xiaoyu:xiaoyu_232",
+      "input_slots": [
+        "(DuringRage)BT(d+3),3+4"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_232",
+      "t7_command": "(During Rage) BT (d+3), 3+4",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "10 [12]",
+      "t7_startup_frames": "22",
+      "t7_on_block": "-4",
+      "t7_on_hit": "S!",
+      "t7_on_ch": "S!",
+      "merge_source": "t7:xiaoyu_232",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+    },
+    "Approachfromleftside...1+3or2+4": {
+      "name": "Arm Flip",
+      "input": "Approachfromleftside...1+3or2+4",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 27,
+      "damage_raw": 45,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "hit_level": "high throw",
+      "on_block": "-3",
+      "on_hit": "KND",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t7:xiaoyu:xiaoyu_243",
+      "input_slots": [
+        "Approachfromleftside...1+3or2+4"
+      ],
+      "move_class": "strike",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_243",
+      "t7_command": "Approach from left side... 1+3 or 2+4",
+      "t7_hit_level": "high throw",
+      "t7_damage_raw": "45",
+      "t7_startup_frames": "12",
+      "t7_on_block": "-3",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "-",
+      "merge_source": "t7:xiaoyu_243",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+    },
+    "Approachfromrightside...1+3or2+4": {
+      "name": "Dump the Bucket",
+      "input": "Approachfromrightside...1+3or2+4",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 23,
+      "damage_raw": 38,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "hit_level": "high throw",
+      "on_block": "-3",
+      "on_hit": "KND",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t7:xiaoyu:xiaoyu_244",
+      "input_slots": [
+        "Approachfromrightside...1+3or2+4"
+      ],
+      "move_class": "strike",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_244",
+      "t7_command": "Approach from right side...  1+3 or 2+4",
+      "t7_hit_level": "high throw",
+      "t7_damage_raw": "38",
+      "t7_startup_frames": "12",
+      "t7_on_block": "-3",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "-",
+      "merge_source": "t7:xiaoyu_244",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+    },
+    "Approachfrombehind...1+3or2+4": {
+      "name": "Crank Up",
+      "input": "Approachfrombehind...1+3or2+4",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 30,
+      "damage_raw": 50,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "hit_level": "high throw",
+      "on_block": null,
+      "on_hit": "KND",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t7:xiaoyu:xiaoyu_245",
+      "input_slots": [
+        "Approachfrombehind...1+3or2+4"
+      ],
+      "move_class": "strike",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_245",
+      "t7_command": "Approach from behind... 1+3 or 2+4",
+      "t7_hit_level": "high throw",
+      "t7_damage_raw": "50",
+      "t7_startup_frames": "12",
+      "t7_on_block": "-",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "-",
+      "merge_source": "t7:xiaoyu_245",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+    },
+    "WR.f,f,F(MidScreen)": {
+      "name": "SHA WR.f,f,F(MidScreen)",
+      "input": "WR.f,f,F(MidScreen)",
+      "startup": 0.267,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 3,
+      "damage_raw": 5,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "mid",
+      "on_block": "-5 (BT)",
+      "on_hit": "KND",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t7:xiaoyu:xiaoyu_250",
+      "input_slots": [
+        "WR.f,f,F(MidScreen)"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_250",
+      "t7_command": "WR f, f, F (Mid Screen)",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "5",
+      "t7_startup_frames": "16",
+      "t7_on_block": "-5 (BT)",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "-",
+      "merge_source": "t7:xiaoyu_250",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+    },
+    "(DuringTackle)1/2,1/2": {
+      "name": "SHA (DuringTackle)1/2,1/2",
+      "input": "(DuringTackle)1/2,1/2",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 6,
+      "damage_raw": 10,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "-",
+      "on_block": null,
+      "on_hit": "KND",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t7:xiaoyu:xiaoyu_252",
+      "input_slots": [
+        "(DuringTackle)1/2,1/2"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_252",
+      "t7_command": "(During Tackle) 1/2, 1/2",
+      "t7_hit_level": "-",
+      "t7_damage_raw": "5, 5",
+      "t7_startup_frames": "-",
+      "t7_on_block": "-",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "-",
+      "merge_source": "t7:xiaoyu_252",
+      "set": "FIGHT",
+      "multi_hit": {
+        "hits": [
+          5,
+          5
+        ],
+        "total": 10
+      },
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "note": "startup absent in T7 source"
+    },
+    "(DuringTackle)1/2,1/2,1/2": {
+      "name": "SHA (DuringTackle)1/2,1/2,1/2",
+      "input": "(DuringTackle)1/2,1/2,1/2",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 9,
+      "damage_raw": 15,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 7,
+      "hit_level": "-",
+      "on_block": null,
+      "on_hit": "KND",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t7:xiaoyu:xiaoyu_253",
+      "input_slots": [
+        "(DuringTackle)1/2,1/2,1/2"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_253",
+      "t7_command": "(During Tackle) 1/2, 1/2, 1/2",
+      "t7_hit_level": "-",
+      "t7_damage_raw": "5, 5, 5",
+      "t7_startup_frames": "-",
+      "t7_on_block": "-",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "-",
+      "merge_source": "t7:xiaoyu_253",
+      "set": "FIGHT",
+      "multi_hit": {
+        "hits": [
+          5,
+          5,
+          5
+        ],
+        "total": 15
+      },
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "note": "startup absent in T7 source"
+    },
+    "(DuringTackle)1/2,1/2,1/2,1/2": {
+      "name": "SHA (DuringTackle)1/2,1/2,1/2,1/2",
+      "input": "(DuringTackle)1/2,1/2,1/2,1/2",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 18,
+      "damage_raw": 30,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "hit_level": "-",
+      "on_block": null,
+      "on_hit": "KND",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t7:xiaoyu:xiaoyu_254",
+      "input_slots": [
+        "(DuringTackle)1/2,1/2,1/2,1/2"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "xiaoyu_254",
+      "t7_command": "(During Tackle) 1/2, 1/2, 1/2, 1/2",
+      "t7_hit_level": "-",
+      "t7_damage_raw": "5, 5, 5, 15",
+      "t7_startup_frames": "-",
+      "t7_on_block": "-",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "-",
+      "merge_source": "t7:xiaoyu_254",
+      "set": "FIGHT",
+      "multi_hit": {
+        "hits": [
+          5,
+          5,
+          5,
+          15
+        ],
+        "total": 30
+      },
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "note": "startup absent in T7 source"
     }
   },
   "restored_from_sweep_338": {
@@ -23035,7 +23914,44 @@
     "exclude_proxy": false,
     "moves_before": 762,
     "moves_after": 762,
-    "added": {},
+    "added": {
+      "xiaoyu_pull_20261023": {
+        "date": "2026-10-23",
+        "by": "batch6 pull worker (T8 wavu + T7 t7chicken frame-data diff; T7-only for dio/rave)",
+        "moves_before": 762,
+        "moves_after": 785,
+        "added": [
+          "WR.f,f,F(FullScreen)",
+          "Whileenemyisontheground...WRf,f,F(FullScreen)",
+          "WR.4",
+          "WR.1+2",
+          "FaceUp,FeetTowards+3or(AfterRollingForward)",
+          "FaceUp,FeetTowards+4or(AfterRollingForward)",
+          "FaceUp,FeetTowards,d+3(or4)",
+          "FaceUp,FeetTowards+3+4",
+          "FaceUp,FeetTowards,RollForward+1+2",
+          "FaceDown,FeetAway+3",
+          "FaceDown,FeetAway+4(close)",
+          "FaceDown,FeetAway+4(far)",
+          "AOP.f,forb,b",
+          "AOP.u/b,uoru/f",
+          "(DuringRage)BTd+3,3+4",
+          "(DuringRage)BT(d+3),3+4",
+          "Approachfromleftside...1+3or2+4",
+          "Approachfromrightside...1+3or2+4",
+          "Approachfrombehind...1+3or2+4",
+          "WR.f,f,F(MidScreen)",
+          "(DuringTackle)1/2,1/2",
+          "(DuringTackle)1/2,1/2,1/2",
+          "(DuringTackle)1/2,1/2,1/2,1/2"
+        ],
+        "sources": [
+          "docs/t7t8-reference/frame-data-t7/xiaoyu.json",
+          "docs/t7t8-reference/frame-data-t8-full/xiaoyu.json"
+        ],
+        "show_lock": "2026-10-23: all 23 moves tagged set=FIGHT per SHOW-ANIMATION LOCK (owner standing law); file-level anim_set_lock added"
+      }
+    },
     "slots": 325,
     "slots_by_priority": {
       "signature": 2,
@@ -23644,5 +24560,68 @@
     "ub+3": "AOP",
     "uf+1": "AOP"
   },
-  "anim_bank": "xiaoyu"
+  "anim_bank": "xiaoyu",
+  "anim_set_lock": {
+    "SHA": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; tracked in docs/anim/XIAOYU-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
+  },
+  "canon_moves": [
+    {
+      "name": "Erodes Mountains",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:sha:sig:erodes-mountains",
+      "community_base": "game/assets/anim/oss/community/144_13.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armL",
+      "damage": 18,
+      "startup_frames": 19,
+      "canon": true,
+      "canon_owner": "SHA",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Grain Shift",
+      "input": "1+4",
+      "display_input": "LP1+RK4",
+      "input_original": "`1+4`",
+      "anim_ref": "wh:sha:sig:grain-shift",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 20,
+      "startup_frames": 17,
+      "canon": true,
+      "canon_owner": "SHA",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "system_note": "System note: LP1+RK4 is also Reihou, but ONLY while the foe is in RAGE (otherwise the moveset LP1+RK4 plays). No in-game conflict outside foe-RAGE.",
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  }
 }

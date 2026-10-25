@@ -29,7 +29,7 @@ export function mountWhUi(api) {
   show('none');
 
   const norm = (s) => String(s).replace(/[^a-z0-9]/g, '');
-  const find = (id) => ROSTER.find((c) => norm(c.id) === norm(id)) || ROSTER.find((c) => c.id === 'pantera');
+  const find = (id) => ROSTER.find((c) => norm(c.id) === norm(id)) || { id: String(id), modelPending: true }; // no Pantera fallback (t183u)
   const post = (m) => f.contentWindow && f.contentWindow.postMessage({ src: 'wh-game', ...m }, '*');
   let last = null, hudT = null, t0 = 0, maxCombo = 0;
 
@@ -42,7 +42,7 @@ export function mountWhUi(api) {
     stopHud();
     hudT = setInterval(() => {
       const g = game; if (!g.p1 || !g.p2) return;
-      const pf = (x) => ({ hp: x.hp, maxHp: x.maxHp, meter: x.meter, maxMeter: x.maxMeter });
+      const pf = (x) => ({ hp: x.hp, maxHp: x.maxHp, meter: x.meter, maxMeter: x.maxMeter, recoverable: x._recoverable || 0 });
       post({ type: 'hud', p1: pf(g.p1), p2: pf(g.p2), timer: Math.max(0, Math.ceil(g.timer)), wins: g.wins, round: g.round });
     }, 100);
   };
@@ -50,8 +50,10 @@ export function mountWhUi(api) {
   async function fight(p1, p2) {
     last = { p1, p2 }; maxCombo = 0;
     post({ type: 'fighters', p1, p2 });
+    const a = find(p1), b = find(p2);
+    if (a.modelPending || b.modelPending) { console.warn('[WH] bridge: model-pending fighter, fight not started', a.id, b.id); post({ type: 'show', screen: 'select' }); return; }
     fighting(true);
-    await startFight(find(p1).id, find(p2).id);
+    await startFight(a.id, b.id);
     if (!game.running) { fighting(false); post({ type: 'show', screen: 'select' }); return; }
     t0 = performance.now();
     post({ type: 'show', screen: 'hud' });

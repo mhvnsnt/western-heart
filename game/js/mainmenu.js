@@ -19,6 +19,7 @@
    ============================================================ */
 import { audio } from './audio.js';
 import { lazy } from './lazy.js';
+import { openVersusSetup, initVersusSetup } from './versus-setup.js';
 
 /* ---------------- Player state ---------------- */
 const PLAYER_KEY = 'wh_player_v1';
@@ -54,7 +55,7 @@ const SUBMENUS = {
     { t: 'HEART AND MIND WITHIN', d: 'Per-character 3D beat-em-up campaigns, Tekken 5 Devil Within style. Pick a soul and descend.', badge: 'hot', action: 'mode-heartmind' },
   ]},
   versus: { title: 'VERSUS', cards: [
-    { t: '1V1 VERSUS', d: 'Two souls, one shrine. Local versus — no reincarnation, best of 3.', badge: 'live', action: 'mode-versus' },
+    { t: '1V1 VERSUS', d: 'Two souls, one shrine. Local versus — set the rules, then fight.', badge: 'live', setup: 'versus' },
     { t: 'TEAM BATTLE', d: 'Pick 3 fighters. Winner stays on. Tekken Tag rules, Western Heart souls.', badge: 'live', action: 'mode-team' },
   ]},
   online: { title: 'ONLINE', cards: [
@@ -66,6 +67,7 @@ const SUBMENUS = {
     { t: 'ARCADE LADDER', d: 'Six fights. One life. Diablo waits near the top… almost.', badge: 'live', action: 'mode-arcade' },
     { t: 'SURVIVAL', d: 'One round each, health carries over. How many souls can you put down?', badge: 'live', action: 'mode-survival' },
     { t: 'TIME ATTACK', d: 'Eight fights, one round each, against the clock. Go fast.', badge: 'live', action: 'mode-timeattack' },
+    { t: 'TREASURE BATTLE', d: 'Endless foes. Every win opens a chest — coins and unlockables. How deep does the vault go?', badge: 'live', action: 'mode-treasure' },
     { t: 'SOUL SURGE GAUNTLET', d: 'Nine fights. Nine souls will channel through you.', badge: 'hot', action: 'mode-surge' },
   ]},
   sidegames: { title: 'SIDE GAMES', cards: [
@@ -77,9 +79,10 @@ const SUBMENUS = {
     { t: 'GUNGAKU FIGHT LAB', d: '軍楽 — the programmable training dummy. Record sequences, set reactions, compose your war music.', badge: 'live', action: 'mode-fightlab' },
   ]},
   collection: { title: 'COLLECTION', cards: [
-    { t: 'GALLERY', d: 'Unlocked endings, concept art, arena drafts. The archive of the shrine.', badge: 'soon', forge: 'gallery' },
-    { t: 'JUKEBOX', d: 'Every stage theme, every character motif. The shrine\'s setlist.', badge: 'soon', forge: 'jukebox' },
-    { t: 'REPLAYS', d: 'Save your fights. Study the tape. Steal your own habits back.', badge: 'live', action: 'replays' },
+    { t: 'GALLERY', d: 'Unlocked endings, concept art, arena drafts. The archive of the shrine.', badge: 'live', action: 'mode-gallery' },
+    { t: 'JUKEBOX', d: 'Every stage theme, every character motif. The shrine\'s setlist.', badge: 'live', action: 'mode-jukebox' },
+    { t: 'REPLAYS', d: 'Save your fights. Study the tape. Steal your own habits back.', badge: 'live', action: 'mode-replays' },
+
   ]},
   options: { title: 'OPTIONS', cards: [
     { t: 'OPTIONS', d: 'Sound, graphics, controls.', badge: 'live', action: 'mode-options' },
@@ -93,9 +96,6 @@ const FORGE = {
   daily: { title: 'DAILY CHALLENGES', desc: 'A new trial every day at midnight: a fixed fighter, a fixed foe, one cruel modifier. Streaks earn exclusive titles. The challenge board is being carved — check back tomorrow.' },
   tournament: { title: 'TOURNAMENT', desc: 'Single-elimination brackets for eight souls — local pass-and-play first, online brackets to follow. The brackets are being drawn.' },
   gungaku: { title: 'GUNGAKU FIGHT LAB', desc: '軍楽 — "war music". The programmable training dummy: record the dummy\'s sequences, script its reactions, drill your punishment until it sings. The composition is underway.' },
-  gallery: { title: 'GALLERY', desc: 'Endings, concept art, arena drafts, the T8 select grid decodes — the shrine\'s archive is being hung on the walls.' },
-  jukebox: { title: 'JUKEBOX', desc: 'Stage themes, character motifs, the Trader\'s market loop. The setlist is being pressed.' },
-  replays: { title: 'REPLAYS', desc: 'Save fights, scrub the timeline, steal your own habits back. The recorder is being threaded.' },
 };
 
 const NEWS = [
@@ -108,6 +108,38 @@ const NEWS = [
 /* ---------------- DOM helpers ---------------- */
 const $ = (id) => document.getElementById(id);
 const click = () => { try { audio.uiClick && audio.uiClick(); } catch { /* no audio yet */ } };
+
+/* ---------------- Touch tap (2026-10-24, menu tap fix) ----------------
+   Phone taps must navigate even when the browser does not synthesize a
+   click for the tap (suppressed compatibility mouse event, a touch-action
+   conflict, or a slow module graph). tap() binds touchend WITH a
+   scroll-drag guard: a finger that moved >12px was scrolling, not
+   tapping, so it does not fire. On a real tap it preventDefaults the
+   emulated click and runs the handler once; the click listener stays
+   for mouse/keyboard and is deduped against the touch within 600ms.
+   Data-action elements are NOT bound here on purpose: the document-level
+   router in main.js owns them, and main.js also re-dispatches them on
+   touchend — binding them here too would double-fire. */
+let _lastTapAt = 0;
+function tap(el, fn) {
+  if (!el) return;
+  let sx = 0, sy = 0;
+  el.addEventListener('touchstart', (e) => {
+    const t = e.changedTouches[0];
+    if (t) { sx = t.clientX; sy = t.clientY; }
+  }, { passive: true });
+  el.addEventListener('touchend', (e) => {
+    const t = e.changedTouches[0];
+    if (t && Math.hypot(t.clientX - sx, t.clientY - sy) > 12) return; // scroll drag, not a tap
+    e.preventDefault(); // suppress the emulated click — the handler runs now
+    _lastTapAt = Date.now();
+    fn(e);
+  }, { passive: false });
+  el.addEventListener('click', (e) => {
+    if (Date.now() - _lastTapAt < 600) return; // touch already ran this tap
+    fn(e);
+  });
+}
 
 /* ---------------- Top bar ---------------- */
 function renderTopbar() {
@@ -159,6 +191,12 @@ export function refreshRankBadge() {
 function openSubmenu(key) {
   const def = SUBMENUS[key];
   if (!def) return;
+  // Loud failure, never a silent dead tap: if the panel markup is absent,
+  // say so instead of leaving the user on the menu wondering.
+  if (!$('mm-submenu') || !$('mm-cards') || !$('mm-sub-title')) {
+    toast('Menu panel missing — reload the game and try again');
+    return;
+  }
   click();
   document.querySelectorAll('.mm-item').forEach((b) => b.classList.remove('sel'));
   const btn = document.querySelector(`.mm-item[data-mm="${key}"]`);
@@ -173,10 +211,13 @@ function openSubmenu(key) {
     const badgeTxt = c.badge === 'live' ? 'PLAY' : c.badge === 'hot' ? 'NEW' : 'SOON';
     b.innerHTML = `<span class="mm-badge ${badgeCls}">${badgeTxt}</span><h3>${c.t}</h3><p>${c.d}</p>`;
     if (c.action) b.dataset.action = c.action; // routed by the delegated document handlers
-    b.addEventListener('click', () => {
+    // Data-action cards are owned by the document-level router (main.js),
+    // which also re-dispatches them on touchend — no own listener here,
+    // so a tap can never double-fire or be swallowed by this card.
+    if (!c.action) tap(b, () => {
       if (c.panel === 'card') { openCardEditor(); return; }
       if (c.forge) { openForge(c.forge); return; }
-      // data-action cards: the delegated document handler routes them.
+      if (c.setup === 'versus') { openVersusSetup(); return; }
     });
     wrap.appendChild(b);
   });
@@ -252,8 +293,8 @@ export function initMainMenu() {
   // NOTE: #mm-rank carries data-action="show-ranks" — the delegated
   // router opens worker 30's Rank Hall; we only stop it marking sel.
   document.querySelectorAll('.mm-item').forEach((b) => {
-    b.addEventListener('click', () => {
-      if (b.dataset.action) return; // routed by the delegated data-action handler
+    if (b.dataset.action) return; // routed by the delegated data-action handler (+ its touchend re-dispatch)
+    tap(b, () => {
       const key = b.dataset.mm;
       const forge = b.dataset.mmForge;
       if (forge) {
@@ -266,19 +307,19 @@ export function initMainMenu() {
     });
   });
 
-  $('mm-sub-back').addEventListener('click', closeSubmenu);
-  $('mm-card-back').addEventListener('click', () => { click(); $('mm-cardpanel').hidden = true; });
-  $('mm-forge-ok').addEventListener('click', () => { click(); $('mm-forge').hidden = true; });
+  tap($('mm-sub-back'), closeSubmenu);
+  tap($('mm-card-back'), () => { click(); $('mm-cardpanel').hidden = true; });
+  tap($('mm-forge-ok'), () => { click(); $('mm-forge').hidden = true; });
   // Tapping the forge scrim dismisses it.
-  $('mm-forge').addEventListener('click', (e) => {
+  tap($('mm-forge'), (e) => {
     if (e.target.id === 'mm-forge') { click(); $('mm-forge').hidden = true; }
   });
 
   // Top bar shortcuts.
-  $('mm-pcard').addEventListener('click', openCardEditor);
-  $('mm-card-save').addEventListener('click', saveCard);
+  tap($('mm-pcard'), openCardEditor);
+  tap($('mm-card-save'), saveCard);
   // Soul Urge meter: tap for a reminder of what it is.
-  $('mm-soulurge').addEventListener('click', () => {
+  tap($('mm-soulurge'), () => {
     click();
     toast('SOUL URGE — fill all 9 souls, then unleash it');
   });
