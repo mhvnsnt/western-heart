@@ -174,3 +174,9 @@ All T3-baked clips already in the repo are **fallback, to be replaced from T5/6/
 | Asset | Status | Action |
 |---|---|---|
 | `game/ui-wh/` HTML UI (`index.html`, `cards.html`, `cards.css`, `cards.js`, `roster.js`, `imports.json`, `art/`, `fonts/`, `portraits/`) | **hand-made, NON-COMPLIANT** | Slated for rebuild from teardown UI files (T5/T6/T7/T8/TTT2 menu/char-select/customize layouts, then other game teardowns). Kept as a **fallback**; do NOT delete. Replace only in a reviewed PR that cites its teardown source files. |
+
+### Batch 1 step plans (Pantera LP1/RP2 strings, 2026-10-24, docs/movesets/BATCH1-STEP-PLANS-2026-10-24.md)
+
+| Asset | T3 data | Status | Reason T3 was used (no T5/6/7/8/TTT2 source available) |
+|---|---|---|---|
+| `game/assets/movesets/pantera.json` `string_step_plans` (60 keys: 31 canonical LP1/RP2 strings + 26 twins + 3 spelling variants) + `game/js/fighter.js` step-plan branch | King T3 bank rows for verified steps only (rows 36, 38, 39, 40, 50, 51, 52, 97, 98, 198, 200, 202, 203, 110) | fallback, to be replaced from T7 King extraction when clip bytes land | T7 King (`kinmot.bin`, 2,787 moves) is decoded, but 0x8000-bank clip bytes are not in tkdata (pakchunk/live-memory only) and requirement codes (636/811/80/81/72/217) + the aliases table are unresolved, so no T7 step clip can be wired yet. T3 step rows stand in for verified steps only; review/unmapped steps play no bank row. Re-match against T7 King rows when extraction lands. Rows 35/220 are never used for standing steps. |
