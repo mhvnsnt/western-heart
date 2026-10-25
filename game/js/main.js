@@ -607,16 +607,39 @@ function randomEnemy(excludeId) {
 }
 
 /* ---------------- Menu button wiring ---------------- */
+/* Audio (owner 2026-10-24): no tap-to-enable prompt. Sound resumes
+   silently on the first tap anywhere (mobile autoplay policy still
+   requires a gesture before AudioContext can start); the on/off
+   switch lives in SETTINGS (the howto screen) and persists. */
 function unlockAudio() {
   audio.unlock();
   music.unlock();
-  document.getElementById('tap-to-start').classList.remove('show');
 }
 
 document.body.addEventListener('pointerdown', unlockAudio, { once: true });
-window.addEventListener('load', () => {
-  setTimeout(() => document.getElementById('tap-to-start').classList.add('show'), 600);
-});
+
+/* SETTINGS sound toggle: persists in localStorage, applies on boot
+   before any gesture, and gates both the procedural engine and the
+   file-music engine (which checks audio.enabled before playing). */
+let _audioOn = true;
+try { _audioOn = localStorage.getItem('wh-audio') !== 'off'; } catch (e) { /* private mode */ }
+function applyAudioPref() {
+  try { audio.setMuted(!_audioOn); } catch (e) { /* sound is optional */ }
+  try { music.setEnabled(_audioOn); } catch (e) { /* sound is optional */ }
+  const b = document.getElementById('opt-audio');
+  if (b) b.textContent = _audioOn ? 'ON' : 'OFF';
+}
+(function bindAudioToggle() {
+  const b = document.getElementById('opt-audio');
+  if (!b) return;
+  b.addEventListener('click', () => {
+    _audioOn = !_audioOn;
+    try { localStorage.setItem('wh-audio', _audioOn ? 'on' : 'off'); } catch (e) { /* private mode */ }
+    applyAudioPref();
+    try { audio.uiClick(); } catch (e) { /* sound is optional */ }
+  });
+})();
+applyAudioPref();
 
 /* Menu tap failure toast (2026-10-24, menu tap fix): a tap must NEVER
    die silently. Mode loads that reject surface here instead of leaving

@@ -15,12 +15,17 @@ class AudioEngine {
     this.enabled = false;
     this._musicTimer = null;
     this._musicStep = 0;
+    this.muted = false;
+    try { this.muted = localStorage.getItem('wh-audio') === 'off'; } catch (e) { /* private mode */ }
   }
 
-  /* Must be called from a user gesture (mobile autoplay policy). */
+  /* Must be called from a user gesture (mobile autoplay policy).
+     Respects the SETTINGS mute pref: unlocking never re-enables sound
+     the user turned off. */
   unlock() {
     if (this.ctx) {
       if (this.ctx.state === 'suspended') this.ctx.resume();
+      this.enabled = !this.muted;
       return;
     }
     const AC = window.AudioContext || window.webkitAudioContext;
@@ -37,7 +42,7 @@ class AudioEngine {
     this.sfxGain.gain.value = 0.85;
     this.sfxGain.connect(this.master);
 
-    this.enabled = true;
+    this.enabled = !this.muted;
   }
 
   get now() { return this.ctx ? this.ctx.currentTime : 0; }
@@ -210,6 +215,18 @@ class AudioEngine {
 
   stopMusic() {
     if (this._musicTimer) { clearInterval(this._musicTimer); this._musicTimer = null; }
+  }
+
+  /* SETTINGS sound toggle (owner 2026-10-24): mute/unmute everything.
+     Works before any gesture (stores the pref; unlock() applies it). */
+  setMuted(m) {
+    this.muted = !!m;
+    if (this.ctx) {
+      this.enabled = !this.muted;
+      if (this.muted) { try { this.stopMusic(); } catch (e) {} }
+    } else {
+      this.enabled = false;
+    }
   }
 
   setMusicVolume(v) { if (this.musicGain) this.musicGain.gain.value = v; }
