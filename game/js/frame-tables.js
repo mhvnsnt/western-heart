@@ -3,6 +3,9 @@
 // from docs/t7t8-reference/frame-data-t8-full (41 characters).
 // Used by fighter.js for block stun, hit stun, counter-hit stun and throw-break inputs.
 // If a lookup misses, the T3-derived defaults apply.
+import { loadT7FrameData, findMove } from './t7-frame-data-loader.js';
+// T7 DLC frame data (TekkenDocs sheet damage, NOT MOD values) - lazy lookup; anim_ref stays UNMAPPED.
+export async function t7Frame(slug, input) { const d = await loadT7FrameData(slug); return findMove(d, input); }
 let TABLE = null;
 const url = new URL('../data/t8_frame_tables.json', import.meta.url);
 export const frameTablesReady = fetch(url).then((r) => (r.ok ? r.json() : null))
