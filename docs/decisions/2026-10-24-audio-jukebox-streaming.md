@@ -240,3 +240,15 @@ phone-first, no dumb friction.
    confirm the second load does not stall at the old 6% point.
    Live Netlify behaviour was NOT verified by this worker (subagents
    cannot operate a live browser) and must be part of that playtest.
+
+## CI fix (test only, after the first CI run)
+
+The first CI run failed `game-unit-tests` only: this PR's test read
+`game/index.html` and `game/_redirects`, which the game-unit-tests
+sparse checkout (`.github/workflows/game-checks.yml`) does not include
+(it checks out `test/`, `game/js`, `game/data` and a few asset dirs).
+Reproduced locally in a sparse-shaped checkout (ENOENT on
+`game/index.html`), then fixed in the test only: those two checks now
+assert when the files are present and log a skip when they are absent.
+The banner removal is additionally proven by the `main.js` text check,
+which IS in the sparse scope. No game code changed in this fix.
