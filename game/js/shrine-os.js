@@ -95,7 +95,21 @@ export const COMMANDS = [
   { cmd: 'GAME', desc: 'descend the mountain (dodge game)' },
   { cmd: 'SHARDS', desc: 'your Soul Shards balance' },
   { cmd: 'CLEAR', desc: 'clear the terminal' },
+  { cmd: 'CREDITS', desc: 'end credits of the shrine terminal' },
   { cmd: 'EXIT', desc: 'the terminal sleeps' },
+];
+
+// ---- End credits -------------------------------------------------
+// Reachable two ways: the CREDITS command, and the EXIT path
+// (leaving the terminal shows the credits before it sleeps).
+// In-game text only: Shrine体系 naming, no source-name branding.
+// The dedication line below is the owner's standing requirement
+// (2026-10-24): it ships with the mode, verbatim.
+export const SHRINE_CREDITS_LINES = [
+  '— SHRINE体系 END CREDITS —',
+  'Shrine体系 — the shrine terminal of the Octagonal Shrine.',
+  'Inspired by the work of Terry Davis.',
+  'In memory of Terry Davis, RIP',
 ];
 
 // Parse one typed line. Case-insensitive, extra spaces ignored.
@@ -426,9 +440,14 @@ export function mountShrineOS(el) {
       COMMANDS.forEach((c) => print('  ' + c.cmd + ' — ' + c.desc));
       return;
     }
+    if (cmd === 'CREDITS') {
+      SHRINE_CREDITS_LINES.forEach((line) => print(line));
+      return;
+    }
     if (cmd === 'CLEAR') { out.innerHTML = ''; return; }
     if (cmd === 'EXIT') {
       hidePanels();
+      SHRINE_CREDITS_LINES.forEach((line) => print(line));
       print('The terminal sleeps. The shrine keeps the reading.');
       const reboot = document.createElement('button');
       reboot.textContent = 'BOOT SHRINE体系';
@@ -620,5 +639,6 @@ if (typeof window !== 'undefined') {
   window.WHShrineOS = {
     SHRINE_OS, VGA16, ORACLE_WORDS, oracleDraw, parseCommand,
     createSlopeGame, createSpriteGrid, MUSIC_PATTERNS, COMMANDS, mountShrineOS,
+    SHRINE_CREDITS_LINES,
   };
 }

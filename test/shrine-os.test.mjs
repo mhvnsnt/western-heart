@@ -14,6 +14,7 @@ import { fileURLToPath } from 'node:url';
 import {
   SHRINE_OS, VGA16, ORACLE_WORDS, oracleDraw, parseCommand,
   createSlopeGame, createSpriteGrid, MUSIC_PATTERNS, COMMANDS,
+  SHRINE_CREDITS_LINES,
 } from '../game/js/shrine-os.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -58,6 +59,10 @@ ok(!parseCommand('TEMPLE').known, 'unknown command rejected');
 ok(parseCommand('').empty, 'empty input flagged empty');
 ok(COMMANDS.map((c) => c.cmd).join(',').includes('ORACLE,SPRITE,MUSIC,GAME'),
   'command list covers oracle, sprite, music, game');
+ok(parseCommand('credits').known && parseCommand('credits').command === 'CREDITS',
+  'CREDITS parses to a known command');
+ok(COMMANDS.some((c) => c.cmd === 'CREDITS'),
+  'command list includes CREDITS (credits button + typed command)');
 
 // ---- 5. Sprite board ----
 console.log('== sprite ==');
@@ -103,6 +108,21 @@ ok(hm.includes('SHRINE_OS_SEGMENT'), 'heartmind exports the shrine segment');
 ok(hm.includes('Shrine体系'), 'heartmind names the segment Shrine体系');
 ok(hm.includes('stillpoint') && hm.includes('shrineOsBeat'),
   'stillpoint stage plays a shrine beat');
+
+// ---- 9. End credits (owner standing requirement 2026-10-24) ----
+// Reachable two ways in the terminal: CREDITS command, and the
+// EXIT path (which prints the same lines before it sleeps).
+// The dedication line is verbatim; no source-name branding in
+// any rendered credits line.
+console.log('== end credits ==');
+ok(Array.isArray(SHRINE_CREDITS_LINES) && SHRINE_CREDITS_LINES.length >= 3,
+  'credits lines exported');
+ok(SHRINE_CREDITS_LINES.includes('In memory of Terry Davis, RIP'),
+  'credits carry the dedication verbatim: In memory of Terry Davis, RIP');
+ok(SHRINE_CREDITS_LINES.some((l) => l.includes('Shrine体系')),
+  'credits name the mode Shrine体系');
+ok(!SHRINE_CREDITS_LINES.some((l) => l.includes('Temple')),
+  'no source-name branding in any rendered credits line');
 
 // ---- Verdict ----
 if (failures.length > 0) {
