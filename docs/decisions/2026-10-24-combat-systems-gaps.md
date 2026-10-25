@@ -134,3 +134,39 @@ force-pushed: the branch was re-synced from the then-current main and
 all patches above were re-applied surgically onto the fresh files
 (anchors all matched, tests re-run 8/8), then pushed as a normal
 fast-forward branch commit. The merge below is the re-synced branch.
+
+## Second re-sync note (merge conflict 2026-10-25)
+
+After CI went green on the re-synced head, main moved again (merge of
+other lanes) and GitHub reported the PR dirty: main had changed
+game/js/fighter.js (+188/-29) and game/js/game.js (+5/-4) since the
+branch base. The branch was re-synced again from the then-current main
+and the fighter/game patches were re-applied onto the fresh files (all
+anchors matched — main's changes were in other regions), tests re-run
+8/8, and pushed as a normal fast-forward branch commit. No other
+branch file needed a refresh: main had not touched them in the
+interval. No force-push, no main-direct push.
+
+## Ownership + use framing correction (2026-10-24 20:22 CDT, applied here)
+
+Full-game files from OWNED games are not piracy and are not out of
+scope: the user owns the games, owns the files, paid for them —
+ownership + paid = authorization for extraction + wiring into Western
+Heart, and the owned full files are the AUTHORITATIVE source, not
+community approximations where the full files are available. At the
+same time WH does NOT supply or redistribute full games for people to
+play — it USES the files to build its own game, and ships with NO
+famous names + proprietary canon names. Only copies of games NOT owned
+are out of scope; ownership is never demanded as proof.
+
+Applied to this PR: the flags do not ship any original game and do not
+use any famous name in-game (Pantera, not King; Tekken names stay in
+technical files only). Sourcing: the Screw flag on SS.2 is confirmed by
+the repo's own T7 record (on_hit/on_ch S!) as well as wavu; the Power
+Crush flags follow the repo's established frame-data pipeline
+(wavu.wiki / TheBigTuna tables, the same sources frame-tables.js
+already cites) — no owned-file property table for these flags was
+located in repo teardown, so no community approximation was substituted
+for an available owned file. If a T7 owned-file property table for
+these moves surfaces in teardown, the four flags should be re-checked
+against it as the authoritative source.
