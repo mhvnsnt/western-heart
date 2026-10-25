@@ -700,6 +700,18 @@ document.addEventListener('click', (e) => {
     else if (a === 'mode-trader') {
       getModes().then(m => m.startMode('trader')).catch(() => menuFail('Could not load TRADER — tap again'));
     }
+    else if (a === 'mode-treasure') {
+      getModes().then(m => m.startMode('treasure')).catch(() => menuFail('Could not load TREASURE — tap again'));
+    }
+    else if (a === 'mode-gallery') {
+      import('./ui-gaps.js').then(m => m.openGallery()).catch(() => menuFail('Could not load GALLERY — tap again'));
+    }
+    else if (a === 'mode-jukebox') {
+      import('./ui-gaps.js').then(m => m.openJukebox()).catch(() => menuFail('Could not load JUKEBOX — tap again'));
+    }
+    else if (a === 'mode-replays') {
+      import('./ui-gaps.js').then(m => m.openReplays()).catch(() => menuFail('Could not load REPLAYS — tap again'));
+    }
     else if (a === 'mode-rankbattle') {
       rankBattleSelect = true;
       getRankBattle().then((rb) => rb.start()).catch(() => menuFail('Could not load RANKED — tap again'));
