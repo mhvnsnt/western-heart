@@ -56,6 +56,8 @@ const screens = {
   sidegames: document.getElementById('screen-sidegames'),
   collection: document.getElementById('screen-collection'),
   daily: document.getElementById('screen-daily'),
+replays: document.getElementById('screen-replays'),
+
 };
 /* Tekken-style select screen controller (js/select-screen.js).
    Assigned once at bootstrap below; show() only runs on user
@@ -63,7 +65,8 @@ const screens = {
 let selectScreen = null;
 function show(name) {
   mark(name === 'select' ? 'select-open' : name === 'stage' ? 'stage-open' : `show:${name}`);
-  Object.values(screens).forEach(s => s.classList.remove('active'));
+  // Worker 29: null-safe — screen-stage-intro has no element on main yet.
+  Object.values(screens).forEach(s => { if (s) s.classList.remove('active'); });
   if (screens[name]) screens[name].classList.add('active');
   // Tekken 99s select timer: runs only on the select screen, and only once the
   // ~30MB assets are loaded — slow phones don't lose selection time to loading.
@@ -776,6 +779,7 @@ document.addEventListener('click', (e) => {
       window.location.href = '../customization/creation-suite-ui/index.html';
     }
     else if (a === 'howto') { show('howto'); }
+    else if (a === 'replays') { showReplays(); }
     else if (a === 'close-movelist') { toggleMovelist(false); }
     else if (a === 'back-menu') {
       // CLEAN-INIT: leaving fight → full state reset. No leaked fighters,
@@ -923,6 +927,9 @@ document.getElementById('random-stage').addEventListener('click', () => {
 /* Training quit button (HUD, visible only in training mode) */
 document.getElementById('training-quit').addEventListener('click', () => {
   audio.uiClick();
+  // Worker 29: detach the Gungaku lab before the fighters are torn down.
+  try { if (window.__lab) window.__lab.detach(); } catch (e) {}
+  window.__lab = null;
   game.leaveFight();
   getModes().then(m => m.clearState());
   show('menu');
@@ -970,14 +977,16 @@ async function renderMovelist() {
     g.className = 'movelist-group';
     g.innerHTML = `<h3>${label} (${list.length})</h3>`;
     for (const [key, m] of list) {
-      const fr = Math.round((m.startup || 0) * 60);
+      // Worker 29: full frame data per move (T7 practice style) — startup /
+      // active / recovery in frames @60fps, pulled from the moveset data.
+      const f2f = (s) => Math.round((s || 0) * 60);
       const brk = m.throw_break
         ? `<span class="ml-break">break ${m.throw_break === '1' ? 'LP' : m.throw_break === '2' ? 'RP' : 'LP+RP'}</span>` : '';
       const row = document.createElement('div');
       row.className = 'movelist-row';
       row.innerHTML = `<span class="ml-input">${key}</span>` +
         `<span class="ml-name">${m.name || ''} ${brk}</span>` +
-        `<span class="ml-data">${m.damage}dmg ${fr}f</span>`;
+        `<span class="ml-data" title="startup / active / recovery (frames) · damage">${f2f(m.startup)}f/${f2f(m.active)}f/${f2f(m.recovery)}f · ${m.damage ?? '?'}dmg</span>`;
       g.appendChild(row);
     }
     groups.appendChild(g);
@@ -990,11 +999,12 @@ async function renderMovelist() {
     g.className = 'movelist-group';
     g.innerHTML = '<h3>OTHER (' + rest.length + ')</h3>';
     for (const [key, m] of rest) {
+      const f2f = (s) => Math.round((s || 0) * 60);
       const row = document.createElement('div');
       row.className = 'movelist-row';
       row.innerHTML = `<span class="ml-input">${key}</span>` +
         `<span class="ml-name">${m.name || ''}</span>` +
-        `<span class="ml-data">${m.damage}dmg</span>`;
+        `<span class="ml-data">${f2f(m.startup)}f/${f2f(m.active)}f/${f2f(m.recovery)}f · ${m.damage ?? '?'}dmg</span>`;
       g.appendChild(row);
     }
     groups.appendChild(g);
@@ -1009,6 +1019,164 @@ async function toggleMovelist(open) {
 document.getElementById('movelist-btn').addEventListener('click', () => {
   audio.uiClick(); toggleMovelist();
 });
+
+/* ============================================================
+   REPLAY THEATER (worker 29, 2026-10-22) — library UI + viewer
+   transport. Library lives in localStorage (wh_replays_v1);
+   watching re-enters startFight with opts.replayData so the
+   ReplayPlayer drives the same Game/arena code as a live fight.
+   ============================================================ */
+async function replayLib() {
+  const { listReplays } = await import('./replay.js');
+  return listReplays();
+}
+
+function fmtDate(iso) {
+  try {
+    const d = new Date(iso);
+    return d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  } catch (e) { return iso || ''; }
+}
+
+async function showReplays() {
+  const list = document.getElementById('replay-list');
+  list.innerHTML = '<p class="stage-sub">Loading…</p>';
+  show('replays');
+  const reps = await replayLib();
+  list.innerHTML = '';
+  if (!reps.length) {
+    list.innerHTML = '<p class="stage-sub">No replays yet — fight a versus or arcade match and it saves here automatically.</p>';
+    return;
+  }
+  for (const r of reps) {
+    const row = document.createElement('div');
+    row.className = 'replay-row';
+    const winTxt = r.winner === 'p1' ? `${r.p1name} wins` : r.winner === 'p2' ? `${r.p2name} wins` : 'draw';
+    row.innerHTML =
+      `<span class="rp-names">${r.p1name} <em>vs</em> ${r.p2name}</span>` +
+      `<span class="rp-meta">${r.stageName || ''} · ${r.mode || ''} · ${r.rounds}R · ${winTxt}<br>${fmtDate(r.date)} · ${(r.bytes / 1024).toFixed(0)}KB</span>` +
+      `<span class="rp-actions"><button class="btn-primary rp-watch">WATCH</button>` +
+      `<button class="btn-ghost rp-del">✕</button></span>`;
+    row.querySelector('.rp-watch').addEventListener('click', async () => {
+      audio.uiClick();
+      const { getReplay } = await import('./replay.js');
+      const entry = getReplay(r.id);
+      if (entry) watchReplay(entry);
+    });
+    row.querySelector('.rp-del').addEventListener('click', async (e) => {
+      e.stopPropagation();
+      audio.uiClick();
+      const { deleteReplay } = await import('./replay.js');
+      deleteReplay(r.id);
+      showReplays();
+    });
+    list.appendChild(row);
+  }
+}
+
+/* Watch a library entry: boot the same fighters/stage, then hand the
+   Game to the ReplayPlayer instead of live input. */
+async function watchReplay(entry) {
+  const d = entry.data;
+  const p1 = getCharacterWithCustom(d.meta.p1id) || ROSTER[0];
+  const p2 = getCharacterWithCustom(d.meta.p2id) || ROSTER[1];
+  if (d.meta.stageId && getStage(d.meta.stageId)) selectedStage = d.meta.stageId;
+  show('hud');
+  await startFight(p1.id, p2.id, {
+    mode: 'replay',
+    playerChar: p1,
+    enemyChar: { ...p2, ai: { aggression: 0, passive: true } },
+    stage: selectedStage,
+    skipIntroInteraction: true,
+    replayData: d,
+  });
+}
+
+/* Transport bar wiring (buttons live in #replay-bar in index.html). */
+function showReplayBar(player) {
+  const bar = document.getElementById('replay-bar');
+  if (!bar) return;
+  bar.style.display = 'flex';
+  player._bar = bar;
+  player._playBtn = document.getElementById('rp-play');
+  player._timeEl = document.getElementById('rp-time');
+  player._seekEl = document.getElementById('rp-seek');
+  const badge = document.getElementById('replay-badge');
+  if (badge) badge.style.display = 'block';
+  if (player._playBtn) player._playBtn.onclick = () => { audio.uiClick(); player.togglePause(); };
+  bar.querySelectorAll('[data-speed]').forEach((b) => {
+    b.onclick = () => { audio.uiClick(); player.setSpeed(parseFloat(b.dataset.speed)); };
+  });
+  const step = document.getElementById('rp-step');
+  if (step) step.onclick = () => { audio.uiClick(); player.stepFrames(1); };
+  const back = document.getElementById('rp-back');
+  if (back) back.onclick = () => { audio.uiClick(); player.stepFrames(-1); };
+  const restart = document.getElementById('rp-restart');
+  if (restart) restart.onclick = () => { audio.uiClick(); player.restart(); };
+  const cam = document.getElementById('rp-cam');
+  if (cam) cam.onclick = () => { audio.uiClick(); toggleReplayCam(player); };
+  const exit = document.getElementById('rp-exit');
+  if (exit) exit.onclick = () => { audio.uiClick(); exitReplay(); };
+  if (player._seekEl) {
+    player._seekEl.addEventListener('change', () => {
+      player.scrub(parseInt(player._seekEl.value, 10) || 0);
+    });
+  }
+  player.onReplayEnd = () => {
+    if (player._playBtn) player._playBtn.textContent = '↺';
+  };
+  player._updateSpeedBtns();
+  player._updatePlayBtn();
+}
+
+function hideReplayBar() {
+  const bar = document.getElementById('replay-bar');
+  if (bar) bar.style.display = 'none';
+  const badge = document.getElementById('replay-badge');
+  if (badge) badge.style.display = 'none';
+}
+
+function toggleReplayCam(player) {
+  const g = player.game;
+  if (!g) return;
+  if (!player._freecam) {
+    import('./replay.js').then(({ FreeCam }) => {
+      player._freecam = new FreeCam(g.arena);
+      player._freecam.setEnabled(true);
+      const b = document.getElementById('rp-cam');
+      if (b) { b.textContent = 'CAM: FREE'; b.classList.add('on'); }
+    });
+  } else {
+    const on = !player._freecam.enabled;
+    player._freecam.setEnabled(on);
+    const b = document.getElementById('rp-cam');
+    if (b) { b.textContent = on ? 'CAM: FREE' : 'CAM: FIGHT'; b.classList.toggle('on', on); }
+  }
+}
+
+/* Per-frame hook for the replay free camera (replays have no lab, so
+   main.js pumps it in _loop via rAF). */
+function pumpReplayCam() {
+  const rp = window.__replayPlayer;
+  if (rp && rp._freecam && rp._freecam.enabled && rp.game && rp.game.p1) {
+    rp._freecam.update(rp.game.p1, rp.game.p2);
+  }
+  requestAnimationFrame(pumpReplayCam);
+}
+requestAnimationFrame(pumpReplayCam);
+
+function exitReplay() {
+  const rp = window.__replayPlayer;
+  window.__replayPlayer = null;
+  hideReplayBar();
+  if (rp) {
+    if (rp._freecam) rp._freecam.setEnabled(false);
+    rp.detach();
+  }
+  game.leaveFight();
+  audio.stopMusic();
+  showReplays();
+}
 
 async function startFight(playerId, enemyId, opts = {}) {
   unlockAudio();
@@ -1184,6 +1352,26 @@ async function startFight(playerId, enemyId, opts = {}) {
   }
   try {
     await game.startMatch(player, enemy, selectedStage, opts);
+  // Worker 29 (2026-10-22): Gungaku fight lab + deterministic replays.
+  // Dynamic imports keep them off the menu boot path (LOADSPEED).
+  try {
+    if (opts.replayData) {
+      const { ReplayPlayer } = await import('./replay.js');
+      opts.skipIntroInteraction = true;
+      const player = new ReplayPlayer(opts.replayData, ui);
+      player.attach(game);
+      window.__replayPlayer = player;
+      showReplayBar(player);
+    } else if (opts.mode === 'training') {
+      const { TrainingLab } = await import('./training.js');
+      const lab = TrainingLab.attach(game, ui);
+      window.__lab = TrainingLab;
+      void lab;
+    } else if (opts.mode === 'versus' || opts.mode === 'arcade' || game.demo) {
+      const { ReplayRecorder } = await import('./replay.js');
+      ReplayRecorder.attach(game, { mode: opts.mode || (game.demo ? 'demo' : 'versus') });
+    }
+  } catch (e) { console.warn('[WH] lab/replay attach failed:', e); }
   } catch (err) {
     console.error('[WH] startMatch failed:', err);
     const detail = (err && (err.message || err)) || 'unknown error';
@@ -1195,7 +1383,9 @@ async function startFight(playerId, enemyId, opts = {}) {
     if (stageBtn) stageBtn.disabled = false;
     show('stage');
     return false;
-  }  // Control hints: show for 6s at fight start, H toggles
+  }
+
+  // Control hints: show for 6s at fight start, H toggles
   const hints = document.getElementById('control-hints');
   if (hints) {
     hints.classList.remove('fade');
@@ -1204,7 +1394,10 @@ async function startFight(playerId, enemyId, opts = {}) {
   }
   return true; // P0 (2026-10-22): stage-select handler needs to know the fight started
 }
-// H toggles control hints, M toggles the movelist (training)
+// H toggles control hints, M toggles the movelist (training).
+// Worker 29: T toggles the Gungaku lab panel, V the hitbox viewer,
+// R resets positions (training only). Replay viewer: Space = play/pause,
+// . = frame step, C = free camera, [ ] = speed.
 document.addEventListener('keydown', (e) => {
   if (e.code === 'KeyH') {
     const hints = document.getElementById('control-hints');
@@ -1213,6 +1406,25 @@ document.addEventListener('keydown', (e) => {
   if (e.code === 'KeyM') {
     const btn = document.getElementById('movelist-btn');
     if (btn && btn.style.display !== 'none') toggleMovelist();
+  }
+  const lab = window.__lab && window.__lab.current;
+  if (lab && game.running) {
+    if (e.code === 'KeyT') {
+      const p = document.getElementById('gungaku');
+      if (p) p.style.display = p.style.display === 'none' ? 'block' : 'none';
+    }
+    if (e.code === 'KeyV') lab.toggleHitboxes();
+    if (e.code === 'KeyR') lab.resetPositions();
+  }
+  const rp = window.__replayPlayer;
+  if (rp && rp.game && game.running) {
+    if (e.code === 'Space') { e.preventDefault(); rp.togglePause(); }
+    if (e.code === 'Period') rp.stepFrames(1);
+    if (e.code === 'Comma') rp.stepFrames(-1);
+    if (e.code === 'KeyC') toggleReplayCam(rp);
+    if (e.code === 'BracketLeft') rp.setSpeed(Math.max(0.25, (rp.game.timeScale || 1) / 2));
+    if (e.code === 'BracketRight') rp.setSpeed(Math.min(2, (rp.game.timeScale || 1) * 2));
+    if (e.code === 'Escape') exitReplay();
   }
 });
 

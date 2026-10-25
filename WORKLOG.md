@@ -3339,6 +3339,41 @@ before shipping.
 
 **Branch:** `w64/clothing-layer-system` — PR open, MERGE FREEZE: merge-ready,
 not merged.
+## 2026-10-22 — Moveset Library System (worker 47, branch w47/moveset-library-system)
+
+Built the central moveset library + per-fighter assembly system (owner standing directive):
+- `game/data/moveset-library/`: 9,420 moves across 5 banks (T3 4,648 · No Mercy 4,409 · WMXIX 169 · DOA 146 · VF 48) + 9 pending banks registered; `schema.json`, `axes.json`, `claimed-map.json` (source law), `index.json`. Reproducible ingest: `tools/moveset-library/ingest.mjs`.
+- `game/js/moveset-library.js`: `assembleFighter()` → v2-contract movesets; source-law gate in code; pending banks degrade honestly.
+- `game/data/movesets/`: pre-assembled bannon / el-toro / pablo (locked flavor: powerhouse + comedy-whiff lucha attempts + Black Reign Ride / Abyss Choke dark thread) / npc-finxsse. VF5 bases pending worker 45.
+- `game/moveset-browser.html`: browse by axis, inspect, attach/detach, save. Fully working dev page.
+- Docs: `docs/research/moveset-library-schema.md`, `docs/decisions/2026-10-22-moveset-library.md`, `docs/handoffs/moveset-library-vf5-format.md` (worker-45 contract, read-only).
+- Proof: node --check clean; ingest 0 violations; assembler CLI verified (pablo 8 / bannon 3 / el-toro 2 / npc-finxsse 1, law-clean); claimed pull refused / free pull allowed.
+## 2026-10-22 — Worker 29: TRAINING MODE DEPTH + REPLAYS (Gungaku lab depth, replay theater)
+
+**Owner instruction (verbatim):** "Wire up: (3) Training mode depth — frame data display, record/playback dummy, hitbox viewer. (5) Replays — save/watch fights, slow-mo, camera control."
+
+**Method specified:** Build full training/lab mode (frame data from moveset data, record/playback dummy, hitbox viewer on PR #616's hitbox system, dummy controls, reset positions). Deterministic replays (input log + seed, not video) with playback controls, slow-mo, free camera, library UI. Pull from every teardown with these systems (T7 training gold standard, TTT2, DOA, SF, SC).
+
+**Method used:** As specified. Teardown research in `docs/research/TRAINING-REPLAY-RESEARCH-2026.md` (T7 practice/Combot/frame data, TTT2 chapters, DOA slow-mo, SCVI overlay). Determinism design: replays are *resolved fighter-call logs + per-round snapshots*, NOT raw inputs — verified 2026-10-22 that TekkenBuffer/chord timing uses wall-clock (`performance.now`) while fighter sim internals are deterministic (all Math.random/performance.now in fighter.js are visual-only). Round snapshots bypass the intro's wall-clock setTimeout.
+
+**Delivered:**
+- `game/js/training.js` (NEW) — `TrainingLab`: `TrainingDummy` (stand/crouch/block/jump, swaps in as `game.ai`), `DummyRecorder`/`PlaybackDummy` (T7-style record→looped playback, raw inputs re-resolved on dummy's moveset), `HitboxViewer` (red wireframe attack box + green hurtboxes from `getHitbox`/`getHurtboxes`), live frame-data readout (`frameDataFor`: startup/active/recovery @60fps + damage + T3 provenance), reset positions, free camera. Coordinates with (not duplicates) worker-33's `fightlab-gungaku.js` programmable dummy.
+- `game/js/replay.js` (NEW) — `ReplayRecorder` (monkey-patches 10 fighter intent methods per fight, logs resolved calls + per-round snapshots; auto-saves on match end), `ReplayPlayer` (re-simulation drive, transport: 0.25×/0.5×/1×/2×, frame step, scrub via re-sim, restart), `FreeCam` (orbit/zoom, shared with lab), library wrappers.
+- `game/js/replay-codec.js` (NEW) — pure data layer: fighter snapshot/restore, per-tick call indexing, `sameArgs` change detection, replay-library CRUD (localStorage `wh_replays_v1`, cap 12). 8/8 node tests pass.
+- `game/js/game.js` — `tick` counter + `_tickHooks`, replay branch in `_update` (skips input+AI), `timeScale` (slow-mo), `stepTicks(n)` for frame-stepping, recorder finalize on match end, cleanup in `resetFightState`.
+- `game/js/fighter.js` — `Fighter.replayMove(resolved, rawName)`: fires recorded notation without re-running the wall-clock TekkenBuffer; mirrors `_tryAttackFresh`'s post-resolution tail.
+- `game/js/scene.js` — `arena.freeCam` flag: skips auto-framing while lab/viewer drive the camera.
+- `game/js/main.js` — dynamic-import attach (lab for training, recorder for versus/arcade/demo, player for `opts.replayData`); movelist rows show `Sf/Af/Rf · dmg`; replay theater UI (`showReplays`, `watchReplay`, transport bar, `exitReplay`); `data-action="replays"` route; keyboard T/V/R (lab), Space/./,/C/[/]/Esc (replay). Null-safe `show()` (main's `screen-stage-intro` element is missing — pre-existing).
+- `game/js/mainmenu.js` — flipped the REPLAYS collection card from `badge: 'soon'` to `badge: 'live', action: 'replays'` (worker-33 coordination pattern; routes via the delegated data-action handler).
+- `game/index.html` — `#gungaku` lab panel, `#replay-bar` transport, `#screen-replays` library, REPLAY THEATER menu wiring, REPLAYS result-screen button, `#gungaku-btn`/`#replay-badge` HUD, movelist legend.
+- `game/styles.css` — lab/transport/library styles (appended).
+- `game/tests/training-replay.test.mjs` — 8/8 pass.
+
+**Deviations:** (1) One main-bug fix required for verification (pre-existing): `main.js` `show()` null-safe — main's `screen-stage-intro` element is missing from index.html, crashing every `show()` call. (2) Menu entry: the T8 menu's `data-mm` submenu cards are populated by `mainmenu.js`; the REPLAYS card flip is the entry point — the delegated router handles `data-action="replays"`. (3) Verification drove `__game` directly (not the menu) because headless renders ~1 frame/4s; used `stepTicks` for deterministic advancement.
+
+**Proof:** Headless Chromium (SwiftShader) verification: game boots clean (`window.__game`, no console errors); Gungaku lab panel renders with dummy/record/hitbox controls; dummy crouch + hitbox viewer shows green hurtbox wireframe; frame-data readout live; dummy record (3s) → playback loop; versus fight records (1 round, 5 calls); KO → finalize → library saves (1 entry); replay theater lists "TOU vs RIN"; replay player attaches and steps ticks; slow-mo (0.25×/0.5×) via `timeScale`; REPLAYS button on result screen. Screenshots captured (8). `node --test` 8/8 pass.
+
+**Status:** [pending push/merge]
 **Method:** byte-identical fetch (blob-SHA verified) → surgical edits → node --check → 27/27 logic tests → headless-Chromium UI verification. Rebased 3× as main moved (no clobber).
 
 **Proof:** 27/27 tagtest pass; screenshots: submenu, size picker, slot tray, DONE-draft {p1:[pantera,torch],p2:[demonio,rave]}.
