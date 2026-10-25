@@ -95,6 +95,21 @@ export function ensureUrgeMoves(fighterId, msApi) {
   // second, synthesized engager on top of the data one. The
   // strongest-knock synthesis below is only the fallback for
   // movesets with no data-flagged engager at all.
+  // COMBAT SYSTEMS 2026-10-24: per-character engager LISTS. A
+  // moveset may declare urgeEngagers: [...] (T8: characters have
+  // several engager moves). Every listed existing non-grab,
+  // non-synthesized move is flagged; the list wins over the
+  // single-key fallback, which stays for movesets without one.
+  if (Array.isArray(ms.urgeEngagers) && ms.urgeEngagers.length) {
+    const keys = [];
+    for (const key of ms.urgeEngagers) {
+      const m = ms.moves[key];
+      if (m && !m.isGrab && m.move_class !== 'throw' && !/^(R\.|RD\.|UB\.|US\.)/.test(key)) {
+        m.urgeEngager = true; keys.push(key);
+      }
+    }
+    if (keys.length) { ms._urgeEngagerKeys = keys; ms._urgeEngagerKey = keys[0]; }
+  }
   if (!ms._urgeEngagerKey) {
     let ek = null;
     for (const [key, m] of Object.entries(ms.moves)) {
@@ -104,6 +119,17 @@ export function ensureUrgeMoves(fighterId, msApi) {
     if (ek && ms.moves[ek]) { ms.moves[ek].urgeEngager = true; ms._urgeEngagerKey = ek; }
   }
   return true;
+}
+
+/* Engager keys for a moveset: the declared list when present,
+   else the single key, else any data-flagged engager move. */
+export function listUrgeEngagers(ms) {
+  if (!ms) return [];
+  if (Array.isArray(ms._urgeEngagerKeys) && ms._urgeEngagerKeys.length) return [...ms._urgeEngagerKeys];
+  if (ms._urgeEngagerKey) return [ms._urgeEngagerKey];
+  return Object.entries(ms.moves || {})
+    .filter(([k, m]) => m && m.urgeEngager && !/^(R\.|RD\.|UB\.|US\.)/.test(k))
+    .map(([k]) => k);
 }
 
 /* ---------------- per-match Soul Urge director ---------------- */
