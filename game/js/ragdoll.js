@@ -25,8 +25,8 @@
    dynamically imported @dimforge/rapier3d-compat WASM; Node tests:
    the same package). No CDN URL is hard-coded here, so the game
    never gains a new network dependency from this file.
-   Euphoria-style ACTIVE ragdoll: patterns only (pose-driven joint
-   targets during the fall), never Euphoria code — proprietary.
+   Natural-motion-style ACTIVE ragdoll: patterns only (pose-driven joint
+   targets during the fall), never proprietary middleware code.
    ============================================================ */
 
 // The complete, closed trigger list. Anything not in here is off.
