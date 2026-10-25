@@ -56,7 +56,6 @@ import { getRules } from './rules.js';
 // NINE SOULS REDESIGN (worker 83): soul-spirit toggle data.
 import { soulById } from './soul-spirit.js';
 
-
 const ROUND_TIME = 60;
 const ROUNDS_TO_WIN = 2;   // best of 3
 const FIXED_DT = 1 / 120;
@@ -175,19 +174,12 @@ export class Game {
     /* Injected module APIs (from lazy.js, set in startMatch). */
     this._stageFx = null;
     this._msApi = null;
-/* ---- replays + training lab (worker 29, 2026-10-22) ----
-       tick: fixed-step counter, reset per match; recorders and the
-       replay player key their per-tick call logs to it.
-       _tickHooks: fn(tick) run at the top of every fight tick.
-       replay: ReplayPlayer while a replay drives (input+AI skipped).
-       _recorder: ReplayRecorder while a live match records.
-       timeScale: replay slow-mo / fast-forward (1 = real time). */
-    this.tick = 0;
-    this.timeScale = 1;
-    this._tickHooks = [];
-    this.replay = null;
-    this._recorder = null;
-
+    /* ---- HEART AND MIND WITHIN brawler (worker 20, 2026-10-22) ----
+       When set, the brawler owns the simulation: _loop drives
+       brawler.frame(dt) instead of the versus fixed-step. The arena's
+       camOverride (scene.js) gives it the third-person camera. Null =
+       classic versus flow. */
+    this.brawler = null;
 
     this._loop = this._loop.bind(this);
     requestAnimationFrame(this._loop);
@@ -332,6 +324,9 @@ export class Game {
     if (this.p2) { this.arena.scene.remove(this.p2.root); this.p2 = null; }
     this.ai = null;
     this.ai1 = null;
+    // A live brawler never survives a state reset — stop it first so its
+    // fighters, camera override and HUD are torn down cleanly.
+    if (this.brawler) { const b = this.brawler; this.brawler = null; try { b.stop(); } catch (e) { /* already torn down */ } }
     // Reset all match state
     this.wins = { p1: 0, p2: 0 };
     this.round = 1;
@@ -344,13 +339,6 @@ export class Game {
     this._acc = 0;
     this.running = false;
     this.paused = true;
-    // Replays / lab: drop any recorder, replay driver, tick hooks and
-    // time scaling — a new match always starts clean.
-    if (this._recorder) { try { this._recorder.discard(); } catch (e) {} this._recorder = null; }
-    if (this.replay) { try { this.replay.detach(); } catch (e) {} this.replay = null; }
-    this._tickHooks = [];
-    this.tick = 0;
-    this.timeScale = 1;
     // Reset input (no stuck keys/buttons from previous match)
     if (this.input) this.input.reset();
     // Reset HUD
@@ -423,16 +411,6 @@ export class Game {
 
   pause(on) { this.paused = on; }
 
-  /* REPLAY (worker 29): advance the sim exactly n fixed steps, bypassing
-     the rAF loop. Used for frame-stepping (and scrub). Hitstop drains in
-     fixed-step units so a step is always exactly n ticks. */
-  stepTicks(n) {
-    for (let i = 0; i < n; i++) {
-      if (this._hitStop > 0) { this._hitStop -= FIXED_DT; continue; }
-      this._update(FIXED_DT);
-    }
-  }
-
   /* ---------------- Main loop (fixed update + render) ---------------- */
   _loop(now) {
     requestAnimationFrame(this._loop);
@@ -440,10 +418,7 @@ export class Game {
     let frameDt = Math.min(0.05, (now - this._last) / 1000);
     const realDt = frameDt; // X-ray beat runs on real seconds, not slow-mo scale
     this._last = now;
-if (this.rage) frameDt = this.rage.slowMoScale(frameDt);
-// Replay slow-mo / fast-forward (worker 29): scale sim time.
-    frameDt *= this.timeScale || 1;
-
+    if (this.rage) frameDt = this.rage.slowMoScale(frameDt);
 
     if (this.running && !this.paused) {
       if (this._hitStop > 0) {
@@ -459,6 +434,16 @@ if (this.rage) frameDt = this.rage.slowMoScale(frameDt);
       }
     }
 
+    // HEART AND MIND WITHIN brawler: the mode owns the sim (its own
+    // fixed-step + hitstop live in brawler.frame). Versus stays untouched.
+    if (this.brawler && !this.paused) {
+      try {
+        this.brawler.frame(frameDt);
+      } catch (e) {
+        console.error('[WH] brawler frame failed:', e);
+        this.brawler = null;
+      }
+    }
     // Tekken hitstop freezes EVERYTHING (hitfx 2026-10-22): the effect stack
     // gets dt=0 while the sim is frozen, so the spark holds then bursts.
     this.hitfx.update(this._hitStop > 0 ? 0 : frameDt);
@@ -485,18 +470,8 @@ if (this.rage) frameDt = this.rage.slowMoScale(frameDt);
       if (this.timer <= 0) { this.timer = 0; this._timeOut(); }
       this.ui.setTimer(Math.ceil(this.timer));
 
-      // --- fixed-step tick: recorders / replay player hook in here ---
-      this.tick++;
-      for (let _hi = 0; _hi < this._tickHooks.length; _hi++) {
-        try { this._tickHooks[_hi](this.tick); } catch (e) { console.warn('[WH] tick hook failed:', e); }
-      }
-
-      // --- Player input -> intents (or replay drive) ---
-      if (this.replay) {
-        // REPLAY (worker 29): recorded fighter calls drive both fighters;
-        // live input and the AI are skipped entirely.
-        this.replay.applyTick(this.tick);
-      } else if (this.ai1) {
+      // --- Player input -> intents ---
+      if (this.ai1) {
         const p1SurgeBefore = this.p1.attackName === 'surge' && this.p1.state === 'attack';
         this.ai1.update(dt, this.p2);
         if (!p1SurgeBefore && this.p1.attackName === 'surge' && this.p1.state === 'attack') {
@@ -580,13 +555,11 @@ if (this.rage) frameDt = this.rage.slowMoScale(frameDt);
         }
       }
 
-      // --- AI (skipped while a replay drives — P2's calls are recorded) ---
-      if (!this.replay) {
-        const p2SurgeBefore = this.p2.attackName === 'surge' && this.p2.state === 'attack';
-        this.ai.update(dt, this.p1);
-        if (!p2SurgeBefore && this.p2.attackName === 'surge' && this.p2.state === 'attack') {
-          this.surgePresentation(this.p2);
-        }
+      // --- AI ---
+      const p2SurgeBefore = this.p2.attackName === 'surge' && this.p2.state === 'attack';
+      this.ai.update(dt, this.p1);
+      if (!p2SurgeBefore && this.p2.attackName === 'surge' && this.p2.state === 'attack') {
+        this.surgePresentation(this.p2);
       }
 
       // --- Advance fighters ---
@@ -927,9 +900,6 @@ if (this.rage) frameDt = this.rage.slowMoScale(frameDt);
   }
 
   _afterRound() {
-    // REPLAY (worker 29): the player consumes round transitions from its
-    // recorded snapshots instead of the live round flow.
-    if (this.replay && !this.replay.ended) { this.replay.onAfterRound(); return; }
     if (this.training) {
       // TRAINING (modes lane): endless round vs the passive dummy.
       // The round resets instead of the match ending; the dummy is restored.
@@ -943,9 +913,6 @@ if (this.rage) frameDt = this.rage.slowMoScale(frameDt);
     if (this.wins.p1 >= (this.roundsToWin || ROUNDS_TO_WIN) ||
         this.wins.p2 >= (this.roundsToWin || ROUNDS_TO_WIN)) {
       this.running = false;
-      // REPLAY (worker 29): finalize + auto-save the recording before the
-      // result screen takes over.
-      if (this._recorder) { try { this._recorder.finish(); } catch (e) { console.warn('[WH] replay finalize failed:', e); } }
       const playerWon = this.wins.p1 > this.wins.p2;
       // modes lane: a mode controller consumes the match result
       // (arcade ladder, story reincarnation, ...). Null = classic.
