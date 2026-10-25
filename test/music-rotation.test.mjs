@@ -94,7 +94,7 @@ ok(await music.playSequence('no-such-seq') === false, 'unknown sequence returns 
 // ---- 4. Shipped library data ----
 console.log('== shipped library ==');
 const lib = JSON.parse(readFileSync(join(root, 'game', 'data', 'music-library.json'), 'utf8'));
-ok(Array.isArray(lib.tracks) && lib.tracks.length === 45, 'library has 45 tracks (14 existing + 25 nos + 5 tekken pending + 1 ghost-surf-rock)');
+ok(Array.isArray(lib.tracks) && lib.tracks.length === 47, 'library has 47 tracks (14 existing + 25 nos + 5 tekken pending + 1 ghost-surf-rock + 2 loyalty-freak followup)');
 const ids = lib.tracks.map(t => t.id);
 ok(new Set(ids).size === ids.length, 'all track ids unique');
 const nos = lib.tracks.filter(t => t.id.startsWith('nos-t'));
