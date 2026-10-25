@@ -16,6 +16,7 @@ import { ROSTER, getCharacter } from './characters.js';
 // menu shell paints without parsing them (Tekken 3 BNS lesson: the index
 // loads first, records stream on demand). Warmed during idle at boot end.
 import { lazy, warmIdle } from './lazy.js';
+import { loadThrowTables } from './t3-throw.js';
 import { mark } from './loadperf.js';
 import * as THREE from 'three';
 import { whUiEnabled, mountWhUi } from './ui-wh-bridge.js';
@@ -1024,6 +1025,21 @@ async function startFight(playerId, enemyId, opts = {}) {
       await Promise.all(banks.map(b => loadT3Clips(THREE, b)));
     } catch (e) {
       console.warn('[WH] T3 clips failed, using procedural fallback:', e.message || e);
+    }
+    // TEKKEN GRAPPLE (2026-10-24): load the throw tables
+    // (reactions.json) and this match's two reaction packs BEFORE
+    // the fight starts, so a connecting grab can bind its file
+    // pair immediately instead of falling back to the legacy
+    // lock. A failure here is NOT fatal: throws keep the legacy
+    // lock path and are logged UNMAPPED at connect time.
+    setPhase('Loading throw pairs…');
+    try {
+      const { loadReactionPack } = T3;
+      await loadThrowTables();
+      const banks = [...new Set([bankIdFor(player.id), bankIdFor(enemy.id)].filter(Boolean))];
+      await Promise.all(banks.map(b => loadReactionPack(THREE, b)));
+    } catch (e) {
+      console.warn('[WH] throw pairs unavailable, legacy throw lock:', e.message || e);
     }
   } catch (err) {
     console.error('[WH] fight load failed:', err);

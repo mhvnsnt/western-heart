@@ -455,6 +455,86 @@ export async function loadT3Clips(THREE, bankId = 'king') {
 export function getT3Clips(bankId = 'king') { return _t3clipCache[bankId] || null; }
 
 /* ============================================================
+   REACTION PACKS (grapple lane, 2026-10-24) — the throw /
+   victim / escape clips of docs/anim/T3-REACTIONS.md. These
+   live in game/assets/anim/t3/<bank>/reactions.pack.json
+   (~6.5 MB per bank) and are NOT part of loadT3Clips, which
+   is why fighter.js could only play generic 'hit'/'grab'/
+   'launch' for throws until now. loadReactionPack decodes a
+   bank's pack into canonical clips keyed by slot ('0xaeb'),
+   exactly the way loadT3Clips decodes rows.pack.json into
+   'row:<n>' clips; fighter.js retargets the two slots of a
+   throw pair on demand, the same way it retargets a row clip
+   on first use. Turned banks (bankFacing, above) get the same
+   180 deg turn applied to the pack rows, or the pair would
+   play backwards like the old Doc Frank "owl". Failures log
+   and return null — the caller keeps the legacy lock path.
+   ============================================================ */
+const _reactionPackCache = {};    // bankId -> { pack, clips }
+const _reactionPackPromises = {};
+export function reactionPackRowToClip(pack, rec, THREE) {
+  const data = decodePackRow(pack, rec);
+  const clip = jsonToClip(`t3_react_${rec.slot}`, data, THREE);
+  if (clip) {
+    clip.userData.slot = rec.slot;
+    clip.userData.roles = rec.roles || [];
+    clip.userData.stream_frames = rec.stream_frames;
+    clip.userData.yaw0 = rec.yaw0;
+    clip.userData.anchorScale = pack.anchor_mm_to_rig_m;
+  }
+  return clip;
+}
+export async function loadReactionPack(THREE, bankId) {
+  if (!bankId || !T3_BANKS[bankId]) return null;
+  if (_reactionPackCache[bankId]) return _reactionPackCache[bankId];
+  if (_reactionPackPromises[bankId]) return _reactionPackPromises[bankId];
+  const base = T3_BANKS[bankId];
+  _reactionPackPromises[bankId] = (async () => {
+    try {
+      const res = await fetch(base + 'reactions.pack.json');
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const pack = await res.json();
+      // Phone-load note: the pack JSON (~6.5 MB) is cached, but
+      // clips are decoded ONE SLOT AT A TIME on demand
+      // (getReactionClip, below) — decoding all ~568 clips up
+      // front would triple fight-load clip memory on top of the
+      // row clips loadT3Clips already builds.
+      const out = { pack, clips: {}, turned: !!(_t3facing[bankId] && _t3facing[bankId].turned) };
+      _reactionPackCache[bankId] = out;
+      console.log(`[WH-T3] bank '${bankId}': reaction pack loaded (${Object.keys(pack.rows || {}).length} slots)`);
+      return out;
+    } catch (e) {
+      console.warn(`[WH-T3] ${bankId}/reactions.pack.json unavailable:`, e.message || e);
+      return null;
+    }
+  })();
+  return _reactionPackPromises[bankId];
+}
+/** Decode (once, cached) the canonical clip for one pack slot. */
+export function getReactionClip(bankId, slot, THREE) {
+  const rp = _reactionPackCache[bankId];
+  if (!rp) return null;
+  const key = '0x' + Number(slot).toString(16);
+  if (rp.clips[key]) return rp.clips[key];
+  const rec = rp.pack.rows && rp.pack.rows[key];
+  if (!rec) return null;
+  const data = decodePackRow(rp.pack, rec);
+  if (rp.turned) turnData(data);
+  const clip = jsonToClip(`t3_react_${rec.slot}`, data, THREE);
+  if (clip) {
+    clip.userData.slot = rec.slot;
+    clip.userData.roles = rec.roles || [];
+    clip.userData.stream_frames = rec.stream_frames;
+    clip.userData.yaw0 = rec.yaw0;
+    clip.userData.anchorScale = rp.pack.anchor_mm_to_rig_m;
+    rp.clips[key] = clip;
+  }
+  return clip || null;
+}
+/** Synchronous accessor for a loaded reaction pack (null if not loaded). */
+export function getReactionPack(bankId) { return _reactionPackCache[bankId] || null; }
+
+/* ============================================================
    STRIKE PROFILE (lane D, 2026-10-24) — what a clip's own decoded
    frames do with each limb. Forward kinematics on the bank's source
    skeleton (rest = world joint positions, every rest rotation
