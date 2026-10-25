@@ -540,3 +540,10 @@ Rules:
 
 ### Auto-archive note (2026-10-22, worker 71)
 Per the AUTO-ARCHIVE standing directive: no wired auto-archive automation was found in-repo (no tripo-intake doc under docs/, no auto-archive entry in AGENTS.md or docs/owner-directives.md). The Kuma replacement archive was done manually following the dorowani #603 pattern (manifest + immutable-original tag).
+
+## Free pulls + free GPU (user directives 2026-10-24 19:50 + 19:55 CDT)
+
+- 19:50 CDT: "Yeah, get all of that pulled in and wired up and any type of free stuff open source any experimental stuff Any industry standard stuff Anything like APIs any free APIs any GPU anything"
+- 19:55 CDT: "Get all of that free GPU stuff pulled in and wired up into the repo and start using that to speed things up and get higher quality and more optimized work and keep working on everything using all the GPU and all the different things."
+- Standing rules from these directives: do not filter (pull everything free, find experimental uses for seemingly-unusable items); use free GPU immediately, not just research (Kaggle first, then Colab, then WebGPU on-device, then stamped CPU fallback); a GPU job counts as run only with output plus verbatim nvidia-smi proof; no API keys in chat (browser sign-in or Secure Vault flows, or unauthenticated free tiers); GPU queue order: Nosferatu 25-track cut, UniRig auto-rigging, Real-ESRGAN upscale, gltfpack batch, character-card and stage-preview pre-render.
+- Wiring landed in this PR: tools/free-pulls (API clients, GPU catalog, GPU job queue, tools, fonts) and docs/research/FREE-PULLS-2026-10-24.md.
