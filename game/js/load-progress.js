@@ -50,6 +50,21 @@ window.__whLoadProgress = function (p, loaded, total) {
   paint();
 };
 
+/* Lane 5: stage phase of the same bar. Fighter bytes map to 0..85%;
+   stage warming maps to 85..97% (the creep cap), so a fight whose
+   fighters are cached but whose stage is still downloading shows
+   real movement instead of sitting at 85%. Never exceeds the creep
+   cap and never moves the bar backwards. */
+window.__whStageProgress = function (stageId, frac) {
+  if (!active) return;
+  const f = Number(frac);
+  if (!Number.isFinite(f)) return;
+  const target = 0.85 + Math.max(0, Math.min(1, f)) * 0.12;
+  shown = Math.max(shown, Math.min(0.97, target));
+  if (stageId) asset = `stage ${String(stageId).slice(0, 32)}`;
+  paint();
+};
+
 function begin() {
   active = true; real = 0; shown = 0.03; asset = ''; t.start = performance.now();
   clearInterval(creep);
