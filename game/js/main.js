@@ -612,6 +612,10 @@ function randomEnemy(excludeId) {
 }
 
 /* ---------------- Menu button wiring ---------------- */
+/* Audio (owner 2026-10-24): no tap-to-enable prompt. Sound resumes
+   silently on the first tap anywhere (mobile autoplay policy still
+   requires a gesture before AudioContext can start); the on/off
+   switch lives in SETTINGS (the howto screen) and persists. */
 function unlockAudio() {
   // TAP-FOR-AUDIO REMOVED (2026-10-24): no "TAP TO ENABLE SOUND" banner and
   // no dedicated audio tap. The first real interaction — a menu, mode or
@@ -629,6 +633,29 @@ function unlockAudio() {
 
 // Silent safety net (from #1037): first tap anywhere also unlocks audio, in case a path reaches audio without a menu, mode or fight tap.
 document.body.addEventListener('pointerdown', unlockAudio, { once: true });
+
+/* SETTINGS sound toggle: persists in localStorage, applies on boot
+   before any gesture, and gates both the procedural engine and the
+   file-music engine (which checks audio.enabled before playing). */
+let _audioOn = true;
+try { _audioOn = localStorage.getItem('wh-audio') !== 'off'; } catch (e) { /* private mode */ }
+function applyAudioPref() {
+  try { audio.setMuted(!_audioOn); } catch (e) { /* sound is optional */ }
+  try { music.setEnabled(_audioOn); } catch (e) { /* sound is optional */ }
+  const b = document.getElementById('opt-audio');
+  if (b) b.textContent = _audioOn ? 'ON' : 'OFF';
+}
+(function bindAudioToggle() {
+  const b = document.getElementById('opt-audio');
+  if (!b) return;
+  b.addEventListener('click', () => {
+    _audioOn = !_audioOn;
+    try { localStorage.setItem('wh-audio', _audioOn ? 'on' : 'off'); } catch (e) { /* private mode */ }
+    applyAudioPref();
+    try { audio.uiClick(); } catch (e) { /* sound is optional */ }
+  });
+})();
+applyAudioPref();
 
 /* Menu tap failure toast (2026-10-24, menu tap fix): a tap must NEVER
    die silently. Mode loads that reject surface here instead of leaving
@@ -1089,7 +1116,10 @@ async function startFight(playerId, enemyId, opts = {}) {
   // MUSIC (2026-10-24): rotating stage pool. The engine falls back to
   // the procedural loop internally when no file track is available, so
   // the old direct audio.startMusic() call is replaced, not doubled.
-  music.playBattle(selectedStage);
+  // JUKEBOX (Lane 4): pass the fight's UI mode through so the engine
+  // plays the player's per-mode Jukebox choice (wh_jukebox_v1, PR #1056)
+  // when one is stored; unknown modes fall back to engine rotation.
+  music.playBattle(selectedStage, { uiMode: ['versus', 'arcade', 'treasure'].includes(opts.mode) ? opts.mode : undefined });
   // FIGHT-LOOP REPAIR (worker 54, 2026-10-22): startMatch ran OUTSIDE the
   // load try/catch — a throw inside it (Fighter build, arena setStage, AI
   // wiring) was an unhandled rejection that stranded the player on the

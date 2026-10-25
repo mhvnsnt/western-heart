@@ -140,3 +140,18 @@
   those annotations + canon_moves, quarantine counts identical, restores
   intact (demonio 4~3/f+3+4, diablo 4~3 slots, scimitar 3+4), 0 T8 anims,
   0 MOD mismatches. Second branch-update merge commit carries them.
+
+## Third re-sync (2026-10-25): main's t7_motbin metadata merged in
+- Main's motbin lane added top-level `t7_motbin` metadata (decoded mot.bin
+  counts, banks, anim_ref format, source blob SHAs) to 6 movesets
+  (demonio, diablo, pantera, phantom, scimitar, skull) with ZERO move-entry
+  changes. All 6 files were re-patched from main's new versions with the
+  identical scripted rules; each re-patch differs from the branch file in
+  ONLY the t7_motbin top-level key, quarantine counts identical, restores
+  intact, 0 T8 anims, 0 MOD mismatches. Main's new audio/UI files were
+  checked against the PR test first (main.js TAP TO ENABLE SOUND occurrence
+  is a removal comment only; index.html has no hint/div; menus.js MUTE ALL
+  + SOUND present) and taken verbatim. Main moved once more (to 96e044f3)
+  between re-patch and merge without touching any PR file, so the merge
+  commit's main parent is 96e044f3 with identical PR-file content.
+  Third branch-update merge commit carries them.
