@@ -24,7 +24,7 @@ import { whUiEnabled, mountWhUi } from './ui-wh-bridge.js';
 import { getCustomFighter, customFighterToRoster } from './custom-fighter.js';
 import { resolveFighterAttire } from './attires.js';
 import { createSelectScreen } from './select-screen.js';
-import { STAGES, STAGE_TIERS, getStage, randomStageId } from './stages.js';
+import { STAGES, STAGE_TIERS, getStage, randomStageId, preloadStage } from './stages.js';
 // LOADSPEED: stages.js (82KB data) stays static — buildStageSelect runs in
 // the versus flow and getStage is needed by startFight; its parse cost is
 // small next to the deferred modules. Stage THUMBS are the real cost there
@@ -336,6 +336,10 @@ function startFightViaStage(p1, p2, opts = {}) {
   pendingFight = { p1, p2, opts };
   buildStageSelect();
   show('stage');
+  // Lane 5: warm the currently shown stage in the background while
+  // the player browses the arena screen — never awaited here, so a
+  // slow stage fetch can never block the screen itself.
+  preloadStage(selectedStage).catch(() => {});
   requestAnimationFrame(() => requestAnimationFrame(() => mark('stage-interactive')));
   const hint = document.getElementById('stage-hint');
   const s = getStage(selectedStage);
@@ -1014,6 +1018,10 @@ async function startFight(playerId, enemyId, opts = {}) {
       for (const t of tgts) if (t.target) need.push(t.target);
     }
   }
+  // Lane 5: stage assets stream IN PARALLEL with the fighter loads
+  // below (not after them). Fire-and-forget: the arena builder's
+  // own GLB/OBJ loads still apply as fallback if warming failed.
+  preloadStage(selectedStage).catch(() => {});
   const hint = document.getElementById('select-hint');
   const confirmBtn = document.getElementById('confirm-fighter');
   // FIGHT-LOAD FIX (2026-10-24): versus fights start from the STAGE screen,
