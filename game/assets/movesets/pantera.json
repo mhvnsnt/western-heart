@@ -10606,8 +10606,8 @@
       "note": "Recovers 2f faster on hit or block (t27 r17)",
       "anim_t3": {
         "bank": "king",
-        "row": 44,
-        "match": "class-verified remap (anim-fix 2026-10-23)"
+        "row": 110,
+        "match": "standing jab row (hip-Y verified standing; remap fix 2026-10-24 - replaces airborne-descent row 44)"
       },
       "t7": {
         "damage": 9,
@@ -10962,8 +10962,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "king",
-        "row": 44,
-        "match": "class-verified remap (anim-fix 2026-10-23)"
+        "row": 110,
+        "match": "standing jab row (hip-Y verified standing; remap fix 2026-10-24 - replaces airborne-descent row 44)"
       },
       "t7": {
         "damage": 9,
@@ -20031,6 +20031,7 @@
         "R.d/f+1+2"
       ],
       "move_class": "special",
+      "rageArt": true,
       "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "king_184",
       "t7_command": "(During Rage) d/f+1+2",
@@ -20067,6 +20068,7 @@
         "R.d/b+1+2"
       ],
       "move_class": "special",
+      "rageDrive": true,
       "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
       "t7_move_id": "king_185",
       "t7_command": "(During Rage) d/b+1+2",
@@ -29589,7 +29591,7 @@
     "POWER_BOMB.2,1,3,4": "POWER_BOMB.2,1,3,4",
     "POWER_BOMB.3,1,2,3+4,1+2+3+4": "POWER_BOMB.3,1,2,3+4,1+2+3+4",
     "R.d/b+1+2": "R.d/b+1+2",
-    "R.d/f+1+2": "R.df+1+2",
+    "R.d/f+1+2": "R.d/f+1+2",
     "RAS1.1": "RAS1.1_2",
     "RAS2.1": "RAS2.1_2",
     "RAS3.1": "RAS3.1_2",
@@ -30728,5 +30730,99 @@
     "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
     "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
     "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  }
+  ,
+  "named_systems": {
+    "note": "Western Heart renamed-system entries for Pantera. Correct animations come ONLY from the original Tekken system's clips (user directive 2026-10-24 22:09 CDT). Anything not yet extracted is UNMAPPED here, never a T3 clip or class-match presented as the mapping. A T3 clip may serve as a temporary in-game fallback; where one exists it is labelled temporary fallback, never the mapping. Buttons: LP1 = Left Punch = Tekken 1, RP2 = Right Punch = Tekken 2, LK3 = Left Kick = Tekken 3, RK4 = Right Kick = Tekken 4. Amatsu Rinne is EXCLUDED (future design, no work). Rinne damage boost is an OPEN user question, NOT wired.",
+    "rinne": {
+      "wh_name": "Rinne",
+      "full_name": "Rinne Tensei",
+      "tekken_source_system": "Rage state",
+      "gating": "Low HP at or below 25% of max HP, once per round (fighter.js _inputCtx rage flag; _rageUsed set when an R./RD. move fires). Resolver offers the R. prefix only while gating holds (movesets.js _pressV2).",
+      "presentation": "PARTIAL - aura method exists (fighter.js setRageAura) with no caller found in fighter.js; small HUD tag + gauge + aura per spec are NOT verified wired in this change. No banner, per spec.",
+      "gates": ["ikari_jishin", "rinne_kogeki"],
+      "damage_boost": "OPEN QUESTION FOR THE USER - not wired, not assumed. No Rage/Rinne damage multiplier was found in fighter.js or combat-core.js on main at read time.",
+      "correct_anim": "UNMAPPED - Tekken Rage state presentation rendered in WH canon look; no clip mapping claimed.",
+      "temporary_fallback": null
+    },
+    "ikari_jishin": {
+      "wh_name": "Ikari Jishin",
+      "tekken_source_system": "Rage Art",
+      "move_key": "R.d/f+1+2",
+      "input": "(During Rage) d/f+1+2",
+      "t7_move_id": "king_184",
+      "damage": 32,
+      "damage_raw_t7": "55 [57]",
+      "startup_frames_t7": "20",
+      "on_block": "-22",
+      "on_hit": "KND",
+      "hit_level": "mid",
+      "knockdown": true,
+      "anim_ref": "t7:king:king_184",
+      "correct_anim": "UNMAPPED - T7 King Rage Art clip for king_184 (live-memory extraction, anim_ref minus 0x8000 join; see extraction-100 package 01-t7-live). No playable clip exists in the repo today.",
+      "temporary_fallback": "None wired (no t3_row, no anim_t3 on this move). Today it plays donor/pool/generic via _attackClipPlan.",
+      "engine_flags": "rageArt: true (added by this change; read by fighter.js and combat-core.js armor logic). Slot slots['R.d/f+1+2'] repointed to itself by this change (it previously fired the 0-damage T8 move R.df+1+2, Anger Of The Beast).",
+      "usable_only_in": "rinne"
+    },
+    "rinne_kogeki": {
+      "wh_name": "Rinne Kogeki",
+      "tekken_source_system": "Rage Drive",
+      "move_key": "R.d/b+1+2",
+      "input": "(During Rage) d/b+1+2",
+      "t7_move_id": "king_185",
+      "damage": 14,
+      "damage_raw_t7": "24 [28]",
+      "startup_frames_t7": "20",
+      "on_block": "+9",
+      "on_hit": "LAUNCH",
+      "hit_level": "mid",
+      "launch": true,
+      "anim_ref": "t7:king:king_185",
+      "correct_anim": "UNMAPPED - T7 King Rage Drive clip for king_185 (live-memory extraction, anim_ref minus 0x8000 join). No playable clip exists in the repo today.",
+      "temporary_fallback": "None wired (no t3_row, no anim_t3 on this move). Today it plays donor/pool/generic via _attackClipPlan.",
+      "engine_flags": "rageDrive: true (added by this change; read by fighter.js).",
+      "usable_only_in": "rinne"
+    },
+    "kongo": {
+      "wh_name": "Kongo",
+      "tekken_source_system": "Power Crush",
+      "move_key": null,
+      "correct_anim": "UNMAPPED - no Pantera move in this file carries a Power Crush flag (0 moves with powerCrush/power_crush/screw/tornado/rageArt/rageDrive fields before this change; this change adds only the two Rage flags above). Move identification itself is UNMAPPED: the file's t7 blocks carry no Power Crush flag, and the t7 crush field is high/low evasion crush, NOT Power Crush (do not conflate).",
+      "armor_spec_from_engine": "combat-core.js: POWER_CRUSH_ARMOR_FRAMES 8; absorbs mid/high; damage lands; swing is not interrupted. isPowerCrushMove reads move.powerCrush/power_crush/powercrush or t7/t8.powerCrush.",
+      "temporary_fallback": null,
+      "unblock": "T7 frame-data source carrying the Power Crush flag for King, joined by move id, plus T7 clip extraction for the identified move(s)."
+    },
+    "ogi": {
+      "wh_name": "Ogi",
+      "tekken_source_system": "V-System (V-Skill / V-Trigger / V-Reversal / V-Shift)",
+      "components_by_function": ["skill", "trigger", "reversal", "shift"],
+      "component_wh_names": "OPEN - future work; entries are defined BY FUNCTION until the user picks names.",
+      "move_key": null,
+      "correct_anim": "UNMAPPED - all four components. V-System is not a Tekken system and no V-System extraction package exists in the extraction-100 set (T7, VF5, TTT2, 2K22 only); the extraction route for V-System clips is itself an open item, not assumed.",
+      "temporary_fallback": null
+    },
+    "spin_juggle": {
+      "wh_name": "Spin Juggle",
+      "forms": {
+        "air_form": {
+          "also_called": "Air Spin",
+          "tekken_source_system": "Tornado (T8)",
+          "correct_anim": "UNMAPPED - T8 Tornado clips. Pantera's file carries 0 t8 blocks and 0 tornado flags; T8 clips are not extractable from this VM (disk not accessible) and no T8 extraction package is landed.",
+          "temporary_fallback": null
+        },
+        "floor_form": {
+          "also_called": "Floor Spin",
+          "tekken_source_system": "Screw (T7); Tailspin is T8's word for Screw and collapses into this form - NO third form.",
+          "correct_anim": "UNMAPPED - no Pantera move in this file carries a screw/tailspin flag (engine reads move.screw/tailspin/screwAttack or t7.screw; 0 present). Move identification itself is UNMAPPED: the file's t7 blocks carry no Screw flag.",
+          "temporary_fallback": null,
+          "name_trap": "Moves named Leg Screw / Screwdriver are throws, NOT the Screw mechanic. Do not flag them from their names."
+        }
+      },
+      "engine_on_main": "Screw/Tornado mechanic is ON MAIN via merged PR #1060 (game/js/combat-core.js, game/js/fighter.js): Screw spins the airborne opponent into a slump (SCREW_SLUMP_STUN 0.9s), Tornado flips into a ground bound (TORNADO_BOUND_STUN 0.8s), one extender slot per combo. The mechanic exists; Pantera has no flagged extender moves feeding it yet.",
+      "unblock": "T7 Screw flag data for King joined by move id (Floor Form) + T7 clip extraction; T8 Tornado data + T8 clip route (Air Form)."
+    },
+    "amatsu_rinne": {
+      "status": "EXCLUDED - future powered/transformed form of Rinne. Mechanic NOT designed. NO moveset or animation work in this change, by instruction."
+    }
   }
 }
