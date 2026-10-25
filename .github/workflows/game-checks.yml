@@ -69,6 +69,7 @@ jobs:
             game/vendor/three.module.js
             game/vendor/addons
             customization/profiles
+            packages/creation-suite
           sparse-checkout-cone-mode: false
       - name: Run game unit tests
         run: |
