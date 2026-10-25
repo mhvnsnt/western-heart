@@ -1,3 +1,17 @@
+## 2026-10-24 — Anim-motion audit follow-up: LP1+RP2 (1+2) chord rewires for demonio + diablo (ANIM-MOTION LANE)
+
+**Why:** Top-donor scan after the main audit showed the `1+2__main` chord moves as the largest remaining fixable donor sources (7 fighters, 102 HARD donees + 7 HARD sources, all playing jump clips). The T3 tables attach the current rows to T3's own 1+2 (king 35, bryan 41, heihachi 37, jin 32, yoshi 265), so the current rows are T3-own attachments — but they measure as jump clips for standing strikes (except yoshi 265).
+
+**What:** 2 rewires, same surgical pattern as the main audit (only `t3_row`, the `(T3 <bank> rNN)` name reference, and `anim_ref` changed; no damage, startup, T7/T8 fields, slots, or other fields touched; byte-verified: inverse-in-block restores the original files byte-for-byte):
+- demonio `1+2__main`: jin 32 → 92. Provenance: demonio moves `d+1+2` and `1+2~t3.jin` (1+2 variant) use row 92. Standing, level h, dominant armL (audit ext 0.53/0.38), travel 0.21, active 10 vs startup 12. Filed level `mmh` (no single-level truth in the audit).
+- diablo `1+2__main`: heihachi 37 → 133. Provenance: T3 table `b_r133` (directional LP+RP) + diablo move `b_r133`. Standing, level m, dominant armL (audit ext armL 0.28 / armR 0.07, disclosed), travel 0.23, active 10 vs startup 12.
+
+**Results (audit tool, same code both sides, current main movesets):** demonio pressable HARD 174 → 161 (−13: 4 notation donees + 9 donor donees), diablo 156 → 134 (−22: 4 notation + 18 donor). Both sources CLEAN. ZERO regressions; no move changed rows except 32 → 92 and 37 → 133. No bindings needed (demonio donees all standing-expect; diablo's only non-standing donees are WS strikes, suited by a standing chord row; neither row has a jumping donee).
+
+**UNMAPPED with file-absence evidence (no verified standing chord row in-bank):** pantera (every standing chord candidate has LP+RP provenance but fails a hard criterion: 143 via pantera b~t3.king.4 fails timing 1.8x; 97 fails level + timing 1.8x; 116/131 fail timing 2.25x + level; 227 fails limb + travel 0.91); burger + skull (bryan 129 fails the audit limb check — dominant armR vs filed armL, a jump-HARD for limb-HARD trade, not a fix; 132 is a back move; 108 level + limb; 116 level + timing + provenance); kinpo + scimitar (jin 134 is a back move + limb fail + travel 0.58; 92/105 fail timing — active 10 vs startup 16/18). **No change needed:** phantom row 265 passes the audit (standing, m, active 22 = startup 22, zero flags; all 33 donees CLEAN) — rewiring would risk 33 clean donees.
+
+**Docs:** `docs/anim/ANIM-MOTION-AUDIT-2026-10-24.md` (follow-up section appended; stale "demonio NO changes" line corrected), `docs/anim/PROCEDURAL_AUDIT.md` (T3-use row appended). Simulation/scan proof only — not play-verified.
+
 ## 2026-10-24 — Anim-motion audit follow-up: test pins updated to the corrected rows (ANIM-MOTION LANE)
 
 **Why:** CI `game-unit-tests` failed on PR #1022 only because three assertions pinned the OLD buggy rows. The pins enshrined the bugs: row 44 is a jumping-1 clip (feet 0.75/0.78 m off ground at frame 0), not a standing jab; row 203 is a lunging ducking straight (0.95 m travel, hips to 0.61 m), not a jab.
