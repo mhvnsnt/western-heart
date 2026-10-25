@@ -115,3 +115,17 @@
   (106), 0 T8 anims, 0 MOD mismatches. ui_sources: main dropped one
   screen-menu source line (Base_OnlineMenu.png); this branch follows
   main (screen-menu keeps 7 sources, still sourced).
+
+## Branch-update merge (2026-10-25): main merged into the branch to resolve pantera adjacency
+- Plain line merge cannot merge this PR's pantera: main's PR #1045
+  annotation on `db+1+2` sits immediately before `db+1+2,2` and
+  `db+1+2,3+4`, which this PR quarantines (T8 anims). The modification
+  hunk and the deletion hunk are adjacent, so both git merge and
+  merge-file report a conflict even though the correct result is
+  unambiguous (verified entry-by-entry in the re-patch step above).
+- Resolution: branch updated with a merge commit (parents: branch head
+  + main). Its tree is main's tree plus this PR's 25 files, with
+  pantera = the re-patched file (main's annotations + this PR's
+  purge/sync/quarantine). No main-side content is dropped: every
+  main-only file is byte-identical to main, and every PR file was
+  verified against main's versions before the merge commit.

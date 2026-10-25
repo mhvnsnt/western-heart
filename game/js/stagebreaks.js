@@ -10,6 +10,7 @@
      bonus damage (DOA "Danger Zone" style).
    • TEKKEN balcony breaks (T7 Jungle Outpost 2): same as a floor
      break off a ledge edge.
+   • NO on-screen break text — Tekken shows breaks via destruction + camera, never a banner (UI immersion fix 2026-10-24).
    • DOA4/5/6 knock-through: power blows near breakable walls/floors
      burst INTO a new area — the transition IS the mechanic.
    Stage defs declare `breakables: [{type:'floor'|'wall'|'balcony',
@@ -86,7 +87,28 @@ export class StageBreaks {
     // damage and the surface FRACTURES into shards on the killing hit.
     this.destruction = new DestructionSystem();
     this._fractures = []; // {group, shards, mat} — live shard meshes
+    // GAP-FILL LANE 1 (2026-10-24): wall SPLAT record. The splat
+    // STATE machine lives in fighter.js (_physics detection,
+    // 'wallsplat' state, 3-hit drop in receiveHit); this module
+    // only records the latest splat and its visual shake, so the
+    // stage side can tell a splat apart from a break. A break
+    // supersedes a splat (clearSplat on every break path).
+    // PROPRIETARY NAME: NEEDS NAME (owner names it).
+    this.splat = null; // {side, x, t} | null
   }
+
+  /* Record a wall splat (called by fighter.js _physics when
+     knockback reaches an unbroken wall). Record-only: no banner
+     is added here — the splat's canon name is still NEEDS NAME,
+     so no user-facing label is invented for it. */
+  noteSplat(attacker, defender) {
+    if (!defender || !defender.root) return;
+    const x = defender.root.position.x;
+    this.splat = { side: Math.sign(x) || 1, x, t: 0 };
+    try { if (this.game.arena) this.game.arena.shake(0.3, 0.25); } catch (e) { /* arena optional */ }
+  }
+  clearSplat() { this.splat = null; }
+  get splatActive() { return !!this.splat; }
 
   /* Bind to a stage at match start. Resets all break state. */
   bindStage(stageDef, fx) {
@@ -132,6 +154,7 @@ export class StageBreaks {
     this._barriers.clear();
     this._zones.clear();
     this.group.clear();
+    this.splat = null;
     this.broken.clear();
     this.defs = [];
     this.groundY = 0;
@@ -351,6 +374,7 @@ export class StageBreaks {
   }
 
   _breakWall(def, id, attacker, defender, shards) {
+    this.clearSplat(); // break supersedes any recorded splat
     this.broken.add(id);
     const bar = this._barriers.get(id);
     if (bar) bar.visible = false;
@@ -386,12 +410,12 @@ export class StageBreaks {
     g.arena.shake(0.55, 0.45);
     g._hitStop = Math.max(g._hitStop || 0, 0.14);
     try { audio.grab(); } catch (e) {}
-    if (g.ui && g.ui.banner) g.ui.banner('WALL BREAK');
     if (bonus === 'ko') g.rage.onHitKO(attacker, defender);
     console.log(`[WH] stage break: wall (${def.side < 0 ? 'P1' : 'P2'} side) — bounds now ±${newLimit.toFixed(1)}`);
   }
 
   _breakFloor(def, id, attacker, defender, shards) {
+    this.clearSplat();
     this.broken.add(id);
     const zone = this._zones.get(id);
     if (zone) zone.visible = false;
@@ -425,13 +449,13 @@ export class StageBreaks {
     g.arena.shake(0.7, 0.6);
     g._hitStop = Math.max(g._hitStop || 0, 0.18);
     try { audio.ko(); } catch (e) {}
-    if (g.ui && g.ui.banner) g.ui.banner('FLOOR BREAK');
     if (g.ui && g.ui.updateHP && g.p1 && g.p2) g.ui.updateHP(g.p1, g.p2);
     if (bonus === 'ko') g.rage.onHitKO(attacker, defender);
     console.log(`[WH] stage break: floor at (${fx},${fz}) — dropped to y=${this.groundY}`);
   }
 
   _breakBalcony(def, id, attacker, defender, shards) {
+    this.clearSplat();
     this.broken.add(id);
     const zone = this._zones.get(id);
     if (zone) zone.visible = false;
@@ -465,7 +489,6 @@ export class StageBreaks {
     g.arena.shake(0.7, 0.6);
     g._hitStop = Math.max(g._hitStop || 0, 0.18);
     try { audio.ko(); } catch (e) {}
-    if (g.ui && g.ui.banner) g.ui.banner('BALCONY BREAK');
     if (g.ui && g.ui.updateHP && g.p1 && g.p2) g.ui.updateHP(g.p1, g.p2);
     if (bonus === 'ko') g.rage.onHitKO(attacker, defender);
     console.log(`[WH] stage break: balcony at (${fx},${fz}) — dropped to y=${this.groundY}`);
