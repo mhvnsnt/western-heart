@@ -118,6 +118,27 @@ they viewed rest renders; the override is recorded in the report.
 - **A human has VIEWED the pose renders** (front/back/side at the gate's worst
   frames) before wiring. UNKNOWN is never PASS.
 
+## Archive (automatic — owner standing directive 2026-10-22)
+
+Owner directive (2026-10-22 ~18:14 CDT, verbatim): *"For ALL future Tripo
+pulls — AUTO-ARCHIVE to the repo. Don't ask, just wire them up every time."*
+
+Every Tripo pull is archived to the repo as an immutable original, following
+the Dorowani #603 pattern (PR mhvnsnt/western-heart#603):
+
+- `roster/<fighter>/attires/attire<N>/source/<fighter>-a<N>-<slug>.glb` — the
+  byte-identical Tripo original, never modified, never rewired.
+- `roster/<fighter>/attires/attire<N>/source/manifest.json` — character, attire,
+  Tripo URL/UUID, date, size, **sha256** (byte-verified against the pull).
+- Annotated tag `<fighter>-a<N>-original`, message "Restore point: these bytes
+  never change" — the restore point for those bytes.
+
+The intake archives the inbox original to `source/` (not just `outbox/`) as
+part of every run — no separate approval, no asking. Rig/playable copies
+(`model.glb`, `model-rigged.glb`) derive from these bytes; the originals are
+never replaced. Worker 61 (intake inventory, 2026-10-22) owns folding this
+into `intake.py`'s stage 7.
+
 ## Wiring (manual, reviewed — the intake never touches game code)
 
 The reviewer completes `WIRING-CHECKLIST.md` in the staged slot dir:

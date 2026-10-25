@@ -9,6 +9,8 @@ on:
   pull_request:
     branches: [main]
     types: [opened, synchronize, reopened, labeled, unlabeled]
+  merge_group:
+    types: [checks_requested]
 # CI minute diet (Plan B): superseded PR runs are cancelled, not billed.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -58,6 +60,17 @@ jobs:
             test
             game/js
             game/data
+            game/index.html
+            game/styles.css
+            game/assets/movesets
+            game/assets/portraits
+            game/assets/anim/t3
+            tools/portraits
+            tools/anim/node_game_env.mjs
+            game/vendor/jolt
+            game/vendor/three.module.js
+            game/vendor/addons
+            customization/profiles
           sparse-checkout-cone-mode: false
       - name: Run game unit tests
         run: |
@@ -66,3 +79,61 @@ jobs:
             echo "== $t"
             node "$t"
           done
+
+  menu-touch-e2e:
+    # t122u: phone tap test (hasTouch 390x844): every menu item tappable,
+    # tappable even if a boot module fails, and menu -> select -> stage -> fight.
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            /test
+            /game
+            !/game/assets/music
+            /packages/creation-suite
+            /roster/pantera
+            /roster/phantom/attires/attire1
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Playwright
+        run: |
+          cd test/e2e && npm init -y >/dev/null && npm i playwright@1.64.1 && npx playwright install --with-deps chromium
+      - name: Tap test
+        run: |
+          python3 -m http.server 8811 >/tmp/srv.log 2>&1 &
+          sleep 2
+          node test/e2e/menu-touch.e2e.mjs menu-touch-shots
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: menu-touch-shots
+          path: menu-touch-shots
+
+  material-gate:
+    # Every MODEL_URLS model must pass game/js/material-resolve.js (no missing,
+    # placeholder or exporter-default materials) or be listed in the generated
+    # quarantine game/js/material-status.js, which keeps it out of select + fight.
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            game/js
+            tools/assets
+          sparse-checkout-cone-mode: false
+      - name: Material gate (all roster models)
+        run: node tools/assets/material_gate.mjs --json material-gate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: material-gate
+          path: material-gate.json

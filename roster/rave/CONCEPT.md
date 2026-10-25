@@ -1,6 +1,7 @@
 # RAVE — Concept
 
 **WH Name:** Rave (locked 2026-10-15; was "Raver", corrected to "Rave")
+**Also known as:** Kiko, Ghost, Kiko Tanaka — all the same person (owner 2026-10-23). RAVE is the main game/display name.
 **Source:** Lei Wulong (Tekken)
 **Model:** game/assets/models/rave.glb
 
