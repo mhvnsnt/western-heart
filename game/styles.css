@@ -787,3 +787,30 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 
 /* Mode badge sits under the HUD top row: portrait HUD is ~113px tall, landscape ~106px. */
 @media (orientation: landscape) { .mode-badge { --hud-top-h: 108px; padding: 3px 12px; } }
+/* TOUCH FIX (owner pt134u, 2026-10-23): HTML ships .limb lp/rp/lk/rk but the
+   CSS only positioned .psx classes, so all buttons stacked under DODGE.
+   T8 PlayStation diamond: square=1 LP (left), triangle=2 RP (top),
+   cross=3 LK (bottom), circle=4 RK (right). Utility row sits above the
+   diamond, clear of the joystick and the top HUD. */
+.act-btn.limb { width: 62px; height: 62px; font-size: 18px; background: rgba(20,20,28,0.78); border: 2px solid rgba(255,255,255,0.4); text-shadow: 0 0 8px currentColor; }
+.act-btn.lp { right: 152px; bottom: 96px; color: #ff7ad9; }
+.act-btn.rp { right: 88px;  bottom: 160px; color: #3ddc84; }
+.act-btn.lk { right: 88px;  bottom: 32px;  color: #4da3ff; }
+.act-btn.rk { right: 24px;  bottom: 96px;  color: #ff5c5c; }
+.act-btn.block, .act-btn.special, .act-btn.dodge, .act-btn.vskill, .act-btn.heat, .act-btn.rage, .act-btn.transform {
+  width: 54px; height: 40px; border-radius: 20px; font-size: 12px; font-weight: 900; letter-spacing: .5px; }
+.act-btn.block   { right: 158px; bottom: 236px; background: rgba(20,20,28,0.8); color: #ffe9a8; }
+.act-btn.heat    { right: 92px;  bottom: 236px; background: linear-gradient(180deg,#ff9a3c,#c8401f); color: #fff; }
+.act-btn.rage    { right: 26px;  bottom: 236px; background: linear-gradient(180deg,#ff4a5a,#8a0f1f); color: #fff; }
+.act-btn.dodge   { right: 26px;  bottom: 288px; background: rgba(20,20,28,0.8); color: #cfe; }
+.act-btn.vskill  { right: 92px;  bottom: 288px; background: linear-gradient(180deg,#7df9ff,#1f9dc8); color: #062a33; }
+.act-btn.special { right: 158px; bottom: 288px; background: linear-gradient(180deg,#d9a8ff,#6a2fb0); color: #fff; }
+.act-btn.transform { right: 224px; bottom: 288px; background: linear-gradient(180deg,#fff36b,#d8a02b); color: #3a2a00; }
+@media (max-width: 520px) {
+  .act-btn.limb { width: 58px; height: 58px; }
+  .act-btn.lp { right: 136px; bottom: 90px; } .act-btn.rp { right: 78px; bottom: 148px; }
+  .act-btn.lk { right: 78px; bottom: 32px; }  .act-btn.rk { right: 20px; bottom: 90px; }
+  .act-btn.block { right: 144px; bottom: 218px; } .act-btn.heat { right: 82px; bottom: 218px; } .act-btn.rage { right: 20px; bottom: 218px; }
+  .act-btn.special { right: 144px; bottom: 266px; } .act-btn.vskill { right: 82px; bottom: 266px; } .act-btn.dodge { right: 20px; bottom: 266px; }
+  .act-btn.transform { right: 206px; bottom: 266px; }
+}
