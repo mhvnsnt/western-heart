@@ -86,7 +86,8 @@
       ],
       "files": [
         "game/index.html",
-        "game/js/online.js"
+        "game/js/online.js",
+        "game/js/tournament-ui.js"
       ],
       "note": "Hub rows mirror the game/js/online.js hub template: QUICK MATCH (TTT2 style — instant rival), FIND LOUNGE, CREATE LOUNGE (SFV battle lounge — your rules), TOURNAMENT, DAILY CHALLENGES, BACK — routed through the existing document-level online actions; the old placeholder section shadowed that template and lacked the #online-player-line / #online-event ids the hub fills, so the hub could never open. Column structure per T7-UI-LAYOUT.md (Base_OnlineMenu dark-glass vertical list). Netcode honestly pending (signaling server); connection bars NOT claimed (online lane's work)."
     },
