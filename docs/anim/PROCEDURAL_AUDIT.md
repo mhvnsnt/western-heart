@@ -255,3 +255,45 @@ canonicals; the file's old-vs-corrected diffs (3~4,U; 4,4,2,2,1,~1;
 4,4,2,2,NSS.1,~1) are all outside Batch 3 scope (rest/Batch 4 keys).
 T8-sourced prefixes with no T3 row get their correct clips from
 #988 Step 2 (original T8 refs), never from a T3 row recorded as correct.
+
+## Phantom Batch 4 fallback (triples/quads/rest strings, 2026-10-25)
+Verified rows 123/237/291/294/298/301/306 are FALLBACK
+(T3 yoshimitsu rows, bank yoshimitsu / native Yoshimitsu bank — NOT a
+fallback bank: phantom's T7/T8 base IS Yoshimitsu), to be re-matched to T7
+Yoshimitsu rows when extraction lands. Rows 123/291/301 are Batch 2/3 rows
+re-verified in Batch 4 contexts (row dual-role caution: a row verified for
+one string/context is NOT globally verified — every step gate-checks its
+own row again). Rejected rows are NOT fallback — rejected evidence, not
+wired or held. Yoshimitsu-bank rules, per-bank evidence (documented in
+docs/movesets/PHANTOM-BATCH4-STEP-PLANS-2026-10-25.md): rows 35 and 220 do
+NOT EXIST in this bank (absent from hit_frames AND Job 1) — no row-35 or
+row-220 rule applies at all; row 216 is a STANDING LP1 row here, NOT king
+row 216's dash Konvict Kick, NOT jin row 216's jump row; row 243 is a
+CHORD row (button 9 = LP1+RK4) failing every single-button gate.
+Coverage-complete: ALL 321 canonical comma keys = B1 117 + B2 41 + B3 48 +
+B4 115 (48 triples/quads planned + 67 rest CSV-audited only), overlaps 0,
+uncovered [] extra []. Rest keys get NO plan — planning them needs engine
+support for non-attack prefix steps (future work, named, not guessed).
+All three row-changed moves the Batch 4 brief flagged ARE Batch 4 step
+prefixes: prefix 1 ROW-CHANGED 62->None (1,2,1,4,2,2,2,4,1,1 +
+1,2,1,4,4,4,1,1,1,1 step 1s, stale row 62); prefix 2 ROW-CHANGED 307->None
+(2,2,4,1 + 2,2,4,1,1 step 1s, stale row 307); prefix 4 ROW-CHANGED
+243->None (4,4,2,2,1 + 4,4,2,2,1,~1 + 4,4,2,2,NSS.1 + 4,4,2,2,NSS.1,~1
+step 1s, stale chord row 243) — all SUSPENDED-DRIFT, never wired on stale
+data. Job 3 fills wired: 0 (all Job 3 candidates ROW-ONLY, soft-filed,
+soft-nofiled, or unknown; the one exact+FULL candidate, row 160 for
+4,4,2,2,1 step 5, is HELD at review on SOFT proxy fail under the stricter
+fill rule). Canonicalization is the CORRECTED rule (strip only a trailing
+~t[378] source-variant suffix): phantom Batch 4 contains EXACTLY THREE
+input-~ canonicals, all their own keys — 3~4,U (rest, buttonless U step,
+CSV-audited only, NOT a variant of 3) and 4,4,2,2,1,~1 + 4,4,2,2,NSS.1,~1
+(triples, union {1,2,4}, planned). Corrupted key f,F+2,&amp;#58;2
+(double-escaped colon, diablo Batch 1 df+1,&#58;2 precedent) filed
+verbatim, unmapped — open data-quality follow-up, never fixed here.
+Gap-1: hit_frames identical to the Batch 3 baseline; rows.pack row set
+identical (215 rows, same slots/stream_frames/used_by/source hashes) but
+the blob differs by the 2026-10-22 facing-fix re-bake (L/R bone order
+swapped, quaternion streams re-encoded, mirrored rest pose) — gates use
+hit_frames + Job 1, unaffected. T8-sourced prefixes with no T3 row get
+their correct clips from #988 Step 2 (original T8 refs), never from a T3
+row recorded as correct.
