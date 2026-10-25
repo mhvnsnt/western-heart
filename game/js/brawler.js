@@ -356,7 +356,7 @@ export class BrawlerGame {
 
       // Model + moveset preload: the player, every stage's echo cast,
       // and the player's transform targets (mid-match forms).
-      const needModels = new Set([char.model || 'pantera']);
+      const needModels = new Set([char.model].filter(Boolean)); // no-wrong-body: never fall back to another fighter's model
       const needMoves = new Set([char.id]);
       if (char.transform && char.transform.targetModel) needModels.add(char.transform.targetModel);
       if (char.forms) for (const fk of Object.keys(char.forms)) {
@@ -371,7 +371,7 @@ export class BrawlerGame {
         const cast = this._buildCast(char.id, 5);
         this._casts.push(cast);
         for (const base of cast) {
-          needModels.add(base.model || 'pantera');
+          if (base.model) needModels.add(base.model); // no-wrong-body: never fall back to another fighter's model
           needMoves.add(base.id);
         }
       }
