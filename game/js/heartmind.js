@@ -57,6 +57,36 @@ export const HEARTMIND_STAGES = [
     waves: 0, diff: 0.90, restore: 0.35 }, // boss only: the shadow self
 ];
 
+
+/* ============================================================
+   SHRINE体系 — the shrine terminal segment (owner 2026-10-24).
+   At the Still Point (stage 5, octagonal-shrine), before the
+   shadow-self fight, the shrine terminal reads the descending
+   soul. Applies to EVERY fighter: deep stories, nine-soul
+   stories, and the generic frame all pass through _runStage,
+   so one wiring covers all of them. In-game name is
+   Shrine体系 (Shrine + 体系 "system", owner-locked kanji).
+   ============================================================ */
+export const SHRINE_OS_SEGMENT = {
+  key: 'shrine-os',
+  name: 'Shrine体系',
+  kanji: '体系',
+  kanjiReading: 'taikei',
+  stage: 'octagonal-shrine',
+  stageName: 'THE STILL POINT',
+  sideGames: 'side-games.html#shrine-os',
+  note: 'Owner-directed 2026-10-24: shrine terminal segment, played at the stillpoint stage for every fighter.',
+};
+
+export function shrineOsBeat(charId) {
+  return [
+    { name: 'SHRINE体系', charId,
+      text: 'The terminal wakes as you reach the still point. Sixteen colors, one voice: it reads you the way the shrine reads every arriving soul — three words, no more.' },
+    { name: 'SHRINE体系', charId,
+      text: 'The words are yours to carry into the fight. The shadow is already listening.' },
+  ];
+}
+
 /* Phase-1 proprietary wave table: echoes per stage. When HM_TEARDOWN
    lands, waveTables replaces this 1:1. */
 const ECHO_POOL = ['skull', 'tou', 'retsu', 'negativo', 'dio', 'slice', 'burger', 'scimitar'];
@@ -380,10 +410,14 @@ export class HeartmindController {
     this.run.road = roadInto(st.key);
     const story = this._story;
     const beat = story.beats[st.key];
+    // Shrine体系 at the Still Point: the shrine terminal reads
+    // the descending soul before the shadow fight (owner 2026-10-24).
+    const shrineBeat = st.key === 'stillpoint' ? shrineOsBeat(this.run.fighterId) : [];
     const open = [
       { name: st.name, charId: this.run.fighterId,
         text: `${st.sub} Stage ${st.n} of 5.` },
       ...(beat || []),
+      ...shrineBeat,
     ];
     playStoryBeats(open, () => this._fightWave(), st.name);
   }
