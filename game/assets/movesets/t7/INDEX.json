@@ -601,10 +601,10 @@
    "file_moves_before": 728
   },
   "cainelias.json": {
-   "tekken_base_index": "Undertaker (WWE)",
+   "tekken_base_index": "Undertaker",
    "file_moves_index": 41,
    "pattern": "BUILT",
-   "note": "Curated Undertaker (WWE) signature kit on a King T3 proxy bank (proxy=True). No decoded WWE set. Second source undecided in CANON.md (Glen Kluger / Urban Reign, or a fitting Tekken character) \u2014 owner decision pending. No T7 overlay row.",
+   "note": "Curated Undertaker signature kit on a King T3 proxy bank (proxy=True). No decoded wrestling set. Second source undecided in CANON.md (Glen Kluger / Urban Reign, or a fitting Tekken character) \u2014 owner decision pending. No T7 overlay row.",
    "t7_slugs": [],
    "t7_overlay_files": [],
    "t7_overlay_moves_available": 0,
@@ -1035,7 +1035,7 @@
    "tekken_base_index": "Eddy Gordo",
    "file_moves_index": 848,
    "pattern": "ADDITIVE",
-   "note": "Eddy Gordo + 2 WH sigs. Booker T moves NOT present (needs WWE data).",
+   "note": "Eddy Gordo + 2 WH sigs. Booker T moves NOT present (needs wrestling-game data).",
    "t7_slugs": [
     "eddy"
    ],
@@ -2376,7 +2376,7 @@
   "COMBAT LANE (owns fighter.js \u2014 this lane did not touch it): confirm FIGHTER_BANK zen is null on current main (stance audit says PR #1019 set it; verify by reading fighter.js, do not restore heihachi/julia); confirm the overlay schema (notation_lp join key) before the inline-merge follow-up; own hitbox.js/hitdetect.js engine work for per-move boxes.",
   "OWNER DECISIONS (do not guess): Byou's base; Gyou canonical base (Paul vs Paul+Hwoarang); baek-master-white base (Kevin vs Baek); Koreshi design-vs-file; Cainelias second source; dxmmii-patchwork MIX stance; Birodo + Jotei pattern decisions."
  ],
- "license_note": "License firewall OFF per user directive 2026-10-24 (pull everything regardless of license, document copyleft, never block). MODDING COMMUNITY AUTHORIZATION EXPANDED 2026-10-24 20:20 CDT: pull whatever is needed from Tekken/WWE/every-game modding communities (TekkenMods, TKMovesets/Kiloutre, wavu.wiki, geppopotamus.info, Nexus Mods mods/tools only, modding wikis, GitHub modding tools) and wire it up. FULL GAME FILES FROM OWNED GAMES = AUTHORIZED, NOT PIRACY (user correction 2026-10-24 20:21 CDT): the user owns Tekken 7 (Steam) and the other teardown games; ownership = authorization, never demand proof; only copies of games NOT owned are out of scope. That authorization covers the pakchunk / live-memory unblock paths in this index for owned T7. Sources: TheBigTuna/Tekken-7-Frame-Data, TekkenDocs API (Google Sheet source of truth), wavu.wiki (pending join; King T7 page URL was search-returned AND text-fetched in this lane \u2014 no guessed URLs cited), game-reverse-engineering mot.bin decodes (private repo). Copyleft status of each source is NOT asserted here \u2014 the coordinator should record it in the PR discussion if the repo requires it; nothing in this PR blocks on it.",
+ "license_note": "License firewall OFF per user directive 2026-10-24 (pull everything regardless of license, document copyleft, never block). MODDING COMMUNITY AUTHORIZATION EXPANDED 2026-10-24 20:20 CDT: pull whatever is needed from Tekken/wrestling-game/every-game modding communities (TekkenMods, TKMovesets/Kiloutre, wavu.wiki, geppopotamus.info, Nexus Mods mods/tools only, modding wikis, GitHub modding tools) and wire it up. FULL GAME FILES FROM OWNED GAMES = AUTHORIZED, NOT PIRACY (user correction 2026-10-24 20:21 CDT): the user owns Tekken 7 (Steam) and the other teardown games; ownership = authorization, never demand proof; only copies of games NOT owned are out of scope. That authorization covers the pakchunk / live-memory unblock paths in this index for owned T7. Sources: TheBigTuna/Tekken-7-Frame-Data, TekkenDocs API (Google Sheet source of truth), wavu.wiki (pending join; King T7 page URL was search-returned AND text-fetched in this lane \u2014 no guessed URLs cited), game-reverse-engineering mot.bin decodes (private repo). Copyleft status of each source is NOT asserted here \u2014 the coordinator should record it in the PR discussion if the repo requires it; nothing in this PR blocks on it.",
  "reconciliation_handoff": {
   "rule": "Coordinator update 2026-10-24: a dedicated reconciliation lane owns merging batch-motbin outputs with mega-batch PR #1039 (OPEN, branch feature/mega-batch-t7-20261024) into ONE correct moveset per fighter for the 8 T7-mapped fighters (+torch). This PR does NOT contain their overlay data and does NOT compete with that merge.",
   "pr1039_moveset_files_verified": [
