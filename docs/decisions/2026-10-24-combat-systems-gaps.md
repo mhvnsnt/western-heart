@@ -98,16 +98,31 @@ main's lane plus this PR's deltas, tested together by the revised suite.
   this PR's engager lists + tests).
 - Item moves: PARTIAL — gate DONE (main lane); no item data wired
   (needs item/equipment data, none in repo movesets).
-- Canon names for these systems: PARTLY LOCKED (user 2026-10-24
-  22:01 CDT). Spin Juggle is LOCKED as the umbrella mechanic for the
-  Screw/Tornado extender: forms are Floor Spin (ground/floor form,
-  ex-Screw) and Air Spin (air form, ex-Tornado); Tailspin collapses
-  into Floor Spin, no third form. Break + guard break KEEP their
-  existing names (no new shared name). Power Crush rename PROPOSED,
-  not locked: Kongō (recommended) or Armor Strike — user pick
-  pending. Code/docs keep technical names (Screw/Tornado/Power
-  Crush) until the owner locks the rest; no invented name is
-  presented as canon.
+- Canon names for these systems: NAMING ROUND COMPLETE, all LOCKED
+  (user 2026-10-24 22:01–22:04 CDT; naming round CLOSED unless the
+  user reopens it). Full locked set, use these, do not invent:
+  Rinne (short; full Rinne Tensei; Tensei also acceptable) = the
+  low-HP Rage state; Ikari Jishin = the super unleashed FROM Rinne
+  (Rage Art equivalent); Rinne Kōgeki = the drive, a powered-up move
+  from Rinne (Rage Drive equivalent) — Rinne Jutsu was picked then
+  REVERSED by the user minutes later and is OUT, do not wire it
+  anywhere; Kongō = the armored strike (Power Crush equivalent);
+  Ōgi = the V-System toolkit (component renames for Skill/Trigger/
+  Reversal/Shift still open, entries defined by function); Spin
+  Juggle = the Screw/Tornado extender umbrella, forms Air Form
+  (air, ex-Tornado; Air Spin phrasing also accepted) and Floor Form
+  (ground, ex-Screw; Floor Spin phrasing also accepted) — Tailspin
+  collapses into Floor Form, no third form; Wall Break, Floor Break,
+  Balcony Break KEEP their names; break and guard break KEEP their
+  names (the earlier one-shared-name idea was corrected 22:01 CDT:
+  keep both as they are, no new shared name). Amatsu Rinne =
+  RESERVED future leveled-up/transformed form of Rinne, mechanic NOT
+  designed — do NOT implement or wire as a current system. Code
+  keeps technical names (Power Crush/Screw/Tornado in technical
+  files only, never in canon bios); no invented name is presented
+  as canon. Supersedes the 20:56–21:51 CDT framing in which Spin
+  Juggle was only proposed and Rage Drive / Power Crush / V-System
+  were still pending — all three locked by 22:04 CDT.
 - Live playtest: OWED-PLAYTEST (parent/user step; subagent cannot
   operate a live browser; must be stated as owed, never claimed from
   simulation). Checklist: Power Crush absorb vs low/throw, Screw
