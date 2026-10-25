@@ -1828,6 +1828,11 @@ export class Fighter {
       // it. A killing absorbed hit still KOs (armor is not
       // invulnerability — same rule as the rage-art armor path).
       this.meter = Math.min(this.maxMeter, this.meter + 6);
+      // COMBAT SYSTEMS 2026-10-24 (delta on GAP-FILL LANE 1):
+      // T8 rule — damage absorbed by a Power Crush becomes
+      // RECOVERABLE (wavu King Muscle Armor note), capped so
+      // hp + pool never exceeds maxHp.
+      this._addRecoverable(Math.max(0, Math.min(dmg, this.maxHp - this.hp - (this._recoverable || 0))));
       if (this.hp <= 0) {
         this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing);
         return 'ko';
