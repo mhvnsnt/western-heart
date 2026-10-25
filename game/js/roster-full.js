@@ -10,17 +10,17 @@
 
 export const FULL_ROSTER = [
   // ——— THE NINE SOULS ———
-  { id: 'rin', name: 'RIN', title: 'The Protagonist Soul', base: 'Jin Kazama', moveset: 'demonio', model: 'steve-fox', tintStrength: 0.6,
+  { id: 'rin', name: 'RIN', title: 'The Protagonist Soul', base: 'Jin Kazama', moveset: 'demonio', model: null, modelPending: true, tintStrength: 0.6,
     colors: { suit: 0x1a3a6b, trim: 0x9fd8ff }, style: 'Mishima Karate', archetype: 'Balanced' },
-  { id: 'byou', name: 'BYOU', title: 'The Sick Soul', base: 'Lei Wulong', moveset: 'demonio', model: 'steve-fox', tintStrength: 0.6,
+  { id: 'byou', name: 'BYOU', title: 'The Sick Soul', base: 'Lei Wulong', moveset: 'demonio', model: null, modelPending: true, tintStrength: 0.6,
     colors: { suit: 0x4a5a1a, trim: 0x8a9a3a }, style: 'Five Animals', archetype: 'Trickster' },
-  { id: 'tou', name: 'TOU', title: 'The Fighting Soul', base: 'Paul Phoenix', moveset: 'heihachi', model: 'pantera', tintStrength: 0.25,
+  { id: 'tou', name: 'TOU', title: 'The Fighting Soul', base: 'Paul Phoenix', moveset: 'heihachi', model: null, modelPending: true, tintStrength: 0.25,
     colors: { suit: 0x8a1a1a, trim: 0xcc4400 }, style: 'Power Karate', archetype: 'Power' },
-  { id: 'sha', name: 'SHA', title: 'The Sand Soul', base: 'Xiaoyu', moveset: 'xiaoyu', model: 'steve-fox', tintStrength: 0.6,
+  { id: 'sha', name: 'SHA', title: 'The Sand Soul', base: 'Xiaoyu', moveset: 'xiaoyu', model: null, modelPending: true, tintStrength: 0.6,
     colors: { suit: 0xc2a36b, trim: 0x8a6a3a }, style: 'Hakkesho', archetype: 'Evasive' },
-  { id: 'kai', name: 'KAI', title: 'The Sea Soul', base: 'Eddy Gordo', moveset: 'demonio', model: 'pantera', tintStrength: 0.25,
+  { id: 'kai', name: 'KAI', title: 'The Sea Soul', base: 'Eddy Gordo', moveset: 'demonio', model: null, modelPending: true, tintStrength: 0.25,
     colors: { suit: 0x1a4a6b, trim: 0x3a8acc }, style: 'Capoeira', archetype: 'Rushdown' },
-  { id: 'retsu', name: 'RETSU', title: 'The Violent Soul', base: 'Bryan Fury', moveset: 'bryan', model: 'pantera', tintStrength: 0.25,
+  { id: 'retsu', name: 'RETSU', title: 'The Violent Soul', base: 'Bryan Fury', moveset: 'bryan', model: null, modelPending: true, tintStrength: 0.25,
     colors: { suit: 0x3a1a1a, trim: 0xcc2222 }, style: 'Kickboxing', archetype: 'Rushdown' },
   { id: 'zen', name: 'ZEN', title: 'The Still Soul', base: 'Heihachi', moveset: 'heihachi', model: 'zen', tintStrength: 0.6,
     colors: { suit: 0xd0d0d0, trim: 0x8a8a8a }, style: 'Mishima', archetype: 'Defensive',
@@ -52,7 +52,7 @@ export const FULL_ROSTER = [
         down: { target: 'zen-tentacle', label: 'OVERSOUL RELEASE', powerMult: 0.8, speedMult: 0.95, defenseMult: 0.87, moveset: 'zen' },
       },
     } },
-  { id: 'gyou', name: 'GYOU', title: 'The Moving Soul', base: 'Hwoarang', moveset: 'demonio', model: 'pantera', tintStrength: 0.25,
+  { id: 'gyou', name: 'GYOU', title: 'The Moving Soul', base: 'Hwoarang', moveset: 'demonio', model: null, modelPending: true, tintStrength: 0.25,
     colors: { suit: 0x1a5a3a, trim: 0x3acc6a }, style: 'Tae Kwon Do', archetype: 'Pressure' },
 
   // ——— MAIN ROSTER ———
@@ -130,7 +130,7 @@ export const FULL_ROSTER = [
         down: { target: 'burger-the-mouth', label: 'POWER DOWN', powerMult: 0.81, speedMult: 0.94, defenseMult: 0.85, bodyScale: 0.88, moveset: 'burger-the-mouth' },
       },
     } },
-  { id: 'awapop', name: 'AWA POP', title: 'Bubbles', base: 'Nina', moveset: 'demonio', model: 'awa-pop', tintStrength: 0.6,
+  { id: 'awapop', name: 'AWA POP', title: 'Bubbles', base: 'Nina', moveset: 'demonio', model: 'awa-pop-attire2', tintStrength: 0.6,
     colors: { suit: 0xff9dcc, trim: 0xffffff }, style: 'Assassin', archetype: 'Rushdown' },
   { id: 'scimitar', name: 'SCIMITAR', title: 'Desert Blade', base: 'Shaheen', moveset: 'demonio', model: 'scimitar', tintStrength: 0.6,
     colors: { suit: 0x2a2a3a, trim: 0xc2a36b }, style: 'Military', archetype: 'Balanced' },
@@ -138,11 +138,14 @@ export const FULL_ROSTER = [
     colors: { suit: 0x6b2d8f, trim: 0xff00ff }, style: 'Martial Arts', archetype: 'Stylish' },
   { id: 'nightwolf', name: 'NIGHTWOLF', title: 'Storm Shadow', base: 'Julia', moveset: 'xiaoyu', model: 'nightwolf', tintStrength: 0.6,
     colors: { suit: 0x1a3a5a, trim: 0x6accff }, style: 'Xinyi Liuhe', archetype: 'Balanced' },
-  { id: 'dio', name: 'DIO', title: 'Raging Demon', base: 'Akuma', moveset: 'heihachi', model: 'dio', tintStrength: 0.6,
+  { id: 'dio', name: 'DIO', title: 'Raging Demon', base: 'Akuma', moveset: 'heihachi', model: 'dio-attire1', tintStrength: 0.6,
     colors: { suit: 0x1a1a1a, trim: 0xff0000 }, style: 'Satsui no Hado', archetype: 'Shoto' },
   // CAPE JONES is the display name (owner 2026-10-23: "Start calling cyborg x as cape Jones
   // but leave cyborg x in the deep canon for him"). 'Cyborg X' stays as his deep-canon identity.
-  { id: 'cyborgx', name: 'CAPE JONES', title: 'GYOU Splinter', base: 'Alisa', moveset: 'gunjack', model: 'cape-jones', tintStrength: 0.6,
+  { id: 'cyborgx', name: 'CAPE JONES', title: 'GYOU Splinter', base: 'Alisa', moveset: 'gunjack', model: 'cyborg-x', tintStrength: 0.6,
+    // owner pt128u 2026-10-23: always the rig with the most bones -> cyborg-x.glb (160 joints incl. full
+    // Mixamo-named core) over cape-jones.glb (49). Stance = CMU 13_17 boxing guard (CMU license, commercial-safe).
+    stanceClip: 'assets/anim/oss/cyborgx/stance.glb',
     colors: { suit: 0xcccccc, trim: 0x00ffcc }, style: 'Robot Combat', archetype: 'Zoner' },
   { id: 'michiko', name: 'MICHIKO', title: 'Savate Queen', base: 'Katarina', moveset: 'demonio', model: 'michiko', tintStrength: 0.6,
     colors: { suit: 0x8a1a4a, trim: 0xff6b9d }, style: 'Savate', archetype: 'Rushdown' },
@@ -154,13 +157,17 @@ export const FULL_ROSTER = [
     // ('torch') ladders back as the fallback attire — see attires.js and
     // roster/torch/ATTIRE-SLOTS.md).
     colors: { suit: 0x8a1a1a, trim: 0xff8800 }, style: 'Assassin', archetype: 'Tricky' },
-  { id: 'bruno', name: 'BRUNO', title: 'Matador', base: 'Miguel', moveset: 'bryan', model: 'bruno', tintStrength: 0.25,
+  { id: 'bruno', name: 'BRUNO', title: 'Matador', base: 'Miguel', moveset: 'bryan', model: 'bruno-attire2', tintStrength: 0.25,
     colors: { suit: 0x5a1a1a, trim: 0xcc3333 }, style: 'Brawler', archetype: 'Power' },
-  { id: 'negativo', name: 'N3GΔTIV0', title: 'Galactic Bounty Hunter', base: 'Negan', moveset: 'bryan', model: 'n3g4tiv0', tintStrength: 0.25,
-    colors: { suit: 0x0a0a0a, trim: 0x00ff00 }, style: 'Brawler', archetype: 'Intimidation' },
+  { id: 'negativo', name: 'N3GΔTIV0', title: 'Galactic Bounty Hunter', base: 'Negan', moveset: 'bryan', model: 'negativo-attire1', tintStrength: 0.25,
+    colors: { suit: 0x0a0a0a, trim: 0x00ff00 }, style: 'Brawler', archetype: 'Intimidation',
+    // EYE GLOW (owner 2026-10-22): per-attire emissive eyes, configured on the
+    // 'negativo' ladder in game/js/attires.js — Attire 1 red, Attire 2 (before
+    // the trials) white. See roster/negativo/README.md.
+  },
   { id: 'thor', name: 'THOR', title: 'Norse God', base: 'Ganryu', moveset: 'bryan', model: 'thor', tintStrength: 0.25,
     colors: { suit: 0x4a3a2a, trim: 0xffd700 }, style: 'Sumo', archetype: 'Power' },
-  { id: 'yukihyo', name: 'YUKIHYŌ', title: 'Snow Leopard Ninja', base: 'Armor King', moveset: 'king', model: 'yukihyo', tintStrength: 0.25,
+  { id: 'yukihyo', name: 'YUKIHYŌ', title: 'Snow Leopard Ninja', base: 'Armor King', moveset: 'king', model: 'yukihyo-attire1', tintStrength: 0.25,
     colors: { suit: 0xd0d0d0, trim: 0x6accff }, style: 'Grappler', archetype: 'Ninja' },
   { id: 'slice', name: 'SLICE', title: 'Maniacal Agent', base: 'Dragunov', moveset: 'bryan', model: 'slice', tintStrength: 0.6,
     colors: { suit: 0x2a2a2a, trim: 0xcc0000 }, style: 'Commando Sambo', archetype: 'Grappler' },
@@ -307,9 +314,14 @@ export const FULL_ROSTER = [
     },
     stats: { speed: 5.2, jump: 7.8, power: 1.15, defense: 0.95 },
     ai: { aggression: 0.85, grabBias: 0.3, reaction: 0.6 } },
-  { id: 'ryuji', name: 'RYUJI', title: 'The Wicked Heretic', base: 'Ryuji Yamazaki', moveset: 'ryuji', model: 'steve-fox', tintStrength: 0.25,
+  { id: 'ryuji', name: 'RYUJI', title: 'The Wicked Heretic', base: 'Ryuji Yamazaki', moveset: 'ryuji-rock', model: null, modelPending: true, tintStrength: 0.25,
     colors: { suit: 0x111111, trim: 0xd8b25a }, style: 'Hebi Tsukai / Wrestling', archetype: 'Zoner/Grappler',
     surge: { name: 'SERPENT DRILL', color: 0x224411, accent: 0xffcc00 } },
+  { id: 'ryuji-rock', name: 'CORNERSTONE', title: 'The Obnoxious One', base: 'Ryuji Yamazaki + The Rock', moveset: 'ryuji-rock', model: 'ryuji-rock', tintStrength: 0.25,
+    colors: { suit: 0x1a1a1a, trim: 0xffd700 }, style: 'Wrestler/Brawler', archetype: 'Power',
+    surge: { name: "PEOPLE'S CHAMPION", color: 0xffd700, accent: 0xffffff },
+    stats: { speed: 4.0, jump: 6.5, power: 1.35, defense: 1.2 },
+    ai: { aggression: 0.75, grabBias: 0.5, reaction: 0.55 } },
   { id: 'koreshi', name: 'KORESHI', title: 'The Shadow Ninja', base: 'Kakashi + Super Saiyan', moveset: 'koreshi', model: 'koreshi', tintStrength: 0.25,
     colors: { suit: 0x2a3a4a, trim: 0xcc2222 }, style: 'Ninja/Samurai', archetype: 'Trickster',
     surge: { name: 'SHARINGAN AWAKENING', color: 0xcc2222, accent: 0xffffff },
@@ -347,10 +359,40 @@ export const FULL_ROSTER = [
   // file + loader listing existed, model sat in attires/attire1/source/).
   { id: 'chordz', name: 'CHORDZ', title: 'The Emo Guitarist', base: 'Lars', moveset: 'chordz', model: 'chordz', tintStrength: 0.25,
     colors: { suit: 0x1a1a2a, trim: 0x8a2a6b }, style: 'Emo Guitarist', archetype: 'Tricky' },
+  // ——— LANDING WAVE 3 (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md): the
+  // bear-bank successors + Silvertongue. Models were wired (wave 1) and
+  // rigged (wave 2); their movesets land this wave
+  // (game/assets/movesets/{id}.json + MOVESET_IDS + index.json), so the
+  // select entries land now that every piece is on main.
+  // GASHADOKURO (owner canon law 2026-10-23, roster/kuma/CANON.md): the
+  // starved-dead giant skeleton, Kuma's proprietary successor. Kuma is
+  // obsolete in canon and never stands alone on this list — the bear bank
+  // is scaffolding only. Moveset: gashadokuro.json (T3 Kuma bank, 530).
+  { id: 'gashadokuro', name: 'GASHADOKURO', title: 'The Starved Dead', base: 'Kuma', moveset: 'gashadokuro', model: 'gashadokuro', tintStrength: 0.25,
+    colors: { suit: 0xe8e0cc, trim: 0x8a1a1a }, style: 'Beast Grappler', archetype: 'Power' },
+  // AOTSUKI (owner canon law 2026-10-23, roster/panda/CANON.md): the blue
+  // moon, Panda's proprietary successor. Panda is obsolete in canon and
+  // never stands alone on this list. Moveset: aotsuki.json (T3 bear bank —
+  // Panda shares Kuma's T3 bank; proxy-flagged in the file).
+  { id: 'aotsuki', name: 'AOTSUKI', title: 'The Blue Moon', base: 'Panda', moveset: 'aotsuki', model: 'aotsuki', tintStrength: 0.25,
+    colors: { suit: 0x2a4a8a, trim: 0xbcd8ff }, style: 'Beast Grappler', archetype: 'Power' },
+  // SILVERTONGUE (owner canon law 2026-10-23, roster/silvertongue/CANON.md):
+  // "The Heiress Soul", the tourist — Lili re-owned; the source name is
+  // retired in this universe and she never appears under it. Moveset:
+  // silvertongue.json (her full kit, authored as her own file this wave).
+  { id: 'silvertongue', name: 'SILVERTONGUE', title: 'The Heiress Soul', base: 'Lili', moveset: 'silvertongue', model: 'silvertongue', tintStrength: 0.25,
+    colors: { suit: 0xf0e8f0, trim: 0xc0a062 }, style: 'Acrobatic Elegance', archetype: 'Stylish' },
 ];
 
+/* Unknown / missing id -> a MODEL PENDING soul (no body, kept out of fights),
+   never another fighter's body (owner law t183u: no wrong model anywhere). */
+export function modelPendingFighter(id) {
+  return { id: String(id || 'unknown'), name: String(id || 'UNKNOWN').toUpperCase(), title: 'Model pending',
+    base: null, moveset: null, model: null, modelPending: true, tintStrength: 0,
+    colors: { suit: 0x555555, trim: 0x999999 }, style: '', archetype: '' };
+}
 export function getFighter(id) {
-  return FULL_ROSTER.find(f => f.id === id) || FULL_ROSTER.find(f => f.id === 'pantera'); // default Pantera
+  return FULL_ROSTER.find(f => f.id === id) || modelPendingFighter(id);
 }
 
 /* Tier membership (dedup 2026-10-22): explicit id lists, not positional
