@@ -24,6 +24,7 @@ import { whUiEnabled, mountWhUi } from './ui-wh-bridge.js';
 import { getCustomFighter, customFighterToRoster } from './custom-fighter.js';
 import { resolveFighterAttire } from './attires.js';
 import { createSelectScreen } from './select-screen.js';
+import { applySoulSpirit } from './soul-spirit.js';
 import { STAGES, STAGE_TIERS, getStage, randomStageId, preloadStage } from './stages.js';
 // LOADSPEED: stages.js (82KB data) stays static — buildStageSelect runs in
 // the versus flow and getStage is needed by startFight; its parse cost is
@@ -1025,6 +1026,16 @@ async function startFight(playerId, enemyId, opts = {}) {
   let enemy = opts.enemyChar ||
     (typeof enemyId === 'string' && enemyId !== player.id ? resolveFighterAttire(getCharacterWithCustom(enemyId)) : randomEnemy(player.id));
   if (!enemy || enemy.modelPending || !enemy.model) enemy = randomEnemy(player.id);
+  // NINE SOULS REDESIGN (owner directive 2026-10-22 ~23:02 CDT): the
+  // select-screen soul-spirit toggle. Each side's locked pick applies to
+  // that side's entry — a vessel match empowers the fighter (buff baked
+  // into stats here) and stamps `soulSpirit` for the floating-spirit
+  // render (game.js reads it). Versus: both sides picked on the grid.
+  // Solo modes: only P1 picked, so the enemy side resolves to null.
+  if (selectScreen && selectScreen.soulSpiritLocked) {
+    player = applySoulSpirit(player, selectScreen.soulSpiritLocked('p1'));
+    enemy = applySoulSpirit(enemy, selectScreen.soulSpiritLocked('p2'));
+  }
   // On-demand: load only the 2 fighters for this fight (Tekken 3 pattern).
   // Models may already be prefetched from select-screen highlight.
   const need = [...new Set([player.model, enemy.model].filter(Boolean))];

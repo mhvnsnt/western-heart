@@ -407,6 +407,9 @@ export class Fighter {
     // vitals
     this.maxHp = 100; this.hp = 100;
     this.meter = 0; this.maxMeter = 100; // NINE-SOUL METER
+    // SOUL-SPIRIT TOGGLE (worker 83, owner directive 2026-10-22 ~23:02 CDT):
+    // a vessel-matched soul feeds its vessel faster meter gain.
+    this.soulMeterMult = charData.soulMeterMult || 1;
 
     // physics
     this.vx = 0; this.vy = 0; this.onGround = true;
@@ -1780,7 +1783,7 @@ export class Fighter {
       this.stun = (move.t8 && move.t8.blk != null) ? stunFromAdvantage(move.t8.blk, move)
         : 0.18 + move.damage * 0.01;
       this.vx = Math.sign(this.root.position.x - attacker.root.position.x) * move.knock * 0.5;
-      this.meter = Math.min(this.maxMeter, this.meter + 4); // +4 soul on block
+      this.meter = Math.min(this.maxMeter, this.meter + 4 * this.soulMeterMult); // +4 soul on block
       if (this.hp <= 0) { this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || 1); return 'ko'; }
       this._reactionSel = this._pickReaction(move, attacker, { guarded: true, counter: false,
         crouch: _wasCrouch, airborne: false, down: false, forState: 'block' });
@@ -1851,7 +1854,8 @@ export class Fighter {
       }
       return 'hit';
     }
-    this.meter = Math.min(this.maxMeter, this.meter + 6); // +6 soul on taking damage
+    this.meter = Math.min(this.maxMeter, this.meter + 6 * this.soulMeterMult); // +6 soul on taking damage
+
     const dir = Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing;
     this.vx = dir * move.knock;
     if (this.hp <= 0) { this._knockout(dir); return 'ko'; }
@@ -2081,7 +2085,7 @@ export class Fighter {
     this._enter('ko'); this.stun = 999;
   }
   victory() { if (!this.dead) this._enter('victory'); }
-  addMeter(v) { this.meter = Math.min(this.maxMeter, this.meter + v); }
+  addMeter(v) { this.meter = Math.min(this.maxMeter, this.meter + v * this.soulMeterMult); }
 
   /* ---------------- hit / hurt queries (swept capsules, hitbox.js) ----------------
      HITBOX LANE 2026-10-24 (owner playtest: "contacts not being made"):

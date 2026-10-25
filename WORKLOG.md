@@ -3230,3 +3230,21 @@ Files: game/assets/movesets/*.json (30), game/data/moveset-library/banks/wrestli
 - Canon untouched. Tekken/Law names in technical files only.
 - Full log: `docs/decisions/2026-10-23-law-pull-buffalo-bill.md`.
 - In-game playtest (clips actually playing on Buffalo Bill) flagged for coordinator.
+## 2026-10-22 ~23:02 CDT — Worker 83: Nine Souls character-select redesign
+
+Owner directive (verbatim in `docs/owner-directives.md`): the 7 vesseled
+souls (RIN, BYOU, TOU, SHA, KAI, JIN, RETSU) come OFF the select grid; only
+ZEN and GYOU stay selectable. Tertiary soul-spirit toggle per fighter
+(on/off + 9-soul pick); vessel match empowers. Owner makes the spirit
+versions themselves — no AI stand-ins. Refinement: the seven return later
+as unlockable boss-type characters with vessels/bodies (roadmap, not now).
+
+Built: `game/js/soul-spirit.js` (new, 20/20 unit tests pass),
+`select-screen.js` (SELECT_HIDDEN dedup + toggle UI + `soulSpiritLocked`
+API), `select.css` (panel styles), `main.js` (apply picks in `startFight`),
+`fighter.js` (`soulMeterMult` in meter accrual), `game.js` (placeholder aura
+attach point on `fighter.lean`). `node --check` clean on all touched files.
+Design doc: `docs/research/nine-souls-select-redesign-2026-10-22.md`;
+decision log: `docs/decisions/2026-10-22-nine-souls-select-redesign-w83.md`.
+PR: `worker83/nine-souls-select-redesign-20261022` (merge-ready, not merged
+— merge freeze in effect).
