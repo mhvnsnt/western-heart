@@ -34,7 +34,7 @@ Grounding scan of that data (measured, not assumed):
 | joblib 1.6.0 + hypothesis 6.170.9 install | PROVEN (pip, TMPDIR workaround — see §6) |
 | pixelmatch + pngjs install | PROVEN (npm, 11 s, 2 packages) |
 | cuDF GPU path | READY, NOT RUN — VM has no NVIDIA GPU; needs Kaggle T4 (see §4) |
-| ccache / GNU parallel apt install | PENDING at report time — apt-get update still running after 10+ min; documented as CI-side, not gating |
+| ccache 4.10.2 + GNU parallel 20250422 direct release binaries | PROVEN (ccache: 1 hit / 2 compiles; parallel: 4 jobs with --jobs 2). The apt route failed transiently while /tmp was 100% full; bypassed via direct release downloads to workspace, not /tmp. ccache license GPL-3.0 verified from GPL-3.0.txt in the release. |
 
 ### The honest parallel finding (do not hide it)
 
@@ -101,7 +101,7 @@ otherwise "see repo" — never guessed.
 | Python stdlib multiprocessing / concurrent.futures | PSF (stdlib) | Zero-install parallelism. WH use: the fallback engine inside wh_onepass.py. PROVEN: the script runs with it when joblib is absent (design), and sequentially with neither. | PROVEN (design) |
 | joblib 1.6.0 | see repo | loky process backend, n_jobs=-1 uses all CPUs, dask/ray backends if installed. WH use: parallel engine inside wh_onepass.py. PROVEN installed + used (5.006 s run — slower here, honestly reported in §1). | PROVEN |
 | Dask | see repo | Parallel arrays/DataFrames/bags, chunked larger-than-memory compute, distributed scheduler. WH use: scale the one-pass validator past single-machine memory (e.g., full animation-bank analysis). Not installed here — upgrade path, not claimed. | DOC |
-| GNU Parallel | see repo | Shell-level parallelization (one job per CPU, --jobs, --pipe). WH use: parallelize shell asset steps (gltfpack over a directory, ffmpeg over clips). apt install PENDING (§1); CI-side fallback documented. | PENDING |
+| GNU Parallel 20250422 | GPL-3.0-or-later (verified from LICENSES dir in the release) | Shell-level parallelization (one job per CPU, --jobs, --pipe). WH use: parallelize shell asset steps (gltfpack over a directory, ffmpeg over clips). PROVEN: release binary runs 4 jobs with --jobs 2 (job-a through job-d). | PROVEN |
 | Apache Beam | see repo | Unified batch + streaming model. WH use: overkill for WH's script-scale jobs today; listed per do-not-filter, not recommended now. | DOC (not recommended now) |
 | Ray Data | Apache 2.0 (verified, via Ray) | Distributed batch data processing. WH use: same as Ray above, data-parallel flavor. | DOC |
 
@@ -134,7 +134,7 @@ otherwise "see repo" — never guessed.
 | Tool | License | What it does / WH use | Status |
 |---|---|---|---|
 | Hash-keyed asset cache (this PR) | repo license | SHA-256 per file; unchanged -> reused. PROVEN: 0.509 s -> 0.000 s on rerun (§1). This is the WH implementation of the ccache/Turborepo idea for game data. | PROVEN |
-| ccache | see repo | C/C++ compiler cache; reported 50-90% rebuild reductions, 85%+ in build-farm cases. WH use: CI-side, only if native builds appear. apt install PENDING (§1). | PENDING |
+| ccache 4.10.2 | GPL-3.0 (verified from GPL-3.0.txt in the release) | C/C++ compiler cache; reported 50-90% rebuild reductions, 85%+ in build-farm cases. WH use: CI-side, only if native builds appear. PROVEN: release binary compiles a test file twice with 1 hit / 2 runs (50 percent, first miss then hit). | PROVEN |
 | sccache | see repo | ccache-compatible + Rust + cloud backends (S3/GCS/Redis/Azure) + distributed compilation. WH use: shared cache across CI + dev machines if native builds appear. | DOC |
 | GitHub Actions cache | n/a (platform) | pip + npm caching in the new workflow (actions/setup-python cache: pip, setup-node cache: npm). CI-SIDE, ships in this PR. | CI-SIDE |
 | BuildKit | see repo | Docker build caching. WH use: only if WH containerizes builds; not today. | DOC |
@@ -209,7 +209,10 @@ would make CI depend on data it does not have.
 - 2 CPUs, 7.7 GB RAM. Parallel claims must be measured here, not assumed:
   §1 shows parallel losing on small JSONs on exactly this hardware.
 - sudo works (uid 0). apt package lists were stale (ccache/parallel
-  "unable to locate"); apt-get update was still running at report time.
+  "unable to locate"); apt-get update later failed on the /tmp-full
+  transient ("No space left on device"). Bypassed entirely: ccache +
+  parallel were pulled as direct release binaries into workspace
+  (see §1). /tmp has since cleared to 0 percent used.
 - No `blender` binary on PATH (per sibling lane); Blender-dependent steps
   belong on Kaggle or CI, not this VM.
 
@@ -246,7 +249,8 @@ sibling lanes' fixes. Map, honestly:
 
 1. Run the Kaggle GPU job (§4, parent browser delegation) and record
    real cuDF timings — converts GPU from READY to PROVEN.
-2. Resolve the apt install (ccache/parallel) or confirm CI-side-only.
+2. Done via direct release binaries (ccache 4.10.2, parallel 20250422,
+   both PROVEN in §1); apt route abandoned after the /tmp-full transient.
 3. Wire fast-check (JS property tests) mirroring the Python properties,
    for game/js input/string logic.
 4. Upgrade Playwright from the compare.js CLI to full screenshot gates
