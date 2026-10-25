@@ -38519,5 +38519,3310 @@
     "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
     "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
     "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  },
+  "string_step_plans": {
+    "law": "Batch 1 step plans (Torch LP1/RP2-only strings, 2026-10-25). Engine: fighter.js _attackClipPlan step-plan branch (from #1096). A step plays its row ONLY when status is verified (button bitmask + stance + throw gates pass, plus the Job 1 limb-peak proxy except in jump context). review/unmapped steps play NO bank row - never a donor/generic row - and are flagged in _atkPlan.unmapped. T3 rows here are FALLBACK (see docs/anim/PROCEDURAL_AUDIT.md Torch-Batch-1 entry): torch's T3 moves carry TWO banks - jin (145 moves) and anna (224 moves) - and every step adjudicates against ITS OWN move's bank (prefix move t3_source, else first-step move t3_source). File-level t3_source is jin and t3_bank is moveset_jin.json on BOTH #1096 and main, but that is NEVER assumed for all moves. Torch is the FIRST dual-bank fighter in the pipeline (the other 9 T7-block fighters are single-bank). Pack dir = bank name for BOTH banks (no diablo-style split). Pack banks: divmot09_jin.bin (jin), divmot17_anna.bin (anna). BOUND BANK (engine fact, fighter.js #1096 FIGHTER_BANK override torch->anna + moveset anim_bank anna): torch plays from the ANNA bank in game. The #1096 step-plan branch resolves row:N against the bound bank ONLY, with no per-step bank guard - unlike _ownRow / _rowDonor, which refuse another bank's rows outright. Therefore jin-bank gate-verified steps are BANK-BLOCKED: status review, row null, bank_verified_row preserved on the step + in reasons. Wiring them as verified would play anna row N - a wrong-bank clip - so they are NOT wired as playable. Promotion needs per-step-bank engine support; the verification evidence is preserved so promotion is mechanical, no re-adjudication. Anna-bank gate-verified steps wire normally (verified + row) and ARE playable via the #1096 engine path. Jin-bank rules, per-bank evidence (freshly derived here, never copied from demonio/kinpo/scimitar): row 35 EXISTS (starts-airborne, btn 1, hf [11,12,39,535,0,1], level m) - airborne, fails ground steps; row 220 EXISTS (standing RP2, btn 2, hf [12,12,41,1042,0,2], level h) - torch RP2 move 2's own row; row 216 EXISTS (jump, btn 0, hf [63,64,117,1543,0,0], level u) - fails every single-button gate. Jin row 248 (torch LP1 move 1's own row) is STANDING but button 12 (multi-button clip, hf [13,15,51,535,0,12]) - it FAILS every single-LP1 step under exact-equality (demonio row 177 btn-12 + scimitar row 184 btn-9 precedent). Jin row 184 (btn 9) likewise. Anna-bank rules, per-bank evidence (first-ever anna adjudication): row 35 EXISTS (starts-airborne, btn 1, hf [9,9,37,535,0,1], level m) - airborne, fails ground steps; row 220 EXISTS in hit_frames ([19,24,74,535,0,0], button 0) but is ABSENT from Job 1 - fails every single-button gate, no stance profile; row 216 EXISTS in hit_frames ([14,14,58,271,0,0], button 0) but is ABSENT from Job 1 - same treatment. Torch basics (both files, unchanged): LP1 move 1 jin r248 (damage 7), RP2 move 2 jin r220 (damage 10), LK3 move 3 jin r195 (damage 14), RK4 move 4 jin r199 (damage 15). Re-baseline #1096 vs current main: moves + strings deep-equal; only top-level diff is main's added t7_motbin section. Row-changed 0, damage-only 0, damage-differs 0 - suspended-drift steps 0. Torch was NEVER purged by #1039 (t8_quarantine_20261024 key ABSENT on both files) - no #988 dependency. Gap-1: jin hit_frames IDENTICAL, skeleton IDENTICAL, rows.pack ADDITIVE-ONLY drift (all 220 b1096 rows present unchanged on main; main adds 6 rows 89/112/247/288/339/357; 0 changed, 0 removed - affected fills 0; no Batch 1 candidate is a main-only row). Anna: all three blobs IDENTICAL - zero drift. Every wired row is present in the current main anna pack. GATE-ONLY batch: Job 2 torch entries 0, Job 3 torch entries 0, job3.log torch lines 0 - Job 3 fills 0 and Job 4 joins 0 by data absence (bank-level Job 4 candidates jin 47 / anna 45 exist but cannot join without Job 2 torch entries; a join never promotes anyway). No SOFT fill inherited from #1097 (Pantera-specific, unapproved). Standing rows verified for crouch-context steps (d/f+1+2,2 step 2 anna row 174; d+1+2 family jin rows 92/93/183 BANK-BLOCKED) follow the demonio Batch 1 precedent: the pipeline stance gate flags crouch rows for non-crouch steps, not standing rows for crouch steps (GATE-NOTE on each such step; re-adjudicate if the gate tightens). Canonicalization is the CORRECTED rule (strip only a trailing ~t[378] source-variant suffix): Torch Batch 1 contains ZERO input-~ canonicals. File-wide there is exactly ONE input-~ comma key, d+4,1~4 (T8 Anna Sudden Severe Drop, buttons LP1+RK4 - Batch 3/4 scope, not Batch 1). Most unmapped steps have NO candidate at all (45 of 65 planned): their intermediate prefixes are T8-sourced with no T3 row, so the correct clips come from #988 Step 2 (original T8 refs) or future extraction, never from a T3 row recorded as correct. Full gate evidence in docs/movesets/TORCH-BATCH1-STEP-PLANS-2026-10-25.md.",
+    "plans": {
+      "1,2": {
+        "steps": [
+          {
+            "step": "1",
+            "prefix": "1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 248,
+            "candidate_source": "recorded-path",
+            "reasons": [
+              "button 12 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 249,
+            "candidate_row": 249,
+            "candidate_source": "recorded-path",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 249) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 249 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 249."
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "review"
+      },
+      "1,2~t7.anna": {
+        "steps": [
+          {
+            "step": "1",
+            "prefix": "1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 248,
+            "candidate_source": "recorded-path",
+            "reasons": [
+              "button 12 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 249,
+            "candidate_row": 249,
+            "candidate_source": "recorded-path",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 249) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 249 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 249."
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "review",
+        "twin_of": "1,2",
+        "twin_move_class": "string"
+      },
+      "1,2~t7.anna.2": {
+        "steps": [
+          {
+            "step": "1",
+            "prefix": "1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 248,
+            "candidate_source": "recorded-path",
+            "reasons": [
+              "button 12 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 249,
+            "candidate_row": 249,
+            "candidate_source": "recorded-path",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 249) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 249 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 249."
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "review",
+        "twin_of": "1,2",
+        "twin_move_class": "string"
+      },
+      "1,2~t8.anna": {
+        "steps": [
+          {
+            "step": "1",
+            "prefix": "1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 248,
+            "candidate_source": "recorded-path",
+            "reasons": [
+              "button 12 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 249,
+            "candidate_row": 249,
+            "candidate_source": "recorded-path",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 249) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 249 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 249."
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "review",
+        "twin_of": "1,2",
+        "twin_move_class": "string"
+      },
+      "1,2,1": {
+        "steps": [
+          {
+            "step": "1",
+            "prefix": "1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 248,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 12 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 249,
+            "candidate_row": 249,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 249) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 249 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 249."
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "1,2,1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "1,2,1~t7.anna": {
+        "steps": [
+          {
+            "step": "1",
+            "prefix": "1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 248,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 12 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 249,
+            "candidate_row": 249,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 249) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 249 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 249."
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "1,2,1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "1,2,1",
+        "twin_move_class": "string"
+      },
+      "1,2,1~t7.anna.2": {
+        "steps": [
+          {
+            "step": "1",
+            "prefix": "1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 248,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 12 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 249,
+            "candidate_row": 249,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 249) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 249 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 249."
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "1,2,1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "1,2,1",
+        "twin_move_class": "string"
+      },
+      "1,2,1~t7.anna.3": {
+        "steps": [
+          {
+            "step": "1",
+            "prefix": "1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 248,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 12 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 249,
+            "candidate_row": 249,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 249) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 249 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 249."
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "1,2,1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "1,2,1",
+        "twin_move_class": "string"
+      },
+      "1,2,1,2": {
+        "steps": [
+          {
+            "step": "1",
+            "prefix": "1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 248,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 12 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 249,
+            "candidate_row": 249,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 249) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 249 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 249."
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "1,2,1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "1,2,1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "1,2,1,H.2": {
+        "steps": [
+          {
+            "step": "1",
+            "prefix": "1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 248,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 12 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 249,
+            "candidate_row": 249,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 249) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 249 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 249."
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "1,2,1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "H.2",
+            "prefix": "1,2,1,H.2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "1,2,2": {
+        "steps": [
+          {
+            "step": "1",
+            "prefix": "1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 248,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 12 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 249,
+            "candidate_row": 249,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 249) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 249 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 249."
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "1,2,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "1,2,uf+1+2": {
+        "steps": [
+          {
+            "step": "1",
+            "prefix": "1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 248,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 12 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 249,
+            "candidate_row": 249,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 249) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 249 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 249."
+            ]
+          },
+          {
+            "step": "uf+1+2",
+            "prefix": "1,2,uf+1+2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "2,1": {
+        "steps": [
+          {
+            "step": "2",
+            "prefix": "2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 220,
+            "candidate_row": 220,
+            "candidate_source": "recorded-path",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 220) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 220 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 220."
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "2,1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 221,
+            "candidate_row": 221,
+            "candidate_source": "recorded-path",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 221) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 221 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 221."
+            ]
+          }
+        ],
+        "string_status": "review-only",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "review"
+      },
+      "2,1~t3.anna": {
+        "steps": [
+          {
+            "step": "2",
+            "prefix": "2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 220,
+            "candidate_row": 220,
+            "candidate_source": "recorded-path",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 220) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 220 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 220."
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "2,1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 221,
+            "candidate_row": 221,
+            "candidate_source": "recorded-path",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 221) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 221 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 221."
+            ]
+          }
+        ],
+        "string_status": "review-only",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "review",
+        "twin_of": "2,1",
+        "twin_move_class": "strike"
+      },
+      "2,1~t7.anna": {
+        "steps": [
+          {
+            "step": "2",
+            "prefix": "2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 220,
+            "candidate_row": 220,
+            "candidate_source": "recorded-path",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 220) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 220 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 220."
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "2,1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 221,
+            "candidate_row": 221,
+            "candidate_source": "recorded-path",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 221) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 221 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 221."
+            ]
+          }
+        ],
+        "string_status": "review-only",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "review",
+        "twin_of": "2,1",
+        "twin_move_class": "string"
+      },
+      "2,1~t7.anna.2": {
+        "steps": [
+          {
+            "step": "2",
+            "prefix": "2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 220,
+            "candidate_row": 220,
+            "candidate_source": "recorded-path",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 220) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 220 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 220."
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "2,1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 221,
+            "candidate_row": 221,
+            "candidate_source": "recorded-path",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 221) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 221 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 221."
+            ]
+          }
+        ],
+        "string_status": "review-only",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "review",
+        "twin_of": "2,1",
+        "twin_move_class": "string"
+      },
+      "2,1,2": {
+        "steps": [
+          {
+            "step": "2",
+            "prefix": "2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 220,
+            "candidate_row": 220,
+            "candidate_source": "recorded-path",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 220) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 220 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 220."
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "2,1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 221,
+            "candidate_row": 221,
+            "candidate_source": "recorded-path",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 221) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 221 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 221."
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "2,1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 222,
+            "candidate_row": 222,
+            "candidate_source": "recorded-path",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 222) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 222 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 222."
+            ]
+          }
+        ],
+        "string_status": "review-only",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "review"
+      },
+      "2,1,2,2": {
+        "steps": [
+          {
+            "step": "2",
+            "prefix": "2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 220,
+            "candidate_row": 220,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 220) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 220 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 220."
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "2,1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 221,
+            "candidate_row": 221,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 221) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 221 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 221."
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "2,1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 222,
+            "candidate_row": 222,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 222) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 222 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 222."
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "2,1,2,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 223,
+            "candidate_row": 223,
+            "candidate_source": "recorded-dest",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 223) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 223 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 223."
+            ]
+          }
+        ],
+        "string_status": "review-only",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "review"
+      },
+      "2,2": {
+        "steps": [
+          {
+            "step": "2",
+            "prefix": "2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 220,
+            "candidate_row": 220,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 220) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 220 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 220."
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "2,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "2,uf+1+2": {
+        "steps": [
+          {
+            "step": "2",
+            "prefix": "2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 220,
+            "candidate_row": 220,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "BANK-BLOCKED: gate-verified in jin bank (row 220) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 220 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 220."
+            ]
+          },
+          {
+            "step": "uf+1+2",
+            "prefix": "2,uf+1+2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "CJM.2,1": {
+        "steps": [
+          {
+            "step": "CJM.2",
+            "prefix": "CJM.2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "CJM.2,1",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "CJM.2,1~t7.anna": {
+        "steps": [
+          {
+            "step": "CJM.2",
+            "prefix": "CJM.2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "CJM.2,1",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "CJM.2,1",
+        "twin_move_class": "string"
+      },
+      "CJM.2,1~t7.anna.2": {
+        "steps": [
+          {
+            "step": "CJM.2",
+            "prefix": "CJM.2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "CJM.2,1",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "CJM.2,1",
+        "twin_move_class": "string"
+      },
+      "FC.df+2,H.1": {
+        "steps": [
+          {
+            "step": "FC.df+2",
+            "prefix": "FC.df+2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "H.1",
+            "prefix": "FC.df+2,H.1",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "HAM.2,1": {
+        "steps": [
+          {
+            "step": "HAM.2",
+            "prefix": "HAM.2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "HAM.2,1",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "HAM.2,1,2": {
+        "steps": [
+          {
+            "step": "HAM.2",
+            "prefix": "HAM.2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "HAM.2,1",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "HAM.2,1,2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "HAM.2,2": {
+        "steps": [
+          {
+            "step": "HAM.2",
+            "prefix": "HAM.2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "HAM.2,2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "b+1+2,1": {
+        "steps": [
+          {
+            "step": "b+1+2",
+            "prefix": "b+1+2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "b+1+2,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": 355,
+            "status": "verified",
+            "bank_verified_row": null,
+            "candidate_row": 355,
+            "candidate_source": "prefix-move",
+            "reasons": []
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": 355,
+        "last_step_status": "verified"
+      },
+      "b+1+2,1,1": {
+        "steps": [
+          {
+            "step": "b+1+2",
+            "prefix": "b+1+2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "b+1+2,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": 355,
+            "status": "verified",
+            "bank_verified_row": null,
+            "candidate_row": 355,
+            "candidate_source": "prefix-move",
+            "reasons": []
+          },
+          {
+            "step": "1",
+            "prefix": "b+1+2,1,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": 356,
+            "status": "verified",
+            "bank_verified_row": null,
+            "candidate_row": 356,
+            "candidate_source": "prefix-move",
+            "reasons": []
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": 356,
+        "last_step_status": "verified"
+      },
+      "b+1,2": {
+        "steps": [
+          {
+            "step": "b+1",
+            "prefix": "b+1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 216,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1 (jin bank)",
+              "airborne row (stance jump; y0 1.091 ymax 1.529 vs standingY 1.027)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "b+1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "b+1,2~t7.anna": {
+        "steps": [
+          {
+            "step": "b+1",
+            "prefix": "b+1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 216,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1 (jin bank)",
+              "airborne row (stance jump; y0 1.091 ymax 1.529 vs standingY 1.027)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "b+1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "b+1,2",
+        "twin_move_class": "string"
+      },
+      "b+1,2~t7.anna.2": {
+        "steps": [
+          {
+            "step": "b+1",
+            "prefix": "b+1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 216,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1 (jin bank)",
+              "airborne row (stance jump; y0 1.091 ymax 1.529 vs standingY 1.027)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "b+1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "b+1,2",
+        "twin_move_class": "string"
+      },
+      "b+1,2,2": {
+        "steps": [
+          {
+            "step": "b+1",
+            "prefix": "b+1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 216,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1 (jin bank)",
+              "airborne row (stance jump; y0 1.091 ymax 1.529 vs standingY 1.027)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "b+1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "b+1,2,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "b+1,2,2~t7.anna": {
+        "steps": [
+          {
+            "step": "b+1",
+            "prefix": "b+1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 216,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1 (jin bank)",
+              "airborne row (stance jump; y0 1.091 ymax 1.529 vs standingY 1.027)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "b+1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "b+1,2,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "b+1,2,2",
+        "twin_move_class": "string"
+      },
+      "b+1,2,2~t7.anna.2": {
+        "steps": [
+          {
+            "step": "b+1",
+            "prefix": "b+1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 216,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1 (jin bank)",
+              "airborne row (stance jump; y0 1.091 ymax 1.529 vs standingY 1.027)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "b+1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "b+1,2,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "b+1,2,2",
+        "twin_move_class": "string"
+      },
+      "b+1,2,2~t7.anna.3": {
+        "steps": [
+          {
+            "step": "b+1",
+            "prefix": "b+1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 216,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1 (jin bank)",
+              "airborne row (stance jump; y0 1.091 ymax 1.529 vs standingY 1.027)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "b+1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "b+1,2,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "b+1,2,2",
+        "twin_move_class": "string"
+      },
+      "b+2,2": {
+        "steps": [
+          {
+            "step": "b+2",
+            "prefix": "b+2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "b+2,2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "b+2,2~t3.anna": {
+        "steps": [
+          {
+            "step": "b+2",
+            "prefix": "b+2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "b+2,2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "b+2,2",
+        "twin_move_class": "strike"
+      },
+      "b+2,2~t3.anna.2": {
+        "steps": [
+          {
+            "step": "b+2",
+            "prefix": "b+2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "b+2,2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "b+2,2",
+        "twin_move_class": "strike"
+      },
+      "b+2,2~t7.anna": {
+        "steps": [
+          {
+            "step": "b+2",
+            "prefix": "b+2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "b+2,2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "b+2,2",
+        "twin_move_class": "string"
+      },
+      "b+2,2~t7.anna.2": {
+        "steps": [
+          {
+            "step": "b+2",
+            "prefix": "b+2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "b+2,2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "b+2,2",
+        "twin_move_class": "string"
+      },
+      "b+2,b+2": {
+        "steps": [
+          {
+            "step": "b+2",
+            "prefix": "b+2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "b+2",
+            "prefix": "b+2,b+2",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": null,
+            "candidate_row": 368,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT limb-peak proxy fail: window [11.5,16.0] peaks {'armR': 1}"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "review"
+      },
+      "b+2,f+2": {
+        "steps": [
+          {
+            "step": "b+2",
+            "prefix": "b+2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "f+2",
+            "prefix": "b+2,f+2",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": null,
+            "candidate_row": 369,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT limb-peak proxy fail: window [11.5,16.0] peaks {'armR': 1}"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "review"
+      },
+      "d+1+2,1": {
+        "steps": [
+          {
+            "step": "d+1+2",
+            "prefix": "d+1+2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 92,
+            "candidate_row": 92,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "GATE-NOTE: standing row verified for crouch-context step (demonio Batch 1 / diablo Batch 1 precedent \u2014 re-adjudicate if the gate is ever tightened)",
+              "BANK-BLOCKED: gate-verified in jin bank (row 92) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 92 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 92."
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "d+1+2,1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 177,
+            "candidate_source": "recorded-dest",
+            "reasons": [
+              "button 12 != step bits 1 (jin bank)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "d+1+2,1,2": {
+        "steps": [
+          {
+            "step": "d+1+2",
+            "prefix": "d+1+2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 92,
+            "candidate_row": 92,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "GATE-NOTE: standing row verified for crouch-context step (demonio Batch 1 / diablo Batch 1 precedent \u2014 re-adjudicate if the gate is ever tightened)",
+              "BANK-BLOCKED: gate-verified in jin bank (row 92) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 92 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 92."
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "d+1+2,1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 177,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 12 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "d+1+2,1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 183,
+            "candidate_row": 183,
+            "candidate_source": "recorded-dest",
+            "reasons": [
+              "GATE-NOTE: standing row verified for crouch-context step (demonio Batch 1 / diablo Batch 1 precedent \u2014 re-adjudicate if the gate is ever tightened)",
+              "BANK-BLOCKED: gate-verified in jin bank (row 183) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 183 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 183."
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "review"
+      },
+      "d+1+2,2": {
+        "steps": [
+          {
+            "step": "d+1+2",
+            "prefix": "d+1+2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 92,
+            "candidate_row": 92,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "GATE-NOTE: standing row verified for crouch-context step (demonio Batch 1 / diablo Batch 1 precedent \u2014 re-adjudicate if the gate is ever tightened)",
+              "BANK-BLOCKED: gate-verified in jin bank (row 92) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 92 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 92."
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "d+1+2,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": 93,
+            "candidate_row": 93,
+            "candidate_source": "recorded-dest",
+            "reasons": [
+              "GATE-NOTE: standing row verified for crouch-context step (demonio Batch 1 / diablo Batch 1 precedent \u2014 re-adjudicate if the gate is ever tightened)",
+              "BANK-BLOCKED: gate-verified in jin bank (row 93) but torch's bound in-game bank is anna; the #1096 step-plan branch resolves row:N against the bound bank only, so wiring this row would play anna row 93 \u2014 a wrong-bank clip. Row preserved as bank_verified_row; promotion needs per-step-bank engine support. NOT wired, never played as anna row 93."
+            ]
+          }
+        ],
+        "string_status": "review-only",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "review"
+      },
+      "d/f+1+2,2": {
+        "steps": [
+          {
+            "step": "d/f+1+2",
+            "prefix": "d/f+1+2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 117,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "throw flag 1 (row is a throw row)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "d/f+1+2,2",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": 174,
+            "status": "verified",
+            "bank_verified_row": null,
+            "candidate_row": 174,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "GATE-NOTE: standing row verified for crouch-context step (demonio Batch 1 / diablo Batch 1 precedent \u2014 re-adjudicate if the gate is ever tightened)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": 174,
+        "last_step_status": "verified"
+      },
+      "d/f+1,2": {
+        "steps": [
+          {
+            "step": "d/f+1",
+            "prefix": "d/f+1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 179,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "airborne row (stance jump; y0 0.943 ymax 1.519 vs standingY 1.027)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "d/f+1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "d/f+1,2~t7.anna": {
+        "steps": [
+          {
+            "step": "d/f+1",
+            "prefix": "d/f+1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 179,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "airborne row (stance jump; y0 0.943 ymax 1.519 vs standingY 1.027)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "d/f+1,2",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "d/f+1,2",
+        "twin_move_class": "string"
+      },
+      "db+1,2": {
+        "steps": [
+          {
+            "step": "db+1",
+            "prefix": "db+1",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "db+1,2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "df+1,2": {
+        "steps": [
+          {
+            "step": "df+1",
+            "prefix": "df+1",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "df+1,2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "f+1+2,1": {
+        "steps": [
+          {
+            "step": "f+1+2",
+            "prefix": "f+1+2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "f+1+2,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 358,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1 (anna bank)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "f+2,1": {
+        "steps": [
+          {
+            "step": "f+2",
+            "prefix": "f+2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "f+2,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 321,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1 (anna bank)",
+              "throw flag 1 (row is a throw row)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "f+2,1~t3.anna": {
+        "steps": [
+          {
+            "step": "f+2",
+            "prefix": "f+2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "f+2,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 321,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1 (anna bank)",
+              "throw flag 1 (row is a throw row)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "f+2,1",
+        "twin_move_class": "special"
+      },
+      "f+2,1~t3.anna.2": {
+        "steps": [
+          {
+            "step": "f+2",
+            "prefix": "f+2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "f+2,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 321,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1 (anna bank)",
+              "throw flag 1 (row is a throw row)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "f+2,1",
+        "twin_move_class": "special"
+      },
+      "f+2,1~t3.anna.3": {
+        "steps": [
+          {
+            "step": "f+2",
+            "prefix": "f+2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "f+2,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 321,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1 (anna bank)",
+              "throw flag 1 (row is a throw row)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "f+2,1",
+        "twin_move_class": "strike"
+      },
+      "f+2,1~t3.anna.4": {
+        "steps": [
+          {
+            "step": "f+2",
+            "prefix": "f+2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "f+2,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 321,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1 (anna bank)",
+              "throw flag 1 (row is a throw row)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "f+2,1",
+        "twin_move_class": "strike"
+      },
+      "f+2,1,2": {
+        "steps": [
+          {
+            "step": "f+2",
+            "prefix": "f+2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "f+2,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 321,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1 (anna bank)",
+              "throw flag 1 (row is a throw row)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "f+2,1,2",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": 171,
+            "status": "verified",
+            "bank_verified_row": null,
+            "candidate_row": 171,
+            "candidate_source": "prefix-move",
+            "reasons": []
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": 171,
+        "last_step_status": "verified"
+      },
+      "f+2,f+1+2": {
+        "steps": [
+          {
+            "step": "f+2",
+            "prefix": "f+2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "f+1+2",
+            "prefix": "f+2,f+1+2",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "review",
+            "bank_verified_row": null,
+            "candidate_row": 175,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "STANCE-SOFT duck-dip row for standing-context step"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "review"
+      },
+      "qcf+2,1": {
+        "steps": [
+          {
+            "step": "qcf+2",
+            "prefix": "qcf+2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "qcf+2,1",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "qcf+2,1~t7.anna": {
+        "steps": [
+          {
+            "step": "qcf+2",
+            "prefix": "qcf+2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "qcf+2,1",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "qcf+2,1",
+        "twin_move_class": "special"
+      },
+      "qcf+2,1~t7.anna.2": {
+        "steps": [
+          {
+            "step": "qcf+2",
+            "prefix": "qcf+2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "qcf+2,1",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "qcf+2,1",
+        "twin_move_class": "special"
+      },
+      "u+1,1": {
+        "steps": [
+          {
+            "step": "u+1",
+            "prefix": "u+1",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "u+1,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": 32,
+            "status": "verified",
+            "bank_verified_row": null,
+            "candidate_row": 32,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 32,
+        "last_step_status": "verified"
+      },
+      "u+1,1~t3.anna": {
+        "steps": [
+          {
+            "step": "u+1",
+            "prefix": "u+1",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "u+1,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": 32,
+            "status": "verified",
+            "bank_verified_row": null,
+            "candidate_row": 32,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 32,
+        "last_step_status": "verified",
+        "twin_of": "u+1,1",
+        "twin_move_class": "strike"
+      },
+      "u+1,1~t3.anna.2": {
+        "steps": [
+          {
+            "step": "u+1",
+            "prefix": "u+1",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "u+1,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": 32,
+            "status": "verified",
+            "bank_verified_row": null,
+            "candidate_row": 32,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 32,
+        "last_step_status": "verified",
+        "twin_of": "u+1,1",
+        "twin_move_class": "strike"
+      },
+      "u+1,1~t3.anna.3": {
+        "steps": [
+          {
+            "step": "u+1",
+            "prefix": "u+1",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "u+1,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": 32,
+            "status": "verified",
+            "bank_verified_row": null,
+            "candidate_row": 32,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 32,
+        "last_step_status": "verified",
+        "twin_of": "u+1,1",
+        "twin_move_class": "strike"
+      },
+      "u+1,2": {
+        "steps": [
+          {
+            "step": "u+1",
+            "prefix": "u+1",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "u+1,2",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": 44,
+            "status": "verified",
+            "bank_verified_row": null,
+            "candidate_row": 44,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 44,
+        "last_step_status": "verified"
+      },
+      "u/b+1,1": {
+        "steps": [
+          {
+            "step": "u/b+1",
+            "prefix": "u/b+1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 34,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 3 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "u/b+1,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": 34,
+            "status": "verified",
+            "bank_verified_row": null,
+            "candidate_row": 34,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 34,
+        "last_step_status": "verified"
+      },
+      "u/b+1,1~t3.anna": {
+        "steps": [
+          {
+            "step": "u/b+1",
+            "prefix": "u/b+1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 34,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 3 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "u/b+1,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": 34,
+            "status": "verified",
+            "bank_verified_row": null,
+            "candidate_row": 34,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 34,
+        "last_step_status": "verified",
+        "twin_of": "u/b+1,1",
+        "twin_move_class": "special"
+      },
+      "u/b+1,1~t3.anna.2": {
+        "steps": [
+          {
+            "step": "u/b+1",
+            "prefix": "u/b+1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 34,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 3 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "u/b+1,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": 34,
+            "status": "verified",
+            "bank_verified_row": null,
+            "candidate_row": 34,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 34,
+        "last_step_status": "verified",
+        "twin_of": "u/b+1,1",
+        "twin_move_class": "special"
+      },
+      "u/b+1,1~t3.anna.3": {
+        "steps": [
+          {
+            "step": "u/b+1",
+            "prefix": "u/b+1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 34,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 3 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "u/b+1,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": 34,
+            "status": "verified",
+            "bank_verified_row": null,
+            "candidate_row": 34,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 34,
+        "last_step_status": "verified",
+        "twin_of": "u/b+1,1",
+        "twin_move_class": "special"
+      },
+      "u/b+1,2": {
+        "steps": [
+          {
+            "step": "u/b+1",
+            "prefix": "u/b+1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 34,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 3 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "u/b+1,2",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": 46,
+            "status": "verified",
+            "bank_verified_row": null,
+            "candidate_row": 46,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 46,
+        "last_step_status": "verified"
+      },
+      "u/f+1+2,1": {
+        "steps": [
+          {
+            "step": "u/f+1+2",
+            "prefix": "u/f+1+2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "u/f+1+2,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 506,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1 (anna bank)",
+              "throw flag 1 (row is a throw row)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": true,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "u/f+1,1": {
+        "steps": [
+          {
+            "step": "u/f+1",
+            "prefix": "u/f+1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 33,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 3 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "u/f+1,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": 33,
+            "status": "verified",
+            "bank_verified_row": null,
+            "candidate_row": 33,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 33,
+        "last_step_status": "verified"
+      },
+      "u/f+1,1~t3.anna": {
+        "steps": [
+          {
+            "step": "u/f+1",
+            "prefix": "u/f+1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 33,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 3 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "u/f+1,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": 33,
+            "status": "verified",
+            "bank_verified_row": null,
+            "candidate_row": 33,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 33,
+        "last_step_status": "verified",
+        "twin_of": "u/f+1,1",
+        "twin_move_class": "special"
+      },
+      "u/f+1,1~t3.anna.2": {
+        "steps": [
+          {
+            "step": "u/f+1",
+            "prefix": "u/f+1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 33,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 3 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "u/f+1,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": 33,
+            "status": "verified",
+            "bank_verified_row": null,
+            "candidate_row": 33,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 33,
+        "last_step_status": "verified",
+        "twin_of": "u/f+1,1",
+        "twin_move_class": "special"
+      },
+      "u/f+1,1~t3.anna.3": {
+        "steps": [
+          {
+            "step": "u/f+1",
+            "prefix": "u/f+1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 33,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 3 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "u/f+1,1",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": 33,
+            "status": "verified",
+            "bank_verified_row": null,
+            "candidate_row": 33,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 33,
+        "last_step_status": "verified",
+        "twin_of": "u/f+1,1",
+        "twin_move_class": "special"
+      },
+      "u/f+1,2": {
+        "steps": [
+          {
+            "step": "u/f+1",
+            "prefix": "u/f+1",
+            "bank": "jin",
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": 33,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 3 != step bits 1 (jin bank)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "u/f+1,2",
+            "bank": "anna",
+            "bound_bank": "anna",
+            "row": 45,
+            "status": "verified",
+            "bank_verified_row": null,
+            "candidate_row": 45,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 45,
+        "last_step_status": "verified"
+      },
+      "ws1,2": {
+        "steps": [
+          {
+            "step": "ws1",
+            "prefix": "ws1",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "ws1,2",
+            "bank": null,
+            "bound_bank": "anna",
+            "row": null,
+            "status": "unmapped",
+            "bank_verified_row": null,
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      }
+    }
   }
 }

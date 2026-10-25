@@ -180,3 +180,58 @@ All T3-baked clips already in the repo are **fallback, to be replaced from T5/6/
 | Asset | T3 data | Status | Reason T3 was used (no T5/6/7/8/TTT2 source available) |
 |---|---|---|---|
 | `game/assets/movesets/pantera.json` `string_step_plans` (60 keys: 31 canonical LP1/RP2 strings + 26 twins + 3 spelling variants) + `game/js/fighter.js` step-plan branch | King T3 bank rows for verified steps only (rows 36, 38, 39, 40, 50, 51, 52, 97, 98, 198, 200, 202, 203, 110) | fallback, to be replaced from T7 King extraction when clip bytes land | T7 King (`kinmot.bin`, 2,787 moves) is decoded, but 0x8000-bank clip bytes are not in tkdata (pakchunk/live-memory only) and requirement codes (636/811/80/81/72/217) + the aliases table are unresolved, so no T7 step clip can be wired yet. T3 step rows stand in for verified steps only; review/unmapped steps play no bank row. Re-match against T7 King rows when extraction lands. Rows 35/220 are never used for standing steps. |
+
+## Torch Batch 1 fallback (LP1/RP2-only strings, 2026-10-25)
+Verified rows 32/33/34/44/45/46/171/174/355/356 are FALLBACK
+(T3 anna rows, bank anna / BOUND bank: torch's in-game bank is anna
+per fighter.js #1096 FIGHTER_BANK torch->anna + moveset anim_bank
+anna), to be re-matched to T7 Anna rows when extraction lands.
+Torch is the FIRST dual-bank fighter in the pipeline: its T3 moves
+carry jin (145) AND anna (224) banks, and every step adjudicates
+against ITS OWN move's bank (file-level t3_source jin is never
+assumed for all moves). Jin-bank gate-verified rows 92/93/183/220/
+221/222/223/249 are BANK-BLOCKED, NOT fallback-wired: the #1096
+step-plan branch resolves row:N against the bound anna bank only,
+so wiring a jin row would play anna row N - a wrong-bank clip.
+They are recorded as bank_verified_row on review steps, to be
+promoted mechanically when per-step-bank engine support lands.
+Rejected rows are NOT fallback - rejected evidence, not wired or
+held. Jin-bank rules, per-bank evidence (documented in
+docs/movesets/TORCH-BATCH1-STEP-PLANS-2026-10-25.md): row 35 EXISTS
+(starts-airborne, btn 1) - airborne, fails ground steps; row 220
+EXISTS (standing RP2, btn 2) - torch RP2 move 2's own row, NOT
+bryan's button-0 row 220; row 216 EXISTS (jump, btn 0) - fails
+every single-button gate. Jin row 248 (torch LP1 move 1's own row)
+is STANDING but button 12 - it FAILS every single-LP1 step under
+exact-equality (demonio row 177 btn-12 + scimitar row 184 btn-9
+precedent). Anna-bank rules, per-bank evidence (first-ever anna
+adjudication): row 35 EXISTS (starts-airborne, btn 1) - airborne,
+fails ground steps; row 220 EXISTS in hit_frames (button 0) but is
+ABSENT from Job 1 - fails every single-button gate; row 216 EXISTS
+in hit_frames (button 0) but is ABSENT from Job 1 - same treatment.
+Torch basics unchanged #1096 vs main (LP1 move 1 jin r248, RP2 move 2
+jin r220, LK3 move 3 jin r195, RK4 move 4 jin r199); re-baseline
+moves + strings deep-equal, row-changed 0, damage-only 0, so
+suspended-drift steps are 0. Torch was NEVER purged by #1039
+(t8_quarantine_20261024 key ABSENT) - no #988 dependency. Gap-1:
+jin hit_frames + skeleton IDENTICAL, rows.pack ADDITIVE-ONLY drift
+(220 b1096 rows unchanged on main, main adds 6 rows, 0 changed, 0
+removed - affected fills 0); anna all three blobs IDENTICAL.
+GATE-ONLY batch: Job 2 torch entries 0, Job 3 torch entries 0 -
+Job 3 fills 0 and Job 4 joins 0 by data absence (bank-level Job 4
+candidates jin 47 / anna 45 cannot join without Job 2 torch
+entries; a join never promotes anyway). Standing rows verified for
+crouch-context steps (d/f+1+2,2 step 2 anna row 174; d+1+2 family
+jin rows 92/93/183 BANK-BLOCKED) follow the demonio Batch 1
+precedent: the gate flags crouch rows for non-crouch steps, not
+standing rows for crouch steps. Canonicalization is the CORRECTED
+rule (strip only a trailing ~t[378] source-variant suffix): Torch
+Batch 1 contains ZERO input-~ canonicals; file-wide exactly ONE
+input-~ comma key exists, d+4,1~4 (T8 Anna, LP1+RK4 - later-batch
+scope). T8-sourced prefixes with no T3 row get their correct clips
+from #988 Step 2 (original T8 refs), never from a T3 row recorded
+as correct. Formatter note: torch-1096.json round-trips ONLY as
+json.dumps(indent=2) with no trailing newline (ensure_ascii=True);
+the generic ensure_ascii=False + newline prescription would
+rewrite the whole file, so this lane uses the file's own formatter
+and the committed diff is exactly 1 addition.
