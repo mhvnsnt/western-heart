@@ -246,7 +246,7 @@ export class ReplayPlayer {
     restoreGameSnapshot(g, rd.snapshot);
     g.roundState = 'fight';
     g.input.enable(false);
-    if (this.ui && this.ui.banner) this.ui.banner(`REPLAY — ROUND ${rd.round}`);
+    if (this.ui && this.ui.hudNote) this.ui.hudNote(`REPLAY — ROUND ${rd.round}`);
     this._updateTime();
   }
 
@@ -304,7 +304,7 @@ export class ReplayPlayer {
     this.ended = true;
     const g = this.game;
     g.roundState = 'idle';
-    if (this.ui && this.ui.banner) this.ui.banner('REPLAY END');
+    if (this.ui && this.ui.hudNote) this.ui.hudNote('REPLAY END');
     if (this.onReplayEnd) this.onReplayEnd();
   }
 

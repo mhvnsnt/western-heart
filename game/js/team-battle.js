@@ -153,14 +153,14 @@ export class TagMatch {
       this._swap(side);
       ben._tag.diveAtk = true;
       S.tagCd = TAG_CD;
-      g.ui.banner('TAG THROW — partner follows up');
+      g.ui.hudNote('TAG THROW — partner follows up');
       return true;
     }
     // TAG CRASH (TTT2: grounded + partner has Rage -> LP+RP+tag) —
     // the partner dives in from the air and stops the pressure.
     if (act.state === 'knockdown' || (act.state === 'hitstun' && !act.onGround)) {
       if (ben._tag.rageReady) { this._doCrash(side); return true; }
-      g.ui.banner('NO RAGE — TAG CRASH DENIED');
+      g.ui.hudNote('NO RAGE — TAG CRASH DENIED');
       return false;
     }
     // TAG ASSAULT (TTT2: tag during Bound) — foe is bouncing/juggled off
@@ -174,7 +174,7 @@ export class TagMatch {
     // fighter briefly vulnerable — no invuln here, the leap IS the risk.
     this._swap(side);
     S.tagCd = TAG_CD;
-    g.ui.banner(`${ben.char.name.toUpperCase()} TAGS IN`);
+    g.ui.hudNote(`${ben.char.name.toUpperCase()} TAGS IN`);
     return true;
   }
 
@@ -241,7 +241,7 @@ export class TagMatch {
     this._setRage(inc, false);
     this._swap(side, { dive: true });
     S.tagCd = TAG_CD;
-    g.ui.banner('TAG CRASH!');
+    g.ui.hudNote('TAG CRASH!');
     try { g.arena.shake(0.5, 0.35); } catch (e) { /* no arena shake */ }
   }
 
@@ -261,7 +261,7 @@ export class TagMatch {
     // TTT2: the assault always gives the opponent's partner Rage.
     const foeBen = this.sides[foeSide].fighters[1 - this.sides[foeSide].active];
     if (foeBen && foeBen.hp > 0) foeBen._tag.rageReady = true;
-    g.ui.banner('TAG ASSAULT — one string!');
+    g.ui.hudNote('TAG ASSAULT — one string!');
   }
 
   /* TAG COMBO (TTT2: buffered tag before a launcher hits). Partner swaps
@@ -273,7 +273,7 @@ export class TagMatch {
     this._swap(side);
     this._noRedT = NO_RED_T;
     S.tagCd = TAG_CD;
-    g.ui.banner('TAG COMBO!');
+    g.ui.hudNote('TAG COMBO!');
   }
 
   _setRage(f, on) {
@@ -283,7 +283,7 @@ export class TagMatch {
     if (t.basePower == null) t.basePower = f.stats.power;
     f.stats.power = on ? t.basePower * RAGE_MULT : t.basePower;
     if (on) {
-      try { this.game.ui.banner(`${f.char.name.toUpperCase()} — RAGE!`); } catch (e) { /* hud */ }
+      try { this.game.ui.hudNote(`${f.char.name.toUpperCase()} — RAGE!`); } catch (e) { /* hud */ }
     }
   }
 
@@ -317,7 +317,7 @@ export class TagMatch {
       // Tag assault: player-controlled string, then auto-return.
       if (S.assaultT > 0) {
         S.assaultT -= dt;
-        if (S.assaultT <= 0) { this._swap(side); g.ui.banner('ASSAULT OVER'); }
+        if (S.assaultT <= 0) { this._swap(side); g.ui.hudNote('ASSAULT OVER'); }
       }
 
       // Dive attacks (tag crash / tag throw follow-up) land the hit.

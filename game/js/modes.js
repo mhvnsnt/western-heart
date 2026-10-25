@@ -721,7 +721,7 @@ export class ModeController {
     }
     const foeEntry = { ...foe, ai: scaledAi(foe, rung.diff) };
     this._badge(`ARCADE · FIGHT ${rung.n}/6 · ${foeName}`);
-    this.ui.banner(`FIGHT ${rung.n} — ${foeName}`);
+    this.ui.hudNote(`FIGHT ${rung.n} — ${foeName}`);
     this.game.onMatchEnd = (won) => this._arcadeEnd(won);
     this._arcadeFoe = foeEntry;
     this.startFight(this.arcade.fighterId, null, { mode: 'arcade', enemyChar: foeEntry });
@@ -796,7 +796,7 @@ export class ModeController {
     if (won) {
       if (st.key !== 'trade' && st.key !== 'boss' && !this.story.forces.includes(st.key)) {
         this.story.forces.push(st.key);
-        this.ui.banner(`${FORCES[st.key].name} CLAIMED — ${FORCES[st.key].desc}`);
+        this.ui.hudNote(`${FORCES[st.key].name} CLAIMED — ${FORCES[st.key].desc}`);
       }
       // Trader stage: the trade happened on the trader screen; the fight is the toll.
       setTimeout(() => {
@@ -901,7 +901,7 @@ export class ModeController {
         this.audio && this.audio.playEMSfx && this.audio.playEMSfx('reincarn.rebirth');
         this.audio && this.audio.stopEMTrack && this.audio.stopEMTrack();
         this.story.vesselId = id;
-        this.ui.banner('REBORN AS ' + c.name);
+        this.ui.hudNote('REBORN AS ' + c.name);
         setTimeout(() => this._storyStageIntro(), 900);
       });
       wrap.appendChild(card);
@@ -938,7 +938,7 @@ export class ModeController {
       if (!(give && take && give !== take)) return;
       this.story.forces = this.story.forces.filter((k) => k !== give);
       this.story.forces.push(take);
-      this.ui.banner(`TRADED ${FORCES[give].name} FOR ${FORCES[take].name}`);
+      this.ui.hudNote(`TRADED ${FORCES[give].name} FOR ${FORCES[take].name}`);
       setTimeout(() => this._storyFight(), 900);
     };
     const skip = this._el('trade-skip');
@@ -982,7 +982,7 @@ export class ModeController {
         if (ai && ai.gungaku) {
           clearInterval(wait);
           mountGungakuPanel(this.game, ai);
-          this.ui.banner(`${GUNGAKU_LABEL} — PROGRAM THE DUMMY`);
+          this.ui.hudNote(`${GUNGAKU_LABEL} — PROGRAM THE DUMMY`);
         } else if (tries > 40) clearInterval(wait);
       }, 250);
     } catch (e) { console.warn('[WH] fight lab panel failed:', e?.message || e); }
@@ -996,7 +996,7 @@ export class ModeController {
     const foeEntry = { ...foe, ai: scaledAi(foe, Math.min(0.95, 0.45 + s.wave * 0.05)) };
     this._survivalFoe = foeEntry;
     this._badge(`SURVIVAL · WAVE ${s.wave + 1} · ${foe.name}`);
-    this.ui.banner(`WAVE ${s.wave + 1} — ${foe.name}`);
+    this.ui.hudNote(`WAVE ${s.wave + 1} — ${foe.name}`);
     this.game.onMatchEnd = (won) => this._survivalEnd(won);
     this._survivalFight();
   }
@@ -1014,7 +1014,7 @@ export class ModeController {
       s.hp = survivalCarry(g.p1.hp, g.p1.maxHp);
       const rec = whGetRecords();
       if (s.wave > (rec.survival || 0)) whSetRecord('survival', s.wave);
-      this.ui.banner(`WAVE ${s.wave} CLEARED — +${Math.round(SURVIVAL_CFG.restore * 100)}% health restored`);
+      this.ui.hudNote(`WAVE ${s.wave} CLEARED — +${Math.round(SURVIVAL_CFG.restore * 100)}% health restored`);
       setTimeout(() => this._survivalNext(), 1400);
     } else {
       const rec = whGetRecords();
@@ -1040,7 +1040,7 @@ export class ModeController {
     const foeEntry = { ...foe, ai: scaledAi(foe, diff) };
     this._treasureFoe = foeEntry;
     this._badge(`TREASURE BATTLE · WAVE ${s.wave + 1} · ${foe.name}`);
-    this.ui.banner(`WAVE ${s.wave + 1} — ${foe.name}`);
+    this.ui.hudNote(`WAVE ${s.wave + 1} — ${foe.name}`);
     this.game.onMatchEnd = (won) => this._treasureEnd(won);
     this._treasureFight();
   }
@@ -1068,7 +1068,7 @@ export class ModeController {
         if (roll.prize && unlocks.grantUnlockable(roll.prize)) prizeName = ` · UNLOCKED: ${(unlocks.UNLOCKABLES[roll.prize] || {}).name || roll.prize}`;
         chestLine = `CHEST ${s.chests}: +${roll.coinsGained} coins${prizeName}`;
       } catch { chestLine = `CHEST ${s.chests} opened.`; }
-      this.ui.banner(`WAVE ${s.wave} CLEARED — ${chestLine}`);
+      this.ui.hudNote(`WAVE ${s.wave} CLEARED — ${chestLine}`);
       setTimeout(() => this._treasureNext(), 1600);
     } else {
       const rec = whGetRecords();
@@ -1090,7 +1090,7 @@ export class ModeController {
     const foeEntry = { ...foe, ai: scaledAi(foe, diff) };
     this._timeAttackFoe = foeEntry;
     this._badge(`TIME ATTACK · FIGHT ${t.idx + 1}/${TIME_ATTACK_CFG.fights} · ${fmtTime(t.totalMs)}`);
-    this.ui.banner(`FIGHT ${t.idx + 1} — ${foe.name}`);
+    this.ui.hudNote(`FIGHT ${t.idx + 1} — ${foe.name}`);
     this.game.onMatchEnd = (won) => this._timeAttackEnd(won);
     this._timeAttackFight();
   }
@@ -1171,7 +1171,7 @@ export class ModeController {
     const foeEntry = { ...cc, ai: scaledAi(cc, Math.min(0.95, diff)) };
     this._teamFoe = foeEntry;
     this._badge(`TEAM BATTLE · YOU ${t.pIdx + 1}/3 (${pc.name}) VS CPU ${t.cIdx + 1}/3 (${cc.name})`);
-    this.ui.banner(`${pc.name} VS ${cc.name}`);
+    this.ui.hudNote(`${pc.name} VS ${cc.name}`);
     this.game.onMatchEnd = (won) => this._teamEnd(won);
     const opts = { mode: 'team', roundsToWin: 1, enemyChar: foeEntry };
     if (t.pHp != null) opts.hpCarry = t.pHp;
@@ -1199,7 +1199,7 @@ export class ModeController {
         [{ label: 'REMATCH TEAMS', fn: () => { this._teamPending = []; this.startMode('team'); } }]);
     } else {
       const who = playerWon ? 'CPU sends its next fighter.' : 'You send your next fighter.';
-      this.ui.banner(who);
+      this.ui.hudNote(who);
       setTimeout(() => this._teamFight(), 1400);
     }
   }
@@ -1218,10 +1218,10 @@ export class ModeController {
     this._badge(`不死クォンバット · WAVE ${q.wave + 1} · ${foe.name}`);
     if (q.wave === 0) {
       // The naming law (CANON.md): only Sun Rā gets the English version.
-      this.ui.banner('SUN RĀ: "IMMORTAL QOMBAT."');
-      setTimeout(() => this.ui.banner(`WAVE 1 — ${foe.name}. The sun is watching.`), 1500);
+      this.ui.hudNote('SUN RĀ: "IMMORTAL QOMBAT."');
+      setTimeout(() => this.ui.hudNote(`WAVE 1 — ${foe.name}. The sun is watching.`), 1500);
     } else {
-      this.ui.banner(`WAVE ${q.wave + 1} — ${foe.name}. The sun is watching.`);
+      this.ui.hudNote(`WAVE ${q.wave + 1} — ${foe.name}. The sun is watching.`);
     }
     this.game.onMatchEnd = (won) => this._qombatEnd(won);
     const opts = {
@@ -1247,7 +1247,7 @@ export class ModeController {
       q.hp = qombatCarry(g.p1.hp, g.p1.maxHp);
       const rec = whGetRecords();
       if (q.wave > (rec.qombat || 0)) whSetRecord('qombat', q.wave);
-      this.ui.banner(`YOU EAT — WAVE ${q.wave}. +power. The sun feeds the survivor.`);
+      this.ui.hudNote(`YOU EAT — WAVE ${q.wave}. +power. The sun feeds the survivor.`);
       setTimeout(() => this._qombatNext(), 1400);
     } else {
       const rec = whGetRecords();
@@ -1276,7 +1276,7 @@ export class ModeController {
     const foeEntry = { ...foe, ai: scaledAi(foe, diff) };
     this._surgeFoe = foeEntry;
     this._badge(`SOUL SURGE GAUNTLET · ${blessing.soul.toUpperCase()} ${blessing.kanji} · FIGHT ${s.idx + 1}/9`);
-    this.ui.banner(blessing.line);
+    this.ui.hudNote(blessing.line);
     this.game.onMatchEnd = (won) => this._surgeEnd(won);
     this._surgePlayer = buffed;
     this.startFight(s.fighterId, null, { mode: 'surge', roundsToWin: 1, playerChar: buffed, enemyChar: foeEntry });
@@ -1323,7 +1323,7 @@ export class ModeController {
       'BOUT 3 — the Trader wears it better.',
     ];
     this._badge(`TRADER'S MIMIC · ${lines[t.bout].split(' — ')[0]}`);
-    this.ui.banner(lines[t.bout] + ' Nothing here is real, but the prices are.');
+    this.ui.hudNote(lines[t.bout] + ' Nothing here is real, but the prices are.');
     this.game.onMatchEnd = (won) => this._traderEnd(won);
     this._traderOpts = {
       mode: 'trader', roundsToWin: TRADER_CFG.roundsToWin,
