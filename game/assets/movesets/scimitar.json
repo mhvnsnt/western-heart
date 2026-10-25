@@ -486,7 +486,6 @@
       "name": "SCIMITAR 1 (T3 jin r184)",
       "input": "1",
       "t3_source": "jin",
-      "t3_row": 184,
       "t3_command": "LP",
       "startup": 0.1667,
       "active": 0.033,
@@ -497,7 +496,6 @@
       "heavy": false,
       "knock": 2.2,
       "soulGain": 8,
-      "anim_ref": "t3:jin:row:184",
       "input_slots": [
         "1"
       ],
@@ -513,7 +511,11 @@
         "id": "shaheen_2",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t3_clip_status": "UNMAPPED",
+      "t3_unmapped_reason": "Row 184 is a chord row (button mask LP1+RK4), armR, level s, travel 1.63 m; not a standing LP1 jab.",
+      "t3_unmapped_former_row": 184,
+      "t3_unmapped_former_anim_ref": "t3:jin:row:184"
     },
     "1,2": {
       "name": "SCIMITAR 1,2 (T3 jin r186)",
@@ -12390,5 +12392,28 @@
     "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
     "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
     "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  },
+  "t3_verification_2026_10_24": {
+    "source": "docs/anim/T3-BANK-VERIFICATION-2026-10-24.md (PR #1027 verification pass) + docs/anim/ANIM-MOTION-AUDIT-2026-10-24.md (forward-kinematics motion audit, 8 fighters).",
+    "unmapped_basics": [
+      {
+        "input": "LP1 (1)",
+        "former_row": 184,
+        "reason": "Row 184 is a chord row (button mask LP1+RK4), armR, level s, travel 1.63 m; not a standing LP1 jab."
+      }
+    ],
+    "chord_string_enders": {
+      "motion_hard": 13,
+      "literal_branch_mask": 15,
+      "chord_rows": [
+        "jin 184",
+        "jin 177",
+        "jin 231"
+      ],
+      "status": "UNMAPPED — left unwired. A string needs a verified sequence clip and no such row exists in-bank. No string ender was rewired to a single-hit row."
+    },
+    "legacy_strings_arrays_note": "Legacy `strings` arrays are NOT consumed by fighter.js; single-button hits on chord rows in them (1,2 hit LP1 -> row 184) are left unchanged — do not 'fix' them by guessing a single row.",
+    "other_keys_referencing_unmapped_rows_unchanged": [],
+    "runtime_effect_of_unmapped_marking": "Marked entries carry no exact anim_ref/t3_row claim, so the runtime falls to donor/match/generic for those presses and the editor shows them as unmapped (not offered as swap targets) until a verified exact row lands. The former row is kept in t3_unmapped_former_row for audit trail only."
   }
 }

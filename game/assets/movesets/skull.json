@@ -614,7 +614,6 @@
       "name": "SKULL 3 (T3 bryan r63)",
       "input": "3",
       "t3_source": "bryan",
-      "t3_row": 63,
       "t3_command": "LK",
       "startup": 0.2667,
       "active": 0.017,
@@ -625,7 +624,6 @@
       "heavy": true,
       "knock": 4.2,
       "soulGain": 11,
-      "anim_ref": "t3:bryan:row:63",
       "input_slots": [
         "3"
       ],
@@ -641,7 +639,11 @@
         "id": "bryan_49",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t3_clip_status": "UNMAPPED",
+      "t3_unmapped_reason": "Row 63 is a jump clip; mid candidates bryan row 135 (back-variant, travels 1.29 m) and row 188 (string ender, foot +0.12 for a mid kick) are not verified.",
+      "t3_unmapped_former_row": 63,
+      "t3_unmapped_former_anim_ref": "t3:bryan:row:63"
     },
     "4": {
       "name": "SKULL 4 (T3 bryan r104)",
@@ -2150,7 +2152,6 @@
       "name": "SKULL 3_c36 (T3 bryan r63)",
       "input": "3_c36",
       "t3_source": "bryan",
-      "t3_row": 63,
       "t3_command": "LK",
       "startup": 0.15,
       "active": 0.017,
@@ -2160,12 +2161,15 @@
       "heavy": true,
       "knock": 2.2,
       "soulGain": 8,
-      "anim_ref": "t3:bryan:row:63",
       "input_slots": [
         "3"
       ],
       "move_class": "strike",
-      "t3_condition": 36
+      "t3_condition": 36,
+      "t3_clip_status": "UNMAPPED",
+      "t3_unmapped_reason": "Row 63 is a jump clip; mid candidates bryan row 135 (back-variant, travels 1.29 m) and row 188 (string ender, foot +0.12 for a mid kick) are not verified.",
+      "t3_unmapped_former_row": 63,
+      "t3_unmapped_former_anim_ref": "t3:bryan:row:63"
     },
     "f_c36_r64": {
       "name": "SKULL f_c36_r64 (T3 bryan r64)",
@@ -23129,7 +23133,6 @@
       "name": "BRYAN u+1,3_c36 (T3 bryan r63)",
       "input": "u+1,3_c36",
       "t3_source": "bryan",
-      "t3_row": 63,
       "t3_command": "LK",
       "startup": 0.15,
       "active": 0.017,
@@ -23139,13 +23142,16 @@
       "heavy": true,
       "knock": 2.2,
       "soulGain": 8,
-      "anim_ref": "t3:bryan:row:63",
       "input_slots": [
         "u+1,3"
       ],
       "move_class": "strike",
       "t3_condition": 36,
-      "merge_source": "t3:bryan:row:63"
+      "merge_source": "t3:bryan:row:63",
+      "t3_clip_status": "UNMAPPED",
+      "t3_unmapped_reason": "Row 63 is a jump clip; mid candidates bryan row 135 (back-variant, travels 1.29 m) and row 188 (string ender, foot +0.12 for a mid kick) are not verified.",
+      "t3_unmapped_former_row": 63,
+      "t3_unmapped_former_anim_ref": "t3:bryan:row:63"
     },
     "u/f+1,3": {
       "name": "BRYAN u/f+1,3_c36 (T3 bryan r64)",
@@ -26840,5 +26846,24 @@
     "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
     "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
     "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  },
+  "t3_verification_2026_10_24": {
+    "source": "docs/anim/T3-BANK-VERIFICATION-2026-10-24.md (PR #1027 verification pass) + docs/anim/ANIM-MOTION-AUDIT-2026-10-24.md (forward-kinematics motion audit, 8 fighters).",
+    "unmapped_basics": [
+      {
+        "input": "LK3 (3)",
+        "former_row": 63,
+        "reason": "Row 63 is a jump clip; mid candidates bryan row 135 (back-variant, travels 1.29 m) and row 188 (string ender, foot +0.12 for a mid kick) are not verified."
+      }
+    ],
+    "chord_string_enders": {
+      "motion_hard": 0,
+      "literal_branch_mask": 0,
+      "chord_rows": [],
+      "status": "UNMAPPED — left unwired. A string needs a verified sequence clip and no such row exists in-bank. No string ender was rewired to a single-hit row."
+    },
+    "legacy_strings_arrays_note": "Legacy `strings` arrays are NOT consumed by fighter.js; left unchanged.",
+    "other_keys_referencing_unmapped_rows_unchanged": [],
+    "runtime_effect_of_unmapped_marking": "Marked entries carry no exact anim_ref/t3_row claim, so the runtime falls to donor/match/generic for those presses and the editor shows them as unmapped (not offered as swap targets) until a verified exact row lands. The former row is kept in t3_unmapped_former_row for audit trail only."
   }
 }
