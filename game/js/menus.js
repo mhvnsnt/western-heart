@@ -17,6 +17,9 @@ import { lazy, preloadNextFight } from './lazy.js';
 import { voice } from './voice.js';
 import { initMainMenu } from './mainmenu.js';
 import { initVersusSetup } from './versus-setup.js';
+// Clothing layer system (worker 64): per-mesh clothing toggles, in-game.
+import { loadClothingConfig, getLayers, setLayerVisible, isLayerVisible, CLOTHING_CATEGORIES } from './clothing-layers.js';
+
 
 /* ---------------- Settings ---------------- */
 const SETTINGS_KEY = 'wh_settings_v1';
@@ -281,6 +284,64 @@ export function closeOptions() {
   if (o) o.classList.remove('show');
 }
 
+/* ---------------- Clothing (worker 64) ----------------
+   In-game clothing layers: nested in the pause menu per the integration
+   law (no new screen — a sheet like OPTIONS). Lists P1/P2's registered
+   clothing layers with live toggles; choices persist per attire
+   (wh_clothing_v1) and apply to the live fight instances immediately. */
+function clothingModelKeyOf(fighter) {
+  return (fighter && fighter.char && fighter.char.model) || 'pantera';
+}
+export async function openClothing() {
+  const o = document.getElementById('wh-clothing');
+  if (!o) return;
+  const list = o.querySelector('.wh-clothing-list');
+  list.innerHTML = '<div class="wh-sub">loading layers…</div>';
+  const g = window.__game;
+  const fighters = g && g.p1 && g.p2 ? [g.p1, g.p2] : [];
+  await loadClothingConfig();
+  list.innerHTML = '';
+  if (!fighters.length) {
+    list.innerHTML = '<div class="wh-sub">No fight running.</div>';
+  }
+  for (const f of fighters) {
+    const key = clothingModelKeyOf(f);
+    const layers = getLayers(key);
+    const name = (f.char && (f.char.name || f.char.id) || key).toUpperCase();
+    const head = el('div', 'wh-sub', `<b>${esc(name)}</b>`);
+    head.style.marginTop = '10px';
+    list.appendChild(head);
+    if (!layers.length) {
+      list.appendChild(el('div', 'wh-sub', 'No clothing layers registered for this attire yet.'));
+      continue;
+    }
+    for (const l of layers) {
+      const cat = CLOTHING_CATEGORIES[l.category] || (l.category || '').toUpperCase();
+      const vis = isLayerVisible(f.model, key, l.label);
+      const row = el('div', 'wh-toggle' + (vis ? ' on' : ''),
+        `<span>${esc(l.display || l.label)}<small> · ${esc(cat)} · ${esc(l.label)}</small></span><span class="pill"></span>`);
+      row.setAttribute('role', 'switch');
+      row.setAttribute('aria-checked', vis ? 'true' : 'false');
+      row.addEventListener('click', () => {
+        audio.uiClick && audio.uiClick();
+        const now = !row.classList.contains('on');
+        const res = setLayerVisible(f.model, key, l.label, now);
+        if (res.error) { console.warn('[WH] clothing toggle:', res.error); return; }
+        row.classList.toggle('on', now);
+        row.setAttribute('aria-checked', now ? 'true' : 'false');
+      });
+      list.appendChild(row);
+    }
+  }
+  document.getElementById('wh-pause').classList.remove('show');
+  o.classList.add('show');
+  audio.uiClick && audio.uiClick();
+}
+export function closeClothing() {
+  const o = document.getElementById('wh-clothing');
+  if (o) o.classList.remove('show');
+}
+
 /* ---------------- Records ---------------- */
 export async function openRecords() {
   const o = document.getElementById('wh-records');
@@ -374,8 +435,17 @@ function buildOverlays() {
         <h2>PAUSED</h2>
         <div class="wh-sub">The shrine holds its breath.</div>
         <button class="btn-primary" data-wh="resume">RESUME</button>
+        <button class="btn-ghost" data-wh="pause-clothing">CLOTHING</button>
         <button class="btn-ghost" data-wh="pause-options">OPTIONS</button>
         <button class="btn-ghost" data-wh="quit">QUIT TO MENU</button>
+      </div>
+    </div>
+    <div id="wh-clothing" role="dialog" aria-label="Clothing">
+      <div class="wh-sheet">
+        <h2>CLOTHING</h2>
+        <div class="wh-sub">Take off / put on each fighter's layers — live, saved per attire</div>
+        <div class="wh-clothing-list"></div>
+        <button class="btn-primary" data-wh="back" style="width:100%;margin-top:14px;min-height:48px;">BACK</button>
       </div>
     </div>
     <div id="wh-options" role="dialog" aria-label="Options">
@@ -422,14 +492,15 @@ function buildOverlays() {
   // Overlay button wiring
   document.querySelector('[data-wh="resume"]').addEventListener('click', resumeGame);
   document.querySelector('[data-wh="quit"]').addEventListener('click', quitToMenu);
+  document.querySelector('[data-wh="pause-clothing"]').addEventListener('click', openClothing);
   document.querySelector('[data-wh="pause-options"]').addEventListener('click', () => {
     document.getElementById('wh-pause').classList.remove('show');
     openOptions();
   });
-  document.querySelectorAll('#wh-options [data-wh="back"], #wh-records [data-wh="back"]')
+  document.querySelectorAll('#wh-options [data-wh="back"], #wh-records [data-wh="back"], #wh-clothing [data-wh="back"]')
     .forEach((b) => b.addEventListener('click', () => {
       audio.uiClick && audio.uiClick();
-      closeOptions(); closeRecords();
+      closeOptions(); closeRecords(); closeClothing();
       // If we came from pause, go back to pause.
       const g = window.__game;
       if (g && g.running && g.paused && !document.getElementById('wh-pause').classList.contains('show')) {

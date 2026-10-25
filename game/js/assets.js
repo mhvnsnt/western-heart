@@ -14,6 +14,10 @@ import { clone as skeletonClone } from 'three/addons/utils/SkeletonUtils.js';
 // saku-ra-main, purple-rain-main, kiko-tanaka*). Vendored locally —
 // the game ships with no CDN (see index.html importmap).
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
+// Clothing layer system (worker 64, 2026-10-22): per-mesh visibility
+// toggles over GLB mesh names, data-driven via data/clothing-layers.json.
+// No import cycle: clothing-layers.js imports nothing from this module.
+import { applyClothingToInstance } from './clothing-layers.js';
 // Creation Suite Pass: generated registry of baked customization overrides
 // (customization/tools/apply_customization.py). Empty map = exact no-op.
 import { ATTIRE_CUSTOMIZATIONS } from './attire-customizations.js';
@@ -1505,6 +1509,12 @@ class AssetManager {
         actions[name].play();
         actions[name].setEffectiveWeight(name === 'Idle' ? 1 : 0);
       }
+    }
+    // CLOTHING LAYERS (worker 64): apply the player's saved per-attire
+    // clothing visibility to this instance. Guarded + fire-and-forget: a
+    // missing config or error here must never break instance creation.
+    try { applyClothingToInstance(model, fighterId); } catch (e) {
+      console.warn('[WH] clothing hook failed:', (e && e.message) || e);
     }
     return { model, bones, mixer, actions, scale: 1.0 };
   }
