@@ -51,7 +51,7 @@ test('game.js banners are boundary-only', () => {
     .map((m) => m[1]);
   assert.ok(calls.length > 0, 'expected boundary banner calls in game.js');
   for (const c of calls) {
-    assert.match(c, /ROUND|FIGHT|K\.O\.|DOUBLE K\.O\.|RESET/,
+    assert.match(c, /ROUND|FIGHT|K\.O\.|DOUBLE K\.O\./,
       `game.js banner call is not a boundary announcement: banner(${c})`);
   }
 });
@@ -68,12 +68,20 @@ test('V-System UI methods are glow-only, surgeName is gone', () => {
   assert.ok(main.includes('setSoulReady'), 'main.js lacks setSoulReady');
   assert.ok(!src('game/js/game.js').includes('surgeName'),
     'game.js still calls surgeName');
+  assert.ok(!/\.surgeName\(/.test(src('game/js/brawler.js')),
+    'brawler.js still calls surgeName (dead since #1078)');
 });
 
-test("Trial's Seal boundary banner is kept", () => {
+test("Trial's Seal goes to the HUD note, never center-screen", () => {
+  // Owner immersion law, closed 2026-10-25: the keep-list is exhaustive
+  // (ROUND/FIGHT!/K.O. only), so the #1078-era seal keep is superseded.
+  // The seal still fires at round end; it just lands in the HUD note,
+  // which also restores visibility of the K.O. banner it used to overwrite.
   const soul = src('game/js/soul-systems.js');
-  assert.ok(soul.includes("_banner(LABELS.seal)"),
-    'seal boundary banner was removed; it must stay (round boundary)');
+  assert.ok(!/\.banner\(/.test(soul),
+    'soul-systems.js still calls banner()');
+  assert.ok(soul.includes("_hudNote(LABELS.seal)"),
+    'seal no longer reaches the HUD note');
   assert.ok(!soul.includes('_banner(LABELS.release)'),
     'release still banners mid-fight');
   assert.ok(!soul.includes('_banner(LABELS.reihou)'),

@@ -68,10 +68,12 @@ export class SoulSystems {
     if (!sealed) return null;
     this.seals[k]++; const v = pickVariant(w, 'seal');
     if (g.matchStats) g.matchStats.seals = { ...this.seals };
-    this._banner(LABELS.seal); return v || { id: 'seal' };
+    this._hudNote(LABELS.seal); return v || { id: 'seal' };
   }
-  _banner(t) { const ui = this.game && this.game.ui; if (ui && ui.banner) { try { ui.banner(t); } catch (e) { } } }
+  _hudNote(t) { const ui = this.game && this.game.ui; if (ui && ui.hudNote) { try { ui.hudNote(t); } catch (e) { } } }
   /* Mid-fight system glow (popup fix 2026-10-24): Tekken rule — a glow,
-     never center-screen text. _banner stays for the boundary-only seal. */
+     never center-screen text. The seal goes to the HUD note (owner
+     immersion law, closed 2026-10-25: ROUND/FIGHT!/K.O. only stay
+     center-screen); the seal count still lives in this.seals + matchStats. */
   _glow(kind) { const ui = this.game && this.game.ui; if (ui && ui.surgeFlash) { try { ui.surgeFlash(kind === 'reihou' ? 0x9fd8ff : 0xffd34d, 0xfff2b0); } catch (e) { } } }
 }

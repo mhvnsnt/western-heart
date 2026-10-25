@@ -462,7 +462,7 @@ export class BrawlerGame {
     p.yaw = Math.PI / 2;
     this.camYaw = Math.PI / 2;
     const done = () => {
-      this.ui.banner(st.name);
+      this.ui.hudNote(st.name);
       this._startZone(0);
     };
     if (this.hooks.onStageIntro) this.hooks.onStageIntro(i, done);
@@ -497,7 +497,7 @@ export class BrawlerGame {
         : def;
       const go = () => {
         this._zoneLive = true;
-        this.ui.banner(label);
+        this.ui.hudNote(label);
         this.ui.setNames(this.playerChar.name, label);
         this._spawnBoss(zone.boss, zone);
       };
@@ -505,7 +505,7 @@ export class BrawlerGame {
       else go();
     } else {
       this._zoneLive = true;
-      this.ui.banner(`ZONE ${z + 1} — ${this.stageDef.name}`);
+      this.ui.hudNote(`ZONE ${z + 1} — ${this.stageDef.name}`);
       this._queueWave(zone);
     }
   }
@@ -863,7 +863,12 @@ export class BrawlerGame {
         if (p.tryAttack('surge')) {
           audio.soulSurge(p.char.id);
           this.ui.surgeFlash(p.char.surge.color, p.char.surge.accent);
-          this.ui.surgeName(p.char.surge.name);
+          // The old surge-name writer is gone since #1078 (no such ui
+          // method, no #surge-name element): the surge name survives as
+          // a HUD note,
+          // never center-screen text (owner immersion law, closed
+          // 2026-10-25). This branch had no other text display.
+          this.ui.hudNote('SOUL SURGE — ' + p.char.surge.name);
         }
       }
       else if (act === 'transform') {
@@ -873,8 +878,10 @@ export class BrawlerGame {
         } else if (p.startSurgeForm()) {
           audio.soulSurge(p.char.id);
           this.ui.surgeFlash(p.char.surge.color, p.char.surge.accent);
-          this.ui.surgeName(p.char.surge.name);
-          this.ui.banner('SOUL SURGE — ' + p.char.surge.name);
+          // Dead surge-name call deleted (gone since #1078): the next
+          // line already posts the identical SOUL SURGE HUD note, so a
+          // replacement here would double-post the same note in one tick.
+          this.ui.hudNote('SOUL SURGE — ' + p.char.surge.name);
         }
       }
       else if (act === 'transform-down') {
@@ -1162,7 +1169,7 @@ export class BrawlerGame {
     const minions = this.enemies.filter((e) => !e.fighter.dead).length;
     if (s.spawnT <= 0 && minions < 4 && !this._dying) {
       s.spawnT = 11;
-      this.ui.banner('THE SPHERE SPITS OUT DEMONS');
+      this.ui.hudNote('THE SPHERE SPITS OUT DEMONS');
       for (let k = 0; k < 2; k++) {
         const a = Math.random() * Math.PI * 2;
         this.spawnQueue.push({
@@ -1255,12 +1262,12 @@ export class BrawlerGame {
     if (alive || unprocessedBossDeath || sphereAlive) return;
     if (!zone.boss && zone.waveIdx < zone.waves.length) {
       this._queueWave(zone);
-      this.ui.banner(`WAVE ${zone.waveIdx + 1}/${zone.waves.length}`);
+      this.ui.hudNote(`WAVE ${zone.waveIdx + 1}/${zone.waves.length}`);
       return;
     }
     if (this.zoneIdx + 1 < this.zones.length) {
       this.zoneState = 'advance';
-      this.ui.banner('PATH OPEN — PUSH FORWARD');
+      this.ui.hudNote('PATH OPEN — PUSH FORWARD');
       audio.bell();
     } else {
       this._stageClear();
@@ -1276,7 +1283,7 @@ export class BrawlerGame {
     if (bp.kind === 'masks' && bp.stage === 1) {
       // Devil Within's Heihachi clones: the first falls, THREE rise at once.
       bp.stage = 2;
-      this.ui.banner('THE MASKS MULTIPLY');
+      this.ui.hudNote('THE MASKS MULTIPLY');
       const zone = this.zones[this.zoneIdx];
       for (let k = 0; k < 3; k++) {
         this.spawnQueue.push({
@@ -1288,7 +1295,7 @@ export class BrawlerGame {
     } else if (bp.kind === 'shadow' && bp.stage === 1) {
       // True→Monstrous Ogre: the shadow refuses to fall — second form.
       bp.stage = 2;
-      this.ui.banner('THE SHADOW REFUSES TO FALL');
+      this.ui.hudNote('THE SHADOW REFUSES TO FALL');
       this.game.arena.shake(0.6, 0.5);
       const x = fp.x, z = fp.z;
       this.game.arena.scene.remove(e.fighter.root);
@@ -1317,7 +1324,7 @@ export class BrawlerGame {
     const i = this.stageIdx;
     const rank = this._rank();
     this.stats.rank[i] = rank;
-    this.ui.banner(`STAGE ${i + 1} CLEARED — RANK ${rank}`);
+    this.ui.hudNote(`STAGE ${i + 1} CLEARED — RANK ${rank}`);
     audio.bell();
     const next = () => {
       if (i + 1 >= this.content.stages.length) {
