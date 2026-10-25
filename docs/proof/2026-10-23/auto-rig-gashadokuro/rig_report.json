@@ -1,0 +1,55 @@
+{
+ "input": "roster/kuma/attires/attire1/source/kuma-a1.glb",
+ "output": "roster/kuma/attires/attire1/source/kuma-a1-rigged.glb",
+ "output_exists": true,
+ "output_bytes": 42871868,
+ "tool": "tools/auto_rig/rig_tripo_static.py (gamerig backend, CMU donor, smooth-weights gate) \u2014 final stages (validate/anim-check-after/renders/encode) completed from the pipeline workdir after two runtime restarts killed the monolithic run mid-flight; every stage is the pipeline's own code, no model edits",
+ "validate": {
+  "checks": {
+   "valid_gltf": true,
+   "skinned_mesh": true,
+   "bones_present": true,
+   "height_ok": true,
+   "fingers_symmetric": true,
+   "stretch_ok": "unknown (no clips supplied)"
+  },
+  "pass": true,
+  "missing_bones": [],
+  "height_m": 2.1
+ },
+ "anim_check_before_smoothing": {
+  "CMU135_04_boxing": {
+   "pass": false,
+   "failures": [
+    "2 bone(s) vary > 2.0% of rest length across frames (worst: Hips->RightPelvis 394.5%) \u2014 rigid bones must not stretch",
+    "p99.9 triangle-edge stretch 26.07 > 2.5 (rest-pose ratio; edges < 12.4 mm excluded)",
+    "80 vertex displacement spike(s) (> 0.35 m in one step, or > 8.0x the frame median and > 0.10 m) \u2014 tearing"
+   ],
+   "edge_stretch_p999": 26.069
+  }
+ },
+ "anim_check_after_smoothing": {
+  "CMU135_04_boxing": {
+   "pass": false,
+   "failures": [
+    "2 bone(s) vary > 2.0% of rest length across frames (worst: Hips->RightPelvis 394.5%) \u2014 rigid bones must not stretch",
+    "p99.9 triangle-edge stretch 4.05 > 2.5 (rest-pose ratio; edges < 12.4 mm excluded)",
+    "80 vertex displacement spike(s) (> 0.35 m in one step, or > 8.0x the frame median and > 0.10 m) \u2014 tearing"
+   ],
+   "edge_stretch_p999": 4.046
+  }
+ },
+ "pose_renders": [
+  "pose_t0.00_back.png",
+  "pose_t0.00_front.png",
+  "pose_t0.00_side.png",
+  "pose_t0.17_back.png",
+  "pose_t0.17_front.png",
+  "pose_t0.17_side.png",
+  "pose_t0.33_back.png",
+  "pose_t0.33_front.png",
+  "pose_t0.33_side.png"
+ ],
+ "verdict_note": true,
+ "wire_line": "'gashadokuro': 'roster/kuma/attires/attire1/source/kuma-a1-rigged.glb'"
+}

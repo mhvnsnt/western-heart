@@ -27,6 +27,7 @@ export class Preview3D {
     this.clock = new THREE.Clock();
     this.mixers = [];
     this.proxyRings = new Map();   // slotId -> ring mesh
+    this.partMeshes = new Map();   // slotId -> loaded GLB group (real part geometry)
     this.dummy = null;
     this.dome = null;              // Doc Frank dome preview state (see enterDomePreview)
     this.domeActive = false;
@@ -141,6 +142,7 @@ export class Preview3D {
     if(this.fighter){ this.scene.remove(this.fighter); this._disposeObj(this.fighter); this.fighter=null; this.mats=null; this.baseColors=null; this.bones=null; }
     if(this.dummy){ this.scene.remove(this.dummy); this.dummy=null; }
     this.clearAllProxies();
+    this.clearAllPartMeshes();
     this.mixers = [];
     new GLTFLoader().load(url, glb=>{
       this.fighter = glb.scene;
@@ -253,6 +255,53 @@ export class Preview3D {
     if(r){ this.scene.remove(r); r.geometry.dispose(); r.material.dispose(); this.proxyRings.delete(slotId); }
   }
   clearAllProxies(){ [...this.proxyRings.keys()].forEach(k=>this.clearProxy(k)); }
+
+  /* ---- real part meshes (worker 38): geometryReady parts from the suite
+     library attach as actual GLBs at the category's bone anchor. Position is
+     auto-fit: bbox center->anchor for most categories; full-body parts
+     (part of the figure itself) scale to the fighter's height so they read
+     as the body. On load failure the proxy ring stands in — the UI badges
+     show GEOMETRY PENDING for anything without a real mesh. */
+  setPartMesh(slotId, glbUrl, anchorName, label, catKey){
+    this.clearPartMesh(slotId); this.clearProxy(slotId);
+    new GLTFLoader().load(glbUrl,
+      g=>{
+        const grp = g.scene;
+        const anchor = this.fighter && this.fighter.getObjectByName(anchorName);
+        const box = new THREE.Box3().setFromObject(grp);
+        const size = new THREE.Vector3(); box.getSize(size);
+        const ctr = new THREE.Vector3(); box.getCenter(ctr);
+        if(catKey==='fullbody' && this.fighter){
+          // full-body part: scale to fighter height, floor at origin
+          const fh = new THREE.Box3().setFromObject(this.fighter);
+          const fs = new THREE.Vector3(); fh.getSize(fs);
+          const s = fs.y/Math.max(size.y,1e-6);
+          grp.scale.setScalar(s);
+          box.setFromObject(grp); box.getCenter(ctr);
+          grp.position.sub(ctr);
+          grp.position.y += box.min.y; // floor
+          this.fighter.visible = false;
+        } else if(anchor){
+          // center the part on the bone anchor
+          grp.position.add(new THREE.Vector3().copy(anchor.getWorldPosition(new THREE.Vector3())).sub(ctr));
+        } else {
+          grp.position.set(0,1.1,0);
+        }
+        this.scene.add(grp);
+        this.partMeshes.set(slotId, grp);
+      },
+      undefined,
+      ()=>{ this.setProxy(slotId, anchorName, '#7fd4ff', label); }  // fallback: proxy ring
+    );
+  }
+  clearPartMesh(slotId){
+    const m = this.partMeshes.get(slotId);
+    if(m){ this.scene.remove(m); m.traverse(o=>{ if(o.geometry) o.geometry.dispose(); }); this.partMeshes.delete(slotId); }
+  }
+  clearAllPartMeshes(){
+    [...this.partMeshes.keys()].forEach(k=>this.clearPartMesh(k));
+    if(this.fighter) this.fighter.visible = true;
+  }
 
   /* ---- Doc Frank Wowomomo dome preview (Attire 2 dome editor) ----
      The v5 dome GLB was built in Attire 2's base-model space

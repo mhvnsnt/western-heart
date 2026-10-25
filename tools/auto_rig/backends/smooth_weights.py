@@ -94,7 +94,9 @@ def evaluate(model, clip_frames):
         srest = _skin_fast(bind_skin, prim, pos_h)
         rest_e = np.linalg.norm(srest[edges[:, 0]] - srest[edges[:, 1]],
                                 axis=1)
-        keep = rest_e >= 0.0098
+        # Skip near-degenerate edges. Dense Tripo meshes (~1M verts, e.g. Waterfall) have no edge
+        # over 1 cm, so the cutoff drops to half the median edge there instead of keeping nothing.
+        keep = rest_e >= min(0.0098, 0.5 * float(np.median(rest_e)) if len(rest_e) else 0.0098)
         edges, rest_e = edges[keep], rest_e[keep]
         maxr = np.zeros(len(edges))
         for fs in frame_skins:

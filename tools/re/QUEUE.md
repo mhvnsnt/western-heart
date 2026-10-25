@@ -1,6 +1,6 @@
 # RE QUEUE — every teardown game, lined up for the Ghidra+MCP treatment
 
-**Updated:** 2026-10-19. Grounded in `teardown/TEARDOWN-STATUS.md` + this week's decode lanes.
+**Updated:** 2026-10-19; Tekken 5 added 2026-10-23 (T5 extraction lane). Grounded in `teardown/TEARDOWN-STATUS.md` + this week's decode lanes.
 Rule: one game at a time through the bench. Urban Reign is the proof run.
 
 ## The queue (priority order)
@@ -22,6 +22,7 @@ Rule: one game at a time through the bench. Urban Reign is the proof run.
 | 13 | Dead or Alive 6 | PC | ~10% | Acquire binary (50GB+) | BLOCKED — acquisition |
 | 14 | Tekken 8 | PC | — | Acquire / assess | BLOCKED — acquisition |
 | 15 | Def Jam: Fight for NY | PS2/Xbox | — | Assess teardown dir | QUEUED — assess |
+| 16 | Tekken 5 | PS2 | ~15% | romD file-table RE (TK5DATA2.BIN → 498 motion .dats) + TK5DATA0/1/3 container RE + SLUS_210.59 loader (MIPS) | QUEUED — survey done 2026-10-23; DW anims + motion manifest in `teardown/tekken5/` |
 | 16 | Street Fighter EX series / 3D SF games | PS1/PS2 | — | Assess teardown dirs | QUEUED — assess |
 
 ## WWE 2K18 / 2K19 note (owner 2026-10-19)

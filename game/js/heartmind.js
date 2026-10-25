@@ -25,6 +25,7 @@
    ============================================================ */
 import { scaledAi, whGetRecords, whSetRecord } from './modes.js';
 import { playStoryBeats, setModeTag, showLoading, hideLoading } from './menus.js';
+import { roadInto, createPartyState, switchPartyFighter, recordPartyStageClear, HM_RAGDOLL_CONTEXTS } from './heartmind-campaign.js';
 import { BrawlerGame } from './brawler.js';
 
 /* Filled by the teardown lane. Consumed 1:1 when present. */
@@ -56,6 +57,36 @@ export const HEARTMIND_STAGES = [
     sub: 'Yourself, unmasked.',
     waves: 0, diff: 0.90, restore: 0.35 }, // boss only: the shadow self
 ];
+
+
+/* ============================================================
+   SHRINE体系 — the shrine terminal segment (owner 2026-10-24).
+   At the Still Point (stage 5, octagonal-shrine), before the
+   shadow-self fight, the shrine terminal reads the descending
+   soul. Applies to EVERY fighter: deep stories, nine-soul
+   stories, and the generic frame all pass through the brawler's onStageIntro,
+   so one wiring covers all of them. In-game name is
+   Shrine体系 (Shrine + 体系 "system", owner-locked kanji).
+   ============================================================ */
+export const SHRINE_OS_SEGMENT = {
+  key: 'shrine-os',
+  name: 'Shrine体系',
+  kanji: '体系',
+  kanjiReading: 'taikei',
+  stage: 'octagonal-shrine',
+  stageName: 'THE STILL POINT',
+  sideGames: 'side-games.html#shrine-os',
+  note: 'Owner-directed 2026-10-24: shrine terminal segment, played at the stillpoint stage for every fighter.',
+};
+
+export function shrineOsBeat(charId) {
+  return [
+    { name: 'SHRINE体系', charId,
+      text: 'The terminal wakes as you reach the still point. Sixteen colors, one voice: it reads you the way the shrine reads every arriving soul — three words, no more.' },
+    { name: 'SHRINE体系', charId,
+      text: 'The words are yours to carry into the fight. The shadow is already listening.' },
+  ];
+}
 
 /* Phase-1 proprietary wave table: echoes per stage. When HM_TEARDOWN
    lands, waveTables replaces this 1:1. */
@@ -317,10 +348,7 @@ export function getHeartmindStory(char) {
 }
 
 /* ============================================================
-   Controller — the descent, story-framed.
-   The brawler (brawler.js) owns the Devil Within mechanics;
-   this controller owns the WH proprietary layer: select flow,
-   per-character stories, records. Character select, not forced Jin.
+   Controller — wires the descent into Game + ModeController patterns.
    ============================================================ */
 export class HeartmindController {
   constructor(deps) {
@@ -331,15 +359,16 @@ export class HeartmindController {
     this.roster = deps.roster;
     this.getChar = deps.getChar;
     this.audio = deps.audio;
-    this.run = null;      // { fighterId }
+    this.run = null;      // { fighterId, stage, hp, wave }
     this._lastCard = null;
-    this._brawler = null;
-    this._story = null;
+    this._shadow = null;
+    this.party = null;      // campaign layer (Lane 6): party state, or null
+    this._inFight = false;  // campaign layer: true while a brawler descent is live
+    this._brawler = null;   // Devil Within brawler (worker 20): owns the descent fight
   }
   clear() {
     if (this._brawler) { const b = this._brawler; this._brawler = null; b.stop(); }
-    this.run = null; this._lastCard = null; this._story = null;
-    setModeTag('');
+    this.run = null; this._lastCard = null; this._shadow = null; this.party = null; this._inFight = false; setModeTag('');
   }
 
   /* ---- select flow (mirrors ModeController, standalone) ---- */
@@ -368,12 +397,15 @@ export class HeartmindController {
   async start(fighterId) {
     const char = this.getChar(fighterId);
     if (!char) return;
-    this.run = { fighterId };
-    this._story = getHeartmindStory(char);
+    this.run = { fighterId, stage: 0, hp: null, wave: 0, road: null };
+    this.party = createPartyState([fighterId]);
+    this._shadow = buildShadowSelf(char);
+    const story = getHeartmindStory(char);
+    this._story = story;
     setModeTag('THE HEART AND MIND INSIDE');
     showLoading('DESCENDING…');
     // Entry cutscene over the select screen, then the brawler takes over.
-    playStoryBeats(this._story.entry, () => this._beginBrawler(), this._story.title);
+    playStoryBeats(story.entry, () => this._beginBrawler(), story.title);
   }
 
   _beginBrawler() {
@@ -401,10 +433,14 @@ export class HeartmindController {
       onStageIntro: (i, done) => {
         const st = HEARTMIND_STAGES[i];
         const beat = story.beats[st.key];
+        // Shrine体系 at the Still Point: the shrine terminal reads
+        // the descending soul before the shadow fight (owner 2026-10-24).
+        const shrineBeat = st.key === 'stillpoint' ? shrineOsBeat(fighterId) : [];
         playStoryBeats([
           { name: st.name, charId: fighterId,
             text: `${st.sub} Stage ${st.n} of 5.` },
           ...(beat || []),
+          ...shrineBeat,
         ], done, st.name);
       },
       onBossIntro: (stageIdx, kind, label, done) => {
@@ -420,6 +456,7 @@ export class HeartmindController {
         const key = 'heartmind_' + fighterId;
         const rec = whGetRecords();
         if (st.n > (rec[key] || 0)) whSetRecord(key, st.n);
+        if (this.party) recordPartyStageClear(this.party, fighterId, st.key);
         // a breath before the next descent
         setTimeout(done, 1200);
       },
@@ -458,6 +495,8 @@ export class HeartmindController {
     });
   }
 
+  _complete() { this.clear(); }
+
   rematch() {
     // Restart the descent from the result screen.
     if (this.run) {
@@ -466,4 +505,65 @@ export class HeartmindController {
       this.start(id);
     }
   }
+
+  /* ---- campaign layer (Lane 6: roads, party, journal) ----
+     Party switching is allowed BETWEEN fights only, never
+     mid-fight (Scenario Campaign model: choose your fighter for
+     the next stage, don't swap mid-combo). The shadow self
+     follows the active fighter: it is "yourself, unmasked", so
+     switching fighters rebuilds it. setParty() preserves the
+     current fighter's live run progress. */
+  setParty(fighterIds) {
+    const current = this.run
+      ? { stage: this.run.stage, wave: this.run.wave, hp: this.run.hp }
+      : null;
+    // Keep journal clears the current fighter already earned.
+    const oldCleared = (this.party && this.run && this.party.progress[this.run.fighterId])
+      ? this.party.progress[this.run.fighterId].cleared || []
+      : [];
+    this.party = createPartyState(fighterIds);
+    if (current && this.run && this.party.progress[this.run.fighterId]) {
+      this.party.progress[this.run.fighterId] = { ...current, cleared: oldCleared };
+    }
+    return this.party;
+  }
+
+  switchFighter(fighterId) {
+    if (!this.run) return { ok: false, reason: 'no-run' };
+    if (this._inFight) return { ok: false, reason: 'in-fight' };
+    if (this.party) {
+      this.party.progress[this.run.fighterId] = {
+        stage: this.run.stage, wave: this.run.wave, hp: this.run.hp,
+        cleared: (this.party.progress[this.run.fighterId] || {}).cleared || [],
+      };
+    } else {
+      this.party = createPartyState([this.run.fighterId, fighterId]);
+      this.party.progress[this.run.fighterId] = {
+        stage: this.run.stage, wave: this.run.wave, hp: this.run.hp, cleared: [],
+      };
+    }
+    const res = switchPartyFighter(this.party, fighterId);
+    if (!res.ok) return res;
+    this.run.fighterId = fighterId;
+    this.run.stage = res.progress.stage;
+    this.run.wave = res.progress.wave;
+    this.run.hp = res.progress.hp;
+    const char = this.getChar(fighterId);
+    if (char) {
+      this._story = getHeartmindStory(char);
+      this._shadow = buildShadowSelf(char);
+    }
+    this.run.road = roadInto(HEARTMIND_STAGES[this.run.stage].key);
+    return { ok: true, fighterId, stage: HEARTMIND_STAGES[this.run.stage].key, road: this.run.road };
+  }
+
+  /* The road the current stage was reached by (null at the
+     Threshold, where the descent begins). The UI lane may show
+     its `walk` line on the stage card. */
+  currentRoad() {
+    return (this.run && this.run.road) || null;
+  }
+
+  /* Ragdoll contexts this mode allows (physics lane consumes). */
+  ragdollContexts() { return HM_RAGDOLL_CONTEXTS; }
 }

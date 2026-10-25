@@ -9,8 +9,10 @@ touching Zen.
 
 - The wired model is a static, unrigged Tripo (1 mesh, no skeleton). It gets
   its rig at the rig stage like the other Tripo mains. Fighting base stays
-  Julia's bank (`zen → julia`) — the model swap does not change his moveset
-  or bank.
+  bank (`zen → UNMAPPED`, owner decision 2026-10-24: Zen is NEITHER Heihachi
+  NOR Julia — base chain Eleven/Twelve -> Dural -> Zen canon; no Dural bank
+  exists yet, so FIGHTER_BANK zen is null until VF5 Dural motion lands).
+  The model swap does not change his interim moveset data.
 - The model's clothes are PART OF HIS BODY (he is a spirit body — the
   garments are not closed clothing). Rig and deform them as body, not as
   cloth shells.
