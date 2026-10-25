@@ -103,36 +103,71 @@ test('Pantera RP2 (2) plays row:99 (T3 b+2) and travels forward ~0.15 m, mirrore
   assert.ok(m.x < -0.13 && m.x > -0.17, `RP2 mirrored travelled ${m.x} m`);
 });
 
-test('Pantera f,F+2 Beast Elbow (RP2 dash elbow): donor clip row:111 travels forward (0.15 m net, 0.30 m peak)', async () => {
+test('Pantera f,F+2 Beast Elbow (RP2 dash elbow): T3 dash row:203 travels forward (0.85 m net, 0.86 m peak)', async () => {
   const f = await fighter();
   const r = simulate(f, 'f,F+2');
-  assert.equal(r.plan.name, 'row:111', `Beast Elbow plan: ${r.plan.name} (${r.plan.kind})`);
-  assert.equal(r.plan.kind, 'donor', 'Beast Elbow has no own T3 row; the donor is King\'s own f+2 row (same direction + RP2 button)');
-  // Decoded row:111 travel (measured from rows.pack.json root_t): forward
-  // 0.30 m at peak, settling to 0.15 m at clip end; lateral 0.138 m.
-  assert.ok(r.x > 0.13 && r.x < 0.17, `Beast Elbow travelled ${r.x} m, expected 0.13-0.17`);
-  assert.ok(r.peakX > 0.28 && r.peakX < 0.32, `Beast Elbow peak ${r.peakX} m, expected 0.28-0.32`);
-  assert.ok(r.z < -0.12 && r.z > -0.16, `Beast Elbow lateral ${r.z} m, expected ~-0.14`);
+  assert.equal(r.plan.name, 'row:203', `Beast Elbow plan: ${r.plan.name} (${r.plan.kind})`);
+  assert.equal(r.plan.kind, 'anim', 'Beast Elbow has its own T3 dash row (divmot03 branch graph: dash state row 3, RP -> row 203)');
+  // Row 203 is T3 f,f+2 K's Flicker: damage 20, mid (attack_word 0x217),
+  // RP2 button, armR limb, grounded (feet lifts 0.07/0.08 m), travel
+  // measured through _rootMotionApply: 0.847 m forward, 0.864 m peak,
+  // -0.399 m lateral. The old donor row:111 (T3 f+2, HIGH step punch) and
+  // the #988 row:0 (non-strike clip) are both wrong for a dash input.
+  assert.ok(r.x > 0.83 && r.x < 0.87, `Beast Elbow travelled ${r.x} m, expected 0.83-0.87`);
+  assert.ok(r.peakX > 0.84 && r.peakX < 0.88, `Beast Elbow peak ${r.peakX} m, expected 0.84-0.88`);
+  assert.ok(r.z < -0.38 && r.z > -0.42, `Beast Elbow lateral ${r.z} m, expected ~-0.40`);
+  // Mirrored when facing left (same pattern as the RP2 test).
+  const m = simulate(f, 'f,F+2', -1);
+  assert.ok(m.x < -0.83 && m.x > -0.87, `Beast Elbow mirrored travelled ${m.x} m`);
   // Whiff vs hit: root motion never reads hasHit, so both travel identically.
   f.hasHit = true;
   const hit = simulate(f, 'f,F+2');
   assert.ok(Math.abs(hit.x - r.x) < 1e-9, `hit (${hit.x}) != whiff (${r.x})`);
 });
 
-test('Pantera f,F+4 Konvict Kick (RK4): donor clip row:114 travels forward ~0.48 m', async () => {
+test('Pantera f,F+4 Konvict Kick (RK4): T3 dash row:216 travels forward ~0.41 m, peak ~0.60 m', async () => {
   const f = await fighter();
   const r = simulate(f, 'f,F+4');
-  // Konvict Kick has no own T3 row; the donor is King's own f+4 row
-  // (same direction + RK4 button). Classification: the hitbox lane
+  // Row 216 is T3 f,f+4 Konvict Kick: damage 30, mid (attack_word 0x217),
+  // RK4 button, legR limb, standing, travel measured through
+  // _rootMotionApply: 0.411 m forward, 0.604 m peak, -0.196 m lateral.
+  // The old donor row:114 (T3 f+4, HIGH step kick) and the #988 row:69
+  // (u+4 jump kick in place, 0.000 m travel) are both wrong for a dash input.
+  // Classification note (kept from the donor version): the hitbox lane
   // (main, 2026-10-24) reads the level from T7 hit_level 'mid' when
   // the move carries no top-level hit_level or decoded hit_words
   // entry, so this is a mid kick, not a throw — the T8 table's tgt
   // '(t)' (throw transition on counter-hit) no longer misclassifies
   // the base kick, because the decoded/T7 level wins first.
-  assert.equal(r.plan.name, 'row:114', `Konvict Kick plan: ${r.plan.name} (${r.plan.kind})`);
-  assert.equal(r.plan.kind, 'donor', 'Konvict Kick has no own T3 row; the donor is King\'s own f+4 row (same direction + RK4 button)');
-  assert.ok(r.x > 0.46 && r.x < 0.50, `Konvict Kick travelled ${r.x} m, expected 0.46-0.50`);
-  assert.ok(r.z < -0.20 && r.z > -0.25, `Konvict Kick lateral ${r.z} m, expected ~-0.225`);
+  assert.equal(r.plan.name, 'row:216', `Konvict Kick plan: ${r.plan.name} (${r.plan.kind})`);
+  assert.equal(r.plan.kind, 'anim', 'Konvict Kick has its own T3 dash row (divmot03 branch graph: dash state row 3, RK -> row 216)');
+  assert.ok(r.x > 0.39 && r.x < 0.43, `Konvict Kick travelled ${r.x} m, expected 0.39-0.43`);
+  assert.ok(r.peakX > 0.58 && r.peakX < 0.62, `Konvict Kick peak ${r.peakX} m, expected 0.58-0.62`);
+  assert.ok(r.z < -0.18 && r.z > -0.22, `Konvict Kick lateral ${r.z} m, expected ~-0.20`);
+});
+
+test('Pantera dash shadow entries play the same T3 dash rows (f,F+2~t7.king -> row:203, f,F+4~t7.king + CH.f,F+4 -> row:216)', async () => {
+  const f = await fighter();
+  // The ~t7.king entries carry the same T7 dash moves (king_49/king_52).
+  // Their old anim_t3 fields (260 = a 10-hit string step; 69 = the u+4
+  // jump kick) were wrong for dash inputs — and the engine never even
+  // played those rows: 'nearest' matches defer the anim tier past the
+  // donor tier (fighter.js _attackClipPlan), so the shadows actually
+  // played donors 111/114. CH.f,F+4's first hit IS the Konvict
+  // Kick, so row:216 is its kick clip; the DDT follow-up is a separate
+  // mapping question, not claimed solved here.
+  const a = simulate(f, 'f,F+2~t7.king');
+  assert.equal(a.plan.name, 'row:203', `f,F+2~t7.king plan: ${a.plan.name} (${a.plan.kind})`);
+  assert.equal(a.plan.kind, 'anim');
+  assert.ok(a.x > 0.83 && a.x < 0.87, `f,F+2~t7.king travelled ${a.x} m, expected 0.83-0.87`);
+  const b = simulate(f, 'f,F+4~t7.king');
+  assert.equal(b.plan.name, 'row:216', `f,F+4~t7.king plan: ${b.plan.name} (${b.plan.kind})`);
+  assert.equal(b.plan.kind, 'anim');
+  assert.ok(b.x > 0.39 && b.x < 0.43, `f,F+4~t7.king travelled ${b.x} m, expected 0.39-0.43`);
+  const c = simulate(f, 'CH.f,F+4');
+  assert.equal(c.plan.name, 'row:216', `CH.f,F+4 plan: ${c.plan.name} (${c.plan.kind})`);
+  assert.equal(c.plan.kind, 'anim');
+  assert.ok(c.x > 0.39 && c.x < 0.43, `CH.f,F+4 travelled ${c.x} m, expected 0.39-0.43`);
 });
 
 test('Generic fallback clips get NO root motion (heavy/grab are the row:230 throw-execution clip)', async () => {
