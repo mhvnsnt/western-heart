@@ -3028,6 +3028,24 @@ tools/vf5/merge_wol_head.py (new). Additions only.
 **Deviations:** none from the directive — all three items are wired where they can run; GPU/Python-only parts (Taichi SurRoL, Newton/Warp, Cosmos-H Dreams, NDG trained network) are evaluated and documented as [AWAITS GPU LANE]/[FUTURE], not silently dropped. NDG is CC BY-NC: technique reference only, zero code copied.
 
 **Process note:** mid-task the shared checkout `~/workspace/wh-repo` was concurrently switched to another agent's branch (`feature/cloth-xpbd-20261023`) with their uncommitted work; my uncommitted changes were extracted as a verified-pure patch to /tmp/softbody-save and all further work continued in the clean full worktree `~/workspace/wh-softbody` (67,875 files == HEAD, verified). Their work was not touched.
+## 2026-10-22 — worker 58: archive Buffalo Bill A1/A2 + Theory A1/A2/A3 (Tripo immutable originals)
+- Archived 5 Tripo pulls as immutable source originals, dorowani #603 pattern:
+  `roster/buffalo-bill/attires/attire1/source/buffalo-bill-a1.glb` (20,391,004 bytes, fantasy character, ram horns),
+  `roster/buffalo-bill/attires/attire2/source/buffalo-bill-a2.glb` (21,441,832 bytes, horned humanoid, ram horns),
+  `roster/theory/attires/attire1/source/theory-a1.glb` (22,369,448 bytes, gothic cat girl),
+  `roster/theory/attires/attire2/source/theory-a2.glb` (18,773,404 bytes, superhero red cape),
+  `roster/theory/attires/attire3/source/theory-a3.glb` (20,769,628 bytes, dark fantasy spiked),
+  each with `manifest.json` (Tripo project UUID, share URL, byte/magic verification).
+- Proof renders: `docs/proof/buffalo-bill-theory-2026-10-22/` (5 T-pose PNGs, 1024x1024, visually verified).
+- Research note: `docs/research/buffalo-bill-theory-intake-2026-10-22.md`.
+- Immutable-original tags on archive commit: `buffalo-bill-a1-original`, `buffalo-bill-a2-original`,
+  `theory-a1-original`, `theory-a2-original`, `theory-a3-original`.
+- No canon entries invented — archive only; canon bridges deferred to owner.
+
+### Addendum — Theory Attire 4 (same session)
+- Archived `roster/theory/attires/attire4/source/theory-a4.glb` (21,511,628 bytes, black leather outfit 3d model,
+  Tripo owner `eqqq57218`) + `manifest.json` + T-pose proof `docs/proof/buffalo-bill-theory-2026-10-22/theory-a4.png`
+  (visually verified). Intake note + tag list updated (`theory-a4-original`).
 ## 2026-10-24 — 100% wiring pass: already-decoded extraction data into movesets + library (one PR)
 
 - MOT.BIN clip tables wired: kinpo (asa, 861 resolved + 1,603 unmapped 0x8000 + 4,731 cancel links), burger (bob, 667 + 1,658 + 4,267), purplerain (lee, 710 + 1,593 + 4,813); cancel links appended to pond (frv, +4,670) and ryusan (dnc, +4,119). Playable wiring stays NONE — tables are file keys, not playable WH move animations.
