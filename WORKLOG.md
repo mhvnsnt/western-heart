@@ -1,3 +1,17 @@
+## 2026-10-24 — Anim-motion audit follow-up: LP1+RP2 (1+2) chord rewires for demonio + diablo (ANIM-MOTION LANE)
+
+**Why:** Top-donor scan after the main audit showed the `1+2__main` chord moves as the largest remaining fixable donor sources (7 fighters, 102 HARD donees + 7 HARD sources, all playing jump clips). The T3 tables attach the current rows to T3's own 1+2 (king 35, bryan 41, heihachi 37, jin 32, yoshi 265), so the current rows are T3-own attachments — but they measure as jump clips for standing strikes (except yoshi 265).
+
+**What:** 2 rewires, same surgical pattern as the main audit (only `t3_row`, the `(T3 <bank> rNN)` name reference, and `anim_ref` changed; no damage, startup, T7/T8 fields, slots, or other fields touched; byte-verified: inverse-in-block restores the original files byte-for-byte):
+- demonio `1+2__main`: jin 32 → 92. Provenance: demonio moves `d+1+2` and `1+2~t3.jin` (1+2 variant) use row 92. Standing, level h, dominant armL (audit ext 0.53/0.38), travel 0.21, active 10 vs startup 12. Filed level `mmh` (no single-level truth in the audit).
+- diablo `1+2__main`: heihachi 37 → 133. Provenance: T3 table `b_r133` (directional LP+RP) + diablo move `b_r133`. Standing, level m, dominant armL (audit ext armL 0.28 / armR 0.07, disclosed), travel 0.23, active 10 vs startup 12.
+
+**Results (audit tool, same code both sides, current main movesets):** demonio pressable HARD 174 → 161 (−13: 4 notation donees + 9 donor donees), diablo 156 → 134 (−22: 4 notation + 18 donor). Both sources CLEAN. ZERO regressions; no move changed rows except 32 → 92 and 37 → 133. No bindings needed (demonio donees all standing-expect; diablo's only non-standing donees are WS strikes, suited by a standing chord row; neither row has a jumping donee).
+
+**UNMAPPED with file-absence evidence (no verified standing chord row in-bank):** pantera (every standing chord candidate has LP+RP provenance but fails a hard criterion: 143 via pantera b~t3.king.4 fails timing 1.8x; 97 fails level + timing 1.8x; 116/131 fail timing 2.25x + level; 227 fails limb + travel 0.91); burger + skull (bryan 129 fails the audit limb check — dominant armR vs filed armL, a jump-HARD for limb-HARD trade, not a fix; 132 is a back move; 108 level + limb; 116 level + timing + provenance); kinpo + scimitar (jin 134 is a back move + limb fail + travel 0.58; 92/105 fail timing — active 10 vs startup 16/18). **No change needed:** phantom row 265 passes the audit (standing, m, active 22 = startup 22, zero flags; all 33 donees CLEAN) — rewiring would risk 33 clean donees.
+
+**Docs:** `docs/anim/ANIM-MOTION-AUDIT-2026-10-24.md` (follow-up section appended; stale "demonio NO changes" line corrected), `docs/anim/PROCEDURAL_AUDIT.md` (T3-use row appended). Simulation/scan proof only — not play-verified.
+
 ## 2026-10-24 — Anim-motion audit follow-up: test pins updated to the corrected rows (ANIM-MOTION LANE)
 
 **Why:** CI `game-unit-tests` failed on PR #1022 only because three assertions pinned the OLD buggy rows. The pins enshrined the bugs: row 44 is a jumping-1 clip (feet 0.75/0.78 m off ground at frame 0), not a standing jab; row 203 is a lunging ducking straight (0.95 m travel, hips to 0.61 m), not a jab.
@@ -2303,6 +2317,41 @@ On-main files NOT touched: worker 37's `js/creation-flow.js` + `js/art.js`
 - Full log: `docs/decisions/2026-10-22-kinpo-repoint-w50.md` (branch
   `w50/kinpo-repoint`).
 
+## 2026-10-22 ~18:30 CDT — worker 67: Negativo archive batch (A1/A2) + CornerStone A1 + per-attire eye glow
+
+- **Archive (Dorowani #603 pattern):** three Tripo originals archived byte-identical
+  (sha256-verified) with manifests + immutable annotated tags ("Restore point:
+  these bytes never change"):
+  - `roster/negativo/attires/attire1/source/negativo-a1-futuristic-superhero.glb`
+    (23,252,660 B) + `manifest.json` — tag `negativo-a1-original`
+  - `roster/negativo/attires/attire2/source/negativo-a2-sci-fi-armored-suit.glb`
+    (27,085,484 B) + `manifest.json` — tag `negativo-a2-original`
+  - `roster/ryuji-rock/attires/attire1/source/ryuji-rock-a1-tattooed-man.glb`
+    (18,872,720 B) + `manifest.json` — tag `ryuji-rock-a1-original` (WH name
+    CornerStone; internal id stays `ryuji-rock`). Lands the long-pending
+    ryuji-rock attire1 slot.
+  - All three are unrigged statics (1 mesh, 0 skins) — archive only, NOT wired
+    into MODEL_URLS (invisible-fighter guard).
+- **Eye glow (owner spec 2026-10-22):** per-attire emissive eyes, data-driven in
+  the `'negativo'` ladder in `game/js/attires.js` — Attire 1 RED (`0xff2222`),
+  Attire 2 (before the trials) WHITE (`0xffffff`). Eye meshes identified from the
+  model: `n3g4tiv0.glb`'s dedicated eye material `ModelEyes_Material028`.
+  Renderer hook: `assets.js createInstance` 5th param `eyeGlow`, applied after
+  tint so glow wins; fight path via `resolveFighterAttire` → `this.char.eyeGlow`,
+  preview path via `attireEyeGlow(c, modelId)`. Attire 2 slot is `pending: true`
+  (rig not landed) — `selectableAttires()` hides it from the picker.
+- **Standing directive logged:** owner 2026-10-22 "For ALL future Tripo pulls —
+  AUTO-ARCHIVE to the repo. Don't ask, just wire them up every time." Added
+  "Archive (automatic)" section to `tools/tripo-intake/README.md` for worker 61's
+  intake inventory.
+- Files: `game/js/attires.js`, `game/js/assets.js`, `game/js/fighter.js`,
+  `game/js/select-screen.js`, `game/js/roster-full.js`, `roster/negativo/README.md`
+  (new), `tools/tripo-intake/README.md`, `docs/decisions/2026-10-22-negativo-eye-glow-archive.md`
+  (new), `docs/research/tripo-intake-2026-10-22-negativo-cornerstone.md` (new).
+- Verification: `node --check` on all five edited JS files; eye-glow match logic
+  verified against the real `n3g4tiv0.glb` material table (see decision doc);
+  model-key-guard ownership table untouched (no MODEL_URLS changes).
+- MERGE FREEZE: PR branch pushed, merge-ready, NOT merged.
 ## 2026-10-23 ~07:30 CDT — SmutBase intake wave 6: RYUSAN + TOBI full pipeline
 
 - **RYUSAN** (WH name for SmutBase Mina Ashido intake, `roster/mina-ashido/`): full pipeline —
@@ -2970,3 +3019,146 @@ renders complete + uploaded.
 
 Files: docs/decisions/2026-10-22-vf5-w57-redispatch.md (new),
 tools/vf5/merge_wol_head.py (new). Additions only.
+## 2026-10-23 — Soft-body nextgen lane (SurRoL MPM / Isaac Healthcare Newton / Neural Deformation Gradients)
+
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate"
+
+**What was evaluated (all three, no cherry-picking):**
+- **SurRoL** (arXiv:2402.01181v1, Yang et al.): MPM + Neo-Hookean soft-body surgical sim in Taichi (GPU parallel). Open source (med-air/SurRoL). Verdict: Taichi cannot run in the browser (Python-embedded DSL, CUDA/Metal/Vulkan targets, no WASM target) — the portable part is the algorithm core (Lagrangian particles carry F, Eulerian grid solves stress), re-implemented in dependency-free JS.
+- **NVIDIA Isaac for Healthcare** (isaac-for-healthcare.github.io, Newton 1.6.1 + Warp 1.17.0, GA April 2026): Apache-2.0 numerical sim. Verdict: Newton/Warp need CUDA + Python + Docker — cannot run in the browser. The architecture ports: staged solver systems, rigid↔soft coupling, per-layer materials.
+- **Neural Deformation Gradients** (Nolte et al., Eurographics 2026): **CC BY-NC — technique reference only, no code copied.** Per-element deformation gradients (inversion-resistant), stable Neo-Hookean (E_muscle=45kPa / E_fat=15kPa / ν=0.47, λ≈16µ), embedded deformation, Poisson reconstruction.
+
+**Changes:**
+- `game/js/mpm-tissue.js` (NEW, ~950 lines, one dependency-free import): `MpmTissue` CPU MPM-lite backend — quadratic B-spline P2G/G2P, APIC transfer, stable Neo-Hookean stress P(F)=µ(F−F⁻ᵀ)+λ·ln(J)·F⁻ᵀ, explicit substepped solve (h≤1/480 CFL), Newton-style MUSCLE→FAT→SKIN stages, NDG-style inversion guard (rescale F when det<0.35), pinned bone-wrap core (Dirichlet). Same belly region + skinning + integration contract as the Jolt/FEMFX lanes; ready on frame one (no WASM wait). `ENGINE='mpm-lite'`, `VERSION='1.0.0'`.
+- `game/js/tissue-quality.js` (NEW): one shared `wh_softbody_v1` quality store for all three backends — fixes mid-session divergence where each backend had its own quality variable (X-ray gate could disagree with the driving backend).
+- `game/js/softbody.js` (v1.0.0→v1.1.0, surgical): substepped world stepping (2×/frame — SurRoL/Newton technique); NDG-style per-lattice-cell inversion guard (crushed cell relaxes toward rest); quality delegates to the shared store; `ENGINE='jolt-xpbd'` stamp.
+- `game/js/femfx-adapter.js` (surgical): quality delegates to the shared store (was `wh_femfx_v1`).
+- `game/js/fighter.js` (surgical): backend picker wired for real — `window.WH_PHYSICS_BACKEND` ('jolt' default | 'mpm' | 'femfx') or per-character `char.softbodyBackend`. 'mpm' is synchronous; 'femfx' lazy-imports with its Jolt fallback.
+- `game/tests/mpm-tissue.test.mjs` (NEW): 13 tests, all green.
+- `docs/research/SOFTBODY-NEXTGEN-2026-10-23.md` (NEW): full evaluation of all three sources, GPU-vs-browser matrix, what was wired, future work.
+
+**Verification:** `node --test game/tests/mpm-tissue.test.mjs` 13/13 green; `node --test game/tests/*.test.mjs` 144/149 — the 5 failures (fluid-decals, rage/urge input routing, stagebreak flakes) reproduce on clean origin/main, pre-existing and unrelated. `node --check` clean on all touched/new files. Default backend unchanged ('jolt') — existing fights unaffected.
+
+**Deviations:** none from the directive — all three items are wired where they can run; GPU/Python-only parts (Taichi SurRoL, Newton/Warp, Cosmos-H Dreams, NDG trained network) are evaluated and documented as [AWAITS GPU LANE]/[FUTURE], not silently dropped. NDG is CC BY-NC: technique reference only, zero code copied.
+
+**Process note:** mid-task the shared checkout `~/workspace/wh-repo` was concurrently switched to another agent's branch (`feature/cloth-xpbd-20261023`) with their uncommitted work; my uncommitted changes were extracted as a verified-pure patch to /tmp/softbody-save and all further work continued in the clean full worktree `~/workspace/wh-softbody` (67,875 files == HEAD, verified). Their work was not touched.
+
+## 2026-10-22 ~19:10 CDT — worker 70: disk-cleanup archive sweep (tpose-delivery + render intermediates)
+
+- Coordination: worker 67's PR #715 (`archive/negativo-eye-glow-20261022`) already
+  archives negativo A1/A2 + Cornerstone(Ryuji Rock) A1 immutable originals + manifests
+  + intake note + immutable-original tags. Byte-verified 3/3 GLBs against staging via
+  git blob SHA — exact matches. NOT re-archived here (no duplicate bytes).
+- Byte-check vs PR #703: all 12 buffalo-bill/theory source files (6 GLBs + 6 manifests)
+  match #703's blobs by git SHA exactly; every `tpose-delivery/` buffalo-bill/theory
+  render is byte-identical to #703's `docs/proof/buffalo-bill-theory-2026-10-22/` renders
+  (the `*-v2..v5` variants are duplicate copies of the same bytes). Nothing re-archived.
+- This PR (`archive/negativo-cornerstone-tpose-20261022`, MERGE FREEZE — merge-ready,
+  not merged) archives what NEITHER #703 nor #715 covered:
+  - Proof renders → `docs/proof/tpose-delivery-2026-10-22/`:
+    `negativo-a1-front.png`, `negativo-a2-front.png`, `ryuji-rock-a1-front.png`,
+    `parvati-tpose.png` — all byte-verified against staging.
+  - The 6 `*-render.glb` intermediates from buffalo-bill/theory staging (~87 MB)
+    under each attire's `source/` dir as `*-render.glb` — deliberate deviation from the
+    immutable-originals pattern, called out: the sweep's delete rule
+    ("delete ONLY after 100% byte-confirmed in repo, no exceptions") requires them in
+    the repo before the staging disk can be reclaimed. Regenerable from originals.
+  - Sweep note: `docs/research/disk-cleanup-sweep-2026-10-22.md` (byte-verification
+    record; archive only, no canon invented).
+- `roster/TRIPO-REGISTRY.md`: added ARCHIVE-THEN-CLEAN PIPELINE LAW section
+  (owner directive 2026-10-22 — all future Tripo pulls auto-archive to the repo as
+  immutable originals + manifest + proof renders; staging cleaned only after
+  byte-confirmation) + negativo/ryuji-rock registry rows.
+- Merge note: #715 and this PR both append to WORKLOG.md / touch TRIPO-REGISTRY.md —
+  if #715 merges first, rebase this branch before merging (no content conflicts
+  expected; disjoint file paths otherwise).
+- Disk reclaimed after 100% byte-confirmation: tripo-staging/negativo (49M) +
+  tripo-staging/cornerstone (19M) + tripo-staging/buffalo-bill (68M) +
+  tripo-staging/theory (136M) + tpose-delivery (9.5M).
+## 2026-10-22 ~18:30 CDT — worker 66: in-suite hand-tooling with headless Blender backend
+
+Owner directives (verbatim): "Set up all the stuff on your side, then when I go into the character
+creation suite, make it where I can do the hand-tooling part IN the character creation suite —
+where I don't have to actually use Blender, but Blender's just hooked up in the character creation
+suite." + "I'll call that up so it works for all of the models, all the characters, all the parts.
+They're all interchangeable, deletable, replaceable, addable, movable, resizable, scalable,
+reshapeable — full Blender-level capabilities."
+
+What shipped (branch `w66/in-suite-mesh-edit`, MERGE FREEZE — merge-ready, not merged):
+- `tools/mesh-edit/mesh_edit.py` — headless Blender 4.0.2 op driver
+  (`blender -b --factory-startup --python mesh_edit.py -- --job JOB.json`). Op catalog v1:
+  mesh_list, mesh_hide/show, mesh_delete, mesh_transform (bake TRS), mesh_duplicate
+  (+mirror_x), part_import (donor GLB / library:id, socket fit), mesh_sculpt
+  (smooth/grab/inflate/pinch via bmesh), mesh_remodel (remesh/subdivide/decimate).
+  Geometry-changing ops set `reweight_needed`; sources immutable (`out_glb == source_glb`
+  refused); writes `out_glb` + `out_report` + preview PNG.
+- `tools/mesh-edit/run_mesh-edit_job.py` — suite-jobs runner (`tool: "mesh-edit"`),
+  `run_job(spec, log)`; registered in `tools/suite-jobs/server.py` tool registry (one-word
+  additive edit). No parallel server — TOOL UNIFICATION LAW: mesh-edit rides the existing
+  suite queue (:8766) the JOBS tab already polls.
+- `customization/create-fighter/js/meshedit.js` — MODEL EDIT mode for the suite viewport:
+  tap-to-select (raycast, touch-safe), TransformControls gizmo (lazy, numeric-nudge fallback),
+  capture-phase orbit guard (zero edits to preview3d.js), part list, hide/show/delete/duplicate,
+  sculpt-point picking, job submit to the suite queue; falls back to job-spec download when the
+  server is unreachable (GitHub Pages / no backend).
+- `customization/create-fighter/js/tools.js` — registry wiring: `meshedit` SEPARATE_TOOLS
+  entry + `model-edit-system` UNIFIED_SYSTEMS entry + unifiedActions case (ENTER MODEL EDIT,
+  job spec, JOBS tab link). Menu home: TOOLS tab; nests under Appearance → Attire Parts in the
+  WWE flow (worker 65 owns the tree; contract documented).
+- `customization/CHARACTER-CREATION.md` — "Model Edit (hand-tooling)" subsection.
+- Docs: `docs/research/2026-10-22-W66-in-suite-mesh-edit-research.md` (Prisma3D touch
+  vocabulary, TransformControls touch support, Blockbench/MeshySmith evaluated+rejected,
+  blender-remote/mcp-for-blender patterns, teardown editing patterns),
+  `docs/decisions/2026-10-22-W66-mesh-edit-architecture.md` (job schema v1, API, w64/w65
+  contracts, undo/safety, proof plan).
+
+Key integration findings (no duplication): the suite already had `tools/suite-jobs/server.py`
++ JOBS tab (`window.__flow.renderJobs`) — mesh-edit registers as a tool there instead of a new
+server. `window.__suite.preview` is the viewport handle. Labels resolve via worker 64's mesh
+taxonomy (`window.__whMeshTaxonomy`) when present, else raw GLB node names.
+
+Proof: `node --check` on meshedit.js clean; `python3 tools/mesh-edit/tests/test_runner.py`
+10/10 pass (validation, guards, fake-Blender report parse, AST parse of both py files).
+No Blender on this VM — real op runs need `tools/setup/setup_toolchain.sh` (follow-up).
+Follow-ups: vendored TransformControls, real Blender run on a roster GLB, w64/w65 handshake,
+one-line JOBS-tab tool-dropdown addition (creation-flow.js — worker 37's lane, documented).
+## 2026-10-23 ~19:30 CDT — Future Tech prototyping: SCRIPT + AdaHuman/GAIA integration design
+
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate"
+
+**Scope:** Future Tech prototyping lead lane — items 9 (SCRIPT) and 10 (AdaHuman/GAIA) from `docs/research/CUTTING-EDGE-SCOUT-2026-10-23.md`. Both are research-stage (no public code); the deliverable is integration architecture + contract code, per the lane brief ("If no code is available, the design docs ARE the deliverable").
+
+**Code-availability verification (2026-10-23):**
+- SCRIPT (arXiv:2605.22894): no GitHub repo (API search), arXiv page has no code link; paper says "Our code will be publicly available for future research". NOT released.
+- AdaHuman (arXiv:2505.24877, ICCV 2025): no GitHub repo (API search); project page (nvlabs.github.io/AdaHuman) says "Code and models will be publicly available for research purposes", no link. NOT released.
+- GAIA (SIGGRAPH 2025): project page (research.nvidia.com/labs/amri/projects/gaia) is research-demonstration only — no code/model links. NOT released.
+
+**Delivered (all new files, 0 deletions, nothing in `game/`):**
+- `docs/research/SCRIPT-INTEGRATION-2026-10-23.md` — JAST-DiT architecture, exact I/O contract (s_t∈R^358, a_t∈R^69, CLIP text, receding-horizon), where-it-wires-in table (describe-a-move flagship; NOT live combat/phone), inference-service REST spec, canon-safe prompt builder rules, frame-data anchoring, whole-roster style-hint table, code-drop checklist, license transparency.
+- `docs/research/PHOTO-TO-FIGHTER-2026-10-23.md` — AdaHuman deep dive (single photo → A-pose 3DGS), GAIA deep dive (identity/expression disentanglement, 43 FPS on RTX A6000), the 3DGS→mesh→rig critical path (SuGaR/2DGS/GOF/MVS options, Inria/MPII NC flag), 7-stage pipeline with consent/adult/no-famous-faces gates, GPU requirements table, companion note to FACE-SCAN-PHOTO-TO-3D-2026-10-23.md (face lane stays the wired-now path).
+- `tools/script-adapter/` — `script_contract.py`, `prompt_builder.py` (canon filter: minors/sexual/famous-names rejected), `smpl_to_wh.py` (69-dim SMPL→WH bone map, action-stream keyframe baking @60fps, wh-anim/1 envelope defaulting to `"set": "SHOW"`), `client.py` (REST client + in-process stub server), `README.md`, `tests/test_script_contract.py` — **22/22 pass** (synthetic data).
+- `tools/photo-to-fighter/` — `stages.py` (IntakeSpec→SplatAvatar→GameMesh→RiggedFighter→TexturedFighter→PhotoFighter contracts), `likeness_policy.py` (gates raise, never warn), `pipeline.py` (injectable backends + stubs), `README.md`, `tests/test_pipeline_contract.py` — **16/16 pass** (stub backends).
+
+**License transparency:** NVIDIA research code → expected NVIDIA Source Code License-NC (non-commercial, research/evaluation only; verified license text via nvlabs.github.io/stylegan2/license.html). NC-licensed code/weights never enter `game/` or ship — research lane only. This PR's code is WH-original (repo license), contains no NVIDIA code/weights/artifacts.
+
+**Anti-clobber:** sparse checkout (3% of files) — NO local commit. Payload built via Git Database API on current main tree: additions only, 0 deletions. Branch `docs/futuretech-script-phototofighter-20261023`, PR with 6-section body.
+
+**ALL CHARACTERS ARE ADULTS:** enforced in `prompt_builder.canon_filter()` (SCRIPT prompts) and `likeness_policy.check_adult()` (photo intake) — both raise, no override path.
+## 2026-10-22 — worker 58: archive Buffalo Bill A1/A2 + Theory A1/A2/A3 (Tripo immutable originals)
+- Archived 5 Tripo pulls as immutable source originals, dorowani #603 pattern:
+  `roster/buffalo-bill/attires/attire1/source/buffalo-bill-a1.glb` (20,391,004 bytes, fantasy character, ram horns),
+  `roster/buffalo-bill/attires/attire2/source/buffalo-bill-a2.glb` (21,441,832 bytes, horned humanoid, ram horns),
+  `roster/theory/attires/attire1/source/theory-a1.glb` (22,369,448 bytes, gothic cat girl),
+  `roster/theory/attires/attire2/source/theory-a2.glb` (18,773,404 bytes, superhero red cape),
+  `roster/theory/attires/attire3/source/theory-a3.glb` (20,769,628 bytes, dark fantasy spiked),
+  each with `manifest.json` (Tripo project UUID, share URL, byte/magic verification).
+- Proof renders: `docs/proof/buffalo-bill-theory-2026-10-22/` (5 T-pose PNGs, 1024x1024, visually verified).
+- Research note: `docs/research/buffalo-bill-theory-intake-2026-10-22.md`.
+- Immutable-original tags on archive commit: `buffalo-bill-a1-original`, `buffalo-bill-a2-original`,
+  `theory-a1-original`, `theory-a2-original`, `theory-a3-original`.
+- No canon entries invented — archive only; canon bridges deferred to owner.
+
+### Addendum — Theory Attire 4 (same session)
+- Archived `roster/theory/attires/attire4/source/theory-a4.glb` (21,511,628 bytes, black leather outfit 3d model,
+  Tripo owner `eqqq57218`) + `manifest.json` + T-pose proof `docs/proof/buffalo-bill-theory-2026-10-22/theory-a4.png`
+  (visually verified). Intake note + tag list updated (`theory-a4-original`).
