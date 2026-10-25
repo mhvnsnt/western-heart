@@ -180,3 +180,65 @@ All T3-baked clips already in the repo are **fallback, to be replaced from T5/6/
 | Asset | T3 data | Status | Reason T3 was used (no T5/6/7/8/TTT2 source available) |
 |---|---|---|---|
 | `game/assets/movesets/pantera.json` `string_step_plans` (60 keys: 31 canonical LP1/RP2 strings + 26 twins + 3 spelling variants) + `game/js/fighter.js` step-plan branch | King T3 bank rows for verified steps only (rows 36, 38, 39, 40, 50, 51, 52, 97, 98, 198, 200, 202, 203, 110) | fallback, to be replaced from T7 King extraction when clip bytes land | T7 King (`kinmot.bin`, 2,787 moves) is decoded, but 0x8000-bank clip bytes are not in tkdata (pakchunk/live-memory only) and requirement codes (636/811/80/81/72/217) + the aliases table are unresolved, so no T7 step clip can be wired yet. T3 step rows stand in for verified steps only; review/unmapped steps play no bank row. Re-match against T7 King rows when extraction lands. Rows 35/220 are never used for standing steps. |
+
+## Zui Batch 1 fallback (LP1/RP2-only strings, 2026-10-25)
+Verified rows 92/93/183/221/222/223 are FALLBACK
+(T3 jin rows, bank jin / BOUND bank: zui's in-game bank is jin per
+file-level t3_source jin + t3_bank moveset_jin.json on BOTH #1096 and
+main; zui has NO FIGHTER_BANK override in fighter.js #1096, so the
+engine falls back to anim_bank || t3_source = jin), to be re-matched
+to T7 Steve rows when extraction lands. Zui is a SINGLE-bank fighter:
+its T3 moves carry t3_source jin only (152 moves; the other 502 carry
+no t3_source), and every step adjudicates against the jin bank —
+file-level t3_source is never assumed for a move that names another
+bank, because no zui move names one. There is NO bank-blocked category
+for zui (that was torch's dual-bank variant): jin gate-verified steps
+wire directly, and no step plays a row from another bank.
+Rejected rows are NOT fallback - rejected evidence, not wired or held:
+jin row 177 (button 12 != LP1 bits 1, for the d+1+2,1 step-2 LP1 in two
+strings) and jin row 221 for the f+2,1_r221 step (button 1 != step bits
+3 — the bits-3 reading comes from the _r221 row-suffix digits in the
+key, not from the LP1 input; documented, not fixed in this lane).
+Jin-bank rules, per-bank evidence (documented in
+docs/movesets/ZUI-BATCH1-STEP-PLANS-2026-10-25.md): row 35 EXISTS
+(starts-airborne, btn 1) - airborne, fails ground steps; row 220 EXISTS
+(standing RP2, btn 2); row 216 EXISTS (jump, btn 0) - fails every
+single-button gate; row 41 EXISTS (starts-airborne, btn 1). None of
+rows 35/220/216 is wired in Batch 1. Zui basics DIFFER from torch
+(verified in-lane): LP1 move 1 (damage 7), RP2 move 2 (damage 12), LK3
+move 3 (damage 0, special Ducking Left), RK4 move 4 (damage 0, special
+Ducking Right) are T7-sourced with NO t3_row on either file — zui's
+basics carry no T3 row at all. Re-baseline moves + strings deep-equal,
+row-changed 0, damage-only 0, so suspended-drift steps are 0. Zui was
+NEVER quarantined (t8_quarantine_20261024 key ABSENT on both files) —
+no #988 dependency; the T8 layer is KEPT (mix_20261024 counts_keys
+t8:126). MIX (PR #1017, per canon): Zui = Steve Fox T7 base + Lei
+Wulong drunken fist (Tekken 6 / TTT2) + 2 WH-original canon moves; the
+hands-up drunken stagger stance is UNCHANGED by this lane. Gap-1 (jin
+bank): hit_frames + skeleton IDENTICAL, rows.pack ADDITIVE-ONLY drift
+(220 b1096 rows unchanged on main, main adds 6 rows 89/112/247/288/
+339/357, 0 changed, 0 removed - affected fills 0; no Batch 1 candidate
+is a main-only row). GATE-ONLY batch: Job 2 zui entries 0, Job 3 zui
+entries 0 - Job 3 fills 0 and Job 4 joins 0 by data absence (bank-level
+Job 4 candidates jin 47 cannot join without Job 2 zui entries; a join
+never promotes anyway). SINGLE-BANK-FALLBACK (1 step, lane decision
+flagged for the coordinator): f+2,1 step 2 (row 221) — bank resolved to
+jin from the file-level bank because zui is verified single-bank
+(distinct move t3_source values {None, jin} only; all 35 recorded
+strings-list rows + all 152 move rows exist in jin hit_frames / Job 1
+jin profiles); the row is independently proven jin by the sibling
+variant f+2,1_r221 (t3_source jin, anim_ref t3:jin:row:221). Standing
+rows verified for crouch-context steps (the whole d+1+2 family: rows
+92/93/183) follow the demonio Batch 1 precedent: the gate flags crouch
+rows for non-crouch steps, not standing rows for crouch steps.
+Canonicalization is the CORRECTED rule (strip only a trailing
+~t[378] source-variant suffix): Zui Batch 1 contains 23 input-~
+canonicals (kept as own keys) and 19 ~t8.steve twin variants.
+T8/T7-sourced prefixes with no T3 row get their correct clips from
+#988 Step 2 (original T8 refs) or future extraction, never from a T3
+row recorded as correct. Formatter note: zui-1096.json is NOT
+json.dumps-canonical (7 hand-formatted lines: a separator comma on its
+own line before "canon_moves", triple-space colons on "canon_moves" /
+"canon_wiring"), so this lane inserts the plans block as raw text
+after the opening brace; every other byte is untouched and the
+committed diff is exactly 1 addition.
