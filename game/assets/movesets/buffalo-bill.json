@@ -25605,6 +25605,27 @@
       ],
       "move_class": "strike",
       "merge_source": "t3:forestlaw:row:181"
+    },
+    "d/f+1+2,1_c2,mash": {
+      "name": "BUFFALO BILL d/f+1+2,1_c2,mash (T3 law r441)",
+      "input": "d/f+1+2,1_c2,mash",
+      "t3_source": "law",
+      "t3_row": 441,
+      "t3_command": "[5+LP 5 5+RP 5 5+LP+RP](40f)",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.75,
+      "damage": 21,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:law:row:441",
+      "input_slots": [
+        "d/f+1+2,1"
+      ],
+      "move_class": "special",
+      "added": "2026-10-23 law pull: mash follow-up to d/f+1+2,1_c2 (row 439); decoded input [5+LP 5 5+RP 5 5+LP+RP](40f), the only input-reachable Law row the bank BFS missed (generator skips neutral-mash commands)"
     }
   },
   "strings": [
@@ -27210,7 +27231,8 @@
   "generated_full_moveset": {
     "by": "tools/gen-movesets-t3.py",
     "date": "2026-10-23",
-    "note": "Full T3 Marshall Law bank depth (divmot01_law.bin), real decoded motion-bank rows. Signatures named from canonical T3 Law inputs; all inputs decoded from branch data, none invented. Bank: 459 rows, 228 canonical attack inputs found."
+    "note": "Full T3 Marshall Law bank depth (divmot01_law.bin), real decoded motion-bank rows. Signatures named from canonical T3 Law inputs; all inputs decoded from branch data, none invented. Bank: 459 rows, 228 canonical attack inputs found.",
+    "law_pull_provenance_2026_10_23": "Law pull lane (branch law/full-pull-2026-10-23): added T3 law r441 mash follow-up (d/f+1+2,1_c2,mash — the only input-reachable Law row the bank BFS missed). T3-sourced Law moves + the T3 anim bank (game/assets/anim/t3/law/) are PROVISIONAL T3-fallback per owner source-priority law (TTT2 first, T5/T6 next, T3 last); TTT2 Law extraction still pending — re-diff against TTT2 when it lands. T8/T7 moves merged separately via tools/moveset-merge/merge_sources.py are primary."
   },
   "t3_bank": "moveset_law.json",
   "t3_bank_rows": 459,
