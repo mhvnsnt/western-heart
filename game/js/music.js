@@ -21,6 +21,16 @@
    • Voice ducking — the announcer/voice lines dip the music ~8 dB
      while they speak (hooked via voice.onSpeech).
 
+   Stage-theme rule (2026-10-24 wiring): a track with NO mode tags but
+   a stage tag is that stage's theme — it joins ONLY that stage's battle
+   pool, tagged-first. This is what makes the Cape Jones pools resolve:
+   the 8 Cape tracks carry stages but no modes, so without this rule the
+   battle pool (modes includes 'battle') would never pick them. Menu
+   pools are untouched: a stage theme never enters a menu pool.
+   Cutscene hook: story lanes call playCutscene(name) for ordered
+   cutscene BGM (see library sequences.cutscene-example); when the
+   sequence ends, battle rotation resumes on the last battle stage.
+
    Fallback: if the library or a track file is missing, the engine
    delegates to the procedural battle loop in audio.js, so the game
    never goes silent.
@@ -132,7 +142,12 @@ class MusicEngine {
     if (mode && mode !== 'battle') {
       return avail.filter(t => Array.isArray(t.modes) && t.modes.includes(mode));
     }
-    const battle = avail.filter(t => Array.isArray(t.modes) && t.modes.includes('battle'));
+    /* Stage-theme rule: modes-[] tracks tagged with THIS stage join its
+       battle pool (Cape Jones pools). Without a stage they join nothing,
+       so they can never leak into other stages' pools or menu pools. */
+    const battle = avail.filter(t => (Array.isArray(t.modes) && t.modes.includes('battle'))
+      || (stage && Array.isArray(t.modes) && t.modes.length === 0
+        && Array.isArray(t.stages) && t.stages.includes(stage)));
     if (!stage) return battle;
     const tagged = battle.filter(t => Array.isArray(t.stages) && t.stages.includes(stage));
     const rest = battle.filter(t => !(Array.isArray(t.stages) && t.stages.includes(stage)));
@@ -354,6 +369,17 @@ class MusicEngine {
     this._seq = { list: tracks, i: 0 };
     await this._playTrack(tracks[0], { once: true });
     return true;
+  }
+
+  /* Cutscene BGM hook (story lanes): ordered sequence BGM for a
+     cutscene scene. Same engine as playSequence — one-shot tracks in
+     order, battle rotation resumes on the last battle stage when the
+     sequence ends. Returns false when the named sequence is missing or
+     has no available track; the caller keeps whatever was playing.
+     Do NOT build full cutscene scoring here — sequences are data in
+     library.sequences, and each story scene names its own sequence. */
+  async playCutscene(name) {
+    return this.playSequence(name);
   }
 
   async _playSequenceNext() {
