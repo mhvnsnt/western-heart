@@ -7071,7 +7071,8 @@
         "bank": "king",
         "row": 136,
         "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      },
+      "input_lp": "d+LP1"
     },
     "d+1,2": {
       "name": "Uppercut",
@@ -7624,7 +7625,9 @@
         "bank": "king",
         "row": 195,
         "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      },
+      "powerCrush": true,
+      "powerCrush_source": "wavu.wiki King movelist (T7): db+1+2,3+4 listed Power Crush"
     },
     "db+2": {
       "name": "Brain Chop",
@@ -8219,7 +8222,8 @@
         "bank": "king",
         "row": 69,
         "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      },
+      "input_lp": "d/f+RK4,LK3,d+RK4"
     },
     "f+1+2": {
       "name": "Shadow Lariat",
@@ -9844,7 +9848,8 @@
         "bank": "king",
         "row": 195,
         "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      },
+      "input_lp": "JGS.LP1"
     },
     "JGS.1+3_2+4": {
       "name": "Cobra Clutch (MMD1)",
@@ -9900,7 +9905,8 @@
         "bank": "king",
         "row": 586,
         "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      },
+      "input_lp": "JGS.RP2"
     },
     "JGS.3": {
       "name": "Sobat",
@@ -9926,7 +9932,8 @@
         "bank": "king",
         "row": 195,
         "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      },
+      "input_lp": "JGS.LK3"
     },
     "JGS.3,2+3": {
       "name": "Sobat & Press",
@@ -9947,7 +9954,7 @@
         "JGS.3",
         "JGS.3,2+3"
       ],
-      "move_class": "throw",
+      "move_class": "string",
       "multi_hit": {
         "hits": [
           20,
@@ -9955,16 +9962,16 @@
         ],
         "total": 35
       },
-      "note": "Mid, Throw; on block -16c~+2c",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "throw_break": "1",
+      "note": "Mid, Throw; on block -16c~+2c | T7-vs-T8: T7 frame data lists a strike here; T8 record listed a throw. Fixed to T7 strike 2026-10-24 (see docs/research/PANTERA-STRING-AUDIT-2026-10-24.md).",
+      "throw": false,
+      "unblockable": false,
+      "isGrab": false,
       "anim_t3": {
         "bank": "king",
         "row": 127,
         "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      },
+      "input_lp": "JGS.LK3,RP2+LK3"
     },
     "JGS.4": {
       "name": "High Kick",
@@ -9990,7 +9997,8 @@
         "bank": "king",
         "row": 195,
         "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      },
+      "input_lp": "JGS.RK4"
     },
     "JGS.df+4": {
       "name": "Mid Kick",
@@ -10016,7 +10024,8 @@
         "bank": "king",
         "row": 195,
         "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      },
+      "input_lp": "JGS.d/f+RK4"
     },
     "(Left side throw)": {
       "name": "Argentina Backbreaker",
