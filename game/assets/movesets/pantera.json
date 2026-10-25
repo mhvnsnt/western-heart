@@ -655,7 +655,7 @@
     }
   ],
   "string_step_plans": {
-    "law": "Batch 1 step plans (Pantera LP1/RP2-only strings, 2026-10-24). Engine: fighter.js _attackClipPlan step-plan branch. A step plays its row ONLY when status is verified (button bitmask + stance + throw gates pass). review/unmapped steps play NO bank row - never a donor/generic row - and are flagged in _atkPlan.unmapped. T3 rows here are FALLBACK (see docs/anim/PROCEDURAL_AUDIT.md Batch-1 entry): T7 King clip bytes for 0x8000 moves are unresolved, so T3 step rows stand in until T7 extraction lands, then re-match. Rows 35/220 are NEVER verified for standing-context steps. Full gate evidence (hit_frames + FK peaks) in docs/movesets/BATCH1-STEP-PLANS-2026-10-24.md.",
+    "law": "Batch 1 step plans (Pantera LP1/RP2-only strings, 2026-10-24). Engine: fighter.js _attackClipPlan step-plan branch. A step plays its row ONLY when status is verified (button bitmask + stance + throw gates pass). review/unmapped steps play NO bank row - never a donor/generic row - and are flagged in _atkPlan.unmapped. T3 rows here are FALLBACK (see docs/anim/PROCEDURAL_AUDIT.md Batch-1 entry): T7 King clip bytes for 0x8000 moves are unresolved, so T3 step rows stand in until T7 extraction lands, then re-match. Rows 35/220 are NEVER verified for standing-context steps. Full gate evidence (hit_frames + FK peaks) in docs/movesets/BATCH1-STEP-PLANS-2026-10-24.md.\n\nBatch 2 step plans (Pantera LK3/RK4-only strings, 2026-10-25). Same engine branch, same gates as Batch 1, plus: SOFT limb-peak gate uses the Job 1 peakF proxy (window = stream active window / 2, +/-2 frames), validated 13/13 on Batch 1 verified steps; the proxy is conservative (a max peak outside the window can hide a secondary peak inside, so proxy-fail means review, never a false verify); SOFT gate waived for jumping-context strings as in Batch 1. Stance gate: jump/starts-airborne rows fail ground-context steps and pass jump-context steps; crouch rows pass only crouch-context steps; ground rows fail all; ws-context steps matched to standing rows are review (ws->standing soft-stance). Job 3 fills wired ONLY on exact level + FULL provenance + step HARD gates (Batch 2 has none: all 11 Batch 2 Job 3 targets have empty pass-all lists); SOFT and ROW-ONLY candidates are documented, never wired. Job 4 joins never promote a step. T3 rows here are FALLBACK (see docs/anim/PROCEDURAL_AUDIT.md Batch-2 entry). Full gate evidence in docs/movesets/BATCH2-STEP-PLANS-2026-10-25.md.",
     "plans": {
       "1+2,1": {
         "steps": [
@@ -2695,6 +2695,1052 @@
         "last_step_row": null,
         "last_step_status": "unmapped",
         "spelling_variant_of": "WS.2,2"
+      },
+      "CH.d+3+4,4,4,4": {
+        "steps": [
+          {
+            "step": "CH.d+3+4",
+            "prefix": "CH.d+3+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "CH.d+3+4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "CH.d+3+4,4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "CH.d+3+4,4,4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "FC.d/f+4,4": {
+        "steps": [
+          {
+            "step": "FC.d/f+4",
+            "prefix": "FC.d/f+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "FC.d/f+4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "FC.d/f+4,4,4": {
+        "steps": [
+          {
+            "step": "FC.d/f+4",
+            "prefix": "FC.d/f+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "FC.d/f+4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "FC.d/f+4,4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "d+3+4,4": {
+        "steps": [
+          {
+            "step": "d+3+4",
+            "prefix": "d+3+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d+3+4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "d+3+4,4~t3.king": {
+        "steps": [
+          {
+            "step": "d+3+4",
+            "prefix": "d+3+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d+3+4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "d+3+4,4",
+        "twin_move_class": "strike"
+      },
+      "d+3+4,4~t7.king": {
+        "steps": [
+          {
+            "step": "d+3+4",
+            "prefix": "d+3+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d+3+4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "d+3+4,4",
+        "twin_move_class": "string"
+      },
+      "d+3+4,4~t7.king.2": {
+        "steps": [
+          {
+            "step": "d+3+4",
+            "prefix": "d+3+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d+3+4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "d+3+4,4",
+        "twin_move_class": "string"
+      },
+      "d+3+4,4,4": {
+        "steps": [
+          {
+            "step": "d+3+4",
+            "prefix": "d+3+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d+3+4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d+3+4,4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "d+3+4,4,4~t7.king": {
+        "steps": [
+          {
+            "step": "d+3+4",
+            "prefix": "d+3+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d+3+4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d+3+4,4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "d+3+4,4,4",
+        "twin_move_class": "string"
+      },
+      "d+3+4,4,4~t7.king.2": {
+        "steps": [
+          {
+            "step": "d+3+4",
+            "prefix": "d+3+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d+3+4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d+3+4,4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "d+3+4,4,4",
+        "twin_move_class": "string"
+      },
+      "d+3+4,4,4~t7.king.3": {
+        "steps": [
+          {
+            "step": "d+3+4",
+            "prefix": "d+3+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d+3+4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d+3+4,4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "d+3+4,4,4",
+        "twin_move_class": "string"
+      },
+      "d+3+4,4,4,4": {
+        "steps": [
+          {
+            "step": "d+3+4",
+            "prefix": "d+3+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d+3+4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d+3+4,4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d+3+4,4,4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "d/f+3,4": {
+        "steps": [
+          {
+            "step": "d/f+3",
+            "prefix": "d/f+3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d/f+3,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "d/f+3,4~t7.king": {
+        "steps": [
+          {
+            "step": "d/f+3",
+            "prefix": "d/f+3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d/f+3,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "d/f+3,4",
+        "twin_move_class": "string"
+      },
+      "d/f+4,3": {
+        "steps": [
+          {
+            "step": "d/f+4",
+            "prefix": "d/f+4",
+            "row": null,
+            "status": "review",
+            "candidate_row": 135,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT limb-peak proxy fail: window [6.0,10.0] peaks {'legR': 4}"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "d/f+4,3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "d/f+4,3~t7.king": {
+        "steps": [
+          {
+            "step": "d/f+4",
+            "prefix": "d/f+4",
+            "row": null,
+            "status": "review",
+            "candidate_row": 135,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT limb-peak proxy fail: window [6.0,10.0] peaks {'legR': 4}"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "d/f+4,3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "d/f+4,3",
+        "twin_move_class": "string"
+      },
+      "d/f+4,3,4": {
+        "steps": [
+          {
+            "step": "d/f+4",
+            "prefix": "d/f+4",
+            "row": null,
+            "status": "review",
+            "candidate_row": 135,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT limb-peak proxy fail: window [6.0,10.0] peaks {'legR': 4}"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "d/f+4,3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d/f+4,3,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "d/f+4,3,4~t7.king": {
+        "steps": [
+          {
+            "step": "d/f+4",
+            "prefix": "d/f+4",
+            "row": null,
+            "status": "review",
+            "candidate_row": 135,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT limb-peak proxy fail: window [6.0,10.0] peaks {'legR': 4}"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "d/f+4,3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d/f+4,3,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "d/f+4,3,4",
+        "twin_move_class": "string"
+      },
+      "d/f+4,3,4~t7.king.2": {
+        "steps": [
+          {
+            "step": "d/f+4",
+            "prefix": "d/f+4",
+            "row": null,
+            "status": "review",
+            "candidate_row": 135,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT limb-peak proxy fail: window [6.0,10.0] peaks {'legR': 4}"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "d/f+4,3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d/f+4,3,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "d/f+4,3,4",
+        "twin_move_class": "string"
+      },
+      "d/f+4,3,d+4": {
+        "steps": [
+          {
+            "step": "d/f+4",
+            "prefix": "d/f+4",
+            "row": null,
+            "status": "review",
+            "candidate_row": 135,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT limb-peak proxy fail: window [6.0,10.0] peaks {'legR': 4}"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "d/f+4,3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "d+4",
+            "prefix": "d/f+4,3,d+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "d/f+4,3,d+4~t7.king": {
+        "steps": [
+          {
+            "step": "d/f+4",
+            "prefix": "d/f+4",
+            "row": null,
+            "status": "review",
+            "candidate_row": 135,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT limb-peak proxy fail: window [6.0,10.0] peaks {'legR': 4}"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "d/f+4,3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "d+4",
+            "prefix": "d/f+4,3,d+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "d/f+4,3,d+4",
+        "twin_move_class": "string"
+      },
+      "d/f+4,3,d+4~t7.king.2": {
+        "steps": [
+          {
+            "step": "d/f+4",
+            "prefix": "d/f+4",
+            "row": null,
+            "status": "review",
+            "candidate_row": 135,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT limb-peak proxy fail: window [6.0,10.0] peaks {'legR': 4}"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "d/f+4,3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "d+4",
+            "prefix": "d/f+4,3,d+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "d/f+4,3,d+4",
+        "twin_move_class": "string"
+      },
+      "d/f+4,4": {
+        "steps": [
+          {
+            "step": "d/f+4",
+            "prefix": "d/f+4",
+            "row": null,
+            "status": "review",
+            "candidate_row": 135,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT limb-peak proxy fail: window [6.0,10.0] peaks {'legR': 4}"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d/f+4,4",
+            "row": 197,
+            "status": "verified",
+            "candidate_row": 197,
+            "candidate_source": "recorded-dest",
+            "reasons": []
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": 197,
+        "last_step_status": "verified"
+      },
+      "df+3,4": {
+        "steps": [
+          {
+            "step": "df+3",
+            "prefix": "df+3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "df+3,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "df+4,3": {
+        "steps": [
+          {
+            "step": "df+4",
+            "prefix": "df+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "df+4,3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "df+4,3,4": {
+        "steps": [
+          {
+            "step": "df+4",
+            "prefix": "df+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "df+4,3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "df+4,3,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "df+4,3,d+4": {
+        "steps": [
+          {
+            "step": "df+4",
+            "prefix": "df+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "df+4,3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "d+4",
+            "prefix": "df+4,3,d+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
       }
     }
   },
