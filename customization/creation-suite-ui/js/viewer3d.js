@@ -356,6 +356,37 @@ export class SuiteViewer {
     for(const t of s.targets){ t.material.map=t.original; t.material.needsUpdate=true; }
     this.texSwaps.delete(partId);
   }
+  /* Face-preset live swap (creation-suite gap (a)): swap the head/face
+     texture on the loaded template mesh. Target chain, first hit wins:
+     materials named face/head, then skin/body, then the first material
+     that already has a map, then the first material at all. Returns a
+     Promise<boolean>: false means this base mesh has no swappable face
+     material, and the caller keeps the preset recorded for bake (honest
+     fallback, never a silent no-op presented as a swap). Reuses the
+     texSwaps store under 'face-preset' so a later preset restores the
+     previous swap before applying its own. */
+  swapFaceTexture(assetUrl){
+    if(!this.texSwaps) this.texSwaps = new Map();
+    this.restoreTexture('face-preset');
+    if(!this.model || !assetUrl) return Promise.resolve(false);
+    const buckets=[[],[],[],[]];
+    this.model.traverse(o=>{ if(!o.isMesh) return;
+      const mats=Array.isArray(o.material)?o.material:[o.material];
+      for(const m of mats){ if(!m) continue;
+        const name=(m.name||'').toLowerCase();
+        if(/face|head/.test(name)) buckets[0].push(m);
+        else if(/skin|body|flesh/.test(name)) buckets[1].push(m);
+        else if(m.map) buckets[2].push(m);
+        else buckets[3].push(m); } });
+    const pick=(buckets[0][0]||buckets[1][0]||buckets[2][0]||buckets[3][0]);
+    if(!pick) return Promise.resolve(false);
+    return new Promise(res=>{
+      new THREE.TextureLoader().load(assetUrl, tex=>{
+        this.texSwaps.set('face-preset', {targets:[{material:pick, original:pick.map}]});
+        pick.map=tex; pick.needsUpdate=true; res(true);
+      }, undefined, ()=>res(false));
+    });
+  }
   /* Skin tone preview (was an empty stub): tint materials whose name — or
      whose mesh's name — mentions skin/body. Meshes with no such material
      keep their authored look; the record still saves the tone for the MPFB
