@@ -3853,8 +3853,6 @@
       ],
       "move_class": "strike",
       "anim_ref": "wh:tobi:longleap",
-      "community_base": "game/assets/anim/oss/community/90_05.fbx",
-      "community_base_status": "pending-gpu-retarget",
       "t3_source": "tobi-canon",
       "t3_row": null,
       "t3_command": "WR+3",
@@ -3866,7 +3864,14 @@
       "heavy": true,
       "knock": 4.8,
       "soulGain": 9,
-      "note": "WH CANON move. Her namesake: a full-sprint leaping kick, rabbit-style \u2014 she covers half the arena and lands kicking. Her courier route, weaponized."
+      "note": "WH CANON move. Her namesake: a full-sprint leaping kick, rabbit-style \u2014 she covers half the arena and lands kicking. Her courier route, weaponized.",
+      "community_base": "game/assets/anim/oss/community/90_05.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "hwoarang",
+        "row": 95,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+4": {
       "name": "Courier's Dash",
@@ -3876,8 +3881,6 @@
       ],
       "move_class": "special",
       "anim_ref": "wh:tobi:couriers-dash",
-      "community_base": "game/assets/anim/oss/community/144_09.fbx",
-      "community_base_status": "pending-gpu-retarget",
       "t3_source": "tobi-canon",
       "t3_row": null,
       "t3_command": "f,F+4",
@@ -3889,7 +3892,14 @@
       "heavy": false,
       "knock": 3.2,
       "soulGain": 7,
-      "note": "WH CANON move. A blurring dash-kick \u2014 the fastest approach in the roster. She delivers the hit before the opponent finishes reading the address."
+      "note": "WH CANON move. A blurring dash-kick \u2014 the fastest approach in the roster. She delivers the hit before the opponent finishes reading the address.",
+      "community_base": "game/assets/anim/oss/community/144_09.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "hwoarang",
+        "row": 144,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1+2": {
       "name": "Tip-Off",
@@ -3910,7 +3920,12 @@
       "heavy": false,
       "knock": 2.4,
       "soulGain": 6,
-      "note": "WH CANON move. A quick shoulder-barge \u2014 her left hand stays on the satchel strap, so the shoulder does the talking. Named for the night she tipped off Ryusan: one bump, one warning, gone."
+      "note": "WH CANON move. A quick shoulder-barge \u2014 her left hand stays on the satchel strap, so the shoulder does the talking. Named for the night she tipped off Ryusan: one bump, one warning, gone.",
+      "anim_t3": {
+        "bank": "hwoarang",
+        "row": 31,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SS+3+4": {
       "name": "Satchel Swing",
@@ -3931,7 +3946,12 @@
       "heavy": true,
       "knock": 4.0,
       "soulGain": 8,
-      "note": "WH CANON move. Sidestep into a spinning swing of the weighted courier satchel \u2014 the one thing she never lets go of, and the last thing you see. The undelivered letter stays inside. It always stays inside."
+      "note": "WH CANON move. Sidestep into a spinning swing of the weighted courier satchel \u2014 the one thing she never lets go of, and the last thing you see. The undelivered letter stays inside. It always stays inside.",
+      "anim_t3": {
+        "bank": "hwoarang",
+        "row": 31,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "qcf+3": {
       "name": "Escape Soul Flurry",
@@ -3941,8 +3961,6 @@
       ],
       "move_class": "string",
       "anim_ref": "wh:tobi:escape-flurry",
-      "community_base": "game/assets/anim/oss/community/86_01.fbx",
-      "community_base_status": "pending-gpu-retarget",
       "t3_source": "tobi-canon",
       "t3_row": null,
       "t3_command": "qcf+3",
@@ -3954,7 +3972,14 @@
       "heavy": true,
       "knock": 5.5,
       "soulGain": 10,
-      "note": "WH CANON move. A five-kick flurry at courier speed \u2014 the Escape Soul doesn't retreat, she relocates, and every relocation hurts."
+      "note": "WH CANON move. A five-kick flurry at courier speed \u2014 the Escape Soul doesn't retreat, she relocates, and every relocation hurts.",
+      "community_base": "game/assets/anim/oss/community/86_01.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "hwoarang",
+        "row": 95,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+1+2": {
       "name": "The Undelivered Letter",
@@ -3975,7 +4000,12 @@
       "heavy": true,
       "knock": 9.0,
       "soulGain": 10,
-      "note": "WH CANON super. She finally opens the satchel \u2014 and the letter comes out swinging. Whatever is written in it hits like a truck. Costs a full Nine-Soul Meter. She puts it back immediately after. Some things stay withheld."
+      "note": "WH CANON super. She finally opens the satchel \u2014 and the letter comes out swinging. Whatever is written in it hits like a truck. Costs a full Nine-Soul Meter. She puts it back immediately after. Some things stay withheld.",
+      "anim_t3": {
+        "bank": "hwoarang",
+        "row": 35,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1~t8.hwoarang": {
       "name": "Jab",
@@ -5855,8 +5885,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st CH; &lt;/div&gt",
       "anim_t3": {
         "bank": "hwoarang",
-        "row": 200,
-        "match": "same-notation"
+        "row": 95,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+1~t8.hwoarang": {
@@ -10705,8 +10735,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Available on hit or block only; Jail from 1st block; Combo from 1st hit; Also possible during RFF; Transition to RFS; &lt;/div&gt",
       "anim_t3": {
         "bank": "hwoarang",
-        "row": 144,
-        "match": "same-notation"
+        "row": 95,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+3,4,3": {
@@ -13629,8 +13659,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "hwoarang",
-        "row": 144,
-        "match": "same-notation"
+        "row": 95,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "mod_damage": "20,18",
       "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
@@ -14580,8 +14610,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "hwoarang",
-        "row": 200,
-        "match": "same-notation"
+        "row": 95,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "mod_damage": "16,28",
       "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
@@ -14622,8 +14652,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "hwoarang",
-        "row": 200,
-        "match": "same-notation"
+        "row": 95,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "mod_damage": "16,28",
       "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
