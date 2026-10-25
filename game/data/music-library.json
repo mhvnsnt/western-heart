@@ -3,6 +3,10 @@
   "engine": "game/js/music.js (MusicEngine)",
   "attribution": "Tracks by Kevin MacLeod are CC BY 4.0 \u2014 credit line in each track's `credit` field. Tong-Nou tracks are the owner's original music.",
   "howToSwap": "Drop a replacement file into game/assets/music/ with the SAME filename, or edit this JSON: change `file` / `remote`, retag `moods`/`stages`/`modes`. No code changes. See docs/MUSIC-PIPELINE.md.",
+  "themes": {
+    "cape-jones": "ghost-surf-rock",
+    "cape-jones-arena-main": "ghost-surf-rock"
+  },
   "tracks": [
     {
       "id": "title-meditation",
@@ -1167,6 +1171,33 @@
       "loopEnd": null,
       "gain": 1.0,
       "status": "pending-download"
+    },
+    {
+      "id": "ghost-surf-rock",
+      "file": null,
+      "remote": null,
+      "title": "Ghost Surf Rock",
+      "artist": "Loyalty Freak Music",
+      "license": "CC0-1.0",
+      "credit": "Ghost Surf Rock \u2014 Loyalty Freak Music \u2014 CC0 1.0 Universal (https://freemusicarchive.org/music/Loyalty_Freak_Music/WITCHY_BATTY_SPOOKY_HALLOWEEN_IN_SEPTEMBER_/Ghost_Surf_Rock)",
+      "moods": [
+        "spooky",
+        "surf",
+        "ghostly",
+        "halloween",
+        "fun"
+      ],
+      "modes": [
+        "cape-jones-theme"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": null,
+      "loopEnd": null,
+      "gain": 0.9,
+      "status": "pending-download",
+      "filePending": "assets/music/ghost-surf-rock.mp3",
+      "source": "https://freemusicarchive.org/music/Loyalty_Freak_Music/WITCHY_BATTY_SPOOKY_HALLOWEEN_IN_SEPTEMBER_/Ghost_Surf_Rock"
     }
   ],
   "rotation": {

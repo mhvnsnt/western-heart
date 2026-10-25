@@ -29,6 +29,22 @@ export const ATTIRE_VARIANTS = {
     { model: 'thor', label: 'ATTIRE 1' },
     { model: 'thor-attire2', label: 'ATTIRE 2 · ONI MASK' },
   ],
+  /* NEGATIVO's ladder (owner 2026-10-22): per-attire EYE GLOW — each slot
+     carries its own emissive eye config (data-driven, never hardcoded in the
+     renderer). Attire 1 = glowing RED eyes, Attire 2 (before the trials) =
+     glowing WHITE eyes. `materials` names the eye meshes as identified from
+     the model (n3g4tiv0.glb's dedicated eye material ModelEyes_Material028).
+     Slot 2 is pending: its Tripo original is archived (immutable) at
+     roster/negativo/attires/attire2/source/ but the rigged playable model
+     hasn't landed — the white-eye config is wired and waiting; the picker
+     hides pending slots (selectableAttires) so nothing unplayable shows. */
+  'negativo': [
+    { model: 'n3g4tiv0', label: 'ATTIRE 1',
+      eyeGlow: { color: 0xff2222, intensity: 2.4, materials: ['ModelEyes_Material028'] } },
+    { model: 'negativo-attire2', label: 'ATTIRE 2 · BEFORE THE TRIALS (PARKED — AWAITING RIG)',
+      pending: true,
+      eyeGlow: { color: 0xffffff, intensity: 2.4, materials: ['ModelEyes_Material028'] } },
+  ],
   /* TORCH's ladder — keyed by fighter id ('torch'; attiresFor() falls back
      to the id when the model key misses), same pattern as Doc Frank's and
      Kevin's ladders. LADDER ORDER (owner rule 2026-10-21): her Tripo
@@ -408,13 +424,31 @@ export function attiresFor(fighter) {
   return [{ model: fighter.model, label: 'ATTIRE 1' }].filter(a => isModelUsable(a.model));
 }
 
-/** The persisted attire model id for this fighter (or their base). */
+/** The persisted attire model id for this fighter (or their base).
+ * Pending slots (model not yet playable — e.g. Negativo Attire 2 awaiting its
+ * rig) are never selectable: the default and any stale saved choice fall back
+ * to the first playable slot. */
 export function selectedAttireModel(fighter) {
   const map = loadMap();
-  const list = attiresFor(fighter);
+  const list = selectableAttires(fighter);
   const saved = map[fighter.id];
   if (saved && list.some(a => a.model === saved)) return saved;
   return list.length ? list[0].model : null;
+}
+
+/** Attire slots the picker may offer: pending (not yet playable) slots stay
+ * in the config (their per-attire data, like eyeGlow, is wired and waiting)
+ * but are hidden from selection until their model lands. */
+export function selectableAttires(fighter) {
+  return attiresFor(fighter).filter(a => !a.pending);
+}
+
+/** Per-attire eye-glow config for a model id (owner 2026-10-22): each attire
+ * slot carries its own emissive eye color — e.g. Negativo Attire 1 red,
+ * Attire 2 (before the trials) white. Undefined when the slot has none. */
+export function attireEyeGlow(fighter, modelId) {
+  const slot = attiresFor(fighter).find(a => a.model === modelId);
+  return slot ? slot.eyeGlow : undefined;
 }
 
 /** Persist the attire choice for a fighter. */
@@ -433,9 +467,12 @@ export function attireLabel(fighter, modelId) {
 /**
  * Resolve a roster fighter to the version used in a match:
  * a shallow copy with `model` swapped to the selected attire.
+ * Carries the selected attire slot's `eyeGlow` (per-attire emissive eye
+ * config, owner 2026-10-22) so the renderer applies the right eye color.
  * The original roster entry is never mutated.
  */
 export function resolveFighterAttire(fighter) {
   if (!fighter) return fighter;
-  return { ...fighter, model: selectedAttireModel(fighter) };
+  const model = selectedAttireModel(fighter);
+  return { ...fighter, model, eyeGlow: attireEyeGlow(fighter, model) };
 }

@@ -12,6 +12,7 @@ class AudioEngine {
     this.master = null;
     this.musicGain = null;
     this.sfxGain = null;
+    this.voiceGain = null;
     this.enabled = false;
     this._musicTimer = null;
     this._musicStep = 0;
@@ -37,8 +38,17 @@ class AudioEngine {
     this.sfxGain.gain.value = 0.85;
     this.sfxGain.connect(this.master);
 
+    this.voiceGain = this.ctx.createGain();
+    this.voiceGain.gain.value = 0.9;
+    this.voiceGain.connect(this.master);
+
     this.enabled = true;
   }
+
+  /* Voice bus (2026-10-24): announcer + character voice route here so
+     voice can be levelled separately from SFX. Null before unlock —
+     voice.js already falls back to ctx.destination in that case. */
+  voiceBus() { return this.voiceGain; }
 
   get now() { return this.ctx ? this.ctx.currentTime : 0; }
 

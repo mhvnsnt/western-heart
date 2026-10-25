@@ -98,9 +98,16 @@ main's lane plus this PR's deltas, tested together by the revised suite.
   this PR's engager lists + tests).
 - Item moves: PARTIAL — gate DONE (main lane); no item data wired
   (needs item/equipment data, none in repo movesets).
-- Canon names for these systems: NEEDS NAME (owner decision owed; no
-  names in CANON.md or SOUL-SYSTEMS.md as of 2026-10-24; technical
-  names used in code/docs only).
+- Canon names for these systems: PARTLY LOCKED (user 2026-10-24
+  22:01 CDT). Spin Juggle is LOCKED as the umbrella mechanic for the
+  Screw/Tornado extender: forms are Floor Spin (ground/floor form,
+  ex-Screw) and Air Spin (air form, ex-Tornado); Tailspin collapses
+  into Floor Spin, no third form. Break + guard break KEEP their
+  existing names (no new shared name). Power Crush rename PROPOSED,
+  not locked: Kongō (recommended) or Armor Strike — user pick
+  pending. Code/docs keep technical names (Screw/Tornado/Power
+  Crush) until the owner locks the rest; no invented name is
+  presented as canon.
 - Live playtest: OWED-PLAYTEST (parent/user step; subagent cannot
   operate a live browser; must be stated as owed, never claimed from
   simulation). Checklist: Power Crush absorb vs low/throw, Screw
