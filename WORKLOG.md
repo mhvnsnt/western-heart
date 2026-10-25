@@ -2712,6 +2712,45 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 
 **Verification:** guard PASS on every run (no move/string/special/input lost); semantic diff audit — 0 field losses, 0 removals, additions only; `node --test game/tests/fighter-completeness.test.mjs` green; gitleaks clean.
 
+## 2026-10-23 ~19:45 CDT — Cloth physics: XPBD engine wired (feature/cloth-xpbd-20261023)
+
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate"
+
+**Evaluated (docs/research/CLOTH-EVALUATION-2026-10-23.md):**
+- jspdown/cloth — WINNER. MIT (verified, © 2023 Harold Ozouf). WebGPU XPBD, graph-colored parallel Gauss-Seidel, sub-stepping. Web-native, matches Three.js stack.
+- openxrlab/XRTailor — Apache 2.0 (verified). CUDA-only C++, no web path; Swift-mode parameter guidance informed our quality table. Quality Mode noted for a future offline bake pipeline.
+- vitalight/Velvet — MIT (verified). CUDA-only; long-range-attachment idea ported as skip-one bend links in hair chains; capsule colliders added. SDF collision noted as future.
+
+**Wired:**
+- `game/js/fx/cloth.js` (new): XPBD engine porting jspdown/cloth's algorithm to dependency-free JS, CPU backend. XPBDSolver (typed arrays, greedy graph coloring, compliance constraints), extractTopology, buildSheet/buildFromMesh/buildChain builders, 6 fabric presets, quality table + phone-safe detect + LOD sleep (mirrors fx/particles.js), writePositions/writeNormals three.js adapters, availableBackends() WebGPU probe. CPU backend chosen because the game renders WebGL (Effekseer shares the context) and phones can't be assumed WebGPU-capable; color-group layout preserved so a WebGPU port is mechanical later.
+- `game/js/cloth-hair.js` (surgical): verlet core → compatibility facade over the new engine; ClothSheet/HairChain rebuilt on XPBD (bend hinges replace shear hack, compliance fabrics, area mass, inelastic sphere/capsule body colliders, first-placement root translate kills attach whip). Public API unchanged — fighter-depth.js autoAttachCloth wiring untouched, whole roster upgraded.
+- `game/tests/cloth-xpbd.test.mjs` (new): 13 tests, all pass.
+- Fixed a real engine bug found by tests: PBD contact velocity kick launched deep-spawned particles (y=21.6); contacts are now fully inelastic (normal velocity stripped), resting contact stable.
+
+**Verification:** cloth-xpbd 13/13 pass; fighter-depth 43/43 pass; full suite 144/148 (4 failures pre-existing on main: fluid-decals, model-key-guard x2, stagerage — verified via stash). Numerical drape proof: 8x10 cape, 120 steps, top displacement 0.0, bottom hangs -0.902/-0.90, max stretch 0.76%.
+
+**Anti-clobber:** branch from origin/main; commit via Git Data API from main's tree + only this task's files (working tree holds other lanes' uncommitted work — not touched, not committed). gitleaks clean.
+
+## 2026-10-23 ~20:00 CDT — voro++ Voronoi fracture wired into arena destruction (feat/voropp-destruction-20261023)
+
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate"
+
+**Pulled:** voro++ (Chris H. Rycroft, LBL — BSD 3-clause LBNL-modified, license text vendored verbatim at `game/vendor/voropp/LICENSE`; source cloned from https://github.com/chr1shr/voro to /tmp for the license only, C++ NOT vendored — repo stays lean). The game is JS: `game/js/destruction.js` is an original dependency-free JS implementation of voro++'s documented cell-by-plane-cuts algorithm (each Voronoi cell computed individually by carving a bounding box with perpendicular-bisector plane cuts — Sutherland–Hodgman half-plane clipping in 2D), + Lloyd relaxation for organic shards, + seeded RNG for determinism.
+
+**Wired (Foundation Law: Tekken base, this plugs in on top):**
+- `game/js/destruction.js` (new, pure math — no THREE/DOM, node-testable): `voronoiCells`, `lloydRelax`, `fractureRect` (impact-biased seed density), `DestructionSystem` — `registerSurface` / `damage` (accumulates, fractures once at 0 hp) / `step` (ballistics: gravity, spin, rest planes, life decay, live-list pruning). Wall frame: plane XY extruded in Z, rest at y=0. Floor frame: plane XY mounted rotX -90°, gravity local -Z, shards drop to the lower level.
+- `game/js/stagebreaks.js` (surgical): StageBreaks owns a DestructionSystem; walls/floors/balconies register as fracture surfaces in bindStage (hp 100 — one heavy hit still breaks, Tekken-authentic); checkHit routes damage through the engine; `_breakWall/_breakFloor/_breakBalcony` spawn Voronoi shard meshes (ExtrudeGeometry from cell polys, centroid-recentered so rotation pivots correctly) via new `_spawnShards`; update() steps physics and syncs/drops shard meshes; reset() clears.
+- `game/tests/destruction.test.mjs` (new): 9/9 pass — determinism, Voronoi correctness (each vertex closest to its own seed, area tiles bounds), area conservation, impact density bias, damage accumulation + single-fracture, shard ballistics/rest/death, floor -Z fall.
+- `game/tests/stagerage.test.mjs` (surgical fix): stager now copies destruction.js into the sandbox; THREE stub gains Vector2/Shape/ExtrudeGeometry + Group/Mesh position+rotation.set (needed by _spawnShards).
+- `tools/destruction-demo/index.html` (new): tap-to-shatter 2D canvas demo. Proof renders: `tools/destruction-demo/fracture-proof.svg` + `fracture-proof.png` (26 shards, area exactly conserved 27.200/27.200, denser at impact) — viewed the PNG, fracture is correct.
+
+**Verification:** destruction 9/9 pass; stagerage 13/15 (2 failures pre-existing on origin/main — rage/urge pressChord, verified via worktree of main @ PR #949); node --check clean on all touched files. Caught and fixed a real bug during wiring: shard geometry must be centroid-recentered or meshes render offset.
+
+**Anti-clobber:** branch from origin/main (fresh sync); commit limited to this task's files only (working tree holds other lanes' staged/unstaged work — not touched, not committed). gitleaks clean. No deletions.
+
+**ALL CHARACTERS ARE ADULTS:** n/a — geometry/physics system, no characters.
+
+**Outcome (2026-10-23 ~21:30 CDT):** PR #961 OPEN, not merged. 10/11 checks green (incl. instruction-gate, deletion/clobber guards, unit tests covering this PR's files). game-unit-tests is red from a PRE-EXISTING main failure: test/soul-systems.test.mjs asserts gashadokuro has a soul-variants.json row; main ec3d50e9 ships 55 rows, none for gashadokuro (wave3 lane added the fighter without its variant data). None of this PR's files touch roster/soul/variant code. Blocker comment posted on the PR naming it; per the merge-it-yourself law the PR stays open until the owning lane fills the row. No merge attempted on red.
 
 ## 2026-10-23 21:30 CT — Cape Jones playable on Alisa's select slot (muse/cape-jones-fight)
 
@@ -2842,3 +2881,33 @@ Simulation only — live touch playtest still owed; nothing here claims the live
 - game/assets/movesets/zen.json: new additive wh_true_moveset, 25 entries, interim 639-move Heihachi map untouched, sources never mixed. Twelve 10 + supers 2 + X.COPY 1 (ONE super, not identity) + Zen signatures 2 (Does Not Compete, Refused Seat, quoted verbatim from the 188 canon-moves file) + Tentacle 3 + Oversoul 1 + Transformation 4 + Spirit-form 2. NEEDS-INPUT 6, UNMAPPED animation 25/25. Eleven contributes 0 distinct moves (SFV: no own moveset, morphs pre-match); Dural contributes 0 attack rows (no published movelist; stance layer pending extraction).
 - Move List Creator (packages/creation-suite/src/movelist-editor.js): fromMovesetFile() now displays wh_true_moveset entries for Zen (id true:<id>), status unmapped, not swap-eligible until an animation lands. Simulation/editor-test proof only — NOT play-verified; Zen's true kit is unplayable until Dural motion / Twelve 2D->3D / MADE animations land.
 - Full decision doc: docs/decisions/2026-10-24-zen-base-decision.md. PR #1016 gets a comment linking the resolution (its branch is not rewritten).
+## 2026-10-23 — Grok Bot merge steward / integration pass (13:32–14:40 CT)
+
+Owner: "u join them make sure everything getting pushed and merged clean no clobbering any sides". Every merge was clean, CI-green via the Actions runs API, and had 0 deleted files. No force-pushes, rebases or branch deletions.
+- 13:36 merged #667 (audio, +6535/-0), 13:37 #671, 13:38 #674 (T-pose renders).
+- 13:38 opened union-merge integration PRs #799–#802 for #620/#662/#689/#699. Their conflicts were only in the append-only `WORKLOG.md` / `docs/owner-directives.md`, and both sides were kept. Merged #800 (13:43), #799 (13:46), #801 (14:20), #802 (14:37). The originals auto-closed.
+- 14:08 merged #809: clobber-guard does a sparse checkout of `.github` only and the timeout went from 15 to 25 min. Run time dropped from a 15-min timeout to about 8 s.
+- 14:14 merged #796 (instruction-gate proof refs) after a close/reopen re-ran all 5 workflows green.
+- 14:16 ran update-branch (merge commit, no force) on 16 stale non-freeze PRs. Merged #606. Commented on 13 PRs that still fail the gate (body problems) and 13 that conflict with main (files listed in each comment).
+- 14:29 deployed gh-pages from main @ 91e7d03e8 using `tools/deploy/build_pages.py --onto origin/gh-pages`: 396 files added or updated, 0 removed, fast-forward push.
+- Not touched: all freeze-marked PRs and #793. #793's content was already on main via a direct push, which is a rule break and has been flagged.
+---
+
+## 2026-10-23 — Fighting game AI methodology (FightingICE + Tencent)
+
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate"
+
+**Changes:**
+- `docs/research/FIGHTING-AI-METHODOLOGY-2026-10-23.md` (new): what FightingICE teaches (16.67ms budget, 15-frame human-reaction delay, forward model, MCTS era, ERHEAPI 2020's RHEA + live opponent model), what Tencent validates (AI in-between frames, self-play agents "millions of rounds", Naruto Mobile HESP), wiring map, beatability contract, future lanes.
+- `game/js/ai/frame-data.js` (new): 60fps frame math, seconds<->frames normalization, T7 advantage-string parsing, bestPunish() Tekken punish math.
+- `game/js/ai/reaction-delay.js` (new): FightingICE's 15-frame human-reaction rule — brains decide from a delayed snapshot; 15f rookie → 8f boss, never 0.
+- `game/js/ai/mcts-select.js` (new): UCB1 MCTS through the frame-data forward model (depth-2 rollouts, 3ms hard budget) + live OpponentModel (frequency table: guard height, mash rate, sidesteps, foe fastest button, learned mid-match).
+- `game/js/ai.js` (surgical): FIXED foeStartupFrames fed in SECONDS to brains reasoning in FRAMES (the 15f-plus sidestep window could never open); combat/grapple/reversal brains decide from the delayed human-view snapshot, execution stays live; whiff-punish lane picks the hardest punish fitting the foe's real recovery window; attack lanes use MCTS at higher tiers (tier-gated below difficulty 0.35).
+- `game/js/modes.js` (surgical): scaledAi() passes difficulty through; AIController maps it via delayFramesForDifficulty() / mctsRolloutsForDifficulty().
+- `game/tests/fighting-ai.test.mjs` (new, 21 tests), `game/tests/fighting-ai-integration.test.mjs` (new, 7 tests incl. 300-tick mock-fighter AIController.update() soak).
+
+**Verification:** 21/21 + 7/7 + 24/24 (yuka-combat-ai) green; full node --test game/tests 164/169 with 5 pre-existing failures reproduced identically with this change stashed (fluid-decals, fighter model-URL resolution, stagerage rage/urge mapping — unrelated). node --input-type=module --check clean on all touched modules. Gitleaks: no leaks found. Live tools/proof-harness/fight.mjs not run — no Chromium/Playwright in this environment; task said "if available".
+
+**Deviations:** none.
+
+**ALL CHARACTERS ARE ADULTS:** n/a — AI logic only, no character content.
