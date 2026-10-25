@@ -194,6 +194,21 @@ function segRow(label, key, options) {
   row.appendChild(seg);
   return row;
 }
+/* SOUND toggle (user 2026-10-24): same row as toggleRow but INVERTED for
+   the persisted `muted` key — the row shows ON when sound PLAYS
+   (muted: false) and OFF when muted. The `muted` key and applySettings()
+   are untouched, so existing saved settings keep working. */
+function toggleRowInv(label, key) {
+  const s = getSettings();
+  const row = el('div', 'wh-toggle' + (!s[key] ? ' on' : ''), `<span>${label}</span><span class="pill"></span>`);
+  row.addEventListener('click', () => {
+    audio.uiClick && audio.uiClick();
+    const v = !getSettings()[key];
+    row.classList.toggle('on', !v);
+    setSettings({ [key]: v });
+  });
+  return row;
+}
 function toggleRow(label, key) {
   const s = getSettings();
   const row = el('div', 'wh-toggle' + (s[key] ? ' on' : ''), `<span>${label}</span><span class="pill"></span>`);
@@ -217,7 +232,7 @@ export function openOptions() {
   sheet.insertBefore(sliderRow('SFX VOLUME', 'sfx', pct), back);
   sheet.insertBefore(segRow('GRAPHICS QUALITY', 'quality',
     [['low', 'LOW'], ['med', 'MED'], ['high', 'HIGH']]), back);
-  sheet.insertBefore(toggleRow('MUTE ALL', 'muted'), back);
+  sheet.insertBefore(toggleRowInv('SOUND', 'muted'), back);
   sheet.insertBefore(toggleRow('CONTROL HINTS', 'hints'), back);
   o.classList.add('show');
   audio.uiClick && audio.uiClick();
