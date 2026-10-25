@@ -1,0 +1,128 @@
+@font-face { font-family: "WHDisplay"; src: url("fonts/Oswald-VariableFont_wght.ttf"); font-weight: 200 700; }
+:root { --ink:#05020c; --plum:#2a0a3a; --blood:#9e1b2c; --gold:#f2b24a; --bone:#f4e6c8; --jp:"Noto Serif CJK JP","Noto Sans CJK JP",serif; }
+* { box-sizing:border-box; margin:0; padding:0; }
+html,body { width:100%; height:100%; overflow:hidden; background:var(--ink); color:var(--bone); font-family:"WHDisplay",Oswald,sans-serif; letter-spacing:.04em; }
+i { font-style:normal; font-family:var(--jp); }
+.wall { position:fixed; inset:0; background:url("art/wallpaper_wh.png") center/cover; }
+body[data-screen="select"] .wall, body[data-screen="vs"] .wall, body[data-screen="hud"] .wall,
+body[data-screen="pause"] .wall, body[data-screen="results"] .wall { filter:blur(6px) brightness(.45); }
+.screen { position:fixed; inset:0; display:none; }
+.screen.active { display:block; }
+.k { font-family:var(--jp); color:var(--gold); }
+.sil { filter:brightness(0) drop-shadow(0 0 2px var(--gold)); opacity:.85; }
+
+/* TITLE (TTT2/T6 title lineage) */
+.logo { position:absolute; left:6vw; top:14vh; }
+.logo-en { font-size:9vw; font-weight:700; line-height:.85; text-shadow:0 .4vw 0 var(--blood); }
+.logo-en b { display:block; color:var(--gold); }
+.logo-jp { font-family:var(--jp); font-size:3vw; margin-top:1vw; letter-spacing:.3em; color:#b469ff; text-shadow:0 .2vw 0 #14041f; }
+.press { position:absolute; left:6vw; bottom:18vh; font-size:2.4vw; animation:blink 1.4s infinite; }
+.press span { font-family:var(--jp); color:#b469ff; }
+.legal { position:absolute; left:6vw; bottom:5vh; font-size:1vw; opacity:.7; }
+@keyframes blink { 50% { opacity:.25; } }
+
+/* MAIN MENU (Urban Reign / TTT2 vertical list) */
+.side-logo { position:absolute; left:5vw; top:6vh; font-size:3vw; font-weight:700; }
+.side-logo b { color:var(--gold); margin-left:.4vw; } .side-logo i { display:block; font-size:1.2vw; letter-spacing:.5em; }
+.list { position:absolute; left:5vw; top:24vh; display:flex; flex-direction:column; gap:1.1vh; }
+.list a { display:flex; justify-content:space-between; gap:3vw; width:30vw; padding:1.2vh 1.4vw; font-size:2vw;
+  background:linear-gradient(90deg,rgba(10,3,20,.85),rgba(10,3,20,.2)); border-left:.4vw solid transparent; clip-path:polygon(0 0,100% 0,96% 100%,0 100%); }
+.list a i { color:var(--gold); font-size:1.3vw; align-self:center; }
+.list a.on { background:linear-gradient(90deg,var(--blood),rgba(158,27,44,.15)); border-left-color:var(--gold); transform:translateX(1vw); }
+.blurb { position:absolute; left:5vw; bottom:7vh; width:34vw; font-size:1.3vw; border-top:2px solid var(--gold); padding-top:1vh; }
+
+/* bars */
+.title-bar { position:absolute; left:0; right:0; top:0; height:9vh; display:flex; align-items:center; gap:1.5vw; padding:0 4vw;
+  font-size:2.6vw; background:linear-gradient(90deg,var(--blood),rgba(42,10,58,.9)); border-bottom:3px solid var(--gold); }
+.title-bar i { font-size:1.4vw; color:var(--gold); }
+.timer { margin-left:auto; font-size:3vw; color:var(--gold); }
+
+/* MODE SELECT (Def Jam / WWE card row) */
+.cards { position:absolute; left:4vw; right:4vw; top:20vh; display:grid; grid-template-columns:repeat(3,1fr); gap:2vw; }
+.card { height:30vh; padding:2vh 1.5vw; background:rgba(10,3,20,.78); border:2px solid rgba(242,178,74,.25); display:flex; flex-direction:column;
+  clip-path:polygon(0 0,100% 0,100% 85%,90% 100%,0 100%); }
+.card b { font-size:2.6vw; } .card em { font-style:normal; color:var(--gold); font-size:1.3vw; }
+.card i { font-size:3.6vw; opacity:.25; margin-top:auto; } .card p { font-size:1vw; opacity:.85; }
+.card.on { border-color:var(--gold); background:linear-gradient(160deg,var(--blood),rgba(10,3,20,.85)); transform:translateY(-1vh); }
+
+/* [LANE-I select-redesign] OLD CHARACTER SELECT styles DELETED (the T6/TTT2
+   .grid/.cell/.sel-side/.tag block — repeated renders, no names, page-level
+   vertical scroll). Rebuilt styles live in cards.css (bisected live-3D zone +
+   contained card strip). */
+
+/* VS (Def Jam / WWE diagonal split) */
+.vs-half { position:absolute; top:0; bottom:0; width:58vw; overflow:hidden; }
+.vs-half.l { left:0; clip-path:polygon(0 0,100% 0,72% 100%,0 100%); background:linear-gradient(135deg,#0d2a5a,#05020c); }
+.vs-half.r { right:0; clip-path:polygon(28% 0,100% 0,100% 100%,0 100%); background:linear-gradient(225deg,#5a0d1e,#05020c); }
+.vs-half img { position:absolute; bottom:-4vh; height:104vh; left:12vw; }
+.vs-half.r img { left:auto; right:12vw; transform:scaleX(-1); }
+.vs-name { position:absolute; bottom:8vh; left:3vw; font-size:4vw; font-weight:700; text-shadow:0 .3vw 0 #000; }
+.vs-half.r .vs-name { left:auto; right:3vw; text-align:right; }
+.vs-name em { display:block; font-style:normal; font-size:1.4vw; color:var(--gold); } .vs-name small { font-size:1vw; opacity:.7; }
+.vs-name .k { margin-right:1vw; }
+.vs-mark { position:absolute; left:50%; top:42%; transform:translate(-50%,-50%) skewX(-8deg); font-size:10vw; font-weight:700; color:var(--gold);
+  text-shadow:0 0 2vw var(--blood),0 .5vw 0 #000; } .vs-mark i { font-size:3vw; margin-left:1vw; color:var(--bone); }
+.vs-stage { position:absolute; left:0; right:0; bottom:2vh; text-align:center; font-size:1.2vw; letter-spacing:.3em; }
+
+/* HUD (T6 long bars, name plates, round pips; Nine-Soul meter) */
+.hud-top { position:absolute; top:3vh; left:2vw; right:2vw; display:flex; gap:1.5vw; }
+.plate { flex:1; } .plate.r { direction:rtl; }
+.bar { position:relative; height:3.4vh; background:#200; border:2px solid var(--bone); transform:skewX(-20deg); overflow:hidden; }
+.plate.r .bar { transform:skewX(20deg); }
+.bar u { position:absolute; inset:0 auto 0 0; background:#c33; } .bar i { position:absolute; inset:0 auto 0 0; background:linear-gradient(180deg,#ffe27a,#e08a1a); }
+.plate.r .bar u, .plate.r .bar i { inset:0 0 0 auto; }
+.nm { font-size:1.8vw; margin-top:.6vh; direction:ltr; } .plate.r .nm { text-align:right; } .nm i { color:var(--gold); margin:0 .6vw; }
+.souls { display:flex; gap:.3vw; margin-top:.4vh; } .souls em { width:1.5vw; height:1.5vw; border:2px solid var(--gold); transform:rotate(45deg); }
+.souls em.on { background:var(--gold); box-shadow:0 0 .6vw var(--gold); }
+.clock { width:9vw; text-align:center; } .clock b { display:block; font-size:4.5vw; line-height:1; color:var(--gold); }
+.clock span { font-size:.8vw; white-space:nowrap; } .clock em { display:inline-block; width:.8vw; height:.8vw; border-radius:50%; border:1px solid var(--bone); margin:0 .1vw; }
+.clock em.won { background:var(--gold); }
+.hud-fx { position:absolute; left:4vw; top:30vh; font-size:2vw; transform:skewX(-10deg); } .hud-fx b { font-size:6vw; color:var(--gold); }
+.hud-fx i { display:block; font-size:1.4vw; }
+
+/* PAUSE */
+.pause { background:rgba(5,2,12,.6); }
+.pause-box { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:40vw; height:66vh; background:rgba(10,3,20,.92); border:2px solid var(--gold); }
+.pause-box h2 { padding:2vh 2vw; font-size:3vw; background:var(--blood); } .pause-box h2 i { font-size:1.5vw; color:var(--gold); margin-left:1vw; }
+.pause-box .list { left:3vw; top:14vh; } .pause-box .list a { width:34vw; font-size:1.6vw; }
+
+/* RESULTS (WWE / Def Jam winner card) */
+.res-hero img { position:absolute; left:4vw; bottom:0; height:96vh; }
+.res-card { position:absolute; right:5vw; top:12vh; width:46vw; padding:3vh 2.5vw; background:rgba(10,3,20,.86); border-left:.6vw solid var(--gold); }
+.res-win { font-size:2vw; color:var(--gold); } .res-win i { margin-left:1vw; font-size:1.3vw; }
+.res-name { font-size:5vw; font-weight:700; line-height:1; } .res-name em { display:block; font-style:normal; font-size:1.4vw; color:var(--gold); }
+.res-name .k { margin-right:1vw; }
+.res-quote { font-size:1.6vw; margin:2vh 0; opacity:.9; }
+.res-stats { width:100%; border-collapse:collapse; font-size:1.3vw; } .res-stats td { padding:.8vh 0; border-bottom:1px solid rgba(242,178,74,.25); }
+.res-stats td:last-child { text-align:right; color:var(--gold); }
+.list.row { position:static; flex-direction:row; margin-top:3vh; } .list.row a { width:auto; font-size:1.2vw; white-space:nowrap; gap:1vw; }
+.vs-name .pend { color:#ff5a6a; opacity:1; }
+
+/* embedded in game/ (iframe over the 3D canvas) */
+body.embed { background:transparent; }
+body.embed[data-screen="hud"] .wall { display:none; }
+body.embed .hud-fx.idle { opacity:0; } body.embed .hud-fx.pop { animation:pop .9s; }
+@keyframes pop { 0% { opacity:1; transform:skewX(-10deg) scale(1.3); } 80% { opacity:1; } 100% { opacity:0; } }
+.cell, .list a, .card, [data-screen="title"] { cursor:pointer; }
+
+/* TITLE VARIANTS (title-config.js; ?title=v1|v2|v3; default v3). v2 keeps the base rules above. */
+html[data-title="v1"] .wall { background-image:url("art/wallpaper_wh_v1.png"); }
+html[data-title="v3"] .wall { background-image:url("art/wallpaper_wh_v3.png"); }
+html[data-title="v4"] .wall { background-image:url("art/wallpaper_wh_v4.png"); }
+html[data-title="v1"] .logo-jp { letter-spacing:.6em; color:inherit; text-shadow:none; }
+html[data-title="v1"] .press span { color:var(--gold); }
+
+/* OPTIONS + DEV SANDBOX (Settings > Dev Sandbox) */
+.options .list { top:16vh; }
+.list a { cursor:pointer; }
+.devsandbox .ds-actions { margin-left:auto; display:flex; gap:1vw; }
+.ds-btn { font-size:max(12px,1.2vw); padding:.8vh 1.2vw; border:1px solid var(--gold); color:#fff; cursor:pointer; text-decoration:none; background:rgba(10,3,20,.6); }
+.ds-btn:hover { background:var(--blood); }
+#ds-frame { position:absolute; left:0; right:0; top:9vh; bottom:0; width:100%; height:91vh; border:0; background:#0a0e14; }
+@media (max-width: 700px), (orientation: portrait) {
+  .options .list a { width:80vw; font-size:max(16px,4vw); padding:1.6vh 3vw; }
+  .options .list a i { font-size:max(12px,3vw); }
+  .options .blurb { width:86vw; font-size:max(13px,3.4vw); }
+  .devsandbox .title-bar { font-size:max(16px,4vw); height:auto; min-height:9vh; flex-wrap:wrap; padding:1vh 3vw; }
+  .ds-btn { font-size:max(12px,3vw); padding:1vh 2.5vw; }
+}

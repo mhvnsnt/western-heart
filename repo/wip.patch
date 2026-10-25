@@ -1,0 +1,232 @@
+diff --git a/.claude/settings.json b/.claude/settings.json
+index 1185bba46..744e6ebbd 100644
+--- a/.claude/settings.json
++++ b/.claude/settings.json
+@@ -1,28 +1,106 @@
+ {
+   "hooks": {
+     "SessionStart": [
+-      { "matcher": "startup|resume|compact", "hooks": [
+-        { "type": "command", "command": "bash \"${CLAUDE_PROJECT_DIR}/tools/agent/session-start.sh\"", "timeout": 20 } ] }
++      {
++        "matcher": "startup|resume|compact",
++        "hooks": [
++          {
++            "type": "command",
++            "command": "bash \"${CLAUDE_PROJECT_DIR}/tools/agent/restore.sh\"",
++            "timeout": 60
++          },
++          {
++            "type": "command",
++            "command": "bash \"${CLAUDE_PROJECT_DIR}/tools/agent/session-start.sh\"",
++            "timeout": 20
++          }
++        ]
++      }
+     ],
+     "PostToolUse": [
+-      { "matcher": "Write|Edit|MultiEdit|NotebookEdit", "hooks": [
+-        { "type": "command", "command": "bash \"${CLAUDE_PROJECT_DIR}/tools/agent/autosave.sh\"", "async": true, "timeout": 120 } ] }
++      {
++        "matcher": "Write|Edit|MultiEdit|NotebookEdit",
++        "hooks": [
++          {
++            "type": "command",
++            "command": "bash \"${CLAUDE_PROJECT_DIR}/tools/agent/autosave.sh\"",
++            "async": true,
++            "timeout": 120
++          },
++          {
++            "type": "command",
++            "command": "bash \"${CLAUDE_PROJECT_DIR}/tools/agent/checkpoint.sh\"",
++            "timeout": 180,
++            "async": true
++          }
++        ]
++      }
+     ],
+     "Stop": [
+-      { "hooks": [
+-        { "type": "command", "command": "bash \"${CLAUDE_PROJECT_DIR}/tools/agent/autosave.sh\"", "async": true, "timeout": 120 } ] }
++      {
++        "hooks": [
++          {
++            "type": "command",
++            "command": "bash \"${CLAUDE_PROJECT_DIR}/tools/agent/autosave.sh\"",
++            "async": true,
++            "timeout": 120
++          },
++          {
++            "type": "command",
++            "command": "bash \"${CLAUDE_PROJECT_DIR}/tools/agent/checkpoint.sh\"",
++            "timeout": 180,
++            "async": true
++          }
++        ]
++      }
+     ],
+     "StopFailure": [
+-      { "hooks": [
+-        { "type": "command", "command": "bash \"${CLAUDE_PROJECT_DIR}/tools/agent/autosave.sh\"", "timeout": 60 } ] }
++      {
++        "hooks": [
++          {
++            "type": "command",
++            "command": "bash \"${CLAUDE_PROJECT_DIR}/tools/agent/autosave.sh\"",
++            "timeout": 60
++          },
++          {
++            "type": "command",
++            "command": "bash \"${CLAUDE_PROJECT_DIR}/tools/agent/checkpoint.sh\"",
++            "timeout": 180
++          }
++        ]
++      }
+     ],
+     "PreCompact": [
+-      { "hooks": [
+-        { "type": "command", "command": "bash \"${CLAUDE_PROJECT_DIR}/tools/agent/autosave.sh\"", "timeout": 60 } ] }
++      {
++        "hooks": [
++          {
++            "type": "command",
++            "command": "bash \"${CLAUDE_PROJECT_DIR}/tools/agent/autosave.sh\"",
++            "timeout": 60
++          },
++          {
++            "type": "command",
++            "command": "bash \"${CLAUDE_PROJECT_DIR}/tools/agent/checkpoint.sh\"",
++            "timeout": 180
++          }
++        ]
++      }
+     ],
+     "SessionEnd": [
+-      { "hooks": [
+-        { "type": "command", "command": "bash \"${CLAUDE_PROJECT_DIR}/tools/agent/autosave.sh\"", "timeout": 60 } ] }
++      {
++        "hooks": [
++          {
++            "type": "command",
++            "command": "bash \"${CLAUDE_PROJECT_DIR}/tools/agent/autosave.sh\"",
++            "timeout": 60
++          },
++          {
++            "type": "command",
++            "command": "bash \"${CLAUDE_PROJECT_DIR}/tools/agent/checkpoint.sh\"",
++            "timeout": 180
++          }
++        ]
++      }
+     ]
+   }
+ }
+diff --git a/game/js/movesets.js b/game/js/movesets.js
+index a390a0aba..f91c712ff 100644
+--- a/game/js/movesets.js
++++ b/game/js/movesets.js
+@@ -276,11 +276,24 @@ function _prepare(ms) {
+   for (const k of Object.keys(ms.moves)) if (!(k in slots)) slots[k] = k;
+   ms._slots = slots;
+   const motions = [];
++  // Source rank of the move a notation binds (lane B 2026-10-24, docs/input/INPUT-RESOLVER-V2.md
++  // "Duplicate physical inputs"): T8 0 > T7 1 > WH/custom 2 > T3 3. When two spellings are the same
++  // physical input (qcf+1 vs n,d,d/f,f+1), the fighter's T7/T8 move wins over a merged T3 row.
++  const srcRank = (n) => {
++    const mv = ms.moves[slots[n]] || {}, src = String(mv.merge_source || '');
++    if (mv.t8_id || mv.t8_source || /^t8/.test(src)) return 0;
++    if (mv.t7_source || mv.t7_move_id || /^t7/.test(src)) return 1;
++    return mv.t3_row == null && !/^t3/.test(src) ? 2 : 3;
++  };
++  const plenOf = (dirs) => dirs.filter((d, i, a) => !(d === 'n' && a[i - 1] === a[i + 1])).length; // 'f,n,f' = 'f,F'
+   for (const n of Object.keys(slots)) {
+-    const m = parseMotion(n);
+-    if (m) motions.push({ n, ...m });
++    if (MERGE_KEY.test(n)) continue; // merge-source keys ('1~t3.king') are never inputs
++    // just-frame 'f,n,d/f:1' (EWGF spelling) is pressed like 'f,n,d/f+1' (no JF timing in WH)
++    const m = parseMotion(n) || (/[a-zA-Z/]:[1-4]/.test(n) ? parseMotion(n.replace(/([a-zA-Z/]):(?=[1-4])/g, '$1+')) : null);
++    if (m) motions.push({ n, ...m, rank: srcRank(n), plen: plenOf(m.dirs) });
+   }
+-  motions.sort((a, b) => b.dirs.length - a.dirs.length); // longest motion wins (qcf+1 over f+1)
++  // longest motion wins (qcf+1 over f+1); length counts physical steps ('n,f,n,f' = 'f,F': a dash)
++  motions.sort((a, b) => (b.plen - a.plen) || (a.rank - b.rank));
+   ms._motions = motions;
+   // v2: every proper prefix of a string ('d/f+2,1' of 'd/f+2,1,3,2') — lets a string whose
+   // intermediate steps are not standalone moves (chain throws, long strings) still be typed.
+@@ -290,6 +303,73 @@ function _prepare(ms) {
+     for (const j of cuts) pre.add(n.slice(0, j));
+   }
+   ms._strPrefixes = pre;
++  // STRING TREE (lane B, 2026-10-24): base notation -> the notations one press further down the
++  // string ('1' -> {'1,2','1,4'}, '1,2' -> {'1,2,1'} ...) — the same tree T8's `parent` chains
++  // describe, rebuilt from the comma notation every moveset already uses. A step boundary is a
++  // separator right after a button ('f,F+2,1' cuts after 'f,F+2', never inside the motion).
++  const kids = new Map();
++  for (const n of Object.keys(slots)) {
++    if (MERGE_KEY.test(n)) continue; // '1~t8.bryan', 'b+3,2~t7.bryan.2': merge-source keys, not inputs
++    let prev = null;
++    for (let j = 0; j <= n.length; j++) {
++      if (j < n.length && !',~:'.includes(n[j])) continue;
++      const head = n.slice(0, j);
++      if (j < n.length && !STEP_END.test(head)) continue;
++      if (prev !== null) {
++        if (!kids.has(prev)) kids.set(prev, new Set());
++        kids.get(prev).add(head);
++      }
++      prev = head;
++    }
++  }
++  ms._strKids = kids;
++  // Same physical base under two spellings ('qcb+1+3' / 'd,d/b,b+1+3', 'd/f,d/f+1' / 'n,d/f,n,d/f+1'):
++  // a string written under one spelling continues from the other.
++  const alias = new Map();
++  for (const b of kids.keys()) { const k = physKey(b); if (!alias.has(k)) alias.set(k, []); alias.get(k).push(b); }
++  ms._physAlias = alias;
++  // Motion OPENERS: a motion that only starts a string ('R.f,n,d,d/f+4' of 'R.f,n,d,d/f+4,3+4')
++  // is matched like a motion and opens the string path (V2 `opener`).
++  for (const b of kids.keys()) {
++    if (b in slots) continue;
++    const m = parseMotion(b);
++    if (m) motions.push({ n: b, ...m, rank: 3, opener: true, plen: plenOf(m.dirs) });
++  }
++  motions.sort((a, b) => (b.plen - a.plen) || (a.rank - b.rank));
++  // Combined state prefixes the data uses ('R.SEN.1+2' rage in SEN stance, 'H.RFS.f+4' Soul Urge in
++  // RFS, 'NSS.FC.D/F+1'): resolved when every token is active, most tokens first.
++  const combos = new Map();
++  for (const n of Object.keys(slots)) {
++    const m = STATE_PREFIX.exec(n);
++    if (!m || MERGE_KEY.test(n)) continue;
++    const toks = m[1].split('.').filter(Boolean);
++    if (toks.length > 1 && !combos.has(m[1])) combos.set(m[1], toks);
++  }
++  ms._combos = [...combos].map(([p, toks]) => ({ p, toks })).sort((a, b) => b.toks.length - a.toks.length);
++}
++const STEP_END = /(?:^|[+.,~:])[1-4](?:\+[1-4])*\*?$/;
++const MERGE_KEY = /~[a-z][a-z0-9_-]*\./;
++const TILDE_FRAMES = 4; // '~' (immediately): a string step pressed < 4 frames (67 ms) of game time after the previous press
++/** One spelling per physical input: qcf/qcb/hcf/hcb expanded, leading n dropped, 'f,n,f' = 'f,f',
++    'n+1' = '1' (prefixes and held capitals kept). */
++function physKey(n) {
++  const { prefix, body } = splitNotation(n);
++  // separators are timing marks only (',' '~' ':' read alike; just-frame 'd/f:1' = 'd/f+1'); 'N' = 'n';
++  // a lone n before a button is just "neutral" ('d+4,n,4' = 'd+4,4', 'd+2~n~1' = 'd+2,1')
++  let t = body.replace(/([a-zA-Z/]):(?=[1-4])/g, '$1+').replace(/[~:]/g, ',').split(',').map(x => (x === 'N' ? 'n' : x))
++    .filter((x, i, a) => !(x === 'n' && i > 0 && /^[1-4]/.test(a[i + 1] || ''))).flatMap(x => {
++      const m = /^(qcf|qcb|hcf|hcb)(\+.*)?$/.exec(x);
++      if (!m) return [x];
++      const d = MOTION_DIRS[m[1]];
++      return [...d.slice(0, -1), d[d.length - 1] + (m[2] || '')];
++    }).map((x, i) => (i ? x.replace(/^[A-Z][A-Z0-9_]*\./, '') : x).replace(/^n\+(?=[1-4])/, '')); // 'WS.2,NSS.1' = 'WS.2,1'
++  while (t.length > 1 && t[0] === 'n') t.shift();
++  const out = [], dirOf = (x) => String(x || '').split('+')[0];
++  for (let i = 0; i < t.length; i++) {
++    if (t[i] === 'n' && out.length && dirOf(out[out.length - 1]) === dirOf(t[i + 1])) continue;
++    out.push(t[i]);
++  }
++  return prefix + out.join(',');
+ }
+ 
+ /* Player loadouts from the moveset editor: localStorage wh_moveset_loadout_v1
+diff --git a/tools/agent/checkpoint.sh b/tools/agent/checkpoint.sh
+old mode 100644
+new mode 100755

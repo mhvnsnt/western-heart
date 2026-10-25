@@ -1,0 +1,923 @@
+[
+ {
+  "id": "negativo",
+  "ms": 11853,
+  "model": true,
+  "stance": "tekken-bank",
+  "label": "Brawler · Intimidation · NEGAN BASE (TEKKEN RESKIN)",
+  "fallbackShown": false,
+  "meshes": [
+   {
+    "name": "Mesh",
+    "skinned": true,
+    "visible": true,
+    "verts": 84,
+    "mats": [
+     {
+      "n": "ModelArms_Material008",
+      "transparent": false,
+      "opacity": 1,
+      "depthWrite": true,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.17,
+     1.44,
+     0.27,
+     0.31
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     -0.13,
+     1.29,
+     0.22,
+     0.46,
+     1.49,
+     0.32
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh001",
+    "skinned": true,
+    "visible": true,
+    "verts": 95,
+    "mats": [
+     {
+      "n": "ModelBandage_Material009",
+      "transparent": false,
+      "opacity": 1,
+      "depthWrite": true,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.4,
+     1.37,
+     0.3,
+     0.09
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     0.36,
+     1.29,
+     0.21,
+     0.46,
+     1.37,
+     0.36
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh002",
+    "skinned": true,
+    "visible": true,
+    "verts": 1096,
+    "mats": [
+     {
+      "n": "ModelBelt_Material010",
+      "transparent": true,
+      "opacity": 1,
+      "depthWrite": false,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     -0.02,
+     0.96,
+     0.11,
+     0.41
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     -0.29,
+     0.75,
+     -0.16,
+     0.24,
+     1.17,
+     0.46
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh003",
+    "skinned": true,
+    "visible": true,
+    "verts": 2128,
+    "mats": [
+     {
+      "n": "ModelBoots_Material011",
+      "transparent": true,
+      "opacity": 1,
+      "depthWrite": false,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.08,
+     0.27,
+     -0.06,
+     0.58
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     -0.46,
+     0.03,
+     -0.2,
+     0.63,
+     0.43,
+     0.17
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh004",
+    "skinned": true,
+    "visible": true,
+    "verts": 1455,
+    "mats": [
+     {
+      "n": "ModelFace_Material012",
+      "transparent": false,
+      "opacity": 1,
+      "depthWrite": true,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.05,
+     1.54,
+     0.06,
+     0.15
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     -0.07,
+     1.41,
+     0,
+     0.11,
+     1.64,
+     0.15
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh005",
+    "skinned": true,
+    "visible": true,
+    "verts": 888,
+    "mats": [
+     {
+      "n": "ModelGloves_Material013",
+      "transparent": false,
+      "opacity": 1,
+      "depthWrite": true,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.05,
+     1.54,
+     0.11,
+     0.15
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     -0.06,
+     1.4,
+     0.1,
+     0.13,
+     1.63,
+     0.21
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh006",
+    "skinned": true,
+    "visible": true,
+    "verts": 561,
+    "mats": [
+     {
+      "n": "ModelHand_Left_Material014",
+      "transparent": false,
+      "opacity": 1,
+      "depthWrite": true,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.41,
+     1.33,
+     0.45,
+     0.13
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     0.37,
+     1.28,
+     0.32,
+     0.52,
+     1.36,
+     0.55
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh007",
+    "skinned": true,
+    "visible": true,
+    "verts": 2135,
+    "mats": [
+     {
+      "n": "ModelJacket_Material015",
+      "transparent": false,
+      "opacity": 1,
+      "depthWrite": true,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.05,
+     1.2,
+     0.15,
+     0.5
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     -0.37,
+     0.81,
+     -0.16,
+     0.48,
+     1.54,
+     0.37
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh008",
+    "skinned": true,
+    "visible": true,
+    "verts": 109,
+    "mats": [
+     {
+      "n": "ModelMouth_Inner_Material016",
+      "transparent": false,
+      "opacity": 1,
+      "depthWrite": true,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.03,
+     1.47,
+     0.09,
+     0.04
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     0.03,
+     1.43,
+     0.07,
+     0.09,
+     1.49,
+     0.12
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh009",
+    "skinned": true,
+    "visible": true,
+    "verts": 120,
+    "mats": [
+     {
+      "n": "ModelNeck_Material017",
+      "transparent": false,
+      "opacity": 1,
+      "depthWrite": true,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.04,
+     1.41,
+     0.02,
+     0.12
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     -0.04,
+     1.34,
+     -0.08,
+     0.15,
+     1.5,
+     0.07
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh010",
+    "skinned": true,
+    "visible": true,
+    "verts": 1310,
+    "mats": [
+     {
+      "n": "ModelPants_Material018",
+      "transparent": true,
+      "opacity": 1,
+      "depthWrite": false,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.04,
+     0.52,
+     0.04,
+     0.52
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     -0.4,
+     0.3,
+     -0.14,
+     0.45,
+     1.01,
+     0.26
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh011",
+    "skinned": true,
+    "visible": true,
+    "verts": 53,
+    "mats": [
+     {
+      "n": "ModelScarf_Inner_Material019",
+      "transparent": false,
+      "opacity": 1,
+      "depthWrite": true,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0,
+     1.38,
+     0.03,
+     0.12
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     -0.02,
+     1.28,
+     -0.04,
+     0.12,
+     1.47,
+     0.09
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh012",
+    "skinned": true,
+    "visible": true,
+    "verts": 451,
+    "mats": [
+     {
+      "n": "ModelScarf_Material020",
+      "transparent": false,
+      "opacity": 1,
+      "depthWrite": true,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.03,
+     1.42,
+     0.05,
+     0.14
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     -0.02,
+     1.28,
+     -0.06,
+     0.14,
+     1.51,
+     0.13
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh013",
+    "skinned": true,
+    "visible": true,
+    "verts": 476,
+    "mats": [
+     {
+      "n": "ModelShirt_Material021",
+      "transparent": false,
+      "opacity": 1,
+      "depthWrite": true,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.15,
+     1.46,
+     0.29,
+     0.35
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     -0.19,
+     1.24,
+     0.18,
+     0.46,
+     1.52,
+     0.36
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh014",
+    "skinned": true,
+    "visible": true,
+    "verts": 1139,
+    "mats": [
+     {
+      "n": "ModelTeeth_Material022",
+      "transparent": false,
+      "opacity": 1,
+      "depthWrite": true,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.04,
+     1.48,
+     0.08,
+     0.05
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     0.03,
+     1.43,
+     0.07,
+     0.1,
+     1.49,
+     0.13
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh015",
+    "skinned": true,
+    "visible": true,
+    "verts": 1033,
+    "mats": [
+     {
+      "n": "ModelZipper_Material023",
+      "transparent": true,
+      "opacity": 1,
+      "depthWrite": false,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     -0.01,
+     1.21,
+     0.18,
+     0.44
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     -0.19,
+     0.85,
+     -0.04,
+     0.37,
+     1.54,
+     0.38
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh016",
+    "skinned": true,
+    "visible": true,
+    "verts": 268,
+    "mats": [
+     {
+      "n": "ModelEyes_Material028",
+      "transparent": false,
+      "opacity": 1,
+      "depthWrite": true,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.05,
+     1.54,
+     0.08,
+     0.04
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     0.06,
+     1.5,
+     0.05,
+     0.1,
+     1.54,
+     0.13
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh017",
+    "skinned": true,
+    "visible": true,
+    "verts": 299,
+    "mats": [
+     {
+      "n": "ModelHair_Front_Material029",
+      "transparent": true,
+      "opacity": 1,
+      "depthWrite": false,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.02,
+     1.56,
+     0.06,
+     0.09
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     0.01,
+     1.49,
+     0,
+     0.11,
+     1.62,
+     0.15
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh018",
+    "skinned": false,
+    "visible": true,
+    "verts": 6870,
+    "mats": [
+     {
+      "n": "ModelHair_Material030",
+      "transparent": true,
+      "opacity": 1,
+      "depthWrite": false,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.01,
+     1.65,
+     -0.03,
+     0.16
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     -0.07,
+     1.56,
+     -0.12,
+     0.08,
+     1.75,
+     0.07
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh019",
+    "skinned": true,
+    "visible": true,
+    "verts": 391,
+    "mats": [
+     {
+      "n": "ModelBeard_2_Material031",
+      "transparent": true,
+      "opacity": 1,
+      "depthWrite": false,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.03,
+     1.48,
+     0.09,
+     0.08
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     -0.01,
+     1.41,
+     0.04,
+     0.11,
+     1.55,
+     0.15
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh020",
+    "skinned": true,
+    "visible": true,
+    "verts": 98,
+    "mats": [
+     {
+      "n": "ModelBeardSide_Material032",
+      "transparent": true,
+      "opacity": 1,
+      "depthWrite": false,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.01,
+     1.49,
+     0.07,
+     0.07
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     0,
+     1.42,
+     0.03,
+     0.09,
+     1.53,
+     0.14
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh021",
+    "skinned": false,
+    "visible": true,
+    "verts": 1252,
+    "mats": [
+     {
+      "n": "ModelBeard_Material033",
+      "transparent": true,
+      "opacity": 1,
+      "depthWrite": false,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.02,
+     1.56,
+     0.04,
+     0.1
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     -0.05,
+     1.5,
+     -0.02,
+     0.08,
+     1.62,
+     0.1
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh022",
+    "skinned": true,
+    "visible": true,
+    "verts": 276,
+    "mats": [
+     {
+      "n": "ModelEyebrows_FacialHair_Materi",
+      "transparent": true,
+      "opacity": 1,
+      "depthWrite": false,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.04,
+     1.57,
+     0.08,
+     0.1
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     -0.02,
+     1.5,
+     0.04,
+     0.11,
+     1.64,
+     0.14
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh023",
+    "skinned": true,
+    "visible": true,
+    "verts": 97,
+    "mats": [
+     {
+      "n": "ModelEyebrows_Material035",
+      "transparent": true,
+      "opacity": 1,
+      "depthWrite": false,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.07,
+     1.54,
+     0.07,
+     0.06
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     0.06,
+     1.5,
+     0.03,
+     0.11,
+     1.55,
+     0.14
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh024",
+    "skinned": true,
+    "visible": true,
+    "verts": 28,
+    "mats": [
+     {
+      "n": "ModelEyelashes2_Material036",
+      "transparent": true,
+      "opacity": 1,
+      "depthWrite": false,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.07,
+     1.52,
+     0.08,
+     0.04
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     0.07,
+     1.5,
+     0.05,
+     0.11,
+     1.52,
+     0.13
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh025",
+    "skinned": true,
+    "visible": true,
+    "verts": 153,
+    "mats": [
+     {
+      "n": "ModelEyelashes_Material037",
+      "transparent": true,
+      "opacity": 1,
+      "depthWrite": false,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     0.07,
+     1.53,
+     0.08,
+     0.05
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     0.08,
+     1.5,
+     0.05,
+     0.11,
+     1.53,
+     0.13
+    ],
+    "liveInFrustum": true
+   },
+   {
+    "name": "Mesh026",
+    "skinned": true,
+    "visible": true,
+    "verts": 335,
+    "mats": [
+     {
+      "n": "ModelHairBase_Material040",
+      "transparent": true,
+      "opacity": 1,
+      "depthWrite": false,
+      "side": 2,
+      "map": true,
+      "mapReady": true
+     }
+    ],
+    "cullSphere": [
+     -0.03,
+     1.56,
+     0.06,
+     0.12
+    ],
+    "inFrustum": true,
+    "liveBox": [
+     -0.08,
+     1.46,
+     0,
+     0.11,
+     1.64,
+     0.15
+    ],
+    "liveInFrustum": true
+   }
+  ],
+  "box": [
+   -0.46,
+   0.03,
+   -0.2,
+   0.63,
+   1.75,
+   0.55
+  ],
+  "cam": {
+   "pos": [
+    0,
+    1,
+    3.48
+   ],
+   "near": 0.01,
+   "far": 50,
+   "aspect": 1.21
+  },
+  "cullMiss": [],
+  "logs": []
+ }
+]
