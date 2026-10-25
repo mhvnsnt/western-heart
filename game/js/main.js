@@ -608,15 +608,19 @@ function randomEnemy(excludeId) {
 
 /* ---------------- Menu button wiring ---------------- */
 function unlockAudio() {
+  // TAP-FOR-AUDIO REMOVED (2026-10-24): no "TAP TO ENABLE SOUND" banner and
+  // no dedicated audio tap. The first real interaction — a menu, mode or
+  // fight tap, all of which already call unlockAudio() — supplies the
+  // browser's required user gesture. Audio on/off lives in Settings
+  // (menus.js SOUND toggle). Browsers still block sound before ANY
+  // gesture: that is platform policy, not a WH screen, so sound starts on
+  // the first tap the player already makes, never on a tap invented for
+  // audio. The banner div is removed from game/index.html alongside this.
+  // music.unlock() is preserved from the merged music-rotation lane
+  // (PR #1030): removing the banner must not remove the music unlock.
   audio.unlock();
   music.unlock();
-  document.getElementById('tap-to-start').classList.remove('show');
 }
-
-document.body.addEventListener('pointerdown', unlockAudio, { once: true });
-window.addEventListener('load', () => {
-  setTimeout(() => document.getElementById('tap-to-start').classList.add('show'), 600);
-});
 
 /* Menu tap failure toast (2026-10-24, menu tap fix): a tap must NEVER
    die silently. Mode loads that reject surface here instead of leaving

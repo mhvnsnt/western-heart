@@ -1,0 +1,31 @@
+name: asset-pipeline
+# GLB budget check for asset PRs (2026-10-24). Optimization itself
+# (gltfpack) is a LOCAL step — the binary is not committed — so CI runs
+# only the budget report and never fails for a missing binary.
+on:
+  pull_request:
+    paths:
+      - 'game/**'
+      - 'roster/**'
+      - 'customization/**'
+      - 'tools/asset-pipeline/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  budgets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      # Advisory in v1 (continue-on-error): the roster has not been fully
+      # measured yet, so a first report must not block unrelated PRs.
+      # Promotion to a blocking gate is a follow-up once the roster
+      # baseline is known. The script itself still exits 2 over 100 MB.
+      - name: GLB budget report (fails only over GitHub's 100 MB push limit)
+        run: python3 tools/asset-pipeline/check-budgets.py
+        continue-on-error: true
+      - name: Pipeline script present (optimization stays local)
+        run: |
+          test -x tools/asset-pipeline/wh-asset-pipeline.sh
+          if [ -x tools/asset-pipeline/gltfpack ]; then ./tools/asset-pipeline/gltfpack -h >/dev/null 2>&1 && echo "gltfpack present"; else echo "gltfpack not bundled (expected): optimization is a local step, see tools/asset-pipeline/README.md"; fi
