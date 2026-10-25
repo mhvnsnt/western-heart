@@ -3,6 +3,49 @@
 Pull ONLY the paks (or the file types you need). Never the full depot.
 Owning the game on the Steam account you pass is required for paid games.
 
+## Tekken 7 (UE4) — FIRST-CLASS source (T3 is fallback-only)
+
+- Steam AppID **389730**, Windows content depot **389731** ("TEKKEN 7
+  Content"). Verified 2026-10-23 on steamdb.info: depot 389731 ships in the
+  base-game package (Sub 74007) AND the Originals, Ultimate and Definitive
+  Edition packages — it is the single Windows content depot for all of T7.
+- Paks live under `TekkenGame/Content/Paks/` in the depot (matches an
+  installed copy at `steamapps/common/TEKKEN 7/TekkenGame/Content/Paks/`).
+- **No AES key needed.** T7's paks are NOT encrypted — verified in the public
+  community docs (CDDTreborn/Tekken7_PC-Modding-Guides wiki: "Tekken 7 has no
+  game encryption"). The only encrypted T7 content is Geese (MRY) and Noctis
+  (MRZ) DLC files (per-file encryption, needs extra tools) — neither is in
+  our pull scope. `repak unpack` opens the paks with no `--aes-key`.
+- Character assets inside the paks live under in-game paths
+  `Game/Content/Character/...`, filed per fighter by the community 3-letter
+  code (`LAW` = Marshall Law, `LAR` = Lars, `MAR` = Marduk …).
+- T7's depot paks are SHARED numbered chunks, **not** per-character files —
+  depot-level filtering cannot isolate one fighter. Pull the paks, then select
+  fighters after unpack (see `teardown/tekken7/T7-STEAM-EXTRACTION.md`).
+
+```bash
+./depot-pull.sh list 389730 389731
+./depot-pull.sh get 389730 389731 t7-full-roster.txt ./t7paks <steam_user>
+```
+
+Then: `repak unpack` (no key) → asset identification → umodel batch export
+(`-game=tekken7`) or FModel on Windows → Blender (UEFormat addon) → FBX/GLB →
+moveset-library. Full pipeline: `teardown/tekken7/T7-STEAM-EXTRACTION.md`.
+User-side steps — the pull runs on the USER's machine, we never touch Steam
+credentials: `tools/depot-pull/T7-USER-STEPS.md`.
+
+### T7 filelists
+
+- `t7-law-lars.txt` — Law (LAW) + Lars (LAR) pull. Highest priority: the
+  active pull lane is waiting on these two (no free T7 source exists —
+  `teardown/tekken7/TEKKEN7-ROSTER-COVERAGE.md`). Same `*.pak` pull as below;
+  Law/Lars isolation happens post-unpack, or user-side via
+  `t7-find-character-paks.bat` (identifies which paks to upload).
+- `t7-full-roster.txt` — all fighter paks. Roster data is spread across every
+  chunk, so this is the full `*.pak` pull.
+- `paks-only.txt` — the generic pattern both T7 filelists are based on
+  (`regex:.*\.pak$`).
+
 ## Tekken 8 (UE5) — top teardown priority
 
 - Steam AppID **1778820**, main depot **1778821** (~112 GB full — DO NOT pull all)

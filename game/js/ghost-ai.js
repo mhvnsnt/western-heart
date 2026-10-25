@@ -80,16 +80,26 @@ export class GhostRecorder {
 
 /* Fighter: blends ghost sampling with a fallback policy. */
 export class GhostAI {
-  constructor(model, fallbackPolicy = null, temperature = 0.8, ghostMix = 0.75) {
+  constructor(model, fallbackPolicy = null, temperature = 0.8, ghostMix = 0.75, brain = null, brainMix = 0.5) {
     this.model = model;
     this.fallback = fallbackPolicy; // () -> action when ghost has no data
     this.temperature = temperature;
     this.ghostMix = ghostMix;       // P(use ghost) when data exists
+    // YUKA COMBAT BRAIN (2026-10-23): optional Yuka-driven brain
+    // ({ decideFromGhostSnap(snap, rand) -> action|null }, e.g. the
+    // CombatBrain in game/js/ai/combat-state.js) that drives the fallback
+    // path when the ghost has no data for the situation.
+    this.brain = brain;
+    this.brainMix = brainMix;       // P(use brain) over the raw fallback
   }
   decide(snap, rand = Math.random) {
     const key = situationKey(snap);
     const dist = this.model.distribution(key, this.temperature);
     if (dist && rand() < this.ghostMix) return this.model.sample(key, this.temperature, rand);
+    if (this.brain && rand() < this.brainMix) {
+      const a = this.brain.decideFromGhostSnap(snap, rand);
+      if (a) return a;
+    }
     return this.fallback ? this.fallback(snap) : null;
   }
 }

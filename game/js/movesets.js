@@ -26,6 +26,7 @@
    ============================================================ */
 
 // All fighter ids with a wired moveset file (36 playable + 9 staged for lane 2)
+import { installAddedMoves } from './full-movelist.js';
 export const MOVESET_IDS = [
   'pantera', 'demonio', 'phantom', 'diablo', 'skull', 'samura1', 'sakura',
   'rin', 'byou', 'tou', 'sha', 'kai', 'jin_soul', 'retsu', 'zen', 'gyou',
@@ -34,6 +35,10 @@ export const MOVESET_IDS = [
   'bruno', 'negativo', 'thor', 'yukihyo', 'slice', 'docfrank',
   'sunra', 'dxmmii', 'realizzt', 'rave', 'kutz', 'chordz', 'vainabel',
   'lili', 'baek',
+  // SmutBase 6 pipeline fighters 5-6 (owner 2026-10-23): MEGAMI (Jun Kazama
+  // TTT2 kit, Tekken inputs) and MENAJERII (Roger Jr. TTT2 kit, fresh Tekken
+  // inputs per owner directive — no Injustice 2 input system).
+  'megami', 'menajerii',
   // DOA/VF federation (owner 2026-10-19): converted movelists, Tekken-notation
   'doa-kasumi', 'doa-bass', 'doa-hayabusa',
   'doa-ayane', 'doa-tina', 'doa-jannlee',
@@ -54,6 +59,16 @@ export const MOVESET_IDS = [
   // CHARGER (owner 2026-10-20): Blanka replacement — full set in charger.json.
   'charger',
   'dorowani',
+  // BUFFALO BILL (2026-10-23, landing wave 1): his per-fighter file
+  // (game/assets/movesets/buffalo-bill.json, 228 moves, Law base) existed on
+  // main but the id was never listed, so the loader never loaded it.
+  'buffalo-bill',
+  // CHATUR (owner 2026-10-23): True Ogre's WH replacement — chatur.json
+  // (True Ogre T3 kit + four-armed canon specials).
+  'chatur',
+  // POND (owner 2026-10-23): Raven's WH replacement — pond.json
+  // (T7 Raven kit + still-water canon specials).
+  'pond',
   // DEATHFANG (owner 2026-10-19): proprietary, Iori-based — full Iori kit in deathfang.json.
   'deathfang',
   // DEATHFANG werewolf form (owner 2026-10-20): full kit + beast mix-ins, Iori stance kept.
@@ -87,6 +102,17 @@ export const MOVESET_IDS = [
   't3-paul', 't3-law', 't3-lei', 't3-nina', 't3-hwoarang', 't3-eddy',
   't3-julia', 't3-kuma', 't3-ogre', 't3-anna', 't3-bosconovitch',
   't3-gon', 't3-forestlaw',
+  // SmutBase intake wave 6 (owner 2026-10-23): RYUSAN (Lucky Chloe T7 kit,
+  // game/assets/movesets/ryusan.json) + TOBI (Hwoarang T3 kit,
+  // game/assets/movesets/tobi.json). Canon: roster/mina-ashido + roster/miruko.
+  'ryusan', 'tobi',
+  // Landing wave 3 (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md): the last
+  // three audit fighters whose pieces are complete — GASHADOKURO (Kuma's
+  // proprietary successor; gashadokuro.json = the T3 Kuma bank as his own
+  // file), AOTSUKI (Panda's proprietary successor; aotsuki.json rides the
+  // same T3 bear bank, proxy-flagged in-file), SILVERTONGUE (Lili re-owned;
+  // silvertongue.json = her full kit authored as her own file).
+  'gashadokuro', 'aotsuki', 'silvertongue',
 ];
 
 const _movesets = {};
@@ -156,6 +182,7 @@ export function getMovesetInfo(fighterId) {
 
 /** Register a moveset object directly (fetch path + Node test harness). */
 export function registerMoveset(fighterId, data) {
+  installAddedMoves(fighterId, data); // pt217u: EMWH additions (additive, never overwrites a slot)
   _prepare(data);
   _movesets[fighterId] = data;
   _g.WH_MOVESETS = _g.WH_MOVESETS || {};
@@ -175,10 +202,22 @@ const MOTION_DIRS = {
 
 /* DECODED T3 INPUT TIMING (tools/moveset-merge/t3_input_tables.py -> t3_input_tables.json):
    motion windows come from the USA EXE sequence tables (frames), the dash from FUN_8002CB08
-   (direction, neutral, direction within 0x13 frames), history = 60 one-frame entries. */
+   (direction, neutral, direction within 0x13 frames), history = 60 one-frame entries.
+   TIMEBASE (input-timing fix 2026-10-24): every frame count here is a T3 frame of 1/60 s, but
+   the fight loop ticks at FIXED_DT = 1/120 (game.js) and fed one history entry per tick, so each
+   window was half as long as decoded (qcf 208 ms instead of 417, f,f ~160 ms, "held" after 67 ms
+   instead of 133). Now noteDirection(dir, dt) stores each entry's length in frames (dt * 60) and
+   the history walks below measure TIME in frames, not entries, at any tick rate. A call without
+   dt is one whole frame (tests / tools feed the history frame by frame). */
+const INPUT_FPS = 60;      // T3 frames per second: the unit of every frame constant here
 let DOUBLE_TAP_BUDGET = 0x13;
 let DASH_FRAMES = { 'f,f': 30, 'b,b': 32 }; // decoded: every bank's dash row is 30 frames, backdash 30-35
-const HIST_LEN = 60;
+const HIST_FRAMES = 60;    // history span in frames (fight_sim HISTORY)
+const HIST_LEN = 512;      // ring entries: HIST_FRAMES of time at any tick rate up to ~500 Hz
+const T_EPS = 1e-6;        // float slack when summing entry lengths
+const MOTION_HOLD = 4; // v2: final motion step held this long = capital spelling (f,f,F)
+const HOLD_FRAMES = 8; // v2: a direction held this long reads as the HELD spelling (D/F+2)
+const STRING_PENDING = 1500; // v2: ms a partial string stays open (legacy continuation window; batch 2026-10-24: 800 -> 1500 for touch cadence)
 let _seqWindows = null; // 'd,d/f,f' -> frames (directions without neutral steps)
 export function setInputTables(t) {
   if (!t) return;
@@ -245,6 +284,14 @@ function _prepare(ms) {
   }
   motions.sort((a, b) => b.dirs.length - a.dirs.length); // longest motion wins (qcf+1 over f+1)
   ms._motions = motions;
+  // v2: every proper prefix of a string ('d/f+2,1' of 'd/f+2,1,3,2') — lets a string whose
+  // intermediate steps are not standalone moves (chain throws, long strings) still be typed.
+  const pre = new Set();
+  for (const n of Object.keys(slots)) {
+    const cuts = []; for (let j = 0; j < n.length; j++) if (',~:'.includes(n[j])) cuts.push(j);
+    for (const j of cuts) pre.add(n.slice(0, j));
+  }
+  ms._strPrefixes = pre;
 }
 
 /* Player loadouts from the moveset editor: localStorage wh_moveset_loadout_v1
@@ -338,6 +385,13 @@ export function parseSpecialInput(input) {
    TekkenBuffer — per-fighter input history for strings, motion
    specials and directional attacks. Lives on the Fighter.
    ------------------------------------------------------------ */
+/** Resolver flag: V2 (deterministic) is ON by default; 'legacy' keeps the old one reachable. */
+export function inputResolverV2() {
+  let v = (typeof globalThis !== 'undefined' && globalThis.WH_INPUT_RESOLVER) || null;
+  if (!v) { try { v = localStorage.getItem('wh_input_resolver'); } catch (e) { /* no storage */ } }
+  return v !== 'legacy';
+}
+
 export class TekkenBuffer {
   constructor(fighterId) {
     this.fighterId = fighterId;
@@ -345,16 +399,21 @@ export class TekkenBuffer {
     this.lastDir = 'n';
     this.lastMove = null;  // notation of last executed attack
     this.lastMoveT = 0;
-    // T3 input history: one facing-relative direction per fixed 1/60 s step (game.js calls
-    // noteDirection every update), 60 entries, newest at this.hi (fight_sim HISTORY / HIST_LEN).
+    // T3 input history: one facing-relative direction per fixed step (game.js calls
+    // noteDirection every update with its dt), newest at this.hi. hdur[i] = that entry's length
+    // in 60 Hz frames (0.5 at the 1/120 tick); the walks sum it, so the decoded windows
+    // (fight_sim HISTORY = 60 frames) stay real-time whatever the tick rate.
     this.hist = new Array(HIST_LEN).fill('n');
+    this.hdur = new Array(HIST_LEN).fill(1);
     this.hi = 0;
   }
 
-  /** Feed the current facing-relative direction (call when it changes). */
-  noteDirection(dir) {
+  /** Feed the facing-relative direction for one fixed step of `dt` seconds (game.js passes its
+      tick). Without dt the entry is one 60 Hz frame (tests / tools feed frame by frame). */
+  noteDirection(dir, dt) {
     this.hi = (this.hi + 1) % HIST_LEN;
     this.hist[this.hi] = dir || 'n';
+    this.hdur[this.hi] = dt > 0 ? Math.round(dt * INPUT_FPS * 1e6) / 1e6 : 1;
     // T3 enters the dash row on the frame double_tap matches; a button during that row is a
     // dash move (f,F+2). The latch is WALL-CLOCK (decoded row = 30f @60fps = 500ms):
     // a step-counted latch lasts seconds on slow devices and misfires dash moves on
@@ -374,28 +433,29 @@ export class TekkenBuffer {
   _prev(i) { return i > 0 ? i - 1 : HIST_LEN - 1; }
 
   /** T3 double tap (FUN_8002CB08 / FUN_8002CBF0, fight_sim.double_tap): the newest frame is
-      `dir`, the frame before it neutral, then within DOUBLE_TAP_BUDGET frames an earlier `dir`. */
+      `dir`, the frame before it neutral, then within DOUBLE_TAP_BUDGET frames an earlier `dir`.
+      T3 spends the budget on every neutral frame after the first and every frame of the first
+      tap after its first: (neutral - 1) + (first tap - 1) < budget, measured here in time. */
   _doubleTap(dir) {
-    const h = this.hist; let i = this.hi;
-    if (h[i] !== dir) return false;
-    let j = this._prev(i);
-    if (h[j] !== 'n') return false;
-    let budget = DOUBLE_TAP_BUDGET, k = j;
-    for (;;) {
-      k = this._prev(j);
-      const d = h[k];
-      if (d !== 'n') { if (d !== dir) return false; break; }
-      budget--; j = k;
-      if (budget <= 0) break;
+    const h = this.hist, w = this.hdur; let k = this.hi;
+    if (h[k] !== dir) return false;
+    k = this._prev(k);
+    if (h[k] !== 'n') return false;
+    let budget = DOUBLE_TAP_BUDGET + 2 - w[k]; // +2: the first neutral and first tap frames are free
+    for (let n = 2; ; n++) {
+      if (budget <= T_EPS || n >= HIST_LEN) return false;
+      k = this._prev(k);
+      if (h[k] !== 'n') { if (h[k] !== dir) return false; break; }
+      budget -= w[k];
     }
-    if (budget <= 0) return false;
-    for (;;) {
+    for (let n = 0; ; n++) { // k = newest entry of the first tap
+      budget -= w[k];
+      if (budget <= T_EPS) return false;
       const m = this._prev(k);
-      if (h[m] !== dir) break;
-      budget--; k = m;
-      if (budget <= 0) break;
+      if (h[m] !== dir || n >= HIST_LEN) break;
+      k = m;
     }
-    return budget > 0;
+    return true;
   }
 
   /** T3 InputSequenceMatch (0x8002CCD8, fight_sim.sequence_match) over the direction history:
@@ -406,11 +466,11 @@ export class TekkenBuffer {
     const h = this.hist; let k = steps.length - 1;
     if (h[this.hi] !== steps[k]) return false;
     k--; if (k < 0) return true;
-    let want = steps[k], pos = this.hi;
-    while (window >= 1) {
-      pos = this._prev(pos);
+    let want = steps[k], pos = this.hi, t = 0;
+    for (let n = 1; n < HIST_LEN; n++) {
+      t += this.hdur[pos]; pos = this._prev(pos); // t = frames from entry `pos` to the newest
+      if (t > window + T_EPS) break;
       if (h[pos] === want) { k--; if (k < 0) return true; want = steps[k]; }
-      window--;
     }
     return false;
   }
@@ -456,7 +516,135 @@ export class TekkenBuffer {
     const ms = playedMoveset(this.fighterId);
     if (!ms || !ms.moves) return input; // no data — raw passthrough
     _prepare(ms);
+    if (inputResolverV2()) return this._pressV2(input, ctx, ms);
+    return this._pressLegacy(input, ctx, ms);
+  }
+
+  /* INPUT RESOLVER V2 (owner t116u, 2026-10-23 — "presses give random moves, neutral 3 fires a
+     crouching kick"). Deterministic Tekken priority from the stick ACTUALLY held at press time:
+       1) string continuation (only while the previous hit plays)
+       2) for each state prefix, most specific first (stance, R., BT., SS., FC. only while
+          crouching, WS. only in the rising window): motion > held direction + button
+       3) only then the plain button, again most specific prefix first.
+     So a held direction always beats a stance-neutral move, a neutral stick never reaches a
+     directional / FC move (FC needs a real crouch), and no input ever picks a move at random.
+     Old resolver: _pressLegacy, reachable with localStorage wh_input_resolver='legacy' or
+     window.WH_INPUT_RESOLVER='legacy'. Test: test/input-determinism.test.mjs (CI). */
+  _pressV2(input, ctx, ms) {
     const has = (n) => (resolveMoveKey(this.fighterId, n) ? n : null);
+    const dir = this.lastDir && this.lastDir !== 'n' ? this.lastDir : '';
+    const withDir = dir ? `${dir}+${input}` : input;
+    const holdDir = dir ? `${dir.toUpperCase()}+${input}` : null;
+    const now = performance.now();
+    const contOk = ctx.inMove !== undefined ? ctx.inMove : (now - this.lastMoveT < STRING_PENDING);
+    // String cursor: the notation typed so far — the last move, or a pending partial string
+    // (an intermediate step that is not a standalone move) for STRING_PENDING ms.
+    const pendingOk = this._strPath && now - this._strPathT < STRING_PENDING;
+    const bases = [];
+    // BATCH: strip ~shadow suffixes here too (see continuation()) — a pending
+    // path or last move of '1~t8.king' must also try '1' as its chain base.
+    const strip = (b) => { const t = b ? b.indexOf('~') : -1; return t > 0 ? b.slice(0, t) : null; };
+    if (pendingOk) { bases.push(this._strPath); const s = strip(this._strPath); if (s) bases.push(s); }
+    if (this.lastMove && contOk) { bases.push(this.lastMove); const s = strip(this.lastMove); if (s) bases.push(s); }
+    for (const base of bases) {
+      for (const sep of [',', '~', ':']) {
+        const cands = dir ? [`${base}${sep}${withDir}`, `${base}${sep}${holdDir}`] : [`${base}${sep}${input}`];
+        for (const c of cands) if (has(c)) { this._strPath = null; return this._recordMove(c); }
+        for (const c of cands) if (ms._strPrefixes && ms._strPrefixes.has(c)) { this._strPath = c; this._strPathT = now; return null; }
+      }
+    }
+    this._strPath = null;
+    // Opening step of a string that has no standalone move: open the string cursor, fire nothing.
+    const opener = (c) => (ms._strPrefixes && ms._strPrefixes.has(c) ? (this._strPath = c, this._strPathT = now, true) : false);
+    const prefixes = [];
+    for (const sp of ctx.soulStates || []) prefixes.push(sp + '.'); // pt217u soul systems
+    if (ctx.stance) prefixes.push(ctx.stance + '.');
+    if (ctx.rage) prefixes.push('R.');
+    if (ctx.backturned) prefixes.push('BT.');
+    if (ctx.sidestep) prefixes.push('SS.');
+    if (ctx.crouching) prefixes.push('FC.');
+    if (ctx.rising) prefixes.push('WS.');
+    prefixes.push('');
+    for (const p of prefixes) {
+      // Final step HELD (>= MOTION_HOLD frames) prefers the capital spelling (f,f,F+3), a quick
+      // final tap the lowercase one (f,f,f+3); each still falls back to the other.
+      const capFirst = this._heldFrames() >= MOTION_HOLD;
+      const cap = (mo) => /[A-Z]/.test(mo.n.split(',').pop().split('+')[0]);
+      const motions = ms._motions.slice().sort((a, b) => (b.dirs.length - a.dirs.length) || ((cap(b) === capFirst) - (cap(a) === capFirst)));
+      for (const mo of motions) {
+        if (mo.prefix !== p || mo.btn !== input) continue;
+        // neutral-ending motions ('f,n,2') need the stick released; the rest need the last
+        // step still held at the press (f,F+2 = f held).
+        // pt217u: 'b,1' / 'd,1' (comma, then a bare button) = tap the direction, RELEASE, press —
+        // so a released stick reaches it and a held one still gets b+1 / d+1 first.
+        const tapRel = !mo.neutral && !dir && /,[1-4](?:\+[1-4])*\*?$/.test(mo.n) && !/^(f|b)(,\1)+$/i.test(mo.dirs.join(','));
+        if (!tapRel && (mo.neutral ? dir : dir !== mo.dirs[mo.dirs.length - 1])) continue;
+        if (this._motionHeldV2(mo) && has(mo.n)) return this._recordMove(mo.n);
+      }
+      if (dir) {
+        // Held spelling ('D/F+2') when the direction has been held >= HOLD_FRAMES, tap otherwise.
+        const held = this._heldFrames() >= HOLD_FRAMES;
+        const order = held ? [p + holdDir, p + withDir] : [p + withDir, p + holdDir];
+        for (const c of order) if (has(c)) return this._recordMove(c);
+        for (const c of order) if (opener(c)) return null;
+      }
+    }
+    for (const p of prefixes) {
+      if (has(p + input)) return this._recordMove(p + input);
+      if (has(p + input + '*')) return this._recordMove(p + input + '*');
+      if (p && opener(p + input)) return null; // stance chain opener ('SLEEPER.1' of 'SLEEPER.1,1,1+2')
+    }
+    return null;
+  }
+
+  /** Frames the current direction has been held (newest history run). */
+  _heldFrames() { // in 60 Hz frames of time (entry lengths summed), capped at HIST_FRAMES
+    const h = this.hist, d = h[this.hi]; let f = 0, i = this.hi;
+    for (let n = 0; n < HIST_LEN && h[i] === d && f < HIST_FRAMES - T_EPS; n++) { f += this.hdur[i]; i = this._prev(i); }
+    return Math.round(f * 1e6) / 1e6;
+  }
+
+  /** V2 motion match: like _seqMatch, but two identical consecutive steps ('d/f,d/f', 'f,f,F')
+      need the stick to leave that direction in between (a real second tap) — the legacy match
+      let one long hold satisfy every repeated step, so a held d/f+1 came out as d/f,d/f+1. */
+  _motionHeldV2(mo) {
+    const steps = mo.dirs; // inner n's are real steps (d/b,n,f != d/b,f); leading/trailing were stripped
+    const h = this.hist; let pos = this.hi;
+    let k = steps.length - 1;
+    // Window in frames of TIME, counted from the newest entry like T3's sequence match. For a
+    // neutral-ending motion ('f,f,n,1+2') the trailing neutral counts too: an uncounted skip let
+    // an f,f from seconds ago turn a plain 1+2 into the motion move.
+    const window = motionWindow(mo.dirs);
+    let t = 0;
+    if (!mo.neutral) { if (h[pos] !== steps[k]) return false; }
+    else {
+      while (h[pos] === 'n') { t += this.hdur[pos]; pos = this._prev(pos); if (pos === this.hi || t > window + T_EPS) return false; }
+      if (h[pos] !== steps[k]) return false;
+    }
+    let cur = steps[k], left = false;
+    k--;
+    for (let n = 1; k >= 0 && n < HIST_LEN; n++) {
+      t += this.hdur[pos]; pos = this._prev(pos);
+      if (t > window + T_EPS) break;
+      const d = h[pos];
+      if (d !== cur) left = true;
+      if (d === steps[k] && (steps[k] !== cur || left) && (d !== cur || left)) {
+        if (d === cur && !left) continue;
+        cur = d; left = false; k--;
+      }
+    }
+    return k < 0;
+  }
+
+  _pressLegacy(input, ctx, ms) {
+    const has = (n) => (resolveMoveKey(this.fighterId, n) ? n : null);
+    // Soul Urge lane (T8 Heat): while the urge gauge is live, 2+3 is
+    // reserved — the Urge Burst (fresh gauge) or the Urge Smash (urging)
+    // wins over any normal move on the chord, exactly like T8 Heat.
+    if (input === '2+3') {
+      if (ctx.urgeOn) { const sm = has('US.2+3'); if (sm) return this._recordMove(sm); }
+      else if (ctx.urgeAvailable) { const bu = has('UB.2+3'); if (bu) return this._recordMove(bu); }
+    }
     const dir = this.lastDir && this.lastDir !== 'n' ? this.lastDir : '';
     const withDir = dir ? `${dir}+${input}` : input;
     const holdDir = dir ? `${dir.toUpperCase()}+${input}` : null;
@@ -464,7 +652,7 @@ export class TekkenBuffer {
     // 1) string continuation. In a fight (ctx.inMove defined) T3 rules: only while the previous
     //    hit is still playing (Fighter.tryAttack buffers it into that move). Legacy callers
     //    without ctx (tests) keep the old 800 ms window.
-    const contOk = ctx.inMove !== undefined ? ctx.inMove : (performance.now() - this.lastMoveT < 800);
+    const contOk = ctx.inMove !== undefined ? ctx.inMove : (performance.now() - this.lastMoveT < STRING_PENDING);
     if (this.lastMove && contOk) {
       for (const sep of [',', '~', ':']) {
         for (const c of [`${this.lastMove}${sep}${withDir}`, `${this.lastMove}${sep}${input}`]) {
@@ -473,8 +661,11 @@ export class TekkenBuffer {
       }
     }
     const prefixes = [];
+    for (const sp of ctx.soulStates || []) prefixes.push(sp + '.'); // pt217u soul systems
     if (ctx.stance) prefixes.push(ctx.stance + '.');
     if (ctx.rage) prefixes.push('R.');
+    // Rage lane (T7): rage drive lives on 3+4 while raging (synthesized RD.).
+    if (ctx.rage) prefixes.push('RD.');
     if (ctx.backturned) prefixes.push('BT.');
     if (ctx.sidestep) prefixes.push('SS.');
     if (ctx.crouching) prefixes.push('FC.');
@@ -523,9 +714,16 @@ export class TekkenBuffer {
     const ms = playedMoveset(this.fighterId);
     if (!ms || !ms.moves) return chord; // no data — raw passthrough
     _prepare(ms);
+    if (inputResolverV2()) {
+      // V2: the notation table with the real stance/stick decides first (stance chords like
+      // REV.b+1+3 used to lose to a context-blind legacy special); legacy specials are the fallback.
+      const v = this.press(chord, ctx);
+      if (v) return v;
+    }
     // 1) motion specials (legacy ms.specials entries, incl. ones the slots
     //    table doesn't cover): motion in the direction history + this chord.
     for (const sp of ms.specials || []) {
+      if (!sp || typeof sp.input !== 'string') continue; // v2 fix: specials without an input crashed every chord press
       const { dirs, button } = parseSpecialInput(sp.input);
       if (button !== chord || !dirs.length) continue;
       if (this._matchMotion(dirs) && resolveMoveKey(this.fighterId, sp.input)) {
@@ -547,9 +745,19 @@ export class TekkenBuffer {
   continuation(input) {
     if (!this.lastMove) return null;
     const dir = this.lastDir && this.lastDir !== 'n' ? this.lastDir : '';
-    for (const sep of [',', '~', ':']) {
-      for (const c of [dir ? `${this.lastMove}${sep}${dir}+${input}` : null, `${this.lastMove}${sep}${input}`]) {
-        if (c && resolveMoveKey(this.fighterId, c)) return c;
+    // BATCH STRING FIX (2026-10-24): slots redirect singles to ~shadow keys
+    // ('1' -> '1~t8.king' for MOD damage), so lastMove carries the shadow suffix
+    // and '1~t8.king,2' never exists — the chain broke at step 1 and the user
+    // could only do 1-2 (two separate jabs, never the '1,2' string). Try the
+    // stripped base too, so '1' + '2' -> '1,2' and '1,2' + '1' -> '1,2,1'.
+    const bases = [this.lastMove];
+    const tilde = this.lastMove.indexOf('~');
+    if (tilde > 0) bases.push(this.lastMove.slice(0, tilde));
+    for (const base of bases) {
+      for (const sep of [',', '~', ':']) {
+        for (const c of [dir ? `${base}${sep}${dir}+${input}` : null, `${base}${sep}${input}`]) {
+          if (c && resolveMoveKey(this.fighterId, c)) return c;
+        }
       }
     }
     return null;

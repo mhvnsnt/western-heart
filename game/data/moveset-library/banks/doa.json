@@ -1,0 +1,6672 @@
+{
+ "bank": "doa",
+ "game": "doa",
+ "count": 146,
+ "moves": [
+  {
+   "id": "doa:bass:1",
+   "name": "Bass P — Palm Jab",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": "doa:bass/palm-jab",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1",
+   "input_slots": [
+    "1"
+   ],
+   "frames": {
+    "startup": 11,
+    "active": 2,
+    "recovery": 22,
+    "total": null
+   },
+   "damage_raw": 12,
+   "damage": 4,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "P",
+    "doa_move": "Palm Jab",
+    "source_file": "doa-bass.json",
+    "source_key": "1"
+   }
+  },
+  {
+   "id": "doa:bass:3",
+   "name": "Bass K — High Kick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": "doa:bass/high-kick",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "3",
+   "input_slots": [
+    "3"
+   ],
+   "frames": {
+    "startup": 16,
+    "active": 3,
+    "recovery": 34,
+    "total": null
+   },
+   "damage_raw": 30,
+   "damage": 11,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 4.2,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "K",
+    "doa_move": "High Kick",
+    "source_file": "doa-bass.json",
+    "source_key": "3"
+   }
+  },
+  {
+   "id": "doa:bass:d-f+1",
+   "name": "Bass df+P — Elbow Smash",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": "doa:bass/elbow-smash",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d/f+1",
+   "input_slots": [
+    "d/f+1"
+   ],
+   "frames": {
+    "startup": 15,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 20,
+   "damage": 7,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "df+P",
+    "doa_move": "Elbow Smash",
+    "source_file": "doa-bass.json",
+    "source_key": "d/f+1"
+   }
+  },
+  {
+   "id": "doa:bass:d+1",
+   "name": "Bass d+P — Low Knuckle",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": "doa:bass/low-knuckle",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d+1",
+   "input_slots": [
+    "d+1"
+   ],
+   "frames": {
+    "startup": 13,
+    "active": 2,
+    "recovery": 26,
+    "total": null
+   },
+   "damage_raw": 5,
+   "damage": 2,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "d+P",
+    "doa_move": "Low Knuckle",
+    "source_file": "doa-bass.json",
+    "source_key": "d+1"
+   }
+  },
+  {
+   "id": "doa:bass:d-f+3",
+   "name": "Bass df+K — Front Kick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": "doa:bass/front-kick",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d/f+3",
+   "input_slots": [
+    "d/f+3"
+   ],
+   "frames": {
+    "startup": 15,
+    "active": 3,
+    "recovery": 30,
+    "total": null
+   },
+   "damage_raw": 26,
+   "damage": 10,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "df+K",
+    "doa_move": "Front Kick",
+    "source_file": "doa-bass.json",
+    "source_key": "d/f+3"
+   }
+  },
+  {
+   "id": "doa:bass:d+3",
+   "name": "Bass d+K — Low Kick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": "doa:bass/low-kick",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d+3",
+   "input_slots": [
+    "d+3"
+   ],
+   "frames": {
+    "startup": 14,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 12,
+   "damage": 4,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "d+K",
+    "doa_move": "Low Kick",
+    "source_file": "doa-bass.json",
+    "source_key": "d+3"
+   }
+  },
+  {
+   "id": "doa:bass:1-2",
+   "name": "Bass PP — Double Palm",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": "doa:bass/pp",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2",
+   "input_slots": [
+    "1,2",
+    "1",
+    "2"
+   ],
+   "frames": {
+    "startup": 11,
+    "active": 2,
+    "recovery": 26,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 9,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "PP",
+    "doa_move": "Double Palm",
+    "source_file": "doa-bass.json",
+    "source_key": "1,2"
+   }
+  },
+  {
+   "id": "doa:bass:1-2-1",
+   "name": "Bass PPP — Combo Gong",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": "doa:bass/combo-gong",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2,1",
+   "input_slots": [
+    "1,2,1",
+    "1",
+    "2"
+   ],
+   "frames": {
+    "startup": 11,
+    "active": 2,
+    "recovery": 36,
+    "total": null
+   },
+   "damage_raw": 32,
+   "damage": 16,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 4.6,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "PPP",
+    "doa_move": "Combo Gong",
+    "source_file": "doa-bass.json",
+    "source_key": "1,2,1"
+   }
+  },
+  {
+   "id": "doa:bass:f+1",
+   "name": "Bass 6P — Wild Swing",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": "doa:bass/wild-swing",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "f+1",
+   "input_slots": [
+    "f+1"
+   ],
+   "frames": {
+    "startup": 14,
+    "active": 3,
+    "recovery": 30,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 7,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "6P (>)",
+    "doa_move": "Wild Swing",
+    "source_file": "doa-bass.json",
+    "source_key": "f+1"
+   }
+  },
+  {
+   "id": "doa:bass:1+2",
+   "name": "Bass P+K — Hell Stab",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": "doa:bass/hell-stab",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1+2",
+   "input_slots": [
+    "1+2"
+   ],
+   "frames": {
+    "startup": 18,
+    "active": 3,
+    "recovery": 34,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 9,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 3.6,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "P+K",
+    "doa_move": "Hell Stab",
+    "source_file": "doa-bass.json",
+    "source_key": "1+2"
+   }
+  },
+  {
+   "id": "doa:bass:qcf+3",
+   "name": "Bass 236K — Drop Kick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": "doa:bass/drop-kick",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "qcf+3",
+   "input_slots": [
+    "qcf+3"
+   ],
+   "frames": {
+    "startup": 20,
+    "active": 4,
+    "recovery": 38,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 13,
+   "hit_level": null,
+   "limb": "legR",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 5,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "236K",
+    "doa_move": "Drop Kick",
+    "source_file": "doa-bass.json",
+    "source_key": "qcf+3"
+   }
+  },
+  {
+   "id": "doa:bass:f+1+2",
+   "name": "Bass 6P+K — Bass Lariat",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": "doa:bass/lariat",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "f+1+2",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "frames": {
+    "startup": 17,
+    "active": 3,
+    "recovery": 36,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 11,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 5.4,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "6P+K (>)",
+    "doa_move": "Bass Lariat",
+    "source_file": "doa-bass.json",
+    "source_key": "f+1+2"
+   }
+  },
+  {
+   "id": "doa:bass:1+3",
+   "name": "Bass T — Falcon Arrow",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": "doa:bass/falcon-arrow",
+   "type": "throw",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1+3",
+   "input_slots": [
+    "1+3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 30,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 17,
+   "hit_level": "throw",
+   "limb": "armR",
+   "properties": [
+    "throw",
+    "unblockable",
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 6.5,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "T (F+P)",
+    "doa_move": "Falcon Arrow",
+    "source_file": "doa-bass.json",
+    "source_key": "1+3"
+   }
+  },
+  {
+   "id": "doa:bass:hcf+1+3",
+   "name": "Bass 41236T — Fisherman's Buster",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": "doa:bass/fishermans-buster",
+   "type": "throw",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "hcf+1+3",
+   "input_slots": [
+    "hcf+1+3"
+   ],
+   "frames": {
+    "startup": 14,
+    "active": 2,
+    "recovery": 32,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 22,
+   "hit_level": "throw",
+   "limb": "armR",
+   "properties": [
+    "throw",
+    "unblockable",
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 7.2,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "41236T",
+    "doa_move": "Fisherman's Buster",
+    "source_file": "doa-bass.json",
+    "source_key": "hcf+1+3"
+   }
+  },
+  {
+   "id": "doa:bass:hcb+1+3",
+   "name": "Bass 63214T — spinning throw",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": "doa:bass/63214t",
+   "type": "throw",
+   "subtype": null,
+   "position": "back-turned",
+   "orientation": "forward",
+   "input": "hcb+1+3",
+   "input_slots": [
+    "hcb+1+3"
+   ],
+   "frames": {
+    "startup": 16,
+    "active": 2,
+    "recovery": 34,
+    "total": null
+   },
+   "damage_raw": 62,
+   "damage": 23,
+   "hit_level": "throw",
+   "limb": "armR",
+   "properties": [
+    "throw",
+    "unblockable",
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 7.6,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "63214T",
+    "doa_move": "63214T",
+    "source_file": "doa-bass.json",
+    "source_key": "hcb+1+3"
+   }
+  },
+  {
+   "id": "doa:bass:b+1+2",
+   "name": "Bass 4H — Arm Whip (mid P hold)",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": "doa:bass/arm-whip",
+   "type": "strike",
+   "subtype": null,
+   "position": "back-turned",
+   "orientation": "forward",
+   "input": "b+1+2",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "frames": {
+    "startup": 3,
+    "active": 12,
+    "recovery": 20,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 15,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "4H",
+    "doa_move": "Arm Whip (mid punch hold)",
+    "source_file": "doa-bass.json",
+    "source_key": "b+1+2"
+   }
+  },
+  {
+   "id": "doa:bass:u-b+1+2",
+   "name": "Bass 8H — Locking Hammer (high hold)",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": "doa:bass/locking-hammer",
+   "type": "strike",
+   "subtype": null,
+   "position": "back-turned",
+   "orientation": "forward",
+   "input": "u/b+1+2",
+   "input_slots": [
+    "u/b+1+2"
+   ],
+   "frames": {
+    "startup": 3,
+    "active": 12,
+    "recovery": 20,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 13,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "8H",
+    "doa_move": "Locking Hammer (high hold)",
+    "source_file": "doa-bass.json",
+    "source_key": "u/b+1+2"
+   }
+  },
+  {
+   "id": "doa:bass:d-b+1+2",
+   "name": "Bass 2H — Leg Split (low hold)",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": "doa:bass/leg-split",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d/b+1+2",
+   "input_slots": [
+    "d/b+1+2"
+   ],
+   "frames": {
+    "startup": 3,
+    "active": 12,
+    "recovery": 20,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 13,
+   "hit_level": null,
+   "limb": "legR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "2H",
+    "doa_move": "Leg Split (low kick hold)",
+    "source_file": "doa-bass.json",
+    "source_key": "d/b+1+2"
+   }
+  },
+  {
+   "id": "doa:bass:3+4",
+   "name": "Platform Drop [WH SIGNATURE]",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": "wh:doa-bass:sig:platform-drop",
+   "type": "special",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "3+4",
+   "input_slots": [
+    "3+4"
+   ],
+   "frames": {
+    "startup": 20,
+    "active": 3,
+    "recovery": 59,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 21,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 6.5,
+    "soulGain": 13,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": null,
+    "doa_move": null,
+    "source_file": "doa-bass.json",
+    "source_key": "3+4"
+   }
+  },
+  {
+   "id": "doa:bass:1+4",
+   "name": "Overtime Shift [WH SIGNATURE]",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": "wh:doa-bass:sig:overtime-shift",
+   "type": "special",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1+4",
+   "input_slots": [
+    "1+4"
+   ],
+   "frames": {
+    "startup": 19,
+    "active": 3,
+    "recovery": 57,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 23,
+   "hit_level": "throw",
+   "limb": "armR",
+   "properties": [
+    "throw",
+    "unblockable",
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 6.5,
+    "soulGain": 13,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": null,
+    "doa_move": null,
+    "source_file": "doa-bass.json",
+    "source_key": "1+4"
+   }
+  },
+  {
+   "id": "doa:bass:p+k",
+   "name": "Overtime Shift [WH SIGNATURE]",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": "wh:doa-bass:sig:overtime-shift",
+   "type": "special",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "P+K",
+   "input_slots": [
+    "P+K",
+    "P",
+    "K"
+   ],
+   "frames": {
+    "startup": 19,
+    "active": 3,
+    "recovery": 57,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 23,
+   "hit_level": "throw",
+   "limb": "armR",
+   "properties": [
+    "throw",
+    "unblockable",
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 6.5,
+    "soulGain": 13,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": null,
+    "doa_move": null,
+    "source_file": "doa-bass.json",
+    "source_key": "P+K"
+   }
+  },
+  {
+   "id": "doa:bass:s",
+   "name": "Platform Drop [WH SIGNATURE]",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": "wh:doa-bass:sig:platform-drop",
+   "type": "special",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "S",
+   "input_slots": [
+    "S"
+   ],
+   "frames": {
+    "startup": 20,
+    "active": 3,
+    "recovery": 59,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 21,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 6.5,
+    "soulGain": 13,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": null,
+    "doa_move": null,
+    "source_file": "doa-bass.json",
+    "source_key": "S"
+   }
+  },
+  {
+   "id": "doa:bass:string:1-2",
+   "name": "string 1,2",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": null,
+   "type": "strike",
+   "subtype": "string",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2",
+   "input_slots": [],
+   "frames": {
+    "startup": null,
+    "active": null,
+    "recovery": null,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 9,
+   "hit_level": null,
+   "limb": null,
+   "properties": [
+    "string"
+   ],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA string (multi-hit).",
+    "estimated": [
+     "damage (WH scale)"
+    ],
+    "components": [
+     "1",
+     "2"
+    ]
+   }
+  },
+  {
+   "id": "doa:bass:string:1-2-1",
+   "name": "string 1,2,1",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)",
+   "anim_ref": null,
+   "type": "strike",
+   "subtype": "string",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2,1",
+   "input_slots": [],
+   "frames": {
+    "startup": null,
+    "active": null,
+    "recovery": null,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 16,
+   "hit_level": null,
+   "limb": null,
+   "properties": [
+    "string"
+   ],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA string (multi-hit).",
+    "estimated": [
+     "damage (WH scale)"
+    ],
+    "components": [
+     "1",
+     "2",
+     "1"
+    ]
+   }
+  },
+  {
+   "id": "doa:kasumi:1",
+   "name": "Kasumi P — jab",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": "doa:kasumi/p-jab",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1",
+   "input_slots": [
+    "1"
+   ],
+   "frames": {
+    "startup": 10,
+    "active": 2,
+    "recovery": 24,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 4,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "P",
+    "doa_move": "P",
+    "source_file": "doa-kasumi.json",
+    "source_key": "1"
+   }
+  },
+  {
+   "id": "doa:kasumi:3",
+   "name": "Kasumi K — high kick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": "doa:kasumi/k",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "3",
+   "input_slots": [
+    "3"
+   ],
+   "frames": {
+    "startup": 14,
+    "active": 3,
+    "recovery": 30,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 8,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 3.2,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "K",
+    "doa_move": "K",
+    "source_file": "doa-kasumi.json",
+    "source_key": "3"
+   }
+  },
+  {
+   "id": "doa:kasumi:f+1",
+   "name": "Kasumi 6P — elbow",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": "doa:kasumi/6p-elbow",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "f+1",
+   "input_slots": [
+    "f+1"
+   ],
+   "frames": {
+    "startup": 13,
+    "active": 2,
+    "recovery": 26,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 6,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "6P",
+    "doa_move": "6P",
+    "source_file": "doa-kasumi.json",
+    "source_key": "f+1"
+   }
+  },
+  {
+   "id": "doa:kasumi:d-f+1",
+   "name": "Kasumi 3P — mid palm",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": "doa:kasumi/3p",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d/f+1",
+   "input_slots": [
+    "d/f+1"
+   ],
+   "frames": {
+    "startup": 14,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 6,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "3P",
+    "doa_move": "3P",
+    "source_file": "doa-kasumi.json",
+    "source_key": "d/f+1"
+   }
+  },
+  {
+   "id": "doa:kasumi:1-2",
+   "name": "Kasumi PP string",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": "doa:kasumi/pp",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2",
+   "input_slots": [
+    "1,2",
+    "1",
+    "2"
+   ],
+   "frames": {
+    "startup": 10,
+    "active": 2,
+    "recovery": 26,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 7,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "PP",
+    "doa_move": "PP",
+    "source_file": "doa-kasumi.json",
+    "source_key": "1,2"
+   }
+  },
+  {
+   "id": "doa:kasumi:1-2-1-2",
+   "name": "Kasumi PPPP — Ren-Kaio-Sentotsu",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": "doa:kasumi/pppp",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2,1,2",
+   "input_slots": [
+    "1,2,1,2",
+    "1",
+    "2"
+   ],
+   "frames": {
+    "startup": 10,
+    "active": 2,
+    "recovery": 34,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 12,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 4,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "PPPP",
+    "doa_move": "PPPP (Ren-Kaio-Sentotsu)",
+    "source_file": "doa-kasumi.json",
+    "source_key": "1,2,1,2"
+   }
+  },
+  {
+   "id": "doa:kasumi:1-2-3-4-3",
+   "name": "Kasumi PPKKK — Tenshin-Rengo",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": "doa:kasumi/ppkkk",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2,3,4,3",
+   "input_slots": [
+    "1,2,3,4,3",
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "frames": {
+    "startup": 10,
+    "active": 2,
+    "recovery": 40,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 16,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 4.6,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "PPKKK",
+    "doa_move": "PPKKK (Tenshin-Rengo)",
+    "source_file": "doa-kasumi.json",
+    "source_key": "1,2,3,4,3"
+   }
+  },
+  {
+   "id": "doa:kasumi:f-f+1",
+   "name": "Kasumi 66P — dash elbow",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": "doa:kasumi/66p",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "f,f+1",
+   "input_slots": [
+    "f,f+1"
+   ],
+   "frames": {
+    "startup": 15,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 8,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "66P",
+    "doa_move": "66P",
+    "source_file": "doa-kasumi.json",
+    "source_key": "f,f+1"
+   }
+  },
+  {
+   "id": "doa:kasumi:qcf+1",
+   "name": "Kasumi 236P — Hoshinpo strike",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": "doa:kasumi/236p",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "qcf+1",
+   "input_slots": [
+    "qcf+1"
+   ],
+   "frames": {
+    "startup": 19,
+    "active": 3,
+    "recovery": 44,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 10,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "236P",
+    "doa_move": "236P",
+    "source_file": "doa-kasumi.json",
+    "source_key": "qcf+1"
+   }
+  },
+  {
+   "id": "doa:kasumi:d-b+1+2",
+   "name": "Kasumi 4P+K — chop",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": "doa:kasumi/4pk",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d/b+1+2",
+   "input_slots": [
+    "d/b+1+2"
+   ],
+   "frames": {
+    "startup": 16,
+    "active": 3,
+    "recovery": 30,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 9,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "4P+K",
+    "doa_move": "4P+K",
+    "source_file": "doa-kasumi.json",
+    "source_key": "d/b+1+2"
+   }
+  },
+  {
+   "id": "doa:kasumi:u-f+1",
+   "name": "Kasumi 9P — jumping punch",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": "doa:kasumi/9p",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "u/f+1",
+   "input_slots": [
+    "u/f+1"
+   ],
+   "frames": {
+    "startup": 16,
+    "active": 4,
+    "recovery": 32,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 8,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "9P",
+    "doa_move": "9P",
+    "source_file": "doa-kasumi.json",
+    "source_key": "u/f+1"
+   }
+  },
+  {
+   "id": "doa:kasumi:1+3",
+   "name": "Kasumi T — throw",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": "doa:kasumi/t",
+   "type": "throw",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1+3",
+   "input_slots": [
+    "1+3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 14,
+   "hit_level": "throw",
+   "limb": "armR",
+   "properties": [
+    "throw",
+    "unblockable",
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 6.5,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "T",
+    "doa_move": "T",
+    "source_file": "doa-kasumi.json",
+    "source_key": "1+3"
+   }
+  },
+  {
+   "id": "doa:kasumi:f+1+3",
+   "name": "Kasumi 6T — wall throw",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": "doa:kasumi/6t",
+   "type": "throw",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "f+1+3",
+   "input_slots": [
+    "f+1+3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 60,
+   "damage": 22,
+   "hit_level": "throw",
+   "limb": "armR",
+   "properties": [
+    "throw",
+    "unblockable",
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 7,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "6T",
+    "doa_move": "6T (near wall)",
+    "source_file": "doa-kasumi.json",
+    "source_key": "f+1+3"
+   }
+  },
+  {
+   "id": "doa:kasumi:b+1+2",
+   "name": "Kasumi 4H — mid punch hold",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": "doa:kasumi/4h-hold",
+   "type": "strike",
+   "subtype": null,
+   "position": "back-turned",
+   "orientation": "forward",
+   "input": "b+1+2",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "frames": {
+    "startup": 3,
+    "active": 12,
+    "recovery": 20,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 16,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "4H",
+    "doa_move": "4H (mid punch hold)",
+    "source_file": "doa-kasumi.json",
+    "source_key": "b+1+2"
+   }
+  },
+  {
+   "id": "doa:kasumi:f+1+2",
+   "name": "Kasumi 6H — mid kick hold",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": "doa:kasumi/6h-hold",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "f+1+2",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "frames": {
+    "startup": 3,
+    "active": 12,
+    "recovery": 20,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 16,
+   "hit_level": null,
+   "limb": "legR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "6H",
+    "doa_move": "6H (mid kick hold)",
+    "source_file": "doa-kasumi.json",
+    "source_key": "f+1+2"
+   }
+  },
+  {
+   "id": "doa:kasumi:u+1+2",
+   "name": "Kasumi 8H — high hold",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": "doa:kasumi/8h-hold",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "u+1+2",
+   "input_slots": [
+    "u+1+2"
+   ],
+   "frames": {
+    "startup": 3,
+    "active": 12,
+    "recovery": 20,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 14,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "8H",
+    "doa_move": "8H (high hold)",
+    "source_file": "doa-kasumi.json",
+    "source_key": "u+1+2"
+   }
+  },
+  {
+   "id": "doa:kasumi:1+2",
+   "name": "Petal Scatter [WH SIGNATURE]",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": "wh:doa-kasumi:sig:petal-scatter",
+   "type": "special",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1+2",
+   "input_slots": [
+    "1+2"
+   ],
+   "frames": {
+    "startup": 16,
+    "active": 6,
+    "recovery": 49,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 17,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 4.2,
+    "soulGain": 12,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": null,
+    "doa_move": null,
+    "source_file": "doa-kasumi.json",
+    "source_key": "1+2"
+   }
+  },
+  {
+   "id": "doa:kasumi:d+1",
+   "name": "Mist Vanish [WH SIGNATURE]",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": "wh:doa-kasumi:sig:mist-vanish",
+   "type": "special",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d+1",
+   "input_slots": [
+    "d+1"
+   ],
+   "frames": {
+    "startup": 14,
+    "active": 1,
+    "recovery": 43,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 15,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 4.2,
+    "soulGain": 11,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": null,
+    "doa_move": null,
+    "source_file": "doa-kasumi.json",
+    "source_key": "d+1"
+   }
+  },
+  {
+   "id": "doa:kasumi:d+p",
+   "name": "Mist Vanish [WH SIGNATURE]",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": "wh:doa-kasumi:sig:mist-vanish",
+   "type": "special",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "D+P",
+   "input_slots": [
+    "D+P",
+    "D",
+    "P"
+   ],
+   "frames": {
+    "startup": 14,
+    "active": 1,
+    "recovery": 43,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 15,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 4.2,
+    "soulGain": 11,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": null,
+    "doa_move": null,
+    "source_file": "doa-kasumi.json",
+    "source_key": "D+P"
+   }
+  },
+  {
+   "id": "doa:kasumi:s",
+   "name": "Petal Scatter [WH SIGNATURE]",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": "wh:doa-kasumi:sig:petal-scatter",
+   "type": "special",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "S",
+   "input_slots": [
+    "S"
+   ],
+   "frames": {
+    "startup": 16,
+    "active": 6,
+    "recovery": 49,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 17,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 4.2,
+    "soulGain": 12,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": null,
+    "doa_move": null,
+    "source_file": "doa-kasumi.json",
+    "source_key": "S"
+   }
+  },
+  {
+   "id": "doa:kasumi:string:1-2",
+   "name": "string 1,2",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": null,
+   "type": "strike",
+   "subtype": "string",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2",
+   "input_slots": [],
+   "frames": {
+    "startup": null,
+    "active": null,
+    "recovery": null,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 7,
+   "hit_level": null,
+   "limb": null,
+   "properties": [
+    "string"
+   ],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA string (multi-hit).",
+    "estimated": [
+     "damage (WH scale)"
+    ],
+    "components": [
+     "1",
+     "2"
+    ]
+   }
+  },
+  {
+   "id": "doa:kasumi:string:1-2-1-2",
+   "name": "string 1,2,1,2",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": null,
+   "type": "strike",
+   "subtype": "string",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2,1,2",
+   "input_slots": [],
+   "frames": {
+    "startup": null,
+    "active": null,
+    "recovery": null,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 12,
+   "hit_level": null,
+   "limb": null,
+   "properties": [
+    "string"
+   ],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA string (multi-hit).",
+    "estimated": [
+     "damage (WH scale)"
+    ],
+    "components": [
+     "1",
+     "2",
+     "1",
+     "2"
+    ]
+   }
+  },
+  {
+   "id": "doa:kasumi:string:1-2-3-4-3",
+   "name": "string 1,2,3,4,3",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Kasumi (DOA5 Last Round)",
+   "anim_ref": null,
+   "type": "strike",
+   "subtype": "string",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2,3,4,3",
+   "input_slots": [],
+   "frames": {
+    "startup": null,
+    "active": null,
+    "recovery": null,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 16,
+   "hit_level": null,
+   "limb": null,
+   "properties": [
+    "string"
+   ],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA string (multi-hit).",
+    "estimated": [
+     "damage (WH scale)"
+    ],
+    "components": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "3"
+    ]
+   }
+  },
+  {
+   "id": "doa:hayabusa:1",
+   "name": "Hayabusa P — jab",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ryu Hayabusa (DOA5 Last Round)",
+   "anim_ref": "doa:hayabusa/p",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1",
+   "input_slots": [
+    "1"
+   ],
+   "frames": {
+    "startup": 10,
+    "active": 2,
+    "recovery": 22,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 4,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "P",
+    "doa_move": "P",
+    "source_file": "doa-hayabusa.json",
+    "source_key": "1"
+   }
+  },
+  {
+   "id": "doa:hayabusa:3",
+   "name": "Hayabusa K — kick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ryu Hayabusa (DOA5 Last Round)",
+   "anim_ref": "doa:hayabusa/k",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "3",
+   "input_slots": [
+    "3"
+   ],
+   "frames": {
+    "startup": 14,
+    "active": 3,
+    "recovery": 30,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 8,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 3.2,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "K",
+    "doa_move": "K",
+    "source_file": "doa-hayabusa.json",
+    "source_key": "3"
+   }
+  },
+  {
+   "id": "doa:hayabusa:1-2",
+   "name": "Hayabusa PP string",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ryu Hayabusa (DOA5 Last Round)",
+   "anim_ref": "doa:hayabusa/pp",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2",
+   "input_slots": [
+    "1,2",
+    "1",
+    "2"
+   ],
+   "frames": {
+    "startup": 10,
+    "active": 2,
+    "recovery": 26,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 7,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "PP",
+    "doa_move": "PP",
+    "source_file": "doa-hayabusa.json",
+    "source_key": "1,2"
+   }
+  },
+  {
+   "id": "doa:hayabusa:f+1",
+   "name": "Hayabusa 6P — elbow",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ryu Hayabusa (DOA5 Last Round)",
+   "anim_ref": "doa:hayabusa/6p",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "f+1",
+   "input_slots": [
+    "f+1"
+   ],
+   "frames": {
+    "startup": 13,
+    "active": 2,
+    "recovery": 26,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 6,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "6P",
+    "doa_move": "6P",
+    "source_file": "doa-hayabusa.json",
+    "source_key": "f+1"
+   }
+  },
+  {
+   "id": "doa:hayabusa:u-f+1",
+   "name": "Hayabusa 9P — jumping punch",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ryu Hayabusa (DOA5 Last Round)",
+   "anim_ref": "doa:hayabusa/9p",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "u/f+1",
+   "input_slots": [
+    "u/f+1"
+   ],
+   "frames": {
+    "startup": 15,
+    "active": 4,
+    "recovery": 30,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 8,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "9P",
+    "doa_move": "9P",
+    "source_file": "doa-hayabusa.json",
+    "source_key": "u/f+1"
+   }
+  },
+  {
+   "id": "doa:hayabusa:u-b+1",
+   "name": "Hayabusa 7P — back jump punch",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ryu Hayabusa (DOA5 Last Round)",
+   "anim_ref": "doa:hayabusa/7p",
+   "type": "strike",
+   "subtype": null,
+   "position": "back-turned",
+   "orientation": "forward",
+   "input": "u/b+1",
+   "input_slots": [
+    "u/b+1"
+   ],
+   "frames": {
+    "startup": 15,
+    "active": 4,
+    "recovery": 30,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 8,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "7P",
+    "doa_move": "7P",
+    "source_file": "doa-hayabusa.json",
+    "source_key": "u/b+1"
+   }
+  },
+  {
+   "id": "doa:hayabusa:u-b+1-2",
+   "name": "Hayabusa 7PK — jump string",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ryu Hayabusa (DOA5 Last Round)",
+   "anim_ref": "doa:hayabusa/7pk",
+   "type": "strike",
+   "subtype": null,
+   "position": "back-turned",
+   "orientation": "forward",
+   "input": "u/b+1,2",
+   "input_slots": [
+    "u/b+1,2",
+    "1",
+    "2"
+   ],
+   "frames": {
+    "startup": 15,
+    "active": 4,
+    "recovery": 34,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 13,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 4,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "7PK",
+    "doa_move": "7PK",
+    "source_file": "doa-hayabusa.json",
+    "source_key": "u/b+1,2"
+   }
+  },
+  {
+   "id": "doa:hayabusa:b-b+1",
+   "name": "Hayabusa 44P — backdash punch",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ryu Hayabusa (DOA5 Last Round)",
+   "anim_ref": "doa:hayabusa/44p",
+   "type": "strike",
+   "subtype": null,
+   "position": "back-turned",
+   "orientation": "forward",
+   "input": "b,b+1",
+   "input_slots": [
+    "b,b+1"
+   ],
+   "frames": {
+    "startup": 14,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 7,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "44P",
+    "doa_move": "44P",
+    "source_file": "doa-hayabusa.json",
+    "source_key": "b,b+1"
+   }
+  },
+  {
+   "id": "doa:hayabusa:qcb+1",
+   "name": "Hayabusa 214P — spinning punch",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ryu Hayabusa (DOA5 Last Round)",
+   "anim_ref": "doa:hayabusa/214p",
+   "type": "strike",
+   "subtype": null,
+   "position": "back-turned",
+   "orientation": "forward",
+   "input": "qcb+1",
+   "input_slots": [
+    "qcb+1"
+   ],
+   "frames": {
+    "startup": 17,
+    "active": 3,
+    "recovery": 32,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 9,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "214P",
+    "doa_move": "214P",
+    "source_file": "doa-hayabusa.json",
+    "source_key": "qcb+1"
+   }
+  },
+  {
+   "id": "doa:hayabusa:d-f+3",
+   "name": "Hayabusa 3K — mid kick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ryu Hayabusa (DOA5 Last Round)",
+   "anim_ref": "doa:hayabusa/3k",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d/f+3",
+   "input_slots": [
+    "d/f+3"
+   ],
+   "frames": {
+    "startup": 15,
+    "active": 3,
+    "recovery": 30,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 9,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "3K",
+    "doa_move": "3K",
+    "source_file": "doa-hayabusa.json",
+    "source_key": "d/f+3"
+   }
+  },
+  {
+   "id": "doa:hayabusa:1+3",
+   "name": "Hayabusa T — throw",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ryu Hayabusa (DOA5 Last Round)",
+   "anim_ref": "doa:hayabusa/t",
+   "type": "throw",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1+3",
+   "input_slots": [
+    "1+3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 14,
+   "hit_level": "throw",
+   "limb": "armR",
+   "properties": [
+    "throw",
+    "unblockable",
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 6.5,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "T",
+    "doa_move": "T",
+    "source_file": "doa-hayabusa.json",
+    "source_key": "1+3"
+   }
+  },
+  {
+   "id": "doa:hayabusa:b+1+2",
+   "name": "Hayabusa 4H — mid punch hold",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ryu Hayabusa (DOA5 Last Round)",
+   "anim_ref": "doa:hayabusa/4h-hold",
+   "type": "strike",
+   "subtype": null,
+   "position": "back-turned",
+   "orientation": "forward",
+   "input": "b+1+2",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "frames": {
+    "startup": 3,
+    "active": 12,
+    "recovery": 20,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 16,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "4H",
+    "doa_move": "4H (mid punch hold)",
+    "source_file": "doa-hayabusa.json",
+    "source_key": "b+1+2"
+   }
+  },
+  {
+   "id": "doa:hayabusa:f+1+2",
+   "name": "Hayabusa 6H — mid kick hold",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ryu Hayabusa (DOA5 Last Round)",
+   "anim_ref": "doa:hayabusa/6h-hold",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "f+1+2",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "frames": {
+    "startup": 3,
+    "active": 12,
+    "recovery": 20,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 16,
+   "hit_level": null,
+   "limb": "legR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "6H",
+    "doa_move": "6H (mid kick hold)",
+    "source_file": "doa-hayabusa.json",
+    "source_key": "f+1+2"
+   }
+  },
+  {
+   "id": "doa:hayabusa:d-b+1+2",
+   "name": "Hayabusa 2H — low hold",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ryu Hayabusa (DOA5 Last Round)",
+   "anim_ref": "doa:hayabusa/2h-hold",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d/b+1+2",
+   "input_slots": [
+    "d/b+1+2"
+   ],
+   "frames": {
+    "startup": 3,
+    "active": 12,
+    "recovery": 20,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 14,
+   "hit_level": null,
+   "limb": "legR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "2H",
+    "doa_move": "2H (low hold)",
+    "source_file": "doa-hayabusa.json",
+    "source_key": "d/b+1+2"
+   }
+  },
+  {
+   "id": "doa:hayabusa:1+2",
+   "name": "Dragon's Shadow [WH SIGNATURE]",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ryu Hayabusa (DOA5 Last Round)",
+   "anim_ref": "wh:doa-hayabusa:sig:dragons-shadow",
+   "type": "special",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1+2",
+   "input_slots": [
+    "1+2"
+   ],
+   "frames": {
+    "startup": 17,
+    "active": 6,
+    "recovery": 51,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 18,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 4.2,
+    "soulGain": 12,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": null,
+    "doa_move": null,
+    "source_file": "doa-hayabusa.json",
+    "source_key": "1+2"
+   }
+  },
+  {
+   "id": "doa:hayabusa:u+4",
+   "name": "Falcon's Perch [WH SIGNATURE]",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ryu Hayabusa (DOA5 Last Round)",
+   "anim_ref": "wh:doa-hayabusa:sig:falcons-perch",
+   "type": "special",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "u+4",
+   "input_slots": [
+    "u+4"
+   ],
+   "frames": {
+    "startup": 18,
+    "active": 1,
+    "recovery": 53,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 17,
+   "hit_level": null,
+   "limb": "legR",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 6.5,
+    "soulGain": 12,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": null,
+    "doa_move": null,
+    "source_file": "doa-hayabusa.json",
+    "source_key": "u+4"
+   }
+  },
+  {
+   "id": "doa:hayabusa:s",
+   "name": "Dragon's Shadow [WH SIGNATURE]",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ryu Hayabusa (DOA5 Last Round)",
+   "anim_ref": "wh:doa-hayabusa:sig:dragons-shadow",
+   "type": "special",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "S",
+   "input_slots": [
+    "S"
+   ],
+   "frames": {
+    "startup": 17,
+    "active": 6,
+    "recovery": 51,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 18,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 4.2,
+    "soulGain": 12,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": null,
+    "doa_move": null,
+    "source_file": "doa-hayabusa.json",
+    "source_key": "S"
+   }
+  },
+  {
+   "id": "doa:hayabusa:u+k",
+   "name": "Falcon's Perch [WH SIGNATURE]",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ryu Hayabusa (DOA5 Last Round)",
+   "anim_ref": "wh:doa-hayabusa:sig:falcons-perch",
+   "type": "special",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "u+K",
+   "input_slots": [
+    "u+K",
+    "u",
+    "K"
+   ],
+   "frames": {
+    "startup": 18,
+    "active": 1,
+    "recovery": 53,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 17,
+   "hit_level": null,
+   "limb": "legR",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 6.5,
+    "soulGain": 12,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": null,
+    "doa_move": null,
+    "source_file": "doa-hayabusa.json",
+    "source_key": "u+K"
+   }
+  },
+  {
+   "id": "doa:hayabusa:string:1-2",
+   "name": "string 1,2",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ryu Hayabusa (DOA5 Last Round)",
+   "anim_ref": null,
+   "type": "strike",
+   "subtype": "string",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2",
+   "input_slots": [],
+   "frames": {
+    "startup": null,
+    "active": null,
+    "recovery": null,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 7,
+   "hit_level": null,
+   "limb": null,
+   "properties": [
+    "string"
+   ],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA string (multi-hit).",
+    "estimated": [
+     "damage (WH scale)"
+    ],
+    "components": [
+     "1",
+     "2"
+    ]
+   }
+  },
+  {
+   "id": "doa:hayabusa:string:u-b+1-2",
+   "name": "string u/b+1,2",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ryu Hayabusa (DOA5 Last Round)",
+   "anim_ref": null,
+   "type": "strike",
+   "subtype": "string",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "u/b+1,2",
+   "input_slots": [],
+   "frames": {
+    "startup": null,
+    "active": null,
+    "recovery": null,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": 13,
+   "hit_level": null,
+   "limb": null,
+   "properties": [
+    "string"
+   ],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA string (multi-hit).",
+    "estimated": [
+     "damage (WH scale)"
+    ],
+    "components": [
+     "1",
+     "2"
+    ]
+   }
+  },
+  {
+   "id": "doa:ayane:1",
+   "name": "Ayane P — Supreme Edge",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane-p",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1",
+   "input_slots": [
+    "1"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 10,
+   "damage": 4,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "P",
+    "doa_move": "Ayane P",
+    "source_file": "doa-ayane.json",
+    "source_key": "1"
+   }
+  },
+  {
+   "id": "doa:ayane:3",
+   "name": "Ayane K — Supreme Heaven Kick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane-k",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "3",
+   "input_slots": [
+    "3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 27,
+   "damage": 10,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 4,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "K",
+    "doa_move": "Ayane K",
+    "source_file": "doa-ayane.json",
+    "source_key": "3"
+   }
+  },
+  {
+   "id": "doa:ayane:d-f+1",
+   "name": "Ayane df+P — Wind Murder Knife",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane-df+p",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d/f+1",
+   "input_slots": [
+    "d/f+1"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 20,
+   "damage": 7,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 3,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "df+P",
+    "doa_move": "Ayane df+P",
+    "source_file": "doa-ayane.json",
+    "source_key": "d/f+1"
+   }
+  },
+  {
+   "id": "doa:ayane:d+1",
+   "name": "Ayane d+P — Earth Edge",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane-d+p",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d+1",
+   "input_slots": [
+    "d+1"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 5,
+   "damage": 2,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "d+P",
+    "doa_move": "Ayane d+P",
+    "source_file": "doa-ayane.json",
+    "source_key": "d+1"
+   }
+  },
+  {
+   "id": "doa:ayane:d-f+3",
+   "name": "Ayane df+K — Flash People's Kick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane-df+k",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d/f+3",
+   "input_slots": [
+    "d/f+3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 24,
+   "damage": 9,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "df+K",
+    "doa_move": "Ayane df+K",
+    "source_file": "doa-ayane.json",
+    "source_key": "d/f+3"
+   }
+  },
+  {
+   "id": "doa:ayane:d+3",
+   "name": "Ayane d+K — Flowing Dust Kick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane-d+k",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d+3",
+   "input_slots": [
+    "d+3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 10,
+   "damage": 4,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "d+K",
+    "doa_move": "Ayane d+K",
+    "source_file": "doa-ayane.json",
+    "source_key": "d+3"
+   }
+  },
+  {
+   "id": "doa:ayane:u+1",
+   "name": "Ayane u+P — Arcing Sky Murder",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane-u+p",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "u+1",
+   "input_slots": [
+    "u+1"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 15,
+   "damage": 6,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "u+P",
+    "doa_move": "Ayane u+P",
+    "source_file": "doa-ayane.json",
+    "source_key": "u+1"
+   }
+  },
+  {
+   "id": "doa:ayane:u+3",
+   "name": "Ayane u+K — Arcing Sky Kick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane-u+k",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "u+3",
+   "input_slots": [
+    "u+3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 30,
+   "damage": 11,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "u+K",
+    "doa_move": "Ayane u+K",
+    "source_file": "doa-ayane.json",
+    "source_key": "u+3"
+   }
+  },
+  {
+   "id": "doa:ayane:1-2",
+   "name": "Ayane PP — Combo Edge",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane-pp",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2",
+   "input_slots": [
+    "1",
+    "1,2"
+   ],
+   "frames": {
+    "startup": 11,
+    "active": 2,
+    "recovery": 26,
+    "total": null
+   },
+   "damage_raw": 20,
+   "damage": 7,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "P,P",
+    "doa_move": "Ayane PP",
+    "source_file": "doa-ayane.json",
+    "source_key": "1,2"
+   }
+  },
+  {
+   "id": "doa:ayane:1-2-1",
+   "name": "Ayane PPP — God's Double Mount",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane-ppp",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2,1",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,1"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 40,
+   "damage": 15,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 3.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "P,P,P",
+    "doa_move": "Ayane PPP",
+    "source_file": "doa-ayane.json",
+    "source_key": "1,2,1"
+   }
+  },
+  {
+   "id": "doa:ayane:1-2-3",
+   "name": "Ayane PPK — Heaven's Kick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane-ppk",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2,3",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 37,
+   "damage": 14,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "P,P,K",
+    "doa_move": "Ayane PPK",
+    "source_file": "doa-ayane.json",
+    "source_key": "1,2,3"
+   }
+  },
+  {
+   "id": "doa:ayane:f+1",
+   "name": "Ayane f+P — Wave Needle",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane-f+p",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "f+1",
+   "input_slots": [
+    "f+1"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 22,
+   "damage": 8,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 3,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "f+P",
+    "doa_move": "Ayane f+P",
+    "source_file": "doa-ayane.json",
+    "source_key": "f+1"
+   }
+  },
+  {
+   "id": "doa:ayane:f-f+1",
+   "name": "Ayane ff+P — Mount Destruction",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane-ff+p",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "f,f+1",
+   "input_slots": [
+    "f,f+1"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 25,
+   "damage": 9,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 4,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "f,f+P",
+    "doa_move": "Ayane ff+P",
+    "source_file": "doa-ayane.json",
+    "source_key": "f,f+1"
+   }
+  },
+  {
+   "id": "doa:ayane:qcf+3",
+   "name": "Ayane 236K — Genmu-So",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane-236k",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "qcf+3",
+   "input_slots": [
+    "qcf+3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 24,
+   "damage": 9,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "236K",
+    "doa_move": "Ayane 236K",
+    "source_file": "doa-ayane.json",
+    "source_key": "qcf+3"
+   }
+  },
+  {
+   "id": "doa:ayane:b+1+3",
+   "name": "Ayane b,T — Kiri-Madoi",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane-b,t",
+   "type": "throw",
+   "subtype": null,
+   "position": "back-turned",
+   "orientation": "forward",
+   "input": "b+1+3",
+   "input_slots": [
+    "b+1+3"
+   ],
+   "frames": {
+    "startup": 21,
+    "active": 2,
+    "recovery": 43,
+    "total": null
+   },
+   "damage_raw": 55,
+   "damage": 20,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 6,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "b,F+P",
+    "doa_move": "Ayane b,T",
+    "source_file": "doa-ayane.json",
+    "source_key": "b+1+3"
+   }
+  },
+  {
+   "id": "doa:ayane:u+1+3",
+   "name": "Ayane u,T — Ryugaku-Ko",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane-u,t",
+   "type": "throw",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "u+1+3",
+   "input_slots": [
+    "u+1+3"
+   ],
+   "frames": {
+    "startup": 21,
+    "active": 2,
+    "recovery": 43,
+    "total": null
+   },
+   "damage_raw": 50,
+   "damage": 18,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 6,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "u,F+P",
+    "doa_move": "Ayane u,T",
+    "source_file": "doa-ayane.json",
+    "source_key": "u+1+3"
+   }
+  },
+  {
+   "id": "doa:ayane:d-b+1+3",
+   "name": "Ayane d,T — Setsuna-Otoshi (low)",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane-d,t",
+   "type": "throw",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d/b+1+3",
+   "input_slots": [
+    "d/b+1+3"
+   ],
+   "frames": {
+    "startup": 21,
+    "active": 2,
+    "recovery": 43,
+    "total": null
+   },
+   "damage_raw": 45,
+   "damage": 17,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 5,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "d,F+P",
+    "doa_move": "Ayane d,T",
+    "source_file": "doa-ayane.json",
+    "source_key": "d/b+1+3"
+   }
+  },
+  {
+   "id": "doa:ayane:u+1+2",
+   "name": "Ayane — Kamiyoi (vs high punch)",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "u+1+2",
+   "input_slots": [
+    "u+1+2"
+   ],
+   "frames": {
+    "startup": 9,
+    "active": 2,
+    "recovery": 23,
+    "total": null
+   },
+   "damage_raw": 0,
+   "damage": 0,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "8H",
+    "doa_move": "Ayane",
+    "source_file": "doa-ayane.json",
+    "source_key": "u+1+2"
+   }
+  },
+  {
+   "id": "doa:ayane:u+3+4",
+   "name": "Ayane — Hyorin (vs high kick)",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "u+3+4",
+   "input_slots": [
+    "u+3+4"
+   ],
+   "frames": {
+    "startup": 9,
+    "active": 2,
+    "recovery": 23,
+    "total": null
+   },
+   "damage_raw": 0,
+   "damage": 0,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "8H",
+    "doa_move": "Ayane",
+    "source_file": "doa-ayane.json",
+    "source_key": "u+3+4"
+   }
+  },
+  {
+   "id": "doa:ayane:b+1+2",
+   "name": "Ayane — Aya-Tsumuji (vs mid punch)",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane",
+   "type": "strike",
+   "subtype": null,
+   "position": "back-turned",
+   "orientation": "forward",
+   "input": "b+1+2",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "frames": {
+    "startup": 9,
+    "active": 2,
+    "recovery": 23,
+    "total": null
+   },
+   "damage_raw": 0,
+   "damage": 0,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "4H",
+    "doa_move": "Ayane",
+    "source_file": "doa-ayane.json",
+    "source_key": "b+1+2"
+   }
+  },
+  {
+   "id": "doa:ayane:f+1+2",
+   "name": "Ayane — Fubu-Jin (vs mid kick)",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "f+1+2",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "frames": {
+    "startup": 9,
+    "active": 2,
+    "recovery": 23,
+    "total": null
+   },
+   "damage_raw": 0,
+   "damage": 0,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "6H",
+    "doa_move": "Ayane",
+    "source_file": "doa-ayane.json",
+    "source_key": "f+1+2"
+   }
+  },
+  {
+   "id": "doa:ayane:d-b+1+2",
+   "name": "Ayane — Kogarashi (vs low punch)",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d/b+1+2",
+   "input_slots": [
+    "d/b+1+2"
+   ],
+   "frames": {
+    "startup": 9,
+    "active": 2,
+    "recovery": 23,
+    "total": null
+   },
+   "damage_raw": 0,
+   "damage": 0,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "2H",
+    "doa_move": "Ayane",
+    "source_file": "doa-ayane.json",
+    "source_key": "d/b+1+2"
+   }
+  },
+  {
+   "id": "doa:ayane:d-b+3+4",
+   "name": "Ayane — Futenro (vs low kick)",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:ayane/ayane",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d/b+3+4",
+   "input_slots": [
+    "d/b+3+4"
+   ],
+   "frames": {
+    "startup": 9,
+    "active": 2,
+    "recovery": 23,
+    "total": null
+   },
+   "damage_raw": 0,
+   "damage": 0,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "2H",
+    "doa_move": "Ayane",
+    "source_file": "doa-ayane.json",
+    "source_key": "d/b+3+4"
+   }
+  },
+  {
+   "id": "doa:ayane:string:1-2",
+   "name": "string 1,2",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": null,
+   "type": "strike",
+   "subtype": "string",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2",
+   "input_slots": [
+    "1,2"
+   ],
+   "frames": {
+    "startup": null,
+    "active": null,
+    "recovery": null,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": false,
+   "hit_level": null,
+   "limb": null,
+   "properties": [
+    "string"
+   ],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA string (multi-hit).",
+    "estimated": [
+     "damage (WH scale)"
+    ],
+    "components": []
+   }
+  },
+  {
+   "id": "doa:ayane:string:1-2-1",
+   "name": "string 1,2,1",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": null,
+   "type": "strike",
+   "subtype": "string",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2,1",
+   "input_slots": [
+    "1,2,1"
+   ],
+   "frames": {
+    "startup": null,
+    "active": null,
+    "recovery": null,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": false,
+   "hit_level": null,
+   "limb": null,
+   "properties": [
+    "string"
+   ],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA string (multi-hit).",
+    "estimated": [
+     "damage (WH scale)"
+    ],
+    "components": []
+   }
+  },
+  {
+   "id": "doa:ayane:string:1-2-3",
+   "name": "string 1,2,3",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Ayane (DOA4 / DOA Ultimate)",
+   "anim_ref": null,
+   "type": "strike",
+   "subtype": "string",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2,3",
+   "input_slots": [
+    "1,2,3"
+   ],
+   "frames": {
+    "startup": null,
+    "active": null,
+    "recovery": null,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": false,
+   "hit_level": null,
+   "limb": null,
+   "properties": [
+    "string"
+   ],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA string (multi-hit).",
+    "estimated": [
+     "damage (WH scale)"
+    ],
+    "components": []
+   }
+  },
+  {
+   "id": "doa:tina:1",
+   "name": "Tina P — Jab",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina-p",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1",
+   "input_slots": [
+    "1"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 10,
+   "damage": 4,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "P",
+    "doa_move": "Tina P",
+    "source_file": "doa-tina.json",
+    "source_key": "1"
+   }
+  },
+  {
+   "id": "doa:tina:3",
+   "name": "Tina K — High Kick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina-k",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "3",
+   "input_slots": [
+    "3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 30,
+   "damage": 11,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 4,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "K",
+    "doa_move": "Tina K",
+    "source_file": "doa-tina.json",
+    "source_key": "3"
+   }
+  },
+  {
+   "id": "doa:tina:d-f+1",
+   "name": "Tina df+P — Upper",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina-df+p",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d/f+1",
+   "input_slots": [
+    "d/f+1"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 20,
+   "damage": 7,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 3,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "df+P",
+    "doa_move": "Tina df+P",
+    "source_file": "doa-tina.json",
+    "source_key": "d/f+1"
+   }
+  },
+  {
+   "id": "doa:tina:d+1",
+   "name": "Tina d+P — Low Knuckle",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina-d+p",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d+1",
+   "input_slots": [
+    "d+1"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 5,
+   "damage": 2,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "d+P",
+    "doa_move": "Tina d+P",
+    "source_file": "doa-tina.json",
+    "source_key": "d+1"
+   }
+  },
+  {
+   "id": "doa:tina:d-f+3",
+   "name": "Tina df+K — Middle Kick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina-df+k",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d/f+3",
+   "input_slots": [
+    "d/f+3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 25,
+   "damage": 9,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "df+K",
+    "doa_move": "Tina df+K",
+    "source_file": "doa-tina.json",
+    "source_key": "d/f+3"
+   }
+  },
+  {
+   "id": "doa:tina:d+3",
+   "name": "Tina d+K — Low Kick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina-d+k",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d+3",
+   "input_slots": [
+    "d+3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 12,
+   "damage": 4,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "d+K",
+    "doa_move": "Tina d+K",
+    "source_file": "doa-tina.json",
+    "source_key": "d+3"
+   }
+  },
+  {
+   "id": "doa:tina:b+1",
+   "name": "Tina b+P — Turn Spin Knuckle",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina-b+p",
+   "type": "strike",
+   "subtype": null,
+   "position": "back-turned",
+   "orientation": "forward",
+   "input": "b+1",
+   "input_slots": [
+    "b+1"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 13,
+   "damage": 5,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "[bk]P",
+    "doa_move": "Tina b+P",
+    "source_file": "doa-tina.json",
+    "source_key": "b+1"
+   }
+  },
+  {
+   "id": "doa:tina:u-f+1",
+   "name": "Tina uf+P — Front Fist Drop",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina-uf+p",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "u/f+1",
+   "input_slots": [
+    "u/f+1"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 15,
+   "damage": 6,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "uf,P",
+    "doa_move": "Tina uf+P",
+    "source_file": "doa-tina.json",
+    "source_key": "u/f+1"
+   }
+  },
+  {
+   "id": "doa:tina:u-f+3",
+   "name": "Tina uf+K — Drop Kick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina-uf+k",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "u/f+3",
+   "input_slots": [
+    "u/f+3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 35,
+   "damage": 13,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 4.2,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "uf,K",
+    "doa_move": "Tina uf+K",
+    "source_file": "doa-tina.json",
+    "source_key": "u/f+3"
+   }
+  },
+  {
+   "id": "doa:tina:1-2",
+   "name": "Tina PP — Jab Straight",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina-pp",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2",
+   "input_slots": [
+    "1",
+    "1,2"
+   ],
+   "frames": {
+    "startup": 11,
+    "active": 2,
+    "recovery": 26,
+    "total": null
+   },
+   "damage_raw": 23,
+   "damage": 9,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "P,P",
+    "doa_move": "Tina PP",
+    "source_file": "doa-tina.json",
+    "source_key": "1,2"
+   }
+  },
+  {
+   "id": "doa:tina:1-2-3",
+   "name": "Tina PPK — Machine Gun Middle",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina-ppk",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2,3",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 48,
+   "damage": 18,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "P,P,K",
+    "doa_move": "Tina PPK",
+    "source_file": "doa-tina.json",
+    "source_key": "1,2,3"
+   }
+  },
+  {
+   "id": "doa:tina:1-2-1-3",
+   "name": "Tina PPPK — M.G. Elbow Knee",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina-pppk",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2,1,3",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,1",
+    "1,2,1,3"
+   ],
+   "frames": {
+    "startup": 13,
+    "active": 2,
+    "recovery": 30,
+    "total": null
+   },
+   "damage_raw": 78,
+   "damage": 29,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [],
+   "wh": {
+    "knock": 4,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "P,P,P,K",
+    "doa_move": "Tina PPPK",
+    "source_file": "doa-tina.json",
+    "source_key": "1,2,1,3"
+   }
+  },
+  {
+   "id": "doa:tina:1+2",
+   "name": "Tina P+K — S.R. Lariat",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina-p+k",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1+2",
+   "input_slots": [
+    "1+2"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 28,
+   "damage": 10,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 4.2,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "P+K",
+    "doa_move": "Tina P+K",
+    "source_file": "doa-tina.json",
+    "source_key": "1+2"
+   }
+  },
+  {
+   "id": "doa:tina:f-f+1+2",
+   "name": "Tina ff+P+K — Jumping Hip Attack",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina-ff+p+k",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "f,f+1+2",
+   "input_slots": [
+    "f,f+1+2"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 30,
+   "damage": 11,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 4.4,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "f,f,P+K",
+    "doa_move": "Tina ff+P+K",
+    "source_file": "doa-tina.json",
+    "source_key": "f,f+1+2"
+   }
+  },
+  {
+   "id": "doa:tina:3-4",
+   "name": "Tina KK — Ankle Spin Kick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina-kk",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "3,4",
+   "input_slots": [
+    "3",
+    "3,4"
+   ],
+   "frames": {
+    "startup": 13,
+    "active": 2,
+    "recovery": 30,
+    "total": null
+   },
+   "damage_raw": 55,
+   "damage": 20,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "K,K",
+    "doa_move": "Tina KK",
+    "source_file": "doa-tina.json",
+    "source_key": "3,4"
+   }
+  },
+  {
+   "id": "doa:tina:1+3",
+   "name": "Tina T — Death Valley Bomb",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina-t",
+   "type": "throw",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1+3",
+   "input_slots": [
+    "1+3"
+   ],
+   "frames": {
+    "startup": 21,
+    "active": 2,
+    "recovery": 43,
+    "total": null
+   },
+   "damage_raw": 60,
+   "damage": 22,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 6,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "F+P",
+    "doa_move": "Tina T",
+    "source_file": "doa-tina.json",
+    "source_key": "1+3"
+   }
+  },
+  {
+   "id": "doa:tina:b+1+3",
+   "name": "Tina b,T — Frankensteiner",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina-b,t",
+   "type": "throw",
+   "subtype": null,
+   "position": "back-turned",
+   "orientation": "forward",
+   "input": "b+1+3",
+   "input_slots": [
+    "b+1+3"
+   ],
+   "frames": {
+    "startup": 21,
+    "active": 2,
+    "recovery": 43,
+    "total": null
+   },
+   "damage_raw": 55,
+   "damage": 20,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 6.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "b,F+P",
+    "doa_move": "Tina b,T",
+    "source_file": "doa-tina.json",
+    "source_key": "b+1+3"
+   }
+  },
+  {
+   "id": "doa:tina:f-f+1+3",
+   "name": "Tina ff,T — Burst J.O.S.",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina-ff,t",
+   "type": "throw",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "f,f+1+3",
+   "input_slots": [
+    "f,f+1+3"
+   ],
+   "frames": {
+    "startup": 24,
+    "active": 2,
+    "recovery": 47,
+    "total": null
+   },
+   "damage_raw": 65,
+   "damage": 24,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 6.5,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "f,f,F+P",
+    "doa_move": "Tina ff,T",
+    "source_file": "doa-tina.json",
+    "source_key": "f,f+1+3"
+   }
+  },
+  {
+   "id": "doa:tina:hcf+1+3",
+   "name": "Tina hcf,T — Fisherman's Buster",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina-hcf,t",
+   "type": "throw",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "hcf+1+3",
+   "input_slots": [
+    "hcf+1+3"
+   ],
+   "frames": {
+    "startup": 23,
+    "active": 2,
+    "recovery": 45,
+    "total": null
+   },
+   "damage_raw": 58,
+   "damage": 21,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 6.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "41236,F+P",
+    "doa_move": "Tina hcf,T",
+    "source_file": "doa-tina.json",
+    "source_key": "hcf+1+3"
+   }
+  },
+  {
+   "id": "doa:tina:d-b+1+3",
+   "name": "Tina d,T — Neck Crusher (low)",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina-d,t",
+   "type": "throw",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d/b+1+3",
+   "input_slots": [
+    "d/b+1+3"
+   ],
+   "frames": {
+    "startup": 21,
+    "active": 2,
+    "recovery": 43,
+    "total": null
+   },
+   "damage_raw": 45,
+   "damage": 17,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 5,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "d,F+P",
+    "doa_move": "Tina d,T",
+    "source_file": "doa-tina.json",
+    "source_key": "d/b+1+3"
+   }
+  },
+  {
+   "id": "doa:tina:d+p+k",
+   "name": "Tina d,P+K — Moonsault Press",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina-d,p+k",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d+P+K",
+   "input_slots": [
+    "d+P+K"
+   ],
+   "frames": {
+    "startup": 18,
+    "active": 2,
+    "recovery": 38,
+    "total": null
+   },
+   "damage_raw": 35,
+   "damage": 13,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 4.4,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "d,P+K",
+    "doa_move": "Tina d,P+K",
+    "source_file": "doa-tina.json",
+    "source_key": "d+P+K"
+   }
+  },
+  {
+   "id": "doa:tina:u+1+2",
+   "name": "Tina — Locking Hammer (vs high punch)",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "u+1+2",
+   "input_slots": [
+    "u+1+2"
+   ],
+   "frames": {
+    "startup": 9,
+    "active": 2,
+    "recovery": 23,
+    "total": null
+   },
+   "damage_raw": 0,
+   "damage": 0,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "8H",
+    "doa_move": "Tina",
+    "source_file": "doa-tina.json",
+    "source_key": "u+1+2"
+   }
+  },
+  {
+   "id": "doa:tina:u+3+4",
+   "name": "Tina — Spring Leg Lock (vs high kick)",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "u+3+4",
+   "input_slots": [
+    "u+3+4"
+   ],
+   "frames": {
+    "startup": 9,
+    "active": 2,
+    "recovery": 23,
+    "total": null
+   },
+   "damage_raw": 0,
+   "damage": 0,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "8H",
+    "doa_move": "Tina",
+    "source_file": "doa-tina.json",
+    "source_key": "u+3+4"
+   }
+  },
+  {
+   "id": "doa:tina:b+1+2",
+   "name": "Tina — Arm Whip (vs mid punch)",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina",
+   "type": "strike",
+   "subtype": null,
+   "position": "back-turned",
+   "orientation": "forward",
+   "input": "b+1+2",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "frames": {
+    "startup": 9,
+    "active": 2,
+    "recovery": 23,
+    "total": null
+   },
+   "damage_raw": 0,
+   "damage": 0,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "4H",
+    "doa_move": "Tina",
+    "source_file": "doa-tina.json",
+    "source_key": "b+1+2"
+   }
+  },
+  {
+   "id": "doa:tina:f+1+2",
+   "name": "Tina — R.T. Lock (vs mid kick)",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "f+1+2",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "frames": {
+    "startup": 9,
+    "active": 2,
+    "recovery": 23,
+    "total": null
+   },
+   "damage_raw": 0,
+   "damage": 0,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "6H",
+    "doa_move": "Tina",
+    "source_file": "doa-tina.json",
+    "source_key": "f+1+2"
+   }
+  },
+  {
+   "id": "doa:tina:d-b+1+2",
+   "name": "Tina — Leg Split (vs low)",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:tina/tina",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d/b+1+2",
+   "input_slots": [
+    "d/b+1+2"
+   ],
+   "frames": {
+    "startup": 9,
+    "active": 2,
+    "recovery": 23,
+    "total": null
+   },
+   "damage_raw": 0,
+   "damage": 0,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "2H",
+    "doa_move": "Tina",
+    "source_file": "doa-tina.json",
+    "source_key": "d/b+1+2"
+   }
+  },
+  {
+   "id": "doa:tina:string:1-2",
+   "name": "string 1,2",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": null,
+   "type": "strike",
+   "subtype": "string",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2",
+   "input_slots": [
+    "1,2"
+   ],
+   "frames": {
+    "startup": null,
+    "active": null,
+    "recovery": null,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": false,
+   "hit_level": null,
+   "limb": null,
+   "properties": [
+    "string"
+   ],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA string (multi-hit).",
+    "estimated": [
+     "damage (WH scale)"
+    ],
+    "components": []
+   }
+  },
+  {
+   "id": "doa:tina:string:1-2-3",
+   "name": "string 1,2,3",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": null,
+   "type": "strike",
+   "subtype": "string",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2,3",
+   "input_slots": [
+    "1,2,3"
+   ],
+   "frames": {
+    "startup": null,
+    "active": null,
+    "recovery": null,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": false,
+   "hit_level": null,
+   "limb": null,
+   "properties": [
+    "string"
+   ],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA string (multi-hit).",
+    "estimated": [
+     "damage (WH scale)"
+    ],
+    "components": []
+   }
+  },
+  {
+   "id": "doa:tina:string:1-2-1-3",
+   "name": "string 1,2,1,3",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": null,
+   "type": "strike",
+   "subtype": "string",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,2,1,3",
+   "input_slots": [
+    "1,2,1,3"
+   ],
+   "frames": {
+    "startup": null,
+    "active": null,
+    "recovery": null,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": false,
+   "hit_level": null,
+   "limb": null,
+   "properties": [
+    "string"
+   ],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA string (multi-hit).",
+    "estimated": [
+     "damage (WH scale)"
+    ],
+    "components": []
+   }
+  },
+  {
+   "id": "doa:tina:string:3-4",
+   "name": "string 3,4",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Tina Armstrong (DOA4 / DOA Ultimate)",
+   "anim_ref": null,
+   "type": "strike",
+   "subtype": "string",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "3,4",
+   "input_slots": [
+    "3,4"
+   ],
+   "frames": {
+    "startup": null,
+    "active": null,
+    "recovery": null,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": false,
+   "hit_level": null,
+   "limb": null,
+   "properties": [
+    "string"
+   ],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA string (multi-hit).",
+    "estimated": [
+     "damage (WH scale)"
+    ],
+    "components": []
+   }
+  },
+  {
+   "id": "doa:jannlee:1",
+   "name": "Jann Lee P — Jab",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:jannlee/jann-lee-p",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1",
+   "input_slots": [
+    "1"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 10,
+   "damage": 4,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "P",
+    "doa_move": "Jann Lee P",
+    "source_file": "doa-jannlee.json",
+    "source_key": "1"
+   }
+  },
+  {
+   "id": "doa:jannlee:3",
+   "name": "Jann Lee K — High Kick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:jannlee/jann-lee-k",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "3",
+   "input_slots": [
+    "3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 30,
+   "damage": 11,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 4,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "K",
+    "doa_move": "Jann Lee K",
+    "source_file": "doa-jannlee.json",
+    "source_key": "3"
+   }
+  },
+  {
+   "id": "doa:jannlee:d-f+1",
+   "name": "Jann Lee df+P — Uppercut",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:jannlee/jann-lee-df+p",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d/f+1",
+   "input_slots": [
+    "d/f+1"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 20,
+   "damage": 7,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 3,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "d/f+P",
+    "doa_move": "Jann Lee df+P",
+    "source_file": "doa-jannlee.json",
+    "source_key": "d/f+1"
+   }
+  },
+  {
+   "id": "doa:jannlee:d+1",
+   "name": "Jann Lee d+P — Low Knuckle",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:jannlee/jann-lee-d+p",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d+1",
+   "input_slots": [
+    "d+1"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 5,
+   "damage": 2,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "d+P",
+    "doa_move": "Jann Lee d+P",
+    "source_file": "doa-jannlee.json",
+    "source_key": "d+1"
+   }
+  },
+  {
+   "id": "doa:jannlee:d-f+3",
+   "name": "Jann Lee df+K — Sidekick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:jannlee/jann-lee-df+k",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d/f+3",
+   "input_slots": [
+    "d/f+3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 22,
+   "damage": 8,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "d/f+K",
+    "doa_move": "Jann Lee df+K",
+    "source_file": "doa-jannlee.json",
+    "source_key": "d/f+3"
+   }
+  },
+  {
+   "id": "doa:jannlee:d+3",
+   "name": "Jann Lee d+K — Thrust Kick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:jannlee/jann-lee-d+k",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d+3",
+   "input_slots": [
+    "d+3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 12,
+   "damage": 4,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "d+K",
+    "doa_move": "Jann Lee d+K",
+    "source_file": "doa-jannlee.json",
+    "source_key": "d+3"
+   }
+  },
+  {
+   "id": "doa:jannlee:b+1",
+   "name": "Jann Lee b+P — Sekkan Chop",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:jannlee/jann-lee-b+p",
+   "type": "strike",
+   "subtype": null,
+   "position": "back-turned",
+   "orientation": "forward",
+   "input": "b+1",
+   "input_slots": [
+    "b+1"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 20,
+   "damage": 7,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "b,P",
+    "doa_move": "Jann Lee b+P",
+    "source_file": "doa-jannlee.json",
+    "source_key": "b+1"
+   }
+  },
+  {
+   "id": "doa:jannlee:u-f+1",
+   "name": "Jann Lee uf+P — Knuckle Upper",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:jannlee/jann-lee-uf+p",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "u/f+1",
+   "input_slots": [
+    "u/f+1"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 25,
+   "damage": 9,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 3.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "uf,P",
+    "doa_move": "Jann Lee uf+P",
+    "source_file": "doa-jannlee.json",
+    "source_key": "u/f+1"
+   }
+  },
+  {
+   "id": "doa:jannlee:u+3",
+   "name": "Jann Lee u+K — Read High Kick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:jannlee/jann-lee-u+k",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "u+3",
+   "input_slots": [
+    "u+3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 30,
+   "damage": 11,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "u,K",
+    "doa_move": "Jann Lee u+K",
+    "source_file": "doa-jannlee.json",
+    "source_key": "u+3"
+   }
+  },
+  {
+   "id": "doa:jannlee:u-f+3-4",
+   "name": "Jann Lee uf+K,K — Nikikyaku",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:jannlee/jann-lee-uf+k,k",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "u/f+3,4",
+   "input_slots": [
+    "u/f+3",
+    "u/f+3,4"
+   ],
+   "frames": {
+    "startup": 13,
+    "active": 2,
+    "recovery": 30,
+    "total": null
+   },
+   "damage_raw": 50,
+   "damage": 18,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "uf,K,K",
+    "doa_move": "Jann Lee uf+K,K",
+    "source_file": "doa-jannlee.json",
+    "source_key": "u/f+3,4"
+   }
+  },
+  {
+   "id": "doa:jannlee:1-3",
+   "name": "Jann Lee P,K — Jab High Kick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:jannlee/jann-lee-p,k",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,3",
+   "input_slots": [
+    "1",
+    "1,3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 40,
+   "damage": 15,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "P,K",
+    "doa_move": "Jann Lee P,K",
+    "source_file": "doa-jannlee.json",
+    "source_key": "1,3"
+   }
+  },
+  {
+   "id": "doa:jannlee:f-f+3",
+   "name": "Jann Lee ff+K — Dragon Rush",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:jannlee/jann-lee-ff+k",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "f,f+3",
+   "input_slots": [
+    "f,f+3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 28,
+   "damage": 10,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 4.2,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "f,f+K",
+    "doa_move": "Jann Lee ff+K",
+    "source_file": "doa-jannlee.json",
+    "source_key": "f,f+3"
+   }
+  },
+  {
+   "id": "doa:jannlee:d-f-d-f+1",
+   "name": "Jann Lee df,df+P — Dragon Cannon",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:jannlee/jann-lee-df,df+p",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d/f,d/f+1",
+   "input_slots": [
+    "d/f,d/f+1"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 35,
+   "damage": 13,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 4.6,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "df,df+P",
+    "doa_move": "Jann Lee df,df+P",
+    "source_file": "doa-jannlee.json",
+    "source_key": "d/f,d/f+1"
+   }
+  },
+  {
+   "id": "doa:jannlee:d-f-d-f+3",
+   "name": "Jann Lee df,df+K — Dragon Kick",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:jannlee/jann-lee-df,df+k",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d/f,d/f+3",
+   "input_slots": [
+    "d/f,d/f+3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 2,
+    "recovery": 28,
+    "total": null
+   },
+   "damage_raw": 32,
+   "damage": 12,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [
+    "heavy-hit"
+   ],
+   "wh": {
+    "knock": 4.4,
+    "soulGain": 8,
+    "heavy": true
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "d/f,d/f+K",
+    "doa_move": "Jann Lee df,df+K",
+    "source_file": "doa-jannlee.json",
+    "source_key": "d/f,d/f+3"
+   }
+  },
+  {
+   "id": "doa:jannlee:1+3",
+   "name": "Jann Lee T — Hell Drive",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:jannlee/jann-lee-t",
+   "type": "throw",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1+3",
+   "input_slots": [
+    "1+3"
+   ],
+   "frames": {
+    "startup": 21,
+    "active": 2,
+    "recovery": 43,
+    "total": null
+   },
+   "damage_raw": 55,
+   "damage": 20,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 6,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "F+P",
+    "doa_move": "Jann Lee T",
+    "source_file": "doa-jannlee.json",
+    "source_key": "1+3"
+   }
+  },
+  {
+   "id": "doa:jannlee:f+1+3",
+   "name": "Jann Lee f,T — Side Buster",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:jannlee/jann-lee-f,t",
+   "type": "throw",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "f+1+3",
+   "input_slots": [
+    "f+1+3"
+   ],
+   "frames": {
+    "startup": 21,
+    "active": 2,
+    "recovery": 43,
+    "total": null
+   },
+   "damage_raw": 58,
+   "damage": 21,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 6.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "f,F+P",
+    "doa_move": "Jann Lee f,T",
+    "source_file": "doa-jannlee.json",
+    "source_key": "f+1+3"
+   }
+  },
+  {
+   "id": "doa:jannlee:d+1+3",
+   "name": "Jann Lee d,T — Fireman's Carry",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:jannlee/jann-lee-d,t",
+   "type": "throw",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d+1+3",
+   "input_slots": [
+    "d+1+3"
+   ],
+   "frames": {
+    "startup": 21,
+    "active": 2,
+    "recovery": 43,
+    "total": null
+   },
+   "damage_raw": 50,
+   "damage": 18,
+   "hit_level": null,
+   "limb": "armR",
+   "properties": [],
+   "wh": {
+    "knock": 5.5,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "d,F+P",
+    "doa_move": "Jann Lee d,T",
+    "source_file": "doa-jannlee.json",
+    "source_key": "d+1+3"
+   }
+  },
+  {
+   "id": "doa:jannlee:u+1+2",
+   "name": "Jann Lee u,P+K — Enter the Dragon (to knocked-down foe)",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:jannlee/jann-lee-u,p+k",
+   "type": "strike",
+   "subtype": null,
+   "position": "standing",
+   "orientation": "forward",
+   "input": "u+1+2",
+   "input_slots": [
+    "u+1+2"
+   ],
+   "frames": {
+    "startup": 18,
+    "active": 2,
+    "recovery": 38,
+    "total": null
+   },
+   "damage_raw": 25,
+   "damage": 9,
+   "hit_level": null,
+   "limb": "legL",
+   "properties": [],
+   "wh": {
+    "knock": 4,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "u,P+K",
+    "doa_move": "Jann Lee u,P+K",
+    "source_file": "doa-jannlee.json",
+    "source_key": "u+1+2"
+   }
+  },
+  {
+   "id": "doa:jannlee:u-b+1+2",
+   "name": "Jann Lee — Counter Knuckle (vs punch)",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:jannlee/jann-lee",
+   "type": "strike",
+   "subtype": null,
+   "position": "back-turned",
+   "orientation": "forward",
+   "input": "u/b+1+2",
+   "input_slots": [
+    "u/b+1+2"
+   ],
+   "frames": {
+    "startup": 9,
+    "active": 2,
+    "recovery": 23,
+    "total": null
+   },
+   "damage_raw": 0,
+   "damage": 0,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "8H",
+    "doa_move": "Jann Lee",
+    "source_file": "doa-jannlee.json",
+    "source_key": "u/b+1+2"
+   }
+  },
+  {
+   "id": "doa:jannlee:b+1+2",
+   "name": "Jann Lee — Front Face Lock (vs mid)",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:jannlee/jann-lee",
+   "type": "strike",
+   "subtype": null,
+   "position": "back-turned",
+   "orientation": "forward",
+   "input": "b+1+2",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "frames": {
+    "startup": 9,
+    "active": 2,
+    "recovery": 23,
+    "total": null
+   },
+   "damage_raw": 0,
+   "damage": 0,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "4H",
+    "doa_move": "Jann Lee",
+    "source_file": "doa-jannlee.json",
+    "source_key": "b+1+2"
+   }
+  },
+  {
+   "id": "doa:jannlee:d-b+1+2",
+   "name": "Jann Lee — Low Front Face Lock (vs low)",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": "doa:jannlee/jann-lee",
+   "type": "strike",
+   "subtype": null,
+   "position": "crouching",
+   "orientation": "forward",
+   "input": "d/b+1+2",
+   "input_slots": [
+    "d/b+1+2"
+   ],
+   "frames": {
+    "startup": 9,
+    "active": 2,
+    "recovery": 23,
+    "total": null
+   },
+   "damage_raw": 0,
+   "damage": 0,
+   "hit_level": null,
+   "limb": "armL",
+   "properties": [],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA federation conversion (Tekken-notation federation rule); frames converted from seconds@60fps.",
+    "estimated": [
+     "position",
+     "hit_level",
+     "subtype"
+    ],
+    "doa_input": "2H",
+    "doa_move": "Jann Lee",
+    "source_file": "doa-jannlee.json",
+    "source_key": "d/b+1+2"
+   }
+  },
+  {
+   "id": "doa:jannlee:string:1-3",
+   "name": "string 1,3",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": null,
+   "type": "strike",
+   "subtype": "string",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1,3",
+   "input_slots": [
+    "1,3"
+   ],
+   "frames": {
+    "startup": null,
+    "active": null,
+    "recovery": null,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": false,
+   "hit_level": null,
+   "limb": null,
+   "properties": [
+    "string"
+   ],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA string (multi-hit).",
+    "estimated": [
+     "damage (WH scale)"
+    ],
+    "components": []
+   }
+  },
+  {
+   "id": "doa:jannlee:string:u-f+3-4",
+   "name": "string u/f+3,4",
+   "name_status": "DOA community movelist name",
+   "source": "doa",
+   "source_game_label": "Dead or Alive (federation conversion)",
+   "source_character": "Jann Lee (DOA4 / DOA Ultimate)",
+   "anim_ref": null,
+   "type": "strike",
+   "subtype": "string",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "u/f+3,4",
+   "input_slots": [
+    "u/f+3,4"
+   ],
+   "frames": {
+    "startup": null,
+    "active": null,
+    "recovery": null,
+    "total": null
+   },
+   "damage_raw": null,
+   "damage": false,
+   "hit_level": null,
+   "limb": null,
+   "properties": [
+    "string"
+   ],
+   "wh": {
+    "knock": 2.2,
+    "soulGain": 8,
+    "heavy": false
+   },
+   "provenance": {
+    "note": "DOA string (multi-hit).",
+    "estimated": [
+     "damage (WH scale)"
+    ],
+    "components": []
+   }
+  }
+ ]
+}

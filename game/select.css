@@ -17,7 +17,11 @@
 
 #screen-select.select-screen {
   overflow: hidden;
-  position: relative;
+  /* was position: relative, which overrode .screen's fixed inset:0 and
+     collapsed the screen to content height on phones (fighters zone 0px,
+     bottom ~45% of the viewport empty). Same T8 decode layout, full viewport. */
+  position: fixed;
+  inset: 0;
   background:
     radial-gradient(ellipse at 50% 115%, var(--sk-bg1, #141024) 0%, transparent 60%),
     linear-gradient(180deg, var(--sk-bg0, #07040d) 0%, #0b0716 100%);
@@ -386,6 +390,10 @@
   #screen-select .fact-val { max-width: 120px; }
 }
 @media (max-width: 480px) {
+  /* hints bar must fit 390px: CONFIRM was clipped at the right edge */
+  #screen-select .hints-bar { gap: 6px; padding-left: 8px; padding-right: 8px; }
+  #screen-select .hints-bar #select-hint { display: none; }
+  #screen-select .hints-bar #confirm-fighter { flex: 1 1 auto; min-width: 96px; padding-left: 10px; padding-right: 10px; }
   #screen-select .pane-stats { grid-template-columns: 1fr; gap: 2px; }
   #screen-select .pane-facts { gap: 4px 10px; }
   #screen-select .fact-val { font-size: 11px; max-width: 130px; }

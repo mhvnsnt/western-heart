@@ -170,3 +170,25 @@ Western Heart is not a mod and not a clone. It's a **chimera**: Tekken's skeleto
 ---
 
 *Source docs: CHIMERA-ARCHITECTURE.md, CHIMERA-BUILD.md, DESIGN.md, ROSTER.md, CANON.md, MISSION.md, roster/bonus/BONUS-CHARACTERS.md, teardown/TEARDOWN-STATUS.md — all in mhvnsnt/western-heart.*
+
+---
+
+## 11. MERGE QUEUE — COMING SOON (owner-ordered briefing, 2026-10-24)
+
+Read this if you work on western-heart or agent-ops. Nothing changes today. This is advance notice only.
+
+**What is changing:** soon, pull requests will merge one at a time, in a line, instead of every lane merging whenever it wants. Each PR in the line gets checked against the newest main before it goes in. That is called a merge queue.
+
+**Why:** two lanes merged at almost the same time and one wiped out the other's work. The line stops that happening.
+
+**What changes for your lane, once the flip happens:**
+- Merging a PR directly will stop working. GitHub will reject a direct merge.
+- Instead you add your PR to the queue. GitHub merges it when its turn comes, after re-checking it against the newest main.
+- If the queue asks you to update your branch (because main moved under you), update it and it goes back in line. Do not force-push. Do not merge main into your branch by hand to get around it.
+- The merge method stays "merge". Never squash, never rebase. Same as now.
+
+**When:** NOT YET. The flip happens only after every active lane has confirmed it knows. This briefing is the advance notice — today, merging works exactly the way it always has.
+
+**How to confirm:** reply "merge-queue briefing confirmed" in your chat, or drop that line as a comment on your PR, or tell the merge coordinator at your next check-in. Confirmations are tracked in mhvnsnt/agent-ops at `MERGE-QUEUE-BRIEFING-CONFIRMATIONS-2026-10-24.md`.
+
+**Status 2026-10-24:** the queue plumbing is ready on both repos (western-heart PR #742 and agent-ops PR #39 both merged the merge_group triggers). The flip itself has NOT happened. No branch protection has changed.

@@ -1,0 +1,194 @@
+{
+  "_doc": "owner law t123u (Oct 23 2026): every menu screen cites the Tekken/teardown file it is built from. legacy-unsourced = pre-law hand-made screen, grandfathered only while untouched. See tools/ui-sources/check.py and AGENTS.md. CITATION RE-POINT 2026-10-24: the old gre:tekken7/ui/flash/SW_UI_*.png citations pointed at a dir that does not exist; 7 files were verified (manifest + checked-in file) on PR #863 branch feat/t7-steam-extraction at teardown/tekken7-steam/pakchunk0/textures/UI_common/flash/ and are re-pointed to that path below — they resolve on main when #863 merges. 4 files (SW_UI_PauseMenu_Replay/Cursor_Sub.png, SW_UI_PauseMenu_Replay/NavigationBar_Waku.png, SW_UI_ControllerSetup/PanelBase1.png, SW_UI_StoryMode_Option/Win_3line.png) are NOT in pakchunk0 (neither manifest nor branch files) and appear nowhere else in the repo; their old citations are kept and flagged in screen-menu's note, NOT re-pointed to an unverified path — they need a pakchunkN extraction or gre-tree verification as follow-up.",
+  "screens": {
+    "screen-collection": {
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md",
+        "gre:tekken7-steam/tkdata/list/SW_UI_Option.bin"
+      ],
+      "files": [
+        "game/index.html"
+      ],
+      "note": "Rail hub lists T7 Collection's three components (Gallery / Jukebox / Replays — gap doc Gaps 11/12/20: T7 Gallery system structure, T7 jukebox per-mode structure, T7 replay theater structure, all filled with WH content only, never Tekken FMVs). Live Gallery (Endings / Episodes / Unlocked tabs), jukebox per-mode choice, and replay theater ship in PR #1056 from the Collection submenu; this section is the hub entry naming the components, with BACK to the main menu where the submenu lives. Jukebox contract (audio lane #1058): UI stores one choice per mode in wh_jukebox_v1, engine reads the same key; treasure choice is stored but UNPLAYED until a treasure music call site exists (tracked gap, not faked)."
+    },
+    "screen-daily": {
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md"
+      ],
+      "files": [
+        "game/index.html",
+        "game/js/online.js"
+      ],
+      "note": "Rail entry states the board rule (fixed fighter, fixed foe, one cruel modifier; streaks earn titles) and routes with a real action to the live board: game/js/online.js screen-challenges, driven by challenges.js today(). Daily challenges are grouped with the online hub in the gap doc (online.js + netplay lineage: TTT2 Player Matches, SFV Battle Lounge); no trial data is invented here."
+    },
+    "screen-howto": {
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7/tekkenmods-docs/files/en/Tekken_8/Basic_Information/Overview/Moveset/Structures/Input_Sequence/index.md",
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md"
+      ],
+      "files": [
+        "game/index.html"
+      ],
+      "note": "Control grid teaches Tekken input notation per the Input_Sequence structures doc: LP1/RP2/LK3/RK4 limbs (LP1 = Left Punch = Tekken 1, RP2 = Right Punch = Tekken 2, LK3 = Left Kick = Tekken 3, RK4 = Right Kick = Tekken 4), throw chords LP1+LK3 / RP2+RK4, throw-break limb reads, strings (LP1,RP2; f+LP1; d/f+RP2; qcf+RP2). Buttons use the existing >=44px classes (btn-primary, wh-menu-btn)."
+    },
+    "screen-menu": {
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md",
+        "gre:teardown/tekken7-steam/tkdata/list/SW_UI_MainMenu.bin",
+        "gre:teardown/tekken7-steam/tkdata/list/SW_UI_Option.bin",
+        "gre:tekken7/ui/flash/SW_UI_PauseMenu_Replay/Cursor_Sub.png",
+        "gre:tekken7/ui/flash/SW_UI_PauseMenu_Replay/NavigationBar_Waku.png",
+        "gre:tekken7/ui/flash/SW_UI_ControllerSetup/PanelBase1.png",
+        "gre:tekken7/ui/flash/SW_UI_StoryMode_Option/Win_3line.png"
+      ],
+      "files": [
+        "game/menu-t7.css",
+        "game/js/menu-t7-layout.js",
+        "game/index.html",
+        "game/js/menus.js",
+        "game/js/ui-wh-bridge.js",
+        "game/js/mainmenu.js",
+        "game/mainmenu.css",
+        "game/js/ui-gaps.js",
+        "game/ui-gaps.css"
+      ],
+      "note": "T7 main menu (Base_OnlineMenu column 29.8% W, MainMenu_mc Main0..13 slot pitch), mode select (SubMenu_mc Sub0..9, Cursor_Sub 688x80 rows) and options (SW_UI_Option ListArea: Name|Value rows, PanelBase1 40px). Ratios in docs/select-redesign/T7-PROPORTIONS.md 'Menus'. CITATION FLAG 2026-10-24: Cursor_Sub.png, NavigationBar_Waku.png (SW_UI_PauseMenu_Replay), PanelBase1.png (SW_UI_ControllerSetup), Win_3line.png (SW_UI_StoryMode_Option) are NOT in pakchunk0 (verified: absent from the pakchunk0 manifest and from the #863 branch files, and absent from the whole repo by code search) — their citations above are kept verbatim and flagged, not re-pointed to an unverified path. Follow-up: pakchunkN extraction or gre-tree verification."
+    },
+    "screen-modewin": {
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md"
+      ],
+      "files": [
+        "game/index.html",
+        "game/js/ranks.js"
+      ],
+      "note": "VICTORY / DEFEAT + tier / points + rank-event rows + NEXT BATTLE / RANK HALL / MAIN MENU follows the T7 result structure (T7-UI-LAYOUT.md: SW_UI_Result_Lightning win screen — vertical blue-white bolt behind huge italic WIN; rank events ride the same screen). Win-screen texture verified on PR #863 branch at teardown/tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_Result_Lightning/Result_Lightning_02.png; it resolves on main when #863 merges."
+    },
+    "screen-movelist": {
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7/tekkenmods-docs/files/en/Tekken_8/Basic_Information/Overview/Moveset/Structures/Input_Sequence/index.md",
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md"
+      ],
+      "files": [
+        "game/index.html",
+        "game/js/movelist-ui.js"
+      ],
+      "note": "Move table (grouped rows: input | name | damage) built from real fighter moveset files — the same data the Create-A-Move List editor edits (packages/creation-suite/src/movelist-editor.js, PR #998 merged 2026-10-24; LP1/RP2/LK3/RK4 throughout, context validation: jumping slots take only jumping animations, crouching only crouching, standing only standing, grapple only grapple, directional only matching direction). This screen is the read view; the editor is the write view. Input notation per the Input_Sequence structures doc."
+    },
+    "screen-online": {
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md"
+      ],
+      "files": [
+        "game/index.html",
+        "game/js/online.js",
+        "game/js/tournament-ui.js"
+      ],
+      "note": "Hub rows mirror the game/js/online.js hub template: QUICK MATCH (TTT2 style — instant rival), FIND LOUNGE, CREATE LOUNGE (SFV battle lounge — your rules), TOURNAMENT, DAILY CHALLENGES, BACK — routed through the existing document-level online actions; the old placeholder section shadowed that template and lacked the #online-player-line / #online-event ids the hub fills, so the hub could never open. Column structure per T7-UI-LAYOUT.md (Base_OnlineMenu dark-glass vertical list). Netcode honestly pending (signaling server); connection bars NOT claimed (online lane's work)."
+    },
+    "screen-reincarnate": {
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md"
+      ],
+      "files": [
+        "game/index.html",
+        "game/js/modes.js"
+      ],
+      "note": "Vessel cards (portrait + name + style + reincarnation reason) follow the T7 select-card structure (T7-UI-LAYOUT.md: 96x148 portrait cards, number bottom-right). CONTENT is Western Heart canon, not Tekken: Nine Souls death-and-rebirth (CANON.md) — death is not failure, the Trial picks vessels from how you fought, forces carry over. No Tekken equivalent is claimed for the mechanic."
+    },
+    "screen-result": {
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md"
+      ],
+      "files": [],
+      "note": "Result screen structure per T7-UI-LAYOUT.md (SW_UI_Result_Lightning win screen). REMOVED 2026-10-25 (#1056): the pakchunk0 win-screen texture citation (teardown/tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_Result_Lightning/Result_Lightning_02.png) never resolves on main — PR #863 is the abandoned public copy (assets live in private game-reverse-engineering per T7-STEAM-EXTRACTION.md) and the texture is not verifiable there either. Re-point to a gre: path or re-add if the texture lands in the private repo."
+    },
+    "screen-select": {
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md",
+        "teardown/tekken8/ui/CHARACTER-SELECT.md",
+        "teardown/tekken8/ui/refs/t8-select-ref-1.png",
+        "teardown/tekken8/ui/refs/t8-select-ref-2.png",
+        "teardown/tekken8/ui/refs/t8-select-ref-3.png",
+        "teardown/tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_CharacterSelect/SlotRed_OnGradient.png",
+        "teardown/tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_CharacterSelect/SlotBlue_OnGradient.png",
+        "teardown/tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_CharacterSelect/Rep_CS_CH_PANEL_00.png"
+      ],
+      "files": [
+        "game/select-t8.css",
+        "game/select.css",
+        "game/js/select-screen.js",
+        "game/index.html",
+        "game/t7-skin.css",
+        "game/js/t7-ui-private.js",
+        "game/select-t7.css",
+        "game/js/select-t7-layout.js"
+      ],
+      "reuse": [
+        "mhvnsnt/Brutal-Fist@f455322:src/components/CharacterSelect.tsx (phone-portrait stage/grid split)",
+        "mhvnsnt/AshLanev2:public/concept-art/menu/menu-character-select.webp (reference only; no select code exists)"
+      ]
+    },
+    "screen-sidegames": {
+      "status": "legacy-unsourced",
+      "sources": [],
+      "files": []
+    },
+    "screen-stage": {
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md",
+        "teardown/tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_StageSelect/InfoRed_Base.png",
+        "teardown/tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_StageSelect/RedPanel_Base.png"
+      ],
+      "files": []
+    },
+    "screen-stage-intro": {
+      "status": "legacy-unsourced",
+      "sources": [],
+      "files": []
+    },
+    "screen-trader": {
+      "status": "legacy-unsourced",
+      "sources": [],
+      "files": []
+    },
+    "screen-vssetup": {
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7/ui/GAME-OPTION-VS-MENU.md"
+      ],
+      "files": [
+        "game/js/versus-setup.js",
+        "game/js/mainmenu.js",
+        "game/js/menus.js",
+        "game/styles.css",
+        "game/submenus.css",
+        "game/js/ui-gaps.js"
+      ]
+    },
+    "hud-fight": {
+      "status": "sourced",
+      "sources": [
+        "teardown/western-heart-design/king-tekken3-ingame.jpg",
+        "teardown/tekken7/tekkenmods-docs/files/en/Tekken_8/Basic_Information/Overview/Moveset/Structures/Input_Sequence/index.md"
+      ],
+      "files": [
+        "game/styles.css",
+        "game/menus.css",
+        "game/ui-wh/ui.css"
+      ],
+      "note": "In-fight HUD + touch pad. Tekken in-game reference: round timer top-centre, nothing drawn over it (mode badge / VERSUS chip sit below the health-bar row). Touch pad uses T8 1/2/3/4 limb notation; Heat = 2+3, Rage Art = 1+2."
+    }
+  }
+}

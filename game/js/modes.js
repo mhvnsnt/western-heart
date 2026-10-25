@@ -26,6 +26,7 @@
    DOM-free and unit-testable in node. ModeController wires it to the
    DOM and the Game.
    ============================================================ */
+import { getRules } from './rules.js';
 
 /* ---------------- The Five Forces ----------------
    Canon rewards for claiming each land. Engine translation is honest:
@@ -221,7 +222,7 @@ export function buildAssembledSoul(playerChar) {
     title: 'Yourself, Assembled',
     base: playerChar.base || 'You',
     moveset: playerChar.moveset || 'jin',
-    model: playerChar.model || 'pantera',
+    model: playerChar.model,
     tintStrength: 0.65,
     colors: { suit: 0x0a0a14, trim: 0xb28dff },
     style: 'All Nine Styles',
@@ -239,6 +240,13 @@ export function scaledAi(char, diff) {
     aggression: Math.min(1, base.aggression * (0.6 + d * 0.7)),
     grabBias: base.grabBias ?? 0.15,
     reaction: Math.min(1, base.reaction * (0.5 + d * 0.8)),
+    // FIGHTING-AI METHODOLOGY (2026-10-23): the human-reaction delay and
+    // MCTS search scale with the same difficulty knob. The AIController
+    // maps `difficulty` through delayFramesForDifficulty() (15f rookie →
+    // 8f boss, never 0) and mctsRolloutsForDifficulty() (0 below 0.35 —
+    // rookies fight a footsies brain, veterans fight a searching one).
+    // Kept humanlike and beatable at every tier.
+    difficulty: d,
   };
 }
 
@@ -263,6 +271,8 @@ export const MODE_LIST = [
     desc: 'Endless one-round fights. Health carries over — a little back per win. How many can you beat?' },
   { key: 'timeattack', name: 'TIME ATTACK',        origin: 'tekken', debut: 'Tekken 2',
     desc: '8 fights against the clock. Fastest total time wins. Graded S/A/B/C.' },
+  { key: 'treasure', name: 'TREASURE BATTLE', origin: 'tekken', debut: 'Tekken 7',
+    desc: 'Endless foes. Every win opens a chest — coins and unlockables. How deep does the vault go?' },
   { key: 'team',      name: 'TEAM BATTLE',         origin: 'tekken', debut: 'Tekken 2',
     desc: '3v3. Winner stays on with carried health. Last team standing.' },
   { key: 'qombat',    name: '不死クォンバット',        origin: 'wh', canon: 'CANON.md § SUN RĀ',
@@ -290,6 +300,9 @@ export function whSetRecord(k, v) {
 /* ---------------- Survival (Tekken 2+) ----------------
    One round per fight, HP carries over, small restore per win. */
 export const SURVIVAL_CFG = { restore: 0.25, roundsToWin: 1 };
+/* Lane 3, Gap 13: Treasure Battle — endless, one round per wave, fresh
+   health each wave (unlike Survival's carry), chest after every win. */
+export const TREASURE_CFG = { roundsToWin: 1 };
 export function survivalCarry(hpLeft, maxHp) {
   return Math.min(maxHp, hpLeft + maxHp * SURVIVAL_CFG.restore);
 }
@@ -407,6 +420,7 @@ export class ModeController {
     this.qombat = null;        // { wave, fighterId, hp, powerMult }
     this.surge = null;         // { idx, fighterId }
     this.trader = null;        // { bout, fighterId }
+    this.treasure = null;      // { wave, fighterId, chests } — Lane 3, Gap 13
     this._teamTray = null;
     this._teamPending = [];
     this._el = (id) => document.getElementById(id);
@@ -420,7 +434,7 @@ export class ModeController {
     this.arcade = null; this.story = null; this.training = null;
     this.fightlab = null;
     this.survival = null; this.timeattack = null; this.team = null;
-    this.qombat = null; this.surge = null; this.trader = null;
+    this.qombat = null; this.surge = null; this.trader = null; this.treasure = null;
     this._teamPending = [];
     if (this._teamTray) { this._teamTray.remove(); this._teamTray = null; }
     this.game.onMatchEnd = null;
@@ -458,6 +472,8 @@ export class ModeController {
       hint.textContent = 'SOUL SURGE GAUNTLET — pick your vessel. Nine fights. Nine souls will channel through you.';
     } else if (mode === 'trader') {
       hint.textContent = 'TRADER\'S MIMIC — pick your fighter. Three bouts. The Trader wears your moveset like a borrowed coat.';
+    } else if (mode === 'treasure') {
+      hint.textContent = 'TREASURE BATTLE — pick your fighter. Endless foes, a chest after every win. Coins and unlockables keep coming.';
     }
   }
 
@@ -546,20 +562,46 @@ export class ModeController {
       this._traderNext();
       return true;
     }
+    if (this.mode === 'treasure') {
+      this.treasure = { wave: 0, fighterId: selectedId, chests: 0 };
+      this._treasureNext();
+      return true;
+    }
     return false;
   }
 
-  /* ---------- VERSUS: no reincarnation, best of 3 ---------- */
+  /* ---------- VERSUS: no reincarnation, rules from VERSUS SETUP ----------
+     T7 GAME OPTION <VS GAME>: fight count, round time, guard damage
+     ride the fight opts into game.js; stage RANDOM skips the arena
+     screen entirely. */
   _beginVersus(p1id, p2id) {
     const p1 = this.getChar(p1id), p2 = this.getChar(p2id);
     if (!p1 || !p2) return;
+    const r = getRules();
     this._lastVersus = [p1id, p2id];
     this._badge(`VERSUS · ${p1.name} VS ${p2.name}`);
     this.game.onMatchEnd = (won) => this._versusEnd(won);
-    this.startFight(p1id, p2id, { mode: 'versus' });
+    const opts = {
+      mode: 'versus',
+      roundsToWin: r.roundsVs,
+      roundTime: r.roundTime,
+      guardDamage: r.guardDamage,
+    };
+    if (r.stageMode === 'random') {
+      const pool = (window.__stages || []).map((s) => s.id).filter(Boolean);
+      if (pool.length) {
+        opts.stage = pool[Math.floor(Math.random() * pool.length)];
+        opts.skipStage = true; // startFightViaStage goes straight in
+      }
+    }
+    this.startFight(p1id, p2id, opts);
   }
   _versusEnd(playerWon) {
     this.game.onMatchEnd = null;
+    // Lane 3 UI gaps (Gap 15): versus W-L record feeds the VS screen.
+    const wl = whGetRecords().versusWL || { w: 0, l: 0 };
+    if (playerWon) wl.w++; else wl.l++;
+    whSetRecord('versusWL', wl);
     this.ui.matchOver(playerWon); // classic result screen: REMATCH / MENU
   }
   rematch() {
@@ -572,6 +614,8 @@ export class ModeController {
       this._storyFight();
     } else if (this.mode === 'training' && this.training) {
       this._beginTraining(this.training.fighterId);
+    } else if (this.mode === 'treasure' && this.treasure) {
+      this._treasureFight();
     }
   }
 
@@ -850,6 +894,62 @@ export class ModeController {
       this._modeWin(false, 'SURVIVAL — RUN OVER',
         `Fell at wave ${s.wave + 1}. Best run: ${best} wave${best === 1 ? '' : 's'}. The shrine is silent. Run it back.`,
         [{ label: 'RETRY SURVIVAL', fn: () => { this.survival = { wave: 0, fighterId: s.fighterId, hp: null }; this._survivalNext(); } }]);
+    }
+  }
+
+
+  /* ---------- TREASURE BATTLE (Tekken 7): endless + chests + currency ----------
+     Structure from gap doc Gap 13: endless ladder, win -> treasure chest
+     (random customization unlock + currency), escalating difficulty.
+     Loot pays into the existing systems, nothing new invented: coins to
+     localStorage 'wh_treasure_coins_v1' (ui-gaps.js TREASURE_COINS_KEY),
+     prizes granted through unlockables.js (titles/frames). Health is
+     fresh each wave — the chest, not attrition, is the loop. */
+  _treasureNext() {
+    const s = this.treasure;
+    const diff = Math.min(0.95, 0.40 + s.wave * 0.05);
+    const foe = this._pickFoe(s.fighterId, null, diff);
+    const foeEntry = { ...foe, ai: scaledAi(foe, diff) };
+    this._treasureFoe = foeEntry;
+    this._badge(`TREASURE BATTLE · WAVE ${s.wave + 1} · ${foe.name}`);
+    this.ui.banner(`WAVE ${s.wave + 1} — ${foe.name}`);
+    this.game.onMatchEnd = (won) => this._treasureEnd(won);
+    this._treasureFight();
+  }
+  _treasureFight() { // (re)start current wave — used by rematch
+    const s = this.treasure;
+    this.startFight(s.fighterId, null, { mode: 'treasure', roundsToWin: TREASURE_CFG.roundsToWin, enemyChar: this._treasureFoe });
+  }
+  async _treasureEnd(won) {
+    const s = this.treasure;
+    if (won) {
+      s.wave++;
+      s.chests++;
+      const rec = whGetRecords();
+      if (s.wave > (rec.treasure || 0)) whSetRecord('treasure', s.wave);
+      // Open the chest: coins always, one still-locked unlockable if any.
+      let chestLine = '';
+      try {
+        const [{ rollChest, readTreasureCoins }, unlocks] = await Promise.all([
+          import('./ui-gaps.js'), import('./unlockables.js'),
+        ]);
+        const pool = Object.keys(unlocks.UNLOCKABLES || {}).filter((id) => !unlocks.hasUnlockable(id));
+        const roll = rollChest({ coins: readTreasureCoins(localStorage), pool });
+        try { localStorage.setItem('wh_treasure_coins_v1', JSON.stringify(roll.coins)); } catch { /* private mode */ }
+        let prizeName = '';
+        if (roll.prize && unlocks.grantUnlockable(roll.prize)) prizeName = ` · UNLOCKED: ${(unlocks.UNLOCKABLES[roll.prize] || {}).name || roll.prize}`;
+        chestLine = `CHEST ${s.chests}: +${roll.coinsGained} coins${prizeName}`;
+      } catch { chestLine = `CHEST ${s.chests} opened.`; }
+      this.ui.banner(`WAVE ${s.wave} CLEARED — ${chestLine}`);
+      setTimeout(() => this._treasureNext(), 1600);
+    } else {
+      const rec = whGetRecords();
+      const best = rec.treasure || s.wave;
+      let coins = 0;
+      try { coins = JSON.parse(localStorage.getItem('wh_treasure_coins_v1') || '0') || 0; } catch { /* private mode */ }
+      this._modeWin(false, 'TREASURE BATTLE — VAULT CLOSES',
+        `Fell at wave ${s.wave + 1}. Best run: ${best} wave${best === 1 ? '' : 's'}. Chests opened: ${s.chests}. Coins kept: ${coins}.`,
+        [{ label: 'RETRY TREASURE', fn: () => { this.treasure = { wave: 0, fighterId: s.fighterId, chests: 0 }; this._treasureNext(); } }]);
     }
   }
 
