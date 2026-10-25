@@ -12398,7 +12398,7 @@
     "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
   },
   "string_step_plans": {
-    "law": "Batch 1 step plans (Scimitar LP1/RP2-only strings, 2026-10-25). Engine: fighter.js _attackClipPlan step-plan branch (from #1096). A step plays its row ONLY when status is verified (button bitmask + stance + throw gates pass, plus the Job 1 limb-peak proxy except in jump context). review/unmapped steps play NO bank row - never a donor/generic row - and are flagged in _atkPlan.unmapped. T3 rows here are FALLBACK (see docs/anim/PROCEDURAL_AUDIT.md Scimitar-Batch-1 entry): scimitar's T3 bank is jin (t3_source jin, t3_bank moveset_jin.json, verified from the file on BOTH #1096 and main + the t3/ directory listing + Job 1 bank jin (220 rows) + Job 2 scimitar entries all bank jin (362) + Job 4 jin candidates (47)). Bank resolution, documented not assumed: scimitar's T7/T8 base is Shaheen (tekken_base Shaheen, merge_sources t8/t7 shaheen) and Shaheen debuted in Tekken 7, so NO shaheen dir exists under t3/ — this bank is a FALLBACK, not native (the kinpo pattern: Asuka -> jin; contrast phantom Yoshimitsu -> yoshimitsu native, burger Bob -> bryan). The pack dir does NOT differ from the moveset bank name here (unlike diablo's heihachi/heihachi_on_jin split). Jin-bank rules, per-bank evidence (never a cross-bank blanket ban; demonio/kinpo adjudicated this same bank independently, re-derived here): row 35 EXISTS as a starts-airborne LP1 row (hit_frames [11,12,39,535,0,1]) — ground-rejected, jump-context only; row 220 is a STANDING RP2 row (hit_frames [12,12,41,1042,0,2], Job 1 standing, armR, level h) — NOT king's jumping chord row, NOT bryan's button-0 row, NOT heihachi's jump RK4 row; row 216 is a JUMP row (hit_frames [63,64,117,1543,0,0], button 0) — it fails every single-button gate; row 41 is a starts-airborne LP1 row. Scimitar's own LP1 move 1 carries t3_row 184 on #1096 (standing LP1 row) and its RP2 move 2 carries t3_row 220 on #1096 (the standing RP2 row above). Move 1 IS row-changed on current main (184->None, anim_ref None), so both Batch 1 steps with prefix 1 (1,2 step 1, 1,2,2 step 1) are SUSPENDED-DRIFT (stale row 184 documented, never wired). Move 2 is damage-only drift (4->10), NOT suspending. The file's ONLY row-changed move is 1 (184->None). Standing rows verified for crouch-context steps (d+1+2 family rows 92/93/183) follow the demonio Batch 1 precedent: the pipeline stance gate flags crouch rows for non-crouch steps, not standing rows for crouch steps (GATE-NOTE on each such step; re-adjudicate if the gate tightens). Job 3 fills wired: 0 (all Job 3 candidates are ROW-ONLY or soft, documented never wired; the two exact ROW-ONLY rows 92/105 for prefix 1 are moot — the step is suspended on drift regardless). No agreement note fires: the note fires ONLY for actually-wired gate candidates disagreeing with an exact+FULL Job 3 candidate, and no exact+FULL Job 3 candidate exists for any verified step. Dedupe fires zero times: no Batch 1 step prefix shares a pass-all row between its plain and __main Job 3 targets. Job 4 joins: 0 (no jin Job 4 candidate is carried by a scimitar Job 2 own-row entry for any Batch 1 step prefix). 15 orphans: jin Job 4 candidates no scimitar Job 2 move carries (any step). Gap-1: main jin hit_frames blob 54b38e63... and skeleton blob 26f72eb7... are IDENTICAL on #1096 and current main; main jin rows.pack blob 7bafa36a... (226 rows) = #1096 rows.pack blob 141fbc8d... (220 rows) + exactly the 6 #1109 bake jin rows (89/112/247/288/339/357), SUPERSET, 0 removed — and every wired row is present in the current main pack. Canonicalization is the CORRECTED rule (strip only a trailing ~t[378] source-variant suffix): scimitar Batch 1 contains ZERO input-~ canonicals, and scimitar is INERT file-wide on this axis — every ~ in the file is a trailing source-variant suffix (~t7.shaheen / ~t8.shaheen, with .2/.3), so old canonical == corrected canonical for all 114 comma keys. Spelling quirks kept: d/b+2,1 vs db+2,1 are distinct canonicals (both unmapped-all, different step-1 drift evidence: damage-only vs anim_ref-changed). Most unmapped steps have NO candidate at all: their intermediate prefixes are T8-sourced with no T3 row, so the correct clips come from #988 Step 2 (original T8 refs) or future extraction, never from a T3 row recorded as correct. Full gate evidence in docs/movesets/SCIMITAR-BATCH1-STEP-PLANS-2026-10-25.md.",
+    "law": "Batch 1 step plans (Scimitar LP1/RP2-only strings, 2026-10-25). Engine: fighter.js _attackClipPlan step-plan branch (from #1096). A step plays its row ONLY when status is verified (button bitmask + stance + throw gates pass, plus the Job 1 limb-peak proxy except in jump context). review/unmapped steps play NO bank row - never a donor/generic row - and are flagged in _atkPlan.unmapped. T3 rows here are FALLBACK (see docs/anim/PROCEDURAL_AUDIT.md Scimitar-Batch-1 entry): scimitar's T3 bank is jin (t3_source jin, t3_bank moveset_jin.json, verified from the file on BOTH #1096 and main + the t3/ directory listing + Job 1 bank jin (220 rows) + Job 2 scimitar entries all bank jin (362) + Job 4 jin candidates (47)). Bank resolution, documented not assumed: scimitar's T7/T8 base is Shaheen (tekken_base Shaheen, merge_sources t8/t7 shaheen) and Shaheen debuted in Tekken 7, so NO shaheen dir exists under t3/ — this bank is a FALLBACK, not native (the kinpo pattern: Asuka -> jin; contrast phantom Yoshimitsu -> yoshimitsu native, burger Bob -> bryan). The pack dir does NOT differ from the moveset bank name here (unlike diablo's heihachi/heihachi_on_jin split). Jin-bank rules, per-bank evidence (never a cross-bank blanket ban; demonio/kinpo adjudicated this same bank independently, re-derived here): row 35 EXISTS as a starts-airborne LP1 row (hit_frames [11,12,39,535,0,1]) — ground-rejected, jump-context only; row 220 is a STANDING RP2 row (hit_frames [12,12,41,1042,0,2], Job 1 standing, armR, level h) — NOT king's jumping chord row, NOT bryan's button-0 row, NOT heihachi's jump RK4 row; row 216 is a JUMP row (hit_frames [63,64,117,1543,0,0], button 0) — it fails every single-button gate; row 41 is a starts-airborne LP1 row. Scimitar's own LP1 move 1 carries t3_row 184 on #1096 (standing LP1 row) and its RP2 move 2 carries t3_row 220 on #1096 (the standing RP2 row above). Move 1 IS row-changed on current main (184->None, anim_ref None), so both Batch 1 steps with prefix 1 (1,2 step 1, 1,2,2 step 1) are SUSPENDED-DRIFT (stale row 184 documented, never wired). Move 2 is damage-only drift (4->10), NOT suspending. The file's ONLY row-changed move is 1 (184->None). Standing rows verified for crouch-context steps (d+1+2 family rows 92/93/183) follow the demonio Batch 1 precedent: the pipeline stance gate flags crouch rows for non-crouch steps, not standing rows for crouch steps (GATE-NOTE on each such step; re-adjudicate if the gate tightens). Job 3 fills wired: 0 (all Job 3 candidates are ROW-ONLY or soft, documented never wired; the two exact ROW-ONLY rows 92/105 for prefix 1 are moot — the step is suspended on drift regardless). No agreement note fires: the note fires ONLY for actually-wired gate candidates disagreeing with an exact+FULL Job 3 candidate, and no exact+FULL Job 3 candidate exists for any verified step. Dedupe fires zero times: no Batch 1 step prefix shares a pass-all row between its plain and __main Job 3 targets. Job 4 joins: 0 (no jin Job 4 candidate is carried by a scimitar Job 2 own-row entry for any Batch 1 step prefix). 15 orphans: jin Job 4 candidates no scimitar Job 2 move carries (any step). Gap-1: main jin hit_frames blob 54b38e63... and skeleton blob 26f72eb7... are IDENTICAL on #1096 and current main; main jin rows.pack blob 7bafa36a... (226 rows) = #1096 rows.pack blob 141fbc8d... (220 rows) + exactly the 6 #1109 bake jin rows (89/112/247/288/339/357), SUPERSET, 0 removed — and every wired row is present in the current main pack. Canonicalization is the CORRECTED rule (strip only a trailing ~t[378] source-variant suffix): scimitar Batch 1 contains ZERO input-~ canonicals, and scimitar is INERT file-wide on this axis — every ~ in the file is a trailing source-variant suffix (~t7.shaheen / ~t8.shaheen, with .2/.3), so old canonical == corrected canonical for all 114 comma keys. Spelling quirks kept: d/b+2,1 vs db+2,1 are distinct canonicals (both unmapped-all, different step-1 drift evidence: damage-only vs anim_ref-changed). Most unmapped steps have NO candidate at all: their intermediate prefixes are T8-sourced with no T3 row, so the correct clips come from #988 Step 2 (original T8 refs) or future extraction, never from a T3 row recorded as correct. Full gate evidence in docs/movesets/SCIMITAR-BATCH1-STEP-PLANS-2026-10-25.md.\n\nBatch 2 step plans (Scimitar LK3/RK4-only strings, 2026-10-25). Appended to the Batch 1 plans block (21 keys) — 18 new keys, 39 total; Batch 1 plans deep-equal, untouched. Engine: fighter.js _attackClipPlan step-plan branch (from #1096). A step plays its row ONLY when status is verified (button bitmask + stance + throw gates pass, plus the Job 1 limb-peak proxy except in jump context). review/unmapped steps play NO bank row - never a donor/generic row - and are flagged in _atkPlan.unmapped. T3 rows here are FALLBACK (see docs/anim/PROCEDURAL_AUDIT.md Scimitar-Batch-2 entry): scimitar's T3 bank is jin (t3_source jin, t3_bank moveset_jin.json, verified from the file on BOTH the Batch 1 branch and main + the t3/ directory listing + Job 1 bank jin (220 rows) + Job 2 scimitar entries all bank jin (362) + Job 4 jin candidates (47)). Bank resolution, documented not assumed: scimitar's T7/T8 base is Shaheen (tekken_base Shaheen, merge_sources t8/t7 shaheen) and Shaheen debuted in Tekken 7, so NO shaheen dir exists under t3/ — this bank is a FALLBACK, not native (the kinpo pattern: Asuka -> jin; contrast phantom Yoshimitsu -> yoshimitsu native, burger Bob -> bryan). The pack dir does NOT differ from the moveset bank name here (unlike diablo's heihachi/heihachi_on_jin split). Jin-bank rules, per-bank evidence (never a cross-bank blanket ban; demonio/kinpo adjudicated this same bank independently, re-derived here): row 35 EXISTS as a starts-airborne LP1 row (hit_frames [11,12,39,535,0,1]) — ground-rejected, jump-context only; row 220 is a STANDING RP2 row (hit_frames [12,12,41,1042,0,2], Job 1 standing, armR, level h) — NOT king's jumping chord row, NOT bryan's button-0 row, NOT heihachi's jump RK4 row; row 216 is a JUMP row (hit_frames [63,64,117,1543,0,0], button 0) — it fails every single-button gate; row 41 is a starts-airborne LP1 row. Jin duck-dip rows (16): 123, 189, 192, 210, 211, 212, 213, 235, 257, 367, 377, 381, 385, 387, 389, 397 — handled like crouch: STANCE-SOFT (review) for non-crouch contexts. The file's ONLY row-changed move is 1 (184->None) — an LP1 move, NOT a Batch 2 step prefix (Batch 2 strings are LK3/RK4-only), so Batch 2 has ZERO suspended-drift steps. Verified: u/f+4,3 [80,193] and u/f+4,4 [80,207] verified-all (jump context, SOFT waived — same rows as demonio Batch 2 and kinpo Batch 2, independently re-derived); d/f+4,4 step 1 <- 205 (crouch row for crouch context, passes outright — same row/result as demonio/kinpo Batch 2). Review holds: 4,3/4,4 step 1 cand 199 SOFT fail ([3.5,7.5], legR peak 3 — same as kinpo Batch 3's 4,1 hold); d/f+4,4 step 2 cand 212 SOFT fail ([4.5,8.5], legR peak 12 — same as demonio/kinpo Batch 2); u/f+4,4,4 step 3 cand 210 + u/f+4,4,4,4 steps 3-4 cands 210/211 STANCE-SOFT (duck-dip for jump context — same as demonio/kinpo Batch 2). Unmapped: 12 steps, ALL no-candidate (zero rejected, zero suspended) — their prefixes are T8-sourced with no T3 row, so correct clips come from #988 Step 2 (original T8 refs) or future extraction, never from a T3 row recorded as correct. Job 3: 0 report entries with pass-all rows (the only Batch 2 step prefixes with match_search entries — d/b+3,4, u/f+4,4,4, u/f+4,4,4,4 — all carry EMPTY pass-all lists); 0 fills wired; no agreement note fires (the note fires ONLY for actually-wired gate candidates). Dedupe fires zero times. Job 4: 4 joins, all no-action (193, 207 x3 on already-verified steps), none promoting; 15 orphans (same bank-level set as Batch 1: 85, 91, 99, 100, 104, 127, 170, 171, 172, 209, 226, 239, 250, 256, 262). Gap-1: main jin hit_frames blob 54b38e63... and skeleton blob 26f72eb7... are IDENTICAL on the Batch 1 branch and current main; main jin rows.pack blob 7bafa36a... (226 rows) = Batch 1 branch rows.pack blob 141fbc8d... (220 rows) + exactly the 6 #1109 bake jin rows (89/112/247/288/339/357), SUPERSET, 0 removed — no gate decision changes, no fill suspended on bank drift. Canonicalization is the CORRECTED rule (strip only a trailing ~t[378] source-variant suffix): ZERO input-~ canonicals in Batch 2 scope, and scimitar is INERT file-wide on this axis — every ~ in the file is a trailing source-variant suffix (~t7.shaheen / ~t8.shaheen, with .2/.3), so old canonical == corrected canonical for all 114 comma keys. Spelling quirks kept: d/b+3,4 vs db+3,4 are distinct canonicals (both unmapped-all, different step-1 drift evidence: damage-only vs anim_ref-changed); WS.3,3 vs ws3,3 are distinct canonicals (both unmapped-all). Donor rows documented, never wired: 195, 199 (whole-string donors for the 4,3/4,4/WS.3,3/ws3,3/d/b+3,4/db+3,4/df+4,3 families). Full gate evidence in docs/movesets/SCIMITAR-BATCH2-STEP-PLANS-2026-10-25.md.",
     "plans": {
       "1,2": {
         "steps": [
@@ -13110,6 +13110,607 @@
           {
             "step": "1",
             "prefix": "db+2,1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "4,3": {
+        "steps": [
+          {
+            "step": "4",
+            "prefix": "4",
+            "row": null,
+            "status": "review",
+            "candidate_row": 199,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT limb-peak proxy fail: window [3.5,7.5] peaks {'legR': 3}"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "4,3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "4,3~t7.shaheen": {
+        "steps": [
+          {
+            "step": "4",
+            "prefix": "4",
+            "row": null,
+            "status": "review",
+            "candidate_row": 199,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT limb-peak proxy fail: window [3.5,7.5] peaks {'legR': 3}"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "4,3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "4,3",
+        "twin_move_class": "string"
+      },
+      "4,3~t7.shaheen.2": {
+        "steps": [
+          {
+            "step": "4",
+            "prefix": "4",
+            "row": null,
+            "status": "review",
+            "candidate_row": 199,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT limb-peak proxy fail: window [3.5,7.5] peaks {'legR': 3}"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "4,3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "4,3",
+        "twin_move_class": "string"
+      },
+      "4,4": {
+        "steps": [
+          {
+            "step": "4",
+            "prefix": "4",
+            "row": null,
+            "status": "review",
+            "candidate_row": 199,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT limb-peak proxy fail: window [3.5,7.5] peaks {'legR': 3}"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "4,4~t7.shaheen": {
+        "steps": [
+          {
+            "step": "4",
+            "prefix": "4",
+            "row": null,
+            "status": "review",
+            "candidate_row": 199,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT limb-peak proxy fail: window [3.5,7.5] peaks {'legR': 3}"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "4,4",
+        "twin_move_class": "string"
+      },
+      "4,4~t7.shaheen.2": {
+        "steps": [
+          {
+            "step": "4",
+            "prefix": "4",
+            "row": null,
+            "status": "review",
+            "candidate_row": 199,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT limb-peak proxy fail: window [3.5,7.5] peaks {'legR': 3}"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "4,4",
+        "twin_move_class": "string"
+      },
+      "WS.3,3": {
+        "steps": [
+          {
+            "step": "WS.3",
+            "prefix": "WS.3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "WS.3,3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "WS.3,3~t7.shaheen": {
+        "steps": [
+          {
+            "step": "WS.3",
+            "prefix": "WS.3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "WS.3,3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "WS.3,3",
+        "twin_move_class": "string"
+      },
+      "d/b+3,4": {
+        "steps": [
+          {
+            "step": "d/b+3",
+            "prefix": "d/b+3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d/b+3,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "d/b+3,4~t7.shaheen": {
+        "steps": [
+          {
+            "step": "d/b+3",
+            "prefix": "d/b+3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "d/b+3,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "d/b+3,4",
+        "twin_move_class": "string"
+      },
+      "d/f+4,4": {
+        "steps": [
+          {
+            "step": "d/f+4",
+            "prefix": "d/f+4",
+            "row": 205,
+            "status": "verified",
+            "candidate_row": 205,
+            "candidate_source": "prefix-move",
+            "reasons": []
+          },
+          {
+            "step": "4",
+            "prefix": "d/f+4,4",
+            "row": null,
+            "status": "review",
+            "candidate_row": 212,
+            "candidate_source": "recorded-dest",
+            "reasons": [
+              "SOFT limb-peak proxy fail: window [4.5,8.5] peaks {'legR': 12}"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "review"
+      },
+      "db+3,4": {
+        "steps": [
+          {
+            "step": "db+3",
+            "prefix": "db+3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "db+3,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "df+4,3": {
+        "steps": [
+          {
+            "step": "df+4",
+            "prefix": "df+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "df+4,3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "u/f+4,3": {
+        "steps": [
+          {
+            "step": "u/f+4",
+            "prefix": "u/f+4",
+            "row": 80,
+            "status": "verified",
+            "candidate_row": 80,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "u/f+4,3",
+            "row": 193,
+            "status": "verified",
+            "candidate_row": 193,
+            "candidate_source": "recorded-dest",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "verified-all",
+        "triage": "PASS",
+        "jumping_context": true,
+        "last_step_row": 193,
+        "last_step_status": "verified"
+      },
+      "u/f+4,4": {
+        "steps": [
+          {
+            "step": "u/f+4",
+            "prefix": "u/f+4",
+            "row": 80,
+            "status": "verified",
+            "candidate_row": 80,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "u/f+4,4",
+            "row": 207,
+            "status": "verified",
+            "candidate_row": 207,
+            "candidate_source": "recorded-dest",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "verified-all",
+        "triage": "PASS",
+        "jumping_context": true,
+        "last_step_row": 207,
+        "last_step_status": "verified"
+      },
+      "u/f+4,4,4": {
+        "steps": [
+          {
+            "step": "u/f+4",
+            "prefix": "u/f+4",
+            "row": 80,
+            "status": "verified",
+            "candidate_row": 80,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "u/f+4,4",
+            "row": 207,
+            "status": "verified",
+            "candidate_row": 207,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "u/f+4,4,4",
+            "row": null,
+            "status": "review",
+            "candidate_row": 210,
+            "candidate_source": "recorded-dest",
+            "reasons": [
+              "STANCE-SOFT duck-dip row for jump-context step"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": null,
+        "last_step_status": "review"
+      },
+      "u/f+4,4,4,4": {
+        "steps": [
+          {
+            "step": "u/f+4",
+            "prefix": "u/f+4",
+            "row": 80,
+            "status": "verified",
+            "candidate_row": 80,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "u/f+4,4",
+            "row": 207,
+            "status": "verified",
+            "candidate_row": 207,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "u/f+4,4,4",
+            "row": null,
+            "status": "review",
+            "candidate_row": 210,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "STANCE-SOFT duck-dip row for jump-context step"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "u/f+4,4,4,4",
+            "row": null,
+            "status": "review",
+            "candidate_row": 211,
+            "candidate_source": "recorded-dest",
+            "reasons": [
+              "STANCE-SOFT duck-dip row for jump-context step"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": null,
+        "last_step_status": "review"
+      },
+      "ws3,3": {
+        "steps": [
+          {
+            "step": "ws3",
+            "prefix": "ws3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "ws3,3",
             "row": null,
             "status": "unmapped",
             "candidate_row": null,
