@@ -12,9 +12,14 @@
       "files": []
     },
     "screen-howto": {
-      "status": "legacy-unsourced",
-      "sources": [],
-      "files": []
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md"
+      ],
+      "files": [
+        "game/index.html"
+      ],
+      "note": "SETTINGS block on the howto screen (OPTIONS routes here): SOUND on/off toggle following the T7 options-screen pattern (Name|Value rows) measured in the T7 UI layout teardown; tap-for-audio interstitial removed because Tekken has no tap-gate (audio enables on first natural tap, toggle controls on/off thereafter)."
     },
     "screen-menu": {
       "status": "sourced",
