@@ -356,6 +356,8 @@
       "knock": 4.2,
       "soulGain": 12,
       "anim_ref": "wh:doa-kasumi:sig:petal-scatter",
+      "community_base": "game/assets/anim/oss/community/144_13.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "1+2"
       ],
@@ -376,6 +378,8 @@
       "knock": 4.2,
       "soulGain": 11,
       "anim_ref": "wh:doa-kasumi:sig:mist-vanish",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "d+1"
       ],
@@ -396,6 +400,8 @@
       "knock": 4.2,
       "soulGain": 11,
       "anim_ref": "wh:doa-kasumi:sig:mist-vanish",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "D+P",
         "D",
@@ -417,6 +423,8 @@
       "knock": 4.2,
       "soulGain": 12,
       "anim_ref": "wh:doa-kasumi:sig:petal-scatter",
+      "community_base": "game/assets/anim/oss/community/144_13.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "S"
       ],
@@ -508,5 +516,63 @@
     "1+3": 2048,
     "f+1+3": 2048
   },
-  "stance_after": {}
+  "stance_after": {},
+  "canon_moves": [
+    {
+      "name": "Mist Vanish",
+      "input": "d+1",
+      "display_input": "d+LP1",
+      "input_original": "`d+1`",
+      "anim_ref": "wh:doa-kasumi:sig:mist-vanish",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 15,
+      "startup_frames": 14,
+      "canon": true,
+      "canon_owner": "DOA-KASUMI",
+      "properties": {
+        "stance": "crouching",
+        "direction": "d",
+        "type": "strike",
+        "limb": "armL",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Petal Scatter",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:doa-kasumi:sig:petal-scatter",
+      "community_base": "game/assets/anim/oss/community/144_13.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armL",
+      "damage": 17,
+      "startup_frames": 16,
+      "canon": true,
+      "canon_owner": "DOA-KASUMI",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  }
 }

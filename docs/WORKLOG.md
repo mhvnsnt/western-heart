@@ -1,6 +1,7 @@
 # Western Heart — Work log (timestamps CT)
 
 - 2026-10-23 15:40 CT Grok Bot (teardown-integration lane): t123u ui_sources gate. Added `game/ui_sources.json` (14 screens, all `legacy-unsourced`: the repo has no T5/T7/T8/TTT2 menu extractions yet, and T6 has only 2 PSP icons), `tools/ui-sources/check.py`, `.github/workflows/ui-sources.yml`, and the AGENTS.md law. Local tests: untouched = PASS; changed screen-daily with no source = FAIL; same change citing teardown/tekken6/ui/psp_PIC1.png = PASS.
+- 2026-10-23 15:45 CT Grok Bot (teardown-integration lane): t119u roster replacement map. `tools/roster-map/build.mjs` generates `docs/ROSTER-REPLACEMENT-MAP.md` and `game/data/roster_map.json` from roster-full.js `base`, the attiresFor() order and SOURCE-MERGE move sources. It is report-only, with no reorders. Results: 55 fighters; 36 have moves that match their Tekken slot; 9 have a Tekken-original attire; 3 sit at attire 5-7. 67 issues are listed for the owner (7 shared slots, 7 fighters with undocumented move sources, 46 ladders with no Tekken original, 6 originals outside 5-7, star=Christie slot but Xiaoyu moves).
 
 - 2026-10-14 16:10 Grok Bot (QA lane): claimed in agent-ops CLAIMS.md (`grok/wh-playtest-qa`). Sparse clone `/workspace/wh-qa` (`--depth 1 --filter=blob:limit=2m`), Godot 4.3 already on box. Disk 4.6 GB free, RAM ~5 GB.
 - 16:15 Imported lab/game headless; read main.gd / fighter.gd / move_table.gd / ai.gd. King jab row 35 has active_first 18; grab and heavy share row 230.
@@ -71,3 +72,11 @@
 ## 2026-10-23 15:16 CT, teardown coverage audit (docs/teardown-coverage-audit)
 - tools/teardown-coverage/audit.py (read-only against a git ref) writes docs/teardown-coverage/COVERAGE.md and coverage.json with source_game per teardown file and per move.
 - 51234 teardown files: 27.2% integrated (code/data reference), 31.7% docs-only, 41.0% unreferenced. T3 is 25.5% of reachable slots; priority sources 73.4% (T7/T8 only). No TTT2/T6/T5 move data exists in the repo to replace T3.
+
+## 2026-10-24, per-character moveset pattern audit (docs/MOVESET-PATTERN-AUDIT-2026-10-24.md)
+- Standing rule (owner 2026-10-24): moveset construction varies PER CHARACTER — PURE / MIX / ADDITIVE / BUILT determined per character from documentation, never assumed.
+- Universe: select-screen roster (game/js/roster-full.js, 58 ids) + 2 intake no-file characters (Birodo, Jotei) = 60 rows. No doc literally titled "stance audit" was found (GitHub code search 0 hits); universe substitution is stated in the audit.
+- Counts (rostered 58): PURE 6, MIX 6, ADDITIVE 41, BUILT 5; + PATTERN UNCLEAR 2 (Birodo, Jotei) = 60 rows. Headline correction: Pantera and Scimitar are NOT pure as shipped — both carry WH signature moves (Pantera 3, Scimitar 2), so both are ADDITIVE.
+- Editor verification (packages/creation-suite/src/movelist-editor.js, PR #998, no code changed): all 58 files load via fromMovesetFile() = 33,598 entries (correct 27,700 / approximate 2,999 / wrong 852 / unmapped 2,047); LP1/RP2/LK3/RK4 slot winners validate correct for all 47 fighters with a slots dict; 11 fighters have no slots dict (byou, thor, charger, chatur, ryusan, megami, menajerii, deathfang, ryuji, vainabel, cainelias). No moveset files or editor code modified — wiring was already on main; this audit verifies it. Simulation/editor-test proof only, no play claims.
+- Sibling lanes untouched: Zui (MIX, Zui-mix lane), Zen (BUILT-by-design, shipped file is Heihachi — Zen lane owns resolution), general Move List Creator wiring lane (verification only here).
+- NEEDS-DATA: Birodo (Feng Wei set + file + pattern decision), Jotei (jotei.json build + pattern decision), Zen (Twelve/Dural/X.COPY — sibling lane), Menajerii/Megami/Pond/Ryusan animation refs + slots, Gyou canonical-base decision, Byou/Rave Lei ownership decision, Cainelias Kluger decision, Koreshi design-vs-file conflict, Kevin disappearance. Full list in the audit doc.

@@ -671,3 +671,13 @@ records belong in this repo.*
 
 *End of DEV-NOTES-ARCHIVE. Compiled 2026-10-23. Decisions land here as
 they are made — this file is a living archive, not a one-time dump.*
+
+---
+
+## 2026-10-24 — Vain Abel Attire 1 found and wired; rig wave 2; moveset wave 3
+
+- **Vain Abel Attire 1 FOUND and wired.** The masked purple-drip wrestler Tripo model was pulled via `tools/tripo-pull` from the `f7e90de8` link (20,967,888 bytes), archived on GitHub release `vain-abel-a1-tripo-20261023` (digest verified), landed at `roster/vainabel/attires/attire1/model.glb` and rigged; his base key now points to it as the head of his ladder. Caveat recorded: the mask and hair cover the ear line, so the 'ear-less A1' match rests on the sculpt plus elimination against A2/A4 (which matched their descriptions exactly); if the owner disagrees it is a one-line revert. `roster/vainabel/CANON.md` carries the entry.
+- **Rig wave 2: 19 models landed** on the same fingerprint — 1 skin, 73 joints on the modern template (no T3 skeletons), 3 embedded texture images, validation passing, a textured posed render viewed side-by-side against each original before shipping. **5 models failed the lane's own eyes and were NOT shipped:** Cain Elias A1/A2 (duster and strap panels stretch like membrane), Gashadokuro (tail sweeps up as streaked plates), Bruno A1 (knee boot becomes a black blade on leg extension), Scimitar (worn blade dives into pants), Buffalo Bill A3 (the pipeline's own quality gate refused him before rigging finished). Shared root cause at the pipeline layer: bone-less geometry (loose panels, tails, rigid accessories) gets weights smeared across the bone chain; the fix belongs in the pipeline's weight assignment, not per-model patches. Failure records are on main.
+- **Moveset wave 3 on main:** Gashadokuro (530 moves built from the Kuma bank, every move verified identical to source except the names re-prefixed), Aotsuki (530 moves, honestly flagged in-file as proxy since the Tekken 3 teardown has no separate Panda bank), Silvertongue (508 moves from Lili's file including her signatures, re-owned as hers) — plus the Pantera k-NN skin-weight fix and the #841 versus-setup submenu.
+
+*Entry compiled 2026-10-24 by the overnight pipeline from the 2026-10-24 daily note (verified-extraction 03:25 UTC).*
