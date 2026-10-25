@@ -19,7 +19,7 @@ Frame data / MOD damage: UNMAPPED unless a source file in the pack contains it �
 as measured. License firewall OFF per user override: pull everything regardless of license,
 document copyleft, never block — but that override does not create game files that do not exist here.
 
-Partition: this PR touches NEW files under `game/assets/pulls/<game>/` + `docs/research/` only.
+Partition: this PR touches NEW files under `docs/research/pulls/<game>/` + `docs/research/` only.
 Existing moveset banks and lane-owned files are NOT edited; where a bank already exists, the pack
 is a wire note for the owning lane.
 
@@ -98,7 +98,7 @@ is a wire note for the owning lane.
 ## Coverage note
 
 Yakuza 0 and Yakuza Kiwami 2 also appear in the Steam snapshot; their full packs live in the
-priority PR (`game/assets/pulls/yakuza-0/`, `game/assets/pulls/yakuza-kiwami-2/`) and are NOT
+priority PR (`docs/research/pulls/yakuza-0/`, `docs/research/pulls/yakuza-kiwami-2/`) and are NOT
 duplicated here, so this PR has no path collisions with it. Every other Steam-snapshot title
 has a pack in this PR, including titles with no usable pull — those are documented with their
 specific blocker (usually: online-service game with server-side data, or format UNMAPPED until
