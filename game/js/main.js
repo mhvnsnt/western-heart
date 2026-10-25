@@ -3,9 +3,13 @@
    Screen flow, character select, HUD bindings (Nine-Soul Meter
    with 9 soul segments), Soul Surge screen flash.
    ============================================================ */
+import './t7-ui-private.js';
+import './select-t7-layout.js';
+import './menu-t7-layout.js';
 import { Game } from './game.js';
 import { InputManager } from './input.js';
 import { audio } from './audio.js';
+import { music } from './music.js';
 import { assets } from './assets.js';
 import { ROSTER, getCharacter } from './characters.js';
 // LOADSPEED (2026-10-22): fighter.js / movesets.js / t3anims.js / modes.js
@@ -13,18 +17,21 @@ import { ROSTER, getCharacter } from './characters.js';
 // menu shell paints without parsing them (Tekken 3 BNS lesson: the index
 // loads first, records stream on demand). Warmed during idle at boot end.
 import { lazy, warmIdle } from './lazy.js';
+import { loadThrowTables } from './t3-throw.js';
 import { mark } from './loadperf.js';
 import * as THREE from 'three';
 import { whUiEnabled, mountWhUi } from './ui-wh-bridge.js';
 import { getCustomFighter, customFighterToRoster } from './custom-fighter.js';
 import { resolveFighterAttire } from './attires.js';
 import { createSelectScreen } from './select-screen.js';
-import { STAGES, STAGE_TIERS, getStage, randomStageId } from './stages.js';
+import { applySoulSpirit } from './soul-spirit.js';
+import { STAGES, STAGE_TIERS, getStage, randomStageId, preloadStage } from './stages.js';
 // LOADSPEED: stages.js (82KB data) stays static — buildStageSelect runs in
 // the versus flow and getStage is needed by startFight; its parse cost is
 // small next to the deferred modules. Stage THUMBS are the real cost there
 // (see the thumb atlas, assets/stages/thumbs/atlas.png + thumbs.json).
 import { initMenus } from './menus.js';
+import './load-progress.js'; // real loading bar (owner pt134u)
 
 // LOADSPEED: the real Tekken moveset JSONs (~300KB) used to fetch at boot.
 // They are fight data — they load when a fight starts (startFight awaits
@@ -34,6 +41,10 @@ const screens = {
   menu:   document.getElementById('screen-menu'),
   howto:  document.getElementById('screen-howto'),
   select: document.getElementById('screen-select'),
+  // PR #841 versus-setup: show() must hide this screen too — openVersusSetup()
+  // adds .active directly, and without this entry show('select') left it
+  // covering the select screen (menu-touch-e2e tap timeout on .char-card).
+  vssetup: document.getElementById('screen-vssetup'),
   stage:  document.getElementById('screen-stage'),
   stageIntro: document.getElementById('screen-stage-intro'),
   result: document.getElementById('screen-result'),
@@ -41,6 +52,10 @@ const screens = {
   reincarnate: document.getElementById('screen-reincarnate'),
   trader:  document.getElementById('screen-trader'),
   modewin: document.getElementById('screen-modewin'),
+  online: document.getElementById('screen-online'),
+  sidegames: document.getElementById('screen-sidegames'),
+  collection: document.getElementById('screen-collection'),
+  daily: document.getElementById('screen-daily'),
 };
 /* Tekken-style select screen controller (js/select-screen.js).
    Assigned once at bootstrap below; show() only runs on user
@@ -63,7 +78,23 @@ function show(name) {
     if (selectScreen) selectScreen.onShow(modes ? modes.mode : null);
     requestAnimationFrame(() => requestAnimationFrame(() => mark('select-interactive')));
   }
-  else { selectTimerArmed = false; stopSelectTimer(); }
+  else {
+    selectTimerArmed = false; stopSelectTimer();
+    // PRELOAD (2026-10-24): stage-screen dwell warms the locked
+    // fighters' GLBs (via select-screen, which owns attire mapping)
+    // so the FIGHT tap starts warm instead of cold.
+    if (name === 'stage') { try { selectScreen?.warmLockedFighters?.(); } catch (_) {} }
+  }
+  // MUSIC (2026-10-24): Tekken screen-change rule — menu screens get their
+  // own rotating theme; the fight itself gets the stage pool at fight
+  // start (see startFight). Never throws; a missing library just falls
+  // back to the procedural loop inside the engine.
+  try {
+    if (name === 'menu') music.playMenu('title');
+    else if (name === 'select') music.playMenu('select');
+    else if (name === 'stage') music.playMenu('versus');
+    else if (name === 'online') music.playMenu('online');
+  } catch (e) {}
 }
 
 const SOULS = 9; // Nine-Soul Meter segments
@@ -96,7 +127,9 @@ const ui = {
     const fill = document.getElementById(`${id}-hp`);
     const dmg = document.getElementById(`${id}-hp-dmg`);
     fill.style.width = pct + '%';
-    dmg.style.width = pct + '%';
+    // COMBAT SYSTEMS 2026-10-24: white recoverable segment = hp +
+    // recoverable pool (capped at 100%); empty pool matches fill.
+    dmg.style.width = Math.min(100, pct + Math.max(0, ((f._recoverable || 0) / f.maxHp) * 100)) + '%';
     fill.classList.toggle('low', pct < 30);
   },
   updateMeter(p1, p2) { this._meter('p1', p1); this._meter('p2', p2); },
@@ -108,12 +141,27 @@ const ui = {
     const wrap = document.getElementById(`${id}-meter`);
     wrap.classList.toggle('full', f.meter >= f.maxMeter - 0.001);
   },
-  setTimer(v) { document.getElementById('timer').textContent = String(v).padStart(2, '0'); },
-  setRounds(wins) {
-    document.getElementById('p1-r1').classList.toggle('win', wins.p1 >= 1);
-    document.getElementById('p1-r2').classList.toggle('win', wins.p1 >= 2);
-    document.getElementById('p2-r1').classList.toggle('win', wins.p2 >= 1);
-    document.getElementById('p2-r2').classList.toggle('win', wins.p2 >= 2);
+  setTimer(v) {
+    const t = document.getElementById('timer');
+    t.textContent = (v === '∞' || v === Infinity || (typeof v === 'number' && !isFinite(v))) ? '∞' : String(v).padStart(2, '0');
+  },
+  setRounds(wins, target) {
+    // Round pips rebuild to the match's round target (T7 HUD shows the
+    // pips for the rounds actually needed, not a fixed pair).
+    const t = Math.min(5, Math.max(1, target || 2));
+    for (const side of ['p1', 'p2']) {
+      const host = document.getElementById(side + '-pips');
+      if (!host) continue;
+      while (host.children.length < t) {
+        const s = document.createElement('span');
+        s.className = 'round-pip';
+        host.appendChild(s);
+      }
+      while (host.children.length > t) host.removeChild(host.lastChild);
+      for (let i = 0; i < host.children.length; i++) {
+        host.children[i].classList.toggle('win', (wins[side] || 0) > i);
+      }
+    }
   },
   banner(text) {
     const b = document.getElementById('round-banner');
@@ -131,12 +179,34 @@ const ui = {
     el.classList.add('show');
     setTimeout(() => el.classList.remove('show'), 900);
   },
-  surgeName(name) {
-    const el = document.getElementById('surge-name');
-    el.textContent = 'SOUL SURGE — ' + name;
+  setRage(id, on) {
+    const el = document.getElementById(`${id}-rage`);
+    if (el) el.classList.toggle('on', !!on);
+  },
+  setSoulReady(id, on) {
+    // Nine-Soul Release ready = HUD indicator only: the Nine-Soul Meter
+    // wrap glows gold (Tekken Heat-timer pattern: a bar under the health
+    // bar, never center-screen text). No banner, no text on screen.
+    const wrap = document.getElementById(`${id}-meter`);
+    if (wrap) wrap.classList.toggle('soul-ready', !!on);
+  },
+  rageArtFlash() {
+    const el = document.getElementById('rage-flash');
+    if (!el) return;
     el.classList.remove('show'); void el.offsetWidth;
     el.classList.add('show');
-    setTimeout(() => el.classList.remove('show'), 1600);
+    setTimeout(() => el.classList.remove('show'), 600);
+  },
+  setUrge(id, on) {
+    const wrap = document.getElementById(`${id}-urge-wrap`);
+    if (wrap) wrap.classList.toggle('on', !!on);
+  },
+  updateUrge(p1, p2) { this._urge('p1', p1); this._urge('p2', p2); },
+  _urge(id, f) {
+    const fill = document.getElementById(`${id}-urge`);
+    if (!fill || !f) return;
+    const pct = f._urgeOn ? Math.max(0, Math.min(100, (f._urgeT / 15) * 100)) : 0;
+    fill.style.width = pct + '%';
   },
   combo(n) {
     const pop = document.getElementById('combo-pop');
@@ -169,11 +239,29 @@ const ui = {
     el.classList.add('show', 'escaped');
     this._throwT = setTimeout(() => el.classList.remove('show', 'escaped'), 900);
   },
+  /* V-System (owner 2026-10-22; popup-fix 2026-10-24): no canon name
+     is assigned yet (NEEDS NAME) — so these triggers show NO text on
+     screen, only the color-coded glow (Tekken rule: mid-fight systems
+     are HUD indicators, never big center-screen text). */
+  vTrigger() {
+    this.surgeFlash(0xffd34d, 0xfff2b0);
+  },
+  vReversal() {
+    this.surgeFlash(0x4da6ff, 0xbfe0ff);
+  },
+  vShift() { this.surgeFlash(0x7df9ff, 0xd8fbff); },
+  vShiftBreak() {
+    this.surgeFlash(0xffffff, 0x7df9ff);
+  },
+  vParry() {
+    this.surgeFlash(0x9fd8ff, 0xe8f6ff);
+  },
   matchOver(playerWon) {
     document.getElementById('result-title').textContent = playerWon ? 'YOU WIN!' : 'YOU LOSE';
     document.getElementById('result-sub').textContent = playerWon
       ? 'The multiverse remembers this one.'
       : 'The shrine is silent. Run it back.';
+    try { music.playVictory(); } catch (e) {}
     show('result');
   },
 };
@@ -183,6 +271,15 @@ const canvas = document.getElementById('game-canvas');
 const input = new InputManager();
 input.init();
 const game = new Game(canvas, input, ui);
+// Photo mode (DOA-style): P/F9 pauses into a free camera anywhere in a
+// fight. Loaded on demand; no-op until first toggled.
+import('./photomode.js').then(({ installPhotoMode }) => installPhotoMode(game))
+  .catch(() => {});
+/* Free camera during scenes (2026-10-24): live orbit/pan/zoom while the
+   fight keeps playing — never pauses, never overwrites the authored
+   camera. Lazy import so a failure here cannot block the fight. */
+import('./free-camera.js').then(({ installFreeCamera }) => installFreeCamera(game))
+  .catch((e) => console.warn('[WH] free camera unavailable:', e?.message || e));
 ui._buildMeter('p1');
 ui._buildMeter('p2');
 
@@ -207,6 +304,11 @@ function getModes() {
       });
       window.__modes = modes;
       return modes;
+    }).catch((err) => {
+      // A failed load must not permanently wedge every mode button for the
+      // session: drop the rejected promise so the next tap retries the load.
+      _modesPromise = null;
+      throw err;
     });
   }
   return _modesPromise;
@@ -236,10 +338,16 @@ function getRankBattle() {
    their mode-dictated flow (stage comes from the mode, not the player). */
 let pendingFight = null;
 function startFightViaStage(p1, p2, opts = {}) {
-  if (opts.mode !== 'versus') { startFight(p1, p2, opts); return; }
+  // Versus SETUP: stage RANDOM skips the arena screen — the random stage
+  // picked in modes.js _beginVersus rides opts.stage straight in.
+  if (opts.mode !== 'versus' || opts.skipStage) { startFight(p1, p2, opts); return; }
   pendingFight = { p1, p2, opts };
   buildStageSelect();
   show('stage');
+  // Lane 5: warm the currently shown stage in the background while
+  // the player browses the arena screen — never awaited here, so a
+  // slow stage fetch can never block the screen itself.
+  preloadStage(selectedStage).catch(() => {});
   requestAnimationFrame(() => requestAnimationFrame(() => mark('stage-interactive')));
   const hint = document.getElementById('stage-hint');
   const s = getStage(selectedStage);
@@ -384,19 +492,30 @@ function scrollStageCardIntoView(el) {
 function updateStagePreview(s) {
   const img = document.getElementById('stage-preview-img');
   const sw = document.getElementById('stage-preview-swatch');
+  const showSwatch = () => {
+    if (img) img.style.display = 'none';
+    if (sw) {
+      sw.hidden = false;
+      sw.style.background = `linear-gradient(135deg, ${s.swatch[0]}, ${s.swatch[1]})`;
+    }
+  };
   if (img) {
-    img.style.display = '';
-    img.onerror = () => {
-      img.style.display = 'none';
-      if (sw) {
-        sw.hidden = false;
-        sw.style.background = `linear-gradient(135deg, ${s.swatch[0]}, ${s.swatch[1]})`;
+    // W51: the preview pane markup now exists (index.html). Only set src
+    // when there's a thumb AND it changed — most thumbs 404 (atlas tiles
+    // serve the cards), and re-setting the same src flickers the pane.
+    // Re-highlighting the same stage leaves img/swatch exactly as they are.
+    if (s.thumb) {
+      if (img.getAttribute('src') !== s.thumb) {
+        img.style.display = '';
+        img.onerror = showSwatch;
+        if (sw) sw.hidden = true;
+        img.src = s.thumb;
       }
-    };
-    img.src = s.thumb;
+    } else {
+      showSwatch();
+    }
     img.alt = s.name;
   }
-  if (sw) sw.hidden = true;
   const nm = document.getElementById('stage-preview-name');
   if (nm) nm.textContent = s.name;
   const un = document.getElementById('stage-preview-universe');
@@ -443,7 +562,9 @@ document.addEventListener('keydown', (e) => {
     const card = cards[focusedStageIdx];
     const s = getStage(card.dataset.id);
     if (s) {
-      if (selectedStage === s.id) { startFight(); }
+      // W51: same confirm path as the CONFIRM button — bare startFight()
+      // here dropped pendingFight (wrong fighters, dead result screen).
+      if (selectedStage === s.id) { confirmStageFromSelect(); }
       else selectStageCard(card, s);
     }
     e.preventDefault();
@@ -496,20 +617,93 @@ function stopSelectTimer() {
 
 /* Random opponent different from the player */
 function randomEnemy(excludeId) {
-  const pool = ROSTER.filter(c => c.id !== excludeId);
-  return pool[Math.floor(Math.random() * pool.length)];
+  // Never field a MODEL PENDING fighter (no own model; owner 2026-10-23).
+  const pool = ROSTER.filter(c => c.id !== excludeId && !c.modelPending && c.model);
+  // Owner pt213u: enemies wear attire 1 (owner model first), not the raw roster key.
+  return resolveFighterAttire(pool[Math.floor(Math.random() * pool.length)]);
 }
 
 /* ---------------- Menu button wiring ---------------- */
+/* Audio (owner 2026-10-24): no tap-to-enable prompt. Sound resumes
+   silently on the first tap anywhere (mobile autoplay policy still
+   requires a gesture before AudioContext can start); the on/off
+   switch lives in SETTINGS (the howto screen) and persists. */
 function unlockAudio() {
+  // TAP-FOR-AUDIO REMOVED (2026-10-24): no "TAP TO ENABLE SOUND" banner and
+  // no dedicated audio tap. The first real interaction — a menu, mode or
+  // fight tap, all of which already call unlockAudio() — supplies the
+  // browser's required user gesture. Audio on/off lives in Settings
+  // (menus.js SOUND toggle). Browsers still block sound before ANY
+  // gesture: that is platform policy, not a WH screen, so sound starts on
+  // the first tap the player already makes, never on a tap invented for
+  // audio. The banner div is removed from game/index.html alongside this.
+  // music.unlock() is preserved from the merged music-rotation lane
+  // (PR #1030): removing the banner must not remove the music unlock.
   audio.unlock();
-  document.getElementById('tap-to-start').classList.remove('show');
+  music.unlock();
 }
 
+// Silent safety net (from #1037): first tap anywhere also unlocks audio, in case a path reaches audio without a menu, mode or fight tap.
 document.body.addEventListener('pointerdown', unlockAudio, { once: true });
-window.addEventListener('load', () => {
-  setTimeout(() => document.getElementById('tap-to-start').classList.add('show'), 600);
-});
+
+/* SETTINGS sound toggle: persists in localStorage, applies on boot
+   before any gesture, and gates both the procedural engine and the
+   file-music engine (which checks audio.enabled before playing). */
+let _audioOn = true;
+try { _audioOn = localStorage.getItem('wh-audio') !== 'off'; } catch (e) { /* private mode */ }
+function applyAudioPref() {
+  try { audio.setMuted(!_audioOn); } catch (e) { /* sound is optional */ }
+  try { music.setEnabled(_audioOn); } catch (e) { /* sound is optional */ }
+  const b = document.getElementById('opt-audio');
+  if (b) b.textContent = _audioOn ? 'ON' : 'OFF';
+}
+(function bindAudioToggle() {
+  const b = document.getElementById('opt-audio');
+  if (!b) return;
+  b.addEventListener('click', () => {
+    _audioOn = !_audioOn;
+    try { localStorage.setItem('wh-audio', _audioOn ? 'on' : 'off'); } catch (e) { /* private mode */ }
+    applyAudioPref();
+    try { audio.uiClick(); } catch (e) { /* sound is optional */ }
+  });
+})();
+applyAudioPref();
+
+/* Menu tap failure toast (2026-10-24, menu tap fix): a tap must NEVER
+   die silently. Mode loads that reject surface here instead of leaving
+   the user on the menu wondering why nothing happened. */
+function menuFail(msg) {
+  const d = document.createElement('div');
+  d.textContent = msg;
+  d.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);' +
+    'background:#1a0b2e;color:#fff;border:1px solid #e63229;border-radius:12px;' +
+    'padding:12px 18px;z-index:99999;font-size:14px;max-width:90vw;text-align:center;';
+  document.body.appendChild(d);
+  setTimeout(() => d.remove(), 3000);
+}
+
+/* Touch re-dispatch for data-action elements (2026-10-24, menu tap fix):
+   phone taps must route even when the browser does not synthesize a
+   click for the tap. A movement-guarded touchend on a [data-action]
+   element preventDefaults the emulated click and dispatches one real
+   click itself, which the delegated router below handles exactly once.
+   Scroll drags (>12px) are ignored so scrolling never triggers a mode.
+   mainmenu.js deliberately does NOT bind data-action elements, so this
+   cannot double-fire with a card/rail handler. */
+let _docTouchSX = 0, _docTouchSY = 0;
+document.addEventListener('touchstart', (e) => {
+  const t = e.changedTouches[0];
+  if (t) { _docTouchSX = t.clientX; _docTouchSY = t.clientY; }
+}, { passive: true });
+document.addEventListener('touchend', (e) => {
+  const t = e.changedTouches[0];
+  if (!t) return;
+  if (Math.hypot(t.clientX - _docTouchSX, t.clientY - _docTouchSY) > 12) return;
+  const el = (e.target instanceof Element) ? e.target.closest('[data-action]') : null;
+  if (!el) return;
+  e.preventDefault(); // suppress the emulated click — the dispatched click below is the one
+  el.click();
+}, { passive: false });
 
 /* Delegated data-action router (T8 menu, worker 37): one document-level
    listener covers both the static menu and submenu cards created
@@ -519,45 +713,61 @@ document.addEventListener('click', (e) => {
   const el = (t instanceof Element) ? t.closest('[data-action]') : null;
   if (!el) return;
   {
-    unlockAudio();
-    audio.uiClick();
+    // Sound must never block navigation: a throwing audio path used to
+    // kill the whole router before the mode started.
+    try { unlockAudio(); audio.uiClick(); } catch { /* sound is optional */ }
     const a = el.dataset.action;
     if (a === 'play' || a === 'mode-arcade') {
-      getModes().then(m => m.startMode('arcade'));
+      getModes().then(m => m.startMode('arcade')).catch(() => menuFail('Could not load ARCADE — tap again'));
     }
     else if (a === 'mode-versus') {
-      getModes().then(m => m.startMode('versus'));
+      getModes().then(m => m.startMode('versus')).catch(() => menuFail('Could not load VERSUS — tap again'));
     }
     else if (a === 'mode-story') {
-      getModes().then(m => m.startMode('story'));
+      getModes().then(m => m.startMode('story')).catch(() => menuFail('Could not load STORY — tap again'));
     }
     else if (a === 'mode-training') {
-      getModes().then(m => m.startMode('training'));
+      getModes().then(m => m.startMode('training')).catch(() => menuFail('Could not load TRAINING — tap again'));
+    }
+    else if (a === 'mode-fightlab') {
+      getModes().then(m => m.startMode('fightlab')).catch(() => menuFail('Could not load FIGHTLAB — tap again'));
     }
     else if (a === 'mode-survival') {
-      getModes().then(m => m.startMode('survival'));
+      getModes().then(m => m.startMode('survival')).catch(() => menuFail('Could not load SURVIVAL — tap again'));
     }
     else if (a === 'mode-timeattack') {
-      getModes().then(m => m.startMode('timeattack'));
+      getModes().then(m => m.startMode('timeattack')).catch(() => menuFail('Could not load TIMEATTACK — tap again'));
     }
     else if (a === 'mode-team') {
-      getModes().then(m => m.startMode('team'));
+      getModes().then(m => m.startMode('team')).catch(() => menuFail('Could not load TEAM — tap again'));
     }
     else if (a === 'mode-qombat') {
-      getModes().then(m => m.startMode('qombat'));
+      getModes().then(m => m.startMode('qombat')).catch(() => menuFail('Could not load QOMBAT — tap again'));
     }
     else if (a === 'mode-surge') {
-      getModes().then(m => m.startMode('surge'));
+      getModes().then(m => m.startMode('surge')).catch(() => menuFail('Could not load SURGE — tap again'));
     }
     else if (a === 'mode-trader') {
-      getModes().then(m => m.startMode('trader'));
+      getModes().then(m => m.startMode('trader')).catch(() => menuFail('Could not load TRADER — tap again'));
+    }
+    else if (a === 'mode-treasure') {
+      getModes().then(m => m.startMode('treasure')).catch(() => menuFail('Could not load TREASURE — tap again'));
+    }
+    else if (a === 'mode-gallery') {
+      import('./ui-gaps.js').then(m => m.openGallery()).catch(() => menuFail('Could not load GALLERY — tap again'));
+    }
+    else if (a === 'mode-jukebox') {
+      import('./ui-gaps.js').then(m => m.openJukebox()).catch(() => menuFail('Could not load JUKEBOX — tap again'));
+    }
+    else if (a === 'mode-replays') {
+      import('./ui-gaps.js').then(m => m.openReplays()).catch(() => menuFail('Could not load REPLAYS — tap again'));
     }
     else if (a === 'mode-rankbattle') {
       rankBattleSelect = true;
-      getRankBattle().then((rb) => rb.start());
+      getRankBattle().then((rb) => rb.start()).catch(() => menuFail('Could not load RANKED — tap again'));
     }
     else if (a === 'show-ranks') {
-      lazy.ranks().then((m) => m.initRanks().then(() => m.openRankHub()));
+      lazy.ranks().then((m) => m.initRanks().then(() => m.openRankHub())).catch(() => menuFail('Could not load RANK HALL — tap again'));
     }
     else if (a === 'mode-create') {
       // Character creation — launches the Create Fighter CAW suite.
@@ -585,6 +795,57 @@ document.addEventListener('click', (e) => {
     else if (a === 'rematch') {
       getModes().then(m => { if (m.mode) m.rematch(); else startFight(); });
     }
+  }
+});
+
+/* T8 main menu router (data-mm, worker 36): the T8-style menu uses data-mm
+   attributes, not data-action. This delegated listener wires them up.
+   Each navigates to a real screen — no dead ends.
+   SUBMENU REBUILD (worker-submenus): rail items (.mm-item) are owned by
+   the T8 submenu controller in mainmenu.js — it opens the slide-in
+   submenu panel. Yielding here keeps every submenu reachable; without
+   this the mode starts underneath and the submenu never shows. */
+document.addEventListener('click', (e) => {
+  const t = e.target;
+  const el = (t instanceof Element) ? t.closest('[data-mm]') : null;
+  if (!el) return;
+  if (el.classList && el.classList.contains('mm-item')) return; // submenu controller owns rail items
+  unlockAudio();
+  audio.uiClick();
+  // T7 SubMenu_mc (owner, PR #901 follow-up): a main-menu rail item opens
+  // its mode-select submenu (mainmenu.js) instead of jumping straight to a
+  // mode; the submenu's cards then route through data-action as before.
+  if (el.closest('#mm-list') && document.getElementById('mm-submenu')) return;
+  const m = el.dataset.mm;
+  if (m === 'story') {
+    getModes().then(modes => modes.startMode('story')).catch(() => menuFail('Could not load STORY — tap again'));
+  }
+  else if (m === 'versus') {
+    getModes().then(modes => modes.startMode('versus')).catch(() => menuFail('Could not load VERSUS — tap again'));
+  }
+  else if (m === 'online') {
+    show('online');
+  }
+  else if (m === 'arcade') {
+    getModes().then(modes => modes.startMode('arcade')).catch(() => menuFail('Could not load ARCADE — tap again'));
+  }
+  else if (m === 'sidegames') {
+    show('sidegames');
+  }
+  else if (m === 'training') {
+    getModes().then(modes => modes.startMode('training')).catch(() => menuFail('Could not load TRAINING — tap again'));
+  }
+  else if (m === 'creation') {
+    window.location.href = '../customization/creation-suite-ui/index.html';
+  }
+  else if (m === 'collection') {
+    show('collection');
+  }
+  else if (m === 'daily') {
+    show('daily');
+  }
+  else if (m === 'options') {
+    show('howto'); // Options: howto screen has settings
   }
 });
 
@@ -619,8 +880,11 @@ document.getElementById('confirm-fighter').addEventListener('click', confirmSele
    stage screen with no feedback and no way to retry ("fight never starts").
    Now: visible loading state on the stage screen, failures surface there,
    and pendingFight is only consumed when the fight actually starts, so
-   CONFIRM retries the same fight. */
-document.getElementById('confirm-stage').addEventListener('click', () => {
+   CONFIRM retries the same fight. W51: extracted so the keyboard Enter
+   path runs the SAME confirm — a bare startFight() there used to ignore
+   pendingFight, booting the wrong fighters with no versus onMatchEnd
+   (dead result screen). */
+function confirmStageFromSelect() {
   if (!selectedStage || !pendingFight) return;
   audio.uiClick();
   const { p1, p2, opts } = pendingFight;
@@ -640,7 +904,9 @@ document.getElementById('confirm-stage').addEventListener('click', () => {
       if (btn) btn.disabled = false;
     }
   );
-});
+}
+
+document.getElementById('confirm-stage').addEventListener('click', confirmStageFromSelect);
 
 document.getElementById('random-stage').addEventListener('click', () => {
   audio.uiClick();
@@ -752,10 +1018,24 @@ async function startFight(playerId, enemyId, opts = {}) {
   // modes lane: opts may carry full char-entry overrides (force-buffed
   // player, scaled-AI foe, the Assembled Soul boss, training dummy).
   // Stream 4: the player's selected attire applies in every mode.
-  const player = resolveFighterAttire(
-    opts.playerChar || getCharacterWithCustom(selectedChar || ROSTER[0].id));
-  const enemy = opts.enemyChar ||
-    (typeof enemyId === 'string' && enemyId !== player.id ? getCharacterWithCustom(enemyId) : randomEnemy(player.id));
+  const firstReady = (ROSTER.find(c => !c.modelPending && c.model) || ROSTER[0]).id;
+  let player = resolveFighterAttire(
+    opts.playerChar || getCharacterWithCustom(selectedChar || firstReady));
+  // MODEL PENDING fighters (no own model yet) never enter a fight on another body.
+  if (player.modelPending || !player.model) player = resolveFighterAttire(getCharacterWithCustom(firstReady));
+  let enemy = opts.enemyChar ||
+    (typeof enemyId === 'string' && enemyId !== player.id ? resolveFighterAttire(getCharacterWithCustom(enemyId)) : randomEnemy(player.id));
+  if (!enemy || enemy.modelPending || !enemy.model) enemy = randomEnemy(player.id);
+  // NINE SOULS REDESIGN (owner directive 2026-10-22 ~23:02 CDT): the
+  // select-screen soul-spirit toggle. Each side's locked pick applies to
+  // that side's entry — a vessel match empowers the fighter (buff baked
+  // into stats here) and stamps `soulSpirit` for the floating-spirit
+  // render (game.js reads it). Versus: both sides picked on the grid.
+  // Solo modes: only P1 picked, so the enemy side resolves to null.
+  if (selectScreen && selectScreen.soulSpiritLocked) {
+    player = applySoulSpirit(player, selectScreen.soulSpiritLocked('p1'));
+    enemy = applySoulSpirit(enemy, selectScreen.soulSpiritLocked('p2'));
+  }
   // On-demand: load only the 2 fighters for this fight (Tekken 3 pattern).
   // Models may already be prefetched from select-screen highlight.
   // TTT2: tag battles need all 4 fighters' models up front.
@@ -767,8 +1047,7 @@ async function startFight(playerId, enemyId, opts = {}) {
       if (c.model) need.push(c.model);
       if (c.transform && c.transform.targetModel) need.push(c.transform.targetModel);
     }
-  }
-  // Mid-match transform targets must be preloaded (createInstance is sync).
+  }  // Mid-match transform targets must be preloaded (createInstance is sync).
   for (const c of [player, enemy]) {
     if (c.transform && c.transform.targetModel) need.push(c.transform.targetModel);
     if (c.forms) for (const fk of Object.keys(c.forms)) {
@@ -777,10 +1056,23 @@ async function startFight(playerId, enemyId, opts = {}) {
       for (const t of tgts) if (t.target) need.push(t.target);
     }
   }
+  // Lane 5: stage assets stream IN PARALLEL with the fighter loads
+  // below (not after them). Fire-and-forget: the arena builder's
+  // own GLB/OBJ loads still apply as fallback if warming failed.
+  preloadStage(selectedStage).catch(() => {});
   const hint = document.getElementById('select-hint');
   const confirmBtn = document.getElementById('confirm-fighter');
+  // FIGHT-LOAD FIX (2026-10-24): versus fights start from the STAGE screen,
+  // so the stage hint is the visible one — mirror every load phase there.
+  // On failure, hide the loading overlay (it otherwise traps the player on
+  // the loading screen until its 45s safety timer) and name the asset that
+  // failed instead of a generic message. pendingFight is kept so CONFIRM
+  // retries the same fight.
+  const stageHintEl = document.getElementById('stage-hint');
+  const setPhase = (t) => { if (hint) hint.textContent = t; if (stageHintEl) stageHintEl.textContent = t; };
+  const hideLoadOverlay = () => { const o = document.getElementById('wh-loading'); if (o) o.classList.remove('show'); };
   try {
-    if (hint) hint.textContent = 'Entering the arena…';
+    setPhase('Entering the arena…');
     // LOADSPEED: fight-only modules (fighter/movesets/t3anims) stream in
     // here — they are warmed during menu idle, so this usually resolves
     // from cache. The real-Tekken moveset JSONs (~300KB) also load here
@@ -789,7 +1081,7 @@ async function startFight(playerId, enemyId, opts = {}) {
     const { ensureMovesets } = MS;
     const { bankIdFor, loadRealMovesets } = F;
     const { loadT3Clips } = T3;
-    if (hint) hint.textContent = 'Loading move lists…';
+    setPhase('Loading move lists…');
     await Promise.all([loadRealMovesets(), MS.loadFighterMovesets()]);
     // Show the TRANSFORM touch button only for fighters that can transform.
     const tBtn = document.querySelector('.act-btn.transform');
@@ -798,15 +1090,18 @@ async function startFight(playerId, enemyId, opts = {}) {
     const tagBtn = document.getElementById('tag-btn');
     if (tagBtn) tagBtn.hidden = !tagTeams;
     if (confirmBtn) confirmBtn.disabled = true;
-    await assets.loadModels(need, (p, loaded, total) => {
-      if (!hint) return;
+    await assets.loadModels(need, (p, loaded, total, id) => {
+      if (window.__whLoadProgress) window.__whLoadProgress(p, loaded, total);
+      let t;
       if (loaded && total) {
         const mbL = (loaded / 1048576).toFixed(1);
         const mbT = (total / 1048576).toFixed(1);
-        hint.textContent = `Entering the arena… ${mbL}/${mbT} MB`;
+        t = `Entering the arena… ${mbL}/${mbT} MB${id ? ` · ${id}` : ''}`;
       } else {
-        hint.textContent = `Entering the arena… ${Math.round(p * 100)}%`;
+        t = `Entering the arena… ${Math.round(p * 100)}%`;
       }
+      if (hint) hint.textContent = t;
+      if (stageHintEl) stageHintEl.textContent = t;
     });
     // Load the REAL T3 animation banks for THIS match's two fighters —
     // each fighter's own moveset-source bank (per-bank wiring 2026-10-19).
@@ -815,7 +1110,7 @@ async function startFight(playerId, enemyId, opts = {}) {
     // source fighters have their own real bank since 2026-10-20.)
     // Full movesets for this fight (lazy since 2026-10-21; boot loads only the index).
     // Transform forms may switch moveset mid-fight, so theirs load too.
-    if (hint) hint.textContent = 'Loading move lists…';
+    setPhase('Loading move lists…');
     const msIds = [player.id, enemy.id];
     for (const c of [player, enemy]) {
       if (c.forms) for (const fk of Object.keys(c.forms)) {
@@ -824,21 +1119,41 @@ async function startFight(playerId, enemyId, opts = {}) {
       }
     }
     await ensureMovesets(msIds);
-    if (hint) hint.textContent = 'Loading real fight motion…';
+    setPhase('Loading real fight motion…');
     try {
       const banks = [...new Set([bankIdFor(player.id), bankIdFor(enemy.id)].filter(Boolean))];
       await Promise.all(banks.map(b => loadT3Clips(THREE, b)));
     } catch (e) {
       console.warn('[WH] T3 clips failed, using procedural fallback:', e.message || e);
     }
+    // TEKKEN GRAPPLE (2026-10-24): load the throw tables
+    // (reactions.json) and this match's two reaction packs BEFORE
+    // the fight starts, so a connecting grab can bind its file
+    // pair immediately instead of falling back to the legacy
+    // lock. A failure here is NOT fatal: throws keep the legacy
+    // lock path and are logged UNMAPPED at connect time.
+    setPhase('Loading throw pairs…');
+    try {
+      const { loadReactionPack } = T3;
+      await loadThrowTables();
+      const banks = [...new Set([bankIdFor(player.id), bankIdFor(enemy.id)].filter(Boolean))];
+      await Promise.all(banks.map(b => loadReactionPack(THREE, b)));
+    } catch (e) {
+      console.warn('[WH] throw pairs unavailable, legacy throw lock:', e.message || e);
+    }
   } catch (err) {
     console.error('[WH] fight load failed:', err);
-    const msg = 'Failed to load fighters. Check connection and try again.';
+    // Name the failing asset: a bare "check connection" hides a 404 for a
+    // model path that only exists on one host (2026-10-24: every roster/
+    // model 404'd on Netlify because its publish dir is game/ only and no
+    // /roster/* proxy existed). P0 (2026-10-22) still holds: the stage
+    // screen is where versus fights start, so the error must be visible
+    // there, not only on the fighter-select hint.
+    const detail = (err && (err.message || err)) || 'unknown error';
+    const msg = `Failed to load fighters: ${detail} — tap CONFIRM to retry.`;
     if (hint) hint.textContent = msg;
-    // P0 (2026-10-22): the stage screen is where versus fights start — the
-    // error must be visible there, not only on the fighter-select hint.
-    const stageHint = document.getElementById('stage-hint');
-    if (stageHint) stageHint.textContent = msg;
+    if (stageHintEl) stageHintEl.textContent = msg;
+    hideLoadOverlay();
     if (confirmBtn) confirmBtn.disabled = false;
     const stageBtn = document.getElementById('confirm-stage');
     if (stageBtn) stageBtn.disabled = false;
@@ -847,7 +1162,18 @@ async function startFight(playerId, enemyId, opts = {}) {
   if (confirmBtn) confirmBtn.disabled = false;
   show('hud');
   game.paused = false;
-  audio.startMusic();
+  // MUSIC (2026-10-24): rotating stage pool. The engine falls back to
+  // the procedural loop internally when no file track is available, so
+  // the old direct audio.startMusic() call is replaced, not doubled.
+  // JUKEBOX (Lane 4): pass the fight's UI mode through so the engine
+  // plays the player's per-mode Jukebox choice (wh_jukebox_v1, PR #1056)
+  // when one is stored; unknown modes fall back to engine rotation.
+  music.playBattle(selectedStage, { uiMode: ['versus', 'arcade', 'treasure'].includes(opts.mode) ? opts.mode : undefined });
+  // FIGHT-LOOP REPAIR (worker 54, 2026-10-22): startMatch ran OUTSIDE the
+  // load try/catch — a throw inside it (Fighter build, arena setStage, AI
+  // wiring) was an unhandled rejection that stranded the player on the
+  // stage screen with "Entering the arena…". Surface it like the load
+  // failures above instead of dying silently.
   // TTT2: resolve tag-team char entries (full attire-resolved entries so
   // game.js can build the benched partners with models + movesets).
   if (tagTeams) {
@@ -856,8 +1182,20 @@ async function startFight(playerId, enemyId, opts = {}) {
       p2: tagTeams.p2.map(id => resolveFighterAttire(getCharacterWithCustom(id))),
     };
   }
-  await game.startMatch(player, enemy, selectedStage, opts);
-  // Control hints: show for 6s at fight start, H toggles
+  try {
+    await game.startMatch(player, enemy, selectedStage, opts);
+  } catch (err) {
+    console.error('[WH] startMatch failed:', err);
+    const detail = (err && (err.message || err)) || 'unknown error';
+    const msg = `Failed to start the fight: ${detail} — try again or pick different fighters.`;
+    if (hint) hint.textContent = msg;
+    if (stageHintEl) stageHintEl.textContent = msg;
+    hideLoadOverlay();
+    const stageBtn = document.getElementById('confirm-stage');
+    if (stageBtn) stageBtn.disabled = false;
+    show('stage');
+    return false;
+  }  // Control hints: show for 6s at fight start, H toggles
   const hints = document.getElementById('control-hints');
   if (hints) {
     hints.classList.remove('fade');
@@ -899,8 +1237,16 @@ if (whUiEnabled()) mountWhUi({ game, ui, show, startFight, ROSTER });
    modules during idle (Tekken: stream records while the player reads
    the menu) and stamp the boot->menu timing mark on first paint. */
 warmIdle();
-// QA hooks (window.__modes) and the first mode tap expect the controller soon after boot: build it on
-// the same idle lane lazy.warmIdle() uses, so it never competes with first paint.
-((typeof window !== 'undefined' && window.requestIdleCallback) ? window.requestIdleCallback.bind(window)
-  : (fn) => setTimeout(fn, 1500))(() => { getModes().catch(() => {}); });
+// QA hooks (window.__modes) and the first mode tap expect the controller soon after boot.
+// Warm on a guaranteed timer, not only on idle: a busy/loaded page may never
+// report an idle window, leaving the first mode tap to cold-load modes.js —
+// a tap with no feedback. 800ms is safely post-first-paint and the dynamic
+// import never blocks it.
+setTimeout(() => { getModes().catch(() => {}); }, 800);
 requestAnimationFrame(() => requestAnimationFrame(() => mark('menu-interactive')));
+
+/* Menu routers above are bound (delegated data-action + data-mm listeners
+   registered at module evaluation). The non-module fallback binder in
+   index.html checks this flag and stays dormant when the module chain
+   loaded fine. (PR #676 rebase, worker 55.) */
+window.__whMenuBound = true;

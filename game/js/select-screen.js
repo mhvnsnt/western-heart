@@ -1,28 +1,26 @@
 /* ============================================================
-   WESTERN HEART — Tekken 8-style character select (2026-10-22
-   grid transplant; replaces the 2026-10-20 bisected-zone+strip).
-   Layout lineage (decoded from public T8 references — see
-   docs/select-redesign/T8-GRID-DECODE.md; no ripped Tekken UI):
-   - T8: bisected P1/P2 big-model zone, each side with a large
-     faded portrait-art backdrop (red wash P1, blue wash P2),
-     big italic name banner, fact block (Fighting Style /
-     Nationality / Height / Weight), and a COMPACT CENTERED GRID
-     of small square portrait cards — small relative to
-     everything else, P1 (pink-red) / P2 (blue) cursors, locked
-     cards badged P1/P2, "?" random slot in the grid, bottom
-     hints bar (Confirm / Back / Customized Slots).
-   - T3 selector (teardown record): the selected aperture is LARGER
-     than its neighbours; timer starts at 99; two-step pick
-     (fighter, then outfit); "?" random slot.
-   - T6/T1: punch = outfit 1, kick = outfit 2 at select.
-   Owner spec carried over: tap a card -> that fighter's animated
-   model appears on YOUR side; name + style + stats on the plate;
-   attire switching ON the select screen (T8 "customized slots");
-   touch first; the grid is the ONLY scrolling element and scrolls
-   inside its own box — the page never scrolls.
-   The LOOK is skin-driven (js/ui-skin.js): every color, font,
-   and card-geometry token comes from the active skin, so the T8
-   look can be refined or swapped without touching this logic.
+   WESTERN HEART — Tekken-style character select (2026-10-20)
+   Built from the teardown record, not a guessed layout:
+   - Tekken 3 selector (teardown/tekken3/tools/tekken3recompiled):
+     the real RE'd selector composites BACKDROP + LEFT_PLAYER +
+     RIGHT_PLAYER + frames + ROSTER + CENTRE packets — a bisected
+     P1/P2 zone over a roster field; portraits center-cropped 2:3;
+     the selected aperture is LARGER than its neighbours
+     (72x108 vs 56x84); the timer starts at 99; a pick is a
+     two-step flow (choose fighter, then outfit) and the CPU card
+     appears on the CPU's own side.
+   - Tekken 1/6 (docs/select-redesign/SELECT-DESIGN.md §1):
+     punch button = outfit 1, kick button = outfit 2 at select;
+     "?" random slots sit at the ends of the portrait row.
+   - Tekken 8 (same doc): live animated 3D models in the big
+     zone (never a still), per-character costume slots chosen
+     right on the select screen, bottom hints bar.
+   Owner spec (2026-10-18 + 2026-10-19): top ~75-80% bisected
+   zone, bottom ~20% card strip is the ONLY scrolling element
+   and scrolls inside its own box, tap a card -> that fighter's
+   animated model appears on YOUR side, name + style on cards,
+   name + style + stats on the picked side, attire switching on
+   the select screen, touch first.
    Previews reuse the existing model pipeline (assets.js
    loadModels/createInstance) — the same GLBs and Idle clips
    the fight itself uses. Stats shown are the game's real
@@ -32,17 +30,16 @@
    ============================================================ */
 import * as THREE from 'three';
 import { assets } from './assets.js';
-import { attiresFor, selectedAttireModel, setAttire, attireLabel } from './attires.js';
-// LOADSPEED: t3anims / fighter / movesets are preview-and-fight-only —
-// they stream in on first highlight through lazy.js (warmed during menu
-// idle), not at boot. See game/js/lazy.js.
-import { lazy } from './lazy.js';
-import { mark } from './loadperf.js';
-import { getSkin, applySkin, activeSkinId } from './ui-skin.js';
-/* Tier membership comes from the roster module (SOUL_IDS/MAIN_IDS) —
-   the same source main's select screen used; the grid only restyles
-   the presentation, it never redefines the tiers. */
-import { SOUL_IDS, MAIN_IDS } from './roster-full.js';
+import { loadGuardStance, createAimStance } from './stance-aim.js';
+import { attiresFor, selectableAttires, selectedAttireModel, setAttire, attireLabel, attireEyeGlow } from './attires.js';
+import { loadT3Clips, createT3Actions, retargetT3Clips } from './t3anims.js';
+import { bankIdFor } from './fighter.js';
+import { getMovesetInfo } from './movesets.js';
+import { warmSelect, warmFight } from './preload.js';
+import { NINE_SOULS, newSoulSpiritPick, vesselMatch, soulSpiritLabel } from './soul-spirit.js';
+import { fighterPortraitSVG } from './fighter-portraits.js';
+
+
 
 const DEFAULT_STATS = { speed: 2.8, jump: 7.2, power: 1.1, defense: 1.05 };
 const clamp01 = (v) => Math.max(0, Math.min(1, v));
@@ -54,7 +51,7 @@ export function statsFor(c) {
 }
 
 /* ---------------- one side's live 3D preview pane ---------------- */
-class PreviewPane {
+export class PreviewPane {
   constructor(canvas, side) {
     this.side = side; // 'p1' | 'p2'
     this.canvas = canvas;
@@ -135,27 +132,30 @@ class PreviewPane {
     const cy = (this._fitCY || 0.95) * s;
     this.camera.position.set(0, cy + 0.18 * s, dist);
     this.camera.lookAt(0, cy, 0);
+    // Landscape (owner: bigger fighters): the pane now runs full height
+    // behind the roster band (select-t7.css) and the body is framed to
+    // ~88% of it, head near the top and legs behind the cards, the way
+    // T7's select renders stand. Height rules here (wide pane).
+    if (innerWidth > innerHeight) {
+      const d2 = THREE.MathUtils.clamp(Math.max((h * 0.57) / tanH, (w * 0.57) / (tanH * aspect)), 2.2, 11);
+      this.camera.position.set(0, cy + 0.12 * s, d2);
+      this.camera.lookAt(0, cy, 0);
+    }
   }
 
   /* Show a fighter (roster entry) with a specific attire model id.
      Resolves false when the model could not be loaded. */
   async show(c, modelId) {
     const token = ++this._token;
-    // LOADSPEED: a new tap supersedes the previous preview — abort its
-    // download instead of finishing a doomed multi-MB fetch in the
-    // background (it used to compete with the new tap for bandwidth).
-    if (this._loadAbort) this._loadAbort.abort();
-    const loadAbort = new AbortController();
-    this._loadAbort = loadAbort;
-    mark('preview-start');
     this._loading = true;
     if (!this._ensure()) { this._loading = false; return false; }
     try {
-      await assets.loadModels([modelId], null, { signal: loadAbort.signal });
+      await assets.loadModels([modelId]);
       if (token !== this._token) return true; // superseded by a newer tap
       const inst = assets.createInstance(
         modelId, c.colors?.suit ?? 0xffffff, c.colors?.trim ?? 0x888888,
-        c.colorize ? (c.tintStrength ?? 0.3) : 0); // TINT FIX: own textures, no palette wash (real colors)
+        c.colorize ? (c.tintStrength ?? 0.3) : 0, // TINT FIX: own textures, no palette wash (real colors)
+        attireEyeGlow(c, modelId)); // per-attire emissive eyes (owner 2026-10-22)
       this._clearModel();
       this.model = inst.model;
       this.model.rotation.y = this.baseRotY;
@@ -167,7 +167,6 @@ class PreviewPane {
       this.scene.add(this.model);
       this.mixer = inst.mixer;
       this.hasStance = false;
-      mark('preview-ready');
       // REAL TEKKEN IDLE (owner: use the teardown files; NO-T-POSE
       // law): where this fighter's moveset source has a decoded T3
       // bank, play the bank's looping stance clip on the preview
@@ -188,12 +187,6 @@ class PreviewPane {
         };
       }
       try {
-        // LOADSPEED: the T3 bank modules stream on first highlight
-        // (warmed during menu idle via lazy.warmIdle).
-        const [F, T3A, MS] = await Promise.all([lazy.fighter(), lazy.t3anims(), lazy.movesets()]);
-        const { bankIdFor } = F;
-        const { loadT3Clips, createT3Actions, retargetT3Clips } = T3A;
-        const { getMovesetInfo } = MS;
         // The fighter's OWN moveset file decides its bank (its base's motion), same as in the fight.
         const bank = bankIdFor(c.id, getMovesetInfo(c.id) ? c.id : (c.moveset || c.id));
         const clips = bank ? await loadT3Clips(THREE, bank) : null;
@@ -257,17 +250,29 @@ class PreviewPane {
       } catch (e) {
         console.warn('[WH] select preview: T3 stance unavailable for', c.id, e.message || e);
       }
+      // NO-T-POSE backup (Tekken bank first, CMU mocap backup): when the
+      // bank stance is missing or failed the fit gates, drive the rig with
+      // the bind-independent CMU 14_01 guard (stance-aim.js).
+      if (!this.hasStance && inst.bones) {
+        try {
+          const g = await loadGuardStance();
+          if (token !== this._token) return true;
+          const aim = createAimStance(THREE, this.model, inst.bones, g);
+          if (aim) {
+            if (inst.actions && inst.actions.Idle) inst.actions.Idle.setEffectiveWeight(0);
+            this.aim = aim; this._aimT = 0; this.hasStance = true; this.stanceSource = 'cmu-14_01';
+          }
+        } catch (e) { console.warn('[WH] select preview: CMU guard unavailable for', c.id, e.message || e); }
+      } else if (this.hasStance) this.stanceSource = 'tekken-bank';
       return true;
     } catch (e) {
-      // LOADSPEED: an aborted superseded load is not a failure — stay quiet.
-      if (e && (e.name === 'AbortError' || /abort/i.test(e.message || ''))) return true;
       if (token === this._token) {
         console.warn('[WH] select preview failed for', modelId, e.message || e);
         this._clearModel();
       }
       return false;
     } finally {
-      if (token === this._token) { this._loading = false; this._loadAbort = null; }
+      if (token === this._token) this._loading = false;
     }
   }
 
@@ -284,17 +289,16 @@ class PreviewPane {
     this.model = null;
     this.mixer = null;
     this.hasStance = false;
+    this.aim = null;
+    this.stanceSource = null;
   }
 
-  clear() {
-    this._token++;
-    if (this._loadAbort) { this._loadAbort.abort(); this._loadAbort = null; }
-    this._clearModel();
-  }
+  clear() { this._token++; this._clearModel(); }
 
   update(dt) {
     if (!this.renderer || !this.scene || !this.camera) return;
     if (this.mixer) this.mixer.update(dt);
+    if (this.aim) { this._aimT += dt; this.aim.apply(this._aimT); }
     // Unless a validated teardown-bank stance is playing, the model
     // presents on a slow turntable (the pre-existing preview
     // presentation) — live 3D, never a still image. The GLBs'
@@ -325,41 +329,18 @@ const _tripoReady = fetch('data/tripo-fighters.json')
   .then(j => { TRIPO_IDS = new Set((j && j.ids) || []); })
   .catch(() => { TRIPO_IDS = new Set(); });
 
-/* Identity canon guard (owner, non-negotiable): the grid is built from
-   the roster the game hands us, and these mappings must hold there —
-   RAVE = KIKO TANAKA = GHOST is ONE entry ('rave'); MARY POSA goes
-   OVER Zafina (no separate Zafina slot); PHANTOM is the select entry
-   (Yoshimitsu ladders into Phantom's attires, never a second card).
-   This builder asserts the canon rather than re-implementing it: if
-   the roster ever violates it, the violation is logged loudly instead
-   of silently rendering two cards. */
-function assertCanon(roster) {
-  const ids = new Set(roster.map(c => c.id));
-  const problems = [];
-  if (ids.has('kiko-tanaka') || ids.has('ghost')) problems.push('rave/kiko-tanaka/ghost split into separate entries');
-  if (ids.has('zafina')) problems.push('separate zafina slot (mary posa goes OVER zafina)');
-  if (ids.has('yoshimitsu')) problems.push('separate yoshimitsu slot (ladders into phantom attires)');
-  if (problems.length) console.error('[WH] select canon violation:', problems.join(' · '));
-}
-
 export function createSelectScreen(deps) {
   const { audio } = deps;
   const $ = (id) => document.getElementById(id);
-  const grid = $('char-grid');
+  const strip = $('char-grid');
   const hint = $('select-hint');
   const confirmBtn = $('confirm-fighter');
-  const root = $('screen-select');
-
-  // Skin: every visual token comes from ui-skin.js (drop-in contract
-  // documented there). Re-applied on build + onShow so a ?skin=<id>
-  // deep link or setSkin() call takes effect without a reload.
-  const skin = () => getSkin(activeSkinId());
-  if (root) applySkin(root, skin());
 
   const panes = {
     p1: new PreviewPane($('pane-canvas-p1'), 'p1'),
     p2: new PreviewPane($('pane-canvas-p2'), 'p2'),
   };
+  window.__whSelectPanes = panes; // proof-script hook (camera framing checks)
   const clock = new THREE.Clock();
   let raf = 0;
   const loop = () => {
@@ -372,6 +353,7 @@ export function createSelectScreen(deps) {
   };
   loop();
 
+  const LAST_KEY = 'wh.select.last.v1';
   const state = {
     mode: null,
     phase: 'pick',        // 'pick' | 'done'
@@ -381,6 +363,11 @@ export function createSelectScreen(deps) {
     teamPicks: [],        // team mode: confirmed ids (all on p1)
     kickCycle: 1,         // K button attire cycling position
     focusIdx: 0,
+    /* SOUL-SPIRIT TOGGLE (owner directive 2026-10-22 ~23:02 CDT): tertiary
+       per-side pick, NOT an attire — { enabled, soulId }. Snapshotted into
+       spiritLocked at confirm time so the fight reads the locked pick. */
+    spirit: { p1: newSoulSpiritPick(), p2: newSoulSpiritPick() },
+    spiritLocked: { p1: null, p2: null },
     // TTT2 TEAM BATTLE (worker 24): the versus submenu lives INSIDE the
     // select screen — 1V1 FIGHT or TEAM BATTLE (2-8 per team), then a
     // character per slot. TTT2 actual: solo/tag choice BEFORE any pick.
@@ -391,64 +378,85 @@ export function createSelectScreen(deps) {
     vsTeamsDone: null,   // { p1:[ids], p2:[ids], size } when draft completes
   };
 
-  /* ---------- T8 grid ---------- */
+  /* ---------- card strip ---------- */
   function portraitHTML(c) {
-    // Portrait files are the personality pass's drop-in point:
-    // assets/portraits/<id>.png. A fighter with no portrait yet gets
-    // a monogram plate — never another fighter's face (the old
-    // repeated-placeholder bug).
-    return `<div class="portrait"><img src="assets/portraits/${c.id}.png" alt="${c.name}" loading="lazy"
+    // Portrait files are the personality pass's drop-in point: the same
+    // assets/portraits/<id>.png path the old grid used. A fighter with
+    // no portrait PNG yet gets the deterministic procedural portrait
+    // (game/js/fighter-portraits.js — ported from the owner's own
+    // AshLane generator; same id always yields the same face), layered
+    // under the img so a real portrait always wins. The monogram plate
+    // stays as the last-resort fallback — never another fighter's face
+    // (the old repeated-placeholder bug).
+    const svgFallback = fighterPortraitSVG(c.id, c.name, c.faction);
+    return `<div class="portrait"><span class="svg-fallback" aria-hidden="true">${svgFallback}</span><img src="assets/portraits/${c.id}.png" alt="${c.name}" loading="lazy"
       onerror="this.parentElement.classList.add('no-portrait');this.remove();">
       <span class="mono">${(c.name || '?').slice(0, 2)}</span></div>
-      <div class="cname">${c.name}</div>`;
+      <div class="cname">${c.name}</div><div class="cstyle">${c.style}</div>`;
   }
 
+  /* Owner law (2026-10-22): NO duplicate fighters on select. Entries that
+     share another fighter's model are hidden until they get their own
+     models — they stay in the roster data for story/other modes, but never
+     as separate select cards. Attire variants live in the attire ladder
+     (renderAttires), not as duplicate cards.
+     NINE SOULS REDESIGN (owner directive 2026-10-22 ~23:02 CDT, refined
+     ~23:03 CDT): the seven VESSELED souls (rin, byou, tou, sha, kai,
+     jin_soul, retsu) come OFF the grid as standalone cards — they have no
+     bodies of their own yet. Only ZEN and GYOU (unvesseled) stay
+     selectable as spirit fighters. The seven stay in the roster data for
+     story/other modes; per the refinement they return LATER as
+     unlockable boss-type characters with vessels/bodies once story modes
+     progress — the unlock path is future design, not this change. Their
+     presence on a fighter is the soul-spirit toggle (js/soul-spirit.js),
+     not a select card. */
+  const SELECT_HIDDEN = new Set([
+    'rin', 'byou', 'tou', 'sha', 'kai', 'jin_soul', 'retsu', 'zen', 'gyou',
+    'ryuji', 'doc-frank-machine-shop',
+
+  ]);
+  const selectRoster = () => deps.roster().filter(c => !SELECT_HIDDEN.has(c.id));
+
   function build() {
-    if (!grid) return;
-    if (root) applySkin(root, skin());
-    grid.innerHTML = '';
-    const roster = deps.roster();
-    assertCanon(roster);
+    if (!strip) return;
+    strip.innerHTML = '';
+    const roster = selectRoster();
+    // T8 grid (teardown/tekken8/ui/CHARACTER-SELECT.md): ONE compact
+    // face-card grid, no tier rows, no names on cards; owner's Tripo
+    // fighters still lead (registry order from data/tripo-fighters.json).
     const tripo = TRIPO_IDS || new Set();
-    const rest = (list) => list.filter(c => !tripo.has(c.id));
-    const tiers = [
-      { label: 'TRIPO ORIGINALS', fighters: roster.filter(c => tripo.has(c.id)) },
-      { label: 'THE NINE SOULS', fighters: rest(roster.filter(c => SOUL_IDS.includes(c.id))) },
-      { label: 'MAIN ROSTER', fighters: rest(roster.filter(c => MAIN_IDS.includes(c.id))) },
-      { label: 'BONUS ROSTER', fighters: rest(roster.filter(c => !SOUL_IDS.includes(c.id) && !MAIN_IDS.includes(c.id))) },
-    ].filter(t => t.fighters.length);
-    tiers.forEach(({ label, fighters }) => {
-      const t = document.createElement('div');
-      t.className = 'grid-tier';
-      t.textContent = label;
-      grid.appendChild(t);
-      fighters.forEach((c) => {
-        const card = document.createElement('div');
-        card.className = 'char-card';
-        card.dataset.id = c.id;
-        card.innerHTML = portraitHTML(c);
-        card.addEventListener('click', () => highlight(c, { fromTap: true }));
-        grid.appendChild(card);
-      });
+    const ordered = [...roster.filter(c => tripo.has(c.id)), ...roster.filter(c => !tripo.has(c.id))];
+    const cards = ordered.map((c) => {
+      const card = document.createElement('div');
+      card.className = 'char-card';
+      card.dataset.id = c.id;
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', c.name);
+      card.innerHTML = portraitHTML(c);
+      card.addEventListener('click', () => highlight(c, { fromTap: true }));
+      return card;
     });
-    // Tekken 6 convention: a "?" random slot in the grid.
+    // T8: the "?" random card sits inside the grid flow (centre of the last row).
     const rnd = document.createElement('div');
     rnd.className = 'char-card random-card';
     rnd.dataset.id = '__random';
+    rnd.setAttribute('role', 'button');
+    rnd.setAttribute('aria-label', 'Random');
     rnd.innerHTML = `<div class="portrait"><span class="qmark">?</span></div>
-      <div class="cname">RANDOM</div>`;
+      <div class="cname">RANDOM</div><div class="cstyle">Fate decides</div>`;
     rnd.addEventListener('click', () => {
       const drafted = [...state.draft.p1, ...state.draft.p2];
-      const pool = deps.roster().filter(c => c.id !== state.locked.p1?.id && c.id !== state.locked.p2?.id &&
+      const pool = selectRoster().filter(c => c.id !== state.locked.p1?.id && c.id !== state.locked.p2?.id &&
         !drafted.includes(c.id));
       const pick = pool[Math.floor(Math.random() * pool.length)];
       if (pick) highlight(pick, { fromTap: true, scroll: true });
     });
-    grid.appendChild(rnd);
+    cards.splice(Math.max(0, cards.length - 4), 0, rnd);
+    cards.forEach(el => strip.appendChild(el));
   }
 
-  function allCards() { return [...grid.querySelectorAll('.char-card')]; }
-  function cardFor(id) { return grid.querySelector(`.char-card[data-id="${id}"]`); }
+  function allCards() { return [...strip.querySelectorAll('.char-card')]; }
+  function cardFor(id) { return strip.querySelector(`.char-card[data-id="${id}"]`); }
 
   function paintCards() {
     allCards().forEach((el) => {
@@ -468,17 +476,17 @@ export function createSelectScreen(deps) {
 
   /* ---------- side plates ---------- */
   function plateEls(side) {
-    const rootEl = $(side === 'p1' ? 'pane-p1' : 'pane-p2');
+    const root = $(side === 'p1' ? 'pane-p1' : 'pane-p2');
     return {
-      root: rootEl,
-      artwash: rootEl.querySelector('.pane-artwash img'),
-      name: rootEl.querySelector('.pane-name'),
-      facts: rootEl.querySelector('.pane-facts'),
-      stats: rootEl.querySelector('.pane-stats'),
-      attires: rootEl.querySelector('.pane-attires'),
-      note: rootEl.querySelector('.pane-note'),
-      lock: rootEl.querySelector('.lock-badge'),
-      tag: rootEl.querySelector('.side-tag'),
+      root,
+      name: root.querySelector('.pane-name'),
+      title: root.querySelector('.pane-title'),
+      style: root.querySelector('.pane-style'),
+      stats: root.querySelector('.pane-stats'),
+      attires: root.querySelector('.pane-attires'),
+      note: root.querySelector('.pane-note'),
+      lock: root.querySelector('.lock-badge'),
+      tag: root.querySelector('.side-tag'),
     };
   }
 
@@ -486,20 +494,6 @@ export function createSelectScreen(deps) {
     return `<div class="stat-row"><span class="stat-lab">${label}</span>
       <span class="stat-bar"><i style="width:${Math.round(clamp01(frac) * 100)}%"></i></span>
       <span class="stat-val">${fmt(value)}</span></div>`;
-  }
-
-  /* T8 fact block: label chip in the side color + value below,
-     one row per skin.facts entry. Values come from the fighter;
-     ORIGIN falls back to canon "Parts unknown" — never invented. */
-  function renderFacts(els, c, sk) {
-    const rows = [];
-    for (const [label, field] of sk.facts) {
-      let v = c[field];
-      if (field === 'origin' && !v) v = 'Parts unknown';
-      if (v === undefined || v === null || v === '') continue;
-      rows.push(`<div class="fact"><span class="fact-lab">${label}</span><span class="fact-val">${v}</span></div>`);
-    }
-    els.facts.innerHTML = rows.join('');
   }
 
   function renderPlate(side) {
@@ -510,46 +504,46 @@ export function createSelectScreen(deps) {
     els.root.classList.toggle('is-active', isActive);
     els.root.classList.toggle('is-locked', !!locked);
     els.lock.hidden = !locked;
-    // Backdrop art wash (T8): the fighter's portrait, huge and faded
-    // behind the live model, tinted by side color. Updated only when
-    // the fighter changes so the image never reload-flickers.
-    const artId = c ? c.id : '';
-    if (els.artwash && els.root.dataset.artId !== artId) {
-      els.root.dataset.artId = artId;
-      if (artId) {
-        els.artwash.hidden = false;
-        els.artwash.onerror = () => { els.artwash.hidden = true; };
-        els.artwash.src = `assets/portraits/${artId}.png`;
-      } else {
-        els.artwash.hidden = true;
-        els.artwash.removeAttribute('src');
-      }
-    }
     if (!c) {
       els.name.textContent = side === 'p1' ? 'PLAYER 1' : 'PLAYER 2';
-      els.facts.innerHTML = '';
+      els.title.textContent = state.mode === 'versus' && side === 'p2' && !state.locked.p1
+        ? 'Waiting for P1…' : 'Pick a fighter';
+      els.style.textContent = '';
       els.stats.innerHTML = '';
       els.attires.innerHTML = '';
+{ const f = els.root.querySelector('.pane-facts'); if (f) f.innerHTML = ''; }
+renderSoulSpirit(side, null, false);
+
       els.note.hidden = true;
       return;
     }
     els.name.textContent = c.name || '—';
-    renderFacts(els, c, skin());
+    { const aw = els.root.querySelector('.pane-artwash img'); if (aw) aw.src = `assets/portraits/${c.id}.png`; }
+    els.title.textContent = c.title || '';
     const modelId = selectedAttireModel(c);
+    els.style.textContent = [c.style, c.archetype, attireLabel(c, modelId)]
+      .filter(Boolean).join(' · ');
+    // T8 fact block: FIGHTING STYLE / NATIONALITY / HEIGHT / WEIGHT. Values
+    // come from roster data only; T8 itself prints "Unknown" for unset ones.
+    const facts = els.root.querySelector('.pane-facts');
+    if (facts) {
+      const fact = (lab, v) => `<div class="fact"><span class="fact-lab">${lab}</span><span class="fact-val">${v || 'Unknown'}</span></div>`;
+      facts.innerHTML = fact('Fighting Style', c.style) + fact('Nationality', c.nationality || c.origin)
+        + fact('Height', c.height) + fact('Weight', c.weight);
+    }
     const s = statsFor(c);
     els.stats.innerHTML =
       statRow('POW', s.power, (s.power - 0.5) / 1.5, v => v.toFixed(2)) +
       statRow('SPD', s.speed, s.speed / 3.5, v => v.toFixed(1)) +
       statRow('JMP', s.jump, s.jump / 10, v => v.toFixed(1)) +
       statRow('DEF', s.defense, (s.defense - 0.5) / 1.5, v => v.toFixed(2));
-    // Attire label joins the fact block's tail (T8 "customized slots"
-    // live on the select screen).
     renderAttires(side, c, !locked && isActive);
+    renderSoulSpirit(side, c, !locked && isActive);
   }
 
   function renderAttires(side, c, interactive) {
     const els = plateEls(side);
-    const list = attiresFor(c);
+    const list = selectableAttires(c); // pending (not yet playable) slots stay hidden
     const sel = selectedAttireModel(c);
     els.attires.innerHTML = '';
     if (list.length < 2) return;
@@ -569,31 +563,119 @@ export function createSelectScreen(deps) {
     });
   }
 
+  /* ---------- soul-spirit toggle (tertiary, NOT an attire) ----------
+     Owner directive 2026-10-22 ~23:02 CDT: every fighter gets an on/off
+     switch for a soul spirit floating behind them + a 9-soul picker.
+     Picking the soul that vessels into the highlighted fighter empowers
+     them (the buff is applied at fight start; see js/soul-spirit.js). */
+  function spiritPanelEl(side) {
+    const els = plateEls(side);
+    let panel = els.root.querySelector('.soul-spirit-panel');
+    if (!panel) {
+      panel = document.createElement('div');
+      panel.className = 'soul-spirit-panel';
+      const plate = els.root.querySelector('.pane-plate');
+      const attires = els.root.querySelector('.pane-attires');
+      if (plate && attires && attires.nextSibling) plate.insertBefore(panel, attires.nextSibling);
+      else if (plate) plate.appendChild(panel);
+    }
+    return panel;
+  }
+
+  function renderSoulSpirit(side, c, interactive) {
+    const panel = spiritPanelEl(side);
+    const pick = state.spirit[side];
+    panel.innerHTML = '';
+    if (!c) return;
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'spirit-toggle' + (pick.enabled ? ' on' : '');
+    toggle.textContent = soulSpiritLabel(pick);
+    toggle.disabled = !interactive;
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (!interactive) return;
+      audio.uiClick();
+      pick.enabled = !pick.enabled;
+      if (pick.enabled && !pick.soulId) pick.soulId = 'rin';
+      renderPlate('p1'); renderPlate('p2');
+      if (hint) hint.textContent = pick.enabled
+        ? `${c.name} — soul spirit ${soulByIdName(pick.soulId)} behind them`
+        : `${c.name} — soul spirit off`;
+    });
+    panel.appendChild(toggle);
+    if (pick.enabled) {
+      const row = document.createElement('div');
+      row.className = 'spirit-souls';
+      NINE_SOULS.forEach((s) => {
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        const isVessel = vesselMatch(c.id, s.id);
+        chip.className = 'spirit-soul' + (pick.soulId === s.id ? ' on' : '') + (isVessel ? ' vessel' : '');
+        chip.textContent = `${s.name} ${s.kanji}`;
+        chip.title = s.nature + (isVessel ? ' — VESSEL MATCH: empowers ' + c.name : '');
+        chip.disabled = !interactive;
+        chip.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (!interactive) return;
+          audio.uiClick();
+          pick.soulId = s.id;
+          renderPlate('p1'); renderPlate('p2');
+          if (hint) hint.textContent = isVessel
+            ? `${s.name} vessels into ${c.name} — EMPOWERED`
+            : `${c.name} — ${s.name} spirit (no vessel bond)`;
+        });
+        row.appendChild(chip);
+      });
+      panel.appendChild(row);
+      if (vesselMatch(c.id, pick.soulId)) {
+        const badge = document.createElement('div');
+        badge.className = 'spirit-empowered';
+        badge.textContent = '⬢ VESSEL MATCH — EMPOWERED';
+        panel.appendChild(badge);
+      }
+    }
+  }
+
+  function soulByIdName(id) {
+    const s = NINE_SOULS.find((x) => x.id === id);
+    return s ? `${s.name} ${s.kanji}` : '';
+  }
+
   /* ---------- preview + attire application ---------- */
   async function showOnSide(side, c) {
     const modelId = selectedAttireModel(c);
     const els = plateEls(side);
     const fb = els.root.querySelector('.pane-fallback');
-    els.note.hidden = false;
-    els.note.textContent = 'LOADING…';
+    els.note.hidden = true;
+    // PRELOAD (2026-10-24): the portrait plate shows instantly while the
+    // GLB streams in, then hides only when the 3D model is ready — the
+    // preview is never a blank wait. (Fallback handling below already
+    // hides it on success and keeps it on failure.)
+    if (fb) { fb.src = `assets/portraits/${c.id}.png`; fb.hidden = false; }
     const ok = await panes[side].show(c, modelId);
     if (state.highlight[side]?.id !== c.id && state.locked[side]?.id !== c.id) return;
     if (panes[side].failed) {
       // No WebGL on this device: show the posed portrait plate
       // instead of the live model, and say so honestly.
-      if (fb) { fb.src = `assets/portraits/${c.id}.png`; fb.hidden = false; }
+if (fb) {
+        fb.onerror = () => { fb.onerror = null; fb.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(fighterPortraitSVG(c.id, c.name, c.faction, 256)); };
+        fb.src = `assets/portraits/${c.id}.png`; fb.hidden = false;
+      }
       els.note.hidden = false;
       els.note.textContent = '3D UNAVAILABLE';
+
       return;
     }
-    if (fb) fb.hidden = true;
-    els.note.hidden = ok;
-    if (!ok) els.note.textContent = 'MODEL PENDING';
+    // A model that fails to load shows the fighter's own portrait plate,
+    // never a message, a T-pose or another fighter.
+    if (fb) { if (!ok) fb.src = `assets/portraits/${c.id}.png`; fb.hidden = !!ok; }
+    els.note.hidden = true;
   }
 
   function applyAttire(side, c, modelId) {
     setAttire(c, modelId);
-    state.kickCycle = Math.max(1, attiresFor(c).findIndex(a => a.model === modelId));
+    state.kickCycle = Math.max(1, selectableAttires(c).findIndex(a => a.model === modelId));
     renderPlate(side);
     showOnSide(side, c);
     assets.prefetch(modelId);
@@ -606,7 +688,7 @@ export function createSelectScreen(deps) {
   function punchAttire() {
     const c = state.highlight[state.activeSide];
     if (!c) return;
-    const list = attiresFor(c);
+    const list = selectableAttires(c);
     if (list.length < 2) return;
     audio.uiClick();
     applyAttire(state.activeSide, c, list[0].model); // applyAttire records index 0
@@ -614,7 +696,7 @@ export function createSelectScreen(deps) {
   function kickAttire() {
     const c = state.highlight[state.activeSide];
     if (!c) return;
-    const list = attiresFor(c);
+    const list = selectableAttires(c);
     if (list.length < 2) return;
     audio.uiClick();
     state.kickCycle = state.kickCycle >= list.length - 1 ? 1 : state.kickCycle + 1;
@@ -638,26 +720,18 @@ export function createSelectScreen(deps) {
     state.highlight[side] = c;
     // kickCycle tracks the CURRENT attire index; K advances it
     // (wrapping 2..n), P returns it to 0 (attire 1).
-    state.kickCycle = Math.max(0, attiresFor(c).findIndex(a => a.model === selectedAttireModel(c)));
+    state.kickCycle = Math.max(0, selectableAttires(c).findIndex(a => a.model === selectedAttireModel(c)));
     paintCards();
     renderPlate('p1');
     renderPlate('p2');
     showOnSide(side, c);
-    assets.prefetch(c.model || 'pantera');
+    if (c.model) assets.prefetch(c.model);
     if (confirmBtn) confirmBtn.disabled = false;
     const surgeName = c.surge ? c.surge.name : 'SOUL SURGE';
     if (hint) hint.textContent = `${c.name} — ${c.style} · ${surgeName}`;
     if (opts.scroll) {
       const el = cardFor(c.id);
       if (el) el.scrollIntoView({ block: 'nearest', inline: 'nearest' });
-    }
-    if (opts.fromTap) {
-      const el = cardFor(c.id);
-      if (el) {
-        el.classList.remove('tap-flash');
-        void el.offsetWidth; // restart the animation
-        el.classList.add('tap-flash');
-      }
     }
     deps.onHighlight(c);
   }
@@ -670,25 +744,37 @@ export function createSelectScreen(deps) {
   /* Called by main.js confirmSelection() BEFORE modes.onConfirm runs,
      with the id being confirmed. Mirrors the mode flow: versus locks
      P1 then hands the cursor to P2; team stacks picks on P1. */
+  /* Soul-spirit picks are snapshotted at confirm time: the fight reads
+     spiritLocked, so later select-screen resets can't change a locked pick. */
+  function lockSpirit(side) {
+    state.spiritLocked[side] = { ...state.spirit[side] };
+  }
+
   function notifyConfirm(confirmedId) {
     const c = deps.findChar(confirmedId);
     if (!c) return;
+    try {
+      const side = state.mode === 'versus' && state.locked.p1 ? 'p2' : 'p1';
+      const last = JSON.parse(localStorage.getItem(LAST_KEY) || '{}');
+      last[side] = c.id; localStorage.setItem(LAST_KEY, JSON.stringify(last));
+    } catch (_) {}
     // TTT2 draft: during a team-battle draft, CONFIRM fills the next
     // team slot (your team first, then the rival team) instead of the
     // classic P1-then-P2 lock flow.
     if (state.mode === 'versus' && state.vsMode === 'team') {
       draftConfirm(c);
       return;
-    }
-    if (state.mode === 'versus') {
+    }    if (state.mode === 'versus') {
       if (!state.locked.p1) {
         state.locked.p1 = c;
+        lockSpirit('p1');
         state.highlight.p1 = c;
         state.activeSide = 'p2';
         state.highlight.p2 = null;
         deps.onHighlight(null); // P2 must tap a card to pick
       } else {
         state.locked.p2 = c;
+        lockSpirit('p2');
         state.highlight.p2 = c;
         state.phase = 'done';
       }
@@ -697,13 +783,22 @@ export function createSelectScreen(deps) {
       state.highlight.p1 = c;
       if (state.teamPicks.length >= 3) {
         state.locked.p1 = c;
+        lockSpirit('p1');
         state.phase = 'done';
       }
     } else {
       state.locked.p1 = c;
+      lockSpirit('p1');
       state.highlight.p1 = c;
       state.phase = 'done';
     }
+    // PRELOAD (2026-10-24): locked fighters' GLBs warm while the player
+    // is on stage select, so FIGHT does not start cold. (Highlight
+    // prefetch already warmed P1; this also warms P2 / team picks.)
+    try {
+      const lockedModels = [state.locked.p1, state.locked.p2].filter(Boolean).map(c => selectedAttireModel(c));
+      if (lockedModels.length) warmFight(lockedModels, (id) => assets.prefetch(id));
+    } catch (_) {}
     paintCards();
     renderPlate('p1');
     renderPlate('p2');
@@ -711,7 +806,6 @@ export function createSelectScreen(deps) {
 
   function onShow(mode) {
     const fresh = state.phase === 'done' || state.mode !== mode || !state._shown;
-    if (root) applySkin(root, skin());
     if (fresh) {
       state.mode = mode;
       state.phase = 'pick';
@@ -719,6 +813,8 @@ export function createSelectScreen(deps) {
       state.highlight = { p1: null, p2: null };
       state.locked = { p1: null, p2: null };
       state.teamPicks = [];
+      state.spirit = { p1: newSoulSpiritPick(), p2: newSoulSpiritPick() };
+      state.spiritLocked = { p1: null, p2: null };
       state.kickCycle = 1;
       // TTT2: versus always starts at the format submenu — nothing is
       // pre-picked; the draft state resets for a fresh team battle.
@@ -741,36 +837,51 @@ export function createSelectScreen(deps) {
       hideVsSubmenu();
     }
     state._shown = true;
+    if (fresh) {
+      // T7: the P1 cursor starts on the fighter you last confirmed
+      // (attire is remembered per fighter by attires.js).
+      try {
+        const last = JSON.parse(localStorage.getItem(LAST_KEY) || '{}');
+        const c = last.p1 && deps.findChar(last.p1);
+        if (c && cardFor(c.id)) highlight(c, { scroll: true });
+        // No saved pick: T7 parks the P1 cursor on the first slot
+        // (Pantera, attire 1 = the owner's own Leo man model).
+        else {
+          const first = allCards().find(x => x.dataset.id && x.dataset.id !== '__random');
+          const fc = first && deps.findChar(first.dataset.id);
+          if (fc) highlight(fc, { scroll: true });
+        }
+      } catch (_) {}
+    }
     paintCards();
     renderPlate('p1');
     renderPlate('p2');
+    // PRELOAD (2026-10-24): every select card image warms in the
+    // background once the screen has painted — tapping any fighter
+    // then shows its card from cache instead of a lazy fetch. GLBs
+    // are NOT bulk-warmed here (that was the old preloadAll pipe
+    // saturation); models warm per highlight + per lock.
+    try { warmSelect(selectRoster().map(c => c.id)); } catch (_) {}
   }
 
   /* ---------- keyboard (desktop parity; touch is primary) ----------
-     Arrows walk the grid (up/down jump a full row, computed from the
-     rendered columns), Enter highlights then confirms (via the real
-     CONFIRM button so every mode hook still fires), J/K are
+     Arrows walk the strip, Enter highlights then confirms (via the
+     real CONFIRM button so every mode hook still fires), J/K are
      punch/kick attire switching. */
-  function gridCols() {
-    if (!grid) return 1;
-    const t = getComputedStyle(grid).gridTemplateColumns.split(' ').filter(Boolean).length;
-    return Math.max(1, t || 1);
-  }
   document.addEventListener('keydown', (e) => {
     const sel = $('screen-select');
     if (!sel || !sel.classList.contains('active')) return;
-    const cards = allCards();
-    if (!cards.length) return;
-    const cols = gridCols();
-    const step = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: cols, ArrowUp: -cols }[e.key];
-    if (step !== undefined) {
-      state.focusIdx = (state.focusIdx + step + cards.length) % cards.length;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+      const cards = allCards();
+      if (!cards.length) return;
+      state.focusIdx = (state.focusIdx + (e.key === 'ArrowRight' ? 1 : -1) + cards.length) % cards.length;
       cards.forEach(x => x.classList.remove('kb-focus'));
       const el = cards[state.focusIdx];
       el.classList.add('kb-focus');
       el.scrollIntoView({ block: 'nearest', inline: 'nearest' });
       e.preventDefault();
     } else if (e.key === 'Enter' || e.key === ' ') {
+      const cards = allCards();
       const card = cards[state.focusIdx];
       if (!card) return;
       if (card.dataset.id === '__random') { card.click(); e.preventDefault(); return; }
@@ -790,7 +901,28 @@ export function createSelectScreen(deps) {
   if (pBtn) pBtn.addEventListener('click', punchAttire);
   if (kBtn) kBtn.addEventListener('click', kickAttire);
 
+  /* The fight (main.js startFight) reads each side's locked soul-spirit
+     pick here — null when that side picked nothing / toggle off. */
+  function soulSpiritLocked(side) {
+    const p = state.spiritLocked[side];
+    return p ? { ...p } : null;
+  }
+
   // The Tripo list arrives after the first build: rebuild once so those fighters lead the grid.
+  _tripoReady.then(() => { if (strip && strip.children.length) { build(); paintCards(); } });
+  /* Stage-show hook (main.js): warm the locked fighters' GLBs during
+     stage-select dwell. Returns the locked state (empty when nothing
+     is locked, so calling it early is a safe no-op). */
+  function warmLockedFighters() {
+    try {
+      const ids = [state.locked.p1, state.locked.p2].filter(Boolean).map(c => selectedAttireModel(c));
+      if (ids.length) warmFight(ids, (id) => assets.prefetch(id));
+    } catch (_) {}
+    return state.locked;
+  }
+
+  return { build, onShow, selectById, notifyConfirm, highlight, warmLockedFighters, soulSpiritLocked, _state: state, _panes: panes };
+
   _tripoReady.then(() => { if (grid && grid.children.length) { build(); paintCards(); } });
 
   /* ---------- TTT2 versus submenu (INSIDE the select screen) ----------
@@ -942,5 +1074,4 @@ export function createSelectScreen(deps) {
     el.querySelector('#vs-slot-tray').hidden = true;
   }
 
-  return { build, onShow, selectById, notifyConfirm, highlight, _state: state, _panes: panes };
-}
+  return { build, onShow, selectById, notifyConfirm, highlight, _state: state, _panes: panes };}

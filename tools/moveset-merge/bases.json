@@ -1,6 +1,7 @@
 {
  "_doc": "Which real characters each WH fighter is built on, per source. Read by tools/moveset-merge/merge_sources.py. 'auto' rows are derived from the file's tekken_base via BASE_TABLE in merge_sources.py; 'override' rows carry the owner's words that set them. t8 = docs/t7t8-reference/frame-data-t8-full/<t8>.json (wavu, CC0); t7 = docs/t7t8-reference/frame-data-t7/<t7>.json (t7chicken); t3 = teardown/tekken3/movesets/moveset_<t3>.json via tools/gen-movesets-t3.py; donors = other WH moveset files whose moves this fighter also gets (attire variants share the main fighter's kit). exclude_proxy = moves from a T3 bank that is NOT one of this fighter's bases never take a default input slot (they stay in the file and in the editor).",
  "override": {
+  "buffalo-bill": {"t8": ["law"], "t7": ["law"], "t3": ["law", "forestlaw"], "why": "owner 2026-10-23: \"So marshall law and firrest law moves both go to ashes/buffalo bill\""},
   "star": {
    "t8": [
     "xiaoyu"
@@ -149,6 +150,18 @@
     "byou"
    ],
    "why": "owner 2026-10-21: \"Lei wulong is not byou, he is Rave/Kiko tanaka\" / \"U can add leis and byous moves to rave, but rave already takes over leis character and slot and moves and personality into combined with his canon of rave/Kiko tanaka\" (models kiko-tanaka.glb / kiko-tanaka_alt1.glb, roster/TRIPO-REGISTRY.md)"
+  },
+  "bruno": {
+   "t7": [
+    "miguel"
+   ],
+   "why": "batch8 2026-10-23: bruno's canon base is Miguel (T7 debut, cut from T8); completing the T7 Miguel pull — 13/219 rows merged 2026-10-21"
+  },
+  "chatur": {
+   "t3": [
+    "ogre"
+   ],
+   "why": "batch8 2026-10-23: chatur's canon base is True Ogre (T3); divmot14_ogre bank decoded (330 rows); no T5/T6/T7/T8/TTT2 source exists for True Ogre — T3 is the only source (INSTRUCTION GATE logged in docs/anim/PROCEDURAL_AUDIT.md)"
   }
  }
 }

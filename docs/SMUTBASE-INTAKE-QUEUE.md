@@ -93,6 +93,32 @@ efe95e78…3d3f96dc898769  sess-3045850964/…-14-BuildABod_Male_1_3.7z         
 
 All merged via `git_merge.py` (Git Database API 3-way merge), CI green, no deletions.
 
+## Clothing / accessory labeling (intake requirement, 2026-10-22)
+
+Intake is **not complete** until the character's clothing label map is filed —
+per the owner directive, every separate clothing part and accessory gets a
+convention label so the creation suite library can arrange/organize/swap them.
+
+**Standard:** `docs/CLOTHING-ACCESSORY-LABELING-STANDARD.md` —
+`<category>_<item>_<variant>` (e.g. `top_bra_01`, `accessory_choker_01`).
+Hair is a first-class library item, separate from headwear.
+
+**Intake checklist (per character):**
+1. Dump the source's mesh/object names (byte-scan the .blend or read the GLB).
+2. Assign one label per clothing/accessory/hair mesh; keep the raw names in
+   the config's `meshes` list so the engine keeps matching.
+3. File the map in `game/data/clothing-layers.json` under the character's
+   model key, with `source_mesh_names` preserved.
+4. Flag anything unidentifiable with `"review": true` — never guess silently.
+5. Register detachable library parts (hats, hair, accessories shipped as
+   separate assets) under `customization/parts/<category>/<item>/` with the
+   label in their README.
+
+First retroactive cleanups (worker 64): Parvati and Tsuyu Asui, in
+`game/data/clothing-layers.json`. Tsuyu's frog hat was missing from her
+source entirely — crew-modeled as `headwear_frog-hat_01` under
+`customization/parts/headwear/frog-hat/`.
+
 ## Next steps for the rig/character lanes
 
 1. **Lily donor work** — extract her rig/skeleton as the female donor; jiggle reference (breasts/belly/hips/thighs). Blender required (not installed on this VM as of 2026-10-22).
