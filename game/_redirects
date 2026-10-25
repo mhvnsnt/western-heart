@@ -1,0 +1,13 @@
+# Netlify redirects (2026-10-24, fight-load fix). This file lives in the
+# publish directory (game/), which is where Netlify reads redirect/rewrites
+# for post-processing — the matching [[redirects]] in game/netlify.toml are
+# kept in sync as the base-dir copy.
+# The Netlify site publishes game/ as its root, but fighter models and other
+# runtime files live outside game/ on the gh-pages layout (roster/,
+# customization/, packages/, game/ refs). These 200 proxy rewrites make those
+# paths resolve on Netlify exactly as they do on GitHub Pages. Publish-dir
+# files always win (no force); only missing paths fall through to the proxy.
+/roster/*  https://mhvnsnt.github.io/western-heart/roster/:splat  200
+/customization/*  https://mhvnsnt.github.io/western-heart/customization/:splat  200
+/packages/*  https://mhvnsnt.github.io/western-heart/packages/:splat  200
+/game/*  https://mhvnsnt.github.io/western-heart/game/:splat  200

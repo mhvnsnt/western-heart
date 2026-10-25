@@ -10,10 +10,35 @@
   <title>WESTERN HEART — a lost multiverse bastard child</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="select.css" />
+  <link rel="stylesheet" href="select-t8.css" />
+  <link rel="stylesheet" href="select-t7.css" />
   <link rel="stylesheet" href="menus.css" />
   <link rel="stylesheet" href="mainmenu.css" />
+  <link rel="stylesheet" href="submenus.css" />
+  <link rel="stylesheet" href="t7-skin.css" />
+  <link rel="stylesheet" href="menu-t7.css" />
   <!-- Worker 35: colorblind-safe HUD palettes (worker-35 identity lane) -->
   <link rel="stylesheet" href="css/colorblind.css" />
+  <!-- MENU FALLBACK CSS (2026-10-22, PR #676 rebase): if every stylesheet
+       fails to load, the menu still renders as tappable styled buttons —
+       never unstyled white text boxes. Real styles come from mainmenu.css. -->
+  <style>
+    #screen-menu .mm-list { display: flex; flex-direction: column; gap: 10px;
+      max-width: 480px; margin: 0 auto; padding: 0 16px; }
+    #screen-menu .mm-item { display: flex; align-items: center; gap: 14px;
+      min-height: 56px; width: 100%; padding: 12px 18px; border-radius: 12px;
+      border: 1px solid #8b2bd8; background: #1a0b2e; color: #fff;
+      font-size: 20px; font-weight: 800; text-align: left; cursor: pointer; }
+    .wh-main-menu { display: flex; flex-direction: column; gap: 10px;
+      width: 100%; max-width: 480px; margin: 0 auto; padding: 0 16px; }
+    .wh-menu-btn { display: flex; align-items: center; gap: 14px; min-height: 56px;
+      width: 100%; padding: 12px 18px; border-radius: 14px; cursor: pointer;
+      border: 1px solid rgba(139,43,216,.4); background: #1a0b2e; color: #fff;
+      font-size: 18px; font-weight: 800; text-align: left; }
+    .screen { display: none; }
+    .screen.active { display: block; }
+    .screen-title { text-align: center; color: #fff; }
+  </style>
   <!-- Three.js loaded as an ES module from local vendor (no CDN) -->
   <script type="importmap">
   {
@@ -198,7 +223,7 @@
        bottom hints bar. Look is skin-driven (js/ui-skin.js); the
        layout lineage is decoded in docs/select-redesign/T8-GRID-DECODE.md.
        The page itself never scrolls; the grid scrolls inside its own box. -->
-  <section id="screen-select" class="screen select-screen">
+  <section id="screen-select" class="screen select-screen t8">
     <header class="select-header">
       <button class="btn-ghost select-back" data-action="back-menu">BACK</button>
       <h2>CHOOSE YOUR SOUL</h2>
@@ -214,6 +239,8 @@
         <div class="pane-note" hidden>LOADING…</div>
         <div class="pane-plate">
           <div class="pane-name">PLAYER 1</div>
+          <div class="pane-title">Pick a fighter</div>
+          <div class="pane-style"></div>
           <div class="pane-facts"><!-- T8 fact rows filled by JS --></div>
           <div class="pane-stats"></div>
           <div class="pane-attires attire-strip"><!-- attire chips filled by JS --></div>
@@ -228,6 +255,8 @@
         <div class="pane-note" hidden>LOADING…</div>
         <div class="pane-plate">
           <div class="pane-name">PLAYER 2</div>
+          <div class="pane-title">Pick a fighter</div>
+          <div class="pane-style"></div>
           <div class="pane-facts"><!-- T8 fact rows filled by JS --></div>
           <div class="pane-stats"></div>
           <div class="pane-attires attire-strip"><!-- attire chips filled by JS --></div>
@@ -238,10 +267,31 @@
       <div id="char-grid" class="card-grid"><!-- cards filled by JS (js/select-screen.js) --></div>
     </div>
     <div class="hints-bar">
-      <button id="attire-punch" class="hint-btn" type="button"><b class="key">P</b> ATTIRE 1</button>
+      <button id="confirm-fighter" class="btn-primary" disabled><span class="glyph">✕</span> Confirm</button>
+      <button class="hint-back" type="button" data-action="back-menu"><span class="glyph">◯</span> Back</button>
+      <button id="attire-kick" class="hint-btn" type="button"><span class="glyph sq">▢</span> <span class="lbl-long">Customized </span>Slots</button>
+      <button id="attire-punch" class="hint-btn" type="button"><span class="glyph">△</span> Attire 1</button>
       <span id="select-hint">Pick a fighter</span>
-      <button id="attire-kick" class="hint-btn" type="button"><b class="key">K</b> ATTIRE 2</button>
-      <button id="confirm-fighter" class="btn-primary" disabled>CONFIRM</button>
+    </div>
+  </section>
+
+  <!-- ====================== VERSUS SETUP (worker-submenus) ======================
+       Tekken 7 GAME OPTION <VS GAME>: fight count, round time, guard
+       damage, stage mode. Every option is REAL — modes.js reads them
+       in _beginVersus and they ride the fight opts into game.js.
+       CONTINUE carries data-action="mode-versus" so the existing
+       delegated router starts the versus flow. -->
+  <section id="screen-vssetup" class="screen">
+    <div class="tk-screen">
+      <header class="tk-head">
+        <button class="mm-back" id="vssetup-back" aria-label="Back">‹</button>
+        <h2>VERSUS SETUP</h2>
+      </header>
+      <p class="tk-sub">GAME OPTION · VS GAME — RULES FOR EVERY VERSUS BOUT</p>
+      <div id="vs-rules" class="tk-rows"></div>
+      <footer class="tk-foot">
+        <button class="btn-primary" data-action="mode-versus">CHOOSE FIGHTERS →</button>
+      </footer>
     </div>
   </section>
 
@@ -280,6 +330,7 @@
 
   <!-- ====================== SOUL SURGE FLASH ====================== -->
   <div id="surge-flash" class="surge-flash"></div>
+  <div id="rage-flash" class="rage-flash"></div>
   <div id="surge-name" class="surge-name"></div>
 
   <!-- ====================== IN-GAME HUD ====================== -->
@@ -292,6 +343,8 @@
       <!-- Player health -->
       <div class="fighter-status left">
         <div class="hp-wrap"><div class="hp-damage" id="p1-hp-dmg"></div><div class="hp-fill" id="p1-hp"></div></div>
+        <div class="rage-tag" id="p1-rage">RAGE</div>
+        <div class="urge-wrap" id="p1-urge-wrap"><div class="urge-fill" id="p1-urge"></div><span class="urge-label">SOUL URGE</span></div>
         <div class="soul-label">NINE-SOUL METER</div>
         <div class="meter-wrap" id="p1-meter"></div>
         <div class="name" id="p1-name">PLAYER</div>
@@ -300,15 +353,17 @@
       <div class="hud-center">
         <div class="timer" id="timer">60</div>
         <div class="rounds">
-          <span class="round-pip" id="p1-r1"></span><span class="round-pip" id="p1-r2"></span>
+          <span id="p1-pips" class="pips"></span>
           <em>VS</em>
-          <span class="round-pip" id="p2-r1"></span><span class="round-pip" id="p2-r2"></span>
+          <span id="p2-pips" class="pips"></span>
         </div>
         <div class="stage-label" id="stage-label">SHRINE OF THE BLADE</div>
       </div>
       <!-- Enemy health -->
       <div class="fighter-status right">
         <div class="hp-wrap"><div class="hp-damage" id="p2-hp-dmg"></div><div class="hp-fill" id="p2-hp"></div></div>
+        <div class="rage-tag" id="p2-rage">RAGE</div>
+        <div class="urge-wrap" id="p2-urge-wrap"><div class="urge-fill" id="p2-urge"></div><span class="urge-label">SOUL URGE</span></div>
         <div class="soul-label">NINE-SOUL METER</div>
         <div class="meter-wrap" id="p2-meter"></div>
         <div class="name" id="p2-name">CPU</div>
@@ -335,14 +390,18 @@
       <div class="action-pad">
         <button class="act-btn punch" data-btn="punch" style="display:none">P</button>
         <button class="act-btn kick" data-btn="kick" style="display:none">K</button>
-        <!-- Stream 6: full Tekken limb cluster (LP/RP/LK/RK arcade layout).
-             Legacy P/K kept hidden for old bindings; keyboard J/K still work. -->
-        <button class="act-btn limb lp" data-btn="1">LP</button>
-        <button class="act-btn limb rp" data-btn="2">RP</button>
-        <button class="act-btn limb lk" data-btn="3">LK</button>
-        <button class="act-btn limb rk" data-btn="4">RK</button>
-        <button class="act-btn special" data-btn="surge">S</button>
-        <button class="act-btn block" data-btn="block">B</button>
+        <!-- PSX EMULATOR OVERLAY (owner directive 2026-10-22): classic PlayStation
+             diamond — □=1 LP, △=2 RP, ✕=3 LK, ○=4 RK. L1/R1 shoulders = block/surge.
+             data-btn values unchanged so input.js bindings keep working. -->
+        <button class="act-btn psx square" data-btn="1">□</button>
+        <button class="act-btn psx triangle" data-btn="2">△</button>
+        <button class="act-btn psx cross" data-btn="3">✕</button>
+        <button class="act-btn psx circle" data-btn="4">○</button>
+        <button class="act-btn shoulder l1" data-btn="block">L1</button>
+        <button class="act-btn shoulder r1" data-btn="surge">R1</button>
+        <!-- T8 shortcuts ported from #842 onto the PSX layout: Heat Burst = 2+3, Rage Art = 1+2. input.js pushes these chord strings as-is. -->
+        <button class="act-btn shoulder heat" data-btn="2+3">HEAT</button>
+        <button class="act-btn shoulder rage" data-btn="1+2">RAGE</button>
         <button class="act-btn dodge" data-btn="dodge">D</button>
         <!-- V-System (owner 2026-10-22): V-Skill / V-Trigger / V-Reversal -->
         <button class="act-btn vskill" data-btn="vskill">V</button>
@@ -446,9 +505,99 @@
   <!-- Worker 35: player identity core (titles, cards, currency, loot, remap,
        colorblind, assists) + boot wiring. Classic scripts run before the
        module graph so input.js/main.js can consult window.WHIdentity. -->
+  <!-- t122u touch failsafe: if the module graph fails, still drop the boot overlay. -->
+  <script>setTimeout(function(){var l=document.getElementById('loading');if(l&&!document.body.classList.contains('in-fight'))l.classList.add('hidden');},4000);</script>
+  <!-- nipplejs v0.10.2 (MIT, vendored in game/vendor/nipplejs/): mobile virtual joystick.
+       Classic script so window.nipplejs is ready before the module graph; input.js
+       uses it for the left-thumb stick and falls back to its legacy binding if absent. -->
+  <script src="vendor/nipplejs/nipplejs.min.js"></script>
   <script src="js/identity.js"></script>
   <script src="js/wh-boot.js"></script>
   <script type="module" src="js/online.js"></script>
   <script type="module" src="js/main.js"></script>
+  <!-- FIGHT-LOOP REPAIR (worker 54, 2026-10-22): integration.js was merged
+       but never loaded — its header says it loads here after main.js. It
+       lazily wires the vendored systems (three-mesh-bvh hit-verify,
+       springbones jiggle, troika nameplates/damage numbers, cannon-es
+       physics KO tumble, nebula hit-FX layering, lip-sync, cam director).
+       2026-10-23 (Effekseer lane, PR #937): Effekseer 1.80.7 particle
+       runtime, unified hit FX (Effekseer + nebula fallback), and Soul
+       Urge visual cues added to the same boot.
+       Every init is try/catch — a failing vendor module stays absent,
+       never breaks the fight. -->
+  <script type="module" src="js/integration.js"></script>
+
+  <!-- MENU FALLBACK BINDER (2026-10-22, PR #676 rebase; extended 2026-10-24
+       menu tap fix): non-module script. If the ES module chain fails, the
+       delegated routers in js/main.js never run and nothing is tappable.
+       This binds minimal navigation after a delay — but ONLY if the module
+       didn't (the module sets window.__whMenuBound; this binder sets its OWN
+       flag and stands down at click time if the module loads late).
+       2026-10-24: VERSUS now navigates to the versus-setup screen instead
+       of a toast, and the binder answers touchend as well as click, with
+       the same scroll-drag guard as the module tap handlers, so a tap
+       navigates even when the browser does not synthesize a click. -->
+  <script>
+  (function () {
+    function showScreen(name) {
+      document.querySelectorAll('.screen').forEach(function (s) { s.classList.remove('active'); });
+      var t = document.getElementById('screen-' + name);
+      if (t) t.classList.add('active');
+    }
+    function toast(msg) {
+      var d = document.createElement('div');
+      d.textContent = msg;
+      d.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);' +
+        'background:#1a0b2e;color:#fff;border:1px solid #8b2bd8;border-radius:12px;' +
+        'padding:12px 18px;z-index:99999;font-size:14px;max-width:90vw;text-align:center;';
+      document.body.appendChild(d);
+      setTimeout(function () { d.remove(); }, 2600);
+    }
+    setTimeout(function () {
+      if (window.__whMenuBound) return; // module chain loaded — its routers own taps
+      window.__whFallbackBound = true;
+      var lastTap = 0, sx = 0, sy = 0;
+      function handle(e) {
+        if (window.__whMenuBound) return; // module loaded late — stand down
+        var t = e.target;
+        var el = (t instanceof Element) ? t.closest('[data-mm],[data-mm-forge],[data-action]') : null;
+        if (!el) return;
+        var key = el.dataset.mm || el.dataset.mmForge || el.dataset.action || '';
+        if (key === 'back-menu' || key === 'menu') showScreen('menu');
+        else if (key === 'versus') showScreen('vssetup');
+        else if (key === 'online') showScreen('online');
+        else if (key === 'sidegames') showScreen('sidegames');
+        else if (key === 'collection') showScreen('collection');
+        else if (key === 'daily') showScreen('daily');
+        else if (key === 'options' || key === 'howto') showScreen('howto');
+        else if (key === 'mode-create' || key === 'creation') {
+          window.location.href = '../customization/creation-suite-ui/index.html';
+        }
+        else if (key === 'show-ranks') showScreen('menu');
+        else toast('Engine still loading — wait a moment, then tap again.');
+      }
+      document.addEventListener('touchstart', function (e) {
+        var t = e.changedTouches[0];
+        if (t) { sx = t.clientX; sy = t.clientY; }
+      }, { passive: true });
+      document.addEventListener('touchend', function (e) {
+        var t = e.target;
+        // Only swallow the tap when it is actually a menu tap — otherwise
+        // fight/select taps keep their native click behavior.
+        var el = (t instanceof Element) ? t.closest('[data-mm],[data-mm-forge],[data-action]') : null;
+        if (!el) return;
+        var ct = e.changedTouches[0];
+        if (ct && Math.hypot(ct.clientX - sx, ct.clientY - sy) > 12) return; // scroll drag
+        e.preventDefault();
+        lastTap = Date.now();
+        handle(e);
+      }, { passive: false });
+      document.addEventListener('click', function (e) {
+        if (Date.now() - lastTap < 600) return; // touch already handled it
+        handle(e);
+      });
+    }, 1200);
+  })();
+  </script>
 </body>
 </html>

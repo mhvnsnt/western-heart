@@ -1,0 +1,2394 @@
+{
+ "ppk": "char001.ppk",
+ "size": 776960,
+ "md5": "c97d831572d3e51c7295a3f9eeb6a32a",
+ "sha256": "7e6a0a304668c57e8a3cf9adef681170f93811f4174e4ee587d812fc9e02e0cc",
+ "magic_ok": true,
+ "total_field": 776952,
+ "data_offset_field": 128,
+ "afs_map_entries": [
+  {
+   "name": "afs/safe/ppk/char001.ppk",
+   "afs_off": 1032468480,
+   "size": 776960
+  }
+ ],
+ "afs_size_match": true,
+ "tag_table": [
+  {
+   "type": "0x8001",
+   "offset": "0x2971",
+   "size": 16143
+  },
+  {
+   "type": "0xa000",
+   "offset": "0xa4f",
+   "size": 382
+  },
+  {
+   "type": "0xae00",
+   "offset": "0x17d",
+   "size": 2258
+  },
+  {
+   "type": "0x0",
+   "offset": "0x13f",
+   "size": 62
+  },
+  {
+   "type": "0x6502",
+   "offset": "0x0",
+   "size": 8
+  },
+  {
+   "type": "0x4d5c",
+   "offset": "0x8",
+   "size": 4
+  },
+  {
+   "type": "0x865",
+   "offset": "0x8001",
+   "size": 2935
+  },
+  {
+   "type": "0x2",
+   "offset": "0xe800",
+   "size": 717568
+  },
+  {
+   "type": "0x154",
+   "offset": "0xc500",
+   "size": 8664
+  },
+  {
+   "type": "0x8",
+   "offset": "0x6880",
+   "size": 6017
+  },
+  {
+   "type": "0x1",
+   "offset": "0xe6d8",
+   "size": 296
+  },
+  {
+   "type": "0x8001",
+   "offset": "0x8b78",
+   "size": 14728
+  },
+  {
+   "type": "0xa800",
+   "offset": "0xbcd",
+   "size": 7588
+  },
+  {
+   "type": "0x0",
+   "offset": "0xc",
+   "size": 307
+  }
+ ],
+ "tail": {
+  "file_offset": "0xe800",
+  "size": 717568,
+  "sha256": "767b656dde95032a2e367155ef8ff2846e42cae4b0e74d1a5f9df51a6a034ec4",
+  "extraction": "chunk type 0x0002 from the 0x20 tag table; bounds = next distinct tag offset else EOF"
+ },
+ "segments_4k": [
+  {
+   "start": "0xe800",
+   "end": "0x35800",
+   "class": "structured",
+   "blocks": 39
+  },
+  {
+   "start": "0x35800",
+   "end": "0x37800",
+   "class": "high-entropy",
+   "blocks": 2
+  },
+  {
+   "start": "0x37800",
+   "end": "0x56800",
+   "class": "structured",
+   "blocks": 31
+  },
+  {
+   "start": "0x56800",
+   "end": "0x5a800",
+   "class": "zero-heavy",
+   "blocks": 4
+  },
+  {
+   "start": "0x5a800",
+   "end": "0x5b800",
+   "class": "high-entropy",
+   "blocks": 1
+  },
+  {
+   "start": "0x5b800",
+   "end": "0x5d800",
+   "class": "structured",
+   "blocks": 2
+  },
+  {
+   "start": "0x5d800",
+   "end": "0x66800",
+   "class": "high-entropy",
+   "blocks": 9
+  },
+  {
+   "start": "0x66800",
+   "end": "0x67800",
+   "class": "structured",
+   "blocks": 1
+  },
+  {
+   "start": "0x67800",
+   "end": "0x68800",
+   "class": "zero-heavy",
+   "blocks": 1
+  },
+  {
+   "start": "0x68800",
+   "end": "0x69800",
+   "class": "structured",
+   "blocks": 1
+  },
+  {
+   "start": "0x69800",
+   "end": "0x6a800",
+   "class": "zero-heavy",
+   "blocks": 1
+  },
+  {
+   "start": "0x6a800",
+   "end": "0x6d800",
+   "class": "structured",
+   "blocks": 3
+  },
+  {
+   "start": "0x6d800",
+   "end": "0x73800",
+   "class": "high-entropy",
+   "blocks": 6
+  },
+  {
+   "start": "0x73800",
+   "end": "0x79800",
+   "class": "structured",
+   "blocks": 6
+  },
+  {
+   "start": "0x79800",
+   "end": "0x7c800",
+   "class": "high-entropy",
+   "blocks": 3
+  },
+  {
+   "start": "0x7c800",
+   "end": "0x7e800",
+   "class": "structured",
+   "blocks": 2
+  },
+  {
+   "start": "0x7e800",
+   "end": "0x7f800",
+   "class": "high-entropy",
+   "blocks": 1
+  },
+  {
+   "start": "0x7f800",
+   "end": "0x80800",
+   "class": "structured",
+   "blocks": 1
+  },
+  {
+   "start": "0x80800",
+   "end": "0x85800",
+   "class": "high-entropy",
+   "blocks": 5
+  },
+  {
+   "start": "0x85800",
+   "end": "0x86800",
+   "class": "structured",
+   "blocks": 1
+  },
+  {
+   "start": "0x86800",
+   "end": "0x88800",
+   "class": "zero-heavy",
+   "blocks": 2
+  },
+  {
+   "start": "0x88800",
+   "end": "0x89800",
+   "class": "structured",
+   "blocks": 1
+  },
+  {
+   "start": "0x89800",
+   "end": "0x8b800",
+   "class": "zero-heavy",
+   "blocks": 2
+  },
+  {
+   "start": "0x8b800",
+   "end": "0x8c800",
+   "class": "structured",
+   "blocks": 1
+  },
+  {
+   "start": "0x8c800",
+   "end": "0x90800",
+   "class": "zero-heavy",
+   "blocks": 4
+  },
+  {
+   "start": "0x90800",
+   "end": "0x91800",
+   "class": "structured",
+   "blocks": 1
+  },
+  {
+   "start": "0x91800",
+   "end": "0x93800",
+   "class": "zero-heavy",
+   "blocks": 2
+  },
+  {
+   "start": "0x93800",
+   "end": "0x94800",
+   "class": "structured",
+   "blocks": 1
+  },
+  {
+   "start": "0x94800",
+   "end": "0x9a800",
+   "class": "zero-heavy",
+   "blocks": 6
+  },
+  {
+   "start": "0x9a800",
+   "end": "0x9b800",
+   "class": "structured",
+   "blocks": 1
+  },
+  {
+   "start": "0x9b800",
+   "end": "0x9c800",
+   "class": "zero-heavy",
+   "blocks": 1
+  },
+  {
+   "start": "0x9c800",
+   "end": "0x9d800",
+   "class": "high-entropy",
+   "blocks": 1
+  },
+  {
+   "start": "0x9d800",
+   "end": "0x9e800",
+   "class": "zero-heavy",
+   "blocks": 1
+  },
+  {
+   "start": "0x9e800",
+   "end": "0x9f800",
+   "class": "structured",
+   "blocks": 1
+  },
+  {
+   "start": "0x9f800",
+   "end": "0xa0800",
+   "class": "zero-heavy",
+   "blocks": 1
+  },
+  {
+   "start": "0xa0800",
+   "end": "0xa1800",
+   "class": "structured",
+   "blocks": 1
+  },
+  {
+   "start": "0xa1800",
+   "end": "0xa2800",
+   "class": "zero-heavy",
+   "blocks": 1
+  },
+  {
+   "start": "0xa2800",
+   "end": "0xa3800",
+   "class": "structured",
+   "blocks": 1
+  },
+  {
+   "start": "0xa3800",
+   "end": "0xa4800",
+   "class": "zero-heavy",
+   "blocks": 1
+  },
+  {
+   "start": "0xa4800",
+   "end": "0xa7800",
+   "class": "structured",
+   "blocks": 3
+  },
+  {
+   "start": "0xa7800",
+   "end": "0xa8800",
+   "class": "high-entropy",
+   "blocks": 1
+  },
+  {
+   "start": "0xa8800",
+   "end": "0xaa800",
+   "class": "structured",
+   "blocks": 2
+  },
+  {
+   "start": "0xaa800",
+   "end": "0xb2800",
+   "class": "high-entropy",
+   "blocks": 8
+  },
+  {
+   "start": "0xb2800",
+   "end": "0xb3800",
+   "class": "structured",
+   "blocks": 1
+  },
+  {
+   "start": "0xb3800",
+   "end": "0xb4800",
+   "class": "high-entropy",
+   "blocks": 1
+  },
+  {
+   "start": "0xb4800",
+   "end": "0xb5800",
+   "class": "structured",
+   "blocks": 1
+  },
+  {
+   "start": "0xb5800",
+   "end": "0xb7800",
+   "class": "high-entropy",
+   "blocks": 2
+  },
+  {
+   "start": "0xb7800",
+   "end": "0xb9800",
+   "class": "structured",
+   "blocks": 2
+  },
+  {
+   "start": "0xb9800",
+   "end": "0xbb800",
+   "class": "high-entropy",
+   "blocks": 2
+  },
+  {
+   "start": "0xbb800",
+   "end": "0xbc800",
+   "class": "structured",
+   "blocks": 1
+  },
+  {
+   "start": "0xbc800",
+   "end": "0xbdb00",
+   "class": "zero-heavy",
+   "blocks": 2
+  }
+ ],
+ "vertex_framing": {
+  "separator_count": 3615,
+  "record_float_lengths": {
+   "12": 1774,
+   "20": 1414,
+   "-3": 223,
+   "28": 132,
+   "36": 38,
+   "44": 11,
+   "3": 4,
+   "52": 3,
+   "60": 2,
+   "0": 1,
+   "1578": 1,
+   "642": 1
+  },
+  "vertex_region": [
+   "0xe800",
+   "0x56600"
+  ],
+  "post_vertex_region": [
+   "0x56600",
+   "0xbdb00"
+  ],
+  "post_vertex_size": 423168
+ },
+ "vif_cmd_topbyte_hist": {
+  "vertex_region": {
+   "0x43": 13948,
+   "0x3f": 13219,
+   "0x3e": 9428,
+   "0x0": 9395,
+   "0x3d": 7517,
+   "0xbd": 3789,
+   "0x3c": 3552,
+   "0xbe": 2972,
+   "0xbc": 2528,
+   "0xbf": 1968,
+   "0x3b": 1272,
+   "0xbb": 1142,
+   "0x3a": 441,
+   "0x42": 384,
+   "0xba": 368,
+   "0x39": 164
+  },
+  "post_vertex_region": {
+   "0x0": 21769,
+   "0x80": 1563,
+   "0x10": 1354,
+   "0x11": 1309,
+   "0x61": 992,
+   "0x12": 990,
+   "0x1": 973,
+   "0xe": 908,
+   "0x21": 854,
+   "0x3d": 843,
+   "0x20": 841,
+   "0xf": 835,
+   "0x1f": 826,
+   "0xef": 804,
+   "0x94": 780,
+   "0x9e": 729
+  },
+  "note": "byte 3 of each 4-aligned u32 = VIF CMD position. A VIF stream concentrates in 0x00-0x09/0x10-0x17/0x4A/0x50-0x51/0x60-0x7F; IEEE-754 float payload concentrates in exponent bytes 0x38-0x43 / 0xB8-0xC3."
+ },
+ "vif_walks": {
+  "tail_start": {
+   "consumed": 0,
+   "hist": {},
+   "tex0": [],
+   "gif_tags": [],
+   "fail": {
+    "file_off": "0xe800",
+    "cmd_byte": "0x43",
+    "word": "0x43000000"
+   },
+   "start": "0xe800"
+  },
+  "post_vertex_start": {
+   "consumed": 0,
+   "hist": {},
+   "tex0": [],
+   "gif_tags": [],
+   "fail": {
+    "file_off": "0x56600",
+    "cmd_byte": "0xb3",
+    "word": "0xb30906f9"
+   },
+   "start": "0x56600"
+  },
+  "segment_0": {
+   "consumed": 0,
+   "hist": {},
+   "tex0": [],
+   "gif_tags": [],
+   "fail": {
+    "file_off": "0xe800",
+    "cmd_byte": "0x43",
+    "word": "0x43000000"
+   },
+   "start": "0xe800"
+  },
+  "segment_1": {
+   "consumed": 0,
+   "hist": {},
+   "tex0": [],
+   "gif_tags": [],
+   "fail": {
+    "file_off": "0x35800",
+    "cmd_byte": "0x3d",
+    "word": "0x3df67177"
+   },
+   "start": "0x35800"
+  },
+  "segment_2": {
+   "consumed": 0,
+   "hist": {},
+   "tex0": [],
+   "gif_tags": [],
+   "fail": {
+    "file_off": "0x37800",
+    "cmd_byte": "0x3f",
+    "word": "0x3f5afe28"
+   },
+   "start": "0x37800"
+  },
+  "segment_3": {
+   "consumed": 8,
+   "hist": {
+    "NOP": 2
+   },
+   "tex0": [],
+   "gif_tags": [],
+   "fail": {
+    "file_off": "0x56808",
+    "cmd_byte": "0x24",
+    "word": "0x24b758b3"
+   },
+   "start": "0x56800"
+  },
+  "segment_4": {
+   "consumed": 0,
+   "hist": {},
+   "tex0": [],
+   "gif_tags": [],
+   "fail": {
+    "file_off": "0x5a800",
+    "cmd_byte": "0x80",
+    "word": "0x801e254c"
+   },
+   "start": "0x5a800"
+  },
+  "segment_5": {
+   "consumed": 0,
+   "hist": {},
+   "tex0": [],
+   "gif_tags": [],
+   "fail": {
+    "file_off": "0x5b800",
+    "cmd_byte": "0x80",
+    "word": "0x80808dbd"
+   },
+   "start": "0x5b800"
+  },
+  "segment_6": {
+   "consumed": 0,
+   "hist": {},
+   "tex0": [],
+   "gif_tags": [],
+   "fail": {
+    "file_off": "0x5d800",
+    "cmd_byte": "0x27",
+    "word": "0x27126584"
+   },
+   "start": "0x5d800"
+  },
+  "segment_7": {
+   "consumed": 0,
+   "hist": {},
+   "tex0": [],
+   "gif_tags": [],
+   "fail": {
+    "file_off": "0x66800",
+    "cmd_byte": "0x25",
+    "word": "0x25231221"
+   },
+   "start": "0x66800"
+  },
+  "segment_8": {
+   "consumed": 2736,
+   "hist": {
+    "NOP": 682,
+    "STCYCL": 2
+   },
+   "tex0": [],
+   "gif_tags": [],
+   "fail": {
+    "file_off": "0x682b0",
+    "cmd_byte": "0x12",
+    "word": "0x126885cc"
+   },
+   "start": "0x67800"
+  },
+  "segment_9": {
+   "consumed": 28,
+   "hist": {
+    "NOP": 4,
+    "STCYCL": 2,
+    "MSCAL": 1
+   },
+   "tex0": [],
+   "gif_tags": [],
+   "fail": {
+    "file_off": "0x6881c",
+    "cmd_byte": "0x20",
+    "word": "0x20024a4a"
+   },
+   "start": "0x68800"
+  },
+  "segment_10": {
+   "consumed": 2672,
+   "hist": {
+    "NOP": 668
+   },
+   "tex0": [],
+   "gif_tags": [],
+   "fail": {
+    "file_off": "0x6a270",
+    "cmd_byte": "0x25",
+    "word": "0x25111002"
+   },
+   "start": "0x69800"
+  },
+  "segment_11": {
+   "consumed": 16,
+   "hist": {
+    "STCYCL": 1,
+    "OFFSET": 3
+   },
+   "tex0": [],
+   "gif_tags": [],
+   "fail": {
+    "file_off": "0x6a810",
+    "cmd_byte": "0x13",
+    "word": "0x13050217"
+   },
+   "start": "0x6a800"
+  }
+ },
+ "gif_naive_candidates": {
+  "whole_tail": 18812,
+  "by_flg": {
+   "2": 4400,
+   "0": 10122,
+   "1": 4290
+  },
+  "post_vertex": 17001,
+  "by_flg_post": {
+   "0": 9751,
+   "1": 4166,
+   "2": 3084
+  },
+  "note": "count of 16-aligned qwords that merely FIT the GIFtag bit shape (NLOOP>0, FLG<=2). In float/record payload this floods \u2014 it is a false-positive metric, NOT a packet count."
+ },
+ "gif_ad_scan": {
+  "qword_aligned_hits": 1535,
+  "qword_aligned_by_reg": {
+   "PRIM": 1533,
+   "RGBAQ": 2
+  },
+  "qword_aligned_nonzero_data": [
+   {
+    "file_off": "0x37ee0",
+    "reg": "PRIM",
+    "data": "0x3f2757ba",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x574a0",
+    "reg": "PRIM",
+    "data": "0x2ee58",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x574b0",
+    "reg": "PRIM",
+    "data": "0x23050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x574c0",
+    "reg": "PRIM",
+    "data": "0x34050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x574d0",
+    "reg": "PRIM",
+    "data": "0x45050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x574e0",
+    "reg": "PRIM",
+    "data": "0x56050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x574f0",
+    "reg": "PRIM",
+    "data": "0x67050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57500",
+    "reg": "PRIM",
+    "data": "0x78050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57510",
+    "reg": "PRIM",
+    "data": "0x89050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57520",
+    "reg": "PRIM",
+    "data": "0x9a050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57530",
+    "reg": "PRIM",
+    "data": "0xab050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57540",
+    "reg": "PRIM",
+    "data": "0xbc050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57550",
+    "reg": "PRIM",
+    "data": "0xcd050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57560",
+    "reg": "PRIM",
+    "data": "0xde050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57570",
+    "reg": "PRIM",
+    "data": "0x60000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57580",
+    "reg": "PRIM",
+    "data": "0xef050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57590",
+    "reg": "PRIM",
+    "data": "0x100050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x575a0",
+    "reg": "PRIM",
+    "data": "0x60000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x575b0",
+    "reg": "PRIM",
+    "data": "0x111050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x575c0",
+    "reg": "PRIM",
+    "data": "0x122050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x575d0",
+    "reg": "PRIM",
+    "data": "0x133050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x575e0",
+    "reg": "PRIM",
+    "data": "0x144050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x575f0",
+    "reg": "PRIM",
+    "data": "0x155050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57600",
+    "reg": "PRIM",
+    "data": "0x166050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57610",
+    "reg": "PRIM",
+    "data": "0x177050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57620",
+    "reg": "PRIM",
+    "data": "0x188050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57630",
+    "reg": "PRIM",
+    "data": "0x199050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57640",
+    "reg": "PRIM",
+    "data": "0x1aa050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57650",
+    "reg": "PRIM",
+    "data": "0x1bb050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57660",
+    "reg": "PRIM",
+    "data": "0x1cc050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57670",
+    "reg": "PRIM",
+    "data": "0x60000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57680",
+    "reg": "PRIM",
+    "data": "0x1dd050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57690",
+    "reg": "PRIM",
+    "data": "0x1ee050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x576a0",
+    "reg": "PRIM",
+    "data": "0x60000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57710",
+    "reg": "PRIM",
+    "data": "0x800000000000400",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57720",
+    "reg": "PRIM",
+    "data": "0x4bf030000400",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57790",
+    "reg": "PRIM",
+    "data": "0x800000000008040",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x577a0",
+    "reg": "PRIM",
+    "data": "0x2a7030000040",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x577b0",
+    "reg": "PRIM",
+    "data": "0x60000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57820",
+    "reg": "PRIM",
+    "data": "0x800000000000200",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57830",
+    "reg": "PRIM",
+    "data": "0x8df030000200",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x578a0",
+    "reg": "PRIM",
+    "data": "0x800000000008004",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x578b0",
+    "reg": "PRIM",
+    "data": "0x327030000004",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x578c0",
+    "reg": "PRIM",
+    "data": "0x60000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57930",
+    "reg": "PRIM",
+    "data": "0x800000000000400",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57940",
+    "reg": "PRIM",
+    "data": "0xadf030000400",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x579b0",
+    "reg": "PRIM",
+    "data": "0x800000000008004",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x579c0",
+    "reg": "PRIM",
+    "data": "0x32b030000004",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x579d0",
+    "reg": "PRIM",
+    "data": "0x60000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57a40",
+    "reg": "PRIM",
+    "data": "0x800000000000400",
+    "align_mod16": 0
+   }
+  ],
+  "qword_aligned": [
+   {
+    "file_off": "0x37ee0",
+    "reg": "PRIM",
+    "data": "0x3f2757ba",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56b40",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56b50",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56b60",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56b80",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56b90",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56ba0",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56bc0",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56bd0",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56be0",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56c00",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56c10",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56c20",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56c40",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56c50",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56c60",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56c80",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56c90",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56ca0",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56cc0",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56cd0",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56ce0",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56d00",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56d10",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56d20",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56d40",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56d50",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x56d60",
+    "reg": "PRIM",
+    "data": "0x0",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x574a0",
+    "reg": "PRIM",
+    "data": "0x2ee58",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x574b0",
+    "reg": "PRIM",
+    "data": "0x23050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x574c0",
+    "reg": "PRIM",
+    "data": "0x34050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x574d0",
+    "reg": "PRIM",
+    "data": "0x45050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x574e0",
+    "reg": "PRIM",
+    "data": "0x56050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x574f0",
+    "reg": "PRIM",
+    "data": "0x67050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57500",
+    "reg": "PRIM",
+    "data": "0x78050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57510",
+    "reg": "PRIM",
+    "data": "0x89050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57520",
+    "reg": "PRIM",
+    "data": "0x9a050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57530",
+    "reg": "PRIM",
+    "data": "0xab050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57540",
+    "reg": "PRIM",
+    "data": "0xbc050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57550",
+    "reg": "PRIM",
+    "data": "0xcd050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57560",
+    "reg": "PRIM",
+    "data": "0xde050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57570",
+    "reg": "PRIM",
+    "data": "0x60000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57580",
+    "reg": "PRIM",
+    "data": "0xef050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x57590",
+    "reg": "PRIM",
+    "data": "0x100050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x575a0",
+    "reg": "PRIM",
+    "data": "0x60000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x575b0",
+    "reg": "PRIM",
+    "data": "0x111050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x575c0",
+    "reg": "PRIM",
+    "data": "0x122050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x575d0",
+    "reg": "PRIM",
+    "data": "0x133050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x575e0",
+    "reg": "PRIM",
+    "data": "0x144050000000",
+    "align_mod16": 0
+   },
+   {
+    "file_off": "0x575f0",
+    "reg": "PRIM",
+    "data": "0x155050000000",
+    "align_mod16": 0
+   }
+  ],
+  "any_alignment_hits": 28313,
+  "any_alignment_mod16_hist": {
+   "7": 5019,
+   "8": 1752,
+   "12": 1700,
+   "13": 1436,
+   "14": 1489,
+   "15": 1578,
+   "0": 1535,
+   "4": 1735,
+   "5": 1549,
+   "6": 1465,
+   "9": 1388,
+   "10": 1410,
+   "11": 1460,
+   "2": 1549,
+   "1": 1585,
+   "3": 1663
+  },
+  "tex0_reg_hits_any_alignment": [],
+  "verdict_rule": "A real GIF stream is qword-framed from a packet start; TEX0 sightings are claimed ONLY from qword-aligned A+D hits inside a framed parse. Unaligned hits inside records are coincidences."
+ },
+ "tex0_unframed_candidates": {
+  "count_loose": 1403,
+  "count_strict_TW_TH_ge5": 99,
+  "strict_first20": [
+   {
+    "file_off": "0x5b040",
+    "tex0": {
+     "raw": "0x606080a14040816",
+     "TBP0": 2070,
+     "TBW": 16,
+     "PSM": 0,
+     "PSM_name": "PSMCT32",
+     "TW": 5,
+     "TH": 8,
+     "width": 32,
+     "height": 256,
+     "TCC": 0,
+     "TFX": 1,
+     "CBP": 12352,
+     "CPSM": 0,
+     "CSM": 0,
+     "CLD": 6
+    }
+   },
+   {
+    "file_off": "0x5bc50",
+    "tex0": {
+     "raw": "0x7161e2264161d22",
+     "TBP0": 7458,
+     "TBW": 24,
+     "PSM": 1,
+     "PSM_name": "PSMCT16",
+     "TW": 9,
+     "TH": 9,
+     "width": 512,
+     "height": 512,
+     "TCC": 0,
+     "TFX": 0,
+     "CBP": 12529,
+     "CPSM": 2,
+     "CSM": 0,
+     "CLD": 7
+    }
+   },
+   {
+    "file_off": "0x603f8",
+    "tex0": {
+     "raw": "0x40a8246140ba253",
+     "TBP0": 8787,
+     "TBW": 46,
+     "PSM": 0,
+     "PSM_name": "PSMCT32",
+     "TW": 5,
+     "TH": 8,
+     "width": 32,
+     "height": 256,
+     "TCC": 1,
+     "TFX": 0,
+     "CBP": 5138,
+     "CPSM": 1,
+     "CSM": 0,
+     "CLD": 4
+    }
+   },
+   {
+    "file_off": "0x64e40",
+    "tex0": {
+     "raw": "0x535e29a1543a3cb",
+     "TBP0": 9163,
+     "TBW": 14,
+     "PSM": 20,
+     "PSM_name": "PSMT4",
+     "TW": 5,
+     "TH": 8,
+     "width": 32,
+     "height": 256,
+     "TCC": 0,
+     "TFX": 3,
+     "CBP": 12052,
+     "CPSM": 6,
+     "CSM": 0,
+     "CLD": 5
+    }
+   },
+   {
+    "file_off": "0x65ac8",
+    "tex0": {
+     "raw": "0x2739d1624160626",
+     "TBP0": 1574,
+     "TBW": 24,
+     "PSM": 1,
+     "PSM_name": "PSMCT16",
+     "TW": 9,
+     "TH": 8,
+     "width": 512,
+     "height": 256,
+     "TCC": 1,
+     "TFX": 2,
+     "CBP": 7400,
+     "CPSM": 14,
+     "CSM": 0,
+     "CLD": 2
+    }
+   },
+   {
+    "file_off": "0x6a6a8",
+    "tex0": {
+     "raw": "0x507171e1e062f46",
+     "TBP0": 12102,
+     "TBW": 24,
+     "PSM": 32,
+     "PSM_name": "PSMT4HH",
+     "TW": 7,
+     "TH": 8,
+     "width": 128,
+     "height": 256,
+     "TCC": 1,
+     "TFX": 3,
+     "CBP": 14520,
+     "CPSM": 0,
+     "CSM": 0,
+     "CLD": 5
+    }
+   },
+   {
+    "file_off": "0x6ade8",
+    "tex0": {
+     "raw": "0x70a051e270e1117",
+     "TBP0": 4375,
+     "TBW": 56,
+     "PSM": 48,
+     "PSM_name": "PSMZ16S",
+     "TW": 9,
+     "TH": 8,
+     "width": 512,
+     "height": 256,
+     "TCC": 1,
+     "TFX": 3,
+     "CBP": 4136,
+     "CPSM": 1,
+     "CSM": 0,
+     "CLD": 7
+    }
+   },
+   {
+    "file_off": "0x6afd0",
+    "tex0": {
+     "raw": "0x717173a2b0b0e3a",
+     "TBP0": 3642,
+     "TBW": 44,
+     "PSM": 48,
+     "PSM_name": "PSMZ16S",
+     "TW": 10,
+     "TH": 8,
+     "width": 1024,
+     "height": 256,
+     "TCC": 0,
+     "TFX": 3,
+     "CBP": 14521,
+     "CPSM": 2,
+     "CSM": 0,
+     "CLD": 7
+    }
+   },
+   {
+    "file_off": "0x6b158",
+    "tex0": {
+     "raw": "0x70e1d021c133a05",
+     "TBP0": 14853,
+     "TBW": 12,
+     "PSM": 1,
+     "PSM_name": "PSMCT16",
+     "TW": 7,
+     "TH": 8,
+     "width": 128,
+     "height": 256,
+     "TCC": 0,
+     "TFX": 0,
+     "CBP": 12520,
+     "CPSM": 1,
+     "CSM": 0,
+     "CLD": 7
+    }
+   },
+   {
+    "file_off": "0x7e0a0",
+    "tex0": {
+     "raw": "0x726311e18261621",
+     "TBP0": 5665,
+     "TBW": 24,
+     "PSM": 2,
+     "PSM_name": "PSMCT24",
+     "TW": 6,
+     "TH": 8,
+     "width": 64,
+     "height": 256,
+     "TCC": 1,
+     "TFX": 3,
+     "CBP": 12680,
+     "CPSM": 4,
+     "CSM": 0,
+     "CLD": 7
+    }
+   },
+   {
+    "file_off": "0x7ee30",
+    "tex0": {
+     "raw": "0x416597618286464",
+     "TBP0": 9316,
+     "TBW": 33,
+     "PSM": 2,
+     "PSM_name": "PSMCT24",
+     "TW": 6,
+     "TH": 8,
+     "width": 64,
+     "height": 256,
+     "TCC": 1,
+     "TFX": 2,
+     "CBP": 13003,
+     "CPSM": 2,
+     "CSM": 0,
+     "CLD": 4
+    }
+   },
+   {
+    "file_off": "0x7fe00",
+    "tex0": {
+     "raw": "0x53116221342258",
+     "TBP0": 8792,
+     "TBW": 16,
+     "PSM": 19,
+     "PSM_name": "PSMT8",
+     "TW": 8,
+     "TH": 8,
+     "width": 256,
+     "height": 256,
+     "TCC": 0,
+     "TFX": 0,
+     "CBP": 6283,
+     "CPSM": 10,
+     "CSM": 0,
+     "CLD": 0
+    }
+   },
+   {
+    "file_off": "0x80168",
+    "tex0": {
+     "raw": "0x594715615865356",
+     "TBP0": 4950,
+     "TBW": 25,
+     "PSM": 24,
+     "PSM_name": "PSMZ32",
+     "TW": 5,
+     "TH": 8,
+     "width": 32,
+     "height": 256,
+     "TCC": 1,
+     "TFX": 2,
+     "CBP": 9098,
+     "CPSM": 2,
+     "CSM": 1,
+     "CLD": 5
+    }
+   },
+   {
+    "file_off": "0x88810",
+    "tex0": {
+     "raw": "0x6d731624265cf7",
+     "TBP0": 7415,
+     "TBW": 25,
+     "PSM": 2,
+     "PSM_name": "PSMCT24",
+     "TW": 9,
+     "TH": 8,
+     "width": 512,
+     "height": 256,
+     "TCC": 1,
+     "TFX": 2,
+     "CBP": 11160,
+     "CPSM": 13,
+     "CSM": 0,
+     "CLD": 0
+    }
+   },
+   {
+    "file_off": "0x88920",
+    "tex0": {
+     "raw": "0xde2b0c8361",
+     "TBP0": 865,
+     "TBW": 50,
+     "PSM": 48,
+     "PSM_name": "PSMZ16S",
+     "TW": 10,
+     "TH": 8,
+     "width": 1024,
+     "height": 256,
+     "TCC": 1,
+     "TFX": 3,
+     "CBP": 6,
+     "CPSM": 0,
+     "CSM": 0,
+     "CLD": 0
+    }
+   },
+   {
+    "file_off": "0x889a8",
+    "tex0": {
+     "raw": "0xde2b0c8361",
+     "TBP0": 865,
+     "TBW": 50,
+     "PSM": 48,
+     "PSM_name": "PSMZ16S",
+     "TW": 10,
+     "TH": 8,
+     "width": 1024,
+     "height": 256,
+     "TCC": 1,
+     "TFX": 3,
+     "CBP": 6,
+     "CPSM": 0,
+     "CSM": 0,
+     "CLD": 0
+    }
+   },
+   {
+    "file_off": "0x88a30",
+    "tex0": {
+     "raw": "0xde2b0c8361",
+     "TBP0": 865,
+     "TBW": 50,
+     "PSM": 48,
+     "PSM_name": "PSMZ16S",
+     "TW": 10,
+     "TH": 8,
+     "width": 1024,
+     "height": 256,
+     "TCC": 1,
+     "TFX": 3,
+     "CBP": 6,
+     "CPSM": 0,
+     "CSM": 0,
+     "CLD": 0
+    }
+   },
+   {
+    "file_off": "0x88ab8",
+    "tex0": {
+     "raw": "0xde2b0c8361",
+     "TBP0": 865,
+     "TBW": 50,
+     "PSM": 48,
+     "PSM_name": "PSMZ16S",
+     "TW": 10,
+     "TH": 8,
+     "width": 1024,
+     "height": 256,
+     "TCC": 1,
+     "TFX": 3,
+     "CBP": 6,
+     "CPSM": 0,
+     "CSM": 0,
+     "CLD": 0
+    }
+   },
+   {
+    "file_off": "0x88b40",
+    "tex0": {
+     "raw": "0xde2b0c8361",
+     "TBP0": 865,
+     "TBW": 50,
+     "PSM": 48,
+     "PSM_name": "PSMZ16S",
+     "TW": 10,
+     "TH": 8,
+     "width": 1024,
+     "height": 256,
+     "TCC": 1,
+     "TFX": 3,
+     "CBP": 6,
+     "CPSM": 0,
+     "CSM": 0,
+     "CLD": 0
+    }
+   },
+   {
+    "file_off": "0x88bc8",
+    "tex0": {
+     "raw": "0xde2b0c8361",
+     "TBP0": 865,
+     "TBW": 50,
+     "PSM": 48,
+     "PSM_name": "PSMZ16S",
+     "TW": 10,
+     "TH": 8,
+     "width": 1024,
+     "height": 256,
+     "TCC": 1,
+     "TFX": 3,
+     "CBP": 6,
+     "CPSM": 0,
+     "CSM": 0,
+     "CLD": 0
+    }
+   }
+  ],
+  "first20": [
+   {
+    "file_off": "0x57100",
+    "tex0": {
+     "raw": "0x25825796",
+     "TBP0": 6038,
+     "TBW": 9,
+     "PSM": 24,
+     "PSM_name": "PSMZ32",
+     "TW": 9,
+     "TH": 0,
+     "width": 512,
+     "height": 1,
+     "TCC": 0,
+     "TFX": 0,
+     "CBP": 0,
+     "CPSM": 0,
+     "CSM": 0,
+     "CLD": 0
+    }
+   },
+   {
+    "file_off": "0x57180",
+    "tex0": {
+     "raw": "0x25b54590",
+     "TBP0": 1424,
+     "TBW": 21,
+     "PSM": 27,
+     "PSM_name": "PSMT8H",
+     "TW": 9,
+     "TH": 0,
+     "width": 512,
+     "height": 1,
+     "TCC": 0,
+     "TFX": 0,
+     "CBP": 0,
+     "CPSM": 0,
+     "CSM": 0,
+     "CLD": 0
+    }
+   },
+   {
+    "file_off": "0x57480",
+    "tex0": {
+     "raw": "0xe000200060803",
+     "TBP0": 2051,
+     "TBW": 24,
+     "PSM": 0,
+     "PSM_name": "PSMCT32",
+     "TW": 0,
+     "TH": 8,
+     "width": 1,
+     "height": 256,
+     "TCC": 0,
+     "TFX": 0,
+     "CBP": 12288,
+     "CPSM": 1,
+     "CSM": 0,
+     "CLD": 0
+    }
+   },
+   {
+    "file_off": "0x57490",
+    "tex0": {
+     "raw": "0x2ee900002ee20",
+     "TBP0": 11808,
+     "TBW": 11,
+     "PSM": 0,
+     "PSM_name": "PSMCT32",
+     "TW": 0,
+     "TH": 0,
+     "width": 1,
+     "height": 1,
+     "TCC": 0,
+     "TFX": 2,
+     "CBP": 6004,
+     "CPSM": 0,
+     "CSM": 0,
+     "CLD": 0
+    }
+   },
+   {
+    "file_off": "0x57498",
+    "tex0": {
+     "raw": "0x2ee080002ee90",
+     "TBP0": 11920,
+     "TBW": 11,
+     "PSM": 0,
+     "PSM_name": "PSMCT32",
+     "TW": 0,
+     "TH": 0,
+     "width": 1,
+     "height": 1,
+     "TCC": 0,
+     "TFX": 1,
+     "CBP": 6000,
+     "CPSM": 0,
+     "CSM": 0,
+     "CLD": 0
+    }
+   },
+   {
+    "file_off": "0x574a0",
+    "tex0": {
+     "raw": "0x2ee58",
+     "TBP0": 11864,
+     "TBW": 11,
+     "PSM": 0,
+     "PSM_name": "PSMCT32",
+     "TW": 0,
+     "TH": 0,
+     "width": 1,
+     "height": 1,
+     "TCC": 0,
+     "TFX": 0,
+     "CBP": 0,
+     "CPSM": 0,
+     "CSM": 0,
+     "CLD": 0
+    }
+   },
+   {
+    "file_off": "0x59538",
+    "tex0": {
+     "raw": "0x8000800001000e",
+     "TBP0": 14,
+     "TBW": 4,
+     "PSM": 0,
+     "PSM_name": "PSMCT32",
+     "TW": 0,
+     "TH": 0,
+     "width": 1,
+     "height": 1,
+     "TCC": 0,
+     "TFX": 0,
+     "CBP": 4,
+     "CPSM": 0,
+     "CSM": 1,
+     "CLD": 0
+    }
+   },
+   {
+    "file_off": "0x59598",
+    "tex0": {
+     "raw": "0x10000800002000e",
+     "TBP0": 14,
+     "TBW": 8,
+     "PSM": 0,
+     "PSM_name": "PSMCT32",
+     "TW": 0,
+     "TH": 0,
+     "width": 1,
+     "height": 1,
+     "TCC": 0,
+     "TFX": 0,
+     "CBP": 4,
+     "CPSM": 0,
+     "CSM": 0,
+     "CLD": 1
+    }
+   },
+   {
+    "file_off": "0x595f8",
+    "tex0": {
+     "raw": "0x10000400003000e",
+     "TBP0": 14,
+     "TBW": 12,
+     "PSM": 0,
+     "PSM_name": "PSMCT32",
+     "TW": 0,
+     "TH": 0,
+     "width": 1,
+     "height": 1,
+     "TCC": 0,
+     "TFX": 0,
+     "CBP": 2,
+     "CPSM": 0,
+     "CSM": 0,
+     "CLD": 1
+    }
+   },
+   {
+    "file_off": "0x59658",
+    "tex0": {
+     "raw": "0x10001000004000e",
+     "TBP0": 14,
+     "TBW": 16,
+     "PSM": 0,
+     "PSM_name": "PSMCT32",
+     "TW": 0,
+     "TH": 0,
+     "width": 1,
+     "height": 1,
+     "TCC": 0,
+     "TFX": 0,
+     "CBP": 8,
+     "CPSM": 0,
+     "CSM": 0,
+     "CLD": 1
+    }
+   },
+   {
+    "file_off": "0x596b8",
+    "tex0": {
+     "raw": "0x2000200005000e",
+     "TBP0": 14,
+     "TBW": 20,
+     "PSM": 0,
+     "PSM_name": "PSMCT32",
+     "TW": 0,
+     "TH": 0,
+     "width": 1,
+     "height": 1,
+     "TCC": 0,
+     "TFX": 0,
+     "CBP": 1,
+     "CPSM": 4,
+     "CSM": 0,
+     "CLD": 0
+    }
+   },
+   {
+    "file_off": "0x59718",
+    "tex0": {
+     "raw": "0x8000800006000e",
+     "TBP0": 14,
+     "TBW": 24,
+     "PSM": 0,
+     "PSM_name": "PSMCT32",
+     "TW": 0,
+     "TH": 0,
+     "width": 1,
+     "height": 1,
+     "TCC": 0,
+     "TFX": 0,
+     "CBP": 4,
+     "CPSM": 0,
+     "CSM": 1,
+     "CLD": 0
+    }
+   },
+   {
+    "file_off": "0x59778",
+    "tex0": {
+     "raw": "0x10000800007000e",
+     "TBP0": 14,
+     "TBW": 28,
+     "PSM": 0,
+     "PSM_name": "PSMCT32",
+     "TW": 0,
+     "TH": 0,
+     "width": 1,
+     "height": 1,
+     "TCC": 0,
+     "TFX": 0,
+     "CBP": 4,
+     "CPSM": 0,
+     "CSM": 0,
+     "CLD": 1
+    }
+   },
+   {
+    "file_off": "0x597d8",
+    "tex0": {
+     "raw": "0x2000200008000e",
+     "TBP0": 14,
+     "TBW": 32,
+     "PSM": 0,
+     "PSM_name": "PSMCT32",
+     "TW": 0,
+     "TH": 0,
+     "width": 1,
+     "height": 1,
+     "TCC": 0,
+     "TFX": 0,
+     "CBP": 1,
+     "CPSM": 4,
+     "CSM": 0,
+     "CLD": 0
+    }
+   },
+   {
+    "file_off": "0x59838",
+    "tex0": {
+     "raw": "0x4000400009000e",
+     "TBP0": 14,
+     "TBW": 36,
+     "PSM": 0,
+     "PSM_name": "PSMCT32",
+     "TW": 0,
+     "TH": 0,
+     "width": 1,
+     "height": 1,
+     "TCC": 0,
+     "TFX": 0,
+     "CBP": 2,
+     "CPSM": 8,
+     "CSM": 0,
+     "CLD": 0
+    }
+   },
+   {
+    "file_off": "0x59898",
+    "tex0": {
+     "raw": "0x100020000a000e",
+     "TBP0": 14,
+     "TBW": 40,
+     "PSM": 0,
+     "PSM_name": "PSMCT32",
+     "TW": 0,
+     "TH": 0,
+     "width": 1,
+     "height": 1,
+     "TCC": 0,
+     "TFX": 0,
+     "CBP": 1,
+     "CPSM": 2,
+     "CSM": 0,
+     "CLD": 0
+    }
+   },
+   {
+    "file_off": "0x598f8",
+    "tex0": {
+     "raw": "0x4000800001010e",
+     "TBP0": 270,
+     "TBW": 4,
+     "PSM": 0,
+     "PSM_name": "PSMCT32",
+     "TW": 0,
+     "TH": 0,
+     "width": 1,
+     "height": 1,
+     "TCC": 0,
+     "TFX": 0,
+     "CBP": 4,
+     "CPSM": 8,
+     "CSM": 0,
+     "CLD": 0
+    }
+   },
+   {
+    "file_off": "0x59958",
+    "tex0": {
+     "raw": "0x400040000b000e",
+     "TBP0": 14,
+     "TBW": 44,
+     "PSM": 0,
+     "PSM_name": "PSMCT32",
+     "TW": 0,
+     "TH": 0,
+     "width": 1,
+     "height": 1,
+     "TCC": 0,
+     "TFX": 0,
+     "CBP": 2,
+     "CPSM": 8,
+     "CSM": 0,
+     "CLD": 0
+    }
+   },
+   {
+    "file_off": "0x59980",
+    "tex0": {
+     "raw": "0xfc000fc005",
+     "TBP0": 5,
+     "TBW": 63,
+     "PSM": 0,
+     "PSM_name": "PSMCT32",
+     "TW": 0,
+     "TH": 0,
+     "width": 1,
+     "height": 1,
+     "TCC": 1,
+     "TFX": 3,
+     "CBP": 7,
+     "CPSM": 0,
+     "CSM": 0,
+     "CLD": 0
+    }
+   },
+   {
+    "file_off": "0x59a78",
+    "tex0": {
+     "raw": "0x8000800001000e",
+     "TBP0": 14,
+     "TBW": 4,
+     "PSM": 0,
+     "PSM_name": "PSMCT32",
+     "TW": 0,
+     "TH": 0,
+     "width": 1,
+     "height": 1,
+     "TCC": 0,
+     "TFX": 0,
+     "CBP": 4,
+     "CPSM": 0,
+     "CSM": 1,
+     "CLD": 0
+    }
+   }
+  ],
+  "status": "CANDIDATES ONLY \u2014 no GIF framing supports any of these; not sightings."
+ },
+ "dma_chain_probe": {
+  "starts_tested": 26447,
+  "id_hist_qwc_plausible": {
+   "0": 1716,
+   "1": 1053,
+   "2": 818,
+   "3": 637,
+   "4": 577,
+   "5": 640,
+   "6": 699,
+   "7": 905
+  },
+  "chains_ge3_steps": 277,
+  "max_chain_steps": 5,
+  "chains_first10": [
+   {
+    "file_off": "0x5b0d0",
+    "steps": 3,
+    "ids": [
+     1,
+     1,
+     0
+    ]
+   },
+   {
+    "file_off": "0x5c420",
+    "steps": 3,
+    "ids": [
+     1,
+     1,
+     5
+    ]
+   },
+   {
+    "file_off": "0x5cc30",
+    "steps": 3,
+    "ids": [
+     1,
+     1,
+     4
+    ]
+   },
+   {
+    "file_off": "0x5d3b0",
+    "steps": 3,
+    "ids": [
+     1,
+     1,
+     0
+    ]
+   },
+   {
+    "file_off": "0x5e6a0",
+    "steps": 3,
+    "ids": [
+     1,
+     1,
+     7
+    ]
+   },
+   {
+    "file_off": "0x5e870",
+    "steps": 4,
+    "ids": [
+     1,
+     1,
+     1,
+     0
+    ]
+   },
+   {
+    "file_off": "0x5f390",
+    "steps": 3,
+    "ids": [
+     1,
+     1,
+     7
+    ]
+   },
+   {
+    "file_off": "0x5f6c0",
+    "steps": 4,
+    "ids": [
+     1,
+     1,
+     1,
+     5
+    ]
+   },
+   {
+    "file_off": "0x602b0",
+    "steps": 3,
+    "ids": [
+     1,
+     1,
+     0
+    ]
+   },
+   {
+    "file_off": "0x60300",
+    "steps": 3,
+    "ids": [
+     1,
+     1,
+     2
+    ]
+   }
+  ],
+  "verdict": "No anchored chain: the ID histogram over QWC-plausible qwords is near-uniform across all 8 IDs (random-data signature) and the longest CNT-followable chain anywhere is a few steps, scattered as chance coincidences. A stored DMA chain would anchor one long chain from a segment start. NEGATIVE."
+ },
+ "markers": {
+  "0x8004": {
+   "count": 607,
+   "first": [
+    "0xe82c",
+    "0xf08c",
+    "0x106cc",
+    "0x1076c",
+    "0x107ac",
+    "0x107ec",
+    "0x1082c",
+    "0x11f6c"
+   ]
+  },
+  "0x8014": {
+   "count": 228,
+   "first": [
+    "0x15a8c",
+    "0x15b2c",
+    "0x15bcc",
+    "0x15c0c",
+    "0x15cac",
+    "0x15d4c",
+    "0x15e4c",
+    "0x174ec"
+   ]
+  }
+ },
+ "u16_ramps_post_vertex": [
+  {
+   "file_off": "0x869a4",
+   "len_u16": 403,
+   "first": "0x4d0",
+   "last": "0x1c5e",
+   "step": 15
+  },
+  {
+   "file_off": "0x86cfa",
+   "len_u16": 122,
+   "first": "0x1f59",
+   "last": "0x2762",
+   "step": 17
+  },
+  {
+   "file_off": "0x8948c",
+   "len_u16": 177,
+   "first": "0x4d0",
+   "last": "0xfd0",
+   "step": 16
+  },
+  {
+   "file_off": "0x897e2",
+   "len_u16": 122,
+   "first": "0x201d",
+   "last": "0x2826",
+   "step": 17
+  },
+  {
+   "file_off": "0x8c034",
+   "len_u16": 403,
+   "first": "0x4d0",
+   "last": "0x1c5e",
+   "step": 15
+  },
+  {
+   "file_off": "0x8c38a",
+   "len_u16": 171,
+   "first": "0x1f04",
+   "last": "0x2a4e",
+   "step": 17
+  },
+  {
+   "file_off": "0x8ea90",
+   "len_u16": 403,
+   "first": "0x4d0",
+   "last": "0x1c5e",
+   "step": 15
+  },
+  {
+   "file_off": "0x8ede6",
+   "len_u16": 122,
+   "first": "0x1f63",
+   "last": "0x26f3",
+   "step": 16
+  },
+  {
+   "file_off": "0x91508",
+   "len_u16": 158,
+   "first": "0x4d0",
+   "last": "0xea0",
+   "step": 16
+  },
+  {
+   "file_off": "0x9185e",
+   "len_u16": 122,
+   "first": "0x2011",
+   "last": "0x281a",
+   "step": 17
+  },
+  {
+   "file_off": "0x940a0",
+   "len_u16": 403,
+   "first": "0x4d0",
+   "last": "0x1c5e",
+   "step": 15
+  },
+  {
+   "file_off": "0x943f6",
+   "len_u16": 171,
+   "first": "0x1f03",
+   "last": "0x2a4d",
+   "step": 17
+  },
+  {
+   "file_off": "0x96afc",
+   "len_u16": 598,
+   "first": "0x4d0",
+   "last": "0x1c22",
+   "step": 10
+  },
+  {
+   "file_off": "0x98724",
+   "len_u16": 403,
+   "first": "0x4d0",
+   "last": "0x193a",
+   "step": 13
+  },
+  {
+   "file_off": "0x98ac4",
+   "len_u16": 134,
+   "first": "0x1e35",
+   "last": "0x2685",
+   "step": 16
+  },
+  {
+   "file_off": "0x9adb8",
+   "len_u16": 403,
+   "first": "0x4d0",
+   "last": "0x193a",
+   "step": 13
+  },
+  {
+   "file_off": "0x9d5bc",
+   "len_u16": 77,
+   "first": "0x4d0",
+   "last": "0x814",
+   "step": 11
+  },
+  {
+   "file_off": "0x9d656",
+   "len_u16": 66,
+   "first": "0x820",
+   "last": "0xaeb",
+   "step": 11
+  },
+  {
+   "file_off": "0x9d874",
+   "len_u16": 149,
+   "first": "0x13cd",
+   "last": "0x1a29",
+   "step": 11
+  },
+  {
+   "file_off": "0x9f4e8",
+   "len_u16": 82,
+   "first": "0x4d0",
+   "last": "0x84b",
+   "step": 11
+  }
+ ],
+ "u16_ramps_count": 25,
+ "verdict": {
+  "framed_tex0_sightings": 0,
+  "qword_aligned_ad_hits": 1535,
+  "summary": "See the companion Markdown census for the interpreted verdict. Raw facts: the tail head parses as proven vertex-record framing; qword-aligned A+D-shaped qwords exist (1535) but break down as 1533 PRIM + 2 RGBAQ \u2014 ZERO texture-upload registers (TEX0_1/2, BITBLTBUF, TRXPOS/TRXREG/TRXDIR) in framed position anywhere in the tail; every strict VIF walk dies within the first words at every candidate start (longest run = NOPs across a zero pad)."
+ }
+}

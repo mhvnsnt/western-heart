@@ -30,6 +30,7 @@
    ============================================================ */
 import * as THREE from 'three';
 import { assets } from './assets.js';
+import { loadGuardStance, createAimStance } from './stance-aim.js';
 import { attiresFor, selectedAttireModel, setAttire, attireLabel } from './attires.js';
 import { loadT3Clips, createT3Actions, retargetT3Clips } from './t3anims.js';
 import { bankIdFor } from './fighter.js';
@@ -45,7 +46,7 @@ export function statsFor(c) {
 }
 
 /* ---------------- one side's live 3D preview pane ---------------- */
-class PreviewPane {
+export class PreviewPane {
   constructor(canvas, side) {
     this.side = side; // 'p1' | 'p2'
     this.canvas = canvas;
@@ -126,6 +127,15 @@ class PreviewPane {
     const cy = (this._fitCY || 0.95) * s;
     this.camera.position.set(0, cy + 0.18 * s, dist);
     this.camera.lookAt(0, cy, 0);
+    // Landscape (owner: bigger fighters): the pane now runs full height
+    // behind the roster band (select-t7.css) and the body is framed to
+    // ~88% of it, head near the top and legs behind the cards, the way
+    // T7's select renders stand. Height rules here (wide pane).
+    if (innerWidth > innerHeight) {
+      const d2 = THREE.MathUtils.clamp(Math.max((h * 0.57) / tanH, (w * 0.57) / (tanH * aspect)), 2.2, 11);
+      this.camera.position.set(0, cy + 0.12 * s, d2);
+      this.camera.lookAt(0, cy, 0);
+    }
   }
 
   /* Show a fighter (roster entry) with a specific attire model id.
@@ -234,6 +244,20 @@ class PreviewPane {
       } catch (e) {
         console.warn('[WH] select preview: T3 stance unavailable for', c.id, e.message || e);
       }
+      // NO-T-POSE backup (Tekken bank first, CMU mocap backup): when the
+      // bank stance is missing or failed the fit gates, drive the rig with
+      // the bind-independent CMU 14_01 guard (stance-aim.js).
+      if (!this.hasStance && inst.bones) {
+        try {
+          const g = await loadGuardStance();
+          if (token !== this._token) return true;
+          const aim = createAimStance(THREE, this.model, inst.bones, g);
+          if (aim) {
+            if (inst.actions && inst.actions.Idle) inst.actions.Idle.setEffectiveWeight(0);
+            this.aim = aim; this._aimT = 0; this.hasStance = true; this.stanceSource = 'cmu-14_01';
+          }
+        } catch (e) { console.warn('[WH] select preview: CMU guard unavailable for', c.id, e.message || e); }
+      } else if (this.hasStance) this.stanceSource = 'tekken-bank';
       return true;
     } catch (e) {
       if (token === this._token) {
@@ -259,6 +283,8 @@ class PreviewPane {
     this.model = null;
     this.mixer = null;
     this.hasStance = false;
+    this.aim = null;
+    this.stanceSource = null;
   }
 
   clear() { this._token++; this._clearModel(); }
@@ -266,6 +292,7 @@ class PreviewPane {
   update(dt) {
     if (!this.renderer || !this.scene || !this.camera) return;
     if (this.mixer) this.mixer.update(dt);
+    if (this.aim) { this._aimT += dt; this.aim.apply(this._aimT); }
     // Unless a validated teardown-bank stance is playing, the model
     // presents on a slow turntable (the pre-existing preview
     // presentation) — live 3D, never a still image. The GLBs'
@@ -307,6 +334,7 @@ export function createSelectScreen(deps) {
     p1: new PreviewPane($('pane-canvas-p1'), 'p1'),
     p2: new PreviewPane($('pane-canvas-p2'), 'p2'),
   };
+  window.__whSelectPanes = panes; // proof-script hook (camera framing checks)
   const clock = new THREE.Clock();
   let raf = 0;
   const loop = () => {
@@ -319,6 +347,7 @@ export function createSelectScreen(deps) {
   };
   loop();
 
+  const LAST_KEY = 'wh.select.last.v1';
   const state = {
     mode: null,
     phase: 'pick',        // 'pick' | 'done'
@@ -349,7 +378,7 @@ export function createSelectScreen(deps) {
      (renderAttires), not as duplicate cards. */
   const SELECT_HIDDEN = new Set([
     'rin', 'byou', 'tou', 'sha', 'kai', 'jin_soul', 'retsu', 'zen', 'gyou',
-    'ryuji', 'doc-frank-machine-shop',
+    'doc-frank-machine-shop',
   ]);
   const selectRoster = () => deps.roster().filter(c => !SELECT_HIDDEN.has(c.id));
 
@@ -357,29 +386,27 @@ export function createSelectScreen(deps) {
     if (!strip) return;
     strip.innerHTML = '';
     const roster = selectRoster();
+    // T8 grid (teardown/tekken8/ui/CHARACTER-SELECT.md): ONE compact
+    // face-card grid, no tier rows, no names on cards; owner's Tripo
+    // fighters still lead (registry order from data/tripo-fighters.json).
     const tripo = TRIPO_IDS || new Set();
-    const tiers = [
-      { label: 'TRIPO ORIGINALS', fighters: roster.filter(c => tripo.has(c.id)) },
-      { label: 'MAIN ROSTER', fighters: roster.filter(c => !tripo.has(c.id)) },
-    ].filter(t => t.fighters.length);
-    tiers.forEach(({ label, fighters }) => {
-      const t = document.createElement('div');
-      t.className = 'strip-tier';
-      t.textContent = label;
-      strip.appendChild(t);
-      fighters.forEach((c) => {
-        const card = document.createElement('div');
-        card.className = 'char-card';
-        card.dataset.id = c.id;
-        card.innerHTML = portraitHTML(c);
-        card.addEventListener('click', () => highlight(c, { fromTap: true }));
-        strip.appendChild(card);
-      });
+    const ordered = [...roster.filter(c => tripo.has(c.id)), ...roster.filter(c => !tripo.has(c.id))];
+    const cards = ordered.map((c) => {
+      const card = document.createElement('div');
+      card.className = 'char-card';
+      card.dataset.id = c.id;
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', c.name);
+      card.innerHTML = portraitHTML(c);
+      card.addEventListener('click', () => highlight(c, { fromTap: true }));
+      return card;
     });
-    // Tekken 6 convention: a "?" random slot at the end of the row.
+    // T8: the "?" random card sits inside the grid flow (centre of the last row).
     const rnd = document.createElement('div');
     rnd.className = 'char-card random-card';
     rnd.dataset.id = '__random';
+    rnd.setAttribute('role', 'button');
+    rnd.setAttribute('aria-label', 'Random');
     rnd.innerHTML = `<div class="portrait"><span class="qmark">?</span></div>
       <div class="cname">RANDOM</div><div class="cstyle">Fate decides</div>`;
     rnd.addEventListener('click', () => {
@@ -387,7 +414,8 @@ export function createSelectScreen(deps) {
       const pick = pool[Math.floor(Math.random() * pool.length)];
       if (pick) highlight(pick, { fromTap: true, scroll: true });
     });
-    strip.appendChild(rnd);
+    cards.splice(Math.max(0, cards.length - 4), 0, rnd);
+    cards.forEach(el => strip.appendChild(el));
   }
 
   function allCards() { return [...strip.querySelectorAll('.char-card')]; }
@@ -444,14 +472,24 @@ export function createSelectScreen(deps) {
       els.style.textContent = '';
       els.stats.innerHTML = '';
       els.attires.innerHTML = '';
+      { const f = els.root.querySelector('.pane-facts'); if (f) f.innerHTML = ''; }
       els.note.hidden = true;
       return;
     }
     els.name.textContent = c.name || '—';
+    { const aw = els.root.querySelector('.pane-artwash img'); if (aw) aw.src = `assets/portraits/${c.id}.png`; }
     els.title.textContent = c.title || '';
     const modelId = selectedAttireModel(c);
     els.style.textContent = [c.style, c.archetype, attireLabel(c, modelId)]
       .filter(Boolean).join(' · ');
+    // T8 fact block: FIGHTING STYLE / NATIONALITY / HEIGHT / WEIGHT. Values
+    // come from roster data only; T8 itself prints "Unknown" for unset ones.
+    const facts = els.root.querySelector('.pane-facts');
+    if (facts) {
+      const fact = (lab, v) => `<div class="fact"><span class="fact-lab">${lab}</span><span class="fact-val">${v || 'Unknown'}</span></div>`;
+      facts.innerHTML = fact('Fighting Style', c.style) + fact('Nationality', c.nationality || c.origin)
+        + fact('Height', c.height) + fact('Weight', c.weight);
+    }
     const s = statsFor(c);
     els.stats.innerHTML =
       statRow('POW', s.power, (s.power - 0.5) / 1.5, v => v.toFixed(2)) +
@@ -488,21 +526,20 @@ export function createSelectScreen(deps) {
     const modelId = selectedAttireModel(c);
     const els = plateEls(side);
     const fb = els.root.querySelector('.pane-fallback');
-    els.note.hidden = false;
-    els.note.textContent = 'LOADING…';
+    els.note.hidden = true;
     const ok = await panes[side].show(c, modelId);
     if (state.highlight[side]?.id !== c.id && state.locked[side]?.id !== c.id) return;
     if (panes[side].failed) {
       // No WebGL on this device: show the posed portrait plate
       // instead of the live model, and say so honestly.
       if (fb) { fb.src = `assets/portraits/${c.id}.png`; fb.hidden = false; }
-      els.note.hidden = false;
-      els.note.textContent = '3D UNAVAILABLE';
+      els.note.hidden = true; // owner law: never an error message on select
       return;
     }
-    if (fb) fb.hidden = true;
-    els.note.hidden = ok;
-    if (!ok) els.note.textContent = 'MODEL PENDING';
+    // A model that fails to load shows the fighter's own portrait plate,
+    // never a message, a T-pose or another fighter.
+    if (fb) { if (!ok) fb.src = `assets/portraits/${c.id}.png`; fb.hidden = !!ok; }
+    els.note.hidden = true;
   }
 
   function applyAttire(side, c, modelId) {
@@ -549,7 +586,7 @@ export function createSelectScreen(deps) {
     renderPlate('p1');
     renderPlate('p2');
     showOnSide(side, c);
-    assets.prefetch(c.model || 'pantera');
+    if (c.model) assets.prefetch(c.model);
     if (confirmBtn) confirmBtn.disabled = false;
     const surgeName = c.surge ? c.surge.name : 'SOUL SURGE';
     if (hint) hint.textContent = `${c.name} — ${c.style} · ${surgeName}`;
@@ -571,6 +608,11 @@ export function createSelectScreen(deps) {
   function notifyConfirm(confirmedId) {
     const c = deps.findChar(confirmedId);
     if (!c) return;
+    try {
+      const side = state.mode === 'versus' && state.locked.p1 ? 'p2' : 'p1';
+      const last = JSON.parse(localStorage.getItem(LAST_KEY) || '{}');
+      last[side] = c.id; localStorage.setItem(LAST_KEY, JSON.stringify(last));
+    } catch (_) {}
     if (state.mode === 'versus') {
       if (!state.locked.p1) {
         state.locked.p1 = c;
@@ -616,6 +658,22 @@ export function createSelectScreen(deps) {
       deps.onHighlight(null);
     }
     state._shown = true;
+    if (fresh) {
+      // T7: the P1 cursor starts on the fighter you last confirmed
+      // (attire is remembered per fighter by attires.js).
+      try {
+        const last = JSON.parse(localStorage.getItem(LAST_KEY) || '{}');
+        const c = last.p1 && deps.findChar(last.p1);
+        if (c && cardFor(c.id)) highlight(c, { scroll: true });
+        // No saved pick: T7 parks the P1 cursor on the first slot
+        // (Pantera, attire 1 = the owner's own Leo man model).
+        else {
+          const first = allCards().find(x => x.dataset.id && x.dataset.id !== '__random');
+          const fc = first && deps.findChar(first.dataset.id);
+          if (fc) highlight(fc, { scroll: true });
+        }
+      } catch (_) {}
+    }
     paintCards();
     renderPlate('p1');
     renderPlate('p2');

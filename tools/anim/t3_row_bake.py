@@ -35,7 +35,8 @@ SRC2BANK = {"king": "king", "demonio": "jin", "jin": "jin", "bryan": "bryan", "x
             # made the same fix in PR #405).
             "paul": "paul", "lei": "lei", "nina": "nina", "hwoarang": "hwoarang",
             "eddy": "eddy", "julia": "julia", "anna": "anna",
-            "bosconovitch": "bosconovitch", "armorking": "armorking"}
+            "bosconovitch": "bosconovitch", "armorking": "armorking",
+            "ogre": "ogre", "kuma": "kuma", "gon": "gon", "law": "law"}
 BANK_DIR = {"king": "king_on_pantera_leoman", "jin": "jin", "xiaoyu": "xiaoyu", "bryan": "bryan",
             "gunjack": "gunjack", "yoshimitsu": "yoshimitsu", "heihachi": "heihachi_on_jin",
             "paul": "paul", "lei": "lei", "nina": "nina", "hwoarang": "hwoarang",
@@ -55,6 +56,13 @@ TARGET_GLB = {"king": "lab/game/assets/pantera_leoman.glb", "jin": "lab/game/ass
 # OWN disc body paired with its own motion bank by tools/anim/t3_extract_bodies.py (BODY-EXTRACTION.json,
 # SHA-256 against the original BNS index). Run that tool first; its outputs are local (public repo).
 REMAINDER = ["paul", "lei", "nina", "hwoarang", "eddy", "julia", "anna", "bosconovitch"]
+# Last banks (2026-10-23, tools/anim/t3_bake_bank.py): same own-body layout as the remainder banks.
+REMAINDER += ["ogre", "kuma", "gon", "law"]
+BANK_DIR.update({b: b for b in ("ogre", "kuma", "gon", "law")})
+# Forest Law: own divmot20 motion on Law's body (lab/tools/t3_motion_bake.py BANKS["forestlaw"]).
+SRC2BANK["forestlaw"] = "forestlaw"
+BANK_DIR["forestlaw"] = "forestlaw_on_law"
+TARGET_GLB["forestlaw"] = "lab/game/assets/t3_forestlaw_on_law_t3real.glb"
 _BODY = REPO / "teardown/tekken3/BODY-EXTRACTION.json"
 if _BODY.exists():
     _bx = json.loads(_BODY.read_text())
@@ -79,8 +87,11 @@ def referenced_rows(bank):
         for v in items:
             if isinstance(v, dict) and "t3_row" in v:
                 src = v.get("t3_source") or d.get("t3_source")
-                if SRC2BANK.get(src) == bank and isinstance(v["t3_row"], int):
-                    rows.setdefault(v["t3_row"], []).append(Path(f).stem)
+                # A string move may list one row per hit (chatur.json 'b+2,1': [112, 63]).
+                tr = v["t3_row"] if isinstance(v["t3_row"], list) else [v["t3_row"]]
+                for r in tr:
+                    if SRC2BANK.get(src) == bank and isinstance(r, int):
+                        rows.setdefault(r, []).append(Path(f).stem)
             at = v.get("anim_t3") if isinstance(v, dict) else None
             if at and SRC2BANK.get(at.get("bank")) == bank and isinstance(at.get("row"), int):
                 rows.setdefault(at["row"], []).append(Path(f).stem)
@@ -101,6 +112,10 @@ def main():
     ap.add_argument("--extra-slots", default="", help="name=slot,... also baked into the pack (e.g. neutral=3)")
     ap.add_argument("--write-clips", default="", help="name=slot,... also written as wh-anim/1 JSON files next to the "
                     "pack (same format as t3_motion_bake --json-dir), for the per-state clips t3anims.js loads")
+    ap.add_argument("--merge", action="store_true", help="ADDITIONS ONLY (lane D 2026-10-24): keep every row and "
+                    "'missing' entry already in the bank's rows.pack.json and bake only the wanted rows it lacks. "
+                    "Refuses when the pack was baked from other inputs (bank, body, rig, bone order or SHA-256).")
+    ap.add_argument("--out", help="write the pack here instead of game/assets/anim/t3/<bankdir>/rows.pack.json")
     a = ap.parse_args()
     body = a.kmd_from or a.bank
     kmd, _, stance = (TB.T3 / x for x in TB.BANKS[body])
@@ -121,6 +136,15 @@ def main():
            "decoder": "teardown/tekken3/tools/local/pose_assemble.py + usa_motion.py",
            "tool": "tools/anim/t3_row_bake.py -> lab/tools/t3_motion_bake.py (T3Space, sample_clip, retarget)",
            "sha256": sha, "rows": {}, "missing": {}}
+    dst = Path(a.out) if a.out else REPO / "game/assets/anim/t3" / BANK_DIR[a.bank] / "rows.pack.json"
+    if a.merge and dst.exists():
+        old = json.loads(dst.read_text())
+        for k in ("bank", "body_kmd", "target_rig", "bones", "sha256"):
+            if old.get(k) != out[k]:
+                sys.exit(f"--merge refused: existing pack {k} differs ({str(old.get(k))[:80]} vs {str(out[k])[:80]})")
+        out["fps"], out["rows"], out["missing"] = old.get("fps"), dict(old.get("rows") or {}), dict(old.get("missing") or {})
+        want = {r: refs for r, refs in want.items() if str(r) not in out["rows"]}
+        print(f"--merge: {len(out['rows'])} rows kept, {len(want)} to bake")
     jobs = [(str(r), slot_of.get(r), refs) for r, refs in sorted(want.items())]
     for kv in filter(None, a.extra_slots.split(",")):
         k, v = kv.split("=")
@@ -140,6 +164,9 @@ def main():
         q = np.array([tr[b][0] for b in rig.names], float).transpose(1, 0, 2)  # [n][bones][4]
         q *= np.where(q[..., 3:4] < 0, -1.0, 1.0)  # canonical sign (w >= 0) before quantizing
         rtv = np.array(rt, float)
+        if out["fps"] is not None and out["fps"] != clip["fps"]:
+            sys.exit(f"fps mismatch: pack {out['fps']} vs row {key} {clip['fps']}")
+        out["missing"].pop(key, None)
         out["fps"] = clip["fps"]
         out["rows"][key] = {"slot": slot, "move_row": clip["move_row"], "stream_frames": clip["stream_frames"], "n": n,
                             "used_by": sorted(set(refs))[:12],
@@ -168,11 +195,10 @@ def main():
         (d / f"{k}.json").write_text(json.dumps({"format": "wh-anim/1", **ex, "bones": rig.names,
                                                  "rot_xyzw": {b: v[0] for b, v in tr.items()}, "root_t": rt},
                                                 separators=(",", ":")))
-    dst = REPO / "game/assets/anim/t3" / BANK_DIR[a.bank] / "rows.pack.json"
     dst.parent.mkdir(parents=True, exist_ok=True)
     dst.write_text(json.dumps(out, separators=(",", ":")))
-    print(f"{a.bank}: {len(out['rows'])} rows baked, {len(out['missing'])} missing, "
-          f"{dst.stat().st_size/1e6:.2f} MB, {time.time()-t0:.0f}s -> {dst.relative_to(REPO)}")
+    print(f"{a.bank}: {len(out['rows'])} rows in pack, {len(out['missing'])} missing, "
+          f"{dst.stat().st_size/1e6:.2f} MB, {time.time()-t0:.0f}s -> {dst}")
     if out["missing"]:
         print(" missing:", dict(list(out["missing"].items())[:8]))
 
