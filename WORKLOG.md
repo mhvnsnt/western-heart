@@ -88,6 +88,43 @@
 **Verification:** `node --test game/tests/fighter-completeness.test.mjs` 4/4 pass; full suite 95/99 (4 pre-existing failures in model-key-guard/stagerage/v-system, verified failing on pristine tree); all JSONs parse; semantic additions-only (0 field losses, 0 removals, 0 file deletions).
 
 **Anti-clobber:** rebuilt on current main tip (cf88ed5fe) after main moved mid-task — main added 4 donor.baek signature moves to baek-master-white (kept) and reformatted dorowani.json (re-applied anim_set_lock surgically onto new base); no main-side changes dropped. Branch `moveset/batch9-pull` via worktree (shared clone was in use by another lane); push via Git Database API.
+## 2026-10-24 ~00:55 UTC — TTT2 extraction worker TAKE 2 (Law/Lars lane)
+
+**Task:** Resume after take-1 worker died mid-download. Verify inherited state, resume the pull, Law + Lars FIRST (their modern movesets/animations unblock the Buffalo Bill / Chordz pull lane). T3 fallback-only — this entire take touches TTT2 only.
+
+**Inherited-state audit (all at ~/workspace/ttt2-extract/):**
+- `parts/`: part_01 was an 8MB stale partial (NOT the claimed 524,288,000 complete); part_02 never existed. No reassemble.state, no combined 7z. `ttt2-loose-files.tar` complete at 165,601,280 bytes ✓ (kept).
+- **Toolkit PR #833 was ALREADY MERGED** (commit d6f88f8, merge af4039c) — take-1 opened and merged it before dying. Only unmerged delta: `tools/surgical/decode_local.py`.
+- Local branch reset to origin/main (95dd2b6); worktree clean.
+- Disk: 11GB free — the full 13.36GB 7z can NEVER fit. Surgical prefix approach instead (same payloads, no local archive).
+
+**Download resume:**
+- Found dead session's seg_dl alive (PID 4197, range [32, 5200000032)); my restart collided on seg files — both killed, segs wiped (interleaved writes unrecoverable), ONE clean `seg_dl.py 0 5200000000 6 work/prefix` relaunched via supervisor (`work/supervise-seg-dl.sh`, runtime-backgrounded). 5.2GB covers through Data0001 (uncompressed end 5,046,128,640).
+- A detached setsid seg_dl died mysteriously mid-run; the runtime-backgrounded supervisor survived to completion. A later xz decode was killed by a service restart — re-ran successfully.
+- Rate ~2.3MB/s; 5.2GB in ~37 min.
+
+**Decode (the long pole):**
+- Python `decode_local.py` too slow under VM load (15% CPU, ~1MB/s). Switched to `xz -dc --format=raw --lzma1=lc=3,lp=0,pb=2,dict=8MiB` — byte-identical output (verified on 1MB head), 5-10x faster.
+- Decoded Data0000, Data0001 (340MB) from 5.2GB prefix. CRC32-verified vs INVENTORY.md.
+- Extended prefix to 5.9GB ([5.2, 5.9) via seg_dl), decoded Data0002, Data0003, Data0004. All CRC32 match INVENTORY.md.
+- Total: 5 STFS Data members (850MB), all verified.
+
+**XDVDFS listing (via new `tools/surgical/god_carve.py`):**
+- Title ID 4E4D0859 confirmed, GoD probe OK (base=0x2000, lead=0).
+- 78 files: $SystemUpdate/ (32 files), AvatarAssetPack, Default.xex, data000.bin–data053.bin (43 archives, gaps in numbering), nrfo.bin, nxeart.
+- Full listing + sector→Data map in `teardown/tekken-tag-tournament-2/XDVDFS-LISTING.md`.
+
+**Format findings:**
+- data043.bin (302MB), data046.bin (222MB), data034.bin (199MB): MP4 movies (`ftypnrfi` brand) — not character data.
+- data000.bin (4MB), data006.bin (20MB): proprietary Namco `0ff512ed` archive format (magic `0ff512ed`, v1). Content is compressed/encrypted (not zlib/lzma); format not publicly documented.
+- Character data (Law, Lars, etc.) is inside the dataNNN.bin archives. Specific file identification requires reverse-engineering the `0ff512ed` format or decoding more Data members.
+
+**New tools (in this PR):**
+- `tools/surgical/decode_local.py` — decode 7z members from locally-staged prefix (no network).
+- `tools/surgical/god_carve.py` — carve files from GoD using local Data members; `--list` → XDVDFS listing, `--pull` → files + MANIFEST.txt.
+- `XDVDFS-LISTING.md` — full file listing with format analysis.
+
+**Status:** Infrastructure complete, 850MB extracted and verified, format families identified. Law/Lars specific files NOT yet isolated — blocked on `0ff512ed` reverse-engineering (pull lane can continue from the extracted bins + tools). No Tekken 3 touched. No game binaries in repo (tools + docs only).
 
 ---
 ## 2026-10-23 ~18:15 CDT — batch3 T8 moveset pull: pond/tobi/megami/sakura/phantom (SHOW-ANIMATION LOCK)
