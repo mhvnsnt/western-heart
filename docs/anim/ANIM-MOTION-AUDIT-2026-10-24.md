@@ -444,12 +444,15 @@ other move fields were touched.
 ### UNMAPPED, with file-absence evidence (5 fighters)
 
 - pantera `1+2__main` (king row 35): NO verified standing chord row.
-  Row 143 (standing, m, armL, travel 0.19, active 10 vs startup 18) has
-  no file provenance — it is not in the partial king table and no
-  moveset references it. Row 227 (T3 1+2 variant) fails limb (dominant
-  armR vs filed armL) and travel (0.91). Row 97 fails level (h vs m)
-  and timing (active 10 vs 18). Rows 116/131 have no provenance and
-  active 8 vs 18. UNMAPPED: no verified replacement row in-bank.
+  Every standing chord candidate has LP+RP provenance but fails a hard
+  criterion: row 143 (standing, m, armL, travel 0.19; pantera move
+  b~t3.king.4, command 4/6+LP+RP) fails timing (active 10 vs startup 18,
+  1.8x stretch, beyond the 1.53x max accepted in the main audit for row
+  264); row 97 (pantera d+1+2 / b+1+2) fails level (h vs m) and timing
+  (1.8x); rows 116 (pantera d/f+1+2) and 131 (pantera d/b+1+2) fail
+  timing (active 8 vs 18, 2.25x) and level (s vs m); row 227 (T3 1+2
+  variant) fails limb (dominant armR vs filed armL) and travel (0.91).
+  UNMAPPED: no candidate passes all criteria.
 - burger `1+2__main` (bryan row 41): NO verified standing chord row.
   Row 129 (d/f+1+2 provenance, standing, m, travel 0.43) fails the
   audit's limb check (dominant armR 0.46 vs armL 0.33, filed armL) —
