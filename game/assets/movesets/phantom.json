@@ -1416,10 +1416,10 @@
       "move_class": "string"
     },
     "3": {
-      "name": "PHANTOM 3 (T3 yoshimitsu r73)",
+      "name": "PHANTOM 3 (T3 yoshimitsu r123)",
       "input": "3",
       "t3_source": "yoshimitsu",
-      "t3_row": 73,
+      "t3_row": 123,
       "t3_command": "LK",
       "startup": 0.2,
       "active": 0.017,
@@ -1430,7 +1430,7 @@
       "heavy": true,
       "knock": 4.2,
       "soulGain": 11,
-      "anim_ref": "t3:yoshimitsu:row:73",
+      "anim_ref": "t3:yoshimitsu:row:123",
       "input_slots": [
         "3"
       ],
@@ -11715,6 +11715,8 @@
     "uf+3": {
       "name": "Rising Knee",
       "input": "uf+3",
+      "t3_source": "yoshimitsu",
+      "t3_row": 73,
       "t8_source": "yoshimitsu",
       "t8_id": "Yoshimitsu-uf+3",
       "t8_damage": "15",
@@ -11914,6 +11916,8 @@
     "uf+3+4,3": {
       "name": "Poison Wind Eclipse Kick",
       "input": "uf+3+4,3",
+      "t3_source": "yoshimitsu",
+      "t3_row": 73,
       "t8_source": "yoshimitsu",
       "t8_id": "Yoshimitsu-uf+3+4,3",
       "t8_damage": ",10,10",
@@ -36698,5 +36702,98 @@
     "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
     "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; yoshimitsu bank at game/assets/anim/t3/yoshimitsu/ (exists; FIGHT/SHOW tagging enforced at intake); must NEVER enter this moveset without the user's explicit approval",
     "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
+  },
+  "canon_moves": [
+    {
+      "name": "Cut Is the Prayer",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:phantom:sig:cut-is-the-prayer",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 20,
+      "startup_frames": 20,
+      "canon": true,
+      "canon_owner": "PHANTOM",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "collisions": [
+        {
+          "kind": "specials-input",
+          "key": "1+2",
+          "entry_name": null,
+          "entry_anim_ref": null
+        }
+      ],
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Mask-Slip Spin",
+      "input": "u+1",
+      "display_input": "u+LP1",
+      "input_original": "`u+1`",
+      "anim_ref": "wh:phantom:sig:mask-slip-spin",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 18,
+      "startup_frames": 18,
+      "canon": true,
+      "canon_owner": "PHANTOM",
+      "properties": {
+        "stance": "jumping",
+        "direction": "u",
+        "type": "strike",
+        "limb": "armL",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Three Seconds Quiet",
+      "input": "d+1+2",
+      "display_input": "d+LP1+RP2",
+      "input_original": "`d+1+2`",
+      "anim_ref": "wh:phantom:sig:three-seconds-quiet",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 16,
+      "startup_frames": 16,
+      "canon": true,
+      "canon_owner": "PHANTOM",
+      "properties": {
+        "stance": "crouching",
+        "direction": "d",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "collisions": [
+        {
+          "kind": "specials-input",
+          "key": "d+1+2",
+          "entry_name": null,
+          "entry_anim_ref": null
+        }
+      ],
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
   }
 }

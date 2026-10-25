@@ -17865,5 +17865,59 @@
     "d,d/b,d,d/b+1+2,1": 2048
   },
   "stance_after": {},
-  "anim_bank": "julia"
+  "anim_bank": "julia",
+  "canon_moves": [
+    {
+      "name": "Ancestor's Answer",
+      "input": "b+1+2",
+      "display_input": "b+LP1+RP2",
+      "input_original": "`b+1+2`",
+      "anim_ref": "wh:nightwolf:sig:ancestors-answer",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armL",
+      "damage": 15,
+      "startup_frames": 14,
+      "canon": true,
+      "canon_owner": "NIGHTWOLF",
+      "properties": {
+        "stance": "standing",
+        "direction": "b",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Sage for the New Face",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:nightwolf:sig:sage-for-the-new-face",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 16,
+      "startup_frames": 16,
+      "canon": true,
+      "canon_owner": "NIGHTWOLF",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  }
 }

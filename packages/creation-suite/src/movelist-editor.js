@@ -257,6 +257,32 @@ export function splitInput(tekkenInput) {
   return { prefix, hits: [first, ...parts.slice(1)] };
 }
 
+
+// Slot-kind hint from an entry's own declared kind, for slot contexts
+// derived from that entry (computeMappingStatus, swapMove, mount).
+//   throw (move_class "throw" OR throw: true) -> "grapple"
+//   stance (move_class "stance")             -> "any" (a stance/parry
+//     slot is neither a strike slot nor a grapple slot; the kind check
+//     is skipped for it, while stance/direction/limb still apply)
+//   anything else                            -> undefined (deriveSlotContext
+//     then falls back to its input-based kind: 1+3/2+4 and grapple
+//     prefixes read as grapple, everything else as strike)
+// WHY: deriveCandidateProperties already honors throw: true for the
+// candidate's type, but slot derivation honored only move_class
+// "throw" — so every throw: true entry filed as "signature"/"special"
+// (Pantera Honest Hold, VF-Akira Eight Extremes, most 1+4 sig throws)
+// showed "wrong: grapple in a strike slot" in its OWN slot. That was a
+// slot-derivation bug, not a bad mapping: the file itself declares the
+// move a throw. Aligning the two derivations fixes those rows without
+// touching any strike/jumping/direction/limb check, and without
+// changing any row whose file data does not declare throw/stance.
+export function slotKindHint(entry) {
+  if (!entry || typeof entry !== 'object') return undefined;
+  if (entry.move_class === 'throw' || entry.throw === true) return 'grapple';
+  if (entry.move_class === 'stance') return 'any';
+  return undefined;
+}
+
 // ---------------------------------------------------------------------------
 // Slot context and candidate properties
 // ---------------------------------------------------------------------------
@@ -331,6 +357,24 @@ export function deriveCandidateProperties(candidate) {
       type: clip.type || (candidate.move_class === 'throw' ? 'grapple' : 'strike'),
       limb: clip.limb || null,
       source: 'clip',
+    };
+  }
+  // Canon wiring properties (source "canon"): authored in the fighter's
+  // `canon_moves` array from the canon file (limb, direction, stance
+  // where documented). These are KNOWN properties, so they validate
+  // exactly like clip tags do — but the verification stays "canon",
+  // never "clip": a canon entry is wiring, not a clip-verified claim.
+  // Unknown canon properties stay "unknown"/null and yield status
+  // "approximate" in validateAssignment(), never a silent "correct".
+  // Tekken entries never carry source "canon", so Tekken validation
+  // is untouched by this branch.
+  if (clip && clip.source === 'canon' && (clip.stance || clip.direction || clip.type || clip.limb)) {
+    return {
+      stance: clip.stance || 'unknown',
+      direction: normalizeDirection(clip.direction || 'none'),
+      type: clip.type || (candidate.move_class === 'throw' ? 'grapple' : 'strike'),
+      limb: clip.limb || null,
+      source: 'canon',
     };
   }
   const context = deriveSlotContext(candidate?.input || '', {
@@ -446,7 +490,7 @@ export function validateAssignment(slotContext, candidate) {
 // to fix.
 export function computeMappingStatus(entry, hint = {}) {
   const slotContext = deriveSlotContext(entry?.input || '', {
-    kind: entry?.move_class === 'throw' ? 'grapple' : hint.kind,
+    kind: slotKindHint(entry) ?? hint.kind,
   });
   return { slotContext, ...validateAssignment(slotContext, entry) };
 }
@@ -488,7 +532,10 @@ export function categoryForEntry(entry, context) {
 }
 
 // Build library entries from one fighter moveset file object
-// (game/assets/movesets/{fighter}.json). The file's `moves` map is
+// (game/assets/movesets/{fighter}.json), plus that file's additive
+// `wh_true_moveset.moves` section when present (Zen's true moveset:
+// displayed, never assigned while unmapped — see the loop below).
+// The file's `moves` map is
 // keyed by Tekken input; each value carries name, anim_ref, t3_row,
 // move_class and limb. `specials` entries with throw: true become
 // grappling entries. No entry is invented: if a file has no move for
@@ -507,7 +554,7 @@ export function fromMovesetFile(moveset) {
     // keeps its own key, its own name and its own anim_ref; the slot
     // context is derived from its input, which the variants share.
     const context = deriveSlotContext(move.input || key, {
-      kind: move.move_class === 'throw' ? 'grapple' : undefined,
+      kind: slotKindHint(move),
     });
     entries.push({
       id: String(key),
@@ -515,6 +562,14 @@ export function fromMovesetFile(moveset) {
       input: move.input || key,
       displayInput: toDisplayInput(move.input || key),
       anim_ref: move.anim_ref || null,
+      // MIX PER CANON (2026-10-24): pass the moveset file's mix-source
+      // fields through so the editor can show, for Zui individually,
+      // which Tekken fighter each move came from (Steve Fox T7 base,
+      // Lei Wulong T6/TTT2 drunken, WH original) without digging into
+      // sourceMove. Additive only; validation never reads these.
+      source_fighter: move.source_fighter || null,
+      source_game: move.source_game || null,
+      mix_group: move.mix_group || null,
       t3_bank: move.t3_source || moveset?.t3_bank || moveset?.t3_source || null,
       t3_row: move.t3_row ?? null,
       category: categoryForEntry(move, context),
@@ -527,18 +582,23 @@ export function fromMovesetFile(moveset) {
   }
   for (const special of moveset?.specials || []) {
     if (!special || typeof special !== 'object' || !special.input) continue;
-    const specialAnimRef = special.t3_row != null
+    // Canon specials carry their own anim_ref (wh: placeholder or MADE
+    // label) and no t3 row. Before this change the editor ignored
+    // special.anim_ref, so every canon special showed as "unmapped"
+    // and could not be assigned. Prefer the special's own ref; fall
+    // back to the t3-derived ref exactly as before for Tekken rows.
+    const specialAnimRef = special.anim_ref || (special.t3_row != null
       ? `t3:${moveset?.t3_source || 'unknown'}:row:${special.t3_row}`
-      : null;
+      : null);
     // Skip only an exact duplicate (same input, same animation row);
     // a special with a different row is a distinct grapple row to show.
     if (entries.some((entry) => entry.input === special.input && entry.anim_ref === specialAnimRef)) continue;
     const context = deriveSlotContext(special.input, {
-      kind: special.throw ? 'grapple' : undefined,
+      kind: slotKindHint(special),
     });
     entries.push({
       id: `special:${special.input}:${special.t3_row ?? 'none'}`,
-      name: `Special ${toDisplayInput(special.input)}`,
+      name: special.name || `Special ${toDisplayInput(special.input)}`,
       input: special.input,
       displayInput: toDisplayInput(special.input),
       anim_ref: specialAnimRef,
@@ -554,6 +614,81 @@ export function fromMovesetFile(moveset) {
       }),
       sourceMove: special,
     });
+  }
+  // Canon wiring entries: the fighter's `canon_moves` array (added by
+  // the 2026-10-24 canon wiring; additive only, never replaces Tekken
+  // entries). Each entry carries its own name, Tekken-style input,
+  // anim_ref (wh: placeholder or MADE label), method (ADAPT/BUILD),
+  // source, and authored properties (source "canon"). An entry that
+  // duplicates an existing moves/specials row (same anim_ref,
+  // whatever its input notation) is skipped, so the list never shows
+  // the same canon move twice. Entries with no anim_ref are skipped here: there is no
+  // animation to play, and validateAssignment() would call them
+  // "unmapped" anyway.
+  for (const canon of moveset?.canon_moves || []) {
+    if (!canon || typeof canon !== 'object' || !canon.input || !canon.anim_ref) continue;
+    // Dedup by anim_ref alone, not input+ref: one canon move may sit
+    // in the file under several input notations (Pantera's Honest Hold
+    // appears as both "1+4" and "P+K" with the same wh: ref). Those
+    // variant rows already exist; the canon row must not add a third.
+    if (entries.some((entry) => entry.anim_ref === canon.anim_ref)) continue;
+    entries.push({
+      id: `canon:${canon.input}:${(canon.name || 'canon').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}`,
+      name: canon.name || String(canon.input),
+      input: canon.input,
+      displayInput: canon.display_input || toDisplayInput(canon.input),
+      anim_ref: canon.anim_ref,
+      t3_bank: null,
+      t3_row: null,
+      category: canon.move_class === 'throw' ? 'grappling' : (canon.move_class === 'stance' ? 'stance' : 'special'),
+      move_class: canon.move_class || 'special',
+      limb: canon.limb || null,
+      throw: canon.move_class === 'throw',
+      properties: deriveCandidateProperties(canon),
+      canon: true,
+      canon_method: canon.method || null,
+      canon_source: canon.source || null,
+      sourceMove: canon,
+    });
+  }
+  // Additive true-moveset section (Zen only on main today): entries from
+  // `moveset.wh_true_moveset.moves` are displayed in the full list exactly
+  // like file moves, but they are NEVER mixed into `moves`/`specials` and
+  // NEVER become swap targets while anim_ref is null: validateAssignment()
+  // returns them 'unmapped' (allowed: false) by design — there is no
+  // animation to play yet, so the editor shows them and blocks assignment
+  // instead of silently treating an input-consistent row as correct.
+  // When a MADE animation or a Dural/Twelve clip lands, that lane sets
+  // anim_ref (and clip properties) on the entry; only then can the row
+  // validate as correct/approximate and become eligible. Entries keep
+  // their own id namespace ('true:<id>') so they can never collide with
+  // a file-move key. serializeMoveset() clones the whole moveset object,
+  // so this section passes through a save untouched.
+  const trueMoves = moveset?.wh_true_moveset?.moves;
+  if (Array.isArray(trueMoves)) {
+    for (const move of trueMoves) {
+      if (!move || typeof move !== 'object' || !move.id) continue;
+      const context = deriveSlotContext(move.input || '', {
+        kind: move.move_class === 'throw' ? 'grapple' : undefined,
+      });
+      entries.push({
+        id: `true:${move.id}`,
+        name: move.name || String(move.id),
+        input: move.input || '',
+        displayInput: move.display_input || toDisplayInput(move.input || ''),
+        anim_ref: move.anim_ref || null,
+        anim_status: move.anim_status || 'UNMAPPED',
+        t3_bank: null,
+        t3_row: null,
+        category: move.category || categoryForEntry(move, context),
+        move_class: move.move_class || null,
+        limb: move.limb || null,
+        throw: move.move_class === 'throw' || false,
+        properties: deriveCandidateProperties(move),
+        sourceMove: move,
+        true_moveset: true,
+      });
+    }
   }
   return entries;
 }
@@ -676,7 +811,7 @@ export function swapMove(editor, entryId, candidateId, options = {}) {
   }
   const slotInput = slotEntry.input;
   const slotContext = deriveSlotContext(slotInput, {
-    kind: slotEntry.move_class === 'throw' ? 'grapple' : undefined,
+    kind: slotKindHint(slotEntry),
   });
   const check = validateAssignment(slotContext, candidate);
   if (!check.allowed && mode === 'block') {
@@ -971,7 +1106,7 @@ export function renderEntryRow(row) {
     + `<td>${escapeHtml(row.displayInput)}</td>`
     + `<td>${escapeHtml(row.animRefDisplay)}</td>`
     + `<td data-status="${escapeHtml(row.status)}">${escapeHtml(row.status)}`
-    + (row.verification === 'input' ? ' (input, verify by playing)' : ' (clip-verified)')
+    + (row.verification === 'clip' ? ' (clip-verified)' : row.verification === 'canon' ? ' (canon wiring, verify by playing)' : ' (input, verify by playing)')
     + `</td>`
     + `<td>${escapeHtml(row.reasons.join(' ') || '')}</td></tr>`;
 }
@@ -1011,7 +1146,7 @@ export function mount(element, editor, options = {}) {
         const entry = editor.byId.get(moveId);
         if (!entry) continue;
         const slotContext = deriveSlotContext(entry.input, {
-          kind: entry.move_class === 'throw' ? 'grapple' : undefined,
+          kind: slotKindHint(entry),
         });
         const eligible = eligibleCandidates(slotContext, editor.entries);
         const cell = document.createElement('td');

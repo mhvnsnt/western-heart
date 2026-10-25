@@ -19225,5 +19225,59 @@
     "f,n": "MS",
     "ub,b": "HMS",
     "ws1": "HMS"
+  },
+  "canon_moves": [
+    {
+      "name": "Encore Bow",
+      "input": "u+4",
+      "display_input": "u+RK4",
+      "input_original": "`u+4`",
+      "anim_ref": "wh:purplerain:sig:encore-bow",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "legL",
+      "damage": 17,
+      "startup_frames": 19,
+      "canon": true,
+      "canon_owner": "PURPLERAIN",
+      "properties": {
+        "stance": "jumping",
+        "direction": "u",
+        "type": "strike",
+        "limb": "legR",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Four-Four Time",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:purplerain:sig:four-four-time",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "legR",
+      "damage": 18,
+      "startup_frames": 17,
+      "canon": true,
+      "canon_owner": "PURPLERAIN",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
   }
 }

@@ -22612,5 +22612,197 @@
     "None~donor.zangief.172": 2048,
     "None~donor.zangief.173": 2048
   },
-  "stance_after": {}
+  "stance_after": {},
+  "canon_moves": [
+    {
+      "name": "ATOMIC BUSTER",
+      "input": "f,f+2+4",
+      "display_input": "f,f+RP2+RK4",
+      "input_original": "`f,f+2+4`",
+      "anim_ref": "wh:kronos:sig:atomic-buster",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "throw",
+      "limb": "armR",
+      "damage": 32,
+      "startup_frames": 21,
+      "canon": true,
+      "canon_owner": "KRONOS",
+      "properties": {
+        "stance": "standing",
+        "direction": "f",
+        "type": "grapple",
+        "limb": null,
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "CYCLONE CHOP RUSH",
+      "input": "qcf+2",
+      "display_input": "qcf+RP2",
+      "input_original": "`qcf+2`",
+      "anim_ref": "wh:kronos:sig:chop-rush",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "special",
+      "limb": "armR",
+      "damage": 17,
+      "startup_frames": 18,
+      "canon": true,
+      "canon_owner": "KRONOS",
+      "properties": {
+        "stance": "standing",
+        "direction": "qcf",
+        "type": "strike",
+        "limb": "armR",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "CYCLONE KNEE",
+      "input": "f+3",
+      "display_input": "f+LK3",
+      "input_original": "`f+3`",
+      "anim_ref": "wh:kronos:sig:knee",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "strike",
+      "limb": "legL",
+      "damage": 15,
+      "startup_frames": 16,
+      "canon": true,
+      "canon_owner": "KRONOS",
+      "properties": {
+        "stance": "standing",
+        "direction": "f",
+        "type": "strike",
+        "limb": "legL",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "CYCLONE UPPERCUT",
+      "input": "d/f+2",
+      "display_input": "d/f+RP2",
+      "input_original": "`d/f+2`",
+      "anim_ref": "wh:kronos:sig:uppercut",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "strike",
+      "limb": "armR",
+      "damage": 17,
+      "startup_frames": 15,
+      "canon": true,
+      "canon_owner": "KRONOS",
+      "properties": {
+        "stance": "crouching",
+        "direction": "d/f",
+        "type": "strike",
+        "limb": "armR",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "FINAL ATOMIC BUSTER",
+      "input": "b,n,f,b,n,f+1+2",
+      "display_input": "b,n,f,b,n,f+LP1+RP2",
+      "input_original": "`b,n,f,b,n,f+1+2`",
+      "anim_ref": "wh:kronos:sig:final-atomic-buster",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "throw",
+      "limb": "armL",
+      "damage": 45,
+      "startup_frames": 27,
+      "canon": true,
+      "canon_owner": "KRONOS",
+      "properties": {
+        "stance": "standing",
+        "direction": "b",
+        "type": "grapple",
+        "limb": null,
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "FLYING BODY PRESS",
+      "input": "u/f+3+4",
+      "display_input": "u/f+LK3+RK4",
+      "input_original": "`u/f+3+4`",
+      "anim_ref": "wh:kronos:sig:body-press",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "special",
+      "limb": "legR",
+      "damage": 20,
+      "startup_frames": 24,
+      "canon": true,
+      "canon_owner": "KRONOS",
+      "properties": {
+        "stance": "jumping",
+        "direction": "u/f",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "IRON STANCE",
+      "input": "b+3+4",
+      "display_input": "b+LK3+RK4",
+      "input_original": "`b+3+4`",
+      "anim_ref": "wh:kronos:sig:iron-stance",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "special",
+      "limb": "armL",
+      "damage": 0,
+      "startup_frames": 12,
+      "canon": true,
+      "canon_owner": "KRONOS",
+      "properties": {
+        "stance": "standing",
+        "direction": "b",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "TIMBERWOLF LUNGE",
+      "input": "f,f+3+4",
+      "display_input": "f,f+LK3+RK4",
+      "input_original": "`f,f+3+4`",
+      "anim_ref": "wh:kronos:sig:timberwolf-lunge",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "special",
+      "limb": "legR",
+      "damage": 19,
+      "startup_frames": 20,
+      "canon": true,
+      "canon_owner": "KRONOS",
+      "properties": {
+        "stance": "standing",
+        "direction": "f",
+        "type": "strike",
+        "limb": null,
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  }
 }

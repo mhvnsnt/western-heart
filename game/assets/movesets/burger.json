@@ -634,10 +634,10 @@
   },
   "moves": {
     "1": {
-      "name": "BURGER 1 (T3 bryan r52)",
+      "name": "BURGER 1 (T3 bryan r172)",
       "input": "1",
       "t3_source": "bryan",
-      "t3_row": 52,
+      "t3_row": 172,
       "t3_command": "LP",
       "startup": 0.1667,
       "active": 0.017,
@@ -648,7 +648,7 @@
       "heavy": false,
       "knock": 2.2,
       "soulGain": 8,
-      "anim_ref": "t3:bryan:row:52",
+      "anim_ref": "t3:bryan:row:172",
       "input_slots": [
         "1"
       ],
@@ -668,10 +668,10 @@
       }
     },
     "2": {
-      "name": "BURGER 2 (T3 bryan r152)",
+      "name": "BURGER 2 (T3 bryan r100)",
       "input": "2",
       "t3_source": "bryan",
-      "t3_row": 152,
+      "t3_row": 100,
       "t3_command": "RP",
       "startup": 0.1667,
       "active": 0.017,
@@ -682,7 +682,7 @@
       "heavy": false,
       "knock": 2.2,
       "soulGain": 8,
-      "anim_ref": "t3:bryan:row:152",
+      "anim_ref": "t3:bryan:row:100",
       "input_slots": [
         "2"
       ],
@@ -799,10 +799,10 @@
       }
     },
     "4": {
-      "name": "BURGER 4 (T3 bryan r78)",
+      "name": "BURGER 4 (T3 bryan r104)",
       "input": "4",
       "t3_source": "bryan",
-      "t3_row": 78,
+      "t3_row": 104,
       "t3_command": "RK",
       "startup": 0.2167,
       "active": 0.033,
@@ -813,7 +813,7 @@
       "heavy": true,
       "knock": 4.2,
       "soulGain": 11,
-      "anim_ref": "t3:bryan:row:78",
+      "anim_ref": "t3:bryan:row:104",
       "input_slots": [
         "4"
       ],
@@ -7021,6 +7021,8 @@
     "u+1+2,4": {
       "name": "Cracker Rigatoni",
       "input": "u+1+2,4",
+      "t3_source": "bryan",
+      "t3_row": 183,
       "t8_source": "bob",
       "t8_id": "Bob-u+1+2,4",
       "t8_damage": ",20",
@@ -7155,6 +7157,8 @@
     "ub+3+4,4": {
       "name": "Runner Flip",
       "input": "ub+3+4,4",
+      "t3_source": "bryan",
+      "t3_row": 87,
       "t8_source": "bob",
       "t8_id": "Bob-ub+3+4,4",
       "t8_damage": ",23 (16)",
@@ -7184,6 +7188,8 @@
     "ub+4": {
       "name": "Move ub+4 (ub+4)",
       "input": "ub+4",
+      "t3_source": "bryan",
+      "t3_row": 87,
       "t8_source": "bob",
       "t8_id": "Bob-ub+4",
       "t8_damage": null,
@@ -7377,6 +7383,8 @@
     "uf+3+4,4": {
       "name": "Rolling Kebab",
       "input": "uf+3+4,4",
+      "t3_source": "bryan",
+      "t3_row": 183,
       "t8_source": "bob",
       "t8_id": "Bob-uf+3+4,4",
       "t8_damage": ",20",
@@ -7407,6 +7415,8 @@
     "uf+4": {
       "name": "Langouste Tail",
       "input": "uf+4",
+      "t3_source": "bryan",
+      "t3_row": 183,
       "t8_source": "bob",
       "t8_id": "Bob-uf+4",
       "t8_damage": "20",
@@ -7428,6 +7438,8 @@
     "uf,n,4": {
       "name": "Delayed Rising Toe Kick",
       "input": "uf,n,4",
+      "t3_source": "bryan",
+      "t3_row": 183,
       "t8_source": "bob",
       "t8_id": "Bob-uf,n,4",
       "t8_damage": "20",
@@ -10433,6 +10445,8 @@
     "u/f+4,4": {
       "name": "Faisan Crow",
       "input": "u/f+4,4",
+      "t3_source": "bryan",
+      "t3_row": 183,
       "startup": 0.4167,
       "active": 0.017,
       "recovery": 0.5,
@@ -10485,6 +10499,8 @@
     "u/f+4,4~t7.bob": {
       "name": "BURGER u/f+4,4",
       "input": "u/f+4,4",
+      "t3_source": "bryan",
+      "t3_row": 183,
       "startup": 0.4167,
       "active": 0.017,
       "recovery": 0.5,
@@ -10580,6 +10596,8 @@
     "u/f+1+2,4": {
       "name": "Cracker Tariata",
       "input": "u/f+1+2,4",
+      "t3_source": "bryan",
+      "t3_row": 183,
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.5,
@@ -10636,6 +10654,8 @@
     "u/f+1+2,4~t7.bob": {
       "name": "BURGER u/f+1+2,4",
       "input": "u/f+1+2,4",
+      "t3_source": "bryan",
+      "t3_row": 183,
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.5,
@@ -10894,6 +10914,8 @@
     "u/f+3+4,4": {
       "name": "Rolling Kebab",
       "input": "u/f+3+4,4",
+      "t3_source": "bryan",
+      "t3_row": 183,
       "startup": 0.35,
       "active": 0.017,
       "recovery": 0.467,
@@ -10951,6 +10973,8 @@
     "u/f+3+4,4~t7.bob": {
       "name": "BURGER u/f+3+4,4",
       "input": "u/f+3+4,4",
+      "t3_source": "bryan",
+      "t3_row": 183,
       "startup": 0.35,
       "active": 0.017,
       "recovery": 0.467,
@@ -11008,6 +11032,8 @@
     "u/f+3+4,4~t7.bob.2": {
       "name": "BURGER u/f+3+4,4",
       "input": "u/f+3+4,4",
+      "t3_source": "bryan",
+      "t3_row": 183,
       "startup": 0.35,
       "active": 0.017,
       "recovery": 0.467,
@@ -18868,6 +18894,8 @@
     "u/f+2,3,3+4,4": {
       "name": "10 Hit Combo 2",
       "input": "u/f+2,3,3+4,4",
+      "t3_source": "bryan",
+      "t3_row": 183,
       "startup": 0.3333,
       "active": 0.017,
       "recovery": 0.5,
@@ -21990,5 +22018,60 @@
   },
   "stance_after": {
     "f+3+4": "BAL"
+  },
+  "canon_moves": [
+    {
+      "name": "Appetite's Grip",
+      "input": "1+4",
+      "display_input": "LP1+RK4",
+      "input_original": "`1+4`",
+      "anim_ref": "wh:burger:sig:appetites-grip",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 22,
+      "startup_frames": 19,
+      "canon": true,
+      "canon_owner": "BURGER",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "system_note": "System note: LP1+RK4 is also Reihou, but ONLY while the foe is in RAGE (otherwise the moveset LP1+RK4 plays). No in-game conflict outside foe-RAGE.",
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Side Dish Slam",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:burger:sig:side-dish-slam",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 20,
+      "startup_frames": 22,
+      "canon": true,
+      "canon_owner": "BURGER",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
   }
 }

@@ -25857,5 +25857,59 @@
   "stance_after": {},
   "t7_base": "lei",
   "t7_dataset": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-  "t7_import_note": "Full T7 Lei Wulong movelist (524 rows, t7chicken) imported 2026-10-23; +47 genuinely-missing rows from rbnorway T7 frame data (verified absent from t7chicken: RLX/SIT ground stances, FC/SS/BT basics). Existing T3-proxy moves kept verbatim. No T8 data used."
+  "t7_import_note": "Full T7 Lei Wulong movelist (524 rows, t7chicken) imported 2026-10-23; +47 genuinely-missing rows from rbnorway T7 frame data (verified absent from t7chicken: RLX/SIT ground stances, FC/SS/BT basics). Existing T3-proxy moves kept verbatim. No T8 data used.",
+  "canon_moves": [
+    {
+      "name": "Sickness Pattern",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:byou:sig:sickness-pattern",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 17,
+      "startup_frames": 17,
+      "canon": true,
+      "canon_owner": "BYOU",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Wrong Foot",
+      "input": "d+4",
+      "display_input": "d+RK4",
+      "input_original": "`d+4`",
+      "anim_ref": "wh:byou:sig:wrong-foot",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "legL",
+      "damage": 15,
+      "startup_frames": 14,
+      "canon": true,
+      "canon_owner": "BYOU",
+      "properties": {
+        "stance": "crouching",
+        "direction": "d",
+        "type": "strike",
+        "limb": "legR",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  }
 }

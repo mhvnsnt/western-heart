@@ -28118,5 +28118,151 @@
     "FIGHT": "every move in this file: moveset moves and combat stances \u2014 the combat animation bank",
     "SHOW": "win poses, intro poses, taunts, cutscene animations \u2014 intro/win slots and cutscenes ONLY; hwoarang bank at game/assets/anim/t3/hwoarang/ (exists; FIGHT/SHOW tagging enforced at intake); must NEVER enter this moveset without the user's explicit approval",
     "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
+  },
+  "canon_moves": [
+    {
+      "name": "Courier's Dash",
+      "input": "f,F+4",
+      "display_input": "f,F+RK4",
+      "input_original": "`f,F+4`",
+      "anim_ref": "wh:tobi:couriers-dash",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "special",
+      "limb": "legL",
+      "damage": 16,
+      "startup_frames": 12,
+      "canon": true,
+      "canon_owner": "TOBI",
+      "properties": {
+        "stance": "standing",
+        "direction": "f",
+        "type": "strike",
+        "limb": null,
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Escape Soul Flurry",
+      "input": "qcf+3",
+      "display_input": "qcf+LK3",
+      "input_original": "`qcf+3`",
+      "anim_ref": "wh:tobi:escape-flurry",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "string",
+      "limb": "legR",
+      "damage": 32,
+      "startup_frames": 17,
+      "canon": true,
+      "canon_owner": "TOBI",
+      "properties": {
+        "stance": "standing",
+        "direction": "qcf",
+        "type": "strike",
+        "limb": "legL",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Longleap",
+      "input": "WR+3",
+      "display_input": "WR+LK3",
+      "input_original": "`WR+3`",
+      "anim_ref": "wh:tobi:longleap",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "strike",
+      "limb": "legR",
+      "damage": 24,
+      "startup_frames": 15,
+      "canon": true,
+      "canon_owner": "TOBI",
+      "properties": {
+        "stance": "standing",
+        "direction": "wr",
+        "type": "strike",
+        "limb": "legL",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Satchel Swing",
+      "input": "SS+3+4",
+      "display_input": "SS+LK3+RK4",
+      "input_original": "`SS+3+4`",
+      "anim_ref": "wh:tobi:satchel-swing",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "strike",
+      "limb": "armL",
+      "damage": 20,
+      "startup_frames": 18,
+      "canon": true,
+      "canon_owner": "TOBI",
+      "properties": {
+        "stance": "standing",
+        "direction": "ss",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "The Undelivered Letter",
+      "input": "d+1+2",
+      "display_input": "d+LP1+RP2",
+      "input_original": "`d+1+2`",
+      "anim_ref": "wh:tobi:undelivered-letter",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "special",
+      "limb": "both",
+      "damage": 50,
+      "startup_frames": 36,
+      "canon": true,
+      "canon_owner": "TOBI",
+      "properties": {
+        "stance": "crouching",
+        "direction": "d",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Tip-Off",
+      "input": "b+1+2",
+      "display_input": "b+LP1+RP2",
+      "input_original": "`b+1+2`",
+      "anim_ref": "wh:tobi:tip-off",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "strike",
+      "limb": "armL",
+      "damage": 12,
+      "startup_frames": 10,
+      "canon": true,
+      "canon_owner": "TOBI",
+      "properties": {
+        "stance": "standing",
+        "direction": "b",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
   }
 }
