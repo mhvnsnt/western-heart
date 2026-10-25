@@ -9,6 +9,7 @@ import './menu-t7-layout.js';
 import { Game } from './game.js';
 import { InputManager } from './input.js';
 import { audio } from './audio.js';
+import { music } from './music.js';
 import { assets } from './assets.js';
 import { ROSTER, getCharacter } from './characters.js';
 // LOADSPEED (2026-10-22): fighter.js / movesets.js / t3anims.js / modes.js
@@ -16,6 +17,7 @@ import { ROSTER, getCharacter } from './characters.js';
 // menu shell paints without parsing them (Tekken 3 BNS lesson: the index
 // loads first, records stream on demand). Warmed during idle at boot end.
 import { lazy, warmIdle } from './lazy.js';
+import { loadThrowTables } from './t3-throw.js';
 import { mark } from './loadperf.js';
 import * as THREE from 'three';
 import { whUiEnabled, mountWhUi } from './ui-wh-bridge.js';
@@ -75,7 +77,23 @@ function show(name) {
     if (selectScreen) selectScreen.onShow(modes ? modes.mode : null);
     requestAnimationFrame(() => requestAnimationFrame(() => mark('select-interactive')));
   }
-  else { selectTimerArmed = false; stopSelectTimer(); }
+  else {
+    selectTimerArmed = false; stopSelectTimer();
+    // PRELOAD (2026-10-24): stage-screen dwell warms the locked
+    // fighters' GLBs (via select-screen, which owns attire mapping)
+    // so the FIGHT tap starts warm instead of cold.
+    if (name === 'stage') { try { selectScreen?.warmLockedFighters?.(); } catch (_) {} }
+  }
+  // MUSIC (2026-10-24): Tekken screen-change rule — menu screens get their
+  // own rotating theme; the fight itself gets the stage pool at fight
+  // start (see startFight). Never throws; a missing library just falls
+  // back to the procedural loop inside the engine.
+  try {
+    if (name === 'menu') music.playMenu('title');
+    else if (name === 'select') music.playMenu('select');
+    else if (name === 'stage') music.playMenu('versus');
+    else if (name === 'online') music.playMenu('online');
+  } catch (e) {}
 }
 
 const SOULS = 9; // Nine-Soul Meter segments
@@ -242,6 +260,7 @@ const ui = {
     document.getElementById('result-sub').textContent = playerWon
       ? 'The multiverse remembers this one.'
       : 'The shrine is silent. Run it back.';
+    try { music.playVictory(); } catch (e) {}
     show('result');
   },
 };
@@ -597,6 +616,7 @@ function randomEnemy(excludeId) {
 /* ---------------- Menu button wiring ---------------- */
 function unlockAudio() {
   audio.unlock();
+  music.unlock();
 }
 
 // No tap-for-audio interstitial (owner 2026-10-24): audio enables silently
@@ -1032,6 +1052,21 @@ async function startFight(playerId, enemyId, opts = {}) {
     } catch (e) {
       console.warn('[WH] T3 clips failed, using procedural fallback:', e.message || e);
     }
+    // TEKKEN GRAPPLE (2026-10-24): load the throw tables
+    // (reactions.json) and this match's two reaction packs BEFORE
+    // the fight starts, so a connecting grab can bind its file
+    // pair immediately instead of falling back to the legacy
+    // lock. A failure here is NOT fatal: throws keep the legacy
+    // lock path and are logged UNMAPPED at connect time.
+    setPhase('Loading throw pairs…');
+    try {
+      const { loadReactionPack } = T3;
+      await loadThrowTables();
+      const banks = [...new Set([bankIdFor(player.id), bankIdFor(enemy.id)].filter(Boolean))];
+      await Promise.all(banks.map(b => loadReactionPack(THREE, b)));
+    } catch (e) {
+      console.warn('[WH] throw pairs unavailable, legacy throw lock:', e.message || e);
+    }
   } catch (err) {
     console.error('[WH] fight load failed:', err);
     // Name the failing asset: a bare "check connection" hides a 404 for a
@@ -1053,7 +1088,10 @@ async function startFight(playerId, enemyId, opts = {}) {
   if (confirmBtn) confirmBtn.disabled = false;
   show('hud');
   game.paused = false;
-  audio.startMusic();
+  // MUSIC (2026-10-24): rotating stage pool. The engine falls back to
+  // the procedural loop internally when no file track is available, so
+  // the old direct audio.startMusic() call is replaced, not doubled.
+  music.playBattle(selectedStage);
   // FIGHT-LOOP REPAIR (worker 54, 2026-10-22): startMatch ran OUTSIDE the
   // load try/catch — a throw inside it (Fighter build, arena setStage, AI
   // wiring) was an unhandled rejection that stranded the player on the
