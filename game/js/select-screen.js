@@ -31,10 +31,11 @@
 import * as THREE from 'three';
 import { assets } from './assets.js';
 import { loadGuardStance, createAimStance } from './stance-aim.js';
-import { attiresFor, selectedAttireModel, setAttire, attireLabel } from './attires.js';
+import { attiresFor, selectableAttires, selectedAttireModel, setAttire, attireLabel, attireEyeGlow } from './attires.js';
 import { loadT3Clips, createT3Actions, retargetT3Clips } from './t3anims.js';
 import { bankIdFor } from './fighter.js';
 import { getMovesetInfo } from './movesets.js';
+import { warmSelect, warmFight } from './preload.js';
 
 const DEFAULT_STATS = { speed: 2.8, jump: 7.2, power: 1.1, defense: 1.05 };
 const clamp01 = (v) => Math.max(0, Math.min(1, v));
@@ -149,7 +150,8 @@ export class PreviewPane {
       if (token !== this._token) return true; // superseded by a newer tap
       const inst = assets.createInstance(
         modelId, c.colors?.suit ?? 0xffffff, c.colors?.trim ?? 0x888888,
-        c.colorize ? (c.tintStrength ?? 0.3) : 0); // TINT FIX: own textures, no palette wash (real colors)
+        c.colorize ? (c.tintStrength ?? 0.3) : 0, // TINT FIX: own textures, no palette wash (real colors)
+        attireEyeGlow(c, modelId)); // per-attire emissive eyes (owner 2026-10-22)
       this._clearModel();
       this.model = inst.model;
       this.model.rotation.y = this.baseRotY;
@@ -501,7 +503,7 @@ export function createSelectScreen(deps) {
 
   function renderAttires(side, c, interactive) {
     const els = plateEls(side);
-    const list = attiresFor(c);
+    const list = selectableAttires(c); // pending (not yet playable) slots stay hidden
     const sel = selectedAttireModel(c);
     els.attires.innerHTML = '';
     if (list.length < 2) return;
@@ -527,6 +529,11 @@ export function createSelectScreen(deps) {
     const els = plateEls(side);
     const fb = els.root.querySelector('.pane-fallback');
     els.note.hidden = true;
+    // PRELOAD (2026-10-24): the portrait plate shows instantly while the
+    // GLB streams in, then hides only when the 3D model is ready — the
+    // preview is never a blank wait. (Fallback handling below already
+    // hides it on success and keeps it on failure.)
+    if (fb) { fb.src = `assets/portraits/${c.id}.png`; fb.hidden = false; }
     const ok = await panes[side].show(c, modelId);
     if (state.highlight[side]?.id !== c.id && state.locked[side]?.id !== c.id) return;
     if (panes[side].failed) {
@@ -544,7 +551,7 @@ export function createSelectScreen(deps) {
 
   function applyAttire(side, c, modelId) {
     setAttire(c, modelId);
-    state.kickCycle = Math.max(1, attiresFor(c).findIndex(a => a.model === modelId));
+    state.kickCycle = Math.max(1, selectableAttires(c).findIndex(a => a.model === modelId));
     renderPlate(side);
     showOnSide(side, c);
     assets.prefetch(modelId);
@@ -557,7 +564,7 @@ export function createSelectScreen(deps) {
   function punchAttire() {
     const c = state.highlight[state.activeSide];
     if (!c) return;
-    const list = attiresFor(c);
+    const list = selectableAttires(c);
     if (list.length < 2) return;
     audio.uiClick();
     applyAttire(state.activeSide, c, list[0].model); // applyAttire records index 0
@@ -565,7 +572,7 @@ export function createSelectScreen(deps) {
   function kickAttire() {
     const c = state.highlight[state.activeSide];
     if (!c) return;
-    const list = attiresFor(c);
+    const list = selectableAttires(c);
     if (list.length < 2) return;
     audio.uiClick();
     state.kickCycle = state.kickCycle >= list.length - 1 ? 1 : state.kickCycle + 1;
@@ -581,7 +588,7 @@ export function createSelectScreen(deps) {
     state.highlight[side] = c;
     // kickCycle tracks the CURRENT attire index; K advances it
     // (wrapping 2..n), P returns it to 0 (attire 1).
-    state.kickCycle = Math.max(0, attiresFor(c).findIndex(a => a.model === selectedAttireModel(c)));
+    state.kickCycle = Math.max(0, selectableAttires(c).findIndex(a => a.model === selectedAttireModel(c)));
     paintCards();
     renderPlate('p1');
     renderPlate('p2');
@@ -637,6 +644,13 @@ export function createSelectScreen(deps) {
       state.highlight.p1 = c;
       state.phase = 'done';
     }
+    // PRELOAD (2026-10-24): locked fighters' GLBs warm while the player
+    // is on stage select, so FIGHT does not start cold. (Highlight
+    // prefetch already warmed P1; this also warms P2 / team picks.)
+    try {
+      const lockedModels = [state.locked.p1, state.locked.p2].filter(Boolean).map(c => selectedAttireModel(c));
+      if (lockedModels.length) warmFight(lockedModels, (id) => assets.prefetch(id));
+    } catch (_) {}
     paintCards();
     renderPlate('p1');
     renderPlate('p2');
@@ -677,6 +691,12 @@ export function createSelectScreen(deps) {
     paintCards();
     renderPlate('p1');
     renderPlate('p2');
+    // PRELOAD (2026-10-24): every select card image warms in the
+    // background once the screen has painted — tapping any fighter
+    // then shows its card from cache instead of a lazy fetch. GLBs
+    // are NOT bulk-warmed here (that was the old preloadAll pipe
+    // saturation); models warm per highlight + per lock.
+    try { warmSelect(selectRoster().map(c => c.id)); } catch (_) {}
   }
 
   /* ---------- keyboard (desktop parity; touch is primary) ----------
@@ -718,5 +738,16 @@ export function createSelectScreen(deps) {
 
   // The Tripo list arrives after the first build: rebuild once so those fighters lead the grid.
   _tripoReady.then(() => { if (strip && strip.children.length) { build(); paintCards(); } });
-  return { build, onShow, selectById, notifyConfirm, highlight, _state: state, _panes: panes };
+  /* Stage-show hook (main.js): warm the locked fighters' GLBs during
+     stage-select dwell. Returns the locked state (empty when nothing
+     is locked, so calling it early is a safe no-op). */
+  function warmLockedFighters() {
+    try {
+      const ids = [state.locked.p1, state.locked.p2].filter(Boolean).map(c => selectedAttireModel(c));
+      if (ids.length) warmFight(ids, (id) => assets.prefetch(id));
+    } catch (_) {}
+    return state.locked;
+  }
+
+  return { build, onShow, selectById, notifyConfirm, highlight, warmLockedFighters, _state: state, _panes: panes };
 }
