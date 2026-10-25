@@ -129,3 +129,14 @@
   purge/sync/quarantine). No main-side content is dropped: every
   main-only file is byte-identical to main, and every PR file was
   verified against main's versions before the merge commit.
+
+## Second re-sync (2026-10-25): main's community-mocap annotations merged in
+- Main's community-mocap lane added `community_base` + `community_base_status`
+  (pending-gpu-retarget) to 2-4 canon signature entries in 6 movesets
+  (demonio qcf+1/qcf+P, diablo 1+4/P+K, kinpo 1+2/S, phantom D+S/d+1+2/u+1/u+P,
+  scimitar 1+2/S, skull 1+2/S) plus top-level `canon_moves` updates. All 6
+  files were re-patched from main's new versions with the identical
+  scripted rules; each re-patch differs from the branch file in ONLY
+  those annotations + canon_moves, quarantine counts identical, restores
+  intact (demonio 4~3/f+3+4, diablo 4~3 slots, scimitar 3+4), 0 T8 anims,
+  0 MOD mismatches. Second branch-update merge commit carries them.
