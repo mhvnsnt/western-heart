@@ -80,7 +80,7 @@ ok(fin.ensureFinisherMoves('x', { playedMoveset: () => null }) === null, 'no mov
 const empty = fin.ensureFinisherMoves('z', { playedMoveset: () => ({ moves: {} }) });
 ok(!!empty && empty.beats[0].xray.power === 0.45, 'fallback base when moveset empty');
 
-// ---- tryFinisher: beats, lock, banner, INTRO_OUTRO context save/restore ----
+// ---- tryFinisher: beats, lock, INTRO_OUTRO context save/restore (no banner — Tekken-exact) ----
 scheduled = [];
 gate.setAnimContext('FIGHT');
 const g = mkGame();
@@ -88,7 +88,7 @@ const fired = fin.tryFinisher(g, { name: 'BEAT', beats: [{ btn: '2', dur: 0.5, x
 ok(fired === true, 'tryFinisher fires when gates open');
 ok(g.p1.soulMeter === 0, 'finisher spends the Nine-Soul meter');
 ok(g.p2._finisherLock === true, 'victim rooted during beats');
-ok(g.ui._banner === 'FINISHER — BEAT', 'banner announced');
+ok(g.ui._banner === undefined, 'no center-screen banner — cinematic is the announcement (Tekken-exact)');
 ok(gate.getAnimContext() === 'INTRO_OUTRO', 'beats run in INTRO_OUTRO context');
 ok(scheduled.length === 2, 'beat + release scheduled');
 

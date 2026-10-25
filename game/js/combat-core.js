@@ -50,6 +50,167 @@ export function effectiveActive(m) {
   return Math.max(Number(m && m.active) || 0, MIN_ACTIVE);
 }
 
+/* ============ GAP-FILL LANE 1 (2026-10-24) — combat systems ============
+   PROPRIETARY NAMES: NEEDS NAME (owner names them). No canon name for
+   these systems exists in CANON.md, SOUL-SYSTEMS.md, docs/decisions/ or
+   docs/research/ as of this lane (only "Soul Urge" is user-locked).
+   The Tekken names below appear ONLY in this technical module and in
+   code comments — never in canon bios or in-universe writing — and
+   user-facing text must use the neutral labels noted at each system
+   until the owner picks canon names. Buttons use LP1/RP2/LK3/RK4.
+   Sources (web, 2026-10-24): Tekken Wiki "Power Crush" / "Screw" /
+   "Tornado", wavu.wiki "Attack" (Power Crush armor startup) + "Combo"
+   (one extender per combo), Tekken 8 recoverable-gauge descriptions.
+   Per-move DATA (which moves are Power Crush / Screw / Tornado /
+   item-gated) is the moveset lane's job: this engine only reads the
+   flags when present and falls back honestly (UNMAPPED) when absent —
+   it never invents a flag for a move. */
+
+/* T7 Power Crush armor startup: most moves ~8 frames (wavu.wiki).
+   Before this delay the move can still be interrupted normally. */
+export const POWER_CRUSH_ARMOR_FRAMES = 8;
+export const POWER_CRUSH_ARMOR_DELAY = POWER_CRUSH_ARMOR_FRAMES * FRAME;
+
+/* Is `move` a low? Level-string first (authoritative when present);
+   otherwise the decoded T3 hit word: a low is blocked ONLY by a
+   crouching guard (guard bit 0x08 set, standing bit 0x10 clear) in
+   fighter.js's guard encoding. Unknown level => not low (WH's
+   defaultWord is mid), so an unmapped move never silently breaks
+   a Power Crush. */
+export function isLowHit(move) {
+  if (!move) return false;
+  const rawSrc = move.hit_level ?? (move.t7 && move.t7.hit_level) ?? (move.t8 && move.t8.tgt) ?? '';
+  const raw = String(rawSrc).replace(/\([^)]*\)/g, ' ').trim().toLowerCase();
+  if (raw) {
+    const toks = raw.split(/[ ,]+/).filter(Boolean);
+    const c = toks.length ? toks[toks.length - 1] : '';
+    return c.startsWith('l');
+  }
+  const w = move.hitWord;
+  if (typeof w === 'number') return (w & 0x08) !== 0 && (w & 0x10) === 0;
+  return false;
+}
+
+/* Power Crush flag, from any field the moveset lane may author.
+   Absent everywhere => false (UNMAPPED, never inferred from damage
+   or class — a heavy strike is not automatically a Power Crush). */
+export function isPowerCrushMove(move) {
+  if (!move) return false;
+  return !!(move.powerCrush || move.power_crush || move.powercrush ||
+    (move.t7 && move.t7.powerCrush) || (move.t8 && move.t8.powerCrush));
+}
+
+/* Does the defender's in-flight Power Crush absorb `incoming`?
+   T7 rules: absorbs mid/high strikes, full damage still applies,
+   the swing continues; lows, throws, unblockables and Rage Arts
+   break it. `phase`/`stateT` are the defender's attack phase and
+   time-in-state (fighter.js _attackPhase / stateT). */
+export function powerCrushAbsorbs(defMove, phase, stateT, incoming) {
+  if (!isPowerCrushMove(defMove)) return false;
+  if (!incoming) return false;
+  if (incoming.isGrab || incoming.move_class === 'throw') return false;
+  if (incoming.unblockable || incoming.rageArt) return false;
+  if (isLowHit(incoming)) return false;
+  if (phase === 'active') return true;
+  if (phase === 'startup') return (Number(stateT) || 0) >= POWER_CRUSH_ARMOR_DELAY;
+  return false;
+}
+
+/* ---- Combo extenders: Screw (T7) / Tornado (T8) ----
+   T7: Screw (S!) spins an airborne opponent into a slump and
+   extends the juggle; T8: Tornado flips them into a ground-bound
+   state. Both eras share ONE extender slot per combo (wavu.wiki
+   "Combo": "There is only one combo extender available to any
+   given combo"), so fighter.js tracks a single _extenderUsed flag
+   and records which kind fired. A grounded connect does NOT fire
+   either (T7 pirouette stun on the ground is not a Screw). */
+export function isScrewMove(move) {
+  if (!move) return false;
+  return !!(move.screw || move.tailspin || move.screwAttack ||
+    (move.t7 && move.t7.screw));
+}
+export function isTornadoMove(move) {
+  if (!move) return false;
+  return !!(move.tornado || (move.t8 && move.t8.tornado));
+}
+export function extenderKind(move) {
+  if (isScrewMove(move)) return 'screw';
+  if (isTornadoMove(move)) return 'tornado';
+  return null;
+}
+export const SCREW_SLUMP_STUN = 0.9;   // slump follow-up window, seconds
+export const TORNADO_BOUND_STUN = 0.8; // ground-bound follow-up window
+export const EXTENDER_LAND_STUN_FLOOR = 0.7; // slump/bound window survives landing
+
+/* ---- Wall splat (distinct from wall BREAK) ----
+   T7: a knocked-back fighter hitting an unbroken wall sticks to
+   it (W!) and eats a wall combo. Wall game allows 3 hits on the
+   wall before the victim drops fast; the splat itself is not a
+   break (stagebreaks.js owns breaks; fighter.js owns this state). */
+export const WALL_SPLAT_MAX_HITS = 3;
+export const WALL_SPLAT_STUN = 0.55;
+export function nextWallSplatState(hits) {
+  return hits >= WALL_SPLAT_MAX_HITS ? 'knockdown' : 'wallsplat';
+}
+
+/* ---- Item moves (T7 item-gated attacks) ----
+   A move may require an equipped customization item. The gate is
+   data-driven: `requiresItem` (or `item` / `itemMove` + `item`)
+   on the move record, matched against the fighter's equipped
+   item ids (fighter.js equippedItems, set by the customization
+   lane). No item data in WH movesets yet => no move is gated
+   until the moveset lane authors one. */
+export function requiresItemOf(move) {
+  if (!move) return null;
+  return move.requiresItem || move.requiredItem || move.item || null;
+}
+export function itemGate(move, equipped) {
+  const item = requiresItemOf(move);
+  if (!item) return { blocked: false, item: null };
+  const list = Array.isArray(equipped) ? equipped : [];
+  const ids = list.map((e) => (typeof e === 'string' ? e : (e && (e.id || e.itemId)) || null));
+  return { blocked: !ids.includes(item), item };
+}
+
+/* ---- Per-move hitbox / hurtbox lookup (ENGINE side) ----
+   Reads per-move geometry when the moveset lane has authored it
+   and reports UNMAPPED otherwise — never synthesized from limb
+   or class. Accepted shapes: {shape:'sphere'|'capsule', radius},
+   {radius}, {shape:'box', w,h,d} (dims preserved; no radius is
+   invented from a box — callers keep the generic radius then).
+   fighter.js getHitbox() applies radius/reach from this result;
+   getHurtboxes() applies a hurtbox radiusScale only when the
+   data itself supplies one. */
+function _perMoveBox(src) {
+  if (!src || typeof src !== 'object') return null;
+  const radius = src.radius ?? src.r ?? null;
+  const shape = src.shape || (radius != null ? 'sphere' : (src.w != null ? 'box' : null));
+  // A hurtbox that carries only a radiusScale is still mapped data
+  // (fighter.js applies the scale); it is not UNMAPPED.
+  if (!shape && radius == null && src.radiusScale == null) return null;
+  return {
+    mapped: true, shape, radius: radius != null ? Number(radius) : null,
+    reach: src.reach ?? src.range ?? null,
+    forward: src.forward ?? src.offset_x ?? src.x ?? null,
+    height: src.height ?? src.y ?? null,
+    dims: shape === 'box' ? { w: src.w, h: src.h, d: src.d } : null,
+    radiusScale: src.radiusScale ?? null,
+  };
+}
+export function resolvePerMoveHitbox(move) {
+  if (!move) return { mapped: false, reason: 'UNMAPPED' };
+  const src = move.hitbox ?? (move.t7 && move.t7.hitbox) ?? (move.t8 && move.t8.hitbox) ?? null;
+  if (src != null && typeof src === 'number') return { mapped: true, shape: 'sphere', radius: src, reach: null, forward: null, height: null, dims: null, radiusScale: null };
+  const box = _perMoveBox(src);
+  return box || { mapped: false, reason: 'UNMAPPED' };
+}
+export function resolvePerMoveHurtbox(move) {
+  if (!move) return { mapped: false, reason: 'UNMAPPED' };
+  const src = move.hurtbox ?? (move.t7 && move.t7.hurtbox) ?? (move.t8 && move.t8.hurtbox) ?? null;
+  const box = _perMoveBox(src);
+  return box || { mapped: false, reason: 'UNMAPPED' };
+}
+
 /* Phase for attack time t. `prevT` enables the swept check: if the tick
    stepped over the whole active window, that tick still counts as active. */
 export function attackPhase(m, t, prevT = t) {

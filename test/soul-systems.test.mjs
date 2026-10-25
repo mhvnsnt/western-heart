@@ -24,8 +24,8 @@ t('release needs full meter and spends it', () => { const ss = new S.SoulSystems
   assert.equal(ss.release(a, d), null); a.meter = 100; const v = ss.release(a, d); assert.ok(v.name.startsWith('NINE-SOUL RELEASE')); assert.equal(a.meter, 0); assert.ok(d.hp < 100); });
 t('release claims 1+2+3+4 only at full meter', () => { const ss = new S.SoulSystems({}); const a = mk('demonio', { meter: 50 }), d = mk('x');
   assert.equal(ss.claimRelease(a, d, ['1', '2', '3', '4']), false); a.meter = 100; assert.equal(ss.claimRelease(a, d, ['1', '2', '3', '4']), true); });
-t('ready callout once', () => { const banners = []; const g = { p1: mk('a', { meter: 100 }), p2: mk('b'), ui: { banner: x => banners.push(x) } }; const ss = new S.SoulSystems(g);
-  ss.update(); ss.update(); assert.deepEqual(banners, ['SOUL RELEASE READY']); });
+t('ready indicator once, no center text', () => { const ready = []; const banners = []; const g = { p1: mk('a', { meter: 100 }), p2: mk('b'), ui: { banner: x => banners.push(x), setSoulReady: (k, v) => ready.push([k, v]) } }; const ss = new S.SoulSystems(g);
+  ss.update(); ss.update(); assert.deepEqual(ready, [['p1', true]]); assert.deepEqual(banners, []); });
 t('reihou purges foe rage', () => { const ss = new S.SoulSystems({}); const a = mk('demonio', { meter: 60 }), d = mk('b', { _rageOn: true });
   assert.ok(ss.tryReihou(a, d)); assert.equal(d._rageOn, false); assert.equal(d._rageUsed, true); assert.equal(a.meter, 10); assert.equal(a._spiritFlare, 1); });
 t('reihou blocked without foe rage', () => assert.equal(new S.SoulSystems({}).tryReihou(mk('a', { meter: 100 }), mk('b')), null));
