@@ -1291,7 +1291,6 @@
       "name": "PHANTOM 1 (T3 yoshimitsu r62)",
       "input": "1",
       "t3_source": "yoshimitsu",
-      "t3_row": 62,
       "t3_command": "LP",
       "startup": 0.1667,
       "active": 0.017,
@@ -1302,7 +1301,6 @@
       "heavy": false,
       "knock": 2.2,
       "soulGain": 8,
-      "anim_ref": "t3:yoshimitsu:row:62",
       "input_slots": [
         "1"
       ],
@@ -1318,13 +1316,16 @@
         "id": "yoshimitsu_1",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t3_unmapped_former_row": 62,
+      "t3_unmapped_former_anim_ref": "t3:yoshimitsu:row:62",
+      "t3_unmapped_reason": "Row 62 starts-airborne; no clean Yoshimitsu LP1 row in-bank.",
+      "t3_clip_status": "UNMAPPED"
     },
     "2": {
       "name": "PHANTOM 2 (T3 yoshimitsu r307)",
       "input": "2",
       "t3_source": "yoshimitsu",
-      "t3_row": 307,
       "t3_command": "RP",
       "startup": 0.1667,
       "active": 0.05,
@@ -1335,7 +1336,6 @@
       "heavy": false,
       "knock": 2.2,
       "soulGain": 8,
-      "anim_ref": "t3:yoshimitsu:row:307",
       "input_slots": [
         "2"
       ],
@@ -1351,7 +1351,11 @@
         "id": "yoshimitsu_4",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t3_unmapped_former_row": 307,
+      "t3_unmapped_former_anim_ref": "t3:yoshimitsu:row:307",
+      "t3_unmapped_reason": "Row 307 is a crouch clip + travel; not a standing RP2 jab.",
+      "t3_clip_status": "UNMAPPED"
     },
     "2,2": {
       "name": "PHANTOM 2,2 (T3 yoshimitsu r308)",
@@ -1452,7 +1456,6 @@
       "name": "PHANTOM 4 (T3 yoshimitsu r243)",
       "input": "4",
       "t3_source": "yoshimitsu",
-      "t3_row": 243,
       "t3_command": "RK",
       "startup": 0.25,
       "active": 0.15,
@@ -1463,7 +1466,6 @@
       "heavy": true,
       "knock": 4.2,
       "soulGain": 11,
-      "anim_ref": "t3:yoshimitsu:row:243",
       "input_slots": [
         "4"
       ],
@@ -1479,7 +1481,11 @@
         "id": "yoshimitsu_16",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t3_unmapped_former_row": 243,
+      "t3_unmapped_former_anim_ref": "t3:yoshimitsu:row:243",
+      "t3_unmapped_reason": "Row 243 is a chord row, armL, level u — an arm motion for a legR high kick; all button-8 high standing rows in the Yoshimitsu bank lift the foot <= 0.14 m (not kicks by foot lift).",
+      "t3_clip_status": "UNMAPPED"
     },
     "1+3": {
       "name": "PHANTOM 1+3 throw (T3 yoshimitsu r164)",
@@ -2840,7 +2846,6 @@
       "name": "PHANTOM 1_r62 (T3 yoshimitsu r62)",
       "input": "1_r62",
       "t3_source": "yoshimitsu",
-      "t3_row": 62,
       "t3_command": "LP",
       "startup": 0.117,
       "active": 0.017,
@@ -2850,11 +2855,14 @@
       "heavy": false,
       "knock": 2.2,
       "soulGain": 8,
-      "anim_ref": "t3:yoshimitsu:row:62",
       "input_slots": [
         "1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "t3_unmapped_former_row": 62,
+      "t3_unmapped_reason": "Row 62 starts-airborne; no clean Yoshimitsu LP1 row in-bank.",
+      "t3_unmapped_former_anim_ref": "t3:yoshimitsu:row:62",
+      "t3_clip_status": "UNMAPPED"
     },
     "1_r63": {
       "name": "PHANTOM 1_r63 (T3 yoshimitsu r63)",
@@ -26711,7 +26719,6 @@
       "name": "YOSHIMITSU u+1,1_r62 (T3 yoshimitsu r62)",
       "input": "u+1,1_r62",
       "t3_source": "yoshimitsu",
-      "t3_row": 62,
       "t3_command": "LP",
       "startup": 0.117,
       "active": 0.017,
@@ -26721,12 +26728,15 @@
       "heavy": false,
       "knock": 2.2,
       "soulGain": 8,
-      "anim_ref": "t3:yoshimitsu:row:62",
       "input_slots": [
         "u+1,1"
       ],
       "move_class": "strike",
-      "merge_source": "t3:yoshimitsu:row:62"
+      "merge_source": "t3:yoshimitsu:row:62",
+      "t3_unmapped_former_row": 62,
+      "t3_unmapped_reason": "Row 62 starts-airborne; no clean Yoshimitsu LP1 row in-bank.",
+      "t3_unmapped_former_anim_ref": "t3:yoshimitsu:row:62",
+      "t3_clip_status": "UNMAPPED"
     },
     "u/f+1,1~t3.yoshimitsu.2": {
       "name": "YOSHIMITSU u/f+1,1_r63 (T3 yoshimitsu r63)",
@@ -182341,5 +182351,37 @@
       "move_class": "strike",
       "note": "Mid; on block -6"
     }
+  },
+  "t3_verification_2026_10_24": {
+    "source": "docs/anim/T3-BANK-VERIFICATION-2026-10-24.md (PR #1027 verification pass) + docs/anim/ANIM-MOTION-AUDIT-2026-10-24.md (forward-kinematics motion audit, 8 fighters).",
+    "unmapped_basics": [
+      {
+        "input": "LP1 (1)",
+        "former_row": 62,
+        "reason": "Row 62 starts-airborne; no clean Yoshimitsu LP1 row in-bank."
+      },
+      {
+        "input": "RP2 (2)",
+        "former_row": 307,
+        "reason": "Row 307 is a crouch clip + travel; not a standing RP2 jab."
+      },
+      {
+        "input": "RK4 (4)",
+        "former_row": 243,
+        "reason": "Row 243 is a chord row, armL, level u — an arm motion for a legR high kick; all button-8 high standing rows in the Yoshimitsu bank lift the foot <= 0.14 m (not kicks by foot lift)."
+      }
+    ],
+    "chord_string_enders": {
+      "motion_hard": 0,
+      "literal_branch_mask": 5,
+      "chord_rows": [],
+      "status": "UNMAPPED — left unwired. A string needs a verified sequence clip and no such row exists in-bank. No string ender was rewired to a single-hit row."
+    },
+    "legacy_strings_arrays_note": "Legacy `strings` arrays are NOT consumed by fighter.js; left unchanged.",
+    "other_keys_referencing_unmapped_rows_unchanged": [
+      "1+2,2,1,4,2,2 (row 307 string ender)",
+      "b+1+4 (row 243 chord input)"
+    ],
+    "runtime_effect_of_unmapped_marking": "Marked entries carry no exact anim_ref/t3_row claim, so the runtime falls to donor/match/generic for those presses and the editor shows them as unmapped (not offered as swap targets) until a verified exact row lands. The former row is kept in t3_unmapped_former_row for audit trail only."
   }
 }
