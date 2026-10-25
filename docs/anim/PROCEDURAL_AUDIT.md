@@ -208,3 +208,24 @@ have had 61 canonicals including a bogus single 'f+2'. No verified row is
 affected by the correction. T8-sourced prefixes with no T3 row get their
 correct clips from #988 Step 2 (original T8 refs), never from a T3 row
 recorded as correct.
+
+## Diablo Batch 2 fallback (LK3/RK4-only strings, 2026-10-25)
+Verified rows 86/150/195/153/183/60/74 and review candidate 191 are FALLBACK
+(T3 heihachi rows, bank heihachi_on_jin / divmot13 on the jin rig), to be
+re-matched to T7 Heihachi rows when extraction lands. Rejected row 190 is
+NOT fallback — rejected evidence (button 12 LK3+RK4 chord row for
+single-RK4 steps), not wired or held. Heihachi-bank rules, per-bank
+evidence (documented in docs/movesets/DIABLO-BATCH2-STEP-PLANS-2026-10-25.md):
+row 35 does NOT EXIST in this bank (absent from hit_frames and Job 1), so
+no row-35 rule applies; row 220 is a JUMP RK4 row here, gate-adjudicated
+like any row, NOT jin's standing RP2 row, NOT king's jumping chord row,
+NOT bryan's button-0 row; heihachi_on_jin row 216 is a DUCK-DIP row, NOT
+jin row 216's jump row and NOT king row 216's dash Konvict Kick. Batch 2
+contains NO input-~ canonicals and NO __main records (unlike Batch 1's 6
+input-~ own canonicals — diablo's cancel notation lives in LP1/RP2 strings,
+not kick strings). Suspended-drift: 0 — none of the 3 row-changed moves
+(1, 1_r46, u+1,1~t3.heihachi.2) is a Batch 2 step prefix. Job 3 fills wired:
+0 (3 Batch 2 prefixes appear in job3.log, ALL with EMPTY pass-all lists).
+Job 4 joins: 4, none promoting. T8-sourced prefixes with no T3 row get
+their correct clips from #988 Step 2 (original T8 refs), never from a T3
+row recorded as correct.

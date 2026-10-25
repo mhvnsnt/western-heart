@@ -62,6 +62,9 @@
  *      hit_frames.json.
  *  13. fighter.js: the step-plan branch markers exist (static guard; the engine is
  *      inherited from #1096, not changed by this PR; behaviour is play-verified).
+ * Cumulative update (Diablo Batch 2, 2026-10-25): plan count 111 -> 132; extra-keys
+ * assertion now expects exactly the 21 Batch 2 keys; all Batch 1 content assertions
+ * preserved verbatim (burger test-evolution rule; Pantera's latent break NOT copied).
  * Run: node --test game/tests/diablo-batch1-step-plans.test.mjs   (from repo root)
  */
 import test from 'node:test';
@@ -78,6 +81,7 @@ const hf = JSON.parse(readFileSync(hfPath, 'utf8')).rows;
 
 const plans = diablo.string_step_plans.plans;
 const B1 = ["1,1", "1,1,1", "1,1,2", "1,1,2~t7.heihachi", "1,1,2~t7.heihachi.2", "1,1,2~t7.heihachi.3", "1,1,WAR.2", "1,1~t3.heihachi", "1,1~t3.heihachi.2", "1,1~t3.heihachi.3", "1,1~t7.heihachi", "1,1~t7.heihachi.2", "1,2", "1,2,2", "1,2,2~1", "1,2,2~1+2", "1,2,2~1+2~t7.heihachi", "1,2,2~1+2~t7.heihachi.2", "1,2,2~1,1+2", "1,2,2~t7.heihachi", "1,2,2~t7.heihachi.2", "1,2,2~t7.heihachi.3", "1,2~t7.heihachi", "1,2~t7.heihachi.2", "1,b+2", "1,b+2,1", "1,b+2,1~t7.heihachi", "1,b+2,1~t7.heihachi.2", "1,b+2,1~t7.heihachi.3", "1,b+2,2", "1,b+2,WAR.2", "1,b+2~t7.heihachi", "1,b+2~t7.heihachi.2", "2,1", "2,1,2", "2,1,2,2", "2,1,2,2~t3.heihachi", "2,1,2~t3.heihachi", "2,1~t3.heihachi", "2,2", "2,2~1+2", "2,2~1+2~t7.heihachi", "2,2~t7.heihachi", "2,2~t7.heihachi.2", "FUJ.1,1", "FUJ.1,2", "R.1,b+2,1+2", "R.1,b+2,1+2~t7.heihachi", "R.1,b+2,1+2~t7.heihachi.2", "R.b+2,1+2", "R.b+2,1+2~t7.heihachi", "RAI.2,1", "RAI.2,1~t7.heihachi", "SS.2,1", "SS.2,1~t7.heihachi", "b+1+2,1", "b+1+2,1+2", "b+1+2,1+2~t7.heihachi", "b+1+2,1,2", "b+1+2,2", "b+1+2,2,2", "b+1+2,2,2,1", "b+1,2", "b+1,2~1+2", "b+1,2~1+2~t7.heihachi", "b+1,2~t7.heihachi", "b+2,1", "b+2,2", "d+1,2", "d+1,2__main", "d+1,2~t3.heihachi", "d+1,2~t7.heihachi", "d+1,2~t7.heihachi.2", "d/f+1+2,2", "d/f+1,1", "d/f+1,1~t7.heihachi", "d/f+1,2", "d/f+1,2~t7.heihachi", "df+1,&amp;#58;2", "df+1,&amp;#58;2*", "df+1,1", "df+1,2", "df+1,2*", "df+2,1", "df+2,WAR.1", "f+1+2,1", "f+1+2,1,2", "f+1+2,2", "f+1+2,2,2", "f+1+2,b+2", "f+1+2,b+2,1", "f+1+2,b+2,1~t3.heihachi", "f+2,1", "f+2,2", "f+2~1,1+2", "u+1,1", "u+1,1~t3.heihachi", "u+1,1~t3.heihachi.2", "u+1,1~t3.heihachi.3", "u+1,2", "u/b+1,1", "u/b+1,1~t3.heihachi", "u/b+1,1~t3.heihachi.2", "u/b+1,1~t3.heihachi.3", "u/b+1,2", "u/f+1,1", "u/f+1,1~t3.heihachi", "u/f+1,1~t3.heihachi.2", "u/f+1,1~t3.heihachi.3", "u/f+1,2", "uf+2,1"];
+const B2 = ["3,4", "3,4~t7.heihachi", "FUJ.3,4", "WS.4,4", "WS.4,4~t7.heihachi", "b+3,3", "b+3,3~t7.heihachi", "b+3,3~t7.heihachi.2", "d/f+4,4", "d/f+4,4,4", "u/f+3,4", "u/f+3,4~t3.heihachi", "u/f+3,4~t3.heihachi.2", "u/f+3,4~t3.heihachi.3", "u/f+4,3", "u/f+4,3~t3.heihachi", "u/f+4,4", "u/f+4,4~t3.heihachi", "u/f+4,4~t3.heihachi.2", "uf+3,4", "ws4,4"];
 const B1_VERIFIED_LAST = ["2,1", "2,1,2", "2,1,2,2", "2,1,2,2~t3.heihachi", "2,1,2~t3.heihachi", "2,1~t3.heihachi", "b+1+2,1,2", "b+1+2,2", "b+1+2,2,2", "b+2,2", "d/f+1+2,2", "f+1+2,1,2", "f+1+2,2", "f+1+2,2,2", "u+1,1", "u+1,1~t3.heihachi", "u+1,1~t3.heihachi.2", "u+1,1~t3.heihachi.3", "u+1,2", "u/b+1,1", "u/b+1,1~t3.heihachi", "u/b+1,1~t3.heihachi.2", "u/b+1,1~t3.heihachi.3", "u/b+1,2", "u/f+1,1", "u/f+1,1~t3.heihachi", "u/f+1,1~t3.heihachi.2", "u/f+1,1~t3.heihachi.3", "u/f+1,2"];
 const VERIFIED_BUTTONS = {"40": 1, "41": 1, "42": 1, "52": 2, "53": 2, "54": 2, "98": 3, "99": 2, "110": 3, "123": 1, "146": 2, "147": 2, "149": 2, "157": 2, "158": 1, "159": 2, "160": 2, "204": 2, "223": 3};
 
@@ -91,14 +95,14 @@ function stepBits(step) {
 test('diablo move/string counts unchanged by the additive plans block', () => {
   assert.equal(Object.keys(diablo.moves).length, 661);
   assert.equal(diablo.strings.length, 90);
-  assert.equal(Object.keys(plans).length, 111);
+  assert.equal(Object.keys(plans).length, 132);
 });
 
 test('Batch 1 keys are exactly the documented 111', () => {
   assert.equal(B1.length, 111);
   for (const key of B1) assert.ok(plans[key], `Batch 1 key ${key} missing`);
   const extra = Object.keys(plans).filter((k) => !B1.includes(k));
-  assert.deepEqual(extra, []);
+  assert.deepEqual(extra.sort(), B2);
 });
 
 test('Batch 1 verified steps carry rows (button == step bits, throw 0, never row 35 on ground); review/unmapped carry row null; no soft flags', () => {
