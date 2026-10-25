@@ -200,3 +200,17 @@ html,body{margin:0;padding:0;height:100%;background:var(--bg);color:var(--txt);
 #ms-q,#lib-q{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--txt);border-radius:10px;
   padding:10px 12px;font:inherit;}
 @media (max-width:600px){ .ms-row{grid-template-columns:minmax(52px,auto) 1fr auto;padding:8px;} .ms-lib{max-height:58vh;} }
+
+/* ---- OUTFIT tab (Phase 1: fighter's own part toggles) ---- */
+.of-row{display:flex;gap:10px;align-items:flex-start;background:var(--panel2);border:1px solid var(--line);
+  border-radius:12px;padding:10px 12px;margin:8px 0;}
+.of-main{flex:1;min-width:0;}
+.of-name{font-size:14px;font-weight:800;}
+.of-mesh{font-family:ui-monospace,monospace;font-size:10px;color:var(--dim);margin:2px 0;word-break:break-all;}
+.of-state{margin:4px 0;}
+.of-notes{font-size:11px;color:var(--dim);line-height:1.4;}
+.of-ctl{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;max-width:46%;}
+.chip.of-shown{border-color:var(--green);color:var(--green);}
+.chip.of-hidden{border-color:var(--dim);color:var(--dim);}
+.chip.of-invisible{border-color:#9a7ff5;color:#9a7ff5;}
+.chip.of-deleted{border-color:var(--red);color:var(--red);}

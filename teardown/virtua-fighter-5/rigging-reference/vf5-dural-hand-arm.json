@@ -1,0 +1,28 @@
+{
+  "source": "VF5 PS3 dump BLES00029 (release vf5-ps2... vf5-ps3-v1, asset vf5-ps3-games.rar), Dural item obj.bin SKIN blocks (duritm*_obj.bin from model_extracted/dur/)",
+  "bone_count": 49,
+  "naming": "prefix j_ (joint) / kl_ / n_ (node), suffix _wj; Japanese anatomical names",
+  "arm_chain": {
+    "upper_arm": "j_ude_l_wj / j_ude_r_wj (ude = upper arm)",
+    "armpit": "kl_waki_l_wj / kl_waki_r_wj (waki = armpit)",
+    "shoulder": "n_skata_l_wj / n_skata_r_wj (skata = shoulder), plus n_skata_b/c variants",
+    "elbow": "n_hiji_l_wj / n_hiji_r_wj (hiji = elbow)",
+    "forearm": "n_sude_l_wj / n_sude_r_wj (sude = forearm), plus n_sude_b variants",
+    "hand": "kl_te_l_wj / kl_te_r_wj (te = hand)"
+  },
+  "fingers": {
+    "naming": "nl_{digit}_{side}_wj (base/proximal), nl_{digit}_b_{side}_wj (middle), nl_{digit}_c_{side}_wj (distal)",
+    "digits": {
+      "oya": "thumb",
+      "hito": "index",
+      "naka": "middle",
+      "kusu": "ring (kusuri-yubi)",
+      "ko": "pinky (ko-yubi)"
+    },
+    "segments_per_digit": 3,
+    "example_left": ["nl_oya_l_wj", "nl_oya_b_l_wj", "nl_oya_c_l_wj", "nl_hito_l_wj", "nl_hito_b_l_wj", "nl_hito_c_l_wj", "nl_naka_l_wj", "nl_naka_b_l_wj", "nl_naka_c_l_wj", "nl_kusu_l_wj", "nl_kusu_b_l_wj", "nl_kusu_c_l_wj", "nl_ko_l_wj", "nl_ko_b_l_wj", "nl_ko_c_l_wj"],
+    "hand_node_count": 30
+  },
+  "face_bones_note": "VF5 Dural also carries face bones (kl_ago_wj chin, j_kao_wj face, kl_mabu eyelids, tl_kuti mouth, tl_mayu brows) — unlike Tekken 7's bone-less face",
+  "extraction_method": "raw byte scan of duritm*_obj.bin for '_wj' name strings; parent hierarchy not decoded (SKIN block format RE open)"
+}
