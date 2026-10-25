@@ -923,8 +923,6 @@ if (fb) {
 
   return { build, onShow, selectById, notifyConfirm, highlight, warmLockedFighters, soulSpiritLocked, _state: state, _panes: panes };
 
-  _tripoReady.then(() => { if (grid && grid.children.length) { build(); paintCards(); } });
-
   /* ---------- TTT2 versus submenu (INSIDE the select screen) ----------
      TTT2 actual: "before you select your characters, you will choose
      whether to play as a single character or a two-person tag team."
@@ -953,7 +951,7 @@ if (fb) {
         <div class="vs-size-note" id="vs-size-note"></div>
       </div>
       <div class="vs-submenu-row" id="vs-slot-tray" hidden></div>`;
-    const grid2 = $('select-grid') || grid;
+    const grid2 = $('select-grid') || strip; // strip = $('char-grid'); 'grid' was undefined (ReferenceError) so the submenu never got created
     (grid2.parentElement || document.body).appendChild(el);
     el.querySelectorAll('.vs-format-btn').forEach((b) =>
       b.addEventListener('click', () => chooseVsFormat(b.dataset.format)));
