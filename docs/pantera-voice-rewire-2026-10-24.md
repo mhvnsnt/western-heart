@@ -5,9 +5,9 @@
 The old Pantera voice set — 9 OGG files in `game/assets/voices/pantera/`
 (`intro-01`, `intro-02`, `win-01`, `win-02`, `taunt-01`, `taunt-02`,
 `hit-01`, `ko-01`, `select-01`) attributed to `teardown/eastern-mind` /
-`F_KING` stage voices — was DELETED in full (9 files). Prior project
+`F_KING` stage voices — was RENAMED, not deleted, in full (9 files) per owner order 2026-10-24 21:28 CDT. Prior project
 record states those 9 `F_KING` clips were music/SFX, not King voice, so
-they were not reused as voice in any form.
+they were not reused as voice in any form. Restored as `game/assets/archive/pantera-stage-music-sfx/stage-music-sfx-<slot>.ogg` (see that directory README for the old-name to new-name map).
 
 ## What replaced it
 
