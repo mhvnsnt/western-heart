@@ -69,8 +69,8 @@ body[data-screen="pause"] .wall, body[data-screen="results"] .wall { filter:blur
 .plate { flex:1; } .plate.r { direction:rtl; }
 .bar { position:relative; height:3.4vh; background:#200; border:2px solid var(--bone); transform:skewX(-20deg); overflow:hidden; }
 .plate.r .bar { transform:skewX(20deg); }
-.bar u { position:absolute; inset:0 auto 0 0; background:#c33; } .bar b { position:absolute; inset:0 auto 0 0; background:rgba(255,255,255,0.65); } .bar i { position:absolute; inset:0 auto 0 0; background:linear-gradient(180deg,#ffe27a,#e08a1a); }
-.plate.r .bar u, .plate.r .bar b, .plate.r .bar i { inset:0 0 0 auto; }
+.bar u { position:absolute; inset:0 auto 0 0; background:#c33; } .bar b { position:absolute; inset:0 auto 0 0; background:rgba(255,255,255,0.55); } .bar i { position:absolute; inset:0 auto 0 0; background:linear-gradient(180deg,#ffe27a,#e08a1a); }
+.plate.r .bar u, .plate.r .bar i, .plate.r .bar b { inset:0 0 0 auto; }
 .nm { font-size:1.8vw; margin-top:.6vh; direction:ltr; } .plate.r .nm { text-align:right; } .nm i { color:var(--gold); margin:0 .6vw; }
 .souls { display:flex; gap:.3vw; margin-top:.4vh; } .souls em { width:1.5vw; height:1.5vw; border:2px solid var(--gold); transform:rotate(45deg); }
 .souls em.on { background:var(--gold); box-shadow:0 0 .6vw var(--gold); }

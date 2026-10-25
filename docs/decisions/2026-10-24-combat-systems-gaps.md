@@ -2,152 +2,114 @@
 
 Owner instruction (verbatim, subagent task 2026-10-24): "WORK COMBAT-SYSTEM GAPS IN WESTERN HEART — Power Crush, Screw, Wall Splat, Recoverable Health, Heat/Soul Urge completion. You are a worker for a completeness audit. Do real work, not just a report: implement in code, test by simulation, ship via PR." Follow-up directive 2026-10-24 19:39 CDT: "Don't leave any PRs unpushed or unmerged don't leave any work unfinished or leave it queued start working on everything use the GPU to get it finished and make sure everything is merged and pushed and playable and testable without clobbering anything on any side."
 
-## Re-verified gaps (grep on main, 2026-10-24)
+## Convergence note — read this first (revised 2026-10-25)
 
-All five original gaps confirmed present before this change: zero mentions of
-powercrush/power_crush, screw/tailspin/kirimomi, wall_splat/wallsplat or
-recoverable in `game/js/fighter.js` / `game/js/combat-core.js`; chip damage
-existed (12% on block) but created no recoverable pool; Soul Urge existed
-(`game/js/soulurge.js`) but its timer was broken by a double call in
-`game/js/game.js` (see below) and it supported only a single auto-picked
-engager. "Bound" in the old gap note is not a fighter.js system at all —
-the only `bound` hits are animation-bank wording — so there is nothing to
-"keep for low parry only"; no Bound behaviour was removed.
+This branch ORIGINALLY implemented the full engine for these systems
+(pure rules in `game/js/combat-core.js`, wiring in `game/js/fighter.js`,
+Soul Urge completion in `game/js/soulurge.js`, HUD white bars, Pantera
+flags, 8 simulation tests). While the branch was in flight, main merged
+a parallel lane (GAP-FILL LANE 1, 2026-10-24) that implemented the same
+engine independently — Power Crush with armor delay, Screw/Tornado
+extender slot, wall splat with 3-hit drop, recoverable pool, item gate,
+Urge Dash cancel, per-round resets — in `game/js/combat-core.js` and
+`game/js/fighter.js`. Shipping the branch's engine on top would have
+DUPLICATED that work (and in one re-sync attempt it literally produced
+a duplicate `powerCrushAbsorbs` export). So this PR was rebased onto
+main's lane: the engine files are main's, and this PR ships only the
+parts main's lane did NOT cover. No work was silently dropped — the
+re-sync history is in the branch commits; the engine behaviour below is
+main's lane plus this PR's deltas, tested together by the revised suite.
 
-## What was implemented (technical names only — NEEDS NAME)
+## What main's GAP-FILL LANE 1 already covers (not re-shipped here)
 
-No universe (canon) names for Power Crush, Screw, Tornado, Wall Splat or
-Recoverable Health exist in CANON.md or SOUL-SYSTEMS.md as of 2026-10-24.
-The names below are therefore TECHNICAL placeholders, used in code and
-technical docs only, never in CANON.md bios. A canon name still needs an
-owner decision — flagged NEEDS NAME, not invented here.
+- Power Crush: `isPowerCrushMove` / `powerCrushAbsorbs` (mid/high
+  absorbed, lows/throws/unblockables/Rage Arts break it, ~8-frame armor
+  delay), crush path in `receiveHit` (damage lands, swing continues,
+  no hitstun).
+- Screw/Tornado: `isScrewMove` / `isTornadoMove` / `extenderKind`,
+  one shared slot per combo, slump/bound stuns, `_extenderUsed`.
+- Wall splat: `wallsplat` state, 3-hit drop (`WALL_SPLAT_MAX_HITS`),
+  distinct from wall break (`stagebreaks.js`).
+- Recoverable pool: chip on block pools (`_addRecoverable`), landing
+  hits / forcing blocks recovers (`_recoverOnAttack`), never over
+  time, per-round reset via `soulurge.resetRound`.
+- Item gate: `requiresItemOf` / `itemGate`, `equippedItems`.
+- Soul Urge: Dash cancel in fighter.js, Burst/Smash synthesis,
+  single auto-picked engager fallback, correct `update(dt)` timer.
 
-- **Power Crush (T7):** `powerCrush` move flag + `powerCrushAbsorbs()` in
-  `game/js/combat-core.js`; defender mid-swing on a flagged move (not in
-  recovery) absorbs mid/high/special-mid strikes and keeps swinging
-  (result `'powercrush'`, no combo for the attacker, `game/js/game.js`
-  handles it with a block-style spark). Lows, throws and unblockables
-  interrupt normally. Unknown-level strikes fail closed (interrupt).
-  Damage absorbed while power-crushing becomes recoverable (T8 rule).
-- **Screw (S!, T7) / Tornado (T!, T8):** `screw` / `tornado` move flags,
-  one shared once-per-combo slot (`_spinUsed`). A flagged hit against an
-  AIRBORNE victim enters state `screw` / `tornado` (spin, slump on
-  landing: stun 0.9 airborne, 0.55 on landing, grounded slump posture =
-  down so follow-ups connect). A second flagged hit in the same combo
-  falls through to normal knockdown/hitstun. Slot frees on combo expiry,
-  when the victim is back on their feet, on KO and on round reset.
-- **Wall splat (W!):** state `wallsplat`, entered in `Fighter._physics`
-  when a struck victim (hitstun/knockdown/screw/tornado) is clamped at
-  the arena limit still travelling toward that wall (>= 0.5 m/s).
-  Stun 0.85, vulnerable. DISTINCT from wall break (`game/js/stagebreaks.js`):
-  a splat breaks nothing and moves no bounds; a break shatters the wall
-  and extends the bounds before the next physics frame, so a breaking
-  hit does not also splat at the old limit. Idle/walk/block never splat.
-- **Recoverable health (white gauge, T8):** `_recoverable` pool on the
-  fighter, invariant hp + pool <= maxHp. Blocked chip and power-crush
-  damage enter the pool; the pool is recovered ONLY by dealing damage
-  (landed hits and chip inflicted, via `recoverFromPool()`). No time
-  recovery. Existing METAL regen heals real hp and therefore eats the
-  pool first (invariant, not time recovery of the pool). HUD: classic
-  HUD reuses the white `.hp-damage` bar (extends past the hp fill by the
-  pool); ui-wh HUD gains a white `<b>` bar segment + bridge forwarding.
-- **Soul Urge completion:** (a) per-character engager lists — a moveset
-  may declare `urgeEngagers: [...]`; every listed existing non-grab move
-  becomes an engager; without a list the old highest-knock launcher
-  fallback remains (`listUrgeEngagers()` exported, tested). Urge Smash
-  already existed as a distinct synthesized category (`US.2+3`, spends
-  all pips, ends Urge) and Urge Burst (`UB.2+3`) already existed — no
-  change needed there. (b) Urge Dash cancel: LP1+RP2 (1+2) while urging
-  now also cancels out of attack recovery (old code required canAct, so
-  no cancel existed); neutral dash unchanged; rage keeps 1+2 priority
-  while raging. (c) BUG FIX: `game.js` called `soulurge.update(p1, dt)`
-  AND `update(p2, dt)` per frame, so dt arrived as a fighter object and
-  the Urge timer went NaN; now a single `update(dt)` per frame, and
-  `SoulUrge.update` tolerates the old shape.
-- **Item moves (LOW priority, scaffold only):** `requiresItem` flag
-  passthrough + `itemMoveAvailable()` gate in `_tryAttackFresh` /
-  `_fireNotation`. No item data exists in repo movesets, so the gate is
-  currently a no-op and no move is gated. Full item data is PARTIAL —
-  see below.
+## What THIS PR adds on top of main's lane
 
-## Moveset wiring — proven only, rest UNMAPPED
-
-Pantera (= King) only, joined by notation to wavu.wiki T7 frame data and
-to the repo's own T7 records:
-
-- `db+1+2` Muscle Armor — `powerCrush` (wavu King movelist: pc6~59;
-  "damage taken during power crush state is recoverable").
-- `db+1+2,3+4` Jaguar Sprint — `powerCrush` (wavu King movelist: listed
-  Power Crush).
-- `uf+3+4` Sole Crusher — `powerCrush` (wavu King strategy: "-14 mid
-  power crush").
-- `SS.2` Victory Palm — `screw` (wavu King movelist: SS 2 Tailspin;
-  repo T7 record on_hit/on_ch = `S!`).
-- NOT flagged, deliberately: `b+3:1+2` is a wavu-listed King power crush
-  but no such key exists in `pantera.json` (UNMAPPED, not guessed);
-  `db+1+2,2` Emerald Elbow carries a T8 Heat Engager tag on wavu but is
-  a throw in WH (`isGrab`), so it cannot be an onHit engager — NOT
-  flagged as `urgeEngager` (needs stance-move engager handling, PARTIAL);
-  Tornado: engine flag exists, zero Pantera moves carry a proven T8
-  Tornado tag in the data checked (UNMAPPED); all other 156 moveset
-  files: UNMAPPED — no closest-match guesses were filled in.
-
-## Tests
-
-`game/tests/combat-systems.test.mjs` — 8/8 pass via
-`node --test game/tests/combat-systems.test.mjs`:
-Power Crush absorb/lose matrix; Screw once-per-combo + airborne-only +
-Tornado shares the slot; wall splat geometry + break distinctness;
-recoverable pool arithmetic + no time recovery; item gate; Soul Urge
-engager lists + fallback + timer-signature fix; fighter/game wiring
-anchors (the pure rules are actually called in the live paths, because
-fighter.js needs THREE and cannot be imported headlessly); Pantera
-flag exactness (only the four proven moves flagged).
-
-## OWED-PLAYTEST (not claimed from simulation)
-
-Playing the live build (phone portrait, human navigation) is still owed
-after deploy: Power Crush absorb vs low/throw, Screw slump follow-up,
-wall splat vs wall break on a breakable stage, white-bar recovery by
-attacking, Urge Dash cancel from recovery, Pantera db+1+2 / SS.2 in a
-real match. Simulation passing is not a playability claim.
+1. Pantera moveset flags — the ONLY moveset file touched, by surgical
+   text inserts (no JSON re-dump). Joined by notation to wavu.wiki T7
+   frame data and the repo's own T7 records:
+   - `db+1+2` Muscle Armor — `powerCrush: true` (wavu King movelist:
+     pc6~59; "damage taken during power crush state is recoverable").
+   - `db+1+2,3+4` Jaguar Sprint — `powerCrush: true` (wavu King
+     movelist: listed Power Crush).
+   - `uf+3+4` Sole Crusher — `powerCrush: true` (wavu King strategy:
+     "-14 mid power crush").
+   - `SS.2` Victory Palm — `screw: true` (wavu King movelist: SS 2
+     Tailspin; repo T7 record on_hit/on_ch `S!`).
+   - Deliberately NOT flagged: `b+3:1+2` is a wavu-listed King power
+     crush but no such key exists in `pantera.json` (UNMAPPED, not
+     guessed); `db+1+2,2` Emerald Elbow carries a T8 Heat Engager tag
+     on wavu but is a throw in Western Heart (`isGrab`), so it cannot
+     be an onHit engager — NOT flagged (needs stance-move engager
+     handling, PARTIAL); Tornado: zero Pantera moves carry a proven T8
+     Tornado tag in the data checked (UNMAPPED). All other 156
+     moveset files: UNMAPPED — no closest-match guesses.
+2. Power-Crush absorbed damage becomes recoverable (T8 rule, wavu King
+   Muscle Armor note) — the one engine gap in main's lane: its crush
+   path landed damage but never pooled it. One line in
+   `receiveHit`'s `crushActive` branch, capped so hp + pool never
+   exceeds maxHp.
+3. HUD white recoverable bar (main's lane had the pool but NO HUD
+   wiring): classic HUD (`game/js/main.js` `_hp`) shows hp +
+   recoverable in the existing white `.hp-damage` element; ui-wh HUD
+   (`game/js/ui-wh-bridge.js` forwards `recoverable`, `game/ui-wh/ui.js`
+   sets a new white `<b>` segment, `game/ui-wh/index.html` adds `<b>`
+   to both plates, `game/ui-wh/ui.css` styles `.bar b`); `game/ui_sources.json`
+   lists `game/ui-wh/ui.css` under `hud-fight`.
+4. Soul Urge per-character engager LISTS: a moveset may declare
+   `urgeEngagers: [...]`; `ensureUrgeMoves` flags every listed
+   existing non-grab, non-synthesized move and records
+   `_urgeEngagerKeys`; exported `listUrgeEngagers(ms)` returns the
+   list, else the single key, else data-flagged moves. The single-key
+   auto-pick fallback is untouched for movesets without a list.
+5. Revised simulation suite `game/tests/combat-systems.test.mjs`
+   (6 tests, run as `node --test game/tests/combat-systems.test.mjs`
+   from repo root): Power Crush absorb/break rules + armor delay;
+   extender slot + wall-splat drop; item gate; engager lists +
+   fallback + onHit activation + timer tick; wiring anchors (fighter
+   delta, both HUDs, bridge, manifest); Pantera flag exactness.
+   fighter.js is anchor-verified, not imported (it needs THREE).
 
 ## Status per gap
 
-- Power Crush: DONE (engine + tests + 3 proven Pantera moves; rest UNMAPPED).
-- Screw: DONE (engine + tests + SS.2; rest UNMAPPED).
-- Tornado: PARTIAL — engine + shared slot + tests DONE; zero moves wired (UNMAPPED, needs per-character T8 verification).
-- Wall splat: DONE (engine + tests; distinct from break).
-- Recoverable health: DONE (engine + both HUDs + tests).
-- Soul Urge completion: DONE (engager lists + Dash cancel + timer fix + tests; Smash/Burst already existed).
-- Item moves: PARTIAL — gate scaffold + tests DONE; no item data wired (needs item/equipment data, none in repo movesets).
-- Canon names for these systems: NEEDS NAME (owner decision owed).
-- Live playtest: OWED-PLAYTEST (parent/user step; subagent cannot operate a live browser).
+- Power Crush: DONE (main lane engine + this PR's pool delta + 3
+  proven Pantera moves; rest UNMAPPED).
+- Screw: DONE (main lane engine + SS.2; rest UNMAPPED).
+- Tornado: PARTIAL — engine + shared slot DONE (main lane); zero
+  moves wired (UNMAPPED, needs per-character T8 verification).
+- Wall splat: DONE (main lane engine, distinct from break).
+- Recoverable health: DONE (main lane pool + this PR's HUD + crush
+  pooling + tests).
+- Soul Urge completion: DONE (main lane Dash/Burst/Smash/timer +
+  this PR's engager lists + tests).
+- Item moves: PARTIAL — gate DONE (main lane); no item data wired
+  (needs item/equipment data, none in repo movesets).
+- Canon names for these systems: NEEDS NAME (owner decision owed; no
+  names in CANON.md or SOUL-SYSTEMS.md as of 2026-10-24; technical
+  names used in code/docs only).
+- Live playtest: OWED-PLAYTEST (parent/user step; subagent cannot
+  operate a live browser; must be stated as owed, never claimed from
+  simulation). Checklist: Power Crush absorb vs low/throw, Screw
+  slump follow-up, wall splat vs wall break on a breakable stage,
+  white-bar recovery by attacking, Urge Dash cancel from recovery,
+  Pantera db+1+2 / SS.2 in a real match, phone portrait, human
+  navigation.
 
-## Re-sync note (merge attempt 2026-10-25)
-
-First merge attempt via git_merge.py was REFUSED by the revert guard:
-main had moved and added lines to game/js/fighter.js (248 lines, femfx
-soft-body wiring), game/js/game.js (11 lines) and game/js/main.js
-(18 lines) after the branch base. No work was lost and nothing was
-force-pushed: the branch was re-synced from the then-current main and
-all patches above were re-applied surgically onto the fresh files
-(anchors all matched, tests re-run 8/8), then pushed as a normal
-fast-forward branch commit. The merge below is the re-synced branch.
-
-## Second re-sync note (merge conflict 2026-10-25)
-
-After CI went green on the re-synced head, main moved again (merge of
-other lanes) and GitHub reported the PR dirty: main had changed
-game/js/fighter.js (+188/-29) and game/js/game.js (+5/-4) since the
-branch base. The branch was re-synced again from the then-current main
-and the fighter/game patches were re-applied onto the fresh files (all
-anchors matched — main's changes were in other regions), tests re-run
-8/8, and pushed as a normal fast-forward branch commit. No other
-branch file needed a refresh: main had not touched them in the
-interval. No force-push, no main-direct push.
-
-## Ownership + use framing correction (2026-10-24 20:22 CDT, applied here)
+## Ownership + use framing correction (2026-10-24 20:22 CDT)
 
 Full-game files from OWNED games are not piracy and are not out of
 scope: the user owns the games, owns the files, paid for them —
@@ -170,3 +132,20 @@ located in repo teardown, so no community approximation was substituted
 for an available owned file. If a T7 owned-file property table for
 these moves surfaces in teardown, the four flags should be re-checked
 against it as the authoritative source.
+
+## Re-sync history (no clobber, no force-push, no main-direct push)
+
+- Branch `feature/combat-systems-20261024`, PR #1045. Original base
+  main `62a44a2c`; re-syncs to `d852a0f6` then to `32f817f4` then to
+  current main `dc303991` (each: fresh fetch, surgical re-apply, tests,
+  fast-forward branch push only). The final push replaces the branch's
+  engine files with main's lane + the deltas above, so the PR diff is
+  exactly the 11 files listed in the PR body — no main-side work is
+  reverted and no duplicate engine code ships. (The branch push itself
+  carries 13 files: game/js/combat-core.js and game/js/game.js are
+  pushed at their current-main content, which zeroes their PR diff.)
+- GPU: no Kaggle GPU batch job was run — the change is small
+  pure-logic code plus one moveset file and no batch processing
+  benefited from it. Recorded in the PR body as part of the specified
+  method ("for any batch verification/processing that benefits"), not
+  as a deviation.

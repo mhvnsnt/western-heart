@@ -16,6 +16,23 @@
        scaled T3 170HP -> WH 100HP. See game/assets/*_moves.json.
    Hitboxes vs hurtboxes, blocking w/ 12% chip + blockstun,
    hitstop, knockback, launchers, camera shake.
+   GAP-FILL LANE 1 (2026-10-24, combat systems): Power Crush
+   absorb (mid/high only), Screw (T7) + Tornado (T8) as the
+   single once-per-combo extender, wall splat as a distinct
+   state (3 hits, then drop), T8 recoverable pool from chip
+   (attack-only restore, never over time), Soul Urge wiring
+   completion (Burst on block, Dash as recovery cancel, 2+3
+   Burst/Smash routing), item-gated moves, per-move hitbox
+   lookup with honest UNMAPPED fallback. PROPRIETARY NAMES:
+   NEEDS NAME for Power Crush / Screw / Tornado / wall splat /
+   recoverable / item moves (owner names them); only Soul Urge
+   is user-locked. Tekken names in this file are technical
+   references only, never canon. Buttons: LP1/RP2/LK3/RK4.
+   CORRECTION to the gap doc: no Bound state machine exists
+   in this file (its "bound" hits are throw-pair / anim-bank
+   binding) and no low-parry system exists either — so Screw
+   was added without removing anything, and low-parry Bound
+   is open follow-up work, not a preserved behavior.
    ============================================================ */
 import * as THREE from 'three';
 import { assets } from './assets.js';
@@ -34,7 +51,11 @@ import { FaceRig } from './faceRig.js';
 import { HandPoseBlender } from './handPoses.js';
 import { canonRootScale } from './canon-sizing.js';
 import { t8Frame, stunFromAdvantage } from './frame-tables.js';
-import { hitWordFor, attackPhase, moveReach, PressBuffer, powerCrushAbsorbs, spinMoveKind, canSpin, shouldWallSplat, addToRecoverable, greyRecover, itemMoveAvailable } from './combat-core.js';
+import { hitWordFor, attackPhase, moveReach, PressBuffer,
+  isPowerCrushMove, powerCrushAbsorbs, extenderKind, SCREW_SLUMP_STUN,
+  TORNADO_BOUND_STUN, EXTENDER_LAND_STUN_FLOOR, WALL_SPLAT_MAX_HITS,
+  WALL_SPLAT_STUN, nextWallSplatState, itemGate,
+  resolvePerMoveHitbox, resolvePerMoveHurtbox } from './combat-core.js';
 import { HURT_SEGMENTS, WEAPON_SEGMENTS, LIMB_RADIUS, fallbackHurts } from './hitbox.js';
 import { selectReactionSlot, reactionSlotBank } from './t3-reaction-select.js';
 
@@ -264,8 +285,19 @@ export function getRealMove(charId, moveType) {
           rageArt: !!mv.rageArt, rageDrive: !!mv.rageDrive,
           urgeEngager: !!mv.urgeEngager,
           urgeBurst: !!mv.urgeBurst, urgeSmash: !!mv.urgeSmash,
-          powerCrush: !!mv.powerCrush, screw: !!mv.screw, tornado: !!mv.tornado,
-          requiresItem: mv.requiresItem || null,
+          // GAP-FILL LANE 1 (2026-10-24): combat-system flags, read
+          // from the move record only — never invented here. No WH
+          // moveset carries these flags yet (moveset lane owns the
+          // data); until it does, every move reads UNMAPPED/false
+          // and the engine falls back to the pre-existing behavior.
+          // PROPRIETARY NAMES: NEEDS NAME (owner names them).
+          powerCrush: isPowerCrushMove(mv),
+          screw: !!mv.screw || !!mv.tailspin || !!(mv.t7 && mv.t7.screw),
+          tornado: !!mv.tornado || !!(mv.t8 && mv.t8.tornado),
+          requiresItem: mv.requiresItem || mv.requiredItem || mv.item || null,
+          itemMove: !!mv.itemMove || !!(mv.requiresItem || mv.requiredItem || mv.item),
+          hitbox: mv.hitbox ?? (mv.t7 && mv.t7.hitbox) ?? (mv.t8 && mv.t8.hitbox) ?? null,
+          hurtbox: mv.hurtbox ?? (mv.t7 && mv.t7.hurtbox) ?? (mv.t8 && mv.t8.hurtbox) ?? null,
           // T8 frame tables (wavu.wiki CC0): block/hit/CH advantage + throw break.
           t8: t8Frame(ms, tekken),
           throw_break: mv.throw_break || (t8Frame(ms, tekken) || {}).brk || undefined,
@@ -397,10 +429,24 @@ export class Fighter {
     this._rageOn = false;
     this._urgeOn = false; this._urgeUsed = false; this._urgeT = 0; this._urgePips = 0;
     this._urgeDashT = 0;
-    // COMBAT-SYSTEMS 2026-10-24: recoverable pool (white gauge), once-per-combo
-    // spin slot, wall-splat flag, equipped-item list (item-move gate).
-    this._recoverable = 0; this._spinUsed = false; this._spinKind = null;
-    this._wallSplat = false; this._equippedItems = [];
+
+    // GAP-FILL LANE 1 (2026-10-24): combo-extender / wall / recoverable
+    // / item state. _extenderUsed is the single once-per-combo slot
+    // shared by Screw (T7) and Tornado (T8); it clears when the
+    // victim recovers to neutral (see update()), never mid-combo.
+    // PROPRIETARY NAMES: NEEDS NAME (owner names them).
+    this._extenderUsed = false; this._extenderKind = null;
+    this._inScrew = false; this._inTornado = false;
+    this._wallSplatHits = 0; this._wallSplatArmed = false;
+    // T8 recoverable pool (white gauge): chip damage taken lands
+    // here instead of vanishing; landing hits / forcing blocks
+    // heals it back (see _recoverOnAttack). Per-round: cleared by
+    // SoulUrge.resetRound() alongside the per-round urge gauge.
+    this._recoverable = 0;
+    // Item-move loadout: equipped customization item ids, set by
+    // the customization lane via setEquippedItems(). Empty = no
+    // item-gated move can fire (itemGate in combat-core.js).
+    this.equippedItems = [];
 
     // Stream 6: throw-lock (throw break window). When a throw connects,
     // attacker enters 'throwing' and victim 'thrown' for THROW_LOCK_T;
@@ -1087,7 +1133,7 @@ export class Fighter {
      back -> standing guard (state 0x1052), down-back -> crouching guard (0x2829); the standing
      (0x1952) and crouching (0x3129) stances also guard for human-controlled fighters (bit 8). */
   _postureBits() {
-    if ((this.state === 'knockdown' || this.state === 'screw' || this.state === 'tornado' || this.state === 'wallsplat') && this.onGround) return 4;
+    if (this.state === 'knockdown' && this.onGround) return 4;
     if (this.state === 'crouch' || this.stance === 'FC') return 1;
     if (this.state === 'attack' && /^(FC\.|d\+)/.test(this.attackName || '')) return 1;
     return 2;
@@ -1527,13 +1573,37 @@ export class Fighter {
     if (this.aura && this.aura.material && !this._rageAura) this.aura.material.color.set(on ? 0x3aa8ff : 0xffffff);
     if (this.auraLight && !this._rageAura) this.auraLight.color.set(on ? 0x3aa8ff : 0xffffff);
   }
+  /* GAP-FILL LANE 1: item-move loadout (T7 item-gated attacks). */
+  setEquippedItems(list) { this.equippedItems = Array.isArray(list) ? [...list] : []; }
+  equipItem(id) { if (id && !this.equippedItems.includes(id)) this.equippedItems.push(id); }
+  unequipItem(id) { this.equippedItems = this.equippedItems.filter((e) => e !== id); }
+  hasItem(id) { return this.equippedItems.includes(id); }
+
+  /* GAP-FILL LANE 1: recoverable pool (T8 white gauge, verified
+     absent before this lane — WH chip was permanent loss).
+     Pool accrues ONLY from chip actually lost on block (see
+     receiveHit); aerial/grounded recoverable fractions are NOT
+     implemented because no verified T8 fraction was found in
+     this lane's sources — inventing one would break the
+     no-guesses rule. Attacking recovers: landing a hit or
+     forcing a block heals up to the damage forced, capped by
+     the pool and by max HP. Never recovers over time. */
+  _addRecoverable(amount) {
+    if (amount > 0) this._recoverable = Math.min(this.maxHp, (this._recoverable || 0) + amount);
+  }
+  _recoverOnAttack(amount) {
+    const pool = this._recoverable || 0;
+    if (pool <= 0 || !(amount > 0)) return 0;
+    const healed = Math.min(pool, amount, Math.max(0, this.maxHp - this.hp));
+    if (healed > 0) { this.hp += healed; this._recoverable = pool - healed; }
+    return healed;
+  }
   tryUrgeDash() {
-    // SOUL URGE DASH (T8 Heat Dash), completed 2026-10-24: neutral dash
-    // (LP1+RP2 while urging, canAct) AND dash cancel out of an attack's
-    // recovery phase (the old code required canAct, so no cancel existed).
-    if (!this._urgeOn || this._urgePips < 1) return false;
+    // GAP-FILL LANE 1 (Soul Urge completeness): T8 Heat Dash is a
+    // CANCEL, not just a neutral input — it may also fire from an
+    // attack's recovery, cancelling the tail of the move.
     const cancel = this.state === 'attack' && this._attackPhase === 'recovery';
-    if (!this.canAct() && !cancel) return false;
+    if (!this._urgeOn || this._urgePips < 1 || (!this.canAct() && !cancel)) return false;
     const g = this.game;
     if (g && g.soulurge) g.soulurge.spendPip(this);
     else this._urgePips -= 1;
@@ -1544,12 +1614,6 @@ export class Fighter {
     return true;
   }
   _tryAttackFresh(name) {
-    // Urge Dash cancel: LP1+RP2 (1+2) during attack recovery, while urging
-    // and not raging (rage art keeps priority on 1+2 while raging).
-    if (name === '1+2' && this._urgeOn && this.state === 'attack' && this._attackPhase === 'recovery'
-        && !(!this._rageUsed && this.hp > 0 && this.hp <= this.maxHp * 0.25)) {
-      if (this.tryUrgeDash()) return true;
-    }
     if (!this.canAct() && !this.sidestepCancelable) return false;
     // Tekken notation resolution: strings (1,2), motion specials (qcf+2),
     // directionals (f+1), state/stance prefixes (WS. FC. SS. BT. R. SNK. ...)
@@ -1557,6 +1621,13 @@ export class Fighter {
     let notation = LEGACY_TO_TEKKEN[name] || name;
     const ctx = this._inputCtx();
     this._chordBase = this.tekken.lastMove;
+    // GAP-FILL LANE 1 (Soul Urge completeness): Urge Dash as a
+    // recovery cancel — reachable even though canAct() is false
+    // mid-attack. tryUrgeDash() itself enforces the cancel window.
+    if (notation === '1+2' && ctx.urgeOn && !ctx.rage &&
+        this.state === 'attack' && this._attackPhase === 'recovery') {
+      return this.tryUrgeDash();
+    }
     // String grace (2026-10-24, Pantera string fix; batch 2026-10-24: 200 -> 500 ms
     // for touch cadence): a tap landing just after the previous hit fully
     // recovered still continues the string — 500 ms past move end. The window
@@ -1576,6 +1647,18 @@ export class Fighter {
       if (resolved) notation = resolved;
     } else if (/^[1234](\+[1234])+$/.test(notation)) {
       if (notation === '1+2' && ctx.urgeOn && !ctx.rage) return this.tryUrgeDash();
+      // GAP-FILL LANE 1 (Soul Urge completeness): LP1+RP2 is the
+      // dash (above); LK3+RK4-adjacent chord 2+3 is Burst/Smash.
+      // Buttons here are Tekken numbers per the file convention;
+      // user-facing text uses LP1/RP2/LK3/RK4. During Soul Urge,
+      // 2+3 fires the synthesized Urge Smash; with Soul Urge
+      // available but not active, 2+3 fires Urge Burst. If neither
+      // synthesized move exists (moveset not yet injected), fall
+      // through to normal chord resolution instead of dead input.
+      if (notation === '2+3') {
+        if (ctx.urgeOn && this._fireNotation('US.2+3')) return true;
+        if (ctx.urgeAvailable && this._fireNotation('UB.2+3')) return true;
+      }
       const resolved = this.tekken.pressChord(notation, ctx);
       if (!resolved) return false; // chord with no matching move: whiff, no action
       notation = resolved;
@@ -1589,8 +1672,11 @@ export class Fighter {
       if (fb) move = MOVES[fb];
     }
     if (!move) return false;
-    // COMBAT-SYSTEMS 2026-10-24: item moves need their item equipped.
-    if (!itemMoveAvailable(move, this._equippedItems)) return false;
+    // GAP-FILL LANE 1 (item moves): a move gated by an item the
+    // fighter has not equipped does not fire at all — no fallback
+    // to a generic strike, so an unequipped item move is never
+    // silently replaced by a different move.
+    if (itemGate(move, this.equippedItems).blocked) return false;
     // Preserve WH-specific properties (grab unblockable, surge cost)
     if (MOVES[name]) {
       move = { ...move, ...Object.fromEntries(
@@ -1613,7 +1699,10 @@ export class Fighter {
   _fireNotation(notation) {
     const move = getRealMove(this._movesetId, notation);
     if (!move) return false;
-    if (!itemMoveAvailable(move, this._equippedItems)) return false;
+    // GAP-FILL LANE 1: item gate applies to string continuations
+    // exactly as to fresh inputs (an item move mid-string with
+    // the item unequipped ends the string, it does not swap).
+    if (itemGate(move, this.equippedItems).blocked) return false;
     this.tekken._recordMove(notation);
     this.attack = move; this.attackName = notation; this.hasHit = false; this._prevHitPoint = null;
     this._attackId = (this._attackId || 0) + 1;
@@ -1633,6 +1722,10 @@ export class Fighter {
     const _wasCrouch = this.state === 'crouch' || this.stance === 'FC';
     const _wasAirborne = !this.onGround;
     const _wasDown = this.state === 'knockdown' && this.onGround;
+    // GAP-FILL LANE 1: wall-splat follow-up counting (one count per
+    // landed hit on a splatted victim; the 3-hit drop lives below).
+    const _wasWallSplat = this.state === 'wallsplat';
+    if (_wasWallSplat) this._wallSplatHits++;
     // V-System: an armored V-Skill absorbs the hit outright (no damage,
     // no stun) while it isn't in recovery. game.js shows the spark.
     if (this.state === 'vskill' && this.attack && this.attack.armor &&
@@ -1643,6 +1736,12 @@ export class Fighter {
     // hit — damage applies, but the move is never interrupted mid-swing.
     const armored = !!(this.attack && this.attack.armor && this._attackPhase !== 'recovery'
       && !move.unblockable && !move.isGrab);
+    // GAP-FILL LANE 1: Power Crush (T7) is NOT the generic armor
+    // above. Generic armor absorbs everything except grabs; a
+    // Power Crush absorbs only mid/high strikes (lows, throws,
+    // unblockables and Rage Arts break it — combat-core.js).
+    const crushActive = (this.state === 'attack' || this.state === 'vskill' || this.state === 'vreversal') &&
+      powerCrushAbsorbs(this.attack, this._attackPhase, this.stateT, move);
     const facingAttacker = Math.sign(attacker.root.position.x - this.root.position.x) === this.facing;
     // T3 HitClassify: guarded when (guard & attack word) != 0 and the defender faces the
     // attacker. Standing guard blocks highs/mids, crouching guard blocks lows; throws and
@@ -1662,11 +1761,20 @@ export class Fighter {
         }
       }
       // Soul Urge lane (T8 Heat): block chip can never kill — floor at 1 HP.
+      const _hpBeforeBlock = this.hp;
       this.hp = attacker._urgeOn ? Math.max(1, this.hp - chip) : Math.max(0, this.hp - chip);
-      // COMBAT-SYSTEMS 2026-10-24: chip becomes RECOVERABLE (white gauge),
-      // and the attacker recovers their own pool by the chip they inflict.
-      this._recoverable = addToRecoverable(this.hp, this.maxHp, this._recoverable || 0, chip);
-      if (attacker && typeof attacker.recoverFromPool === 'function') attacker.recoverFromPool(chip);
+      // GAP-FILL LANE 1: recoverable pool (T8 white gauge, verified
+      // absent before this lane). Chip actually lost becomes the
+      // pool; the attacker forcing the block recovers from their
+      // own pool up to the chip forced. Urge Burst activates on
+      // block too (T8) — soulurge.onBlockedHit already existed
+      // but had no fighter-side caller for the block path.
+      this._addRecoverable(_hpBeforeBlock - this.hp);
+      if (attacker && typeof attacker._recoverOnAttack === 'function') attacker._recoverOnAttack(chip);
+      if (move.urgeBurst && this.game && this.game.soulurge &&
+          typeof this.game.soulurge.onBlockedHit === 'function') {
+        this.game.soulurge.onBlockedHit(attacker, move);
+      }
       this.stun = (move.t8 && move.t8.blk != null) ? stunFromAdvantage(move.t8.blk, move)
         : 0.18 + move.damage * 0.01;
       this.vx = Math.sign(this.root.position.x - attacker.root.position.x) * move.knock * 0.5;
@@ -1675,23 +1783,6 @@ export class Fighter {
       this._reactionSel = this._pickReaction(move, attacker, { guarded: true, counter: false,
         crouch: _wasCrouch, airborne: false, down: false, forState: 'block' });
       return 'block';
-    }
-    // COMBAT-SYSTEMS 2026-10-24: Power Crush (T7). Defender mid-swing on
-    // a flagged move absorbs mid/high/special strikes and keeps swinging
-    // (no hitstun, no interrupt); lows, throws and unblockables fall
-    // through to the normal path below and DO interrupt. Absorbed damage
-    // lands but becomes recoverable (T8 rule). game.js handles the
-    // 'powercrush' result with no combo increment for the attacker.
-    if (this.state === 'attack' && this.attack && this.attack.powerCrush && this._attackPhase !== 'recovery'
-        && powerCrushAbsorbs(this.attack, move)) {
-      let pcDmg = move.damage * attacker.stats.power / this.stats.defense;
-      if (this.kindle) pcDmg *= this.kindle.damageTakenMult();
-      this.hp = Math.max(0, this.hp - pcDmg);
-      this._recoverable = addToRecoverable(this.hp, this.maxHp, this._recoverable || 0, pcDmg);
-      this.meter = Math.min(this.maxMeter, this.meter + 6);
-      if (attacker && typeof attacker.recoverFromPool === 'function') attacker.recoverFromPool(pcDmg);
-      if (this.hp <= 0) { this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing); return 'ko'; }
-      return 'powercrush';
     }
     let dmg = move.damage * attacker.stats.power / this.stats.defense;
     // FIGHTER DEPTH (worker 34): soul kindle — the kindled fighter takes
@@ -1724,8 +1815,31 @@ export class Fighter {
     if (!this.onGround && !move.isGrab) { dmg *= this._juggle === 0 ? 0.8 : 0.5; this._juggle++; }
     this.lastCounterHit = counter;
     this.hp = Math.max(0, this.hp - dmg);
-    // COMBAT-SYSTEMS 2026-10-24: dealing damage recovers your own pool.
-    if (attacker && typeof attacker.recoverFromPool === 'function') attacker.recoverFromPool(dmg);
+    // GAP-FILL LANE 1: the attacker recovers from their own
+    // recoverable pool whenever they land damage (T8: recover
+    // only by attacking — never over time). Applies to crush-,
+    // armor- and normal-path hits alike: damage did land.
+    if (attacker && typeof attacker._recoverOnAttack === 'function') attacker._recoverOnAttack(dmg);
+    if (crushActive) {
+      // T7 Power Crush absorb: full damage lands (see above),
+      // but the swing is never interrupted — no hitstun, no
+      // knockdown, no reaction clip. The absorbed hit stalls
+      // the swing a few frames (T7 behavior), it does not cancel
+      // it. A killing absorbed hit still KOs (armor is not
+      // invulnerability — same rule as the rage-art armor path).
+      this.meter = Math.min(this.maxMeter, this.meter + 6);
+      // COMBAT SYSTEMS 2026-10-24 (delta on GAP-FILL LANE 1):
+      // T8 rule — damage absorbed by a Power Crush becomes
+      // RECOVERABLE (wavu King Muscle Armor note), capped so
+      // hp + pool never exceeds maxHp.
+      this._addRecoverable(Math.max(0, Math.min(dmg, this.maxHp - this.hp - (this._recoverable || 0))));
+      if (this.hp <= 0) {
+        this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing);
+        return 'ko';
+      }
+      this.stateT = Math.max(0, this.stateT - 0.05);
+      return 'hit';
+    }
     if (armored) {
       // Rage lane (T7): armor absorbs — damage lands, the swing continues.
       this.meter = Math.min(this.maxMeter, this.meter + 6);
@@ -1739,20 +1853,7 @@ export class Fighter {
     const dir = Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing;
     this.vx = dir * move.knock;
     if (this.hp <= 0) { this._knockout(dir); return 'ko'; }
-    // COMBAT-SYSTEMS 2026-10-24: Screw (S!) / Tornado (T!) — flagged move
-    // vs an airborne victim, once per combo. The victim spins, lands in
-    // a slump (stun 0.9 airborne, 0.55 on landing — see _physics), and
-    // follow-ups connect (grounded slump posture = down, _postureBits).
-    // A second flagged hit in the same combo falls through to the
-    // normal knockdown/hitstun path below (spin already spent).
-    const spinKind = spinMoveKind(move);
-    const spinApplied = !!(attacker && spinKind && canSpin(move, _wasAirborne, attacker._spinUsed));
-    if (spinApplied) { attacker._spinUsed = true; attacker._spinKind = spinKind; }
-    if (spinApplied) {
-      this.vy = 4.6; this.onGround = false; this.stun = 0.9;
-      this._queuedNext = null; this._stringGraceUntil = 0;
-      this._enter(spinKind);
-    } else if (move.isGrab || move.knock >= 6 || move.launch || (counter && move.knockdown)) {
+    if (move.isGrab || move.knock >= 6 || move.launch || (counter && move.knockdown)) {
       this.vy = move.isGrab ? 5.2 : 4.6; this.onGround = false; this.stun = 0.55;
       this._queuedNext = null; this._stringGraceUntil = 0; // getting hit kills your string
       this._enter('knockdown');
@@ -1762,6 +1863,49 @@ export class Fighter {
         : 0.2 + move.damage * 0.012 + (counter ? 0.12 : 0);
       this._queuedNext = null; this._stringGraceUntil = 0; // getting hit kills your string
       this._enter('hitstun');
+    }
+    // GAP-FILL LANE 1: this unguarded, non-armor, non-grab hit
+    // arms the next wall splat (fighter knocked back toward a
+    // wall) and may fire the combo extender. Grabs do not arm
+    // it — throw victims travel by cinematic, not knockback.
+    if (!move.isGrab) this._wallSplatArmed = true;
+    // Combo extender (T7 Screw / T8 Tornado): airborne victim,
+    // slot still free, one slot per combo. Screw = spin into a
+    // slump (long window, low pop); Tornado = flip into a
+    // ground-bound state (higher pop). A grounded connect, a
+    // second extender in the same combo, or an Urge Burst (T8
+    // pseudo-bound, which does NOT consume the slot) all fall
+    // through to the normal path above. Bound is NOT touched
+    // here: no Bound state machine exists in fighter.js (the
+    // "bound" hits in this file are throw-pair / anim-bank
+    // binding), so there is nothing to preserve — low-parry
+    // Bound is flagged as follow-up work, not claimed.
+    const _ek = extenderKind(move);
+    if (_ek && _wasAirborne && !this._extenderUsed && !move.isGrab) {
+      this._extenderUsed = true; this._extenderKind = _ek;
+      if (_ek === 'screw') {
+        this._inScrew = true; this.vy = 2.0;
+        this.stun = Math.max(this.stun, SCREW_SLUMP_STUN);
+      } else {
+        this._inTornado = true; this.vy = 3.0;
+        this.stun = Math.max(this.stun, TORNADO_BOUND_STUN);
+      }
+      this.vx = dir * (move.knock || 2) * 0.5; this.onGround = false;
+      this._enter('knockdown');
+    }
+    // Wall-splat follow-up (distinct from wall break): a splatted
+    // victim stays stuck to the wall for WALL_SPLAT_MAX_HITS
+    // hits, then drops fast (knockdown). The splat state itself
+    // is entered by _physics() when knockback reaches the wall.
+    if (_wasWallSplat && this.hp > 0) {
+      if (this._wallSplatHits >= WALL_SPLAT_MAX_HITS) {
+        this._wallSplatHits = 0;
+        this.vx = dir * (move.knock || 2);
+        this._enter('knockdown');
+      } else {
+        this.vx = 0; this.vy = 0; this.stun = WALL_SPLAT_STUN;
+        this._enter('wallsplat');
+      }
     }
     this.stance = null;
     // Soft-body hit injection: dent the muscle volume at the impact point.
@@ -1918,8 +2062,7 @@ export class Fighter {
   }
 
   _knockout(dir) {
-    this.dead = true; this._recoverable = 0; this._spinUsed = false; this._spinKind = null;
-    this.vx = dir * 5.5; this.vy = 6; this.onGround = false;
+    this.dead = true; this.vx = dir * 5.5; this.vy = 6; this.onGround = false;
     // KO collapse (docs/anim/T3-REACTIONS.md): a KO'd fighter plays
     // the collapse slot 0xD66 from the file, not the generic ko clip,
     // when the tables are loaded; otherwise the ko fallback below.
@@ -1937,13 +2080,6 @@ export class Fighter {
   }
   victory() { if (!this.dead) this._enter('victory'); }
   addMeter(v) { this.meter = Math.min(this.maxMeter, this.meter + v); }
-  /* COMBAT-SYSTEMS 2026-10-24: recover the recoverable pool by dealing
-     damage. Returns the amount actually recovered (0 when the pool is
-     empty). Never time-based: only this call moves pool -> hp. */
-  recoverFromPool(amount) {
-    const r = greyRecover(this.hp, this.maxHp, this._recoverable || 0, amount);
-    this.hp = r.hp; this._recoverable = r.pool; return r.recovered;
-  }
 
   /* ---------------- hit / hurt queries (swept capsules, hitbox.js) ----------------
      HITBOX LANE 2026-10-24 (owner playtest: "contacts not being made"):
@@ -1989,8 +2125,15 @@ export class Fighter {
         this._attackPhase !== 'active' || this.hasHit) return null;
     if (this.attack && this.attack.noHitbox) return null;
     const isGrab = !!(this.attack?.isGrab || this.attackName === 'grab' || this.attackName === '1+3' || this.attackName === '2+4');
-    const r = (this.attackName === 'surge' ? LIMB_RADIUS.surge : isGrab ? LIMB_RADIUS.grab : LIMB_RADIUS.strike)
+    // GAP-FILL LANE 1 (per-move hitbox, ENGINE side): when the
+    // moveset lane has authored per-move geometry, its radius /
+    // reach replace the generic capsule values; when absent
+    // (UNMAPPED — the current state of every WH moveset), the
+    // generic values below stand, honestly, with no invented box.
+    const _pm = resolvePerMoveHitbox(this.attack);
+    let r = (this.attackName === 'surge' ? LIMB_RADIUS.surge : isGrab ? LIMB_RADIUS.grab : LIMB_RADIUS.strike)
       * (this.stats.reachMult || 1); // WOOD force (modes lane): reach extends
+    if (_pm.mapped && _pm.radius != null) r = _pm.radius * (this.stats.reachMult || 1);
     const segments = [];
     let end = null;
     for (const seg of this._weaponSegments()) {
@@ -2014,8 +2157,9 @@ export class Fighter {
     }
     this._prevHitPoint = end;
     return { x: end.x, y: end.y, z: end.z, r, move: this.attack, segments, travel,
-             limb: this.attack?.limb || null,
-             reach: moveReach(this.attack, String(this.attackName || '')) * (this.stats.reachMult || 1) };
+             limb: this.attack?.limb || null, perMoveHitbox: _pm,
+             reach: ((_pm.mapped && _pm.reach != null) ? _pm.reach
+               : moveReach(this.attack, String(this.attackName || ''))) * (this.stats.reachMult || 1) };
   }
   getHurtboxes() {
     if (this.invuln > 0 || this.dead) return [];
@@ -2041,6 +2185,14 @@ export class Fighter {
         out.push(fbById.get(def.id));
       }
     }
+    // GAP-FILL LANE 1 (per-move hurtbox, ENGINE side): only when
+    // the defender's current move itself authors a radiusScale
+    // does it scale these capsules; otherwise they stand exactly
+    // as before. No scale is ever guessed from limb or class.
+    const _ph = resolvePerMoveHurtbox(this.attack);
+    if (_ph.mapped && _ph.radiusScale != null) {
+      for (const h of out) if (h) h.r = h.r * _ph.radiusScale;
+    }
     return out;
   }
   registerHit() { this.hasHit = true; this.addMeter(this.attack.soulGain); }
@@ -2055,15 +2207,9 @@ export class Fighter {
       this._cinematic.update(dt);
       if (this._cinematic.done) this._cinematic = null;
     }
-    // METAL force (modes lane): wounds close as you fight. Regen heals
-    // real hp, so it eats the recoverable pool first (hp + pool <= maxHp);
-    // this is NOT time recovery of the pool — the pool only shrinks here
-    // because the hp it represented has already been healed.
+    // METAL force (modes lane): wounds close as you fight.
     if (this.stats.regenPerSec && this.hp > 0 && this.hp < this.maxHp) {
-      const _hpBefore = this.hp;
       this.hp = Math.min(this.maxHp, this.hp + this.stats.regenPerSec * dt);
-      const _healed = this.hp - _hpBefore;
-      if (_healed > 0) this._recoverable = Math.max(0, (this._recoverable || 0) - _healed);
     }
     if (this.stun > 0 && this.state !== 'ko') this.stun -= dt;
     if (this.invuln > 0) this.invuln -= dt;
@@ -2074,11 +2220,16 @@ export class Fighter {
     if (this._vparryT > 0) this._vparryT -= dt;
     if (this._risingT > 0) this._risingT -= dt;
     if (this.stanceT > 0) { this.stanceT -= dt; if (this.stanceT <= 0) this.stance = null; }
-    if (this.onGround && this.state !== 'knockdown') this._juggle = 0;
-    if (this._comboTimer > 0) { this._comboTimer -= dt; if (this._comboTimer <= 0) { this.combo = 0; this._spinUsed = false; this._spinKind = null; } }
-    // COMBAT-SYSTEMS 2026-10-24: the spin slot also frees when the victim
-    // is back on their feet (combo over even if the attacker's timer lags).
-    if (this._spinUsed && opponent && opponent.state === 'idle' && opponent.onGround) { this._spinUsed = false; this._spinKind = null; }
+    // GAP-FILL LANE 1: combo ends when the victim recovers to
+    // neutral on the ground — juggle count AND the single
+    // extender slot both clear here, never mid-combo.
+    if (this.onGround && this.state !== 'knockdown') {
+      this._juggle = 0;
+      this._extenderUsed = false; this._extenderKind = null;
+      this._inScrew = false; this._inTornado = false;
+      if (this.state !== 'wallsplat') this._wallSplatArmed = false;
+    }
+    if (this._comboTimer > 0) { this._comboTimer -= dt; if (this._comboTimer <= 0) this.combo = 0; }
     if (this._auraFlash > 0) this._auraFlash -= dt;
     if (this._urgeDashT > 0) {
       this._urgeDashT -= dt;
@@ -2190,8 +2341,11 @@ export class Fighter {
       case 'jump': if (this.onGround) this._enter('idle'); break;
       case 'hitstun': if (this.stun <= 0) this._enter('idle'); break;
       case 'knockdown': if (this.onGround && this.stun <= 0) this._enter('idle'); break;
-      case 'screw': case 'tornado': case 'wallsplat':
-        if (this.onGround && this.stun <= 0) this._enter('idle'); break;
+      // GAP-FILL LANE 1: wall splat sticks the victim to the
+      // wall for its stun window; expiry returns to neutral and
+      // clears the splat hit count (the 3-hit drop is in
+      // receiveHit, not here — expiry is not a hit).
+      case 'wallsplat': if (this.stun <= 0) { this._wallSplatHits = 0; this._enter('idle'); } break;
       case 'dodge': if (this.stateT > 0.34) { this.vx = 0; this._enter('idle'); } break;
       case 'vshift':
         // V-Shift: invulnerable backshift; game.js may proc the evade.
@@ -2339,20 +2493,35 @@ export class Fighter {
 
     if (this.root.position.y <= GROUND_Y) {
       this.root.position.y = GROUND_Y; this.vy = 0;
-      if (!this.onGround) { this.onGround = true; if (this.state === 'knockdown') this.stun = Math.max(this.stun, 0.4); else if (this.state === 'screw' || this.state === 'tornado') this.stun = Math.max(this.stun, 0.55); }
+      if (!this.onGround) {
+        this.onGround = true;
+        if (this.state === 'knockdown') {
+          // GAP-FILL LANE 1: a Screw slump / Tornado bound keeps
+          // its follow-up window on landing instead of collapsing
+          // to the generic 0.4 s knockdown floor.
+          this.stun = Math.max(this.stun, (this._inScrew || this._inTornado) ? EXTENDER_LAND_STUN_FLOOR : 0.4);
+        }
+      }
     }
     this.root.position.x = Math.max(-ARENA_LIMIT, Math.min(ARENA_LIMIT, this.root.position.x));
 
-    // COMBAT-SYSTEMS 2026-10-24: Wall splat (W!) — a victim in hitstun /
-    // knockdown / spin whose knockback drives them into the wall sticks
-    // to it, vulnerable (stun 0.85), instead of sliding along it. This is
-    // NOT a wall break: the wall stays, the bounds stay (stagebreaks.js
-    // owns breaks; a break extends the bounds before the next physics
-    // frame, so a breaking hit does not also splat at the old limit).
-    // Idle/walk/block states never splat — only a struck victim does.
-    if ((this.state === 'hitstun' || this.state === 'knockdown' || this.state === 'screw' || this.state === 'tornado')
-        && shouldWallSplat({ x: this.root.position.x, limit: ARENA_LIMIT, vx: this.vx })) {
-      this._wallSplat = true; this.vx = 0; this.stun = Math.max(this.stun, 0.85); this._enter('wallsplat');
+    // GAP-FILL LANE 1: wall splat (DISTINCT from wall break).
+    // A knockback victim armed by a landed hit (see receiveHit)
+    // who reaches the arena wall sticks to it in 'wallsplat'
+    // instead of sliding along it. Breaks do not false-trigger
+    // this: stagebreaks.checkHit() runs before the next physics
+    // tick and extends ARENA_LIMIT on a break, so a broken wall
+    // is no longer at the limit by the time this check runs.
+    // PROPRIETARY NAME for this state: NEEDS NAME (owner names).
+    if (this._wallSplatArmed && (this.state === 'hitstun' || this.state === 'knockdown') &&
+        Math.abs(this.root.position.x) >= ARENA_LIMIT - 0.01) {
+      this._wallSplatArmed = false;
+      this.vx = 0; this.vy = 0; this.stun = Math.max(this.stun, WALL_SPLAT_STUN);
+      this._wallSplatHits = 0;
+      this._enter('wallsplat');
+      if (this.game && this.game.stageBreaks && typeof this.game.stageBreaks.noteSplat === 'function') {
+        try { this.game.stageBreaks.noteSplat(opponent, this); } catch (e) { /* record-only hook */ }
+      }
     }
 
     // Body-vs-body pushout, T7/T8 style (owner bug 2026-10-23: cross-ups impossible).

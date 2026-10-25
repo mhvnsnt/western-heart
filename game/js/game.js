@@ -264,11 +264,6 @@ export class Game {
   _startRound() {
     this.timer = this.roundTime === 0 ? Infinity : (this.roundTime || ROUND_TIME);
     this.p1.hp = this.p1.maxHp; this.p2.hp = this.p2.maxHp;
-    // COMBAT-SYSTEMS 2026-10-24: fresh round = empty recoverable pool,
-    // free spin slot, no lingering wall splat.
-    this.p1._recoverable = this.p2._recoverable = 0;
-    this.p1._spinUsed = this.p2._spinUsed = false;
-    this.p1._wallSplat = this.p2._wallSplat = false;
     this.p1.meter = this.p2.meter = 0;
     if (this.rage) this.rage.resetRound();
     if (this.soulurge) this.soulurge.resetRound();
@@ -434,7 +429,6 @@ export class Game {
               rec('surge');
               audio.soulSurge(this.p1.char.id);
               this.ui.surgeFlash(this.p1.char.surge?.color ?? this.p1.char.colors.trim, this.p1.char.surge?.accent ?? 0xffffff);
-              this.ui.surgeName(this.p1.char.surge?.name ?? 'SOUL SURGE');
             }
           }
           else if (act === 'dodge') { if (this.p1.tryDodge()) rec('dodge'); }
@@ -506,9 +500,7 @@ export class Game {
       const _lowHp = (this.p1.hp < this.p1.maxHp * 0.25) || (this.p2.hp < this.p2.maxHp * 0.25);
       if (_lowHp && !this._musicLowHp) { this._musicLowHp = true; music.setIntensity(1.0); }
       else if (!_lowHp && this._musicLowHp) { this._musicLowHp = false; music.setIntensity(this._musicFinal ? 0.85 : 0.7); }
-      // COMBAT-SYSTEMS 2026-10-24: one Soul Urge tick per frame (the old
-      // double call passed a fighter as dt and NaN'd the timer).
-      if (this.soulurge) this.soulurge.update(dt);
+      if (this.soulurge) { this.soulurge.update(this.p1, dt); this.soulurge.update(this.p2, dt); }
 
       // FIGHTER DEPTH (worker 34): per-frame systems — kindle timers,
       // tag relay, stage intro camera.
@@ -673,14 +665,6 @@ export class Game {
           if (this.soulurge) this.soulurge.onBlockedHit(attacker, hb.move);
         } else if (result === 'dodge') {
           // whiffed into i-frames, nothing
-        } else if (result === 'powercrush') {
-          // COMBAT-SYSTEMS 2026-10-24: Power Crush absorbed the hit —
-          // damage landed (recoverable, see fighter.js) but the
-          // defender's swing continues: no combo increment, no
-          // hitstun presentation beyond a block-style spark.
-          audio.block();
-          this._hitStop = 0.05 * this.feel.hitstop;
-          this.hitfx.spawn('block', hb.x, hb.y, hb.z, { dirX: Math.sign(defender.root.position.x - attacker.root.position.x) || 1 });
         } else if (result === 'armor') {
           // V-System: armored V-Skill absorbed it — spark, no damage, no combo.
           audio.block();
@@ -753,7 +737,6 @@ export class Game {
   surgePresentation(fighter) {
     audio.soulSurge(fighter.char.id);
     this.ui.surgeFlash(fighter.char.surge?.color ?? fighter.char.colors.trim, fighter.char.surge?.accent ?? 0xffffff);
-    this.ui.surgeName(fighter.char.surge?.name ?? 'SOUL SURGE');
   }
 
   /* ---------------- Round flow ---------------- */

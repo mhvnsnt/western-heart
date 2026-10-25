@@ -46,107 +46,169 @@ export function hitWordFor(mv) {
   return undefined;
 }
 
-/* ============================================================
-   COMBAT SYSTEMS 2026-10-24 — Power Crush, Screw/Tornado, Wall
-   Splat, Recoverable Health, Item-move gate.
-   Technical names only (Tekken terms stay in technical files, never
-   in CANON.md bios). Universe names for these systems: NEEDS NAME
-   (no name in CANON.md / SOUL-SYSTEMS.md as of 2026-10-24) — do not
-   present the technical names below as canon.
-   T7 rules implemented here (pure, headless-testable):
-   • Power Crush: a move flagged powerCrush absorbs mid/high strikes
-     and keeps swinging, but LOSES to lows, throws and unblockables.
-     Damage taken while power-crushing becomes RECOVERABLE (T8 rule,
-     wavu King Muscle Armor note: "Damage taken during power crush
-     state is recoverable").
-   • Screw (S!, T7 kirimomi / tailspin) + Tornado (T!, T8 successor):
-     a flagged move against an AIRBORNE victim spins them into a
-     slump; usable ONCE per combo — the second flagged hit in the
-     same combo does not spin again. Both flags share one slot:
-     a combo cannot spend Screw and then Tornado.
-   • Wall splat (W!): a victim in hitstun/knockdown/spin whose
-     knockback carries them into an unbroken stage wall sticks to
-     the wall in a vulnerable window. Distinct from wall BREAK
-     (stagebreaks.js): a break shatters the wall and EXTENDS the
-     bounds; a splat leaves the wall and the bounds untouched.
-   • Recoverable health (white gauge, T8): chip damage taken on
-     block and damage absorbed by Power Crush do NOT vanish — they
-     enter a recoverable pool (hp + pool <= maxHp). The pool is
-     recovered ONLY by dealing damage (landed hits and chip you
-     inflict); it never recovers with time. See fighter.js
-     recoverFromPool / _recoverable.
-   • Item moves (T7): a move flagged requiresItem is available
-     only while that customization item is equipped; unflagged
-     moves are unaffected (no item data exists in repo movesets
-     yet, so this gate is currently a no-op scaffold).
-   ============================================================ */
-
-/* Hit level of a move: 'high' | 'mid' | 'low' | 'special' (s.mid)
-   | 'unblockable' | 'throw' | null (unknown). Derived from the
-   decoded hit word when present, else hitWordFor's fallback chain. */
-export function hitLevelOf(mv) {
-  if (!mv) return null;
-  if (mv.isGrab) return 'throw';
-  if (mv.unblockable) return 'unblockable';
-  const w = mv.hitWord ?? hitWordFor(mv);
-  if (w === HIT_WORD.h) return 'high';
-  if (w === HIT_WORD.m) return 'mid';
-  if (w === HIT_WORD.l) return 'low';
-  if (w === HIT_WORD.s) return 'special';
-  if (w === HIT_WORD.ub) return 'unblockable';
-  return null;
-}
-
-/* Power Crush absorption: defender's powerCrush move, incoming strike
-   that is NOT a low, throw or unblockable. Unknown-level strikes do
-   NOT get absorbed (fail closed: a level we cannot prove mid/high
-   must interrupt, or every unlevelled poke would be absorbed). */
-export function powerCrushAbsorbs(defenderMove, incomingMove) {
-  if (!defenderMove || !defenderMove.powerCrush) return false;
-  if (!incomingMove || incomingMove.isGrab || incomingMove.unblockable) return false;
-  const lvl = hitLevelOf(incomingMove);
-  return lvl === 'mid' || lvl === 'high' || lvl === 'special';
-}
-
-/* Which spin (if any) a move carries: 'screw' wins if both are set. */
-export function spinMoveKind(mv) {
-  if (!mv) return null;
-  if (mv.screw) return 'screw';
-  if (mv.tornado) return 'tornado';
-  return null;
-}
-
-/* A spin fires only against an airborne victim, once per combo. */
-export function canSpin(mv, victimAirborne, spinUsed) {
-  return !!spinMoveKind(mv) && !!victimAirborne && !spinUsed;
-}
-
-/* Wall-splat geometry: victim already clamped at a wall, still
-   travelling toward that same wall fast enough to stick. */
-export function shouldWallSplat({ x, limit, vx }) {
-  if (!Number.isFinite(x) || !Number.isFinite(limit) || !Number.isFinite(vx)) return false;
-  return Math.abs(x) >= limit - 0.01 && vx !== 0 && Math.sign(vx) === Math.sign(x)
-    && Math.abs(vx) >= 0.5;
-}
-
-/* Recoverable-pool arithmetic. Invariant: hp + pool <= maxHp. */
-export function addToRecoverable(hpAfter, maxHp, pool, amount) {
-  if (!(amount > 0)) return pool || 0;
-  return Math.min(Math.max(0, maxHp - hpAfter), (pool || 0) + amount);
-}
-export function greyRecover(hp, maxHp, pool, amount) {
-  const recovered = Math.min(pool || 0, Math.max(0, amount || 0));
-  return { hp: Math.min(maxHp, hp + recovered), pool: (pool || 0) - recovered, recovered };
-}
-
-/* Item-move gate: unflagged moves always available. */
-export function itemMoveAvailable(mv, equipped) {
-  if (!mv || !mv.requiresItem) return true;
-  return Array.isArray(equipped) && equipped.includes(mv.requiresItem);
-}
-
 export function effectiveActive(m) {
   return Math.max(Number(m && m.active) || 0, MIN_ACTIVE);
+}
+
+/* ============ GAP-FILL LANE 1 (2026-10-24) — combat systems ============
+   PROPRIETARY NAMES: NEEDS NAME (owner names them). No canon name for
+   these systems exists in CANON.md, SOUL-SYSTEMS.md, docs/decisions/ or
+   docs/research/ as of this lane (only "Soul Urge" is user-locked).
+   The Tekken names below appear ONLY in this technical module and in
+   code comments — never in canon bios or in-universe writing — and
+   user-facing text must use the neutral labels noted at each system
+   until the owner picks canon names. Buttons use LP1/RP2/LK3/RK4.
+   Sources (web, 2026-10-24): Tekken Wiki "Power Crush" / "Screw" /
+   "Tornado", wavu.wiki "Attack" (Power Crush armor startup) + "Combo"
+   (one extender per combo), Tekken 8 recoverable-gauge descriptions.
+   Per-move DATA (which moves are Power Crush / Screw / Tornado /
+   item-gated) is the moveset lane's job: this engine only reads the
+   flags when present and falls back honestly (UNMAPPED) when absent —
+   it never invents a flag for a move. */
+
+/* T7 Power Crush armor startup: most moves ~8 frames (wavu.wiki).
+   Before this delay the move can still be interrupted normally. */
+export const POWER_CRUSH_ARMOR_FRAMES = 8;
+export const POWER_CRUSH_ARMOR_DELAY = POWER_CRUSH_ARMOR_FRAMES * FRAME;
+
+/* Is `move` a low? Level-string first (authoritative when present);
+   otherwise the decoded T3 hit word: a low is blocked ONLY by a
+   crouching guard (guard bit 0x08 set, standing bit 0x10 clear) in
+   fighter.js's guard encoding. Unknown level => not low (WH's
+   defaultWord is mid), so an unmapped move never silently breaks
+   a Power Crush. */
+export function isLowHit(move) {
+  if (!move) return false;
+  const rawSrc = move.hit_level ?? (move.t7 && move.t7.hit_level) ?? (move.t8 && move.t8.tgt) ?? '';
+  const raw = String(rawSrc).replace(/\([^)]*\)/g, ' ').trim().toLowerCase();
+  if (raw) {
+    const toks = raw.split(/[ ,]+/).filter(Boolean);
+    const c = toks.length ? toks[toks.length - 1] : '';
+    return c.startsWith('l');
+  }
+  const w = move.hitWord;
+  if (typeof w === 'number') return (w & 0x08) !== 0 && (w & 0x10) === 0;
+  return false;
+}
+
+/* Power Crush flag, from any field the moveset lane may author.
+   Absent everywhere => false (UNMAPPED, never inferred from damage
+   or class — a heavy strike is not automatically a Power Crush). */
+export function isPowerCrushMove(move) {
+  if (!move) return false;
+  return !!(move.powerCrush || move.power_crush || move.powercrush ||
+    (move.t7 && move.t7.powerCrush) || (move.t8 && move.t8.powerCrush));
+}
+
+/* Does the defender's in-flight Power Crush absorb `incoming`?
+   T7 rules: absorbs mid/high strikes, full damage still applies,
+   the swing continues; lows, throws, unblockables and Rage Arts
+   break it. `phase`/`stateT` are the defender's attack phase and
+   time-in-state (fighter.js _attackPhase / stateT). */
+export function powerCrushAbsorbs(defMove, phase, stateT, incoming) {
+  if (!isPowerCrushMove(defMove)) return false;
+  if (!incoming) return false;
+  if (incoming.isGrab || incoming.move_class === 'throw') return false;
+  if (incoming.unblockable || incoming.rageArt) return false;
+  if (isLowHit(incoming)) return false;
+  if (phase === 'active') return true;
+  if (phase === 'startup') return (Number(stateT) || 0) >= POWER_CRUSH_ARMOR_DELAY;
+  return false;
+}
+
+/* ---- Combo extenders: Screw (T7) / Tornado (T8) ----
+   T7: Screw (S!) spins an airborne opponent into a slump and
+   extends the juggle; T8: Tornado flips them into a ground-bound
+   state. Both eras share ONE extender slot per combo (wavu.wiki
+   "Combo": "There is only one combo extender available to any
+   given combo"), so fighter.js tracks a single _extenderUsed flag
+   and records which kind fired. A grounded connect does NOT fire
+   either (T7 pirouette stun on the ground is not a Screw). */
+export function isScrewMove(move) {
+  if (!move) return false;
+  return !!(move.screw || move.tailspin || move.screwAttack ||
+    (move.t7 && move.t7.screw));
+}
+export function isTornadoMove(move) {
+  if (!move) return false;
+  return !!(move.tornado || (move.t8 && move.t8.tornado));
+}
+export function extenderKind(move) {
+  if (isScrewMove(move)) return 'screw';
+  if (isTornadoMove(move)) return 'tornado';
+  return null;
+}
+export const SCREW_SLUMP_STUN = 0.9;   // slump follow-up window, seconds
+export const TORNADO_BOUND_STUN = 0.8; // ground-bound follow-up window
+export const EXTENDER_LAND_STUN_FLOOR = 0.7; // slump/bound window survives landing
+
+/* ---- Wall splat (distinct from wall BREAK) ----
+   T7: a knocked-back fighter hitting an unbroken wall sticks to
+   it (W!) and eats a wall combo. Wall game allows 3 hits on the
+   wall before the victim drops fast; the splat itself is not a
+   break (stagebreaks.js owns breaks; fighter.js owns this state). */
+export const WALL_SPLAT_MAX_HITS = 3;
+export const WALL_SPLAT_STUN = 0.55;
+export function nextWallSplatState(hits) {
+  return hits >= WALL_SPLAT_MAX_HITS ? 'knockdown' : 'wallsplat';
+}
+
+/* ---- Item moves (T7 item-gated attacks) ----
+   A move may require an equipped customization item. The gate is
+   data-driven: `requiresItem` (or `item` / `itemMove` + `item`)
+   on the move record, matched against the fighter's equipped
+   item ids (fighter.js equippedItems, set by the customization
+   lane). No item data in WH movesets yet => no move is gated
+   until the moveset lane authors one. */
+export function requiresItemOf(move) {
+  if (!move) return null;
+  return move.requiresItem || move.requiredItem || move.item || null;
+}
+export function itemGate(move, equipped) {
+  const item = requiresItemOf(move);
+  if (!item) return { blocked: false, item: null };
+  const list = Array.isArray(equipped) ? equipped : [];
+  const ids = list.map((e) => (typeof e === 'string' ? e : (e && (e.id || e.itemId)) || null));
+  return { blocked: !ids.includes(item), item };
+}
+
+/* ---- Per-move hitbox / hurtbox lookup (ENGINE side) ----
+   Reads per-move geometry when the moveset lane has authored it
+   and reports UNMAPPED otherwise — never synthesized from limb
+   or class. Accepted shapes: {shape:'sphere'|'capsule', radius},
+   {radius}, {shape:'box', w,h,d} (dims preserved; no radius is
+   invented from a box — callers keep the generic radius then).
+   fighter.js getHitbox() applies radius/reach from this result;
+   getHurtboxes() applies a hurtbox radiusScale only when the
+   data itself supplies one. */
+function _perMoveBox(src) {
+  if (!src || typeof src !== 'object') return null;
+  const radius = src.radius ?? src.r ?? null;
+  const shape = src.shape || (radius != null ? 'sphere' : (src.w != null ? 'box' : null));
+  // A hurtbox that carries only a radiusScale is still mapped data
+  // (fighter.js applies the scale); it is not UNMAPPED.
+  if (!shape && radius == null && src.radiusScale == null) return null;
+  return {
+    mapped: true, shape, radius: radius != null ? Number(radius) : null,
+    reach: src.reach ?? src.range ?? null,
+    forward: src.forward ?? src.offset_x ?? src.x ?? null,
+    height: src.height ?? src.y ?? null,
+    dims: shape === 'box' ? { w: src.w, h: src.h, d: src.d } : null,
+    radiusScale: src.radiusScale ?? null,
+  };
+}
+export function resolvePerMoveHitbox(move) {
+  if (!move) return { mapped: false, reason: 'UNMAPPED' };
+  const src = move.hitbox ?? (move.t7 && move.t7.hitbox) ?? (move.t8 && move.t8.hitbox) ?? null;
+  if (src != null && typeof src === 'number') return { mapped: true, shape: 'sphere', radius: src, reach: null, forward: null, height: null, dims: null, radiusScale: null };
+  const box = _perMoveBox(src);
+  return box || { mapped: false, reason: 'UNMAPPED' };
+}
+export function resolvePerMoveHurtbox(move) {
+  if (!move) return { mapped: false, reason: 'UNMAPPED' };
+  const src = move.hurtbox ?? (move.t7 && move.t7.hurtbox) ?? (move.t8 && move.t8.hurtbox) ?? null;
+  const box = _perMoveBox(src);
+  return box || { mapped: false, reason: 'UNMAPPED' };
 }
 
 /* Phase for attack time t. `prevT` enables the swept check: if the tick
