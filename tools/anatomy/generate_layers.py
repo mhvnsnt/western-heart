@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Procedural anatomical layer generation for the WH creation suite.
 
-Takes a character's rigged GLB + skeleton and procedurally derives the four
+Takes a character's rigged GLB + skeleton and procedurally derives the five
 separable volumetric anatomy layers used by the creation suite's deep body
 morphing system (see docs/research/ANATOMY-LAYERS-SPEC-2026-10-23.md):
 
@@ -12,6 +12,10 @@ morphing system (see docs/research/ANATOMY-LAYERS-SPEC-2026-10-23.md):
   FAT    - offset shell layer: per-region thickness baselines, driven by
            fat-thickness morph parameters.
   SKIN   - the existing render mesh (referenced, never copied).
+  ORGAN  - visceral organs (heart, lungs, liver, stomach, intestines) as
+           analytic SDF primitives positioned from the rig skeleton, for
+           X-ray sequences (schema wh.anatomy-layers/2, additive: v1 readers
+           ignore the organ key).
 
 Representation: every volumetric layer is a UNION OF ANALYTIC SDF PRIMITIVES
 (capsule / ellipsoid / sphere) stored as plain JSON. Shippable because it is
@@ -42,7 +46,7 @@ from datetime import date
 
 import numpy as np
 
-SCHEMA = "wh.anatomy-layers/1"
+SCHEMA = "wh.anatomy-layers/2"
 TODAY = date.today().isoformat()
 
 # ----------------------------------------------------------------------------
@@ -757,15 +761,127 @@ def build_skin_layer(glb_relpath, mesh_index=0):
 
 
 # ----------------------------------------------------------------------------
+# LAYER 5 — ORGAN. Visceral organs for X-ray sequences: heart, lungs, liver,
+# stomach, intestines. Analytic SDF primitives positioned from the rig
+# skeleton (chest / spine / hips) geometrically — no meshing, no cryosection
+# data, same union-of-primitives representation as the other layers.
+# Added in schema wh.anatomy-layers/2 (additive: v1 readers ignore the
+# "organ" key).
+# ----------------------------------------------------------------------------
+
+def _anatomical_left(joints, front):
+    """Unit vector of anatomical LEFT in rig frame (GEOMETRIC-FIRST).
+
+    From the .L joints' x-sign; falls back to the rig-front convention
+    left = up x front (anatomical left of a character facing front).
+    """
+    lefts = [p for k, p in joints.items() if k.lower().endswith('.l')]
+    if lefts:
+        mx = float(np.mean([p[0] for p in lefts]))
+        if abs(mx) > 1e-4:
+            return np.array([1.0 if mx > 0 else -1.0, 0.0, 0.0])
+    f = np.array([front[0], 0.0, front[2] if len(front) > 2 else front[1]],
+                 dtype=float)
+    n = float(np.linalg.norm(f))
+    f = f / n if n > 1e-9 else np.array([0.0, 0.0, 1.0])
+    lv = np.cross(np.array([0.0, 1.0, 0.0]), f)
+    n = float(np.linalg.norm(lv))
+    return lv / n if n > 1e-9 else np.array([-1.0, 0.0, 0.0])
+
+
+def build_organ_layer(joints, torso_radius=0.14, body_scale=1.0,
+                      front=(0.0, 0.0, 1.0)):
+    """Visceral organs as SDF primitives, positioned from rig joints.
+
+    Anchors: chest (ribcage contents: heart, lungs), the spine->chest
+    segment (abdomen: liver, stomach), hips/spine (intestines). Sizes are
+    anatomically proportioned to torso_radius (the skeleton-derived torso
+    half-width) and scaled by body_scale, so organs fit the character
+    rather than a fixed human — and stay nested inside the ribcage/torso
+    volumes of the BONE layer.
+    """
+    J = joints
+    chest_key = next((k for k in ('chest', 'spine') if k in J), None)
+    F = np.array([front[0], 0.0, front[2] if len(front) > 2 else front[1]],
+                 dtype=float)
+    F = F / (np.linalg.norm(F) + 1e-12)
+    LV = _anatomical_left(joints, front)  # anatomical-left unit vector
+    tr, bs = torso_radius, body_scale
+    groups = []
+
+    def clamp_r(radii):
+        return [round(max(min(float(x), tr * 0.70), 0.015), 4)
+                for x in radii]
+
+    def ell(gid, label, side, center, radii):
+        return {'id': gid, 'label': label, 'side': side,
+                'primitives': [{'kind': 'ellipsoid',
+                                'center': [round(float(x), 4)
+                                           for x in np.array(center, float)],
+                                'radii': clamp_r(radii)}],
+                'bulk_param': f"organ_{gid.replace('.', '_')}",
+                'base_radius': round(float(np.mean(radii)), 4)}
+
+    def cap(gid, label, side, a, b, r):
+        return {'id': gid, 'label': label, 'side': side,
+                'primitives': [{'kind': 'capsule',
+                                'a': [round(float(x), 4) for x in a],
+                                'b': [round(float(x), 4) for x in b],
+                                'r': round(max(min(float(r), tr * 0.70),
+                                               0.015), 4)}],
+                'bulk_param': f"organ_{gid.replace('.', '_')}",
+                'base_radius': round(float(r), 4)}
+
+    if chest_key and 'spine' in J:
+        C, S = J[chest_key], J['spine']
+        up = np.array([0.0, 1.0, 0.0])
+        # Heart: left mid-chest, just below the chest joint.
+        groups.append(ell('heart', 'Heart', 'L',
+                          C + LV * tr * 0.30 + F * tr * 0.10
+                          - up * tr * 0.35,
+                          (0.045 * bs, 0.058 * bs, 0.048 * bs)))
+        # Lungs: fill the ribcage above the heart, one per side.
+        for side, sgn in (('L', 1.0), ('R', -1.0)):
+            groups.append(ell(
+                f'lung.{side}', 'Lung', side,
+                C + LV * sgn * tr * 0.40 + up * tr * 0.12,
+                (tr * 0.33, tr * 0.58, tr * 0.42)))
+        # Liver: right abdomen, tucked under the ribcage.
+        mid = S + (C - S) * 0.32
+        groups.append(ell('liver', 'Liver', 'R',
+                          mid - LV * tr * 0.30 + F * tr * 0.08,
+                          (tr * 0.42, tr * 0.34, tr * 0.40)))
+        # Stomach: left abdomen, in front of the spine.
+        mid2 = S + (C - S) * 0.55
+        groups.append(ell('stomach', 'Stomach', 'L',
+                          mid2 + LV * tr * 0.22 + F * tr * 0.14,
+                          (tr * 0.28, tr * 0.26, tr * 0.26)))
+    if 'hips' in J and 'spine' in J:
+        H, S = J['hips'], J['spine']
+        up = np.array([0.0, 1.0, 0.0])
+        # Intestines: simplified capsule cluster in the lower abdomen.
+        groups.append(cap('intestines.1', 'Intestines', 'C',
+                          H + up * 0.05 + F * tr * 0.10,
+                          S - up * 0.04 + F * tr * 0.10,
+                          tr * 0.30))
+        groups.append(cap('intestines.2', 'Intestines', 'C',
+                          S + LV * tr * 0.32 - up * 0.05 + F * tr * 0.08,
+                          S - LV * tr * 0.32 - up * 0.07 + F * tr * 0.08,
+                          tr * 0.24))
+    return {'groups': groups}
+
+
+# ----------------------------------------------------------------------------
 # MORPH PARAMETER REGISTRY — the dials the creation-suite UI builds on.
 # ----------------------------------------------------------------------------
 
 MUSCLE_BULK_GAIN = 0.55  # radius *= 1 + gain * v, v in [-1, 1]
 FAT_GAIN = 0.80          # thickness *= 1 + gain * v
 BONE_GAIN = 0.25         # radii *= 1 + gain * v
+ORGAN_GAIN = 0.25        # organ radii *= 1 + gain * v
 
 
-def build_morph_params(muscle_groups, bone_primitives):
+def build_morph_params(muscle_groups, bone_primitives, organ_groups=None):
     params = []
     for g in muscle_groups:
         params.append({
@@ -803,15 +919,26 @@ def build_morph_params(muscle_groups, bone_primitives):
                             if p.get('morph') == b],
             'suite_dial': f'body.{b}',
         })
+    for g in (organ_groups or []):
+        params.append({
+            'id': g['bulk_param'], 'layer': 'organ',
+            'label': f"Organ: {g['label']}" + (f" ({g['side']})"
+                                               if g['side'] != 'C' else ""),
+            'range': [-1, 1], 'default': 0.0,
+            'effect': f'organ radii *= 1 + {ORGAN_GAIN}*v',
+            'applies_to': [g['id']],
+            'suite_dial': f"body.{g['bulk_param']}",
+        })
     return params
 
 
 def apply_morphs(layers, values):
-    """Pure function: morphed copies of the bone/muscle/fat layer dicts."""
+    """Pure function: morphed copies of the bone/muscle/fat/organ layer dicts."""
     import copy
     bone = copy.deepcopy(layers['bone'])
     muscle = copy.deepcopy(layers['muscle'])
     fat = copy.deepcopy(layers['fat'])
+    organ = copy.deepcopy(layers.get('organ', {'groups': []}))
     v = lambda pid: float(values.get(pid, 0.0))
 
     for p in bone['primitives']:
@@ -833,11 +960,21 @@ def apply_morphs(layers, values):
                 elif prim['kind'] == 'ellipsoid':
                     prim['radii'] = [round(x * s, 5) for x in prim['radii']]
 
+    for g in organ['groups']:
+        pid = g['bulk_param']
+        if pid in values:
+            s = 1.0 + ORGAN_GAIN * v(pid)
+            for prim in g['primitives']:
+                if prim['kind'] in ('capsule', 'sphere'):
+                    prim['r'] = round(prim['r'] * s, 5)
+                elif prim['kind'] == 'ellipsoid':
+                    prim['radii'] = [round(x * s, 5) for x in prim['radii']]
+
     vg = v('fat_thickness')
     for r, rd in fat['regions'].items():
         s = (1.0 + FAT_GAIN * vg) * (1.0 + FAT_GAIN * v(rd['param']))
         rd['thickness_morphed'] = round(rd['thickness'] * s, 5)
-    return {'bone': bone, 'muscle': muscle, 'fat': fat}
+    return {'bone': bone, 'muscle': muscle, 'fat': fat, 'organ': organ}
 
 
 def muscle_primitives_flat(muscle_layer):
@@ -1029,12 +1166,15 @@ def generate(glb_path, fighter, glb_relpath):
     bone = build_bone_layer(joints, parents, frames, torso_radius)
     muscle = build_muscle_layer(joints, parents, frames, torso_radius,
                                 body_scale, front=rig_front)
-    morph_params = build_morph_params(muscle['groups'], bone['primitives'])
+    organ = build_organ_layer(joints, torso_radius, body_scale,
+                              front=rig_front)
+    morph_params = build_morph_params(muscle['groups'], bone['primitives'],
+                                      organ['groups'])
     fat = build_fat_layer(body_scale)
     skin = build_skin_layer(glb_relpath, 0)
 
     layers = {
-        '$schema': 'wh.anatomy-layers/1',
+        '$schema': SCHEMA,
         'schema_version': SCHEMA,
         'fighter': fighter,
         'generated': TODAY,
@@ -1056,8 +1196,8 @@ def generate(glb_path, fighter, glb_relpath):
                    'parent': parents.get(name)}
             for name, p in joints.items()
         },
-        'layers': {'bone': bone, 'muscle': muscle, 'fat': fat,
-                   'skin': skin},
+        'layers': {'bone': bone, 'muscle': muscle, 'organ': organ,
+                   'fat': fat, 'skin': skin},
         'morph_params': morph_params,
     }
     aux = {'pos': pos, 'tris': tris, 'normals': normals, 'regions': regions,
@@ -1079,10 +1219,10 @@ def proof_markdown(fighter, proof):
 Generated {proof['date']} by `tools/anatomy/generate_layers.py`.
 
 ## What was generated
-Four separable volumetric layers from the rigged GLB's skeleton, stored as
+Five separable volumetric layers from the rigged GLB's skeleton, stored as
 unions of analytic SDF primitives in `anatomy-layers.json`.
-Renders in `renders/`: `layer_bone.png`, `layer_muscle.png`, `layer_fat.png`,
-`layer_skin.png`.
+Renders in `renders/`: `layer_bone.png`, `layer_muscle.png`, `layer_organ.png`,
+`layer_fat.png`, `layer_skin.png`.
 
 ## Morph proof — `muscle_biceps_L`: 0.0 -> 1.0
 - biceps.L capsule radius: {proof['biceps_L_radius_base']} m -> {proof['biceps_L_radius_morphed']} m (delta {proof['biceps_L_radius_delta']} m)
@@ -1094,6 +1234,7 @@ Renders in `renders/`: `layer_bone.png`, `layer_muscle.png`, `layer_fat.png`,
 ## Validation
 - mesh<->skeleton Y rectification: {proof['rectification_deg']} deg (rig front {proof['rig_front']})
 - joints inside bone layer: {v['joints_inside_bone_layer']} (bone volumes must contain their joints)
+- organs inside body: {v['organs_inside_body']} (organ primitive centers must sit inside the body: wrapped in muscle or cradled by bone)
 - morph params registered: {v['morph_param_count']}
 """
 
@@ -1116,11 +1257,13 @@ def main():
 
     n_bone = len(layers['layers']['bone']['primitives'])
     n_muscle = len(layers['layers']['muscle']['groups'])
+    n_organ = len(layers['layers']['organ']['groups'])
     print(f"fighter={args.fighter} joints={layers['source']['joints']} "
           f"verts={layers['source']['vertices']} "
           f"rect={layers['source']['mesh_rectification_y_deg']}deg "
           f"front={layers['source']['rig_front']}")
     print(f"bone: {n_bone} primitives | muscle: {n_muscle} groups | "
+          f"organ: {n_organ} groups | "
           f"fat regions: {len(layers['layers']['fat']['regions'])} | "
           f"morph params: {len(layers['morph_params'])}")
 
@@ -1136,6 +1279,11 @@ def main():
         mprims = muscle_primitives_flat(layers['layers']['muscle'])
         write_png(os.path.join(rdir, 'layer_muscle.png'),
                   render_sdf_layer(mprims, bounds, view=view))
+        oprims = []
+        for g in layers['layers']['organ']['groups']:
+            oprims.extend(g['primitives'])
+        write_png(os.path.join(rdir, 'layer_organ.png'),
+                  render_sdf_layer(oprims, bounds, view=view))
         fg = layers['layers']['fat']['baseline_global']
         fat_shell = []
         for p in mprims:
@@ -1153,7 +1301,7 @@ def main():
         write_png(os.path.join(rdir, 'layer_skin.png'),
                   render_mesh_points(aux['pos'], aux['normals'], bounds,
                                      view=view))
-        print('wrote 4 layer renders')
+        print('wrote 5 layer renders')
 
         morphed = apply_morphs(layers['layers'], {'muscle_biceps_L': 1.0})
         write_png(os.path.join(rdir, 'morph_biceps_0.png'),
@@ -1192,11 +1340,31 @@ def main():
             'skin_vert_displacement_armL_max_m':
                 round(float(disp_s[arm].max()) if arm.sum() else 0.0, 5),
             'validation': {'joints_inside_bone_layer': None,
+                           'organs_inside_body': None,
                            'morph_param_count': len(layers['morph_params'])},
         }
         J = np.stack([np.array(v['pos']) for v in layers['skeleton'].values()])
         inside = (eval_layer_sdf(J, layers['layers']['bone']['primitives']) < 0).sum()
         proof['validation']['joints_inside_bone_layer'] = f'{int(inside)}/{len(J)}'
+        ocenters = []
+        for g in layers['layers']['organ']['groups']:
+            for p in g['primitives']:
+                if p['kind'] == 'capsule':
+                    a, b = np.array(p['a']), np.array(p['b'])
+                    ocenters.append((a + b) / 2.0)
+                else:
+                    ocenters.append(np.array(p['center']))
+        ocenters = np.stack(ocenters)
+        # Organs nestle inside the body: either wrapped in muscle (thorax)
+        # or cradled by bone (intestines in the pelvic bowl). A center is
+        # valid if it is inside either union (small tolerance for SDF seams).
+        d_muscle = eval_layer_sdf(
+            ocenters, muscle_primitives_flat(layers['layers']['muscle']))
+        d_bone = eval_layer_sdf(
+            ocenters, layers['layers']['bone']['primitives'])
+        o_inside = (np.minimum(d_muscle, d_bone) < 0.02).sum()
+        proof['validation']['organs_inside_body'] = (
+            f'{int(o_inside)}/{len(ocenters)}')
         with open(os.path.join(args.out, 'proof.json'), 'w') as f:
             json.dump(proof, f, indent=1)
         with open(os.path.join(args.out, 'PROOF.md'), 'w') as f:
