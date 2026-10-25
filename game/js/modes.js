@@ -646,6 +646,9 @@ export class ModeController {
       this._beginTraining(this.training.fighterId);
     } else if (this.mode === 'treasure' && this.treasure) {
       this._treasureFight();
+    } else if (this.mode === 'heartmind' && window.__heartmind) {
+      // Heart and Mind Inside: restart the descent (worker 20, 2026-10-22).
+      window.__heartmind.rematch();
     }
   }
 
@@ -713,7 +716,7 @@ export class ModeController {
     const fl = document.getElementById('stage-forces');
     if (fl) fl.textContent = 'FORCES HELD: ' + (this.story.forces.length ? this.story.forces.map((k) => FORCES[k].name).join(' · ') : 'none yet');
     this._badge(`STORY · ${st.title}`);
-    this.show('stageIntro');
+    this.show('stage');
     const btn = this._el('stage-fight');
     if (btn) btn.onclick = () => {
       this.audio && this.audio.uiClick && this.audio.uiClick();

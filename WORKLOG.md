@@ -3377,3 +3377,59 @@ Built the central moveset library + per-fighter assembly system (owner standing 
 **Verification:** node --check on all JS files; audio/cutscenes/modes modules import cleanly in node with registries verified (4 tracks, 12 sfx slots, 3 cutscenes, 9 face bmps); stages.js defs evaluated in node — all 6 panos + music fields + introVideo resolve on disk; 229-file sfx catalog validated; index.html parses. LIVE-BROWSER PROOF BLOCKED: the sandbox's Chromium 152 headless renders nothing (not even data: URLs), and subagents can't operate the live browser — in-game screenshots + playtest are flagged for the parent to delegate.
 
 **Files:** NEW game/assets/audio/eastern-mind/*.mp3 (4), game/assets/stages/eastern-mind/*/pano-wh.png (6), ai-pass/compare-*.png (6), game/js/cutscenes.js, game/data/eastern-mind-sfx.json, docs/research/eastern-mind-ai-pass.md, game/js/lighting-rig.js (new dep from main, synced as-is). MODIFIED game/js/audio.js, game/js/stages.js, game/js/modes.js, game/js/main.js, game/index.html, WORKLOG.md. No deletions.
+---
+
+# WORKLOG — HEART AND MIND WITHIN, phase 1: Devil Within foundation (worker 20, 2026-10-22)
+
+Owner order (verbatim): "Pull 100% of Devil Within into the game first — 3D brawler gameplay, stage progression, enemy waves, boss structure, Surge/transformation. Fully wired, playable, no stubs. THEN expand with proprietary mechanics. Character select, not forced Jin — any WH character with their moveset."
+
+## What was built
+New `game/js/brawler.js` (~1450 lines): the full Devil Within skeleton, cloned from Tekken 5's Devil Within structure (researched via tekkenpedia/tekken.fandom/gamefaqs — stage/boss order, devil-gauge, healing gems):
+- Free-roam 3D movement, third-person follow camera behind the fighter (`arena.camOverride`), camera-relative WASD/arrows + touch joystick.
+- Simultaneous multi-enemy waves (melee `echo` / `brute` / ranged `gunner` types), 5 stages × 2–3 zones each, zone gates ("PATH OPEN — PUSH FORWARD"), one boss per stage.
+- Bosses mirroring Devil Within 1:1: Stage 1 WARDEN (Modified Gun Jack analog — bruiser + heavy blockable projectiles), Stage 2 THE MASKS (Heihachi-clone analog — 1, then 3 at once), Stage 3 THE DROWNED OGRE (True Ogre analog — teleports, homing volley, fire-blast AoE), Stage 4 THE SOUL SPHERE (energy orb — contact damage + spawns monsters), Stage 5 SHADOW SELF → THE UNMASKED (True→Monstrous Ogre analog — second form, same descent).
+- Devil Gauge analog: full Nine-Soul Meter + transform input = SOUL SURGE FORM (25s devil-form: power ×1.45, speed ×1.15, defense ×1.2, burning aura, meter drains). Works for ANY fighter.
+- Soul-ember healing pickups (Devil Within's gems), blockable gunner shots, unblockable homing Ogre blasts, per-stage S/A/B/C rank (time + damage taken), throw-lock resolution both directions.
+- `BrawlerAI`: 3D seek/orbit/strafe, reactive block/dodge, ranged keep-distance, per-boss trick timers. Enemies are roster fighters via heartmind.js `makeEcho`/`buildShadowSelf`, rebound to their base fighter's REAL moveset (`_movesetId` + `_bindT3`) — reuses worker 11's moveset system, never duplicated.
+- Hooks interface for the WH proprietary layer: `onStageIntro / onBossIntro / onStageClear / onVictory / onDeath`. Driven from `Game._loop` via `game.brawler.frame(dt)`.
+
+Surgical edits: `fighter.js` (brawler yaw mode, 2D locomotion, yaw-based attack/block vectors, 3D knockback, yaw guard-angle, 3D KO, yaw dodge, throw-lock facing, z-clamp, `startSurgeForm`/`endSurgeForm` + meter drain; versus untouched when `brawler=false`), `scene.js` (`camOverride(dt,camera,shake)` hook), `game.js` (`this.brawler`, `_loop` drives it, `resetFightState` stops it), `input.js` (`brawlerMode`, camera-relative `axisY`, `joyY`, `keyDown()`, KeyT = transform), `heartmind.js` (controller drives the brawler; select flow/stories/records kept; stage-5 boss gets the story name), `index.html` (`#brawler-status` HUD), `modes.js` (`rematch()` → heartmind), `main.js` + `menus.js` (pause/visibility aware of the brawler).
+
+Phase-1 omissions (documented, not stubs): no jump (no platforming zones yet); crouch-dependent moves (FC./d+) unavailable in brawler — 1/2/3/4, strings, f+1 directionals all work.
+
+## Real bugs found and fixed (via the headless sim below)
+1. Enemies could leave the combat zone while the player is walled inside it — a kiting gunner stalled a wave forever. `_clampToZone` now clamps enemies to the fight pocket too (Devil Within behavior).
+2. Shadow form-2 transition skipped: a killing blow landing in `_resolveHits` (after the enemies loop) let `_checkZoneClear` clear the zone before `_bossDown` ran. `_checkZoneClear` now waits for unprocessed boss deaths.
+3. Shadow form-2 double-spawn: `_spawnShadowForm2` pushed one rec via `_spawnBossFighter` and `_bossDown` created a second rec for the same fighter. Now pop+replace (single rec, safe mid-iteration).
+
+## Proof — headless bot playthrough (the mode loop, end to end)
+`game/tests/brawler-sim.test.mjs` (+ `brawler-sim-hooks.mjs` + `brawler-sim-stubs/`): runs the REAL `game/js/brawler.js` byte-for-byte (data: URL import; loader hooks redirect its 10 imports to headless stubs — the sandbox blocks node from writing the brawler source, so no file copy). A bot plays the full descent: camera-relative movement, Tekken limb attacks, blocking, ember foraging, surge at full meter.
+Result: **PASS** — stages=[0,1,2,3,4], bosses=[warden,mask,ogre,sphere,shadow,shadow2], 62 kills, surge fired, 45 banners, victory, no exceptions, ~1.4s for the full run.
+(Pre-existing `fighter-completeness` / `model-key-guard` tests fail in this sandbox on EPERM `cpSync` — environmental, unrelated to this work.)
+Live-browser playtest (rendering, combat feel, balance) still needed — delegated to parent; the sim proves the loop, not the feel.
+
+## Files
+- Added: `game/js/brawler.js`, `game/tests/brawler-sim.test.mjs`, `game/tests/brawler-sim-hooks.mjs`, `game/tests/brawler-sim-stubs/` (10 stubs).
+- Modified (surgical): `game/js/fighter.js`, `game/js/scene.js`, `game/js/game.js`, `game/js/input.js`, `game/js/heartmind.js` (controller rewritten after a sandbox EPERM flake zeroed the file mid-edit; content lines 1–317 restored verbatim, verified by node line-diff — only intended diffs remain), `game/js/modes.js`, `game/js/main.js`, `game/js/menus.js`, `game/index.html`, `WORKLOG.md`. No deletions.
+- `node --check` clean on all touched JS.
+
+---
+
+## 2026-10-22 ~14:05 CDT — Worker 43: REBASE PR #644 (Heart and Mind Within) onto post-#615 main (+ re-sync to 7fe0cb41)
+
+**Task:** PR #644 (Devil Within foundation: brawler.js + surgical edits to 9 files) was blocked — mergeable_state=dirty. Rebase the brawler changes onto current main and reconcile with #615's fighter.js/game.js refactors, re-run the headless sim, merge clean green.
+
+**What the blocker actually was:** the branch's fighter.js/game.js were stale pre-#615 full-file copies (branch still contained `_attackStep`, Tekken-style hitboxes, HitFX, voice.unlock, intro-interactions — all removed/reverted by #615). A blind merge would have reintroduced every reverted line. Re-applied ONLY the brawler hunks onto #615's refactored files:
+- fighter.js: brawler yaw-mode fields, startSurgeForm/endSurgeForm + meter drain, yaw dodge/facing/guard/knockback/KO, ARENA_LIMIT z-clamp, yaw _animate, fwdVec(). Dropped: _attackStep, Tekken-style hitboxes, Tekken step-in (stay reverted per #615).
+- game.js: this.brawler, resetFightState teardown, _loop brawler.frame driving. Dropped: voice/HitFX/intro-interaction reintroductions (stay removed per #615).
+- heartmind.js/input.js/menus.js/modes.js/scene.js: branch versions verbatim (base==main, no main-side movement).
+- main.js/index.html/WORKLOG.md: 3-way merged with current main (rank wiring, limb-cluster layout, Worker 30 entry kept).
+- New files: brawler.js + game/tests/brawler-sim.* byte-identical from the branch.
+
+**Re-sync:** main moved twice during the rebase (ca9655e24f7 → 7fe0cb41 via #653 jiggle/face/hands + #639 integration). Re-synced: fighter.js brawler hunks re-applied onto #653's Fighter — `_feelMul` is gone (brawler knockback/KO now use raw values), the smooth `_faceY` turn is gone (brawler sets `lean.rotation.y = yaw` directly). index.html/WORKLOG.md re-merged (kept #639's importmap/integration.js and Worker 22 entry). Also fixed a self-inflicted tree-build bug that had dropped main's game/tests/ files (restored in a follow-up commit).
+
+**Method:** plain-copy rebase (no git repo): per-file 3-way analysis base/head/main via GitHub API; fighter.js/game.js rebased hunk-by-hunk with exact-verbatim block transplants; node --check on all touched JS; brawler-sim bot playthrough re-run after each rebase. Pushed as merge commits on the branch (parents: branch tip + current main) — no force-push, no clobber.
+
+**Proof:** `node --test game/tests/brawler-sim.test.mjs` on the rebased tree → PASS (stages=[0,1,2,3,4], bosses=[warden,mask,ogre,sphere,shadow,shadow2], surge fired, 45 banners, victory, no exceptions). `node --check` clean on all 9 touched JS files.
+
+**Status:** rebased onto 7fe0cb41 and pushed (e4cfd042); brawler-sim PASS post-rebase; CI re-triggered via contents API (git/refs updates don't fire push events); awaiting green checks + merge gate.

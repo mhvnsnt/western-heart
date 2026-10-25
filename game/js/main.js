@@ -1429,7 +1429,9 @@ document.addEventListener('keydown', (e) => {
 
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) { game.paused = true; }
-  else if (game.running) { game.paused = false; }
+  // Brawler (worker 20): the descent also unpauses on return — game.running
+  // is false while the brawler owns the sim.
+  else if (game.running || game.brawler) { game.paused = false; }
 });
 
 // expose for debugging / verification
