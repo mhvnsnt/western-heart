@@ -28,6 +28,30 @@
    ============================================================ */
 import { getRules } from './rules.js';
 
+import { playCutscene, EM_CUTSCENES } from './cutscenes.js';
+
+/* Eastern Mind face-assembly art for the reincarnation screen:
+   the original game's own eyes / noses / mouths (D_FACE bitmaps),
+   verified by viewing. The returning soul assembles its new face
+   in pieces — CANON.md §1/§8 "The Two Laws of Death". */
+const EM_FACE = {
+  eyes: [
+    '../teardown/eastern-mind/prologue-ending/bitmaps/D_FACE/D_FACE_b011_40x39.png',
+    '../teardown/eastern-mind/prologue-ending/bitmaps/D_FACE/D_FACE_b012_40x39.png',
+    '../teardown/eastern-mind/prologue-ending/bitmaps/D_FACE/D_FACE_b042_88x61.png',
+  ],
+  nose: [
+    '../teardown/eastern-mind/prologue-ending/bitmaps/D_FACE/D_FACE_b009_92x94.png',
+    '../teardown/eastern-mind/prologue-ending/bitmaps/D_FACE/D_FACE_b025_51x64.png',
+    '../teardown/eastern-mind/prologue-ending/bitmaps/D_FACE/D_FACE_b033_59x68.png',
+  ],
+  mouth: [
+    '../teardown/eastern-mind/prologue-ending/bitmaps/D_FACE/D_FACE_b004_108x93.png',
+    '../teardown/eastern-mind/prologue-ending/bitmaps/D_FACE/D_FACE_b002_113x108.png',
+    '../teardown/eastern-mind/prologue-ending/bitmaps/D_FACE/D_FACE_b008_72x58.png',
+  ],
+};
+
 /* ---------------- The Five Forces ----------------
    Canon rewards for claiming each land. Engine translation is honest:
    • WOOD  — "your reach extends"      → hitbox radius × 1.30
@@ -448,6 +472,9 @@ export class ModeController {
     this.mode = mode;
     const hint = this._el('select-hint');
     this.show('select');
+    // Eastern Mind on the select screen: the 8-minute esoteric mix,
+    // the head-world's long-form music (Tong-Nou Theme holds the menu).
+    if (this.audio && this.audio.playEMTrack) this.audio.playEMTrack('tong-nou-esoteric-mix');
     if (!hint) return;
     if (mode === 'versus') {
       hint.textContent = 'VERSUS — no reincarnation. Player 1: choose your soul.';
@@ -510,7 +537,10 @@ export class ModeController {
     }
     if (this.mode === 'story') {
       this.story = { stage: 0, forces: [], deaths: 0, vesselId: selectedId, acc: this._newAcc(), startTime: Date.now() };
-      this._storyStageIntro();
+      // The Trial opens with the head-world's own title sting —
+      // the real Eastern Mind logo animation (skippable).
+      playCutscene(EM_CUTSCENES['story.intro'], { label: 'THE TRIAL BEGINS' })
+        .then(() => this._storyStageIntro());
       return true;
     }
     if (this.mode === 'training') {
@@ -780,6 +810,9 @@ export class ModeController {
     const endingBtn = {
       label: 'WATCH ENDING', fn: () => this._playEnding(this.story.vesselId),
     };
+    // The Trial ends under the transmigration music — the head-world's
+    // own ending theme (5:16, real CD audio).
+    if (this.audio && this.audio.playEMTrack) this.audio.playEMTrack('transmigration-ending');
     this._modeWin(true, 'THE KATANA IS FORGED',
       `Five forces claimed. The Assembled Soul faced — and it was you. ` +
       `Deaths: ${this.story.deaths}. Time: ${mins} min. The soul is nearly whole.`, [endingBtn]);
@@ -802,6 +835,17 @@ export class ModeController {
 
   /* ---------- Reincarnation screen ---------- */
   _reincarnateScreen() {
+    // Death has a sound and a film: the real incarnation stinger and the
+    // transmigration flash, then the ending theme settles under the screen.
+    if (this.audio) {
+      this.audio.playEMSfx && this.audio.playEMSfx('reincarn.death');
+      this.audio.playEMTrack && this.audio.playEMTrack('ending-theme');
+    }
+    playCutscene(EM_CUTSCENES['reincarn.flash'], { label: 'TRANSMIGRATION' })
+      .then(() => this._reincarnateScreenAfterCut());
+  }
+
+  _reincarnateScreenAfterCut() {
     const profile = styleProfile(this.story.acc);
     const ids = this.roster.map((c) => c.id);
     const picks = chooseReincarnation(profile, ids, this.story.vesselId, this.story.deaths);
@@ -809,6 +853,32 @@ export class ModeController {
     this._el('reinc-flavor').textContent =
       'When a soul loses, it dies — and is reborn before the next fight. ' +
       'The Trial has watched how you fight. These are the vessels your actions have earned.';
+    // The new face, assembled in pieces from the original game's own
+    // face art (eyes / nose / mouth — CANON.md §1 "The Two Laws of Death").
+    const face = this._el('reinc-face');
+    if (face) {
+      const pick = (arr) => arr[(Math.random() * arr.length) | 0];
+      face.innerHTML = '';
+      const strip = document.createElement('div');
+      strip.setAttribute('style', 'display:flex;gap:18px;justify-content:center;align-items:flex-end;margin:6px 0 2px;');
+      [['eyes', 'EYES'], ['nose', 'NOSE'], ['mouth', 'MOUTH']].forEach(([part, label]) => {
+        const cell = document.createElement('div');
+        cell.setAttribute('style', 'text-align:center;');
+        const img = document.createElement('img');
+        img.src = pick(EM_FACE[part]);
+        img.alt = label;
+        img.setAttribute('style', 'height:64px;image-rendering:auto;filter:drop-shadow(0 0 12px rgba(255,215,106,0.35));');
+        img.onerror = () => { cell.style.display = 'none'; };
+        const cap = document.createElement('div');
+        cap.textContent = label;
+        cap.setAttribute('style', 'color:#8a7a5a;font-size:10px;letter-spacing:0.3em;margin-top:4px;');
+        cell.appendChild(img); cell.appendChild(cap); strip.appendChild(cell);
+      });
+      const title = document.createElement('div');
+      title.textContent = 'THE FACE REASSEMBLES';
+      title.setAttribute('style', 'color:#FFD76A;font-size:11px;letter-spacing:0.4em;margin-bottom:4px;font-family:serif;');
+      face.appendChild(title); face.appendChild(strip);
+    }
     const fl = this._el('reinc-forces');
     if (fl) fl.textContent = 'FORCES CARRIED OVER: ' + (this.story.forces.length ? this.story.forces.map((k) => FORCES[k].name).join(' · ') : 'none');
     const wrap = this._el('reinc-cards');
@@ -825,6 +895,8 @@ export class ModeController {
         `<div class="rwhy">${reincarnationReason(id, profile)}</div>`;
       card.addEventListener('click', () => {
         this.audio && this.audio.uiClick && this.audio.uiClick();
+        this.audio && this.audio.playEMSfx && this.audio.playEMSfx('reincarn.rebirth');
+        this.audio && this.audio.stopEMTrack && this.audio.stopEMTrack();
         this.story.vesselId = id;
         this.ui.banner('REBORN AS ' + c.name);
         setTimeout(() => this._storyStageIntro(), 900);
@@ -836,6 +908,8 @@ export class ModeController {
 
   /* ---------- Trader screen (stage 6) ---------- */
   _traderScreen() {
+    // The Trader's own voice from the original game.
+    if (this.audio && this.audio.playEMSfx) this.audio.playEMSfx('trader.open');
     const have = this.story.forces.slice();
     let give = null, take = null;
     const render = () => {
