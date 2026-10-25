@@ -55,16 +55,20 @@ nothing is renamed.
 | V-System | RENAME-PENDING | Umbrella decided to change; member names are NOT yet picked (see still-open list). |
 | Break mechanics + guard-breaking mechanics | SHARED-NAME-PENDING | ONE term covers both, not two separate names. Owner: "can be called the same thing". The term itself is NOT yet picked. |
 | Rage (low-HP state itself) | LOCKED 2026-10-24 21:46 CDT | Short name Rinne (輪廻); full name Rinne Tensei (輪廻転生); Tensei (転生) also acceptable as a short form. See the 2026-10-24 21:46 CDT section below. Supersedes the OPEN/UNDECIDED label from 21:38 CDT. |
-| Screw | EXPLAINED-NOT-NAMED / MECHANIC-NOT-ON-MAIN | T7 spinning-knockdown extender. WH on main has NEITHER Screw nor Tornado and uses T6 Bound instead of Screw. A WH name is needed only when/if the mechanic is implemented. |
-| Tailspin | EXPLAINED-NOT-NAMED / MECHANIC-NOT-ON-MAIN | T8's rename of Screw. Not a separate WH item to name unless/until implemented. |
-| Tornado | EXPLAINED-NOT-NAMED / MECHANIC-NOT-ON-MAIN | T8's spinning-air extender. Missing per gap analysis. This explanation supersedes this audit's earlier shorthand that called Tornado "T8's rename of Screw" — Tailspin is the T8 rename of Screw. |
+| Screw | EXPLAINED-NOT-NAMED / MECHANIC-ON-MAIN | T7 spinning-knockdown extender. Mechanic now on main via PR #1060 (merge commit 1b90ba55158b731b6923258fafb5669156642e64, verified 2026-10-24). A WH name is still pending — "Spin Juggle" is proposed, NOT locked. (At 2026-10-24 21:38 CDT, WH on main had NEITHER Screw nor Tornado and used T6 Bound instead of Screw; that presence statement is superseded by the #1060 merge.) |
+| Tailspin | EXPLAINED-NOT-NAMED / MECHANIC-ON-MAIN | T8's rename of Screw. Mechanic now on main via PR #1060 (merge commit 1b90ba55158b731b6923258fafb5669156642e64, verified 2026-10-24); the Screw/Tornado wiring in #1060 recognizes the tailspin flag. A WH name is still pending — "Spin Juggle" is proposed, NOT locked. |
+| Tornado | EXPLAINED-NOT-NAMED / MECHANIC-ON-MAIN | T8's spinning-air extender. Mechanic now on main via PR #1060 (merge commit 1b90ba55158b731b6923258fafb5669156642e64, verified 2026-10-24); no longer missing per gap analysis. A WH name is still pending — "Spin Juggle" is proposed, NOT locked. This explanation supersedes this audit's earlier shorthand that called Tornado "T8's rename of Screw" — Tailspin is the T8 rename of Screw. |
 
 ### Nuance preserved, not contradicted
 
-- PR #1060 (combat, unmerged, HELD until the popup play pass)
-  implements Screw/Tornado on its branch. The names question
-  reopens if/when #1060 lands. This PR pre-invents NO names
-  for it and does NOT claim the mechanic is on main.
+- PR #1060 (combat) has MERGED to main (merge commit
+  1b90ba55158b731b6923258fafb5669156642e64, verified
+  2026-10-24), wiring Screw/Tornado on main. The names
+  question is now live — the mechanic is present, its WH
+  name is still pending ("Spin Juggle" proposed, NOT
+  locked). This PR pre-invents NO names for it and changes
+  NO code; it corrects only the mechanic-presence
+  statement in this audit.
 - NOTHING here blocks the #1076 popup deploy. Banners are
   already gone regardless of naming, and this naming PR is
   docs-only.
@@ -442,9 +446,9 @@ locked.
 | Rage Art | Ikari Jishin 怒り自身 "Rage Itself" | LOCKED 2026-10-24 21:51 CDT as the super / Rage Art equivalent, the cinematic comeback unleashed FROM the Rinne state (was RENAME-PENDING 21:38 CDT; banked-name history 21:46 CDT superseded — see 21:51 CDT section) |
 | Rage Drive | — | RENAME-PENDING (2026-10-24 21:38 CDT; new name not yet picked) |
 | Power Crush | — | RENAME-PENDING (2026-10-24 21:38 CDT; new name not yet picked; implementation question unchanged) |
-| Screw | — | EXPLAINED-NOT-NAMED / MECHANIC-NOT-ON-MAIN (2026-10-24 21:38 CDT; "Spin Juggle" proposal pending 21:40–21:42 CDT — NOT decided) |
-| Tornado (T8 spinning-air extender) | — | EXPLAINED-NOT-NAMED / MECHANIC-NOT-ON-MAIN (2026-10-24 21:38 CDT; "Spin Juggle" proposal pending 21:40–21:42 CDT — NOT decided) |
-| Tailspin (T8 rename of Screw) | — | EXPLAINED-NOT-NAMED / MECHANIC-NOT-ON-MAIN (2026-10-24 21:38 CDT; "Spin Juggle" proposal pending 21:40–21:42 CDT — NOT decided) |
+| Screw | — | EXPLAINED-NOT-NAMED / MECHANIC-ON-MAIN (mechanic on main via PR #1060 merge 1b90ba55158b731b6923258fafb5669156642e64, verified 2026-10-24; 2026-10-24 21:38 CDT presence statement superseded; "Spin Juggle" proposal pending 21:40–21:42 CDT — NOT decided) |
+| Tornado (T8 spinning-air extender) | — | EXPLAINED-NOT-NAMED / MECHANIC-ON-MAIN (mechanic on main via PR #1060 merge 1b90ba55158b731b6923258fafb5669156642e64, verified 2026-10-24; 2026-10-24 21:38 CDT presence statement superseded; "Spin Juggle" proposal pending 21:40–21:42 CDT — NOT decided) |
+| Tailspin (T8 rename of Screw) | — | EXPLAINED-NOT-NAMED / MECHANIC-ON-MAIN (mechanic on main via PR #1060 merge 1b90ba55158b731b6923258fafb5669156642e64, verified 2026-10-24; 2026-10-24 21:38 CDT presence statement superseded; "Spin Juggle" proposal pending 21:40–21:42 CDT — NOT decided) |
 | Bound | — | NEEDS NAME |
 | Wall Break | Wall Break (kept as-is) | KEEP (2026-10-24 21:38 CDT) |
 | Floor Break | Floor Break (kept as-is) | KEEP (2026-10-24 21:38 CDT) |
@@ -657,8 +661,12 @@ what was searched so the owner can see the gap is real.
 
 ### Screw (T7 juggle-spin state)
 > STATUS UPDATE 2026-10-24 21:38 CDT: EXPLAINED-NOT-NAMED / MECHANIC-NOT-ON-MAIN — T7 spinning-knockdown extender; WH on main uses T6 Bound instead. Name needed only when/if implemented. "Spin Juggle" proposal pending 2026-10-24 21:40–21:42 CDT — NOT decided, NOT the name.
-- NOT found as a system in searched files: zero hits in
-  `fighter.js` / `movesets.js` / `game.js`. Moveset hits
+> DRIFT CORRECTION (mechanic presence only, 2026-10-24): the MECHANIC-NOT-ON-MAIN presence statement above is SUPERSEDED — the mechanic is now on main via PR #1060 (merge commit 1b90ba55158b731b6923258fafb5669156642e64, verified). The name status is UNCHANGED: still EXPLAINED-NOT-NAMED, "Spin Juggle" still proposed, NOT locked.
+- At audit time, NOT found as a system in searched files:
+  zero hits in `fighter.js` / `movesets.js` / `game.js`.
+  (Superseded for main by PR #1060, which wires Screw /
+  Tornado in `game/js/combat-core.js` and `game/js/fighter.js`.)
+  Moveset hits
   for "screw" are King throw NAMES, not the mechanic:
   `pantera.json` L9363 "Screwdriver (MMD7)", L22517
   "Mid-Air Leg Screw", L24358 "Screwdriver", L24768
@@ -669,7 +677,10 @@ what was searched so the owner can see the gap is real.
 
 ### Tornado (T8's rename of Screw)
 > STATUS UPDATE 2026-10-24 21:38 CDT: EXPLAINED-NOT-NAMED / MECHANIC-NOT-ON-MAIN — see the 2026-10-24 21:38 CDT section above for the corrected explanation (Tornado = T8's spinning-air extender; Tailspin = T8's rename of Screw). Name needed only when/if implemented. "Spin Juggle" proposal pending — NOT decided.
-- NOT found in searched files (same grep as Screw).
+> DRIFT CORRECTION (mechanic presence only, 2026-10-24): the MECHANIC-NOT-ON-MAIN presence statement above is SUPERSEDED — the mechanic is now on main via PR #1060 (merge commit 1b90ba55158b731b6923258fafb5669156642e64, verified). The name status is UNCHANGED: still EXPLAINED-NOT-NAMED, "Spin Juggle" still proposed, NOT locked.
+- At audit time, NOT found in searched files (same grep as Screw).
+  (Superseded for main by PR #1060, which wires Screw /
+  Tornado in `game/js/combat-core.js` and `game/js/fighter.js`.)
   Decision shape is the owner's: one shared name for the
   juggle-spin state (recommended — Screw and Tornado are
   the same state across eras), or two era-split names.
@@ -798,10 +809,74 @@ what was searched so the owner can see the gap is real.
   lock, Amatsu Rinne = reserved future form (mechanic not
   designed), Ikari Jishin = locked 21:51 CDT as the super
   (no longer banked); Screw / Tailspin / Tornado are
-  EXPLAINED-NOT-NAMED and the mechanic is not on main,
-  with the "Spin Juggle" descriptive proposal pending (NOT
-  decided — a 👍 reaction is not confirmation). Still outstanding: Bound, Slow-mo
+  EXPLAINED-NOT-NAMED and the mechanic is NOW on main via
+  PR #1060 (merge commit 1b90ba55158b731b6923258fafb5669156642e64,
+  verified 2026-10-24 — the 21:38 CDT presence statement
+  is superseded), with the "Spin Juggle" descriptive
+  proposal pending (NOT decided — a 👍 reaction is not
+  confirmation). Still outstanding: Bound, Slow-mo
   finish, WWE entrance-tool repurpose, V-System members,
   Soul Kindle + Soul Relay proposals, Climax/Release
   variance, 魂 ACTION chord confirmation. None are decided
   by this audit.
+
+## Docs drift correction — Screw / Tailspin / Tornado mechanic status (2026-10-24; docs only, NO renaming, NO code)
+
+- What changed: ONLY the mechanic-presence statement. The
+  2026-10-24 21:38 CDT audit said Screw/Tailspin/Tornado
+  were MECHANIC-NOT-ON-MAIN (WH on main had NEITHER Screw
+  nor Tornado, used T6 Bound instead of Screw, Tornado
+  missing per gap analysis; PR #1060 unmerged, held until
+  the popup play pass). That presence statement is now
+  STALE and is SUPERSEDED by this correction: PR #1060
+  (feat(combat): Power Crush, Screw/Tornado, wall splat,
+  recoverable, Soul Urge wiring, item gate, per-move
+  hitbox lookup, Lane 1) MERGED to main — merge commit
+  1b90ba55158b731b6923258fafb5669156642e64, merged
+  2026-10-25T02:47:19Z, verified via the GitHub API and
+  confirmed as an ancestor of main. Its patch wires Screw
+  (T7) / Tornado (T8) combo extenders in
+  `game/js/combat-core.js` and `game/js/fighter.js` and
+  recognizes the tailspin flag. The mechanic is therefore
+  MECHANIC-ON-MAIN. The corrected entries are: the updated
+  status table, the summary table, the Screw and Tornado
+  per-system sections, the nuance bullet, and the closing
+  summary — all in this file, and nowhere else.
+- What did NOT change: NAMES. Screw / Tailspin / Tornado
+  remain EXPLAINED-NOT-NAMED. "Spin Juggle" remains
+  PROPOSED, NOT locked — a 👍 reaction is NOT
+  confirmation, and this correction does NOT confirm it.
+  No name is locked, invented, or assigned here. The
+  explanations are preserved exactly: Screw = T7
+  spinning-knockdown extender; Tailspin = T8's rename of
+  Screw (not Tornado); Tornado = T8's spinning-air
+  extender. This correction does NOT re-shorthand Tornado
+  as "T8's rename of Screw."
+- Also unchanged by this correction: KEEP Wall Break,
+  Floor Break, Balcony Break; RENAME-PENDING Rage Drive,
+  Power Crush, V-System; SHARED-NAME-PENDING break +
+  guard-break (one term, not picked); LOCKED Rinne /
+  Rinne Tensei (Tensei acceptable short form) and LOCKED
+  Ikari Jishin as the super / Rage Art equivalent, with
+  Amatsu Rinne RESERVED as a future form (mechanic not
+  designed) and all prior locked names; and all still-open
+  items (Bound; Slow-mo finish; WWE entrance-tool
+  repurpose; V-System members; Urge Smash tension; Soul
+  Kindle / Soul Relay proposals; Nine-Soul Climax vs
+  Release variance; 魂 ACTION chord question).
+- Supersession note: the 2026-10-24 21:51 CDT section's
+  flag that the Screw / Tailspin / Tornado entries were
+  "left UNTOUCHED" pending a separate drift-correction
+  lane is now SATISFIED by this correction landing on
+  this same branch (PR #1085) — that flag is history, not
+  a live "still owed" item. The 21:38 CDT, 21:40–21:42 CDT,
+  and 21:46 CDT sections are likewise kept as history;
+  their mechanic-presence statements are superseded only
+  as listed above, and their name decisions are untouched.
+- Scope: docs only. NO code, HUD, moveset, banner, or
+  mechanic changes in this correction. Merging this docs
+  PR changes no code. NOTHING here blocks the #1076
+  popup deploy — #1076 has merged to main, this docs PR
+  sequences AFTER it, and naming changes nothing about
+  banners (already gone). No live-browser visit and no
+  play pass applies to a docs correction; none is claimed.
