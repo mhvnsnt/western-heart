@@ -2737,8 +2737,11 @@ export class Fighter {
   /* ---------------- animation ---------------- */
   _animate(dt) {
     // 1) Facing (3D yaw toward the opponent when known; sign convention kept)
-    // BRAWLER: yaw drives the facing directly in free 3D; versus keeps the x-facing rule.
-    this.lean.rotation.y = this.brawler ? this.yaw : (typeof this._faceYaw === 'number' ? this._faceYaw : this.facing * Math.PI / 2);
+    // BRAWLER: yaw drives the facing directly in free 3D (brawler.js updates
+    // f.yaw per frame); sync it into _faceYaw so the facing line below stays
+    // the single source of truth in both modes.
+    if (this.brawler) this._faceYaw = this.yaw;
+    this.lean.rotation.y = (typeof this._faceYaw === 'number') ? this._faceYaw : this.facing * Math.PI / 2;
 
     // 2) Which REAL T3 clip owns this state? (FROZEN-IDLE FIX 2026-10-20:
     // the bank's animated stance/walk clips existed but were NEVER played
