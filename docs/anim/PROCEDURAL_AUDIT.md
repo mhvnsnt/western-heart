@@ -180,3 +180,33 @@ All T3-baked clips already in the repo are **fallback, to be replaced from T5/6/
 | Asset | T3 data | Status | Reason T3 was used (no T5/6/7/8/TTT2 source available) |
 |---|---|---|---|
 | `game/assets/movesets/pantera.json` `string_step_plans` (60 keys: 31 canonical LP1/RP2 strings + 26 twins + 3 spelling variants) + `game/js/fighter.js` step-plan branch | King T3 bank rows for verified steps only (rows 36, 38, 39, 40, 50, 51, 52, 97, 98, 198, 200, 202, 203, 110) | fallback, to be replaced from T7 King extraction when clip bytes land | T7 King (`kinmot.bin`, 2,787 moves) is decoded, but 0x8000-bank clip bytes are not in tkdata (pakchunk/live-memory only) and requirement codes (636/811/80/81/72/217) + the aliases table are unresolved, so no T7 step clip can be wired yet. T3 step rows stand in for verified steps only; review/unmapped steps play no bank row. Re-match against T7 King rows when extraction lands. Rows 35/220 are never used for standing steps. |
+
+## Scimitar Batch 1 fallback (LP1/RP2-only strings, 2026-10-25)
+Verified rows 92/93/183/186/220/221/222/223 are FALLBACK
+(T3 jin rows, bank jin / FALLBACK bank: scimitar's T7/T8 base is Shaheen,
+which debuted in Tekken 7, so no shaheen dir exists under t3/ — the kinpo
+pattern, Asuka -> jin), to be re-matched to T7 Shaheen rows when extraction
+lands. Rejected rows are NOT fallback — rejected evidence, not wired or
+held. Jin-bank rules, per-bank evidence (documented in
+docs/movesets/SCIMITAR-BATCH1-STEP-PLANS-2026-10-25.md): row 35 EXISTS as a
+starts-airborne LP1 row (hit_frames [11,12,39,535,0,1]) — ground-rejected,
+jump-context only; row 220 is a STANDING RP2 row (hit_frames
+[12,12,41,1042,0,2], Job 1 standing) — NOT king's jumping chord row, NOT
+bryan's button-0 row, NOT heihachi's jump RK4 row; row 216 is a JUMP row
+(hit_frames [63,64,117,1543,0,0], button 0) — it fails every single-button
+gate; row 41 is a starts-airborne LP1 row. Scimitar's own LP1 move 1
+carries t3_row 184 (standing LP1 row) and RP2 move 2 carries t3_row 220
+(the standing RP2 row) on #1096 — but move 1 IS ROW-CHANGED on current
+main (184->None, anim_ref None), so both Batch 1 steps with prefix 1 are
+SUSPENDED-DRIFT — never wired on stale data. The file's ONLY row-changed
+move is 1. Standing rows verified for crouch-context steps (d+1+2 family
+rows 92/93/183) follow the demonio Batch 1 precedent: the gate flags
+crouch rows for non-crouch steps, not standing rows for crouch steps.
+Job 3 fills wired: 0 (all Job 3 candidates are ROW-ONLY or soft, documented
+never wired). Canonicalization is the CORRECTED rule (strip only a trailing
+~t[378] source-variant suffix): scimitar Batch 1 contains ZERO input-~
+canonicals, and scimitar is INERT file-wide on this axis — every ~ in the
+file is a trailing source-variant suffix. T8-sourced prefixes with no T3 row
+get their correct clips from #988 Step 2 (original T8 refs), never from a
+T3 row recorded as correct.
+
