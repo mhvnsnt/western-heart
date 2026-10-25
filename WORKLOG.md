@@ -2303,6 +2303,41 @@ On-main files NOT touched: worker 37's `js/creation-flow.js` + `js/art.js`
 - Full log: `docs/decisions/2026-10-22-kinpo-repoint-w50.md` (branch
   `w50/kinpo-repoint`).
 
+## 2026-10-22 ~18:30 CDT — worker 67: Negativo archive batch (A1/A2) + CornerStone A1 + per-attire eye glow
+
+- **Archive (Dorowani #603 pattern):** three Tripo originals archived byte-identical
+  (sha256-verified) with manifests + immutable annotated tags ("Restore point:
+  these bytes never change"):
+  - `roster/negativo/attires/attire1/source/negativo-a1-futuristic-superhero.glb`
+    (23,252,660 B) + `manifest.json` — tag `negativo-a1-original`
+  - `roster/negativo/attires/attire2/source/negativo-a2-sci-fi-armored-suit.glb`
+    (27,085,484 B) + `manifest.json` — tag `negativo-a2-original`
+  - `roster/ryuji-rock/attires/attire1/source/ryuji-rock-a1-tattooed-man.glb`
+    (18,872,720 B) + `manifest.json` — tag `ryuji-rock-a1-original` (WH name
+    CornerStone; internal id stays `ryuji-rock`). Lands the long-pending
+    ryuji-rock attire1 slot.
+  - All three are unrigged statics (1 mesh, 0 skins) — archive only, NOT wired
+    into MODEL_URLS (invisible-fighter guard).
+- **Eye glow (owner spec 2026-10-22):** per-attire emissive eyes, data-driven in
+  the `'negativo'` ladder in `game/js/attires.js` — Attire 1 RED (`0xff2222`),
+  Attire 2 (before the trials) WHITE (`0xffffff`). Eye meshes identified from the
+  model: `n3g4tiv0.glb`'s dedicated eye material `ModelEyes_Material028`.
+  Renderer hook: `assets.js createInstance` 5th param `eyeGlow`, applied after
+  tint so glow wins; fight path via `resolveFighterAttire` → `this.char.eyeGlow`,
+  preview path via `attireEyeGlow(c, modelId)`. Attire 2 slot is `pending: true`
+  (rig not landed) — `selectableAttires()` hides it from the picker.
+- **Standing directive logged:** owner 2026-10-22 "For ALL future Tripo pulls —
+  AUTO-ARCHIVE to the repo. Don't ask, just wire them up every time." Added
+  "Archive (automatic)" section to `tools/tripo-intake/README.md` for worker 61's
+  intake inventory.
+- Files: `game/js/attires.js`, `game/js/assets.js`, `game/js/fighter.js`,
+  `game/js/select-screen.js`, `game/js/roster-full.js`, `roster/negativo/README.md`
+  (new), `tools/tripo-intake/README.md`, `docs/decisions/2026-10-22-negativo-eye-glow-archive.md`
+  (new), `docs/research/tripo-intake-2026-10-22-negativo-cornerstone.md` (new).
+- Verification: `node --check` on all five edited JS files; eye-glow match logic
+  verified against the real `n3g4tiv0.glb` material table (see decision doc);
+  model-key-guard ownership table untouched (no MODEL_URLS changes).
+- MERGE FREEZE: PR branch pushed, merge-ready, NOT merged.
 ## 2026-10-23 ~07:30 CDT — SmutBase intake wave 6: RYUSAN + TOBI full pipeline
 
 - **RYUSAN** (WH name for SmutBase Mina Ashido intake, `roster/mina-ashido/`): full pipeline —
@@ -2970,3 +3005,35 @@ renders complete + uploaded.
 
 Files: docs/decisions/2026-10-22-vf5-w57-redispatch.md (new),
 tools/vf5/merge_wol_head.py (new). Additions only.
+## 2026-10-23 — Soft-body nextgen lane (SurRoL MPM / Isaac Healthcare Newton / Neural Deformation Gradients)
+
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate"
+
+**What was evaluated (all three, no cherry-picking):**
+- **SurRoL** (arXiv:2402.01181v1, Yang et al.): MPM + Neo-Hookean soft-body surgical sim in Taichi (GPU parallel). Open source (med-air/SurRoL). Verdict: Taichi cannot run in the browser (Python-embedded DSL, CUDA/Metal/Vulkan targets, no WASM target) — the portable part is the algorithm core (Lagrangian particles carry F, Eulerian grid solves stress), re-implemented in dependency-free JS.
+- **NVIDIA Isaac for Healthcare** (isaac-for-healthcare.github.io, Newton 1.6.1 + Warp 1.17.0, GA April 2026): Apache-2.0 numerical sim. Verdict: Newton/Warp need CUDA + Python + Docker — cannot run in the browser. The architecture ports: staged solver systems, rigid↔soft coupling, per-layer materials.
+- **Neural Deformation Gradients** (Nolte et al., Eurographics 2026): **CC BY-NC — technique reference only, no code copied.** Per-element deformation gradients (inversion-resistant), stable Neo-Hookean (E_muscle=45kPa / E_fat=15kPa / ν=0.47, λ≈16µ), embedded deformation, Poisson reconstruction.
+
+**Changes:**
+- `game/js/mpm-tissue.js` (NEW, ~950 lines, one dependency-free import): `MpmTissue` CPU MPM-lite backend — quadratic B-spline P2G/G2P, APIC transfer, stable Neo-Hookean stress P(F)=µ(F−F⁻ᵀ)+λ·ln(J)·F⁻ᵀ, explicit substepped solve (h≤1/480 CFL), Newton-style MUSCLE→FAT→SKIN stages, NDG-style inversion guard (rescale F when det<0.35), pinned bone-wrap core (Dirichlet). Same belly region + skinning + integration contract as the Jolt/FEMFX lanes; ready on frame one (no WASM wait). `ENGINE='mpm-lite'`, `VERSION='1.0.0'`.
+- `game/js/tissue-quality.js` (NEW): one shared `wh_softbody_v1` quality store for all three backends — fixes mid-session divergence where each backend had its own quality variable (X-ray gate could disagree with the driving backend).
+- `game/js/softbody.js` (v1.0.0→v1.1.0, surgical): substepped world stepping (2×/frame — SurRoL/Newton technique); NDG-style per-lattice-cell inversion guard (crushed cell relaxes toward rest); quality delegates to the shared store; `ENGINE='jolt-xpbd'` stamp.
+- `game/js/femfx-adapter.js` (surgical): quality delegates to the shared store (was `wh_femfx_v1`).
+- `game/js/fighter.js` (surgical): backend picker wired for real — `window.WH_PHYSICS_BACKEND` ('jolt' default | 'mpm' | 'femfx') or per-character `char.softbodyBackend`. 'mpm' is synchronous; 'femfx' lazy-imports with its Jolt fallback.
+- `game/tests/mpm-tissue.test.mjs` (NEW): 13 tests, all green.
+- `docs/research/SOFTBODY-NEXTGEN-2026-10-23.md` (NEW): full evaluation of all three sources, GPU-vs-browser matrix, what was wired, future work.
+
+**Verification:** `node --test game/tests/mpm-tissue.test.mjs` 13/13 green; `node --test game/tests/*.test.mjs` 144/149 — the 5 failures (fluid-decals, rage/urge input routing, stagebreak flakes) reproduce on clean origin/main, pre-existing and unrelated. `node --check` clean on all touched/new files. Default backend unchanged ('jolt') — existing fights unaffected.
+
+**Deviations:** none from the directive — all three items are wired where they can run; GPU/Python-only parts (Taichi SurRoL, Newton/Warp, Cosmos-H Dreams, NDG trained network) are evaluated and documented as [AWAITS GPU LANE]/[FUTURE], not silently dropped. NDG is CC BY-NC: technique reference only, zero code copied.
+
+**Process note:** mid-task the shared checkout `~/workspace/wh-repo` was concurrently switched to another agent's branch (`feature/cloth-xpbd-20261023`) with their uncommitted work; my uncommitted changes were extracted as a verified-pure patch to /tmp/softbody-save and all further work continued in the clean full worktree `~/workspace/wh-softbody` (67,875 files == HEAD, verified). Their work was not touched.
+
+## 2026-10-25 — Claude session: checkpoints so a container restart can't wipe work again
+- A container restart reset the working tree to the last pushed commit and wiped the scratchpad: six lanes of
+  uncommitted agent work (strings, hit contact, canon movesets, select/stage, reaction wiring, gap audit) were lost;
+  the agents re-apply from their transcripts. Lesson: unverified work must still leave the machine.
+- tools/agent/checkpoint.sh (hooked like autosave.sh) pushes uncommitted repo work + the scratchpad + a re-download
+  manifest to <branch>-checkpoints via plumbing; tools/agent/restore.sh (SessionStart) brings it back without
+  clobbering. Tested: checkpoint pushed (402 scratch files + wip.patch); restore into an empty folder put all 402
+  back and refused to apply the patch over a dirty tree.
