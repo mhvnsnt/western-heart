@@ -21,7 +21,9 @@ import * as THREE from 'three';
 import { assets } from './assets.js';
 import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK, T3_BANKS,
   clipStrikeProfile, clipHitWindow, bankAttackPool, attackLevelOfWord, attackClipTime, clipIsThrow, BUTTON_LIMB,
-  loadT3ReactionClip, loadT3ReactionPack, getT3ReactionPackScale, T3_DIR_TO_BANK } from './t3anims.js';
+  loadT3ReactionClip, getT3ReactionPackScale, loadReactionPack, getReactionPack, getReactionClip } from './t3anims.js';
+import { selectThrow, resolveThrowClips, throwBreaks, throwDamageTimeSec, throwPairDurationSec,
+  escapePairFor, anchorAt, sharedFramePos, throwQuadrant, attemptRowForInput, hexSlot, bankDirOf } from './t3-throw.js';
 import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove } from './movesets.js';
 import { TransformCinematic } from './transform-cinematic.js';
 import { V, vskillFor, vtriggerEnhance, vreversalMove } from './v-system.js';
@@ -697,9 +699,10 @@ export class Fighter {
     // Reaction pack prefetch (hit-reaction lane): the JSON arrives
     // in the background so the first hit's slot is usually decoded
     // already; decoding itself stays on demand, one slot at a time.
-    try { loadT3ReactionPack(bank); } catch (e) {}
+    try { loadReactionPack(THREE, bank); } catch (e) {}
     // Move rows retarget lazily on first use (same captured rest pose).
-    this._t3 = { bank, clips: t3clips, model, modelKey };
+    // dir is the reactions.json banks key (the T3_BANKS folder name).
+    this._t3 = { bank, clips: t3clips, model, modelKey, dir: bankDirOf(T3_BANKS[bank]) };
     console.log(`[WH] Fighter ${this.char.id}: ${Object.keys(this.t3actions).length} real T3 actions from bank '${bank}' (retargeted onto ${modelKey})`);
   }
 
@@ -1181,7 +1184,25 @@ export class Fighter {
        1+2/3+4/chains -> '1+2' (both punches; '3+4' accepted on mobile)
      Read the attacker's lead arm: left arm = break 1, right arm = break 2,
      both arms = break 1+2. Wrong input or timeout = full throw damage. */
+  /* TEKKEN GRAPPLE (2026-10-24, t3-throw.js + docs/anim/T3-REACTIONS.md):
+     On connect, the file's throw pair replaces the legacy lock.
+     The attempt clip already played (attack state); now, with no
+     further button press, the thrower and victim play the paired
+     slot clips in sync on the shared root frame, the break window
+     is the first frames of those same clips, and damage lands at
+     the file's damage_frames. When the file has no pair for this
+     throw (or its clips are not loaded), this falls through to
+     the legacy 0.3 s lock below — UNMAPPED, never an invented
+     pairing. game.js's lock-resolution loop skips paired
+     fighters (lockMove is null), so completeThrow() never fires
+     for a pair; _tickState advances the pair instead. */
   startThrowLock(move, attacker) {
+    const pair = attacker && attacker._throwPairFor(move, this);
+    if (pair && pair.pair && attacker._bindThrowPair(pair.pair, this)) {
+      attacker._startThrowPair(pair.pair, this);
+      return;
+    }
+    if (pair && pair.reason) console.log(`[WH-THROW] ${attacker.char.id} vs ${this.char.id}: no file pair (${pair.reason}) — legacy lock`);
     this.state = 'thrown'; this.stateT = 0;
     this.lockT = 0.3; this.lockMove = move; this.lockPartner = attacker;
     this.vx = 0; this.vz = 0;
@@ -1195,8 +1216,155 @@ export class Fighter {
     this.vx = this.facing * 1.2; // step in with the grab
     this._breakCueT = 0;
   }
-  get throwBreakInput() { return this.lockMove && this.lockMove.throw_break; }
+  /* Resolve the file's throw pair for a grab that just connected.
+     Attempt row priority: (1) the attempt clip plan's own row
+     ('row:<n>' — the file row the reach actually played), else
+     (2) the file's throw_inputs row for an exact LP1+LK3 /
+     RP2+RK4 chord. A generic 'grab' action has no row of its own
+     and is NOT mapped through throw_inputs — its chord is
+     ambiguous, and guessing it would wire the wrong attempt. */
+  _throwPairFor(move, victim) {
+    const R = globalThis.WH_T3_REACTIONS;
+    if (!R) return { pair: null, reason: 'throw tables not loaded' };
+    const aDir = this._t3 && this._t3.dir, vDir = victim._t3 && victim._t3.dir;
+    if (!aDir) return { pair: null, reason: `no T3 bank for ${this.char.id} (UNMAPPED)` };
+    if (!vDir) return { pair: null, reason: `no T3 bank for ${victim.char.id} (UNMAPPED)` };
+    let attemptRow = null;
+    const planName = this._atkPlan && this._atkPlan.name;
+    if (planName && planName.startsWith('row:')) attemptRow = parseInt(planName.slice(4), 10);
+    if (attemptRow == null && (this.attackName === '1+3' || this.attackName === '2+4')) {
+      attemptRow = attemptRowForInput(R, aDir, this.attackName, this.stance === 'FC', false);
+    }
+    if (attemptRow == null || Number.isNaN(attemptRow)) {
+      return { pair: null, reason: `no T3 attempt row for '${this.attackName}' (UNMAPPED)` };
+    }
+    const dx = victim.root.position.x - this.root.position.x;
+    const dz = victim.root.position.z - this.root.position.z;
+    const posture = victim.state === 'crouch' ? 'crouching' : victim.state === 'knockdown' ? 'lying' : 'standing';
+    const quadrant = throwQuadrant(this.root.position, victim.root.position, victim.facing);
+    const rp = getReactionPack(this._t3.bank);
+    const sel = selectThrow(R, aDir, attemptRow, { posture, quadrant,
+      distanceM: Math.hypot(dx, dz), anchorScale: rp ? rp.pack.anchor_mm_to_rig_m : 0 });
+    if (!sel.throw) return { pair: null, reason: sel.reason };
+    const clips = resolveThrowClips(R, sel.throw, aDir, vDir);
+    if (!clips.throwerBank || !clips.victimBank) return { pair: null, reason: clips.note || 'unresolved clip bank (UNMAPPED)' };
+    return { pair: { throw: sel.throw, branch: sel.branch, code: sel.code, clips,
+      breaks: throwBreaks(sel.throw), damageTimeSec: throwDamageTimeSec(sel.throw),
+      durationSec: throwPairDurationSec(sel.throw), whMove: move, isEscape: false, hitDone: false }, reason: null };
+  }
+  /* Bank key (t3anims.js T3_BANKS key) for a reactions.json dir. */
+  _bankIdForDir(dir) {
+    for (const [k, v] of Object.entries(T3_BANKS)) if (bankDirOf(v) === dir) return k;
+    return null;
+  }
+  /* Retarget one reaction-pack slot clip onto this fighter's rig
+     as action `name`. Returns the action name or null. */
+  _reactionAction(bankId, slot, name) {
+    if (!bankId || !this._t3 || this.t3actions[name]) return this.t3actions[name] ? name : null;
+    const canonical = getReactionClip(bankId, slot, THREE);
+    if (!canonical) return null;
+    const rc = retargetT3Clips({ [name]: canonical }, bankId, this._t3.model, THREE, this._t3.modelKey, [name]);
+    if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
+    return this.t3actions[name] ? name : null;
+  }
+  /* Bind both clips of a pair (thrower on `thrower`, victim on
+     `victim`; this method is called on the thrower). Also records
+     the pack rows the shared-frame drive reads anchors from, and
+     the thrower's anchor scale (used for both clips, per doc).
+     Returns false when either clip is unavailable — the caller
+     then keeps the legacy lock instead of a half pair. */
+  _bindThrowPair(pair, victim) {
+    const thrower = this;
+    const tBank = thrower._bankIdForDir(pair.clips.throwerBank);
+    const vBank = victim._bankIdForDir(pair.clips.victimBank);
+    const tRp = tBank && getReactionPack(tBank);
+    const vRp = vBank && getReactionPack(vBank);
+    if (!tRp || !vRp) return false;
+    pair.throwerPackRow = tRp.pack.rows[hexSlot(pair.clips.throwerSlot)];
+    pair.victimPackRow = vRp.pack.rows[hexSlot(pair.clips.victimSlot)];
+    if (!pair.throwerPackRow || !pair.victimPackRow) return false;
+    pair.anchorScale = tRp.pack.anchor_mm_to_rig_m;
+    pair.throwerAction = thrower._reactionAction(tBank, pair.clips.throwerSlot, 'throw:' + hexSlot(pair.clips.throwerSlot));
+    pair.victimAction = victim._reactionAction(vBank, pair.clips.victimSlot, 'victim:' + hexSlot(pair.clips.victimSlot));
+    return !!(pair.throwerAction && pair.victimAction);
+  }
+  /* Start a bound pair: shared root frame anchored at the
+     victim's root, H = victim heading turned 180 deg (doc:
+     H_yaw = -victim.facing * PI/2). Both fighters' pair clocks
+     (_throwPairT) run from this moment; the clips themselves
+     are NOT restarted on the throwing -> throwExec transition,
+     so the pair stays in sync. */
+  _startThrowPair(pair, victim) {
+    const thrower = this;
+    pair.thrower = thrower; pair.victim = victim;
+    pair.anchor = { x: victim.root.position.x, z: victim.root.position.z };
+    pair.hYaw = -victim.facing * Math.PI / 2;
+    for (const [f, row] of [[thrower, pair.throwerPackRow], [victim, pair.victimPackRow]]) {
+      f._throwPair = pair; f._throwPairT = 0;
+      f.lockT = 0; f.lockMove = null;
+      f.vx = 0; f.vz = 0; f.vy = 0;
+      f._faceYaw = pair.hYaw + (row.yaw0 || 0);
+    }
+    thrower.lockVictim = victim;
+    victim.lockPartner = thrower;
+    thrower.state = 'throwing'; thrower.stateT = 0;
+    victim.state = 'thrown'; victim.stateT = 0;
+  }
+  /* Damage for a paired throw, at the file's damage time.
+     Main pair: the WH move's own damage (MOD decision). Escape
+     pair: not a WH move — the file damage scaled T3 170 -> WH 100. */
+  _throwPairDamage() {
+    const pair = this._throwPair, attacker = pair && pair.thrower;
+    if (!pair || !attacker || pair.hitDone) return null;
+    pair.hitDone = true;
+    const base = pair.isEscape ? pair.throw.damage * 100 / 170 : (pair.whMove && pair.whMove.damage) || 0;
+    const dmg = base * attacker.stats.power / this.stats.defense;
+    this.hp = Math.max(0, this.hp - dmg);
+    if (this.hp <= 0) {
+      this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing);
+      return 'ko';
+    }
+    return 'throw';
+  }
+  get throwBreakInput() {
+    if (this._throwPair && this._throwPair.breaks && this._throwPair.breaks[0]) return this._throwPair.breaks[0].input;
+    return this.lockMove && this.lockMove.throw_break;
+  }
   tryThrowBreak(btn) {
+    if (this.state === 'thrown' && this._throwPair) {
+      // File pair break: input must match AND the pair clock must
+      // be inside the file's break window (first frames of the
+      // same clips). A correct input outside the window does not
+      // break — the throw lands. On break, the file's escape pair
+      // starts with roles swapped; if it cannot bind, fall back
+      // to the legacy escape (both idle, attacker punishable).
+      const pair = this._throwPair, brk = pair.breaks && pair.breaks[0];
+      if (!brk) return false;
+      const got = (btn === '3+4') ? '1+2' : btn;
+      if (got !== brk.input) return false;
+      const t = this._throwPairT || 0;
+      if (t < brk.windowSec[0] || t > brk.windowSec[1]) return false;
+      const attacker = pair.thrower;
+      const R = globalThis.WH_T3_REACTIONS;
+      const esc = R && escapePairFor(R, pair.throw, pair.breaks, attacker._t3.dir, this._t3.dir);
+      this._throwPair = null; if (attacker) attacker._throwPair = null;
+      if (esc) {
+        const newPair = { throw: esc.throw, branch: null, code: null, clips: esc.clips,
+          breaks: throwBreaks(esc.throw), damageTimeSec: throwDamageTimeSec(esc.throw),
+          durationSec: throwPairDurationSec(esc.throw), whMove: null, isEscape: true, hitDone: false };
+        if (this._bindThrowPair(newPair, attacker)) { this._startThrowPair(newPair, attacker); this._throwEscaped = true; return true; }
+      }
+      this._enter('idle');
+      this.vx = -this.facing * 2.0;
+      if (attacker) {
+        attacker.lockT = 0; attacker.lockVictim = null; attacker.lockMove = null;
+        attacker._enter('idle');
+        attacker.stun = Math.max(attacker.stun, 0.3);
+        attacker.vx = 0;
+      }
+      this._throwEscaped = true;
+      return true;
+    }
     if (this.state !== 'thrown' || !this.lockMove) return false;
     const want = this.lockMove.throw_break || '1';
     const got = (btn === '3+4') ? '1+2' : btn; // mobile: both-kicks = both-punches
@@ -1217,6 +1385,10 @@ export class Fighter {
     return true;
   }
   completeThrow() {
+    // Paired throws never route here: their break window is the
+    // first frames of the pair clips and _tickState advances the
+    // pair to throwExec/thrownExec when it ends (see below).
+    if (this._throwPair) return null;
     // Break window expired — the throw lands for real. Both fighters enter
     // the throw execution: attacker lifts and slams, victim is thrown.
     // (Owner playtest bug 2026-10-23: was routing through receiveHit, which
@@ -1557,7 +1729,7 @@ export class Fighter {
       let close = false;
       const closeIdx = row[1];
       if (closeIdx && R.close_reactions && R.close_reactions[closeIdx]) {
-        const vBank = vDir ? T3_DIR_TO_BANK[vDir] : null;
+        const vBank = vDir ? this._bankIdForDir(vDir) : null;
         const scale = vBank ? getT3ReactionPackScale(vBank) : null;
         if (scale) close = Math.hypot(dx, dz) < R.close_reactions[closeIdx][1] * scale;
       }
@@ -1596,7 +1768,7 @@ export class Fighter {
     const R = globalThis.WH_T3_REACTIONS;
     if (!R) return;
     const ownerDir = reactionSlotBank(R, rs.defenderDir, rs.attackerDir, rs.slot);
-    const bankId = ownerDir ? T3_DIR_TO_BANK[ownerDir] : null;
+    const bankId = ownerDir ? this._bankIdForDir(ownerDir) : null;
     if (!bankId) return; // UNMAPPED: owning bank has no pack path (forestlaw_on_law)
     this._reactLoading = name;
     loadT3ReactionClip(THREE, bankId, rs.slot, { noRise: rs.code === 0x24 })
@@ -1853,6 +2025,24 @@ export class Fighter {
     }
   }
 
+  /* Shared-root-frame drive for a paired throw (doc formula):
+     each fighter's root follows its own clip's ax/az anchor
+     around the pair anchor P, at the thrower's anchor scale,
+     with lean yaw H + the clip's yaw0. Frame = pair clock at
+     30 fps (the packs' fps), clamped to the clip length. */
+  _driveThrowPair() {
+    const pair = this._throwPair;
+    if (!pair) return;
+    const isThrower = pair.thrower === this;
+    const row = isThrower ? pair.throwerPackRow : pair.victimPackRow;
+    if (!row) return;
+    const f = Math.floor((this._throwPairT || 0) * 30);
+    const a = anchorAt(row, f);
+    const pos = sharedFramePos(pair.anchor, pair.hYaw, a, pair.anchorScale || 0);
+    this.root.position.x = pos.x;
+    this.root.position.z = pos.z;
+    this._faceYaw = pair.hYaw + (row.yaw0 || 0);
+  }
   _tickState() {
     switch (this.state) {
       // V-System: vskill/vreversal run the same attack timing as 'attack'.
@@ -1905,11 +2095,38 @@ export class Fighter {
         if (this.stateT > 0.55) { this.vz = 0; this._enter('idle'); }
         break;
       case 'thrown':
-      case 'throwing':
+      case 'throwing': {
+        if (this._throwPair) {
+          // Paired throw: shared-root-frame drive + pair clock.
+          // Both clips started on the same frame; the break window
+          // ends -> both fighters move to the exec states WITHOUT
+          // restarting the clips (mixer time is the pair clock's
+          // twin; _throwPairT is the logic clock and is NOT reset
+          // by _enter, so damage/end timing survives the switch).
+          this._throwPairT = (this._throwPairT || 0) + dt;
+          this._driveThrowPair();
+          const brk = this._throwPair.breaks && this._throwPair.breaks[0];
+          const winEnd = brk ? brk.windowSec[1] : 0;
+          if (this._throwPairT > winEnd) {
+            this._enter(this.state === 'throwing' ? 'throwExec' : 'thrownExec');
+          }
+          break;
+        }
         // Throw-lock: game.js resolves the lock when the break window
         // (lockT) expires, so hit feedback stays in one place.
         break;
+      }
       case 'throwExec': {
+        if (this._throwPair) {
+          this._throwPairT = (this._throwPairT || 0) + dt;
+          this._driveThrowPair();
+          if (this._throwPairT >= this._throwPair.durationSec) {
+            this._throwPair = null; this._throwPairT = 0;
+            this._throwVictim = null; this._throwMove = null;
+            this._enter('idle');
+          }
+          break;
+        }
         // Attacker performing the throw: lift, slam, recover (0.9s total).
         // Damage lands at the slam (t=0.55s) via the victim's _throwSlamDamage.
         if (this.stateT >= 0.9) {
@@ -1919,6 +2136,21 @@ export class Fighter {
         break;
       }
       case 'thrownExec': {
+        if (this._throwPair) {
+          this._throwPairT = (this._throwPairT || 0) + dt;
+          this._driveThrowPair();
+          const pair = this._throwPair;
+          if (pair.damageTimeSec != null && !pair.hitDone && this._throwPairT >= pair.damageTimeSec) this._throwPairDamage();
+          if (this._throwPairT >= pair.durationSec) {
+            if (!pair.hitDone) this._throwPairDamage();
+            const dead = this.dead;
+            this._throwPair = null; this._throwPairT = 0;
+            this._throwAttacker = null; this._throwMove = null;
+            if (!dead) { this.stun = 0.55; this._enter('knockdown'); }
+            // dead: _throwPairDamage already _knockout'd into 'ko'; do not override it.
+          }
+          break;
+        }
         // Victim being thrown: lifted by the attacker, then slammed down
         // in front of them. Stays near the attacker — no launch across the room.
         const t = this.stateT, attacker = this._throwAttacker;
@@ -2011,7 +2243,7 @@ export class Fighter {
     // over and land on the far side (facing re-resolves on landing). Ground
     // push is split between both bodies; when one is against the stage wall
     // the remaining push goes to the other body, so nobody leaves the stage.
-    if (opponent) {
+    if (opponent && !this._throwPair) {
       const dx = this.root.position.x - opponent.root.position.x;
       const dz = this.root.position.z - opponent.root.position.z;
       const air = Math.max(this.root.position.y, opponent.root.position.y) - GROUND_Y;
@@ -2146,7 +2378,7 @@ export class Fighter {
       const fast = Math.abs(this.vx) > this.stats.speed * 0.9;
       tIdle = 0; tWalk = fast ? 0 : 1; tRun = fast ? 1 : 0;
     } else if (this.state === 'dodge') { tIdle = 0; tRun = 1; }
-    if (t3Active) { tIdle = 0; tWalk = 0; tRun = 0; }
+    if (t3Active || this._throwPair) { tIdle = 0; tWalk = 0; tRun = 0; }
     const rate = 1 - Math.exp(-dt / 0.12);
     this._locoIdle += (tIdle - this._locoIdle) * rate;
     this._locoWalk += (tWalk - this._locoWalk) * rate;
@@ -2279,6 +2511,21 @@ export class Fighter {
         break;
       }
       case 'throwing': {
+        // Paired throw: the thrower's slot clip (NOT the grab action).
+        // _playT3 does not restart an already-running action, so this
+        // same action continues into throwExec below, in sync with
+        // the victim's clip. Break cue comes from the file's break
+        // input, not from the WH move's throw_break.
+        if (this._throwPair) {
+          this._leanT.x = 0;
+          this._playT3(this._throwPair.throwerAction, { loop: false });
+          const brk = this._throwPair.breaks && this._throwPair.breaks[0] ? this._throwPair.breaks[0].input : null;
+          const pulse = 0.55 + 0.45 * Math.sin(performance.now() * 0.03);
+          if (brk === '1') this._showTrail(this.bones.LeftHand, pulse);
+          else if (brk === '2') this._showTrail(this.bones.RightHand, pulse);
+          else { this._showTrail(this.bones.RightHand, pulse); this._showTrail(this.bones.LeftHand, pulse * 0.9); }
+          break;
+        }
         // Hold the double-arm snatch; flash the LEAD arm as the break cue
         // (Tekken: left arm forward = break 1, right arm = break 2, both = 1+2).
         const brk = this.lockMove && this.lockMove.throw_break;
@@ -2293,11 +2540,23 @@ export class Fighter {
         break;
       }
       case 'thrown':
+        // Paired throw: the victim's slot clip (the receiver clip),
+        // same action continuing into thrownExec below.
+        if (this._throwPair) {
+          this._leanT.x = 0;
+          if (!this._playT3(this._throwPair.victimAction, { loop: false })) this._stopT3();
+          break;
+        }
         // Victim caught: rocked back, arms up (T3 hit reaction when bound).
         this._leanT.x = 0.3;
         if (!this._playT3Once('hit', 'thrown')) this._stopT3();
         break;
       case 'throwExec': {
+        if (this._throwPair) {
+          this._leanT.x = 0;
+          if (!this._playT3(this._throwPair.throwerAction, { loop: false })) this._stopT3();
+          break;
+        }
         // Attacker performing the throw: heave back to lift (0-0.45s),
         // drive forward for the slam (0.45-0.6s), settle (0.6-0.9s).
         const t = this.stateT;
@@ -2310,6 +2569,11 @@ export class Fighter {
         break;
       }
       case 'thrownExec': {
+        if (this._throwPair) {
+          this._leanT.x = 0;
+          if (!this._playT3(this._throwPair.victimAction, { loop: false })) this._stopT3();
+          break;
+        }
         // Victim being thrown: lifted, then slammed. T3 launch clip sells
         // the airborne part; the position is driven by _tickState.
         this._leanT.x = 0.25;
