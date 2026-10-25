@@ -1016,20 +1016,20 @@
           {
             "step": "1+2",
             "prefix": "b+2,1+2",
-            "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "row": 97,
+            "status": "verified",
+            "candidate_row": 97,
+            "candidate_source": "job3-match_search",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "Job 3 match_search (GPU jobs 1-6 ingest 2026-10-25): king row 97, EXACT level (filed h, played h), standing->standing, FULL provenance. Provenance caveat: row 97's visible provenance string is moveset_pantera:d+1+2(2+LP+RP) - a different chord input (d+1+2, not b+2,1+2), matching by button class (LP1+RP2 chord) per the match_search provenance rule. Step identity rests on the target key (b+2,1+2) matching the step prefix exactly, not on the provenance input. Also-ran king row 143 SOFT-filed loses on exact-level priority. T3 FALLBACK row (docs/anim/PROCEDURAL_AUDIT.md); re-match to T7 King row when extraction lands."
             ]
           }
         ],
-        "string_status": "unmapped-all",
+        "string_status": "partial",
         "triage": "NO-ROW",
         "jumping_context": false,
-        "last_step_row": null,
-        "last_step_status": "unmapped"
+        "last_step_row": 97,
+        "last_step_status": "verified"
       },
       "d+1+2,2": {
         "steps": [
@@ -1584,13 +1584,16 @@
           {
             "step": "u/b+1",
             "prefix": "u/b+1",
-            "row": null,
-            "status": "unmapped",
-            "candidate_row": 37,
-            "candidate_source": "prefix-move",
+            "row": 49,
+            "status": "verified",
+            "candidate_row": 49,
+            "candidate_source": "job3-match_search",
             "reasons": [
-              "button 3 != step bits 1"
-            ]
+              "SOFT fill, never verified-exact: Job 3 match_search 4-way SOFT tie (king rows 36/47/48/49, all filed h / played m, jump->jump, FULL provenance). Row 49 recommended: strongest provenance (u/b+1,1~t3.king.3 - a move with u/b+1 as first step); rows 47/48 cite different directionals (u+1, u/f+1), row 36 cites u/f+1 and f. T3 FALLBACK row; re-match to T7 King row when extraction lands. Reverts to UNMAPPED if play-verify fails.",
+              "Prior rejected candidate: row 37 (prefix-move), button 3 != step bits 1."
+            ],
+            "soft": true,
+            "soft_note": "SOFT: filed h / played m; 4-way tie broken on provenance only; not verified-exact. Reverts to UNMAPPED if play-verify fails."
           },
           {
             "step": "1",
@@ -1605,7 +1608,7 @@
             ]
           }
         ],
-        "string_status": "partial",
+        "string_status": "verified-all",
         "triage": "REVIEW",
         "jumping_context": true,
         "last_step_row": 40,
@@ -1616,13 +1619,16 @@
           {
             "step": "u/b+1",
             "prefix": "u/b+1",
-            "row": null,
-            "status": "unmapped",
-            "candidate_row": 37,
-            "candidate_source": "prefix-move",
+            "row": 49,
+            "status": "verified",
+            "candidate_row": 49,
+            "candidate_source": "job3-match_search",
             "reasons": [
-              "button 3 != step bits 1"
-            ]
+              "SOFT fill, never verified-exact: Job 3 match_search 4-way SOFT tie (king rows 36/47/48/49, all filed h / played m, jump->jump, FULL provenance). Row 49 recommended: strongest provenance (u/b+1,1~t3.king.3 - a move with u/b+1 as first step); rows 47/48 cite different directionals (u+1, u/f+1), row 36 cites u/f+1 and f. T3 FALLBACK row; re-match to T7 King row when extraction lands. Reverts to UNMAPPED if play-verify fails.",
+              "Prior rejected candidate: row 37 (prefix-move), button 3 != step bits 1."
+            ],
+            "soft": true,
+            "soft_note": "SOFT: filed h / played m; 4-way tie broken on provenance only; not verified-exact. Reverts to UNMAPPED if play-verify fails."
           },
           {
             "step": "2",
@@ -1634,7 +1640,7 @@
             "reasons": []
           }
         ],
-        "string_status": "partial",
+        "string_status": "verified-all",
         "triage": "REVIEW",
         "jumping_context": true,
         "last_step_row": 52,
@@ -2457,20 +2463,20 @@
           {
             "step": "1+2",
             "prefix": "b+2,1+2",
-            "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "row": 97,
+            "status": "verified",
+            "candidate_row": 97,
+            "candidate_source": "job3-match_search",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "Job 3 match_search (GPU jobs 1-6 ingest 2026-10-25): king row 97, EXACT level (filed h, played h), standing->standing, FULL provenance. Provenance caveat: row 97's visible provenance string is moveset_pantera:d+1+2(2+LP+RP) - a different chord input (d+1+2, not b+2,1+2), matching by button class (LP1+RP2 chord) per the match_search provenance rule. Step identity rests on the target key (b+2,1+2) matching the step prefix exactly, not on the provenance input. Also-ran king row 143 SOFT-filed loses on exact-level priority. T3 FALLBACK row (docs/anim/PROCEDURAL_AUDIT.md); re-match to T7 King row when extraction lands."
             ]
           }
         ],
-        "string_status": "unmapped-all",
+        "string_status": "partial",
         "triage": "NO-ROW",
         "jumping_context": false,
-        "last_step_row": null,
-        "last_step_status": "unmapped",
+        "last_step_row": 97,
+        "last_step_status": "verified",
         "twin_of": "b+2,1+2",
         "twin_move_class": "string"
       },
@@ -2490,20 +2496,20 @@
           {
             "step": "1+2",
             "prefix": "b+2,1+2",
-            "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "row": 97,
+            "status": "verified",
+            "candidate_row": 97,
+            "candidate_source": "job3-match_search",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "Job 3 match_search (GPU jobs 1-6 ingest 2026-10-25): king row 97, EXACT level (filed h, played h), standing->standing, FULL provenance. Provenance caveat: row 97's visible provenance string is moveset_pantera:d+1+2(2+LP+RP) - a different chord input (d+1+2, not b+2,1+2), matching by button class (LP1+RP2 chord) per the match_search provenance rule. Step identity rests on the target key (b+2,1+2) matching the step prefix exactly, not on the provenance input. Also-ran king row 143 SOFT-filed loses on exact-level priority. T3 FALLBACK row (docs/anim/PROCEDURAL_AUDIT.md); re-match to T7 King row when extraction lands."
             ]
           }
         ],
-        "string_status": "unmapped-all",
+        "string_status": "partial",
         "triage": "NO-ROW",
         "jumping_context": false,
-        "last_step_row": null,
-        "last_step_status": "unmapped",
+        "last_step_row": 97,
+        "last_step_status": "verified",
         "twin_of": "b+2,1+2",
         "twin_move_class": "string"
       },

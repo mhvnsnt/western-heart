@@ -2,6 +2,13 @@
 
 Button law: LP1 = Left Punch = Tekken 1, RP2 = Right Punch = Tekken 2, LK3 = Left Kick = Tekken 3, RK4 = Right Kick = Tekken 4.
 
+> **Follow-up note (2026-10-25, Batch 1 follow-up PR):** the sections below are the #1096 Stage 1 record.
+> The follow-up section ('Batch 1 follow-up (Job 3 / Job 4, 2026-10-25)') records the Job 3 fills (Fill 1
+> VERIFIED row 97; Fill 2 SOFT row 49) and the Job 4 adjudications, and supersedes the tallies where stated:
+> 73 steps now 28 verified-exact / 2 soft-verified / 7 review / 36 unmapped; 60 plan keys now 14
+> verified-last-step / 4 review / 42 unmapped. #1096's dated statements (e.g. 'NOT LANDED') are preserved as
+> history with dated updates, not silently rewritten.
+
 ## What this is
 
 The engine change in this PR (`game/js/fighter.js` `_attackClipPlan` step-plan branch + `_stepChain`) plus the
@@ -33,7 +40,7 @@ blend ships only if play shows a snap.
 5. Shared-clip note: rows 97 = 110 and 220 = 221 are byte-identical (quats + root_t). FK cannot distinguish shared-clip
    context variants; shared verified rows still need play-verify.
 
-## Canonical step table (31 triage keys, 73 steps: 27 verified, 7 review, 39 unmapped)
+## Canonical step table (31 triage keys, 73 steps: 28 verified-exact, 2 soft-verified, 7 review, 36 unmapped — follow-up 2026-10-25; #1096 record was 27/7/39)
 
 | String | Steps (verified row, else status) | String status |
 |---|---|---|
@@ -48,7 +55,7 @@ blend ships only if play shows a snap.
 | `b+1+2,2` | b+1+2 = UNMAPPED (cand row 279 rejected: throw flag 1 (row 279)) \| 2 = row 98 | partial |
 | `b+1,2` | b+1 = UNMAPPED (no candidate) \| 2 = UNMAPPED (no candidate) | unmapped-all |
 | `b+2,1` | b+2 = UNMAPPED (no candidate) \| 1 = UNMAPPED (no candidate) | unmapped-all |
-| `b+2,1+2` | b+2 = UNMAPPED (no candidate) \| 1+2 = UNMAPPED (no candidate) | unmapped-all |
+| `b+2,1+2` | b+2 = UNMAPPED (no candidate) \| 1+2 = row 97 VERIFIED (Job 3 exact + full provenance; d+1+2 caveat; also-ran 143 SOFT loses) | partial |
 | `d+1+2,2` | d+1+2 = row 97 \| 2 = row 98 | verified-all |
 | `d+1+2,2,1` | d+1+2 = row 97 \| 2 = row 98 \| 1 = row 198 | verified-all |
 | `d+1+2,2,1,1` | d+1+2 = row 97 \| 2 = row 98 \| 1 = row 198 \| 1 = REVIEW cand row 257 (recorded-dest) | partial |
@@ -64,8 +71,8 @@ blend ships only if play shows a snap.
 | `f+2,d+1,2` | f+2 = UNMAPPED (no candidate) \| d+1 = UNMAPPED (no candidate) \| 2 = UNMAPPED (no candidate) | unmapped-all |
 | `u+1,1` | u+1 = UNMAPPED (no candidate) \| 1 = row 38 | partial |
 | `u+1,2` | u+1 = UNMAPPED (no candidate) \| 2 = row 50 | partial |
-| `u/b+1,1` | u/b+1 = UNMAPPED (cand row 37 rejected: button 3 != step bits 1) \| 1 = row 40 | partial |
-| `u/b+1,2` | u/b+1 = UNMAPPED (cand row 37 rejected: button 3 != step bits 1) \| 2 = row 52 | partial |
+| `u/b+1,1` | u/b+1 = row 49 VERIFIED-SOFT (Job 3 4-way SOFT tie, strongest provenance; never exact) \| 1 = row 40 | verified-all (soft first step) |
+| `u/b+1,2` | u/b+1 = row 49 VERIFIED-SOFT (Job 3 4-way SOFT tie, strongest provenance; never exact) \| 2 = row 52 | verified-all (soft first step) |
 | `u/f+1,1` | u/f+1 = row 36 \| 1 = row 39 | verified-all |
 | `u/f+1,2` | u/f+1 = row 36 \| 2 = row 51 | verified-all |
 
@@ -78,10 +85,12 @@ blend ships only if play shows a snap.
 - 3 spelling-variant keys (`df+1,2`, `df+2,1`, `ws2,2`): same steps/evidence as `d/f+1,2`, `d/f+2,1`, `WS.2,2`.
 - EXCLUDED: `b+1+2,1+2~t7.king` — its `move_class` is `throw`, so a punch-string plan must not govern its clip
   selection; it stays on the existing tiers.
-- Last-step status over the 60 plan keys: verified 11, review 4, unmapped 45. The 11 verified-last-step keys are:
-  `b+1+2,2` (row 98), `d+1+2,2` (98), `d+1+2,2,1` (198), `d/b+1+2,2` (200), `f+2,1~t3.king` (198), `u+1,1` (38),
-  `u+1,2` (50), `u/b+1,1` (40), `u/b+1,2` (52), `u/f+1,1` (39), `u/f+1,2` (51). For these 11, the verified row equals
+- Last-step status over the 60 plan keys: verified 14, review 4, unmapped 42. The 14 verified-last-step keys are:
+  `b+1+2,2` (row 98), `b+2,1+2` (97), `b+2,1+2~t7.king` (97), `b+2,1+2~t7.king.2` (97), `d+1+2,2` (98), `d+1+2,2,1` (198), `d/b+1+2,2` (200), `f+2,1~t3.king` (198), `u+1,1` (38),
+  `u+1,2` (50), `u/b+1,1` (40), `u/b+1,2` (52), `u/f+1,1` (39), `u/f+1,2` (51). For the original 11, the verified row equals
   the move's previous own `t3_row` — the visible clip does not change, but it is now plan-guaranteed (donor tier bypassed).
+  For the 3 new `b+2,1+2` keys, row 97 is a Job 3 fill (not a previous own row) — the visible last-step clip CHANGES
+  (donor jumping row 35 gone; standing chord row 97 plays).
 - Last-step review keys (4): `d+1+2,2,1,1` (cand 257), `d+1+2,2,1,1,2` (cand 258), `f+2,1,1` (cand 257), `f+2,1,1,2`
   (cand 258) — limb-peak evidence short (257: armR-dominant FK vs LP1 button; 258: armR peak 1 frame outside the
   approximate window). These rows are NOT played until adjudication + play-verify promote them.
@@ -91,6 +100,95 @@ blend ships only if play shows a snap.
 - `1,2` boundary (honest): step 1 row 110 verified; step 2 UNMAPPED pending candidates. Its move damage 20 is the
   multi-hit total [5, 15]; last-hit normalisation (15) is NOT applied in this PR because no step is wired for it yet —
   it applies when step 2 lands. `2,1` damage is untouched (Stage 1 damage ruling pending: body 9 vs 15 vs 16).
+
+## Batch 1 follow-up (Job 3 / Job 4, 2026-10-25)
+
+This section supersedes the #1096 tallies where stated. Ingest: GPU jobs 1–6 outputs (2026-10-24, Kaggle
+notebook `notebook2ff3176461`, account `marsfmmg`), ingested 2026-10-25 (ingest package
+`~/workspace/gpu-jobs-1-6-ingest/` — workspace path, not repo).
+
+### Gap closure before wiring
+- Gap 1 (Job 1 row-for-row diff, checklist Step 4): CLOSED. Against current main `462a8475`: all 5 cited banks'
+  files byte-identical to the pack snapshot (20/20 file hashes); rebuilt .npz arrays identical for all 14 arrays × 5
+  banks (70/70); all 31 cited rows (14 KNOWN + king 97/143/36/47/48/49/584/198/257/220 + 7 orphans
+  88/96/154/230/236/248/342) profile-identical (categorical fields exact; max float diff 2.4e-07, float32 rounding
+  only). No cited row differs → no fill suspended. Evidence: `~/workspace/batch1-followup/gap1_diff.py`,
+  `gap1_diff.json`. (Full 87-bank-file re-check at `462a8475`: see PR body; cited-bank result stands regardless.)
+- Gap 2 (re-baseline vs current main pantera.json): CLOSED. Both fill prefix moves are FIELD-IDENTICAL between the
+  pack snapshot and current main pantera.json (same sha `63811b920695` at `8607514d` and `462a8475` — pantera.json
+  unchanged between those commits): `b+2,1+2` (no t3_row; still plays donor row 35 + still fails the HARD stance gate
+  → Fill 1 wireable) and `u/b+1` (t3_row 37; still HARD limb → Fill 2 wireable as SOFT). Context strings `u/b+1,1`
+  (row 40) and `u/b+1,2` (row 52) also identical. Main's drift (PR #1048 top-level sections) did not touch these
+  entries. Verdicts are a function of (move row, bank profile); both unchanged → verdicts unchanged. No fill suspended.
+
+### Fill 1 (VERIFIED): `b+2,1+2` step 1+2 ← king row 97
+- Step: `b+2,1+2` step 2 (1+2, prefix `b+2,1+2`), prior UNMAPPED. Twins `b+2,1+2~t7.king` and `b+2,1+2~t7.king.2` inherit.
+- Evidence: Job 3 match_search, king row 97, EXACT level (filed h, played h), stance standing→standing, FULL
+  provenance. Also-ran king row 143 SOFT-filed (filed h, played m) loses on exact-level priority (its timing passes
+  the 1.55× bar for this target — it is an also-ran on level, not a timing reject).
+- Provenance caveat (verbatim): row 97's visible provenance string is `moveset_pantera:d+1+2(2+LP+RP)` — a different
+  chord input (d+1+2, not b+2,1+2), matching by button class (LP1+RP2 chord) per the match_search provenance rule.
+  Step identity rests on the target key (b+2,1+2) matching the step prefix exactly, not on the provenance input.
+- T3 FALLBACK row (PROCEDURAL_AUDIT.md); re-match to T7 King row when extraction lands.
+- Damage/startup: NO changes. Move damage 29 already equals last-hit MOD damage (16,29 → last 29). Startup 0.2 vs
+  row 97 active-first 10/60 = 0.167 differs by 2 frames, but first step b+2 is unwired, so string-level startup
+  semantics for a partially-wired string are unconfirmed — changing startup to the last-step value while the first
+  hit has no row would misstate first-hit timing. Revisit when step 1 lands.
+
+### Fill 2 (SOFT, flagged everywhere): `u/b+1,1` + `u/b+1,2` step u/b+1 ← king row 49
+- Steps: both strings' step 1 (u/b+1, prefix `u/b+1`), prior UNMAPPED (both share this prefix step). No twins.
+- Evidence: Job 3 match_search 4-way SOFT tie — king rows 36/47/48/49, all SOFT-filed (filed h, played m), stance
+  jump→jump (correct for this jumping step), all FULL provenance. Row 49 recommended: strongest provenance
+  (`u/b+1,1~t3.king.3` — a move with u/b+1 as first step); rows 47/48 cite different directionals (u+1, u/f+1), row 36
+  cites u/f+1 and f. Rows 47/48/49 have IDENTICAL motion profiles (the tie is on provenance, not motion); row 36
+  differs in dominant arm.
+- Flag: steps carry `"soft": true` + `soft_note` ("SOFT: filed h / played m; 4-way tie broken on provenance only;
+  not verified-exact. Reverts to UNMAPPED if play-verify fails."); this doc and the test assert the soft set exactly.
+  This is NEVER presented as verified-exact. If play-verify fails, the steps revert to UNMAPPED (row 49 does not stay
+  as a silent default).
+- Rejected prefix-move candidate row 37 (button 3 != step bits 1) is retained in the step's reasons history.
+- T3 FALLBACK row; re-match to T7 King row when extraction lands. No damage/startup changes (both strings' damages
+  unchanged; last steps 40/52 already verified).
+
+### No other Job 3 fills
+The other 43 unmapped/review steps have NO Job 3 candidate under the exact-prefix rule and stay UNMAPPED/REVIEW.
+Notably: `1,2` step 2 and `2,1` step 1 gain nothing from Job 3. Rows 35/220 appear in NO Pantera Job 3 pass-all list —
+zero triggers.
+
+### Job 4 adjudication (sequence-shape EVIDENCE, never auto-fills)
+Correct join only (pantera-only moves, documented BANK_DIR mapping, one row per step): 73 steps — 11 with ≥1 valid
+Job 4 candidate, 62 NONE. King row 35 absent (exclusion holds). The raw job4_join.py output is INVALID for Batch 1
+(cross-fighter joins); raw outputs preserved for audit only.
+- `1,1` step 2 ← row 584: REJECTED. Fails HARD gates (button 0 != LP1 bits 1; throw flag 1; no in-window armL peak).
+  Step stays UNMAPPED — a missing clip, not a gate failure on an already-played row (the step plays no bank row).
+  Job 2 move `1,1` verdict HARD limb is consistent (different gate, same rejection direction).
+- `f+2,1` step 2, `f+2,1,1` step 2, `f+2,1,1,2` step 2 ← row 198: CANDIDATE passing HARD gates (btn 1, throw 0,
+  duck-dip stance not airborne, armL peakF 13 ext 0.813, sequence-shaped armL 2 peaks). Row 198 is the move `f+2,1`'s
+  current CLEAN row via the notation tier, which #1096's candidate sources (recorded path row, else prefix-move
+  t3_row, else none) missed. NOT wired in this PR: a Job 4 join NEVER promotes a step to VERIFIED by itself; needs
+  play-verify promotion per the review-promotion rule. Documented as candidate-for-future-wiring.
+- Review steps ← row 257 (`d+1+2,2,1,1` step 4; `d+1+2,2,1,1,2` step 4; `f+2,1,1` step 3; `f+2,1,1,2` step 3): row 257
+  passes HARD gates but fails the SOFT limb-peak gate (armR-dominant FK vs LP1 button) → stay REVIEW, not promoted.
+  (Job 2 'HARD stance' for move `d+1+2,2,1,1` is about that MOVE's current row, not row 257 — do not conflate.)
+- Verified steps ← row 198 (`d+1+2,2,1` step 3; `d+1+2,2,1,1` step 3; `d+1+2,2,1,1,2` step 3): NO ACTION. Job 4 confirms
+  sequence shape (armL 2 peaks); steps already play row 198 verified.
+- `2,1` step 2: row 220 already excluded (join notes + #1096); no change.
+- 7 orphans (king 88, 96, 154, 230, 236, 248, 342): no Pantera Job 2 move carries them; no action.
+
+### Tallies after this follow-up
+- 73 steps: verified-exact 28 (was 27), soft-verified 2 (was 0), review 7, unmapped 36 (was 39). 28+2+7+36 = 73.
+- 60 plan keys, last step: verified 14 (was 11), review 4, unmapped 42 (was 45). 14+4+42 = 60.
+- 31 triage keys, last step: verified 11 (was 10), review 4, unmapped 16 (was 17). 11+4+16 = 31.
+- Fill 2 wires FIRST steps, not last steps → last-step tallies unchanged by Fill 2. Triage and plan-key tallies are
+  reported separately, never merged.
+
+### Follow-up re-audit (CSV worklist, 57 rows)
+- `b+2,1+2` + 2 twins: previously donor row 35 (jump clip for a ground move). After Fill 1, their last steps play
+  verified row 97 (standing chord); first steps still procedural. 3 CSV rows improve; the 45 no-bank-row rows from
+  #1096's re-audit are otherwise unchanged.
+- `u/b+1,1` / `u/b+1,2`: NO CSV rows (direct key lookup confirmed) — no CSV-count change for Fill 2.
+- Merge order: this follow-up PR lands AFTER #1096 merges; rebase onto main before merging the follow-up. Do NOT
+  merge on mergeable:true alone (green + clean + git_merge.py only).
 
 ## Damage/startup spot-check (criterion 4, wired scope only)
 
@@ -141,6 +239,11 @@ keys = 31 canonical + 26 twins + 3 spelling variants (throw twin excluded).
 3. Job-2 `match_search` candidates landed — NOT LANDED (no `match_search` output in the workspace). This PR is
    therefore explicitly scoped to VERIFIED steps only (criterion 3's alternative): NO-ROW/review steps are UNMAPPED,
    never pooled. When job-2 candidates land, they enter as candidates through these same gates, not as assignments.
+
+   UPDATE (follow-up PR, 2026-10-25): match_search candidates HAVE now landed via the GPU jobs 1–6 ingest
+   (`unzipped/job3-out/match_search.json` + `run-log/batch1_job3_step_map.json` in the ingest package). The two fills
+   in the follow-up section entered through these same gates. The remaining NO-ROW/review steps stay
+   UNMAPPED/REVIEW, never pooled.
 4. Damage/startup last-hit normalisation implemented + spot-checked — SPOT-CHECKED for the wired scope (above); no
    data change needed for the 11 verified-last-step keys. Unwired strings keep their existing damage (incl. `1,2`'s
    total 20) until their steps land.
@@ -191,6 +294,10 @@ simulation (screenshot, look, scroll, THEN tap; touch taps like the user plays).
 6. Verified controls (must still play their rows): `d+1+2,2` (rows 97 -> 98), `d+1+2,2,1` (97 -> 98 -> 198), `u+1,1` (jumping row 38).
 7. Snap check: on every multi-step string above, record whether the cut between steps visibly snaps. A snap does NOT fail the string — it queues the blend work. A wrong row DOES fail it.
 8. Regression: no step silently donor-falls-back — any planned string playing rows 99/110/35/220 other than the verified controls above is a FAIL to report back, not a pass.
+Follow-up checks (after this PR merges, on top of #1096's pass):
+9. `b+2,1+2` (back + RP2, then LP1+RP2) + both twins: confirm the ender plays a STANDING chord clip (row 97), feet grounded — NOT the old jumping donor row 35. First step still procedural.
+10. `u/b+1,1` and `u/b+1,2` (up-back + LP1, then LP1/RP2): confirm the first step reads as a JUMPING LP1 (row 49, SOFT). If it does not read as the jumping LP1, the SOFT steps revert to UNMAPPED — report that, do not pass it.
+11. Job 4 regression: no step plays row 584 or row 220; review steps (rows 257/258 candidates) still play NO bank row.
 Until this pass completes, Batch 1 is wired + re-audited, NOT play-verified, and nothing in it is 'fixed'.
 
 ## Still UNMAPPED (after this PR)
