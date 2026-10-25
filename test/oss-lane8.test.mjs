@@ -145,9 +145,12 @@ const ok = (cond, msg) => { assert.ok(cond, msg); checks++; };
 {
   ok(Object.keys(RIG_TYPES).length === 5, 'rig-compat: 5 rig types registered');
   const rigs = {
-    't7-160': ['hips', 'spine', 'chest', 'neck', 'head', 'shoulder_l', 'elbow_l', 'wrist_l', 'shoulder_r', 'elbow_r', 'wrist_r', 'hip_l', 'knee_l', 'ankle_l', 'hip_r', 'knee_r', 'ankle_r'],
+    // t7-160 + cape-94 lists use the REAL naming styles (Alisa
+    // bonemap source names; CapeJones_Rig deform names) — the
+    // full-file-derived patterns, not the guessed styles.
+    't7-160': ['Hips', 'Spine', 'lPectoral', 'Neck', 'Head', 'LeftShoulder', 'LeftForeArm', 'LeftHand', 'RightShoulder', 'RightForeArm', 'RightHand', 'LeftUpLeg', 'LeftLeg', 'LeftFoot', 'RightUpLeg', 'RightLeg', 'RightFoot'],
     't3': ['hips', 'spine', 'chest', 'neck', 'head', 'shoulderl', 'elbowl', 'wristl', 'shoulderr', 'elbowr', 'wristr', 'hipl', 'kneel', 'anklel', 'hipr', 'kneer', 'ankler'],
-    'cape-94': ['hips', 'spine', 'chest', 'neck', 'head', 'shoulder.l', 'elbow.l', 'wrist.l', 'shoulder.r', 'elbow.r', 'wrist.r', 'hip.l', 'knee.l', 'ankle.l', 'hip.r', 'knee.r', 'ankle.r'],
+    'cape-94': ['pelvis', 'spine_1', 'chest', 'neck_1', 'head', 'clavicle_L', 'forearm_L', 'hand_L', 'clavicle_R', 'forearm_R', 'hand_R', 'thigh_L', 'shin_L', 'foot_L', 'thigh_R', 'shin_R', 'foot_R'],
     'tripo': ['root', 'spine', 'chest', 'neck', 'head', 'left_shoulder', 'left_elbow', 'left_wrist', 'right_shoulder', 'right_elbow', 'right_wrist', 'left_hip', 'left_knee', 'left_ankle', 'right_hip', 'right_knee', 'right_ankle'],
     'custom': ['Hips', 'Spine', 'Chest', 'Neck', 'Head', 'ShoulderL', 'ElbowL', 'WristL', 'ShoulderR', 'ElbowR', 'WristR', 'HipL', 'KneeL', 'AnkleL', 'HipR', 'KneeR', 'AnkleR'],
   };
