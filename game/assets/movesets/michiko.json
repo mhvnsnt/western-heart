@@ -8,8 +8,8 @@
   "variant": 11,
   "anim_set_lock": {
     "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
-    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
-    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; tracked in docs/anim/KATARINA-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
+    "FIGHT": "every move in this file: moveset moves and combat stances \u2014 the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations \u2014 intro/win slots and cutscenes ONLY; tracked in docs/anim/KATARINA-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
     "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
   },
   "strings": [
@@ -374,7 +374,7 @@
     "note": "Full T3 bank depth merged over curated base; curated moves preserved verbatim. 413 rows, 242 attacks."
   },
   "t7_base": "katarina",
-  "t7_dataset": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+  "t7_dataset": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
   "t7_import_note": "Full T7 movelist imported from genuine T7 frame data; existing moves kept verbatim, new moves appended and deduped by input. Heat/rage mechanics unchanged; no T8 data used.",
   "forward_merge": {
     "date": "2026-10-20",
@@ -809,7 +809,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "Heads she fights clean, tails she doesn't. The coin always lands on its edge. Unpredictable spinning kick."
+      "note": "Heads she fights clean, tails she doesn't. The coin always lands on its edge. Unpredictable spinning kick.",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "P+K": {
       "name": "Better Marketing [WH SIGNATURE]",
@@ -833,7 +838,12 @@
       "note": "Thrones are just chairs with better marketing. A disrespectful slam off the imaginary throne.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true
+      "isGrab": true,
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Edge of the Coin [WH SIGNATURE]",
@@ -853,7 +863,12 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "Heads she fights clean, tails she doesn't. The coin always lands on its edge. Unpredictable spinning kick.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "MICHIKO 1+2 (T3 jin r32)",
@@ -897,7 +912,12 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+2": {
       "name": "MICHIKO f+2 (T3 jin r220)",
@@ -1006,7 +1026,7 @@
     "d/f+1__main": {
       "name": "MICHIKO d/f+1",
       "input": "d/f+1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_88",
       "t7_command": "d/f+1",
       "t7_hit_level": "mid",
@@ -1030,7 +1050,12 @@
       "move_class": "strike",
       "note": "T7 [mid] on block -1 / on hit +5 / CH +5 | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "13",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 179,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d/f+4": {
       "name": "MICHIKO d/f+4 (T3 jin r205)",
@@ -1056,7 +1081,7 @@
     "d/f+4__main": {
       "name": "Greater Rhea",
       "input": "d/f+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_100",
       "t7_command": "d/f+4",
       "t7_hit_level": "mid",
@@ -1080,7 +1105,12 @@
       "move_class": "strike",
       "note": "T7 [mid] on block -9 / on hit +2 / CH STUN",
       "mod_damage": "17",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 205,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "u/b+1": {
       "name": "MICHIKO u/b+1 (T3 jin r34)",
@@ -1148,7 +1178,7 @@
     "u/b+4__main": {
       "name": "Lower Axis",
       "input": "u/b+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_126",
       "t7_command": "u/b+4",
       "t7_hit_level": "mid",
@@ -1172,7 +1202,12 @@
       "move_class": "strike",
       "note": "T7 [mid] on block -14 / on hit KND / CH KND",
       "mod_damage": "25",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 78,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "u/f+1": {
       "name": "MICHIKO u/f+1 (T3 jin r33)",
@@ -1281,7 +1316,7 @@
     "u/f+3+4__main": {
       "name": "Hovering",
       "input": "u/f+3+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_78",
       "t7_command": "u/f+3+4",
       "t7_hit_level": "mid, mid",
@@ -1305,7 +1340,12 @@
       "move_class": "strike",
       "note": "T7 [mid, mid] on block -10 / on hit KND / CH -",
       "mod_damage": "10,20",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "qcb+1+3": {
       "name": "MICHIKO qcb+1+3 throw (T3 jin r275)",
@@ -1409,7 +1449,7 @@
     "u/f+4,4__main": {
       "name": "Wing Cutter to Harrier (chain)",
       "input": "u/f+4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_58",
       "t7_command": "u/f+4, 4",
       "t7_hit_level": "mid, mid",
@@ -1441,7 +1481,12 @@
         "total": 20
       },
       "mod_damage": "10,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+2,1": {
       "name": "MICHIKO f+2,1 (T3 jin r221)",
@@ -1641,7 +1686,7 @@
     "u/f+4,4,4__main": {
       "name": "Wing Cutter to Harrier (chain)",
       "input": "u/f+4,4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_60",
       "t7_command": "u/f+4, 4, 4",
       "t7_hit_level": "mid, mid, mid",
@@ -1675,7 +1720,12 @@
         "total": 27
       },
       "mod_damage": "10,10,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+2,1,2": {
       "name": "MICHIKO f+2,1,2 (T3 jin r222)",
@@ -1808,7 +1858,7 @@
     "u/f+4,4,4,4__main": {
       "name": "Wing Cutter to Harrier (chain)",
       "input": "u/f+4,4,4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_63",
       "t7_command": "u/f+4, 4, 4, 4",
       "t7_hit_level": "mid, mid, mid, high",
@@ -1844,7 +1894,12 @@
         "total": 32
       },
       "mod_damage": "10,10,10,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+2,1,2,2": {
       "name": "MICHIKO f+2,1,2,2 (T3 jin r223)",
@@ -4009,7 +4064,7 @@
     "b,b,u/b": {
       "name": "MICHIKO Back towards wall... b,b,u/b",
       "input": "b,b,u/b",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_1",
       "t7_command": "Back towards wall... b, b, u/b",
       "t7_hit_level": "mid",
@@ -4033,12 +4088,17 @@
         "btw:b,b,u/b"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block +1 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block +1 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1,1": {
       "name": "Double Slap",
       "input": "1,1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_3",
       "t7_command": "1, 1",
       "t7_hit_level": "high, high",
@@ -4070,12 +4130,17 @@
         "total": 17
       },
       "mod_damage": "7,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(1),1": {
       "name": "Wing Punch Combo (chain)",
       "input": "(1),1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_4",
       "t7_command": "(1), 1",
       "t7_hit_level": "high",
@@ -4100,12 +4165,17 @@
       "move_class": "string",
       "note": "T7 [high] on block -2 / on hit +4 / CH +4 | t7chicken lists no separate move name; labeled from its named T7 string family",
       "mod_damage": "7,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,1,1": {
       "name": "Wing Punch Combo",
       "input": "1,1,1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_5",
       "t7_command": "1, 1, 1",
       "t7_hit_level": "high, high, mid",
@@ -4139,12 +4209,17 @@
         "total": 40
       },
       "mod_damage": "7,10,23",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(1),1,1": {
       "name": "MICHIKO (1),1,1",
       "input": "(1),1,1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_6",
       "t7_command": "(1), 1, 1",
       "t7_hit_level": "high, mid",
@@ -4177,12 +4252,17 @@
         "total": 33
       },
       "mod_damage": "7,10,23",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(1),(1),1": {
       "name": "MICHIKO (1),(1),1",
       "input": "(1),(1),1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_7",
       "t7_command": "(1), (1), 1",
       "t7_hit_level": "mid",
@@ -4208,12 +4288,17 @@
       "move_class": "string",
       "note": "T7 [mid] on block -5 / on hit -1 / CH KND | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "7,10,23",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,1,2": {
       "name": "Rush Punch Combo",
       "input": "1,1,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_8",
       "t7_command": "1, 1, 2",
       "t7_hit_level": "high, high, high",
@@ -4247,12 +4332,17 @@
         "total": 34
       },
       "mod_damage": "7,10,17",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(1),1,2": {
       "name": "MICHIKO (1),1,2",
       "input": "(1),1,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_9",
       "t7_command": "(1), 1, 2",
       "t7_hit_level": "high, high",
@@ -4285,12 +4375,17 @@
         "total": 27
       },
       "mod_damage": "7,10,17",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(1),(1),2": {
       "name": "MICHIKO (1),(1),2",
       "input": "(1),(1),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_10",
       "t7_command": "(1), (1), 2",
       "t7_hit_level": "high",
@@ -4316,12 +4411,17 @@
       "move_class": "string",
       "note": "T7 [high] on block +7 / on hit +9 / CH STUN | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "7,10,17",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,1,3": {
       "name": "Albatross Punch Combo",
       "input": "1,1,3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_11",
       "t7_command": "1, 1, 3",
       "t7_hit_level": "high, high, mid",
@@ -4355,12 +4455,17 @@
         "total": 37
       },
       "mod_damage": "7,10,20",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(1),1,3": {
       "name": "MICHIKO (1),1,3",
       "input": "(1),1,3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_12",
       "t7_command": "(1), 1, 3",
       "t7_hit_level": "high, mid",
@@ -4393,12 +4498,17 @@
         "total": 30
       },
       "mod_damage": "7,10,20",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(1),(1),3": {
       "name": "MICHIKO (1),(1),3",
       "input": "(1),(1),3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_13",
       "t7_command": "(1), (1), 3",
       "t7_hit_level": "mid",
@@ -4424,12 +4534,17 @@
       "move_class": "string",
       "note": "T7 [mid] on block 0 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "7,10,20",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,1,4": {
       "name": "Goose Punch Combo",
       "input": "1,1,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_14",
       "t7_command": "1, 1, 4",
       "t7_hit_level": "high, high, mid",
@@ -4463,12 +4578,17 @@
         "total": 38
       },
       "mod_damage": "7,10,21",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(1),1,4": {
       "name": "MICHIKO (1),1,4",
       "input": "(1),1,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_15",
       "t7_command": "(1), 1, 4",
       "t7_hit_level": "high, mid",
@@ -4501,12 +4621,17 @@
         "total": 12
       },
       "mod_damage": "7,10,21",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(1),(1),4": {
       "name": "MICHIKO (1),(1),4",
       "input": "(1),(1),4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_16",
       "t7_command": "(1), (1), 4",
       "t7_hit_level": "mid",
@@ -4532,12 +4657,17 @@
       "move_class": "string",
       "note": "T7 [mid] on block -19 / on hit LAUNCH / CH LAUNCH | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "7,10,21",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(1),2": {
       "name": "10 Hit Combo (chain)",
       "input": "(1),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_18",
       "t7_command": "(1), 2",
       "t7_hit_level": "high",
@@ -4562,12 +4692,17 @@
       "move_class": "string",
       "note": "T7 [high] on block -3 / on hit +3 / CH +3 | t7chicken lists no separate move name; labeled from its named T7 string family",
       "mod_damage": "7,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,4": {
       "name": "Needle Kick Combo",
       "input": "1,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_19",
       "t7_command": "1, 4",
       "t7_hit_level": "high, low",
@@ -4599,12 +4734,17 @@
         "total": 20
       },
       "mod_damage": "7,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(1),4": {
       "name": "MICHIKO (1),4",
       "input": "(1),4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_20",
       "t7_command": "(1), 4",
       "t7_hit_level": "low",
@@ -4629,12 +4769,17 @@
       "move_class": "string",
       "note": "T7 [low] on block -12 / on hit +1 / CH +1 | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "7,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,2": {
       "name": "Feather Fury",
       "input": "2,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_22",
       "t7_command": "2, 2",
       "t7_hit_level": "high, high",
@@ -4666,12 +4811,17 @@
         "total": 30
       },
       "mod_damage": "10,20",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(2),2": {
       "name": "MICHIKO (2),2",
       "input": "(2),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_23",
       "t7_command": "(2), 2",
       "t7_hit_level": "high",
@@ -4696,12 +4846,17 @@
       "move_class": "string",
       "note": "T7 [high] on block -12 / on hit +10 / CH +10 | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "10,20",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3,3": {
       "name": "Crane Kick Combo (chain)",
       "input": "3,3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_25",
       "t7_command": "3, 3",
       "t7_hit_level": "mid, mid",
@@ -4733,12 +4888,17 @@
         "total": 13
       },
       "mod_damage": "14,5",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(3),3": {
       "name": "Crane Kick Combo (chain)",
       "input": "(3),3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_26",
       "t7_command": "(3), 3",
       "t7_hit_level": "mid",
@@ -4763,12 +4923,17 @@
       "move_class": "string",
       "note": "T7 [mid] on block -9 / on hit +2 / CH +2 | t7chicken lists no separate move name; labeled from its named T7 string family",
       "mod_damage": "14,5",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3,3,3": {
       "name": "Crane Kick Combo (chain)",
       "input": "3,3,3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_27",
       "t7_command": "3, 3, 3",
       "t7_hit_level": "mid, mid, mid",
@@ -4802,12 +4967,17 @@
         "total": 17
       },
       "mod_damage": "14,5,5",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(3),3,3": {
       "name": "Crane Kick Combo (chain)",
       "input": "(3),3,3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_28",
       "t7_command": "(3), 3, 3",
       "t7_hit_level": "mid, mid",
@@ -4840,12 +5010,17 @@
         "total": 8
       },
       "mod_damage": "14,5,5",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(3),(3),3": {
       "name": "Crane Kick Combo (chain)",
       "input": "(3),(3),3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_29",
       "t7_command": "(3), (3), 3",
       "t7_hit_level": "mid",
@@ -4871,12 +5046,17 @@
       "move_class": "string",
       "note": "T7 [mid] on block -10 / on hit +1 / CH +1 | t7chicken lists no separate move name; labeled from its named T7 string family",
       "mod_damage": "14,5,5",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3,3,3,3": {
       "name": "Crane Kick Combo (chain)",
       "input": "3,3,3,3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_30",
       "t7_command": "3, 3, 3, 3",
       "t7_hit_level": "mid, mid, mid, high",
@@ -4912,12 +5092,17 @@
         "total": 21
       },
       "mod_damage": "14,5,5,5",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(3),3,3,3": {
       "name": "Crane Kick Combo (chain)",
       "input": "(3),3,3,3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_31",
       "t7_command": "(3), 3, 3, 3",
       "t7_hit_level": "mid, mid, high",
@@ -4952,12 +5137,17 @@
         "total": 12
       },
       "mod_damage": "14,5,5,5",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(3),(3),3,3": {
       "name": "Crane Kick Combo (chain)",
       "input": "(3),(3),3,3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_32",
       "t7_command": "(3), (3), 3, 3",
       "t7_hit_level": "mid, high",
@@ -4991,12 +5181,17 @@
         "total": 8
       },
       "mod_damage": "14,5,5,5",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(3),(3),(3),3": {
       "name": "Crane Kick Combo (chain)",
       "input": "(3),(3),(3),3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_33",
       "t7_command": "(3), (3), (3), 3",
       "t7_hit_level": "high",
@@ -5023,12 +5218,17 @@
       "move_class": "string",
       "note": "T7 [high] on block -11 / on hit 0 / CH 0 | t7chicken lists no separate move name; labeled from its named T7 string family",
       "mod_damage": "14,5,5,5",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3,3,3,3,3": {
       "name": "Crane Kick Combo",
       "input": "3,3,3,3,3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_34",
       "t7_command": "3, 3, 3, 3, 3",
       "t7_hit_level": "mid, mid, mid, high, mid",
@@ -5066,12 +5266,17 @@
         "total": 38
       },
       "mod_damage": "14,5,5,5,15",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(3),3,3,3,3": {
       "name": "MICHIKO (3),3,3,3,3",
       "input": "(3),3,3,3,3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_35",
       "t7_command": "(3), 3, 3, 3, 3",
       "t7_hit_level": "mid, mid, high, mid",
@@ -5108,12 +5313,17 @@
         "total": 29
       },
       "mod_damage": "14,5,5,5,15",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(3),(3),3,3,3": {
       "name": "MICHIKO (3),(3),3,3,3",
       "input": "(3),(3),3,3,3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_36",
       "t7_command": "(3), (3), 3, 3, 3",
       "t7_hit_level": "mid, high, mid",
@@ -5149,12 +5359,17 @@
         "total": 25
       },
       "mod_damage": "14,5,5,5,15",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(3),(3),(3),3,3": {
       "name": "MICHIKO (3),(3),(3),3,3",
       "input": "(3),(3),(3),3,3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_37",
       "t7_command": "(3), (3), (3), 3, 3",
       "t7_hit_level": "high, mid",
@@ -5189,12 +5404,17 @@
         "total": 21
       },
       "mod_damage": "14,5,5,5,15",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(3),(3),(3),(3),3": {
       "name": "MICHIKO (3),(3),(3),(3),3",
       "input": "(3),(3),(3),(3),3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_38",
       "t7_command": "(3), (3), (3), (3), 3",
       "t7_hit_level": "mid",
@@ -5222,12 +5442,17 @@
       "move_class": "string",
       "note": "T7 [mid] on block -14 / on hit +1 (OC) / CH +1 (OC) | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "14,5,5,5,15",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3,4": {
       "name": "Wild Canary",
       "input": "3,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_39",
       "t7_command": "3, 4 (or WS 3, 4)",
       "t7_hit_level": "mid, high",
@@ -5259,12 +5484,17 @@
         "total": 29
       },
       "mod_damage": "14,20",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 317,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "(3),4,4)": {
       "name": "MICHIKO (3),4,4)",
       "input": "(3),4,4)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_40",
       "t7_command": "(3), 4 (or WS (3), 4)",
       "t7_hit_level": "high",
@@ -5290,12 +5520,17 @@
       "move_class": "string",
       "note": "T7 [high] on block -8 / on hit KND / CH S! | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "14,20",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,4": {
       "name": "Nimble Cutter to Harrier (chain)",
       "input": "4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_42",
       "t7_command": "4, 4",
       "t7_hit_level": "high, mid",
@@ -5327,12 +5562,17 @@
         "total": 32
       },
       "mod_damage": "17,20",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(4),4": {
       "name": "Nimble Cutter to Harrier (chain)",
       "input": "(4),4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_43",
       "t7_command": "(4), 4",
       "t7_hit_level": "mid",
@@ -5357,12 +5597,17 @@
       "move_class": "string",
       "note": "T7 [mid] on block -10 / on hit +4 / CH KND | t7chicken lists no separate move name; labeled from its named T7 string family",
       "mod_damage": "17,20",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,4,4": {
       "name": "Nimble Cutter to Harrier (chain)",
       "input": "4,4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_44",
       "t7_command": "4, 4, 4",
       "t7_hit_level": "high, mid, high",
@@ -5396,12 +5641,17 @@
         "total": 47
       },
       "mod_damage": "17,20,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(4),4,4": {
       "name": "Nimble Cutter to Harrier (chain)",
       "input": "(4),4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_45",
       "t7_command": "(4), 4, 4",
       "t7_hit_level": "mid, high",
@@ -5434,12 +5684,17 @@
         "total": 30
       },
       "mod_damage": "17,20,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(4),(4),4": {
       "name": "Nimble Cutter to Harrier (chain)",
       "input": "(4),(4),4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_46",
       "t7_command": "(4), (4), 4",
       "t7_hit_level": "high",
@@ -5465,12 +5720,17 @@
       "move_class": "string",
       "note": "T7 [high] on block -10 / on hit +4 / CH KND | t7chicken lists no separate move name; labeled from its named T7 string family",
       "mod_damage": "17,20,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,4,4,4": {
       "name": "Nimble Cutter (chain)",
       "input": "4,4,4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_47",
       "t7_command": "4, 4, 4, 4",
       "t7_hit_level": "high, mid, high, high",
@@ -5506,12 +5766,17 @@
         "total": 68
       },
       "mod_damage": "17,20,10,21",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(4),4,4,4": {
       "name": "Nimble Cutter (chain)",
       "input": "(4),4,4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_48",
       "t7_command": "(4), 4, 4, 4",
       "t7_hit_level": "mid, high, high",
@@ -5546,12 +5811,17 @@
         "total": 51
       },
       "mod_damage": "17,20,10,21",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(4),(4),4,4": {
       "name": "Nimble Cutter (chain)",
       "input": "(4),(4),4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_49",
       "t7_command": "(4), (4), 4, 4",
       "t7_hit_level": "high, high",
@@ -5585,12 +5855,17 @@
         "total": 31
       },
       "mod_damage": "17,20,10,21",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(4),(4),(4),4": {
       "name": "Nimble Cutter (chain)",
       "input": "(4),(4),(4),4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_50",
       "t7_command": "(4), (4), (4), 4",
       "t7_hit_level": "high",
@@ -5617,12 +5892,17 @@
       "move_class": "string",
       "note": "T7 [high] on block -6 / on hit +5 / CH KND | t7chicken lists no separate move name; labeled from its named T7 string family",
       "mod_damage": "17,20,10,21",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,4,4,4,4": {
       "name": "Nimble Cutter",
       "input": "4,4,4,4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_51",
       "t7_command": "4, 4, 4, 4, 4",
       "t7_hit_level": "high, mid, high, high, mid",
@@ -5660,12 +5940,17 @@
         "total": 93
       },
       "mod_damage": "17,20,10,21,25",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(4),4,4,4,4": {
       "name": "MICHIKO (4),4,4,4,4",
       "input": "(4),4,4,4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_52",
       "t7_command": "(4), 4, 4, 4, 4",
       "t7_hit_level": "mid, high, high, mid",
@@ -5702,12 +5987,17 @@
         "total": 76
       },
       "mod_damage": "17,20,10,21,25",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(4),(4),4,4,4": {
       "name": "MICHIKO (4),(4),4,4,4",
       "input": "(4),(4),4,4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_53",
       "t7_command": "(4), (4), 4, 4, 4",
       "t7_hit_level": "high, high, mid",
@@ -5743,12 +6033,17 @@
         "total": 56
       },
       "mod_damage": "17,20,10,21,25",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(4),(4),(4),4,4": {
       "name": "MICHIKO (4),(4),(4),4,4",
       "input": "(4),(4),(4),4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_54",
       "t7_command": "(4), (4), (4), 4, 4",
       "t7_hit_level": "high, mid",
@@ -5783,12 +6078,17 @@
         "total": 46
       },
       "mod_damage": "17,20,10,21,25",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(4),(4),(4),(4),4": {
       "name": "MICHIKO (4),(4),(4),(4),4",
       "input": "(4),(4),(4),(4),4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_55",
       "t7_command": "(4), (4), (4), (4), 4",
       "t7_hit_level": "mid",
@@ -5816,12 +6116,17 @@
       "move_class": "string",
       "note": "T7 [mid] on block -9 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "17,20,10,21,25",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/f+3_t7": {
       "name": "Flying Bird",
       "input": "u/f+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_56",
       "t7_command": "u/f+3",
       "t7_hit_level": "mid",
@@ -5846,12 +6151,17 @@
       "note": "T7 [mid] on block -13 / on hit LAUNCH / CH LAUNCH",
       "t7_input": "u/f+3",
       "mod_damage": "22",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 55,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "(u/f+4),4": {
       "name": "Wing Cutter to Harrier (chain)",
       "input": "(u/f+4),4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_59",
       "t7_command": "(u/f+4), 4",
       "t7_hit_level": "mid",
@@ -5876,12 +6186,17 @@
       "move_class": "string",
       "note": "T7 [mid] on block -13 / on hit STUN / CH STUN | t7chicken lists no separate move name; labeled from its named T7 string family",
       "mod_damage": "10,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(u/f+4),4,4": {
       "name": "Wing Cutter to Harrier (chain)",
       "input": "(u/f+4),4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_61",
       "t7_command": "(u/f+4), 4, 4",
       "t7_hit_level": "mid, mid",
@@ -5914,12 +6229,17 @@
         "total": 17
       },
       "mod_damage": "10,10,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(u/f+4),(4),4": {
       "name": "Wing Cutter to Harrier (chain)",
       "input": "(u/f+4),(4),4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_62",
       "t7_command": "(u/f+4), (4), 4",
       "t7_hit_level": "mid",
@@ -5945,12 +6265,17 @@
       "move_class": "string",
       "note": "T7 [mid] on block -10 / on hit STUN / CH STUN | t7chicken lists no separate move name; labeled from its named T7 string family",
       "mod_damage": "10,10,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(u/f+4),4,4,4": {
       "name": "Wing Cutter to Harrier (chain)",
       "input": "(u/f+4),4,4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_64",
       "t7_command": "(u/f+4), 4, 4, 4",
       "t7_hit_level": "mid, mid, high",
@@ -5985,12 +6310,17 @@
         "total": 22
       },
       "mod_damage": "10,10,10,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(u/f+4),(4),4,4": {
       "name": "Wing Cutter to Harrier (chain)",
       "input": "(u/f+4),(4),4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_65",
       "t7_command": "(u/f+4), (4), 4, 4",
       "t7_hit_level": "mid, high",
@@ -6024,12 +6354,17 @@
         "total": 20
       },
       "mod_damage": "10,10,10,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(u/f+4),(4),(4),4": {
       "name": "Wing Cutter to Harrier (chain)",
       "input": "(u/f+4),(4),(4),4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_66",
       "t7_command": "(u/f+4), (4), (4), 4",
       "t7_hit_level": "high",
@@ -6056,12 +6391,17 @@
       "move_class": "string",
       "note": "T7 [high] on block -10 / on hit STUN / CH STUN | t7chicken lists no separate move name; labeled from its named T7 string family",
       "mod_damage": "10,10,10,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/f+4,4,4,4,4": {
       "name": "Wing Cutter (chain)",
       "input": "u/f+4,4,4,4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_67",
       "t7_command": "u/f+4, 4, 4, 4, 4",
       "t7_hit_level": "mid, mid, mid, high, high",
@@ -6099,12 +6439,17 @@
         "total": 40
       },
       "mod_damage": "10,10,10,10,21",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(u/f+4),4,4,4,4": {
       "name": "Wing Cutter (chain)",
       "input": "(u/f+4),4,4,4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_68",
       "t7_command": "(u/f+4), 4, 4, 4, 4",
       "t7_hit_level": "mid, mid, high, high",
@@ -6141,12 +6486,17 @@
         "total": 30
       },
       "mod_damage": "10,10,10,10,21",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(u/f+4),(4),4,4,4": {
       "name": "Wing Cutter (chain)",
       "input": "(u/f+4),(4),4,4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_69",
       "t7_command": "(u/f+4), (4), 4, 4, 4",
       "t7_hit_level": "mid, high, high",
@@ -6182,12 +6532,17 @@
         "total": 41
       },
       "mod_damage": "10,10,10,10,21",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(u/f+4),(4),(4),4,4": {
       "name": "Wing Cutter (chain)",
       "input": "(u/f+4),(4),(4),4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_70",
       "t7_command": "(u/f+4), (4), (4), 4, 4",
       "t7_hit_level": "high, high",
@@ -6222,12 +6577,17 @@
         "total": 31
       },
       "mod_damage": "10,10,10,10,21",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(u/f+4),(4),(4),(4),4": {
       "name": "Wing Cutter (chain)",
       "input": "(u/f+4),(4),(4),(4),4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_71",
       "t7_command": "(u/f+4), (4), (4), (4), 4",
       "t7_hit_level": "high",
@@ -6255,12 +6615,17 @@
       "move_class": "string",
       "note": "T7 [high] on block -6 / on hit KND / CH KND | t7chicken lists no separate move name; labeled from its named T7 string family",
       "mod_damage": "10,10,10,10,21",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/f+4,4,4,4,4,4": {
       "name": "Wing Cutter",
       "input": "u/f+4,4,4,4,4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_72",
       "t7_command": "u/f+4, 4, 4, 4, 4, 4",
       "t7_hit_level": "mid, mid, mid, high, high, mid",
@@ -6300,12 +6665,17 @@
         "total": 47
       },
       "mod_damage": "10,10,10,10,21,25",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(u/f+4),4,4,4,4,4": {
       "name": "MICHIKO (u/f+4),4,4,4,4,4",
       "input": "(u/f+4),4,4,4,4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_73",
       "t7_command": "(u/f+4), 4, 4, 4, 4, 4",
       "t7_hit_level": "mid, mid, high, high, mid",
@@ -6344,12 +6714,17 @@
         "total": 37
       },
       "mod_damage": "10,10,10,10,21,25",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(u/f+4),(4),4,4,4,4": {
       "name": "MICHIKO (u/f+4),(4),4,4,4,4",
       "input": "(u/f+4),(4),4,4,4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_74",
       "t7_command": "(u/f+4), (4), 4, 4, 4, 4",
       "t7_hit_level": "mid, high, high, mid",
@@ -6387,12 +6762,17 @@
         "total": 66
       },
       "mod_damage": "10,10,10,10,21,25",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(u/f+4),(4),(4),4,4,4": {
       "name": "MICHIKO (u/f+4),(4),(4),4,4,4",
       "input": "(u/f+4),(4),(4),4,4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_75",
       "t7_command": "(u/f+4), (4), (4), 4, 4, 4",
       "t7_hit_level": "high, high, mid",
@@ -6429,12 +6809,17 @@
         "total": 56
       },
       "mod_damage": "10,10,10,10,21,25",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(u/f+4),(4),(4),(4),4,4": {
       "name": "MICHIKO (u/f+4),(4),(4),(4),4,4",
       "input": "(u/f+4),(4),(4),(4),4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_76",
       "t7_command": "(u/f+4), (4), (4), (4), 4, 4",
       "t7_hit_level": "high, mid",
@@ -6470,12 +6855,17 @@
         "total": 46
       },
       "mod_damage": "10,10,10,10,21,25",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(u/f+4),(4),(4),(4),(4),4": {
       "name": "MICHIKO (u/f+4),(4),(4),(4),(4),4",
       "input": "(u/f+4),(4),(4),(4),(4),4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_77",
       "t7_command": "(u/f+4), (4), (4), (4), (4), 4",
       "t7_hit_level": "mid",
@@ -6504,12 +6894,17 @@
       "move_class": "string",
       "note": "T7 [mid] on block -9 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "10,10,10,10,21,25",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/f+3+4 (second hit only)": {
       "name": "MICHIKO u/f+3+4 (second hit only)",
       "input": "u/f+3+4 (second hit only)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_79",
       "t7_command": "u/f+3+4 (second hit only)",
       "t7_hit_level": "mid",
@@ -6533,12 +6928,17 @@
       "move_class": "strike",
       "note": "T7 [mid] on block -10 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "10,20",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+1+2": {
       "name": "Drumming",
       "input": "f+1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_80",
       "t7_command": "f+1+2",
       "t7_hit_level": "high",
@@ -6562,12 +6962,17 @@
       "move_class": "strike",
       "note": "T7 [high] on block +1 / on hit KND / CH KND",
       "mod_damage": "23",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 357,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+3": {
       "name": "Heel Hook",
       "input": "f+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_81",
       "t7_command": "f+3",
       "t7_hit_level": "mid",
@@ -6591,12 +6996,17 @@
       "move_class": "strike",
       "note": "T7 [mid] on block +1 (OC) / on hit +5 (OC) / CH STUN",
       "mod_damage": "27",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 79,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f,F+2": {
       "name": "MICHIKO f,F+2",
       "input": "f,F+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_82",
       "t7_command": "f, F+2",
       "t7_hit_level": "high",
@@ -6621,12 +7031,17 @@
       "move_class": "string",
       "note": "T7 [high] on block -5 / on hit +6 / CH +6 | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "13",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "GROUND BOUND": {
       "name": "Bird Chaser",
       "input": "GROUND BOUND",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_83",
       "t7_command": "GROUND BOUND",
       "t7_hit_level": "high, high",
@@ -6648,12 +7063,17 @@
         "GROUND BOUND"
       ],
       "move_class": "strike",
-      "note": "T7 [high, high] on block -9 / on hit S! / CH -"
+      "note": "T7 [high, high] on block -9 / on hit S! / CH -",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "(f,F+2),4": {
       "name": "MICHIKO (f,F+2),4",
       "input": "(f,F+2),4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_84",
       "t7_command": "(f, F+2), 4",
       "t7_hit_level": "high",
@@ -6679,12 +7099,17 @@
       "move_class": "string",
       "note": "T7 [high] on block -9 / on hit S! / CH S! | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "13,20",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+3": {
       "name": "Aerial Glide",
       "input": "f,F+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_85",
       "t7_command": "f, F+3",
       "t7_hit_level": "mid",
@@ -6709,12 +7134,17 @@
       "move_class": "string",
       "note": "T7 [mid] on block -9 / on hit KND / CH FLOOR BOUND",
       "mod_damage": "20",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+4": {
       "name": "Plover Kick",
       "input": "f,F+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_86",
       "t7_command": "f, F+4",
       "t7_hit_level": "mid",
@@ -6739,12 +7169,17 @@
       "move_class": "string",
       "note": "T7 [mid] on block -13 / on hit KND / CH KND",
       "mod_damage": "27",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,f+3": {
       "name": "Pheasant Heel",
       "input": "f,f,f+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_87",
       "t7_command": "f, f, f+3 (or WR 3)",
       "t7_hit_level": "mid",
@@ -6770,12 +7205,17 @@
       "move_class": "string",
       "note": "T7 [mid] on block +1 / on hit KND / CH KND",
       "mod_damage": "30",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1,1": {
       "name": "Peck and Slap",
       "input": "d/f+1,1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_89",
       "t7_command": "d/f+1, 1",
       "t7_hit_level": "mid, high",
@@ -6807,12 +7247,17 @@
         "total": 21
       },
       "mod_damage": "13,8",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(d/f+1),1": {
       "name": "Peck and Slap to Harrier (chain)",
       "input": "(d/f+1),1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_90",
       "t7_command": "(d/f+1), 1",
       "t7_hit_level": "high",
@@ -6837,12 +7282,17 @@
       "move_class": "string",
       "note": "T7 [high] on block -5 / on hit +6 / CH +6 | t7chicken lists no separate move name; labeled from its named T7 string family",
       "mod_damage": "13,8",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+2,2": {
       "name": "Nest Crasher",
       "input": "d/f+2,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_92",
       "t7_command": "d/f+2, 2",
       "t7_hit_level": "mid, mid",
@@ -6874,12 +7324,17 @@
         "total": 38
       },
       "mod_damage": "17,21",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(d/f+2),2": {
       "name": "MICHIKO (d/f+2),2",
       "input": "(d/f+2),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_93",
       "t7_command": "(d/f+2), 2",
       "t7_hit_level": "mid",
@@ -6904,12 +7359,17 @@
       "move_class": "string",
       "note": "T7 [mid] on block -10 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "17,21",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+2,4": {
       "name": "Nest Wrecker",
       "input": "d/f+2,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_94",
       "t7_command": "d/f+2, 4",
       "t7_hit_level": "mid, high",
@@ -6941,12 +7401,17 @@
         "total": 34
       },
       "mod_damage": "17,17",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(d/f+2),4": {
       "name": "MICHIKO (d/f+2),4",
       "input": "(d/f+2),4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_95",
       "t7_command": "(d/f+2), 4",
       "t7_hit_level": "high",
@@ -6971,12 +7436,17 @@
       "move_class": "string",
       "note": "T7 [high] on block +1 / on hit +18 / CH +18 | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "17,17",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+3": {
       "name": "MICHIKO d/f+3",
       "input": "d/f+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_96",
       "t7_command": "d/f+3",
       "t7_hit_level": "mid",
@@ -7000,12 +7470,17 @@
       "move_class": "strike",
       "note": "T7 [mid] on block -6 / on hit +2 / CH +2 | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "15",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 143,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d/f+3,3": {
       "name": "Wagtail",
       "input": "d/f+3,3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_97",
       "t7_command": "d/f+3, 3",
       "t7_hit_level": "mid, low",
@@ -7037,12 +7512,17 @@
         "total": 39
       },
       "mod_damage": "15,24",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(d/f+3),3": {
       "name": "MICHIKO (d/f+3),3",
       "input": "(d/f+3),3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_98",
       "t7_command": "(d/f+3), 3",
       "t7_hit_level": "low",
@@ -7067,12 +7547,17 @@
       "move_class": "string",
       "note": "T7 [low] on block -21 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "15,24",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+3,3,D": {
       "name": "MICHIKO d/f+3,3,D",
       "input": "d/f+3,3,D",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_99",
       "t7_command": "d/f+3, 3, D",
       "t7_hit_level": "mid, low",
@@ -7105,12 +7590,17 @@
         "total": 39
       },
       "mod_damage": "15",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+3+4": {
       "name": "Tucano Tail",
       "input": "d/f+3+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_101",
       "t7_command": "d/f+3+4",
       "t7_hit_level": "low",
@@ -7134,12 +7624,17 @@
       "move_class": "strike",
       "note": "T7 [low] on block -14 / on hit -1 (OC) / CH KND",
       "mod_damage": "21",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 134,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "d/f+3+4,D": {
       "name": "MICHIKO d/f+3+4,D",
       "input": "d/f+3+4,D",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_102",
       "t7_command": "d/f+3+4, D",
       "t7_hit_level": "low",
@@ -7162,12 +7657,17 @@
         "d/f+3+4,D"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -14 / on hit -1 (OC) / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -14 / on hit -1 (OC) / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+1": {
       "name": "Feather Chop",
       "input": "d+1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_103",
       "t7_command": "d+1",
       "t7_hit_level": "mid",
@@ -7191,12 +7691,17 @@
       "move_class": "strike",
       "note": "T7 [mid] on block -7 / on hit +3 (OC) / CH KND",
       "mod_damage": "20",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+2": {
       "name": "Paineira",
       "input": "d+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_104",
       "t7_command": "d+2",
       "t7_hit_level": "mid",
@@ -7220,12 +7725,17 @@
       "move_class": "strike",
       "note": "T7 [mid] on block -11 / on hit 0 / CH STUN",
       "mod_damage": "18",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 137,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d+3": {
       "name": "MICHIKO d+3",
       "input": "d+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_105",
       "t7_command": "d+3",
       "t7_hit_level": "low",
@@ -7249,12 +7759,17 @@
       "move_class": "strike",
       "note": "T7 [low] on block -11 / on hit 0 / CH 0 | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "12",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3,3": {
       "name": "Tarsus Body Blow",
       "input": "d+3,3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_106",
       "t7_command": "d+3, 3",
       "t7_hit_level": "low, mid",
@@ -7286,12 +7801,17 @@
         "total": 30
       },
       "mod_damage": "12,18",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(d+3),3": {
       "name": "MICHIKO (d+3),3",
       "input": "(d+3),3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_107",
       "t7_command": "(d+3), 3",
       "t7_hit_level": "mid",
@@ -7316,12 +7836,17 @@
       "move_class": "string",
       "note": "T7 [mid] on block -13 / on hit 0 / CH 0 | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "12,18",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3,4": {
       "name": "Tarsus Neck Blow",
       "input": "d+3,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_108",
       "t7_command": "d+3, 4",
       "t7_hit_level": "low, high",
@@ -7353,12 +7878,17 @@
         "total": 30
       },
       "mod_damage": "12,18",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(d+3),4": {
       "name": "MICHIKO (d+3),4",
       "input": "(d+3),4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_109",
       "t7_command": "(d+3), 4",
       "t7_hit_level": "high",
@@ -7383,12 +7913,17 @@
       "move_class": "string",
       "note": "T7 [high] on block -4 / on hit +6 / CH KND | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "12,18",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/b+3": {
       "name": "Sliding Kick",
       "input": "d/b+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_110",
       "t7_command": "d/b+3",
       "t7_hit_level": "low",
@@ -7412,12 +7947,17 @@
       "move_class": "strike",
       "note": "T7 [low] on block -26 / on hit KND / CH KND",
       "mod_damage": "24",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 138,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d/b+4": {
       "name": "Slipping Tail",
       "input": "d/b+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_111",
       "t7_command": "d/b+4",
       "t7_hit_level": "low",
@@ -7441,12 +7981,17 @@
       "move_class": "strike",
       "note": "T7 [low] on block -26 / on hit STUN / CH STUN",
       "mod_damage": "24",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 148,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+1_t7": {
       "name": "Inside Peck",
       "input": "b+1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_112",
       "t7_command": "b+1",
       "t7_hit_level": "mid",
@@ -7471,12 +8016,17 @@
       "note": "T7 [mid] on block -9 / on hit +2 / CH +2",
       "t7_input": "b+1",
       "mod_damage": "13",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 216,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+1,1": {
       "name": "Peck Upper",
       "input": "b+1,1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_113",
       "t7_command": "b+1, 1",
       "t7_hit_level": "mid, mid",
@@ -7508,12 +8058,17 @@
         "total": 33
       },
       "mod_damage": "13,15",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(b+1),1": {
       "name": "MICHIKO (b+1),1",
       "input": "(b+1),1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_114",
       "t7_command": "(b+1), 1",
       "t7_hit_level": "mid",
@@ -7538,12 +8093,17 @@
       "move_class": "string",
       "note": "T7 [mid] on block -12 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "13,15",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1,2": {
       "name": "Piercing Peck",
       "input": "b+1,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_115",
       "t7_command": "b+1, 2",
       "t7_hit_level": "mid, mid",
@@ -7575,12 +8135,17 @@
         "total": 23
       },
       "mod_damage": "13,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(b+1),2": {
       "name": "MICHIKO (b+1),2",
       "input": "(b+1),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_116",
       "t7_command": "(b+1), 2",
       "t7_hit_level": "mid",
@@ -7605,12 +8170,17 @@
       "move_class": "string",
       "note": "T7 [mid] on block -8 / on hit +5 / CH +5 | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "13,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+2": {
       "name": "Vulture Claw",
       "input": "b+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_117",
       "t7_command": "b+2",
       "t7_hit_level": "mid",
@@ -7634,12 +8204,17 @@
       "move_class": "strike",
       "note": "T7 [mid] on block -14 / on hit LAUNCH / CH LAUNCH",
       "mod_damage": "18",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 97,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+3": {
       "name": "Cuckoo Thrust",
       "input": "b+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_118",
       "t7_command": "b+3",
       "t7_hit_level": "mid",
@@ -7663,12 +8238,17 @@
       "move_class": "strike",
       "note": "T7 [mid] on block -9 / on hit +2 / CH +27",
       "mod_damage": "15",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 103,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+4": {
       "name": "MICHIKO b+4",
       "input": "b+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_119",
       "t7_command": "b+4",
       "t7_hit_level": "mid",
@@ -7692,12 +8272,17 @@
       "move_class": "strike",
       "note": "T7 [mid] on block -15 / on hit +8 / CH STUN | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "17",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 112,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+4,1+2": {
       "name": "Woodpecker",
       "input": "b+4,1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_120",
       "t7_command": "b+4, 1+2",
       "t7_hit_level": "mid, high",
@@ -7729,12 +8314,17 @@
         "total": 37
       },
       "mod_damage": "17,20",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(b+4),1+2": {
       "name": "MICHIKO (b+4),1+2",
       "input": "(b+4),1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_121",
       "t7_command": "(b+4), 1+2",
       "t7_hit_level": "high",
@@ -7759,12 +8349,17 @@
       "move_class": "string",
       "note": "T7 [high] on block +1 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "17,20",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+4,3+4": {
       "name": "Peacock",
       "input": "b+4,3+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_122",
       "t7_command": "b+4, 3+4",
       "t7_hit_level": "mid, mid, mid",
@@ -7795,12 +8390,17 @@
           11
         ],
         "total": 31
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(b+4),3+4": {
       "name": "MICHIKO (b+4),3+4",
       "input": "(b+4),3+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_123",
       "t7_command": "(b+4), 3+4",
       "t7_hit_level": "mid, mid",
@@ -7830,12 +8430,17 @@
           11
         ],
         "total": 14
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+3+4": {
       "name": "Fractured Flock",
       "input": "b+3+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_124",
       "t7_command": "b+3+4",
       "t7_hit_level": "mid, mid",
@@ -7859,12 +8464,17 @@
       "move_class": "strike",
       "note": "T7 [mid, mid] on block -14 / on hit KND / CH -",
       "mod_damage": "10,20,",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 110,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "b+3+4 (second hit only)": {
       "name": "MICHIKO b+3+4 (second hit only)",
       "input": "b+3+4 (second hit only)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_125",
       "t7_command": "b+3+4 (second hit only)",
       "t7_hit_level": "mid",
@@ -7888,12 +8498,17 @@
       "move_class": "strike",
       "note": "T7 [mid] on block -14 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "10,20,",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT 1": {
       "name": "MICHIKO BT 1",
       "input": "BT 1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_127",
       "t7_command": "BT 1 (or 2)",
       "t7_hit_level": "high",
@@ -7917,12 +8532,17 @@
       "move_class": "strike",
       "note": "T7 [high] on block -8 / on hit +3 / CH +3 | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "15",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT 3": {
       "name": "MICHIKO BT 3",
       "input": "BT 3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_128",
       "t7_command": "BT 3 (or 4)",
       "t7_hit_level": "high",
@@ -7946,12 +8566,17 @@
       "move_class": "strike",
       "note": "T7 [high] on block -8 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "25",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC 1": {
       "name": "MICHIKO FC 1",
       "input": "FC 1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_129",
       "t7_command": "FC 1",
       "t7_hit_level": "s. mid",
@@ -7975,12 +8600,17 @@
       "move_class": "strike",
       "note": "T7 [s. mid] on block -5 / on hit +6 / CH +6 | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "5",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC 2": {
       "name": "MICHIKO FC 2",
       "input": "FC 2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_130",
       "t7_command": "FC 2",
       "t7_hit_level": "s. mid",
@@ -8004,12 +8634,17 @@
       "move_class": "strike",
       "note": "T7 [s. mid] on block -4 / on hit +7 / CH +7 | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "8",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC 3": {
       "name": "MICHIKO FC 3",
       "input": "FC 3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_131",
       "t7_command": "FC 3",
       "t7_hit_level": "low",
@@ -8033,12 +8668,17 @@
       "move_class": "strike",
       "note": "T7 [low] on block -14 / on hit -3 / CH -3 | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "12",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC 4": {
       "name": "MICHIKO FC 4",
       "input": "FC 4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_132",
       "t7_command": "FC 4",
       "t7_hit_level": "low",
@@ -8060,12 +8700,17 @@
         "FC 4"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -15 / on hit -4 / CH -4 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -15 / on hit -4 / CH -4 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC d/f+4": {
       "name": "Short Tail",
       "input": "FC d/f+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_133",
       "t7_command": "FC d/f+4",
       "t7_hit_level": "low",
@@ -8089,12 +8734,17 @@
       "move_class": "strike",
       "note": "T7 [low] on block -16 / on hit 0 (OC) / CH KND",
       "mod_damage": "24",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WR f,f,F (Full Screen)": {
       "name": "MICHIKO WR f,f,F (Full Screen)",
       "input": "WR f,f,F (Full Screen)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_134",
       "t7_command": "WR f, f, F (Full Screen)",
       "t7_hit_level": "mid",
@@ -8118,12 +8768,17 @@
         "WR f,f,F (Full Screen)"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block +13 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block +13 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "WR f,f,F (Full Screen) (On Grounded Opponent)": {
       "name": "MICHIKO WR f,f,F (Full Screen) (On Grounded Opponent)",
       "input": "WR f,f,F (Full Screen) (On Grounded Opponent)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_135",
       "t7_command": "WR f, f, F (Full Screen) (On Grounded Opponent)",
       "t7_hit_level": "low",
@@ -8147,12 +8802,17 @@
         "WR f,f,F (Full Screen) (On Grounded Opponent)"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block - / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block - / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "WR 4": {
       "name": "MICHIKO WR 4",
       "input": "WR 4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_136",
       "t7_command": "WR 4",
       "t7_hit_level": "low",
@@ -8174,12 +8834,17 @@
         "WR 4"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -40 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -40 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WR+1+2": {
       "name": "MICHIKO WR+1+2",
       "input": "WR+1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_137",
       "t7_command": "WR+1+2",
       "t7_hit_level": "mid",
@@ -8201,12 +8866,17 @@
         "WR+1+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block 0 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block 0 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS 1": {
       "name": "MICHIKO WS 1",
       "input": "WS 1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_138",
       "t7_command": "WS 1",
       "t7_hit_level": "mid",
@@ -8230,12 +8900,17 @@
       "move_class": "strike",
       "note": "T7 [mid] on block -6 / on hit +5 / CH +5 | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "13",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS 1,1": {
       "name": "Rampage Wing",
       "input": "WS 1,1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_139",
       "t7_command": "WS 1, 1",
       "t7_hit_level": "mid, high",
@@ -8267,12 +8942,17 @@
         "total": 25
       },
       "mod_damage": "13,8",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS (1),1": {
       "name": "Rampage Wing to Harrier (chain)",
       "input": "WS (1),1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_140",
       "t7_command": "WS (1), 1",
       "t7_hit_level": "high",
@@ -8297,12 +8977,17 @@
       "move_class": "string",
       "note": "T7 [high] on block -5 / on hit +6 / CH +6 | t7chicken lists no separate move name; labeled from its named T7 string family",
       "mod_damage": "13,8",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS 2": {
       "name": "Kite Upper",
       "input": "WS 2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_141",
       "t7_command": "WS 2",
       "t7_hit_level": "mid",
@@ -8326,12 +9011,17 @@
       "move_class": "strike",
       "note": "T7 [mid] on block -13 / on hit LAUNCH / CH LAUNCH",
       "mod_damage": "20",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS 4": {
       "name": "MICHIKO WS 4",
       "input": "WS 4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_142",
       "t7_command": "WS 4",
       "t7_hit_level": "mid",
@@ -8355,12 +9045,17 @@
       "move_class": "strike",
       "note": "T7 [mid] on block -3 / on hit +8 / CH +8 | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "15",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3+4": {
       "name": "Crash Landing",
       "input": "d+3+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_143",
       "t7_command": "(While enemy is down) d+3+4",
       "t7_hit_level": "low",
@@ -8382,12 +9077,17 @@
         "gnd:d+3+4"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -20 / on hit KND / CH KND"
+      "note": "T7 [low] on block -20 / on hit KND / CH KND",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 127,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1,2,4,4,4,3,3,3,3,3": {
       "name": "10 Hit Combo",
       "input": "1,2,4,4,4,3,3,3,3,3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_144",
       "t7_command": "1, 2, 4, 4, 4, 3, 3, 3, 3, 3",
       "t7_hit_level": "-",
@@ -8418,12 +9118,17 @@
         "1,2,4,4,4,3,3,3,3,3"
       ],
       "move_class": "string",
-      "note": "T7 [-] on block -20 / on hit KND / CH KND"
+      "note": "T7 [-] on block -20 / on hit KND / CH KND",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Face Up,Feet Towards+3 or (After Rolling Forward)": {
       "name": "MICHIKO Face Up,Feet Towards+3 or (After Rolling Forward)",
       "input": "Face Up,Feet Towards+3 or (After Rolling Forward)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_145",
       "t7_command": "Face Up, Feet Towards+3 or (After Rolling Forward)",
       "t7_hit_level": "low",
@@ -8446,12 +9151,17 @@
         "Face Up,Feet Towards+3 or (After Rolling Forward)"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -12 / on hit +5 / CH STUN | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -12 / on hit +5 / CH STUN | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Face Up,Feet Towards+4 or (After Rolling Forward)": {
       "name": "MICHIKO Face Up,Feet Towards+4 or (After Rolling Forward)",
       "input": "Face Up,Feet Towards+4 or (After Rolling Forward)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_146",
       "t7_command": "Face Up, Feet Towards+4 or (After Rolling Forward)",
       "t7_hit_level": "mid",
@@ -8474,12 +9184,17 @@
         "Face Up,Feet Towards+4 or (After Rolling Forward)"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -12 / on hit +5 / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -12 / on hit +5 / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Face Up,Feet Towards,d+3": {
       "name": "MICHIKO Face Up,Feet Towards,d+3",
       "input": "Face Up,Feet Towards,d+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_147",
       "t7_command": "Face Up, Feet Towards, d+3 (or 4)",
       "t7_hit_level": "low",
@@ -8503,12 +9218,17 @@
         "Face Up,Feet Towards,d+3"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -16 / on hit -3 / CH -3 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -16 / on hit -3 / CH -3 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Face Up,Feet Towards+3+4": {
       "name": "MICHIKO Face Up,Feet Towards+3+4",
       "input": "Face Up,Feet Towards+3+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_148",
       "t7_command": "Face Up, Feet Towards+3+4",
       "t7_hit_level": "mid",
@@ -8531,12 +9251,17 @@
         "Face Up,Feet Towards+3+4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -21 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -21 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Face Up,Feet Towards,Roll Forward+1+2": {
       "name": "MICHIKO Face Up,Feet Towards,Roll Forward+1+2",
       "input": "Face Up,Feet Towards,Roll Forward+1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_149",
       "t7_command": "Face Up, Feet Towards, Roll Forward+1+2",
       "t7_hit_level": "mid",
@@ -8560,12 +9285,17 @@
         "Face Up,Feet Towards,Roll Forward+1+2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block +2 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block +2 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Face Down,Feet Away+3": {
       "name": "MICHIKO Face Down,Feet Away+3",
       "input": "Face Down,Feet Away+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_150",
       "t7_command": "Face Down, Feet Away+3",
       "t7_hit_level": "low",
@@ -8588,12 +9318,17 @@
         "Face Down,Feet Away+3"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -20 / on hit +1 / CH STUN | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -20 / on hit +1 / CH STUN | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Face Down,Feet Away+4 (close)": {
       "name": "MICHIKO Face Down,Feet Away+4 (close)",
       "input": "Face Down,Feet Away+4 (close)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_151",
       "t7_command": "Face Down, Feet Away+4 (close)",
       "t7_hit_level": "mid",
@@ -8616,12 +9351,17 @@
         "Face Down,Feet Away+4 (close)"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -19 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -19 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Face Down,Feet Away+4 (far)": {
       "name": "MICHIKO Face Down,Feet Away+4 (far)",
       "input": "Face Down,Feet Away+4 (far)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_152",
       "t7_command": "Face Down, Feet Away+4 (far)",
       "t7_hit_level": "mid",
@@ -8644,12 +9384,17 @@
         "Face Down,Feet Away+4 (far)"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -19 / on hit -10 / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -19 / on hit -10 / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(Upon Landing) f": {
       "name": "MICHIKO (Upon Landing) f",
       "input": "(Upon Landing) f",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_153",
       "t7_command": "(Upon Landing) f",
       "t7_hit_level": "mid",
@@ -8671,12 +9416,17 @@
         "(Upon Landing) f"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -2 / on hit +3 / CH +3 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -2 / on hit +3 / CH +3 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f+4_t7": {
       "name": "Harrier",
       "input": "f+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_154",
       "t7_command": "f+4",
       "t7_hit_level": "-",
@@ -8700,12 +9450,17 @@
       "move_class": "strike",
       "note": "T7 [-] on block - / on hit - / CH -",
       "t7_input": "f+4",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 214,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "1,1,F": {
       "name": "Double Slap to Harrier",
       "input": "1,1,F",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_155",
       "t7_command": "1, 1, F",
       "t7_hit_level": "high, high",
@@ -8738,12 +9493,17 @@
         "total": 17
       },
       "mod_damage": "7,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3,3,3,F": {
       "name": "MICHIKO 3,3,3,F",
       "input": "3,3,3,F",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_156",
       "t7_command": "3, 3, 3, F",
       "t7_hit_level": "mid, mid, mid",
@@ -8776,12 +9536,17 @@
           4
         ],
         "total": 17
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4,4,4,F": {
       "name": "Nimble Cutter to Harrier",
       "input": "4,4,4,F",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_157",
       "t7_command": "4, 4, 4, F",
       "t7_hit_level": "high, mid, high",
@@ -8816,12 +9581,17 @@
         "total": 47
       },
       "mod_damage": "17,20,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/f+4,4,4,4,F": {
       "name": "Wing Cutter to Harrier",
       "input": "u/f+4,4,4,4,F",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_158",
       "t7_command": "u/f+4, 4, 4, 4, F",
       "t7_hit_level": "mid, mid, mid, high",
@@ -8858,12 +9628,17 @@
         "total": 32
       },
       "mod_damage": "10,10,10,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1,1,F": {
       "name": "Peck and Slap to Harrier",
       "input": "d/f+1,1,F",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_159",
       "t7_command": "d/f+1, 1, F",
       "t7_hit_level": "mid, high",
@@ -8896,12 +9671,17 @@
         "total": 21
       },
       "mod_damage": "13,8",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+2,F": {
       "name": "Paineira to Harrier",
       "input": "d+2,F",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_160",
       "t7_command": "d+2, F",
       "t7_hit_level": "mid",
@@ -8926,12 +9706,17 @@
       "move_class": "string",
       "note": "T7 [mid] on block -28 / on hit -17 / CH STUN",
       "mod_damage": "18",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1,F": {
       "name": "Inside Peck to Harrier",
       "input": "b+1,F",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_161",
       "t7_command": "b+1, F",
       "t7_hit_level": "mid",
@@ -8956,12 +9741,17 @@
       "move_class": "string",
       "note": "T7 [mid] on block -34 / on hit -23 / CH -23",
       "mod_damage": "13",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS 1,1,F": {
       "name": "Rampage Wing to Harrier",
       "input": "WS 1,1,F",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_162",
       "t7_command": "WS 1, 1, F",
       "t7_hit_level": "mid, high",
@@ -8994,12 +9784,17 @@
         "total": 25
       },
       "mod_damage": "13,8",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HAR D": {
       "name": "MICHIKO HAR D",
       "input": "HAR D",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_163",
       "t7_command": "HAR D",
       "t7_hit_level": "-",
@@ -9021,12 +9816,17 @@
         "HAR D"
       ],
       "move_class": "strike",
-      "note": "T7 [-] on block - / on hit - / CH - | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [-] on block - / on hit - / CH - | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "HAR 1": {
       "name": "Alula Slice",
       "input": "HAR 1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_164",
       "t7_command": "HAR 1",
       "t7_hit_level": "high",
@@ -9050,12 +9850,17 @@
       "move_class": "strike",
       "note": "T7 [high] on block -3 / on hit +17 / CH +17",
       "mod_damage": "12",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HAR 2": {
       "name": "Alula Slam",
       "input": "HAR 2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_165",
       "t7_command": "HAR 2",
       "t7_hit_level": "mid",
@@ -9079,12 +9884,17 @@
       "move_class": "strike",
       "note": "T7 [mid] on block -6 / on hit -2 (OC) / CH GROUND BOUNCE",
       "mod_damage": "20",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HAR 3": {
       "name": "Palmate Spin",
       "input": "HAR 3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_166",
       "t7_command": "HAR 3",
       "t7_hit_level": "low",
@@ -9108,12 +9918,17 @@
       "move_class": "strike",
       "note": "T7 [low] on block -25 / on hit KND / CH KND",
       "mod_damage": "25",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HAR 4": {
       "name": "Snipe's Knee",
       "input": "HAR 4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_167",
       "t7_command": "HAR 4",
       "t7_hit_level": "mid",
@@ -9137,12 +9952,17 @@
       "move_class": "strike",
       "note": "T7 [mid] on block -9 / on hit KND / CH KND",
       "mod_damage": "27",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HAR d/f+2": {
       "name": "MICHIKO HAR d/f+2",
       "input": "HAR d/f+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_168",
       "t7_command": "HAR d/f+2",
       "t7_hit_level": "mid",
@@ -9164,12 +9984,17 @@
         "HAR d/f+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -13 / on hit -2 / CH -2 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -13 / on hit -2 / CH -2 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HAR d/f+2,3": {
       "name": "Egret Rush",
       "input": "HAR d/f+2,3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_169",
       "t7_command": "HAR d/f+2, 3",
       "t7_hit_level": "mid, high",
@@ -9199,12 +10024,17 @@
           18
         ],
         "total": 31
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "HAR (d/f+2),3": {
       "name": "MICHIKO HAR (d/f+2),3",
       "input": "HAR (d/f+2),3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_170",
       "t7_command": "HAR (d/f+2), 3",
       "t7_hit_level": "mid",
@@ -9227,12 +10057,17 @@
         "HAR (d/f+2),3"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -3 / on hit +14 / CH +14 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -3 / on hit +14 / CH +14 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HAR u/f+3": {
       "name": "Aerial Glide",
       "input": "HAR u/f+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_171",
       "t7_command": "HAR u/f+3",
       "t7_hit_level": "mid",
@@ -9256,12 +10091,17 @@
       "move_class": "strike",
       "note": "T7 [mid] on block -9 / on hit KND / CH FLOOR BOUND",
       "mod_damage": "20?",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3+4": {
       "name": "Fledgeling Foot",
       "input": "f+3+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_172",
       "t7_command": "f+3+4",
       "t7_hit_level": "mid",
@@ -9285,12 +10125,17 @@
       "move_class": "strike",
       "note": "T7 [mid] on block -13 / on hit KND / CH KND",
       "mod_damage": "23",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Rage) HAR 1+2": {
       "name": "Rage Drive",
       "input": "(During Rage) HAR 1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_173",
       "t7_command": "(During Rage) HAR 1+2",
       "t7_hit_level": "mid",
@@ -9312,12 +10157,17 @@
         "(During Rage) HAR 1+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block +5 (OC) / on hit KND / CH KND"
+      "note": "T7 [mid] on block +5 (OC) / on hit KND / CH KND",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Rage) 3+4": {
       "name": "Rage Art",
       "input": "(During Rage) 3+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_174",
       "t7_command": "(During Rage) 3+4",
       "t7_hit_level": "mid",
@@ -9339,12 +10189,17 @@
         "(During Rage) 3+4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -22 / on hit KND / CH KND"
+      "note": "T7 [mid] on block -22 / on hit KND / CH KND",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/b+3+4": {
       "name": "Eclipse Plumage",
       "input": "d/b+3+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_175",
       "t7_command": "d/b+3+4",
       "t7_hit_level": "mid",
@@ -9368,12 +10223,17 @@
       "move_class": "strike",
       "note": "T7 [mid] on block ! / on hit KND / CH KND",
       "mod_damage": "60",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 248,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+1+3": {
       "name": "Flying Catch",
       "input": "f+1+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_178",
       "t7_command": "Approach enemy... f+1+3",
       "t7_hit_level": "high throw",
@@ -9399,12 +10259,17 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+2+4_t7": {
       "name": "Display of Force",
       "input": "f+2+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_179",
       "t7_command": "Approach enemy... f+2+4",
       "t7_hit_level": "high throw",
@@ -9431,12 +10296,17 @@
       "unblockable": true,
       "isGrab": true,
       "throw_break": "2",
-      "t7_input": "f+2+4"
+      "t7_input": "f+2+4",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1+2": {
       "name": "Phoenix Kick Flurry",
       "input": "d/f+1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_180",
       "t7_command": "Approach enemy... d/f+1+2 (or During Harrier)",
       "t7_hit_level": "high throw",
@@ -9462,12 +10332,17 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 117,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "WR f,f,F (Mid Screen)": {
       "name": "MICHIKO WR f,f,F (Mid Screen)",
       "input": "WR f,f,F (Mid Screen)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_184",
       "t7_command": "WR f, f, F (Mid Screen)",
       "t7_hit_level": "mid throw",
@@ -9491,12 +10366,17 @@
         "WR f,f,F (Mid Screen)"
       ],
       "move_class": "string",
-      "note": "T7 [mid throw] on block -5 (BT) / on hit KND / CH - | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid throw] on block -5 (BT) / on hit KND / CH - | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "(During Tackle) 1": {
       "name": "MICHIKO (During Tackle) 1",
       "input": "(During Tackle) 1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_185",
       "t7_command": "(During Tackle) 1 (or 2)",
       "t7_hit_level": "-",
@@ -9520,12 +10400,17 @@
       "move_class": "strike",
       "note": "T7 [-] on block - / on hit KND / CH - | t7chicken lists no name for this move; labeled by T7 command",
       "mod_damage": "7",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Tackle) 1/2,1/2": {
       "name": "MICHIKO (During Tackle) 1/2,1/2",
       "input": "(During Tackle) 1/2,1/2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_186",
       "t7_command": "(During Tackle) 1/2, 1/2",
       "t7_hit_level": "-",
@@ -9555,12 +10440,17 @@
           5
         ],
         "total": 10
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(During Tackle) 1/2,1/2,1/2": {
       "name": "MICHIKO (During Tackle) 1/2,1/2,1/2",
       "input": "(During Tackle) 1/2,1/2,1/2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_187",
       "t7_command": "(During Tackle) 1/2, 1/2, 1/2",
       "t7_hit_level": "-",
@@ -9592,12 +10482,17 @@
           5
         ],
         "total": 15
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(During Tackle) 1/2,1/2,1/2,1/2": {
       "name": "MICHIKO (During Tackle) 1/2,1/2,1/2,1/2",
       "input": "(During Tackle) 1/2,1/2,1/2,1/2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_188",
       "t7_command": "(During Tackle) 1/2, 1/2, 1/2, 1/2",
       "t7_hit_level": "-",
@@ -9631,12 +10526,17 @@
           15
         ],
         "total": 30
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+2+3_t7": {
       "name": "Taunt",
       "input": "1+2+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_189",
       "t7_command": "1+2+3",
       "t7_hit_level": "-",
@@ -9660,7 +10560,12 @@
       "move_class": "strike",
       "note": "T7 [-] on block - / on hit - / CH -",
       "t7_input": "1+2+3",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 255,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1~t7.katarina": {
       "name": "MICHIKO 1",
@@ -9684,7 +10589,7 @@
         "1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_2",
       "t7_command": "1",
       "t7_hit_level": "high",
@@ -9696,7 +10601,12 @@
       "merge_source": "t7:katarina_2",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "mod_damage": "7",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "katarina",
+        "row": 43,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "1,2~t7.katarina": {
       "name": "Wing Slap Combo",
@@ -9720,7 +10630,7 @@
         "1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_17",
       "t7_command": "1, 2",
       "t7_hit_level": "high, high",
@@ -9739,7 +10649,12 @@
         "total": 17
       },
       "mod_damage": "7,10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "katarina",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2~t7.katarina": {
       "name": "MICHIKO 2",
@@ -9763,7 +10678,7 @@
         "2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_21",
       "t7_command": "2",
       "t7_hit_level": "high",
@@ -9775,7 +10690,12 @@
       "merge_source": "t7:katarina_21",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "mod_damage": "10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "katarina",
+        "row": 106,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "3~t7.katarina": {
       "name": "MICHIKO 3",
@@ -9799,7 +10719,7 @@
         "3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_24",
       "t7_command": "3 (or WS 3)",
       "t7_hit_level": "mid",
@@ -9812,7 +10732,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "input_note": "(or WS 3)",
       "mod_damage": "14",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "katarina",
+        "row": 195,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "4~t7.katarina": {
       "name": "MICHIKO 4",
@@ -9836,7 +10761,7 @@
         "4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_41",
       "t7_command": "4",
       "t7_hit_level": "high",
@@ -9849,7 +10774,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
       "mod_damage": "17",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "katarina",
+        "row": 199,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "u/f+4~t7.katarina": {
       "name": "MICHIKO u/f+4",
@@ -9873,7 +10803,7 @@
         "u/f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_57",
       "t7_command": "u/f+4",
       "t7_hit_level": "mid",
@@ -9885,7 +10815,12 @@
       "merge_source": "t7:katarina_57",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "mod_damage": "10",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "katarina",
+        "row": 80,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d/f+2~t7.katarina": {
       "name": "MICHIKO d/f+2",
@@ -9909,7 +10844,7 @@
         "d/f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_91",
       "t7_command": "d/f+2",
       "t7_hit_level": "mid",
@@ -9921,7 +10856,12 @@
       "merge_source": "t7:katarina_91",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "mod_damage": "17",
-      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "katarina",
+        "row": 269,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "1+3~t7.katarina": {
       "name": "Flying Catch",
@@ -9945,7 +10885,7 @@
         "1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_176",
       "t7_command": "Approach enemy... 1+3",
       "t7_hit_level": "high throw",
@@ -9959,7 +10899,12 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "katarina",
+        "row": 288,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "2+4~t7.katarina": {
       "name": "Display of Force",
@@ -9983,7 +10928,7 @@
         "2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_177",
       "t7_command": "Approach enemy... 2+4",
       "t7_hit_level": "high throw",
@@ -9997,7 +10942,12 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "katarina",
+        "row": 289,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "SIDE_L.1+3": {
       "name": "Osprey Sweep",
@@ -10021,7 +10971,7 @@
         "SIDE_L.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_181",
       "t7_command": "Approach from left side... 1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -10035,7 +10985,12 @@
       "input_note": "Approach from left side... (or 2+4)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SIDE_R.1+3": {
       "name": "Raptor's Wrath",
@@ -10059,7 +11014,7 @@
         "SIDE_R.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_182",
       "t7_command": "Approach from right side...  1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -10073,7 +11028,12 @@
       "input_note": "Approach from right side... (or 2+4)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BACK.1+3": {
       "name": "Bird of Prey",
@@ -10097,7 +11057,7 @@
         "BACK.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "katarina_183",
       "t7_command": "Approach from behind... 1+3 (or f+1+3)",
       "t7_hit_level": "high throw",
@@ -10111,7 +11071,12 @@
       "input_note": "Approach from behind... (or f+1+3)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     }
   },
   "restored_from_sweep_338": {
@@ -10305,7 +11270,7 @@
         "moves_before": 344,
         "moves_after": 344,
         "added": [],
-        "t8_coverage": "n/a — T8 has no Katarina (verified in game/data/t8_frame_tables.json)",
+        "t8_coverage": "n/a \u2014 T8 has no Katarina (verified in game/data/t8_frame_tables.json)",
         "t7_coverage": "189/189 T7 katarina rows by id; 0 genuinely-missing"
       }
     },

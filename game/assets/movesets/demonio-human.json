@@ -2524,7 +2524,12 @@
       "note": "RIN is the baseline, the still point. One perfectly fundamental palm strike.",
       "input_remapped_from": "S",
       "merge_source": "donor:demonio:1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4": {
       "name": "The Unbowed [WH SIGNATURE]",
@@ -2550,7 +2555,12 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:demonio:1+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "qcf+1": {
       "name": "Apology Burned Away [WH SIGNATURE]",
@@ -2572,7 +2582,12 @@
       "note": "The trial is burning the guilt out of him. A straight punch with nothing left to atone for.",
       "input_remapped_from": "qcf+P",
       "merge_source": "donor:demonio:qcf+1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+1+2": {
       "name": "DEMONIO d+1+2 (T3 jin r92)",
@@ -2857,7 +2872,12 @@
       "isGrab": true,
       "throw_break": "1",
       "merge_source": "donor:demonio:qcb+1+3__main",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 117,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,1,4": {
       "name": "DEMONIO 2,1,4 (T3 jin r230)",
@@ -2917,7 +2937,12 @@
       },
       "note": "Mid; on block -10",
       "merge_source": "donor:demonio:2,1,4__main",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 67,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,1,2,2": {
       "name": "DEMONIO 2,1,2,2 (T3 jin r223)",
@@ -3410,7 +3435,12 @@
       "note": "Mid, Mid, Mid; on block -14; knockdown on hit",
       "t8_input": "1+2",
       "merge_source": "donor:demonio:1+2_t8",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1,2": {
       "name": "Left Right Combo",
@@ -3441,7 +3471,12 @@
       },
       "note": "High; on block -3",
       "merge_source": "donor:demonio:1,2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,1": {
       "name": "Black Wing Rondo",
@@ -3474,7 +3509,12 @@
       },
       "note": "Mid; on block -16; knockdown on hit",
       "merge_source": "donor:demonio:1,2,1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,3": {
       "name": "Axe Kick",
@@ -3507,7 +3547,12 @@
       },
       "note": "Mid; on block +0",
       "merge_source": "donor:demonio:1,2,3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2+3+4": {
       "name": "Ki Charge",
@@ -3529,7 +3574,12 @@
       ],
       "move_class": "special",
       "merge_source": "donor:demonio:1+2+3+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1,2,4": {
       "name": "Spinning Hook Kick",
@@ -3562,7 +3612,12 @@
       },
       "note": "High; on block -4; knockdown on hit",
       "merge_source": "donor:demonio:1,2,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,3": {
       "name": "Single Low",
@@ -3593,7 +3648,12 @@
       },
       "note": "Low; on block -12",
       "merge_source": "donor:demonio:1,3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+3+4": {
       "name": "State of Zanshin",
@@ -3616,7 +3676,12 @@
       "move_class": "special",
       "note": "Mental Alertness",
       "merge_source": "donor:demonio:1+3+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1,3,4": {
       "name": "Double Low",
@@ -3649,7 +3714,12 @@
       },
       "note": "Low; on block -13",
       "merge_source": "donor:demonio:1,3,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,1,4~donor.demonio.2": {
       "name": "Low Trick Kick",
@@ -3682,7 +3752,12 @@
       },
       "note": "Low; on block -12",
       "merge_source": "donor:demonio:2,1,4~4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "2+3": {
       "name": "Heat Burst",
@@ -3712,7 +3787,12 @@
       },
       "note": "Mid; on block +1",
       "merge_source": "donor:demonio:2+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "2,4": {
       "name": "Switchblade",
@@ -3743,7 +3823,12 @@
       },
       "note": "High; on block -13",
       "merge_source": "donor:demonio:2,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3,1": {
       "name": "Move 1 (1)",
@@ -3774,7 +3859,12 @@
       },
       "note": "High; on block -1",
       "merge_source": "donor:demonio:3,1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3,1,4": {
       "name": "Kishin Rekko",
@@ -3807,7 +3897,12 @@
       },
       "note": "Low; on block -13",
       "merge_source": "donor:demonio:3,1,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4~donor.demonio.2": {
       "name": "Spinning Flare Kick",
@@ -3830,7 +3925,12 @@
       "move_class": "strike",
       "note": "Mid; on block -11~-2; knockdown on hit",
       "merge_source": "donor:demonio:4~3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+1~donor.demonio": {
       "name": "Move b+1 (b+1)",
@@ -3854,7 +3954,12 @@
       "note": "High; on block -9",
       "t8_input": "b+1",
       "merge_source": "donor:demonio:b+1_t8",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 216,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+1+2": {
       "name": "Suigetsu Strike",
@@ -3877,7 +3982,12 @@
       "move_class": "strike",
       "note": "Mid; on block -12",
       "merge_source": "donor:demonio:b+1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 119,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "b+1,2": {
       "name": "Shun Maten",
@@ -3908,7 +4018,12 @@
       },
       "note": "High; on block -10; knockdown on hit",
       "merge_source": "donor:demonio:b+1,2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1+3": {
       "name": "Parry",
@@ -3930,7 +4045,12 @@
       ],
       "move_class": "parry",
       "merge_source": "donor:demonio:b+1+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+2": {
       "name": "Move b+2 (b+2)",
@@ -3953,7 +4073,12 @@
       "move_class": "strike",
       "note": "Mid; on block -11",
       "merge_source": "donor:demonio:b+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 97,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+2,1": {
       "name": "Shun Masatsu",
@@ -3984,7 +4109,12 @@
       },
       "note": "Mid; on block -9",
       "merge_source": "donor:demonio:b+2,1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+3": {
       "name": "Left Knee",
@@ -4007,7 +4137,12 @@
       "move_class": "strike",
       "note": "Mid; on block -6",
       "merge_source": "donor:demonio:b+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 103,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+3,2": {
       "name": "Right Thrust",
@@ -4038,7 +4173,12 @@
       },
       "note": "Mid; on block -9",
       "merge_source": "donor:demonio:b+3,2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+3+4": {
       "name": "Zanshin",
@@ -4061,7 +4201,12 @@
       "move_class": "special",
       "note": "Crouching Demon Stance (CDS) / Mental Alertness (2)",
       "merge_source": "donor:demonio:b+3+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 110,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "b+4": {
       "name": "Spinning Sidekick",
@@ -4084,7 +4229,12 @@
       "move_class": "strike",
       "note": "Mid; on block -7; knockdown on hit",
       "merge_source": "donor:demonio:b+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 112,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "BACK.1+3": {
       "name": "Pivoting Hip Throw",
@@ -4111,7 +4261,12 @@
       "isGrab": true,
       "throw_break": "1+2",
       "merge_source": "donor:demonio:Back throw",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b,f+2": {
       "name": "Move b,f+2 (b,f+2)",
@@ -4134,7 +4289,12 @@
       "move_class": "strike",
       "note": "Mid; on block -7",
       "merge_source": "donor:demonio:b,f+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b,f+2,1": {
       "name": "Move 1 (1)",
@@ -4165,7 +4325,12 @@
       },
       "note": "High; on block -5",
       "merge_source": "donor:demonio:b,f+2,1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b,f+2,1,2": {
       "name": "Evil Intent",
@@ -4198,7 +4363,12 @@
       },
       "note": "Mid; on block -5; knockdown on hit",
       "merge_source": "donor:demonio:b,f+2,1,2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b,f+2,1,d/f+2": {
       "name": "Geyser",
@@ -4231,7 +4401,12 @@
       },
       "note": "Mid; on block -14; knockdown on hit",
       "merge_source": "donor:demonio:b,f+2,1,df+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b,f+2,3": {
       "name": "Keito",
@@ -4262,7 +4437,12 @@
       },
       "note": "Mid; on block -9",
       "merge_source": "donor:demonio:b,f+2,3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "donor.demonio.CD.df#1": {
       "name": "Electric Thrusting Uppercut",
@@ -4331,7 +4511,12 @@
       "move_class": "strike",
       "note": "Mid; on block -13; knockdown on hit",
       "merge_source": "donor:demonio:CD.df+1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CD.d/f+2": {
       "name": "Wind Hook Fist",
@@ -4354,7 +4539,12 @@
       "move_class": "strike",
       "note": "High; on block -10; knockdown on hit",
       "merge_source": "donor:demonio:CD.df+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CD.D/F+4": {
       "name": "Move CD.DF+4 (CD.DF+4)",
@@ -4377,7 +4567,12 @@
       "move_class": "strike",
       "note": "Low; on block -31",
       "merge_source": "donor:demonio:CD.DF+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CD.D/F+4,2": {
       "name": "Depraved Savagery",
@@ -4408,7 +4603,12 @@
       },
       "note": "Mid; on block -16; knockdown on hit",
       "merge_source": "donor:demonio:CD.DF+4,2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+1": {
       "name": "Black Wing Flash",
@@ -4442,7 +4642,12 @@
       "isGrab": true,
       "throw_break": "1",
       "merge_source": "donor:demonio:d+1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 139,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d+2": {
       "name": "Scourge",
@@ -4465,7 +4670,12 @@
       "move_class": "strike",
       "note": "Low; on block -14",
       "merge_source": "donor:demonio:d+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 137,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d+3": {
       "name": "Move d+3 (d+3)",
@@ -4488,7 +4698,12 @@
       "move_class": "strike",
       "note": "Low; on block -14",
       "merge_source": "donor:demonio:d+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3+4": {
       "name": "Double Lift Kick",
@@ -4518,7 +4733,12 @@
       },
       "note": "Mid, Mid; on block -19; knockdown on hit",
       "merge_source": "donor:demonio:d+3+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 127,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "d+3,4": {
       "name": "Move 4 (4)",
@@ -4549,7 +4769,12 @@
       },
       "note": "High; on block -11",
       "merge_source": "donor:demonio:d+3,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3,4,3": {
       "name": "Kazama Style Three-Quarter Kick",
@@ -4582,7 +4807,12 @@
       },
       "note": "Mid; on block -12",
       "merge_source": "donor:demonio:d+3,4,3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3,4~donor.demonio": {
       "name": "Mid Sidekick",
@@ -4613,7 +4843,12 @@
       },
       "note": "Mid; on block -12; knockdown on hit",
       "merge_source": "donor:demonio:d+3,4~4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d+4": {
       "name": "Right Sweep",
@@ -4636,7 +4871,12 @@
       "move_class": "strike",
       "note": "Low; on block -12",
       "merge_source": "donor:demonio:d+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 339,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d/b+1": {
       "name": "Crouch Jab",
@@ -4659,7 +4899,12 @@
       "move_class": "strike",
       "note": "Special low; on block -5",
       "merge_source": "donor:demonio:db+1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/b+1+2": {
       "name": "Power Stance",
@@ -4682,7 +4927,12 @@
       "move_class": "special",
       "note": "Mid; on block -11~+4",
       "merge_source": "donor:demonio:db+1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d/b+2": {
       "name": "Move db+2 (db+2)",
@@ -4705,7 +4955,12 @@
       "move_class": "strike",
       "note": "Mid; on block -10",
       "merge_source": "donor:demonio:db+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/b+2,2": {
       "name": "Move 2 (2)",
@@ -4736,7 +4991,12 @@
       },
       "note": "High; on block -12",
       "merge_source": "donor:demonio:db+2,2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/b+2,2,3": {
       "name": "Savage Sword",
@@ -4769,7 +5029,12 @@
       },
       "note": "Mid; on block -9; knockdown on hit",
       "merge_source": "donor:demonio:db+2,2,3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/b+2,3": {
       "name": "Cascade Kick",
@@ -4800,7 +5065,12 @@
       },
       "note": "Mid; on block -8; knockdown on hit",
       "merge_source": "donor:demonio:db+2,3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/b+3": {
       "name": "Left Spinning Back Kick",
@@ -4823,7 +5093,12 @@
       "move_class": "strike",
       "note": "High; on block -10~-8; knockdown on hit",
       "merge_source": "donor:demonio:db+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/b+4": {
       "name": "Right Low Roundhouse",
@@ -4846,7 +5121,12 @@
       "move_class": "strike",
       "note": "Low; on block -13",
       "merge_source": "donor:demonio:db+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1~donor.demonio": {
       "name": "Mid Left Punch",
@@ -4869,7 +5149,12 @@
       "move_class": "strike",
       "note": "Mid; on block -3",
       "merge_source": "donor:demonio:df+1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1,4~donor.demonio": {
       "name": "High Roundhouse Kick",
@@ -4900,7 +5185,12 @@
       },
       "note": "High; on block -9",
       "merge_source": "donor:demonio:df+1,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 67,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1,4~donor.demonio.2": {
       "name": "Mid Sidekick",
@@ -4931,7 +5221,12 @@
       },
       "note": "Mid; on block -12; knockdown on hit",
       "merge_source": "donor:demonio:df+1,4~4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d/f+2~donor.demonio": {
       "name": "Fiendish Rend",
@@ -4954,7 +5249,12 @@
       "move_class": "strike",
       "note": "Mid; on block -9",
       "merge_source": "donor:demonio:df+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+2+4": {
       "name": "Shun Ren Dan",
@@ -4981,7 +5281,12 @@
       "isGrab": true,
       "throw_break": "2",
       "merge_source": "donor:demonio:df+2+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+2,4": {
       "name": "Fiendish Talon Rend",
@@ -5012,7 +5317,12 @@
       },
       "note": "Mid; on block -12",
       "merge_source": "donor:demonio:df+2,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+2,H.1+2": {
       "name": "Awakened Fiendish Claw",
@@ -5043,7 +5353,12 @@
       },
       "note": "Mid; on block +2; knockdown on hit",
       "merge_source": "donor:demonio:df+2,H.1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d/f+3": {
       "name": "Left Roundhouse",
@@ -5066,7 +5381,12 @@
       "move_class": "strike",
       "note": "Mid; on block -8",
       "merge_source": "donor:demonio:df+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+3~donor.demonio": {
       "name": "Brazilian Kick",
@@ -5089,7 +5409,12 @@
       "move_class": "strike",
       "note": "Mid; on block +6c",
       "merge_source": "donor:demonio:df+3~3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d/f+4~donor.demonio": {
       "name": "Right Spinning Axe Kick",
@@ -5112,7 +5437,12 @@
       "move_class": "strike",
       "note": "Mid; on block +0",
       "merge_source": "donor:demonio:df+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 67,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DVS.1": {
       "name": "Awakened Thunder God Fist",
@@ -5135,7 +5465,12 @@
       "move_class": "strike",
       "note": "Mid; on block -9",
       "merge_source": "donor:demonio:DVS.1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DVS.2": {
       "name": "Awakened Wind God Fist",
@@ -5158,7 +5493,12 @@
       "move_class": "strike",
       "note": "Special mid; on block +4; knockdown on hit",
       "merge_source": "donor:demonio:DVS.2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DVS.3": {
       "name": "Awakened Demon's Hoof",
@@ -5181,7 +5521,12 @@
       "move_class": "strike",
       "note": "Mid; on block +2c; knockdown on hit",
       "merge_source": "donor:demonio:DVS.3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DVS.4": {
       "name": "Move DVS.4 (DVS.4)",
@@ -5204,7 +5549,12 @@
       "move_class": "strike",
       "note": "Low; on block -12",
       "merge_source": "donor:demonio:DVS.4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DVS.4,4": {
       "name": "Awakened Spinning Demon",
@@ -5235,7 +5585,12 @@
       },
       "note": "Mid; on block -14",
       "merge_source": "donor:demonio:DVS.4,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DVS.D/F+3": {
       "name": "Awakened Demon's Tail",
@@ -5258,7 +5613,12 @@
       "move_class": "strike",
       "note": "Low; on block -23; knockdown on hit",
       "merge_source": "donor:demonio:DVS.DF+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+1+2": {
       "name": "Double Chamber Punch",
@@ -5288,7 +5648,12 @@
       },
       "note": "High, High; on block -6; knockdown on hit",
       "merge_source": "donor:demonio:f+1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 357,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+3": {
       "name": "Left Sidekick",
@@ -5311,7 +5676,12 @@
       "move_class": "strike",
       "note": "Mid; on block -16",
       "merge_source": "donor:demonio:f+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 79,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+3,1": {
       "name": "Tanden Nidan-uchi",
@@ -5342,7 +5712,12 @@
       },
       "note": "Mid; on block -12",
       "merge_source": "donor:demonio:f+3,1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3,3": {
       "name": "Stinger",
@@ -5373,7 +5748,12 @@
       },
       "note": "High; on block -8",
       "merge_source": "donor:demonio:f+3,3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3+4": {
       "name": "Zenshin",
@@ -5395,7 +5775,12 @@
       ],
       "move_class": "special",
       "merge_source": "donor:demonio:f+3+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f+4~donor.demonio": {
       "name": "Front Thrust Kick",
@@ -5419,7 +5804,12 @@
       "note": "Mid; on block -8",
       "t8_input": "f+4",
       "merge_source": "donor:demonio:f+4_t8",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 214,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "FC.d/f+4": {
       "name": "Right Sweep (2)",
@@ -5442,7 +5832,12 @@
       "move_class": "strike",
       "note": "Low; on block -26",
       "merge_source": "donor:demonio:FC.df+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+2": {
       "name": "Demon's Paw",
@@ -5465,7 +5860,12 @@
       "move_class": "strike",
       "note": "Mid; on block -8; knockdown on hit",
       "merge_source": "donor:demonio:f,F+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+3": {
       "name": "Left Axe Kick",
@@ -5488,7 +5888,12 @@
       "move_class": "strike",
       "note": "Mid; on block -4; knockdown on hit",
       "merge_source": "donor:demonio:f,F+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+3,1": {
       "name": "Left Jab",
@@ -5519,7 +5924,12 @@
       },
       "note": "High; on block +1",
       "merge_source": "donor:demonio:f,F+3,1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+4": {
       "name": "Battery Sidekick",
@@ -5542,7 +5952,12 @@
       "move_class": "strike",
       "note": "Mid; on block -7; knockdown on hit",
       "merge_source": "donor:demonio:f,F+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,F+3": {
       "name": "Leaping Side Kick",
@@ -5565,7 +5980,12 @@
       "move_class": "strike",
       "note": "Mid; on block +6; knockdown on hit",
       "merge_source": "donor:demonio:f,f,F+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,n,d,d/f": {
       "name": "Crouch Dash",
@@ -5588,7 +6008,12 @@
       "move_class": "special",
       "note": "Breaking Step",
       "merge_source": "donor:demonio:f,n,d,df",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f,n,d,d/f,U/F": {
       "name": "Crouch Dash (UF)",
@@ -5612,7 +6037,12 @@
       "move_class": "special",
       "note": "Breaking Step; Stance: Crouch Dash",
       "merge_source": "donor:demonio:f,n,d,df,UF",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "H.2+3": {
       "name": "Hellfire Trespass Slayer",
@@ -5635,7 +6065,12 @@
       "move_class": "strike",
       "note": "Mid, High, Mid; on block +3",
       "merge_source": "donor:demonio:H.2+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "H.2+3,4": {
       "name": "Hellfire Darkside Slayer",
@@ -5658,7 +6093,12 @@
       "move_class": "strike",
       "note": "Mid, High, Mid; on block +9; knockdown on hit",
       "merge_source": "donor:demonio:H.2+3,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "H.d/b+1+2": {
       "name": "Awakened Power Stance",
@@ -5681,7 +6121,12 @@
       "move_class": "special",
       "note": "Mid; on block +4",
       "merge_source": "donor:demonio:H.db+1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "H.f,F+1+2": {
       "name": "Awakened Black Wing",
@@ -5704,7 +6149,12 @@
       "move_class": "strike",
       "note": "Mid; on block +5",
       "merge_source": "donor:demonio:H.f,F+1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "SIDE_L.1+3": {
       "name": "Shoulder Flip",
@@ -5731,7 +6181,12 @@
       "isGrab": true,
       "throw_break": "1",
       "merge_source": "donor:demonio:Left throw",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "OTG.d+1+2": {
       "name": "Black Out",
@@ -5754,7 +6209,12 @@
       "move_class": "strike",
       "note": "Low; on block -13",
       "merge_source": "donor:demonio:OTG.d+1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "R.d/f+1+2": {
       "name": "Polar Demon Gouge",
@@ -5777,7 +6237,12 @@
       "move_class": "special",
       "note": "Mid, Throw; on block -18",
       "merge_source": "donor:demonio:R.df+1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "SIDE_R.2+4": {
       "name": "Over the Limit",
@@ -5804,7 +6269,12 @@
       "isGrab": true,
       "throw_break": "1",
       "merge_source": "donor:demonio:Right throw",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/b+1+2": {
       "name": "Avenger",
@@ -5827,7 +6297,12 @@
       "move_class": "strike",
       "note": "m!; Konshin Seikenzuki; knockdown on hit",
       "merge_source": "donor:demonio:ub+1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "u/b+4~donor.demonio": {
       "name": "Move ub+4 (ub+4)",
@@ -5850,7 +6325,12 @@
       "move_class": "strike",
       "note": "Mid; on block -13; knockdown on hit",
       "merge_source": "donor:demonio:ub+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 67,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/f+1+2": {
       "name": "Tidal Wave",
@@ -5877,7 +6357,12 @@
       "isGrab": true,
       "throw_break": "1+2",
       "merge_source": "donor:demonio:uf+1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/f+2": {
       "name": "Evading Middle Strike",
@@ -5900,7 +6385,12 @@
       "move_class": "strike",
       "note": "Mid; on block -10~-9",
       "merge_source": "donor:demonio:uf+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/f+3~donor.demonio.2": {
       "name": "Left Spinning Jump Kick",
@@ -5923,7 +6413,12 @@
       "move_class": "strike",
       "note": "Mid; on block -9",
       "merge_source": "donor:demonio:uf+3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 51,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/f+4~donor.demonio": {
       "name": "Front Jump Kick",
@@ -5946,7 +6441,12 @@
       "move_class": "strike",
       "note": "Mid; on block -13; knockdown on hit",
       "merge_source": "donor:demonio:uf+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 67,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/f,n,4": {
       "name": "Delayed Rising Toe Kick",
@@ -5969,7 +6469,12 @@
       "move_class": "strike",
       "note": "Mid; on block -13; knockdown on hit",
       "merge_source": "donor:demonio:uf,n,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1": {
       "name": "Solar Plexus Strike",
@@ -5992,7 +6497,12 @@
       "move_class": "strike",
       "note": "Mid; on block -6",
       "merge_source": "donor:demonio:ws1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,2": {
       "name": "Twin Lancer",
@@ -6023,7 +6533,12 @@
       },
       "note": "Mid; on block -8",
       "merge_source": "donor:demonio:ws1,2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,3": {
       "name": "Solar Plexus Strike (3)",
@@ -6054,7 +6569,12 @@
       },
       "note": "High; on block -6",
       "merge_source": "donor:demonio:ws1,3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,3,2": {
       "name": "Solar Plexus Strike (2)",
@@ -6087,7 +6607,12 @@
       },
       "note": "Mid; on block -11",
       "merge_source": "donor:demonio:ws1,3,2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,3,2,1": {
       "name": "Solar Plexus Strike (1)",
@@ -6122,7 +6647,12 @@
       },
       "note": "Mid; on block -11",
       "merge_source": "donor:demonio:ws1,3,2,1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,3,2,1,4": {
       "name": "Solar Plexus Strike (4)",
@@ -6159,7 +6689,12 @@
       },
       "note": "Low; on block -31",
       "merge_source": "donor:demonio:ws1,3,2,1,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,3,2,1,4,2": {
       "name": "Kazama Style 6 Hit Combo Redux",
@@ -6198,7 +6733,12 @@
       },
       "note": "Mid; on block -16; knockdown on hit",
       "merge_source": "donor:demonio:ws1,3,2,1,4,2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.1,3~donor.demonio": {
       "name": "Brazilian Kick",
@@ -6229,7 +6769,12 @@
       },
       "note": "Mid; on block +6",
       "merge_source": "donor:demonio:ws1,3~3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "WS.2": {
       "name": "Crouching Uppercut",
@@ -6252,7 +6797,12 @@
       "move_class": "strike",
       "note": "Mid; on block -12; knockdown on hit",
       "merge_source": "donor:demonio:ws2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.3": {
       "name": "Bamboo Splitter",
@@ -6275,7 +6825,12 @@
       "move_class": "strike",
       "note": "Mid; on block -9",
       "merge_source": "donor:demonio:ws3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.4": {
       "name": "Move ws4 (ws4)",
@@ -6298,7 +6853,12 @@
       "move_class": "strike",
       "note": "Mid; on block -3",
       "merge_source": "donor:demonio:ws4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.4,4": {
       "name": "Double Cross Kicks",
@@ -6329,7 +6889,12 @@
       },
       "note": "High; on block -7",
       "merge_source": "donor:demonio:ws4,4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.1": {
       "name": "Move ZEN.1 (ZEN.1)",
@@ -6352,7 +6917,12 @@
       "move_class": "strike",
       "note": "Mid; on block -3",
       "merge_source": "donor:demonio:ZEN.1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.1+2": {
       "name": "Karmic Epicenter",
@@ -6386,7 +6956,12 @@
       "isGrab": true,
       "throw_break": "1+2",
       "merge_source": "donor:demonio:ZEN.1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.1,2": {
       "name": "Brimstone Bite",
@@ -6417,7 +6992,12 @@
       },
       "note": "Mid; on block -14; knockdown on hit",
       "merge_source": "donor:demonio:ZEN.1,2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.1,3": {
       "name": "Kazama Style Leg Strike Flurry",
@@ -6453,7 +7033,12 @@
       "isGrab": true,
       "throw_break": "1",
       "merge_source": "donor:demonio:ZEN.1,3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 139,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.2": {
       "name": "Fiendish Claw",
@@ -6476,7 +7061,12 @@
       "move_class": "strike",
       "note": "High; on block -5; knockdown on hit",
       "merge_source": "donor:demonio:ZEN.2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.3": {
       "name": "Halberd Heel",
@@ -6499,7 +7089,12 @@
       "move_class": "strike",
       "note": "Mid; on block -9",
       "merge_source": "donor:demonio:ZEN.3",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.3+4": {
       "name": "Black Wing Bolt",
@@ -6522,7 +7117,12 @@
       "move_class": "strike",
       "note": "High; on block +9g~+15g; knockdown on hit",
       "merge_source": "donor:demonio:ZEN.3+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.4": {
       "name": "Corpse Crusher",
@@ -6545,7 +7145,12 @@
       "move_class": "strike",
       "note": "Mid; on block +2~+8",
       "merge_source": "donor:demonio:ZEN.4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ZEN.u+1": {
       "name": "Black Wing Rondo",
@@ -6568,7 +7173,12 @@
       "move_class": "strike",
       "note": "Mid; on block -16; knockdown on hit",
       "merge_source": "donor:demonio:ZEN.u+1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.demonio.2": {
       "name": "RIN's Baseline [WH SIGNATURE]",
@@ -6589,7 +7199,12 @@
       "wh_original": true,
       "note": "RIN is the baseline, the still point. One perfectly fundamental palm strike.",
       "merge_source": "donor:demonio:S",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.demonio.3": {
       "name": "The Unbowed [WH SIGNATURE]",
@@ -6615,7 +7230,12 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:demonio:P+K",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.demonio.4": {
       "name": "Apology Burned Away [WH SIGNATURE]",
@@ -6638,7 +7258,12 @@
       "wh_original": true,
       "note": "The trial is burning the guilt out of him. A straight punch with nothing left to atone for.",
       "merge_source": "donor:demonio:qcf+P",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.demonio.3": {
       "name": "RIN's Baseline [WH SIGNATURE]",
@@ -6660,7 +7285,12 @@
       "note": "RIN is the baseline, the still point. One perfectly fundamental palm strike.",
       "input_remapped_from": "S",
       "merge_source": "donor:demonio:1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.demonio": {
       "name": "The Unbowed [WH SIGNATURE]",
@@ -6686,7 +7316,12 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:demonio:1+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "qcf+1~donor.demonio": {
       "name": "Apology Burned Away [WH SIGNATURE]",
@@ -6708,7 +7343,12 @@
       "note": "The trial is burning the guilt out of him. A straight punch with nothing left to atone for.",
       "input_remapped_from": "qcf+P",
       "merge_source": "donor:demonio:qcf+1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1~donor.demonio": {
       "name": "Jab",
@@ -6847,8 +7487,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Jail from 1st block with 2f delay; Combo from 1st hit with 2f delay; Same animation as df+1; &lt;/div&gt",
       "anim_t3": {
         "bank": "jin",
-        "row": 221,
-        "match": "same-notation"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -6981,7 +7621,7 @@
         "WALL.b,b,u/b"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_1",
       "t7_command": "Back towards wall... b, b, u/b",
       "t7_hit_level": "mid",
@@ -7023,7 +7663,7 @@
         "1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_2",
       "t7_command": "1",
       "t7_hit_level": "high",
@@ -7065,7 +7705,7 @@
         "1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_3",
       "t7_command": "1, 2",
       "t7_hit_level": "high, high",
@@ -7114,7 +7754,7 @@
         "1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_4",
       "t7_command": "(1), 2",
       "t7_hit_level": "high",
@@ -7154,7 +7794,7 @@
         "1,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_5",
       "t7_command": "1, 2, 3",
       "t7_hit_level": "high, high, mid",
@@ -7205,7 +7845,7 @@
         "1,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_6",
       "t7_command": "(1), 2, 3",
       "t7_hit_level": "high, mid",
@@ -7253,7 +7893,7 @@
         "1,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_7",
       "t7_command": "(1), (2), 3",
       "t7_hit_level": "mid",
@@ -7294,7 +7934,7 @@
         "1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_8",
       "t7_command": "1, 2, 4",
       "t7_hit_level": "high, high, high",
@@ -7345,7 +7985,7 @@
         "1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_9",
       "t7_command": "(1), 2, 4",
       "t7_hit_level": "high, high",
@@ -7393,7 +8033,7 @@
         "1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_10",
       "t7_command": "(1), (2), 4",
       "t7_hit_level": "high",
@@ -7434,7 +8074,7 @@
         "1,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_11",
       "t7_command": "1, 3",
       "t7_hit_level": "high, high",
@@ -7454,8 +8094,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 197,
-        "match": "same-notation"
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio",
       "mod_damage": "7,10",
@@ -7483,7 +8123,7 @@
         "1,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_12",
       "t7_command": "(1), 3",
       "t7_hit_level": "high",
@@ -7496,8 +8136,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 197,
-        "match": "same-notation"
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -7523,7 +8163,7 @@
         "1,3,B"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_13",
       "t7_command": "1, 3, B",
       "t7_hit_level": "high, high",
@@ -7572,7 +8212,7 @@
         "1,3,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_14",
       "t7_command": "1, 3, 2",
       "t7_hit_level": "high, high, mid",
@@ -7622,7 +8262,7 @@
         "1,3,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_15",
       "t7_command": "(1), 3, 2",
       "t7_hit_level": "high, mid",
@@ -7642,8 +8282,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 221,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -7669,7 +8309,7 @@
         "1,3,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_16",
       "t7_command": "(1), (3), 2",
       "t7_hit_level": "mid",
@@ -7682,8 +8322,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 234,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -7709,7 +8349,7 @@
         "1,3,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_17",
       "t7_command": "1, 3, 2, 1",
       "t7_hit_level": "high, high, mid, mid",
@@ -7760,7 +8400,7 @@
         "1,3,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_18",
       "t7_command": "(1), 3, 2, 1",
       "t7_hit_level": "high, mid, mid",
@@ -7808,7 +8448,7 @@
         "1,3,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_19",
       "t7_command": "(1), (3), 2, 1",
       "t7_hit_level": "mid, mid",
@@ -7855,7 +8495,7 @@
         "1,3,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_20",
       "t7_command": "(1), (3), (2), 1",
       "t7_hit_level": "mid",
@@ -7895,7 +8535,7 @@
         "1,3,2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_21",
       "t7_command": "1, 3, 2, 1, 4",
       "t7_hit_level": "high, high, mid, mid, low",
@@ -7947,7 +8587,7 @@
         "1,3,2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_22",
       "t7_command": "(1), 3, 2, 1, 4",
       "t7_hit_level": "high, mid, mid, low",
@@ -7996,7 +8636,7 @@
         "1,3,2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_23",
       "t7_command": "(1), (3), 2, 1, 4",
       "t7_hit_level": "mid, mid, low",
@@ -8017,8 +8657,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 193,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -8044,7 +8684,7 @@
         "1,3,2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_24",
       "t7_command": "(1), (3), (2), 1, 4",
       "t7_hit_level": "mid, low",
@@ -8064,8 +8704,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 207,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -8091,7 +8731,7 @@
         "1,3,2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_25",
       "t7_command": "(1), (3), (2), (1), 4",
       "t7_hit_level": "low",
@@ -8104,8 +8744,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 207,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -8131,7 +8771,7 @@
         "1,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_26",
       "t7_command": "1, 3",
       "t7_hit_level": "high, high",
@@ -8151,8 +8791,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 197,
-        "match": "same-notation"
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio",
       "mod_damage": "7,10",
@@ -8180,7 +8820,7 @@
         "1,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_27",
       "t7_command": "(1), 3",
       "t7_hit_level": "high",
@@ -8193,8 +8833,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 197,
-        "match": "same-notation"
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -8220,7 +8860,7 @@
         "1,3~3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_28",
       "t7_command": "1, 3~3",
       "t7_hit_level": "high, mid",
@@ -8270,7 +8910,7 @@
         "1,3~3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_29",
       "t7_command": "(1), 3~3",
       "t7_hit_level": "high, mid, mid",
@@ -8318,7 +8958,7 @@
         "1,3~3,d/f+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_30",
       "t7_command": "1, 3~3, d/f+3",
       "t7_hit_level": "high, mid, mid",
@@ -8367,7 +9007,7 @@
         "1,3~3,d/f+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_31",
       "t7_command": "(1), 3~3, d/f+3",
       "t7_hit_level": "mid, mid",
@@ -8415,7 +9055,7 @@
         "1,3~3,d/f+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_32",
       "t7_command": "(1), (3~3), d/f+3",
       "t7_hit_level": "mid",
@@ -8463,7 +9103,7 @@
         "1,d+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_33",
       "t7_command": "1, d+3",
       "t7_hit_level": "high, low",
@@ -8512,7 +9152,7 @@
         "1,d+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_34",
       "t7_command": "(1), d+3",
       "t7_hit_level": "low",
@@ -8552,7 +9192,7 @@
         "1,d+3,d+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_35",
       "t7_command": "1, d+3, d+4",
       "t7_hit_level": "high, low, low",
@@ -8600,7 +9240,7 @@
         "1,d+3,d+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_36",
       "t7_command": "(1), d+3, d+4",
       "t7_hit_level": "low, low",
@@ -8647,7 +9287,7 @@
         "1,d+3,d+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_37",
       "t7_command": "(1), (d+3), d+4",
       "t7_hit_level": "low",
@@ -8660,8 +9300,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -8687,7 +9327,7 @@
         "2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_38",
       "t7_command": "2",
       "t7_hit_level": "high",
@@ -8729,7 +9369,7 @@
         "2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_39",
       "t7_command": "2, 1",
       "t7_hit_level": "high, mid",
@@ -8749,8 +9389,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 221,
-        "match": "same-notation"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio",
       "mod_damage": "9,9",
@@ -8778,7 +9418,7 @@
         "2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_40",
       "t7_command": "(2), 1",
       "t7_hit_level": "mid",
@@ -8791,8 +9431,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 221,
-        "match": "same-notation"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -8818,7 +9458,7 @@
         "2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_41",
       "t7_command": "2, 1, 4",
       "t7_hit_level": "high, mid, high",
@@ -8839,8 +9479,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 230,
-        "match": "same-notation"
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio",
       "mod_damage": "9,9,18",
@@ -8868,7 +9508,7 @@
         "2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_42",
       "t7_command": "(2), 1, 4",
       "t7_hit_level": "mid, high",
@@ -8888,8 +9528,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 230,
-        "match": "same-notation"
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -8915,7 +9555,7 @@
         "2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_43",
       "t7_command": "(2), (1), 4",
       "t7_hit_level": "high",
@@ -8928,8 +9568,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 230,
-        "match": "same-notation"
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -8955,7 +9595,7 @@
         "2,1,4~4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_44",
       "t7_command": "2, 1, 4~4",
       "t7_hit_level": "high, mid, low",
@@ -9006,7 +9646,7 @@
         "2,1,4~4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_45",
       "t7_command": "(2), 1, 4~4",
       "t7_hit_level": "mid, low",
@@ -9054,7 +9694,7 @@
         "2,1,4~4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_46",
       "t7_command": "(2), (1), 4~4",
       "t7_hit_level": "low",
@@ -9095,7 +9735,7 @@
         "2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_47",
       "t7_command": "2, 4",
       "t7_hit_level": "high, high",
@@ -9145,7 +9785,7 @@
         "2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_48",
       "t7_command": "(2), 4",
       "t7_hit_level": "high",
@@ -9186,7 +9826,7 @@
         "3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_49",
       "t7_command": "3",
       "t7_hit_level": "high",
@@ -9228,7 +9868,7 @@
         "3,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_50",
       "t7_command": "3, 1",
       "t7_hit_level": "high, high",
@@ -9277,7 +9917,7 @@
         "3,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_51",
       "t7_command": "(3), 1",
       "t7_hit_level": "high",
@@ -9290,8 +9930,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 191,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -9317,7 +9957,7 @@
         "3,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_52",
       "t7_command": "3, 1, 4",
       "t7_hit_level": "high, high, low",
@@ -9367,7 +10007,7 @@
         "3,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_53",
       "t7_command": "(3), 1, 4",
       "t7_hit_level": "high, low",
@@ -9414,7 +10054,7 @@
         "3,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_54",
       "t7_command": "(3), (1), 4",
       "t7_hit_level": "low",
@@ -9454,7 +10094,7 @@
         "4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_55",
       "t7_command": "4",
       "t7_hit_level": "high",
@@ -9496,7 +10136,7 @@
         "4~3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_56",
       "t7_command": "4~3 (or WS 4~3)",
       "t7_hit_level": "mid",
@@ -9538,7 +10178,7 @@
         "1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_57",
       "t7_command": "1+2",
       "t7_hit_level": "mid, mid, high",
@@ -9589,7 +10229,7 @@
         "u/f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_58",
       "t7_command": "u/f+2",
       "t7_hit_level": "mid",
@@ -9631,7 +10271,7 @@
         "u"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_59",
       "t7_command": "u or u/f+3",
       "t7_hit_level": "mid",
@@ -9644,8 +10284,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 226,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio",
       "mod_damage": "17",
@@ -9673,7 +10313,7 @@
         "u/f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_60",
       "t7_command": "u/f+4",
       "t7_hit_level": "mid",
@@ -9716,7 +10356,7 @@
         "f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_61",
       "t7_command": "f+3",
       "t7_hit_level": "mid",
@@ -9758,7 +10398,7 @@
         "f+3~3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_62",
       "t7_command": "f+3~3",
       "t7_hit_level": "mid",
@@ -9801,7 +10441,7 @@
         "f+3~3,d/f+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_63",
       "t7_command": "f+3~3, d/f+3",
       "t7_hit_level": "mid, mid",
@@ -9851,7 +10491,7 @@
         "f+3~3,d/f+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_64",
       "t7_command": "(f+3~3), d/f+3",
       "t7_hit_level": "mid",
@@ -9892,7 +10532,7 @@
         "f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_65",
       "t7_command": "f+4",
       "t7_hit_level": "mid",
@@ -9934,7 +10574,7 @@
         "f+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_66",
       "t7_command": "f+1+2",
       "t7_hit_level": "high, high",
@@ -9984,7 +10624,7 @@
         "f,F+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_67",
       "t7_command": "f, F+2",
       "t7_hit_level": "mid",
@@ -10027,7 +10667,7 @@
         "f,F+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_68",
       "t7_command": "f, F+3",
       "t7_hit_level": "mid",
@@ -10070,7 +10710,7 @@
         "f,F+3,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_69",
       "t7_command": "f, F+3, 1",
       "t7_hit_level": "mid, high",
@@ -10120,7 +10760,7 @@
         "f,F+3,1,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_70",
       "t7_command": "f, F+3, 1, 3",
       "t7_hit_level": "mid, high, high",
@@ -10171,7 +10811,7 @@
         "f,F+3,1,3,2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_71",
       "t7_command": "f, F+3, 1, 3, 2",
       "t7_hit_level": "mid, high, high, mid",
@@ -10223,7 +10863,7 @@
         "f,F+3,1,3,2,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_72",
       "t7_command": "f, F+3, 1, 3, 2, 1",
       "t7_hit_level": "mid, high, high, mid, mid",
@@ -10276,7 +10916,7 @@
         "f,F+3,1,3,2,1,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_73",
       "t7_command": "f, F+3, 1, 3, 2, 1, 4",
       "t7_hit_level": "mid, high, high, mid, mid, low",
@@ -10301,8 +10941,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "jin",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio",
       "mod_damage": "20,5,10,1010,10",
@@ -10330,7 +10970,7 @@
         "f,F+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_74",
       "t7_command": "f, F+4",
       "t7_hit_level": "high",
@@ -10344,8 +10984,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "jin",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio",
       "mod_damage": "19",
@@ -10373,7 +11013,7 @@
         "f,n,d,D/F+1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_75",
       "t7_command": "f, n, d, D/F+1",
       "t7_hit_level": "mid",
@@ -10414,7 +11054,7 @@
         "f,n,d,d/f:1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_76",
       "t7_command": "f, n, d, d/f:1",
       "t7_hit_level": "mid",
@@ -10455,7 +11095,7 @@
         "f,n,d,d/f+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_77",
       "t7_command": "f, n, d, d/f+2",
       "t7_hit_level": "high",
@@ -10496,7 +11136,7 @@
         "f,n,d,d/f:2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_78",
       "t7_command": "f, n, d, d/f:2",
       "t7_hit_level": "high",
@@ -10536,7 +11176,7 @@
         "f,n,d,d/f+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_79",
       "t7_command": "f, n, d, d/f+3",
       "t7_hit_level": "mid",
@@ -10576,7 +11216,7 @@
         "f,n,d,d/f+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_80",
       "t7_command": "f, n, d, d/f+4",
       "t7_hit_level": "low",
@@ -10589,8 +11229,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio",
       "mod_damage": "10",
@@ -10618,7 +11258,7 @@
         "f,n,d,d/f+4,3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_81",
       "t7_command": "f, n, d, d/f+4, 3+4",
       "t7_hit_level": "low, mid",
@@ -10663,7 +11303,7 @@
         "f,n,d,d/f+4,3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_82",
       "t7_command": "(f, n, d, d/f+4), 3+4",
       "t7_hit_level": "mid",
@@ -10699,7 +11339,7 @@
         "d/f+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_83",
       "t7_command": "d/f+1",
       "t7_hit_level": "mid",
@@ -10741,7 +11381,7 @@
         "d/f+1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_84",
       "t7_command": "d/f+1, 4",
       "t7_hit_level": "mid, high",
@@ -10790,7 +11430,7 @@
         "d/f+1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_85",
       "t7_command": "(d/f+1), 4",
       "t7_hit_level": "high",
@@ -10831,7 +11471,7 @@
         "d/f+1,4~4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_86",
       "t7_command": "d/f+1, 4~4",
       "t7_hit_level": "mid, mid",
@@ -10880,7 +11520,7 @@
         "d/f+1,4~4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_87",
       "t7_command": "(d/f+1), 4~4",
       "t7_hit_level": "mid",
@@ -10920,7 +11560,7 @@
         "d/f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_88",
       "t7_command": "d/f+2",
       "t7_hit_level": "mid",
@@ -10963,7 +11603,7 @@
         "d/f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_89",
       "t7_command": "d/f+3",
       "t7_hit_level": "mid",
@@ -11005,7 +11645,7 @@
         "d/f+3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_90",
       "t7_command": "d/f+3, 3",
       "t7_hit_level": "mid, high",
@@ -11054,7 +11694,7 @@
         "d/f+3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_91",
       "t7_command": "(d/f+3), 3",
       "t7_hit_level": "high",
@@ -11094,7 +11734,7 @@
         "d/f+3,3,B"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_92",
       "t7_command": "d/f+3, 3, B",
       "t7_hit_level": "mid, high",
@@ -11143,7 +11783,7 @@
         "d/f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_93",
       "t7_command": "d/f+4",
       "t7_hit_level": "mid",
@@ -11185,7 +11825,7 @@
         "d/f+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_94",
       "t7_command": "d/f+1+2",
       "t7_hit_level": "mid",
@@ -11222,7 +11862,7 @@
         "d+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_95",
       "t7_command": "d+1",
       "t7_hit_level": "mid",
@@ -11265,7 +11905,7 @@
         "d+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_96",
       "t7_command": "d+3",
       "t7_hit_level": "low",
@@ -11307,7 +11947,7 @@
         "d+3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_97",
       "t7_command": "d+3, 3",
       "t7_hit_level": "low, mid",
@@ -11356,7 +11996,7 @@
         "d+3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_98",
       "t7_command": "(d+3), 3",
       "t7_hit_level": "mid",
@@ -11396,7 +12036,7 @@
         "d+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_99",
       "t7_command": "d+4",
       "t7_hit_level": "low",
@@ -11438,7 +12078,7 @@
         "d+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_100",
       "t7_command": "d+3+4",
       "t7_hit_level": "mid, mid",
@@ -11488,7 +12128,7 @@
         "d/b+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_101",
       "t7_command": "d/b+2",
       "t7_hit_level": "mid",
@@ -11530,7 +12170,7 @@
         "d/b+2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_102",
       "t7_command": "d/b+2, 2",
       "t7_hit_level": "mid, high",
@@ -11550,8 +12190,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 233,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio",
       "mod_damage": "12,11",
@@ -11579,7 +12219,7 @@
         "d/b+2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_103",
       "t7_command": "(d/b+2), 2",
       "t7_hit_level": "high",
@@ -11620,7 +12260,7 @@
         "d/b+2,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_104",
       "t7_command": "d/b+2, 2, 3",
       "t7_hit_level": "mid, high, mid",
@@ -11671,7 +12311,7 @@
         "d/b+2,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_105",
       "t7_command": "(d/b+2), 2, 3",
       "t7_hit_level": "high, mid",
@@ -11719,7 +12359,7 @@
         "d/b+2,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_106",
       "t7_command": "(d/b+2), (2), 3",
       "t7_hit_level": "mid",
@@ -11760,7 +12400,7 @@
         "d/b+2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_107",
       "t7_command": "d/b+2, 3",
       "t7_hit_level": "mid, mid",
@@ -11810,7 +12450,7 @@
         "d/b+2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_108",
       "t7_command": "(d/b+2), 3",
       "t7_hit_level": "mid",
@@ -11851,7 +12491,7 @@
         "d/b+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_109",
       "t7_command": "d/b+3",
       "t7_hit_level": "high",
@@ -11894,7 +12534,7 @@
         "d/b+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_110",
       "t7_command": "d/b+4",
       "t7_hit_level": "low",
@@ -11937,7 +12577,7 @@
         "d/b+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_111",
       "t7_command": "d/b+1+2",
       "t7_hit_level": "mid",
@@ -11974,7 +12614,7 @@
         "b+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_112",
       "t7_command": "b+2",
       "t7_hit_level": "mid",
@@ -12016,7 +12656,7 @@
         "b+2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_113",
       "t7_command": "b+2, 1",
       "t7_hit_level": "mid, mid",
@@ -12036,8 +12676,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 57,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio",
       "mod_damage": "12,10",
@@ -12065,7 +12705,7 @@
         "b+2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_114",
       "t7_command": "(b+2), 1",
       "t7_hit_level": "mid",
@@ -12105,7 +12745,7 @@
         "b+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_115",
       "t7_command": "b+3",
       "t7_hit_level": "mid",
@@ -12147,7 +12787,7 @@
         "b+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_116",
       "t7_command": "b+4",
       "t7_hit_level": "mid",
@@ -12190,7 +12830,7 @@
         "b,f+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_117",
       "t7_command": "b, f+2",
       "t7_hit_level": "mid",
@@ -12232,7 +12872,7 @@
         "b,f+2,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_118",
       "t7_command": "b, f+2, 1",
       "t7_hit_level": "mid, high",
@@ -12281,7 +12921,7 @@
         "b,f+2,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_119",
       "t7_command": "(b, f+2), 1",
       "t7_hit_level": "high",
@@ -12321,7 +12961,7 @@
         "b,f+2,1,2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_120",
       "t7_command": "b, f+2, 1, 2",
       "t7_hit_level": "mid, high, mid",
@@ -12372,7 +13012,7 @@
         "b,f+2,1,2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_121",
       "t7_command": "(b, f+2), 1, 2",
       "t7_hit_level": "high, mid",
@@ -12420,7 +13060,7 @@
         "b,f+2,1,2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_122",
       "t7_command": "(b, f+2), (1), 2",
       "t7_hit_level": "mid",
@@ -12461,7 +13101,7 @@
         "b,f+2,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_123",
       "t7_command": "b, f+2, 3",
       "t7_hit_level": "mid, mid",
@@ -12510,7 +13150,7 @@
         "b,f+2,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_124",
       "t7_command": "(b, f+2), 3",
       "t7_hit_level": "mid",
@@ -12550,7 +13190,7 @@
         "u/b+1+2,b,b"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_125",
       "t7_command": "u/b+1+2, b, b",
       "t7_hit_level": "-",
@@ -12590,7 +13230,7 @@
         "BT.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_126",
       "t7_command": "BT 1 (or 2)",
       "t7_hit_level": "high",
@@ -12631,7 +13271,7 @@
         "BT.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_127",
       "t7_command": "BT 3 (or 4)",
       "t7_hit_level": "high",
@@ -12673,7 +13313,7 @@
         "FC.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_128",
       "t7_command": "FC 1",
       "t7_hit_level": "s. mid",
@@ -12713,7 +13353,7 @@
         "FC.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_129",
       "t7_command": "FC 2",
       "t7_hit_level": "s. mid",
@@ -12753,7 +13393,7 @@
         "FC.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_130",
       "t7_command": "FC 3",
       "t7_hit_level": "low",
@@ -12793,7 +13433,7 @@
         "FC.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_131",
       "t7_command": "FC 4",
       "t7_hit_level": "low",
@@ -12833,7 +13473,7 @@
         "f,f,F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_132",
       "t7_command": "WR f, f, F (Full Screen)",
       "t7_hit_level": "mid",
@@ -12875,7 +13515,7 @@
         "f,f,F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_133",
       "t7_command": "WR f, f, F (Full Screen) (On Grounded Opponent)",
       "t7_hit_level": "low",
@@ -12917,7 +13557,7 @@
         "4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_134",
       "t7_command": "WR 4",
       "t7_hit_level": "low",
@@ -12959,7 +13599,7 @@
         "1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_135",
       "t7_command": "WR 1+2",
       "t7_hit_level": "mid",
@@ -13001,7 +13641,7 @@
         "WS.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_136",
       "t7_command": "WS 1",
       "t7_hit_level": "mid",
@@ -13041,7 +13681,7 @@
         "WS.1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_137",
       "t7_command": "WS 1, 2",
       "t7_hit_level": "mid, mid",
@@ -13088,7 +13728,7 @@
         "WS.1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_138",
       "t7_command": "WS (1), 2",
       "t7_hit_level": "mid",
@@ -13128,7 +13768,7 @@
         "WS.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_139",
       "t7_command": "WS 2",
       "t7_hit_level": "mid",
@@ -13169,7 +13809,7 @@
         "WS.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_140",
       "t7_command": "WS 3",
       "t7_hit_level": "mid",
@@ -13209,7 +13849,7 @@
         "OTG.d+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_141",
       "t7_command": "While enemy is down... d+2",
       "t7_hit_level": "low",
@@ -13251,7 +13891,7 @@
         "f+2,3,3,3,2,1,2,3,4,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_142",
       "t7_command": "f+2, 3, 3, 3, 2, 1, 2, 3, 4, 2",
       "t7_hit_level": "-",
@@ -13264,8 +13904,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 233,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -13289,7 +13929,7 @@
       "anim_ref": "t7:jin:jin_143",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_143",
       "t7_command": "Face Up, Feet Towards+3 or (After Rolling Forward)",
       "t7_hit_level": "low",
@@ -13328,7 +13968,7 @@
       "anim_ref": "t7:jin:jin_144",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_144",
       "t7_command": "Face Up, Feet Towards+4 or (After Rolling Forward)",
       "t7_hit_level": "mid",
@@ -13370,7 +14010,7 @@
         "FUFT.d+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_145",
       "t7_command": "Face Up, Feet Towards, d+3 (or 4)",
       "t7_hit_level": "low",
@@ -13411,7 +14051,7 @@
         "FUFT.3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_146",
       "t7_command": "Face Up, Feet Towards+3+4",
       "t7_hit_level": "mid",
@@ -13446,7 +14086,7 @@
       "anim_ref": "t7:jin:jin_147",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_147",
       "t7_command": "Face Up, Feet Towards, Roll Forward+1+2",
       "t7_hit_level": "mid",
@@ -13488,7 +14128,7 @@
         "FDFA.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_148",
       "t7_command": "Face Down, Feet Away+3",
       "t7_hit_level": "low",
@@ -13529,7 +14169,7 @@
         "FDFA.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_149",
       "t7_command": "Face Down, Feet Away+4 (close)",
       "t7_hit_level": "mid",
@@ -13544,8 +14184,8 @@
       "input_note": "Face Down, Feet Away+ (close)",
       "anim_t3": {
         "bank": "jin",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -13571,7 +14211,7 @@
         "FDFA.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_150",
       "t7_command": "Face Down, Feet Away+4 (far)",
       "t7_hit_level": "mid",
@@ -13586,8 +14226,8 @@
       "input_note": "Face Down, Feet Away+ (far)",
       "anim_t3": {
         "bank": "jin",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -13611,7 +14251,7 @@
       "anim_ref": "t7:jin:jin_151",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_151",
       "t7_command": "(Upon Landing) f",
       "t7_hit_level": "mid",
@@ -13652,7 +14292,7 @@
         "d+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_152",
       "t7_command": "d+1+2",
       "t7_hit_level": "-",
@@ -13692,7 +14332,7 @@
         "b+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_153",
       "t7_command": "b+1",
       "t7_hit_level": "-",
@@ -13705,8 +14345,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 184,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 216,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -13732,7 +14372,7 @@
         "1,3,F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_154",
       "t7_command": "1, 3, F",
       "t7_hit_level": "high, high",
@@ -13781,7 +14421,7 @@
         "3,1,F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_155",
       "t7_command": "3, 1, F",
       "t7_hit_level": "high, high",
@@ -13801,8 +14441,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 221,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -13828,7 +14468,7 @@
         "f+4,F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_156",
       "t7_command": "f+4, F",
       "t7_hit_level": "mid",
@@ -13841,8 +14481,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 233,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio",
       "mod_damage": "21",
@@ -13870,7 +14510,7 @@
         "d/f+3,3,F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_157",
       "t7_command": "d/f+3, 3, F",
       "t7_hit_level": "low, mid",
@@ -13890,8 +14530,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 221,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio",
       "mod_damage": "12,14",
@@ -13919,7 +14559,7 @@
         "b+3,F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_158",
       "t7_command": "b+3, F",
       "t7_hit_level": "mid",
@@ -13961,7 +14601,7 @@
         "b,f+2,3,F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_159",
       "t7_command": "b, f+2, 3, F",
       "t7_hit_level": "mid, mid",
@@ -14010,7 +14650,7 @@
         "WS.1,2,F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_160",
       "t7_command": "WS 1, 2, F",
       "t7_hit_level": "mid, mid",
@@ -14057,7 +14697,7 @@
         "CDS.F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_161",
       "t7_command": "CDS F",
       "t7_hit_level": "-",
@@ -14097,7 +14737,7 @@
         "ZEN.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_162",
       "t7_command": "ZEN (or CDS) 1",
       "t7_hit_level": "mid",
@@ -14138,7 +14778,7 @@
         "ZEN.1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_163",
       "t7_command": "ZEN (or CDS) 1, 2",
       "t7_hit_level": "mid, mid",
@@ -14160,8 +14800,8 @@
       "input_note": "(or CDS)",
       "anim_t3": {
         "bank": "jin",
-        "row": 233,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -14187,7 +14827,7 @@
         "ZEN.1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_164",
       "t7_command": "ZEN (or CDS) (1), 2",
       "t7_hit_level": "mid",
@@ -14229,7 +14869,7 @@
         "ZEN.1,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_165",
       "t7_command": "ZEN (or CDS) 1, 3",
       "t7_hit_level": "mid, high",
@@ -14271,7 +14911,7 @@
         "ZEN.1,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_166",
       "t7_command": "ZEN (or CDS) (1), 3",
       "t7_hit_level": "high",
@@ -14320,7 +14960,7 @@
         "ZEN.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_167",
       "t7_command": "ZEN (or CDS) 2",
       "t7_hit_level": "mid",
@@ -14362,7 +15002,7 @@
         "ZEN.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_168",
       "t7_command": "ZEN (or CDS) 3",
       "t7_hit_level": "mid",
@@ -14403,7 +15043,7 @@
         "ZEN.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_169",
       "t7_command": "ZEN (or CDS) 4",
       "t7_hit_level": "low",
@@ -14418,8 +15058,8 @@
       "input_note": "(or CDS)",
       "anim_t3": {
         "bank": "jin",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -14445,7 +15085,7 @@
         "ZEN.1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_170",
       "t7_command": "ZEN (or CDS) 1+2",
       "t7_hit_level": "high, high",
@@ -14489,7 +15129,7 @@
         "ZEN.3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_171",
       "t7_command": "ZEN (or CDS) 3+4",
       "t7_hit_level": "high",
@@ -14526,7 +15166,7 @@
         "3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_172",
       "t7_command": "3+4",
       "t7_hit_level": "high",
@@ -14571,7 +15211,7 @@
         "R.b+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_173",
       "t7_command": "(During Rage) b+1+2",
       "t7_hit_level": "high",
@@ -14608,7 +15248,7 @@
         "R.f,n,d,d/f+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_174",
       "t7_command": "(During Rage) f, n, d, d/f+1+2",
       "t7_hit_level": "high, mid",
@@ -14652,7 +15292,7 @@
         "R.f,n,d,d/f+1+2,D/F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_175",
       "t7_command": "(During Rage) f, n, d, d/f+1+2, D/F",
       "t7_hit_level": "high, mid",
@@ -14701,7 +15341,7 @@
         "R.f,n,d,d/f+1+2,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_176",
       "t7_command": "(During Rage) f, n, d, d/f+1+2, 3",
       "t7_hit_level": "high, mid, high",
@@ -14751,7 +15391,7 @@
         "R.f,n,d,d/f+1+2,3,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_177",
       "t7_command": "(During Rage) f, n, d, d/f+1+2, 3, 1",
       "t7_hit_level": "high, mid, high, mid",
@@ -14800,7 +15440,7 @@
       "anim_ref": "t7:jin:jin_178",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_178",
       "t7_command": "u/b+1+2 (b, b to cancel)",
       "t7_hit_level": "mid!",
@@ -14844,7 +15484,7 @@
         "1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_179",
       "t7_command": "Approach enemy... 1+3",
       "t7_hit_level": "high throw",
@@ -14888,7 +15528,7 @@
         "2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_180",
       "t7_command": "Approach enemy... 2+4",
       "t7_hit_level": "high throw",
@@ -14932,7 +15572,7 @@
         "u/f+1+2"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_181",
       "t7_command": "Approach enemy... u/f+1+2",
       "t7_hit_level": "high throw",
@@ -14971,7 +15611,7 @@
         "f+1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_182",
       "t7_command": "Approach enemy... f+1+3",
       "t7_hit_level": "high throw",
@@ -15015,7 +15655,7 @@
         "f+2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_183",
       "t7_command": "Approach enemy... f+2+4",
       "t7_hit_level": "high throw",
@@ -15054,7 +15694,7 @@
         "d/f+2+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_184",
       "t7_command": "Approach enemy... d/f+2+3",
       "t7_hit_level": "high throw",
@@ -15098,7 +15738,7 @@
         "qcb+1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_185",
       "t7_command": "Approach enemy... qcb+1+3",
       "t7_hit_level": "high throw",
@@ -15142,7 +15782,7 @@
         "SIDE_L.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_186",
       "t7_command": "Approach from left side... 1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -15186,7 +15826,7 @@
         "SIDE_R.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_187",
       "t7_command": "Approach from right side...  1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -15230,7 +15870,7 @@
         "BACK.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_188",
       "t7_command": "Approach from behind... 1+3 (or f+1+3)",
       "t7_hit_level": "high throw",
@@ -15272,7 +15912,7 @@
       "anim_ref": "t7:jin:jin_189",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_189",
       "t7_command": "WR f, f, F (Mid Screen)",
       "t7_hit_level": "-",
@@ -15314,7 +15954,7 @@
         "TACKLE.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_190",
       "t7_command": "(During Tackle) 1 (or 2)",
       "t7_hit_level": "-",
@@ -15358,7 +15998,7 @@
         "TACKLE.1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_191",
       "t7_command": "(During Tackle) 1/2, 1/2",
       "t7_hit_level": "-",
@@ -15380,8 +16020,8 @@
       "input_note": "(During Tackle)",
       "anim_t3": {
         "bank": "jin",
-        "row": 184,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -15407,7 +16047,7 @@
         "TACKLE.1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_192",
       "t7_command": "(During Tackle) 1/2, 1/2, 1/2",
       "t7_hit_level": "-",
@@ -15430,8 +16070,8 @@
       "input_note": "(During Tackle)",
       "anim_t3": {
         "bank": "jin",
-        "row": 184,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -15457,7 +16097,7 @@
         "TACKLE.1,1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_193",
       "t7_command": "(During Tackle) 1/2, 1/2, 1/2, 1/2",
       "t7_hit_level": "-",
@@ -15481,8 +16121,8 @@
       "input_note": "(During Tackle)",
       "anim_t3": {
         "bank": "jin",
-        "row": 184,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "donor_fighter": "demonio"
     },
@@ -15508,7 +16148,7 @@
         "TACKLE.1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_194",
       "t7_command": "(During Tackle) 1+2",
       "t7_hit_level": "-",
@@ -15547,7 +16187,7 @@
         "f,n,d,d/f"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_195",
       "t7_command": "f, n, d, d/f",
       "t7_hit_level": "-",
@@ -15587,7 +16227,7 @@
         "f,n,d,d/f,u/f"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_196",
       "t7_command": "f, n, d, d/f, u/f",
       "t7_hit_level": "-",
@@ -15627,7 +16267,7 @@
         "1+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_197",
       "t7_command": "1+3+4",
       "t7_hit_level": "-",
@@ -15662,7 +16302,7 @@
         "REV.b+1+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jin_198",
       "t7_command": "Time with enemy attack... b+1+3 (or b+2+4)",
       "t7_hit_level": "-",
@@ -19788,7 +20428,12 @@
       "wh_original": true,
       "note": "RIN is the baseline, the still point. One perfectly fundamental palm strike.",
       "merge_source": "donor:demonio:S",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.demonio.6": {
       "name": "The Unbowed [WH SIGNATURE]",
@@ -19814,7 +20459,12 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:demonio:P+K",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.demonio.7": {
       "name": "Apology Burned Away [WH SIGNATURE]",
@@ -19837,7 +20487,12 @@
       "wh_original": true,
       "note": "The trial is burning the guilt out of him. A straight punch with nothing left to atone for.",
       "merge_source": "donor:demonio:qcf+P",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.demonio.7": {
       "name": "RIN's Baseline [WH SIGNATURE]",
@@ -19859,7 +20514,12 @@
       "note": "RIN is the baseline, the still point. One perfectly fundamental palm strike.",
       "input_remapped_from": "S",
       "merge_source": "donor:demonio:1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.demonio.4": {
       "name": "The Unbowed [WH SIGNATURE]",
@@ -19885,7 +20545,12 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:demonio:1+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "qcf+1~donor.demonio.2": {
       "name": "Apology Burned Away [WH SIGNATURE]",
@@ -19907,7 +20572,12 @@
       "note": "The trial is burning the guilt out of him. A straight punch with nothing left to atone for.",
       "input_remapped_from": "qcf+P",
       "merge_source": "donor:demonio:qcf+1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.demonio.8": {
       "name": "RIN's Baseline [WH SIGNATURE]",
@@ -19928,7 +20598,12 @@
       "wh_original": true,
       "note": "RIN is the baseline, the still point. One perfectly fundamental palm strike.",
       "merge_source": "donor:demonio:S",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.demonio.9": {
       "name": "The Unbowed [WH SIGNATURE]",
@@ -19954,7 +20629,12 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:demonio:P+K",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.demonio.10": {
       "name": "Apology Burned Away [WH SIGNATURE]",
@@ -19977,7 +20657,12 @@
       "wh_original": true,
       "note": "The trial is burning the guilt out of him. A straight punch with nothing left to atone for.",
       "merge_source": "donor:demonio:qcf+P",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.demonio.8": {
       "name": "RIN's Baseline [WH SIGNATURE]",
@@ -19999,7 +20684,12 @@
       "note": "RIN is the baseline, the still point. One perfectly fundamental palm strike.",
       "input_remapped_from": "S",
       "merge_source": "donor:demonio:1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.demonio.5": {
       "name": "The Unbowed [WH SIGNATURE]",
@@ -20025,7 +20715,12 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:demonio:1+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "qcf+1~donor.demonio.3": {
       "name": "Apology Burned Away [WH SIGNATURE]",
@@ -20047,7 +20742,12 @@
       "note": "The trial is burning the guilt out of him. A straight punch with nothing left to atone for.",
       "input_remapped_from": "qcf+P",
       "merge_source": "donor:demonio:qcf+1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.demonio.11": {
       "name": "RIN's Baseline [WH SIGNATURE]",
@@ -20068,7 +20768,12 @@
       "wh_original": true,
       "note": "RIN is the baseline, the still point. One perfectly fundamental palm strike.",
       "merge_source": "donor:demonio:S",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.demonio.12": {
       "name": "The Unbowed [WH SIGNATURE]",
@@ -20094,7 +20799,12 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:demonio:P+K",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.demonio.13": {
       "name": "Apology Burned Away [WH SIGNATURE]",
@@ -20117,7 +20827,12 @@
       "wh_original": true,
       "note": "The trial is burning the guilt out of him. A straight punch with nothing left to atone for.",
       "merge_source": "donor:demonio:qcf+P",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.demonio.9": {
       "name": "RIN's Baseline [WH SIGNATURE]",
@@ -20150,7 +20865,12 @@
         "wired": true
       },
       "merge_source": "donor:demonio:1+2",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.demonio.6": {
       "name": "The Unbowed [WH SIGNATURE]",
@@ -20176,7 +20896,12 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:demonio:1+4",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "qcf+1~donor.demonio.4": {
       "name": "Apology Burned Away [WH SIGNATURE]",
@@ -20198,7 +20923,12 @@
       "note": "The trial is burning the guilt out of him. A straight punch with nothing left to atone for.",
       "input_remapped_from": "qcf+P",
       "merge_source": "donor:demonio:qcf+1",
-      "donor_fighter": "demonio"
+      "donor_fighter": "demonio",
+      "anim_t3": {
+        "bank": "demonio",
+        "row": 66,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     }
   },
   "strings": [
