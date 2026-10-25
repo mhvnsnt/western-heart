@@ -1,4 +1,23 @@
-mediapipe==1.1.1
-opencv-contrib-python
-numpy
-matplotlib
+# WH mocap pipeline -- CPU-testable stage (video -> keypoints -> BVH -> game bank)
+# Tested 2026-10-23 on CPU (no GPU on this VM). See README.md for status marks.
+mediapipe==0.10.21        # Stage 1 pose extraction (CPU). Apache 2.0.
+numpy==1.26.4             # stages 2-4 math. BSD.
+opencv-python-headless==4.9.0.80  # video decode for stage 1. Apache 2.0.
+
+# ---------------------------------------------------------------------------
+# GPU-ONLY stages below. NOT installed here; install on the GPU machine.
+# See README.md "GPU machine setup" for exact commands.
+# ---------------------------------------------------------------------------
+# torch                      # DWPose / MotionBERT / MimicMotion / UniAnimate
+# onnxruntime-gpu==1.13.1   # DWPose + UniAnimate pose alignment (their pin)
+# dwpose                     # IDEA-Research DWPose whole-body keypoints (the same
+#                            #   yolox_l + dw-ll_ucoco_384 ONNX pair MimicMotion and
+#                            #   UniAnimate use for pose guidance)
+# --- video GENERATION (reference-footage synthesis / previz). NEEDS GPU. ---
+# MimicMotion (Tencent):  8 GB VRAM min, 16 GB for the 72-frame model.
+#   git clone https://github.com/Tencent/MimicMotion (custom license, NOT OSI)
+# UniAnimate (Alibaba):   ~12 GB VRAM @ 768x512x32f, ~21 GB @ 1216x768x32f.
+#   git clone https://github.com/ali-vilab/UniAnimate (RESEARCH/NON-COMMERCIAL ONLY)
+# UniAnimate-DiT (Wan2.1): 23 GB @ 480p, 36 GB @ 720p.
+# --- 3D lifting (video -> SMPL -> BVH). NEEDS GPU. ---
+# MotionBERT (MIT) / WHAM / HybrIK -> SMPL params -> BVH export
