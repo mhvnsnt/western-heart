@@ -504,7 +504,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.467,
-      "damage": 11,
+      "damage": 9,
       "t3_damage": 18,
       "limb": "armL",
       "heavy": false,
@@ -537,7 +537,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.65,
-      "damage": 12,
+      "damage": 13,
       "t3_damage": 21,
       "limb": "armR",
       "heavy": false,
@@ -619,7 +619,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.717,
-      "damage": 15,
+      "damage": 18,
       "t3_damage": 25,
       "limb": "legL",
       "heavy": true,
@@ -652,7 +652,7 @@
       "startup": 0.2,
       "active": 0.033,
       "recovery": 0.617,
-      "damage": 15,
+      "damage": 20,
       "t3_damage": 25,
       "limb": "legR",
       "heavy": true,
@@ -737,7 +737,7 @@
       "startup": 0.2167,
       "active": 0.017,
       "recovery": 0.633,
-      "damage": 9,
+      "damage": 16,
       "t3_damage": 16,
       "limb": "armR",
       "heavy": false,
@@ -770,7 +770,7 @@
       "startup": 0.4,
       "active": 0.05,
       "recovery": 0.567,
-      "damage": 13,
+      "damage": 29,
       "t3_damage": 22,
       "limb": "legR",
       "heavy": false,
@@ -916,7 +916,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.92,
-      "damage": 20,
+      "damage": 21,
       "limb": "legR",
       "heavy": true,
       "knock": 6.5,
@@ -954,7 +954,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.567,
-      "damage": 7,
+      "damage": 21,
       "limb": "armL",
       "heavy": false,
       "knock": 2.2,
@@ -984,7 +984,7 @@
       "startup": 0.3,
       "active": 0.1,
       "recovery": 0.8,
-      "damage": 17,
+      "damage": 20,
       "limb": "legL",
       "heavy": true,
       "knock": 4.2,
@@ -1019,12 +1019,12 @@
       "startup": 0.3,
       "active": 0.033,
       "recovery": 0.5,
-      "damage": 10,
+      "damage": 20,
       "limb": "legR",
       "heavy": false,
       "knock": 4.2,
       "soulGain": 5,
-      "anim_ref": "t8:bryan:bryan-f+4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "f+4"
       ],
@@ -1041,7 +1041,8 @@
         "id": "bryan_95",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "d+4": {
       "name": "Stays Down Stomp [WH SIGNATURE]",
@@ -1049,7 +1050,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.85,
-      "damage": 18,
+      "damage": 14,
       "limb": "legR",
       "heavy": true,
       "knock": 6.5,
@@ -1084,12 +1085,12 @@
       "startup": 0.25,
       "active": 0.033,
       "recovery": 0.5,
-      "damage": 13,
+      "damage": 14,
       "limb": "legR",
       "heavy": false,
       "knock": 4.2,
       "soulGain": 6,
-      "anim_ref": "t8:bryan:bryan-d+4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "d+4"
       ],
@@ -1106,7 +1107,8 @@
         "id": "bryan_129",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "b+2": {
       "name": "SKULL b+2 (T3 bryan r158)",
@@ -1117,7 +1119,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.7,
-      "damage": 11,
+      "damage": 24,
       "t3_damage": 18,
       "limb": "armR",
       "heavy": false,
@@ -1150,12 +1152,12 @@
       "startup": 0.2833,
       "active": 0.033,
       "recovery": 0.433,
-      "damage": 18,
+      "damage": 24,
       "limb": "armR",
       "heavy": true,
       "knock": 4.2,
       "soulGain": 9,
-      "anim_ref": "t8:bryan:bryan-b+2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "b+2"
       ],
@@ -1172,7 +1174,8 @@
         "id": "bryan_145",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "b+4": {
       "name": "SKULL b+4 (T3 bryan r111)",
@@ -1183,7 +1186,7 @@
       "startup": 0.2667,
       "active": 0.2,
       "recovery": 0.633,
-      "damage": 15,
+      "damage": 24,
       "t3_damage": 25,
       "limb": "legR",
       "heavy": true,
@@ -1216,12 +1219,12 @@
       "startup": 0.2667,
       "active": 0.033,
       "recovery": 0.483,
-      "damage": 18,
+      "damage": 24,
       "limb": "legR",
       "heavy": true,
       "knock": 4.2,
       "soulGain": 9,
-      "anim_ref": "t8:bryan:bryan-b+4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "b+4"
       ],
@@ -1238,7 +1241,8 @@
         "id": "bryan_177",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "f+2": {
       "name": "SKULL f+2 (T3 bryan r150)",
@@ -1249,7 +1253,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.783,
-      "damage": 18,
+      "damage": 13,
       "t3_damage": 30,
       "limb": "armR",
       "heavy": true,
@@ -1282,7 +1286,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.783,
-      "damage": 18,
+      "damage": 13,
       "limb": "armR",
       "heavy": true,
       "knock": 2.2,
@@ -1314,7 +1318,7 @@
       "startup": 0.2667,
       "active": 0.05,
       "recovery": 0.867,
-      "damage": 21,
+      "damage": 24,
       "t3_damage": 36,
       "limb": "legL",
       "heavy": true,
@@ -1347,7 +1351,7 @@
       "startup": 0.2667,
       "active": 0.05,
       "recovery": 0.867,
-      "damage": 21,
+      "damage": 24,
       "limb": "legL",
       "heavy": true,
       "knock": 2.2,
@@ -1400,7 +1404,7 @@
       "startup": 0.8833,
       "active": 0.083,
       "recovery": 0.833,
-      "damage": 35,
+      "damage": 53,
       "t3_damage": 60,
       "limb": "legR",
       "heavy": true,
@@ -1434,7 +1438,7 @@
       "startup": 0.8833,
       "active": 0.083,
       "recovery": 0.833,
-      "damage": 35,
+      "damage": 53,
       "limb": "armL",
       "heavy": true,
       "knock": 2.2,
@@ -1467,7 +1471,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.517,
-      "damage": 9,
+      "damage": 10,
       "t3_damage": 15,
       "limb": "armL",
       "heavy": false,
@@ -1500,7 +1504,7 @@
       "startup": 0.4667,
       "active": 0.017,
       "recovery": 0.833,
-      "damage": 12,
+      "damage": 28,
       "t3_damage": 21,
       "limb": "legR",
       "heavy": false,
@@ -1534,7 +1538,7 @@
       "startup": 0.4667,
       "active": 0.017,
       "recovery": 0.833,
-      "damage": 12,
+      "damage": 28,
       "limb": "armL",
       "heavy": true,
       "knock": 2.2,
@@ -1588,7 +1592,7 @@
       "startup": 0.3,
       "active": 0.017,
       "recovery": 0.717,
-      "damage": 15,
+      "damage": 24,
       "t3_damage": 25,
       "limb": "legL",
       "heavy": true,
@@ -1739,7 +1743,7 @@
       "startup": 0.35,
       "active": 0.017,
       "recovery": 0.733,
-      "damage": 15,
+      "damage": 25,
       "t3_damage": 25,
       "limb": "legR",
       "heavy": true,
@@ -3281,12 +3285,12 @@
       "startup": 0.2833,
       "active": 0.033,
       "recovery": 0.45,
-      "damage": 15,
+      "damage": 21,
       "limb": "both",
       "heavy": false,
       "knock": 4.2,
       "soulGain": 8,
-      "anim_ref": "t8:bryan:bryan-1+2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "1+2"
       ],
@@ -3305,7 +3309,8 @@
         "id": "bryan_81",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "1,2": {
       "name": "Left Right Combo",
@@ -3316,12 +3321,12 @@
       "startup": 0.1667,
       "active": 0.033,
       "recovery": 0.35,
-      "damage": 13,
+      "damage": 9,
       "limb": "armR",
       "heavy": false,
       "knock": 4.2,
       "soulGain": 6,
-      "anim_ref": "t8:bryan:bryan-1,2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "1",
         "1,2"
@@ -3347,7 +3352,8 @@
         "mod_damage": "9,10",
         "on_ch": "+5",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "1+2,1": {
       "name": "Snake Bite",
@@ -3363,7 +3369,7 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-1+2,1",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "1+2",
         "1+2,1"
@@ -3376,7 +3382,8 @@
         ],
         "total": 30
       },
-      "note": "High; on block -1"
+      "note": "High; on block -1",
+      "t8_anim_removed_20261024": true
     },
     "1,2,1": {
       "name": "One Two Body Blow",
@@ -3387,12 +3394,12 @@
       "startup": 0.1667,
       "active": 0.033,
       "recovery": 0.417,
-      "damage": 31,
+      "damage": 9,
       "limb": "armL",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-1,2,1",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "1",
         "1,2",
@@ -3420,7 +3427,8 @@
         "mod_damage": "9,10,24",
         "on_ch": "CS",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "1+2,2": {
       "name": "Snake Pit",
@@ -3431,12 +3439,12 @@
       "startup": 0.2833,
       "active": 0.033,
       "recovery": 0.567,
-      "damage": 35,
+      "damage": 21,
       "limb": "armR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-1+2,2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "1+2",
         "1+2,2"
@@ -3462,7 +3470,8 @@
         "mod_damage": "21,27",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "1,2,3": {
       "name": "One Two Low Kick",
@@ -3473,12 +3482,12 @@
       "startup": 0.1667,
       "active": 0.033,
       "recovery": 0.517,
-      "damage": 28,
+      "damage": 9,
       "limb": "legL",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 14,
-      "anim_ref": "t8:bryan:bryan-1,2,3",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "1",
         "1,2",
@@ -3506,27 +3515,8 @@
         "mod_damage": "9,10,20",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
-    },
-    "1+2+3+4": {
-      "name": "Ki Charge",
-      "input": "1+2+3+4",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-1+2+3+4",
-      "t8_damage": null,
-      "startup": 0.167,
-      "active": 0.3,
-      "recovery": 0.917,
-      "damage": 0,
-      "limb": "both",
-      "heavy": false,
-      "knock": 0.0,
-      "soulGain": 8,
-      "anim_ref": "t8:bryan:bryan-1+2+3+4",
-      "input_slots": [
-        "1+2+3+4"
-      ],
-      "move_class": "special"
+      },
+      "t8_anim_removed_20261024": true
     },
     "1,2,4": {
       "name": "One Two Neck Breaker",
@@ -3537,12 +3527,12 @@
       "startup": 0.1667,
       "active": 0.033,
       "recovery": 0.5,
-      "damage": 37,
+      "damage": 9,
       "limb": "legR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-1,2,4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "1",
         "1,2",
@@ -3570,7 +3560,8 @@
         "mod_damage": "9,10,32",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "1+3+4": {
       "name": "Taunt",
@@ -3586,7 +3577,7 @@
       "heavy": false,
       "knock": 0.0,
       "soulGain": 8,
-      "anim_ref": "t8:bryan:bryan-1+3+4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "1+3+4"
       ],
@@ -3603,7 +3594,8 @@
         "wired": true,
         "damage": 0,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "1,4": {
       "name": "Jab (4)",
@@ -3614,12 +3606,12 @@
       "startup": 0.1667,
       "active": 0.033,
       "recovery": 0.433,
-      "damage": 19,
+      "damage": 9,
       "limb": "legR",
       "heavy": true,
       "knock": 4.2,
       "soulGain": 10,
-      "anim_ref": "t8:bryan:bryan-1,4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "1",
         "1,4"
@@ -3645,7 +3637,8 @@
         "mod_damage": "9,18",
         "on_ch": "+4",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "1,4,2": {
       "name": "Jab (2)",
@@ -3656,12 +3649,12 @@
       "startup": 0.1667,
       "active": 0.033,
       "recovery": 0.433,
-      "damage": 37,
+      "damage": 9,
       "limb": "armR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-1,4,2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "1",
         "1,4",
@@ -3689,7 +3682,8 @@
         "mod_damage": "9,18,24",
         "on_ch": "CS",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "1,4,2,1": {
       "name": "Jab (1)",
@@ -3700,12 +3694,12 @@
       "startup": 0.1667,
       "active": 0.033,
       "recovery": 0.417,
-      "damage": 53,
+      "damage": 9,
       "limb": "armL",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-1,4,2,1",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "1",
         "1,4",
@@ -3735,7 +3729,8 @@
         "mod_damage": "9,18,24,22",
         "on_ch": "CS",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "1,4,2,1,2": {
       "name": "Lair's Dance",
@@ -3746,12 +3741,12 @@
       "startup": 0.1667,
       "active": 0.033,
       "recovery": 0.55,
-      "damage": 75,
+      "damage": 9,
       "limb": "armR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-1,4,2,1,2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "1",
         "1,4",
@@ -3783,7 +3778,8 @@
         "mod_damage": "9,18,24,22,29",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "1,4,2,1,4": {
       "name": "Cremation",
@@ -3794,12 +3790,12 @@
       "startup": 0.1667,
       "active": 0.033,
       "recovery": 0.5,
-      "damage": 74,
+      "damage": 9,
       "limb": "legR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-1,4,2,1,4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "1",
         "1,4",
@@ -3831,7 +3827,8 @@
         "mod_damage": "9,18,24,22,28",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "1,4,2,4": {
       "name": "Whipping Fury",
@@ -3842,12 +3839,12 @@
       "startup": 0.1667,
       "active": 0.033,
       "recovery": 0.417,
-      "damage": 58,
+      "damage": 9,
       "limb": "legR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-1,4,2,4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "1",
         "1,4",
@@ -3877,7 +3874,8 @@
         "mod_damage": "9,18,24,28",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "1,4,3": {
       "name": "Double Spin Kick",
@@ -3888,12 +3886,12 @@
       "startup": 0.1667,
       "active": 0.033,
       "recovery": 0.433,
-      "damage": 34,
+      "damage": 9,
       "limb": "legL",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-1,4,3",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "1",
         "1,4",
@@ -3921,7 +3919,8 @@
         "mod_damage": "9,18,20",
         "on_ch": "+1",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "1,4,3,3": {
       "name": "Running Blind",
@@ -3932,12 +3931,12 @@
       "startup": 0.1667,
       "active": 0.033,
       "recovery": 0.433,
-      "damage": 52,
+      "damage": 9,
       "limb": "legL",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-1,4,3,3",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "1",
         "1,4",
@@ -3967,7 +3966,8 @@
         "mod_damage": "9,18,20,24",
         "on_ch": "+7",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "2,3": {
       "name": "PK Combination",
@@ -3978,12 +3978,12 @@
       "startup": 0.1667,
       "active": 0.033,
       "recovery": 0.483,
-      "damage": 24,
+      "damage": 13,
       "limb": "legL",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 12,
-      "anim_ref": "t8:bryan:bryan-2,3",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "2",
         "2,3"
@@ -4009,7 +4009,8 @@
         "mod_damage": "13,18",
         "on_ch": "+1",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "3,2": {
       "name": "Mid Kick (2)",
@@ -4020,12 +4021,12 @@
       "startup": 0.2667,
       "active": 0.033,
       "recovery": 0.483,
-      "damage": 25,
+      "damage": 18,
       "limb": "armR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 12,
-      "anim_ref": "t8:bryan:bryan-3,2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "3",
         "3,2"
@@ -4051,7 +4052,8 @@
         "mod_damage": "18,14",
         "on_ch": "+1",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "3,2,1": {
       "name": "Mid Kick (1)",
@@ -4062,12 +4064,12 @@
       "startup": 0.2667,
       "active": 0.033,
       "recovery": 0.467,
-      "damage": 35,
+      "damage": 18,
       "limb": "armL",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-3,2,1",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "3",
         "3,2",
@@ -4095,7 +4097,8 @@
         "mod_damage": "18,14,13",
         "on_ch": "+2",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "3,2,1,2": {
       "name": "Rush",
@@ -4106,12 +4109,12 @@
       "startup": 0.2667,
       "active": 0.033,
       "recovery": 0.517,
-      "damage": 49,
+      "damage": 18,
       "limb": "armR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-3,2,1,2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "3",
         "3,2",
@@ -4141,7 +4144,8 @@
         "mod_damage": "18,14,13,18?",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "3,2,1,4": {
       "name": "Gatling Combination",
@@ -4152,12 +4156,12 @@
       "startup": 0.2667,
       "active": 0.033,
       "recovery": 0.5,
-      "damage": 47,
+      "damage": 18,
       "limb": "legR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-3,2,1,4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "3",
         "3,2",
@@ -4187,7 +4191,8 @@
         "mod_damage": "18,14,13,16",
         "on_ch": "0",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "3,3": {
       "name": "Mid Kick (3)",
@@ -4198,12 +4203,12 @@
       "startup": 0.2667,
       "active": 0.033,
       "recovery": 0.4,
-      "damage": 27,
+      "damage": 18,
       "limb": "legL",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 14,
-      "anim_ref": "t8:bryan:bryan-3,3",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "3",
         "3,3"
@@ -4229,7 +4234,8 @@
         "mod_damage": "18,17",
         "on_ch": "+6",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "3,3,2": {
       "name": "Anaconda Bite",
@@ -4240,12 +4246,12 @@
       "startup": 0.2667,
       "active": 0.033,
       "recovery": 0.5,
-      "damage": 47,
+      "damage": 18,
       "limb": "armR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-3,3,2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "3",
         "3,3",
@@ -4273,7 +4279,8 @@
         "mod_damage": "18,17,22",
         "on_ch": "Launch",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "3,3,4": {
       "name": "Anaconda Rage",
@@ -4284,12 +4291,12 @@
       "startup": 0.2667,
       "active": 0.033,
       "recovery": 0.617,
-      "damage": 52,
+      "damage": 18,
       "limb": "legR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-3,3,4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "3",
         "3,3",
@@ -4317,7 +4324,8 @@
         "mod_damage": "18,17,33",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "3+4": {
       "name": "Middle Side Kick",
@@ -4328,12 +4336,12 @@
       "startup": 0.3,
       "active": 0.033,
       "recovery": 0.533,
-      "damage": 20,
+      "damage": 29,
       "limb": "both",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 10,
-      "anim_ref": "t8:bryan:bryan-3+4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "3+4"
       ],
@@ -4350,94 +4358,8 @@
         "id": "bryan_84",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
-    },
-    "3+4,SNE.2": {
-      "name": "Neo Soul Eraser",
-      "input": "3+4,SNE.2",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-3+4,SNE.2",
-      "t8_damage": ",20",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.5,
-      "damage": 40,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-3+4,sne.2",
-      "input_slots": [
-        "3+4",
-        "3+4,SNE.2"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          20,
-          20
-        ],
-        "total": 40
       },
-      "note": "Mid; on block -9; knockdown on hit"
-    },
-    "3+4,SNE.2*": {
-      "name": "Neo Soul Eraser Exceed",
-      "input": "3+4,SNE.2*",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-3+4,SNE.2*",
-      "t8_damage": ",30",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.567,
-      "damage": 50,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-3+4,sne.2*",
-      "input_slots": [
-        "3+4",
-        "3+4,SNE.2*"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          20,
-          30
-        ],
-        "total": 50
-      },
-      "note": "Mid; on block +9g~+10g; knockdown on hit"
-    },
-    "4,1": {
-      "name": "Viper Bite",
-      "input": "4,1",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-4,1",
-      "t8_damage": ",15",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.367,
-      "damage": 30,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-4,1",
-      "input_slots": [
-        "4",
-        "4,1"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          15,
-          15
-        ],
-        "total": 30
-      },
-      "note": "High; on block -1"
+      "t8_anim_removed_20261024": true
     },
     "4,3": {
       "name": "Move 3 (3)",
@@ -4448,12 +4370,12 @@
       "startup": 0.2,
       "active": 0.033,
       "recovery": 0.45,
-      "damage": 27,
+      "damage": 21,
       "limb": "legL",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 14,
-      "anim_ref": "t8:bryan:bryan-4,3",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "4",
         "4,3"
@@ -4479,7 +4401,8 @@
         "mod_damage": "21,16",
         "on_ch": "+4",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "4,3,4": {
       "name": "Double Spin Tomahawk",
@@ -4490,12 +4413,12 @@
       "startup": 0.2,
       "active": 0.033,
       "recovery": 0.5,
-      "damage": 43,
+      "damage": 21,
       "limb": "legR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-4,3,4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "4",
         "4,3",
@@ -4523,7 +4446,8 @@
         "mod_damage": "21,16,27",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "4,3,4*": {
       "name": "Double Spin Tomahawk (Hold)",
@@ -4539,7 +4463,7 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-4,3,4*",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "4",
         "4,3",
@@ -4554,7 +4478,8 @@
         ],
         "total": 52
       },
-      "note": "Mid; on block -6; knockdown on hit"
+      "note": "Mid; on block -6; knockdown on hit",
+      "t8_anim_removed_20261024": true
     },
     "4,3,f+4": {
       "name": "Triple Spin Kick",
@@ -4565,12 +4490,12 @@
       "startup": 0.2,
       "active": 0.033,
       "recovery": 0.5,
-      "damage": 45,
+      "damage": 21,
       "limb": "legR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-4,3,f+4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "4",
         "4,3",
@@ -4598,7 +4523,8 @@
         "mod_damage": "21,16,24",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "b+1": {
       "name": "Chopping Elbow",
@@ -4609,12 +4535,12 @@
       "startup": 0.3333,
       "active": 0.033,
       "recovery": 0.583,
-      "damage": 21,
+      "damage": 28,
       "limb": "armL",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 10,
-      "anim_ref": "t8:bryan:bryan-b+1",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "b+1"
       ],
@@ -4631,7 +4557,8 @@
         "id": "bryan_144",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "b+1+3": {
       "name": "Parry",
@@ -4647,33 +4574,12 @@
       "heavy": false,
       "knock": 0.0,
       "soulGain": 8,
-      "anim_ref": "t8:bryan:bryan-b+1+3",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "b+1+3"
       ],
-      "move_class": "parry"
-    },
-    "b+1+3,P.2": {
-      "name": "Snake Eyes",
-      "input": "b+1+3,P.2",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-b+1+3,P.2",
-      "t8_damage": ",30",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.55,
-      "damage": 30,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-b+1+3,p.2",
-      "input_slots": [
-        "b+1+3",
-        "b+1+3,P.2"
-      ],
-      "move_class": "string",
-      "note": "High; on block -10"
+      "move_class": "parry",
+      "t8_anim_removed_20261024": true
     },
     "b+1+4_t8": {
       "name": "Gravity Blow",
@@ -4684,12 +4590,12 @@
       "startup": 0.8833,
       "active": 0.033,
       "recovery": 0.6,
-      "damage": 26,
+      "damage": 53,
       "limb": "both",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 13,
-      "anim_ref": "t8:bryan:bryan-b+1+4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "b+1+4"
       ],
@@ -4708,7 +4614,8 @@
         "id": "bryan_249",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "b+1+4*": {
       "name": "Meteor Smash",
@@ -4724,12 +4631,13 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-b+1+4*",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "b+1+4*"
       ],
       "move_class": "strike",
-      "note": "m!; knockdown on hit"
+      "note": "m!; knockdown on hit",
+      "t8_anim_removed_20261024": true
     },
     "b+2,1": {
       "name": "Move 1 (1)",
@@ -4740,12 +4648,12 @@
       "startup": 0.2833,
       "active": 0.033,
       "recovery": 0.417,
-      "damage": 34,
+      "damage": 24,
       "limb": "armL",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-b+2,1",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "b+2",
         "b+2,1"
@@ -4771,7 +4679,8 @@
         "mod_damage": "24,22",
         "on_ch": "CS",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "b+2,1,2": {
       "name": "Hands of Doom",
@@ -4782,12 +4691,12 @@
       "startup": 0.2833,
       "active": 0.033,
       "recovery": 0.55,
-      "damage": 56,
+      "damage": 24,
       "limb": "armR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-b+2,1,2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "b+2",
         "b+2,1",
@@ -4815,7 +4724,8 @@
         "mod_damage": "24,22,29",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "b+2,1,4": {
       "name": "Kickass Combo",
@@ -4826,12 +4736,12 @@
       "startup": 0.2833,
       "active": 0.033,
       "recovery": 0.5,
-      "damage": 54,
+      "damage": 24,
       "limb": "legR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-b+2,1,4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "b+2",
         "b+2,1",
@@ -4859,7 +4769,8 @@
         "mod_damage": "24,22,28",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "b+2,4": {
       "name": "Wolf Call",
@@ -4870,12 +4781,12 @@
       "startup": 0.2833,
       "active": 0.033,
       "recovery": 0.417,
-      "damage": 39,
+      "damage": 24,
       "limb": "legR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-b+2,4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "b+2",
         "b+2,4"
@@ -4901,7 +4812,8 @@
         "mod_damage": "24,28",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "b+3": {
       "name": "Move b+3 (b+3)",
@@ -4912,12 +4824,12 @@
       "startup": 0.3167,
       "active": 0.033,
       "recovery": 0.433,
-      "damage": 12,
+      "damage": 16,
       "limb": "legL",
       "heavy": false,
       "knock": 4.2,
       "soulGain": 6,
-      "anim_ref": "t8:bryan:bryan-b+3",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "b+3"
       ],
@@ -4934,7 +4846,8 @@
         "id": "bryan_158",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "b+3,1+2": {
       "name": "Double Hammer",
@@ -4945,12 +4858,12 @@
       "startup": 0.3167,
       "active": 0.033,
       "recovery": 0.567,
-      "damage": 37,
+      "damage": 16,
       "limb": "both",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-b+3,1+2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "b+3",
         "b+3,1+2"
@@ -4976,7 +4889,8 @@
         "mod_damage": "16,33",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "b+3,2": {
       "name": "Move 2 (2)",
@@ -4987,12 +4901,12 @@
       "startup": 0.3167,
       "active": 0.033,
       "recovery": 0.383,
-      "damage": 24,
+      "damage": 16,
       "limb": "armR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 12,
-      "anim_ref": "t8:bryan:bryan-b+3,2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "b+3",
         "b+3,2"
@@ -5018,7 +4932,8 @@
         "mod_damage": "16,16",
         "on_ch": "+7",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "b+3,2,1": {
       "name": "Move 1 (1)",
@@ -5029,12 +4944,12 @@
       "startup": 0.3167,
       "active": 0.033,
       "recovery": 0.467,
-      "damage": 34,
+      "damage": 16,
       "limb": "armL",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-b+3,2,1",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "b+3",
         "b+3,2",
@@ -5062,7 +4977,8 @@
         "mod_damage": "16,16,13",
         "on_ch": "+2",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "b+3,2,1,2": {
       "name": "Rush",
@@ -5073,12 +4989,12 @@
       "startup": 0.3167,
       "active": 0.033,
       "recovery": 0.517,
-      "damage": 48,
+      "damage": 16,
       "limb": "armR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-b+3,2,1,2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "b+3",
         "b+3,2",
@@ -5108,7 +5024,8 @@
         "mod_damage": "16,16,13,22",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "b+3,2,1,4": {
       "name": "Run for Cover",
@@ -5119,12 +5036,12 @@
       "startup": 0.2667,
       "active": 0.033,
       "recovery": 0.5,
-      "damage": 46,
+      "damage": 16,
       "limb": "legR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-b+3,2,1,4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "b+3",
         "b+3,2",
@@ -5154,7 +5071,8 @@
         "mod_damage": "16,16,13,16",
         "on_ch": "0",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "b+3,4": {
       "name": "2nd Hit",
@@ -5165,12 +5083,12 @@
       "startup": 0.3167,
       "active": 0.033,
       "recovery": 0.317,
-      "damage": 30,
+      "damage": 16,
       "limb": "legR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-b+3,4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "b+3",
         "b+3,4"
@@ -5196,266 +5114,8 @@
         "mod_damage": "16,24",
         "on_ch": "-1",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
-    },
-    "b+3,4,1": {
-      "name": "3rd Hit",
-      "input": "b+3,4,1",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-b+3,4,1",
-      "t8_damage": ",5",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.317,
-      "damage": 35,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-b+3,4,1",
-      "input_slots": [
-        "b+3",
-        "b+3,4",
-        "b+3,4,1"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          12,
-          18,
-          5
-        ],
-        "total": 35
       },
-      "note": "Mid"
-    },
-    "b+3,4,1,2": {
-      "name": "4th Hit",
-      "input": "b+3,4,1,2",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-b+3,4,1,2",
-      "t8_damage": ",7",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.317,
-      "damage": 42,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-b+3,4,1,2",
-      "input_slots": [
-        "b+3",
-        "b+3,4",
-        "b+3,4,1",
-        "b+3,4,1,2"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          12,
-          18,
-          5,
-          7
-        ],
-        "total": 42
-      },
-      "note": "Mid"
-    },
-    "b+3,4,1,2,1": {
-      "name": "5th Hit",
-      "input": "b+3,4,1,2,1",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-b+3,4,1,2,1",
-      "t8_damage": ",3",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.317,
-      "damage": 45,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-b+3,4,1,2,1",
-      "input_slots": [
-        "b+3",
-        "b+3,4",
-        "b+3,4,1",
-        "b+3,4,1,2",
-        "b+3,4,1,2,1"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          12,
-          18,
-          5,
-          7,
-          3
-        ],
-        "total": 45
-      },
-      "note": "High"
-    },
-    "b+3,4,1,2,1,4": {
-      "name": "6th Hit",
-      "input": "b+3,4,1,2,1,4",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-b+3,4,1,2,1,4",
-      "t8_damage": ",8",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.317,
-      "damage": 53,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-b+3,4,1,2,1,4",
-      "input_slots": [
-        "b+3",
-        "b+3,4",
-        "b+3,4,1",
-        "b+3,4,1,2",
-        "b+3,4,1,2,1",
-        "b+3,4,1,2,1,4"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          12,
-          18,
-          5,
-          7,
-          3,
-          8
-        ],
-        "total": 53
-      },
-      "note": "High"
-    },
-    "b+3,4,1,2,1,4,2": {
-      "name": "7th Hit",
-      "input": "b+3,4,1,2,1,4,2",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-b+3,4,1,2,1,4,2",
-      "t8_damage": ",5",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.317,
-      "damage": 58,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-b+3,4,1,2,1,4,2",
-      "input_slots": [
-        "b+3",
-        "b+3,4",
-        "b+3,4,1",
-        "b+3,4,1,2",
-        "b+3,4,1,2,1",
-        "b+3,4,1,2,1,4",
-        "b+3,4,1,2,1,4,2"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          12,
-          18,
-          5,
-          7,
-          3,
-          8,
-          5
-        ],
-        "total": 58
-      },
-      "note": "High"
-    },
-    "b+3,4,1,2,1,4,2,1": {
-      "name": "8th Hit",
-      "input": "b+3,4,1,2,1,4,2,1",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-b+3,4,1,2,1,4,2,1",
-      "t8_damage": ",5",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.317,
-      "damage": 63,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-b+3,4,1,2,1,4,2,1",
-      "input_slots": [
-        "b+3",
-        "b+3,4",
-        "b+3,4,1",
-        "b+3,4,1,2",
-        "b+3,4,1,2,1",
-        "b+3,4,1,2,1,4",
-        "b+3,4,1,2,1,4,2",
-        "b+3,4,1,2,1,4,2,1"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          12,
-          18,
-          5,
-          7,
-          3,
-          8,
-          5,
-          5
-        ],
-        "total": 63
-      },
-      "note": "High"
-    },
-    "b+3,4,1,2,1,4,2,1,4": {
-      "name": "9th Hit",
-      "input": "b+3,4,1,2,1,4,2,1,4",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-b+3,4,1,2,1,4,2,1,4",
-      "t8_damage": ",10",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.317,
-      "damage": 73,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-b+3,4,1,2,1,4,2,1,4",
-      "input_slots": [
-        "b+3",
-        "b+3,4",
-        "b+3,4,1",
-        "b+3,4,1,2",
-        "b+3,4,1,2,1",
-        "b+3,4,1,2,1,4",
-        "b+3,4,1,2,1,4,2",
-        "b+3,4,1,2,1,4,2,1",
-        "b+3,4,1,2,1,4,2,1,4"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          12,
-          18,
-          5,
-          7,
-          3,
-          8,
-          5,
-          5,
-          10
-        ],
-        "total": 73
-      },
-      "note": "Mid"
+      "t8_anim_removed_20261024": true
     },
     "b+3,4,1,2,1,4,2,1,4,2": {
       "name": "10 Hit Combo",
@@ -5466,12 +5126,12 @@
       "startup": 0.3167,
       "active": 0.033,
       "recovery": 0.317,
-      "damage": 93,
+      "damage": 80,
       "limb": "armR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-b+3,4,1,2,1,4,2,1,4,2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "b+3",
         "b+3,4",
@@ -5508,53 +5168,8 @@
         "notation": "b+3, 4, 1, 2, 1, 4, 2, 1, 4, 2",
         "id": "bryan_210",
         "wired": true
-      }
-    },
-    "Back throw": {
-      "name": "Neck throw",
-      "input": "Back throw",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-Back throw",
-      "t8_damage": "60",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.317,
-      "damage": 60,
-      "limb": "both",
-      "heavy": true,
-      "knock": 6.5,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-back throw",
-      "input_slots": [
-        "Back throw"
-      ],
-      "move_class": "throw",
-      "note": "Throw",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "throw_break": "1+2"
-    },
-    "(Back to wall).b,b,UB": {
-      "name": "Wall Jump Divekick",
-      "input": "(Back to wall).b,b,UB",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-(Back to wall).b,b,UB",
-      "t8_damage": "25",
-      "startup": 0.483,
-      "active": 0.033,
-      "recovery": 0.417,
-      "damage": 25,
-      "limb": "both",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 12,
-      "anim_ref": "t8:bryan:bryan-(back to wall).b,b,ub",
-      "input_slots": [
-        "(Back to wall).b,b,UB"
-      ],
-      "move_class": "strike",
-      "note": "Mid; on block -1"
+      },
+      "t8_anim_removed_20261024": true
     },
     "b,B+4": {
       "name": "Flying Knee Kick",
@@ -5565,12 +5180,12 @@
       "startup": 0.35,
       "active": 0.033,
       "recovery": 0.583,
-      "damage": 24,
+      "damage": 32,
       "limb": "legR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 12,
-      "anim_ref": "t8:bryan:bryan-b,b+4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "b,B+4"
       ],
@@ -5588,7 +5203,8 @@
         "id": "bryan_180",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "b,df+4": {
       "name": "Wedge Driver",
@@ -5604,12 +5220,13 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 12,
-      "anim_ref": "t8:bryan:bryan-b,df+4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "b,df+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -13"
+      "note": "Low; on block -13",
+      "t8_anim_removed_20261024": true
     },
     "d+1+2": {
       "name": "Move d+1+2 (d+1+2)",
@@ -5620,12 +5237,12 @@
       "startup": 0.2833,
       "active": 0.033,
       "recovery": 0.483,
-      "damage": 25,
+      "damage": 10,
       "limb": "both",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 12,
-      "anim_ref": "t8:bryan:bryan-d+1+2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "d+1+2"
       ],
@@ -5648,7 +5265,8 @@
         "notation": "d+1+2",
         "id": "bryan_130",
         "wired": true
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "d+1+2~2": {
       "name": "Snake Bomb",
@@ -5659,12 +5277,12 @@
       "startup": 0.5,
       "active": 0.033,
       "recovery": 0.55,
-      "damage": 24,
+      "damage": 32,
       "limb": "both",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 12,
-      "anim_ref": "t8:bryan:bryan-d+1+2~2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "d+1+2~2"
       ],
@@ -5681,7 +5299,8 @@
         "id": "bryan_135",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "d+1+2,3": {
       "name": "Hammer Driver Hatchet",
@@ -5692,12 +5311,12 @@
       "startup": 0.2833,
       "active": 0.033,
       "recovery": 0.517,
-      "damage": 45,
+      "damage": 13,
       "limb": "legL",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-d+1+2,3",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "d+1+2",
         "d+1+2,3"
@@ -5724,7 +5343,8 @@
         "mod_damage": "13,20,27",
         "on_ch": "KND?",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "d+2": {
       "name": "Move d+2 (d+2)",
@@ -5735,12 +5355,12 @@
       "startup": 0.2333,
       "active": 0.033,
       "recovery": 0.467,
-      "damage": 17,
+      "damage": 18,
       "limb": "armR",
       "heavy": false,
       "knock": 4.2,
       "soulGain": 8,
-      "anim_ref": "t8:bryan:bryan-d+2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "d+2"
       ],
@@ -5757,7 +5377,8 @@
         "id": "bryan_123",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "d+2,3": {
       "name": "Python Crush",
@@ -5768,12 +5389,12 @@
       "startup": 0.2333,
       "active": 0.033,
       "recovery": 0.567,
-      "damage": 38,
+      "damage": 18,
       "limb": "legL",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-d+2,3",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "d+2",
         "d+2,3"
@@ -5799,7 +5420,8 @@
         "mod_damage": "18,28",
         "on_ch": "Launch",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "d+3": {
       "name": "Move d+3 (d+3)",
@@ -5810,12 +5432,12 @@
       "startup": 0.2667,
       "active": 0.033,
       "recovery": 0.5,
-      "damage": 10,
+      "damage": 13,
       "limb": "legL",
       "heavy": false,
       "knock": 4.2,
       "soulGain": 5,
-      "anim_ref": "t8:bryan:bryan-d+3",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "d+3"
       ],
@@ -5832,7 +5454,8 @@
         "id": "bryan_126",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "d+3,2": {
       "name": "Snake Eyes",
@@ -5843,12 +5466,12 @@
       "startup": 0.2667,
       "active": 0.033,
       "recovery": 0.517,
-      "damage": 32,
+      "damage": 13,
       "limb": "armR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-d+3,2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "d+3",
         "d+3,2"
@@ -5874,7 +5497,8 @@
         "mod_damage": "13,29",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "d+3+4": {
       "name": "Move d+3+4 (d+3+4)",
@@ -5885,12 +5509,12 @@
       "startup": 0.3167,
       "active": 0.033,
       "recovery": 0.517,
-      "damage": 16,
+      "damage": 20,
       "limb": "both",
       "heavy": false,
       "knock": 4.2,
       "soulGain": 8,
-      "anim_ref": "t8:bryan:bryan-d+3+4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "d+3+4"
       ],
@@ -5907,7 +5531,8 @@
         "id": "bryan_136",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "d+3+4,2": {
       "name": "Side Low Knuckle Whip",
@@ -5918,12 +5543,12 @@
       "startup": 0.3167,
       "active": 0.033,
       "recovery": 0.6,
-      "damage": 41,
+      "damage": 20,
       "limb": "armR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-d+3+4,2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "d+3+4",
         "d+3+4,2"
@@ -5949,7 +5574,8 @@
         "mod_damage": "20,31",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "db+1+2": {
       "name": "Crash Impact",
@@ -5965,7 +5591,7 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 12,
-      "anim_ref": "t8:bryan:bryan-db+1+2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "db+1+2"
       ],
@@ -5977,7 +5603,8 @@
         ],
         "total": 24
       },
-      "note": "Mid, High; on block -9"
+      "note": "Mid, High; on block -9",
+      "t8_anim_removed_20261024": true
     },
     "db+2": {
       "name": "Stomach Blow",
@@ -5993,12 +5620,13 @@
       "heavy": false,
       "knock": 4.2,
       "soulGain": 6,
-      "anim_ref": "t8:bryan:bryan-db+2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "db+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -6"
+      "note": "Mid; on block -6",
+      "t8_anim_removed_20261024": true
     },
     "db+3": {
       "name": "Sweeper kick",
@@ -6014,32 +5642,13 @@
       "heavy": false,
       "knock": 4.2,
       "soulGain": 6,
-      "anim_ref": "t8:bryan:bryan-db+3",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "db+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -12"
-    },
-    "d,db,b": {
-      "name": "Sway",
-      "input": "d,db,b",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-d,db,b",
-      "t8_damage": null,
-      "startup": 0.167,
-      "active": 0.3,
-      "recovery": 0.317,
-      "damage": 0,
-      "limb": "both",
-      "heavy": false,
-      "knock": 0.0,
-      "soulGain": 8,
-      "anim_ref": "t8:bryan:bryan-d,db,b",
-      "input_slots": [
-        "d,db,b"
-      ],
-      "move_class": "special"
+      "note": "Low; on block -12",
+      "t8_anim_removed_20261024": true
     },
     "DF+1": {
       "name": "Move DF+1 (DF+1)",
@@ -6055,12 +5664,13 @@
       "heavy": false,
       "knock": 2.2,
       "soulGain": 4,
-      "anim_ref": "t8:bryan:bryan-df+1",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "DF+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -5"
+      "note": "Mid; on block -5",
+      "t8_anim_removed_20261024": true
     },
     "DF+1,1": {
       "name": "Move 1 (1)",
@@ -6076,7 +5686,7 @@
       "heavy": false,
       "knock": 4.2,
       "soulGain": 5,
-      "anim_ref": "t8:bryan:bryan-df+1,1",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "DF+1",
         "DF+1,1"
@@ -6089,7 +5699,8 @@
         ],
         "total": 10
       },
-      "note": "Mid; on block -10"
+      "note": "Mid; on block -10",
+      "t8_anim_removed_20261024": true
     },
     "DF+1,1,1": {
       "name": "Move 1 (1)",
@@ -6105,7 +5716,7 @@
       "heavy": false,
       "knock": 4.2,
       "soulGain": 6,
-      "anim_ref": "t8:bryan:bryan-df+1,1,1",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "DF+1",
         "DF+1,1",
@@ -6120,7 +5731,8 @@
         ],
         "total": 12
       },
-      "note": "Mid; on block -10"
+      "note": "Mid; on block -10",
+      "t8_anim_removed_20261024": true
     },
     "DF+1,1,1,1": {
       "name": "Vulcan Cannon",
@@ -6136,7 +5748,7 @@
       "heavy": false,
       "knock": 4.2,
       "soulGain": 7,
-      "anim_ref": "t8:bryan:bryan-df+1,1,1,1",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "DF+1",
         "DF+1,1",
@@ -6153,7 +5765,8 @@
         ],
         "total": 14
       },
-      "note": "Mid; on block -10"
+      "note": "Mid; on block -10",
+      "t8_anim_removed_20261024": true
     },
     "DF+1,2": {
       "name": "Double Body Blow",
@@ -6169,7 +5782,7 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 14,
-      "anim_ref": "t8:bryan:bryan-df+1,2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "DF+1",
         "DF+1,2"
@@ -6182,7 +5795,8 @@
         ],
         "total": 28
       },
-      "note": "Mid; on block -15"
+      "note": "Mid; on block -15",
+      "t8_anim_removed_20261024": true
     },
     "df+2": {
       "name": "Move df+2 (df+2)",
@@ -6198,12 +5812,13 @@
       "heavy": false,
       "knock": 4.2,
       "soulGain": 6,
-      "anim_ref": "t8:bryan:bryan-df+2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "df+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -6"
+      "note": "Mid; on block -6",
+      "t8_anim_removed_20261024": true
     },
     "df+2,1": {
       "name": "Blackout Combo",
@@ -6219,7 +5834,7 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 12,
-      "anim_ref": "t8:bryan:bryan-df+2,1",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "df+2",
         "df+2,1"
@@ -6232,7 +5847,8 @@
         ],
         "total": 23
       },
-      "note": "High; on block -4"
+      "note": "High; on block -4",
+      "t8_anim_removed_20261024": true
     },
     "df+2,3": {
       "name": "Blackout Trap",
@@ -6248,7 +5864,7 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-df+2,3",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "df+2",
         "df+2,3"
@@ -6261,7 +5877,8 @@
         ],
         "total": 32
       },
-      "note": "Mid; on block -13"
+      "note": "Mid; on block -13",
+      "t8_anim_removed_20261024": true
     },
     "df+3": {
       "name": "Snake Edge",
@@ -6277,12 +5894,13 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 10,
-      "anim_ref": "t8:bryan:bryan-df+3",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "df+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -26; knockdown on hit"
+      "note": "Low; on block -26; knockdown on hit",
+      "t8_anim_removed_20261024": true
     },
     "df+4": {
       "name": "Wolf's Tail",
@@ -6298,12 +5916,13 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 12,
-      "anim_ref": "t8:bryan:bryan-df+4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "df+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -6~-4; knockdown on hit"
+      "note": "Mid; on block -6~-4; knockdown on hit",
+      "t8_anim_removed_20261024": true
     },
     "f+1+2": {
       "name": "Sidestep Elbow",
@@ -6314,12 +5933,12 @@
       "startup": 0.3667,
       "active": 0.033,
       "recovery": 0.483,
-      "damage": 22,
+      "damage": 29,
       "limb": "both",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 11,
-      "anim_ref": "t8:bryan:bryan-f+1+2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "f+1+2"
       ],
@@ -6336,7 +5955,8 @@
         "id": "bryan_98",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "f+2_t8": {
       "name": "Move f+2 (f+2)",
@@ -6347,12 +5967,12 @@
       "startup": 0.25,
       "active": 0.033,
       "recovery": 0.483,
-      "damage": 10,
+      "damage": 13,
       "limb": "armR",
       "heavy": false,
       "knock": 4.2,
       "soulGain": 5,
-      "anim_ref": "t8:bryan:bryan-f+2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "f+2"
       ],
@@ -6370,7 +5990,8 @@
         "id": "bryan_88",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "f+2,1": {
       "name": "Move 1 (1)",
@@ -6381,12 +6002,12 @@
       "startup": 0.25,
       "active": 0.033,
       "recovery": 0.483,
-      "damage": 22,
+      "damage": 13,
       "limb": "armL",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 11,
-      "anim_ref": "t8:bryan:bryan-f+2,1",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "f+2",
         "f+2,1"
@@ -6412,7 +6033,8 @@
         "mod_damage": "13,16",
         "on_ch": "+1",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "f+2,1,4": {
       "name": "Snake Eyes",
@@ -6423,12 +6045,12 @@
       "startup": 0.25,
       "active": 0.033,
       "recovery": 0.6,
-      "damage": 42,
+      "damage": 13,
       "limb": "legR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-f+2,1,4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "f+2",
         "f+2,1",
@@ -6456,105 +6078,8 @@
         "mod_damage": "13,16,27",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
-    },
-    "f+2,1,SNE.2": {
-      "name": "Move SNE.2 (SNE.2)",
-      "input": "f+2,1,SNE.2",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-f+2,1,SNE.2",
-      "t8_damage": ",5",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.483,
-      "damage": 27,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 14,
-      "anim_ref": "t8:bryan:bryan-f+2,1,sne.2",
-      "input_slots": [
-        "f+2",
-        "f+2,1",
-        "f+2,1,SNE.2"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          10,
-          12,
-          5
-        ],
-        "total": 27
       },
-      "note": "Mid; on block -7"
-    },
-    "f+2,1,SNE.2,3": {
-      "name": "Move 3 (3)",
-      "input": "f+2,1,SNE.2,3",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-f+2,1,SNE.2,3",
-      "t8_damage": ",7",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.533,
-      "damage": 34,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-f+2,1,sne.2,3",
-      "input_slots": [
-        "f+2",
-        "f+2,1",
-        "f+2,1,SNE.2",
-        "f+2,1,SNE.2,3"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          10,
-          12,
-          5,
-          7
-        ],
-        "total": 34
-      },
-      "note": "Mid; on block -10; knockdown on hit"
-    },
-    "f+2,1,SNE.2,3,2": {
-      "name": "Neo Incinerator",
-      "input": "f+2,1,SNE.2,3,2",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-f+2,1,SNE.2,3,2",
-      "t8_damage": ",20 (14)",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.65,
-      "damage": 34,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-f+2,1,sne.2,3,2",
-      "input_slots": [
-        "f+2",
-        "f+2,1",
-        "f+2,1,SNE.2",
-        "f+2,1,SNE.2,3",
-        "f+2,1,SNE.2,3,2"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          10,
-          12,
-          5,
-          7
-        ],
-        "total": 34
-      },
-      "note": "Mid; on block -13; knockdown on hit"
+      "t8_anim_removed_20261024": true
     },
     "f+3_t8": {
       "name": "Knee Strike",
@@ -6565,12 +6090,12 @@
       "startup": 0.2667,
       "active": 0.033,
       "recovery": 0.45,
-      "damage": 18,
+      "damage": 24,
       "limb": "legL",
       "heavy": true,
       "knock": 4.2,
       "soulGain": 9,
-      "anim_ref": "t8:bryan:bryan-f+3",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "f+3"
       ],
@@ -6588,7 +6113,8 @@
         "id": "bryan_94",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "f+4,1": {
       "name": "Boa Crusher",
@@ -6604,7 +6130,7 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 10,
-      "anim_ref": "t8:bryan:bryan-f+4,1",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "f+4",
         "f+4,1"
@@ -6630,7 +6156,8 @@
         "mod_damage": "20,28",
         "on_ch": "BU",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "FC.db+1+2": {
       "name": "Chains of Misery",
@@ -6646,7 +6173,7 @@
       "heavy": true,
       "knock": 6.5,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-fc.db+1+2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "FC.db+1+2"
       ],
@@ -6655,7 +6182,8 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "t8_anim_removed_20261024": true
     },
     "FC.df+2": {
       "name": "Move FC.df+2 (FC.df+2)",
@@ -6671,12 +6199,13 @@
       "heavy": false,
       "knock": 4.2,
       "soulGain": 6,
-      "anim_ref": "t8:bryan:bryan-fc.df+2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "FC.df+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "t8_anim_removed_20261024": true
     },
     "FC.df+2,1": {
       "name": "Snake Rampage",
@@ -6692,7 +6221,7 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-fc.df+2,1",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "FC.df+2",
         "FC.df+2,1"
@@ -6705,7 +6234,8 @@
         ],
         "total": 37
       },
-      "note": "High; on block -8; knockdown on hit"
+      "note": "High; on block -8; knockdown on hit",
+      "t8_anim_removed_20261024": true
     },
     "FC.df+4": {
       "name": "Northern Cross",
@@ -6721,12 +6251,13 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 10,
-      "anim_ref": "t8:bryan:bryan-fc.df+4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "FC.df+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -10; knockdown on hit"
+      "note": "Mid; on block -10; knockdown on hit",
+      "t8_anim_removed_20261024": true
     },
     "f,F+2": {
       "name": "Mach Breaker",
@@ -6737,12 +6268,12 @@
       "startup": 0.2167,
       "active": 0.033,
       "recovery": 0.55,
-      "damage": 29,
+      "damage": 43,
       "limb": "armR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 14,
-      "anim_ref": "t8:bryan:bryan-f,f+2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "f,F+2"
       ],
@@ -6759,7 +6290,8 @@
         "id": "bryan_245",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "f,F+3": {
       "name": "Snake Eyes",
@@ -6770,12 +6302,12 @@
       "startup": 0.3833,
       "active": 0.033,
       "recovery": 0.617,
-      "damage": 25,
+      "damage": 33,
       "limb": "legL",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 12,
-      "anim_ref": "t8:bryan:bryan-f,f+3",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "f,F+3"
       ],
@@ -6792,7 +6324,8 @@
         "id": "bryan_99",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "f,F+3*": {
       "name": "Move f,F+3* (f,F+3*)",
@@ -6803,12 +6336,12 @@
       "startup": 0.5667,
       "active": 0.033,
       "recovery": 0.617,
-      "damage": 33,
+      "damage": 40,
       "limb": "legL",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-f,f+3*",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "f,F+3*"
       ],
@@ -6825,7 +6358,8 @@
         "id": "bryan_100",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "f,F+4": {
       "name": "Mach Kick",
@@ -6836,12 +6370,12 @@
       "startup": 0.2667,
       "active": 0.033,
       "recovery": 0.533,
-      "damage": 32,
+      "damage": 43,
       "limb": "legR",
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-f,f+4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "f,F+4"
       ],
@@ -6858,7 +6392,8 @@
         "id": "bryan_101",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "f,f,F+3": {
       "name": "Snake Slash",
@@ -6874,12 +6409,13 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-f,f,f+3",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "f,f,F+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +6~+9; knockdown on hit"
+      "note": "Mid; on block +6~+9; knockdown on hit",
+      "t8_anim_removed_20261024": true
     },
     "f,n,b+2": {
       "name": "Jet Uppercut",
@@ -6895,70 +6431,13 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 10,
-      "anim_ref": "t8:bryan:bryan-f,n,b+2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "f,n,b+2"
       ],
       "move_class": "strike",
-      "note": "High; on block -7; knockdown on hit"
-    },
-    "H.2+3": {
-      "name": "Notorious Monster",
-      "input": "H.2+3",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-H.2+3",
-      "t8_damage": "20,20,35",
-      "startup": 0.267,
-      "active": 0.033,
-      "recovery": 0.567,
-      "damage": 75,
-      "limb": "both",
-      "heavy": true,
-      "knock": 6.5,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-h.2+3",
-      "input_slots": [
-        "H.2+3"
-      ],
-      "move_class": "throw",
-      "multi_hit": {
-        "hits": [
-          20,
-          20,
-          35
-        ],
-        "total": 75
-      },
-      "note": "Mid, Mid, Throw; on block +9",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "throw_break": "1"
-    },
-    "Left throw": {
-      "name": "Gravity Throw",
-      "input": "Left throw",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-Left throw",
-      "t8_damage": "40",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.317,
-      "damage": 40,
-      "limb": "both",
-      "heavy": true,
-      "knock": 6.5,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-left throw",
-      "input_slots": [
-        "Left throw"
-      ],
-      "move_class": "throw",
-      "note": "Throw; on block -3",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "throw_break": "1"
+      "note": "High; on block -7; knockdown on hit",
+      "t8_anim_removed_20261024": true
     },
     "qcf": {
       "name": "Slither Step (SLS)",
@@ -6974,7 +6453,7 @@
       "heavy": false,
       "knock": 0.0,
       "soulGain": 8,
-      "anim_ref": "t8:bryan:bryan-qcf",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "qcf"
       ],
@@ -6984,343 +6463,8 @@
         "notation": "qcf",
         "id": "bryan_221",
         "wired": true
-      }
-    },
-    "R.df+1+2": {
-      "name": "Total Vandalization",
-      "input": "R.df+1+2",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-R.df+1+2",
-      "t8_damage": "55+",
-      "startup": 0.333,
-      "active": 0.3,
-      "recovery": 0.65,
-      "damage": 0,
-      "limb": "both",
-      "heavy": false,
-      "knock": 0.0,
-      "soulGain": 8,
-      "anim_ref": "t8:bryan:bryan-r.df+1+2",
-      "input_slots": [
-        "R.df+1+2"
-      ],
-      "move_class": "special",
-      "note": "Mid, Throw; on block -18"
-    },
-    "Right throw": {
-      "name": "Knee Blast",
-      "input": "Right throw",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-Right throw",
-      "t8_damage": "40",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.317,
-      "damage": 40,
-      "limb": "both",
-      "heavy": true,
-      "knock": 6.5,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-right throw",
-      "input_slots": [
-        "Right throw"
-      ],
-      "move_class": "throw",
-      "note": "Throw; on block -3",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "throw_break": "1"
-    },
-    "SLS.1+2": {
-      "name": "Requiem",
-      "input": "SLS.1+2",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-SLS.1+2",
-      "t8_damage": "23",
-      "startup": 0.25,
-      "active": 0.033,
-      "recovery": 0.55,
-      "damage": 23,
-      "limb": "both",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 12,
-      "anim_ref": "t8:bryan:bryan-sls.1+2",
-      "input_slots": [
-        "SLS.1+2"
-      ],
-      "move_class": "strike",
-      "note": "Mid; on block -9; knockdown on hit"
-    },
-    "SLS.2": {
-      "name": "Move SLS.2 (SLS.2)",
-      "input": "SLS.2",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-SLS.2",
-      "t8_damage": "16",
-      "startup": 0.25,
-      "active": 0.033,
-      "recovery": 0.45,
-      "damage": 16,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 4.2,
-      "soulGain": 8,
-      "anim_ref": "t8:bryan:bryan-sls.2",
-      "input_slots": [
-        "SLS.2"
-      ],
-      "move_class": "strike",
-      "note": "High; on block -6"
-    },
-    "SLS.2,1": {
-      "name": "Cross Bazooka",
-      "input": "SLS.2,1",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-SLS.2,1",
-      "t8_damage": ",23",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.517,
-      "damage": 39,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-sls.2,1",
-      "input_slots": [
-        "SLS.2",
-        "SLS.2,1"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          16,
-          23
-        ],
-        "total": 39
       },
-      "note": "Mid; on block -11; knockdown on hit"
-    },
-    "SLS.2,2": {
-      "name": "Cross Grenade",
-      "input": "SLS.2,2",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-SLS.2,2",
-      "t8_damage": ",25",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.583,
-      "damage": 41,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-sls.2,2",
-      "input_slots": [
-        "SLS.2",
-        "SLS.2,2"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          16,
-          25
-        ],
-        "total": 41
-      },
-      "note": "Mid; on block -7; knockdown on hit"
-    },
-    "SLS.2,4": {
-      "name": "Snake Eyes",
-      "input": "SLS.2,4",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-SLS.2,4",
-      "t8_damage": ",22",
-      "startup": 0.267,
-      "active": 0.033,
-      "recovery": 0.567,
-      "damage": 38,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-sls.2,4",
-      "input_slots": [
-        "SLS.2",
-        "SLS.2,4"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          16,
-          22
-        ],
-        "total": 38
-      },
-      "note": "Mid; on block -10; knockdown on hit"
-    },
-    "SLS.4": {
-      "name": "Move SLS.4 (SLS.4)",
-      "input": "SLS.4",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-SLS.4",
-      "t8_damage": "13",
-      "startup": 0.3,
-      "active": 0.033,
-      "recovery": 0.483,
-      "damage": 13,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 4.2,
-      "soulGain": 6,
-      "anim_ref": "t8:bryan:bryan-sls.4",
-      "input_slots": [
-        "SLS.4"
-      ],
-      "move_class": "strike",
-      "note": "Mid; on block -5"
-    },
-    "SLS.4,1": {
-      "name": "Move 1 (1)",
-      "input": "SLS.4,1",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-SLS.4,1",
-      "t8_damage": ",13",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.417,
-      "damage": 26,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 13,
-      "anim_ref": "t8:bryan:bryan-sls.4,1",
-      "input_slots": [
-        "SLS.4",
-        "SLS.4,1"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          13,
-          13
-        ],
-        "total": 26
-      },
-      "note": "High; on block +0; knockdown on hit"
-    },
-    "SLS.4,1,2": {
-      "name": "Snake Spin Mach Breaker",
-      "input": "SLS.4,1,2",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-SLS.4,1,2",
-      "t8_damage": ",22",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.55,
-      "damage": 48,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-sls.4,1,2",
-      "input_slots": [
-        "SLS.4",
-        "SLS.4,1",
-        "SLS.4,1,2"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          13,
-          13,
-          22
-        ],
-        "total": 48
-      },
-      "note": "High; on block -9"
-    },
-    "SLS.4,1,4": {
-      "name": "Snake Spin Kickass",
-      "input": "SLS.4,1,4",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-SLS.4,1,4",
-      "t8_damage": ",20",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.5,
-      "damage": 46,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-sls.4,1,4",
-      "input_slots": [
-        "SLS.4",
-        "SLS.4,1",
-        "SLS.4,1,4"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          13,
-          13,
-          20
-        ],
-        "total": 46
-      },
-      "note": "Mid; on block -10; knockdown on hit"
-    },
-    "SNE.b+1+2": {
-      "name": "Neo Murderous Strikes",
-      "input": "SNE.b+1+2",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-SNE.b+1+2",
-      "t8_damage": "9,15",
-      "startup": 0.333,
-      "active": 0.033,
-      "recovery": 0.317,
-      "damage": 24,
-      "limb": "both",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 12,
-      "anim_ref": "t8:bryan:bryan-sne.b+1+2",
-      "input_slots": [
-        "SNE.b+1+2"
-      ],
-      "move_class": "strike",
-      "multi_hit": {
-        "hits": [
-          9,
-          15
-        ],
-        "total": 24
-      },
-      "note": "Mid, Mid; on block +4"
-    },
-    "SNE.FC.df+3": {
-      "name": "Neo Grim Reaper",
-      "input": "SNE.FC.df+3",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-SNE.FC.df+3",
-      "t8_damage": "24",
-      "startup": 0.333,
-      "active": 0.033,
-      "recovery": 0.317,
-      "damage": 24,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 12,
-      "anim_ref": "t8:bryan:bryan-sne.fc.df+3",
-      "input_slots": [
-        "SNE.FC.df+3"
-      ],
-      "move_class": "strike",
-      "note": "Low; on block -13"
+      "t8_anim_removed_20261024": true
     },
     "SNE.f,F+1+2": {
       "name": "Neo Mach Breaker",
@@ -7336,41 +6480,13 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-sne.f,f+1+2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "SNE.f,F+1+2"
       ],
       "move_class": "strike",
-      "note": "High; on block -9; knockdown on hit"
-    },
-    "SNE.f,F+1+2,P": {
-      "name": "Immortal Payback",
-      "input": "SNE.f,F+1+2,P",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-SNE.f,F+1+2,P",
-      "t8_damage": ",20",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.5,
-      "damage": 50,
-      "limb": "both",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-sne.f,f+1+2,p",
-      "input_slots": [
-        "SNE.f,F+1+2",
-        "SNE.f,F+1+2,P"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          30,
-          20
-        ],
-        "total": 50
-      },
-      "note": "Mid; on block ±0; knockdown on hit"
+      "note": "High; on block -9; knockdown on hit",
+      "t8_anim_removed_20261024": true
     },
     "SS.1": {
       "name": "Hellraiser",
@@ -7386,12 +6502,13 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 12,
-      "anim_ref": "t8:bryan:bryan-ss.1",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "SS.1"
       ],
       "move_class": "strike",
-      "note": "High; on block -5; knockdown on hit"
+      "note": "High; on block -5; knockdown on hit",
+      "t8_anim_removed_20261024": true
     },
     "SS.2": {
       "name": "Move SS.2 (SS.2)",
@@ -7407,154 +6524,13 @@
       "heavy": false,
       "knock": 4.2,
       "soulGain": 8,
-      "anim_ref": "t8:bryan:bryan-ss.2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "SS.2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9"
-    },
-    "SS.2,1": {
-      "name": "Snake Fang",
-      "input": "SS.2,1",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-SS.2,1",
-      "t8_damage": ",20",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.5,
-      "damage": 35,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-ss.2,1",
-      "input_slots": [
-        "SS.2",
-        "SS.2,1"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          15,
-          20
-        ],
-        "total": 35
-      },
-      "note": "High; on block -9"
-    },
-    "SWA.1": {
-      "name": "Cannonball Straight",
-      "input": "SWA.1",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-SWA.1",
-      "t8_damage": "22",
-      "startup": 0.217,
-      "active": 0.033,
-      "recovery": 0.467,
-      "damage": 22,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 11,
-      "anim_ref": "t8:bryan:bryan-swa.1",
-      "input_slots": [
-        "SWA.1"
-      ],
-      "move_class": "strike",
-      "note": "High; on block +1"
-    },
-    "SWA.2": {
-      "name": "Smash",
-      "input": "SWA.2",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-SWA.2",
-      "t8_damage": "16",
-      "startup": 0.25,
-      "active": 0.033,
-      "recovery": 0.5,
-      "damage": 16,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 4.2,
-      "soulGain": 8,
-      "anim_ref": "t8:bryan:bryan-swa.2",
-      "input_slots": [
-        "SWA.2"
-      ],
-      "move_class": "strike",
-      "note": "Mid; on block -9"
-    },
-    "SWA.2,4": {
-      "name": "Smash and Mach Kick",
-      "input": "SWA.2,4",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-SWA.2,4",
-      "t8_damage": ",25",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.533,
-      "damage": 41,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-swa.2,4",
-      "input_slots": [
-        "SWA.2",
-        "SWA.2,4"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          16,
-          25
-        ],
-        "total": 41
-      },
-      "note": "High; on block -9c; knockdown on hit"
-    },
-    "SWA.3": {
-      "name": "Hatchet Kick",
-      "input": "SWA.3",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-SWA.3",
-      "t8_damage": "23",
-      "startup": 0.317,
-      "active": 0.033,
-      "recovery": 0.517,
-      "damage": 23,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 12,
-      "anim_ref": "t8:bryan:bryan-swa.3",
-      "input_slots": [
-        "SWA.3"
-      ],
-      "move_class": "strike",
-      "note": "Low; on block -13"
-    },
-    "SWA.4": {
-      "name": "Soccer Kick",
-      "input": "SWA.4",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-SWA.4",
-      "t8_damage": "23",
-      "startup": 0.283,
-      "active": 0.033,
-      "recovery": 0.533,
-      "damage": 23,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 12,
-      "anim_ref": "t8:bryan:bryan-swa.4",
-      "input_slots": [
-        "SWA.4"
-      ],
-      "move_class": "strike",
-      "note": "Mid; Kickoff; on block -12; knockdown on hit"
+      "note": "Mid; on block -9",
+      "t8_anim_removed_20261024": true
     },
     "ub+1+2": {
       "name": "Move ub+1+2 (ub+1+2)",
@@ -7570,7 +6546,7 @@
       "heavy": false,
       "knock": 2.2,
       "soulGain": 4,
-      "anim_ref": "t8:bryan:bryan-ub+1+2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "ub+1+2"
       ],
@@ -7582,7 +6558,8 @@
         ],
         "total": 7
       },
-      "note": "Mid, Mid; on block -16"
+      "note": "Mid, Mid; on block -16",
+      "t8_anim_removed_20261024": true
     },
     "ub+1+2,1": {
       "name": "Move 1 (1)",
@@ -7598,7 +6575,7 @@
       "heavy": false,
       "knock": 2.2,
       "soulGain": 4,
-      "anim_ref": "t8:bryan:bryan-ub+1+2,1",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "ub+1+2",
         "ub+1+2,1"
@@ -7612,7 +6589,8 @@
         ],
         "total": 9
       },
-      "note": "Mid; on block -13"
+      "note": "Mid; on block -13",
+      "t8_anim_removed_20261024": true
     },
     "ub+1+2,1,2": {
       "name": "Move 2 (2)",
@@ -7628,7 +6606,7 @@
       "heavy": false,
       "knock": 4.2,
       "soulGain": 6,
-      "anim_ref": "t8:bryan:bryan-ub+1+2,1,2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "ub+1+2",
         "ub+1+2,1",
@@ -7644,7 +6622,8 @@
         ],
         "total": 11
       },
-      "note": "Mid; on block -16"
+      "note": "Mid; on block -16",
+      "t8_anim_removed_20261024": true
     },
     "ub+1+2,1,2,1": {
       "name": "Move 1 (1)",
@@ -7660,7 +6639,7 @@
       "heavy": false,
       "knock": 4.2,
       "soulGain": 6,
-      "anim_ref": "t8:bryan:bryan-ub+1+2,1,2,1",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "ub+1+2",
         "ub+1+2,1",
@@ -7678,7 +6657,8 @@
         ],
         "total": 13
       },
-      "note": "Mid; on block -13"
+      "note": "Mid; on block -13",
+      "t8_anim_removed_20261024": true
     },
     "ub+1+2,1,2,1,2": {
       "name": "Move 2 (2)",
@@ -7694,7 +6674,7 @@
       "heavy": false,
       "knock": 4.2,
       "soulGain": 8,
-      "anim_ref": "t8:bryan:bryan-ub+1+2,1,2,1,2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "ub+1+2",
         "ub+1+2,1",
@@ -7714,7 +6694,8 @@
         ],
         "total": 15
       },
-      "note": "Mid; on block -16"
+      "note": "Mid; on block -16",
+      "t8_anim_removed_20261024": true
     },
     "ub+1+2,1,2,1,2,1": {
       "name": "Move 1 (1)",
@@ -7730,7 +6711,7 @@
       "heavy": false,
       "knock": 4.2,
       "soulGain": 8,
-      "anim_ref": "t8:bryan:bryan-ub+1+2,1,2,1,2,1",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "ub+1+2",
         "ub+1+2,1",
@@ -7752,7 +6733,8 @@
         ],
         "total": 17
       },
-      "note": "Mid; on block -13"
+      "note": "Mid; on block -13",
+      "t8_anim_removed_20261024": true
     },
     "ub+1+2,1,2,1,2,1,2": {
       "name": "Move 2 (2)",
@@ -7768,7 +6750,7 @@
       "heavy": true,
       "knock": 4.2,
       "soulGain": 10,
-      "anim_ref": "t8:bryan:bryan-ub+1+2,1,2,1,2,1,2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "ub+1+2",
         "ub+1+2,1",
@@ -7792,7 +6774,8 @@
         ],
         "total": 19
       },
-      "note": "Mid; on block -16"
+      "note": "Mid; on block -16",
+      "t8_anim_removed_20261024": true
     },
     "ub+1+2,1,2,1,2,1,2,1": {
       "name": "Move 1 (1)",
@@ -7808,7 +6791,7 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 10,
-      "anim_ref": "t8:bryan:bryan-ub+1+2,1,2,1,2,1,2,1",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "ub+1+2",
         "ub+1+2,1",
@@ -7834,7 +6817,8 @@
         ],
         "total": 21
       },
-      "note": "Mid; on block -13"
+      "note": "Mid; on block -13",
+      "t8_anim_removed_20261024": true
     },
     "ub+1+2,1,2,1,2,1,2,1,2": {
       "name": "Move 2 (2)",
@@ -7850,7 +6834,7 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 12,
-      "anim_ref": "t8:bryan:bryan-ub+1+2,1,2,1,2,1,2,1,2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "ub+1+2",
         "ub+1+2,1",
@@ -7878,7 +6862,8 @@
         ],
         "total": 23
       },
-      "note": "Mid; on block -16"
+      "note": "Mid; on block -16",
+      "t8_anim_removed_20261024": true
     },
     "ub+1+2,1,2,1,2,1,2,1,2,1": {
       "name": "Move 1 (1)",
@@ -7894,7 +6879,7 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 12,
-      "anim_ref": "t8:bryan:bryan-ub+1+2,1,2,1,2,1,2,1,2,1",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "ub+1+2",
         "ub+1+2,1",
@@ -7924,7 +6909,8 @@
         ],
         "total": 25
       },
-      "note": "Mid; on block -26"
+      "note": "Mid; on block -26",
+      "t8_anim_removed_20261024": true
     },
     "ub+1+2,1,2,1,2,1,2,1,2,1,4": {
       "name": "Gatling Rush",
@@ -7942,7 +6928,7 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-ub+1+2,1,2,1,2,1,2,1,2,1,4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "ub+1+2",
         "ub+1+2,1",
@@ -7974,314 +6960,8 @@
         ],
         "total": 39
       },
-      "note": "Mid; on block -35; knockdown on hit"
-    },
-    "uf+1": {
-      "name": "Berserker Volley",
-      "input": "uf+1",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-uf+1",
-      "t8_damage": "22",
-      "startup": 0.333,
-      "active": 0.033,
-      "recovery": 0.567,
-      "damage": 22,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 11,
-      "anim_ref": "t8:bryan:bryan-uf+1",
-      "input_slots": [
-        "uf+1"
-      ],
-      "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit"
-    },
-    "uf+1+2": {
-      "name": "Anaconda Assassin",
-      "input": "uf+1+2",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-uf+1+2",
-      "t8_damage": "40",
-      "startup": 0.2,
-      "active": 0.033,
-      "recovery": 0.45,
-      "damage": 40,
-      "limb": "both",
-      "heavy": true,
-      "knock": 6.5,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-uf+1+2",
-      "input_slots": [
-        "uf+1+2"
-      ],
-      "move_class": "throw",
-      "note": "Throw; on block -6",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "throw_break": "1+2"
-    },
-    "uf+2": {
-      "name": "Move uf+2 (uf+2)",
-      "input": "uf+2",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-uf+2",
-      "t8_damage": "6",
-      "startup": 0.217,
-      "active": 0.033,
-      "recovery": 0.483,
-      "damage": 6,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 3,
-      "anim_ref": "t8:bryan:bryan-uf+2",
-      "input_slots": [
-        "uf+2"
-      ],
-      "move_class": "strike",
-      "note": "Mid; on block -10"
-    },
-    "uf+2,2": {
-      "name": "Move 2 (2)",
-      "input": "uf+2,2",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-uf+2,2",
-      "t8_damage": ",4",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.483,
-      "damage": 10,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 4.2,
-      "soulGain": 5,
-      "anim_ref": "t8:bryan:bryan-uf+2,2",
-      "input_slots": [
-        "uf+2",
-        "uf+2,2"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          6,
-          4
-        ],
-        "total": 10
-      },
-      "note": "Mid; on block -10"
-    },
-    "uf+2,2,2": {
-      "name": "Move 2 (2)",
-      "input": "uf+2,2,2",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-uf+2,2,2",
-      "t8_damage": ",4",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.483,
-      "damage": 14,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 4.2,
-      "soulGain": 7,
-      "anim_ref": "t8:bryan:bryan-uf+2,2,2",
-      "input_slots": [
-        "uf+2",
-        "uf+2,2",
-        "uf+2,2,2"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          6,
-          4,
-          4
-        ],
-        "total": 14
-      },
-      "note": "Mid; on block -10"
-    },
-    "uf+2,2,2,3": {
-      "name": "Bloody War",
-      "input": "uf+2,2,2,3",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-uf+2,2,2,3",
-      "t8_damage": ",20",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.6,
-      "damage": 34,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-uf+2,2,2,3",
-      "input_slots": [
-        "uf+2",
-        "uf+2,2",
-        "uf+2,2,2",
-        "uf+2,2,2,3"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          6,
-          4,
-          4,
-          20
-        ],
-        "total": 34
-      },
-      "note": "Mid; on block -15; knockdown on hit"
-    },
-    "uf+2,2,2,SNE.2": {
-      "name": "Move SNE.2 (SNE.2)",
-      "input": "uf+2,2,2,SNE.2",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-uf+2,2,2,SNE.2",
-      "t8_damage": ",9",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.517,
-      "damage": 23,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 12,
-      "anim_ref": "t8:bryan:bryan-uf+2,2,2,sne.2",
-      "input_slots": [
-        "uf+2",
-        "uf+2,2",
-        "uf+2,2,2",
-        "uf+2,2,2,SNE.2"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          6,
-          4,
-          4,
-          9
-        ],
-        "total": 23
-      },
-      "note": "Mid; on block -12"
-    },
-    "uf+2,2,2,SNE.2,2": {
-      "name": "Move 2 (2)",
-      "input": "uf+2,2,2,SNE.2,2",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-uf+2,2,2,SNE.2,2",
-      "t8_damage": ",9",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.533,
-      "damage": 32,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-uf+2,2,2,sne.2,2",
-      "input_slots": [
-        "uf+2",
-        "uf+2,2",
-        "uf+2,2,2",
-        "uf+2,2,2,SNE.2",
-        "uf+2,2,2,SNE.2,2"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          6,
-          4,
-          4,
-          9,
-          9
-        ],
-        "total": 32
-      },
-      "note": "Mid; on block -12"
-    },
-    "uf+2,2,2,SNE.2,2,3": {
-      "name": "Neo Bloody War",
-      "input": "uf+2,2,2,SNE.2,2,3",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-uf+2,2,2,SNE.2,2,3",
-      "t8_damage": ",23",
-      "startup": 0.167,
-      "active": 0.033,
-      "recovery": 0.6,
-      "damage": 55,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-uf+2,2,2,sne.2,2,3",
-      "input_slots": [
-        "uf+2",
-        "uf+2,2",
-        "uf+2,2,2",
-        "uf+2,2,2,SNE.2",
-        "uf+2,2,2,SNE.2,2",
-        "uf+2,2,2,SNE.2,2,3"
-      ],
-      "move_class": "string",
-      "multi_hit": {
-        "hits": [
-          6,
-          4,
-          4,
-          9,
-          9,
-          23
-        ],
-        "total": 55
-      },
-      "note": "Mid; on block -15; knockdown on hit"
-    },
-    "uf+3": {
-      "name": "Rolling Driver",
-      "input": "uf+3",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-uf+3",
-      "t8_damage": "15",
-      "startup": 0.45,
-      "active": 0.033,
-      "recovery": 0.333,
-      "damage": 15,
-      "limb": "legL",
-      "heavy": false,
-      "knock": 4.2,
-      "soulGain": 8,
-      "anim_ref": "t8:bryan:bryan-uf+3",
-      "input_slots": [
-        "uf+3"
-      ],
-      "move_class": "strike",
-      "note": "Mid; on block -2; knockdown on hit"
-    },
-    "uf+3+4": {
-      "name": "Snake Eyes",
-      "input": "uf+3+4",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-uf+3+4",
-      "t8_damage": "22",
-      "startup": 0.267,
-      "active": 0.033,
-      "recovery": 0.517,
-      "damage": 22,
-      "limb": "both",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 11,
-      "anim_ref": "t8:bryan:bryan-uf+3+4",
-      "input_slots": [
-        "uf+3+4"
-      ],
-      "move_class": "strike",
-      "note": "Mid; on block -7; knockdown on hit"
+      "note": "Mid; on block -35; knockdown on hit",
+      "t8_anim_removed_20261024": true
     },
     "uf+4": {
       "name": "Orbital Heel Kick",
@@ -8299,56 +6979,13 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 10,
-      "anim_ref": "t8:bryan:bryan-uf+4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "uf+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -5; knockdown on hit"
-    },
-    "uf,n,4": {
-      "name": "Delayed Rising Toe Kick",
-      "input": "uf,n,4",
-      "t3_source": "bryan",
-      "t3_row": 76,
-      "t8_source": "bryan",
-      "t8_id": "Bryan-uf,n,4",
-      "t8_damage": "20",
-      "startup": 0.383,
-      "active": 0.033,
-      "recovery": 0.5,
-      "damage": 20,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 10,
-      "anim_ref": "t8:bryan:bryan-uf,n,4",
-      "input_slots": [
-        "uf,n,4"
-      ],
-      "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit"
-    },
-    "ws1": {
-      "name": "Left Upper",
-      "input": "ws1",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-ws1",
-      "t8_damage": "20",
-      "startup": 0.25,
-      "active": 0.033,
-      "recovery": 0.567,
-      "damage": 20,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 10,
-      "anim_ref": "t8:bryan:bryan-ws1",
-      "input_slots": [
-        "ws1"
-      ],
-      "move_class": "strike",
-      "note": "Mid; on block -14; knockdown on hit"
+      "note": "Mid; on block -5; knockdown on hit",
+      "t8_anim_removed_20261024": true
     },
     "ws2": {
       "name": "Fisherman's Slam",
@@ -8359,12 +6996,12 @@
       "startup": 0.3167,
       "active": 0.033,
       "recovery": 0.483,
-      "damage": 30,
+      "damage": 24,
       "limb": "armR",
       "heavy": true,
       "knock": 6.5,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-ws2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "ws2"
       ],
@@ -8392,28 +7029,8 @@
         "id": "bryan_202",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
-    },
-    "ws3": {
-      "name": "High Knee Kick",
-      "input": "ws3",
-      "t8_source": "bryan",
-      "t8_id": "Bryan-ws3",
-      "t8_damage": "17",
-      "startup": 0.2,
-      "active": 0.033,
-      "recovery": 0.433,
-      "damage": 17,
-      "limb": "legL",
-      "heavy": false,
-      "knock": 4.2,
-      "soulGain": 8,
-      "anim_ref": "t8:bryan:bryan-ws3",
-      "input_slots": [
-        "ws3"
-      ],
-      "move_class": "strike",
-      "note": "Mid; on block -10"
+      },
+      "t8_anim_removed_20261024": true
     },
     "ws3,4": {
       "name": "Double High Knee Kick",
@@ -8429,7 +7046,7 @@
       "heavy": true,
       "knock": 5.0,
       "soulGain": 15,
-      "anim_ref": "t8:bryan:bryan-ws3,4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "ws3",
         "ws3,4"
@@ -8442,7 +7059,8 @@
         ],
         "total": 38
       },
-      "note": "Mid; on block -10"
+      "note": "Mid; on block -10",
+      "t8_anim_removed_20261024": true
     },
     "ws4": {
       "name": "Toe Smash",
@@ -8453,12 +7071,12 @@
       "startup": 0.1833,
       "active": 0.033,
       "recovery": 0.4,
-      "damage": 16,
+      "damage": 21,
       "limb": "legR",
       "heavy": false,
       "knock": 4.2,
       "soulGain": 8,
-      "anim_ref": "t8:bryan:bryan-ws4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "ws4"
       ],
@@ -8475,7 +7093,8 @@
         "id": "bryan_207",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "1~t8.bryan": {
       "name": "Jab",
@@ -8483,7 +7102,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.317,
-      "damage": 3,
+      "damage": 9,
       "damage_raw": 5,
       "limb": "armL",
       "heavy": false,
@@ -8494,7 +7113,7 @@
       "on_hit": "+8",
       "on_ch": null,
       "crush": null,
-      "anim_ref": "t8:bryan:bryan-1",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "1"
       ],
@@ -8521,7 +7140,8 @@
         "id": "bryan_2",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "1+3~t8.bryan": {
       "name": "Gravity Brain Buster",
@@ -8540,7 +7160,7 @@
       "on_hit": "-2d",
       "on_ch": null,
       "crush": null,
-      "anim_ref": "t8:bryan:bryan-1+3",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "1+3"
       ],
@@ -8558,7 +7178,8 @@
         "bank": "bryan",
         "row": 209,
         "match": "same-notation"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "2~t8.bryan": {
       "name": "SKULL 2",
@@ -8566,7 +7187,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.3,
-      "damage": 6,
+      "damage": 13,
       "damage_raw": 10,
       "limb": "armR",
       "heavy": false,
@@ -8577,7 +7198,7 @@
       "on_hit": "+7",
       "on_ch": null,
       "crush": null,
-      "anim_ref": "t8:bryan:bryan-2",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "2"
       ],
@@ -8603,7 +7224,8 @@
         "id": "bryan_46",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "2+4~t8.bryan": {
       "name": "Guillotine",
@@ -8622,7 +7244,7 @@
       "on_hit": "+0d",
       "on_ch": null,
       "crush": null,
-      "anim_ref": "t8:bryan:bryan-2+4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "2+4"
       ],
@@ -8640,7 +7262,8 @@
         "bank": "bryan",
         "row": 210,
         "match": "same-notation"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "3~t8.bryan": {
       "name": "Mid Kick",
@@ -8648,7 +7271,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.383,
-      "damage": 8,
+      "damage": 18,
       "damage_raw": 14,
       "limb": "legL",
       "heavy": false,
@@ -8659,7 +7282,7 @@
       "on_hit": "+7",
       "on_ch": null,
       "crush": null,
-      "anim_ref": "t8:bryan:bryan-3",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "3"
       ],
@@ -8685,7 +7308,8 @@
         "id": "bryan_49",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "4~t8.bryan": {
       "name": "SKULL 4",
@@ -8693,7 +7317,7 @@
       "startup": 0.2,
       "active": 0.017,
       "recovery": 0.433,
-      "damage": 8,
+      "damage": 20,
       "damage_raw": 15,
       "limb": "legR",
       "heavy": false,
@@ -8704,7 +7328,7 @@
       "on_hit": "+6",
       "on_ch": null,
       "crush": null,
-      "anim_ref": "t8:bryan:bryan-4",
+      "anim_ref": "UNMAPPED:t7-clip-pending",
       "input_slots": [
         "4"
       ],
@@ -8730,7 +7354,8 @@
         "id": "bryan_71",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
-      }
+      },
+      "t8_anim_removed_20261024": true
     },
     "WALL.b,b,u/b": {
       "name": "SKULL WALL.b,b,u/b",
@@ -8780,7 +7405,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.317,
-      "damage": 4,
+      "damage": 9,
       "damage_raw": 7,
       "limb": "armL",
       "heavy": false,
@@ -8890,7 +7515,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.35,
-      "damage": 5,
+      "damage": 9,
       "damage_raw": 8,
       "limb": "armR",
       "heavy": false,
@@ -8942,7 +7567,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.417,
-      "damage": 19,
+      "damage": 9,
       "damage_raw": 33,
       "limb": "armL",
       "heavy": true,
@@ -9003,7 +7628,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.417,
-      "damage": 15,
+      "damage": 9,
       "damage_raw": 26,
       "limb": "armL",
       "heavy": true,
@@ -9062,7 +7687,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.417,
-      "damage": 11,
+      "damage": 9,
       "damage_raw": 18,
       "limb": "armL",
       "heavy": true,
@@ -9114,7 +7739,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.517,
-      "damage": 18,
+      "damage": 9,
       "damage_raw": 30,
       "limb": "legL",
       "heavy": true,
@@ -9175,7 +7800,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.517,
-      "damage": 14,
+      "damage": 9,
       "damage_raw": 23,
       "limb": "legL",
       "heavy": true,
@@ -9287,7 +7912,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 23,
+      "damage": 9,
       "damage_raw": 39,
       "limb": "legR",
       "heavy": true,
@@ -9349,7 +7974,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 19,
+      "damage": 9,
       "damage_raw": 32,
       "limb": "legR",
       "heavy": true,
@@ -9409,7 +8034,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 14,
+      "damage": 9,
       "damage_raw": 24,
       "limb": "legR",
       "heavy": true,
@@ -9462,7 +8087,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.433,
-      "damage": 12,
+      "damage": 9,
       "damage_raw": 21,
       "limb": "legR",
       "heavy": true,
@@ -9521,7 +8146,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.433,
-      "damage": 8,
+      "damage": 9,
       "damage_raw": 14,
       "limb": "legR",
       "heavy": false,
@@ -9573,7 +8198,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.433,
-      "damage": 23,
+      "damage": 9,
       "damage_raw": 39,
       "limb": "armR",
       "heavy": true,
@@ -9634,7 +8259,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.433,
-      "damage": 19,
+      "damage": 9,
       "damage_raw": 32,
       "limb": "armR",
       "heavy": true,
@@ -9693,7 +8318,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.433,
-      "damage": 11,
+      "damage": 9,
       "damage_raw": 18,
       "limb": "armR",
       "heavy": true,
@@ -9745,7 +8370,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.417,
-      "damage": 33,
+      "damage": 9,
       "damage_raw": 56,
       "limb": "armL",
       "heavy": true,
@@ -9807,7 +8432,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.417,
-      "damage": 29,
+      "damage": 9,
       "damage_raw": 49,
       "limb": "armL",
       "heavy": true,
@@ -9867,7 +8492,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.417,
-      "damage": 21,
+      "damage": 9,
       "damage_raw": 35,
       "limb": "armL",
       "heavy": true,
@@ -9926,7 +8551,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.417,
-      "damage": 10,
+      "damage": 9,
       "damage_raw": 17,
       "limb": "armL",
       "heavy": false,
@@ -10066,7 +8691,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.55,
-      "damage": 46,
+      "damage": 9,
       "damage_raw": 78,
       "limb": "armR",
       "heavy": true,
@@ -10129,7 +8754,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.55,
-      "damage": 42,
+      "damage": 9,
       "damage_raw": 71,
       "limb": "armR",
       "heavy": true,
@@ -10191,7 +8816,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.55,
-      "damage": 34,
+      "damage": 9,
       "damage_raw": 57,
       "limb": "armR",
       "heavy": true,
@@ -10252,7 +8877,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.55,
-      "damage": 23,
+      "damage": 9,
       "damage_raw": 39,
       "limb": "armR",
       "heavy": true,
@@ -10312,7 +8937,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.55,
-      "damage": 13,
+      "damage": 9,
       "damage_raw": 22,
       "limb": "armR",
       "heavy": true,
@@ -10365,7 +8990,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 41,
+      "damage": 9,
       "damage_raw": 70,
       "limb": "legR",
       "heavy": true,
@@ -10427,7 +9052,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 37,
+      "damage": 9,
       "damage_raw": 63,
       "limb": "legR",
       "heavy": true,
@@ -10488,7 +9113,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 29,
+      "damage": 9,
       "damage_raw": 49,
       "limb": "legR",
       "heavy": true,
@@ -10548,7 +9173,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 18,
+      "damage": 9,
       "damage_raw": 31,
       "limb": "legR",
       "heavy": true,
@@ -10607,7 +9232,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 12,
+      "damage": 9,
       "damage_raw": 21,
       "limb": "legR",
       "heavy": true,
@@ -10660,7 +9285,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.417,
-      "damage": 35,
+      "damage": 9,
       "damage_raw": 60,
       "limb": "legR",
       "heavy": true,
@@ -10722,7 +9347,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.417,
-      "damage": 31,
+      "damage": 9,
       "damage_raw": 53,
       "limb": "legR",
       "heavy": true,
@@ -10783,7 +9408,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.417,
-      "damage": 22,
+      "damage": 9,
       "damage_raw": 38,
       "limb": "legR",
       "heavy": true,
@@ -10843,7 +9468,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.417,
-      "damage": 12,
+      "damage": 9,
       "damage_raw": 21,
       "limb": "legR",
       "heavy": true,
@@ -10896,7 +9521,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.433,
-      "damage": 21,
+      "damage": 9,
       "damage_raw": 36,
       "limb": "legL",
       "heavy": true,
@@ -10956,7 +9581,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.433,
-      "damage": 17,
+      "damage": 9,
       "damage_raw": 29,
       "limb": "legL",
       "heavy": true,
@@ -11067,7 +9692,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.433,
-      "damage": 32,
+      "damage": 9,
       "damage_raw": 54,
       "limb": "legL",
       "heavy": true,
@@ -11128,7 +9753,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.433,
-      "damage": 28,
+      "damage": 9,
       "damage_raw": 47,
       "limb": "legL",
       "heavy": true,
@@ -11188,7 +9813,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.433,
-      "damage": 19,
+      "damage": 9,
       "damage_raw": 33,
       "limb": "legL",
       "heavy": true,
@@ -11247,7 +9872,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.433,
-      "damage": 11,
+      "damage": 9,
       "damage_raw": 18,
       "limb": "legL",
       "heavy": true,
@@ -11299,7 +9924,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.3,
-      "damage": 6,
+      "damage": 13,
       "damage_raw": 10,
       "limb": "armR",
       "heavy": false,
@@ -11350,7 +9975,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 14,
+      "damage": 13,
       "damage_raw": 24,
       "limb": "legL",
       "heavy": true,
@@ -11409,7 +10034,7 @@
       "startup": 0.1667,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 8,
+      "damage": 13,
       "damage_raw": 14,
       "limb": "legL",
       "heavy": false,
@@ -11461,7 +10086,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.383,
-      "damage": 8,
+      "damage": 18,
       "damage_raw": 14,
       "limb": "legL",
       "heavy": false,
@@ -11512,7 +10137,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 15,
+      "damage": 18,
       "damage_raw": 25,
       "limb": "armR",
       "heavy": true,
@@ -11571,7 +10196,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 6,
+      "damage": 18,
       "damage_raw": 11,
       "limb": "armR",
       "heavy": false,
@@ -11623,7 +10248,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.467,
-      "damage": 21,
+      "damage": 18,
       "damage_raw": 35,
       "limb": "armL",
       "heavy": true,
@@ -11683,7 +10308,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.467,
-      "damage": 12,
+      "damage": 18,
       "damage_raw": 21,
       "limb": "armL",
       "heavy": true,
@@ -11742,7 +10367,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.467,
-      "damage": 6,
+      "damage": 18,
       "damage_raw": 10,
       "limb": "armL",
       "heavy": false,
@@ -11794,7 +10419,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.517,
-      "damage": 29,
+      "damage": 18,
       "damage_raw": 49,
       "limb": "armR",
       "heavy": true,
@@ -11856,7 +10481,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.517,
-      "damage": 21,
+      "damage": 18,
       "damage_raw": 35,
       "limb": "armR",
       "heavy": true,
@@ -11917,7 +10542,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.517,
-      "damage": 14,
+      "damage": 18,
       "damage_raw": 24,
       "limb": "armR",
       "heavy": true,
@@ -11977,7 +10602,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.517,
-      "damage": 8,
+      "damage": 18,
       "damage_raw": 14,
       "limb": "armR",
       "heavy": true,
@@ -12030,7 +10655,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 28,
+      "damage": 18,
       "damage_raw": 47,
       "limb": "legR",
       "heavy": true,
@@ -12091,7 +10716,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 19,
+      "damage": 18,
       "damage_raw": 33,
       "limb": "legR",
       "heavy": true,
@@ -12151,7 +10776,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 13,
+      "damage": 18,
       "damage_raw": 22,
       "limb": "legR",
       "heavy": true,
@@ -12210,7 +10835,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 7,
+      "damage": 18,
       "damage_raw": 12,
       "limb": "legR",
       "heavy": false,
@@ -12262,7 +10887,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.4,
-      "damage": 16,
+      "damage": 18,
       "damage_raw": 27,
       "limb": "legL",
       "heavy": true,
@@ -12321,7 +10946,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.4,
-      "damage": 8,
+      "damage": 18,
       "damage_raw": 13,
       "limb": "legL",
       "heavy": false,
@@ -12373,7 +10998,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 28,
+      "damage": 18,
       "damage_raw": 47,
       "limb": "armR",
       "heavy": true,
@@ -12434,7 +11059,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 19,
+      "damage": 18,
       "damage_raw": 33,
       "limb": "armR",
       "heavy": true,
@@ -12494,7 +11119,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 12,
+      "damage": 18,
       "damage_raw": 20,
       "limb": "armR",
       "heavy": true,
@@ -12547,7 +11172,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.617,
-      "damage": 31,
+      "damage": 18,
       "damage_raw": 52,
       "limb": "legR",
       "heavy": true,
@@ -12608,7 +11233,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.617,
-      "damage": 22,
+      "damage": 18,
       "damage_raw": 38,
       "limb": "legR",
       "heavy": true,
@@ -12668,7 +11293,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.617,
-      "damage": 15,
+      "damage": 18,
       "damage_raw": 25,
       "limb": "legR",
       "heavy": true,
@@ -12721,7 +11346,7 @@
       "startup": 0.2,
       "active": 0.017,
       "recovery": 0.433,
-      "damage": 9,
+      "damage": 20,
       "damage_raw": 15,
       "limb": "legR",
       "heavy": true,
@@ -12773,7 +11398,7 @@
       "startup": 0.2,
       "active": 0.017,
       "recovery": 0.45,
-      "damage": 16,
+      "damage": 21,
       "damage_raw": 27,
       "limb": "legL",
       "heavy": true,
@@ -12832,7 +11457,7 @@
       "startup": 0.2,
       "active": 0.017,
       "recovery": 0.45,
-      "damage": 7,
+      "damage": 21,
       "damage_raw": 12,
       "limb": "legL",
       "heavy": false,
@@ -12884,7 +11509,7 @@
       "startup": 0.2,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 25,
+      "damage": 21,
       "damage_raw": 43,
       "limb": "legR",
       "heavy": true,
@@ -12945,7 +11570,7 @@
       "startup": 0.2,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 16,
+      "damage": 21,
       "damage_raw": 28,
       "limb": "legR",
       "heavy": true,
@@ -13005,7 +11630,7 @@
       "startup": 0.2,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 9,
+      "damage": 21,
       "damage_raw": 16,
       "limb": "legR",
       "heavy": true,
@@ -13098,7 +11723,7 @@
       "startup": 0.2,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 26,
+      "damage": 21,
       "damage_raw": 45,
       "limb": "legR",
       "heavy": true,
@@ -13158,7 +11783,7 @@
       "startup": 0.2,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 18,
+      "damage": 21,
       "damage_raw": 30,
       "limb": "legR",
       "heavy": true,
@@ -13217,7 +11842,7 @@
       "startup": 0.2,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 11,
+      "damage": 21,
       "damage_raw": 18,
       "limb": "legR",
       "heavy": true,
@@ -13270,7 +11895,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.45,
-      "damage": 9,
+      "damage": 21,
       "damage_raw": 16,
       "limb": "both",
       "heavy": false,
@@ -13383,7 +12008,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.567,
-      "damage": 12,
+      "damage": 21,
       "damage_raw": 20,
       "limb": "armR",
       "heavy": true,
@@ -13436,7 +12061,7 @@
       "startup": 0.3,
       "active": 0.017,
       "recovery": 0.533,
-      "damage": 12,
+      "damage": 29,
       "damage_raw": 20,
       "limb": "both",
       "heavy": true,
@@ -13488,7 +12113,7 @@
       "startup": 0.45,
       "active": 0.017,
       "recovery": 0.333,
-      "damage": 9,
+      "damage": 15,
       "damage_raw": 15,
       "limb": "legL",
       "heavy": true,
@@ -13541,7 +12166,7 @@
       "startup": 0.4,
       "active": 0.017,
       "recovery": 0.367,
-      "damage": 13,
+      "damage": 29,
       "damage_raw": 22,
       "limb": "legR",
       "heavy": true,
@@ -13594,7 +12219,7 @@
       "startup": 0.35,
       "active": 0.017,
       "recovery": 0.517,
-      "damage": 15,
+      "damage": 25,
       "damage_raw": 25,
       "limb": "both",
       "heavy": true,
@@ -13646,7 +12271,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 6,
+      "damage": 13,
       "damage_raw": 10,
       "limb": "armR",
       "heavy": false,
@@ -13756,7 +12381,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 7,
+      "damage": 13,
       "damage_raw": 12,
       "limb": "armL",
       "heavy": false,
@@ -13808,7 +12433,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.6,
-      "damage": 25,
+      "damage": 13,
       "damage_raw": 42,
       "limb": "legR",
       "heavy": true,
@@ -13869,7 +12494,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.6,
-      "damage": 19,
+      "damage": 13,
       "damage_raw": 32,
       "limb": "legR",
       "heavy": true,
@@ -13929,7 +12554,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.6,
-      "damage": 12,
+      "damage": 13,
       "damage_raw": 20,
       "limb": "legR",
       "heavy": true,
@@ -13982,7 +12607,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.45,
-      "damage": 11,
+      "damage": 24,
       "damage_raw": 18,
       "limb": "legL",
       "heavy": true,
@@ -14033,7 +12658,7 @@
       "startup": 0.3,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 6,
+      "damage": 20,
       "damage_raw": 10,
       "limb": "legR",
       "heavy": false,
@@ -14084,7 +12709,7 @@
       "startup": 0.3,
       "active": 0.017,
       "recovery": 0.667,
-      "damage": 12,
+      "damage": 20,
       "damage_raw": 20,
       "limb": "armL",
       "heavy": true,
@@ -14144,7 +12769,7 @@
       "startup": 0.3,
       "active": 0.017,
       "recovery": 0.667,
-      "damage": 6,
+      "damage": 20,
       "damage_raw": 10,
       "limb": "armL",
       "heavy": false,
@@ -14196,7 +12821,7 @@
       "startup": 0.3667,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 13,
+      "damage": 29,
       "damage_raw": 22,
       "limb": "both",
       "heavy": true,
@@ -14248,7 +12873,7 @@
       "startup": 0.3833,
       "active": 0.017,
       "recovery": 0.617,
-      "damage": 15,
+      "damage": 33,
       "damage_raw": 25,
       "limb": "legL",
       "heavy": true,
@@ -14300,7 +12925,7 @@
       "startup": 0.5667,
       "active": 0.017,
       "recovery": 0.617,
-      "damage": 19,
+      "damage": 40,
       "damage_raw": 33,
       "limb": "legL",
       "heavy": true,
@@ -14352,7 +12977,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.533,
-      "damage": 19,
+      "damage": 43,
       "damage_raw": 32,
       "limb": "legR",
       "heavy": true,
@@ -14404,7 +13029,7 @@
       "startup": 0.2333,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 12,
+      "damage": 22,
       "damage_raw": 20,
       "limb": "armR",
       "heavy": true,
@@ -14498,7 +13123,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.4,
-      "damage": 5,
+      "damage": 10,
       "damage_raw": 8,
       "limb": "armL",
       "heavy": false,
@@ -14549,7 +13174,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 6,
+      "damage": 10,
       "damage_raw": 10,
       "limb": "armL",
       "heavy": false,
@@ -14609,7 +13234,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 1,
+      "damage": 10,
       "damage_raw": 2,
       "limb": "armL",
       "heavy": false,
@@ -14661,7 +13286,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 7,
+      "damage": 10,
       "damage_raw": 12,
       "limb": "armL",
       "heavy": false,
@@ -14722,7 +13347,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 2,
+      "damage": 10,
       "damage_raw": 4,
       "limb": "armL",
       "heavy": false,
@@ -14782,7 +13407,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 1,
+      "damage": 10,
       "damage_raw": 2,
       "limb": "armL",
       "heavy": false,
@@ -14834,7 +13459,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 8,
+      "damage": 10,
       "damage_raw": 14,
       "limb": "armL",
       "heavy": false,
@@ -14896,7 +13521,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 4,
+      "damage": 10,
       "damage_raw": 6,
       "limb": "armL",
       "heavy": false,
@@ -14957,7 +13582,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 2,
+      "damage": 10,
       "damage_raw": 4,
       "limb": "armL",
       "heavy": false,
@@ -15017,7 +13642,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 1,
+      "damage": 10,
       "damage_raw": 2,
       "limb": "armL",
       "heavy": false,
@@ -15069,7 +13694,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 16,
+      "damage": 10,
       "damage_raw": 28,
       "limb": "armR",
       "heavy": true,
@@ -15128,7 +13753,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 12,
+      "damage": 10,
       "damage_raw": 20,
       "limb": "armR",
       "heavy": true,
@@ -15181,7 +13806,7 @@
       "startup": 0.2167,
       "active": 0.017,
       "recovery": 0.417,
-      "damage": 7,
+      "damage": 16,
       "damage_raw": 12,
       "limb": "armR",
       "heavy": false,
@@ -15232,7 +13857,7 @@
       "startup": 0.2167,
       "active": 0.017,
       "recovery": 0.367,
-      "damage": 14,
+      "damage": 16,
       "damage_raw": 23,
       "limb": "armL",
       "heavy": true,
@@ -15291,7 +13916,7 @@
       "startup": 0.2167,
       "active": 0.017,
       "recovery": 0.367,
-      "damage": 6,
+      "damage": 16,
       "damage_raw": 11,
       "limb": "armL",
       "heavy": false,
@@ -15343,7 +13968,7 @@
       "startup": 0.2167,
       "active": 0.017,
       "recovery": 0.533,
-      "damage": 19,
+      "damage": 16,
       "damage_raw": 32,
       "limb": "legL",
       "heavy": true,
@@ -15404,7 +14029,7 @@
       "startup": 0.2167,
       "active": 0.017,
       "recovery": 0.533,
-      "damage": 12,
+      "damage": 16,
       "damage_raw": 20,
       "limb": "legL",
       "heavy": true,
@@ -15457,7 +14082,7 @@
       "startup": 0.4833,
       "active": 0.017,
       "recovery": 0.55,
-      "damage": 12,
+      "damage": 27,
       "damage_raw": 20,
       "limb": "legL",
       "heavy": true,
@@ -15510,7 +14135,7 @@
       "startup": 0.3667,
       "active": 0.017,
       "recovery": 0.533,
-      "damage": 14,
+      "damage": 31,
       "damage_raw": 23,
       "limb": "legR",
       "heavy": true,
@@ -15562,7 +14187,7 @@
       "startup": 0.2333,
       "active": 0.017,
       "recovery": 0.467,
-      "damage": 10,
+      "damage": 18,
       "damage_raw": 17,
       "limb": "armR",
       "heavy": false,
@@ -15613,7 +14238,7 @@
       "startup": 0.2333,
       "active": 0.017,
       "recovery": 0.567,
-      "damage": 21,
+      "damage": 18,
       "damage_raw": 35,
       "limb": "legL",
       "heavy": true,
@@ -15674,7 +14299,7 @@
       "startup": 0.2333,
       "active": 0.017,
       "recovery": 0.567,
-      "damage": 12,
+      "damage": 18,
       "damage_raw": 21,
       "limb": "legL",
       "heavy": true,
@@ -15727,7 +14352,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 6,
+      "damage": 13,
       "damage_raw": 10,
       "limb": "legL",
       "heavy": false,
@@ -15778,7 +14403,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.517,
-      "damage": 19,
+      "damage": 13,
       "damage_raw": 32,
       "limb": "armR",
       "heavy": true,
@@ -15891,7 +14516,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 8,
+      "damage": 14,
       "damage_raw": 13,
       "limb": "legR",
       "heavy": false,
@@ -15942,7 +14567,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 15,
+      "damage": 10,
       "damage_raw": 25,
       "limb": "both",
       "heavy": true,
@@ -15995,7 +14620,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 9,
+      "damage": 10,
       "damage_raw": 15,
       "limb": "both",
       "heavy": false,
@@ -16041,7 +14666,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.517,
-      "damage": 26,
+      "damage": 13,
       "damage_raw": 45,
       "limb": "legL",
       "heavy": true,
@@ -16101,7 +14726,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.517,
-      "damage": 21,
+      "damage": 13,
       "damage_raw": 35,
       "limb": "legL",
       "heavy": true,
@@ -16161,7 +14786,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.517,
-      "damage": 12,
+      "damage": 13,
       "damage_raw": 20,
       "limb": "legL",
       "heavy": true,
@@ -16214,7 +14839,7 @@
       "startup": 0.5,
       "active": 0.017,
       "recovery": 0.55,
-      "damage": 14,
+      "damage": 32,
       "damage_raw": 24,
       "limb": "armR",
       "heavy": true,
@@ -16265,7 +14890,7 @@
       "startup": 0.3167,
       "active": 0.017,
       "recovery": 0.517,
-      "damage": 9,
+      "damage": 20,
       "damage_raw": 15,
       "limb": "both",
       "heavy": false,
@@ -16316,7 +14941,7 @@
       "startup": 0.3167,
       "active": 0.017,
       "recovery": 0.6,
-      "damage": 22,
+      "damage": 20,
       "damage_raw": 38,
       "limb": "armR",
       "heavy": true,
@@ -16376,7 +15001,7 @@
       "startup": 0.3167,
       "active": 0.017,
       "recovery": 0.6,
-      "damage": 14,
+      "damage": 20,
       "damage_raw": 23,
       "limb": "armR",
       "heavy": true,
@@ -16429,7 +15054,7 @@
       "startup": 0.2,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 0,
+      "damage": 20,
       "damage_raw": 0,
       "limb": "armR",
       "heavy": false,
@@ -16480,7 +15105,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.417,
-      "damage": 8,
+      "damage": 17,
       "damage_raw": 13,
       "limb": "armR",
       "heavy": false,
@@ -16531,7 +15156,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 6,
+      "damage": 14,
       "damage_raw": 11,
       "limb": "legL",
       "heavy": false,
@@ -16584,7 +15209,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.567,
-      "damage": 18,
+      "damage": 14,
       "damage_raw": 31,
       "limb": "both",
       "heavy": true,
@@ -16643,7 +15268,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.567,
-      "damage": 15,
+      "damage": 14,
       "damage_raw": 25,
       "limb": "both",
       "heavy": true,
@@ -16696,7 +15321,7 @@
       "startup": 0.3333,
       "active": 0.017,
       "recovery": 0.583,
-      "damage": 12,
+      "damage": 28,
       "damage_raw": 21,
       "limb": "armL",
       "heavy": true,
@@ -16747,7 +15372,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.433,
-      "damage": 11,
+      "damage": 24,
       "damage_raw": 18,
       "limb": "armR",
       "heavy": true,
@@ -16798,7 +15423,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.417,
-      "damage": 21,
+      "damage": 24,
       "damage_raw": 35,
       "limb": "armL",
       "heavy": true,
@@ -16858,7 +15483,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.417,
-      "damage": 10,
+      "damage": 24,
       "damage_raw": 17,
       "limb": "armL",
       "heavy": false,
@@ -16994,7 +15619,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.55,
-      "damage": 34,
+      "damage": 24,
       "damage_raw": 57,
       "limb": "armR",
       "heavy": true,
@@ -17055,7 +15680,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.55,
-      "damage": 23,
+      "damage": 24,
       "damage_raw": 39,
       "limb": "armR",
       "heavy": true,
@@ -17115,7 +15740,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.55,
-      "damage": 13,
+      "damage": 24,
       "damage_raw": 22,
       "limb": "armR",
       "heavy": true,
@@ -17168,7 +15793,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 29,
+      "damage": 24,
       "damage_raw": 49,
       "limb": "legR",
       "heavy": true,
@@ -17228,7 +15853,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 18,
+      "damage": 24,
       "damage_raw": 31,
       "limb": "legR",
       "heavy": true,
@@ -17287,7 +15912,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 12,
+      "damage": 24,
       "damage_raw": 21,
       "limb": "legR",
       "heavy": true,
@@ -17340,7 +15965,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.417,
-      "damage": 23,
+      "damage": 24,
       "damage_raw": 39,
       "limb": "legR",
       "heavy": true,
@@ -17400,7 +16025,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.417,
-      "damage": 12,
+      "damage": 24,
       "damage_raw": 21,
       "limb": "legR",
       "heavy": true,
@@ -17453,7 +16078,7 @@
       "startup": 0.3167,
       "active": 0.017,
       "recovery": 0.433,
-      "damage": 7,
+      "damage": 16,
       "damage_raw": 12,
       "limb": "legL",
       "heavy": false,
@@ -17504,7 +16129,7 @@
       "startup": 0.3167,
       "active": 0.017,
       "recovery": 0.383,
-      "damage": 14,
+      "damage": 16,
       "damage_raw": 24,
       "limb": "armR",
       "heavy": true,
@@ -17563,7 +16188,7 @@
       "startup": 0.3167,
       "active": 0.017,
       "recovery": 0.383,
-      "damage": 7,
+      "damage": 16,
       "damage_raw": 12,
       "limb": "armR",
       "heavy": false,
@@ -17615,7 +16240,7 @@
       "startup": 0.3167,
       "active": 0.017,
       "recovery": 0.467,
-      "damage": 20,
+      "damage": 16,
       "damage_raw": 34,
       "limb": "armL",
       "heavy": true,
@@ -17675,7 +16300,7 @@
       "startup": 0.3167,
       "active": 0.017,
       "recovery": 0.467,
-      "damage": 13,
+      "damage": 16,
       "damage_raw": 22,
       "limb": "armL",
       "heavy": true,
@@ -17734,7 +16359,7 @@
       "startup": 0.3167,
       "active": 0.017,
       "recovery": 0.467,
-      "damage": 6,
+      "damage": 16,
       "damage_raw": 10,
       "limb": "armL",
       "heavy": false,
@@ -17786,7 +16411,7 @@
       "startup": 0.3167,
       "active": 0.017,
       "recovery": 0.517,
-      "damage": 28,
+      "damage": 16,
       "damage_raw": 48,
       "limb": "armR",
       "heavy": true,
@@ -17848,7 +16473,7 @@
       "startup": 0.3167,
       "active": 0.017,
       "recovery": 0.517,
-      "damage": 21,
+      "damage": 16,
       "damage_raw": 36,
       "limb": "armR",
       "heavy": true,
@@ -17909,7 +16534,7 @@
       "startup": 0.3167,
       "active": 0.017,
       "recovery": 0.517,
-      "damage": 14,
+      "damage": 16,
       "damage_raw": 24,
       "limb": "armR",
       "heavy": true,
@@ -17969,7 +16594,7 @@
       "startup": 0.3167,
       "active": 0.017,
       "recovery": 0.517,
-      "damage": 8,
+      "damage": 16,
       "damage_raw": 14,
       "limb": "armR",
       "heavy": true,
@@ -18022,7 +16647,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 27,
+      "damage": 16,
       "damage_raw": 46,
       "limb": "legR",
       "heavy": true,
@@ -18083,7 +16708,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 20,
+      "damage": 16,
       "damage_raw": 34,
       "limb": "legR",
       "heavy": true,
@@ -18143,7 +16768,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 13,
+      "damage": 16,
       "damage_raw": 22,
       "limb": "legR",
       "heavy": true,
@@ -18202,7 +16827,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 7,
+      "damage": 16,
       "damage_raw": 12,
       "limb": "legR",
       "heavy": false,
@@ -18254,7 +16879,7 @@
       "startup": 0.3167,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 18,
+      "damage": 16,
       "damage_raw": 30,
       "limb": "legR",
       "heavy": true,
@@ -18314,7 +16939,7 @@
       "startup": 0.3167,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 11,
+      "damage": 16,
       "damage_raw": 18,
       "limb": "legR",
       "heavy": true,
@@ -18366,7 +16991,7 @@
       "startup": 0.3167,
       "active": 0.017,
       "recovery": 0.567,
-      "damage": 22,
+      "damage": 16,
       "damage_raw": 37,
       "limb": "both",
       "heavy": true,
@@ -18421,7 +17046,7 @@
       "startup": 0.3167,
       "active": 0.017,
       "recovery": 0.567,
-      "damage": 15,
+      "damage": 16,
       "damage_raw": 25,
       "limb": "both",
       "heavy": true,
@@ -18469,7 +17094,7 @@
       "startup": 0.2,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 0,
+      "damage": 16,
       "damage_raw": 0,
       "limb": "armR",
       "heavy": false,
@@ -18521,7 +17146,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 11,
+      "damage": 24,
       "damage_raw": 18,
       "limb": "legR",
       "heavy": true,
@@ -18572,7 +17197,7 @@
       "startup": 0.4833,
       "active": 0.017,
       "recovery": 0.683,
-      "damage": 14,
+      "damage": 27,
       "damage_raw": 23,
       "limb": "legR",
       "heavy": true,
@@ -18668,7 +17293,7 @@
       "startup": 0.35,
       "active": 0.017,
       "recovery": 0.583,
-      "damage": 14,
+      "damage": 32,
       "damage_raw": 24,
       "limb": "legR",
       "heavy": true,
@@ -18724,7 +17349,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 1.0,
-      "damage": 18,
+      "damage": 6,
       "damage_raw": 30,
       "limb": "legR",
       "heavy": true,
@@ -18786,7 +17411,7 @@
       "startup": 0.3,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 11,
+      "damage": 24,
       "damage_raw": 18,
       "limb": "legL",
       "heavy": true,
@@ -19492,7 +18117,7 @@
       "startup": 0.2,
       "active": 0.017,
       "recovery": 0.433,
-      "damage": 10,
+      "damage": 20,
       "damage_raw": 17,
       "limb": "legR",
       "heavy": true,
@@ -19545,7 +18170,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.45,
-      "damage": 14,
+      "damage": 21,
       "damage_raw": 24,
       "limb": "both",
       "heavy": true,
@@ -19817,7 +18442,7 @@
       "startup": 0.4667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 15,
+      "damage": 25,
       "damage_raw": 25,
       "limb": "armR",
       "heavy": true,
@@ -19975,7 +18600,7 @@
       "startup": 0.3167,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 47,
+      "damage": 80,
       "damage_raw": 80,
       "limb": "armR",
       "heavy": true,
@@ -20023,7 +18648,7 @@
       "startup": 0.3167,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 63,
+      "damage": 107,
       "damage_raw": 107,
       "limb": "armR",
       "heavy": true,
@@ -20071,7 +18696,7 @@
       "startup": 0.3667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 6,
+      "damage": 10,
       "damage_raw": 10,
       "limb": "armR",
       "heavy": false,
@@ -20121,7 +18746,7 @@
       "startup": 0.3667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 11,
+      "damage": 18,
       "damage_raw": 18,
       "limb": "armR",
       "heavy": true,
@@ -20247,7 +18872,7 @@
       "startup": 0.3167,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 9,
+      "damage": 15,
       "damage_raw": 15,
       "limb": "armR",
       "heavy": true,
@@ -20420,7 +19045,7 @@
       "startup": 0.55,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 2,
+      "damage": 4,
       "damage_raw": 4,
       "limb": "armR",
       "heavy": false,
@@ -20515,7 +19140,7 @@
       "startup": 0.3167,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 7,
+      "damage": 12,
       "damage_raw": 12,
       "limb": "armR",
       "heavy": false,
@@ -20562,7 +19187,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 6,
+      "damage": 13,
       "damage_raw": 10,
       "limb": "armR",
       "heavy": false,
@@ -20613,7 +19238,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 11,
+      "damage": 18,
       "damage_raw": 18,
       "limb": "armR",
       "heavy": true,
@@ -20665,7 +19290,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 26,
+      "damage": 18,
       "damage_raw": 44,
       "limb": "armL",
       "heavy": true,
@@ -20723,7 +19348,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 15,
+      "damage": 18,
       "damage_raw": 26,
       "limb": "armL",
       "heavy": true,
@@ -20774,7 +19399,7 @@
       "startup": 0.3,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 8,
+      "damage": 17,
       "damage_raw": 13,
       "limb": "legR",
       "heavy": false,
@@ -20826,7 +19451,7 @@
       "startup": 0.3,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 16,
+      "damage": 17,
       "damage_raw": 27,
       "limb": "armL",
       "heavy": true,
@@ -20885,7 +19510,7 @@
       "startup": 0.3,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 8,
+      "damage": 17,
       "damage_raw": 14,
       "limb": "armL",
       "heavy": false,
@@ -20977,7 +19602,7 @@
       "startup": 0.3,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 29,
+      "damage": 17,
       "damage_raw": 49,
       "limb": "armR",
       "heavy": true,
@@ -21038,7 +19663,7 @@
       "startup": 0.3,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 21,
+      "damage": 17,
       "damage_raw": 36,
       "limb": "armR",
       "heavy": true,
@@ -21098,7 +19723,7 @@
       "startup": 0.3,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 13,
+      "damage": 17,
       "damage_raw": 22,
       "limb": "armR",
       "heavy": true,
@@ -21151,7 +19776,7 @@
       "startup": 0.3,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 24,
+      "damage": 17,
       "damage_raw": 41,
       "limb": "legR",
       "heavy": true,
@@ -21211,7 +19836,7 @@
       "startup": 0.3,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 16,
+      "damage": 17,
       "damage_raw": 28,
       "limb": "legR",
       "heavy": true,
@@ -21270,7 +19895,7 @@
       "startup": 0.3,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 12,
+      "damage": 17,
       "damage_raw": 21,
       "limb": "legR",
       "heavy": true,
@@ -21323,7 +19948,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 16,
+      "damage": 33,
       "damage_raw": 28,
       "limb": "both",
       "heavy": true,
@@ -21418,7 +20043,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 6,
+      "damage": 13,
       "damage_raw": 10,
       "limb": "armR",
       "heavy": false,
@@ -21469,7 +20094,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 9,
+      "damage": 21,
       "damage_raw": 16,
       "limb": "armR",
       "heavy": false,
@@ -21520,7 +20145,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 24,
+      "damage": 21,
       "damage_raw": 41,
       "limb": "legR",
       "heavy": true,
@@ -21581,7 +20206,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 15,
+      "damage": 21,
       "damage_raw": 25,
       "limb": "legR",
       "heavy": true,
@@ -21634,7 +20259,7 @@
       "startup": 0.3167,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 12,
+      "damage": 21,
       "damage_raw": 21,
       "limb": "legL",
       "heavy": true,
@@ -21686,7 +20311,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 14,
+      "damage": 28,
       "damage_raw": 23,
       "limb": "legR",
       "heavy": true,
@@ -21738,7 +20363,7 @@
       "startup": 0.2167,
       "active": 0.017,
       "recovery": 0.55,
-      "damage": 19,
+      "damage": 43,
       "damage_raw": 32,
       "limb": "armR",
       "heavy": true,
@@ -21863,7 +20488,7 @@
       "startup": 0.4667,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 12,
+      "damage": 28,
       "damage_raw": 21,
       "limb": "both",
       "heavy": true,
@@ -21915,7 +20540,7 @@
       "startup": 0.8833,
       "active": 0.017,
       "recovery": 0.6,
-      "damage": 26,
+      "damage": 53,
       "damage_raw": 45,
       "limb": "both",
       "heavy": true,
@@ -22684,7 +21309,7 @@
       "startup": 0.2167,
       "active": 0.017,
       "recovery": 0.5,
-      "damage": 18,
+      "damage": 30,
       "damage_raw": 30,
       "limb": "armR",
       "heavy": true,
@@ -23691,7 +22316,7 @@
       "startup": 0.3333,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 4,
+      "damage": 28,
       "limb": "armL",
       "heavy": false,
       "knock": 2.2,
@@ -23724,7 +22349,7 @@
       "startup": 0.2833,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 7,
+      "damage": 24,
       "limb": "armR",
       "heavy": false,
       "knock": 2.2,
@@ -23823,7 +22448,7 @@
       "startup": 0.2,
       "active": 0.017,
       "recovery": 0.633,
-      "damage": 11,
+      "damage": 20,
       "limb": "legR",
       "heavy": false,
       "knock": 2.2,
@@ -23878,7 +22503,7 @@
       "startup": 0.3,
       "active": 0.017,
       "recovery": 0.567,
-      "damage": 15,
+      "damage": 29,
       "limb": "legL",
       "heavy": true,
       "knock": 2.2,
@@ -23911,7 +22536,7 @@
       "startup": 0.3667,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 7,
+      "damage": 29,
       "limb": "armL",
       "heavy": false,
       "knock": 2.2,
@@ -23966,7 +22591,7 @@
       "startup": 0.3,
       "active": 0.017,
       "recovery": 0.567,
-      "damage": 11,
+      "damage": 20,
       "limb": "legR",
       "heavy": false,
       "knock": 2.2,
@@ -23999,7 +22624,7 @@
       "startup": 0.2667,
       "active": 0.017,
       "recovery": 0.633,
-      "damage": 10,
+      "damage": 24,
       "limb": "legR",
       "heavy": false,
       "knock": 2.2,
@@ -24032,7 +22657,7 @@
       "startup": 0.2167,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 5,
+      "damage": 16,
       "limb": "armR",
       "heavy": false,
       "knock": 2.2,
@@ -24216,7 +22841,7 @@
       "startup": 0.3667,
       "active": 0.017,
       "recovery": 0.0,
-      "damage": 6,
+      "damage": 31,
       "limb": "legR",
       "heavy": false,
       "knock": 2.2,
@@ -24249,7 +22874,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 3,
+      "damage": 14,
       "limb": "armL",
       "heavy": false,
       "knock": 2.2,
@@ -24282,7 +22907,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.483,
-      "damage": 6,
+      "damage": 17,
       "limb": "armR",
       "heavy": false,
       "knock": 2.2,
@@ -25090,7 +23715,7 @@
       "startup": 0.25,
       "active": 0.017,
       "recovery": 0.567,
-      "damage": 5,
+      "damage": 14,
       "limb": "legR",
       "heavy": false,
       "knock": 2.2,
@@ -25261,7 +23886,7 @@
       "startup": 0.4833,
       "active": 0.05,
       "recovery": 0.783,
-      "damage": 10,
+      "damage": 27,
       "limb": "legL",
       "heavy": false,
       "knock": 2.2,
@@ -157393,5 +156018,1496 @@
         ]
       }
     ]
+  },
+  "t8_quarantine_20261024": {
+    "1+2+3+4": {
+      "name": "Ki Charge",
+      "input": "1+2+3+4",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-1+2+3+4",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.917,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:bryan:bryan-1+2+3+4",
+      "input_slots": [
+        "1+2+3+4"
+      ],
+      "move_class": "special"
+    },
+    "3+4,SNE.2": {
+      "name": "Neo Soul Eraser",
+      "input": "3+4,SNE.2",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-3+4,SNE.2",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 40,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-3+4,sne.2",
+      "input_slots": [
+        "3+4",
+        "3+4,SNE.2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          20,
+          20
+        ],
+        "total": 40
+      },
+      "note": "Mid; on block -9; knockdown on hit"
+    },
+    "3+4,SNE.2*": {
+      "name": "Neo Soul Eraser Exceed",
+      "input": "3+4,SNE.2*",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-3+4,SNE.2*",
+      "t8_damage": ",30",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 50,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-3+4,sne.2*",
+      "input_slots": [
+        "3+4",
+        "3+4,SNE.2*"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          20,
+          30
+        ],
+        "total": 50
+      },
+      "note": "Mid; on block +9g~+10g; knockdown on hit"
+    },
+    "4,1": {
+      "name": "Viper Bite",
+      "input": "4,1",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-4,1",
+      "t8_damage": ",15",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.367,
+      "damage": 30,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-4,1",
+      "input_slots": [
+        "4",
+        "4,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          15,
+          15
+        ],
+        "total": 30
+      },
+      "note": "High; on block -1"
+    },
+    "b+1+3,P.2": {
+      "name": "Snake Eyes",
+      "input": "b+1+3,P.2",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-b+1+3,P.2",
+      "t8_damage": ",30",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 30,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-b+1+3,p.2",
+      "input_slots": [
+        "b+1+3",
+        "b+1+3,P.2"
+      ],
+      "move_class": "string",
+      "note": "High; on block -10"
+    },
+    "b+3,4,1": {
+      "name": "3rd Hit",
+      "input": "b+3,4,1",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-b+3,4,1",
+      "t8_damage": ",5",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 35,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-b+3,4,1",
+      "input_slots": [
+        "b+3",
+        "b+3,4",
+        "b+3,4,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          18,
+          5
+        ],
+        "total": 35
+      },
+      "note": "Mid"
+    },
+    "b+3,4,1,2": {
+      "name": "4th Hit",
+      "input": "b+3,4,1,2",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-b+3,4,1,2",
+      "t8_damage": ",7",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 42,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-b+3,4,1,2",
+      "input_slots": [
+        "b+3",
+        "b+3,4",
+        "b+3,4,1",
+        "b+3,4,1,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          18,
+          5,
+          7
+        ],
+        "total": 42
+      },
+      "note": "Mid"
+    },
+    "b+3,4,1,2,1": {
+      "name": "5th Hit",
+      "input": "b+3,4,1,2,1",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-b+3,4,1,2,1",
+      "t8_damage": ",3",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 45,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-b+3,4,1,2,1",
+      "input_slots": [
+        "b+3",
+        "b+3,4",
+        "b+3,4,1",
+        "b+3,4,1,2",
+        "b+3,4,1,2,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          18,
+          5,
+          7,
+          3
+        ],
+        "total": 45
+      },
+      "note": "High"
+    },
+    "b+3,4,1,2,1,4": {
+      "name": "6th Hit",
+      "input": "b+3,4,1,2,1,4",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-b+3,4,1,2,1,4",
+      "t8_damage": ",8",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 53,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-b+3,4,1,2,1,4",
+      "input_slots": [
+        "b+3",
+        "b+3,4",
+        "b+3,4,1",
+        "b+3,4,1,2",
+        "b+3,4,1,2,1",
+        "b+3,4,1,2,1,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          18,
+          5,
+          7,
+          3,
+          8
+        ],
+        "total": 53
+      },
+      "note": "High"
+    },
+    "b+3,4,1,2,1,4,2": {
+      "name": "7th Hit",
+      "input": "b+3,4,1,2,1,4,2",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-b+3,4,1,2,1,4,2",
+      "t8_damage": ",5",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 58,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-b+3,4,1,2,1,4,2",
+      "input_slots": [
+        "b+3",
+        "b+3,4",
+        "b+3,4,1",
+        "b+3,4,1,2",
+        "b+3,4,1,2,1",
+        "b+3,4,1,2,1,4",
+        "b+3,4,1,2,1,4,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          18,
+          5,
+          7,
+          3,
+          8,
+          5
+        ],
+        "total": 58
+      },
+      "note": "High"
+    },
+    "b+3,4,1,2,1,4,2,1": {
+      "name": "8th Hit",
+      "input": "b+3,4,1,2,1,4,2,1",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-b+3,4,1,2,1,4,2,1",
+      "t8_damage": ",5",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 63,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-b+3,4,1,2,1,4,2,1",
+      "input_slots": [
+        "b+3",
+        "b+3,4",
+        "b+3,4,1",
+        "b+3,4,1,2",
+        "b+3,4,1,2,1",
+        "b+3,4,1,2,1,4",
+        "b+3,4,1,2,1,4,2",
+        "b+3,4,1,2,1,4,2,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          18,
+          5,
+          7,
+          3,
+          8,
+          5,
+          5
+        ],
+        "total": 63
+      },
+      "note": "High"
+    },
+    "b+3,4,1,2,1,4,2,1,4": {
+      "name": "9th Hit",
+      "input": "b+3,4,1,2,1,4,2,1,4",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-b+3,4,1,2,1,4,2,1,4",
+      "t8_damage": ",10",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 73,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-b+3,4,1,2,1,4,2,1,4",
+      "input_slots": [
+        "b+3",
+        "b+3,4",
+        "b+3,4,1",
+        "b+3,4,1,2",
+        "b+3,4,1,2,1",
+        "b+3,4,1,2,1,4",
+        "b+3,4,1,2,1,4,2",
+        "b+3,4,1,2,1,4,2,1",
+        "b+3,4,1,2,1,4,2,1,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          18,
+          5,
+          7,
+          3,
+          8,
+          5,
+          5,
+          10
+        ],
+        "total": 73
+      },
+      "note": "Mid"
+    },
+    "Back throw": {
+      "name": "Neck throw",
+      "input": "Back throw",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-Back throw",
+      "t8_damage": "60",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 60,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-back throw",
+      "input_slots": [
+        "Back throw"
+      ],
+      "move_class": "throw",
+      "note": "Throw",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1+2"
+    },
+    "(Back to wall).b,b,UB": {
+      "name": "Wall Jump Divekick",
+      "input": "(Back to wall).b,b,UB",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-(Back to wall).b,b,UB",
+      "t8_damage": "25",
+      "startup": 0.483,
+      "active": 0.033,
+      "recovery": 0.417,
+      "damage": 25,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:bryan:bryan-(back to wall).b,b,ub",
+      "input_slots": [
+        "(Back to wall).b,b,UB"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -1"
+    },
+    "d,db,b": {
+      "name": "Sway",
+      "input": "d,db,b",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-d,db,b",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.317,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:bryan:bryan-d,db,b",
+      "input_slots": [
+        "d,db,b"
+      ],
+      "move_class": "special"
+    },
+    "f+2,1,SNE.2": {
+      "name": "Move SNE.2 (SNE.2)",
+      "input": "f+2,1,SNE.2",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-f+2,1,SNE.2",
+      "t8_damage": ",5",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 27,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 14,
+      "anim_ref": "t8:bryan:bryan-f+2,1,sne.2",
+      "input_slots": [
+        "f+2",
+        "f+2,1",
+        "f+2,1,SNE.2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          12,
+          5
+        ],
+        "total": 27
+      },
+      "note": "Mid; on block -7"
+    },
+    "f+2,1,SNE.2,3": {
+      "name": "Move 3 (3)",
+      "input": "f+2,1,SNE.2,3",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-f+2,1,SNE.2,3",
+      "t8_damage": ",7",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 34,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-f+2,1,sne.2,3",
+      "input_slots": [
+        "f+2",
+        "f+2,1",
+        "f+2,1,SNE.2",
+        "f+2,1,SNE.2,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          12,
+          5,
+          7
+        ],
+        "total": 34
+      },
+      "note": "Mid; on block -10; knockdown on hit"
+    },
+    "f+2,1,SNE.2,3,2": {
+      "name": "Neo Incinerator",
+      "input": "f+2,1,SNE.2,3,2",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-f+2,1,SNE.2,3,2",
+      "t8_damage": ",20 (14)",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.65,
+      "damage": 34,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-f+2,1,sne.2,3,2",
+      "input_slots": [
+        "f+2",
+        "f+2,1",
+        "f+2,1,SNE.2",
+        "f+2,1,SNE.2,3",
+        "f+2,1,SNE.2,3,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          12,
+          5,
+          7
+        ],
+        "total": 34
+      },
+      "note": "Mid; on block -13; knockdown on hit"
+    },
+    "H.2+3": {
+      "name": "Notorious Monster",
+      "input": "H.2+3",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-H.2+3",
+      "t8_damage": "20,20,35",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 75,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-h.2+3",
+      "input_slots": [
+        "H.2+3"
+      ],
+      "move_class": "throw",
+      "multi_hit": {
+        "hits": [
+          20,
+          20,
+          35
+        ],
+        "total": 75
+      },
+      "note": "Mid, Mid, Throw; on block +9",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1"
+    },
+    "Left throw": {
+      "name": "Gravity Throw",
+      "input": "Left throw",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-Left throw",
+      "t8_damage": "40",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 40,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-left throw",
+      "input_slots": [
+        "Left throw"
+      ],
+      "move_class": "throw",
+      "note": "Throw; on block -3",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1"
+    },
+    "R.df+1+2": {
+      "name": "Total Vandalization",
+      "input": "R.df+1+2",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-R.df+1+2",
+      "t8_damage": "55+",
+      "startup": 0.333,
+      "active": 0.3,
+      "recovery": 0.65,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:bryan:bryan-r.df+1+2",
+      "input_slots": [
+        "R.df+1+2"
+      ],
+      "move_class": "special",
+      "note": "Mid, Throw; on block -18"
+    },
+    "Right throw": {
+      "name": "Knee Blast",
+      "input": "Right throw",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-Right throw",
+      "t8_damage": "40",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 40,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-right throw",
+      "input_slots": [
+        "Right throw"
+      ],
+      "move_class": "throw",
+      "note": "Throw; on block -3",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1"
+    },
+    "SLS.1+2": {
+      "name": "Requiem",
+      "input": "SLS.1+2",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-SLS.1+2",
+      "t8_damage": "23",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 23,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:bryan:bryan-sls.1+2",
+      "input_slots": [
+        "SLS.1+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -9; knockdown on hit"
+    },
+    "SLS.2": {
+      "name": "Move SLS.2 (SLS.2)",
+      "input": "SLS.2",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-SLS.2",
+      "t8_damage": "16",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 16,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:bryan:bryan-sls.2",
+      "input_slots": [
+        "SLS.2"
+      ],
+      "move_class": "strike",
+      "note": "High; on block -6"
+    },
+    "SLS.2,1": {
+      "name": "Cross Bazooka",
+      "input": "SLS.2,1",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-SLS.2,1",
+      "t8_damage": ",23",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 39,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-sls.2,1",
+      "input_slots": [
+        "SLS.2",
+        "SLS.2,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          16,
+          23
+        ],
+        "total": 39
+      },
+      "note": "Mid; on block -11; knockdown on hit"
+    },
+    "SLS.2,2": {
+      "name": "Cross Grenade",
+      "input": "SLS.2,2",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-SLS.2,2",
+      "t8_damage": ",25",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 41,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-sls.2,2",
+      "input_slots": [
+        "SLS.2",
+        "SLS.2,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          16,
+          25
+        ],
+        "total": 41
+      },
+      "note": "Mid; on block -7; knockdown on hit"
+    },
+    "SLS.2,4": {
+      "name": "Snake Eyes",
+      "input": "SLS.2,4",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-SLS.2,4",
+      "t8_damage": ",22",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 38,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-sls.2,4",
+      "input_slots": [
+        "SLS.2",
+        "SLS.2,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          16,
+          22
+        ],
+        "total": 38
+      },
+      "note": "Mid; on block -10; knockdown on hit"
+    },
+    "SLS.4": {
+      "name": "Move SLS.4 (SLS.4)",
+      "input": "SLS.4",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-SLS.4",
+      "t8_damage": "13",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 13,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:bryan:bryan-sls.4",
+      "input_slots": [
+        "SLS.4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -5"
+    },
+    "SLS.4,1": {
+      "name": "Move 1 (1)",
+      "input": "SLS.4,1",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-SLS.4,1",
+      "t8_damage": ",13",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.417,
+      "damage": 26,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "anim_ref": "t8:bryan:bryan-sls.4,1",
+      "input_slots": [
+        "SLS.4",
+        "SLS.4,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          13
+        ],
+        "total": 26
+      },
+      "note": "High; on block +0; knockdown on hit"
+    },
+    "SLS.4,1,2": {
+      "name": "Snake Spin Mach Breaker",
+      "input": "SLS.4,1,2",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-SLS.4,1,2",
+      "t8_damage": ",22",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 48,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-sls.4,1,2",
+      "input_slots": [
+        "SLS.4",
+        "SLS.4,1",
+        "SLS.4,1,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          13,
+          22
+        ],
+        "total": 48
+      },
+      "note": "High; on block -9"
+    },
+    "SLS.4,1,4": {
+      "name": "Snake Spin Kickass",
+      "input": "SLS.4,1,4",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-SLS.4,1,4",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 46,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-sls.4,1,4",
+      "input_slots": [
+        "SLS.4",
+        "SLS.4,1",
+        "SLS.4,1,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          13,
+          20
+        ],
+        "total": 46
+      },
+      "note": "Mid; on block -10; knockdown on hit"
+    },
+    "SNE.b+1+2": {
+      "name": "Neo Murderous Strikes",
+      "input": "SNE.b+1+2",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-SNE.b+1+2",
+      "t8_damage": "9,15",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 24,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:bryan:bryan-sne.b+1+2",
+      "input_slots": [
+        "SNE.b+1+2"
+      ],
+      "move_class": "strike",
+      "multi_hit": {
+        "hits": [
+          9,
+          15
+        ],
+        "total": 24
+      },
+      "note": "Mid, Mid; on block +4"
+    },
+    "SNE.FC.df+3": {
+      "name": "Neo Grim Reaper",
+      "input": "SNE.FC.df+3",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-SNE.FC.df+3",
+      "t8_damage": "24",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 24,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:bryan:bryan-sne.fc.df+3",
+      "input_slots": [
+        "SNE.FC.df+3"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -13"
+    },
+    "SNE.f,F+1+2,P": {
+      "name": "Immortal Payback",
+      "input": "SNE.f,F+1+2,P",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-SNE.f,F+1+2,P",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 50,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-sne.f,f+1+2,p",
+      "input_slots": [
+        "SNE.f,F+1+2",
+        "SNE.f,F+1+2,P"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          30,
+          20
+        ],
+        "total": 50
+      },
+      "note": "Mid; on block ±0; knockdown on hit"
+    },
+    "SS.2,1": {
+      "name": "Snake Fang",
+      "input": "SS.2,1",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-SS.2,1",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 35,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-ss.2,1",
+      "input_slots": [
+        "SS.2",
+        "SS.2,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          15,
+          20
+        ],
+        "total": 35
+      },
+      "note": "High; on block -9"
+    },
+    "SWA.1": {
+      "name": "Cannonball Straight",
+      "input": "SWA.1",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-SWA.1",
+      "t8_damage": "22",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 22,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:bryan:bryan-swa.1",
+      "input_slots": [
+        "SWA.1"
+      ],
+      "move_class": "strike",
+      "note": "High; on block +1"
+    },
+    "SWA.2": {
+      "name": "Smash",
+      "input": "SWA.2",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-SWA.2",
+      "t8_damage": "16",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 16,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:bryan:bryan-swa.2",
+      "input_slots": [
+        "SWA.2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -9"
+    },
+    "SWA.2,4": {
+      "name": "Smash and Mach Kick",
+      "input": "SWA.2,4",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-SWA.2,4",
+      "t8_damage": ",25",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 41,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-swa.2,4",
+      "input_slots": [
+        "SWA.2",
+        "SWA.2,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          16,
+          25
+        ],
+        "total": 41
+      },
+      "note": "High; on block -9c; knockdown on hit"
+    },
+    "SWA.3": {
+      "name": "Hatchet Kick",
+      "input": "SWA.3",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-SWA.3",
+      "t8_damage": "23",
+      "startup": 0.317,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 23,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:bryan:bryan-swa.3",
+      "input_slots": [
+        "SWA.3"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -13"
+    },
+    "SWA.4": {
+      "name": "Soccer Kick",
+      "input": "SWA.4",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-SWA.4",
+      "t8_damage": "23",
+      "startup": 0.283,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 23,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:bryan:bryan-swa.4",
+      "input_slots": [
+        "SWA.4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; Kickoff; on block -12; knockdown on hit"
+    },
+    "uf+1": {
+      "name": "Berserker Volley",
+      "input": "uf+1",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-uf+1",
+      "t8_damage": "22",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 22,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:bryan:bryan-uf+1",
+      "input_slots": [
+        "uf+1"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -13; knockdown on hit"
+    },
+    "uf+1+2": {
+      "name": "Anaconda Assassin",
+      "input": "uf+1+2",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-uf+1+2",
+      "t8_damage": "40",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 40,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-uf+1+2",
+      "input_slots": [
+        "uf+1+2"
+      ],
+      "move_class": "throw",
+      "note": "Throw; on block -6",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1+2"
+    },
+    "uf+2": {
+      "name": "Move uf+2 (uf+2)",
+      "input": "uf+2",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-uf+2",
+      "t8_damage": "6",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 6,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 3,
+      "anim_ref": "t8:bryan:bryan-uf+2",
+      "input_slots": [
+        "uf+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -10"
+    },
+    "uf+2,2": {
+      "name": "Move 2 (2)",
+      "input": "uf+2,2",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-uf+2,2",
+      "t8_damage": ",4",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 10,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 5,
+      "anim_ref": "t8:bryan:bryan-uf+2,2",
+      "input_slots": [
+        "uf+2",
+        "uf+2,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          6,
+          4
+        ],
+        "total": 10
+      },
+      "note": "Mid; on block -10"
+    },
+    "uf+2,2,2": {
+      "name": "Move 2 (2)",
+      "input": "uf+2,2,2",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-uf+2,2,2",
+      "t8_damage": ",4",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 14,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 7,
+      "anim_ref": "t8:bryan:bryan-uf+2,2,2",
+      "input_slots": [
+        "uf+2",
+        "uf+2,2",
+        "uf+2,2,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          6,
+          4,
+          4
+        ],
+        "total": 14
+      },
+      "note": "Mid; on block -10"
+    },
+    "uf+2,2,2,3": {
+      "name": "Bloody War",
+      "input": "uf+2,2,2,3",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-uf+2,2,2,3",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.6,
+      "damage": 34,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-uf+2,2,2,3",
+      "input_slots": [
+        "uf+2",
+        "uf+2,2",
+        "uf+2,2,2",
+        "uf+2,2,2,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          6,
+          4,
+          4,
+          20
+        ],
+        "total": 34
+      },
+      "note": "Mid; on block -15; knockdown on hit"
+    },
+    "uf+2,2,2,SNE.2": {
+      "name": "Move SNE.2 (SNE.2)",
+      "input": "uf+2,2,2,SNE.2",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-uf+2,2,2,SNE.2",
+      "t8_damage": ",9",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 23,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:bryan:bryan-uf+2,2,2,sne.2",
+      "input_slots": [
+        "uf+2",
+        "uf+2,2",
+        "uf+2,2,2",
+        "uf+2,2,2,SNE.2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          6,
+          4,
+          4,
+          9
+        ],
+        "total": 23
+      },
+      "note": "Mid; on block -12"
+    },
+    "uf+2,2,2,SNE.2,2": {
+      "name": "Move 2 (2)",
+      "input": "uf+2,2,2,SNE.2,2",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-uf+2,2,2,SNE.2,2",
+      "t8_damage": ",9",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 32,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-uf+2,2,2,sne.2,2",
+      "input_slots": [
+        "uf+2",
+        "uf+2,2",
+        "uf+2,2,2",
+        "uf+2,2,2,SNE.2",
+        "uf+2,2,2,SNE.2,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          6,
+          4,
+          4,
+          9,
+          9
+        ],
+        "total": 32
+      },
+      "note": "Mid; on block -12"
+    },
+    "uf+2,2,2,SNE.2,2,3": {
+      "name": "Neo Bloody War",
+      "input": "uf+2,2,2,SNE.2,2,3",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-uf+2,2,2,SNE.2,2,3",
+      "t8_damage": ",23",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.6,
+      "damage": 55,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:bryan:bryan-uf+2,2,2,sne.2,2,3",
+      "input_slots": [
+        "uf+2",
+        "uf+2,2",
+        "uf+2,2,2",
+        "uf+2,2,2,SNE.2",
+        "uf+2,2,2,SNE.2,2",
+        "uf+2,2,2,SNE.2,2,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          6,
+          4,
+          4,
+          9,
+          9,
+          23
+        ],
+        "total": 55
+      },
+      "note": "Mid; on block -15; knockdown on hit"
+    },
+    "uf+3": {
+      "name": "Rolling Driver",
+      "input": "uf+3",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-uf+3",
+      "t8_damage": "15",
+      "startup": 0.45,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:bryan:bryan-uf+3",
+      "input_slots": [
+        "uf+3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -2; knockdown on hit"
+    },
+    "uf+3+4": {
+      "name": "Snake Eyes",
+      "input": "uf+3+4",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-uf+3+4",
+      "t8_damage": "22",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 22,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:bryan:bryan-uf+3+4",
+      "input_slots": [
+        "uf+3+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -7; knockdown on hit"
+    },
+    "uf,n,4": {
+      "name": "Delayed Rising Toe Kick",
+      "input": "uf,n,4",
+      "t3_source": "bryan",
+      "t3_row": 76,
+      "t8_source": "bryan",
+      "t8_id": "Bryan-uf,n,4",
+      "t8_damage": "20",
+      "startup": 0.383,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:bryan:bryan-uf,n,4",
+      "input_slots": [
+        "uf,n,4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -13; knockdown on hit"
+    },
+    "ws1": {
+      "name": "Left Upper",
+      "input": "ws1",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-ws1",
+      "t8_damage": "20",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 20,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:bryan:bryan-ws1",
+      "input_slots": [
+        "ws1"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -14; knockdown on hit"
+    },
+    "ws3": {
+      "name": "High Knee Kick",
+      "input": "ws3",
+      "t8_source": "bryan",
+      "t8_id": "Bryan-ws3",
+      "t8_damage": "17",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 17,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:bryan:bryan-ws3",
+      "input_slots": [
+        "ws3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -10"
+    }
   }
 }
