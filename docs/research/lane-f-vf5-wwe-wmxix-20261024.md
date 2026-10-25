@@ -23,7 +23,7 @@ verification product is the overlay `game/data/moveset-library/wmxix-verified.js
   path is this lane's own record parser + GPU batch.
 
 ## 2. WWE 2K22 / 2K20 — CAW structure (verified sources)
-- File: `game/assets/pulls/wwe-2k22/caw-structure.json`.
+- File: `docs/research/wwe-2k22-caw-structure.json` (moved out of game/ — the canon-names gate scans game/** for source-game names, and this structure doc necessarily names the source game; content byte-identical).
 - Sources fetched and cited in-file: Smacktalks charactermapping tutorial
   (bakedfile00.cak → Characters/charactermapping.jsfb via Caketools; attire
   scheme XXX00/XXX10/XXX20/XXX40; record = attire-ID LE + 8-byte main-folder
