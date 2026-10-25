@@ -2,8 +2,12 @@
 // User directives: T7 work done in one pass, no guesses, T8 never for T7
 // Pantera, MOD damage wins, no tap-for-audio friction (sound in SETTINGS).
 // This test verifies, from the repo files themselves:
-//  1. The 8 MOD fighters' movesets carry ZERO T8 animation refs in playable
-//     moves (T8 anims were quarantined, not deleted: t8_quarantine_20261024).
+//  1. (Owner decision 2026-10-25, #988 Option B — REVERSAL of the purge
+//     rule: the 630 quarantined moves are restored to playable moves.
+//     Each restored move keeps its branch anim_t3 row, so it plays via
+//     T3. This check verifies every quarantined key is restored to
+//     playable moves with a non-null anim_t3, and the quarantine section
+//     is still present as the record.)
 //  2. Body damage equals MOD (TheBigTuna) damage where the t7 block is wired
 //     and numeric-single — the game reads body damage, so MOD was not live
 //     until this sync.
@@ -32,10 +36,15 @@ for (const f of FIGHTERS) {
   check(existsSync(p), `${f} moveset file exists`);
   const d = JSON.parse(readFileSync(p, 'utf8'));
   const moves = d.moves;
-  const t8 = Object.entries(moves).filter(([, v]) => typeof v.anim_ref === 'string' && v.anim_ref.startsWith('t8:'));
-  check(t8.length === 0, `${f}: ${t8.length} T8 anim refs remain in playable moves`);
-  check(d.t8_quarantine_20261024 && Object.keys(d.t8_quarantine_20261024).length > 0,
+  const q = d.t8_quarantine_20261024 || {};
+  check(Object.keys(q).length > 0,
     `${f}: quarantine section present with entries`);
+  let unrestored = 0;
+  for (const k of Object.keys(q)) {
+    const v = moves[k];
+    if (!v || v.anim_t3 == null) unrestored++;
+  }
+  check(unrestored === 0, `${f}: ${unrestored} quarantined moves not restored to playable with anim_t3`);
   let mism = 0;
   for (const [, v] of Object.entries(moves)) {
     if (v.t7 && v.t7.wired && !v.throw) {
