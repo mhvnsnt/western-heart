@@ -24,7 +24,7 @@ import { whUiEnabled, mountWhUi } from './ui-wh-bridge.js';
 import { getCustomFighter, customFighterToRoster } from './custom-fighter.js';
 import { resolveFighterAttire } from './attires.js';
 import { createSelectScreen } from './select-screen.js';
-import { STAGES, STAGE_TIERS, getStage, randomStageId } from './stages.js';
+import { STAGES, STAGE_TIERS, getStage, randomStageId, preloadStage } from './stages.js';
 // LOADSPEED: stages.js (82KB data) stays static — buildStageSelect runs in
 // the versus flow and getStage is needed by startFight; its parse cost is
 // small next to the deferred modules. Stage THUMBS are the real cost there
@@ -126,7 +126,9 @@ const ui = {
     const fill = document.getElementById(`${id}-hp`);
     const dmg = document.getElementById(`${id}-hp-dmg`);
     fill.style.width = pct + '%';
-    dmg.style.width = pct + '%';
+    // COMBAT SYSTEMS 2026-10-24: white recoverable segment = hp +
+    // recoverable pool (capped at 100%); empty pool matches fill.
+    dmg.style.width = Math.min(100, pct + Math.max(0, ((f._recoverable || 0) / f.maxHp) * 100)) + '%';
     fill.classList.toggle('low', pct < 30);
   },
   updateMeter(p1, p2) { this._meter('p1', p1); this._meter('p2', p2); },
@@ -239,20 +241,16 @@ const ui = {
   /* V-System (owner 2026-10-22). All user-facing names are «name TBD»
      placeholders pending user approval — flagged, not final. */
   vTrigger() {
-    this.banner('V-TRIGGER «name TBD» — SOUL AWAKENED');
     this.surgeFlash(0xffd34d, 0xfff2b0);
   },
   vReversal() {
-    this.banner('V-REVERSAL «name TBD»');
     this.surgeFlash(0x4da6ff, 0xbfe0ff);
   },
   vShift() { this.surgeFlash(0x7df9ff, 0xd8fbff); },
   vShiftBreak() {
-    this.banner('V-SHIFT «name TBD» — BREAK!');
     this.surgeFlash(0xffffff, 0x7df9ff);
   },
   vParry() {
-    this.banner('V-SKILL PARRY «name TBD»');
     this.surgeFlash(0x9fd8ff, 0xe8f6ff);
   },
   matchOver(playerWon) {
@@ -274,6 +272,11 @@ const game = new Game(canvas, input, ui);
 // fight. Loaded on demand; no-op until first toggled.
 import('./photomode.js').then(({ installPhotoMode }) => installPhotoMode(game))
   .catch(() => {});
+/* Free camera during scenes (2026-10-24): live orbit/pan/zoom while the
+   fight keeps playing — never pauses, never overwrites the authored
+   camera. Lazy import so a failure here cannot block the fight. */
+import('./free-camera.js').then(({ installFreeCamera }) => installFreeCamera(game))
+  .catch((e) => console.warn('[WH] free camera unavailable:', e?.message || e));
 ui._buildMeter('p1');
 ui._buildMeter('p2');
 
@@ -338,6 +341,10 @@ function startFightViaStage(p1, p2, opts = {}) {
   pendingFight = { p1, p2, opts };
   buildStageSelect();
   show('stage');
+  // Lane 5: warm the currently shown stage in the background while
+  // the player browses the arena screen — never awaited here, so a
+  // slow stage fetch can never block the screen itself.
+  preloadStage(selectedStage).catch(() => {});
   requestAnimationFrame(() => requestAnimationFrame(() => mark('stage-interactive')));
   const hint = document.getElementById('stage-hint');
   const s = getStage(selectedStage);
@@ -614,16 +621,50 @@ function randomEnemy(excludeId) {
 }
 
 /* ---------------- Menu button wiring ---------------- */
+/* Audio (owner 2026-10-24): no tap-to-enable prompt. Sound resumes
+   silently on the first tap anywhere (mobile autoplay policy still
+   requires a gesture before AudioContext can start); the on/off
+   switch lives in SETTINGS (the howto screen) and persists. */
 function unlockAudio() {
+  // TAP-FOR-AUDIO REMOVED (2026-10-24): no "TAP TO ENABLE SOUND" banner and
+  // no dedicated audio tap. The first real interaction — a menu, mode or
+  // fight tap, all of which already call unlockAudio() — supplies the
+  // browser's required user gesture. Audio on/off lives in Settings
+  // (menus.js SOUND toggle). Browsers still block sound before ANY
+  // gesture: that is platform policy, not a WH screen, so sound starts on
+  // the first tap the player already makes, never on a tap invented for
+  // audio. The banner div is removed from game/index.html alongside this.
+  // music.unlock() is preserved from the merged music-rotation lane
+  // (PR #1030): removing the banner must not remove the music unlock.
   audio.unlock();
   music.unlock();
-  document.getElementById('tap-to-start').classList.remove('show');
 }
 
+// Silent safety net (from #1037): first tap anywhere also unlocks audio, in case a path reaches audio without a menu, mode or fight tap.
 document.body.addEventListener('pointerdown', unlockAudio, { once: true });
-window.addEventListener('load', () => {
-  setTimeout(() => document.getElementById('tap-to-start').classList.add('show'), 600);
-});
+
+/* SETTINGS sound toggle: persists in localStorage, applies on boot
+   before any gesture, and gates both the procedural engine and the
+   file-music engine (which checks audio.enabled before playing). */
+let _audioOn = true;
+try { _audioOn = localStorage.getItem('wh-audio') !== 'off'; } catch (e) { /* private mode */ }
+function applyAudioPref() {
+  try { audio.setMuted(!_audioOn); } catch (e) { /* sound is optional */ }
+  try { music.setEnabled(_audioOn); } catch (e) { /* sound is optional */ }
+  const b = document.getElementById('opt-audio');
+  if (b) b.textContent = _audioOn ? 'ON' : 'OFF';
+}
+(function bindAudioToggle() {
+  const b = document.getElementById('opt-audio');
+  if (!b) return;
+  b.addEventListener('click', () => {
+    _audioOn = !_audioOn;
+    try { localStorage.setItem('wh-audio', _audioOn ? 'on' : 'off'); } catch (e) { /* private mode */ }
+    applyAudioPref();
+    try { audio.uiClick(); } catch (e) { /* sound is optional */ }
+  });
+})();
+applyAudioPref();
 
 /* Menu tap failure toast (2026-10-24, menu tap fix): a tap must NEVER
    die silently. Mode loads that reject surface here instead of leaving
@@ -982,6 +1023,10 @@ async function startFight(playerId, enemyId, opts = {}) {
       for (const t of tgts) if (t.target) need.push(t.target);
     }
   }
+  // Lane 5: stage assets stream IN PARALLEL with the fighter loads
+  // below (not after them). Fire-and-forget: the arena builder's
+  // own GLB/OBJ loads still apply as fallback if warming failed.
+  preloadStage(selectedStage).catch(() => {});
   const hint = document.getElementById('select-hint');
   const confirmBtn = document.getElementById('confirm-fighter');
   // FIGHT-LOAD FIX (2026-10-24): versus fights start from the STAGE screen,
@@ -1084,7 +1129,10 @@ async function startFight(playerId, enemyId, opts = {}) {
   // MUSIC (2026-10-24): rotating stage pool. The engine falls back to
   // the procedural loop internally when no file track is available, so
   // the old direct audio.startMusic() call is replaced, not doubled.
-  music.playBattle(selectedStage);
+  // JUKEBOX (Lane 4): pass the fight's UI mode through so the engine
+  // plays the player's per-mode Jukebox choice (wh_jukebox_v1, PR #1056)
+  // when one is stored; unknown modes fall back to engine rotation.
+  music.playBattle(selectedStage, { uiMode: ['versus', 'arcade', 'treasure'].includes(opts.mode) ? opts.mode : undefined });
   // FIGHT-LOOP REPAIR (worker 54, 2026-10-22): startMatch ran OUTSIDE the
   // load try/catch — a throw inside it (Fighter build, arena setStage, AI
   // wiring) was an unhandled rejection that stranded the player on the
