@@ -16,23 +16,48 @@
        scaled T3 170HP -> WH 100HP. See game/assets/*_moves.json.
    Hitboxes vs hurtboxes, blocking w/ 12% chip + blockstun,
    hitstop, knockback, launchers, camera shake.
+   GAP-FILL LANE 1 (2026-10-24, combat systems): Power Crush
+   absorb (mid/high only), Screw (T7) + Tornado (T8) as the
+   single once-per-combo extender, wall splat as a distinct
+   state (3 hits, then drop), T8 recoverable pool from chip
+   (attack-only restore, never over time), Soul Urge wiring
+   completion (Burst on block, Dash as recovery cancel, 2+3
+   Burst/Smash routing), item-gated moves, per-move hitbox
+   lookup with honest UNMAPPED fallback. PROPRIETARY NAMES:
+   NEEDS NAME for Power Crush / Screw / Tornado / wall splat /
+   recoverable / item moves (owner names them); only Soul Urge
+   is user-locked. Tekken names in this file are technical
+   references only, never canon. Buttons: LP1/RP2/LK3/RK4.
+   CORRECTION to the gap doc: no Bound state machine exists
+   in this file (its "bound" hits are throw-pair / anim-bank
+   binding) and no low-parry system exists either — so Screw
+   was added without removing anything, and low-parry Bound
+   is open follow-up work, not a preserved behavior.
    ============================================================ */
 import * as THREE from 'three';
 import { assets } from './assets.js';
 import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK, T3_BANKS,
-  clipStrikeProfile, clipHitWindow, bankAttackPool, attackLevelOfWord, attackClipTime, clipIsThrow, BUTTON_LIMB } from './t3anims.js';
+  clipStrikeProfile, clipHitWindow, bankAttackPool, attackLevelOfWord, attackClipTime, clipIsThrow, BUTTON_LIMB,
+  loadT3ReactionClip, getT3ReactionPackScale, loadReactionPack, getReactionPack, getReactionClip } from './t3anims.js';
+import { selectThrow, resolveThrowClips, throwBreaks, throwDamageTimeSec, throwPairDurationSec,
+  escapePairFor, anchorAt, sharedFramePos, throwQuadrant, attemptRowForInput, hexSlot, bankDirOf } from './t3-throw.js';
 import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove } from './movesets.js';
 import { TransformCinematic } from './transform-cinematic.js';
 import { V, vskillFor, vtriggerEnhance, vreversalMove } from './v-system.js';
 import { JiggleRig } from './jiggle.js';
 import { SoftBody } from './softbody.js';
+import { MpmTissue } from './mpm-tissue.js';
 import { FaceRig } from './faceRig.js';
 import { HandPoseBlender } from './handPoses.js';
 import { canonRootScale } from './canon-sizing.js';
 import { t8Frame, stunFromAdvantage } from './frame-tables.js';
-import { hitWordFor, attackPhase, moveReach, PressBuffer } from './combat-core.js';
+import { hitWordFor, attackPhase, moveReach, PressBuffer,
+  isPowerCrushMove, powerCrushAbsorbs, extenderKind, SCREW_SLUMP_STUN,
+  TORNADO_BOUND_STUN, EXTENDER_LAND_STUN_FLOOR, WALL_SPLAT_MAX_HITS,
+  WALL_SPLAT_STUN, nextWallSplatState, itemGate,
+  resolvePerMoveHitbox, resolvePerMoveHurtbox } from './combat-core.js';
 import { HURT_SEGMENTS, WEAPON_SEGMENTS, LIMB_RADIUS, fallbackHurts } from './hitbox.js';
-import { selectReactionSlot } from './t3-reaction-select.js';
+import { selectReactionSlot, reactionSlotBank } from './t3-reaction-select.js';
 
 // ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
 // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO in Western Heart. The 'jin' moveset family is now 'demonio'.
@@ -260,6 +285,19 @@ export function getRealMove(charId, moveType) {
           rageArt: !!mv.rageArt, rageDrive: !!mv.rageDrive,
           urgeEngager: !!mv.urgeEngager,
           urgeBurst: !!mv.urgeBurst, urgeSmash: !!mv.urgeSmash,
+          // GAP-FILL LANE 1 (2026-10-24): combat-system flags, read
+          // from the move record only — never invented here. No WH
+          // moveset carries these flags yet (moveset lane owns the
+          // data); until it does, every move reads UNMAPPED/false
+          // and the engine falls back to the pre-existing behavior.
+          // PROPRIETARY NAMES: NEEDS NAME (owner names them).
+          powerCrush: isPowerCrushMove(mv),
+          screw: !!mv.screw || !!mv.tailspin || !!(mv.t7 && mv.t7.screw),
+          tornado: !!mv.tornado || !!(mv.t8 && mv.t8.tornado),
+          requiresItem: mv.requiresItem || mv.requiredItem || mv.item || null,
+          itemMove: !!mv.itemMove || !!(mv.requiresItem || mv.requiredItem || mv.item),
+          hitbox: mv.hitbox ?? (mv.t7 && mv.t7.hitbox) ?? (mv.t8 && mv.t8.hitbox) ?? null,
+          hurtbox: mv.hurtbox ?? (mv.t7 && mv.t7.hurtbox) ?? (mv.t8 && mv.t8.hurtbox) ?? null,
           // T8 frame tables (wavu.wiki CC0): block/hit/CH advantage + throw break.
           t8: t8Frame(ms, tekken),
           throw_break: mv.throw_break || (t8Frame(ms, tekken) || {}).brk || undefined,
@@ -378,7 +416,7 @@ export class Fighter {
     this.state = 'idle'; this.stateT = 0;
     this.attack = null; this.attackName = null; this._attackPhase = 'startup';
     this._rmPrev = null; // root-motion cursor for the current attack (see _rootMotionApply)
-    this.hasHit = false; this._prevHitPoint = null; this._reactionSel = null; this.stun = 0; this.invuln = 0; this.dodgeDir = 0;
+    this.hasHit = false; this._prevHitPoint = null; this._reactionSel = null; this._reactLoading = null; this._reactChainDepth = 0; this.stun = 0; this.invuln = 0; this.dodgeDir = 0;
     this.dead = false; this.combo = 0; this._comboTimer = 0;
     this.tekken = new TekkenBuffer(charData.id); // strings / motion specials / directionals
     // Tekken states (2026-10-21, decoded T3 rules — see _guardBits/canBeHitBy):
@@ -391,6 +429,24 @@ export class Fighter {
     this._rageOn = false;
     this._urgeOn = false; this._urgeUsed = false; this._urgeT = 0; this._urgePips = 0;
     this._urgeDashT = 0;
+
+    // GAP-FILL LANE 1 (2026-10-24): combo-extender / wall / recoverable
+    // / item state. _extenderUsed is the single once-per-combo slot
+    // shared by Screw (T7) and Tornado (T8); it clears when the
+    // victim recovers to neutral (see update()), never mid-combo.
+    // PROPRIETARY NAMES: NEEDS NAME (owner names them).
+    this._extenderUsed = false; this._extenderKind = null;
+    this._inScrew = false; this._inTornado = false;
+    this._wallSplatHits = 0; this._wallSplatArmed = false;
+    // T8 recoverable pool (white gauge): chip damage taken lands
+    // here instead of vanishing; landing hits / forcing blocks
+    // heals it back (see _recoverOnAttack). Per-round: cleared by
+    // SoulUrge.resetRound() alongside the per-round urge gauge.
+    this._recoverable = 0;
+    // Item-move loadout: equipped customization item ids, set by
+    // the customization lane via setEquippedItems(). Empty = no
+    // item-gated move can fire (itemGate in combat-core.js).
+    this.equippedItems = [];
 
     // Stream 6: throw-lock (throw break window). When a throw connects,
     // attacker enters 'throwing' and victim 'thrown' for THROW_LOCK_T;
@@ -445,7 +501,8 @@ export class Fighter {
     const inst = assets.createInstance(
       this.char.model,
       this.char.colors.suit, this.char.colors.trim,
-      this.char.colorize ? (this.char.tintStrength ?? 0.3) : 0
+      this.char.colorize ? (this.char.tintStrength ?? 0.3) : 0,
+      this.char.eyeGlow // per-attire emissive eyes (owner 2026-10-22; attires.js slot config)
     );
     this.bones = inst.bones;
     this.mixer = inst.mixer;
@@ -564,16 +621,43 @@ export class Fighter {
     });
     const jiggleIntensity = this.char.jiggleIntensity || 'natural';
     if (this._jiggle) this._jiggle.setIntensity(jiggleIntensity);
-    // Soft-body muscle volume (PBD lane, 2026-10-23): Jolt XPBD torso volume
-    // for muscle deformation on hit + volume-grounded jiggle. Same pattern
-    // as jiggle: inert until Jolt loads, every call guarded, never crashes
-    // the fight. char.softbody === false opts out.
+    // Soft-body muscle volume (tissue backend lane, 2026-10-23): Jolt XPBD
+    // torso volume for muscle deformation on hit + volume-grounded jiggle.
+    // Same pattern as jiggle: inert until the backend is ready, every call
+    // guarded, never crashes the fight. char.softbody === false opts out.
+    //
+    // NEXTGEN-2026-10-23 tissue backends (see
+    // docs/research/SOFTBODY-NEXTGEN-2026-10-23.md):
+    //   'jolt'  (default) — Jolt XPBD lattice (game/js/softbody.js)
+    //   'mpm'             — CPU MPM-lite, SurRoL-inspired (game/js/mpm-tissue.js)
+    //   'femfx'           — FEMFX WASM w/ Jolt fallback (game/js/femfx-adapter.js)
+    // Pick with window.WH_PHYSICS_BACKEND or per-character
+    // char.softbodyBackend. All three share the integration contract and
+    // the 'wh_softbody_v1' quality store, so switching never changes the
+    // visual mapping — only the solver.
     this._softbody = null;
     const softSpec = SoftBody.anatomyFor(this.char);
     if (softSpec) {
+      const backend = (typeof window !== 'undefined' && window.WH_PHYSICS_BACKEND)
+        || this.char.softbodyBackend || 'jolt';
       this.root.traverse(o => {
         if (!this._softbody && o.isSkinnedMesh) {
-          try { this._softbody = SoftBody.fromMesh(o, softSpec); } catch (e) {}
+          try {
+            if (backend === 'mpm') {
+              this._softbody = MpmTissue.fromMesh(o, softSpec);
+            } else if (backend === 'femfx') {
+              // FEMFX WASM is async; the adapter falls back to Jolt when
+              // the module is missing. Import lazily so the default path
+              // pays zero cost.
+              import('./femfx-adapter.js').then((m) => {
+                if (!this._softbody && !this._disposed) {
+                  try { this._softbody = m.FemfxBody.fromMesh(o, softSpec); } catch (e) {}
+                }
+              }).catch(() => {});
+            } else {
+              this._softbody = SoftBody.fromMesh(o, softSpec);
+            }
+          } catch (e) {}
         }
       });
     }
@@ -637,7 +721,8 @@ export class Fighter {
       inst = assets.createInstance(
         t.target,
         this.char.colors.suit, this.char.colors.trim,
-        this.char.colorize ? (this.char.tintStrength ?? 0.3) : 0 // TINT FIX: real texture colors unless explicitly colorized
+        this.char.colorize ? (this.char.tintStrength ?? 0.3) : 0, // TINT FIX: real texture colors unless explicitly colorized
+        this.char.eyeGlow // per-attire emissive eyes ride along on transforms (owner 2026-10-22)
       );
     } catch (e) {
       console.error(`[WH] transform failed — unknown model ${t.target}:`, e.message || e);
@@ -693,8 +778,13 @@ export class Fighter {
       return;
     }
     this.t3actions = createT3Actions(this.mixer, clips, THREE);
+    // Reaction pack prefetch (hit-reaction lane): the JSON arrives
+    // in the background so the first hit's slot is usually decoded
+    // already; decoding itself stays on demand, one slot at a time.
+    try { loadReactionPack(THREE, bank); } catch (e) {}
     // Move rows retarget lazily on first use (same captured rest pose).
-    this._t3 = { bank, clips: t3clips, model, modelKey };
+    // dir is the reactions.json banks key (the T3_BANKS folder name).
+    this._t3 = { bank, clips: t3clips, model, modelKey, dir: bankDirOf(T3_BANKS[bank]) };
     console.log(`[WH] Fighter ${this.char.id}: ${Object.keys(this.t3actions).length} real T3 actions from bank '${bank}' (retargeted onto ${modelKey})`);
   }
 
@@ -1176,7 +1266,25 @@ export class Fighter {
        1+2/3+4/chains -> '1+2' (both punches; '3+4' accepted on mobile)
      Read the attacker's lead arm: left arm = break 1, right arm = break 2,
      both arms = break 1+2. Wrong input or timeout = full throw damage. */
+  /* TEKKEN GRAPPLE (2026-10-24, t3-throw.js + docs/anim/T3-REACTIONS.md):
+     On connect, the file's throw pair replaces the legacy lock.
+     The attempt clip already played (attack state); now, with no
+     further button press, the thrower and victim play the paired
+     slot clips in sync on the shared root frame, the break window
+     is the first frames of those same clips, and damage lands at
+     the file's damage_frames. When the file has no pair for this
+     throw (or its clips are not loaded), this falls through to
+     the legacy 0.3 s lock below — UNMAPPED, never an invented
+     pairing. game.js's lock-resolution loop skips paired
+     fighters (lockMove is null), so completeThrow() never fires
+     for a pair; _tickState advances the pair instead. */
   startThrowLock(move, attacker) {
+    const pair = attacker && attacker._throwPairFor(move, this);
+    if (pair && pair.pair && attacker._bindThrowPair(pair.pair, this)) {
+      attacker._startThrowPair(pair.pair, this);
+      return;
+    }
+    if (pair && pair.reason) console.log(`[WH-THROW] ${attacker.char.id} vs ${this.char.id}: no file pair (${pair.reason}) — legacy lock`);
     this.state = 'thrown'; this.stateT = 0;
     this.lockT = 0.3; this.lockMove = move; this.lockPartner = attacker;
     this.vx = 0; this.vz = 0;
@@ -1190,8 +1298,155 @@ export class Fighter {
     this.vx = this.facing * 1.2; // step in with the grab
     this._breakCueT = 0;
   }
-  get throwBreakInput() { return this.lockMove && this.lockMove.throw_break; }
+  /* Resolve the file's throw pair for a grab that just connected.
+     Attempt row priority: (1) the attempt clip plan's own row
+     ('row:<n>' — the file row the reach actually played), else
+     (2) the file's throw_inputs row for an exact LP1+LK3 /
+     RP2+RK4 chord. A generic 'grab' action has no row of its own
+     and is NOT mapped through throw_inputs — its chord is
+     ambiguous, and guessing it would wire the wrong attempt. */
+  _throwPairFor(move, victim) {
+    const R = globalThis.WH_T3_REACTIONS;
+    if (!R) return { pair: null, reason: 'throw tables not loaded' };
+    const aDir = this._t3 && this._t3.dir, vDir = victim._t3 && victim._t3.dir;
+    if (!aDir) return { pair: null, reason: `no T3 bank for ${this.char.id} (UNMAPPED)` };
+    if (!vDir) return { pair: null, reason: `no T3 bank for ${victim.char.id} (UNMAPPED)` };
+    let attemptRow = null;
+    const planName = this._atkPlan && this._atkPlan.name;
+    if (planName && planName.startsWith('row:')) attemptRow = parseInt(planName.slice(4), 10);
+    if (attemptRow == null && (this.attackName === '1+3' || this.attackName === '2+4')) {
+      attemptRow = attemptRowForInput(R, aDir, this.attackName, this.stance === 'FC', false);
+    }
+    if (attemptRow == null || Number.isNaN(attemptRow)) {
+      return { pair: null, reason: `no T3 attempt row for '${this.attackName}' (UNMAPPED)` };
+    }
+    const dx = victim.root.position.x - this.root.position.x;
+    const dz = victim.root.position.z - this.root.position.z;
+    const posture = victim.state === 'crouch' ? 'crouching' : victim.state === 'knockdown' ? 'lying' : 'standing';
+    const quadrant = throwQuadrant(this.root.position, victim.root.position, victim.facing);
+    const rp = getReactionPack(this._t3.bank);
+    const sel = selectThrow(R, aDir, attemptRow, { posture, quadrant,
+      distanceM: Math.hypot(dx, dz), anchorScale: rp ? rp.pack.anchor_mm_to_rig_m : 0 });
+    if (!sel.throw) return { pair: null, reason: sel.reason };
+    const clips = resolveThrowClips(R, sel.throw, aDir, vDir);
+    if (!clips.throwerBank || !clips.victimBank) return { pair: null, reason: clips.note || 'unresolved clip bank (UNMAPPED)' };
+    return { pair: { throw: sel.throw, branch: sel.branch, code: sel.code, clips,
+      breaks: throwBreaks(sel.throw), damageTimeSec: throwDamageTimeSec(sel.throw),
+      durationSec: throwPairDurationSec(sel.throw), whMove: move, isEscape: false, hitDone: false }, reason: null };
+  }
+  /* Bank key (t3anims.js T3_BANKS key) for a reactions.json dir. */
+  _bankIdForDir(dir) {
+    for (const [k, v] of Object.entries(T3_BANKS)) if (bankDirOf(v) === dir) return k;
+    return null;
+  }
+  /* Retarget one reaction-pack slot clip onto this fighter's rig
+     as action `name`. Returns the action name or null. */
+  _reactionAction(bankId, slot, name) {
+    if (!bankId || !this._t3 || this.t3actions[name]) return this.t3actions[name] ? name : null;
+    const canonical = getReactionClip(bankId, slot, THREE);
+    if (!canonical) return null;
+    const rc = retargetT3Clips({ [name]: canonical }, bankId, this._t3.model, THREE, this._t3.modelKey, [name]);
+    if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
+    return this.t3actions[name] ? name : null;
+  }
+  /* Bind both clips of a pair (thrower on `thrower`, victim on
+     `victim`; this method is called on the thrower). Also records
+     the pack rows the shared-frame drive reads anchors from, and
+     the thrower's anchor scale (used for both clips, per doc).
+     Returns false when either clip is unavailable — the caller
+     then keeps the legacy lock instead of a half pair. */
+  _bindThrowPair(pair, victim) {
+    const thrower = this;
+    const tBank = thrower._bankIdForDir(pair.clips.throwerBank);
+    const vBank = victim._bankIdForDir(pair.clips.victimBank);
+    const tRp = tBank && getReactionPack(tBank);
+    const vRp = vBank && getReactionPack(vBank);
+    if (!tRp || !vRp) return false;
+    pair.throwerPackRow = tRp.pack.rows[hexSlot(pair.clips.throwerSlot)];
+    pair.victimPackRow = vRp.pack.rows[hexSlot(pair.clips.victimSlot)];
+    if (!pair.throwerPackRow || !pair.victimPackRow) return false;
+    pair.anchorScale = tRp.pack.anchor_mm_to_rig_m;
+    pair.throwerAction = thrower._reactionAction(tBank, pair.clips.throwerSlot, 'throw:' + hexSlot(pair.clips.throwerSlot));
+    pair.victimAction = victim._reactionAction(vBank, pair.clips.victimSlot, 'victim:' + hexSlot(pair.clips.victimSlot));
+    return !!(pair.throwerAction && pair.victimAction);
+  }
+  /* Start a bound pair: shared root frame anchored at the
+     victim's root, H = victim heading turned 180 deg (doc:
+     H_yaw = -victim.facing * PI/2). Both fighters' pair clocks
+     (_throwPairT) run from this moment; the clips themselves
+     are NOT restarted on the throwing -> throwExec transition,
+     so the pair stays in sync. */
+  _startThrowPair(pair, victim) {
+    const thrower = this;
+    pair.thrower = thrower; pair.victim = victim;
+    pair.anchor = { x: victim.root.position.x, z: victim.root.position.z };
+    pair.hYaw = -victim.facing * Math.PI / 2;
+    for (const [f, row] of [[thrower, pair.throwerPackRow], [victim, pair.victimPackRow]]) {
+      f._throwPair = pair; f._throwPairT = 0;
+      f.lockT = 0; f.lockMove = null;
+      f.vx = 0; f.vz = 0; f.vy = 0;
+      f._faceYaw = pair.hYaw + (row.yaw0 || 0);
+    }
+    thrower.lockVictim = victim;
+    victim.lockPartner = thrower;
+    thrower.state = 'throwing'; thrower.stateT = 0;
+    victim.state = 'thrown'; victim.stateT = 0;
+  }
+  /* Damage for a paired throw, at the file's damage time.
+     Main pair: the WH move's own damage (MOD decision). Escape
+     pair: not a WH move — the file damage scaled T3 170 -> WH 100. */
+  _throwPairDamage() {
+    const pair = this._throwPair, attacker = pair && pair.thrower;
+    if (!pair || !attacker || pair.hitDone) return null;
+    pair.hitDone = true;
+    const base = pair.isEscape ? pair.throw.damage * 100 / 170 : (pair.whMove && pair.whMove.damage) || 0;
+    const dmg = base * attacker.stats.power / this.stats.defense;
+    this.hp = Math.max(0, this.hp - dmg);
+    if (this.hp <= 0) {
+      this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing);
+      return 'ko';
+    }
+    return 'throw';
+  }
+  get throwBreakInput() {
+    if (this._throwPair && this._throwPair.breaks && this._throwPair.breaks[0]) return this._throwPair.breaks[0].input;
+    return this.lockMove && this.lockMove.throw_break;
+  }
   tryThrowBreak(btn) {
+    if (this.state === 'thrown' && this._throwPair) {
+      // File pair break: input must match AND the pair clock must
+      // be inside the file's break window (first frames of the
+      // same clips). A correct input outside the window does not
+      // break — the throw lands. On break, the file's escape pair
+      // starts with roles swapped; if it cannot bind, fall back
+      // to the legacy escape (both idle, attacker punishable).
+      const pair = this._throwPair, brk = pair.breaks && pair.breaks[0];
+      if (!brk) return false;
+      const got = (btn === '3+4') ? '1+2' : btn;
+      if (got !== brk.input) return false;
+      const t = this._throwPairT || 0;
+      if (t < brk.windowSec[0] || t > brk.windowSec[1]) return false;
+      const attacker = pair.thrower;
+      const R = globalThis.WH_T3_REACTIONS;
+      const esc = R && escapePairFor(R, pair.throw, pair.breaks, attacker._t3.dir, this._t3.dir);
+      this._throwPair = null; if (attacker) attacker._throwPair = null;
+      if (esc) {
+        const newPair = { throw: esc.throw, branch: null, code: null, clips: esc.clips,
+          breaks: throwBreaks(esc.throw), damageTimeSec: throwDamageTimeSec(esc.throw),
+          durationSec: throwPairDurationSec(esc.throw), whMove: null, isEscape: true, hitDone: false };
+        if (this._bindThrowPair(newPair, attacker)) { this._startThrowPair(newPair, attacker); this._throwEscaped = true; return true; }
+      }
+      this._enter('idle');
+      this.vx = -this.facing * 2.0;
+      if (attacker) {
+        attacker.lockT = 0; attacker.lockVictim = null; attacker.lockMove = null;
+        attacker._enter('idle');
+        attacker.stun = Math.max(attacker.stun, 0.3);
+        attacker.vx = 0;
+      }
+      this._throwEscaped = true;
+      return true;
+    }
     if (this.state !== 'thrown' || !this.lockMove) return false;
     const want = this.lockMove.throw_break || '1';
     const got = (btn === '3+4') ? '1+2' : btn; // mobile: both-kicks = both-punches
@@ -1212,6 +1467,10 @@ export class Fighter {
     return true;
   }
   completeThrow() {
+    // Paired throws never route here: their break window is the
+    // first frames of the pair clips and _tickState advances the
+    // pair to throwExec/thrownExec when it ends (see below).
+    if (this._throwPair) return null;
     // Break window expired — the throw lands for real. Both fighters enter
     // the throw execution: attacker lifts and slams, victim is thrown.
     // (Owner playtest bug 2026-10-23: was routing through receiveHit, which
@@ -1314,11 +1573,41 @@ export class Fighter {
     if (this.aura && this.aura.material && !this._rageAura) this.aura.material.color.set(on ? 0x3aa8ff : 0xffffff);
     if (this.auraLight && !this._rageAura) this.auraLight.color.set(on ? 0x3aa8ff : 0xffffff);
   }
+  /* GAP-FILL LANE 1: item-move loadout (T7 item-gated attacks). */
+  setEquippedItems(list) { this.equippedItems = Array.isArray(list) ? [...list] : []; }
+  equipItem(id) { if (id && !this.equippedItems.includes(id)) this.equippedItems.push(id); }
+  unequipItem(id) { this.equippedItems = this.equippedItems.filter((e) => e !== id); }
+  hasItem(id) { return this.equippedItems.includes(id); }
+
+  /* GAP-FILL LANE 1: recoverable pool (T8 white gauge, verified
+     absent before this lane — WH chip was permanent loss).
+     Pool accrues ONLY from chip actually lost on block (see
+     receiveHit); aerial/grounded recoverable fractions are NOT
+     implemented because no verified T8 fraction was found in
+     this lane's sources — inventing one would break the
+     no-guesses rule. Attacking recovers: landing a hit or
+     forcing a block heals up to the damage forced, capped by
+     the pool and by max HP. Never recovers over time. */
+  _addRecoverable(amount) {
+    if (amount > 0) this._recoverable = Math.min(this.maxHp, (this._recoverable || 0) + amount);
+  }
+  _recoverOnAttack(amount) {
+    const pool = this._recoverable || 0;
+    if (pool <= 0 || !(amount > 0)) return 0;
+    const healed = Math.min(pool, amount, Math.max(0, this.maxHp - this.hp));
+    if (healed > 0) { this.hp += healed; this._recoverable = pool - healed; }
+    return healed;
+  }
   tryUrgeDash() {
-    if (!this._urgeOn || this._urgePips < 1 || !this.canAct()) return false;
+    // GAP-FILL LANE 1 (Soul Urge completeness): T8 Heat Dash is a
+    // CANCEL, not just a neutral input — it may also fire from an
+    // attack's recovery, cancelling the tail of the move.
+    const cancel = this.state === 'attack' && this._attackPhase === 'recovery';
+    if (!this._urgeOn || this._urgePips < 1 || (!this.canAct() && !cancel)) return false;
     const g = this.game;
     if (g && g.soulurge) g.soulurge.spendPip(this);
     else this._urgePips -= 1;
+    if (cancel) { this.attack = null; this.attackName = null; }
     this._urgeDashT = 0.45;
     this.vx = this.facing * 9;
     this._enter('dash');
@@ -1332,6 +1621,13 @@ export class Fighter {
     let notation = LEGACY_TO_TEKKEN[name] || name;
     const ctx = this._inputCtx();
     this._chordBase = this.tekken.lastMove;
+    // GAP-FILL LANE 1 (Soul Urge completeness): Urge Dash as a
+    // recovery cancel — reachable even though canAct() is false
+    // mid-attack. tryUrgeDash() itself enforces the cancel window.
+    if (notation === '1+2' && ctx.urgeOn && !ctx.rage &&
+        this.state === 'attack' && this._attackPhase === 'recovery') {
+      return this.tryUrgeDash();
+    }
     // String grace (2026-10-24, Pantera string fix; batch 2026-10-24: 200 -> 500 ms
     // for touch cadence): a tap landing just after the previous hit fully
     // recovered still continues the string — 500 ms past move end. The window
@@ -1351,6 +1647,18 @@ export class Fighter {
       if (resolved) notation = resolved;
     } else if (/^[1234](\+[1234])+$/.test(notation)) {
       if (notation === '1+2' && ctx.urgeOn && !ctx.rage) return this.tryUrgeDash();
+      // GAP-FILL LANE 1 (Soul Urge completeness): LP1+RP2 is the
+      // dash (above); LK3+RK4-adjacent chord 2+3 is Burst/Smash.
+      // Buttons here are Tekken numbers per the file convention;
+      // user-facing text uses LP1/RP2/LK3/RK4. During Soul Urge,
+      // 2+3 fires the synthesized Urge Smash; with Soul Urge
+      // available but not active, 2+3 fires Urge Burst. If neither
+      // synthesized move exists (moveset not yet injected), fall
+      // through to normal chord resolution instead of dead input.
+      if (notation === '2+3') {
+        if (ctx.urgeOn && this._fireNotation('US.2+3')) return true;
+        if (ctx.urgeAvailable && this._fireNotation('UB.2+3')) return true;
+      }
       const resolved = this.tekken.pressChord(notation, ctx);
       if (!resolved) return false; // chord with no matching move: whiff, no action
       notation = resolved;
@@ -1364,6 +1672,11 @@ export class Fighter {
       if (fb) move = MOVES[fb];
     }
     if (!move) return false;
+    // GAP-FILL LANE 1 (item moves): a move gated by an item the
+    // fighter has not equipped does not fire at all — no fallback
+    // to a generic strike, so an unequipped item move is never
+    // silently replaced by a different move.
+    if (itemGate(move, this.equippedItems).blocked) return false;
     // Preserve WH-specific properties (grab unblockable, surge cost)
     if (MOVES[name]) {
       move = { ...move, ...Object.fromEntries(
@@ -1386,6 +1699,10 @@ export class Fighter {
   _fireNotation(notation) {
     const move = getRealMove(this._movesetId, notation);
     if (!move) return false;
+    // GAP-FILL LANE 1: item gate applies to string continuations
+    // exactly as to fresh inputs (an item move mid-string with
+    // the item unequipped ends the string, it does not swap).
+    if (itemGate(move, this.equippedItems).blocked) return false;
     this.tekken._recordMove(notation);
     this.attack = move; this.attackName = notation; this.hasHit = false; this._prevHitPoint = null;
     this._attackId = (this._attackId || 0) + 1;
@@ -1405,6 +1722,10 @@ export class Fighter {
     const _wasCrouch = this.state === 'crouch' || this.stance === 'FC';
     const _wasAirborne = !this.onGround;
     const _wasDown = this.state === 'knockdown' && this.onGround;
+    // GAP-FILL LANE 1: wall-splat follow-up counting (one count per
+    // landed hit on a splatted victim; the 3-hit drop lives below).
+    const _wasWallSplat = this.state === 'wallsplat';
+    if (_wasWallSplat) this._wallSplatHits++;
     // V-System: an armored V-Skill absorbs the hit outright (no damage,
     // no stun) while it isn't in recovery. game.js shows the spark.
     if (this.state === 'vskill' && this.attack && this.attack.armor &&
@@ -1415,6 +1736,12 @@ export class Fighter {
     // hit — damage applies, but the move is never interrupted mid-swing.
     const armored = !!(this.attack && this.attack.armor && this._attackPhase !== 'recovery'
       && !move.unblockable && !move.isGrab);
+    // GAP-FILL LANE 1: Power Crush (T7) is NOT the generic armor
+    // above. Generic armor absorbs everything except grabs; a
+    // Power Crush absorbs only mid/high strikes (lows, throws,
+    // unblockables and Rage Arts break it — combat-core.js).
+    const crushActive = (this.state === 'attack' || this.state === 'vskill' || this.state === 'vreversal') &&
+      powerCrushAbsorbs(this.attack, this._attackPhase, this.stateT, move);
     const facingAttacker = Math.sign(attacker.root.position.x - this.root.position.x) === this.facing;
     // T3 HitClassify: guarded when (guard & attack word) != 0 and the defender faces the
     // attacker. Standing guard blocks highs/mids, crouching guard blocks lows; throws and
@@ -1434,14 +1761,27 @@ export class Fighter {
         }
       }
       // Soul Urge lane (T8 Heat): block chip can never kill — floor at 1 HP.
+      const _hpBeforeBlock = this.hp;
       this.hp = attacker._urgeOn ? Math.max(1, this.hp - chip) : Math.max(0, this.hp - chip);
+      // GAP-FILL LANE 1: recoverable pool (T8 white gauge, verified
+      // absent before this lane). Chip actually lost becomes the
+      // pool; the attacker forcing the block recovers from their
+      // own pool up to the chip forced. Urge Burst activates on
+      // block too (T8) — soulurge.onBlockedHit already existed
+      // but had no fighter-side caller for the block path.
+      this._addRecoverable(_hpBeforeBlock - this.hp);
+      if (attacker && typeof attacker._recoverOnAttack === 'function') attacker._recoverOnAttack(chip);
+      if (move.urgeBurst && this.game && this.game.soulurge &&
+          typeof this.game.soulurge.onBlockedHit === 'function') {
+        this.game.soulurge.onBlockedHit(attacker, move);
+      }
       this.stun = (move.t8 && move.t8.blk != null) ? stunFromAdvantage(move.t8.blk, move)
         : 0.18 + move.damage * 0.01;
       this.vx = Math.sign(this.root.position.x - attacker.root.position.x) * move.knock * 0.5;
       this.meter = Math.min(this.maxMeter, this.meter + 4); // +4 soul on block
       if (this.hp <= 0) { this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || 1); return 'ko'; }
       this._reactionSel = this._pickReaction(move, attacker, { guarded: true, counter: false,
-        crouch: _wasCrouch, airborne: false, down: false });
+        crouch: _wasCrouch, airborne: false, down: false, forState: 'block' });
       return 'block';
     }
     let dmg = move.damage * attacker.stats.power / this.stats.defense;
@@ -1475,6 +1815,26 @@ export class Fighter {
     if (!this.onGround && !move.isGrab) { dmg *= this._juggle === 0 ? 0.8 : 0.5; this._juggle++; }
     this.lastCounterHit = counter;
     this.hp = Math.max(0, this.hp - dmg);
+    // GAP-FILL LANE 1: the attacker recovers from their own
+    // recoverable pool whenever they land damage (T8: recover
+    // only by attacking — never over time). Applies to crush-,
+    // armor- and normal-path hits alike: damage did land.
+    if (attacker && typeof attacker._recoverOnAttack === 'function') attacker._recoverOnAttack(dmg);
+    if (crushActive) {
+      // T7 Power Crush absorb: full damage lands (see above),
+      // but the swing is never interrupted — no hitstun, no
+      // knockdown, no reaction clip. The absorbed hit stalls
+      // the swing a few frames (T7 behavior), it does not cancel
+      // it. A killing absorbed hit still KOs (armor is not
+      // invulnerability — same rule as the rage-art armor path).
+      this.meter = Math.min(this.maxMeter, this.meter + 6);
+      if (this.hp <= 0) {
+        this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing);
+        return 'ko';
+      }
+      this.stateT = Math.max(0, this.stateT - 0.05);
+      return 'hit';
+    }
     if (armored) {
       // Rage lane (T7): armor absorbs — damage lands, the swing continues.
       this.meter = Math.min(this.maxMeter, this.meter + 6);
@@ -1499,6 +1859,49 @@ export class Fighter {
       this._queuedNext = null; this._stringGraceUntil = 0; // getting hit kills your string
       this._enter('hitstun');
     }
+    // GAP-FILL LANE 1: this unguarded, non-armor, non-grab hit
+    // arms the next wall splat (fighter knocked back toward a
+    // wall) and may fire the combo extender. Grabs do not arm
+    // it — throw victims travel by cinematic, not knockback.
+    if (!move.isGrab) this._wallSplatArmed = true;
+    // Combo extender (T7 Screw / T8 Tornado): airborne victim,
+    // slot still free, one slot per combo. Screw = spin into a
+    // slump (long window, low pop); Tornado = flip into a
+    // ground-bound state (higher pop). A grounded connect, a
+    // second extender in the same combo, or an Urge Burst (T8
+    // pseudo-bound, which does NOT consume the slot) all fall
+    // through to the normal path above. Bound is NOT touched
+    // here: no Bound state machine exists in fighter.js (the
+    // "bound" hits in this file are throw-pair / anim-bank
+    // binding), so there is nothing to preserve — low-parry
+    // Bound is flagged as follow-up work, not claimed.
+    const _ek = extenderKind(move);
+    if (_ek && _wasAirborne && !this._extenderUsed && !move.isGrab) {
+      this._extenderUsed = true; this._extenderKind = _ek;
+      if (_ek === 'screw') {
+        this._inScrew = true; this.vy = 2.0;
+        this.stun = Math.max(this.stun, SCREW_SLUMP_STUN);
+      } else {
+        this._inTornado = true; this.vy = 3.0;
+        this.stun = Math.max(this.stun, TORNADO_BOUND_STUN);
+      }
+      this.vx = dir * (move.knock || 2) * 0.5; this.onGround = false;
+      this._enter('knockdown');
+    }
+    // Wall-splat follow-up (distinct from wall break): a splatted
+    // victim stays stuck to the wall for WALL_SPLAT_MAX_HITS
+    // hits, then drops fast (knockdown). The splat state itself
+    // is entered by _physics() when knockback reaches the wall.
+    if (_wasWallSplat && this.hp > 0) {
+      if (this._wallSplatHits >= WALL_SPLAT_MAX_HITS) {
+        this._wallSplatHits = 0;
+        this.vx = dir * (move.knock || 2);
+        this._enter('knockdown');
+      } else {
+        this.vx = 0; this.vy = 0; this.stun = WALL_SPLAT_STUN;
+        this._enter('wallsplat');
+      }
+    }
     this.stance = null;
     // Soft-body hit injection: dent the muscle volume at the impact point.
     if (this._softbody) {
@@ -1508,15 +1911,30 @@ export class Fighter {
       } catch (e) {}
     }
     this._reactionSel = this._pickReaction(move, attacker, { guarded, counter,
-      crouch: _wasCrouch, airborne: _wasAirborne, down: _wasDown });
+      crouch: _wasCrouch, airborne: _wasAirborne, down: _wasDown,
+      forState: this.state === 'knockdown' ? 'knockdown' : 'hitstun' });
     return counter ? 'counter' : 'hit';
   }
-  /* T3 reaction pick (PR #1003 data, t3-reaction-select.js). Runs only
-     when a loader has set globalThis.WH_T3_REACTIONS (parsed
-     reactions.json); without it returns null and the generic 'hit'
-     clip plays, as before. The slot itself plays only when a
-     'react:<slot>' action exists (pack-loader lane); this is the
-     selection half, not a playback claim. */
+  /* T3 reaction pick (PR #1003 data, t3-reaction-select.js; playback
+     wired by the hit-reaction lane, 2026-10-24). Runs only when a
+     loader has set globalThis.WH_T3_REACTIONS (parsed
+     reactions.json, fetched with the bank load in t3anims.js);
+     without it returns null and the generic 'hit' clip plays, as
+     before. The slot itself plays through _reactionActionName,
+     which resolves it defender-bank-first from the packs.
+     UNMAPPED here (existing fallback kept, never a guessed clip):
+     - wall splat: the decoded records carry no wall field or slot
+       (record_fields has no wall entry), so a wall hit keeps the
+       existing knockback; no wall reaction is invented.
+     - downOther (lying the other way, state 0x200): WH has no such
+       state, so downOther is always false in this pick.
+     - close-range reactions when the defender's reaction pack has
+       not loaded yet: the close distance is in T3 units and only
+       the pack's anchor scale converts it, so close stays false
+       until a pack is cached (packs prefetch at _bindT3).
+     - air kind 1 (slam, needs hitDirY) and kind 5 (launch-branch
+       only): WH move data carries neither, so they are never
+       picked here; kinds 0/2/3/4 below are the file's rules. */
   _pickReaction(move, attacker, o) {
     try {
       const R = globalThis.WH_T3_REACTIONS;
@@ -1531,13 +1949,127 @@ export class Fighter {
       const dx = attacker.root.position.x - this.root.position.x;
       const dz = attacker.root.position.z - this.root.position.z;
       const quadrant = Math.abs(dz) > Math.abs(dx) ? (dz > 0 ? 1 : 3) : (dx * this.facing > 0 ? 0 : 2);
+      // Close-range substitution (docs/anim/T3-REACTIONS.md): the
+      // fighters must be closer than close_reactions[closeIdx][1]
+      // T3 units, converted with the defender pack's anchor scale.
+      let close = false;
+      const closeIdx = row[1];
+      if (closeIdx && R.close_reactions && R.close_reactions[closeIdx]) {
+        const vBank = vDir ? this._bankIdForDir(vDir) : null;
+        const scale = vBank ? getT3ReactionPackScale(vBank) : null;
+        if (scale) close = Math.hypot(dx, dz) < R.close_reactions[closeIdx][1] * scale;
+      }
+      // Air kind (AirReactionKind): stick in kind 2 when already in
+      // an air reaction (kind 2 itself, or kinds 3/4 past frame 18
+      // at 30 fps ~ 0.6 s of state time); else the quadrant side
+      // kinds; else kind 0. Kind 1/5 are UNMAPPED (see header).
+      let airKind = 0;
+      if (o.airborne && R.air_kinds) {
+        const prev = this._reactionSel;
+        const airSlots = R.air_kinds.map((k) => k[1]);
+        if (prev && airSlots.includes(prev.slot) && (prev.slot === 3426 || this.stateT > 0.6)) airKind = 2;
+        else if (quadrant === 1) airKind = 4;
+        else if (quadrant === 3) airKind = 3;
+      }
       const sel = selectReactionSlot(R, row, { guarded: !!o.guarded, crouch: !!o.crouch, counter: !!o.counter,
-        airborne: !!o.airborne, down: !!o.down, quadrant });
-      return sel ? { ...sel, bank: vDir } : null;
+        airborne: !!o.airborne, down: !!o.down, quadrant, close, airKind });
+      if (!sel) return null;
+      this._reactChainDepth = 0;
+      return { ...sel, bank: vDir, defenderDir: vDir, attackerDir: aDir, forState: o.forState || null };
     } catch (e) { return null; }
   }
+
+  /* Reaction playback (hit-reaction wiring lane, 2026-10-24).
+     _ensureReactionAction fetches the owning bank's pack (once)
+     and retargets ONLY the picked slot into a 'react:<slot>' action
+     — defender bank first, attacker bank second, exactly as the
+     file's DivmotMergeSharedSlots lookup orders it. A slot no pack
+     defines returns null from the loader and the caller keeps its
+     generic fallback (UNMAPPED, never guessed). */
+  _ensureReactionAction() {
+    const rs = this._reactionSel;
+    if (!rs || !this._t3 || !this._t3.model) return;
+    const name = 'react:' + rs.slot;
+    if (this.t3actions[name] || this._reactLoading === name) return;
+    const R = globalThis.WH_T3_REACTIONS;
+    if (!R) return;
+    const ownerDir = reactionSlotBank(R, rs.defenderDir, rs.attackerDir, rs.slot);
+    const bankId = ownerDir ? this._bankIdForDir(ownerDir) : null;
+    if (!bankId) return; // UNMAPPED: owning bank has no pack path (forestlaw_on_law)
+    this._reactLoading = name;
+    loadT3ReactionClip(THREE, bankId, rs.slot, { noRise: rs.code === 0x24 })
+      .then((clip) => {
+        this._reactLoading = null;
+        if (!clip) return;
+        const rc = retargetT3Clips({ [name]: clip }, bankId, this._t3.model, THREE, this._t3.modelKey, [name]);
+        if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
+      })
+      .catch(() => { this._reactLoading = null; });
+  }
+
+  /* The reaction action to play this frame, or null for the caller's
+     generic fallback. Follows the file's continuation chain
+     (bank slots[].next) when a clip finishes, until a slot whose
+     next is itself — then the finished pose is held (_chainDone)
+     instead of replaying a generic clip. Block is the exception:
+     a finished guard reaction falls back to the block loop. */
+  _reactionActionName() {
+    const rs = this._reactionSel;
+    // A 'block' pick also matches while its blockstun runs, because
+    // receiveHit never _enters 'block': guarded hits land in idle,
+    // walk or crouch when the defender is holding back.
+    const stateMatch = rs && (rs.forState === this.state ||
+      (rs.forState === 'block' && this.stun > 0 &&
+        (this.state === 'idle' || this.state === 'walk' || this.state === 'crouch')));
+    if (!rs || !stateMatch) return null;
+    this._ensureReactionAction();
+    const name = 'react:' + rs.slot;
+    const a = this.t3actions[name];
+    if (!a) return null;
+    if (this._t3current === a) {
+      if (a.isRunning()) return name;
+      const R = globalThis.WH_T3_REACTIONS;
+      const ownerDir = R ? reactionSlotBank(R, rs.defenderDir, rs.attackerDir, rs.slot) : null;
+      const plan = ownerDir && R.banks[ownerDir] && R.banks[ownerDir].slots
+        ? R.banks[ownerDir].slots['0x' + (rs.slot & 0xffff).toString(16)] : null;
+      const next = plan ? plan.next : null;
+      if (next == null || next === rs.slot || this._reactChainDepth >= 8) {
+        if (this.state === 'block') return null;
+        this._reactionSel = { ...rs, _chainDone: true };
+        return null;
+      }
+      this._reactChainDepth++;
+      this._reactionSel = { ...rs, slot: next, field: 'chain' };
+      this._ensureReactionAction();
+      const nextName = 'react:' + next;
+      return this.t3actions[nextName] ? nextName : null;
+    }
+    return name;
+  }
+
+  /* Guard reaction override for locomotion states: a guarded hit
+     does not change state, so idle/walk/crouch check for a live
+     guard reaction before playing their locomotion clip. */
+  _guardReactionName() {
+    const rs = this._reactionSel;
+    if (!rs || rs.code !== 0x23 || this.stun <= 0) return null;
+    return this._reactionActionName();
+  }
+
   _knockout(dir) {
     this.dead = true; this.vx = dir * 5.5; this.vy = 6; this.onGround = false;
+    // KO collapse (docs/anim/T3-REACTIONS.md): a KO'd fighter plays
+    // the collapse slot 0xD66 from the file, not the generic ko clip,
+    // when the tables are loaded; otherwise the ko fallback below.
+    try {
+      const R = globalThis.WH_T3_REACTIONS;
+      const b = this._t3 && this._t3.bank, base = b && T3_BANKS[b];
+      const vDir = base ? base.split('/').filter(Boolean).pop() : null;
+      this._reactionSel = (R && R.collapse_slot != null)
+        ? { record: 0, field: 'ko', slot: R.collapse_slot, code: 0, push: null, angle: null,
+            bank: vDir, defenderDir: vDir, attackerDir: null, forState: 'ko' } : null;
+      this._reactChainDepth = 0;
+    } catch (e) { this._reactionSel = null; }
     this._queuedNext = null; this._stringGraceUntil = 0; // getting hit kills your string
     this._enter('ko'); this.stun = 999;
   }
@@ -1588,8 +2120,15 @@ export class Fighter {
         this._attackPhase !== 'active' || this.hasHit) return null;
     if (this.attack && this.attack.noHitbox) return null;
     const isGrab = !!(this.attack?.isGrab || this.attackName === 'grab' || this.attackName === '1+3' || this.attackName === '2+4');
-    const r = (this.attackName === 'surge' ? LIMB_RADIUS.surge : isGrab ? LIMB_RADIUS.grab : LIMB_RADIUS.strike)
+    // GAP-FILL LANE 1 (per-move hitbox, ENGINE side): when the
+    // moveset lane has authored per-move geometry, its radius /
+    // reach replace the generic capsule values; when absent
+    // (UNMAPPED — the current state of every WH moveset), the
+    // generic values below stand, honestly, with no invented box.
+    const _pm = resolvePerMoveHitbox(this.attack);
+    let r = (this.attackName === 'surge' ? LIMB_RADIUS.surge : isGrab ? LIMB_RADIUS.grab : LIMB_RADIUS.strike)
       * (this.stats.reachMult || 1); // WOOD force (modes lane): reach extends
+    if (_pm.mapped && _pm.radius != null) r = _pm.radius * (this.stats.reachMult || 1);
     const segments = [];
     let end = null;
     for (const seg of this._weaponSegments()) {
@@ -1613,8 +2152,9 @@ export class Fighter {
     }
     this._prevHitPoint = end;
     return { x: end.x, y: end.y, z: end.z, r, move: this.attack, segments, travel,
-             limb: this.attack?.limb || null,
-             reach: moveReach(this.attack, String(this.attackName || '')) * (this.stats.reachMult || 1) };
+             limb: this.attack?.limb || null, perMoveHitbox: _pm,
+             reach: ((_pm.mapped && _pm.reach != null) ? _pm.reach
+               : moveReach(this.attack, String(this.attackName || ''))) * (this.stats.reachMult || 1) };
   }
   getHurtboxes() {
     if (this.invuln > 0 || this.dead) return [];
@@ -1639,6 +2179,14 @@ export class Fighter {
         }
         out.push(fbById.get(def.id));
       }
+    }
+    // GAP-FILL LANE 1 (per-move hurtbox, ENGINE side): only when
+    // the defender's current move itself authors a radiusScale
+    // does it scale these capsules; otherwise they stand exactly
+    // as before. No scale is ever guessed from limb or class.
+    const _ph = resolvePerMoveHurtbox(this.attack);
+    if (_ph.mapped && _ph.radiusScale != null) {
+      for (const h of out) if (h) h.r = h.r * _ph.radiusScale;
     }
     return out;
   }
@@ -1667,7 +2215,15 @@ export class Fighter {
     if (this._vparryT > 0) this._vparryT -= dt;
     if (this._risingT > 0) this._risingT -= dt;
     if (this.stanceT > 0) { this.stanceT -= dt; if (this.stanceT <= 0) this.stance = null; }
-    if (this.onGround && this.state !== 'knockdown') this._juggle = 0;
+    // GAP-FILL LANE 1: combo ends when the victim recovers to
+    // neutral on the ground — juggle count AND the single
+    // extender slot both clear here, never mid-combo.
+    if (this.onGround && this.state !== 'knockdown') {
+      this._juggle = 0;
+      this._extenderUsed = false; this._extenderKind = null;
+      this._inScrew = false; this._inTornado = false;
+      if (this.state !== 'wallsplat') this._wallSplatArmed = false;
+    }
     if (this._comboTimer > 0) { this._comboTimer -= dt; if (this._comboTimer <= 0) this.combo = 0; }
     if (this._auraFlash > 0) this._auraFlash -= dt;
     if (this._urgeDashT > 0) {
@@ -1719,6 +2275,24 @@ export class Fighter {
     }
   }
 
+  /* Shared-root-frame drive for a paired throw (doc formula):
+     each fighter's root follows its own clip's ax/az anchor
+     around the pair anchor P, at the thrower's anchor scale,
+     with lean yaw H + the clip's yaw0. Frame = pair clock at
+     30 fps (the packs' fps), clamped to the clip length. */
+  _driveThrowPair() {
+    const pair = this._throwPair;
+    if (!pair) return;
+    const isThrower = pair.thrower === this;
+    const row = isThrower ? pair.throwerPackRow : pair.victimPackRow;
+    if (!row) return;
+    const f = Math.floor((this._throwPairT || 0) * 30);
+    const a = anchorAt(row, f);
+    const pos = sharedFramePos(pair.anchor, pair.hYaw, a, pair.anchorScale || 0);
+    this.root.position.x = pos.x;
+    this.root.position.z = pos.z;
+    this._faceYaw = pair.hYaw + (row.yaw0 || 0);
+  }
   _tickState() {
     switch (this.state) {
       // V-System: vskill/vreversal run the same attack timing as 'attack'.
@@ -1762,6 +2336,11 @@ export class Fighter {
       case 'jump': if (this.onGround) this._enter('idle'); break;
       case 'hitstun': if (this.stun <= 0) this._enter('idle'); break;
       case 'knockdown': if (this.onGround && this.stun <= 0) this._enter('idle'); break;
+      // GAP-FILL LANE 1: wall splat sticks the victim to the
+      // wall for its stun window; expiry returns to neutral and
+      // clears the splat hit count (the 3-hit drop is in
+      // receiveHit, not here — expiry is not a hit).
+      case 'wallsplat': if (this.stun <= 0) { this._wallSplatHits = 0; this._enter('idle'); } break;
       case 'dodge': if (this.stateT > 0.34) { this.vx = 0; this._enter('idle'); } break;
       case 'vshift':
         // V-Shift: invulnerable backshift; game.js may proc the evade.
@@ -1771,11 +2350,38 @@ export class Fighter {
         if (this.stateT > 0.55) { this.vz = 0; this._enter('idle'); }
         break;
       case 'thrown':
-      case 'throwing':
+      case 'throwing': {
+        if (this._throwPair) {
+          // Paired throw: shared-root-frame drive + pair clock.
+          // Both clips started on the same frame; the break window
+          // ends -> both fighters move to the exec states WITHOUT
+          // restarting the clips (mixer time is the pair clock's
+          // twin; _throwPairT is the logic clock and is NOT reset
+          // by _enter, so damage/end timing survives the switch).
+          this._throwPairT = (this._throwPairT || 0) + dt;
+          this._driveThrowPair();
+          const brk = this._throwPair.breaks && this._throwPair.breaks[0];
+          const winEnd = brk ? brk.windowSec[1] : 0;
+          if (this._throwPairT > winEnd) {
+            this._enter(this.state === 'throwing' ? 'throwExec' : 'thrownExec');
+          }
+          break;
+        }
         // Throw-lock: game.js resolves the lock when the break window
         // (lockT) expires, so hit feedback stays in one place.
         break;
+      }
       case 'throwExec': {
+        if (this._throwPair) {
+          this._throwPairT = (this._throwPairT || 0) + dt;
+          this._driveThrowPair();
+          if (this._throwPairT >= this._throwPair.durationSec) {
+            this._throwPair = null; this._throwPairT = 0;
+            this._throwVictim = null; this._throwMove = null;
+            this._enter('idle');
+          }
+          break;
+        }
         // Attacker performing the throw: lift, slam, recover (0.9s total).
         // Damage lands at the slam (t=0.55s) via the victim's _throwSlamDamage.
         if (this.stateT >= 0.9) {
@@ -1785,6 +2391,21 @@ export class Fighter {
         break;
       }
       case 'thrownExec': {
+        if (this._throwPair) {
+          this._throwPairT = (this._throwPairT || 0) + dt;
+          this._driveThrowPair();
+          const pair = this._throwPair;
+          if (pair.damageTimeSec != null && !pair.hitDone && this._throwPairT >= pair.damageTimeSec) this._throwPairDamage();
+          if (this._throwPairT >= pair.durationSec) {
+            if (!pair.hitDone) this._throwPairDamage();
+            const dead = this.dead;
+            this._throwPair = null; this._throwPairT = 0;
+            this._throwAttacker = null; this._throwMove = null;
+            if (!dead) { this.stun = 0.55; this._enter('knockdown'); }
+            // dead: _throwPairDamage already _knockout'd into 'ko'; do not override it.
+          }
+          break;
+        }
         // Victim being thrown: lifted by the attacker, then slammed down
         // in front of them. Stays near the attacker — no launch across the room.
         const t = this.stateT, attacker = this._throwAttacker;
@@ -1867,9 +2488,36 @@ export class Fighter {
 
     if (this.root.position.y <= GROUND_Y) {
       this.root.position.y = GROUND_Y; this.vy = 0;
-      if (!this.onGround) { this.onGround = true; if (this.state === 'knockdown') this.stun = Math.max(this.stun, 0.4); }
+      if (!this.onGround) {
+        this.onGround = true;
+        if (this.state === 'knockdown') {
+          // GAP-FILL LANE 1: a Screw slump / Tornado bound keeps
+          // its follow-up window on landing instead of collapsing
+          // to the generic 0.4 s knockdown floor.
+          this.stun = Math.max(this.stun, (this._inScrew || this._inTornado) ? EXTENDER_LAND_STUN_FLOOR : 0.4);
+        }
+      }
     }
     this.root.position.x = Math.max(-ARENA_LIMIT, Math.min(ARENA_LIMIT, this.root.position.x));
+
+    // GAP-FILL LANE 1: wall splat (DISTINCT from wall break).
+    // A knockback victim armed by a landed hit (see receiveHit)
+    // who reaches the arena wall sticks to it in 'wallsplat'
+    // instead of sliding along it. Breaks do not false-trigger
+    // this: stagebreaks.checkHit() runs before the next physics
+    // tick and extends ARENA_LIMIT on a break, so a broken wall
+    // is no longer at the limit by the time this check runs.
+    // PROPRIETARY NAME for this state: NEEDS NAME (owner names).
+    if (this._wallSplatArmed && (this.state === 'hitstun' || this.state === 'knockdown') &&
+        Math.abs(this.root.position.x) >= ARENA_LIMIT - 0.01) {
+      this._wallSplatArmed = false;
+      this.vx = 0; this.vy = 0; this.stun = Math.max(this.stun, WALL_SPLAT_STUN);
+      this._wallSplatHits = 0;
+      this._enter('wallsplat');
+      if (this.game && this.game.stageBreaks && typeof this.game.stageBreaks.noteSplat === 'function') {
+        try { this.game.stageBreaks.noteSplat(opponent, this); } catch (e) { /* record-only hook */ }
+      }
+    }
 
     // Body-vs-body pushout, T7/T8 style (owner bug 2026-10-23: cross-ups impossible).
     // Tekken pushboxes are ground collision cylinders: while airborne the box
@@ -1877,7 +2525,7 @@ export class Fighter {
     // over and land on the far side (facing re-resolves on landing). Ground
     // push is split between both bodies; when one is against the stage wall
     // the remaining push goes to the other body, so nobody leaves the stage.
-    if (opponent) {
+    if (opponent && !this._throwPair) {
       const dx = this.root.position.x - opponent.root.position.x;
       const dz = this.root.position.z - opponent.root.position.z;
       const air = Math.max(this.root.position.y, opponent.root.position.y) - GROUND_Y;
@@ -2012,7 +2660,7 @@ export class Fighter {
       const fast = Math.abs(this.vx) > this.stats.speed * 0.9;
       tIdle = 0; tWalk = fast ? 0 : 1; tRun = fast ? 1 : 0;
     } else if (this.state === 'dodge') { tIdle = 0; tRun = 1; }
-    if (t3Active) { tIdle = 0; tWalk = 0; tRun = 0; }
+    if (t3Active || this._throwPair) { tIdle = 0; tWalk = 0; tRun = 0; }
     const rate = 1 - Math.exp(-dt / 0.12);
     this._locoIdle += (tIdle - this._locoIdle) * rate;
     this._locoWalk += (tWalk - this._locoWalk) * rate;
@@ -2052,11 +2700,15 @@ export class Fighter {
     // REAL T3 clips per state (falls back to procedural if unavailable)
     switch (this.state) {
       case 'idle':
-      case 'walk':
+      case 'walk': {
+        // Guard reaction during blockstun overrides locomotion.
+        const grn = this._guardReactionName();
+        if (grn) { this._playT3Once(grn, 'react:' + this._reactionSel.slot); break; }
         // Animated bank stance / walk cycle — the living fighting idle.
         if (t3Active) this._playT3(t3Wanted, { loop: true });
         else this._stopT3();
         break;
+      }
       case 'attack': case 'vskill': case 'vreversal': {
         // The move's own row / closest real clip (_attackClipPlan), time-warped onto its frames.
         // V-Skill / V-Reversal ride the same attack presentation.
@@ -2069,31 +2721,53 @@ export class Fighter {
         }
         break;
       }
-      case 'block':
-        if (!this._playT3('block', { loop: true })) this._animBlock();
+      case 'block': {
+        // Guard reaction (record guard field, code 0x23) when the
+        // pack has it; otherwise the block loop, as before. When
+        // the guard clip finishes, the block loop resumes.
+        const rn = (this._reactionSel && this._reactionSel.code === 0x23) ? this._reactionActionName() : null;
+        if (rn) this._playT3Once(rn, 'react:' + this._reactionSel.slot);
+        else if (!this._playT3('block', { loop: true })) this._animBlock();
         break;
-      case 'crouch':
+      }
+      case 'crouch': {
+        // Guard reaction during blockstun overrides the crouch hold.
+        const grn = this._guardReactionName();
+        if (grn) { this._playT3Once(grn, 'react:' + this._reactionSel.slot); break; }
         // Bank crouch hold (T3 crouching stance, slot 40) — the posture lows/FC moves use.
         if (!(t3Active && this._playT3(t3Wanted, { loop: true, fade: 0.08 }))) { this._leanT.x = 0.25; this._stopT3(); }
         break;
-      case 'hitstun':
+      }
+      case 'hitstun': {
         this._leanT.x = 0.28;
-        // T3 reaction clip when the pack-loader lane has registered
-        // one for the picked slot; otherwise the generic 'hit' clip.
-        // (Selection lives in receiveHit/_pickReaction; playback of
-        // reactions.pack.json slots is the loader lane's job.)
-        { const rs = this._reactionSel;
-          const rName = (rs && this.t3actions['react:' + rs.slot]) ? 'react:' + rs.slot : 'hit';
-          this._playT3Once(rName, 'hit:' + Math.floor(this.stateT * 10)); }
+        // File reaction clip (stagger / crumple chain / counter
+        // reaction, per the picked record field) when its pack slot
+        // has loaded; otherwise the generic 'hit' clip (UNMAPPED
+        // fallback — the pairing is never guessed).
+        const rn = this._reactionActionName();
+        if (rn) this._playT3Once(rn, 'react:' + this._reactionSel.slot);
+        else if (!this._reactionSel || !this._reactionSel._chainDone) this._playT3Once('hit', 'hit:' + Math.floor(this.stateT * 10));
         break;
-      case 'knockdown':
+      }
+      case 'knockdown': {
         this._leanT.x = Math.min(0.9, this.stateT * 3.0);
-        this._playT3Once('launch', 'kd:' + Math.floor(this.stateT * 10));
+        // Launch / air / down reaction when the hit that caused
+        // this knockdown picked one; throw knockdowns stay generic
+        // here (the grapple lane owns throw victim playback).
+        const rn = this._throwAttacker ? null : this._reactionActionName();
+        if (rn) this._playT3Once(rn, 'react:' + this._reactionSel.slot);
+        else if (!this._reactionSel || !this._reactionSel._chainDone) this._playT3Once('launch', 'kd:' + Math.floor(this.stateT * 10));
         break;
-      case 'ko':
+      }
+      case 'ko': {
         this._leanT.x = Math.min(0.9, this.stateT * 3.0);
-        this._playT3Once('ko', 'ko:' + Math.floor(this.stateT * 10));
+        // Collapse slot 0xD66 + its file get-up chain when loaded;
+        // otherwise the generic 'ko' clip.
+        const rn = this._reactionActionName();
+        if (rn) this._playT3Once(rn, 'react:' + this._reactionSel.slot);
+        else if (!this._reactionSel || !this._reactionSel._chainDone) this._playT3Once('ko', 'ko:' + Math.floor(this.stateT * 10));
         break;
+      }
       case 'victory':
         this._playT3('win', { loop: true });
         break;
@@ -2119,6 +2793,21 @@ export class Fighter {
         break;
       }
       case 'throwing': {
+        // Paired throw: the thrower's slot clip (NOT the grab action).
+        // _playT3 does not restart an already-running action, so this
+        // same action continues into throwExec below, in sync with
+        // the victim's clip. Break cue comes from the file's break
+        // input, not from the WH move's throw_break.
+        if (this._throwPair) {
+          this._leanT.x = 0;
+          this._playT3(this._throwPair.throwerAction, { loop: false });
+          const brk = this._throwPair.breaks && this._throwPair.breaks[0] ? this._throwPair.breaks[0].input : null;
+          const pulse = 0.55 + 0.45 * Math.sin(performance.now() * 0.03);
+          if (brk === '1') this._showTrail(this.bones.LeftHand, pulse);
+          else if (brk === '2') this._showTrail(this.bones.RightHand, pulse);
+          else { this._showTrail(this.bones.RightHand, pulse); this._showTrail(this.bones.LeftHand, pulse * 0.9); }
+          break;
+        }
         // Hold the double-arm snatch; flash the LEAD arm as the break cue
         // (Tekken: left arm forward = break 1, right arm = break 2, both = 1+2).
         const brk = this.lockMove && this.lockMove.throw_break;
@@ -2133,11 +2822,23 @@ export class Fighter {
         break;
       }
       case 'thrown':
+        // Paired throw: the victim's slot clip (the receiver clip),
+        // same action continuing into thrownExec below.
+        if (this._throwPair) {
+          this._leanT.x = 0;
+          if (!this._playT3(this._throwPair.victimAction, { loop: false })) this._stopT3();
+          break;
+        }
         // Victim caught: rocked back, arms up (T3 hit reaction when bound).
         this._leanT.x = 0.3;
         if (!this._playT3Once('hit', 'thrown')) this._stopT3();
         break;
       case 'throwExec': {
+        if (this._throwPair) {
+          this._leanT.x = 0;
+          if (!this._playT3(this._throwPair.throwerAction, { loop: false })) this._stopT3();
+          break;
+        }
         // Attacker performing the throw: heave back to lift (0-0.45s),
         // drive forward for the slam (0.45-0.6s), settle (0.6-0.9s).
         const t = this.stateT;
@@ -2150,6 +2851,11 @@ export class Fighter {
         break;
       }
       case 'thrownExec': {
+        if (this._throwPair) {
+          this._leanT.x = 0;
+          if (!this._playT3(this._throwPair.victimAction, { loop: false })) this._stopT3();
+          break;
+        }
         // Victim being thrown: lifted, then slammed. T3 launch clip sells
         // the airborne part; the position is driven by _tickState.
         this._leanT.x = 0.25;

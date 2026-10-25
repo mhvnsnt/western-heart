@@ -35,21 +35,19 @@
    it to NOTHING visible — the show-animation lock means bone breaking
    needs explicit owner approval before any visual is built on it.
 
-   Like softbody.js, this module has NO top-level imports (no three.js,
-   no WASM) so it is unit-testable in node and adds zero boot cost.
+   Like softbody.js, this module's only top-level import is the
+   dependency-free shared tissue quality store (./tissue-quality.js) — no
+   three.js, no WASM — so it stays unit-testable in node and adds zero
+   boot cost.
    ============================================================ */
+import { getTissueQuality, setTissueQuality, onTissueQuality, TISSUE_QUALITIES } from './tissue-quality.js';
 
 // ---- tiny vector helpers (plain objects; no three.js dependency) ----
 const _v3 = (x = 0, y = 0, z = 0) => ({ x, y, z });
 
-// ---- quality (mirrors softbody.js) -----------------------------------
-const QUALITIES = ['off', 'low', 'high'];
-const QUALITY_STORE = 'wh_femfx_v1';
-let _globalQuality = 'low';
-try {
-  const saved = (typeof localStorage !== 'undefined') && localStorage.getItem(QUALITY_STORE);
-  if (QUALITIES.indexOf(saved) >= 0) _globalQuality = saved;
-} catch (e) { /* private mode / node: keep default */ }
+// ---- quality (shared tissue store — game/js/tissue-quality.js) ---------
+// NEXTGEN-2026-10-23: one store for all backends (was wh_femfx_v1).
+const QUALITIES = TISSUE_QUALITIES;
 
 // ---- WASM module (built by tools/femfx/build_wasm.sh) -----------------
 const FEMFX_URL = '../vendor/femfx/femfx.wasm.js';
@@ -101,6 +99,10 @@ const REGION = {
 
 const _live = (typeof Set !== 'undefined') ? new Set() : { add() {}, delete() {}, forEach() {} };
 
+// Shared-store fan-out: a quality change via ANY backend's
+// setGlobalQuality updates every live FemfxBody.
+onTissueQuality((q) => { _live.forEach((fb) => { try { fb.setQuality(q); } catch (e) {} }); });
+
 // 5-tet decomposition of a unit cube cell, corners indexed x+2y+4z.
 // 4 corner tets (vol 1/6) + 1 central tet (vol 1/3); all positive orientation.
 // (Verified: volumes sum to exactly 1.0.)
@@ -112,7 +114,7 @@ export class FemfxBody {
   constructor() {
     this._mesh = null;
     this._region = null;
-    this._quality = _globalQuality;
+    this._quality = getTissueQuality();
     this._wasm = null;
     this._ready = false;
     this._disposed = false;
@@ -147,16 +149,12 @@ export class FemfxBody {
     return { regions: char.softbodyRegions || ['belly'] };
   }
 
-  static get globalQuality() { return _globalQuality; }
+  static get globalQuality() { return getTissueQuality(); }
 
   static setGlobalQuality(q) {
-    if (QUALITIES.indexOf(q) < 0) return false;
-    _globalQuality = q;
-    try {
-      if (typeof localStorage !== 'undefined') localStorage.setItem(QUALITY_STORE, q);
-    } catch (e) {}
-    _live.forEach((fb) => { try { fb.setQuality(q); } catch (e) {} });
-    return true;
+    // Live instances update via the shared-store listener registered
+    // below (works across backends).
+    return setTissueQuality(q);
   }
 
   // Backend probe for menus / diagnostics.

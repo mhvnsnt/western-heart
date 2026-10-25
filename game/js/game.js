@@ -26,6 +26,7 @@ async function gungakuAI() {
   return _GungakuAI;
 }
 import { audio } from './audio.js';
+import { voice } from './voice.js';
 import { music } from './music.js';
 import { getStage } from './stages.js';
 import { applyFighterProfile } from './customization-consumer.js';
@@ -428,7 +429,6 @@ export class Game {
               rec('surge');
               audio.soulSurge(this.p1.char.id);
               this.ui.surgeFlash(this.p1.char.surge?.color ?? this.p1.char.colors.trim, this.p1.char.surge?.accent ?? 0xffffff);
-              this.ui.surgeName(this.p1.char.surge?.name ?? 'SOUL SURGE');
             }
           }
           else if (act === 'dodge') { if (this.p1.tryDodge()) rec('dodge'); }
@@ -456,7 +456,10 @@ export class Game {
 
       // --- Stream 6: throw-lock resolution (break window expired) ---
       for (const atk of [this.p1, this.p2]) {
-        if (atk.state === 'throwing' && atk.lockT <= 0 && atk.lockMove) {
+        // Paired throws are NOT resolved here: their break window
+        // is the first frames of the pair clips and fighter.js
+        // _tickState advances them to throwExec/thrownExec.
+        if (atk.state === 'throwing' && !atk._throwPair && atk.lockT <= 0 && atk.lockMove) {
           const def = atk === this.p1 ? this.p2 : this.p1;
           const hpBefore = def.hp;
           const result = atk.completeThrow();
@@ -467,7 +470,7 @@ export class Game {
           }
           this.ui.throwBreakPrompt(false);
           if (result === 'ko') {
-            audio.ko(); audio.grunt(def.isPlayer ? 1.1 : 0.85);
+            audio.ko(); audio.grunt(def.isPlayer ? 1.1 : 0.85); voice.play(def.char && def.char.id, 'ko');
             this.arena.shake(0.6 * this.feel.shake, 0.45 * this.feel.shake);
             this._hitStop = 0.18 * this.feel.hitstop;
             this.hitfx.spawn('ko', def.root.position.x, 1.2, def.root.position.z,
@@ -476,7 +479,7 @@ export class Game {
             // over hitfx.spawn and would double-spawn the KO burst above).
             if (this.rage) this.rage.onHitKO(atk, def);
           } else if (result && result !== 'dodge') {
-            audio.grab(); audio.grunt(def.isPlayer ? 1.05 : 0.9);
+            audio.grab(); audio.grunt(def.isPlayer ? 1.05 : 0.9); voice.play(def.char && def.char.id, 'hit');
             this.arena.shake(0.45 * this.feel.shake, 0.28 * this.feel.shake);
             this._hitStop = 0.1 * this.feel.hitstop;
             this.hitfx.spawn('grab', def.root.position.x, 1.2, def.root.position.z,
@@ -631,8 +634,13 @@ export class Game {
         if (hb.move.isGrab && defender.onGround && defender.state !== 'thrown' &&
             defender.state !== 'throwing') {
           defender.startThrowLock(hb.move, attacker);
-          attacker.startThrowing(defender);
-          this.ui.throwBreakPrompt(defender.isPlayer, hb.move.throw_break || '1');
+          // Paired throw (startThrowLock bound the file pair):
+          // the attacker is already in 'throwing' with lockMove
+          // null — do NOT call startThrowing, which would
+          // overwrite the pair with the legacy lock. Legacy path
+          // only: startThrowing sets the 0.3 s break lock.
+          if (!attacker._throwPair) attacker.startThrowing(defender);
+          this.ui.throwBreakPrompt(defender.isPlayer, defender.throwBreakInput || hb.move.throw_break || '1');
           audio.grab();
           this.arena.shake(0.3 * this.feel.shake, 0.2 * this.feel.shake);
           this._hitStop = 0.06 * this.feel.hitstop;
@@ -663,7 +671,7 @@ export class Game {
           this._hitStop = 0.05 * this.feel.hitstop;
           this._spawnImpact(hb.x, hb.y, hb.z, 0xbfd4ff, 0.7);
         } else if (result === 'ko') {
-          audio.ko(); audio.grunt(defender.isPlayer ? 1.1 : 0.85);
+          audio.ko(); audio.grunt(defender.isPlayer ? 1.1 : 0.85); voice.play(defender.char && defender.char.id, 'ko');
           this.arena.shake(0.6 * this.feel.shake, 0.45 * this.feel.shake);
           this._hitStop = 0.18 * this.feel.hitstop;
           this.hitfx.spawn('ko', hb.x, hb.y, hb.z, { dirX: Math.sign(defender.root.position.x - attacker.root.position.x) || 1 });
@@ -682,7 +690,7 @@ export class Game {
           else if (attacker.attackName === 'grab') audio.grab();
           else if (isSurge) { /* surge sound played on startup */ }
           else audio.punch();
-          audio.grunt(defender.isPlayer ? 1.05 : 0.9);
+          audio.grunt(defender.isPlayer ? 1.05 : 0.9); voice.play(defender.char && defender.char.id, 'hit');
           // Tekken-tiered hitstop + shake: light < heavy < counter.
           this.arena.shake(
             (isCounter ? 0.5 : isGrab ? 0.45 : isHeavy ? 0.4 : 0.22) * this.feel.shake,
@@ -729,7 +737,6 @@ export class Game {
   surgePresentation(fighter) {
     audio.soulSurge(fighter.char.id);
     this.ui.surgeFlash(fighter.char.surge?.color ?? fighter.char.colors.trim, fighter.char.surge?.accent ?? 0xffffff);
-    this.ui.surgeName(fighter.char.surge?.name ?? 'SOUL SURGE');
   }
 
   /* ---------------- Round flow ---------------- */

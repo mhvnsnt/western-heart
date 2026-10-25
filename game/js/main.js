@@ -239,20 +239,16 @@ const ui = {
   /* V-System (owner 2026-10-22). All user-facing names are «name TBD»
      placeholders pending user approval — flagged, not final. */
   vTrigger() {
-    this.banner('V-TRIGGER «name TBD» — SOUL AWAKENED');
     this.surgeFlash(0xffd34d, 0xfff2b0);
   },
   vReversal() {
-    this.banner('V-REVERSAL «name TBD»');
     this.surgeFlash(0x4da6ff, 0xbfe0ff);
   },
   vShift() { this.surgeFlash(0x7df9ff, 0xd8fbff); },
   vShiftBreak() {
-    this.banner('V-SHIFT «name TBD» — BREAK!');
     this.surgeFlash(0xffffff, 0x7df9ff);
   },
   vParry() {
-    this.banner('V-SKILL PARRY «name TBD»');
     this.surgeFlash(0x9fd8ff, 0xe8f6ff);
   },
   matchOver(playerWon) {
@@ -619,11 +615,20 @@ function randomEnemy(excludeId) {
    requires a gesture before AudioContext can start); the on/off
    switch lives in SETTINGS (the howto screen) and persists. */
 function unlockAudio() {
+  // TAP-FOR-AUDIO REMOVED (2026-10-24): no "TAP TO ENABLE SOUND" banner and
+  // no dedicated audio tap. The first real interaction — a menu, mode or
+  // fight tap, all of which already call unlockAudio() — supplies the
+  // browser's required user gesture. Audio on/off lives in Settings
+  // (menus.js SOUND toggle). Browsers still block sound before ANY
+  // gesture: that is platform policy, not a WH screen, so sound starts on
+  // the first tap the player already makes, never on a tap invented for
+  // audio. The banner div is removed from game/index.html alongside this.
+  // music.unlock() is preserved from the merged music-rotation lane
+  // (PR #1030): removing the banner must not remove the music unlock.
   audio.unlock();
   music.unlock();
 }
 
-document.body.addEventListener('pointerdown', unlockAudio, { once: true });
 
 /* SETTINGS sound toggle: persists in localStorage, applies on boot
    before any gesture, and gates both the procedural engine and the
