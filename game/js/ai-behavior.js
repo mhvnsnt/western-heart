@@ -87,7 +87,11 @@ export function buildFighterBT() {
 }
 
 // U9 — strategy (WHAT to do) separate from execution (WHEN/HOW).
-// Pure functions, deterministic, CPU-cheap: no GPU needed.
+// Pure functions, deterministic, evaluated per-frame on device.
+// The batch training / evaluation that FEEDS the pool (match
+// batches, style win-rates at scale) is GPU-notebook work — see
+// tools/gpu-lane/ (rig + creation batches queue first; AI-pool
+// batch evaluation queues with them, coordinator lane).
 export function chooseStrategy(state) {
   // state: { hp (0..1), meter (0..1), distance ('close'|'mid'|'far'),
   //   foeHp (0..1), style ('aggressive'|'balanced'|'defensive') }
