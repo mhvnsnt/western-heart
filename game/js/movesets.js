@@ -532,6 +532,12 @@ export class TekkenBuffer {
      window.WH_INPUT_RESOLVER='legacy'. Test: test/input-determinism.test.mjs (CI). */
   _pressV2(input, ctx, ms) {
     const has = (n) => (resolveMoveKey(this.fighterId, n) ? n : null);
+    // Soul Urge lane (T8 Heat), as in _pressLegacy: while the urge gauge is live, 2+3 is the
+    // Urge Burst (fresh gauge) or the Urge Smash (urging) before any normal move on the chord.
+    if (input === '2+3') {
+      if (ctx.urgeOn) { const sm = has('US.2+3'); if (sm) return this._recordMove(sm); }
+      else if (ctx.urgeAvailable) { const bu = has('UB.2+3'); if (bu) return this._recordMove(bu); }
+    }
     const dir = this.lastDir && this.lastDir !== 'n' ? this.lastDir : '';
     const withDir = dir ? `${dir}+${input}` : input;
     const holdDir = dir ? `${dir.toUpperCase()}+${input}` : null;
@@ -560,6 +566,8 @@ export class TekkenBuffer {
     for (const sp of ctx.soulStates || []) prefixes.push(sp + '.'); // pt217u soul systems
     if (ctx.stance) prefixes.push(ctx.stance + '.');
     if (ctx.rage) prefixes.push('R.');
+    // Rage lane (T7), as in _pressLegacy: the rage drive lives on 3+4 while raging (synthesized RD.).
+    if (ctx.rage) prefixes.push('RD.');
     if (ctx.backturned) prefixes.push('BT.');
     if (ctx.sidestep) prefixes.push('SS.');
     if (ctx.crouching) prefixes.push('FC.');
