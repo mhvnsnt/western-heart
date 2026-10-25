@@ -104,6 +104,19 @@
       ],
       "note": "Vessel cards (portrait + name + style + reincarnation reason) follow the T7 select-card structure (T7-UI-LAYOUT.md: 96x148 portrait cards, number bottom-right). CONTENT is Western Heart canon, not Tekken: Nine Souls death-and-rebirth (CANON.md) — death is not failure, the Trial picks vessels from how you fought, forces carry over. No Tekken equivalent is claimed for the mechanic."
     },
+    "screen-replays": {
+      "status": "sourced",
+      "sources": [
+        "gre:teardown/tekken7/ui/flash/SW_UI_PauseMenu_Replay/Cursor_Sub.png",
+        "gre:teardown/tekken7/ui/flash/SW_UI_PauseMenu_Replay/NavigationBar_Waku.png"
+      ],
+      "files": [
+        "game/js/replay.js",
+        "game/js/training.js",
+        "game/js/replay-codec.js"
+      ],
+      "note": "Replay Theater: recorded versus/arcade fights (inputs + snapshots, not video) with slow-mo, frame-step and camera orbit — Tekken replay UI sources"
+    },
     "screen-result": {
       "status": "sourced",
       "sources": [

@@ -378,6 +378,10 @@
     <div id="mode-badge" class="mode-badge" style="display:none"></div>
     <button id="training-quit" class="training-quit" style="display:none">✕ QUIT</button>
     <button id="movelist-btn" class="training-quit" style="display:none">☰ MOVES</button>
+    <!-- Worker 29: Gungaku fight lab toggle (training mode) -->
+    <button id="gungaku-btn" class="training-quit" style="display:none">⚙ LAB</button>
+    <!-- Worker 29: replay badge (replay viewer) -->
+    <div id="replay-badge" class="mode-badge" style="display:none">▶ REPLAY</div>
     <div class="hud-top">
       <!-- Player health -->
       <div class="fighter-status left">
@@ -460,9 +464,61 @@
     <div class="panel movelist-panel">
       <h2 id="movelist-title">MOVE LIST</h2>
       <p id="movelist-sub" class="stage-sub"></p>
+      <p class="ml-legend">startup / active / recovery — frames @60fps</p>
       <div id="movelist-groups" class="movelist-groups"></div>
       <div class="menu-buttons">
         <button class="btn-primary" data-action="close-movelist">BACK</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Worker 29: GUNGAKU 軍楽 fight lab panel (training mode) -->
+  <div id="gungaku" class="gungaku" style="display:none">
+    <div class="gk-title">GUNGAKU 軍楽 · FIGHT LAB</div>
+    <div class="gk-row"><span class="gk-label">DUMMY</span>
+      <button data-dummy="stand" class="on">STAND</button>
+      <button data-dummy="crouch">CROUCH</button>
+      <button data-dummy="block">BLOCK</button>
+      <button data-dummy="jump">JUMP</button>
+    </div>
+    <div class="gk-row"><span class="gk-label">RECORD</span>
+      <button id="gk-rec">● REC</button>
+      <button id="gk-play">▶ PLAY</button>
+      <button id="gk-stop">■ STOP</button>
+    </div>
+    <div class="gk-row">
+      <button id="gk-hitbox">HITBOX: OFF</button>
+      <button id="gk-cam">CAM: FIGHT</button>
+      <button id="gk-reset">RESET POS</button>
+    </div>
+    <div class="gk-framedata" id="gk-framedata"></div>
+    <div class="gk-hint">T panel · V hitbox · R reset</div>
+  </div>
+
+  <!-- Worker 29: replay viewer transport -->
+  <div id="replay-bar" class="replay-bar" style="display:none">
+    <button id="rp-play" title="play/pause (Space)">⏸</button>
+    <button data-speed="0.25" title="quarter speed">0.25×</button>
+    <button data-speed="0.5" title="half speed">0.5×</button>
+    <button data-speed="1" class="on" title="normal speed">1×</button>
+    <button data-speed="2" title="double speed">2×</button>
+    <button id="rp-back" title="step back 1 frame (,)">−1F</button>
+    <button id="rp-step" title="step forward 1 frame (.)">+1F</button>
+    <button id="rp-restart" title="restart replay">↺</button>
+    <button id="rp-cam" title="free camera (C)">CAM: FIGHT</button>
+    <input id="rp-seek" type="range" min="0" max="100" value="0" title="scrub round" />
+    <span id="rp-time">R1/1 0:00 / 0:00</span>
+    <button id="rp-exit" title="exit replay (Esc)">✕ EXIT</button>
+  </div>
+
+  <!-- Worker 29: replay theater (library) -->
+  <section id="screen-replays" class="screen">
+    <div class="panel replay-panel">
+      <h2>REPLAY THEATER</h2>
+      <p class="stage-sub">Every versus &amp; arcade fight is recorded — inputs + snapshots, not video. Watch in slow-mo, step frame-by-frame, orbit the camera.</p>
+      <div id="replay-list" class="replay-list"></div>
+      <div class="menu-buttons">
+        <button class="btn-ghost" data-action="back-menu">MAIN MENU</button>
       </div>
     </div>
   </section>
@@ -528,6 +584,8 @@
       <div class="menu-buttons">
         <button class="btn-primary" data-action="rematch">REMATCH</button>
         <button class="btn-ghost" data-action="back-select">CHANGE FIGHTER</button>
+<button class="btn-ghost" data-action="replays">REPLAYS</button>
+
         <button class="btn-ghost" data-action="back-menu">MAIN MENU</button>
       </div>
     </div>
