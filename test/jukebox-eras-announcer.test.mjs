@@ -110,9 +110,9 @@ ok(isPlayableTrack({ file: 'x.mp3', status: 'pending-download' }) === false &&
   'playability: pending-download excluded, pending-file listed, fileless excluded');
 // Shipped library: pending slots still data-only, cape tracks present.
 const shippedPending = tracks.filter((t) => t.status === 'pending-download');
-ok(shippedPending.length === 5 && shippedPending.every((t) => t.file === null && t.remote === null),
-  'shipped library: exactly 5 pending-download slots, all fileless');
-ok(tracks.length === 52, 'shipped library: 52 tracks after cape 8');
+ok(shippedPending.length === 7 && shippedPending.every((t) => t.file === null && t.remote === null),
+  'shipped library: exactly 7 pending-download slots, all fileless (5 tekken + 2 loyalty-freak followup)');
+ok(tracks.length === 54, 'shipped library: 54 tracks after cape 8 + loyalty-freak followup 2');
 
 // ---- 3. Announcer events ----
 console.log('== announcer events ==');

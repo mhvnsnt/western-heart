@@ -575,6 +575,12 @@ The Kuma replacement — white bone dragon/kaiju (Godzilla + SkullGreymon + Char
 - Display-name mapping: internal ID `kuma` → display name "Gashadokuro". The roster dir and all plumbing keep the internal ID `kuma`; it is never renamed. The game layer resolves the display name from the ID.
 - Canon (recorded as stated; do not invent further): connected to ZUI — Zui fears/respects him, looks up to him like a protector/monster. Kaiju/yokai/spirit monster.
 - Note: Aotsuki/Aokami are Panda's name candidates and do NOT apply to the Kuma replacement. Gashadokuro is the Kuma replacement only.
+## Scimitar Attire 1 — pauldron-blade design + canon (user directive 2026-10-22, worker 77)
+- **DESIGN (user's words):** Shoulder pauldron on his RIGHT shoulder, comes down across his chest to the left like a cross, past the rib. A scimitar blade is attached to the armor.
+- **CANON (user's words):** The pauldron+blade is attached to his body and soul — he would DIE if he removed it. He can't separate the sword from the pauldron. He fights using the blade's positioning as part of his movements. The blade is positioned so it doesn't interfere with his other moves (not a hitbox problem — it's part of his style).
+- **FUTURE (user):** May get another sword later, or attach different gear via the creation suite. The pauldron-blade is PERMANENT.
+- **MOVESET:** Shaheen's moves (Shaheen already claimed for Scimitar — no new claim).
+- **ARCHIVE:** Tripo model `scimitar-a1-fantasy-warrior.glb` (24,166,404 bytes) → `roster/scimitar/attires/attire1/source/` + manifest.json. Immutable-original tag `scimitar-a1-original` ("Restore point: these bytes never change"). Archive-only: unrigged static, NOT wired into MODEL_URLs. Full record: `docs/research/SCIMITAR-ATTIRE1-DESIGN-CANON-2026-10-22.md`.
 
 ## Free pulls + free GPU (user directives 2026-10-24 19:50 + 19:55 CDT)
 
