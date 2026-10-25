@@ -106,6 +106,13 @@ export const MOVESET_IDS = [
   // game/assets/movesets/ryusan.json) + TOBI (Hwoarang T3 kit,
   // game/assets/movesets/tobi.json). Canon: roster/mina-ashido + roster/miruko.
   'ryusan', 'tobi',
+  // Landing wave 3 (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md): the last
+  // three audit fighters whose pieces are complete — GASHADOKURO (Kuma's
+  // proprietary successor; gashadokuro.json = the T3 Kuma bank as his own
+  // file), AOTSUKI (Panda's proprietary successor; aotsuki.json rides the
+  // same T3 bear bank, proxy-flagged in-file), SILVERTONGUE (Lili re-owned;
+  // silvertongue.json = her full kit authored as her own file).
+  'gashadokuro', 'aotsuki', 'silvertongue',
 ];
 
 const _movesets = {};
@@ -195,13 +202,22 @@ const MOTION_DIRS = {
 
 /* DECODED T3 INPUT TIMING (tools/moveset-merge/t3_input_tables.py -> t3_input_tables.json):
    motion windows come from the USA EXE sequence tables (frames), the dash from FUN_8002CB08
-   (direction, neutral, direction within 0x13 frames), history = 60 one-frame entries. */
+   (direction, neutral, direction within 0x13 frames), history = 60 one-frame entries.
+   TIMEBASE (input-timing fix 2026-10-24): every frame count here is a T3 frame of 1/60 s, but
+   the fight loop ticks at FIXED_DT = 1/120 (game.js) and fed one history entry per tick, so each
+   window was half as long as decoded (qcf 208 ms instead of 417, f,f ~160 ms, "held" after 67 ms
+   instead of 133). Now noteDirection(dir, dt) stores each entry's length in frames (dt * 60) and
+   the history walks below measure TIME in frames, not entries, at any tick rate. A call without
+   dt is one whole frame (tests / tools feed the history frame by frame). */
+const INPUT_FPS = 60;      // T3 frames per second: the unit of every frame constant here
 let DOUBLE_TAP_BUDGET = 0x13;
 let DASH_FRAMES = { 'f,f': 30, 'b,b': 32 }; // decoded: every bank's dash row is 30 frames, backdash 30-35
-const HIST_LEN = 60;
+const HIST_FRAMES = 60;    // history span in frames (fight_sim HISTORY)
+const HIST_LEN = 512;      // ring entries: HIST_FRAMES of time at any tick rate up to ~500 Hz
+const T_EPS = 1e-6;        // float slack when summing entry lengths
 const MOTION_HOLD = 4; // v2: final motion step held this long = capital spelling (f,f,F)
-const HOLD_FRAMES = 8;
-const STRING_PENDING = 800; // v2: ms a partial string stays open (legacy continuation window) // v2: a direction held this long reads as the HELD spelling (D/F+2)
+const HOLD_FRAMES = 8; // v2: a direction held this long reads as the HELD spelling (D/F+2)
+const STRING_PENDING = 1500; // v2: ms a partial string stays open (legacy continuation window; batch 2026-10-24: 800 -> 1500 for touch cadence)
 let _seqWindows = null; // 'd,d/f,f' -> frames (directions without neutral steps)
 export function setInputTables(t) {
   if (!t) return;
@@ -383,16 +399,21 @@ export class TekkenBuffer {
     this.lastDir = 'n';
     this.lastMove = null;  // notation of last executed attack
     this.lastMoveT = 0;
-    // T3 input history: one facing-relative direction per fixed 1/60 s step (game.js calls
-    // noteDirection every update), 60 entries, newest at this.hi (fight_sim HISTORY / HIST_LEN).
+    // T3 input history: one facing-relative direction per fixed step (game.js calls
+    // noteDirection every update with its dt), newest at this.hi. hdur[i] = that entry's length
+    // in 60 Hz frames (0.5 at the 1/120 tick); the walks sum it, so the decoded windows
+    // (fight_sim HISTORY = 60 frames) stay real-time whatever the tick rate.
     this.hist = new Array(HIST_LEN).fill('n');
+    this.hdur = new Array(HIST_LEN).fill(1);
     this.hi = 0;
   }
 
-  /** Feed the current facing-relative direction (call when it changes). */
-  noteDirection(dir) {
+  /** Feed the facing-relative direction for one fixed step of `dt` seconds (game.js passes its
+      tick). Without dt the entry is one 60 Hz frame (tests / tools feed frame by frame). */
+  noteDirection(dir, dt) {
     this.hi = (this.hi + 1) % HIST_LEN;
     this.hist[this.hi] = dir || 'n';
+    this.hdur[this.hi] = dt > 0 ? Math.round(dt * INPUT_FPS * 1e6) / 1e6 : 1;
     // T3 enters the dash row on the frame double_tap matches; a button during that row is a
     // dash move (f,F+2). The latch is WALL-CLOCK (decoded row = 30f @60fps = 500ms):
     // a step-counted latch lasts seconds on slow devices and misfires dash moves on
@@ -412,28 +433,29 @@ export class TekkenBuffer {
   _prev(i) { return i > 0 ? i - 1 : HIST_LEN - 1; }
 
   /** T3 double tap (FUN_8002CB08 / FUN_8002CBF0, fight_sim.double_tap): the newest frame is
-      `dir`, the frame before it neutral, then within DOUBLE_TAP_BUDGET frames an earlier `dir`. */
+      `dir`, the frame before it neutral, then within DOUBLE_TAP_BUDGET frames an earlier `dir`.
+      T3 spends the budget on every neutral frame after the first and every frame of the first
+      tap after its first: (neutral - 1) + (first tap - 1) < budget, measured here in time. */
   _doubleTap(dir) {
-    const h = this.hist; let i = this.hi;
-    if (h[i] !== dir) return false;
-    let j = this._prev(i);
-    if (h[j] !== 'n') return false;
-    let budget = DOUBLE_TAP_BUDGET, k = j;
-    for (;;) {
-      k = this._prev(j);
-      const d = h[k];
-      if (d !== 'n') { if (d !== dir) return false; break; }
-      budget--; j = k;
-      if (budget <= 0) break;
+    const h = this.hist, w = this.hdur; let k = this.hi;
+    if (h[k] !== dir) return false;
+    k = this._prev(k);
+    if (h[k] !== 'n') return false;
+    let budget = DOUBLE_TAP_BUDGET + 2 - w[k]; // +2: the first neutral and first tap frames are free
+    for (let n = 2; ; n++) {
+      if (budget <= T_EPS || n >= HIST_LEN) return false;
+      k = this._prev(k);
+      if (h[k] !== 'n') { if (h[k] !== dir) return false; break; }
+      budget -= w[k];
     }
-    if (budget <= 0) return false;
-    for (;;) {
+    for (let n = 0; ; n++) { // k = newest entry of the first tap
+      budget -= w[k];
+      if (budget <= T_EPS) return false;
       const m = this._prev(k);
-      if (h[m] !== dir) break;
-      budget--; k = m;
-      if (budget <= 0) break;
+      if (h[m] !== dir || n >= HIST_LEN) break;
+      k = m;
     }
-    return budget > 0;
+    return true;
   }
 
   /** T3 InputSequenceMatch (0x8002CCD8, fight_sim.sequence_match) over the direction history:
@@ -444,11 +466,11 @@ export class TekkenBuffer {
     const h = this.hist; let k = steps.length - 1;
     if (h[this.hi] !== steps[k]) return false;
     k--; if (k < 0) return true;
-    let want = steps[k], pos = this.hi;
-    while (window >= 1) {
-      pos = this._prev(pos);
+    let want = steps[k], pos = this.hi, t = 0;
+    for (let n = 1; n < HIST_LEN; n++) {
+      t += this.hdur[pos]; pos = this._prev(pos); // t = frames from entry `pos` to the newest
+      if (t > window + T_EPS) break;
       if (h[pos] === want) { k--; if (k < 0) return true; want = steps[k]; }
-      window--;
     }
     return false;
   }
@@ -514,13 +536,16 @@ export class TekkenBuffer {
     const withDir = dir ? `${dir}+${input}` : input;
     const holdDir = dir ? `${dir.toUpperCase()}+${input}` : null;
     const now = performance.now();
-    const contOk = ctx.inMove !== undefined ? ctx.inMove : (now - this.lastMoveT < 800);
+    const contOk = ctx.inMove !== undefined ? ctx.inMove : (now - this.lastMoveT < STRING_PENDING);
     // String cursor: the notation typed so far — the last move, or a pending partial string
     // (an intermediate step that is not a standalone move) for STRING_PENDING ms.
     const pendingOk = this._strPath && now - this._strPathT < STRING_PENDING;
     const bases = [];
-    if (pendingOk) bases.push(this._strPath);
-    if (this.lastMove && contOk) bases.push(this.lastMove);
+    // BATCH: strip ~shadow suffixes here too (see continuation()) — a pending
+    // path or last move of '1~t8.king' must also try '1' as its chain base.
+    const strip = (b) => { const t = b ? b.indexOf('~') : -1; return t > 0 ? b.slice(0, t) : null; };
+    if (pendingOk) { bases.push(this._strPath); const s = strip(this._strPath); if (s) bases.push(s); }
+    if (this.lastMove && contOk) { bases.push(this.lastMove); const s = strip(this.lastMove); if (s) bases.push(s); }
     for (const base of bases) {
       for (const sep of [',', '~', ':']) {
         const cands = dir ? [`${base}${sep}${withDir}`, `${base}${sep}${holdDir}`] : [`${base}${sep}${input}`];
@@ -573,10 +598,10 @@ export class TekkenBuffer {
   }
 
   /** Frames the current direction has been held (newest history run). */
-  _heldFrames() {
-    const h = this.hist, d = h[this.hi]; let n = 0, i = this.hi;
-    while (n < HIST_LEN && h[i] === d) { n++; i = this._prev(i); }
-    return n;
+  _heldFrames() { // in 60 Hz frames of time (entry lengths summed), capped at HIST_FRAMES
+    const h = this.hist, d = h[this.hi]; let f = 0, i = this.hi;
+    for (let n = 0; n < HIST_LEN && h[i] === d && f < HIST_FRAMES - T_EPS; n++) { f += this.hdur[i]; i = this._prev(i); }
+    return Math.round(f * 1e6) / 1e6;
   }
 
   /** V2 motion match: like _seqMatch, but two identical consecutive steps ('d/f,d/f', 'f,f,F')
@@ -586,13 +611,21 @@ export class TekkenBuffer {
     const steps = mo.dirs; // inner n's are real steps (d/b,n,f != d/b,f); leading/trailing were stripped
     const h = this.hist; let pos = this.hi;
     let k = steps.length - 1;
+    // Window in frames of TIME, counted from the newest entry like T3's sequence match. For a
+    // neutral-ending motion ('f,f,n,1+2') the trailing neutral counts too: an uncounted skip let
+    // an f,f from seconds ago turn a plain 1+2 into the motion move.
+    const window = motionWindow(mo.dirs);
+    let t = 0;
     if (!mo.neutral) { if (h[pos] !== steps[k]) return false; }
-    else { while (h[pos] === 'n') { pos = this._prev(pos); if (pos === this.hi) return false; } if (h[pos] !== steps[k]) return false; }
-    let window = motionWindow(mo.dirs);
+    else {
+      while (h[pos] === 'n') { t += this.hdur[pos]; pos = this._prev(pos); if (pos === this.hi || t > window + T_EPS) return false; }
+      if (h[pos] !== steps[k]) return false;
+    }
     let cur = steps[k], left = false;
     k--;
-    while (k >= 0 && window >= 1) {
-      pos = this._prev(pos); window--;
+    for (let n = 1; k >= 0 && n < HIST_LEN; n++) {
+      t += this.hdur[pos]; pos = this._prev(pos);
+      if (t > window + T_EPS) break;
       const d = h[pos];
       if (d !== cur) left = true;
       if (d === steps[k] && (steps[k] !== cur || left) && (d !== cur || left)) {
@@ -619,7 +652,7 @@ export class TekkenBuffer {
     // 1) string continuation. In a fight (ctx.inMove defined) T3 rules: only while the previous
     //    hit is still playing (Fighter.tryAttack buffers it into that move). Legacy callers
     //    without ctx (tests) keep the old 800 ms window.
-    const contOk = ctx.inMove !== undefined ? ctx.inMove : (performance.now() - this.lastMoveT < 800);
+    const contOk = ctx.inMove !== undefined ? ctx.inMove : (performance.now() - this.lastMoveT < STRING_PENDING);
     if (this.lastMove && contOk) {
       for (const sep of [',', '~', ':']) {
         for (const c of [`${this.lastMove}${sep}${withDir}`, `${this.lastMove}${sep}${input}`]) {
@@ -712,9 +745,19 @@ export class TekkenBuffer {
   continuation(input) {
     if (!this.lastMove) return null;
     const dir = this.lastDir && this.lastDir !== 'n' ? this.lastDir : '';
-    for (const sep of [',', '~', ':']) {
-      for (const c of [dir ? `${this.lastMove}${sep}${dir}+${input}` : null, `${this.lastMove}${sep}${input}`]) {
-        if (c && resolveMoveKey(this.fighterId, c)) return c;
+    // BATCH STRING FIX (2026-10-24): slots redirect singles to ~shadow keys
+    // ('1' -> '1~t8.king' for MOD damage), so lastMove carries the shadow suffix
+    // and '1~t8.king,2' never exists — the chain broke at step 1 and the user
+    // could only do 1-2 (two separate jabs, never the '1,2' string). Try the
+    // stripped base too, so '1' + '2' -> '1,2' and '1,2' + '1' -> '1,2,1'.
+    const bases = [this.lastMove];
+    const tilde = this.lastMove.indexOf('~');
+    if (tilde > 0) bases.push(this.lastMove.slice(0, tilde));
+    for (const base of bases) {
+      for (const sep of [',', '~', ':']) {
+        for (const c of [dir ? `${base}${sep}${dir}+${input}` : null, `${base}${sep}${input}`]) {
+          if (c && resolveMoveKey(this.fighterId, c)) return c;
+        }
       }
     }
     return null;

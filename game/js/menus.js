@@ -13,14 +13,20 @@
      buttons). See game/js/lazy.js.
    ============================================================ */
 import { audio } from './audio.js';
-import { lazy } from './lazy.js';
+import { lazy, preloadNextFight } from './lazy.js';
+import { voice } from './voice.js';
 import { initMainMenu } from './mainmenu.js';
+import { initVersusSetup } from './versus-setup.js';
 
 /* ---------------- Settings ---------------- */
 const SETTINGS_KEY = 'wh_settings_v1';
 export const DEFAULT_SETTINGS = {
   master: 0.9, music: 0.28, sfx: 0.85,
   muted: false, quality: 'high', hints: true,
+  soundOn: true, jukebox: 'default',
+  // Lane 3 UI gaps (Gap 14 / Gap 21): T7 5.10 tournament lock +
+  // streaming mode toggles, in-fight frame overlay toggle.
+  frameOverlay: false, tournamentLock: false, streamingMode: false,
 };
 export function getSettings() {
   try {
@@ -29,11 +35,15 @@ export function getSettings() {
 }
 export function applySettings() {
   const s = getSettings();
+  // SOUND toggle (2026-10-24, tap-for-audio removal): audio on/off lives
+  // in Settings, not behind a separate tap. soundOn:false silences exactly
+  // like muted; both keys are honoured so older saves keep working.
+  const off = s.muted || s.soundOn === false;
   if (audio.ctx) {
-    if (audio.master) audio.master.gain.value = s.muted ? 0 : s.master;
-    if (audio.setMusicVolume) audio.setMusicVolume(s.muted ? 0 : s.music);
-    else if (audio.musicGain) audio.musicGain.gain.value = s.muted ? 0 : s.music;
-    if (audio.sfxGain) audio.sfxGain.gain.value = s.muted ? 0 : s.sfx;
+    if (audio.master) audio.master.gain.value = off ? 0 : s.master;
+    if (audio.setMusicVolume) audio.setMusicVolume(off ? 0 : s.music);
+    else if (audio.musicGain) audio.musicGain.gain.value = off ? 0 : s.music;
+    if (audio.sfxGain) audio.sfxGain.gain.value = off ? 0 : s.sfx;
   }
   applyQuality(s.quality);
 }
@@ -120,6 +130,44 @@ export function showVs(pChar, eChar, stageName, modeLabel) {
     o.querySelector('.wh-vs-inner').after(st);
   }
   st.textContent = stageName || '';
+  // Lane 3 UI gaps (Gap 15): rank / W-L / connection meta under the
+  // VS cards. Rank resolves async via lazy.ranks (same store mainmenu
+  // reads); W-L is the versusWL record modes.js writes on every
+  // versus bout. Local bouts show LOCAL BOUT — no bars invented.
+  let meta = o.querySelector('.wh-vs-meta');
+  if (!meta) { meta = document.createElement('div'); meta.className = 'wh-vs-meta'; o.appendChild(meta); }
+  meta.textContent = '';
+  (async () => {
+    try {
+      const { vsMetaLines, readVersusWL } = await import('./ui-gaps.js');
+      const rec = JSON.parse(localStorage.getItem('wh_records') || '{}');
+      let rankName = null;
+      try {
+        const r = await lazy.ranks(); await r.initRanks();
+        const store = JSON.parse(localStorage.getItem('wh_ranks') || '{}');
+        let best = -1;
+        for (const track of ['offline', 'online']) {
+          const tt = store[track] || {};
+          for (const id of Object.keys(tt)) { const fr = tt[id]; if (fr && fr.tierId) best = Math.max(best, r.tierIndexById(fr.tierId)); }
+        }
+        if (best >= 0) rankName = r.displayName(r.tierAt(best));
+      } catch { /* rank stays blank */ }
+      const wl = readVersusWL(rec);
+      meta.textContent = vsMetaLines({ rankName, wins: wl ? wl.w : null, losses: wl ? wl.l : null, connection: null }).join(' · ');
+      // Lane 3 UI gaps (Gap 15, versus-banter UI side): banter data
+      // existed (versus-banter.js) but no screen rendered it. The VS
+      // screen now shows the picked exchange under the cards.
+      try {
+        const vb = await import('./versus-banter.js');
+        const pick = await vb.pickVersusBanter(pChar && pChar.id, eChar && eChar.id);
+        if (pick && pick.kind === 'banter' && pick.variant && pick.variant.beats) {
+          let ban = o.querySelector('.wh-vs-banter');
+          if (!ban) { ban = document.createElement('div'); ban.className = 'wh-vs-banter'; o.appendChild(ban); }
+          ban.textContent = pick.variant.beats.map((b) => `${String(b.speaker || '').toUpperCase()}: ${b.line}`).join('  ·  ');
+        }
+      } catch { /* banter stays blank, VS screen still works */ }
+    } catch { /* meta stays blank, VS screen still works */ }
+  })();
   o.classList.remove('hide');
   o.classList.add('show');
 }
@@ -217,7 +265,14 @@ export function openOptions() {
   sheet.insertBefore(segRow('GRAPHICS QUALITY', 'quality',
     [['low', 'LOW'], ['med', 'MED'], ['high', 'HIGH']]), back);
   sheet.insertBefore(toggleRow('MUTE ALL', 'muted'), back);
+  sheet.insertBefore(toggleRow('SOUND', 'soundOn'), back);
+  sheet.insertBefore(segRow('JUKEBOX', 'jukebox',
+    [['default', 'STAGE ROTATION'], ['cape-jones', 'CAPE JONES'], ['nosferatu', 'NOSFERATU']]), back);
   sheet.insertBefore(toggleRow('CONTROL HINTS', 'hints'), back);
+  // Lane 3 UI gaps (Gap 14 / Gap 21).
+  sheet.insertBefore(toggleRow('FRAME DATA OVERLAY (IN FIGHT)', 'frameOverlay'), back);
+  sheet.insertBefore(toggleRow('TOURNAMENT LOCK (NO FAVORITES / ATTIRE)', 'tournamentLock'), back);
+  sheet.insertBefore(toggleRow('STREAMING MODE (FIGHTER NAME, NO PLAYER ID)', 'streamingMode'), back);
   o.classList.add('show');
   audio.uiClick && audio.uiClick();
 }
@@ -445,6 +500,64 @@ export function setModeTag(text) {
 }
 
 /* ---------------- Hooks ---------------- */
+/* ---------------- Announcer + rematch preload (2026-10-24) --------
+   voice.announce() existed but had ZERO call sites — round/KO calls never
+   played. Wrapped here (same pattern as hookStartMatch) so game.js — which
+   the music-rotation lane touches — is not edited. Every call is
+   fire-and-forget and guarded: a voice failure can never break a round.
+   Announcer clips are subtitle-only placeholders until the proprietary
+   announcer is recorded (game/data/voices/announcer.json; the exact line
+   list is in docs/decisions/2026-10-24-audio-jukebox-streaming.md).
+   Round call: 'final-round' when the match is at match point (the same
+   _musicFinal flag the music lane sets in _startRound), else round-N.
+   'fight' fires on the same 1100 ms beat as the FIGHT! banner, guarded by
+   roundState so a paused/ended round never announces. End call: both
+   down -> double-ko; timer at 0 -> time-up (the loop zeroes the timer
+   before _timeOut); otherwise the winner at full HP -> perfect, else ko.
+   Match end: you-win only when the player (P1) took the match — the
+   manifest has no you-lose line, so a loss stays silent. */
+function hookAnnouncer(g) {
+  if (!g || g._whAnnouncerHooked) return;
+  g._whAnnouncerHooked = true;
+  try { voice.unlock(); } catch (e) {}
+  const origStart = g._startRound.bind(g);
+  g._startRound = function () {
+    const r = origStart();
+    try {
+      voice.announce(g._musicFinal ? 'final-round' : `round-${g.round}`);
+      setTimeout(() => {
+        try { if (g.running && !g.paused && g.roundState === 'fight') voice.announce('fight'); } catch (e) {}
+      }, 1100);
+    } catch (e) {}
+    return r;
+  };
+  const origEnd = g._endRound.bind(g);
+  g._endRound = function () {
+    const was = g.roundState;
+    const r = origEnd();
+    try {
+      if (was === 'fight' && g.roundState === 'over') {
+        const p1Down = g.p1.hp <= 0, p2Down = g.p2.hp <= 0;
+        if (p1Down && p2Down) voice.announce('double-ko');
+        else if (g.timer <= 0) voice.announce('time-up');
+        else {
+          const winner = p1Down ? g.p2 : g.p1;
+          voice.announce(winner.hp >= winner.maxHp ? 'perfect' : 'ko');
+        }
+      }
+    } catch (e) {}
+    return r;
+  };
+  if (typeof g._afterRound === 'function') {
+    const origAfter = g._afterRound.bind(g);
+    g._afterRound = function () {
+      const r = origAfter();
+      try { if (!g.running && g.wins.p1 > g.wins.p2) voice.announce('you-win'); } catch (e) {}
+      return r;
+    };
+  }
+}
+
 function hookStartMatch() {
   const g = window.__game;
   if (!g || g._whMenusHooked) return;
@@ -456,17 +569,24 @@ function hookStartMatch() {
       return st ? st.name : (g._stageName || '');
     } catch { return g._stageName || ''; }
   };
+  let lastPair = null;
   g.startMatch = function (pChar, eChar, stageId, opts = {}) {
     hideLoading();
     const modeLabel = (opts.mode || '').toUpperCase().replace('HEARTMIND', 'THE HEART AND MIND INSIDE');
     showVs(pChar, eChar, stageNameFor(stageId), modeLabel);
+    // STREAMING (2026-10-24): while the VS screen breathes, warm the
+    // rematch pair (see lazy.preloadNextFight). The outro preload below
+    // warms the same pair again after leaveFight, so REMATCH rarely waits.
+    lastPair = [pChar, eChar];
+    try { preloadNextFight([pChar, eChar]).catch(() => {}); } catch (e) {}
+    hookAnnouncer(g);
     const r = orig(pChar, eChar, stageId, opts);
     setModeTag(modeLabel || '');
     setTimeout(hideVs, 2200); // VS breathes over the ROUND 1 intro
     return r;
   };
   const origLeave = g.leaveFight.bind(g);
-  g.leaveFight = function () { setModeTag(''); hideVs(); hideLoading(); return origLeave(); };
+  g.leaveFight = function () { setModeTag(''); hideVs(); hideLoading(); if (lastPair) { try { preloadNextFight(lastPair).catch(() => {}); } catch (e) {} } return origLeave(); };
 }
 function hookConfirm() {
   const cf = document.getElementById('confirm-fighter');
@@ -526,7 +646,12 @@ export function initMenus(deps = {}) {
   buildOverlays();
   buildMenuButtons();
   initMainMenu(); // T8-style main menu controller (additive; no-ops if markup absent)
+  initVersusSetup(); // versus rules screen (additive; no-ops if markup absent)
   hookAudioUnlock();
+  // JUKEBOX (2026-10-24): install the pool wrapper once at boot. Dynamic
+  // import so the menu graph stays lean; a failed install leaves the
+  // default stage rotation untouched (never throws into boot).
+  try { import('./jukebox.js').then((m) => { try { m.installJukebox(); } catch (e) {} }).catch(() => {}); } catch (e) {}
   // Stream-4 mode controllers (standalone; they reuse Game patterns).
   // LOADSPEED: built on first tap via ensureHeartmind/ensureEpisodes —
   // not at boot. The card-tracking + confirm hooks are cheap and run now.
@@ -552,6 +677,9 @@ export function initMenus(deps = {}) {
     const h = document.getElementById('control-hints');
     if (h) h.classList.add('fade');
   }
+  // Lane 3 UI gaps: favorites bar, frame overlay, gallery/jukebox/
+  // replay screens (dynamic import — never blocks menu boot).
+  import('./ui-gaps.js').then((m) => m.initUiGaps()).catch(() => {});
 }
 
 /* Track char-card taps (capture phase) so standalone modes know the pick.

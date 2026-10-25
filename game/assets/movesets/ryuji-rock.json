@@ -298,6 +298,8 @@
       "knock": 2.0,
       "soulGain": 10,
       "anim_ref": "wh:ryuji-rock:sig:sand-kick",
+      "community_base": "game/assets/anim/oss/community/144_05.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "d/b+2"
       ],
@@ -483,6 +485,8 @@
       "knock": 6.5,
       "soulGain": 13,
       "anim_ref": "wh:ryuji-rock:sig:smackdown",
+      "community_base": "game/assets/anim/oss/community/144_28.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "P+K",
         "P",
@@ -2800,5 +2804,201 @@
     "d/f+1+2": 271,
     "f,f+1": 535
   },
-  "stance_after": {}
+  "stance_after": {},
+  "canon_moves": [
+    {
+      "name": "BRAHMA BULL LARIAT",
+      "input": "f,f+2",
+      "display_input": "f,f+RP2",
+      "input_original": "`f,f+2`",
+      "anim_ref": "wh:ryuji-rock:sig:brahma-bull-lariat",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "special",
+      "limb": "armR",
+      "damage": 19,
+      "startup_frames": 17,
+      "canon": true,
+      "canon_owner": "RYUJI-ROCK",
+      "properties": {
+        "stance": "standing",
+        "direction": "f",
+        "type": "strike",
+        "limb": null,
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "KNIFE SLASH",
+      "input": "f+1+2",
+      "display_input": "f+LP1+RP2",
+      "input_original": "`f+1+2`",
+      "anim_ref": "wh:ryuji-rock:sig:knife-slash",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "special",
+      "limb": "armR",
+      "damage": 15,
+      "startup_frames": 10,
+      "canon": true,
+      "canon_owner": "RYUJI-ROCK",
+      "properties": {
+        "stance": "standing",
+        "direction": "f",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "LAYIN' THE SMACKDOWN",
+      "input": "1+4",
+      "display_input": "LP1+RK4",
+      "input_original": "`P+K`",
+      "anim_ref": "wh:ryuji-rock:sig:smackdown",
+      "community_base": "game/assets/anim/oss/community/144_28.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 21,
+      "startup_frames": 18,
+      "canon": true,
+      "canon_owner": "RYUJI-ROCK",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "system_note": "System note: LP1+RK4 is also Reihou, but ONLY while the foe is in RAGE (otherwise the moveset LP1+RK4 plays). No in-game conflict outside foe-RAGE.",
+      "wiring": "existing entry"
+    },
+    {
+      "name": "PEOPLE'S ELBOW",
+      "input": "u/f+2",
+      "display_input": "u/f+RP2",
+      "input_original": "`u/f+2`",
+      "anim_ref": "wh:ryuji-rock:sig:peoples-elbow",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "special",
+      "limb": "armR",
+      "damage": 24,
+      "startup_frames": 20,
+      "canon": true,
+      "canon_owner": "RYUJI-ROCK",
+      "properties": {
+        "stance": "jumping",
+        "direction": "u/f",
+        "type": "strike",
+        "limb": "armR",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "SAND KICK",
+      "input": "d/b+2",
+      "display_input": "d/b+RP2",
+      "input_original": "`d/b+2`",
+      "anim_ref": "wh:ryuji-rock:sig:sand-kick",
+      "community_base": "game/assets/anim/oss/community/144_05.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "special",
+      "limb": "legR",
+      "damage": 9,
+      "startup_frames": 15,
+      "canon": true,
+      "canon_owner": "RYUJI-ROCK",
+      "properties": {
+        "stance": "crouching",
+        "direction": "d/b",
+        "type": "strike",
+        "limb": "armR",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "SERPENT SLASH",
+      "input": "qcf+1",
+      "display_input": "qcf+LP1",
+      "input_original": "`qcf+1`",
+      "anim_ref": "wh:ryuji-rock:sig:serpent-slash",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "special",
+      "limb": "armL",
+      "damage": 20,
+      "startup_frames": 13,
+      "canon": true,
+      "canon_owner": "RYUJI-ROCK",
+      "properties": {
+        "stance": "standing",
+        "direction": "qcf",
+        "type": "strike",
+        "limb": "armL",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "TONGUE OUT",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`S`",
+      "anim_ref": "wh:ryuji-rock:sig:tongue-out",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 0,
+      "startup_frames": 16,
+      "canon": true,
+      "canon_owner": "RYUJI-ROCK",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "ROCK'S DDT",
+      "input": "d/b,d/b+1+2",
+      "display_input": "d/b,d/b+LP1+RP2",
+      "anim_ref": "made:ryuji-rock:rock-s-ddt",
+      "method": "ADAPT",
+      "source": "ADAPT from King's DDT row (owner canon 2026-10-19); clip NOT yet authored",
+      "move_class": "throw",
+      "limb": "both",
+      "damage": 6,
+      "startup_frames": 12,
+      "canon": true,
+      "canon_owner": "RYUJI-ROCK",
+      "properties": {
+        "stance": "crouching",
+        "direction": "d/b",
+        "type": "grapple",
+        "limb": null,
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  }
 }

@@ -19,6 +19,10 @@ import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
 import { ATTIRE_CUSTOMIZATIONS } from './attire-customizations.js';
 // Material gate (every model, every load): game/js/material-runtime.js.
 import { resolveModelMaterials, assertModelUsable } from './material-runtime.js';
+// Lane 5: persistent Cache API for model bytes (see asset-cache.js).
+// A cache hit skips the network entirely; a miss stores the bytes
+// after a successful download. Never changes parse/ingest behavior.
+import { getCachedBuffer, putCachedBuffer } from './asset-cache.js';
 
 export const MODEL_URLS = {
   pantera: 'assets/models/pantera.glb',
@@ -180,6 +184,12 @@ export const MODEL_URLS = {
   'dxmmii-tripo': '../roster/dxmmii/attires/attire1/model-rigged.glb',
   'cyborg-x': 'assets/models/cyborg-x.glb',
   'cape-jones': 'assets/models/cape-jones.glb',
+  // CAPE JONES Attire 1 (rig QA 2026-10-23, muse/cape-jones-fight): the
+  // auto-rigged Round-2 build (49 bones, -Z facing, sides/knees OK), staged
+  // under his roster dir per convention. Byte-identical to
+  // assets/models/cape-jones.glb — no re-rig needed. See
+  // roster/cyborg-x/ATTIRE-SLOTS.md.
+  'cape-jones-attire1': '../roster/cyborg-x/attires/attire1/model-rigged.glb',
   // Bonus / music fighters and name-pending models (loadable, unassigned).
   mariposa: 'assets/models/mariposa.glb',
   // Mariposa Slot 1 — Butterfly Default (dedup 2026-10-22): owner-designated
@@ -363,12 +373,12 @@ export const MODEL_URLS = {
   // Unrigged static (1 mesh; rig widgets live in the .blend); k-NN auto-rig
   // from donor is the planned path.
   // Rigged 2026-10-23 (PR #780, 52-joint canonical skeleton, verified).
-  chatur: '../roster/rahkasa/attires/attire1/model-rigged.glb',
+  chatur: '../roster/rahkasa/attires/attire1/model-rigged-textured.glb',
   // POND (owner 2026-10-23): Raven's WH replacement — swamp boundary watcher,
   // found Dorowani as an egg. SmutBase intake (roster/tsuyu-asui/). Unrigged
   // static (9 meshes, clothing separate); k-NN auto-rig from donor is the planned path.
   // Rigged 2026-10-23 (PR #780, 52-joint canonical skeleton, verified).
-  pond: '../roster/tsuyu-asui/attires/attire1/model-rigged.glb',
+  pond: '../roster/tsuyu-asui/attires/attire1/model-rigged-textured.glb',
   // CHARGER Attire 2 (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   'charger-attire2': '../roster/charger/attires/attire2/model-rigged.glb',
@@ -460,8 +470,8 @@ export const MODEL_URLS = {
   // TOBI, the Escape Soul. Attire 1 = the SmutBase GLB (unrigged static; rig queued).
   // NOTE: roster/miruko/attires/attire1/model-rigged.glb landed on main
   // 2026-10-23 (PR #781, wave-1 rigging) — repoint key after rig validation (same finding as Ryusan).
-  tobi: '../roster/miruko/attires/attire1/model-rerig.glb',
-  'tobi-attire1': '../roster/miruko/attires/attire1/model-rerig.glb',
+  tobi: '../roster/miruko/attires/attire1/model-rerig-textured.glb',
+  'tobi-attire1': '../roster/miruko/attires/attire1/model-rerig-textured.glb',
 };
 
 /* ============================================================
@@ -871,6 +881,40 @@ if (globalThis.__WH_PRIVATE_ASSETS) {
   }
 }
 
+/* PRIVATE T7 skin textures (Yukihyo). Yukihyo's materials are T7
+   MI_CH_malebody_<part>_02_skin, which share the generic T7 male body UVs.
+   The diffuse maps (T_CH_male_<part>_D) are Bandai Namco assets kept ONLY in
+   the private game-reverse-engineering repo (teardown/pakchunk0/textures/
+   Character/Common/shader/Texture/skin/male/); a private build copies them to
+   game/assets/private/textures/t7-skin/male/. Public builds skip this and the
+   fighter stays quarantined. The King-face (MI_CH_knk_*) maps were not found
+   in any private pull, so the material gate still decides usability. */
+const PRIVATE_SKIN_TEXTURES = {
+  yukihyo: {
+    base: 'assets/private/textures/t7-skin/male/',
+    match: /^MI_CH_malebody_(arm|body|foot|hand|head|leg|neck)_02_skin/i,
+    file: (part) => `T_CH_male_${part}_D.webp`,
+  },
+};
+async function applyPrivateSkinTextures(id, gltf) {
+  const spec = globalThis.__WH_PRIVATE_ASSETS && PRIVATE_SKIN_TEXTURES[id];
+  if (!spec) return;
+  const loader = new THREE.TextureLoader();
+  const cache = new Map();
+  const mats = [];
+  gltf.scene.traverse((o) => { if (o.isMesh) mats.push(...[].concat(o.material)); });
+  for (const m of mats) {
+    const hit = m && spec.match.exec(m.name || '');
+    if (!hit || m.map) continue;
+    const url = spec.base + spec.file(hit[1].toLowerCase());
+    if (!cache.has(url)) cache.set(url, loader.loadAsync(url).catch(() => null));
+    const tex = await cache.get(url);
+    if (!tex) continue;
+    tex.flipY = false; tex.colorSpace = THREE.SRGBColorSpace;
+    m.map = tex; m.color && m.color.set(0xffffff); m.needsUpdate = true;
+  }
+}
+
 function remapSliceBones(fighterId, model) {
   if (!T7_RIG_URLS.has(MODEL_URLS[fighterId])) return false;
   const byName = {};
@@ -937,6 +981,23 @@ function remapSliceBones(fighterId, model) {
   for (const { node } of driven) {
     desiredPos.set(node, node.getWorldPosition(new THREE.Vector3()));
   }
+  // Original bind relation per skin joint, captured BEFORE any frame
+  // edit: B_i = boneWorld_i * IBM_i (the authored mesh-to-bone bind).
+  // It is identity only when the mesh was bound in the skeleton's own
+  // space (Slice's old export). Blender re-rigs (Burger onto Bob,
+  // 2026-10-23) bind a mesh whose space differs from the bones' (B_i
+  // carries the export's offset/scale), and recomputing IBMs as the
+  // plain inverse of the edited bone worlds threw that relation away:
+  // the bind pose still drew (every bone matrix = I) but every clip
+  // delta pivoted in the wrong space and the body collapsed in fights.
+  // The re-solve below keeps B_i exactly: IBM'_i = inverse(W'_i) * B_i.
+  const bindRel = [];
+  model.traverse((o) => {
+    if (o.isSkinnedMesh && o.skeleton && !bindRel.some(e => e.sk === o.skeleton)) {
+      const sk = o.skeleton;
+      bindRel.push({ sk, B: sk.bones.map((b, i) => new THREE.Matrix4().multiplyMatrices(b.matrixWorld, sk.boneInverses[i])) });
+    }
+  });
 
   // (a) Cancel the wrapper rotations at the model root.
   model.quaternion.premultiply(correction);
@@ -967,13 +1028,13 @@ function remapSliceBones(fighterId, model) {
     node.position.copy(desiredPos.get(node).sub(_pw).applyQuaternion(_pq.clone().invert()));
   }
   model.updateMatrixWorld(true);
-  const seenSkeletons = new Set();
-  model.traverse((o) => {
-    if (o.isSkinnedMesh && o.skeleton && !seenSkeletons.has(o.skeleton)) {
-      seenSkeletons.add(o.skeleton);
-      o.skeleton.calculateInverses();
-    }
-  });
+  // Re-solve the inverse binds, preserving each joint's authored bind
+  // relation B_i (see bindRel above): IBM'_i = inverse(W'_i) * B_i.
+  for (const { sk, B } of bindRel) {
+    sk.bones.forEach((b, i) => {
+      sk.boneInverses[i].copy(b.matrixWorld).invert().multiply(B[i]);
+    });
+  }
   // ORIGIN LIFT: kept generic — this rig is authored with its
   // origin at its FEET, so this is a safety no-op; a re-export
   // with a pelvic origin would be lifted until the bind pose's
@@ -1148,6 +1209,16 @@ class AssetManager {
     const LOAD_TIMEOUT_MS = 90000;
     const attempt = async () => {
       const signal = _anySignal([ctrl.signal, _timeoutSignal(LOAD_TIMEOUT_MS)]);
+      // Lane 5: persistent-cache hit — report full byte progress once
+      // (the bar must move on real bytes, not stall), then parse the
+      // cached buffer on the identical path as a network download.
+      if (!signal.aborted) {
+        const cached = await getCachedBuffer(url);
+        if (cached && !signal.aborted) {
+          if (onProgress) onProgress(1, cached.byteLength, cached.byteLength, id);
+          return _sharedGLTFLoader().parseAsync(cached, url);
+        }
+      }
       const res = await fetch(url, { signal });
       if (!res.ok) throw new Error(`HTTP ${res.status} loading ${id}`);
       const totalBytes = Number(res.headers.get('content-length')) || 0;
@@ -1175,6 +1246,10 @@ class AssetManager {
         if (e && e.name === 'AbortError') throw e;
         buf = await res.arrayBuffer(); // no reader progress on very old browsers
       }
+      // Lane 5: persist the downloaded bytes for the next session.
+      // Fire-and-forget (never blocks the parse); a failed store is
+      // a silent no-op inside putCachedBuffer.
+      if (buf) putCachedBuffer(url, buf);
       // Same URL string the old loader.load() used, so external .bin /
       // texture references resolve exactly as before.
       return _sharedGLTFLoader().parseAsync(buf, url);
@@ -1204,6 +1279,7 @@ class AssetManager {
   async _ingest(id, gltf) {
     // Material resolve + verdict before anything can instance this model.
     this.materialReport = this.materialReport || {};
+    await applyPrivateSkinTextures(id, gltf);
     this.materialReport[id] = await resolveModelMaterials(id, gltf, async (d) => {
       await this.loadModels([d], null, { lane: 'user' }); return this.gltfs[d];
     });
@@ -1328,7 +1404,7 @@ class AssetManager {
      colored layer over their skin? fix that"). Only an explicitly
      colorized fighter (the Create-a-Fighter skin tone, `colorize: true`)
      passes a tint. */
-  createInstance(fighterId, suitColor, trimColor, tintStrength = 0) {
+  createInstance(fighterId, suitColor, trimColor, tintStrength = 0, eyeGlow = null) {
     const gltf = this.gltfs[fighterId];
     if (!gltf) throw new Error('unknown fighter model: ' + fighterId);
     // The instance root is a wrapper whose space always has the mesh facing
@@ -1376,6 +1452,18 @@ class AssetManager {
         if (o.material.transparent && o.material.opacity < 0.05) {
           o.material.transparent = false;
           o.material.opacity = 1;
+        }
+        // EYE GLOW (owner 2026-10-22): per-attire emissive eyes, data-driven.
+        // The attire slot's eyeGlow config (attires.js) names the eye meshes
+        // as identified from the model (e.g. Negativo's ModelEyes_Material028)
+        // plus the emissive color/intensity for THAT attire — never hardcoded
+        // here. Applied after any tint so the glow color always wins. Runs in
+        // fight (fighter.js) and preview (select-screen.js): both call sites
+        // pass the resolved slot config through createInstance.
+        if (eyeGlow && Array.isArray(eyeGlow.materials) &&
+            (eyeGlow.materials.includes(o.material.name) || eyeGlow.materials.includes(o.name))) {
+          o.material.emissive = new THREE.Color(eyeGlow.color ?? 0xff2222);
+          o.material.emissiveIntensity = eyeGlow.intensity ?? 2.0;
         }
       }
     });

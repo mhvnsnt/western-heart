@@ -28,6 +28,7 @@
    cutting/tearing (softbody.js header), per the owner.
    ============================================================ */
 import { setAnimContext, getAnimContext, CTX } from './anim-gate.js';
+import { pickVariant } from './soul-systems.js'; // SOUL-SYSTEMS.md: per-fighter KESSHOU variants
 
 /* A finisher definition (authored in the creation suite):
    { name, beats: [ { btn: '1'|'2'|'3'|'4'|null, dur, pose,
@@ -66,6 +67,8 @@ export function tryFinisher(game, def) {
     // Root the victim for the cinematic beats (both stay hittable=false
     // only for the finisher's duration — same contract as throws).
     p2._finisherLock = true;
+    // KESSHOU variant (data-driven, game/data/soul-variants.json) — flavour/name only.
+    try { game.kesshouVariant = pickVariant(p1, 'kesshou'); } catch (e) { game.kesshouVariant = null; }
     let t = 0;
     for (const beat of def.beats) {
       const at = t;
@@ -79,7 +82,6 @@ export function tryFinisher(game, def) {
       t += Math.max(0.3, beat.dur || 0.8);
     }
     setTimeout(() => { p2._finisherLock = false; restoreCtx(); }, t * 1000);
-    if (game.ui && game.ui.banner) game.ui.banner(`FINISHER — ${def.name}`);
     return true;
   } catch (e) {
     p2._finisherLock = false;
