@@ -567,3 +567,11 @@ Per the AUTO-ARCHIVE standing directive: no wired auto-archive automation was fo
   2017). Attribution stays in technical docs only, never in canon
   writing or in-game text — same law as Tekken names.
 - Full record: docs/research/TEMPLEOS-SHRINE-OS-2026-10-24.md.
+
+## KUMA REPLACEMENT NAME LOCK: GASHADOKURO (user directive 2026-10-22)
+
+The Kuma replacement — white bone dragon/kaiju (Godzilla + SkullGreymon + Charizard mix, all white, rainbow-colored eyes, multicolored markings, multicolored Japanese cloud-smoke detail) — is named **GASHADOKURO**, after the giant skeleton yokai from Japanese folklore. This name is LOCKED and replaces the old "URSA" reserved placeholder.
+
+- Display-name mapping: internal ID `kuma` → display name "Gashadokuro". The roster dir and all plumbing keep the internal ID `kuma`; it is never renamed. The game layer resolves the display name from the ID.
+- Canon (recorded as stated; do not invent further): connected to ZUI — Zui fears/respects him, looks up to him like a protector/monster. Kaiju/yokai/spirit monster.
+- Note: Aotsuki/Aokami are Panda's name candidates and do NOT apply to the Kuma replacement. Gashadokuro is the Kuma replacement only.
