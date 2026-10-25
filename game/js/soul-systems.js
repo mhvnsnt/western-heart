@@ -1,7 +1,7 @@
 /* SOUL SYSTEMS (owner 2026-10-23) — docs/design/SOUL-SYSTEMS.md.
    Built on the Tekken base as extensions; KESSHOU (finisher.js) stays THE finisher.
    • 九魂解放 NINE-SOUL RELEASE — super, full Nine-Soul Meter, 1+2+3+4 at full meter.
-     HUD: 'SOUL RELEASE READY'.
+     HUD: meter-ready indicator (ui.setSoulReady) — no center-screen text (Tekken-exact UI, 2026-10-24).
    • 霊放 REIHOU "Spirit Release" — 1+4 while the foe is raging, costs 50 meter;
      spirit channels flare, the foe's rage is purged for the round.
    • 試練の封 TRIAL'S SEAL — decisive round-ending verdict seal (not a death).
@@ -36,7 +36,7 @@ export class SoulSystems {
     if (!this.canRelease(a) || !d) return null;
     const v = pickVariant(a, 'release'); a.meter -= RELEASE_COST;
     hitFoe(d, a, Math.round(RELEASE_DMG * (v ? v.power : 1)), v, 'release');
-    this.lastSoulKill = a; this._banner(LABELS.release); return v || { id: 'release' };
+    this.lastSoulKill = a; this._glow('release'); return v || { id: 'release' };
   }
   claimRelease(a, d, queue) { return this.canRelease(a) && detectKindlePress(queue) ? !!this.release(a, d) : false; }
   canReihou(a, d) { return !!a && !!d && !!d._rageOn && (a.meter || 0) >= REIHOU_COST && (!a.canAct || a.canAct()); }
@@ -46,14 +46,15 @@ export class SoulSystems {
     d._rageOn = false; d._rageUsed = true; if (d.setRageAura) d.setRageAura(false);
     if (this.game && this.game.ui && this.game.ui.setRage) this.game.ui.setRage(d === this.game.p1 ? 'p1' : 'p2', false);
     a._spiritFlare = 1.0; if (a.setAuraFlare) a.setAuraFlare(1.0);
-    hitFoe(d, a, REIHOU_DMG, v, 'reihou'); this._banner(LABELS.reihou); return v || { id: 'reihou' };
+    hitFoe(d, a, REIHOU_DMG, v, 'reihou'); this._glow('reihou'); return v || { id: 'reihou' };
   }
-  /* Per step: SOUL RELEASE READY callout when a meter first fills. */
+  /* Per step: SOUL RELEASE READY HUD flag when a meter first fills
+     (meter-wrap glow via setSoulReady, never a banner). */
   update() {
     const g = this.game; if (!g) return;
     for (const [f, k] of [[g.p1, 'p1'], [g.p2, 'p2']]) {
       if (!f) continue; const r = (f.meter || 0) >= RELEASE_COST;
-      if (r && !this._ready[k]) { this._ready[k] = true; this._banner(LABELS.ready); if (g.ui && g.ui.setSoulReady) g.ui.setSoulReady(k, true); }
+      if (r && !this._ready[k]) { this._ready[k] = true; if (g.ui && g.ui.setSoulReady) g.ui.setSoulReady(k, true); }
       else if (!r && this._ready[k]) { this._ready[k] = false; if (g.ui && g.ui.setSoulReady) g.ui.setSoulReady(k, false); }
       if (f._spiritFlare > 0) f._spiritFlare = Math.max(0, f._spiritFlare - 1 / 120);
     }
@@ -70,4 +71,7 @@ export class SoulSystems {
     this._banner(LABELS.seal); return v || { id: 'seal' };
   }
   _banner(t) { const ui = this.game && this.game.ui; if (ui && ui.banner) { try { ui.banner(t); } catch (e) { } } }
+  /* Mid-fight system glow (popup fix 2026-10-24): Tekken rule — a glow,
+     never center-screen text. _banner stays for the boundary-only seal. */
+  _glow(kind) { const ui = this.game && this.game.ui; if (ui && ui.surgeFlash) { try { ui.surgeFlash(kind === 'reihou' ? 0x9fd8ff : 0xffd34d, 0xfff2b0); } catch (e) { } } }
 }

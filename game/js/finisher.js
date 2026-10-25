@@ -82,7 +82,6 @@ export function tryFinisher(game, def) {
       t += Math.max(0.3, beat.dur || 0.8);
     }
     setTimeout(() => { p2._finisherLock = false; restoreCtx(); }, t * 1000);
-    if (game.ui && game.ui.banner) game.ui.banner(`FINISHER — ${def.name}`);
     return true;
   } catch (e) {
     p2._finisherLock = false;
