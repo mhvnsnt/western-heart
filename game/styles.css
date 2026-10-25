@@ -503,7 +503,6 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
    If any boot module failed, main.js never added .hidden and the overlay
    silently ate every tap on the main menu. It never takes input now. */
 .loading { pointer-events: none; }
-.tap-hint { pointer-events: none; }
 .loading-box { text-align: center; width: min(86%, 360px); }
 .loading-title {
   font-size: clamp(24px,7vw,40px); font-weight: 900; letter-spacing: 3px; margin-bottom: 22px;
@@ -513,14 +512,9 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 .loading-fill { height: 100%; width: 0%; background: linear-gradient(90deg,#8b2bd8,#ff7a3c); transition: width 0.2s; }
 .loading-text { margin-top: 14px; font-size: 13px; letter-spacing: 2px; opacity: 0.7; }
 
-/* Tap-to-start sound hint */
-.tap-hint {
-  position: fixed; left: 50%; bottom: 14%; transform: translateX(-50%); z-index: 40;
-  background: rgba(0,0,0,0.7); padding: 10px 18px; border-radius: 30px; font-size: 13px; letter-spacing: 2px;
-  border: 1px solid rgba(255,255,255,0.2); display: none; animation: pulse 1.4s infinite;
-}
-.tap-hint.show { display: block; }
-@keyframes pulse { 0%,100%{opacity:0.6;} 50%{opacity:1;} }
+/* Tap-to-start sound hint REMOVED (user 2026-10-24) — no tap-for-audio
+   gate. (The select-timer's own @keyframes pulse earlier in this file
+   still covers .select-timer.low / .throw-prompt.) */
 
 /* ====================== STAGE SELECT (Tekken pattern) ======================
    Sticky header; scrollable arena GRID grouped by tier; LARGE PREVIEW

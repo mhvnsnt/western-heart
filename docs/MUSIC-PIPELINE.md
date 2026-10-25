@@ -116,3 +116,60 @@ attribution requirement). The owner's four CDA tracks are `license:
   `modes: ["gungaku"]` when the mode ships — "war music" deserves its own bed.
 - **Crowd reactions**: deferred by owner decision — ships WITH the crowd
   system, not here (see `docs/VOICE-MAPPING.md`).
+
+## Cape Jones theme + tap-for-audio removal (2026-10-24)
+
+Owner directive (2026-10-24 19:41 CDT): Ghost Surf Rock is Cape Jones's
+theme song; it is the MAIN track for any future Cape Jones arena, with
+interchanging tracks rotating around it. The tap-for-audio gate is removed;
+audio on/off lives in OPTIONS.
+
+### Cape Jones vibe (remember this when picking music for him)
+
+Surf rock + spooky + witchy + batty + Halloween — spooky, surf, fun,
+ghostly, Halloween-ish. Source: "Ghost Surf Rock" by Loyalty Freak Music,
+from the album WITCHY, BATTY, SPOOKY, HALLOWEEN IN SEPTEMBER !! (FMA
+genres: Ambient / Halloween / Holiday / Instrumental). The album title
+itself is the vibe statement.
+
+### Theme wiring (game/data/music-library.json)
+
+- `cape-jones-ghost-surf-rock` — Ghost Surf Rock, FIRST among
+  `cape-jones-arena` stage-tagged tracks, so the current first-match
+  `pickTrack()` plays it as the arena main track the moment a
+  `cape-jones-arena` stage id exists. Rotation pools (PR #1030 model)
+  treat all 8 stage-tagged tracks as the pool, Ghost Surf Rock first.
+- 7 interchanging tracks, same stage tag, all Loyalty Freak CC0 1.0
+  (verified per track on its FMA page, 2026-10-24): A ghost Waltz,
+  Hello Regan !, A really dark alley, The graveyard, The Old Witch
+  Place, The Witch Are Going Magical (all from the same album), plus
+  Sweat Time ! (ROLLER DISCO DANCE DANCE — surf/disco energy).
+- None of the 8 carries a `modes` tag, so no existing menu/mode pick
+  changes (verified by test/cape-theme-music.test.mjs). Mood tags
+  (`spooky` `surf` `halloween` `ghost` `fun` `dark` `witchy` `disco`
+  `driving`) make them reachable by mood picks now.
+- `remote` is intentionally OMITTED on these 8: FMA page URLs are HTML
+  pages, not audio files, and the engine would waste a fetch trying to
+  decode one. The FMA page URL lives in each track's `source` field for
+  provenance. MP3s are downloaded from those pages and committed to
+  `game/assets/music/` (see the download manifest in
+  docs/research/CAPE-JONES-THEME-AND-MUSIC-2026-10-24.md). Until the
+  MP3s land, a missing file falls back to the procedural loop — the
+  game never goes silent or breaks.
+
+### Tap-for-audio removal (same PR)
+
+- REMOVED: the `TAP TO ENABLE SOUND` overlay (`game/index.html`
+  `#tap-to-start`), its show-on-load timer (`game/js/main.js`), and its
+  CSS (`game/styles.css` `.tap-hint` + its duplicate `@keyframes pulse`;
+  the select-timer's own pulse definition remains).
+- KEPT: the silent first-interaction unlock (`pointerdown` once +
+  `unlockAudio()` calls in menu taps and `startFight`) — this is the
+  browser autoplay-policy requirement, not a gate. No overlay, no
+  dedicated step. Tekken and MDickey Wrestling Empire have no tap gate;
+  neither do we.
+- ADDED: OPTIONS now shows a `SOUND` toggle (on = sound plays) instead
+  of the confusing `MUTE ALL` toggle (on = muted). Same persisted
+  `muted` key, same `applySettings()`, default ON (`muted: false`).
+  Implemented as `toggleRowInv()` in `game/js/menus.js` — the row
+  displays inverted relative to the stored key.

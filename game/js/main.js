@@ -595,15 +595,17 @@ function randomEnemy(excludeId) {
 }
 
 /* ---------------- Menu button wiring ---------------- */
+/* Audio (user 2026-10-24): NO tap-for-audio gate. The TAP TO ENABLE SOUND
+   overlay is gone — Tekken and MDickey Wrestling Empire have no such gate,
+   and neither do we. Audio unlocks silently on the first real interaction
+   (this pointerdown listener, plus unlockAudio() calls in menu taps and
+   startFight). On/off lives in OPTIONS as the SOUND toggle (menus.js),
+   default ON (muted: false). */
 function unlockAudio() {
   audio.unlock();
-  document.getElementById('tap-to-start').classList.remove('show');
 }
 
 document.body.addEventListener('pointerdown', unlockAudio, { once: true });
-window.addEventListener('load', () => {
-  setTimeout(() => document.getElementById('tap-to-start').classList.add('show'), 600);
-});
 
 /* Menu tap failure toast (2026-10-24, menu tap fix): a tap must NEVER
    die silently. Mode loads that reject surface here instead of leaving
