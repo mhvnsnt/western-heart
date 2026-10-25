@@ -60,6 +60,14 @@
   singles join via frame data + wavu names, not .mvl. Documented, not hidden.
 
 ## Tap-for-audio removal (owner 2026-10-24)
+- SUPERSEDED (2026-10-25): this PR's own audio edits (hint-div removal,
+  howto SETTINGS toggle, `audio.js` setMuted) were REVERTED to main's
+  versions. A parallel lane landed the same owner directive on main first
+  (menus.js Settings sheet: MUTE ALL + SOUND toggle rows, tap hint and
+  show-timer removed, music unlock preserved). Keeping both would ship two
+  competing mute systems over the same master gain, so this PR now carries
+  no audio-file changes of its own; the merged result keeps main's
+  implementation. Original implementation, for the record:
 - Removed the `TAP TO ENABLE SOUND` hint div + its show-timer. Audio now
   enables silently on the first natural tap (pointerdown listener + nav /
   fight-start calls kept — invisible, no interstitial).

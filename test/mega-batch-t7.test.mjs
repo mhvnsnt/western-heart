@@ -9,8 +9,10 @@
 //     until this sync.
 //  3. No string maps to a chord row (string steps never fire chord clips).
 //  4. Pantera LP1 (jab) body damage is 9 (MOD), not the old T3-scaled 11.
-//  5. Tap-for-audio is gone: no TAP TO ENABLE SOUND hint, and a SETTINGS
-//     audio toggle exists (audio.js setMuted + main.js wiring + howto button).
+//  5. Tap-for-audio is gone: no TAP TO ENABLE SOUND hint, no tap-to-start
+//     refs, and sound on/off lives in SETTINGS (menus.js MUTE ALL/SOUND
+//     rows, landed on main by the parallel audio lane; this PR reverted
+//     its own audio files to main's versions to avoid two mute systems).
 // Run: node test/mega-batch-t7.test.mjs (from repo root; CI runs the loop).
 // NOTE (CI sparse checkout): game/index.html and docs/ are NOT in the
 // game-unit-tests sparse checkout, so those two checks SKIP (not fail)
@@ -59,14 +61,21 @@ check(pantera.moves['1'].damage === 9, `pantera LP1 body damage is ${pantera.mov
 const mainJs = readFileSync(join(root, 'game', 'js', 'main.js'), 'utf8');
 const audioJs = readFileSync(join(root, 'game', 'js', 'audio.js'), 'utf8');
 check(!mainJs.includes('tap-to-start'), 'tap-to-start references removed from main.js');
-check(audioJs.includes('setMuted'), 'audio.js has setMuted');
-check(mainJs.includes('audio-toggle'), 'main.js wires the audio toggle');
+check(!audioJs.includes('tap-to-start'), 'tap-to-start references removed from audio.js');
+const menusPath = join(root, 'game', 'js', 'menus.js');
+if (existsSync(menusPath)) {
+  const menusJs = readFileSync(menusPath, 'utf8');
+  check(menusJs.includes('MUTE ALL'), 'menus.js Settings has MUTE ALL toggle');
+  check(menusJs.includes("'SOUND'"), 'menus.js Settings has SOUND toggle');
+} else {
+  console.log('SKIP: game/js/menus.js not in this checkout — Settings toggle checks skipped');
+}
 
 const indexPath = join(root, 'game', 'index.html');
 if (existsSync(indexPath)) {
   const indexHtml = readFileSync(indexPath, 'utf8');
   check(!indexHtml.includes('TAP TO ENABLE SOUND'), 'tap-to-enable-sound hint removed from index.html');
-  check(indexHtml.includes('id="audio-toggle"'), 'howto screen has the audio toggle button');
+  check(!indexHtml.includes('id="tap-to-start"'), 'tap-to-start div removed from index.html');
 } else {
   console.log('SKIP: game/index.html not in this checkout (CI sparse checkout) — index.html checks skipped');
 }

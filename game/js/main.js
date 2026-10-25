@@ -625,19 +625,6 @@ function unlockAudio() {
   music.unlock();
 }
 
-// No tap-for-audio interstitial (owner 2026-10-24): audio enables silently
-// on the first natural tap (any pointerdown, menu tap, or fight start).
-// Sound on/off lives in SETTINGS (howto screen) instead.
-document.body.addEventListener('pointerdown', unlockAudio, { once: true });
-
-// SETTINGS audio toggle (howto screen): sound on/off, persisted.
-const audioToggle = document.getElementById('audio-toggle');
-if (audioToggle) {
-  const syncAudioToggle = () => { audioToggle.textContent = audio.muted ? 'SOUND: OFF' : 'SOUND: ON'; };
-  syncAudioToggle();
-  audioToggle.addEventListener('click', () => { audio.setMuted(!audio.muted); syncAudioToggle(); });
-}
-
 /* Menu tap failure toast (2026-10-24, menu tap fix): a tap must NEVER
    die silently. Mode loads that reject surface here instead of leaving
    the user on the menu wondering why nothing happened. */

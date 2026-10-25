@@ -31,7 +31,7 @@
       "files": [
         "game/index.html"
       ],
-      "note": "SETTINGS block on the howto screen (OPTIONS routes here): SOUND on/off toggle following the T7 options-screen pattern (Name|Value rows) measured in the T7 UI layout teardown; tap-for-audio interstitial removed because Tekken has no tap-gate (audio enables on first natural tap, toggle controls on/off thereafter). Control grid teaches Tekken input notation per the Input_Sequence structures doc: LP1/RP2/LK3/RK4 limbs (LP1 = Left Punch = Tekken 1, RP2 = Right Punch = Tekken 2, LK3 = Left Kick = Tekken 3, RK4 = Right Kick = Tekken 4), throw chords LP1+LK3 / RP2+RK4, throw-break limb reads, strings (LP1,RP2; f+LP1; d/f+RP2; qcf+RP2). Buttons use the existing >=44px classes (btn-primary, wh-menu-btn)."
+      "note": "Control grid teaches Tekken input notation per the Input_Sequence structures doc: LP1/RP2/LK3/RK4 limbs (LP1 = Left Punch = Tekken 1, RP2 = Right Punch = Tekken 2, LK3 = Left Kick = Tekken 3, RK4 = Right Kick = Tekken 4), throw chords LP1+LK3 / RP2+RK4, throw-break limb reads, strings (LP1,RP2; f+LP1; d/f+RP2; qcf+RP2). Buttons use the existing >=44px classes (btn-primary, wh-menu-btn)."
     },
     "screen-menu": {
       "status": "sourced",
