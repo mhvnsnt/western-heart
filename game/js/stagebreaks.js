@@ -10,6 +10,7 @@
      bonus damage (DOA "Danger Zone" style).
    • TEKKEN balcony breaks (T7 Jungle Outpost 2): same as a floor
      break off a ledge edge.
+   • NO on-screen break text — Tekken shows breaks via destruction + camera, never a banner (UI immersion fix 2026-10-24).
    • DOA4/5/6 knock-through: power blows near breakable walls/floors
      burst INTO a new area — the transition IS the mechanic.
    Stage defs declare `breakables: [{type:'floor'|'wall'|'balcony',
@@ -409,7 +410,6 @@ export class StageBreaks {
     g.arena.shake(0.55, 0.45);
     g._hitStop = Math.max(g._hitStop || 0, 0.14);
     try { audio.grab(); } catch (e) {}
-    if (g.ui && g.ui.banner) g.ui.banner('WALL BREAK');
     if (bonus === 'ko') g.rage.onHitKO(attacker, defender);
     console.log(`[WH] stage break: wall (${def.side < 0 ? 'P1' : 'P2'} side) — bounds now ±${newLimit.toFixed(1)}`);
   }
@@ -449,7 +449,6 @@ export class StageBreaks {
     g.arena.shake(0.7, 0.6);
     g._hitStop = Math.max(g._hitStop || 0, 0.18);
     try { audio.ko(); } catch (e) {}
-    if (g.ui && g.ui.banner) g.ui.banner('FLOOR BREAK');
     if (g.ui && g.ui.updateHP && g.p1 && g.p2) g.ui.updateHP(g.p1, g.p2);
     if (bonus === 'ko') g.rage.onHitKO(attacker, defender);
     console.log(`[WH] stage break: floor at (${fx},${fz}) — dropped to y=${this.groundY}`);
@@ -490,7 +489,6 @@ export class StageBreaks {
     g.arena.shake(0.7, 0.6);
     g._hitStop = Math.max(g._hitStop || 0, 0.18);
     try { audio.ko(); } catch (e) {}
-    if (g.ui && g.ui.banner) g.ui.banner('BALCONY BREAK');
     if (g.ui && g.ui.updateHP && g.p1 && g.p2) g.ui.updateHP(g.p1, g.p2);
     if (bonus === 'ko') g.rage.onHitKO(attacker, defender);
     console.log(`[WH] stage break: balcony at (${fx},${fz}) — dropped to y=${this.groundY}`);
