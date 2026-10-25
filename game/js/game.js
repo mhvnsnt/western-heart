@@ -26,6 +26,7 @@ async function gungakuAI() {
   return _GungakuAI;
 }
 import { audio } from './audio.js';
+import { music } from './music.js';
 import { getStage } from './stages.js';
 import { applyFighterProfile } from './customization-consumer.js';
 /* Stage mechanics + rage/comeback lane (Tekken/DOA teardowns).
@@ -287,6 +288,15 @@ export class Game {
     this.input.enable(false);
 
     this.roundState = 'intro';
+    // MUSIC (2026-10-24): round-start intensity reset (Tekken rule) +
+    // T7 match-point variant: when either fighter is one round from
+    // winning, the deciding round opens on the Final Round variant track.
+    // (Best-of-3, so round 1 can never be match-point except a 1-round match.)
+    const _rtw = this.roundsToWin || ROUNDS_TO_WIN;
+    this._musicFinal = this.wins.p1 >= _rtw - 1 || this.wins.p2 >= _rtw - 1;
+    this._musicLowHp = false;
+    music.setIntensity(0.55);
+    if (this._musicFinal) music.playFinalRound();
     this._roundLockT = 1.6;
     this.ui.banner(`ROUND ${this.round}`);
     this.ui.updateHP(this.p1, this.p2);
@@ -294,6 +304,7 @@ export class Game {
     setTimeout(() => {
       if (this.roundState !== 'intro') return;
       this.ui.banner('FIGHT!');
+      music.setIntensity(this._musicFinal ? 0.85 : 0.7);
       audio.bell();
       this.roundState = 'fight';
       this.input.enable(true);
@@ -481,6 +492,11 @@ export class Game {
       this._resolveCombat(this.p1, this.p2);
       this._resolveCombat(this.p2, this.p1);
       if (this.rage) { this.rage.update(this.p1); this.rage.update(this.p2); }
+      // MUSIC (2026-10-24): low-HP intensity lift, edge-triggered so the
+      // ramp is not re-scheduled every frame (Tekken final-stretch lift).
+      const _lowHp = (this.p1.hp < this.p1.maxHp * 0.25) || (this.p2.hp < this.p2.maxHp * 0.25);
+      if (_lowHp && !this._musicLowHp) { this._musicLowHp = true; music.setIntensity(1.0); }
+      else if (!_lowHp && this._musicLowHp) { this._musicLowHp = false; music.setIntensity(this._musicFinal ? 0.85 : 0.7); }
       if (this.soulurge) { this.soulurge.update(this.p1, dt); this.soulurge.update(this.p2, dt); }
 
       // FIGHTER DEPTH (worker 34): per-frame systems — kindle timers,
@@ -727,6 +743,7 @@ export class Game {
   _endRound() {
     if (this.roundState !== 'fight') return;
     this.roundState = 'over';
+    music.setIntensity(0.3); // MUSIC: KO / time-up intensity drop (Tekken rule)
     this._roundLockT = 3.0;
     this.input.enable(false);
 
