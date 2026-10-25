@@ -49,7 +49,7 @@ only, never as in-universe writing.
 | Name | Grade | Note |
 |---|---|---|
 | Soul Urge, KESSHOU, Nine-Soul Release, Reihou, Trial's Seal, Soul Surge, 魂 ACTION, Go Qombat, Gungaku | NAMED | Locked / canon / owner-named per the audit. Used as-is. |
-| All NEEDS NAME systems | NON-CANON-ANCHORED (naming) | Not named in any new dialogue or banter. Referred to by description or not at all until the owner picks (audit options are proposals, not canon). |
+| Naming status after 2026-10-24 21:38 CDT (+ options pending 21:40–21:42 CDT) | See audit | Updated status lives ONLY in `docs/story/PROPRIETARY-NAMES-AUDIT-2026-10-24.md` (KEEP / RENAME-PENDING / SHARED-NAME-PENDING / OPEN/UNDECIDED / EXPLAINED-NOT-NAMED / OPTIONS-PENDING). This index keeps no second list. Unnamed systems are still not named in any new dialogue or banter; they are referred to by description or not at all until the owner picks (audit options are proposals, not canon — including the 21:40–21:42 CDT "Spin Juggle" and Rinne/Ikari Jishin options, none decided). |
 | Shrine体系 | USER-LOCKED NAME (2026-10-24 20:04 CDT) | The TempleOS-inspired mode's in-game name. This PR does not touch that mode; the name appears here only as a discipline note. TempleOS attribution stays in technical docs only, never in-game. Never "TempleOS" in-game. STANDING CREDITS (user 2026-10-24 20:33 CDT, Shrine lane): the mode's end credits MUST say "In memory of Terry Davis, RIP". |
 
 ## Explicit non-claims (so nothing drifts into canon by accident)
