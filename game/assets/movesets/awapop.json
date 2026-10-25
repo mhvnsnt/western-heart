@@ -6,6 +6,12 @@
   "proxy": false,
   "proxy_note": null,
   "variant": 8,
+  "anim_set_lock": {
+    "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; tracked in docs/anim/NINA-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
+  },
   "strings": [
     {
       "input": "2,4",
@@ -30082,7 +30088,19 @@
     "exclude_proxy": false,
     "moves_before": 909,
     "moves_after": 909,
-    "added": {},
+    "added": {
+      "batch5_pull_20261023": {
+        "by": "moveset worker (branch moveset/batch5-pull)",
+        "source": "game/data/t8_frame_tables.json",
+        "chars_key": "nina",
+        "t8_inputs": 191,
+        "genuinely_missing": 0,
+        "empty_motion_inputs_skipped": [],
+        "added": 0,
+        "set": "FIGHT",
+        "note": "T8-only moves; no T3 bank rows to wire — motion gap tracked in docs/anim/NINA-ANIM-GAP-20261023.md for the T5/T6/TTT2/T7 extraction coordinator lane."
+      }
+    },
     "slots": 404,
     "slots_by_priority": {
       "signature": 2,

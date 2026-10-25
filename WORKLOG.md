@@ -3188,3 +3188,22 @@ Files: game/assets/movesets/*.json (30), game/data/moveset-library/banks/wrestli
   manifest to <branch>-checkpoints via plumbing; tools/agent/restore.sh (SessionStart) brings it back without
   clobbering. Tested: checkpoint pushed (402 scratch files + wip.patch); restore into an empty folder put all 402
   back and refused to apply the patch over a dirty tree.
+---
+
+## 2026-10-23 — Batch-5 moveset pull: King Tyrant, Cyborg X, Awa Pop, Retsu, Rin (T8 diff + SHOW-ANIMATION LOCK)
+
+**Owner instruction (verbatim, 2026-10-23):** "Now we need to get that done for every other character" — replicate the Law/Lars pull pattern (PR #823 merged, PR #806 green): diff `game/data/t8_frame_tables.json` → `chars.<source>` against each fighter's existing `moves` keys for genuinely-missing moves; add missing moves in Tekken notation with frame data stamped `"set": "FIGHT"`; add `anim_set_lock` metadata; check the T3 bank `game/assets/anim/t3/<source>/` (wire or file a gap doc); update `game/assets/movesets/index.json`.
+
+**Changes:**
+- `game/assets/movesets/kingtyrant.json` (Eddy): 848 moves, T8 diff 0 genuinely-missing (152/152 inputs present) — `anim_set_lock` stamped, `merge_sources.added.batch5_pull_20261023` recorded.
+- `game/assets/movesets/cyborgx.json` (Alisa): 624 moves, T8 diff 0 genuinely-missing (188/188) — same lock treatment.
+- `game/assets/movesets/awapop.json` (Nina): 909 moves, T8 diff 0 genuinely-missing (191/191) — same lock treatment.
+- `game/assets/movesets/retsu.json` (Bryan): 685 → 739 moves (+54 T8-only, all `"set": "FIGHT"`); slots 294 → 348; `anim_set_lock` stamped. Skipped `d,db,b` (empty motion-transition input in the T8 table, not an attack — no move entry).
+- `game/assets/movesets/rin.json` (Jin): 659 → 710 moves (+51 T8-only, all `"set": "FIGHT"`); slots 309 → 360; `anim_set_lock` stamped. Skipped `f,n,d,df`, `f,n,d,df,UF` (empty crouch-dash motion inputs, not attacks).
+- `game/assets/movesets/index.json`: moves/inputs/bytes updated for all five fighters.
+- `docs/anim/{EDDY,ALISA,NINA,BRYAN,JIN}-ANIM-GAP-20261023.md`: FIGHT/SHOW intake manifests per the SHOW-ANIMATION LOCK. Key finding: **Alisa has no T3 bank** — `game/assets/anim/t3/alisa/` does not exist (she debuted in Tekken 6; T3 can never fill it), so cyborgx still binds the flagged `gunjack` substitution bank; full bank manifest filed for the T5/T6/TTT2/T7 extraction coordinator lane. Eddy/Nina/Bryan/Jin banks exist (32 files each); Bryan's 54 and Jin's 51 T8-only moves are named FIGHT-motion targets for the extraction lane (no T3 rows to wire — they bind generic strike/grab clips until motion lands).
+- Frame-data honesty: the T8 compact table carries no damage or recovery columns. New moves use `damage: 0` + `damage_note` (0 = unknown, not zero — revisit in a damage pass) and `recovery: 0.5` (30f assumed, recorded in `recovery_estimated`). On-block/hit/CH formatted `+N`/`-N` per in-file convention; `hit_level` h/m/l/t; `knockdown: true` where the T8 `ko` flag is set.
+
+**Verification:** semantic diff audit — 0 field losses, 0 removals, additions only across all five files; all 105 new moves carry `"set": "FIGHT"`; index counts match file contents (moves = len(moves), inputs = len(slots), bytes = file size).
+
+**Deviations:** none — all 105 added moves are combat moves (FIGHT); no SHOW content entered any moveset.
