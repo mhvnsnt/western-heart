@@ -625,6 +625,9 @@ function unlockAudio() {
   music.unlock();
 }
 
+// Silent safety net (from #1037): first tap anywhere also unlocks audio, in case a path reaches audio without a menu, mode or fight tap.
+document.body.addEventListener('pointerdown', unlockAudio, { once: true });
+
 /* Menu tap failure toast (2026-10-24, menu tap fix): a tap must NEVER
    die silently. Mode loads that reject surface here instead of leaving
    the user on the menu wondering why nothing happened. */
