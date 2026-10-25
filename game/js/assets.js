@@ -338,9 +338,11 @@ export const MODEL_URLS = {
   // SCIMITAR (2026-10-21, lane 4 rig batch 1): unrigged static -> auto-rigged via
   // tools/auto_rig knn backend (donor pantera.glb); owner's original stays untouched.
   scimitar: 'assets/models/scimitar-rigged.glb',   // Shaheen-based base mesh — NO-GATE: wired as-is, clothing via Creation Suite as an option
-  // Created fighters use the Soldier.glb base from the CAW suite.
+  // Created fighters use the blank CAW base from the suite (Technician
+  // MB-Lab bake, No Mercy Medium 1) — Mixamo Soldier removed 2026-10-24
+  // (owner: fully take him out of the game).
   // Relative path works on GitHub Pages (game/ -> customization/).
-  custom: '../customization/create-fighter/assets/Soldier.glb',
+  custom: '../customization/templates/meshes/technician.glb',
   // Reskin wave (2026-10-19): first custom attires, wired as selectable fighters.
   // Jin Bloodline Ember + Doc Frank Machine Shop are rigged drop-ins from their
   // lanes; Baek/Mariposa/Dxmmii are texture-transplants onto their rigged bases

@@ -6,6 +6,12 @@
 import * as THREE from 'three';
 import { REGIONS, regionAmount } from './regions.js';
 import { SLIDERS } from './dna.js';
+/* Universal rig compatibility (owner directive 2026-10-24 19:54 CDT):
+   boneByName falls back through the rig adapter, so bone sliders + morph
+   regions work on Cape / MB-Lab / Rigify / Tripo rigs — not just the T7
+   names they were written against. Without this, sliders silently did
+   nothing on any non-T7 skeleton. */
+import { resolveBonesFromNames, BONE_ALIASES, normalizeBoneName } from './rig-adapter.js';
 
 const _v = new THREE.Vector3(), _m = new THREE.Matrix4();
 
@@ -13,8 +19,35 @@ export function findSkinned(root) {
   const out = []; root.traverse(o => { if (o.isSkinnedMesh) out.push(o); }); return out;
 }
 
+const _canonCache = new WeakMap(); // skeleton -> {canonical: bone}
+function canonicalBones(skeleton) {
+  let m = _canonCache.get(skeleton);
+  if (!m) {
+    m = {};
+    const rep = resolveBonesFromNames(skeleton.bones.map(b => b.name));
+    for (const [c, actual] of Object.entries(rep.map)) {
+      const b = skeleton.bones.find(x => x.name === actual);
+      if (b) m[c] = b;
+    }
+    _canonCache.set(skeleton, m);
+  }
+  return m;
+}
+
 export function boneByName(skeleton, name) {
-  return skeleton.bones.find(b => b.name === name || b.name === `mixamorig:${name}` || b.name.toLowerCase() === name.toLowerCase());
+  const direct = skeleton.bones.find(b => b.name === name || b.name === `mixamorig:${name}` || b.name.toLowerCase() === name.toLowerCase());
+  if (direct) return direct;
+  /* Adapter fallback: a T7-style request ('LeftArm') resolves to this
+     skeleton's own name ('upperarm_L', 'upper_arm.L'). Exact matches always
+     win; missing bones still return undefined (graceful skip in callers),
+     never a wrong bone. Note the underscore discipline in rig-adapter.js:
+     Cape spine_1 (lowest spine) never collides with T7 Spine1 (mid spine). */
+  const norm = normalizeBoneName(name);
+  const canon = canonicalBones(skeleton);
+  for (const c of Object.keys(BONE_ALIASES)) {
+    if ((BONE_ALIASES[c] || []).includes(norm) && canon[c]) return canon[c];
+  }
+  return undefined;
 }
 
 // bind-space position of a bone (inverse of its inverse bind matrix)

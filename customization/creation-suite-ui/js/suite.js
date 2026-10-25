@@ -9,6 +9,13 @@ import { ATTIRE_TREE, BODY_TREE, PARTS_TREE, JIGGLE_AREAS, JIGGLE_PARAMS, JIGGLE
 import { BODY_MORPHS, FACE_SHAPE_MORPHS, applyMorphProxies } from 'wh-creation-suite/morphs.js';
 import { SLIDERS as DNA_SLIDERS } from 'wh-creation-suite/dna.js';
 import { applySliders as applyBodySliders } from 'wh-creation-suite/body.js';
+/* Body-type -> template/proportions mapping (pure, Node-tested) + WWE 2K19
+   layering conflicts. Importmap: wh-creation-suite/ -> packages/creation-suite/src/. */
+import { bodyTypeToDNA, propsToDNA, mergeDNA, DEFAULT_PROPS } from 'wh-creation-suite/template-map.js';
+/* Face preset number -> No Mercy PNG file (146 files, verified listing).
+   Suite composes the load URL as '../parts/no-mercy/faces/' + file. */
+import { faceTextureForPreset } from 'wh-creation-suite/face-texture-map.js';
+import { SLOT_CONFLICTS } from 'wh-creation-suite/layering.js';
 /* The game's own moveset engine (same module the fight runs): notation tables, slots, loadouts. */
 import * as MS from '../../../game/js/movesets.js';
 MS.setMovesetBase('../../game/assets/movesets/');
@@ -16,6 +23,20 @@ MS.setMovesetBase('../../game/assets/movesets/');
 const LS_KEY = 'wh_creation_suite_v1';
 const START_MONEY = 12400;
 const $ = s=>document.querySelector(s);
+/* tap() — PR #1018 menu-fix pattern, reused for fighter-select taps (user
+   2026-10-24 19:45 CDT: taps on fighter cards did nothing). A tap inside a
+   scrollable list is cancelled by a small scroll-drag, so click-only handlers
+   silently drop it; tap() fires on touchend unless the finger dragged >12px,
+   and dedups the synthesized click that follows a touchend for 600ms so one
+   tap never fires twice. */
+function tap(el, fn){
+  if(!el) return;
+  let sx=0, sy=0, moved=false;
+  el.addEventListener('touchstart', e=>{ const t=e.touches[0]; sx=t.clientX; sy=t.clientY; moved=false; }, {passive:true});
+  el.addEventListener('touchmove', e=>{ const t=e.touches[0]; if(Math.abs(t.clientX-sx)>12 || Math.abs(t.clientY-sy)>12) moved=true; }, {passive:true});
+  el.addEventListener('touchend', e=>{ if(moved) return; const now=Date.now(); if(el._tapLast && now-el._tapLast<600) return; el._tapLast=now; e.preventDefault(); fn(e); });
+  el.addEventListener('click', e=>{ const now=Date.now(); if(el._tapLast && now-el._tapLast<600) return; el._tapLast=now; fn(e); });
+}
 
 const BODY_TYPES = ['Skinny 1','Skinny 2','Medium 1','Medium 2','Thick 1','Thick 2','Fat 1','Fat 2',
   'Austin','HBK','Rikishi','Rock','Hairy 1','Hairy 2','King Frame','Ganryu Frame',
@@ -57,7 +78,7 @@ function blankFighter(){
        per-attire records live in records[], keyed 'fighter::attire_id'
        ('blank' for the blank fighter). */
     mode:'blank', rosterRef:null, records:{},
-    baseGlb:'customization/create-fighter/assets/Soldier.glb' };
+    baseGlb:'customization/templates/meshes/technician.glb' };
 }
 let F = blankFighter();
 let PARTS = [];       // parts-catalog.json parts[] (unified catalog v2)
@@ -65,8 +86,10 @@ let PARTS_META = null; // parts-catalog.json header (counts/sources)
 let ROSTER = null;    // data/roster-attires.json (build_roster_attires.py)
 let JIGGLE = null;    // jiggle-schema.json
 let FPARTS = null;    // data/fighter-parts.json (Phase 1: SmutBase-6 own-mesh parts)
+let TEMPLATES = [];   // customization/templates/body-templates.json (9 MB-Lab bodies)
+let FACE_PRESETS = []; // customization/templates/face-presets.json (wwe + gnm layers)
 let viewer = null;
-let ui = { tab:'body', attireCat:null, partsCat:null, selPart:null, wardSel:0, nudgeStep:0.001, page:0, query:'' };
+let ui = { tab:'body', bodySec:null, attireCat:null, partsCat:null, selPart:null, wardSel:0, nudgeStep:0.001, page:0, query:'' };
 
 const attire = ()=>F.attires[F.attireIndex];
 
@@ -74,7 +97,7 @@ const attire = ()=>F.attires[F.attireIndex];
    pick fighter -> pick attire -> hub, loading THAT attire's real GLB.
    Working state stays in the top-level F fields; switching stashes the
    current state into F.records[key] and restores the target's record. */
-const BLANK_GLB = 'customization/create-fighter/assets/Soldier.glb';
+const BLANK_GLB = 'customization/templates/meshes/technician.glb';
 const currentKey = ()=> F.mode==='roster' && F.rosterRef ? `${F.rosterRef.fighter}::${F.rosterRef.attire}` : 'blank';
 function snapshotWorking(){
   return JSON.parse(JSON.stringify({
@@ -95,7 +118,10 @@ function rosterAttire(slug, attireId){
 }
 async function loadBaseModel(){
   if(!viewer) return;
-  const url = F.baseGlb===BLANK_GLB ? '../create-fighter/assets/Soldier.glb' : '../../'+F.baseGlb;
+  /* Mixamo removal: no special-case anymore. The blank base IS the Technician
+     MB-Lab bake (body-templates.json, No Mercy Medium 1) and resolves through
+     the same '../../' prefix as every other model. */
+  const url = '../../'+F.baseGlb;
   try{ await viewer.loadBase(url); }
   catch(e){ console.warn('[WH] base model failed', F.baseGlb, e); toast('Model failed to load: '+F.baseGlb); }
   renderAll();
@@ -162,6 +188,13 @@ function customizationRecord(){
     }
   }
   const morphs={}; for(const [k,v] of Object.entries(F.morphs||{})) if(v) morphs[k]=v;
+  // Universal mesh toggles (OUTFIT tab, every model)
+  const mesh_states={};
+  for(const [mn, st] of Object.entries(a.meshStates||{})){
+    if(!st) continue;
+    if((st.mode&&st.mode!=='shown')||st.color)
+      mesh_states[mn]={ mode:st.mode||'shown', color:st.color||null };
+  }
   // Phase 1: per-part toggles on the fighter's own meshes (OUTFIT tab)
   const part_states={};
   for(const [pid, st] of Object.entries(a.partStates||{})){
@@ -174,13 +207,18 @@ function customizationRecord(){
     fighter: F.mode==='roster' ? F.rosterRef.fighter : 'blank',
     attire: F.mode==='roster' ? F.rosterRef.attire : `attire${F.attireIndex+1}`,
     base_glb: F.baseGlb, out_glb: null,
-    body:{ body_type:F.body.body_type, skin_tone:F.body.skin_tone },
-    morphs, parts, textures, part_states,
+    body:{ body_type:F.body.body_type, skin_tone:F.body.skin_tone,
+           head_shape:F.body.head_shape||null, face_preset:F.body.face_preset||null,
+           proportions:F.body.proportions||null },
+    morphs, parts, textures, part_states, mesh_states,
     colors:{ hair:(a.colors&&a.colors.hair)||null, skin:F.body.skin_tone } };
 }
 function applyCustomizationRecord(rec){
   if(rec.body){ if(rec.body.body_type) F.body.body_type=rec.body.body_type;
-    if(rec.body.skin_tone) F.body.skin_tone=rec.body.skin_tone; }
+    if(rec.body.skin_tone) F.body.skin_tone=rec.body.skin_tone;
+    if(rec.body.head_shape) F.body.head_shape=rec.body.head_shape;
+    if(rec.body.face_preset) F.body.face_preset=rec.body.face_preset;
+    if(rec.body.proportions) F.body.proportions={ ...F.body.proportions, ...rec.body.proportions }; }
   F.morphs = rec.morphs||{};
   const a = attire();
   a.equipped={}; a.placements={};
@@ -196,6 +234,8 @@ function applyCustomizationRecord(rec){
     a.equipped[(p&&p.suite_slot)||'face']=t.part_id;
   }
   if(rec.colors && rec.colors.hair){ a.colors=a.colors||{}; a.colors.hair=rec.colors.hair; }
+  // Universal mesh toggles (OUTFIT tab, every model)
+  a.meshStates = rec.mesh_states ? JSON.parse(JSON.stringify(rec.mesh_states)) : {};
   // Phase 1: per-part toggles on the fighter's own meshes (OUTFIT tab)
   a.partStates = rec.part_states ? JSON.parse(JSON.stringify(rec.part_states)) : {};
 }
@@ -230,7 +270,7 @@ function modal(title, bodyHTML, actions){
   const box=$('#modal-actions'); box.innerHTML='';
   (actions||[{label:'OK',cls:'btn-gold'}]).forEach(a=>{
     const b=document.createElement('button'); b.className='btn '+(a.cls||''); b.textContent=a.label;
-    b.onclick=()=>{ closeModal(); a.fn&&a.fn(); }; box.appendChild(b); });
+    tap(b, ()=>{ closeModal(); a.fn&&a.fn(); }); box.appendChild(b); });
   $('#modal').hidden=false; $('#modal-scrim').hidden=false;
 }
 function closeModal(){ $('#modal').hidden=true; $('#modal-scrim').hidden=true; }
@@ -262,7 +302,11 @@ function morphsToDnaSliders(morphs){
 }
 function syncMorphs(){
   if(!viewer || !viewer.model) return;
-  const sliders = morphsToDnaSliders(F.morphs);
+  /* WMXIX props are the coarse template proportions, morphs the fine layer:
+     both feed the DNA engine additively (template-map mergeDNA), clamped to
+     each slider's range. Height/weight stay out — viewer.setProportions()
+     owns those as uniform model scale, so they are never applied twice. */
+  const sliders = mergeDNA(propsToDNA(F.body.proportions), morphsToDnaSliders(F.morphs));
   try{ if(Object.keys(sliders).length || viewer.model.userData._csPrepared) { applyBodySliders(viewer.model, sliders); viewer.model.userData._csPrepared=true; } }catch(e){ console.warn('[WH] body sliders failed', e); }
   try{ applyMorphProxies(viewer.model, F.morphs||{}); }catch(e){}
 }
@@ -291,6 +335,7 @@ function syncParts3D(){
 function syncPreview(){
   if(!viewer) return;
   viewer.setProportions(F.body.proportions);
+  viewer.setSkinTone(F.body.skin_tone);
   syncMorphs();
   syncParts3D();
   // texture parts: live swap first (packages parts.js semantics — match the
@@ -341,6 +386,15 @@ function setFpartState(pid, patch){
   a.partStates[pid] = Object.assign(cur, patch);
   applyPartStates3D(); persistQuiet();
 }
+/* Universal part toggles: any loaded model (not just the SmutBase 6 with a
+   fighter-parts inventory) exposes its own meshes for show/hide/invisible/
+   recolor via attire().meshStates. Stored per attire like partStates. */
+const meshState = mn => (attire().meshStates||{})[mn] || { mode:'shown', color:null };
+function setMeshState(mn, patch){
+  const a = attire(); a.meshStates = a.meshStates || {};
+  a.meshStates[mn] = { ...meshState(mn), ...patch };
+  applyPartStates3D(); persistQuiet();
+}
 const OUTFIT_SWAP_SOCKET = { hair:'hair', headwear:'head', face:'face', tops:'torso', bottoms:'legs',
   fullbody:'torso', underwear:'legs', hosiery:'legs', gloves:'hands', footwear:'feet', accessories:'accessory' };
 function swapCandidates(fp){
@@ -366,19 +420,30 @@ function applyPartStates3D(){
   }
   for(const k of [...viewer.parts.keys()])
     if(k.startsWith('swap:') && !seenSwap.has(k)) viewer.detachPart(k);
+  /* Universal mesh toggles (see meshState above): apply to every model,
+     whether or not it has a fighter-parts inventory. */
+  for(const [meshName, st] of Object.entries(attire().meshStates||{})){
+    viewer.setBaseMeshMode(meshName, st.mode||'shown');
+    viewer.setBaseMeshColor(meshName, st.color||null);
+  }
 }
 function renderOutfit(el){
   const fp = fpartsForCurrent();
   if(!fp){
-    $('#panel-sub').textContent='Fighter parts — own-mesh toggles';
-    el.innerHTML=`<div class="note">🧥 <b>OUTFIT</b> lists the fighter's <b>own modeled meshes</b>
-      (labeled per <span class="chip">roster/*/PARTS.md</span>) with per-part toggles:
-      👁 show/hide · 👻 invisible (slot stays occupied, for layering) · 🎨 recolor ·
-      🗑 delete from this attire · 🔀 swap with a compatible catalog part.<br><br>
-      ${F.mode!=='roster'
-        ? 'Pick a roster fighter first: <b>🧍 FIGHTER SELECT</b> below, then choose one of the SmutBase 6 — <b>Ryusan, Tobi, Chatur, Pond, Megami, Menajerii</b>.'
-        : `No parts inventory for <b>${esc(F.rosterRef.fighter)}</b> yet — Phase 1 covers the SmutBase 6; the full roster lands in Phase 5.`}
-      <br><br>Toggles apply live to the 3D preview and save into this attire's record (PROFILE → SAVE TO ATTIRE).</div>`;
+    /* Universal OUTFIT: no labeled parts inventory for this model — toggle
+       the model's OWN meshes directly. This is what makes per-part toggles
+       work on EVERY model (owner directive 2026-10-24 19:54 CDT), not just
+       the SmutBase 6. The old branch was a dead-end note telling the user to
+       pick a different fighter. */
+    $('#panel-sub').textContent='Model meshes — per-part toggles (works on every model)';
+    const meshes = (viewer && viewer.listBaseMeshes) ? viewer.listBaseMeshes() : [];
+    el.innerHTML=`<div class="note">🧥 No labeled parts inventory for this model — toggling
+      the model's OWN meshes directly (universal: every model, every rig).
+      👁 show/hide · 👻 invisible (slot stays occupied, for layering) · 🎨 recolor.
+      States save per attire (PROFILE → SAVE TO ATTIRE) and apply in-fight.</div>
+      <div class="sect">MESHES — ${meshes.length}</div><div id="of-generic"></div>`;
+    const host = el.querySelector('#of-generic');
+    meshes.forEach(mn => host.appendChild(meshRow(mn)));
     return;
   }
   const fname = fp.fighter_name || (F.rosterRef&&F.rosterRef.fighter) || '';
@@ -392,6 +457,37 @@ function renderOutfit(el){
     const host = el.querySelector('#of-'+c.key);
     fp.parts.filter(p=>p.category===c.key).forEach(p=>host.appendChild(outfitRow(p)));
   }
+}
+function meshRow(mn){
+  const st = meshState(mn);
+  const d = document.createElement('div');
+  d.className='of-row';
+  d.innerHTML=`
+    <div class="of-main">
+      <div class="of-name">${esc(mn)}</div>
+      <div class="of-state"><span class="chip of-${st.mode||'shown'}">${{shown:'SHOWN',hidden:'HIDDEN',invisible:'INVISIBLE',deleted:'DELETED'}[st.mode||'shown']}</span>${st.color?` <span class="chip">🎨 <i style="display:inline-block;width:10px;height:10px;background:${st.color};border-radius:2px"></i></span>`:''}</div>
+    </div>
+    <div class="of-ctl"></div>`;
+  const ctl = d.querySelector('.of-ctl');
+  const bVis=document.createElement('button'); bVis.className='btn btn-sm';
+  bVis.textContent=(st.mode==='hidden'||st.mode==='invisible')?'👁 SHOW':'👁 HIDE';
+  tap(bVis, ()=>{ const cur=meshState(mn).mode||'shown';
+    setMeshState(mn,{mode:(cur==='hidden'||cur==='invisible')?'shown':'hidden'}); renderPanel(); });
+  const bInv=document.createElement('button'); bInv.className='btn btn-sm'; bInv.textContent='👻 INVISIBLE';
+  bInv.title='Hidden, but the slot stays occupied (layering)';
+  tap(bInv, ()=>{ const cur=meshState(mn).mode||'shown';
+    setMeshState(mn,{mode:cur==='invisible'?'shown':'invisible'}); renderPanel(); });
+  const bCol=document.createElement('label'); bCol.className='btn btn-sm'; bCol.textContent='🎨';
+  bCol.title='Recolor this mesh'; bCol.style.position='relative'; bCol.style.overflow='hidden';
+  const inp=document.createElement('input'); inp.type='color'; inp.value=st.color||'#ffffff'; inp.setAttribute('aria-label','Recolor '+mn);
+  inp.style.cssText='position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer';
+  inp.oninput=()=>{ setMeshState(mn,{color:inp.value}); };
+  inp.onchange=()=>{ renderPanel(); };
+  bCol.appendChild(inp);
+  const bColX=document.createElement('button'); bColX.className='btn btn-sm'; bColX.textContent='🎨✕'; bColX.title='Clear recolor';
+  tap(bColX, ()=>{ setMeshState(mn,{color:null}); renderPanel(); });
+  [bVis,bInv,bCol,bColX].forEach(b=>ctl.appendChild(b));
+  return d;
 }
 function outfitRow(p){
   const st = fpartState(p.id);
@@ -413,12 +509,12 @@ function outfitRow(p){
   }
   const bVis=document.createElement('button'); bVis.className='btn btn-sm';
   bVis.textContent=(st.mode==='hidden'||st.mode==='invisible')?'👁 SHOW':'👁 HIDE';
-  bVis.onclick=()=>{ const cur=fpartState(p.id).mode||'shown';
-    setFpartState(p.id,{mode:(cur==='hidden'||cur==='invisible')?'shown':'hidden'}); renderPanel(); };
+  tap(bVis, ()=>{ const cur=fpartState(p.id).mode||'shown';
+    setFpartState(p.id,{mode:(cur==='hidden'||cur==='invisible')?'shown':'hidden'}); renderPanel(); });
   const bInv=document.createElement('button'); bInv.className='btn btn-sm'; bInv.textContent='👻 INVISIBLE';
   bInv.title='Hidden, but the slot stays occupied (layering)';
-  bInv.onclick=()=>{ const cur=fpartState(p.id).mode||'shown';
-    setFpartState(p.id,{mode:cur==='invisible'?'shown':'invisible'}); renderPanel(); };
+  tap(bInv, ()=>{ const cur=fpartState(p.id).mode||'shown';
+    setFpartState(p.id,{mode:cur==='invisible'?'shown':'invisible'}); renderPanel(); });
   const bCol=document.createElement('label'); bCol.className='btn btn-sm'; bCol.textContent='🎨';
   bCol.title='Recolor this part'; bCol.style.position='relative'; bCol.style.overflow='hidden';
   const inp=document.createElement('input'); inp.type='color'; inp.value=st.color||'#ffffff'; inp.setAttribute('aria-label','Recolor '+p.label);
@@ -427,20 +523,20 @@ function outfitRow(p){
   inp.onchange=()=>{ renderPanel(); };
   bCol.appendChild(inp);
   const bColX=document.createElement('button'); bColX.className='btn btn-sm'; bColX.textContent='🎨✕'; bColX.title='Clear recolor';
-  bColX.onclick=()=>{ setFpartState(p.id,{color:null}); renderPanel(); };
+  tap(bColX, ()=>{ setFpartState(p.id,{color:null}); renderPanel(); });
   const bDel=document.createElement('button');
   bDel.className='btn btn-sm '+((st.mode==='deleted')?'btn-green':'btn-red');
   const canDelete = p.swappable && !p.signature;
   bDel.textContent = st.mode==='deleted' ? '↩ RESTORE' : '🗑 DELETE';
   bDel.disabled = !canDelete && st.mode!=='deleted';
   bDel.title = p.signature ? 'Signature part — canon: never removed' : (p.swappable?'Remove from this attire':'Not separable — hide/recolor only');
-  bDel.onclick=()=>{ const cur=fpartState(p.id).mode||'shown';
-    setFpartState(p.id,{mode:cur==='deleted'?'shown':'deleted'}); renderPanel(); };
+  tap(bDel, ()=>{ const cur=fpartState(p.id).mode||'shown';
+    setFpartState(p.id,{mode:cur==='deleted'?'shown':'deleted'}); renderPanel(); });
   const bSwap=document.createElement('button'); bSwap.className='btn btn-sm btn-blue';
   bSwap.textContent = st.swap ? '🔀 SWAPPED ✓' : '🔀 SWAP';
   bSwap.disabled = !p.swappable;
   bSwap.title = p.swappable ? 'Replace with a compatible catalog part' : 'Not swappable';
-  bSwap.onclick=()=>openSwapLibrary(p);
+  tap(bSwap, ()=>openSwapLibrary(p));
   [bVis,bInv,bCol,bColX,bDel,bSwap].forEach(b=>ctl.appendChild(b));
   return d;
 }
@@ -461,19 +557,19 @@ function openSwapLibrary(p){
      <div class="ms-lib">${rows||'<div class="note">No compatible catalog parts with meshes yet.</div>'}</div>`,
     [{label:'CLOSE'}]);
   const mb=$('#modal-body');
-  mb.querySelectorAll('.ms-row').forEach(b=>b.onclick=()=>{
+  mb.querySelectorAll('.ms-row').forEach(b=>tap(b, ()=>{
     const c=PARTS.find(x=>x.id===b.dataset.id); if(!c) return;
     setFpartState(p.id,{mode:'shown', swap:{part_id:c.id, name:c.name, glb:c.glb, socket:partSocket(c), placement:defaultPlacement(c)}});
     closeModal(); renderPanel(); toast('Swapped ✓');
-  });
+  }));
   const clr=mb.querySelector('#swap-clear');
-  if(clr) clr.onclick=()=>{ setFpartState(p.id,{swap:null}); closeModal(); renderPanel(); toast('Swap removed ✓'); };
+  if(clr) tap(clr, ()=>{ setFpartState(p.id,{swap:null}); closeModal(); renderPanel(); toast('Swap removed ✓'); });
 }
 
 /* ---------- topbar ---------- */
 function renderTopbar(){
   $('#fighter-name').textContent = F.profile.name||'NEW FIGHTER';
-  $('#breadcrumb').textContent = `${F.profile.name||'New Fighter'} > Attire ${F.attireIndex+1} > ${ui.tab.toUpperCase()}${ui.attireCat?' > '+ui.attireCat.label:''}${ui.partsCat?' > '+ui.partsCat.label:''}`;
+  $('#breadcrumb').textContent = `${F.profile.name||'New Fighter'} > Attire ${F.attireIndex+1} > ${ui.tab.toUpperCase()}${ui.bodySec?' > '+ui.bodySec.toUpperCase():''}${ui.attireCat?' > '+ui.attireCat.label:''}${ui.partsCat?' > '+ui.partsCat.label:''}`;
   $('#wallet-amt').textContent = F.wallet.toLocaleString();
   const tabs=$('#attire-tabs'); tabs.innerHTML='';
   F.attires.forEach((a,i)=>{
@@ -490,12 +586,12 @@ function renderTopbar(){
 
 /* ---------- rail ---------- */
 function setTab(t){
-  ui.tab=t; ui.attireCat=null; ui.partsCat=null; ui.selPart=null;
+  ui.tab=t; ui.bodySec=null; ui.attireCat=null; ui.partsCat=null; ui.selPart=null;
   document.querySelectorAll('.rail-btn').forEach(x=>x.classList.toggle('active',x.dataset.tab===t));
   if(t!=='parts') hidePlaceDock();
   renderAll();
 }
-document.querySelectorAll('.rail-btn').forEach(b=>b.onclick=()=>setTab(b.dataset.tab));
+document.querySelectorAll('.rail-btn').forEach(b=>tap(b, ()=>setTab(b.dataset.tab)));
 
 function renderAll(){ renderTopbar(); renderPanel(); syncPreview(); persistQuiet(); }
 function renderPanel(){
@@ -503,29 +599,107 @@ function renderPanel(){
   $('#panel-title').textContent=ui.tab.toUpperCase(); $('#panel-sub').textContent='';
   body.innerHTML='';
   ({body:renderBody,attire:renderAttire,parts:renderParts,outfit:renderOutfit,jiggle:renderJiggle,
-    wardrobe:renderWardrobe,profile:renderProfile,moveset:renderMoveset,dome:renderDome})[ui.tab](body);
+    wardrobe:renderWardrobe,profile:renderProfile,moveset:renderMoveset,dome:renderDome,tools:renderTools})[ui.tab](body);
 }
 
 /* ================= BODY ================= */
+/* ================= BODY — nested like WWE 2K CAW =================
+   WWE 2K CAW nesting (customization/wwe2k-caw/CAW-SUITE-BREAKDOWN.md §2.2:
+   Custom Superstar -> Appearance -> Body -> presets / morph sliders) +
+   Tekken customization slots for attire. The old BODY tab rendered all six
+   sections flat in one long scroll — the "ugly flat menu" in the user's
+   2026-10-24 screenshot. Now: one section list, one section at a time, a
+   back button that always works, and the 3D preview always visible. */
+const BODY_SECTIONS = [
+  { key:'templates', icon:'🧱', label:'TEMPLATES', note:'9 real MB-Lab bodies (No Mercy) — tap to swap the whole body' },
+  { key:'bodytype', icon:'👤', label:'BODY TYPE', note:'23 No Mercy types — tap to apply proportions (+ mesh where a template exists)' },
+  { key:'skintone', icon:'🎨', label:'SKIN TONE', note:'8 tones' },
+  { key:'props', icon:'📏', label:'PROPORTIONS', note:'WMXIX parametric sliders (live)' },
+  { key:'morphs', icon:'💪', label:'MORPHS', note:'Frame / Mass / Face Shape' },
+  { key:'face', icon:'😀', label:'FACE', note:'12 presets — No Mercy faces + GNM expressions' },
+];
 function renderBody(el){
   $('#panel-sub').textContent='Wrestling CAW — No Mercy body types, WMXIX proportions';
-  el.innerHTML=`
-    <div class="sect">BODY TYPE — 14M + 9F (No Mercy)</div><div class="roster-grid" id="btypes"></div>
-    <div class="sect">SKIN TONE — 8 tones</div><div class="swatches" id="stones"></div>
-    <div class="sect">PROPORTIONS — WMXIX parametric (live)</div><div id="psl"></div>
-    <div class="sect">MORPHS — FRAME (packages morphs.js)</div><div id="mframe"></div>
-    <div class="sect">MORPHS — MASS</div><div id="mmass"></div>
-    <div class="sect">MORPHS — FACE SHAPE</div><div id="mface"></div>
-    <div class="note">Morph sliders are the real packages/creation-suite catalog (BODY_MORPHS + FACE_SHAPE_MORPHS), driven live through packages dna.js/body.js on the loaded model. Values save into this attire's customization record. Face values also record for the MPFB bake (shape keys are the ground truth).</div>`;
-  const bt=el.querySelector('#btypes');
+  if(!ui.bodySec){
+    el.innerHTML=`<div class="note">Appearance → Body, nested like WWE 2K CAW
+      (Custom Superstar → Appearance → Body) and Tekken customization: pick a
+      section, change it, back out. The 3D preview stays visible throughout.</div>` +
+      BODY_SECTIONS.map(s=>`<button class="subcat" data-bs="${s.key}"><span class="sc-ico">${s.icon}</span><span>${s.label}<br><small style="color:var(--dim)">${s.note}</small></span></button>`).join('');
+    el.querySelectorAll('[data-bs]').forEach(b=>tap(b, ()=>{ ui.bodySec=b.dataset.bs; renderPanel(); }));
+    return;
+  }
+  const backTo = ui.bodySec.startsWith('morph-') ? 'morphs' : null;
+  el.innerHTML=`<div class="back-row"><button class="btn back-btn" id="btn-body-back">← ${backTo ? 'MORPHS' : 'BODY'}</button></div><div id="body-sec"></div>`;
+  tap(el.querySelector('#btn-body-back'), ()=>{ ui.bodySec=backTo; renderPanel(); });
+  const host = el.querySelector('#body-sec');
+  ({ templates:renderBodyTemplates, bodytype:renderBodyType, skintone:renderBodySkin,
+     props:renderBodyProps, morphs:renderBodyMorphMenu, 'morph-frame':h=>renderBodyMorphList(h,'frame'),
+     'morph-mass':h=>renderBodyMorphList(h,'mass'), 'morph-face':h=>renderBodyMorphList(h,'face'),
+     face:renderBodyFace })[ui.bodySec](host);
+}
+/* Apply a full template: body type + proportions + skin + head + MESH.
+   Switching templates changes the character (mesh + proportions + parts),
+   not just a label — the mesh swap is the visible proof. Proportions reset
+   to the template (defaults + template values); fine morphs stay on top. */
+function applyTemplate(t){
+  F.body.body_type = t.body_type;
+  F.body.proportions = { ...DEFAULT_PROPS, ...(t.proportions||{}) };
+  F.body.skin_tone = t.skin_tone;
+  F.body.head_shape = t.head_shape;
+  const meshChanged = F.baseGlb !== t.base_mesh;
+  F.baseGlb = t.base_mesh;
+  toast(`Template: ${t.name} ✓`);
+  if(meshChanged) loadBaseModel(); else renderAll();
+}
+function renderBodyTemplates(host){
+  $('#panel-sub').textContent='Templates — 9 real MB-Lab bodies (body-templates.json)';
+  if(!TEMPLATES.length){ host.innerHTML='<div class="note">Templates failed to load (customization/templates/body-templates.json).</div>'; return; }
+  host.innerHTML=`<div class="note">Tap a template — the mesh, proportions, skin tone
+    and head shape all change. Technician (Medium 1) is the blank CAW canvas.</div>` +
+    TEMPLATES.map(t=>`<button class="subcat" data-t="${esc(t.id)}"><span class="sc-ico">🧱</span><span>${esc(t.name)}<br><small style="color:var(--dim)">${esc(t.body_type)} · ${esc(t.division)} · ${esc(t.gender)} · ${esc(t.desc||'')}</small></span></button>`).join('');
+  host.querySelectorAll('[data-t]').forEach(b=>tap(b, ()=>{
+    const t=TEMPLATES.find(x=>x.id===b.dataset.t); if(t) applyTemplate(t); }));
+}
+/* Apply a body type: proportions from template-map (dedicated template, or
+   legacy h/w + family muscle, or whole family proportions for F types).
+   The basis is shown in the toast — a family fallback is never presented
+   as extracted data. Where the resolved template has a different mesh, the
+   mesh swaps too, so the type change is visible. */
+function applyBodyType(type){
+  const r = bodyTypeToDNA(type, TEMPLATES);
+  F.body.body_type = type;
+  F.body.proportions = { ...DEFAULT_PROPS, ...r.proportions };
+  let meshChanged = false;
+  if(r.templateId){
+    const t = TEMPLATES.find(x=>x.id===r.templateId);
+    if(t && F.baseGlb !== t.base_mesh){ F.baseGlb = t.base_mesh; meshChanged = true; }
+  }
+  toast(`${type} ✓ (${r.basis})`);
+  if(meshChanged) loadBaseModel(); else renderAll();
+}
+function renderBodyType(host){
+  $('#panel-sub').textContent='Body type — 23 No Mercy types';
+  host.innerHTML=`<div class="sect">BODY TYPE — 14M + 9F (No Mercy)</div><div class="roster-grid" id="btypes"></div>`;
+  const bt=host.querySelector('#btypes');
   BODY_TYPES.forEach(t=>{ const b=document.createElement('button');
     b.className='roster-card'+(F.body.body_type===t?' active':''); b.textContent=t;
-    b.onclick=()=>{ F.body.body_type=t; renderAll(); }; bt.appendChild(b); });
-  const st=el.querySelector('#stones');
+    tap(b, ()=>applyBodyType(t)); bt.appendChild(b); });
+}
+function renderBodySkin(host){
+  $('#panel-sub').textContent='Skin tone — 8 tones';
+  host.innerHTML=`<div class="sect">SKIN TONE — 8 tones</div><div class="swatches" id="stones"></div>`;
+  const st=host.querySelector('#stones');
   SKIN_TONES.forEach(h=>{ const s=document.createElement('div');
     s.className='swatch'+(F.body.skin_tone===h?' active':''); s.style.background=h; s.title=h;
-    s.onclick=()=>{ F.body.skin_tone=h; renderAll(); }; st.appendChild(s); });
-  const sl=el.querySelector('#psl');
+    tap(s, ()=>{ F.body.skin_tone=h; renderAll(); }); st.appendChild(s); });
+}
+function renderBodyProps(host){
+  $('#panel-sub').textContent='Proportions — WMXIX parametric (live)';
+  host.innerHTML=`<div class="sect">PROPORTIONS — WMXIX parametric (live)</div><div id="psl"></div>
+    <div class="note">Height/weight scale the whole model; muscle, shoulders, chest,
+    waist, hips, arms and legs morph it through the DNA engine (template-map).
+    Every slider visibly changes the preview — these are not labels.</div>`;
+  const sl=host.querySelector('#psl');
   PROPS.forEach(([k,label,lo,hi])=>{
     const d=document.createElement('div'); d.className='ctl'; d.id='prop-'+k;
     d.innerHTML=`<label>${label}<span class="val">${F.body.proportions[k].toFixed(2)}</span></label>
@@ -535,19 +709,130 @@ function renderBody(el){
       d.querySelector('.val').textContent=(+inp.value).toFixed(2); syncPreview(); persistQuiet(); };
     sl.appendChild(d);
   });
-  const addMorph=(host, m)=>{
-    const v=(F.morphs && F.morphs[m.id])||0;
-    const d=document.createElement('div'); d.className='ctl'; d.id='morph-'+m.id;
-    d.innerHTML=`<label>${m.label}<span class="val">${v.toFixed(2)}</span></label>
-      <input type="range" min="${m.range[0]}" max="${m.range[1]}" step="0.01" value="${v}" data-morph="${m.id}" aria-label="${m.label}">`;
-    const inp=d.querySelector('input');
-    inp.oninput=()=>{ F.morphs=F.morphs||{}; F.morphs[m.id]=+inp.value;
-      d.querySelector('.val').textContent=(+inp.value).toFixed(2); syncMorphs(); persistQuiet(); };
-    host.appendChild(d);
-  };
-  const hf=el.querySelector('#mframe'), hm=el.querySelector('#mmass'), hface=el.querySelector('#mface');
-  BODY_MORPHS.forEach(m=> addMorph(FRAME_IDS.includes(m.id)?hf:hm, m));
-  FACE_SHAPE_MORPHS.forEach(m=> addMorph(hface, m));
+}
+function renderBodyMorphMenu(host){
+  $('#panel-sub').textContent='Morphs — Frame / Mass / Face Shape';
+  host.innerHTML=`<div class="note">Real packages/creation-suite morph catalog,
+    driven live through dna.js/body.js on the loaded model. Values save into
+    this attire's customization record. Face values also record for the MPFB
+    bake (shape keys are the ground truth).</div>` +
+    [['morph-frame','💪','FRAME','Height, shoulders, limbs, neck, hands, feet'],
+     ['morph-mass','🏋️','MASS','Bulk, weight, muscle, belly'],
+     ['morph-face','😀','FACE SHAPE','Jaw, cheeks, brow, nose, eyes, mouth, chin']].map(([k,ico,lbl,note])=>
+    `<button class="subcat" data-ms="${k}"><span class="sc-ico">${ico}</span><span>${lbl}<br><small style="color:var(--dim)">${note}</small></span></button>`).join('');
+  host.querySelectorAll('[data-ms]').forEach(b=>tap(b, ()=>{ ui.bodySec=b.dataset.ms; renderPanel(); }));
+}
+function addMorphSlider(host, m){
+  const v=(F.morphs && F.morphs[m.id])||0;
+  const d=document.createElement('div'); d.className='ctl'; d.id='morph-'+m.id;
+  d.innerHTML=`<label>${m.label}<span class="val">${v.toFixed(2)}</span></label>
+    <input type="range" min="${m.range[0]}" max="${m.range[1]}" step="0.01" value="${v}" data-morph="${m.id}" aria-label="${m.label}">`;
+  const inp=d.querySelector('input');
+  inp.oninput=()=>{ F.morphs=F.morphs||{}; F.morphs[m.id]=+inp.value;
+    d.querySelector('.val').textContent=(+inp.value).toFixed(2); syncMorphs(); persistQuiet(); };
+  host.appendChild(d);
+}
+function renderBodyMorphList(host, kind){
+  const title = { frame:'MORPHS — FRAME', mass:'MORPHS — MASS', face:'MORPHS — FACE SHAPE' }[kind];
+  $('#panel-sub').textContent=title;
+  host.innerHTML=`<div class="sect">${title} (packages morphs.js)</div><div id="mlist"></div>`;
+  const h=host.querySelector('#mlist');
+  if(kind==='face') FACE_SHAPE_MORPHS.forEach(m=>addMorphSlider(h, m));
+  else if(kind==='frame') BODY_MORPHS.filter(m=>FRAME_IDS.includes(m.id)).forEach(m=>addMorphSlider(h, m));
+  else BODY_MORPHS.filter(m=>!FRAME_IDS.includes(m.id)).forEach(m=>addMorphSlider(h, m));
+}
+function renderBodyFace(host){
+  $('#panel-sub').textContent='Face — 12 presets (No Mercy + GNM)';
+  if(!FACE_PRESETS.length){ host.innerHTML='<div class="note">Face presets failed to load (customization/templates/face-presets.json).</div>'; return; }
+  const byLayer = l => FACE_PRESETS.filter(p=>p.layer===l);
+  const card = p=>`<button class="subcat" data-fp="${esc(p.id)}"><span class="sc-ico">${p.layer==='wwe'?'🎭':'😀'}</span><span>${esc(p.name)}<br><small style="color:var(--dim)">${esc(p.desc||'')} · ${p.layer==='wwe' ? 'No Mercy face texture (tap = live swap)' : 'GNM expression (bake)'}${F.body.face_preset===p.id?' · ✓ selected':''}</small></span></button>`;
+  host.innerHTML=`<div class="note">Tap a No Mercy preset — its face texture swaps LIVE in the
+    preview (146 PNGs in customization/parts/no-mercy/faces/, mapped by
+    preset number in packages/creation-suite/src/face-texture-map.js) and
+    records into this attire (PROFILE → SAVE TO ATTIRE) for the face bake.
+    If this base mesh has no swappable face material, the tap still records
+    for bake and says so — it never pretends a swap happened. GNM
+    expressions bake through the pipeline (TOOLS tab); for face SHAPE
+    changes you can see right now, use MORPHS → FACE SHAPE.</div>
+    <div class="sect">NO MERCY FACES — wwe layer</div>${byLayer('wwe').map(card).join('')}
+    <div class="sect">GNM EXPRESSIONS — gnm layer</div>${byLayer('gnm').map(card).join('')}
+    <div class="btn-row"><button class="btn btn-blue" id="btn-face-shape">💪 SHAPE THE FACE (live morphs) →</button></div>`;
+  host.querySelectorAll('[data-fp]').forEach(b=>tap(b, ()=>{
+    F.body.face_preset=b.dataset.fp;
+    const preset=FACE_PRESETS.find(p=>p.id===b.dataset.fp);
+    const texFile=faceTextureForPreset(preset);
+    if(texFile && typeof viewer!=='undefined' && viewer && viewer.swapFaceTexture){
+      viewer.swapFaceTexture('../parts/no-mercy/faces/'+texFile).then(swapped=>{
+        toast(`Face preset: ${preset?.name||b.dataset.fp} ✓ (${swapped?'live swap in preview':'recorded for bake — no swappable face material on this base mesh'})`);
+        renderPanel();
+      });
+    } else {
+      renderPanel();
+      toast(`Face preset: ${preset?.name||b.dataset.fp} ✓ (recorded for bake)`);
+    } }));
+  tap(host.querySelector('#btn-face-shape'), ()=>{ ui.bodySec='morph-face'; renderPanel(); });
+}
+
+
+/* ================= TOOLS — tool-to-menu map (owner law 2026-10-22) =================
+   Every open-source tool lives in the menu where it belongs. In-suite actions
+   run in this page; pipeline actions run via the repo script shown — Blender
+   and GPU jobs cannot run inside a browser page, so the entry shows its real
+   path and status instead of a fake button. */
+const TOOLS_MAP = [
+  { icon:'🧱', name:'MPFB / MB-Lab', menu:'BODY → Templates + Morphs',
+    what:'Parametric bodies. Template meshes are MB-Lab bakes; BODY morph sliders are the MPFB-derived morph ground truth (shape keys).',
+    path:'customization/templates/ (meshes + specs)',
+    status:'In-suite: templates + morphs live. Bake script tools/mb-lab/run_mblab_job.py is ABSENT from the repo (dir holds only .gitignore) — re-bake path is MPFB2 per templates README.',
+    action:'Tap BODY → TEMPLATES or MORPHS.' },
+  { icon:'👤', name:'Build-A-Bod', menu:'BODY → Templates',
+    what:'SmutBase body builds pulled 2026-10-22. Template meshes derive from the same body family.',
+    path:'customization/templates/meshes/',
+    status:'In-suite via templates.',
+    action:'Tap BODY → TEMPLATES.' },
+  { icon:'🦴', name:'GameRig / NaughTyRig', menu:'All rigs (automatic)',
+    what:'Auto-rigging for Tripo/custom models. In-suite, the rig adapter resolves every rig family to canonical bones so sockets, morphs and swaps work regardless of skeleton.',
+    path:'packages/creation-suite/src/rig-adapter.js',
+    status:'In-suite: rig adapter live on every model load (see CURRENT MODEL below).',
+    action:'Load any model — sockets and morphs follow its own bones.' },
+  { icon:'🎨', name:'Fluid Painter', menu:'BODY → Skin Tone + OUTFIT recolor',
+    what:'Skin/texture painting (Blender add-on). In-suite, skin tones + per-part recolor apply live to the preview.',
+    path:'Blender add-on (pipeline-side)',
+    status:'In-suite: skin tone + recolor live. Full texture painting is a Blender-side job.',
+    action:'BODY → SKIN TONE, OUTFIT → recolor.' },
+  { icon:'😀', name:'Google GNM', menu:'BODY → Face',
+    what:'Google Research Generative aNthropometric Model (Apache 2.0) — parametric head/face from 3D scans. GNM expression presets live in BODY → FACE; full head bakes run offline.',
+    path:'tools/gnm/run_gnm_job.py',
+    status:'In-suite: 4 GNM presets in FACE. Bake needs gated HuggingFace weights (google/gnm-3, license accept) + optional TensorFlow — cannot run in-browser.',
+    action:'BODY → FACE → pick a GNM preset (recorded for bake).' },
+  { icon:'📥', name:'Tripo intake / extraction', menu:'FIGHTER SELECT',
+    what:'Tripo models are the user\'s own models FIRST on select (display-order law). Roster Tripo attires load as real GLBs through FIGHTER SELECT.',
+    path:'roster/*/attires/ (Tripo models in-repo)',
+    status:'In-suite via FIGHTER SELECT.',
+    action:'FIGHTER SELECT → pick a fighter → attire.' },
+  { icon:'📦', name:'gltfpack / glTF-Transform', menu:'EXPORT',
+    what:'GLB optimization (meshopt). The suite EXPORT button writes the fighter JSON; gltfpack optimization of the GLB runs as a pipeline step (proven in studio-pipeline tests: stance GLBs −54% to −65%, stage −59%).',
+    path:'tools/gltfpack/ (canonical: fetch-gltfpack.sh + run_gltfpack_job.py on main; studio pipeline PR #1038 vendors the same gltfpack binary at tools/wh-asset-pipeline/tools/gltfpack — one tool, not a second pipeline)',
+    status:'Pipeline-side, one working path: EXPORT writes fighter JSON; GLB optimization runs via tools/gltfpack/run_gltfpack_job.py.',
+    action:'EXPORT writes fighter JSON now.' },
+];
+function renderTools(el){
+  const rp = viewer && viewer.rigProfile;
+  $('#panel-sub').textContent='Tool-to-menu map — every tool, where it lives, what it does here';
+  el.innerHTML = `<div class="note">Owner law (2026-10-22): every open-source tool lives in the
+    menu where it belongs. The suite is ONE system, not disconnected scripts.
+    In-suite actions run in this page; pipeline actions run via the repo
+    script shown (Blender/GPU jobs cannot run inside a browser page — the
+    entry still belongs here, with its real path, not a fake button).</div>` +
+    (rp ? `<div class="sect">CURRENT MODEL — RIG COMPATIBILITY</div>
+      <div class="kv"><span>Bones in model</span><b>${rp.boneCount}</b></div>
+      <div class="kv"><span>Canonical bones resolved</span><b>${rp.found} / ${rp.total}</b></div>
+      <div class="kv"><span>Naming style</span><b>${esc(rp.namingStyles.join(', '))}</b></div>
+      ${rp.missing.length ? `<div class="note">Not resolved on this rig (reported, not guessed):
+      ${esc(rp.missing.join(', '))}. Morphs/sockets that need those bones fall back
+      visibly instead of binding wrong.</div>` : `<div class="note">✓ All canonical bones resolve on this rig — morphing, sockets and part swaps work here.</div>`}` : '') +
+    TOOLS_MAP.map(t=>`<div class="sect">${t.icon} ${t.name} → ${t.menu}</div>
+      <div class="note">${t.what}<br><span class="chip">${esc(t.path)}</span><br>Status: <b>${esc(t.status)}</b><br>In-suite: ${esc(t.action)}</div>`).join('');
 }
 
 /* ================= ATTIRE (T7 spine) ================= */
@@ -648,13 +933,13 @@ function renderPartGrid(el, cat, list, backKey){
       <span class="bb-hint">Page ${ui.page+1} / ${pages}</span>
       <button class="btn btn-sm" id="pg-next" ${ui.page>=pages-1?'disabled':''}>NEXT →</button></div>
     <div class="item-grid" id="grid"></div><div id="pdetail"></div>`;
-  el.querySelector('#btn-back').onclick=()=>{ ui[backKey]=null; ui.selPart=null; ui.query=''; hidePlaceDock(); renderAll(); };
+  tap(el.querySelector('#btn-back'), ()=>{ ui[backKey]=null; ui.selPart=null; ui.query=''; hidePlaceDock(); renderAll(); });
   const search=el.querySelector('#part-search');
   search.oninput=()=>{ ui.query=search.value; ui.page=0;
     const pos=search.selectionStart; renderPanel();
     const s2=document.querySelector('#part-search'); if(s2){ s2.focus(); s2.setSelectionRange(pos,pos); } };
-  el.querySelector('#pg-prev').onclick=()=>{ ui.page--; renderPanel(); };
-  el.querySelector('#pg-next').onclick=()=>{ ui.page++; renderPanel(); };
+  tap(el.querySelector('#pg-prev'), ()=>{ ui.page--; renderPanel(); });
+  tap(el.querySelector('#pg-next'), ()=>{ ui.page++; renderPanel(); });
   const grid=el.querySelector('#grid');
   pageItems.forEach(p=>{
     const owned = attire().owned.includes(p.id);
@@ -670,10 +955,39 @@ function renderPartGrid(el, cat, list, backKey){
       ${p.eye_kind==='texture_variant'?' <span class="geo-badge">TEXTURE VARIANT (LEGACY)</span>':''}
       ${p.geometry_pending?' <span class="geo-badge">GEOMETRY PENDING</span>':''}<br>
       ${owned?'<span class="owned">OWNED</span>':'<span class="price">500G</span>'}</div>`;
-    d.onclick=()=>{ ui.selPart=p; renderPanel(); renderTopbar(); };
+    tap(d, ()=>{ ui.selPart=p; renderPanel(); renderTopbar(); });
     grid.appendChild(d);
   });
   if(ui.selPart && list.includes(ui.selPart)) renderPartDetail(el.querySelector('#pdetail'), ui.selPart, slotKey);
+}
+/* WWE 2K19 layering (packages/creation-suite/src/layering.js): equipping a
+   part unequips the parts it conflicts with (full body vs upper/lower).
+   Conflicts match on suite_slot, because attire().equipped is keyed by T7
+   slot. Registry spelling 'fullbody' is normalized to layering spelling
+   'full_body'. Removed parts are named in the toast — never silently
+   dropped. Coverage note: only parts carrying layering-vocabulary suite_slots
+   trigger the suite_slot rule; the T7-slot rule below covers the rest. */
+function equipWithConflicts(slotKey, p){
+  const norm = s => (s === 'fullbody' ? 'full_body' : s);
+  const conflicts = (p.suite_slot && SLOT_CONFLICTS[norm(p.suite_slot)]) || [];
+  const removed = [];
+  const pushRemoved = n => { if(!removed.includes(n)) removed.push(n); };
+  if(conflicts.length){
+    for(const [k, pid] of Object.entries(attire().equipped)){
+      if(k===slotKey) continue;
+      const other = PARTS.find(x=>x.id===pid);
+      if(other && conflicts.includes(norm(other.suite_slot))){ delete attire().equipped[k]; pushRemoved(other.name||pid); }
+    }
+  }
+  /* T7 zone conflicts (MENU_SRC T7_CONFLICTS: FULL_BODY vs UPPER/LOWER):
+     T7 slots 9 = Upper Body, 10 = Full Body, 11 = Lower Body. */
+  const t7Conflicts = slotKey==='10' ? ['9','11'] : (slotKey==='9'||slotKey==='11' ? ['10'] : []);
+  for(const k of t7Conflicts){
+    const pid = attire().equipped[k];
+    if(pid){ const other = PARTS.find(x=>x.id===pid); delete attire().equipped[k]; pushRemoved((other&&other.name)||pid); }
+  }
+  attire().equipped[slotKey]=p.id;
+  return removed;
 }
 function renderPartDetail(el, p, slotKey){
   const owned = attire().owned.includes(p.id);
@@ -696,7 +1010,8 @@ function renderPartDetail(el, p, slotKey){
     // geometry-pending registry part: record + socket marker, no fake mesh
     if(!eqd){
       const b=document.createElement('button'); b.className='btn btn-green'; b.id='btn-apply-part'; b.textContent='APPLY (GEOMETRY PENDING)';
-      b.onclick=()=>{ attire().equipped[slotKey]=p.id; renderAll(); toast('Recorded ✓ — geometry pending'); };
+      tap(b, ()=>{ const removed=equipWithConflicts(slotKey,p); renderAll();
+        toast('Recorded ✓ — geometry pending'+(removed.length?` · unequipped (layer conflict): ${removed.join(', ')}`:'')); });
       box.appendChild(b);
     } else {
       const b=document.createElement('button'); b.className='btn btn-red'; b.id='btn-unequip-part'; b.textContent='REMOVE';
@@ -707,11 +1022,12 @@ function renderPartDetail(el, p, slotKey){
     if(!eqd){
       const b=document.createElement('button'); b.className='btn btn-gold'; b.id='btn-equip-part';
       b.textContent=owned?'EQUIP':'BUY — 500G';
-      b.onclick=()=>{ if(!owned){ if(F.wallet<500){ modal('NOT ENOUGH FIGHT MONEY','<p>Need <b>500G</b>.</p>',[{label:'OK',cls:'btn-gold'}]); return; }
+      tap(b, ()=>{ if(!owned){ if(F.wallet<500){ modal('NOT ENOUGH FIGHT MONEY','<p>Need <b>500G</b>.</p>',[{label:'OK',cls:'btn-gold'}]); return; }
           F.wallet-=500; attire().owned.push(p.id); }
-        attire().equipped[slotKey]=p.id;
+        const removed=equipWithConflicts(slotKey,p);
         if(!attire().placements[p.id]){ const def=PARTS.find(x=>x.id===p.id); attire().placements[p.id]=defaultPlacement(def||{}); }
-        renderAll(); showPlaceDock(p); toast('Equipped ✓ — nudge it into place'); };
+        renderAll(); showPlaceDock(p);
+        toast('Equipped ✓ — nudge it into place'+(removed.length?` · unequipped (layer conflict): ${removed.join(', ')}`:'')); });
       box.appendChild(b);
     } else {
       const b1=document.createElement('button'); b1.className='btn btn-blue'; b1.id='btn-place-part'; b1.textContent='⌖ PLACEMENT';
@@ -722,7 +1038,8 @@ function renderPartDetail(el, p, slotKey){
     }
   } else {
     const b=document.createElement('button'); b.className='btn btn-green'; b.id='btn-apply-part'; b.textContent='APPLY';
-    b.onclick=()=>{ attire().equipped[slotKey]=p.id; renderAll(); toast('Applied ✓'); };
+    tap(b, ()=>{ const removed=equipWithConflicts(slotKey,p); renderAll();
+      toast('Applied ✓'+(removed.length?` · unequipped (layer conflict): ${removed.join(', ')}`:'')); });
     box.appendChild(b);
     if(eqd){
       const b2=document.createElement('button'); b2.className='btn btn-red'; b2.id='btn-remove-part'; b2.textContent='REMOVE';
@@ -1095,44 +1412,63 @@ async function renderDome(el){
 }
 
 /* ---------- roster / save / export ---------- */
-$('#btn-roster').onclick=()=>{
+/* FIGHTER SELECT, drill-down (user 2026-10-24 19:45 CDT: taps did nothing).
+   The old modal appended the attire grid BELOW the fighter grid inside a
+   50vh scroll box, so tapping a fighter looked like nothing happened. Now
+   tapping a fighter REPLACES the grid with that fighter's attire grid + a
+   BACK button + scroll-to-top — one level visible at a time, like the
+   ATTIRE/PARTS drill-downs. Cards use tap(), not click-only. */
+function showRosterFighters(){
   if(!ROSTER){ modal('FIGHTER SELECT','<p>Roster data (data/roster-attires.json) failed to load.</p>',[{label:'CLOSE',cls:'btn-gold'}]); return; }
   const fighters = ROSTER.fighters.map(f=>
     `<button class="roster-card${F.rosterRef&&F.rosterRef.fighter===f.fighter?' active':''}" data-f="${esc(f.fighter)}">${esc(f.fighter_name)}<br><small style="color:var(--dim)">${f.attires.length} attire${f.attires.length===1?'':'s'}</small></button>`).join('');
   modal('FIGHTER SELECT',`<div class="sect">EDIT FIGHTER — pick fighter, then attire (UNIFIED-UI-SPEC §2)</div>
-    <div class="roster-grid"><button class="roster-card${F.mode==='blank'?' active':''}" data-f="">🧍 NEW FIGHTER<br><small style="color:var(--dim)">blank CAW base</small></button>${fighters}</div>
-    <div id="roster-attires"></div>
+    <div class="roster-grid"><button class="roster-card${F.mode==='blank'?' active':''}" data-f="">🧍 NEW FIGHTER<br><small style="color:var(--dim)">Technician — blank CAW canvas (No Mercy Medium 1)</small></button>${fighters}</div>
     <div class="note">Entry flow (verbatim T7): pick fighter → pick attire slot → customize. Selecting loads that attire's real GLB. Blank-fighter mode stays intact.</div>`,
     [{label:'CLOSE',cls:'btn-gold'}]);
-  document.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#modal [data-f]').forEach(b=>tap(b, ()=>{
     const slug=b.dataset.f;
     if(!slug){ closeModal(); selectRosterAttire(null); return; }
-    const rf=rosterFighter(slug); if(!rf) return;
-    const host=document.querySelector('#roster-attires');
-    host.innerHTML=`<div class="sect">${esc(rf.fighter_name).toUpperCase()} — ATTIRE</div><div class="roster-grid">${
-      rf.attires.map(a=>`<button class="roster-card" data-a="${esc(a.attire_id)}">${esc(a.attire_name)}<br><small style="color:var(--dim)">${esc(a.glb.split('/').pop())}</small></button>`).join('')}</div>`;
-    host.querySelectorAll('[data-a]').forEach(ab=>ab.onclick=()=>{ closeModal(); selectRosterAttire(slug, ab.dataset.a); });
-  });
-};
-$('#btn-save').onclick=persist;
-{ const bsa=$('#btn-save-attire'); if(bsa) bsa.onclick=saveToAttire; }
+    showRosterAttires(slug);
+  }));
+}
+function showRosterAttires(slug){
+  const rf=rosterFighter(slug); if(!rf) return;
+  modal('FIGHTER SELECT — '+rf.fighter_name.toUpperCase(),`<div class="back-row"><button class="btn back-btn" id="btn-roster-back">← FIGHTERS</button></div>
+    <div class="sect">${esc(rf.fighter_name).toUpperCase()} — ATTIRE</div><div class="roster-grid">${
+      rf.attires.map(a=>`<button class="roster-card" data-a="${esc(a.attire_id)}">${esc(a.attire_name)}<br><small style="color:var(--dim)">${esc(a.glb.split('/').pop())}</small></button>`).join('')}</div>`,
+    [{label:'CLOSE',cls:'btn-gold'}]);
+  tap(document.querySelector('#btn-roster-back'), showRosterFighters);
+  document.querySelectorAll('#modal [data-a]').forEach(ab=>tap(ab, ()=>{ closeModal(); selectRosterAttire(slug, ab.dataset.a); }));
+  const mb=document.querySelector('#modal-body'); if(mb) mb.scrollTop=0;
+}
+tap($('#btn-roster'), showRosterFighters);
+tap($('#btn-save'), persist);
+{ const bsa=$('#btn-save-attire'); if(bsa) tap(bsa, saveToAttire); }
 /* Stream 4: in-game wiring — back to the game menu (saves first). */
-{ const bg=$('#btn-back-game'); if(bg) bg.onclick=()=>{ persistQuiet(); window.location.href='../../index.html'; } }
-$('#btn-export').onclick=()=>{
+{ const bg=$('#btn-back-game'); if(bg) tap(bg, ()=>{ persistQuiet(); window.location.href='../../index.html'; }); }
+tap($('#btn-export'), ()=>{
   const blob=new Blob([JSON.stringify(F,null,2)],{type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
   a.download='creation-suite-fighter.json'; a.click(); URL.revokeObjectURL(a.href); toast('Exported ✓');
-};
+});
 
 /* ---------- boot ---------- */
 async function boot(){
   try{ const s=localStorage.getItem(LS_KEY); if(s) F=Object.assign(blankFighter(), JSON.parse(s)); }catch(e){}
+  /* Mixamo removal migration: saved states pointing at Soldier.glb now load
+     the Technician blank CAW base instead (user: fully take him out). */
+  if(F.baseGlb && /soldier/i.test(F.baseGlb)) F.baseGlb = BLANK_GLB;
   try{
-    const [parts, jig, roster, fparts] = await Promise.all([
+    const [parts, jig, roster, fparts, tpl, face] = await Promise.all([
       fetch('data/parts-catalog.json').then(r=>r.json()),
       fetch('data/jiggle-schema.json').then(r=>r.json()),
       fetch('data/roster-attires.json').then(r=>r.ok?r.json():null).catch(()=>null),
       fetch('data/fighter-parts.json').then(r=>r.ok?r.json():null).catch(()=>null),
+      /* Templates + face presets were NEVER loaded (the unwired gap behind
+         the user's "templates not hooked up" complaint) — now they are. */
+      fetch('../templates/body-templates.json').then(r=>r.ok?r.json():null).catch(()=>null),
+      fetch('../templates/face-presets.json').then(r=>r.ok?r.json():null).catch(()=>null),
     ]);
     PARTS = Array.isArray(parts) ? parts : (parts.parts||[]);
     PARTS_META = Array.isArray(parts) ? null : parts;
@@ -1141,13 +1477,15 @@ async function boot(){
       if(!p.t7_slot) p.t7_slot=SLOT2CAT[p.suite_slot]||null;
       if(p.geometry_pending===undefined) p.geometry_pending=!!p.geometryPending; });
     JIGGLE=jig; ROSTER=roster; FPARTS=fparts;
+    TEMPLATES = (tpl && tpl.templates) || [];
+    FACE_PRESETS = (face && face.presets) || [];
   }catch(e){
     $('#loader').innerHTML='<div>DATA LOAD FAILED — serve over http</div>'; return;
   }
   if(!Array.isArray(F.records)) F.records = F.records||{};
   if(F.mode==='roster' && (!F.rosterRef || !rosterAttire(F.rosterRef.fighter, F.rosterRef.attire))){ F.mode='blank'; F.rosterRef=null; F.baseGlb=BLANK_GLB; }
   viewer=new SuiteViewer($('#stage3d'));
-  window.__suite={ viewer, get F(){return F;}, ui, setTab, selectRosterAttire, customizationRecord, currentKey, get ROSTER(){return ROSTER;}, get PARTS(){return PARTS;}, get FPARTS(){return FPARTS;} };
+  window.__suite={ viewer, get F(){return F;}, ui, setTab, selectRosterAttire, customizationRecord, currentKey, get ROSTER(){return ROSTER;}, get PARTS(){return PARTS;}, get FPARTS(){return FPARTS;}, get TEMPLATES(){return TEMPLATES;}, get FACE_PRESETS(){return FACE_PRESETS;} };
   viewer.onReady=()=>{ renderAll(); };
   await loadBaseModel();
   renderAll();

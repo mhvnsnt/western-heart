@@ -3,6 +3,10 @@
    Phone-first orbit: drag to rotate, pinch/wheel to zoom. Fighter stays full-screen, never covered. */
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+/* Universal rig compatibility (owner directive 2026-10-24 19:54 CDT): sockets
+   resolve through canonical bones, so T7 / Cape / Mixamo / Rigify / MB-Lab /
+   Tripo rigs all place parts correctly instead of falling back to (0,1.6,0). */
+import { resolveBonesFromObject3D, SOCKET_CANONICAL, BONE_ALIASES, normalizeBoneName } from 'wh-creation-suite/rig-adapter.js';
 
 /* suite socket -> bone names (bone world positions are exact under skinning scale) */
 const SOCKET_BONES = {
@@ -99,6 +103,9 @@ export class SuiteViewer {
     if(this.texSwaps) for(const id of [...this.texSwaps.keys()]) this.restoreTexture(id);
     this._baseMeshState = null; // per-part toggle overrides (Phase 1: SmutBase-6 parts)
     this._baseNames = null;     // scene mesh-name index (rebuilt on next findBaseMeshes)
+    this._skinOrig = null;      // skin-tone originals (reset per model)
+    this.boneMap = null;        // canonical -> bone (reset per model)
+    this.rigProfile = null;     // TOOLS tab display data (reset per model)
   }
   /* ---- Phase 1: per-part toggles on the BASE model (fighter's own meshes) ----
      Logical parts from data/fighter-parts.json map to GLB mesh names.
@@ -194,6 +201,16 @@ export class SuiteViewer {
         // bone lookup (mixamorig:/mixamorig prefixes stripped) — exact under skinning scale
         this.bones = {};
         this.model.traverse(o=>{ if(o.isBone) this.bones[o.name.replace(/^mixamorig:?/, '')] = o; });
+        /* Universal rig compatibility: canonical bones for THIS model's
+           skeleton + a plain-data profile for the TOOLS tab. Exact names
+           still win everywhere; the adapter only fires when exact fails. */
+        try{
+          const rep = resolveBonesFromObject3D(this.model);
+          this.boneMap = rep.bones || {};
+          this.rigProfile = { boneCount: rep.boneCount, found: rep.found,
+            total: rep.total, coverage: rep.coverage, missing: rep.missing,
+            namingStyles: rep.namingStyles };
+        }catch(e){ this.boneMap = {}; this.rigProfile = null; }
         // frame from the Head bone (bind-pose geometry bbox lies under bone scale)
         const headY = this.boneY('Head', 1.7);
         this.camTarget.set(0, headY*0.55, 0);
@@ -210,11 +227,24 @@ export class SuiteViewer {
     });
   }
   boneY(name, fallback){
-    const b = this.bones && this.bones[name];
+    const b = (this.bones && this.bones[name]) || this._canonicalBone(name);
     if(!b) return fallback;
     const v = new THREE.Vector3(); b.getWorldPosition(v); return v.y;
   }
+  /* Canonical fallback: a requested T7-style bone name ('LeftArm') resolves
+     through the rig adapter to whatever this model's skeleton calls it
+     ('upperarm_L' on Cape/MB-Lab rigs, 'upper_arm.L' on Rigify). */
+  _canonicalBone(name){
+    if(!this.boneMap) return null;
+    const norm = normalizeBoneName(name);
+    for(const c of Object.keys(BONE_ALIASES)){
+      if((BONE_ALIASES[c]||[]).includes(norm) && this.boneMap[c]) return this.boneMap[c];
+    }
+    return null;
+  }
   socketBone(socket){
+    const canon = SOCKET_CANONICAL[socket] || SOCKET_CANONICAL.head;
+    if(this.boneMap){ for(const c of canon){ if(this.boneMap[c]) return this.boneMap[c]; } }
     const s = SOCKET_BONES[socket] || SOCKET_BONES.head;
     for(const n of s.bones){ if(this.bones && this.bones[n]) return this.bones[n]; }
     return null;
@@ -222,8 +252,7 @@ export class SuiteViewer {
   socketPoint(socket){
     const s = SOCKET_BONES[socket] || SOCKET_BONES.head;
     const out = new THREE.Vector3(0, 1.6, 0);
-    let bone = null;
-    for(const n of s.bones){ if(this.bones && this.bones[n]){ bone = this.bones[n]; break; } }
+    const bone = this.socketBone(socket);
     if(!bone) return out;
     bone.getWorldPosition(out);
     const k = (this.headHeight || 1.7) / 1.7;
@@ -327,7 +356,62 @@ export class SuiteViewer {
     for(const t of s.targets){ t.material.map=t.original; t.material.needsUpdate=true; }
     this.texSwaps.delete(partId);
   }
-  setSkinTone(hex){ /* parametric preview: tint exposed materials */ }
+  /* Face-preset live swap (creation-suite gap (a)): swap the head/face
+     texture on the loaded template mesh. Target chain, first hit wins:
+     materials named face/head, then skin/body, then the first material
+     that already has a map, then the first material at all. Returns a
+     Promise<boolean>: false means this base mesh has no swappable face
+     material, and the caller keeps the preset recorded for bake (honest
+     fallback, never a silent no-op presented as a swap). Reuses the
+     texSwaps store under 'face-preset' so a later preset restores the
+     previous swap before applying its own. */
+  swapFaceTexture(assetUrl){
+    if(!this.texSwaps) this.texSwaps = new Map();
+    this.restoreTexture('face-preset');
+    if(!this.model || !assetUrl) return Promise.resolve(false);
+    const buckets=[[],[],[],[]];
+    this.model.traverse(o=>{ if(!o.isMesh) return;
+      const mats=Array.isArray(o.material)?o.material:[o.material];
+      for(const m of mats){ if(!m) continue;
+        const name=(m.name||'').toLowerCase();
+        if(/face|head/.test(name)) buckets[0].push(m);
+        else if(/skin|body|flesh/.test(name)) buckets[1].push(m);
+        else if(m.map) buckets[2].push(m);
+        else buckets[3].push(m); } });
+    const pick=(buckets[0][0]||buckets[1][0]||buckets[2][0]||buckets[3][0]);
+    if(!pick) return Promise.resolve(false);
+    return new Promise(res=>{
+      new THREE.TextureLoader().load(assetUrl, tex=>{
+        this.texSwaps.set('face-preset', {targets:[{material:pick, original:pick.map}]});
+        pick.map=tex; pick.needsUpdate=true; res(true);
+      }, undefined, ()=>res(false));
+    });
+  }
+  /* Skin tone preview (was an empty stub): tint materials whose name — or
+     whose mesh's name — mentions skin/body. Meshes with no such material
+     keep their authored look; the record still saves the tone for the MPFB
+     bake, where skin is the ground truth. Null restores originals. */
+  setSkinTone(hex){
+    if(!this.model) return;
+    if(!this._skinOrig) this._skinOrig = new Map();
+    this.model.traverse(o=>{
+      if(!o.isMesh) return;
+      const mats = Array.isArray(o.material) ? o.material : [o.material];
+      const hay = (o.name||'') + ' ' + mats.map(m=>(m&&m.name)||'').join(' ');
+      if(!/skin|body|flesh/i.test(hay)) return;
+      for(const m of mats){
+        if(!m || !m.color) continue;
+        if(!this._skinOrig.has(m)) this._skinOrig.set(m, m.color.getHex());
+        m.color.setHex(hex ? parseInt(String(hex).replace('#',''), 16) : this._skinOrig.get(m));
+        m.needsUpdate = true;
+      }
+    });
+  }
+  /* Universal OUTFIT: every mesh name on the loaded model, for per-part
+     toggles on models with no fighter-parts inventory. */
+  listBaseMeshes(){
+    return [...this._baseNameSet()].filter(Boolean).sort();
+  }
   setProportions(p){
     if(!this.model) return;
     this.model.scale.set(0.92+0.16*(p.weight||1), 0.9+0.2*(p.height||1), 0.92+0.16*(p.weight||1));
