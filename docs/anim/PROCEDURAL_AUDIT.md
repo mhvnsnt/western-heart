@@ -205,3 +205,34 @@ kinpo Batch 1 contains ZERO input-~ canonicals; the file's only
 old-vs-corrected diff is 3~4,D/F, outside Batch 1 scope. T8-sourced
 prefixes with no T3 row get their correct clips from #988 Step 2 (original
 T8 refs), never from a T3 row recorded as correct.
+
+## Kinpo Batch 2 step plans (LK3/RK4-only strings, 2026-10-25) — T3 FALLBACK, not the correct mapping
+
+Kinpo Batch 2 wires 20 step-plan keys (12 LK3/RK4-only canonicals + 8 twins) into kinpo.json's
+string_step_plans block (47 Batch 1 keys preserved deep-equal; total 67). Steps: 29 planned,
+9 verified / 4 review / 16 unmapped (all 16 no-candidate + 0 rejected-candidate + 0
+suspended-drift). Verified rows (4 distinct, all baked in main's jin pack): 80, 193, 205, 207.
+u/f+4,3 verified-all [80,193] and u/f+4,4 verified-all [80,207] (jump context, SOFT waived,
+Batch 1 precedent); d/f+4,4 partial [205, review] — step 1 crouch row 205 passes for crouch
+outright (NOT a gate-note case: row 205 Job 1 stance is crouch); step 2 candidate 212 held at
+review (SOFT limb-peak proxy fail, window [4.5,8.5], legR peak 12 — same row, same result as
+demonio Batch 2's d/f+4,4 step 2). u/f+4,4,4 partial [80,207,review] and u/f+4,4,4,4 partial
+[80,207,review,review] — candidates 210/211 are duck-dip rows, STANCE-SOFT for jump-context
+steps, held at review (same rows, same result as demonio Batch 2's u/f+4,4,4 steps 3-4).
+Job 3 fills wired: 0 — no Batch 2 step prefix has a pass-all candidate at all (the 4
+match_search kinpo kick keys all carry EMPTY pass-all lists). Job 4 joins: 4, none promoting
+(rows 193/207 on already-verified steps). Orphans: jin rows 85, 91, 99, 100, 104, 127, 170,
+171, 172, 209, 216, 226, 239, 250, 256, 262 (same set as Batch 1, independently re-derived).
+Suspended-drift: 0 — the file's only row-changed move (1, 35->None) is not a Batch 2 step
+prefix. Jin-bank rules, per-bank evidence (documented in
+docs/movesets/KINPO-BATCH2-STEP-PLANS-2026-10-25.md): row 35 EXISTS in this bank
+(hit_frames [11,12,39,535,0,1], Job 1 stance starts-airborne) — NOT blanket-banned by
+number, but the stance gate rejects it for ground steps; row 220 is a STANDING RP2 row here,
+NOT king's jumping chord row, NOT bryan's button-0 row, NOT heihachi's jump RK4 row; jin
+row 216 is a JUMP row, NOT king row 216's dash Konvict Kick. Kinpo's T7/T8 base IS Asuka,
+but Asuka has NO T3 bank in this repo (no asuka dir under t3/), so the file's T3 fallback
+bank is jin — the burger pattern. Canonicalization is the CORRECTED rule (strip only a
+trailing ~t[378] source-variant suffix): kinpo Batch 2 contains ZERO input-~ canonicals;
+the file's only old-vs-corrected diff, 3~4,D/F, is NOT Batch 2 scope (steps 3~4 + D/F; D/F
+buttonless -> rest/Batch 4 scope). T8-sourced prefixes with no T3 row get their correct
+clips from #988 Step 2 (original T8 refs), never from a T3 row recorded as correct.
