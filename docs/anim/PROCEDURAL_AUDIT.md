@@ -229,3 +229,31 @@ not kick strings). Suspended-drift: 0 — none of the 3 row-changed moves
 Job 4 joins: 4, none promoting. T8-sourced prefixes with no T3 row get
 their correct clips from #988 Step 2 (original T8 refs), never from a T3
 row recorded as correct.
+
+## Diablo Batch 3 fallback (mixed-pair strings, 2026-10-25)
+Verified rows 153/183/225/226/227/59/60/61/74/75/76 and review candidates
+207/214/178 are FALLBACK (T3 heihachi rows, bank heihachi_on_jin /
+divmot13 on the jin rig), to be re-matched to T7 Heihachi rows when
+extraction lands. Rejected rows 137/340/181/175/246/356/358/39/38 are NOT
+fallback — rejected evidence (throw flags, button mismatches, airborne
+rows for ground steps), not wired or held. Standing rows 226/227 verified
+for crouch-context steps (d/f+3,2 step 2, d/f+3,2,2 steps 2-3) follow the
+demonio Batch 1 / diablo Batch 1 precedent: the pipeline stance gate flags
+crouch rows for non-crouch steps, not standing rows for crouch steps; if
+the gate is ever tightened these three steps must be re-adjudicated. Row
+225 (duck-dip) passes for crouch context outright — NOT a gate-note case.
+Heihachi-bank rules, per-bank evidence (documented in
+docs/movesets/DIABLO-BATCH3-STEP-PLANS-2026-10-25.md): row 35 does NOT
+EXIST in this bank (absent from hit_frames and Job 1), so no row-35 rule
+applies; row 220 is a JUMP RK4 row here, gate-adjudicated like any row,
+NOT jin's standing RP2 row, NOT king's jumping chord row, NOT bryan's
+button-0 row; heihachi_on_jin row 216 is a DUCK-DIP row, NOT jin row 216's
+jump row and NOT king row 216's dash Konvict Kick. Batch 3 contains NO
+input-~ canonicals and NO __main records (diablo's cancel notation lives
+in LP1/RP2 strings, not mixed-pair strings). Suspended-drift: 0 — none of
+the 3 row-changed moves (1, 1_r46, u+1,1~t3.heihachi.2) is a Batch 3 step
+prefix. Job 3 fills wired: 0 (one report entry, b+1,4 step b+1: rows 98/107
+exact ROW-ONLY + row 133 soft-filed FULL, none wired under the stricter
+fill rule; zero DISAGREES notes). Job 4 joins: 4, none promoting.
+T8-sourced prefixes with no T3 row get their correct clips from #988 Step
+2 (original T8 refs), never from a T3 row recorded as correct.
