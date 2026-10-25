@@ -1,6 +1,13 @@
 {
   "fighter": "samura1",
   "display": "SAM-UR-A1",
+  "anim_set_lock": {
+    "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; bank assets/anim/t3/gunjack/ t3_win_*.json; must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set",
+    "batch8_20261023": "batch8 2026-10-23: T8 Jack-8 / T7 Jack-7 / T3 Gun Jack pulls verified complete; 0 moves added this lane"
+  },
   "tekken_base": "Gun Jack",
   "t3_source": "gunjack",
   "proxy": false,

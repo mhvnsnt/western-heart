@@ -1,6 +1,13 @@
 {
   "fighter": "docfrank",
   "display": "DOC FRANK",
+  "anim_set_lock": {
+    "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; bank assets/anim/t3/bosconovitch/ t3_win_*.json; must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set",
+    "batch8_20261023": "batch8 2026-10-23: T3 Bosconovitch pull verified complete (all bank rows covered); TTT2 Bosconovitch movelist pending extraction lane; 0 moves added this lane"
+  },
   "tekken_base": "Bosconovitch",
   "t3_source": "bosconovitch",
   "proxy": false,
