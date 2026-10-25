@@ -2692,6 +2692,45 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **ALL CHARACTERS ARE ADULTS:** n/a — rigging pipeline, no characters.
 
 
+## 2026-10-23 ~19:45 CDT — Cloth physics: XPBD engine wired (feature/cloth-xpbd-20261023)
+
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate"
+
+**Evaluated (docs/research/CLOTH-EVALUATION-2026-10-23.md):**
+- jspdown/cloth — WINNER. MIT (verified, © 2023 Harold Ozouf). WebGPU XPBD, graph-colored parallel Gauss-Seidel, sub-stepping. Web-native, matches Three.js stack.
+- openxrlab/XRTailor — Apache 2.0 (verified). CUDA-only C++, no web path; Swift-mode parameter guidance informed our quality table. Quality Mode noted for a future offline bake pipeline.
+- vitalight/Velvet — MIT (verified). CUDA-only; long-range-attachment idea ported as skip-one bend links in hair chains; capsule colliders added. SDF collision noted as future.
+
+**Wired:**
+- `game/js/fx/cloth.js` (new): XPBD engine porting jspdown/cloth's algorithm to dependency-free JS, CPU backend. XPBDSolver (typed arrays, greedy graph coloring, compliance constraints), extractTopology, buildSheet/buildFromMesh/buildChain builders, 6 fabric presets, quality table + phone-safe detect + LOD sleep (mirrors fx/particles.js), writePositions/writeNormals three.js adapters, availableBackends() WebGPU probe. CPU backend chosen because the game renders WebGL (Effekseer shares the context) and phones can't be assumed WebGPU-capable; color-group layout preserved so a WebGPU port is mechanical later.
+- `game/js/cloth-hair.js` (surgical): verlet core → compatibility facade over the new engine; ClothSheet/HairChain rebuilt on XPBD (bend hinges replace shear hack, compliance fabrics, area mass, inelastic sphere/capsule body colliders, first-placement root translate kills attach whip). Public API unchanged — fighter-depth.js autoAttachCloth wiring untouched, whole roster upgraded.
+- `game/tests/cloth-xpbd.test.mjs` (new): 13 tests, all pass.
+- Fixed a real engine bug found by tests: PBD contact velocity kick launched deep-spawned particles (y=21.6); contacts are now fully inelastic (normal velocity stripped), resting contact stable.
+
+**Verification:** cloth-xpbd 13/13 pass; fighter-depth 43/43 pass; full suite 144/148 (4 failures pre-existing on main: fluid-decals, model-key-guard x2, stagerage — verified via stash). Numerical drape proof: 8x10 cape, 120 steps, top displacement 0.0, bottom hangs -0.902/-0.90, max stretch 0.76%.
+
+**Anti-clobber:** branch from origin/main; commit via Git Data API from main's tree + only this task's files (working tree holds other lanes' uncommitted work — not touched, not committed). gitleaks clean.
+
+## 2026-10-23 ~20:00 CDT — voro++ Voronoi fracture wired into arena destruction (feat/voropp-destruction-20261023)
+
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate"
+
+**Pulled:** voro++ (Chris H. Rycroft, LBL — BSD 3-clause LBNL-modified, license text vendored verbatim at `game/vendor/voropp/LICENSE`; source cloned from https://github.com/chr1shr/voro to /tmp for the license only, C++ NOT vendored — repo stays lean). The game is JS: `game/js/destruction.js` is an original dependency-free JS implementation of voro++'s documented cell-by-plane-cuts algorithm (each Voronoi cell computed individually by carving a bounding box with perpendicular-bisector plane cuts — Sutherland–Hodgman half-plane clipping in 2D), + Lloyd relaxation for organic shards, + seeded RNG for determinism.
+
+**Wired (Foundation Law: Tekken base, this plugs in on top):**
+- `game/js/destruction.js` (new, pure math — no THREE/DOM, node-testable): `voronoiCells`, `lloydRelax`, `fractureRect` (impact-biased seed density), `DestructionSystem` — `registerSurface` / `damage` (accumulates, fractures once at 0 hp) / `step` (ballistics: gravity, spin, rest planes, life decay, live-list pruning). Wall frame: plane XY extruded in Z, rest at y=0. Floor frame: plane XY mounted rotX -90°, gravity local -Z, shards drop to the lower level.
+- `game/js/stagebreaks.js` (surgical): StageBreaks owns a DestructionSystem; walls/floors/balconies register as fracture surfaces in bindStage (hp 100 — one heavy hit still breaks, Tekken-authentic); checkHit routes damage through the engine; `_breakWall/_breakFloor/_breakBalcony` spawn Voronoi shard meshes (ExtrudeGeometry from cell polys, centroid-recentered so rotation pivots correctly) via new `_spawnShards`; update() steps physics and syncs/drops shard meshes; reset() clears.
+- `game/tests/destruction.test.mjs` (new): 9/9 pass — determinism, Voronoi correctness (each vertex closest to its own seed, area tiles bounds), area conservation, impact density bias, damage accumulation + single-fracture, shard ballistics/rest/death, floor -Z fall.
+- `game/tests/stagerage.test.mjs` (surgical fix): stager now copies destruction.js into the sandbox; THREE stub gains Vector2/Shape/ExtrudeGeometry + Group/Mesh position+rotation.set (needed by _spawnShards).
+- `tools/destruction-demo/index.html` (new): tap-to-shatter 2D canvas demo. Proof renders: `tools/destruction-demo/fracture-proof.svg` + `fracture-proof.png` (26 shards, area exactly conserved 27.200/27.200, denser at impact) — viewed the PNG, fracture is correct.
+
+**Verification:** destruction 9/9 pass; stagerage 13/15 (2 failures pre-existing on origin/main — rage/urge pressChord, verified via worktree of main @ PR #949); node --check clean on all touched files. Caught and fixed a real bug during wiring: shard geometry must be centroid-recentered or meshes render offset.
+
+**Anti-clobber:** branch from origin/main (fresh sync); commit limited to this task's files only (working tree holds other lanes' staged/unstaged work — not touched, not committed). gitleaks clean. No deletions.
+
+**ALL CHARACTERS ARE ADULTS:** n/a — geometry/physics system, no characters.
+
+**Outcome (2026-10-23 ~21:30 CDT):** PR #961 OPEN, not merged. 10/11 checks green (incl. instruction-gate, deletion/clobber guards, unit tests covering this PR's files). game-unit-tests is red from a PRE-EXISTING main failure: test/soul-systems.test.mjs asserts gashadokuro has a soul-variants.json row; main ec3d50e9 ships 55 rows, none for gashadokuro (wave3 lane added the fighter without its variant data). None of this PR's files touch roster/soul/variant code. Blocker comment posted on the PR naming it; per the merge-it-yourself law the PR stays open until the owning lane fills the row. No merge attempted on red.
 
 ## 2026-10-23 21:30 CT — Cape Jones playable on Alisa's select slot (muse/cape-jones-fight)
 
