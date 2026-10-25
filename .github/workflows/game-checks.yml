@@ -62,8 +62,12 @@ jobs:
             game/data
             game/assets/movesets
             game/assets/portraits
+            game/assets/anim/t3
             tools/portraits
+            tools/anim/node_game_env.mjs
             game/vendor/jolt
+            game/vendor/three.module.js
+            game/vendor/addons
             customization/profiles
           sparse-checkout-cone-mode: false
       - name: Run game unit tests

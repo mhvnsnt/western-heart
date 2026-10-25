@@ -22,6 +22,7 @@
    Intents: 'tie-up' | 'commit-throw' | 'chain-ground' | 'disengage' | null
    ============================================================ */
 import { State, StateMachine } from '../../vendor/yuka/yuka.module.js';
+import { phaseAtProgress } from './move-melding.js'; // WH meld layer (pure logic, no deps)
 
 export const GRAPPLE_STATES = {
   IDLE: 'idle',
@@ -35,6 +36,7 @@ export const GRAPPLE_INTENTS = {
   TIE_UP: 'tie-up',
   COMMIT_THROW: 'commit-throw',
   CHAIN_GROUND: 'chain-ground',
+  CHAIN_MELD: 'chain-meld', // meld the active throw into another move (see move-melding.js)
   DISENGAGE: 'disengage',
 };
 
@@ -75,7 +77,7 @@ class GrappleClinch extends State {
 }
 
 class GrappleThrow extends State {
-  enter(chain) { chain.intent = null; }
+  enter(chain) { chain.intent = null; chain.meld = null; chain._meldPhase = null; }
   execute(chain) {
     const s = chain.snap;
     if (s.myState !== 'throwing') {
@@ -85,6 +87,23 @@ class GrappleThrow extends State {
       return;
     }
     chain.intent = null; // mid-throw: hold, the animation owns this window
+    // Move melding (WH extension on the Tekken throw base): at each
+    // meld-phase boundary, ask the engine for legal exits from the
+    // active throw. No engine attached -> today's behavior, bit for bit.
+    const eng = chain.meldEngine;
+    if (eng && s.throwMove && s.throwProgress != null) {
+      const phase = phaseAtProgress(s.throwProgress);
+      if (phase !== chain._meldPhase) {
+        chain._meldPhase = phase;
+        const cands = eng.findMelds(s.throwMove, phase, { rolesOk: s.meldRolesOk !== false });
+        const pick = cands[0]; // ranked by blend cost, cheapest first
+        // meldBias: technicians chain more; (1.15 - cost) favors smooth paths
+        if (pick && chain.roll(chain.meldBias * (1.15 - pick.cost))) {
+          chain.meld = { from: s.throwMove, to: pick.to, hybrid: pick.hybrid, kind: pick.kind };
+          chain.intent = GRAPPLE_INTENTS.CHAIN_MELD;
+        }
+      }
+    }
   }
   exit() {}
 }
@@ -120,6 +139,13 @@ export class GrappleChain {
     this.intent = null;
     this._t = 0;
     this._rand = Math.random;
+    // Move-melding extension (optional): a MeldEngine from
+    // game/js/ai/move-melding.js. The last chosen meld is exposed on
+    // chain.meld when intent === 'chain-meld'.
+    this.meldEngine = null;
+    this.meld = null;
+    this.meldBias = ai?.meldBias ?? personality.meldBias ?? 0.35;
+    this._meldPhase = null;
 
     this.fsm = new StateMachine(this);
     this.fsm.add(GRAPPLE_STATES.IDLE, new GrappleIdle());
@@ -132,6 +158,16 @@ export class GrappleChain {
 
   roll(p) { return this._rand() < p; }
 
+  /**
+   * Attach the WH move-melding engine (game/js/ai/move-melding.js).
+   * Optional — without it the chain behaves exactly as before.
+   */
+  attachMeldEngine(engine, opts = {}) {
+    this.meldEngine = engine;
+    if (opts.meldBias !== undefined) this.meldBias = opts.meldBias;
+    return this;
+  }
+
   currentStateId() {
     const c = this.fsm.currentState;
     return c ? [...this.fsm.states.entries()].find(([, v]) => v === c)?.[0] ?? null : null;
@@ -140,7 +176,9 @@ export class GrappleChain {
   /**
    * One tick. Returns an intent for the controller, or null.
    * snap: { dist, onGround, canAct, stun, myState, foeDowned,
-   *         grabBias, roundOver }
+   *         grabBias, roundOver,
+   *         throwMove, throwProgress, meldRolesOk }  // meld extension:
+   *         throwMove = active grapple move id, throwProgress = 0..1
    */
   think(snap, rand = Math.random) {
     this._rand = rand;

@@ -20,6 +20,7 @@
    ============================================================ */
 import * as THREE from 'three';
 import { audio } from './audio.js';
+import { DestructionSystem } from './destruction.js'; // voro++-based Voronoi fracture
 // NOTE (loadspeed lane): this module must NOT statically import
 // fighter.js (setArenaLimit/setGroundY stream via lazy.js). The Game
 // injects them: bindStage(stageDef, fx) with
@@ -80,6 +81,11 @@ export class StageBreaks {
     this._zones = new Map();    // id -> mesh (floor/balcony markers)
     this._t = 0;
     this.fx = null; // injected { setArenaLimit, setGroundY } (see bindStage)
+    // Procedural fracture engine (voro++ cell-by-plane-cuts Voronoi).
+    // Breakable walls/floors register here; heavy hits accumulate
+    // damage and the surface FRACTURES into shards on the killing hit.
+    this.destruction = new DestructionSystem();
+    this._fractures = []; // {group, shards, mat} — live shard meshes
   }
 
   /* Bind to a stage at match start. Resets all break state. */
@@ -94,6 +100,24 @@ export class StageBreaks {
       defs.push({ type: 'wall', side: 1, x: wallD });
     }
     this.defs = defs;
+    // Register every breakable as a fracture surface up front (pure
+    // data — no arena visuals needed). Heavy hits route through
+    // DestructionSystem.damage(); the killing hit fractures it.
+    for (const def of this.defs) {
+      const id = this._id(def);
+      if (def.type === 'wall') {
+        this.destruction.registerSurface({
+          id, kind: 'wall', w: stageDef.dims.depth + 4, h: 3.4,
+          hp: 100, cells: 26, depth: 0.28,
+        });
+      } else { // floor / balcony weak zone: 2r × 2r slab
+        const r = def.r || 2.5;
+        this.destruction.registerSurface({
+          id, kind: 'floor', w: r * 2, h: r * 2,
+          hp: 100, cells: 22, depth: 0.25, fallDepth: def.depth || 6,
+        });
+      }
+    }
     const scene = this.game.arena && this.game.arena.scene;
     if (scene && !this.group.parent) scene.add(this.group);
   }
@@ -102,6 +126,9 @@ export class StageBreaks {
   reset() {
     for (const d of this._debris) this.group.remove(d.mesh);
     this._debris = [];
+    for (const f of this._fractures) { this.group.remove(f.group); f.mat.dispose(); }
+    this._fractures = [];
+    this.destruction.reset();
     this._barriers.clear();
     this._zones.clear();
     this.group.clear();
@@ -198,6 +225,27 @@ export class StageBreaks {
         d.vel.set(0, 0, 0); d.spin = 0;
       }
     }
+    // Voronoi fracture shards: integrate, sync meshes, drop the dead
+    this.destruction.step(dt);
+    for (let i = this._fractures.length - 1; i >= 0; i--) {
+      const f = this._fractures[i];
+      let minLife = Infinity;
+      for (const sh of f.shards) {
+        if (sh.life <= 0) {
+          if (sh._mesh) { f.group.remove(sh._mesh); sh._mesh.geometry.dispose(); sh._mesh = null; }
+          continue;
+        }
+        minLife = Math.min(minLife, sh.life);
+        if (sh._mesh) {
+          sh._mesh.position.set(sh.pos.x, sh.pos.y, sh.pos.z);
+          sh._mesh.rotation.set(sh.rot.x, sh.rot.y, sh.rot.z);
+        }
+      }
+      f.mat.opacity = Math.min(1, minLife / 0.6);
+      if (minLife === Infinity) {
+        this.group.remove(f.group); f.mat.dispose(); this._fractures.splice(i, 1);
+      }
+    }
   }
 
   _burst(x, y, z, color, n = 26, spread = 5, depth = 0) {
@@ -242,9 +290,13 @@ export class StageBreaks {
       const id = this._id(def);
       if (this.broken.has(id)) continue;
       if (def.type === 'wall') {
-        // slammed into the wall: at/near the bound on that side
+        // slammed into the wall: at/near the bound on that side.
+        // Damage routes through the fracture engine: one heavy hit
+        // (100 dmg vs 100 hp) shatters it — Tekken-authentic — while
+        // the pipeline supports accumulated damage later.
         if (Math.sign(px) === def.side && Math.abs(px) >= Math.abs(def.x) - 0.9) {
-          this._breakWall(def, id, attacker, defender);
+          const res = this.destruction.damage(id, 100, { x: -pz, y: 1.0 - 1.7 });
+          if (res.fractured) this._breakWall(def, id, attacker, defender, res.shards);
           return;
         }
       } else {
@@ -254,8 +306,11 @@ export class StageBreaks {
         const dx = px - (def.x || 0), dz = pz - (def.z || 0);
         const r = def.r || 2.5;
         if (dx * dx + dz * dz <= r * r) {
-          if (def.type === 'balcony') this._breakBalcony(def, id, attacker, defender);
-          else this._breakFloor(def, id, attacker, defender);
+          const fx0 = def.x || 0, fz0 = def.z || 0;
+          const res = this.destruction.damage(id, 100, { x: px - fx0, y: -(pz - fz0) });
+          if (!res.fractured) return;
+          if (def.type === 'balcony') this._breakBalcony(def, id, attacker, defender, res.shards);
+          else this._breakFloor(def, id, attacker, defender, res.shards);
           return;
         }
       }
@@ -264,13 +319,46 @@ export class StageBreaks {
 
   /* ---------------- break sequences ---------------- */
 
-  _breakWall(def, id, attacker, defender) {
+  /**
+   * Spawn Voronoi fracture shards from the destruction engine.
+   * shards: plain shard data (surface-local frame, see destruction.js).
+   * mount: {pos:[x,y,z], rotX, rotY} mapping the surface-local frame
+   *        into world space.
+   */
+  _spawnShards(shards, mount, tint) {
+    if (!shards || !shards.length) return;
+    const group = new THREE.Group();
+    group.position.set(mount.pos[0], mount.pos[1], mount.pos[2]);
+    group.rotation.set(mount.rotX || 0, mount.rotY || 0, 0);
+    const mat = new THREE.MeshStandardMaterial({
+      color: tint, roughness: 0.92, flatShading: true, transparent: true,
+    });
+    for (const sh of shards) {
+      const shape = new THREE.Shape(sh.poly.map(([x, y]) => new THREE.Vector2(x, y)));
+      const geo = new THREE.ExtrudeGeometry(shape, { depth: sh.depth, bevelEnabled: false });
+      // recenter: geometry vertices are surface-local, mesh origin is the
+      // shard centroid (sh.pos) so rotation pivots correctly
+      geo.translate(-sh.pos.x, -sh.pos.y, -sh.depth / 2);
+      const mesh = new THREE.Mesh(geo, mat);
+      mesh.castShadow = true;
+      mesh.position.set(sh.pos.x, sh.pos.y, sh.pos.z);
+      mesh.rotation.set(sh.rot.x, sh.rot.y, sh.rot.z);
+      group.add(mesh);
+      sh._mesh = mesh;
+    }
+    this.group.add(group);
+    this._fractures.push({ group, shards, mat });
+  }
+
+  _breakWall(def, id, attacker, defender, shards) {
     this.broken.add(id);
     const bar = this._barriers.get(id);
     if (bar) bar.visible = false;
     const bx = def.x, tint = 0xffb060;
     this._burst(bx, 1.6, 0, tint, 34, 6);
     this._burst(bx, 0.6, 0, 0x6a5a48, 20, 4);
+    // Voronoi fracture: the wall itself shatters into shards
+    this._spawnShards(shards, { pos: [bx, 1.7, 0], rotY: Math.PI / 2 }, 0x8a7458);
     // DOA knock-through: the wall is GONE — bounds extend into the new area
     const newLimit = Math.abs(def.x) + WALL_EXTEND;
     if (this.fx) this.fx.setArenaLimit(newLimit);
@@ -303,7 +391,7 @@ export class StageBreaks {
     console.log(`[WH] stage break: wall (${def.side < 0 ? 'P1' : 'P2'} side) — bounds now ±${newLimit.toFixed(1)}`);
   }
 
-  _breakFloor(def, id, attacker, defender) {
+  _breakFloor(def, id, attacker, defender, shards) {
     this.broken.add(id);
     const zone = this._zones.get(id);
     if (zone) zone.visible = false;
@@ -311,6 +399,8 @@ export class StageBreaks {
     const depth = def.depth || 6;
     this._burst(fx, 0.4, fz, 0x8a7a68, 30, 5, depth);
     this._burst(fx, 0.2, fz, 0xff7a30, 14, 3, depth);
+    // Voronoi fracture: the floor slab shatters, shards drop to the level below
+    this._spawnShards(shards, { pos: [fx, 0.05, fz], rotX: -Math.PI / 2 }, 0x6a5a48);
     // T7 floor break: the level drops — physics ground moves down, both
     // fighters fall through the hole, the fight continues below.
     this.groundY = -(depth);
@@ -341,7 +431,7 @@ export class StageBreaks {
     console.log(`[WH] stage break: floor at (${fx},${fz}) — dropped to y=${this.groundY}`);
   }
 
-  _breakBalcony(def, id, attacker, defender) {
+  _breakBalcony(def, id, attacker, defender, shards) {
     this.broken.add(id);
     const zone = this._zones.get(id);
     if (zone) zone.visible = false;
@@ -358,6 +448,8 @@ export class StageBreaks {
     const fx = def.x || 0, fz = def.z || 0, r = def.r || 2.5;
     const depth = def.depth || 6;
     this._burst(fx, 1.0, fz, 0x7a5a40, 26, 5, depth);
+    // Voronoi fracture: the balcony slab shatters outward
+    this._spawnShards(shards, { pos: [fx, 1.0, fz], rotX: -Math.PI / 2 }, 0x7a5a40);
     this.groundY = -(depth);
     if (this.fx) this.fx.setGroundY(this.groundY);
     const disc = new THREE.Mesh(

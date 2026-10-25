@@ -15,13 +15,25 @@ export const MIN_ACTIVE = 3 * FRAME;
 /* T3 attack words (decoded): high/mid/low/s.mid/unblockable. */
 export const HIT_WORD = { h: 0x412, m: 0x217, l: 0x10F, s: 0x31F, ub: 0x607 };
 
-/* T8/T7 hit_level ('h','m','l','s','t', strings like 'h,m,l' use the first)
+/* T8/T7 hit_level ('h','m','l','s','t', strings like 'h,m,l' use the last)
    -> T3 hit word, so the posture rules (highs whiff crouchers, lows beat
-   standing guard) apply to every T7/T8 move instead of everything = mid. */
+   standing guard) apply to every T7/T8 move instead of everything = mid.
+   HITBOX LANE 2026-10-24: a move's level is read from, in order,
+   its own hit_level, then its T7 frame-data hit_level, then its T8
+   tgt — because 206 Pantera moves carry NO top-level hit_level and
+   NO decoded hit_words entry, and all of those used to fall back
+   to default-mid in fighter.js (highs hit crouchers, lows were
+   unblockable by crouch guard). Decoded ms.hit_words still wins
+   over all of this (fighter.js checks it first); this is only the
+   fallback chain. T7 strings carry annotations in parentheses
+   ('mid (TC)', 'low (TC), low (TC)(ALI)', '(Special) (TJ)(JGS)');
+   the parentheses are stripped before tokenising, so 'mid (TC)'
+   reads mid instead of misreading the annotation as a throw. */
 export function hitWordFor(mv) {
   if (!mv) return undefined;
   if (mv.unblockable) return HIT_WORD.ub;
-  const raw = String(mv.hit_level ?? '').trim().toLowerCase();
+  const rawSrc = mv.hit_level ?? (mv.t7 && mv.t7.hit_level) ?? (mv.t8 && mv.t8.tgt) ?? '';
+  const raw = String(rawSrc).replace(/\([^)]*\)/g, ' ').trim().toLowerCase();
   if (!raw) return undefined;
   const toks = raw.split(/[ ,]+/).filter(Boolean); // ',h' = this hit of a string
   const c = toks.length ? toks[toks.length - 1] : '';
