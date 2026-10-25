@@ -3037,3 +3037,21 @@ tools/vf5/merge_wol_head.py (new). Additions only.
 - Docs: `docs/decisions/2026-10-22-creation-suite-teardown-blueprint.md` — flow map: 2K22 drives menu logic, 2K26 drives layers/morphs, No Mercy drives the 4-attire model, WMXIX drives proportions; where we extend (MB-Lab/MPFB/GNM/Build-A-Bod, universal mode); Def Jam differences (shop model + charisma); Soulcalibur additions; touch conversion rules; capability checklist (all 5 owner capabilities verified against spec).
 - Coordination: worker 64 (clothing/accessory taxonomy + hair/headwear-as-library-items) — trees carry `wh`/`slots` mappings onto the shared T7 spine so their taxonomy plugs in without rework. Worker 61 (select-screen assets) feeds menu art per `UNIFIED-UI-SPEC.md` §8. Worker 62 (OSS games) — mined worker 22's OSS wave instead of duplicating (game-hud UI kit → suite ui-kit; Material Maker/TEXTtoPBR → textures).
 - MERGE FREEZE: pushed to `worker65/wwe-caw-creation-suite`, PR opened, **not merged** — merge-ready pending coordinator.
+## 2026-10-22 — worker 58: archive Buffalo Bill A1/A2 + Theory A1/A2/A3 (Tripo immutable originals)
+- Archived 5 Tripo pulls as immutable source originals, dorowani #603 pattern:
+  `roster/buffalo-bill/attires/attire1/source/buffalo-bill-a1.glb` (20,391,004 bytes, fantasy character, ram horns),
+  `roster/buffalo-bill/attires/attire2/source/buffalo-bill-a2.glb` (21,441,832 bytes, horned humanoid, ram horns),
+  `roster/theory/attires/attire1/source/theory-a1.glb` (22,369,448 bytes, gothic cat girl),
+  `roster/theory/attires/attire2/source/theory-a2.glb` (18,773,404 bytes, superhero red cape),
+  `roster/theory/attires/attire3/source/theory-a3.glb` (20,769,628 bytes, dark fantasy spiked),
+  each with `manifest.json` (Tripo project UUID, share URL, byte/magic verification).
+- Proof renders: `docs/proof/buffalo-bill-theory-2026-10-22/` (5 T-pose PNGs, 1024x1024, visually verified).
+- Research note: `docs/research/buffalo-bill-theory-intake-2026-10-22.md`.
+- Immutable-original tags on archive commit: `buffalo-bill-a1-original`, `buffalo-bill-a2-original`,
+  `theory-a1-original`, `theory-a2-original`, `theory-a3-original`.
+- No canon entries invented — archive only; canon bridges deferred to owner.
+
+### Addendum — Theory Attire 4 (same session)
+- Archived `roster/theory/attires/attire4/source/theory-a4.glb` (21,511,628 bytes, black leather outfit 3d model,
+  Tripo owner `eqqq57218`) + `manifest.json` + T-pose proof `docs/proof/buffalo-bill-theory-2026-10-22/theory-a4.png`
+  (visually verified). Intake note + tag list updated (`theory-a4-original`).
