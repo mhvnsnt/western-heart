@@ -12,15 +12,21 @@ class AudioEngine {
     this.master = null;
     this.musicGain = null;
     this.sfxGain = null;
+    this.voiceGain = null;
     this.enabled = false;
     this._musicTimer = null;
     this._musicStep = 0;
+    this.muted = false;
+    try { this.muted = localStorage.getItem('wh-audio') === 'off'; } catch (e) { /* private mode */ }
   }
 
-  /* Must be called from a user gesture (mobile autoplay policy). */
+  /* Must be called from a user gesture (mobile autoplay policy).
+     Respects the SETTINGS mute pref: unlocking never re-enables sound
+     the user turned off. */
   unlock() {
     if (this.ctx) {
       if (this.ctx.state === 'suspended') this.ctx.resume();
+      this.enabled = !this.muted;
       return;
     }
     const AC = window.AudioContext || window.webkitAudioContext;
@@ -37,8 +43,17 @@ class AudioEngine {
     this.sfxGain.gain.value = 0.85;
     this.sfxGain.connect(this.master);
 
-    this.enabled = true;
+    this.voiceGain = this.ctx.createGain();
+    this.voiceGain.gain.value = 0.9;
+    this.voiceGain.connect(this.master);
+
+    this.enabled = !this.muted;
   }
+
+  /* Voice bus (2026-10-24): announcer + character voice route here so
+     voice can be levelled separately from SFX. Null before unlock —
+     voice.js already falls back to ctx.destination in that case. */
+  voiceBus() { return this.voiceGain; }
 
   get now() { return this.ctx ? this.ctx.currentTime : 0; }
 
@@ -139,6 +154,22 @@ class AudioEngine {
     this._osc('sine', 200, t, t + 0.8, 0.6);
     this._osc('sine', 100, t + 0.05, t + 0.9, 0.5);
     this._noise(t, 0.5, 0.4, 600);
+  }
+
+  rage() { // Tekken-style rage ignition: rising snarl + sub thump
+    const t = this.now;
+    this._osc('sawtooth', 90, t, t + 0.5, 0.4);
+    this._osc('sawtooth', 135, t + 0.05, t + 0.55, 0.3);
+    this._osc('sine', 55, t + 0.1, t + 0.7, 0.65);
+    this._noise(t + 0.15, 0.4, 0.35, 1400);
+  }
+
+  urge() { // Soul Urge ignition (T8 Heat): bright rising surge + shimmer
+    const t = this.now;
+    this._osc('sawtooth', 220, t, t + 0.4, 0.3);
+    this._osc('sawtooth', 330, t + 0.04, t + 0.45, 0.25);
+    this._osc('sine', 110, t + 0.08, t + 0.6, 0.5);
+    this._noise(t + 0.1, 0.35, 0.3, 3600);
   }
 
   bell() { // round start
@@ -252,6 +283,18 @@ class AudioEngine {
 
   stopMusic() {
     if (this._musicTimer) { clearInterval(this._musicTimer); this._musicTimer = null; }
+  }
+
+  /* SETTINGS sound toggle (owner 2026-10-24): mute/unmute everything.
+     Works before any gesture (stores the pref; unlock() applies it). */
+  setMuted(m) {
+    this.muted = !!m;
+    if (this.ctx) {
+      this.enabled = !this.muted;
+      if (this.muted) { try { this.stopMusic(); } catch (e) {} }
+    } else {
+      this.enabled = false;
+    }
   }
 
   setMusicVolume(v) { if (this.musicGain) this.musicGain.gain.value = v; }

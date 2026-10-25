@@ -1,0 +1,15 @@
+{
+ "format": "wh-anim-crossover/1",
+ "owner_rule": "t117u 2026-10-23: show anims must never bleed into the moveset during play; crossover only where explicitly allowed.",
+ "contexts": ["FIGHT", "INTRO_OUTRO", "CUTSCENE", "SHOW"],
+ "fight_to_show": {
+  "note": "Fight clips (by T3 action name) that may be reused outside FIGHT. Read-only reuse; the fight clip is never edited.",
+  "allowed_contexts": ["SHOW", "CUTSCENE", "INTRO_OUTRO"],
+  "clips": ["stance", "intro", "light", "medium", "heavy", "win", "walkFwd", "walkBack", "block", "hit", "sidestepA", "sidestepB"]
+ },
+ "show_to_fight": {
+  "note": "Show clips (anims/show/<char>/<slot>) may enter ONLY these contexts. FIGHT is never allowed here; adding a show clip to FIGHT requires an owner-approved moveset PR (the clip then becomes a moveset clip, not a show clip).",
+  "allowed_contexts": ["INTRO_OUTRO", "CUTSCENE", "SHOW"],
+  "clips": ["idle", "walk", "run", "sit_idle", "sit_stand", "sit_couch", "talk_gesture", "wave", "react_laugh", "react_anger", "drink"]
+ }
+}
