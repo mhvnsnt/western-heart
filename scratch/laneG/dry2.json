@@ -1,0 +1,28 @@
+{
+ "date": "2026-10-25",
+ "tool": "tools/moveset-merge/merge_sources.py",
+ "fighters": {
+  "thor": {
+   "bases": {
+    "t7rbn": [
+     "Ganryu"
+    ]
+   },
+   "why": "owner 2026-10-24: \"fix every character's move sets and stances per their character that they're based on ... use Tekken 7\". THOR's canon base is Ganryu (game/js/roster-full.js base 'Ganryu'; roster/thor/CANON.md: built on Ganryu's sumo frame). Ganryu has no t7chicken or T8 file and no T3 bank; his T7 frame data is the rbnorway CSV set (teardown/community/tekken7/framedata/rbnorway/csv/Ganryu/, PR #859). His TTT2-doc moves (PR #945) and T3 Bryan proxy rows stay; Ganryu's T7 rows take the default inputs.",
+   "moves_before": 322,
+   "moves_after": 363,
+   "added": {
+    "t7rbn": 41
+   },
+   "slots": 203,
+   "slots_by_priority": {
+    "signature": 2,
+    "t7": 143,
+    "curated/donor": 58
+   },
+   "previously_playable_inputs": 91,
+   "owner_excluded_inputs": []
+  }
+ },
+ "failures": []
+}
