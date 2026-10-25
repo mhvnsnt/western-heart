@@ -17,14 +17,16 @@
    below consume them 1:1. The story system and proprietary layer
    do not change.
 
-   Combat model (phase 1): sequential inner battles — each wave is a
-   single-round fight vs an "echo" with HP carry-over + soul-ember
-   restores between waves. Soul Surge is the transform-meter analog
-   (channel the nine against the dark inside). Phase 2 (post-teardown):
-   simultaneous multi-enemy density via the seam below.
+   Combat model (worker 20, 2026-10-22): the REAL Devil Within brawler —
+   free-roam 3D, simultaneous multi-enemy waves, zone progression,
+   stage bosses, Soul Surge form. See game/js/brawler.js. The
+   proprietary content below (echoes, shadow self, stories, records)
+   is the WH layer on top of that foundation.
    ============================================================ */
 import { scaledAi, whGetRecords, whSetRecord } from './modes.js';
 import { playStoryBeats, setModeTag, showLoading, hideLoading } from './menus.js';
+import { roadInto, createPartyState, switchPartyFighter, recordPartyStageClear, HM_RAGDOLL_CONTEXTS } from './heartmind-campaign.js';
+import { BrawlerGame } from './brawler.js';
 
 /* Filled by the teardown lane. Consumed 1:1 when present. */
 export const HM_TEARDOWN = {
@@ -32,7 +34,7 @@ export const HM_TEARDOWN = {
   enemyAi: null,    // per-enemy-type AI patterns from T5
   waveTables: null, // stage -> wave composition from T5
   doorSystems: null,// platforming/door progression from T5
-  note: 'T5 teardown in progress (NO-DEFERRAL). Phase-1 proprietary tables below.',
+  note: 'T5 teardown in progress (NO-DEFERRAL). Brawler wave tables in brawler.js; when this lands, they are replaced 1:1.',
 };
 
 /* ---------------- The five inner stages ----------------
@@ -55,6 +57,36 @@ export const HEARTMIND_STAGES = [
     sub: 'Yourself, unmasked.',
     waves: 0, diff: 0.90, restore: 0.35 }, // boss only: the shadow self
 ];
+
+
+/* ============================================================
+   SHRINE体系 — the shrine terminal segment (owner 2026-10-24).
+   At the Still Point (stage 5, octagonal-shrine), before the
+   shadow-self fight, the shrine terminal reads the descending
+   soul. Applies to EVERY fighter: deep stories, nine-soul
+   stories, and the generic frame all pass through the brawler's onStageIntro,
+   so one wiring covers all of them. In-game name is
+   Shrine体系 (Shrine + 体系 "system", owner-locked kanji).
+   ============================================================ */
+export const SHRINE_OS_SEGMENT = {
+  key: 'shrine-os',
+  name: 'Shrine体系',
+  kanji: '体系',
+  kanjiReading: 'taikei',
+  stage: 'octagonal-shrine',
+  stageName: 'THE STILL POINT',
+  sideGames: 'side-games.html#shrine-os',
+  note: 'Owner-directed 2026-10-24: shrine terminal segment, played at the stillpoint stage for every fighter.',
+};
+
+export function shrineOsBeat(charId) {
+  return [
+    { name: 'SHRINE体系', charId,
+      text: 'The terminal wakes as you reach the still point. Sixteen colors, one voice: it reads you the way the shrine reads every arriving soul — three words, no more.' },
+    { name: 'SHRINE体系', charId,
+      text: 'The words are yours to carry into the fight. The shadow is already listening.' },
+  ];
+}
 
 /* Phase-1 proprietary wave table: echoes per stage. When HM_TEARDOWN
    lands, waveTables replaces this 1:1. */
@@ -330,8 +362,14 @@ export class HeartmindController {
     this.run = null;      // { fighterId, stage, hp, wave }
     this._lastCard = null;
     this._shadow = null;
+    this.party = null;      // campaign layer (Lane 6): party state, or null
+    this._inFight = false;  // campaign layer: true while a brawler descent is live
+    this._brawler = null;   // Devil Within brawler (worker 20): owns the descent fight
   }
-  clear() { this.run = null; this._lastCard = null; this._shadow = null; setModeTag(''); }
+  clear() {
+    if (this._brawler) { const b = this._brawler; this._brawler = null; b.stop(); }
+    this.run = null; this._lastCard = null; this._shadow = null; this.party = null; this._inFight = false; setModeTag('');
+  }
 
   /* ---- select flow (mirrors ModeController, standalone) ---- */
   beginSelect() {
@@ -359,139 +397,173 @@ export class HeartmindController {
   async start(fighterId) {
     const char = this.getChar(fighterId);
     if (!char) return;
-    this.run = { fighterId, stage: 0, hp: null, wave: 0 };
+    this.run = { fighterId, stage: 0, hp: null, wave: 0, road: null };
+    this.party = createPartyState([fighterId]);
     this._shadow = buildShadowSelf(char);
     const story = getHeartmindStory(char);
     this._story = story;
     setModeTag('THE HEART AND MIND INSIDE');
     showLoading('DESCENDING…');
-    // Entry cutscene over the select screen, then stage 1.
-    playStoryBeats(story.entry, () => this._runStage(), story.title);
+    // Entry cutscene over the select screen, then the brawler takes over.
+    playStoryBeats(story.entry, () => this._beginBrawler(), story.title);
   }
 
-  _runStage() {
-    const st = HEARTMIND_STAGES[this.run.stage];
-    if (!st) { this._complete(); return; }
-    this.run.wave = 0;
+  _beginBrawler() {
+    if (!this.run) return;
+    const fighterId = this.run.fighterId;
     const story = this._story;
-    const beat = story.beats[st.key];
-    const open = [
-      { name: st.name, charId: this.run.fighterId,
-        text: `${st.sub} Stage ${st.n} of 5.` },
-      ...(beat || []),
-    ];
-    playStoryBeats(open, () => this._fightWave(), st.name);
-  }
-
-  _pickEcho(diff, excludeId) {
-    const pool = this.roster.filter((c) => c.id !== excludeId && ECHO_POOL.includes(c.id));
-    const list = pool.length ? pool : this.roster.filter((c) => c.id !== excludeId);
-    const c = list[Math.floor(Math.random() * list.length)];
-    return makeEcho(this.getChar(c.id) || c, diff);
-  }
-
-  _fightWave() {
-    const st = HEARTMIND_STAGES[this.run.stage];
-    const char = this.getChar(this.run.fighterId);
-    let foe;
-    let label;
-    if (this.run.wave < st.waves) {
-      foe = this._pickEcho(Math.min(0.95, st.diff + this.run.wave * 0.04), this.run.fighterId);
-      label = `${st.name} · ECHO ${this.run.wave + 1}/${st.waves}`;
-    } else {
-      // Stage boss: the shadow self (stage 5) or a named inner demon.
-      if (st.key === 'stillpoint') {
-        foe = this._shadow;
-        label = `${st.name} · ${this._story.bossName}`;
-      } else {
-        const bossPool = ['diablo', 'phantom', 'dio'];
-        const b = this.getChar(bossPool[this.run.stage % bossPool.length]) || this.getChar('diablo');
-        foe = makeEcho(b, Math.min(0.95, st.diff + 0.12));
-        foe.name = 'WARDEN OF ' + st.name;
-        label = `${st.name} · WARDEN`;
-      }
-    }
-    this.ui.banner && this.ui.banner(label);
-    setModeTag('HEART ♥ MIND · ' + st.name);
-    this.game.onMatchEnd = (won) => this._waveEnd(won);
-    const opts = {
-      mode: 'heartmind', roundsToWin: 1, stage: st.stage, enemyChar: foe,
-    };
-    if (this.run.hp != null) opts.hpCarry = this.run.hp;
-    showLoading('THE DARK STIRS…');
-    this.startFight(this.run.fighterId, null, opts);
-  }
-
-  _waveEnd(won) {
-    const st = HEARTMIND_STAGES[this.run.stage];
-    const g = this.game;
-    if (!won) {
-      // Death inside is still death: the descent ends.
-      const rec = whGetRecords();
-      const key = 'heartmind_' + this.run.fighterId;
-      playStoryBeats([
-        { name: 'THE HEART AND MIND INSIDE', charId: this.run.fighterId,
-          text: `The dark keeps what it catches. ${st.name} holds you at ${this.run.wave < st.waves ? 'echo ' + (this.run.wave + 1) : 'the warden'}. Descend again — it will be waiting.` },
-      ], () => {
-        this.show('menu');
-        if (window.__modes) window.__modes.clearState();
-        this.clear();
-      }, 'THE DARK KEEPS WHAT IT CATCHES');
-      return;
-    }
-    // Soul ember: the eater grows — HP restore between waves.
-    const restored = Math.min(g.p1.maxHp, g.p1.hp + g.p1.maxHp * st.restore);
-    this.run.hp = restored;
-    this.run.wave++;
-    const isBossWave = this.run.wave > st.waves;
-    if (!isBossWave) {
-      this.ui.banner && this.ui.banner(`ECHO DOWN — SOUL EMBER +${Math.round(st.restore * 100)}%`);
-      setTimeout(() => this._fightWave(), 1200);
-    } else {
-      // Stage clear → record + next stage.
-      const key = 'heartmind_' + this.run.fighterId;
-      const rec = whGetRecords();
-      if (st.n > (rec[key] || 0)) whSetRecord(key, st.n);
-      if (st.key === 'stillpoint') { this._shadowDown(); return; }
-      this.ui.banner && this.ui.banner(`${st.name} CLEARED`);
-      setTimeout(() => {
-        // Pre-boss confrontation lines on the final stage.
-        if (HEARTMIND_STAGES[this.run.stage + 1] &&
-            HEARTMIND_STAGES[this.run.stage + 1].key === 'stillpoint') {
-          playStoryBeats(this._story.bossLines, () => {
-            this.run.stage++;
-            this._runStage();
-          }, this._story.bossName);
+    this.show('hud');
+    const brawler = new BrawlerGame({
+      game: this.game,
+      input: this.game.input,
+      ui: this.ui,
+      getChar: this.getChar,
+      roster: this.roster,
+      content: {
+        stages: HEARTMIND_STAGES,
+        makeEcho,
+        buildShadowSelf,
+      },
+    });
+    // The stage-5 boss wears the story's name for the shadow.
+    brawler.bossLabelFor = (stageIdx, kind, def) =>
+      kind === 'shadow' ? story.bossName : def;
+    this._brawler = brawler;
+    brawler.begin(fighterId, {
+      onStageIntro: (i, done) => {
+        const st = HEARTMIND_STAGES[i];
+        const beat = story.beats[st.key];
+        // Shrine体系 at the Still Point: the shrine terminal reads
+        // the descending soul before the shadow fight (owner 2026-10-24).
+        const shrineBeat = st.key === 'stillpoint' ? shrineOsBeat(fighterId) : [];
+        playStoryBeats([
+          { name: st.name, charId: fighterId,
+            text: `${st.sub} Stage ${st.n} of 5.` },
+          ...(beat || []),
+          ...shrineBeat,
+        ], done, st.name);
+      },
+      onBossIntro: (stageIdx, kind, label, done) => {
+        // The shadow confrontation gets its lines; the wardens just roar.
+        if (HEARTMIND_STAGES[stageIdx].key === 'stillpoint') {
+          playStoryBeats(story.bossLines, done, story.bossName);
         } else {
-          this.run.stage++;
-          this._runStage();
+          done();
         }
-      }, 1400);
-    }
-  }
-
-  _shadowDown() {
-    const char = this.getChar(this.run.fighterId);
-    const key = 'heartmind_' + this.run.fighterId + '_clear';
-    whSetRecord(key, (whGetRecords()[key] || 0) + 1);
-    playStoryBeats(this._story.resolution, () => {
-      this.game.onMatchEnd = null;
-      if (window.__modes) window.__modes.clearState();
-      // Reuse the classic result screen for the triumph.
-      const ui2 = window.__ui;
-      if (ui2 && ui2.matchOver) ui2.matchOver(true);
-      const t = document.getElementById('result-title');
-      if (t) t.textContent = 'PURIFIED';
-      const s = document.getElementById('result-sub');
-      if (s) s.textContent = `${char.name} met themselves at the still point — and stayed. The Heart and Mind Inside: complete.`;
+      },
+      onStageClear: (i, rank, done) => {
+        const st = HEARTMIND_STAGES[i];
+        const key = 'heartmind_' + fighterId;
+        const rec = whGetRecords();
+        if (st.n > (rec[key] || 0)) whSetRecord(key, st.n);
+        if (this.party) recordPartyStageClear(this.party, fighterId, st.key);
+        // a breath before the next descent
+        setTimeout(done, 1200);
+      },
+      onVictory: (done) => {
+        const char = this.getChar(fighterId);
+        const key = 'heartmind_' + fighterId + '_clear';
+        whSetRecord(key, (whGetRecords()[key] || 0) + 1);
+        playStoryBeats(story.resolution, () => {
+          const ui2 = window.__ui;
+          if (ui2 && ui2.matchOver) ui2.matchOver(true);
+          const t = document.getElementById('result-title');
+          if (t) t.textContent = 'PURIFIED';
+          const s = document.getElementById('result-sub');
+          if (s) s.textContent =
+            `${char.name} met themselves at the still point — and stayed. The Heart and Mind Inside: complete.`;
+          this.clear();
+          done();
+        }, 'PURIFICATION');
+      },
+      onDeath: (info, done) => {
+        const st = HEARTMIND_STAGES[info.stage - 1];
+        playStoryBeats([
+          { name: 'THE HEART AND MIND INSIDE', charId: fighterId,
+            text: `The dark keeps what it catches. ${st ? st.name : 'The descent'} holds you at stage ${info.stage}, with ${info.kills} echoes put down. Descend again — it will be waiting.` },
+        ], () => {
+          this.show('menu');
+          if (window.__modes) window.__modes.clearState();
+          this.clear();
+          done();
+        }, 'THE DARK KEEPS WHAT IT CATCHES');
+      },
+    }).catch((e) => {
+      console.error('[WH] heartmind brawler failed to start:', e);
+      this.show('menu');
       this.clear();
-    }, 'PURIFICATION');
+    });
   }
 
   _complete() { this.clear(); }
 
   rematch() {
-    // Retry the current wave from the result screen.
-    if (this.run) this._fightWave();
+    // Restart the descent from the result screen.
+    if (this.run) {
+      const id = this.run.fighterId;
+      this.clear();
+      this.start(id);
+    }
   }
+
+  /* ---- campaign layer (Lane 6: roads, party, journal) ----
+     Party switching is allowed BETWEEN fights only, never
+     mid-fight (Scenario Campaign model: choose your fighter for
+     the next stage, don't swap mid-combo). The shadow self
+     follows the active fighter: it is "yourself, unmasked", so
+     switching fighters rebuilds it. setParty() preserves the
+     current fighter's live run progress. */
+  setParty(fighterIds) {
+    const current = this.run
+      ? { stage: this.run.stage, wave: this.run.wave, hp: this.run.hp }
+      : null;
+    // Keep journal clears the current fighter already earned.
+    const oldCleared = (this.party && this.run && this.party.progress[this.run.fighterId])
+      ? this.party.progress[this.run.fighterId].cleared || []
+      : [];
+    this.party = createPartyState(fighterIds);
+    if (current && this.run && this.party.progress[this.run.fighterId]) {
+      this.party.progress[this.run.fighterId] = { ...current, cleared: oldCleared };
+    }
+    return this.party;
+  }
+
+  switchFighter(fighterId) {
+    if (!this.run) return { ok: false, reason: 'no-run' };
+    if (this._inFight) return { ok: false, reason: 'in-fight' };
+    if (this.party) {
+      this.party.progress[this.run.fighterId] = {
+        stage: this.run.stage, wave: this.run.wave, hp: this.run.hp,
+        cleared: (this.party.progress[this.run.fighterId] || {}).cleared || [],
+      };
+    } else {
+      this.party = createPartyState([this.run.fighterId, fighterId]);
+      this.party.progress[this.run.fighterId] = {
+        stage: this.run.stage, wave: this.run.wave, hp: this.run.hp, cleared: [],
+      };
+    }
+    const res = switchPartyFighter(this.party, fighterId);
+    if (!res.ok) return res;
+    this.run.fighterId = fighterId;
+    this.run.stage = res.progress.stage;
+    this.run.wave = res.progress.wave;
+    this.run.hp = res.progress.hp;
+    const char = this.getChar(fighterId);
+    if (char) {
+      this._story = getHeartmindStory(char);
+      this._shadow = buildShadowSelf(char);
+    }
+    this.run.road = roadInto(HEARTMIND_STAGES[this.run.stage].key);
+    return { ok: true, fighterId, stage: HEARTMIND_STAGES[this.run.stage].key, road: this.run.road };
+  }
+
+  /* The road the current stage was reached by (null at the
+     Threshold, where the descent begins). The UI lane may show
+     its `walk` line on the stage card. */
+  currentRoad() {
+    return (this.run && this.run.road) || null;
+  }
+
+  /* Ragdoll contexts this mode allows (physics lane consumes). */
+  ragdollContexts() { return HM_RAGDOLL_CONTEXTS; }
 }

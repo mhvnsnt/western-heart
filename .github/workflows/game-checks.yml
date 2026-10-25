@@ -1,0 +1,144 @@
+# Rig guard: fail a PR that removes ANY model key from MODEL_URLS.
+# Deleting a key deletes a wired model (skinned or not) — the zui/zen gaps of
+# 2026-10-21 were GLBs on disk with no key, found only by manual audit.
+# Companion job runs the game unit tests (test/*.test.mjs) on a sparse
+# checkout. Does not touch the clobber-guard / deletion-guard /
+# no-deletion-guard / instruction-gate workflows.
+name: rig-guard
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+  merge_group:
+    types: [checks_requested]
+# CI minute diet (Plan B): superseded PR runs are cancelled, not billed.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+permissions:
+  contents: read
+  pull-requests: read
+jobs:
+  rig-guard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          filter: blob:none
+          sparse-checkout: |
+            tools/rig-guard
+            game/js/assets.js
+          sparse-checkout-cone-mode: false
+      - name: Guard self-test
+        run: python3 -m unittest discover -s tools/rig-guard -p 'test_rig_guard.py' -v
+      - name: Check for removed MODEL_URLS keys
+        env:
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          MAIN_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          # The PR's base commit = fork point (merge-base), not the moving base tip.
+          if FORK=$(git merge-base "$HEAD_SHA" "$MAIN_SHA" 2>/dev/null); then
+            echo "Fork point: $FORK"
+          else
+            echo "::warning::merge-base failed; falling back to base tip (check degraded)"
+            FORK="$MAIN_SHA"
+          fi
+          BASE_SHA="$FORK" HEAD_SHA="$HEAD_SHA" \
+            python3 tools/rig-guard/rig_guard.py
+  game-unit-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            test
+            game/js
+            game/data
+            game/netplay
+            game/index.html
+            game/styles.css
+            game/menus.css
+            game/netlify.toml
+            game/_redirects
+            game/assets/movesets
+            game/assets/portraits
+            game/assets/anim/t3
+            tools/canon
+            tools/portraits
+            tools/anim/node_game_env.mjs
+            game/vendor/jolt
+            game/vendor/three.module.js
+            game/vendor/addons
+            customization/profiles
+          sparse-checkout-cone-mode: false
+      - name: Run game unit tests
+        run: |
+          set -euo pipefail
+          for t in test/*.test.mjs; do
+            echo "== $t"
+            node "$t"
+          done
+
+  menu-touch-e2e:
+    # t122u: phone tap test (hasTouch 390x844): every menu item tappable,
+    # tappable even if a boot module fails, and menu -> select -> stage -> fight.
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            /test
+            /game
+            !/game/assets/music
+            /packages/creation-suite
+            /roster/pantera
+            /roster/phantom/attires/attire1
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Playwright
+        run: |
+          cd test/e2e && npm init -y >/dev/null && npm i playwright@1.64.1 && npx playwright install --with-deps chromium
+      - name: Tap test
+        run: |
+          python3 -m http.server 8811 >/tmp/srv.log 2>&1 &
+          sleep 2
+          node test/e2e/menu-touch.e2e.mjs menu-touch-shots
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: menu-touch-shots
+          path: menu-touch-shots
+
+  material-gate:
+    # Every MODEL_URLS model must pass game/js/material-resolve.js (no missing,
+    # placeholder or exporter-default materials) or be listed in the generated
+    # quarantine game/js/material-status.js, which keeps it out of select + fight.
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            game/js
+            tools/assets
+          sparse-checkout-cone-mode: false
+      - name: Material gate (all roster models)
+        run: node tools/assets/material_gate.mjs --json material-gate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: material-gate
+          path: material-gate.json

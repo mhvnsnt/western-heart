@@ -39,27 +39,26 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 /* fighter id -> { own: [MODEL_URLS keys that are this fighter's own wired
  * models], base: declared canon base key, pending: own file not yet in repo } */
 const OWNERSHIP = {
-  "armor-king": {
-    "own": [
-      "armor-king"
-    ]
-  },
   "awapop": {
     "own": [
-      "awa-pop"
+      "awa-pop",
+      "awa-pop-attire2"
     ]
   },
   "baek-master-white": {
     "own": [
+      "kevin-tripo",
       "baek",
       "baek-master-white"
     ]
-  },
+  }, // wire-up 2026-10-22: Kevin A1 Tripo wired + ladder Slot 1
   "bruno": {
     "own": [
-      "bruno"
+      "bruno",
+      "bruno-attire1",
+      "bruno-attire2"
     ]
-  },
+  }, // wave 1 2026-10-23: his two on-main source attires wired into his ladder
   "burger": {
     "own": [
       "burger",
@@ -72,18 +71,35 @@ const OWNERSHIP = {
     ]
   },
   "byou": {
-    "base": "steve-fox"
+    "pending": true
   },
   "charger": {
     "own": [
-      "charger"
+      "charger",
+      "blanka"
     ]
-  },
+  }, // wave 1 2026-10-23: Blanka model ladders behind Charger (obsolete-originals rule)
   "charger-attire2": {
     "own": [
       "charger-attire2"
     ]
   },
+  "buffalo-bill": {
+    "own": [
+      "buffalo-bill"
+    ]
+  }, // wave 1 2026-10-23: select entry + base key landed (Attire 3 'Ashes' model)
+  "cainelias": {
+    "own": [
+      "cain-elias",
+      "cain-elias-attire2"
+    ]
+  }, // wave 1 2026-10-23: select entry landed; model keys were already wired
+  "chordz": {
+    "own": [
+      "chordz"
+    ]
+  }, // wave 1 2026-10-23: select entry + model key landed
   "cyborgx": {
     "own": [
       "cape-jones",
@@ -93,9 +109,10 @@ const OWNERSHIP = {
   "deathfang": {
     "own": [
       "deathfang",
-      "deathfang-werewolf"
+      "deathfang-werewolf",
+      "iori"
     ]
-  },
+  }, // wave 1 2026-10-23: Iori model ladders behind Deathfang (obsolete-originals rule)
   "demonio": {
     "own": [
       "demonio",
@@ -129,9 +146,10 @@ const OWNERSHIP = {
   },
   "dio": {
     "own": [
-      "dio"
+      "dio",
+      "dio-attire1"
     ]
-  },
+  }, // wave 1 2026-10-23: Jade God source wired into his ladder
   "doc-frank-frankenstein": {
     "own": [
       "doc-frank-frankenstein"
@@ -168,48 +186,54 @@ const OWNERSHIP = {
   },
   "dxmmii-patchwork": {
     "own": [
-      "dxmmii-patchwork"
+      "dxmmii-tripo",
+      "dxmmii-patchwork",
+      "dxmmii-a2"
     ]
-  },
+  }, // table was stale vs the re-keyed ladder (Tripo default Slot 1); fixed 2026-10-22
   "gyou": {
-    "base": "pantera"
-  },
-  "iori": {
-    "own": [
-      "iori"
-    ]
+    "pending": true
   },
   "jin_soul": {
     "base": "steve-fox"
   },
   "kai": {
-    "base": "pantera"
+    "pending": true
   },
   "kingtyrant": {
     "own": [
       "king-tyrant",
+      "king-tyrant-attire1",
+      "king-tyrant-attire2",
+      "king-tyrant-attire3",
+      "king-tyrant-attire4",
       "king-tyrant_alt1"
     ]
-  },
+  }, // wire-up 2026-10-22: Tripo attires 1-4 wired + ladder
   "kinpo": {
     "own": [
       "kinpo",
+      "kinpo-attire2",
       "kinpo-t8",
       "kinpo_alt1"
     ]
-  },
+  }, // wire-up 2026-10-22: Attire 2 Goth Sport added to her ladder
   "koreshi": {
     "own": [
-      "koreshi"
+      "koreshi",
+      "koreshi-attire1",
+      "vega"
     ]
-  },
+  }, // wave 1 2026-10-23: Tripo source wired + Vega model ladders behind Koreshi
   "kronos": {
     "own": [
       "kronos",
       "kronos-attire2",
-      "kronos-attire3"
+      "kronos-attire3",
+      "zangief",
+      "zangief-attire1"
     ]
-  },
+  }, // wave 1 2026-10-23: Zangief models ladder behind Kronos (obsolete-originals rule)
   "kronos-attire2": {
     "own": [
       "kronos-attire2"
@@ -217,24 +241,33 @@ const OWNERSHIP = {
   },
   "mariposa-monarch": {
     "own": [
-      "mariposa-monarch"
+      "mariposa-butterfly-default",
+      "mariposa",
+      "mariposa-monarch",
+      "zafina-golden-pharaoh",
+      "zafina"
     ]
-  },
+  }, // table was stale vs the deduped ladder (Slot 1 Butterfly Default); fixed 2026-10-22
   "michiko": {
     "own": [
+      "michiko-attire1",
+      "michiko-attire2",
       "michiko"
     ]
-  },
+  }, // wire-up 2026-10-22: Tripo Attires 1-2 (auto-rigged) wired + ladder
   "negativo": {
     "own": [
-      "n3g4tiv0"
+      "n3g4tiv0",
+      "negativo-attire1",
+      "negativo-attire2"
     ]
-  },
+  }, // wave 1 2026-10-23: his two on-main source attires wired into his ladder
   "nightwolf": {
     "own": [
-      "nightwolf"
+      "nightwolf",
+      "nightwolf-attire1"
     ]
-  },
+  }, // wire-up 2026-10-22: Tripo Attire 1 wired + ladder
   "pantera": {
     "own": [
       "pantera",
@@ -246,9 +279,10 @@ const OWNERSHIP = {
   "phantom": {
     "own": [
       "phantom",
-      "phantom-t8"
+      "phantom-t8",
+      "jin-bloodline-ember"
     ]
-  },
+  }, // wire-up 2026-10-22: Jin Kazama Bloodline Ember added to Phantom's ladder
   "purplerain": {
     "own": [
       "purple-rain",
@@ -256,18 +290,21 @@ const OWNERSHIP = {
     ]
   },
   "retsu": {
-    "base": "pantera"
+    "pending": true
   },
   "rin": {
-    "base": "steve-fox"
+    "pending": true
   },
-  "ryuji": {},
+  "ryuji": {
+    "own": [
+      "ryuji-rock"
+    ]
+  },
   "ryuji-rock": {
     "own": [
       "ryuji-rock"
-    ],
-    "pending": true
-  },
+    ]
+  }, // model landed 2026-10-22 (owner Tripo); byte-identical copy at the key's path 2026-10-23 (wave 1) — no longer pending
   "sakura": {
     "own": [
       "saku-ra",
@@ -287,24 +324,31 @@ const OWNERSHIP = {
     ]
   },
   "sha": {
-    "base": "steve-fox"
+    "pending": true
   },
   "skull": {
     "own": [
-      "skull"
+      "skull",
+      "skull-tripo",
+      "skull-base"
     ]
-  },
+  }, // wave 1 2026-10-23: Tripo A1 + Bryan base wired into his ladder (ATTIRE-SLOTS.md)
   "slice": {
     "own": [
       "slice",
-      "slice-attire1"
+      "slice-attire1",
+      "slice-attire2"
     ]
   },
   "star": {
     "own": [
-      "star"
+      "star",
+      "star-attire1",
+      "star-attire2",
+      "star-attire3",
+      "star-attire5"
     ]
-  },
+  }, // wire-up 2026-10-22: Tripo attires 1-3+5 wired + ladder
   "thor": {
     "own": [
       "thor",
@@ -313,38 +357,46 @@ const OWNERSHIP = {
   },
   "torch": {
     "own": [
-      "torch"
+      "torch",
+      "torch-tripo-a1",
+      "torch-tripo-a2"
     ]
-  },
-  "tou": {
-    "base": "pantera"
-  },
-  "vega": {
+  }, // table was stale vs the torch ladder (A1 Valkyrie of Flame default); fixed 2026-10-22
+  "vainabel": {
     "own": [
-      "vega"
+      "vainabel",
+      "vainabel-attire1",
+      "vainabel-attire2",
+      "vainabel-attire3",
+      "vainabel-attire4"
     ]
+  }, // wave 1 2026-10-23: select entry + base key landed (base = Attire 2; A1 Tripo not on disk)
+  "tou": {
+    "pending": true
   },
   "waterfall": {
     "own": [
-      "waterfall"
+      "waterfall",
+      "waterfall-attire1"
     ]
-  },
+  }, // wave 1 2026-10-23: Tripo source wired into her ladder
   "yukihyo": {
     "own": [
-      "yukihyo"
+      "yukihyo",
+      "yukihyo-attire1",
+      "yukihyo-attire2",
+      "yukihyo-attire3",
+      "armor-king",
+      "armor-king-attire1"
     ]
-  },
-  "zangief": {
-    "own": [
-      "zangief"
-    ]
-  },
+  }, // wave 1 2026-10-23: his source attires wired + Armor King models ladder behind him
   "zen": {
     "own": [
       "zen",
-      "zen-attire1"
+      "zen-attire1",
+      "zen-body"
     ]
-  },
+  }, // +zen-body (ladder Attire 2)
   "zui": {
     "own": [
       "zui-attire1",
@@ -359,9 +411,14 @@ const OWNERSHIP = {
 const sandbox = mkdtempSync(join(tmpdir(), 'wh-model-key-guard-'));
 cpSync(join(ROOT, 'game/js/roster-full.js'), join(sandbox, 'roster-full.js'));
 cpSync(join(ROOT, 'game/js/attires.js'), join(sandbox, 'attires.js'));
+cpSync(join(ROOT, 'game/js/material-status.js'), join(sandbox, 'material-status.js')); // material gate data
 writeFileSync(join(sandbox, 'package.json'), '{"type":"module"}');
 const { FULL_ROSTER } = await import(pathToFileURL(join(sandbox, 'roster-full.js')).href);
 const { selectedAttireModel } = await import(pathToFileURL(join(sandbox, 'attires.js')).href);
+// Material gate (tools/assets/material_gate.mjs): quarantined models are never offered,
+// so a fighter's player path skips them; a fighter with none left is not selectable.
+const { MATERIAL_STATUS } = await import(pathToFileURL(join(sandbox, 'material-status.js')).href);
+const QUARANTINED = new Set(Object.keys(MATERIAL_STATUS.quarantine || {}));
 
 // --- MODEL_URLS parsed from the real assets.js source (authored table of
 // --- plain string literals), with the ATTIRE_CUSTOMIZATIONS override layer
@@ -388,6 +445,7 @@ test('every fighter with a wired own model resolves to their OWN model on both r
     if (!o || !o.own) continue; // no own model wired: declared-base / fallback riders are covered below
     const playerKey = selectedAttireModel(f);
     const enemyKey = f.model;
+    if (playerKey === null && !o.own.some(k => !QUARANTINED.has(k))) continue; // material-gated out of select
     if (!o.own.includes(playerKey)) bad.push(`${f.id}: player/select path resolves '${playerKey}' (not their own)`);
     if (!o.own.includes(enemyKey)) bad.push(`${f.id}: enemy/raw path resolves '${enemyKey}' (not their own)`);
   }
@@ -410,8 +468,9 @@ test('every resolved model URL points at a file that exists in the repo', () => 
   const bad = [];
   for (const f of FULL_ROSTER) {
     const o = OWNERSHIP[f.id] || {};
-    if (o.pending) continue; // documented pending drop-in (ryuji-rock)
+    if (o.pending || f.modelPending) continue; // MODEL PENDING: no own model yet (owner 2026-10-23)
     for (const [path, key] of [['player', selectedAttireModel(f)], ['enemy', f.model]]) {
+      if (key === null) continue; // material-gated out of select (no usable attire)
       const url = MODEL_URLS[key];
       if (!url) { bad.push(`${f.id}: ${path} key '${key}' has no MODEL_URLS entry`); continue; }
       if (!existsSync(join(ROOT, urlToRepoPath(url)))) bad.push(`${f.id}: ${path} key '${key}' -> ${url} (file missing)`);
