@@ -40,29 +40,39 @@
    q in 'off' | 'low' | 'high'. Persisted in localStorage `wh_softbody_v1`.
    Default is 'low' (conservative): 3x4x3 lattice, ~30 particles. 'high'
    rebuilds at 4x5x4. 'off' disables sim + restores the mesh.
+   NOTE: the 'wh_softbody_v1' store is SHARED with the MPM-lite lane
+   (game/js/mpm-tissue.js) so quality + X-ray gating stay consistent
+   whichever backend drives a fighter.
+
+   NEXTGEN-2026-10-23 upgrades (see docs/research/SOFTBODY-NEXTGEN-2026-10-23.md):
+     - Substepped world stepping (2 substeps/frame): the SurRoL MPM and
+       Newton/Isaac solvers both substep their explicit solves; doing the
+       same here keeps hard hits stable without changing the XPBD feel.
+     - NDG-style inversion guard: per-lattice-cell volume check in the
+       skinning pass — a crushed cell relaxes toward rest instead of
+       inverting (gradient-space correction, after Nolte et al. 2026).
 
    Mobile: the solver cost is trivial (tens of particles, no collisions,
    one shared Jolt world stepped once per frame for all fighters). The
    per-frame JS cost is one pass over the region's vertices (a few
    thousand) plus throttled normal recomputation.
 
-   This module has NO top-level imports (no three.js, no Jolt) so it is
-   unit-testable in node and adds zero boot cost: Jolt is dynamically
-   imported on first fromMesh and every Jolt touch is guarded — physics
-   must NEVER crash the fight.
+   This module's only top-level import is the dependency-free shared
+   tissue quality store (./tissue-quality.js) — no three.js, no Jolt — so
+   it stays unit-testable in node and adds zero boot cost: Jolt is
+   dynamically imported on first fromMesh and every Jolt touch is guarded
+   — physics must NEVER crash the fight.
    ============================================================ */
+import { getTissueQuality, setTissueQuality, onTissueQuality, TISSUE_QUALITIES } from './tissue-quality.js';
 
 // ---- tiny vector helpers (plain objects; no three.js dependency) ----
 const _v3 = (x = 0, y = 0, z = 0) => ({ x, y, z });
 
-// ---- quality ---------------------------------------------------------
-const QUALITIES = ['off', 'low', 'high'];
-const QUALITY_STORE = 'wh_softbody_v1';
-let _globalQuality = 'low'; // conservative default
-try {
-  const saved = (typeof localStorage !== 'undefined') && localStorage.getItem(QUALITY_STORE);
-  if (QUALITIES.indexOf(saved) >= 0) _globalQuality = saved;
-} catch (e) { /* private mode / node: keep default */ }
+// ---- quality (shared tissue store — game/js/tissue-quality.js) ---------
+// NEXTGEN-2026-10-23: one store for all backends (Jolt/MPM/FEMFX); the
+// X-ray gate reads SoftBody.globalQuality and stays correct no matter
+// which backend drives a fighter.
+const QUALITIES = TISSUE_QUALITIES;
 
 // ---- Jolt world singleton (one physics world for all fighters) --------
 const JOLT_URL = '../vendor/jolt/jolt-physics.wasm-compat.js';
@@ -117,12 +127,54 @@ function _nowMs() {
 }
 
 // Step the shared world at most once per animation frame, no matter how
-// many fighters call update().
+// many fighters call update(). NEXTGEN-2026-10-23: 2 substeps per frame —
+// SurRoL's MPM and Newton's staged solvers both substep their explicit
+// solves; the same trick keeps hard hits stable here without changing
+// the XPBD feel.
 function _stepWorldShared(world, h) {
   const now = _nowMs();
   if (now - _lastStepMs < 5) return;
   _lastStepMs = now;
-  world.jolt.Step(h, 1);
+  world.jolt.Step(h / 2, 1);
+  world.jolt.Step(h / 2, 1);
+}
+
+// 6-tet decomposition of a lattice cell (shared by the Jolt volume
+// constraints and the NDG-style inversion guard below).
+const CELL_TETS = [
+  [[0,0,0],[0,1,1],[0,0,1],[1,1,1]], [[0,0,0],[0,1,0],[0,1,1],[1,1,1]],
+  [[0,0,0],[0,0,1],[1,0,1],[1,1,1]], [[0,0,0],[1,0,1],[1,0,0],[1,1,1]],
+  [[0,0,0],[1,1,0],[0,1,0],[1,1,1]], [[0,0,0],[1,0,0],[1,1,0],[1,1,1]],
+];
+
+// Signed volume of tet (a,b,c,d).
+function _tetVol(ax, ay, az, bx, by, bz, cx, cy, cz, dx, dy, dz) {
+  const abx = bx - ax, aby = by - ay, abz = bz - az;
+  const acx = cx - ax, acy = cy - ay, acz = cz - az;
+  const adx = dx - ax, ady = dy - ay, adz = dz - az;
+  return (abx * (acy * adz - acz * ady)
+        - aby * (acx * adz - acz * adx)
+        + abz * (acx * ady - acy * adx)) / 6;
+}
+
+// Sum the 6 tet volumes of one lattice cell. `pos` is a Float32Array of
+// particle positions (nP*3); `corners` holds 8 particle indices ordered
+// x + 2*y + 4*z.
+function _cellVolume(pos, corners) {
+  let vol = 0;
+  for (let t = 0; t < 6; t++) {
+    const o = CELL_TETS[t];
+    const ia = corners[o[0][0] + 2 * o[0][1] + 4 * o[0][2]];
+    const ib = corners[o[1][0] + 2 * o[1][1] + 4 * o[1][2]];
+    const ic = corners[o[2][0] + 2 * o[2][1] + 4 * o[2][2]];
+    const id = corners[o[3][0] + 2 * o[3][1] + 4 * o[3][2]];
+    vol += _tetVol(
+      pos[ia*3], pos[ia*3+1], pos[ia*3+2],
+      pos[ib*3], pos[ib*3+1], pos[ib*3+2],
+      pos[ic*3], pos[ic*3+1], pos[ic*3+2],
+      pos[id*3], pos[id*3+1], pos[id*3+2]);
+  }
+  return vol;
 }
 
 // ---- anatomy region presets (v1: belly/torso only) ---------------------
@@ -170,11 +222,15 @@ function _normalizeSpec(anatomySpec) {
 const _claimedGeometries = (typeof WeakSet !== 'undefined') ? new WeakSet() : null;
 const _live = (typeof Set !== 'undefined') ? new Set() : { add() {}, delete() {}, forEach() {} };
 
+// Shared-store fan-out: a quality change via ANY backend's
+// setGlobalQuality updates every live SoftBody.
+onTissueQuality((q) => { _live.forEach((sb) => { try { sb.setQuality(q); } catch (e) {} }); });
+
 export class SoftBody {
   constructor() {
     this._mesh = null;
     this._region = null;      // built region data (sync, no Jolt needed)
-    this._quality = _globalQuality;
+    this._quality = getTissueQuality();
     this._world = null;
     this._Jolt = null;
     this._shared = null;
@@ -216,16 +272,12 @@ export class SoftBody {
     return { regions: char.softbodyRegions || ['belly'] };
   }
 
-  static get globalQuality() { return _globalQuality; }
+  static get globalQuality() { return getTissueQuality(); }
 
   static setGlobalQuality(q) {
-    if (QUALITIES.indexOf(q) < 0) return false;
-    _globalQuality = q;
-    try {
-      if (typeof localStorage !== 'undefined') localStorage.setItem(QUALITY_STORE, q);
-    } catch (e) {}
-    _live.forEach((sb) => { try { sb.setQuality(q); } catch (e) {} });
-    return true;
+    // Live instances update via the shared-store listener registered
+    // below (works across backends: MPM/FEMFX setters fan out here too).
+    return setTissueQuality(q);
   }
 
   // Synchronous region analysis: find the belly ellipsoid, collect the
@@ -379,14 +431,42 @@ export class SoftBody {
       if (!pPin[p]) dynList.push(p);
     }
 
+    // NEXTGEN-2026-10-23: per-cell inversion-guard data (NDG technique).
+    const { cellCorners, cellRestVol } =
+      this._buildCellData(pIndex, key, [nx, ny, nz], rest);
+
     this._region = {
       preset, center: [center.x, center.y, center.z],
       radius: [radius.x, radius.y, radius.z],
       res: [nx, ny, nz], box: [box.x, box.y, box.z], step: [step.x, step.y, step.z],
       gridKey: key, pIndex, nP, rest, pinned: pPin,
       regionVerts: Int32Array.from(regionVerts), mapIdx, mapW, dynList,
+      cellCorners, cellRestVol,
     };
     this._tmpP = new Float32Array(nP * 3);
+  }
+
+  // Build the per-cell inversion-guard data for _buildLattice: corner
+  // particle indices + rest volume (6-tet decomposition) per cell.
+  // `rest` is the Float32Array rest positions (nP*3).
+  _buildCellData(pIndex, gridKey, res, rest) {
+    const [nx, ny, nz] = res;
+    const at = (x, y, z) => pIndex.get(gridKey(x, y, z));
+    const cellCorners = [];
+    const cellRestVol = [];
+    for (let z = 0; z < nz - 1; z++) for (let y = 0; y < ny - 1; y++) for (let x = 0; x < nx - 1; x++) {
+      const corners = new Array(8);
+      let ok = true;
+      for (let dz = 0; dz < 2; dz++) for (let dy = 0; dy < 2; dy++) for (let dx = 0; dx < 2; dx++) {
+        const q = at(x + dx, y + dy, z + dz);
+        if (q === undefined) { ok = false; break; }
+        corners[dx + 2 * dy + 4 * dz] = q;
+      }
+      if (!ok) continue;
+      cellCorners.push(corners);
+      cellRestVol.push(Math.abs(_cellVolume(rest, corners)) || 1e-9);
+    }
+    return { cellCorners, cellRestVol };
   }
 
   // Build the Jolt soft body once the world is ready. Guarded everywhere.
@@ -427,11 +507,6 @@ export class SoftBody {
       shared.CalculateEdgeLengths();
 
       // Volume constraints: 6 tets per lattice cell (keeps the muscle plump).
-      const T = [
-        [[0,0,0],[0,1,1],[0,0,1],[1,1,1]], [[0,0,0],[0,1,0],[0,1,1],[1,1,1]],
-        [[0,0,0],[0,0,1],[1,0,1],[1,1,1]], [[0,0,0],[1,0,1],[1,0,0],[1,1,1]],
-        [[0,0,0],[1,1,0],[0,1,0],[1,1,1]], [[0,0,0],[1,0,0],[1,1,0],[1,1,1]],
-      ];
       const sVol = new Jolt.SoftBodySharedSettingsVolume(0, 0, 0, 0, R.preset.volumeCompliance);
       // The lattice is a complete box, so every cell has all 8 corners.
       const cidx = (x, y, z) => R.pIndex.get(R.gridKey(x, y, z));
@@ -439,7 +514,7 @@ export class SoftBody {
         const c = (dx, dy, dz) => cidx(x + dx, y + dy, z + dz);
         for (let t = 0; t < 6; t++) {
           for (let i = 0; i < 4; i++) {
-            const o = T[t][i];
+            const o = CELL_TETS[t][i];
             sVol.set_mVertex(i, c(o[0], o[1], o[2]));
           }
           shared.mVolumeConstraints.push_back(sVol);
@@ -579,6 +654,11 @@ export class SoftBody {
       P[p * 3] = pos.GetX(); P[p * 3 + 1] = pos.GetY(); P[p * 3 + 2] = pos.GetZ();
     }
 
+    // -- NEXTGEN-2026-10-23: NDG-style inversion guard. A lattice cell
+    // -- crushed below 35% of its rest volume relaxes toward rest instead
+    // -- of inverting — gradient-space correction, not a position hack.
+    this._inversionGuard(P);
+
     // -- watchdog: NaN / explosion -> reset to rest, then kill-switch
     let bad = false;
     for (let i = 0; i < P.length; i++) {
@@ -627,6 +707,45 @@ export class SoftBody {
         try { this._geometry.computeVertexNormals(); } catch (e) {}
       }
     }
+  }
+
+  // NEXTGEN-2026-10-23: NDG-style inversion guard (technique reference).
+  // After the XPBD solve, check every lattice cell's volume against its
+  // rest volume. A cell crushed below 35% relaxes halfway toward rest —
+  // correcting in deformation (gradient) space instead of letting the
+  // volume invert and the solve explode. Touches Jolt only on violation.
+  _inversionGuard(P) {
+    const R = this._region;
+    if (!R || !R.cellCorners || !R.cellCorners.length) return;
+    const rest = R.rest;
+    const pinned = R.pinned;
+    let corrected = null;
+    for (let c = 0; c < R.cellCorners.length; c++) {
+      const corners = R.cellCorners[c];
+      const vol = _cellVolume(P, corners);
+      if (Math.abs(vol) / R.cellRestVol[c] < 0.35) {
+        if (!corrected) corrected = [];
+        for (let k = 0; k < 8; k++) {
+          const p = corners[k];
+          if (pinned[p] || corrected.indexOf(p) >= 0) continue;
+          corrected.push(p);
+        }
+      }
+    }
+    if (!corrected || !corrected.length) return;
+    try {
+      const Jolt = this._Jolt;
+      const verts = this._motion.GetVertices();
+      for (const p of corrected) {
+        const nx = (P[p * 3] + rest[p * 3]) / 2;
+        const ny = (P[p * 3 + 1] + rest[p * 3 + 1]) / 2;
+        const nz = (P[p * 3 + 2] + rest[p * 3 + 2]) / 2;
+        P[p * 3] = nx; P[p * 3 + 1] = ny; P[p * 3 + 2] = nz;
+        const np = new Jolt.Vec3(nx, ny, nz);
+        verts.at(p).mPosition = np;
+        Jolt.destroy(np);
+      }
+    } catch (e) { /* guard is best-effort; the watchdog is the backstop */ }
   }
 
   _resetToRest() {
@@ -740,5 +859,6 @@ export class SoftBody {
 }
 
 // Version stamps (see game/vendor/jolt/VENDOR.md for upgrade notes).
-SoftBody.VERSION = '1.0.0';
+SoftBody.VERSION = '1.1.0'; // 1.1.0: substepped solve + NDG inversion guard
 SoftBody.JOLT_VERSION = '1.1.1';
+SoftBody.ENGINE = 'jolt-xpbd';

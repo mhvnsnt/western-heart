@@ -323,7 +323,7 @@ Tripo 3D models show FIRST and foremost for every fighter; Tekken attires/models
 - Canon principle: movesets are Tekken bones, canon gives them souls — don't flatten characters to their moveset archetype.
 
 ## Moveset source law (standing, 2026-10-22)
-Movesets may ONLY come from Tekken fighters nobody has claimed. Taken: King, Armor King, Akuma, Shaheen, Lars, Zafina, Bosconovitch, Yoshimitsu, Lee Chaolan, Ling Xiaoyu, Eddy/Christie, Feng Wei (Birodo). Free: True Ogre, Lucky Chloe, Hwoarang, Raven, Jun Kazama, Craig Marduk, Roger Jr. Verify against the full roster before wiring.
+Movesets may ONLY come from Tekken fighters nobody has claimed. Taken: King, Armor King, Akuma, Shaheen, Lars, Zafina, Bosconovitch, Yoshimitsu, Lee Chaolan, Ling Xiaoyu, Eddy/Christie, Feng Wei (Birodo), Miguel (Bruno). Free: True Ogre, Lucky Chloe, Hwoarang, Raven, Jun Kazama, Craig Marduk, Roger Jr. Verify against the full roster before wiring.
 
 ## VF5 moveset claims — Ashlane four (user locked 2026-10-22, 15:19 CDT)
 VF5 bases claimed for the four locked Ashlane mappings (technical moveset sources only — never canon identities, never named in canon prose): Bannon→Jeffry McWild, El Toro de Oro→Wolf Hawkfield, Pablo→El Blaze, NPC Finxsse→Lei-Fei. Candidates only (NOT locked): Master Sensei→Lau, Sombra Negra→Kage, Cipher→Goh, Aaron Ruben→Akira, Cody→Jacky, Jager→Vanessa, Brutus, Wreck Patterson. Unmapped: Triple XXX, Echo, Hollow, Static, Stickup, Onyx, Tyneshia, Maime, Edwin Kennedy, Hall Nighter, Stan Combs, Kobra, Viper. Sarah/Pai/Aoi/Eileen (VF5 women) need female Ashlane characters identified.
@@ -378,6 +378,33 @@ Decision log: `docs/decisions/2026-10-22-integration-law.md`.
   kinpo's). Repointing phantom's key at kinpo's file would ship the wrong
   fighter — refused. The tripo-intake lane must produce a phantom intake rig
   first; the config repoint is a one-line follow-up once it lands.
+
+## Bruno — Miguel moveset claim (user directive 2026-10-22)
+Bruno replaces MIGUEL (Tekken). Full moveset takeover: all of Miguel's moves, stance,
+animations. Miguel was not on the taken list — now claimed. Recorded in the Taken list
+above as "Miguel (Bruno)". Technical claim only: Miguel's identity never appears in
+canon prose. Spec: `docs/research/bruno-miguel-moveset-spec-2026-10-22.md`.
+
+## Bruno Attire 1 archive (worker 74, 2026-10-22)
+User-provided Tripo pull "jack sparrow 3d model"
+(<https://studio.tripo3d.ai/3d-model/b3f9dfb0-2027-4520-aa1f-930fbc6c0c81>) archived to
+`roster/bruno/attires/attire1/source/bruno-a1-jack-sparrow.glb` + `manifest.json`
+(24,432,052 bytes, sha256 `5f1fb5a7…e9906da41`, dorowani #603 pattern). Archive-only:
+unrigged static, NOT wired into MODEL_URLs. Immutable-original annotated tag
+`bruno-a1-original` — "Restore point: these bytes never change." This A1 takes priority
+for all new Bruno rigging work. Attire 2 ("Sail the Sea", Tripo "dreadlocked warrior 3d
+model", <https://studio.tripo3d.ai/3d-model/73bce9d1-d373-4855-af02-862c5f341de7>)
+archived same day to `roster/bruno/attires/attire2/source/bruno-a2-dreadlocked-warrior.glb`
++ `manifest.json` (23,980,788 bytes, sha256 `ffff9706…eacf44`, tag `bruno-a2-original`) —
+archive-only, unrigged static, not wired.
+
+## Bruno older model — missing face texture (worker 74, 2026-10-22)
+The pre-existing Bruno model (`game/assets/models/bruno.glb`, landed during the fix2
+round; working copy also at `~/workspace/fix2/western-heart/game/assets/models/bruno.glb`)
+has a MISSING FACE TEXTURE. It needs the texture fix from the T-pose render batch task.
+Do NOT delete it and do NOT confuse it with the new Attire 1 archive above. Per the
+user-definitive NEED-MODELS list (2026-10-22), Bruno needs a model — the A1 archive is
+the path forward; the old file stays as-is until the texture fix lands.
 ## Chordz archive + blade transformation system (user directive 2026-10-22)
 
 - **Chordz = the emo guitarist. Moveset: Lars** (already claimed; Lars→Chordz ladder locked). Look: Edward Scissorhands — pale face, dark eye circles, face paint, black lipstick, straight jacket, crazy sideways hair. User's own words.
@@ -494,3 +521,22 @@ Rules:
 - X.COPY is ONE super (copies opponent briefly), NOT Zen's identity. Zen is not just a copycat.
 - Until VF5 Dural motion exists, Zen's bank is UNMAPPED (game/js/fighter.js FIGHTER_BANK zen: null). Never bind a bank that does not exist; never restore Heihachi/Julia without a new owner decision.
 - Full doc: docs/decisions/2026-10-24-zen-base-decision.md.
+
+## Panda + Kuma replacement specs (user decision 2026-10-22, worker 71)
+
+### KUMA REPLACEMENT — spec APPROVED, name AWAITING USER PICK
+- Visual: Godzilla-style + SkullGreymon (Digimon skull head) + Charizard mix; all white; rainbow-colored eyes; multicolored markings/designs all over; multicolored Japanese cloud-smoke detail; bone dinosaur/dragon with horns.
+- Canon: connected to ZUI (not Zoe/Zur). Zui fears/respects him — like a protector or a monster he looks up to. Kaiju/yokai/spirit monster.
+- Name: Japanese-style bone dragon/kaiju name — USER PICKS, do not invent.
+- Archive: Attire 1 Tripo source archived to `roster/kuma-replacement/attires/attire1/source/` (manifest + immutable-original tag `kuma-replacement-a1-original`). ARCHIVE ONLY — not wired into MODEL_URLS; rig comes from the rig lane.
+- Spec: `docs/research/kuma-replacement-spec-2026-10-22.md`
+
+### PANDA REPLACEMENT — spec APPROVED, name AWAITING USER PICK
+- Visual: blue-furred werewolf-dragon hybrid; anthropomorphic human; spirit/yokai/demon werewolf; FEMALE; blue fur like Mystique/Beast (X-Men).
+- Canon: she TURNED Deathfang into a werewolf — his creator/sire.
+- Name candidates (user's): Aotsuki (青月, blue moon) or Aokami (青狼, blue wolf). USER PICKS — do not invent.
+- No model yet — spec only.
+- Spec: `docs/research/panda-replacement-spec-2026-10-22.md`
+
+### Auto-archive note (2026-10-22, worker 71)
+Per the AUTO-ARCHIVE standing directive: no wired auto-archive automation was found in-repo (no tripo-intake doc under docs/, no auto-archive entry in AGENTS.md or docs/owner-directives.md). The Kuma replacement archive was done manually following the dorowani #603 pattern (manifest + immutable-original tag).

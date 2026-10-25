@@ -1386,7 +1386,7 @@ class AssetManager {
      colored layer over their skin? fix that"). Only an explicitly
      colorized fighter (the Create-a-Fighter skin tone, `colorize: true`)
      passes a tint. */
-  createInstance(fighterId, suitColor, trimColor, tintStrength = 0) {
+  createInstance(fighterId, suitColor, trimColor, tintStrength = 0, eyeGlow = null) {
     const gltf = this.gltfs[fighterId];
     if (!gltf) throw new Error('unknown fighter model: ' + fighterId);
     // The instance root is a wrapper whose space always has the mesh facing
@@ -1434,6 +1434,18 @@ class AssetManager {
         if (o.material.transparent && o.material.opacity < 0.05) {
           o.material.transparent = false;
           o.material.opacity = 1;
+        }
+        // EYE GLOW (owner 2026-10-22): per-attire emissive eyes, data-driven.
+        // The attire slot's eyeGlow config (attires.js) names the eye meshes
+        // as identified from the model (e.g. Negativo's ModelEyes_Material028)
+        // plus the emissive color/intensity for THAT attire — never hardcoded
+        // here. Applied after any tint so the glow color always wins. Runs in
+        // fight (fighter.js) and preview (select-screen.js): both call sites
+        // pass the resolved slot config through createInstance.
+        if (eyeGlow && Array.isArray(eyeGlow.materials) &&
+            (eyeGlow.materials.includes(o.material.name) || eyeGlow.materials.includes(o.name))) {
+          o.material.emissive = new THREE.Color(eyeGlow.color ?? 0xff2222);
+          o.material.emissiveIntensity = eyeGlow.intensity ?? 2.0;
         }
       }
     });
