@@ -182,17 +182,21 @@ test('Wall: _physics clamps root-motion travel to ARENA_LIMIT (8.4) instead of l
   assert.ok(f.root.position.x > 8.24 && f.root.position.x < 8.26, `wall: x=${f.root.position.x}, expected 8.24-8.26`);
 });
 
-test('Turned bank (bosconovitch, baked facing -Z): loaded clips carry the 180 deg root_t flip, so root motion reads the canonical frame', async () => {
+test('Fixed bank (bosconovitch, #497 baked facing +Z at source): no runtime flip, root motion reads the canonical frame', async () => {
   const save = console.log; console.log = () => {};
   const clips = await T.loadT3Clips(THREE, 'bosconovitch');
   console.log = save;
   assert.ok(clips && clips['row:4'], 'bosconovitch row:4 loaded');
   const facing = T.getT3BankFacing('bosconovitch');
-  assert.ok(facing && facing.turned, `bosconovitch not flagged turned: ${JSON.stringify(facing)}`);
-  // On disk, row:4 ends at (x 0.325, z 0.802). The bank was baked facing
-  // -Z, so loadT3Clips flips root_t to (-x, y, -z) before jsonToClip.
-  // Root motion reads the LOADED clip, so it must see the flipped
-  // values — same canonical frame (+Z forward, +X left) as every bank.
+  // PR #497 fixed the bank AT THE SOURCE (skeleton + rows re-baked 180 deg
+  // about Y, Left/Right relabelled), so the runtime detector must NOT flag
+  // it turned anymore — the 180 deg root_t flip in loadT3Clips is now a
+  // no-op for this bank. (Before #497 the bank was baked facing -Z and the
+  // test asserted turned=true; that premise is obsolete.)
+  assert.ok(facing && !facing.turned, `bosconovitch still flagged turned after #497: ${JSON.stringify(facing)}`);
+  // On disk, row:4 now ends at (x -0.325, z -0.802) — pre-flipped by the
+  // #497 re-bake. No runtime flip is applied, so root motion reads the
+  // same canonical frame (+Z forward, +X left) as every bank.
   const rt = clips['row:4'].userData.raw.root_t;
   const s = F.rootMotionSample(rt, 30, 99);
   assert.ok(Math.abs(s.fwd - (-0.802)) < 0.01, `bosconovitch row:4 fwd ${s.fwd}, expected -0.802`);
