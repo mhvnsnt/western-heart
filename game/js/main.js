@@ -1089,7 +1089,10 @@ async function startFight(playerId, enemyId, opts = {}) {
   // MUSIC (2026-10-24): rotating stage pool. The engine falls back to
   // the procedural loop internally when no file track is available, so
   // the old direct audio.startMusic() call is replaced, not doubled.
-  music.playBattle(selectedStage);
+  // JUKEBOX (Lane 4): pass the fight's UI mode through so the engine
+  // plays the player's per-mode Jukebox choice (wh_jukebox_v1, PR #1056)
+  // when one is stored; unknown modes fall back to engine rotation.
+  music.playBattle(selectedStage, { uiMode: ['versus', 'arcade', 'treasure'].includes(opts.mode) ? opts.mode : undefined });
   // FIGHT-LOOP REPAIR (worker 54, 2026-10-22): startMatch ran OUTSIDE the
   // load try/catch — a throw inside it (Fighter build, arena setStage, AI
   // wiring) was an unhandled rejection that stranded the player on the
