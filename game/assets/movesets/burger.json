@@ -22075,7 +22075,7 @@
     "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
   },
   "string_step_plans": {
-    "law": "Batch 1 step plans (Burger LP1/RP2-only strings, 2026-10-25). Engine: fighter.js _attackClipPlan step-plan branch (from #1096). A step plays its row ONLY when status is verified (button bitmask + stance + throw gates pass, plus the Job 1 limb-peak proxy except in jump context). review/unmapped steps play NO bank row - never a donor/generic row - and are flagged in _atkPlan.unmapped. T3 rows here are FALLBACK (see docs/anim/PROCEDURAL_AUDIT.md Burger-Batch-1 entry): burger's T3 bank is bryan (t3_source bryan, t3_bank moveset_bryan.json - no bob T3 bank exists in the repo or in Job 1/2/4 data; Bob is the T7 base, bryan is the T3 fallback bank), and T7 Bob clip rows are not yet decoded/wired, so T3 step rows stand in until T7 extraction lands, then re-match to T7 Bob rows. Job 3 fills wired ONLY on exact level + FULL provenance + step HARD gates + SOFT proxy pass (1 fill: 1,2,1+2 last step row 132). Job 4 joins never promote a step (2 joins, both documented, none wired). Most unmapped steps have NO candidate at all: their intermediate prefixes are T8-sourced with no T3 row, so the correct clips come from #988 Step 2 (original T8 refs) or future extraction, never from a T3 row recorded as correct. Full gate evidence in docs/movesets/BURGER-BATCH1-STEP-PLANS-2026-10-25.md.\n\nBatch 2 step plans (Burger LK3/RK4-only strings, 2026-10-25). Same engine (fighter.js _attackClipPlan step-plan branch, from #1096) and same gates as Batch 1: a step plays its row ONLY when status is verified (button bitmask + stance + throw gates pass, plus the Job 1 limb-peak proxy except in jump context). review/unmapped steps play NO bank row - never a donor/generic row - and are flagged in _atkPlan.unmapped. T3 rows here are FALLBACK (see docs/anim/PROCEDURAL_AUDIT.md Burger-Batch-2 entry): burger's T3 bank is bryan (t3_source bryan, t3_bank moveset_bryan.json - no bob T3 bank exists in the repo or in Job 1/2/4 data; Bob is the T7 base, bryan is the T3 fallback bank), and T7 Bob clip rows are not yet decoded/wired, so T3 step rows stand in until T7 extraction lands, then re-match to T7 Bob rows. Job 3 fills wired ONLY on exact level + FULL provenance + step HARD gates + SOFT proxy pass (Batch 2 wires ZERO Job 3 fills: the single exact+FULL candidate, b+4 row 136, is HELD at review on SOFT proxy fail and never wired). Job 4 joins never promote a step (3 joins, all documented, none wired). 2 steps are SUSPENDED-DRIFT (prefix move 3, row 65 -> None between #1096 and current main; never wired on stale data). Most unmapped steps have NO candidate at all: their intermediate prefixes are T8-sourced with no T3 row, so the correct clips come from #988 Step 2 (original T8 refs) or future extraction, never from a T3 row recorded as correct. Full gate evidence in docs/movesets/BURGER-BATCH2-STEP-PLANS-2026-10-25.md.\n\nBatch 3 step plans (Burger mixed-pair strings: one punch + one kick pair, 2026-10-25). Same engine (fighter.js _attackClipPlan step-plan branch, from #1096) and same gates as Batches 1-2: a step plays its row ONLY when status is verified (button bitmask + stance + throw gates pass, plus the Job 1 limb-peak proxy except in jump context). review/unmapped steps play NO bank row - never a donor/generic row - and are flagged in _atkPlan.unmapped. T3 rows here are FALLBACK (see docs/anim/PROCEDURAL_AUDIT.md Burger-Batch-3 entry): burger's T3 bank is bryan (t3_source bryan, t3_bank moveset_bryan.json - no bob T3 bank exists in the repo or in Job 1/2/4 data; Bob is the T7 base, bryan is the T3 fallback bank), and T7 Bob clip rows are not yet decoded/wired, so T3 step rows stand in until T7 extraction lands, then re-match to T7 Bob rows. Job 3 fills wired ONLY on exact level + FULL provenance + step HARD gates + SOFT proxy pass (Batch 3 wires ONE Job 3 fill: 1,d+4 step 2 row 119, exact level l, FULL provenance, SOFT proxy pass; the b+4 exact+FULL candidate row 136 is HELD at review on SOFT proxy fail, as in Batch 2, and never wired). Job 4 joins never promote a step (4 joins, all documented, none wired). 3 steps are SUSPENDED-DRIFT (prefix move 3, row 65 -> None between #1096 and current main; never wired on stale data). Most unmapped steps have NO candidate at all: their intermediate prefixes are T8-sourced with no T3 row, so the correct clips come from #988 Step 2 (original T8 refs) or future extraction, never from a T3 row recorded as correct. Full gate evidence in docs/movesets/BURGER-BATCH3-STEP-PLANS-2026-10-25.md.",
+    "law": "Batch 1 step plans (Burger LP1/RP2-only strings, 2026-10-25). Engine: fighter.js _attackClipPlan step-plan branch (from #1096). A step plays its row ONLY when status is verified (button bitmask + stance + throw gates pass, plus the Job 1 limb-peak proxy except in jump context). review/unmapped steps play NO bank row - never a donor/generic row - and are flagged in _atkPlan.unmapped. T3 rows here are FALLBACK (see docs/anim/PROCEDURAL_AUDIT.md Burger-Batch-1 entry): burger's T3 bank is bryan (t3_source bryan, t3_bank moveset_bryan.json - no bob T3 bank exists in the repo or in Job 1/2/4 data; Bob is the T7 base, bryan is the T3 fallback bank), and T7 Bob clip rows are not yet decoded/wired, so T3 step rows stand in until T7 extraction lands, then re-match to T7 Bob rows. Job 3 fills wired ONLY on exact level + FULL provenance + step HARD gates + SOFT proxy pass (1 fill: 1,2,1+2 last step row 132). Job 4 joins never promote a step (2 joins, both documented, none wired). Most unmapped steps have NO candidate at all: their intermediate prefixes are T8-sourced with no T3 row, so the correct clips come from #988 Step 2 (original T8 refs) or future extraction, never from a T3 row recorded as correct. Full gate evidence in docs/movesets/BURGER-BATCH1-STEP-PLANS-2026-10-25.md.\n\nBatch 2 step plans (Burger LK3/RK4-only strings, 2026-10-25). Same engine (fighter.js _attackClipPlan step-plan branch, from #1096) and same gates as Batch 1: a step plays its row ONLY when status is verified (button bitmask + stance + throw gates pass, plus the Job 1 limb-peak proxy except in jump context). review/unmapped steps play NO bank row - never a donor/generic row - and are flagged in _atkPlan.unmapped. T3 rows here are FALLBACK (see docs/anim/PROCEDURAL_AUDIT.md Burger-Batch-2 entry): burger's T3 bank is bryan (t3_source bryan, t3_bank moveset_bryan.json - no bob T3 bank exists in the repo or in Job 1/2/4 data; Bob is the T7 base, bryan is the T3 fallback bank), and T7 Bob clip rows are not yet decoded/wired, so T3 step rows stand in until T7 extraction lands, then re-match to T7 Bob rows. Job 3 fills wired ONLY on exact level + FULL provenance + step HARD gates + SOFT proxy pass (Batch 2 wires ZERO Job 3 fills: the single exact+FULL candidate, b+4 row 136, is HELD at review on SOFT proxy fail and never wired). Job 4 joins never promote a step (3 joins, all documented, none wired). 2 steps are SUSPENDED-DRIFT (prefix move 3, row 65 -> None between #1096 and current main; never wired on stale data). Most unmapped steps have NO candidate at all: their intermediate prefixes are T8-sourced with no T3 row, so the correct clips come from #988 Step 2 (original T8 refs) or future extraction, never from a T3 row recorded as correct. Full gate evidence in docs/movesets/BURGER-BATCH2-STEP-PLANS-2026-10-25.md.\n\nBatch 3 step plans (Burger mixed-pair strings: one punch + one kick pair, 2026-10-25). Same engine (fighter.js _attackClipPlan step-plan branch, from #1096) and same gates as Batches 1-2: a step plays its row ONLY when status is verified (button bitmask + stance + throw gates pass, plus the Job 1 limb-peak proxy except in jump context). review/unmapped steps play NO bank row - never a donor/generic row - and are flagged in _atkPlan.unmapped. T3 rows here are FALLBACK (see docs/anim/PROCEDURAL_AUDIT.md Burger-Batch-3 entry): burger's T3 bank is bryan (t3_source bryan, t3_bank moveset_bryan.json - no bob T3 bank exists in the repo or in Job 1/2/4 data; Bob is the T7 base, bryan is the T3 fallback bank), and T7 Bob clip rows are not yet decoded/wired, so T3 step rows stand in until T7 extraction lands, then re-match to T7 Bob rows. Job 3 fills wired ONLY on exact level + FULL provenance + step HARD gates + SOFT proxy pass (Batch 3 wires ONE Job 3 fill: 1,d+4 step 2 row 119, exact level l, FULL provenance, SOFT proxy pass; the b+4 exact+FULL candidate row 136 is HELD at review on SOFT proxy fail, as in Batch 2, and never wired). Job 4 joins never promote a step (4 joins, all documented, none wired). 3 steps are SUSPENDED-DRIFT (prefix move 3, row 65 -> None between #1096 and current main; never wired on stale data). Most unmapped steps have NO candidate at all: their intermediate prefixes are T8-sourced with no T3 row, so the correct clips come from #988 Step 2 (original T8 refs) or future extraction, never from a T3 row recorded as correct. Full gate evidence in docs/movesets/BURGER-BATCH3-STEP-PLANS-2026-10-25.md.\n\nBatch 4 step plans (Burger triples/quads/rest strings, 2026-10-25). Same engine (fighter.js _attackClipPlan step-plan branch, from #1096) and same gates as Batches 1-3: a step plays its row ONLY when status is verified (button bitmask + stance + throw gates pass, plus the Job 1 limb-peak proxy except in jump context). review/unmapped steps play NO bank row - never a donor/generic row - and are flagged in _atkPlan.unmapped. T3 rows here are FALLBACK (see docs/anim/PROCEDURAL_AUDIT.md Burger-Batch-4 entry): burger's T3 bank is bryan (t3_source bryan, t3_bank moveset_bryan.json - no bob T3 bank exists in the repo or in Job 1/2/4 data; Bob is the T7 base, bryan is the T3 fallback bank), and T7 Bob clip rows are not yet decoded/wired, so T3 step rows stand in until T7 extraction lands, then re-match to T7 Bob rows. Job 3 fills wired: ZERO (the one exact+FULL candidate, row 119 for the rest-key f,n,d,d/f+4 family, is never wired because rest keys get no plan; soft candidates rows 41/42/43 for u/f+1+2 and rows 60/61/62/96 for u/f+2 are soft/row-only and never wired). Job 4 joins: ZERO (no Batch 4 prefix carries a bryan Job 4 candidate as an own row). 0 steps are SUSPENDED-DRIFT (no Batch 4 string carries prefix 3 or b_c36_r65). 52 rest canonicals get NO plan at all: their non-attack prefix steps (dash/movement/stance sequences such as f,F+*, f,n,d,*, b,B+*, WALL.b,b,u/b) have no attack row, and planning them needs engine support for non-attack prefix steps (future work, named, not guessed). Most unmapped planned steps have NO candidate at all: their intermediate prefixes are T8-sourced with no T3 row, so the correct clips come from #988 Step 2 (original T8 refs) or future extraction, never from a T3 row recorded as correct. Full gate evidence in docs/movesets/BURGER-BATCH4-STEP-PLANS-2026-10-25.md.",
     "plans": {
       "1+2,1+2": {
         "steps": [
@@ -29603,6 +29603,685 @@
         "jumping_context": false,
         "last_step_row": null,
         "last_step_status": "unmapped"
+      },
+      "1+2+3+4,1+2": {
+        "steps": [
+          {
+            "step": "1+2+3+4",
+            "prefix": "1+2+3+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1+2",
+            "prefix": "1+2+3+4,1+2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "1+2+3+4,4": {
+        "steps": [
+          {
+            "step": "1+2+3+4",
+            "prefix": "1+2+3+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "1+2+3+4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "2,1,4": {
+        "steps": [
+          {
+            "step": "2",
+            "prefix": "2",
+            "row": 100,
+            "status": "verified",
+            "candidate_row": 100,
+            "candidate_source": "prefix-move",
+            "reasons": []
+          },
+          {
+            "step": "1",
+            "prefix": "2,1",
+            "row": 153,
+            "status": "verified",
+            "candidate_row": 153,
+            "candidate_source": "prefix-move",
+            "reasons": []
+          },
+          {
+            "step": "4",
+            "prefix": "2,1,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "2,1,4~t7.bob": {
+        "steps": [
+          {
+            "step": "2",
+            "prefix": "2",
+            "row": 100,
+            "status": "verified",
+            "candidate_row": 100,
+            "candidate_source": "prefix-move",
+            "reasons": []
+          },
+          {
+            "step": "1",
+            "prefix": "2,1",
+            "row": 153,
+            "status": "verified",
+            "candidate_row": 153,
+            "candidate_source": "prefix-move",
+            "reasons": []
+          },
+          {
+            "step": "4",
+            "prefix": "2,1,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "2,1,4",
+        "twin_move_class": "string"
+      },
+      "2,1,4~t7.bob.2": {
+        "steps": [
+          {
+            "step": "2",
+            "prefix": "2",
+            "row": 100,
+            "status": "verified",
+            "candidate_row": 100,
+            "candidate_source": "prefix-move",
+            "reasons": []
+          },
+          {
+            "step": "1",
+            "prefix": "2,1",
+            "row": 153,
+            "status": "verified",
+            "candidate_row": 153,
+            "candidate_source": "prefix-move",
+            "reasons": []
+          },
+          {
+            "step": "4",
+            "prefix": "2,1,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "2,1,4",
+        "twin_move_class": "string"
+      },
+      "2,1,4~t7.bob.3": {
+        "steps": [
+          {
+            "step": "2",
+            "prefix": "2",
+            "row": 100,
+            "status": "verified",
+            "candidate_row": 100,
+            "candidate_source": "prefix-move",
+            "reasons": []
+          },
+          {
+            "step": "1",
+            "prefix": "2,1",
+            "row": 153,
+            "status": "verified",
+            "candidate_row": 153,
+            "candidate_source": "prefix-move",
+            "reasons": []
+          },
+          {
+            "step": "4",
+            "prefix": "2,1,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "2,1,4",
+        "twin_move_class": "string"
+      },
+      "3+4,4,2": {
+        "steps": [
+          {
+            "step": "3+4",
+            "prefix": "3+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "3+4,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "3+4,4,2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "FC.d/f+2,4,1+2": {
+        "steps": [
+          {
+            "step": "FC.d/f+2",
+            "prefix": "FC.d/f+2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "FC.d/f+2,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1+2",
+            "prefix": "FC.d/f+2,4,1+2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "FC.d/f+2,4,1+2~t7.bob": {
+        "steps": [
+          {
+            "step": "FC.d/f+2",
+            "prefix": "FC.d/f+2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "FC.d/f+2,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1+2",
+            "prefix": "FC.d/f+2,4,1+2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "FC.d/f+2,4,1+2",
+        "twin_move_class": "string"
+      },
+      "FC.d/f+2,4,1+2~t7.bob.2": {
+        "steps": [
+          {
+            "step": "FC.d/f+2",
+            "prefix": "FC.d/f+2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "FC.d/f+2,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1+2",
+            "prefix": "FC.d/f+2,4,1+2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "FC.d/f+2,4,1+2",
+        "twin_move_class": "string"
+      },
+      "u+1+2,4": {
+        "steps": [
+          {
+            "step": "u+1+2",
+            "prefix": "u+1+2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "u+1+2,4",
+            "row": 183,
+            "status": "verified",
+            "candidate_row": 183,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 183,
+        "last_step_status": "verified"
+      },
+      "u/f+1+2,4": {
+        "steps": [
+          {
+            "step": "u/f+1+2",
+            "prefix": "u/f+1+2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)",
+              "Job 3 candidate row 41 NOT wired (soft-nofiled, FULL, target u/f+1+2)",
+              "Job 3 candidate row 42 NOT wired (soft-nofiled, FULL, target u/f+1+2)",
+              "Job 3 candidate row 43 NOT wired (soft-nofiled, FULL, target u/f+1+2)",
+              "Job 3 candidate row 53 NOT wired (soft-nofiled, ROW-ONLY, target u/f+1+2)",
+              "Job 3 candidate row 54 NOT wired (soft-nofiled, ROW-ONLY, target u/f+1+2)",
+              "Job 3 candidate row 55 NOT wired (soft-nofiled, ROW-ONLY, target u/f+1+2)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "u/f+1+2,4",
+            "row": 183,
+            "status": "verified",
+            "candidate_row": 183,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 183,
+        "last_step_status": "verified"
+      },
+      "u/f+1+2,4~t7.bob": {
+        "steps": [
+          {
+            "step": "u/f+1+2",
+            "prefix": "u/f+1+2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)",
+              "Job 3 candidate row 41 NOT wired (soft-nofiled, FULL, target u/f+1+2)",
+              "Job 3 candidate row 42 NOT wired (soft-nofiled, FULL, target u/f+1+2)",
+              "Job 3 candidate row 43 NOT wired (soft-nofiled, FULL, target u/f+1+2)",
+              "Job 3 candidate row 53 NOT wired (soft-nofiled, ROW-ONLY, target u/f+1+2)",
+              "Job 3 candidate row 54 NOT wired (soft-nofiled, ROW-ONLY, target u/f+1+2)",
+              "Job 3 candidate row 55 NOT wired (soft-nofiled, ROW-ONLY, target u/f+1+2)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "u/f+1+2,4",
+            "row": 183,
+            "status": "verified",
+            "candidate_row": 183,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 183,
+        "last_step_status": "verified",
+        "twin_of": "u/f+1+2,4",
+        "twin_move_class": "string"
+      },
+      "u/f+2,1,2,2,1,1+2,3,1,2,3+4": {
+        "steps": [
+          {
+            "step": "u/f+2",
+            "prefix": "u/f+2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)",
+              "Job 3 candidate row 60 NOT wired (soft-filed, ROW-ONLY, target u/f+2)",
+              "Job 3 candidate row 61 NOT wired (soft-filed, ROW-ONLY, target u/f+2)",
+              "Job 3 candidate row 62 NOT wired (soft-filed, ROW-ONLY, target u/f+2)",
+              "Job 3 candidate row 96 NOT wired (soft-filed, ROW-ONLY, target u/f+2)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "u/f+2,1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "u/f+2,1,2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "u/f+2,1,2,2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "u/f+2,1,2,2,1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1+2",
+            "prefix": "u/f+2,1,2,2,1,1+2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "u/f+2,1,2,2,1,1+2,3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "u/f+2,1,2,2,1,1+2,3,1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "u/f+2,1,2,2,1,1+2,3,1,2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "3+4",
+            "prefix": "u/f+2,1,2,2,1,1+2,3,1,2,3+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": true,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "u/f+2,3,3+4,4": {
+        "steps": [
+          {
+            "step": "u/f+2",
+            "prefix": "u/f+2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)",
+              "Job 3 candidate row 60 NOT wired (soft-filed, ROW-ONLY, target u/f+2)",
+              "Job 3 candidate row 61 NOT wired (soft-filed, ROW-ONLY, target u/f+2)",
+              "Job 3 candidate row 62 NOT wired (soft-filed, ROW-ONLY, target u/f+2)",
+              "Job 3 candidate row 96 NOT wired (soft-filed, ROW-ONLY, target u/f+2)"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "u/f+2,3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "3+4",
+            "prefix": "u/f+2,3,3+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "u/f+2,3,3+4,4",
+            "row": 183,
+            "status": "verified",
+            "candidate_row": 183,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 183,
+        "last_step_status": "verified"
       }
     }
   }
