@@ -65,6 +65,10 @@ try {
   await step('[data-mm="versus"]', null, '02-versus-submenu');
   await step('.mm-card >> nth=0', 'screen-vssetup', '02b-vssetup');
   await step('#screen-vssetup [data-action="mode-versus"]', 'screen-select', '02-select', 180000);
+  // TTT2 team battle (worker 24, PR #668): versus now asks for a battle format
+  // INSIDE the select screen (1V1 FIGHT | TEAM BATTLE) before the grid is
+  // tappable — the submenu overlay covers the cards until a format is chosen.
+  await step('#vs-submenu [data-format="solo"]');
   await step('.char-card >> nth=0'); await step('#confirm-fighter');
   await step('.char-card >> nth=2'); await step('#confirm-fighter', 'screen-stage', '03-stage');
   await p.tap('#confirm-stage');

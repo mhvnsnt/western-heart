@@ -58,6 +58,7 @@ import { hitWordFor, attackPhase, moveReach, PressBuffer,
   resolvePerMoveHitbox, resolvePerMoveHurtbox } from './combat-core.js';
 import { HURT_SEGMENTS, WEAPON_SEGMENTS, LIMB_RADIUS, fallbackHurts } from './hitbox.js';
 import { selectReactionSlot, reactionSlotBank } from './t3-reaction-select.js';
+import { soulStates } from './full-movelist.js';
 
 // ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
 // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO in Western Heart. The 'jin' moveset family is now 'demonio'.
@@ -406,6 +407,9 @@ export class Fighter {
     // vitals
     this.maxHp = 100; this.hp = 100;
     this.meter = 0; this.maxMeter = 100; // NINE-SOUL METER
+    // SOUL-SPIRIT TOGGLE (worker 83, owner directive 2026-10-22 ~23:02 CDT):
+    // a vessel-matched soul feeds its vessel faster meter gain.
+    this.soulMeterMult = charData.soulMeterMult || 1;
 
     // physics
     this.vx = 0; this.vy = 0; this.onGround = true;
@@ -465,6 +469,20 @@ export class Fighter {
     this._leanT = { x: 0, z: 0 };
     this._locoIdle = 1; this._locoWalk = 0; this._locoRun = 0;
     this._auraFlash = 0;
+
+    /* ---- HEART AND MIND WITHIN: 3D brawler mode (worker 20, 2026-10-22) ----
+       When brawler=true, the fighter runs in free-3D: `yaw` (world-space
+       radians) drives the visual facing, movement uses vx+vz, and
+       knockback/guard resolve in 3D. Versus logic is untouched when
+       brawler=false. */
+    this.brawler = false;
+    this.yaw = 0;
+    // Soul Surge form: the Devil Within devil-form analog. Timed powered
+    // state (stat boosts + aura), entered at full meter via the transform
+    // input in brawler mode; drains meter while active.
+    this.surgeForm = false;
+    this._surgeT = 0;
+    this._surgeBaseStats = null;
 
     // MID-MATCH TRANSFORMATION (Roshi-style, owner 2026-10-19).
     // Fighters with charData.transform (single) or charData.forms (multi-form
@@ -683,6 +701,34 @@ export class Fighter {
   }
   canTransform(direction='up') {
     return !!(this._resolveTransform(direction) && this.canAct());
+  }
+
+  /* SOUL SURGE FORM — the Devil Within devil-form analog for the brawler.
+     Full nine-soul meter + transform input: a TIMED powered state with no
+     model swap — the fighter keeps their own moveset and model, boosted
+     stats, and their surge aura burning for the duration. Any WH character
+     can surge (character select, not forced Jin). Manual re-trigger ends it
+     early; the meter drain ends it when empty. */
+  startSurgeForm() {
+    if (this.surgeForm) { this.endSurgeForm(); return true; }
+    if (this.meter < this.maxMeter || !this.canAct()) return false;
+    this.surgeForm = true;
+    this._surgeT = 25; // seconds of devil time
+    this._surgeBaseStats = { ...this.stats };
+    this.stats = {
+      ...this.stats,
+      power: this.stats.power * 1.45,
+      speed: Math.min(3.8, this.stats.speed * 1.15),
+      defense: this.stats.defense * 1.2,
+    };
+    this._auraFlash = 1.0;
+    return true;
+  }
+  endSurgeForm() {
+    if (!this.surgeForm) return;
+    this.surgeForm = false;
+    this._surgeT = 0;
+    if (this._surgeBaseStats) { this.stats = this._surgeBaseStats; this._surgeBaseStats = null; }
   }
 
   /* Mid-match transformation (Roshi-style power-up, owner 2026-10-19).
@@ -1181,6 +1227,7 @@ export class Fighter {
       urgeOn: !!this._urgeOn,
       urgeAvailable: !this._urgeUsed && !this._urgeOn && this.hp > 0,
       inMove: this.state === 'attack',
+      soulStates: soulStates(this), // pt217u: 魂 ACTION / KESSHOU / 九魂解放 / 霊放 / 試練の封 gates
     };
   }
 
@@ -1241,13 +1288,20 @@ export class Fighter {
     if (!this.canAct() || !this.onGround) return;
     this._enter('dodge'); this.invuln = 0.34; this.dodgeDir = -this.facing;
     this._dodgeId = (this._dodgeId || 0) + 1;
-    this.vx = this.dodgeDir * this.stats.speed * 1.7;
+    if (this.brawler) {
+      // BRAWLER: hop straight back along the facing yaw (3D).
+      const s = this.stats.speed * 1.7;
+      this.vx = -Math.sin(this.yaw) * s;
+      this.vz = -Math.cos(this.yaw) * s;
+    } else {
+      this.vx = this.dodgeDir * this.stats.speed * 1.7;
+    }
   }
 
   /* ---------------- V-System (owner 2026-10-22) ----------------
      One input ('vskill': KeyV / V button), three context moves —
      Tekken-ified from SFV's V-Skill / V-Trigger / V-Reversal, plus
-     V-Shift on block double-tap. Names «TBD» pending user approval. */
+     V-Shift on block double-tap. Canon name unassigned (NEEDS NAME) — no name text is shown in-game. */
   _startVAttack(move, state, name) {
     this.attack = move; this.attackName = name; this.hasHit = false; this._prevHitPoint = null;
     this._attackId = (this._attackId || 0) + 1;
@@ -1348,8 +1402,14 @@ export class Fighter {
     this.lockT = 0.3; this.lockMove = move; this.lockPartner = attacker;
     this.vx = 0; this.vz = 0;
     // face the attacker during the lock
-    const want = Math.sign(attacker.root.position.x - this.root.position.x) || 1;
-    this.facing = want;
+    if (this.brawler) {
+      const ax = attacker.root.position.x - this.root.position.x;
+      const az = attacker.root.position.z - this.root.position.z;
+      this.yaw = Math.atan2(ax, az);
+    } else {
+      const want = Math.sign(attacker.root.position.x - this.root.position.x) || 1;
+      this.facing = want;
+    }
   }
   startThrowing(victim) {
     this.state = 'throwing'; this.stateT = 0;
@@ -1807,6 +1867,15 @@ export class Fighter {
   /* ---------------- defense / damage ---------------- */
   isBlocking() { return this.state === 'block'; }
 
+  /* Normalized world-space vector pointing AWAY from `attacker` on the
+     ground plane (brawler knockback direction). */
+  _awayFrom(attacker) {
+    const dx = this.root.position.x - attacker.root.position.x;
+    const dz = this.root.position.z - attacker.root.position.z;
+    const d = Math.hypot(dx, dz) || 1;
+    return [dx / d, dz / d];
+  }
+
   receiveHit(move, attacker) {
     if (this.dead || this.invuln > 0) return 'dodge';
     // Posture snapshot for the T3 reaction pick below (the state is
@@ -1834,8 +1903,18 @@ export class Fighter {
     // unblockables and Rage Arts break it — combat-core.js).
     const crushActive = (this.state === 'attack' || this.state === 'vskill' || this.state === 'vreversal') &&
       powerCrushAbsorbs(this.attack, this._attackPhase, this.stateT, move);
-    const facingAttacker = Math.sign(attacker.root.position.x - this.root.position.x) === this.facing;
-    // T3 HitClassify: guarded when (guard & attack word) != 0 and the defender faces the
+    // BRAWLER: guard requires the defender's facing yaw to be within ~110°
+    // of the direction to the attacker (3D); versus keeps the x-sign rule.
+    let facingAttacker;
+    if (this.brawler) {
+      const ax = attacker.root.position.x - this.root.position.x;
+      const az = attacker.root.position.z - this.root.position.z;
+      const wantYaw = Math.atan2(ax, az);
+      const dy = Math.atan2(Math.sin(wantYaw - this.yaw), Math.cos(wantYaw - this.yaw));
+      facingAttacker = Math.abs(dy) < 1.92;
+    } else {
+      facingAttacker = Math.sign(attacker.root.position.x - this.root.position.x) === this.facing;
+    }    // T3 HitClassify: guarded when (guard & attack word) != 0 and the defender faces the
     // attacker. Standing guard blocks highs/mids, crouching guard blocks lows; throws and
     // unblockables carry no guard bits.
     const word = move.hitWord ?? Fighter.defaultWord(move);
@@ -1869,9 +1948,14 @@ export class Fighter {
       }
       this.stun = (move.t8 && move.t8.blk != null) ? stunFromAdvantage(move.t8.blk, move)
         : 0.18 + move.damage * 0.01;
-      this.vx = Math.sign(this.root.position.x - attacker.root.position.x) * move.knock * 0.5;
-      this.meter = Math.min(this.maxMeter, this.meter + 4); // +4 soul on block
-      if (this.hp <= 0) { this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || 1); return 'ko'; }
+      if (this.brawler) {
+        const [nx, nz] = this._awayFrom(attacker);
+        this.vx = nx * move.knock * 0.5;
+        this.vz = nz * move.knock * 0.5;
+      } else {
+        this.vx = Math.sign(this.root.position.x - attacker.root.position.x) * move.knock * 0.5;
+      }
+      this.meter = Math.min(this.maxMeter, this.meter + 4 * this.soulMeterMult); // +4 soul on block      if (this.hp <= 0) { this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || 1); return 'ko'; }
       this._reactionSel = this._pickReaction(move, attacker, { guarded: true, counter: false,
         crouch: _wasCrouch, airborne: false, down: false, forState: 'block' });
       return 'block';
@@ -1941,9 +2025,19 @@ export class Fighter {
       }
       return 'hit';
     }
-    this.meter = Math.min(this.maxMeter, this.meter + 6); // +6 soul on taking damage
+    this.meter = Math.min(this.maxMeter, this.meter + 6 * this.soulMeterMult); // +6 soul on taking damage
+
     const dir = Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing;
-    this.vx = dir * move.knock;
+    if (this.brawler) {
+      // BRAWLER: knockback radiates away from the attacker on the ground
+      // plane (Devil Within enemies fly away from Jin, not along x).
+      const [nx, nz] = this._awayFrom(attacker);
+      const k = move.knock;
+      this.vx = nx * k;
+      this.vz = nz * k;
+    } else {
+      this.vx = dir * move.knock;
+    }
     if (this.hp <= 0) { this._knockout(dir); return 'ko'; }
     if (move.isGrab || move.knock >= 6 || move.launch || (counter && move.knockdown)) {
       this.vy = move.isGrab ? 5.2 : 4.6; this.onGround = false; this.stun = 0.55;
@@ -2155,6 +2249,15 @@ export class Fighter {
 
   _knockout(dir) {
     this.dead = true; this.vx = dir * 5.5; this.vy = 6; this.onGround = false;
+    if (this.brawler) {
+      // BRAWLER: keep the 3D knockback velocity receiveHit computed,
+      // boosted to KO strength — the body flies away from the attacker.
+      const s = Math.hypot(this.vx, this.vz);
+      if (s > 0.01) {
+        const k = 7.5 / s;
+        this.vx *= k; this.vz *= k;
+      } else { this.vx = dir * 5.5; this.vz = 0; }
+    }
     // KO collapse (docs/anim/T3-REACTIONS.md): a KO'd fighter plays
     // the collapse slot 0xD66 from the file, not the generic ko clip,
     // when the tables are loaded; otherwise the ko fallback below.
@@ -2171,7 +2274,7 @@ export class Fighter {
     this._enter('ko'); this.stun = 999;
   }
   victory() { if (!this.dead) this._enter('victory'); }
-  addMeter(v) { this.meter = Math.min(this.maxMeter, this.meter + v); }
+  addMeter(v) { this.meter = Math.min(this.maxMeter, this.meter + v * this.soulMeterMult); }
 
   /* ---------------- hit / hurt queries (swept capsules, hitbox.js) ----------------
      HITBOX LANE 2026-10-24 (owner playtest: "contacts not being made"):
@@ -2328,8 +2431,16 @@ export class Fighter {
       if (this.onGround && this.state === 'dash') this.vx = this.facing * 9;
       if (this._urgeDashT <= 0 && this.state === 'dash') { this._enter('idle'); this.vx = 0; }
     }
+    // SOUL SURGE FORM (brawler devil-form analog): timed — drains meter.
+    if (this.surgeForm) {
+      this._surgeT -= dt;
+      this.meter = Math.max(0, this.meter - 4 * dt);
+      if (this._surgeT <= 0 || this.meter <= 0) this.endSurgeForm();
+    }
 
-    if (opponent && this.canAct()) {
+    // BRAWLER: facing is yaw-driven by the brawler controller (free 3D) —
+    // never x-snap toward a single opponent.
+    if (opponent && this.canAct() && !this.brawler) {
       const want = opponent.root.position.x >= this.root.position.x ? 1 : -1;
       if (want !== this.facing) this.facing = want;
       // QA 2026-10-23 targeting fix (T7 tracking): in neutral a fighter turns to
@@ -2557,7 +2668,8 @@ export class Fighter {
         break;
       }
       case 'idle': case 'walk':
-        this.state = (Math.abs(this.vx) > 0.4 && this.onGround) ? 'walk' : 'idle';
+        // BRAWLER: walk on 2D ground speed, not the 1v1 x-axis.
+        this.state = ((this.brawler ? Math.hypot(this.vx, this.vz) : Math.abs(this.vx)) > 0.4 && this.onGround) ? 'walk' : 'idle';
         break;
     }
   }
@@ -2597,7 +2709,9 @@ export class Fighter {
     // through). Does not touch y; does not run for block/sidestep/jump.
     this._rootMotionApply();
     // Sidestep range: about one body width into the background/foreground.
-    this.root.position.z = Math.max(-2.4, Math.min(2.4, this.root.position.z));
+    // BRAWLER: free 3D — clamp to the arena bounds instead.
+    const zLim = this.brawler ? ARENA_LIMIT : 2.4;
+    this.root.position.z = Math.max(-zLim, Math.min(zLim, this.root.position.z));
 
     if (this.root.position.y <= GROUND_Y) {
       this.root.position.y = GROUND_Y; this.vy = 0;
@@ -2732,6 +2846,10 @@ export class Fighter {
   /* ---------------- animation ---------------- */
   _animate(dt) {
     // 1) Facing (3D yaw toward the opponent when known; sign convention kept)
+    // BRAWLER: yaw drives the facing directly in free 3D (brawler.js updates
+    // f.yaw per frame); sync it into _faceYaw so the facing line below stays
+    // the single source of truth in both modes.
+    if (this.brawler) this._faceYaw = this.yaw;
     this.lean.rotation.y = (typeof this._faceYaw === 'number') ? this._faceYaw : this.facing * Math.PI / 2;
 
     // 2) Which REAL T3 clip owns this state? (FROZEN-IDLE FIX 2026-10-20:
@@ -2746,7 +2864,17 @@ export class Fighter {
     const attackClipFor = () => this._attackClip(this.attack, this.attackName);
     // Reverse the walk cycle when backing away so retreating reads
     // as a back-step instead of a moonwalk.
-    const dirSign = Math.abs(this.vx) > 0.05 ? (Math.sign(this.vx) === this.facing ? 1 : -1) : 1;
+    // BRAWLER: velocity is 2D (vx+vz) — compare its heading against the
+    // facing yaw instead of the 1v1 x-axis sign.
+    const _bSpd = this.brawler ? Math.hypot(this.vx, this.vz) : 0;
+    let dirSign;
+    if (this.brawler && _bSpd > 0.05) {
+      const _va = Math.atan2(this.vx, this.vz);
+      const _dd = Math.atan2(Math.sin(_va - this.yaw), Math.cos(_va - this.yaw));
+      dirSign = Math.abs(_dd) > Math.PI / 2 ? -1 : 1;
+    } else {
+      dirSign = Math.abs(this.vx) > 0.05 ? (Math.sign(this.vx) === this.facing ? 1 : -1) : 1;
+    }
     let t3Wanted = null;
     switch (this.state) {
       case 'idle': t3Wanted = 'stance'; break;
@@ -2770,7 +2898,8 @@ export class Fighter {
     // itself is re-applied before every mixer.update).
     let tIdle = 1, tWalk = 0, tRun = 0;
     if (this.state === 'walk') {
-      const fast = Math.abs(this.vx) > this.stats.speed * 0.9;
+      const _spdNow = this.brawler ? Math.hypot(this.vx, this.vz) : Math.abs(this.vx);
+      const fast = _spdNow > this.stats.speed * 0.9;
       tIdle = 0; tWalk = fast ? 0 : 1; tRun = fast ? 1 : 0;
     } else if (this.state === 'dodge') { tIdle = 0; tRun = 1; }
     if (t3Active || this._throwPair) { tIdle = 0; tWalk = 0; tRun = 0; }
@@ -3000,7 +3129,7 @@ export class Fighter {
     this.lean.rotation.z = this._lean.z;
 
     // 8) Aura + trail visuals — particles rise and flicker around the body
-    const auraOn = (this.attackName === 'surge') || this._auraFlash > 0 || this._rageAura || this._urgeAura;
+    const auraOn = (this.attackName === 'surge') || this._auraFlash > 0 || this._rageAura || this._urgeAura || this.surgeForm;
     const am = this.aura.material;
     am.opacity += ((auraOn ? 0.95 : 0) - am.opacity) * Math.min(1, dt * 10);
     this.auraLight.intensity += ((auraOn ? 14 : 0) - this.auraLight.intensity) * Math.min(1, dt * 10);
@@ -3022,6 +3151,13 @@ export class Fighter {
     }
   }
 
+  /* World-space forward vector (brawler: from yaw; versus: from x-facing).
+     Used by the procedural combat layer so strikes aim where the body faces. */
+  fwdVec(out) {
+    if (this.brawler) return out.set(Math.sin(this.yaw), 0, Math.cos(this.yaw));
+    return out.set(this.facing, 0, 0);
+  }
+
   _attackProgress() {
     const m = this.attack, t = this.stateT;
     const extendEnd = m.startup + m.active;
@@ -3032,7 +3168,7 @@ export class Fighter {
 
   _animAttack() {
     const e = this._attackProgress();
-    const fwd = _v3.set(this.facing, 0, 0); // world forward
+    const fwd = this.fwdVec(_v3); // world forward (yaw-aware in brawler mode)
     const name = this.attackName;
 
     const isKick = name === 'kick' || name === '3' || name === '4' || this.attack?.limb?.startsWith('leg');
@@ -3073,7 +3209,7 @@ export class Fighter {
     this._blendW = Math.min(0.9, (this._blendW || 0) + 0.18);
     this._leanT.x = 0.06;
     this.bones.Spine2.getWorldPosition(_v1);
-    const fwd = _v3.set(this.facing, 0, 0);
+    const fwd = this.fwdVec(_v3);
     _v2.copy(_v1).addScaledVector(fwd, 0.42); _v2.y = _v1.y + 0.35;
     this._ik(['RightArm', 'RightForeArm'], 'RightHand', _v2, this._blendW);
     _v2.copy(_v1).addScaledVector(fwd, 0.42); _v2.y = _v1.y + 0.2;
