@@ -215,7 +215,7 @@ const HIST_LEN = 512;      // ring entries: HIST_FRAMES of time at any tick rate
 const T_EPS = 1e-6;        // float slack when summing entry lengths
 const MOTION_HOLD = 4; // v2: final motion step held this long = capital spelling (f,f,F)
 const HOLD_FRAMES = 8; // v2: a direction held this long reads as the HELD spelling (D/F+2)
-const STRING_PENDING = 800; // v2: ms a partial string stays open (legacy continuation window)
+const STRING_PENDING = 1500; // v2: ms a partial string stays open (legacy continuation window; batch 2026-10-24: 800 -> 1500 for touch cadence)
 let _seqWindows = null; // 'd,d/f,f' -> frames (directions without neutral steps)
 export function setInputTables(t) {
   if (!t) return;
@@ -534,13 +534,16 @@ export class TekkenBuffer {
     const withDir = dir ? `${dir}+${input}` : input;
     const holdDir = dir ? `${dir.toUpperCase()}+${input}` : null;
     const now = performance.now();
-    const contOk = ctx.inMove !== undefined ? ctx.inMove : (now - this.lastMoveT < 800);
+    const contOk = ctx.inMove !== undefined ? ctx.inMove : (now - this.lastMoveT < STRING_PENDING);
     // String cursor: the notation typed so far — the last move, or a pending partial string
     // (an intermediate step that is not a standalone move) for STRING_PENDING ms.
     const pendingOk = this._strPath && now - this._strPathT < STRING_PENDING;
     const bases = [];
-    if (pendingOk) bases.push(this._strPath);
-    if (this.lastMove && contOk) bases.push(this.lastMove);
+    // BATCH: strip ~shadow suffixes here too (see continuation()) — a pending
+    // path or last move of '1~t8.king' must also try '1' as its chain base.
+    const strip = (b) => { const t = b ? b.indexOf('~') : -1; return t > 0 ? b.slice(0, t) : null; };
+    if (pendingOk) { bases.push(this._strPath); const s = strip(this._strPath); if (s) bases.push(s); }
+    if (this.lastMove && contOk) { bases.push(this.lastMove); const s = strip(this.lastMove); if (s) bases.push(s); }
     for (const base of bases) {
       for (const sep of [',', '~', ':']) {
         const cands = dir ? [`${base}${sep}${withDir}`, `${base}${sep}${holdDir}`] : [`${base}${sep}${input}`];
@@ -643,7 +646,7 @@ export class TekkenBuffer {
     // 1) string continuation. In a fight (ctx.inMove defined) T3 rules: only while the previous
     //    hit is still playing (Fighter.tryAttack buffers it into that move). Legacy callers
     //    without ctx (tests) keep the old 800 ms window.
-    const contOk = ctx.inMove !== undefined ? ctx.inMove : (performance.now() - this.lastMoveT < 800);
+    const contOk = ctx.inMove !== undefined ? ctx.inMove : (performance.now() - this.lastMoveT < STRING_PENDING);
     if (this.lastMove && contOk) {
       for (const sep of [',', '~', ':']) {
         for (const c of [`${this.lastMove}${sep}${withDir}`, `${this.lastMove}${sep}${input}`]) {
@@ -735,9 +738,19 @@ export class TekkenBuffer {
   continuation(input) {
     if (!this.lastMove) return null;
     const dir = this.lastDir && this.lastDir !== 'n' ? this.lastDir : '';
-    for (const sep of [',', '~', ':']) {
-      for (const c of [dir ? `${this.lastMove}${sep}${dir}+${input}` : null, `${this.lastMove}${sep}${input}`]) {
-        if (c && resolveMoveKey(this.fighterId, c)) return c;
+    // BATCH STRING FIX (2026-10-24): slots redirect singles to ~shadow keys
+    // ('1' -> '1~t8.king' for MOD damage), so lastMove carries the shadow suffix
+    // and '1~t8.king,2' never exists — the chain broke at step 1 and the user
+    // could only do 1-2 (two separate jabs, never the '1,2' string). Try the
+    // stripped base too, so '1' + '2' -> '1,2' and '1,2' + '1' -> '1,2,1'.
+    const bases = [this.lastMove];
+    const tilde = this.lastMove.indexOf('~');
+    if (tilde > 0) bases.push(this.lastMove.slice(0, tilde));
+    for (const base of bases) {
+      for (const sep of [',', '~', ':']) {
+        for (const c of [dir ? `${base}${sep}${dir}+${input}` : null, `${base}${sep}${input}`]) {
+          if (c && resolveMoveKey(this.fighterId, c)) return c;
+        }
       }
     }
     return null;

@@ -28,6 +28,7 @@ import { JiggleRig } from './jiggle.js';
 import { SoftBody } from './softbody.js';
 import { FaceRig } from './faceRig.js';
 import { HandPoseBlender } from './handPoses.js';
+import { canonRootScale } from './canon-sizing.js';
 import { t8Frame, stunFromAdvantage } from './frame-tables.js';
 import { hitWordFor, attackPhase, moveReach, PressBuffer } from './combat-core.js';
 import { HURT_SEGMENTS, WEAPON_SEGMENTS, LIMB_RADIUS, fallbackHurts } from './hitbox.js';
@@ -53,7 +54,7 @@ let MOVES = {
 const MOVESET_MAP = {
   // THE NINE SOULS
   rin: 'demonio', byou: 'demonio', tou: 'heihachi', sha: 'xiaoyu', kai: 'demonio',
-  jin_soul: 'yoshimitsu', retsu: 'bryan', zen: 'heihachi', gyou: 'demonio',
+  jin_soul: 'yoshimitsu', retsu: 'bryan', zen: 'heihachi', gyou: 'demonio', // zen 'heihachi' here is INTERIM frame-data provenance ONLY (his 639 interim rows) — his BANK is UNMAPPED (see FIGHTER_BANK), NOT Heihachi as a base.
   // MAIN ROSTER
   pantera: 'king', demonio: 'demonio', phantom: 'yoshimitsu', diablo: 'heihachi',
   skull: 'bryan', samura1: 'gunjack', sakura: 'xiaoyu',
@@ -119,7 +120,7 @@ export function bankIdFor(charId, movesetId) {
   //   tou        -> paul     (nine-souls appendix: TOU's vessel base = Paul)
   //   byou       -> lei      (nine-souls appendix: BYOU's vessel base = Lei)
   //   gyou       -> hwoarang (nine-souls appendix: GYOU's vessel base = Hwoarang)
-  //   zen        -> julia    (nine-souls appendix: ZEN's vessel base = Julia)
+  //   zen        -> UNMAPPED (owner decision 2026-10-24: Zen is NEITHER Heihachi NOR Julia — see FIGHTER_BANK note)
   //   rave       -> lei      (CANON: Rave base = Lei Wulong)
   //   yukihyo    -> armorking (CANON: Yukihyo base = Armor King; same
   //                 rationale as the armor-king override above — the 'king'
@@ -135,12 +136,21 @@ export function bankIdFor(charId, movesetId) {
   //                 revert is deleting this one line.)
   // byou -> lei REMOVED 2026-10-21 (owner: "Lei wulong is not byou, he is Rave/Kiko tanaka, that's
   // been clarified"). Byou keeps its own moveset's bank until the owner names Byou's base.
-  // zen -> julia kept as the anim-bank lane set it; CANON.md appendix lists Julia -> NIGHTWOLF /
-  // soul ZEN as an unresolved three-way conflict while roster-full.js says Zen = Heihachi —
-  // put to the owner, not decided here.
+  // ZEN CONFLICT RESOLVED 2026-10-24 (owner decision, docs/decisions/2026-10-24-zen-base-decision.md):
+  // Zen is NEITHER Heihachi NOR Julia. Heihachi is Diablo's base; Julia is Nightwolf's base
+  // (CANON.md appendix: Julia -> NIGHTWOLF / soul ZEN). Zen's base chain is Eleven/Twelve
+  // (Street Fighter, 2D concept) -> Dural (Virtua Fighter 5, 3D implementation: the closest
+  // 3D thing to Eleven/Twelve) -> Zen's own canon moves on top, with X.COPY as ONE super.
+  // No Dural bank exists in the repo (no game/assets/anim/vf5/, no 'dural' in SOURCE_TO_BANK)
+  // and no Twelve 2D->3D conversion exists, so zen maps to null (UNMAPPED) here: bankIdFor
+  // returns null and Zen falls back to embedded locomotion + procedural combat — never
+  // another character's clips. When VF5 Dural motion lands, bind 'dural' here.
   const FIGHTER_BANK = {
+    // zen: null = UNMAPPED (owner decision 2026-10-24). A null value is intentional:
+    // hasOwnProperty('zen') is true, so bankIdFor returns null before any Heihachi/Julia
+    // fallback can bind. Do NOT restore 'julia' or 'heihachi' here without a new owner decision.
     awapop: 'nina', torch: 'anna', kingtyrant: 'eddy', kai: 'eddy',
-    tou: 'paul', gyou: 'hwoarang', zen: 'julia', rave: 'lei',
+    tou: 'paul', gyou: 'hwoarang', zen: null, rave: 'lei',
     yukihyo: 'armorking', nightwolf: 'julia',
     // 2026-10-23 (Claude session): the last decoded T3 banks (tools/anim/t3_bake_bank.py). These movesets
     // name their source as a teardown path or not at all, so bind each to its base's own bank here.
@@ -153,6 +163,18 @@ export function bankIdFor(charId, movesetId) {
     //   aotsuki     -> kuma (CANON: Panda shares Kuma's T3 bank)
     //   silvertongue -> xiaoyu (her kit's T3 bank, per lili.json t3_source)
     gashadokuro: 'kuma', aotsuki: 'kuma', silvertongue: 'xiaoyu',
+    // 2026-10-24 (stance fix lane; owner: "too many are sharing them"):
+    // these three fighters' Tekken bases have decoded T3 banks on disk,
+    // but they were falling back to a shared moveset bank (docfrank) or
+    // to no bank at all (tobi, buffalo-bill). Each now binds its own base's
+    // bank, so its stance is distinct, not shared.
+    //   docfrank    -> bosconovitch (CANON: Doc Frank base = Bosconovitch;
+    //                 bank exists on disk; was incorrectly on gunjack bank)
+    //   tobi        -> hwoarang (CANON: Tobi base = Hwoarang; bank exists;
+    //                 was returning null — no bank, CMU fallback shared)
+    //   buffalo-bill -> law (CANON: Buffalo Bill base = Marshall Law;
+    //                 bank exists; was returning null — no bank, CMU fallback)
+    docfrank: 'bosconovitch', tobi: 'hwoarang', 'buffalo-bill': 'law',
   };
   if (Object.prototype.hasOwnProperty.call(FIGHTER_BANK, charId)) return FIGHTER_BANK[charId];
   let src = null;
@@ -395,6 +417,7 @@ export class Fighter {
     //   bodyScale, moveset }, 'model-key': { up: {...}, down: {...} } }.
     this._forms = null;
     this.formKey = charData.model;
+    this._canonSizeTick = 0;
     if (charData.forms) {
       this._forms = charData.forms;
     } else if (charData.transform) {
@@ -1309,9 +1332,10 @@ export class Fighter {
     let notation = LEGACY_TO_TEKKEN[name] || name;
     const ctx = this._inputCtx();
     this._chordBase = this.tekken.lastMove;
-    // String grace (2026-10-24, Pantera string fix): a tap landing just after
-    // the previous hit fully recovered still continues the string (touch
-    // cadence) — 200 ms past move end. The window is set in _tickState when
+    // String grace (2026-10-24, Pantera string fix; batch 2026-10-24: 200 -> 500 ms
+    // for touch cadence): a tap landing just after the previous hit fully
+    // recovered still continues the string — 500 ms past move end. The window
+    // is set in _tickState when
     // a non-grab attack completes and cleared on hitstun/knockdown/KO, so
     // getting hit kills it and a throw never chains. canAct-only: it must
     // not chain out of a sidestep-cancel.
@@ -1707,9 +1731,21 @@ export class Fighter {
         if (ph !== 'done') this._attackPhase = ph;
         else {
           const after = m.stanceAfter;
-          this.attack = null; this.attackName = null; this._enter('idle');
+          // BATCH STRING FIX (2026-10-24): a string hit queued during this move
+          // fires on completion, not just during recovery — short moves can jump
+          // active->done in one tick, skipping recovery and dropping the queued
+          // hit, which broke 3+ hit strings (user: longest combo was 1-2).
+          if (this._queuedNext) {
+            const next = this._queuedNext; this._queuedNext = null;
+            this.attack = null; this.attackName = null;
+            if (this._fireNotation(next)) break;
+            this._enter('idle');
+          } else {
+            this.attack = null; this.attackName = null; this._enter('idle');
+          }
           // String grace starts when a non-grab attack completes (see _tryAttackFresh).
-          if (!m.isGrab) this._stringGraceUntil = (typeof performance !== 'undefined' ? performance.now() : 0) + 200;
+          // BATCH: 200 -> 500 ms for touch cadence (phone taps are slower than stick).
+          if (!m.isGrab) this._stringGraceUntil = (typeof performance !== 'undefined' ? performance.now() : 0) + 500;
           // Source notes "Transition to X": the move ends in that stance (FC = crouch).
           if (after === 'FC') { this._enter('crouch'); this.stance = 'FC'; this.stanceT = 0.5; }
           else if (after) { this.stance = after; this.stanceT = 0.8; }
@@ -1991,6 +2027,21 @@ export class Fighter {
     // the move clock first, so its hit frame lands on the move's active frames (lane D).
     this._applyAttackWarp();
     this.mixer.update(dt);
+
+    // 4b) CANON SIZING (game/data/canon-sizing.js): once per model/form, after
+    // the stance has posed a couple of frames, scale the root so the stance
+    // height matches this version's canon height (+ girth). No mesh is cut.
+    if (this._canonSizedKey !== this.formKey && ++this._canonSizeTick > 2) {
+      this._canonSizedKey = this.formKey; this._canonSizeTick = 0;
+      try {
+        const cs = canonRootScale(this.formKey, this.model, this.root);
+        if (cs) {
+          this.root.scale.set(cs.w, cs.h, cs.w);
+          this.canonSize = { key: this.formKey, h: cs.h, w: cs.w, measured: cs.measured, height_cm: cs.entry.height_cm, girth: cs.entry.girth };
+          console.log(`[SIZE] ${this.formKey} stance=${cs.measured.toFixed(3)} -> ${cs.entry.height_cm}cm scale h=${cs.h.toFixed(3)} w=${cs.w.toFixed(3)}`);
+        }
+      } catch (e) { /* sizing is cosmetic: never break the fight */ }
+    }
 
     // 5) Refresh world matrices so IK reads the posed skeleton
     this.root.updateWorldMatrix(true, true);
