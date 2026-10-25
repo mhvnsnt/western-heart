@@ -221,20 +221,16 @@ const ui = {
   /* V-System (owner 2026-10-22). All user-facing names are «name TBD»
      placeholders pending user approval — flagged, not final. */
   vTrigger() {
-    this.banner('V-TRIGGER «name TBD» — SOUL AWAKENED');
     this.surgeFlash(0xffd34d, 0xfff2b0);
   },
   vReversal() {
-    this.banner('V-REVERSAL «name TBD»');
     this.surgeFlash(0x4da6ff, 0xbfe0ff);
   },
   vShift() { this.surgeFlash(0x7df9ff, 0xd8fbff); },
   vShiftBreak() {
-    this.banner('V-SHIFT «name TBD» — BREAK!');
     this.surgeFlash(0xffffff, 0x7df9ff);
   },
   vParry() {
-    this.banner('V-SKILL PARRY «name TBD»');
     this.surgeFlash(0x9fd8ff, 0xe8f6ff);
   },
   matchOver(playerWon) {

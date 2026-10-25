@@ -181,7 +181,6 @@ export class SoulUrge {
     if (f.setUrgeAura) f.setUrgeAura(true);
     const ui = this.game.ui;
     if (ui && ui.setUrge) ui.setUrge(id, true);
-    if (ui && ui.banner) ui.banner('SOUL URGE');
     try { audio.urge(); } catch (e) { /* audio unlocks on user gesture */ }
     return true;
   }
@@ -199,13 +198,12 @@ export class SoulUrge {
     this._expire(f, id);
   }
 
-  /** Urge Smash connect: hitstop + flash + banner (the T8 beat). */
+  /** Urge Smash connect: hitstop + flash (the T8 beat). No center text — Tekken shows Heat Smash via the cinematic hit itself. */
   urgeSmashHit(attacker, hb) {
     const g = this.game;
     g._hitStop = Math.max(g._hitStop || 0, 0.28);
     try { g.arena.shake(0.65, 0.5); } catch (e) {}
     const ui = g.ui;
     if (ui && ui.rageArtFlash) ui.rageArtFlash();
-    if (ui && ui.banner) ui.banner('URGE SMASH');
   }
 }

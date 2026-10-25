@@ -6,12 +6,12 @@ All costs use the existing Nine-Soul Meter (0..100, `fighter.meter`).
 | System | Trigger / gate | Cost | Input | Effect |
 |---|---|---|---|---|
 | **結章 KESSHOU** (existing) | meter full + victim < 25% HP, on the killing blow | full meter | none (victory outro) | authored finisher beats; now picks a per-fighter variant (`game.kesshouVariant`) |
-| **九魂解放 Nine-Soul Release** | meter full | 100 | 1+2+3+4 at full meter (below full the same press is Soul Kindle) | unblockable super, 30 dmg × variant power. HUD callout **SOUL RELEASE READY** when the meter first fills |
+| **九魂解放 Nine-Soul Release** | meter full | 100 | 1+2+3+4 at full meter (below full the same press is Soul Kindle) | unblockable super, 30 dmg × variant power. HUD meter-ready indicator (`ui.setSoulReady`) when the meter first fills — no center-screen text (Tekken-exact fight UI, 2026-10-24) |
 | **霊放 Reihou** "Spirit Release" | foe is in RAGE | 50 | 1+4 (only claimed while foe rages; otherwise the moveset's 1+4 plays) | spirit channels flare (`_spiritFlare`), foe's rage purged for the round (`_rageUsed`), 6 dmg |
 | **試練の封 Trial's Seal** | round ends by KO and winner ≥ 50% HP, or KO came from a soul system | — | automatic | decisive verdict seal banner + `matchStats.seals`; not a death |
 
 Interactions
-- **HEAT** (touch `HEAT` = 2+3 URGE gauge) is untouched. **魂 ACTION / Spirit Action** fires from 2+3 *while URGE is on* + a context trigger.
+- **SOUL URGE** (2+3 = URGE gauge) is untouched. **魂 ACTION / Spirit Action** fires from 2+3 *while URGE is on* + a context trigger.
 - **RAGE**: Reihou is the counter to rage; a purged fighter cannot re-enter rage that round (no Rage Art).
 - Release can be the killing blow that opens KESSHOU (meter is spent by Release, so KESSHOU then needs its own gates; Release KO still earns Trial's Seal).
 - Balance: Release 30 dmg ≈ a T7 Rage Art at WH scale (rage.js 32); Reihou is cheap damage-wise and priced in meter so it is a tempo choice, not a combo ender.
