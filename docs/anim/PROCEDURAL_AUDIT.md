@@ -234,3 +234,35 @@ excluded. 5 steps SUSPENDED-DRIFT (step-1 prefix move 1 ROW-CHANGED
 41->None) — never wired on stale data. T8-sourced prefixes with no T3
 row get their correct clips from #988 Step 2 (original T8 refs), never
 from a T3 row recorded as correct.
+
+## Demonio Batch 4 fallback (triples/quads/rest, 2026-10-25)
+Verified rows 220/221/222/223/224/226/227/228/230/232/233/237/238/239/
+251/252/258/259/186/195/196/94/103/114/170/172 are FALLBACK (T3 jin
+rows), to be re-matched to T7 Jin rows when extraction lands. Row 114
+is the Job 3 fill for 2,1,4,4 step 4 (exact level, FULL provenance,
+SOFT proxy passed) — a verified fill, not a soft fill; the gate
+candidate 231 failed the button gate (button 12 chord row for a
+single-RK4 step) and is superseded, not kept. Review candidates
+199/225/203/214/253/261/241 (SOFT-fail) and 234/235/257 (STANCE-SOFT
+crouch/duck-dip) are NOT fallback — held evidence, not wired or
+played. Rejected rows (187/184/260/240/34/33/171/272/371/229/236/254/
+256/250/262/370 and gate candidate 231) are NOT fallback — rejected
+evidence, not wired or held. Jin-bank rules carried from Batch 1
+(documented in
+docs/movesets/DEMONIO-BATCH4-STEP-PLANS-2026-10-25.md): jin row 220 is
+a standing RP2 row (not blanket-banned; exercised here — 2,1,4 step 1
+verifies on it) and jin row 35 is starts-airborne (no Batch 4 step
+plays row 35). Jin row 216 is a jump row on the jin bank (not king row
+216 dash Konvict Kick) — no Batch 4 verified step plays row 216.
+Canonicalization (corrected rule, carried from Batch 2): only a
+trailing source-variant suffix is stripped, so 2,1,4~4 (union
+{1,2,4}, a TRIPLE — correcting Batch 3's parenthetical calling it a
+quad) and 4~3,H.1+2 (union {1,2,3,4}, a quad) are OWN Batch 4
+canonicals, and 2,1,4__main is its OWN canonical (not a twin of
+2,1,4; partial [220,221,None], does NOT inherit row 230). 8 steps
+SUSPENDED-DRIFT (step-1 prefix move 1 ROW-CHANGED 41->None) — never
+wired on stale data. T8-sourced prefixes with no T3 row get their
+correct clips from #988 Step 2 (original T8 refs), never from a T3 row
+recorded as correct. Rest keys (95) and the throw triple-quad
+u/f+3+4,H.1+2 get NO plan — CSV-audited only; their donor clips
+stand, not fixed, pending engine support for non-attack prefix steps.
