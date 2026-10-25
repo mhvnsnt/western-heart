@@ -120,9 +120,9 @@
         "teardown/tekken8/ui/refs/t8-select-ref-1.png",
         "teardown/tekken8/ui/refs/t8-select-ref-2.png",
         "teardown/tekken8/ui/refs/t8-select-ref-3.png",
-        "teardown/tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_CharacterSelect/SlotRed_OnGradient.png",
-        "teardown/tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_CharacterSelect/SlotBlue_OnGradient.png",
-        "teardown/tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_CharacterSelect/Rep_CS_CH_PANEL_00.png"
+        "gre:tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_CharacterSelect/SlotRed_OnGradient.png",
+        "gre:tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_CharacterSelect/SlotBlue_OnGradient.png",
+        "gre:tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_CharacterSelect/Rep_CS_CH_PANEL_00.png"
       ],
       "files": [
         "game/select-t8.css",
@@ -137,7 +137,8 @@
       "reuse": [
         "mhvnsnt/Brutal-Fist@f455322:src/components/CharacterSelect.tsx (phone-portrait stage/grid split)",
         "mhvnsnt/AshLanev2:public/concept-art/menu/menu-character-select.webp (reference only; no select code exists)"
-      ]
+      ],
+      "note": "T8 1/2/3/4 limb notation on PS diamond; Heat=2+3, Rage Art=1+2. The 3 pakchunk0 slot/panel textures live in the private game-reverse-engineering repo (verified present), so they are cited gre: — teardown/ paths cannot resolve on this public repo (see #863)."
     },
     "screen-sidegames": {
       "status": "legacy-unsourced",
@@ -189,6 +190,17 @@
         "game/ui-wh/ui.css"
       ],
       "note": "In-fight HUD + touch pad. Tekken in-game reference: round timer top-centre, nothing drawn over it (mode badge / VERSUS chip sit below the health-bar row). Touch pad uses T8 1/2/3/4 limb notation; Heat = 2+3, Rage Art = 1+2."
+    },
+    "hud-touch-controls": {
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7/tekkenmods-docs/files/en/Tekken_8/Basic_Information/Overview/Moveset/Structures/Input_Sequence/index.md",
+        "teardown/tekken7/tekkenmods-docs/files/en/Tekken_8/Basic_Information/Overview/Moveset/Structures/Input_Extradata/index.md"
+      ],
+      "files": [
+        "game/styles.css"
+      ],
+      "note": "T8 1/2/3/4 limb notation on PS diamond (square=1,triangle=2,cross=3,circle=4); Heat=2+3, Rage Art=1+2 in rage"
     }
   }
 }
