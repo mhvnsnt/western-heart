@@ -1,0 +1,221 @@
+{
+ "format": "wh-stance-status/1",
+ "source": "docs/anim/STANCE-AUDIT-2026-10-24.md (including its 2026-10-24 follow-up: 27 rows + zen + ryuji-rock = 29; 'T3 X bank decode' corrected to later-game extraction for post-T3 debuts)",
+ "bank_inventory": "game/assets/anim/t3/ holds 22 banks only (anna, armorking, bosconovitch, bryan, eddy, forestlaw_on_law, gon, gunjack, heihachi, heihachi_on_jin, hwoarang, jin, julia, king_on_pantera_leoman, kuma, law, lei, nina, ogre, paul, xiaoyu, yoshimitsu). ZERO T7 banks exist in the repo \u2014 that is why T7-only moves play fallbacks.",
+ "fixable_now_from_existing_bank": "0 of 29 (verified in the stance audit follow-up: every UNMAPPED base was checked against all 22 banks; no valid mapping-only fix exists, and wiring a cousin bank as if it were the character's own would repeat the sharing error).",
+ "correct": [
+  "pantera (King/king)",
+  "phantom (Yoshimitsu/yoshimitsu)",
+  "diablo (Heihachi/heihachi)",
+  "skull (Bryan/bryan)",
+  "retsu (Bryan/bryan)",
+  "sha (Xiaoyu/xiaoyu)",
+  "sakura (Xiaoyu/xiaoyu)",
+  "rin (Jin/jin)",
+  "demonio (Jin/jin)",
+  "samura1 (Jack-7/gunjack)",
+  "awapop (Nina/nina, FIGHTER_BANK override)",
+  "torch (Anna/anna, override)",
+  "kingtyrant (Eddy/eddy, override)",
+  "kai (Eddy/eddy, override)",
+  "tou (Paul/paul, override)",
+  "gyou (Hwoarang/hwoarang, override)",
+  "rave (Lei/lei, override)",
+  "yukihyo (Armor King/armorking, override)",
+  "nightwolf (Julia/julia, override)",
+  "chatur (True Ogre/ogre, override)",
+  "dorowani (Gon/gon, override)",
+  "menajerii (Roger Jr./kuma, override \u2014 Roger shares Kuma bank)",
+  "gashadokuro (Kuma/kuma, override)",
+  "aotsuki (Panda/kuma, override \u2014 Panda shares Kuma bank)"
+ ],
+ "fixed_in_stance_audit": [
+  "docfrank: Bosconovitch (was gunjack, WRONG) \u2014 bank existed, override was missing",
+  "tobi: Hwoarang (was null/CMU fallback) \u2014 bank existed, override was missing",
+  "buffalo-bill: Law (was null/CMU fallback) \u2014 bank existed, override was missing"
+ ],
+ "keep_do_not_change": [
+  "zui: KEEP hands-up drunken stagger stance (Steve Fox base, jin bank via demonio) \u2014 user 2026-10-24: 'he can keep that'. DO NOT CHANGE.",
+  "cyborgx: KEEP explicit stanceClip game/assets/anim/oss/cyborgx/stance.glb (CMU 13_17 boxing guard). DO NOT CHANGE."
+ ],
+ "approximate": [
+  "silvertongue: Lili kit bank is xiaoyu \u2014 the kit's bank, not Lili's own. Documented as APPROXIMATE, not exact."
+ ],
+ "unmapped_29": [
+  {
+   "character": "kinpo",
+   "base": "Asuka",
+   "status": "UNMAPPED",
+   "unblock_path": "T7 Asuka extraction (Asuka debuted T5 \u2014 no T3 bank exists; the stance audit's 'T3 Asuka bank decode' wording is corrected by its own follow-up: later-game extraction). Future FIGHTER_BANK line (DO NOT apply until the bank exists): kinpo asuka."
+  },
+  {
+   "character": "waterfall",
+   "base": "Josie",
+   "status": "UNMAPPED",
+   "unblock_path": "T7 Josie extraction (Josie debuted T7). Future line: waterfall josie."
+  },
+  {
+   "character": "burger",
+   "base": "Bob",
+   "status": "UNMAPPED",
+   "unblock_path": "T7 Bob extraction (Bob debuted T6). Future line: burger bob."
+  },
+  {
+   "character": "scimitar",
+   "base": "Shaheen",
+   "status": "UNMAPPED",
+   "unblock_path": "T7 Shaheen extraction (Shaheen debuted T7). Future line: scimitar shaheen."
+  },
+  {
+   "character": "purplerain",
+   "base": "Lee",
+   "status": "UNMAPPED",
+   "unblock_path": "T7 Lee extraction (Lee is T1/T2, not T3). Future line: purplerain lee."
+  },
+  {
+   "character": "dio",
+   "base": "Akuma",
+   "status": "UNMAPPED",
+   "unblock_path": "T7 Akuma extraction (Akuma debuted T7). Future line: dio akuma."
+  },
+  {
+   "character": "michiko",
+   "base": "Katarina",
+   "status": "UNMAPPED",
+   "unblock_path": "T7 Katarina extraction (Katarina debuted T7). Future line: michiko katarina."
+  },
+  {
+   "character": "star",
+   "base": "Christie",
+   "status": "UNMAPPED",
+   "unblock_path": "T7 Christie extraction path per stance audit (Christie debuted T4; no T3 bank). Future line: star christie."
+  },
+  {
+   "character": "bruno",
+   "base": "Miguel",
+   "status": "UNMAPPED",
+   "unblock_path": "T7 Miguel extraction (Miguel debuted T6). Future line: bruno miguel."
+  },
+  {
+   "character": "negativo",
+   "base": "Negan",
+   "status": "UNMAPPED",
+   "unblock_path": "T7 Negan extraction (Negan is T7 DLC, no T3). Future line: negativo negan."
+  },
+  {
+   "character": "thor",
+   "base": "Ganryu",
+   "status": "UNMAPPED",
+   "unblock_path": "T7 Ganryu extraction (Ganryu is T1/T2, not T3). Future line: thor ganryu."
+  },
+  {
+   "character": "slice",
+   "base": "Dragunov",
+   "status": "UNMAPPED",
+   "unblock_path": "T7 Dragunov extraction (Dragunov debuted T5). Future line: slice dragunov."
+  },
+  {
+   "character": "baek-master-white",
+   "base": "Kevin (roster) / Baek (file) \u2014 CONFLICT",
+   "status": "UNMAPPED",
+   "unblock_path": "OWNER INPUT REQUIRED before any target bank is named (roster says Kevin, file says Baek). Then VF extraction (Kevin) or MADE stance. Current bank bryan (shared) either way."
+  },
+  {
+   "character": "mariposa-monarch",
+   "base": "Zafina",
+   "status": "UNMAPPED",
+   "unblock_path": "T7 Zafina extraction (Zafina debuted T6 as a T7 DLC fighter in this lineage; no T3). Future line: mariposa-monarch zafina."
+  },
+  {
+   "character": "pond",
+   "base": "Raven",
+   "status": "UNMAPPED",
+   "unblock_path": "T7 Raven extraction. SHORTCUT: frv mot.bin already decoded at move level (MERGED PR #61, game/assets/anim/t7/frv-pond-motbin-bank.json); only the neutral standing idle clip bytes remain, via live-memory export from a running T7. Future line: pond raven."
+  },
+  {
+   "character": "ryusan",
+   "base": "Lucky Chloe",
+   "status": "UNMAPPED",
+   "unblock_path": "T7 Lucky Chloe extraction. SHORTCUT: dnc mot.bin already decoded at move level (MERGED PR #61, game/assets/anim/t7/dnc-ryusan-motbin-bank.json); only the idle clip bytes remain, via live-memory export. Future line: ryusan chloe."
+  },
+  {
+   "character": "megami",
+   "base": "Jun",
+   "status": "UNMAPPED",
+   "unblock_path": "TTT2 Jun extraction (Jun is not playable in T7). MADE specs hold NO stance pose; decoded clips must REPLACE them, not sit alongside them. Future line: megami jun."
+  },
+  {
+   "character": "chordz",
+   "base": "Lars",
+   "status": "UNMAPPED",
+   "unblock_path": "T7 Lars extraction (Lars debuted T6). NOTE: chordz is NOT null \u2014 file + index give t3_source jin, so it shares the jin stance today. Future line: chordz lars."
+  },
+  {
+   "character": "byou",
+   "base": "UNCLEAR \u2014 owner must name the base",
+   "status": "UNMAPPED",
+   "unblock_path": "OWNER INPUT REQUIRED. Nine-souls appendix said Lei, but owner 2026-10-21 clarified 'Lei is Rave, not Byou'. No stance wired until the owner names Byou's base. Index entry saying Lei is STALE."
+  },
+  {
+   "character": "dxmmii-patchwork",
+   "base": "Mokujin (MIX per canon)",
+   "status": "UNMAPPED",
+   "unblock_path": "MIX DECISION required: Mokujin mimics others, so a fixed single stance needs an owner MIX decision. divmot15 is size-0 on the owner's disc (BNS entry 295); original-disc entry is 127,368 bytes. Future line (only after decision + bank): dxmmii-patchwork mokujin."
+  },
+  {
+   "character": "charger",
+   "base": "Blanka (SF)",
+   "status": "UNMAPPED",
+   "unblock_path": "SF extraction or MADE stance (non-Tekken)."
+  },
+  {
+   "character": "kronos",
+   "base": "Zangief + Golem (MIX)",
+   "status": "UNMAPPED",
+   "unblock_path": "MADE stance or SF extraction. King bank today is a placeholder, not correct."
+  },
+  {
+   "character": "deathfang",
+   "base": "Iori Yagami (KOF)",
+   "status": "UNMAPPED",
+   "unblock_path": "MADE stance or KOF extraction. Heihachi bank today is a placeholder."
+  },
+  {
+   "character": "ryuji",
+   "base": "Ryuji Yamazaki (KOF)",
+   "status": "UNMAPPED",
+   "unblock_path": "MADE stance or KOF extraction. Fight-path bank is call-site dependent; do NOT wire king as a fix."
+  },
+  {
+   "character": "ryuji-rock",
+   "base": "Yamazaki + The Rock (MIX)",
+   "status": "UNMAPPED",
+   "unblock_path": "MADE stance or extraction. Roster id in roster-full.js that the original stance audit never listed (roster has 59 ids, audit covered 58)."
+  },
+  {
+   "character": "vainabel",
+   "base": "Bass Armstrong (DOA)",
+   "status": "UNMAPPED",
+   "unblock_path": "MADE stance or DOA extraction."
+  },
+  {
+   "character": "koreshi",
+   "base": "Kakashi + Super Saiyan (claimed) / Vega (file)",
+   "status": "UNMAPPED",
+   "unblock_path": "MADE stance. Heihachi bank today is a placeholder. Design-vs-file conflict (see INDEX) must be resolved first."
+  },
+  {
+   "character": "cainelias",
+   "base": "Undertaker (WWE)",
+   "status": "UNMAPPED",
+   "unblock_path": "WWE extraction or MADE stance. King bank today is a placeholder."
+  },
+  {
+   "character": "zen",
+   "base": "NEITHER Heihachi NOR Julia (owner decision PR #1019)",
+   "status": "UNMAPPED",
+   "unblock_path": "VF5 Dural extraction or MADE stance. FIGHTER_BANK zen is null (UNMAPPED) \u2014 already resolved; do NOT restore heihachi or julia without a new owner decision. Index entry saying Heihachi / anim_bank heihachi is STALE but harmless because FIGHTER_BANK null wins. Future line (only after bank exists): zen dural."
+  }
+ ],
+ "extraction_spec": "Per character: Tekken 7, that character, neutral standing idle clip (the standing guard loop \u2014 NOT the round intro, NOT a win pose), delivered as a new bank dir with t3_neutral.json at minimum, wired by ONE FIGHTER_BANK line once the bank exists and its idle is verified, then playtested on select screen and in fight. FIGHTER_BANK lines are listed per character in unblock_path and must NOT be applied until each target bank exists."
+}
