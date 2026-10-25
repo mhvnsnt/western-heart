@@ -176,16 +176,16 @@ const ui = {
     el.classList.add('show');
     setTimeout(() => el.classList.remove('show'), 900);
   },
-  surgeName(name) {
-    const el = document.getElementById('surge-name');
-    el.textContent = 'SOUL SURGE — ' + name;
-    el.classList.remove('show'); void el.offsetWidth;
-    el.classList.add('show');
-    setTimeout(() => el.classList.remove('show'), 1600);
-  },
   setRage(id, on) {
     const el = document.getElementById(`${id}-rage`);
     if (el) el.classList.toggle('on', !!on);
+  },
+  setSoulReady(id, on) {
+    // Nine-Soul Release ready = HUD indicator only: the Nine-Soul Meter
+    // wrap glows gold (Tekken Heat-timer pattern: a bar under the health
+    // bar, never center-screen text). No banner, no text on screen.
+    const wrap = document.getElementById(`${id}-meter`);
+    if (wrap) wrap.classList.toggle('soul-ready', !!on);
   },
   rageArtFlash() {
     const el = document.getElementById('rage-flash');
@@ -236,23 +236,21 @@ const ui = {
     el.classList.add('show', 'escaped');
     this._throwT = setTimeout(() => el.classList.remove('show', 'escaped'), 900);
   },
-  /* V-System (owner 2026-10-22). All user-facing names are «name TBD»
-     placeholders pending user approval — flagged, not final. */
+  /* V-System (owner 2026-10-22; popup-fix 2026-10-24): no canon name
+     is assigned yet (NEEDS NAME) — so these triggers show NO text on
+     screen, only the color-coded glow (Tekken rule: mid-fight systems
+     are HUD indicators, never big center-screen text). */
   vTrigger() {
-    this.banner('V-TRIGGER «name TBD» — SOUL AWAKENED');
     this.surgeFlash(0xffd34d, 0xfff2b0);
   },
   vReversal() {
-    this.banner('V-REVERSAL «name TBD»');
     this.surgeFlash(0x4da6ff, 0xbfe0ff);
   },
   vShift() { this.surgeFlash(0x7df9ff, 0xd8fbff); },
   vShiftBreak() {
-    this.banner('V-SHIFT «name TBD» — BREAK!');
     this.surgeFlash(0xffffff, 0x7df9ff);
   },
   vParry() {
-    this.banner('V-SKILL PARRY «name TBD»');
     this.surgeFlash(0x9fd8ff, 0xe8f6ff);
   },
   matchOver(playerWon) {

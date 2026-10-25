@@ -1132,7 +1132,7 @@ export class Fighter {
   /* ---------------- V-System (owner 2026-10-22) ----------------
      One input ('vskill': KeyV / V button), three context moves —
      Tekken-ified from SFV's V-Skill / V-Trigger / V-Reversal, plus
-     V-Shift on block double-tap. Names «TBD» pending user approval. */
+     V-Shift on block double-tap. Canon name unassigned (NEEDS NAME) — no name text is shown in-game. */
   _startVAttack(move, state, name) {
     this.attack = move; this.attackName = name; this.hasHit = false; this._prevHitPoint = null;
     this._attackId = (this._attackId || 0) + 1;
