@@ -19,7 +19,13 @@
  * context: u+1,1 step 2).
  * Rules asserted here (all data-level, no THREE needed):
  *   1. demonio.json still has 764 moves / 156 strings entries (plans are additive only).
- *   2. string_step_plans has exactly 59 keys (34 planned canonicals + 25 twins).
+ *   2. CUMULATIVE (Batch 2 lane, 2026-10-25): string_step_plans has exactly 84 keys
+ *      (59 Batch 1 + 25 Batch 2: 17 planned canonicals + 8 twins). Every Batch 1
+ *      content assertion below is preserved verbatim from the Batch 1 test; only
+ *      the plan-count assertion and the extra-keys assertion changed (burger
+ *      Batches 2-4 test-evolution rule — plans accumulate in one block, so the
+ *      Batch 1 test file is updated cumulatively, never left asserting a stale
+ *      count). Batch 2's own assertions live in demonio-batch2-step-plans.test.mjs.
  *   3. Batch 1 verified steps always carry a row whose jin hit_frames button
  *      equals the step bits and whose throw flag is 0; no verified
  *      ground-context step uses row 35; review/unmapped steps carry row null.
@@ -39,6 +45,8 @@
  *  12. fighter.js: the step-plan branch markers exist (static guard; the engine is
  *      inherited from #1096, not changed by this PR; behaviour is play-verified).
  * Run: node --test game/tests/demonio-batch1-step-plans.test.mjs   (from repo root)
+ * (Cumulative: this file now also asserts the Batch 2 key set; Batch 2 content
+ *  assertions live in game/tests/demonio-batch2-step-plans.test.mjs.)
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -55,6 +63,7 @@ const hf = JSON.parse(readFileSync(hfPath, 'utf8')).rows;
 const plans = demonio.string_step_plans.plans;
 const B1 = ["1+2,2", "1+2,2~t3.jin", "1,1", "1,1,2", "1,2", "1,2,1", "1,2,2", "1,2~t7.jin", "1,2~t7.jin.2", "2,1", "2,1,2", "2,1,2,2", "2,1,2,2~t3.jin", "2,1,2~t3.jin", "2,1~t3.jin", "2,1~t7.jin", "2,1~t7.jin.2", "2,1~t8.jin", "2,2", "MCR.2,2", "WS.1,1", "WS.1,2", "WS.1,2~t7.jin", "ZEN.1,2", "ZEN.1,2~t7.jin", "ZEN.1,2~t7.jin.2", "b+1+2,1", "b+1+2,1,2", "b+1+2,2", "b+1+2,2,2", "b+1,2", "b+2,1", "b+2,1~t7.jin", "b+2,1~t7.jin.2", "d+1+2,1", "d+1+2,1,2", "d+1+2,2", "d/b+2,2", "d/b+2,2~t7.jin", "d/f+1,2", "d/f+1,2~t3.jin", "db+2,2", "df+2,H.1+2", "u+1,1", "u+1,1~t3.jin", "u+1,1~t3.jin.2", "u+1,1~t3.jin.3", "u+1,2", "u/b+1,1", "u/b+1,1~t3.jin", "u/b+1,1~t3.jin.2", "u/b+1,1~t3.jin.3", "u/b+1,2", "u/f+1,1", "u/f+1,1~t3.jin", "u/f+1,1~t3.jin.2", "u/f+1,1~t3.jin.3", "u/f+1,2", "ws1,2"];
 const B1_VERIFIED_LAST = ["1+2,2", "1+2,2~t3.jin", "2,1", "2,1,2", "2,1,2,2", "2,1,2,2~t3.jin", "2,1,2~t3.jin", "2,1~t3.jin", "2,1~t7.jin", "2,1~t7.jin.2", "2,1~t8.jin", "2,2", "b+1+2,1,2", "b+1+2,2", "b+1+2,2,2", "d+1+2,1,2", "d+1+2,2", "u+1,1", "u+1,1~t3.jin", "u+1,1~t3.jin.2", "u+1,1~t3.jin.3", "u+1,2", "u/b+1,1", "u/b+1,1~t3.jin", "u/b+1,1~t3.jin.2", "u/b+1,1~t3.jin.3", "u/b+1,2", "u/f+1,1", "u/f+1,1~t3.jin", "u/f+1,1~t3.jin.2", "u/f+1,1~t3.jin.3", "u/f+1,2"];
+const B2 = ["DVS.4,4", "WS.4,4", "d+3,3", "d+3,3~t7.jin", "d+3,4", "d+3,4,3", "d+3,4~4", "d/f+3,3", "d/f+3,3~t7.jin", "d/f+4,4", "d/f+4,4~t3.jin", "f+3,3", "f+3~3,d/f+3", "f+3~3,d/f+3~t7.jin", "f+4,3", "u+4,4", "u/f+4,3", "u/f+4,3~t3.jin", "u/f+4,4", "u/f+4,4,4", "u/f+4,4,4,4", "u/f+4,4,4,4~t3.jin", "u/f+4,4,4~t3.jin", "u/f+4,4~t3.jin", "ws4,4"];
 const VERIFIED_BUTTONS = {"35": 1, "36": 1, "37": 1, "47": 2, "48": 2, "49": 2, "92": 3, "93": 2, "94": 2, "180": 2, "181": 2, "183": 2, "220": 2, "221": 1, "222": 2, "223": 2};
 
 function stepBits(step) {
@@ -67,14 +76,17 @@ function stepBits(step) {
 test('demonio move/string counts unchanged by the additive plans block', () => {
   assert.equal(Object.keys(demonio.moves).length, 764);
   assert.equal(demonio.strings.length, 156);
-  assert.equal(Object.keys(plans).length, 59);
+  assert.equal(Object.keys(plans).length, 84); // 59 Batch 1 + 25 Batch 2 (cumulative)
 });
 
-test('Batch 1 keys are exactly the documented 59', () => {
+test('Batch 1 keys are all present; extra keys are exactly the Batch 2 25 (cumulative)', () => {
   assert.equal(B1.length, 59);
   for (const key of B1) assert.ok(plans[key], `Batch 1 key ${key} missing`);
   const extra = Object.keys(plans).filter((k) => !B1.includes(k));
-  assert.deepEqual(extra, []);
+  assert.equal(extra.length, 25);
+  assert.equal(B2.length, 25);
+  for (const key of B2) assert.ok(extra.includes(key), `Batch 2 key ${key} missing from extra keys`);
+  for (const key of extra) assert.ok(B2.includes(key), `unexpected extra key ${key}`);
 });
 
 test('Batch 1 verified steps carry rows (button == step bits, throw 0, never row 35 on ground); review/unmapped carry row null; no soft flags', () => {

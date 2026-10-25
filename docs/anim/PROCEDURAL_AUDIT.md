@@ -194,3 +194,22 @@ it is adjudicated by the normal gates and verifies for the 2,1 family step
 on stale data. T8-sourced prefixes with no T3 row get their correct clips
 from #988 Step 2 (original T8 refs), never from a T3 row recorded as
 correct.
+
+## Demonio Batch 2 fallback (LK3/RK4-only strings, 2026-10-25)
+Verified rows 79/80/193/205/207/209 are FALLBACK (T3 jin rows), to be
+re-matched to T7 Jin rows when extraction lands. Review candidates
+212/214/210/211 are NOT fallback — held evidence, not wired or played.
+Jin-bank rules carried from Batch 1 (documented in
+docs/movesets/DEMONIO-BATCH2-STEP-PLANS-2026-10-25.md): jin row 220 is a
+standing RP2 row (not blanket-banned; unused in this LK3/RK4-only batch)
+and jin row 35 is starts-airborne (unused in this batch; no Batch 2 step
+plays row 35 or row 220). Canonicalization correction vs Batch 1: only a
+trailing source-variant suffix (~t3.jin, ~t7.jin[.N], ~t8.jin) is
+stripped; a "~" inside the input is Tekken cancel notation, so
+"f+3~3,d/f+3" (Heat Seeker) and "d+3,4~4" (Mid Sidekick) are their own
+canonicals, not variants of "f+3" / "d+3,4", and no bogus single-move
+canonicals ("4", "f+3") are created. Batch 1 is provably unaffected;
+Batch 3/4 lanes must use the corrected definition. 0 steps
+SUSPENDED-DRIFT (none of the 3 row-changed moves falls in Batch 2 scope).
+T8-sourced prefixes with no T3 row get their correct clips from #988
+Step 2 (original T8 refs), never from a T3 row recorded as correct.
