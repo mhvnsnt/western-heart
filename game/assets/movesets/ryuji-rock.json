@@ -450,17 +450,7 @@
       },
       "canon_note": "Owner 2026-10-21: this entry is King's jumping diving elbow attack \u2014 Tekken 7 King's High Elbow Drop (u/f+2) \u2014 wired as CornerStone's diving People's Elbow. The grounded People's Elbow (d+1+2) and the flying variant (u/f+2+4, modeled on King's High Elbow Drop air version) arrive in the same union from ryuji.json.",
       "anim_t3": {
-        "bank": {
-          "character": "King (Tekken 7)",
-          "move": "High Elbow Drop",
-          "notation": "u/f+2",
-          "damage": "35 [42]",
-          "speed": 47,
-          "on_block": "-17",
-          "on_hit": "KND",
-          "crush": "low, mid, high",
-          "ref": "docs/t7t8-reference/frame-data-t7/king.json (id king_31)"
-        },
+        "bank": "king",
         "row": 245,
         "match": "true-map exact (anim-fix 2026-10-23)"
       }
