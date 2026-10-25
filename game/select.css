@@ -1,0 +1,441 @@
+/* ============================================================
+   WESTERN HEART — Tekken 8-style character select (2026-10-22
+   grid transplant).
+   Decoded from public T8 references
+   (docs/select-redesign/T8-GRID-DECODE.md; no ripped Tekken UI):
+   bisected P1/P2 big-model zone with faded portrait-art backdrops
+   (red wash P1 / blue wash P2), big italic name banners, T8 fact
+   blocks, and a COMPACT CENTERED GRID of small square portrait
+   cards (not a strip) — small relative to everything else, P1/P2
+   cursors, "?" random slot, bottom hints bar.
+   Every skin-driven value comes from CSS vars set by
+   js/ui-skin.js applySkin() — the swap mechanism for future looks.
+   All rules scoped to #screen-select so the stage-select screen
+   (which shares .char-grid in styles.css) is untouched.
+   The page itself never scrolls; the grid scrolls inside its own box.
+   ============================================================ */
+
+#screen-select.select-screen {
+  overflow: hidden;
+  /* was position: relative, which overrode .screen's fixed inset:0 and
+     collapsed the screen to content height on phones (fighters zone 0px,
+     bottom ~45% of the viewport empty). Same T8 decode layout, full viewport. */
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 115%, var(--sk-bg1, #141024) 0%, transparent 60%),
+    linear-gradient(180deg, var(--sk-bg0, #07040d) 0%, #0b0716 100%);
+  font-family: var(--sk-body, system-ui, sans-serif);
+  color: var(--sk-ink, #f4f1ff);
+}
+#screen-select .select-header h2 {
+  font-family: var(--sk-display, "Arial Narrow", sans-serif);
+  font-style: italic;
+  letter-spacing: 3px;
+}
+
+/* ---------- fighters zone (bisected, T8 stage) ---------- */
+#screen-select .fighters-zone {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+#screen-select .side-pane {
+  flex: 1 1 50%;
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 72%, rgba(139,43,216,0.16) 0%, rgba(7,4,13,0.94) 72%);
+}
+/* T8 backdrop art: the fighter's portrait, huge and faded behind the
+   live model, washed in the side color (our portraits, our art). */
+#screen-select .pane-artwash {
+  position: absolute; inset: 0; z-index: 0;
+  overflow: hidden; pointer-events: none;
+}
+#screen-select .pane-artwash img {
+  position: absolute; top: -10%; height: 138%; width: auto;
+  max-width: none; opacity: 0.30;
+  filter: saturate(1.25) contrast(1.06);
+  -webkit-mask-image: linear-gradient(100deg, transparent 2%, #000 30%, #000 68%, transparent 98%);
+  mask-image: linear-gradient(100deg, transparent 2%, #000 30%, #000 68%, transparent 98%);
+}
+#screen-select .pane-p1 .pane-artwash img { left: -8%; }
+#screen-select .pane-p2 .pane-artwash img { right: -8%; }
+#screen-select .pane-artwash::after {
+  content: ''; position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, transparent 42%, var(--sk-bg0, #07040d) 96%),
+    linear-gradient(100deg, var(--sk-p1-soft, rgba(255,45,85,0.5)) 0%, transparent 55%);
+}
+#screen-select .pane-p2 .pane-artwash::after {
+  background:
+    linear-gradient(180deg, transparent 42%, var(--sk-bg0, #07040d) 96%),
+    linear-gradient(260deg, var(--sk-p2-soft, rgba(47,157,255,0.5)) 0%, transparent 55%);
+}
+#screen-select .pane-p1 { border-right: 1px solid rgba(139,43,216,0.35); }
+#screen-select .pane-p2 { border-left: 1px solid rgba(139,43,216,0.35); }
+#screen-select .side-pane.is-active {
+  box-shadow: inset 0 0 0 2px var(--sk-p1-soft), inset 0 0 42px rgba(255,45,85,0.07);
+}
+#screen-select .pane-p2.is-active {
+  box-shadow: inset 0 0 0 2px var(--sk-p2-soft), inset 0 0 42px rgba(47,157,255,0.07);
+}
+#screen-select .side-pane.is-locked { box-shadow: inset 0 0 0 2px var(--sk-p1); }
+#screen-select .pane-p2.is-locked { box-shadow: inset 0 0 0 2px var(--sk-p2); }
+
+#screen-select .pane-canvas {
+  position: absolute; inset: 0; z-index: 1;
+  width: 100%; height: 100%;
+  display: block;
+  touch-action: none;
+}
+/* Only used when the device cannot create a WebGL context at all:
+   the pane degrades to the fighter's (posed) portrait plate. */
+#screen-select .pane-fallback {
+  position: absolute; inset: 0; z-index: 1;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 15%;
+}
+
+#screen-select .side-tag {
+  position: absolute; top: 10px; left: 10px; z-index: 3;
+  font-weight: 900; font-size: 13px; letter-spacing: 2px;
+  padding: 5px 10px; border-radius: 6px;
+  color: #14091f; background: var(--sk-p1);
+}
+#screen-select .pane-p2 .side-tag { background: var(--sk-p2); color: #fff; left: auto; right: 10px; }
+#screen-select .lock-badge {
+  position: absolute; top: 10px; right: 10px; z-index: 3;
+  font-weight: 800; font-size: 11px; letter-spacing: 2px;
+  padding: 5px 10px; border-radius: 6px;
+  color: var(--sk-p1); border: 2px solid var(--sk-p1);
+  background: rgba(7,4,13,0.8);
+}
+#screen-select .pane-p2 .lock-badge { right: auto; left: 10px; color: var(--sk-p2); border-color: var(--sk-p2); }
+
+#screen-select .pane-note {
+  position: absolute; left: 50%; top: 44%; z-index: 3;
+  transform: translate(-50%, -50%);
+  font-size: 11px; font-weight: 800; letter-spacing: 3px;
+  color: rgba(255,255,255,0.75);
+  background: rgba(7,4,13,0.72); border: 1px solid rgba(255,255,255,0.25);
+  padding: 7px 12px; border-radius: 999px;
+  pointer-events: none; white-space: nowrap;
+}
+
+/* ---------- T8 name banner + fact block + stats plate ---------- */
+#screen-select .pane-plate {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+  padding: 30px 12px 10px;
+  background: linear-gradient(transparent, rgba(7,4,13,0.94) 48%);
+  text-align: left;
+  pointer-events: none;
+}
+#screen-select .pane-p2 .pane-plate { text-align: right; }
+/* T8 name banner: big italic condensed display type. */
+#screen-select .pane-name {
+  font-family: var(--sk-display, "Arial Narrow", sans-serif);
+  font-style: italic;
+  transform: skewX(var(--sk-slant, -7deg));
+  transform-origin: left bottom;
+  font-size: clamp(30px, 7.5vw, 58px); font-weight: 900; letter-spacing: 2px;
+  color: #fff; text-shadow: 0 0 22px var(--sk-p1-soft), 0 2px 8px rgba(0,0,0,0.9);
+  line-height: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  text-transform: uppercase;
+}
+#screen-select .pane-p2 .pane-name {
+  transform-origin: right bottom;
+  text-shadow: 0 0 22px var(--sk-p2-soft), 0 2px 8px rgba(0,0,0,0.9);
+}
+/* T8 fact block: colored label chip + value, one column each. */
+#screen-select .pane-facts {
+  display: flex; gap: 6px 16px; flex-wrap: wrap;
+  margin-top: 8px;
+}
+#screen-select .pane-p2 .pane-facts { justify-content: flex-end; }
+#screen-select .fact { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+#screen-select .fact-lab {
+  align-self: flex-start;
+  font-size: 9px; font-weight: 900; letter-spacing: 1.5px;
+  padding: 2px 7px; border-radius: 3px;
+  background: var(--sk-p1); color: #14091f;
+}
+#screen-select .pane-p2 .fact-lab { background: var(--sk-p2); color: #fff; }
+#screen-select .fact-val {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+  color: rgba(255,255,255,0.92);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 180px;
+}
+#screen-select .pane-stats { margin-top: 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 3px 14px; max-width: 430px; }
+#screen-select .pane-p2 .pane-stats { margin-left: auto; }
+#screen-select .stat-row { display: flex; align-items: center; gap: 6px; font-size: 10px; }
+#screen-select .stat-lab { flex: 0 0 26px; font-weight: 800; letter-spacing: 1px; opacity: 0.8; }
+#screen-select .stat-bar {
+  flex: 1 1 auto; height: 6px; border-radius: 3px;
+  background: rgba(255,255,255,0.14); overflow: hidden;
+}
+#screen-select .stat-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--sk-p1), var(--sk-gold)); border-radius: 3px; }
+#screen-select .pane-p2 .stat-bar i { background: linear-gradient(90deg, var(--sk-p2), #8a2be2); }
+#screen-select .stat-val { flex: 0 0 30px; text-align: right; font-weight: 700; opacity: 0.9; }
+#screen-select .pane-attires { pointer-events: auto; justify-content: flex-start; margin-top: 8px; flex-wrap: wrap; }
+#screen-select .pane-p2 .pane-attires { justify-content: flex-end; }
+#screen-select .pane-attires .attire-chip[disabled] { opacity: 0.55; cursor: default; }
+
+/* ---------- soul-spirit toggle (tertiary, NOT an attire — owner directive 2026-10-22) ---------- */
+#screen-select .soul-spirit-panel { pointer-events: auto; margin-top: 8px; display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+#screen-select .pane-p2 .soul-spirit-panel { align-items: flex-end; }
+#screen-select .spirit-toggle {
+  font-size: 10px; font-weight: 900; letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.85); background: rgba(20,10,32,0.8);
+  border: 1px solid rgba(159,216,255,0.45); border-radius: 999px;
+  padding: 6px 12px; cursor: pointer;
+}
+#screen-select .spirit-toggle.on { background: rgba(59,32,120,0.9); border-color: #9fd8ff; color: #fff; box-shadow: 0 0 10px rgba(159,216,255,0.5); }
+#screen-select .spirit-toggle[disabled] { opacity: 0.55; cursor: default; }
+#screen-select .spirit-souls { display: flex; flex-wrap: wrap; gap: 4px; max-width: 430px; }
+#screen-select .pane-p2 .spirit-souls { justify-content: flex-end; }
+#screen-select .spirit-soul {
+  font-size: 10px; font-weight: 800; letter-spacing: 0.5px;
+  color: rgba(255,255,255,0.8); background: rgba(20,10,32,0.7);
+  border: 1px solid rgba(255,255,255,0.25); border-radius: 6px;
+  padding: 4px 8px; cursor: pointer;
+}
+#screen-select .spirit-soul.on { border-color: #ffd60a; color: #ffd60a; background: rgba(60,45,5,0.85); }
+#screen-select .spirit-soul.vessel { border-style: double; border-color: rgba(159,216,255,0.7); }
+#screen-select .spirit-soul[disabled] { opacity: 0.55; cursor: default; }
+#screen-select .spirit-empowered {
+  font-size: 10px; font-weight: 900; letter-spacing: 1.5px; color: #ffd60a;
+  text-shadow: 0 0 8px rgba(255,214,10,0.8);
+}
+
+/* ---------- hints bar (T8 bottom-prompts fashion) ---------- */
+#screen-select .hints-bar {
+  flex: 0 0 auto;
+  min-height: 58px;
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+  background: var(--sk-hint-bg, rgba(10,6,18,0.96));
+  border-top: 2px solid rgba(139,43,216,0.4);
+  z-index: 5;
+  box-sizing: border-box;
+}
+#screen-select .hints-bar #select-hint {
+  flex: 1 1 auto; text-align: center;
+  font-size: 12px; letter-spacing: 1px; opacity: 0.9;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#screen-select .hint-btn {
+  flex: 0 0 auto; min-height: 44px; padding: 8px 12px;
+  border-radius: 999px; border: 2px solid rgba(255,255,255,0.25);
+  background: rgba(7,4,13,0.75); color: rgba(255,255,255,0.88);
+  font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
+  cursor: pointer; touch-action: manipulation; white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 7px;
+}
+#screen-select .hint-btn .key {
+  font-style: normal;
+  min-width: 22px; height: 22px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.4);
+  font-size: 11px; padding: 0 4px;
+}
+#screen-select .hint-btn:active { transform: scale(0.94); border-color: var(--sk-gold); color: var(--sk-gold); }
+#screen-select .hints-bar #confirm-fighter { flex: 0 0 auto; min-height: 48px; }
+
+/* ---------- T8 GRID: the ONLY scrolling element ----------
+   Compact centered multi-row grid of small square portrait cards.
+   T8 keeps the icons small relative to everything else with room
+   to expand; the grid scrolls inside its own box. */
+#screen-select .grid-wrap {
+  flex: 0 0 auto;
+  height: clamp(240px, 40vh, 460px);
+  min-height: 0;
+  background: rgba(7,4,13,0.96);
+  border-top: 2px solid rgba(139,43,216,0.4);
+  z-index: 5;
+  box-sizing: border-box;
+  overflow-y: auto; overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+#screen-select #char-grid.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--sk-card-min, 76px), 1fr));
+  gap: var(--sk-grid-gap, 6px);
+  max-width: var(--sk-grid-maxw, 920px);
+  margin: 0 auto;
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+  align-content: start;
+}
+/* WH adaptation (display-order law): slim full-width tier dividers
+   keep the Tripo-first ordering visible. T8 has no tiers; ours do. */
+#screen-select .grid-tier {
+  grid-column: 1 / -1;
+  display: flex; align-items: center; gap: 10px;
+  font-weight: 800; font-size: 10px; letter-spacing: 3px;
+  color: var(--sk-gold); opacity: 0.9;
+  padding: 8px 2px 2px;
+}
+#screen-select .grid-tier::after {
+  content: ''; flex: 1 1 auto; height: 1px;
+  background: linear-gradient(90deg, rgba(255,177,77,0.5), transparent);
+}
+#screen-select .card-grid .char-card {
+  position: relative;
+  min-width: 0;
+  display: flex; flex-direction: column;
+  background: var(--sk-card-bg);
+  border: 2px solid var(--sk-card-frame);
+  border-radius: var(--sk-card-radius, 4px);
+  overflow: hidden;
+  cursor: pointer; touch-action: manipulation;
+  transition: transform 0.12s ease-out, border-color 0.12s ease-out, box-shadow 0.12s ease-out;
+}
+#screen-select .card-grid .char-card .portrait {
+  position: relative;
+  width: 100%; aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 30%, rgba(139,43,216,0.3), rgba(7,4,13,0.9));
+}
+#screen-select .card-grid .char-card .portrait img {
+  width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%;
+  display: block;
+}
+#screen-select .card-grid .char-card .mono {
+  position: absolute; inset: 0; display: none;
+  align-items: center; justify-content: center;
+  font-size: 24px; font-weight: 900; letter-spacing: 2px; color: rgba(255,255,255,0.5);
+}
+#screen-select .card-grid .char-card .portrait.no-portrait .mono { display: flex; }
+#screen-select .card-grid .char-card .cname {
+  font-size: 10px; font-weight: 800; letter-spacing: 0.5px; text-align: center;
+  padding: 4px 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+/* Tekken 3 aperture rule: the selected card is BIGGER than its neighbours. */
+#screen-select .card-grid .char-card.cursor-p1,
+#screen-select .card-grid .char-card.cursor-p2 {
+  transform: scale(1.1);
+  z-index: 2;
+}
+#screen-select .card-grid .char-card.cursor-p1 {
+  border-color: var(--sk-p1);
+  box-shadow: 0 0 20px var(--sk-p1-soft), inset 0 0 0 1px var(--sk-p1-soft);
+}
+#screen-select .card-grid .char-card.cursor-p2 {
+  border-color: var(--sk-p2);
+  box-shadow: 0 0 20px var(--sk-p2-soft), inset 0 0 0 1px var(--sk-p2-soft);
+  animation: card-pulse-p2 1.6s ease-in-out infinite;
+}
+@keyframes card-pulse-p2 {
+  0%, 100% { box-shadow: 0 0 14px var(--sk-p2-soft), inset 0 0 0 1px var(--sk-p2-soft); }
+  50% { box-shadow: 0 0 26px var(--sk-p2-soft), inset 0 0 0 1px var(--sk-p2); }
+}
+#screen-select .card-grid .char-card.locked-p1 { border-color: var(--sk-p1); }
+#screen-select .card-grid .char-card.locked-p2 { border-color: var(--sk-p2); }
+#screen-select .card-grid .char-card.locked-p1::after,
+#screen-select .card-grid .char-card.locked-p2::after {
+  position: absolute; top: 3px; right: 3px; z-index: 3;
+  font-size: 9px; font-weight: 900; letter-spacing: 1px;
+  padding: 2px 5px; border-radius: 4px; color: #14091f;
+}
+#screen-select .card-grid .char-card.locked-p1::after { content: 'P1'; background: var(--sk-p1); }
+#screen-select .card-grid .char-card.locked-p2::after { content: 'P2'; background: var(--sk-p2); color: #fff; }
+#screen-select .card-grid .char-card.in-team { border-color: rgba(255,177,77,0.7); }
+#screen-select .card-grid .random-card .portrait { display: flex; align-items: center; justify-content: center; }
+#screen-select .card-grid .random-card .qmark {
+  font-size: 40px; font-weight: 900; color: rgba(255,255,255,0.75);
+  text-shadow: 0 0 16px rgba(139,43,216,0.9);
+}
+#screen-select .card-grid .char-card.kb-focus { outline: 3px solid var(--sk-gold); outline-offset: 2px; }
+/* Tap flash: a quick T8-style selection pulse on the tapped card. */
+#screen-select .card-grid .char-card.tap-flash { animation: tap-flash 0.35s ease-out; }
+@keyframes tap-flash {
+  0% { filter: brightness(2.2); }
+  100% { filter: brightness(1); }
+}
+
+/* ---------- desktop: T8 floating grid over the stage ---------- */
+@media (min-width: 900px) {
+  #screen-select .fighters-zone { flex: 1 1 auto; }
+  #screen-select .grid-wrap {
+    flex: none;
+    position: absolute; z-index: 6;
+    left: 50%; transform: translateX(-50%);
+    bottom: 72px; /* clears the fixed-height hints bar */
+    width: min(var(--sk-grid-maxw, 920px), 94%);
+    max-height: 46%;
+    border: 2px solid rgba(139,43,216,0.4);
+    border-radius: 10px;
+    background: rgba(7,4,13,0.88);
+    box-shadow: 0 12px 44px rgba(0,0,0,0.6);
+  }
+  #screen-select .pane-name { font-size: clamp(38px, 4.2vw, 58px); }
+}
+
+/* ---------- small / landscape phones ---------- */
+@media (orientation: landscape) and (max-height: 500px) {
+  #screen-select .grid-wrap { flex-basis: 52%; }
+  #screen-select .pane-name { font-size: 24px; }
+  #screen-select .pane-stats { display: none; }
+  #screen-select .pane-plate { padding: 20px 10px 6px; }
+  #screen-select .hints-bar { min-height: 50px; padding: 5px 10px; }
+  #screen-select .hints-bar #confirm-fighter { min-height: 40px; }
+  #screen-select .hint-btn { min-height: 38px; }
+  #screen-select .fact-val { max-width: 120px; }
+}
+@media (max-width: 480px) {
+  /* hints bar must fit 390px: CONFIRM was clipped at the right edge */
+  #screen-select .hints-bar { gap: 6px; padding-left: 8px; padding-right: 8px; }
+  #screen-select .hints-bar #select-hint { display: none; }
+  #screen-select .hints-bar #confirm-fighter { flex: 1 1 auto; min-width: 96px; padding-left: 10px; padding-right: 10px; }
+  #screen-select .pane-stats { grid-template-columns: 1fr; gap: 2px; }
+  #screen-select .pane-facts { gap: 4px 10px; }
+  #screen-select .fact-val { font-size: 11px; max-width: 130px; }
+  #screen-select .hints-bar #select-hint { font-size: 11px; }
+  #screen-select .hint-btn { padding: 8px 9px; font-size: 10px; }
+  #screen-select .select-header h2 { font-size: 15px; }
+}
+
+/* ---------- procedural portrait fallback (worker 61, 2026-10-22) ----------
+   Deterministic SVG portraits (game/js/fighter-portraits.js, ported from the
+   owner's AshLane generator) sit UNDER the portrait <img>: a real portrait
+   PNG always wins; fighters without one yet get a personality portrait
+   instead of an empty plate. */
+.portrait .svg-fallback { position: absolute; inset: 0; display: block; }
+.portrait .svg-fallback svg { width: 100%; height: 100%; display: block; }
+.portrait img { position: relative; z-index: 1; }
+/* TTT2 versus submenu (worker 24) — lives INSIDE the select screen */
+#screen-select .vs-submenu { position: absolute; inset: 0; z-index: 30; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background: rgba(8,6,16,.88); backdrop-filter: blur(3px); }
+#screen-select .vs-submenu[hidden] { display: none; }
+#screen-select .vs-submenu-title { font-size: 15px; letter-spacing: .18em; color: #ffd76a; font-weight: 700; }
+#screen-select .vs-submenu-row { display: flex; gap: 12px; align-items: center; justify-content: center; flex-wrap: wrap; max-width: 92%; }
+#screen-select .vs-submenu-row[hidden] { display: none; }
+#screen-select .vs-format-btn { display: flex; flex-direction: column; gap: 4px; padding: 14px 22px; background: #171226; border: 2px solid #6a5a9a; border-radius: 10px; color: #fff; cursor: pointer; min-width: 150px; }
+#screen-select .vs-format-btn b { font-size: 16px; letter-spacing: .1em; }
+#screen-select .vs-format-btn span { font-size: 11px; opacity: .65; }
+#screen-select .vs-format-btn:active { border-color: #ffd76a; }
+#screen-select .vs-size-label { width: 100%; text-align: center; font-size: 12px; letter-spacing: .2em; color: #cfc3ee; }
+#screen-select .vs-size-btns { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+#screen-select .vs-size-btn { width: 56px; height: 56px; border-radius: 10px; border: 2px solid #4a3f6a; background: #171226; color: #fff; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+#screen-select .vs-size-btn b { font-size: 18px; }
+#screen-select .vs-size-btn span { font-size: 9px; opacity: .6; letter-spacing: .08em; }
+#screen-select .vs-size-btn.on { border-color: #ffd76a; background: #2a2138; }
+#screen-select .vs-size-note { width: 100%; text-align: center; font-size: 11px; color: #9a8fc0; max-width: 340px; }
+#screen-select .vs-tray-head { width: 100%; text-align: center; font-size: 11px; letter-spacing: .22em; color: #ffd76a; margin-top: 6px; }
+#screen-select .vs-tray-row { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+#screen-select .vs-slot { min-width: 64px; padding: 6px 10px; border-radius: 8px; border: 1px dashed #4a3f6a; background: #121020; color: #8a7fb0; font-size: 11px; text-align: center; }
+#screen-select .vs-slot.filled { border-style: solid; border-color: #6a5a9a; color: #fff; }
+#screen-select .vs-slot.next { border-color: #ffd76a; animation: vs-pulse 1s infinite; }
+#screen-select .vs-slot-n { opacity: .5; margin-right: 4px; }
+@keyframes vs-pulse { 50% { box-shadow: 0 0 12px rgba(255,215,106,.5); } }
+/* draft badges on cards */
+#screen-select .char-card.in-draft-p1 { outline: 2px solid #ff6a8a; }
+#screen-select .char-card.in-draft-p2 { outline: 2px solid #6aa8ff; }
+#screen-select .char-card.in-draft-p1::after { content: 'P1 TEAM'; position: absolute; top: 2px; left: 2px; font-size: 8px; background: #ff6a8a; color: #000; padding: 1px 4px; border-radius: 3px; font-weight: 700; }
+#screen-select .char-card.in-draft-p2::after { content: 'P2 TEAM'; position: absolute; top: 2px; left: 2px; font-size: 8px; background: #6aa8ff; color: #000; padding: 1px 4px; border-radius: 3px; font-weight: 700; }

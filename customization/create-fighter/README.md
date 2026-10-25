@@ -1,23 +1,30 @@
 # Create Fighter — working web UI prototype
 
-**Western Heart character customization suite, v0.1 prototype.** Tekken 7 customization FEEL
+**Western Heart character customization suite, v0.2.** Tekken 7 customization FEEL
 (full-screen fighter, floating panels, buy→equip loop) + No Mercy CAW depth + DOA wardrobe + WWE moveset.
 
 Self-contained: `python3 -m http.server` in this dir, open `index.html`. No build step, no CDN —
-three.js is vendored (`vendor/`), Soldier.glb base rig in `assets/`, data snapshots in `data/`.
+three.js is vendored (`vendor/`), data snapshots in `data/`. The base model comes from the template select (`customization/templates/body-templates.json`, MB-Lab-baked GLBs) — there is no default character (the Mixamo soldier is dead as a default, owner directive 2026-10-22).
 
 ## What's real today
-- Full-screen 3D preview: Soldier.glb, Idle animation, slow auto-rotate, drag-orbit, scroll/pinch zoom. Fighter never covered by UI.
-- Left rail: BODY / ATTIRE / WARDROBE / PROFILE / MOVESET (per `customization/UNIFIED-UI-SPEC.md`).
-- ATTIRE: real 3,372-part index (`data/PARTS-INDEX.json`) browsable by category with search + pagination, deterministic prices/rarity, buy→equip two-step with Fight Money wallet, T7-style conflict Replace/Cancel, per-part color/material channels.
-- BODY: 14 No Mercy body types, 8 skin tones, WMXIX proportion sliders — all live on the 3D preview.
+- Full-screen 3D preview: base rig with Idle animation, slow auto-rotate, drag-orbit, scroll/pinch zoom. Fighter never covered by UI.
+- **Roster models wired (v0.2):** FIGHTER SELECT lists all 36 named fighters from `data/ROSTER-BASE.json` (traces to `game/js/roster-full.js`). Each loads its real GLB from `../../game/assets/models/` — exact fighter GLB where one exists (● REAL MODEL), shared base GLB where the extraction is still pending (● BASE MODEL, honest badge). Roster bodies are canon: BODY tab locks for them, as the UI always promised.
+- **WWE-template-first flow (v0.3, worker 38, rebased onto worker 37's flow module):** Create New Fighter opens TEMPLATE SELECT first — owned by `js/creation-flow.js`, data-driven from `customization/templates/body-templates.json` (WWE 2K-style, MB-Lab-baked base meshes, teardown-pulled; the Mixamo soldier is dead, never a fixed default). No competing select ships in this lane: the TEMPLATE tab is a thin wrapper showing the current pick + a change button that re-opens the flow module's select. Then the WWE sequence: TEMPLATE → BODY → HEAD/FACE → SKIN → HAIR → FACIAL HAIR → ATTIRE → WARDROBE → PROFILE (+ MOVESET, LIMBS, ART, JOBS, TOOLS). Breadcrumb shows the step number.
+- **TOOLS tab — three access layers (v0.3):** LAYER 1 unified systems (BODY/FACE/SKIN/RIG/IMPORT/EXPORT, genuinely merged); LAYER 2 separate per-tool menus (MB-Lab, Build-A-Bod, MPFB2, GNM, GameRig, NaughTyRig, Fluid Painter, Tripo Intake, Export) with real params writing job-spec JSONs; LAYER 3 UNIVERSAL MODE — the flow module's WWE step wizard (`window.__flow.startWizard`), the one combined front-end (no second wizard in this lane).
+- **Parts library (v0.3):** 7,920 parts (`data/PARTS-INDEX.json`, rebuilt by `customization/build_suite_parts_index.py`): WWE (no-mercy 303 REAL meshes + 379 textures, wmxix 2,690 + 1,477 decoded textures), Def Jam 2,780 (2,624 CAW + 156 V2IP), DOA4 272 real costume GLBs, plus wh-library/cc0-hair. Real meshes preview auto-fit at bone anchors; pending geometry keeps the honest socket-marker + GEOMETRY PENDING badge.
+- Left rail: TEMPLATE / BODY / HEAD-FACE / SKIN / HAIR / FACIAL HAIR / ATTIRE / WARDROBE / PROFILE / MOVESET / LIMBS / ART / TOOLS (per `customization/UNIFIED-UI-SPEC.md` + WWE flow). ART + JOBS are worker 37's tabs, preserved; JOBS is added dynamically by `js/creation-flow.js`.
+- ATTIRE: browsable by category with search + pagination, deterministic prices/rarity, buy→equip two-step with Fight Money wallet, T7-style conflict Replace/Cancel (Full Body vs Upper/Lower; Full Head vs Face Paint/Facial Hair), per-part color/material channels.
+- BODY: template row (current pick + change button → flow module's select), No Mercy body types, WMXIX proportion sliders, MPFB2 morphs — all live on the 3D preview (NEW FIGHTER only; locked for roster). Dedicated SKIN step carries tones + textures + Fluid Painter job specs.
 - WARDROBE: 10 DOA-style quick slots (save/load snapshots), two-phrase titles.
 - PROFILE: name/alias/music/titantron + Soul/Element/Land canon + fighting style + No Mercy parameters.
 - MOVESET: full 176-slot tree from `MOVE-SLOTS.json`, assign moves from `MOVE-DATABASE.json`, Combot cross-roster rule; grey dummy opponent appears in-ring on this tab.
-- Save/export/load fighter JSON (CHARACTER-CREATION.md §6 format) — download + localStorage + photo-mode thumbnails (📸 captures the live canvas).
+- **Preset library (v0.2):** 🗂 PRESETS — save the full fighter JSON under a name, load it back, delete it (two-step). Autosave slot + export/import JSON unchanged.
+- **Doc Frank dome editor (2026-10-19):** FIGHTER SELECT → DOC FRANK → ATTIRE tab → Attire 2 → **DOME PARAMETERS**. The `game/js/dome-params.js` module is mounted into the ATTIRE flow: Glass / Liquid / Effects groups with sliders + color pickers, live in-scene preview (Attire 2's real base model + the v5 dome GLB, same model space the dome was built in). Liquid Top stays LOCKED (owner: DO NOT RAISE). "Save to Attire" persists the params onto the attire in the fighter JSON and downloads `dome-params.json` for the repo build pipeline. Lava/bubble counts are build-time params (0 hides them in-scene; exact counts land on GLB rebuild) — labeled in-panel, never faked.
+- Save/export/load fighter JSON (CHARACTER-CREATION.md §6 format, v2 adds `model` = base GLB path, backward-compatible) — download + localStorage + photo-mode thumbnails (📸 captures the live canvas).
 
 ## Honest gaps (marked in-UI, never faked)
-- **Part geometry pending**: part meshes (.ymg/.obj from teardowns) aren't wired to the renderer yet. Every part card carries a `GEOMETRY PENDING` badge; equipping shows a labeled pulsing socket marker at the part's bone anchor in your chosen colors and records the part in the fighter JSON. Color/material edits apply to the marker now and to the real mesh when it lands.
+- **Part geometry pending**: WMXIX `.ymg` meshes (998) still blocked on the vertex-loader decode; Def Jam `.o` CAW parts (2,624) blocked on topology (POINTS pools, vertex order unproven — see `parts-converted/defjam/samples/SAMPLES.md` verdict 3); Def Jam V2IP `.o` base models (156) unconverted. Every such part card carries a `GEOMETRY PENDING` badge; equipping shows a labeled pulsing socket marker at the part's bone anchor in your chosen colors and records the part in the fighter JSON. Color/material edits apply to the marker now and to the real mesh when it lands.
+- **Preview auto-fit**: real part meshes (No Mercy 303, DOA4 272) attach at bone anchors with bbox auto-fit — the AKI native scale/anchor offsets exist in `parts/no-mercy/manifest.json` but are not applied at runtime yet (documented gap in SYSTEMS-WIRING.md). Per-part placement tuning is the placement dock's job (creation-suite-ui).
 - **Move animation test**: slot→move assignment saves today, but most moves have `anim_ref: null` — live in-ring animation playback wires in when per-move clip links land (CHARACTER-CREATION.md §9.4).
 
 ## Layout law

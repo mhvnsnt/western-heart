@@ -12,35 +12,36 @@ Nine fighters. Each is a lost soul of Tong-Nou. Each soul's **body** is a Tekken
 ### 1. RIN — The Protagonist Soul
 - **Nature:** 凛 — dignified, cold, self-possessed. The soul the player begins as. Remembers nothing but the trial.
 - **Fighting style:** Mishima-style karate (Tekken: Jin Kazama's moveset) — precise, fundamental, the "honest" style. Rin is the baseline every other soul deviates from.
-- **Body donor:** Jin Kazama TMD — young fighter's build, unadorned.
+- **Body donor:** Jin Kazama TMD — young fighter's build, unadorned (legacy attire, last; extraction pending teardown).
+- **Default body:** `game/assets/models/rin-body.glb` — T7-style Jin (RigModels fan rip, via Demonio's T7 model).
 - **Skin:** Eastern Mind protagonist-sprite extractions. Cold blue-white palette (kimono-dye winter tones).
 - **Archetype:** The shoto. Balanced. The soul learning itself.
 
 ### 2. BYOU — The Sick Soul
 - **Nature:** 病 — sickness. A soul that twitches, stutters, moves wrong. Its illness is its weapon — opponents can't read a body that doesn't obey itself.
 - **Fighting style:** Lei Wulong's Five Animals kung fu (Tekken) — deceptive, stance-shifting, deliberately unreadable. The drunken-sick master.
-- **Body donor:** Lei Wulong TMD — loose-limbed, expressive.
+- **Body donor:** Lei Wulong TMD — loose-limbed, expressive. **REPLACED by Rave** (WH name locked 2026-10-15; Great Muta/Keiji Mutoh skin, bald/gray goatee). T3 Lei moves to legacy.
 - **Skin:** Eastern Mind sick/decay sprite extractions. Jaundiced yellows, infected greens.
 - **Archetype:** The trickster. Stance-dance, unpredictability.
 
 ### 3. TOU — The Fighting Soul
 - **Nature:** 闘 — battle itself. The soul that exists only to fight. No philosophy, no fear. The purest expression of the trial.
 - **Fighting style:** Paul Phoenix's power karate/judo hybrid (Tekken) — devastating single strikes, the Death Fist. Maximum damage, minimum subtlety.
-- **Body donor:** Paul Phoenix TMD — heavy, powerful build.
+- **Body donor:** Paul Phoenix TMD — heavy, powerful build. **PENDING better model** (no Paul Phoenix in T7-style set; awaiting T6/TTT2 extraction).
 - **Skin:** Eastern Mind warrior-sprite extractions. Blood reds, scorched oranges (Fire force).
 - **Archetype:** The grappler/brawler. High damage, honest.
 
 ### 4. SHA — The Sand Soul
 - **Nature:** 沙 — sand, desert. From the Sha-mo Desert of the Land of Life. A soul that flows, erodes, surrounds. Never where you struck.
 - **Fighting style:** Ling Xiaoyu's Baguazhang (Tekken) — flowing, circular, evasive. The art of not being hit.
-- **Body donor:** Ling Xiaoyu TMD — small, agile frame.
+- **Body donor:** Saku Ra (T7-style Ling Xiaoyu GLB, `game/assets/models/sha-body.glb`). **Legacy:** Ling Xiaoyu TMD (last attire only).
 - **Skin:** Eastern Mind desert-sprite extractions. Sand ochres, bleached bone whites.
 - **Archetype:** The evasive. Movement as defense.
 
 ### 5. KAI — The Sea Soul
 - **Nature:** 海 — the sea. Fluid, rhythmic, unstoppable. Fights like water — finds every opening.
 - **Fighting style:** Eddy Gordo's Capoeira (Tekken) — rhythmic, ground-flowing, relentless pressure. The tide that doesn't stop.
-- **Body donor:** Eddy Gordo TMD — long-limbed, acrobatic.
+- **Body donor:** King Tyrant (T7-style Eddy Gordo GLB, `game/assets/models/kai-body.glb`). **Legacy:** Eddy Gordo TMD (last attire only).
 - **Skin:** Eastern Mind water-sprite extractions. Deep blues, foam whites, abyssal blacks (Water force).
 - **Archetype:** The rushdown. Relentless rhythm offense.
 

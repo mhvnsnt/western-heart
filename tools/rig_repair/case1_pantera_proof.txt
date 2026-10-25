@@ -1,0 +1,55 @@
+# stretch_check.py proof (frame 10). Worst triangle-edge stretch per mesh, edges >= 5 mm
+== pantera.glb Idle
+  max stretch   21.32  p99.9 21.25  Object_Modellogo_Material041
+  max stretch   14.08  p99.9 12.53  Object_Modelpants_Material027
+  max stretch   11.95  p99.9 11.80  Object_Modelarms_Material018
+  max stretch    5.21  p99.9  5.12  Object_Modelthighs_Material029
+WORST 21.32
+== pantera_fixed.glb Idle
+  max stretch   21.32  p99.9 21.25  Object_Modellogo_Material041
+  max stretch   13.76  p99.9 13.06  Object_Modelpants_Material027
+  max stretch    5.51  p99.9  5.42  Object_Modelthighs_Material029
+  max stretch    2.11  p99.9  2.05  Object_Modelarms_Material018
+WORST 21.32
+== pantera_t3real.glb (baked from pantera.glb) t3_stance_b
+  max stretch   21.22  p99.9 21.11  Object_Modelarms_Material018
+  max stretch   13.88  p99.9 13.19  Object_Modelpants_Material027
+  max stretch   11.75  p99.9 11.71  Object_Modellogo_Material041
+  max stretch    4.88  p99.9  4.87  Object_Modelthighs_Material029
+WORST 21.22
+== pantera_t3real.glb (baked from pantera.glb) t3_light
+  max stretch   30.42  p99.9 30.33  Object_Modellogo_Material041
+  max stretch   24.32  p99.9 24.06  Object_Modelpants_Material027
+  max stretch   22.34  p99.9 22.25  Object_Modelarms_Material018
+  max stretch    8.85  p99.9  8.77  Object_Modelthighs_Material029
+WORST 30.42
+== pantera_t3real.glb (baked from pantera.glb) t3_ko
+  max stretch   17.51  p99.9 17.34  Object_Modelarms_Material018
+  max stretch   12.12  p99.9 11.34  Object_Modelpants_Material027
+  max stretch   11.21  p99.9 11.19  Object_Modellogo_Material041
+  max stretch    5.25  p99.9  5.22  Object_Modelthighs_Material029
+WORST 17.51
+== pantera_fixed_t3real.glb (baked from pantera_fixed.glb) t3_stance_b
+  max stretch   13.33  p99.9 12.78  Object_Modelpants_Material027
+  max stretch   11.75  p99.9 11.71  Object_Modellogo_Material041
+  max stretch    5.11  p99.9  4.86  Object_Modelarms_Material018
+  max stretch    5.08  p99.9  5.05  Object_Modelthighs_Material029
+WORST 13.33
+== pantera_fixed_t3real.glb (baked from pantera_fixed.glb) t3_light
+  max stretch   30.42  p99.9 30.33  Object_Modellogo_Material041
+  max stretch   23.90  p99.9 23.56  Object_Modelpants_Material027
+  max stretch    8.89  p99.9  8.83  Object_Modelthighs_Material029
+  max stretch    5.45  p99.9  5.18  Object_Modelarms_Material018
+WORST 30.42
+== pantera_fixed_t3real.glb (baked from pantera_fixed.glb) t3_ko
+  max stretch   12.23  p99.9 11.53  Object_Modelpants_Material027
+  max stretch   11.21  p99.9 11.19  Object_Modellogo_Material041
+  max stretch    5.45  p99.9  5.43  Object_Modelthighs_Material029
+  max stretch    4.03  p99.9  3.81  Object_Modelarms_Material018
+WORST 12.23
+== symmetry
+before: side-weighted verts 5805, on opposite-side bone 5805
+after:  side-weighted verts 5805, on opposite-side bone 0
+re-run output byte-identical to pantera_fixed.glb
+9fa1122695057ebe6f437c9340fbc380d6427f4c93b4498fb933f877989b2746  ../../game/assets/models/pantera.glb
+01ad2424f03d5d206e3a1ade02d75109c716b082fd02a53ec30bdd3ad4937cc0  ../../game/assets/models/pantera_fixed.glb

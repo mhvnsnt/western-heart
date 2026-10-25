@@ -1,0 +1,138 @@
+/*! game-hud v0.1.0 — skin: pixel
+ * https://github.com/aronprins/game-hud
+ * MIT License */
+/* ---- PIXEL : 8-bit console, hard edges, saturated NES palette ---- */
+body[data-skin="pixel"]{
+  --page-bg:#ececf2;
+  --font-head:'Press Start 2P',cursive;
+  --font-body:'Press Start 2P',cursive;
+  --panel:#1a1c2c; --panel-2:#26284a; --panel-3:#101020;
+  --line:#3b3f6e; --line-2:#5d629e;
+  --edge:#83769c; --edge-dim:#5f5680;
+  --accent:#ffa300; --accent-2:#29adff;
+  --text:#fff1e8; --text-dim:#8f93b8;
+  --hp:#ff004d; --hp-2:#ff5c8a;
+  --mp:#29adff; --mp-2:#6fc9ff;
+  --en:#00e436; --en-2:#5cf27e;
+  --xp:#ffec27; --xp-2:#fff588;
+  --gold:#ffec27; --gem-b:#29adff; --gem-g:#00e436;
+  --danger:#ff004d; --ok:#00e436;
+  --glow:none;
+  --slot-shape:polygon(0 6px,6px 6px,6px 0,calc(100% - 6px) 0,calc(100% - 6px) 6px,100% 6px,100% calc(100% - 6px),calc(100% - 6px) calc(100% - 6px),calc(100% - 6px) 100%,6px 100%,6px calc(100% - 6px),0 calc(100% - 6px));
+  --btn-shape:polygon(0 6px,6px 6px,6px 0,calc(100% - 6px) 0,calc(100% - 6px) 6px,100% 6px,100% calc(100% - 6px),calc(100% - 6px) calc(100% - 6px),calc(100% - 6px) 100%,6px 100%,6px calc(100% - 6px),0 calc(100% - 6px));
+  --scene:linear-gradient(180deg,#1a1c2c 0%,#1a1c2c 30%,#3b3f6e 30%,#3b3f6e 52%,#00873c 52%,#00873c 54%,#00a844 54%,#00a844 100%);
+}
+
+/* ============================================================
+   SKIN: PIXEL — 8-bit console: hard rectangles, stepped
+   corners, 4px pixel borders, NES palette
+   ============================================================ */
+[data-skin="pixel"]{--px:#0b0c14;--px-l:#5d629e}
+[data-skin="pixel"] .panel{
+  filter:none;clip-path:var(--slot-shape);
+  background:var(--panel);
+  box-shadow:inset 0 0 0 4px var(--px), inset 0 0 0 8px var(--px-l), inset 0 0 0 12px var(--px);
+  padding-top:26px!important;
+}
+/* accent notch squares on the inner step corners */
+[data-skin="pixel"] .panel .corner{display:block;width:6px;height:6px;z-index:3;background:var(--accent)}
+[data-skin="pixel"] .corner.tl{top:12px;left:12px}
+[data-skin="pixel"] .corner.tr{top:12px;right:12px}
+[data-skin="pixel"] .corner.bl{bottom:12px;left:12px}
+[data-skin="pixel"] .corner.br{bottom:12px;right:12px}
+[data-skin="pixel"] .panel .p-head{
+  justify-content:center;margin:-6px 0 12px;
+}
+[data-skin="pixel"] .panel .p-head h3{font-size:12px;font-weight:400;letter-spacing:.08em;color:var(--xp)}
+[data-skin="pixel"] .panel .p-head .p-hico{display:none}
+/* type scale — Press Start 2P runs huge */
+[data-skin="pixel"] .q-txt{font-size:9px;line-height:1.6}
+[data-skin="pixel"] .q-count{font-size:9px}
+[data-skin="pixel"] .dl-text{font-size:9px;line-height:1.8}
+[data-skin="pixel"] .dl-name{font-size:8px;padding:4px 10px}
+[data-skin="pixel"] .m-body{font-size:10px;line-height:1.7}
+[data-skin="pixel"] .btn{height:44px;font-size:9px;letter-spacing:.06em}
+[data-skin="pixel"] .set-row .s-lbl,[data-skin="pixel"] .sb-name{font-size:9px}
+[data-skin="pixel"] .sb-score,[data-skin="pixel"] .sb-rank{font-size:8px}
+[data-skin="pixel"] .tab-btn{font-size:8px;gap:5px}
+[data-skin="pixel"] .vital .v-num{font-size:9px}
+[data-skin="pixel"] .xpbar .xp-label,[data-skin="pixel"] .xpbar .xp-num{font-size:9px}
+[data-skin="pixel"] .compass .c-cell.dir{font-size:11px}
+[data-skin="pixel"] .compass .c-cell.dir.sub{font-size:8px}
+[data-skin="pixel"] .currency .cur b{font-size:10px}
+[data-skin="pixel"] .bossbar .bb-name{font-size:10px}
+[data-skin="pixel"] .ammo-box .am-mag{font-size:16px}
+[data-skin="pixel"] .ammo-box .am-res{font-size:9px}
+[data-skin="pixel"] .wave-plate .wv,[data-skin="pixel"] .wave-plate .tm{font-size:10px}
+[data-skin="pixel"] .prompt .pr-lbl{font-size:9px}
+[data-skin="pixel"] .key{font-size:9px}
+[data-skin="pixel"] .slot-count{font-size:8px;line-height:12px}
+[data-skin="pixel"] .lvl-badge{font-size:10px}
+[data-skin="pixel"] .hslot .h-num{font-size:7px}
+[data-skin="pixel"] .st-pts{font-size:8px}
+[data-skin="pixel"] .tip .t-name{font-size:9px}
+[data-skin="pixel"] .tip .t-type{font-size:7px}
+[data-skin="pixel"] .tip .t-desc{font-size:8px;line-height:1.7}
+[data-skin="pixel"] .feed .f-row{font-size:8px}
+[data-skin="pixel"] .feed .f-row b{font-size:8px}
+[data-skin="pixel"] .fct{font-size:14px}
+[data-skin="pixel"] .fct.crit{font-size:19px}
+[data-skin="pixel"] .toast{font-size:9px}
+[data-skin="pixel"] .grp-body{padding-top:8px}
+/* flat pixel fills — kill gradients + gloss */
+[data-skin="pixel"] .vital .v-fill,[data-skin="pixel"] .xpbar .xp-fill,
+[data-skin="pixel"] .bossbar .bb-fill{background:var(--hp)}
+[data-skin="pixel"] .vital[data-k="mp"] .v-fill{background:var(--mp)}
+[data-skin="pixel"] .vital[data-k="en"] .v-fill{background:var(--en)}
+[data-skin="pixel"] .xpbar .xp-fill{background:var(--xp)}
+[data-skin="pixel"] .vital .v-fill::after,[data-skin="pixel"] .xpbar .xp-fill::after,
+[data-skin="pixel"] .bossbar .bb-fill::after{display:none}
+[data-skin="pixel"] .vital .v-track{clip-path:none;box-shadow:inset 0 0 0 3px var(--px)}
+[data-skin="pixel"] .vital .v-ico{box-shadow:inset 0 0 0 3px var(--px)}
+/* pixel plates: square + thick border */
+[data-skin="pixel"] .compass .c-body,[data-skin="pixel"] .currency,[data-skin="pixel"] .xpbar,
+[data-skin="pixel"] .stamina,[data-skin="pixel"] .castbar,[data-skin="pixel"] .ammo-box,
+[data-skin="pixel"] .wave-plate,[data-skin="pixel"] .prompt,[data-skin="pixel"] .bossbar .bb-body,
+[data-skin="pixel"] .hotbar,[data-skin="pixel"] .dialogue,[data-skin="pixel"] .toast{
+  clip-path:var(--slot-shape);
+  box-shadow:inset 0 0 0 4px var(--px), inset 0 0 0 7px var(--px-l);
+  border-radius:0;filter:none;
+}
+[data-skin="pixel"] .btn{
+  clip-path:var(--btn-shape);text-shadow:2px 2px 0 rgba(0,0,0,.5);
+  box-shadow:inset 0 0 0 4px var(--px), inset -4px -6px 0 4px rgba(0,0,0,.28);
+}
+[data-skin="pixel"] .btn:active{transform:translateY(2px)}
+[data-skin="pixel"] .btn-primary{background:#29adff}
+[data-skin="pixel"] .btn-neutral{background:#3b3f6e}
+[data-skin="pixel"] .btn-danger{background:#ff004d}
+[data-skin="pixel"] .btn-ok{background:#00a844}
+[data-skin="pixel"] .btn .b-ico{display:none}
+[data-skin="pixel"] .avatar,[data-skin="pixel"] .avatar::before,
+[data-skin="pixel"] .dialogue .dl-port,[data-skin="pixel"] .action,[data-skin="pixel"] .action::before,
+[data-skin="pixel"] .dpad,[data-skin="pixel"] .dpad::before{clip-path:var(--slot-shape)}
+[data-skin="pixel"] .avatar{background:var(--px-l);box-shadow:0 0 0 4px var(--px)}
+[data-skin="pixel"] .lvl-badge{clip-path:var(--slot-shape);background:var(--px);color:var(--xp)}
+[data-skin="pixel"] .minimap .mm-ring{border-radius:0;box-shadow:inset 0 0 0 4px var(--px), inset 0 0 0 8px var(--px-l)}
+[data-skin="pixel"] .minimap .mm-hole{border-radius:0}
+[data-skin="pixel"] .minimap .mm-map svg{image-rendering:pixelated}
+[data-skin="pixel"] .minimap .mm-grid{border-radius:0;background:
+   linear-gradient(rgba(255,255,255,.09) 2px,transparent 2px) 0 0/25% 25%,
+   linear-gradient(90deg,rgba(255,255,255,.09) 2px,transparent 2px) 0 0/25% 25%}
+[data-skin="pixel"] .minimap .mm-zoom button{box-shadow:none;background:var(--panel-2)}
+[data-skin="pixel"] .hslot{background:var(--panel-3);box-shadow:inset 0 0 0 3px var(--px)}
+[data-skin="pixel"] .hslot.sel{box-shadow:inset 0 0 0 3px var(--xp)}
+[data-skin="pixel"] .hslot.sel::after{background:var(--xp);box-shadow:none}
+[data-skin="pixel"] .islot{box-shadow:inset 0 0 0 3px var(--line)}
+[data-skin="pixel"] .quests .q-bullet{transform:none}
+[data-skin="pixel"] .ring-btn,[data-skin="pixel"] .ring-btn .r-prog,[data-skin="pixel"] .ring-btn .r-core{border-radius:0}
+[data-skin="pixel"] .toggle{border-radius:0;box-shadow:inset 0 0 0 3px var(--px)}
+[data-skin="pixel"] .toggle::after{border-radius:0}
+[data-skin="pixel"] .pips .pip{transform:none}
+[data-skin="pixel"] .pips .pip.on{background:var(--xp);box-shadow:none}
+[data-skin="pixel"] .dpad .d-stick{border-radius:0;clip-path:var(--slot-shape);background:var(--px-l);box-shadow:none}
+[data-skin="pixel"] .tab-btn{clip-path:var(--slot-shape);box-shadow:inset 0 0 0 3px var(--px)}
+[data-skin="pixel"] .tab-btn.on{color:var(--xp);box-shadow:inset 0 0 0 3px var(--xp);background:var(--panel-2)}
+[data-skin="pixel"] .feed .f-row{clip-path:none;box-shadow:inset 0 0 0 3px var(--px)}
+[data-skin="pixel"] .waypoint .wp-pin{animation-duration:.8s;animation-timing-function:steps(2,end)}
+[data-skin="pixel"] .dl-name{clip-path:none;background:var(--xp);color:var(--px)}

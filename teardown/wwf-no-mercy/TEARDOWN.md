@@ -17,7 +17,7 @@
 ### Animation Keyframe Bank — FULLY EXTRACTED (2026-10-13)
 - **5,787 clips** in `animations/clips/anim_XXXX.npy` (int16, shape `(nframes, 26, 3)`), ~152k frames total, 36 MB.
 - Clip list = every file labeled `AkiAnimation` in VPWStudio's `FileTableDB/NoMercy.txt` (MIT; copied as `tools/NoMercy-FileTableDB.txt`).
-- `animations/manifest.json`: per-clip `file_id`, `toki2`, `nframes`, `kind` (`system` 1,353 / `move` 4,434), `anim_id` (move clips: `file_id − 0x3322`, the key joining move-table entries to clips), and **`label`** — the DB's human-readable move name (e.g. `"[Weak Arm Striking] Chop 01"`).
+- `animations/manifest.json`: per-clip `file_id`, `toki2`, `nframes`, `kind` (`system` 1,353 / `move` 4,409), `anim_id` (move clips: `file_id − 0x3322`, the key joining move-table entries to clips). **Correction 2026-10-20 (verification lane):** manifest entries carry **no `label` field** — human-readable move names live in `tools/NoMercy-FileTableDB.txt` and are joined in `moveset-library/movesets/mat-kings-move-database.json`. The manifest covers 5,762 of the 5,787 clips; the 25 tail clips (`0x445B`–`0x4472`, `0x4C04`) are catalogued in that database.
 - `animations/FORMAT.md`: full NPY layout doc (26-joint order, PR/OM/MV channel semantics).
 - Tools: `tools/extract_all_anims.py`, `tools/anim_extract.py` (decode matches VPWStudio `AkiAnimation.cs` field-for-field), `tools/lzss.py` (Asmik LZSS decoder, ported from VPWStudio).
 - 2 DB entries don't parse as animations (`0x4473` encoded/478 B, `0x4C05` empty) — skipped with warnings, documented as DB mislabels.
@@ -26,7 +26,7 @@
 - **3,570 meshes** as Wavefront OBJ (+ `.vc` vertex-color sidecars) in `models/`, 29 MB. Format: AKI `AkiModel` (Scale, 8-byte vertices: s8 XYZ + u8 UV + RGB, 3-byte triangle faces) per VPWStudio `AkiModel.cs`; 16 DB-labeled files don't parse (kept in manifest as unparseable).
 - Breakdown: `body_parts/` 220 (CAW body-type meshes: Skinny/Medium/Thick/Fat × parts), `arena/` 263, `backstage/` 402, `stage/` 92, `lobby/` 79, `face/` 48 (face + hair meshes), `weapon/` 34, `attire_parts/` 1, `unlabeled/` 2,431 (wrestler-specific attire/costume meshes, DB has no labels).
 - `models/manifest.json`: per-model file_id, DB label, vertex/face counts.
-- Community rips (pre-existing): 13 character GLBs + 2 environment GLBs in `re-docs/assets/3d Assets/` (9 wrestlers: Rock ×3, Austin, HHH, Nash, Hall, HBK ×2, Angle, RVD, Rhino, Stephanie).
+- Community rips (pre-existing): **2 environment GLBs only** in `re-docs/assets/3d Assets/environments/` (`main-menu-scene.glb`, `menu_scene.glb` — 201,180 bytes each). **Correction 2026-10-20 (verification lane):** an earlier version of this line claimed 13 character GLBs also lived here; they do not — the 10 wrestler models (13 GLBs) are accounted-elsewhere in the wrestling repos (mhvnsnt/wrestlemania-xix-mod `mods/no-mercy-wrestlers/`, Bannon, wrestling-game) per the federation rule and were never in this folder.
 
 ### Textures — EXTRACTED (2026-10-13)
 - **5,029 PNGs** in `textures/rom/`, 23 MB, via DB-guided decode (Asmik LZSS → TEX/CI8/CI4/I4 parsers → RGBA5551 palettes → PNG).
@@ -51,7 +51,7 @@
 - **NOTE:** v1 was built from the earlier misaligned animation export — regenerate from `animations/` (corrected bank) before use.
 
 ### Community RE Resources (cloned locally)
-- `re-docs/` — chaotix610/wwfnomercy-docs (systems, move DB, creation suite docs; 15 community GLBs)
+- `re-docs/` — chaotix610/wwfnomercy-docs (systems, move DB, creation suite docs; 15 files total, incl. the 2 environment GLBs above — **corrected 2026-10-20**, previously mis-stated as "15 community GLBs")
 - `recomp/` — Gadge64/WWFNoMercyRecomp (N64Recomp static recompilation)
 - VPWStudio (AKI-Club, MIT) pulled 2026-10-13 for: `DefaultGameData.cs` file IDs, `AsmikLzss.cs` decoder, `AkiModel`/`AkiTexture`/`Ci*Texture` formats, `FileTableDB/NoMercy.txt` (19,462 labeled files — the map for this entire extraction).
 
@@ -72,7 +72,7 @@
 
 ## Chimera Build Value
 
-- **5,787 named animation clips** (grapples, strikes, taunts, stances) with human-readable labels — the wrestling move library for Western Heart's Wrestling Mode, retargetable via the proven AKI→Tekken pipeline.
+- **5,787 animation clips** (grapples, strikes, taunts, stances), all labelled via the FileTableDB join in `moveset-library/movesets/mat-kings-move-database.json` (4,409 moves as MK-#### + 1,353 system + 25 tail clips) — the wrestling move library for Western Heart's Wrestling Mode, retargetable via the proven AKI→Tekken pipeline.
 - **Full CAW part library as data**: 220 body-part meshes + 118 face textures + complete attire/gear texture set — the customization system's asset foundation.
 - **Arena geometry** (263 meshes) + backstage/lobby/stage sets for the wrestling environment.
 - **42-wrestler ID table** + move tables + creation-suite id mappings = the systems data.
