@@ -1,6 +1,13 @@
 {
   "fighter": "docfrank",
   "display": "DOC FRANK",
+  "anim_set_lock": {
+    "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; bank assets/anim/t3/bosconovitch/ t3_win_*.json; must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set",
+    "batch8_20261023": "batch8 2026-10-23: T3 Bosconovitch pull verified complete (all bank rows covered); TTT2 Bosconovitch movelist pending extraction lane; 0 moves added this lane"
+  },
   "tekken_base": "Bosconovitch",
   "t3_source": "bosconovitch",
   "proxy": false,
@@ -9336,5 +9343,191 @@
     "n,d,d/b+1+3,1": 2048
   },
   "stance_after": {},
-  "anim_bank": "bosconovitch"
+  "anim_bank": "bosconovitch",
+  "canon_moves": [
+    {
+      "name": "Crayon Notes",
+      "input": "1+4",
+      "display_input": "LP1+RK4",
+      "input_original": "`P+K`",
+      "anim_ref": "wh:docfrank:sig:crayon-notes",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 20,
+      "startup_frames": 17,
+      "canon": true,
+      "canon_owner": "DOCFRANK",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "collisions": [
+        {
+          "kind": "tekken-moves-key",
+          "key": "1+4",
+          "entry_name": "Bad Stomach",
+          "entry_anim_ref": "t3:bosconovitch:bad_stomach"
+        }
+      ],
+      "system_note": "System note: LP1+RK4 is also Reihou, but ONLY while the foe is in RAGE (otherwise the moveset LP1+RK4 plays). No in-game conflict outside foe-RAGE.",
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Peer Review",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`S`",
+      "anim_ref": "wh:docfrank:sig:peer-review",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 19,
+      "startup_frames": 19,
+      "canon": true,
+      "canon_owner": "DOCFRANK",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "collisions": [
+        {
+          "kind": "tekken-moves-key",
+          "key": "1+2",
+          "entry_name": "Parry",
+          "entry_anim_ref": "t3:bosconovitch:parry"
+        }
+      ],
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Afterimage",
+      "input": "b,b+3+4",
+      "display_input": "b,b+LK3+RK4",
+      "input_original": "`b,b+3+4`",
+      "anim_ref": "wh:gero:afterimage",
+      "method": "ADAPT",
+      "source": "Gero-inspired non-Tekken original (Dragon Ball), filed in docfrank.json; clip NOT yet authored",
+      "move_class": "special",
+      "limb": "both",
+      "damage": 0,
+      "startup_frames": 6,
+      "canon": true,
+      "canon_owner": "GERO",
+      "properties": {
+        "stance": "standing",
+        "direction": "b",
+        "type": "strike",
+        "limb": null,
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Energy Absorption",
+      "input": "b,b+1+2",
+      "display_input": "b,b+LP1+RP2",
+      "input_original": "`b,b+1+2`",
+      "anim_ref": "wh:gero:energy_absorption",
+      "method": "BUILD",
+      "source": "Gero-inspired non-Tekken original (Dragon Ball), filed in docfrank.json; clip NOT yet authored",
+      "move_class": "special",
+      "limb": "both",
+      "damage": 4,
+      "startup_frames": 12,
+      "canon": true,
+      "canon_owner": "GERO",
+      "properties": {
+        "stance": "standing",
+        "direction": "b",
+        "type": "strike",
+        "limb": null,
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Eye Laser Beam",
+      "input": "d,d/f,f+1+2",
+      "display_input": "d,d/f,f+LP1+RP2",
+      "input_original": "`d,d/f,f+1+2`",
+      "anim_ref": "wh:gero:eye_laser_beam",
+      "method": "BUILD",
+      "source": "Gero-inspired non-Tekken original (Dragon Ball), filed in docfrank.json; clip NOT yet authored",
+      "move_class": "special",
+      "limb": "head",
+      "damage": 18,
+      "startup_frames": 17,
+      "canon": true,
+      "canon_owner": "GERO",
+      "properties": {
+        "stance": "crouching",
+        "direction": "d",
+        "type": "strike",
+        "limb": null,
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Ki Blast",
+      "input": "d/f+1+2",
+      "display_input": "d/f+LP1+RP2",
+      "input_original": "`d/f+1+2`",
+      "anim_ref": "wh:gero:ki_blast",
+      "method": "BUILD",
+      "source": "Gero-inspired non-Tekken original (Dragon Ball), filed in docfrank.json; clip NOT yet authored",
+      "move_class": "special",
+      "limb": "armR",
+      "damage": 14,
+      "startup_frames": 12,
+      "canon": true,
+      "canon_owner": "GERO",
+      "properties": {
+        "stance": "crouching",
+        "direction": "d/f",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Rocket Punch",
+      "input": "d,d/f,f+1",
+      "display_input": "d,d/f,f+LP1",
+      "input_original": "`d,d/f,f+1`",
+      "anim_ref": "wh:gero:rocket_punch",
+      "method": "ADAPT",
+      "source": "Gero-inspired non-Tekken original (Dragon Ball), filed in docfrank.json; clip NOT yet authored",
+      "move_class": "special",
+      "limb": "armR",
+      "damage": 16,
+      "startup_frames": 12,
+      "canon": true,
+      "canon_owner": "GERO",
+      "properties": {
+        "stance": "crouching",
+        "direction": "d",
+        "type": "strike",
+        "limb": null,
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  }
 }

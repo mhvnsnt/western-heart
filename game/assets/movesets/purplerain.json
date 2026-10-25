@@ -6,6 +6,12 @@
   "proxy": false,
   "proxy_note": null,
   "variant": 10,
+  "anim_set_lock": {
+    "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; tracked in docs/anim/LEE-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
+  },
   "strings": [
     {
       "input": "4,1",
@@ -1315,6 +1321,8 @@
       "knock": 4.2,
       "soulGain": 12,
       "anim_ref": "wh:purplerain:sig:four-four-time",
+      "community_base": "game/assets/anim/oss/community/144_05.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "S"
       ],
@@ -1355,6 +1363,8 @@
       "knock": 4.2,
       "soulGain": 12,
       "anim_ref": "wh:purplerain:sig:four-four-time",
+      "community_base": "game/assets/anim/oss/community/144_05.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "1+2"
       ],
@@ -8241,7 +8251,9 @@
       "t7_on_hit": "+8",
       "t7_on_ch": "+8",
       "merge_source": "t7:lee_2",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2~t7.lee": {
       "name": "Left Right Combo",
@@ -8282,7 +8294,9 @@
           9
         ],
         "total": 16
-      }
+      },
+      "mod_damage": "9,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2~t7.lee.2": {
       "name": "PURPLE RAIN 1,2",
@@ -8316,7 +8330,9 @@
       "t7_on_hit": "+5",
       "t7_on_ch": "+5",
       "merge_source": "t7:lee_4",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "9,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,2~t7.lee": {
       "name": "PURPLE RAIN 1,2,2",
@@ -8358,7 +8374,9 @@
           14
         ],
         "total": 30
-      }
+      },
+      "mod_damage": "9,12,18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,2~t7.lee.2": {
       "name": "PURPLE RAIN 1,2,2",
@@ -8399,7 +8417,9 @@
           14
         ],
         "total": 23
-      }
+      },
+      "mod_damage": "9,12,18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,2~t7.lee.3": {
       "name": "PURPLE RAIN 1,2,2",
@@ -8433,7 +8453,9 @@
       "t7_on_hit": "-2",
       "t7_on_ch": "-2",
       "merge_source": "t7:lee_7",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "9,12,18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,2,3~t7.lee": {
       "name": "Left Right Combo to Revolution Zwei",
@@ -8477,7 +8499,9 @@
         ],
         "total": 53
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "9,12,18,31",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,2,3~t7.lee.2": {
       "name": "PURPLE RAIN 1,2,2,3",
@@ -8520,7 +8544,9 @@
         ],
         "total": 46
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "9,12,18,31",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,2,3~t7.lee.3": {
       "name": "PURPLE RAIN 1,2,2,3",
@@ -8562,7 +8588,9 @@
         ],
         "total": 37
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "9,12,18,31",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,2,3~t7.lee.4": {
       "name": "PURPLE RAIN 1,2,2,3",
@@ -8597,7 +8625,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_11",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "9,12,18,31",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,4~t7.lee": {
       "name": "Left Right Mid Kick",
@@ -8639,7 +8669,9 @@
           10
         ],
         "total": 26
-      }
+      },
+      "mod_damage": "9,12,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,4~t7.lee.2": {
       "name": "PURPLE RAIN 1,2,4",
@@ -8680,7 +8712,9 @@
           10
         ],
         "total": 19
-      }
+      },
+      "mod_damage": "9,12,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,4~t7.lee.3": {
       "name": "PURPLE RAIN 1,2,4",
@@ -8714,7 +8748,9 @@
       "t7_on_hit": "-1",
       "t7_on_ch": "-1",
       "merge_source": "t7:lee_14",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "9,12,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,4*": {
       "name": "Left Right Max Mid",
@@ -8985,7 +9021,9 @@
       "t7_on_hit": "+7",
       "t7_on_ch": "+7",
       "merge_source": "t7:lee_21",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,1~t7.lee": {
       "name": "PURPLE RAIN 2,1",
@@ -9026,7 +9064,9 @@
           8
         ],
         "total": 18
-      }
+      },
+      "mod_damage": "13,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,1~t7.lee.2": {
       "name": "PURPLE RAIN 2,1",
@@ -9060,7 +9100,9 @@
       "t7_on_hit": "+6",
       "t7_on_ch": "+6",
       "merge_source": "t7:lee_23",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "13,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,1,1~t7.lee": {
       "name": "Combination Drei",
@@ -9102,7 +9144,9 @@
           18
         ],
         "total": 36
-      }
+      },
+      "mod_damage": "13,10,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,1,1~t7.lee.2": {
       "name": "PURPLE RAIN 2,1,1",
@@ -9143,7 +9187,9 @@
           18
         ],
         "total": 26
-      }
+      },
+      "mod_damage": "13,10,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,1,1~t7.lee.3": {
       "name": "PURPLE RAIN 2,1,1",
@@ -9178,7 +9224,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_26",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "13,10,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,1,3~t7.lee": {
       "name": "Combination Funf",
@@ -9221,7 +9269,9 @@
         ],
         "total": 38
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "13,10,",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,1,3~t7.lee.2": {
       "name": "PURPLE RAIN 2,1,3",
@@ -9263,7 +9313,9 @@
         ],
         "total": 28
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "13,10,",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,1,3~t7.lee.3": {
       "name": "PURPLE RAIN 2,1,3",
@@ -9298,7 +9350,9 @@
       "t7_on_ch": "S!",
       "merge_source": "t7:lee_29",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "13,10,",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,1,4~t7.lee": {
       "name": "Combination Vier",
@@ -9340,7 +9394,9 @@
           18
         ],
         "total": 36
-      }
+      },
+      "mod_damage": "13,10,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,1,4~t7.lee.2": {
       "name": "PURPLE RAIN 2,1,4",
@@ -9381,7 +9437,9 @@
           18
         ],
         "total": 26
-      }
+      },
+      "mod_damage": "13,10,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,1,4~t7.lee.3": {
       "name": "PURPLE RAIN 2,1,4",
@@ -9415,7 +9473,9 @@
       "t7_on_hit": "0",
       "t7_on_ch": "+10",
       "merge_source": "t7:lee_32",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "13,10,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,2~t7.lee": {
       "name": "PURPLE RAIN 2,2",
@@ -9456,7 +9516,9 @@
           14
         ],
         "total": 24
-      }
+      },
+      "mod_damage": "13,18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,2~t7.lee.2": {
       "name": "PURPLE RAIN 2,2",
@@ -9490,7 +9552,9 @@
       "t7_on_hit": "-2",
       "t7_on_ch": "-2",
       "merge_source": "t7:lee_34",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "13,18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,2,3~t7.lee": {
       "name": "Right Cross to Revolution Zwei",
@@ -9533,7 +9597,9 @@
         ],
         "total": 47
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "13,18,31",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,2,3~t7.lee.2": {
       "name": "PURPLE RAIN 2,2,3",
@@ -9575,7 +9641,9 @@
         ],
         "total": 37
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "13,18,31",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,2,3~t7.lee.3": {
       "name": "PURPLE RAIN 2,2,3",
@@ -9610,7 +9678,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_37",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "13,18,31",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3~t7.lee": {
       "name": "Mist Kick",
@@ -9644,7 +9714,9 @@
       "t7_on_hit": "+7",
       "t7_on_ch": "+7",
       "merge_source": "t7:lee_38",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,3~t7.lee": {
       "name": "Mist Wolf Combination",
@@ -9685,7 +9757,9 @@
           18
         ],
         "total": 34
-      }
+      },
+      "mod_damage": "24,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,3~t7.lee.2": {
       "name": "PURPLE RAIN 3,3",
@@ -9719,7 +9793,9 @@
       "t7_on_hit": "+1",
       "t7_on_ch": "+1",
       "merge_source": "t7:lee_40",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "24,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3~3~t7.lee": {
       "name": "Trick Kick",
@@ -9753,7 +9829,9 @@
       "t7_on_hit": "+1",
       "t7_on_ch": "+1",
       "merge_source": "t7:lee_41",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4~t7.lee": {
       "name": "PURPLE RAIN 4",
@@ -9788,7 +9866,9 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:lee_42",
       "recovery_from": "same-notation T8 recv",
-      "launch": true
+      "launch": true,
+      "mod_damage": "21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,3~t7.lee": {
       "name": "PURPLE RAIN 4,3",
@@ -9829,7 +9909,9 @@
           14
         ],
         "total": 30
-      }
+      },
+      "mod_damage": "21,16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,3~t7.lee.2": {
       "name": "PURPLE RAIN 4,3",
@@ -9863,7 +9945,9 @@
       "t7_on_hit": "-3",
       "t7_on_ch": "+2",
       "merge_source": "t7:lee_44",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "21,16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,3,3~t7.lee": {
       "name": "Spinning Hammer Kick",
@@ -9906,7 +9990,9 @@
         ],
         "total": 50
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "21,16,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,3,3~t7.lee.2": {
       "name": "PURPLE RAIN 4,3,3",
@@ -9948,7 +10034,9 @@
         ],
         "total": 34
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "21,16,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,3,3~t7.lee.3": {
       "name": "PURPLE RAIN 4,3,3",
@@ -9983,7 +10071,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_47",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "21,16,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,3,4~t7.lee": {
       "name": "Spin Kick Somersault Combo",
@@ -10026,7 +10116,9 @@
         ],
         "total": 55
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "21,16,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,3,4~t7.lee.2": {
       "name": "PURPLE RAIN 4,3,4",
@@ -10068,7 +10160,9 @@
         ],
         "total": 39
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "21,16,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,3,4~t7.lee.3": {
       "name": "PURPLE RAIN 4,3,4",
@@ -10103,7 +10197,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_50",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "21,16,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,4~t7.lee": {
       "name": "PURPLE RAIN 4,4",
@@ -10144,7 +10240,9 @@
           6
         ],
         "total": 22
-      }
+      },
+      "mod_damage": "21,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,4~t7.lee.2": {
       "name": "PURPLE RAIN 4,4",
@@ -10179,7 +10277,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_52",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "21,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,4,4~t7.lee": {
       "name": "Machinegun Kicks",
@@ -10221,7 +10321,9 @@
           8
         ],
         "total": 30
-      }
+      },
+      "mod_damage": "21,8,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,4,4~t7.lee.2": {
       "name": "PURPLE RAIN 4,4,4",
@@ -10262,7 +10364,9 @@
           8
         ],
         "total": 14
-      }
+      },
+      "mod_damage": "21,8,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,4,4~t7.lee.3": {
       "name": "PURPLE RAIN 4,4,4",
@@ -10297,7 +10401,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_55",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "21,8,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,u+3~t7.lee": {
       "name": "Lee Somersault",
@@ -10409,7 +10515,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_58",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "29",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3~t7.lee": {
       "name": "PURPLE RAIN u/f+3",
@@ -10443,7 +10551,9 @@
       "t7_on_hit": "+2",
       "t7_on_ch": "+2",
       "merge_source": "t7:lee_59",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3,1": {
       "name": "Brilliant Rosé",
@@ -10484,7 +10594,9 @@
           18
         ],
         "total": 30
-      }
+      },
+      "mod_damage": "21,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3,1~t7.lee": {
       "name": "PURPLE RAIN u/f+3,1",
@@ -10519,7 +10631,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_61",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "21,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3,4": {
       "name": "Double Mazurek",
@@ -10561,7 +10675,9 @@
         ],
         "total": 35
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "21,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3,4~t7.lee": {
       "name": "PURPLE RAIN u/f+3,4",
@@ -10596,7 +10712,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_63",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "21,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+4~t7.lee": {
       "name": "Silver Arrow",
@@ -10631,7 +10749,9 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:lee_64",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true
+      "launch": true,
+      "mod_damage": "17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3+4~t7.lee": {
       "name": "Silver Bullet",
@@ -10666,7 +10786,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_65",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "25",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2~t7.lee": {
       "name": "PURPLE RAIN f+2",
@@ -10700,7 +10822,9 @@
       "t7_on_hit": "+2",
       "t7_on_ch": "+2",
       "merge_source": "t7:lee_66",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,1~t7.lee": {
       "name": "Double Signal",
@@ -10742,7 +10866,9 @@
         ],
         "total": 36
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "18,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,1~t7.lee.2": {
       "name": "PURPLE RAIN f+2,1",
@@ -10777,7 +10903,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_68",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "18,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3~t7.lee": {
       "name": "PURPLE RAIN f+3",
@@ -10811,7 +10939,9 @@
       "t7_on_hit": "-7",
       "t7_on_ch": "-7",
       "merge_source": "t7:lee_69",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3,3~t7.lee": {
       "name": "PURPLE RAIN f+3,3",
@@ -10852,7 +10982,9 @@
           3
         ],
         "total": 9
-      }
+      },
+      "mod_damage": "8,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3,3,3~t7.lee": {
       "name": "PURPLE RAIN f+3,3,3",
@@ -10894,7 +11026,9 @@
           3
         ],
         "total": 12
-      }
+      },
+      "mod_damage": "8,8,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3,3,3,3~t7.lee": {
       "name": "PURPLE RAIN f+3,3,3,3",
@@ -10937,7 +11071,9 @@
           3
         ],
         "total": 15
-      }
+      },
+      "mod_damage": "8,8,10,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3,3,3,3,3~t7.lee": {
       "name": "PURPLE RAIN f+3,3,3,3,3",
@@ -10981,7 +11117,9 @@
           3
         ],
         "total": 18
-      }
+      },
+      "mod_damage": "8,8,10,10,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3,3,3,3,3,4~t7.lee": {
       "name": "Acid Storm",
@@ -11026,7 +11164,9 @@
           14
         ],
         "total": 32
-      }
+      },
+      "mod_damage": "8,8,10,10,10,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+4~t7.lee": {
       "name": "PURPLE RAIN f+4",
@@ -11060,7 +11200,9 @@
       "t7_on_hit": "+4",
       "t7_on_ch": "+4",
       "merge_source": "t7:lee_75",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+4.1": {
       "name": "Deadly Cyclone",
@@ -11135,7 +11277,9 @@
       "t7_on_hit": "+13",
       "t7_on_ch": "+13",
       "merge_source": "t7:lee_77",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+4,3~t7.lee": {
       "name": "Deadly Arc",
@@ -11176,7 +11320,9 @@
           18
         ],
         "total": 31
-      }
+      },
+      "mod_damage": "17,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+4,3~t7.lee.2": {
       "name": "PURPLE RAIN f+4,3",
@@ -11210,7 +11356,9 @@
       "t7_on_hit": "+6 (OC)",
       "t7_on_ch": "GROUND BOUNCE",
       "merge_source": "t7:lee_79",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "17,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+1+2~t7.lee": {
       "name": "Aggressive One-Two",
@@ -11252,7 +11400,9 @@
         ],
         "total": 34
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "13,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+1+2~t7.lee.2": {
       "name": "PURPLE RAIN f+1+2",
@@ -11288,7 +11438,9 @@
       "merge_source": "t7:lee_81",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "input_note": "(second hit only)"
+      "input_note": "(second hit only)",
+      "mod_damage": "13,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3+4~t7.lee": {
       "name": "Feather Landing",
@@ -11329,7 +11481,9 @@
           20
         ],
         "total": 30
-      }
+      },
+      "mod_damage": "18,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+3~t7.lee": {
       "name": "Pulse Blast",
@@ -11364,7 +11518,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_83",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "37",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+4~t7.lee": {
       "name": "Deadly Edge",
@@ -11399,7 +11555,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_84",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "29",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,f,f+3": {
       "name": "PURPLE RAIN f,f,f+3",
@@ -11478,7 +11636,9 @@
         "total": 32
       },
       "knockdown": true,
-      "input_note": "(or WR 3, 4)"
+      "input_note": "(or WR 3, 4)",
+      "mod_damage": "21,33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "t7.lee_87": {
       "name": "PURPLE RAIN f, f, f+(3), 4 (or WR (3), 4)",
@@ -11546,7 +11706,9 @@
       "t7_on_hit": "+5",
       "t7_on_ch": "+5",
       "merge_source": "t7:lee_88",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+2~t7.lee": {
       "name": "PURPLE RAIN d/f+2",
@@ -11581,7 +11743,9 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:lee_89",
       "recovery_from": "same-notation T8 recv",
-      "launch": true
+      "launch": true,
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3": {
       "name": "PURPLE RAIN d/f+3",
@@ -11656,7 +11820,9 @@
           11
         ],
         "total": 25
-      }
+      },
+      "mod_damage": "21,14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2~t7.lee": {
       "name": "PURPLE RAIN d/f+3,2",
@@ -11690,7 +11856,9 @@
       "t7_on_hit": "+5",
       "t7_on_ch": "+5",
       "merge_source": "t7:lee_92",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "21,14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,3": {
       "name": "Mercury Drive",
@@ -11733,7 +11901,9 @@
         ],
         "total": 48
       },
-      "launch": true
+      "launch": true,
+      "mod_damage": "21,14,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,3~t7.lee": {
       "name": "PURPLE RAIN d/f+3,2,3",
@@ -11775,7 +11945,9 @@
         ],
         "total": 34
       },
-      "launch": true
+      "launch": true,
+      "mod_damage": "21,14,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,3~t7.lee.2": {
       "name": "PURPLE RAIN d/f+3,2,3",
@@ -11810,7 +11982,9 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:lee_95",
       "recovery_from": "same-notation T8 recv",
-      "launch": true
+      "launch": true,
+      "mod_damage": "21,14,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+4~t7.lee": {
       "name": "Front Kick",
@@ -11844,7 +12018,9 @@
       "t7_on_hit": "+2",
       "t7_on_ch": "+2",
       "merge_source": "t7:lee_96",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1+2": {
       "name": "PURPLE RAIN d/f+1+2",
@@ -11878,7 +12054,9 @@
       "t7_on_hit": "-2",
       "t7_on_ch": "-2",
       "merge_source": "t7:lee_97",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1+2,3": {
       "name": "Revolution Zwei",
@@ -11920,7 +12098,9 @@
         ],
         "total": 41
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "24,31",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1+2,3~t7.lee": {
       "name": "PURPLE RAIN d/f+1+2,3",
@@ -11955,7 +12135,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_99",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "24,31",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+2~t7.lee": {
       "name": "Gut Polisher",
@@ -11989,7 +12171,9 @@
       "t7_on_hit": "+8",
       "t7_on_ch": "+8",
       "merge_source": "t7:lee_100",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+3~t7.lee": {
       "name": "Silver Low",
@@ -12024,7 +12208,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_101",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+4,n,4~t7.lee": {
       "name": "Shin to Head Kick",
@@ -12467,7 +12653,9 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:lee_112",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true
+      "launch": true,
+      "mod_damage": "27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/b+3~t7.lee": {
       "name": "Wheel of Fate",
@@ -12502,7 +12690,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_113",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "D+4": {
       "name": "PURPLE RAIN D+4",
@@ -12536,7 +12726,9 @@
       "t7_on_hit": "-2",
       "t7_on_ch": "-2",
       "merge_source": "t7:lee_114",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "D+4,4": {
       "name": "PURPLE RAIN D+4,4",
@@ -12577,7 +12769,9 @@
           8
         ],
         "total": 15
-      }
+      },
+      "mod_damage": "9,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "D+4,4,4": {
       "name": "PURPLE RAIN D+4,4,4",
@@ -12619,7 +12813,9 @@
           5
         ],
         "total": 20
-      }
+      },
+      "mod_damage": "9,10,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "D+4,4,4,4": {
       "name": "Laser Edge Kick Combo",
@@ -12663,7 +12859,9 @@
         ],
         "total": 41
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "9,10,6,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+3": {
       "name": "Bump Kick",
@@ -12697,7 +12895,9 @@
       "t7_on_hit": "+2",
       "t7_on_ch": "+2",
       "merge_source": "t7:lee_118",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+3+4": {
       "name": "Grass Snake",
@@ -12732,7 +12932,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_119",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "25",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+1+2,u,u": {
       "name": "Death Touch Cancel",
@@ -12800,7 +13002,9 @@
       "t7_on_hit": "+6",
       "t7_on_ch": "+6",
       "merge_source": "t7:lee_121",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1,1~t7.lee": {
       "name": "PURPLE RAIN b+1,1",
@@ -12841,7 +13045,9 @@
           6
         ],
         "total": 14
-      }
+      },
+      "mod_damage": "10,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1,1~t7.lee.2": {
       "name": "PURPLE RAIN b+1,1",
@@ -12875,7 +13081,9 @@
       "t7_on_hit": "+6",
       "t7_on_ch": "+6",
       "merge_source": "t7:lee_123",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "10,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1,1,2~t7.lee": {
       "name": "Triple Fang",
@@ -12917,7 +13125,9 @@
           15
         ],
         "total": 29
-      }
+      },
+      "mod_damage": "10,8,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1,1,2~t7.lee.2": {
       "name": "PURPLE RAIN b+1,1,2",
@@ -12958,7 +13168,9 @@
           15
         ],
         "total": 21
-      }
+      },
+      "mod_damage": "10,8,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1,1,2~t7.lee.3": {
       "name": "PURPLE RAIN b+1,1,2",
@@ -12992,7 +13204,9 @@
       "t7_on_hit": "+1",
       "t7_on_ch": "+1",
       "merge_source": "t7:lee_126",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "10,8,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2~t7.lee": {
       "name": "Rear Cross Punch",
@@ -13067,7 +13281,9 @@
           12
         ],
         "total": 25
-      }
+      },
+      "mod_damage": "14,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,4~t7.lee.2": {
       "name": "PURPLE RAIN b+2,4",
@@ -13102,7 +13318,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_129",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "14,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,4,3~t7.lee": {
       "name": "Super High Combination",
@@ -13145,7 +13363,9 @@
         ],
         "total": 46
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "14,22,40",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,4,3~t7.lee.2": {
       "name": "PURPLE RAIN b+2,4,3",
@@ -13187,7 +13407,9 @@
         ],
         "total": 33
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "14,22,40",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,4,3~t7.lee.3": {
       "name": "PURPLE RAIN b+2,4,3",
@@ -13222,7 +13444,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_132",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "14,22,40",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+3~t7.lee": {
       "name": "PURPLE RAIN b+3",
@@ -13256,7 +13480,8 @@
       "t7_on_hit": "-3",
       "t7_on_ch": "-3",
       "merge_source": "t7:lee_133",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+3,3~t7.lee": {
       "name": "Stinging Rush",
@@ -13297,7 +13522,8 @@
           15
         ],
         "total": 24
-      }
+      },
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+3,3~t7.lee.2": {
       "name": "PURPLE RAIN b+3,3",
@@ -13331,7 +13557,8 @@
       "t7_on_hit": "-3",
       "t7_on_ch": "-3",
       "merge_source": "t7:lee_135",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+4~t7.lee": {
       "name": "Silver Heel",
@@ -13365,7 +13592,9 @@
       "t7_on_hit": "+7 (OC)",
       "t7_on_ch": "GROUND BOUNCE",
       "merge_source": "t7:lee_136",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "29",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b,B+4~t7.lee": {
       "name": "Lee Cutter",
@@ -13400,7 +13629,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_137",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "31",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "BT.1": {
       "name": "PURPLE RAIN BT.1",
@@ -13435,7 +13666,9 @@
       "t7_on_ch": "+3",
       "merge_source": "t7:lee_138",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(or 2)"
+      "input_note": "(or 2)",
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "BT.3": {
       "name": "PURPLE RAIN BT.3",
@@ -13471,7 +13704,9 @@
       "merge_source": "t7:lee_139",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(or 4)"
+      "input_note": "(or 4)",
+      "mod_damage": "33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.1~t7.lee": {
       "name": "PURPLE RAIN FC.1",
@@ -13505,7 +13740,9 @@
       "t7_on_hit": "+6",
       "t7_on_ch": "+6",
       "merge_source": "t7:lee_140",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.2~t7.lee": {
       "name": "PURPLE RAIN FC.2",
@@ -13539,7 +13776,9 @@
       "t7_on_hit": "+7",
       "t7_on_ch": "+7",
       "merge_source": "t7:lee_141",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.3~t7.lee": {
       "name": "PURPLE RAIN FC.3",
@@ -13642,7 +13881,9 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:lee_144",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true
+      "launch": true,
+      "mod_damage": "29",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.u/f+4": {
       "name": "Catapult Kick Low",
@@ -13677,7 +13918,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_145",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.d/f+4": {
       "name": "Silver Tail",
@@ -13712,7 +13955,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_146",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.d/f,d,D/F+3": {
       "name": "Sliding",
@@ -13747,7 +13992,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_147",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "29",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.u/b+4": {
       "name": "PURPLE RAIN FC.u/b+4",
@@ -13816,7 +14063,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_149",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "29",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.U/F+4": {
       "name": "Catapult Kick High",
@@ -13851,7 +14100,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_150",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.U/F+3+4": {
       "name": "Catapult Drop",
@@ -13954,7 +14205,9 @@
       "t7_on_hit": "+3",
       "t7_on_ch": "+3",
       "merge_source": "t7:lee_153",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.2,3": {
       "name": "Rocket Heel",
@@ -13996,7 +14249,9 @@
         ],
         "total": 36
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "13,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.2,3~t7.lee": {
       "name": "PURPLE RAIN WS.2,3",
@@ -14031,7 +14286,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_155",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "13,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.2,4": {
       "name": "Twister Heel",
@@ -14072,7 +14329,9 @@
           23
         ],
         "total": 35
-      }
+      },
+      "mod_damage": "13,",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.2,4~t7.lee": {
       "name": "PURPLE RAIN WS.2,4",
@@ -14106,7 +14365,9 @@
       "t7_on_hit": "STUN",
       "t7_on_ch": "STUN",
       "merge_source": "t7:lee_157",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "13,",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.3": {
       "name": "PURPLE RAIN WS.3",
@@ -14140,7 +14401,9 @@
       "t7_on_hit": "-10",
       "t7_on_ch": "-10",
       "merge_source": "t7:lee_158",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.3,3": {
       "name": "PURPLE RAIN WS.3,3",
@@ -14181,7 +14444,9 @@
           11
         ],
         "total": 27
-      }
+      },
+      "mod_damage": "21,14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.3,3,D+3": {
       "name": "PURPLE RAIN WS.3,3,D+3",
@@ -14223,7 +14488,9 @@
           8
         ],
         "total": 35
-      }
+      },
+      "mod_damage": "21,14,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.3,3,D+3,n,3": {
       "name": "PURPLE RAIN WS.3,3,D+3,n,3",
@@ -14351,7 +14618,9 @@
           10
         ],
         "total": 37
-      }
+      },
+      "mod_damage": "21,14,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.3,3,D/F+3,n,3": {
       "name": "PURPLE RAIN WS.3,3,D/F+3,n,3",
@@ -14551,7 +14820,9 @@
       "t7_on_hit": "+5",
       "t7_on_ch": "+5",
       "merge_source": "t7:lee_168",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "SSL.3+4": {
       "name": "Lee Screw Right",
@@ -15002,7 +15273,8 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_181",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3+4~t7.lee": {
       "name": "Hitman",
@@ -15080,7 +15352,9 @@
         ],
         "total": 53
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "9,12,18,31",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,4,3": {
       "name": "PURPLE RAIN 1,2,4,3",
@@ -15122,7 +15396,9 @@
           10
         ],
         "total": 26
-      }
+      },
+      "mod_damage": "9,12,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,1,3+4": {
       "name": "PURPLE RAIN 2,1,3+4",
@@ -15163,7 +15439,9 @@
           8
         ],
         "total": 18
-      }
+      },
+      "mod_damage": "13,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,2,3,4": {
       "name": "PURPLE RAIN 2,2,3,4",
@@ -15206,7 +15484,9 @@
         ],
         "total": 47
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "13,18,31",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,4": {
       "name": "PURPLE RAIN 3,4",
@@ -15240,7 +15520,9 @@
       "t7_on_hit": "-3",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_187",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1+2,3+4": {
       "name": "PURPLE RAIN 1+2,3+4",
@@ -15309,7 +15591,8 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_189",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3+4,3+4": {
       "name": "PURPLE RAIN u/f+3+4,3+4",
@@ -15389,7 +15672,9 @@
           14
         ],
         "total": 32
-      }
+      },
+      "mod_damage": "8,8,10,10,10,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+4,3,4": {
       "name": "PURPLE RAIN f+4,3,4",
@@ -15473,7 +15758,9 @@
         "total": 32
       },
       "knockdown": true,
-      "input_note": "(or WR 3, 4, 3+4)"
+      "input_note": "(or WR 3, 4, 3+4)",
+      "mod_damage": "21,33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1+2,3,4": {
       "name": "PURPLE RAIN d/f+1+2,3,4",
@@ -15515,7 +15802,9 @@
         ],
         "total": 41
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "24,31",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+3,4": {
       "name": "PURPLE RAIN d+3,4",
@@ -15549,7 +15838,9 @@
       "t7_on_hit": "-1",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_195",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "D+4,4,4,4,3": {
       "name": "PURPLE RAIN D+4,4,4,4,3",
@@ -15593,7 +15884,9 @@
         ],
         "total": 41
       },
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "9,10,6,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+3+4,d+3+4": {
       "name": "PURPLE RAIN d+3+4,d+3+4",
@@ -15668,7 +15961,9 @@
           6
         ],
         "total": 14
-      }
+      },
+      "mod_damage": "10,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,4,3+4": {
       "name": "PURPLE RAIN b+2,4,3+4",
@@ -15709,7 +16004,9 @@
           12
         ],
         "total": 25
-      }
+      },
+      "mod_damage": "14,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,4,3+4~t7.lee": {
       "name": "PURPLE RAIN b+2,4,3+4",
@@ -15744,7 +16041,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_200",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "14,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+4,3": {
       "name": "PURPLE RAIN b+4,3",
@@ -15778,7 +16077,9 @@
       "t7_on_hit": "-3 (OC)",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_201",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "29",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b,B+4,3": {
       "name": "PURPLE RAIN b,B+4,3",
@@ -15813,7 +16114,9 @@
       "t7_on_ch": "-",
       "merge_source": "t7:lee_202",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "31(,31)",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.u/f+4,3": {
       "name": "PURPLE RAIN FC.u/f+4,3",
@@ -15882,7 +16185,9 @@
       "t7_on_hit": "-3",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_204",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.3,3,4": {
       "name": "PURPLE RAIN WS.3,3,4",
@@ -15957,7 +16262,9 @@
       "t7_on_hit": "-14",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_206",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "SSL.3+4,3": {
       "name": "PURPLE RAIN SSL.3+4,3",
@@ -16068,7 +16375,9 @@
           17
         ],
         "total": 27
-      }
+      },
+      "mod_damage": "13,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "HMS.1,4,3~t7.lee": {
       "name": "PURPLE RAIN HMS.1,4,3",
@@ -16102,7 +16411,9 @@
       "t7_on_hit": "-12",
       "t7_on_ch": "STUN",
       "merge_source": "t7:lee_210",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "13,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "HMS.u": {
       "name": "PURPLE RAIN HMS.u",
@@ -16170,7 +16481,8 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_212",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "HMS.b": {
       "name": "PURPLE RAIN HMS.b",
@@ -16204,7 +16516,8 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_213",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "HMS.1~t7.lee": {
       "name": "Freaker Jab",
@@ -16238,7 +16551,9 @@
       "t7_on_hit": "+7",
       "t7_on_ch": "+7",
       "merge_source": "t7:lee_214",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "HMS.1,1~t7.lee": {
       "name": "PURPLE RAIN HMS.1,1",
@@ -16405,7 +16720,9 @@
           17
         ],
         "total": 27
-      }
+      },
+      "mod_damage": "13,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "HMS.1,4~t7.lee.2": {
       "name": "PURPLE RAIN HMS.1,4",
@@ -16439,7 +16756,9 @@
       "t7_on_hit": "0",
       "t7_on_ch": "STUN",
       "merge_source": "t7:lee_219",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "13,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "HMS.2~t7.lee": {
       "name": "Scatter Blow",
@@ -16474,7 +16793,9 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:lee_220",
       "recovery_from": "same-notation T8 recv",
-      "launch": true
+      "launch": true,
+      "mod_damage": "31",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "HMS.3~t7.lee": {
       "name": "Scatter Kick",
@@ -16518,7 +16839,9 @@
       },
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "mod_damage": "28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "HMS.4~t7.lee": {
       "name": "Shin Slicer",
@@ -16553,7 +16876,9 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:lee_222",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "32",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "HMS.1+2~t7.lee": {
       "name": "Poison Touch",
@@ -16594,7 +16919,9 @@
           15
         ],
         "total": 25
-      }
+      },
+      "mod_damage": "16,16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "HMS.u/f+3": {
       "name": "PURPLE RAIN HMS.u/f+3",
@@ -16629,7 +16956,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_224",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "32",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "HMS.u/f+3,D": {
       "name": "PURPLE RAIN HMS.u/f+3,D",
@@ -16664,7 +16993,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_225",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "32",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "HMS.u/f+4": {
       "name": "Silver Circle",
@@ -16699,7 +17030,9 @@
       "t7_on_ch": "GROUND BOUNCE",
       "merge_source": "t7:lee_226",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,n~t7.lee": {
       "name": "Mist Step",
@@ -16774,7 +17107,9 @@
           9
         ],
         "total": 16
-      }
+      },
+      "mod_damage": "9,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,f,n~t7.lee": {
       "name": "PURPLE RAIN 1,2,f,n",
@@ -16808,7 +17143,9 @@
       "t7_on_hit": "-8",
       "t7_on_ch": "-8",
       "merge_source": "t7:lee_229",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "9,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,u+3,f,n": {
       "name": "Lee Somersault to Mist Step",
@@ -16927,7 +17264,9 @@
       "t7_on_hit": "-23",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_232",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,f,n": {
       "name": "Rear Cross Punch to Mist Step",
@@ -16961,7 +17300,9 @@
       "t7_on_hit": "-7",
       "t7_on_ch": "-7",
       "merge_source": "t7:lee_233",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+3,3,f,n": {
       "name": "Stinging Rush to Mist Step",
@@ -17036,7 +17377,8 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_235",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "HMS.1,1,f,n": {
       "name": "PURPLE RAIN HMS.1,1,f,n",
@@ -17104,7 +17446,8 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_237",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "MS.b,n,4~t7.lee": {
       "name": "Spinning Axe Kick",
@@ -17172,7 +17515,9 @@
       "t7_on_hit": "-1",
       "t7_on_ch": "-1",
       "merge_source": "t7:lee_239",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "MS.3,4~t7.lee": {
       "name": "Inverted Axle",
@@ -17214,7 +17559,9 @@
         ],
         "total": 20
       },
-      "launch": true
+      "launch": true,
+      "mod_damage": "24,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "MS.3+4~t7.lee": {
       "name": "Lee Sliding",
@@ -17249,7 +17596,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_241",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+3+4~t7.lee": {
       "name": "Mist Flash",
@@ -17283,7 +17632,8 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_242",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "R.d+1+2": {
       "name": "Rage Art",
@@ -17424,7 +17774,9 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lee_246",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "mod_damage": "108",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "t7.lee_247": {
       "name": "Death Touch",
@@ -17465,7 +17817,9 @@
         "total": 50
       },
       "knockdown": true,
-      "input_note": "descriptive: d/b+1+2 u, u, to cancel"
+      "input_note": "descriptive: d/b+1+2 u, u, to cancel",
+      "mod_damage": "27,60",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3~3:4": {
       "name": "Mist Trap Throw",
@@ -17878,7 +18232,9 @@
       "merge_source": "t7:lee_258",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Tackle) (or 2)"
+      "input_note": "(During Tackle) (or 2)",
+      "mod_damage": "9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "TACKLE.1,1": {
       "name": "PURPLE RAIN TACKLE.1,1",
@@ -18111,7 +18467,8 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_264",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u+3,D": {
       "name": "PURPLE RAIN u+3,D",
@@ -18145,7 +18502,8 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:lee_265",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     }
   },
   "restored_from_sweep_338": {
@@ -18440,7 +18798,17 @@
     "exclude_proxy": false,
     "moves_before": 569,
     "moves_after": 569,
-    "added": {},
+    "added": {
+      "purplerain_pull_20261023": {
+        "date": "2026-10-23",
+        "by": "moveset pull worker (T8 frame-data diff vs existing moveset)",
+        "moves_before": 569,
+        "moves_after": 569,
+        "added": [],
+        "t8_coverage": "156/156 T8 lee inputs reachable; 0 genuinely-missing",
+        "t7_coverage": "265/265 T7 lee rows by id; 0 genuinely-missing"
+      }
+    },
     "slots": 266,
     "slots_by_priority": {
       "signature": 2,
@@ -18861,5 +19229,61 @@
     "f,n": "MS",
     "ub,b": "HMS",
     "ws1": "HMS"
+  },
+  "canon_moves": [
+    {
+      "name": "Encore Bow",
+      "input": "u+4",
+      "display_input": "u+RK4",
+      "input_original": "`u+4`",
+      "anim_ref": "wh:purplerain:sig:encore-bow",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "legL",
+      "damage": 17,
+      "startup_frames": 19,
+      "canon": true,
+      "canon_owner": "PURPLERAIN",
+      "properties": {
+        "stance": "jumping",
+        "direction": "u",
+        "type": "strike",
+        "limb": "legR",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Four-Four Time",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:purplerain:sig:four-four-time",
+      "community_base": "game/assets/anim/oss/community/144_05.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "legR",
+      "damage": 18,
+      "startup_frames": 17,
+      "canon": true,
+      "canon_owner": "PURPLERAIN",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
   }
 }

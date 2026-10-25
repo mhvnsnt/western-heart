@@ -21,6 +21,10 @@
   justify-content: flex-start;
   padding: 0;
   overflow: hidden;
+  /* Menu tap/scroll fix (2026-10-24): the rail must pan vertically even
+     though body sets touch-action:none — the pan-y chain from list to
+     viewport must include this screen or some browsers refuse the pan. */
+  touch-action: pan-y;
   background: #0b0614;
   font-family: "Arial Narrow", "Helvetica Neue Condensed", "Trebuchet MS", system-ui, sans-serif;
 }
@@ -134,12 +138,20 @@
 .mm-list {
   position: relative; z-index: 1;
   flex: 1 1 auto; min-height: 0;
-  display: flex; flex-direction: column; justify-content: flex-end;
+  display: flex; flex-direction: column; justify-content: flex-start;
   gap: 2px; padding: 8px 0 calc(6px + env(safe-area-inset-bottom));
   overflow-y: auto; overflow-x: hidden; touch-action: pan-y;
+  -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
+  /* Scroll fix (2026-10-24): justify-content:flex-end used to bottom-anchor
+     the rail, but when the rail overflows a short phone screen the TOP
+     items clip above the scrollport and can never be scrolled to. The
+     first item's auto top margin (rule below) keeps the bottom-anchored
+     look when the rail fits, and collapses to 0 when it overflows, so
+     every item — top and bottom — stays scroll-reachable. */
   -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 26px);
   mask-image: linear-gradient(180deg, transparent 0, #000 26px);
 }
+.mm-list .mm-item:first-child { margin-top: auto; }
 .mm-item {
   position: relative; display: flex; align-items: center; gap: 14px;
   background: transparent; border: none; color: #8f8f96;
@@ -214,6 +226,7 @@
 .mm-back:active { transform: scale(.94); }
 .mm-cards {
   flex: 1; overflow-y: auto; touch-action: pan-y;
+  -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
   display: grid; grid-template-columns: 1fr; gap: 12px;
   padding: 16px 14px calc(20px + env(safe-area-inset-bottom));
   align-content: start;
