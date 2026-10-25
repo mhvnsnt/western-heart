@@ -401,3 +401,12 @@
   #screen-select .hint-btn { padding: 8px 9px; font-size: 10px; }
   #screen-select .select-header h2 { font-size: 15px; }
 }
+
+/* ---------- procedural portrait fallback (worker 61, 2026-10-22) ----------
+   Deterministic SVG portraits (game/js/fighter-portraits.js, ported from the
+   owner's AshLane generator) sit UNDER the portrait <img>: a real portrait
+   PNG always wins; fighters without one yet get a personality portrait
+   instead of an empty plate. */
+.portrait .svg-fallback { position: absolute; inset: 0; display: block; }
+.portrait .svg-fallback svg { width: 100%; height: 100%; display: block; }
+.portrait img { position: relative; z-index: 1; }
