@@ -98,7 +98,12 @@ class MusicEngine {
   pickTrack({ stage, mode, mood } = {}) {
     const lib = this.library;
     if (!lib || !Array.isArray(lib.tracks) || !lib.tracks.length) return null;
-    const T = lib.tracks;
+    /* First-match picks go through the same availability rule as the
+       rotation pools: a pending-download slot is NEVER picked, even
+       when it is the first stage/mode match. (Rotation pools already
+       filtered this way; pickTrack did not — a latent pick of a
+       file:null slot that only the procedural fallback saved.) */
+    const T = lib.tracks.filter(t => this._available(t));
     if (stage) {
       const hit = T.find(t => Array.isArray(t.stages) && t.stages.includes(stage));
       if (hit) return hit;
@@ -123,7 +128,11 @@ class MusicEngine {
      e.g. Tekken audio not yet downloaded) are never picked, so a missing
      file can never silence or break a fight: the pool just rotates over
      what exists, and _fallback() covers an empty pool. Never throws. */
-  _available(t) { return !!(t && (t.file || t.remote)); }
+  /* A track is available only with a file/remote AND a status other
+     than 'pending-download' (the 5 Tekken data-only slots). 'pending-file'
+     tracks (file field set, bytes not yet in the repo — Cape Jones MP3s)
+     stay available: a failed fetch falls back to the procedural loop. */
+  _available(t) { return !!(t && (t.file || t.remote) && t.status !== 'pending-download'); }
 
   _poolFor({ stage, mode } = {}) {
     const lib = this.library;
