@@ -394,6 +394,11 @@ export async function loadT3Clips(THREE, bankId = 'king') {
         rowData = {};
       }
     })());
+    // T3 reaction tables (hit-reaction wiring lane, 2026-10-24): the
+    // selection in fighter.js reads globalThis.WH_T3_REACTIONS, and
+    // nothing on main ever loaded it. Fetch it with the bank load so
+    // the tables are live by fight start; cached, so later banks pay nothing.
+    jobs.push(ensureT3Reactions().catch(() => null));
     // Decoded active window of every attack row (tools/anim/t3_hit_frames.py, lane D 2026-10-24):
     // { row: [active_first, active_last, stream_frames, attack_word, throw] } — fighter.js times the
     // clip on it and never plays a throw row for a strike (or a strike row for a throw).
@@ -453,6 +458,100 @@ export async function loadT3Clips(THREE, bankId = 'king') {
 
 /** Synchronous accessor for one bank's cached clips (null if not loaded). */
 export function getT3Clips(bankId = 'king') { return _t3clipCache[bankId] || null; }
+
+/* ============================================================
+   T3 HIT REACTION PACKS (hit-reaction wiring lane, 2026-10-24)
+   Selection lives in t3-reaction-select.js; this is the playback
+   half it was waiting on. A reaction slot is a move slot in the
+   defender's bank first, else the attacker's (DivmotMergeSharedSlots,
+   docs/anim/T3-REACTIONS.md) — the pack that defines it is the pack
+   that plays it. Packs are ~6.5 MB per bank, so the pack JSON is
+   fetched once per bank and only the picked slot is decoded and
+   retargeted, on demand, by fighter.js. Nothing here guesses a
+   pairing: a slot with no pack row returns null and the caller
+   keeps its existing generic fallback.
+   ============================================================ */
+
+// reactions.json bank dir -> T3_BANKS key (forestlaw_on_law has no
+// T3_BANKS entry, so it maps to nothing: UNMAPPED for pack playback,
+// its fighters play through the bank fighter.js binds them to).
+export const T3_DIR_TO_BANK = {};
+for (const [bankId, base] of Object.entries(T3_BANKS)) {
+  const dir = String(base).split('/').filter(Boolean).pop();
+  if (dir && !T3_DIR_TO_BANK[dir]) T3_DIR_TO_BANK[dir] = bankId;
+}
+
+const _t3reactPackPromises = {}; // bankId -> Promise<pack|null>
+const _t3reactPacks = {};        // bankId -> resolved pack (for the anchor scale)
+
+/** Fetch (once per bank) and cache the parsed reactions.json tables. */
+let _t3reactionsPromise = null;
+export function ensureT3Reactions() {
+  if (globalThis.WH_T3_REACTIONS) return Promise.resolve(globalThis.WH_T3_REACTIONS);
+  if (_t3reactionsPromise) return _t3reactionsPromise;
+  _t3reactionsPromise = (async () => {
+    try {
+      const anyBase = Object.values(T3_BANKS)[0] || 'assets/anim/t3/king_on_pantera_leoman/';
+      const base = anyBase.replace(/[^/]+\/$/, '');
+      const res = await fetch(base + 'reactions.json');
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      globalThis.WH_T3_REACTIONS = data;
+      return data;
+    } catch (e) {
+      console.warn('[WH-T3] reactions.json unavailable — hit reactions stay generic:', e.message || e);
+      _t3reactionsPromise = null;
+      return null;
+    }
+  })();
+  return _t3reactionsPromise;
+}
+
+/** Fetch (once per bank) a bank's reactions.pack.json, or null. */
+export function loadT3ReactionPack(bankId) {
+  if (!bankId || !T3_BANKS[bankId]) return Promise.resolve(null);
+  if (_t3reactPackPromises[bankId]) return _t3reactPackPromises[bankId];
+  const base = T3_BANKS[bankId];
+  _t3reactPackPromises[bankId] = (async () => {
+    try {
+      const res = await fetch(base + 'reactions.pack.json');
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const pack = await res.json();
+      _t3reactPacks[bankId] = pack;
+      return pack;
+    } catch (e) {
+      console.warn(`[WH-T3] ${bankId}/reactions.pack.json unavailable — reactions stay generic:`, e.message || e);
+      return null;
+    }
+  })();
+  return _t3reactPackPromises[bankId];
+}
+
+/** Anchor scale (mm -> rig metres) of an already-loaded pack, else null. */
+export function getT3ReactionPackScale(bankId) {
+  const pack = bankId ? _t3reactPacks[bankId] : null;
+  return pack && typeof pack.anchor_mm_to_rig_m === 'number' ? pack.anchor_mm_to_rig_m : null;
+}
+
+/** Decode one reaction slot into a bank-space THREE clip, or null.
+    noRise: set for air reactions (code 0x24) — the game's launch
+    physics owns the arc, so the clip must not lift the hips too. */
+export async function loadT3ReactionClip(THREE, bankId, slot, { noRise = false } = {}) {
+  if (!bankId || !T3_BANKS[bankId] || slot == null) return null;
+  await loadT3Clips(THREE, bankId); // skeleton + facing, cached after fight load
+  const pack = await loadT3ReactionPack(bankId);
+  if (!pack || !pack.rows) return null;
+  const key = '0x' + (slot & 0xffff).toString(16);
+  const rec = pack.rows[key];
+  if (!rec) return null; // UNMAPPED: slot planned but not baked in this pack
+  const data = decodePackRow(pack, rec);
+  if (_t3facing[bankId] && _t3facing[bankId].turned) turnData(data);
+  const clip = jsonToClip('react:' + slot, data, THREE);
+  if (!clip) return null;
+  clip.userData.loop = false;
+  if (noRise) clip.userData.noRise = true;
+  return clip;
+}
 
 /* ============================================================
    STRIKE PROFILE (lane D, 2026-10-24) — what a clip's own decoded
