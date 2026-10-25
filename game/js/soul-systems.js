@@ -8,7 +8,7 @@
    Per-fighter variants: game/data/soul-variants.json (tools/soul-variants/gen.mjs). */
 import { detectKindlePress } from './soul-kindle.js';
 export const RELEASE_COST = 100, REIHOU_COST = 50, RELEASE_DMG = 30, REIHOU_DMG = 6;
-export const LABELS = { seal: "TRIAL'S SEAL 試練の封" };
+export const LABELS = { release: 'NINE-SOUL RELEASE 九魂解放', ready: 'SOUL RELEASE READY', reihou: 'REIHOU 霊放', seal: "TRIAL'S SEAL 試練の封" };
 let VARIANTS = null;
 export function setVariants(v) { VARIANTS = v; }
 export async function loadVariants(url = new URL('../data/soul-variants.json', import.meta.url)) {
