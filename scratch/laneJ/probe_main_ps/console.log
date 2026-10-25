@@ -1,0 +1,38 @@
+[warning] [WH] No custom fighter found in either suite slot
+[warning] [WH] No custom fighter found in either suite slot
+[warning] [WHIntegration] physics unavailable: TypeError: Failed to resolve module specifier 'cannon-es'
+    at loadCannon (http://127.0.0.1:8797/game/js/physics.js:18:3)
+    at WHPhysics.init (http://127.0.0.1:8797/game/js/physics.js:33:21)
+    at http://127.0.0.1:8797/game/js/integration.js:72:13
+    at tryInit (http://127.0.0.1:8797/game/js/integration.js:32:24)
+    at async boot (http://127.0.0.1:8797/game/js/integration.js:70:3)
+[error] Failed to load resource: the server responded with a status of 404 (File not found)
+[warning] [WHIntegration] hitdetect unavailable: TypeError: Failed to resolve module specifier 'three-mesh-bvh'
+    at loadBVH (http://127.0.0.1:8797/game/js/hitdetect.js:30:3)
+    at WHHitDetect.init (http://127.0.0.1:8797/game/js/hitdetect.js:52:11)
+    at http://127.0.0.1:8797/game/js/integration.js:81:13
+    at tryInit (http://127.0.0.1:8797/game/js/integration.js:32:24)
+    at async boot (http://127.0.0.1:8797/game/js/integration.js:79:3)
+[warning] [WH] No custom fighter found in either suite slot
+[warning] [WH] No custom fighter found in either suite slot
+[warning] [WHIntegration] hitfx unavailable: TypeError: Failed to resolve module specifier 'three-nebula'
+    at loadNebula (http://127.0.0.1:8797/game/js/hitfx-nebula.js:29:3)
+    at WHHitFX.init (http://127.0.0.1:8797/game/js/hitfx-nebula.js:43:21)
+    at http://127.0.0.1:8797/game/js/integration.js:93:14
+    at tryInit (http://127.0.0.1:8797/game/js/integration.js:32:24)
+    at async boot (http://127.0.0.1:8797/game/js/integration.js:91:3)
+[warning] [WHIntegration] labels unavailable: TypeError: Failed to resolve module specifier 'troika-three-text'
+    at loadTroika (http://127.0.0.1:8797/game/js/labels3d.js:16:3)
+    at WHLabels.init (http://127.0.0.1:8797/game/js/labels3d.js:28:11)
+    at http://127.0.0.1:8797/game/js/integration.js:124:13
+    at tryInit (http://127.0.0.1:8797/game/js/integration.js:32:24)
+    at async boot (http://127.0.0.1:8797/game/js/integration.js:122:3)
+[warning] [WHIntegration] camdirector unavailable: TypeError: Failed to resolve module specifier 'camera-controls'
+    at loadCC (http://127.0.0.1:8797/game/js/camdirector.js:20:3)
+    at WHCamDirector.init (http://127.0.0.1:8797/game/js/camdirector.js:37:23)
+    at http://127.0.0.1:8797/game/js/integration.js:132:13
+    at tryInit (http://127.0.0.1:8797/game/js/integration.js:32:24)
+    at async boot (http://127.0.0.1:8797/game/js/integration.js:129:3)
+[error] Failed to load resource: the server responded with a status of 404 (File not found)
+[error] Failed to load resource: the server responded with a status of 404 (File not found)
+[warning] [WH-CS] pantera texture FAILED eye-classic-original: no material matched texture "King_Eye_D" / material "Modeleyes_Material003"
