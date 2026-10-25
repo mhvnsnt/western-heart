@@ -128,7 +128,63 @@ class AudioEngine {
     this._noise(t, 0.12, 0.18, 2600);
   }
 
-  grunt(pitch = 1) {
+  /* ---------- Voice banks (real character voice, file-based) ---------- */
+  // Pantera voice: King bank clips wired from game/assets/audio/voice/.
+  // grunt(pitch, fighterId): when fighterId has a loaded voice bank, a
+  // real voice clip plays instead of the procedural grunt. When no bank
+  // is loaded (or loading failed), the procedural grunt plays — never
+  // silence, never a wrong fighter's voice. Bank loading is
+  // fire-and-forget on first use, so the first grunt may still be
+  // procedural while the bank decodes; later grunts use the real voice.
+  async loadVoiceBank(fighterId) {
+    if (!this.ctx || !fighterId) return null;
+    if (!this._voiceBanks) this._voiceBanks = {};
+    if (this._voiceBanks[fighterId]) return this._voiceBanks[fighterId];
+    const p = (async () => {
+      try {
+        const res = await fetch(`assets/audio/voice/${fighterId}/manifest.json`);
+        if (!res.ok) return null;
+        const man = await res.json();
+        const set = man.sets && man.sets[man.preferred_set];
+        if (!set) return null;
+        const bufs = [];
+        for (const clip of set.clips) {
+          if (clip.duration_s > 2.0) continue; // grunt-sized only; roars reserved
+          try {
+            const r = await fetch(clip.file);
+            if (!r.ok) continue;
+            const ab = await r.arrayBuffer();
+            bufs.push(await this.ctx.decodeAudioData(ab));
+          } catch (e) { /* one bad clip never kills the bank */ }
+        }
+        return bufs.length ? { manifest: man, buffers: bufs, next: 0 } : null;
+      } catch (e) { return null; }
+    })();
+    this._voiceBanks[fighterId] = p;
+    p.then((b) => { this._voiceBanks[fighterId] = b; });
+    return p;
+  }
+
+  voiceGrunt(fighterId) {
+    if (!this.enabled || !fighterId || !this._voiceBanks) return false;
+    const bank = this._voiceBanks[fighterId];
+    if (!bank || typeof bank.then === 'function' || !bank.buffers || !bank.buffers.length) return false;
+    const buf = bank.buffers[bank.next % bank.buffers.length];
+    bank.next += 1;
+    const src = this.ctx.createBufferSource();
+    src.buffer = buf;
+    const g = this.ctx.createGain();
+    g.gain.value = 0.9;
+    src.connect(g); g.connect(this.sfxGain);
+    src.start(this.now);
+    return true;
+  }
+
+  grunt(pitch = 1, fighterId = null) {
+    if (fighterId) {
+      if (this.voiceGrunt(fighterId)) return;
+      if (this.ctx && (!this._voiceBanks || !this._voiceBanks[fighterId])) this.loadVoiceBank(fighterId);
+    }
     const t = this.now;
     this._osc('triangle', 150 * pitch, t, t + 0.16, 0.35);
     this._osc('sawtooth', 90 * pitch, t, t + 0.12, 0.15);
