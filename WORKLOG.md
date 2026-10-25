@@ -3075,3 +3075,21 @@ Proof: `node --check` on meshedit.js clean; `python3 tools/mesh-edit/tests/test_
 No Blender on this VM — real op runs need `tools/setup/setup_toolchain.sh` (follow-up).
 Follow-ups: vendored TransformControls, real Blender run on a roster GLB, w64/w65 handshake,
 one-line JOBS-tab tool-dropdown addition (creation-flow.js — worker 37's lane, documented).
+## 2026-10-22 — worker 58: archive Buffalo Bill A1/A2 + Theory A1/A2/A3 (Tripo immutable originals)
+- Archived 5 Tripo pulls as immutable source originals, dorowani #603 pattern:
+  `roster/buffalo-bill/attires/attire1/source/buffalo-bill-a1.glb` (20,391,004 bytes, fantasy character, ram horns),
+  `roster/buffalo-bill/attires/attire2/source/buffalo-bill-a2.glb` (21,441,832 bytes, horned humanoid, ram horns),
+  `roster/theory/attires/attire1/source/theory-a1.glb` (22,369,448 bytes, gothic cat girl),
+  `roster/theory/attires/attire2/source/theory-a2.glb` (18,773,404 bytes, superhero red cape),
+  `roster/theory/attires/attire3/source/theory-a3.glb` (20,769,628 bytes, dark fantasy spiked),
+  each with `manifest.json` (Tripo project UUID, share URL, byte/magic verification).
+- Proof renders: `docs/proof/buffalo-bill-theory-2026-10-22/` (5 T-pose PNGs, 1024x1024, visually verified).
+- Research note: `docs/research/buffalo-bill-theory-intake-2026-10-22.md`.
+- Immutable-original tags on archive commit: `buffalo-bill-a1-original`, `buffalo-bill-a2-original`,
+  `theory-a1-original`, `theory-a2-original`, `theory-a3-original`.
+- No canon entries invented — archive only; canon bridges deferred to owner.
+
+### Addendum — Theory Attire 4 (same session)
+- Archived `roster/theory/attires/attire4/source/theory-a4.glb` (21,511,628 bytes, black leather outfit 3d model,
+  Tripo owner `eqqq57218`) + `manifest.json` + T-pose proof `docs/proof/buffalo-bill-theory-2026-10-22/theory-a4.png`
+  (visually verified). Intake note + tag list updated (`theory-a4-original`).
