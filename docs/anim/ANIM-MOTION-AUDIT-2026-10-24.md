@@ -379,5 +379,107 @@ above (verified: remaining regression count is exactly these 10).
 - `tools/combat-qa/anim_motion_audit.py` — the audit tool (new).
 - `docs/anim/ANIM-MOTION-AUDIT-2026-10-24.md` — this doc (new).
 - `WORKLOG.md` — entry (prepended).
-- demonio.json, kinpo.json, scimitar.json: audited, NO changes (all their
+- kinpo.json, scimitar.json: audited, NO changes (all their
   basics are KEEP or UNMAPPED; no verified rewire exists).
+- demonio.json: 1+2 rewire in the 2026-10-24 follow-up section below
+  (this line superseded by that section).
+
+## 2026-10-24 follow-up — LP1+RP2 (1+2) chord decision
+
+Button names: LP1 = Left Punch = Tekken 1, RP2 = Right Punch = Tekken 2,
+LK3 = Left Kick = Tekken 3, RK4 = Right Kick = Tekken 4.
+
+After the main audit, a top-donor scan showed the `1+2__main` chord moves
+as the largest remaining fixable donor sources: 7 fighters, 102 HARD
+donees plus 7 HARD sources, all playing jump clips. The T3 tables attach
+the current rows to T3's own 1+2 (king row 35, bryan row 41, heihachi row
+37, jin row 32, yoshimitsu row 265) — so the current rows are T3-own
+attachments, not misassignments. But they measure as jump clips (except
+yoshimitsu 265) for standing strikes, so the file attachment and the
+standing-strike motion disagree. Each fighter below was judged on the
+same rewire rule as the main audit: same bank, standing stance, level
+match (or no single-level truth), filed limb = played limb under the
+audit's dominant-limb rule, reasonable travel, named file provenance
+(a T3-table move or a moveset move whose input is a LP+RP command).
+A candidate failing ANY check was rejected; no closest-match fill.
+
+### Rewired (2 moves)
+
+- demonio `1+2__main`: jin row 32 → row 92. Provenance: demonio moves
+  `d+1+2` (input d+1+2) and `1+2~t3.jin` (input 1+2_r107, a 1+2 variant)
+  both use row 92. Profile: standing, level h, dominant armL (audit
+  extension armL 0.53 / armR 0.38, both arms participate), travel 0.21,
+  active 10 vs move startup 12. Filed T7 level is `mmh` (multi-level
+  string in the source data; the audit treats it as no single-level
+  truth), so no level conflict. Result: source CLEAN (was HARD
+  jump-clip + MED posture). Pressable flips: 13 (4 notation donees —
+  signature `1+2`, `1+2_t8`, `1+2~t7.jin`, `1+2~t7.jin.2` — plus 9 donor
+  donees: ZEN.1+2, TACKLE.1+2, WR.1+2, FUFT.1+2, FLY.1+2, FLY.4,2,1+2,
+  f,n,d,d/f+4,1+2, MCR.1+2, MCR.4,2,1+2). Pressing LP1+RP2 now plays a
+  standing double-arm strike instead of a jump clip. No bindings
+  needed: all 9 donor donees have standing expectations.
+- diablo `1+2__main`: heihachi row 37 → row 133. Provenance: T3 table
+  key `b_r133`, command 4/6+LP+RP (a directional LP+RP move), and
+  diablo move `b_r133`. Profile: standing, level m, dominant armL
+  (audit extension armL 0.28 / armR 0.07 — right-arm radial extension
+  is low, disclosed; the file provenance is a directional LP+RP
+  command, and the audit's chord limb rule passes it via dominant
+  armL = filed armL), travel 0.23, active 10 vs move startup 12.
+  Result: source CLEAN (was HARD jump-clip + MED posture). Pressable
+  flips: 22 (4 notation donees — signature `1+2`, `1+2_t8`,
+  `1+2~t7.heihachi`, `1+2~t7.heihachi.2` — plus 18 donor donees,
+  including ws3,1+2, WS.3,1+2, FUJ.1+2, WAR.1+2, RAI.1+2, WR.1+2,
+  FUFT.1+2). No bindings needed: the only non-standing donees are
+  WS (while-standing) strikes, which a standing chord row suits; no
+  jumping donee exists for this row.
+
+Verification (audit tool, same code both sides, current main movesets):
+demonio pressable HARD 174 → 161, diablo pressable HARD 156 → 134.
+Every changed move is listed above; ZERO moves went from CLEAN to
+HARD, and no move changed rows except 32 → 92 (demonio) and 37 → 133
+(diablo). Only `t3_row`, the `(T3 <bank> rNN)` row reference in `name`,
+and `anim_ref` changed; no damage, startup, T7/T8 fields, slots, or
+other move fields were touched.
+
+### UNMAPPED, with file-absence evidence (5 fighters)
+
+- pantera `1+2__main` (king row 35): NO verified standing chord row.
+  Row 143 (standing, m, armL, travel 0.19, active 10 vs startup 18) has
+  no file provenance — it is not in the partial king table and no
+  moveset references it. Row 227 (T3 1+2 variant) fails limb (dominant
+  armR vs filed armL) and travel (0.91). Row 97 fails level (h vs m)
+  and timing (active 10 vs 18). Rows 116/131 have no provenance and
+  active 8 vs 18. UNMAPPED: no verified replacement row in-bank.
+- burger `1+2__main` (bryan row 41): NO verified standing chord row.
+  Row 129 (d/f+1+2 provenance, standing, m, travel 0.43) fails the
+  audit's limb check (dominant armR 0.46 vs armL 0.33, filed armL) —
+  rewiring to it would trade a jump HARD for a limb HARD, not a fix.
+  Row 132 is a back move (`b` input), not a LP+RP motion, and its
+  right arm barely moves (ext 0.07). Row 108 fails level (h vs m),
+  limb (armR), and travel (0.37 is fine but the other two fail).
+  Row 116 fails level (l vs m), timing (active 8 vs 19), and
+  provenance. UNMAPPED: no verified replacement row in-bank.
+- skull `1+2__main` (bryan row 41): same bryan-bank evidence as burger
+  (startup 17 vs 19; row 129 still fails limb, row 132 still a back
+  move). UNMAPPED: no verified replacement row in-bank.
+- kinpo `1+2__main` (jin row 32): NO verified standing chord row.
+  Row 134 is a back move (`b` input), dominant armR (limb fail),
+  travel 0.58. Rows 92/105 (the demonio rewire) fail timing for kinpo
+  (active 10 vs startup 16). UNMAPPED: no verified replacement row
+  in-bank.
+- scimitar `1+2__main` (jin row 32): same jin-bank evidence as kinpo
+  (startup 18; rows 92/105 active 10 vs 18). UNMAPPED: no verified
+  replacement row in-bank.
+
+### No change needed (1 fighter)
+
+- phantom `1+2__main` (yoshimitsu row 265): NO ACTION. Row 265 passes
+  the audit (standing, m, active 22 = startup 22, zero flags) and all
+  33 donor donees are CLEAN. The T3 table attaches row 265 to Yoshi
+  1+2. Rewiring would risk 33 clean donees for no flagged fault; the
+  1.51 m retreat travel is not flagged by any audit rule.
+
+### Totals after this follow-up
+
+Pressable HARD: demonio 174 → 161, diablo 156 → 134 (combined −35,
+0 regressions). All other fighters unchanged by this follow-up.
