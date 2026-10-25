@@ -54,7 +54,7 @@ nothing is renamed.
 | Power Crush | RENAME-PENDING | Same as Rage Art. The audit's implementation question (is armored-attack behaviour present generically?) is unchanged by this message. |
 | V-System | RENAME-PENDING | Umbrella decided to change; member names are NOT yet picked (see still-open list). |
 | Break mechanics + guard-breaking mechanics | SHARED-NAME-PENDING | ONE term covers both, not two separate names. Owner: "can be called the same thing". The term itself is NOT yet picked. |
-| Rage (low-HP state itself) | OPEN/UNDECIDED | NOT renamed in this message. Do NOT assume it changes with Rage Art / Rage Drive. |
+| Rage (low-HP state itself) | LOCKED 2026-10-24 21:46 CDT | Short name Rinne (輪廻); full name Rinne Tensei (輪廻転生); Tensei (転生) also acceptable as a short form. See the 2026-10-24 21:46 CDT section below. Supersedes the OPEN/UNDECIDED label from 21:38 CDT. |
 | Screw | EXPLAINED-NOT-NAMED / MECHANIC-NOT-ON-MAIN | T7 spinning-knockdown extender. WH on main has NEITHER Screw nor Tornado and uses T6 Bound instead of Screw. A WH name is needed only when/if the mechanic is implemented. |
 | Tailspin | EXPLAINED-NOT-NAMED / MECHANIC-NOT-ON-MAIN | T8's rename of Screw. Not a separate WH item to name unless/until implemented. |
 | Tornado | EXPLAINED-NOT-NAMED / MECHANIC-NOT-ON-MAIN | T8's spinning-air extender. Missing per gap analysis. This explanation supersedes this audit's earlier shorthand that called Tornado "T8's rename of Screw" — Tailspin is the T8 rename of Screw. |
@@ -95,6 +95,113 @@ nothing is renamed.
   i.e. Right Punch + Left Kick, Tekken 2+3, vs 2+3+context —
   owner/combat lane to confirm).
 
+## Owner decisions — 2026-10-24 21:46 CDT (Rinne lock; docs only, NO wiring yet)
+
+Recorded exactly from the owner's 2026-10-24 21:46 CDT
+message. This section changes STATUS labels only. It does
+not rename any code tag, HUD string, or doc string, does
+not implement any mechanic, and does not wire Rinne into
+the game. Wiring is HELD until the naming lane confirms
+the code touchpoints listed at the end of this section.
+When wired, Rinne appears ONLY as a small HUD tag/gauge
+(full form Rinne Tensei where space allows) — NEVER as a
+big mid-fight banner. The popup law still applies.
+
+### Locked
+
+- Rage state (low HP, pre-death/reincarnation flare) is
+  now LOCKED: short name Rinne (輪廻); full name Rinne
+  Tensei (輪廻転生); Tensei (転生) also acceptable as a
+  short form. The Rage state moves from NEEDS NAME /
+  OPEN/UNDECIDED to LOCKED. Pronunciation note (voice
+  dictation only): the user pronounces it "Rene" — the
+  correct romanization is Rinne. Use Rinne in all text;
+  never use "Rene" as the name.
+
+### Reserved concept — future form, mechanic NOT designed, NOT wired
+
+- Amatsu Rinne (天津輪廻) = the extra-powerful /
+  leveled-up / transformed form of Rinne. RESERVED
+  CONCEPT ONLY. The mechanic is NOT designed yet ("we'll
+  try and figure out how to incorporate"). Do NOT
+  implement or wire it as a current system. It is recorded
+  here as a future form in this names doc ONLY. Amatsu
+  Rinne is NOT the Rage state name.
+
+### Banked name — reserved only, assigned to NOTHING
+
+- Ikari Jishin (怒り自身, "Rage Itself" in Japanese) =
+  BANKED for another thing. It is NOT the Rage state, and
+  it is NOT assigned to any system yet. Reserved name
+  only. Do NOT assign it to Rage Art, Rage Drive, Power
+  Crush, V-System, or anything else without explicit user
+  direction. Unassigned possibilities ONLY (never
+  assignments): it COULD be Rage Art, Rage Drive, Power
+  Crush, V-System, or something else — the user has not
+  said. This RESOLVES the tension flagged in PR #1085:
+  Ikari Jishin appearing both as a Japanese "Rage Itself"
+  candidate and as a Rage-state option. It now names
+  nothing yet.
+- Consequence for the 21:40–21:42 CDT options list below:
+  Rinne / Rinne Tensei / Tensei are no longer options —
+  they are the lock. Amatsu Rinne and Ikari Jishin are no
+  longer Rage-state options either — Amatsu Rinne is the
+  reserved future form, Ikari Jishin is the banked name.
+  The options list below is kept as history of what was
+  proposed 21:40–21:42 CDT; it no longer describes a live
+  pick.
+
+### Still proposed, NOT locked
+
+- Spin Juggle (descriptive name for Screw / Tailspin /
+  Tornado) remains PROPOSED, not locked. The user reacted
+  👍 to the message containing it but has NOT explicitly
+  confirmed it. A 👍 reaction is NOT confirmation. Keep it
+  in OPTIONS-PENDING until the user says so explicitly.
+  Do NOT record it as locked; do NOT rename code/HUD/docs
+  strings to it.
+
+### Unchanged by this message
+
+- KEEP (2026-10-24 21:38 CDT): Wall Break, Floor Break,
+  Balcony Break — unchanged.
+- RENAME-PENDING (2026-10-24 21:38 CDT): Rage Art, Rage
+  Drive, Power Crush, V-System — unchanged; new names
+  still NOT picked, options still owed to the user.
+- SHARED-NAME-PENDING (2026-10-24 21:38 CDT): break
+  mechanics + guard-breaking mechanics, one term — still
+  NOT picked.
+- All other still-open items from PR #1085 are preserved,
+  NOT dropped: Bound; Slow-mo finish; WWE entrance-tool
+  repurpose; V-System members V-Skill / V-Trigger /
+  V-Reversal / V-Shift (including V-Skill/parry); Urge
+  Smash tension (still open — this task does NOT resolve
+  it; owner to confirm); proposed Soul Kindle for Ki
+  Charge and Soul Relay for Tag; Nine-Soul Climax vs
+  Release variance; 魂 ACTION chord question (RP2+LK3,
+  i.e. Right Punch + Left Kick, Tekken 2+3, vs
+  2+3+context).
+- NOTHING here blocks the #1076 popup deploy — and at the
+  time of this commit #1076 has in fact merged to main
+  (merge 0f19b91e9f27b27ed5c20955dfc31c2bdb5a92c0), so
+  this docs PR sequences AFTER it. This PR is docs-only,
+  and banners are already gone regardless of naming.
+
+### Code touchpoints LISTED for future wiring — NOT changed in this PR
+
+The following sites were found by searching main; they are
+listed here so the wiring lane can confirm them. NO file
+below was edited in this PR, and no string below was
+renamed to Rinne in this PR:
+
+- `game/js/rage.js` (checked on current main after the #1076 merge) — Rage header and comments, `RAGE_THRESHOLD = 0.25`, `isRaging` check, `RageSystem` per-match director, `ui.setRage` calls. The old `ui.banner('RAGE')` call site is GONE on current main (removed by the #1076 popup deploy): `update()` now applies the rage aura + health-bar tag only, with the comment "No center-screen text — Tekken shows rage via red aura + red lifebar only". Any future Rinne HUD tag uses this small tag/gauge path only; it must NOT become a big mid-fight banner.
+- `game/js/main.js` — UI `setRage(id, on)` (the HUD tag/gauge hook; toggles the `${id}-rage` health-bar element class `on`, i.e. `p1-rage` / `p2-rage`).
+- `game/js/fighter.js` — `_rageOn` state flag and `setRageAura(on)` (the aura hook).
+- `game/js/soul-systems.js` — Reihou: `canReihou` checks the foe's `_rageOn`, and firing purges the foe's rage for the round (`_rageUsed`).
+- `docs/design/SOUL-SYSTEMS.md` — the RAGE row and the "Reihou is the counter to rage" sentence (to be reworded to Rinne when wired, not now).
+- This audit doc itself — the Rage (state) rows and the Options section above (updated in this PR only as status labels, not as code wiring).
+- NOT a state touchpoint: the synthesized `RAGE ART` / `RAGE DRIVE` move names in `game/js/rage.js` belong to the still-RENAME-PENDING Rage Art / Rage Drive items, not to the Rinne state lock. Wiring the Rinne state tag does NOT rename them.
+
 ## Options pending — user 2026-10-24 21:40–21:42 CDT (ALL PROPOSED, NONE DECIDED)
 
 This section is SEPARATE from the 2026-10-24 21:38 CDT
@@ -102,6 +209,14 @@ decisions above. Nothing here is decided, wired, or renamed.
 Every item carries "user pick pending". Do NOT present any
 option below as a final name, and do NOT rename code, HUD,
 or doc strings to any of them.
+
+SUPERSESSION NOTE 2026-10-24 21:46 CDT: the Rage-state
+options below are SUPERSEDED as a live pick — see the
+2026-10-24 21:46 CDT section above. Rinne / Rinne Tensei /
+Tensei are now the LOCKED Rage state name; Amatsu Rinne is
+the reserved future form; Ikari Jishin is banked and names
+nothing yet. The Spin Juggle proposal below is NOT
+superseded — it remains PROPOSED, not locked.
 
 ### Rage state (low HP) — direction + options (user pick pending)
 
@@ -123,17 +238,18 @@ or doc strings to any of them.
   options below, and the owner pick will clarify.
 - Options delivered 2026-10-24 21:42 CDT — USER PICK
   PENDING on each, verbatim:
-  1. Rinne (輪廻) — user pick pending.
-  2. Rinne Tensei (輪廻転生) — user pick pending.
-  3. Tensei (転生) — user pick pending.
+  1. Rinne (輪廻) — user pick pending 21:40–21:42 CDT; LOCKED 2026-10-24 21:46 CDT (see 21:46 CDT section).
+  2. Rinne Tensei (輪廻転生) — user pick pending 21:40–21:42 CDT; LOCKED 2026-10-24 21:46 CDT as the full name.
+  3. Tensei (転生) — user pick pending 21:40–21:42 CDT; LOCKED 2026-10-24 21:46 CDT as an acceptable short form.
   4. Amatsu Rinne (天津輪廻, constructed compound from real
-     words, not a set phrase) — user pick pending.
-  5. Ikari Jishin (怒り自身) — user pick pending.
-- Status effect: NONE. The Rage state remains
-  OPEN/UNDECIDED from 2026-10-24 21:38 CDT. These are
-  options under that status, not a rename. Do NOT present
-  any of them (including Ikari Jishin or any Rinne option)
-  as the Rage state name.
+     words, not a set phrase) — user pick pending 21:40–21:42 CDT; RESERVED FUTURE FORM 2026-10-24 21:46 CDT, mechanic not designed, NOT the Rage state name.
+  5. Ikari Jishin (怒り自身) — user pick pending 21:40–21:42 CDT; BANKED 2026-10-24 21:46 CDT, reserved name only, assigned to NOTHING.
+- Status effect (updated 2026-10-24 21:46 CDT): the Rage
+  state is no longer OPEN/UNDECIDED — it is LOCKED as
+  Rinne / Rinne Tensei (Tensei acceptable short form).
+  The list above is now history of the 21:40–21:42 CDT
+  proposals, not a live pick. Do NOT present Amatsu Rinne
+  or Ikari Jishin as the Rage state name.
 
 ### Juggle spin (Screw / Tailspin / Tornado) — descriptive proposal (user pick pending)
 
@@ -166,7 +282,7 @@ or doc strings to any of them.
 | Immortal Qombat mode (Sun Rā) | 不死クォンバット Immortal Qombat | NAMED (distinct from Go Qombat — do not conflate) |
 | Ki Charge (T7) | Soul Kindle — PROPOSAL ONLY | NEEDS OWNER PICK |
 | Tag (TTT2) | Soul Relay — PROPOSAL ONLY | NEEDS OWNER PICK |
-| Rage (state) | — | OPEN/UNDECIDED (2026-10-24 21:38 CDT; not renamed in that message; options pending 21:40–21:42 CDT — user pick pending, see Options section) |
+| Rage (state) | Rinne 輪廻 (full: Rinne Tensei 輪廻転生; Tensei 転生 also acceptable short form) | LOCKED 2026-10-24 21:46 CDT (was OPEN/UNDECIDED 21:38 CDT; options pending 21:40–21:42 CDT, now resolved — see 21:46 CDT section; pronunciation note: user says "Rene" by voice dictation, correct romanization Rinne) |
 | Rage Art | — | RENAME-PENDING (2026-10-24 21:38 CDT; new name not yet picked) |
 | Rage Drive | — | RENAME-PENDING (2026-10-24 21:38 CDT; new name not yet picked) |
 | Power Crush | — | RENAME-PENDING (2026-10-24 21:38 CDT; new name not yet picked; implementation question unchanged) |
@@ -331,7 +447,7 @@ None is canon until the owner picks it. Each row states
 what was searched so the owner can see the gap is real.
 
 ### Rage (state: ≤ 25% HP, once per round)
-> STATUS UPDATE 2026-10-24 21:38 CDT: OPEN/UNDECIDED — not renamed in that message; do not assume it changes with Rage Art / Rage Drive. Options pending 2026-10-24 21:40–21:42 CDT (user pick pending) — see the Options section above; none is the name.
+> STATUS UPDATE 2026-10-24 21:46 CDT: LOCKED — Rinne (輪廻), full name Rinne Tensei (輪廻転生), Tensei (転生) also acceptable as a short form. Pronunciation note (voice dictation only): the user pronounces it "Rene" — correct romanization is Rinne; never use "Rene" as the name. This supersedes the 2026-10-24 21:38 CDT OPEN/UNDECIDED label and the 21:40–21:42 CDT options-pending label. The options below (Trial Wrath, Last Ember, Soul Blaze) are superseded audit history, NOT picks. Amatsu Rinne (天津輪廻) is a RESERVED future form (mechanic not designed, not wired); Ikari Jishin (怒り自身) is BANKED (reserved name only, assigned to nothing). Code/HUD wiring is HELD until the naming lane confirms the touchpoints listed in the 21:46 CDT section; when wired, small HUD tag/gauge only, never a big mid-fight banner.
 - Found as Tekken name only: `game/js/rage.js` L7 header,
   L25 (`RAGE_THRESHOLD = 0.25`), L34 (`isRaging`).
 - Options: (a) Trial Wrath — the trial's anger at the
@@ -515,12 +631,15 @@ what was searched so the owner can see the gap is real.
   Power Crush / V-System are RENAME-PENDING (decision made,
   replacement not picked); break + guard-breaking mechanics
   are SHARED-NAME-PENDING (one term, not picked); Rage
-  (low-HP state) is OPEN/UNDECIDED with five options
-  pending (Rinne, Rinne Tensei, Tensei, Amatsu Rinne,
-  Ikari Jishin — user pick pending); Screw / Tailspin /
-  Tornado are EXPLAINED-NOT-NAMED and the mechanic is not
-  on main, with the "Spin Juggle" descriptive proposal
-  pending (NOT decided). Still outstanding: Bound, Slow-mo
+  (low-HP state) is LOCKED 2026-10-24 21:46 CDT as Rinne /
+  Rinne Tensei (Tensei acceptable short form) — the five
+  21:40–21:42 CDT options are resolved as: Rinne family =
+  lock, Amatsu Rinne = reserved future form (mechanic not
+  designed), Ikari Jishin = banked name (assigned to
+  nothing); Screw / Tailspin / Tornado are
+  EXPLAINED-NOT-NAMED and the mechanic is not on main,
+  with the "Spin Juggle" descriptive proposal pending (NOT
+  decided — a 👍 reaction is not confirmation). Still outstanding: Bound, Slow-mo
   finish, WWE entrance-tool repurpose, V-System members,
   Soul Kindle + Soul Relay proposals, Climax/Release
   variance, 魂 ACTION chord confirmation. None are decided
