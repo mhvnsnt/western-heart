@@ -103,3 +103,15 @@
   field conflict. Verified after the edit: 0 T8 anims, 0 MOD mismatches,
   quarantine counts unchanged (demonio 93, diablo 66), diablo 4~3 neutral
   restore intact.
+
+## Combat-systems re-sync (2026-10-25): main's pantera annotations merged in
+- Main's PR #1045 combat-systems lane changed 3 pantera entries after
+  this PR's base (powerCrush/screw annotations from wavu T7 data):
+  SS.2 gained screw=true + screw_source, db+1+2 and uf+3+4 gained
+  powerCrush=true + powerCrush_source. This branch's pantera was
+  re-patched from main's new pantera with the same scripted rules
+  (T8 purge + MOD sync + quarantine + restores); the re-patch differs
+  from the branch pantera in ONLY those 3 entries, quarantine identical
+  (106), 0 T8 anims, 0 MOD mismatches. ui_sources: main dropped one
+  screen-menu source line (Base_OnlineMenu.png); this branch follows
+  main (screen-menu keeps 7 sources, still sourced).
