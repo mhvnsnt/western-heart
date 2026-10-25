@@ -3075,6 +3075,28 @@ Proof: `node --check` on meshedit.js clean; `python3 tools/mesh-edit/tests/test_
 No Blender on this VM — real op runs need `tools/setup/setup_toolchain.sh` (follow-up).
 Follow-ups: vendored TransformControls, real Blender run on a roster GLB, w64/w65 handshake,
 one-line JOBS-tab tool-dropdown addition (creation-flow.js — worker 37's lane, documented).
+## 2026-10-23 ~19:30 CDT — Future Tech prototyping: SCRIPT + AdaHuman/GAIA integration design
+
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate"
+
+**Scope:** Future Tech prototyping lead lane — items 9 (SCRIPT) and 10 (AdaHuman/GAIA) from `docs/research/CUTTING-EDGE-SCOUT-2026-10-23.md`. Both are research-stage (no public code); the deliverable is integration architecture + contract code, per the lane brief ("If no code is available, the design docs ARE the deliverable").
+
+**Code-availability verification (2026-10-23):**
+- SCRIPT (arXiv:2605.22894): no GitHub repo (API search), arXiv page has no code link; paper says "Our code will be publicly available for future research". NOT released.
+- AdaHuman (arXiv:2505.24877, ICCV 2025): no GitHub repo (API search); project page (nvlabs.github.io/AdaHuman) says "Code and models will be publicly available for research purposes", no link. NOT released.
+- GAIA (SIGGRAPH 2025): project page (research.nvidia.com/labs/amri/projects/gaia) is research-demonstration only — no code/model links. NOT released.
+
+**Delivered (all new files, 0 deletions, nothing in `game/`):**
+- `docs/research/SCRIPT-INTEGRATION-2026-10-23.md` — JAST-DiT architecture, exact I/O contract (s_t∈R^358, a_t∈R^69, CLIP text, receding-horizon), where-it-wires-in table (describe-a-move flagship; NOT live combat/phone), inference-service REST spec, canon-safe prompt builder rules, frame-data anchoring, whole-roster style-hint table, code-drop checklist, license transparency.
+- `docs/research/PHOTO-TO-FIGHTER-2026-10-23.md` — AdaHuman deep dive (single photo → A-pose 3DGS), GAIA deep dive (identity/expression disentanglement, 43 FPS on RTX A6000), the 3DGS→mesh→rig critical path (SuGaR/2DGS/GOF/MVS options, Inria/MPII NC flag), 7-stage pipeline with consent/adult/no-famous-faces gates, GPU requirements table, companion note to FACE-SCAN-PHOTO-TO-3D-2026-10-23.md (face lane stays the wired-now path).
+- `tools/script-adapter/` — `script_contract.py`, `prompt_builder.py` (canon filter: minors/sexual/famous-names rejected), `smpl_to_wh.py` (69-dim SMPL→WH bone map, action-stream keyframe baking @60fps, wh-anim/1 envelope defaulting to `"set": "SHOW"`), `client.py` (REST client + in-process stub server), `README.md`, `tests/test_script_contract.py` — **22/22 pass** (synthetic data).
+- `tools/photo-to-fighter/` — `stages.py` (IntakeSpec→SplatAvatar→GameMesh→RiggedFighter→TexturedFighter→PhotoFighter contracts), `likeness_policy.py` (gates raise, never warn), `pipeline.py` (injectable backends + stubs), `README.md`, `tests/test_pipeline_contract.py` — **16/16 pass** (stub backends).
+
+**License transparency:** NVIDIA research code → expected NVIDIA Source Code License-NC (non-commercial, research/evaluation only; verified license text via nvlabs.github.io/stylegan2/license.html). NC-licensed code/weights never enter `game/` or ship — research lane only. This PR's code is WH-original (repo license), contains no NVIDIA code/weights/artifacts.
+
+**Anti-clobber:** sparse checkout (3% of files) — NO local commit. Payload built via Git Database API on current main tree: additions only, 0 deletions. Branch `docs/futuretech-script-phototofighter-20261023`, PR with 6-section body.
+
+**ALL CHARACTERS ARE ADULTS:** enforced in `prompt_builder.canon_filter()` (SCRIPT prompts) and `likeness_policy.check_adult()` (photo intake) — both raise, no override path.
 ## 2026-10-22 — worker 58: archive Buffalo Bill A1/A2 + Theory A1/A2/A3 (Tripo immutable originals)
 - Archived 5 Tripo pulls as immutable source originals, dorowani #603 pattern:
   `roster/buffalo-bill/attires/attire1/source/buffalo-bill-a1.glb` (20,391,004 bytes, fantasy character, ram horns),
