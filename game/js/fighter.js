@@ -21,7 +21,7 @@ import * as THREE from 'three';
 import { assets } from './assets.js';
 import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK, T3_BANKS,
   clipStrikeProfile, clipHitWindow, bankAttackPool, attackLevelOfWord, attackClipTime, clipIsThrow, BUTTON_LIMB,
-  getReactionPack, getReactionClip } from './t3anims.js';
+  loadT3ReactionClip, getT3ReactionPackScale, loadReactionPack, getReactionPack, getReactionClip } from './t3anims.js';
 import { selectThrow, resolveThrowClips, throwBreaks, throwDamageTimeSec, throwPairDurationSec,
   escapePairFor, anchorAt, sharedFramePos, throwQuadrant, attemptRowForInput, hexSlot, bankDirOf } from './t3-throw.js';
 import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove } from './movesets.js';
@@ -36,7 +36,7 @@ import { canonRootScale } from './canon-sizing.js';
 import { t8Frame, stunFromAdvantage } from './frame-tables.js';
 import { hitWordFor, attackPhase, moveReach, PressBuffer } from './combat-core.js';
 import { HURT_SEGMENTS, WEAPON_SEGMENTS, LIMB_RADIUS, fallbackHurts } from './hitbox.js';
-import { selectReactionSlot } from './t3-reaction-select.js';
+import { selectReactionSlot, reactionSlotBank } from './t3-reaction-select.js';
 
 // ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
 // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO in Western Heart. The 'jin' moveset family is now 'demonio'.
@@ -382,7 +382,7 @@ export class Fighter {
     this.state = 'idle'; this.stateT = 0;
     this.attack = null; this.attackName = null; this._attackPhase = 'startup';
     this._rmPrev = null; // root-motion cursor for the current attack (see _rootMotionApply)
-    this.hasHit = false; this._prevHitPoint = null; this._reactionSel = null; this.stun = 0; this.invuln = 0; this.dodgeDir = 0;
+    this.hasHit = false; this._prevHitPoint = null; this._reactionSel = null; this._reactLoading = null; this._reactChainDepth = 0; this.stun = 0; this.invuln = 0; this.dodgeDir = 0;
     this.dead = false; this.combo = 0; this._comboTimer = 0;
     this.tekken = new TekkenBuffer(charData.id); // strings / motion specials / directionals
     // Tekken states (2026-10-21, decoded T3 rules — see _guardBits/canBeHitBy):
@@ -726,6 +726,10 @@ export class Fighter {
       return;
     }
     this.t3actions = createT3Actions(this.mixer, clips, THREE);
+    // Reaction pack prefetch (hit-reaction lane): the JSON arrives
+    // in the background so the first hit's slot is usually decoded
+    // already; decoding itself stays on demand, one slot at a time.
+    try { loadReactionPack(THREE, bank); } catch (e) {}
     // Move rows retarget lazily on first use (same captured rest pose).
     // dir is the reactions.json banks key (the T3_BANKS folder name).
     this._t3 = { bank, clips: t3clips, model, modelKey, dir: bankDirOf(T3_BANKS[bank]) };
@@ -1644,7 +1648,7 @@ export class Fighter {
       this.meter = Math.min(this.maxMeter, this.meter + 4); // +4 soul on block
       if (this.hp <= 0) { this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || 1); return 'ko'; }
       this._reactionSel = this._pickReaction(move, attacker, { guarded: true, counter: false,
-        crouch: _wasCrouch, airborne: false, down: false });
+        crouch: _wasCrouch, airborne: false, down: false, forState: 'block' });
       return 'block';
     }
     let dmg = move.damage * attacker.stats.power / this.stats.defense;
@@ -1711,15 +1715,30 @@ export class Fighter {
       } catch (e) {}
     }
     this._reactionSel = this._pickReaction(move, attacker, { guarded, counter,
-      crouch: _wasCrouch, airborne: _wasAirborne, down: _wasDown });
+      crouch: _wasCrouch, airborne: _wasAirborne, down: _wasDown,
+      forState: this.state === 'knockdown' ? 'knockdown' : 'hitstun' });
     return counter ? 'counter' : 'hit';
   }
-  /* T3 reaction pick (PR #1003 data, t3-reaction-select.js). Runs only
-     when a loader has set globalThis.WH_T3_REACTIONS (parsed
-     reactions.json); without it returns null and the generic 'hit'
-     clip plays, as before. The slot itself plays only when a
-     'react:<slot>' action exists (pack-loader lane); this is the
-     selection half, not a playback claim. */
+  /* T3 reaction pick (PR #1003 data, t3-reaction-select.js; playback
+     wired by the hit-reaction lane, 2026-10-24). Runs only when a
+     loader has set globalThis.WH_T3_REACTIONS (parsed
+     reactions.json, fetched with the bank load in t3anims.js);
+     without it returns null and the generic 'hit' clip plays, as
+     before. The slot itself plays through _reactionActionName,
+     which resolves it defender-bank-first from the packs.
+     UNMAPPED here (existing fallback kept, never a guessed clip):
+     - wall splat: the decoded records carry no wall field or slot
+       (record_fields has no wall entry), so a wall hit keeps the
+       existing knockback; no wall reaction is invented.
+     - downOther (lying the other way, state 0x200): WH has no such
+       state, so downOther is always false in this pick.
+     - close-range reactions when the defender's reaction pack has
+       not loaded yet: the close distance is in T3 units and only
+       the pack's anchor scale converts it, so close stays false
+       until a pack is cached (packs prefetch at _bindT3).
+     - air kind 1 (slam, needs hitDirY) and kind 5 (launch-branch
+       only): WH move data carries neither, so they are never
+       picked here; kinds 0/2/3/4 below are the file's rules. */
   _pickReaction(move, attacker, o) {
     try {
       const R = globalThis.WH_T3_REACTIONS;
@@ -1734,13 +1753,127 @@ export class Fighter {
       const dx = attacker.root.position.x - this.root.position.x;
       const dz = attacker.root.position.z - this.root.position.z;
       const quadrant = Math.abs(dz) > Math.abs(dx) ? (dz > 0 ? 1 : 3) : (dx * this.facing > 0 ? 0 : 2);
+      // Close-range substitution (docs/anim/T3-REACTIONS.md): the
+      // fighters must be closer than close_reactions[closeIdx][1]
+      // T3 units, converted with the defender pack's anchor scale.
+      let close = false;
+      const closeIdx = row[1];
+      if (closeIdx && R.close_reactions && R.close_reactions[closeIdx]) {
+        const vBank = vDir ? this._bankIdForDir(vDir) : null;
+        const scale = vBank ? getT3ReactionPackScale(vBank) : null;
+        if (scale) close = Math.hypot(dx, dz) < R.close_reactions[closeIdx][1] * scale;
+      }
+      // Air kind (AirReactionKind): stick in kind 2 when already in
+      // an air reaction (kind 2 itself, or kinds 3/4 past frame 18
+      // at 30 fps ~ 0.6 s of state time); else the quadrant side
+      // kinds; else kind 0. Kind 1/5 are UNMAPPED (see header).
+      let airKind = 0;
+      if (o.airborne && R.air_kinds) {
+        const prev = this._reactionSel;
+        const airSlots = R.air_kinds.map((k) => k[1]);
+        if (prev && airSlots.includes(prev.slot) && (prev.slot === 3426 || this.stateT > 0.6)) airKind = 2;
+        else if (quadrant === 1) airKind = 4;
+        else if (quadrant === 3) airKind = 3;
+      }
       const sel = selectReactionSlot(R, row, { guarded: !!o.guarded, crouch: !!o.crouch, counter: !!o.counter,
-        airborne: !!o.airborne, down: !!o.down, quadrant });
-      return sel ? { ...sel, bank: vDir } : null;
+        airborne: !!o.airborne, down: !!o.down, quadrant, close, airKind });
+      if (!sel) return null;
+      this._reactChainDepth = 0;
+      return { ...sel, bank: vDir, defenderDir: vDir, attackerDir: aDir, forState: o.forState || null };
     } catch (e) { return null; }
   }
+
+  /* Reaction playback (hit-reaction wiring lane, 2026-10-24).
+     _ensureReactionAction fetches the owning bank's pack (once)
+     and retargets ONLY the picked slot into a 'react:<slot>' action
+     — defender bank first, attacker bank second, exactly as the
+     file's DivmotMergeSharedSlots lookup orders it. A slot no pack
+     defines returns null from the loader and the caller keeps its
+     generic fallback (UNMAPPED, never guessed). */
+  _ensureReactionAction() {
+    const rs = this._reactionSel;
+    if (!rs || !this._t3 || !this._t3.model) return;
+    const name = 'react:' + rs.slot;
+    if (this.t3actions[name] || this._reactLoading === name) return;
+    const R = globalThis.WH_T3_REACTIONS;
+    if (!R) return;
+    const ownerDir = reactionSlotBank(R, rs.defenderDir, rs.attackerDir, rs.slot);
+    const bankId = ownerDir ? this._bankIdForDir(ownerDir) : null;
+    if (!bankId) return; // UNMAPPED: owning bank has no pack path (forestlaw_on_law)
+    this._reactLoading = name;
+    loadT3ReactionClip(THREE, bankId, rs.slot, { noRise: rs.code === 0x24 })
+      .then((clip) => {
+        this._reactLoading = null;
+        if (!clip) return;
+        const rc = retargetT3Clips({ [name]: clip }, bankId, this._t3.model, THREE, this._t3.modelKey, [name]);
+        if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
+      })
+      .catch(() => { this._reactLoading = null; });
+  }
+
+  /* The reaction action to play this frame, or null for the caller's
+     generic fallback. Follows the file's continuation chain
+     (bank slots[].next) when a clip finishes, until a slot whose
+     next is itself — then the finished pose is held (_chainDone)
+     instead of replaying a generic clip. Block is the exception:
+     a finished guard reaction falls back to the block loop. */
+  _reactionActionName() {
+    const rs = this._reactionSel;
+    // A 'block' pick also matches while its blockstun runs, because
+    // receiveHit never _enters 'block': guarded hits land in idle,
+    // walk or crouch when the defender is holding back.
+    const stateMatch = rs && (rs.forState === this.state ||
+      (rs.forState === 'block' && this.stun > 0 &&
+        (this.state === 'idle' || this.state === 'walk' || this.state === 'crouch')));
+    if (!rs || !stateMatch) return null;
+    this._ensureReactionAction();
+    const name = 'react:' + rs.slot;
+    const a = this.t3actions[name];
+    if (!a) return null;
+    if (this._t3current === a) {
+      if (a.isRunning()) return name;
+      const R = globalThis.WH_T3_REACTIONS;
+      const ownerDir = R ? reactionSlotBank(R, rs.defenderDir, rs.attackerDir, rs.slot) : null;
+      const plan = ownerDir && R.banks[ownerDir] && R.banks[ownerDir].slots
+        ? R.banks[ownerDir].slots['0x' + (rs.slot & 0xffff).toString(16)] : null;
+      const next = plan ? plan.next : null;
+      if (next == null || next === rs.slot || this._reactChainDepth >= 8) {
+        if (this.state === 'block') return null;
+        this._reactionSel = { ...rs, _chainDone: true };
+        return null;
+      }
+      this._reactChainDepth++;
+      this._reactionSel = { ...rs, slot: next, field: 'chain' };
+      this._ensureReactionAction();
+      const nextName = 'react:' + next;
+      return this.t3actions[nextName] ? nextName : null;
+    }
+    return name;
+  }
+
+  /* Guard reaction override for locomotion states: a guarded hit
+     does not change state, so idle/walk/crouch check for a live
+     guard reaction before playing their locomotion clip. */
+  _guardReactionName() {
+    const rs = this._reactionSel;
+    if (!rs || rs.code !== 0x23 || this.stun <= 0) return null;
+    return this._reactionActionName();
+  }
+
   _knockout(dir) {
     this.dead = true; this.vx = dir * 5.5; this.vy = 6; this.onGround = false;
+    // KO collapse (docs/anim/T3-REACTIONS.md): a KO'd fighter plays
+    // the collapse slot 0xD66 from the file, not the generic ko clip,
+    // when the tables are loaded; otherwise the ko fallback below.
+    try {
+      const R = globalThis.WH_T3_REACTIONS;
+      const b = this._t3 && this._t3.bank, base = b && T3_BANKS[b];
+      const vDir = base ? base.split('/').filter(Boolean).pop() : null;
+      this._reactionSel = (R && R.collapse_slot != null)
+        ? { record: 0, field: 'ko', slot: R.collapse_slot, code: 0, push: null, angle: null,
+            bank: vDir, defenderDir: vDir, attackerDir: null, forState: 'ko' } : null;
+      this._reactChainDepth = 0;
+    } catch (e) { this._reactionSel = null; }
     this._queuedNext = null; this._stringGraceUntil = 0; // getting hit kills your string
     this._enter('ko'); this.stun = 999;
   }
@@ -2315,11 +2448,15 @@ export class Fighter {
     // REAL T3 clips per state (falls back to procedural if unavailable)
     switch (this.state) {
       case 'idle':
-      case 'walk':
+      case 'walk': {
+        // Guard reaction during blockstun overrides locomotion.
+        const grn = this._guardReactionName();
+        if (grn) { this._playT3Once(grn, 'react:' + this._reactionSel.slot); break; }
         // Animated bank stance / walk cycle — the living fighting idle.
         if (t3Active) this._playT3(t3Wanted, { loop: true });
         else this._stopT3();
         break;
+      }
       case 'attack': case 'vskill': case 'vreversal': {
         // The move's own row / closest real clip (_attackClipPlan), time-warped onto its frames.
         // V-Skill / V-Reversal ride the same attack presentation.
@@ -2332,31 +2469,53 @@ export class Fighter {
         }
         break;
       }
-      case 'block':
-        if (!this._playT3('block', { loop: true })) this._animBlock();
+      case 'block': {
+        // Guard reaction (record guard field, code 0x23) when the
+        // pack has it; otherwise the block loop, as before. When
+        // the guard clip finishes, the block loop resumes.
+        const rn = (this._reactionSel && this._reactionSel.code === 0x23) ? this._reactionActionName() : null;
+        if (rn) this._playT3Once(rn, 'react:' + this._reactionSel.slot);
+        else if (!this._playT3('block', { loop: true })) this._animBlock();
         break;
-      case 'crouch':
+      }
+      case 'crouch': {
+        // Guard reaction during blockstun overrides the crouch hold.
+        const grn = this._guardReactionName();
+        if (grn) { this._playT3Once(grn, 'react:' + this._reactionSel.slot); break; }
         // Bank crouch hold (T3 crouching stance, slot 40) — the posture lows/FC moves use.
         if (!(t3Active && this._playT3(t3Wanted, { loop: true, fade: 0.08 }))) { this._leanT.x = 0.25; this._stopT3(); }
         break;
-      case 'hitstun':
+      }
+      case 'hitstun': {
         this._leanT.x = 0.28;
-        // T3 reaction clip when the pack-loader lane has registered
-        // one for the picked slot; otherwise the generic 'hit' clip.
-        // (Selection lives in receiveHit/_pickReaction; playback of
-        // reactions.pack.json slots is the loader lane's job.)
-        { const rs = this._reactionSel;
-          const rName = (rs && this.t3actions['react:' + rs.slot]) ? 'react:' + rs.slot : 'hit';
-          this._playT3Once(rName, 'hit:' + Math.floor(this.stateT * 10)); }
+        // File reaction clip (stagger / crumple chain / counter
+        // reaction, per the picked record field) when its pack slot
+        // has loaded; otherwise the generic 'hit' clip (UNMAPPED
+        // fallback — the pairing is never guessed).
+        const rn = this._reactionActionName();
+        if (rn) this._playT3Once(rn, 'react:' + this._reactionSel.slot);
+        else if (!this._reactionSel || !this._reactionSel._chainDone) this._playT3Once('hit', 'hit:' + Math.floor(this.stateT * 10));
         break;
-      case 'knockdown':
+      }
+      case 'knockdown': {
         this._leanT.x = Math.min(0.9, this.stateT * 3.0);
-        this._playT3Once('launch', 'kd:' + Math.floor(this.stateT * 10));
+        // Launch / air / down reaction when the hit that caused
+        // this knockdown picked one; throw knockdowns stay generic
+        // here (the grapple lane owns throw victim playback).
+        const rn = this._throwAttacker ? null : this._reactionActionName();
+        if (rn) this._playT3Once(rn, 'react:' + this._reactionSel.slot);
+        else if (!this._reactionSel || !this._reactionSel._chainDone) this._playT3Once('launch', 'kd:' + Math.floor(this.stateT * 10));
         break;
-      case 'ko':
+      }
+      case 'ko': {
         this._leanT.x = Math.min(0.9, this.stateT * 3.0);
-        this._playT3Once('ko', 'ko:' + Math.floor(this.stateT * 10));
+        // Collapse slot 0xD66 + its file get-up chain when loaded;
+        // otherwise the generic 'ko' clip.
+        const rn = this._reactionActionName();
+        if (rn) this._playT3Once(rn, 'react:' + this._reactionSel.slot);
+        else if (!this._reactionSel || !this._reactionSel._chainDone) this._playT3Once('ko', 'ko:' + Math.floor(this.stateT * 10));
         break;
+      }
       case 'victory':
         this._playT3('win', { loop: true });
         break;
