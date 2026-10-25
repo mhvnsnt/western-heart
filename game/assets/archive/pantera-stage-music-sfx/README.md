@@ -9,7 +9,7 @@ Honesty note: the music-vs-SFX split for these 9 clips has NOT been verified by 
 ## Old name -> new name
 
 - `game/assets/voices/pantera/intro-01.ogg` (23172 bytes, blob `dfdd252a555209f568373578466e77b28478d6ee`) -> `game/assets/archive/pantera-stage-music-sfx/stage-music-sfx-intro-01.ogg`
-- `game/assets/voices/pantera/intro-02.ogg` (18395 bytes, blob `e41339278faaa8820083cce204cd772c3971a2f`) -> `game/assets/archive/pantera-stage-music-sfx/stage-music-sfx-intro-02.ogg`
+- `game/assets/voices/pantera/intro-02.ogg` (18395 bytes, blob `e41339278faaa8820083cce204cd772c3971a2f2`) -> `game/assets/archive/pantera-stage-music-sfx/stage-music-sfx-intro-02.ogg`
 - `game/assets/voices/pantera/win-01.ogg` (36483 bytes, blob `f16f1d0345de3874cc8665b92e2b73c7bd0d3557`) -> `game/assets/archive/pantera-stage-music-sfx/stage-music-sfx-win-01.ogg`
 - `game/assets/voices/pantera/win-02.ogg` (32203 bytes, blob `2bafc687c2f76f24419353d9226518d21e688eb4`) -> `game/assets/archive/pantera-stage-music-sfx/stage-music-sfx-win-02.ogg`
 - `game/assets/voices/pantera/taunt-01.ogg` (36412 bytes, blob `d8d2a0e33aac79dede940420b0ed89fb64bee493`) -> `game/assets/archive/pantera-stage-music-sfx/stage-music-sfx-taunt-01.ogg`
