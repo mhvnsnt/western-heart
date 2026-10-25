@@ -1,0 +1,22 @@
+name: canon-names
+# OWNER RULE (Oct 23 2026): imported names must use EMWH canon names in player-facing UI.
+on:
+  pull_request:
+  merge_group:
+    types: [checks_requested]
+permissions:
+  contents: read
+jobs:
+  canon-names:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          filter: blob:none
+      - run: node tools/canon/test.mjs
+      - env:
+          BASE: ${{ github.event.pull_request.base.sha || github.event.merge_group.base_sha }}
+          HEAD: ${{ github.event.pull_request.head.sha || github.event.merge_group.head_sha }}
+        run: python3 tools/canon/check.py "$BASE" "$HEAD"

@@ -2,6 +2,19 @@
 
 Living document. Updated every time the owner sets a directive. Newest first.
 
+## 2026-10-24 — Animation strategy: DECODED vs MADE
+
+- **Animation strategy (2026-10-24).** Every animation is DECODED or MADE, labelled as whichever it is, never the other. Full decision doc: `docs/decisions/2026-10-24-animation-strategy-decoded-vs-made.md`. Method doc: `docs/handoffs/COMBAT-RIGHT-WAY-2026-10-24.md`.
+- **DECODED animations (2026-10-24).** Motion bytes from a shipped game, with recorded source file, row/slot, and the exact move they belong to. In the repo today: Tekken 3 banks (22 banks, `game/assets/anim/t3/`) plus T3 hit reactions/throws (7,368 clips, PR #1003). Tekken 7 decoded animation coverage in the repo is 0 of 51 (`teardown/tekken7/TEKKEN7-ROSTER-COVERAGE.md`) — frame data is not animation, and no community dataset has move → animation IDs.
+- **MADE animations (2026-10-24).** Motion created for canon moves with NO Tekken equivalent. Methods, in order: adapt a decoded T7/T3 clip, blend decoded clips, build from the move's recorded properties (input in LP1/RP2/LK3/RK4 form, startup/active/recovery, hit level, range, damage), community libraries with recorded licence and provenance. Verification: property check + `node tools/anim/attack_anim_audit.mjs` (0 strikes on throw rows, 0 throws on strike rows, 0 generic fallbacks, string continuations checked too) + touch-play on the live build with screenshots viewed. A MADE clip is replaced by the real decoded clip the moment one exists.
+- **EXTRACTION vs CREATION decision tree (2026-10-24).** Tekken move exists → EXTRACT, never make or class-match; canon move with no Tekken equivalent → MAKE; neither specified → stop and get the source identified. Bans: no class-matching (a jumping punch is not a standing jab, even though both are strikes), no mislabelling (a T3 clip is T3, a MADE clip is MADE, a T7 clip is T7 only from a T7 extraction).
+- **Extraction paths (2026-10-24).** Live TKMovesets extraction from a running T7 (authoritative for T7, output to private repo `mhvnsnt/game-reverse-engineering`, never raw game files in the public repo); mot.bin RE in parallel as backup; Steam pak extraction as the heavy fallback; TTT2/T6/T5/T3 only where the character exists in that game (T6 `DATA401` still encrypted, T5 motions named but not extracted — do not claim coverage that does not exist).
+- **940 blocked slots (2026-10-24).** Pond (Raven base), Ryusan (Lucky Chloe base), Megami (Jun base) — no decoded sets for these Tekken bases, 940 animation slots total (issue #866 comment `6389250251`). Paths to unblock: live TKMovesets extraction for Raven and Lucky Chloe; TTT2 extraction for Jun (Jun is a TTT2 character, not a T7 roster character, so the #866 TKMovesets request for Jun needs retargeting to TTT2) plus mot.bin RE in parallel. Wider request: live TKMovesets extraction for ALL T7 characters (#866 comment `6388949909`, King first). Ryuji and Vain Abel are flagged as also blocked in the same comment but their Tekken bases are unverified — they are NOT folded into the 940 until verified. Until extractions land, the 940 stay UNMAPPED in the editor; an honest UNMAPPED beats a wrong clip.
+- **Joystick fix confirmation (2026-10-24).** PR #1001 (dynamic mode, deadzone, any-touch=down fixed) and PR #1003 (touch joystick fix + decoded T3 hit reactions/throws + combat right-way doc) are BOTH merged. Do NOT duplicate them, do NOT re-apply them, do NOT open another joystick-centre fix without first reproducing the report on the live build with the touch probe. Remaining joystick work is live verification only.
+- **MOD damage confirmation (2026-10-24).** PR #1000 (8 fighters) + PR #1002 (remaining characters) are both merged — all T7 characters' moveset blocks are wired with TheBigTuna MOD damage values. Damage wiring is done; it is not animation progress, and a move can have the right damage and still play the wrong clip.
+- **Editor confirmation (2026-10-24).** PR #998 merged — the Create-A-Move List editor (`packages/creation-suite/src/movelist-editor.js`) shows an animation for every move that has one, or UNMAPPED with a specific reason for every move that does not. UNMAPPED is the work list, not something to paper over.
+- **Non-T7 characters directive (2026-10-24).** Owner: "for every character even the ones that aren't in t7." The same decision tree applies to every fighter: a non-T7 fighter's decoded motion comes from the game its base IS in, or from WWE/other game/community data with recorded source and licence, exact-move mapping, and its real label — never another fighter's moves or stance borrowed because a source is missing. Where no source exists, the move is MADE or stays UNMAPPED.
+
 ## 2026-10-22
 
 
@@ -89,6 +102,15 @@ Living document. Updated every time the owner sets a directive. Newest first.
   Tekken-like character creation and select screens; 100% teardown of all
   Tekken games (then other games' teardowns); the game feels like all Tekken
   games combined + our own stuff on top, then turned proprietary.
+- **Tekken 3 scope (user 2026-10-22 ~17:30 CDT).** Owner verbatim:
+  "We won't need Tekken 3 models — too much to decode for bad low-poly
+  quality. But everything else — the moves, the arenas, the menus — from
+  all the other Tekken games, get the models from all those." Rule:
+  Tekken 3 = pull everything EXCEPT character models (moves, movesets,
+  arenas/stages, menus, UI, systems, audio — yes; character models —
+  skip). All other Tekken games (T5, T6, TTT2, T7, T8) = pull everything
+  INCLUDING character models. Detail:
+  `docs/decisions/2026-10-22-tekken3-scope.md`.
 - **Hardened Mind Within mode.** Tekken "Devil Within"-style mode; each
   character selectable with their own storyline; wave/tournament feel like
   Mortal Kombat Royal Rumble in places. All fighters rigged and working for
@@ -252,7 +274,12 @@ Tripo 3D models show FIRST and foremost for every fighter; Tekken attires/models
 ## IDENTITY CANON + DEDUP LAW (2026-10-22, permanent)
 
 - **Rave = Kiko Tanaka = Ghost: ALL THE SAME PERSON.** One select entry only
-  ('rave'). Never split into separate fighters.
+  ('rave'). Never split into separate fighters. **RAVE is his main game/display
+  name** (owner 2026-10-23) — Kiko, Ghost, and Kiko Tanaka are all him,
+  documented in repo/canon.
+- **Cape Jones is the display name; Cyborg X stays in his deep canon** (owner
+  2026-10-23). Select entry 'cyborgx' shows CAPE JONES; 'Cyborg X' remains his
+  deep-canon identity in bios/canon.
 - **Mary Posa goes OVER Zafina.** One entry (MARIPOSA — repo canon name; see
   below); Zafina is never a separate fighter. Zafina's Tekken in-game model
   ladders BEHIND Mariposa's custom attires as a back-slot attire choice.
@@ -322,6 +349,17 @@ Wire it up from the teardowns (Def Jam BLAZIN' two-gate design: meter full + opp
 ## Protection rule (user decision 2026-10-22, permanent)
 Intro sequences and win taunts are never to be replaced. New systems layer on top or beside, never over.
 
+## INTEGRATION LAW (user directive 2026-10-22, permanent)
+Owner verbatim (2026-10-22): "Wire everything up that you pull in in a way that's aligned with the Tekken systems and menus. Don't just throw in a bunch of random menus and extra systems on top of stuff. Make it within submenus and subsystems of us trying to build into the Tekken teardown file direction of the layout of everything and the menus and all that. Everything that you pull in, set it up in a Tekken way."
+
+1. Every pulled asset/system is integrated INTO the Tekken menu/system structure — as submenus and subsystems, never as bolted-on random menus or extra systems piled on top of existing ones.
+2. Tekken is the architectural authority for layout, menus, flow — everything. New work follows the direction of the Tekken teardown files.
+3. No parallel systems competing with Tekken's structure — everything pulled in nests inside it.
+
+**End goal (owner-set):** "Keep setting up and pulling in everything from the Tekken games until my game has 100% of all the Tekken games wired up from the back end to the front end, everything." 100% Tekken coverage — every game, every system, backend to frontend.
+
+Decision log: `docs/decisions/2026-10-22-integration-law.md`.
+
 ## Rig repoint notes (2026-10-22, worker 50)
 
 - **KINPO A1 (done):** `kinpo` and `kinpo-attire1` MODEL_URLS keys repointed
@@ -350,3 +388,119 @@ Intro sequences and win taunts are never to be replaced. New systems layer on to
 **Transformation form (user's words):** "Million Eyes Demon" — red-skinned demon, million eyes, horns all over body. Red Super Saiyan-type aura with electricity and energy/ki around him.
 **Archive:** roster/dio/transformation/source/dio-transformation-million-eyes.glb (Tripo "demon creature 3d model", 23,422,084 bytes) + manifest.json, immutable-original annotated tag `dio-transformation-original` ("Restore point: these bytes never change"). Archive-only restore point — unrigged static, NOT wired into MODEL_URLS.
 **Transformation-sequence requirement (user's words — future rig/anim work):** the user wants the visual transformation sequence/form like all other character transformations — the in-game transformation animation/VFX when he transforms. Recorded for the rig/anim lane (not built by this archive): (1) transformation trigger, same system other character transformations use; (2) aura/electricity/ki VFX — red Super Saiyan-type aura with electricity and energy/ki is the VFX target; (3) form swap — base Dio swaps to the Million Eyes Demon form as the sequence resolves.
+## Chordz archive + blade transformation system (user directive 2026-10-22)
+
+- **Chordz = the emo guitarist. Moveset: Lars** (already claimed; Lars→Chordz ladder locked). Look: Edward Scissorhands — pale face, dark eye circles, face paint, black lipstick, straight jacket, crazy sideways hair. User's own words.
+- **Archived (immutable originals):** Stage 1 Normal was archived by PR #725 → `roster/chordz/attires/attire1/source/chordz-a1.glb` (21,913,940 bytes, byte-identical to this lane's pull; tag `chordz-a1-original` pending on #725's merge commit `13bd1d9`). PR #733 archives: Stage 2 (blades out of hands) → `roster/chordz/transformations/phase1/source/chordz-p1-edward-scissorhands.glb` (20,735,052 bytes, tag `chordz-p1-original`); Stage 3 (spiked ball of blades instead of hands) → `roster/chordz/transformations/phase2/source/chordz-p2-blade-spikes.glb` (21,751,348 bytes, tag `chordz-p2-original`); Stage 4 final form ("The Cutter Who Strums") → `roster/chordz/transformations/final/source/chordz-final-cutter-who-strums.glb` (24,748,736 bytes, tag `chordz-final-original`). All archive-only, unrigged statics, NOT in MODEL_URLS. Byte-verified md5s in each manifest.json. All four stages archived — nothing left in this batch.
+- **Blade transformation system (user design, 4 stages):** (1) Normal — no blades, emo guitarist look. (2) Stage 2 — blades shoot out of his hands (Edward Scissorhands). (3) Stage 3 — mass of blades all over hands, spiked ball of blades instead of hands. (4) Final form — Batman Who Laughs with knives ALL OVER body; only hair and smile visible; big knife across eyes (can't see eyes); razor blades in hair. **Mechanics:** gradual transformation with visual transformation sequences; strength and power INCREASE with each stage.
+- **All four stages archived — nothing left in this batch.** Rigging/skinning, visual transformation sequences, and per-stage power scaling remain FUTURE WORK for the rig/anim lane. Do not touch the archived source files; rework goes in new files/slots with a new restore-point tag.
+
+## Buffalo Bill / Ashes canon (2026-10-23, user directives verbatim)
+
+- "Google Bill $aber and build his bio from there and mix him into our canon" — BILL $ABER (underground hip-hop artist, Buffalo NY, b. James McClary 1996): ram-horn dreadlock aesthetic, dark aggressive horrorcore/trap metal energy.
+- "And he's 'Ashes' when robed, buffalo bill when not." — Two aspects, same fighter. Robe is a decision.
+- "He's the wizard gang leader of 9 wizards of Malakor City (inspired by malakor and malakortok vibe)" — Malakor City is user-authorized canon location.
+- "He controls magic flame and ashes"
+- "He has the strength of 1000 gods canon wise and is strong looking with the ram horn dread braids, and when robed his face is shrouded all u can see is a permanent smile and 2 little sparkly small eyes beneath the sheouded cowl on his ashes attire"
+- "Yes and when robed the ram horns are just braids from beneath the shroud hanging"
+
+## 9 Wizards of Malakor City (2026-10-23, user verbatim)
+
+"The 9 wizards are (ashes, static, cipher, echo, onyx, hollow, Sombra negra, theory, and Kiko tanaka/ghost/rave). Ashes red robe, cipher yellow robe, static blue robe, echo pink robe, onyx green robe, hollow orange robe, Sombra negra black robe, theory purple robe, Kiko white fur robe"
+
+- Ashes (leader, red) | Cipher (yellow) | Static (blue) | Echo (pink) | Onyx (green) | Hollow (orange) | Sombra Negra (black) | Theory (purple) | Kiko Tanaka/Ghost/Rave (white fur)
+- 6 of 9 are Ashlane characters (Static, Cipher, Echo, Onyx, Hollow, Sombra Negra).
+- Attire reference images: `roster/wizard-gang/attires/` (PR #757). Ashes references: `roster/buffalo-bill/attires/attire3/reference/` (PR #758).
+
+## Character naming (2026-10-23, user verbatim)
+
+- "Start calling cyborg x as cape Jones but leave cyborg x in the deep canon for him" — Display name: Cape Jones. Cyborg X stays in deep canon.
+- "Start calling Kiko rave, ghost, and Kiko tanaka" / "But Rave is his main game name it's just know all the others are him too" — Main game name: RAVE. Kiko, Ghost, Kiko Tanaka are documented as the same person in canon.
+- Cyborg X model: `game/assets/models/cape-jones.glb`. Rave models: `game/assets/models/kiko-tanaka.glb`, `kiko-tanaka_alt1.glb`, `rave.glb` (in game/assets/models/, not yet wired to roster dirs).
+## MOVESET LIBRARY SYSTEM (standing rule, 2026-10-22 — worker 47)
+
+- **Central library:** `game/data/moveset-library/` — one entry per move, namespaced IDs (`t3:<fighter>:row:<n>`, `wrestling:<mk-id>`, `wmxix:<id>`, `doa:<char>:<slot>`, `vf:<char>:<slot>`, `vf5:<char>:<slug>`, `wh:<slug>`). Organized by type, position, orientation, hit level, Tekken input, frames, damage, properties (`axes.json`). Schema: `schema.json` (additive over the v2 moveset-editor contract).
+- **Honesty:** every estimated field flagged in `provenance.estimated`. Auto-labels marked, never invented canon names. T3 rows carry `input: null` + raw words until the fidelity engine decodes them.
+- **Federation rule:** every non-Tekken move is wired to Tekken inputs on ingest. No wrestling control schemes ever reach the player.
+- **Per-fighter assembly:** `game/data/movesets/<fighter>.json` manifests REFERENCE library IDs (never copy). Swap = change ID, edit = `overrides`, save = the JSON file. Assembler: `game/js/moveset-library.js` (`assembleFighter()` → v2-contract moveset).
+- **Moveset Source Law is code:** `claimed-map.json` + `checkSourceLaw()` refuses pulls from claimed Tekken fighters unless an approved exception names them. Free: True Ogre, Lucky Chloe, Hwoarang, Raven, Jun Kazama, Craig Marduk, Roger Jr. (crew verifying). Exceptions: Zen=Twelve/SFIII, Deathfang=Iori, Cain-Elias=Kluger.
+- **Assembly workflow:** browse in `game/moveset-browser.html` (filter by axis → inspect → attach to Tekken slot → rename override → source-law check → save). Commit the manifest JSON. Rebuild banks reproducibly: `node tools/moveset-library/ingest.mjs`.
+- **Locked Ashlane→VF5:** Bannon→Jeffry, El Toro→Wolf (+1 clean aerial), Pablo→El Blaze (+powerhouse, comedy-whiff lucha attempts, Black Reign/Abyss dark finishers), NPC Finxsse→Lei-Fei. VF5 bases resolve when worker 45's bank lands.
+## EM-Jin naming convention (user directive 2026-10-22)
+Eastern Mind Jin is NOT Jin Kazama. In all files, docs, and code: "Jin (Eastern Mind)" or "EM-Jin" — never bare "Jin" where Kazama confusion is possible. (Correction: earlier "Gen (Eastern Mind)" was a mishearing.)
+
+## Multi-agent team protocol (user directive 2026-10-23, verbatim)
+
+"and this is how you should be working with the other IDEs and stuff like that to get stuff done and making this like a real development team of different IDEs and stuff like that to get stuff done faster this is how you should be doing it you should be like learning from how I'm doing it and logging it in the repo so we can keep work going on this autonomously all the time as much as we can for free while I'm using my paid things and credits and we can use all our free resources too"
+
+- Agents work as a real dev team: one finds the root cause, others build on top instead of duplicating.
+- Log the coordination pattern in the repo: `docs/AGENT-TEAM-PROTOCOL.md`.
+- Maximize free resources (VM, open-source, API, background agents); save the user's paid credits.
+- Keep work going autonomously around the clock.
+## DO THE WORK RIGHT, NOT FAST (user directive 2026-10-24)
+
+User said (verbatim):
+"Bro your bullshit me so hard, bro. Yeah, you changed. The grapple animation on one button. And you changed it from the grapple to a punch. But when I press it twice, it still plays the grapple animation like he got the person in a grapple and is delivering a grapple. And the punch that you put is a fucking jumping punch. Like, bro, why are you doing this so random? Did you not look at the files? Like. Bro let's talk about this bro before you keep working and bullshitting me because you've wasted my last 24 hours bro like you started working really bad like really really bad and you're you're really playing with me bro like let's talk about this why are you working so bad"
+
+"But why you know the right way to do it though why do you keep doing it wrong?"
+
+"Why do you keep doing that? And how to get you to stop doing that because you're you're not doing it fast you're being slow and wrong you're not even being fast and it's really like if someone was having a really bad day you would be making their day worse like if someone was on their last straw you would be giving them their last straw and sometimes I really feel like that's your goal"
+
+"But that's not you're not making it feel better for real. Like you're not actually making things better. What you just said your goal is you're not doing that you're actually making things feel worse and more frustrating I feel like that's your real goal because if your goal was to make things better you would take your time to do it all right and the quickest possible and optimized in the way that you know it should be done because we have so many tokens and if I put money into this if I bought more tokens and put money into this I would want better work and I'm using tokens to get the work out of this and you're doing terrible work"
+
+"Let's do this thre right way. Log all that in the repo and laws and rules and soul and agents MD and wherever else needed, verbatim"
+
+Rules derived from this directive:
+- Never optimize for appearance of progress over actual correctness.
+- Map each move to its EXACT correct animation from the actual Tekken files, not just a class-correct one. A jumping punch is not a jab, even if both are "strikes."
+- Verify before deploying. Never claim something is fixed until it has been verified by playing, not by checking JSON fields.
+- Never call something "fixed" when it is only "less broken."
+- Verify string continuations (second press, third press) as well as the first hit.
+- The user's tokens buy real work, not sloppy work. Slow and right beats fast and wrong every time.
+
+## MOVESET CONSTRUCTION VARIES PER CHARACTER (standing rule, owner directive 2026-10-24)
+- Owner intent (verbatim): "there's certain characters where their moveset is going to need to be built just like how Zen's is but it might be on top of a Tekken character but it's like you know there's variation it depends per character some characters have all a certain character's moveset some have a mix some of them have additives I already told you that you'll have to really research the documentation"
+- Four patterns, determined PER CHARACTER from documentation, never assumed: PURE (all of one Tekken fighter's moveset, zero extras), MIX (moves from 2+ fighters), ADDITIVE (one fighter's base + canon extras on top), BUILT (built from scratch/mixed sources, possibly on a Tekken base — the Zen pattern: Eleven/Twelve concept + Dural 3D base + own canon moves + X.COPY as one super).
+- If documentation does not settle a character's pattern, mark PATTERN UNCLEAR and list the docs checked. NEVER default an unclear character to pure. NEVER assume one pattern for all.
+- Audit of record: docs/MOVESET-PATTERN-AUDIT-2026-10-24.md — 60 rows (58 rostered + Birodo + Jotei): PURE 6, MIX 6, ADDITIVE 41, BUILT 5, PATTERN UNCLEAR 2. Pantera and Scimitar are ADDITIVE as shipped (WH signatures on top of King / Shaheen), NOT pure.
+## MIX PER CANON (standing rule, 2026-10-24 — Zui mix PR)
+
+- When canon says a fighter fights with 2+ styles, the moveset MUST reflect all of them.
+  Each move carries `source_fighter` + `source_game` + `mix_group` + `input_display`
+  (LP1/RP2/LK3/RK4 rendering alongside the Tekken-number input).
+- Collisions are resolved by stance-gating or alternate input (e.g. Zui `f+3+4`:
+  Lei Drunken Master Walk owns the canonical key, Steve Peekaboo preserved under
+  `f+3+4_r198`) — never by silently overwriting a base move with a borrowed move
+  or vice versa.
+- Sharing NEVER removes moves from the donor. Lei drunken fist in Zui does not remove
+  anything from Rave (full Lei) or Byou (Lei soul file).
+- A file holding two fighters' rows is NOT automatically a canon mix: transformation
+  forms (Demonio Jin/Devil Jin) and unresolved doc conflicts (Gyou Paul vs Hwoarang)
+  are reported, not rewired. Mimicry (Trader, DXMMII) is a system, not a move list —
+  flag NEEDS-DATA, don't fake a fixed mix.
+- Lei Wulong has no Tekken 7 data. Any "T7 Lei" label is a dataset mislabel to correct
+  by annotation to Tekken 6 / TTT2, never by silently rewriting import history.
+- Full audit: `docs/decisions/2026-10-24-zui-mix-per-canon.md`.
+## BUTTON NAMES: LP1, RP2, LK3, RK4 (user directive 2026-10-24)
+
+User said (verbatim):
+"you gotta stop talking about it like one and two. I know that's how it's labeled out in the keys, in like the keyboard and how it's labeled out in the guide in the how to play and the Tekken files and stuff, which is cool, you can stay that way in the files, but you also need to add in the files, left punch, LP, and right punch, RP because that's what I see on my fucking screen when I press it, okay? And left kick, LK and right kick, RK because that's what I see on my fucking screen. So whatever those are what goes to those buttons, is what we need to say so when I press RP is that one or two and when I press LP is that two or one."
+
+"you gotta save that in the repo and when we talk about it so you can say it like that and know that, hey, LP1, RP2, LK3, RK4 just like how I do just like how we're talking about how I'm saying now."
+
+Mapping:
+- LP1 = Left Punch = Tekken 1
+- RP2 = Right Punch = Tekken 2
+- LK3 = Left Kick = Tekken 3
+- RK4 = Right Kick = Tekken 4
+
+Rules:
+- Use LP1/RP2/LK3/RK4 format in ALL conversation with the user.
+- Files may keep 1/2/3/4 notation but must also show LP/RP/LK/RK alongside.
+- When the user presses RP2 on their screen, that is Tekken 2. When they press LP1, that is Tekken 1.
+## ZEN BASE (user decision 2026-10-24)
+- Zen is NEITHER Heihachi NOR Julia. Heihachi is Diablo's base; Julia is Nightwolf's base.
+- Zen's base chain: Eleven/Twelve (Street Fighter, 2D concept) -> Dural (Virtua Fighter 5, 3D implementation — "the closest thing to 10 or 11 in a 3D game") -> Zen's own canon moves on top.
+- X.COPY is ONE super (copies opponent briefly), NOT Zen's identity. Zen is not just a copycat.
+- Until VF5 Dural motion exists, Zen's bank is UNMAPPED (game/js/fighter.js FIGHTER_BANK zen: null). Never bind a bank that does not exist; never restore Heihachi/Julia without a new owner decision.
+- Full doc: docs/decisions/2026-10-24-zen-base-decision.md.

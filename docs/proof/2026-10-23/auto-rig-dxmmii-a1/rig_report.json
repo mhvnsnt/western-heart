@@ -1,0 +1,42 @@
+{
+ "input": "roster/dxmmii/attires/attire1/model.glb",
+ "output": "roster/dxmmii/attires/attire1/model-rigged.glb",
+ "tool": "tools/auto_rig/rig_tripo_static.py",
+ "validate": {
+  "checks": {
+   "valid_gltf": true,
+   "skinned_mesh": true,
+   "bones_present": true,
+   "height_ok": true,
+   "fingers_symmetric": true,
+   "stretch_ok": "unknown (no clips supplied)"
+  },
+  "pass": true,
+  "missing_bones": [],
+  "height_m": 1.8
+ },
+ "anim_check": {
+  "CMU135_04_boxing": {
+   "pass": false,
+   "failures": [
+    "2 bone(s) vary > 2.0% of rest length across frames (worst: Hips->RightPelvis 609.4%) \u2014 rigid bones must not stretch",
+    "p99.9 triangle-edge stretch 8.55 > 2.5 (rest-pose ratio; edges < 9.0 mm excluded)",
+    "40 vertex displacement spike(s) (> 0.35 m in one step, or > 8.0x the frame median and > 0.10 m) \u2014 tearing"
+   ],
+   "edge_stretch_p999": 8.551
+  }
+ },
+ "pose_renders": [
+  "pose_t0.00_back.png",
+  "pose_t0.00_front.png",
+  "pose_t0.00_side.png",
+  "pose_t1.21_back.png",
+  "pose_t1.21_front.png",
+  "pose_t1.21_side.png",
+  "pose_t1.38_back.png",
+  "pose_t1.38_front.png",
+  "pose_t1.38_side.png"
+ ],
+ "verdict_note": "Read the renders before wiring: anim_check flags must be explained, UNKNOWN is never PASS.",
+ "wire_line": "'<model-key>': '../roster/dxmmii/attires/attire1/model-rigged.glb',"
+}

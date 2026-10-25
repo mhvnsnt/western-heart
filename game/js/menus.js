@@ -15,6 +15,7 @@
 import { audio } from './audio.js';
 import { lazy } from './lazy.js';
 import { initMainMenu } from './mainmenu.js';
+import { initVersusSetup } from './versus-setup.js';
 
 /* ---------------- Settings ---------------- */
 const SETTINGS_KEY = 'wh_settings_v1';
@@ -277,7 +278,8 @@ export function playStoryBeats(beats, done, kicker) {
     o.querySelector('.wh-story-text').textContent = b.text || '';
     const img = o.querySelector('.wh-story-card .sportrait img');
     img.style.display = '';
-    img.src = `assets/portraits/${b.charId || 'pantera'}.png`;
+    if (!b.charId) { img.style.display = 'none'; img.removeAttribute('src'); } // model-pending: no borrowed portrait
+    else img.src = `assets/portraits/${b.charId}.png`;
     img.onerror = () => { img.style.display = 'none'; };
     o.querySelector('.wh-story-hint').textContent =
       `TAP TO CONTINUE · ${i + 1}/${beats.length}`;
@@ -525,6 +527,7 @@ export function initMenus(deps = {}) {
   buildOverlays();
   buildMenuButtons();
   initMainMenu(); // T8-style main menu controller (additive; no-ops if markup absent)
+  initVersusSetup(); // versus rules screen (additive; no-ops if markup absent)
   hookAudioUnlock();
   // Stream-4 mode controllers (standalone; they reuse Game patterns).
   // LOADSPEED: built on first tap via ensureHeartmind/ensureEpisodes —

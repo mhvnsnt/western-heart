@@ -49,6 +49,7 @@ SKIP = ("docs/proof/", "teardown/", "tools/", ".github/", "node_modules/")
 # (GitHub Pages' documented limit is 1 GB; the live site already runs at 2.3 GB). --follow-all
 # overrides; a follow-up deploy can add those models once the main deploy is confirmed live.
 NO_FOLLOW = ("customization/creation-suite-ui/data/roster-attires.json",)
+REPO = os.environ.get("WH_REPO", "mhvnsnt/western-heart")
 STR = re.compile(r"""["'`]([^"'`\s<>{}$|*?]+\.[A-Za-z0-9]{2,5})(?:[?#][^"'`\s]*)?["'`]""")
 
 
@@ -57,6 +58,57 @@ def git(*args, binary=False):
     if r.returncode:
         sys.exit(r.stderr.decode()[:2000])
     return r.stdout if binary else r.stdout.decode()
+
+
+def blob_sizes(sha):
+    """Sizes for every blob WITHOUT lazy-fetching it. `git ls-tree -l` in a blob:none partial clone
+    downloads every blob one at a time (60k+ round trips = the old >10 min hang). Present blobs are
+    sized locally (GIT_NO_LAZY_FETCH); missing ones via the GitHub trees API per top-level dir."""
+    oids = {}
+    for line in git("ls-tree", "-r", sha).splitlines():
+        meta, path = line.split("\t", 1)
+        mode, kind, obj = meta.split()
+        if kind == "blob":
+            oids[path] = obj
+    env = dict(os.environ, GIT_NO_LAZY_FETCH="1")
+    uniq = sorted(set(oids.values()))
+    r = subprocess.run(["git", "cat-file", "--batch-check=%(objectname) %(objectsize)"], input="\n".join(uniq) + "\n",
+                       capture_output=True, text=True, env=env)
+    by_oid = {}
+    for l in r.stdout.splitlines():
+        a, b = l.split(" ", 1)
+        if b != "missing":
+            by_oid[a] = int(b)
+    need = {o for o in uniq if o not in by_oid}
+    if need:
+        for top in sorted({p.split("/", 1)[0] for p, o in oids.items() if o in need and "/" in p}):
+            try:
+                t = git("rev-parse", f"{sha}:{top}").strip()
+                out = subprocess.run(["gh", "api", f"repos/{REPO}/git/trees/{t}?recursive=1"],
+                                     capture_output=True, text=True)
+                for e in json.loads(out.stdout).get("tree", []):
+                    if e.get("type") == "blob":
+                        by_oid[e["sha"]] = e.get("size", 0)
+            except Exception:
+                pass
+    unknown = sum(1 for o in uniq if o not in by_oid)
+    if unknown:
+        print(f"note: {unknown} blob sizes unknown (API truncated); counted as 0 MB in the report")
+    return {p: by_oid.get(o, 0) for p, o in oids.items()}, oids
+
+
+def prefetch_text(oids):
+    """One batched fetch of every runtime text blob the closure scan may read (was one lazy fetch per file)."""
+    env = dict(os.environ, GIT_NO_LAZY_FETCH="1")
+    want = sorted({o for p, o in oids.items() if p.endswith(TEXT) and not p.startswith(SKIP)})
+    r = subprocess.run(["git", "cat-file", "--batch-check=%(objectname) %(objecttype)"], input="\n".join(want) + "\n",
+                       capture_output=True, text=True, env=env)
+    miss = [l.split()[0] for l in r.stdout.splitlines() if l.endswith(" missing")]
+    for i in range(0, len(miss), 2000):
+        subprocess.run(["git", "-c", "fetch.negotiationAlgorithm=noop", "fetch", "-q", "--no-tags",
+                        "--no-write-fetch-head", "--filter=blob:none", "origin", *miss[i:i + 2000]])
+    if miss:
+        print(f"prefetched {len(miss)} text blobs in {(len(miss) + 1999) // 2000} batch(es)")
 
 
 def main():
@@ -70,12 +122,8 @@ def main():
     ap.add_argument("--follow-all", action="store_true")
     a = ap.parse_args()
     sha = git("rev-parse", a.ref).strip()
-    sizes = {}
-    for line in git("ls-tree", "-r", "-l", sha).splitlines():
-        meta, path = line.split("\t", 1)
-        parts = meta.split()
-        if parts[1] == "blob":
-            sizes[path] = int(parts[3]) if parts[3] != "-" else 0
+    sizes, oids = blob_sizes(sha)
+    prefetch_text(oids)
     files = set(p for p in sizes if p.startswith(ROOTS))
     queue = [p for p in files if p.endswith(TEXT)]
     seen_text = set(queue)

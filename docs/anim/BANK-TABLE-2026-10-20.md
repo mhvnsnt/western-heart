@@ -216,6 +216,11 @@ lane's active vehicle.
 Every fighter above is stuck at T3-era-or-no bank until it lands; zui's
 jin substitution and cyborgx's gunjack substitution are the two owner-named
 cases it fixes.
+**Lars/Chordz precision (2026-10-23):** `docs/anim/LARS-ANIM-GAP-20261023.md`
+records the exact missing bank files (`game/assets/anim/t3/lars/`), the TTT2
+STFS source + its four blockers (disk, safe-storage upload, STFS tooling,
+format RE), and the unblock sequence. His moveset data is complete meanwhile
+(469 moves, T7+T8 merged).
 
 ### G-T7 — Tekken 7 animation pipeline (does not exist)
 **Fighters:** michiko (Katarina — T7-only base), scimitar (Shaheen — T7-only),

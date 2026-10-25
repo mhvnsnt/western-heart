@@ -107,6 +107,12 @@ tentacles. This is a real stage of the transformation.
   downloads (teardown/street-fighter-5/CAST-STATUS.md). Until it lands, `game/js/fighter.js` FIGHTER_BANK still maps
   `zen -> julia` and his 639-move list (game/assets/movesets/zen.json) is built on T3 Heihachi rows — both are
   interim and owned by the moveset/inputs lane (PR #615 crew) to replace with the Twelve/Eleven data.
+  RESOLVED 2026-10-24 (owner decision, docs/decisions/2026-10-24-zen-base-decision.md):
+  `game/js/fighter.js` FIGHTER_BANK now maps `zen -> UNMAPPED` (null) — NOT Julia,
+  NOT Heihachi. The 639-move Heihachi list stays as interim data only, in a separate
+  section from the true moveset (`wh_true_moveset` in game/assets/movesets/zen.json);
+  the two sources are never mixed. Dural motion extraction + Twelve 2D->3D conversion
+  are still the unblock path.
 
 ### Base mix: Dural (Virtua Fighter 5) + Twelve/Eleven on top, owner 2026-10-22
 

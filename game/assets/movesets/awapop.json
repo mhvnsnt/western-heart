@@ -9792,7 +9792,9 @@
         "bank": "nina",
         "row": 216,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "7",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2~t7.nina": {
       "name": "Left Right Combo",
@@ -9838,7 +9840,9 @@
         "bank": "nina",
         "row": 105,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2~t7.nina.2": {
       "name": "AWA POP 1,2",
@@ -9877,7 +9881,9 @@
         "bank": "nina",
         "row": 105,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,U": {
       "name": "AWA POP 1,2,U",
@@ -9924,7 +9930,9 @@
         "bank": "nina",
         "row": 105,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,1~t7.nina": {
       "name": "AWA POP 1,2,1",
@@ -10729,7 +10737,9 @@
         "bank": "nina",
         "row": 112,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7,15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,4~t7.nina.2": {
       "name": "AWA POP 1,4",
@@ -10768,7 +10778,9 @@
         "bank": "nina",
         "row": 148,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7,15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,4,1~t7.nina": {
       "name": "PK Combo to Assassin's Blade",
@@ -10815,7 +10827,9 @@
         "bank": "nina",
         "row": 115,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7,15,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,4,1~t7.nina.2": {
       "name": "AWA POP 1,4,1",
@@ -10861,7 +10875,9 @@
         "bank": "nina",
         "row": 128,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7,15,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,4,1~t7.nina.3": {
       "name": "AWA POP 1,4,1",
@@ -10900,7 +10916,9 @@
         "bank": "nina",
         "row": 221,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7,15,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,1+2~t7.nina": {
       "name": "Double Explosion 1",
@@ -10943,12 +10961,7 @@
         ],
         "total": 39
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 291,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "1,2,1+2~t7.nina.2": {
       "name": "AWA POP 1,2,1+2",
@@ -10990,12 +11003,7 @@
         ],
         "total": 32
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 291,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "1,2,1+2~t7.nina.3": {
       "name": "AWA POP 1,2,1+2",
@@ -11030,12 +11038,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:nina_30",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "1,2,1,2,1+2": {
       "name": "Double Explosion 2",
@@ -11080,12 +11083,7 @@
         ],
         "total": 51
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 291,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "1,2,1,2,1+2~t7.nina": {
       "name": "AWA POP 1,2,1,2,1+2",
@@ -11129,12 +11127,7 @@
         ],
         "total": 44
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 291,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "1,2,1,2,1+2~t7.nina.2": {
       "name": "AWA POP 1,2,1,2,1+2",
@@ -11177,12 +11170,7 @@
         ],
         "total": 34
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "1,2,1,2,1+2~t7.nina.3": {
       "name": "AWA POP 1,2,1,2,1+2",
@@ -11224,12 +11212,7 @@
         ],
         "total": 28
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "1,2,1,2,1+2~t7.nina.4": {
       "name": "AWA POP 1,2,1,2,1+2",
@@ -11264,12 +11247,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:nina_35",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "2~t7.nina": {
       "name": "AWA POP 2",
@@ -11308,7 +11286,9 @@
         "bank": "nina",
         "row": 105,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,1": {
       "name": "Right Left Combo",
@@ -11354,7 +11334,9 @@
         "bank": "nina",
         "row": 220,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "10,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,1~t7.nina": {
       "name": "AWA POP 2,1",
@@ -11393,7 +11375,9 @@
         "bank": "nina",
         "row": 220,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "10,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,1,4": {
       "name": "Biting Snake (Short)",
@@ -11440,7 +11424,9 @@
         "bank": "nina",
         "row": 112,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,6,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,1,4~t7.nina": {
       "name": "AWA POP 2,1,4",
@@ -11486,7 +11472,9 @@
         "bank": "nina",
         "row": 148,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,6,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,1,4~t7.nina.2": {
       "name": "AWA POP 2,1,4",
@@ -11525,7 +11513,9 @@
         "bank": "nina",
         "row": 245,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,6,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,3~t7.nina": {
       "name": "Double Smash",
@@ -11571,7 +11561,9 @@
         "bank": "nina",
         "row": 74,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,3~t7.nina.2": {
       "name": "AWA POP 2,3",
@@ -11610,7 +11602,9 @@
         "bank": "nina",
         "row": 90,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,4~t7.nina": {
       "name": "Jab Roundhouse",
@@ -11657,7 +11651,9 @@
         "bank": "nina",
         "row": 112,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,4~t7.nina.2": {
       "name": "AWA POP 2,4",
@@ -11697,7 +11693,9 @@
         "bank": "nina",
         "row": 245,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,1+2": {
       "name": "Double Explosion (Short)",
@@ -11739,12 +11737,7 @@
         ],
         "total": 32
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 291,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "2,1+2~t7.nina": {
       "name": "AWA POP 2,1+2",
@@ -11779,12 +11772,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:nina_47",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "3~t7.nina": {
       "name": "AWA POP 3",
@@ -11823,7 +11811,9 @@
         "bank": "nina",
         "row": 110,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,3~t7.nina": {
       "name": "AWA POP 3,3",
@@ -11869,7 +11859,9 @@
         "bank": "nina",
         "row": 110,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,3~t7.nina.2": {
       "name": "AWA POP 3,3",
@@ -11908,7 +11900,9 @@
         "bank": "nina",
         "row": 250,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,3,2": {
       "name": "Spike Combo to Right Uppercut",
@@ -11956,7 +11950,9 @@
         "bank": "nina",
         "row": 237,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,10,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,3,2~t7.nina": {
       "name": "AWA POP 3,3,2",
@@ -12003,7 +11999,9 @@
         "bank": "nina",
         "row": 240,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,10,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,3,2~t7.nina.2": {
       "name": "AWA POP 3,3,2",
@@ -12043,7 +12041,9 @@
         "bank": "nina",
         "row": 240,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,10,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,3,4": {
       "name": "AWA POP 3,3,4",
@@ -12090,7 +12090,9 @@
         "bank": "nina",
         "row": 118,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,10,18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,3,4~t7.nina": {
       "name": "AWA POP 3,3,4",
@@ -12136,7 +12138,9 @@
         "bank": "nina",
         "row": 245,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,10,18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,3,4~t7.nina.2": {
       "name": "AWA POP 3,3,4",
@@ -12176,7 +12180,9 @@
         "bank": "nina",
         "row": 259,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,10,18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,3,4,3": {
       "name": "Spike Combo to Easy Prey",
@@ -12224,7 +12230,9 @@
         "bank": "nina",
         "row": 110,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,10,18,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,3,4,3~t7.nina": {
       "name": "AWA POP 3,3,4,3",
@@ -12271,7 +12279,9 @@
         "bank": "nina",
         "row": 250,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,10,18,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,3,4,3~t7.nina.2": {
       "name": "AWA POP 3,3,4,3",
@@ -12317,7 +12327,9 @@
         "bank": "nina",
         "row": 265,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,10,18,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,3,4,3~t7.nina.3": {
       "name": "AWA POP 3,3,4,3",
@@ -12356,7 +12368,9 @@
         "bank": "nina",
         "row": 222,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,10,18,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,4~t7.nina": {
       "name": "Head Ringer",
@@ -12403,7 +12417,9 @@
         "bank": "nina",
         "row": 118,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,4~t7.nina.2": {
       "name": "AWA POP 3,4",
@@ -12443,7 +12459,9 @@
         "bank": "nina",
         "row": 245,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,d": {
       "name": "Left High Kick to Right Roll",
@@ -12482,7 +12500,9 @@
         "bank": "nina",
         "row": 237,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,d+1+2": {
       "name": "Left High Kick to Spiral Explosion",
@@ -12524,12 +12544,7 @@
         ],
         "total": 36
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "3,d+1+2~t7.nina": {
       "name": "AWA POP 3,d+1+2",
@@ -12564,12 +12579,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:nina_65",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "4~t7.nina": {
       "name": "AWA POP 4",
@@ -12609,7 +12619,9 @@
         "bank": "nina",
         "row": 131,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,3~t7.nina": {
       "name": "Right High to Left Spin Low Kick",
@@ -12655,7 +12667,9 @@
         "bank": "nina",
         "row": 74,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,3~t7.nina.2": {
       "name": "AWA POP 4,3",
@@ -12694,7 +12708,9 @@
         "bank": "nina",
         "row": 262,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,3,2": {
       "name": "Blonde to Right Uppercut",
@@ -12742,7 +12758,9 @@
         "bank": "nina",
         "row": 105,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,13,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,3,2~t7.nina": {
       "name": "AWA POP 4,3,2",
@@ -12789,7 +12807,9 @@
         "bank": "nina",
         "row": 260,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,13,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,3,2~t7.nina.2": {
       "name": "AWA POP 4,3,2",
@@ -12829,7 +12849,9 @@
         "bank": "nina",
         "row": 240,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,13,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,3,4": {
       "name": "AWA POP 4,3,4",
@@ -12876,7 +12898,9 @@
         "bank": "nina",
         "row": 112,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,13,18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,3,4~t7.nina": {
       "name": "AWA POP 4,3,4",
@@ -12922,7 +12946,9 @@
         "bank": "nina",
         "row": 245,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,13,18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,3,4~t7.nina.2": {
       "name": "AWA POP 4,3,4",
@@ -12962,7 +12988,9 @@
         "bank": "nina",
         "row": 259,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,13,18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,3,4,3": {
       "name": "Blonde to Easy Prey",
@@ -13010,7 +13038,9 @@
         "bank": "nina",
         "row": 74,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,13,10,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,3,4,3~t7.nina": {
       "name": "AWA POP 4,3,4,3",
@@ -13057,7 +13087,9 @@
         "bank": "nina",
         "row": 262,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,13,10,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,3,4,3~t7.nina.2": {
       "name": "AWA POP 4,3,4,3",
@@ -13103,7 +13135,9 @@
         "bank": "nina",
         "row": 265,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,13,10,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,3,4,3~t7.nina.3": {
       "name": "AWA POP 4,3,4,3",
@@ -13142,7 +13176,9 @@
         "bank": "nina",
         "row": 222,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,13,10,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,u": {
       "name": "Right High Kick to Left Roll",
@@ -13182,7 +13218,9 @@
         "bank": "nina",
         "row": 105,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,u,D": {
       "name": "AWA POP 4,u,D",
@@ -13222,7 +13260,9 @@
         "bank": "nina",
         "row": 105,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,u+1+2": {
       "name": "Right High Kick to Spiral Explosion",
@@ -13264,12 +13304,7 @@
         ],
         "total": 37
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 291,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "4,u+1+2~t7.nina": {
       "name": "AWA POP 4,u+1+2",
@@ -13304,12 +13339,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:nina_82",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "1+4~t7.nina": {
       "name": "Ivory Cutter",
@@ -13351,11 +13381,8 @@
         ],
         "total": 24
       },
-      "anim_t3": {
-        "bank": "nina",
-        "row": 296,
-        "match": "same-notation"
-      }
+      "mod_damage": "4,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1+4~t7.nina.2": {
       "name": "AWA POP 1+4",
@@ -13391,11 +13418,8 @@
       "merge_source": "t7:nina_84",
       "recovery_from": "same-notation T8 recv",
       "input_note": "(second hit only)",
-      "anim_t3": {
-        "bank": "nina",
-        "row": 296,
-        "match": "same-notation"
-      }
+      "mod_damage": "4,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u+4~t7.nina": {
       "name": "AWA POP u+4",
@@ -13434,7 +13458,9 @@
         "bank": "nina",
         "row": 89,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+1~t7.nina": {
       "name": "Skull Splitter",
@@ -13473,7 +13499,9 @@
         "bank": "nina",
         "row": 44,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+2": {
       "name": "AWA POP u/f+2",
@@ -13512,7 +13540,9 @@
         "bank": "nina",
         "row": 236,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+2,1": {
       "name": "Binding Whip",
@@ -13558,7 +13588,9 @@
         "bank": "nina",
         "row": 43,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+2,1~t7.nina": {
       "name": "AWA POP u/f+2,1",
@@ -13597,7 +13629,9 @@
         "bank": "nina",
         "row": 224,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3~t7.nina": {
       "name": "Catapult Kick",
@@ -13637,7 +13671,9 @@
         "bank": "nina",
         "row": 75,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+4~t7.nina": {
       "name": "AWA POP u/f+4",
@@ -13722,7 +13758,9 @@
         "bank": "nina",
         "row": 90,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "23,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+4,3~t7.nina.2": {
       "name": "AWA POP u/f+4,3",
@@ -13761,7 +13799,9 @@
         "bank": "nina",
         "row": 251,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "23,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+4,3,4": {
       "name": "Can Opener",
@@ -13808,7 +13848,9 @@
         "bank": "nina",
         "row": 89,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "23,10,14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+4,3,4~t7.nina": {
       "name": "AWA POP u/f+4,3,4",
@@ -13854,7 +13896,9 @@
         "bank": "nina",
         "row": 267,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "23,10,14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+4,3,4~t7.nina.2": {
       "name": "AWA POP u/f+4,3,4",
@@ -13893,7 +13937,9 @@
         "bank": "nina",
         "row": 267,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "23,10,14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+4,3,4,u": {
       "name": "AWA POP u/f+4,3,4,u",
@@ -13979,7 +14025,9 @@
         "bank": "nina",
         "row": 251,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f,n,D+3,2": {
       "name": "Hopping Low Kick to Right Uppercut",
@@ -14026,7 +14074,9 @@
         "bank": "nina",
         "row": 277,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f,n,D+3,2~t7.nina": {
       "name": "AWA POP u/f,n,D+3,2",
@@ -14066,7 +14116,9 @@
         "bank": "nina",
         "row": 240,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f,n,D+3,4": {
       "name": "AWA POP u/f,n,D+3,4",
@@ -14112,7 +14164,9 @@
         "bank": "nina",
         "row": 247,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f,n,D+3,4~t7.nina": {
       "name": "AWA POP u/f,n,D+3,4",
@@ -14152,7 +14206,9 @@
         "bank": "nina",
         "row": 247,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f,n,D+3,4,3": {
       "name": "Hopping Low Kick to Easy Prey",
@@ -14199,7 +14255,9 @@
         "bank": "nina",
         "row": 251,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,18,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f,n,D+3,4,3~t7.nina": {
       "name": "AWA POP u/f,n,D+3,4,3",
@@ -14245,7 +14303,9 @@
         "bank": "nina",
         "row": 265,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,18,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f,n,D+3,4,3~t7.nina.2": {
       "name": "AWA POP u/f,n,D+3,4,3",
@@ -14284,7 +14344,9 @@
         "bank": "nina",
         "row": 228,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,18,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "U/F+4": {
       "name": "Leaping Axe Kick",
@@ -14362,7 +14424,9 @@
         "bank": "nina",
         "row": 116,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,1~t7.nina": {
       "name": "AWA POP f+2,1",
@@ -14408,7 +14472,9 @@
         "bank": "nina",
         "row": 219,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "12,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,1~t7.nina.2": {
       "name": "AWA POP f+2,1",
@@ -14447,7 +14513,9 @@
         "bank": "nina",
         "row": 219,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "12,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,1,2~t7.nina": {
       "name": "Dead Drop",
@@ -14495,7 +14563,9 @@
         "bank": "nina",
         "row": 226,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "12,12,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,1,2~t7.nina.2": {
       "name": "AWA POP f+2,1,2",
@@ -14542,7 +14612,9 @@
         "bank": "nina",
         "row": 226,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "12,12,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,1,2~t7.nina.3": {
       "name": "AWA POP f+2,1,2",
@@ -14582,7 +14654,9 @@
         "bank": "nina",
         "row": 226,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "12,12,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,1,4~t7.nina": {
       "name": "Mimosa Combo",
@@ -14629,7 +14703,9 @@
         "bank": "nina",
         "row": 118,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,12,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,1,4~t7.nina.2": {
       "name": "AWA POP f+2,1,4",
@@ -14675,7 +14751,9 @@
         "bank": "nina",
         "row": 259,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,12,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,1,4~t7.nina.3": {
       "name": "AWA POP f+2,1,4",
@@ -14715,7 +14793,9 @@
         "bank": "nina",
         "row": 247,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,12,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3~t7.nina": {
       "name": "Siren's Kiss",
@@ -14762,7 +14842,9 @@
         "bank": "nina",
         "row": 252,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "10,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+4~t7.nina": {
       "name": "AWA POP f+4",
@@ -14801,7 +14883,9 @@
         "bank": "nina",
         "row": 118,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+4,3": {
       "name": "AWA POP f+4,3",
@@ -14848,7 +14932,9 @@
         "bank": "nina",
         "row": 245,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "14,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+4,3~t7.nina": {
       "name": "AWA POP f+4,3",
@@ -14888,7 +14974,9 @@
         "bank": "nina",
         "row": 245,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "14,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+4,3,3": {
       "name": "Sweeper Combo",
@@ -14936,7 +15024,9 @@
         "bank": "nina",
         "row": 117,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,13,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+4,3,3~t7.nina": {
       "name": "AWA POP f+4,3,3",
@@ -14983,7 +15073,9 @@
         "bank": "nina",
         "row": 222,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,13,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+4,3,3~t7.nina.2": {
       "name": "AWA POP f+4,3,3",
@@ -15023,7 +15115,9 @@
         "bank": "nina",
         "row": 222,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,13,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+4,4": {
       "name": "Double Whip",
@@ -15069,7 +15163,9 @@
         "bank": "nina",
         "row": 148,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+4,4~t7.nina": {
       "name": "AWA POP f+4,4",
@@ -15109,7 +15205,9 @@
         "bank": "nina",
         "row": 148,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+2~t7.nina": {
       "name": "Sunset Strike",
@@ -15149,7 +15247,9 @@
         "bank": "nina",
         "row": 237,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+3~t7.nina": {
       "name": "Bad Habit",
@@ -15188,7 +15288,9 @@
         "bank": "nina",
         "row": 227,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+4~t7.nina": {
       "name": "Kneel Kick",
@@ -15229,7 +15331,9 @@
         "bank": "nina",
         "row": 247,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "30",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+4~t7.nina.2": {
       "name": "AWA POP f,F+4",
@@ -15270,7 +15374,9 @@
         "bank": "nina",
         "row": 247,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+1+2~t7.nina": {
       "name": "Bombshell Blast",
@@ -15306,11 +15412,8 @@
       "merge_source": "t7:nina_129",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "26",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+1+2*~t7.nina": {
       "name": "AWA POP f,F+1+2*",
@@ -15346,11 +15449,8 @@
       "merge_source": "t7:nina_130",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "32",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,f,f+3": {
       "name": "Running Jump Kick",
@@ -15391,7 +15491,9 @@
         "bank": "nina",
         "row": 235,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20(,18)",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,f,f+1+2": {
       "name": "Spiral Bombshell Blast",
@@ -15427,11 +15529,8 @@
       "merge_source": "t7:nina_132",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "30",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1~t7.nina": {
       "name": "AWA POP d/f+1",
@@ -15470,7 +15569,9 @@
         "bank": "nina",
         "row": 141,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1,2": {
       "name": "Uppercut to Jab",
@@ -15516,7 +15617,9 @@
         "bank": "nina",
         "row": 239,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1,2~t7.nina": {
       "name": "AWA POP d/f+1,2",
@@ -15555,7 +15658,9 @@
         "bank": "nina",
         "row": 219,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1,2,u": {
       "name": "AWA POP d/f+1,2,u",
@@ -15602,7 +15707,9 @@
         "bank": "nina",
         "row": 239,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1,2,D/F": {
       "name": "AWA POP d/f+1,2,D/F",
@@ -15696,7 +15803,9 @@
         "bank": "nina",
         "row": 118,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7,10,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1,2,4~t7.nina": {
       "name": "AWA POP d/f+1,2,4",
@@ -15743,7 +15852,9 @@
         "bank": "nina",
         "row": 148,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7,10,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1,2,4~t7.nina.2": {
       "name": "AWA POP d/f+1,2,4",
@@ -15783,7 +15894,9 @@
         "bank": "nina",
         "row": 245,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7,10,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1,2,1+2": {
       "name": "AWA POP d/f+1,2,1+2",
@@ -15826,12 +15939,7 @@
         ],
         "total": 45
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "d/f+1,2,1+2~t7.nina": {
       "name": "AWA POP d/f+1,2,1+2",
@@ -15873,12 +15981,7 @@
         ],
         "total": 32
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "d/f+1,2,1+2~t7.nina.2": {
       "name": "AWA POP d/f+1,2,1+2",
@@ -15913,12 +16016,7 @@
       "t7_on_ch": "KNS",
       "merge_source": "t7:nina_143",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "d/f+2~t7.nina": {
       "name": "AWA POP d/f+2",
@@ -15957,7 +16055,9 @@
         "bank": "nina",
         "row": 124,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3": {
       "name": "AWA POP d/f+3",
@@ -15996,7 +16096,9 @@
         "bank": "nina",
         "row": 143,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,1": {
       "name": "AWA POP d/f+3,1",
@@ -16042,7 +16144,9 @@
         "bank": "nina",
         "row": 68,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,1~t7.nina": {
       "name": "AWA POP d/f+3,1",
@@ -16081,7 +16185,9 @@
         "bank": "nina",
         "row": 221,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,1,u": {
       "name": "AWA POP d/f+3,1,u",
@@ -16168,7 +16274,9 @@
         "bank": "nina",
         "row": 237,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,10,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,1,2~t7.nina": {
       "name": "AWA POP d/f+3,1,2",
@@ -16214,7 +16322,9 @@
         "bank": "nina",
         "row": 284,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,10,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,1,2~t7.nina.2": {
       "name": "AWA POP d/f+3,1,2",
@@ -16253,7 +16363,9 @@
         "bank": "nina",
         "row": 219,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,10,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,1,2,1+2": {
       "name": "Assault Bomb",
@@ -16297,12 +16409,7 @@
         ],
         "total": 51
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "d/f+3,1,2,1+2~t7.nina": {
       "name": "AWA POP d/f+3,1,2,1+2",
@@ -16345,12 +16452,7 @@
         ],
         "total": 38
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "d/f+3,1,2,1+2~t7.nina.2": {
       "name": "AWA POP d/f+3,1,2,1+2",
@@ -16392,12 +16494,7 @@
         ],
         "total": 28
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "d/f+3,1,2,1+2~t7.nina.3": {
       "name": "AWA POP d/f+3,1,2,1+2",
@@ -16432,12 +16529,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:nina_155",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "d/f+3,2": {
       "name": "AWA POP d/f+3,2",
@@ -16483,7 +16575,9 @@
         "bank": "nina",
         "row": 237,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2~t7.nina": {
       "name": "AWA POP d/f+3,2",
@@ -16522,7 +16616,9 @@
         "bank": "nina",
         "row": 238,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,u": {
       "name": "AWA POP d/f+3,2,u",
@@ -16656,7 +16752,9 @@
         "bank": "nina",
         "row": 237,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,F~t7.nina": {
       "name": "AWA POP d/f+3,2,F",
@@ -16696,7 +16794,9 @@
         "bank": "nina",
         "row": 238,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,1": {
       "name": "AWA POP d/f+3,2,1",
@@ -16743,7 +16843,9 @@
         "bank": "nina",
         "row": 68,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,1~t7.nina": {
       "name": "AWA POP d/f+3,2,1",
@@ -16789,7 +16891,9 @@
         "bank": "nina",
         "row": 231,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,1~t7.nina.2": {
       "name": "AWA POP d/f+3,2,1",
@@ -16828,7 +16932,9 @@
         "bank": "nina",
         "row": 128,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,1,4": {
       "name": "Creeping Snake",
@@ -16876,7 +16982,9 @@
         "bank": "nina",
         "row": 118,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,6,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,1,4~t7.nina": {
       "name": "AWA POP d/f+3,2,1,4",
@@ -16923,7 +17031,9 @@
         "bank": "nina",
         "row": 259,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,6,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,1,4~t7.nina.2": {
       "name": "AWA POP d/f+3,2,1,4",
@@ -16969,7 +17079,9 @@
         "bank": "nina",
         "row": 148,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,6,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,1,4~t7.nina.3": {
       "name": "AWA POP d/f+3,2,1,4",
@@ -17008,7 +17120,9 @@
         "bank": "nina",
         "row": 245,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,6,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,3": {
       "name": " Creeping Snake to Geyser Cannon",
@@ -17056,7 +17170,9 @@
         "bank": "nina",
         "row": 110,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,3~t7.nina": {
       "name": "AWA POP d/f+3,2,3",
@@ -17103,7 +17219,9 @@
         "bank": "nina",
         "row": 248,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,3~t7.nina.2": {
       "name": "AWA POP d/f+3,2,3",
@@ -17143,7 +17261,9 @@
         "bank": "nina",
         "row": 248,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,4": {
       "name": " Creeping Snake to Right High Kick",
@@ -17191,7 +17311,9 @@
         "bank": "nina",
         "row": 118,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,4~t7.nina": {
       "name": "AWA POP d/f+3,2,4",
@@ -17238,7 +17360,9 @@
         "bank": "nina",
         "row": 259,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,4~t7.nina.2": {
       "name": "AWA POP d/f+3,2,4",
@@ -17278,7 +17402,9 @@
         "bank": "nina",
         "row": 245,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,d+3": {
       "name": "AWA POP d/f+3,2,d+3",
@@ -17325,7 +17451,9 @@
         "bank": "nina",
         "row": 110,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,d+3~t7.nina": {
       "name": "AWA POP d/f+3,2,d+3",
@@ -17371,7 +17499,9 @@
         "bank": "nina",
         "row": 248,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,d+3~t7.nina.2": {
       "name": "AWA POP d/f+3,2,d+3",
@@ -17410,7 +17540,9 @@
         "bank": "nina",
         "row": 246,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,d+3,2": {
       "name": " Creeping Snake to Left Low Right Uppercut",
@@ -17459,7 +17591,9 @@
         "bank": "nina",
         "row": 237,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,10,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,d+3,2~t7.nina": {
       "name": "AWA POP d/f+3,2,d+3,2",
@@ -17507,7 +17641,9 @@
         "bank": "nina",
         "row": 238,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,10,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,d+3,2~t7.nina.2": {
       "name": "AWA POP d/f+3,2,d+3,2",
@@ -17554,7 +17690,9 @@
         "bank": "nina",
         "row": 234,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,10,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,d+3,2~t7.nina.3": {
       "name": "AWA POP d/f+3,2,d+3,2",
@@ -17594,7 +17732,9 @@
         "bank": "nina",
         "row": 240,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,10,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,d+3,4": {
       "name": "AWA POP d/f+3,2,d+3,4",
@@ -17642,7 +17782,9 @@
         "bank": "nina",
         "row": 118,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,10,18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,d+3,4~t7.nina": {
       "name": "AWA POP d/f+3,2,d+3,4",
@@ -17682,7 +17824,9 @@
         "bank": "nina",
         "row": 259,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,10,18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,d+3,4,3": {
       "name": " Creeping Snake to Easy Prey",
@@ -17731,7 +17875,9 @@
         "bank": "nina",
         "row": 110,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,10,18,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,2,d+3,4,3~t7.nina": {
       "name": "AWA POP d/f+3,2,d+3,4,3",
@@ -17770,7 +17916,9 @@
         "bank": "nina",
         "row": 222,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,12,10,18,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,3": {
       "name": "AWA POP d/f+3,3",
@@ -17816,7 +17964,9 @@
         "bank": "nina",
         "row": 110,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,3~t7.nina": {
       "name": "AWA POP d/f+3,3",
@@ -17855,7 +18005,9 @@
         "bank": "nina",
         "row": 117,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,3,3": {
       "name": "AWA POP d/f+3,3,3",
@@ -17902,7 +18054,9 @@
         "bank": "nina",
         "row": 110,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,3,3~t7.nina": {
       "name": "AWA POP d/f+3,3,3",
@@ -17948,7 +18102,9 @@
         "bank": "nina",
         "row": 117,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,3,3~t7.nina.2": {
       "name": "AWA POP d/f+3,3,3",
@@ -17987,7 +18143,9 @@
         "bank": "nina",
         "row": 117,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,3,3,4": {
       "name": "Flash Kicks",
@@ -18036,7 +18194,9 @@
         "bank": "nina",
         "row": 118,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,6,8,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,3,3,4~t7.nina": {
       "name": "AWA POP d/f+3,3,3,4",
@@ -18084,7 +18244,9 @@
         "bank": "nina",
         "row": 148,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,6,8,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,3,3,4~t7.nina.2": {
       "name": "AWA POP d/f+3,3,3,4",
@@ -18131,7 +18293,9 @@
         "bank": "nina",
         "row": 148,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,6,8,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,3,3,4~t7.nina.3": {
       "name": "AWA POP d/f+3,3,3,4",
@@ -18171,7 +18335,9 @@
         "bank": "nina",
         "row": 245,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,6,8,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,4": {
       "name": "AWA POP d/f+3,4",
@@ -18217,7 +18383,9 @@
         "bank": "nina",
         "row": 118,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,4~t7.nina": {
       "name": "AWA POP d/f+3,4",
@@ -18256,7 +18424,9 @@
         "bank": "nina",
         "row": 267,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,4,4": {
       "name": "Deadly Assault",
@@ -18304,7 +18474,9 @@
         "bank": "nina",
         "row": 118,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,21,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,4,4~t7.nina": {
       "name": "AWA POP d/f+3,4,4",
@@ -18351,7 +18523,9 @@
         "bank": "nina",
         "row": 267,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,21,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,4,4~t7.nina.2": {
       "name": "AWA POP d/f+3,4,4",
@@ -18391,7 +18565,9 @@
         "bank": "nina",
         "row": 267,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,21,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,4,3+4": {
       "name": "Deadly Hunter",
@@ -18436,11 +18612,8 @@
         "total": 63
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "31,21,8,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,4,3+4~t7.nina": {
       "name": "AWA POP d/f+3,4,3+4",
@@ -18484,11 +18657,8 @@
         "total": 50
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "31,21,8,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,4,3+4~t7.nina.2": {
       "name": "AWA POP d/f+3,4,3+4",
@@ -18531,11 +18701,8 @@
         "total": 29
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "31,21,8,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,f+4": {
       "name": "Left Middle to Right High Kick",
@@ -18582,7 +18749,9 @@
         "bank": "nina",
         "row": 118,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,f+4~t7.nina": {
       "name": "AWA POP d/f+3,f+4",
@@ -18622,7 +18791,9 @@
         "bank": "nina",
         "row": 245,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1+2~t7.nina": {
       "name": "Ray Hands",
@@ -18668,7 +18839,9 @@
         "bank": "nina",
         "row": 123,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "5,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+2~t7.nina": {
       "name": "AWA POP d+2",
@@ -18707,7 +18880,9 @@
         "bank": "nina",
         "row": 137,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+2,3": {
       "name": "Cutthroat",
@@ -18754,7 +18929,9 @@
         "bank": "nina",
         "row": 265,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+2,3~t7.nina": {
       "name": "AWA POP d+2,3",
@@ -18794,7 +18971,9 @@
         "bank": "nina",
         "row": 228,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+3,2~t7.nina": {
       "name": "Left Spin Low Kick to Right Upper",
@@ -18841,7 +19020,9 @@
         "bank": "nina",
         "row": 219,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+3,2~t7.nina.2": {
       "name": "AWA POP d+3,2",
@@ -18881,7 +19062,9 @@
         "bank": "nina",
         "row": 240,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+3,4~t7.nina": {
       "name": "AWA POP d+3,4",
@@ -18927,7 +19110,9 @@
         "bank": "nina",
         "row": 148,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+3,4~t7.nina.2": {
       "name": "AWA POP d+3,4",
@@ -18967,7 +19152,9 @@
         "bank": "nina",
         "row": 259,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+3,4,3~t7.nina": {
       "name": "Easy Prey",
@@ -19014,7 +19201,9 @@
         "bank": "nina",
         "row": 117,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,18,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+3,4,3~t7.nina.2": {
       "name": "AWA POP d+3,4,3",
@@ -19060,7 +19249,9 @@
         "bank": "nina",
         "row": 265,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,18,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+3,4,3~t7.nina.3": {
       "name": "AWA POP d+3,4,3",
@@ -19099,7 +19290,9 @@
         "bank": "nina",
         "row": 222,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,18,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+4~t7.nina": {
       "name": "AWA POP d+4",
@@ -19138,7 +19331,9 @@
         "bank": "nina",
         "row": 139,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "7",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+4,1~t7.nina": {
       "name": "Right Low Kick to Back Spin Chop",
@@ -19184,7 +19379,9 @@
         "bank": "nina",
         "row": 149,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7(10),10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+4,1~t7.nina.2": {
       "name": "AWA POP d+4,1",
@@ -19223,7 +19420,9 @@
         "bank": "nina",
         "row": 221,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7(10),10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d,D/F+4": {
       "name": "Wipe the Floor",
@@ -19262,7 +19461,9 @@
         "bank": "nina",
         "row": 247,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+2": {
       "name": "Right Backhand Body Blow",
@@ -19302,7 +19503,9 @@
         "bank": "nina",
         "row": 146,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+3": {
       "name": "Stiletto Heel",
@@ -19342,7 +19545,9 @@
         "bank": "nina",
         "row": 138,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+4": {
       "name": "Slicer",
@@ -19381,7 +19586,9 @@
         "bank": "nina",
         "row": 148,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "5",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+4,3": {
       "name": "Geyser Cannon Combo",
@@ -19428,7 +19635,9 @@
         "bank": "nina",
         "row": 247,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "5,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+4,3~t7.nina": {
       "name": "AWA POP d/b+4,3",
@@ -19468,7 +19677,9 @@
         "bank": "nina",
         "row": 247,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "5,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+3+4": {
       "name": "Geyser Cannon",
@@ -19508,7 +19719,9 @@
         "bank": "nina",
         "row": 248,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+1+2,u,u": {
       "name": "Power Charge Cancel",
@@ -19547,7 +19760,8 @@
         "bank": "nina",
         "row": 116,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1~t7.nina": {
       "name": "Left Backhand Body Blow",
@@ -19587,7 +19801,9 @@
         "bank": "nina",
         "row": 224,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1+2~t7.nina": {
       "name": "Shockwave Palm",
@@ -19633,7 +19849,9 @@
         "bank": "nina",
         "row": 119,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "6,26",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1+4~t7.nina": {
       "name": "Reverse Ivory Cutter",
@@ -19676,11 +19894,8 @@
         "total": 18
       },
       "launch": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "4,14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1+4~t7.nina.2": {
       "name": "AWA POP b+1+4",
@@ -19717,11 +19932,8 @@
       "recovery_from": "same-notation T8 recv",
       "launch": true,
       "input_note": "(second hit only)",
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "4,14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2~t7.nina": {
       "name": "AWA POP b+2",
@@ -19760,7 +19972,9 @@
         "bank": "nina",
         "row": 120,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,2~t7.nina": {
       "name": "AWA POP b+2,2",
@@ -19806,7 +20020,9 @@
         "bank": "nina",
         "row": 240,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "12,14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,2~t7.nina.2": {
       "name": "AWA POP b+2,2",
@@ -19845,7 +20061,9 @@
         "bank": "nina",
         "row": 240,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "12,14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,2,2~t7.nina": {
       "name": "Backhand Combo",
@@ -19892,7 +20110,9 @@
         "bank": "nina",
         "row": 116,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,14,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,2,2~t7.nina.2": {
       "name": "AWA POP b+2,2,2",
@@ -19938,7 +20158,9 @@
         "bank": "nina",
         "row": 237,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,14,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,2,2~t7.nina.3": {
       "name": "AWA POP b+2,2,2",
@@ -19977,7 +20199,9 @@
         "bank": "nina",
         "row": 240,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,14,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,2,2,u": {
       "name": "AWA POP b+2,2,2,u",
@@ -20024,7 +20248,9 @@
         "bank": "nina",
         "row": 116,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+3~t7.nina": {
       "name": "AWA POP b+3",
@@ -20063,7 +20289,9 @@
         "bank": "nina",
         "row": 90,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+3,4~t7.nina": {
       "name": "Stinger Heel Kick Combo",
@@ -20110,7 +20338,9 @@
         "bank": "nina",
         "row": 89,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+3,4~t7.nina.2": {
       "name": "AWA POP b+3,4",
@@ -20150,7 +20380,9 @@
         "bank": "nina",
         "row": 259,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+4~t7.nina": {
       "name": "Spear Kick",
@@ -20189,7 +20421,9 @@
         "bank": "nina",
         "row": 112,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcf+1": {
       "name": "Hellbringer",
@@ -20229,7 +20463,9 @@
         "bank": "nina",
         "row": 69,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcf+2": {
       "name": "Shut Up",
@@ -20269,7 +20505,9 @@
         "bank": "nina",
         "row": 238,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "25",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcf+3": {
       "name": "Sideslip",
@@ -20309,7 +20547,9 @@
         "bank": "nina",
         "row": 249,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcf+4": {
       "name": "AWA POP qcf+4",
@@ -20348,7 +20588,9 @@
         "bank": "nina",
         "row": 247,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcf+4,2": {
       "name": "AWA POP qcf+4,2",
@@ -20395,7 +20637,9 @@
         "bank": "nina",
         "row": 237,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcf+4,2~t7.nina": {
       "name": "AWA POP qcf+4,2",
@@ -20434,7 +20678,9 @@
         "bank": "nina",
         "row": 236,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcf+4,2,3": {
       "name": "Shamrock",
@@ -20482,7 +20728,9 @@
         "bank": "nina",
         "row": 227,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,10,23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcf+4,2,3~t7.nina": {
       "name": "AWA POP qcf+4,2,3",
@@ -20529,7 +20777,9 @@
         "bank": "nina",
         "row": 249,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,10,23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcf+4,2,3~t7.nina.2": {
       "name": "AWA POP qcf+4,2,3",
@@ -20569,7 +20819,9 @@
         "bank": "nina",
         "row": 266,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,10,23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d,d/b,B+4": {
       "name": "Ice Pick",
@@ -20649,7 +20901,9 @@
         "bank": "nina",
         "row": 78,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "BT.3": {
       "name": "AWA POP BT.3",
@@ -20690,7 +20944,9 @@
         "bank": "nina",
         "row": 227,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "25",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.1": {
       "name": "AWA POP FC.1",
@@ -20729,7 +20985,9 @@
         "bank": "nina",
         "row": 47,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "5",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.1,2": {
       "name": "AWA POP FC.1,2",
@@ -20775,7 +21033,9 @@
         "bank": "nina",
         "row": 105,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "5,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.1,2~t7.nina": {
       "name": "AWA POP FC.1,2",
@@ -20814,7 +21074,9 @@
         "bank": "nina",
         "row": 120,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "5,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.1,2,4": {
       "name": "Below the Belt Combo",
@@ -20861,7 +21123,9 @@
         "bank": "nina",
         "row": 112,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "5,8,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.1,2,4~t7.nina": {
       "name": "AWA POP FC.1,2,4",
@@ -20907,7 +21171,9 @@
         "bank": "nina",
         "row": 148,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "5,8,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.1,2,4~t7.nina.2": {
       "name": "AWA POP FC.1,2,4",
@@ -20946,7 +21212,9 @@
         "bank": "nina",
         "row": 259,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "5,8,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.1,4": {
       "name": "Jab to Mid Kick",
@@ -21070,7 +21338,9 @@
         "bank": "nina",
         "row": 105,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.2,4": {
       "name": "Low Jab Rising Kick",
@@ -21116,7 +21386,9 @@
         "bank": "nina",
         "row": 112,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "8,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.2,4~t7.nina": {
       "name": "AWA POP FC.2,4",
@@ -21155,7 +21427,9 @@
         "bank": "nina",
         "row": 259,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "8,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.3": {
       "name": "AWA POP FC.3",
@@ -21194,7 +21468,9 @@
         "bank": "nina",
         "row": 227,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.4": {
       "name": "AWA POP FC.4",
@@ -21233,7 +21509,9 @@
         "bank": "nina",
         "row": 247,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.4,1": {
       "name": "AWA POP FC.4,1",
@@ -21398,7 +21676,9 @@
         "bank": "nina",
         "row": 247,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,f,F+3~t7.nina": {
       "name": "AWA POP f,f,F+3",
@@ -21439,7 +21719,9 @@
         "bank": "nina",
         "row": 265,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20(,18)",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,f,F+3,4~t7.nina": {
       "name": "Stingray",
@@ -21649,7 +21931,9 @@
         "bank": "nina",
         "row": 131,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.1": {
       "name": "AWA POP WS.1",
@@ -21688,7 +21972,9 @@
         "bank": "nina",
         "row": 69,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.1,1+2": {
       "name": "Fluttering Butterfly",
@@ -21732,11 +22018,8 @@
         "total": 35
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "14,6,15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.1,1+2~t7.nina": {
       "name": "AWA POP WS.1,1+2",
@@ -21779,11 +22062,8 @@
         "total": 18
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "14,6,15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.1,4": {
       "name": "Diving Hornet",
@@ -21830,7 +22110,9 @@
         "bank": "nina",
         "row": 118,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.1,4~t7.nina": {
       "name": "AWA POP WS.1,4",
@@ -21870,7 +22152,9 @@
         "bank": "nina",
         "row": 267,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.2": {
       "name": "Palm Uppercut",
@@ -21910,7 +22194,9 @@
         "bank": "nina",
         "row": 120,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.3": {
       "name": "Spider Knee",
@@ -21949,7 +22235,9 @@
         "bank": "nina",
         "row": 227,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.4": {
       "name": "AWA POP WS.4",
@@ -21988,7 +22276,9 @@
         "bank": "nina",
         "row": 247,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.4,3": {
       "name": "Flashing Escape",
@@ -22035,7 +22325,9 @@
         "bank": "nina",
         "row": 74,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.4,3~t7.nina": {
       "name": "AWA POP WS.4,3",
@@ -22075,7 +22367,9 @@
         "bank": "nina",
         "row": 262,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.b+1": {
       "name": "Helping Hand",
@@ -22114,7 +22408,9 @@
         "bank": "nina",
         "row": 69,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "SS.1~t7.nina": {
       "name": "Snakeshot",
@@ -22189,11 +22485,8 @@
       "merge_source": "t7:nina_289",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "SS.1,F": {
       "name": "Snakeshot to Rolling Dash",
@@ -22232,7 +22525,9 @@
         "bank": "nina",
         "row": 237,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "SS.1,B": {
       "name": "Snakeshot to Reverse Rolling Dash",
@@ -22271,7 +22566,9 @@
         "bank": "nina",
         "row": 237,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "SS.1,2~t7.nina": {
       "name": "Double Shot",
@@ -22317,7 +22614,9 @@
         "bank": "nina",
         "row": 237,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "SS.1,2~t7.nina.2": {
       "name": "AWA POP SS.1,2",
@@ -22356,7 +22655,9 @@
         "bank": "nina",
         "row": 219,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15,15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "SS.2~t7.nina": {
       "name": "Lift Shot",
@@ -22396,7 +22697,9 @@
         "bank": "nina",
         "row": 239,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "SS.4~t7.nina": {
       "name": "Heel Slicer",
@@ -22435,7 +22738,9 @@
         "bank": "nina",
         "row": 247,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+3+4": {
       "name": "Twisted Mind",
@@ -22471,12 +22776,7 @@
       "merge_source": "t7:nina_296",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(While enemy is down)",
-      "anim_t3": {
-        "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(While enemy is down)"
     },
     "1,2,1,2,3,3,2,1,2,4": {
       "name": "10 Hit Combo 1",
@@ -22709,12 +23009,7 @@
       "merge_source": "t7:nina_302",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Up, Feet Towards+",
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "Face Up, Feet Towards+"
     },
     "t7.nina_303": {
       "name": "AWA POP Face Up, Feet Towards, Roll Forward+1+2",
@@ -22954,7 +23249,9 @@
         "bank": "nina",
         "row": 230,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "R.d+1+2": {
       "name": "Rage Art",
@@ -22990,12 +23287,7 @@
       "merge_source": "t7:nina_309",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Rage)"
     },
     "R.f+2+3": {
       "name": "AWA POP R.f+2+3",
@@ -23031,12 +23323,7 @@
       "merge_source": "t7:nina_310",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Rage)"
     },
     "R.f+2+3,D/F": {
       "name": "Rage Drive",
@@ -23116,7 +23403,9 @@
         "bank": "nina",
         "row": 277,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "50",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b,d,d/f,f,n,D/B+2+3": {
       "name": "Evil Mist",
@@ -23151,12 +23440,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:nina_313",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 290,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "1+3~t7.nina": {
       "name": "Arm Grab Flip",
@@ -23323,12 +23607,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 436,
-        "match": "same-notation"
-      }
+      "unblockable": true
     },
     "f+2+4~t7.nina": {
       "name": "Over the Back Toss",
@@ -23366,12 +23645,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 438,
-        "match": "same-notation"
-      }
+      "unblockable": true
     },
     "u/f+3+4~t7.nina": {
       "name": "Leeaping Heel Hold",
@@ -23416,12 +23690,7 @@
       "input_note": "(close)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "nina",
-        "row": 90,
-        "match": "same-notation"
-      }
+      "unblockable": true
     },
     "d/f,d/f+1": {
       "name": "Elbow Smash",
@@ -23593,7 +23862,9 @@
         "bank": "nina",
         "row": 291,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcf+3+4": {
       "name": "Crab Hold",
@@ -23636,7 +23907,9 @@
         "bank": "nina",
         "row": 291,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "t7.nina_325": {
       "name": "Betrayer",
@@ -23967,12 +24240,7 @@
       "merge_source": "t7:nina_332",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Backhand Slap)",
-      "anim_t3": {
-        "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Backhand Slap)"
     },
     "BACKHAND_SLAP.2,3,4,2,2": {
       "name": "Triple Slaps",
@@ -24049,12 +24317,7 @@
       "merge_source": "t7:nina_334",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Triple Slaps)",
-      "anim_t3": {
-        "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Triple Slaps)"
     },
     "TRIPLE_SLAPS.1,2,4,3,1+2+3": {
       "name": "Leg Stretch Arm Lock",
@@ -24090,12 +24353,7 @@
       "merge_source": "t7:nina_335",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Triple Slaps)",
-      "anim_t3": {
-        "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Triple Slaps)"
     },
     "BETRAYER.2,1,1+2,1+2+3": {
       "name": "Twisted Nightmare",
@@ -24131,12 +24389,7 @@
       "merge_source": "t7:nina_336",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Betrayer)",
-      "anim_t3": {
-        "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Betrayer)"
     },
     "BETRAYER.1,3,2,1": {
       "name": "Arm Break",
@@ -24213,12 +24466,7 @@
       "merge_source": "t7:nina_338",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Twisted Nightmare)",
-      "anim_t3": {
-        "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Twisted Nightmare)"
     },
     "TWISTED_NIGHTMARE.1,2,4,3,1+2+3": {
       "name": "Leg Stretch Arm Lock",
@@ -24254,12 +24502,7 @@
       "merge_source": "t7:nina_339",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Twisted Nightmare)",
-      "anim_t3": {
-        "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Twisted Nightmare)"
     },
     "ARM_BREAK.3,1,4,1+2,1+2": {
       "name": "Double Arm Break",
@@ -24295,12 +24538,7 @@
       "merge_source": "t7:nina_340",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Arm Break)",
-      "anim_t3": {
-        "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Arm Break)"
     },
     "ARM_BREAK.2,1,3,4,1+2": {
       "name": "Falling Arm Break",
@@ -24336,12 +24574,7 @@
       "merge_source": "t7:nina_341",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Arm Break)",
-      "anim_t3": {
-        "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Arm Break)"
     },
     "CRAB_HOLD.3+4,3,4,1+2": {
       "name": "Commando Arm Lock",
@@ -24377,12 +24610,7 @@
       "merge_source": "t7:nina_342",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Crab Hold)",
-      "anim_t3": {
-        "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Crab Hold)"
     },
     "CRAB_HOLD.3+4,4,2,1+2": {
       "name": "Heel Hold",
@@ -24418,12 +24646,7 @@
       "merge_source": "t7:nina_343",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Crab Hold)",
-      "anim_t3": {
-        "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Crab Hold)"
     },
     "HEEL_HOLD.3,1,4,2+4": {
       "name": "Double Snap",
@@ -24459,12 +24682,7 @@
       "merge_source": "t7:nina_344",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Heel Hold)",
-      "anim_t3": {
-        "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Heel Hold)"
     },
     "HEEL_HOLD.1,3,2+4,3+4,1+2": {
       "name": "Double Heel Hold",
@@ -24500,12 +24718,7 @@
       "merge_source": "t7:nina_345",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Heel Hold)",
-      "anim_t3": {
-        "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Heel Hold)"
     },
     "TACKLE.1": {
       "name": "AWA POP TACKLE.1",
@@ -24546,7 +24759,9 @@
         "bank": "nina",
         "row": 47,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "7",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "TACKLE.1,1": {
       "name": "AWA POP TACKLE.1,1",
@@ -24729,12 +24944,7 @@
       "merge_source": "t7:nina_350",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Tackle)",
-      "anim_t3": {
-        "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Tackle)"
     },
     "qcf~t7.nina": {
       "name": "AWA POP qcf",
@@ -24773,7 +24983,8 @@
         "bank": "nina",
         "row": 116,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcb~t7.nina": {
       "name": "AWA POP qcb",
@@ -24812,7 +25023,8 @@
         "bank": "nina",
         "row": 116,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/b,b": {
       "name": "AWA POP u/b,b",
@@ -24886,12 +25098,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:nina_354",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "Time with enemy attack... (or b+2+4)",
-      "anim_t3": {
-        "bank": "nina",
-        "row": 288,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "Time with enemy attack... (or b+2+4)"
     },
     "u+1+2": {
       "name": "NINA u+1+2 (T3 nina r43)",
@@ -30592,5 +30799,60 @@
     "1+4,1": 2048
   },
   "stance_after": {},
-  "anim_bank": "nina"
+  "anim_bank": "nina",
+  "canon_moves": [
+    {
+      "name": "Last Thing You Hear",
+      "input": "1+4",
+      "display_input": "LP1+RK4",
+      "input_original": "`1+4`",
+      "anim_ref": "wh:awapop:sig:last-thing-you-hear",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 20,
+      "startup_frames": 17,
+      "canon": true,
+      "canon_owner": "AWAPOP",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "system_note": "System note: LP1+RK4 is also Reihou, but ONLY while the foe is in RAGE (otherwise the moveset LP1+RK4 plays). No in-game conflict outside foe-RAGE.",
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Pop!",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:awapop:sig:pop",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armL",
+      "damage": 17,
+      "startup_frames": 16,
+      "canon": true,
+      "canon_owner": "AWAPOP",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  }
 }
