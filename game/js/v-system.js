@@ -23,9 +23,10 @@
                  backshift; evading an attack triggers 0.3x slow-mo and
                  a 1.2s V-Shift Break window (+50% damage, auto-CH).
 
-   NAMING: all user-facing names are «name TBD» placeholders flagged
-   for user approval (owner directive 2026-10-22). Code keys stay
-   neutral (vskill/vtrigger/vreversal/vshift).
+   NAMING (popup-fix 2026-10-24): no canon name is assigned yet
+   (NEEDS NAME) — so no V-System name is shown on screen mid-fight;
+   triggers show only a color-coded glow. Code keys stay neutral
+   (vskill/vtrigger/vreversal/vshift).
    ============================================================ */
 
 /* ---- Tuning ------------------------------------------------ */
@@ -55,39 +56,40 @@ export const V = {
    Per-character unique V-Skill. kind: 'strike' | 'parry'.
    Fields mirror the fighter move shape (startup/active/recovery in
    seconds, damage on the WH 100HP scale). Fighters not listed use
-   `default`. `name` carries the «name TBD» placeholder flag. */
+   `default`. `name` fields are technical data names only, never
+   rendered mid-fight. */
 function _strike(o) {
   return Object.assign({
     kind: 'strike', vskill: true, unblockable: false, isGrab: false,
     cost: 0, limb: 'armR', heavy: false, hitWord: 0x217,
-    name: 'V-SKILL «name TBD»',
+    name: 'V-SKILL',
   }, o);
 }
 
 export const VSKILLS = {
   default: _strike({
-    id: 'soul-palm', name: 'V-SKILL «name TBD» — Soul Palm',
+    id: 'soul-palm', name: 'V-SKILL — Soul Palm',
     startup: 0.22, active: 0.05, recovery: 0.45,
     damage: 10, knock: 3.5, soulGain: 8,
     desc: 'A lunging soul-charged palm. Builds meter; safe-ish poke.',
   }),
   // Pantera (King/grappler): armored shoulder — the grappler's way in.
   pantera: _strike({
-    id: 'iron-shoulder', name: 'V-SKILL «name TBD» — Iron Shoulder',
+    id: 'iron-shoulder', name: 'V-SKILL — Iron Shoulder',
     startup: 0.3, active: 0.06, recovery: 0.55,
     damage: 12, knock: 5.0, soulGain: 8, armor: true, heavy: true,
     desc: 'Armored shoulder tackle. Armor through a poke, start the grab game.',
   }),
   // Dio (Akuma): fast, rude, higher damage — the demon's tax.
   dio: _strike({
-    id: 'demon-lash', name: 'V-SKILL «name TBD» — Demon Lash',
+    id: 'demon-lash', name: 'V-SKILL — Demon Lash',
     startup: 0.18, active: 0.05, recovery: 0.5,
     damage: 14, knock: 4.2, soulGain: 8,
     desc: 'A vicious backhand. Fast for a V-Skill, punished on whiff.',
   }),
   // Ryusan (Lucky Chloe): the fastest V-Skill — blink-and-miss.
   ryusan: _strike({
-    id: 'vitriol-flick', name: 'V-Skill «name TBD» — Vitriol Flick',
+    id: 'vitriol-flick', name: 'V-Skill — Vitriol Flick',
     startup: 0.15, active: 0.04, recovery: 0.42,
     damage: 8, knock: 2.8, soulGain: 9,
     desc: 'Acid-fast flick. Builds meter quicker than anyone.',
@@ -95,7 +97,7 @@ export const VSKILLS = {
   // Phantom (Yoshimitsu/trickster): a parry, not a strike — the
   // swordsman's answer. Catches a strike, staggers the attacker.
   phantom: Object.assign(_strike({
-    id: 'moon-catch', name: 'V-SKILL «name TBD» — Moon Catch',
+    id: 'moon-catch', name: 'V-SKILL — Moon Catch',
     startup: 0.08, active: V.PARRY_WINDOW, recovery: 0.5,
     damage: 0, knock: 0, soulGain: 4, noHitbox: true,
     desc: 'A 12f parry stance. Catch a strike: stagger them, drink their souls.',
@@ -111,7 +113,7 @@ export function vskillFor(fighterId) {
 export function vtriggerEnhance(base) {
   return Object.assign({}, base, {
     id: base.id + '-ex',
-    name: base.name.replace('«name TBD»', '«name TBD» EX'),
+    name: base.name + ' EX',
     damage: Math.round(base.damage * V.TRIGGER_SKILL_MULT),
     knock: base.knock * V.TRIGGER_SKILL_MULT,
     armor: true,
@@ -123,7 +125,7 @@ export function vtriggerEnhance(base) {
 export function vreversalMove() {
   return {
     vskill: true, kind: 'reversal',
-    id: 'v-reversal', name: 'V-REVERSAL «name TBD»',
+    id: 'v-reversal', name: 'V-REVERSAL',
     startup: 0.18, active: 0.08, recovery: 0.5,
     damage: 10, knock: 6.5, soulGain: 6, cost: 0,
     limb: 'armR', heavy: false, unblockable: false, isGrab: false,

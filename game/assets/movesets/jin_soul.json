@@ -2058,6 +2058,8 @@
       "knock": 4.2,
       "soulGain": 12,
       "anim_ref": "wh:jin_soul:sig:red-eye-warning",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "u+P",
         "u",
@@ -2119,6 +2121,8 @@
       "knock": 4.2,
       "soulGain": 12,
       "anim_ref": "wh:jin_soul:sig:red-eye-warning",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "u+1"
       ],
@@ -4365,8 +4369,8 @@
       "note": "Recovers 2f faster on hit or block (t27 r17)",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "same-notation"
+        "row": 63,
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       }
     },
     "1,1": {
@@ -4466,12 +4470,7 @@
       "t8_input": "1+2+3",
       "merge_source": "t8:Yoshimitsu-1+2+3",
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
-      "t8_alias": "1SS.1+2+3",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "1SS.1+2+3"
     },
     "1+2+3+4~t8.yoshimitsu": {
       "name": "Ki Charge",
@@ -4613,12 +4612,7 @@
       "t8_input": "1+4",
       "merge_source": "t8:Yoshimitsu-1+4",
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
-      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.1+4\n* Flash\n&lt;/div&gt;",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 314,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.1+4\n* Flash\n&lt;/div&gt;"
     },
     "1,NSS.1": {
       "name": "JIN 1,NSS.1",
@@ -4786,12 +4780,7 @@
       "t8_damage": "[12;12]",
       "t8_input": "2+3",
       "merge_source": "t8:Yoshimitsu-2+3",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Burst",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Burst"
     },
     "2,3": {
       "name": "PK Combo",
@@ -5071,12 +5060,7 @@
       "t8_input": "3,2,1+2",
       "merge_source": "t8:Yoshimitsu-3,2,1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "3,2,NSS.1+2": {
       "name": "Enma&#039;s Soul Blade",
@@ -5107,12 +5091,7 @@
       "merge_source": "t8:Yoshimitsu-3,2,NSS.1+2",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "t8_alias": "NSS.3,2,1+2",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "NSS.3,2,1+2"
     },
     "3+4~t8.yoshimitsu": {
       "name": "Meditation",
@@ -5871,12 +5850,7 @@
       "t8_damage": null,
       "t8_input": "b+1+2",
       "merge_source": "t8:Yoshimitsu-b+1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Cannot block during transition; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Cannot block during transition; &lt;/div&gt"
     },
     "b+2": {
       "name": "JIN b+2",
@@ -6360,12 +6334,7 @@
       "merge_source": "t8:Yoshimitsu-b,B+1+4",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
-      "t8_alias": "1SS.b,B+1+4",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "1SS.b,B+1+4"
     },
     "b,B+1+4,B": {
       "name": "Thunder Blade Feint to Soul Stealer",
@@ -6777,12 +6746,7 @@
       "t8_damage": null,
       "t8_input": "d+1+2",
       "merge_source": "t8:Yoshimitsu-d+1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Unavailable in NSS; Cancel to r38 standing with db (FLE.db)&lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Unavailable in NSS; Cancel to r38 standing with db (FLE.db)&lt;/div&gt"
     },
     "t8.Yoshimitsu-d+1*(2),n": {
       "name": "Death Slash (2)",
@@ -7544,12 +7508,7 @@
       "t8_damage": null,
       "t8_input": "d+3+4",
       "merge_source": "t8:Yoshimitsu-d+3+4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; All stance moves are bufferable; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; All stance moves are bufferable; &lt;/div&gt"
     },
     "d+4": {
       "name": "Toe Check",
@@ -7679,12 +7638,7 @@
       "t8_damage": null,
       "t8_input": "DB+1+2",
       "merge_source": "t8:Yoshimitsu-DB+1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Continues as long as DB is held; Transition to r25 releasing db; Actionable after 10f, mashing delays follow-ups; Follow-ups are fastest with inputs timed on frame 11; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Continues as long as DB is held; Transition to r25 releasing db; Actionable after 10f, mashing delays follow-ups; Follow-ups are fastest with inputs timed on frame 11; &lt;/div&gt"
     },
     "d/b+2~t8.yoshimitsu": {
       "name": "JIN d/b+2",
@@ -8363,12 +8317,7 @@
       "merge_source": "t8:Yoshimitsu-df+1+4",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
-      "t8_alias": "1SS.df+1+4",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "1SS.df+1+4"
     },
     "d/f+1,4": {
       "name": "Autumn Leaves",
@@ -8467,12 +8416,7 @@
       "t8_input": "df+2+3",
       "merge_source": "t8:Yoshimitsu-df+2+3",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "d/f+3~t8.yoshimitsu": {
       "name": "JIN d/f+3",
@@ -8674,12 +8618,7 @@
       "t8_id": "Yoshimitsu-DGF.1+2",
       "t8_damage": null,
       "t8_input": "DGF.1+2",
-      "merge_source": "t8:Yoshimitsu-DGF.1+2",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "merge_source": "t8:Yoshimitsu-DGF.1+2"
     },
     "DGF.2": {
       "name": "Dragonfly Fist",
@@ -8888,12 +8827,7 @@
       "t8_id": "Yoshimitsu-DGF.d+3+4",
       "t8_damage": null,
       "t8_input": "DGF.d+3+4",
-      "merge_source": "t8:Yoshimitsu-DGF.d+3+4",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "merge_source": "t8:Yoshimitsu-DGF.d+3+4"
     },
     "DGF.f": {
       "name": "Dragonfly Forward",
@@ -8965,12 +8899,7 @@
         "total": 36
       },
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;"
     },
     "DGF.f+2": {
       "name": "Dragonfly Slash",
@@ -9397,12 +9326,7 @@
       "t8_damage": "22",
       "t8_input": "f,F+1+2",
       "merge_source": "t8:Yoshimitsu-f,F+1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo"
     },
     "f,F+1+4": {
       "name": "Suicide",
@@ -9432,12 +9356,7 @@
       "t8_input": "f,F+1+4",
       "merge_source": "t8:Yoshimitsu-f,F+1+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di"
     },
     "f,F+1+4,F": {
       "name": "Double Suicide",
@@ -9639,12 +9558,7 @@
       "t8_damage": "15",
       "t8_input": "f,F+3+4",
       "merge_source": "t8:Yoshimitsu-f,F+3+4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo"
     },
     "f,F+3+4,1+2": {
       "name": "JIN f,F+3+4,1+2",
@@ -9674,12 +9588,7 @@
       "t8_input": "f,F+3+4,1+2",
       "merge_source": "t8:Yoshimitsu-f,F+3+4,1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "f,F+3+4,1+2,3+4": {
       "name": "Solar Kick Shark Attack",
@@ -9710,12 +9619,7 @@
       "merge_source": "t8:Yoshimitsu-f,F+3+4,1+2,3+4",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
-      "t8_alias": "Shark Attack",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "Shark Attack"
     },
     "f,F+4": {
       "name": "Fubuki",
@@ -9848,12 +9752,7 @@
       "t8_input": "FLE.1+2",
       "merge_source": "t8:Yoshimitsu-FLE.1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado"
     },
     "FLE.2": {
       "name": "Flea &gt; Sliding Headbutt",
@@ -9952,12 +9851,7 @@
       "t8_input": "FLE.3+4",
       "merge_source": "t8:Yoshimitsu-FLE.3+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado"
     },
     "FLE.d": {
       "name": "Flea Digger",
@@ -10019,12 +9913,7 @@
       "t8_id": "Yoshimitsu-FLE.d+3+4",
       "t8_damage": null,
       "t8_input": "FLE.d+3+4",
-      "merge_source": "t8:Yoshimitsu-FLE.d+3+4",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "merge_source": "t8:Yoshimitsu-FLE.d+3+4"
     },
     "FLE.d/b": {
       "name": "Flea Cancel",
@@ -10266,12 +10155,7 @@
       "t8_id": "Yoshimitsu-FLE.u+1+2",
       "t8_damage": null,
       "t8_input": "FLE.u+1+2",
-      "merge_source": "t8:Yoshimitsu-FLE.u+1+2",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "merge_source": "t8:Yoshimitsu-FLE.u+1+2"
     },
     "FLE.u+3+4": {
       "name": "Flea &gt; Dragonfly Feint",
@@ -10301,12 +10185,7 @@
       "t8_input": "FLE.u+3+4",
       "merge_source": "t8:Yoshimitsu-FLE.u+3+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "FLE.u/f": {
       "name": "Jumping Flea",
@@ -10441,12 +10320,7 @@
       "t8_id": "Yoshimitsu-FUFT.d+3+4",
       "t8_damage": null,
       "t8_input": "FUFT.d+3+4",
-      "merge_source": "t8:Yoshimitsu-FUFT.d+3+4",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "merge_source": "t8:Yoshimitsu-FUFT.d+3+4"
     },
     "H.2+3": {
       "name": "Divine Sword Kagekiyo",
@@ -10476,12 +10350,7 @@
       "t8_input": "H.2+3",
       "merge_source": "t8:Yoshimitsu-H.2+3",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Smash",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Smash"
     },
     "H.DGF.1": {
       "name": "Dragonfly Blade (Heat)",
@@ -10554,12 +10423,7 @@
         "total": 40
       },
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;"
     },
     "hFC.1": {
       "name": "JIN hFC.1",
@@ -10825,12 +10689,7 @@
       "t8_damage": null,
       "t8_input": "IND.1+2",
       "merge_source": "t8:Yoshimitsu-IND.1+2",
-      "note": "Unavailable in NSS",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "Unavailable in NSS"
     },
     "IND.2": {
       "name": "Indian Stance Stone Fists",
@@ -10929,12 +10788,7 @@
       "t8_input": "IND.3,3+4",
       "merge_source": "t8:Yoshimitsu-IND.3,3+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado"
     },
     "IND.3+4": {
       "name": "Indian Tobi Ushiwaka",
@@ -10970,12 +10824,7 @@
         ],
         "total": 28
       },
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;"
     },
     "IND.4": {
       "name": "Indian Stance Knee Cap",
@@ -11039,12 +10888,7 @@
       "t8_damage": null,
       "t8_input": "IND.D+3+4*",
       "merge_source": "t8:Yoshimitsu-IND.D+3+4*",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Allows 8-way directional movement in IND; Continues as long as 3+4 is held; Holding a directional input and pressing 1, 2 or 1+2 will play different voicelines; Yoshimitsu must re",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Allows 8-way directional movement in IND; Continues as long as 3+4 is held; Holding a directional input and pressing 1, 2 or 1+2 will play different voicelines; Yoshimitsu must re"
     },
     "IND.f": {
       "name": "Indian Stance Vacuum Dance",
@@ -11175,12 +11019,7 @@
       "t8_damage": null,
       "t8_input": "IND.u+1+2",
       "merge_source": "t8:Yoshimitsu-IND.u+1+2",
-      "note": "Unavailable in NSS",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "Unavailable in NSS"
     },
     "KIN.1": {
       "name": "JIN KIN.1",
@@ -11295,12 +11134,7 @@
         "total": 36
       },
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo"
     },
     "KIN.1+4": {
       "name": "Kincho Soul Stealer",
@@ -11330,12 +11164,7 @@
       "t8_input": "KIN.1+4",
       "merge_source": "t8:Yoshimitsu-KIN.1+4",
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
-      "t8_alias": "1SS.KIN.1+4",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 314,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "1SS.KIN.1+4"
     },
     "KIN.1,NSS.1": {
       "name": "JIN KIN.1,NSS.1",
@@ -11444,12 +11273,7 @@
       "merge_source": "t8:Yoshimitsu-KIN.2,1+2",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.KIN.2,1+2\n* KIN.2,1SS.1+2\n&lt;/div&gt;",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.KIN.2,1+2\n* KIN.2,1SS.1+2\n&lt;/div&gt;"
     },
     "KIN.2,1+2*": {
       "name": "Tenshu Kuzushi (Hold)",
@@ -11480,12 +11304,7 @@
       "merge_source": "t8:Yoshimitsu-KIN.2,1+2*",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.KIN.2,1+2*\n* KIN.2,1SS.1+2*\n&lt;/div&gt;",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.KIN.2,1+2*\n* KIN.2,1SS.1+2*\n&lt;/div&gt;"
     },
     "KIN.2,NSS.1+2": {
       "name": "JIN KIN.2,NSS.1+2",
@@ -11516,12 +11335,7 @@
       "merge_source": "t8:Yoshimitsu-KIN.2,NSS.1+2",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* NSS.KIN.2,1+2\n* KIN.NSS.2,1+2\n&lt;/div&gt;",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* NSS.KIN.2,1+2\n* KIN.NSS.2,1+2\n&lt;/div&gt;"
     },
     "KIN.2,NSS.1+2*": {
       "name": "JIN KIN.2,NSS.1+2*",
@@ -11552,12 +11366,7 @@
       "merge_source": "t8:Yoshimitsu-KIN.2,NSS.1+2*",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* NSS.KIN.2,1+2*\n* KIN.NSS.2,1+2*\n&lt;/div&gt;",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* NSS.KIN.2,1+2*\n* KIN.NSS.2,1+2*\n&lt;/div&gt;"
     },
     "KIN.3": {
       "name": "Shibakari",
@@ -11656,12 +11465,7 @@
       "t8_input": "KIN.b+1+2",
       "merge_source": "t8:Yoshimitsu-KIN.b+1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di"
     },
     "KIN.b+2": {
       "name": "JIN KIN.b+2",
@@ -11921,12 +11725,7 @@
       "merge_source": "t8:Yoshimitsu-KIN.f+1+2",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
-      "t8_alias": "1SS.KIN.f+1+2",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "1SS.KIN.f+1+2"
     },
     "KIN.f+2": {
       "name": "Ganto",
@@ -11991,12 +11790,7 @@
       "t8_input": "KIN.u+1+2",
       "merge_source": "t8:Yoshimitsu-KIN.u+1+2",
       "note": "Can be counterhit on frames 1~19",
-      "t8_alias": "1SS.KIN.u+1+2",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "1SS.KIN.u+1+2"
     },
     "SIDE_L.1+3": {
       "name": "Wheels of Hell",
@@ -12098,12 +11892,7 @@
       "t8_input": "MED.1+2",
       "merge_source": "t8:Yoshimitsu-MED.1+2",
       "launch": true,
-      "note": "Recovers 12 base health",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "Recovers 12 base health"
     },
     "MED.1+4": {
       "name": "Meditation Backturned Flash",
@@ -12133,12 +11922,7 @@
       "t8_input": "MED.1+4",
       "merge_source": "t8:Yoshimitsu-MED.1+4",
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
-      "t8_alias": "1SS.MED.1+4",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 314,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "1SS.MED.1+4"
     },
     "MED.3": {
       "name": "Back Handspring",
@@ -12208,12 +11992,7 @@
       "t8_id": "Yoshimitsu-MED.3+4",
       "t8_damage": null,
       "t8_input": "MED.3+4",
-      "merge_source": "t8:Yoshimitsu-MED.3+4",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "merge_source": "t8:Yoshimitsu-MED.3+4"
     },
     "MED.d": {
       "name": "JIN MED.d",
@@ -12345,12 +12124,7 @@
       "t8_input": "NSS.1+2+3",
       "merge_source": "t8:Yoshimitsu-NSS.1+2+3",
       "knockdown": true,
-      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Balcony Break&lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Balcony Break&lt;/div&gt"
     },
     "NSS.1+4": {
       "name": "Soul Stealer",
@@ -12381,12 +12155,7 @@
       "merge_source": "t8:Yoshimitsu-NSS.1+4",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange sat&quot;; &gt;Strong Aeri",
-      "t8_alias": "NSS Flash",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 314,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "NSS Flash"
     },
     "NSS.b+1+2": {
       "name": "Battou Kakugo",
@@ -12415,12 +12184,7 @@
       "t8_damage": null,
       "t8_input": "NSS.b+1+2",
       "merge_source": "t8:Yoshimitsu-NSS.b+1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Cannot block during transition; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Cannot block during transition; &lt;/div&gt"
     },
     "NSS.b,B+1+4": {
       "name": "Thunder Palm Strike",
@@ -12450,12 +12214,7 @@
       "t8_input": "NSS.b,B+1+4",
       "merge_source": "t8:Yoshimitsu-NSS.b,B+1+4",
       "launch": true,
-      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Balcony Break&lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Balcony Break&lt;/div&gt"
     },
     "NSS.b,B+1+4,B": {
       "name": "Thunder Palm Strike Feint to Soul Stealer",
@@ -12588,12 +12347,7 @@
       "t8_id": "Yoshimitsu-NSS.d+1+2",
       "t8_damage": null,
       "t8_input": "NSS.d+1+2",
-      "merge_source": "t8:Yoshimitsu-NSS.d+1+2",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "merge_source": "t8:Yoshimitsu-NSS.d+1+2"
     },
     "NSS.d+1+4": {
       "name": "Unfinished Business",
@@ -12622,12 +12376,7 @@
       "t8_damage": null,
       "t8_input": "NSS.d+1+4",
       "merge_source": "t8:Yoshimitsu-NSS.d+1+4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Yoshimitsu is invisible on frames 50~64, but can still be hit; Transition to 1SS.IND with D; Transition to DGF with U; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Yoshimitsu is invisible on frames 50~64, but can still be hit; Transition to 1SS.IND with D; Transition to DGF with U; &lt;/div&gt"
     },
     "NSS.d/b+1": {
       "name": "Manji Shagapan",
@@ -12691,12 +12440,7 @@
       "t8_input": "NSS.df+1+4",
       "merge_source": "t8:Yoshimitsu-NSS.df+1+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Enter KIN r37 with 1+2; Can be buffered; Can be performed in FC; Power up input NSS.f,n,d,df+1; Replaced by 1SS.df+1+4 when performed in BT&lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Enter KIN r37 with 1+2; Can be buffered; Can be performed in FC; Power up input NSS.f,n,d,df+1; Replaced by 1SS.df+1+4 when performed in BT&lt;/div&gt"
     },
     "NSS.f+1+2": {
       "name": "Nine-Headed Dragon",
@@ -12726,12 +12470,7 @@
       "t8_input": "NSS.f+1+2",
       "merge_source": "t8:Yoshimitsu-NSS.f+1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Engag",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Engag"
     },
     "NSS.f+3+4": {
       "name": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* Bull Rush\n* Chariot Tackle\n&lt;/div&gt;",
@@ -12761,12 +12500,7 @@
       "t8_input": "NSS.f+3+4",
       "merge_source": "t8:Yoshimitsu-NSS.f+3+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "NSS.FC.D/F+1": {
       "name": "JIN NSS.FC.D/F+1",
@@ -12975,12 +12709,7 @@
       "merge_source": "t8:Yoshimitsu-NSS.KIN.1+4",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange sat&quot;; &gt;Strong Aeri",
-      "t8_alias": "KIN.NSS.1+4",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "KIN.NSS.1+4"
     },
     "NSS.KIN.d+1": {
       "name": "JIN NSS.KIN.d+1",
@@ -13137,12 +12866,7 @@
       "t8_input": "NSS.KIN.f+1+2",
       "merge_source": "t8:Yoshimitsu-NSS.KIN.f+1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di"
     },
     "NSS.qcf+1": {
       "name": "Moonsault",
@@ -13242,12 +12966,7 @@
       "t8_damage": "18",
       "t8_input": "NSS.u+1+2",
       "merge_source": "t8:Yoshimitsu-NSS.u+1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo"
     },
     "NSS.u/b+1": {
       "name": "JIN NSS.u/b+1",
@@ -13311,12 +13030,7 @@
       "t8_input": "NSS.ub+1+2",
       "merge_source": "t8:Yoshimitsu-NSS.ub+1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "NSS.u/b+1+3": {
       "name": "Spinning Finger Stab",
@@ -13345,12 +13059,7 @@
       "t8_damage": "50",
       "t8_input": "NSS.ub+1+3",
       "merge_source": "t8:Yoshimitsu-NSS.ub+1+3",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Punishable on close hit with FUFT.3&lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Punishable on close hit with FUFT.3&lt;/div&gt"
     },
     "NSS.u/b+1+3,1+2": {
       "name": "Face Slapper",
@@ -13380,12 +13089,7 @@
       "t8_input": "NSS.ub+1+3,1+2",
       "merge_source": "t8:Yoshimitsu-NSS.ub+1+3,1+2",
       "launch": true,
-      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Floor Break&lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Floor Break&lt;/div&gt"
     },
     "NSS.u/b+1+3,n,1": {
       "name": "Index Poke Windmill",
@@ -13448,12 +13152,7 @@
       "t8_id": "Yoshimitsu-NSS.uf+1+3",
       "t8_damage": null,
       "t8_input": "NSS.uf+1+3",
-      "merge_source": "t8:Yoshimitsu-NSS.uf+1+3",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "merge_source": "t8:Yoshimitsu-NSS.uf+1+3"
     },
     "qcb,f+2": {
       "name": "Soul Possession",
@@ -13821,12 +13520,7 @@
       "t8_damage": null,
       "t8_input": "u+1+2",
       "merge_source": "t8:Yoshimitsu-u+1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Cancel to r12 with db_d_df (js1~10); Unavailable in NSS; Actionable after 15 frames, except when using DGF.2 which can be performed after 10 frames; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Cancel to r12 with db_d_df (js1~10); Unavailable in NSS; Actionable after 15 frames, except when using DGF.2 which can be performed after 10 frames; &lt;/div&gt"
     },
     "u+3+4": {
       "name": "Guillotine Crow Kick",
@@ -13969,12 +13663,7 @@
       "t8_input": "ub+1+3",
       "merge_source": "t8:Yoshimitsu-ub+1+3",
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
-      "t8_alias": "1SS.ub+1+3",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "1SS.ub+1+3"
     },
     "u/b+1+3,1+2": {
       "name": "Face Splitter",
@@ -14005,12 +13694,7 @@
       "merge_source": "t8:Yoshimitsu-ub+1+3,1+2",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
-      "t8_alias": "1SS.ub+1+3,1+2",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "1SS.ub+1+3,1+2"
     },
     "u/b+1+3,n,1": {
       "name": "Sword Poke Windmill",
@@ -14183,12 +13867,7 @@
       "t8_alias": "Skittles",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 261,
-        "match": "same-notation"
-      }
+      "unblockable": true
     },
     "u/f+1+3": {
       "name": "Death Copter",
@@ -14219,12 +13898,7 @@
       "merge_source": "t8:Yoshimitsu-uf+1+3",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
-      "t8_alias": "1SS.uf+1+3",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "1SS.uf+1+3"
     },
     "u/f+1+3,b": {
       "name": "Death Copter Trick",
@@ -14534,12 +14208,7 @@
       "t8_input": "uf+3+4,1,3+4",
       "merge_source": "t8:Yoshimitsu-uf+3+4,1,3+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo"
     },
     "u/f+3+4,1,4": {
       "name": "Poison Wind Silver Fist",
@@ -14718,12 +14387,7 @@
       "t8_input": "uf+3+4,3+4",
       "merge_source": "t8:Yoshimitsu-uf+3+4,3+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado"
     },
     "u/f+4~t8.yoshimitsu": {
       "name": "Avoiding the Puddle",
@@ -15381,9 +15045,11 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "same-notation"
-      }
+        "row": 63,
+        "match": "class-verified remap (anim-fix 2026-10-23)"
+      },
+      "mod_damage": "9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,1~t7.yoshimitsu": {
       "name": "Naguri Kabuto Wari",
@@ -15429,7 +15095,9 @@
         "bank": "yoshimitsu",
         "row": 103,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,1~t7.yoshimitsu.2": {
       "name": "JIN 1,1",
@@ -15508,7 +15176,9 @@
         "bank": "yoshimitsu",
         "row": 126,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,1~t7.yoshimitsu": {
       "name": "Seiken Douhari",
@@ -15555,7 +15225,9 @@
         "bank": "yoshimitsu",
         "row": 103,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,31",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,1~t7.yoshimitsu.2": {
       "name": "JIN 2,1",
@@ -15634,7 +15306,9 @@
         "bank": "yoshimitsu",
         "row": 116,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,2~t7.yoshimitsu": {
       "name": "Flash Punch",
@@ -15680,7 +15354,9 @@
         "bank": "yoshimitsu",
         "row": 116,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,2~t7.yoshimitsu.2": {
       "name": "JIN 2,2",
@@ -15766,7 +15442,9 @@
         "bank": "yoshimitsu",
         "row": 132,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,3~t7.yoshimitsu.2": {
       "name": "JIN 2,3",
@@ -15852,7 +15530,9 @@
         "bank": "yoshimitsu",
         "row": 132,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,d+3~t7.yoshimitsu.2": {
       "name": "JIN 2,d+3",
@@ -15938,7 +15618,9 @@
         "bank": "yoshimitsu",
         "row": 139,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3~4~t7.yoshimitsu": {
       "name": "Tobi Ushiwaka",
@@ -15984,7 +15666,9 @@
         "bank": "yoshimitsu",
         "row": 121,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4~t7.yoshimitsu": {
       "name": "JIN 4",
@@ -16024,7 +15708,9 @@
         "bank": "yoshimitsu",
         "row": 141,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,4~t7.yoshimitsu": {
       "name": "JIN 4,4",
@@ -16070,7 +15756,9 @@
         "bank": "yoshimitsu",
         "row": 121,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "22,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,4,4~t7.yoshimitsu": {
       "name": "Triple Roundhouse Combo",
@@ -16118,7 +15806,9 @@
         "bank": "yoshimitsu",
         "row": 121,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "22,22,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4~3~t7.yoshimitsu": {
       "name": "Kangaroo Kick",
@@ -16158,7 +15848,9 @@
         "bank": "yoshimitsu",
         "row": 85,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1+2+3~t7.yoshimitsu": {
       "name": "Spirit Shield",
@@ -16193,11 +15885,8 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_20",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "0",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "t7.yoshimitsu_21": {
       "name": "Soul Stealer",
@@ -16281,7 +15970,9 @@
         "bank": "yoshimitsu",
         "row": 85,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "13,16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+1~t7.yoshimitsu": {
       "name": "Helmet Strike",
@@ -16359,7 +16050,9 @@
         "bank": "yoshimitsu",
         "row": 126,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "25?",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3~t7.yoshimitsu": {
       "name": "Rising Knee",
@@ -16399,7 +16092,9 @@
         "bank": "yoshimitsu",
         "row": 86,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+4~t7.yoshimitsu": {
       "name": "Avoiding the Puddle",
@@ -16479,7 +16174,9 @@
         "bank": "yoshimitsu",
         "row": 291,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3+4,3+4~t7.yoshimitsu": {
       "name": "Poison Wind to Kangaroo Kick",
@@ -16522,11 +16219,8 @@
         "total": 37
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "27,33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3+4,3+4~t7.yoshimitsu.2": {
       "name": "JIN u/f+3+4,3+4",
@@ -16561,12 +16255,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_29",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "u/f+3+4,u+3+4": {
       "name": "Poison Wind Eclipse Kick",
@@ -16608,12 +16297,7 @@
         ],
         "total": 28
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "u/f+3+4,u+3+4~t7.yoshimitsu": {
       "name": "JIN u/f+3+4,u+3+4",
@@ -16655,12 +16339,7 @@
         ],
         "total": 20
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "u/f+3+4,b+1": {
       "name": "JIN u/f+3+4,b+1",
@@ -16706,7 +16385,9 @@
         "bank": "yoshimitsu",
         "row": 218,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "27,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3+4,b+1,4": {
       "name": "JIN u/f+3+4,b+1,4",
@@ -16753,7 +16434,9 @@
         "bank": "yoshimitsu",
         "row": 219,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "27,10,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3+4,b+1,4,d+1": {
       "name": "Poison Wind Gold Fist",
@@ -16801,7 +16484,9 @@
         "bank": "yoshimitsu",
         "row": 311,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "27,10,20,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3+4,b+1,3+4": {
       "name": "Poison Wind Bronze Fist Steel Fist",
@@ -16844,11 +16529,8 @@
         ],
         "total": 41
       },
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "27,10,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "t7.yoshimitsu_36": {
       "name": "Manji Backfist",
@@ -16932,7 +16614,9 @@
         "bank": "yoshimitsu",
         "row": 125,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "24,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,D/B+2,2": {
       "name": "JIN f+2,D/B+2,2",
@@ -16979,7 +16663,9 @@
         "bank": "yoshimitsu",
         "row": 125,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "24,10,9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,D/B+2,2,2": {
       "name": "JIN f+2,D/B+2,2,2",
@@ -17027,7 +16713,9 @@
         "bank": "yoshimitsu",
         "row": 125,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "24,10,9,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,D/B+2,2,2,2": {
       "name": "JIN f+2,D/B+2,2,2,2",
@@ -17076,7 +16764,9 @@
         "bank": "yoshimitsu",
         "row": 125,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "24,10,9,8,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,D/B+2,2,2,2,2": {
       "name": "JIN f+2,D/B+2,2,2,2,2",
@@ -17126,7 +16816,9 @@
         "bank": "yoshimitsu",
         "row": 125,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "24,10,9,8,6,5",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,D/B+2,2,2,2,2,2": {
       "name": "Backfist to Stone Fist",
@@ -17177,7 +16869,9 @@
         "bank": "yoshimitsu",
         "row": 125,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "24,10,9,8,6,5,4",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3~t7.yoshimitsu": {
       "name": "JIN f+3",
@@ -17217,7 +16911,9 @@
         "bank": "yoshimitsu",
         "row": 120,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "32",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3,3": {
       "name": "Oni Kick Combo",
@@ -17264,7 +16960,9 @@
         "bank": "yoshimitsu",
         "row": 120,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "32,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3,3~t7.yoshimitsu": {
       "name": "JIN f+3,3",
@@ -17344,7 +17042,9 @@
         "bank": "yoshimitsu",
         "row": 130,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+1+2~t7.yoshimitsu": {
       "name": "Tsuka Splitter",
@@ -17384,7 +17084,9 @@
         "bank": "yoshimitsu",
         "row": 124,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "29",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+2~t7.yoshimitsu": {
       "name": "Sword Smash",
@@ -17423,7 +17125,9 @@
         "bank": "yoshimitsu",
         "row": 175,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+2:2~t7.yoshimitsu": {
       "name": "Yomi Kakenuke",
@@ -17511,7 +17215,9 @@
         "bank": "yoshimitsu",
         "row": 219,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+3+4~t7.yoshimitsu": {
       "name": "Reverse Cartwheel",
@@ -17546,11 +17252,8 @@
       "t7_on_ch": "-9 (OC)",
       "merge_source": "t7:yoshimitsu_51",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+3+4,1+2~t7.yoshimitsu": {
       "name": "JIN f,F+3+4,1+2",
@@ -17593,11 +17296,8 @@
         "total": 30
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "20,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+3+4,1+2~t7.yoshimitsu.2": {
       "name": "JIN f,F+3+4,1+2",
@@ -17632,12 +17332,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_53",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "f,F+3+4,1+2,3+4~t7.yoshimitsu": {
       "name": "Solar Kick Shark Attack",
@@ -17681,11 +17376,8 @@
         "total": 44
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "20,20,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+3+4,1+2,3+4~t7.yoshimitsu.2": {
       "name": "JIN f,F+3+4,1+2,3+4",
@@ -17727,12 +17419,7 @@
         ],
         "total": 29
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "f,F+3+4,1+2,3+4~t7.yoshimitsu.3": {
       "name": "JIN f,F+3+4,1+2,3+4",
@@ -17767,12 +17454,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_56",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "f,f,f+3": {
       "name": "Manji Spin Kick",
@@ -17853,7 +17535,9 @@
         "bank": "yoshimitsu",
         "row": 224,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,n,d,d/f+2~t7.yoshimitsu": {
       "name": "Flashing Steel",
@@ -17977,7 +17661,9 @@
         "bank": "yoshimitsu",
         "row": 244,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "14,",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1,2~t7.yoshimitsu.2": {
       "name": "JIN d/f+1,2",
@@ -18062,7 +17748,9 @@
         "bank": "yoshimitsu",
         "row": 121,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1,4~t7.yoshimitsu.2": {
       "name": "JIN d/f+1,4",
@@ -18141,7 +17829,9 @@
         "bank": "yoshimitsu",
         "row": 134,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3~t7.yoshimitsu": {
       "name": "JIN d/f+3",
@@ -18180,7 +17870,9 @@
         "bank": "yoshimitsu",
         "row": 154,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,1~t7.yoshimitsu": {
       "name": "Wood Cutter",
@@ -18226,7 +17918,9 @@
         "bank": "yoshimitsu",
         "row": 131,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,1~t7.yoshimitsu.2": {
       "name": "JIN d/f+3,1",
@@ -18305,7 +17999,9 @@
         "bank": "yoshimitsu",
         "row": 133,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1+2,2": {
       "name": "Nebular Burst",
@@ -18351,7 +18047,9 @@
         "bank": "yoshimitsu",
         "row": 173,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1+2,2~t7.yoshimitsu": {
       "name": "JIN d/f+1+2,2",
@@ -18430,7 +18128,9 @@
         "bank": "yoshimitsu",
         "row": 156,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+1*,B": {
       "name": "JIN d+1*,B",
@@ -18508,7 +18208,9 @@
         "bank": "yoshimitsu",
         "row": 147,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+2,1~t7.yoshimitsu": {
       "name": "Heshikirigari",
@@ -18555,7 +18257,9 @@
         "bank": "yoshimitsu",
         "row": 137,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+2,1~t7.yoshimitsu.2": {
       "name": "JIN d+2,1",
@@ -18643,7 +18347,9 @@
         "bank": "yoshimitsu",
         "row": 137,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16,22,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+2,2,1~t7.yoshimitsu.2": {
       "name": "JIN d+2,2,1",
@@ -18777,7 +18483,9 @@
         "bank": "yoshimitsu",
         "row": 137,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16,22,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+2,2,d+1~t7.yoshimitsu.2": {
       "name": "JIN d+2,2,d+1",
@@ -18905,11 +18613,8 @@
         ],
         "total": 29
       },
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "16,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+2,2,2+3~t7.yoshimitsu": {
       "name": "JIN d+2,2,2+3",
@@ -18943,12 +18648,7 @@
       "t7_on_hit": "+7",
       "t7_on_ch": "STUN",
       "merge_source": "t7:yoshimitsu_84",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "d/b+1~t7.yoshimitsu": {
       "name": "JIN d/b+1",
@@ -18987,7 +18687,9 @@
         "bank": "yoshimitsu",
         "row": 156,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+1,1": {
       "name": "Nade Kujaku",
@@ -19034,7 +18736,9 @@
         "bank": "yoshimitsu",
         "row": 176,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "21,31",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+1,1~t7.yoshimitsu": {
       "name": "JIN d/b+1,1",
@@ -19159,7 +18863,9 @@
         "bank": "yoshimitsu",
         "row": 126,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "D/B+2,2,2": {
       "name": "JIN D/B+2,2,2",
@@ -19206,7 +18912,9 @@
         "bank": "yoshimitsu",
         "row": 126,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,9,7",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "D/B+2,2,2,2": {
       "name": "JIN D/B+2,2,2,2",
@@ -19254,7 +18962,9 @@
         "bank": "yoshimitsu",
         "row": 126,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,9,8,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "D/B+2,2,2,2,2": {
       "name": "JIN D/B+2,2,2,2,2",
@@ -19303,7 +19013,9 @@
         "bank": "yoshimitsu",
         "row": 126,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,9,8,6,5",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "D/B+2,2,2,2,2,2": {
       "name": "Stone Fists",
@@ -19353,7 +19065,9 @@
         "bank": "yoshimitsu",
         "row": 126,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,9,8,6,5,4",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "D/B+3": {
       "name": "JIN D/B+3",
@@ -19393,7 +19107,9 @@
         "bank": "yoshimitsu",
         "row": 252,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "D/B+3,3": {
       "name": "JIN D/B+3,3",
@@ -19439,7 +19155,9 @@
         "bank": "yoshimitsu",
         "row": 252,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "D/B+3,3,3": {
       "name": "JIN D/B+3,3,3",
@@ -19486,7 +19204,9 @@
         "bank": "yoshimitsu",
         "row": 252,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,9,9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "D/B+3,3,3,3": {
       "name": "JIN D/B+3,3,3,3",
@@ -19534,7 +19254,9 @@
         "bank": "yoshimitsu",
         "row": 252,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,9,9,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "D/B+3,3,3,3,3": {
       "name": "JIN D/B+3,3,3,3,3",
@@ -19583,7 +19305,9 @@
         "bank": "yoshimitsu",
         "row": 252,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,9,9,6,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "D/B+3,3,3,3,3,3": {
       "name": "Manji Spin Low Kicks",
@@ -19633,7 +19357,9 @@
         "bank": "yoshimitsu",
         "row": 252,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,9,9,6,6,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "MANJI_SPIN_LOW_KICKS.4": {
       "name": "Manji Spin Low Kicks Front Kick",
@@ -19674,7 +19400,9 @@
         "bank": "yoshimitsu",
         "row": 141,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+4~t7.yoshimitsu": {
       "name": "Nozuchi Fumi",
@@ -19713,7 +19441,9 @@
         "bank": "yoshimitsu",
         "row": 149,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2~t7.yoshimitsu": {
       "name": "JIN b+2",
@@ -19752,7 +19482,9 @@
         "bank": "yoshimitsu",
         "row": 116,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,1~t7.yoshimitsu": {
       "name": "Oma Gehosen",
@@ -19799,7 +19531,9 @@
         "bank": "yoshimitsu",
         "row": 79,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,1~t7.yoshimitsu.2": {
       "name": "JIN b+2,1",
@@ -19886,7 +19620,9 @@
         "bank": "yoshimitsu",
         "row": 157,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,2~t7.yoshimitsu.2": {
       "name": "JIN b+2,2",
@@ -19965,7 +19701,9 @@
         "bank": "yoshimitsu",
         "row": 175,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.1": {
       "name": "JIN FC.1",
@@ -21456,12 +21194,7 @@
       "merge_source": "t7:yoshimitsu_142",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Up, Feet Towards+",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "Face Up, Feet Towards+"
     },
     "t7.yoshimitsu_143": {
       "name": "JIN Face Up, Feet Towards, Roll Forward+1+2",
@@ -21694,12 +21427,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_148",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "BDS.3~t7.yoshimitsu": {
       "name": "Bad Stomach to Backflip Kick",
@@ -21826,7 +21554,9 @@
         "bank": "yoshimitsu",
         "row": 121,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "32,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3,4~t7.yoshimitsu.2": {
       "name": "JIN f+3,4",
@@ -21943,7 +21673,9 @@
         "bank": "yoshimitsu",
         "row": 121,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+1+2~t7.yoshimitsu": {
       "name": "Solar Kick",
@@ -21978,11 +21710,8 @@
       "t7_on_ch": "+3 (OC)",
       "merge_source": "t7:yoshimitsu_155",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "29",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+1+4,n~t7.yoshimitsu": {
       "name": "Suicide",
@@ -22134,12 +21863,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_159",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "NSS.f,F+1+4": {
       "name": "JIN NSS.f,F+1+4",
@@ -22173,12 +21897,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_160",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "WALL.b,b,u/b": {
       "name": "JIN WALL.b,b,u/b",
@@ -22508,7 +22227,9 @@
         "bank": "yoshimitsu",
         "row": 77,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "BT.1,2~t7.yoshimitsu": {
       "name": "Aratama",
@@ -22554,7 +22275,9 @@
         "bank": "yoshimitsu",
         "row": 126,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "21,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "BT.1,2~t7.yoshimitsu.2": {
       "name": "JIN BT.1,2",
@@ -22633,7 +22356,9 @@
         "bank": "yoshimitsu",
         "row": 219,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "BT.1,3~t7.yoshimitsu": {
       "name": "Magatama",
@@ -22680,7 +22405,9 @@
         "bank": "yoshimitsu",
         "row": 158,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "21,33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "BT.1,3~t7.yoshimitsu.2": {
       "name": "JIN BT.1,3",
@@ -22759,7 +22486,9 @@
         "bank": "yoshimitsu",
         "row": 175,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "BT.2,d/b+2": {
       "name": "JIN BT.2,d/b+2",
@@ -22805,7 +22534,9 @@
         "bank": "yoshimitsu",
         "row": 153,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "24,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "BT.2,D/B+2,2": {
       "name": "JIN BT.2,D/B+2,2",
@@ -23039,7 +22770,9 @@
         "bank": "yoshimitsu",
         "row": 141,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "BT.d/f": {
       "name": "Shisetsu Genman",
@@ -23114,11 +22847,8 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_182",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "INS.1+2": {
       "name": "Indian Stance Flea",
@@ -23152,12 +22882,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_183",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "DGF.1+2~t7.yoshimitsu": {
       "name": "Manji Dragonfly to Flea",
@@ -23191,12 +22916,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_184",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "POI.d+1+2": {
       "name": "Poison Wind to Flea",
@@ -23237,11 +22957,6 @@
           4
         ],
         "total": 24
-      },
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "FLE.f~t7.yoshimitsu": {
@@ -23370,7 +23085,9 @@
         "bank": "yoshimitsu",
         "row": 175,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "4,4,4,4,4,2",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FLE.3~t7.yoshimitsu": {
       "name": "Flea Dance (Left)",
@@ -23566,7 +23283,9 @@
         "bank": "yoshimitsu",
         "row": 174,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FLE.1+2~t7.yoshimitsu": {
       "name": "Skull Splitter",
@@ -23602,11 +23321,8 @@
       "merge_source": "t7:yoshimitsu_194",
       "recovery_from": "same-notation T8 recv",
       "launch": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "21?",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FLE.3+4~t7.yoshimitsu": {
       "name": "Flea to Kangaroo Kick",
@@ -23642,11 +23358,8 @@
       "merge_source": "t7:yoshimitsu_195",
       "recovery_from": "same-notation T8 recv",
       "launch": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FLE.u+3+4~t7.yoshimitsu": {
       "name": "Flea to Dragonfly Feint",
@@ -23682,11 +23395,8 @@
       "merge_source": "t7:yoshimitsu_196",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "40",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WFL.3~t7.yoshimitsu": {
       "name": "Sakanobori",
@@ -23726,7 +23436,9 @@
         "bank": "yoshimitsu",
         "row": 219,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "33(,10,10)",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WFL.4~t7.yoshimitsu": {
       "name": "Tsurubebi",
@@ -23766,7 +23478,9 @@
         "bank": "yoshimitsu",
         "row": 302,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+3+4~t7.yoshimitsu": {
       "name": "Indian Stance",
@@ -23800,12 +23514,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_199",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "f+3,3,d+3+4": {
       "name": "JIN f+3,3,d+3+4",
@@ -23848,11 +23557,8 @@
         "total": 40
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "32,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "t7.yoshimitsu_201": {
       "name": "Indian Stance Healing",
@@ -23924,12 +23630,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_202",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "DGF.d+3+4~t7.yoshimitsu": {
       "name": "Manji Dragonfly to Indian Stance",
@@ -23963,12 +23664,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_203",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "MANJI_SPIN_LOW_KICKS.d+3+4": {
       "name": "JIN MANJI_SPIN_LOW_KICKS.d+3+4",
@@ -24003,12 +23699,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_204",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Manji Spin Low Kicks)",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Manji Spin Low Kicks)"
     },
     "NSS.u+1+2~t7.yoshimitsu": {
       "name": "Ishiusu Tsubushi",
@@ -24043,11 +23734,8 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_205",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "NSS.d+1+2~t7.yoshimitsu": {
       "name": "JIN NSS.d+1+2",
@@ -24081,12 +23769,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_206",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "POI.d+3+4": {
       "name": "Poison Wind to Indian Stance",
@@ -24120,12 +23803,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_207",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "INS.n": {
       "name": "Indian Stance Healing",
@@ -24198,12 +23876,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_209",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "t7.yoshimitsu_210": {
       "name": "JIN (During Indian Levitation) Hold Any Direction",
@@ -24280,7 +23953,9 @@
         "bank": "yoshimitsu",
         "row": 175,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "INS.2,D/B+2": {
       "name": "JIN INS.2,D/B+2",
@@ -24510,7 +24185,9 @@
         "bank": "yoshimitsu",
         "row": 275,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "INS.3,3+4": {
       "name": "Indian Stance Cannon",
@@ -24553,11 +24230,8 @@
         "total": 29
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "20,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "INS.3,3+4~t7.yoshimitsu": {
       "name": "JIN INS.3,3+4",
@@ -24592,12 +24266,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:yoshimitsu_218",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "launch": true
     },
     "INS.4": {
       "name": "Indian Stance Knee Cap",
@@ -24636,7 +24305,9 @@
         "bank": "yoshimitsu",
         "row": 100,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1+2~t7.yoshimitsu.2": {
       "name": "Kincho",
@@ -24757,11 +24428,8 @@
         ],
         "total": 18
       },
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 314,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "13,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,n,d,d/f+1,1+2": {
       "name": "JIN f,n,d,d/f+1,1+2",
@@ -24797,11 +24465,8 @@
       "merge_source": "t7:yoshimitsu_223",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+3,1+2": {
       "name": "JIN f,F+3,1+2",
@@ -24836,11 +24501,8 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:yoshimitsu_224",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "30",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,1+2": {
       "name": "JIN b+2,1+2",
@@ -24875,11 +24537,8 @@
       "t7_on_ch": "-36",
       "merge_source": "t7:yoshimitsu_225",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,1,1+2": {
       "name": "JIN b+2,1,1+2",
@@ -24922,11 +24581,8 @@
         "total": 32
       },
       "launch": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "16,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "SS.4,1+2": {
       "name": "JIN SS.4,1+2",
@@ -24961,12 +24617,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_227",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "KIN.4,1+2": {
       "name": "JIN KIN.4,1+2",
@@ -25002,11 +24653,8 @@
       "merge_source": "t7:yoshimitsu_228",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "KIN.F": {
       "name": "JIN KIN.F",
@@ -25123,7 +24771,9 @@
         "bank": "yoshimitsu",
         "row": 224,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "KIN.1,1~t7.yoshimitsu": {
       "name": "Doushi Kiri",
@@ -25170,7 +24820,9 @@
         "bank": "yoshimitsu",
         "row": 131,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,6,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "KIN.1,1~t7.yoshimitsu.2": {
       "name": "JIN KIN.1,1",
@@ -25256,7 +24908,9 @@
         "bank": "yoshimitsu",
         "row": 175,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "KIN.2,1+2~t7.yoshimitsu": {
       "name": "Tenshu Kuzushi",
@@ -25299,11 +24953,8 @@
         "total": 45
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "20,40",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "KIN.2,1+2~t7.yoshimitsu.2": {
       "name": "JIN KIN.2,1+2",
@@ -25338,12 +24989,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:yoshimitsu_236",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "launch": true
     },
     "KIN.2,1+2*~t7.yoshimitsu": {
       "name": "JIN KIN.2,1+2*",
@@ -25386,11 +25032,8 @@
         "total": 45
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "20,40",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "KIN.3~t7.yoshimitsu": {
       "name": "Shibakari",
@@ -25430,7 +25073,9 @@
         "bank": "yoshimitsu",
         "row": 219,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "t7.yoshimitsu_239": {
       "name": "Whirlwind",
@@ -25514,11 +25159,8 @@
         "total": 36
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "5,5,5,32",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "KIN.f+2~t7.yoshimitsu": {
       "name": "Ganto",
@@ -25558,7 +25200,9 @@
         "bank": "yoshimitsu",
         "row": 175,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "KIN.b+2~t7.yoshimitsu": {
       "name": "JIN KIN.b+2",
@@ -25764,12 +25408,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_246",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "WS.2,1~t7.yoshimitsu": {
       "name": "Scowling Moon God",
@@ -25891,12 +25530,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_249",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Death Copter)",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Death Copter)"
     },
     "DEATH_COPTER.b,n+1+2": {
       "name": "JIN DEATH_COPTER.b,n+1+2",
@@ -25931,12 +25565,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_250",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Death Copter)",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Death Copter)"
     },
     "FLE.u+1+2~t7.yoshimitsu": {
       "name": "Flea to Manji Dragonfly",
@@ -25970,12 +25599,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_251",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "INS.u+1+2": {
       "name": "Indian Stance Manji Dragonfly",
@@ -26009,12 +25633,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_252",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "KIN.u+1+2~t7.yoshimitsu": {
       "name": "Kincho Dragonfly",
@@ -26048,12 +25667,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_253",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "POISON_WIND.1+2": {
       "name": "JIN POISON_WIND.1+2",
@@ -26088,12 +25702,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_254",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Poison Wind)",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Poison Wind)"
     },
     "DGF.f~t7.yoshimitsu": {
       "name": "JIN DGF.f",
@@ -26172,7 +25781,9 @@
         "bank": "yoshimitsu",
         "row": 175,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "DGF.f+2~t7.yoshimitsu": {
       "name": "Dragonfly Slash",
@@ -26289,7 +25900,9 @@
         "bank": "yoshimitsu",
         "row": 227,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "DGF.3~t7.yoshimitsu": {
       "name": "Dragonfly Sweep",
@@ -26328,7 +25941,9 @@
         "bank": "yoshimitsu",
         "row": 219,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "DGF.4~t7.yoshimitsu": {
       "name": "Dragonfly Twister",
@@ -26367,7 +25982,9 @@
         "bank": "yoshimitsu",
         "row": 100,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3+4~t7.yoshimitsu": {
       "name": "Meditation",
@@ -26442,12 +26059,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_263",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "KIN.4,3+4": {
       "name": "JIN KIN.4,3+4",
@@ -26483,11 +26095,8 @@
       "merge_source": "t7:yoshimitsu_264",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "MED.f~t7.yoshimitsu": {
       "name": "JIN MED.f",
@@ -26601,12 +26210,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_267",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "NSS.1": {
       "name": "JIN NSS.1",
@@ -26645,7 +26249,9 @@
         "bank": "yoshimitsu",
         "row": 249,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "NSS.1,2": {
       "name": "JIN NSS.1,2",
@@ -26691,7 +26297,9 @@
         "bank": "yoshimitsu",
         "row": 116,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "NSS.1,2~t7.yoshimitsu": {
       "name": "JIN NSS.1,2",
@@ -26777,7 +26385,9 @@
         "bank": "yoshimitsu",
         "row": 103,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9,10,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "NSS.1,2,1~t7.yoshimitsu": {
       "name": "JIN NSS.1,2,1",
@@ -26901,7 +26511,9 @@
         "bank": "yoshimitsu",
         "row": 175,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "NSS.2,1": {
       "name": "Karakuri Uzumaki",
@@ -26949,7 +26561,9 @@
         "bank": "yoshimitsu",
         "row": 103,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,6,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "NSS.2,1~t7.yoshimitsu": {
       "name": "JIN NSS.2,1",
@@ -27030,12 +26644,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_277",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "NSS.1+2,1": {
       "name": "Utsusemi",
@@ -27111,11 +26720,8 @@
       "merge_source": "t7:yoshimitsu_279",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "NSS.u/f+1+2": {
       "name": "JIN NSS.u/f+1+2",
@@ -27149,12 +26755,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_280",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "NSS.u/f+3+4": {
       "name": "JIN NSS.u/f+3+4",
@@ -27189,12 +26790,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_281",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "NSS.u/f+3+4,b+1": {
       "name": "JIN NSS.u/f+3+4,b+1",
@@ -27338,7 +26934,9 @@
         "bank": "yoshimitsu",
         "row": 311,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "27,10,20,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "NSS.d/f+1": {
       "name": "JIN NSS.d/f+1",
@@ -27377,7 +26975,9 @@
         "bank": "yoshimitsu",
         "row": 251,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "NSS.d/f+3": {
       "name": "JIN NSS.d/f+3",
@@ -27462,7 +27062,9 @@
         "bank": "yoshimitsu",
         "row": 131,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "NSS.d/f+3,1~t7.yoshimitsu": {
       "name": "JIN NSS.d/f+3,1",
@@ -27536,12 +27138,7 @@
       "t7_on_hit": "+4",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_289",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "NSS.d/f+1+2,2": {
       "name": "JIN NSS.d/f+1+2,2",
@@ -27666,7 +27263,9 @@
         "bank": "yoshimitsu",
         "row": 176,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "NSS.d+1+4~t7.yoshimitsu": {
       "name": "JIN NSS.d+1+4",
@@ -27700,12 +27299,7 @@
       "t7_on_hit": "0",
       "t7_on_ch": "0",
       "merge_source": "t7:yoshimitsu_293",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "NSS.d+2": {
       "name": "JIN NSS.d+2",
@@ -27744,7 +27338,9 @@
         "bank": "yoshimitsu",
         "row": 175,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "NSS.d+2,1": {
       "name": "JIN NSS.d+2,1",
@@ -27790,7 +27386,9 @@
         "bank": "yoshimitsu",
         "row": 227,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "t7.yoshimitsu_296": {
       "name": "JIN NSS qcf+1",
@@ -27829,7 +27427,9 @@
         "bank": "yoshimitsu",
         "row": 174,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "40",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "NSS.f+1+2~t7.yoshimitsu": {
       "name": "Prison Gate",
@@ -27865,11 +27465,8 @@
       "merge_source": "t7:yoshimitsu_297",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "NSS.d/b+2": {
       "name": "JIN NSS.d/b+2",
@@ -27908,7 +27505,9 @@
         "bank": "yoshimitsu",
         "row": 175,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "NSS.b+2": {
       "name": "JIN NSS.b+2",
@@ -27993,7 +27592,9 @@
         "bank": "yoshimitsu",
         "row": 157,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "NSS.b+2,2~t7.yoshimitsu": {
       "name": "JIN NSS.b+2,2",
@@ -28071,7 +27672,9 @@
         "bank": "yoshimitsu",
         "row": 174,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "NSS.u/b+1+2,1+2": {
       "name": "JIN NSS.u/b+1+2,1+2",
@@ -28106,11 +27709,8 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_303",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "t7.yoshimitsu_304": {
       "name": "JIN NSS WS 2, 1, 3",
@@ -28435,12 +28035,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_311",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "NSS.4~1": {
       "name": "JIN NSS.4~1",
@@ -28481,7 +28076,9 @@
         "bank": "yoshimitsu",
         "row": 88,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1~t7.yoshimitsu": {
       "name": "JIN b+1",
@@ -28520,7 +28117,9 @@
         "bank": "yoshimitsu",
         "row": 131,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1,1~t7.yoshimitsu": {
       "name": "JIN b+1,1",
@@ -28566,7 +28165,9 @@
         "bank": "yoshimitsu",
         "row": 213,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "12,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1,1,1~t7.yoshimitsu": {
       "name": "JIN b+1,1,1",
@@ -28613,7 +28214,9 @@
         "bank": "yoshimitsu",
         "row": 214,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "12,10,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1,1,1,1~t7.yoshimitsu": {
       "name": "JIN b+1,1,1,1",
@@ -28661,7 +28264,9 @@
         "bank": "yoshimitsu",
         "row": 215,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "12,10,10,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1,1,1,1,1~t7.yoshimitsu": {
       "name": "JIN b+1,1,1,1,1",
@@ -28710,7 +28315,9 @@
         "bank": "yoshimitsu",
         "row": 216,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "12,10,10,6,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1,1,1,1,1,1~t7.yoshimitsu": {
       "name": "Slap U Silly",
@@ -28760,7 +28367,9 @@
         "bank": "yoshimitsu",
         "row": 217,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "12,10,10,6,6,6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "SLAP_U_SILLY.d/b+3": {
       "name": "JIN SLAP_U_SILLY.d/b+3",
@@ -28800,7 +28409,9 @@
         "bank": "yoshimitsu",
         "row": 257,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "B+3": {
       "name": "Spinning Evade (Left)",
@@ -29100,7 +28711,9 @@
         "bank": "yoshimitsu",
         "row": 129,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "27(35)",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "NSS.f+3+4~t7.yoshimitsu": {
       "name": "Kamikaze",
@@ -29136,11 +28749,8 @@
       "merge_source": "t7:yoshimitsu_327",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "R.b+1+2": {
       "name": "Rage Art",
@@ -29176,12 +28786,7 @@
       "merge_source": "t7:yoshimitsu_328",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Rage)"
     },
     "t7.yoshimitsu_329": {
       "name": "Supreme Soul Stealer",
@@ -29254,12 +28859,7 @@
       "t7_on_ch": "S!",
       "merge_source": "t7:yoshimitsu_330",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Rage)"
     },
     "u/f+1+2~t7.yoshimitsu": {
       "name": "Death Copter",
@@ -29299,7 +28899,9 @@
         "bank": "yoshimitsu",
         "row": 261,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "54",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+1+2,d": {
       "name": "Death Copter Slice",
@@ -29417,7 +29019,9 @@
         "bank": "yoshimitsu",
         "row": 173,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "47",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+1+4~t7.yoshimitsu": {
       "name": "Suicide",
@@ -29453,11 +29057,8 @@
       "merge_source": "t7:yoshimitsu_335",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "81",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+1+4,F~t7.yoshimitsu": {
       "name": "Double Suicide",
@@ -30002,7 +29603,9 @@
         "bank": "yoshimitsu",
         "row": 285,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "81(,22)",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+1+4,B+1~t7.yoshimitsu": {
       "name": "JIN d+1+4,B+1",
@@ -30042,7 +29645,9 @@
         "bank": "yoshimitsu",
         "row": 160,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "81,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+1+4,B+1,1~t7.yoshimitsu": {
       "name": "JIN d+1+4,B+1,1",
@@ -30082,7 +29687,9 @@
         "bank": "yoshimitsu",
         "row": 160,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "81,24,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+1+4,B+1,1,1~t7.yoshimitsu": {
       "name": "JIN d+1+4,B+1,1,1",
@@ -30122,7 +29729,9 @@
         "bank": "yoshimitsu",
         "row": 160,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "81,24,27,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+1+4,B+1,1,1,1~t7.yoshimitsu": {
       "name": "JIN d+1+4,B+1,1,1,1",
@@ -30162,7 +29771,9 @@
         "bank": "yoshimitsu",
         "row": 160,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "81,24,27,28,37",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+1+4,B+1,1,1,1,1~t7.yoshimitsu": {
       "name": "Harakiri to Manji Blood Dance",
@@ -30202,7 +29813,9 @@
         "bank": "yoshimitsu",
         "row": 160,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "81,24,27,28,37,40",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcf+1~t7.yoshimitsu": {
       "name": "Moonsault Slayer",
@@ -30241,7 +29854,9 @@
         "bank": "yoshimitsu",
         "row": 229,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "32,24,33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b,B+1+4~t7.yoshimitsu": {
       "name": "Thunder Blade",
@@ -30276,11 +29891,8 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:yoshimitsu_356",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "67",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/b+1+2~t7.yoshimitsu": {
       "name": "Sword Stab",
@@ -30320,7 +29932,9 @@
         "bank": "yoshimitsu",
         "row": 103,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "50?",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/b+1+2,1+2": {
       "name": "Face Splitter",
@@ -30355,11 +29969,8 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:yoshimitsu_358",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/b+1+2,n,1": {
       "name": "Sword Poke Windmill",
@@ -30556,7 +30167,9 @@
         "bank": "yoshimitsu",
         "row": 229,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "KIN.b+1+2~t7.yoshimitsu": {
       "name": "Mumyo Juji Ken",
@@ -30592,11 +30205,8 @@
       "merge_source": "t7:yoshimitsu_364",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "30?",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "MED.1+2~t7.yoshimitsu": {
       "name": "Meditation Healing",
@@ -30632,11 +30242,8 @@
       "merge_source": "t7:yoshimitsu_365",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "MED.1+4~t7.yoshimitsu": {
       "name": "JIN MED.1+4",
@@ -30672,11 +30279,8 @@
       "merge_source": "t7:yoshimitsu_366",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "81(,22)",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "DGF.3+4~t7.yoshimitsu": {
       "name": "Spirited Away",
@@ -30712,11 +30316,8 @@
       "merge_source": "t7:yoshimitsu_367",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "22,18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "NSS.b,B+1+4~t7.yoshimitsu": {
       "name": "JIN NSS.b,B+1+4",
@@ -30752,11 +30353,8 @@
       "merge_source": "t7:yoshimitsu_368",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "54",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "NSS.u/b+1+2~t7.yoshimitsu": {
       "name": "JIN NSS.u/b+1+2",
@@ -30792,11 +30390,8 @@
       "merge_source": "t7:yoshimitsu_369",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "67",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "NSS.u/b+1+2,1": {
       "name": "JIN NSS.u/b+1+2,1",
@@ -30836,7 +30431,9 @@
         "bank": "yoshimitsu",
         "row": 237,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "54",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1+3~t7.yoshimitsu": {
       "name": "Oni Killer",
@@ -31308,7 +30905,9 @@
         "bank": "yoshimitsu",
         "row": 317,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "MED.2+3,F": {
       "name": "JIN MED.2+3,F",
@@ -31350,7 +30949,9 @@
         "bank": "yoshimitsu",
         "row": 317,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "-26",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "MED.2+4": {
       "name": "JIN MED.2+4",
@@ -31472,7 +31073,9 @@
         "bank": "yoshimitsu",
         "row": 251,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/b,b": {
       "name": "JIN u/b,b",
@@ -37095,5 +36698,61 @@
     "n,d,d/b,b+1+2,1": 2048
   },
   "stance_after": {},
-  "anim_bank": "yoshimitsu"
+  "anim_bank": "yoshimitsu",
+  "canon_moves": [
+    {
+      "name": "Blood Ends With Me",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:jin_soul:sig:blood-ends-with-me",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 20,
+      "startup_frames": 20,
+      "canon": true,
+      "canon_owner": "JIN_SOUL",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Red-Eye Warning",
+      "input": "u+1",
+      "display_input": "u+LP1",
+      "input_original": "`u+1`",
+      "anim_ref": "wh:jin_soul:sig:red-eye-warning",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 17,
+      "startup_frames": 17,
+      "canon": true,
+      "canon_owner": "JIN_SOUL",
+      "properties": {
+        "stance": "jumping",
+        "direction": "u",
+        "type": "strike",
+        "limb": "armL",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  }
 }

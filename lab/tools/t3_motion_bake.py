@@ -46,6 +46,15 @@ for _n, _k, _b in (("jin", "jin151/jin.kmd", "divmot09_jin.bin"), ("xiaoyu", "xi
 for _n in ("paul", "lei", "nina", "hwoarang", "eddy", "julia", "anna", "bosconovitch"):
     BANKS[_n] = (f"models/{_n}/{_n}.kmd", f"animations/divmot{_DIVMOT[_n]}.bin", f"renders/pose-check/{_n}_stance75.obj")
 BANKS["armorking"] = ("models/king95/king95.kmd", "animations/divmot03_king.bin", "renders/pose-check/king_stance75.obj")
+# Last five banks (2026-10-23, Claude session): own KMD + stance OBJ from tools/anim/t3_extract_bodies.py
+# (teardown/tekken3/BODY-EXTRACTION.json). True Ogre shares divmot14 with Ogre (boss3.kmd).
+for _n, _k, _b in (("ogre", "boss183/boss3.kmd", "divmot14_ogre.bin"), ("kuma", "kuma159/kuma3.kmd", "divmot11_kuma.bin"),
+                   ("gon", "gon239/gon1.kmd", "divmot19_gon.bin"), ("law", "law79/law4.kmd", "divmot01_law.bin"),
+                   ):
+    BANKS[_n] = ("models/" + _k, "animations/" + _b, f"renders/pose-check/{_n}_body_stance75.obj")
+# Forest Law: none of his four KMD costumes fits (tools/anim/t3_extract_bodies.py), so his own divmot20 motion
+# is posed on his father Law's body, the heihachi_on_jin pattern (owner: Law + Forest Law -> Buffalo Bill).
+BANKS["forestlaw"] = ("models/law79/law4.kmd", "animations/divmot20_forestlaw.bin", "renders/pose-check/law_body_stance75.obj")
 
 def parse_obj_text(txt):
     parts, cur = {}, None
@@ -66,9 +75,39 @@ class T3Space:
         piv[0] = piv[2].copy(); self.piv_t3 = piv
         conv = lambda p: (np.asarray(p, float) @ C.T) * UNIT
         P = {p: conv(v) for p, v in piv.items()}; V = {p: conv(v) for p, v in self.st.items()}
-        lat = P[9] - P[13]; lat[1] = 0; lat /= np.linalg.norm(lat)
-        fwd = np.cross(lat, [0, 1, 0]); fwd /= np.linalg.norm(fwd)
-        if np.dot(V[17].mean(0) - P[17], fwd) < 0: fwd = -fwd
+        # facing: lateral = shoulder line (hip line fallback); forward = the way the
+        # knees bend. Knees are anatomical and never lie. The old head-mesh-centroid
+        # heuristic flipped on big-haired heads and baked 5 of 17 banks facing -Z
+        # (2026-10-22 facing fix; validated on all KMDs against
+        # tools/anim/t3_bank_facing.py).
+        def _lateral():
+            for _a, _b in ((9, 13), (3, 6)):
+                if _a in P and _b in P:
+                    _v = P[_a] - P[_b]; _v[1] = 0
+                    _n = np.linalg.norm(_v)
+                    if _n > 1e-9:
+                        return _v / _n
+            return None
+        def _knee_score(_f):
+            _s = 0.0
+            for _up, _kn, _ft in ((3, 4, 5), (6, 7, 8)):  # (UpLeg, Leg, Foot)
+                if _up in P and _kn in P and _ft in P:
+                    _o = P[_kn] - (P[_up] + P[_ft]) / 2; _o[1] = 0
+                    _s += float(np.dot(_o, _f))
+            return _s
+        _lat = _lateral()
+        fwd = None
+        if _lat is not None:
+            _f0 = np.cross(_lat, [0, 1, 0]); _f0 /= np.linalg.norm(_f0)
+            _sp, _sn = _knee_score(_f0), _knee_score(-_f0)
+            if abs(_sp) + abs(_sn) > 1e-9:
+                fwd = _f0 if _sp >= _sn else -_f0
+        if fwd is None and _lat is not None and 17 in V and 17 in P:
+            fwd = np.cross(_lat, [0, 1, 0]); fwd /= np.linalg.norm(fwd)
+            if np.dot(V[17].mean(0) - P[17], fwd) < 0:
+                fwd = -fwd
+        if fwd is None:
+            raise SystemExit("t3_motion_bake: cannot determine mesh facing")
         ang = math.atan2(fwd[0], fwd[2]); c, s = math.cos(-ang), math.sin(-ang)
         self.Ry = np.array([[c, 0, s], [0, 1, 0], [-s, 0, c]])
         off = np.array([P[0][0], 0, P[0][2]])
