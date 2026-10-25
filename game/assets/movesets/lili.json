@@ -675,6 +675,8 @@
       "knock": 4.2,
       "soulGain": 12,
       "anim_ref": "wh:lili:sig:curtsy",
+      "community_base": "game/assets/anim/oss/community/144_05.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "S"
       ],
@@ -694,6 +696,8 @@
       "knock": 6.5,
       "soulGain": 13,
       "anim_ref": "wh:lili:sig:kiss-like-a-slap",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "P+K",
         "P",
@@ -718,6 +722,8 @@
       "knock": 4.2,
       "soulGain": 12,
       "anim_ref": "wh:lili:sig:curtsy",
+      "community_base": "game/assets/anim/oss/community/144_05.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "1+2"
       ],
@@ -758,6 +764,8 @@
       "knock": 6.5,
       "soulGain": 13,
       "anim_ref": "wh:lili:sig:kiss-like-a-slap",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "1+4"
       ],
@@ -816,7 +824,9 @@
         "f+3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -6 / on hit KND / CH KND"
+      "note": "T7 [mid] on block -6 / on hit KND / CH KND",
+      "mod_damage": "26",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+4": {
       "name": "LILI f+4 (T3 xiaoyu r309)",
@@ -864,7 +874,9 @@
         "f+4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -9 / on hit KND / CH KND"
+      "note": "T7 [mid] on block -9 / on hit KND / CH KND",
+      "mod_damage": "23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u+3": {
       "name": "LILI u+3 (T3 xiaoyu r275)",
@@ -912,7 +924,9 @@
         "u+3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -16 / on hit LAUNCH / CH LAUNCH"
+      "note": "T7 [mid] on block -16 / on hit LAUNCH / CH LAUNCH",
+      "mod_damage": "25",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+4": {
       "name": "LILI d/b+4 (T3 xiaoyu r149)",
@@ -1001,7 +1015,9 @@
         "d/f+4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -8 / on hit -2 / CH +5"
+      "note": "T7 [mid] on block -8 / on hit -2 / CH +5",
+      "mod_damage": "14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+1+2": {
       "name": "LILI f+1+2 (T3 xiaoyu r317)",
@@ -1049,7 +1065,9 @@
         "f+1+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -6 / on hit +3 (OC) / CH KND"
+      "note": "T7 [mid] on block -6 / on hit +3 (OC) / CH KND",
+      "mod_damage": "19",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3+4": {
       "name": "LILI f+3+4 (T3 xiaoyu r335)",
@@ -1249,7 +1267,9 @@
         "u/f+3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -13 / on hit LAUNCH / CH LAUNCH"
+      "note": "T7 [mid] on block -13 / on hit LAUNCH / CH LAUNCH",
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+4": {
       "name": "LILI u/f+4 (T3 xiaoyu r293)",
@@ -1297,7 +1317,9 @@
         "u/f+4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -12 / on hit +1 (OC) / CH +1 (OC) | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -12 / on hit +1 (OC) / CH +1 (OC) | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/b+1+2": {
       "name": "LILI u/b+1+2 (T3 xiaoyu r242)",
@@ -1387,7 +1409,9 @@
         "u/f+3+4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -9 / on hit +2 / CH +2 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -9 / on hit +2 / CH +2 | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcb+2": {
       "name": "LILI qcb+2 throw (T3 xiaoyu r362)",
@@ -1472,7 +1496,9 @@
           10
         ],
         "total": 36
-      }
+      },
+      "mod_damage": "25,15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u+3,4": {
       "name": "LILI u+3,4 (T3 xiaoyu r306)",
@@ -1555,7 +1581,9 @@
           21
         ],
         "total": 35
-      }
+      },
+      "mod_damage": "14,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+4,4": {
       "name": "LILI u/f+4,4 (T3 xiaoyu r296)",
@@ -3694,7 +3722,9 @@
           12
         ],
         "total": 19
-      }
+      },
+      "mod_damage": "7,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(1),2": {
       "name": "Left Right Back Strike (chain)",
@@ -3722,7 +3752,9 @@
         "(1),2"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -1 / on hit +8 / CH +8 | t7chicken lists no separate move name; labeled from its named T7 string family"
+      "note": "T7 [high] on block -1 / on hit +8 / CH +8 | t7chicken lists no separate move name; labeled from its named T7 string family",
+      "mod_damage": "7,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,3": {
       "name": "Left Right Back Strike",
@@ -3759,7 +3791,9 @@
           10
         ],
         "total": 29
-      }
+      },
+      "mod_damage": "7,12,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(1),2,3": {
       "name": "LILI (1),2,3",
@@ -3795,7 +3829,9 @@
           10
         ],
         "total": 22
-      }
+      },
+      "mod_damage": "7,12,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(1),(2),3": {
       "name": "LILI (1),(2),3",
@@ -3824,7 +3860,9 @@
         "(1),(2),3"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -13 / on hit -2 / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -13 / on hit -2 / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "7,12,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,4": {
       "name": "Left Right Piercing Thorn",
@@ -3861,7 +3899,9 @@
           20
         ],
         "total": 39
-      }
+      },
+      "mod_damage": "7,12,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(1),2,4": {
       "name": "LILI (1),2,4",
@@ -3897,7 +3937,9 @@
           20
         ],
         "total": 32
-      }
+      },
+      "mod_damage": "7,12,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(1),(2),4": {
       "name": "LILI (1),(2),4",
@@ -3926,7 +3968,9 @@
         "(1),(2),4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -9 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -9 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "7,12,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1+2_t7": {
       "name": "Broken Heart",
@@ -3954,7 +3998,9 @@
       ],
       "move_class": "strike",
       "note": "T7 [mid] on block -12 / on hit KND / CH KND",
-      "t7_input": "1+2"
+      "t7_input": "1+2",
+      "mod_damage": "27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,3": {
       "name": "Sunrise Sunset",
@@ -3989,7 +4035,9 @@
           10
         ],
         "total": 18
-      }
+      },
+      "mod_damage": "8,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(2),3": {
       "name": "LILI (2),3",
@@ -4017,7 +4065,9 @@
         "(2),3"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -13 / on hit -2 / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -13 / on hit -2 / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "8,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,4": {
       "name": "Bed Time",
@@ -4052,7 +4102,9 @@
           20
         ],
         "total": 28
-      }
+      },
+      "mod_damage": "8,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(2),4": {
       "name": "LILI (2),4",
@@ -4080,7 +4132,9 @@
         "(2),4"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -2 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [high] on block -2 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "8,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,1": {
       "name": "Peacock Waltz",
@@ -4115,7 +4169,9 @@
           20
         ],
         "total": 32
-      }
+      },
+      "mod_damage": "12,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(3),1": {
       "name": "LILI (3),1",
@@ -4143,7 +4199,9 @@
         "(3),1"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -13 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -13 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "12,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,2": {
       "name": "Peacock Jive (chain)",
@@ -4178,7 +4236,9 @@
           8
         ],
         "total": 20
-      }
+      },
+      "mod_damage": "12,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(3),2": {
       "name": "Peacock Jive (chain)",
@@ -4206,7 +4266,9 @@
         "(3),2"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -5 / on hit +2 / CH +6 | t7chicken lists no separate move name; labeled from its named T7 string family"
+      "note": "T7 [high] on block -5 / on hit +2 / CH +6 | t7chicken lists no separate move name; labeled from its named T7 string family",
+      "mod_damage": "12,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,2,3": {
       "name": "Peacock Jive",
@@ -4243,7 +4305,9 @@
           22
         ],
         "total": 42
-      }
+      },
+      "mod_damage": "12,8,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(3),2,3": {
       "name": "LILI (3),2,3",
@@ -4279,7 +4343,9 @@
           22
         ],
         "total": 30
-      }
+      },
+      "mod_damage": "12,8,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(3),(2),3": {
       "name": "LILI (3),(2),3",
@@ -4308,7 +4374,9 @@
         "(3),(2),3"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -9 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [high] on block -9 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "12,8,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,1": {
       "name": "10 Hit Combo 3 (chain)",
@@ -4501,7 +4569,9 @@
         "(u+3),3"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -12 / on hit 0 / CH 0 | t7chicken lists no separate move name; labeled from its named T7 string family"
+      "note": "T7 [mid] on block -12 / on hit 0 / CH 0 | t7chicken lists no separate move name; labeled from its named T7 string family",
+      "mod_damage": "25,15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u+3,3,3+4": {
       "name": "Moonsault Alstroemeria",
@@ -4603,7 +4673,9 @@
         "u+3+4 (close)"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -8 / on hit LAUNCH / CH -"
+      "note": "T7 [mid] on block -8 / on hit LAUNCH / CH -",
+      "mod_damage": "18(,5,5)",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u+3+4 (far)": {
       "name": "LILI u+3+4 (far)",
@@ -4630,7 +4702,9 @@
         "u+3+4 (far)"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -8 / on hit KND / CH - | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -8 / on hit KND / CH - | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+2": {
       "name": "Stinging Nettle",
@@ -4657,7 +4731,9 @@
         "u/f+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -12 / on hit KND / CH KND"
+      "note": "T7 [mid] on block -12 / on hit KND / CH KND",
+      "mod_damage": "28?",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+4,3": {
       "name": "Sunflower Lance",
@@ -4692,7 +4768,9 @@
           23
         ],
         "total": 35
-      }
+      },
+      "mod_damage": "18,23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(u/f+4),3": {
       "name": "LILI (u/f+4),3",
@@ -4720,7 +4798,9 @@
         "(u/f+4),3"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -9 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -9 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "18,23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3+4,3": {
       "name": "Angel Knee to Front Kick",
@@ -4755,7 +4835,9 @@
           18
         ],
         "total": 33
-      }
+      },
+      "mod_damage": "15,18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(u/f+3+4),3": {
       "name": "LILI (u/f+3+4),3",
@@ -4783,7 +4865,9 @@
         "(u/f+3+4),3"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -9 / on hit 0 / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -9 / on hit 0 / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "15,18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3+4,3+4": {
       "name": "Angel Knee Ascension",
@@ -4818,7 +4902,9 @@
           22
         ],
         "total": 37
-      }
+      },
+      "mod_damage": "15,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(u/f+3+4),3+4": {
       "name": "LILI (u/f+3+4),3+4",
@@ -4846,7 +4932,9 @@
         "(u/f+3+4),3+4"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -21 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [high] on block -21 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "15,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2": {
       "name": "LILI f+2",
@@ -4873,7 +4961,9 @@
         "f+2"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block -9 / on hit -1 / CH -1 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [high] on block -9 / on hit -1 / CH -1 | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,3": {
       "name": "Mars Sword",
@@ -4908,7 +4998,9 @@
           20
         ],
         "total": 32
-      }
+      },
+      "mod_damage": "12,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(f+2),3": {
       "name": "LILI (f+2),3",
@@ -4936,7 +5028,9 @@
         "(f+2),3"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -15 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -15 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "12,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3+4_t7": {
       "name": "Sundial",
@@ -4964,7 +5058,9 @@
       ],
       "move_class": "strike",
       "note": "T7 [mid, mid] on block -4 / on hit KND / CH KND",
-      "t7_input": "f+3+4"
+      "t7_input": "f+3+4",
+      "mod_damage": "8,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3+4 (second hit only)": {
       "name": "LILI f+3+4 (second hit only)",
@@ -4991,7 +5087,9 @@
         "f+3+4 (second hit only)"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -4 / on hit KND / CH - | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -4 / on hit KND / CH - | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3+4,3": {
       "name": "Delayed Sundial",
@@ -5184,7 +5282,9 @@
         "f,F+3"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -12 / on hit 0 / CH 0 | t7chicken lists no separate move name; labeled from its named T7 string family"
+      "note": "T7 [mid] on block -12 / on hit 0 / CH 0 | t7chicken lists no separate move name; labeled from its named T7 string family",
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+3,3+4": {
       "name": "Alstroemeria",
@@ -5221,7 +5321,9 @@
           20
         ],
         "total": 40
-      }
+      },
+      "mod_damage": "15,5,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+4": {
       "name": "Root of Evil",
@@ -5249,7 +5351,9 @@
         "f,F+4"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -12 / on hit +4 / CH +9"
+      "note": "T7 [low] on block -12 / on hit +4 / CH +9",
+      "mod_damage": "23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+1+2": {
       "name": "Lashing Iris",
@@ -5277,7 +5381,8 @@
         "f,F+1+2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -9 / on hit KND / CH KND"
+      "note": "T7 [mid] on block -9 / on hit KND / CH KND",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+1+2* (2 spins)": {
       "name": "LILI f,F+1+2* (2 spins)",
@@ -5305,7 +5410,8 @@
         "f,F+1+2* (2 spins)"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block +5 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block +5 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+3+4": {
       "name": "Piercing Thorn",
@@ -5333,7 +5439,9 @@
         "f,F+3+4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -6 / on hit KND / CH KND"
+      "note": "T7 [mid] on block -6 / on hit KND / CH KND",
+      "mod_damage": "30",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,f,f+3": {
       "name": "Sabre Slash",
@@ -5362,7 +5470,9 @@
         "f,f,f+3"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block 0 / on hit KND / CH KND"
+      "note": "T7 [mid] on block 0 / on hit KND / CH KND",
+      "mod_damage": "30",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3": {
       "name": "Submissive Heel",
@@ -5389,7 +5499,9 @@
         "d/f+3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block +3 (OC) / on hit +8 (OC) / CH STUN"
+      "note": "T7 [mid] on block +3 (OC) / on hit +8 (OC) / CH STUN",
+      "mod_damage": "23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(d/f+4),4": {
       "name": "LILI (d/f+4),4",
@@ -5417,7 +5529,9 @@
         "(d/f+4),4"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -15 / on hit +1 / CH +6 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -15 / on hit +1 / CH +6 | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "14,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+1": {
       "name": "LILI d+1",
@@ -5444,7 +5558,9 @@
         "d+1"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -11 / on hit 0 / CH 0 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -11 / on hit 0 / CH 0 | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+1,D": {
       "name": "LILI d+1,D",
@@ -5472,7 +5588,9 @@
         "d+1,D"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -11 / on hit 0 / CH 0 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -11 / on hit 0 / CH 0 | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+1,2": {
       "name": "Heavy Languish (chain)",
@@ -5507,7 +5625,9 @@
           8
         ],
         "total": 18
-      }
+      },
+      "mod_damage": "10,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(d+1),2": {
       "name": "Heavy Languish (chain)",
@@ -5535,7 +5655,9 @@
         "(d+1),2"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -7 / on hit +3 / CH +5 | t7chicken lists no separate move name; labeled from its named T7 string family"
+      "note": "T7 [high] on block -7 / on hit +3 / CH +5 | t7chicken lists no separate move name; labeled from its named T7 string family",
+      "mod_damage": "10,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+1,2,4": {
       "name": "Heavy Languish",
@@ -5572,7 +5694,9 @@
           24
         ],
         "total": 42
-      }
+      },
+      "mod_damage": "10,8,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(d+1),2,4": {
       "name": "LILI (d+1),2,4",
@@ -5608,7 +5732,9 @@
           24
         ],
         "total": 32
-      }
+      },
+      "mod_damage": "10,8,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(d+1),(2),4": {
       "name": "LILI (d+1),(2),4",
@@ -5637,7 +5763,9 @@
         "(d+1),(2),4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -9 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -9 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "10,8,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+2": {
       "name": "LILI d+2",
@@ -5664,7 +5792,9 @@
         "d+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -7 / on hit -1 / CH -1 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -7 / on hit -1 / CH -1 | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+2,2": {
       "name": "Bloody Masquerade Piton (chain)",
@@ -5699,7 +5829,9 @@
           10
         ],
         "total": 26
-      }
+      },
+      "mod_damage": "16,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(d+2),2": {
       "name": "Bloody Masquerade Piton (chain)",
@@ -5727,7 +5859,9 @@
         "(d+2),2"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -10 / on hit -4 / CH -1 | t7chicken lists no separate move name; labeled from its named T7 string family"
+      "note": "T7 [high] on block -10 / on hit -4 / CH -1 | t7chicken lists no separate move name; labeled from its named T7 string family",
+      "mod_damage": "16,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+2,2,3": {
       "name": "Bloody Masquerade Piton",
@@ -5764,7 +5898,9 @@
           24
         ],
         "total": 50
-      }
+      },
+      "mod_damage": "16,10,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(d+2),2,3": {
       "name": "LILI (d+2),2,3",
@@ -5800,7 +5936,9 @@
           24
         ],
         "total": 34
-      }
+      },
+      "mod_damage": "16,10,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(d+2),(2),3": {
       "name": "LILI (d+2),(2),3",
@@ -5829,7 +5967,9 @@
         "(d+2),(2),3"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -3 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [high] on block -3 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "16,10,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+2,2,4": {
       "name": "Bloody Masquerade Lance",
@@ -5866,7 +6006,9 @@
           24
         ],
         "total": 50
-      }
+      },
+      "mod_damage": "16,10,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(d+2),2,4": {
       "name": "LILI (d+2),2,4",
@@ -5902,7 +6044,9 @@
           24
         ],
         "total": 34
-      }
+      },
+      "mod_damage": "16,10,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(d+2),(2),4": {
       "name": "LILI (d+2),(2),4",
@@ -5931,7 +6075,9 @@
         "(d+2),(2),4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -17 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -17 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "16,10,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+3": {
       "name": "Thorn Whip",
@@ -5958,7 +6104,9 @@
         "d+3"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -12 / on hit +1 / CH +1"
+      "note": "T7 [low] on block -12 / on hit +1 / CH +1",
+      "mod_damage": "14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+3+4": {
       "name": "Matterhorn Ascension",
@@ -5985,7 +6133,9 @@
         "d+3+4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -21 / on hit LAUNCH / CH LAUNCH"
+      "note": "T7 [mid] on block -21 / on hit LAUNCH / CH LAUNCH",
+      "mod_damage": "23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+3": {
       "name": "Twist of Fate",
@@ -6012,7 +6162,9 @@
         "d/b+3"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block -9 / on hit KND / CH S!"
+      "note": "T7 [high] on block -9 / on hit KND / CH S!",
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+4_t7": {
       "name": "Edelweiss",
@@ -6040,7 +6192,9 @@
       ],
       "move_class": "strike",
       "note": "T7 [low] on block -24 / on hit STUN / CH STUN",
-      "t7_input": "d/b+4"
+      "t7_input": "d/b+4",
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1": {
       "name": "Élysée Le Bras Allongé",
@@ -6067,7 +6221,9 @@
         "b+1"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -6 / on hit +2 / CH +2"
+      "note": "T7 [mid] on block -6 / on hit +2 / CH +2",
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1,4": {
       "name": "Élysée Le Bras Allongé Caracole",
@@ -6102,7 +6258,9 @@
           22
         ],
         "total": 38
-      }
+      },
+      "mod_damage": "16,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(b+1),4": {
       "name": "LILI (b+1),4",
@@ -6130,7 +6288,9 @@
         "(b+1),4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -11 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -11 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "16,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2": {
       "name": "Heliotrope",
@@ -6157,7 +6317,9 @@
         "b+2"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block -11 / on hit 0 / CH 0"
+      "note": "T7 [high] on block -11 / on hit 0 / CH 0",
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,1": {
       "name": "Heliotrope Corsage (chain)",
@@ -6192,7 +6354,9 @@
           13
         ],
         "total": 28
-      }
+      },
+      "mod_damage": "15,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(b+2),1": {
       "name": "Heliotrope Corsage (chain)",
@@ -6220,7 +6384,9 @@
         "(b+2),1"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -4 / on hit +7 / CH +7 | t7chicken lists no separate move name; labeled from its named T7 string family"
+      "note": "T7 [mid] on block -4 / on hit +7 / CH +7 | t7chicken lists no separate move name; labeled from its named T7 string family",
+      "mod_damage": "15,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,1,1+2": {
       "name": "Heliotrope Corsage",
@@ -6257,7 +6423,9 @@
           27
         ],
         "total": 55
-      }
+      },
+      "mod_damage": "15,10,",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(b+2),1,1+2": {
       "name": "LILI (b+2),1,1+2",
@@ -6293,7 +6461,9 @@
           27
         ],
         "total": 40
-      }
+      },
+      "mod_damage": "15,10,",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(b+2),(1),1+2": {
       "name": "LILI (b+2),(1),1+2",
@@ -6322,7 +6492,9 @@
         "(b+2),(1),1+2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -12 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -12 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "15,10,",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1+2": {
       "name": "Dendrobium",
@@ -6349,7 +6521,9 @@
         "b+1+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -14 / on hit KND / CH KND"
+      "note": "T7 [mid] on block -14 / on hit KND / CH KND",
+      "mod_damage": "30?",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC 1": {
       "name": "LILI FC 1",
@@ -6403,7 +6577,9 @@
         "FC 2"
       ],
       "move_class": "strike",
-      "note": "T7 [s. mid] on block -4 / on hit +7 / CH +7 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [s. mid] on block -4 / on hit +7 / CH +7 | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC 3": {
       "name": "LILI FC 3",
@@ -6457,7 +6633,9 @@
         "FC 4"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -15 / on hit -4 / CH -4 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -15 / on hit -4 / CH -4 | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC d/f+1": {
       "name": "Slashing Vine",
@@ -6484,7 +6662,9 @@
         "FC d/f+1"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -9 / on hit KND / CH KND"
+      "note": "T7 [mid] on block -9 / on hit KND / CH KND",
+      "mod_damage": "25",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC d/f+3": {
       "name": "Horizon Slide",
@@ -6511,7 +6691,9 @@
         "FC d/f+3"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -18 / on hit -2 / CH KND"
+      "note": "T7 [low] on block -18 / on hit -2 / CH KND",
+      "mod_damage": "19",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "SS 3": {
       "name": "Stunning Toe Kick",
@@ -6538,7 +6720,9 @@
         "SS 3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -9 / on hit KND / CH KND"
+      "note": "T7 [mid] on block -9 / on hit KND / CH KND",
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "SS 1+2": {
       "name": "Minuet",
@@ -6565,7 +6749,9 @@
         "SS 1+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -2 / on hit KND / CH STUN"
+      "note": "T7 [mid] on block -2 / on hit KND / CH STUN",
+      "mod_damage": "21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WR f,f,F (Full Screen)": {
       "name": "LILI WR f,f,F (Full Screen)",
@@ -6704,7 +6890,9 @@
         "WS 1"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -11 / on hit 0 / CH 0 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -11 / on hit 0 / CH 0 | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS 1,2": {
       "name": "Sullen Daisy (chain)",
@@ -6739,7 +6927,9 @@
           16
         ],
         "total": 31
-      }
+      },
+      "mod_damage": "15,16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS (1),2": {
       "name": "Sullen Daisy (chain)",
@@ -6767,7 +6957,9 @@
         "WS (1),2"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -3 / on hit +8 / CH +8 | t7chicken lists no separate move name; labeled from its named T7 string family"
+      "note": "T7 [high] on block -3 / on hit +8 / CH +8 | t7chicken lists no separate move name; labeled from its named T7 string family",
+      "mod_damage": "15,16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS 1,2,4": {
       "name": "Sullen Daisy",
@@ -6804,7 +6996,9 @@
           20
         ],
         "total": 51
-      }
+      },
+      "mod_damage": "15,16,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS (1),2,4": {
       "name": "LILI WS (1),2,4",
@@ -6840,7 +7034,9 @@
           20
         ],
         "total": 36
-      }
+      },
+      "mod_damage": "15,16,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS (1),(2),4": {
       "name": "LILI WS (1),(2),4",
@@ -6869,7 +7065,9 @@
         "WS (1),(2),4"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -14 / on hit KND / CH STUN | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -14 / on hit KND / CH STUN | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "15,16,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS 2": {
       "name": "Delicate Uprising",
@@ -6896,7 +7094,9 @@
         "WS 2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -12 / on hit LAUNCH / CH LAUNCH"
+      "note": "T7 [mid] on block -12 / on hit LAUNCH / CH LAUNCH",
+      "mod_damage": "17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS 3": {
       "name": "LILI WS 3",
@@ -6923,7 +7123,9 @@
         "WS 3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -21 / on hit LAUNCH / CH LAUNCH | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -21 / on hit LAUNCH / CH LAUNCH | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS 3,4": {
       "name": "Honeysuckle",
@@ -6958,7 +7160,9 @@
           17
         ],
         "total": 37
-      }
+      },
+      "mod_damage": "20,25",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS (3),4": {
       "name": "LILI WS (3),4",
@@ -6986,7 +7190,9 @@
         "WS (3),4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block +4 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block +4 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "20,25",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS 4": {
       "name": "LILI WS 4",
@@ -7013,7 +7219,9 @@
         "WS 4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -8 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -8 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,1,3,4,4,3,4,4,3+4": {
       "name": "10 Hit Combo 1",
@@ -7641,7 +7849,9 @@
         "u+3,F"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -38 / on hit +3 / CH +3"
+      "note": "T7 [mid] on block -38 / on hit +3 / CH +3",
+      "mod_damage": "25",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u+3,3,F": {
       "name": "Moonsault Narcissus to Dew Glide",
@@ -7706,7 +7916,9 @@
         "f,F+3,F"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -17 / on hit -5 / CH -5"
+      "note": "T7 [mid] on block -17 / on hit -5 / CH -5",
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,1,F": {
       "name": "LILI b+2,1,F",
@@ -7770,7 +7982,9 @@
         "b+1,F"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -15 / on hit -7 / CH -7"
+      "note": "T7 [mid] on block -15 / on hit -7 / CH -7",
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RAB F": {
       "name": "Fiesty Rabbit to Dew Glide",
@@ -8175,7 +8389,8 @@
         "b+3"
       ],
       "move_class": "strike",
-      "note": "T7 [-] on block - / on hit - / CH -"
+      "note": "T7 [-] on block - / on hit - / CH -",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+4": {
       "name": "Fiesty Rabbit (Right)",
@@ -8202,7 +8417,8 @@
         "b+4"
       ],
       "move_class": "strike",
-      "note": "T7 [-] on block - / on hit - / CH -"
+      "note": "T7 [-] on block - / on hit - / CH -",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RAB 3": {
       "name": "Rabbit's Foot",
@@ -8283,7 +8499,8 @@
         "b+3+4"
       ],
       "move_class": "strike",
-      "note": "T7 [-] on block - / on hit - / CH -"
+      "note": "T7 [-] on block - / on hit - / CH -",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+2,B": {
       "name": "LILI d/f+2,B",
@@ -8311,7 +8528,9 @@
         "d/f+2,B"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -11 / on hit LAUNCH / CH LAUNCH | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -11 / on hit LAUNCH / CH LAUNCH | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3+4": {
       "name": "Freesia Thrust",
@@ -8338,7 +8557,9 @@
         "d/f+3+4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -4 / on hit STUN / CH STUN"
+      "note": "T7 [mid] on block -4 / on hit STUN / CH STUN",
+      "mod_damage": "14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3+4,3+4": {
       "name": "Backflip Spinning Edge",
@@ -8374,7 +8595,9 @@
           10
         ],
         "total": 27
-      }
+      },
+      "mod_damage": "14,5,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(d/f+3+4),3+4": {
       "name": "LILI (d/f+3+4),3+4",
@@ -8409,7 +8632,9 @@
           14
         ],
         "total": 19
-      }
+      },
+      "mod_damage": "14,5,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+1,2,B": {
       "name": "LILI d+1,2,B",
@@ -8445,7 +8670,9 @@
           8
         ],
         "total": 18
-      }
+      },
+      "mod_damage": "10,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(d+1),2,B": {
       "name": "LILI (d+1),2,B",
@@ -8474,7 +8701,9 @@
         "(d+1),2,B"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -7 / on hit +3 / CH +5 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [high] on block -7 / on hit +3 / CH +5 | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "10,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,1,B": {
       "name": "LILI b+2,1,B",
@@ -8510,7 +8739,9 @@
           13
         ],
         "total": 28
-      }
+      },
+      "mod_damage": "15,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(b+2),1,B": {
       "name": "LILI (b+2),1,B",
@@ -8539,7 +8770,9 @@
         "(b+2),1,B"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -4 / on hit +7 / CH +7 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -4 / on hit +7 / CH +7 | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "15,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+4,B": {
       "name": "LILI f,F+4,B",
@@ -8568,7 +8801,9 @@
         "f,F+4,B"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -12 / on hit +4 / CH +9 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -12 / on hit +4 / CH +9 | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS 2,B": {
       "name": "LILI WS 2,B",
@@ -8596,7 +8831,9 @@
         "WS 2,B"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -12 / on hit LAUNCH / CH LAUNCH | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -12 / on hit LAUNCH / CH LAUNCH | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "DEW 1,2,B": {
       "name": "LILI DEW 1,2,B",
@@ -9412,7 +9649,8 @@
         "f,F+1+2* (3 spins)"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block ! / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block ! / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1+4": {
       "name": "Piercing Thorn Fortissimo",
@@ -9439,7 +9677,9 @@
         "b+1+4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block ! / on hit KND / CH KND"
+      "note": "T7 [mid] on block ! / on hit KND / CH KND",
+      "mod_damage": "50",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+1+3": {
       "name": "Kiss of Devotion",
@@ -9588,7 +9828,9 @@
         "(During Tackle) 1"
       ],
       "move_class": "strike",
-      "note": "T7 [-] on block - / on hit KND / CH - | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [-] on block - / on hit KND / CH - | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "7",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "(During Tackle) 1/2,1/2": {
       "name": "LILI (During Tackle) 1/2,1/2",
@@ -14280,7 +14522,9 @@
       "t7_on_hit": "+8",
       "t7_on_ch": "+8",
       "merge_source": "t7:lili_2",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "7",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2~t7.lili": {
       "name": "LILI 2",
@@ -14314,7 +14558,9 @@
       "t7_on_hit": "+8",
       "t7_on_ch": "+8",
       "merge_source": "t7:lili_12",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4~t7.lili": {
       "name": "Right Snap Kick",
@@ -14348,7 +14594,9 @@
       "t7_on_hit": "+7",
       "t7_on_ch": "+7",
       "merge_source": "t7:lili_24",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+2~t7.lili": {
       "name": "Orleans Sword",
@@ -14383,7 +14631,9 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:lili_67",
       "recovery_from": "same-notation T8 recv",
-      "launch": true
+      "launch": true,
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3~t7.lili": {
       "name": "Peacock Kick",
@@ -14417,7 +14667,9 @@
       "t7_on_hit": "-3",
       "t7_on_ch": "-3",
       "merge_source": "t7:lili_168",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1+3~t7.lili": {
       "name": "Kiss of Devotion",
@@ -15372,5 +15624,64 @@
     "BACK.1+3~t7.lili": 1042,
     "t7.lili_216": 1042
   },
-  "stance_after": {}
+  "stance_after": {},
+  "canon_moves": [
+    {
+      "name": "Curtsy",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:lili:sig:curtsy",
+      "community_base": "game/assets/anim/oss/community/144_05.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "legR",
+      "damage": 16,
+      "startup_frames": 16,
+      "canon": true,
+      "canon_owner": "LILI",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Kiss Like a Slap",
+      "input": "1+4",
+      "display_input": "LP1+RK4",
+      "input_original": "`1+4`",
+      "anim_ref": "wh:lili:sig:kiss-like-a-slap",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 20,
+      "startup_frames": 17,
+      "canon": true,
+      "canon_owner": "LILI",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "system_note": "System note: LP1+RK4 is also Reihou, but ONLY while the foe is in RAGE (otherwise the moveset LP1+RK4 plays). No in-game conflict outside foe-RAGE.",
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  }
 }

@@ -1,0 +1,196 @@
+{
+ "schema": "wh.wwe2k22-caw-structure/1",
+ "sources": [
+  {
+   "name": "Smacktalks charactermapping tutorial (BlindedByTheGrace, ed. 2022-07-11)",
+   "url": "https://smacktalks.org/forums/topic/77748-tutorial-character-data-1-the-charactermapping-file-in-wwe-2k22/",
+   "fetched": "2026-10-24 (page text)",
+   "facts": [
+    "bakedfile00.cak -> Characters/charactermapping.jsfb via Caketools",
+    "per-character folders across baked files; folder hash IDs",
+    "attire-ID scheme XXX00/XXX10/XXX20/XXX40; LE hex; record = attire-ID + 8B main-folder hash + 8B attire-folder hash",
+    "no append tool: replace an alt/unused attire hash to add a slot",
+    "basemodel folder listed only for NPCs"
+   ]
+  },
+  {
+   "name": "Genesis (2KLive, 2K19 suite)",
+   "url": "https://github.com/2KLive/Genesis",
+   "facts": [
+    "roster management, .pac/.ch.pac character importer (EMD/HSPC), pofo editor, moveset editor (18 move categories), entrance editor, string editor, GFX importer, JSON portability"
+   ]
+  },
+  {
+   "name": "Steam-lane packs PR #1052 (spec packs, NOT extracted assets)",
+   "facts": [
+    "2K22: 49.2h played; 2K20: 57.3h played; both spec-only on this VM (phone-only, Steam remote unreachable)",
+    "2K20/2K22 toolchain: Caketools + Data Editor (.pofo/.moveset) + CCT-era flow for 2K19",
+    "2K26: Aurora Forge v1.7.5 CAK Foundry (15 CAK archives incl. bakedfile100.cak) \u2014 overflow path, not used here"
+   ]
+  },
+  {
+   "name": "WH editor on main",
+   "facts": [
+    "packages/creation-suite/src/movelist-editor.js exports listAllMoves/swapMove/serializeMoveset/createSavePayload; editor NEVER rewrites the moveset files' opaque slots index; swapMove BLOCKS limb-mismatched assignments (verified live in this lane)"
+   ]
+  }
+ ],
+ "attire_id_scheme": {
+  "rule": "default attire = characterId*100 (XXX00); alt2 = XXX10; alt3 = XXX20; alt5 = XXX40; vacant-slot example: slot 1013 -> default 101300",
+  "examples": [
+   {
+    "character": "Kane (ID 107, tutorial example)",
+    "default": "10700 -> hex 29CC -> LE bytes CC 29",
+    "alt2": "10710 -> hex 29D6 -> LE bytes D6 29"
+   },
+   {
+    "character": "Vacant slot 1013 (tutorial example)",
+    "default": "101300"
+   },
+   {
+    "character": "Karrion Kross (ID 924, tutorial example)",
+    "default": "92400 -> hex 0168F0 -> LE bytes F0 68 01"
+   }
+  ],
+  "charactermapping_record": "[attire-ID little-endian][8-byte main character-folder hash][8-byte attire-folder hash]; Kane example hashes from tutorial: main folder 6200D2B087B1E360, default attire folder 903510F1B4D300ED",
+  "slot_add_rule": "No tool appends to charactermapping.jsfb: to place a model in an unused slot, REPLACE an alternate/unused attire hash; the replaced slot's old model must also change or the game reads a duplicate ID."
+ },
+ "file_layout_2k20_2k22": {
+  "container": "*.cak baked archives (bakedfile00.cak holds Characters/charactermapping.jsfb)",
+  "per_character": "one folder per character spread across baked files; folder identity = path-derived hash ID shown in Caketools",
+  "profile": ".pofo \u2014 wrestler information (nameplate string IDs in endian, attributes, DLC/attitude/crowd-balance/gender flags per Genesis/Data Editor usage)",
+  "moveset": ".moveset \u2014 moveset AND entrance AND victory AND manager/team/attire-selection data in one file (per 2K20 Data Breakdown: .moveset contains actual moveset + entrance + victory + managers + team + attire info)",
+  "difference_from_2k19": "2K19: .pac model files in pac\\ch + CCT chunk0.def regen. 2K20/2K22: CAK folder layout + charactermapping hashes; chunk0.def flow does NOT apply."
+ },
+ "moveset_categories_18": [
+  "standing_strikes",
+  "grapple_front",
+  "grapple_rear",
+  "grapple_running",
+  "grapple_ground",
+  "grapple_turnbuckle",
+  "grapple_rope",
+  "aerial_diving",
+  "springboard",
+  "irish_whip",
+  "double_team",
+  "taunt",
+  "special_finisher",
+  "special_signature",
+  "weapon",
+  "submission",
+  "strike_combo",
+  "entrance_victory"
+ ],
+ "moveset_categories_18_note": "Genesis documents 18 move categories for its 2K19 moveset editor; the 2K20/2K22 Data Editor exposes the same category family (standing/grapple/ground/turnbuckle/aerial/irish-whip/double-team/taunt/special). The 18 names above are the WH wire labels for that family; the per-slot numeric IDs inside a real .moveset file are NOT asserted here \u2014 they come from a Data Editor dump on an owned install (active path, see blockers).",
+ "category_map_18_to_wh_editor_9": {
+  "standing_strikes": "tekken_striking (editor maps single-button LP1/RP2/LK3/RK4 strikes here; movelist-data.js 'standing' label is its own builder label, not the editor's)",
+  "grapple_front": "grappling",
+  "grapple_rear": "grappling",
+  "grapple_running": "grappling",
+  "grapple_ground": "ground",
+  "grapple_turnbuckle": "turnbuckle",
+  "grapple_rope": "ringside_apron",
+  "aerial_diving": "tekken_striking",
+  "springboard": "tekken_striking",
+  "irish_whip": "irish_whip",
+  "double_team": "double_team",
+  "taunt": "taunt",
+  "special_finisher": "grappling",
+  "special_signature": "grappling",
+  "weapon": "tekken_striking",
+  "submission": "ground",
+  "strike_combo": "tekken_striking",
+  "entrance_victory": "taunt"
+ },
+ "pofo_attributes": [
+  "offense by body region",
+  "defense by body region",
+  "style",
+  "speed",
+  "submission skill",
+  "crowd balance",
+  "gender flag",
+  "DLC flag",
+  "attitude flag",
+  "commentary name (must match installed slot or announcer/team settings break, per Data Editor guidance)"
+ ],
+ "caw_base_templates": [
+  {
+   "id": "caw-neutral-balanced",
+   "label": "Neutral balanced CAW base (WWE-style custom body)",
+   "body": "neutral proportions, no real-wrestler likeness, no famous name",
+   "morph_preset": {
+    "height": 0,
+    "bulk": 0,
+    "muscle": 0,
+    "fat": 0,
+    "shoulders": 0,
+    "belly": 0,
+    "limbs": 0,
+    "chest": 0,
+    "waist": 0,
+    "hips": 0,
+    "neck": 0,
+    "hands": 0,
+    "feet": 0
+   },
+   "mesh_rule": "Neutral WWE-style custom body built from the creation-suite body/morph pipeline (MPFB dials in packages/creation-suite/src/morphs.js). NO Mixamo soldier mesh, rig, or textures anywhere in this chain.",
+   "attire": "plain ring gear, no licensed logos"
+  },
+  {
+   "id": "caw-power",
+   "label": "Power archetype CAW base",
+   "morph_preset": {
+    "bulk": 0.6,
+    "muscle": 0.7,
+    "fat": 0.2,
+    "shoulders": 0.5,
+    "chest": 0.4,
+    "limbs": -0.1
+   },
+   "mesh_rule": "Same neutral body pipeline, dial preset only."
+  },
+  {
+   "id": "caw-cruiser",
+   "label": "Cruiser archetype CAW base",
+   "morph_preset": {
+    "bulk": -0.4,
+    "muscle": 0.1,
+    "fat": -0.3,
+    "limbs": 0.3,
+    "height": 0.1
+   },
+   "mesh_rule": "Same neutral body pipeline, dial preset only."
+  },
+  {
+   "id": "caw-giant",
+   "label": "Giant archetype CAW base",
+   "morph_preset": {
+    "height": 0.8,
+    "bulk": 0.8,
+    "muscle": 0.5,
+    "shoulders": 0.6,
+    "limbs": 0.4
+   },
+   "mesh_rule": "Same neutral body pipeline, dial preset only."
+  }
+ ],
+ "wwe2k20_delta": "Same CAK + charactermapping + .pofo/.moveset structure as 2K22 (tutorial: processes changed since 2K20, and the 2K22 procedures also apply to 2K20). 2K20-specific confirmation (exact baked-file split for 2K20, 2K20 charactermapping record layout) is PENDING an owned-install Caketools run \u2014 2K20 is wired to the same schema with that delta flagged, not asserted as byte-identical.",
+ "editor_wiring": {
+  "editor": "packages/creation-suite/src/movelist-editor.js",
+  "verified_operations": [
+   "listAllMoves on a 2K22-structured moveset fixture: 6 rows (LP1/RP2/LK3/RK4 singles -> tekken_striking; LP1+LK3 / RP2+RK4 throws -> grappling)",
+   "swapMove blocks limb-mismatched swap (LP1 slot rejects RP2 armR candidate) with status wrong",
+   "serializeMoveset + createSavePayload produce game/assets/movesets/caw-neutral-2k22.json payload (path/content/contentBase64/message/branchNote/edits)"
+  ],
+  "opaque_slots_rule": "The editor does NOT rewrite the moveset files' opaque slots index (per lane brief, confirm with loader behavior before relying on swaps in-game). Swaps made in the editor change the WH moveset JSON; in-game slot-index behavior is a loader-verification item for the suite lane, NOT claimed here.",
+  "suite_lane_boundary": "This lane owns STRUCTURE DATA + templates (this file). Menus/presentation are the creation-suite fix lane's. No menu code is changed here."
+ },
+ "blockers": [
+  {
+   "blocker": "No owned-install 2K22/2K20 files are reachable from this VM (phone-only; Steam remote download unreachable). Per-slot numeric IDs inside real .moveset files, real .pofo dumps, and real CAK folder listings are therefore NOT in this file.",
+   "active_path": "On a machine with the owned install: Caketools -> bakedfile00.cak -> Characters/charactermapping.jsfb; Data Editor -> .pofo/.moveset dumps; export per-slot IDs into this schema as a follow-up PR. Raw commercial files go ONLY to the PRIVATE game-reverse-engineering repo, never public western-heart."
+  }
+ ]
+}
