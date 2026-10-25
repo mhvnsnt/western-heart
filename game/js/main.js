@@ -1040,7 +1040,7 @@ async function startFight(playerId, enemyId, opts = {}) {
   // Models may already be prefetched from select-screen highlight.
   // TTT2: tag battles need all 4 fighters' models up front.
   const tagTeams = opts.tagTeams || null;
-  const need = [...new Set([player.model || 'pantera', enemy.model || 'pantera'])];
+  const need = [...new Set([player.model, enemy.model].filter(Boolean))];
   if (tagTeams) {
     for (const side of ['p1', 'p2']) for (const id of tagTeams[side]) {
       const c = getCharacterWithCustom(id);
