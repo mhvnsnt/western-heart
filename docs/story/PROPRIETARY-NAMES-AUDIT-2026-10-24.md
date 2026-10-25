@@ -30,6 +30,126 @@ fetching at report time — see Gaps. Terms reported as "not
 found" are "not found in the searched files", not a
 whole-repo proof.
 
+## Owner decisions — 2026-10-24 21:38 CDT (status update; no new names invented, no code changed)
+
+Recorded exactly from the owner's 2026-10-24 21:38 CDT message.
+This section changes STATUS labels only. It does not rename any
+code tag, HUD string, or doc string, and it does not implement
+any mechanic. Until the owner picks a replacement name, code
+keeps the old strings, and no banner text shows for the
+RENAME-PENDING items (the popup fix already removed the
+banners). When the owner picks names, they get wired everywhere
+the Tekken names appear (code tags, HUD, docs) — until then,
+nothing is renamed.
+
+### Updated status table
+
+| Item | Status (2026-10-24 21:38 CDT) | Note |
+|---|---|---|
+| Wall Break | KEEP | Stays as-is in code/docs/UI. No longer a needs-name item. Owner: "they can still be called the same stuff". |
+| Floor Break | KEEP | Same as Wall Break. |
+| Balcony Break | KEEP | Same as Wall Break. |
+| Rage Art | RENAME-PENDING | Owner decided it changes; the new name is NOT yet picked. Not NEEDS NAME anymore — the rename decision is made, the replacement is not. |
+| Rage Drive | RENAME-PENDING | Same as Rage Art. |
+| Power Crush | RENAME-PENDING | Same as Rage Art. The audit's implementation question (is armored-attack behaviour present generically?) is unchanged by this message. |
+| V-System | RENAME-PENDING | Umbrella decided to change; member names are NOT yet picked (see still-open list). |
+| Break mechanics + guard-breaking mechanics | SHARED-NAME-PENDING | ONE term covers both, not two separate names. Owner: "can be called the same thing". The term itself is NOT yet picked. |
+| Rage (low-HP state itself) | OPEN/UNDECIDED | NOT renamed in this message. Do NOT assume it changes with Rage Art / Rage Drive. |
+| Screw | EXPLAINED-NOT-NAMED / MECHANIC-NOT-ON-MAIN | T7 spinning-knockdown extender. WH on main has NEITHER Screw nor Tornado and uses T6 Bound instead of Screw. A WH name is needed only when/if the mechanic is implemented. |
+| Tailspin | EXPLAINED-NOT-NAMED / MECHANIC-NOT-ON-MAIN | T8's rename of Screw. Not a separate WH item to name unless/until implemented. |
+| Tornado | EXPLAINED-NOT-NAMED / MECHANIC-NOT-ON-MAIN | T8's spinning-air extender. Missing per gap analysis. This explanation supersedes this audit's earlier shorthand that called Tornado "T8's rename of Screw" — Tailspin is the T8 rename of Screw. |
+
+### Nuance preserved, not contradicted
+
+- PR #1060 (combat, unmerged, HELD until the popup play pass)
+  implements Screw/Tornado on its branch. The names question
+  reopens if/when #1060 lands. This PR pre-invents NO names
+  for it and does NOT claim the mechanic is on main.
+- NOTHING here blocks the #1076 popup deploy. Banners are
+  already gone regardless of naming, and this naming PR is
+  docs-only.
+
+### LOCKED names — unchanged, restated, never re-opened by this PR
+
+- Heat → SOUL URGE. Finisher system → KESSHOU 結章.
+  Full-meter super → Nine-Soul Release 九魂解放 (Climax
+  variance noted below, not resolved here). Spirit Release
+  (foe in RAGE) → Reihou 霊放. Round-end verdict seal →
+  Trial's Seal 試練の封. Urge context finisher → 魂 ACTION /
+  Spirit Action. Fight lab → GUNGAKU 軍楽. Chess Kombat
+  remake → Go Qombat.
+
+### Still open — preserved, NOT dropped by this message
+
+- Bound; Slow-mo finish; WWE entrance-tool repurpose;
+  V-System members V-Skill / V-Trigger / V-Reversal / V-Shift
+  (including V-Skill/parry); Urge Smash (carried forward as
+  an open item per the 2026-10-24 21:38 tasking — the audit
+  had listed Urge Smash inside the locked SOUL URGE family,
+  and this PR does not resolve that tension; owner to
+  confirm); proposed names awaiting owner pick — Soul Kindle
+  for Ki Charge, Soul Relay for Tag; the Nine-Soul Climax vs
+  Release variance (MEMORY + FINISHER-DESIGN "SOUL CLIMAX
+  READY" vs implemented Release "SOUL RELEASE READY" —
+  owner to confirm); the 魂 ACTION chord question (RP2+LK3,
+  i.e. Right Punch + Left Kick, Tekken 2+3, vs 2+3+context —
+  owner/combat lane to confirm).
+
+## Options pending — user 2026-10-24 21:40–21:42 CDT (ALL PROPOSED, NONE DECIDED)
+
+This section is SEPARATE from the 2026-10-24 21:38 CDT
+decisions above. Nothing here is decided, wired, or renamed.
+Every item carries "user pick pending". Do NOT present any
+option below as a final name, and do NOT rename code, HUD,
+or doc strings to any of them.
+
+### Rage state (low HP) — direction + options (user pick pending)
+
+- Direction asked: what would Tong-Nou's world call it —
+  tied to the game's reincarnation function (right before
+  dying → reincarnation), divine + heavenly + Japanese
+  sounding.
+- The user LIKES "Rage Itself" as a term, but it must
+  CONNECT to one of the other systems (not stand alone).
+  Proposed connection (NOT decided): "Rage Itself" = the
+  state; Rage Art/Drive equivalents are techniques used
+  FROM that state (as in Tekken, where Art/Drive require
+  Rage).
+- "Rage Itself" IN JAPANESE is a candidate for one of the
+  renamed systems (literal: 怒りそのもの ikari sono mono;
+  tighter game term: 怒り自身 ikari jishin). Recorded here
+  as delivered; which system (if any) it names is NOT
+  decided — note Ikari Jishin also appears in the five
+  options below, and the owner pick will clarify.
+- Options delivered 2026-10-24 21:42 CDT — USER PICK
+  PENDING on each, verbatim:
+  1. Rinne (輪廻) — user pick pending.
+  2. Rinne Tensei (輪廻転生) — user pick pending.
+  3. Tensei (転生) — user pick pending.
+  4. Amatsu Rinne (天津輪廻, constructed compound from real
+     words, not a set phrase) — user pick pending.
+  5. Ikari Jishin (怒り自身) — user pick pending.
+- Status effect: NONE. The Rage state remains
+  OPEN/UNDECIDED from 2026-10-24 21:38 CDT. These are
+  options under that status, not a rename. Do NOT present
+  any of them (including Ikari Jishin or any Rinne option)
+  as the Rage state name.
+
+### Juggle spin (Screw / Tailspin / Tornado) — descriptive proposal (user pick pending)
+
+- The user barely knows these from Tekken's
+  titles/descriptions and wants a DESCRIPTIVE name where
+  you know what it is from the name.
+- Proposed (NOT decided): "Spin Juggle" — one mechanic
+  covering all three (Screw = ground-spin form, Tailspin =
+  T8's word for Screw, Tornado = air-spin form).
+- Status effect: NONE. Do NOT present "Spin Juggle" as the
+  juggle name, do NOT rename code/HUD/docs strings to it,
+  do NOT implement Screw/Tornado on this message. The
+  2026-10-24 21:38 CDT EXPLAINED-NOT-NAMED /
+  MECHANIC-NOT-ON-MAIN status and the PR #1060 nuance
+  above stand unchanged.
+
 ## Summary table
 
 | System (Tekken name) | WH name | Status |
@@ -46,18 +166,19 @@ whole-repo proof.
 | Immortal Qombat mode (Sun Rā) | 不死クォンバット Immortal Qombat | NAMED (distinct from Go Qombat — do not conflate) |
 | Ki Charge (T7) | Soul Kindle — PROPOSAL ONLY | NEEDS OWNER PICK |
 | Tag (TTT2) | Soul Relay — PROPOSAL ONLY | NEEDS OWNER PICK |
-| Rage (state) | — | NEEDS NAME |
-| Rage Art | — | NEEDS NAME |
-| Rage Drive | — | NEEDS NAME |
-| Power Crush | — | NEEDS NAME (+ implementation question) |
-| Screw | — | NEEDS NAME |
-| Tornado (T8 rename of Screw) | — | NEEDS NAME (same decision as Screw unless owner splits) |
+| Rage (state) | — | OPEN/UNDECIDED (2026-10-24 21:38 CDT; not renamed in that message; options pending 21:40–21:42 CDT — user pick pending, see Options section) |
+| Rage Art | — | RENAME-PENDING (2026-10-24 21:38 CDT; new name not yet picked) |
+| Rage Drive | — | RENAME-PENDING (2026-10-24 21:38 CDT; new name not yet picked) |
+| Power Crush | — | RENAME-PENDING (2026-10-24 21:38 CDT; new name not yet picked; implementation question unchanged) |
+| Screw | — | EXPLAINED-NOT-NAMED / MECHANIC-NOT-ON-MAIN (2026-10-24 21:38 CDT; "Spin Juggle" proposal pending 21:40–21:42 CDT — NOT decided) |
+| Tornado (T8 spinning-air extender) | — | EXPLAINED-NOT-NAMED / MECHANIC-NOT-ON-MAIN (2026-10-24 21:38 CDT; "Spin Juggle" proposal pending 21:40–21:42 CDT — NOT decided) |
+| Tailspin (T8 rename of Screw) | — | EXPLAINED-NOT-NAMED / MECHANIC-NOT-ON-MAIN (2026-10-24 21:38 CDT; "Spin Juggle" proposal pending 21:40–21:42 CDT — NOT decided) |
 | Bound | — | NEEDS NAME |
-| Wall Break | — | NEEDS NAME |
-| Floor Break | — | NEEDS NAME |
-| Balcony Break | — | NEEDS NAME |
+| Wall Break | Wall Break (kept as-is) | KEEP (2026-10-24 21:38 CDT) |
+| Floor Break | Floor Break (kept as-is) | KEEP (2026-10-24 21:38 CDT) |
+| Balcony Break | Balcony Break (kept as-is) | KEEP (2026-10-24 21:38 CDT) |
 | Slow-mo finish | — | NEEDS NAME (or owner rules it needs none) |
-| V-System (SFV-derived) | — | NEEDS NAME (TBD in code) |
+| V-System (SFV-derived) | — | RENAME-PENDING (2026-10-24 21:38 CDT; new name not yet picked; member names still open) |
 | WWE entrance-tool repurpose | — (working title only) | NEEDS NAME |
 
 ## NAMED — with source, line, date
@@ -210,6 +331,7 @@ None is canon until the owner picks it. Each row states
 what was searched so the owner can see the gap is real.
 
 ### Rage (state: ≤ 25% HP, once per round)
+> STATUS UPDATE 2026-10-24 21:38 CDT: OPEN/UNDECIDED — not renamed in that message; do not assume it changes with Rage Art / Rage Drive. Options pending 2026-10-24 21:40–21:42 CDT (user pick pending) — see the Options section above; none is the name.
 - Found as Tekken name only: `game/js/rage.js` L7 header,
   L25 (`RAGE_THRESHOLD = 0.25`), L34 (`isRaging`).
 - Options: (a) Trial Wrath — the trial's anger at the
@@ -222,6 +344,7 @@ what was searched so the owner can see the gap is real.
   picked, that sentence must be reworded to match.
 
 ### Rage Art (R.1+2 while raging; cinematic armored super, 32 dmg)
+> STATUS UPDATE 2026-10-24 21:38 CDT: RENAME-PENDING — owner decided it changes; new name NOT yet picked. Options below are still proposals, not picks.
 - Found as Tekken name only: `game/js/rage.js` L7, L15,
   L59, L79; `game/js/fighter.js` L1551 (comment), L1587.
 - Options: (a) Ember Verdict — the wounded soul's
@@ -231,6 +354,7 @@ what was searched so the owner can see the gap is real.
   pairs with Trial Wrath if Rage takes that name.
 
 ### Rage Drive (RD.3+4 while raging; powered-up strike)
+> STATUS UPDATE 2026-10-24 21:38 CDT: RENAME-PENDING — owner decided it changes; new name NOT yet picked. Options below are still proposals, not picks.
 - Found as Tekken name only: `game/js/rage.js` L10, L59,
   L93; `game/js/movesets.js` L660 (comment).
 - Options: (a) Ember Drive — keeps the drive shape,
@@ -240,6 +364,7 @@ what was searched so the owner can see the gap is real.
   only so the owner can reject it explicitly.
 
 ### Power Crush (armored attack that absorbs hits)
+> STATUS UPDATE 2026-10-24 21:38 CDT: RENAME-PENDING — owner decided it changes; new name NOT yet picked. Implementation question below is unchanged.
 - NOT found as a system in searched files: zero hits for
   "power crush" in `fighter.js`, `movesets.js`, `game.js`
   (grep 2026-10-24). What DOES exist and must not be
@@ -258,6 +383,7 @@ what was searched so the owner can see the gap is real.
   wording; (c) Ember Wall — pairs with Last Ember.
 
 ### Screw (T7 juggle-spin state)
+> STATUS UPDATE 2026-10-24 21:38 CDT: EXPLAINED-NOT-NAMED / MECHANIC-NOT-ON-MAIN — T7 spinning-knockdown extender; WH on main uses T6 Bound instead. Name needed only when/if implemented. "Spin Juggle" proposal pending 2026-10-24 21:40–21:42 CDT — NOT decided, NOT the name.
 - NOT found as a system in searched files: zero hits in
   `fighter.js` / `movesets.js` / `game.js`. Moveset hits
   for "screw" are King throw NAMES, not the mechanic:
@@ -269,6 +395,7 @@ what was searched so the owner can see the gap is real.
   still point of the juggle; (c) Trial Turn.
 
 ### Tornado (T8's rename of Screw)
+> STATUS UPDATE 2026-10-24 21:38 CDT: EXPLAINED-NOT-NAMED / MECHANIC-NOT-ON-MAIN — see the 2026-10-24 21:38 CDT section above for the corrected explanation (Tornado = T8's spinning-air extender; Tailspin = T8's rename of Screw). Name needed only when/if implemented. "Spin Juggle" proposal pending — NOT decided.
 - NOT found in searched files (same grep as Screw).
   Decision shape is the owner's: one shared name for the
   juggle-spin state (recommended — Screw and Tornado are
@@ -287,6 +414,7 @@ what was searched so the owner can see the gap is real.
   Bounce.
 
 ### Wall Break / Floor Break / Balcony Break
+> STATUS UPDATE 2026-10-24 21:38 CDT: KEEP — owner: "they can still be called the same stuff". These stay as-is in code/docs/UI and are NO LONGER needs-name items. The options below are superseded and kept only as audit history.
 - Implemented with Tekken names + types: `game/js/stagebreaks.js`
   header L4–15 (floor / wall / balcony), L29
   (`WALL_BREAK_BONUS = 8`), L30 (`FLOOR_BREAK_BONUS =
@@ -321,6 +449,7 @@ what was searched so the owner can see the gap is real.
   when made.
 
 ### V-System (V-Skill / V-Trigger / V-Reversal / V-Shift)
+> STATUS UPDATE 2026-10-24 21:38 CDT: RENAME-PENDING — owner decided the V-System name changes; the new name and the member names are NOT yet picked. Options below are still proposals, not picks.
 - `game/js/v-system.js` L26: "all user-facing names are
   «name TBD» placeholders flagged for user approval
   (owner directive 2026-10-22). Code keys stay neutral
@@ -379,7 +508,20 @@ what was searched so the owner can see the gap is real.
    depends on that sweep except the NEEDS NAME rows'
    "not found" claims, which are scoped to the searched
    files above.
-2. Owner picks outstanding: all NEEDS NAME rows +
-   Soul Kindle + Soul Relay proposals + Climax/Release
-   variance + 魂 ACTION chord confirmation. None are
-   decided by this audit.
+2. Owner picks outstanding (updated 2026-10-24 21:38 CDT,
+  options added 2026-10-24 21:40–21:42 CDT):
+  Wall Break / Floor Break / Balcony Break are now KEEP and
+  are no longer outstanding; Rage Art / Rage Drive /
+  Power Crush / V-System are RENAME-PENDING (decision made,
+  replacement not picked); break + guard-breaking mechanics
+  are SHARED-NAME-PENDING (one term, not picked); Rage
+  (low-HP state) is OPEN/UNDECIDED with five options
+  pending (Rinne, Rinne Tensei, Tensei, Amatsu Rinne,
+  Ikari Jishin — user pick pending); Screw / Tailspin /
+  Tornado are EXPLAINED-NOT-NAMED and the mechanic is not
+  on main, with the "Spin Juggle" descriptive proposal
+  pending (NOT decided). Still outstanding: Bound, Slow-mo
+  finish, WWE entrance-tool repurpose, V-System members,
+  Soul Kindle + Soul Relay proposals, Climax/Release
+  variance, 魂 ACTION chord confirmation. None are decided
+  by this audit.
