@@ -38,6 +38,7 @@ const RIGIFY_BONES = ['hips', 'spine', 'spine.001', 'chest', 'neck', 'head', 'sh
   'f_middle.01.L', 'f_middle.01.R', 'f_ring.01.L', 'f_ring.01.R', 'f_pinky.01.L',
   'f_pinky.01.R', 'thigh.L', 'thigh.R', 'shin.L', 'shin.R', 'foot.L', 'foot.R',
   'toe.L', 'toe.R'];
+const TEMPLATE_JOINTS = ['root', 'pelvis', 'thigh_R', 'calf_R', 'foot_R', 'toes_R', 'calf_twist_R', 'thigh_twist_R', 'thigh_L', 'calf_L', 'foot_L', 'toes_L', 'calf_twist_L', 'thigh_twist_L', 'spine01', 'spine02', 'spine03', 'clavicle_L', 'upperarm_L', 'lowerarm_L', 'hand_L', 'thumb01_L', 'thumb02_L', 'thumb03_L', 'index00_L', 'index01_L', 'index02_L', 'index03_L', 'middle00_L', 'middle01_L', 'middle02_L', 'middle03_L', 'ring00_L', 'ring01_L', 'ring02_L', 'ring03_L', 'pinky00_L', 'pinky01_L', 'pinky02_L', 'pinky03_L', 'lowerarm_twist_L', 'upperarm_twist_L', 'clavicle_R', 'upperarm_R', 'lowerarm_R', 'hand_R', 'thumb01_R', 'thumb02_R', 'thumb03_R', 'index00_R', 'index01_R', 'index02_R', 'index03_R', 'middle00_R', 'middle01_R', 'middle02_R', 'middle03_R', 'ring00_R', 'ring01_R', 'ring02_R', 'ring03_R', 'pinky00_R', 'pinky01_R', 'pinky02_R', 'pinky03_R', 'lowerarm_twist_R', 'upperarm_twist_R', 'neck', 'head', 'breast_L', 'breast_R'];
 const MPFB_BONES = ['pelvis', 'spine01', 'spine02', 'spine03', 'neck', 'head',
   'clavicle_L', 'clavicle_R', 'upperarm_L', 'upperarm_R', 'forearm_L',
   'forearm_R', 'hand_L', 'hand_R', 'thigh_L', 'thigh_R', 'shin_L', 'shin_R',
@@ -107,6 +108,26 @@ check('MPFB rig resolves core bones, reports fingers missing (not guessed)', () 
   }
   assert.ok(r.missing.includes('thumbL'), 'thumbL must be reported missing, not guessed');
   assert.ok(r.coverage < 1 && r.coverage > 0.6, 'coverage ' + r.coverage);
+});
+
+// --- REAL template rig (gap (b) closure, 2026-10-24): the 71 skin joints
+// read from customization/templates/meshes/technician.glb (identical across
+// all 9 templates) resolve ALL canonical bones — MB-Lab lowerarm/calf/toes
+// and 01-segment fingers included. Before the alias fix this rig missed
+// 16 canonical bones (10 fingers + 2 forearms + 2 shins + 2 toes).
+check('real template rig resolves all canonical bones incl. fingers', () => {
+  assert.strictEqual(TEMPLATE_JOINTS.length, 71);
+  const r = resolveBonesFromNames(TEMPLATE_JOINTS);
+  assert.strictEqual(r.missing.length, 0, 'missing: ' + r.missing.join(','));
+  assert.strictEqual(r.found, CANONICAL_BONES.length);
+  assert.strictEqual(r.map.thumbL, 'thumb01_L');
+  assert.strictEqual(r.map.indexL, 'index01_L');
+  assert.strictEqual(r.map.middleL, 'middle01_L');
+  assert.strictEqual(r.map.ringL, 'ring01_L');
+  assert.strictEqual(r.map.pinkyL, 'pinky01_L');
+  assert.strictEqual(r.map.forearmL, 'lowerarm_L');
+  assert.strictEqual(r.map.shinL, 'calf_L');
+  assert.strictEqual(r.map.toeL, 'toes_L');
 });
 
 // --- empty/unknown rigs report honestly, never crash
