@@ -379,6 +379,15 @@ Decision log: `docs/decisions/2026-10-22-integration-law.md`.
   fighter — refused. The tripo-intake lane must produce a phantom intake rig
   first; the config repoint is a one-line follow-up once it lands.
 
+## Dio Attire 1 archive + moveset spec (user directive 2026-10-22, worker 73)
+**Character (user's words):** DIO — Shuten-dōji (酒呑童子) inspired Oni, the Oni King of Mount Ōe. Massive, muscular demon with wild hair, horns, fierce face, fangs, claw-like nails. Jade/green skin. Levitating tattered wind-blown clothing. Godly demonic power vibe.
+**Moveset (user's words):** Dio takes over AKUMA's slot completely — all of Akuma's moves, stance, animations, everything (Akuma is Dio's claimed moveset source; recorded in docs/movesets/SOURCE-MERGE-2026-10-21.json fighters/dio and docs/MOVESET-COVERAGE.md) — PLUS elemental god powers: lightning, water, air, fire, thunder, different elemental attack types. "The all powerful demon" — a god of elements.
+**Archive:** roster/dio/attires/attire1/source/dio-a1-fantasy-demon.glb (Tripo "fantasy demon 3d model", 21,600,980 bytes) + manifest.json, immutable-original annotated tag `dio-a1-original` ("Restore point: these bytes never change"). Archive-only restore point — unrigged static, NOT wired into MODEL_URLS. Full spec in docs/research/DIO-ATTIRE1-ARCHIVE-2026-10-22.md. The user is making Dio themselves — this archive and spec are the crew's support lane, not a replacement for their work.
+
+## Dio "Million Eyes Demon" transformation (user directive 2026-10-22 ~20:06 CDT, worker 73)
+**Transformation form (user's words):** "Million Eyes Demon" — red-skinned demon, million eyes, horns all over body. Red Super Saiyan-type aura with electricity and energy/ki around him.
+**Archive:** roster/dio/transformation/source/dio-transformation-million-eyes.glb (Tripo "demon creature 3d model", 23,422,084 bytes) + manifest.json, immutable-original annotated tag `dio-transformation-original` ("Restore point: these bytes never change"). Archive-only restore point — unrigged static, NOT wired into MODEL_URLS.
+**Transformation-sequence requirement (user's words — future rig/anim work):** the user wants the visual transformation sequence/form like all other character transformations — the in-game transformation animation/VFX when he transforms. Recorded for the rig/anim lane (not built by this archive): (1) transformation trigger, same system other character transformations use; (2) aura/electricity/ki VFX — red Super Saiyan-type aura with electricity and energy/ki is the VFX target; (3) form swap — base Dio swaps to the Million Eyes Demon form as the sequence resolves.
 ## Bruno — Miguel moveset claim (user directive 2026-10-22)
 Bruno replaces MIGUEL (Tekken). Full moveset takeover: all of Miguel's moves, stance,
 animations. Miguel was not on the taken list — now claimed. Recorded in the Taken list
@@ -540,6 +549,32 @@ Rules:
 
 ### Auto-archive note (2026-10-22, worker 71)
 Per the AUTO-ARCHIVE standing directive: no wired auto-archive automation was found in-repo (no tripo-intake doc under docs/, no auto-archive entry in AGENTS.md or docs/owner-directives.md). The Kuma replacement archive was done manually following the dorowani #603 pattern (manifest + immutable-original tag).
+## SHRINE体系 (user directive 2026-10-24)
+- TempleOS-inspired mode, NOT called TempleOS in-game. Name:
+  "Shrine" + the kanji for OS. User correction: NOT "trying" —
+  "shrine, like a shrine, and then the kanji for OS".
+- Kanji LOCKED by owner 2026-10-24 ("The kanji for system is
+  good."): 体系 (taikei = system). In-game name: Shrine体系.
+- Wired three ways: (1) Heart and Mind Within — shrine terminal
+  segment at the Still Point (stage 5, octagonal-shrine), before
+  the shadow-self fight, for every fighter; (2) Eastern Mind
+  canon — sacred computer-system realm/artifact at the Octagonal
+  Shrine Par-fang, grounded in CANON.md; (3) own playable mode in
+  side games / for-fun section — retro terminal, 16-color look,
+  ORACLE / SPRITE / MUSIC / GAME commands, slope-descent
+  mini-game adapted from TempleOS's BlackDiamond.
+- TempleOS is public domain (Terry A. Davis, last release 5.03,
+  2017). Attribution stays in technical docs only, never in canon
+  writing or in-game text — same law as Tekken names.
+- Full record: docs/research/TEMPLEOS-SHRINE-OS-2026-10-24.md.
+
+## KUMA REPLACEMENT NAME LOCK: GASHADOKURO (user directive 2026-10-22)
+
+The Kuma replacement — white bone dragon/kaiju (Godzilla + SkullGreymon + Charizard mix, all white, rainbow-colored eyes, multicolored markings, multicolored Japanese cloud-smoke detail) — is named **GASHADOKURO**, after the giant skeleton yokai from Japanese folklore. This name is LOCKED and replaces the old "URSA" reserved placeholder.
+
+- Display-name mapping: internal ID `kuma` → display name "Gashadokuro". The roster dir and all plumbing keep the internal ID `kuma`; it is never renamed. The game layer resolves the display name from the ID.
+- Canon (recorded as stated; do not invent further): connected to ZUI — Zui fears/respects him, looks up to him like a protector/monster. Kaiju/yokai/spirit monster.
+- Note: Aotsuki/Aokami are Panda's name candidates and do NOT apply to the Kuma replacement. Gashadokuro is the Kuma replacement only.
 
 ## Free pulls + free GPU (user directives 2026-10-24 19:50 + 19:55 CDT)
 

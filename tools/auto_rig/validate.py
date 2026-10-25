@@ -84,25 +84,43 @@ def finger_symmetry(names):
 
 def mesh_height(js, bdat):
     """Height from POSITION vertex data (accessor min/max not trusted —
-    Blender's exporter sometimes writes zeroed bounds)."""
+    Blender's exporter sometimes writes zeroed bounds), aggregated over
+    EVERY primitive of EVERY mesh. Measuring only meshes[0] under-reads
+    multi-part models (e.g. SFMLab-style part exports whose torso primitive
+    spans y 0.93-1.72 while the full figure spans 0-1.8) and false-fails
+    them at this gate — pose-isolation lane, 2026-10-21."""
     try:
         import numpy as np
-        prim = js["meshes"][0]["primitives"][0]
-        acc = js["accessors"][prim["attributes"]["POSITION"]]
-        bv = js["bufferViews"][acc["bufferView"]]
-        off = bv.get("byteOffset", 0) + acc.get("byteOffset", 0)
-        n = acc["count"]
-        stride = bv.get("byteStride", 12)
-        if stride == 12:
-            arr = np.frombuffer(bdat, dtype=np.float32, count=n * 3,
-                                offset=off).reshape(n, 3)
-        else:
-            arr = np.zeros((n, 3), dtype=np.float32)
-            for i in range(n):
-                arr[i] = np.frombuffer(bdat, dtype=np.float32, count=3,
-                                       offset=off + i * stride)
-        mn, mx = arr.min(0), arr.max(0)
-        return float(mx[1] - mn[1]), float(mn[1])
+        mn_y = None
+        mx_y = None
+        for m in js.get("meshes", []):
+            for prim in m.get("primitives", []):
+                attrs = prim.get("attributes", {})
+                if "POSITION" not in attrs:
+                    continue
+                acc = js["accessors"][attrs["POSITION"]]
+                if acc.get("componentType") != 5126:  # float32 only
+                    continue
+                bv = js["bufferViews"][acc["bufferView"]]
+                off = bv.get("byteOffset", 0) + acc.get("byteOffset", 0)
+                n = acc["count"]
+                stride = bv.get("byteStride", 12)
+                if stride == 12:
+                    arr = np.frombuffer(bdat, dtype=np.float32, count=n * 3,
+                                        offset=off).reshape(n, 3)
+                    ys = arr[:, 1]
+                else:
+                    ys = np.empty(n, dtype=np.float32)
+                    for i in range(n):
+                        ys[i] = np.frombuffer(
+                            bdat, dtype=np.float32, count=3,
+                            offset=off + i * stride)[1]
+                lo, hi = float(ys.min()), float(ys.max())
+                mn_y = lo if mn_y is None else min(mn_y, lo)
+                mx_y = hi if mx_y is None else max(mx_y, hi)
+        if mn_y is None:
+            return None, None
+        return mx_y - mn_y, mn_y
     except (KeyError, IndexError, ImportError):
         return None, None
 
