@@ -21,7 +21,7 @@
     <p class="sub">Tekken Bowl-style, but these aren't bowling. Every game below is drawn from
       traditional mythologies — mainly Japanese, mixed with world traditions per the NORTH STAR —
       and rooted in the Five Lands, the Phantom Marketplace, the Trial, and the Nine Souls.
-      Two are playable prototypes now; the rest await your pick.</p>
+      Three are playable prototypes now; the rest await your pick.</p>
     <div class="wh-approval"><b>⏳ ALL CONCEPTS AWAIT OWNER APPROVAL.</b> Nothing is locked — names,
       rules, and which games ship are the owner's call. Playable prototypes are marked 🎮.</div>
   </div>
@@ -66,6 +66,24 @@
     </div>
   </div>
 
+    <div style="height:12px"></div>
+
+    <div class="wh-game" id="shrine-os">
+      <div class="home">OCTAGONAL SHRINE · CENTRAL MOUNTAIN · EARTH</div>
+      <h3>⛩️ Shrine体系 <span class="root">· the shrine terminal, playable now</span></h3>
+      <p><b>WH identity:</b> the Octagonal Shrine keeps a terminal in
+      its room for arriving, where arriving souls are read before
+      they are weighed. It sees in sixteen colors and speaks with
+      one voice at a time.<br>
+      <b>How it plays:</b> the terminal boots below. Type HELP, or
+      tap a command: ORACLE draws three canon words; SPRITE is a
+      sixteen-color drawing board; MUSIC plays single-voice shrine
+      hymns; GAME descends the Central Mountain — dodge what the
+      mountain puts in the way, and the shrine pays Soul Shards
+      for distance survived. SHARDS shows your balance.</p>
+      <div id="sg-shrine"></div>
+    </div>
+
   <div class="wh-card">
     <div class="wh-tag">🜁 THE FIVE LANDS</div>
     <h2>Games of the Lands</h2>
@@ -86,7 +104,7 @@
 
   <div class="wh-approval">
     <b>⏳ AWAITING OWNER APPROVAL</b> — every concept above: name, rules, home land, and which ship.
-    The two prototypes are playable now so the feel can be judged; the rest are design proposals.
+    The three prototypes are playable now so the feel can be judged; the rest are design proposals.
     Suggested first full build (pending approval): <b>Daruma Drop — Stack of the Nine</b> (simple
     physics, strong soul-kanji identity) and <b>Oni Hunt</b> (projectile scoring reuses fight input).
   </div>
@@ -308,6 +326,11 @@
 
   if (window.WHColorblind) window.WHColorblind.apply();
 })();
+</script>
+<script type="module">
+import { mountShrineOS } from './js/shrine-os.js';
+var host = document.getElementById('sg-shrine');
+if (host) mountShrineOS(host);
 </script>
 </body>
 </html>

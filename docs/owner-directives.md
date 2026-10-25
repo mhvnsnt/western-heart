@@ -494,3 +494,22 @@ Rules:
 - X.COPY is ONE super (copies opponent briefly), NOT Zen's identity. Zen is not just a copycat.
 - Until VF5 Dural motion exists, Zen's bank is UNMAPPED (game/js/fighter.js FIGHTER_BANK zen: null). Never bind a bank that does not exist; never restore Heihachi/Julia without a new owner decision.
 - Full doc: docs/decisions/2026-10-24-zen-base-decision.md.
+
+## SHRINE体系 (user directive 2026-10-24)
+- TempleOS-inspired mode, NOT called TempleOS in-game. Name:
+  "Shrine" + the kanji for OS. User correction: NOT "trying" —
+  "shrine, like a shrine, and then the kanji for OS".
+- Kanji LOCKED by owner 2026-10-24 ("The kanji for system is
+  good."): 体系 (taikei = system). In-game name: Shrine体系.
+- Wired three ways: (1) Heart and Mind Within — shrine terminal
+  segment at the Still Point (stage 5, octagonal-shrine), before
+  the shadow-self fight, for every fighter; (2) Eastern Mind
+  canon — sacred computer-system realm/artifact at the Octagonal
+  Shrine Par-fang, grounded in CANON.md; (3) own playable mode in
+  side games / for-fun section — retro terminal, 16-color look,
+  ORACLE / SPRITE / MUSIC / GAME commands, slope-descent
+  mini-game adapted from TempleOS's BlackDiamond.
+- TempleOS is public domain (Terry A. Davis, last release 5.03,
+  2017). Attribution stays in technical docs only, never in canon
+  writing or in-game text — same law as Tekken names.
+- Full record: docs/research/TEMPLEOS-SHRINE-OS-2026-10-24.md.
