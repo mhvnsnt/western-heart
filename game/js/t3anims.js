@@ -171,8 +171,15 @@ function jsonToClip(name, data, THREE) {
       values[i * 4] = q[0]; values[i * 4 + 1] = q[1];
       values[i * 4 + 2] = q[2]; values[i * 4 + 3] = q[3];
     }
-    // Track name matches bone node name in the scene (Hips, Spine, etc.)
-    tracks.push(new THREE.QuaternionKeyframeTrack(`${bone}.quaternion`, times, values));
+    // Track name matches bone node name in the scene (Hips, Spine, etc.).
+    // Canonicalization: the T3 bake's skeleton named the chest bone
+    // 'Chest'; every current game skeleton (Mixamo family, Lane-C rigs,
+    // the WH auto-rig template) names it 'Spine2'. Without this mapping
+    // the chest track binds to nothing on ANY shipped model and every
+    // clip loses its chest motion. Name mapping only — no motion data
+    // is altered, and the mapping is the game's own naming convention.
+    const trackBone = bone === 'Chest' ? 'Spine2' : bone;
+    tracks.push(new THREE.QuaternionKeyframeTrack(`${trackBone}.quaternion`, times, values));
   }
 
   const clip = new THREE.AnimationClip(name, frameCount / fps, tracks);
@@ -394,6 +401,13 @@ export async function loadT3Clips(THREE, bankId = 'king') {
         rowData = {};
       }
     })());
+    // T3 reaction tables (hit-reaction wiring lane, 2026-10-24): the
+    // selection in fighter.js reads globalThis.WH_T3_REACTIONS. The
+    // throw lane loads them on demand; this fetch runs with the
+    // bank load so strikes have the tables at fight start even in
+    // a fight with no throw attempt. The global cache guard means
+    // whichever loader runs second is a no-op.
+    jobs.push(ensureT3Reactions().catch(() => null));
     // Decoded active window of every attack row (tools/anim/t3_hit_frames.py, lane D 2026-10-24):
     // { row: [active_first, active_last, stream_frames, attack_word, throw] } — fighter.js times the
     // clip on it and never plays a throw row for a strike (or a strike row for a throw).
@@ -533,6 +547,68 @@ export function getReactionClip(bankId, slot, THREE) {
 }
 /** Synchronous accessor for a loaded reaction pack (null if not loaded). */
 export function getReactionPack(bankId) { return _reactionPackCache[bankId] || null; }
+
+/* Strike-reaction playback adapter (hit-reaction lane, 2026-10-24).
+   The throw lane above owns the pack fetch and cache, so this
+   lane adds no second fetch: the scale reads the cached pack,
+   and the strike clip decodes fresh from the cached pack rows
+   (facing is re-checked at decode time, and the clip carries
+   its own loop/noRise flags, so the throw lane's cached clip
+   is never mutated). A slot no pack defines returns null and
+   the caller keeps its generic fallback (UNMAPPED, never guessed). */
+
+/** Anchor scale (mm -> rig metres) of an already-loaded pack, else null. */
+export function getT3ReactionPackScale(bankId) {
+  const rp = getReactionPack(bankId);
+  return rp && rp.pack && typeof rp.pack.anchor_mm_to_rig_m === 'number' ? rp.pack.anchor_mm_to_rig_m : null;
+}
+
+/** Decode one reaction slot into a bank-space THREE clip, or null.
+    noRise: set for air reactions (code 0x24) — the game's launch
+    physics owns the arc, so the clip must not lift the hips too. */
+export async function loadT3ReactionClip(THREE, bankId, slot, { noRise = false } = {}) {
+  if (!bankId || !T3_BANKS[bankId] || slot == null) return null;
+  await loadT3Clips(THREE, bankId); // skeleton + facing, cached after fight load
+  const rp = await loadReactionPack(THREE, bankId);
+  if (!rp || !rp.pack || !rp.pack.rows) return null;
+  const key = '0x' + (slot & 0xffff).toString(16);
+  const rec = rp.pack.rows[key];
+  if (!rec) return null; // UNMAPPED: slot planned but not baked in this pack
+  const data = decodePackRow(rp.pack, rec);
+  if (_t3facing[bankId] && _t3facing[bankId].turned) turnData(data);
+  const clip = jsonToClip('react:' + slot, data, THREE);
+  if (!clip) return null;
+  clip.userData.loop = false;
+  if (noRise) clip.userData.noRise = true;
+  return clip;
+}
+
+/** Fetch (once) and cache the parsed reactions.json tables.
+    The throw lane's loader sets the same global; whichever runs
+    first wins, and this one returns the cached tables after that,
+    so strikes have the tables at fight start even in a fight
+    with no throw attempt. */
+let _t3reactionsPromise = null;
+export function ensureT3Reactions() {
+  if (globalThis.WH_T3_REACTIONS) return Promise.resolve(globalThis.WH_T3_REACTIONS);
+  if (_t3reactionsPromise) return _t3reactionsPromise;
+  _t3reactionsPromise = (async () => {
+    try {
+      const anyBase = Object.values(T3_BANKS)[0] || 'assets/anim/t3/king_on_pantera_leoman/';
+      const base = anyBase.replace(/[^/]+\/$/, '');
+      const res = await fetch(base + 'reactions.json');
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      globalThis.WH_T3_REACTIONS = data;
+      return data;
+    } catch (e) {
+      console.warn('[WH-T3] reactions.json unavailable — hit reactions stay generic:', e.message || e);
+      _t3reactionsPromise = null;
+      return null;
+    }
+  })();
+  return _t3reactionsPromise;
+}
 
 /* ============================================================
    STRIKE PROFILE (lane D, 2026-10-24) — what a clip's own decoded
