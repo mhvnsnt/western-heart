@@ -86,7 +86,28 @@ export class StageBreaks {
     // damage and the surface FRACTURES into shards on the killing hit.
     this.destruction = new DestructionSystem();
     this._fractures = []; // {group, shards, mat} — live shard meshes
+    // GAP-FILL LANE 1 (2026-10-24): wall SPLAT record. The splat
+    // STATE machine lives in fighter.js (_physics detection,
+    // 'wallsplat' state, 3-hit drop in receiveHit); this module
+    // only records the latest splat and its visual shake, so the
+    // stage side can tell a splat apart from a break. A break
+    // supersedes a splat (clearSplat on every break path).
+    // PROPRIETARY NAME: NEEDS NAME (owner names it).
+    this.splat = null; // {side, x, t} | null
   }
+
+  /* Record a wall splat (called by fighter.js _physics when
+     knockback reaches an unbroken wall). Record-only: no banner
+     is added here — the splat's canon name is still NEEDS NAME,
+     so no user-facing label is invented for it. */
+  noteSplat(attacker, defender) {
+    if (!defender || !defender.root) return;
+    const x = defender.root.position.x;
+    this.splat = { side: Math.sign(x) || 1, x, t: 0 };
+    try { if (this.game.arena) this.game.arena.shake(0.3, 0.25); } catch (e) { /* arena optional */ }
+  }
+  clearSplat() { this.splat = null; }
+  get splatActive() { return !!this.splat; }
 
   /* Bind to a stage at match start. Resets all break state. */
   bindStage(stageDef, fx) {
@@ -132,6 +153,7 @@ export class StageBreaks {
     this._barriers.clear();
     this._zones.clear();
     this.group.clear();
+    this.splat = null;
     this.broken.clear();
     this.defs = [];
     this.groundY = 0;
@@ -351,6 +373,7 @@ export class StageBreaks {
   }
 
   _breakWall(def, id, attacker, defender, shards) {
+    this.clearSplat(); // break supersedes any recorded splat
     this.broken.add(id);
     const bar = this._barriers.get(id);
     if (bar) bar.visible = false;
@@ -392,6 +415,7 @@ export class StageBreaks {
   }
 
   _breakFloor(def, id, attacker, defender, shards) {
+    this.clearSplat();
     this.broken.add(id);
     const zone = this._zones.get(id);
     if (zone) zone.visible = false;
@@ -432,6 +456,7 @@ export class StageBreaks {
   }
 
   _breakBalcony(def, id, attacker, defender, shards) {
+    this.clearSplat();
     this.broken.add(id);
     const zone = this._zones.get(id);
     if (zone) zone.visible = false;
