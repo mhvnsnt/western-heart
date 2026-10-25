@@ -1,0 +1,77 @@
+[warning] [WH] No custom fighter found in either suite slot
+[log] [WH] stage loaded: SHRINE OF THE BLADE (shrine)
+[debug] [WH-loadperf] mark menu-interactive
+[warning] [WH] No custom fighter found in either suite slot
+[warning] [WHIntegration] physics unavailable: TypeError: Failed to resolve module specifier 'cannon-es'
+    at loadCannon (http://127.0.0.1:8797/game/js/physics.js:18:3)
+    at WHPhysics.init (http://127.0.0.1:8797/game/js/physics.js:33:21)
+    at http://127.0.0.1:8797/game/js/integration.js:72:13
+    at tryInit (http://127.0.0.1:8797/game/js/integration.js:32:24)
+    at async boot (http://127.0.0.1:8797/game/js/integration.js:70:3)
+[error] Failed to load resource: the server responded with a status of 404 (File not found)
+[warning] [WHIntegration] hitdetect unavailable: TypeError: Failed to resolve module specifier 'three-mesh-bvh'
+    at loadBVH (http://127.0.0.1:8797/game/js/hitdetect.js:30:3)
+    at WHHitDetect.init (http://127.0.0.1:8797/game/js/hitdetect.js:52:11)
+    at http://127.0.0.1:8797/game/js/integration.js:81:13
+    at tryInit (http://127.0.0.1:8797/game/js/integration.js:32:24)
+    at async boot (http://127.0.0.1:8797/game/js/integration.js:79:3)
+[info] [WHIntegration] springbones ready
+[warning] [WHIntegration] hitfx unavailable: TypeError: Failed to resolve module specifier 'three-nebula'
+    at loadNebula (http://127.0.0.1:8797/game/js/hitfx-nebula.js:29:3)
+    at WHHitFX.init (http://127.0.0.1:8797/game/js/hitfx-nebula.js:43:21)
+    at http://127.0.0.1:8797/game/js/integration.js:93:14
+    at tryInit (http://127.0.0.1:8797/game/js/integration.js:32:24)
+    at async boot (http://127.0.0.1:8797/game/js/integration.js:91:3)
+[info] [WHIntegration] efx ready
+[debug] [WH-loadperf] mark select-open
+[warning] [WH] No custom fighter found in either suite slot
+[warning] [WH] No custom fighter found in either suite slot
+[debug] [WH-loadperf] mark select-interactive
+[debug] [WH-loadperf] mark cards-preloaded
+[log] [WH] Real T3 movesets loaded for 36 fighters (7 T3 sources)
+[log] [WH] Moveset index: 128 fighters (full sets load per fight)
+[info] [WHIntegration] hits ready
+[info] [WHIntegration] surgefx ready
+[log] [WH] Moveset index: 128 fighters (full sets load per fight)
+[warning] [WHIntegration] labels unavailable: TypeError: Failed to resolve module specifier 'troika-three-text'
+    at loadTroika (http://127.0.0.1:8797/game/js/labels3d.js:16:3)
+    at WHLabels.init (http://127.0.0.1:8797/game/js/labels3d.js:28:11)
+    at http://127.0.0.1:8797/game/js/integration.js:124:13
+    at tryInit (http://127.0.0.1:8797/game/js/integration.js:32:24)
+    at async boot (http://127.0.0.1:8797/game/js/integration.js:122:3)
+[warning] [WHIntegration] camdirector unavailable: TypeError: Failed to resolve module specifier 'camera-controls'
+    at loadCC (http://127.0.0.1:8797/game/js/camdirector.js:20:3)
+    at WHCamDirector.init (http://127.0.0.1:8797/game/js/camdirector.js:37:23)
+    at http://127.0.0.1:8797/game/js/integration.js:132:13
+    at tryInit (http://127.0.0.1:8797/game/js/integration.js:32:24)
+    at async boot (http://127.0.0.1:8797/game/js/integration.js:129:3)
+[info] [WH music] now playing: Exhilarate — Kevin MacLeod (CC-BY-4.0)
+[info] [WHIntegration] lipsync ready
+[log] [WH-T3] bank 'king': 256 move-row clips
+[log] [WH-T3] bank 'king': loaded 278 real T3 clips
+[error] Failed to load resource: the server responded with a status of 404 (File not found)
+[info] [WHIntegration] grapple ready
+[info] [WHIntegration] Game.prototype hooks installed
+[info] [WHIntegration] SoulUrge FX hooks installed
+[info] [WHIntegration] Fighter urge-dash FX hook installed
+[log] [WH-T3] bank 'bryan': 160 move-row clips
+[log] [WH-T3] bank 'bryan': loaded 182 real T3 clips
+[log] [WH-T3] bank 'bryan': reaction pack loaded (317 slots)
+[log] [WH-T3] bank 'king': reaction pack loaded (568 slots)
+[debug] [WH-loadperf] mark show:hud
+[log] [WH] Fighter pantera: 22 real T3 actions from bank 'king' (retargeted onto pantera-leoman)
+[log] [WH] Fighter skull: 22 real T3 actions from bank 'bryan' (retargeted onto skull)
+[log] [WH] stage loaded: SHRINE OF THE BLADE (shrine)
+[info] [WHIntegration] 2 spring chain(s) on skull
+[error] Failed to load resource: the server responded with a status of 404 (File not found)
+[log] [WH-CS] catalogs merged: 7192 part entries
+[log] [WH-CS] pantera part attached: no-mercy:0x1171:body_parts/model_1171.obj at socket 'torso' (scale 0.01) tint #c0241c
+[warning] [WH-CS] pantera texture FAILED eye-classic-original: no material matched texture "King_Eye_D" / material "Modeleyes_Material003"
+[log] [WH-CS] STATE char=pantera profile_applied=[upper_body:no-mercy:0x1171:body_parts/model_1171.obj] skipped=[texture:eye-classic-original]
+[info] [WH music] now playing: Volatile Reaction — Kevin MacLeod (CC-BY-4.0)
+STATE 0 {"p1":{"id":"pantera","model":"pantera-leoman","st":"walk","atk":null,"hipsY":0.95,"headY":1.59,"t3":22,"cur":"t3_king_walkFwd@pantera-leoman"},"p2":{"id":"skull","model":"skull","st":"walk","atk":null,"hipsY":0.88,"headY":1.51,"t3":22,"cur":"t3_bryan_walkFwd@skull"},"round":"fight"}
+STATE 1 {"p1":{"id":"pantera","model":"pantera-leoman","st":"walk","atk":null,"hipsY":0.95,"headY":1.59,"t3":22,"cur":"t3_king_walkFwd@pantera-leoman"},"p2":{"id":"skull","model":"skull","st":"walk","atk":null,"hipsY":0.87,"headY":1.48,"t3":22,"cur":"t3_bryan_walkFwd@skull"},"round":"fight"}
+STATE 2 {"p1":{"id":"pantera","model":"pantera-leoman","st":"walk","atk":null,"hipsY":0.85,"headY":1.47,"t3":22,"cur":"t3_king_walkFwd@pantera-leoman"},"p2":{"id":"skull","model":"skull","st":"walk","atk":null,"hipsY":0.8,"headY":1.39,"t3":22,"cur":"t3_bryan_walkFwd@skull"},"round":"fight"}
+STATE 3 {"p1":{"id":"pantera","model":"pantera-leoman","st":"jump","atk":null,"hipsY":1.26,"headY":1.82,"t3":22,"cur":"t3_king_jumpFwd@pantera-leoman"},"p2":{"id":"skull","model":"skull","st":"walk","atk":null,"hipsY":0.87,"headY":1.48,"t3":22,"cur":"t3_bryan_walkFwd@skull"},"round":"fight"}
+STATE 4 {"p1":{"id":"pantera","model":"pantera-leoman","st":"jump","atk":null,"hipsY":1.96,"headY":2.56,"t3":22,"cur":"t3_king_jumpFwd@pantera-leoman"},"p2":{"id":"skull","model":"skull","st":"walk","atk":null,"hipsY":0.8,"headY":1.38,"t3":22,"cur":"t3_bryan_walkFwd@skull"},"round":"fight"}
+STATE 5 {"p1":{"id":"pantera","model":"pantera-leoman","st":"jump","atk":null,"hipsY":1.8,"headY":2.32,"t3":22,"cur":"t3_king_jumpFwd@pantera-leoman"},"p2":{"id":"skull","model":"skull","st":"attack","atk":"3,2,1,4","hipsY":0.9,"headY":1.49,"t3":23,"cur":"t3_bryan_row104@skull"},"round":"fight"}

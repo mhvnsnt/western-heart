@@ -69,7 +69,7 @@ if git cat-file -e "$C:repo/wip.patch" 2>/dev/null || [ -n "$(git ls-tree -r --n
 fi
 
 # 3. big downloads, in the background, only when missing
-if [ -n "$SCRATCH" ] && git cat-file -e "$C:manifest.json" 2>/dev/null; then
+if [ -n "$SCRATCH" ] && [ "${RESTORE_NO_DOWNLOAD:-0}" != 1 ] && git cat-file -e "$C:manifest.json" 2>/dev/null; then
   git cat-file blob "$C:manifest.json" >"$GD/restore-manifest.json"
   ( cd "$SCRATCH" && python3 - "$GD/restore-manifest.json" >>"$GD/restore-downloads.log" 2>&1 <<'PY'
 import json, os, subprocess, sys, hashlib, tarfile, tempfile

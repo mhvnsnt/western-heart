@@ -1,0 +1,57 @@
+{
+ "date": "2026-10-25",
+ "tool": "tools/moveset-merge/merge_sources.py",
+ "fighters": {
+  "aotsuki": {
+   "bases": {
+    "t8": [
+     "panda"
+    ],
+    "t7": [
+     "panda"
+    ],
+    "t3": [
+     "kuma"
+    ]
+   },
+   "why": "owner 2026-10-24: \"fix every character's move sets and stances per their character that they're based on\". AOTSUKI's canon base is Panda (game/js/roster-full.js base 'Panda'; roster/panda/CANON.md: Panda's moveset became AOTSUKI) but her file was built from Kuma's T8/T7 data (tekken_base auto-matched 'Kuma' rows; identical to gashadokuro.json). T8 + T7 Panda frame data are on disk (docs/t7t8-reference/frame-data-t8-full/panda.json, frame-data-t7/panda.json). T3 kuma stays: in Tekken 3 Panda IS Kuma's alternate on the same divmot11 bank (no separate Panda bank exists), logged in docs/anim/PROCEDURAL_AUDIT.md.",
+   "moves_before": 530,
+   "moves_after": 856,
+   "added": {
+    "t8": 132,
+    "t7": 194
+   },
+   "slots": 310,
+   "slots_by_priority": {
+    "t8": 132,
+    "t7": 106,
+    "t3": 46,
+    "curated/donor": 26
+   },
+   "previously_playable_inputs": 104,
+   "owner_excluded_inputs": []
+  },
+  "thor": {
+   "bases": {
+    "t7rbn": [
+     "Ganryu"
+    ]
+   },
+   "why": "owner 2026-10-24: \"fix every character's move sets and stances per their character that they're based on ... use Tekken 7\". THOR's canon base is Ganryu (game/js/roster-full.js base 'Ganryu'; roster/thor/CANON.md: built on Ganryu's sumo frame). Ganryu has no t7chicken or T8 file and no T3 bank; his T7 frame data is the rbnorway CSV set (teardown/community/tekken7/framedata/rbnorway/csv/Ganryu/, PR #859). His TTT2-doc moves (PR #945) and T3 Bryan proxy rows stay; Ganryu's T7 rows take the default inputs.",
+   "moves_before": 322,
+   "moves_after": 481,
+   "added": {
+    "t7rbn": 159
+   },
+   "slots": 203,
+   "slots_by_priority": {
+    "signature": 2,
+    "t7": 143,
+    "curated/donor": 58
+   },
+   "previously_playable_inputs": 91,
+   "owner_excluded_inputs": []
+  }
+ },
+ "failures": []
+}

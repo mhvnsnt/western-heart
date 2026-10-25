@@ -1,0 +1,1436 @@
+TAP version 13
+# Subtest: manager: today() matches the deterministic rotation
+ok 1 - manager: today() matches the deterministic rotation
+  ---
+  duration_ms: 1.968209
+  type: 'test'
+  ...
+# Subtest: manager: wins accumulate and complete
+ok 2 - manager: wins accumulate and complete
+  ---
+  duration_ms: 0.983371
+  type: 'test'
+  ...
+# Subtest: manager: damage and best-of-single-fight tracking
+ok 3 - manager: damage and best-of-single-fight tracking
+  ---
+  duration_ms: 0.347991
+  type: 'test'
+  ...
+# Subtest: manager: event multiplier boosts the matching type
+ok 4 - manager: event multiplier boosts the matching type
+  ---
+  duration_ms: 0.221382
+  type: 'test'
+  ...
+# Subtest: manager: mode clears complete mode_clear dailies
+ok 5 - manager: mode clears complete mode_clear dailies
+  ---
+  duration_ms: 0.247551
+  type: 'test'
+  ...
+# Subtest: manager: timeattack grade gate
+ok 6 - manager: timeattack grade gate
+  ---
+  duration_ms: 0.189819
+  type: 'test'
+  ...
+# Subtest: manager: claim grants the unlockable
+ok 7 - manager: claim grants the unlockable
+  ---
+  duration_ms: 0.676931
+  type: 'test'
+  ...
+# Subtest: manager: progress persists across instances (same day)
+ok 8 - manager: progress persists across instances (same day)
+  ---
+  duration_ms: 0.256188
+  type: 'test'
+  ...
+# Subtest: FIXED link welds two bodies: anchors converge, orientation locks
+ok 9 - FIXED link welds two bodies: anchors converge, orientation locks
+  ---
+  duration_ms: 57.83923
+  type: 'test'
+  ...
+# Subtest: SPHERICAL link holds position but leaves rotation free
+ok 10 - SPHERICAL link holds position but leaves rotation free
+  ---
+  duration_ms: 5.873722
+  type: 'test'
+  ...
+# Subtest: REVOLUTE link: hinge axis free, off-axis rotation killed
+ok 11 - REVOLUTE link: hinge axis free, off-axis rotation killed
+  ---
+  duration_ms: 26.498542
+  type: 'test'
+  ...
+# Subtest: ChronoEngine SPEED mode reaches target hinge speed
+ok 12 - ChronoEngine SPEED mode reaches target hinge speed
+  ---
+  duration_ms: 15.448919
+  type: 'test'
+  ...
+# Subtest: ChronoSpring pulls bodies toward rest length
+ok 13 - ChronoSpring pulls bodies toward rest length
+  ---
+  duration_ms: 5.811197
+  type: 'test'
+  ...
+# Subtest: torque node: hanging body reports weight as reaction force
+ok 14 - torque node: hanging body reports weight as reaction force
+  ---
+  duration_ms: 41.242149
+  type: 'test'
+  ...
+# Subtest: determinism: identical runs produce identical snapshots
+ok 15 - determinism: identical runs produce identical snapshots
+  ---
+  duration_ms: 44.964495
+  type: 'test'
+  ...
+# Subtest: MuscleStrain: sub-floor torque recovers, over-floor accumulates
+ok 16 - MuscleStrain: sub-floor torque recovers, over-floor accumulates
+  ---
+  duration_ms: 0.743932
+  type: 'test'
+  ...
+# Subtest: MuscleStrain: sustained progress taps; sustained 1.6x snaps
+ok 17 - MuscleStrain: sustained progress taps; sustained 1.6x snaps
+  ---
+  duration_ms: 0.574823
+  type: 'test'
+  ...
+# Subtest: MuscleStrain: defender escape torque reduces effective strain
+ok 18 - MuscleStrain: defender escape torque reduces effective strain
+  ---
+  duration_ms: 0.523843
+  type: 'test'
+  ...
+# Subtest: SubmissionChain: in-band torque advances steps, out-of-band bleeds dwell
+ok 19 - SubmissionChain: in-band torque advances steps, out-of-band bleeds dwell
+  ---
+  duration_ms: 0.253214
+  type: 'test'
+  ...
+# Subtest: SubmissionChain: defender escape input ends the chain
+ok 20 - SubmissionChain: defender escape input ends the chain
+  ---
+  duration_ms: 0.182621
+  type: 'test'
+  ...
+# Subtest: SubmissionChain: terminal step fires tap
+ok 21 - SubmissionChain: terminal step fires tap
+  ---
+  duration_ms: 0.082279
+  type: 'test'
+  ...
+# Subtest: GrappleRig: armbar runs entry→isolate→lock→tap
+ok 22 - GrappleRig: armbar runs entry→isolate→lock→tap
+  ---
+  duration_ms: 61.743279
+  type: 'test'
+  ...
+# Subtest: GrappleRig: all four chains reach tap
+ok 23 - GrappleRig: all four chains reach tap
+  ---
+  duration_ms: 194.236831
+  type: 'test'
+  ...
+# Subtest: GrappleRig: escape input during isolate ends the chain
+ok 24 - GrappleRig: escape input during isolate ends the chain
+  ---
+  duration_ms: 6.266074
+  type: 'test'
+  ...
+# Subtest: GrappleRig servo contract: null idle, targets live, null after reset
+ok 25 - GrappleRig servo contract: null idle, targets live, null after reset
+  ---
+  duration_ms: 0.693345
+  type: 'test'
+  ...
+# Subtest: ChronoGrapple facade exposes the rig API
+ok 26 - ChronoGrapple facade exposes the rig API
+  ---
+  duration_ms: 0.344068
+  type: 'test'
+  ...
+# Subtest: xpbd: pinned sheet drapes and stays stable
+    # Subtest: top row pinned, bottom hangs, no NaN/explosion
+    ok 1 - top row pinned, bottom hangs, no NaN/explosion
+      ---
+      duration_ms: 21.108647
+      type: 'test'
+      ...
+    1..1
+ok 27 - xpbd: pinned sheet drapes and stays stable
+  ---
+  duration_ms: 21.794478
+  type: 'suite'
+  ...
+# Subtest: xpbd: graph coloring invariant
+    # Subtest: no color group shares a particle
+    ok 1 - no color group shares a particle
+      ---
+      duration_ms: 0.612192
+      type: 'test'
+      ...
+    1..1
+ok 28 - xpbd: graph coloring invariant
+  ---
+  duration_ms: 0.729657
+  type: 'suite'
+  ...
+# Subtest: xpbd: compliance controls fabric stiffness
+    # Subtest: silk drapes deeper than leather under the same pin
+    ok 1 - silk drapes deeper than leather under the same pin
+      ---
+      duration_ms: 20.120109
+      type: 'test'
+      ...
+    1..1
+ok 29 - xpbd: compliance controls fabric stiffness
+  ---
+  duration_ms: 20.286414
+  type: 'suite'
+  ...
+# Subtest: topology: extractTopology
+    # Subtest: finds edges and adjacent-triangle hinges on a quad
+    ok 1 - finds edges and adjacent-triangle hinges on a quad
+      ---
+      duration_ms: 0.250713
+      type: 'test'
+      ...
+    1..1
+ok 30 - topology: extractTopology
+  ---
+  duration_ms: 0.337607
+  type: 'suite'
+  ...
+# Subtest: buildFromMesh: costume geometry
+    # Subtest: simulates a mesh, pins by test, masses from areas
+    ok 1 - simulates a mesh, pins by test, masses from areas
+      ---
+      duration_ms: 0.535917
+      type: 'test'
+      ...
+    # Subtest: rejects meshes over budget instead of decimating silently
+    ok 2 - rejects meshes over budget instead of decimating silently
+      ---
+      duration_ms: 0.470795
+      type: 'test'
+      ...
+    1..2
+ok 31 - buildFromMesh: costume geometry
+  ---
+  duration_ms: 1.371227
+  type: 'suite'
+  ...
+# Subtest: buildChain: hair
+    # Subtest: root pinned to anchor, tip hangs, strand stays linked
+    ok 1 - root pinned to anchor, tip hangs, strand stays linked
+      ---
+      duration_ms: 0.378437
+      type: 'test'
+      ...
+    1..1
+ok 32 - buildChain: hair
+  ---
+  duration_ms: 0.450161
+  type: 'suite'
+  ...
+# Subtest: colliders: spheres and capsules
+    # Subtest: sphere pushes particles out
+    ok 1 - sphere pushes particles out
+      ---
+      duration_ms: 0.664601
+      type: 'test'
+      ...
+    # Subtest: capsule pushes particles out
+    ok 2 - capsule pushes particles out
+      ---
+      duration_ms: 0.357296
+      type: 'test'
+      ...
+    1..2
+ok 33 - colliders: spheres and capsules
+  ---
+  duration_ms: 1.197141
+  type: 'suite'
+  ...
+# Subtest: adapters: writePositions / writeNormals
+    # Subtest: writes to BufferAttribute-shaped objects and raw arrays
+    ok 1 - writes to BufferAttribute-shaped objects and raw arrays
+      ---
+      duration_ms: 0.496927
+      type: 'test'
+      ...
+    1..1
+ok 34 - adapters: writePositions / writeNormals
+  ---
+  duration_ms: 0.558647
+  type: 'suite'
+  ...
+# Subtest: quality + backends
+    # Subtest: quality table sane; detectClothQuality phone-safe
+    ok 1 - quality table sane; detectClothQuality phone-safe
+      ---
+      duration_ms: 0.255981
+      type: 'test'
+      ...
+    # Subtest: cpu backend always available; webgpu probed honestly
+    ok 2 - cpu backend always available; webgpu probed honestly
+      ---
+      duration_ms: 0.101484
+      type: 'test'
+      ...
+    # Subtest: fabric presets cover the costume range
+    ok 3 - fabric presets cover the costume range
+      ---
+      duration_ms: 0.068132
+      type: 'test'
+      ...
+    1..3
+ok 35 - quality + backends
+  ---
+  duration_ms: 0.513908
+  type: 'suite'
+  ...
+# Subtest: mulberry32 is deterministic
+ok 36 - mulberry32 is deterministic
+  ---
+  duration_ms: 2.397837
+  type: 'test'
+  ...
+# Subtest: clipHalfPlane keeps the correct side
+ok 37 - clipHalfPlane keeps the correct side
+  ---
+  duration_ms: 0.349407
+  type: 'test'
+  ...
+# Subtest: voronoiCells: every cell contains its seed and tiles the bounds
+ok 38 - voronoiCells: every cell contains its seed and tiles the bounds
+  ---
+  duration_ms: 2.535618
+  type: 'test'
+  ...
+# Subtest: lloydRelax keeps seeds in bounds and converges-ish
+ok 39 - lloydRelax keeps seeds in bounds and converges-ish
+  ---
+  duration_ms: 0.754874
+  type: 'test'
+  ...
+# Subtest: fractureRect is deterministic for a fixed seed
+ok 40 - fractureRect is deterministic for a fixed seed
+  ---
+  duration_ms: 7.909613
+  type: 'test'
+  ...
+# Subtest: fractureRect conserves area and biases density at impact
+ok 41 - fractureRect conserves area and biases density at impact
+  ---
+  duration_ms: 2.222994
+  type: 'test'
+  ...
+# Subtest: DestructionSystem: damage accumulates, fracture fires once
+ok 42 - DestructionSystem: damage accumulates, fracture fires once
+  ---
+  duration_ms: 4.332732
+  type: 'test'
+  ...
+# Subtest: DestructionSystem: shards fly from impact, fall, rest, and die
+ok 43 - DestructionSystem: shards fly from impact, fall, rest, and die
+  ---
+  duration_ms: 1.243003
+  type: 'test'
+  ...
+# Subtest: DestructionSystem: floor shards fall along local -Z to the lower level
+ok 44 - DestructionSystem: floor shards fall along local -Z to the lower level
+  ---
+  duration_ms: 2.768184
+  type: 'test'
+  ...
+# Subtest: particles: quality table
+    # Subtest: all levels define instance caps, budgets, LOD, trails
+    ok 1 - all levels define instance caps, budgets, LOD, trails
+      ---
+      duration_ms: 0.610583
+      type: 'test'
+      ...
+    # Subtest: hexToRgb converts 0xRRGGBB to float channels
+    ok 2 - hexToRgb converts 0xRRGGBB to float channels
+      ---
+      duration_ms: 0.912747
+      type: 'test'
+      ...
+    1..2
+ok 45 - particles: quality table
+  ---
+  duration_ms: 2.456018
+  type: 'suite'
+  ...
+# Subtest: particles: detectQuality
+    # Subtest: stored override wins
+    ok 1 - stored override wins
+      ---
+      duration_ms: 0.42901
+      type: 'test'
+      ...
+    # Subtest: phones and low-core devices get low
+    ok 2 - phones and low-core devices get low
+      ---
+      duration_ms: 0.262888
+      type: 'test'
+      ...
+    # Subtest: desktop defaults to medium
+    ok 3 - desktop defaults to medium
+      ---
+      duration_ms: 0.10614
+      type: 'test'
+      ...
+    1..3
+ok 46 - particles: detectQuality
+  ---
+  duration_ms: 0.99261
+  type: 'suite'
+  ...
+# Subtest: hit-effects: kind routing
+    # Subtest: kindForScale thresholds match WHHitFX
+    ok 1 - kindForScale thresholds match WHHitFX
+      ---
+      duration_ms: 0.269254
+      type: 'test'
+      ...
+    # Subtest: ko plays blow + light at high priority
+    ok 2 - ko plays blow + light at high priority
+      ---
+      duration_ms: 0.642079
+      type: 'test'
+      ...
+    # Subtest: heavy layers toon-hit + light; impact plays toon-hit
+    ok 3 - heavy layers toon-hit + light; impact plays toon-hit
+      ---
+      duration_ms: 0.277769
+      type: 'test'
+      ...
+    # Subtest: block plays light; dust/surge go to the nebula fallback
+    ok 4 - block plays light; dust/surge go to the nebula fallback
+      ---
+      duration_ms: 0.414504
+      type: 'test'
+      ...
+    # Subtest: preloads the four combat effects
+    ok 5 - preloads the four combat effects
+      ---
+      duration_ms: 1.954316
+      type: 'test'
+      ...
+    # Subtest: falls back fully when Effekseer is unavailable
+    ok 6 - falls back fully when Effekseer is unavailable
+      ---
+      duration_ms: 0.137863
+      type: 'test'
+      ...
+    1..6
+ok 47 - hit-effects: kind routing
+  ---
+  duration_ms: 4.055039
+  type: 'suite'
+  ...
+# Subtest: hit-effects: kick wind trails
+    # Subtest: disabled on low quality, on for medium/high
+    ok 1 - disabled on low quality, on for medium/high
+      ---
+      duration_ms: 0.292081
+      type: 'test'
+      ...
+    1..1
+ok 48 - hit-effects: kick wind trails
+  ---
+  duration_ms: 0.344563
+  type: 'suite'
+  ...
+# Subtest: soulurge-fx: event routing
+    # Subtest: no-op when Effekseer unavailable
+    ok 1 - no-op when Effekseer unavailable
+      ---
+      duration_ms: 0.202915
+      type: 'test'
+      ...
+    # Subtest: activate bursts + starts aura; expire clears it
+    ok 2 - activate bursts + starts aura; expire clears it
+      ---
+      duration_ms: 0.224258
+      type: 'test'
+      ...
+    # Subtest: smash and dash play their bursts
+    ok 3 - smash and dash play their bursts
+      ---
+      duration_ms: 0.1852
+      type: 'test'
+      ...
+    1..3
+ok 49 - soulurge-fx: event routing
+  ---
+  duration_ms: 0.84448
+  type: 'suite'
+  ...
+# Subtest: every roster fighter's own moveset file is actually loaded (or a documented gap)
+ok 50 - every roster fighter's own moveset file is actually loaded (or a documented gap)
+  ---
+  duration_ms: 4.092609
+  type: 'test'
+  ...
+# Subtest: every transformation target resolves to a MODEL_URLS key
+ok 51 - every transformation target resolves to a MODEL_URLS key
+  ---
+  duration_ms: 0.4954
+  type: 'test'
+  ...
+# Subtest: burger form keys land on the canon attire files (ATTIRE-SLOTS.md)
+ok 52 - burger form keys land on the canon attire files (ATTIRE-SLOTS.md)
+  ---
+  duration_ms: 0.221229
+  type: 'test'
+  ...
+# Subtest: newly wired attire ladders keep the current default and resolve every variant
+ok 53 - newly wired attire ladders keep the current default and resolve every variant
+  ---
+  duration_ms: 0.275048
+  type: 'test'
+  ...
+# fighter-depth: 43 passed, 0 failed
+# Subtest: game/tests/fighter-depth.test.mjs
+ok 7 - game/tests/fighter-depth.test.mjs
+  ---
+  duration_ms: 66.928065
+  type: 'test'
+  ...
+# Subtest: AIController: boots with delay + opponent model + MCTS at high difficulty
+ok 55 - AIController: boots with delay + opponent model + MCTS at high difficulty
+  ---
+  duration_ms: 1.231453
+  type: 'test'
+  ...
+# Subtest: AIController: rookie gets 15f delay and heuristic-only brain
+ok 56 - AIController: rookie gets 15f delay and heuristic-only brain
+  ---
+  duration_ms: 0.193317
+  type: 'test'
+  ...
+# Subtest: AIController: update() runs many ticks without throwing
+ok 57 - AIController: update() runs many ticks without throwing
+  ---
+  duration_ms: 3.941985
+  type: 'test'
+  ...
+# Subtest: AIController: observes the foe fastest button and guard height
+ok 58 - AIController: observes the foe fastest button and guard height
+  ---
+  duration_ms: 0.344583
+  type: 'test'
+  ...
+# Subtest: AIController: foeStartupFrames reaches the brains in FRAMES
+ok 59 - AIController: foeStartupFrames reaches the brains in FRAMES
+  ---
+  duration_ms: 0.153686
+  type: 'test'
+  ...
+# Subtest: AIController: whiff punish uses the frame window, not a random draw
+ok 60 - AIController: whiff punish uses the frame window, not a random draw
+  ---
+  duration_ms: 0.3523
+  type: 'test'
+  ...
+# Subtest: AIController: _smartAttack falls back to limbs when no moveset loaded
+ok 61 - AIController: _smartAttack falls back to limbs when no moveset loaded
+  ---
+  duration_ms: 1.025684
+  type: 'test'
+  ...
+# Subtest: secsToFrames / framesToSecs round-trip at 60fps
+ok 62 - secsToFrames / framesToSecs round-trip at 60fps
+  ---
+  duration_ms: 1.001642
+  type: 'test'
+  ...
+# Subtest: startupFramesOf: seconds become frames, frames pass through
+ok 63 - startupFramesOf: seconds become frames, frames pass through
+  ---
+  duration_ms: 0.237935
+  type: 'test'
+  ...
+# Subtest: parseAdvantage reads T7 strings
+ok 64 - parseAdvantage reads T7 strings
+  ---
+  duration_ms: 0.431928
+  type: 'test'
+  ...
+# Subtest: frameMove normalizes a T7-sourced move record
+ok 65 - frameMove normalizes a T7-sourced move record
+  ---
+  duration_ms: 0.552415
+  type: 'test'
+  ...
+# Subtest: frameMove flags lows from hit level
+ok 66 - frameMove flags lows from hit level
+  ---
+  duration_ms: 0.382259
+  type: 'test'
+  ...
+# Subtest: bestPunish: max damage that fits the window, 1f margin
+ok 67 - bestPunish: max damage that fits the window, 1f margin
+  ---
+  duration_ms: 0.318831
+  type: 'test'
+  ...
+# Subtest: frameTrapWins: plus frames beat their fastest button
+ok 68 - frameTrapWins: plus frames beat their fastest button
+  ---
+  duration_ms: 0.183819
+  type: 'test'
+  ...
+# Subtest: ReactionDelay: brains see the N-frames-ago snapshot
+ok 69 - ReactionDelay: brains see the N-frames-ago snapshot
+  ---
+  duration_ms: 0.192148
+  type: 'test'
+  ...
+# Subtest: ReactionDelay: before the buffer fills, oldest held (never null)
+ok 70 - ReactionDelay: before the buffer fills, oldest held (never null)
+  ---
+  duration_ms: 0.382421
+  type: 'test'
+  ...
+# Subtest: ReactionDelay: zero delay sees live
+ok 71 - ReactionDelay: zero delay sees live
+  ---
+  duration_ms: 0.316957
+  type: 'test'
+  ...
+# Subtest: delayFramesForDifficulty: 15f rookie -> 8f boss, humanlike floor
+ok 72 - delayFramesForDifficulty: 15f rookie -> 8f boss, humanlike floor
+  ---
+  duration_ms: 0.205479
+  type: 'test'
+  ...
+# Subtest: OpponentModel: learns the foe habit live
+ok 73 - OpponentModel: learns the foe habit live
+  ---
+  duration_ms: 0.307024
+  type: 'test'
+  ...
+# Subtest: OpponentModel: Laplace smoothing keeps unseen actions possible
+ok 74 - OpponentModel: Laplace smoothing keeps unseen actions possible
+  ---
+  duration_ms: 0.117442
+  type: 'test'
+  ...
+# Subtest: OpponentModel: learns the foe fastest button
+ok 75 - OpponentModel: learns the foe fastest button
+  ---
+  duration_ms: 1.231217
+  type: 'test'
+  ...
+# Subtest: OpponentModel: situations are independent
+ok 76 - OpponentModel: situations are independent
+  ---
+  duration_ms: 0.190204
+  type: 'test'
+  ...
+# Subtest: mctsRolloutsForDifficulty: heuristic-only below 0.35, scales up
+ok 77 - mctsRolloutsForDifficulty: heuristic-only below 0.35, scales up
+  ---
+  duration_ms: 0.080891
+  type: 'test'
+  ...
+# Subtest: MCTS: returns null with no candidates
+ok 78 - MCTS: returns null with no candidates
+  ---
+  duration_ms: 0.251666
+  type: 'test'
+  ...
+# Subtest: MCTS: single candidate short-circuits
+ok 79 - MCTS: single candidate short-circuits
+  ---
+  duration_ms: 0.104863
+  type: 'test'
+  ...
+# Subtest: MCTS: punishes a chronic low-blocker with a mid
+ok 80 - MCTS: punishes a chronic low-blocker with a mid
+  ---
+  duration_ms: 0.461476
+  type: 'test'
+  ...
+# Subtest: MCTS: respects the time budget
+ok 81 - MCTS: respects the time budget
+  ---
+  duration_ms: 0.218639
+  type: 'test'
+  ...
+# Subtest: MCTS: deterministic given the same rng stream
+ok 82 - MCTS: deterministic given the same rng stream
+  ---
+  duration_ms: 0.258829
+  type: 'test'
+  ...
+# Subtest: burst spawns the requested count inside the particle budget
+ok 83 - burst spawns the requested count inside the particle budget
+  ---
+  duration_ms: 1.809334
+  type: 'test'
+  ...
+# Subtest: burst beyond budget recycles instead of growing unbounded
+ok 84 - burst beyond budget recycles instead of growing unbounded
+  ---
+  duration_ms: 17.030543
+  type: 'test'
+  ...
+# Subtest: droplet breakup conserves volume
+ok 85 - droplet breakup conserves volume
+  ---
+  duration_ms: 0.665062
+  type: 'test'
+  ...
+# Subtest: slow ground impact sticks and emits a stamp
+ok 86 - slow ground impact sticks and emits a stamp
+  ---
+  duration_ms: 0.412992
+  type: 'test'
+  ...
+# Subtest: fast ground impact bounces instead of sticking
+ok 87 - fast ground impact bounces instead of sticking
+  ---
+  duration_ms: 0.230619
+  type: 'test'
+  ...
+# Subtest: higher viscosity damps motion faster (variable-viscosity dial)
+ok 88 - higher viscosity damps motion faster (variable-viscosity dial)
+  ---
+  duration_ms: 18.958633
+  type: 'test'
+  ...
+# Subtest: same seed gives identical bursts (determinism)
+ok 89 - same seed gives identical bursts (determinism)
+  ---
+  duration_ms: 2.851069
+  type: 'test'
+  ...
+# Subtest: slow impact on a fighter sphere coats, slides and drips
+ok 90 - slow impact on a fighter sphere coats, slides and drips
+  ---
+  duration_ms: 1.135412
+  type: 'test'
+  ...
+# Subtest: update() with no particles is a safe no-op
+ok 91 - update() with no particles is a safe no-op
+  ---
+  duration_ms: 0.948258
+  type: 'test'
+  ...
+# Subtest: presets carry the viscosity dial and colors
+ok 92 - presets carry the viscosity dial and colors
+  ---
+  duration_ms: 1.398012
+  type: 'test'
+  ...
+# Subtest: rng32 is deterministic
+ok 93 - rng32 is deterministic
+  ---
+  duration_ms: 0.31459
+  type: 'test'
+  ...
+# Subtest: worldToUV maps rect corners and center
+ok 94 - worldToUV maps rect corners and center
+  ---
+  duration_ms: 0.411282
+  type: 'test'
+  ...
+# Subtest: uvToWorld round-trips worldToUV
+ok 95 - uvToWorld round-trips worldToUV
+  ---
+  duration_ms: 0.229698
+  type: 'test'
+  ...
+# Subtest: computeSplat is deterministic and irregular
+ok 96 - computeSplat is deterministic and irregular
+  ---
+  duration_ms: 0.704609
+  type: 'test'
+  ...
+# Subtest: SplatLayer stamps inside the rect and records canvas work
+ok 97 - SplatLayer stamps inside the rect and records canvas work
+  ---
+  duration_ms: 0.666122
+  type: 'test'
+  ...
+# Subtest: uploadThrottled rate-limits GPU uploads
+ok 98 - uploadThrottled rate-limits GPU uploads
+  ---
+  duration_ms: 0.587279
+  type: 'test'
+  ...
+# Subtest: clear() resets stamps and wipes the canvas
+ok 99 - clear() resets stamps and wipes the canvas
+  ---
+  duration_ms: 0.273908
+  type: 'test'
+  ...
+# Subtest: mulberry32 is deterministic
+ok 100 - mulberry32 is deterministic
+  ---
+  duration_ms: 0.112058
+  type: 'test'
+  ...
+# Subtest: profile defaults
+ok 101 - profile defaults
+  ---
+  duration_ms: 1.206522
+  type: 'test'
+  ...
+# Subtest: awardMatch: win + perfect economy
+ok 102 - awardMatch: win + perfect economy
+  ---
+  duration_ms: 0.445776
+  type: 'test'
+  ...
+# Subtest: awardMatch: loss still pays (Tekken rule)
+ok 103 - awardMatch: loss still pays (Tekken rule)
+  ---
+  duration_ms: 0.166839
+  type: 'test'
+  ...
+# Subtest: streak title unlock
+ok 104 - streak title unlock
+  ---
+  duration_ms: 0.237906
+  type: 'test'
+  ...
+# Subtest: openCache shard ranges + overspend guard
+ok 105 - openCache shard ranges + overspend guard
+  ---
+  duration_ms: 0.294187
+  type: 'test'
+  ...
+# Subtest: input.js _remapCode: true rebind semantics
+ok 106 - input.js _remapCode: true rebind semantics
+  ---
+  duration_ms: 0.256749
+  type: 'test'
+  ...
+# Subtest: WHAssists.translate: throw-break assist
+ok 107 - WHAssists.translate: throw-break assist
+  ---
+  duration_ms: 0.248709
+  type: 'test'
+  ...
+# Subtest: WHColorblind.apply sets data-cb
+ok 108 - WHColorblind.apply sets data-cb
+  ---
+  duration_ms: 1.288392
+  type: 'test'
+  ...
+# Subtest: every fighter with a wired own model resolves to their OWN model on both resolution paths
+not ok 109 - every fighter with a wired own model resolves to their OWN model on both resolution paths
+  ---
+  duration_ms: 2.755834
+  type: 'test'
+  location: '/home/user/western-heart/game/tests/model-key-guard.test.mjs:441:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    wrong-character model resolutions:
+    cyborgx: player/select path resolves 'cape-jones-attire1' (not their own)
+    ryuji: player/select path resolves 'null' (not their own)
+    ryuji: enemy/raw path resolves 'null' (not their own)
+    + actual - expected
+    
+    + [
+    +   "cyborgx: player/select path resolves 'cape-jones-attire1' (not their own)",
+    +   "ryuji: player/select path resolves 'null' (not their own)",
+    +   "ryuji: enemy/raw path resolves 'null' (not their own)"
+    + ]
+    - []
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0: "cyborgx: player/select path resolves 'cape-jones-attire1' (not their own)"
+    1: "ryuji: player/select path resolves 'null' (not their own)"
+    2: "ryuji: enemy/raw path resolves 'null' (not their own)"
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/user/western-heart/game/tests/model-key-guard.test.mjs:452:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: declared-base riders stay on their declared base (do not "fix" the souls onto wrong files)
+ok 110 - declared-base riders stay on their declared base (do not "fix" the souls onto wrong files)
+  ---
+  duration_ms: 0.314934
+  type: 'test'
+  ...
+# Subtest: every resolved model URL points at a file that exists in the repo
+ok 111 - every resolved model URL points at a file that exists in the repo
+  ---
+  duration_ms: 3.358882
+  type: 'test'
+  ...
+# Subtest: library loads: 10 moves, phases validated
+ok 112 - library loads: 10 moves, phases validated
+  ---
+  duration_ms: 2.436661
+  type: 'test'
+  ...
+# Subtest: defineMove validates shape
+ok 113 - defineMove validates shape
+  ---
+  duration_ms: 0.418011
+  type: 'test'
+  ...
+# Subtest: findMelds: hurricanrana@payload offers piledriver + powerbomb (chains)
+ok 114 - findMelds: hurricanrana@payload offers piledriver + powerbomb (chains)
+  ---
+  duration_ms: 3.086898
+  type: 'test'
+  ...
+# Subtest: findMelds: empty when no window / unknown move / roles mismatch
+ok 115 - findMelds: empty when no window / unknown move / roles mismatch
+  ---
+  duration_ms: 0.61909
+  type: 'test'
+  ...
+# Subtest: blendCost: victim teleport is rejected (Infinity)
+ok 116 - blendCost: victim teleport is rejected (Infinity)
+  ---
+  duration_ms: 0.379714
+  type: 'test'
+  ...
+# Subtest: meld: hybrid concatenates phases, blends damage, caches
+ok 117 - meld: hybrid concatenates phases, blends damage, caches
+  ---
+  duration_ms: 0.589378
+  type: 'test'
+  ...
+# Subtest: counter meld flips the roles
+ok 118 - counter meld flips the roles
+  ---
+  duration_ms: 0.331612
+  type: 'test'
+  ...
+# Subtest: phaseAtProgress maps the throw timeline
+ok 119 - phaseAtProgress maps the throw timeline
+  ---
+  duration_ms: 0.442442
+  type: 'test'
+  ...
+# Subtest: grapple chain: no engine -> mid-throw intent stays null (backwards compat)
+ok 120 - grapple chain: no engine -> mid-throw intent stays null (backwards compat)
+  ---
+  duration_ms: 0.499152
+  type: 'test'
+  ...
+# Subtest: grapple chain: THROW + open window -> chain-meld intent with the hybrid
+ok 121 - grapple chain: THROW + open window -> chain-meld intent with the hybrid
+  ---
+  duration_ms: 0.969453
+  type: 'test'
+  ...
+# Subtest: grapple chain: meldBias 0 never melds; unknown throwMove is safe
+ok 122 - grapple chain: meldBias 0 never melds; unknown throwMove is safe
+  ---
+  duration_ms: 0.443354
+  type: 'test'
+  ...
+# Subtest: GRAPPLE_INTENTS carries CHAIN_MELD
+ok 123 - GRAPPLE_INTENTS carries CHAIN_MELD
+  ---
+  duration_ms: 0.078615
+  type: 'test'
+  ...
+# Subtest: tournament: seed order is standard 1vN placement
+ok 124 - tournament: seed order is standard 1vN placement
+  ---
+  duration_ms: 1.403117
+  type: 'test'
+  ...
+# Subtest: tournament: 4-fighter bracket builds semifinals + final
+ok 125 - tournament: 4-fighter bracket builds semifinals + final
+  ---
+  duration_ms: 0.626044
+  type: 'test'
+  ...
+# Subtest: tournament: winners advance, champion crowned
+ok 126 - tournament: winners advance, champion crowned
+  ---
+  duration_ms: 0.288676
+  type: 'test'
+  ...
+# Subtest: tournament: unknown winner rejected, double-report ignored
+ok 127 - tournament: unknown winner rejected, double-report ignored
+  ---
+  duration_ms: 0.245977
+  type: 'test'
+  ...
+# Subtest: tournament: short field pads with CPU, BYEs walk over
+ok 128 - tournament: short field pads with CPU, BYEs walk over
+  ---
+  duration_ms: 0.293736
+  type: 'test'
+  ...
+# Subtest: tournament: 8 and 16 sizes, full playthrough
+ok 129 - tournament: 8 and 16 sizes, full playthrough
+  ---
+  duration_ms: 0.603989
+  type: 'test'
+  ...
+# Subtest: tournament: bracket view groups rounds for rendering
+ok 130 - tournament: bracket view groups rounds for rendering
+  ---
+  duration_ms: 0.233257
+  type: 'test'
+  ...
+# Subtest: tournament: bracket JSON is serializable (lobby broadcast)
+ok 131 - tournament: bracket JSON is serializable (lobby broadcast)
+  ---
+  duration_ms: 0.164423
+  type: 'test'
+  ...
+# Subtest: challenges: catalog is well-formed
+ok 132 - challenges: catalog is well-formed
+  ---
+  duration_ms: 0.444921
+  type: 'test'
+  ...
+# Subtest: challenges: daily rotation is deterministic per date
+ok 133 - challenges: daily rotation is deterministic per date
+  ---
+  duration_ms: 1.181241
+  type: 'test'
+  ...
+# Subtest: challenges: weekly event is stable within a week
+ok 134 - challenges: weekly event is stable within a week
+  ---
+  duration_ms: 0.390532
+  type: 'test'
+  ...
+# Subtest: challenges: todayStr format
+ok 135 - challenges: todayStr format
+  ---
+  duration_ms: 0.41472
+  type: 'test'
+  ...
+# Subtest: cardUrl uses the portrait path the card DOM already renders
+ok 136 - cardUrl uses the portrait path the card DOM already renders
+  ---
+  duration_ms: 0.667067
+  type: 'test'
+  ...
+# Subtest: preloadCards resolves always, counts loaded/failed, never rejects on missing
+ok 137 - preloadCards resolves always, counts loaded/failed, never rejects on missing
+  ---
+  duration_ms: 4.99099
+  type: 'test'
+  ...
+# Subtest: preloadCards dedups ids and second warm is free (cache hit, no new Image)
+ok 138 - preloadCards dedups ids and second warm is free (cache hit, no new Image)
+  ---
+  duration_ms: 0.779424
+  type: 'test'
+  ...
+# Subtest: warmSelect returns the preload result and records it for loadperf
+ok 139 - warmSelect returns the preload result and records it for loadperf
+  ---
+  duration_ms: 2.614804
+  type: 'test'
+  ...
+# Subtest: warmFight prefetches exactly the deduped ids passed — never the roster
+ok 140 - warmFight prefetches exactly the deduped ids passed — never the roster
+  ---
+  duration_ms: 0.816365
+  type: 'test'
+  ...
+# Subtest: wiring guard: select-screen calls warmSelect + warmLockedFighters, main calls it on stage
+ok 141 - wiring guard: select-screen calls warmSelect + warmLockedFighters, main calls it on stage
+  ---
+  duration_ms: 0.526034
+  type: 'test'
+  ...
+# [WH] stage break: wall (P2 side) — bounds now ±12.9
+# [WH] stage break: floor at (0,0) — dropped to y=-6
+# Subtest: rage threshold: <=25% hp, unspent, alive
+ok 142 - rage threshold: <=25% hp, unspent, alive
+  ---
+  duration_ms: 0.851504
+  type: 'test'
+  ...
+# Subtest: ensureRageMoves synthesizes art + drive from real data
+ok 143 - ensureRageMoves synthesizes art + drive from real data
+  ---
+  duration_ms: 0.444803
+  type: 'test'
+  ...
+# Subtest: rage inputs resolve: 1+2 -> R.1+2, 3+4 -> RD.3+4 while raging
+not ok 144 - rage inputs resolve: 1+2 -> R.1+2, 3+4 -> RD.3+4 while raging
+  ---
+  duration_ms: 2.191177
+  type: 'test'
+  location: '/home/user/western-heart/game/tests/stagerage.test.mjs:132:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    null !== 'RD.3+4'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'RD.3+4'
+  actual: ~
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/user/western-heart/game/tests/stagerage.test.mjs:135:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: RageSystem: announce at threshold, clear when healed/spent
+ok 145 - RageSystem: announce at threshold, clear when healed/spent
+  ---
+  duration_ms: 0.866261
+  type: 'test'
+  ...
+# Subtest: RageSystem.onHitKO: slow-mo on match-deciding and rage-art KOs only
+ok 146 - RageSystem.onHitKO: slow-mo on match-deciding and rage-art KOs only
+  ---
+  duration_ms: 0.203424
+  type: 'test'
+  ...
+# Subtest: ensureUrgeMoves: burst + smash + engager flag
+ok 147 - ensureUrgeMoves: burst + smash + engager flag
+  ---
+  duration_ms: 0.370645
+  type: 'test'
+  ...
+# Subtest: urge inputs: 2+3 -> UB.2+3 fresh, US.2+3 while urging
+not ok 148 - urge inputs: 2+3 -> UB.2+3 fresh, US.2+3 while urging
+  ---
+  duration_ms: 0.692819
+  type: 'test'
+  location: '/home/user/western-heart/game/tests/stagerage.test.mjs:192:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    null !== 'UB.2+3'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'UB.2+3'
+  actual: ~
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///home/user/western-heart/game/tests/stagerage.test.mjs:194:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: SoulUrge: activate, timer pause on opponent hit, expiry, spendAll
+ok 149 - SoulUrge: activate, timer pause on opponent hit, expiry, spendAll
+  ---
+  duration_ms: 0.393895
+  type: 'test'
+  ...
+# Subtest: StageBreaks: wall break on heavy slam at the bound
+ok 150 - StageBreaks: wall break on heavy slam at the bound
+  ---
+  duration_ms: 7.978463
+  type: 'test'
+  ...
+# Subtest: StageBreaks: light hits never break walls
+ok 151 - StageBreaks: light hits never break walls
+  ---
+  duration_ms: 0.441837
+  type: 'test'
+  ...
+# Subtest: StageBreaks: floor break drops the level on a slam in the zone
+ok 152 - StageBreaks: floor break drops the level on a slam in the zone
+  ---
+  duration_ms: 2.154012
+  type: 'test'
+  ...
+# Subtest: SoulUrge.onHit: burst activates (1 pip/10s), engager gives 2 pips + heal, smash spends all
+ok 153 - SoulUrge.onHit: burst activates (1 pip/10s), engager gives 2 pips + heal, smash spends all
+  ---
+  duration_ms: 0.354918
+  type: 'test'
+  ...
+# Subtest: SoulUrge.onHit: engager on a fresh fighter heals + dashes in
+ok 154 - SoulUrge.onHit: engager on a fresh fighter heals + dashes in
+  ---
+  duration_ms: 0.110761
+  type: 'test'
+  ...
+# Subtest: SoulUrge.spendPip: urge dash costs exactly one pip
+ok 155 - SoulUrge.spendPip: urge dash costs exactly one pip
+  ---
+  duration_ms: 0.075771
+  type: 'test'
+  ...
+# Subtest: RageSystem.slowMoScale: 0.12x while the clock runs, 1x after
+ok 156 - RageSystem.slowMoScale: 0.12x while the clock runs, 1x after
+  ---
+  duration_ms: 0.080977
+  type: 'test'
+  ...
+# Subtest: vskillDispatch: blockstun + 50 souls -> vreversal
+ok 157 - vskillDispatch: blockstun + 50 souls -> vreversal
+  ---
+  duration_ms: 1.035582
+  type: 'test'
+  ...
+# Subtest: vskillDispatch: blockstun but poor -> vskill (tryVSkill will fail gracefully)
+ok 158 - vskillDispatch: blockstun but poor -> vskill (tryVSkill will fail gracefully)
+  ---
+  duration_ms: 0.250236
+  type: 'test'
+  ...
+# Subtest: vskillDispatch: blocking without stun is not a reversal
+ok 159 - vskillDispatch: blocking without stun is not a reversal
+  ---
+  duration_ms: 0.142149
+  type: 'test'
+  ...
+# Subtest: vskillDispatch: full meter in neutral -> vtrigger
+ok 160 - vskillDispatch: full meter in neutral -> vtrigger
+  ---
+  duration_ms: 0.094161
+  type: 'test'
+  ...
+# Subtest: vskillDispatch: neutral, partial meter -> vskill
+ok 161 - vskillDispatch: neutral, partial meter -> vskill
+  ---
+  duration_ms: 0.095479
+  type: 'test'
+  ...
+# Subtest: vskillDispatch: vreversal wins over vtrigger while pressured
+ok 162 - vskillDispatch: vreversal wins over vtrigger while pressured
+  ---
+  duration_ms: 0.091697
+  type: 'test'
+  ...
+# Subtest: V tuning: trigger costs the full bar, reversal half
+ok 163 - V tuning: trigger costs the full bar, reversal half
+  ---
+  duration_ms: 0.24107
+  type: 'test'
+  ...
+# Subtest: vskillFor: every fighter gets a skill, default when unlisted
+ok 164 - vskillFor: every fighter gets a skill, default when unlisted
+  ---
+  duration_ms: 0.187076
+  type: 'test'
+  ...
+# Subtest: vskillFor: per-character kits differ (identity, not wallpaper)
+ok 165 - vskillFor: per-character kits differ (identity, not wallpaper)
+  ---
+  duration_ms: 0.314518
+  type: 'test'
+  ...
+# Subtest: vtriggerEnhance: EX skill hits harder and gains armor
+ok 166 - vtriggerEnhance: EX skill hits harder and gains armor
+  ---
+  duration_ms: 0.476537
+  type: 'test'
+  ...
+# Subtest: vreversalMove: a real guard-cancel counter template
+ok 167 - vreversalMove: a real guard-cancel counter template
+  ---
+  duration_ms: 0.236504
+  type: 'test'
+  ...
+# Subtest: vshiftTap: double-tap block window
+ok 168 - vshiftTap: double-tap block window
+  ---
+  duration_ms: 0.10455
+  type: 'test'
+  ...
+# Subtest: vshiftVelocity: backwards, covers SHIFT_BACK_DIST in SHIFT_DURATION
+ok 169 - vshiftVelocity: backwards, covers SHIFT_BACK_DIST in SHIFT_DURATION
+  ---
+  duration_ms: 0.155077
+  type: 'test'
+  ...
+# Subtest: V-Shift Break: window + multiplier sane
+ok 170 - V-Shift Break: window + multiplier sane
+  ---
+  duration_ms: 0.078726
+  type: 'test'
+  ...
+# Subtest: V-Skill parry: window + rewards sane
+ok 171 - V-Skill parry: window + rewards sane
+  ---
+  duration_ms: 0.050656
+  type: 'test'
+  ...
+# Subtest: brain boots in ground/neutral
+ok 172 - brain boots in ground/neutral
+  ---
+  duration_ms: 1.573258
+  type: 'test'
+  ...
+# Subtest: brain: foe attacking in range -> block (reaction 1, rolls pass)
+ok 173 - brain: foe attacking in range -> block (reaction 1, rolls pass)
+  ---
+  duration_ms: 0.681434
+  type: 'test'
+  ...
+# Subtest: brain: no threat, rolls fail -> neutral spacing
+ok 174 - brain: no threat, rolls fail -> neutral spacing
+  ---
+  duration_ms: 0.209367
+  type: 'test'
+  ...
+# Subtest: brain: stun -> hit state, recovers to neutral
+ok 175 - brain: stun -> hit state, recovers to neutral
+  ---
+  duration_ms: 0.384974
+  type: 'test'
+  ...
+# Subtest: brain: launched -> air region, launch state; landing recovers
+ok 176 - brain: launched -> air region, launch state; landing recovers
+  ---
+  duration_ms: 0.325033
+  type: 'test'
+  ...
+# Subtest: brain: knockdown -> air/down state with wakeup directive
+ok 177 - brain: knockdown -> air/down state with wakeup directive
+  ---
+  duration_ms: 0.202384
+  type: 'test'
+  ...
+# Subtest: brain: round over freezes the directive
+ok 178 - brain: round over freezes the directive
+  ---
+  duration_ms: 0.198443
+  type: 'test'
+  ...
+# Subtest: brain: decideFromGhostSnap maps foe pressure to block
+ok 179 - brain: decideFromGhostSnap maps foe pressure to block
+  ---
+  duration_ms: 0.392453
+  type: 'test'
+  ...
+# Subtest: brain: decideFromGhostSnap far -> walk_in
+ok 180 - brain: decideFromGhostSnap far -> walk_in
+  ---
+  duration_ms: 0.407987
+  type: 'test'
+  ...
+# Subtest: grapple: far away -> idle, no intent
+ok 181 - grapple: far away -> idle, no intent
+  ---
+  duration_ms: 0.689633
+  type: 'test'
+  ...
+# Subtest: grapple: clinch range -> tie-up, then commit-throw
+ok 182 - grapple: clinch range -> tie-up, then commit-throw
+  ---
+  duration_ms: 0.538082
+  type: 'test'
+  ...
+# Subtest: grapple: foe creates space in clinch -> back to idle
+ok 183 - grapple: foe creates space in clinch -> back to idle
+  ---
+  duration_ms: 0.331302
+  type: 'test'
+  ...
+# Subtest: grapple: stuffed in the clinch -> reversed, then idle
+ok 184 - grapple: stuffed in the clinch -> reversed, then idle
+  ---
+  duration_ms: 0.22494
+  type: 'test'
+  ...
+# Subtest: grapple: throw executing -> ground chain on knockdown
+ok 185 - grapple: throw executing -> ground chain on knockdown
+  ---
+  duration_ms: 0.253063
+  type: 'test'
+  ...
+# Subtest: reversal: thrown -> throw-break with the arm read
+ok 186 - reversal: thrown -> throw-break with the arm read
+  ---
+  duration_ms: 0.349844
+  type: 'test'
+  ...
+# Subtest: reversal: blockstun + meter -> v-reversal
+ok 187 - reversal: blockstun + meter -> v-reversal
+  ---
+  duration_ms: 0.103033
+  type: 'test'
+  ...
+# Subtest: reversal: slow startup -> sidestep window
+ok 188 - reversal: slow startup -> sidestep window
+  ---
+  duration_ms: 0.080278
+  type: 'test'
+  ...
+# Subtest: reversal: fast startup -> block (the honest Tekken answer)
+ok 189 - reversal: fast startup -> block (the honest Tekken answer)
+  ---
+  duration_ms: 0.089111
+  type: 'test'
+  ...
+# Subtest: reversal: active frames in range -> block
+ok 190 - reversal: active frames in range -> block
+  ---
+  duration_ms: 0.059606
+  type: 'test'
+  ...
+# Subtest: reversal: foe recovering in range -> punish
+ok 191 - reversal: foe recovering in range -> punish
+  ---
+  duration_ms: 0.053838
+  type: 'test'
+  ...
+# Subtest: reversal: nothing happening -> none
+ok 192 - reversal: nothing happening -> none
+  ---
+  duration_ms: 0.097682
+  type: 'test'
+  ...
+# Subtest: ghost: brain drives the fallback path when it has no data
+ok 193 - ghost: brain drives the fallback path when it has no data
+  ---
+  duration_ms: 0.397429
+  type: 'test'
+  ...
+# Subtest: ghost: no brain -> old fallback path unchanged
+ok 194 - ghost: no brain -> old fallback path unchanged
+  ---
+  duration_ms: 0.098752
+  type: 'test'
+  ...
+# Subtest: ghost: learned data still beats the brain
+ok 195 - ghost: learned data still beats the brain
+  ---
+  duration_ms: 0.216572
+  type: 'test'
+  ...
+1..195
+# tests 209
+# suites 14
+# pass 206
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2327.024028
+exit 1

@@ -1,0 +1,715 @@
+TAP version 13
+# anim-gate: 397 pass, 0 fail; fighters=59, fight plays=14846, show clips played in FIGHT=0
+# Subtest: test/anim-gate.test.mjs
+ok 1 - test/anim-gate.test.mjs
+  ---
+  duration_ms: 72.728206
+  type: 'test'
+  ...
+# Subtest: attackClipTime: hit window lands on the first active frame, recovery fills the move
+ok 2 - attackClipTime: hit window lands on the first active frame, recovery fills the move
+  ---
+  duration_ms: 1.147494
+  type: 'test'
+  ...
+# Subtest: decoded attack levels
+ok 3 - decoded attack levels
+  ---
+  duration_ms: 0.341563
+  type: 'test'
+  ...
+# Subtest: Skull: different inputs play different clips of his own bank, own rows first
+ok 4 - Skull: different inputs play different clips of his own bank, own rows first
+  ---
+  duration_ms: 106.32788
+  type: 'test'
+  ...
+# Subtest: every bound fighter: non-throw moves never fall back to a generic clip when the bank has a matching row
+ok 5 - every bound fighter: non-throw moves never fall back to a generic clip when the bank has a matching row
+  ---
+  duration_ms: 1848.243974
+  type: 'test'
+  ...
+# Subtest: timing: the clip hit frame lands on the move startup (decoded T3 active frame)
+ok 6 - timing: the clip hit frame lands on the move startup (decoded T3 active frame)
+  ---
+  duration_ms: 39.199955
+  type: 'test'
+  ...
+# Subtest: pressing 1 never plays a throw: Pantera Jab never plays King's throw-attempt row 290
+ok 7 - pressing 1 never plays a throw: Pantera Jab never plays King's throw-attempt row 290
+  ---
+  duration_ms: 6.787757
+  type: 'test'
+  ...
+# Subtest: every bound fighter: no strike plays a throw row and no throw plays a strike row
+ok 8 - every bound fighter: no strike plays a throw row and no throw plays a strike row
+  ---
+  duration_ms: 263.40907
+  type: 'test'
+  ...
+# Subtest: string moves listing one row per hit play the hit the key fires (chatur b+2,1 -> row 63)
+ok 9 - string moves listing one row per hit play the hit the key fires (chatur b+2,1 -> row 63)
+  ---
+  duration_ms: 0.199093
+  type: 'test'
+  ...
+# Subtest: every row a moveset references in its bound bank is baked into rows.pack.json
+ok 10 - every row a moveset references in its bound bank is baked into rows.pack.json
+  ---
+  duration_ms: 61.521588
+  type: 'test'
+  ...
+# == engine string fixes ==
+#   ok: fighter.js string grace is 500ms
+#   ok: movesets.js STRING_PENDING is 1500ms
+#   ok: V2 contOk uses STRING_PENDING
+#   ok: legacy contOk uses STRING_PENDING
+#   ok: movesets.js continuation strips ~shadow suffix
+#   ok: fighter.js fires queued string hit on move completion
+# == Pantera (T7 King) string chains -> true string moves ==
+#   ok: chain LP1,RP2 -> 1~t8.king -> 1,2 (expected final 1,2)
+#   ok: chain LP1,RP2,LP1 Palm Strike Uppercut -> 1~t8.king -> 1,2 -> 1,2,1 (expected final 1,2,1)
+#   ok: chain LP1,RP2,LP1,RP2+RK4 Suplex -> 1~t8.king -> 1,2 -> 1,2,1 -> 1,2,1,2+4 (expected final 1,2,1,2+4)
+#   ok: chain LP1,RP2,LP1,d+RP2+RK4 V Driver -> 1~t8.king -> 1,2 -> 1,2,1 -> 1,2,1,d+2+4 (expected final 1,2,1,d+2+4)
+#   ok: chain LP1,RP2,RP2+RK4 Head Jammer -> 1~t8.king -> 1,2 -> 1,2,2+4 (expected final 1,2,2+4)
+#   ok: chain LP1,RP2,d+RP2+RK4 V Driver -> 1~t8.king -> 1,2 -> 1,2,d+2+4 (expected final 1,2,d+2+4)
+#   ok: chain RP2,LP1 -> 2~t8.king -> 2,1 (expected final 2,1)
+#   ok: 1,2,1 resolves to '1,2,1', not a chord key
+#   info: Pantera T7 key strings: 0 with T3 rows, 7 T8-only (UNMAPPED until T7 extraction lands; strings still fire with correct damage, animation is fallback)
+# == batch mapped fighters ==
+#   ok: pantera (T7 king): 874 moves
+#   ok: pantera (T7 king): 81 strings listed
+#   ok: pantera: T7 MOD damage wired (t7 block present)
+#   ok: pantera: LP1/RP2/LK3/RK4 display present
+#   ok: burger (T7 bob): 552 moves
+#   ok: burger (T7 bob): 107 strings listed
+#   ok: burger: T7 MOD damage wired (t7 block present)
+#   ok: demonio (T7 jin): 764 moves
+#   ok: demonio (T7 jin): 156 strings listed
+#   ok: demonio: T7 MOD damage wired (t7 block present)
+#   ok: diablo (T7 heihachi): 661 moves
+#   ok: diablo (T7 heihachi): 90 strings listed
+#   ok: diablo: T7 MOD damage wired (t7 block present)
+#   ok: kinpo (T7 asuka): 525 moves
+#   ok: kinpo (T7 asuka): 101 strings listed
+#   ok: kinpo: T7 MOD damage wired (t7 block present)
+#   ok: phantom (T7 yoshimitsu): 1019 moves
+#   ok: phantom (T7 yoshimitsu): 191 strings listed
+#   ok: phantom: T7 MOD damage wired (t7 block present)
+#   ok: scimitar (T7 shaheen): 362 moves
+#   ok: scimitar (T7 shaheen): 50 strings listed
+#   ok: scimitar: T7 MOD damage wired (t7 block present)
+#   ok: skull (T7 bryan): 688 moves
+#   ok: skull (T7 bryan): 109 strings listed
+#   ok: skull: T7 MOD damage wired (t7 block present)
+# PASS batch-strings
+# Subtest: test/batch-strings.test.mjs
+ok 3 - test/batch-strings.test.mjs
+  ---
+  duration_ms: 99.402951
+  type: 'test'
+  ...
+# canon-sizing: 59 fighters ok
+# Subtest: test/canon-sizing.test.mjs
+ok 4 - test/canon-sizing.test.mjs
+  ---
+  duration_ms: 37.183225
+  type: 'test'
+  ...
+# {"fighters":77,"moves":20710,"hitLevelsMapped":10486,"strings":767,"stringsOk":767,"fails":0}
+# PASS combat contact
+# Subtest: test/combat-contact.test.mjs
+ok 5 - test/combat-contact.test.mjs
+  ---
+  duration_ms: 870.430956
+  type: 'test'
+  ...
+# Subtest: fighter yaw tracks opponent in 3D
+ok 14 - fighter yaw tracks opponent in 3D
+  ---
+  duration_ms: 0.943087
+  type: 'test'
+  ...
+# Subtest: z re-aligns after sidestep so a jab connects again
+ok 15 - z re-aligns after sidestep so a jab connects again
+  ---
+  duration_ms: 1.03376
+  type: 'test'
+  ...
+# finisher.test.mjs: 30 passed, 0 failed
+# Subtest: test/finisher.test.mjs
+ok 7 - test/finisher.test.mjs
+  ---
+  duration_ms: 499.720454
+  type: 'test'
+  ...
+# ok hurt segments: 14, unique ids, valid bands
+# ok segSegDist2: parallel / crossing / degenerate
+# ok swept travel crosses a capsule the endpoint alone would miss
+# ok swept test: limb segment hit, clean miss, closest segment wins
+# ok fallbackHurts: 14, facing mirrors x, crouch lowers the head
+# ok hitWordFor: old cases preserved + T7 fallback + paren strip
+# ok getHurtboxes: 14 bone capsules on a rigged fighter
+# ok getHurtboxes: boneless rig still gets 14 fallback capsules (was: 0, every strike whiffed)
+# ok getHurtboxes: crouching defender lowers head/chest capsules
+# ok getHitbox: LP1 (armL) sweeps elbow->fist + travel on the 2nd call; both sweeps 2 limbs
+# ok canBeHitBy: high whiffs croucher, mid hits croucher, low whiffs jumper rules
+# ok receiveHit + T3 reaction pick: unguarded hit and guarded hit pick different records
+# ok Pantera LP1 hits at jab range (1.45) and whiffs at long range (3.5)
+# ok geometry extends a fully-extended jab past the 1.75 range class (fist really there)
+# ok f,f+RP2 analogue (f,F+2) reaches farther than LP1; crouching low hits, high whiffs croucher
+# ok reaction selector: guard / counter / air / class gates (synthetic table)
+#    pantera hit-word coverage: 709 / 874
+# ok Pantera data: LP1/RP2/LK3/RK4 limbs + f,F+2 reach + hit-word coverage
+# ok Game._resolveCombat (real method, stubbed game): LP1 hits at 1.45
+# ok Game import headless
+# {"fails":0}
+# PASS hitbox
+# Subtest: test/hitbox.test.mjs
+ok 8 - test/hitbox.test.mjs
+  ---
+  duration_ms: 312.02049
+  type: 'test'
+  ...
+# aotsuki                    232/232 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# armor-king                 220/225 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. COBRA_CLUTCH.2+4,1+2,1+2->1+2, NECK_DROP.4,3,3+4,1+2->1+2
+# awapop                     349/355 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. ARM_BREAK.3,1,4,1+2,1+2->1+2, BETRAYER.2,1,1+2,1+2+3->1+2+3
+# baek-master-white          53/53 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# baek                       31/31 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# blanka                     42/42 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# bob                        205/207 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. u/f+2,1,2,2,1,1+2,3,1,2,3+4->3+4, u/f+2,3,3+4,4->3+4,4
+# bruno                      135/135 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# buffalo-bill               264/266 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. u/b+1,1+2,2->2
+# burger-demon               206/208 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. u/f+2,1,2,2,1,1+2,3,1,2,3+4->3+4, u/f+2,3,3+4,4->3+4,4
+# burger-speed-demon         202/204 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. u/f+2,1,2,2,1,1+2,3,1,2,3+4->3+4, u/f+2,3,3+4,4->3+4,4
+# burger-the-mouth           200/202 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. u/f+2,1,2,2,1,1+2,3,1,2,3+4->3+4, u/f+2,3,3+4,4->3+4,4
+# burger                     208/210 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. u/f+2,1,2,2,1,1+2,3,1,2,3+4->3+4, u/f+2,3,3+4,4->3+4,4
+# byou                       265/266 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. b+1,2,1,3+4,2,1,4,1,4,4->4~4
+# cainelias                  44/44 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# charger-attire2            42/42 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# charger                    44/44 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# chatur                     171/172 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# chordz                     179/180 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. u/f+1,2,1,1,2,2,3,3,1+2,1+2->1+2
+# cyborgx                    269/270 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. DES.2:1->DES.2,1
+# deathfang-werewolf         8/8 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# deathfang                  4/4 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# demonio-bloodline-ember    247/248 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# demonio-human              247/248 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# demonio-winged             303/306 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. 3,2,4,3,1+4,1,2,1,2->2,1,2
+# demonio                    306/309 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. 3,2,4,3,1+4,1,2,1,2->2,1,2
+# diablo                     248/249 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# dio                        119/119 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# doa-ayane                  23/23 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# doa-bass                   20/20 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# doa-hayabusa               16/16 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# doa-jannlee                21/21 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# doa-kasumi                 18/18 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# doa-tina                   25/25 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# doc-frank-frankenstein     142/143 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. D/B+3,4,3,4,3,4->4,3,4,3,4
+# doc-frank-hood             142/143 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. D/B+3,4,3,4,3,4->4,3,4,3,4
+# doc-frank-machine-shop     162/163 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. D/B+3,4,3,4,3,4->4,3,4,3,4
+# doc-frank-wowomomo         142/143 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. D/B+3,4,3,4,3,4->4,3,4,3,4
+# docfrank                   143/143 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# dorowani                   86/86 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# dxmmii-patchwork           54/54 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# dxmmii                     53/53 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# gashadokuro                232/232 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# gyou-spirit-body           227/229 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. d+4,2:1+2->d+4,2,1+2
+# gyou                       404/408 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. d+4,2:1+2->d+4,2,1+2, FC.d/f+2:1->FC.d/f+2,1
+# hugo                       9/9 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# iori                       7/7 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# jin_soul                   416/439 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. BT.2,D/B+2,2->BT.2, BT.2,D/B+2,2,2->BT.2
+# kai                        289/289 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# kingtyrant                 273/273 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# kinpo                      195/197 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. CHARGE.d/f+3+4,3+4,1+2->1+2
+# koreshi                    272/272 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# kronos-attire2             67/68 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. 1+2,1+2,1+2->1+2
+# kronos                     67/68 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. 1+2,1+2,1+2->1+2
+# kutz                       48/48 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# lili                       177/178 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. 4,1,3,3+4,3,4,3,1,3+4,4->4
+# marduk                     145/145 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# mariposa-monarch           197/197 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# mariposa                   180/180 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# megami                     165/165 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# menajerii                  107/107 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# michiko                    143/143 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# negativo                   125/125 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# nightwolf                  200/200 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# pantera                    354/372 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. AB2b.3,4,3+4,1+2->1+2, ARM_BREAKER.1+2,4,2+4->2+4
+# phantom                    418/441 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. BT.2,D/B+2,2->BT.2, BT.2,D/B+2,2,2->BT.2
+# pond                       233/235 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# purplerain                 225/225 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# raiden                     13/13 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# rave                       341/342 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. b+1,2,1,3+4,2,1,4,1,4,4->4,4
+# realizzt                   59/59 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# retsu                      255/255 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# rin                        257/258 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# ryuji-rock                 16/16 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# ryuji                      16/16 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# ryusan                     78/81 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. 2:2->2,2, f+3,1,2,1+2,3,2:4,3,1->1
+# sakura                     270/273 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. u+4,1,2,4,4,2,1+2,1,4,2->2
+# samura1                    312/320 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. 1+4:d/f+1->1+4,d/f+1, d+2,1,1,1,2,1,2,1,1+2,1+2->1+2
+# scimitar                   141/142 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. 2,1,4,1,3,3,3,3+4,4->4
+# sf-akuma                   102/102 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# sf-blanka                  31/31 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# sf-cammy                   7/7 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# sf-chunli                  8/8 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# sf-dhalsim                 7/7 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# sf-guile                   7/7 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# sf-ken                     25/25 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# sf-mbison                  5/5 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# sf-ryu                     27/27 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# sf-sagat                   7/7 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# sf-vega                    28/28 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# sf-zangief                 27/28 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. 1+2,1+2,1+2->1+2
+# sha                        272/275 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. u+4,1,2,4,4,2,1+2,1,4,2->2
+# silvertongue               177/178 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. 4,1,3,3+4,3,4,3,1,3+4,4->4
+# skull                      254/254 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# slice                      178/178 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# star                       339/341 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. u+4,1,2,4,4,2,1+2,1,4,2->2
+# sunra                      44/44 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# t3-anna                    302/307 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. 1,2,1,2,4,1,2,2,3+4,2->2, CHIN_BASH.1+2,4,3,1+2,1+2,1+2->null
+# t3-bosconovitch            91/91 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# t3-eddy                    261/261 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# t3-forestlaw               44/44 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# t3-gon                     61/61 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# t3-hwoarang                286/287 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# t3-julia                   190/190 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# t3-kuma                    232/232 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# t3-law                     260/262 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. u/b+1,1+2,2->2
+# t3-lei                     299/300 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. b+1,2,1,3+4,2,1,4,1,4,4->4,4
+# t3-nina                    319/325 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. ARM_BREAK.3,1,4,1+2,1+2->1+2, BETRAYER.2,1,1+2,1+2+3->null
+# t3-ogre                    65/65 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# t3-paul                    205/207 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. d+4,2:1+2->d+4,2,1+2
+# thor                       122/122 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# tobi                       291/292 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# torch                      329/335 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. 1,2,1,2,4,1,2,2,3+4,2->2, CHIN_BASH.1+2,4,3,1+2,1+2,1+2->null
+# tou                        230/235 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. d+4,2:1+2->d+4,2,1+2, HFC.1+2,1+2,1+2->null
+# vainabel                   56/56 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# vega                       32/32 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# vf-akira                   18/18 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# vf-elblaze                 25/25 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# vf-jeffry                  24/24 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# vf-kage                    12/12 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# vf-leifei                  307/308 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. b+1,2,1,3+4,2,1,4,1,4,4->4,4
+# vf-sarah                   12/12 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# vf-wolf                    19/19 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# waterfall                  165/165 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# yukihyo                    252/257 cmds  neutral 1✓ 2✓ 3✓ 4✓  e.g. COBRA_CLUTCH.2+4,1+2,1+2->1+2, NECK_DROP.4,3,3+4,1+2->1+2
+# zangief                    27/27 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# zen                        234/235 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# zui                        254/254 cmds  neutral 1✓ 2✓ 3✓ 4✓
+# {"fighters":128,"fightersOk":84,"commandsPass":19392,"commandsFail":132,"dataConflicts":45,"buttonHoldNotWired":206,"neutralFail":0,"touchRecenter":true}
+# non-string failures: 0
+# PASS input determinism
+# Subtest: test/input-determinism.test.mjs
+ok 9 - test/input-determinism.test.mjs
+  ---
+  duration_ms: 2181.036189
+  type: 'test'
+  ...
+# Subtest: wiring: game.js feeds the tick length to the direction history; chord window is 2-3 frames
+ok 19 - wiring: game.js feeds the tick length to the direction history; chord window is 2-3 frames
+  ---
+  duration_ms: 1.10287
+  type: 'test'
+  ...
+# Subtest: qcf+1 done in 250-350 ms resolves as the motion move (pantera Pile Driver)
+ok 20 - qcf+1 done in 250-350 ms resolves as the motion move (pantera Pile Driver)
+  ---
+  duration_ms: 20.515965
+  type: 'test'
+  ...
+# Subtest: a slow qcf (~700 ms, d left > 25 frames before the press) is NOT the motion
+ok 21 - a slow qcf (~700 ms, d left > 25 frames before the press) is NOT the motion
+  ---
+  duration_ms: 11.104617
+  type: 'test'
+  ...
+# Subtest: f,f+2 within ~250 ms is the dash move (pantera f,F+2 Beast Elbow)
+ok 22 - f,f+2 within ~250 ms is the dash move (pantera f,F+2 Beast Elbow)
+  ---
+  duration_ms: 11.575512
+  type: 'test'
+  ...
+# Subtest: f, then f again 600 ms later + 2 is a plain f+2 (dash window is bounded in time)
+ok 23 - f, then f again 600 ms later + 2 is a plain f+2 (dash window is bounded in time)
+  ---
+  duration_ms: 1.156009
+  type: 'test'
+  ...
+# Subtest: neutral-ending motions are timed too: f,f,n,1+2 right away is the motion, 1.4 s later a plain 1+2
+ok 24 - neutral-ending motions are timed too: f,f,n,1+2 right away is the motion, 1.4 s later a plain 1+2
+  ---
+  duration_ms: 23.366284
+  type: 'test'
+  ...
+# Subtest: 1 then 2 pressed 80-120 ms apart is the string 1,2, never the chord 1+2
+ok 25 - 1 then 2 pressed 80-120 ms apart is the string 1,2, never the chord 1+2
+  ---
+  duration_ms: 7.605141
+  type: 'test'
+  ...
+# Subtest: fast 1,3 / 2,4 / 3,4 (80-120 ms) stay two presses: no throw, no 3+4
+ok 26 - fast 1,3 / 2,4 / 3,4 (80-120 ms) stay two presses: no throw, no 3+4
+  ---
+  duration_ms: 7.050931
+  type: 'test'
+  ...
+# Subtest: a true simultaneous press (0-16 ms apart, and 2-frame leniency) is the chord
+ok 27 - a true simultaneous press (0-16 ms apart, and 2-frame leniency) is the chord
+  ---
+  duration_ms: 24.368552
+  type: 'test'
+  ...
+# Subtest: holding d/f (or d/b) ~170 ms then pressing reads the HELD spelling; a quick 70 ms tap reads the tap one
+ok 28 - holding d/f (or d/b) ~170 ms then pressing reads the HELD spelling; a quick 70 ms tap reads the tap one
+  ---
+  duration_ms: 8.467728
+  type: 'test'
+  ...
+# Subtest: legacy J then K (P+K command grab) uses the same 50 ms chord window: a quick J,K is 1,4, not a throw
+ok 29 - legacy J then K (P+K command grab) uses the same 50 ms chord window: a quick J,K is 1,4, not a throw
+  ---
+  duration_ms: 6.23471
+  type: 'test'
+  ...
+# Subtest: a busy page cannot merge presses: the chord gap uses e.timeStamp, not the handler time
+ok 30 - a busy page cannot merge presses: the chord gap uses e.timeStamp, not the handler time
+  ---
+  duration_ms: 2.368127
+  type: 'test'
+  ...
+# Subtest: a fast qcf does not sidestep: d released under 200 ms while the stick is forward is a motion, a plain d tap still sidesteps
+ok 31 - a fast qcf does not sidestep: d released under 200 ms while the stick is forward is a motion, a plain d tap still sidesteps
+  ---
+  duration_ms: 10.183138
+  type: 'test'
+  ...
+# Subtest: textured material passes
+ok 32 - textured material passes
+  ---
+  duration_ms: 1.491111
+  type: 'test'
+  ...
+# Subtest: missing material / dangling texture / placeholder / default-white all fail
+ok 33 - missing material / dangling texture / placeholder / default-white all fail
+  ---
+  duration_ms: 1.352373
+  type: 'test'
+  ...
+# Subtest: vertex colours and authored flat colours pass
+ok 34 - vertex colours and authored flat colours pass
+  ---
+  duration_ms: 2.046069
+  type: 'test'
+  ...
+# Subtest: donor plan maps a textureless re-export onto its textured twin only
+ok 35 - donor plan maps a textureless re-export onto its textured twin only
+  ---
+  duration_ms: 1.620728
+  type: 'test'
+  ...
+# == rotation pools ==
+#   ok: battle pool: stage-tagged first, pending excluded, rest in order
+#   ok: sequential rotation advances and wraps
+#   ok: menu pool rotates by mode
+#   ok: pickTrack unchanged: first stage match wins
+# == final-round variant ==
+#   ok: playFinalRound swaps to available variant
+#   ok: playFinalRound no-ops when no variant assigned
+#   ok: playFinalRound no-ops when variant unavailable
+# == sequence state machine ==
+#   ok: playSequence starts with first track
+#   ok: sequence advances to second track
+#   ok: sequence end resumes battle rotation on last stage
+#   ok: unknown sequence returns false
+# == shipped library ==
+#   ok: library has 44 tracks (14 existing + 25 nos + 5 tekken pending)
+#   ok: all track ids unique
+#   ok: 25 Nosferatu game tracks
+#   ok: nos tracks contiguous 0-5067s, no gaps or overlaps
+#   ok: every nos track has a game file path and battle mode
+#   ok: nos titles use the VHS-synth scheme name, never Bernard/Schirmann names
+#   ok: 5 Tekken slots, all data-only pending-download (engine skips them)
+#   ok: dojo Round 1 names its Final Round variant
+#   ok: battle-implosion tag fixed to stages.js id helix-palace
+#   ok: no stale helios-palace tag remains
+#   ok: ep01-fight sequence references 9 real tracks
+#   ok: rotation mode sequential
+#   ok: every track carries id/title/license/credit/moods/modes
+# == engine methods present ==
+#   ok: music.js contains pickRotationTrack
+#   ok: music.js contains playFinalRound
+#   ok: music.js contains playSequence
+#   ok: music.js contains _playSequenceNext
+#   ok: music.js contains _poolFor
+# All music rotation checks passed.
+# Subtest: test/music-rotation.test.mjs
+ok 12 - test/music-rotation.test.mjs
+  ---
+  duration_ms: 54.846295
+  type: 'test'
+  ...
+# no-wrong-body: 59 fighters OK (8 model-pending)
+# Subtest: test/no-wrong-body.test.mjs
+ok 13 - test/no-wrong-body.test.mjs
+  ---
+  duration_ms: 66.113665
+  type: 'test'
+  ...
+# Subtest: registered owner models lead every non-exempt fighter
+ok 38 - registered owner models lead every non-exempt fighter
+  ---
+  duration_ms: 7.293994
+  type: 'test'
+  ...
+# Subtest: user-provided Tripo manifests are registered as owner models
+ok 39 - user-provided Tripo manifests are registered as owner models
+  ---
+  duration_ms: 5.979694
+  type: 'test'
+  ...
+# Subtest: Negativo defaults to his own model; Negan reskin kept in ladder
+ok 40 - Negativo defaults to his own model; Negan reskin kept in ladder
+  ---
+  duration_ms: 0.32323
+  type: 'test'
+  ...
+# Subtest: fight path resolves enemies through the attire ladder
+ok 41 - fight path resolves enemies through the attire ladder
+  ---
+  duration_ms: 0.363251
+  type: 'test'
+  ...
+# portraits: 48 select fighters, 5 pose blockers
+# PASS
+# Subtest: test/portraits.test.mjs
+ok 15 - test/portraits.test.mjs
+  ---
+  duration_ms: 161.545904
+  type: 'test'
+  ...
+# profiles-index: ok (1 profile(s): pantera)
+# Subtest: test/profiles-index.test.mjs
+ok 16 - test/profiles-index.test.mjs
+  ---
+  duration_ms: 35.036636
+  type: 'test'
+  ...
+# 38 passed, 0 failed
+# Subtest: test/ranks.test.mjs
+ok 17 - test/ranks.test.mjs
+  ---
+  duration_ms: 57.879839
+  type: 'test'
+  ...
+# Subtest: rootMotionSample: frame-0 baseline, linear interpolation, end clamp
+ok 45 - rootMotionSample: frame-0 baseline, linear interpolation, end clamp
+  ---
+  duration_ms: 0.964318
+  type: 'test'
+  ...
+# Subtest: Pantera LP1 jab (1) plays row:110 (T3 f+1) and steps forward ~0.11 m
+ok 46 - Pantera LP1 jab (1) plays row:110 (T3 f+1) and steps forward ~0.11 m
+  ---
+  duration_ms: 178.230451
+  type: 'test'
+  ...
+# Subtest: Pantera RP2 (2) plays row:99 (T3 b+2) and travels forward ~0.15 m, mirrored when facing left
+ok 47 - Pantera RP2 (2) plays row:99 (T3 b+2) and travels forward ~0.15 m, mirrored when facing left
+  ---
+  duration_ms: 4.106967
+  type: 'test'
+  ...
+# Subtest: Pantera f,F+2 Beast Elbow (RP2 dash elbow): donor clip row:111 travels forward (0.15 m net, 0.30 m peak)
+ok 48 - Pantera f,F+2 Beast Elbow (RP2 dash elbow): donor clip row:111 travels forward (0.15 m net, 0.30 m peak)
+  ---
+  duration_ms: 3.427871
+  type: 'test'
+  ...
+# Subtest: Pantera f,F+4 Konvict Kick (RK4): donor clip row:114 travels forward ~0.48 m
+ok 49 - Pantera f,F+4 Konvict Kick (RK4): donor clip row:114 travels forward ~0.48 m
+  ---
+  duration_ms: 7.239083
+  type: 'test'
+  ...
+# Subtest: Generic fallback clips get NO root motion (heavy/grab are the row:230 throw-execution clip)
+ok 50 - Generic fallback clips get NO root motion (heavy/grab are the row:230 throw-execution clip)
+  ---
+  duration_ms: 0.297043
+  type: 'test'
+  ...
+# Subtest: Root motion never runs outside attack/vskill/vreversal (block, sidestep)
+ok 51 - Root motion never runs outside attack/vskill/vreversal (block, sidestep)
+  ---
+  duration_ms: 2.822046
+  type: 'test'
+  ...
+# Subtest: Wall: _physics clamps root-motion travel to ARENA_LIMIT (8.4) instead of leaving the stage
+ok 52 - Wall: _physics clamps root-motion travel to ARENA_LIMIT (8.4) instead of leaving the stage
+  ---
+  duration_ms: 7.237133
+  type: 'test'
+  ...
+# Subtest: Turned bank (bosconovitch, baked facing -Z): loaded clips carry the 180 deg root_t flip, so root motion reads the canonical frame
+ok 53 - Turned bank (bosconovitch, baked facing -Z): loaded clips carry the 180 deg root_t flip, so root motion reads the canonical frame
+  ---
+  duration_ms: 206.122044
+  type: 'test'
+  ...
+# softbody: 28 passed, 0 failed
+# Subtest: test/softbody.test.mjs
+ok 19 - test/softbody.test.mjs
+  ---
+  duration_ms: 253.041356
+  type: 'test'
+  ...
+# soul-systems.test: 15 passed
+# Subtest: test/soul-systems.test.mjs
+ok 20 - test/soul-systems.test.mjs
+  ---
+  duration_ms: 46.040843
+  type: 'test'
+  ...
+# Subtest: reactions.json: decoded EXE tables verified
+ok 56 - reactions.json: decoded EXE tables verified
+  ---
+  duration_ms: 1.684232
+  type: 'test'
+  ...
+# Subtest: every bank has a reactions pack; every clip has 22 bones and finite values
+ok 57 - every bank has a reactions pack; every clip has 22 bones and finite values
+  ---
+  duration_ms: 1622.82107
+  type: 'test'
+  ...
+# Subtest: every planned slot of a bank is baked or listed missing
+ok 58 - every planned slot of a bank is baked or listed missing
+  ---
+  duration_ms: 2.755221
+  type: 'test'
+  ...
+# Subtest: every reaction slot any attack can start resolves (defender bank first, else attacker bank)
+ok 59 - every reaction slot any attack can start resolves (defender bank first, else attacker bank)
+  ---
+  duration_ms: 226.162225
+  type: 'test'
+  ...
+# Subtest: air kinds and the KO collapse resolve for every bank
+ok 60 - air kinds and the KO collapse resolve for every bank
+  ---
+  duration_ms: 0.513488
+  type: 'test'
+  ...
+# Subtest: every throw has its thrower clip and a victim clip for every opponent bank
+ok 61 - every throw has its thrower clip and a victim clip for every opponent bank
+  ---
+  duration_ms: 15.850243
+  type: 'test'
+  ...
+# Subtest: throw breaks: the escape move resolves on the victim, its own victim move on the thrower
+ok 62 - throw breaks: the escape move resolves on the victim, its own victim move on the thrower
+  ---
+  duration_ms: 8.412589
+  type: 'test'
+  ...
+# Subtest: reaction slots named by divmot99 attack rows are baked in some bank
+ok 63 - reaction slots named by divmot99 attack rows are baked in some bank
+  ---
+  duration_ms: 1.653055
+  type: 'test'
+  ...
+# Subtest: default continuations of baked clips stay resolvable
+ok 64 - default continuations of baked clips stay resolvable
+  ---
+  duration_ms: 4.385189
+  type: 'test'
+  ...
+# Subtest: King LP1+LK3 front: attempt row 273 -> throw slot 2795, victim 3018
+ok 65 - King LP1+LK3 front: attempt row 273 -> throw slot 2795, victim 3018
+  ---
+  duration_ms: 1.801206
+  type: 'test'
+  ...
+# Subtest: King RP2+RK4 front: attempt row 274 -> throw slot 2797
+ok 66 - King RP2+RK4 front: attempt row 274 -> throw slot 2797
+  ---
+  duration_ms: 0.187163
+  type: 'test'
+  ...
+# Subtest: situation branches: side and back pick different throws, crouch does not match a standing attempt
+ok 67 - situation branches: side and back pick different throws, crouch does not match a standing attempt
+  ---
+  duration_ms: 0.300632
+  type: 'test'
+  ...
+# Subtest: distance gate: beyond the file param the throw does not connect
+ok 68 - distance gate: beyond the file param the throw does not connect
+  ---
+  duration_ms: 0.112862
+  type: 'test'
+  ...
+# Subtest: unknown attempt row is UNMAPPED, never a guessed pair
+ok 69 - unknown attempt row is UNMAPPED, never a guessed pair
+  ---
+  duration_ms: 0.181531
+  type: 'test'
+  ...
+# Subtest: escape pair: breaking 2795 starts slot 2898 with roles swapped
+ok 70 - escape pair: breaking 2795 starts slot 2898 with roles swapped
+  ---
+  duration_ms: 0.183538
+  type: 'test'
+  ...
+# Subtest: situation codes and 0x14-0x17 aliases
+ok 71 - situation codes and 0x14-0x17 aliases
+  ---
+  duration_ms: 0.098325
+  type: 'test'
+  ...
+# Subtest: shared-frame math: anchor at P, yaw rotation, frame clamping
+ok 72 - shared-frame math: anchor at P, yaw rotation, frame clamping
+  ---
+  duration_ms: 0.615531
+  type: 'test'
+  ...
+# wiring.test: 19 passed
+# Subtest: test/wiring.test.mjs
+ok 23 - test/wiring.test.mjs
+  ---
+  duration_ms: 47.413812
+  type: 'test'
+  ...
+# 29 passed, 0 failed
+# Subtest: test/worldgen.test.mjs
+ok 24 - test/worldgen.test.mjs
+  ---
+  duration_ms: 312.71517
+  type: 'test'
+  ...
+# 50 passed, 0 failed
+# Subtest: test/xray.test.mjs
+ok 25 - test/xray.test.mjs
+  ---
+  duration_ms: 37.24596
+  type: 'test'
+  ...
+# 9 passed, 0 failed
+# Subtest: test/xray_dataset.test.mjs
+ok 26 - test/xray_dataset.test.mjs
+  ---
+  duration_ms: 52.197179
+  type: 'test'
+  ...
+1..76
+# tests 76
+# suites 0
+# pass 76
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5129.147573
+exit 0
