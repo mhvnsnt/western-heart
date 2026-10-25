@@ -42,7 +42,10 @@
  * distinct canonicals, never merged.
  * Rules asserted here (all data-level, no THREE needed):
  *   1. phantom.json still has 1019 moves / 191 strings entries (plans are additive only).
- *   2. string_step_plans has exactly 186 keys (117 planned canonicals + 69 twins).
+ *   2. string_step_plans has exactly 235 keys (186 Batch 1 + 49 Batch 2:
+ *      41 planned canonicals + 8 twins). Batch 2 accumulates on this file:
+ *      every Batch 1 CONTENT assertion below is preserved verbatim; only
+ *      the plan count, the extra-keys assertion, and this header note changed.
  *   3. Batch 1 verified steps always carry a row whose yoshimitsu hit_frames
  *      button equals the step bits and whose throw flag is 0; verified rows
  *      always exist in the yoshimitsu hit_frames (rows 35/220 do not exist in
@@ -83,6 +86,7 @@ const hf = JSON.parse(readFileSync(hfPath, 'utf8')).rows;
 
 const plans = phantom.string_step_plans.plans;
 const B1 = ["1+2,2", "1+2,2,1", "1,1", "1,1~t3.yoshimitsu", "1,1~t7.yoshimitsu", "1,1~t7.yoshimitsu.2", "1,NSS.1", "1,d/b+2", "1,d/b+2,d/b+2", "1,d/b+2,d/b+2,d/b+2", "1,d/b+2,d/b+2,d/b+2,d/b+2", "2,1", "2,1~t3.yoshimitsu", "2,1~t7.yoshimitsu", "2,1~t7.yoshimitsu.2", "2,2", "2,2,1+2", "2,2~t7.yoshimitsu", "2,2~t7.yoshimitsu.2", "2,2~t8.yoshimitsu", "2,NSS.1", "BT.1,2", "BT.1,2~t7.yoshimitsu", "BT.1,2~t7.yoshimitsu.2", "BT.2,D/B+2,2", "BT.2,D/B+2,2,2", "BT.2,D/B+2,2,2,2", "BT.2,D/B+2,2,2,2,2", "BT.2,d/b+2", "D/B+2,2", "D/B+2,2,2", "D/B+2,2,2,2", "D/B+2,2,2,2,2", "D/B+2,2,2,2,2,2", "INS.2,D/B+2", "INS.2,D/B+2,2", "INS.2,D/B+2,2,2", "INS.2,D/B+2,2,2,2", "KIN.1,1", "KIN.1,1~t7.yoshimitsu", "KIN.1,1~t7.yoshimitsu.2", "KIN.1,NSS.1", "KIN.2,1+2", "KIN.2,1+2*", "KIN.2,1+2*~t7.yoshimitsu", "KIN.2,1+2~t7.yoshimitsu", "KIN.2,1+2~t7.yoshimitsu.2", "KIN.2,NSS.1+2", "KIN.2,NSS.1+2*", "KIN.b+2,1", "KIN.b+2,1~t7.yoshimitsu", "KIN.b+2,1~t7.yoshimitsu.2", "NSS.1+2,1", "NSS.1,2", "NSS.1,2,1", "NSS.1,2,1~t7.yoshimitsu", "NSS.1,2,1~t7.yoshimitsu.2", "NSS.1,2~t7.yoshimitsu", "NSS.2,1", "NSS.2,1~t7.yoshimitsu", "NSS.FC.DF+1,2", "NSS.b+2,2", "NSS.b+2,2~t7.yoshimitsu", "NSS.d+2,1", "NSS.d/f+1+2,2", "NSS.d/f+1+2,2~t7.yoshimitsu", "NSS.u/b+1+2,1", "NSS.u/b+1+2,1+2", "WS.1,1", "WS.1,1,1", "WS.1,1,1,1", "WS.1,2", "WS.1,2,D/B+2", "WS.1,2,D/B+2,2", "WS.1,2,D/B+2,2,2", "WS.1,2,D/B+2,2,2,2", "WS.1,2,D/B+2,2,2,2,2", "WS.1,2,D/B+2,2,2,2,2,2", "WS.1,2~t7.yoshimitsu", "WS.2,1", "WS.2,1~t7.yoshimitsu", "b+1,1", "b+1,1,1", "b+1,1,1,1", "b+1,1,1,1,1", "b+1,1,1,1,1,1", "b+1,1,1,1,1,1~t3.yoshimitsu", "b+1,1,1,1,1,1~t7.yoshimitsu", "b+1,1,1,1,1~t3.yoshimitsu", "b+1,1,1,1,1~t7.yoshimitsu", "b+1,1,1,1~t3.yoshimitsu", "b+1,1,1,1~t7.yoshimitsu", "b+1,1,1~t3.yoshimitsu", "b+1,1,1~t7.yoshimitsu", "b+1,1~t3.yoshimitsu", "b+1,1~t3.yoshimitsu.2", "b+1,1~t7.yoshimitsu", "b+2,1", "b+2,1+2", "b+2,1,1+2", "b+2,1~t7.yoshimitsu", "b+2,1~t7.yoshimitsu.2", "b+2,2", "b+2,2~t7.yoshimitsu", "b+2,2~t7.yoshimitsu.2", "b+2,NSS.1", "b+2,NSS.2", "d+2,1", "d+2,1~t7.yoshimitsu", "d+2,1~t7.yoshimitsu.2", "d+2,2", "d+2,2,1", "d+2,2,1~t7.yoshimitsu", "d+2,2,1~t7.yoshimitsu.2", "d+2,2,1~t7.yoshimitsu.3", "d+2,2,2", "d+2,2,NSS.1", "d+2,2,NSS.d+1", "d+2,2,d+1", "d+2,2,d+1~t7.yoshimitsu", "d+2,2,d+1~t7.yoshimitsu.2", "d+2,2,d+1~t7.yoshimitsu.3", "d+2,NSS.1", "d/b+1,1", "d/b+1,1~t3.yoshimitsu", "d/b+1,1~t7.yoshimitsu", "d/f+1+2,2", "d/f+1+2,2~t7.yoshimitsu", "d/f+1,1", "d/f+1,1,1", "d/f+1,1,1,1", "d/f+1,1,1,1~t3.yoshimitsu", "d/f+1,1,1~t3.yoshimitsu", "d/f+1,1~t3.yoshimitsu", "d/f+1,2", "d/f+1,2~t3.yoshimitsu", "d/f+1,2~t7.yoshimitsu", "d/f+1,2~t7.yoshimitsu.2", "db+1,2", "db+2,2", "db+2,2,2", "db+2,2,2,2", "db+2,2,2,2,2", "db+2,2,2,2,2,2", "df+1,2", "df+1,2,1", "df+1,2,NSS.1", "df+1,2,db+2", "f+2,1", "f+2,D/B+2", "f+2,D/B+2,2", "f+2,D/B+2,2,2", "f+2,D/B+2,2,2,2", "f+2,D/B+2,2,2,2,2", "f+2,D/B+2,2,2,2,2,2", "f+2,NSS.1", "f+2,d/b+2", "f+2,db+2", "u+1,1", "u+1,1~t3.yoshimitsu", "u+1,1~t3.yoshimitsu.2", "u+1,1~t3.yoshimitsu.3", "u+1,2", "u/b+1+2,1+2", "u/b+1,1", "u/b+1,1~t3.yoshimitsu", "u/b+1,1~t3.yoshimitsu.2", "u/b+1,1~t3.yoshimitsu.3", "u/b+1,2", "u/f+1+2,b+1", "u/f+1,1", "u/f+1,1~t3.yoshimitsu", "u/f+1,1~t3.yoshimitsu.2", "u/f+1,1~t3.yoshimitsu.3", "u/f+1,2", "uf+1,1", "uf+1,NSS.1", "ws1,1", "ws1,1,1", "ws1,1,1,1", "ws1,2", "ws1,2,1", "ws1,2,db+2", "ws2,1", "ws2,NSS.1", "ws2,NSS.1,2"];
+const B2 = ["4,4", "4,4,4", "4,4,4~t7.yoshimitsu", "4,4~t7.yoshimitsu", "D/B+3,3", "D/B+3,3,3", "D/B+3,3,3,3", "D/B+3,3,3,3,3", "D/B+3,3,3,3,3,3", "IND.3,3+4", "INS.3,3+4", "INS.3,3+4~t7.yoshimitsu", "KIN.4,3+4", "SS.4,3+4", "b+3+4,b+3+4", "b+3+4,b+3+4,b+3+4", "b+3+4,b+3+4,b+3+4,b+3+4", "b+3+4,b+3+4,b+3+4,b+3+4,b+3+4", "b+3,3", "b+3,3,3", "b+3,3,3,3", "b+3,3,3,3,3", "b+3,3,3,3,3,3", "d/b+3,d/b+3", "d/b+3,d/b+3,4", "d/b+3,d/b+3,d/b+3", "d/b+3,d/b+3,d/b+3,d/b+3", "db+3,3", "db+3,3,3", "db+3,3,3,3", "db+3,3,3,3,3", "db+3,3,3,3,3,3", "db+3,3,3,3,3,4", "f+3+4,4", "f+3,3", "f+3,3,d+3+4", "f+3,3~t7.yoshimitsu", "f+3,4", "f+3,4~t7.yoshimitsu", "f+3,4~t7.yoshimitsu.2", "f+4,3", "f+4,4", "f+4,4,4", "u/f+3+4,3+4", "u/f+3+4,3+4~t7.yoshimitsu", "u/f+3+4,u+3+4", "u/f+3+4,u+3+4~t7.yoshimitsu", "uf+3+4,3", "uf+3+4,3+4"];
 const B1_VERIFIED_LAST = ["d/f+1,1", "d/f+1,1,1", "d/f+1,1,1,1", "d/f+1,1,1,1~t3.yoshimitsu", "d/f+1,1,1~t3.yoshimitsu", "d/f+1,1~t3.yoshimitsu", "f+2,d/b+2", "u+1,1", "u+1,1~t3.yoshimitsu", "u+1,1~t3.yoshimitsu.2", "u+1,1~t3.yoshimitsu.3", "u+1,2", "u/b+1,1", "u/b+1,1~t3.yoshimitsu", "u/b+1,1~t3.yoshimitsu.2", "u/b+1,1~t3.yoshimitsu.3", "u/b+1,2", "u/f+1,1", "u/f+1,1~t3.yoshimitsu", "u/f+1,1~t3.yoshimitsu.2", "u/f+1,1~t3.yoshimitsu.3", "u/f+1,2"];
 const VERIFIED_BUTTONS = {"55": 1, "56": 1, "57": 1, "58": 1, "66": 1, "69": 2, "70": 2, "71": 2, "175": 2, "223": 1, "224": 1, "225": 1, "226": 1, "261": 3};
 
@@ -96,14 +100,14 @@ function stepBits(step) {
 test('phantom move/string counts unchanged by the additive plans block', () => {
   assert.equal(Object.keys(phantom.moves).length, 1019);
   assert.equal(phantom.strings.length, 191);
-  assert.equal(Object.keys(plans).length, 186);
+  assert.equal(Object.keys(plans).length, 235);
 });
 
 test('Batch 1 keys are exactly the documented 186', () => {
   assert.equal(B1.length, 186);
   for (const key of B1) assert.ok(plans[key], `Batch 1 key ${key} missing`);
   const extra = Object.keys(plans).filter((k) => !B1.includes(k));
-  assert.deepEqual(extra, []);
+  assert.deepEqual(extra.sort(), B2);
 });
 
 test('Batch 1 verified steps carry rows (button == step bits, throw 0, row exists in yoshimitsu hit_frames); review/unmapped carry row null; no soft flags', () => {

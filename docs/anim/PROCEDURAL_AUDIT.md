@@ -206,3 +206,26 @@ rule). Canonicalization is the CORRECTED rule (strip only a trailing
 canonicals; the file's old-vs-corrected diffs are all outside Batch 1
 scope. T8-sourced prefixes with no T3 row get their correct clips from
 #988 Step 2 (original T8 refs), never from a T3 row recorded as correct.
+
+## Phantom Batch 2 fallback (LK3/RK4-only strings, 2026-10-25)
+Verified rows 73/291 are FALLBACK
+(T3 yoshimitsu rows, bank yoshimitsu / native Yoshimitsu bank — NOT a
+fallback bank: phantom's T7/T8 base IS Yoshimitsu), to be re-matched to T7
+Yoshimitsu rows when extraction lands. Rejected rows are NOT fallback —
+rejected evidence, not wired or held. Yoshimitsu-bank rules, per-bank
+evidence (documented in
+docs/movesets/PHANTOM-BATCH2-STEP-PLANS-2026-10-25.md): rows 35 and 220 do
+NOT EXIST in this bank (absent from hit_frames AND Job 1) — no row-35 or
+row-220 rule applies at all; row 216 is a STANDING LP1 row here, NOT king
+row 216's dash Konvict Kick, NOT jin row 216's jump row; row 243 is a
+CHORD row (button 9 = LP1+RK4) failing every single-button gate.
+Phantom's own RK4 move 4 carries t3_row 243 on the Batch 1 branch and is
+ROW-CHANGED on current main (243->None), so both Batch 2 steps with prefix
+4 are SUSPENDED-DRIFT — never wired on stale data. Job 3 fills wired: 0
+(all Job 3 candidates ROW-ONLY or soft, documented never wired).
+Canonicalization is the CORRECTED rule (strip only a trailing ~t[378]
+source-variant suffix): phantom Batch 2 contains ZERO input-~
+canonicals; the file's old-vs-corrected diffs (3~4,U; 4,4,2,2,1,~1;
+4,4,2,2,NSS.1,~1) are all outside Batch 2 scope (rest/Batch 4 keys).
+T8-sourced prefixes with no T3 row get their correct clips from
+#988 Step 2 (original T8 refs), never from a T3 row recorded as correct.
