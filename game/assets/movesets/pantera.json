@@ -177199,5 +177199,20 @@
       "move_class": "special",
       "note": "t(w)"
     }
+  },
+  "t3_verification_2026_10_24": {
+    "source": "docs/anim/T3-BANK-VERIFICATION-2026-10-24.md (PR #1027 verification pass) + docs/anim/ANIM-MOTION-AUDIT-2026-10-24.md (forward-kinematics motion audit, 8 fighters).",
+    "unmapped_basics": [],
+    "chord_string_enders": {
+      "motion_hard": 4,
+      "literal_branch_mask": 17,
+      "chord_rows": [
+        "king 220"
+      ],
+      "status": "UNMAPPED — left unwired. A string needs a verified sequence clip and no such row exists in-bank. No string ender was rewired to a single-hit row."
+    },
+    "legacy_strings_arrays_note": "Legacy `strings` arrays are NOT consumed by fighter.js; single-button hits on chord rows in them (2,1 hit LP1 -> row 220) are left unchanged — do not 'fix' them by guessing a single row.",
+    "other_keys_referencing_unmapped_rows_unchanged": [],
+    "runtime_effect_of_unmapped_marking": "Marked entries carry no exact anim_ref/t3_row claim, so the runtime falls to donor/match/generic for those presses and the editor shows them as unmapped (not offered as swap targets) until a verified exact row lands. The former row is kept in t3_unmapped_former_row for audit trail only."
   }
 }

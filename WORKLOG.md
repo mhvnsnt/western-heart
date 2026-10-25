@@ -3171,3 +3171,12 @@ one-line JOBS-tab tool-dropdown addition (creation-flow.js — worker 37's lane,
 - Archived `roster/theory/attires/attire4/source/theory-a4.glb` (21,511,628 bytes, black leather outfit 3d model,
   Tripo owner `eqqq57218`) + `manifest.json` + T-pose proof `docs/proof/buffalo-bill-theory-2026-10-22/theory-a4.png`
   (visually verified). Intake note + tag list updated (`theory-a4-original`).
+## 2026-10-24 — 100% wiring pass: already-decoded extraction data into movesets + library (one PR)
+
+- MOT.BIN clip tables wired: kinpo (asa, 861 resolved + 1,603 unmapped 0x8000 + 4,731 cancel links), burger (bob, 667 + 1,658 + 4,267), purplerain (lee, 710 + 1,593 + 4,813); cancel links appended to pond (frv, +4,670) and ryusan (dnc, +4,119). Playable wiring stays NONE — tables are file keys, not playable WH move animations.
+- Wrestling (No Mercy) bank: input_lp on all 4,153 input-populated rows (mechanical 1→LP1, 2→RP2, 3→LK3, 4→RK4); 256 input-null rows UNMAPPED, no invented inputs; index counts updated.
+- T3 verification fixes in movesets: 18 entries marked UNMAPPED (wrong-claim anim_ref/t3_row removed, former row kept in trace); chord-as-string documented as known gap on 8 fighters (35 motion-HARD enders, left unwired); heihachi_on_jin verified as the live bank (heihachi_ownrig has no rows.pack.json and was not wired).
+- MOD damage: 31 PR #1000/#1002 files verified (2,996 traces + 627 in-place == MOD, 0 diffs); 1,927 new values wired for 19 uncovered fighters. No existing MOD value overwritten; megami t8_source rows untouched.
+- Batch checker: tools/combat-qa/wiring_batch_verify.py (130 checks, one run; --gpu prints the GPU job spec instead of faking GPU work).
+
+Files: game/assets/movesets/*.json (30), game/data/moveset-library/banks/wrestling.json, game/data/moveset-library/index.json, tools/combat-qa/wiring_batch_verify.py (new). Additions only except the 36 removed wrong-claim lines.
