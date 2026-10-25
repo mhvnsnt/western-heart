@@ -8,8 +8,9 @@
    Demo mode: open with ?demo=1 and P1 is also CPU-driven —
    good for watching AI-vs-AI or unattended verification.
    ============================================================ */
-import { inReach, moveReach } from './combat-core.js';
+import { inReach, moveReach, attackPhase } from './combat-core.js';
 import { testSweptHit } from './hitbox.js';
+import { reactionFor, feelFor, emit as emitCombat } from './combat-systems.js';
 import * as THREE from 'three';
 import { Arena } from './scene.js';
 // LOADSPEED (2026-10-22): fighter.js (rigs, T3 wiring, movesets) is fight-only —
@@ -699,6 +700,17 @@ export class Game {
             (isCounter ? 0.5 : isGrab ? 0.45 : isHeavy ? 0.4 : 0.22) * this.feel.shake,
             (isCounter ? 0.3 : isGrab ? 0.28 : 0.2) * this.feel.shake);
           this._hitStop = (isCounter ? 0.14 : isGrab ? 0.1 : isHeavy ? 0.11 : 0.08) * this.feel.hitstop;
+          // pt217u: Tekken reaction table (stagger/crumple/launch/screw/wall splat/floor bound/
+          // knockdown, counter-hit) -> defender._reaction + spark/sound hook bus (combat-systems.js).
+          try {
+            const reaction = reactionFor(hb.move, { counter: !!isCounter, airborne: !defender.onGround, crouching: defender.state === 'crouch',
+              nearWall: !!(this.arena && this.arena.nearWall && this.arena.nearWall(defender)), juggleHits: attacker.combo || 0 });
+            const fx = feelFor(reaction, { counter: !!isCounter });
+            this._hitStop = Math.max(this._hitStop, fx.stopSec * this.feel.hitstop);
+            defender._reaction = reaction;
+            if (hb.move.purgeRage) { defender._rageUsed = true; if (defender.setRageAura) defender.setRageAura(false); } // 霊放 purifies rage
+            emitCombat({ type: 'hit', reaction, counter: !!isCounter, spark: fx.spark, sound: fx.sound, attacker: attacker.char && attacker.char.id, move: attacker.attackName });
+          } catch (e) { /* reaction layer is advisory; never break a hit */ }
           // Tekken hit-condition presentation (hitfx.js): gold spark on hit,
           // red-orange on counter, ring on heavies, character surge color kept.
           const fxType = isSurge ? 'surge' : isCounter ? 'counter' : isGrab ? 'grab' : isHeavy ? 'heavy' : 'hit';

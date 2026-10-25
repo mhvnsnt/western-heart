@@ -58,6 +58,7 @@ import { hitWordFor, attackPhase, moveReach, PressBuffer,
   resolvePerMoveHitbox, resolvePerMoveHurtbox } from './combat-core.js';
 import { HURT_SEGMENTS, WEAPON_SEGMENTS, LIMB_RADIUS, fallbackHurts } from './hitbox.js';
 import { selectReactionSlot, reactionSlotBank } from './t3-reaction-select.js';
+import { soulStates } from './full-movelist.js';
 
 // ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
 // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO in Western Heart. The 'jin' moveset family is now 'demonio'.
@@ -1122,6 +1123,7 @@ export class Fighter {
       urgeOn: !!this._urgeOn,
       urgeAvailable: !this._urgeUsed && !this._urgeOn && this.hp > 0,
       inMove: this.state === 'attack',
+      soulStates: soulStates(this), // pt217u: 魂 ACTION / KESSHOU / 九魂解放 / 霊放 / 試練の封 gates
     };
   }
 
