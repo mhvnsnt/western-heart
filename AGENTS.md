@@ -98,11 +98,33 @@ On 2026-10-23, cape-jones PR #219 wiped main: the merge was built from a sparse/
 - `legacy-unsourced` marks the pre-law hand-made screens. They are grandfathered only while untouched. To change one, first rebuild it from a teardown source and cite that source.
 - Make this check **required** in branch protection (owner setting).
 
+## Never strand work locally — push early, push often (owner rule, 2026-10-23)
+Applies to Muse, Claude, Grok and every agent. Usage limits and crashes have left finished work
+(e.g. a 16-rig batch) stuck on one agent's disk. So: commit + push every finished piece immediately;
+commit any script/tool used to generate assets under `tools/`; open the PR right after the first
+commit; follow the merge rules (clean merge, every check green via the Actions runs API, no
+deletions, nothing frozen, no batch merges). On resume, first push anything left over, then
+reconcile with other agents' branches via agent-ops `CLAIMS.md`. Claude Code also has an automatic
+safety net: `.claude/settings.json` hooks → `tools/agent/autosave.sh` (see `CLAUDE.md`). Other agents
+may run it by hand: `bash tools/agent/autosave.sh manual`. `wip(autosave)` commits are allowed.
+
 ## Owner rules — 2026-10-23 (disk offload + merge rule) — Repo Co Dev
 
 **(a) Disk offload.** Once local work is verified 100% pushed (0 dirty, 0 untracked, 0 stash, every local branch on the remote at the same or a later SHA, submodules included) or stored in box-storage, clear it off the box disk as you go, and log each removal (path, repo, HEAD SHA, date) in agent-ops `BOX-OFFLOAD-LOG.md`. If any check fails or ownership is unclear, keep it on disk and list it.
 
 **(b) Merge rule.** Merge only when GitHub shows the PR as MERGEABLE/CLEAN, every check is verified green through the Actions runs API (a timeout, 403 or unreadable result counts as a FAIL), `git diff --diff-filter=D --name-only origin/main...HEAD` is empty, and the PR is not freeze-marked. No batch merges: one PR at a time. Claim the work in agent-ops `CLAIMS.md` first. Never force-push or rebase pushed work. If any check is unverifiable, leave the PR open.
+
+## Team workflow — Tekken data sources
+Where the Tekken 7/8 data comes from and how any agent pulls it (T8 movesets, T7 frame data, owner's Steam T7 files, HUD/announcer): `docs/team/TEKKEN-DATA-SOURCES.md`.
+
+
+## COMPLETE WIRING LAW (owner 2026-10-23 — permanent)
+
+Everything pulled from Tekken and every other game must be 100% wired in without the owner naming each system; agents audit and fix it themselves, claim rows on #866, and push at least every system / ~30 min. Full law: `docs/rules/COMPLETE-WIRING-LAW.md`. Inventory: `docs/tech/SYSTEMS-COVERAGE.md`.
+
+
+## Main protection law (2026-10-23, after PR #498)
+main is branch-protected with required checks (pr-safety-guard, clobber-guard, deletion-guard, no-deletion-guard, instruction-gate), admins included. Never merge with pending or red checks, never resolve merges in a sparse checkout, never self-apply `owner-approved-deletion` / `owner-approved-stale`. Full rules: `docs/rules/MAIN-PROTECTION.md`.
 
 ## Team workflow (multi-agent, t141u)
 - Rules + lanes: `docs/AGENT-TEAM-PROTOCOL.md`
