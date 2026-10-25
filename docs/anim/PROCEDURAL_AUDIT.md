@@ -135,3 +135,42 @@ Added `game/assets/models/pantera_fixed.glb`; the original is kept. Tool, proof 
 Remaining defects:
 - The wrist cuffs float because they are weighted to Spine/Spine1.
 - The logo and pants weighting stretches in wide stances.
+
+
+## INSTRUCTION GATE: Owner law, data source priority (Oct 23, 2026, 2:19 PM CT)
+
+> **Western Heart data (moves, animations, frame data, menus, character select) comes from Tekken 5, 6, 7, 8 and TTT2. Tekken 3 is only a last-resort fallback, and every T3 use must be logged with the reason no T5/6/7/8/TTT2 source was available.**
+
+- Search T5/T6/T7/T8/TTT2 teardowns first. Use T3 only when none of them has the data, and log the T3 use (file, clip, reason) in `docs/anim/PROCEDURAL_AUDIT.md`.
+
+### Status of existing T3-baked clips under this law
+
+All T3-baked clips already in the repo are **fallback, to be replaced from T5/6/7/8/TTT2**. Nothing is deleted; they stay until a replacement is baked and verified.
+
+| Asset | T3 clips | Status | Reason T3 was used |
+|---|---|---|---|
+| `lab/game/assets/pantera_leoman_t3real.glb` | all 31 `t3_*` clips (stances, wins, light/medium/heavy/grab, walk, dash, crouch, jump, sidestep, hit, block, KO) | fallback, to be replaced from T5/6/7/8/TTT2 | Only decoded motion bank at bake time; TTT2 motion not decoded, T6 `DATA401` encrypted, T7 meshes only, T5/T8 motion not acquired. |
+| `lab/game/assets/t3_king_t3real.glb` | same clip list | fallback, to be replaced from T5/6/7/8/TTT2 | same |
+| `lab/game/assets/t3_{jin,xiaoyu,bryan,gunjack,yoshimitsu}_t3real.glb` | 29 `t3_*` clips each | fallback, to be replaced from T5/6/7/8/TTT2 | same |
+| `assets/anim/t3/**` bake JSON, `fighter.gd` `REAL` map, v4 title hero (`t3_win_rp`) | derived from the above | fallback, to be replaced from T5/6/7/8/TTT2 | same |
+| `game/assets/anim/t3/{ogre,kuma,gon,law,forestlaw_on_law}/` + `lab/game/assets/t3_{ogre,kuma,gon,law,forestlaw_on_law}_t3real.glb` (Claude, 2026-10-23, `tools/anim/t3_bake_bank.py`; proof `docs/proof/claude-2026-10-23/t3-banks/`) | 26 universal slots + light/medium/heavy, and every row the WH movesets reference in `rows.pack.json` (ogre 187, gon 147, kuma 161, law 216, forestlaw 198) | fallback, to be replaced from T5/6/7/8/TTT2 | Chatur (True Ogre), Menajerii (Kuma), Dorowani (Gon) and Buffalo Bill (Marshall Law + Forest Law) had movesets but no animation bank, so they stood rigid in fights. No T5/T6/T7/T8/TTT2 animation is decoded in the repo for any fighter: `teardown/tekken7/TEKKEN7-ROSTER-COVERAGE.md` records T7 moveset/animation coverage at 0 of 51 (needs the 47 GB Steam paks, `teardown/tekken7/T7-STEAM-EXTRACTION.md`); T6 is encrypted; TTT2 needs a ~40 GB extraction; T5/T8 animation data is not in the repo. T7/T8 frame data (startup, hit level, damage) is used where the game reads timing. |
+| `game/assets/anim/t3/reactions.json` + `game/assets/anim/t3/<22 banks>/reactions.pack.json` (Claude lane E, 2026-10-24, `tools/anim/t3_reaction_tables.py` + `tools/anim/t3_reaction_bake.py`; contract `docs/anim/T3-REACTIONS.md`) | hit reactions (front/side/back × standing/crouching, counter hit, guard, down), air kinds `0xD56`–`0xD64`, KO collapse `0xD66`, throw-victim moves, thrower throw moves, throw escapes and their default continuations: 7,368 clips, 0 missing; the EXE tables `g_reactionRecords` `0x80010CE8`, `g_throwVictimSlots` `0x800174C4`, `g_closeReactions`, `g_airKinds`, `g_pushTables` from `SLUS_004.02` | fallback, to be replaced from T5/6/7/8/TTT2 | Every bank played one generic `t3_hit` (slot `0x9a2`) for every hitstun and for being thrown, and `t3_grab` was a copy of `t3_heavy`. No reaction or throw data from T5/T6/T7/T8/TTT2 is decoded in the repo. T7 fighter animation is 0 of 51 (`teardown/tekken7/TEKKEN7-ROSTER-COVERAGE.md`). T6 `DATA401` is still encrypted (`teardown/tekken6/MOTION-UNBLOCK-2026-10-23.md`). T5 `TK5DATA2` motions are only named, not extracted (`teardown/tekken5/t5_motion_manifest.txt`). TTT2 is not extracted, and T8 has models and UI only. |
+| `game/assets/movesets/{pantera,burger,skull,diablo,phantom}.json` rewires + bindings (anim-motion audit 2026-10-24, `docs/anim/ANIM-MOTION-AUDIT-2026-10-24.md`, tool `tools/combat-qa/anim_motion_audit.py`) | 11 basic rewires — king 110 (pantera LP1), 99 (pantera RP2), 264 (pantera LK3); bryan 172 (burger/skull LP1), 100 (burger/skull RP2), 104 (burger/skull RK4); heihachi 104 (diablo RK4); yoshimitsu 123 (phantom LK3) — and 22 jumping-move bindings — bryan 183/87 (burger), heihachi 74 (diablo), yoshimitsu 73 (phantom), bryan 76 (skull) | fallback, to be replaced from T5/6/7/8/TTT2 | The previous rows were airborne/jump/wrong-limb clips (e.g. pantera LP1 row 44 starts airborne, RP2 row 203 duck-dips + travels 0.95 m, LK3 row 54 is a jump clip); the replacements are the only decoded in-bank rows passing limb/level/stance/foot checks for those moves. No T5/T6/T7/T8/TTT2 animation is decoded in the repo for any of these fighters (T7 0 of 51, T6 encrypted, TTT2 not extracted, T5/T8 motion not acquired); T7/T8 frame data carries timing/level only, no motion bytes. Kept rows (pantera RK4 216, burger/skull/diablo RP2, demonio/kinpo/scimitar RP2/LK3/RK4, diablo LK3) are likewise T3 fallback, not T7 motion. |
+| `game/assets/movesets/{demonio,diablo}.json` 1+2 rewires (anim-motion audit follow-up 2026-10-24, `docs/anim/ANIM-MOTION-AUDIT-2026-10-24.md`, tool `tools/combat-qa/anim_motion_audit.py`) | 2 chord rewires — jin 92 (demonio LP1+RP2), heihachi 133 (diablo LP1+RP2) | fallback, to be replaced from T5/6/7/8/TTT2 | The previous rows were jump clips (jin 32, heihachi 37 — T3's own 1+2 attachments, but jumping motions for standing strikes); the replacements are the only decoded in-bank rows passing limb/level/stance/travel/provenance checks for those moves (jin 92: demonio `d+1+2` + `1+2~t3.jin` variant; heihachi 133: T3 table `b_r133` directional LP+RP). No T5/T6/T7/T8/TTT2 animation is decoded in the repo for these fighters (T7 0 of 51, T6 encrypted, TTT2 not extracted, T5/T8 motion not acquired); T7/T8 frame data carries timing/level only, no motion bytes. |
+
+### T3 moveset-data use under this law (batch8, 2026-10-23)
+
+| Asset | T3 data | Status | Reason T3 was used (no T5/6/7/8/TTT2 source available) |
+|---|---|---|---|
+| `game/assets/movesets/chatur.json` +129 moves (`merge_source: t3:ogre:row:N`, tagged `"set": "FIGHT"`) | True Ogre rows from `teardown/tekken3/movesets/moveset_ogre.json` (divmot14, 330 rows) via `tools/moveset-merge/merge_sources.py` | fallback, to be replaced from T5/6/7/8/TTT2 if True Ogre data ever surfaces | True Ogre is T3-only: cut from every later Tekken (not in T5/T6/T7/T8/TTT2 rosters). No newer movelist exists anywhere. T3 is the only source, not a fallback of convenience. |
+| `game/assets/movesets/bruno.json` (0 added), `docfrank.json` (0 added), `samura1.json` (0 added), `star.json` (0 added) | none — pulls verified complete from newer sources | n/a | bruno: T7 Miguel complete (219/219, `docs/t7t8-reference/frame-data-t7/miguel.json`). docfrank: T3 Bosconovitch rows all covered (TTT2 Bosconovitch movelist pending extraction lane — no data to pull). samura1: T8 Jack-8 + T7 Jack-7 + T3 Gun Jack complete. star: Christie T5/TTT2 movelist unavailable (no data on disk; TTT2 extraction blocked) — see `docs/anim/STAR-ANIM-GAP-20261023.md`. |
+
+## INSTRUCTION GATE: Owner law, no hand-made menus (Oct 23, 2026, 2:21 PM CT)
+
+> **NO hand-made menus. Every Western Heart menu, character select and customization screen must be built from the actual teardown files (Tekken 5/6/7/8/TTT2 and other game teardowns). Every UI change must cite its teardown source files.**
+
+### Status of existing hand-made UI under this law
+
+| Asset | Status | Action |
+|---|---|---|
+| `game/ui-wh/` HTML UI (`index.html`, `cards.html`, `cards.css`, `cards.js`, `roster.js`, `imports.json`, `art/`, `fonts/`, `portraits/`) | **hand-made, NON-COMPLIANT** | Slated for rebuild from teardown UI files (T5/T6/T7/T8/TTT2 menu/char-select/customize layouts, then other game teardowns). Kept as a **fallback**; do NOT delete. Replace only in a reviewed PR that cites its teardown source files. |
