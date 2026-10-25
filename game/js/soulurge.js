@@ -43,9 +43,22 @@ export const URGE_SMASH_NOTATION = 'US.2+3';
 export const URGE_DASH_PIPS = 1;
 export const URGE_SMASH_DAMAGE = 30;
 
-/* The fighter's launcher-class strike becomes their Urge Engager
-   (T8: every character has their own engager moves). Highest knock,
-   non-grab strike — synthesized rage/urge moves are never eligible. */
+/* Per-character Urge Engager list (completed 2026-10-24): a moveset
+   may declare `urgeEngagers: [notation, ...]` — every listed move that
+   exists becomes an engager (T8: every character has their OWN engager
+   moves, plural). Without a list, the fallback is the old behaviour:
+   the fighter's launcher-class strike (highest knock, non-grab).
+   Synthesized rage/urge moves are never eligible either way. */
+export function listUrgeEngagers(ms) {
+  if (!ms || !ms.moves) return [];
+  if (Array.isArray(ms.urgeEngagers)) {
+    return ms.urgeEngagers.filter((k) => ms.moves[k] && !ms.moves[k].isGrab
+      && ms.moves[k].move_class !== 'throw' && !/^(R\.|RD\.|UB\.|US\.)/.test(k));
+  }
+  const k = _engagerKey(ms);
+  return k ? [k] : [];
+}
+
 function _engagerKey(ms) {
   let best = null, bestKnock = -1;
   for (const [key, m] of Object.entries(ms.moves)) {
@@ -89,11 +102,17 @@ export function ensureUrgeMoves(fighterId, msApi) {
     ms.slots = ms.slots || {};
     ms.slots[bKey] = bKey; ms.slots[sKey] = sKey;
   }
-  // flag the engager (once)
+  // flag the engager(s): explicit per-character list, else auto-pick.
+  // (Re-runs flag any newly-listed move; the auto-pick stays once-only
+  // so a later highest-knock change cannot silently swap engagers.)
+  for (const ek of listUrgeEngagers(ms)) {
+    if (ms.moves[ek]) ms.moves[ek].urgeEngager = true;
+  }
   if (!ms._urgeEngagerKey) {
     const ek = _engagerKey(ms);
     if (ek && ms.moves[ek]) { ms.moves[ek].urgeEngager = true; ms._urgeEngagerKey = ek; }
   }
+  ms._urgeEngagerKeys = listUrgeEngagers(ms);
   return true;
 }
 
@@ -108,6 +127,9 @@ export class SoulUrge {
     for (const f of [this.game.p1, this.game.p2]) {
       if (!f) continue;
       f._urgeUsed = false; f._urgeOn = false; f._urgePips = 0; f._urgeT = 0;
+      // COMBAT-SYSTEMS 2026-10-24: round reset also frees the spin slot,
+      // clears the recoverable pool and the wall-splat flag.
+      f._spinUsed = false; f._spinKind = null; f._recoverable = 0; f._wallSplat = false;
       if (f.setUrgeAura) f.setUrgeAura(false);
     }
     // Safety net: movesets may finish loading after startMatch.
@@ -157,8 +179,15 @@ export class SoulUrge {
   }
 
   /** Per fixed-step: tick the urge timer (pauses while the opponent
-      is hit or grounded — T8), expire at zero. */
-  update(dt) {
+      is hit or grounded — T8), expire at zero.
+      BUG FIX 2026-10-24: game.js used to call update(p1, dt) AND
+      update(p2, dt) per frame, so dt arrived as a fighter object and
+      the timer went NaN. This now accepts update(dt) (correct, one
+      call per frame) and tolerates the old update(fighter, dt) shape
+      by taking dt from the second argument. */
+  update(a, b) {
+    const dt = typeof a === 'number' ? a : (typeof b === 'number' ? b : 0);
+    if (!(dt > 0)) return;
     const g = this.game;
     const pairs = [[g.p1, g.p2, 'p1'], [g.p2, g.p1, 'p2']];
     for (const [f, opp, id] of pairs) {

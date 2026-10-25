@@ -46,6 +46,105 @@ export function hitWordFor(mv) {
   return undefined;
 }
 
+/* ============================================================
+   COMBAT SYSTEMS 2026-10-24 — Power Crush, Screw/Tornado, Wall
+   Splat, Recoverable Health, Item-move gate.
+   Technical names only (Tekken terms stay in technical files, never
+   in CANON.md bios). Universe names for these systems: NEEDS NAME
+   (no name in CANON.md / SOUL-SYSTEMS.md as of 2026-10-24) — do not
+   present the technical names below as canon.
+   T7 rules implemented here (pure, headless-testable):
+   • Power Crush: a move flagged powerCrush absorbs mid/high strikes
+     and keeps swinging, but LOSES to lows, throws and unblockables.
+     Damage taken while power-crushing becomes RECOVERABLE (T8 rule,
+     wavu King Muscle Armor note: "Damage taken during power crush
+     state is recoverable").
+   • Screw (S!, T7 kirimomi / tailspin) + Tornado (T!, T8 successor):
+     a flagged move against an AIRBORNE victim spins them into a
+     slump; usable ONCE per combo — the second flagged hit in the
+     same combo does not spin again. Both flags share one slot:
+     a combo cannot spend Screw and then Tornado.
+   • Wall splat (W!): a victim in hitstun/knockdown/spin whose
+     knockback carries them into an unbroken stage wall sticks to
+     the wall in a vulnerable window. Distinct from wall BREAK
+     (stagebreaks.js): a break shatters the wall and EXTENDS the
+     bounds; a splat leaves the wall and the bounds untouched.
+   • Recoverable health (white gauge, T8): chip damage taken on
+     block and damage absorbed by Power Crush do NOT vanish — they
+     enter a recoverable pool (hp + pool <= maxHp). The pool is
+     recovered ONLY by dealing damage (landed hits and chip you
+     inflict); it never recovers with time. See fighter.js
+     recoverFromPool / _recoverable.
+   • Item moves (T7): a move flagged requiresItem is available
+     only while that customization item is equipped; unflagged
+     moves are unaffected (no item data exists in repo movesets
+     yet, so this gate is currently a no-op scaffold).
+   ============================================================ */
+
+/* Hit level of a move: 'high' | 'mid' | 'low' | 'special' (s.mid)
+   | 'unblockable' | 'throw' | null (unknown). Derived from the
+   decoded hit word when present, else hitWordFor's fallback chain. */
+export function hitLevelOf(mv) {
+  if (!mv) return null;
+  if (mv.isGrab) return 'throw';
+  if (mv.unblockable) return 'unblockable';
+  const w = mv.hitWord ?? hitWordFor(mv);
+  if (w === HIT_WORD.h) return 'high';
+  if (w === HIT_WORD.m) return 'mid';
+  if (w === HIT_WORD.l) return 'low';
+  if (w === HIT_WORD.s) return 'special';
+  if (w === HIT_WORD.ub) return 'unblockable';
+  return null;
+}
+
+/* Power Crush absorption: defender's powerCrush move, incoming strike
+   that is NOT a low, throw or unblockable. Unknown-level strikes do
+   NOT get absorbed (fail closed: a level we cannot prove mid/high
+   must interrupt, or every unlevelled poke would be absorbed). */
+export function powerCrushAbsorbs(defenderMove, incomingMove) {
+  if (!defenderMove || !defenderMove.powerCrush) return false;
+  if (!incomingMove || incomingMove.isGrab || incomingMove.unblockable) return false;
+  const lvl = hitLevelOf(incomingMove);
+  return lvl === 'mid' || lvl === 'high' || lvl === 'special';
+}
+
+/* Which spin (if any) a move carries: 'screw' wins if both are set. */
+export function spinMoveKind(mv) {
+  if (!mv) return null;
+  if (mv.screw) return 'screw';
+  if (mv.tornado) return 'tornado';
+  return null;
+}
+
+/* A spin fires only against an airborne victim, once per combo. */
+export function canSpin(mv, victimAirborne, spinUsed) {
+  return !!spinMoveKind(mv) && !!victimAirborne && !spinUsed;
+}
+
+/* Wall-splat geometry: victim already clamped at a wall, still
+   travelling toward that same wall fast enough to stick. */
+export function shouldWallSplat({ x, limit, vx }) {
+  if (!Number.isFinite(x) || !Number.isFinite(limit) || !Number.isFinite(vx)) return false;
+  return Math.abs(x) >= limit - 0.01 && vx !== 0 && Math.sign(vx) === Math.sign(x)
+    && Math.abs(vx) >= 0.5;
+}
+
+/* Recoverable-pool arithmetic. Invariant: hp + pool <= maxHp. */
+export function addToRecoverable(hpAfter, maxHp, pool, amount) {
+  if (!(amount > 0)) return pool || 0;
+  return Math.min(Math.max(0, maxHp - hpAfter), (pool || 0) + amount);
+}
+export function greyRecover(hp, maxHp, pool, amount) {
+  const recovered = Math.min(pool || 0, Math.max(0, amount || 0));
+  return { hp: Math.min(maxHp, hp + recovered), pool: (pool || 0) - recovered, recovered };
+}
+
+/* Item-move gate: unflagged moves always available. */
+export function itemMoveAvailable(mv, equipped) {
+  if (!mv || !mv.requiresItem) return true;
+  return Array.isArray(equipped) && equipped.includes(mv.requiresItem);
+}
+
 export function effectiveActive(m) {
   return Math.max(Number(m && m.active) || 0, MIN_ACTIVE);
 }

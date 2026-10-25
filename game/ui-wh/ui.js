@@ -130,7 +130,12 @@ const byId = (id) => ROSTER.find((r) => r.id.replace(/[^a-z0-9]/g, "") === Strin
 function hud(d) {
   const set = (side, f) => {
     const pct = Math.max(0, (f.hp / f.maxHp) * 100);
+    // COMBAT-SYSTEMS 2026-10-24: white recoverable bar (<b>) extends
+    // past the hp fill by the pool; the red trail (<u>) keeps its old
+    // delayed-shrink behaviour underneath it.
+    const greyPct = Math.max(pct, Math.min(100, ((f.hp + (f.recoverable || 0)) / f.maxHp) * 100));
     const bar = document.querySelector(`.plate.${side} .bar`);
+    const gb = bar.querySelector("b"); if (gb) gb.style.width = greyPct + "%";
     bar.querySelector("i").style.width = pct + "%";
     const u = bar.querySelector("u"); if (parseFloat(u.style.width) < pct || !u.dataset.t) u.style.width = pct + "%";
     clearTimeout(u._t); u._t = setTimeout(() => { u.style.width = pct + "%"; }, 600); u.dataset.t = 1;

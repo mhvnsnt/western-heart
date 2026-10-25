@@ -116,10 +116,15 @@ const ui = {
   updateHP(p1, p2) { this._hp('p1', p1); this._hp('p2', p2); },
   _hp(id, f) {
     const pct = Math.max(0, (f.hp / f.maxHp) * 100);
+    // COMBAT-SYSTEMS 2026-10-24: the white .hp-damage bar is the
+    // RECOVERABLE gauge — it extends past the hp fill by the pool
+    // (hp + recoverable), so white = health you can win back by
+    // attacking. With an empty pool it matches the hp fill as before.
+    const grey = Math.max(pct, Math.min(100, ((f.hp + (f._recoverable || 0)) / f.maxHp) * 100));
     const fill = document.getElementById(`${id}-hp`);
     const dmg = document.getElementById(`${id}-hp-dmg`);
     fill.style.width = pct + '%';
-    dmg.style.width = pct + '%';
+    dmg.style.width = grey + '%';
     fill.classList.toggle('low', pct < 30);
   },
   updateMeter(p1, p2) { this._meter('p1', p1); this._meter('p2', p2); },
