@@ -26,6 +26,7 @@ async function gungakuAI() {
   return _GungakuAI;
 }
 import { audio } from './audio.js';
+import { voice } from './voice.js';
 import { music } from './music.js';
 import { getStage } from './stages.js';
 import { applyFighterProfile } from './customization-consumer.js';
@@ -469,7 +470,7 @@ export class Game {
           }
           this.ui.throwBreakPrompt(false);
           if (result === 'ko') {
-            audio.ko(); audio.grunt(def.isPlayer ? 1.1 : 0.85);
+            audio.ko(); audio.grunt(def.isPlayer ? 1.1 : 0.85); voice.play(def.char && def.char.id, 'ko');
             this.arena.shake(0.6 * this.feel.shake, 0.45 * this.feel.shake);
             this._hitStop = 0.18 * this.feel.hitstop;
             this.hitfx.spawn('ko', def.root.position.x, 1.2, def.root.position.z,
@@ -478,7 +479,7 @@ export class Game {
             // over hitfx.spawn and would double-spawn the KO burst above).
             if (this.rage) this.rage.onHitKO(atk, def);
           } else if (result && result !== 'dodge') {
-            audio.grab(); audio.grunt(def.isPlayer ? 1.05 : 0.9);
+            audio.grab(); audio.grunt(def.isPlayer ? 1.05 : 0.9); voice.play(def.char && def.char.id, 'hit');
             this.arena.shake(0.45 * this.feel.shake, 0.28 * this.feel.shake);
             this._hitStop = 0.1 * this.feel.hitstop;
             this.hitfx.spawn('grab', def.root.position.x, 1.2, def.root.position.z,
@@ -670,7 +671,7 @@ export class Game {
           this._hitStop = 0.05 * this.feel.hitstop;
           this._spawnImpact(hb.x, hb.y, hb.z, 0xbfd4ff, 0.7);
         } else if (result === 'ko') {
-          audio.ko(); audio.grunt(defender.isPlayer ? 1.1 : 0.85);
+          audio.ko(); audio.grunt(defender.isPlayer ? 1.1 : 0.85); voice.play(defender.char && defender.char.id, 'ko');
           this.arena.shake(0.6 * this.feel.shake, 0.45 * this.feel.shake);
           this._hitStop = 0.18 * this.feel.hitstop;
           this.hitfx.spawn('ko', hb.x, hb.y, hb.z, { dirX: Math.sign(defender.root.position.x - attacker.root.position.x) || 1 });
@@ -689,7 +690,7 @@ export class Game {
           else if (attacker.attackName === 'grab') audio.grab();
           else if (isSurge) { /* surge sound played on startup */ }
           else audio.punch();
-          audio.grunt(defender.isPlayer ? 1.05 : 0.9);
+          audio.grunt(defender.isPlayer ? 1.05 : 0.9); voice.play(defender.char && defender.char.id, 'hit');
           // Tekken-tiered hitstop + shake: light < heavy < counter.
           this.arena.shake(
             (isCounter ? 0.5 : isGrab ? 0.45 : isHeavy ? 0.4 : 0.22) * this.feel.shake,

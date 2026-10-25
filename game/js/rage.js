@@ -138,8 +138,7 @@ export class RageSystem {
     if (ui && ui.setRage) { ui.setRage('p1', false); ui.setRage('p2', false); }
   }
 
-  /** Per fixed-step: flag rage when it starts (HUD tag + aura, never a
-      banner), clear when it ends. */
+  /** Per fixed-step: apply rage aura + health-bar tag when it starts, clear when it ends. No center-screen text — Tekken shows rage via red aura + red lifebar only (2026-10-24). */
   update() {
     const ui = this.game.ui;
     const pairs = [[this.game.p1, 'p1'], [this.game.p2, 'p2']];

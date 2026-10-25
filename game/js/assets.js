@@ -19,6 +19,10 @@ import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
 import { ATTIRE_CUSTOMIZATIONS } from './attire-customizations.js';
 // Material gate (every model, every load): game/js/material-runtime.js.
 import { resolveModelMaterials, assertModelUsable } from './material-runtime.js';
+// Lane 5: persistent Cache API for model bytes (see asset-cache.js).
+// A cache hit skips the network entirely; a miss stores the bytes
+// after a successful download. Never changes parse/ingest behavior.
+import { getCachedBuffer, putCachedBuffer } from './asset-cache.js';
 
 export const MODEL_URLS = {
   pantera: 'assets/models/pantera.glb',
@@ -1205,6 +1209,16 @@ class AssetManager {
     const LOAD_TIMEOUT_MS = 90000;
     const attempt = async () => {
       const signal = _anySignal([ctrl.signal, _timeoutSignal(LOAD_TIMEOUT_MS)]);
+      // Lane 5: persistent-cache hit — report full byte progress once
+      // (the bar must move on real bytes, not stall), then parse the
+      // cached buffer on the identical path as a network download.
+      if (!signal.aborted) {
+        const cached = await getCachedBuffer(url);
+        if (cached && !signal.aborted) {
+          if (onProgress) onProgress(1, cached.byteLength, cached.byteLength, id);
+          return _sharedGLTFLoader().parseAsync(cached, url);
+        }
+      }
       const res = await fetch(url, { signal });
       if (!res.ok) throw new Error(`HTTP ${res.status} loading ${id}`);
       const totalBytes = Number(res.headers.get('content-length')) || 0;
@@ -1232,6 +1246,10 @@ class AssetManager {
         if (e && e.name === 'AbortError') throw e;
         buf = await res.arrayBuffer(); // no reader progress on very old browsers
       }
+      // Lane 5: persist the downloaded bytes for the next session.
+      // Fire-and-forget (never blocks the parse); a failed store is
+      // a silent no-op inside putCachedBuffer.
+      if (buf) putCachedBuffer(url, buf);
       // Same URL string the old loader.load() used, so external .bin /
       // texture references resolve exactly as before.
       return _sharedGLTFLoader().parseAsync(buf, url);

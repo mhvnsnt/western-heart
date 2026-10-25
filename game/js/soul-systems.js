@@ -1,7 +1,7 @@
 /* SOUL SYSTEMS (owner 2026-10-23) — docs/design/SOUL-SYSTEMS.md.
    Built on the Tekken base as extensions; KESSHOU (finisher.js) stays THE finisher.
    • 九魂解放 NINE-SOUL RELEASE — super, full Nine-Soul Meter, 1+2+3+4 at full meter.
-     HUD: meter-wrap glow via setSoulReady (no banner).
+     HUD: meter-ready indicator (ui.setSoulReady) — no center-screen text (Tekken-exact UI, 2026-10-24).
    • 霊放 REIHOU "Spirit Release" — 1+4 while the foe is raging, costs 50 meter;
      spirit channels flare, the foe's rage is purged for the round.
    • 試練の封 TRIAL'S SEAL — decisive round-ending verdict seal (not a death).

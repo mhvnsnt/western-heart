@@ -56,6 +56,7 @@ export class Arena {
     }, false);
 
     this._shakeT = 0; this._shakeMag = 0; this._lookY = 1.0;
+    this.freeCameraActive = false;  // game/js/free-camera.js takeover gate
     this._stage = null;      // built stage { group, update, def, skyTex, fog }
     this._stageToken = 0;    // guards against out-of-order async builds
     this.setStage(stageId);
@@ -90,9 +91,18 @@ export class Arena {
 
   shake(mag = 0.25, dur = 0.18) { this._shakeMag = Math.max(this._shakeMag, mag); this._shakeT = Math.max(this._shakeT, dur); }
 
+  /* Free-camera gate (game/js/free-camera.js): while the user drives
+     the camera, the authored fight camera must not overwrite it. */
+  setFreeCamera(active) { this.freeCameraActive = !!active; }
+
   update(dt, fighterA, fighterB) {
     const t = performance.now() * 0.001;
     if (this._stage) this._stage.update(dt, t, fighterA, fighterB);
+    // Free-camera takeover (game/js/free-camera.js): the authored fight
+    // camera is procedural (recomputed from the fighters every frame),
+    // so gating it here overwrites nothing — on return the next update()
+    // recomputes it and eases back in.
+    if (this.freeCameraActive) return;
 
     // dynamic fighting camera — Tekken CameraRig port
     // (teardown/tekken3/tools/tekken3recompiled/native/src/camera.cpp):
