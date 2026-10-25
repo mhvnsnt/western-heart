@@ -9,7 +9,6 @@ import './menu-t7-layout.js';
 import { Game } from './game.js';
 import { InputManager } from './input.js';
 import { audio } from './audio.js';
-import { music } from './music.js';
 import { assets } from './assets.js';
 import { ROSTER, getCharacter } from './characters.js';
 // LOADSPEED (2026-10-22): fighter.js / movesets.js / t3anims.js / modes.js
@@ -77,16 +76,6 @@ function show(name) {
     requestAnimationFrame(() => requestAnimationFrame(() => mark('select-interactive')));
   }
   else { selectTimerArmed = false; stopSelectTimer(); }
-  // MUSIC (2026-10-24): Tekken screen-change rule — menu screens get their
-  // own rotating theme; the fight itself gets the stage pool at fight
-  // start (see startFight). Never throws; a missing library just falls
-  // back to the procedural loop inside the engine.
-  try {
-    if (name === 'menu') music.playMenu('title');
-    else if (name === 'select') music.playMenu('select');
-    else if (name === 'stage') music.playMenu('versus');
-    else if (name === 'online') music.playMenu('online');
-  } catch (e) {}
 }
 
 const SOULS = 9; // Nine-Soul Meter segments
@@ -253,7 +242,6 @@ const ui = {
     document.getElementById('result-sub').textContent = playerWon
       ? 'The multiverse remembers this one.'
       : 'The shrine is silent. Run it back.';
-    try { music.playVictory(); } catch (e) {}
     show('result');
   },
 };
@@ -609,14 +597,20 @@ function randomEnemy(excludeId) {
 /* ---------------- Menu button wiring ---------------- */
 function unlockAudio() {
   audio.unlock();
-  music.unlock();
-  document.getElementById('tap-to-start').classList.remove('show');
 }
 
+// No tap-for-audio interstitial (owner 2026-10-24): audio enables silently
+// on the first natural tap (any pointerdown, menu tap, or fight start).
+// Sound on/off lives in SETTINGS (howto screen) instead.
 document.body.addEventListener('pointerdown', unlockAudio, { once: true });
-window.addEventListener('load', () => {
-  setTimeout(() => document.getElementById('tap-to-start').classList.add('show'), 600);
-});
+
+// SETTINGS audio toggle (howto screen): sound on/off, persisted.
+const audioToggle = document.getElementById('audio-toggle');
+if (audioToggle) {
+  const syncAudioToggle = () => { audioToggle.textContent = audio.muted ? 'SOUND: OFF' : 'SOUND: ON'; };
+  syncAudioToggle();
+  audioToggle.addEventListener('click', () => { audio.setMuted(!audio.muted); syncAudioToggle(); });
+}
 
 /* Menu tap failure toast (2026-10-24, menu tap fix): a tap must NEVER
    die silently. Mode loads that reject surface here instead of leaving
@@ -1059,10 +1053,7 @@ async function startFight(playerId, enemyId, opts = {}) {
   if (confirmBtn) confirmBtn.disabled = false;
   show('hud');
   game.paused = false;
-  // MUSIC (2026-10-24): rotating stage pool. The engine falls back to
-  // the procedural loop internally when no file track is available, so
-  // the old direct audio.startMusic() call is replaced, not doubled.
-  music.playBattle(selectedStage);
+  audio.startMusic();
   // FIGHT-LOOP REPAIR (worker 54, 2026-10-22): startMatch ran OUTSIDE the
   // load try/catch — a throw inside it (Fighter build, arena setStage, AI
   // wiring) was an unhandled rejection that stranded the player on the

@@ -13,6 +13,7 @@ class AudioEngine {
     this.musicGain = null;
     this.sfxGain = null;
     this.enabled = false;
+    this.muted = (typeof localStorage !== 'undefined' && localStorage.getItem('wh_audio_muted') === '1');
     this._musicTimer = null;
     this._musicStep = 0;
   }
@@ -26,7 +27,7 @@ class AudioEngine {
     const AC = window.AudioContext || window.webkitAudioContext;
     this.ctx = new AC();
     this.master = this.ctx.createGain();
-    this.master.gain.value = 0.9;
+    this.master.gain.value = this.muted ? 0 : 0.9;
     this.master.connect(this.ctx.destination);
 
     this.musicGain = this.ctx.createGain();
@@ -38,6 +39,14 @@ class AudioEngine {
     this.sfxGain.connect(this.master);
 
     this.enabled = true;
+  }
+
+  /* Sound on/off (SETTINGS toggle, owner 2026-10-24). Persists; applies
+     immediately when audio exists, and on unlock otherwise. */
+  setMuted(m) {
+    this.muted = !!m;
+    try { localStorage.setItem('wh_audio_muted', this.muted ? '1' : '0'); } catch (e) { /* private mode */ }
+    if (this.master) this.master.gain.value = this.muted ? 0 : 0.9;
   }
 
   get now() { return this.ctx ? this.ctx.currentTime : 0; }
