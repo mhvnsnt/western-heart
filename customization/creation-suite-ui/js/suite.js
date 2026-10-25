@@ -12,6 +12,9 @@ import { applySliders as applyBodySliders } from 'wh-creation-suite/body.js';
 /* Body-type -> template/proportions mapping (pure, Node-tested) + WWE 2K19
    layering conflicts. Importmap: wh-creation-suite/ -> packages/creation-suite/src/. */
 import { bodyTypeToDNA, propsToDNA, mergeDNA, DEFAULT_PROPS } from 'wh-creation-suite/template-map.js';
+/* Face preset number -> No Mercy PNG file (146 files, verified listing).
+   Suite composes the load URL as '../parts/no-mercy/faces/' + file. */
+import { faceTextureForPreset } from 'wh-creation-suite/face-texture-map.js';
 import { SLOT_CONFLICTS } from 'wh-creation-suite/layering.js';
 /* The game's own moveset engine (same module the fight runs): notation tables, slots, loadouts. */
 import * as MS from '../../../game/js/movesets.js';
@@ -742,18 +745,31 @@ function renderBodyFace(host){
   $('#panel-sub').textContent='Face — 12 presets (No Mercy + GNM)';
   if(!FACE_PRESETS.length){ host.innerHTML='<div class="note">Face presets failed to load (customization/templates/face-presets.json).</div>'; return; }
   const byLayer = l => FACE_PRESETS.filter(p=>p.layer===l);
-  const card = p=>`<button class="subcat" data-fp="${esc(p.id)}"><span class="sc-ico">${p.layer==='wwe'?'🎭':'😀'}</span><span>${esc(p.name)}<br><small style="color:var(--dim)">${esc(p.desc||'')} · ${p.layer==='wwe' ? 'No Mercy face texture (bake)' : 'GNM expression (bake)'}${F.body.face_preset===p.id?' · ✓ selected':''}</small></span></button>`;
-  host.innerHTML=`<div class="note">Tap a preset — it records into this attire (PROFILE →
-    SAVE TO ATTIRE) for the face bake. No Mercy textures (146 in
-    customization/parts/no-mercy/faces/) and GNM expressions bake through the
-    pipeline (TOOLS tab); for a face change you can SEE right now, use
-    MORPHS → FACE SHAPE, which morphs the live preview.</div>
+  const card = p=>`<button class="subcat" data-fp="${esc(p.id)}"><span class="sc-ico">${p.layer==='wwe'?'🎭':'😀'}</span><span>${esc(p.name)}<br><small style="color:var(--dim)">${esc(p.desc||'')} · ${p.layer==='wwe' ? 'No Mercy face texture (tap = live swap)' : 'GNM expression (bake)'}${F.body.face_preset===p.id?' · ✓ selected':''}</small></span></button>`;
+  host.innerHTML=`<div class="note">Tap a No Mercy preset — its face texture swaps LIVE in the
+    preview (146 PNGs in customization/parts/no-mercy/faces/, mapped by
+    preset number in packages/creation-suite/src/face-texture-map.js) and
+    records into this attire (PROFILE → SAVE TO ATTIRE) for the face bake.
+    If this base mesh has no swappable face material, the tap still records
+    for bake and says so — it never pretends a swap happened. GNM
+    expressions bake through the pipeline (TOOLS tab); for face SHAPE
+    changes you can see right now, use MORPHS → FACE SHAPE.</div>
     <div class="sect">NO MERCY FACES — wwe layer</div>${byLayer('wwe').map(card).join('')}
     <div class="sect">GNM EXPRESSIONS — gnm layer</div>${byLayer('gnm').map(card).join('')}
     <div class="btn-row"><button class="btn btn-blue" id="btn-face-shape">💪 SHAPE THE FACE (live morphs) →</button></div>`;
   host.querySelectorAll('[data-fp]').forEach(b=>tap(b, ()=>{
-    F.body.face_preset=b.dataset.fp; renderPanel();
-    toast(`Face preset: ${FACE_PRESETS.find(p=>p.id===b.dataset.fp)?.name||b.dataset.fp} ✓ (recorded for bake)`); }));
+    F.body.face_preset=b.dataset.fp;
+    const preset=FACE_PRESETS.find(p=>p.id===b.dataset.fp);
+    const texFile=faceTextureForPreset(preset);
+    if(texFile && typeof viewer!=='undefined' && viewer && viewer.swapFaceTexture){
+      viewer.swapFaceTexture('../parts/no-mercy/faces/'+texFile).then(swapped=>{
+        toast(`Face preset: ${preset?.name||b.dataset.fp} ✓ (${swapped?'live swap in preview':'recorded for bake — no swappable face material on this base mesh'})`);
+        renderPanel();
+      });
+    } else {
+      renderPanel();
+      toast(`Face preset: ${preset?.name||b.dataset.fp} ✓ (recorded for bake)`);
+    } }));
   tap(host.querySelector('#btn-face-shape'), ()=>{ ui.bodySec='morph-face'; renderPanel(); });
 }
 
@@ -796,8 +812,8 @@ const TOOLS_MAP = [
     action:'FIGHTER SELECT → pick a fighter → attire.' },
   { icon:'📦', name:'gltfpack / glTF-Transform', menu:'EXPORT',
     what:'GLB optimization (meshopt). The suite EXPORT button writes the fighter JSON; gltfpack optimization of the GLB runs as a pipeline step (proven in studio-pipeline tests: stance GLBs −54% to −65%, stage −59%).',
-    path:'tools/wh-asset-pipeline/ (studio-workflow PR payload, landing pending)',
-    status:'Pipeline-side. Do NOT claim in-suite GLB optimization until that script lands in-repo.',
+    path:'tools/gltfpack/ (canonical: fetch-gltfpack.sh + run_gltfpack_job.py on main; studio pipeline PR #1038 vendors the same gltfpack binary at tools/wh-asset-pipeline/tools/gltfpack — one tool, not a second pipeline)',
+    status:'Pipeline-side, one working path: EXPORT writes fighter JSON; GLB optimization runs via tools/gltfpack/run_gltfpack_job.py.',
     action:'EXPORT writes fighter JSON now.' },
 ];
 function renderTools(el){
