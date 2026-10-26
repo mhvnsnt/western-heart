@@ -50,7 +50,7 @@ int main(int argc, char **argv) {
     if (fread(b, 1, fsize, f) != (size_t)fsize) return 2;
     fclose(f);
     long off = start; int nch = 0;
-    long *coff = malloc(sizeof(long)*10000); int *clen = malloc(sizeof(int)*10000);
+    long *coff = malloc(sizeof(long)*40000); int *clen = malloc(sizeof(int)*40000);
     long chain_break = -1;
     while (off < fsize) {
         if (off + 2 > fsize) { chain_break = off; break; }
@@ -68,7 +68,7 @@ int main(int argc, char **argv) {
         }
         coff[nch] = off+2; clen[nch] = sz; nch++;
         off += 2 + sz;
-        if (nch >= 10000) break;
+        if (nch >= 40000) break; /* data007 has 12,974 chunks; 10k cap silently truncated */
     }
     if (chain_break >= 0) printf("CHAIN BREAK at off=%ld (filelen %ld, %d chunks before break)\n", chain_break, fsize, nch);
     else printf("CHAIN tiles to EOF: %d chunks\n", nch);

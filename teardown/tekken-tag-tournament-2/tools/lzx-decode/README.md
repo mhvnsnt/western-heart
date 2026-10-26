@@ -52,6 +52,7 @@ Known chunk starts (first chunk-size prefix offset):
 | data000.bin | 144 |
 | data004.bin | 96 |
 | data050.bin | 132 |
+| data007.bin | 2812 |
 
 Decoded binaries are NOT committed (repo AGENTS.md rule 8: no copyrighted
 game files). Reproduce from release `ttt2-7z-v1` via
