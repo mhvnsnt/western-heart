@@ -290,19 +290,52 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 .banner.show { display: flex; animation: bannerPop 0.5s ease; }
 @keyframes bannerPop { 0%{transform:scale(2);opacity:0;} 30%{transform:scale(1);opacity:1;} 80%{opacity:1;} 100%{transform:scale(0.9);opacity:0.9;} }
 
+/* ----------- HUD note (replaces mid-fight center banners) ----------- */
+.hud-note {
+  position: fixed; top: 104px; left: 50%; transform: translateX(-50%); z-index: 28;
+  display: none; pointer-events: none; text-align: center;
+  font-size: clamp(13px, 3.5vw, 20px); font-weight: 700; letter-spacing: 1px;
+  color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+  background: rgba(10,6,20,0.55); padding: 6px 14px; border-radius: 8px;
+  border: 1px solid rgba(255,215,106,0.35); max-width: 92vw; overflow: hidden; text-overflow: ellipsis;
+}
+.hud-note.show { display: block; }
+
 /* ----------- Soul Surge flash + name ----------- */
 .surge-flash {
   position: fixed; inset: 0; z-index: 29; pointer-events: none; opacity: 0;
 }
 .surge-flash.show { animation: surgeFlash 0.9s ease; }
 @keyframes surgeFlash { 0%{opacity:0;} 18%{opacity:1;} 70%{opacity:0.9;} 100%{opacity:0;} }
-.surge-name {
-  position: fixed; left: 0; right: 0; top: 22%; z-index: 30; text-align: center;
-  font-size: clamp(22px,7vw,52px); font-weight: 900; letter-spacing: 3px; pointer-events: none;
-  color: #fff; text-shadow: 0 0 24px var(--accent), 0 4px 14px rgba(0,0,0,0.8); opacity: 0;
+.rage-flash {
+  position: fixed; inset: 0; z-index: 29; pointer-events: none; opacity: 0;
+  background: radial-gradient(circle at 50% 55%, #ff3b2acc 0%, #ff3b2a44 45%, transparent 75%);
 }
-.surge-name.show { animation: surgeNameIn 1.6s ease; }
-@keyframes surgeNameIn { 0%{opacity:0;transform:scale(1.6);} 15%{opacity:1;transform:scale(1);} 75%{opacity:1;} 100%{opacity:0;} }
+.rage-flash.show { animation: rageFlashIn 0.6s ease; }
+@keyframes rageFlashIn { 0%{opacity:0;} 20%{opacity:1;} 100%{opacity:0;} }
+.rage-tag {
+  display: none; margin-top: 3px; font-size: 11px; font-weight: 900;
+  letter-spacing: 3px; color: #ff3b2a; text-align: center;
+  text-shadow: 0 0 10px rgba(255,59,42,0.8);
+}
+.rage-tag.on { display: block; height: 5px; background: linear-gradient(90deg, transparent, #ff3b2a, transparent); box-shadow: 0 0 10px rgba(255,59,42,0.8); animation: ragePulse 0.7s ease-in-out infinite; }
+@keyframes ragePulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.55;transform:scale(1.12);} }
+.urge-wrap {
+  display: none; position: relative; margin-top: 3px; height: 10px;
+  background: rgba(10,25,60,0.6); border: 1px solid rgba(58,168,255,0.4);
+  border-radius: 3px; overflow: hidden; transform: skewX(-18deg);
+}
+.urge-wrap.on { display: block; }
+.urge-fill {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, #1e6fff, #7fd0ff);
+  box-shadow: 0 0 8px rgba(58,168,255,0.9); transition: width 0.2s linear;
+}
+.urge-label {
+  position: absolute; inset: 0; font-size: 7px; font-weight: 800; letter-spacing: 2px;
+  color: #cfeaff; display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+}
 
 /* ====================== HUD ====================== */
 .hud-top { position: fixed; top: 0; left: 0; right: 0; padding: calc(12px + env(safe-area-inset-top)) 14px 12px; display: flex; gap: 10px; align-items: flex-start; z-index: 11; }
@@ -333,12 +366,15 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   background: linear-gradient(180deg,#ffd9a0,#ff7a3c);
   box-shadow: 0 0 10px rgba(255,122,60,1);
 }
+/* Popup fix 2026-10-24: Nine-Soul Release ready = meter-wrap glow (HUD only). */
+.meter-wrap.soul-ready { box-shadow: 0 0 14px rgba(255,215,160,0.9); }
 .fighter-status .name { margin-top: 4px; font-weight: 800; letter-spacing: 2px; font-size: 13px; opacity: 0.9; }
 
 .hud-center { text-align: center; min-width: 90px; }
 .timer { font-size: clamp(28px,8vw,46px); font-weight: 900; color: var(--gold); text-shadow: 0 2px 8px rgba(0,0,0,0.6); line-height: 1; }
 .rounds { display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: 2px; }
 .rounds em { font-size: 11px; opacity: 0.6; font-style: normal; margin: 0 3px; }
+.rounds .pips { display: flex; align-items: center; gap: 5px; }
 .round-pip { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35); }
 .round-pip.win { background: var(--gold); box-shadow: 0 0 8px var(--gold); }
 
@@ -405,6 +441,12 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   background: rgba(20,20,28,0.72); border: 2px solid rgba(255,255,255,0.3); color: #ffe9a8; }
 .act-btn.l1 { right: 152px; bottom: 176px; }
 .act-btn.r1 { right: 24px; bottom: 176px; }
+/* #853 says the old dodge button is gone, but index.html still ships it with no
+   position, so it sat on top of □ and L1. Hide it (sidestep stays on the joystick). */
+.act-btn.dodge { display: none; }
+/* HEAT / RAGE pills (ported from #842): row above L1/R1, either side of TRANSFORM, no overlap. */
+.act-btn.heat { right: 152px; bottom: 224px; font-size: 12px; letter-spacing: .5px; background: linear-gradient(180deg,#ff9a3c,#c8401f); color: #fff; }
+.act-btn.rage { right: 24px;  bottom: 224px; font-size: 12px; letter-spacing: .5px; background: linear-gradient(180deg,#ff4a5a,#8a0f1f); color: #fff; }
 .act-btn.transform { right: 88px; bottom: 216px; background: linear-gradient(180deg,#fff36b,#d8a02b); width:52px;height:52px;font-size:18px; color:#3a2a00; }
 /* V-System (owner 2026-10-22): V-Skill / V-Trigger / V-Reversal button.
    Explicit position/size so it renders in either button-layout state. */
@@ -420,6 +462,8 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   .act-btn.shoulder { width: 56px; height: 36px; font-size: 13px; }
   .act-btn.l1 { right: 132px; bottom: 156px; }
   .act-btn.r1 { right: 20px; bottom: 156px; }
+  .act-btn.heat { right: 132px; bottom: 198px; font-size: 11px; }
+  .act-btn.rage { right: 20px;  bottom: 198px; font-size: 11px; }
   .act-btn.transform { right: 76px; bottom: 192px; width: 46px; height: 46px; }
 }
 
@@ -461,6 +505,10 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   background: radial-gradient(circle at 50% 40%, #241031, #0d060f);
 }
 .loading.hidden { display: none; }
+/* t122u touch fix: the loading overlay is a transparent full-screen layer.
+   If any boot module failed, main.js never added .hidden and the overlay
+   silently ate every tap on the main menu. It never takes input now. */
+.loading { pointer-events: none; }
 .loading-box { text-align: center; width: min(86%, 360px); }
 .loading-title {
   font-size: clamp(24px,7vw,40px); font-weight: 900; letter-spacing: 3px; margin-bottom: 22px;
@@ -470,14 +518,6 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 .loading-fill { height: 100%; width: 0%; background: linear-gradient(90deg,#8b2bd8,#ff7a3c); transition: width 0.2s; }
 .loading-text { margin-top: 14px; font-size: 13px; letter-spacing: 2px; opacity: 0.7; }
 
-/* Tap-to-start sound hint */
-.tap-hint {
-  position: fixed; left: 50%; bottom: 14%; transform: translateX(-50%); z-index: 40;
-  background: rgba(0,0,0,0.7); padding: 10px 18px; border-radius: 30px; font-size: 13px; letter-spacing: 2px;
-  border: 1px solid rgba(255,255,255,0.2); display: none; animation: pulse 1.4s infinite;
-}
-.tap-hint.show { display: block; }
-@keyframes pulse { 0%,100%{opacity:0.6;} 50%{opacity:1;} }
 
 /* ====================== STAGE SELECT (Tekken pattern) ======================
    Sticky header; scrollable arena GRID grouped by tier; LARGE PREVIEW
@@ -651,9 +691,10 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 /* ==================== GAME MODES (lane 5) ==================== */
 /* Mode badge: ladder progress shown over the fight HUD */
 .mode-badge {
-  position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+  /* Below the HUD top row (owner 2026-10-23: the banner covered the round timer). */
+  position: absolute; top: calc(var(--hud-top-h, 116px) + 4px); left: 50%; transform: translateX(-50%);
   z-index: 12; pointer-events: none;
-  font-size: 12px; letter-spacing: 2px; font-weight: 700;
+  font-size: 10px; letter-spacing: 2px; font-weight: 700;
   color: #ffd76a; background: rgba(10,4,16,0.72);
   border: 1px solid rgba(255,215,106,0.45); border-radius: 20px;
   padding: 6px 14px; white-space: nowrap; max-width: 92vw;
@@ -712,3 +753,131 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 /* Mode win / game over */
 #modewin-title.win { color: #ffd76a; }
 #modewin-title.lose { color: #ff6a6a; }
+
+/* ============ WH MAIN MENU (10 sections, 2026-10-22, PR #676 rebase) =====
+Styles the coming-soon placeholder screens' BACK buttons
+   (screen-online / sidegames / collection / daily use .wh-main-menu).
+   Tekken-style: dark with purple/gold accents, phone portrait-first,
+   thumb-reachable, min 64px touch targets, no overlapping text. */
+.wh-main-menu {
+  display: flex; flex-direction: column; gap: 10px;
+  width: 100%; max-width: 480px; margin: 0 auto; padding: 0 16px;
+  /* Scrollable if viewport is short */
+  max-height: 60vh; overflow-y: auto; -webkit-overflow-scrolling: touch;
+}
+.wh-menu-btn {
+  display: flex; align-items: center; gap: 14px;
+  min-height: 64px; width: 100%; padding: 12px 18px;
+  border: 1px solid rgba(139,43,216,0.4); border-radius: 14px;
+  background: linear-gradient(135deg, #1a0b2e 0%, #2d1b4e 100%);
+  color: #fff; text-align: left; font-family: inherit; cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+  transition: transform 0.08s ease, background 0.15s ease;
+  /* Ensure tappable */
+  pointer-events: auto; touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.wh-menu-btn:active {
+  transform: scale(0.97);
+  background: linear-gradient(135deg, #2d1b4e 0%, #4a2d6e 100%);
+  border-color: rgba(139,43,216,0.8);
+}
+.wh-menu-icon { font-size: 28px; flex-shrink: 0; width: 36px; text-align: center; }
+.wh-menu-label { font-size: 18px; font-weight: 800; letter-spacing: 1.5px; flex-grow: 1; }
+.wh-menu-sub { font-size: 12px; opacity: 0.6; font-weight: 400; letter-spacing: 0.5px; text-align: right; }
+.wh-menu-btn.wh-back {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.2);
+}
+.screen-title {
+  text-align: center; color: #fff; font-size: 28px;
+  letter-spacing: 3px; margin: 24px 0; font-weight: 800;
+}
+.wh-placeholder { text-align: center; color: #fff; padding: 40px 20px; }
+.wh-placeholder p { opacity: 0.7; margin: 12px 0 24px; line-height: 1.6; }
+
+/* Mode badge sits under the HUD top row: portrait HUD is ~113px tall, landscape ~106px. */
+@media (orientation: landscape) { .mode-badge { --hud-top-h: 108px; padding: 3px 12px; } }
+/* TOUCH FIX (owner pt134u, 2026-10-23): HTML ships .limb lp/rp/lk/rk but the
+   CSS only positioned .psx classes, so all buttons stacked under DODGE.
+   T8 PlayStation diamond: square=1 LP (left), triangle=2 RP (top),
+   cross=3 LK (bottom), circle=4 RK (right). Utility row sits above the
+   diamond, clear of the joystick and the top HUD. */
+.act-btn.limb { width: 62px; height: 62px; font-size: 18px; background: rgba(20,20,28,0.78); border: 2px solid rgba(255,255,255,0.4); text-shadow: 0 0 8px currentColor; }
+.act-btn.lp { right: 152px; bottom: 96px; color: #ff7ad9; }
+.act-btn.rp { right: 88px;  bottom: 160px; color: #3ddc84; }
+.act-btn.lk { right: 88px;  bottom: 32px;  color: #4da3ff; }
+.act-btn.rk { right: 24px;  bottom: 96px;  color: #ff5c5c; }
+.act-btn.block, .act-btn.special, .act-btn.dodge, .act-btn.vskill, .act-btn.heat, .act-btn.rage, .act-btn.transform {
+  width: 54px; height: 40px; border-radius: 20px; font-size: 12px; font-weight: 900; letter-spacing: .5px; }
+.act-btn.block   { right: 158px; bottom: 236px; background: rgba(20,20,28,0.8); color: #ffe9a8; }
+.act-btn.heat    { right: 92px;  bottom: 236px; background: linear-gradient(180deg,#ff9a3c,#c8401f); color: #fff; }
+.act-btn.rage    { right: 26px;  bottom: 236px; background: linear-gradient(180deg,#ff4a5a,#8a0f1f); color: #fff; }
+.act-btn.dodge   { right: 26px;  bottom: 288px; background: rgba(20,20,28,0.8); color: #cfe; }
+.act-btn.vskill  { right: 92px;  bottom: 288px; background: linear-gradient(180deg,#7df9ff,#1f9dc8); color: #062a33; }
+.act-btn.special { right: 158px; bottom: 288px; background: linear-gradient(180deg,#d9a8ff,#6a2fb0); color: #fff; }
+.act-btn.transform { right: 224px; bottom: 288px; background: linear-gradient(180deg,#fff36b,#d8a02b); color: #3a2a00; }
+@media (max-width: 520px) {
+  .act-btn.limb { width: 58px; height: 58px; }
+  .act-btn.lp { right: 136px; bottom: 90px; } .act-btn.rp { right: 78px; bottom: 148px; }
+  .act-btn.lk { right: 78px; bottom: 32px; }  .act-btn.rk { right: 20px; bottom: 90px; }
+  .act-btn.block { right: 144px; bottom: 218px; } .act-btn.heat { right: 82px; bottom: 218px; } .act-btn.rage { right: 20px; bottom: 218px; }
+  .act-btn.special { right: 144px; bottom: 266px; } .act-btn.vskill { right: 82px; bottom: 266px; } .act-btn.dodge { right: 20px; bottom: 266px; }
+  .act-btn.transform { right: 206px; bottom: 266px; }
+}
+/* ============ Worker 29: GUNGAKU fight lab + replay theater ============ */
+.gungaku {
+  position: fixed; right: 8px; top: 64px; z-index: 60;
+  background: rgba(10, 8, 18, 0.92); border: 1px solid #6a4dff;
+  border-radius: 10px; padding: 10px 12px; color: #eee;
+  font-family: inherit; min-width: 220px; max-width: 260px;
+}
+.gk-title { font-weight: 800; letter-spacing: 1px; color: #ffd76a; margin-bottom: 8px; font-size: 14px; }
+.gk-row { display: flex; align-items: center; gap: 6px; margin: 6px 0; flex-wrap: wrap; }
+.gk-label { font-size: 11px; opacity: 0.7; width: 56px; }
+.gungaku button {
+  background: #1d1830; color: #eee; border: 1px solid #4a3d8f;
+  border-radius: 6px; padding: 5px 8px; font-size: 12px; cursor: pointer;
+}
+.gungaku button.on { background: #6a4dff; border-color: #9a86ff; color: #fff; }
+.gk-framedata { font-size: 12px; margin-top: 8px; line-height: 1.5; color: #cfe3ff; min-height: 3.2em; }
+.gk-hint { font-size: 10px; opacity: 0.55; margin-top: 6px; }
+.ml-legend { font-size: 11px; opacity: 0.6; margin: 2px 0 8px; }
+
+.replay-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+  background: rgba(10, 8, 18, 0.94); border-top: 1px solid #6a4dff;
+  display: flex; align-items: center; gap: 6px; padding: 8px 10px;
+}
+.replay-bar button {
+  background: #1d1830; color: #eee; border: 1px solid #4a3d8f;
+  border-radius: 6px; padding: 6px 9px; font-size: 12px; cursor: pointer; white-space: nowrap;
+}
+.replay-bar button.on { background: #6a4dff; border-color: #9a86ff; color: #fff; }
+#rp-seek { flex: 1; min-width: 60px; accent-color: #6a4dff; }
+#rp-time { font-size: 11px; color: #cfe3ff; white-space: nowrap; }
+
+.replay-panel { max-width: 640px; }
+.replay-list { display: flex; flex-direction: column; gap: 8px; margin: 12px 0; max-height: 46vh; overflow-y: auto; }
+.replay-row {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.04); border: 1px solid #3a3168;
+  border-radius: 8px; padding: 8px 10px;
+}
+.rp-names { font-weight: 700; font-size: 14px; }
+.rp-names em { font-style: normal; opacity: 0.5; font-weight: 400; }
+.rp-meta { font-size: 11px; opacity: 0.65; flex: 1; line-height: 1.5; }
+.rp-actions { display: flex; gap: 6px; }
+
+/* TTT2 TAG BATTLE (worker 24) — partner HUD plates + rage badge */
+#tag-hud { position: absolute; top: 64px; left: 0; right: 0; display: flex; justify-content: space-between; padding: 0 12px; pointer-events: none; z-index: 5; }
+#tag-hud[hidden] { display: none; }
+.tag-partner { background: rgba(10,8,20,.72); border: 1px solid #6a5a9a; border-radius: 8px; padding: 4px 10px; font-size: 11px; letter-spacing: .08em; color: #cfc3ee; min-width: 96px; }
+.tag-partner .tp-name { font-weight: 700; color: #fff; display: block; font-size: 12px; }
+.tag-partner .tp-hp { display: block; height: 5px; background: #2a2438; border-radius: 3px; margin-top: 3px; overflow: hidden; }
+.tag-partner .tp-hp > i { display: block; height: 100%; background: linear-gradient(90deg,#7fe07f,#c9f27e); border-radius: 3px; }
+.tag-partner.rage { border-color: #ff4d4d; box-shadow: 0 0 10px rgba(255,60,60,.55); }
+.tag-partner.rage .tp-name::after { content: ' RAGE'; color: #ff6a6a; font-size: 10px; }
+/* TTT2 TAG button */
+#tag-btn { border-color: #ffd76a; color: #ffd76a; font-weight: 700; }
+#tag-btn[hidden] { display: none; }

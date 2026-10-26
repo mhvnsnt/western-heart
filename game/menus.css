@@ -7,11 +7,20 @@
    ============================================================ */
 
 /* ---------- Loading overlay ---------- */
+/* STUCK-DRAG FIX (owner 2026-10-25: first drag of a fight dead, then worked):
+   this overlay is display-only (title, bar, status, tip — no buttons), but it
+   used to sit at z-index 200 with default pointer-events, so any touch that
+   started while it was up hit the overlay, never reached nipplejs's joystick
+   zone, and stayed dead even after the overlay hid (nipplejs only creates a
+   nipple on touchstart) until the player lifted and re-touched. Same t122u
+   precedent as the boot .loading overlay (styles.css): display-only overlays
+   never take input. */
 #wh-loading {
   position: fixed; inset: 0; z-index: 200;
   display: none; align-items: center; justify-content: center;
   flex-direction: column; gap: 18px;
   background: radial-gradient(ellipse at 50% 40%, #241238 0%, #14091f 70%);
+  pointer-events: none;
 }
 #wh-loading.show { display: flex; }
 #wh-loading .wh-load-title {
@@ -33,11 +42,21 @@
 #wh-loading .wh-load-tip { color: rgba(255,255,255,.45); font-size: 12px; max-width: 80vw; text-align: center; }
 
 /* ---------- VS screen ---------- */
+/* STUCK-DRAG FIX (owner 2026-10-25): the VS screen is display-only (cards,
+   mode, stage — no buttons), but at z-index 190 with default pointer-events
+   it ate every touch for the 2200ms it breathes over the round intro plus its
+   350ms fade — overlapping live input (FIGHT! + input enable at ~1100ms).
+   A drag that started on the VS overlay stayed dead after VS vanished until
+   lift + re-touch, which is exactly the reported "stuck drag at first, then
+   worked". pointer-events: none lets first touches reach the joystick zone
+   while VS is still visible. #wh-pause is NOT changed: it has buttons
+   (RESUME / OPTIONS / QUIT) and must keep intercepting. */
 #wh-vs {
   position: fixed; inset: 0; z-index: 190;
   display: none; align-items: center; justify-content: center; flex-direction: column;
   background: radial-gradient(ellipse at 50% 50%, #2a1440 0%, #0d0616 75%);
   opacity: 0; transition: opacity .35s ease;
+  pointer-events: none;
 }
 #wh-vs.show { display: flex; opacity: 1; }
 #wh-vs.hide { opacity: 0; }
@@ -189,11 +208,13 @@
 
 /* ---------- Mode badge (top-left during fights) ---------- */
 #wh-mode-tag {
-  position: absolute; top: 8px; left: 8px; z-index: 120; display: none;
-  padding: 8px 12px; border-radius: 10px; font-size: 11px; letter-spacing: 2px;
+  /* Below the HUD top row so it never covers P1's health bar / the timer (owner 2026-10-23). */
+  position: absolute; top: 120px; left: 8px; z-index: 120; display: none;
+  padding: 4px 8px; border-radius: 8px; font-size: 9px; letter-spacing: 2px;
   background: rgba(20,12,32,.78); border: 1px solid rgba(139,43,216,.55); color: var(--accent2);
 }
 #hud.active #wh-mode-tag.show { display: block; }
+@media (orientation: landscape) { #wh-mode-tag { top: 112px; } }
 
 /* Small screens: VS cards stack tighter */
 @media (max-width: 520px) {

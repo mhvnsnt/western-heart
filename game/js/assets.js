@@ -6,6 +6,7 @@
    Pantera = real P1 textured body (roster/pantera). Steve Fox =
    Tekken 7 base reskinned cold blue-white (see game/README.md).
    ============================================================ */
+import { checkClip, CTX } from './anim-gate.js';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { clone as skeletonClone } from 'three/addons/utils/SkeletonUtils.js';
@@ -13,9 +14,19 @@ import { clone as skeletonClone } from 'three/addons/utils/SkeletonUtils.js';
 // saku-ra-main, purple-rain-main, kiko-tanaka*). Vendored locally —
 // the game ships with no CDN (see index.html importmap).
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
+// Clothing layer system (worker 64, 2026-10-22): per-mesh visibility
+// toggles over GLB mesh names, data-driven via data/clothing-layers.json.
+// No import cycle: clothing-layers.js imports nothing from this module.
+import { applyClothingToInstance } from './clothing-layers.js';
 // Creation Suite Pass: generated registry of baked customization overrides
 // (customization/tools/apply_customization.py). Empty map = exact no-op.
 import { ATTIRE_CUSTOMIZATIONS } from './attire-customizations.js';
+// Material gate (every model, every load): game/js/material-runtime.js.
+import { resolveModelMaterials, assertModelUsable } from './material-runtime.js';
+// Lane 5: persistent Cache API for model bytes (see asset-cache.js).
+// A cache hit skips the network entirely; a miss stores the bytes
+// after a successful download. Never changes parse/ingest behavior.
+import { getCachedBuffer, putCachedBuffer } from './asset-cache.js';
 
 export const MODEL_URLS = {
   pantera: 'assets/models/pantera.glb',
@@ -38,9 +49,10 @@ export const MODEL_URLS = {
   // archived on release slice-tripo-pulls-20261021. Canon: arm blades jagged
   // chrome (Baraka/Wolverine prototype mix), skull mask blending into the
   // head at the back, scars all over, blades on belt buckle + shoe side.
-  // Static meshopt GLB (no skin) — rig at the rig stage like other Tripo mains.
-  slice: '../roster/slice/attires/attire1/model.glb',
-  'slice-attire1': '../roster/slice/attires/attire1/model.glb',
+  // Static meshopt GLB (no skin) — rigged 2026-10-23 (landing wave 2,
+  // GameRig auto-rig, 73 joints); keys ride model-rigged.glb, static stays as source.
+  slice: '../roster/slice/attires/attire1/model-rigged.glb',
+  'slice-attire1': '../roster/slice/attires/attire1/model-rigged.glb',
   // SLICE Attire 2 — our Dragunov build (PR #433): Tekken 7 Dragunov teardown
   // model (dragunov-t7-rig.blend from release tekken-models-batch-2) converted
   // to GLB. It was Attire 1 until the owner's Tripo landed; it laddered back
@@ -75,7 +87,7 @@ export const MODEL_URLS = {
   // attire and NOT his body: in the stand system the spirit form floats
   // behind his spirit body (behavior spec in roster/zen/RIG-NOTES.md).
   // Loadable as its own key, tied to Zen's fighter record.
-  'zen-spirit': '../roster/zen/spirit/model.glb',
+  'zen-spirit': '../roster/zen/spirit/model-rigged.glb', // rigged form (PR #627 rigs) landed 2026-10-22; raw model.glb kept in place
   // ZEN TRANSFORMATION MODES (owner Tripos, 2026-10-21): NOT attires —
   // stages of ONE transformation inside Attire 1, chained via forms in
   // roster-full.js (spirit body -> TENTACLE MODE -> OVERSOUL). Canon:
@@ -83,30 +95,30 @@ export const MODEL_URLS = {
   // TENTACLE MODE (9460095d): the clothing tentacle imagery becomes REAL
   // tentacles busting out of him; no Oversoul head; spirit rides higher
   // and further back (offset in RIG-NOTES.md).
-  'zen-tentacle': '../roster/zen/tentacle/model.glb',
+  'zen-tentacle': '../roster/zen/tentacle/model-rigged.glb', // rigged form (PR #627 rigs) landed 2026-10-22; raw model.glb kept in place
   // OVERSOUL (2bbc8e88): the combined form — the spirit has docked at the
   // head position and TAKEN THE HEAD'S PLACE. Body tentacles on this
   // model are IMAGERY on the body, not protruding tentacles (verified on
   // the front render, 2026-10-21 — see roster/zen/ATTIRE-SLOTS.md).
-  'zen-oversoul': '../roster/zen/oversoul/model.glb',
+  'zen-oversoul': '../roster/zen/oversoul/model-rigged.glb', // rigged form (PR #627 rigs) landed 2026-10-22; raw model.glb kept in place
   // Tripo pulls wired 2026-10-19 (owner: stop saying "not in the repo").
-  phantom: '../roster/phantom/attires/attire1/model-rigged.glb',
-  skull: '../roster/skull/attires/attire1/model-rigged.glb',
+  phantom: '../roster/phantom/attires/attire1/model-rerig.glb',
+  skull: '../roster/skull/attires/attire1/model-rerig.glb',
   // KRONOS (owner custom Zangief fighter, 2026-10-19): Tripo models live at
   // tripo-recovery/kronos_attire1_default.glb/ + kronos_attire2_timberwolf/;
   // copying the GLB into roster/kronos/attires/attire1/model.glb is a follow-up.
-  kronos: '../roster/kronos/attires/attire1/model-rigged.glb',
+  kronos: '../roster/kronos/attires/attire1/model-rerig.glb',
   // SAM-UR-A1 Attire 1 (owner 2026-10-19): Tripo pull replaces the fan-rip placeholder.
-  'sam-ur-a1': '../roster/sam-ur-a1/attires/attire1/model-rigged.glb',
+  'sam-ur-a1': '../roster/sam-ur-a1/attires/attire1/model-rerig.glb',
   // SAKU RA (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
-  'saku-ra': '../roster/sakura/attires/attire1/model-rigged.glb',
+  'saku-ra': '../roster/sakura/attires/attire1/model-rerig.glb',
   'awa-pop': 'assets/models/awa-pop.glb',
   // AWA POP Attire 2 (fighter-completeness audit 2026-10-21): owner-confirmed
   // Tripo Attire 2 (roster/awa-pop/ATTIRE-SLOTS.md slot 2) — the GLB was in the
   // repo with no key, so it could never load.
   'awa-pop-attire2': '../roster/awa-pop/attires/attire2/model-rigged.glb',
-  'purple-rain': '../roster/purplerain/attires/attire1/model-rigged.glb',
+  'purple-rain': '../roster/purplerain/attires/attire1/model-rerig.glb',
   nightwolf: 'assets/models/nightwolf.glb',
   // NIGHTWOLF Attire 1 (owner 2026-10-18, Tripo pull 5b0835eb "tribal warrior"):
   // his DEFAULT attire per roster/nightwolf/attires/ATTIRE-SLOTS.md — tribute to
@@ -142,7 +154,7 @@ export const MODEL_URLS = {
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   waterfall: '../roster/waterfall/attires/attire1/model-rigged.glb',
   'n3g4tiv0': 'assets/models/n3g4tiv0.glb',
-  thor: '../roster/thor/attires/attire1/model-rigged.glb',
+  thor: '../roster/thor/attires/attire1/model-rerig.glb',
   // Thor Attire 2: phantom-mimic oni mask (owner 2026-10-19).
   'thor-attire2': '../roster/thor/attires/attire2/model.glb',
   'doc-frank': 'assets/models/doc-frank.glb',
@@ -159,23 +171,29 @@ export const MODEL_URLS = {
   // pre-form's 178-joint rig via the repo k-NN transfer; original untouched.
   'doc-frank-big': '../roster/doc-frank/attires/attire1/post-transform/model-rigged.glb',
   // Wave 2 (2026-10-19): Wowomomo Attire 2, Hood Scientist Attire 3, Demonio forms, Dxmmii Attire 2.
-  'doc-frank-wowomomo': '../roster/doc-frank/attires/attire2/base/model-rigged.glb',
+  'doc-frank-wowomomo': '../roster/doc-frank/attires/attire2/base/model-rerig.glb',
   'doc-frank-wowomomo-big': '../roster/doc-frank/attires/attire2/transformed/model-rigged.glb',
   'doc-frank-hood': '../roster/doc-frank/attires/attire3/base/model.glb',
   'doc-frank-hood-big': '../roster/doc-frank/attires/attire3/transformed/model-rigged.glb',
   // Attire 4 "Frankenstein's Cyborg" (owner 2026-10-19): two-form transform attire.
-  'doc-frank-frankenstein': '../roster/doc-frank/attires/attire4/base/model-rigged.glb',
-  'doc-frank-frankenstein-big': '../roster/doc-frank/attires/attire4/transformed/model-rigged.glb',
+  'doc-frank-frankenstein': '../roster/doc-frank/attires/attire4/base/model-rerig.glb',
+  'doc-frank-frankenstein-big': '../roster/doc-frank/attires/attire4/transformed/model-rerig.glb',
   'demonio-a1': '../roster/demonio/attires/attire1/model.glb',
   'demonio-winged': '../roster/demonio/attires/winged-devil/model-rigged.glb',
-  'demonio-human': '../roster/demonio/attires/human/model-rigged.glb',
+  'demonio-human': '../roster/demonio/attires/human/model-rerig.glb',
   'dxmmii-a2': '../roster/dxmmii/attires/attire2/model.glb',
   // DXMMII Slot 1 — Tripo Default (dedup 2026-10-22): the 60MB Tripo pull
   // that replaced the wooden dummy as Slot 1 per owner 2026-10-19
   // (roster/dxmmii/ATTIRE-SLOTS.md). Wired so his select entry defaults to it.
-  'dxmmii-tripo': '../roster/dxmmii/attires/attire1/model.glb',
+  'dxmmii-tripo': '../roster/dxmmii/attires/attire1/model-rigged.glb',
   'cyborg-x': 'assets/models/cyborg-x.glb',
   'cape-jones': 'assets/models/cape-jones.glb',
+  // CAPE JONES Attire 1 (rig QA 2026-10-23, muse/cape-jones-fight): the
+  // auto-rigged Round-2 build (49 bones, -Z facing, sides/knees OK), staged
+  // under his roster dir per convention. Byte-identical to
+  // assets/models/cape-jones.glb — no re-rig needed. See
+  // roster/cyborg-x/ATTIRE-SLOTS.md.
+  'cape-jones-attire1': '../roster/cyborg-x/attires/attire1/model-rigged.glb',
   // Bonus / music fighters and name-pending models (loadable, unassigned).
   mariposa: 'assets/models/mariposa.glb',
   // Mariposa Slot 1 — Butterfly Default (dedup 2026-10-22): owner-designated
@@ -195,16 +213,17 @@ export const MODEL_URLS = {
   'cain-elias': '../roster/cain-elias/attires/attire1/model.glb',
   'cain-elias-attire2': '../roster/cain-elias/attires/attire2/model.glb',
   // Vain Abel — Attire 2 (owner 2026-10-20, Tripo pull).
-  'vainabel-attire2': '../roster/vainabel/attires/attire2/model.glb',
+  'vainabel-attire1': '../roster/vainabel/attires/attire1/model-rigged.glb',
+  'vainabel-attire2': '../roster/vainabel/attires/attire2/model-rigged.glb',
   // Vain Abel — Kane archetype (owner 2026-10-20, Tripo pull). Attire 3: Masked Demon of the Purple Haze.
-  'vainabel-attire3': '../roster/vainabel/attires/attire3/model.glb',
+  'vainabel-attire3': '../roster/vainabel/attires/attire3/model-rigged.glb',
   // Vain Abel — Attire 4: Half mask Horror of the Haze (owner 2026-10-21, Tripo pull).
-  'vainabel-attire4': '../roster/vainabel/attires/attire4/model.glb',
+  'vainabel-attire4': '../roster/vainabel/attires/attire4/model-rigged.glb',
   // Burger — Demon mode, possessed by greed (owner 2026-10-19, Tripo pull).
   burger: '../roster/burger/attires/attire1/model-rigged.glb',
   // Kronos — new fighter (owner 2026-10-19, Tripo pull).
-  kronos: '../roster/kronos/attires/attire1/model-rigged.glb',
-  'kronos-attire2': '../roster/kronos/attires/attire2/model-rigged.glb',
+  kronos: '../roster/kronos/attires/attire1/model-rerig.glb',
+  'kronos-attire2': '../roster/kronos/attires/attire2/model-rerig.glb',
   'kronos-attire3': '../roster/kronos/attires/attire3/model.glb',
   // KORESHI (owner 2026-10-19): his own creation (Kakashi + SSJ4/5 + ninja, Tripo pull).
   koreshi: '../roster/koreshi/attires/attire1/model-rigged.glb',
@@ -230,17 +249,17 @@ export const MODEL_URLS = {
   lili: 'assets/models/lili.glb',   // base T7 Lili build (Silvertongue's Tekken base)
   // SILVERTONGUE (owner 2026-10-18: proprietary name, retired "Lili" — never use the
   // old name; see roster/silvertongue/ATTIRE-SLOTS.md): Slot 1 Tripo Main "Metallic
-  // Bodysuit" (2e20f9eb, unrigged static), Slot 2 Spy Debut, Slot 3 Rated-M Nude
+  // Bodysuit" (2e20f9eb, rigged 2026-10-23 wave 2 — key rides model-rigged.glb), Slot 2 Spy Debut, Slot 3 Rated-M Nude
   // (fully rigged 22-bone), Slot 4 Noir Gala (Tekken-based reskin, ladders back).
-  'silvertongue': '../roster/silvertongue/attires/attire1/model.glb',
+  'silvertongue': '../roster/silvertongue/attires/attire1/model-rigged.glb',
   'silvertongue-spy-debut': '../roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb',
   'silvertongue-attire3': '../roster/silvertongue/attires/attire2/model.glb',
   'silvertongue-noir-gala': '../roster/lili/attires/noir-gala/lili-noir-gala.glb',
   baek: 'assets/models/baek.glb',   // KEVIN's A2 attire (original Baek model)
   // KEVIN A1 (owner 2026-10-18): Kevin's Tripo ("human figure", God Molecule canon) —
-  // his DEFAULT attire per roster/baek/attires/ATTIRE-SLOTS.md. Unrigged static;
-  // live-game default swap rides the auto-rig pass.
-  'kevin-tripo': '../roster/baek/attires/attire1/model.glb',
+  // his DEFAULT attire per roster/baek/attires/ATTIRE-SLOTS.md. Rigged 2026-10-23
+  // (wave 2, GameRig auto-rig, 73 joints); key rides model-rigged.glb.
+  'kevin-tripo': '../roster/baek/attires/attire1/model-rigged.glb',
   // Round-2 auto-rig wave (lane B): re-rigged per-fighter variants + Tripo
   // attires, all passing the playable gate (valid glTF, skinned, Hips, 1.5-2.2m).
   // 'demonio-body' round-2 re-rig variant was never pushed to the repo;
@@ -349,9 +368,21 @@ export const MODEL_URLS = {
   // CHARGER Attire 1 (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   charger: '../roster/charger/attires/attire1/model-rigged.glb',
-  // DOROWANI (owner 2026-10-22): Gon's WH replacement. Unrigged Tripo static
-  // (see roster/dorowani/RIG-SPEC.md); k-NN rig from pantera donor is the planned path.
-  dorowani: '../roster/dorowani/attires/attire1/source/dorowani-a1-crimson-cheeks.glb',
+  // DOROWANI (owner 2026-10-22): Gon's WH replacement. Rigged 2026-10-23
+  // (landing wave 2, GameRig auto-rig, 73 joints); key rides the rigged
+  // build, the Tripo static stays beside it as source.
+  dorowani: '../roster/dorowani/attires/attire1/source/dorowani-a1-crimson-cheeks-rigged.glb',
+  // CHATUR (owner 2026-10-23): True Ogre's WH replacement — four-armed Oversoul
+  // spirit, temple dancer who refused to die. SmutBase intake (roster/rahkasa/).
+  // Unrigged static (1 mesh; rig widgets live in the .blend); k-NN auto-rig
+  // from donor is the planned path.
+  // Rigged 2026-10-23 (PR #780, 52-joint canonical skeleton, verified).
+  chatur: '../roster/rahkasa/attires/attire1/model-rigged-textured.glb',
+  // POND (owner 2026-10-23): Raven's WH replacement — swamp boundary watcher,
+  // found Dorowani as an egg. SmutBase intake (roster/tsuyu-asui/). Unrigged
+  // static (9 meshes, clothing separate); k-NN auto-rig from donor is the planned path.
+  // Rigged 2026-10-23 (PR #780, 52-joint canonical skeleton, verified).
+  pond: '../roster/tsuyu-asui/attires/attire1/model-rigged-textured.glb',
   // CHARGER Attire 2 (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   'charger-attire2': '../roster/charger/attires/attire2/model-rigged.glb',
@@ -367,11 +398,84 @@ export const MODEL_URLS = {
   // in roster/deathfang/ now.)
   deathfang: '../roster/deathfang/attires/attire1/model.glb',
   'deathfang-werewolf': '../roster/deathfang/attires/attire2/model.glb',
-  // Ryuji Yamazaki x The Rock hybrid (owner 2026-10-19). MODEL PENDING: no Yamazaki
-  // model found anywhere (no KOF teardown, none in tripo-recovery, no downloadable
-  // Sketchfab model). URL wired for the drop-in; model.glb lands the moment the
-  // owner sends a Tripo link. See roster/ryuji-rock/attires/attire1/README.md.
-  'ryuji-rock': '../roster/ryuji-rock/attires/attire1/model.glb',
+  // Ryuji Yamazaki x The Rock hybrid (owner 2026-10-19) — CORNERSTONE.
+  // MODEL LANDED 2026-10-22 (owner Tripo 20c1fd2e-40d0-4500-9be6-50f6494ab5e1):
+  // archived at attires/attire1/source/cornerstone-a1.glb and copied
+  // byte-identical to the wired model.glb 2026-10-23 (landing wave 1), so this
+  // key resolves. Rigged 2026-10-23 (landing wave 2, GameRig auto-rig,
+  // 73 joints); the key rides model-rigged.glb and the unrigged Tripo
+  // stays beside it as source. See roster/ryuji-rock/attires/attire1/README.md.
+  'ryuji-rock': '../roster/ryuji-rock/attires/attire1/model-rigged.glb',
+  // MEGAMI (2026-10-23, SmutBase 6 pipeline fighters 5-6): SmutBase Parvati
+  // commission intake. In-repo build = meshopt-compressed (23.5 MB, validated);
+  // intake original (191.6 MB) archived on release
+  // megami-menajerii-smutbase-20261023. Canon: roster/parvati/CANON.md.
+  // Moveset: game/assets/movesets/megami.json (Jun Kazama TTT2 kit, Tekken inputs).
+  megami: '../roster/parvati/attires/attire1/model-rigged.glb',
+  'megami-attire1': '../roster/parvati/attires/attire1/model-rigged.glb',
+  // MENAJERII (2026-10-23, SmutBase 6 pipeline fighters 5-6): SmutBase Vixen
+  // commission intake (Injustice 2-based). In-repo build = meshopt-compressed
+  // (41.7 MB, validated); intake original (629.7 MB) archived on release
+  // megami-menajerii-smutbase-20261023. Canon: roster/vixen/CANON.md.
+  // Moveset: game/assets/movesets/menajerii.json (Roger Jr. TTT2 kit, fresh
+  // Tekken inputs per owner directive — no Injustice 2 input system).
+  // model-rigged-noplane.glb = the crew rig (PR #780) with its skinned 4.23 m floor plane removed
+  // (docs/proof/claude-2026-10-23/smutbase/README.md); the crew file stays beside it.
+  menajerii: '../roster/vixen/attires/attire1/model-rigged-noplane.glb',
+  'menajerii-attire1': '../roster/vixen/attires/attire1/model-rigged-noplane.glb',
+  // ——— LANDING WAVE 1 (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md) ———
+  // Wiring fixes only: keys for models already on main that no key reached.
+  // BUFFALO BILL: his moveset file sat on main unlisted; A1/A2 sources named
+  // in roster/buffalo-bill/CANON.md are NOT in the repo — Attire 3 "Ashes"
+  // is his only on-main model, so the base key points there.
+  'buffalo-bill': '../roster/buffalo-bill/attires/attire3/model-rigged.glb',
+  // VAIN ABEL ELIAS: base key. His Attire 1 Tripo (f7e90de8) was recovered
+  // 2026-10-23 (wave 2 hunt: pulled via tools/tripo-pull, archived on release
+  // vain-abel-a1-tripo-20261023) — the base key points at
+  // his default Attire 1 (same file as 'vainabel-attire1'; rigged 2026-10-23, wave 2).
+  vainabel: '../roster/vainabel/attires/attire1/model-rigged.glb',
+  // CHORDZ (owner 2026-10-15: Lars -> Chordz, emo guitarist). His Tripo sits
+  // archived as an unrigged static under attires/attire1/source/.
+  // Two rigs of the same Tripo static exist: source/chordz-a1-rigged.glb (crew, Wave 2 B1) and
+  // model-rigged.glb (Claude, same GameRig pipeline + limb isolation; same stance in game, 2026-10-23).
+  chordz: '../roster/chordz/attires/attire1/model-rigged.glb',
+  // GASHADOKURO + AOTSUKI (OBSOLETE-ORIGINALS rule, docs/OBSOLETE-ORIGINALS-
+  // RULE.md): the Kuma/Panda models ARE the proprietary successors now — the
+  // keys are the successors' names; there is no 'kuma'/'panda' fighter key.
+  // Unrigged statics; their roster entries wait for wave-3 movesets.
+  gashadokuro: '../roster/kuma/attires/attire1/source/kuma-a1.glb',
+  aotsuki: '../roster/panda/attires/attire1/source/aotsuki-a1-rigged.glb',
+  // Attire variant keys for on-main GLBs no key reached (catch-up audit
+  // attires-unwired set). Ladder placement lives in game/js/attires.js:
+  // successor's own attires first, source-game originals late (slots 5+).
+  'bruno-attire1': '../roster/bruno/attires/attire1/source/bruno-a1.glb',
+  'bruno-attire2': '../roster/bruno/attires/attire2/source/bruno-a2-sail-the-sea-rigged.glb',
+  'dio-attire1': '../roster/dio/attires/attire1/source/dio-a1-jade-god-rigged.glb',
+  'koreshi-attire1': '../roster/koreshi/attires/attire1/model.glb',
+  'negativo-attire1': '../roster/negativo/attires/attire1/source/negativo-a1-rigged.glb',
+  'negativo-attire2': '../roster/negativo/attires/attire2/source/negativo-a2-rigged.glb',
+  'skull-tripo': '../roster/skull/attires/attire1/model.glb',
+  'skull-base': 'assets/models/skull.glb',
+  'waterfall-attire1': '../roster/waterfall/attires/attire1/model.glb',
+  'yukihyo-attire1': '../roster/yukihyo/attires/attire1/source/yukihyo-a1-rigged.glb',
+  'yukihyo-attire2': '../roster/yukihyo/attires/attire2/source/yukihyo-a2-bobcat-pride-rigged.glb',
+  'yukihyo-attire3': '../roster/yukihyo/attires/attire3/source/yukihyo-a3-tiger-king-rigged.glb',
+  'armor-king-attire1': '../roster/armor-king/attires/attire1/model.glb',
+  'zangief-attire1': '../roster/zangief/attires/attire1/model.glb',
+  // RYUSAN (owner 2026-10-23): SmutBase Mina Ashido intake — WH name RYUSAN,
+  // the Corrosion Soul. Attire 1 = the SmutBase GLB (unrigged static; rig queued).
+  // NOTE: roster/mina-ashido/attires/attire1/model-rigged.glb landed on main
+  // 2026-10-23 (PR #781, wave-1 rigging) — repoint key after rig validation.
+  // In-game validation (docs/proof/claude-2026-10-23/smutbase): the model-rigged.glb build tears
+  // apart in the T3 stance; model-rerig.glb (upright static + GameRig +Z) holds it.
+  ryusan: '../roster/mina-ashido/attires/attire1/model-rerig.glb',
+  'ryusan-attire1': '../roster/mina-ashido/attires/attire1/model-rerig.glb',
+  // TOBI (owner 2026-10-23): SmutBase Mirko (Rumi Usagiyama) intake — WH name
+  // TOBI, the Escape Soul. Attire 1 = the SmutBase GLB (unrigged static; rig queued).
+  // NOTE: roster/miruko/attires/attire1/model-rigged.glb landed on main
+  // 2026-10-23 (PR #781, wave-1 rigging) — repoint key after rig validation (same finding as Ryusan).
+  tobi: '../roster/miruko/attires/attire1/model-rerig-textured.glb',
+  'tobi-attire1': '../roster/miruko/attires/attire1/model-rerig-textured.glb',
 };
 
 /* ============================================================
@@ -683,7 +787,7 @@ function remapVegaBones(fighterId, model) {
    AND no target name already exists (otherwise a strict no-op)
    — no other fighter can be renamed.
    ============================================================ */
-const SLICE_MODEL_URL = '../roster/slice/attires/attire1/model.glb';
+const SLICE_MODEL_URL = '../roster/slice/attires/attire1/model-rigged.glb';
 const SLICE_T3_BONE_REMAP = {
   Hip: 'Hips',
   Spine1: 'Spine',
@@ -761,8 +865,62 @@ const SLICE_T3_BONE_REMAP = {
    numerically from the GLB).
    Returns true when the full scheme signature matched and the
    remap was applied; false (no-op) for every other model. */
+/* TEKKEN-SKELETON RE-RIGS (2026-10-23, docs/tech/ROSTER-MODEL-AUDIT.md).
+   Fighters whose own mesh was re-rigged onto a real Tekken 7 skeleton
+   (232-bone T7 layout, same joint names as Slice's). Tekken skeleton data
+   is a Bandai Namco asset, so the GLBs live ONLY in the private
+   mhvnsnt/game-reverse-engineering repo (rigs/<id>/attire1/model-t7.glb);
+   a private build copies them to game/assets/private/rigs/ and sets
+   globalThis.__WH_PRIVATE_ASSETS = true. The public build keeps the
+   fighter's existing own-model URL. These URLs share Slice's T7 -> T3
+   remap (same signature guard: every T7 source name present, no T3 name). */
+const PRIVATE_T7_RIGS = {
+  burger: 'assets/private/rigs/burger/attire1/model-t7.glb',
+};
+const T7_RIG_URLS = new Set([SLICE_MODEL_URL]);
+if (globalThis.__WH_PRIVATE_ASSETS) {
+  for (const [id, url] of Object.entries(PRIVATE_T7_RIGS)) {
+    MODEL_URLS[id] = url;
+    T7_RIG_URLS.add(url);
+  }
+}
+
+/* PRIVATE T7 skin textures (Yukihyo). Yukihyo's materials are T7
+   MI_CH_malebody_<part>_02_skin, which share the generic T7 male body UVs.
+   The diffuse maps (T_CH_male_<part>_D) are Bandai Namco assets kept ONLY in
+   the private game-reverse-engineering repo (teardown/pakchunk0/textures/
+   Character/Common/shader/Texture/skin/male/); a private build copies them to
+   game/assets/private/textures/t7-skin/male/. Public builds skip this and the
+   fighter stays quarantined. The King-face (MI_CH_knk_*) maps were not found
+   in any private pull, so the material gate still decides usability. */
+const PRIVATE_SKIN_TEXTURES = {
+  yukihyo: {
+    base: 'assets/private/textures/t7-skin/male/',
+    match: /^MI_CH_malebody_(arm|body|foot|hand|head|leg|neck)_02_skin/i,
+    file: (part) => `T_CH_male_${part}_D.webp`,
+  },
+};
+async function applyPrivateSkinTextures(id, gltf) {
+  const spec = globalThis.__WH_PRIVATE_ASSETS && PRIVATE_SKIN_TEXTURES[id];
+  if (!spec) return;
+  const loader = new THREE.TextureLoader();
+  const cache = new Map();
+  const mats = [];
+  gltf.scene.traverse((o) => { if (o.isMesh) mats.push(...[].concat(o.material)); });
+  for (const m of mats) {
+    const hit = m && spec.match.exec(m.name || '');
+    if (!hit || m.map) continue;
+    const url = spec.base + spec.file(hit[1].toLowerCase());
+    if (!cache.has(url)) cache.set(url, loader.loadAsync(url).catch(() => null));
+    const tex = await cache.get(url);
+    if (!tex) continue;
+    tex.flipY = false; tex.colorSpace = THREE.SRGBColorSpace;
+    m.map = tex; m.color && m.color.set(0xffffff); m.needsUpdate = true;
+  }
+}
+
 function remapSliceBones(fighterId, model) {
-  if (MODEL_URLS[fighterId] !== SLICE_MODEL_URL) return false;
+  if (!T7_RIG_URLS.has(MODEL_URLS[fighterId])) return false;
   const byName = {};
   model.traverse((o) => { if (o.isBone) byName[o.name] = o; });
   // Scheme signature: ALL T7 source names must be present, and
@@ -827,6 +985,23 @@ function remapSliceBones(fighterId, model) {
   for (const { node } of driven) {
     desiredPos.set(node, node.getWorldPosition(new THREE.Vector3()));
   }
+  // Original bind relation per skin joint, captured BEFORE any frame
+  // edit: B_i = boneWorld_i * IBM_i (the authored mesh-to-bone bind).
+  // It is identity only when the mesh was bound in the skeleton's own
+  // space (Slice's old export). Blender re-rigs (Burger onto Bob,
+  // 2026-10-23) bind a mesh whose space differs from the bones' (B_i
+  // carries the export's offset/scale), and recomputing IBMs as the
+  // plain inverse of the edited bone worlds threw that relation away:
+  // the bind pose still drew (every bone matrix = I) but every clip
+  // delta pivoted in the wrong space and the body collapsed in fights.
+  // The re-solve below keeps B_i exactly: IBM'_i = inverse(W'_i) * B_i.
+  const bindRel = [];
+  model.traverse((o) => {
+    if (o.isSkinnedMesh && o.skeleton && !bindRel.some(e => e.sk === o.skeleton)) {
+      const sk = o.skeleton;
+      bindRel.push({ sk, B: sk.bones.map((b, i) => new THREE.Matrix4().multiplyMatrices(b.matrixWorld, sk.boneInverses[i])) });
+    }
+  });
 
   // (a) Cancel the wrapper rotations at the model root.
   model.quaternion.premultiply(correction);
@@ -857,13 +1032,13 @@ function remapSliceBones(fighterId, model) {
     node.position.copy(desiredPos.get(node).sub(_pw).applyQuaternion(_pq.clone().invert()));
   }
   model.updateMatrixWorld(true);
-  const seenSkeletons = new Set();
-  model.traverse((o) => {
-    if (o.isSkinnedMesh && o.skeleton && !seenSkeletons.has(o.skeleton)) {
-      seenSkeletons.add(o.skeleton);
-      o.skeleton.calculateInverses();
-    }
-  });
+  // Re-solve the inverse binds, preserving each joint's authored bind
+  // relation B_i (see bindRel above): IBM'_i = inverse(W'_i) * B_i.
+  for (const { sk, B } of bindRel) {
+    sk.bones.forEach((b, i) => {
+      sk.boneInverses[i].copy(b.matrixWorld).invert().multiply(B[i]);
+    });
+  }
   // ORIGIN LIFT: kept generic — this rig is authored with its
   // origin at its FEET, so this is a safety no-op; a re-export
   // with a pelvic origin would be lifted until the bind pose's
@@ -1008,7 +1183,10 @@ class AssetManager {
       // Join an in-flight load instead of doubling it — unless this call
       // carries its own abort signal (a preview tap owns its fetch so a
       // newer tap can cancel it without disturbing other consumers).
-      if (fly && !opts.signal) { jobs.push(fly.promise); continue; }
+      // Never join a load that was just aborted (the idle warm lane, cancelled above by this
+      // same call): joining it made a fight reject with AbortError whenever its fighter was
+      // still warming (2026-10-23, Pantera: "fight load failed: BodyStreamBuffer was aborted").
+      if (fly && !opts.signal && !fly.signal.aborted) { jobs.push(fly.promise); continue; }
       jobs.push(this._loadOne(id, onProgress, unique.length, opts));
     }
     let done = 0;
@@ -1024,16 +1202,27 @@ class AssetManager {
   /* One model: fetch (abort-aware, byte-progress) -> parseAsync ->
      _ingest. Aborts never retry; other failures retry once. */
   _loadOne(id, onProgress, total, opts) {
-    if (this._inflight[id] && !opts.signal) return this._inflight[id].promise;
+    if (this._inflight[id] && !opts.signal && !this._inflight[id].signal.aborted) return this._inflight[id].promise;
     const ctrl = new AbortController();
     if (opts.signal) {
       if (opts.signal.aborted) ctrl.abort(opts.signal.reason);
       else opts.signal.addEventListener('abort', () => ctrl.abort(opts.signal.reason), { once: true });
     }
     const url = MODEL_URLS[id];
+    assertModelUsable(id); // quarantined (broken materials) never loads into select or a fight
     const LOAD_TIMEOUT_MS = 90000;
     const attempt = async () => {
       const signal = _anySignal([ctrl.signal, _timeoutSignal(LOAD_TIMEOUT_MS)]);
+      // Lane 5: persistent-cache hit — report full byte progress once
+      // (the bar must move on real bytes, not stall), then parse the
+      // cached buffer on the identical path as a network download.
+      if (!signal.aborted) {
+        const cached = await getCachedBuffer(url);
+        if (cached && !signal.aborted) {
+          if (onProgress) onProgress(1, cached.byteLength, cached.byteLength, id);
+          return _sharedGLTFLoader().parseAsync(cached, url);
+        }
+      }
       const res = await fetch(url, { signal });
       if (!res.ok) throw new Error(`HTTP ${res.status} loading ${id}`);
       const totalBytes = Number(res.headers.get('content-length')) || 0;
@@ -1061,6 +1250,10 @@ class AssetManager {
         if (e && e.name === 'AbortError') throw e;
         buf = await res.arrayBuffer(); // no reader progress on very old browsers
       }
+      // Lane 5: persist the downloaded bytes for the next session.
+      // Fire-and-forget (never blocks the parse); a failed store is
+      // a silent no-op inside putCachedBuffer.
+      if (buf) putCachedBuffer(url, buf);
       // Same URL string the old loader.load() used, so external .bin /
       // texture references resolve exactly as before.
       return _sharedGLTFLoader().parseAsync(buf, url);
@@ -1080,7 +1273,7 @@ class AssetManager {
     const tracked = run.finally(() => {
       if (this._inflight[id] && this._inflight[id].promise === tracked) delete this._inflight[id];
     });
-    this._inflight[id] = { promise: tracked, abort: () => ctrl.abort() };
+    this._inflight[id] = { promise: tracked, abort: () => ctrl.abort(), signal: ctrl.signal };
     return tracked;
   }
 
@@ -1088,6 +1281,13 @@ class AssetManager {
      did (clip pinning, shadow flags, grounding, facing) — factored out so
      fetch+parse shares the identical path. */
   async _ingest(id, gltf) {
+    // Material resolve + verdict before anything can instance this model.
+    this.materialReport = this.materialReport || {};
+    await applyPrivateSkinTextures(id, gltf);
+    this.materialReport[id] = await resolveModelMaterials(id, gltf, async (d) => {
+      await this.loadModels([d], null, { lane: 'user' }); return this.gltfs[d];
+    });
+    if (!this.materialReport[id].usable) throw new Error(`model ${id} blocked by material gate`);
     this.gltfs[id] = gltf;
     this.clips[id] = {};
     // Bind-pose Hips position (Z-up skeleton): animations must return
@@ -1177,7 +1377,7 @@ class AssetManager {
      'custom' only warms when a custom fighter actually exists (main.js
      passes hasCustom) — 2.2MB most sessions never need. */
   preloadBaseIdle(hasCustom = false) {
-    const ids = ['pantera', 'steve-fox', 'demonio'];
+    const ids = ['pantera', 'demonio']; // steve-fox removed: no fighter falls back to it (owner 2026-10-23)
     if (hasCustom) ids.push('custom');
     const ric = (typeof window !== 'undefined' && window.requestIdleCallback)
       ? window.requestIdleCallback.bind(window)
@@ -1208,7 +1408,7 @@ class AssetManager {
      colored layer over their skin? fix that"). Only an explicitly
      colorized fighter (the Create-a-Fighter skin tone, `colorize: true`)
      passes a tint. */
-  createInstance(fighterId, suitColor, trimColor, tintStrength = 0) {
+  createInstance(fighterId, suitColor, trimColor, tintStrength = 0, eyeGlow = null) {
     const gltf = this.gltfs[fighterId];
     if (!gltf) throw new Error('unknown fighter model: ' + fighterId);
     // The instance root is a wrapper whose space always has the mesh facing
@@ -1257,6 +1457,18 @@ class AssetManager {
           o.material.transparent = false;
           o.material.opacity = 1;
         }
+        // EYE GLOW (owner 2026-10-22): per-attire emissive eyes, data-driven.
+        // The attire slot's eyeGlow config (attires.js) names the eye meshes
+        // as identified from the model (e.g. Negativo's ModelEyes_Material028)
+        // plus the emissive color/intensity for THAT attire — never hardcoded
+        // here. Applied after any tint so the glow color always wins. Runs in
+        // fight (fighter.js) and preview (select-screen.js): both call sites
+        // pass the resolved slot config through createInstance.
+        if (eyeGlow && Array.isArray(eyeGlow.materials) &&
+            (eyeGlow.materials.includes(o.material.name) || eyeGlow.materials.includes(o.name))) {
+          o.material.emissive = new THREE.Color(eyeGlow.color ?? 0xff2222);
+          o.material.emissiveIntensity = eyeGlow.intensity ?? 2.0;
+        }
       }
     });
     if (skinnedCount === 0) {
@@ -1291,11 +1503,18 @@ class AssetManager {
     const idleClip = clips.Idle || clips.Battle_Idle || clips.Stage_Idle || null;
     for (const name of ['Idle', 'Walk', 'Run']) {
       const clip = name === 'Idle' ? idleClip : clips[name];
-      if (clip) {
+      // ANIMATION GATE (owner t117u): in-game fighter instances are FIGHT context.
+      if (clip && checkClip(name, clip, CTX.FIGHT).ok) {
         actions[name] = mixer.clipAction(clip);
         actions[name].play();
         actions[name].setEffectiveWeight(name === 'Idle' ? 1 : 0);
       }
+    }
+    // CLOTHING LAYERS (worker 64): apply the player's saved per-attire
+    // clothing visibility to this instance. Guarded + fire-and-forget: a
+    // missing config or error here must never break instance creation.
+    try { applyClothingToInstance(model, fighterId); } catch (e) {
+      console.warn('[WH] clothing hook failed:', (e && e.message) || e);
     }
     return { model, bones, mixer, actions, scale: 1.0 };
   }

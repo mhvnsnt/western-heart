@@ -325,7 +325,8 @@
       "input_slots": [
         "1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "1,2": {
       "name": "DXMMII PATCHWORK DJ 1,2 (T3 jin r222)",
@@ -349,7 +350,8 @@
         "1",
         "2"
       ],
-      "move_class": "string"
+      "move_class": "string",
+      "set": "FIGHT"
     },
     "1,2,2": {
       "name": "DXMMII PATCHWORK DJ 1,2,2 (T3 jin r223)",
@@ -374,7 +376,8 @@
         "2",
         "2"
       ],
-      "move_class": "string"
+      "move_class": "string",
+      "set": "FIGHT"
     },
     "2": {
       "name": "DXMMII PATCHWORK DJ 2 (T3 jin r178)",
@@ -395,7 +398,8 @@
       "input_slots": [
         "2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "3": {
       "name": "DXMMII PATCHWORK DJ 3 (T3 jin r195)",
@@ -416,7 +420,8 @@
       "input_slots": [
         "3"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "4": {
       "name": "DXMMII PATCHWORK DJ 4 (T3 jin r199)",
@@ -437,7 +442,8 @@
       "input_slots": [
         "4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "4,1": {
       "name": "DXMMII PATCHWORK DJ 4,1 (T3 jin r184)",
@@ -461,7 +467,8 @@
         "4",
         "1"
       ],
-      "move_class": "string"
+      "move_class": "string",
+      "set": "FIGHT"
     },
     "4,1,2": {
       "name": "DXMMII PATCHWORK DJ 4,1,2 (T3 jin r186)",
@@ -486,7 +493,8 @@
         "1",
         "2"
       ],
-      "move_class": "string"
+      "move_class": "string",
+      "set": "FIGHT"
     },
     "1+3": {
       "name": "DXMMII PATCHWORK DJ 1+3 throw (T3 jin r139)",
@@ -512,7 +520,8 @@
         "1+3"
       ],
       "move_class": "throw",
-      "throw_break": "1"
+      "throw_break": "1",
+      "set": "FIGHT"
     },
     "2+4": {
       "name": "DXMMII PATCHWORK DJ 2+4 throw (T3 jin r273)",
@@ -538,7 +547,8 @@
         "2+4"
       ],
       "move_class": "throw",
-      "throw_break": "2"
+      "throw_break": "2",
+      "set": "FIGHT"
     },
     "d/f+2": {
       "name": "DXMMII PATCHWORK DJ d/f+2 (T3 jin r269)",
@@ -559,7 +569,8 @@
       "input_slots": [
         "d/f+2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "u/f+4": {
       "name": "DXMMII PATCHWORK DJ u/f+4 (T3 jin r80)",
@@ -580,7 +591,8 @@
       "input_slots": [
         "u/f+4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "d,d/b,d,d/b+1+2": {
       "name": "DXMMII PATCHWORK DJ d,d/b,d,d/b+1+2 throw (T3 jin r277)",
@@ -606,7 +618,8 @@
         "d,d/b,d,d/b+1+2"
       ],
       "move_class": "throw",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "set": "FIGHT"
     },
     "d/b,n,f+2": {
       "name": "DXMMII PATCHWORK DJ d/b,n,f+2 throw (T3 jin r276)",
@@ -632,7 +645,8 @@
         "d/b,n,f+2"
       ],
       "move_class": "throw",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "set": "FIGHT"
     },
     "n,d/f,n,d/f+1": {
       "name": "DXMMII PATCHWORK DJ n,d/f,n,d/f+1 throw (T3 jin r277)",
@@ -658,7 +672,8 @@
         "n,d/f,n,d/f+1"
       ],
       "move_class": "throw",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "set": "FIGHT"
     },
     "S": {
       "name": "Crooked Patch [WH SIGNATURE]",
@@ -677,7 +692,15 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "Doc Frank wants to fix him. The patches stay crooked. The patches are the point."
+      "note": "Doc Frank wants to fix him. The patches stay crooked. The patches are the point.",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "P+K": {
       "name": "Hidden Toolbox [WH SIGNATURE]",
@@ -701,7 +724,13 @@
       "note": "DXMMII has hidden his toolbox three times. A grab assembled from whatever was in it.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true
+      "isGrab": true,
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Crooked Patch [WH SIGNATURE]",
@@ -721,7 +750,15 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "Doc Frank wants to fix him. The patches stay crooked. The patches are the point.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "DXMMII PATCHWORK DJ 1+2 (T3 jin r32)",
@@ -741,7 +778,8 @@
       "input_slots": [
         "1+2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "1+4": {
       "name": "Hidden Toolbox [WH SIGNATURE]",
@@ -765,7 +803,13 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+2": {
       "name": "DXMMII PATCHWORK DJ f+2 (T3 jin r220)",
@@ -786,7 +830,8 @@
       "input_slots": [
         "f+2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "f+4": {
       "name": "DXMMII PATCHWORK DJ f+4 (T3 jin r214)",
@@ -807,7 +852,8 @@
       "input_slots": [
         "f+4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "f+4__main": {
       "name": "DXMMII PATCHWORK DJ f+4 (T3 jin r214)",
@@ -827,7 +873,8 @@
       "input_slots": [
         "f+4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "d+1+2": {
       "name": "DXMMII PATCHWORK DJ d+1+2 (T3 jin r92)",
@@ -848,7 +895,8 @@
       "input_slots": [
         "d+1+2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "d/f+1": {
       "name": "DXMMII PATCHWORK DJ d/f+1 (T3 jin r179)",
@@ -869,7 +917,8 @@
       "input_slots": [
         "d/f+1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "d/f+4": {
       "name": "DXMMII PATCHWORK DJ d/f+4 (T3 jin r205)",
@@ -890,7 +939,8 @@
       "input_slots": [
         "d/f+4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "u/b+1": {
       "name": "DXMMII PATCHWORK DJ u/b+1 (T3 jin r34)",
@@ -911,7 +961,8 @@
       "input_slots": [
         "u/b+1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "u/b+3": {
       "name": "DXMMII PATCHWORK DJ u/b+3 (T3 jin r56)",
@@ -932,7 +983,8 @@
       "input_slots": [
         "u/b+3"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "u/b+4": {
       "name": "DXMMII PATCHWORK DJ u/b+4 (T3 jin r78)",
@@ -953,7 +1005,8 @@
       "input_slots": [
         "u/b+4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "u/f+1": {
       "name": "DXMMII PATCHWORK DJ u/f+1 (T3 jin r33)",
@@ -974,7 +1027,8 @@
       "input_slots": [
         "u/f+1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "u/f+3": {
       "name": "DXMMII PATCHWORK DJ u/f+3 (T3 jin r55)",
@@ -995,7 +1049,8 @@
       "input_slots": [
         "u/f+3"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "u/f+3__main": {
       "name": "DXMMII PATCHWORK DJ u/f+3 (T3 jin r157)",
@@ -1015,7 +1070,8 @@
       "input_slots": [
         "u/f+3"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "u/b+3+4": {
       "name": "DXMMII PATCHWORK DJ u/b+3+4 (T3 jin r53)",
@@ -1036,7 +1092,8 @@
       "input_slots": [
         "u/b+3+4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "u/f+3+4": {
       "name": "DXMMII PATCHWORK DJ u/f+3+4 (T3 jin r52)",
@@ -1057,7 +1114,8 @@
       "input_slots": [
         "u/f+3+4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "d/f+1+2": {
       "name": "DXMMII PATCHWORK DJ d/f+1+2 throw (T3 jin r117)",
@@ -1083,7 +1141,8 @@
       "unblockable": true,
       "isGrab": true,
       "throw_break": "1+2",
-      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "set": "FIGHT"
     },
     "qcb+1+3": {
       "name": "DXMMII PATCHWORK DJ qcb+1+3 throw (T3 jin r275)",
@@ -1109,7 +1168,8 @@
       "unblockable": true,
       "isGrab": true,
       "throw_break": "1",
-      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "set": "FIGHT"
     },
     "1,4": {
       "name": "DXMMII PATCHWORK DJ 1,4 (T3 jin r230)",
@@ -1133,7 +1193,8 @@
         "4"
       ],
       "move_class": "string",
-      "string_hit": "1"
+      "string_hit": "1",
+      "set": "FIGHT"
     },
     "1,2,2,3": {
       "name": "DXMMII PATCHWORK DJ 1,2,2,3 (T3 jin r224)",
@@ -1159,7 +1220,8 @@
         "3"
       ],
       "move_class": "string",
-      "string_hit": "1,2,2"
+      "string_hit": "1,2,2",
+      "set": "FIGHT"
     },
     "u/f+4,3": {
       "name": "DXMMII PATCHWORK DJ u/f+4,3 (T3 jin r193)",
@@ -1183,7 +1245,8 @@
         "3"
       ],
       "move_class": "string",
-      "string_hit": "u/f+4"
+      "string_hit": "u/f+4",
+      "set": "FIGHT"
     },
     "u/f+4,4": {
       "name": "DXMMII PATCHWORK DJ u/f+4,4 (T3 jin r207)",
@@ -1207,7 +1270,8 @@
         "4"
       ],
       "move_class": "string",
-      "string_hit": "u/f+4"
+      "string_hit": "u/f+4",
+      "set": "FIGHT"
     },
     "d+1+2,1": {
       "name": "DXMMII PATCHWORK DJ d+1+2,1 (T3 jin r177)",
@@ -1231,7 +1295,8 @@
         "1"
       ],
       "move_class": "string",
-      "string_hit": "d+1+2"
+      "string_hit": "d+1+2",
+      "set": "FIGHT"
     },
     "d+1+2,2": {
       "name": "DXMMII PATCHWORK DJ d+1+2,2 (T3 jin r93)",
@@ -1255,7 +1320,8 @@
         "2"
       ],
       "move_class": "string",
-      "string_hit": "d+1+2"
+      "string_hit": "d+1+2",
+      "set": "FIGHT"
     },
     "d/f+1,3": {
       "name": "DXMMII PATCHWORK DJ d/f+1,3 (T3 jin r197)",
@@ -1279,7 +1345,8 @@
         "3"
       ],
       "move_class": "string",
-      "string_hit": "d/f+1"
+      "string_hit": "d/f+1",
+      "set": "FIGHT"
     },
     "d/f+1,4": {
       "name": "DXMMII PATCHWORK DJ d/f+1,4 (T3 jin r204)",
@@ -1303,7 +1370,8 @@
         "4"
       ],
       "move_class": "string",
-      "string_hit": "d/f+1"
+      "string_hit": "d/f+1",
+      "set": "FIGHT"
     },
     "d/f+4,4": {
       "name": "DXMMII PATCHWORK DJ d/f+4,4 (T3 jin r212)",
@@ -1327,7 +1395,8 @@
         "4"
       ],
       "move_class": "string",
-      "string_hit": "d/f+4"
+      "string_hit": "d/f+4",
+      "set": "FIGHT"
     },
     "1,4,4": {
       "name": "DXMMII PATCHWORK DJ 1,4,4 (T3 jin r231)",
@@ -1352,7 +1421,8 @@
         "4"
       ],
       "move_class": "string",
-      "string_hit": "1,4"
+      "string_hit": "1,4",
+      "set": "FIGHT"
     },
     "1,2,2,3,4": {
       "name": "DXMMII PATCHWORK DJ 1,2,2,3,4 (T3 jin r225)",
@@ -1379,7 +1449,8 @@
         "4"
       ],
       "move_class": "string",
-      "string_hit": "1,2,2,3"
+      "string_hit": "1,2,2,3",
+      "set": "FIGHT"
     },
     "u/f+4,4,4": {
       "name": "DXMMII PATCHWORK DJ u/f+4,4,4 (T3 jin r210)",
@@ -1404,7 +1475,8 @@
         "4"
       ],
       "move_class": "string",
-      "string_hit": "u/f+4,4"
+      "string_hit": "u/f+4,4",
+      "set": "FIGHT"
     },
     "d+1+2,1,2": {
       "name": "DXMMII PATCHWORK DJ d+1+2,1,2 (T3 jin r183)",
@@ -1429,7 +1501,8 @@
         "2"
       ],
       "move_class": "string",
-      "string_hit": "d+1+2,1"
+      "string_hit": "d+1+2,1",
+      "set": "FIGHT"
     },
     "1,4,4,2": {
       "name": "DXMMII PATCHWORK DJ 1,4,4,2 (T3 jin r232)",
@@ -1455,7 +1528,8 @@
         "2"
       ],
       "move_class": "string",
-      "string_hit": "1,4,4"
+      "string_hit": "1,4,4",
+      "set": "FIGHT"
     },
     "1,2,2,3,4,4": {
       "name": "DXMMII PATCHWORK DJ 1,2,2,3,4,4 (T3 jin r226)",
@@ -1483,7 +1557,8 @@
         "4"
       ],
       "move_class": "string",
-      "string_hit": "1,2,2,3,4"
+      "string_hit": "1,2,2,3,4",
+      "set": "FIGHT"
     },
     "u/f+4,4,4,4": {
       "name": "DXMMII PATCHWORK DJ u/f+4,4,4,4 (T3 jin r211)",
@@ -1509,7 +1584,8 @@
         "4"
       ],
       "move_class": "string",
-      "string_hit": "u/f+4,4,4"
+      "string_hit": "u/f+4,4,4",
+      "set": "FIGHT"
     },
     "1,4,4,2,4": {
       "name": "DXMMII PATCHWORK DJ 1,4,4,2,4 (T3 jin r233)",
@@ -1536,7 +1612,8 @@
         "4"
       ],
       "move_class": "string",
-      "string_hit": "1,4,4,2"
+      "string_hit": "1,4,4,2",
+      "set": "FIGHT"
     },
     "1,4,4,2,4,3": {
       "name": "DXMMII PATCHWORK DJ 1,4,4,2,4,3 (T3 jin r234)",
@@ -1564,7 +1641,8 @@
         "3"
       ],
       "move_class": "string",
-      "string_hit": "1,4,4,2,4"
+      "string_hit": "1,4,4,2,4",
+      "set": "FIGHT"
     },
     "n,b,n,f+2": {
       "name": "DXMMII PATCHWORK DJ n,b,n,f+2 (T3 jin r162)",
@@ -1585,7 +1663,8 @@
       "input_slots": [
         "n,b,n,f+2"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "set": "FIGHT"
     },
     "f": {
       "name": "DXMMII PATCHWORK DJ f (T3 jin r33)",
@@ -1605,7 +1684,8 @@
       "input_slots": [
         "f"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "b": {
       "name": "DXMMII PATCHWORK DJ b (T3 jin r34)",
@@ -1625,7 +1705,8 @@
       "input_slots": [
         "b"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "1_r36": {
       "name": "DXMMII PATCHWORK DJ 1_r36 (T3 jin r36)",
@@ -1645,7 +1726,8 @@
       "input_slots": [
         "1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "1_r37": {
       "name": "DXMMII PATCHWORK DJ 1_r37 (T3 jin r37)",
@@ -1665,7 +1747,8 @@
       "input_slots": [
         "1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "1_r38": {
       "name": "DXMMII PATCHWORK DJ 1_r38 (T3 jin r38)",
@@ -1685,7 +1768,8 @@
       "input_slots": [
         "1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "1_r39": {
       "name": "DXMMII PATCHWORK DJ 1_r39 (T3 jin r39)",
@@ -1705,7 +1789,8 @@
       "input_slots": [
         "1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "1_r40": {
       "name": "DXMMII PATCHWORK DJ 1_r40 (T3 jin r40)",
@@ -1725,7 +1810,8 @@
       "input_slots": [
         "1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "1_r41": {
       "name": "DXMMII PATCHWORK DJ 1_r41 (T3 jin r41)",
@@ -1745,7 +1831,8 @@
       "input_slots": [
         "1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "1_r42": {
       "name": "DXMMII PATCHWORK DJ 1_r42 (T3 jin r42)",
@@ -1765,7 +1852,8 @@
       "input_slots": [
         "1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "1_r43": {
       "name": "DXMMII PATCHWORK DJ 1_r43 (T3 jin r43)",
@@ -1785,7 +1873,8 @@
       "input_slots": [
         "1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "1_c36_r44": {
       "name": "DXMMII PATCHWORK DJ 1_c36_r44 (T3 jin r44)",
@@ -1806,7 +1895,8 @@
         "1"
       ],
       "move_class": "strike",
-      "t3_condition": 36
+      "t3_condition": 36,
+      "set": "FIGHT"
     },
     "f_c36_r45": {
       "name": "DXMMII PATCHWORK DJ f_c36_r45 (T3 jin r45)",
@@ -1827,7 +1917,8 @@
         "f"
       ],
       "move_class": "strike",
-      "t3_condition": 36
+      "t3_condition": 36,
+      "set": "FIGHT"
     },
     "b_c36_r46": {
       "name": "DXMMII PATCHWORK DJ b_c36_r46 (T3 jin r46)",
@@ -1848,7 +1939,8 @@
         "b"
       ],
       "move_class": "strike",
-      "t3_condition": 36
+      "t3_condition": 36,
+      "set": "FIGHT"
     },
     "2_r48": {
       "name": "DXMMII PATCHWORK DJ 2_r48 (T3 jin r48)",
@@ -1868,7 +1960,8 @@
       "input_slots": [
         "2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "2_r49": {
       "name": "DXMMII PATCHWORK DJ 2_r49 (T3 jin r49)",
@@ -1888,7 +1981,8 @@
       "input_slots": [
         "2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "3+4_r107": {
       "name": "DXMMII PATCHWORK DJ 3+4_r107 (T3 jin r51)",
@@ -1909,7 +2003,8 @@
         "3+4"
       ],
       "move_class": "strike",
-      "t3_restriction": 107
+      "t3_restriction": 107,
+      "set": "FIGHT"
     },
     "f_r52": {
       "name": "DXMMII PATCHWORK DJ f_r52 (T3 jin r52)",
@@ -1929,7 +2024,8 @@
       "input_slots": [
         "f"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "b_r53": {
       "name": "DXMMII PATCHWORK DJ b_r53 (T3 jin r53)",
@@ -1949,7 +2045,8 @@
       "input_slots": [
         "b"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "3_c36": {
       "name": "DXMMII PATCHWORK DJ 3_c36 (T3 jin r54)",
@@ -1970,7 +2067,8 @@
         "3"
       ],
       "move_class": "strike",
-      "t3_condition": 36
+      "t3_condition": 36,
+      "set": "FIGHT"
     },
     "f_c36_r55": {
       "name": "DXMMII PATCHWORK DJ f_c36_r55 (T3 jin r55)",
@@ -1991,7 +2089,8 @@
         "f"
       ],
       "move_class": "strike",
-      "t3_condition": 36
+      "t3_condition": 36,
+      "set": "FIGHT"
     },
     "b_c36_r56": {
       "name": "DXMMII PATCHWORK DJ b_c36_r56 (T3 jin r56)",
@@ -2012,7 +2111,8 @@
         "b"
       ],
       "move_class": "strike",
-      "t3_condition": 36
+      "t3_condition": 36,
+      "set": "FIGHT"
     },
     "3_r58": {
       "name": "DXMMII PATCHWORK DJ 3_r58 (T3 jin r58)",
@@ -2032,7 +2132,8 @@
       "input_slots": [
         "3"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "3_r59": {
       "name": "DXMMII PATCHWORK DJ 3_r59 (T3 jin r59)",
@@ -2052,7 +2153,8 @@
       "input_slots": [
         "3"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "3_r60": {
       "name": "DXMMII PATCHWORK DJ 3_r60 (T3 jin r60)",
@@ -2072,7 +2174,8 @@
       "input_slots": [
         "3"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "3_r61": {
       "name": "DXMMII PATCHWORK DJ 3_r61 (T3 jin r61)",
@@ -2092,7 +2195,8 @@
       "input_slots": [
         "3"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "3_r62": {
       "name": "DXMMII PATCHWORK DJ 3_r62 (T3 jin r62)",
@@ -2112,7 +2216,8 @@
       "input_slots": [
         "3"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "3_r63": {
       "name": "DXMMII PATCHWORK DJ 3_r63 (T3 jin r63)",
@@ -2132,7 +2237,8 @@
       "input_slots": [
         "3"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "3_r64": {
       "name": "DXMMII PATCHWORK DJ 3_r64 (T3 jin r64)",
@@ -2152,7 +2258,8 @@
       "input_slots": [
         "3"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "3_r65": {
       "name": "DXMMII PATCHWORK DJ 3_r65 (T3 jin r65)",
@@ -2172,7 +2279,8 @@
       "input_slots": [
         "3"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "b_r66": {
       "name": "DXMMII PATCHWORK DJ b_r66 (T3 jin r66)",
@@ -2192,7 +2300,8 @@
       "input_slots": [
         "b"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "b_c36": {
       "name": "DXMMII PATCHWORK DJ b_c36 (T3 jin r66)",
@@ -2213,7 +2322,8 @@
         "b"
       ],
       "move_class": "special",
-      "t3_condition": 36
+      "t3_condition": 36,
+      "set": "FIGHT"
     },
     "4_r68": {
       "name": "DXMMII PATCHWORK DJ 4_r68 (T3 jin r68)",
@@ -2233,7 +2343,8 @@
       "input_slots": [
         "4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "4_r69": {
       "name": "DXMMII PATCHWORK DJ 4_r69 (T3 jin r69)",
@@ -2253,7 +2364,8 @@
       "input_slots": [
         "4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "4_r70": {
       "name": "DXMMII PATCHWORK DJ 4_r70 (T3 jin r70)",
@@ -2273,7 +2385,8 @@
       "input_slots": [
         "4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "4_r71": {
       "name": "DXMMII PATCHWORK DJ 4_r71 (T3 jin r71)",
@@ -2293,7 +2406,8 @@
       "input_slots": [
         "4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "4_r72": {
       "name": "DXMMII PATCHWORK DJ 4_r72 (T3 jin r72)",
@@ -2313,7 +2427,8 @@
       "input_slots": [
         "4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "4_r73": {
       "name": "DXMMII PATCHWORK DJ 4_r73 (T3 jin r73)",
@@ -2333,7 +2448,8 @@
       "input_slots": [
         "4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "4_r74": {
       "name": "DXMMII PATCHWORK DJ 4_r74 (T3 jin r74)",
@@ -2353,7 +2469,8 @@
       "input_slots": [
         "4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "4_r75": {
       "name": "DXMMII PATCHWORK DJ 4_r75 (T3 jin r75)",
@@ -2373,7 +2490,8 @@
       "input_slots": [
         "4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "4_c36_r76": {
       "name": "DXMMII PATCHWORK DJ 4_c36_r76 (T3 jin r76)",
@@ -2394,7 +2512,8 @@
         "4"
       ],
       "move_class": "strike",
-      "t3_condition": 36
+      "t3_condition": 36,
+      "set": "FIGHT"
     },
     "f_c36_r77": {
       "name": "DXMMII PATCHWORK DJ f_c36_r77 (T3 jin r77)",
@@ -2415,7 +2534,8 @@
         "f"
       ],
       "move_class": "strike",
-      "t3_condition": 36
+      "t3_condition": 36,
+      "set": "FIGHT"
     },
     "b_c36_r78": {
       "name": "DXMMII PATCHWORK DJ b_c36_r78 (T3 jin r78)",
@@ -2436,7 +2556,8 @@
         "b"
       ],
       "move_class": "strike",
-      "t3_condition": 36
+      "t3_condition": 36,
+      "set": "FIGHT"
     },
     "d/f+1+2_r17": {
       "name": "DXMMII PATCHWORK DJ d/f+1+2_r17 (T3 jin r117)",
@@ -2458,7 +2579,8 @@
       ],
       "move_class": "throw",
       "t3_restriction": 17,
-      "damage_note": "t3 row damage 0; WH grappler convention 21"
+      "damage_note": "t3 row damage 0; WH grappler convention 21",
+      "set": "FIGHT"
     },
     "1_r144": {
       "name": "DXMMII PATCHWORK DJ 1_r144 (T3 jin r144)",
@@ -2478,7 +2600,8 @@
       "input_slots": [
         "1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "b_r169": {
       "name": "DXMMII PATCHWORK DJ b_r169 (T3 jin r169)",
@@ -2498,7 +2621,8 @@
       "input_slots": [
         "b"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "2_r178": {
       "name": "DXMMII PATCHWORK DJ 2_r178 (T3 jin r178)",
@@ -2518,7 +2642,8 @@
       "input_slots": [
         "2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "2_r180": {
       "name": "DXMMII PATCHWORK DJ 2_r180 (T3 jin r180)",
@@ -2538,7 +2663,8 @@
       "input_slots": [
         "2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "2_r183": {
       "name": "DXMMII PATCHWORK DJ 2_r183 (T3 jin r183)",
@@ -2558,7 +2684,8 @@
       "input_slots": [
         "2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "4_r188": {
       "name": "DXMMII PATCHWORK DJ 4_r188 (T3 jin r188)",
@@ -2578,7 +2705,8 @@
       "input_slots": [
         "4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "d/b": {
       "name": "DXMMII PATCHWORK DJ d/b (T3 jin r189)",
@@ -2598,7 +2726,8 @@
       "input_slots": [
         "d/b"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "2_r190": {
       "name": "DXMMII PATCHWORK DJ 2_r190 (T3 jin r190)",
@@ -2618,7 +2747,8 @@
       "input_slots": [
         "2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "2_r10_r192": {
       "name": "DXMMII PATCHWORK DJ 2_r10_r192 (T3 jin r192)",
@@ -2639,7 +2769,8 @@
         "2"
       ],
       "move_class": "strike",
-      "t3_restriction": 10
+      "t3_restriction": 10,
+      "set": "FIGHT"
     },
     "3_r195": {
       "name": "DXMMII PATCHWORK DJ 3_r195 (T3 jin r195)",
@@ -2659,7 +2790,8 @@
       "input_slots": [
         "3"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "3_r197": {
       "name": "DXMMII PATCHWORK DJ 3_r197 (T3 jin r197)",
@@ -2679,7 +2811,8 @@
       "input_slots": [
         "3"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "4_r201": {
       "name": "DXMMII PATCHWORK DJ 4_r201 (T3 jin r201)",
@@ -2699,7 +2832,8 @@
       "input_slots": [
         "4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "4_r202": {
       "name": "DXMMII PATCHWORK DJ 4_r202 (T3 jin r202)",
@@ -2719,7 +2853,8 @@
       "input_slots": [
         "4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "4_r203": {
       "name": "DXMMII PATCHWORK DJ 4_r203 (T3 jin r203)",
@@ -2739,7 +2874,8 @@
       "input_slots": [
         "4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "4_r204": {
       "name": "DXMMII PATCHWORK DJ 4_r204 (T3 jin r204)",
@@ -2759,7 +2895,8 @@
       "input_slots": [
         "4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "1_r208": {
       "name": "DXMMII PATCHWORK DJ 1_r208 (T3 jin r208)",
@@ -2779,7 +2916,8 @@
       "input_slots": [
         "1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "4_r211": {
       "name": "DXMMII PATCHWORK DJ 4_r211 (T3 jin r211)",
@@ -2799,7 +2937,8 @@
       "input_slots": [
         "4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "1_r213": {
       "name": "DXMMII PATCHWORK DJ 1_r213 (T3 jin r213)",
@@ -2819,7 +2958,8 @@
       "input_slots": [
         "1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "b+1": {
       "name": "DXMMII PATCHWORK DJ b+1 (T3 jin r216)",
@@ -2839,7 +2979,8 @@
       "input_slots": [
         "b+1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "1_r229": {
       "name": "DXMMII PATCHWORK DJ 1_r229 (T3 jin r229)",
@@ -2859,7 +3000,8 @@
       "input_slots": [
         "1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "1_r236": {
       "name": "DXMMII PATCHWORK DJ 1_r236 (T3 jin r236)",
@@ -2879,7 +3021,8 @@
       "input_slots": [
         "1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "2_r249": {
       "name": "DXMMII PATCHWORK DJ 2_r249 (T3 jin r249)",
@@ -2899,7 +3042,8 @@
       "input_slots": [
         "2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "1+2+3": {
       "name": "DXMMII PATCHWORK DJ 1+2+3 (T3 jin r255)",
@@ -2919,7 +3063,8 @@
       "input_slots": [
         "1+2+3"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "1_r263": {
       "name": "DXMMII PATCHWORK DJ 1_r263 (T3 jin r263)",
@@ -2939,7 +3084,8 @@
       "input_slots": [
         "1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "4_r268": {
       "name": "DXMMII PATCHWORK DJ 4_r268 (T3 jin r268)",
@@ -2959,7 +3105,8 @@
       "input_slots": [
         "4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "d/f+2_r10": {
       "name": "DXMMII PATCHWORK DJ d/f+2_r10 (T3 jin r269)",
@@ -2980,7 +3127,8 @@
         "d/f+2"
       ],
       "move_class": "strike",
-      "t3_restriction": 10
+      "t3_restriction": 10,
+      "set": "FIGHT"
     },
     "4_r271": {
       "name": "DXMMII PATCHWORK DJ 4_r271 (T3 jin r271)",
@@ -3000,7 +3148,8 @@
       "input_slots": [
         "4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "1_r272": {
       "name": "DXMMII PATCHWORK DJ 1_r272 (T3 jin r272)",
@@ -3020,7 +3169,8 @@
       "input_slots": [
         "1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "1_c36_r291": {
       "name": "DXMMII PATCHWORK DJ 1_c36_r291 (T3 jin r291)",
@@ -3041,7 +3191,8 @@
         "1"
       ],
       "move_class": "strike",
-      "t3_condition": 36
+      "t3_condition": 36,
+      "set": "FIGHT"
     },
     "1_c36_r292": {
       "name": "DXMMII PATCHWORK DJ 1_c36_r292 (T3 jin r292)",
@@ -3062,7 +3213,8 @@
         "1"
       ],
       "move_class": "strike",
-      "t3_condition": 36
+      "t3_condition": 36,
+      "set": "FIGHT"
     },
     "1_c36_r295": {
       "name": "DXMMII PATCHWORK DJ 1_c36_r295 (T3 jin r295)",
@@ -3083,7 +3235,8 @@
         "1"
       ],
       "move_class": "strike",
-      "t3_condition": 36
+      "t3_condition": 36,
+      "set": "FIGHT"
     },
     "1_c36_r296": {
       "name": "DXMMII PATCHWORK DJ 1_c36_r296 (T3 jin r296)",
@@ -3104,7 +3257,8 @@
         "1"
       ],
       "move_class": "strike",
-      "t3_condition": 36
+      "t3_condition": 36,
+      "set": "FIGHT"
     },
     "1_c5_r365": {
       "name": "DXMMII PATCHWORK DJ 1_c5_r365 (T3 jin r365)",
@@ -3125,7 +3279,8 @@
         "1"
       ],
       "move_class": "strike",
-      "t3_condition": 5
+      "t3_condition": 5,
+      "set": "FIGHT"
     },
     "1_c3_r367": {
       "name": "DXMMII PATCHWORK DJ 1_c3_r367 (T3 jin r367)",
@@ -3146,7 +3301,8 @@
         "1"
       ],
       "move_class": "strike",
-      "t3_condition": 3
+      "t3_condition": 3,
+      "set": "FIGHT"
     },
     "1_r371": {
       "name": "DXMMII PATCHWORK DJ 1_r371 (T3 jin r371)",
@@ -3166,7 +3322,8 @@
       "input_slots": [
         "1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "f+2+4_r14": {
       "name": "DXMMII PATCHWORK DJ f+2+4_r14 (T3 jin r372)",
@@ -3187,7 +3344,8 @@
         "f+2+4"
       ],
       "move_class": "strike",
-      "t3_restriction": 14
+      "t3_restriction": 14,
+      "set": "FIGHT"
     },
     "f+2+4": {
       "name": "DXMMII PATCHWORK DJ f+2+4 (T3 jin r373)",
@@ -3207,7 +3365,8 @@
       "input_slots": [
         "f+2+4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "set": "FIGHT"
     },
     "1_c2_r376": {
       "name": "DXMMII PATCHWORK DJ 1_c2_r376 (T3 jin r376)",
@@ -3228,7 +3387,8 @@
         "1"
       ],
       "move_class": "strike",
-      "t3_condition": 2
+      "t3_condition": 2,
+      "set": "FIGHT"
     },
     "1_c2_r377": {
       "name": "DXMMII PATCHWORK DJ 1_c2_r377 (T3 jin r377)",
@@ -3249,7 +3409,8 @@
         "1"
       ],
       "move_class": "strike",
-      "t3_condition": 2
+      "t3_condition": 2,
+      "set": "FIGHT"
     },
     "1_c2_r381": {
       "name": "DXMMII PATCHWORK DJ 1_c2_r381 (T3 jin r381)",
@@ -3270,7 +3431,8 @@
         "1"
       ],
       "move_class": "strike",
-      "t3_condition": 2
+      "t3_condition": 2,
+      "set": "FIGHT"
     },
     "1_c75_r384": {
       "name": "DXMMII PATCHWORK DJ 1_c75_r384 (T3 jin r384)",
@@ -3292,7 +3454,8 @@
       ],
       "move_class": "strike",
       "t3_condition": 75,
-      "t3_restriction": 10
+      "t3_restriction": 10,
+      "set": "FIGHT"
     },
     "1_c75_r385": {
       "name": "DXMMII PATCHWORK DJ 1_c75_r385 (T3 jin r385)",
@@ -3314,7 +3477,8 @@
       ],
       "move_class": "strike",
       "t3_condition": 75,
-      "t3_restriction": 10
+      "t3_restriction": 10,
+      "set": "FIGHT"
     },
     "1_c75_r387": {
       "name": "DXMMII PATCHWORK DJ 1_c75_r387 (T3 jin r387)",
@@ -3336,7 +3500,8 @@
       ],
       "move_class": "strike",
       "t3_condition": 75,
-      "t3_restriction": 10
+      "t3_restriction": 10,
+      "set": "FIGHT"
     },
     "1_c75_r389": {
       "name": "DXMMII PATCHWORK DJ 1_c75_r389 (T3 jin r389)",
@@ -3358,7 +3523,8 @@
       ],
       "move_class": "strike",
       "t3_condition": 75,
-      "t3_restriction": 10
+      "t3_restriction": 10,
+      "set": "FIGHT"
     },
     "1_c73": {
       "name": "DXMMII PATCHWORK DJ 1_c73 (T3 jin r389)",
@@ -3380,7 +3546,8 @@
       ],
       "move_class": "special",
       "t3_condition": 73,
-      "t3_restriction": 10
+      "t3_restriction": 10,
+      "set": "FIGHT"
     },
     "1_c74": {
       "name": "DXMMII PATCHWORK DJ 1_c74 (T3 jin r389)",
@@ -3402,7 +3569,8 @@
       ],
       "move_class": "special",
       "t3_condition": 74,
-      "t3_restriction": 10
+      "t3_restriction": 10,
+      "set": "FIGHT"
     },
     "1_c75_r391": {
       "name": "DXMMII PATCHWORK DJ 1_c75_r391 (T3 jin r391)",
@@ -3424,7 +3592,8 @@
       ],
       "move_class": "strike",
       "t3_condition": 75,
-      "t3_restriction": 10
+      "t3_restriction": 10,
+      "set": "FIGHT"
     },
     "1_c75_r393": {
       "name": "DXMMII PATCHWORK DJ 1_c75_r393 (T3 jin r393)",
@@ -3446,7 +3615,8 @@
       ],
       "move_class": "strike",
       "t3_condition": 75,
-      "t3_restriction": 10
+      "t3_restriction": 10,
+      "set": "FIGHT"
     },
     "1_c75_r395": {
       "name": "DXMMII PATCHWORK DJ 1_c75_r395 (T3 jin r395)",
@@ -3468,7 +3638,8 @@
       ],
       "move_class": "strike",
       "t3_condition": 75,
-      "t3_restriction": 10
+      "t3_restriction": 10,
+      "set": "FIGHT"
     },
     "1_c75_r397": {
       "name": "DXMMII PATCHWORK DJ 1_c75_r397 (T3 jin r397)",
@@ -3490,7 +3661,8 @@
       ],
       "move_class": "strike",
       "t3_condition": 75,
-      "t3_restriction": 10
+      "t3_restriction": 10,
+      "set": "FIGHT"
     },
     "1_c74_r399": {
       "name": "DXMMII PATCHWORK DJ 1_c74_r399 (T3 jin r399)",
@@ -3512,7 +3684,8 @@
       ],
       "move_class": "strike",
       "t3_condition": 74,
-      "t3_restriction": 10
+      "t3_restriction": 10,
+      "set": "FIGHT"
     },
     "1_c75_r401": {
       "name": "DXMMII PATCHWORK DJ 1_c75_r401 (T3 jin r401)",
@@ -3534,7 +3707,8 @@
       ],
       "move_class": "strike",
       "t3_condition": 75,
-      "t3_restriction": 10
+      "t3_restriction": 10,
+      "set": "FIGHT"
     },
     "donor.dxmmii.S": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -3555,7 +3729,8 @@
       "wh_original": true,
       "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
       "merge_source": "donor:dxmmii:S",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "set": "FIGHT"
     },
     "donor.dxmmii.P+K": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -3581,7 +3756,8 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:dxmmii:P+K",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "set": "FIGHT"
     },
     "1+2~donor.dxmmii": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -3603,7 +3779,13 @@
       "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
       "input_remapped_from": "S",
       "merge_source": "donor:dxmmii:1+2",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.dxmmii": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -3629,7 +3811,13 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:dxmmii:1+4",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.dxmmii.2": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -3650,7 +3838,13 @@
       "wh_original": true,
       "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
       "merge_source": "donor:dxmmii:S",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.dxmmii.3": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -3676,7 +3870,13 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:dxmmii:P+K",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.dxmmii.2": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -3698,7 +3898,13 @@
       "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
       "input_remapped_from": "S",
       "merge_source": "donor:dxmmii:1+2",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.dxmmii.2": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -3724,7 +3930,13 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:dxmmii:1+4",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.dxmmii.4": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -3745,7 +3957,13 @@
       "wh_original": true,
       "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
       "merge_source": "donor:dxmmii:S",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.dxmmii.5": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -3771,7 +3989,13 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:dxmmii:P+K",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.dxmmii.3": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -3793,7 +4017,13 @@
       "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
       "input_remapped_from": "S",
       "merge_source": "donor:dxmmii:1+2",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.dxmmii.3": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -3819,7 +4049,13 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:dxmmii:1+4",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.dxmmii.6": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -3840,7 +4076,13 @@
       "wh_original": true,
       "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
       "merge_source": "donor:dxmmii:S",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.dxmmii.7": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -3866,7 +4108,13 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:dxmmii:P+K",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.dxmmii.4": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -3888,7 +4136,13 @@
       "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
       "input_remapped_from": "S",
       "merge_source": "donor:dxmmii:1+2",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.dxmmii.4": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -3914,7 +4168,132 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:dxmmii:1+4",
-      "donor_fighter": "dxmmii"
+      "donor_fighter": "dxmmii",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
+    },
+    "None~donor.dxmmii.8": {
+      "name": "Tongue In, Run [WH SIGNATURE]",
+      "input": "S",
+      "startup": 0.31,
+      "active": 0.1,
+      "recovery": 0.92,
+      "damage": 19,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 13,
+      "anim_ref": "wh:dxmmii:sig:tongue-in-run",
+      "input_slots": [
+        "S"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
+      "merge_source": "donor:dxmmii:S",
+      "donor_fighter": "dxmmii",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "None~donor.dxmmii.9": {
+      "name": "Everybody's Sample [WH SIGNATURE]",
+      "input": "P+K",
+      "startup": 0.29,
+      "active": 0.05,
+      "recovery": 0.88,
+      "damage": 20,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "anim_ref": "wh:dxmmii:sig:everybodys-sample",
+      "input_slots": [
+        "P+K",
+        "P",
+        "K"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Everybody's style is my style. A mimic grab - your hold, his beat.",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "merge_source": "donor:dxmmii:P+K",
+      "donor_fighter": "dxmmii",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "1+2~donor.dxmmii.5": {
+      "name": "Tongue In, Run [WH SIGNATURE]",
+      "input": "1+2",
+      "startup": 0.31,
+      "active": 0.1,
+      "recovery": 0.92,
+      "damage": 19,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 13,
+      "anim_ref": "wh:dxmmii:sig:tongue-in-run",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
+      "input_remapped_from": "S",
+      "merge_source": "donor:dxmmii:1+2",
+      "donor_fighter": "dxmmii",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
+    },
+    "1+4~donor.dxmmii.5": {
+      "name": "Everybody's Sample [WH SIGNATURE]",
+      "input": "1+4",
+      "startup": 0.29,
+      "active": 0.05,
+      "recovery": 0.88,
+      "damage": 20,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "anim_ref": "wh:dxmmii:sig:everybodys-sample",
+      "input_slots": [
+        "1+4"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Everybody's style is my style. A mimic grab - your hold, his beat.",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "input_remapped_from": "P+K",
+      "throw_break": "1+2",
+      "merge_source": "donor:dxmmii:1+4",
+      "donor_fighter": "dxmmii",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     }
   },
   "restored_from_sweep_338": {
@@ -3986,7 +4365,7 @@
     "u/f+4,4,4,4": "u/f+4,4,4,4"
   },
   "merge_sources": {
-    "date": "2026-10-21",
+    "date": "2026-10-23",
     "by": "tools/moveset-merge/merge_sources.py",
     "bases": {
       "donors": [
@@ -3995,8 +4374,8 @@
     },
     "why": "attire variant of dxmmii",
     "exclude_proxy": false,
-    "moves_before": 162,
-    "moves_after": 166,
+    "moves_before": 166,
+    "moves_after": 170,
     "added": {
       "donor": 4
     },
@@ -4165,7 +4544,80 @@
     "None~donor.dxmmii.5": 2048,
     "1+4~donor.dxmmii.3": 2048,
     "None~donor.dxmmii.7": 2048,
-    "1+4~donor.dxmmii.4": 2048
+    "1+4~donor.dxmmii.4": 2048,
+    "None~donor.dxmmii.9": 2048,
+    "1+4~donor.dxmmii.5": 2048
   },
-  "stance_after": {}
+  "stance_after": {},
+  "anim_set_lock": {
+    "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances \u2014 the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations \u2014 intro/win slots and cutscenes ONLY; tracked in docs/anim/DXMMII-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp the lock state (batch10-special-pull 2026-10-23); taunt entries tagged SHOW"
+  },
+  "mimic": {
+    "design": "Mokujin slot: DXMMII has no fixed moveset by design \u2014 he copies another fighter's moveset (Tekken Mokujin rule).",
+    "current_wiring": "roster-full.js maps dxmmii-patchwork -> moveset 'demonio' (static). This file loads via MOVESET_IDS but the roster does not play it.",
+    "mechanic_status": "No per-round/per-match random-moveset mechanic exists for DXMMII as a roster fighter. Closest existing mechanism: Trader's Mimic mode (game/js/modes.js traderFoe(playerChar, bout, randomMoveset)).",
+    "handoff": "Game-code lane: implement Tekken-style mimic selection (random roster moveset per round/match) for dxmmii-patchwork; this file then serves as the fallback bank. Gap doc: docs/anim/DXMMII-ANIM-GAP-20261023.md.",
+    "date": "2026-10-23",
+    "by": "batch10-special-pull"
+  },
+  "canon_moves": [
+    {
+      "name": "Crooked Patch",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:dxmmii-patchwork:sig:crooked-patch",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 18,
+      "startup_frames": 18,
+      "canon": true,
+      "canon_owner": "DXMMII-PATCHWORK",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Hidden Toolbox",
+      "input": "1+4",
+      "display_input": "LP1+RK4",
+      "input_original": "`1+4`",
+      "anim_ref": "wh:dxmmii-patchwork:sig:hidden-toolbox",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 20,
+      "startup_frames": 17,
+      "canon": true,
+      "canon_owner": "DXMMII-PATCHWORK",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "system_note": "System note: LP1+RK4 is also Reihou, but ONLY while the foe is in RAGE (otherwise the moveset LP1+RK4 plays). No in-game conflict outside foe-RAGE.",
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  }
 }
