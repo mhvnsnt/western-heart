@@ -369,7 +369,7 @@ export class TrainingLab {
     this._dummy.behavior = b;
     this.game.ai = this._dummy;
     this._syncDummyButtons();
-    this.ui.banner && this.ui.banner(`DUMMY: ${b.toUpperCase()}`);
+    this.ui.banner && this.ui.hudNote(`DUMMY: ${b.toUpperCase()}`);
   }
 
   /* ---- record / playback ---- */
@@ -379,9 +379,9 @@ export class TrainingLab {
       this.recorder = null;
       this._syncRecButtons();
       if (calls.length > 4) {
-        this.ui.banner && this.ui.banner(`RECORDED ${(this._lastTotal / 120).toFixed(1)}s — PRESS PLAY`);
+        this.ui.banner && this.ui.hudNote(`RECORDED ${(this._lastTotal / 120).toFixed(1)}s — PRESS PLAY`);
       } else {
-        this.ui.banner && this.ui.banner('NOTHING RECORDED');
+        this.ui.banner && this.ui.hudNote('NOTHING RECORDED');
       }
       return;
     }
@@ -397,7 +397,7 @@ export class TrainingLab {
     };
     this.recorder.start();
     this._syncRecButtons();
-    this.ui.banner && this.ui.banner('● RECORDING DUMMY — FIGHT!');
+    this.ui.banner && this.ui.hudNote('● RECORDING DUMMY — FIGHT!');
   }
 
   togglePlayback() {
@@ -410,7 +410,7 @@ export class TrainingLab {
     }
     const calls = this._lastCalls;
     if (!calls || !calls.length) {
-      this.ui.banner && this.ui.banner('RECORD SOMETHING FIRST (● REC)');
+      this.ui.banner && this.ui.hudNote('RECORD SOMETHING FIRST (● REC)');
       return;
     }
     this._pbDriver = new PlaybackDummy(this.game.p2, calls);
@@ -418,7 +418,7 @@ export class TrainingLab {
     this._dummyDriverActive = true;
     this.game.ai = this._pbDriver;
     this._syncRecButtons();
-    this.ui.banner && this.ui.banner('▶ DUMMY PLAYBACK (LOOPED)');
+    this.ui.banner && this.ui.hudNote('▶ DUMMY PLAYBACK (LOOPED)');
   }
 
   stopAll() {
@@ -474,7 +474,7 @@ export class TrainingLab {
       if (snap.dead || snap.hp <= 0) { snap.dead = false; snap.hp = f.maxHp; }
       restoreFighter(f, snap, getRealMove);
     }
-    g.ui.banner('RESET — POSITIONS RESTORED');
+    g.ui.hudNote('RESET — POSITIONS RESTORED');
     g.ui.updateHP(g.p1, g.p2);
   }
 

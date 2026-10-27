@@ -25,6 +25,10 @@ import { buildStageLightRig } from './lighting-rig.js';
 // lane's stagebreaks.js; it only derives level destinations from defs.
 export { resolveStageLevels, levelAfterBreak, composeLevel, WALL_BREAK_EXTEND } from './stage-levels.js';
 import { getCachedBuffer, putCachedBuffer } from './asset-cache.js';
+// Split hosting (owner decision 2026-10-26: Pages shell + GLBs on R2).
+// Stage GLBs load through the same candidate order as fighters
+// (remote base first, jsDelivr fallback) — see asset-config.js.
+import { loadGlbCandidates, resolveAssetCandidates } from './asset-config.js';
 
 /* ---------------- minimal OBJ loader ----------------
    Tekken 3 panoramas use v / vt / f (triangles, 1-indexed, faces as
@@ -118,7 +122,7 @@ export async function preloadStage(stageId) {
     };
     await Promise.all([
       def.obj ? warm('obj', () => fetchStageOBJ(def.obj)) : Promise.resolve(),
-      def.glb ? warm('glb', () => warmFetch(def.glb)) : Promise.resolve(),
+      def.glb ? warm('glb', () => warmFetch(resolveAssetCandidates(def.glb)[0])) : Promise.resolve(),
       def.map ? warm('map', () => warmFetch(def.map)) : Promise.resolve(),
       def.pano ? warm('pano', () => warmFetch(def.pano)) : Promise.resolve(),
     ]);
@@ -1250,7 +1254,7 @@ async function buildHelix(g, def, api) {
   let detailed = false;
   if (def.glb) {
     try {
-      const gltf = await new GLTFLoader().loadAsync(def.glb);
+      const gltf = await loadGlbCandidates(new GLTFLoader(), def.glb);
       const club = gltf.scene;
       club.traverse((o) => {
         if (o.isMesh) {
@@ -1450,7 +1454,7 @@ async function buildNoMercy(g, def, api) {
   if (def.glb) {
     // GLB arena family (arena-pull lane): real N64 arena GLB + ring furniture.
       try {
-        const gltf = await new GLTFLoader().loadAsync(def.glb);
+        const gltf = await loadGlbCandidates(new GLTFLoader(), def.glb);
         const arena = gltf.scene;
         arena.traverse((o) => {
           if (o.isMesh) {
@@ -1573,7 +1577,7 @@ async function buildNoMercy(g, def, api) {
 async function buildT7Glb(g, def, api) {
   const { updaters, skyTex, fog } = buildBase(g, def, api);
   try {
-    const gltf = await new GLTFLoader().loadAsync(def.glb);
+    const gltf = await loadGlbCandidates(new GLTFLoader(), def.glb);
     gltf.scene.traverse((o) => {
       if (!o.isMesh) return;
       // exported without normals to fit phones; rebuild them here
@@ -1918,7 +1922,7 @@ async function buildSunRa(g, def, api) {
   const eyeLight = new THREE.PointLight(0xff3a22, 25, 40, 2);
   eyeLight.position.set(0, 31.75, -40.4); // owner 2026-10-19: raised 25% on Y with the glow g.add(eyeLight);
   try {
-    const gltf = await new GLTFLoader().loadAsync('assets/stages/sunra/mars-sky.glb');
+    const gltf = await loadGlbCandidates(new GLTFLoader(), 'assets/stages/sunra/mars-sky.glb');
     marsHead = gltf.scene;
     // normalize: fit head height to ~11 units, center it on MARS_POS
     const bbox = new THREE.Box3().setFromObject(marsHead);

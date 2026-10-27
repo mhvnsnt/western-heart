@@ -27,6 +27,12 @@ import { resolveModelMaterials, assertModelUsable } from './material-runtime.js'
 // A cache hit skips the network entirely; a miss stores the bytes
 // after a successful download. Never changes parse/ingest behavior.
 import { getCachedBuffer, putCachedBuffer } from './asset-cache.js';
+// Split hosting (owner decision 2026-10-26: Pages shell + GLBs on R2).
+// resolveAssetCandidates maps one MODEL_URLS entry to its fetch order:
+// bundled models stay local; everything else tries the remote asset
+// base first (R2 once the bucket exists), then jsDelivr. One config
+// line in asset-config.js moves the base — no per-model changes.
+import { resolveAssetCandidates } from './asset-config.js';
 
 export const MODEL_URLS = {
   pantera: 'assets/models/pantera.glb',
@@ -1210,53 +1216,72 @@ class AssetManager {
     }
     const url = MODEL_URLS[id];
     assertModelUsable(id); // quarantined (broken materials) never loads into select or a fight
+    // Split hosting: bundled models load from Pages exactly as before;
+    // every other model tries the remote asset base first, then jsDelivr.
+    const candidates = resolveAssetCandidates(url);
     const LOAD_TIMEOUT_MS = 90000;
     const attempt = async () => {
       const signal = _anySignal([ctrl.signal, _timeoutSignal(LOAD_TIMEOUT_MS)]);
-      // Lane 5: persistent-cache hit — report full byte progress once
-      // (the bar must move on real bytes, not stall), then parse the
-      // cached buffer on the identical path as a network download.
-      if (!signal.aborted) {
-        const cached = await getCachedBuffer(url);
-        if (cached && !signal.aborted) {
-          if (onProgress) onProgress(1, cached.byteLength, cached.byteLength, id);
-          return _sharedGLTFLoader().parseAsync(cached, url);
-        }
-      }
-      const res = await fetch(url, { signal });
-      if (!res.ok) throw new Error(`HTTP ${res.status} loading ${id}`);
-      const totalBytes = Number(res.headers.get('content-length')) || 0;
-      let buf;
-      try {
-        // Manual read loop: byte-level progress for the MB readout, and
-        // the read itself stays abort-aware.
-        const reader = res.body.getReader();
-        const chunks = [];
-        let loaded = 0;
-        for (;;) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          chunks.push(value);
-          loaded += value.byteLength;
-          if (onProgress && totalBytes > 0) {
-            onProgress(Math.min(loaded / totalBytes / Math.max(total, 1), 1), loaded, totalBytes, id);
+      let lastErr = null;
+      for (const cand of candidates) {
+        // Lane 5: persistent-cache hit — report full byte progress once
+        // (the bar must move on real bytes, not stall), then parse the
+        // cached buffer on the identical path as a network download.
+        // Cross-origin remote URLs are not cacheable (asset-cache.js),
+        // so remote loads skip this and go to the network every session.
+        if (!signal.aborted) {
+          const cached = await getCachedBuffer(cand);
+          if (cached && !signal.aborted) {
+            if (onProgress) onProgress(1, cached.byteLength, cached.byteLength, id);
+            return _sharedGLTFLoader().parseAsync(cached, cand);
           }
         }
-        const merged = new Uint8Array(loaded);
-        let off = 0;
-        for (const c of chunks) { merged.set(c, off); off += c.byteLength; }
-        buf = merged.buffer;
-      } catch (e) {
-        if (e && e.name === 'AbortError') throw e;
-        buf = await res.arrayBuffer(); // no reader progress on very old browsers
+        let res;
+        try {
+          res = await fetch(cand, { signal });
+        } catch (e) {
+          if (e && e.name === 'AbortError') throw e;
+          lastErr = e;
+          continue;
+        }
+        if (!res.ok) {
+          lastErr = new Error(`HTTP ${res.status} loading ${id} from ${cand}`);
+          continue;
+        }
+        const totalBytes = Number(res.headers.get('content-length')) || 0;
+        let buf;
+        try {
+          // Manual read loop: byte-level progress for the MB readout, and
+          // the read itself stays abort-aware.
+          const reader = res.body.getReader();
+          const chunks = [];
+          let loaded = 0;
+          for (;;) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            chunks.push(value);
+            loaded += value.byteLength;
+            if (onProgress && totalBytes > 0) {
+              onProgress(Math.min(loaded / totalBytes / Math.max(total, 1), 1), loaded, totalBytes, id);
+            }
+          }
+          const merged = new Uint8Array(loaded);
+          let off = 0;
+          for (const c of chunks) { merged.set(c, off); off += c.byteLength; }
+          buf = merged.buffer;
+        } catch (e) {
+          if (e && e.name === 'AbortError') throw e;
+          buf = await res.arrayBuffer(); // no reader progress on very old browsers
+        }
+        // Lane 5: persist the downloaded bytes for the next session.
+        // Fire-and-forget (never blocks the parse); a failed store is
+        // a silent no-op inside putCachedBuffer.
+        if (buf) putCachedBuffer(cand, buf);
+        // The candidate URL string is the parse base, so external .bin /
+        // texture references resolve against the host that served the GLB.
+        return _sharedGLTFLoader().parseAsync(buf, cand);
       }
-      // Lane 5: persist the downloaded bytes for the next session.
-      // Fire-and-forget (never blocks the parse); a failed store is
-      // a silent no-op inside putCachedBuffer.
-      if (buf) putCachedBuffer(url, buf);
-      // Same URL string the old loader.load() used, so external .bin /
-      // texture references resolve exactly as before.
-      return _sharedGLTFLoader().parseAsync(buf, url);
+      throw lastErr || new Error(`no candidate loaded for ${id}`);
     };
     const run = (async () => {
       let gltf;

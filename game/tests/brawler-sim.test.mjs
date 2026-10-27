@@ -58,7 +58,7 @@ process.on('uncaughtException', (e) => {
 });
 
 /* ---- harness: stub game/input/ui/roster/content ---- */
-const banners = [];
+const hudNotes = [];
 const input = {
   brawlerMode: false, axisX: 0, axisY: 0, joyY: 0, enabled: false,
   held: { block: false }, _q: [],
@@ -68,9 +68,12 @@ const input = {
 };
 const ui = {
   setNames(){}, setRounds(){}, setStageName(){}, updateHP(){}, updateMeter(){},
-  setTimer(){}, combo(){}, surgeFlash(){}, surgeName(){},
+  setTimer(){}, combo(){}, surgeFlash(){},
+  // NOTE: no surgeName here on purpose — the real main.js ui has none
+  // (removed in #1078; brawler.js dead calls fixed in the surgeName
+  // follow-up). If brawler.js ever calls it again, the sim throws.
   throwBreakPrompt(){}, throwEscape(){}, matchOver(){},
-  banner(m){ banners.push(m); },
+  hudNote(m){ hudNotes.push(m); },
 };
 const sceneStub = { add(){}, remove(){} };
 const game = {
@@ -191,7 +194,7 @@ test('bot playthrough: full 5-stage descent to victory', async () => {
   }
 
   console.log(`  finished at tick ${tick}: stages=[${events.stages}]` +
-    ` bosses=[${[...events.bosses]}] surge=${events.surge} banners=${banners.length}` +
+    ` bosses=[${[...events.bosses]}] surge=${events.surge} hudNotes=${hudNotes.length}` +
     ` death=${events.death} php=${B.player ? Math.round(B.player.hp) : '-'}` +
     ` zone=${B.zoneIdx + 1}/${B.zones.length} zoneState=${B.zoneState}` +
     ` foes=${B.enemies.map((e) => e.fighter.char.id + ':' + Math.round(e.fighter.hp)).join(',')}`);
@@ -201,6 +204,6 @@ test('bot playthrough: full 5-stage descent to victory', async () => {
   assert.ok(events.surge, 'soul surge form fired at full meter');
   for (const k of ['warden', 'mask', 'ogre', 'shadow', 'shadow2', 'sphere'])
     assert.ok(events.bosses.has(k), `boss kind spawned: ${k}`);
-  assert.ok(banners.some((b) => /CLEARED/.test(b)), 'stage-clear banners shown');
-  assert.ok(banners.some((b) => /SOUL SURGE/.test(b)), 'surge banner shown');
+  assert.ok(hudNotes.some((b) => /CLEARED/.test(b)), 'stage-clear HUD note shown');
+  assert.ok(hudNotes.some((b) => /SOUL SURGE/.test(b)), 'surge HUD note shown');
 });
