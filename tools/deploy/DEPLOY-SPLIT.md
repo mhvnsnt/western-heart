@@ -116,13 +116,140 @@ compressed, 739,520,900 bytes extracted, 5,634 entries). It fits Pages
 Breakdown of the 718 MB on disk: JSON 295.8 MB (1,190 files — movesets +
 anim data for ALL fighters), MP3 236.8 MB (48 files — all music), PNG
 113.4 MB (2,991 files), OGG 30.6 MB, bundled GLBs 17.2 MB, rest ~24 MB.
-The itch build needs its own trimmed shell (a `--itch` mode: only the
-bundled fighters' movesets/anim data, a music subset, and the PNGs those
-screens use) — **follow-up lane, not done here**. Do NOT upload this ZIP
-to itch.io; itch.io will reject it. Rebuild command (from the repo):
-`python3 tools/deploy/build_pages.py --ref origin/main --shell-only --out
-<dir> && cd <dir> && zip -r ../wh-itch-shell.zip . -x deploy-manifest.json
-.deploy-files.txt`.
+Do NOT upload that ZIP to itch.io; itch.io will reject it.
+
+## itch.io trimmed shell — `--itch` mode (done 2026-10-27, itch-trim lane)
+
+`tools/deploy/build_pages.py --itch` builds the trimmed shell: the
+shell-only set minus the cuts below, then the build FAILS (exit 1, nothing
+written) if the result is over any hard itch cap. Measured from main
+(`113cc24a`, the split commit), own-eyes:
+
+- **ZIP `wh-itch-trimmed.zip`: 203,663,576 bytes compressed,
+  282,824,816 bytes extracted, 881 entries, largest file 30,118,392 bytes
+  (`roster/awa-pop/attires/attire2/model-rigged.glb`), longest
+  filename 71 chars.** Caps: 881/1,000 files, 282.8/500 MB, 30.1/200 MB
+  per file — all pass with margin. The ZIP is stored as a GitHub release
+  asset (see the release line below) so the owner can pull it for the
+  itch upload later; the local ZIP and build dir were cleared off disk
+  after the release verified byte-identical.
+- Rebuild command (one command, from the repo root, reproducible from main):
+  `python3 tools/deploy/build_pages.py --ref origin/main --itch --out <dir>
+  && cd <dir> && zip -r ../wh-itch-trimmed.zip . -x deploy-manifest.json
+  .deploy-files.txt`
+- Play proof: [see "itch play proof" below].
+
+### What was cut (nothing is cut from the game, only from this deploy)
+
+The itch build plays the bundled fighters only (demonio, pantera, awa-pop,
+baek). Everything else loads from the remote asset base exactly like the
+Pages shell does. Each rule carries its runtime evidence in
+`itch_drop_reason()` (`tools/deploy/build_pages.py`); the headline cuts:
+
+- Parts media: `customization/parts-converted/` 2,262 files +
+  `customization/parts/` 697 files (catalog JSONs stay, so the creation
+  suite still opens; the bundled fighters' GLBs are self-contained Tripo
+  models and need no parts). Decal + reskin libraries (34 files) and the
+  suite demo video (1 file) go with them — customization media, not fight
+  assets.
+- Non-bundled movesets: 198 files (only the 8 bundled movesets +
+  `index.json` + `t3_input_tables.json` ship; `movesets/t7/` overlays are
+  validation-tool data, not runtime — `movesets.js` fetches one JSON per
+  fighter and never follows refs inside it).
+- Non-bundled anim banks: 607 files (only jin, king_on_pantera_leoman,
+  nina, bryan ship — the moveset index's `anim_bank` for the 4 bundled
+  fighters). Unused anim: 31 files (`ur-general-*`, `t7/`, `made/`,
+  `oss/` — no referrers in `game/js`).
+- Music: 44 of 48 MP3s (only the 4 mode tracks ship: title-meditation,
+  menu-deliberate, select-exhilarate, battle-volatile). `music.js`
+  filters to what exists and never throws; CI runs menu-touch-e2e with
+  music excluded entirely.
+- Sound bank: all 229 `game/assets/sounds/` OGGs — `voice.js`
+  `playSound(bankId)` has zero callers repo-wide; fight voices come from
+  `game/assets/voices/` via the voice manifests (demonio 6 + pantera 52
+  ship; the other 49 voice OGGs and 45 non-bundled voice manifests go).
+- Non-bundled portraits: 66 files + 4 zui UI portraits (the select
+  screen's `portraitHTML` falls back to a procedural SVG + monogram, so a
+  missing portrait never breaks a card — verified in the play check).
+- Stage thumbs: all 60 files (stages.js falls back to the palette swatch
+  — verified in the play check: the stage screen renders swatch
+  gradients). Stage files themselves all ship (T3 retro + No Mercy
+  stages load via constructed paths, so they stay).
+- Tests (55), docs (23), `data/t7-frame-data` (45), `data/movesets` (4),
+  `data/moveset-library` (11 — its module has no importer), legacy
+  `*_moves.json` (8), accessories docs (10), archive (10), model renders
+  (7), ai-pass compare images (6), superseded `pano.png` originals (6),
+  poses (4), sunra preview media (3).
+- Kept deliberately: all code, all stages, all fight effects
+  (`game/assets/fx/effekseer`), eastern-mind stage audio (referenced by
+  `game/js/audio.js`), `game/data/t8_frame_tables.json` (the fight's
+  frame data — `fighter.js` → `frame-tables.js`), music-library,
+  jukebox-pools, sound-bank.json, story files, the 4 bundled GLBs
+  (16.4 MB).
+- **Fight models that ship although the shell-only filter drops them
+  (5 files, 111.2 MB):** the split's `SHELL_BUNDLED_MODELS` names the
+  BASE glbs, but the fight loads the fighters' ATTIRE models — the
+  itch build would not play its bundled fighters without these:
+  `roster/demonio/attires/attire1/model.glb` (27.5 MB, demonio-a1,
+  Attire 1), `roster/demonio/attires/winged-devil/model-rigged.glb`
+  (18.1 MB) + `roster/demonio/attires/human/model-rerig.glb` (27.4 MB)
+  (demonio's transform targets, preloaded by `startFight` — the fight
+  fails to start without them), `roster/awa-pop/attires/attire2/
+  model-rigged.glb` (28.7 MB, awa-pop-attire2, Attire 2),
+  `roster/pantera/attires/leomon/model.glb` (4.2 MB, pantera's
+  select-pane attire — stops the panes retrying a missing model).
+  Evidence: `attires.js` ATTIRE_VARIANTS (demonio Attire 1 =
+  demonio-a1; the BASE demonio.glb "rendered the wrong body on
+  select"), roster `model` fields (demonio `demonio-a1`, awapop
+  `awa-pop-attire2`, pantera `pantera`, baek-master-white `baek`),
+  `startFight`'s transform preload. **Same gap on the Pages shell:**
+  a demonio or awa-pop fight fails there too until the remote base
+  exists — that is a split follow-up (bundle the attire models in the
+  shell, or land the remote base), not this lane.
+
+### itch play proof
+
+Run locally 2026-10-27 against the trimmed build served from disk
+(`python3 -m http.server`, headless Chromium, iPhone 13 touch profile,
+menu-touch-e2e variant picking the bundled fighters). The full flow ran
+end to end: menu 8/8 tappable, versus -> solo -> select (pantera picked,
+demonio picked, both confirms), stage confirmed (SHRINE OF THE BLADE),
+fight HUD up reading PANTERA vs DEMONIO. `04-fight.png` viewed with my
+own eyes: both fighters rendered in the arena in fighting stance, full
+HUD (health bars, timer 60, round pips, NINE-SOUL METER, touch controls).
+**0 bundled-asset 404s** across the run; the only 404s are non-bundled
+portraits/movesets the remote base serves. (One pre-existing repo gap
+surfaced: `game/js/intro-interactions.js` does not exist on main — a
+dynamic import from `versus-banter.js`, one of the 4 named 404s from the
+2026-10-25 friction research; the game degrades cleanly and the fight
+still loads.)
+
+Timer caveat, stated plainly: the timer read 60 at the HUD and still 60
+after 180s. That is the test box, not the fight: this box renders through
+SwiftShader (software GL) at a measured median **2,850 ms per frame** on
+the menu, and the game clock is frame-rate-coupled (`frameDt` clamped to
+0.05s, `FIXED_DT` 1/120), so the clock runs at ~0.018x real time on the
+menu and slower in the heavier fight scene — one timer tick needs ~20
+frames, i.e. ~100-200+ real seconds here. The same fight code counts the
+timer and drops health on a real GPU (Oct 25 play-verify, Pantera vs
+Demonio). No timer tick was captured on the trimmed build in this session;
+the fight loading, rendering, and HUD are proven, the tick is not.
+
+Harness notes (environment, not game defects): Playwright's tap
+actionability wait starves on the panes' continuous rAF loop at this
+frame rate, so the confirm buttons are clicked with a real force click
+after a hit check proves the button is topmost at its center; the
+confirm-stage screenshot is best-effort (the compositor can starve past
+120s while the fight renders). CI covers the same flow via
+menu-touch-e2e.
+
+### itch release
+
+- Release: `wh-itch-trimmed-v1` on mhvnsnt/western-heart —
+  asset `wh-itch-trimmed.zip` (203,663,576 bytes, sha256
+  `dbe6a5711e6d5c34a4e0c175642926cbe683c4769e4b29ddb3b9db715d357615`),
+  verified byte-identical by re-download 2026-10-27; local ZIP + build
+  dir cleared off disk after verify.
 
 1. Create the itch.io account at https://itch.io/register (email + password).
 2. **Create new project** → kind **HTML5** → upload the shell ZIP.
