@@ -24,6 +24,14 @@ closure file pointed at the SAME blob it has on the source ref (git update-index
 deploy-manifest.json. Entries are only added or updated, never removed. The model blobs already
 exist on GitHub (they are main's), so a push sends trees + one commit; in a blob:none partial
 clone only the text files the closure scan reads are fetched.
+
+Shell-only mode (owner decision 2026-10-26, "Split it: Pages shell + GLBs on R2"):
+GitHub Pages caps a published site at 1 GB; the full deploy set is ~5,969 MB, so the full
+set can never ship on Pages. --shell-only deploys the playable shell only — all code/UI/text
+plus the bundled fighters/stage in SHELL_BUNDLED_MODELS — and leaves every other .glb/.gltf
+out of the deploy. Excluded models load at runtime from the remote asset base
+(see game/js/asset-config.js). Nothing is cut from the game, only from the deploy.
+    python3 tools/deploy/build_pages.py --ref origin/main --dry-run --shell-only
 """
 import argparse
 import json
@@ -49,6 +57,23 @@ SKIP = ("docs/proof/", "teardown/", "tools/", ".github/", "node_modules/")
 # (GitHub Pages' documented limit is 1 GB; the live site already runs at 2.3 GB). --follow-all
 # overrides; a follow-up deploy can add those models once the main deploy is confirmed live.
 NO_FOLLOW = ("customization/creation-suite-ui/data/roster-attires.json",)
+# Shell-only deploy (owner decision 2026-10-26: split hosting, Pages shell + GLBs on R2).
+# --shell-only ships these models on Pages; every other .glb/.gltf in the closure is
+# excluded from the deploy and loads at runtime from the remote asset base
+# (game/js/asset-config.js). Picks are the small canon fighters from the verified
+# play-verify pair plus two tiny ones, so the shell still plays out of the box:
+#   demonio 8.8 MB, pantera 7.6 MB, awa-pop 0.4 MB, baek 0.4 MB (~17 MB total).
+# Stages ship as .obj/.png atlases (small); no stage GLB is bundled.
+SHELL_BUNDLED_MODELS = (
+    "game/assets/models/demonio.glb",
+    "game/assets/models/pantera.glb",
+    "game/assets/models/awa-pop.glb",
+    "game/assets/models/baek.glb",
+)
+# In shell-only mode a single file over this size never belongs in the shell:
+# the remote base serves it instead. 25 MiB matches the Cloudflare Pages
+# per-file cap, so the same shell could also deploy there unchanged.
+SHELL_MAX_FILE_BYTES = 25 * 1024 * 1024
 REPO = os.environ.get("WH_REPO", "mhvnsnt/western-heart")
 STR = re.compile(r"""["'`]([^"'`\s<>{}$|*?]+\.[A-Za-z0-9]{2,5})(?:[?#][^"'`\s]*)?["'`]""")
 
@@ -65,7 +90,13 @@ def blob_sizes(sha):
     downloads every blob one at a time (60k+ round trips = the old >10 min hang). Present blobs are
     sized locally (GIT_NO_LAZY_FETCH); missing ones via the GitHub trees API per top-level dir."""
     oids = {}
-    for line in git("ls-tree", "-r", sha).splitlines():
+    # -z: NUL-separated, never C-quoted. Without it, filenames with non-ASCII
+    # bytes (e.g. customization/parts/wmxix mojibake names, on main since
+    # 2026-10-26) come back "..." quoted and break every later lookup —
+    # the script died on `rev-parse <sha>:"customization` before this fix.
+    for line in git("ls-tree", "-r", "-z", sha).split("\0"):
+        if not line:
+            continue
         meta, path = line.split("\t", 1)
         mode, kind, obj = meta.split()
         if kind == "blob":
@@ -111,25 +142,39 @@ def prefetch_text(oids):
         print(f"prefetched {len(miss)} text blobs in {(len(miss) + 1999) // 2000} batch(es)")
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--ref", default="origin/main")
-    ap.add_argument("--out", default=None)
-    ap.add_argument("--onto", default=None, help="plumbing mode: parent gh-pages ref (e.g. origin/gh-pages)")
-    ap.add_argument("--branch", default="gh-pages")
-    ap.add_argument("--push", action="store_true")
-    ap.add_argument("--dry-run", action="store_true")
-    ap.add_argument("--follow-all", action="store_true")
-    a = ap.parse_args()
-    sha = git("rev-parse", a.ref).strip()
-    sizes, oids = blob_sizes(sha)
-    prefetch_text(oids)
+def shell_bundled_models(sha):
+    """Bundled-model allowlist, read from game/js/asset-config.js on the same
+    ref — that file is the single source of truth, so the deploy script and
+    the loader can never drift apart. Falls back to SHELL_BUNDLED_MODELS
+    (with a warning) if the file or the list cannot be read."""
+    try:
+        txt = git("cat-file", "-p", f"{sha}:game/js/asset-config.js")
+        m = re.search(r"SHELL_BUNDLED_MODELS\s*=\s*\[([^\]]*)\]", txt)
+        if m:
+            found = tuple(re.findall(r"'([^']+)'", m.group(1)))
+            if found:
+                return found
+    except SystemExit:
+        pass
+    print("warning: could not read SHELL_BUNDLED_MODELS from game/js/asset-config.js; using built-in list")
+    return SHELL_BUNDLED_MODELS
+
+
+def compute_deploy_files(sha, sizes, oids, follow_all=False, shell_only=False):
+    """Reference closure over ROOTS, as a sorted file list.
+
+    Shared by main() and tools/deploy/r2-upload-manifest.py so the R2 manifest
+    and the deploy set can never drift apart: one closure, two consumers.
+    shell_only=True applies the split-hosting filter (see SHELL_BUNDLED_MODELS)
+    and returns (files, excluded) where excluded is the sorted list of files
+    dropped from the shell (they load from the remote asset base at runtime).
+    """
     files = set(p for p in sizes if p.startswith(ROOTS))
     queue = [p for p in files if p.endswith(TEXT)]
     seen_text = set(queue)
     while queue:
         p = queue.pop()
-        if p in NO_FOLLOW and not a.follow_all:
+        if p in NO_FOLLOW and not follow_all:
             continue
         try:
             txt = git("cat-file", "-p", f"{sha}:{p}")
@@ -150,17 +195,58 @@ def main():
                             queue.append(cand)
                     break
     files = sorted(files)
+    if not shell_only:
+        return files, []
+    bundled = shell_bundled_models(sha)
+    excluded = []
+    kept = []
+    for f in files:
+        if f.lower().endswith((".glb", ".gltf")) and f not in bundled:
+            excluded.append(f)
+        elif sizes[f] > SHELL_MAX_FILE_BYTES:
+            excluded.append(f)
+        else:
+            kept.append(f)
+    return kept, sorted(excluded)
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--ref", default="origin/main")
+    ap.add_argument("--out", default=None)
+    ap.add_argument("--onto", default=None, help="plumbing mode: parent gh-pages ref (e.g. origin/gh-pages)")
+    ap.add_argument("--branch", default="gh-pages")
+    ap.add_argument("--push", action="store_true")
+    ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--follow-all", action="store_true")
+    ap.add_argument("--shell-only", action="store_true",
+                    help="deploy the playable shell only (owner decision 2026-10-26: "
+                         "Pages shell + GLBs on R2); all other .glb/.gltf load at "
+                         "runtime from the remote asset base (game/js/asset-config.js)")
+    a = ap.parse_args()
+    sha = git("rev-parse", a.ref).strip()
+    sizes, oids = blob_sizes(sha)
+    prefetch_text(oids)
+    files, excluded = compute_deploy_files(sha, sizes, oids, a.follow_all, a.shell_only)
     total = sum(sizes[f] for f in files)
     by_top = {}
     for f in files:
         top = f.split("/", 1)[0]
         by_top[top] = by_top.get(top, 0) + sizes[f]
-    print(f"ref {a.ref} = {sha}: {len(files)} files, {total/1e6:.1f} MB")
+    mode = "shell-only" if a.shell_only else "full"
+    print(f"ref {a.ref} = {sha}: {len(files)} files, {total/1e6:.1f} MB ({mode})")
     for t, s in sorted(by_top.items(), key=lambda x: -x[1]):
         print(f"  {t:16s} {s/1e6:9.1f} MB")
+    if excluded:
+        ex_bytes = sum(sizes[f] for f in excluded)
+        ex_glb = [f for f in excluded if f.lower().endswith((".glb", ".gltf"))]
+        print(f"shell-only: excluded {len(excluded)} files, {ex_bytes/1e6:.1f} MB "
+              f"({len(ex_glb)} models -> remote asset base)")
     big = [f for f in files if sizes[f] > 95e6]
     if big:
         print("over 95 MB (GitHub per-file limit is 100 MB):", big)
+    if total > 1e9:
+        print(f"WARNING: deploy set {total/1e6:.0f} MB exceeds the GitHub Pages 1 GB published-site limit")
     if a.dry_run:
         return
     if a.onto:
@@ -176,7 +262,10 @@ def main():
         with open(dst, "wb") as fh:
             fh.write(data)
     man = {"format": "wh-pages-deploy/1", "ref": a.ref, "commit": sha, "files": len(files),
-           "bytes": total, "tool": "tools/deploy/build_pages.py"}
+           "bytes": total, "tool": "tools/deploy/build_pages.py", "mode": mode}
+    if excluded:
+        man["excluded_files"] = len(excluded)
+        man["excluded_bytes"] = sum(sizes[f] for f in excluded)
     with open(os.path.join(a.out, "deploy-manifest.json"), "w") as fh:
         json.dump(man, fh, indent=1)
     with open(os.path.join(a.out, ".deploy-files.txt"), "w") as fh:
@@ -187,7 +276,9 @@ def main():
 def plumbing(a, sha, files, sizes, total):
     import tempfile
     blob = {}
-    for line in git("ls-tree", "-r", sha, "--", *sorted({f.split("/", 1)[0] for f in files})).splitlines():
+    for line in git("ls-tree", "-r", "-z", sha, "--", *sorted({f.split("/", 1)[0] for f in files})).split("\0"):
+        if not line:
+            continue
         meta, path = line.split("\t", 1)
         mode, kind, obj = meta.split()
         if kind == "blob":
@@ -201,7 +292,7 @@ def plumbing(a, sha, files, sizes, total):
             sys.exit(r.stderr.decode()[:2000])
         return r.stdout.decode()
     g("read-tree", parent)
-    before = {l.split("\t", 1)[1]: l.split()[1] for l in g("ls-files", "-s").splitlines()}
+    before = {l.split("\t", 1)[1]: l.split()[1] for l in g("ls-files", "-s", "-z").split("\0") if l}
     lines, changed = [], 0
     for f in files:
         mode, obj = blob[f]
@@ -210,10 +301,11 @@ def plumbing(a, sha, files, sizes, total):
         lines.append(f"{mode} {obj}\t{f}")
     g("update-index", "--index-info", inp=("\n".join(lines) + "\n").encode())
     man = json.dumps({"format": "wh-pages-deploy/1", "ref": a.ref, "commit": sha, "files": len(files),
-                      "bytes": total, "tool": "tools/deploy/build_pages.py"}, indent=1).encode()
+                      "bytes": total, "tool": "tools/deploy/build_pages.py",
+                      "mode": "shell-only" if a.shell_only else "full"}, indent=1).encode()
     mobj = g("hash-object", "-w", "--stdin", inp=man).strip()
     g("update-index", "--add", "--cacheinfo", f"100644,{mobj},deploy-manifest.json")
-    after = set(l.split("\t", 1)[1] for l in g("ls-files", "-s").splitlines())
+    after = set(l.split("\t", 1)[1] for l in g("ls-files", "-s", "-z").split("\0") if l)
     missing = set(before) - after
     if missing:
         sys.exit(f"refusing: {len(missing)} entries would be removed")
@@ -223,7 +315,8 @@ def plumbing(a, sha, files, sizes, total):
         os.remove(idx)
         return
     msg = (f"Deploy: western-heart from {a.ref} @ {sha[:9]} (tools/deploy/build_pages.py)\n\n"
-           f"{changed} files added or updated ({len(files)} in the deploy set, {total/1e6:.0f} MB); "
+           f"{changed} files added or updated ({len(files)} in the deploy set, {total/1e6:.0f} MB"
+           f"{', shell-only' if a.shell_only else ''}); "
            f"0 removed.\n")
     commit = g("-c", "user.name=wh-deploy", "-c", "user.email=noreply@github.com",
                "commit-tree", tree, "-p", parent, inp=msg.encode()).strip()

@@ -3570,3 +3570,38 @@ Live-browser playtest (rendering, combat feel, balance) still needed — delegat
 **Proof:** 27/27 tagtest pass; screenshots: submenu, size picker, slot tray, DONE-draft {p1:[pantera,torch],p2:[demonio,rave]}.
 
 **Status:** PR pushed; merge via git_merge.py when green. NOTE: main has pre-existing broken imports (voice.js/hitfx.js/intro-interactions.js 404) — not from this worker.
+
+## 2026-10-26 — Deploy split wiring: Pages shell + GLBs on R2 (lane)
+
+**Owner decision:** "Split it: Pages shell + GLBs on R2" (2026-10-26 ~19:10 CDT, tapped option).
+Replaces the pending "what gets cut" question — nothing cut from the game, only from the deploy.
+Research: agent-ops PR #161 (`research-friction-20261025/01-deploy-pages-limit.md`).
+
+**What changed:**
+- `tools/deploy/build_pages.py --shell-only` — shell-only deploy (code/UI/text + 4 bundled
+  fighters: demonio, pantera, awa-pop, baek). Bundled list read from
+  `game/js/asset-config.js` on the ref (single source of truth). Also fixed `ls-tree -z`:
+  the script died on main tip because 4 mojibake filenames under `customization/parts*`
+  come back C-quoted.
+- `game/js/asset-config.js` (new) — one-line config: `remoteBase` placeholder
+  `__WH_R2_PUBLIC_URL__` until the R2 bucket exists; R2-only remote base, jsDelivr
+  fallback for small files. Decision recorded with reasons in the file.
+- `game/js/assets.js`, `game/js/stages.js`, `game/js/customization-consumer.js` — all
+  three GLB loaders go through `resolveAssetCandidates()` / `loadGlbCandidates()`.
+  No per-model changes; `MODEL_URLS` and stage defs untouched.
+- `tools/deploy/r2-upload-manifest.py` + `r2-upload-manifest.json` — every model to
+  upload, built from live GitHub (same closure as the deploy script), never local disk.
+- `tools/deploy/DEPLOY-SPLIT.md` — decision record, owner R2 steps, upload runbook,
+  itch.io setup sheet, verification checklist.
+
+**Proof:** `node --check` clean on all 4 touched JS files; resolver unit test 10/10
+(`repoPathForModelUrl` incl. `../roster/` escape, bundled-stays-local,
+non-bundled -> jsDelivr until R2 exists); `preload.test.mjs` 6/6 pass;
+`model-key-guard.test.mjs` 8/9 — the 1 failure is the sparse-checkout artifact
+(every entry "(file missing)": roster/ + game/assets not on disk locally), zero
+key-mismatch failures. Deploy-size verification from the build log: full baseline
+and `--shell-only` dry-runs (see PR body).
+
+**Blocked (owner-only):** Cloudflare R2 signup + bucket (`western-heart-assets`,
+CORS `Access-Control-Allow-Origin: *`) and itch.io account + payout setup.
+No bucket exists yet — nothing uploaded to R2, no account created.
