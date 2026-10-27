@@ -9,7 +9,7 @@ only from the deploy. Research basis: `agent-ops` PR #161,
 ## The problem
 
 - GitHub Pages caps a published site at **1 GB** (hard, from GitHub's own docs).
-- The full deploy set is **~5,969 MB** (7,545 files, measured 2026-10-25).
+- The full deploy set is **6,052.0 MB** (7,632 files, measured 2026-10-27).
 - The live site `https://mhvnsnt.github.io/western-heart/` is frozen on the Oct 24 build.
 - The bloat is concentrated: **176 GLBs over 20 MB hold 5,914 MB** (73% of all GLB bytes).
 
@@ -17,15 +17,21 @@ only from the deploy. Research basis: `agent-ops` PR #161,
 
 | Piece | Host | Contents | Size |
 |---|---|---|---|
-| Shell | GitHub Pages (unchanged URL) | code + UI + portraits + 1 stage + 2–4 bundled fighters + movesets | ~70–170 MB, well under 1 GB |
-| Models | Cloudflare R2 (one bucket, CORS `*`) | every GLB in the deploy set, at its repo path | 5,969 MB, inside the free 10 GB tier, $0 egress |
+| Shell | GitHub Pages (unchanged URL) | code + UI + portraits + 1 stage + 2–4 bundled fighters + movesets | 739.5 MB measured (5,394 files), well under 1 GB |
+| Models | Cloudflare R2 (one bucket, CORS `*`) | every GLB in the deploy set, at its repo path | 5,329.7 MB (manifest), inside the free 10 GB tier, $0 egress |
 | Store of record | GitHub Releases (unchanged) | originals + archives | — |
 
 Releases are NOT the runtime CDN: verified live 2026-10-26, release assets send
 no `Access-Control-Allow-Origin` header, so `fetch()` from the game fails.
 jsDelivr is NOT a second base: verified live, it 403s every file over 20 MB —
 exactly the 176 files that are the whole problem. It is kept only as a
-fallback candidate for small files when R2 is down (see `game/js/asset-config.js`).
+fallback candidate for small files (see `game/js/asset-config.js`).
+The LOCAL URL is always a candidate too: in dev/CI the full repo is served
+locally, and without it every non-bundled model fetched from jsDelivr instead
+of disk — the menu-touch e2e fight load timed out on PR #1152 (run
+40434489083) until the local fallback was added. On the Pages shell the local
+candidate 404s fast (non-bundled GLBs are not in the shell), so it costs
+nothing in production.
 
 ## What landed in this lane
 
@@ -38,9 +44,10 @@ fallback candidate for small files when R2 is down (see `game/js/asset-config.js
 - `game/js/asset-config.js` — the one-line config. `remoteBase` is the R2
   public URL; until it is filled in, the placeholder `__WH_R2_PUBLIC_URL__`
   stands and `isRemoteReady()` is false. `resolveAssetCandidates()` is the
-  fetch order: bundled models local, everything else R2 first, jsDelivr
-  fallback. Decision: **R2-only as the remote base** (one manifest, one URL
-  shape, no 20 MB cap, $0 egress).
+  fetch order: bundled models local, everything else R2 first, then the
+  local URL, then jsDelivr last. Decision: **R2 as the remote base, local
+  as the dev/CI fallback** (one manifest, one URL shape, no 20 MB cap,
+  $0 egress; local 404s fast on the Pages shell).
 - `game/js/assets.js`, `game/js/stages.js`, `game/js/customization-consumer.js` —
   all three GLB loaders now go through the candidate order. No per-model
   changes anywhere; `MODEL_URLS` and stage defs are untouched.

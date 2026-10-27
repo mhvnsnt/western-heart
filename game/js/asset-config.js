@@ -2,20 +2,24 @@
  *
  * Owner decision 2026-10-26 ("Split it: Pages shell + GLBs on R2"):
  * GitHub Pages caps a published site at 1 GB; the full deploy set is
- * ~5,969 MB. The Pages deploy now ships the shell only (see
+ * 6,052.0 MB (measured 2026-10-27). The Pages deploy now ships the
  * tools/deploy/build_pages.py --shell-only); every other .glb/.gltf
  * loads at runtime from the remote asset base below. Nothing is cut
  * from the game, only from the deploy.
  *
- * DECISION (wiring lane 2026-10-26): R2-ONLY as the remote base.
- * jsDelivr is kept as a fallback candidate only, not a second base:
- *  - R2 serves every file at any size, CORS-configurable, $0 egress,
- *    and the whole 5,969 MB set fits its free 10 GB tier.
+ * DECISION (wiring lane 2026-10-26, fixed 2026-10-27): R2 is the
+ * remote base (primary candidate); the LOCAL URL is always the next
+ * candidate, jsDelivr last. The local fallback is not optional:
+ *  - In dev and CI the full repo is served locally; without it, every
+ *    non-bundled model fetched from jsDelivr instead of disk, and the
+ *    menu-touch e2e fight load timed out (PR #1152, run 40434489083).
+ *  - On the Pages shell the local candidate 404s fast (non-bundled
+ *    GLBs are not in the shell), so it costs nothing in production.
  *  - jsDelivr 403s every file over 20 MB — exactly the 176 files
  *    (5,914 MB) that are the whole problem — so it can never be a
- *    second base, only a fallback for small files when R2 is down.
- *  - One remote base = one manifest, one URL shape, one thing to
- *    verify. The fallback costs one extra fetch attempt on failure.
+ *    second base, only a last-resort fallback for small files.
+ * One remote base = one manifest, one URL shape, one thing to
+ * verify. The fallback costs one extra fetch attempt on failure.
  * GitHub Releases are NOT a candidate: verified live 2026-10-26, their
  * assets send no Access-Control-Allow-Origin header, so fetch() from
  * the game fails. Releases stay the store of record, never the CDN.
@@ -86,14 +90,17 @@ function isModelUrl(url) {
 }
 
 /* Ordered fetch candidates for one MODEL_URLS entry. Local first for
- * bundled models (they ship in the shell); remote first otherwise.
- * Non-model URLs are never rewritten — they ship in the shell. */
+ * bundled models (they ship in the shell); remote first otherwise,
+ * then the local URL (dev/CI serve the full repo; on the Pages shell
+ * it 404s fast), then jsDelivr as a last resort. Non-model URLs are
+ * never rewritten — they ship in the shell. */
 export function resolveAssetCandidates(url) {
   if (!isModelUrl(url)) return [url];
   const repoPath = repoPathForModelUrl(url);
   if (SHELL_BUNDLED_MODELS.includes(repoPath)) return [url];
   const out = [];
   if (isRemoteReady()) out.push(`${ASSET_CONFIG.remoteBase}/${repoPath}`);
+  out.push(url);
   out.push(`${ASSET_CONFIG.jsdelivrBase}/${repoPath}`);
   return out;
 }

@@ -3630,3 +3630,22 @@ No bucket exists yet — nothing uploaded to R2, no account created.
   LAW: never commit from the partial checkout): base_tree = main tree,
   root-entry check 34 = 34 identical paths before the commit; compare shows
   1 commit ahead, 8 files, 0 files removed.
+
+**Fix after CI (2026-10-27, this lane): menu-touch-e2e failed on PR #1152**
+- Run 40434489083: all checks green except menu-touch-e2e (fail, 12m0s).
+  The versus flow reached confirm-stage, then the fight HUD never appeared
+  in 60s (`page.waitForFunction: Timeout 60000ms exceeded`). Baseline:
+  rig-guard passed on the previous 6 PR runs, so this PR's change was the
+  cause.
+- Root cause: `resolveAssetCandidates()` returned ONLY the jsDelivr URL for
+  non-bundled models while the R2 placeholder stands — no local fallback.
+  In CI/dev the full repo is served locally, so every non-bundled fighter
+  and stage GLB fetched from jsDelivr instead of disk (slow / >20 MB 403s).
+- Fix (game/js/asset-config.js): candidate order is now R2 first (when
+  ready), then the LOCAL URL, then jsDelivr last. On the Pages shell the
+  local candidate 404s fast (non-bundled GLBs are not in the shell), so
+  production costs nothing. Decision updated in the file header and in
+  DEPLOY-SPLIT.md ("R2 as the remote base, local as the dev/CI fallback").
+- Verification: resolver unit test rewritten for the new order, 12/12 pass;
+  `node --check` clean; `preload.test.mjs` green. menu-touch-e2e is the
+  arbiter — it must pass on the re-run before merge.
