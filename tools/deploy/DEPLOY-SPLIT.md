@@ -98,7 +98,24 @@ let any lane sign up on your behalf. Tap through this yourself:
 
 Account + payout setup is owner-only (phone). The shell ZIP is built by the
 lane from the same shell set (`build_pages.py --shell-only --out`, then zip;
-limits: ≤500 MB extracted, ≤1,000 files, ≤200 MB per file — the shell fits).
+limits: ≤500 MB extracted, ≤1,000 files, ≤200 MB per file).
+
+**CORRECTION — measured 2026-10-27, this lane (supersedes the research
+estimate of "70–170 MB, a few hundred files"):** the real shell set is
+**5,395 files / 739.5 MB** (`wh-itch-shell-20261026.zip`: 490,419,079 bytes
+compressed, 739,520,900 bytes extracted, 5,634 entries). It fits Pages
+(<1 GB) but it does **NOT** fit itch.io HTML5 as-is: extracted size is
+239.5 MB over the 500 MB cap and entries are 4,634 over the 1,000 cap.
+Breakdown of the 718 MB on disk: JSON 295.8 MB (1,190 files — movesets +
+anim data for ALL fighters), MP3 236.8 MB (48 files — all music), PNG
+113.4 MB (2,991 files), OGG 30.6 MB, bundled GLBs 17.2 MB, rest ~24 MB.
+The itch build needs its own trimmed shell (a `--itch` mode: only the
+bundled fighters' movesets/anim data, a music subset, and the PNGs those
+screens use) — **follow-up lane, not done here**. Do NOT upload this ZIP
+to itch.io; itch.io will reject it. Rebuild command (from the repo):
+`python3 tools/deploy/build_pages.py --ref origin/main --shell-only --out
+<dir> && cd <dir> && zip -r ../wh-itch-shell.zip . -x deploy-manifest.json
+.deploy-files.txt`.
 
 1. Create the itch.io account at https://itch.io/register (email + password).
 2. **Create new project** → kind **HTML5** → upload the shell ZIP.
@@ -124,10 +141,14 @@ limits: ≤500 MB extracted, ≤1,000 files, ≤200 MB per file — the shell fi
 
 ## Verification checklist (before calling the split done)
 
-- [ ] Shell dry-run: `build_pages.py --ref origin/main --dry-run --shell-only`
-      reports <1,000 MB total (target ~70–170 MB).
+- [x] Shell dry-run: `build_pages.py --ref origin/main --dry-run --shell-only`
+      reports **5,394 files / 739.5 MB** (measured 2026-10-27; full set is
+      7,632 files / 6,052.0 MB — both verified from the build log).
+- [x] R2 manifest: 2,242 models / 5,329.7 MB, fits the free 10 GB tier.
 - [ ] R2 `curl` CORS probe returns `Access-Control-Allow-Origin: *`.
 - [ ] Browser `fetch()` of a >25 MB GLB from R2 returns bytes.
 - [ ] Live Pages site updates from the shell-only deploy.
 - [ ] A non-bundled fighter (e.g. Jin) loads in a real fight from R2.
-- [ ] itch.io HTML5 project live with donations on (owner step).
+- [ ] itch.io HTML5 project live with donations on (owner step) — BLOCKED on
+      the itch-trim follow-up: the Pages shell (739.5 MB / 5,395 files)
+      exceeds itch's 500 MB / 1,000-file caps (see itch section above).

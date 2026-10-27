@@ -3605,3 +3605,28 @@ and `--shell-only` dry-runs (see PR body).
 **Blocked (owner-only):** Cloudflare R2 signup + bucket (`western-heart-assets`,
 CORS `Access-Control-Allow-Origin: *`) and itch.io account + payout setup.
 No bucket exists yet — nothing uploaded to R2, no account created.
+
+**Verification (2026-10-27, this lane, own-eyes from the build logs):**
+- Full deploy baseline: `build_pages.py --ref origin/main --dry-run` =
+  7,632 files / 6,052.0 MB (roster 4,061.0 MB, game 1,828.8 MB) + WARNING
+  over the Pages 1 GB cap. (Research said 5,969 MB at the Oct 25 ref; main moved.)
+- Shell-only: `--dry-run --shell-only` = 5,394 files / 739.5 MB on main,
+  5,395 files / 739.5 MB on the branch (extra file is asset-config.js itself);
+  excluded 2,238 files / 5,312.5 MB (2,238 models -> remote). The branch run
+  read SHELL_BUNDLED_MODELS from asset-config.js with NO fallback warning —
+  the single-source-of-truth path works.
+- R2 manifest: 2,242 models / 5,329.7 MB (5,312.5 MB remote-only),
+  7 release-matched (6 from `fighter-hunt-r2`, 1 from `leoman-restore-20261020`),
+  fits the R2 free 10 GB tier. 0 bad entries.
+- Shell materialized + itch ZIP built: `wh-itch-shell-20261026.zip`
+  490,419,079 bytes, 739,520,900 bytes extracted, 5,634 entries.
+  **Correction:** does NOT fit itch.io HTML5 (500 MB / 1,000 files) — 239.5 MB
+  and 4,634 entries over. Needs an itch-trim follow-up; ZIP not uploaded
+  anywhere (itch would reject it), shell-out + ZIP cleared off disk after the lane.
+- Resolver unit test 10/10; `node --check` clean on all touched JS;
+  `preload.test.mjs` 6/6; `model-key-guard.test.mjs` 8/9 (1 failure is the
+  sparse-checkout artifact — every entry "(file missing)", zero key mismatches).
+- Branch `split-deploy-pages-r2` built via the Git Data API (NO-SPARSE-COMMIT
+  LAW: never commit from the partial checkout): base_tree = main tree,
+  root-entry check 34 = 34 identical paths before the commit; compare shows
+  1 commit ahead, 8 files, 0 files removed.
