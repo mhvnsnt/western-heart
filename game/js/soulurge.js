@@ -86,7 +86,8 @@ export function ensureUrgeMoves(fighterId, msApi) {
   }
   if (ms._slots) { ms._slots[bKey] = bKey; ms._slots[sKey] = sKey; }
   else {
-    ms.slots = ms.slots || {};
+    // slotless moveset: seed from the notation-keyed moves (see rage.js)
+    ms.slots = ms.slots || Object.fromEntries(Object.keys(ms.moves).map(k => [k, k]));
     ms.slots[bKey] = bKey; ms.slots[sKey] = sKey;
   }
   // flag the engager (once). GAP-FILL LANE 1: if the moveset

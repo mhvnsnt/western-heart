@@ -9,8 +9,12 @@
 # load works identically on both hosts.
 # force defaults to false: publish-dir files always win; only paths with
 # no static file fall through to the proxy. No content link changes host.
-# NOTE: the same four rules are mirrored in game/_redirects (the publish-dir
+# NOTE: the same five rules are mirrored in game/_redirects (the publish-dir
 # file Netlify reads for post-processing redirects); keep the two in sync.
+# /stages/* (2026-10-24, Cape Jones arenas): the future cape-house living-room
+# GLB lives at repo-root stages/cape-house/, outside game/ — without this
+# rule the Netlify build would 404 it at fight load. v1 arenas name no
+# external assets, so this rule is preventive, not load-bearing today.
 [[redirects]]
   from = "/roster/*"
   to = "https://mhvnsnt.github.io/western-heart/roster/:splat"
@@ -26,4 +30,8 @@
 [[redirects]]
   from = "/game/*"
   to = "https://mhvnsnt.github.io/western-heart/game/:splat"
+  status = 200
+[[redirects]]
+  from = "/stages/*"
+  to = "https://mhvnsnt.github.io/western-heart/stages/:splat"
   status = 200

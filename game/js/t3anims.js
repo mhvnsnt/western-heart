@@ -24,8 +24,14 @@ const T3_CLIP_DEFS = {
   // Neutral standing stance = move-index slot 3 (n0madic/Tekken3Remake
   // docs/research/code/moves.md: row +0x10 stance slot, 3 = standing).
   // t3_stance.json is slot 0, a round-start intro move — not the idle.
+  //
+  // SHOW-ANIMATION LOCK (owner 2026-10-23): show animations and fight moves
+  // are SEPARATE LOCKED SETS. Actions flagged show:true (intro, win poses)
+  // are SHOW: intros/cutscenes ONLY, must NEVER enter a fighter's moveset
+  // without the user's explicit approval. Everything else is FIGHT.
+  // Bank clip JSONs carry the same split as "anim_set" (+ sets.json manifest).
   stance:  { file: 't3_neutral.json', loop: true  },
-  intro:   { file: 't3_stance.json',  loop: false },
+  intro:   { file: 't3_stance.json',  loop: false, show: true },
   light:   { file: 't3_light.json',   loop: false },  // punch (J)
   medium:  { file: 't3_medium.json',  loop: false },  // kick (K)
   heavy:   { file: 't3_heavy.json',   loop: false },  // heavy attack
@@ -34,7 +40,7 @@ const T3_CLIP_DEFS = {
   hit:     { file: 't3_hit.json',     loop: false },  // hitstun reaction
   launch:  { file: 't3_hit_launch.json', loop: false, noRise: true }, // launched (physics owns the arc)
   ko:      { file: 't3_ko.json',      loop: false },  // knocked out
-  win:     { file: 't3_win_rp.json',  loop: true  },  // victory pose
+  win:     { file: 't3_win_rp.json',  loop: true, show: true },  // victory pose (SHOW)
   walkFwd: { file: 't3_walk_fwd.json', loop: true },
   walkBack:{ file: 't3_walk_back.json', loop: true },
   dash:    { file: 't3_dash_fwd.json', loop: false },
@@ -96,6 +102,10 @@ export const T3_BANKS = {
   bosconovitch: 'assets/anim/t3/bosconovitch/',
   heihachi_ownrig: 'assets/anim/t3/heihachi/',
   armorking:    'assets/anim/t3/armorking/',
+  // Law (2026-10-23, Buffalo Bill pull): divmot01_law.bin baked onto Law's
+  // own T3 18-part rig (lab/tools/t3_motion_bake.py --bank law). Buffalo
+  // Bill's moveset source is 'law', so bankIdFor resolves him here.
+  law:          'assets/anim/t3/law/',
   // Heihachi's OWN divmot13 motion stream, posed on Jin's T3 skeleton:
   // heihachi191's KMD has no hip/shoulder vertex data, so his body can't
   // be fitted (docs/anim/PROCEDURAL_AUDIT.md). tools/anim/t3_row_bake.py
@@ -442,6 +452,10 @@ export async function loadT3Clips(THREE, bankId = 'king') {
         clip.userData.loop = def.loop;
         clip.userData.noRise = !!def.noRise;
         if (data.pingpong) clip.userData.pingpong = true;
+        // SHOW-ANIMATION LOCK: bank clip JSONs carry "anim_set": "SHOW" for
+        // intro/win clips. Tag the THREE clip so anim-gate.js (CTX.FIGHT)
+        // rejects it in combat — these play in intros/cutscenes only.
+        if (data.anim_set === 'SHOW') clip.userData.animSet = 'show';
         clips[action] = clip;
       }
     }

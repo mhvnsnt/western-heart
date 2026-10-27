@@ -1,0 +1,175 @@
+{
+ "version": 1,
+ "manifest": "game/data/voices/announcer.json",
+ "engine": "game/js/voice.js announce(trigger) + game/js/announcer-events.js resolveAnnouncerClip()",
+ "rule": "Announcer calls ONLY. No stage sounds, music, or SFX are presented as dialogue in this table. Character voice banks are dialogue for their own fighters; the announcer bank is separate.",
+ "audit2026-10-24": "Announcer manifest holds 11 clips, all status placeholder, all file null (subtitle-only). No announcer audio bytes exist in the repo. No voice.announce() call site was found in main.js, game.js, modes.js, fighter.js, select-screen.js, episodes.js, versus-setup.js, stage-intros.js, combat-core.js, or wh-boot.js. This table wires the events; the call-site edits belong to the fight/select lanes, not this lane (fighter.js, menus/HTML, and story files are out of this lane's scope).",
+ "events": {
+  "round-start": {
+   "description": "Round call at the start of each round; the deciding round uses final-round instead of round-N.",
+   "trigger": "round-N / final-round",
+   "clips": [
+    {
+     "clipId": "round-1",
+     "trigger": "round-1",
+     "text": "Round 1",
+     "status": "placeholder"
+    },
+    {
+     "clipId": "round-2",
+     "trigger": "round-2",
+     "text": "Round 2",
+     "status": "placeholder"
+    },
+    {
+     "clipId": "round-3",
+     "trigger": "round-3",
+     "text": "Round 3",
+     "status": "placeholder"
+    },
+    {
+     "clipId": "final-round",
+     "trigger": "final-round",
+     "text": "Final Round",
+     "status": "placeholder"
+    }
+   ],
+   "audioStatus": "placeholder — subtitle-only, no audio bytes in repo",
+   "hook": {
+    "engineCall": "voice.announce('round-1' | 'round-2' | 'round-3' | 'final-round')",
+    "callSite": "fight flow, round start (NO call site found in audited files 2026-10-24 — wiring belongs to the fight lane)",
+    "musicDucking": "voice.js ducks BGM while announcer speaks"
+   }
+  },
+  "fight": {
+   "description": "FIGHT! call when the round opens.",
+   "trigger": "fight",
+   "clips": [
+    {
+     "clipId": "fight-01",
+     "trigger": "fight",
+     "text": "Fight!",
+     "status": "placeholder"
+    }
+   ],
+   "audioStatus": "placeholder — subtitle-only, no audio bytes in repo",
+   "hook": {
+    "engineCall": "voice.announce('fight')",
+    "callSite": "fight flow, round open (NO call site found in audited files 2026-10-24 — wiring belongs to the fight lane)"
+   }
+  },
+  "ko": {
+   "description": "K.O. call on knockout.",
+   "trigger": "ko",
+   "clips": [
+    {
+     "clipId": "ko-01",
+     "trigger": "ko",
+     "text": "K.O.",
+     "status": "placeholder"
+    }
+   ],
+   "audioStatus": "placeholder — subtitle-only, no audio bytes in repo",
+   "hook": {
+    "engineCall": "voice.announce('ko')",
+    "callSite": "fight flow, KO (NO call site found in audited files 2026-10-24 — wiring belongs to the fight lane)"
+   }
+  },
+  "double-ko": {
+   "description": "Double K.O. call when both fighters fall together.",
+   "trigger": "double-ko",
+   "clips": [
+    {
+     "clipId": "double-ko-01",
+     "trigger": "double-ko",
+     "text": "Double K.O.",
+     "status": "placeholder"
+    }
+   ],
+   "audioStatus": "placeholder — subtitle-only, no audio bytes in repo",
+   "hook": {
+    "engineCall": "voice.announce('double-ko')",
+    "callSite": "fight flow, double KO (NO call site found in audited files 2026-10-24 — wiring belongs to the fight lane)"
+   }
+  },
+  "perfect": {
+   "description": "Perfect! call on a no-damage round win.",
+   "trigger": "perfect",
+   "clips": [
+    {
+     "clipId": "perfect-01",
+     "trigger": "perfect",
+     "text": "Perfect!",
+     "status": "placeholder"
+    }
+   ],
+   "audioStatus": "placeholder — subtitle-only, no audio bytes in repo",
+   "hook": {
+    "engineCall": "voice.announce('perfect')",
+    "callSite": "fight flow, perfect round (NO call site found in audited files 2026-10-24 — wiring belongs to the fight lane)"
+   }
+  },
+  "time-up": {
+   "description": "Time Up call on a timeout finish.",
+   "trigger": "time-up",
+   "clips": [
+    {
+     "clipId": "time-up-01",
+     "trigger": "time-up",
+     "text": "Time Up",
+     "status": "placeholder"
+    }
+   ],
+   "audioStatus": "placeholder — subtitle-only, no audio bytes in repo",
+   "hook": {
+    "engineCall": "voice.announce('time-up')",
+    "callSite": "fight flow, timeout (NO call site found in audited files 2026-10-24 — wiring belongs to the fight lane)"
+   }
+  },
+  "draw": {
+   "description": "Draw call on a tied finish.",
+   "trigger": "draw",
+   "clips": [
+    {
+     "clipId": "draw-01",
+     "trigger": "draw",
+     "text": "Draw",
+     "status": "placeholder"
+    }
+   ],
+   "audioStatus": "placeholder — subtitle-only, no audio bytes in repo",
+   "hook": {
+    "engineCall": "voice.announce('draw')",
+    "callSite": "fight flow, draw (NO call site found in audited files 2026-10-24 — wiring belongs to the fight lane)"
+   }
+  },
+  "win": {
+   "description": "You Win call at match end (music.playVictory already fires from main.js; the announcer win call is the missing half).",
+   "trigger": "you-win",
+   "clips": [
+    {
+     "clipId": "you-win-01",
+     "trigger": "you-win",
+     "text": "You Win",
+     "status": "placeholder"
+    }
+   ],
+   "audioStatus": "placeholder — subtitle-only, no audio bytes in repo",
+   "hook": {
+    "engineCall": "voice.announce('you-win')",
+    "callSite": "fight flow, match end, alongside music.playVictory() (NO call site found in audited files 2026-10-24 — wiring belongs to the fight lane)"
+   }
+  },
+  "character-select": {
+   "description": "Announcer call on character select / lock-in. NO clip exists in the announcer manifest — this event is NEEDS RECORDING. No line text is invented here and no synth placeholder may be presented as final audio.",
+   "trigger": null,
+   "clips": [],
+   "status": "needs-recording",
+   "audioStatus": "needs-recording — no clip, no audio bytes, no line text yet",
+   "hook": {
+    "engineCall": "voice.announce('<trigger TBD by canon/voice lane>') once the line is written and recorded",
+    "callSite": "select flow, fighter lock-in (NO call site found in audited files 2026-10-24 — wiring belongs to the select lane)"
+   }
+  }
+ }
+}

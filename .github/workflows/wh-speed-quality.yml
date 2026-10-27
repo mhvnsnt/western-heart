@@ -1,0 +1,46 @@
+# WH Speed + Quality Gates (CI wiring for the one-pass pipeline).
+# Ship to: .github/workflows/wh-speed-quality.yml in the western-heart repo.
+# Runs on pull requests + manual dispatch. Deliberately small and hermetic:
+# - py_compile + node --check catch syntax breaks before anything else runs
+# - Hypothesis property tests prove validator invariants (no external data)
+# - pixelmatch self-test proves the visual-compare tool works (two identical
+#   1x1 PNGs generated in the job -> 0.00% mismatch, exit 0)
+# - actions/cache caches pip + npm so repeat runs skip reinstalls
+# The full t7-all batch validation (5,648 moves) runs locally / on Kaggle,
+# NOT here: that dataset lives in workspace, not in the repo. The repo gate
+# proves the TOOLS; the batch run proves the DATA.
+name: WH Speed + Quality Gates
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  speed-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: tools/wh-onepass/package.json
+      - name: Syntax gates
+        run: |
+          python3 -m py_compile tools/wh-onepass/wh_onepass.py tools/wh-onepass/wh-property-tests.py tools/wh-onepass/kaggle-gpu-batch.py
+          node --check tools/wh-onepass/compare.js
+      - name: Property tests (Hypothesis)
+        run: |
+          pip install hypothesis
+          python3 tools/wh-onepass/wh-property-tests.py
+      - name: Visual-compare self-test (pixelmatch)
+        run: |
+          cd tools/wh-onepass
+          npm install --no-save pixelmatch pngjs
+          node -e "const {PNG}=require('pngjs');const fs=require('fs');const p=new PNG({width:1,height:1});p.data[0]=255;p.data[3]=255;fs.writeFileSync('a.png',PNG.sync.write(p));fs.writeFileSync('b.png',PNG.sync.write(p));"
+          node compare.js a.png b.png diff.png
+          rm -f a.png b.png diff.png

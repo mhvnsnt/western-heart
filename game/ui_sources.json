@@ -4,7 +4,8 @@
     "screen-collection": {
       "status": "sourced",
       "sources": [
-        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md"
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md",
+        "gre:tekken7-steam/tkdata/list/SW_UI_Option.bin"
       ],
       "files": [
         "game/index.html"
@@ -51,7 +52,9 @@
         "game/js/menus.js",
         "game/js/ui-wh-bridge.js",
         "game/js/mainmenu.js",
-        "game/mainmenu.css"
+        "game/mainmenu.css",
+        "game/js/ui-gaps.js",
+        "game/ui-gaps.css"
       ],
       "note": "T7 main menu (Base_OnlineMenu column 29.8% W, MainMenu_mc Main0..13 slot pitch), mode select (SubMenu_mc Sub0..9, Cursor_Sub 688x80 rows) and options (SW_UI_Option ListArea: Name|Value rows, PanelBase1 40px). Ratios in docs/select-redesign/T7-PROPORTIONS.md 'Menus'. CITATION FLAG 2026-10-24: Cursor_Sub.png, NavigationBar_Waku.png (SW_UI_PauseMenu_Replay), PanelBase1.png (SW_UI_ControllerSetup), Win_3line.png (SW_UI_StoryMode_Option) are NOT in pakchunk0 (verified: absent from the pakchunk0 manifest and from the #863 branch files, and absent from the whole repo by code search) — their citations above are kept verbatim and flagged, not re-pointed to an unverified path. Follow-up: pakchunkN extraction or gre-tree verification."
     },
@@ -85,7 +88,8 @@
       ],
       "files": [
         "game/index.html",
-        "game/js/online.js"
+        "game/js/online.js",
+        "game/js/tournament-ui.js"
       ],
       "note": "Hub rows mirror the game/js/online.js hub template: QUICK MATCH (TTT2 style — instant rival), FIND LOUNGE, CREATE LOUNGE (SFV battle lounge — your rules), TOURNAMENT, DAILY CHALLENGES, BACK — routed through the existing document-level online actions; the old placeholder section shadowed that template and lacked the #online-player-line / #online-event ids the hub fills, so the hub could never open. Column structure per T7-UI-LAYOUT.md (Base_OnlineMenu dark-glass vertical list). Netcode honestly pending (signaling server); connection bars NOT claimed (online lane's work)."
     },
@@ -100,13 +104,26 @@
       ],
       "note": "Vessel cards (portrait + name + style + reincarnation reason) follow the T7 select-card structure (T7-UI-LAYOUT.md: 96x148 portrait cards, number bottom-right). CONTENT is Western Heart canon, not Tekken: Nine Souls death-and-rebirth (CANON.md) — death is not failure, the Trial picks vessels from how you fought, forces carry over. No Tekken equivalent is claimed for the mechanic."
     },
+    "screen-replays": {
+      "status": "sourced",
+      "sources": [
+        "gre:teardown/tekken7/ui/flash/SW_UI_PauseMenu_Replay/Cursor_Sub.png",
+        "gre:teardown/tekken7/ui/flash/SW_UI_PauseMenu_Replay/NavigationBar_Waku.png"
+      ],
+      "files": [
+        "game/js/replay.js",
+        "game/js/training.js",
+        "game/js/replay-codec.js"
+      ],
+      "note": "Replay Theater: recorded versus/arcade fights (inputs + snapshots, not video) with slow-mo, frame-step and camera orbit — Tekken replay UI sources"
+    },
     "screen-result": {
       "status": "sourced",
       "sources": [
-        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md",
-        "teardown/tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_Result_Lightning/Result_Lightning_02.png"
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md"
       ],
-      "files": []
+      "files": [],
+      "note": "Result screen structure per T7-UI-LAYOUT.md (SW_UI_Result_Lightning win screen). REMOVED 2026-10-25 (#1056): the pakchunk0 win-screen texture citation (teardown/tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_Result_Lightning/Result_Lightning_02.png) never resolves on main — PR #863 is the abandoned public copy (assets live in private game-reverse-engineering per T7-STEAM-EXTRACTION.md) and the texture is not verifiable there either. Re-point to a gre: path or re-add if the texture lands in the private repo."
     },
     "screen-select": {
       "status": "sourced",
@@ -116,9 +133,9 @@
         "teardown/tekken8/ui/refs/t8-select-ref-1.png",
         "teardown/tekken8/ui/refs/t8-select-ref-2.png",
         "teardown/tekken8/ui/refs/t8-select-ref-3.png",
-        "teardown/tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_CharacterSelect/SlotRed_OnGradient.png",
-        "teardown/tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_CharacterSelect/SlotBlue_OnGradient.png",
-        "teardown/tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_CharacterSelect/Rep_CS_CH_PANEL_00.png"
+        "gre:tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_CharacterSelect/SlotRed_OnGradient.png",
+        "gre:tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_CharacterSelect/SlotBlue_OnGradient.png",
+        "gre:tekken7-steam/pakchunk0/textures/UI_common/flash/SW_UI_CharacterSelect/Rep_CS_CH_PANEL_00.png"
       ],
       "files": [
         "game/select-t8.css",
@@ -133,7 +150,8 @@
       "reuse": [
         "mhvnsnt/Brutal-Fist@f455322:src/components/CharacterSelect.tsx (phone-portrait stage/grid split)",
         "mhvnsnt/AshLanev2:public/concept-art/menu/menu-character-select.webp (reference only; no select code exists)"
-      ]
+      ],
+      "note": "T8 1/2/3/4 limb notation on PS diamond; Heat=2+3, Rage Art=1+2. The 3 pakchunk0 slot/panel textures live in the private game-reverse-engineering repo (verified present), so they are cited gre: — teardown/ paths cannot resolve on this public repo (see #863)."
     },
     "screen-sidegames": {
       "status": "legacy-unsourced",
@@ -169,7 +187,8 @@
         "game/js/mainmenu.js",
         "game/js/menus.js",
         "game/styles.css",
-        "game/submenus.css"
+        "game/submenus.css",
+        "game/js/ui-gaps.js"
       ]
     },
     "hud-fight": {
@@ -184,6 +203,17 @@
         "game/ui-wh/ui.css"
       ],
       "note": "In-fight HUD + touch pad. Tekken in-game reference: round timer top-centre, nothing drawn over it (mode badge / VERSUS chip sit below the health-bar row). Touch pad uses T8 1/2/3/4 limb notation; Heat = 2+3, Rage Art = 1+2."
+    },
+    "hud-touch-controls": {
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7/tekkenmods-docs/files/en/Tekken_8/Basic_Information/Overview/Moveset/Structures/Input_Sequence/index.md",
+        "teardown/tekken7/tekkenmods-docs/files/en/Tekken_8/Basic_Information/Overview/Moveset/Structures/Input_Extradata/index.md"
+      ],
+      "files": [
+        "game/styles.css"
+      ],
+      "note": "T8 1/2/3/4 limb notation on PS diamond (square=1,triangle=2,cross=3,circle=4); Heat=2+3, Rage Art=1+2 in rage"
     }
   }
 }

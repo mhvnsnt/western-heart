@@ -1,0 +1,48 @@
+# Tekken 6 PSP — DATA401 "GZIP" container extractor (QuickBMS)
+# Round 5 (2026-10-21, PR #446): the format is FULLY reversed.
+#
+# Pipeline (two steps — QuickBMS has no primitive for the game's
+# Allegrex sector cipher, so step 1 is the Python reference):
+#   1. Decrypt DATA401.BIN out of the ISO with the sector cipher,
+#      ONE cipher call per 1024-byte block (bulk keys
+#      K1=0x24cfa8a4 K2=0x564928df, t0 = bulk-relative block offset):
+#         tools/bulk_decrypt.py  (produces bulk_decrypted.bin)
+#      WARNING: decrypting per-2048-byte sector corrupts every odd
+#      1024-byte block — that bug, not a custom gzip, blocked rounds
+#      2-4 (see tools/ROUND5-STATUS.md F12/F13).
+#   2. Run THIS script on bulk_decrypted.bin. Each container is:
+#        char[4]  "GZIP"
+#        u32le    1
+#        u32le    1
+#        u32le    uncompressed size
+#        u32le    compressed size (body length, incl. adler32 trailer)
+#        u8[body] plain zlib stream (0x78 0xda ... adler32 BE trailer)
+#      Some files carry a 16-byte prefix before the magic; the scan
+#      below finds containers by magic wherever they sit, including
+#      containers nested inside bundle files.
+#
+# Verified: 76/76 top-level containers adler32-exact via
+# tools/decode_all76.py; the game's own loader (EBOOT 0x89d27a0 ->
+# wrapper 0x8b559c8 -> inflate 0x8b55bf0) byte-matches zlib output in
+# live PPSSPP traces (round5-evidence/).
+
+comtype zlib
+
+set FOUND long 0
+for i = 0
+    findloc OFF string "GZIP" 0 FOUND
+    if OFF == ""
+        break
+    endif
+    goto OFF
+    idstring "GZIP"
+    get W1 long
+    get W2 long
+    get USIZE long
+    get CSIZE long
+    savepos BODY
+    string NAME p= "gzip_container_%d.bin" i
+    clog NAME BODY CSIZE USIZE
+    math FOUND = OFF
+    math FOUND += 20
+next i
