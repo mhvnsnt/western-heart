@@ -590,7 +590,7 @@ export class RankBattleController {
     this._foeEntry = foeEntry;
     const series = fr.series ? ` · ${fr.series.kind === 'promo' ? 'PROMOTION' : 'DEMOTION'} SERIES ${fr.series.wins}–${fr.series.losses}` : '';
     this._badge(`RANK BATTLE · ${displayName(myTier).toUpperCase()} ${fr.points}/${barFor(myTier)}${series}`);
-    if (this.ui && this.ui.banner) this.ui.banner(`RANK BATTLE — ${foe.name} · ${displayName(foeTier)}`);
+    if (this.ui && this.ui.hudNote) this.ui.hudNote(`RANK BATTLE — ${foe.name} · ${displayName(foeTier)}`);
     this.game.onMatchEnd = (won) => this._end(won);
     this.startFight(this.fighterId, null, { mode: 'rankbattle', enemyChar: foeEntry });
     if (this.audio && this.audio.uiClick) this.audio.uiClick();

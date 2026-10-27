@@ -2,7 +2,7 @@
    Laws: tap slot → scroll library → tap to assign. NO drag-and-drop anywhere. Phone-first.
    Menu trees verbatim from teardown games (see menu-data.js + UI-EXTRACTION-LOG.md). */
 import { SuiteViewer } from './viewer3d.js';
-import { ATTIRE_TREE, BODY_TREE, PARTS_TREE, JIGGLE_AREAS, JIGGLE_PARAMS, JIGGLE_FAMILIES, PLACE_AXES, MENU_SRC } from './menu-data.js';
+import { ATTIRE_TREE, BODY_TREE, PARTS_TREE, JIGGLE_AREAS, JIGGLE_PARAMS, JIGGLE_FAMILIES, PLACE_AXES, MENU_SRC, WWE_ATTIRE_TREE } from './menu-data.js';
 /* Real morph catalog + DNA/body engine from packages/creation-suite
    (importmap: wh-creation-suite/ -> ../../packages/creation-suite/src/).
    Thin adapter below maps morph ids onto DNA sliders — logic is NOT forked. */
@@ -66,7 +66,7 @@ let ROSTER = null;    // data/roster-attires.json (build_roster_attires.py)
 let JIGGLE = null;    // jiggle-schema.json
 let FPARTS = null;    // data/fighter-parts.json (Phase 1: SmutBase-6 own-mesh parts)
 let viewer = null;
-let ui = { tab:'body', attireCat:null, partsCat:null, selPart:null, wardSel:0, nudgeStep:0.001, page:0, query:'' };
+let ui = { tab:'body', attireMode:'tekken', attireCat:null, partsCat:null, selPart:null, wardSel:0, nudgeStep:0.001, page:0, query:'' };
 
 const attire = ()=>F.attires[F.attireIndex];
 
@@ -556,10 +556,20 @@ function partsForCat(slotKey){
 }
 function renderAttire(el){
   if(!ui.attireCat){
-    $('#panel-sub').textContent='Tekken item shop — pick a category (T7 slots verbatim)';
+    const mode = ui.attireMode||'tekken';
+    $('#panel-sub').textContent = mode==='wwe'
+      ? 'WWE CAW clothing — region → garment type (2K22)'
+      : 'Tekken item shop — pick a category (T7 slots verbatim)';
     el.innerHTML=`<div class="note">Buy → Equip loop · hover try-on · conflict Replace/Cancel · 5 color channels.
-      Categories are Tekken 7's real 17 slot IDs + T6 subdivisions (see UI-EXTRACTION-LOG.md).</div><div id="cats"></div>`;
+      Browse the same catalog two ways — WWE runs the creator's internal hierarchy (owner division 2026-10-22).</div>
+      <div class="btn-row" id="attire-mode-row">
+        <button class="btn btn-sm ${mode==='tekken'?'btn-gold':''}" id="am-tekken">TEKKEN SLOTS</button>
+        <button class="btn btn-sm ${mode==='wwe'?'btn-gold':''}" id="am-wwe">WWE REGIONS</button>
+      </div><div id="cats"></div>`;
+    el.querySelector('#am-tekken').onclick=()=>{ ui.attireMode='tekken'; renderAll(); };
+    el.querySelector('#am-wwe').onclick=()=>{ ui.attireMode='wwe'; renderAll(); };
     const host=el.querySelector('#cats');
+    if(mode==='wwe'){ renderWweRegions(host); return; }
     ATTIRE_TREE.forEach(c=>{
       const b=document.createElement('button');
       b.className='subcat'+(attire().equipped[c.slot]?' equipped':'');
@@ -579,7 +589,30 @@ function renderAttire(el){
     });
     return;
   }
-  renderPartGrid(el, ui.attireCat, partsForCat(ui.attireCat.slot), 'attireCat');
+  const cat = ui.attireCat;
+  renderPartGrid(el, cat, cat.wweRegion ? partsForWwe(cat) : partsForCat(cat.slot), 'attireCat');
+}
+
+/* ---- WWE region browse: union of the region's T7 slots, deduped.
+   Equipping files each part under its NATURAL T7 slot (via cat.slotFor),
+   so the Tekken view and WWE view stay consistent. ---- */
+function partsForWwe(cat){
+  const seen=new Set(); const out=[];
+  (cat.slots||[]).forEach(s=>partsForCat(s).forEach(p=>{ if(!seen.has(p.id)){ seen.add(p.id); out.push(p); } }));
+  return out;
+}
+function renderWweRegions(host){
+  WWE_ATTIRE_TREE.forEach(r=>{
+    const n=partsForWwe(r).length;
+    const eqd=(r.slots||[]).some(s=>attire().equipped[s]);
+    const b=document.createElement('button');
+    b.className='subcat'+(eqd?' equipped':''); b.id='wcat-'+r.key;
+    b.innerHTML=`<span class="sc-ico">${r.icon}</span><span>${r.label}${eqd?'<br><small style="color:var(--green)">✓ equipped</small>':''}<br><small style="color:var(--dim)">${r.sub}</small></span><span class="sc-count">${n} parts</span>`;
+    b.onclick=()=>{ ui.attireCat={ key:'wwe-'+r.key, label:r.label+' · WWE', wweRegion:true, slots:r.slots,
+      slotFor:(p)=>p.t7_slot||SLOT2CAT[p.suite_slot]||r.slots[0] };
+      ui.selPart=null; ui.page=0; ui.query=''; renderAll(); };
+    host.appendChild(b);
+  });
 }
 
 /* ================= PARTS (wired libraries) ================= */
@@ -673,7 +706,8 @@ function renderPartGrid(el, cat, list, backKey){
     d.onclick=()=>{ ui.selPart=p; renderPanel(); renderTopbar(); };
     grid.appendChild(d);
   });
-  if(ui.selPart && list.includes(ui.selPart)) renderPartDetail(el.querySelector('#pdetail'), ui.selPart, slotKey);
+  if(ui.selPart && list.includes(ui.selPart)) renderPartDetail(el.querySelector('#pdetail'), ui.selPart,
+    (cat.slotFor && ui.selPart) ? cat.slotFor(ui.selPart) : slotKey);
 }
 function renderPartDetail(el, p, slotKey){
   const owned = attire().owned.includes(p.id);
@@ -1156,3 +1190,4 @@ async function boot(){
   if(!localStorage.getItem(LS_KEY)) toast('Tap PARTS → Masks → tap the mask to equip it');
 }
 boot();
+

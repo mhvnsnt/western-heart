@@ -25,6 +25,9 @@ library. Sources (repo-relative, verified at build time):
   5. teardown/dead-or-alive-4/models/ (366 DOA4 GLBs: triangulated chrone /
      chrtwo / chrthree costumes + vertex-buffers + Bass Armstrong converted
      costumes — REAL geometry, geometryReady=true, slot 'attire')
+  6. customization/parts/ashlane/ (owner's AshLane parts library: footwear,
+     gloves, masks, hair, hoods, wristbands, rigged chains — REAL GLB
+     geometry, geometryReady=true; attach specs in the slot manifests)
 
 Honesty rules (owner law): nothing is marked renderable unless a real,
 verifiable mesh file exists on disk. Def Jam parts stay GEOMETRY PENDING
@@ -47,6 +50,13 @@ DEFJAM_CAT = os.path.join(CUST, "parts-converted", "defjam", "CATALOG.json")
 V2IP_DIR = os.path.join(ROOT, "teardown", "def-jam-fight-for-ny",
                         "surgical", "chars", "v2ip_extracted")
 DOA_MODELS = os.path.join(ROOT, "teardown", "dead-or-alive-4", "models")
+ASHLANE_DIR = os.path.join(CUST, "parts", "ashlane")
+
+# AshLane part directory -> library slot (owner's customizer slot model:
+# hair, facialHair, mask, hood, chain, gloves, wristbands, shoes)
+ASHLANE_SLOT = {"footwear": "shoes", "gloves": "gloves",
+                "masks": "masks", "hair": "hair", "hoods": "head",
+                "wristbands": "accessories", "accessories": "accessories"}
 
 # Def Jam CAW category codes -> library slot (from parts/defjam/PARTS-INDEX.json)
 DEFJAM_SLOT = {"110": "head", "111": "upper_body",
@@ -63,7 +73,7 @@ def load(p):
 def main():
     report = {"kept": 0, "nm_upgraded": 0, "nm_tex_marked": 0,
               "defjam_added": 0, "v2ip_added": 0, "doa_added": 0,
-              "wmxix_tex_added": 0, "missing": []}
+              "wmxix_tex_added": 0, "ashlane_added": 0, "missing": []}
     idx = load(INDEX_PATH)
     parts = idx["parts"]
     report["kept"] = len(parts)
@@ -198,6 +208,35 @@ def main():
             })
             seen_ids.add(pid)
             report["doa_added"] += 1
+
+    # --- 6. AshLane owner parts (real GLB geometry) ---
+    if os.path.isdir(ASHLANE_DIR):
+        for dirpath, _dirnames, filenames in os.walk(ASHLANE_DIR):
+            for fn in sorted(filenames):
+                if not fn.endswith(".glb"):
+                    continue
+                rel = os.path.relpath(os.path.join(dirpath, fn), ROOT)
+                pid = "ashlane:" + rel.replace(os.sep, "/")
+                if pid in seen_ids:
+                    continue
+                slot_dir = os.path.basename(dirpath)
+                slot = ASHLANE_SLOT.get(slot_dir, "accessories")
+                parts.append({
+                    "part_id": pid,
+                    "name": fn,
+                    "label": fn.replace(".glb", "").replace("_", " "),
+                    "source_game": "ashlane",
+                    "slot": slot,
+                    "file_path": rel.replace(os.sep, "/"),
+                    "glb": rel.replace(os.sep, "/"),
+                    "geometryReady": True,
+                    "size": os.path.getsize(os.path.join(dirpath, fn)),
+                    "note": "Owner's AshLane parts library (mhvnsnt/AshLane-prototype) — "
+                            "real GLB geometry. Attach specs in "
+                            "customization/parts/ashlane/<slot>/manifest.json.",
+                })
+                seen_ids.add(pid)
+                report["ashlane_added"] += 1
 
     idx["total_parts"] = len(parts)
     idx["sources"] = sorted({p.get("source_game", "?") for p in parts})
