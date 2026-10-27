@@ -245,7 +245,11 @@ menu-touch-e2e.
 
 ### itch release
 
-- Release: [tag + asset + sha256 — see the lane report].
+- Release: `wh-itch-trimmed-v1` on mhvnsnt/western-heart —
+  asset `wh-itch-trimmed.zip` (203,663,576 bytes, sha256
+  `dbe6a5711e6d5c34a4e0c175642926cbe683c4769e4b29ddb3b9db715d357615`),
+  verified byte-identical by re-download 2026-10-27; local ZIP + build
+  dir cleared off disk after verify.
 
 1. Create the itch.io account at https://itch.io/register (email + password).
 2. **Create new project** → kind **HTML5** → upload the shell ZIP.
