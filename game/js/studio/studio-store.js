@@ -23,6 +23,13 @@ export const LABELS = {Hips:'Hips',Spine:'Waist',Spine1:'Chest',Neck:'Neck',Head
 export const MIRROR = {};
 for (const j of JOINTS) { if (j.startsWith('Left')) { MIRROR[j]='Right'+j.slice(4); MIRROR['Right'+j.slice(4)]=j; } }
 
+/* Mirror one joint's [x,y,z] to its opposite side. Left/right rig bones
+   are mirrored across the sagittal plane, so the X rotation and the twist
+   (Z) flip sign and the turn (Y) carries over. Fixes the old bug where the
+   mirror copied X unchanged and left both arms identical. */
+export function mirrorRot(r){ return [-(r[0]||0), (r[1]||0), -(r[2]||0)]; }
+export function mirrorJoint(pose, j){ const m = MIRROR[j]; if (!m || !pose[j]) return pose; pose[m] = mirrorRot(pose[j]); return pose; }
+
 /* Fighters whose select pose is owner-locked: editors refuse to write it. */
 export const LOCKED_SELECT_POSE = new Set(['buffalo-bill','buffalobill']);
 

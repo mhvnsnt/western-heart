@@ -40,3 +40,14 @@ test('fighter.js and select-screen.js consume studio saves', async () => {
   assert.match(f, /applyCharOverrides\(this\)/); assert.match(f, /studio\.fightPose/);
   assert.match(s, /studioPoseFor\(c\.id, 'selectPose'\)/);
 });
+test('mirror flips X rotation and twist, keeps turn (arms no longer identical)', () => {
+  assert.deepEqual(S.mirrorRot([0.5, 0.2, 0.3]), [-0.5, 0.2, -0.3]);
+  const p = S.mirrorJoint({ RightArm: [0.4, 0.1, 0.9] }, 'RightArm');
+  assert.deepEqual(p.LeftArm, [-0.4, 0.1, -0.9]);
+  assert.notDeepEqual(p.LeftArm, p.RightArm);
+});
+test('labels are one constant: CREATION SUITE / Stance Editor', async () => {
+  const R = await import('../js/studio/studio-registry.js');
+  assert.equal(R.LABELS_UI.suite, 'CREATION SUITE'); assert.equal(R.LABELS_UI.stance, 'Stance Editor');
+  assert.ok(!R.STUDIOS.some(s => /pose studio|^studios$/i.test(s.name)));
+});

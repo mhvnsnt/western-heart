@@ -3,23 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Western Heart — Studios</title>
+<title>Western Heart — Creation Suite</title>
 <link rel="stylesheet" href="studio.css">
 <script type="importmap">
 { "imports": { "three": "./vendor/three.module.js", "three/addons/": "./vendor/addons/" } }
 </script>
 </head>
 <body>
+<!-- Menu template: see docs/tech/STUDIOS.md (2K19 Creation Suite + T7 Customization + Fire Pro Edit + Wrestling Empire editor) -->
 <header class="st-top">
   <button class="st-back" id="st-back" aria-label="Back">◀</button>
-  <h1 id="st-title">STUDIOS</h1><span class="crumb" id="st-crumb"></span>
-  <span class="st-hint"><b>A</b>select <b>B</b>back <b>LB</b><b>RB</b>tabs</span>
+  <h1 id="st-title">CREATION SUITE</h1><span class="crumb" id="st-crumb"></span>
 </header>
 <main id="hub"></main>
 <section id="editor">
-  <div id="view"></div>
-  <div class="panel"><nav class="tabs" id="tabs"></nav><div class="pbody" id="pbody"></div></div>
+  <nav class="tabbar"><button class="sh" id="tab-l" aria-label="Previous tab">L1</button><div class="tabs" id="tabs"></div><button class="sh" id="tab-r" aria-label="Next tab">R1</button></nav>
+  <div class="stage"><div id="view"></div>
+    <div class="fstep" id="fstep"><button aria-label="Previous fighter">‹</button><div class="name"></div><button aria-label="Next fighter">›</button></div>
+    <div class="sil" id="sil"></div>
+  </div>
+  <div class="panel" id="pbody"></div>
 </section>
+<footer class="foot" id="foot"></footer>
 <div class="toast" id="toast"></div>
 <script type="module" src="js/studio/studio-app.js"></script>
 </body>

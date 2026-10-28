@@ -630,7 +630,7 @@ document.addEventListener('click', (e) => {
       lazy.ranks().then((m) => m.initRanks().then(() => m.openRankHub()));
     }
     else if (a === 'mode-studios') {
-      // STUDIOS (Bannon port): Pose / Move Forge / Mocap / Strike Lab ... saves feed select + fights.
+      // CREATION SUITE (Bannon port): Stance Editor / Move Forge / Mocap / Strike Lab ... saves feed select + fights.
       audio.uiClick();
       window.location.href = 'studio.html';
     }

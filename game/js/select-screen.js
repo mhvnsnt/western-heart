@@ -162,7 +162,7 @@ export class PreviewPane {
       this.scene.add(this.model);
       this.mixer = inst.mixer;
       this.hasStance = false;
-      this._studioPose = studioPoseFor(c.id, 'selectPose'); this._studioCache = {}; // POSE STUDIO select pose
+      this._studioPose = studioPoseFor(c.id, 'selectPose'); this._studioCache = {}; // Stance Editor select pose
       // REAL TEKKEN IDLE (owner: use the teardown files; NO-T-POSE
       // law): where this fighter's moveset source has a decoded T3
       // bank, play the bank's looping stance clip on the preview

@@ -293,7 +293,7 @@ export class Fighter {
     // Clamp explicit stats too — no fighter should move at teleport speed
     if (this.stats.speed > 3.5) this.stats.speed = 3.5;
     this.aiProfile = charData.ai || { aggression: 0.6, grabBias: 0.15, reaction: 0.55 };
-    // STUDIOS (Bannon port): AI DNA / Strike Lab saves ride on the real profile.
+    // CREATION SUITE (Bannon port): AI DNA / Strike Lab saves ride on the real profile.
     try { applyCharOverrides(this); } catch (e) { /* studio data optional */ }
 
     // vitals
@@ -1480,7 +1480,7 @@ export class Fighter {
 
     // 4) Advance clips (writes the posed skeleton into bones)
     this.mixer.update(dt);
-    // 4b) POSE STUDIO fight stance: additive overlay on the bank stance (idle/walk only).
+    // 4b) Stance Editor fight stance: additive overlay on the bank stance (idle/walk only).
     if (this.studio && this.studio.fightPose && this.model && (this.state === 'idle' || this.state === 'walk')) {
       try { applyPoseOverlay(this.model, this.studio.fightPose, 1, (this._studioCache ||= {})); } catch (e) {}
     }
