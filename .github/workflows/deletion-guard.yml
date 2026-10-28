@@ -30,6 +30,8 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.event.merge_group.head_sha || github.sha }}
           fetch-depth: 1
           filter: blob:none
+          sparse-checkout: .github
+          sparse-checkout-cone-mode: true
       - name: Fetch base and head (shallow, deepen until merge-base exists; fail closed)
         env:
           BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
