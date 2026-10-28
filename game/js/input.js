@@ -185,6 +185,14 @@ export class InputManager {
     this._udStick(verticalValue);
   }
 
+  /* Stick released: back to neutral. No latched direction, no pending sidestep drift. */
+  stickNeutral() {
+    this.axisX = 0;
+    this.stickDir = 'n';
+    this._udRelease(); // resolves a pending tap (sidestep) or clears a held crouch/jump
+    if (this._resetJoyKnob) this._resetJoyKnob();
+  }
+
   _tekken(btn, t) {
     const now = this._pressT(t); // e.timeStamp from the handler, else performance.now()
     if (this._udDir && !this._udHeld) this._udUsed = true; // the tap fed this attack's direction
@@ -357,11 +365,11 @@ export class InputManager {
         const nx = Math.max(-1, Math.min(1, data.vector.x || 0));
         this._stick8(nx, (data.vector.y || 0));
       });
-      manager.on('end', () => {
-        this.axisX = 0;
-        this._udRelease(); // resolve any pending tap/hold
-      });
+      manager.on('end', () => this.stickNeutral());
       this._joyManager = manager;
+      // Safety (stick-neutral fix 2026-10-23): a lost touchend (tab switch, OS gesture) must never leave the stick latched.
+      window.addEventListener('blur', () => this.stickNeutral());
+      document.addEventListener('visibilitychange', () => { if (document.hidden) this.stickNeutral(); });
       return;
     }
     this._bindJoystickLegacy(base, knob);
@@ -400,9 +408,8 @@ export class InputManager {
     };
     const end = () => {
       this._joyActive = false; this._joyId = null;
-      this.axisX = 0; this.joyY = 0;
-      this._udRelease(); // resolve any pending tap/hold
-      this._resetJoyKnob();
+      this.joyY = 0;
+      this.stickNeutral();
     };
 
     base.addEventListener('touchstart', (e) => {
