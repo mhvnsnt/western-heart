@@ -41,7 +41,7 @@ import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK, T3_BANKS,
   loadT3ReactionClip, getT3ReactionPackScale, loadReactionPack, getReactionPack, getReactionClip } from './t3anims.js';
 import { selectThrow, resolveThrowClips, throwBreaks, throwDamageTimeSec, throwPairDurationSec,
   escapePairFor, anchorAt, sharedFramePos, throwQuadrant, attemptRowForInput, hexSlot, bankDirOf } from './t3-throw.js';
-import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove } from './movesets.js';
+import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove, resolveMoveKey } from './movesets.js';
 import { TransformCinematic } from './transform-cinematic.js';
 import { V, vskillFor, vtriggerEnhance, vreversalMove } from './v-system.js';
 import { JiggleRig } from './jiggle.js';
@@ -1601,7 +1601,8 @@ export class Fighter {
         if (name.includes('+')) {
           const tail = chain.length ? chain[chain.length - 1] : this._queuedNext;
           const single = tail.split(/[,~:]/).pop();
-          if (/^[1234]$/.test(single) && name.split('+').includes(single)) {
+          if (/^[1234]$/.test(single) && name.split('+').includes(single) &&
+              (this._clock || 0) - (this._queuedPressT || -1) < 0.06) {
             this.tekken.lastMove = chain.length > 1 ? chain[chain.length - 2] : chain.length ? this._queuedNext : saved;
             const up = this.tekken.continuation(name);
             this.tekken.lastMove = saved;
@@ -1609,13 +1610,26 @@ export class Fighter {
           }
         }
         this.tekken.lastMove = chain.length ? chain[chain.length - 1] : this._queuedNext;
-        const after = this.tekken.continuation(name);
+        let after = this.tekken.continuation(name);
+        if (!after) {
+          // '1' after f+2 resolved as 'f+2,1', but the list's 3-hit route is 'f+2~1,1+2':
+          // re-route the queued tail through its other separator when only that one continues.
+          const tail = this.tekken.lastMove, cut = Math.max(tail.lastIndexOf(','), tail.lastIndexOf('~'));
+          for (const sep of [',', '~']) {
+            if (cut <= 0 || tail[cut] === sep) continue;
+            const alt = tail.slice(0, cut) + sep + tail.slice(cut + 1);
+            if (!resolveMoveKey(this.tekken.fighterId, alt)) continue;
+            this.tekken.lastMove = alt;
+            const via = this.tekken.continuation(name);
+            if (via) { if (chain.length) chain[chain.length - 1] = alt; else this._queuedNext = alt; after = via; break; }
+          }
+        }
         this.tekken.lastMove = saved;
-        if (after) chain.push(after);
+        if (after) { chain.push(after); this._queuedPressT = this._clock || 0; }
         return true;
       }
       const cont = this.tekken.continuation(name);
-      if (cont) { this._queuedNext = cont; return true; }
+      if (cont) { this._queuedNext = cont; this._queuedPressT = this._clock || 0; return true; }
       // Chord upgrade: input.js emits the first button at once and the chord when the second
       // lands inside its 140 ms window, so '1' then '1+3' means the player pressed 1+3. If the
       // single that just started is part of this chord, the chord replaces it.

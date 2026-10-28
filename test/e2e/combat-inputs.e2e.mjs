@@ -71,7 +71,7 @@ for (const id of FIGHTERS) {
     const hits = str.hits || str.input.split(/[,~]/);
     let fr = [], bad = null;
     for (let i = 0; i < hits.length && !bad; i++) {
-      const r = await press(p, hits[i], 1.6, i === 0, i === hits.length - 1 ? 120 : 9);
+      const r = await press(p, hits[i], 1.6, i === 0, i === hits.length - 1 ? 60 * hits.length : 9);
       if (!r) bad = hits[i]; else fr = fr.concat(r);
     }
     if (bad) { console.log(`  skip ${id} string ${str.input}: hit '${bad}' is not a button press (resolver test covers it)`); continue; }
