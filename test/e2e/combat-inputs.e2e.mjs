@@ -36,9 +36,10 @@ async function fight(P1) {
       if (g._hitStop > 0) g._hitStop -= 1 / 60; else g._update(1 / 60); out.push({ p1: s(g.p1), p2: s(g.p2) }); } return out; };
     window.__reset = (gap) => {
       for (const f of [g.p1, g.p2]) { f.hp = f.maxHp || f.hp; f._enter('idle'); f.attack = null; f.attackName = null; f._throwPair = null;
-        f.lockT = 0; f.lockMove = null; f.tekken.lastMove = null; f.tekken._strPath = null; f._stringGraceUntil = 0; f._queuedNext = null;
+        f.lockT = 0; f.lockMove = null; f.tekken.lastMove = null; f.tekken._strPath = null; f._stringGraceUntil = 0; f._queuedNext = null; f._queuedAfter = [];
         f.vx = 0; f.stun = 0; f.invuln = 0; f._pressBuf && f._pressBuf.clear(); }
       g.p1.root.position.set(-gap / 2, 0, 0); g.p2.root.position.set(gap / 2, 0, 0);
+      g.roundState = 'fight'; g.timer = 9999; // a KO earlier in the sweep must not end the round
       g.input._queue.length = 0; g.p1.facing = 1; window.__step(30); window.__vt += 1000; };
   });
   return p;
@@ -69,7 +70,7 @@ for (const id of FIGHTERS) {
   for (const str of (ms.strings || [])) {
     if (/^[A-Z]+\./.test(str.input)) { console.log(`  skip ${id} string ${str.input}: stance-entry string (resolver test covers it)`); continue; }
     const hits = str.hits || str.input.split(/[,~]/);
-    let fr = [], bad = null;
+    let fr = [], bad = hits.find((h) => !/^(?:[udfbn/]+\+)?[1234](?:\+[1234])*$/.test(h)) || null; // check before pressing anything
     for (let i = 0; i < hits.length && !bad; i++) {
       const r = await press(p, hits[i], 1.6, i === 0, i === hits.length - 1 ? 60 * hits.length : 9);
       if (!r) bad = hits[i]; else fr = fr.concat(r);
@@ -95,11 +96,12 @@ for (const id of FIGHTERS) {
     const tc = [...new Set(fr.filter((f) => /throw(ing|Exec)/.test(f.p1.st)).map((f) => f.p1.clip))];
     ok(vc.some(Boolean), `${id} grab ${g}: victim clip ${vc}`);
     console.log(`  grab ${g}: thrower clips ${JSON.stringify(tc)} victim clips ${JSON.stringify(vc)}`);
-    if (g === '1+3') { // frame sheet: mid-throw shot
-      await p.evaluate(() => { window.__reset(1.0); window.__key(['Digit1', 'Digit3']); window.__step(1); window.__key(['Digit1', 'Digit3'], 'keyup'); window.__step(40); window.__game.arena.render(); });
-      await p.screenshot({ path: `${SHOTS}/${id}-grab-mid.png` });
-      await p.evaluate(() => { window.__step(40); window.__game.arena.render(); });
-      await p.screenshot({ path: `${SHOTS}/${id}-grab-exec.png` });
+    if (g === '1+3') { // frame sheet: four moments of the throw (camera stepped with the sim)
+      await p.evaluate(() => { window.__reset(1.0); window.__key(['1', '3']); window.__step(1); window.__key(['1', '3'], 'keyup'); });
+      for (const [i, n] of [[1, 4], [2, 20], [3, 30], [4, 40]]) {
+        await p.evaluate((n) => { const g = window.__game; window.__step(n); for (let k = 0; k < 30; k++) g.arena.update(1 / 60, g.p1, g.p2, 0); g.arena.render(); }, n);
+        await p.screenshot({ path: `${SHOTS}/${id}-grab-${i}.png` });
+      }
     }
   }
   ok(p.errs.length === 0, `${id}: page errors ${JSON.stringify(p.errs.slice(0, 3))}`);
