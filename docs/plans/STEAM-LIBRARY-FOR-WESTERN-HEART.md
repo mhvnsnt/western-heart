@@ -58,3 +58,6 @@ App ids marked `—` are not looked up yet. App ids not in [S1] (Fallout 3, RF:G
 2. Extract with open tools (ParManager for Yakuza PAR, repak/umodel for UE, il2cppdumper for Unity).
 3. Push to `teardown/<game>/` in batches with SHA-256 lists; files >50 MB go to `box-storage` release parts.
 4. Verify hashes on the remote, delete local copy, keep ≥8 GB free, never collide with a running job.
+
+## Progress log
+- 2026-10-28: Fire Pro data tables landed in game-reverse-engineering #66 (`teardown/firepro/data/`). Yakuza 0 batch b1 raw archives landed in #67 (`teardown/yakuza-0/`). Watch/Simulate + CPU AI spec: western-heart #1158.
