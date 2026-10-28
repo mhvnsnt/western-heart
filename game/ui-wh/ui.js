@@ -132,6 +132,8 @@ function hud(d) {
     const pct = Math.max(0, (f.hp / f.maxHp) * 100);
     const bar = document.querySelector(`.plate.${side} .bar`);
     bar.querySelector("i").style.width = pct + "%";
+    // COMBAT SYSTEMS 2026-10-24: white recoverable segment (b).
+    const b = bar.querySelector("b"); if (b) b.style.width = Math.min(100, pct + Math.max(0, ((f.recoverable || 0) / f.maxHp) * 100)) + "%";
     const u = bar.querySelector("u"); if (parseFloat(u.style.width) < pct || !u.dataset.t) u.style.width = pct + "%";
     clearTimeout(u._t); u._t = setTimeout(() => { u.style.width = pct + "%"; }, 600); u.dataset.t = 1;
     document.getElementById(side === "l" ? "hud-s1" : "hud-s2").innerHTML = souls(Math.floor((f.meter / f.maxMeter) * 9 + 1e-3));

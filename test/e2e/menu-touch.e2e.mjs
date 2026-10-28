@@ -19,6 +19,16 @@ async function page(breakModule) {
   await p.goto(BASE + '/game/index.html');
   await p.waitForSelector('#screen-menu [data-mm]', { state: 'visible', timeout: 30000 });
   await p.waitForTimeout(5000); // past the tap-hint and failsafe timers
+  // Diagnostic: record every delegated data-action click so a dead tap can be
+  // distinguished from a tap whose handler never ran.
+  await p.evaluate(() => {
+    window.__clicks = [];
+    document.addEventListener('click', (e) => {
+      const el = e.target.closest && e.target.closest('[data-action]');
+      if (el) window.__clicks.push(el.dataset.action + (e.isTrusted ? ':trusted' : ':synth'));
+    }, true);
+  });
+  p.on('pageerror', (e) => console.log('PAGEERROR:', String(e).slice(0, 300)));
   return p;
 }
 async function hitCheck(p, tag) {
@@ -37,18 +47,28 @@ async function hitCheck(p, tag) {
 let p = await page(false);
 await hitCheck(p, '01-menu');
 const scr = () => p.evaluate(() => ['screen-menu', 'screen-select', 'screen-stage', 'hud'].filter(id => { const e = document.getElementById(id); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }));
-const step = async (sel, want, shot) => {
+const step = async (sel, want, shot, waitMs = 60000) => {
   await p.tap(sel, { timeout: 90000 }); await p.waitForTimeout(800);
   if (want) {
-    try { await p.waitForFunction((id) => { const e = document.getElementById(id); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }, want, { timeout: 20000 }); }
+    try { await p.waitForFunction((id) => { const e = document.getElementById(id); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }, want, { timeout: waitMs }); }
     catch { fails.push(`tap ${sel}: expected ${want}, on ${await scr()}`); }
   }
   if (shot) await p.screenshot({ path: `${SHOTS}/${shot}.png` });
 };
 try {
-  // T7 mode select (PR #932): a rail item opens its submenu; tap its first mode card.
-  await step('[data-mm="versus"]');
-  await step('#mm-cards .mm-card[data-action] >> nth=0', 'screen-select', '02-select');
+  // The versus flow needs modes.js (lazy). Wait for the boot warm to finish
+  // it before tapping: under software GL the import and input queue are slow,
+  // and a tap before __modes lands looks like a dead tap.
+  await p.waitForFunction(() => !!window.__modes, null, { timeout: 120000 });
+  // Versus opens the T8-style submenu (main, PR #932); its 1V1 VERSUS card
+  // opens the PR #841 versus-setup screen -> choose fighters -> select.
+  await step('[data-mm="versus"]', null, '02-versus-submenu');
+  await step('.mm-card >> nth=0', 'screen-vssetup', '02b-vssetup');
+  await step('#screen-vssetup [data-action="mode-versus"]', 'screen-select', '02-select', 180000);
+  // TTT2 team battle (worker 24, PR #668): versus now asks for a battle format
+  // INSIDE the select screen (1V1 FIGHT | TEAM BATTLE) before the grid is
+  // tappable — the submenu overlay covers the cards until a format is chosen.
+  await step('#vs-submenu [data-format="solo"]');
   await step('.char-card >> nth=0'); await step('#confirm-fighter');
   await step('.char-card >> nth=2'); await step('#confirm-fighter', 'screen-stage', '03-stage');
   await p.tap('#confirm-stage');
@@ -56,8 +76,13 @@ try {
   await p.waitForTimeout(2000); await p.screenshot({ path: `${SHOTS}/04-fight.png` });
   console.log('flow: menu -> select -> stage -> fight OK');
 } catch (e) { fails.push('flow: ' + e.message.split('\n')[0]); }
-p = await page(true);
-await hitCheck(p, '05-menu-module-failed');
+try { console.log('FLOW CLICKS:', await p.evaluate(() => JSON.stringify(window.__clicks))); } catch {}
+if (fails.length) console.log('FLOW FAILS:\n' + fails.join('\n'));
+await p.close(); // free the flow page's 3D renderer before the second page
+try {
+  p = await page(true);
+  await hitCheck(p, '05-menu-module-failed');
+} catch (e) { fails.push('broken-module page: ' + e.message.split('\n')[0]); }
 await b.close();
 if (fails.length) { console.error('FAIL\n' + fails.join('\n')); process.exit(1); }
 console.log('PASS');

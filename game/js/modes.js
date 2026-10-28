@@ -26,6 +26,31 @@
    DOM-free and unit-testable in node. ModeController wires it to the
    DOM and the Game.
    ============================================================ */
+import { getRules } from './rules.js';
+
+import { playCutscene, EM_CUTSCENES } from './cutscenes.js';
+
+/* Eastern Mind face-assembly art for the reincarnation screen:
+   the original game's own eyes / noses / mouths (D_FACE bitmaps),
+   verified by viewing. The returning soul assembles its new face
+   in pieces — CANON.md §1/§8 "The Two Laws of Death". */
+const EM_FACE = {
+  eyes: [
+    '../teardown/eastern-mind/prologue-ending/bitmaps/D_FACE/D_FACE_b011_40x39.png',
+    '../teardown/eastern-mind/prologue-ending/bitmaps/D_FACE/D_FACE_b012_40x39.png',
+    '../teardown/eastern-mind/prologue-ending/bitmaps/D_FACE/D_FACE_b042_88x61.png',
+  ],
+  nose: [
+    '../teardown/eastern-mind/prologue-ending/bitmaps/D_FACE/D_FACE_b009_92x94.png',
+    '../teardown/eastern-mind/prologue-ending/bitmaps/D_FACE/D_FACE_b025_51x64.png',
+    '../teardown/eastern-mind/prologue-ending/bitmaps/D_FACE/D_FACE_b033_59x68.png',
+  ],
+  mouth: [
+    '../teardown/eastern-mind/prologue-ending/bitmaps/D_FACE/D_FACE_b004_108x93.png',
+    '../teardown/eastern-mind/prologue-ending/bitmaps/D_FACE/D_FACE_b002_113x108.png',
+    '../teardown/eastern-mind/prologue-ending/bitmaps/D_FACE/D_FACE_b008_72x58.png',
+  ],
+};
 
 /* ---------------- The Five Forces ----------------
    Canon rewards for claiming each land. Engine translation is honest:
@@ -239,6 +264,13 @@ export function scaledAi(char, diff) {
     aggression: Math.min(1, base.aggression * (0.6 + d * 0.7)),
     grabBias: base.grabBias ?? 0.15,
     reaction: Math.min(1, base.reaction * (0.5 + d * 0.8)),
+    // FIGHTING-AI METHODOLOGY (2026-10-23): the human-reaction delay and
+    // MCTS search scale with the same difficulty knob. The AIController
+    // maps `difficulty` through delayFramesForDifficulty() (15f rookie →
+    // 8f boss, never 0) and mctsRolloutsForDifficulty() (0 below 0.35 —
+    // rookies fight a footsies brain, veterans fight a searching one).
+    // Kept humanlike and beatable at every tier.
+    difficulty: d,
   };
 }
 
@@ -263,6 +295,8 @@ export const MODE_LIST = [
     desc: 'Endless one-round fights. Health carries over — a little back per win. How many can you beat?' },
   { key: 'timeattack', name: 'TIME ATTACK',        origin: 'tekken', debut: 'Tekken 2',
     desc: '8 fights against the clock. Fastest total time wins. Graded S/A/B/C.' },
+  { key: 'treasure', name: 'TREASURE BATTLE', origin: 'tekken', debut: 'Tekken 7',
+    desc: 'Endless foes. Every win opens a chest — coins and unlockables. How deep does the vault go?' },
   { key: 'team',      name: 'TEAM BATTLE',         origin: 'tekken', debut: 'Tekken 2',
     desc: '3v3. Winner stays on with carried health. Last team standing.' },
   { key: 'qombat',    name: '不死クォンバット',        origin: 'wh', canon: 'CANON.md § SUN RĀ',
@@ -290,6 +324,9 @@ export function whSetRecord(k, v) {
 /* ---------------- Survival (Tekken 2+) ----------------
    One round per fight, HP carries over, small restore per win. */
 export const SURVIVAL_CFG = { restore: 0.25, roundsToWin: 1 };
+/* Lane 3, Gap 13: Treasure Battle — endless, one round per wave, fresh
+   health each wave (unlike Survival's carry), chest after every win. */
+export const TREASURE_CFG = { roundsToWin: 1 };
 export function survivalCarry(hpLeft, maxHp) {
   return Math.min(maxHp, hpLeft + maxHp * SURVIVAL_CFG.restore);
 }
@@ -407,6 +444,7 @@ export class ModeController {
     this.qombat = null;        // { wave, fighterId, hp, powerMult }
     this.surge = null;         // { idx, fighterId }
     this.trader = null;        // { bout, fighterId }
+    this.treasure = null;      // { wave, fighterId, chests } — Lane 3, Gap 13
     this._teamTray = null;
     this._teamPending = [];
     this._el = (id) => document.getElementById(id);
@@ -420,7 +458,7 @@ export class ModeController {
     this.arcade = null; this.story = null; this.training = null;
     this.fightlab = null;
     this.survival = null; this.timeattack = null; this.team = null;
-    this.qombat = null; this.surge = null; this.trader = null;
+    this.qombat = null; this.surge = null; this.trader = null; this.treasure = null;
     this._teamPending = [];
     if (this._teamTray) { this._teamTray.remove(); this._teamTray = null; }
     this.game.onMatchEnd = null;
@@ -434,6 +472,9 @@ export class ModeController {
     this.mode = mode;
     const hint = this._el('select-hint');
     this.show('select');
+    // Eastern Mind on the select screen: the 8-minute esoteric mix,
+    // the head-world's long-form music (Tong-Nou Theme holds the menu).
+    if (this.audio && this.audio.playEMTrack) this.audio.playEMTrack('tong-nou-esoteric-mix');
     if (!hint) return;
     if (mode === 'versus') {
       hint.textContent = 'VERSUS — no reincarnation. Player 1: choose your soul.';
@@ -458,12 +499,20 @@ export class ModeController {
       hint.textContent = 'SOUL SURGE GAUNTLET — pick your vessel. Nine fights. Nine souls will channel through you.';
     } else if (mode === 'trader') {
       hint.textContent = 'TRADER\'S MIMIC — pick your fighter. Three bouts. The Trader wears your moveset like a borrowed coat.';
+    } else if (mode === 'treasure') {
+      hint.textContent = 'TREASURE BATTLE — pick your fighter. Endless foes, a chest after every win. Coins and unlockables keep coming.';
     }
   }
 
   /* ---------- character-select confirm routing ---------- */
   onConfirm(selectedId) {
     if (!selectedId) return false;
+    // TTT2 TEAM BATTLE (worker 24): if the select-screen draft completed,
+    // launch the team battle instead of the classic P1/P2 versus flow.
+    if (this.mode === 'versus') {
+      const draft = this._vsDraft();
+      if (draft) { this._beginTeamVersus(draft); return true; }
+    }
     if (this.mode === 'versus' && this.vsStep === 0) {
       this.vsP1 = selectedId;
       this.vsStep = 1;
@@ -488,7 +537,10 @@ export class ModeController {
     }
     if (this.mode === 'story') {
       this.story = { stage: 0, forces: [], deaths: 0, vesselId: selectedId, acc: this._newAcc(), startTime: Date.now() };
-      this._storyStageIntro();
+      // The Trial opens with the head-world's own title sting —
+      // the real Eastern Mind logo animation (skippable).
+      playCutscene(EM_CUTSCENES['story.intro'], { label: 'THE TRIAL BEGINS' })
+        .then(() => this._storyStageIntro());
       return true;
     }
     if (this.mode === 'training') {
@@ -546,25 +598,96 @@ export class ModeController {
       this._traderNext();
       return true;
     }
+    if (this.mode === 'treasure') {
+      this.treasure = { wave: 0, fighterId: selectedId, chests: 0 };
+      this._treasureNext();
+      return true;
+    }
     return false;
   }
 
-  /* ---------- VERSUS: no reincarnation, best of 3 ---------- */
+  /* ---------- VERSUS: no reincarnation, rules from VERSUS SETUP ----------
+     T7 GAME OPTION <VS GAME>: fight count, round time, guard damage
+     ride the fight opts into game.js; stage RANDOM skips the arena
+     screen entirely. */
   _beginVersus(p1id, p2id) {
     const p1 = this.getChar(p1id), p2 = this.getChar(p2id);
     if (!p1 || !p2) return;
+    const r = getRules();
     this._lastVersus = [p1id, p2id];
     this._badge(`VERSUS · ${p1.name} VS ${p2.name}`);
     this.game.onMatchEnd = (won) => this._versusEnd(won);
-    this.startFight(p1id, p2id, { mode: 'versus' });
+    const opts = {
+      mode: 'versus',
+      roundsToWin: r.roundsVs,
+      roundTime: r.roundTime,
+      guardDamage: r.guardDamage,
+    };
+    if (r.stageMode === 'random') {
+      const pool = (window.__stages || []).map((s) => s.id).filter(Boolean);
+      if (pool.length) {
+        opts.stage = pool[Math.floor(Math.random() * pool.length)];
+        opts.skipStage = true; // startFightViaStage goes straight in
+      }
+    }
+    this.startFight(p1id, p2id, opts);
+  }
+  /* TTT2 TEAM BATTLE (worker 24): read the completed draft from the
+     select screen. Returns { p1:[ids], p2:[ids], size } or null. */
+  _vsDraft() {
+    const ss = window.__selectScreen;
+    const st = ss && ss._state;
+    if (!st || st.vsMode !== 'team' || !st.vsTeamsDone) return null;
+    return st.vsTeamsDone;
+  }
+  _beginTeamVersus(draft) {
+    const { p1, p2, size } = draft;
+    if (size === 2) {
+      // TTT2 tag: 2v2 with tag mechanics.
+      this._lastVersus = [p1[0], p2[0]];
+      this._lastTeamDraft = draft;
+      const n1 = this.getChar(p1[0]), n2 = this.getChar(p2[0]);
+      this._badge(`TAG BATTLE · ${n1 ? n1.name : p1[0]} & ${this.getChar(p1[1]).name} VS ${n2 ? n2.name : p2[0]} & ${this.getChar(p2[1]).name}`);
+      this.game.onMatchEnd = (won) => this._versusEnd(won);
+      this.startFight(p1[0], p2[0], { mode: 'versus', tagTeams: { p1, p2 } });
+    } else {
+      // TTT2 Team Battle elimination: 3-8 per team, KO → next steps in.
+      this._lastTeamDraft = draft;
+      this._teamElim = { p1: [...p1], p2: [...p2], idx1: 0, idx2: 0 };
+      const n1 = this.getChar(p1[0]), n2 = this.getChar(p2[0]);
+      this._badge(`TEAM BATTLE ${size}v${size} · ${n1.name} VS ${n2.name}`);
+      this.game.onMatchEnd = (won) => this._teamElimEnd(won);
+      this.startFight(p1[0], p2[0], { mode: 'versus', hpCarry: null });
+    }
+  }
+  _teamElimEnd(playerWon) {
+    const e = this._teamElim;
+    if (!e) return this._versusEnd(playerWon);
+    // Advance the loser's index; winner stays (TTT2 elimination).
+    if (playerWon) e.idx2++; else e.idx1++;
+    const p1left = e.idx1 < e.p1.length, p2left = e.idx2 < e.p2.length;
+    if (!p1left || !p2left) {
+      this._teamElim = null;
+      return this._versusEnd(p1left && !p2left);
+    }
+    const n1 = this.getChar(e.p1[e.idx1]), n2 = this.getChar(e.p2[e.idx2]);
+    this._badge(`TEAM BATTLE · ${n1.name} VS ${n2.name}`);
+    this.startFight(e.p1[e.idx1], e.p2[e.idx2], { mode: 'versus' });
   }
   _versusEnd(playerWon) {
     this.game.onMatchEnd = null;
+    // Lane 3 UI gaps (Gap 15): versus W-L record feeds the VS screen.
+    const wl = whGetRecords().versusWL || { w: 0, l: 0 };
+    if (playerWon) wl.w++; else wl.l++;
+    whSetRecord('versusWL', wl);
     this.ui.matchOver(playerWon); // classic result screen: REMATCH / MENU
   }
   rematch() {
     // Re-run the current mode's fight setup.
-    if (this.mode === 'versus' && this._lastVersus) {
+    // TTT2: rematch a team battle with the same draft.
+    if (this.mode === 'versus' && this._lastTeamDraft) {
+      this._beginTeamVersus(this._lastTeamDraft);
+    } else if (this.mode === 'versus' && this._lastVersus) {
       this._beginVersus(this._lastVersus[0], this._lastVersus[1]);
     } else if (this.mode === 'arcade' && this.arcade) {
       this._arcadeFight();
@@ -572,6 +695,11 @@ export class ModeController {
       this._storyFight();
     } else if (this.mode === 'training' && this.training) {
       this._beginTraining(this.training.fighterId);
+    } else if (this.mode === 'treasure' && this.treasure) {
+      this._treasureFight();
+    } else if (this.mode === 'heartmind' && window.__heartmind) {
+      // Heart and Mind Inside: restart the descent (worker 20, 2026-10-22).
+      window.__heartmind.rematch();
     }
   }
 
@@ -593,7 +721,7 @@ export class ModeController {
     }
     const foeEntry = { ...foe, ai: scaledAi(foe, rung.diff) };
     this._badge(`ARCADE · FIGHT ${rung.n}/6 · ${foeName}`);
-    this.ui.banner(`FIGHT ${rung.n} — ${foeName}`);
+    this.ui.hudNote(`FIGHT ${rung.n} — ${foeName}`);
     this.game.onMatchEnd = (won) => this._arcadeEnd(won);
     this._arcadeFoe = foeEntry;
     this.startFight(this.arcade.fighterId, null, { mode: 'arcade', enemyChar: foeEntry });
@@ -639,7 +767,7 @@ export class ModeController {
     const fl = document.getElementById('stage-forces');
     if (fl) fl.textContent = 'FORCES HELD: ' + (this.story.forces.length ? this.story.forces.map((k) => FORCES[k].name).join(' · ') : 'none yet');
     this._badge(`STORY · ${st.title}`);
-    this.show('stageIntro');
+    this.show('stage');
     const btn = this._el('stage-fight');
     if (btn) btn.onclick = () => {
       this.audio && this.audio.uiClick && this.audio.uiClick();
@@ -668,7 +796,7 @@ export class ModeController {
     if (won) {
       if (st.key !== 'trade' && st.key !== 'boss' && !this.story.forces.includes(st.key)) {
         this.story.forces.push(st.key);
-        this.ui.banner(`${FORCES[st.key].name} CLAIMED — ${FORCES[st.key].desc}`);
+        this.ui.hudNote(`${FORCES[st.key].name} CLAIMED — ${FORCES[st.key].desc}`);
       }
       // Trader stage: the trade happened on the trader screen; the fight is the toll.
       setTimeout(() => {
@@ -685,6 +813,9 @@ export class ModeController {
     const endingBtn = {
       label: 'WATCH ENDING', fn: () => this._playEnding(this.story.vesselId),
     };
+    // The Trial ends under the transmigration music — the head-world's
+    // own ending theme (5:16, real CD audio).
+    if (this.audio && this.audio.playEMTrack) this.audio.playEMTrack('transmigration-ending');
     this._modeWin(true, 'THE KATANA IS FORGED',
       `Five forces claimed. The Assembled Soul faced — and it was you. ` +
       `Deaths: ${this.story.deaths}. Time: ${mins} min. The soul is nearly whole.`, [endingBtn]);
@@ -707,6 +838,17 @@ export class ModeController {
 
   /* ---------- Reincarnation screen ---------- */
   _reincarnateScreen() {
+    // Death has a sound and a film: the real incarnation stinger and the
+    // transmigration flash, then the ending theme settles under the screen.
+    if (this.audio) {
+      this.audio.playEMSfx && this.audio.playEMSfx('reincarn.death');
+      this.audio.playEMTrack && this.audio.playEMTrack('ending-theme');
+    }
+    playCutscene(EM_CUTSCENES['reincarn.flash'], { label: 'TRANSMIGRATION' })
+      .then(() => this._reincarnateScreenAfterCut());
+  }
+
+  _reincarnateScreenAfterCut() {
     const profile = styleProfile(this.story.acc);
     const ids = this.roster.map((c) => c.id);
     const picks = chooseReincarnation(profile, ids, this.story.vesselId, this.story.deaths);
@@ -714,6 +856,32 @@ export class ModeController {
     this._el('reinc-flavor').textContent =
       'When a soul loses, it dies — and is reborn before the next fight. ' +
       'The Trial has watched how you fight. These are the vessels your actions have earned.';
+    // The new face, assembled in pieces from the original game's own
+    // face art (eyes / nose / mouth — CANON.md §1 "The Two Laws of Death").
+    const face = this._el('reinc-face');
+    if (face) {
+      const pick = (arr) => arr[(Math.random() * arr.length) | 0];
+      face.innerHTML = '';
+      const strip = document.createElement('div');
+      strip.setAttribute('style', 'display:flex;gap:18px;justify-content:center;align-items:flex-end;margin:6px 0 2px;');
+      [['eyes', 'EYES'], ['nose', 'NOSE'], ['mouth', 'MOUTH']].forEach(([part, label]) => {
+        const cell = document.createElement('div');
+        cell.setAttribute('style', 'text-align:center;');
+        const img = document.createElement('img');
+        img.src = pick(EM_FACE[part]);
+        img.alt = label;
+        img.setAttribute('style', 'height:64px;image-rendering:auto;filter:drop-shadow(0 0 12px rgba(255,215,106,0.35));');
+        img.onerror = () => { cell.style.display = 'none'; };
+        const cap = document.createElement('div');
+        cap.textContent = label;
+        cap.setAttribute('style', 'color:#8a7a5a;font-size:10px;letter-spacing:0.3em;margin-top:4px;');
+        cell.appendChild(img); cell.appendChild(cap); strip.appendChild(cell);
+      });
+      const title = document.createElement('div');
+      title.textContent = 'THE FACE REASSEMBLES';
+      title.setAttribute('style', 'color:#FFD76A;font-size:11px;letter-spacing:0.4em;margin-bottom:4px;font-family:serif;');
+      face.appendChild(title); face.appendChild(strip);
+    }
     const fl = this._el('reinc-forces');
     if (fl) fl.textContent = 'FORCES CARRIED OVER: ' + (this.story.forces.length ? this.story.forces.map((k) => FORCES[k].name).join(' · ') : 'none');
     const wrap = this._el('reinc-cards');
@@ -730,8 +898,10 @@ export class ModeController {
         `<div class="rwhy">${reincarnationReason(id, profile)}</div>`;
       card.addEventListener('click', () => {
         this.audio && this.audio.uiClick && this.audio.uiClick();
+        this.audio && this.audio.playEMSfx && this.audio.playEMSfx('reincarn.rebirth');
+        this.audio && this.audio.stopEMTrack && this.audio.stopEMTrack();
         this.story.vesselId = id;
-        this.ui.banner('REBORN AS ' + c.name);
+        this.ui.hudNote('REBORN AS ' + c.name);
         setTimeout(() => this._storyStageIntro(), 900);
       });
       wrap.appendChild(card);
@@ -741,6 +911,8 @@ export class ModeController {
 
   /* ---------- Trader screen (stage 6) ---------- */
   _traderScreen() {
+    // The Trader's own voice from the original game.
+    if (this.audio && this.audio.playEMSfx) this.audio.playEMSfx('trader.open');
     const have = this.story.forces.slice();
     let give = null, take = null;
     const render = () => {
@@ -766,7 +938,7 @@ export class ModeController {
       if (!(give && take && give !== take)) return;
       this.story.forces = this.story.forces.filter((k) => k !== give);
       this.story.forces.push(take);
-      this.ui.banner(`TRADED ${FORCES[give].name} FOR ${FORCES[take].name}`);
+      this.ui.hudNote(`TRADED ${FORCES[give].name} FOR ${FORCES[take].name}`);
       setTimeout(() => this._storyFight(), 900);
     };
     const skip = this._el('trade-skip');
@@ -810,7 +982,7 @@ export class ModeController {
         if (ai && ai.gungaku) {
           clearInterval(wait);
           mountGungakuPanel(this.game, ai);
-          this.ui.banner(`${GUNGAKU_LABEL} — PROGRAM THE DUMMY`);
+          this.ui.hudNote(`${GUNGAKU_LABEL} — PROGRAM THE DUMMY`);
         } else if (tries > 40) clearInterval(wait);
       }, 250);
     } catch (e) { console.warn('[WH] fight lab panel failed:', e?.message || e); }
@@ -824,7 +996,7 @@ export class ModeController {
     const foeEntry = { ...foe, ai: scaledAi(foe, Math.min(0.95, 0.45 + s.wave * 0.05)) };
     this._survivalFoe = foeEntry;
     this._badge(`SURVIVAL · WAVE ${s.wave + 1} · ${foe.name}`);
-    this.ui.banner(`WAVE ${s.wave + 1} — ${foe.name}`);
+    this.ui.hudNote(`WAVE ${s.wave + 1} — ${foe.name}`);
     this.game.onMatchEnd = (won) => this._survivalEnd(won);
     this._survivalFight();
   }
@@ -842,7 +1014,7 @@ export class ModeController {
       s.hp = survivalCarry(g.p1.hp, g.p1.maxHp);
       const rec = whGetRecords();
       if (s.wave > (rec.survival || 0)) whSetRecord('survival', s.wave);
-      this.ui.banner(`WAVE ${s.wave} CLEARED — +${Math.round(SURVIVAL_CFG.restore * 100)}% health restored`);
+      this.ui.hudNote(`WAVE ${s.wave} CLEARED — +${Math.round(SURVIVAL_CFG.restore * 100)}% health restored`);
       setTimeout(() => this._survivalNext(), 1400);
     } else {
       const rec = whGetRecords();
@@ -850,6 +1022,62 @@ export class ModeController {
       this._modeWin(false, 'SURVIVAL — RUN OVER',
         `Fell at wave ${s.wave + 1}. Best run: ${best} wave${best === 1 ? '' : 's'}. The shrine is silent. Run it back.`,
         [{ label: 'RETRY SURVIVAL', fn: () => { this.survival = { wave: 0, fighterId: s.fighterId, hp: null }; this._survivalNext(); } }]);
+    }
+  }
+
+
+  /* ---------- TREASURE BATTLE (Tekken 7): endless + chests + currency ----------
+     Structure from gap doc Gap 13: endless ladder, win -> treasure chest
+     (random customization unlock + currency), escalating difficulty.
+     Loot pays into the existing systems, nothing new invented: coins to
+     localStorage 'wh_treasure_coins_v1' (ui-gaps.js TREASURE_COINS_KEY),
+     prizes granted through unlockables.js (titles/frames). Health is
+     fresh each wave — the chest, not attrition, is the loop. */
+  _treasureNext() {
+    const s = this.treasure;
+    const diff = Math.min(0.95, 0.40 + s.wave * 0.05);
+    const foe = this._pickFoe(s.fighterId, null, diff);
+    const foeEntry = { ...foe, ai: scaledAi(foe, diff) };
+    this._treasureFoe = foeEntry;
+    this._badge(`TREASURE BATTLE · WAVE ${s.wave + 1} · ${foe.name}`);
+    this.ui.hudNote(`WAVE ${s.wave + 1} — ${foe.name}`);
+    this.game.onMatchEnd = (won) => this._treasureEnd(won);
+    this._treasureFight();
+  }
+  _treasureFight() { // (re)start current wave — used by rematch
+    const s = this.treasure;
+    this.startFight(s.fighterId, null, { mode: 'treasure', roundsToWin: TREASURE_CFG.roundsToWin, enemyChar: this._treasureFoe });
+  }
+  async _treasureEnd(won) {
+    const s = this.treasure;
+    if (won) {
+      s.wave++;
+      s.chests++;
+      const rec = whGetRecords();
+      if (s.wave > (rec.treasure || 0)) whSetRecord('treasure', s.wave);
+      // Open the chest: coins always, one still-locked unlockable if any.
+      let chestLine = '';
+      try {
+        const [{ rollChest, readTreasureCoins }, unlocks] = await Promise.all([
+          import('./ui-gaps.js'), import('./unlockables.js'),
+        ]);
+        const pool = Object.keys(unlocks.UNLOCKABLES || {}).filter((id) => !unlocks.hasUnlockable(id));
+        const roll = rollChest({ coins: readTreasureCoins(localStorage), pool });
+        try { localStorage.setItem('wh_treasure_coins_v1', JSON.stringify(roll.coins)); } catch { /* private mode */ }
+        let prizeName = '';
+        if (roll.prize && unlocks.grantUnlockable(roll.prize)) prizeName = ` · UNLOCKED: ${(unlocks.UNLOCKABLES[roll.prize] || {}).name || roll.prize}`;
+        chestLine = `CHEST ${s.chests}: +${roll.coinsGained} coins${prizeName}`;
+      } catch { chestLine = `CHEST ${s.chests} opened.`; }
+      this.ui.hudNote(`WAVE ${s.wave} CLEARED — ${chestLine}`);
+      setTimeout(() => this._treasureNext(), 1600);
+    } else {
+      const rec = whGetRecords();
+      const best = rec.treasure || s.wave;
+      let coins = 0;
+      try { coins = JSON.parse(localStorage.getItem('wh_treasure_coins_v1') || '0') || 0; } catch { /* private mode */ }
+      this._modeWin(false, 'TREASURE BATTLE — VAULT CLOSES',
+        `Fell at wave ${s.wave + 1}. Best run: ${best} wave${best === 1 ? '' : 's'}. Chests opened: ${s.chests}. Coins kept: ${coins}.`,
+        [{ label: 'RETRY TREASURE', fn: () => { this.treasure = { wave: 0, fighterId: s.fighterId, chests: 0 }; this._treasureNext(); } }]);
     }
   }
 
@@ -862,7 +1090,7 @@ export class ModeController {
     const foeEntry = { ...foe, ai: scaledAi(foe, diff) };
     this._timeAttackFoe = foeEntry;
     this._badge(`TIME ATTACK · FIGHT ${t.idx + 1}/${TIME_ATTACK_CFG.fights} · ${fmtTime(t.totalMs)}`);
-    this.ui.banner(`FIGHT ${t.idx + 1} — ${foe.name}`);
+    this.ui.hudNote(`FIGHT ${t.idx + 1} — ${foe.name}`);
     this.game.onMatchEnd = (won) => this._timeAttackEnd(won);
     this._timeAttackFight();
   }
@@ -943,7 +1171,7 @@ export class ModeController {
     const foeEntry = { ...cc, ai: scaledAi(cc, Math.min(0.95, diff)) };
     this._teamFoe = foeEntry;
     this._badge(`TEAM BATTLE · YOU ${t.pIdx + 1}/3 (${pc.name}) VS CPU ${t.cIdx + 1}/3 (${cc.name})`);
-    this.ui.banner(`${pc.name} VS ${cc.name}`);
+    this.ui.hudNote(`${pc.name} VS ${cc.name}`);
     this.game.onMatchEnd = (won) => this._teamEnd(won);
     const opts = { mode: 'team', roundsToWin: 1, enemyChar: foeEntry };
     if (t.pHp != null) opts.hpCarry = t.pHp;
@@ -971,7 +1199,7 @@ export class ModeController {
         [{ label: 'REMATCH TEAMS', fn: () => { this._teamPending = []; this.startMode('team'); } }]);
     } else {
       const who = playerWon ? 'CPU sends its next fighter.' : 'You send your next fighter.';
-      this.ui.banner(who);
+      this.ui.hudNote(who);
       setTimeout(() => this._teamFight(), 1400);
     }
   }
@@ -990,10 +1218,10 @@ export class ModeController {
     this._badge(`不死クォンバット · WAVE ${q.wave + 1} · ${foe.name}`);
     if (q.wave === 0) {
       // The naming law (CANON.md): only Sun Rā gets the English version.
-      this.ui.banner('SUN RĀ: "IMMORTAL QOMBAT."');
-      setTimeout(() => this.ui.banner(`WAVE 1 — ${foe.name}. The sun is watching.`), 1500);
+      this.ui.hudNote('SUN RĀ: "IMMORTAL QOMBAT."');
+      setTimeout(() => this.ui.hudNote(`WAVE 1 — ${foe.name}. The sun is watching.`), 1500);
     } else {
-      this.ui.banner(`WAVE ${q.wave + 1} — ${foe.name}. The sun is watching.`);
+      this.ui.hudNote(`WAVE ${q.wave + 1} — ${foe.name}. The sun is watching.`);
     }
     this.game.onMatchEnd = (won) => this._qombatEnd(won);
     const opts = {
@@ -1019,7 +1247,7 @@ export class ModeController {
       q.hp = qombatCarry(g.p1.hp, g.p1.maxHp);
       const rec = whGetRecords();
       if (q.wave > (rec.qombat || 0)) whSetRecord('qombat', q.wave);
-      this.ui.banner(`YOU EAT — WAVE ${q.wave}. +power. The sun feeds the survivor.`);
+      this.ui.hudNote(`YOU EAT — WAVE ${q.wave}. +power. The sun feeds the survivor.`);
       setTimeout(() => this._qombatNext(), 1400);
     } else {
       const rec = whGetRecords();
@@ -1048,7 +1276,7 @@ export class ModeController {
     const foeEntry = { ...foe, ai: scaledAi(foe, diff) };
     this._surgeFoe = foeEntry;
     this._badge(`SOUL SURGE GAUNTLET · ${blessing.soul.toUpperCase()} ${blessing.kanji} · FIGHT ${s.idx + 1}/9`);
-    this.ui.banner(blessing.line);
+    this.ui.hudNote(blessing.line);
     this.game.onMatchEnd = (won) => this._surgeEnd(won);
     this._surgePlayer = buffed;
     this.startFight(s.fighterId, null, { mode: 'surge', roundsToWin: 1, playerChar: buffed, enemyChar: foeEntry });
@@ -1095,7 +1323,7 @@ export class ModeController {
       'BOUT 3 — the Trader wears it better.',
     ];
     this._badge(`TRADER'S MIMIC · ${lines[t.bout].split(' — ')[0]}`);
-    this.ui.banner(lines[t.bout] + ' Nothing here is real, but the prices are.');
+    this.ui.hudNote(lines[t.bout] + ' Nothing here is real, but the prices are.');
     this.game.onMatchEnd = (won) => this._traderEnd(won);
     this._traderOpts = {
       mode: 'trader', roundsToWin: TRADER_CFG.roundsToWin,

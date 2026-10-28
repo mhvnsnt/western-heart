@@ -41,7 +41,8 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const OWNERSHIP = {
   "awapop": {
     "own": [
-      "awa-pop"
+      "awa-pop",
+      "awa-pop-attire2"
     ]
   },
   "baek-master-white": {
@@ -102,6 +103,7 @@ const OWNERSHIP = {
   "cyborgx": {
     "own": [
       "cape-jones",
+      "cape-jones-attire1",
       "cyborg-x"
     ]
   },
@@ -364,6 +366,7 @@ const OWNERSHIP = {
   "vainabel": {
     "own": [
       "vainabel",
+      "vainabel-attire1",
       "vainabel-attire2",
       "vainabel-attire3",
       "vainabel-attire4"
@@ -441,6 +444,7 @@ test('every fighter with a wired own model resolves to their OWN model on both r
   for (const f of FULL_ROSTER) {
     const o = OWNERSHIP[f.id];
     if (!o || !o.own) continue; // no own model wired: declared-base / fallback riders are covered below
+    if (f.modelPending) continue; // MODEL PENDING: no own model yet (ryuji since 6e3ba07c2 gave ryuji-rock to CORNERSTONE)
     const playerKey = selectedAttireModel(f);
     const enemyKey = f.model;
     if (playerKey === null && !o.own.some(k => !QUARANTINED.has(k))) continue; // material-gated out of select

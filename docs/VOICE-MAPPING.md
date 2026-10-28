@@ -32,7 +32,7 @@ session transcribes/verifies before anything is called final.
 | ZEN | `R_ZEN` / `R_ZEN2` incarnation voices | Direct soul-name match — ZEN soul |
 | GYOU | `R_GYOU` / `R_GYOU2` incarnation voices | Direct soul-name match — GYOU soul |
 | DEMONIO | `R_JIN` incarnation voice | JIN-soul voice → the Jin-Kazama-based demon soul (name + base + demonic nature) |
-| PANTERA | `F_KING` stage voices (9 clips) | The user's example mapping: King's lines for Pantera — Eastern Mind's KING character → the King-moveset panther wrestler |
+| PANTERA | Verified King voice bank, 52 clips (TekkenMods mod 1242 T2 grunts, preferred, + mod 681 Classic alternate) | King's voice bank for Pantera — the King-moveset panther wrestler. Rewired 2026-10-24: the 9 suspect F_KING stage-sound files were RENAMED, not deleted (owner order 2026-10-24 21:28 CDT), to game/assets/archive/pantera-stage-music-sfx/stage-music-sfx-<slot>.ogg (prior record: music/SFX, not voice) and replaced; see docs/pantera-voice-rewire-2026-10-24.md. Trigger assignment by duration rank only; clip content not verified by ear pending the owner voice session. |
 | ARMOR KING | `L_KING` stage voices (5 clips) | Eastern Mind's KING voice from the Tree of Life → the dark chained king |
 
 (RIN has no Eastern Mind voice file — he maps to Jin Kazama below.)
@@ -142,3 +142,15 @@ write a voice spec per fighter, generate, review via direct download links,
 `"final"`. Tier A `"teardown"` clips are replaced the same way. The
 `direction` + `why` fields in every manifest are the brief the voice
 sessions read.
+
+## Pantera rewire (2026-10-24)
+
+The 9 suspect F_KING stage-sound files for Pantera were renamed, not deleted (owner order 2026-10-24 21:28 CDT), to game/assets/archive/pantera-stage-music-sfx/ (prior
+project record: those clips were music/SFX, not King voice) and replaced
+with 52 verified King voice-bank clips: 26 T2 grunts (TekkenMods mod 1242,
+preferred, owner ear-checked 2026-10-24) + 26 Classic (TekkenMods mod 681,
+alternate), in game/assets/voices/pantera/, manifest
+game/data/voices/pantera.json. Full provenance, trigger rule, and variant
+ranges: docs/pantera-voice-rewire-2026-10-24.md. Clip content is NOT
+verified by ear; triggers are duration-rank only until the owner voice
+session confirms each clip.

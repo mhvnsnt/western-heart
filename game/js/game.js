@@ -8,7 +8,9 @@
    Demo mode: open with ?demo=1 and P1 is also CPU-driven —
    good for watching AI-vs-AI or unattended verification.
    ============================================================ */
-import { inReach, moveReach } from './combat-core.js';
+import { inReach, moveReach, attackPhase } from './combat-core.js';
+import { testSweptHit } from './hitbox.js';
+import { reactionFor, feelFor, emit as emitCombat } from './combat-systems.js';
 import * as THREE from 'three';
 import { Arena } from './scene.js';
 // LOADSPEED (2026-10-22): fighter.js (rigs, T3 wiring, movesets) is fight-only —
@@ -25,6 +27,8 @@ async function gungakuAI() {
   return _GungakuAI;
 }
 import { audio } from './audio.js';
+import { voice } from './voice.js';
+import { music } from './music.js';
 import { getStage } from './stages.js';
 import { applyFighterProfile } from './customization-consumer.js';
 /* Stage mechanics + rage/comeback lane (Tekken/DOA teardowns).
@@ -48,10 +52,75 @@ import { HitFX } from './hitfx.js';
 // LIGHTING RIG (worker 27): per-fighter character light rig — SFV/T7-style
 // character-vs-stage lighting separation + bible soul glow. Fail-silent.
 import { attachCharacterRig } from './lighting-rig.js';
+import { getRules } from './rules.js';
+// NINE SOULS REDESIGN (worker 83): soul-spirit toggle data.
+import { soulById } from './soul-spirit.js';
 
 const ROUND_TIME = 60;
 const ROUNDS_TO_WIN = 2;   // best of 3
 const FIXED_DT = 1 / 120;
+
+/* ============================================================
+   SOUL-SPIRIT TOGGLE — floating spirit placeholder (worker 83)
+   Owner directive 2026-10-22 ~23:02 CDT. The owner makes the
+   spirit versions themselves; this is the ATTACH POINT plus a
+   soft aura placeholder so the toggle reads in-game today.
+   Never an AI-generated stand-in: when the owner's spirit GLBs
+   land, swap the sprite for the real model loader and keep the
+   same attach contract (fighter.lean child, behind at
+   upper-body height, flips with facing). Fail-silent.
+   ============================================================ */
+let _soulGlowTex = null;
+function _soulGlowTexture() {
+  if (_soulGlowTex) return _soulGlowTex;
+  const c = document.createElement('canvas');
+  c.width = c.height = 128;
+  const g = c.getContext('2d');
+  const grad = g.createRadialGradient(64, 64, 4, 64, 64, 64);
+  grad.addColorStop(0, 'rgba(255,255,255,0.95)');
+  grad.addColorStop(0.35, 'rgba(255,255,255,0.45)');
+  grad.addColorStop(1, 'rgba(255,255,255,0)');
+  g.fillStyle = grad;
+  g.fillRect(0, 0, 128, 128);
+  _soulGlowTex = new THREE.CanvasTexture(c);
+  return _soulGlowTex;
+}
+
+/* `mark` is charEntry.soulSpirit = { soulId, matched } (or null). */
+function attachSoulSpirit(fighter, mark) {
+  try {
+    if (!fighter || !fighter.lean || !mark || !mark.soulId) return;
+    const soul = soulById(mark.soulId);
+    if (!soul) return;
+    const mat = new THREE.SpriteMaterial({
+      map: _soulGlowTexture(),
+      color: soul.color,
+      transparent: true,
+      opacity: mark.matched ? 0.85 : 0.5,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+    });
+    const sprite = new THREE.Sprite(mat);
+    const s = mark.matched ? 2.1 : 1.6; // vessel match burns brighter
+    sprite.scale.set(s, s, 1);
+    // lean-local: behind at upper-body height; lean flips with facing,
+    // so the spirit stays behind through side-switches.
+    sprite.position.set(0, 1.75, -0.95);
+    sprite.renderOrder = 5;
+    fighter.lean.add(sprite);
+    fighter._soulSpirit = { sprite, phase: Math.random() * Math.PI * 2, matched: !!mark.matched };
+  } catch (e) {
+    console.warn('[WH] soul-spirit attach failed (non-fatal):', e && e.message);
+  }
+}
+
+function updateSoulSpirit(fighter, dt) {
+  const ss = fighter && fighter._soulSpirit;
+  if (!ss || !ss.sprite) return;
+  ss.phase += dt * 2.2;
+  ss.sprite.position.y = 1.75 + Math.sin(ss.phase) * 0.12;
+  ss.sprite.material.opacity = (ss.matched ? 0.85 : 0.5) + Math.sin(ss.phase * 1.7) * 0.08;
+}
 
 export class Game {
   constructor(canvas, input, ui) {
@@ -105,6 +174,12 @@ export class Game {
     /* Injected module APIs (from lazy.js, set in startMatch). */
     this._stageFx = null;
     this._msApi = null;
+    /* ---- HEART AND MIND WITHIN brawler (worker 20, 2026-10-22) ----
+       When set, the brawler owns the simulation: _loop drives
+       brawler.frame(dt) instead of the versus fixed-step. The arena's
+       camOverride (scene.js) gives it the third-person camera. Null =
+       classic versus flow. */
+    this.brawler = null;
 
     this._loop = this._loop.bind(this);
     requestAnimationFrame(this._loop);
@@ -124,6 +199,12 @@ export class Game {
     const { Fighter, setArenaLimit, setGroundY } = await lazy.fighter();
     // Modes lane: per-match round target (default = classic best-of-3).
     this.roundsToWin = opts.roundsToWin || ROUNDS_TO_WIN;
+    // Versus SETUP / GAME OPTION: per-match round time (0 = INFINITY)
+    // and guard damage. Defaults come from the rules store when the
+    // mode doesn't dictate them.
+    const _rules = getRules();
+    this.roundTime = opts.roundTime != null ? opts.roundTime : _rules.roundTime;
+    this.guardDamage = opts.guardDamage != null ? opts.guardDamage : _rules.guardDamage;
 
     // Lane 4: stage selection drives arena, collision bounds, spawns.
     const stage = getStage(stageId || 'shrine');
@@ -173,6 +254,15 @@ export class Game {
     // luminous sources). No-op-safe; never blocks a match.
     attachCharacterRig(this.p1, stage);
     attachCharacterRig(this.p2, stage);
+    // SOUL-SPIRIT TOGGLE (owner directive 2026-10-22 ~23:02 CDT): the
+    // floating spirit behind the fighter. PLACEHOLDER RENDER ONLY — the
+    // owner makes the spirit versions themselves; this soft aura marks
+    // the attach point (fighter.lean, behind at upper-body height) until
+    // their models land. Never ship an AI-generated stand-in as the
+    // spirit: when the owner's GLBs arrive, swap _makeSoulSpiritSprite
+    // for the real model loader and keep the same attach contract.
+    attachSoulSpirit(this.p1, playerChar.soulSpirit);
+    attachSoulSpirit(this.p2, enemyChar.soulSpirit);
     // FIGHT LAB · GUNGAKU (軍楽): the programmable dummy replaces the
     // passive AI when the mode requests it (enemyChar.ai.gungaku).
     if (enemyChar.ai && enemyChar.ai.gungaku) {
@@ -184,11 +274,23 @@ export class Game {
     this.soul = new SoulSystems(this); loadVariants(); // SOUL-SYSTEMS.md
     this.ai1 = this.demo ? new AIController(this.p1, personalityForChar(playerChar)) : null;
 
+    // TTT2 TAG BATTLE (worker 24): benched partners + tag mechanics.
+    // game.p1/game.p2 always point at the ACTIVE fighters; TagMatch swaps
+    // which Fighter objects those references (and the scene) point at.
+    this.tagMatch = null;
+    if (opts.tagTeamEntries && opts.tagTeamEntries.p1.length === 2 && opts.tagTeamEntries.p2.length === 2) {
+      try {
+        const { TagMatch } = await import('./team-battle.js');
+        this.tagMatch = new TagMatch(this, opts.tagTeamEntries);
+        await this.tagMatch.build();
+      } catch (e) { console.warn('[WH] tag battle setup failed:', e?.message || e); this.tagMatch = null; }
+    }
+
     this.wins = { p1: 0, p2: 0 };
     this.round = 1;
     this.ui.setNames(playerChar.name, enemyChar.name);
     if (this.ui.setStageName) this.ui.setStageName(stage.name);
-    this.ui.setRounds(this.wins);
+    this.ui.setRounds(this.wins, this.roundsToWin);
     this.matchStats = { attacks: { punch: 0, kick: 0, grab: 0, surge: 0, dodge: 0 }, blockTime: 0, time: 0, dmgDealt: 0, dmgTaken: 0 };
     this.running = true;
     this.paused = false;
@@ -222,10 +324,13 @@ export class Game {
     if (this.p2) { this.arena.scene.remove(this.p2.root); this.p2 = null; }
     this.ai = null;
     this.ai1 = null;
+    // A live brawler never survives a state reset — stop it first so its
+    // fighters, camera override and HUD are torn down cleanly.
+    if (this.brawler) { const b = this.brawler; this.brawler = null; try { b.stop(); } catch (e) { /* already torn down */ } }
     // Reset all match state
     this.wins = { p1: 0, p2: 0 };
     this.round = 1;
-    this.timer = ROUND_TIME;
+    this.timer = this.roundTime === 0 ? Infinity : (this.roundTime || ROUND_TIME);
     this.roundState = 'idle';
     this._roundLockT = 0;
     this._hitStop = 0;
@@ -237,8 +342,8 @@ export class Game {
     // Reset input (no stuck keys/buttons from previous match)
     if (this.input) this.input.reset();
     // Reset HUD
-    this.ui.setRounds(this.wins);
-    this.ui.setTimer(ROUND_TIME);
+    this.ui.setRounds(this.wins, this.roundsToWin);
+    this.ui.setTimer(this.roundTime === 0 ? '∞' : (this.roundTime || ROUND_TIME));
     // Stage-break lane: restore bounds/ground when leaving or restarting.
     if (this.stageBreaks) this.stageBreaks.reset();
     if (this.rage) this.rage.resetRound();
@@ -252,7 +357,7 @@ export class Game {
   }
 
   _startRound() {
-    this.timer = ROUND_TIME;
+    this.timer = this.roundTime === 0 ? Infinity : (this.roundTime || ROUND_TIME);
     this.p1.hp = this.p1.maxHp; this.p2.hp = this.p2.maxHp;
     this.p1.meter = this.p2.meter = 0;
     if (this.rage) this.rage.resetRound();
@@ -279,13 +384,25 @@ export class Game {
     this.input.enable(false);
 
     this.roundState = 'intro';
+    // MUSIC (2026-10-24): round-start intensity reset (Tekken rule) +
+    // T7 match-point variant: when either fighter is one round from
+    // winning, the deciding round opens on the Final Round variant track.
+    // (Best-of-3, so round 1 can never be match-point except a 1-round match.)
+    const _rtw = this.roundsToWin || ROUNDS_TO_WIN;
+    this._musicFinal = this.wins.p1 >= _rtw - 1 || this.wins.p2 >= _rtw - 1;
+    this._musicLowHp = false;
+    music.setIntensity(0.55);
+    if (this._musicFinal) music.playFinalRound();
     this._roundLockT = 1.6;
     this.ui.banner(`ROUND ${this.round}`);
     this.ui.updateHP(this.p1, this.p2);
     this.ui.updateMeter(this.p1, this.p2);
+    // TTT2: tag-match round reset (re-park benched partners, clear rage).
+    if (this.tagMatch) this.tagMatch.onRoundStart();
     setTimeout(() => {
       if (this.roundState !== 'intro') return;
       this.ui.banner('FIGHT!');
+      music.setIntensity(this._musicFinal ? 0.85 : 0.7);
       audio.bell();
       this.roundState = 'fight';
       this.input.enable(true);
@@ -317,10 +434,23 @@ export class Game {
       }
     }
 
+    // HEART AND MIND WITHIN brawler: the mode owns the sim (its own
+    // fixed-step + hitstop live in brawler.frame). Versus stays untouched.
+    if (this.brawler && !this.paused) {
+      try {
+        this.brawler.frame(frameDt);
+      } catch (e) {
+        console.error('[WH] brawler frame failed:', e);
+        this.brawler = null;
+      }
+    }
     // Tekken hitstop freezes EVERYTHING (hitfx 2026-10-22): the effect stack
     // gets dt=0 while the sim is frozen, so the spark holds then bursts.
     this.hitfx.update(this._hitStop > 0 ? 0 : frameDt);
-    this.arena.update(frameDt, this.p1, this.p2);
+    this.arena.update(frameDt, this.p1, this.p2,
+      // fight camera follows the fighting level: floor/balcony breaks
+      // drop stageBreaks.groundY below 0 (owner 2026-10-25).
+      this.stageBreaks ? this.stageBreaks.groundY : 0);
     // X-ray: camera + anatomy-layer overlay, AFTER the fight camera so the
     // zoom wins for this frame. Rendering only — no animation clips.
     if (this.xray) this.xray.update(realDt);
@@ -367,8 +497,10 @@ export class Game {
         this._p1BlockWas = blockNow;
         this.p1.tryCrouch(inp.down && !inp.up); // hold down = crouch; release = WS. window
         // Feed facing-relative direction into the Tekken input buffer
-        // (drives motion specials qcf/f,F and directional attacks f+1)
-        this.p1.tekken.noteDirection(stick);
+        // (drives motion specials qcf/f,F and directional attacks f+1).
+        // Pass the tick length: the buffer's windows are T3 frames of 1/60 s and it
+        // weighs each entry by dt, so they stay real-time at FIXED_DT = 1/120 (or any rate).
+        this.p1.tekken.noteDirection(stick, dt);
         if (ms && this.p1.isBlocking()) ms.blockTime += dt;
         if (ms) ms.time += dt;
         // Stream 6: while caught in a throw, limb inputs are break attempts.
@@ -407,7 +539,6 @@ export class Game {
               rec('surge');
               audio.soulSurge(this.p1.char.id);
               this.ui.surgeFlash(this.p1.char.surge?.color ?? this.p1.char.colors.trim, this.p1.char.surge?.accent ?? 0xffffff);
-              this.ui.surgeName(this.p1.char.surge?.name ?? 'SOUL SURGE');
             }
           }
           else if (act === 'dodge') { if (this.p1.tryDodge()) rec('dodge'); }
@@ -418,6 +549,8 @@ export class Game {
           else if (act === 'transform-down') {
             if (this.p1.tryTransform('down')) { audio.soulSurge(this.p1.char.id); rec('transform-down'); }
           }
+          // TTT2: TAG button / T key — swap the active fighter with the benched partner.
+          else if (act === 'tag') { if (this.tagMatch) this.tagMatch.requestTag('p1', 'manual'); }
           } // end for (const act of whQueue) — fighter-depth wire
         }
       }
@@ -432,10 +565,15 @@ export class Game {
       // --- Advance fighters ---
       this.p1.update(dt, this.p2);
       this.p2.update(dt, this.p1);
+      // TTT2: red-health regen, rage watch, CPU auto-tag, tag-assault timer.
+      if (this.tagMatch) this.tagMatch.onUpdate(dt);
 
       // --- Stream 6: throw-lock resolution (break window expired) ---
       for (const atk of [this.p1, this.p2]) {
-        if (atk.state === 'throwing' && atk.lockT <= 0 && atk.lockMove) {
+        // Paired throws are NOT resolved here: their break window
+        // is the first frames of the pair clips and fighter.js
+        // _tickState advances them to throwExec/thrownExec.
+        if (atk.state === 'throwing' && !atk._throwPair && atk.lockT <= 0 && atk.lockMove) {
           const def = atk === this.p1 ? this.p2 : this.p1;
           const hpBefore = def.hp;
           const result = atk.completeThrow();
@@ -446,7 +584,7 @@ export class Game {
           }
           this.ui.throwBreakPrompt(false);
           if (result === 'ko') {
-            audio.ko(); audio.grunt(def.isPlayer ? 1.1 : 0.85);
+            audio.ko(); audio.grunt(def.isPlayer ? 1.1 : 0.85); voice.play(def.char && def.char.id, 'ko');
             this.arena.shake(0.6 * this.feel.shake, 0.45 * this.feel.shake);
             this._hitStop = 0.18 * this.feel.hitstop;
             this.hitfx.spawn('ko', def.root.position.x, 1.2, def.root.position.z,
@@ -455,7 +593,7 @@ export class Game {
             // over hitfx.spawn and would double-spawn the KO burst above).
             if (this.rage) this.rage.onHitKO(atk, def);
           } else if (result && result !== 'dodge') {
-            audio.grab(); audio.grunt(def.isPlayer ? 1.05 : 0.9);
+            audio.grab(); audio.grunt(def.isPlayer ? 1.05 : 0.9); voice.play(def.char && def.char.id, 'hit');
             this.arena.shake(0.45 * this.feel.shake, 0.28 * this.feel.shake);
             this._hitStop = 0.1 * this.feel.hitstop;
             this.hitfx.spawn('grab', def.root.position.x, 1.2, def.root.position.z,
@@ -471,6 +609,11 @@ export class Game {
       this._resolveCombat(this.p1, this.p2);
       this._resolveCombat(this.p2, this.p1);
       if (this.rage) { this.rage.update(this.p1); this.rage.update(this.p2); }
+      // MUSIC (2026-10-24): low-HP intensity lift, edge-triggered so the
+      // ramp is not re-scheduled every frame (Tekken final-stretch lift).
+      const _lowHp = (this.p1.hp < this.p1.maxHp * 0.25) || (this.p2.hp < this.p2.maxHp * 0.25);
+      if (_lowHp && !this._musicLowHp) { this._musicLowHp = true; music.setIntensity(1.0); }
+      else if (!_lowHp && this._musicLowHp) { this._musicLowHp = false; music.setIntensity(this._musicFinal ? 0.85 : 0.7); }
       if (this.soulurge) { this.soulurge.update(this.p1, dt); this.soulurge.update(this.p2, dt); }
 
       // FIGHTER DEPTH (worker 34): per-frame systems — kindle timers,
@@ -490,6 +633,9 @@ export class Game {
       this.p2.update(dt, this.p1);
       if (this._roundLockT <= 0) this._afterRound();
     }
+    // SOUL-SPIRIT TOGGLE (worker 83): drift/bob the placeholder aura.
+    updateSoulSpirit(this.p1, dt);
+    updateSoulSpirit(this.p2, dt);
   }
 
   /* Facing-relative Tekken direction from input state: f/b/u/d + diagonals. */
@@ -573,18 +719,28 @@ export class Game {
       }
     }
     const hurts = defender.getHurtboxes();
-    // Contact (tekken-command-interpreter lane): frame-data reach is the
-    // authority (root spacing vs the move's range class, same line), the
-    // animated bone sphere is a secondary path. Bone-only contact whiffed
-    // whenever a clip didn't extend the limb or a rig was in T-pose.
-    const spheres = hurts.some((hu) => {
-      const dx = hb.x - hu.x, dy = hb.y - hu.y, dz = hb.z - hu.z, rr = hb.r + hu.r;
-      return dx * dx + dy * dy + dz * dz <= rr * rr;
-    });
+    // Contact (HITBOX LANE 2026-10-24): TWO paths, either connects —
+    // (1) GEOMETRY: the swept weapon segment (limb segment + travel,
+    // hitbox.js) against all 14 hurt capsules. This is the path the
+    // old code lacked: it tested one sphere against hurts[0] only.
+    // (2) RANGE fallback (tekken-command-interpreter lane): root
+    // spacing vs the move's range class, same line. Kept for
+    // fighters whose animation does not extend the limb (the
+    // documented T-pose case) and for mids against a croucher,
+    // whose lowered torso the geometry may only graze. Geometry
+    // can only ADD hits the fallback missed, never remove one.
+    // The hb.reach / moveReach ratio preserves the advancing-input
+    // bonus that getHitbox already folded into hb.reach (moveReach
+    // with name '' would otherwise drop it). Posture / hit-level
+    // gating still happens in canBeHitBy below, for both paths.
+    const geo = testSweptHit(hb, hurts);
     const ap = attacker.root.position, dp = defender.root.position;
     const reachHit = hurts.length > 0 && hb.reach > 0 && (dp.y - ap.y) < 1.6 &&
       inReach(ap.x, ap.z, attacker.facing, dp.x, dp.z, hb.move, '', hb.reach / Math.max(0.01, moveReach(hb.move, '')));
-    for (const hu of ((spheres || reachHit) ? hurts.slice(0, 1) : [])) {
+    if (geo.hit || reachHit) {
+      const hu = geo.segment || hurts[0];
+      attacker._lastHitSegment = hu ? hu.id : null;
+      defender._lastHitSegment = hu ? hu.id : null;
       {
         // Decoded T3 posture rule: highs pass over crouchers, lows under jumpers,
         // standing throws whiff crouching fighters (fighter.js canBeHitBy).
@@ -595,8 +751,13 @@ export class Game {
         if (hb.move.isGrab && defender.onGround && defender.state !== 'thrown' &&
             defender.state !== 'throwing') {
           defender.startThrowLock(hb.move, attacker);
-          attacker.startThrowing(defender);
-          this.ui.throwBreakPrompt(defender.isPlayer, hb.move.throw_break || '1');
+          // Paired throw (startThrowLock bound the file pair):
+          // the attacker is already in 'throwing' with lockMove
+          // null — do NOT call startThrowing, which would
+          // overwrite the pair with the legacy lock. Legacy path
+          // only: startThrowing sets the 0.3 s break lock.
+          if (!attacker._throwPair) attacker.startThrowing(defender);
+          this.ui.throwBreakPrompt(defender.isPlayer, defender.throwBreakInput || hb.move.throw_break || '1');
           audio.grab();
           this.arena.shake(0.3 * this.feel.shake, 0.2 * this.feel.shake);
           this._hitStop = 0.06 * this.feel.hitstop;
@@ -627,7 +788,7 @@ export class Game {
           this._hitStop = 0.05 * this.feel.hitstop;
           this._spawnImpact(hb.x, hb.y, hb.z, 0xbfd4ff, 0.7);
         } else if (result === 'ko') {
-          audio.ko(); audio.grunt(defender.isPlayer ? 1.1 : 0.85);
+          audio.ko(); audio.grunt(defender.isPlayer ? 1.1 : 0.85); voice.play(defender.char && defender.char.id, 'ko');
           this.arena.shake(0.6 * this.feel.shake, 0.45 * this.feel.shake);
           this._hitStop = 0.18 * this.feel.hitstop;
           this.hitfx.spawn('ko', hb.x, hb.y, hb.z, { dirX: Math.sign(defender.root.position.x - attacker.root.position.x) || 1 });
@@ -646,12 +807,23 @@ export class Game {
           else if (attacker.attackName === 'grab') audio.grab();
           else if (isSurge) { /* surge sound played on startup */ }
           else audio.punch();
-          audio.grunt(defender.isPlayer ? 1.05 : 0.9);
+          audio.grunt(defender.isPlayer ? 1.05 : 0.9); voice.play(defender.char && defender.char.id, 'hit');
           // Tekken-tiered hitstop + shake: light < heavy < counter.
           this.arena.shake(
             (isCounter ? 0.5 : isGrab ? 0.45 : isHeavy ? 0.4 : 0.22) * this.feel.shake,
             (isCounter ? 0.3 : isGrab ? 0.28 : 0.2) * this.feel.shake);
           this._hitStop = (isCounter ? 0.14 : isGrab ? 0.1 : isHeavy ? 0.11 : 0.08) * this.feel.hitstop;
+          // pt217u: Tekken reaction table (stagger/crumple/launch/screw/wall splat/floor bound/
+          // knockdown, counter-hit) -> defender._reaction + spark/sound hook bus (combat-systems.js).
+          try {
+            const reaction = reactionFor(hb.move, { counter: !!isCounter, airborne: !defender.onGround, crouching: defender.state === 'crouch',
+              nearWall: !!(this.arena && this.arena.nearWall && this.arena.nearWall(defender)), juggleHits: attacker.combo || 0 });
+            const fx = feelFor(reaction, { counter: !!isCounter });
+            this._hitStop = Math.max(this._hitStop, fx.stopSec * this.feel.hitstop);
+            defender._reaction = reaction;
+            if (hb.move.purgeRage) { defender._rageUsed = true; if (defender.setRageAura) defender.setRageAura(false); } // 霊放 purifies rage
+            emitCombat({ type: 'hit', reaction, counter: !!isCounter, spark: fx.spark, sound: fx.sound, attacker: attacker.char && attacker.char.id, move: attacker.attackName });
+          } catch (e) { /* reaction layer is advisory; never break a hit */ }
           // Tekken hit-condition presentation (hitfx.js): gold spark on hit,
           // red-orange on counter, ring on heavies, character surge color kept.
           const fxType = isSurge ? 'surge' : isCounter ? 'counter' : isGrab ? 'grab' : isHeavy ? 'heavy' : 'hit';
@@ -693,12 +865,18 @@ export class Game {
   surgePresentation(fighter) {
     audio.soulSurge(fighter.char.id);
     this.ui.surgeFlash(fighter.char.surge?.color ?? fighter.char.colors.trim, fighter.char.surge?.accent ?? 0xffffff);
-    this.ui.surgeName(fighter.char.surge?.name ?? 'SOUL SURGE');
   }
 
   /* ---------------- Round flow ---------------- */
   _timeOut() {
-    if (this.p1.hp > this.p2.hp) this.p2.hp = 0;
+    // TTT2 tag: timeout compares TOTAL team HP (active + benched), not
+    // just the fighters in the ring.
+    if (this.tagMatch) {
+      const t1 = this.tagMatch.teamHp('p1'), t2 = this.tagMatch.teamHp('p2');
+      if (t1 > t2) this.p2.hp = 0; else if (t2 > t1) this.p1.hp = 0;
+      else { this.p1.hp = this.p2.hp = 0; }
+    }
+    else if (this.p1.hp > this.p2.hp) this.p2.hp = 0;
     else if (this.p2.hp > this.p1.hp) this.p1.hp = 0;
     else { this.p1.hp = this.p2.hp = 0; }
     this._endRound();
@@ -707,6 +885,7 @@ export class Game {
   _endRound() {
     if (this.roundState !== 'fight') return;
     this.roundState = 'over';
+    music.setIntensity(0.3); // MUSIC: KO / time-up intensity drop (Tekken rule)
     this._roundLockT = 3.0;
     this.input.enable(false);
 
@@ -715,7 +894,7 @@ export class Game {
     else if (p2Down && !p1Down) { this.wins.p1++; this.p2._knockout(1); this.p1.victory(); this.ui.banner('K.O.'); }
     else { this.wins.p1++; this.wins.p2++; this.ui.banner('DOUBLE K.O.'); }
 
-    this.ui.setRounds(this.wins);
+    this.ui.setRounds(this.wins, this.roundsToWin);
     this.ui.updateHP(this.p1, this.p2);
     if (this.soul) this.soul.onRoundEnd(p1Down, p2Down); // 試練の封 Trial's Seal
   }
@@ -725,9 +904,9 @@ export class Game {
       // TRAINING (modes lane): endless round vs the passive dummy.
       // The round resets instead of the match ending; the dummy is restored.
       this.wins = { p1: 0, p2: 0 };
-      this.ui.setRounds(this.wins);
+      this.ui.setRounds(this.wins, this.roundsToWin);
       this.round = 1;
-      this.ui.banner('RESET — DUMMY RESTORED');
+      this.ui.hudNote('RESET — DUMMY RESTORED');
       this._startRound();
       return;
     }
