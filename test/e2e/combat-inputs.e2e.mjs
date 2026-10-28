@@ -69,7 +69,8 @@ for (const id of FIGHTERS) {
     const s = seq(fr);
     ok(s[0] === n, `${id} ${n}: fired ${JSON.stringify(s)}`);
   }
-  for (const str of (ms.strings || [])) {
+  for (const raw of (ms.strings || [])) {
+    const str = typeof raw === 'string' ? { input: raw } : raw; // some movesets list strings as bare notation
     if (/^[A-Z_]+\./.test(str.input)) { console.log(`  skip ${id} string ${str.input}: stance-entry string (resolver test covers it)`); continue; }
     const hits = str.hits || str.input.split(/[,~]/);
     let fr = [], bad = hits.find((h) => !/^(?:[udfbn/]+\+)?[1234](?:\+[1234])*$/.test(h)) || null; // check before pressing anything
