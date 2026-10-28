@@ -683,6 +683,27 @@ they are made — this file is a living archive, not a one-time dump.*
 *Entry compiled 2026-10-24 by the overnight pipeline from the 2026-10-24 daily note (verified-extraction 03:25 UTC).*
 ---
 
+## 2026-10-25 — Get-it-all-done session; play-verify run 18 proves a real fight
+
+- **Get-it-all-done session complete (2026-10-25 ~17:28 CDT).** Coordinator lane finished all 12 lanes; every claimed merge verified via gh by the main agent: #1137 (`c6359461`), #988 (`c139d730` — 630 restored moves, real reconcile), #1138 (`73054a0b`), #1142 (`567b62d5`), #1144 (`c6e5b899`), #1147 (`8bf9f469`). Main tip after the session `0165c362` (#1148 TTT2 data000 XML join).
+- **Play-verify run 18 (Pantera vs Demonio, Shrine of the Blade).** Screenshots `18-fight-3.png` and `18-fight-6.png` (`~/workspace/_playverify-20261025/`) viewed with own eyes: boot works, select works, the fight is real — timer counting 59→58, HP dropping (100 → 51 → 28), attacks landing, Demonio mid-attack with energy effect. No T-pose, no sliding, no select-persist, no freeze.
+- **Warts (do NOT close the owner's Oct 21 unplayable verdict):** the fight goes live +126s after stage confirm (2-minute load); 4 missing assets (404s: `roster/demonio/anatomy/anatomy-layers.json`, `game-src/js/intro-interactions.js`, `customization/parts/no-mercy/glb/body_parts/model_1171.glb`, `customization/eye-library/eye-classic-original.png`); the FREE CAMERA box overlaps the top-right meter.
+- **Follow-up plan (documented, not yet done):** instrument first (`loadperf.js` + `?loadreport`), kill the 404s via `asset-manifest.json`, KTX2 via `gltfpack -tc`, preload the next fight, Workbox service worker.
+
+*Entry compiled 2026-10-28 by the overnight pipeline from the 2026-10-25/26 daily notes (verified-extraction 01:20 UTC).*
+---
+
+## 2026-10-26 — Deploy split decided: Pages shell + GLBs on R2
+
+- **Owner decision (2026-10-26 ~19:10 CDT, tapped in the disc-cleaner side chat):** hosting splits — GitHub Pages shell + GLBs on Cloudflare R2. Nothing is cut from the game, only from the deploy set (5,969 MB vs the 1 GB Pages cap). R2 signup stays owner-only (card rules). Same decision: merge-queue confirmations scoped to active lanes only ("count only active lanes").
+- **Decision doc on main:** `docs/DEPLOY-SPLIT-2026-10-26.md` (WH #1151, landed 2026-10-26).
+- **Wiring landed:** WH #1152, merged 2026-10-27 02:10Z (merge `113cc24a`): shell-only deploy mode in `tools/deploy/build_pages.py`; loader asset-base in `game/js/asset-config.js` (remoteBase placeholder `__WH_R2_PUBLIC_URL__`, fallback order R2 → local → jsDelivr, 4 bundled fighters stay local); R2 upload manifest `tools/deploy/r2-upload-manifest.json` (2,242 models / 5,329.7 MB, fits the R2 free 10 GB tier). Shell measured 5,395 files / 739.5 MB — under the 1 GB Pages cap.
+- **Blocked on the owner:** Cloudflare account, bucket, public URL, CORS. Netlify free credits spent (300 burned in under 3 hrs); ~30 operational credits left; live site frozen on the Oct 24 build. The $9/mo Netlify research is now MOOT unless the R2 route fails.
+- **Itch follow-up:** the owner tapped "Start the itch-trim lane" 2026-10-27 ~09:35 CDT; archived in the 2026-10-27 entry below (WH #1154/#1155).
+
+*Entry compiled 2026-10-28 by the overnight pipeline from the 2026-10-25/26 daily notes (verified-extraction 01:20 UTC).*
+---
+
 ## 2026-10-27 — Itch-trim lane: `--itch` build fits itch.io caps, ZIP stored + verified
 
 - **Why:** the deploy split (PR #1152) put the Pages shell at 5,395 files / 739.5 MB — over itch.io's HTML5 caps (<=1,000 files, <=500 MB extracted, <=200 MB per file) on both axes. Owner tapped "Start the itch-trim lane" 2026-10-27 ~09:35 CDT: make the same web game fit itch.io so it can ship as a playable itch project with donations on.
