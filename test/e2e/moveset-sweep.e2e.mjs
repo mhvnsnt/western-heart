@@ -1,0 +1,59 @@
+// Full moveset sweep (Grok, 2026-10-28). Serve the repo root on $WH_URL.
+// Run: node test/e2e/moveset-sweep.e2e.mjs <outDir> [fighter ...]
+// For every move in each fighter's moveset file, the sweep types the move's own input on
+// the keyboard into a live fight (sim stepped by hand at 60 Hz, page clock = sim clock),
+// then checks: (1) the game fired THAT move (attackName resolves to the move's key),
+// (2) every hit of a string fired in order, (3) a damaging move connected with the
+// opponent (hit, block, launch, knockdown or throw), (4) throws reach thrower+victim exec
+// states with clips, (5) launchers juggle (a follow-up hits the airborne opponent).
+// Output: <outDir>/<fighter>.json per fighter (one row per move) + console summary.
+import { chromium } from 'playwright';
+import fs from 'node:fs';
+const BASE = process.env.WH_URL || 'http://127.0.0.1:8811';
+const OUT = process.argv[2] || 'moveset-sweep-out';
+const OPP = process.env.WH_OPP || 'kronos';
+const LIMIT = +(process.env.WH_SWEEP_LIMIT || 0); // dev: moves per fighter
+fs.mkdirSync(OUT, { recursive: true });
+const idx = JSON.parse(fs.readFileSync(new URL('../../game/assets/movesets/index.json', import.meta.url), 'utf8'));
+let FIGHTERS = process.argv.slice(3);
+if (!FIGHTERS.length) FIGHTERS = Object.keys(idx.fighters);
+const b = await chromium.launch({ executablePath: process.env.CHROME || undefined,
+  args: ['--use-gl=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
+const PAGE_LIB = fs.readFileSync(new URL('./moveset-sweep.page.js', import.meta.url), 'utf8');
+
+async function fight(P1) {
+  const p = await b.newPage({ viewport: { width: 960, height: 540 } });
+  p.errs = []; p.on('pageerror', (e) => p.errs.push(String(e).slice(0, 300)));
+  await p.goto(BASE + '/game/index.html');
+  await p.waitForFunction(() => window.__startFight, null, { timeout: 120000 });
+  await p.evaluate(([a, c]) => window.__startFight(a, c, {}), [P1, OPP]);
+  await p.waitForFunction(() => { const g = window.__game; return g && g.roundState === 'fight' && g.p1 && g.p2; }, null, { timeout: 400000, polling: 500 });
+  await p.evaluate(PAGE_LIB);
+  await p.waitForFunction(() => window.__sweepReady, null, { timeout: 60000 });
+  return p;
+}
+
+for (const id of FIGHTERS) {
+  const t0 = Date.now();
+  let p;
+  try { p = await fight(id); } catch (e) { fs.writeFileSync(`${OUT}/${id}.json`, JSON.stringify({ fighter: id, error: 'fight did not load: ' + String(e).slice(0, 200) })); console.log(`== ${id}: LOAD FAIL`); continue; }
+  const got = await p.evaluate(() => window.__game.p1.char.id);
+  if (got !== id) { fs.writeFileSync(`${OUT}/${id}.json`, JSON.stringify({ fighter: id, error: `game loaded '${got}'` })); console.log(`== ${id}: loaded ${got}`); await p.close(); continue; }
+  let list = await p.evaluate(() => window.__moveList());
+  if (LIMIT) list = list.slice(0, LIMIT);
+  const rows = [];
+  for (let i = 0; i < list.length; i += 20) {
+    const part = await p.evaluate((chunk) => chunk.map((m) => { try {
+      return Object.assign(window.__sweepMove(m), { slotted: m.slotted, owner: m.owner });
+    } catch (e) { return { key: m.key, input: m.input, ok: false, why: 'harness error ' + String(e).slice(0, 160) }; } }), list.slice(i, i + 20));
+    rows.push(...part);
+  }
+  const jug = [];
+  for (const r of rows.filter((r) => r.ok && r.launch && !r.isThrow)) jug.push(await p.evaluate((r) => { try { return window.__juggle(r); } catch (e) { return { key: r.key, ok: false, why: String(e).slice(0, 100) }; } }, r));
+  const sum = { fighter: id, moves: rows.length, pass: rows.filter((r) => r.ok === true).length, fail: rows.filter((r) => r.ok === false).length, na: rows.filter((r) => r.ok == null).length,
+    juggles: jug.filter((j) => j.ok != null).length, jugglePass: jug.filter((j) => j.ok === true).length, pageErrors: p.errs.slice(0, 5), secs: Math.round((Date.now() - t0) / 1000) };
+  fs.writeFileSync(`${OUT}/${id}.json`, JSON.stringify({ ...sum, rows, juggle: jug }, null, 1));
+  console.log(`== ${id}: ${sum.pass}/${sum.moves} pass, ${sum.fail} fail, ${sum.na} n/a, juggles ${sum.jugglePass}/${sum.juggles}, ${sum.secs}s`);
+  await p.close();
+}
+await b.close();
