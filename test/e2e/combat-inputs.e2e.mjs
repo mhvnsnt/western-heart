@@ -63,13 +63,14 @@ for (const id of FIGHTERS) {
   const p = await fight(id);
   const got = await p.evaluate(() => window.__game.p1.char.id);
   console.log(`== ${id} (loaded ${got}) vs ${OPP}`);
+  if (got !== id) { ok(false, `${id}: game loaded '${got}' instead (not a playable roster id); its moveset can't be checked`); await p.close(); continue; }
   for (const n of ['1', '2', '3', '4', '1+2', '3+4']) {
     const fr = await press(p, n, 1.6, true, 60);
     const s = seq(fr);
     ok(s[0] === n, `${id} ${n}: fired ${JSON.stringify(s)}`);
   }
   for (const str of (ms.strings || [])) {
-    if (/^[A-Z]+\./.test(str.input)) { console.log(`  skip ${id} string ${str.input}: stance-entry string (resolver test covers it)`); continue; }
+    if (/^[A-Z_]+\./.test(str.input)) { console.log(`  skip ${id} string ${str.input}: stance-entry string (resolver test covers it)`); continue; }
     const hits = str.hits || str.input.split(/[,~]/);
     let fr = [], bad = hits.find((h) => !/^(?:[udfbn/]+\+)?[1234](?:\+[1234])*$/.test(h)) || null; // check before pressing anything
     for (let i = 0; i < hits.length && !bad; i++) {
@@ -104,12 +105,16 @@ for (const id of FIGHTERS) {
     ok(far < 2.2, `${id} grab ${g}: victim flung ${far} m from thrower during thrownExec`);
     console.log(`  grab ${g}: thrownExec ${ex.length} frames, max victim distance ${far} m`);
     console.log(`  grab ${g}: thrower clips ${JSON.stringify(tc)} victim clips ${JSON.stringify(vc)}`);
-    if (g === '1+3') { // frame sheet: four moments of the throw (camera stepped with the sim)
+    if (g === '1+3') { // frame sheet: before + four moments of the throw
       await p.evaluate(() => window.__reset(1.0));
       for (const [i, n] of [[0, 0], [1, 4], [2, 20], [3, 30], [4, 40]]) {
-        await p.evaluate((n) => { const g = window.__game; if (n === 4) { window.__key(['1', '3']); window.__step(1); window.__key(['1', '3'], 'keyup'); } window.__step(n); for (let k = 0; k < 30; k++) g.arena.update(1 / 60, g.p1, g.p2, 0); g.arena.render(); }, n);
+        await p.evaluate((n) => { const g = window.__game; if (n === 4) { window.__key(['1', '3']); window.__step(1); window.__key(['1', '3'], 'keyup'); } window.__step(n);
+          // proof camera: free-camera gate on so the RAF loop leaves it alone, framed on both fighters
+          const a = g.arena, c = a.camera, m = (g.p1.root.position.x + g.p2.root.position.x) / 2; a.setFreeCamera(true);
+          c.position.set(m, 2.9, 3.6); c.lookAt(m, 0.9, 0); c.updateMatrixWorld(); a.render(); }, n);
         await p.screenshot({ path: `${SHOTS}/${id}-grab-${i}.png` });
       }
+      await p.evaluate(() => window.__game.arena.setFreeCamera(false));
     }
   }
   { // stick-stuck-down: hold the touch stick down past the 200 ms tap/hold timer (real
