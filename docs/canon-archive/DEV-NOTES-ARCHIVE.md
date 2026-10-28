@@ -681,3 +681,18 @@ they are made — this file is a living archive, not a one-time dump.*
 - **Moveset wave 3 on main:** Gashadokuro (530 moves built from the Kuma bank, every move verified identical to source except the names re-prefixed), Aotsuki (530 moves, honestly flagged in-file as proxy since the Tekken 3 teardown has no separate Panda bank), Silvertongue (508 moves from Lili's file including her signatures, re-owned as hers) — plus the Pantera k-NN skin-weight fix and the #841 versus-setup submenu.
 
 *Entry compiled 2026-10-24 by the overnight pipeline from the 2026-10-24 daily note (verified-extraction 03:25 UTC).*
+---
+
+## 2026-10-27 — Itch-trim lane: `--itch` build fits itch.io caps, ZIP stored + verified
+
+- **Why:** the deploy split (PR #1152) put the Pages shell at 5,395 files / 739.5 MB — over itch.io's HTML5 caps (<=1,000 files, <=500 MB extracted, <=200 MB per file) on both axes. Owner tapped "Start the itch-trim lane" 2026-10-27 ~09:35 CDT: make the same web game fit itch.io so it can ship as a playable itch project with donations on.
+- **`--itch` mode added to `tools/deploy/build_pages.py`:** builds the trimmed shell — bundled fighters' data only (demonio, pantera, awa-pop, baek), music subset, PNG/JSON trimming. Nothing is cut from the game, only from this deploy; everything else loads from the R2 remote base exactly like the Pages shell does.
+- **Measured, all caps pass with margin:** ZIP `wh-itch-trimmed.zip` 203,663,576 bytes compressed, 282,824,816 bytes extracted, 881 entries, largest file 30,118,392 bytes (`roster/awa-pop/attires/attire2/model-rigged.glb`). Caps: 881/1,000 files, 282.8/500 MB, 30.1/200 MB.
+- **Stored + verified:** GitHub release `wh-itch-trimmed-v1`, asset `wh-itch-trimmed.zip`, sha256 `dbe6a5711e6d5c34a4e0c175642926cbe683c4769e4b29ddb3b9db715d357615`, verified byte-identical by re-download. Local ZIP and build dir cleared off disk after verification.
+- **Play proof:** menu-touch-e2e variant against the trimmed build — menu 8/8 tappable, pantera vs demonio picked, stage confirmed, fight HUD up (PANTERA vs DEMONIO, SHRINE OF THE BLADE), 0 bundled-asset 404s. Timer tick not captured on this box (SwiftShader ~2.8s/frame; game clock is frame-rate-coupled) — documented in `tools/deploy/DEPLOY-SPLIT.md`.
+- **What was cut (4,514 files, 456.7 MB):** customization media (`parts-converted` + `parts` non-JSON, decal/reskin libraries, suite demo mp4), non-bundled movesets (198 files) + non-bundled anim banks (607 files), music 48 -> 4 tracks (title-meditation, menu-deliberate, select-exhilarate, battle-volatile), non-bundled voices/portraits, t7-frame-data, movesets/t7, ur-general anims, game/tests, docs/t7t8-reference, archive, data/movesets, all 229 `game/assets/sounds/` OGGs (`voice.js` `playSound` has zero callers). Full list in `tools/deploy/DEPLOY-SPLIT.md` ("itch-trim" section), every rule carrying its runtime evidence.
+- **Open follow-up (split, not this lane):** the 5 fight attire models (111.2 MB) were included in the itch build but the same gap exists on the Pages shell — `SHELL_BUNDLED_MODELS` names the base GLBs only, while the fight loads the fighters' attire models. Without them a demonio/awa-pop fight fails to start exactly as it does on the Pages shell today.
+- **Hard stop respected:** no itch.io account, project, or upload created — owner-only.
+- **Landed:** WH PR #1154, merged 2026-10-27 (merge `4581f63f`).
+
+*Entry compiled 2026-10-28 by the overnight pipeline from the itch-trim lane record (WH PR #1154, verified-extraction 00:47 UTC).*
