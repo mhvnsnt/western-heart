@@ -130,6 +130,14 @@ export class InputManager {
     this._udStick(d.startsWith('u') ? -1 : d.startsWith('d') ? 1 : 0);
   }
 
+  /* Stick released: back to neutral. No latched direction, no pending sidestep drift. */
+  stickNeutral() {
+    this.axisX = 0;
+    this.stickDir = 'n';
+    this._udRelease(); // resolves a pending tap (sidestep) or clears a held crouch/jump
+    if (this._resetJoyKnob) this._resetJoyKnob();
+  }
+
   _tekken(btn) {
     const now = performance.now();
     if (this._udDir && !this._udHeld) this._udUsed = true; // the tap fed this attack's direction
@@ -257,27 +265,58 @@ export class InputManager {
     if (window.nipplejs) {
       // nipplejs draws its own base + knob UI inside the zone; retire the legacy knob.
       if (knob) knob.style.display = 'none';
-      const manager = window.nipplejs.create({
-        zone: base,
-        mode: 'static',                          // fixed stick, bottom-left (fighting-game standard)
-        position: { top: '50%', left: '50%' },    // centered in the #joystick zone
-        color: 'white',
-        size: 120,                               // 130px zone with a small margin
-        threshold: 0.1,
-        fadeTime: 150,
-        restOpacity: 0.85,
-      });
-      // nipplejs vector: x is right-positive, y is UP-positive (negated screen y).
-      // _udStick takes screen-style ny (down-positive; up zone is ny < -0.55).
-      manager.on('move', (evt, data) => {
-        const nx = Math.max(-1, Math.min(1, data.vector.x || 0));
-        this._stick8(nx, (data.vector.y || 0));
-      });
-      manager.on('end', () => {
-        this.axisX = 0;
-        this._udRelease(); // resolve any pending tap/hold
-      });
-      this._joyManager = manager;
+      /* STICK FIX (owner t228u, 2026-10-23): "moving the stick just keeps going down".
+         Static-mode nipplejs fixes its centre when the manager is created. The HUD
+         (and #joystick) is display:none at boot, so the centre was computed from a
+         0x0 box at the top-left of the screen and EVERY touch on the real stick read
+         as down/down-right -> crouch, no walking. Two fixes:
+         1) the direction is computed from the touch point vs the LIVE centre of
+            #joystick (getBoundingClientRect at touch time), never nipplejs's cached one;
+         2) the nipplejs UI is rebuilt whenever #joystick's box changes (HUD shown,
+            rotation 390x844 <-> 844x390), so the drawn knob sits under the thumb. */
+      const R = 60; // nipplejs size/2: full deflection radius in px
+      const fromPoint = (px, py) => {
+        const r = base.getBoundingClientRect();
+        const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+        const nx = Math.max(-1, Math.min(1, (px - cx) / R));
+        const nyUp = Math.max(-1, Math.min(1, (cy - py) / R)); // up-positive
+        return [nx, nyUp];
+      };
+      const create = () => {
+        if (this._joyManager) { try { this._joyManager.destroy(); } catch (e) {} }
+        const manager = window.nipplejs.create({
+          zone: base,
+          mode: 'static',                          // fixed stick, bottom-left (fighting-game standard)
+          position: { top: '50%', left: '50%' },    // centered in the #joystick zone
+          color: 'white',
+          size: 120,                               // 130px zone with a small margin
+          threshold: 0.1,
+          fadeTime: 150,
+          restOpacity: 0.85,
+        });
+        manager.on('move', (evt, data) => {
+          // data.position is the touch point in page coords (scroll is 0 in the fight HUD).
+          const pos = data && data.position;
+          const [nx, nyUp] = pos ? fromPoint(pos.x - window.scrollX, pos.y - window.scrollY)
+            : [data.vector.x || 0, data.vector.y || 0];
+          this._stick8(nx, nyUp);
+        });
+        manager.on('end', () => this.stickNeutral());
+        this._joyManager = manager;
+      };
+      create();
+      let lastBox = '';
+      const relayout = () => {
+        const r = base.getBoundingClientRect();
+        const box = `${Math.round(r.left)},${Math.round(r.top)},${Math.round(r.width)},${Math.round(r.height)}`;
+        if (r.width > 0 && box !== lastBox) { lastBox = box; this.stickNeutral(); create(); }
+      };
+      if (window.ResizeObserver) new ResizeObserver(relayout).observe(base);
+      window.addEventListener('resize', relayout);
+      window.addEventListener('orientationchange', () => setTimeout(relayout, 200));
+      // Safety: a lost touchend (tab switch, OS gesture) must never leave the stick latched.
+      window.addEventListener('blur', () => this.stickNeutral());
+      document.addEventListener('visibilitychange', () => { if (document.hidden) this.stickNeutral(); });
       return;
     }
     this._bindJoystickLegacy(base, knob);
@@ -311,9 +350,7 @@ export class InputManager {
     };
     const end = () => {
       this._joyActive = false; this._joyId = null;
-      this.axisX = 0;
-      this._udRelease(); // resolve any pending tap/hold
-      this._resetJoyKnob();
+      this.stickNeutral();
     };
 
     base.addEventListener('touchstart', (e) => {
