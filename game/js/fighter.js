@@ -428,7 +428,7 @@ export class Fighter {
     // (moveset stance_after), rising = while-standing window after leaving a crouch,
     // stick = facing-relative direction (guard + posture), juggle = hits taken airborne.
     this.stance = null; this.stanceT = 0; this._risingT = 0; this._stickDir = 'n';
-    this._juggle = 0; this._rageUsed = false; this._queuedNext = null;
+    this._juggle = 0; this._rageUsed = false; this._queuedNext = null; this._queuedAfter = null;
     this._stringGraceUntil = 0; // wall-clock end of the post-move string window (see _tryAttackFresh)
     this._rageOn = false;
     this._urgeOn = false; this._urgeUsed = false; this._urgeT = 0; this._urgePips = 0;
@@ -1246,7 +1246,7 @@ export class Fighter {
   _startVAttack(move, state, name) {
     this.attack = move; this.attackName = name; this.hasHit = false; this._prevHitPoint = null;
     this._attackId = (this._attackId || 0) + 1;
-    this._queuedNext = null;
+    this._queuedNext = null; this._queuedAfter = null;
     this.vx = 0; this._enter(state); this._attackPhase = 'startup';
     return true;
   }
@@ -1590,6 +1590,30 @@ export class Fighter {
     // A press during a string-capable move buffers the next hit (Tekken input buffer):
     // it fires when the current hit's active frames end.
     if (this.state === 'attack' && this.attack && /^[1234](\+[1234])*$/.test(name)) {
+      // A hit already queued is the string's next step: a further press chains on from
+      // it (2,1 then 2 -> 2,1,2), never re-resolves against the move still playing,
+      // which overwrote the queue (2 -> 2,2) and dropped 3+ hit strings.
+      if (this._queuedNext) {
+        const chain = this._queuedAfter || (this._queuedAfter = []);
+        const saved = this.tekken.lastMove;
+        // Chord upgrade on a queued hit: input.js emits '1' then '1+2' for one 1+2 press,
+        // so a queued '...,1' whose button is in the chord becomes '...,1+2' (f+2~1+2).
+        if (name.includes('+')) {
+          const tail = chain.length ? chain[chain.length - 1] : this._queuedNext;
+          const single = tail.split(/[,~:]/).pop();
+          if (/^[1234]$/.test(single) && name.split('+').includes(single)) {
+            this.tekken.lastMove = chain.length > 1 ? chain[chain.length - 2] : chain.length ? this._queuedNext : saved;
+            const up = this.tekken.continuation(name);
+            this.tekken.lastMove = saved;
+            if (up) { if (chain.length) chain[chain.length - 1] = up; else this._queuedNext = up; return true; }
+          }
+        }
+        this.tekken.lastMove = chain.length ? chain[chain.length - 1] : this._queuedNext;
+        const after = this.tekken.continuation(name);
+        this.tekken.lastMove = saved;
+        if (after) chain.push(after);
+        return true;
+      }
       const cont = this.tekken.continuation(name);
       if (cont) { this._queuedNext = cont; return true; }
       // Chord upgrade: input.js emits the first button at once and the chord when the second
@@ -1747,7 +1771,7 @@ export class Fighter {
     if (move.cost > 0) this.meter = Math.max(0, this.meter - move.cost);
     this.attack = move; this.attackName = notation; this.hasHit = false; this._prevHitPoint = null;
     this._attackId = (this._attackId || 0) + 1;
-    this._queuedNext = null;
+    this._queuedNext = null; this._queuedAfter = null;
     if (/^(R|RD)\./.test(notation)) this._rageUsed = true; // rage art/drive: once per round
     this.stance = null; this.stanceT = 0; this._risingT = 0;
     this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
@@ -1766,7 +1790,9 @@ export class Fighter {
     this.tekken._recordMove(notation);
     this.attack = move; this.attackName = notation; this.hasHit = false; this._prevHitPoint = null;
     this._attackId = (this._attackId || 0) + 1;
-    this._queuedNext = null;
+    // A hit pressed while this one was still queued chains on from it.
+    this._queuedNext = (this._queuedAfter && this._queuedAfter.shift()) || null;
+    if (this._queuedAfter && !this._queuedAfter.length) this._queuedAfter = null;
     this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
     return true;
   }
@@ -1949,13 +1975,13 @@ export class Fighter {
     if (this.hp <= 0) { this._knockout(dir); return 'ko'; }
     if (move.isGrab || move.knock >= 6 || move.launch || (counter && move.knockdown)) {
       this.vy = move.isGrab ? 5.2 : 4.6; this.onGround = false; this.stun = 0.55;
-      this._queuedNext = null; this._stringGraceUntil = 0; // getting hit kills your string
+      this._queuedNext = null; this._queuedAfter = null; this._stringGraceUntil = 0; // getting hit kills your string
       this._enter('knockdown');
     } else {
       const t8adv = move.t8 ? (counter && move.t8.ch != null ? move.t8.ch : move.t8.hit) : null;
       this.stun = t8adv != null ? stunFromAdvantage(t8adv, move)
         : 0.2 + move.damage * 0.012 + (counter ? 0.12 : 0);
-      this._queuedNext = null; this._stringGraceUntil = 0; // getting hit kills your string
+      this._queuedNext = null; this._queuedAfter = null; this._stringGraceUntil = 0; // getting hit kills your string
       this._enter('hitstun');
     }
     // GAP-FILL LANE 1: this unguarded, non-armor, non-grab hit
@@ -2178,7 +2204,8 @@ export class Fighter {
             bank: vDir, defenderDir: vDir, attackerDir: null, forState: 'ko' } : null;
       this._reactChainDepth = 0;
     } catch (e) { this._reactionSel = null; }
-    this._queuedNext = null; this._stringGraceUntil = 0; // getting hit kills your string    this._enter('ko'); this.stun = 999;
+    this._queuedNext = null; this._queuedAfter = null; this._stringGraceUntil = 0; // getting hit kills your string
+    this._enter('ko'); this.stun = 999;
   }
   victory() { if (!this.dead) this._enter('victory'); }
   addMeter(v) { this.meter = Math.min(this.maxMeter, this.meter + v * this.soulMeterMult); }
@@ -2357,7 +2384,7 @@ export class Fighter {
         opponent.root.position.z - this.root.position.z);
     }
 
-    this._tickState();
+    this._tickState(dt);
     this._drainPressBuffer();
     this._physics(dt, opponent);
     this._animate(dt);
@@ -2408,7 +2435,7 @@ export class Fighter {
     this.root.position.z = pos.z;
     this._faceYaw = pair.hYaw + (row.yaw0 || 0);
   }
-  _tickState() {
+  _tickState(dt) {
     switch (this.state) {
       // V-System: vskill/vreversal run the same attack timing as 'attack'.
       case 'attack': case 'vskill': case 'vreversal': {
