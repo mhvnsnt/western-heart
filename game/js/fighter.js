@@ -1688,13 +1688,13 @@ export class Fighter {
           if (/^[1234]$/.test(single) && name.split('+').includes(single) &&
               (this._clock || 0) - (this._queuedPressT || -1) < 0.06) {
             this.tekken.lastMove = chain.length > 1 ? chain[chain.length - 2] : chain.length ? this._queuedNext : saved;
-            const up = this.tekken.continuation(name);
+            const up = this.tekken.continuation(name, this._inputCtx());
             this.tekken.lastMove = saved;
             if (up) { if (chain.length) chain[chain.length - 1] = up; else this._queuedNext = up; return true; }
           }
         }
         this.tekken.lastMove = chain.length ? chain[chain.length - 1] : this._queuedNext;
-        let after = this.tekken.continuation(name);
+        let after = this.tekken.continuation(name, this._inputCtx());
         if (!after) {
           // '1' after f+2 resolved as 'f+2,1', but the list's 3-hit route is 'f+2~1,1+2':
           // re-route the queued tail through its other separator when only that one continues.
@@ -1704,7 +1704,7 @@ export class Fighter {
             const alt = tail.slice(0, cut) + sep + tail.slice(cut + 1);
             if (!resolveMoveKey(this.tekken.fighterId, alt)) continue;
             this.tekken.lastMove = alt;
-            const via = this.tekken.continuation(name);
+            const via = this.tekken.continuation(name, this._inputCtx());
             if (via) { if (chain.length) chain[chain.length - 1] = alt; else this._queuedNext = alt; after = via; break; }
           }
         }
@@ -1712,7 +1712,7 @@ export class Fighter {
         if (after) { chain.push(after); this._queuedPressT = this._clock || 0; }
         return true;
       }
-      const cont = this.tekken.continuation(name);
+      const cont = this.tekken.continuation(name, this._inputCtx());
       if (cont) { this._queuedNext = cont; this._queuedPressT = this._clock || 0; return true; }
       if (this.tekken._strPending) { this._stringGraceUntil = Math.max(this._stringGraceUntil || 0, performance.now() + 500); return true; } // extends an open partial string; fires at its full step
       // Chord upgrade: input.js emits the first button at once and the chord when the second
@@ -2029,7 +2029,23 @@ export class Fighter {
     const ms = getFighterMoveset(this._movesetId);
     const an = this._chainFrom || this.attackName;
     const cur = ms && (ms.moves[resolveMoveKey(this._movesetId, an) || an] || ms.moves[an]);
-    const tag = cur && throwStageTag(cur.name); const keys = tag ? throwStageKeys(this._movesetId, tag) : [];
+    const tag = cur && throwStageTag(cur.name); let keys = tag ? throwStageKeys(this._movesetId, tag) : [];
+    /* Throw follow-ups written as a plain string ('2+4,2', '2+4,1,2,1', '1+3,1'; TekkenDocs / wavu
+       wiki notation) have no stage tag: the throw's own key is the stage. Before (moveset sweep
+       2026-10-29), only tagged chain throws ('AB1.1,1+2') could be continued, so every untagged
+       throw follow-up in every fighter's list stopped at the throw. A tag with no stage rows
+       (a named throw that only has plain follow-ups) is the same case. */
+    if (!keys.length) {
+      // Played through the string resolver (continuation): same lists, T7/T8 copies,
+      // partial steps and alias spellings as a string off a normal hit.
+      if (this.state !== 'throwing' && this.state !== 'throwExec') return false;
+      const saved = this.tekken.lastMove;
+      if (this._chainNext) this.tekken.lastMove = this._chainNext;
+      const c = this.tekken.continuation(name, this._inputCtx());
+      if (!c) { this.tekken.lastMove = saved; return !!this.tekken._strPending; }
+      this._chainNext = c; this.tekken.lastMove = c; return true;
+    }
+    let pre = `${tag}.`;
     if (!keys.length || this._chainNext) return false;
     const now = this._clock || 0; let seq = this._chainSeq || [];
     const tail = seq[seq.length - 1];
@@ -2037,7 +2053,7 @@ export class Fighter {
     if (name.includes('+') && tail && /^[1234]$/.test(tail) && name.split('+').includes(tail) && now - (this._chainPressT || -1) < 0.06) seq = seq.slice(0, -1);
     this._chainPressT = now;
     for (const s of [[...seq, name], [name]]) {
-      const k = `${tag}.${s.join(',')}`;
+      const k = `${pre}${s.join(',')}`;
       if (keys.includes(k)) { this._chainNext = k; this._chainSeq = []; return true; }
       // ',' = more presses follow; '+' = this single is the first half of a chord press
       if (keys.some((x) => x.startsWith(k + ',') || x.startsWith(k + '+'))) { this._chainSeq = s; return true; }
