@@ -348,6 +348,14 @@ export const MODEL_URLS = {
   'michiko-attire2': '../roster/michiko/attires/attire2/model-rigged.glb',
   dio: 'assets/models/dio.glb',
   bruno: 'assets/models/bruno.glb',
+  // T3 cast with no WH roster body (moveset sweep 2026-10-29): their T3 teardown rigs,
+  // re-exported as skinned GLBs in lab/ (private: not in the --shell-only Pages set).
+  't3-anna': '../lab/game/assets/t3_anna_t3real.glb',
+  't3-bosconovitch': '../lab/game/assets/t3_bosconovitch_t3real.glb',
+  't3-julia': '../lab/game/assets/t3_julia_t3real.glb',
+  't3-nina': '../lab/game/assets/t3_nina_t3real.glb',
+  't3-ogre': '../lab/game/assets/t3_ogre_t3real.glb',
+  't3-paul': '../lab/game/assets/t3_paul_t3real.glb',
   yukihyo: 'assets/models/yukihyo.glb',
   // SCIMITAR (2026-10-21, lane 4 rig batch 1): unrigged static -> auto-rigged via
   // tools/auto_rig knn backend (donor pantera.glb); owner's original stays untouched.
