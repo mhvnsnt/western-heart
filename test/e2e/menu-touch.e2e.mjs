@@ -69,8 +69,8 @@ try {
   // INSIDE the select screen (1V1 FIGHT | TEAM BATTLE) before the grid is
   // tappable — the submenu overlay covers the cards until a format is chosen.
   await step('#vs-submenu [data-format="solo"]');
-  await step('.char-card >> nth=0'); await step('#confirm-fighter');
-  await step('.char-card >> nth=2'); await step('#confirm-fighter', 'screen-stage', '03-stage');
+  await step('.char-card[data-id="pantera"]'); await step('#confirm-fighter');
+  await step('.char-card[data-id="pantera"]'); await step('#confirm-fighter', 'screen-stage', '03-stage');
   await p.tap('#confirm-stage');
   await p.waitForFunction(() => { const h = document.getElementById('hud'); return h && getComputedStyle(h).display !== 'none' && !h.classList.contains('hidden'); }, null, { timeout: 60000 });
   await p.waitForTimeout(2000); await p.screenshot({ path: `${SHOTS}/04-fight.png` });
