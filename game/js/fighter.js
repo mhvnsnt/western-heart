@@ -2058,10 +2058,15 @@ export class Fighter {
       // wins when it exists, else the press falls through to the stage rows below
       if (!c && this.tekken._strPending) { this.tekken.lastMove = saved; return true; }
       if (!c) { this.tekken.lastMove = saved; if (!keys.length) return false; } else {
-      this._chainNext = c; this.tekken.lastMove = c; return true; }
+      this._chainNext = c; this.tekken.lastMove = c;
+      // a longer tagged stage on the same press ('SLEEPER.1,1,1+2' vs 'DMD.2,1') keeps listening;
+      // the stage replaces the plain follow-up once its next press arrives
+      this._chainOpen = keys.some((k) => k.startsWith(`${tag}.${name},`) || k.startsWith(`${tag}.${name}+`));
+      if (this._chainOpen) { this._chainSeq = [name]; this._chainPressT = this._clock || 0; }
+      return true; }
     }
     const pre = `${tag}.`;
-    if (this._chainNext) return false;
+    if (this._chainNext && !this._chainOpen) return false;
     const now = this._clock || 0; let seq = this._chainSeq || [];
     const tail = seq[seq.length - 1];
     // input.js emits '1' then '1+2' for one chord press: the chord replaces its single.
@@ -2069,14 +2074,14 @@ export class Fighter {
     this._chainPressT = now;
     for (const s of [[...seq, name], [name]]) {
       const k = `${pre}${s.join(',')}`;
-      if (keys.includes(k)) { this._chainNext = k; this._chainSeq = []; return true; }
+      if (keys.includes(k)) { this._chainNext = k; this._chainSeq = []; this._chainOpen = false; return true; }
       // ',' = more presses follow; '+' = this single is the first half of a chord press
       if (keys.some((x) => x.startsWith(k + ',') || x.startsWith(k + '+'))) { this._chainSeq = s; return true; }
     }
-    this._chainSeq = []; return false;
+    this._chainSeq = []; const open = this._chainOpen; this._chainOpen = false; return !!open;
   }
   _startThrowChain(victim) {
-    const key = this._chainNext; this._chainNext = null; this._chainSeq = [];
+    const key = this._chainNext; this._chainNext = null; this._chainSeq = []; this._chainOpen = false;
     const m = key && getRealMove(this._movesetId, key);
     if (!m || !victim || victim.dead || this.dead) return false;
     victim._throwPair = null; victim._throwPairT = 0; victim._throwAttacker = null; victim._throwMove = null;
@@ -2114,7 +2119,17 @@ export class Fighter {
     this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
     return true;
   }
-  _enter(state) { this.state = state; this.stateT = 0; }
+  _enter(state) {
+    // A move out of a sidestep (SS.X, or any attack cancelling the step) is aimed at the
+    // opponent: Tekken re-aligns the fight axis on the step (TekkenDocs / wavu wiki
+    // 'SS' moves). Moveset sweep 2026-10-29: the body kept its pre-step yaw, so every SS.*
+    // row in the roster swung past the opponent's side.
+    if (state === 'attack' && this.state === 'sidestep' && this._opp && this._opp.root && !this.brawler) {
+      this.vz = 0; this._ssAlign = true;
+    }
+    if (state !== 'attack') this._ssAlign = false;
+    this.state = state; this.stateT = 0;
+  }
 
   /* ---------------- defense / damage ---------------- */
   isBlocking() { return this.state === 'block'; }
@@ -2962,7 +2977,12 @@ export class Fighter {
       // sidestep so both fighters are back on one line. Our camera axis is
       // fixed, so a fighter in neutral drifts back to the line (z=0). Before
       // this, one sidestep left |dz| > 0.75 forever and every strike whiffed.
-      if (this.canAct() && this.onGround && this.vz === 0) {
+      if (this._ssAlign && this.state === 'attack' && this.onGround && opponent) {
+        // the step's re-aligned axis: back onto the fight line through the move, body
+        // turned at the opponent the whole way (see _enter)
+        this.root.position.z += (opponent.root.position.z - this.root.position.z) * (1 - Math.pow(1e-5, dt));
+        this._faceYaw = Math.atan2(opponent.root.position.x - this.root.position.x, opponent.root.position.z - this.root.position.z);
+      } else if (this.canAct() && this.onGround && this.vz === 0) {
         this.root.position.z *= Math.pow(0.004, dt);
         if (Math.abs(this.root.position.z) < 0.01) this.root.position.z = 0;
       }
