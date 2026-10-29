@@ -30,3 +30,13 @@ Lane ownership is claimed on #866. MoneyManBusch owns: Pantera and the core-8 ch
 1. T7 23-bone to WH rig bone map, then bake to `wh-anim/1` (quaternion + spike filter).
 2. Wire the baked clips into `_attackClipPlan` ahead of donor/match, for core-8 chat-owned fighters only.
 3. Pipeline script that regenerates and validates (decode, then bake, then skin-deformation check).
+
+## 2026-10-29 17:50 CDT: move → real T7 clip map (Pantera/King)
+- #1226 (decoder) merged.
+- `tools/anim/t7_clipmap.py` joins the motbin JSON with `<code>rotsm.arc`: `anim_id & 0xC000 == 0x4000` gives `rotsm.arc` MOTA block 0, index `anim_id & 0x3FFF`.
+- King: 467 of 552 attacks (85%) resolve to real decodable clips, with 0 errors. The other 71 attacks use the 0x8000 common bank and 14 use the inline bank. Those are gaps, filled with T3/VF5.
+- Kinematic check: the 1,2 jab clip 315 has its arm peak at frame 8 (active frame 10). The 1+2 arm peak is at frame 10 (active 12). Right kick 318 is leg-dominant with its peak at frame 11 (active 13).
+- GRE has no 0x8000 character bank (only Mob/Demo motion). Confirmed gap.
+- Proof: `docs/proof/t7-clipmap-king-pantera.json`.
+- Next: bake (quaternions + spike filter) to `wh-anim/1` on the WH rig and wire it for Pantera. After that: first-play gaps (stages, flow, HUD, results, rematch, sound) per owner t358u.
+- Muse: moves lane and tools/auto_rig untouched.
