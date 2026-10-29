@@ -1247,6 +1247,7 @@ export class Fighter {
       rage: !this._rageUsed && this.hp > 0 && this.hp <= this.maxHp * 0.25,
       urgeOn: !!this._urgeOn,
       urgeAvailable: !this._urgeUsed && !this._urgeOn && this.hp > 0,
+      running: !!(this.tekken && this.tekken.running && this.tekken.running() && this.onGround) || (this.state === 'attack' && /^WR\./.test(this.attackName || '') && this.stateT <= 0.14), // Tekken WR (and its chord-upgrade window)
       inMove: this.state === 'attack',
       attackT: this.state === 'attack' ? this.stateT : null, // time into the current hit ('~' window)
       // close/far normals (KOF/SF) pick by root distance; stance spin variants by re-entries
@@ -1722,7 +1723,9 @@ export class Fighter {
           }
         }
         this.tekken.lastMove = chain.length ? chain[chain.length - 1] : this._queuedNext;
-        let after = this.tekken.continuation(name, this._inputCtx());
+        // '~' window on a queued hit: time since that hit's own press, not into the move still playing.
+        const qctx = Object.assign(this._inputCtx(), { attackT: (this._clock || 0) - (this._queuedPressT != null ? this._queuedPressT : -1) });
+        let after = this.tekken.continuation(name, qctx);
         if (!after) {
           // '1' after f+2 resolved as 'f+2,1', but the list's 3-hit route is 'f+2~1,1+2':
           // re-route the queued tail through its other separator when only that one continues.
@@ -1732,7 +1735,7 @@ export class Fighter {
             const alt = tail.slice(0, cut) + sep + tail.slice(cut + 1);
             if (!resolveMoveKey(this.tekken.fighterId, alt)) continue;
             this.tekken.lastMove = alt;
-            const via = this.tekken.continuation(name, this._inputCtx());
+            const via = this.tekken.continuation(name, qctx);
             if (via) { if (chain.length) chain[chain.length - 1] = alt; else this._queuedNext = alt; after = via; break; }
           }
         }
@@ -1991,7 +1994,8 @@ export class Fighter {
       // synthesized move exists (moveset not yet injected), fall
       // through to normal chord resolution instead of dead input.
       if (notation === '2+3' && (!this.tekken.lastDir || this.tekken.lastDir === 'n')
-        && !(ctx.soulStates || []).some((sp) => resolveMoveKey(this.tekken.fighterId, sp + '.2+3'))) { // soul-state finisher outranks urge
+        && !(ctx.soulStates || []).some((sp) => resolveMoveKey(this.tekken.fighterId, sp + '.2+3'))
+        && !(ctx.running && resolveMoveKey(this.tekken.fighterId, 'WR.2+3'))) { // soul-state finisher outranks urge
         if (ctx.urgeOn && this._fireNotation('US.2+3')) return true;
         if (ctx.urgeAvailable && this._fireNotation('UB.2+3')) return true;
       }
