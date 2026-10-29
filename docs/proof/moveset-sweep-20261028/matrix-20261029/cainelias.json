@@ -1,0 +1,1599 @@
+{
+ "fighter": "cainelias",
+ "body": {
+  "rosterId": "cainelias",
+  "model": "cain-elias",
+  "how": "game default attire (attires.js)",
+  "file": "../roster/cain-elias/attires/attire1/model.glb"
+ },
+ "moves": 65,
+ "pass": 63,
+ "fail": 2,
+ "na": 0,
+ "juggles": 12,
+ "jugglePass": 3,
+ "pageErrors": [],
+ "secs": 218,
+ "rows": [
+  {
+   "key": "1",
+   "input": "1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1"
+   ],
+   "dmg": 5.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "2",
+   "input": "2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "2"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3",
+   "input": "3",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "4",
+   "input": "4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "4"
+   ],
+   "dmg": 14.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/b+1+2",
+   "input": "d/b+1+2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/b+1+2"
+   ],
+   "dmg": 26.1,
+   "react": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    null
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "f,f+1+2",
+   "input": "f,f+1+2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f,f+1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    null
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "b+1+2",
+   "input": "b+1+2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "b+1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    null
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "d+1+2",
+   "input": "d+1+2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d+1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    null
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "u+1+2",
+   "input": "u+1+2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+1+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/f+1",
+   "input": "d/f+1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/f+1"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/f+2",
+   "input": "d/f+2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/f+2"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/f+4",
+   "input": "d/f+4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/f+4"
+   ],
+   "dmg": 6.5,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/b+1",
+   "input": "u/b+1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u/b+1"
+   ],
+   "dmg": 5.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/b+3",
+   "input": "u/b+3",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u/b+3"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/b+4",
+   "input": "u/b+4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u/b+4"
+   ],
+   "dmg": 9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/f+1",
+   "input": "u/f+1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u/f+1"
+   ],
+   "dmg": 5.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/f+2",
+   "input": "u/f+2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u/f+2"
+   ],
+   "dmg": 17.1,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/f+3",
+   "input": "u/f+3",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u/f+3"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/f+4",
+   "input": "u/f+4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u/f+4"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/f+1+4",
+   "input": "d/f+1+4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/f+1+4"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/b+2+4",
+   "input": "u/b+2+4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u/b+2+4"
+   ],
+   "dmg": 17.1,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/b+3+4",
+   "input": "u/b+3+4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u/b+3+4"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/f+1+2",
+   "input": "u/f+1+2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u/f+1+2"
+   ],
+   "dmg": 17.1,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/f+3+4",
+   "input": "u/f+3+4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u/f+3+4"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1+4",
+   "input": "1+4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1+4"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    null
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "2+3",
+   "input": "2+3",
+   "via": "own input",
+   "setup": "neutral · urge spent",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "2+3"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    null
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "b+2+3",
+   "input": "b+2+3",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "b+2+3"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    null
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "b,n,f+1+2",
+   "input": "b,n,f+1+2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "b,n,f+1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    null
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "d,d/b,d,d/b+1+2",
+   "input": "d,d/b,d,d/b+1+2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d,d/b,d,d/b+1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    null
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "d,d/f,d,d/f+1+2",
+   "input": "d,d/f,d,d/f+1+2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d,d/f,d,d/f+1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    null
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "d/b+1+3",
+   "input": "d/b+1+3",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/b+1+3"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    null
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "d/b+2+4",
+   "input": "d/b+2+4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/b+2+4"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    null
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "d/f+1+2",
+   "input": "d/f+1+2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/f+1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    null
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "d/f+2+3",
+   "input": "d/f+2+3",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/f+2+3"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    null
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "f,n,b,d/b,d,f+1",
+   "input": "f,n,b,d/b,d,f+1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f,n,b,d/b,d,f+1"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    null
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "n,d,d/b+1+3",
+   "input": "n,d,d/b+1+3",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "n,d,d/b+1+3"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    null
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "n,d/f,n,d/f+1",
+   "input": "n,d/f,n,d/f+1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "n,d/f,n,d/f+1"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    null
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "n,d/f,n,d/f+2+4",
+   "input": "n,d/f,n,d/f+2+4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "n,d/f,n,d/f+2+4"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    null
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "2,1",
+   "input": "2,1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "2",
+    "2,1"
+   ],
+   "dmg": 17.1,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/f+4,2",
+   "input": "d/f+4,2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/f+4",
+    "d/f+4,2"
+   ],
+   "dmg": 6.5,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/f+4,4",
+   "input": "d/f+4,4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/f+4",
+    "d/f+4,4"
+   ],
+   "dmg": 14.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "2+4",
+   "input": "2+4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "2+4"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    null
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "f+2+4",
+   "input": "f+2+4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+2+4"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    null
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "1+3",
+   "input": "1+3",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1+3"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    null
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "1+2+3+4_u1",
+   "input": "1+2+3+4",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "throw did not reach exec with victim clip",
+   "fired": [
+    "1+2+3+4"
+   ],
+   "dmg": 24.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": true,
+   "throwOk": false,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1+2+3+4_u2",
+   "input": "1+2+3+4",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [] (keys []) not '1+2+3+4_u2'",
+   "fired": [],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": true,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_spirit_1",
+   "input": "SPIRIT.1+2",
+   "via": "equipped via moveset loadout",
+   "setup": "near object",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "SPIRIT.1+2"
+   ],
+   "dmg": 37.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_spirit_2",
+   "input": "SPIRIT.3+4",
+   "via": "equipped via moveset loadout",
+   "setup": "near object",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "SPIRIT.3+4"
+   ],
+   "dmg": 33.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_spirit_3",
+   "input": "SPIRIT.2+3",
+   "via": "equipped via moveset loadout",
+   "setup": "near object",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "SPIRIT.2+3"
+   ],
+   "dmg": 35.9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_kesshou_1",
+   "input": "KESSHOU.1+2",
+   "via": "equipped via moveset loadout",
+   "setup": "opp 12%, rage spent",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "KESSHOU.1+2"
+   ],
+   "dmg": 12,
+   "react": [
+    "ko"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_kesshou_2",
+   "input": "KESSHOU.3+4",
+   "via": "equipped via moveset loadout",
+   "setup": "opp 12%, rage spent",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "KESSHOU.3+4"
+   ],
+   "dmg": 12,
+   "react": [
+    "ko"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_kesshou_3",
+   "input": "KESSHOU.2+3",
+   "via": "equipped via moveset loadout",
+   "setup": "opp 12%, rage spent",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "KESSHOU.2+3"
+   ],
+   "dmg": 12,
+   "react": [
+    "ko"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_soul9_1",
+   "input": "SOUL9.1+2",
+   "via": "equipped via moveset loadout",
+   "setup": "soul release ready",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "SOUL9.1+2"
+   ],
+   "dmg": 39.1,
+   "react": [
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_soul9_2",
+   "input": "SOUL9.3+4",
+   "via": "equipped via moveset loadout",
+   "setup": "soul release ready",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "SOUL9.3+4"
+   ],
+   "dmg": 42.4,
+   "react": [
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_soul9_3",
+   "input": "SOUL9.2+3",
+   "via": "equipped via moveset loadout",
+   "setup": "soul release ready",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "SOUL9.2+3"
+   ],
+   "dmg": 45.6,
+   "react": [
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_reihou_1",
+   "input": "REIHOU.1+2",
+   "via": "equipped via moveset loadout",
+   "setup": "opponent raging",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "REIHOU.1+2"
+   ],
+   "dmg": 24.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_reihou_2",
+   "input": "REIHOU.3+4",
+   "via": "equipped via moveset loadout",
+   "setup": "opponent raging",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "REIHOU.3+4"
+   ],
+   "dmg": 26.1,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_reihou_3",
+   "input": "REIHOU.2+3",
+   "via": "equipped via moveset loadout",
+   "setup": "opponent raging",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "REIHOU.2+3"
+   ],
+   "dmg": 28.5,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_seal_1",
+   "input": "SEAL.1+2",
+   "via": "equipped via moveset loadout",
+   "setup": "final round, opp 18%, rage spent",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "SEAL.1+2"
+   ],
+   "dmg": 18,
+   "react": [
+    "ko"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_seal_2",
+   "input": "SEAL.3+4",
+   "via": "equipped via moveset loadout",
+   "setup": "final round, opp 18%, rage spent",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "SEAL.3+4"
+   ],
+   "dmg": 18,
+   "react": [
+    "ko"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_seal_3",
+   "input": "SEAL.2+3",
+   "via": "equipped via moveset loadout",
+   "setup": "final round, opp 18%, rage spent",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "SEAL.2+3"
+   ],
+   "dmg": 18,
+   "react": [
+    "ko"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "R.1+2",
+   "input": "R.1+2",
+   "via": "own input",
+   "setup": "rage (hp 20%)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "R.1+2"
+   ],
+   "dmg": 26.1,
+   "react": [
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "RD.3+4",
+   "input": "RD.3+4",
+   "via": "own input",
+   "setup": "rage (hp 20%)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "RD.3+4"
+   ],
+   "dmg": 31,
+   "react": [
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "UB.2+3",
+   "input": "UB.2+3",
+   "via": "own input",
+   "setup": "urge available",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "UB.2+3"
+   ],
+   "dmg": 11.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "US.2+3",
+   "input": "US.2+3",
+   "via": "own input",
+   "setup": "soul urge on",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "US.2+3"
+   ],
+   "dmg": 24.4,
+   "react": [
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  }
+ ],
+ "juggle": [
+  {
+   "key": "wh_kesshou_1",
+   "ok": false,
+   "why": "follow-up 1 never hit the airborne opponent"
+  },
+  {
+   "key": "wh_kesshou_2",
+   "ok": false,
+   "why": "follow-up 1 never hit the airborne opponent"
+  },
+  {
+   "key": "wh_kesshou_3",
+   "ok": false,
+   "why": "follow-up 1 never hit the airborne opponent"
+  },
+  {
+   "key": "wh_soul9_1",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "key": "wh_soul9_2",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "key": "wh_soul9_3",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "key": "wh_seal_1",
+   "ok": false,
+   "why": "follow-up 1 never hit the airborne opponent"
+  },
+  {
+   "key": "wh_seal_2",
+   "ok": false,
+   "why": "follow-up 1 never hit the airborne opponent"
+  },
+  {
+   "key": "wh_seal_3",
+   "ok": false,
+   "why": "follow-up 1 never hit the airborne opponent"
+  },
+  {
+   "key": "R.1+2",
+   "ok": false,
+   "why": "follow-up 1 never hit the airborne opponent"
+  },
+  {
+   "key": "RD.3+4",
+   "ok": false,
+   "why": "follow-up 1 never hit the airborne opponent"
+  },
+  {
+   "key": "US.2+3",
+   "ok": false,
+   "why": "follow-up 1 never hit the airborne opponent"
+  }
+ ]
+}
