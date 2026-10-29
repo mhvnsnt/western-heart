@@ -407,13 +407,17 @@
     const f = g.p1, id = f.char.id; const P = parse(r.input);
     if (r.via === 'equipped via moveset loadout') MS.setLoadoutSlot(id, r.input, r.key);
     try {
-      reset(gap); setup(P.pre, f); run(f, P, null);
+      // batch 11: a KESSHOU / SEAL launcher (or a long string) KOs a 100 hp opponent, and the round
+      // ends before any juggle (p1 'victory', p2 'ko'). The check is whether the lift can be
+      // followed up, so the opponent here cannot be KO'd (reset() restores hp for the next row).
+      reset(gap); g.p2.hp = 1e4; setup(P.pre, f); run(f, P, null);
       let k = 0; while (k++ < 90 && !(g.p2.root.position.y > 0.35)) step(1);
       if (!(g.p2.root.position.y > 0.35)) return { key: r.key, ok: null, why: 'no lift on replay' };
       // batch 11: a throw's lift is the paired throw animation (victim in thrown / thrownExec), not a
       // launch; a juggle there is not a Tekken juggle (TekkenDocs: throws are not juggle starters)
       if (/thrown/.test(g.p2.state)) return { key: r.key, ok: null, why: 'n/a: throw animation lift, not a launcher' };
       let hit = false; const dbg = r.trace ? [] : null;
+      if (/^ko$/.test(g.p2.state) || /victory/.test(g.p1.state)) return { key: r.key, ok: null, why: 'n/a: KO finisher (round ends on the move)' };
       for (let t = 0; t < 8 && !hit; t++) {
         // the follow-up 1 must be a fresh move: let the launcher (and any queued string hits) finish
         for (let w = 0; w < 300 && (g.p1.state === 'attack' || g.p1._queuedNext); w++) step(1);
