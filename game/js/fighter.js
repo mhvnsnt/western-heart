@@ -1232,6 +1232,7 @@ export class Fighter {
       urgeOn: !!this._urgeOn,
       urgeAvailable: !this._urgeUsed && !this._urgeOn && this.hp > 0,
       inMove: this.state === 'attack',
+      attackT: this.state === 'attack' ? this.stateT : null, // time into the current hit ('~' window)
       // close/far normals (KOF/SF) pick by root distance; stance spin variants by re-entries
       dist: this._opp && this._opp.root && this.root ? Math.hypot(this._opp.root.position.x - this.root.position.x, this._opp.root.position.z - this.root.position.z) : null,
       stanceSpins: this.stance ? (this._stanceSpins || 1) : 0,
