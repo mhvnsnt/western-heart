@@ -17,3 +17,22 @@ Soul".
 
 Ordering follows the Tripo Attachment Registry law (owner 2026-10-18):
 Tripo 3D models are the main/default attires.
+
+## Kusaregedo Moveset Wiring (2026-10-19)
+
+Youkai Kusaregedo (Samurai Shodown V/VI, SNK) — giant hunger-cursed ghoul. Frame data
+from DreamCancel wiki (Tekitogate). Owner confirmed 2026-10-19 ~18:41 CDT.
+
+**Per-form movesets** (`game/assets/movesets/`):
+| Form | File | Moves | Specials | Contents |
+|------|------|-------|----------|----------|
+| Demon (final, Attire 1) | `burger-demon.json` | 24 | 8 | FULL Kusaregedo kit (7 sigs + 16 normals) + mix of smaller forms' abilities (demon-dash, rapid-bites, mega-chomp, head-slam, hungry-eyes, feral-rend) + 2 exclusives (INFINITE HUNGER, Gaki's Feast) |
+| Speed Demon | `burger-speed-demon.json` | 12 | 3 | Quick moves: Flying Head Butt (up/down), Quick Palm, Speed Boot, Backflip + speed kit |
+| The Mouth | `burger-the-mouth.json` | 12 | 3 | Head/bite: Huge Headbutt, Mega Chomp, Head Slam, Tongue Lick/Sweep, Maw of Hunger grab |
+
+**Transform chain** (roster-full.js `forms`): base -> speed-demon -> the-mouth -> demon.
+Demon form is the ultimate: mix of ALL smaller forms' abilities + exclusives (owner 2026-10-19 ~18:43 CDT).
+Extensible — new forms (Mini Tank, etc.) slot into the chain with their own moveset files.
+
+**Sources:** https://dreamcancel.com/wiki/Samurai_Shodown_VI/Kusaregedo (frame data, gameplan),
+https://snk.fandom.com/wiki/Youkai_Kusaregedo (powers, story).

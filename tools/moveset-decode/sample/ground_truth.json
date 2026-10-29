@@ -1,0 +1,67 @@
+{
+  "character": "ValidationVera",
+  "character_id": 999,
+  "game": "T7",
+  "game_id": 0,
+  "origin": "Tekken 7",
+  "crc32": "B1CA6E31",
+  "moves": [
+    {
+      "name": "VAL_jab",
+      "anim_name": "VAL_jab_anim",
+      "damage": 12,
+      "first_active_frame": 10,
+      "last_active_frame": 12,
+      "anim_len_frames": 35,
+      "hitbox_location": 21,
+      "hit_condition_index": 0,
+      "cancel_index": 0,
+      "transition": 32769
+    },
+    {
+      "name": "VAL_elbow_smash",
+      "anim_name": "VAL_elbow_anim",
+      "damage": 20,
+      "first_active_frame": 13,
+      "last_active_frame": 15,
+      "anim_len_frames": 41,
+      "hitbox_location": 22,
+      "hit_condition_index": 1,
+      "cancel_index": 1,
+      "transition": 32770
+    },
+    {
+      "name": "VAL_launcher_upper",
+      "anim_name": "VAL_launcher_anim",
+      "damage": 35,
+      "first_active_frame": 27,
+      "last_active_frame": 29,
+      "anim_len_frames": 58,
+      "hitbox_location": 23,
+      "hit_condition_index": 2,
+      "cancel_index": 2,
+      "transition": 32771
+    }
+  ],
+  "table_counts": {
+    "reactions": 1,
+    "requirement": 4,
+    "hitCondition": 3,
+    "projectile": 1,
+    "pushback": 2,
+    "pushbackExtradata": 2,
+    "cancel": 3,
+    "groupCancel": 1,
+    "cancelExtradata": 2,
+    "extraMoveProperty": 2,
+    "moveBeginningProp": 1,
+    "moveEndingProp": 1,
+    "move": 3,
+    "voiceclip": 2,
+    "inputSequence": 1,
+    "input": 2,
+    "unknownParryRelated": 1,
+    "cameraData": 1,
+    "throwCameras": 1
+  }
+}

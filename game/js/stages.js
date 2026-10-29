@@ -16,6 +16,19 @@
    ============================================================ */
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+// Unified lighting rig (worker 27): stage light rigs, character key/fill/rim
+// separation, soul glow, grade hooks. See game/js/lighting-rig.js for the
+// T7/SFV/DOA6/T8 teardown audit.
+import { buildStageLightRig } from './lighting-rig.js';
+// Lane 5: stage level geometry (pure data) + persistent asset cache.
+// stage-levels.js owns NOTHING about break state — that is the combat
+// lane's stagebreaks.js; it only derives level destinations from defs.
+export { resolveStageLevels, levelAfterBreak, composeLevel, WALL_BREAK_EXTEND } from './stage-levels.js';
+import { getCachedBuffer, putCachedBuffer } from './asset-cache.js';
+// Split hosting (owner decision 2026-10-26: Pages shell + GLBs on R2).
+// Stage GLBs load through the same candidate order as fighters
+// (remote base first, jsDelivr fallback) — see asset-config.js.
+import { loadGlbCandidates, resolveAssetCandidates } from './asset-config.js';
 
 /* ---------------- minimal OBJ loader ----------------
    Tekken 3 panoramas use v / vt / f (triangles, 1-indexed, faces as
@@ -59,11 +72,73 @@ export function parseStageOBJ(text) {
 const _objCache = {};
 export async function fetchStageOBJ(path) {
   if (_objCache[path]) return _objCache[path].clone();
+  // Lane 5: persistent cache first — a warmed stage OBJ must not be
+  // re-downloaded every session. Cache misses fall through to the
+  // exact network path below; a corrupt/empty cache entry is ignored.
+  const cached = await getCachedBuffer(path);
+  if (cached) {
+    try {
+      const geo = parseStageOBJ(new TextDecoder().decode(cached));
+      _objCache[path] = geo;
+      return geo.clone();
+    } catch { /* fall through to network */ }
+  }
   const res = await fetch(path);
   if (!res.ok) throw new Error(`stage OBJ missing: ${path}`);
-  const geo = parseStageOBJ(await res.text());
+  const buf = await res.arrayBuffer();
+  putCachedBuffer(path, buf);
+  const geo = parseStageOBJ(new TextDecoder().decode(buf));
   _objCache[path] = geo;
   return geo.clone();
+}
+
+/* Lane 5: screen-to-screen stage preload (geometry side only).
+   Warms every fetchable asset a stage def names — its OBJ panorama,
+   its GLB (fetched + cached, NOT parsed: parsing stays the builder's
+   job at fight start), its texture atlas / pano — so the stage is
+   already on disk when FIGHT is pressed. Never throws: a missing
+   asset (e.g. the private-build T7 GLB, absent from the public
+   repo) lands in `failed` and the builder's blockout fallback
+   still applies. In-flight calls for one stage share one promise.
+   Callers: main.js startFight (non-blocking, in parallel with the
+   fighter loads) and the stage screen's show path. Reports the
+   warmed fraction to load-progress.js when it is present, so the
+   bar reflects real stage bytes instead of freezing on fighters. */
+const _stagePreloadInflight = new Map();
+export async function preloadStage(stageId) {
+  const def = typeof stageId === 'string' ? getStage(stageId) : stageId;
+  if (!def || !def.id) return { stage: null, warmed: [], failed: [] };
+  if (_stagePreloadInflight.has(def.id)) return _stagePreloadInflight.get(def.id);
+  const run = (async () => {
+    const warmed = [], failed = [];
+    const warm = async (kind, fn) => {
+      try { await fn(); warmed.push(kind); }
+      catch (e) { failed.push(kind); console.warn(`[WH] stage preload ${def.id} ${kind} failed:`, e.message || e); }
+    };
+    const warmFetch = async (url) => {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
+      putCachedBuffer(url, await res.arrayBuffer());
+    };
+    await Promise.all([
+      def.obj ? warm('obj', () => fetchStageOBJ(def.obj)) : Promise.resolve(),
+      def.glb ? warm('glb', () => warmFetch(resolveAssetCandidates(def.glb)[0])) : Promise.resolve(),
+      def.map ? warm('map', () => warmFetch(def.map)) : Promise.resolve(),
+      def.pano ? warm('pano', () => warmFetch(def.pano)) : Promise.resolve(),
+    ]);
+    const out = { stage: def.id, warmed, failed };
+    if (typeof window !== 'undefined') {
+      window.__whStagePreload = out;
+      const total = warmed.length + failed.length;
+      if (total && typeof window.__whStageProgress === 'function') {
+        window.__whStageProgress(def.id, warmed.length / total);
+      }
+    }
+    return out;
+  })();
+  _stagePreloadInflight.set(def.id, run);
+  run.finally(() => { if (_stagePreloadInflight.get(def.id) === run) _stagePreloadInflight.delete(def.id); });
+  return run;
 }
 
 /* ---------------- shared procedural textures ---------------- */
@@ -183,11 +258,21 @@ export const STAGES = [
       sun: ['#ff9a5c', 2.6, [-11, 6.5, 5]],
       rim: ['#5a6ab0', 0.65, [8, 6, -7]],
       fill: ['#ffe0c0', 1.0, [0, 4, 10]],
+      // Lighting rig (worker 27): Earth land — lantern gold motes (bible:
+      // "dust motes in lantern beams"), warm character key, lifted grade.
+      rig: {
+        charKey: ['#ffe9d2', 20, 7], rimBoost: 1.15,
+        motes: { color: '#FFC85C', count: 200, size: 0.06, opacity: 0.55 },
+      },
+      grade: { exposure: 1.5, bloom: 0.7 },
     },
     floor: { kind: 'stone', tint: '#a89a90', repeat: 30, platformTint: '#b5a498', platformRepeat: 7 },
     swatch: ['#120e33', '#ff7a3c'],
     builder: 'shrine',
     associatedFighters: ['phantom', 'diablo'],
+    // Stage-break lane (Tekken floor break): cracked crypt seal at center —
+    // a heavy slam shatters it and the fight drops to the crypt below.
+    breakables: [{ type: 'floor', x: 0, z: 0, r: 2.6, depth: 6 }],
   },
   {
     id: 'tong-nou', name: 'TONG-NOU', tier: 'CANON LANDS',
@@ -202,6 +287,13 @@ export const STAGES = [
       sun: ['#7ae08a', 1.4, [-6, 8, 4]],
       rim: ['#3ae060', 1.1, [6, 5, -6]],
       fill: ['#b8e8c0', 0.5, [0, 4, 10]],
+      // Lighting rig (worker 27): the Void — sparse soul-lights in darkness
+      // (bible: "like plankton in a night ocean"), darker grade, high bloom.
+      rig: {
+        charKey: ['#c8ffd8', 18, 7], rimBoost: 1.2,
+        motes: { color: '#9fd8ff', count: 90, size: 0.05, opacity: 0.5 },
+      },
+      grade: { exposure: 1.35, bloom: 0.85 },
     },
     floor: { kind: 'dark', tint: '#1a2a1e', repeat: 24, platformTint: '#223a28', platformRepeat: 6 },
     swatch: ['#031008', '#3ae060'],
@@ -221,10 +313,20 @@ export const STAGES = [
       sun: ['#ffca7a', 2.4, [-10, 7, 6]],
       rim: ['#4a7a5a', 0.6, [8, 6, -7]],
       fill: ['#ffe8c0', 0.9, [0, 4, 10]],
+      // Lighting rig (worker 27): Wood land — pollen-light motes (bible:
+      // "humid luminosity, pollen-light motes"), dawn-warm character key.
+      rig: {
+        charKey: ['#ffe0b0', 20, 7], rimBoost: 1.1,
+        motes: { color: '#FFD76A', count: 260, size: 0.05, opacity: 0.5 },
+      },
+      grade: { exposure: 1.5, bloom: 0.7 },
     },
     floor: { kind: 'sand', tint: '#c09a68', repeat: 26, platformTint: '#d0aa74', platformRepeat: 6 },
     swatch: ['#0a1a2a', '#ffca7a'],
     builder: 'treelife',
+    pano: 'assets/stages/eastern-mind/tree-of-life/pano-wh.png', // WH canon pass: Sato DNA + Wood palette/soul-gold (see docs/research/eastern-mind-ai-pass.md)
+    music: { land: 'life', palette: 'jungle greens + soul-gold', em: 'stage.intro.tree-of-life' },
+    panoCropTop: 0.1, panoTint: '#b8b8b8',
     associatedFighters: ['saku-ra'],
   },
   {
@@ -240,11 +342,23 @@ export const STAGES = [
       sun: ['#ff6a2a', 2.8, [-11, 5, 5]],
       rim: ['#ff3a1a', 0.7, [8, 6, -7]],
       fill: ['#ffc0a0', 0.9, [0, 4, 10]],
+      // Lighting rig (worker 27): Fire land — floating cinders (bible:
+      // "heat shimmer, floating cinders"), ember character key, hot grade.
+      rig: {
+        charKey: ['#ffc0a0', 22, 7], rimBoost: 1.1,
+        motes: { color: '#E85D1F', count: 240, size: 0.06, opacity: 0.55 },
+      },
+      grade: { exposure: 1.55, bloom: 0.75 },
     },
     floor: { kind: 'scorched', tint: '#8a5a48', repeat: 24, platformTint: '#9a6a50', platformRepeat: 6 },
     swatch: ['#1a0608', '#ff6a2a'],
     builder: 'chiu',
+    pano: 'assets/stages/eastern-mind/plains-of-chi-u/pano-wh.png', // WH canon pass: Sato DNA + Fire palette/flame aureoles
+    music: { land: 'time', palette: 'ember red + burning gold', em: 'stage.intro.plains-of-chi-u' },
     associatedFighters: ['michiko'],
+    // Stage-break lane: scorched weak crust off-center — heavy slams break
+    // through to the ember hollow below.
+    breakables: [{ type: 'floor', x: 2.5, z: 0.5, r: 2.4, depth: 6 }],
   },
   {
     id: 'octagonal-shrine', name: 'OCTAGONAL SHRINE PAR-FANG', tier: 'CANON LANDS',
@@ -259,10 +373,19 @@ export const STAGES = [
       sun: ['#c0a080', 1.6, [-8, 9, 4]],
       rim: ['#6a5a8a', 0.6, [8, 6, -7]],
       fill: ['#d0c0b0', 0.7, [0, 4, 10]],
+      // Lighting rig (worker 27): the Source — stillness; Moonface Pale
+      // motes (Malakor thread), restrained grade ("absolute quiet").
+      rig: {
+        charKey: ['#f4e8d8', 18, 7], rimBoost: 1.0,
+        motes: { color: '#C9B8E8', count: 120, size: 0.045, opacity: 0.45 },
+      },
+      grade: { exposure: 1.4, bloom: 0.7 },
     },
     floor: { kind: 'stone', tint: '#8a8492', repeat: 26, platformTint: '#9a94a2', platformRepeat: 6, octagon: true },
     swatch: ['#0a0810', '#c0a080'],
     builder: 'parfang',
+    pano: 'assets/stages/eastern-mind/octagonal-shrine/pano-wh.png', // WH canon pass: Sato DNA + Earth palette/octagon geometry
+    music: { land: 'source', palette: 'lantern gold + vermilion', em: 'stage.intro.octagonal-shrine' },
     associatedFighters: ['pantera'],
   },
   {
@@ -278,11 +401,25 @@ export const STAGES = [
       sun: ['#c0d0ff', 2.0, [-9, 8, 5]],
       rim: ['#ff6ad0', 0.7, [8, 6, -7]],
       fill: ['#e0d0ff', 0.9, [0, 4, 10]],
+      // Lighting rig (worker 27): Metal land — refracted light motes
+      // (bible: "refracted light beams, floating dust as prisms"), cool key.
+      rig: {
+        charKey: ['#e8f0ff', 20, 7], rimBoost: 1.25,
+        motes: { color: '#EAF6FF', count: 200, size: 0.05, opacity: 0.5 },
+      },
+      grade: { exposure: 1.45, bloom: 0.85 },
     },
     floor: { kind: 'metal', tint: '#a0a8b8', repeat: 20, platformTint: '#b0b8c8', platformRepeat: 5 },
     swatch: ['#0a0a18', '#ff6ad0'],
     builder: 'helix',
+    pano: 'assets/stages/eastern-mind/helix-palace/pano-wh.png', // WH canon pass: Sato DNA + Metal palette/prismatic refraction
+    music: { land: 'desire', palette: 'mirror silver + deep violet', em: 'stage.intro.helix-palace' },
+    glb: 'assets/stages/pink-narwhal/pink-narwhal.glb',
+    hidePlatform: true,
     associatedFighters: ['purple-rain'],
+    // Stage-break lane (T7 balcony break): the palace balcony edge — a heavy
+    // hit there shatters the railing and drops the fight one level.
+    breakables: [{ type: 'balcony', x: 5.5, z: 0, r: 2.2, w: 4.5, depth: 6 }],
   },
   {
     id: 'palace-of-dreaming', name: 'PALACE OF DREAMING', tier: 'CANON LANDS',
@@ -297,10 +434,20 @@ export const STAGES = [
       sun: ['#9ac0ff', 2.0, [-9, 7, 6]],
       rim: ['#4ae0ff', 0.8, [8, 6, -7]],
       fill: ['#c0e0ff', 0.9, [0, 4, 10]],
+      // Lighting rig (worker 27): Water land — bioluminescent drift
+      // (bible: "bioluminescent drift... underwater while breathing air").
+      rig: {
+        charKey: ['#c8f0ff', 20, 7], rimBoost: 1.2,
+        motes: { color: '#4FD8E8', count: 220, size: 0.055, opacity: 0.5 },
+      },
+      grade: { exposure: 1.45, bloom: 0.85 },
     },
     floor: { kind: 'dream', tint: '#8a90c8', repeat: 18, platformTint: '#9aa0d8', platformRepeat: 5 },
     swatch: ['#0a1030', '#4ae0ff'],
     builder: 'dreaming',
+    pano: 'assets/stages/eastern-mind/palace-of-dreaming/pano-wh.png', // WH canon pass: Sato DNA + Water palette/bioluminescent drift
+    introVideo: '../teardown/eastern-mind/stage-3-palace-of-dreaming/video/W_RMEYE.mp4', // the land's own room film
+    music: { land: 'dreaming', palette: 'indigo + ripple cyan', em: 'stage.intro.palace-of-dreaming' },
     associatedFighters: ['waterfall'],
   },
   {
@@ -316,11 +463,109 @@ export const STAGES = [
       sun: ['#ffaa6a', 2.0, [-10, 6, 6]],
       rim: ['#b06ae0', 0.7, [8, 6, -7]],
       fill: ['#ffd0a0', 0.8, [0, 4, 10]],
+      // Lighting rig (worker 27): liminal bazaar — Malakor-thread primary
+      // zone. Nostalgia Haze motes, Trader-gold character key.
+      rig: {
+        charKey: ['#ffd76a', 20, 7], rimBoost: 1.2,
+        motes: { color: '#8A6FB8', count: 200, size: 0.055, opacity: 0.5 },
+      },
+      grade: { exposure: 1.5, bloom: 0.8 },
     },
     floor: { kind: 'stone', tint: '#7a6a80', repeat: 26, platformTint: '#8a7a90', platformRepeat: 6 },
     swatch: ['#0c0a20', '#b06ae0'],
     builder: 'marketplace',
+    pano: 'assets/stages/eastern-mind/phantom-marketplace/pano-wh.png', // WH canon pass: Sato DNA + Trader gold/Malakor thread
+    music: { land: 'liminal', palette: 'trader gold + sigil violet', em: 'stage.intro.phantom-marketplace' },
     associatedFighters: ['skull'],
+  },
+  /* ---------------- CAPE JONES ARENAS (2026-10-24 owner directives 20:35 + 20:38 CDT) ----------------
+     Two Cape Jones show arenas, tier 'CAPE JONES', wired into stage select
+     by the STAGE_TIERS loop in main.js (no main.js change needed).
+     Stage ids are coordinated with the music-wiring lane: 'cape-jones-arena'
+     is the id the Cape Jones music pool already tags (PR #1037 library:
+     Ghost Surf Rock + 7 interchange tracks); 'cape-jones-halloween-beach'
+     is the new id the music lane must tag with the same rotation set.
+     Neither def names an obj/glb/pano/map asset in v1, so Lane 5's
+     preloadStage warms nothing and fight-load has no arena-asset 404
+     surface. The v1 set is built by the builders below in the established
+     canon-stage style (buildBase sky/floor/lighting + set dressing);
+     the REAL-ASSET upgrades are tracked per element in
+     docs/arenas/cape-jones-arenas.md and are NOT claimed as shipped here:
+     house GLB = cape-jones living_room.blend export (pending),
+     beach prop GLBs = open-source beach pack (pending download).
+     When a real GLB lands, a follow-up PR adds the glb field and switches
+     the builder to the GLB-with-fallback pattern (buildHelix precedent).
+     No breakables are declared on either def, so Lane 5's stage-levels.js
+     gives both the generic treatment (upper + wall-broken 8.4 -> 12.9)
+     once PR #1061 merges. ARENA COLOR/LOCK: the beach sky stops, fog and
+     grade below are LOCKED — dark purple, lean-colored, heavy/thick/dirty
+     purple, thick atmosphere. Do not brighten or clean them up; any later
+     change needs the user explicitly saying so. */
+  {
+    id: 'cape-jones-arena', name: 'CAPE JONES ARENA', tier: 'CAPE JONES',
+    universe: "Cape Jones's house (home turf)", element: 'Spirit',
+    description: "Cape Jones's home turf — the living room from his show, where he flies in through the TV. CRT portal glows, LED wash hums, recliner stays empty.",
+    dims: { width: 16.8, depth: 6.0, wallDistance: 8.4 },
+    spawns: { p1: -3.5, p2: 3.5 },
+    lighting: {
+      sky: [[0.0, '#0a0812'], [0.5, '#1c1226'], [0.8, '#3a2030'], [1.0, '#120a14']],
+      fog: ['#120a14', 18, 60],
+      hemi: ['#8a7a6a', '#241a12', 1.5],
+      sun: ['#ffc890', 2.0, [-8, 7, 5]],
+      rim: ['#7a6ac0', 0.5, [8, 6, -7]],
+      fill: ['#ffe0c0', 0.9, [0, 4, 10]],
+      rig: {
+        charKey: ['#ffe0b8', 20, 7], rimBoost: 1.1,
+        motes: { color: '#FFC85C', count: 120, size: 0.05, opacity: 0.5 },
+      },
+      grade: { exposure: 1.4, bloom: 0.6 },
+    },
+    floor: { kind: 'dark', tint: '#5a3a24', repeat: 24, platformTint: '#6a452a', platformRepeat: 6 },
+    swatch: ['#1c1226', '#ffc890'],
+    builder: 'capehouse',
+    associatedFighters: ['cyborgx'],
+    // Music coordination (music lane owns game/data/music-library.json):
+    // pool id the Ghost Surf Rock rotation set is tagged with.
+    musicStageId: 'cape-jones-arena',
+    // House-reading caveat (correctable): the directive says the arena is
+    // "like / set at Cape Jones's house". This def plays the fight in the
+    // house set at standard WH bounds; the canon room scale in
+    // stages/cape-house/STAGE-SPEC.md is 7.0 x 6.0 m (show-room scale).
+    // If the user corrects the reading to literal room bounds, dims is a
+    // one-line change — the set dressing does not move.
+    source: { show: 'Cape Jones 3D show', spec: 'stages/cape-house/STAGE-SPEC.md', blend: 'mhvnsnt/cape-jones:3d-assets/living_room.blend', glbPending: 'stages/cape-house/living-room.glb' },
+  },
+  {
+    id: 'cape-jones-halloween-beach', name: 'HALLOWEEN BEACH', tier: 'CAPE JONES',
+    universe: 'Cape Jones show location (Halloween beach)', element: 'Spirit',
+    description: 'A Halloween beach under a dark purple lean-colored sky. Hooded figures watch from the dunes, eyes float over the surf, jack-o-lanterns grin from the sand. Spooky-fun, Scooby-Doo mystery — not grimdark. A Cape Jones show location.',
+    dims: { width: 16.8, depth: 6.0, wallDistance: 8.4 },
+    spawns: { p1: -3.5, p2: 3.5 },
+    lighting: {
+      // LOCKED SKY (arena color/lock law): dark purple, lean-colored,
+      // heavy, thick, dirty purple. Every stop is dark and muted; the
+      // lightest stop (#4a2444) is still murky. Never brighten this.
+      sky: [[0.0, '#0d0716'], [0.45, '#241038'], [0.72, '#3d1c4e'], [0.88, '#4a2444'], [1.0, '#160a1e']],
+      fog: ['#1c0f2a', 14, 55],
+      hemi: ['#4a3560', '#140a1c', 1.2],
+      sun: ['#9a7aaa', 1.1, [-8, 9, 4]],
+      rim: ['#5a4a9a', 0.7, [8, 6, -7]],
+      fill: ['#7a5a8a', 0.5, [0, 4, 10]],
+      rig: {
+        charKey: ['#c0a0d0', 16, 7], rimBoost: 1.1,
+        motes: { color: '#8A5AC0', count: 120, size: 0.05, opacity: 0.5 },
+      },
+      grade: { exposure: 1.1, bloom: 0.6 },
+    },
+    floor: { kind: 'sand', tint: '#7a6278', repeat: 26, platformTint: '#8a7088', platformRepeat: 6 },
+    swatch: ['#241038', '#ff8a3a'],
+    builder: 'capebeach',
+    associatedFighters: ['cyborgx'],
+    // Music coordination: NEW id the music lane must tag with the same
+    // Ghost Surf Rock rotation set (Ghost Surf Rock first, interchange
+    // tracks rotating around it) + modes ['battle'] for fight rotation.
+    musicStageId: 'cape-jones-halloween-beach',
+    source: { reference: 'Malakor dark fantasy (TikTok visual reference: hooded figures, floating eyes, medieval mysticism, cosmic horror, deep purple + blue palettes, alchemical/occult symbols)', pack: 'reodesuxz Low Poly Beach Lifeguard & Boardwalk Pack (itch.io, GLB, free for commercial use, no attribution required)' },
   },
 ];
 
@@ -392,6 +637,56 @@ for (const [letter, label, fighters, panoTint, floorKind, floorTint, sky, fogC, 
 }
 
 
+/* ---------------- WWF NO MERCY ARENAS (teardown-integration 2026-10-19) ----
+   17 real arena assemblies from teardown/wwf-no-mercy/arenas/ (see ARENAS.md
+   there): 11 show/PPV arenas + cage + 6 backstage areas. Geometry is the
+   actual AkiModel pieces; vertex colors from the teardown .vc sidecars. */
+const NO_MERCY = [
+  // file, name, description, skyTop, skyMid, sun, floorTint
+  ['arena_raw', 'RAW IS WAR', 'The Monday-night war room — ring, ramp, trons and a full crowd bowl.', '#0a0a18', '#2a0a14', '#ff3a3a', '#6a5a52'],
+  ['arena_smackdown', 'SMACKDOWN', 'Blue-brand arena bowl with the fist-era staging bones.', '#0a0a20', '#101a3a', '#3a7aff', '#5a6068'],
+  ['arena_royal_rumble', 'ROYAL RUMBLE', 'January classic bowl — every fighter for themselves.', '#120a20', '#241040', '#8a4aff', '#605a68'],
+  ['arena_wrestlemania', 'WRESTLEMANIA', 'The grandest stage of them all, No Mercy vintage.', '#0c0c1c', '#1c1440', '#ffd76a', '#6a6058'],
+  ['arena_king_of_the_ring', 'KING OF THE RING', 'Tournament-night arena. Win three and take the crown.', '#100c08', '#2a1c0c', '#ffb03a', '#6a5c4a'],
+  ['arena_summerslam', 'SUMMERSLAM', 'The biggest party of the summer, year-2000 edition.', '#081018', '#0c2a3a', '#3ad0ff', '#5a6660'],
+  ['arena_survivor_series', 'SURVIVOR SERIES', 'Thanksgiving-tradition arena — teams of five strive to survive.', '#140c0c', '#301414', '#ff6a3a', '#66584e'],
+  ['arena_backlash', 'BACKLASH', 'Post-WrestleMania fallout bowl.', '#0c0814', '#1c1030', '#b03aff', '#5c565e'],
+  ['arena_armageddon', 'ARMAGEDDON', 'End-of-the-world PPV arena, six-man cell energy.', '#100808', '#2c0c0c', '#ff2a2a', '#605450'],
+  ['arena_no_mercy', 'NO MERCY', 'The namesake show — barricades, bowl and bad intentions.', '#0a0c14', '#14202c', '#7ab0ff', '#5e6058'],
+  ['arena_cage', 'STEEL CAGE', 'Cage-match ring — the walls are part of the fight.', '#0a0a0c', '#18181c', '#c0c8d0', '#565a60'],
+  ['backstage_bar_lounge', 'BACKSTAGE: BAR LOUNGE', 'Where the brawls spill after last call.', '#120c08', '#241408', '#ff9a4a', '#5c4a3a'],
+  ['backstage_boiler_room', 'BACKSTAGE: BOILER ROOM', 'Steam, pipes and Mankind energy.', '#0c0a08', '#1c140c', '#ff7a2a', '#54483e'],
+  ['backstage_hallway', 'BACKSTAGE: HALLWAY', 'Gorilla-adjacent corridor — anything can happen here.', '#0c0c10', '#181820', '#aab4c0', '#585c60'],
+  ['backstage_locker_room', 'BACKSTAGE: LOCKER ROOM', 'Benches, lockers and grudges.', '#0a0e0c', '#14201a', '#6aff9a', '#4e5c50'],
+  ['backstage_parking_lot', 'BACKSTAGE: PARKING LOT', 'Asphalt rules. Cars are furniture.', '#080a10', '#101820', '#8ab4d8', '#4c5054'],
+  ['lobby', 'THE LOBBY', 'Gorilla position — one corridor from the curtain.', '#0e0c0a', '#201a12', '#ffd9a0', '#5e584c'],
+];
+for (const [file, name, desc, skyTop, skyMid, sunC, floorTint] of NO_MERCY) {
+  STAGES.push({
+    id: `nm-${file.replace(/_/g, '-')}`,
+    name: `NO MERCY: ${name}`,
+    tier: 'WRESTLING',
+    universe: 'WWF No Mercy (AKI)',
+    element: 'Ring',
+    description: desc,
+    dims: { width: 16.8, depth: 6.0, wallDistance: 8.4 },
+    spawns: { p1: -3.5, p2: 3.5 },
+    lighting: {
+      sky: [[0.0, skyTop], [0.55, skyMid], [0.85, sunC], [1.0, skyTop]],
+      fog: [skyTop, 22, 80],
+      hemi: ['#8a8aa8', '#1a1420', 1.5],
+      sun: [sunC, 2.2, [-10, 8, 5]],
+      rim: [sunC, 0.6, [8, 6, -7]],
+      fill: ['#ffe0c0', 0.8, [0, 4, 10]],
+    },
+    floor: { kind: 'stone', tint: floorTint, repeat: 26, platformTint: floorTint, platformRepeat: 6 },
+    swatch: [skyTop, sunC],
+    builder: 'nomercy',
+    obj: `assets/stages/no-mercy/${file}.obj`,
+    panoTint: '#ffffff',
+  });
+}
+
 /* ---- SUN RĀ — THE STARING SKY (boss stage; Kevin's home base) ---- */
 STAGES.push({
   id: 'sunra',
@@ -421,6 +716,188 @@ STAGES.push({
   music: { land: 'dreaming', palette: 'fluid ambient textures', continuous: true },
 });
 
+/* ---------------- WWF NO MERCY arenas ----------------
+   Real N64 arena geometry: teardown/wwf-no-mercy/arenas/*.obj
+   (AkiModel assemblies) converted to GLB by
+   tools/stage-arena-pull/convert_nomercy.py — vertex colors from
+   the .vc sidecars, fighting surface at y=0, uniform 0.007 scale.
+   Template pieces (ring posts, turnbuckles, apron skirts, cage
+   walls, announce table) ship in the ROM without placement data
+   and are omitted; the builder re-adds procedural posts+ropes. */
+const NM_ARENAS = [
+  // nm-raw, RAW IS WAR, arena_raw.glb
+  ['nm-raw', 'RAW IS WAR', 'arena_raw', true, '',
+   14, 14, 5.2, -2.8, 2.8,
+   '#ff6a5a', '#0a0508', '#3a0a10', '#140608', '#7a4a4a',
+   `The real No Mercy RAW arena: titan tron, ramp, crowd bowl, ring. Template pieces (posts, ropes, aprons) omitted — ropes rebuilt procedurally.`],
+  // nm-smackdown, SMACKDOWN, arena_smackdown.glb
+  ['nm-smackdown', 'SMACKDOWN', 'arena_smackdown', true, '',
+   14, 14, 5.2, -2.8, 2.8,
+   '#6a9aff', '#04060e', '#0a1a3a', '#060a14', '#4a5a7a',
+   `The real No Mercy SmackDown arena: blue stage set, oval tron, crowd bowl, ring.`],
+  // nm-royal-rumble, ROYAL RUMBLE, arena_royal_rumble.glb
+  ['nm-royal-rumble', 'ROYAL RUMBLE', 'arena_royal_rumble', true, '',
+   14, 14, 5.2, -2.8, 2.8,
+   '#b07aea', '#0a0612', '#2a1040', '#0c0816', '#5a4a7a',
+   `The real No Mercy Royal Rumble arena.`],
+  // nm-wrestlemania, WRESTLEMANIA, arena_wrestlemania.glb
+  ['nm-wrestlemania', 'WRESTLEMANIA', 'arena_wrestlemania', true, '',
+   14, 14, 5.2, -2.8, 2.8,
+   '#ffca5a', '#0c0804', '#3a2408', '#100a06', '#7a6a4a',
+   `The real No Mercy WrestleMania arena: grand stage, gold trim.`],
+  // nm-king-of-the-ring, KING OF THE RING, arena_king_of_the_ring.glb
+  ['nm-king-of-the-ring', 'KING OF THE RING', 'arena_king_of_the_ring', true, '',
+   14, 14, 5.2, -2.8, 2.8,
+   '#ff8a6a', '#0c0408', '#40101a', '#12060a', '#7a4a5a',
+   `The real No Mercy King of the Ring arena.`],
+  // nm-summerslam, SUMMERSLAM, arena_summerslam.glb
+  ['nm-summerslam', 'SUMMERSLAM', 'arena_summerslam', true, '',
+   14, 14, 5.2, -2.8, 2.8,
+   '#ff9a3a', '#0c0804', '#402408', '#120c06', '#7a6a4a',
+   `The real No Mercy SummerSlam arena.`],
+  // nm-survivor-series, SURVIVOR SERIES, arena_survivor_series.glb
+  ['nm-survivor-series', 'SURVIVOR SERIES', 'arena_survivor_series', true, '',
+   14, 14, 5.2, -2.8, 2.8,
+   '#5a7aff', '#04060c', '#0a1430', '#060a12', '#4a5a7a',
+   `The real No Mercy Survivor Series arena.`],
+  // nm-backlash, BACKLASH, arena_backlash.glb
+  ['nm-backlash', 'BACKLASH', 'arena_backlash', true, '',
+   14, 14, 5.2, -2.8, 2.8,
+   '#ff4a4a', '#0a0404', '#380a0a', '#120606', '#7a4a4a',
+   `The real No Mercy Backlash arena.`],
+  // nm-armageddon, ARMAGEDDON, arena_armageddon.glb
+  ['nm-armageddon', 'ARMAGEDDON', 'arena_armageddon', true, '',
+   14, 14, 5.2, -2.8, 2.8,
+   '#9aaa8a', '#060806', '#1a2416', '#0a0c08', '#5a6a5a',
+   `The real No Mercy Armageddon arena.`],
+  // nm-no-mercy, NO MERCY, arena_no_mercy.glb
+  ['nm-no-mercy', 'NO MERCY', 'arena_no_mercy', true, '',
+   14, 14, 5.2, -2.8, 2.8,
+   '#a06aea', '#080410', '#200a3a', '#0c0616', '#5a4a7a',
+   `The real No Mercy PPV arena: purple truss, No Mercy tron.`],
+  // nm-cage, STEEL CAGE, arena_cage.glb
+  ['nm-cage', 'STEEL CAGE', 'arena_cage', true, 'cage',
+   12, 12, 4.6, -2.5, 2.5,
+   '#aab0c0', '#060608', '#1a1a22', '#0a0a0e', '#5a5a6a',
+   `The real No Mercy cage-match arena. Cage wall pieces ship as ROM templates (no placement data) — pending the arena-code RE lane.`],
+  // nm-bar, BACKSTAGE: BAR, backstage_bar_lounge.glb
+  ['nm-bar', 'BACKSTAGE: BAR', 'backstage_bar_lounge', false, '',
+   6, 8, 2.8, -2, 2,
+   '#ffca8a', '#0a0604', '#241408', '#0e0a06', '#6a5a4a',
+   `Real No Mercy backstage bar/lounge: bottles, counter, chairs. Falls-count-anywhere energy.`],
+  // nm-boiler-room, BACKSTAGE: BOILER ROOM, backstage_boiler_room.glb
+  ['nm-boiler-room', 'BACKSTAGE: BOILER ROOM', 'backstage_boiler_room', false, '',
+   10, 6, 4.5, -2.5, 2.5,
+   '#ff9a5a', '#080604', '#201410', '#0c0806', '#6a5a4a',
+   `Real No Mercy boiler room: pipes, tanks, industrial gloom.`],
+  // nm-hallway, BACKSTAGE: HALLWAY, backstage_hallway.glb
+  ['nm-hallway', 'BACKSTAGE: HALLWAY', 'backstage_hallway', false, '',
+   5, 15, 2.2, -2, 2,
+   '#c0c8d8', '#060608', '#14161c', '#0a0a0c', '#5a5e6a',
+   `Real No Mercy backstage hallway: long corridor brawl.`],
+  // nm-locker-room, BACKSTAGE: LOCKER ROOM, backstage_locker_room.glb
+  ['nm-locker-room', 'BACKSTAGE: LOCKER ROOM', 'backstage_locker_room', false, '',
+   10, 7, 4.5, -2.5, 2.5,
+   '#ffd8a0', '#080604', '#1c140c', '#0c0806', '#6a5e4a',
+   `Real No Mercy locker room: lockers, benches, chairs, whiteboard.`],
+  // nm-parking-lot, BACKSTAGE: PARKING LOT, backstage_parking_lot.glb
+  ['nm-parking-lot', 'BACKSTAGE: PARKING LOT', 'backstage_parking_lot', false, '',
+   15, 14, 6.5, -3, 3,
+   '#9ab0d0', '#04060a', '#101820', '#080a0e', '#5a6a7a',
+   `Real No Mercy parking lot: cars, open asphalt, room to brawl.`],
+  // nm-lobby-glb, LOBBY, lobby.glb
+  ['nm-lobby-glb', 'LOBBY', 'lobby', false, '',
+   11, 11, 5, -3, 3,
+   '#d0b89a', '#080604', '#1a140e', '#0c0806', '#6a5e4a',
+   `Real No Mercy lobby/gorilla position: the area just behind the curtain.`],
+];
+for (const [sid, nmName, glb, ropes, cageFlag, w, d, wall, s1, s2, sunC, sky0, sky1, fogC, hemiC, nmDesc] of NM_ARENAS) {
+  STAGES.push({
+    id: sid, name: nmName, tier: 'WWF NO MERCY',
+    universe: 'WWF No Mercy (N64)', element: 'Wrestling',
+    description: nmDesc + ' Extracted from the No Mercy ROM (Rev-A).',
+    dims: { width: w, depth: d, wallDistance: wall },
+    spawns: { p1: s1, p2: s2 },
+    lighting: {
+      sky: [[0.0, sky0], [0.6, sky1], [1.0, sky0]],
+      fog: [fogC, 20, 70],
+      hemi: [hemiC, '#0a0a0c', 1.5],
+      sun: [sunC, 2.0, [-10, 7, 5]],
+      rim: [sunC, 0.5, [8, 6, -7]],
+      fill: ['#ffe0c0', 0.7, [0, 4, 10]],
+    },
+    floor: { kind: 'dark', tint: '#1c1c22', repeat: 30, platformTint: '#22222a', platformRepeat: 6 },
+    swatch: [sky1, sunC],
+    builder: 'nomercy',
+    glb: `assets/stages/nomercy/${glb}.glb`,
+    hidePlatform: true, // the GLB carries its own fighting surface
+    ropes,
+    cage: cageFlag === 'cage',
+    associatedFighters: [],
+  });
+}
+/* Per-stage camera + interior lighting: the cage camera sits INSIDE the
+   walls; backstage rooms are small enclosed spaces needing their own
+   camera distance and warm interior lights. */
+for (const [sid, camDist, interior, camAngle] of [
+  ['nm-cage', 4.2, false, 0], ['nm-bar', 3.0, true, 0],
+  ['nm-boiler-room', 4.0, true, 0], ['nm-hallway', 5.0, true, 0],
+  ['nm-locker-room', 3.5, true, 0], ['nm-parking-lot', 7, false, 32],
+  ['nm-lobby-glb', 5.0, true, 28],
+]) {
+  const s = STAGES.find((x) => x.id === sid);
+  if (s) { s.camDist = camDist; if (interior) s.interior = true; if (camAngle) s.camAngle = camAngle; }
+}
+// Explicit elevated poses for the two dense backstage areas (the default
+// fighting camera sits inside pillars/lobby clutter at eye level).
+for (const [sid, pos, tgt] of [
+  ['nm-parking-lot', [8, 4.2, 10], [0, 0.4, 0]],
+  ['nm-lobby-glb', [5.5, 3.6, 6.5], [0, 0.4, 0]],
+]) {
+  const s = STAGES.find((x) => x.id === sid);
+  if (s) { s.camPos = pos; s.camTgt = tgt; }
+}
+
+/* Thumbnails: rendered own-eyes shots, one per stage
+   (tools/stage-arena-pull/render_gallery.py). The select screen shows the
+   thumbnail and falls back to the palette swatch when the file is absent. */
+/* ---- TEKKEN 7: MISHIMA DOJO (community Blender port of the T7 stage) ----
+   Source: teardown/tekken7/arenas/mishima-dojo_2024-map.rar ->
+   Mishima_Dojo_Final_2_17_24.blend (T7_DM_ENV_s0* / T7_SM_ENV_s0* meshes,
+   i.e. a rip of T7 stage s0). Converted by tools/stage-arena-pull/convert_mishima_dojo.py
+   (decimated 1.7M -> ~60k tris, no textures: the .rar shipped none).
+   Origin/license log: docs/tech/T78-FULL-INTEGRATION.md (Mishima Dojo section). */
+// PRIVATE BUILDS ONLY: this is Bandai Namco geometry, so the GLB is not shipped
+// in this public repo or on the public Pages site. It lives in the private repo
+// mhvnsnt/game-reverse-engineering (tekken7/stages/mishima-dojo/). A private
+// build copies it to game/assets/stages/t7-mishima-dojo/ and sets
+// globalThis.__WH_PRIVATE_ASSETS = true before boot.
+if (globalThis.__WH_PRIVATE_ASSETS) STAGES.push({
+  id: 't7-mishima-dojo', name: 'MISHIMA DOJO', tier: 'TEKKEN 7',
+  universe: 'Tekken 7', element: 'Wood',
+  description: 'Real Tekken 7 Mishima Dojo geometry: wood panels, floor relief, guardian statues, bonfires and the mountain skyline.',
+  dims: { width: 16.8, depth: 6.0, wallDistance: 8.4 },
+  spawns: { p1: -3.5, p2: 3.5 },
+  lighting: {
+    sky: [[0.0, '#05060c'], [0.6, '#10142a'], [0.9, '#2a2030'], [1.0, '#0a0608']],
+    fog: ['#0c0a10', 30, 120],
+    hemi: ['#8a7a6a', '#2a1a10', 1.6],
+    sun: ['#ffd0a0', 2.0, [-8, 10, 6]],
+    rim: ['#6a7aff', 0.6, [8, 6, -7]],
+    fill: ['#ffb070', 0.9, [0, 4, 10]],
+    grade: { exposure: 1.2, bloom: 0.5 },
+  },
+  floor: { kind: 'dark', tint: '#3a2a1a', repeat: 24, platformTint: '#5a3e24', platformRepeat: 6 },
+  swatch: ['#10142a', '#ffb070'],
+  builder: 't7glb',
+  glb: 'assets/stages/t7-mishima-dojo/mishima-dojo.glb',
+  glbScale: 0.8, glbRotY: 0,
+  hidePlatform: true,
+  source: { game: 'Tekken 7', stage: 'Mishima Dojo (s0)', file: 'teardown/tekken7/arenas/mishima-dojo_2024-map.rar' },
+});
+
+for (const s of STAGES) s.thumb = `assets/stages/thumbs/${s.id}.png`;
+
 export function getStage(id) {
   return STAGES.find((s) => s.id === id) || STAGES[0];
 }
@@ -439,6 +916,27 @@ function buildBase(g, def, api) {
   const L = def.lighting;
   // sky
   const skyTex = L.sky === 'veins' ? makeVeinSkyTexture() : makeSkyTexture(L.sky);
+  // real teardown panorama backdrop (Eastern Mind bitmaps, etc.): a cylinder
+  // wearing the original game's background art, behind the procedural sky.
+  if (def.pano) {
+    try {
+      const panoTex = new THREE.TextureLoader().load(def.pano);
+      panoTex.colorSpace = THREE.SRGBColorSpace;
+      // The teardown panos are 580px-wide 2D backdrops: repeat 3x around so
+      // the art reads at a sane scale instead of one stretched wrap.
+      panoTex.wrapS = THREE.RepeatWrapping;
+      // panoCropTop: fraction of the bitmap's top edge to drop (v=1 is the top row).
+      panoTex.repeat.set(3, 1 - (def.panoCropTop || 0));
+      const pano = new THREE.Mesh(
+        new THREE.CylinderGeometry(30, 30, 10, 48, 1, true),
+        new THREE.MeshBasicMaterial({ map: panoTex, side: THREE.BackSide, fog: false,
+          ...(def.panoCropTop ? { color: _hex(def.panoTint || '#ffffff') } : {}) })
+      );
+      pano.position.y = 3.5; g.add(pano);
+    } catch (e) {
+      console.warn(`[WH] stage ${def.id}: pano ${def.pano} failed (${e.message})`);
+    }
+  }
   // ground far plane
   const ground = new THREE.Mesh(
     new THREE.PlaneGeometry(140, 140),
@@ -446,28 +944,23 @@ function buildBase(g, def, api) {
   );
   ground.rotation.x = -Math.PI / 2; ground.position.y = -0.05;
   ground.receiveShadow = true; g.add(ground);
-  // fighting platform (16.8 wide arena, octagonal option for Par-fang)
-  const platGeo = def.floor.octagon
-    ? new THREE.CylinderGeometry(9.2, 9.6, 0.5, 8)
-    : new THREE.CylinderGeometry(9.2, 9.6, 0.5, 8);
-  const plat = new THREE.Mesh(platGeo,
-    makeFloorTexture(def.floor.kind, def.floor.platformTint, def.floor.platformRepeat));
-  plat.position.y = -0.25; plat.rotation.y = Math.PI / 8;
-  plat.receiveShadow = true; g.add(plat);
-  // lights
-  g.add(new THREE.HemisphereLight(_hex(L.hemi[0]), _hex(L.hemi[1]), L.hemi[2]));
-  const sun = new THREE.DirectionalLight(_hex(L.sun[0]), L.sun[1]);
-  sun.position.set(...L.sun[2]); sun.castShadow = true;
-  const sm = api.isMobile ? 1024 : 2048;
-  sun.shadow.mapSize.set(sm, sm);
-  sun.shadow.camera.near = 1; sun.shadow.camera.far = 50;
-  sun.shadow.camera.left = -12; sun.shadow.camera.right = 12;
-  sun.shadow.camera.top = 12; sun.shadow.camera.bottom = -12;
-  sun.shadow.bias = -0.0006; g.add(sun);
-  const rim = new THREE.DirectionalLight(_hex(L.rim[0]), L.rim[1]);
-  rim.position.set(...L.rim[2]); g.add(rim);
-  const fill = new THREE.DirectionalLight(_hex(L.fill[0]), L.fill[1]);
-  fill.position.set(...L.fill[2]); g.add(fill);
+  // fighting platform (16.8 wide arena, octagonal option for Par-fang).
+  // Stages with real geometry floors (No Mercy GLBs) skip it: it would
+  // z-fight the model's own fighting surface at y=0.
+  if (!def.hidePlatform) {
+    const platGeo = def.floor.octagon
+      ? new THREE.CylinderGeometry(9.2, 9.6, 0.5, 8)
+      : new THREE.CylinderGeometry(9.2, 9.6, 0.5, 8);
+    const plat = new THREE.Mesh(platGeo,
+      makeFloorTexture(def.floor.kind, def.floor.platformTint, def.floor.platformRepeat));
+    plat.position.y = -0.25; plat.rotation.y = Math.PI / 8;
+    plat.receiveShadow = true; g.add(plat);
+  }
+  // lights — unified rig (T7 light/lightstatic split: hemi+sky+fog is the
+  // baked-ambient half; key/rim/fill + accent points are the dynamic half).
+  // Also adds atmosphere motes (bible: "darkness is a material").
+  const { updaters: rigUpdaters } = buildStageLightRig(g, def, api);
+  updaters.push(...rigUpdaters);
   return { updaters, skyTex, fog: new THREE.Fog(_hex(L.fog[0]), L.fog[1], L.fog[2]) };
 }
 
@@ -750,17 +1243,49 @@ function buildParFang(g, def, api) {
   return { updaters, skyTex, fog };
 }
 
-/* ---- HELIX PALACE: spiral palace + five glowing desire rooms ---- */
-function buildHelix(g, def, api) {
+/* ---- HELIX PALACE: Pink Narwhal club interior (teardown-sourced detail pass) ----
+   Arena upgrade pipeline, Stage 3: the procedural spiral blockout below is kept
+   as the no-GLB fallback (it is the saved Stage-2 draft in arenas/drafts/); the
+   real geometry is the Pink Narwhal club map (SmutBase Virt-A-Mate scene,
+   converted by tools/stage-arena-pull/convert_pinknarwhal.py). The five canon
+   desire rooms ride as glowing pods marking the club's five zones. */
+async function buildHelix(g, def, api) {
   const { updaters, skyTex, fog } = buildBase(g, def, api);
-  const wallMat = new THREE.MeshStandardMaterial({ color: 0x3a3a4e, roughness: 0.4, metalness: 0.8 });
-  for (let i = 0; i < 24; i++) {
-    const a = (i / 24) * Math.PI * 2.6, r = 12 + i * 0.25;
-    const seg = new THREE.Mesh(new THREE.BoxGeometry(4.2, 5.5, 0.4), wallMat);
-    seg.position.set(Math.cos(a) * r, 2.6, Math.sin(a) * r);
-    seg.lookAt(0, 2.6, 0); g.add(seg);
+  let detailed = false;
+  if (def.glb) {
+    try {
+      const gltf = await loadGlbCandidates(new GLTFLoader(), def.glb);
+      const club = gltf.scene;
+      club.traverse((o) => {
+        if (o.isMesh) {
+          o.castShadow = true; o.receiveShadow = true;
+          if (o.material && o.geometry.getAttribute('color'))
+            o.material.vertexColors = true;
+        }
+      });
+      g.add(club);
+      detailed = true;
+    } catch (e) {
+      console.warn(`[WH] stage ${def.id}: GLB ${def.glb} failed (${e.message}), blockout fallback`);
+    }
   }
-  const rooms = [
+  if (!detailed) {
+    // Stage-2 blockout fallback: spiral palace walls (the approved blockout).
+    const wallMat = new THREE.MeshStandardMaterial({ color: 0x3a3a4e, roughness: 0.4, metalness: 0.8 });
+    for (let i = 0; i < 24; i++) {
+      const a = (i / 24) * Math.PI * 2.6, r = 12 + i * 0.25;
+      const seg = new THREE.Mesh(new THREE.BoxGeometry(4.2, 5.5, 0.4), wallMat);
+      seg.position.set(Math.cos(a) * r, 2.6, Math.sin(a) * r);
+      seg.lookAt(0, 2.6, 0); g.add(seg);
+    }
+  }
+  // Five desire rooms (canon): Greed, Appetite, Immortality, Sexual Desire,
+  // Destruction. With the club interior they mark the five zones — VIP west,
+  // bar east, stage center-back, pole stage, DJ booth.
+  const rooms = detailed ? [
+    [0xffd24a, -7.5, 3.0, -9], [0xff6a2a, 7.5, 3.0, -9], [0xf0f0ff, 0, 3.6, -12],
+    [0xff4a9a, 1.2, 3.0, -9.5], [0x8a2ae0, 5.8, 3.0, -10],
+  ] : [
     [0xffd24a, -9, 2.2, -7], [0xff6a2a, 9, 2.2, -7], [0xf0f0ff, 0, 2.6, -11],
     [0xff4a9a, -6, 2.2, 8], [0x8a2ae0, 6, 2.2, 8],
   ];
@@ -918,11 +1443,325 @@ async function buildT3Retro(g, def, api) {
   return { updaters, skyTex, fog };
 }
 
+/* ---- WWF NO MERCY: real N64 arena GLB + procedural ropes ----
+   The GLB carries vertex-colored arena geometry with the fighting surface
+   at y=0. The ROM never stored ropes (procedural at runtime) and its ring
+   posts/turnbuckles/aprons are placement-less templates, so the builder
+   re-adds simple posts + 3 ropes per side for ring arenas. Backstage
+   arenas (rooms, lot) skip ropes. */
+async function buildNoMercy(g, def, api) {
+  const { updaters, skyTex, fog } = buildBase(g, def, api);
+  if (def.glb) {
+    // GLB arena family (arena-pull lane): real N64 arena GLB + ring furniture.
+      try {
+        const gltf = await loadGlbCandidates(new GLTFLoader(), def.glb);
+        const arena = gltf.scene;
+        arena.traverse((o) => {
+          if (o.isMesh) {
+            o.castShadow = true; o.receiveShadow = true;
+            // GLBs ship vertex colors; make sure the material honors them.
+            if (o.material && o.geometry.getAttribute('color'))
+              o.material.vertexColors = true;
+          }
+        });
+        g.add(arena);
+      } catch (e) {
+        console.warn(`[WH] stage ${def.id}: GLB ${def.glb} failed (${e.message})`);
+      }
+      if (def.interior) {
+        // enclosed backstage rooms: warm ceiling lights (the sun/rim rig is
+        // built for open arenas and doesn't reach indoors)
+        for (const [lx, lz] of [[-2.5, -1.5], [2.5, 1.5], [0, 0]]) {
+          const pl = new THREE.PointLight(0xffd9a0, 7, 14, 2);
+          pl.position.set(lx, 2.0, lz); g.add(pl);
+        }
+      }
+      if (def.id === 'nm-parking-lot') {
+        // night lot: cool sodium streetlights so the fighters read
+        for (const [lx, lz] of [[-6, -5], [6, 5], [0, 0]]) {
+          const pl = new THREE.PointLight(0xbfd4ff, 30, 30, 2);
+          pl.position.set(lx, 6.0, lz); g.add(pl);
+        }
+      }
+      if (def.cage) {
+        // Procedural steel-cage walls: the ROM's cage pieces are placement-less
+        // templates (no arena-code positions yet), so the builder stands in
+        // chain-link panels around the ring. Swapped for real geometry when the
+        // arena-code RE lane lands.
+        const linkTex = (() => {
+          const c = document.createElement('canvas'); c.width = c.height = 128;
+          const x = c.getContext('2d');
+          x.clearRect(0, 0, 128, 128);
+          x.strokeStyle = 'rgba(180,190,205,0.95)'; x.lineWidth = 3;
+          for (let i = -128; i < 256; i += 16) {
+            x.beginPath(); x.moveTo(i, 0); x.lineTo(i + 128, 128); x.stroke();
+            x.beginPath(); x.moveTo(i + 128, 0); x.lineTo(i, 128); x.stroke();
+          }
+          const t = new THREE.CanvasTexture(c);
+          t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(6, 6);
+          return t;
+        })();
+        const wallMat = new THREE.MeshStandardMaterial({
+          map: linkTex, transparent: true, side: THREE.DoubleSide,
+          roughness: 0.4, metalness: 0.8, alphaTest: 0.25,
+        });
+        const C = 4.7, CH = 4.2; // half-width, height
+        for (const [w, h, px, pz, ry] of [
+          [C * 2, CH, 0, -C, 0], [C * 2, CH, 0, C, 0],
+          [C * 2, CH, -C, 0, Math.PI / 2], [C * 2, CH, C, 0, Math.PI / 2]]) {
+          const wall = new THREE.Mesh(new THREE.PlaneGeometry(w, h), wallMat);
+          wall.position.set(px, CH / 2, pz); wall.rotation.y = ry;
+          wall.castShadow = false; wall.receiveShadow = false; g.add(wall);
+        }
+        const frameMat = new THREE.MeshStandardMaterial({ color: 0x3a3d45, roughness: 0.5, metalness: 0.7 });
+        const top = new THREE.Mesh(new THREE.BoxGeometry(C * 2 + 0.3, 0.18, C * 2 + 0.3), frameMat);
+        top.position.y = CH + 0.09; g.add(top);
+        // The cage assembly ships no center mat (its "Ring_Mat" label is a tiny
+        // mislabeled quad; the true mat geometry isn't in the ROM dump), so the
+        // builder lays a procedural mat. The ROM's dark apron ring surrounds it.
+        const mat = new THREE.Mesh(
+          new THREE.PlaneGeometry(7.3, 7.3),
+          new THREE.MeshStandardMaterial({ color: 0x8a94a8, roughness: 0.95 })
+        );
+        mat.rotation.x = -Math.PI / 2; mat.position.y = 0.012;
+        mat.receiveShadow = true; g.add(mat);
+      }
+      if (def.ropes) {
+        // ring mat is ±3.64 m; posts just outside, ropes at 3 heights
+        const postMat = new THREE.MeshStandardMaterial({ color: 0x2a2c34, roughness: 0.5, metalness: 0.7 });
+        const ropeMat = new THREE.MeshStandardMaterial({ color: 0xd83a3a, roughness: 0.8 });
+        const H = 3.95, heights = [0.55, 0.9, 1.25];
+        for (const sx of [-1, 1]) for (const sz of [-1, 1]) {
+          const post = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 1.5, 10), postMat);
+          post.position.set(sx * H, 0.75, sz * H); post.castShadow = true; g.add(post);
+        }
+        for (const y of heights) {
+          for (const [x1, z1, x2, z2] of [[-H, -H, H, -H], [H, -H, H, H], [H, H, -H, H], [-H, H, -H, -H]]) {
+            const len = Math.hypot(x2 - x1, z2 - z1);
+            const rope = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, len, 8), ropeMat);
+            rope.position.set((x1 + x2) / 2, y, (z1 + z2) / 2);
+            rope.rotation.z = Math.PI / 2; rope.rotation.y = -Math.atan2(z2 - z1, x2 - x1);
+            g.add(rope);
+          }
+        }
+      }
+      // arena edge marker in the stage palette
+      const edge = new THREE.Mesh(new THREE.TorusGeometry(def.dims.wallDistance, 0.07, 10, 48),
+        new THREE.MeshBasicMaterial({ color: _hex(def.lighting.sun[0]) }));
+      edge.rotation.x = Math.PI / 2; edge.position.y = 0.02; g.add(edge);
+  } else if (def.obj) {
+    /* WWF No Mercy arenas (teardown-integration 2026-10-19): real assembled
+       arena geometry from teardown/wwf-no-mercy/arenas/ (AkiModel pieces grouped
+       by assemble_arenas.py), vertex colors merged from the .vc sidecars into
+       the OBJ v-lines (game/assets/stages/no-mercy/). AkiModel units: floor
+       plane sits at y=0, bowl spans ~+-2700 -> scale 0.012 puts the ring at
+       fight scale and the bowl walls ~32 units out. */
+      try {
+        const geo = await fetchStageOBJ(def.obj);
+        geo.scale(0.012, 0.012, 0.012);
+        const mat = new THREE.MeshBasicMaterial({
+          vertexColors: !!geo.getAttribute('color'),
+          color: _hex(def.panoTint),
+          side: THREE.DoubleSide, fog: true,
+        });
+        const shell = new THREE.Mesh(geo, mat);
+        g.add(shell);
+      } catch (e) {
+        console.warn(`[WH] stage ${def.id}: arena shell failed (${e.message}), palette backdrop only`);
+      }
+  }
+  return { updaters, skyTex, fog };
+}
+
+/* ---- TEKKEN 7 GLB stage (Mishima Dojo): untextured rip, normals rebuilt ---- */
+async function buildT7Glb(g, def, api) {
+  const { updaters, skyTex, fog } = buildBase(g, def, api);
+  try {
+    const gltf = await loadGlbCandidates(new GLTFLoader(), def.glb);
+    gltf.scene.traverse((o) => {
+      if (!o.isMesh) return;
+      // exported without normals to fit phones; rebuild them here
+      if (!o.geometry.getAttribute('normal')) o.geometry.computeVertexNormals();
+      o.castShadow = !api.isMobile; o.receiveShadow = true;
+    });
+    gltf.scene.scale.setScalar(def.glbScale || 1); gltf.scene.rotation.y = def.glbRotY || 0;
+    g.add(gltf.scene);
+    for (const [x, z] of [[-2.4, -10.4], [2.4, -10.4], [-8, 0], [8, 0]]) {
+      const pl = new THREE.PointLight(0xff9a4a, 12, 18, 2); pl.position.set(x, 2, z); g.add(pl);
+    }
+  } catch (e) {
+    console.warn(`[WH] stage ${def.id}: GLB ${def.glb} failed (${e.message})`);
+  }
+  return { updaters, skyTex, fog };
+}
+
+/* ---- CAPE JONES ARENA: the house set (home turf) ----
+   v1 set dressing in the canon-stage style. Source of truth is
+   stages/cape-house/STAGE-SPEC.md: variant 1 living-room, closed walls
+   (wall-splat walls), furniture pushed to the edges for fight space.
+   The CRT TV is the portal prop; the recliner stays EMPTY per the
+   canon .blend constraint (SCENE-CANON.md: recliner stays empty until
+   the light-flicker gag rig lands) — no figure is ever seated there.
+   Real geometry upgrade: cape-jones living_room.blend export to
+   stages/cape-house/living-room.glb (pending; see design doc). */
+function buildCapeHouse(g, def, api) {
+  const { updaters, skyTex, fog } = buildBase(g, def, api);
+  const wallMat = new THREE.MeshStandardMaterial({ color: 0x2a1e2e, roughness: 0.95 });
+  const backWall = new THREE.Mesh(new THREE.BoxGeometry(30, 7, 0.6), wallMat);
+  backWall.position.set(0, 3.5, -9); g.add(backWall);
+  for (const sx of [-1, 1]) {
+    const side = new THREE.Mesh(new THREE.BoxGeometry(0.6, 7, 14), wallMat);
+    side.position.set(sx * 12, 3.5, -2); g.add(side);
+  }
+  const sofaMat = new THREE.MeshStandardMaterial({ color: 0x4a2a3a, roughness: 1 });
+  const sofa = new THREE.Mesh(new THREE.BoxGeometry(5, 1.1, 2), sofaMat);
+  sofa.position.set(-8.5, 0.55, -7.2); g.add(sofa);
+  const sofaBack = new THREE.Mesh(new THREE.BoxGeometry(5, 1.4, 0.5), sofaMat);
+  sofaBack.position.set(-8.5, 1.4, -8.1); g.add(sofaBack);
+  const tableMat = new THREE.MeshStandardMaterial({ color: 0x3a2418, roughness: 0.9 });
+  const table = new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.15, 1.2), tableMat);
+  table.position.set(-8.5, 0.55, -5.4); g.add(table);
+  // CRT TV portal prop (cape-jones tools/crt-tv/ reference): dark shell,
+  // glowing screen that flickers — the way in through the TV.
+  const tvMat = new THREE.MeshStandardMaterial({ color: 0x1a1a20, roughness: 0.6 });
+  const tv = new THREE.Mesh(new THREE.BoxGeometry(2.6, 2.0, 1.4), tvMat);
+  tv.position.set(8.5, 1.4, -7.6); g.add(tv);
+  const screenMat = new THREE.MeshBasicMaterial({ color: 0x9a7aff });
+  const screen = new THREE.Mesh(new THREE.PlaneGeometry(2.1, 1.5), screenMat);
+  screen.position.set(8.5, 1.45, -6.88); g.add(screen);
+  const tvLight = new THREE.PointLight(0x9a7aff, 14, 16, 2);
+  tvLight.position.set(8.5, 1.6, -6); g.add(tvLight);
+  // LED wash strip along the back wall (canon living-room LED wash).
+  const ledMat = new THREE.MeshBasicMaterial({ color: 0x7a4aff });
+  const led = new THREE.Mesh(new THREE.BoxGeometry(20, 0.12, 0.12), ledMat);
+  led.position.set(0, 5.6, -8.65); g.add(led);
+  const ledLight = new THREE.PointLight(0x7a4aff, 10, 22, 2);
+  ledLight.position.set(0, 4.5, -6); g.add(ledLight);
+  // Recliner: EMPTY, stage-right edge. Never seat a figure here.
+  const recMat = new THREE.MeshStandardMaterial({ color: 0x5a3a22, roughness: 1 });
+  const recliner = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.9, 1.4), recMat);
+  recliner.position.set(10.5, 0.45, -4.5); recliner.rotation.y = -0.5; g.add(recliner);
+  const recBack = new THREE.Mesh(new THREE.BoxGeometry(1.6, 1.3, 0.4), recMat);
+  recBack.position.set(10.8, 1.0, -5.1); recBack.rotation.y = -0.5; g.add(recBack);
+  updaters.push((dt, t) => {
+    const fl = 0.8 + Math.sin(t * 9) * 0.12 + Math.sin(t * 23) * 0.08;
+    tvLight.intensity = 14 * fl;
+    screenMat.color.setHex(0x9a7aff).multiplyScalar(fl);
+    ledLight.intensity = 10 * (0.85 + Math.sin(t * 1.4) * 0.15);
+  });
+  return { updaters, skyTex, fog };
+}
+
+/* ---- HALLOWEEN BEACH: Malakor-style, Scooby-Doo spooky-fun ----
+   Dark purple lean-colored sky comes from the def (LOCKED). Set: surf
+   water at the back, dunes, palm silhouettes, surfboards stuck in the
+   sand, a sandcastle, grinning jack-o-lanterns, hooded Malakor figures
+   watching from the dunes, floating eyes drifting over the surf, and a
+   sigil ring on the sand. Spooky-fun mystery, NOT grimdark: bright surf
+   accents + grinning lanterns carry the fun against the dark sky.
+   Real-asset upgrade: open-source beach prop GLBs (see design doc);
+   the eye texture is the game's own makeEyeTexture (marketplace eyes). */
+function buildCapeBeach(g, def, api) {
+  const { updaters, skyTex, fog } = buildBase(g, def, api);
+  const waterMat = new THREE.MeshStandardMaterial({ color: 0x1a1440, roughness: 0.25, metalness: 0.1 });
+  const water = new THREE.Mesh(new THREE.PlaneGeometry(90, 16), waterMat);
+  water.rotation.x = -Math.PI / 2; water.position.set(0, 0.02, -20); g.add(water);
+  const foamMat = new THREE.MeshBasicMaterial({ color: 0x8a7ac0, transparent: true, opacity: 0.5 });
+  const foam = new THREE.Mesh(new THREE.PlaneGeometry(90, 0.8), foamMat);
+  foam.rotation.x = -Math.PI / 2; foam.position.set(0, 0.04, -12.2); g.add(foam);
+  const duneMat = new THREE.MeshStandardMaterial({ color: 0x4a3a52, roughness: 1 });
+  for (let i = 0; i < 5; i++) {
+    const d = new THREE.Mesh(new THREE.SphereGeometry(5 + (i % 3), 12, 8, 0, Math.PI * 2, 0, Math.PI / 2), duneMat);
+    const a = Math.PI + (i / 4 - 0.5) * 2.4;
+    d.position.set(Math.sin(a) * 34, -0.3, -Math.cos(a) * 30);
+    d.scale.y = 0.4; g.add(d);
+  }
+  const palmMat = new THREE.MeshStandardMaterial({ color: 0x1c1226, roughness: 1 });
+  const palmAt = (x, z, s) => {
+    const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.22 * s, 0.34 * s, 6 * s, 7), palmMat);
+    trunk.position.set(x, 3 * s, z); trunk.rotation.z = 0.18; g.add(trunk);
+    for (let i = 0; i < 5; i++) {
+      const frond = new THREE.Mesh(new THREE.ConeGeometry(0.3 * s, 2.6 * s, 4), palmMat);
+      const a = (i / 5) * Math.PI * 2;
+      frond.position.set(x + Math.cos(a) * 1.1 * s + 0.5, 6 * s, z + Math.sin(a) * 1.1 * s);
+      frond.rotation.set(Math.sin(a) * 1.1, 0, -Math.cos(a) * 1.1); g.add(frond);
+    }
+  };
+  palmAt(-13, -10, 1.1); palmAt(14, -11, 0.9); palmAt(-20, -6, 0.8);
+  const boardCols = [0xff7a3a, 0x2ac0c0, 0xa05ae0];
+  boardCols.forEach((c, i) => {
+    const b = new THREE.Mesh(new THREE.BoxGeometry(0.5, 2.6, 0.12),
+      new THREE.MeshStandardMaterial({ color: c, roughness: 0.5 }));
+    b.position.set(-6 + i * 6, 1.1, -6.5 - (i % 2) * 0.8);
+    b.rotation.set(-0.25, (i - 1) * 0.3, 0.12); g.add(b);
+  });
+  const castleMat = new THREE.MeshStandardMaterial({ color: 0x5a4666, roughness: 1 });
+  const castle = new THREE.Mesh(new THREE.CylinderGeometry(1.1, 1.3, 1.4, 8), castleMat);
+  castle.position.set(7.5, 0.7, -4.5); g.add(castle);
+  const castleTop = new THREE.Mesh(new THREE.ConeGeometry(1.1, 1.0, 8), castleMat);
+  castleTop.position.set(7.5, 1.9, -4.5); g.add(castleTop);
+  // Jack-o-lanterns: grinning orange, flickering — the Halloween fun.
+  const lampMat = new THREE.MeshStandardMaterial({ color: 0xff7a1a, emissive: 0xff5a00, emissiveIntensity: 1.4, roughness: 0.8 });
+  const lamps = [];
+  for (const [x, z] of [[-4, -5], [3, -6.5], [10, -3.5]]) {
+    const lamp = new THREE.Mesh(new THREE.SphereGeometry(0.45, 12, 10), lampMat);
+    lamp.position.set(x, 0.45, z); g.add(lamp); lamps.push(lamp);
+  }
+  const lampLight = new THREE.PointLight(0xff7a1a, 16, 18, 2);
+  lampLight.position.set(3, 1.2, -5); g.add(lampLight);
+  // Hooded Malakor figures: dark silhouettes watching from the dunes.
+  const hoodMat = new THREE.MeshStandardMaterial({ color: 0x120a1e, roughness: 1 });
+  for (const [x, z, s] of [[-17, -13, 1.2], [18, -14, 1.0], [0, -17, 1.4]]) {
+    const robe = new THREE.Mesh(new THREE.ConeGeometry(1.0 * s, 3.2 * s, 8), hoodMat);
+    robe.position.set(x, 1.6 * s, z); g.add(robe);
+    const hood = new THREE.Mesh(new THREE.SphereGeometry(0.5 * s, 10, 8), hoodMat);
+    hood.position.set(x, 3.3 * s, z); g.add(hood);
+  }
+  // Floating eyes over the surf (game's own eye texture).
+  const eyeTex = makeEyeTexture();
+  const eyeMat = new THREE.MeshStandardMaterial({ map: eyeTex, roughness: 0.25 });
+  const eyes = [];
+  for (const [x, y, z] of [[-8, 5, -14], [6, 6.5, -16], [14, 4.5, -13]]) {
+    const e = new THREE.Mesh(new THREE.SphereGeometry(0.8, 16, 12), eyeMat);
+    e.position.set(x, y, z); g.add(e); eyes.push({ m: e, x, y, z, ph: Math.random() * 10 });
+  }
+  // Alchemical/occult sigil ring on the sand (Malakor reference).
+  const sigil = new THREE.Mesh(new THREE.TorusGeometry(5.5, 0.08, 8, 48),
+    new THREE.MeshBasicMaterial({ color: 0x8a5ac0 }));
+  sigil.rotation.x = Math.PI / 2; sigil.position.set(0, 0.06, 1.5); g.add(sigil);
+  // Bats: spooky-fun, flapping over the beach.
+  const batMat = new THREE.MeshBasicMaterial({ color: 0x0d0716, side: THREE.DoubleSide });
+  const batN = api.isMobile ? 3 : 6;
+  const bats = [];
+  for (let i = 0; i < batN; i++) {
+    const bat = new THREE.Group();
+    for (const sx of [-1, 1]) {
+      const wing = new THREE.Mesh(new THREE.PlaneGeometry(0.7, 0.35), batMat);
+      wing.position.x = sx * 0.35; bat.add(wing);
+    }
+    bat.position.set(-12 + i * 5, 7 + (i % 3), -10 - (i % 2) * 3);
+    g.add(bat); bats.push({ g: bat, ph: Math.random() * 10 });
+  }
+  updaters.push((dt, t) => {
+    foam.position.z = -12.2 + Math.sin(t * 0.7) * 0.35;
+    lampLight.intensity = 16 * (0.85 + Math.sin(t * 9) * 0.1 + Math.sin(t * 17) * 0.05);
+    for (const e of eyes) {
+      e.m.position.set(e.x + Math.sin(t * 0.5 + e.ph) * 1.2, e.y + Math.sin(t * 0.8 + e.ph) * 0.4, e.z);
+    }
+    for (const b of bats) {
+      b.g.position.y += Math.sin(t * 2 + b.ph) * 0.002;
+      b.g.children.forEach((w, wi) => { w.rotation.y = (wi === 0 ? 1 : -1) * (0.3 + Math.sin(t * 10 + b.ph) * 0.5); });
+    }
+  });
+  return { updaters, skyTex, fog };
+}
+
 const BUILDERS = {
   shrine: buildShrine, tongnou: buildTongNou, treelife: buildTreeLife,
   chiu: buildChiU, parfang: buildParFang, helix: buildHelix,
   dreaming: buildDreaming, marketplace: buildMarketplace, t3retro: buildT3Retro,
-  sunra: buildSunRa,
+  sunra: buildSunRa, nomercy: buildNoMercy, t7glb: buildT7Glb,
+  capehouse: buildCapeHouse, capebeach: buildCapeBeach,
 };
 
 /* Build a stage into a fresh group. Returns { group, update, def, skyTex, fog }.
@@ -954,7 +1793,7 @@ export function disposeStage(group) {
 }
 
 /* Tier order for the stage-select screen. */
-export const STAGE_TIERS = ['CANON LANDS', 'TEKKEN RETRO', 'BOSS STAGES'];
+export const STAGE_TIERS = ['CANON LANDS', 'CAPE JONES', 'TEKKEN RETRO', 'WWF NO MERCY', 'WRESTLING', 'BOSS STAGES'];
 
 /* ---------------- SUN RĀ — THE STARING SKY ----------------
    Boss stage. Kevin's home base (he takes Baek's roster slot; can fight
@@ -1083,7 +1922,7 @@ async function buildSunRa(g, def, api) {
   const eyeLight = new THREE.PointLight(0xff3a22, 25, 40, 2);
   eyeLight.position.set(0, 31.75, -40.4); // owner 2026-10-19: raised 25% on Y with the glow g.add(eyeLight);
   try {
-    const gltf = await new GLTFLoader().loadAsync('assets/stages/sunra/mars-sky.glb');
+    const gltf = await loadGlbCandidates(new GLTFLoader(), 'assets/stages/sunra/mars-sky.glb');
     marsHead = gltf.scene;
     // normalize: fit head height to ~11 units, center it on MARS_POS
     const bbox = new THREE.Box3().setFromObject(marsHead);

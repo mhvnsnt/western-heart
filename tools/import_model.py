@@ -55,13 +55,58 @@ def main():
     a = ap.parse_args(); cid = a.character
     d = ROOT / "roster" / cid / "imports"; d.mkdir(parents=True, exist_ok=True)
     src = fetch(a.src, d)
+    # BLENDER17-01 fallback import path (worker 80, 2026-10-22): SmutBase
+    # .blend files carrying the 17-byte BLENDER17-01 header (often inside a
+    # zstd stream mislabeled ".blend") route through the direct mesh
+    # extractor instead of failing at the GLB gate. The extractor builds an
+    # unrigged GLB (+ armature/weights JSON sidecars) for the normal
+    # auto-rig pipeline. See tools/blender17-extract/README.md.
+    _b17 = ROOT / "tools" / "blender17-extract" / "route.py"
+    if _b17.exists():
+        import importlib.util
+        _spec = importlib.util.spec_from_file_location("blend17_route", str(_b17))
+        _mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        _routed = _mod.maybe_route(src, d / "blend17")
+        if _routed:
+            print(f"BLEND17-01 fallback: {src} -> {_routed}")
+            src = _routed
+    # UNIRIG GPU auto-rig hook (tools/rig-intake/): when an unrigged mesh comes
+    # in and a CUDA GPU + UniRig checkout are present, rig it here so the rest
+    # of the pipeline runs unchanged. Graceful no-op otherwise.
+    _unirig_rep = {}
+    try:
+        _probe = pygltflib.GLTF2().load(str(src)) if str(src).lower().endswith(".glb") else None
+    except Exception:
+        _probe = None
+    if _probe is not None and not _probe.skins:
+        _uri = ROOT / "tools" / "rig-intake" / "unirig_intake.py"
+        if _uri.exists():
+            import importlib.util as _ilu
+            try:
+                _uspec = _ilu.spec_from_file_location("wh_unirig_intake", str(_uri))
+                _umod = _ilu.module_from_spec(_uspec)
+                _uspec.loader.exec_module(_umod)
+                _rigged = _umod.maybe_autorig(src, d / "unirig")
+                if _rigged:
+                    print(f"UNIRIG auto-rig: {src} -> {_rigged}")
+                    _unirig_rep = {"provider": "UniRig (SIGGRAPH 2025)",
+                                   "unrigged_input": str(src), "rigged_output": str(_rigged)}
+                    src = _rigged
+            except Exception as e:
+                print(f"UNIRIG hook skipped ({e}); continuing with original mesh")
     v = 1
     while (d / f"{a.attire}_v{v}.glb").exists(): v += 1           # version, never overwrite
     dst = d / f"{a.attire}_v{v}.glb"; shutil.copy2(src, dst)
     assert sha(src) == sha(dst); print("COPY", dst.relative_to(ROOT), sha(dst)[:16])
     g = pygltflib.GLTF2().load(str(dst)); gates, rep = {}, {"source": a.src, "sha256_source": sha(src), "file": str(dst.relative_to(ROOT)), "sha256": sha(dst)}
+    if _unirig_rep:
+        rep["unirig_autorig"] = _unirig_rep
     if not g.skins:
-        gates["rigged"] = False; rep["fix"] = "Unrigged mesh: run Tripo/Mixamo auto-rig on the T-pose model (docs/tpose-refs/MUSE_TPOSE_SPEC.md), then re-import."
+        gates["rigged"] = False
+        rep["fix"] = ("Unrigged mesh and no GPU auto-rig ran. Options: "
+                      "(1) UniRig GPU auto-rig — setup: tools/rig-intake/UNIRIG-SETUP.md (needs CUDA 8GB+); "
+                      "(2) run Tripo/Mixamo auto-rig on the T-pose model (docs/tpose-refs/MUSE_TPOSE_SPEC.md), then re-import.")
     else:
         sk = g.skins[0]; W = world_mats(g)
         bmap = {g.nodes[j].name: canon_name(g.nodes[j].name) for j in sk.joints}
