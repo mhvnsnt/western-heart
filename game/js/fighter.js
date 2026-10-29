@@ -727,12 +727,12 @@ export class Fighter {
   }
 
   /* ---------------- combat intents ---------------- */
-  _hasGroundMoves() {
-    if (this._groundMovesFor !== this._movesetId) {
-      this._groundMovesFor = this._movesetId;
-      this._groundMoves = !!resolveMoveKey(this._movesetId, 'FUFT.3') || !!resolveMoveKey(this._movesetId, 'FUFT.4') || !!resolveMoveKey(this._movesetId, 'FUFT.3,3');
+  _hasGroundMoves(p = 'FUFT') {
+    if (this._groundMovesFor !== this._movesetId) { this._groundMovesFor = this._movesetId; this._groundMoves = {}; }
+    if (this._groundMoves[p] == null) {
+      this._groundMoves[p] = ['3', '4', '3,3', '1', '2', '1+2', '3+4'].some((b) => !!resolveMoveKey(this._movesetId, p + '.' + b));
     }
-    return this._groundMoves;
+    return this._groundMoves[p];
   }
   canAct() {
     // Mid-cinematic: rooted, cannot act (but still vulnerable — damage
@@ -2265,6 +2265,8 @@ export class Fighter {
         this.vy = 4 * JUGGLE_PEAK / T; this._juggleG = 8 * JUGGLE_PEAK / (T * T);
       }
       this._queuedNext = null; this._queuedAfter = null; this._stringGraceUntil = 0; // getting hit kills your string
+      // Hit in the back (BT) the victim falls forward past its feet: it lands head towards the attacker.
+      this._kdHeadTowards = this.stance === 'BT';
       this._enter('knockdown');
     } else {
       const t8adv = move.t8 ? (counter && move.t8.ch != null ? move.t8.ch : move.t8.hit) : null;
@@ -2300,6 +2302,7 @@ export class Fighter {
         this.stun = Math.max(this.stun, TORNADO_BOUND_STUN);
       }
       this.vx = dir * (move.knock || 2) * 0.5; this.onGround = false;
+      this._kdHeadTowards = true; // screw/tornado spins the body round: lands head towards
       this._enter('knockdown');
     }
     // Wall-splat follow-up (distinct from wall break): a splatted
@@ -2310,6 +2313,7 @@ export class Fighter {
       if (this._wallSplatHits >= WALL_SPLAT_MAX_HITS) {
         this._wallSplatHits = 0;
         this.vx = dir * (move.knock || 2);
+        this._kdHeadTowards = true; // slides down the wall head-first towards the attacker
         this._enter('knockdown');
       } else {
         this.vx = 0; this.vy = 0; this.stun = WALL_SPLAT_STUN;
@@ -2775,7 +2779,9 @@ export class Fighter {
         /* Tekken ground state (sweep 2026-10-29): leaving a knockdown the fighter is still on
            its back for a short window; moves listed 'while on back[, feet towards opponent]'
            (FUFT.) are pressed from it, like any stance prefix. Only when the moveset has them. */
-        if (this._hasGroundMoves()) { this.stance = 'FUFT'; this.stanceT = 0.6; }
+        const gs = this._kdHeadTowards && this._hasGroundMoves('FUHT') ? 'FUHT' : 'FUFT';
+        if (this._hasGroundMoves(gs)) { this.stance = gs; this.stanceT = 0.6; }
+        this._kdHeadTowards = false;
       } break;
       // GAP-FILL LANE 1: wall splat sticks the victim to the
       // wall for its stun window; expiry returns to neutral and
