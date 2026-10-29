@@ -445,8 +445,11 @@ export class Fighter {
     if (this.stats.speed > 3.5) this.stats.speed = 3.5;
     this.aiProfile = charData.ai || { aggression: 0.6, grabBias: 0.15, reaction: 0.55 };
 
-    // vitals
-    this.maxHp = 100; this.hp = 100;
+    // vitals — Tekken 7 round health: 180 (owner order 2026-10-29).
+    // Move damage values are unchanged; the HUD bars draw hp/maxHp as a
+    // percentage (game/js/main.js), so each hit now takes a smaller,
+    // Tekken-7-sized slice of the bar (~10-15 clean hits plus combos).
+    this.maxHp = 180; this.hp = 180;
     this.meter = 0; this.maxMeter = 100; // NINE-SOUL METER
     // SOUL-SPIRIT TOGGLE (worker 83, owner directive 2026-10-22 ~23:02 CDT):
     // a vessel-matched soul feeds its vessel faster meter gain.
