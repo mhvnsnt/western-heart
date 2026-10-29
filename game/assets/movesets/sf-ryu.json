@@ -1,0 +1,949 @@
+{
+  "fighter": "sf-ryu",
+  "display": "RYU (SF EX)",
+  "tekken_base": "Ryu (SF)",
+  "t3_source": "jin",
+  "proxy": false,
+  "proxy_note": "Real SF move data (names/commands). anim_ref uses the Tekken-bank proxy until SF animations are decoded from PL/*.PAC; frame data estimated from archetype.",
+  "schema_version": 2,
+  "sf_translation_contract": "1=LP, 2=MP, 1+2=HP, 3=LK, 4=MK, 3+4=HK; 3P(all punches)=1+2, 3K(all kicks)=3+4; motions preserved: qcf/dp/qcb/hcb/charge/360/720; Akuma-in-T7 pattern",
+  "sf_move_provenance": "SFEX+alpha + EX2 Plus move data. Binary-verbatim special names; guide inputs. Shin Sho Ryu Ken / Fire Hado Ken flagged EX2+ (not in the EX+alpha binary list).",
+  "frame_convention": "SFEX 60fps -> seconds; damage scaled SFEX 144HP -> WH 100HP (x0.69)",
+  "moves": {
+    "1": {
+      "name": "RYU Standing Jab (LP)",
+      "input": "1",
+      "sf_move": "Standing Jab (LP)",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.35,
+      "damage": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "2": {
+      "name": "RYU Standing Strong (MP)",
+      "input": "2",
+      "sf_move": "Standing Strong (MP)",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.4,
+      "damage": 8,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "1+2": {
+      "name": "RYU Standing Fierce (HP)",
+      "input": "1+2",
+      "sf_move": "Standing Fierce (HP)",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.45,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
+    },
+    "3": {
+      "name": "RYU Standing Short (LK)",
+      "input": "3",
+      "sf_move": "Standing Short (LK)",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.4,
+      "damage": 6,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "4": {
+      "name": "RYU Standing Forward (MK)",
+      "input": "4",
+      "sf_move": "Standing Forward (MK)",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.45,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "3+4": {
+      "name": "RYU Standing Roundhouse (HK)",
+      "input": "3+4",
+      "sf_move": "Standing Roundhouse (HK)",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.217,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 13,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "3+4"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 51,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
+    },
+    "d/f+1": {
+      "name": "RYU Crouching Jab",
+      "input": "d/f+1",
+      "sf_move": "Crouching Jab",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.33,
+      "damage": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "d/f+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 179,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "d/f+2": {
+      "name": "RYU Crouching Strong",
+      "input": "d/f+2",
+      "sf_move": "Crouching Strong",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.4,
+      "damage": 8,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "d/f+2"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 269,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "d/f+1+2": {
+      "name": "RYU Crouching Fierce",
+      "input": "d/f+1+2",
+      "sf_move": "Crouching Fierce",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.217,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 13,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "d/f+1+2"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 123,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
+    },
+    "d/f+3": {
+      "name": "RYU Crouching Short",
+      "input": "d/f+3",
+      "sf_move": "Crouching Short",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.33,
+      "damage": 6,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "d/f+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 143,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "d/f+4": {
+      "name": "RYU Crouching Forward",
+      "input": "d/f+4",
+      "sf_move": "Crouching Forward",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.183,
+      "active": 0.05,
+      "recovery": 0.42,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "d/f+4"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 205,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "d/f+3+4": {
+      "name": "RYU Crouching Roundhouse",
+      "input": "d/f+3+4",
+      "sf_move": "Crouching Roundhouse",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.217,
+      "active": 0.05,
+      "recovery": 0.53,
+      "damage": 14,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "d/f+3+4"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 134,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
+    },
+    "u+1": {
+      "name": "RYU Jumping Jab",
+      "input": "u+1",
+      "sf_move": "Jumping Jab",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.15,
+      "active": 0.067,
+      "recovery": 0.3,
+      "damage": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "u+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "u+2": {
+      "name": "RYU Jumping Strong",
+      "input": "u+2",
+      "sf_move": "Jumping Strong",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.167,
+      "active": 0.067,
+      "recovery": 0.33,
+      "damage": 8,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "u+2"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "u+1+2": {
+      "name": "RYU Jumping Fierce",
+      "input": "u+1+2",
+      "sf_move": "Jumping Fierce",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.183,
+      "active": 0.067,
+      "recovery": 0.38,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "u+1+2"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 31,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
+    },
+    "u+3": {
+      "name": "RYU Jumping Short",
+      "input": "u+3",
+      "sf_move": "Jumping Short",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.15,
+      "active": 0.067,
+      "recovery": 0.3,
+      "damage": 6,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "u+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "u+4": {
+      "name": "RYU Jumping Forward",
+      "input": "u+4",
+      "sf_move": "Jumping Forward",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.167,
+      "active": 0.067,
+      "recovery": 0.35,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "u+4"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 89,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "u+3+4": {
+      "name": "RYU Jumping Roundhouse",
+      "input": "u+3+4",
+      "sf_move": "Jumping Roundhouse",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.183,
+      "active": 0.067,
+      "recovery": 0.4,
+      "damage": 13,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "u+3+4"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "f+4": {
+      "name": "RYU Senpu Kyaku (overhead)",
+      "input": "f+4",
+      "sf_move": "Sempu-Kyaku",
+      "sf_input": "f + MK",
+      "sf_category": "command-normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "binary:SLUS_005.48 / guide:dlh",
+      "startup": 0.217,
+      "active": 0.05,
+      "recovery": 0.47,
+      "damage": 10,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.8,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "f+4"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 214,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "qcf+1+2": {
+      "name": "RYU Hado Ken (fireball)",
+      "input": "qcf+1+2",
+      "sf_move": "Hado-Ken",
+      "sf_input": "qcf + P",
+      "sf_category": "special",
+      "sf_game": "sfex+alpha",
+      "sf_source": "binary:SLUS_005.48 / guide:dlh",
+      "startup": 0.217,
+      "active": 0.067,
+      "recovery": 0.6,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.6,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "qcf+1+2"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "f,d,df+1+2": {
+      "name": "RYU Sho Ryu Ken (DP)",
+      "input": "f,d,df+1+2",
+      "sf_move": "Shoryu-Ken",
+      "sf_input": "f,d,df + P",
+      "sf_category": "special",
+      "sf_game": "sfex+alpha",
+      "sf_source": "binary:SLUS_005.48 / guide:dlh",
+      "startup": 0.067,
+      "active": 0.117,
+      "recovery": 0.6,
+      "damage": 16,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "f,d,df+1+2"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "qcb+3+4": {
+      "name": "RYU Tatsumaki Senpu Kyaku (hurricane)",
+      "input": "qcb+3+4",
+      "sf_move": "Tatsumaki-Sempu-Kyaku",
+      "sf_input": "qcb + K (x3)",
+      "sf_category": "special",
+      "sf_game": "sfex+alpha",
+      "sf_source": "binary:SLUS_005.48 / guide:dlh",
+      "startup": 0.167,
+      "active": 0.217,
+      "recovery": 0.5,
+      "damage": 14,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 3.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "qcb+3+4"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "u,qcb+3+4": {
+      "name": "RYU air Tatsumaki Senpu Kyaku",
+      "input": "u,qcb+3+4",
+      "sf_move": "Tatsumaki-Sempu-Kyaku",
+      "sf_input": "qcb + K (air)",
+      "sf_category": "special",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:dlh",
+      "startup": 0.167,
+      "active": 0.217,
+      "recovery": 0.4,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 3.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "u,qcb+3+4"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "qcf,qcf+1+2": {
+      "name": "RYU Shinku Hado Ken (Lv1+)",
+      "input": "qcf,qcf+1+2",
+      "sf_move": "Shinku-Hado-Ken",
+      "sf_input": "qcf,qcf + P",
+      "sf_category": "super",
+      "sf_game": "sfex+alpha",
+      "sf_source": "binary:SLUS_005.48 / guide:dlh",
+      "startup": 0.183,
+      "active": 0.167,
+      "recovery": 0.72,
+      "damage": 24,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.5,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "qcf,qcf+1+2"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "qcb,qcb+3+4": {
+      "name": "RYU Shinku Tatsumaki Senpu Kyaku (Lv1+)",
+      "input": "qcb,qcb+3+4",
+      "sf_move": "Shinku-Tatsumaki",
+      "sf_input": "qcb,qcb + K",
+      "sf_category": "super",
+      "sf_game": "sfex+alpha",
+      "sf_source": "binary:SLUS_005.48 / guide:dlh",
+      "startup": 0.217,
+      "active": 0.283,
+      "recovery": 0.65,
+      "damage": 26,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "qcb,qcb+3+4"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "qcf,qcf+3+4": {
+      "name": "RYU Shin Sho Ryu Ken (Lv3) [EX2+]",
+      "input": "qcf,qcf+3+4",
+      "sf_move": "Shin Sho Ryu Ken",
+      "sf_input": "qcf,qcf + KKK",
+      "sf_category": "super",
+      "sf_game": "sfex2plus",
+      "sf_source": "guide:scwiki",
+      "startup": 0.1,
+      "active": 0.4,
+      "recovery": 0.72,
+      "damage": 34,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "qcf,qcf+3+4"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "qcb+1+2": {
+      "name": "RYU Fire Hado Ken (Lv) [EX2+]",
+      "input": "qcb+1+2",
+      "sf_move": "Fire Hadou Ken",
+      "sf_input": "qcb + P (hits twice)",
+      "sf_category": "special",
+      "sf_game": "sfex2plus",
+      "sf_source": "guide:scwiki",
+      "startup": 0.217,
+      "active": 0.067,
+      "recovery": 0.6,
+      "damage": 15,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.0,
+      "soulGain": 8,
+      "anim_ref": "t3:jin",
+      "input_slots": [
+        "qcb+1+2"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "df+3": {
+      "name": "Crouching Medium Kick",
+      "input": "df+3",
+      "sf_move": "Crouching Medium Kick",
+      "sf_command": "2+MK",
+      "startup": 0.117,
+      "active": 0.05,
+      "recovery": 0.4,
+      "damage": 9,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 10,
+      "anim_ref": "sf:df-3",
+      "input_slots": [
+        "df+3"
+      ],
+      "move_class": "strike",
+      "wh_note": "The classic footsie poke; cancels into Hadouken.",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "qcf+2": {
+      "name": "Hadouken",
+      "input": "qcf+2",
+      "sf_move": "Hadouken",
+      "sf_command": "236+P",
+      "startup": 0.217,
+      "active": 0.05,
+      "recovery": 0.816,
+      "damage": 8,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "sf:ryu:hadouken",
+      "input_slots": [
+        "qcf+2"
+      ],
+      "move_class": "special",
+      "wh_note": "Fireball. Tekken (Akuma) translation: projectile, chip damage, sidestep beats it.",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "hcb+2": {
+      "name": "Shakunetsu Hadouken",
+      "input": "hcb+2",
+      "sf_move": "Shakunetsu Hadouken",
+      "sf_command": "63214+P",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.9,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 12,
+      "anim_ref": "sf:ryu:shakunetsu",
+      "input_slots": [
+        "hcb+2"
+      ],
+      "move_class": "special",
+      "wh_note": "Flaming multi-hit fireball.",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "f,d,df+1": {
+      "name": "Shoryuken",
+      "input": "f,d,df+1",
+      "sf_move": "Shoryuken",
+      "sf_command": "623+P",
+      "startup": 0.05,
+      "active": 0.2,
+      "recovery": 0.7,
+      "damage": 14,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.8,
+      "soulGain": 12,
+      "anim_ref": "sf:ryu:shoryuken",
+      "input_slots": [
+        "f,d,df+1"
+      ],
+      "move_class": "special",
+      "wh_note": "Invincible anti-air uppercut (3f startup, SFIV data).",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "qcb+3": {
+      "name": "Tatsumaki Senpuukyaku",
+      "input": "qcb+3",
+      "sf_move": "Tatsumaki Senpuukyaku",
+      "sf_command": "214+K",
+      "startup": 0.183,
+      "active": 0.25,
+      "recovery": 0.6,
+      "damage": 12,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 3.4,
+      "soulGain": 12,
+      "anim_ref": "sf:ryu:tatsumaki",
+      "input_slots": [
+        "qcb+3"
+      ],
+      "move_class": "special",
+      "wh_note": "Hurricane kick; advances, juggle filler.",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "1+3": {
+      "name": "Seoi Throw",
+      "input": "1+3",
+      "sf_move": "Seoi Throw",
+      "sf_command": "close LP+LK",
+      "startup": 0.083,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 3.2,
+      "soulGain": 10,
+      "anim_ref": "sf:1-3",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 139,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
+    },
+    "qcf,qcf+2": {
+      "name": "Shinkuu Hadouken",
+      "input": "qcf,qcf+2",
+      "sf_move": "Shinkuu Hadouken",
+      "sf_command": "236236+P (super)",
+      "startup": 0.15,
+      "active": 0.3,
+      "recovery": 1.0,
+      "damage": 26,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 25,
+      "anim_ref": "sf:ryu:shinkuu",
+      "input_slots": [
+        "qcf,qcf+2"
+      ],
+      "move_class": "special",
+      "wh_note": "Super fireball, 5 hits.",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    }
+  },
+  "sf_authentic": true,
+  "variant": 1,
+  "sf_lane_note": "Content-merged 2026-10-20: lane sf/teardown-moves-20261019 (PR #354, 11 moves) + this lane's game-verified set (27 moves). Union by input key; collisions kept the game-verified variant. See SF-TEARDOWN-STATUS.md.",
+  "hit_words": {},
+  "stance_after": {}
+}
