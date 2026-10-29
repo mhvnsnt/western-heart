@@ -13,4 +13,6 @@ regexes = [
   '''"?key"?\s*[:=]\s*"t7\.[a-z0-9]+(?:_[a-z0-9]+)*_\d+"''',
   # stance-move ids in the same files, e.g. "key": "MANJI_SPIN_LOW_KICKS.4"
   '''"?key"?\s*:\s*"[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)+\.\d+"''',
+  # donor-bank move ids in the same files, e.g. "key": "donor.docfrank.bp_3"
+  '''"?key"?\s*:\s*"donor(?:\.[a-z0-9]+)+_[a-z0-9_]+"''',
 ]
