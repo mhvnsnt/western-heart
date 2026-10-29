@@ -1,6 +1,6 @@
 # Moveset sweep matrix (2026-10-29)
 
-97/129 fighters ran: 55986 moves, 45357 pass, 9367 fail, 1262 n/a. Full rerun 2026-10-29 (`rerun-20261029/`), one result per fighter. Bodies follow the game's default attire (sweep-bodies.md); blockers are listed with their reason.
+97/129 fighters ran: 55986 moves, 46920 pass, 7809 fail, 1257 n/a. Full rerun 2026-10-29 (`rerun-20261029/`); 13 fighters re-swept after #1195/#1196 (r11), one result per fighter. Bodies follow the game's default attire (sweep-bodies.md); blockers are listed with their reason.
 
 Moveset editor e2e: 128/128 open/edit/save/reload/reset (`editor.json`). Fight shots: `sweep-*.png`.
 
@@ -14,11 +14,11 @@ Moveset editor e2e: 128/128 open/edit/save/reload/reset (`editor.json`). Fight s
 | bob | 581 | 536 | 34 | 11 | 45/101 | ran |
 | bruno | 352 | 331 | 2 | 19 | 6/19 | ran |
 | buffalo-bill | 824 | 680 | 134 | 10 | 54/106 | ran |
-| burger-demon | 490 | 452 | 26 | 12 | 43/104 | ran |
+| burger-demon | 490 | 456 | 22 | 12 | 43/104 | ran |
 | burger-speed-demon | 478 | 440 | 26 | 12 | 43/101 | ran |
 | burger-the-mouth | 478 | 441 | 26 | 11 | 43/105 | ran |
 | burger | 576 | 529 | 38 | 9 | 8/29 | ran |
-| byou | 757 | 574 | 176 | 7 | 32/71 | ran |
+| byou | 757 | 583 | 168 | 6 | 32/71 | ran |
 | cainelias | 65 | 63 | 2 | 0 | 3/12 | ran |
 | charger-attire2 | 218 | 162 | 54 | 2 | 3/14 | ran |
 | charger | 222 | 165 | 55 | 2 | 3/15 | ran |
@@ -39,10 +39,10 @@ Moveset editor e2e: 128/128 open/edit/save/reload/reset (`editor.json`). Fight s
 | doa-jannlee | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
 | doa-kasumi | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
 | doa-tina | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
-| doc-frank-frankenstein | 817 | 483 | 313 | 21 | 0/19 | ran |
-| doc-frank-hood | 921 | 540 | 356 | 25 | 0/19 | ran |
-| doc-frank-machine-shop | 962 | 564 | 372 | 26 | 0/19 | ran |
-| doc-frank-wowomomo | 921 | 519 | 376 | 26 | 0/19 | ran |
+| doc-frank-frankenstein | 817 | 669 | 128 | 20 | 0/26 | ran |
+| doc-frank-hood | 921 | 744 | 152 | 25 | 0/28 | ran |
+| doc-frank-machine-shop | 962 | 790 | 147 | 25 | 0/28 | ran |
+| doc-frank-wowomomo | 921 | 744 | 152 | 25 | 0/28 | ran |
 | docfrank | 404 | 289 | 109 | 6 | 4/16 | ran |
 | dorowani | 194 | 162 | 31 | 1 | 3/11 | ran |
 | dxmmii-patchwork | 189 | 183 | 5 | 1 | 3/12 | ran |
@@ -51,13 +51,13 @@ Moveset editor e2e: 128/128 open/edit/save/reload/reset (`editor.json`). Fight s
 | gyou | 1033 | 888 | 122 | 23 | 57/88 | ran |
 | hugo | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
 | iori | 215 | 199 | 15 | 1 | 3/12 | ran |
-| jin_soul | 1041 | 785 | 215 | 41 | 71/197 | ran |
+| jin_soul | 1041 | 819 | 182 | 40 | 73/203 | ran |
 | kai | 906 | 713 | 165 | 28 | 46/128 | ran |
 | kingtyrant | 877 | 725 | 132 | 20 | 22/41 | ran |
 | kinpo | 549 | 504 | 35 | 10 | 72/101 | ran |
-| koreshi | 1109 | 807 | 289 | 13 | 5/29 | ran |
-| kronos-attire2 | 2629 | 1359 | 1230 | 40 | 5/78 | ran |
-| kronos | 929 | 620 | 297 | 12 | 5/36 | ran |
+| koreshi | 1109 | 897 | 199 | 13 | 5/29 | ran |
+| kronos-attire2 | 2629 | 1796 | 793 | 40 | 5/78 | ran |
+| kronos | 929 | 676 | 241 | 12 | 5/36 | ran |
 | kutz | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
 | lili | 532 | 374 | 135 | 23 | 31/60 | ran |
 | marduk | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
@@ -68,12 +68,12 @@ Moveset editor e2e: 128/128 open/edit/save/reload/reset (`editor.json`). Fight s
 | michiko | 368 | 337 | 12 | 19 | 4/15 | ran |
 | negativo | 311 | 281 | 14 | 16 | 4/15 | ran |
 | nightwolf | 591 | 538 | 44 | 9 | 13/46 | ran |
-| pantera | 903 | 726 | 163 | 14 | 13/36 | ran |
-| phantom | 1048 | 775 | 236 | 37 | 19/44 | ran |
+| pantera | 903 | 762 | 127 | 14 | 13/36 | ran |
+| phantom | 1048 | 820 | 191 | 37 | 22/50 | ran |
 | pond | 644 | 535 | 80 | 29 | 56/132 | ran |
 | purplerain | 593 | 498 | 79 | 16 | 8/22 | ran |
 | raiden | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
-| rave | 1115 | 919 | 183 | 13 | 24/80 | ran |
+| rave | 1115 | 930 | 172 | 13 | 24/80 | ran |
 | realizzt | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
 | retsu | 768 | 697 | 58 | 13 | 42/128 | ran |
 | rin | 739 | 675 | 50 | 14 | 38/83 | ran |
