@@ -1,0 +1,211 @@
+{
+ "fighter": "sf-sagat",
+ "display": "SAGAT (SF authentic)",
+ "tekken_base": "Sagat (SF) \u2014 Akuma-pattern translation",
+ "proxy": false,
+ "sf_authentic": true,
+ "sf_game_source": "SF EX / SFIV source move data",
+ "proxy_note": null,
+ "variant": 1,
+ "moves": {
+  "1": {
+   "name": "Tiger Jab",
+   "input": "1",
+   "sf_move": "Tiger Jab",
+   "sf_command": "LP",
+   "startup": 0.067,
+   "active": 0.05,
+   "recovery": 0.3,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 10,
+   "anim_ref": "sf:1",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "2": {
+   "name": "Tiger Elbow",
+   "input": "2",
+   "sf_move": "Tiger Elbow",
+   "sf_command": "MP",
+   "startup": 0.1,
+   "active": 0.05,
+   "recovery": 0.35,
+   "damage": 9,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 10,
+   "anim_ref": "sf:2",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "3": {
+   "name": "Low Tiger Kick",
+   "input": "3",
+   "sf_move": "Low Tiger Kick",
+   "sf_command": "LK",
+   "startup": 0.1,
+   "active": 0.05,
+   "recovery": 0.4,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 10,
+   "anim_ref": "sf:3",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "4": {
+   "name": "Tiger Knee Kick",
+   "input": "4",
+   "sf_move": "Tiger Knee Kick",
+   "sf_command": "MK",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.45,
+   "damage": 11,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 10,
+   "anim_ref": "sf:4",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "qcf+2": {
+   "name": "Tiger Shot",
+   "input": "qcf+2",
+   "sf_move": "Tiger Shot",
+   "sf_command": "236+P",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.7,
+   "damage": 9,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "sf:sagat:tiger-shot",
+   "input_slots": [
+    "qcf+2"
+   ],
+   "move_class": "special",
+   "wh_note": "High fireball; low variant on qcf+4."
+  },
+  "qcf+4": {
+   "name": "Ground Tiger Shot",
+   "input": "qcf+4",
+   "sf_move": "Ground Tiger Shot",
+   "sf_command": "236+K",
+   "startup": 0.25,
+   "active": 0.05,
+   "recovery": 0.7,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "sf:sagat:ground-tiger-shot",
+   "input_slots": [
+    "qcf+4"
+   ],
+   "move_class": "special",
+   "wh_note": "Low fireball."
+  },
+  "f,d,df+2": {
+   "name": "Tiger Uppercut",
+   "input": "f,d,df+2",
+   "sf_move": "Tiger Uppercut",
+   "sf_command": "623+P",
+   "startup": 0.083,
+   "active": 0.2,
+   "recovery": 0.8,
+   "damage": 16,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.0,
+   "soulGain": 12,
+   "anim_ref": "sf:sagat:tiger-uppercut",
+   "input_slots": [
+    "f,d,df+2"
+   ],
+   "move_class": "special",
+   "wh_note": "Towering anti-air uppercut."
+  },
+  "f,d,df+4": {
+   "name": "Tiger Knee Crush",
+   "input": "f,d,df+4",
+   "sf_move": "Tiger Knee Crush",
+   "sf_command": "623+K",
+   "startup": 0.2,
+   "active": 0.15,
+   "recovery": 0.55,
+   "damage": 14,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 3.6,
+   "soulGain": 12,
+   "anim_ref": "sf:sagat:tiger-knee-crush",
+   "input_slots": [
+    "f,d,df+4"
+   ],
+   "move_class": "special",
+   "wh_note": "Flying knee; crushes lows."
+  },
+  "1+3": {
+   "name": "Tiger Carry Throw",
+   "input": "1+3",
+   "sf_move": "Tiger Carry Throw",
+   "sf_command": "close LP+LK",
+   "startup": 0.083,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 13,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 10,
+   "anim_ref": "sf:1-3",
+   "input_slots": [
+    "1+3"
+   ],
+   "move_class": "throw"
+  },
+  "qcf,qcf+2": {
+   "name": "Tiger Cannon",
+   "input": "qcf,qcf+2",
+   "sf_move": "Tiger Cannon",
+   "sf_command": "236236+P (super)",
+   "startup": 0.2,
+   "active": 0.2,
+   "recovery": 1.0,
+   "damage": 27,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 25,
+   "anim_ref": "sf:sagat:tiger-cannon",
+   "input_slots": [
+    "qcf,qcf+2"
+   ],
+   "move_class": "special",
+   "wh_note": "Super: giant tiger shot."
+  }
+ },
+ "frame_convention": "SF 60fps -> seconds; damage scaled to WH 100HP; Akuma-in-T7 translation: SF motions kept, Tekken whiff/juggle/throw-break logic",
+ "schema_version": 2,
+ "hit_words": {},
+ "stance_after": {}
+}
