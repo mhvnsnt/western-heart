@@ -10,6 +10,8 @@
 import { chromium } from 'playwright';
 import fs from 'node:fs';
 const BASE = process.env.WH_URL || 'http://127.0.0.1:8811';
+// WH_LOAD_SCALE stretches the page / fight load timeouts on a loaded box (heavy bodies: bob, burgers).
+const LS = Math.max(1, Number(process.env.WH_LOAD_SCALE) || 1);
 const OUT = process.argv[2] || 'moveset-sweep-out';
 const OPP = process.env.WH_OPP || 'kronos';
 const LIMIT = +(process.env.WH_SWEEP_LIMIT || 0); // dev: moves per fighter
@@ -33,7 +35,7 @@ async function fight(P1, body) {
   // Tissue jiggle is cosmetic and not part of move correctness, so the sweep plays with it off.
   await p.addInitScript(() => { try { localStorage.setItem('wh_softbody_v1', 'off'); } catch {} });
   await p.goto(BASE + '/game/index.html');
-  await p.waitForFunction(() => window.__startFight, null, { timeout: 120000 });
+  await p.waitForFunction(() => window.__startFight, null, { timeout: 120000 * LS });
   // Moveset ids that are not roster ids play on their mapped WH roster body (bodies.mjs):
   // the roster entry with this moveset id and the mapped model, so p1._movesetId = P1.
   await p.evaluate(async ([a, c, bd]) => {
@@ -42,10 +44,10 @@ async function fight(P1, body) {
     const e = bd.rosterId ? R.getFighter(bd.rosterId) : R.modelPendingFighter(a);
     return window.__startFight(a, c, { playerChar: { ...e, id: a, model: bd.model, modelPending: false } });
   }, [P1, OPP, body]);
-  await p.waitForFunction(() => { const g = window.__game; return g && g.roundState === 'fight' && g.p1 && g.p2; }, null, { timeout: 400000, polling: 500 });
+  await p.waitForFunction(() => { const g = window.__game; return g && g.roundState === 'fight' && g.p1 && g.p2; }, null, { timeout: 400000 * LS, polling: 500 });
   if (process.env.WH_SWEEP_DEBUG) console.log(`.. ${P1}: in fight`);
   await p.evaluate(PAGE_LIB);
-  await p.waitForFunction(() => window.__sweepReady, null, { timeout: 60000 });
+  await p.waitForFunction(() => window.__sweepReady, null, { timeout: 60000 * LS });
   return p;
 }
 
