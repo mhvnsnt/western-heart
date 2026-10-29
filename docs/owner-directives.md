@@ -18,6 +18,49 @@ Living document. Updated every time the owner sets a directive. Newest first.
 ## 2026-10-22
 
 
+- **NINE SOULS CHARACTER SELECT REDESIGN (user directive 2026-10-22 ~23:02 CDT,
+  verbatim).** "Alright, that means everybody except for Zen and Gaiu has to
+  come off of the character select screen because they don't have actual um
+  bodies to select for fighters. But what we can do is make a version of them
+  where we have an attire for whoever they go to um Ren how he goes to Demonio
+  Bayu goes to Zui two goes to Pantera Shaw goes to Sakura and the other three
+  I mean the other two like we can have attires you know and so on down the
+  whole list um we can have an attire for each of those characters where they
+  have the spirit version of the non soul whatever one goes to them floating
+  behind them as an attire and so I'll make the spirit versions of those of
+  the non but since there's two of the nine that are actually have bodies and
+  fighters then those are the only two that should be on the character select
+  screen all the other ones should just be attire variants like you can select
+  to have them floating behind the attire like on or off like it shouldn't be
+  an in the attire thing whatever fighter has them you should be able to hit
+  it it's like a a tertiary thing where you can turn the um nine soul uh
+  spirit on or off and then choose between the nine souls but if you choose
+  the one that goes to the character you're choosing then it um empowers them
+  more or something like that and then log all of that and put it into the
+  repo word for word exactly how I said it"
+  - Interpretation locked with the user: the 7 vesseled souls (RIN, BYOU,
+    TOU, SHA, KAI, JIN, RETSU) come OFF the select grid as standalone
+    entries; only ZEN and GYOU stay selectable. Every fighter gets a
+    TERTIARY soul-spirit toggle (not an attire): on/off + pick any of the
+    nine souls; picking the soul that vessels into the chosen fighter
+    empowers them (gameplay buff). Phonetic spellings in the voice note:
+    "Ren"=RIN, "Bayu"=BYOU, "two"=TOU, "Shaw"=SHA, "Sakura"=Saku Ra,
+    "Gaiu"=GYOU. The user makes the spirit versions themselves — no
+    AI-generated stand-ins. Implementation: `game/js/soul-spirit.js`,
+    select-screen toggle, `SELECT_HIDDEN` in `game/js/select-screen.js`.
+- **NINE SOULS: unlockable boss-type return (user refinement 2026-10-22
+  ~23:03 CDT, verbatim).** "We'll only add them like later on onto the
+  character list as like characters with vessels or bodies as like kind of
+  boss creatures but we'll figure out how that gets done later on as we
+  progress through all the different modes and the stories and things for the
+  characters. The the seven of the nine souls that don't have bodies we'll
+  figure out how to incorporate them into the character select screen later
+  so for right now they have to come off of the character select screen until
+  we get them unlockable and with bodies."
+  - The 7 stay OFF the grid for now; they return later as UNLOCKABLE
+    boss-type characters with vessels/bodies. The unlock path gets designed
+    as story modes progress — not now. Zen and Gyou remain selectable per
+    the previous directive. The soul-spirit toggle still applies.
 - **BANNON SUB-UNIVERSE LAW (2026-10-22).** The Bannon/Ashlane/BrutalFist universe is a
   SUB-UNIVERSE of the Western Heart multiverse. The Bannon game
   (`mhvnsnt/brutalfistgrokversion`, `native/media/characters/chara_bannon/` — identity,
@@ -379,6 +422,15 @@ Decision log: `docs/decisions/2026-10-22-integration-law.md`.
   fighter — refused. The tripo-intake lane must produce a phantom intake rig
   first; the config repoint is a one-line follow-up once it lands.
 
+## Dio Attire 1 archive + moveset spec (user directive 2026-10-22, worker 73)
+**Character (user's words):** DIO — Shuten-dōji (酒呑童子) inspired Oni, the Oni King of Mount Ōe. Massive, muscular demon with wild hair, horns, fierce face, fangs, claw-like nails. Jade/green skin. Levitating tattered wind-blown clothing. Godly demonic power vibe.
+**Moveset (user's words):** Dio takes over AKUMA's slot completely — all of Akuma's moves, stance, animations, everything (Akuma is Dio's claimed moveset source; recorded in docs/movesets/SOURCE-MERGE-2026-10-21.json fighters/dio and docs/MOVESET-COVERAGE.md) — PLUS elemental god powers: lightning, water, air, fire, thunder, different elemental attack types. "The all powerful demon" — a god of elements.
+**Archive:** roster/dio/attires/attire1/source/dio-a1-fantasy-demon.glb (Tripo "fantasy demon 3d model", 21,600,980 bytes) + manifest.json, immutable-original annotated tag `dio-a1-original` ("Restore point: these bytes never change"). Archive-only restore point — unrigged static, NOT wired into MODEL_URLS. Full spec in docs/research/DIO-ATTIRE1-ARCHIVE-2026-10-22.md. The user is making Dio themselves — this archive and spec are the crew's support lane, not a replacement for their work.
+
+## Dio "Million Eyes Demon" transformation (user directive 2026-10-22 ~20:06 CDT, worker 73)
+**Transformation form (user's words):** "Million Eyes Demon" — red-skinned demon, million eyes, horns all over body. Red Super Saiyan-type aura with electricity and energy/ki around him.
+**Archive:** roster/dio/transformation/source/dio-transformation-million-eyes.glb (Tripo "demon creature 3d model", 23,422,084 bytes) + manifest.json, immutable-original annotated tag `dio-transformation-original` ("Restore point: these bytes never change"). Archive-only restore point — unrigged static, NOT wired into MODEL_URLS.
+**Transformation-sequence requirement (user's words — future rig/anim work):** the user wants the visual transformation sequence/form like all other character transformations — the in-game transformation animation/VFX when he transforms. Recorded for the rig/anim lane (not built by this archive): (1) transformation trigger, same system other character transformations use; (2) aura/electricity/ki VFX — red Super Saiyan-type aura with electricity and energy/ki is the VFX target; (3) form swap — base Dio swaps to the Million Eyes Demon form as the sequence resolves.
 ## Bruno — Miguel moveset claim (user directive 2026-10-22)
 Bruno replaces MIGUEL (Tekken). Full moveset takeover: all of Miguel's moves, stance,
 animations. Miguel was not on the taken list — now claimed. Recorded in the Taken list
@@ -549,3 +601,50 @@ Per the AUTO-ARCHIVE standing directive: no wired auto-archive automation was fo
 - Canon: Gyou = **Flame Lord (Flaming Angel)**.
 - Future roadmap: various transformations + a giant **Susanoo form** with different levels and transformations.
 - Source model (Tripo "fiery humanoid 3d model") archived to `roster/gyou/spirit-body/source/` (worker 84, archive-only, not wired into MODEL_URLs); restore tag `gyou-spirit-body-original` ("Restore point: these bytes never change"). Spec for the future rig/anim lane: `roster/gyou/spirit-body/SPEC.md` (float behavior + transformation roadmap documented, not built).
+## SHRINE体系 (user directive 2026-10-24)
+- TempleOS-inspired mode, NOT called TempleOS in-game. Name:
+  "Shrine" + the kanji for OS. User correction: NOT "trying" —
+  "shrine, like a shrine, and then the kanji for OS".
+- Kanji LOCKED by owner 2026-10-24 ("The kanji for system is
+  good."): 体系 (taikei = system). In-game name: Shrine体系.
+- Wired three ways: (1) Heart and Mind Within — shrine terminal
+  segment at the Still Point (stage 5, octagonal-shrine), before
+  the shadow-self fight, for every fighter; (2) Eastern Mind
+  canon — sacred computer-system realm/artifact at the Octagonal
+  Shrine Par-fang, grounded in CANON.md; (3) own playable mode in
+  side games / for-fun section — retro terminal, 16-color look,
+  ORACLE / SPRITE / MUSIC / GAME commands, slope-descent
+  mini-game adapted from TempleOS's BlackDiamond.
+- TempleOS is public domain (Terry A. Davis, last release 5.03,
+  2017). Attribution stays in technical docs only, never in canon
+  writing or in-game text — same law as Tekken names.
+- Full record: docs/research/TEMPLEOS-SHRINE-OS-2026-10-24.md.
+
+## KUMA REPLACEMENT NAME LOCK: GASHADOKURO (user directive 2026-10-22)
+
+The Kuma replacement — white bone dragon/kaiju (Godzilla + SkullGreymon + Charizard mix, all white, rainbow-colored eyes, multicolored markings, multicolored Japanese cloud-smoke detail) — is named **GASHADOKURO**, after the giant skeleton yokai from Japanese folklore. This name is LOCKED and replaces the old "URSA" reserved placeholder.
+
+- Display-name mapping: internal ID `kuma` → display name "Gashadokuro". The roster dir and all plumbing keep the internal ID `kuma`; it is never renamed. The game layer resolves the display name from the ID.
+- Canon (recorded as stated; do not invent further): connected to ZUI — Zui fears/respects him, looks up to him like a protector/monster. Kaiju/yokai/spirit monster.
+- Note: Aotsuki/Aokami are Panda's name candidates and do NOT apply to the Kuma replacement. Gashadokuro is the Kuma replacement only.
+## Scimitar Attire 1 — pauldron-blade design + canon (user directive 2026-10-22, worker 77)
+- **DESIGN (user's words):** Shoulder pauldron on his RIGHT shoulder, comes down across his chest to the left like a cross, past the rib. A scimitar blade is attached to the armor.
+- **CANON (user's words):** The pauldron+blade is attached to his body and soul — he would DIE if he removed it. He can't separate the sword from the pauldron. He fights using the blade's positioning as part of his movements. The blade is positioned so it doesn't interfere with his other moves (not a hitbox problem — it's part of his style).
+- **FUTURE (user):** May get another sword later, or attach different gear via the creation suite. The pauldron-blade is PERMANENT.
+- **MOVESET:** Shaheen's moves (Shaheen already claimed for Scimitar — no new claim).
+- **ARCHIVE:** Tripo model `scimitar-a1-fantasy-warrior.glb` (24,166,404 bytes) → `roster/scimitar/attires/attire1/source/` + manifest.json. Immutable-original tag `scimitar-a1-original` ("Restore point: these bytes never change"). Archive-only: unrigged static, NOT wired into MODEL_URLs. Full record: `docs/research/SCIMITAR-ATTIRE1-DESIGN-CANON-2026-10-22.md`.
+
+## Free pulls + free GPU (user directives 2026-10-24 19:50 + 19:55 CDT)
+
+- 19:50 CDT: "Yeah, get all of that pulled in and wired up and any type of free stuff open source any experimental stuff Any industry standard stuff Anything like APIs any free APIs any GPU anything"
+- 19:55 CDT: "Get all of that free GPU stuff pulled in and wired up into the repo and start using that to speed things up and get higher quality and more optimized work and keep working on everything using all the GPU and all the different things."
+- Standing rules from these directives: do not filter (pull everything free, find experimental uses for seemingly-unusable items); use free GPU immediately, not just research (Kaggle first, then Colab, then WebGPU on-device, then stamped CPU fallback); a GPU job counts as run only with output plus verbatim nvidia-smi proof; no API keys in chat (browser sign-in or Secure Vault flows, or unauthenticated free tiers); GPU queue order: Nosferatu 25-track cut, UniRig auto-rigging, Real-ESRGAN upscale, gltfpack batch, character-card and stage-preview pre-render.
+- Wiring landed in this PR: tools/free-pulls (API clients, GPU catalog, GPU job queue, tools, fonts) and docs/research/FREE-PULLS-2026-10-24.md.
+
+## NO MID-SCREEN TEXT DURING FIGHTS — CLOSED (user directive 2026-10-25 06:16 CDT)
+
+- User (verbatim intent): "I told you to remove those fucking banners that pop up on the fucking screen no matter what the fuck they say, bro. If they pop up in the middle of the fucking screen, they need to be removed, bro. Stop making me fucking repeat myself."
+- LOCKED RULE: NO mid-screen text during fights, no matter what it says — TAG, RAGE, SOUL SURGE, all of it. Round-boundary ROUND/FIGHT!/K.O. only. Info survives as HUD tag/aura/gauge/flash/sound. Never ask again; this decision is closed.
+- MECHANISM: ui.hudNote() writes to #hud-note — small text under the health bars (top: 104px), never center-screen. Every former mid-fight banner call site was converted to hudNote (team-battle, brawler, training, modes, episodes, ranks, replay, soul-systems, game.js training RESET). The #1078-era Trial's Seal center banner was converted too — the keep-list is exhaustive, and the seal banner used to overwrite the K.O. banner in the same tick.
+- KEPT, with reason: game.js ROUND/FIGHT!/K.O./DOUBLE K.O. (round boundaries, Tekken does these); scene.js WebGL context-lost error path (renderer dead — an error screen, not a fight popup); voice subtitles (bottom-anchored); combo counter (upper-left HUD) and throw-break prompt (upper-center input prompt) — HUD elements, not center-screen banners; labels3d banner() is an unused in-world 3D label method with no call sites.
+- GUARD: test/no-midfight-banners.test.mjs fails if any converted file calls banner() again, if game.js gains a non-boundary banner call, or if the hudNote wiring (method + element + CSS) goes missing.

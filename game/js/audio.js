@@ -12,15 +12,21 @@ class AudioEngine {
     this.master = null;
     this.musicGain = null;
     this.sfxGain = null;
+    this.voiceGain = null;
     this.enabled = false;
     this._musicTimer = null;
     this._musicStep = 0;
+    this.muted = false;
+    try { this.muted = localStorage.getItem('wh-audio') === 'off'; } catch (e) { /* private mode */ }
   }
 
-  /* Must be called from a user gesture (mobile autoplay policy). */
+  /* Must be called from a user gesture (mobile autoplay policy).
+     Respects the SETTINGS mute pref: unlocking never re-enables sound
+     the user turned off. */
   unlock() {
     if (this.ctx) {
       if (this.ctx.state === 'suspended') this.ctx.resume();
+      this.enabled = !this.muted;
       return;
     }
     const AC = window.AudioContext || window.webkitAudioContext;
@@ -37,8 +43,17 @@ class AudioEngine {
     this.sfxGain.gain.value = 0.85;
     this.sfxGain.connect(this.master);
 
-    this.enabled = true;
+    this.voiceGain = this.ctx.createGain();
+    this.voiceGain.gain.value = 0.9;
+    this.voiceGain.connect(this.master);
+
+    this.enabled = !this.muted;
   }
+
+  /* Voice bus (2026-10-24): announcer + character voice route here so
+     voice can be levelled separately from SFX. Null before unlock —
+     voice.js already falls back to ctx.destination in that case. */
+  voiceBus() { return this.voiceGain; }
 
   get now() { return this.ctx ? this.ctx.currentTime : 0; }
 
@@ -168,6 +183,64 @@ class AudioEngine {
     this._osc('square', 520, t, t + 0.05, 0.15);
   }
 
+  /* ---------- Eastern Mind soundtrack (real Osamu Sato CD audio) ----------
+     The 1994 Eastern Mind CD tracks, converted to MP3 for web delivery
+     (WAV masters preserved in teardown/eastern-mind/soundtrack/).
+     User directive: Tong-Nou Theme plays AS-IS — it is literally our god's
+     theme. Other tracks placed per the registry below. Procedural music
+     yields while a real track plays. */
+  playEMTrack(id) {
+    const T = AudioEngine.EM_TRACKS[id];
+    if (!T || !this.enabled) return false;
+    this.stopMusic();
+    this.stopEMTrack();
+    const el = new Audio(T.file);
+    el.loop = !!T.loop;
+    el.volume = T.volume != null ? T.volume : 0.5;
+    el.play().catch(() => {});
+    this._emTrack = el;
+    this._emTrackId = id;
+    return true;
+  }
+
+  stopEMTrack() {
+    if (this._emTrack) {
+      try { this._emTrack.pause(); } catch (e) {}
+      this._emTrack = null;
+      this._emTrackId = null;
+    }
+  }
+
+  get emTrackPlaying() { return this._emTrackId; }
+
+  /* ---------- Eastern Mind SFX library (229 real game sounds) ----------
+     8-bit/22kHz mono WAVs from the original game, decoded on demand and
+     cached. Slots are catalogued in game/data/eastern-mind-sfx.json
+     (acoustic categorization — a listening pass refines semantics). */
+  playEMSfx(id) {
+    const path = AudioEngine.EM_SFX[id];
+    if (!path || !this.enabled) return;
+    if (this._emSfxCache && this._emSfxCache[id]) {
+      this._playDecodedSfx(this._emSfxCache[id]);
+      return;
+    }
+    fetch(path).then((r) => r.arrayBuffer())
+      .then((ab) => this.ctx.decodeAudioData(ab))
+      .then((buf) => {
+        this._emSfxCache = this._emSfxCache || {};
+        this._emSfxCache[id] = buf;
+        this._playDecodedSfx(buf);
+      }).catch(() => {});
+  }
+
+  _playDecodedSfx(buf) {
+    if (!this.enabled) return;
+    const src = this.ctx.createBufferSource();
+    src.buffer = buf;
+    src.connect(this.sfxGain);
+    src.start(this.now);
+  }
+
   /* ---------- Battle loop: taiko drums + shakuhachi-ish lead ---------- */
   startMusic() {
     if (!this.enabled || this._musicTimer) return;
@@ -212,7 +285,65 @@ class AudioEngine {
     if (this._musicTimer) { clearInterval(this._musicTimer); this._musicTimer = null; }
   }
 
+  /* SETTINGS sound toggle (owner 2026-10-24): mute/unmute everything.
+     Works before any gesture (stores the pref; unlock() applies it). */
+  setMuted(m) {
+    this.muted = !!m;
+    if (this.ctx) {
+      this.enabled = !this.muted;
+      if (this.muted) { try { this.stopMusic(); } catch (e) {} }
+    } else {
+      this.enabled = false;
+    }
+  }
+
   setMusicVolume(v) { if (this.musicGain) this.musicGain.gain.value = v; }
 }
+
+/* Eastern Mind soundtrack registry. Files: game/assets/audio/eastern-mind/
+   (MP3 web derivatives; WAV masters in teardown/eastern-mind/soundtrack/).
+   Placements per the owner directive: Tong-Nou Theme as-is on the main
+   menu; esoteric mix on select screens; transmigration over story endings;
+   ending theme under reincarnation/cutscene endings. */
+AudioEngine.EM_TRACKS = {
+  'tong-nou-theme': {
+    file: 'assets/audio/eastern-mind/tong-nou-theme.mp3',
+    title: 'Tong-Nou Theme (4:29)', loop: true, volume: 0.5,
+    placement: 'main menu — the head-world theme, plays as-is',
+  },
+  'tong-nou-esoteric-mix': {
+    file: 'assets/audio/eastern-mind/tong-nou-esoteric-mix.mp3',
+    title: 'Tong-Nou Esoteric Mix (8:01)', loop: true, volume: 0.45,
+    placement: 'character/stage select — long-form browsing music',
+  },
+  'transmigration-ending': {
+    file: 'assets/audio/eastern-mind/transmigration-ending.mp3',
+    title: 'Transmigration Ending Theme (5:16)', loop: false, volume: 0.5,
+    placement: 'story ending / credits',
+  },
+  'ending-theme': {
+    file: 'assets/audio/eastern-mind/ending-theme.mp3',
+    title: 'Ending Theme', loop: true, volume: 0.45,
+    placement: 'reincarnation screen / cutscene endings',
+  },
+};
+
+/* Eastern Mind SFX slot map. Paths are the real extracted sounds
+   (teardown/eastern-mind/...), relative to game/index.html.
+   Full 229-file catalog: game/data/eastern-mind-sfx.json. */
+AudioEngine.EM_SFX = {
+  'ui.click': '../teardown/eastern-mind/prologue-ending/sounds/D_FACE/D_FACE_s005.wav',
+  'ui.back': '../teardown/eastern-mind/prologue-ending/sounds/SHARED/SHARED_s007.wav',
+  'reincarn.death': '../teardown/eastern-mind/incarnation-system/sounds/R_JIN/R_JIN_s000.wav',
+  'reincarn.rebirth': '../teardown/eastern-mind/incarnation-system/sounds/R_SHA/R_SHA_s000.wav',
+  'trader.open': '../teardown/eastern-mind/stage-5-phantom-marketplace/sounds/D_MERCHA/D_MERCHA_s000.wav',
+  'stage.intro.tree-of-life': '../teardown/eastern-mind/stage-4-tree-of-life/sounds/L_TONNEL/L_TONNEL_s000.wav',
+  'stage.intro.plains-of-chi-u': '../teardown/eastern-mind/stage-1-plains-of-chi-u/sounds/F_KING/F_KING_s005.wav',
+  'stage.intro.helix-palace': '../teardown/eastern-mind/stage-2-helix-palace/sounds/G_CHIFA2/G_CHIFA2_s001.wav',
+  'stage.intro.palace-of-dreaming': '../teardown/eastern-mind/stage-3-palace-of-dreaming/sounds/W_AUN/W_AUN_s002.wav',
+  'stage.intro.phantom-marketplace': '../teardown/eastern-mind/stage-5-phantom-marketplace/sounds/D_MARKET/D_MARKET_s000.wav',
+  'stage.intro.octagonal-shrine': '../teardown/eastern-mind/stage-6-octagonal-shrine-par-fang/sounds/E_LAST/E_LAST_s000.wav',
+  'shrine.ambient': '../teardown/eastern-mind/stage-6-octagonal-shrine-par-fang/sounds/E_LAST/E_LAST_s000.wav',
+};
 
 export const audio = new AudioEngine();

@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="submenus.css" />
   <link rel="stylesheet" href="t7-skin.css" />
   <link rel="stylesheet" href="menu-t7.css" />
+  <link rel="stylesheet" href="ui-gaps.css" />
   <!-- Worker 35: colorblind-safe HUD palettes (worker-35 identity lane) -->
   <link rel="stylesheet" href="css/colorblind.css" />
   <!-- MENU FALLBACK CSS (2026-10-22, PR #676 rebase): if every stylesheet
@@ -152,15 +153,33 @@
 
     <div class="mm-toast" id="mm-toast" role="status"></div>
   </section>
-  <!-- Coming-soon screens: honest placeholders, each with BACK (no dead ends) -->
+  <!-- Hub + coming-soon screens: honest entries, each with BACK (no dead ends). The online section below is the live hub; sidegames/collection/daily entries route to real screens or state their rule. -->
+  <!-- ONLINE hub: same rows as the online.js hub template (TTT2-style quick
+       match + SFV-style battle lounge). The old placeholder section shadowed
+       that template (buildOnlineScreens early-returns when this section
+       exists) and lacked the #online-player-line / #online-event ids the hub
+       code fills — so the hub could never open. These rows route through the
+       existing document-level online actions in game/js/online.js; no new
+       wiring, no dead ends. Netcode honestly pending: needs the signaling
+       server (see hint). Connection bars are the online lane's work, not
+       claimed here. -->
   <section id="screen-online" class="screen">
-    <div class="menu-content"><div class="wh-placeholder">
-      <h2 class="screen-title">ONLINE</h2>
-      <p>Ranked Battle · Rank Hall · Tournament<br />Netcode is in development. The 53-tier rank system is ready.</p>
-      <div class="menu-buttons wh-main-menu">
-        <button class="wh-menu-btn wh-back" data-action="back-menu"><span class="wh-menu-icon">←</span><span class="wh-menu-label">BACK</span></button>
+    <div class="panel wh-online">
+      <p class="stage-kicker">WORLD ARENA</p>
+      <h2>ONLINE</h2>
+      <p class="stage-sub" id="online-player-line"></p>
+      <div class="wh-event-banner" id="online-event"></div>
+      <div class="menu-buttons">
+        <button class="btn-primary" data-action="online-quick">⚡ QUICK MATCH<small>TTT2 style — instant rival</small></button>
+        <button class="btn-primary" data-action="online-find">FIND LOUNGE<small>browse the World Arena</small></button>
+        <button class="btn-primary" data-action="online-create">CREATE LOUNGE<small>SFV battle lounge — your rules</small></button>
+        <button class="btn-primary" data-action="online-tournament">TOURNAMENT<small>single-elim bracket</small></button>
+        <button class="btn-primary" data-action="online-challenges">DAILY CHALLENGES<small>today's trials + rewards</small></button>
+        <button class="btn-ghost" data-action="back-menu">BACK</button>
       </div>
-    </div></div>
+      <p class="wh-hint">Netplay runs rollback over WebRTC (P2P). Needs the signaling
+      server: <span style="font-family:monospace">node game/netplay/signaling/server.js</span></p>
+    </div>
   </section>
   <section id="screen-sidegames" class="screen">
     <div class="menu-content"><div class="wh-placeholder">
@@ -171,20 +190,40 @@
       </div>
     </div></div>
   </section>
+  <!-- COLLECTION hub: the three T7 Collection components, listed — not fake
+       buttons. The live Gallery, Jukebox, and Replays screens open from the
+       Collection submenu (PR #1056: Gallery Endings / Episodes / Unlocked
+       tabs, WH content only, never Tekken FMVs; jukebox per-mode choice;
+       replay theater). This rail section is the hub entry: it names the
+       components and routes back to the main menu, where the submenu lives.
+       No component is faked as playable from here. -->
   <section id="screen-collection" class="screen">
     <div class="menu-content"><div class="wh-placeholder">
       <h2 class="screen-title">COLLECTION</h2>
-      <p>Gallery · Jukebox · Replays<br />Your journey through the Nine Souls, archived.</p>
+      <p>Your journey through the Nine Souls, archived.</p>
+      <div class="wh-collection-list">
+        <div><b>GALLERY</b><span>Unlocked endings, episodes, concept art — Western Heart content only.</span></div>
+        <div><b>JUKEBOX</b><span>Every stage theme, every character motif. Per-mode soundtrack choice.</span></div>
+        <div><b>REPLAYS</b><span>Save your fights. Study the tape. Steal your own habits back.</span></div>
+      </div>
+      <p class="wh-hint">Open the Collection submenu from the main menu for the live Gallery, Jukebox, and Replays screens.</p>
       <div class="menu-buttons wh-main-menu">
         <button class="wh-menu-btn wh-back" data-action="back-menu"><span class="wh-menu-icon">←</span><span class="wh-menu-label">BACK</span></button>
       </div>
     </div></div>
   </section>
+  <!-- DAILY CHALLENGES board: the board itself lives in the online hub
+       (game/js/online.js screen-challenges, driven by challenges.js). This
+       section is the rail entry: it states the board's rule (a fixed
+       fighter, a fixed foe, one cruel modifier; streaks earn exclusive
+       titles) and routes to the live board with a real action — no invented
+       trial data, no dead end. -->
   <section id="screen-daily" class="screen">
     <div class="menu-content"><div class="wh-placeholder">
       <h2 class="screen-title">DAILY CHALLENGES</h2>
-      <p>A new trial every day.<br />Complete it to earn souls.</p>
+      <p>A new trial every day at midnight: a fixed fighter, a fixed foe, one cruel modifier.<br />Streaks earn exclusive titles.</p>
       <div class="menu-buttons wh-main-menu">
+        <button class="wh-menu-btn" data-action="online-challenges"><span class="wh-menu-icon">⚡</span><span class="wh-menu-label">OPEN TODAY'S TRIALS</span></button>
         <button class="wh-menu-btn wh-back" data-action="back-menu"><span class="wh-menu-icon">←</span><span class="wh-menu-label">BACK</span></button>
       </div>
     </div></div>
@@ -198,11 +237,11 @@
         <div><b>Move</b><span>Left joystick / A · D keys</span></div>
         <div><b>Jump / Crouch</b><span>HOLD joystick up/down / W/S key</span></div>
         <div><b>Sidestep</b><span>TAP joystick up/down (background/foreground)</span></div>
-        <div><b>LP / RP</b><span>Left punch / right punch buttons · 1 / 2 keys</span></div>
-        <div><b>LK / RK</b><span>Left kick / right kick buttons · 3 / 4 keys</span></div>
-        <div><b>Throw</b><span>LP+LK or RP+RK together (1+3 / 2+4)</span></div>
-        <div><b>Break Throw</b><span>When grabbed: TAP the matching limb — LP breaks 1+3, RP breaks 2+4, LP+RP breaks command throws. Read the attacker's lead arm!</span></div>
-        <div><b>Strings</b><span>Chain limbs: 1,2 — directionals: f+1, d/f+2 — motions: qcf+2</span></div>
+        <div><b>LP1 / RP2</b><span>LP1 Left Punch / RP2 Right Punch buttons · 1 / 2 keys</span></div>
+        <div><b>LK3 / RK4</b><span>LK3 Left Kick / RK4 Right Kick buttons · 3 / 4 keys</span></div>
+        <div><b>Throw</b><span>LP1+LK3 or RP2+RK4 together (1+3 / 2+4)</span></div>
+        <div><b>Break Throw</b><span>When grabbed: TAP the matching limb — LP1 breaks 1+3, RP2 breaks 2+4, LP1+RP2 breaks command throws. Read the attacker's lead arm!</span></div>
+        <div><b>Strings</b><span>Chain limbs: LP1,RP2 — directionals: f+LP1, d/f+RP2 — motions: qcf+RP2</span></div>
         <div><b>Soul Surge</b><span>S button / L key (full Nine-Soul Meter)</span></div>
         <div><b>Block</b><span>B button / Space (hold)</span></div>
         <div><b>Dodge</b><span>D button / Shift</span></div>
@@ -210,6 +249,7 @@
       </div>
       <p class="howto-note">Light hits grant +8 soul, heavy +11, taking damage +6, blocking +4.
         Fill all 9 souls, then unleash your Soul Surge.</p>
+      <div class="howto-setting"><b>Sound</b><span><button id="opt-audio" class="btn-ghost" type="button" aria-label="Toggle sound">ON</button></span></div>
       <button class="btn-primary" data-action="back-menu">BACK</button>
     </div>
   </section>
@@ -328,10 +368,12 @@
   <!-- ====================== ROUND BANNER ====================== -->
   <div id="round-banner" class="banner"></div>
 
+  <!-- ====================== HUD NOTE (replaces mid-fight banners) ====================== -->
+  <div id="hud-note" class="hud-note"></div>
+
   <!-- ====================== SOUL SURGE FLASH ====================== -->
   <div id="surge-flash" class="surge-flash"></div>
   <div id="rage-flash" class="rage-flash"></div>
-  <div id="surge-name" class="surge-name"></div>
 
   <!-- ====================== IN-GAME HUD ====================== -->
   <section id="hud" class="screen hud">
@@ -339,11 +381,15 @@
     <div id="mode-badge" class="mode-badge" style="display:none"></div>
     <button id="training-quit" class="training-quit" style="display:none">✕ QUIT</button>
     <button id="movelist-btn" class="training-quit" style="display:none">☰ MOVES</button>
+    <!-- Worker 29: Gungaku fight lab toggle (training mode) -->
+    <button id="gungaku-btn" class="training-quit" style="display:none">⚙ LAB</button>
+    <!-- Worker 29: replay badge (replay viewer) -->
+    <div id="replay-badge" class="mode-badge" style="display:none">▶ REPLAY</div>
     <div class="hud-top">
       <!-- Player health -->
       <div class="fighter-status left">
         <div class="hp-wrap"><div class="hp-damage" id="p1-hp-dmg"></div><div class="hp-fill" id="p1-hp"></div></div>
-        <div class="rage-tag" id="p1-rage">RAGE</div>
+        <div class="rage-tag" id="p1-rage"></div>
         <div class="urge-wrap" id="p1-urge-wrap"><div class="urge-fill" id="p1-urge"></div><span class="urge-label">SOUL URGE</span></div>
         <div class="soul-label">NINE-SOUL METER</div>
         <div class="meter-wrap" id="p1-meter"></div>
@@ -362,7 +408,7 @@
       <!-- Enemy health -->
       <div class="fighter-status right">
         <div class="hp-wrap"><div class="hp-damage" id="p2-hp-dmg"></div><div class="hp-fill" id="p2-hp"></div></div>
-        <div class="rage-tag" id="p2-rage">RAGE</div>
+        <div class="rage-tag" id="p2-rage"></div>
         <div class="urge-wrap" id="p2-urge-wrap"><div class="urge-fill" id="p2-urge"></div><span class="urge-label">SOUL URGE</span></div>
         <div class="soul-label">NINE-SOUL METER</div>
         <div class="meter-wrap" id="p2-meter"></div>
@@ -372,6 +418,10 @@
 
     <!-- Combo popup -->
     <div id="combo-pop" class="combo-pop"><b id="combo-num">0</b><span>HITS</span></div>
+
+    <!-- HEART AND MIND WITHIN brawler status (worker 20, 2026-10-22):
+         stage / zone / foe readout for the Devil Within descent. -->
+    <div id="brawler-status" class="brawler-status" style="display:none;position:fixed;top:64px;left:50%;transform:translateX(-50%);z-index:60;color:#ffd76a;font:600 13px/1.4 system-ui,sans-serif;letter-spacing:0.12em;text-shadow:0 2px 8px #000;background:rgba(10,6,20,0.55);padding:6px 14px;border:1px solid rgba(255,215,106,0.35);border-radius:20px;pointer-events:none"></div>
 
     <!-- Control hints (desktop keys + touch). Fades after 6s. -->
     <div id="control-hints" class="control-hints">
@@ -405,7 +455,12 @@
         <button class="act-btn dodge" data-btn="dodge">D</button>
         <!-- V-System (owner 2026-10-22): V-Skill / V-Trigger / V-Reversal -->
         <button class="act-btn vskill" data-btn="vskill">V</button>
+        <!-- T8 shortcuts (owner pt134u): Heat Burst = 2+3, Rage Art = 1+2 while in rage (R.1+2 resolver prefix) -->
+        <button class="act-btn heat" data-btn="2+3">HEAT</button>
+        <button class="act-btn rage" data-btn="1+2">RAGE</button>
 <button class="act-btn transform" data-btn="transform" style="display:none">T</button>
+        <!-- TTT2 (worker 24): TAG button — visible only in tag battles. -->
+        <button id="tag-btn" class="act-btn tag" data-btn="tag" hidden>TAG</button>
       </div>
     </div>
   </section>
@@ -418,9 +473,61 @@
     <div class="panel movelist-panel">
       <h2 id="movelist-title">MOVE LIST</h2>
       <p id="movelist-sub" class="stage-sub"></p>
+      <p class="ml-legend">startup / active / recovery — frames @60fps</p>
       <div id="movelist-groups" class="movelist-groups"></div>
       <div class="menu-buttons">
         <button class="btn-primary" data-action="close-movelist">BACK</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Worker 29: GUNGAKU 軍楽 fight lab panel (training mode) -->
+  <div id="gungaku" class="gungaku" style="display:none">
+    <div class="gk-title">GUNGAKU 軍楽 · FIGHT LAB</div>
+    <div class="gk-row"><span class="gk-label">DUMMY</span>
+      <button data-dummy="stand" class="on">STAND</button>
+      <button data-dummy="crouch">CROUCH</button>
+      <button data-dummy="block">BLOCK</button>
+      <button data-dummy="jump">JUMP</button>
+    </div>
+    <div class="gk-row"><span class="gk-label">RECORD</span>
+      <button id="gk-rec">● REC</button>
+      <button id="gk-play">▶ PLAY</button>
+      <button id="gk-stop">■ STOP</button>
+    </div>
+    <div class="gk-row">
+      <button id="gk-hitbox">HITBOX: OFF</button>
+      <button id="gk-cam">CAM: FIGHT</button>
+      <button id="gk-reset">RESET POS</button>
+    </div>
+    <div class="gk-framedata" id="gk-framedata"></div>
+    <div class="gk-hint">T panel · V hitbox · R reset</div>
+  </div>
+
+  <!-- Worker 29: replay viewer transport -->
+  <div id="replay-bar" class="replay-bar" style="display:none">
+    <button id="rp-play" title="play/pause (Space)">⏸</button>
+    <button data-speed="0.25" title="quarter speed">0.25×</button>
+    <button data-speed="0.5" title="half speed">0.5×</button>
+    <button data-speed="1" class="on" title="normal speed">1×</button>
+    <button data-speed="2" title="double speed">2×</button>
+    <button id="rp-back" title="step back 1 frame (,)">−1F</button>
+    <button id="rp-step" title="step forward 1 frame (.)">+1F</button>
+    <button id="rp-restart" title="restart replay">↺</button>
+    <button id="rp-cam" title="free camera (C)">CAM: FIGHT</button>
+    <input id="rp-seek" type="range" min="0" max="100" value="0" title="scrub round" />
+    <span id="rp-time">R1/1 0:00 / 0:00</span>
+    <button id="rp-exit" title="exit replay (Esc)">✕ EXIT</button>
+  </div>
+
+  <!-- Worker 29: replay theater (library) -->
+  <section id="screen-replays" class="screen">
+    <div class="panel replay-panel">
+      <h2>REPLAY THEATER</h2>
+      <p class="stage-sub">Every versus &amp; arcade fight is recorded — inputs + snapshots, not video. Watch in slow-mo, step frame-by-frame, orbit the camera.</p>
+      <div id="replay-list" class="replay-list"></div>
+      <div class="menu-buttons">
+        <button class="btn-ghost" data-action="back-menu">MAIN MENU</button>
       </div>
     </div>
   </section>
@@ -447,6 +554,9 @@
       <p id="reinc-deaths" class="stage-kicker"></p>
       <h2>DEATH IS NOT THE END</h2>
       <p id="reinc-flavor" class="stage-sub"></p>
+      <!-- Eastern Mind face assembly: the returning soul's new face,
+           built from the original game's own eyes / nose / mouth art. -->
+      <div id="reinc-face" class="reinc-face"></div>
       <div id="reinc-cards" class="reinc-cards"></div>
       <p id="reinc-forces" class="stage-forces"></p>
     </div>
@@ -485,13 +595,15 @@
       <p id="result-sub"></p>
       <div class="menu-buttons">
         <button class="btn-primary" data-action="rematch">REMATCH</button>
+        <button class="btn-ghost" data-action="back-select">CHANGE FIGHTER</button>
+<button class="btn-ghost" data-action="replays">REPLAYS</button>
+
         <button class="btn-ghost" data-action="back-menu">MAIN MENU</button>
       </div>
     </div>
   </section>
 
-  <!-- Audio unlock hint for mobile -->
-  <div id="tap-to-start" class="tap-hint">TAP TO ENABLE SOUND</div>
+  <!-- TAP-FOR-AUDIO REMOVED (2026-10-24): sound starts on the first real tap; on/off lives in Settings. -->
 
   <!-- Loading overlay (shown while the 3D fighter model streams in) -->
   <div id="loading" class="loading">

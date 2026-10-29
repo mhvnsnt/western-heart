@@ -27,6 +27,6 @@ export function trySpirit(attacker, s, ui) {
   attacker._urgeOn = false; attacker._spiritUsed = true;
   const bank = globalThis.__WH_PRIVATE_ASSETS && globalThis.__WH_SHOW_CLIPS;
   const clip = bank && bank.spirit && bank.spirit[t.id] ? { id: bank.spirit[t.id], showOnly: true } : null;
-  if (ui && ui.banner) ui.banner(spiritLabel(), { fontFamily: SPIRIT_FONT_STACK });
+  if (ui && ui.surgeFlash) { try { ui.surgeFlash(0xffd76a, 0xfff2b0); } catch (e) {} }
   return { id: t.id, damage: t.dmg, label: spiritLabel(), clip };
 }

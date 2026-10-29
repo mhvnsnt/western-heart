@@ -56,3 +56,55 @@ export function warmIdle() {
       .catch(() => {});
   });
 }
+
+/* ---------------- Next-fight preload (2026-10-24, streaming lane) ----
+   While the VS screen breathes and again at the fight outro (wired in
+   menus.js hookStartMatch), warm the rematch pair through assets.prefetch
+   — the existing fail-silent, deduping lane. A FIGHT press never
+   re-fetches a warming model: assets.loadModels joins the in-flight
+   promise for the same id. Only MODEL_URLS ids are ever fetched, so a
+   stale roster id can never send a bad path at the Netlify /roster/*
+   proxy (game/_redirects + game/netlify.toml, 200 rewrites, unchanged).
+   Stage variants: stages stream through arena.setStage, not MODEL_URLS,
+   so there is nothing to prefetch for a stage here — fighter models are
+   the bulk of a match load (see load-progress.js). */
+export async function preloadNextFight(fighters, opts = {}) {
+  try {
+    const mod = opts.assetsModule || await import('./assets.js');
+    const urls = (mod && mod.MODEL_URLS) || {};
+    const prefetch = mod && mod.assets && mod.assets.prefetch;
+    if (typeof prefetch !== 'function') return [];
+    const ids = [];
+    for (const f of (fighters || [])) {
+      const cands = [typeof f === 'string' ? f : null,
+        f && f.id, f && f.model, f && f.attireId, f && f.modelId];
+      for (const c of cands) {
+        if (c && urls[c] && !ids.includes(c)) ids.push(c);
+      }
+    }
+    for (const id of ids) {
+      try { prefetch.call(mod.assets, id); } catch (e) { /* fail-silent lane */ }
+    }
+    try {
+      if (typeof window !== 'undefined' && typeof window.__whPreloadNote === 'function') {
+        window.__whPreloadNote(ids);
+      }
+    } catch (e) { /* status note is optional */ }
+    return ids;
+  } catch (e) { return []; }
+}
+
+/* Progressive-LOD pattern (2026-10-24): warm a caller-supplied low-LOD
+   file in the HTTP cache first, then prefetch the full model in the
+   background. No -lod1 variant ships yet, so lowUrl is never assumed:
+   without one this is exactly preloadNextFight([id]). When the asset
+   pipeline (tools/asset-pipeline/) starts emitting -lod1 variants, the
+   caller passes that URL here — no loader change needed. */
+export async function preloadLowFirst(id, lowUrl, opts = {}) {
+  try {
+    if (lowUrl && typeof fetch === 'function') {
+      await fetch(lowUrl, { cache: 'force-cache' }).catch(() => {});
+    }
+  } catch (e) { /* low-LOD warm is best-effort */ }
+  return preloadNextFight([id], opts);
+}

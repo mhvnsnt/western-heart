@@ -24,8 +24,14 @@ const T3_CLIP_DEFS = {
   // Neutral standing stance = move-index slot 3 (n0madic/Tekken3Remake
   // docs/research/code/moves.md: row +0x10 stance slot, 3 = standing).
   // t3_stance.json is slot 0, a round-start intro move — not the idle.
+  //
+  // SHOW-ANIMATION LOCK (owner 2026-10-23): show animations and fight moves
+  // are SEPARATE LOCKED SETS. Actions flagged show:true (intro, win poses)
+  // are SHOW: intros/cutscenes ONLY, must NEVER enter a fighter's moveset
+  // without the user's explicit approval. Everything else is FIGHT.
+  // Bank clip JSONs carry the same split as "anim_set" (+ sets.json manifest).
   stance:  { file: 't3_neutral.json', loop: true  },
-  intro:   { file: 't3_stance.json',  loop: false },
+  intro:   { file: 't3_stance.json',  loop: false, show: true },
   light:   { file: 't3_light.json',   loop: false },  // punch (J)
   medium:  { file: 't3_medium.json',  loop: false },  // kick (K)
   heavy:   { file: 't3_heavy.json',   loop: false },  // heavy attack
@@ -34,7 +40,7 @@ const T3_CLIP_DEFS = {
   hit:     { file: 't3_hit.json',     loop: false },  // hitstun reaction
   launch:  { file: 't3_hit_launch.json', loop: false, noRise: true }, // launched (physics owns the arc)
   ko:      { file: 't3_ko.json',      loop: false },  // knocked out
-  win:     { file: 't3_win_rp.json',  loop: true  },  // victory pose
+  win:     { file: 't3_win_rp.json',  loop: true, show: true },  // victory pose (SHOW)
   walkFwd: { file: 't3_walk_fwd.json', loop: true },
   walkBack:{ file: 't3_walk_back.json', loop: true },
   dash:    { file: 't3_dash_fwd.json', loop: false },
@@ -96,6 +102,10 @@ export const T3_BANKS = {
   bosconovitch: 'assets/anim/t3/bosconovitch/',
   heihachi_ownrig: 'assets/anim/t3/heihachi/',
   armorking:    'assets/anim/t3/armorking/',
+  // Law (2026-10-23, Buffalo Bill pull): divmot01_law.bin baked onto Law's
+  // own T3 18-part rig (lab/tools/t3_motion_bake.py --bank law). Buffalo
+  // Bill's moveset source is 'law', so bankIdFor resolves him here.
+  law:          'assets/anim/t3/law/',
   // Heihachi's OWN divmot13 motion stream, posed on Jin's T3 skeleton:
   // heihachi191's KMD has no hip/shoulder vertex data, so his body can't
   // be fitted (docs/anim/PROCEDURAL_AUDIT.md). tools/anim/t3_row_bake.py
@@ -111,6 +121,14 @@ export const T3_BANKS = {
   // Forest Law's own divmot20 motion posed on Law's body (his KMDs do not fit; heihachi_on_jin pattern).
   forestlaw:  'assets/anim/t3/forestlaw_on_law/',
 };
+/* PRIVATE VF5 Dural bank (Zen, 2026-10-28). Decoded from VF5 (PS3 BLES00029)
+   mot_DUR.bin in the private mhvnsnt/game-reverse-engineering repo
+   (vf5/dural/bake_dural.py); a private build copies the bank to
+   game/assets/private/anim/vf5/dural/ and sets __WH_PRIVATE_ASSETS. Its
+   throw tables ship beside it (reactions.bank.json) and are merged into
+   WH_T3_REACTIONS.banks.dural when the bank loads. Public builds: absent. */
+if (globalThis.__WH_PRIVATE_ASSETS) T3_BANKS.dural = 'assets/private/anim/vf5/dural/';
+
 
 // Moveset source name -> bank key. 'demonio' is the game's rename of Jin
 // (owner canon 2026-10-19: Tekken's Jin = DEMONIO). bosconovitch maps to
@@ -128,6 +146,10 @@ export const SOURCE_TO_BANK = {
   bosconovitch: 'bosconovitch', heihachi: 'heihachi',
   armorking: 'armorking', 'armor-king': 'armorking',
   ogre: 'ogre', kuma: 'kuma', panda: 'kuma', gon: 'gon', law: 'law', forestlaw: 'forestlaw',
+  // VF5 Dural (Zen's 3D base, owner 2026-10-24/28): zen.json moves name t3_source 'dural'. The bank
+  // itself only exists in private builds (T3_BANKS.dural, __WH_PRIVATE_ASSETS); bankIdFor keeps
+  // public Zen UNMAPPED, so this entry only resolves Zen's own rows when the private bank is bound.
+  dural: 'dural',
 };
 
 /**
@@ -171,8 +193,15 @@ function jsonToClip(name, data, THREE) {
       values[i * 4] = q[0]; values[i * 4 + 1] = q[1];
       values[i * 4 + 2] = q[2]; values[i * 4 + 3] = q[3];
     }
-    // Track name matches bone node name in the scene (Hips, Spine, etc.)
-    tracks.push(new THREE.QuaternionKeyframeTrack(`${bone}.quaternion`, times, values));
+    // Track name matches bone node name in the scene (Hips, Spine, etc.).
+    // Canonicalization: the T3 bake's skeleton named the chest bone
+    // 'Chest'; every current game skeleton (Mixamo family, Lane-C rigs,
+    // the WH auto-rig template) names it 'Spine2'. Without this mapping
+    // the chest track binds to nothing on ANY shipped model and every
+    // clip loses its chest motion. Name mapping only — no motion data
+    // is altered, and the mapping is the game's own naming convention.
+    const trackBone = bone === 'Chest' ? 'Spine2' : bone;
+    tracks.push(new THREE.QuaternionKeyframeTrack(`${trackBone}.quaternion`, times, values));
   }
 
   const clip = new THREE.AnimationClip(name, frameCount / fps, tracks);
@@ -321,6 +350,87 @@ function turnData(data) {
 }
 export function getT3BankFacing(bankId) { return _t3facing[bankId] || null; }
 
+/* PER-CLIP HEADING (moveset sweep 2026-10-29). The bank turn above is decided
+   on the stance/walk/crouch/block clips only. Some banks' attack rows are
+   baked facing the other way from those (yoshimitsu: 69 of its row clips start
+   ~180° from its stance; bryan/jin: 0). Played as-is the body spins round
+   and its root_t carries it AWAY from the foe — jin_soul f+2 (yoshimitsu
+   row 125): heading 172° off the stance in game, gap 1.45 -> 2.36 m, whiff.
+   Measured, not assumed: a clip's frame-0 front is where its knees point
+   (same test as bankFacing). A row more than 135° from the stance heading
+   is turned 180° about Y (root-child rotations q -> qY(pi)·q, root_t
+   rotated about frame 0). Rows within 135° are untouched, and so are rows
+   any moveset using them plays under a T3 facing condition 0x24-0x2E
+   (own back turned, turned away; t3-conditions.js): those start turned
+   on purpose (yoshimitsu r65-r75, r97-r102, r207, r209, r329-r334). */
+async function facingCondRows(base, bankId, rowData) {
+  const ids = new Set();
+  for (const r of Object.values(rowData)) for (const u of (r.rec && r.rec.used_by) || []) ids.add(u);
+  const keep = new Set();
+  await Promise.all([...ids].map(async (id) => {
+    try {
+      const res = await fetch(new URL(`../../../movesets/${id}.json`, new URL(base, location.href)));
+      if (!res.ok) return;
+      const m = await res.json();
+      for (const mv of Object.values(m.moves || {})) {
+        if (mv && mv.t3_source === bankId && mv.t3_row != null && mv.t3_condition >= 0x24 && mv.t3_condition <= 0x2E) keep.add(+mv.t3_row);
+      }
+    } catch (e) {}
+  }));
+  return keep;
+}
+function clipHeading(skel, data, f = 0) {
+  if (!data || !data.rot_xyzw) return null;
+  const P = {}, par = {}, order = skel.joints.map(j => j.name);
+  for (const j of skel.joints) { P[j.name] = j.rest; par[j.name] = j.parent; }
+  const G = {}, X = {};
+  for (const j of order) {
+    const r = data.rot_xyzw[j];
+    const q = r && r.length ? r[Math.min(f, r.length - 1)] : [0, 0, 0, 1];
+    const p = par[j];
+    if (p && G[p]) {
+      G[j] = _qmul(G[p], q);
+      const o = _qrot(G[p], [P[j][0] - P[p][0], P[j][1] - P[p][1], P[j][2] - P[p][2]]);
+      X[j] = [X[p][0] + o[0], X[p][1] + o[1], X[p][2] + o[2]];
+    } else { G[j] = q; X[j] = P[j].slice(); }
+  }
+  if (!G.Hips) return null;
+  const hx = _qrot(G.Hips, [1, 0, 0]);
+  let fx = -hx[2], fz = hx[0];
+  const fl = Math.hypot(fx, fz);
+  if (fl < 1e-6) return null;
+  fx /= fl; fz /= fl;
+  let s = 0;
+  for (const side of ['Left', 'Right']) {
+    const a = X[side + 'UpLeg'], k = X[side + 'Leg'], e = X[side + 'Foot'];
+    if (a && k && e) s += (k[0] - (a[0] + e[0]) / 2) * fx + (k[2] - (a[2] + e[2]) / 2) * fz;
+  }
+  if (Math.abs(s) < 0.01) return null; // knees too straight to tell
+  const sg = s >= 0 ? 1 : -1;
+  return Math.atan2(fx * sg, fz * sg);
+}
+function yawData180(skel, data) {
+  const roots = new Set(skel.joints.filter(j => !j.parent).map(j => j.name));
+  const kids = skel.joints.filter(j => j.parent && roots.has(j.parent)).map(j => j.name);
+  const qy = [0, 1, 0, 0];
+  for (const b of kids) { const arr = data.rot_xyzw[b]; if (arr) data.rot_xyzw[b] = arr.map(q => _qmul(qy, q)); }
+  if (data.root_t && data.root_t.length) { const r0 = data.root_t[0]; data.root_t = data.root_t.map(t => [2 * r0[0] - t[0], t[1], 2 * r0[2] - t[2]]); }
+}
+export function alignRowHeadings(skel, actionData, rowData, keepRows = new Set()) {
+  const hs = FACING_CLIPS.map(a => clipHeading(skel, actionData[a])).filter(h => h != null);
+  if (!hs.length) return [];
+  const ref = Math.atan2(hs.reduce((a, h) => a + Math.sin(h), 0), hs.reduce((a, h) => a + Math.cos(h), 0));
+  const fixed = [];
+  for (const [row, r] of Object.entries(rowData)) {
+    if (keepRows.has(+row)) continue; // played under a facing condition (back turned): baked turn is right
+    const h = clipHeading(skel, r.data);
+    if (h == null) continue;
+    const d = Math.atan2(Math.sin(h - ref), Math.cos(h - ref));
+    if (Math.abs(d) > 135 * Math.PI / 180) { yawData180(skel, r.data); fixed.push(+row); }
+  }
+  return fixed;
+}
+
 /* STANDING IDLE (2026-10-21). The 'stance' action loops move-index slot 3.
    On the bosconovitch bank slot 3 (row 237) is a 15-frame fall onto his
    back (root 0.45 -> -0.45 m; slot 1 is him lying still, slot 0 getting
@@ -394,6 +504,13 @@ export async function loadT3Clips(THREE, bankId = 'king') {
         rowData = {};
       }
     })());
+    // T3 reaction tables (hit-reaction wiring lane, 2026-10-24): the
+    // selection in fighter.js reads globalThis.WH_T3_REACTIONS. The
+    // throw lane loads them on demand; this fetch runs with the
+    // bank load so strikes have the tables at fight start even in
+    // a fight with no throw attempt. The global cache guard means
+    // whichever loader runs second is a no-op.
+    jobs.push(ensureT3Reactions().then(R => mergeBankThrowTables(R, base)).catch(() => null));
     // Decoded active window of every attack row (tools/anim/t3_hit_frames.py, lane D 2026-10-24):
     // { row: [active_first, active_last, stream_frames, attack_word, throw] } — fighter.js times the
     // clip on it and never plays a throw row for a strike (or a strike row for a throw).
@@ -415,6 +532,8 @@ export async function loadT3Clips(THREE, bankId = 'king') {
         for (const r of Object.values(rowData)) turnData(r.data);
         console.log(`[WH-T3] bank '${bankId}': baked facing -Z (knees ${facing.kneeDeg.toFixed(1)}° from hips forward) — turned 180° to +Z, Left/Right relabelled`);
       }
+      const flipped = alignRowHeadings(skel, actionData, rowData, await facingCondRows(base, bankId, rowData));
+      if (flipped.length) console.log(`[WH-T3] bank '${bankId}': ${flipped.length} row clips baked >135° from the stance heading — turned 180° to match`);
       const idle = standingIdle(actionData, skel);
       if (idle) {
         actionData.stance = idle;
@@ -428,6 +547,10 @@ export async function loadT3Clips(THREE, bankId = 'king') {
         clip.userData.loop = def.loop;
         clip.userData.noRise = !!def.noRise;
         if (data.pingpong) clip.userData.pingpong = true;
+        // SHOW-ANIMATION LOCK: bank clip JSONs carry "anim_set": "SHOW" for
+        // intro/win clips. Tag the THREE clip so anim-gate.js (CTX.FIGHT)
+        // rejects it in combat — these play in intros/cutscenes only.
+        if (data.anim_set === 'SHOW') clip.userData.animSet = 'show';
         clips[action] = clip;
       }
     }
@@ -453,6 +576,162 @@ export async function loadT3Clips(THREE, bankId = 'king') {
 
 /** Synchronous accessor for one bank's cached clips (null if not loaded). */
 export function getT3Clips(bankId = 'king') { return _t3clipCache[bankId] || null; }
+
+/* ============================================================
+   REACTION PACKS (grapple lane, 2026-10-24) — the throw /
+   victim / escape clips of docs/anim/T3-REACTIONS.md. These
+   live in game/assets/anim/t3/<bank>/reactions.pack.json
+   (~6.5 MB per bank) and are NOT part of loadT3Clips, which
+   is why fighter.js could only play generic 'hit'/'grab'/
+   'launch' for throws until now. loadReactionPack decodes a
+   bank's pack into canonical clips keyed by slot ('0xaeb'),
+   exactly the way loadT3Clips decodes rows.pack.json into
+   'row:<n>' clips; fighter.js retargets the two slots of a
+   throw pair on demand, the same way it retargets a row clip
+   on first use. Turned banks (bankFacing, above) get the same
+   180 deg turn applied to the pack rows, or the pair would
+   play backwards like the old Doc Frank "owl". Failures log
+   and return null — the caller keeps the legacy lock path.
+   ============================================================ */
+const _reactionPackCache = {};    // bankId -> { pack, clips }
+const _reactionPackPromises = {};
+export function reactionPackRowToClip(pack, rec, THREE) {
+  const data = decodePackRow(pack, rec);
+  const clip = jsonToClip(`t3_react_${rec.slot}`, data, THREE);
+  if (clip) {
+    clip.userData.slot = rec.slot;
+    clip.userData.roles = rec.roles || [];
+    clip.userData.stream_frames = rec.stream_frames;
+    clip.userData.yaw0 = rec.yaw0;
+    clip.userData.anchorScale = pack.anchor_mm_to_rig_m;
+  }
+  return clip;
+}
+export async function loadReactionPack(THREE, bankId) {
+  if (!bankId || !T3_BANKS[bankId]) return null;
+  if (_reactionPackCache[bankId]) return _reactionPackCache[bankId];
+  if (_reactionPackPromises[bankId]) return _reactionPackPromises[bankId];
+  const base = T3_BANKS[bankId];
+  _reactionPackPromises[bankId] = (async () => {
+    try {
+      const res = await fetch(base + 'reactions.pack.json');
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const pack = await res.json();
+      // Phone-load note: the pack JSON (~6.5 MB) is cached, but
+      // clips are decoded ONE SLOT AT A TIME on demand
+      // (getReactionClip, below) — decoding all ~568 clips up
+      // front would triple fight-load clip memory on top of the
+      // row clips loadT3Clips already builds.
+      const out = { pack, clips: {}, turned: !!(_t3facing[bankId] && _t3facing[bankId].turned) };
+      _reactionPackCache[bankId] = out;
+      console.log(`[WH-T3] bank '${bankId}': reaction pack loaded (${Object.keys(pack.rows || {}).length} slots)`);
+      return out;
+    } catch (e) {
+      console.warn(`[WH-T3] ${bankId}/reactions.pack.json unavailable:`, e.message || e);
+      return null;
+    }
+  })();
+  return _reactionPackPromises[bankId];
+}
+/** Decode (once, cached) the canonical clip for one pack slot. */
+export function getReactionClip(bankId, slot, THREE) {
+  const rp = _reactionPackCache[bankId];
+  if (!rp) return null;
+  const key = '0x' + Number(slot).toString(16);
+  if (rp.clips[key]) return rp.clips[key];
+  const rec = rp.pack.rows && rp.pack.rows[key];
+  if (!rec) return null;
+  const data = decodePackRow(rp.pack, rec);
+  if (rp.turned) turnData(data);
+  const clip = jsonToClip(`t3_react_${rec.slot}`, data, THREE);
+  if (clip) {
+    clip.userData.slot = rec.slot;
+    clip.userData.roles = rec.roles || [];
+    clip.userData.stream_frames = rec.stream_frames;
+    clip.userData.yaw0 = rec.yaw0;
+    clip.userData.anchorScale = rp.pack.anchor_mm_to_rig_m;
+    rp.clips[key] = clip;
+  }
+  return clip || null;
+}
+/** Synchronous accessor for a loaded reaction pack (null if not loaded). */
+export function getReactionPack(bankId) { return _reactionPackCache[bankId] || null; }
+
+/* Strike-reaction playback adapter (hit-reaction lane, 2026-10-24).
+   The throw lane above owns the pack fetch and cache, so this
+   lane adds no second fetch: the scale reads the cached pack,
+   and the strike clip decodes fresh from the cached pack rows
+   (facing is re-checked at decode time, and the clip carries
+   its own loop/noRise flags, so the throw lane's cached clip
+   is never mutated). A slot no pack defines returns null and
+   the caller keeps its generic fallback (UNMAPPED, never guessed). */
+
+/** Anchor scale (mm -> rig metres) of an already-loaded pack, else null. */
+export function getT3ReactionPackScale(bankId) {
+  const rp = getReactionPack(bankId);
+  return rp && rp.pack && typeof rp.pack.anchor_mm_to_rig_m === 'number' ? rp.pack.anchor_mm_to_rig_m : null;
+}
+
+/** Decode one reaction slot into a bank-space THREE clip, or null.
+    noRise: set for air reactions (code 0x24) — the game's launch
+    physics owns the arc, so the clip must not lift the hips too. */
+export async function loadT3ReactionClip(THREE, bankId, slot, { noRise = false } = {}) {
+  if (!bankId || !T3_BANKS[bankId] || slot == null) return null;
+  await loadT3Clips(THREE, bankId); // skeleton + facing, cached after fight load
+  const rp = await loadReactionPack(THREE, bankId);
+  if (!rp || !rp.pack || !rp.pack.rows) return null;
+  const key = '0x' + (slot & 0xffff).toString(16);
+  const rec = rp.pack.rows[key];
+  if (!rec) return null; // UNMAPPED: slot planned but not baked in this pack
+  const data = decodePackRow(rp.pack, rec);
+  if (_t3facing[bankId] && _t3facing[bankId].turned) turnData(data);
+  const clip = jsonToClip('react:' + slot, data, THREE);
+  if (!clip) return null;
+  clip.userData.loop = false;
+  if (noRise) clip.userData.noRise = true;
+  return clip;
+}
+
+/** Fetch (once) and cache the parsed reactions.json tables.
+    The throw lane's loader sets the same global; whichever runs
+    first wins, and this one returns the cached tables after that,
+    so strikes have the tables at fight start even in a fight
+    with no throw attempt. */
+let _t3reactionsPromise = null;
+/* A private bank (assets/private/...) carries its own throw tables in
+   reactions.bank.json (the public reactions.json never names it); merge
+   them into WH_T3_REACTIONS.banks[<dir>] once. No-op for public banks. */
+async function mergeBankThrowTables(R, base) {
+  if (!R || !R.banks || !base || !base.includes('/private/')) return R;
+  const dir = base.split('/').filter(Boolean).pop();
+  if (R.banks[dir]) return R;
+  try {
+    const res = await fetch(base + 'reactions.bank.json');
+    if (res.ok) R.banks[dir] = await res.json();
+  } catch (e) { console.warn(`[WH-T3] ${dir}/reactions.bank.json unavailable:`, e.message || e); }
+  return R;
+}
+
+export function ensureT3Reactions() {
+  if (globalThis.WH_T3_REACTIONS) return Promise.resolve(globalThis.WH_T3_REACTIONS);
+  if (_t3reactionsPromise) return _t3reactionsPromise;
+  _t3reactionsPromise = (async () => {
+    try {
+      const anyBase = Object.values(T3_BANKS)[0] || 'assets/anim/t3/king_on_pantera_leoman/';
+      const base = anyBase.replace(/[^/]+\/$/, '');
+      const res = await fetch(base + 'reactions.json');
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      globalThis.WH_T3_REACTIONS = data;
+      return data;
+    } catch (e) {
+      console.warn('[WH-T3] reactions.json unavailable — hit reactions stay generic:', e.message || e);
+      _t3reactionsPromise = null;
+      return null;
+    }
+  })();
+  return _t3reactionsPromise;
+}
 
 /* ============================================================
    STRIKE PROFILE (lane D, 2026-10-24) — what a clip's own decoded

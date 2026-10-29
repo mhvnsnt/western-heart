@@ -6,12 +6,6 @@
   "proxy": false,
   "proxy_note": null,
   "variant": 8,
-  "anim_set_lock": {
-    "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
-    "FIGHT": "every move in this file: moveset moves and combat stances \u2014 the combat animation bank",
-    "SHOW": "win poses, intro poses, taunts, cutscene animations \u2014 intro/win slots and cutscenes ONLY; tracked in docs/anim/TTT2-BAEK-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
-    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
-  },
   "strings": [
     {
       "input": "2,1",
@@ -379,7 +373,14 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "The master in white. A pristine textbook kick - the lesson, perfectly pressed."
+      "note": "The master in white. A pristine textbook kick - the lesson, perfectly pressed.",
+      "community_base": "game/assets/anim/oss/community/144_05.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "P+K": {
       "name": "Eleventh Lecture [WH SIGNATURE]",
@@ -403,7 +404,14 @@
       "note": "He tried to sober Zui up eleven times. Zui made two of them drinking songs. The eleventh lecture lands anyway.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true
+      "isGrab": true,
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Master's White [WH SIGNATURE]",
@@ -423,7 +431,14 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "The master in white. A pristine textbook kick - the lesson, perfectly pressed.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "community_base": "game/assets/anim/oss/community/144_05.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 41,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "BAEK MASTER WHITE 1+2 (T3 bryan r41)",
@@ -467,7 +482,14 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+2": {
       "name": "BAEK MASTER WHITE b+2 (T3 bryan r158)",
@@ -2504,7 +2526,12 @@
       "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
       "input_remapped_from": "S",
       "merge_source": "donor:baek:1+2",
-      "donor_fighter": "baek"
+      "donor_fighter": "baek",
+      "anim_t3": {
+        "bank": "baek",
+        "row": 41,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.baek": {
       "name": "Homework [WH SIGNATURE]",
@@ -2530,7 +2557,12 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:baek:1+4",
-      "donor_fighter": "baek"
+      "donor_fighter": "baek",
+      "anim_t3": {
+        "bank": "baek",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1~donor.baek": {
       "name": "BAEK d/f+1 (T3 bryan r148)",
@@ -2666,7 +2698,12 @@
       "wh_original": true,
       "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
       "merge_source": "donor:baek:S",
-      "donor_fighter": "baek"
+      "donor_fighter": "baek",
+      "anim_t3": {
+        "bank": "baek",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.baek.3": {
       "name": "Homework [WH SIGNATURE]",
@@ -2692,7 +2729,12 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:baek:P+K",
-      "donor_fighter": "baek"
+      "donor_fighter": "baek",
+      "anim_t3": {
+        "bank": "baek",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.baek.2": {
       "name": "Kick Is the Question [WH SIGNATURE]",
@@ -2714,7 +2756,12 @@
       "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
       "input_remapped_from": "S",
       "merge_source": "donor:baek:1+2",
-      "donor_fighter": "baek"
+      "donor_fighter": "baek",
+      "anim_t3": {
+        "bank": "baek",
+        "row": 41,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.baek.2": {
       "name": "Homework [WH SIGNATURE]",
@@ -2740,7 +2787,12 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:baek:1+4",
-      "donor_fighter": "baek"
+      "donor_fighter": "baek",
+      "anim_t3": {
+        "bank": "baek",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.baek.4": {
       "name": "Kick Is the Question [WH SIGNATURE]",
@@ -2761,7 +2813,12 @@
       "wh_original": true,
       "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
       "merge_source": "donor:baek:S",
-      "donor_fighter": "baek"
+      "donor_fighter": "baek",
+      "anim_t3": {
+        "bank": "baek",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.baek.5": {
       "name": "Homework [WH SIGNATURE]",
@@ -2787,7 +2844,12 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:baek:P+K",
-      "donor_fighter": "baek"
+      "donor_fighter": "baek",
+      "anim_t3": {
+        "bank": "baek",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.baek.3": {
       "name": "Kick Is the Question [WH SIGNATURE]",
@@ -2809,7 +2871,12 @@
       "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
       "input_remapped_from": "S",
       "merge_source": "donor:baek:1+2",
-      "donor_fighter": "baek"
+      "donor_fighter": "baek",
+      "anim_t3": {
+        "bank": "baek",
+        "row": 41,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.baek.3": {
       "name": "Homework [WH SIGNATURE]",
@@ -2835,7 +2902,12 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:baek:1+4",
-      "donor_fighter": "baek"
+      "donor_fighter": "baek",
+      "anim_t3": {
+        "bank": "baek",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.baek.6": {
       "name": "Kick Is the Question [WH SIGNATURE]",
@@ -2856,7 +2928,12 @@
       "wh_original": true,
       "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
       "merge_source": "donor:baek:S",
-      "donor_fighter": "baek"
+      "donor_fighter": "baek",
+      "anim_t3": {
+        "bank": "baek",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.baek.7": {
       "name": "Homework [WH SIGNATURE]",
@@ -2882,7 +2959,12 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:baek:P+K",
-      "donor_fighter": "baek"
+      "donor_fighter": "baek",
+      "anim_t3": {
+        "bank": "baek",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.baek.4": {
       "name": "Kick Is the Question [WH SIGNATURE]",
@@ -2904,7 +2986,12 @@
       "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
       "input_remapped_from": "S",
       "merge_source": "donor:baek:1+2",
-      "donor_fighter": "baek"
+      "donor_fighter": "baek",
+      "anim_t3": {
+        "bank": "baek",
+        "row": 41,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.baek.4": {
       "name": "Homework [WH SIGNATURE]",
@@ -2930,7 +3017,12 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:baek:1+4",
-      "donor_fighter": "baek"
+      "donor_fighter": "baek",
+      "anim_t3": {
+        "bank": "baek",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.baek.8": {
       "name": "Kick Is the Question [WH SIGNATURE]",
@@ -2951,7 +3043,12 @@
       "wh_original": true,
       "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
       "merge_source": "donor:baek:S",
-      "donor_fighter": "baek"
+      "donor_fighter": "baek",
+      "anim_t3": {
+        "bank": "baek",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.baek.9": {
       "name": "Homework [WH SIGNATURE]",
@@ -2977,7 +3074,12 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:baek:P+K",
-      "donor_fighter": "baek"
+      "donor_fighter": "baek",
+      "anim_t3": {
+        "bank": "baek",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.baek.5": {
       "name": "Kick Is the Question [WH SIGNATURE]",
@@ -2999,7 +3101,12 @@
       "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
       "input_remapped_from": "S",
       "merge_source": "donor:baek:1+2",
-      "donor_fighter": "baek"
+      "donor_fighter": "baek",
+      "anim_t3": {
+        "bank": "baek",
+        "row": 41,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.baek.5": {
       "name": "Homework [WH SIGNATURE]",
@@ -3025,7 +3132,12 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:baek:1+4",
-      "donor_fighter": "baek"
+      "donor_fighter": "baek",
+      "anim_t3": {
+        "bank": "baek",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "F:1+3": {
       "name": "Hammer Head",
@@ -5089,6 +5201,12 @@
     "1+4~donor.baek.5": 2048
   },
   "stance_after": {},
+  "anim_set_lock": {
+    "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances \u2014 the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations \u2014 intro/win slots and cutscenes ONLY; tracked in docs/anim/TTT2-BAEK-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
+  },
   "canon_moves": [
     {
       "name": "Eleventh Lecture",
@@ -5096,6 +5214,8 @@
       "display_input": "LP1+RK4",
       "input_original": "`1+4`",
       "anim_ref": "wh:baek-master-white:sig:eleventh-lecture",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "method": "ADAPT",
       "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
       "move_class": "signature",
@@ -5120,6 +5240,8 @@
       "display_input": "LP1+RP2",
       "input_original": "`1+2`",
       "anim_ref": "wh:baek-master-white:sig:masters-white",
+      "community_base": "game/assets/anim/oss/community/144_05.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "method": "ADAPT",
       "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
       "move_class": "signature",

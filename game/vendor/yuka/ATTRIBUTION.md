@@ -20,3 +20,25 @@ Vendored from the official repository. **Unmodified build.**
 No changes were made to the vendored build. To update: replace
 `yuka.module.js` with the new official build and record the new
 commit SHA + blob SHA here.
+
+---
+
+## Track 7 addition (2026-10-23) — NavMesh / pathfinding lane
+
+- **Lane split** (issue #866): the combat-state-machine lane above
+  stays as-is. Track 7 (cutscenes & story mode) uses the **same**
+  vendored build for **NavMesh/pathfinding only**: `NavMesh`,
+  `Corridor`, `Vehicle` + steering (`Seek`/`Separation`/
+  `FollowPathBehavior`). No second copy of Yuka was pulled.
+- **What uses it:** `game/js/story/navmesh.js` — `WHNavMesh`
+  (`buildFromRects` / `buildFromTriangles`, `findPath`, `clampStep`),
+  `WHNavZoneSet` (multi-level zones + off-mesh links),
+  `WHGrunt` / `WHSquad` (pursue / flank / swarm with separation)
+  for Heart and Mind Within open zones.
+- **Verified API notes** (node-tested 2026-10-23 against this build):
+  contours need positive-area CCW winding in the xz-plane, e.g.
+  `(x1,z1)->(x1,z2)->(x2,z2)->(x2,z1)`; `fromPolygons()` merges
+  coplanar+convex regions; `clampMovement(region, start, end, out)`
+  is 4-arg — when the end point is already on the mesh, `out` is
+  untouched (handled in `WHNavMesh.clampStep`); `SeparationBehavior`
+  reads `vehicle.neighbors` (caller-maintained).

@@ -1,3 +1,17 @@
+## 2026-10-24 — Anim-motion audit follow-up: LP1+RP2 (1+2) chord rewires for demonio + diablo (ANIM-MOTION LANE)
+
+**Why:** Top-donor scan after the main audit showed the `1+2__main` chord moves as the largest remaining fixable donor sources (7 fighters, 102 HARD donees + 7 HARD sources, all playing jump clips). The T3 tables attach the current rows to T3's own 1+2 (king 35, bryan 41, heihachi 37, jin 32, yoshi 265), so the current rows are T3-own attachments — but they measure as jump clips for standing strikes (except yoshi 265).
+
+**What:** 2 rewires, same surgical pattern as the main audit (only `t3_row`, the `(T3 <bank> rNN)` name reference, and `anim_ref` changed; no damage, startup, T7/T8 fields, slots, or other fields touched; byte-verified: inverse-in-block restores the original files byte-for-byte):
+- demonio `1+2__main`: jin 32 → 92. Provenance: demonio moves `d+1+2` and `1+2~t3.jin` (1+2 variant) use row 92. Standing, level h, dominant armL (audit ext 0.53/0.38), travel 0.21, active 10 vs startup 12. Filed level `mmh` (no single-level truth in the audit).
+- diablo `1+2__main`: heihachi 37 → 133. Provenance: T3 table `b_r133` (directional LP+RP) + diablo move `b_r133`. Standing, level m, dominant armL (audit ext armL 0.28 / armR 0.07, disclosed), travel 0.23, active 10 vs startup 12.
+
+**Results (audit tool, same code both sides, current main movesets):** demonio pressable HARD 174 → 161 (−13: 4 notation donees + 9 donor donees), diablo 156 → 134 (−22: 4 notation + 18 donor). Both sources CLEAN. ZERO regressions; no move changed rows except 32 → 92 and 37 → 133. No bindings needed (demonio donees all standing-expect; diablo's only non-standing donees are WS strikes, suited by a standing chord row; neither row has a jumping donee).
+
+**UNMAPPED with file-absence evidence (no verified standing chord row in-bank):** pantera (every standing chord candidate has LP+RP provenance but fails a hard criterion: 143 via pantera b~t3.king.4 fails timing 1.8x; 97 fails level + timing 1.8x; 116/131 fail timing 2.25x + level; 227 fails limb + travel 0.91); burger + skull (bryan 129 fails the audit limb check — dominant armR vs filed armL, a jump-HARD for limb-HARD trade, not a fix; 132 is a back move; 108 level + limb; 116 level + timing + provenance); kinpo + scimitar (jin 134 is a back move + limb fail + travel 0.58; 92/105 fail timing — active 10 vs startup 16/18). **No change needed:** phantom row 265 passes the audit (standing, m, active 22 = startup 22, zero flags; all 33 donees CLEAN) — rewiring would risk 33 clean donees.
+
+**Docs:** `docs/anim/ANIM-MOTION-AUDIT-2026-10-24.md` (follow-up section appended; stale "demonio NO changes" line corrected), `docs/anim/PROCEDURAL_AUDIT.md` (T3-use row appended). Simulation/scan proof only — not play-verified.
+
 ## 2026-10-24 — Anim-motion audit follow-up: test pins updated to the corrected rows (ANIM-MOTION LANE)
 
 **Why:** CI `game-unit-tests` failed on PR #1022 only because three assertions pinned the OLD buggy rows. The pins enshrined the bugs: row 44 is a jumping-1 clip (feet 0.75/0.78 m off ground at frame 0), not a standing jab; row 203 is a lunging ducking straight (0.95 m travel, hips to 0.61 m), not a jab.
@@ -212,6 +226,29 @@
 
 **Status:** PR merged via git_merge.py. Next: voice-clone pipeline replaces tier A/B placeholders; user drops own music into `game/assets/music/`.
 
+## 2026-10-22 — Worker 61: OWNER-REPO MINING (animations + parts + select assets, OSS inventory)
+
+**Owner instruction (verbatim):** "We have a bunch of stuff in the BA and ON repo and AshLane repo and Brutal Fist repo — animations, character customization stuff — to help with our character selection screen building, to make our stuff better, stuff we can all just add in with our teardown file building up stuff, anything that we're missing or that we can pull in or scaffold up from." Plus correction: "I have it in my repos also. I have a lot of those things I just mentioned in my repos if you go look." — specifically catalog OSS fighting-game content already collected in the repos as the FIRST step for worker 62's public OSS survey. Plus standing INTEGRATION LAW: "Wire everything up that you pull in in a way that's aligned with the Tekken systems and menus. Don't just throw in a bunch of random menus and extra systems on top of stuff. … Everything that you pull in, set it up in a Tekken way."
+
+**Inventoried (full recursive trees via API):** brutalfistgrokversiontenpointfive (880 entries), AshLane-prototype (1,174), brutalfistgrokversion (287).
+
+**OSS fighting-game finds (full catalog: docs/research/2026-10-22-oss-fighting-games-in-owner-repos.md — worker 62's input):**
+1. **Schwarzerblitz Engine (AndreaJens, BSD-3)** — not vendored; 5 TS contract shims in bf10p5 (`Schwarzerblitz{CharacterSchema,Compat,Input,MoveCatalog,RuntimeManifest}.ts`): character schema, 60Hz browser/native boundary, input bitmask buffer with motion-command detection (double-tap, quarter-circles), move catalog schema with animationAliases + armor/invincible frames, runtime manifest pointing at upstream `FK_AIManager.cpp`/`EffectHandler.cpp`/`CShaderPre.cpp`. Engine code OK to survey; character/stage/music assets NOT redistributable.
+2. **NightSky Engine (MIT)** — referenced as architecture/frame-data reference only (rollback/netcode heritage).
+3. **YokosukaJS (Allen Ussher, MIT)** — VENDORED in AshLane `src/game3d/yokosuka/` (beat-em-up state machine: punch/kick/walk/turn/hurt/dying/jump) with NOTICE.txt. Scaffold for the locked Heart and Mind Within beat-em-up story mode. Sprites deliberately excluded (unlicensed rips).
+4. **Quaternius Universal Animation Library (CC0)** — VENDORED in AshLane `public/motion/ual/` (UAL1 43 clips + UAL2 43 clips, 65-joint rig) with LICENSE.txt; modular CC0 character parts + `attachPart()` bone-rebind pattern in `src/game3d/quaternius.ts`.
+5. **KayKit/Kenney (CC0)** — vendored model packs (cast/env/weapons/props) for arenas and suite bodies.
+
+**Wired this round (all nested in Tekken structure per INTEGRATION LAW — no parallel systems):**
+- `moveset-library/animations/owner-motion-bank/` — 75 owner motion JSONs (Mixamo 52-bone; boxing, capoeira, suplex family, chokeslam, DDT, hit reactions, stances, taunts, locomotion) + `OWNER-MOTION-BANK.json` index (72 live clips; upstream index had 130 stale entries pointing at removed files — omitted) + `combat_clip_map.json` (140 combat moves → clips, limb/trajectory scored) + README source rows.
+- `moveset-library/animations/UAL-CC0.json` — 86-clip CC0 source entry with build-time fetch URLs (GLBs not copied).
+- `customization/parts/ashlane/` — 40 GLB parts (footwear, gloves, masks, hair, hoods, wristbands, rigged chains) + 7 manifests + 3 FIT_NOTES + README; `build_suite_parts_index.py` gains source #6 (ashlane); `create-fighter/data/PARTS-INDEX.json` 7,920 → 7,960 parts, sources += ashlane (all `geometryReady: true`, real GLBs on disk — honesty rule kept).
+- `game/js/fighter-portraits.js` — owner's AshLane deterministic SVG portrait generator ported to ESM (verified: deterministic per id, distinct per fighter); wired into `game/js/select-screen.js` as the fallback portrait layer under the PNG (real portraits always win) + no-WebGL pane data-URI fallback; `game/select.css` layering rules.
+- Docs: `docs/research/2026-10-22-oss-fighting-games-in-owner-repos.md`, `docs/research/2026-10-22-owner-repo-asset-inventory.md`, `docs/decisions/2026-10-22-owner-repo-mining.md`.
+
+**Deliberately not wired:** Schwarzerblitz input buffer (input work is owner-deferred; wiring now = parallel input path), YokosukaJS (waits for the beat-em-up lane's design), face-paint layer stack + CustomBuild persistence (cataloged as proven patterns for their lanes), character GLBs (canon review first, per #702 precedent), renders (worker 46's lane).
+
+**Proof:** 75/75 motion JSONs parse; 40/40 GLBs carry valid `glTF` magic; portraits module node-verified deterministic; select-screen.js and build script pass syntax checks. MERGE FREEZE: PR pushed, not merged.
 
 ## 2026-10-22 — Worker 51: STAGE SELECT → FIGHT FLOW (repairs + wiring, PLAYABLE TODAY)
 
@@ -580,6 +617,125 @@ Owner: "his whole body is facing the wrong way and his head is facing the right 
   with a triangle-based decimate target (zui-attire1 heat failed for every vertex before).
 - Not done here: Phantom and Sam-ur-a1 models have ZERO skinned meshes (unrigged statics, on main
   since 2026-10-18) — queued for the auto-rig pass with Zui/Diablo/Rave.
+
+---
+
+# WORKLOG — T3 bank facing root-cause fix (2026-10-22, model-quality lane)
+
+## Root cause (the user's "decrypted backwards")
+`lab/tools/t3_to_gltf.py` `import_fighter` and `lab/tools/t3_motion_bake.py`
+`T3Space` chose each bank's forward direction from the HEAD-MESH centroid
+("muzzle leads"). On characters whose head/hair mass sits behind the face,
+this picked backwards, baking 5 of 17 T3 animation banks facing -Z:
+bosconovitch (-179.5°), eddy (-178.6°), gunjack (149.9°), heihachi (137.7°),
+yoshimitsu (155.1°) — measured with tools/anim/t3_bank_facing.py, the offline
+twin of the runtime's bankFacing() knee check in game/js/t3anims.js.
+The game patched it at load (turn 180° about Y + Left/Right relabel per bank);
+this fix gets it right at the source instead.
+
+Related (separate): the k-NN weight pipeline (tools/auto_rig/backends/
+knn_transfer.py) has no automatic facing alignment — facing is a manual
+--rotate-y. See the model-quality lanes' reports.
+
+## Fix
+1. `lab/tools/t3_to_gltf.py`, `lab/tools/t3_motion_bake.py`: facing heuristic
+   replaced with the KNEE-BEND cue (knees are anatomical and never lie):
+   lateral = shoulder line (hip line fallback for partial KMDs like heihachi);
+   forward = the candidate with positive total knee offset from the hip-ankle
+   midline. Head-centroid kept only as a fallback when knees give no signal.
+   Validated on all 15 available KMD+stance pairs: positive knee scores
+   everywhere, reproduces the 12 good bakes, corrects the 5 bad ones.
+2. The 5 already-baked banks corrected OFFLINE with the exact runtime
+   transform (t3anims.js turnSkeleton/turnData): game/assets/anim/t3/
+   {bosconovitch,eddy,gunjack,heihachi,yoshimitsu}/ — skeleton.json (18 joints
+   each), all 30 t3_*.json clips each, rows.pack.json (647/208/152/111 rows;
+   heihachi has no pack). Bones L/R-relabeled in place, quats conjugated
+   (x,y,z,w)->(-x,y,-z,w), root_t (x,y,z)->(-x,y,-z).
+3. Runtime needs NO change: bankFacing() now measures knees-forward on all 17
+   banks and the turn becomes a no-op (kept as a data-driven safety net).
+
+## Proof
+tools/anim/t3_bank_facing.py before → after:
+- bosconovitch -179.5° → 0.5°, eddy -178.6° → 1.4°, gunjack 149.9° → -30.1°,
+  heihachi 137.7° → -42.3°, yoshimitsu 155.1° → -24.9°. All 17 "ok", none
+  TURNED. (Residual angles within the ±61° untouched band, same as anna/lei.)
+- Pack integrity: bone lists L/R-symmetric, quats unit-norm after conjugation.
+
+## Files
+- lab/tools/t3_to_gltf.py (facing heuristic)
+- lab/tools/t3_motion_bake.py (T3Space facing heuristic)
+- game/assets/anim/t3/{bosconovitch,eddy,gunjack,heihachi,yoshimitsu}/
+  skeleton.json, t3_*.json (30 each), rows.pack.json (4 banks)
+
+---
+
+## 2026-10-21 — Pantera skin-weight re-derivation (live model + Attire 1)
+
+Lane: fix/pantera-weights-20261021. Tool: tools/auto_rig/reskin_pantera_weights.py
+(reproducible; run from tools/auto_rig). Gates: tools/auto_rig/anim_check.py,
+tools/auto_rig/validate.py.
+
+### Wiring confirmed (step a)
+- Live key `pantera: 'assets/models/pantera.glb'` (game/js/assets.js MODEL_URLS).
+- Attire 1 = the same file: game/js/attires.js ATTIRE_VARIANTS['pantera'][0] =
+  { model: 'pantera', label: 'ATTIRE 1' }. So "live Pantera" and "Pantera
+  Attire 1" are the SAME GLB: game/assets/models/pantera.glb (7,625,912 bytes,
+  sha256 2626d231a6aaff694117a55183171ad9c11f45a40eb3054afa52ab8dc55f6b6a).
+  One fix covers both. (pantera_alt1.glb is a legacy T7 reskin NOT in the
+  current attire ladder — out of scope.)
+
+### Diagnosis (measured, not eyeballed — step c)
+Per-region dominant-joint dump on the live file (11,376 skinned verts):
+- R/L FOREARM: only 13.7%/13.8% weighted to ForeArm; 47-49% to Hand,
+  36-38% to Spine/Spine1. (User: "forearm down through hands: stretching".)
+- L HAND: 80.7% LeftHand, 17% to Spine/Spine1 (torso-glue; user: "hand
+  weighted to the tail" — the tail hangs off the pelvis/back).
+- WAIST (0.98<y<1.12): 0% Hips; 62% to Left/RightUpLeg, 36% Spine.
+  (User: "from waist down: stretching".)
+- TAIL (443 verts, z<-0.15): 26% LeftLeg, 26% RightLeg, 12% each foot,
+  22% UpLegs — 0% Hips/Spine. Tail tears whenever legs move oppositely.
+- THIGH/SHIN: 30-35% weighted one joint too distal (thigh→Leg, shin→Foot).
+- IBMs verified consistent (max err 2.6e-7); skeleton itself is fine.
+- pantera_fixed.glb (2026-10-20 L/R transplant source) carries the SAME bad
+  WEIGHTS_0 — the transplant fixed joint indices only, not values.
+
+### Fix (pipeline-level, step d — NO hand-painted weights)
+New script tools/auto_rig/reskin_pantera_weights.py re-derives ALL
+JOINTS_0/WEIGHTS_0 in place (skeleton, IBMs, animations, materials untouched):
+1. k-NN (k=4, inverse-distance) from steve-fox.glb — same 49-joint Mixamo
+   skeleton, clean weights (92%+ forearm/shin/bicep), same -Z facing/T-pose.
+2. Side-constrained matching (|x|>3cm ⇒ same-side donor verts only).
+3. Tail rule: smoothstep blend from k-NN at base to rigid Hips at tip.
+4. Anatomical side correction: opposite-side influences mirrored + merged.
+5. Seam blend (repair_pantera_glb.py method) until anim_check gate passes.
+Result: R forearm 13.7%→99.9%, L forearm 13.8%→97.4%, waist Spine 36%→73%,
+shins 62%→90-93%, tail 100% Hips-weighted. anim_check: all 4 clips PASS
+(Idle p99.9 edge stretch 1.97 < 2.5 gate; was failing at 14.81 pre-blend).
+
+### Validation (step e)
+- anim_check.py: Idle/Run/TPose/Walk all PASS.
+- validate.py: valid_gltf/skinned_mesh/bones_present true (height_ok false —
+  pre-existing: validate measures mesh 0 prim 0 only, a 202-vert accessory).
+- tools/auto_rig/tests: 7/7, all passed, 3/3 pass (1 skip: missing Blender e2e GLB).
+- packages/creation-suite node tests: 6/6, 4/4, 4/4 pass (the `node --test test/`
+  directory form fails on a Node CLI module-resolution quirk; individual files pass).
+- In-game: proof-harness fight pantera vs demonio captured before/after;
+  frames viewed. Before: forearms/hands stretch, legs crumple. After: model
+  loads, fight runs, no collapse.
+
+### Files (no deletions)
+- game/assets/models/pantera.glb (weights re-derived; 7,625,912 bytes)
+- tools/auto_rig/reskin_pantera_weights.py (new, reproducible pipeline)
+- WORKLOG.md (this entry)
+
+### Flags for coordinator
+- SHARED CODE: none changed. The fix is a new Pantera-specific script + data.
+  knn_transfer.py / apply_skin.py untouched.
+- DONOR NOTE: pantera.glb is the k-NN donor for saku-ra, waterfall, charger,
+  armor-king, scimitar (2026-10-21 batch). They were rigged from the BAD
+  weights and likely inherit the forearm/waist/tail symptoms — the root-cause
+  lane should re-run those transfers against this fixed file.
+- pantera_alt1.glb (legacy, not in attire ladder) still has old weights.
 
 ## 2026-10-21 — Lane 1: playability code fixes (B1 / B4 / B5)
 
@@ -2002,6 +2158,19 @@ Owner directive (verbatim): "Research the current state-of-the-art open-source i
 
 ---
 
+## 2026-10-22 ~15:00 CDT — Worker 24: TTT2 Team Battle (versus submenu + tag mechanics)
+
+**Owner directive (verbatim):** "Pull Tekken Tag Tournament 2's team battle system into versus mode, straight from the TTT2 teardown files. Team battle option in character select — when you go to versus, there's a submenu (in the character select screen itself, not separate menus) where you pick: 1V1 fight, OR team battle — then pick how many fighters per team, then pick a character for each slot. Pull the ACTUAL team sizes, tag mechanics, and select flow from the TTT2 teardown files and replicate them exactly. No guessing. Tag mechanics — whatever TTT2 has for tagging in/out, tag combos, tag crashes, etc. — pull it all in. Audit the whole TTT2 teardown for other systems worth bringing in and add them to the teardown audit report for the user's approval."
+
+**TTT2 actuals:** team sizes Solo 1v1 / Tag 2v2 / Handicap 2v1·1v2 / Team Battle up to 8 per team; solo/tag choice BEFORE picks inside select screen; tag in/out, red health, rage, tag combos (buffered), tag assault, tag crash, tag throws. (Teardown dir is archive-only; mechanics from public TTT2 docs, cited in audit.)
+
+**Built:** team-battle.js (TagMatch engine), select-screen.js versus submenu (1V1|TEAM BATTLE → 2–8 → per-slot draft), game.js hooks, modes.js _vsDraft/_beginTeamVersus, main.js 4-fighter preload + TAG button, input.js KeyT, index.html TAG btn, CSS, docs/research/ttt2-teardown-audit.md (12 candidates).
+
+### Proof
+- Branch research/3d-generation-pipeline-2026-10-22b, PR against main with six-section instruction-gate body; deletion-guard / clobber-guard / instruction-gate green; merged clean via git_merge.py (merge-it-yourself law). (First attempt PR #654 hit a WORKLOG.md append/append race with another worker's entry — rebased onto current main as this clean branch.)
+
+---
+
 ## 2026-10-22 ~13:40 CDT — worker-33: FIGHT LAB (GUNGAKU 軍楽) + CREATION + PRESENTATION
 
 **Task (user-approved verbatim):** "Wire up: Fight Lab / Combot programmable training dummy — needs a proprietary name. Working candidate: Gungaku (軍楽) — Japanese for 'war music.' Confirm the name with them before locking it in. Def Jam's 1,900 CAW parts library. Soulcalibur weapon/style creation system. Photo mode (DOA-style: pause, camera control, filters). Per-character story endings/cinematics."
@@ -2303,6 +2472,41 @@ On-main files NOT touched: worker 37's `js/creation-flow.js` + `js/art.js`
 - Full log: `docs/decisions/2026-10-22-kinpo-repoint-w50.md` (branch
   `w50/kinpo-repoint`).
 
+## 2026-10-22 ~18:30 CDT — worker 67: Negativo archive batch (A1/A2) + CornerStone A1 + per-attire eye glow
+
+- **Archive (Dorowani #603 pattern):** three Tripo originals archived byte-identical
+  (sha256-verified) with manifests + immutable annotated tags ("Restore point:
+  these bytes never change"):
+  - `roster/negativo/attires/attire1/source/negativo-a1-futuristic-superhero.glb`
+    (23,252,660 B) + `manifest.json` — tag `negativo-a1-original`
+  - `roster/negativo/attires/attire2/source/negativo-a2-sci-fi-armored-suit.glb`
+    (27,085,484 B) + `manifest.json` — tag `negativo-a2-original`
+  - `roster/ryuji-rock/attires/attire1/source/ryuji-rock-a1-tattooed-man.glb`
+    (18,872,720 B) + `manifest.json` — tag `ryuji-rock-a1-original` (WH name
+    CornerStone; internal id stays `ryuji-rock`). Lands the long-pending
+    ryuji-rock attire1 slot.
+  - All three are unrigged statics (1 mesh, 0 skins) — archive only, NOT wired
+    into MODEL_URLS (invisible-fighter guard).
+- **Eye glow (owner spec 2026-10-22):** per-attire emissive eyes, data-driven in
+  the `'negativo'` ladder in `game/js/attires.js` — Attire 1 RED (`0xff2222`),
+  Attire 2 (before the trials) WHITE (`0xffffff`). Eye meshes identified from the
+  model: `n3g4tiv0.glb`'s dedicated eye material `ModelEyes_Material028`.
+  Renderer hook: `assets.js createInstance` 5th param `eyeGlow`, applied after
+  tint so glow wins; fight path via `resolveFighterAttire` → `this.char.eyeGlow`,
+  preview path via `attireEyeGlow(c, modelId)`. Attire 2 slot is `pending: true`
+  (rig not landed) — `selectableAttires()` hides it from the picker.
+- **Standing directive logged:** owner 2026-10-22 "For ALL future Tripo pulls —
+  AUTO-ARCHIVE to the repo. Don't ask, just wire them up every time." Added
+  "Archive (automatic)" section to `tools/tripo-intake/README.md` for worker 61's
+  intake inventory.
+- Files: `game/js/attires.js`, `game/js/assets.js`, `game/js/fighter.js`,
+  `game/js/select-screen.js`, `game/js/roster-full.js`, `roster/negativo/README.md`
+  (new), `tools/tripo-intake/README.md`, `docs/decisions/2026-10-22-negativo-eye-glow-archive.md`
+  (new), `docs/research/tripo-intake-2026-10-22-negativo-cornerstone.md` (new).
+- Verification: `node --check` on all five edited JS files; eye-glow match logic
+  verified against the real `n3g4tiv0.glb` material table (see decision doc);
+  model-key-guard ownership table untouched (no MODEL_URLS changes).
+- MERGE FREEZE: PR branch pushed, merge-ready, NOT merged.
 ## 2026-10-23 ~07:30 CDT — SmutBase intake wave 6: RYUSAN + TOBI full pipeline
 
 - **RYUSAN** (WH name for SmutBase Mina Ashido intake, `roster/mina-ashido/`): full pipeline —
@@ -2970,3 +3174,478 @@ renders complete + uploaded.
 
 Files: docs/decisions/2026-10-22-vf5-w57-redispatch.md (new),
 tools/vf5/merge_wol_head.py (new). Additions only.
+## 2026-10-23 — Soft-body nextgen lane (SurRoL MPM / Isaac Healthcare Newton / Neural Deformation Gradients)
+
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate"
+
+**What was evaluated (all three, no cherry-picking):**
+- **SurRoL** (arXiv:2402.01181v1, Yang et al.): MPM + Neo-Hookean soft-body surgical sim in Taichi (GPU parallel). Open source (med-air/SurRoL). Verdict: Taichi cannot run in the browser (Python-embedded DSL, CUDA/Metal/Vulkan targets, no WASM target) — the portable part is the algorithm core (Lagrangian particles carry F, Eulerian grid solves stress), re-implemented in dependency-free JS.
+- **NVIDIA Isaac for Healthcare** (isaac-for-healthcare.github.io, Newton 1.6.1 + Warp 1.17.0, GA April 2026): Apache-2.0 numerical sim. Verdict: Newton/Warp need CUDA + Python + Docker — cannot run in the browser. The architecture ports: staged solver systems, rigid↔soft coupling, per-layer materials.
+- **Neural Deformation Gradients** (Nolte et al., Eurographics 2026): **CC BY-NC — technique reference only, no code copied.** Per-element deformation gradients (inversion-resistant), stable Neo-Hookean (E_muscle=45kPa / E_fat=15kPa / ν=0.47, λ≈16µ), embedded deformation, Poisson reconstruction.
+
+**Changes:**
+- `game/js/mpm-tissue.js` (NEW, ~950 lines, one dependency-free import): `MpmTissue` CPU MPM-lite backend — quadratic B-spline P2G/G2P, APIC transfer, stable Neo-Hookean stress P(F)=µ(F−F⁻ᵀ)+λ·ln(J)·F⁻ᵀ, explicit substepped solve (h≤1/480 CFL), Newton-style MUSCLE→FAT→SKIN stages, NDG-style inversion guard (rescale F when det<0.35), pinned bone-wrap core (Dirichlet). Same belly region + skinning + integration contract as the Jolt/FEMFX lanes; ready on frame one (no WASM wait). `ENGINE='mpm-lite'`, `VERSION='1.0.0'`.
+- `game/js/tissue-quality.js` (NEW): one shared `wh_softbody_v1` quality store for all three backends — fixes mid-session divergence where each backend had its own quality variable (X-ray gate could disagree with the driving backend).
+- `game/js/softbody.js` (v1.0.0→v1.1.0, surgical): substepped world stepping (2×/frame — SurRoL/Newton technique); NDG-style per-lattice-cell inversion guard (crushed cell relaxes toward rest); quality delegates to the shared store; `ENGINE='jolt-xpbd'` stamp.
+- `game/js/femfx-adapter.js` (surgical): quality delegates to the shared store (was `wh_femfx_v1`).
+- `game/js/fighter.js` (surgical): backend picker wired for real — `window.WH_PHYSICS_BACKEND` ('jolt' default | 'mpm' | 'femfx') or per-character `char.softbodyBackend`. 'mpm' is synchronous; 'femfx' lazy-imports with its Jolt fallback.
+- `game/tests/mpm-tissue.test.mjs` (NEW): 13 tests, all green.
+- `docs/research/SOFTBODY-NEXTGEN-2026-10-23.md` (NEW): full evaluation of all three sources, GPU-vs-browser matrix, what was wired, future work.
+
+**Verification:** `node --test game/tests/mpm-tissue.test.mjs` 13/13 green; `node --test game/tests/*.test.mjs` 144/149 — the 5 failures (fluid-decals, rage/urge input routing, stagebreak flakes) reproduce on clean origin/main, pre-existing and unrelated. `node --check` clean on all touched/new files. Default backend unchanged ('jolt') — existing fights unaffected.
+
+**Deviations:** none from the directive — all three items are wired where they can run; GPU/Python-only parts (Taichi SurRoL, Newton/Warp, Cosmos-H Dreams, NDG trained network) are evaluated and documented as [AWAITS GPU LANE]/[FUTURE], not silently dropped. NDG is CC BY-NC: technique reference only, zero code copied.
+
+**Process note:** mid-task the shared checkout `~/workspace/wh-repo` was concurrently switched to another agent's branch (`feature/cloth-xpbd-20261023`) with their uncommitted work; my uncommitted changes were extracted as a verified-pure patch to /tmp/softbody-save and all further work continued in the clean full worktree `~/workspace/wh-softbody` (67,875 files == HEAD, verified). Their work was not touched.
+
+## 2026-10-22 ~19:10 CDT — worker 70: disk-cleanup archive sweep (tpose-delivery + render intermediates)
+
+- Coordination: worker 67's PR #715 (`archive/negativo-eye-glow-20261022`) already
+  archives negativo A1/A2 + Cornerstone(Ryuji Rock) A1 immutable originals + manifests
+  + intake note + immutable-original tags. Byte-verified 3/3 GLBs against staging via
+  git blob SHA — exact matches. NOT re-archived here (no duplicate bytes).
+- Byte-check vs PR #703: all 12 buffalo-bill/theory source files (6 GLBs + 6 manifests)
+  match #703's blobs by git SHA exactly; every `tpose-delivery/` buffalo-bill/theory
+  render is byte-identical to #703's `docs/proof/buffalo-bill-theory-2026-10-22/` renders
+  (the `*-v2..v5` variants are duplicate copies of the same bytes). Nothing re-archived.
+- This PR (`archive/negativo-cornerstone-tpose-20261022`, MERGE FREEZE — merge-ready,
+  not merged) archives what NEITHER #703 nor #715 covered:
+  - Proof renders → `docs/proof/tpose-delivery-2026-10-22/`:
+    `negativo-a1-front.png`, `negativo-a2-front.png`, `ryuji-rock-a1-front.png`,
+    `parvati-tpose.png` — all byte-verified against staging.
+  - The 6 `*-render.glb` intermediates from buffalo-bill/theory staging (~87 MB)
+    under each attire's `source/` dir as `*-render.glb` — deliberate deviation from the
+    immutable-originals pattern, called out: the sweep's delete rule
+    ("delete ONLY after 100% byte-confirmed in repo, no exceptions") requires them in
+    the repo before the staging disk can be reclaimed. Regenerable from originals.
+  - Sweep note: `docs/research/disk-cleanup-sweep-2026-10-22.md` (byte-verification
+    record; archive only, no canon invented).
+- `roster/TRIPO-REGISTRY.md`: added ARCHIVE-THEN-CLEAN PIPELINE LAW section
+  (owner directive 2026-10-22 — all future Tripo pulls auto-archive to the repo as
+  immutable originals + manifest + proof renders; staging cleaned only after
+  byte-confirmation) + negativo/ryuji-rock registry rows.
+- Merge note: #715 and this PR both append to WORKLOG.md / touch TRIPO-REGISTRY.md —
+  if #715 merges first, rebase this branch before merging (no content conflicts
+  expected; disjoint file paths otherwise).
+- Disk reclaimed after 100% byte-confirmation: tripo-staging/negativo (49M) +
+  tripo-staging/cornerstone (19M) + tripo-staging/buffalo-bill (68M) +
+  tripo-staging/theory (136M) + tpose-delivery (9.5M).
+## 2026-10-22 ~18:30 CDT — worker 66: in-suite hand-tooling with headless Blender backend
+
+Owner directives (verbatim): "Set up all the stuff on your side, then when I go into the character
+creation suite, make it where I can do the hand-tooling part IN the character creation suite —
+where I don't have to actually use Blender, but Blender's just hooked up in the character creation
+suite." + "I'll call that up so it works for all of the models, all the characters, all the parts.
+They're all interchangeable, deletable, replaceable, addable, movable, resizable, scalable,
+reshapeable — full Blender-level capabilities."
+
+What shipped (branch `w66/in-suite-mesh-edit`, MERGE FREEZE — merge-ready, not merged):
+- `tools/mesh-edit/mesh_edit.py` — headless Blender 4.0.2 op driver
+  (`blender -b --factory-startup --python mesh_edit.py -- --job JOB.json`). Op catalog v1:
+  mesh_list, mesh_hide/show, mesh_delete, mesh_transform (bake TRS), mesh_duplicate
+  (+mirror_x), part_import (donor GLB / library:id, socket fit), mesh_sculpt
+  (smooth/grab/inflate/pinch via bmesh), mesh_remodel (remesh/subdivide/decimate).
+  Geometry-changing ops set `reweight_needed`; sources immutable (`out_glb == source_glb`
+  refused); writes `out_glb` + `out_report` + preview PNG.
+- `tools/mesh-edit/run_mesh-edit_job.py` — suite-jobs runner (`tool: "mesh-edit"`),
+  `run_job(spec, log)`; registered in `tools/suite-jobs/server.py` tool registry (one-word
+  additive edit). No parallel server — TOOL UNIFICATION LAW: mesh-edit rides the existing
+  suite queue (:8766) the JOBS tab already polls.
+- `customization/create-fighter/js/meshedit.js` — MODEL EDIT mode for the suite viewport:
+  tap-to-select (raycast, touch-safe), TransformControls gizmo (lazy, numeric-nudge fallback),
+  capture-phase orbit guard (zero edits to preview3d.js), part list, hide/show/delete/duplicate,
+  sculpt-point picking, job submit to the suite queue; falls back to job-spec download when the
+  server is unreachable (GitHub Pages / no backend).
+- `customization/create-fighter/js/tools.js` — registry wiring: `meshedit` SEPARATE_TOOLS
+  entry + `model-edit-system` UNIFIED_SYSTEMS entry + unifiedActions case (ENTER MODEL EDIT,
+  job spec, JOBS tab link). Menu home: TOOLS tab; nests under Appearance → Attire Parts in the
+  WWE flow (worker 65 owns the tree; contract documented).
+- `customization/CHARACTER-CREATION.md` — "Model Edit (hand-tooling)" subsection.
+- Docs: `docs/research/2026-10-22-W66-in-suite-mesh-edit-research.md` (Prisma3D touch
+  vocabulary, TransformControls touch support, Blockbench/MeshySmith evaluated+rejected,
+  blender-remote/mcp-for-blender patterns, teardown editing patterns),
+  `docs/decisions/2026-10-22-W66-mesh-edit-architecture.md` (job schema v1, API, w64/w65
+  contracts, undo/safety, proof plan).
+
+Key integration findings (no duplication): the suite already had `tools/suite-jobs/server.py`
++ JOBS tab (`window.__flow.renderJobs`) — mesh-edit registers as a tool there instead of a new
+server. `window.__suite.preview` is the viewport handle. Labels resolve via worker 64's mesh
+taxonomy (`window.__whMeshTaxonomy`) when present, else raw GLB node names.
+
+Proof: `node --check` on meshedit.js clean; `python3 tools/mesh-edit/tests/test_runner.py`
+10/10 pass (validation, guards, fake-Blender report parse, AST parse of both py files).
+No Blender on this VM — real op runs need `tools/setup/setup_toolchain.sh` (follow-up).
+Follow-ups: vendored TransformControls, real Blender run on a roster GLB, w64/w65 handshake,
+one-line JOBS-tab tool-dropdown addition (creation-flow.js — worker 37's lane, documented).
+## 2026-10-22 ~17:50 CDT — worker 65: WWE teardowns drive the creation suite (CAW menu logic + 100% teardown coverage)
+
+- Owner division locked: Tekken teardowns → game menus/flow; **WWE teardowns → creation suite structure, menus, submenus, flow**. Suite nests inside Tekken's menu structure; WWE CAW logic governs the creator's internal hierarchy.
+- `customization/creation-suite-ui/js/menu-data.js`: +10 `MENU_SRC` entries, +14 new trees/flows — `WWE_ATTIRE_TREE` (8 clothing regions → T7 slot mapping), `WWE_ENTRY_FLOW` (2K22 three doors), `WWE_FACE_TREE`, `WWE_BODY_TREE`, `WWE_PROFILE_TREE`, `WWE_PERFORMANCE_TREE`, `WWE_STATS_TREE`, `SC_CAS_TREE` + `SC_CAS_FLOW` (Soulcalibur VI — closes the SC coverage gap), `DEFJAM_SHOP_TREE` + `DEFJAM_GYM_TREE` (shops + charisma + gym), `NM_CAW_TREE`, `WMXIX_CAW_TREE`, `TOUCH_MAP` (phone-first conversion). `ENTRY_FLOW` extended (not replaced). Every node src-tagged per the file's verbatim convention.
+- `customization/creation-suite-ui/js/suite.js`: ATTIRE tab gains **TEKKEN SLOTS ⇄ WWE REGIONS** browse toggle (`ui.attireMode`, default `tekken` — zero behavior change unless toggled). `renderWweRegions` + `partsForWwe` (union of region slots, deduped); `renderPartGrid` supports `cat.slotFor` so WWE-region equips file under each part's natural T7 slot. `node --check` clean on both files.
+- Docs: `docs/research/CREATION-SYSTEM-AUDIT-2026-10-22.md` — per-game audit matrix (Tekken 5/6/TTT2/7/8, WWE 2K22/26/19/14/16, Soulcalibur III/IV/VI, Def Jam FFNY, WWF No Mercy, WMXIX, DOA6) → what got wired where → open gaps (asset pulls only: WWE 2K pac meshes, WMXIX .ymg decode, Def Jam GLB cleanup).
+- Docs: `docs/decisions/2026-10-22-creation-suite-teardown-blueprint.md` — flow map: 2K22 drives menu logic, 2K26 drives layers/morphs, No Mercy drives the 4-attire model, WMXIX drives proportions; where we extend (MB-Lab/MPFB/GNM/Build-A-Bod, universal mode); Def Jam differences (shop model + charisma); Soulcalibur additions; touch conversion rules; capability checklist (all 5 owner capabilities verified against spec).
+- Coordination: worker 64 (clothing/accessory taxonomy + hair/headwear-as-library-items) — trees carry `wh`/`slots` mappings onto the shared T7 spine so their taxonomy plugs in without rework. Worker 61 (select-screen assets) feeds menu art per `UNIFIED-UI-SPEC.md` §8. Worker 62 (OSS games) — mined worker 22's OSS wave instead of duplicating (game-hud UI kit → suite ui-kit; Material Maker/TEXTtoPBR → textures).
+- MERGE FREEZE: pushed to `worker65/wwe-caw-creation-suite`, PR opened, **not merged** — merge-ready pending coordinator.
+## 2026-10-23 ~19:30 CDT — Future Tech prototyping: SCRIPT + AdaHuman/GAIA integration design
+
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate"
+
+**Scope:** Future Tech prototyping lead lane — items 9 (SCRIPT) and 10 (AdaHuman/GAIA) from `docs/research/CUTTING-EDGE-SCOUT-2026-10-23.md`. Both are research-stage (no public code); the deliverable is integration architecture + contract code, per the lane brief ("If no code is available, the design docs ARE the deliverable").
+
+**Code-availability verification (2026-10-23):**
+- SCRIPT (arXiv:2605.22894): no GitHub repo (API search), arXiv page has no code link; paper says "Our code will be publicly available for future research". NOT released.
+- AdaHuman (arXiv:2505.24877, ICCV 2025): no GitHub repo (API search); project page (nvlabs.github.io/AdaHuman) says "Code and models will be publicly available for research purposes", no link. NOT released.
+- GAIA (SIGGRAPH 2025): project page (research.nvidia.com/labs/amri/projects/gaia) is research-demonstration only — no code/model links. NOT released.
+
+**Delivered (all new files, 0 deletions, nothing in `game/`):**
+- `docs/research/SCRIPT-INTEGRATION-2026-10-23.md` — JAST-DiT architecture, exact I/O contract (s_t∈R^358, a_t∈R^69, CLIP text, receding-horizon), where-it-wires-in table (describe-a-move flagship; NOT live combat/phone), inference-service REST spec, canon-safe prompt builder rules, frame-data anchoring, whole-roster style-hint table, code-drop checklist, license transparency.
+- `docs/research/PHOTO-TO-FIGHTER-2026-10-23.md` — AdaHuman deep dive (single photo → A-pose 3DGS), GAIA deep dive (identity/expression disentanglement, 43 FPS on RTX A6000), the 3DGS→mesh→rig critical path (SuGaR/2DGS/GOF/MVS options, Inria/MPII NC flag), 7-stage pipeline with consent/adult/no-famous-faces gates, GPU requirements table, companion note to FACE-SCAN-PHOTO-TO-3D-2026-10-23.md (face lane stays the wired-now path).
+- `tools/script-adapter/` — `script_contract.py`, `prompt_builder.py` (canon filter: minors/sexual/famous-names rejected), `smpl_to_wh.py` (69-dim SMPL→WH bone map, action-stream keyframe baking @60fps, wh-anim/1 envelope defaulting to `"set": "SHOW"`), `client.py` (REST client + in-process stub server), `README.md`, `tests/test_script_contract.py` — **22/22 pass** (synthetic data).
+- `tools/photo-to-fighter/` — `stages.py` (IntakeSpec→SplatAvatar→GameMesh→RiggedFighter→TexturedFighter→PhotoFighter contracts), `likeness_policy.py` (gates raise, never warn), `pipeline.py` (injectable backends + stubs), `README.md`, `tests/test_pipeline_contract.py` — **16/16 pass** (stub backends).
+
+**License transparency:** NVIDIA research code → expected NVIDIA Source Code License-NC (non-commercial, research/evaluation only; verified license text via nvlabs.github.io/stylegan2/license.html). NC-licensed code/weights never enter `game/` or ship — research lane only. This PR's code is WH-original (repo license), contains no NVIDIA code/weights/artifacts.
+
+**Anti-clobber:** sparse checkout (3% of files) — NO local commit. Payload built via Git Database API on current main tree: additions only, 0 deletions. Branch `docs/futuretech-script-phototofighter-20261023`, PR with 6-section body.
+
+**ALL CHARACTERS ARE ADULTS:** enforced in `prompt_builder.canon_filter()` (SCRIPT prompts) and `likeness_policy.check_adult()` (photo intake) — both raise, no override path.
+## 2026-10-22 — worker 58: archive Buffalo Bill A1/A2 + Theory A1/A2/A3 (Tripo immutable originals)
+- Archived 5 Tripo pulls as immutable source originals, dorowani #603 pattern:
+  `roster/buffalo-bill/attires/attire1/source/buffalo-bill-a1.glb` (20,391,004 bytes, fantasy character, ram horns),
+  `roster/buffalo-bill/attires/attire2/source/buffalo-bill-a2.glb` (21,441,832 bytes, horned humanoid, ram horns),
+  `roster/theory/attires/attire1/source/theory-a1.glb` (22,369,448 bytes, gothic cat girl),
+  `roster/theory/attires/attire2/source/theory-a2.glb` (18,773,404 bytes, superhero red cape),
+  `roster/theory/attires/attire3/source/theory-a3.glb` (20,769,628 bytes, dark fantasy spiked),
+  each with `manifest.json` (Tripo project UUID, share URL, byte/magic verification).
+- Proof renders: `docs/proof/buffalo-bill-theory-2026-10-22/` (5 T-pose PNGs, 1024x1024, visually verified).
+- Research note: `docs/research/buffalo-bill-theory-intake-2026-10-22.md`.
+- Immutable-original tags on archive commit: `buffalo-bill-a1-original`, `buffalo-bill-a2-original`,
+  `theory-a1-original`, `theory-a2-original`, `theory-a3-original`.
+- No canon entries invented — archive only; canon bridges deferred to owner.
+
+### Addendum — Theory Attire 4 (same session)
+- Archived `roster/theory/attires/attire4/source/theory-a4.glb` (21,511,628 bytes, black leather outfit 3d model,
+  Tripo owner `eqqq57218`) + `manifest.json` + T-pose proof `docs/proof/buffalo-bill-theory-2026-10-22/theory-a4.png`
+  (visually verified). Intake note + tag list updated (`theory-a4-original`).
+## 2026-10-24 — 100% wiring pass: already-decoded extraction data into movesets + library (one PR)
+
+- MOT.BIN clip tables wired: kinpo (asa, 861 resolved + 1,603 unmapped 0x8000 + 4,731 cancel links), burger (bob, 667 + 1,658 + 4,267), purplerain (lee, 710 + 1,593 + 4,813); cancel links appended to pond (frv, +4,670) and ryusan (dnc, +4,119). Playable wiring stays NONE — tables are file keys, not playable WH move animations.
+- Wrestling (No Mercy) bank: input_lp on all 4,153 input-populated rows (mechanical 1→LP1, 2→RP2, 3→LK3, 4→RK4); 256 input-null rows UNMAPPED, no invented inputs; index counts updated.
+- T3 verification fixes in movesets: 18 entries marked UNMAPPED (wrong-claim anim_ref/t3_row removed, former row kept in trace); chord-as-string documented as known gap on 8 fighters (35 motion-HARD enders, left unwired); heihachi_on_jin verified as the live bank (heihachi_ownrig has no rows.pack.json and was not wired).
+- MOD damage: 31 PR #1000/#1002 files verified (2,996 traces + 627 in-place == MOD, 0 diffs); 1,927 new values wired for 19 uncovered fighters. No existing MOD value overwritten; megami t8_source rows untouched.
+- Batch checker: tools/combat-qa/wiring_batch_verify.py (130 checks, one run; --gpu prints the GPU job spec instead of faking GPU work).
+
+Files: game/assets/movesets/*.json (30), game/data/moveset-library/banks/wrestling.json, game/data/moveset-library/index.json, tools/combat-qa/wiring_batch_verify.py (new). Additions only except the 36 removed wrong-claim lines.
+## 2026-10-25 — Claude session: checkpoints so a container restart can't wipe work again
+- A container restart reset the working tree to the last pushed commit and wiped the scratchpad: six lanes of
+  uncommitted agent work (strings, hit contact, canon movesets, select/stage, reaction wiring, gap audit) were lost;
+  the agents re-apply from their transcripts. Lesson: unverified work must still leave the machine.
+- tools/agent/checkpoint.sh (hooked like autosave.sh) pushes uncommitted repo work + the scratchpad + a re-download
+  manifest to <branch>-checkpoints via plumbing; tools/agent/restore.sh (SessionStart) brings it back without
+  clobbering. Tested: checkpoint pushed (402 scratch files + wip.patch); restore into an empty folder put all 402
+  back and refused to apply the patch over a dirty tree.
+---
+
+## 2026-10-23 — Batch-5 moveset pull: King Tyrant, Cyborg X, Awa Pop, Retsu, Rin (T8 diff + SHOW-ANIMATION LOCK)
+
+**Owner instruction (verbatim, 2026-10-23):** "Now we need to get that done for every other character" — replicate the Law/Lars pull pattern (PR #823 merged, PR #806 green): diff `game/data/t8_frame_tables.json` → `chars.<source>` against each fighter's existing `moves` keys for genuinely-missing moves; add missing moves in Tekken notation with frame data stamped `"set": "FIGHT"`; add `anim_set_lock` metadata; check the T3 bank `game/assets/anim/t3/<source>/` (wire or file a gap doc); update `game/assets/movesets/index.json`.
+
+**Changes:**
+- `game/assets/movesets/kingtyrant.json` (Eddy): 848 moves, T8 diff 0 genuinely-missing (152/152 inputs present) — `anim_set_lock` stamped, `merge_sources.added.batch5_pull_20261023` recorded.
+- `game/assets/movesets/cyborgx.json` (Alisa): 624 moves, T8 diff 0 genuinely-missing (188/188) — same lock treatment.
+- `game/assets/movesets/awapop.json` (Nina): 909 moves, T8 diff 0 genuinely-missing (191/191) — same lock treatment.
+- `game/assets/movesets/retsu.json` (Bryan): 685 → 739 moves (+54 T8-only, all `"set": "FIGHT"`); slots 294 → 348; `anim_set_lock` stamped. Skipped `d,db,b` (empty motion-transition input in the T8 table, not an attack — no move entry).
+- `game/assets/movesets/rin.json` (Jin): 659 → 710 moves (+51 T8-only, all `"set": "FIGHT"`); slots 309 → 360; `anim_set_lock` stamped. Skipped `f,n,d,df`, `f,n,d,df,UF` (empty crouch-dash motion inputs, not attacks).
+- `game/assets/movesets/index.json`: moves/inputs/bytes updated for all five fighters.
+- `docs/anim/{EDDY,ALISA,NINA,BRYAN,JIN}-ANIM-GAP-20261023.md`: FIGHT/SHOW intake manifests per the SHOW-ANIMATION LOCK. Key finding: **Alisa has no T3 bank** — `game/assets/anim/t3/alisa/` does not exist (she debuted in Tekken 6; T3 can never fill it), so cyborgx still binds the flagged `gunjack` substitution bank; full bank manifest filed for the T5/T6/TTT2/T7 extraction coordinator lane. Eddy/Nina/Bryan/Jin banks exist (32 files each); Bryan's 54 and Jin's 51 T8-only moves are named FIGHT-motion targets for the extraction lane (no T3 rows to wire — they bind generic strike/grab clips until motion lands).
+- Frame-data honesty: the T8 compact table carries no damage or recovery columns. New moves use `damage: 0` + `damage_note` (0 = unknown, not zero — revisit in a damage pass) and `recovery: 0.5` (30f assumed, recorded in `recovery_estimated`). On-block/hit/CH formatted `+N`/`-N` per in-file convention; `hit_level` h/m/l/t; `knockdown: true` where the T8 `ko` flag is set.
+
+**Verification:** semantic diff audit — 0 field losses, 0 removals, additions only across all five files; all 105 new moves carry `"set": "FIGHT"`; index counts match file contents (moves = len(moves), inputs = len(slots), bytes = file size).
+
+**Deviations:** none — all 105 added moves are combat moves (FIGHT); no SHOW content entered any moveset.
+## 2026-10-23 ~18:30 CDT — Law full pull for BUFFALO BILL (branch `law/full-pull-2026-10-23`)
+
+- **Moveset** (`game/assets/movesets/buffalo-bill.json`): 228 -> 229 moves. Full-bank
+  audit (459 Law rows): 43 damaging rows unreached by the input BFS; motion
+  fingerprints show 1 duplicate (r57 = r54/55/56), 1 with a real decoded input
+  (r441, mash follow-up `[5+LP 5 5+RP 5 5+LP+RP](40f)` to `d/f+1+2,1_c2` — added as
+  `d/f+1+2,1_c2,mash`), 41 with unique motions but NO decodable input path (not
+  added, no invention per no-guessing law). Forest Law's 27 exclusive rows are his
+  alternate basics (different character) — not merged. `index.json` updated 228->229.
+- **Animation bank** (`game/assets/anim/t3/law/`, new, 30 wh-anim/1 clips): Law's
+  signature stance idle (slot 3), intro (slot 0), jab/kick/u/f+4-flip-kick/throw,
+  block/hit/launch/KO, dashes, walks, sidesteps, jumps, crouch, 4 win poses, plus
+  `skeleton.json` and `rows.pack.json` (217 rows, 0 missing). Baked from the owner's
+  disc with the existing pipeline (KMD re-extracted, sha256-verified; facing-fix
+  build; clip<->GLB check 540 channels, max dev 7.83e-07). Stick-figure renders
+  eyeballed: real Law motion.
+- **Wiring**: `T3_BANKS.law` + `SOURCE_TO_BANK.law` in `game/js/t3anims.js`;
+  `bankIdFor('buffalo-bill')` now resolves via `t3_source: 'law'`.
+- **Tools** (additive): `BANKS["law"]` in `lab/tools/t3_motion_bake.py`,
+  `tools/anim/t3_row_bake.py`, `tools/anim/t3_bank_skeleton.py`.
+- Canon untouched. Tekken/Law names in technical files only.
+- Full log: `docs/decisions/2026-10-23-law-pull-buffalo-bill.md`.
+- In-game playtest (clips actually playing on Buffalo Bill) flagged for coordinator.
+## 2026-10-22 ~23:02 CDT — Worker 83: Nine Souls character-select redesign
+
+Owner directive (verbatim in `docs/owner-directives.md`): the 7 vesseled
+souls (RIN, BYOU, TOU, SHA, KAI, JIN, RETSU) come OFF the select grid; only
+ZEN and GYOU stay selectable. Tertiary soul-spirit toggle per fighter
+(on/off + 9-soul pick); vessel match empowers. Owner makes the spirit
+versions themselves — no AI stand-ins. Refinement: the seven return later
+as unlockable boss-type characters with vessels/bodies (roadmap, not now).
+
+Built: `game/js/soul-spirit.js` (new, 20/20 unit tests pass),
+`select-screen.js` (SELECT_HIDDEN dedup + toggle UI + `soulSpiritLocked`
+API), `select.css` (panel styles), `main.js` (apply picks in `startFight`),
+`fighter.js` (`soulMeterMult` in meter accrual), `game.js` (placeholder aura
+attach point on `fighter.lean`). `node --check` clean on all touched files.
+Design doc: `docs/research/nine-souls-select-redesign-2026-10-22.md`;
+decision log: `docs/decisions/2026-10-22-nine-souls-select-redesign-w83.md`.
+PR: `worker83/nine-souls-select-redesign-20261022` (merge-ready, not merged
+— merge freeze in effect).
+## 2026-10-22 — Worker 64: Clothing remove/change system + labeling standard + Tsuyu frog hat
+
+**Owner directives:** (1) "Make it able to remove and change their clothes in
+the character creation suite and in game when I play it and preview it."
+(2) Labeling standard for every clothing part/accessory across all characters
+going forward (retroactive, starting with Parvati). (3) Hair/hats/accessories
+as SEPARATE INTERCHANGEABLE PARTS; hair = first-class library item.
+(4) Tsuyu catch: "Tsuyu without her frog hat isn't Tsuyu. Get it on her."
+
+**Built:**
+- `game/js/clothing-layers.js` (new): runtime per-mesh visibility engine.
+  Layers match by EXPLICIT raw-mesh-name lists (case-insensitive exact —
+  `Bra` never catches `Bra (2)`). Data-driven via
+  `game/data/clothing-layers.json` (model key → layers); nothing hardcoded.
+  Persistence `wh_clothing_v1` (hidden-set per model key). Hooked into
+  `assets.createInstance` (guarded, fire-and-forget) so saved choices apply
+  to every fight, preview, and harness automatically — incl. transform swaps.
+- Suite: `packages/creation-suite/ui/suite.js` — CLOTHING LAYERS section
+  nested at the top of the ATTIRE tab (integration law: inside the Tekken
+  flow, not parallel); `profile.js` — `clothing` state + `setClothingHidden` /
+  `isClothingHidden`, serialized as additive v1 `clothing_layers.hidden`,
+  mirrored to `wh_clothing_v1` on toggle/save. Wiring-map row added per its
+  rule 2.
+- In-game: pause menu gets a CLOTHING button → sheet with P1/P2 layer lists,
+  live toggles (`game/js/menus.js`).
+- `docs/CLOTHING-ACCESSORY-LABELING-STANDARD.md` (new): the permanent
+  `<category>_<item>_<variant>` standard, 11 categories (hair separate from
+  headwear), intake wiring checklist.
+- Retroactive label maps in `game/data/clothing-layers.json`: Parvati (23
+  source meshes incl. `Bra (2)`→`top_bra_02`, `Gaunlet`[sic]→`gloves_gauntlet_01`;
+  `Stripe`/`Full`/`Triangle` flagged `review: true`) and Tsuyu Asui
+  (`OBsuit`→`fullbody_bodysuit_01`, `OBHair`→`hair_bob_01`, …).
+- Intake pipeline: `docs/SMUTBASE-INTAKE-QUEUE.md` + standard §6 — intake not
+  complete until the label map is filed.
+
+**Tsuyu frog hat investigation:** full object-name scan of her source blend
+(37 objects) — the hat is NOT in the source at all (not hidden, not
+unexported). Crew-modeled it as a separate library part
+(`customization/parts/headwear/frog-hat/frog-hat.glb`, label
+`headwear_frog-hat_01`, 1370 verts) — NOT baked into her model. Her HAIR was
+verified present (`OBHair`, visible in PR #634) — the user's suspicion was
+wrong, no fix needed; registered as `hair_bob_01`.
+Re-rendered T-pose with the hat on (measured fit: head 0.691 wide, top
+z=4.052; dome r=0.42 seated at the forehead): proof at
+`docs/proof/tpose-urgent-2026-10-22/tsuyu-asui.png` (updated). Note: her
+source blends' `Hair`/`Body_*.dmx` data blocks are corrupted (append fails
+with "invalid ID names") — render used `.blend1` explicit object names;
+the rig lane should know.
+
+**Tests:** `node --check` clean on all 5 JS files; engine unit-check
+(exact-match semantics, categories, storage fallback) passes. Render viewed
+before shipping.
+
+**Branch:** `w64/clothing-layer-system` — PR open, MERGE FREEZE: merge-ready,
+not merged.
+## 2026-10-22 — Moveset Library System (worker 47, branch w47/moveset-library-system)
+
+Built the central moveset library + per-fighter assembly system (owner standing directive):
+- `game/data/moveset-library/`: 9,420 moves across 5 banks (T3 4,648 · No Mercy 4,409 · WMXIX 169 · DOA 146 · VF 48) + 9 pending banks registered; `schema.json`, `axes.json`, `claimed-map.json` (source law), `index.json`. Reproducible ingest: `tools/moveset-library/ingest.mjs`.
+- `game/js/moveset-library.js`: `assembleFighter()` → v2-contract movesets; source-law gate in code; pending banks degrade honestly.
+- `game/data/movesets/`: pre-assembled bannon / el-toro / pablo (locked flavor: powerhouse + comedy-whiff lucha attempts + Black Reign Ride / Abyss Choke dark thread) / npc-finxsse. VF5 bases pending worker 45.
+- `game/moveset-browser.html`: browse by axis, inspect, attach/detach, save. Fully working dev page.
+- Docs: `docs/research/moveset-library-schema.md`, `docs/decisions/2026-10-22-moveset-library.md`, `docs/handoffs/moveset-library-vf5-format.md` (worker-45 contract, read-only).
+- Proof: node --check clean; ingest 0 violations; assembler CLI verified (pablo 8 / bannon 3 / el-toro 2 / npc-finxsse 1, law-clean); claimed pull refused / free pull allowed.
+## 2026-10-22 — Worker 29: TRAINING MODE DEPTH + REPLAYS (Gungaku lab depth, replay theater)
+
+**Owner instruction (verbatim):** "Wire up: (3) Training mode depth — frame data display, record/playback dummy, hitbox viewer. (5) Replays — save/watch fights, slow-mo, camera control."
+
+**Method specified:** Build full training/lab mode (frame data from moveset data, record/playback dummy, hitbox viewer on PR #616's hitbox system, dummy controls, reset positions). Deterministic replays (input log + seed, not video) with playback controls, slow-mo, free camera, library UI. Pull from every teardown with these systems (T7 training gold standard, TTT2, DOA, SF, SC).
+
+**Method used:** As specified. Teardown research in `docs/research/TRAINING-REPLAY-RESEARCH-2026.md` (T7 practice/Combot/frame data, TTT2 chapters, DOA slow-mo, SCVI overlay). Determinism design: replays are *resolved fighter-call logs + per-round snapshots*, NOT raw inputs — verified 2026-10-22 that TekkenBuffer/chord timing uses wall-clock (`performance.now`) while fighter sim internals are deterministic (all Math.random/performance.now in fighter.js are visual-only). Round snapshots bypass the intro's wall-clock setTimeout.
+
+**Delivered:**
+- `game/js/training.js` (NEW) — `TrainingLab`: `TrainingDummy` (stand/crouch/block/jump, swaps in as `game.ai`), `DummyRecorder`/`PlaybackDummy` (T7-style record→looped playback, raw inputs re-resolved on dummy's moveset), `HitboxViewer` (red wireframe attack box + green hurtboxes from `getHitbox`/`getHurtboxes`), live frame-data readout (`frameDataFor`: startup/active/recovery @60fps + damage + T3 provenance), reset positions, free camera. Coordinates with (not duplicates) worker-33's `fightlab-gungaku.js` programmable dummy.
+- `game/js/replay.js` (NEW) — `ReplayRecorder` (monkey-patches 10 fighter intent methods per fight, logs resolved calls + per-round snapshots; auto-saves on match end), `ReplayPlayer` (re-simulation drive, transport: 0.25×/0.5×/1×/2×, frame step, scrub via re-sim, restart), `FreeCam` (orbit/zoom, shared with lab), library wrappers.
+- `game/js/replay-codec.js` (NEW) — pure data layer: fighter snapshot/restore, per-tick call indexing, `sameArgs` change detection, replay-library CRUD (localStorage `wh_replays_v1`, cap 12). 8/8 node tests pass.
+- `game/js/game.js` — `tick` counter + `_tickHooks`, replay branch in `_update` (skips input+AI), `timeScale` (slow-mo), `stepTicks(n)` for frame-stepping, recorder finalize on match end, cleanup in `resetFightState`.
+- `game/js/fighter.js` — `Fighter.replayMove(resolved, rawName)`: fires recorded notation without re-running the wall-clock TekkenBuffer; mirrors `_tryAttackFresh`'s post-resolution tail.
+- `game/js/scene.js` — `arena.freeCam` flag: skips auto-framing while lab/viewer drive the camera.
+- `game/js/main.js` — dynamic-import attach (lab for training, recorder for versus/arcade/demo, player for `opts.replayData`); movelist rows show `Sf/Af/Rf · dmg`; replay theater UI (`showReplays`, `watchReplay`, transport bar, `exitReplay`); `data-action="replays"` route; keyboard T/V/R (lab), Space/./,/C/[/]/Esc (replay). Null-safe `show()` (main's `screen-stage-intro` element is missing — pre-existing).
+- `game/js/mainmenu.js` — flipped the REPLAYS collection card from `badge: 'soon'` to `badge: 'live', action: 'replays'` (worker-33 coordination pattern; routes via the delegated data-action handler).
+- `game/index.html` — `#gungaku` lab panel, `#replay-bar` transport, `#screen-replays` library, REPLAY THEATER menu wiring, REPLAYS result-screen button, `#gungaku-btn`/`#replay-badge` HUD, movelist legend.
+- `game/styles.css` — lab/transport/library styles (appended).
+- `game/tests/training-replay.test.mjs` — 8/8 pass.
+
+**Deviations:** (1) One main-bug fix required for verification (pre-existing): `main.js` `show()` null-safe — main's `screen-stage-intro` element is missing from index.html, crashing every `show()` call. (2) Menu entry: the T8 menu's `data-mm` submenu cards are populated by `mainmenu.js`; the REPLAYS card flip is the entry point — the delegated router handles `data-action="replays"`. (3) Verification drove `__game` directly (not the menu) because headless renders ~1 frame/4s; used `stepTicks` for deterministic advancement.
+
+**Proof:** Headless Chromium (SwiftShader) verification: game boots clean (`window.__game`, no console errors); Gungaku lab panel renders with dummy/record/hitbox controls; dummy crouch + hitbox viewer shows green hurtbox wireframe; frame-data readout live; dummy record (3s) → playback loop; versus fight records (1 round, 5 calls); KO → finalize → library saves (1 entry); replay theater lists "TOU vs RIN"; replay player attaches and steps ticks; slow-mo (0.25×/0.5×) via `timeScale`; REPLAYS button on result screen. Screenshots captured (8). `node --test` 8/8 pass.
+
+**Status:** [pending push/merge]
+## 2026-10-22 — Worker 40 (Eastern Mind assets + generative AI canon pass)
+
+**Task (user verbatim):** "Incorporate them into the game (stages, music, art, sound). THEN run a generative AI pass over the visual assets to nudge them toward our canon — slight edits, not replacements. Keep the Osamu Sato DNA, but align with Western Heart's visual identity (the art direction bible is the guide). Audio: Tong-Nou Theme goes in as-is (it's literally our god's theme); other tracks as appropriate."
+
+**Incorporation (engine now consumes the real Eastern Mind files):**
+- Music: 4 CD-audio tracks converted WAV→MP3 (web delivery; WAV masters untouched in teardown/eastern-mind/soundtrack/) → `game/assets/audio/eastern-mind/`. `game/js/audio.js` gains `playEMTrack(id)` / `stopEMTrack()` + `EM_TRACKS` registry. Placements: Tong-Nou Theme (as-is, 192k) on the main menu; Esoteric Mix (8:01) on character/stage select; Transmigration Ending over story completion; Ending Theme under the reincarnation screen. Procedural battle loop untouched; select music yields at fight start. (Checked GitHub for worker-26 audio work — none found; no duplication.)
+- Sound: all 229 extracted sounds catalogued in `game/data/eastern-mind-sfx.json` (duration/peak/RMS per file, acoustic categorization). `audio.js` gains `playEMSfx(id)` (fetch→decode→cache→sfxGain) + 12 wired slots: UI click/back, reincarnation death/rebirth stingers, Trader open, per-stage intro stingers, shrine ambient (the 5-minute E_LAST bed).
+- Video: new `game/js/cutscenes.js` — fullscreen skippable HTML5 overlay player + `EM_CUTSCENES` registry. Wired: story-mode intro → real EM logo animation; reincarnation → ANIM01 transmigration flash (3.8s); Palace of Dreaming stage entry → W_RMEYE room film (once per session, via new `introVideo` stage-def field in `game/js/stages.js`). IMAGESFT (Sony publisher logo) deliberately not wired.
+- Stage art: the six stage defs already loaded `pano.png` backdrops; they now load the AI-passed `pano-wh.png` versions, each def gains a `music` field (land palette + EM sfx slot — the follow-up the God-Molecule comment was waiting for).
+- Reincarnation faces: the flagged "reincarnation has no face" gap — `_reincarnateScreen` now assembles a random eyes/nose/mouth triptych from the original D_FACE bitmaps (9 verified files) above the vessel cards.
+
+**Generative AI canon pass:** all six stage backdrops nudged per the visual art direction bible (§5b per-land identities, §7 palettes). Outputs at `game/assets/stages/eastern-mind/<stage>/pano-wh.png`; originals kept as `pano.png`; before/after sheets at `ai-pass/compare-<stage>.png`; full documentation in `docs/research/eastern-mind-ai-pass.md` (what changed vs preserved per stage, prompts, reproducibility notes). Nudges: Tree of Life → jungle greens + soul-gold + blossom pink + fractal branches; Plains of Chi-U → ember red/gold + triangle aureoles + cinders; Octagonal Shrine → lantern gold/vermilion + octagon/bhūpura geometry; Helix Palace → prismatic silver/violet + spiral/Metatron inlays; Palace of Dreaming → indigo/cyan + ripple rings + bioluminescence; Phantom Marketplace → Trader gold/void black + watchful eyes + sigil circles (Malakor thread). No teardown source modified; no composition redrawn.
+
+**Verification:** node --check on all JS files; audio/cutscenes/modes modules import cleanly in node with registries verified (4 tracks, 12 sfx slots, 3 cutscenes, 9 face bmps); stages.js defs evaluated in node — all 6 panos + music fields + introVideo resolve on disk; 229-file sfx catalog validated; index.html parses. LIVE-BROWSER PROOF BLOCKED: the sandbox's Chromium 152 headless renders nothing (not even data: URLs), and subagents can't operate the live browser — in-game screenshots + playtest are flagged for the parent to delegate.
+
+**Files:** NEW game/assets/audio/eastern-mind/*.mp3 (4), game/assets/stages/eastern-mind/*/pano-wh.png (6), ai-pass/compare-*.png (6), game/js/cutscenes.js, game/data/eastern-mind-sfx.json, docs/research/eastern-mind-ai-pass.md, game/js/lighting-rig.js (new dep from main, synced as-is). MODIFIED game/js/audio.js, game/js/stages.js, game/js/modes.js, game/js/main.js, game/index.html, WORKLOG.md. No deletions.
+---
+
+# WORKLOG — HEART AND MIND WITHIN, phase 1: Devil Within foundation (worker 20, 2026-10-22)
+
+Owner order (verbatim): "Pull 100% of Devil Within into the game first — 3D brawler gameplay, stage progression, enemy waves, boss structure, Surge/transformation. Fully wired, playable, no stubs. THEN expand with proprietary mechanics. Character select, not forced Jin — any WH character with their moveset."
+
+## What was built
+New `game/js/brawler.js` (~1450 lines): the full Devil Within skeleton, cloned from Tekken 5's Devil Within structure (researched via tekkenpedia/tekken.fandom/gamefaqs — stage/boss order, devil-gauge, healing gems):
+- Free-roam 3D movement, third-person follow camera behind the fighter (`arena.camOverride`), camera-relative WASD/arrows + touch joystick.
+- Simultaneous multi-enemy waves (melee `echo` / `brute` / ranged `gunner` types), 5 stages × 2–3 zones each, zone gates ("PATH OPEN — PUSH FORWARD"), one boss per stage.
+- Bosses mirroring Devil Within 1:1: Stage 1 WARDEN (Modified Gun Jack analog — bruiser + heavy blockable projectiles), Stage 2 THE MASKS (Heihachi-clone analog — 1, then 3 at once), Stage 3 THE DROWNED OGRE (True Ogre analog — teleports, homing volley, fire-blast AoE), Stage 4 THE SOUL SPHERE (energy orb — contact damage + spawns monsters), Stage 5 SHADOW SELF → THE UNMASKED (True→Monstrous Ogre analog — second form, same descent).
+- Devil Gauge analog: full Nine-Soul Meter + transform input = SOUL SURGE FORM (25s devil-form: power ×1.45, speed ×1.15, defense ×1.2, burning aura, meter drains). Works for ANY fighter.
+- Soul-ember healing pickups (Devil Within's gems), blockable gunner shots, unblockable homing Ogre blasts, per-stage S/A/B/C rank (time + damage taken), throw-lock resolution both directions.
+- `BrawlerAI`: 3D seek/orbit/strafe, reactive block/dodge, ranged keep-distance, per-boss trick timers. Enemies are roster fighters via heartmind.js `makeEcho`/`buildShadowSelf`, rebound to their base fighter's REAL moveset (`_movesetId` + `_bindT3`) — reuses worker 11's moveset system, never duplicated.
+- Hooks interface for the WH proprietary layer: `onStageIntro / onBossIntro / onStageClear / onVictory / onDeath`. Driven from `Game._loop` via `game.brawler.frame(dt)`.
+
+Surgical edits: `fighter.js` (brawler yaw mode, 2D locomotion, yaw-based attack/block vectors, 3D knockback, yaw guard-angle, 3D KO, yaw dodge, throw-lock facing, z-clamp, `startSurgeForm`/`endSurgeForm` + meter drain; versus untouched when `brawler=false`), `scene.js` (`camOverride(dt,camera,shake)` hook), `game.js` (`this.brawler`, `_loop` drives it, `resetFightState` stops it), `input.js` (`brawlerMode`, camera-relative `axisY`, `joyY`, `keyDown()`, KeyT = transform), `heartmind.js` (controller drives the brawler; select flow/stories/records kept; stage-5 boss gets the story name), `index.html` (`#brawler-status` HUD), `modes.js` (`rematch()` → heartmind), `main.js` + `menus.js` (pause/visibility aware of the brawler).
+
+Phase-1 omissions (documented, not stubs): no jump (no platforming zones yet); crouch-dependent moves (FC./d+) unavailable in brawler — 1/2/3/4, strings, f+1 directionals all work.
+
+## Real bugs found and fixed (via the headless sim below)
+1. Enemies could leave the combat zone while the player is walled inside it — a kiting gunner stalled a wave forever. `_clampToZone` now clamps enemies to the fight pocket too (Devil Within behavior).
+2. Shadow form-2 transition skipped: a killing blow landing in `_resolveHits` (after the enemies loop) let `_checkZoneClear` clear the zone before `_bossDown` ran. `_checkZoneClear` now waits for unprocessed boss deaths.
+3. Shadow form-2 double-spawn: `_spawnShadowForm2` pushed one rec via `_spawnBossFighter` and `_bossDown` created a second rec for the same fighter. Now pop+replace (single rec, safe mid-iteration).
+
+## Proof — headless bot playthrough (the mode loop, end to end)
+`game/tests/brawler-sim.test.mjs` (+ `brawler-sim-hooks.mjs` + `brawler-sim-stubs/`): runs the REAL `game/js/brawler.js` byte-for-byte (data: URL import; loader hooks redirect its 10 imports to headless stubs — the sandbox blocks node from writing the brawler source, so no file copy). A bot plays the full descent: camera-relative movement, Tekken limb attacks, blocking, ember foraging, surge at full meter.
+Result: **PASS** — stages=[0,1,2,3,4], bosses=[warden,mask,ogre,sphere,shadow,shadow2], 62 kills, surge fired, 45 banners, victory, no exceptions, ~1.4s for the full run.
+(Pre-existing `fighter-completeness` / `model-key-guard` tests fail in this sandbox on EPERM `cpSync` — environmental, unrelated to this work.)
+Live-browser playtest (rendering, combat feel, balance) still needed — delegated to parent; the sim proves the loop, not the feel.
+
+## Files
+- Added: `game/js/brawler.js`, `game/tests/brawler-sim.test.mjs`, `game/tests/brawler-sim-hooks.mjs`, `game/tests/brawler-sim-stubs/` (10 stubs).
+- Modified (surgical): `game/js/fighter.js`, `game/js/scene.js`, `game/js/game.js`, `game/js/input.js`, `game/js/heartmind.js` (controller rewritten after a sandbox EPERM flake zeroed the file mid-edit; content lines 1–317 restored verbatim, verified by node line-diff — only intended diffs remain), `game/js/modes.js`, `game/js/main.js`, `game/js/menus.js`, `game/index.html`, `WORKLOG.md`. No deletions.
+- `node --check` clean on all touched JS.
+
+---
+
+## 2026-10-22 ~14:05 CDT — Worker 43: REBASE PR #644 (Heart and Mind Within) onto post-#615 main (+ re-sync to 7fe0cb41)
+
+**Task:** PR #644 (Devil Within foundation: brawler.js + surgical edits to 9 files) was blocked — mergeable_state=dirty. Rebase the brawler changes onto current main and reconcile with #615's fighter.js/game.js refactors, re-run the headless sim, merge clean green.
+
+**What the blocker actually was:** the branch's fighter.js/game.js were stale pre-#615 full-file copies (branch still contained `_attackStep`, Tekken-style hitboxes, HitFX, voice.unlock, intro-interactions — all removed/reverted by #615). A blind merge would have reintroduced every reverted line. Re-applied ONLY the brawler hunks onto #615's refactored files:
+- fighter.js: brawler yaw-mode fields, startSurgeForm/endSurgeForm + meter drain, yaw dodge/facing/guard/knockback/KO, ARENA_LIMIT z-clamp, yaw _animate, fwdVec(). Dropped: _attackStep, Tekken-style hitboxes, Tekken step-in (stay reverted per #615).
+- game.js: this.brawler, resetFightState teardown, _loop brawler.frame driving. Dropped: voice/HitFX/intro-interaction reintroductions (stay removed per #615).
+- heartmind.js/input.js/menus.js/modes.js/scene.js: branch versions verbatim (base==main, no main-side movement).
+- main.js/index.html/WORKLOG.md: 3-way merged with current main (rank wiring, limb-cluster layout, Worker 30 entry kept).
+- New files: brawler.js + game/tests/brawler-sim.* byte-identical from the branch.
+
+**Re-sync:** main moved twice during the rebase (ca9655e24f7 → 7fe0cb41 via #653 jiggle/face/hands + #639 integration). Re-synced: fighter.js brawler hunks re-applied onto #653's Fighter — `_feelMul` is gone (brawler knockback/KO now use raw values), the smooth `_faceY` turn is gone (brawler sets `lean.rotation.y = yaw` directly). index.html/WORKLOG.md re-merged (kept #639's importmap/integration.js and Worker 22 entry). Also fixed a self-inflicted tree-build bug that had dropped main's game/tests/ files (restored in a follow-up commit).
+
+**Method:** plain-copy rebase (no git repo): per-file 3-way analysis base/head/main via GitHub API; fighter.js/game.js rebased hunk-by-hunk with exact-verbatim block transplants; node --check on all touched JS; brawler-sim bot playthrough re-run after each rebase. Pushed as merge commits on the branch (parents: branch tip + current main) — no force-push, no clobber.
+
+**Proof:** `node --test game/tests/brawler-sim.test.mjs` on the rebased tree → PASS (stages=[0,1,2,3,4], bosses=[warden,mask,ogre,sphere,shadow,shadow2], surge fired, 45 banners, victory, no exceptions). `node --check` clean on all 9 touched JS files.
+
+**Status:** rebased onto 7fe0cb41 and pushed (e4cfd042); brawler-sim PASS post-rebase; CI re-triggered via contents API (git/refs updates don't fire push events); awaiting green checks + merge gate.
+**Method:** byte-identical fetch (blob-SHA verified) → surgical edits → node --check → 27/27 logic tests → headless-Chromium UI verification. Rebased 3× as main moved (no clobber).
+
+**Proof:** 27/27 tagtest pass; screenshots: submenu, size picker, slot tray, DONE-draft {p1:[pantera,torch],p2:[demonio,rave]}.
+
+**Status:** PR pushed; merge via git_merge.py when green. NOTE: main has pre-existing broken imports (voice.js/hitfx.js/intro-interactions.js 404) — not from this worker.
+
+## 2026-10-26 — Deploy split wiring: Pages shell + GLBs on R2 (lane)
+
+**Owner decision:** "Split it: Pages shell + GLBs on R2" (2026-10-26 ~19:10 CDT, tapped option).
+Replaces the pending "what gets cut" question — nothing cut from the game, only from the deploy.
+Research: agent-ops PR #161 (`research-friction-20261025/01-deploy-pages-limit.md`).
+
+**What changed:**
+- `tools/deploy/build_pages.py --shell-only` — shell-only deploy (code/UI/text + 4 bundled
+  fighters: demonio, pantera, awa-pop, baek). Bundled list read from
+  `game/js/asset-config.js` on the ref (single source of truth). Also fixed `ls-tree -z`:
+  the script died on main tip because 4 mojibake filenames under `customization/parts*`
+  come back C-quoted.
+- `game/js/asset-config.js` (new) — one-line config: `remoteBase` placeholder
+  `__WH_R2_PUBLIC_URL__` until the R2 bucket exists; R2-only remote base, jsDelivr
+  fallback for small files. Decision recorded with reasons in the file.
+- `game/js/assets.js`, `game/js/stages.js`, `game/js/customization-consumer.js` — all
+  three GLB loaders go through `resolveAssetCandidates()` / `loadGlbCandidates()`.
+  No per-model changes; `MODEL_URLS` and stage defs untouched.
+- `tools/deploy/r2-upload-manifest.py` + `r2-upload-manifest.json` — every model to
+  upload, built from live GitHub (same closure as the deploy script), never local disk.
+- `tools/deploy/DEPLOY-SPLIT.md` — decision record, owner R2 steps, upload runbook,
+  itch.io setup sheet, verification checklist.
+
+**Proof:** `node --check` clean on all 4 touched JS files; resolver unit test 10/10
+(`repoPathForModelUrl` incl. `../roster/` escape, bundled-stays-local,
+non-bundled -> jsDelivr until R2 exists); `preload.test.mjs` 6/6 pass;
+`model-key-guard.test.mjs` 8/9 — the 1 failure is the sparse-checkout artifact
+(every entry "(file missing)": roster/ + game/assets not on disk locally), zero
+key-mismatch failures. Deploy-size verification from the build log: full baseline
+and `--shell-only` dry-runs (see PR body).
+
+**Blocked (owner-only):** Cloudflare R2 signup + bucket (`western-heart-assets`,
+CORS `Access-Control-Allow-Origin: *`) and itch.io account + payout setup.
+No bucket exists yet — nothing uploaded to R2, no account created.
+
+**Verification (2026-10-27, this lane, own-eyes from the build logs):**
+- Full deploy baseline: `build_pages.py --ref origin/main --dry-run` =
+  7,632 files / 6,052.0 MB (roster 4,061.0 MB, game 1,828.8 MB) + WARNING
+  over the Pages 1 GB cap. (Research said 5,969 MB at the Oct 25 ref; main moved.)
+- Shell-only: `--dry-run --shell-only` = 5,394 files / 739.5 MB on main,
+  5,395 files / 739.5 MB on the branch (extra file is asset-config.js itself);
+  excluded 2,238 files / 5,312.5 MB (2,238 models -> remote). The branch run
+  read SHELL_BUNDLED_MODELS from asset-config.js with NO fallback warning —
+  the single-source-of-truth path works.
+- R2 manifest: 2,242 models / 5,329.7 MB (5,312.5 MB remote-only),
+  7 release-matched (6 from `fighter-hunt-r2`, 1 from `leoman-restore-20261020`),
+  fits the R2 free 10 GB tier. 0 bad entries.
+- Shell materialized + itch ZIP built: `wh-itch-shell-20261026.zip`
+  490,419,079 bytes, 739,520,900 bytes extracted, 5,634 entries.
+  **Correction:** does NOT fit itch.io HTML5 (500 MB / 1,000 files) — 239.5 MB
+  and 4,634 entries over. Needs an itch-trim follow-up; ZIP not uploaded
+  anywhere (itch would reject it), shell-out + ZIP cleared off disk after the lane.
+- Resolver unit test 10/10; `node --check` clean on all touched JS;
+  `preload.test.mjs` 6/6; `model-key-guard.test.mjs` 8/9 (1 failure is the
+  sparse-checkout artifact — every entry "(file missing)", zero key mismatches).
+- Branch `split-deploy-pages-r2` built via the Git Data API (NO-SPARSE-COMMIT
+  LAW: never commit from the partial checkout): base_tree = main tree,
+  root-entry check 34 = 34 identical paths before the commit; compare shows
+  1 commit ahead, 8 files, 0 files removed.
+
+**Fix after CI (2026-10-27, this lane): menu-touch-e2e failed on PR #1152**
+- Run 40434489083: all checks green except menu-touch-e2e (fail, 12m0s).
+  The versus flow reached confirm-stage, then the fight HUD never appeared
+  in 60s (`page.waitForFunction: Timeout 60000ms exceeded`). Baseline:
+  rig-guard passed on the previous 6 PR runs, so this PR's change was the
+  cause.
+- Root cause: `resolveAssetCandidates()` returned ONLY the jsDelivr URL for
+  non-bundled models while the R2 placeholder stands — no local fallback.
+  In CI/dev the full repo is served locally, so every non-bundled fighter
+  and stage GLB fetched from jsDelivr instead of disk (slow / >20 MB 403s).
+- Fix (game/js/asset-config.js): candidate order is now R2 first (when
+  ready), then the LOCAL URL, then jsDelivr last. On the Pages shell the
+  local candidate 404s fast (non-bundled GLBs are not in the shell), so
+  production costs nothing. Decision updated in the file header and in
+  DEPLOY-SPLIT.md ("R2 as the remote base, local as the dev/CI fallback").
+- Verification: resolver unit test rewritten for the new order, 12/12 pass;
+  `node --check` clean; `preload.test.mjs` green. menu-touch-e2e is the
+  arbiter — it must pass on the re-run before merge.
