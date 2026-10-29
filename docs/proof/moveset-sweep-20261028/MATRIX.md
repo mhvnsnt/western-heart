@@ -1,6 +1,6 @@
 # Moveset sweep matrix (2026-10-29)
 
-97/129 fighters ran: 55986 moves, 42229 pass, 12515 fail, 1242 n/a. Latest result per fighter across passes. Bodies follow the game's default attire (sweep-bodies.md); blockers are listed with their reason.
+97/128 fighters ran: 55986 moves, 42229 pass, 12515 fail, 1242 n/a. Latest result per fighter across passes. Bodies follow the game's default attire (sweep-bodies.md); blockers are listed with their reason.
 
 Moveset editor e2e: 128/128 open/edit/save/reload/reset (`editor.json`). Fight shots: `sweep-*.png`.
 
