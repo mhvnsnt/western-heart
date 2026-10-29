@@ -1468,6 +1468,7 @@ document.addEventListener('visibilitychange', () => {
 
 // expose for debugging / verification
 window.__game = game;
+window.__startFight = (p1, p2, opts) => startFight(p1, p2, opts || {}); // QA hook (combat e2e)
 window.__ui = ui;
 window.__stages = STAGES;
 

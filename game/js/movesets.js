@@ -268,14 +268,46 @@ export function parseMotion(n) {
     if (MOTION_DIRS[lm[1]]) dirs = dirs.concat(MOTION_DIRS[lm[1]]);
     else dirs.push(lm[1].toLowerCase());
   }
+  // 'b,3' / 'd,1' (moveset sweep 2026-10-28): ONE direction tap, release, then the bare
+  // button. Returned as a neutral-ending motion so V2 matches tap -> neutral -> press;
+  // before, it was dropped here as a 'plain directional' and only the plain 3 ever fired.
+  if (!lm[1] && head.length === 1 && dirs.length === 1 && dirs[0] !== 'n') return { prefix, dirs, btn: lm[2], neutral: true };
   if (dirs.filter(d => d !== 'n').length < 2 && !(lm[1] && MOTION_DIRS[lm[1]])) return null; // plain directional
   return { prefix, dirs, btn: lm[2], neutral };
 }
 
+export function legacyAlias(key) {
+  const m = /^((?:qcf|qcb|hcf|hcb|dp|[udfbUDFB](?:\/[udfbUDFB])?)\+)?([PK])$/.exec(key);
+  return m ? (m[1] || '') + (m[2] === 'P' ? '1' : '4') : null;
+}
+/* Display spellings the input buffer never emits ('df+1', 'ws1', 'WS 1', 'SAV b+2', 'FC 1',
+   '(d/f+1)', 'uf+4') -> the canonical notation it does ('d/f+1', 'WS.1', 'SAV.b+2', ...). Moves
+   keyed in those spellings were unreachable in a fight; _prepare slots them on the canonical
+   input too (when nothing else owns it). Returns the input unchanged if nothing applies. */
+const _DIAG = { df: 'd/f', db: 'd/b', uf: 'u/f', ub: 'u/b', DF: 'D/F', DB: 'D/B', UF: 'U/F', UB: 'U/B' };
+export function canonNotation(n) {
+  if (typeof n !== 'string') return n;
+  let s = n.trim().replace(/\s*\((?:first|second|third|\d+(?:st|nd|rd|th)) hits? only\)\s*$/i, ''); // T7 per-hit row annotation, same input
+  s = s.replace(/^\((.*)\)$/, '$1').trim();
+  s = s.replace(/(?:\s*\((?:KOFXV|KOF\s*XV|SFV|sfv|SF6|sf6|T7|T8)\))+\s*$/, ''); // source-game tag on imported rows, same input
+  s = s.replace(/^(d(?:\/[fb])?\+[1-4](?:\+[1-4])*)\s*\(crouch(?:ing)?\)$/i, '$1'); // KOF '(crouch)' note on a d+ button, same input
+  s = s.replace(/^fc\s*\+?\s*(?=[1-4udfbnUDFB])/i, 'FC.'); // 'fc+1' / 'FC 1' -> FC.1 (full-crouch state)
+  s = s.replace(/^\(During Rage\)\s*/i, 'R.'); // T7 list spelling of the rage state prefix
+  s = s.replace(/\b(df|db|uf|ub|DF|DB|UF|UB)(?=\+|,|$|~|:)/g, (m) => _DIAG[m]);
+  s = s.replace(/^(ws|WS)\s*(?=[1-4])/, 'WS.');
+  s = s.replace(/^([A-Z][A-Z0-9_]{1,})\s+(?=[1-4udfbnUDFB(])/, '$1.');
+  s = s.replace(/\(([^()]*)\)/g, '$1');
+  s = s.replace(/\s*([,~:+])\s*/g, '$1');
+  return s;
+}
 function _prepare(ms) {
   if (!ms || !ms.moves || ms._slots) return;
   const slots = Object.assign({}, ms.slots || {});
   for (const k of Object.keys(ms.moves)) if (!(k in slots)) slots[k] = k;
+  /* WH legacy letter notation (P = punch, K = kick): a move keyed 'u+P' / 'd/f+K' / 'qcf+P'
+     is also reachable on the numeric input (P -> 1, K -> 4) when no other move owns it. */
+  for (const k of Object.keys(ms.moves)) { const a = legacyAlias(k); if (a && !(a in slots)) slots[a] = k; }
+  for (const k of Object.keys(ms.moves)) { const c = canonNotation(k); if (c && c !== k && !(c in slots)) slots[c] = k; }
   ms._slots = slots;
   const motions = [];
   for (const n of Object.keys(slots)) {
@@ -334,9 +366,9 @@ export function playedMoveset(fighterId) {
 }
 
 /** notation -> { move, key, ms, from } this fighter fires (loadout > default slots > exact key). */
-export function resolveMove(fighterId, notation) {
+export function resolveMove(fighterId, notation, opts) {
   if (!notation) return null;
-  const custom = getLoadout(fighterId)[notation];
+  const custom = opts && opts.noLoadout ? null : getLoadout(fighterId)[notation];
   if (custom) {
     const [from, key] = custom.includes('::') ? custom.split('::') : [fighterId, custom];
     const src = from === fighterId ? playedMoveset(fighterId) : getFighterMoveset(from);
@@ -534,7 +566,10 @@ export class TekkenBuffer {
     const has = (n) => (resolveMoveKey(this.fighterId, n) ? n : null);
     // Soul Urge lane (T8 Heat), as in _pressLegacy: while the urge gauge is live, 2+3 is the
     // Urge Burst (fresh gauge) or the Urge Smash (urging) before any normal move on the chord.
-    if (input === '2+3') {
+    // Neutral 2+3 only (T8 Heat Burst is neutral) — b+2+3 / d/f+2+3 stay the fighter's own moves.
+    if (input === '2+3' && (!this.lastDir || this.lastDir === 'n')) {
+      // a live soul-state finisher on 2+3 (SPIRIT / SOUL9 / REIHOU / SEAL / KESSHOU) outranks the urge
+      for (const sp of ctx.soulStates || []) { const k = has(sp + '.2+3'); if (k) return this._recordMove(k); }
       if (ctx.urgeOn) { const sm = has('US.2+3'); if (sm) return this._recordMove(sm); }
       else if (ctx.urgeAvailable) { const bu = has('UB.2+3'); if (bu) return this._recordMove(bu); }
     }
@@ -595,6 +630,12 @@ export class TekkenBuffer {
         const order = held ? [p + holdDir, p + withDir] : [p + withDir, p + holdDir];
         for (const c of order) if (has(c)) return this._recordMove(c);
         for (const c of order) if (opener(c)) return null;
+        // Full crouch holds d / d/b: in Tekken a button there is the FC move (FC.2 = crouch
+        // jab), not the standing d+2 (moveset sweep 2026-10-28: FC 2/3/4/1+2 fired d+2...).
+        if (p === 'FC.' && (dir === 'd' || dir === 'd/b')) {
+          if (has('FC.' + input)) return this._recordMove('FC.' + input);
+          if (opener('FC.' + input)) return null;
+        }
       }
     }
     for (const p of prefixes) {
@@ -649,7 +690,10 @@ export class TekkenBuffer {
     // Soul Urge lane (T8 Heat): while the urge gauge is live, 2+3 is
     // reserved — the Urge Burst (fresh gauge) or the Urge Smash (urging)
     // wins over any normal move on the chord, exactly like T8 Heat.
-    if (input === '2+3') {
+    // Neutral 2+3 only (T8 Heat Burst is neutral) — b+2+3 / d/f+2+3 stay the fighter's own moves.
+    if (input === '2+3' && (!this.lastDir || this.lastDir === 'n')) {
+      // a live soul-state finisher on 2+3 (SPIRIT / SOUL9 / REIHOU / SEAL / KESSHOU) outranks the urge
+      for (const sp of ctx.soulStates || []) { const k = has(sp + '.2+3'); if (k) return this._recordMove(k); }
       if (ctx.urgeOn) { const sm = has('US.2+3'); if (sm) return this._recordMove(sm); }
       else if (ctx.urgeAvailable) { const bu = has('UB.2+3'); if (bu) return this._recordMove(bu); }
     }
@@ -758,13 +802,24 @@ export class TekkenBuffer {
     // and '1~t8.king,2' never exists — the chain broke at step 1 and the user
     // could only do 1-2 (two separate jabs, never the '1,2' string). Try the
     // stripped base too, so '1' + '2' -> '1,2' and '1,2' + '1' -> '1,2,1'.
-    const bases = [this.lastMove];
+    // Moveset sweep 2026-10-29: a pending partial string (an intermediate step with no
+    // standalone move, e.g. 'WS.1+2,4' of 'WS 1+2,4,1,...') is the base while it is open,
+    // exactly as in _pressV2; a press that only extends the partial keeps it open
+    // (this._strPending = true) and fires nothing.
+    this._strPending = false;
+    const now = performance.now();
+    const bases = [];
+    if (this._strPath && now - this._strPathT < STRING_PENDING) bases.push(this._strPath);
+    bases.push(this.lastMove);
     const tilde = this.lastMove.indexOf('~');
     if (tilde > 0) bases.push(this.lastMove.slice(0, tilde));
+    const ms = playedMoveset(this.fighterId);
     for (const base of bases) {
       for (const sep of [',', '~', ':']) {
-        for (const c of [dir ? `${base}${sep}${dir}+${input}` : null, `${base}${sep}${input}`]) {
-          if (c && resolveMoveKey(this.fighterId, c)) return c;
+        const cands = [dir ? `${base}${sep}${dir}+${input}` : null, `${base}${sep}${input}`];
+        for (const c of cands) if (c && resolveMoveKey(this.fighterId, c)) { this._strPath = null; return c; }
+        for (const c of cands) if (c && ms && ms._strPrefixes && ms._strPrefixes.has(c)) {
+          this._strPath = c; this._strPathT = now; this._strPending = true; return null;
         }
       }
     }

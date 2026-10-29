@@ -122,7 +122,8 @@ export function comboRoutes(ms, max = 4) {
 /** Which soul-system prefixes are open for this fighter right now (gates from SOUL_SYSTEMS). */
 export function soulStates(f) {
   if (!f) return [];
-  const g = f.game || {}, opp = f.opponent || (g.fighters ? g.fighters.find(x => x !== f) : null);
+  const g = f.game || {}, opp = f.opponent || (g.fighters ? g.fighters.find(x => x !== f) : null)
+    || (g.p1 === f ? g.p2 : g.p2 === f ? g.p1 : null); // Game keeps the pair on p1/p2
   const oppLow = opp && opp.maxHp ? opp.hp / opp.maxHp : 1;
   const out = [];
   const nearWall = typeof g.nearWall === 'function' ? g.nearWall(f) : !!(f._nearWall || f.nearWall);

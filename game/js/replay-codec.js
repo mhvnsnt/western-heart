@@ -52,6 +52,7 @@ export function snapFighter(f) {
     stanceT: f.stanceT || 0,
     rageUsed: !!f._rageUsed,
     queuedNext: f._queuedNext || null,
+    queuedAfter: f._queuedAfter ? f._queuedAfter.slice() : null,
     lastMove: tk.lastMove || null,
   };
 }
@@ -80,6 +81,7 @@ export function restoreFighter(f, s, resolveMove) {
   f.stanceT = s.stanceT;
   f._rageUsed = s.rageUsed;
   f._queuedNext = s.queuedNext;
+  f._queuedAfter = s.queuedAfter ? s.queuedAfter.slice() : null;
   if (f.tekken) f.tekken.lastMove = s.lastMove;
   return f;
 }

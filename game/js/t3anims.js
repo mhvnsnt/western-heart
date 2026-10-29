@@ -121,6 +121,14 @@ export const T3_BANKS = {
   // Forest Law's own divmot20 motion posed on Law's body (his KMDs do not fit; heihachi_on_jin pattern).
   forestlaw:  'assets/anim/t3/forestlaw_on_law/',
 };
+/* PRIVATE VF5 Dural bank (Zen, 2026-10-28). Decoded from VF5 (PS3 BLES00029)
+   mot_DUR.bin in the private mhvnsnt/game-reverse-engineering repo
+   (vf5/dural/bake_dural.py); a private build copies the bank to
+   game/assets/private/anim/vf5/dural/ and sets __WH_PRIVATE_ASSETS. Its
+   throw tables ship beside it (reactions.bank.json) and are merged into
+   WH_T3_REACTIONS.banks.dural when the bank loads. Public builds: absent. */
+if (globalThis.__WH_PRIVATE_ASSETS) T3_BANKS.dural = 'assets/private/anim/vf5/dural/';
+
 
 // Moveset source name -> bank key. 'demonio' is the game's rename of Jin
 // (owner canon 2026-10-19: Tekken's Jin = DEMONIO). bosconovitch maps to
@@ -138,6 +146,10 @@ export const SOURCE_TO_BANK = {
   bosconovitch: 'bosconovitch', heihachi: 'heihachi',
   armorking: 'armorking', 'armor-king': 'armorking',
   ogre: 'ogre', kuma: 'kuma', panda: 'kuma', gon: 'gon', law: 'law', forestlaw: 'forestlaw',
+  // VF5 Dural (Zen's 3D base, owner 2026-10-24/28): zen.json moves name t3_source 'dural'. The bank
+  // itself only exists in private builds (T3_BANKS.dural, __WH_PRIVATE_ASSETS); bankIdFor keeps
+  // public Zen UNMAPPED, so this entry only resolves Zen's own rows when the private bank is bound.
+  dural: 'dural',
 };
 
 /**
@@ -417,7 +429,7 @@ export async function loadT3Clips(THREE, bankId = 'king') {
     // bank load so strikes have the tables at fight start even in
     // a fight with no throw attempt. The global cache guard means
     // whichever loader runs second is a no-op.
-    jobs.push(ensureT3Reactions().catch(() => null));
+    jobs.push(ensureT3Reactions().then(R => mergeBankThrowTables(R, base)).catch(() => null));
     // Decoded active window of every attack row (tools/anim/t3_hit_frames.py, lane D 2026-10-24):
     // { row: [active_first, active_last, stream_frames, attack_word, throw] } — fighter.js times the
     // clip on it and never plays a throw row for a strike (or a strike row for a throw).
@@ -603,6 +615,20 @@ export async function loadT3ReactionClip(THREE, bankId, slot, { noRise = false }
     so strikes have the tables at fight start even in a fight
     with no throw attempt. */
 let _t3reactionsPromise = null;
+/* A private bank (assets/private/...) carries its own throw tables in
+   reactions.bank.json (the public reactions.json never names it); merge
+   them into WH_T3_REACTIONS.banks[<dir>] once. No-op for public banks. */
+async function mergeBankThrowTables(R, base) {
+  if (!R || !R.banks || !base || !base.includes('/private/')) return R;
+  const dir = base.split('/').filter(Boolean).pop();
+  if (R.banks[dir]) return R;
+  try {
+    const res = await fetch(base + 'reactions.bank.json');
+    if (res.ok) R.banks[dir] = await res.json();
+  } catch (e) { console.warn(`[WH-T3] ${dir}/reactions.bank.json unavailable:`, e.message || e); }
+  return R;
+}
+
 export function ensureT3Reactions() {
   if (globalThis.WH_T3_REACTIONS) return Promise.resolve(globalThis.WH_T3_REACTIONS);
   if (_t3reactionsPromise) return _t3reactionsPromise;
