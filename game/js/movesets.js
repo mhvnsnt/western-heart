@@ -345,6 +345,9 @@ export function canonNotation(n) {
   if (typeof n !== 'string') return n;
   let s = n.trim().replace(/\s*\((?:first|second|third|\d+(?:st|nd|rd|th)) hits? only\)\s*$/i, ''); // T7 per-hit row annotation, same input
   s = s.replace(/^\((.*)\)$/, '$1').trim();
+  // 'n+1' / 'n+1+2' (stick explicitly neutral) is the plain button: the input buffer reads a
+  // neutral press as '1', so a move slotted on 'n+1' could never be pressed (sweep 2026-10-29, donor banks).
+  s = s.replace(/(^|\.)n\+(?=[1-4])/i, "$1");
   /* State-gated rows (sweep 2026-10-29): Tekken ground states and named custom states become
      stance prefixes the input buffer already resolves. 'while on back, feet towards opponent, 3'
      -> 'FUFT.3' (face up, feet towards; plain 'while on back' is the same lying state),

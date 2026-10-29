@@ -264,7 +264,12 @@
     const vBase = !vrow && V[m.key] && !(MS.getLoadout(id) || {})[m.key];
     const alias = MS.legacyAlias && MS.legacyAlias(m.key);
     const ok = (n) => n && !parse(n).err && !parse(n).motionOnly;
-    if (MS.canonNotation && parse(m.key).err && MS.canonNotation(m.key) !== m.key && ok(MS.canonNotation(m.key)) && MS.resolveMoveKey(id, MS.canonNotation(m.key)) === m.key) { notation = MS.canonNotation(m.key); via = 'canonical spelling'; }
+    // Donor-bank moves ('donor.kronos.3+4 (cyclone1)', 'n+1~donor.kronos.2') belong to another
+    // fighter's bank: the moveset editor equips them on their base input through the loadout.
+    const DON = /^donor\.[a-z0-9-]+\.(.+)$/i.exec(m.key) || /^(.+)~donor\.[a-z0-9-]+(?:\.\d+)?$/i.exec(m.key);
+    const donBase = DON && (MS.canonNotation || ((x) => x))(DON[1]);
+    if (DON && ok(donBase)) { notation = donBase; via = 'equipped via moveset loadout'; }
+    else if (MS.canonNotation && parse(m.key).err && MS.canonNotation(m.key) !== m.key && ok(MS.canonNotation(m.key)) && MS.resolveMoveKey(id, MS.canonNotation(m.key)) === m.key) { notation = MS.canonNotation(m.key); via = 'canonical spelling'; }
     else if (parse(m.key).err && MS.t3CommandNotations && MS.t3CommandNotations(mv.t3_command).some((c) => ok(c) && MS.resolveMoveKey(id, c) === m.key)) {
       notation = MS.t3CommandNotations(mv.t3_command).find((c) => ok(c) && MS.resolveMoveKey(id, c) === m.key); via = `T3 source command ${mv.t3_command}`; }
     else if (alias && parse(m.key).err && MS.resolveMoveKey(id, alias) === m.key) { notation = alias; via = 'legacy P/K alias'; }
