@@ -1,6 +1,7 @@
 // In-page half of moveset-sweep.e2e.mjs (evaluated in the game page after the fight starts).
 (async () => {
   const MS = await import('./js/movesets.js');
+  const T3 = await import('./js/t3-conditions.js');
   const g = window.__game; g.running = false; g.ai.update = () => {}; g.timer = 9999; g._hitStop = 0;
   // sweep is headless logic: skip GPU draws (swiftshader), keep the scene-graph update hitboxes need
   if (g.arena && g.arena.renderer) g.arena.renderer.render = (sc) => { if (sc && sc.updateMatrixWorld) sc.updateMatrixWorld(); };
@@ -14,7 +15,7 @@
   const dirKeys = (d) => (d && d.toLowerCase() !== 'n' ? d.toLowerCase().split('/') : []);
   const setDir = (d) => { const want = new Set(dirKeys(d)); for (const k of ['u', 'd', 'f', 'b']) if (!want.has(k)) key(k, 'keyup'); key([...want], 'keydown'); };
   const REACT = /hit|stun|launch|knock|thrown|block|stagger|crumple|fall|air|juggle|down|splat|bound|dizzy|spin|guard/i;
-  const s = (f) => ({ st: f.state, an: f.attackName, clip: f._t3current ? f._t3current.getClip().name : null,
+  const s = (f) => ({ st: f.state, an: f.attackName, mk: f.attack ? f.attack.moveKey : null, clip: f._t3current ? f._t3current.getClip().name : null,
     x: +f.root.position.x.toFixed(2), y: +f.root.position.y.toFixed(2), hp: f.hp });
   const step = (n, out) => { for (let i = 0; i < n; i++) { window.__vt += 1000 / 60;
     { const I = g.input; if (I._udDir && !I._udHeld && window.__vt - I._udT >= 200) { clearTimeout(I._udTimer); if (I._udDir === 'up') I.up = true; else I.down = true; I._udHeld = true; } } // input.js 200 ms u/d hold timer, on the sim clock
@@ -24,6 +25,7 @@
     for (const f of [g.p1, g.p2]) { f.hp = f.maxHp || 100; f._enter('idle'); f.attack = null; f.attackName = null; f._throwPair = null;
       f.stance = null; f.stanceT = 0; f._risingT = 0; f.lockT = 0; f.lockMove = null; f.tekken.lastMove = null; f.tekken._strPath = null;
       f._stringGraceUntil = 0; f._queuedNext = null; f._queuedAfter = []; f._urgeOn = false; f._urgeT = 0; f._urgeUsed = false;
+      f.lastCounterHit = false; f._t3Contact = null; f._t3Whiff = 0; f._faceDown = false; f.ssDir = 0;
       f._rageUsed = false; f._soulUses = 0; f._rageActive = false; f._nearObject = false; f._soulReleaseReady = false;
       f.vx = 0; f.vy = 0; f.stun = 0; f.invuln = 0; f._pressBuf && f._pressBuf.clear(); f.root.position.y = 0; f.onGround = true; f.dead = false; }
     g.p1.root.position.set(-gap / 2, 0, 0); g.p2.root.position.set(gap / 2, 0, 0); g.finalRound = false;
@@ -98,6 +100,60 @@
   function t3cmd(c) { if (!c) return null; const parts = String(c).split('+'); let dir = ''; const b = [];
     for (const p of parts) { if (BTN[p]) b.push(BTN[p]); else if (/^[1-9](\/[1-9])?$/.test(p) && NUM[p[0]]) dir = NUM[p[0]]; else return null; }
     return b.length ? (dir ? dir + '+' : '') + b.sort().join('+') : null; }
+  // Play the state a T3 branch condition tests (t3-conditions.js) right before the press.
+  function oppAttack(o, want) { // opponent starts an attack of level `want` ('high'|'mid'|'low'|null)
+    for (const n of ['1', '2', 'd+4', 'd+3', 'd/f+1', 'f+2', '3', '4', 'd/f+2', 'd+1']) {
+      o._enter('idle'); o.attack = null; if (!o.tryAttack(n) || o.state !== 'attack') continue;
+      const w = o.attack.hitWord ?? 0x217, hl = String(o.attack.hitLevel || '').toLowerCase();
+      const lv = ((w & 7) === 4 || /^h/.test(hl)) ? 'high' : (((w & 0x18) === 0x08 && (w & 7) === 7) || /^l/.test(hl)) ? 'low' : 'mid';
+      if (!want || want === lv || (want === 'hm' && lv !== 'low')) return n; }
+    o._enter('idle'); o.attack = null; return null; }
+  function contactFirst(f, o, guard) { // play a jab that connects (or is guarded) right before the row
+    if (guard) o._enter('block');
+    f.root.position.x = o.root.position.x - 0.75; f.tryAttack('1');
+    for (let i = 0; i < 40 && !(f._t3Contact && f._clock - f._t3Contact.t < 0.1); i++) step(1);
+    for (let i = 0; i < 90 && (f.state !== 'idle' || o.state !== 'idle'); i++) step(1);
+    o.vx = 0; f.vx = 0;
+    f.root.position.x = o.root.position.x - Math.min(condGap, 0.75); // step back in after the pushback
+    return (f._t3Contact ? (f._t3Contact.guarded ? 'jab guarded' : 'jab connected') : 'jab never connected') + ` @${(o.root.position.x - f.root.position.x).toFixed(2)}m`; }
+  let condGap = 1.1;
+  function condSetup(c, f, o) {
+    const back = () => { f.stance = 'BT'; f.stanceT = 9; };
+    const swap = () => { const x = f.root.position.x; f.root.position.x = o.root.position.x; o.root.position.x = x; f.facing = -1; o.facing = 1; };
+    if (c >= 2 && c <= 0x17) { const code = c <= 0x13 ? c : [2, 3, 4, 5][c - 0x14];
+      const r = contactFirst(f, o); o._enter('idle'); o.attack = null; o.stun = 0;
+      const q = (code - 2) % 4, base = code >= 18 ? 18 : code >= 14 ? 14 : code >= 10 ? 10 : code >= 6 ? 6 : 2;
+      if (base === 6) o._enter('crouch'); if (base >= 10 && base < 18) { o._enter('knockdown'); o.onGround = true; o.stun = 5; o._faceDown = base === 14; }
+      if (base === 18) { back(); if (code === 19) o.facing = 1; return r + ' · own back turned'; }
+      const qq = [0, 2, 1, 3][q]; // code offset -> opponent quadrant (0 front, 1/3 sides, 2 back)
+      if (qq === 2) o.facing = 1; if (qq === 1 || qq === 3) { o._enter('sidestep'); o.ssDir = qq === 1 ? 1 : -1; }
+      return `${r} · situation ${code}`; }
+    switch (c) {
+      case 1: case 0x1A: return contactFirst(f, o);
+      case 0x1B: return contactFirst(f, o, true);
+      case 0x1C: f.root.position.x = o.root.position.x - 3; f.tryAttack('1'); for (let i = 0; i < 60 && f.state === 'attack'; i++) step(1); f.root.position.x = o.root.position.x - 1.1; return 'jab whiffed';
+      case 0x18: case 0x33: case 0x34: f.root.position.x = o.root.position.x - 0.7; return 'close';
+      case 0x19: f.root.position.x = o.root.position.x - 2.0; return 'far';
+      case 0x1E: case 0x1F: case 0x45: case 0x4A: case 0x4B: case 0x47: return 'opponent attacking ' + oppAttack(o, c === 0x47 ? 'mid' : null);
+      case 0x46: case 0x30: return 'opponent high ' + oppAttack(o, 'high');
+      case 0x48: return 'opponent low ' + oppAttack(o, 'low');
+      case 0x49: return 'opponent high/mid ' + oppAttack(o, 'hm');
+      case 0x20: { const n = oppAttack(o, null); o.stance = 'FC'; return 'opponent attacking from crouch ' + n; }
+      case 0x23: o._enter('crouch'); return 'opponent crouching';
+      case 0x35: case 0x37: o._enter('knockdown'); o.onGround = true; o.stun = 5; return 'opponent down';
+      case 0x38: o._enter('knockdown'); o.onGround = true; o.stun = 5; back(); return 'opponent down, own back turned';
+      case 0x24: case 0x25: case 0x26: case 0x2A: case 0x40: back(); return 'own back turned';
+      case 0x41: swap(); back(); return 'right side, own back turned';
+      case 0x3F: swap(); return 'right side';
+      case 0x28: case 0x29: f.trySidestep(c === 0x28 ? 1 : -1); step(10); return 'own sidestep';
+      case 0x2C: case 0x2D: o.trySidestep(c === 0x2C ? 1 : -1); step(2); return 'opponent sidestep';
+      case 0x2E: o.facing = 1; return 'opponent back turned';
+      case 0x32: f._risingT = 0.4; return 'own rising';
+      case 0x39: o.lastCounterHit = true; return 'opponent took a counter hit';
+      case 0x43: f._rageActive = true; return 'power on (rage)';
+      default: return 'neutral';
+    }
+  }
   const sweepOne = (m, gap = 1.1) => {
     // States the game does not have (checked in fighter.js / game.js 2026-10-28): no running
     // state (WR), no face-up / face-down ground orientation moves, no tackle mount, no jump-landing
@@ -106,10 +162,11 @@
         [/During Tackle/i, 'tackle mount'], [/Upon Landing/i, 'jump-landing window']];
       for (const [re, st] of NA) if (re.test(t)) return { key: m.key, input: m.input, ok: null, why: `n/a: game has no ${st} state`, via: 'not wired' }; }
     const f = g.p1, o = g.p2, id = f.char.id, ms = MS.playedMoveset(id) || {}; const mv = (ms.moves || {})[m.key] || {};
-    // T3 branch-condition rows (gen-movesets-t3.py t3_condition): the T3 row only fires while engine
-    // condition N holds. WH has no T3 branch-condition state (tekken3recompiled convert_jun_moves.py
-    // CONDITIONS is a bare numeric remap, semantics undecoded), so the row is n/a with that named.
-    if (mv.t3_condition != null) return { key: m.key, input: m.input, ok: null, why: `n/a: game has no T3 branch condition ${mv.t3_condition} state (undecoded)`, via: 'not wired' };
+    // T3 branch-condition rows (gen-movesets-t3.py t3_condition, decoded in game/js/t3-conditions.js):
+    // the row fires only while its condition holds, so the condition's state is played first.
+    const cond = mv.t3_condition ?? null;
+    if (cond === 0x2F) return { key: m.key, input: m.input, ok: null, why: 'n/a: T3 condition 0x2F is "never" in the original game (the row cannot fire there either)', via: 'not wired' };
+    if (cond === 0x3D) return { key: m.key, input: m.input, ok: null, why: 'n/a: T3 condition 0x3D fires only from the own-KO collapse (health 0), never from player input, in the original as here', via: 'not wired' };
     // A move on its own notation is pressed as-is; an alternate on an input another move owns
     // is equipped on that input through the loadout (what the moveset editor writes), pressed,
     // then the loadout entry is removed.
@@ -126,6 +183,9 @@
     const P = parse(notation);
     if (P.err) return { key: m.key, input: notation, ok: false, why: 'unparsed: ' + P.err, via };
     if (P.motionOnly) return { key: m.key, input: notation, ok: null, why: 'movement input (no button)', via };
+    // a back-turned condition row is equipped on the back-turned input (BT.<input>), where the
+    // fighter's back-turned press resolves — exactly what the editor's BT slot writes
+    if (via === 'equipped via moveset loadout' && [0x24, 0x25, 0x26, 0x2A, 0x38, 0x40, 0x41, 18, 19].includes(cond) && !/^BT\./.test(notation)) notation = 'BT.' + notation;
     if (via === 'equipped via moveset loadout') MS.setLoadoutSlot(id, notation, m.key);
     try {
       reset(gap);
@@ -138,6 +198,8 @@
         if ((mv.damage || 0) > 0 && !mv.throw && !(W & 2)) {
           if (W & 1) { o._enter('crouch'); how += ' · foe crouching (row hits crouchers only)'; }
           else if (W & 4) { o._enter('knockdown'); o.onGround = true; o.stun = 5; how += ' · foe downed (ground hit)'; } } }
+      condGap = gap;
+      if (cond != null) { const r = condSetup(cond, f, o, notation); how += ' · T3 cond 0x' + cond.toString(16) + ': ' + r + (T3.t3ConditionHolds(cond, f, o, notation) ? ' (holds)' : ' (NOT holding)'); }
       const out = []; const hp0 = o.hp;
       run(f, P, out);
       const tail = Math.min(150, Math.round(((mv.startup || 0.2) + (mv.active || 0.05) + (mv.recovery || 0.5)) * 60) + 40);
@@ -145,7 +207,7 @@
       const fired = []; let last = null;
       for (const fr of out) { const a = (fr.p1.st === 'attack' || /throw/.test(fr.p1.st)) ? fr.p1.an : null; if (a && a !== last) fired.push(a); last = a; }
       const keys = fired.map((n) => MS.resolveMoveKey(id, n) || n);
-      const firedIt = keys.includes(m.key);
+      const firedIt = cond != null ? out.some((fr) => fr.p1.mk === m.key && (fr.p1.st === 'attack' || /throw/.test(fr.p1.st))) : keys.includes(m.key);
       const react = [...new Set(out.map((fr) => fr.p2.st))].filter((x) => x !== 'idle' && x !== 'walk');
       const dmg = Math.round((hp0 - Math.min(...out.map((fr) => fr.p2.hp))) * 10) / 10;
       const connected = dmg > 0 || react.some((x) => REACT.test(x));

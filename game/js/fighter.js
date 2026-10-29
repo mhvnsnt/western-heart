@@ -59,6 +59,7 @@ import { hitWordFor, attackPhase, moveReach, PressBuffer,
 import { HURT_SEGMENTS, WEAPON_SEGMENTS, LIMB_RADIUS, fallbackHurts } from './hitbox.js';
 import { selectReactionSlot, reactionSlotBank } from './t3-reaction-select.js';
 import { soulStates } from './full-movelist.js';
+import { t3ConditionHolds } from './t3-conditions.js';
 
 // ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
 // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO in Western Heart. The 'jin' moveset family is now 'demonio'.
@@ -259,9 +260,9 @@ export function rowDonorKeys(input, limb) {
 }
 const LEGACY_TO_TEKKEN = { punch: '1', kick: '4', grab: '1+3' };
 
-export function getRealMove(charId, moveType) {
+export function getRealMove(charId, moveType, opts) {
   const tekken = LEGACY_TO_TEKKEN[moveType] || moveType;
-  const res = resolveMove(charId, tekken);
+  const res = resolveMove(charId, tekken, opts);
   const ms = (res && res.ms) || getFighterMoveset(charId) || window.WH_MOVESETS?.[charId];
   if (ms) {
     // New shape: per-fighter moveset { moves: { key: {...} }, slots: { notation: key } }.
@@ -277,8 +278,13 @@ export function getRealMove(charId, moveType) {
           damage: mv.damage, knock: mv.knock ?? 2.2,
           soulGain: mv.soulGain ?? 8, cost: 0,
           limb: mv.limb || 'armR', heavy: !!mv.heavy,
-          unblockable: !!mv.unblockable, isGrab: !!mv.isGrab,
+          unblockable: !!mv.unblockable,
+          // T3 throw-situation rows (branch conditions 2-0x17) are the throw executions a
+          // connecting grab branches into by the opponent's posture / side (moves.md SituationClassify)
+          isGrab: !!mv.isGrab || (mv.t3_condition >= 2 && mv.t3_condition <= 0x17),
           tekkenInput: tekken, moveKey: key,
+          // T3 branch-row condition (t3-conditions.js): the row only fires while it holds
+          t3Condition: mv.t3_condition ?? null,
           t3row: mv.t3_row, t3source: mv.t3_source || (mv.t3_row != null ? ms.t3_source : null), moveName: mv.name,
           animBank: anim ? anim.bank : null, animRow: anim ? anim.row : null,
           // decoded T3 attack word (high 0x412 / mid 0x217 / low 0x10F / s.mid 0x31F / unblockable 0x607)
@@ -287,7 +293,9 @@ export function getRealMove(charId, moveType) {
           // every posture, so they take the mid word.
           hitWord: (!mv.isGrab && /\[mid throw\]/.test(mv.note || '') && !((ms.hit_words && ms.hit_words[key]) & 7)) ? 0x217
             : (ms.hit_words && ms.hit_words[key] != null) ? ms.hit_words[key] : hitWordFor(mv),
-          hitLevel: mv.hit_level, reach: mv.reach,
+          hitLevel: mv.hit_level,
+          // T3 situation follow-ups engage on contact: reach covers own hit + pushback.
+          reach: (Number(mv.reach) > 0) ? mv.reach : (mv.t3_condition >= 2 && mv.t3_condition <= 0x17) ? 2.0 : mv.reach,
           stanceAfter: ms.stance_after ? ms.stance_after[key] : undefined,
           launch: !!mv.launch, knockdown: !!mv.knockdown,
           armor: !!mv.armor,
@@ -1099,6 +1107,10 @@ export class Fighter {
     if (!attacking) { this._rmPrev = null; return; }
     const p = this._atkPlan;
     if (!p || p.id !== this._attackId || !p.name || !String(p.name).startsWith('row:')) { this._rmPrev = null; return; }
+    // T3 throw-situation rows (conditions 2-0x17) are throw executions: like the row-230
+    // clip, their travel positions the thrown pair and belongs to the throw, not the attempt.
+    const tc = this.attack && this.attack.t3Condition;
+    if (tc >= 2 && tc <= 0x17) { this._rmPrev = null; return; }
     const clip = this._t3 && this._t3.clips ? this._t3.clips[p.name] : null;
     const raw = clip && clip.userData && clip.userData.raw;
     const rt = raw && raw.root_t;
@@ -1849,7 +1861,13 @@ export class Fighter {
       notation = resolved;
     }
     // Use REAL per-fighter T3 moveset data when available, fallback to base MOVES
+    if (this.state === 'attack' && this.attack && !this.hasHit) this._t3Whiff = this._clock || 0;
     let move = getRealMove(this._movesetId, notation) || MOVES[name] || MOVES[notation];
+    // A T3 branch-condition row (equipped via the moveset editor) fires only while its condition
+    // holds; otherwise the input plays the fighter's default move for that notation.
+    if (move && move.t3Condition != null && !t3ConditionHolds(move.t3Condition, this, this._opp, notation)) {
+      move = getRealMove(this._movesetId, notation, { noLoadout: true }) || MOVES[name] || MOVES[notation];
+    }
     if (!move) {
       // Last resort: moveset JSONs failed to load - map Tekken buttons to base moves
       const fb = { '1': 'punch', '2': 'punch', '3': 'kick', '4': 'kick',
@@ -1890,7 +1908,10 @@ export class Fighter {
   }
   /* Start the move for an already-resolved notation (buffered string hits). */
   _fireNotation(notation) {
-    const move = getRealMove(this._movesetId, notation);
+    let move = getRealMove(this._movesetId, notation);
+    if (move && move.t3Condition != null && !t3ConditionHolds(move.t3Condition, this, this._opp, notation)) {
+      move = getRealMove(this._movesetId, notation, { noLoadout: true });
+    }
     if (!move) return false;
     // GAP-FILL LANE 1: item gate applies to string continuations
     // exactly as to fresh inputs (an item move mid-string with
@@ -1962,6 +1983,7 @@ export class Fighter {
     // unblockables carry no guard bits.
     const word = move.hitWord ?? Fighter.defaultWord(move);
     const guarded = !move.unblockable && !move.isGrab && facingAttacker && (this._guardBits() & word) !== 0;
+    if (attacker) attacker._t3Contact = { t: attacker._clock || 0, guarded }; // T3 conditions 1 / 0x1A / 0x1B / situations
     if (guarded) {
       // GAME OPTION / VERSUS SETUP: GUARD DAMAGE OFF = no chip at all.
       // (V-Trigger chip is part of guard damage too.)
@@ -2438,6 +2460,7 @@ export class Fighter {
 
   /* ---------------- per-frame update ---------------- */
   update(dt, opponent) {
+    this._opp = opponent;
     this.stateT += dt;
     this._clock = (this._clock || 0) + dt;
     // Drive the transformation cinematic timeline.
