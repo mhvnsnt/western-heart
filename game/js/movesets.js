@@ -404,6 +404,17 @@ export function canonNotation(n) {
   s = s.replace(/^fc\s*,\s*(?=[udfbUDFB])/i, 'FC.');
   s = s.replace(/\b(df|db|uf|ub|DF|DB|UF|UB)(?=\+|,|$|~|:)/g, (m) => _DIAG[m]);
   s = s.replace(/^(ws|WS)\s*(?=[1-4])/, 'WS.');
+  /* Batch 4 (FGC / TekkenDocs list spellings, moveset sweep 2026-10-29): 'ws+2' / 'WS+1,3' /
+     'BT+1' / 'FC+3' / 'SS+1+2' write the state as a direction-like prefix; the input is the
+     state's press -> 'WS.2', 'BT.1', 'FC.3', 'SS.1+2'. '3,4>3' ('>' = next hit with no delay,
+     RBNorway/T7 lists) is the same string press -> '3,4,3'. HTML-escaped separators from scraped
+     lists ('df+1,&amp;#58;2*') decode to their character; a frame-count note on a hold
+     ('1+2* (40f)') is the same held input. */
+  s = s.replace(/&amp;/g, '&').replace(/&#(\d+);/g, (m, c) => String.fromCharCode(+c));
+  s = s.replace(/^(ws|WS|fc|FC|bt|BT|ss|SS)\+(?=[1-4udfbUDFB])/, (m, st) => st.toUpperCase() + '.');
+  s = s.replace(/([1-4*])\s*\(\d+\s*f\)/gi, '$1');
+  s = s.replace(/,:/g, ':');
+  s = s.replace(/([1-4])>(?=[udfbUDFB]?(?:\/[udfbUDFB])?\+?[1-4])/g, '$1,');
   s = s.replace(/^([A-Z][A-Z0-9_]{1,})\s+(?=[1-4udfbnUDFB(])/, '$1.');
   s = s.replace(/\(([^()]*)\)/g, '$1');
   s = s.replace(/\s*([,~:+])\s*/g, '$1');
