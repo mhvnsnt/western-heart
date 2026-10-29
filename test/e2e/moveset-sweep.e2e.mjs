@@ -55,7 +55,7 @@ for (const id of FIGHTERS) {
   const got = await p.evaluate(() => window.__game.p1.char.id);
   const gotModel = await p.evaluate(() => window.__game.p1.char.model);
   if (got !== id) { fs.writeFileSync(`${OUT}/${id}.json`, JSON.stringify({ fighter: id, error: `game loaded '${got}'` })); console.log(`== ${id}: loaded ${got}`); await p.close(); continue; }
-  if (gotModel !== body.model && !String(gotModel).startsWith(`${body.model}-attire1`)) { fs.writeFileSync(`${OUT}/${id}.json`, JSON.stringify({ fighter: id, body, error: `game loaded model '${gotModel}', not '${body.model}'` })); console.log(`== ${id}: model ${gotModel} != ${body.model}`); await p.close(); continue; }
+  if (gotModel !== body.model && !String(gotModel).startsWith(`${body.model}-attire`)) { fs.writeFileSync(`${OUT}/${id}.json`, JSON.stringify({ fighter: id, body, error: `game loaded model '${gotModel}', not '${body.model}'` })); console.log(`== ${id}: model ${gotModel} != ${body.model}`); await p.close(); continue; }
   fs.mkdirSync(`${OUT}/shots`, { recursive: true });
   await p.evaluate(() => window.__game.render && window.__game.render(0)).catch(() => {});
   await p.screenshot({ path: `${OUT}/shots/${id}.png` }).catch(() => {});

@@ -15,9 +15,11 @@ const SHOTS = +(process.env.WH_EDITOR_SHOTS || 4);
 fs.mkdirSync(OUT, { recursive: true });
 const idx = JSON.parse(fs.readFileSync(new URL('../../game/assets/movesets/index.json', import.meta.url), 'utf8'));
 let FIGHTERS = process.argv.slice(3); if (!FIGHTERS.length) FIGHTERS = Object.keys(idx.fighters);
-const b = await chromium.launch({ executablePath: process.env.CHROME || undefined, args: ['--use-gl=swiftshader', '--enable-unsafe-swiftshader'] });
-const p = await b.newPage({ viewport: { width: 1280, height: 860 } });
-const errs = []; p.on('pageerror', (e) => errs.push(String(e).slice(0, 200)));
+const launchB = () => chromium.launch({ executablePath: process.env.CHROME || undefined, args: ['--use-gl=swiftshader', '--enable-unsafe-swiftshader'] });
+const errs = [];
+let b, p;
+async function relaunch() { try { await b?.close(); } catch {} b = await launchB(); p = await b.newPage({ viewport: { width: 1280, height: 860 } }); p.on('pageerror', (e) => errs.push(String(e).slice(0, 200))); }
+await relaunch();
 const URL_ = BASE + '/customization/creation-suite-ui/index.html';
 const LO = 'wh_moveset_loadout_v1';
 async function openTab() {
@@ -31,8 +33,12 @@ async function pick(fid) {
 const rows = []; let n = 0;
 await openTab();
 for (const fid of FIGHTERS) {
-  const r = { fighter: fid, open: false, edit: false, save: false, reload: false, reset: false };
+  let r;
+  // a crashed renderer / browser is relaunched and the fighter retried once
+  for (let attempt = 0; attempt < 2; attempt++) {
+  r = { fighter: fid, open: false, edit: false, save: false, reload: false, reset: false };
   try {
+    if (attempt) { await relaunch(); await openTab(); }
     await pick(fid); r.open = true;
     r.inputs = await p.$$eval('#ms-list .ms-row', (e) => e.length);
     const input = await p.$eval('#ms-list .ms-row', (e) => e.dataset.n); r.input = input;
@@ -56,6 +62,8 @@ for (const fid of FIGHTERS) {
     const back = await p.evaluate(([k, f, i]) => (JSON.parse(localStorage.getItem(k) || '{}')[f] || {})[i], [LO, fid, input]);
     r.reset = back === undefined;
   } catch (e) { r.error = String(e).slice(0, 200); }
+  if (!/closed|crash/i.test(r.error || '')) break;
+  }
   r.ok = r.open && r.edit && r.save && r.reload && r.reset;
   rows.push(r); n++;
   console.log(`${r.ok ? 'PASS' : 'FAIL'} ${fid} ${r.error || ''}`);
