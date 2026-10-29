@@ -39,19 +39,19 @@ The Mochiiqombat Pack, as the owner specified it, adds the Pokkén Tournament ro
 | Scizor | biped insect with pincers | an R4 toy-battle species (SPECIES-DATA-R4-TOYBATTLE.md) | |
 | Decidueye | biped owl archer | Thouswings (A7) | |
 | Blastoise | heavy biped turtle with cannons | Atollossus (A5) | |
-| Pikachu / Pikachu Libre | small mascot / Electric | **OWNER (t339u): an Electric (Volt), non-flying Mochiichao.** Slot **open, owner to pick**; candidates (PROPOSALS) in §1a | Libre = luchador attire |
+| Pikachu / Pikachu Libre | small mascot / Electric | **OWNER (t339u): an Electric (Volt), non-flying Mochiichao.** **Ratchetta: OWNER-APPROVED (t345u)**; see §1a | Libre = luchador attire |
 
-### 1a. Pikachu slot candidates (PROPOSALS, from the Mochiichao roster data)
+### 1a. Pikachu slot: Ratchetta (OWNER-APPROVED t345u)
 
 The owner's rule (t339u): Electric type, does not fly. Volt is Mochiichao's electric type. Source: mhvnsnt/Mochiichao-Diamond-Version-2d-fresh-start, show/production/mochichao-design/.
 
 | Candidate | Types | Body plan | Source | Fit |
 |---|---|---|---|---|
-| **Ratchetta** (ratchet-furred cat; combining component of Gestaltitan) | Chrome/Volt | compact ridged cat, tail in precise curves | SPECIES-DATA-R4-TOYBATTLE.md, C1-7 | PROPOSAL: small, ground-bound, mascot silhouette closest to Pikachu's |
-| **Coilcoon** (spring-tailed raccoon) | Chrome/Volt | round raccoon with a big coiled tail | SPECIES-DATA-R4-TOYBATTLE.md, C1-7 | small, ground-bound; the spring tail suits Pikachu's tail moves |
-| **Stormewe** (thunderhead sheep) | Volt (pure) | sheep under a personal thunderhead, thin legs | SPECIES-DATA-R3.md, B3 | the only pure Volt species; quadruped, so a heavier rig fit |
+| **Ratchetta** (ratchet-furred cat; combining component of Gestaltitan) | Chrome/Volt | compact ridged cat, tail in precise curves | SPECIES-DATA-R4-TOYBATTLE.md, C1-7 | **OWNER-APPROVED (t345u): the owner chose Ratchetta.** Small, ground-bound, mascot silhouette closest to Pikachu's |
+| ~~Coilcoon~~ | DROPPED (t345u): no longer an alternate |  |  |  |
+| ~~Stormewe~~ | DROPPED (t345u): no longer an alternate |  |  |  |
 
-Excluded: Dingbat (Chrome/Volt, but a flying bat), per the no-flying rule. None of the candidates are canon until the owner picks.
+Excluded: Dingbat (Chrome/Volt, but a flying bat), per the no-flying rule. The owner picked Ratchetta (t345u).
 
 The roster list is the Pokkén Tournament DX roster as published. Verify it against the source data in §2 before any build. Support Pokémon are out of scope unless the owner adds them.
 
@@ -93,7 +93,7 @@ The roster list is the Pokkén Tournament DX roster as published. Verify it agai
 
 ## 7. Decisions (t341u: the owner asked us to stop asking; each item is "filled in by MoneyManBusch", PROPOSAL)
 
-1. **Mappings:** the §1 table stands as the plan. Mewtwo → Goddgachuu is OWNER-APPROVED. Pikachu slot: **open, owner to pick**. Ratchetta, Coilcoon and Stormewe are proposals only (§1a); none is the owner's pick.
+1. **Mappings:** the §1 table stands as the plan. Mewtwo → Goddgachuu is OWNER-APPROVED. Pikachu slot: **Ratchetta, OWNER-APPROVED (t345u)**. Coilcoon and Stormewe dropped.
 2. **Extraction source:** only the owner's own Pokkén Tournament DX copy, with the tools logged in docs/CREDITS.md. Assets stay private (__WH_PRIVATE_ASSETS).
 3. **Rules:** keep Pokkén's Field/Duel phases and counter triangle as a pack-only rule layer. Base WH combat stays unchanged.
 4. **Support Pokémon:** out for v1, mapped later as Mochiichao assists if wanted.
