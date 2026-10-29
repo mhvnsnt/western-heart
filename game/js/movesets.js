@@ -410,7 +410,7 @@ function _prepare(ms) {
     else if (/^(?:close|cl\.?)\s+/i.test(raw) || /\(close\)/i.test(raw)) kind = 'close';
     else { const sm = /^[A-Z][A-Z0-9_]*\*\s*\((\d+)\s*spins?\)/.exec(raw); if (sm) { kind = 'spins'; n = +sm[1]; } }
     if (kind) (variants[c] = variants[c] || []).push({ key: k, kind, n });
-    else if (!(c in slots) && (systemTagOf(raw) || (!(ms.slots && k in ms.slots) && /^[a-z][a-z0-9]*_/i.test(k))) && !/[,~:+.]/.test(k)) slots[c] = k; // KOF system rows (maxmode, taunt) too
+    else if (!(c in slots) && (systemTagOf(raw) || (!(ms.slots && k in ms.slots && ms.slots[k] !== k) && /^(?:[a-z][a-z0-9]*_|\d+$)/i.test(k))) && !/[,~:+.]/.test(k)) slots[c] = k; // KOF system rows (maxmode, taunt) too; numeric/name keys whose only slot is themselves (string heads like qcb+1 -> '15')
   }
   ms._variants = variants;
   ms._variantBase = {};
