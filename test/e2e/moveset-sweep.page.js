@@ -208,7 +208,8 @@
       const t0 = f._maxT || 0; step(60, out); const t1 = f._maxT || 0;
       if (!(t0 > 0)) return res(false, 'MAX timer did not start', 'meter 100');
       if (!(t1 < t0 - 0.5)) return res(false, `MAX timer not running (${t0} -> ${t1})`, 'meter 100');
-      if (!(f.meter <= 50 + 1e-6)) return res(false, 'MAX did not spend 2 stocks', 'meter 100');
+      const sgm = (MS.playedMoveset(f.char.id).moves[m.key] || {}).soulGain || 0;
+      if (!(f.meter <= 50 + sgm + 1e-6)) return res(false, `MAX did not spend 2 stocks (meter ${f.meter})`, 'meter 100');
       return res(true, '', `meter 0: refused · meter 100: 2 stocks spent, timer ${t0.toFixed(2)} s -> ${t1.toFixed(2)} s after 1 s`);
     }
     if (sr.sys === 'taunt') {

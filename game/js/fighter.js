@@ -1647,6 +1647,14 @@ export class Fighter {
   tryAttack(name) {
     // KOF XV system rows (guard cancel from blockstun only; throw escape only while thrown).
     if (/^[1234](\+[1234])*$/.test(name)) { const r = this._systemPress(name); if (r !== undefined) return r; }
+    // KOF run / backstep: a button during the dash row is the dash move (f,f+2), so the press
+    // cancels the system dash; if nothing resolves, the dash keeps going.
+    if (this.state === 'attack' && this.attack && (this.attack.system === 'dash' || this.attack.system === 'backdash') && /^[1234](\+[1234])*$/.test(name)) {
+      const sv = { state: this.state, stateT: this.stateT, attack: this.attack, attackName: this.attackName, _attackPhase: this._attackPhase, _prevAtkT: this._prevAtkT, _sysVx: this._sysVx };
+      this.state = 'idle'; this.attack = null;
+      if (this._tryAttackFresh(name)) return true;
+      Object.assign(this, sv);
+    }
     // Chain throws: buttons during a throw pick the next stage (Tekken multi-part throws).
     if ((this.state === 'throwing' || this.state === 'throwExec') && /^[1234](\+[1234])*$/.test(name)) return this._throwChainPress(name);
     // A press during a string-capable move buffers the next hit (Tekken input buffer):
