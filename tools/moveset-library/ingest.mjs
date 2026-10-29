@@ -361,7 +361,8 @@ const index = {
     {
       id: 'vf5-motion',
       game: 'virtua_fighter_5',
-      status: 'partial — base kits live from federation conversions (vf-elblaze/jeffry/wolf/leifei.json); worker 45 motion extraction may extend/replace rows',
+      status: 'partial — base kits live from federation conversions (vf-elblaze/jeffry/wolf/leifei.json); worker 45 motion extraction may extend/replace rows; format contract: docs/handoffs/moveset-library-vf5-format.md',
+      expected_characters: ['jeffry', 'wolf', 'el-blaze', 'lei-fei'],
     },
     { id: 't7', game: 'tekken_7', status: 'pending — T7 teardown rows land here when extraction completes' },
     { id: 'ttt2', game: 'tekken_tag_2', status: 'pending' },

@@ -330,14 +330,20 @@ def notation_of(key, m):
     return None
 
 
+def _hashable(v):
+    # batch8 2026-10-23: older moveset files (chatur) store t3_row as a list
+    # (multi-row moves); coerce so the identity tuple stays hashable.
+    return tuple(v) if isinstance(v, list) else v
+
+
 def identity(m):
     if m.get("t8_id"):
-        return ("t8", m["t8_id"])
+        return ("t8", _hashable(m["t8_id"]))
     if m.get("t7_move_id"):
-        return ("t7", m["t7_move_id"])
+        return ("t7", _hashable(m["t7_move_id"]))
     if m.get("t3_source") and m.get("t3_row") is not None:
-        return ("t3", m["t3_source"], m["t3_row"], tuple(m.get("input_slots") or [m.get("input")]),
-                m.get("t3_condition"), m.get("t3_restriction"))
+        return ("t3", m["t3_source"], _hashable(m["t3_row"]), tuple(m.get("input_slots") or [m.get("input")]),
+                _hashable(m.get("t3_condition")), _hashable(m.get("t3_restriction")))
     return None
 
 

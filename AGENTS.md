@@ -127,3 +127,8 @@ Everything pulled from Tekken and every other game must be 100% wired in without
 main is branch-protected with required checks (pr-safety-guard, clobber-guard, deletion-guard, no-deletion-guard, instruction-gate), admins included. Never merge with pending or red checks, never resolve merges in a sparse checkout, never self-apply `owner-approved-deletion` / `owner-approved-stale`. Full rules: `docs/rules/MAIN-PROTECTION.md`.
 ## Handoff playbook (2026-10-23)
 All agents (Claude Code, Muse, others): follow [docs/handoff/HOW-TO-WORK-LIKE-GROK.md](docs/handoff/HOW-TO-WORK-LIKE-GROK.md) and the lane table in [docs/handoff/HANDOFF-2026-10-23.md](docs/handoff/HANDOFF-2026-10-23.md).
+## Team workflow (multi-agent, t141u)
+- Rules + lanes: `docs/AGENT-TEAM-PROTOCOL.md`
+- Backlog any agent can pull (claim by setting owner + branch): `docs/team/TASKBOARD.md`
+- Hitting a limit / resuming / reconciling parallel branches: `docs/team/HANDOFF.md`
+- Free tools + CI/hosting to keep work going 24/7 at $0: `docs/team/FREE-RESOURCES.md`

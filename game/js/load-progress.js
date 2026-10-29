@@ -12,7 +12,7 @@
    ============================================================ */
 import * as THREE from 'three';
 
-let real = 0, shown = 0, asset = '', creep = null, active = false;
+let real = 0, shown = 0, asset = '', creep = null, active = false, preloadNote = '';
 const t = { start: 0 };
 
 function paint() {
@@ -27,7 +27,7 @@ function paint() {
     pct.style.cssText = 'margin-top:8px;font:700 13px/1.3 monospace;color:#ffe9a8;text-align:center;word-break:break-all;';
     f.parentElement.insertAdjacentElement('afterend', pct);
   }
-  if (pct) pct.textContent = `${Math.round(shown * 100)}%${asset ? ' · ' + asset : ''}`;
+  if (pct) pct.textContent = `${Math.round(shown * 100)}%${asset ? ' · ' + asset : ''}${(o.classList.contains('show') && preloadNote) ? ' · ' + preloadNote : ''}`;
 }
 
 const M = THREE.DefaultLoadingManager;
@@ -42,6 +42,15 @@ M.onProgress = function (url, loaded, total) {
 
 /* Byte-level model progress from assets.loadModels (main.js startFight).
    Models are the bulk of a match load, so they map to 0..90%. */
+/* Rematch-preload status (2026-10-24): lazy.preloadNextFight reports the
+   ids it warmed so the next loading overlay can show them. Cleared when a
+   real load begins (begin() below) — the note describes the VS/outro
+   window, never the load itself. */
+window.__whPreloadNote = function (ids) {
+  preloadNote = (ids && ids.length) ? `preloading rematch: ${ids.join(', ')}` : '';
+  paint();
+};
+
 window.__whLoadProgress = function (p, loaded, total) {
   if (!active) return;
   const frac = (loaded && total) ? loaded / total : (p || 0);
@@ -50,8 +59,23 @@ window.__whLoadProgress = function (p, loaded, total) {
   paint();
 };
 
+/* Lane 5: stage phase of the same bar. Fighter bytes map to 0..85%;
+   stage warming maps to 85..97% (the creep cap), so a fight whose
+   fighters are cached but whose stage is still downloading shows
+   real movement instead of sitting at 85%. Never exceeds the creep
+   cap and never moves the bar backwards. */
+window.__whStageProgress = function (stageId, frac) {
+  if (!active) return;
+  const f = Number(frac);
+  if (!Number.isFinite(f)) return;
+  const target = 0.85 + Math.max(0, Math.min(1, f)) * 0.12;
+  shown = Math.max(shown, Math.min(0.97, target));
+  if (stageId) asset = `stage ${String(stageId).slice(0, 32)}`;
+  paint();
+};
+
 function begin() {
-  active = true; real = 0; shown = 0.03; asset = ''; t.start = performance.now();
+  active = true; real = 0; shown = 0.03; asset = ''; preloadNote = ''; t.start = performance.now();
   clearInterval(creep);
   creep = setInterval(() => {
     const cap = Math.min(0.97, real + (real >= 0.85 ? 0.12 : 0.06));

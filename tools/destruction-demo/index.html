@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WH Destruction Demo — voro++ Voronoi fracture</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #14100c; color: #e8d9c4;
+    font-family: system-ui, sans-serif; overflow: hidden; }
+  #c { display: block; width: 100vw; height: 100vh; touch-action: none; }
+  #hud { position: fixed; top: 10px; left: 12px; font-size: 13px; line-height: 1.5;
+    background: rgba(0,0,0,.55); padding: 8px 12px; border-radius: 8px;
+    border: 1px solid #6a4a2a; pointer-events: none; }
+  #hud b { color: #ffb060; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud"><b>VORO++ FRACTURE DEMO</b><br>
+tap / click the wall to shatter it<br>
+shards: <span id="n">–</span> · fractures: <span id="f">0</span><br>
+R = reset</div>
+<script type="module">
+import { DestructionSystem } from '../../game/js/destruction.js';
+
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const nEl = document.getElementById('n'), fEl = document.getElementById('f');
+const sys = new DestructionSystem();
+
+// wall: 8 x 3.4 world units, drawn centered
+const WALL = { w: 8, h: 3.4 };
+let scale = 80, ox = 0, oy = 0;
+function layout() {
+  canvas.width = innerWidth * devicePixelRatio;
+  canvas.height = innerHeight * devicePixelRatio;
+  ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+  scale = Math.min(innerWidth / (WALL.w + 3), innerHeight / (WALL.h + 6));
+  ox = innerWidth / 2; oy = innerHeight / 2 - WALL.h * scale / 4;
+}
+addEventListener('resize', layout); layout();
+
+sys.registerSurface({ id: 'wall', kind: 'wall', w: WALL.w, h: WALL.h, hp: 100, cells: 30, seed: 20261023 });
+
+function toLocal(e) {
+  const r = canvas.getBoundingClientRect();
+  return { x: (e.clientX - r.left - ox) / scale, y: -(e.clientY - r.top - oy) / scale };
+}
+function hit(e) {
+  const p = toLocal(e);
+  if (Math.abs(p.x) > WALL.w / 2 || Math.abs(p.y) > WALL.h / 2) return;
+  const res = sys.damage('wall', 100, p);
+  if (res.fractured) {
+    nEl.textContent = res.shards.length;
+    fEl.textContent = sys.fractureCount;
+  }
+}
+canvas.addEventListener('pointerdown', hit);
+addEventListener('keydown', (e) => {
+  if (e.key === 'r' || e.key === 'R') {
+    sys.reset();
+    sys.registerSurface({ id: 'wall', kind: 'wall', w: WALL.w, h: WALL.h, hp: 100, cells: 30, seed: (Math.random() * 1e9) | 0 });
+    nEl.textContent = '–';
+  }
+});
+
+const GROUND_LOCAL_Y = -WALL.h / 2 - 1.2;
+let last = performance.now();
+function frame(t) {
+  const dt = Math.min(0.05, (t - last) / 1000); last = t;
+  sys.step(dt);
+  ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+  const X = (x) => ox + x * scale, Y = (y) => oy - y * scale;
+  // ground
+  ctx.strokeStyle = '#5a4a3a'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(20, Y(GROUND_LOCAL_Y)); ctx.lineTo(innerWidth - 20, Y(GROUND_LOCAL_Y)); ctx.stroke();
+
+  const surf = sys.surfaces.get('wall');
+  if (surf && !surf.fractured) {
+    // intact wall
+    ctx.fillStyle = '#8a7458';
+    ctx.fillRect(X(-WALL.w / 2), Y(WALL.h / 2), WALL.w * scale, WALL.h * scale);
+    ctx.strokeStyle = '#ffb060'; ctx.lineWidth = 2;
+    ctx.strokeRect(X(-WALL.w / 2), Y(WALL.h / 2), WALL.w * scale, WALL.h * scale);
+    ctx.fillStyle = '#e8d9c4'; ctx.font = '14px system-ui';
+    ctx.fillText('TAP TO SHATTER', X(-WALL.w / 2) + 12, Y(0) + 5);
+  }
+  // shards
+  for (const sh of sys.live) {
+    if (sh.life <= 0) continue;
+    ctx.save();
+    ctx.globalAlpha = Math.min(1, sh.life / 0.6);
+    ctx.translate(X(sh.pos.x), Y(sh.pos.y));
+    ctx.rotate(-sh.rot.z);
+    ctx.beginPath();
+    sh.poly.forEach(([x, y], i) => {
+      const px = (x - sh.pos.x) * scale, py = -(y - sh.pos.y) * scale;
+      i ? ctx.lineTo(px, py) : ctx.moveTo(px, py);
+    });
+    ctx.closePath();
+    const heat = Math.max(0, Math.min(1, 1 - (sh.dist || 0) / 4));
+    ctx.fillStyle = sh.settled ? '#6a5a48' : `rgb(${140 + heat * 60 | 0},${110 + heat * 30 | 0},${90 | 0})`;
+    ctx.fill();
+    ctx.strokeStyle = '#2a2018'; ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.restore();
+  }
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
