@@ -43,6 +43,7 @@
       if (!t) return { err: `empty token in '${n}'` };
       const sub = /^([A-Za-z_]+)\.(.+)$/.exec(t); let sp = null; if (sub && !DIR.test(sub[1])) { sp = sub[1]; t = sub[2]; }
       if (DIR.test(t)) { mot.push(t); continue; }
+      if (MOT[t]) { mot.push(...MOT[t]); continue; } // named motion as its own step ('hcb,f+1', 'qcf,qcf+1')
       const hm = /^(?:(qcf|qcb|hcf|hcb|dp|[udfbnUDFBN](?:\/[udfbUDFB])?)\+)?([1-4](?:\+[1-4])*|S|P\+K)(\*)?$/.exec(t);
       if (!hm) return { err: `token '${t}' is not a stick/button input` };
       let dirs = mot; mot = []; let last = hm[1] || null;

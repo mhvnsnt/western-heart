@@ -74,7 +74,7 @@ function plan(n) {
 const EXP = { qcf: 'd,d/f,f', qcb: 'd,d/b,b', hcf: 'b,d/b,d,d/f,f', hcb: 'f,d/f,d,d/b,b' };
 function physical(n) {
   const { prefix, body } = M.splitNotation(n);
-  let b = body.replace(/\*$/, '').replace(/^(qcf|qcb|hcf|hcb)\+/, (m, k) => EXP[k] + ',').replace(/,([1-4](?:\+[1-4])*)$/, '+$1').toLowerCase();
+  let b = body.replace(/\*$/, '').replace(/^(qcf|qcb|hcf|hcb)\+/, (m, k) => EXP[k] + ',').replace(/(^|,)(qcf|qcb|hcf|hcb)(?=,)/g, (m, c, k) => c + EXP[k]).replace(/,([1-4](?:\+[1-4])*)$/, '+$1').toLowerCase();
   let parts = b.split(/,|\+(?=[1-4])/);
   const btn = b.match(/\+?([1-4](?:\+[1-4])*)$/)[1];
   parts = b.slice(0, b.length - btn.length).replace(/[+,]$/, '').split(',').filter(Boolean);
