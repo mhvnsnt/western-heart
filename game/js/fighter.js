@@ -306,6 +306,8 @@ export function getRealMove(charId, moveType, opts) {
           reach: (Number(mv.reach) > 0) ? mv.reach : (mv.t3_condition >= 2 && mv.t3_condition <= 0x17) ? 2.0 : mv.reach,
           stanceAfter: ms.stance_after ? ms.stance_after[key] : undefined,
           launch: !!mv.launch, knockdown: !!mv.knockdown,
+          // T8 launcher frame advantage on hit, e.g. '+34a (+24)' (airborne): sets the juggle airtime
+          launchAdv: (() => { const m = /\+(\d+)a/.exec(String(mv.on_hit || '')); return m ? +m[1] : null; })(),
           armor: !!mv.armor,
           rageArt: !!mv.rageArt, rageDrive: !!mv.rageDrive,
           urgeEngager: !!mv.urgeEngager,
@@ -347,6 +349,7 @@ export function getRealMove(charId, moveType, opts) {
 }
 
 const GROUND_Y_DEFAULT = 0;
+const JUGGLE_PEAK = 1.2; // m: launcher pop height (juggle airtime comes from the move's frame data)
 let GROUND_Y = 0; // stage-break lane: floor/balcony breaks drop the fighting level
 export function setGroundY(v) { GROUND_Y = v; }
 export function getGroundY() { return GROUND_Y; }
@@ -2119,6 +2122,16 @@ export class Fighter {
     if (this.hp <= 0) { this._knockout(dir); return 'ko'; }
     if (move.isGrab || move.knock >= 6 || move.launch || (counter && move.knockdown)) {
       this.vy = move.isGrab ? 5.2 : 4.6; this.onGround = false; this.stun = 0.55;
+      this._juggleG = 0;
+      /* Juggle airtime (moveset sweep 2026-10-29): a launcher keeps the victim airborne for the
+         rest of the attacker's move plus its T8 on-hit advantage (default +30f), as in Tekken, so
+         a follow-up can juggle. The pop peaks at JUGGLE_PEAK m and gravity is set from that airtime
+         (a floatier arc, not a higher one). Plain knockdowns keep the 4.6 m/s pop and 22 m/s² fall. */
+      if (move.launch && !move.isGrab) {
+        const left = Math.max(0, (move.startup || 0) + (move.active || 0.05) + (move.recovery || 0.4) - (attacker.stateT || 0));
+        const T = Math.min(1.6, Math.max(0.42, left + (move.launchAdv != null ? move.launchAdv : 30) / 60));
+        this.vy = 4 * JUGGLE_PEAK / T; this._juggleG = 8 * JUGGLE_PEAK / (T * T);
+      }
       this._queuedNext = null; this._queuedAfter = null; this._stringGraceUntil = 0; // getting hit kills your string
       this._enter('knockdown');
     } else {
@@ -2742,7 +2755,7 @@ export class Fighter {
     // so physics must not integrate velocity or gravity here.
     const inThrowAnim = this.state === 'throwExec' || this.state === 'thrownExec';
     if (!inThrowAnim) {
-      if (!this.onGround) this.vy -= 22 * dt;
+      if (!this.onGround) this.vy -= ((this._juggleG && this.state === 'knockdown') ? this._juggleG : 22) * dt;
     }
     if (this.onGround && this.state !== 'walk' && this.state !== 'dodge' && this.state !== 'sidestep' && !(this.state === 'attack' && this.attackName === 'grab')) {
       this.vx *= Math.pow(0.0001, dt);
@@ -2777,7 +2790,7 @@ export class Fighter {
     this.root.position.z = Math.max(-zLim, Math.min(zLim, this.root.position.z));
 
     if (this.root.position.y <= GROUND_Y) {
-      this.root.position.y = GROUND_Y; this.vy = 0;
+      this.root.position.y = GROUND_Y; this.vy = 0; this._juggleG = 0;
       if (!this.onGround) {
         this.onGround = true;
         if (this.state === 'knockdown') {
