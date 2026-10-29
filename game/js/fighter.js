@@ -202,6 +202,10 @@ export function bankIdFor(charId, movesetId) {
     //                 bank exists; was returning null — no bank, CMU fallback)
     docfrank: 'bosconovitch', tobi: 'hwoarang', 'buffalo-bill': 'law',
   };
+  // 2026-10-28: Zen binds the VF5 Dural bank (T3_BANKS.dural) only in a private build — the
+  // decoded VF5 motion lives in the private game-reverse-engineering repo and is copied to
+  // game/assets/private/anim/vf5/dural/. Public builds keep zen UNMAPPED (null) as before.
+  if (charId === 'zen' && T3_BANKS.dural) return 'dural';
   if (Object.prototype.hasOwnProperty.call(FIGHTER_BANK, charId)) return FIGHTER_BANK[charId];
   let src = null;
   try {
