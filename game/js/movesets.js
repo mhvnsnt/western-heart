@@ -325,7 +325,9 @@ export function parseMotion(n) {
   // button. Returned as a neutral-ending motion so V2 matches tap -> neutral -> press;
   // before, it was dropped here as a 'plain directional' and only the plain 3 ever fired.
   if (charge) return dirs.length ? { prefix, dirs, btn: lm[2], neutral, charge } : null;
-  if (!lm[1] && head.length === 1 && dirs.length === 1 && dirs[0] !== 'n') return { prefix, dirs, btn: lm[2], neutral: true };
+  // 'f,n,1' / 'u/f,n,4' are the same tap with the release written out (sweep 2026-10-29: 427 rows
+  // fired the plain button because the explicit n made head.length 2).
+  if (!lm[1] && dirs.length === 1 && dirs[0] !== 'n' && head.filter(p => p.toLowerCase() !== 'n').length === 1) return { prefix, dirs, btn: lm[2], neutral: true };
   if (dirs.filter(d => d !== 'n').length < 2 && !(lm[1] && MOTION_DIRS[lm[1]])) return null; // plain directional
   return { prefix, dirs, btn: lm[2], neutral };
 }
@@ -475,6 +477,10 @@ function _prepare(ms) {
     for (const j of cuts) pre.add(n.slice(0, j));
   }
   ms._strPrefixes = pre;
+  // A string whose opening step is a motion with no standalone move ('f,n,1' of 'f,n,1,2,1,2,3'):
+  // the motion opens the string cursor (sweep 2026-10-29: it fired the plain '1' string instead).
+  for (const n of pre) if (!(n in slots)) { const m = parseMotion(n); if (m) motions.push({ n, ...m, opener: true }); }
+  motions.sort((a, b) => b.dirs.length - a.dirs.length);
 }
 
 /* Motion inputs this fighter can perform: the moveset's own slots plus every motion notation
@@ -836,7 +842,10 @@ export class TekkenBuffer {
         // so a released stick reaches it and a held one still gets b+1 / d+1 first.
         const tapRel = !mo.neutral && !dir && /,[1-4](?:\+[1-4])*\*?$/.test(mo.n) && !/^(f|b)(,\1)+$/i.test(mo.dirs.join(','));
         if (!tapRel && (mo.neutral ? dir : dir !== mo.dirs[mo.dirs.length - 1])) continue;
-        if (this._motionHeldV2(mo) && (!mo.charge || this._chargeHeld(mo)) && has(mo.n)) return this._recordMove(mo.n);
+        if (this._motionHeldV2(mo) && (!mo.charge || this._chargeHeld(mo))) {
+          if (has(mo.n)) return this._recordMove(mo.n);
+          if (mo.opener && opener(mo.n)) return null;
+        }
       }
       if (dir) {
         // Held spelling ('D/F+2') when the direction has been held >= HOLD_FRAMES, tap otherwise.

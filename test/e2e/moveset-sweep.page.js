@@ -336,7 +336,7 @@
         throwOk = p1s.has('throwExec') && p2s.has('thrownExec') && out.filter((x) => x.p2.st === 'thrownExec').every((x) => x.p2.clip); }
       const nHits = P.hits.length;
       // a string whose opening step has no standalone move fires as one move (opener path)
-      const firstStep = notation.split(/[,~:]/)[0]; const openerOnly = !MS.resolveMoveKey(id, firstStep);
+      /* opening step through the first button: 'f,n,1' of 'f,n,1,2' */ const firstStep = (/^(?:[^,~:1-4]*[,~:])*?[^,~:]*?[1-4][^,~:]*/.exec(notation) || [notation.split(/[,~:]/)[0]])[0]; const openerOnly = !MS.resolveMoveKey(id, firstStep);
       const strOk = nHits > 1 ? (fired.length >= Math.min(nHits, 2) || openerOnly) && firedIt : true;
       const ok = firedIt && strOk && (!needHit || connected) && throwOk !== false;
       const why = !firedIt ? `fired ${JSON.stringify(fired)} (keys ${JSON.stringify(keys)}) not '${m.key}'` : !strOk ? `string fired ${JSON.stringify(fired)}` :
