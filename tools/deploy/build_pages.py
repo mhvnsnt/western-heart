@@ -271,16 +271,25 @@ def blob_sizes(sha):
             by_oid[a] = int(b)
     need = {o for o in uniq if o not in by_oid}
     if need:
-        for top in sorted({p.split("/", 1)[0] for p, o in oids.items() if o in need and "/" in p}):
+        def walk(path, depth=0):
+            # The trees API truncates big recursive listings (~100k entries /
+            # 7 MB); when it does, descend one level and list each subtree.
             try:
-                t = git("rev-parse", f"{sha}:{top}").strip()
+                t = git("rev-parse", f"{sha}:{path}").strip()
                 out = subprocess.run(["gh", "api", f"repos/{REPO}/git/trees/{t}?recursive=1"],
                                      capture_output=True, text=True)
-                for e in json.loads(out.stdout).get("tree", []):
-                    if e.get("type") == "blob":
-                        by_oid[e["sha"]] = e.get("size", 0)
+                d = json.loads(out.stdout)
             except Exception:
-                pass
+                return
+            for e in d.get("tree", []):
+                if e.get("type") == "blob":
+                    by_oid[e["sha"]] = e.get("size", 0)
+            if d.get("truncated") and depth < 4:
+                for e in d.get("tree", []):
+                    if e.get("type") == "tree" and "/" not in e["path"]:
+                        walk(f"{path}/{e['path']}", depth + 1)
+        for top in sorted({p.split("/", 1)[0] for p, o in oids.items() if o in need and "/" in p}):
+            walk(top)
     unknown = sum(1 for o in uniq if o not in by_oid)
     if unknown:
         print(f"note: {unknown} blob sizes unknown (API truncated); counted as 0 MB in the report")
