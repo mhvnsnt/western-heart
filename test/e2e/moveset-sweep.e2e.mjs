@@ -22,7 +22,9 @@ const { bodyFor } = await import('./moveset-sweep.bodies.mjs');
 const SKIP_DONE = process.env.WH_SWEEP_SKIP_DONE === '1';
 if (!FIGHTERS.length) FIGHTERS = Object.keys(idx.fighters);
 const launch = () => chromium.launch({ executablePath: process.env.CHROME || undefined,
-  args: ['--use-gl=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
+  args: ['--use-gl=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist',
+    // sweep only: michiko / nightwolf / demonio renderers ran out of heap on the default limit
+    '--js-flags=--max-old-space-size=' + (process.env.WH_SWEEP_HEAP_MB || 6144)] });
 let b = await launch();
 const PAGE_LIB = fs.readFileSync(new URL('./moveset-sweep.page.js', import.meta.url), 'utf8');
 
