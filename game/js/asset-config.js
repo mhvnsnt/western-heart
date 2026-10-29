@@ -131,6 +131,7 @@ export function resolveAssetCandidates(url) {
  * stages.js and customization-consumer.js so all three loaders fail
  * over the same way. */
 export async function loadGlbCandidates(loader, url, base) {
+  let firstErr = null;
   let lastErr = null;
   for (const cand of resolveAssetCandidates(url)) {
     const fetchUrl = /^https?:\/\//i.test(cand) || !base
@@ -141,8 +142,16 @@ export async function loadGlbCandidates(loader, url, base) {
       if (!res.ok) throw new Error(`HTTP ${res.status} for ${fetchUrl}`);
       return await loader.parseAsync(await res.arrayBuffer(), fetchUrl);
     } catch (e) {
+      if (!firstErr) firstErr = e;
       lastErr = e;
     }
+  }
+  // Name the FIRST (primary/local) failure, not only the last fallback's:
+  // a local 404 followed by an unreachable CDN used to surface as a bare
+  // "Failed to fetch", hiding the asset that is actually missing — the
+  // exact failure the 2026-10-24 P0 error-surface fix exists to prevent.
+  if (firstErr && lastErr && firstErr !== lastErr) {
+    throw new Error(`${firstErr.message || firstErr} (fallback also failed: ${lastErr.message || lastErr})`);
   }
   throw lastErr || new Error(`no candidate loaded for ${url}`);
 }
