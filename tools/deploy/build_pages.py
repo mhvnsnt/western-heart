@@ -577,6 +577,19 @@ def plumbing(a, sha, files, sizes, total):
     man = json.dumps({"format": "wh-pages-deploy/1", "ref": a.ref, "commit": sha, "files": len(files),
                       "bytes": total, "tool": "tools/deploy/build_pages.py",
                       "mode": "itch" if a.itch else ("shell-only" if a.shell_only else "full")}, indent=1).encode()
+    if not parent:
+        # Fresh (orphan) deploy: the two root files the old gh-pages carried
+        # by hand — .nojekyll (no Jekyll pass over 2k+ files, keeps _dirs)
+        # and the root redirect into game/ (query string kept, so
+        # /western-heart/?quick=... reaches the game).
+        root_index = ("<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n"
+                      "<title>WESTERN HEART</title>\n<meta http-equiv=\"refresh\" content=\"0; url=game/\" />\n"
+                      "<script>location.replace('game/' + location.search + location.hash);</script>\n"
+                      "</head>\n<body>\n<p><a href=\"game/\">Enter WESTERN HEART</a></p>\n</body>\n</html>\n")
+        for name, body in ((".nojekyll", b""), ("index.html", root_index.encode())):
+            if name not in files:
+                o = g("hash-object", "-w", "--stdin", inp=body).strip()
+                g("update-index", "--add", "--cacheinfo", f"100644,{o},{name}")
     mobj = g("hash-object", "-w", "--stdin", inp=man).strip()
     g("update-index", "--add", "--cacheinfo", f"100644,{mobj},deploy-manifest.json")
     after = set(l.split("\t", 1)[1] for l in g("ls-files", "-s", "-z").split("\0") if l)
