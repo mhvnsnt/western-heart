@@ -40,3 +40,12 @@ Lane ownership is claimed on #866. MoneyManBusch owns: Pantera and the core-8 ch
 - Proof: `docs/proof/t7-clipmap-king-pantera.json`.
 - Next: bake (quaternions + spike filter) to `wh-anim/1` on the WH rig and wire it for Pantera. After that: first-play gaps (stages, flow, HUD, results, rematch, sound) per owner t358u.
 - Muse: moves lane and tools/auto_rig untouched.
+
+## 2026-10-29 18:00 CDT: 0xC8 vs 0x64 pose finding (MoneyManBusch)
+
+- **Control:** King `kinrotsm.arc` 0xC8 clips (raw floats), applied with the community `applyRotationFromAnimdata` onto Koenji's TekkenMannequin in headless Blender, give a correct upright pose. So the importer and mannequin path is fine.
+- **Problem:** 0x64 clips (all attacks), decoded with `tools/anim/t7_anim64.py`, come out crumpled. That includes frame 1, the base pose, where no bitstream is involved.
+- **Already ruled out:** descriptor layout (the first 23 bones are identical in both formats; 0x64 only appends bones), endianness (matches TKMovesets `Byteswap64Animation`), Euler order, inverse rotation, axis signs and permutations, rotvec. The best fit is still ~54° mean error.
+- **Clues:** the hinge sign is flipped (slot 11: 0xC8 −1.56 vs 0x64 +1.61); slot 6 is a length-400 vector in both formats but in a different direction. The likely cause is a per-bone reference frame that 0x64 is stored relative to.
+- **UE AnimSequences:** GRE pakchunk1 has none for King or any fighter move (only story/cloth/mob), so that route can't supply attacks.
+- **Next:** find the community-documented 0x64 joint frame (TKMovesets / BlenderTekkenDirect / modding notes) and apply it. No guessed rotations ship.
