@@ -31,7 +31,7 @@ The Mochiiqombat Pack, as the owner specified it, adds the Pokkén Tournament ro
 | Chandelure | floating ghost | a spirit-class R4 species (SPECIES-DATA-R4-SMALL-AND-SPIRIT.md) | floater rig |
 | Sceptile | biped reptile with blade arms / Grass | Verdilance (A3) | |
 | Garchomp | land-shark biped dragon | Slashfoss (C2-5) | |
-| Mewtwo / Shadow Mewtwo | humanoid psychic legendary | Goddgachuu (rarest; Diablo owns one, t324u) | owner call; Shadow form = Diablo's |
+| Mewtwo / Shadow Mewtwo | humanoid psychic legendary | **Goddgachuu: OWNER-APPROVED (t339u)** (rarest; Diablo owns one, t324u) | approved on the condition there is no Gyarados / Rayquaza / Dragonite-style fit to prefer (owner's words, as transcribed); Shadow form = Diablo's: PROPOSAL |
 | Empoleon | biped penguin / Water-Steel | Helmbeak (C2-7) | |
 | Darkrai | floating humanoid / Dark | Demonio (Chao-Ranger, winged form) or none | owner call |
 | Croagunk | small biped frog / Poison-Fighting | Clearibbit (C2-11) | |
@@ -39,7 +39,19 @@ The Mochiiqombat Pack, as the owner specified it, adds the Pokkén Tournament ro
 | Scizor | biped insect with pincers | an R4 toy-battle species (SPECIES-DATA-R4-TOYBATTLE.md) | |
 | Decidueye | biped owl archer | Thouswings (A7) | |
 | Blastoise | heavy biped turtle with cannons | Atollossus (A5) | |
-| Pikachu / Pikachu Libre | small biped mascot | the Mochiichao mascot species (owner call) | Libre = luchador attire |
+| Pikachu / Pikachu Libre | small mascot / Electric | **OWNER (t339u): an Electric (Volt), non-flying Mochiichao.** Candidates, PROPOSAL: see §1a | Libre = luchador attire |
+
+### 1a. Pikachu slot candidates (PROPOSALS, from the Mochiichao roster data)
+
+The owner's rule (t339u): Electric type, does not fly. Volt is Mochiichao's electric type. Source: mhvnsnt/Mochiichao-Diamond-Version-2d-fresh-start, show/production/mochichao-design/.
+
+| Candidate | Types | Body plan | Source | Fit |
+|---|---|---|---|---|
+| **Ratchetta** (ratchet-furred cat; combining component of Gestaltitan) | Chrome/Volt | compact ridged cat, tail in precise curves | SPECIES-DATA-R4-TOYBATTLE.md, C1-7 | **lead pick:** small, ground-bound, mascot silhouette closest to Pikachu's |
+| **Coilcoon** (spring-tailed raccoon) | Chrome/Volt | round raccoon with a big coiled tail | SPECIES-DATA-R4-TOYBATTLE.md, C1-7 | small, ground-bound; the spring tail suits Pikachu's tail moves |
+| **Stormewe** (thunderhead sheep) | Volt (pure) | sheep under a personal thunderhead, thin legs | SPECIES-DATA-R3.md, B3 | the only pure Volt species; quadruped, so a heavier rig fit |
+
+Excluded: Dingbat (Chrome/Volt, but a flying bat), per the no-flying rule. None of the candidates are canon until the owner picks.
 
 The roster list is the Pokkén Tournament DX roster as published. Verify it against the source data in §2 before any build. Support Pokémon are out of scope unless the owner adds them.
 
@@ -81,7 +93,7 @@ The roster list is the Pokkén Tournament DX roster as published. Verify it agai
 
 ## 7. Open questions for the owner
 
-1. Approve or replace each §1 mapping. Who takes the Pikachu slot? Is Mewtwo → Goddgachuu acceptable, given its rarity?
+1. Approve or replace each §1 mapping. Pikachu slot: pick from §1a. (Mewtwo → Goddgachuu: APPROVED t339u.)
 2. Which Pokkén source copy and tools are approved for extraction?
 3. Keep Pokkén's Field/Duel phases and counter triangle, or play pure WH rules?
 4. Support Pokémon: in or out?
