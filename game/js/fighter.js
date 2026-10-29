@@ -1211,12 +1211,15 @@ export class Fighter {
      follow-up resolves to the tapped spelling first; still held 6f later it becomes the held row. */
   _dirHoldUpgrade() {
     const dq = this._dirFollowQ; if (!dq || dq.held || this._stickDir !== dq.d) return;
-    if ((this._clock || 0) - dq.t < 0.1) return;
+    if ((this._clock || 0) - dq.t < 0.08) return;
     const D = dq.d.toUpperCase(); if (D === dq.d || dq.c.endsWith(D)) return;
     const up = [',', '~', ':'].map((s) => `${dq.b}${s}${D}`).find((k) => resolveMoveKey(this._movesetId, k));
     dq.held = true; if (!up) return;
     const q = this._queuedAfter && this._queuedAfter.length ? this._queuedAfter : null;
-    if ((q ? q[q.length - 1] : this._queuedNext) !== dq.c) return;
+    if ((q ? q[q.length - 1] : this._queuedNext) !== dq.c) {
+      // already started: swap to the held row while still in its first frames
+      if (this.state === 'attack' && this.attackName === dq.c && this.stateT < 0.15) { this.attack = null; this.attackName = null; if (this._fireNotation(up)) dq.c = up; }
+      return; }
     if (q) q[q.length - 1] = up; else this._queuedNext = up; dq.c = up;
   }
 
