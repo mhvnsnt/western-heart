@@ -56,6 +56,24 @@ export const SHELL_BUNDLED_MODELS = [
   'game/assets/models/pantera.glb', // 7.6 MB — play-verify pair
   'game/assets/models/awa-pop.glb', // 0.4 MB
   'game/assets/models/baek.glb', // 0.4 MB
+  // Milestone 1 core 8 (game/js/core-set.js): the FIGHT model of each fighter
+  // (roster model / first attire), so every core pick loads on the shell
+  // while the R2 base is still a placeholder. Over 25 MB is fine on
+  // GitHub Pages (100 MB per-file cap); build_pages.py enforces that.
+  'roster/bruno/attires/attire2/source/bruno-a2-sail-the-sea-rigged.glb',
+  'roster/demonio/attires/attire1/model.glb',
+  'roster/demonio/attires/winged-devil/model-rigged.glb',
+  'roster/demonio/attires/human/model-rerig.glb',
+  'roster/cyborg-x/attires/attire1/model-rigged.glb', // cyborgx fight model (cape-jones-attire1)
+  'roster/burger/attires/attire1/model-rigged.glb',
+  'roster/burger/attires/attire6/model.glb', // form: speed demon
+  'roster/burger/attires/attire7/model.glb', // form: the mouth
+  'roster/burger/attires/attire1/model.glb', // form: demon
+  'roster/rahkasa/attires/attire1/model-rigged-textured.glb',
+  'roster/deathfang/attires/attire1/model.glb',
+  'roster/deathfang/attires/attire2/model.glb', // form: werewolf
+  'roster/pantera/attires/leomon/model.glb', // select-pane attire 1
+  'roster/dio/attires/attire1/source/dio-a1-jade-god-rigged.glb',
 ];
 
 export function isRemoteReady() {
