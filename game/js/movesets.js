@@ -367,6 +367,18 @@ export function canonNotation(n) {
   // descriptive note words in parentheses after a button: '(guard)', '(knife)', '(gedan)', '(max)'...
   s = s.replace(/([1-4*])\s*\((?:near|far|close|rush|knife|gedan|max|MAX|tap|guard|ground|blowback|Irish-whip variant|throw escape|taunt)\)/g, '$1'); // T7 list spelling of the rage state prefix
   s = s.replace(/^([fb]),\1\s*\((?:roll|dash|backdash)\)$/i, '$1,$1'); // KOF system rows: double tap
+  /* Annotated notations (sweep class 2, 2026-10-29): the note is a mode / variant / meter tag on
+     the same input. '3+4 (cyclone1)', 'n+1+2 (claw)', 'n+1 (nc)', '2+4 (vs2)', '3+4 (vshift, break)',
+     '1 (DF)' -> the bare input; a ', hold' / '(charge)' note means the button is held -> '*'.
+     '1+2_od' (SF6 OD / KOF EX version on the same buttons) -> '1+2'.  'air_charge_b,f+1' -> 'charge_b,f+1'
+     (air is the context, the motion is the same). '360+2' -> 'f,d,b,u+2' (full circle, any start).
+     'fc,f+1+3' -> 'FC.f+1+3'. */
+  s = s.replace(/\s*\((?:cyclone\d*|claw|nc|vs\d|vshift|vrev|vt\d|gsr|neutral|DF|sfv|parry|break|charge|hold)(?:\s*,\s*(?:hold|break|charge))*\)/gi,
+    (m) => (/(?:hold|charge)\s*\)$/i.test(m) ? '*' : ''));
+  s = s.replace(/([1-4])_od\b/gi, '$1');
+  s = s.replace(/^air_(?=charge_)/i, '');
+  s = s.replace(/^360\+(?=[1-4])/, 'f,d,b,u+');
+  s = s.replace(/^fc\s*,\s*(?=[udfbUDFB])/i, 'FC.');
   s = s.replace(/\b(df|db|uf|ub|DF|DB|UF|UB)(?=\+|,|$|~|:)/g, (m) => _DIAG[m]);
   s = s.replace(/^(ws|WS)\s*(?=[1-4])/, 'WS.');
   s = s.replace(/^([A-Z][A-Z0-9_]{1,})\s+(?=[1-4udfbnUDFB(])/, '$1.');
