@@ -12779,6 +12779,7 @@
       }
     },
     "1,2,1,2+4~t7.king": {
+      "reach": 2.3,
       "name": "Palm Upper to Suplex",
       "input": "1,2,1,2+4",
       "startup": 0.1667,
@@ -12825,8 +12826,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "king",
-        "row": 280,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 127,
+        "match": "true-map class+limb, same clip as base 1,2,1,2+4 (2026-10-29)"
       },
       "t7": {
         "damage": 9,
@@ -12842,6 +12843,7 @@
       }
     },
     "1,2,1,2+4~t7.king.2": {
+      "reach": 2.3,
       "name": "PANTERA 1,2,1,2+4",
       "input": "1,2,1,2+4",
       "startup": 0.1667,
@@ -12887,8 +12889,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 127,
+        "match": "true-map class+limb, same clip as base 1,2,1,2+4 (2026-10-29)"
       },
       "t7": {
         "damage": 9,
@@ -12904,6 +12906,7 @@
       }
     },
     "1,2,1,2+4~t7.king.3": {
+      "reach": 2.3,
       "name": "PANTERA 1,2,1,2+4",
       "input": "1,2,1,2+4",
       "startup": 0.1667,
@@ -12949,7 +12952,7 @@
       "anim_t3": {
         "bank": "king",
         "row": 127,
-        "match": "nearest limb/class/startup (approximate)"
+        "match": "true-map class+limb, same clip as base 1,2,1,2+4 (2026-10-29)"
       },
       "t7": {
         "damage": 9,
@@ -12965,6 +12968,7 @@
       }
     },
     "1,2,1,2+4~t7.king.4": {
+      "reach": 2.3,
       "name": "PANTERA 1,2,1,2+4",
       "input": "1,2,1,2+4",
       "startup": 0.1667,
@@ -13003,7 +13007,7 @@
       "anim_t3": {
         "bank": "king",
         "row": 127,
-        "match": "nearest limb/class/startup (approximate)"
+        "match": "true-map class+limb, same clip as base 1,2,1,2+4 (2026-10-29)"
       },
       "t7": {
         "damage": 9,
@@ -31746,7 +31750,9 @@
   },
   "stance_after": {
     "b+1+2__main": "JGR",
-    "b+1+2,1+2": "JGR"
+    "b+1+2,1+2": "JGR",
+    "3+4_t8": "JGS",
+    "b+3+4": "JGS"
   },
   "string_fix_20261024": {
     "rule": "WH fires each string STEP as its own attack, so a step move's runtime damage = T7 MOD damage of that step's hit (last hit of the MOD row), not the running total. Singles that fire via slots use MOD damage. T8 multi_hit.total values are left untouched as source records.",

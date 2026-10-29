@@ -26,6 +26,7 @@ import { resolveFighterAttire } from './attires.js';
 import { createSelectScreen } from './select-screen.js';
 import { applySoulSpirit } from './soul-spirit.js';
 import { STAGES, STAGE_TIERS, getStage, randomStageId, preloadStage } from './stages.js';
+import { stageVisible, CORE_STAGES, CORE_FIGHTERS, SHOW_ALL, quickFightParams } from './core-set.js';
 // LOADSPEED: stages.js (82KB data) stays static — buildStageSelect runs in
 // the versus flow and getStage is needed by startFight; its parse cost is
 // small next to the deferred modules. Stage THUMBS are the real cost there
@@ -450,7 +451,7 @@ function buildStageSelect() {
   grid.innerHTML = '';
   const paint = (atlas) => {
     for (const tier of STAGE_TIERS) {
-      const stages = STAGES.filter(s => s.tier === tier);
+      const stages = STAGES.filter(s => s.tier === tier && stageVisible(s.id));
       if (!stages.length) continue;
       const tierHeader = document.createElement('div');
       tierHeader.className = 'tier-header';
@@ -931,7 +932,7 @@ document.getElementById('confirm-stage').addEventListener('click', confirmStageF
 
 document.getElementById('random-stage').addEventListener('click', () => {
   audio.uiClick();
-  selectedStage = randomStageId();
+  selectedStage = SHOW_ALL ? randomStageId() : CORE_STAGES[(Math.random() * CORE_STAGES.length) | 0];
   const s = getStage(selectedStage);
   const card = document.querySelector(`.stage-card[data-id="${s.id}"]`);
   if (card) {
@@ -1468,6 +1469,19 @@ document.addEventListener('visibilitychange', () => {
 
 // expose for debugging / verification
 window.__game = game;
+window.__startFight = (p1, p2, opts) => startFight(p1, p2, opts || {}); // QA hook (combat e2e)
+
+/* Milestone 1: ?quick=p1,p2,stage opens straight into a fight (testing).
+   p2 / stage optional: a missing p2 is a random core fighter, a missing
+   stage is a random core stage. */
+(function quickFight() {
+  const q = quickFightParams();
+  if (!q) return;
+  const p2 = q.p2 || CORE_FIGHTERS.filter(id => id !== q.p1)[(Math.random() * 7) | 0];
+  const stage = q.stage || CORE_STAGES[(Math.random() * CORE_STAGES.length) | 0];
+  setTimeout(() => { startFight(q.p1, p2, { stage }).catch(e => console.error('[quick]', e)); }, 0);
+})();
+
 window.__ui = ui;
 window.__stages = STAGES;
 
