@@ -14,6 +14,10 @@ import { clone as skeletonClone } from 'three/addons/utils/SkeletonUtils.js';
 // saku-ra-main, purple-rain-main, kiko-tanaka*). Vendored locally —
 // the game ships with no CDN (see index.html importmap).
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
+// Clothing layer system (worker 64, 2026-10-22): per-mesh visibility
+// toggles over GLB mesh names, data-driven via data/clothing-layers.json.
+// No import cycle: clothing-layers.js imports nothing from this module.
+import { applyClothingToInstance } from './clothing-layers.js';
 // Creation Suite Pass: generated registry of baked customization overrides
 // (customization/tools/apply_customization.py). Empty map = exact no-op.
 import { ATTIRE_CUSTOMIZATIONS } from './attire-customizations.js';
@@ -23,6 +27,12 @@ import { resolveModelMaterials, assertModelUsable } from './material-runtime.js'
 // A cache hit skips the network entirely; a miss stores the bytes
 // after a successful download. Never changes parse/ingest behavior.
 import { getCachedBuffer, putCachedBuffer } from './asset-cache.js';
+// Split hosting (owner decision 2026-10-26: Pages shell + GLBs on R2).
+// resolveAssetCandidates maps one MODEL_URLS entry to its fetch order:
+// bundled models stay local; everything else tries the remote asset
+// base first (R2 once the bucket exists), then jsDelivr. One config
+// line in asset-config.js moves the base — no per-model changes.
+import { resolveAssetCandidates } from './asset-config.js';
 
 export const MODEL_URLS = {
   pantera: 'assets/models/pantera.glb',
@@ -338,6 +348,14 @@ export const MODEL_URLS = {
   'michiko-attire2': '../roster/michiko/attires/attire2/model-rigged.glb',
   dio: 'assets/models/dio.glb',
   bruno: 'assets/models/bruno.glb',
+  // T3 cast with no WH roster body (moveset sweep 2026-10-29): their T3 teardown rigs,
+  // re-exported as skinned GLBs in lab/ (private: not in the --shell-only Pages set).
+  't3-anna': '../lab/game/assets/t3_anna_t3real.glb',
+  't3-bosconovitch': '../lab/game/assets/t3_bosconovitch_t3real.glb',
+  't3-julia': '../lab/game/assets/t3_julia_t3real.glb',
+  't3-nina': '../lab/game/assets/t3_nina_t3real.glb',
+  't3-ogre': '../lab/game/assets/t3_ogre_t3real.glb',
+  't3-paul': '../lab/game/assets/t3_paul_t3real.glb',
   yukihyo: 'assets/models/yukihyo.glb',
   // SCIMITAR (2026-10-21, lane 4 rig batch 1): unrigged static -> auto-rigged via
   // tools/auto_rig knn backend (donor pantera.glb); owner's original stays untouched.
@@ -1206,53 +1224,72 @@ class AssetManager {
     }
     const url = MODEL_URLS[id];
     assertModelUsable(id); // quarantined (broken materials) never loads into select or a fight
+    // Split hosting: bundled models load from Pages exactly as before;
+    // every other model tries the remote asset base first, then jsDelivr.
+    const candidates = resolveAssetCandidates(url);
     const LOAD_TIMEOUT_MS = 90000;
     const attempt = async () => {
       const signal = _anySignal([ctrl.signal, _timeoutSignal(LOAD_TIMEOUT_MS)]);
-      // Lane 5: persistent-cache hit — report full byte progress once
-      // (the bar must move on real bytes, not stall), then parse the
-      // cached buffer on the identical path as a network download.
-      if (!signal.aborted) {
-        const cached = await getCachedBuffer(url);
-        if (cached && !signal.aborted) {
-          if (onProgress) onProgress(1, cached.byteLength, cached.byteLength, id);
-          return _sharedGLTFLoader().parseAsync(cached, url);
-        }
-      }
-      const res = await fetch(url, { signal });
-      if (!res.ok) throw new Error(`HTTP ${res.status} loading ${id}`);
-      const totalBytes = Number(res.headers.get('content-length')) || 0;
-      let buf;
-      try {
-        // Manual read loop: byte-level progress for the MB readout, and
-        // the read itself stays abort-aware.
-        const reader = res.body.getReader();
-        const chunks = [];
-        let loaded = 0;
-        for (;;) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          chunks.push(value);
-          loaded += value.byteLength;
-          if (onProgress && totalBytes > 0) {
-            onProgress(Math.min(loaded / totalBytes / Math.max(total, 1), 1), loaded, totalBytes, id);
+      let lastErr = null;
+      for (const cand of candidates) {
+        // Lane 5: persistent-cache hit — report full byte progress once
+        // (the bar must move on real bytes, not stall), then parse the
+        // cached buffer on the identical path as a network download.
+        // Cross-origin remote URLs are not cacheable (asset-cache.js),
+        // so remote loads skip this and go to the network every session.
+        if (!signal.aborted) {
+          const cached = await getCachedBuffer(cand);
+          if (cached && !signal.aborted) {
+            if (onProgress) onProgress(1, cached.byteLength, cached.byteLength, id);
+            return _sharedGLTFLoader().parseAsync(cached, cand);
           }
         }
-        const merged = new Uint8Array(loaded);
-        let off = 0;
-        for (const c of chunks) { merged.set(c, off); off += c.byteLength; }
-        buf = merged.buffer;
-      } catch (e) {
-        if (e && e.name === 'AbortError') throw e;
-        buf = await res.arrayBuffer(); // no reader progress on very old browsers
+        let res;
+        try {
+          res = await fetch(cand, { signal });
+        } catch (e) {
+          if (e && e.name === 'AbortError') throw e;
+          lastErr = e;
+          continue;
+        }
+        if (!res.ok) {
+          lastErr = new Error(`HTTP ${res.status} loading ${id} from ${cand}`);
+          continue;
+        }
+        const totalBytes = Number(res.headers.get('content-length')) || 0;
+        let buf;
+        try {
+          // Manual read loop: byte-level progress for the MB readout, and
+          // the read itself stays abort-aware.
+          const reader = res.body.getReader();
+          const chunks = [];
+          let loaded = 0;
+          for (;;) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            chunks.push(value);
+            loaded += value.byteLength;
+            if (onProgress && totalBytes > 0) {
+              onProgress(Math.min(loaded / totalBytes / Math.max(total, 1), 1), loaded, totalBytes, id);
+            }
+          }
+          const merged = new Uint8Array(loaded);
+          let off = 0;
+          for (const c of chunks) { merged.set(c, off); off += c.byteLength; }
+          buf = merged.buffer;
+        } catch (e) {
+          if (e && e.name === 'AbortError') throw e;
+          buf = await res.arrayBuffer(); // no reader progress on very old browsers
+        }
+        // Lane 5: persist the downloaded bytes for the next session.
+        // Fire-and-forget (never blocks the parse); a failed store is
+        // a silent no-op inside putCachedBuffer.
+        if (buf) putCachedBuffer(cand, buf);
+        // The candidate URL string is the parse base, so external .bin /
+        // texture references resolve against the host that served the GLB.
+        return _sharedGLTFLoader().parseAsync(buf, cand);
       }
-      // Lane 5: persist the downloaded bytes for the next session.
-      // Fire-and-forget (never blocks the parse); a failed store is
-      // a silent no-op inside putCachedBuffer.
-      if (buf) putCachedBuffer(url, buf);
-      // Same URL string the old loader.load() used, so external .bin /
-      // texture references resolve exactly as before.
-      return _sharedGLTFLoader().parseAsync(buf, url);
+      throw lastErr || new Error(`no candidate loaded for ${id}`);
     };
     const run = (async () => {
       let gltf;
@@ -1505,6 +1542,12 @@ class AssetManager {
         actions[name].play();
         actions[name].setEffectiveWeight(name === 'Idle' ? 1 : 0);
       }
+    }
+    // CLOTHING LAYERS (worker 64): apply the player's saved per-attire
+    // clothing visibility to this instance. Guarded + fire-and-forget: a
+    // missing config or error here must never break instance creation.
+    try { applyClothingToInstance(model, fighterId); } catch (e) {
+      console.warn('[WH] clothing hook failed:', (e && e.message) || e);
     }
     return { model, bones, mixer, actions, scale: 1.0 };
   }

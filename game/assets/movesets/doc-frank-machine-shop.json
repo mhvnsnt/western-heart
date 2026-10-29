@@ -538,7 +538,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "Straight out of the machine shop. A gadget blast with the serial numbers filed off."
+      "note": "Straight out of the machine shop. A gadget blast with the serial numbers filed off.",
+      "anim_t3": {
+        "bank": "gunjack",
+        "row": 355,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "P+K": {
       "name": "Warranty Void [WH SIGNATURE]",
@@ -562,7 +567,12 @@
       "note": "Upgraded past the point of warranty. A wrench-turn grab - no refunds.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true
+      "isGrab": true,
+      "anim_t3": {
+        "bank": "gunjack",
+        "row": 355,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Shop Upgrade [WH SIGNATURE]",
@@ -582,7 +592,12 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "Straight out of the machine shop. A gadget blast with the serial numbers filed off.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "anim_t3": {
+        "bank": "gunjack",
+        "row": 49,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "DOC FRANK MACHINE SHOP 1+2 (T3 gunjack r49)",
@@ -626,7 +641,12 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "gunjack",
+        "row": 355,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+1": {
       "name": "DOC FRANK MACHINE SHOP d+1 (T3 gunjack r169)",
@@ -14394,8 +14414,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 128,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 53,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.39": {
@@ -14440,8 +14460,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 128,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 53,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.40": {
@@ -17409,8 +17429,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 128,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 53,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.90": {
@@ -17455,8 +17475,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 128,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 53,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.91": {
@@ -20424,8 +20444,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 128,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 53,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.141": {
@@ -20470,8 +20490,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 128,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 53,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.142": {
@@ -23439,8 +23459,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 128,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 53,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.192": {
@@ -23485,8 +23505,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 128,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 53,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "None~donor.docfrank.193": {

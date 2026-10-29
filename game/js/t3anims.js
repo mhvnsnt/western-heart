@@ -24,8 +24,14 @@ const T3_CLIP_DEFS = {
   // Neutral standing stance = move-index slot 3 (n0madic/Tekken3Remake
   // docs/research/code/moves.md: row +0x10 stance slot, 3 = standing).
   // t3_stance.json is slot 0, a round-start intro move — not the idle.
+  //
+  // SHOW-ANIMATION LOCK (owner 2026-10-23): show animations and fight moves
+  // are SEPARATE LOCKED SETS. Actions flagged show:true (intro, win poses)
+  // are SHOW: intros/cutscenes ONLY, must NEVER enter a fighter's moveset
+  // without the user's explicit approval. Everything else is FIGHT.
+  // Bank clip JSONs carry the same split as "anim_set" (+ sets.json manifest).
   stance:  { file: 't3_neutral.json', loop: true  },
-  intro:   { file: 't3_stance.json',  loop: false },
+  intro:   { file: 't3_stance.json',  loop: false, show: true },
   light:   { file: 't3_light.json',   loop: false },  // punch (J)
   medium:  { file: 't3_medium.json',  loop: false },  // kick (K)
   heavy:   { file: 't3_heavy.json',   loop: false },  // heavy attack
@@ -34,7 +40,7 @@ const T3_CLIP_DEFS = {
   hit:     { file: 't3_hit.json',     loop: false },  // hitstun reaction
   launch:  { file: 't3_hit_launch.json', loop: false, noRise: true }, // launched (physics owns the arc)
   ko:      { file: 't3_ko.json',      loop: false },  // knocked out
-  win:     { file: 't3_win_rp.json',  loop: true  },  // victory pose
+  win:     { file: 't3_win_rp.json',  loop: true, show: true },  // victory pose (SHOW)
   walkFwd: { file: 't3_walk_fwd.json', loop: true },
   walkBack:{ file: 't3_walk_back.json', loop: true },
   dash:    { file: 't3_dash_fwd.json', loop: false },
@@ -96,6 +102,10 @@ export const T3_BANKS = {
   bosconovitch: 'assets/anim/t3/bosconovitch/',
   heihachi_ownrig: 'assets/anim/t3/heihachi/',
   armorking:    'assets/anim/t3/armorking/',
+  // Law (2026-10-23, Buffalo Bill pull): divmot01_law.bin baked onto Law's
+  // own T3 18-part rig (lab/tools/t3_motion_bake.py --bank law). Buffalo
+  // Bill's moveset source is 'law', so bankIdFor resolves him here.
+  law:          'assets/anim/t3/law/',
   // Heihachi's OWN divmot13 motion stream, posed on Jin's T3 skeleton:
   // heihachi191's KMD has no hip/shoulder vertex data, so his body can't
   // be fitted (docs/anim/PROCEDURAL_AUDIT.md). tools/anim/t3_row_bake.py
@@ -118,6 +128,14 @@ export const T3_BANKS = {
   dural:      'assets/anim/vf5/dural/',
 
 };
+/* PRIVATE VF5 Dural bank (Zen, 2026-10-28). Decoded from VF5 (PS3 BLES00029)
+   mot_DUR.bin in the private mhvnsnt/game-reverse-engineering repo
+   (vf5/dural/bake_dural.py); a private build copies the bank to
+   game/assets/private/anim/vf5/dural/ and sets __WH_PRIVATE_ASSETS. Its
+   throw tables ship beside it (reactions.bank.json) and are merged into
+   WH_T3_REACTIONS.banks.dural when the bank loads. Public builds: absent. */
+if (globalThis.__WH_PRIVATE_ASSETS) T3_BANKS.dural = 'assets/private/anim/vf5/dural/';
+
 
 // Moveset source name -> bank key. 'demonio' is the game's rename of Jin
 // (owner canon 2026-10-19: Tekken's Jin = DEMONIO). bosconovitch maps to
@@ -135,6 +153,10 @@ export const SOURCE_TO_BANK = {
   bosconovitch: 'bosconovitch', heihachi: 'heihachi',
   armorking: 'armorking', 'armor-king': 'armorking',
   ogre: 'ogre', kuma: 'kuma', panda: 'kuma', gon: 'gon', law: 'law', forestlaw: 'forestlaw',
+  // VF5 Dural (Zen's 3D base, owner 2026-10-24/28): zen.json moves name t3_source 'dural'. The bank
+  // itself only exists in private builds (T3_BANKS.dural, __WH_PRIVATE_ASSETS); bankIdFor keeps
+  // public Zen UNMAPPED, so this entry only resolves Zen's own rows when the private bank is bound.
+  dural: 'dural',
 };
 
 /**
@@ -335,6 +357,87 @@ function turnData(data) {
 }
 export function getT3BankFacing(bankId) { return _t3facing[bankId] || null; }
 
+/* PER-CLIP HEADING (moveset sweep 2026-10-29). The bank turn above is decided
+   on the stance/walk/crouch/block clips only. Some banks' attack rows are
+   baked facing the other way from those (yoshimitsu: 69 of its row clips start
+   ~180° from its stance; bryan/jin: 0). Played as-is the body spins round
+   and its root_t carries it AWAY from the foe — jin_soul f+2 (yoshimitsu
+   row 125): heading 172° off the stance in game, gap 1.45 -> 2.36 m, whiff.
+   Measured, not assumed: a clip's frame-0 front is where its knees point
+   (same test as bankFacing). A row more than 135° from the stance heading
+   is turned 180° about Y (root-child rotations q -> qY(pi)·q, root_t
+   rotated about frame 0). Rows within 135° are untouched, and so are rows
+   any moveset using them plays under a T3 facing condition 0x24-0x2E
+   (own back turned, turned away; t3-conditions.js): those start turned
+   on purpose (yoshimitsu r65-r75, r97-r102, r207, r209, r329-r334). */
+async function facingCondRows(base, bankId, rowData) {
+  const ids = new Set();
+  for (const r of Object.values(rowData)) for (const u of (r.rec && r.rec.used_by) || []) ids.add(u);
+  const keep = new Set();
+  await Promise.all([...ids].map(async (id) => {
+    try {
+      const res = await fetch(new URL(`../../../movesets/${id}.json`, new URL(base, location.href)));
+      if (!res.ok) return;
+      const m = await res.json();
+      for (const mv of Object.values(m.moves || {})) {
+        if (mv && mv.t3_source === bankId && mv.t3_row != null && mv.t3_condition >= 0x24 && mv.t3_condition <= 0x2E) keep.add(+mv.t3_row);
+      }
+    } catch (e) {}
+  }));
+  return keep;
+}
+function clipHeading(skel, data, f = 0) {
+  if (!data || !data.rot_xyzw) return null;
+  const P = {}, par = {}, order = skel.joints.map(j => j.name);
+  for (const j of skel.joints) { P[j.name] = j.rest; par[j.name] = j.parent; }
+  const G = {}, X = {};
+  for (const j of order) {
+    const r = data.rot_xyzw[j];
+    const q = r && r.length ? r[Math.min(f, r.length - 1)] : [0, 0, 0, 1];
+    const p = par[j];
+    if (p && G[p]) {
+      G[j] = _qmul(G[p], q);
+      const o = _qrot(G[p], [P[j][0] - P[p][0], P[j][1] - P[p][1], P[j][2] - P[p][2]]);
+      X[j] = [X[p][0] + o[0], X[p][1] + o[1], X[p][2] + o[2]];
+    } else { G[j] = q; X[j] = P[j].slice(); }
+  }
+  if (!G.Hips) return null;
+  const hx = _qrot(G.Hips, [1, 0, 0]);
+  let fx = -hx[2], fz = hx[0];
+  const fl = Math.hypot(fx, fz);
+  if (fl < 1e-6) return null;
+  fx /= fl; fz /= fl;
+  let s = 0;
+  for (const side of ['Left', 'Right']) {
+    const a = X[side + 'UpLeg'], k = X[side + 'Leg'], e = X[side + 'Foot'];
+    if (a && k && e) s += (k[0] - (a[0] + e[0]) / 2) * fx + (k[2] - (a[2] + e[2]) / 2) * fz;
+  }
+  if (Math.abs(s) < 0.01) return null; // knees too straight to tell
+  const sg = s >= 0 ? 1 : -1;
+  return Math.atan2(fx * sg, fz * sg);
+}
+function yawData180(skel, data) {
+  const roots = new Set(skel.joints.filter(j => !j.parent).map(j => j.name));
+  const kids = skel.joints.filter(j => j.parent && roots.has(j.parent)).map(j => j.name);
+  const qy = [0, 1, 0, 0];
+  for (const b of kids) { const arr = data.rot_xyzw[b]; if (arr) data.rot_xyzw[b] = arr.map(q => _qmul(qy, q)); }
+  if (data.root_t && data.root_t.length) { const r0 = data.root_t[0]; data.root_t = data.root_t.map(t => [2 * r0[0] - t[0], t[1], 2 * r0[2] - t[2]]); }
+}
+export function alignRowHeadings(skel, actionData, rowData, keepRows = new Set()) {
+  const hs = FACING_CLIPS.map(a => clipHeading(skel, actionData[a])).filter(h => h != null);
+  if (!hs.length) return [];
+  const ref = Math.atan2(hs.reduce((a, h) => a + Math.sin(h), 0), hs.reduce((a, h) => a + Math.cos(h), 0));
+  const fixed = [];
+  for (const [row, r] of Object.entries(rowData)) {
+    if (keepRows.has(+row)) continue; // played under a facing condition (back turned): baked turn is right
+    const h = clipHeading(skel, r.data);
+    if (h == null) continue;
+    const d = Math.atan2(Math.sin(h - ref), Math.cos(h - ref));
+    if (Math.abs(d) > 135 * Math.PI / 180) { yawData180(skel, r.data); fixed.push(+row); }
+  }
+  return fixed;
+}
+
 /* STANDING IDLE (2026-10-21). The 'stance' action loops move-index slot 3.
    On the bosconovitch bank slot 3 (row 237) is a 15-frame fall onto his
    back (root 0.45 -> -0.45 m; slot 1 is him lying still, slot 0 getting
@@ -414,7 +517,7 @@ export async function loadT3Clips(THREE, bankId = 'king') {
     // bank load so strikes have the tables at fight start even in
     // a fight with no throw attempt. The global cache guard means
     // whichever loader runs second is a no-op.
-    jobs.push(ensureT3Reactions().catch(() => null));
+    jobs.push(ensureT3Reactions().then(R => mergeBankThrowTables(R, base)).catch(() => null));
     // Decoded active window of every attack row (tools/anim/t3_hit_frames.py, lane D 2026-10-24):
     // { row: [active_first, active_last, stream_frames, attack_word, throw] } — fighter.js times the
     // clip on it and never plays a throw row for a strike (or a strike row for a throw).
@@ -436,6 +539,8 @@ export async function loadT3Clips(THREE, bankId = 'king') {
         for (const r of Object.values(rowData)) turnData(r.data);
         console.log(`[WH-T3] bank '${bankId}': baked facing -Z (knees ${facing.kneeDeg.toFixed(1)}° from hips forward) — turned 180° to +Z, Left/Right relabelled`);
       }
+      const flipped = alignRowHeadings(skel, actionData, rowData, await facingCondRows(base, bankId, rowData));
+      if (flipped.length) console.log(`[WH-T3] bank '${bankId}': ${flipped.length} row clips baked >135° from the stance heading — turned 180° to match`);
       const idle = standingIdle(actionData, skel);
       if (idle) {
         actionData.stance = idle;
@@ -449,6 +554,10 @@ export async function loadT3Clips(THREE, bankId = 'king') {
         clip.userData.loop = def.loop;
         clip.userData.noRise = !!def.noRise;
         if (data.pingpong) clip.userData.pingpong = true;
+        // SHOW-ANIMATION LOCK: bank clip JSONs carry "anim_set": "SHOW" for
+        // intro/win clips. Tag the THREE clip so anim-gate.js (CTX.FIGHT)
+        // rejects it in combat — these play in intros/cutscenes only.
+        if (data.anim_set === 'SHOW') clip.userData.animSet = 'show';
         clips[action] = clip;
       }
     }
@@ -596,6 +705,20 @@ export async function loadT3ReactionClip(THREE, bankId, slot, { noRise = false }
     so strikes have the tables at fight start even in a fight
     with no throw attempt. */
 let _t3reactionsPromise = null;
+/* A private bank (assets/private/...) carries its own throw tables in
+   reactions.bank.json (the public reactions.json never names it); merge
+   them into WH_T3_REACTIONS.banks[<dir>] once. No-op for public banks. */
+async function mergeBankThrowTables(R, base) {
+  if (!R || !R.banks || !base || !base.includes('/private/')) return R;
+  const dir = base.split('/').filter(Boolean).pop();
+  if (R.banks[dir]) return R;
+  try {
+    const res = await fetch(base + 'reactions.bank.json');
+    if (res.ok) R.banks[dir] = await res.json();
+  } catch (e) { console.warn(`[WH-T3] ${dir}/reactions.bank.json unavailable:`, e.message || e); }
+  return R;
+}
+
 export function ensureT3Reactions() {
   if (globalThis.WH_T3_REACTIONS) return Promise.resolve(globalThis.WH_T3_REACTIONS);
   if (_t3reactionsPromise) return _t3reactionsPromise;

@@ -1803,18 +1803,23 @@
       "knock": 4.2,
       "soulGain": 12,
       "anim_ref": "wh:torch:sig:nail-file",
-      "community_base": "game/assets/anim/oss/community/144_20.fbx",
-      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "S"
       ],
       "move_class": "signature",
       "wh_original": true,
       "note": "She files her nails during the versus screen. Opponents say the sound is worse than the fight.",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "input_lp": "S",
       "input_slots_lp": [
         "S"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "P+K": {
       "name": "Extraction Team of One [WH SIGNATURE]",
@@ -1844,7 +1849,12 @@
         "P+K",
         "P",
         "K"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Nail File [WH SIGNATURE]",
@@ -1858,8 +1868,6 @@
       "knock": 4.2,
       "soulGain": 12,
       "anim_ref": "wh:torch:sig:nail-file",
-      "community_base": "game/assets/anim/oss/community/144_20.fbx",
-      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "1+2"
       ],
@@ -1867,10 +1875,17 @@
       "wh_original": true,
       "note": "She files her nails during the versus screen. Opponents say the sound is worse than the fight.",
       "input_remapped_from": "S",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "input_lp": "LP1+RP2",
       "input_slots_lp": [
         "LP1+RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "jin",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "TORCH 1+2 (T3 jin r32)",
@@ -1922,7 +1937,12 @@
       "input_lp": "LP1+RK4",
       "input_slots_lp": [
         "LP1+RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "jin",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+4": {
       "name": "TORCH f+4 (T3 jin r214)",
@@ -2079,7 +2099,12 @@
       "input_slots_lp": [
         "d+LP1+RP2"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 117,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1": {
       "name": "TORCH d/f+1 (T3 jin r179)",
@@ -5520,7 +5545,12 @@
       "input_lp": "LP1+RP2",
       "input_slots_lp": [
         "LP1+RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 88,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1,2,1": {
       "name": "Left Right Left",
@@ -5571,7 +5601,12 @@
         "LP1,RP2",
         "LP1,RP2,LP1"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,1,2": {
       "name": "Roasted with Love",
@@ -5611,7 +5646,12 @@
         "LP1,RP2",
         "LP1,RP2,LP1",
         "LP1,RP2,LP1,RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,1,4": {
       "name": "Frost Combination",
@@ -5665,7 +5705,12 @@
         "LP1,RP2,LP1",
         "LP1,RP2,LP1,RK4"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,1,H.2": {
       "name": "Roasted with Eternal Love",
@@ -5707,7 +5752,12 @@
         "LP1,RP2",
         "LP1,RP2,LP1",
         "LP1,RP2,LP1,H.RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,2": {
       "name": "Left Right Stinger",
@@ -5744,7 +5794,12 @@
         "LP1",
         "LP1,RP2",
         "LP1,RP2,RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,4": {
       "name": "Bermuda Triangle",
@@ -5795,7 +5850,12 @@
         "LP1,RP2",
         "LP1,RP2,RK4"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,uf+1+2": {
       "name": "Left Right Fried Love",
@@ -5832,7 +5892,12 @@
         "LP1",
         "LP1,RP2",
         "LP1,RP2,uf+LP1+RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1,4": {
       "name": "Reverse PDK Combo",
@@ -5880,7 +5945,12 @@
         "LP1",
         "LP1,RK4"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,2": {
       "name": "Quick Stinger",
@@ -5914,7 +5984,12 @@
       "input_slots_lp": [
         "RP2",
         "RP2,RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2+3": {
       "name": "Heat Burst",
@@ -5946,7 +6021,12 @@
       "input_lp": "RP2+LK3",
       "input_slots_lp": [
         "RP2+LK3"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "2,3": {
       "name": "Straight Face Wash",
@@ -5994,7 +6074,12 @@
         "RP2",
         "RP2,LK3"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,4": {
       "name": "Jab Roundhouse",
@@ -6042,7 +6127,12 @@
         "RP2",
         "RP2,RK4"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,uf+1+2": {
       "name": "Quick Fried Love",
@@ -6076,7 +6166,12 @@
       "input_slots_lp": [
         "RP2",
         "RP2,uf+LP1+RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "3,2": {
       "name": "Serval Cleaver",
@@ -6110,7 +6205,12 @@
       "input_slots_lp": [
         "LK3",
         "LK3,RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "3+4": {
       "name": "Aphrodite's Scorn",
@@ -6135,7 +6235,12 @@
       "input_lp": "LK3+RK4",
       "input_slots_lp": [
         "LK3+RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "4,2": {
       "name": "Right High Kick (2)",
@@ -6169,7 +6274,12 @@
       "input_slots_lp": [
         "RK4",
         "RK4,RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,2,1+2": {
       "name": "Blonde Bomb Blitz",
@@ -6206,7 +6316,12 @@
         "RK4",
         "RK4,RP2",
         "RK4,RP2,LP1+RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+1_t8": {
       "name": "Move b+1 (b+1)",
@@ -6248,7 +6363,12 @@
       "input_slots_lp": [
         "b+LP1"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1+2": {
       "name": "Weeping Slap",
@@ -6273,7 +6393,12 @@
       "input_lp": "b+LP1+RP2",
       "input_slots_lp": [
         "b+LP1+RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 354,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "b+1,2": {
       "name": "Move 2 (2)",
@@ -6321,7 +6446,12 @@
         "b+LP1",
         "b+LP1,RP2"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1,2,2": {
       "name": "Cross Cut Saw",
@@ -6372,7 +6502,12 @@
         "b+LP1,RP2",
         "b+LP1,RP2,RP2"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1+3": {
       "name": "Attack Reversal",
@@ -6396,7 +6531,12 @@
       "input_lp": "b+LP1+LK3",
       "input_slots_lp": [
         "b+LP1+LK3"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+2": {
       "name": "Move b+2 (b+2)",
@@ -6437,7 +6577,12 @@
       "input_slots_lp": [
         "b+RP2"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 364,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+2,2": {
       "name": "Double Slap",
@@ -6485,7 +6630,12 @@
         "b+RP2",
         "b+RP2,RP2"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 365,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+3": {
       "name": "Chaos Judgement",
@@ -6516,7 +6666,12 @@
       "input_lp": "b+LK3",
       "input_slots_lp": [
         "b+LK3"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 170,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+4": {
       "name": "Leopard Swipe",
@@ -6557,7 +6712,12 @@
       "input_slots_lp": [
         "b+RK4"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Back throw": {
       "name": "Overhead Triangle Lock",
@@ -6586,7 +6746,12 @@
       "input_lp": "Back throw",
       "input_slots_lp": [
         "Back throw"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 197,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.1": {
       "name": "Twist Jab",
@@ -6611,7 +6776,12 @@
       "input_lp": "BT.LP1",
       "input_slots_lp": [
         "BT.LP1"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CJM.1": {
       "name": "Infernal Storm",
@@ -6636,7 +6806,12 @@
       "input_lp": "CJM.LP1",
       "input_slots_lp": [
         "CJM.LP1"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CJM.1+2": {
       "name": "Caracal",
@@ -6661,7 +6836,12 @@
       "input_lp": "CJM.LP1+RP2",
       "input_slots_lp": [
         "CJM.LP1+RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "CJM.2": {
       "name": "Move CJM.2 (CJM.2)",
@@ -6686,7 +6866,12 @@
       "input_lp": "CJM.RP2",
       "input_slots_lp": [
         "CJM.RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CJM.2,1": {
       "name": "Carmine Hands",
@@ -6720,7 +6905,12 @@
       "input_slots_lp": [
         "CJM.RP2",
         "CJM.RP2,LP1"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CJM.3": {
       "name": "Picking Heel",
@@ -6745,7 +6935,12 @@
       "input_lp": "CJM.LK3",
       "input_slots_lp": [
         "CJM.LK3"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CJM.3,2": {
       "name": "Baked with Love",
@@ -6779,7 +6974,12 @@
       "input_slots_lp": [
         "CJM.LK3",
         "CJM.LK3,RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CJM.3,H.2": {
       "name": "Baked with Eternal Love",
@@ -6815,7 +7015,12 @@
       "input_slots_lp": [
         "CJM.LK3",
         "CJM.LK3,H.RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CJM.4": {
       "name": "Queen Heel",
@@ -6840,7 +7045,12 @@
       "input_lp": "CJM.RK4",
       "input_slots_lp": [
         "CJM.RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CJM.d+3": {
       "name": "Move CJM.d+3 (CJM.d+3)",
@@ -6865,7 +7075,12 @@
       "input_lp": "CJM.d+LK3",
       "input_slots_lp": [
         "CJM.d+LK3"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CJM.d+3,3": {
       "name": "Dendrobates Azureus",
@@ -6899,7 +7114,12 @@
       "input_slots_lp": [
         "CJM.d+LK3",
         "CJM.d+LK3,LK3"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CJM.df": {
       "name": "Forward Roll (ROLL)",
@@ -6923,7 +7143,12 @@
       "input_lp": "CJM.df",
       "input_slots_lp": [
         "CJM.df"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 33,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "CJM.f+3": {
       "name": "Hammer Chance",
@@ -6947,7 +7172,12 @@
       "input_lp": "CJM.f+LK3",
       "input_slots_lp": [
         "CJM.f+LK3"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 170,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CJM.P": {
       "name": "Stryx",
@@ -6972,7 +7202,12 @@
       "input_lp": "CJM.P",
       "input_slots_lp": [
         "CJM.P"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "CJM.uf+1": {
       "name": "Flying Fascinator",
@@ -6997,7 +7232,12 @@
       "input_lp": "CJM.uf+LP1",
       "input_slots_lp": [
         "CJM.uf+LP1"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CJM.uf+2": {
       "name": "Flying Penetrator",
@@ -7022,7 +7262,12 @@
       "input_lp": "CJM.uf+RP2",
       "input_slots_lp": [
         "CJM.uf+RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CJM.uf+3": {
       "name": "Sudden Storm",
@@ -7047,7 +7292,12 @@
       "input_lp": "CJM.uf+LK3",
       "input_slots_lp": [
         "CJM.uf+LK3"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CJM.uf+4": {
       "name": "Stryx",
@@ -7072,7 +7322,12 @@
       "input_lp": "CJM.uf+RK4",
       "input_slots_lp": [
         "CJM.uf+RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+1": {
       "name": "Low Jab",
@@ -7097,7 +7352,12 @@
       "input_lp": "d+LP1",
       "input_slots_lp": [
         "d+LP1"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+1,4": {
       "name": "Low Jab Rising Kick",
@@ -7131,7 +7391,12 @@
       "input_slots_lp": [
         "d+LP1",
         "d+LP1,RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+2": {
       "name": "Ice Sickle",
@@ -7171,7 +7436,12 @@
       "input_slots_lp": [
         "d+RP2"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3": {
       "name": "Left Spin Low Kick",
@@ -7213,7 +7483,12 @@
       "input_slots_lp": [
         "d+LK3"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3,2": {
       "name": "Right Upper",
@@ -7247,7 +7522,12 @@
       "input_slots_lp": [
         "d+LK3",
         "d+LK3,RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3,4": {
       "name": "Left Spin Low Kick (4)",
@@ -7281,7 +7561,12 @@
       "input_slots_lp": [
         "d+LK3",
         "d+LK3,RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3,4,1": {
       "name": "B Slap Combo",
@@ -7318,7 +7603,12 @@
         "d+LK3",
         "d+LK3,RK4",
         "d+LK3,RK4,LP1"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+4": {
       "name": "Right Low Kick",
@@ -7359,7 +7649,12 @@
       "input_slots_lp": [
         "d+RK4"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 342,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d+4,1": {
       "name": "Back Spin Chop",
@@ -7393,7 +7688,12 @@
       "input_slots_lp": [
         "d+RK4",
         "d+RK4,LP1"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+4,1~4": {
       "name": "Sudden Severe Drop",
@@ -7427,7 +7727,12 @@
       "input_slots_lp": [
         "d+RK4",
         "d+RK4,LP1~RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "db+1": {
       "name": "Scarlet Rain",
@@ -7452,7 +7757,12 @@
       "input_lp": "db+LP1",
       "input_slots_lp": [
         "db+LP1"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+1+2": {
       "name": "Queen's Reward",
@@ -7481,7 +7791,12 @@
       "input_lp": "db+LP1+RP2",
       "input_slots_lp": [
         "db+LP1+RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 197,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+1,2": {
       "name": "Scarlet Ray",
@@ -7515,7 +7830,12 @@
       "input_slots_lp": [
         "db+LP1",
         "db+LP1,RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+1,4": {
       "name": "Scarlet Splatter",
@@ -7549,7 +7869,12 @@
       "input_slots_lp": [
         "db+LP1",
         "db+LP1,RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+2": {
       "name": "Ocelot Claw",
@@ -7574,7 +7899,12 @@
       "input_lp": "db+RP2",
       "input_slots_lp": [
         "db+RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+3": {
       "name": "Mudslide",
@@ -7599,7 +7929,12 @@
       "input_lp": "db+LK3",
       "input_slots_lp": [
         "db+LK3"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+3+4": {
       "name": "Move db+3+4 (db+3+4)",
@@ -7624,7 +7959,12 @@
       "input_lp": "db+LK3+RK4",
       "input_slots_lp": [
         "db+LK3+RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "db+3+4,4": {
       "name": "Stalker Repellant Alter",
@@ -7658,7 +7998,12 @@
       "input_slots_lp": [
         "db+LK3+RK4",
         "db+LK3+RK4,RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+4": {
       "name": "Scorned Mistress",
@@ -7683,7 +8028,12 @@
       "input_lp": "db+RK4",
       "input_slots_lp": [
         "db+RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1": {
       "name": "Uppercut",
@@ -7708,7 +8058,12 @@
       "input_lp": "df+LP1",
       "input_slots_lp": [
         "df+LP1"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1,2": {
       "name": "Uppercut Jab",
@@ -7742,7 +8097,12 @@
       "input_slots_lp": [
         "df+LP1",
         "df+LP1,RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1,2,3": {
       "name": "Radiant Arch",
@@ -7779,7 +8139,12 @@
         "df+LP1",
         "df+LP1,RP2",
         "df+LP1,RP2,LK3"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1,2,4": {
       "name": "Cutting Crescent",
@@ -7816,7 +8181,12 @@
         "df+LP1",
         "df+LP1,RP2",
         "df+LP1,RP2,RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+2": {
       "name": "Step-in Uppercut",
@@ -7841,7 +8211,12 @@
       "input_lp": "df+RP2",
       "input_slots_lp": [
         "df+RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3": {
       "name": "Middle Kick",
@@ -7866,7 +8241,12 @@
       "input_lp": "df+LK3",
       "input_slots_lp": [
         "df+LK3"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,1": {
       "name": "Leg Slicer",
@@ -7900,7 +8280,12 @@
       "input_slots_lp": [
         "df+LK3",
         "df+LK3,LP1"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,1,1": {
       "name": "Twisting Fascinator",
@@ -7937,7 +8322,12 @@
         "df+LK3",
         "df+LK3,LP1",
         "df+LK3,LP1,LP1"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,1,2": {
       "name": "Twisting Penetrator",
@@ -7974,7 +8364,12 @@
         "df+LK3",
         "df+LK3,LP1",
         "df+LK3,LP1,RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,1,4": {
       "name": "Twisting Combo",
@@ -8011,7 +8406,12 @@
         "df+LK3",
         "df+LK3,LP1",
         "df+LK3,LP1,RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,2": {
       "name": "Creeping Snake",
@@ -8045,7 +8445,12 @@
       "input_slots_lp": [
         "df+LK3",
         "df+LK3,RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,2,1": {
       "name": "Creeping Snake (1)",
@@ -8080,7 +8485,12 @@
         "df+LK3",
         "df+LK3,RP2",
         "df+LK3,RP2,LP1"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,2,1,2": {
       "name": "Creeping Snake (2)",
@@ -8117,7 +8527,12 @@
         "df+LK3,RP2",
         "df+LK3,RP2,LP1",
         "df+LK3,RP2,LP1,RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,2,1,2,4": {
       "name": "Creeping Snake (4)",
@@ -8156,7 +8571,12 @@
         "df+LK3,RP2,LP1",
         "df+LK3,RP2,LP1,RP2",
         "df+LK3,RP2,LP1,RP2,RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,2,1,2,4,1": {
       "name": "Creeping Snake (1)",
@@ -8197,7 +8617,12 @@
         "df+LK3,RP2,LP1,RP2",
         "df+LK3,RP2,LP1,RP2,RK4",
         "df+LK3,RP2,LP1,RP2,RK4,LP1"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,2,1,2,4,1,2": {
       "name": "Creeping Snake (2)",
@@ -8240,7 +8665,12 @@
         "df+LK3,RP2,LP1,RP2,RK4",
         "df+LK3,RP2,LP1,RP2,RK4,LP1",
         "df+LK3,RP2,LP1,RP2,RK4,LP1,RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,2,1,2,4,1,2,2": {
       "name": "Creeping Snake (2)",
@@ -8285,7 +8715,12 @@
         "df+LK3,RP2,LP1,RP2,RK4,LP1",
         "df+LK3,RP2,LP1,RP2,RK4,LP1,RP2",
         "df+LK3,RP2,LP1,RP2,RK4,LP1,RP2,RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,2,1,2,4,1,2,2,3+4": {
       "name": "Creeping Snake (3+4)",
@@ -8332,7 +8767,12 @@
         "df+LK3,RP2,LP1,RP2,RK4,LP1,RP2",
         "df+LK3,RP2,LP1,RP2,RK4,LP1,RP2,RP2",
         "df+LK3,RP2,LP1,RP2,RK4,LP1,RP2,RP2,LK3+RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "df+3,2,1,2,4,1,2,2,3+4,2": {
       "name": "10 Hit Combo",
@@ -8381,7 +8821,12 @@
         "df+LK3,RP2,LP1,RP2,RK4,LP1,RP2,RP2",
         "df+LK3,RP2,LP1,RP2,RK4,LP1,RP2,RP2,LK3+RK4",
         "df+LK3,RP2,LP1,RP2,RK4,LP1,RP2,RP2,LK3+RK4,RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,2,2": {
       "name": "Creeping Stinger",
@@ -8418,7 +8863,12 @@
         "df+LK3",
         "df+LK3,RP2",
         "df+LK3,RP2,RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,2,4": {
       "name": "Right High Kick",
@@ -8455,7 +8905,12 @@
         "df+LK3",
         "df+LK3,RP2",
         "df+LK3,RP2,RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3,2,uf+1+2": {
       "name": "Creep-Fried Love",
@@ -8492,7 +8947,12 @@
         "df+LK3",
         "df+LK3,RP2",
         "df+LK3,RP2,uf+LP1+RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "df+3,3+4": {
       "name": "Furious Hail",
@@ -8527,7 +8987,12 @@
       "input_slots_lp": [
         "df+LK3",
         "df+LK3,LK3+RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "df+4": {
       "name": "Wine Opener",
@@ -8552,7 +9017,12 @@
       "input_lp": "df+RK4",
       "input_slots_lp": [
         "df+RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+1+2": {
       "name": "Blonde Bomb",
@@ -8593,7 +9063,12 @@
       "input_slots_lp": [
         "f+LP1+RP2"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 357,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+2": {
       "name": "Poison Sting",
@@ -8634,7 +9109,12 @@
       "input_slots_lp": [
         "f+RP2"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 101,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+2,3": {
       "name": "Poison Wire",
@@ -8682,7 +9162,12 @@
         "f+RP2",
         "f+RP2,LK3"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 177,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+3": {
       "name": "Hammer Chance",
@@ -8721,7 +9206,12 @@
       "input_slots_lp": [
         "f+LK3"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 170,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.df+1": {
       "name": "Cat Sith's Paw",
@@ -8746,7 +9236,12 @@
       "input_lp": "FC.df+LP1",
       "input_slots_lp": [
         "FC.df+LP1"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.df+2": {
       "name": "Right Handed Sweep",
@@ -8771,7 +9266,12 @@
       "input_lp": "FC.df+RP2",
       "input_slots_lp": [
         "FC.df+RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.df+2,H.1": {
       "name": "Lean\u00e1n Sith's Grail",
@@ -8805,7 +9305,12 @@
       "input_slots_lp": [
         "FC.df+RP2",
         "FC.df+RP2,H.LP1"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+1+2": {
       "name": "Sosho Zanha",
@@ -8845,7 +9350,12 @@
       "input_slots_lp": [
         "f,F+LP1+RP2"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f,F+1+2*": {
       "name": "Sosho Zanha",
@@ -8870,7 +9380,12 @@
       "input_lp": "f,F+LP1+RP2*",
       "input_slots_lp": [
         "f,F+LP1+RP2*"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f,F+2": {
       "name": "Headless Horseman",
@@ -8911,7 +9426,12 @@
       "input_slots_lp": [
         "f,F+RP2"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+3": {
       "name": "Move f,F+3 (f,F+3)",
@@ -8953,7 +9473,12 @@
       "input_slots_lp": [
         "f,F+LK3"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+3,2": {
       "name": "Gancanagh's Pipe",
@@ -8987,7 +9512,12 @@
       "input_slots_lp": [
         "f,F+LK3",
         "f,F+LK3,RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+3,3": {
       "name": "Mouse Trouble",
@@ -9021,7 +9551,12 @@
       "input_slots_lp": [
         "f,F+LK3",
         "f,F+LK3,LK3"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+3+4": {
       "name": "Treading Water",
@@ -9054,7 +9589,12 @@
       "input_lp": "f,F+LK3+RK4",
       "input_slots_lp": [
         "f,F+LK3+RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f,F+4": {
       "name": "Falling Heel",
@@ -9095,7 +9635,12 @@
       "input_slots_lp": [
         "f,F+RK4"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,F+2": {
       "name": "Move f,f,F+2 (f,f,F+2)",
@@ -9136,7 +9681,12 @@
       "input_slots_lp": [
         "f,f,F+RP2"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,F+2,4": {
       "name": "Double Meteor Alter",
@@ -9170,7 +9720,12 @@
       "input_slots_lp": [
         "f,f,F+RP2",
         "f,f,F+RP2,RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,F+3": {
       "name": "Move f,f,F+3 (f,f,F+3)",
@@ -9210,7 +9765,12 @@
       "input_slots_lp": [
         "f,f,F+LK3"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,F+3,2": {
       "name": "Grilled with Love",
@@ -9244,7 +9804,12 @@
       "input_slots_lp": [
         "f,f,F+LK3",
         "f,f,F+LK3,RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,F+3,H.2": {
       "name": "Grilled with Eternal Love",
@@ -9280,7 +9845,12 @@
       "input_slots_lp": [
         "f,f,F+LK3",
         "f,f,F+LK3,H.RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,F+4": {
       "name": "Imploding Star",
@@ -9305,7 +9875,12 @@
       "input_lp": "f,f,F+RK4",
       "input_slots_lp": [
         "f,f,F+RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "H.2+3": {
       "name": "From \u00c9ire with Love",
@@ -9330,7 +9905,12 @@
       "input_lp": "H.RP2+LK3",
       "input_slots_lp": [
         "H.RP2+LK3"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "HAM.1": {
       "name": "Cupid's Arrow",
@@ -9355,7 +9935,12 @@
       "input_lp": "HAM.LP1",
       "input_slots_lp": [
         "HAM.LP1"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HAM.1+2": {
       "name": "Dullahan Smash",
@@ -9380,7 +9965,12 @@
       "input_lp": "HAM.LP1+RP2",
       "input_slots_lp": [
         "HAM.LP1+RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "HAM.1+3": {
       "name": "Backhand Slap",
@@ -9409,7 +9999,12 @@
       "input_lp": "HAM.LP1+LK3",
       "input_slots_lp": [
         "HAM.LP1+LK3"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 197,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HAM.1+3,1": {
       "name": "Double Arm Lock Toss",
@@ -9447,7 +10042,12 @@
       "input_slots_lp": [
         "HAM.LP1+LK3",
         "HAM.LP1+LK3,LP1"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 197,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "HAM.1+3,2": {
       "name": "Arm Snap",
@@ -9485,7 +10085,12 @@
       "input_slots_lp": [
         "HAM.LP1+LK3",
         "HAM.LP1+LK3,RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 197,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "HAM.2": {
       "name": "Move HAM.2 (HAM.2)",
@@ -9510,7 +10115,12 @@
       "input_lp": "HAM.RP2",
       "input_slots_lp": [
         "HAM.RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HAM.2,1": {
       "name": "Move 1 (1)",
@@ -9544,7 +10154,12 @@
       "input_slots_lp": [
         "HAM.RP2",
         "HAM.RP2,LP1"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HAM.2,1,2": {
       "name": "Banshee Scream",
@@ -9581,7 +10196,12 @@
         "HAM.RP2",
         "HAM.RP2,LP1",
         "HAM.RP2,LP1,RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HAM.2,2": {
       "name": "Banshee's Comb",
@@ -9615,7 +10235,12 @@
       "input_slots_lp": [
         "HAM.RP2",
         "HAM.RP2,RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HAM.3": {
       "name": "Rat Sweep",
@@ -9640,7 +10265,12 @@
       "input_lp": "HAM.LK3",
       "input_slots_lp": [
         "HAM.LK3"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HAM.4": {
       "name": "Piston Kick",
@@ -9672,7 +10302,12 @@
       "input_lp": "HAM.RK4",
       "input_slots_lp": [
         "HAM.RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HAM.b+3": {
       "name": "Move HAM.b+3 (HAM.b+3)",
@@ -9696,7 +10331,12 @@
       "input_lp": "HAM.b+LK3",
       "input_slots_lp": [
         "HAM.b+LK3"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 170,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Left throw": {
       "name": "Torso Splitter",
@@ -9725,7 +10365,12 @@
       "input_lp": "Left throw",
       "input_slots_lp": [
         "Left throw"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 197,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "OTG.d+3+4": {
       "name": "Heel Grind",
@@ -9750,7 +10395,12 @@
       "input_lp": "OTG.d+LK3+RK4",
       "input_slots_lp": [
         "OTG.d+LK3+RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "qcf+1": {
       "name": "Assassin's Dagger",
@@ -9791,7 +10441,12 @@
       "input_slots_lp": [
         "qcf+LP1"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "qcf+2": {
       "name": "Crimson Arrow",
@@ -9832,7 +10487,12 @@
       "input_slots_lp": [
         "qcf+RP2"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "qcf+2,1": {
       "name": "Artemis Arrow",
@@ -9880,7 +10540,12 @@
         "qcf+RP2",
         "qcf+RP2,LP1"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "R.df+1+2": {
       "name": "Some Like It Rough!",
@@ -9905,7 +10570,12 @@
       "input_lp": "R.df+LP1+RP2",
       "input_slots_lp": [
         "R.df+LP1+RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 33,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "Right throw": {
       "name": "Serpentine Arm Break",
@@ -9934,7 +10604,12 @@
       "input_lp": "Right throw",
       "input_slots_lp": [
         "Right throw"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 197,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ROLL.3": {
       "name": "Rolling Stone",
@@ -9959,7 +10634,12 @@
       "input_lp": "ROLL.LK3",
       "input_slots_lp": [
         "ROLL.LK3"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ROLL.4": {
       "name": "Falling Frost",
@@ -9984,7 +10664,12 @@
       "input_lp": "ROLL.RK4",
       "input_slots_lp": [
         "ROLL.RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SS.1+2": {
       "name": "Bloody Chaos",
@@ -10016,7 +10701,12 @@
       "input_lp": "SS.LP1+RP2",
       "input_slots_lp": [
         "SS.LP1+RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "SS.2": {
       "name": "Chaos Tail",
@@ -10041,7 +10731,12 @@
       "input_lp": "SS.RP2",
       "input_slots_lp": [
         "SS.RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SS.3": {
       "name": "Heel Mash",
@@ -10066,7 +10761,12 @@
       "input_lp": "SS.LK3",
       "input_slots_lp": [
         "SS.LK3"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "TOM.1": {
       "name": "Machree Fascinator",
@@ -10091,7 +10791,12 @@
       "input_lp": "TOM.LP1",
       "input_slots_lp": [
         "TOM.LP1"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "TOM.2": {
       "name": "Machree Penetrator",
@@ -10116,7 +10821,12 @@
       "input_lp": "TOM.RP2",
       "input_slots_lp": [
         "TOM.RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "TOM.3": {
       "name": "Chaos Judgement",
@@ -10140,7 +10850,12 @@
       "input_lp": "TOM.LK3",
       "input_slots_lp": [
         "TOM.LK3"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 170,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "TOM.4": {
       "name": "Banquet Crasher",
@@ -10165,7 +10880,12 @@
       "input_lp": "TOM.RK4",
       "input_slots_lp": [
         "TOM.RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ub+1+2": {
       "name": "Bloody Scissors",
@@ -10190,7 +10910,12 @@
       "input_lp": "ub+LP1+RP2",
       "input_slots_lp": [
         "ub+LP1+RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "ub,b": {
       "name": "Back Handspring",
@@ -10215,7 +10940,12 @@
       "input_lp": "ub,b",
       "input_slots_lp": [
         "ub,b"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 33,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "uf+1": {
       "name": "Move uf+1 (uf+1)",
@@ -10240,7 +10970,12 @@
       "input_lp": "uf+LP1",
       "input_slots_lp": [
         "uf+LP1"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+1+2": {
       "name": "Overhead Toss",
@@ -10276,7 +11011,12 @@
       "input_lp": "uf+LP1+RP2",
       "input_slots_lp": [
         "uf+LP1+RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 197,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+1,3": {
       "name": "Fatal Attack Combo",
@@ -10310,7 +11050,12 @@
       "input_slots_lp": [
         "uf+LP1",
         "uf+LP1,LK3"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+1,3,3+4": {
       "name": "Hail Storm",
@@ -10348,7 +11093,12 @@
         "uf+LP1",
         "uf+LP1,LK3",
         "uf+LP1,LK3,LK3+RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "uf+2": {
       "name": "Bane Stinger",
@@ -10373,7 +11123,12 @@
       "input_lp": "uf+RP2",
       "input_slots_lp": [
         "uf+RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+3": {
       "name": "Sudden Storm",
@@ -10398,7 +11153,12 @@
       "input_lp": "uf+LK3",
       "input_slots_lp": [
         "uf+LK3"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+3+4": {
       "name": "Dominatrix Heel",
@@ -10430,7 +11190,12 @@
       "input_lp": "uf+LK3+RK4",
       "input_slots_lp": [
         "uf+LK3+RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "uf+3,H.1": {
       "name": "Sudden Fascinator",
@@ -10464,7 +11229,12 @@
       "input_slots_lp": [
         "uf+LK3",
         "uf+LK3,H.LP1"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+3,H.2": {
       "name": "Sudden Penetrator",
@@ -10498,7 +11268,12 @@
       "input_slots_lp": [
         "uf+LK3",
         "uf+LK3,H.RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+4": {
       "name": "Quick Somersault Kick",
@@ -10523,7 +11298,12 @@
       "input_lp": "uf+RK4",
       "input_slots_lp": [
         "uf+RK4"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws1": {
       "name": "Move ws1 (ws1)",
@@ -10563,7 +11343,12 @@
       "input_slots_lp": [
         "ws1"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws1+2": {
       "name": "Right Hand Stab",
@@ -10588,7 +11373,12 @@
       "input_lp": "ws1+RP2",
       "input_slots_lp": [
         "ws1+RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 29,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "ws1,2": {
       "name": "Ocelot Frenzy",
@@ -10622,7 +11412,12 @@
       "input_slots_lp": [
         "ws1",
         "ws1,RP2"
-      ]
+      ],
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws2": {
       "name": "Rising Palm",
@@ -10662,7 +11457,12 @@
       "input_slots_lp": [
         "ws2"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws3": {
       "name": "Face Wash",
@@ -10703,7 +11503,12 @@
       "input_slots_lp": [
         "ws3"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws4": {
       "name": "Toe Smash",
@@ -10744,7 +11549,12 @@
       "input_slots_lp": [
         "ws4"
       ],
-      "damage_source": "t7-geppopotamus-ver5.00"
+      "damage_source": "t7-geppopotamus-ver5.00",
+      "anim_t3": {
+        "bank": "anna",
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1~t8.anna": {
       "name": "Jab",
@@ -12181,8 +12991,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 179,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 7,
@@ -13175,8 +13985,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 373,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 10,
@@ -13422,8 +14232,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 179,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 10,
@@ -13603,8 +14413,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 190,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 14,
@@ -14831,8 +15641,8 @@
       "note": "delayable 12f, combo delayable 12f from CH",
       "anim_t3": {
         "bank": "anna",
-        "row": 52,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 10,
@@ -14889,8 +15699,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 52,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 10,
@@ -15429,8 +16239,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 180,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 20,
@@ -17594,8 +18404,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 190,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -17966,8 +18776,8 @@
       "note": "delayable",
       "anim_t3": {
         "bank": "anna",
-        "row": 346,
-        "match": "same-notation"
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -18024,8 +18834,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 346,
-        "match": "same-notation"
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -18134,8 +18944,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 170,
-        "match": "same-notation"
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -18198,8 +19008,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 170,
-        "match": "same-notation"
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -18256,8 +19066,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 170,
-        "match": "same-notation"
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -18321,8 +19131,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 387,
-        "match": "same-notation"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -18385,8 +19195,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 387,
-        "match": "same-notation"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -18443,8 +19253,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 387,
-        "match": "same-notation"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -18510,8 +19320,8 @@
       "note": "delayable",
       "anim_t3": {
         "bank": "anna",
-        "row": 388,
-        "match": "same-notation"
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -18575,8 +19385,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 388,
-        "match": "same-notation"
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -18639,8 +19449,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 388,
-        "match": "same-notation"
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -18697,8 +19507,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 388,
-        "match": "same-notation"
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -18818,8 +19628,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 392,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -18885,8 +19695,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 392,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -18951,8 +19761,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 392,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -19016,8 +19826,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 392,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -19074,8 +19884,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 392,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -19209,8 +20019,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 170,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -19275,8 +20085,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 387,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -19340,8 +20150,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 173,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -19398,8 +20208,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 173,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -19761,8 +20571,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 353,
-        "match": "same-notation"
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -19819,8 +20629,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 353,
-        "match": "same-notation"
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -21051,8 +21861,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 373,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -21238,8 +22048,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 373,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -21296,8 +22106,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 179,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -21361,8 +22171,8 @@
       "note": "delayable 10f, combo delayable from 10f",
       "anim_t3": {
         "bank": "anna",
-        "row": 179,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -21419,8 +22229,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 179,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -21485,8 +22295,8 @@
       "note": "delayable 10f",
       "anim_t3": {
         "bank": "anna",
-        "row": 350,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -21549,8 +22359,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 350,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -21607,8 +22417,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 350,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -21673,8 +22483,8 @@
       "note": "delayable 17f, combo delayable 14f from CH",
       "anim_t3": {
         "bank": "anna",
-        "row": 407,
-        "match": "same-notation"
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -21739,8 +22549,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 407,
-        "match": "same-notation"
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -21804,8 +22614,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 407,
-        "match": "same-notation"
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -21862,8 +22672,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 407,
-        "match": "same-notation"
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -22185,8 +22995,8 @@
       "note": "delayable",
       "anim_t3": {
         "bank": "anna",
-        "row": 190,
-        "match": "same-notation"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -22243,8 +23053,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 190,
-        "match": "same-notation"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 13,
@@ -24545,8 +25355,8 @@
       "input_note": "(or FC 2, 4)",
       "anim_t3": {
         "bank": "anna",
-        "row": 188,
-        "match": "same-notation"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "input_lp": "d/b+RP2,RK4",
       "input_slots_lp": [
@@ -24774,8 +25584,8 @@
       "note": "delayable 13f",
       "anim_t3": {
         "bank": "anna",
-        "row": 173,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 18,
@@ -24833,8 +25643,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 170,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 18,
@@ -25124,8 +25934,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 190,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 27,
@@ -25181,8 +25991,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 170,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 27,
@@ -29466,8 +30276,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 387,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "input_lp": "CJM.d/b+LK3,LK3",
       "input_slots_lp": [
@@ -29509,8 +30319,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "anna",
-        "row": 179,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "input_lp": "CJM.d/b+LK3,LK3",
       "input_slots_lp": [

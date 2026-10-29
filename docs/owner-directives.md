@@ -18,6 +18,49 @@ Living document. Updated every time the owner sets a directive. Newest first.
 ## 2026-10-22
 
 
+- **NINE SOULS CHARACTER SELECT REDESIGN (user directive 2026-10-22 ~23:02 CDT,
+  verbatim).** "Alright, that means everybody except for Zen and Gaiu has to
+  come off of the character select screen because they don't have actual um
+  bodies to select for fighters. But what we can do is make a version of them
+  where we have an attire for whoever they go to um Ren how he goes to Demonio
+  Bayu goes to Zui two goes to Pantera Shaw goes to Sakura and the other three
+  I mean the other two like we can have attires you know and so on down the
+  whole list um we can have an attire for each of those characters where they
+  have the spirit version of the non soul whatever one goes to them floating
+  behind them as an attire and so I'll make the spirit versions of those of
+  the non but since there's two of the nine that are actually have bodies and
+  fighters then those are the only two that should be on the character select
+  screen all the other ones should just be attire variants like you can select
+  to have them floating behind the attire like on or off like it shouldn't be
+  an in the attire thing whatever fighter has them you should be able to hit
+  it it's like a a tertiary thing where you can turn the um nine soul uh
+  spirit on or off and then choose between the nine souls but if you choose
+  the one that goes to the character you're choosing then it um empowers them
+  more or something like that and then log all of that and put it into the
+  repo word for word exactly how I said it"
+  - Interpretation locked with the user: the 7 vesseled souls (RIN, BYOU,
+    TOU, SHA, KAI, JIN, RETSU) come OFF the select grid as standalone
+    entries; only ZEN and GYOU stay selectable. Every fighter gets a
+    TERTIARY soul-spirit toggle (not an attire): on/off + pick any of the
+    nine souls; picking the soul that vessels into the chosen fighter
+    empowers them (gameplay buff). Phonetic spellings in the voice note:
+    "Ren"=RIN, "Bayu"=BYOU, "two"=TOU, "Shaw"=SHA, "Sakura"=Saku Ra,
+    "Gaiu"=GYOU. The user makes the spirit versions themselves — no
+    AI-generated stand-ins. Implementation: `game/js/soul-spirit.js`,
+    select-screen toggle, `SELECT_HIDDEN` in `game/js/select-screen.js`.
+- **NINE SOULS: unlockable boss-type return (user refinement 2026-10-22
+  ~23:03 CDT, verbatim).** "We'll only add them like later on onto the
+  character list as like characters with vessels or bodies as like kind of
+  boss creatures but we'll figure out how that gets done later on as we
+  progress through all the different modes and the stories and things for the
+  characters. The the seven of the nine souls that don't have bodies we'll
+  figure out how to incorporate them into the character select screen later
+  so for right now they have to come off of the character select screen until
+  we get them unlockable and with bodies."
+  - The 7 stay OFF the grid for now; they return later as UNLOCKABLE
+    boss-type characters with vessels/bodies. The unlock path gets designed
+    as story modes progress — not now. Zen and Gyou remain selectable per
+    the previous directive. The soul-spirit toggle still applies.
 - **BANNON SUB-UNIVERSE LAW (2026-10-22).** The Bannon/Ashlane/BrutalFist universe is a
   SUB-UNIVERSE of the Western Heart multiverse. The Bannon game
   (`mhvnsnt/brutalfistgrokversion`, `native/media/characters/chara_bannon/` — identity,
@@ -588,3 +631,11 @@ The Kuma replacement — white bone dragon/kaiju (Godzilla + SkullGreymon + Char
 - 19:55 CDT: "Get all of that free GPU stuff pulled in and wired up into the repo and start using that to speed things up and get higher quality and more optimized work and keep working on everything using all the GPU and all the different things."
 - Standing rules from these directives: do not filter (pull everything free, find experimental uses for seemingly-unusable items); use free GPU immediately, not just research (Kaggle first, then Colab, then WebGPU on-device, then stamped CPU fallback); a GPU job counts as run only with output plus verbatim nvidia-smi proof; no API keys in chat (browser sign-in or Secure Vault flows, or unauthenticated free tiers); GPU queue order: Nosferatu 25-track cut, UniRig auto-rigging, Real-ESRGAN upscale, gltfpack batch, character-card and stage-preview pre-render.
 - Wiring landed in this PR: tools/free-pulls (API clients, GPU catalog, GPU job queue, tools, fonts) and docs/research/FREE-PULLS-2026-10-24.md.
+
+## NO MID-SCREEN TEXT DURING FIGHTS — CLOSED (user directive 2026-10-25 06:16 CDT)
+
+- User (verbatim intent): "I told you to remove those fucking banners that pop up on the fucking screen no matter what the fuck they say, bro. If they pop up in the middle of the fucking screen, they need to be removed, bro. Stop making me fucking repeat myself."
+- LOCKED RULE: NO mid-screen text during fights, no matter what it says — TAG, RAGE, SOUL SURGE, all of it. Round-boundary ROUND/FIGHT!/K.O. only. Info survives as HUD tag/aura/gauge/flash/sound. Never ask again; this decision is closed.
+- MECHANISM: ui.hudNote() writes to #hud-note — small text under the health bars (top: 104px), never center-screen. Every former mid-fight banner call site was converted to hudNote (team-battle, brawler, training, modes, episodes, ranks, replay, soul-systems, game.js training RESET). The #1078-era Trial's Seal center banner was converted too — the keep-list is exhaustive, and the seal banner used to overwrite the K.O. banner in the same tick.
+- KEPT, with reason: game.js ROUND/FIGHT!/K.O./DOUBLE K.O. (round boundaries, Tekken does these); scene.js WebGL context-lost error path (renderer dead — an error screen, not a fight popup); voice subtitles (bottom-anchored); combo counter (upper-left HUD) and throw-break prompt (upper-center input prompt) — HUD elements, not center-screen banners; labels3d banner() is an unused in-world 3D label method with no call sites.
+- GUARD: test/no-midfight-banners.test.mjs fails if any converted file calls banner() again, if game.js gains a non-boundary banner call, or if the hudNote wiring (method + element + CSS) goes missing.

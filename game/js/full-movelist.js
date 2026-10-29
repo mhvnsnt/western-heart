@@ -59,7 +59,9 @@ export function routeFor(notation, mv, slots) {
 /** Install the EMWH additions into a moveset (additive; idempotent). Returns added notations. */
 export function installAddedMoves(fighterId, ms, opts = {}) {
   if (!ms || !ms.moves) return [];
-  ms.slots = ms.slots || {};
+  // slotless moveset (moves keyed by notation, as movesets.js _prepare reads them): seed the
+  // slots from the moves, or the move list and ai.js would only see the added soul moves
+  ms.slots = ms.slots || Object.fromEntries(Object.keys(ms.moves).map(k => [k, k]));
   const n = variantCount(ms, opts), added = [];
   for (const sys of SOUL_SYSTEMS) {
     for (let i = 0; i < n; i++) {
@@ -120,7 +122,8 @@ export function comboRoutes(ms, max = 4) {
 /** Which soul-system prefixes are open for this fighter right now (gates from SOUL_SYSTEMS). */
 export function soulStates(f) {
   if (!f) return [];
-  const g = f.game || {}, opp = f.opponent || (g.fighters ? g.fighters.find(x => x !== f) : null);
+  const g = f.game || {}, opp = f.opponent || (g.fighters ? g.fighters.find(x => x !== f) : null)
+    || (g.p1 === f ? g.p2 : g.p2 === f ? g.p1 : null); // Game keeps the pair on p1/p2
   const oppLow = opp && opp.maxHp ? opp.hp / opp.maxHp : 1;
   const out = [];
   const nearWall = typeof g.nearWall === 'function' ? g.nearWall(f) : !!(f._nearWall || f.nearWall);

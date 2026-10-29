@@ -290,6 +290,17 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 .banner.show { display: flex; animation: bannerPop 0.5s ease; }
 @keyframes bannerPop { 0%{transform:scale(2);opacity:0;} 30%{transform:scale(1);opacity:1;} 80%{opacity:1;} 100%{transform:scale(0.9);opacity:0.9;} }
 
+/* ----------- HUD note (replaces mid-fight center banners) ----------- */
+.hud-note {
+  position: fixed; top: 104px; left: 50%; transform: translateX(-50%); z-index: 28;
+  display: none; pointer-events: none; text-align: center;
+  font-size: clamp(13px, 3.5vw, 20px); font-weight: 700; letter-spacing: 1px;
+  color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+  background: rgba(10,6,20,0.55); padding: 6px 14px; border-radius: 8px;
+  border: 1px solid rgba(255,215,106,0.35); max-width: 92vw; overflow: hidden; text-overflow: ellipsis;
+}
+.hud-note.show { display: block; }
+
 /* ----------- Soul Surge flash + name ----------- */
 .surge-flash {
   position: fixed; inset: 0; z-index: 29; pointer-events: none; opacity: 0;
@@ -743,8 +754,8 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 #modewin-title.win { color: #ffd76a; }
 #modewin-title.lose { color: #ff6a6a; }
 
-/* ============ WH MAIN MENU (10 sections, 2026-10-22, PR #676 rebase) ============
-   Styles the coming-soon placeholder screens' BACK buttons
+/* ============ WH MAIN MENU (10 sections, 2026-10-22, PR #676 rebase) =====
+Styles the coming-soon placeholder screens' BACK buttons
    (screen-online / sidegames / collection / daily use .wh-main-menu).
    Tekken-style: dark with purple/gold accents, phone portrait-first,
    thumb-reachable, min 64px touch targets, no overlapping text. */
@@ -814,3 +825,59 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   .act-btn.special { right: 144px; bottom: 266px; } .act-btn.vskill { right: 82px; bottom: 266px; } .act-btn.dodge { right: 20px; bottom: 266px; }
   .act-btn.transform { right: 206px; bottom: 266px; }
 }
+/* ============ Worker 29: GUNGAKU fight lab + replay theater ============ */
+.gungaku {
+  position: fixed; right: 8px; top: 64px; z-index: 60;
+  background: rgba(10, 8, 18, 0.92); border: 1px solid #6a4dff;
+  border-radius: 10px; padding: 10px 12px; color: #eee;
+  font-family: inherit; min-width: 220px; max-width: 260px;
+}
+.gk-title { font-weight: 800; letter-spacing: 1px; color: #ffd76a; margin-bottom: 8px; font-size: 14px; }
+.gk-row { display: flex; align-items: center; gap: 6px; margin: 6px 0; flex-wrap: wrap; }
+.gk-label { font-size: 11px; opacity: 0.7; width: 56px; }
+.gungaku button {
+  background: #1d1830; color: #eee; border: 1px solid #4a3d8f;
+  border-radius: 6px; padding: 5px 8px; font-size: 12px; cursor: pointer;
+}
+.gungaku button.on { background: #6a4dff; border-color: #9a86ff; color: #fff; }
+.gk-framedata { font-size: 12px; margin-top: 8px; line-height: 1.5; color: #cfe3ff; min-height: 3.2em; }
+.gk-hint { font-size: 10px; opacity: 0.55; margin-top: 6px; }
+.ml-legend { font-size: 11px; opacity: 0.6; margin: 2px 0 8px; }
+
+.replay-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+  background: rgba(10, 8, 18, 0.94); border-top: 1px solid #6a4dff;
+  display: flex; align-items: center; gap: 6px; padding: 8px 10px;
+}
+.replay-bar button {
+  background: #1d1830; color: #eee; border: 1px solid #4a3d8f;
+  border-radius: 6px; padding: 6px 9px; font-size: 12px; cursor: pointer; white-space: nowrap;
+}
+.replay-bar button.on { background: #6a4dff; border-color: #9a86ff; color: #fff; }
+#rp-seek { flex: 1; min-width: 60px; accent-color: #6a4dff; }
+#rp-time { font-size: 11px; color: #cfe3ff; white-space: nowrap; }
+
+.replay-panel { max-width: 640px; }
+.replay-list { display: flex; flex-direction: column; gap: 8px; margin: 12px 0; max-height: 46vh; overflow-y: auto; }
+.replay-row {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.04); border: 1px solid #3a3168;
+  border-radius: 8px; padding: 8px 10px;
+}
+.rp-names { font-weight: 700; font-size: 14px; }
+.rp-names em { font-style: normal; opacity: 0.5; font-weight: 400; }
+.rp-meta { font-size: 11px; opacity: 0.65; flex: 1; line-height: 1.5; }
+.rp-actions { display: flex; gap: 6px; }
+
+/* TTT2 TAG BATTLE (worker 24) — partner HUD plates + rage badge */
+#tag-hud { position: absolute; top: 64px; left: 0; right: 0; display: flex; justify-content: space-between; padding: 0 12px; pointer-events: none; z-index: 5; }
+#tag-hud[hidden] { display: none; }
+.tag-partner { background: rgba(10,8,20,.72); border: 1px solid #6a5a9a; border-radius: 8px; padding: 4px 10px; font-size: 11px; letter-spacing: .08em; color: #cfc3ee; min-width: 96px; }
+.tag-partner .tp-name { font-weight: 700; color: #fff; display: block; font-size: 12px; }
+.tag-partner .tp-hp { display: block; height: 5px; background: #2a2438; border-radius: 3px; margin-top: 3px; overflow: hidden; }
+.tag-partner .tp-hp > i { display: block; height: 100%; background: linear-gradient(90deg,#7fe07f,#c9f27e); border-radius: 3px; }
+.tag-partner.rage { border-color: #ff4d4d; box-shadow: 0 0 10px rgba(255,60,60,.55); }
+.tag-partner.rage .tp-name::after { content: ' RAGE'; color: #ff6a6a; font-size: 10px; }
+/* TTT2 TAG button */
+#tag-btn { border-color: #ffd76a; color: #ffd76a; font-weight: 700; }
+#tag-btn[hidden] { display: none; }

@@ -933,7 +933,12 @@
       "note": "Every fight is a negotiation. I always collect. The vizier's grab closes around you.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true
+      "isGrab": true,
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "S": {
       "name": "Ledger Entry [WH SIGNATURE]",
@@ -947,14 +952,19 @@
       "knock": 4.2,
       "soulGain": 12,
       "anim_ref": "wh:scimitar:sig:ledger-entry",
-      "community_base": "game/assets/anim/oss/community/144_20.fbx",
-      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "S"
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "Every fighter owes him something - a favor, a debt, a secret. Filed in a hand no one else can read."
+      "note": "Every fighter owes him something - a favor, a debt, a secret. Filed in a hand no one else can read.",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+4": {
       "name": "Closing the Deal [WH SIGNATURE]",
@@ -978,7 +988,12 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Ledger Entry [WH SIGNATURE]",
@@ -992,15 +1007,20 @@
       "knock": 4.2,
       "soulGain": 12,
       "anim_ref": "wh:scimitar:sig:ledger-entry",
-      "community_base": "game/assets/anim/oss/community/144_20.fbx",
-      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "1+2"
       ],
       "move_class": "signature",
       "wh_original": true,
       "note": "Every fighter owes him something - a favor, a debt, a secret. Filed in a hand no one else can read.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "SCIMITAR 1+2 (T3 jin r32)",
@@ -3861,7 +3881,12 @@
         "on_ch": "FS(+)",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,3": {
       "name": "Spica Blinding Sands",
@@ -3905,7 +3930,38 @@
         "mod_damage": "7,9,18",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "1+2+3+4": {
+      "name": "Ki Charge",
+      "input": "1+2+3+4",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-1+2+3+4",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.317,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:shaheen:shaheen-1+2+3+4",
+      "input_slots": [
+        "1+2+3+4"
+      ],
+      "move_class": "special",
+      "note": "sp",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1,2,4": {
       "name": "Spica Wheel Spin",
@@ -3950,7 +4006,45 @@
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "2+3": {
+      "name": "Heat Burst",
+      "input": "2+3",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-2+3",
+      "t8_damage": "[12;12]",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 24,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:shaheen:shaheen-2+3",
+      "input_slots": [
+        "2+3"
+      ],
+      "move_class": "strike",
+      "multi_hit": {
+        "hits": [
+          12,
+          12
+        ],
+        "total": 24
+      },
+      "note": "Mid; on block +1",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "2,3": {
       "name": "Porrima Blinding Sands",
@@ -3990,7 +4084,39 @@
         "id": "shaheen_17",
         "wired": true
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "3+4": {
+      "name": "Wheel Spin",
+      "input": "3+4",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-3+4",
+      "t8_damage": "20",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 20,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "UNMAPPED:t7-clip-pending",
+      "input_slots": [
+        "3+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -9; knockdown on hit",
+      "string_referenced_restore_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 51,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "4,1": {
       "name": "Algenib",
@@ -4033,7 +4159,12 @@
         "on_ch": "+",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,3": {
       "name": "High Slashing Kick",
@@ -4076,7 +4207,12 @@
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,4": {
       "name": "Ra'd",
@@ -4119,7 +4255,12 @@
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1_t8": {
       "name": "Achernar",
@@ -4154,7 +4295,38 @@
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 216,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "b+1+3": {
+      "name": "Silent Death Trap",
+      "input": "b+1+3",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-b+1+3",
+      "t8_damage": "15 (15)",
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.317,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:shaheen:shaheen-b+1+3",
+      "input_slots": [
+        "b+1+3"
+      ],
+      "move_class": "special",
+      "note": "sp",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+2": {
       "name": "Dust Storm",
@@ -4183,7 +4355,12 @@
         "total": 28
       },
       "note": "m(th); on block -9",
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 97,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+3": {
       "name": "Heel Strike",
@@ -4217,7 +4394,38 @@
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 103,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "b+3+4": {
+      "name": "Elnath",
+      "input": "b+3+4",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-b+3+4",
+      "t8_damage": "25",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 25,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:shaheen:shaheen-b+3+4",
+      "input_slots": [
+        "b+3+4"
+      ],
+      "move_class": "strike",
+      "note": "High; on block -9; knockdown on hit",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 110,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "b+4": {
       "name": "Broken Mirage",
@@ -4251,7 +4459,64 @@
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 112,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "Back throw": {
+      "name": "Silent Death",
+      "input": "Back throw",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-Back throw",
+      "t8_damage": "50",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 50,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:shaheen:shaheen-back throw",
+      "input_slots": [
+        "Back throw"
+      ],
+      "move_class": "strike",
+      "note": "th(h)",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "(back to wall).b,b,UB": {
+      "name": "Wall Jump Backflip",
+      "input": "(back to wall).b,b,UB",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-(back to wall).b,b,UB",
+      "t8_damage": "21",
+      "startup": 0.583,
+      "active": 0.033,
+      "recovery": 0.283,
+      "damage": 21,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:shaheen:shaheen-(back to wall).b,b,ub",
+      "input_slots": [
+        "(back to wall).b,b,UB"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +1",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "BT.2": {
       "name": "Reverse Edge",
@@ -4273,7 +4538,12 @@
       ],
       "move_class": "strike",
       "note": "Mid; on block -3; knockdown on hit",
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+1": {
       "name": "Hermit Needle",
@@ -4295,7 +4565,12 @@
       ],
       "move_class": "strike",
       "note": "Low; on block -13",
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+2": {
       "name": "Gut Impact",
@@ -4329,7 +4604,12 @@
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 137,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d+3": {
       "name": "Silent Rigel",
@@ -4364,7 +4644,12 @@
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3+4": {
       "name": "Crouch Shin Kick",
@@ -4386,7 +4671,12 @@
       ],
       "move_class": "strike",
       "note": "Low; on block -15",
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 127,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "d+4": {
       "name": "Vicious Stomp",
@@ -4420,7 +4710,12 @@
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 339,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "db+1": {
       "name": "Crouch Jab",
@@ -4442,7 +4737,12 @@
       ],
       "move_class": "strike",
       "note": "Special low; on block -5",
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+1+2": {
       "name": "Shaula",
@@ -4465,7 +4765,12 @@
       "move_class": "strike",
       "note": "ub!(m)",
       "unblockable": true,
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "db+2": {
       "name": "Move db+2 (db+2)",
@@ -4487,7 +4792,12 @@
       ],
       "move_class": "strike",
       "note": "Mid; on block -10",
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+2,1": {
       "name": "Rapid Strikes",
@@ -4517,7 +4827,12 @@
         "total": 35
       },
       "note": "High; on block -11",
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+3": {
       "name": "Snake's Bite",
@@ -4539,7 +4854,12 @@
       ],
       "move_class": "strike",
       "note": "Low; on block -17",
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+3,4": {
       "name": "Rising Scimitar",
@@ -4569,7 +4889,12 @@
         "total": 32
       },
       "note": "High; on block -13; knockdown on hit",
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+4": {
       "name": "Rising Scimitar",
@@ -4591,7 +4916,12 @@
       ],
       "move_class": "strike",
       "note": "High; on block -13",
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1": {
       "name": "Move df+1 (df+1)",
@@ -4613,7 +4943,12 @@
       ],
       "move_class": "strike",
       "note": "Mid; on block -1",
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+2": {
       "name": "Rising Falcon",
@@ -4635,7 +4970,12 @@
       ],
       "move_class": "strike",
       "note": "Mid; on block -7; knockdown on hit",
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3": {
       "name": "Whirlwind Kick",
@@ -4657,7 +4997,38 @@
       ],
       "move_class": "strike",
       "note": "Mid; on block -13",
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "df+3+4": {
+      "name": "Stealth Step",
+      "input": "df+3+4",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-df+3+4",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.25,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:shaheen:shaheen-df+3+4",
+      "input_slots": [
+        "df+3+4"
+      ],
+      "move_class": "special",
+      "note": "sp",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "df+4": {
       "name": "Move df+4 (df+4)",
@@ -4679,7 +5050,142 @@
       ],
       "move_class": "strike",
       "note": "Mid; on block -7",
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "df+4,1": {
+      "name": "Move 1 (1)",
+      "input": "df+4,1",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-df+4,1",
+      "t8_damage": ",10",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 23,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:shaheen:shaheen-df+4,1",
+      "input_slots": [
+        "df+4",
+        "df+4,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          10
+        ],
+        "total": 23
+      },
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "df+4,1,3": {
+      "name": "Al-Faras",
+      "input": "df+4,1,3",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-df+4,1,3",
+      "t8_damage": ",28",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 51,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:shaheen:shaheen-df+4,1,3",
+      "input_slots": [
+        "df+4",
+        "df+4,1",
+        "df+4,1,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          10,
+          28
+        ],
+        "total": 51
+      },
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "df+4,3": {
+      "name": "Al-Fard al-Shuja",
+      "input": "df+4,3",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-df+4,3",
+      "t8_damage": ",23",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 36,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:shaheen:shaheen-df+4,3",
+      "input_slots": [
+        "df+4",
+        "df+4,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          23
+        ],
+        "total": 36
+      },
+      "note": "High; on block -4; knockdown on hit",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "D*,u+2": {
+      "name": "Al-Ghul",
+      "input": "D*,u+2",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-D*,u+2",
+      "t8_damage": "35",
+      "startup": 0.283,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 35,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:shaheen:shaheen-d*,u+2",
+      "input_slots": [
+        "D*,u+2"
+      ],
+      "move_class": "strike",
+      "note": "High; on block +6",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+2": {
       "name": "Move f+2 (f+2)",
@@ -4713,7 +5219,12 @@
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 220,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+2,3": {
       "name": "Silent Sting",
@@ -4755,7 +5266,12 @@
         "mod_damage": "12,20",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 242,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+2,4": {
       "name": "Move 4 (4)",
@@ -4798,7 +5314,12 @@
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 260,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+2,4,4": {
       "name": "Silent Flow",
@@ -4843,7 +5364,12 @@
         "on_ch": "KND?",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3": {
       "name": "Crescent Moon",
@@ -4877,7 +5403,12 @@
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 79,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+3+4": {
       "name": "Skyline",
@@ -4911,7 +5442,12 @@
         "mod_damage": "14,14",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f+4_t8": {
       "name": "Piercing Talon",
@@ -4946,7 +5482,12 @@
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 214,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f,b+2": {
       "name": "Hornet",
@@ -4980,7 +5521,38 @@
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "f:b+2": {
+      "name": "Hornet",
+      "input": "f:b+2",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-f:b+2",
+      "t8_damage": "42",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 42,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:shaheen:shaheen-f:b+2",
+      "input_slots": [
+        "f:b+2"
+      ],
+      "move_class": "strike",
+      "note": "High; on block -4",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.df+2": {
       "name": "Janbiya",
@@ -5002,7 +5574,12 @@
       ],
       "move_class": "strike",
       "note": "Mid; on block -9; knockdown on hit",
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.df+4": {
       "name": "Move FC.df+4 (FC.df+4)",
@@ -5024,7 +5601,72 @@
       ],
       "move_class": "strike",
       "note": "Low; on block -14",
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "FC.df+4,1": {
+      "name": "Serpens",
+      "input": "FC.df+4,1",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-FC.df+4,1",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 36,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:shaheen:shaheen-fc.df+4,1",
+      "input_slots": [
+        "FC.df+4",
+        "FC.df+4,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          16,
+          20
+        ],
+        "total": 36
+      },
+      "note": "High; on block -2; knockdown on hit",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "FC.df,d,DF": {
+      "name": "Slide Step",
+      "input": "FC.df,d,DF",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-FC.df,d,DF",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.317,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:shaheen:shaheen-fc.df,d,df",
+      "input_slots": [
+        "FC.df,d,DF"
+      ],
+      "move_class": "special",
+      "note": "sp",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "FC.df,d,DF+3": {
       "name": "Sand Storm",
@@ -5046,7 +5688,12 @@
       ],
       "move_class": "strike",
       "note": "Low; on block -23a; knockdown on hit",
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+3": {
       "name": "Hunting Falcon Dive",
@@ -5068,7 +5715,12 @@
       ],
       "move_class": "strike",
       "note": "Mid; on block -12; knockdown on hit",
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,F+2": {
       "name": "Antares",
@@ -5090,7 +5742,396 @@
       ],
       "move_class": "strike",
       "note": "Mid; on block +5",
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "H.2+3": {
+      "name": "Rumh al-Muzaffar",
+      "input": "H.2+3",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-H.2+3",
+      "t8_damage": "40",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.683,
+      "damage": 40,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:shaheen:shaheen-h.2+3",
+      "input_slots": [
+        "H.2+3"
+      ],
+      "move_class": "throw",
+      "note": "Low, Throw; on block -14; knockdown on hit",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "H.D*,u+2": {
+      "name": "Al-Ghul Master",
+      "input": "H.D*,u+2",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-H.D*,u+2",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.317,
+      "damage": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:shaheen:shaheen-h.d*,u+2",
+      "input_slots": [
+        "H.D*,u+2"
+      ],
+      "move_class": "special",
+      "note": "on block [[Shaheen_combos#Mini-combos|+13]]; knockdown on hit",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "H.f+1+2": {
+      "name": "Rumh al-Dawla",
+      "input": "H.f+1+2",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-H.f+1+2",
+      "t8_damage": "15,25 (17)",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 15,
+      "limb": "both",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:shaheen:shaheen-h.f+1+2",
+      "input_slots": [
+        "H.f+1+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid, Mid; on block +4c SNK",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "Left throw": {
+      "name": "Chasm Drop",
+      "input": "Left throw",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-Left throw",
+      "t8_damage": "40",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 40,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:shaheen:shaheen-left throw",
+      "input_slots": [
+        "Left throw"
+      ],
+      "move_class": "strike",
+      "note": "th(h); on block -3",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "R.df+1+2": {
+      "name": "Najm Alshamal",
+      "input": "R.df+1+2",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-R.df+1+2",
+      "t8_damage": "55+",
+      "startup": 0.333,
+      "active": 0.3,
+      "recovery": 0.65,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:shaheen:shaheen-r.df+1+2",
+      "input_slots": [
+        "R.df+1+2"
+      ],
+      "move_class": "special",
+      "note": "Mid, Throw; on block -18",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "Right throw": {
+      "name": "Axel Spinner",
+      "input": "Right throw",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-Right throw",
+      "t8_damage": "40",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 40,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:shaheen:shaheen-right throw",
+      "input_slots": [
+        "Right throw"
+      ],
+      "move_class": "strike",
+      "note": "th(h); on block -3",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "SNK.1": {
+      "name": "Blinding Snake",
+      "input": "SNK.1",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-SNK.1",
+      "t8_damage": "10",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 10,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 5,
+      "anim_ref": "t8:shaheen:shaheen-snk.1",
+      "input_slots": [
+        "SNK.1"
+      ],
+      "move_class": "strike",
+      "note": "High; on block -1",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "SNK.1+2": {
+      "name": "Al-Sayf",
+      "input": "SNK.1+2",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-SNK.1+2",
+      "t8_damage": "21",
+      "startup": 0.317,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 21,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:shaheen:shaheen-snk.1+2",
+      "input_slots": [
+        "SNK.1+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +4c",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "SNK.2": {
+      "name": "Crimson Tempest",
+      "input": "SNK.2",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-SNK.2",
+      "t8_damage": "17",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 17,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:shaheen:shaheen-snk.2",
+      "input_slots": [
+        "SNK.2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "SNK.3": {
+      "name": "Hunting Falcon Dive",
+      "input": "SNK.3",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-SNK.3",
+      "t8_damage": "23",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 23,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:shaheen:shaheen-snk.3",
+      "input_slots": [
+        "SNK.3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -12; knockdown on hit",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "SNK.4": {
+      "name": "Sliding Shave",
+      "input": "SNK.4",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-SNK.4",
+      "t8_damage": "20",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:shaheen:shaheen-snk.4",
+      "input_slots": [
+        "SNK.4"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -14",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "SNK.df+1": {
+      "name": "Move SNK.df+1 (SNK.df+1)",
+      "input": "SNK.df+1",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-SNK.df+1",
+      "t8_damage": "12",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:shaheen:shaheen-snk.df+1",
+      "input_slots": [
+        "SNK.df+1"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -5",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "SNK.df+1,2": {
+      "name": "Flash Hornet",
+      "input": "SNK.df+1,2",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-SNK.df+1,2",
+      "t8_damage": ",40",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 52,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:shaheen:shaheen-snk.df+1,2",
+      "input_slots": [
+        "SNK.df+1",
+        "SNK.df+1,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          40
+        ],
+        "total": 52
+      },
+      "note": "High; on block -4",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "SNK.df+1,3": {
+      "name": "Flash Deneb",
+      "input": "SNK.df+1,3",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-SNK.df+1,3",
+      "t8_damage": ",28",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 40,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:shaheen:shaheen-snk.df+1,3",
+      "input_slots": [
+        "SNK.df+1",
+        "SNK.df+1,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          28
+        ],
+        "total": 40
+      },
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SS.1+2": {
       "name": "Haboob",
@@ -5112,7 +6153,12 @@
       ],
       "move_class": "strike",
       "note": "Mid; on block +3",
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "SS.2": {
       "name": "Nisif Kamar",
@@ -5134,7 +6180,142 @@
       ],
       "move_class": "strike",
       "note": "Low; on block -12",
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "uf+1": {
+      "name": "Vega",
+      "input": "uf+1",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-uf+1",
+      "t8_damage": "25",
+      "startup": 0.4,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 25,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:shaheen:shaheen-uf+1",
+      "input_slots": [
+        "uf+1"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +1",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "uf+1+2": {
+      "name": "Wezen",
+      "input": "uf+1+2",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-uf+1+2",
+      "t8_damage": "40",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 40,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:shaheen:shaheen-uf+1+2",
+      "input_slots": [
+        "uf+1+2"
+      ],
+      "move_class": "strike",
+      "note": "th(h); on block -3",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "uf+3": {
+      "name": "Crescent Cleaver",
+      "input": "uf+3",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-uf+3",
+      "t8_damage": "22",
+      "startup": 0.417,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 22,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:shaheen:shaheen-uf+3",
+      "input_slots": [
+        "uf+3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -7; knockdown on hit",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "uf+4": {
+      "name": "Altair",
+      "input": "uf+4",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-uf+4",
+      "t8_damage": "13",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 13,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:shaheen:shaheen-uf+4",
+      "input_slots": [
+        "uf+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "uf,n,4": {
+      "name": "Delayed Rising Toe Kick",
+      "input": "uf,n,4",
+      "t8_source": "shaheen",
+      "t8_id": "Shaheen-uf,n,4",
+      "t8_damage": "20",
+      "startup": 0.383,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:shaheen:shaheen-uf,n,4",
+      "input_slots": [
+        "uf,n,4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws1": {
       "name": "Albireo",
@@ -5168,7 +6349,12 @@
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws2": {
       "name": "Hawk Edge",
@@ -5203,7 +6389,12 @@
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws3": {
       "name": "Move ws3 (ws3)",
@@ -5237,7 +6428,12 @@
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws3,3": {
       "name": "Double Scorpion",
@@ -5280,7 +6476,12 @@
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws4": {
       "name": "Jaw Smash",
@@ -5314,7 +6515,12 @@
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1~t8.shaheen": {
       "name": "SCIMITAR 1",
@@ -5355,7 +6561,12 @@
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "1,2~t8.shaheen": {
       "name": "Spica",
@@ -5397,7 +6608,12 @@
         "on_ch": "+6",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+3~t8.shaheen": {
       "name": "Desert Fang",
@@ -5430,7 +6646,12 @@
       "throw": true,
       "isGrab": true,
       "unblockable": true,
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 288,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "2~t8.shaheen": {
       "name": "SCIMITAR 2",
@@ -5471,7 +6692,12 @@
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "2,1~t8.shaheen": {
       "name": "Cut In",
@@ -5514,7 +6740,12 @@
         "on_ch": "+",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2+4~t8.shaheen": {
       "name": "Aldebaran",
@@ -5547,7 +6778,12 @@
       "throw": true,
       "isGrab": true,
       "unblockable": true,
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 289,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "3~t8.shaheen": {
       "name": "Blinding Sands",
@@ -5589,7 +6825,12 @@
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "4~t8.shaheen": {
       "name": "Hallux Kick",
@@ -5630,7 +6871,12 @@
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
       },
-      "t8_anim_removed_20261024": true
+      "t8_anim_removed_20261024": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "WALL.b,b,u/b": {
       "name": "SCIMITAR WALL.b,b,u/b",
@@ -5654,7 +6900,7 @@
         "WALL.b,b,u/b"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_1",
       "t7_command": "Back towards wall... b, b, u/b",
       "t7_hit_level": "mid",
@@ -5666,7 +6912,12 @@
       "merge_source": "t7:shaheen_1",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Back towards wall..."
+      "input_note": "Back towards wall...",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1~t7.shaheen": {
       "name": "SCIMITAR 1",
@@ -5690,7 +6941,7 @@
         "1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_2",
       "t7_command": "1",
       "t7_hit_level": "high",
@@ -5712,6 +6963,11 @@
         "id": "shaheen_2",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "1,2~t7.shaheen": {
@@ -5736,7 +6992,7 @@
         "1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_3",
       "t7_command": "1, 2",
       "t7_hit_level": "high, high",
@@ -5766,6 +7022,11 @@
         "mod_damage": "7,9",
         "on_ch": "+6",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2~t7.shaheen.2": {
@@ -5790,7 +7051,7 @@
         "1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_4",
       "t7_command": "(1), 2",
       "t7_hit_level": "high",
@@ -5813,6 +7074,11 @@
         "mod_damage": "7,9",
         "on_ch": "+6",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,2~t7.shaheen": {
@@ -5837,7 +7103,7 @@
         "1,2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_5",
       "t7_command": "1, 2, 2",
       "t7_hit_level": "high, high, mid",
@@ -5868,6 +7134,11 @@
         "mod_damage": "7,9,14",
         "on_ch": "FS(+)",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,2~t7.shaheen.2": {
@@ -5892,7 +7163,7 @@
         "1,2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_6",
       "t7_command": "(1), 2, 2",
       "t7_hit_level": "high, mid",
@@ -5922,6 +7193,11 @@
         "mod_damage": "7,9,14",
         "on_ch": "FS(+)",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,2~t7.shaheen.3": {
@@ -5946,7 +7222,7 @@
         "1,2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_7",
       "t7_command": "(1), (2), 2",
       "t7_hit_level": "mid",
@@ -5969,6 +7245,11 @@
         "mod_damage": "7,9,14",
         "on_ch": "FS(+)",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,3~t7.shaheen": {
@@ -5993,7 +7274,7 @@
         "1,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_8",
       "t7_command": "1, 2, 3",
       "t7_hit_level": "high, high, high",
@@ -6023,6 +7304,11 @@
         "wired": true,
         "mod_damage": "7,9,18",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,3~t7.shaheen.2": {
@@ -6047,7 +7333,7 @@
         "1,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_9",
       "t7_command": "(1), 2, 3",
       "t7_hit_level": "high, high",
@@ -6076,6 +7362,11 @@
         "wired": true,
         "mod_damage": "7,9,18",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,3~t7.shaheen.3": {
@@ -6100,7 +7391,7 @@
         "1,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_10",
       "t7_command": "(1), (2), 3",
       "t7_hit_level": "high",
@@ -6122,6 +7413,11 @@
         "wired": true,
         "mod_damage": "7,9,18",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,4~t7.shaheen": {
@@ -6146,7 +7442,7 @@
         "1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_11",
       "t7_command": "1, 2, 4",
       "t7_hit_level": "high, high, mid",
@@ -6178,6 +7474,11 @@
         "mod_damage": "7,9,20",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,4~t7.shaheen.2": {
@@ -6202,7 +7503,7 @@
         "1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_12",
       "t7_command": "(1), 2, 4",
       "t7_hit_level": "high, mid",
@@ -6233,6 +7534,11 @@
         "mod_damage": "7,9,20",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,4~t7.shaheen.3": {
@@ -6257,7 +7563,7 @@
         "1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_13",
       "t7_command": "(1), (2), 4",
       "t7_hit_level": "mid",
@@ -6281,6 +7587,11 @@
         "mod_damage": "7,9,20",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2~t7.shaheen": {
@@ -6305,7 +7616,7 @@
         "2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_14",
       "t7_command": "2",
       "t7_hit_level": "high",
@@ -6327,6 +7638,11 @@
         "id": "shaheen_14",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "2,1~t7.shaheen": {
@@ -6351,7 +7667,7 @@
         "2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_15",
       "t7_command": "2, 1",
       "t7_hit_level": "high, mid",
@@ -6381,6 +7697,11 @@
         "mod_damage": "10,7",
         "on_ch": "+",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,1~t7.shaheen.2": {
@@ -6405,7 +7726,7 @@
         "2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_16",
       "t7_command": "(2), 1",
       "t7_hit_level": "mid",
@@ -6428,6 +7749,11 @@
         "mod_damage": "10,7",
         "on_ch": "+",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,3~t7.shaheen": {
@@ -6452,7 +7778,7 @@
         "2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_17",
       "t7_command": "2, 3",
       "t7_hit_level": "high, high",
@@ -6479,6 +7805,11 @@
         "notation": "2, 3",
         "id": "shaheen_17",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,3~t7.shaheen.2": {
@@ -6503,7 +7834,7 @@
         "2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_18",
       "t7_command": "(2), 3",
       "t7_hit_level": "high",
@@ -6523,6 +7854,11 @@
         "notation": "2, 3",
         "id": "shaheen_17",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3~t7.shaheen": {
@@ -6547,7 +7883,7 @@
         "3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_19",
       "t7_command": "3",
       "t7_hit_level": "high",
@@ -6569,6 +7905,11 @@
         "id": "shaheen_19",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "4~t7.shaheen": {
@@ -6593,7 +7934,7 @@
         "4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_20",
       "t7_command": "4",
       "t7_hit_level": "high",
@@ -6616,6 +7957,11 @@
         "id": "shaheen_20",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "4,1~t7.shaheen": {
@@ -6640,7 +7986,7 @@
         "4,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_21",
       "t7_command": "4, 1",
       "t7_hit_level": "high, high",
@@ -6670,6 +8016,11 @@
         "mod_damage": "16,12",
         "on_ch": "+",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4,1~t7.shaheen.2": {
@@ -6694,7 +8045,7 @@
         "4,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_22",
       "t7_command": "(4), 1",
       "t7_hit_level": "high",
@@ -6717,6 +8068,11 @@
         "mod_damage": "16,12",
         "on_ch": "+",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4,3~t7.shaheen": {
@@ -6741,7 +8097,7 @@
         "4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_23",
       "t7_command": "4, 3",
       "t7_hit_level": "high, high",
@@ -6772,6 +8128,11 @@
         "mod_damage": "16,21",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4,3~t7.shaheen.2": {
@@ -6796,7 +8157,7 @@
         "4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_24",
       "t7_command": "(4), 3",
       "t7_hit_level": "high",
@@ -6820,6 +8181,11 @@
         "mod_damage": "16,21",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4,4~t7.shaheen": {
@@ -6844,7 +8210,7 @@
         "4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_25",
       "t7_command": "4, 4",
       "t7_hit_level": "high, mid",
@@ -6875,6 +8241,11 @@
         "mod_damage": "16,25",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4,4~t7.shaheen.2": {
@@ -6899,7 +8270,7 @@
         "4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_26",
       "t7_command": "(4), 4",
       "t7_hit_level": "mid",
@@ -6923,6 +8294,11 @@
         "mod_damage": "16,25",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+3~t7.shaheen": {
@@ -6947,7 +8323,7 @@
         "u/f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_27",
       "t7_command": "u/f+3",
       "t7_hit_level": "mid",
@@ -6969,6 +8345,11 @@
         "notation": "u/f+3",
         "id": "shaheen_27",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 55,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "u/f+4~t7.shaheen": {
@@ -6993,7 +8374,7 @@
         "u/f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_28",
       "t7_command": "u/f+4",
       "t7_hit_level": "mid",
@@ -7016,6 +8397,11 @@
         "notation": "u/f+4",
         "id": "shaheen_28",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 80,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f+2~t7.shaheen": {
@@ -7040,7 +8426,7 @@
         "f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_29",
       "t7_command": "f+2",
       "t7_hit_level": "high",
@@ -7062,6 +8448,11 @@
         "id": "shaheen_29",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 220,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f+2,3~t7.shaheen": {
@@ -7086,7 +8477,7 @@
         "f+2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_30",
       "t7_command": "f+2, 3",
       "t7_hit_level": "high, high",
@@ -7116,6 +8507,11 @@
         "wired": true,
         "mod_damage": "12,20",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 242,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "f+2,3~t7.shaheen.2": {
@@ -7140,7 +8536,7 @@
         "f+2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_31",
       "t7_command": "(f+2), 3",
       "t7_hit_level": "high",
@@ -7163,6 +8559,11 @@
         "wired": true,
         "mod_damage": "12,20",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 242,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "f+2,4~t7.shaheen": {
@@ -7187,7 +8588,7 @@
         "f+2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_32",
       "t7_command": "f+2, 4",
       "t7_hit_level": "high, low",
@@ -7217,6 +8618,11 @@
         "mod_damage": "12,13",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 260,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "f+2,4~t7.shaheen.2": {
@@ -7241,7 +8647,7 @@
         "f+2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_33",
       "t7_command": "(f+2), 4",
       "t7_hit_level": "low",
@@ -7265,6 +8671,11 @@
         "mod_damage": "12,13",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 260,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "f+2,4,4~t7.shaheen": {
@@ -7289,7 +8700,7 @@
         "f+2,4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_34",
       "t7_command": "f+2, 4, 4",
       "t7_hit_level": "high, low, high",
@@ -7320,6 +8731,11 @@
         "mod_damage": "12,13,21",
         "on_ch": "KND?",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+2,4,4~t7.shaheen.2": {
@@ -7344,7 +8760,7 @@
         "f+2,4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_35",
       "t7_command": "(f+2), 4, 4",
       "t7_hit_level": "low, high",
@@ -7374,6 +8790,11 @@
         "mod_damage": "12,13,21",
         "on_ch": "KND?",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+2,4,4~t7.shaheen.3": {
@@ -7398,7 +8819,7 @@
         "f+2,4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_36",
       "t7_command": "(f+2), (4), 4",
       "t7_hit_level": "high",
@@ -7421,6 +8842,11 @@
         "mod_damage": "12,13,21",
         "on_ch": "KND?",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+3~t7.shaheen": {
@@ -7445,7 +8871,7 @@
         "f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_37",
       "t7_command": "f+3",
       "t7_hit_level": "mid",
@@ -7468,6 +8894,11 @@
         "id": "shaheen_37",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 79,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f+4~t7.shaheen": {
@@ -7492,7 +8923,7 @@
         "f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_38",
       "t7_command": "f+4",
       "t7_hit_level": "high",
@@ -7515,6 +8946,11 @@
         "id": "shaheen_38",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 214,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f+3+4~t7.shaheen": {
@@ -7539,7 +8975,7 @@
         "f+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_39",
       "t7_command": "f+3+4",
       "t7_hit_level": "mid, mid",
@@ -7568,6 +9004,11 @@
         "wired": true,
         "mod_damage": "14,14",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f+3+4~t7.shaheen.2": {
@@ -7592,7 +9033,7 @@
         "f+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_40",
       "t7_command": "f+3+4 (second hit only)",
       "t7_hit_level": "mid",
@@ -7615,6 +9056,11 @@
         "wired": true,
         "mod_damage": "14,14",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+3~t7.shaheen": {
@@ -7639,7 +9085,7 @@
         "f,F+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_41",
       "t7_command": "f, F+3 (or f, f, f+3) (close)",
       "t7_hit_level": "mid",
@@ -7658,7 +9104,12 @@
         "total": 18
       },
       "knockdown": true,
-      "input_note": "(or f, f, f+3) (close)"
+      "input_note": "(or f, f, f+3) (close)",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+3~t7.shaheen.2": {
       "name": "SCIMITAR f,F+3",
@@ -7682,7 +9133,7 @@
         "f,F+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_42",
       "t7_command": "f, F+3 (or f, f, f+3) (far)",
       "t7_hit_level": "mid",
@@ -7694,7 +9145,12 @@
       "merge_source": "t7:shaheen_42",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(or f, f, f+3) (far)"
+      "input_note": "(or f, f, f+3) (far)",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,f+2": {
       "name": "Antares",
@@ -7718,7 +9174,7 @@
         "f,f,f+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_43",
       "t7_command": "f, f, f+2 (or WR 2)",
       "t7_hit_level": "mid",
@@ -7730,7 +9186,12 @@
       "merge_source": "t7:shaheen_43",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(or WR 2)"
+      "input_note": "(or WR 2)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,b+2~t7.shaheen": {
       "name": "Hornet",
@@ -7754,7 +9215,7 @@
         "f,b+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_44",
       "t7_command": "f, b+2",
       "t7_hit_level": "high",
@@ -7777,6 +9238,11 @@
         "id": "shaheen_44",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+2~t7.shaheen": {
@@ -7801,7 +9267,7 @@
         "d/f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_45",
       "t7_command": "d/f+2",
       "t7_hit_level": "mid",
@@ -7824,6 +9290,11 @@
         "id": "shaheen_45",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 269,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d/f+3": {
@@ -7848,7 +9319,7 @@
         "d/f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_46",
       "t7_command": "d/f+3",
       "t7_hit_level": "mid",
@@ -7870,6 +9341,11 @@
         "id": "shaheen_46",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 143,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d/f+4~t7.shaheen": {
@@ -7894,7 +9370,7 @@
         "d/f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_47",
       "t7_command": "d/f+4",
       "t7_hit_level": "mid",
@@ -7916,6 +9392,11 @@
         "id": "shaheen_47",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 205,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d+2~t7.shaheen": {
@@ -7940,7 +9421,7 @@
         "d+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_48",
       "t7_command": "d+2",
       "t7_hit_level": "mid",
@@ -7962,6 +9443,11 @@
         "id": "shaheen_48",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 137,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d+3~t7.shaheen": {
@@ -7986,7 +9472,7 @@
         "d+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_49",
       "t7_command": "d+3",
       "t7_hit_level": "low",
@@ -8009,6 +9495,11 @@
         "id": "shaheen_49",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+4~t7.shaheen": {
@@ -8033,7 +9524,7 @@
         "d+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_50",
       "t7_command": "d+4",
       "t7_hit_level": "low",
@@ -8055,6 +9546,11 @@
         "id": "shaheen_50",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 339,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d/b+2": {
@@ -8079,7 +9575,7 @@
         "d/b+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_51",
       "t7_command": "d/b+2",
       "t7_hit_level": "mid",
@@ -8101,6 +9597,11 @@
         "id": "shaheen_51",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 146,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d/b+2,1": {
@@ -8125,7 +9626,7 @@
         "d/b+2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_52",
       "t7_command": "d/b+2, 1",
       "t7_hit_level": "mid, high",
@@ -8156,6 +9657,11 @@
         "mod_damage": "11,24",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+2,1~t7.shaheen": {
@@ -8180,7 +9686,7 @@
         "d/b+2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_53",
       "t7_command": "(d/b+2), 1",
       "t7_hit_level": "high",
@@ -8204,6 +9710,11 @@
         "mod_damage": "11,24",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+3": {
@@ -8228,7 +9739,7 @@
         "d/b+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_54",
       "t7_command": "d/b+3",
       "t7_hit_level": "low",
@@ -8250,6 +9761,11 @@
         "id": "shaheen_54",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 138,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d/b+3,4": {
@@ -8274,7 +9790,7 @@
         "d/b+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_55",
       "t7_command": "d/b+3, 4",
       "t7_hit_level": "low, high",
@@ -8305,6 +9821,11 @@
         "mod_damage": "15,30",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+3,4~t7.shaheen": {
@@ -8329,7 +9850,7 @@
         "d/b+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_56",
       "t7_command": "(d/b+3), 4",
       "t7_hit_level": "high",
@@ -8353,6 +9874,11 @@
         "mod_damage": "15,30",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+4": {
@@ -8377,7 +9903,7 @@
         "d/b+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_57",
       "t7_command": "d/b+4",
       "t7_hit_level": "high",
@@ -8401,6 +9927,11 @@
         "id": "shaheen_57",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 148,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "b+1~t7.shaheen": {
@@ -8425,7 +9956,7 @@
         "b+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_58",
       "t7_command": "b+1",
       "t7_hit_level": "mid",
@@ -8447,6 +9978,11 @@
         "id": "shaheen_58",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 216,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "b+1,D": {
@@ -8471,7 +10007,7 @@
         "b+1,D"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_59",
       "t7_command": "b+1, D",
       "t7_hit_level": "-",
@@ -8486,6 +10022,11 @@
         "notation": "b+1, D",
         "id": "shaheen_59",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+3~t7.shaheen": {
@@ -8510,7 +10051,7 @@
         "b+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_60",
       "t7_command": "b+3",
       "t7_hit_level": "mid",
@@ -8533,6 +10074,11 @@
         "id": "shaheen_60",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 103,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "b+4~t7.shaheen": {
@@ -8557,7 +10103,7 @@
         "b+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_61",
       "t7_command": "b+4",
       "t7_hit_level": "mid",
@@ -8579,6 +10125,11 @@
         "id": "shaheen_61",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 112,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "2,1,4,1,3,3,3,3+4,4": {
@@ -8603,7 +10154,7 @@
         "2,1,4,1,3,3,3,3+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_62",
       "t7_command": "2, 1, 4, 1, 3, 3, 3, 3+4, 4",
       "t7_hit_level": "-",
@@ -8623,6 +10174,11 @@
         "notation": "2, 1, 4, 1, 3, 3, 3, 3+4, 4",
         "id": "shaheen_62",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 199,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "BT.1": {
@@ -8647,7 +10203,7 @@
         "BT.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_63",
       "t7_command": "BT 1",
       "t7_hit_level": "high",
@@ -8657,7 +10213,12 @@
       "t7_on_hit": "+3",
       "t7_on_ch": "+3",
       "merge_source": "t7:shaheen_63",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.2~t7.shaheen": {
       "name": "Reverse Edge",
@@ -8681,7 +10242,7 @@
         "BT.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_64",
       "t7_command": "BT 2",
       "t7_hit_level": "mid",
@@ -8692,7 +10253,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:shaheen_64",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.3": {
       "name": "SCIMITAR BT.3",
@@ -8716,7 +10282,7 @@
         "BT.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_65",
       "t7_command": "BT 3 (or 4)",
       "t7_hit_level": "high",
@@ -8728,7 +10294,12 @@
       "merge_source": "t7:shaheen_65",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(or 4)"
+      "input_note": "(or 4)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.1": {
       "name": "SCIMITAR FC.1",
@@ -8752,7 +10323,7 @@
         "FC.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_66",
       "t7_command": "FC 1",
       "t7_hit_level": "s. mid",
@@ -8762,7 +10333,12 @@
       "t7_on_hit": "+6",
       "t7_on_ch": "+6",
       "merge_source": "t7:shaheen_66",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.2": {
       "name": "SCIMITAR FC.2",
@@ -8786,7 +10362,7 @@
         "FC.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_67",
       "t7_command": "FC 2",
       "t7_hit_level": "s. mid",
@@ -8796,7 +10372,12 @@
       "t7_on_hit": "+7",
       "t7_on_ch": "+7",
       "merge_source": "t7:shaheen_67",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.3": {
       "name": "SCIMITAR FC.3",
@@ -8820,7 +10401,7 @@
         "FC.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_68",
       "t7_command": "FC 3",
       "t7_hit_level": "low",
@@ -8830,7 +10411,12 @@
       "t7_on_hit": "-3",
       "t7_on_ch": "-3",
       "merge_source": "t7:shaheen_68",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.4": {
       "name": "SCIMITAR FC.4",
@@ -8854,7 +10440,7 @@
         "FC.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_69",
       "t7_command": "FC 4",
       "t7_hit_level": "low",
@@ -8864,7 +10450,12 @@
       "t7_on_hit": "-4",
       "t7_on_ch": "-4",
       "merge_source": "t7:shaheen_69",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.d/f,d,D/F+3": {
       "name": "Sand Storm",
@@ -8888,7 +10479,7 @@
         "FC.d/f,d,D/F+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_70",
       "t7_command": "FC d/f, d, D/F+3",
       "t7_hit_level": "low",
@@ -8899,7 +10490,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:shaheen_70",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,F": {
       "name": "SCIMITAR f,f,F",
@@ -8923,7 +10519,7 @@
         "f,f,F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_71",
       "t7_command": "WR f, f, F (Full Screen)",
       "t7_hit_level": "mid",
@@ -8935,7 +10531,12 @@
       "merge_source": "t7:shaheen_71",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "WR (Full Screen)"
+      "input_note": "WR (Full Screen)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "t7.shaheen_72": {
       "name": "SCIMITAR While enemy is on the ground... WR f, f, F (Full Screen)",
@@ -8957,7 +10558,7 @@
       "anim_ref": "t7:shaheen:shaheen_72",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_72",
       "t7_command": "While enemy is on the ground... WR f, f, F (Full Screen)",
       "t7_hit_level": "low",
@@ -8979,6 +10580,11 @@
         "notation": "While enemy is on the ground... WR f, f, F (Full Screen)",
         "id": "shaheen_72",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4~t7.shaheen.2": {
@@ -9003,7 +10609,7 @@
         "4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_73",
       "t7_command": "WR 4",
       "t7_hit_level": "low",
@@ -9027,6 +10633,11 @@
         "id": "shaheen_20",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 199,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "1+2~t7.shaheen": {
@@ -9051,7 +10662,7 @@
         "1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_74",
       "t7_command": "WR 1+2",
       "t7_hit_level": "mid",
@@ -9063,7 +10674,12 @@
       "merge_source": "t7:shaheen_74",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "WR"
+      "input_note": "WR",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "WS.1": {
       "name": "Albireo",
@@ -9087,7 +10703,7 @@
         "WS.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_75",
       "t7_command": "WS 1",
       "t7_hit_level": "mid",
@@ -9097,7 +10713,12 @@
       "t7_on_hit": "+4",
       "t7_on_ch": "+12",
       "merge_source": "t7:shaheen_75",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.2": {
       "name": "Hawk Edge",
@@ -9121,7 +10742,7 @@
         "WS.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_76",
       "t7_command": "WS 2",
       "t7_hit_level": "mid",
@@ -9131,7 +10752,12 @@
       "t7_on_hit": "STUN",
       "t7_on_ch": "STUN",
       "merge_source": "t7:shaheen_76",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.3": {
       "name": "SCIMITAR WS.3",
@@ -9155,7 +10781,7 @@
         "WS.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_77",
       "t7_command": "WS 3",
       "t7_hit_level": "mid",
@@ -9165,7 +10791,12 @@
       "t7_on_hit": "0",
       "t7_on_ch": "0",
       "merge_source": "t7:shaheen_77",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.3,3": {
       "name": "Double Scorpion",
@@ -9189,7 +10820,7 @@
         "WS.3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_78",
       "t7_command": "WS 3, 3",
       "t7_hit_level": "mid, mid",
@@ -9207,7 +10838,12 @@
         ],
         "total": 36
       },
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.3,3~t7.shaheen": {
       "name": "SCIMITAR WS.3,3",
@@ -9231,7 +10867,7 @@
         "WS.3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_79",
       "t7_command": "WS (3), 3",
       "t7_hit_level": "mid",
@@ -9242,7 +10878,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:shaheen_79",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 195,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.4": {
       "name": "SCIMITAR WS.4",
@@ -9266,7 +10907,7 @@
         "WS.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_80",
       "t7_command": "WS 4",
       "t7_hit_level": "mid",
@@ -9276,7 +10917,12 @@
       "t7_on_hit": "+5",
       "t7_on_ch": "+5",
       "merge_source": "t7:shaheen_80",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "t7.shaheen_81": {
       "name": "SCIMITAR Face Up, Feet Towards+3 or (After Rolling Forward)",
@@ -9298,7 +10944,7 @@
       "anim_ref": "t7:shaheen:shaheen_81",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_81",
       "t7_command": "Face Up, Feet Towards+3 or (After Rolling Forward)",
       "t7_hit_level": "low",
@@ -9321,6 +10967,11 @@
         "notation": "Face Up, Feet Towards+3 or (After Rolling Forward)",
         "id": "shaheen_81",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "t7.shaheen_82": {
@@ -9343,7 +10994,7 @@
       "anim_ref": "t7:shaheen:shaheen_82",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_82",
       "t7_command": "Face Up, Feet Towards+4 or (After Rolling Forward)",
       "t7_hit_level": "mid",
@@ -9366,6 +11017,11 @@
         "notation": "Face Up, Feet Towards+4 or (After Rolling Forward)",
         "id": "shaheen_82",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "FUFT.d+3": {
@@ -9390,7 +11046,7 @@
         "FUFT.d+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_83",
       "t7_command": "Face Up, Feet Towards, d+3 (or 4)",
       "t7_hit_level": "low",
@@ -9401,7 +11057,12 @@
       "t7_on_ch": "-3",
       "merge_source": "t7:shaheen_83",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "Face Up, Feet Towards, (or 4)"
+      "input_note": "Face Up, Feet Towards, (or 4)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FUFT.3+4": {
       "name": "SCIMITAR FUFT.3+4",
@@ -9425,7 +11086,7 @@
         "FUFT.3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_84",
       "t7_command": "Face Up, Feet Towards+3+4",
       "t7_hit_level": "mid",
@@ -9437,7 +11098,12 @@
       "merge_source": "t7:shaheen_84",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Up, Feet Towards+"
+      "input_note": "Face Up, Feet Towards+",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "t7.shaheen_85": {
       "name": "SCIMITAR Face Up, Feet Towards, Roll Forward+1+2",
@@ -9459,7 +11125,7 @@
       "anim_ref": "t7:shaheen:shaheen_85",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_85",
       "t7_command": "Face Up, Feet Towards, Roll Forward+1+2",
       "t7_hit_level": "mid",
@@ -9483,6 +11149,11 @@
         "notation": "Face Up, Feet Towards, Roll Forward+1+2",
         "id": "shaheen_85",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "FDFA.3": {
@@ -9507,7 +11178,7 @@
         "FDFA.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_86",
       "t7_command": "Face Down, Feet Away+3",
       "t7_hit_level": "low",
@@ -9518,7 +11189,12 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:shaheen_86",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "Face Down, Feet Away+"
+      "input_note": "Face Down, Feet Away+",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FDFA.4": {
       "name": "SCIMITAR FDFA.4",
@@ -9542,7 +11218,7 @@
         "FDFA.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_87",
       "t7_command": "Face Down, Feet Away+4 (close)",
       "t7_hit_level": "mid",
@@ -9554,7 +11230,12 @@
       "merge_source": "t7:shaheen_87",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Down, Feet Away+ (close)"
+      "input_note": "Face Down, Feet Away+ (close)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FDFA.4~t7.shaheen": {
       "name": "SCIMITAR FDFA.4",
@@ -9578,7 +11259,7 @@
         "FDFA.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_88",
       "t7_command": "Face Down, Feet Away+4 (far)",
       "t7_hit_level": "mid",
@@ -9590,7 +11271,12 @@
       "merge_source": "t7:shaheen_88",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Down, Feet Away+ (far)"
+      "input_note": "Face Down, Feet Away+ (far)",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "t7.shaheen_89": {
       "name": "SCIMITAR (Upon Landing) f",
@@ -9612,7 +11298,7 @@
       "anim_ref": "t7:shaheen:shaheen_89",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_89",
       "t7_command": "(Upon Landing) f",
       "t7_hit_level": "mid",
@@ -9635,6 +11321,11 @@
         "notation": "(Upon Landing) f",
         "id": "shaheen_89",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f,D/F": {
@@ -9659,7 +11350,7 @@
         "d/f,D/F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_90",
       "t7_command": "d/f, D/F",
       "t7_hit_level": "-",
@@ -9677,6 +11368,11 @@
         "wired": true,
         "hit_level": "(SNK)",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,3,D/F": {
@@ -9701,7 +11397,7 @@
         "1,2,3,D/F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_91",
       "t7_command": "1, 2, 3, D/F",
       "t7_hit_level": "high, high, high",
@@ -9729,6 +11425,11 @@
         "notation": "1, 2, 3, D/F",
         "id": "shaheen_91",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,3,D/F~t7.shaheen": {
@@ -9753,7 +11454,7 @@
         "1,2,3,D/F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_92",
       "t7_command": "(1), 2, 3, D/F",
       "t7_hit_level": "high, high",
@@ -9780,6 +11481,11 @@
         "notation": "1, 2, 3, D/F",
         "id": "shaheen_91",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,3,D/F~t7.shaheen.2": {
@@ -9804,7 +11510,7 @@
         "1,2,3,D/F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_93",
       "t7_command": "(1), (2), 3, D/F",
       "t7_hit_level": "high",
@@ -9824,6 +11530,11 @@
         "notation": "1, 2, 3, D/F",
         "id": "shaheen_91",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3,D/F": {
@@ -9848,7 +11559,7 @@
         "3,D/F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_94",
       "t7_command": "3, D/F",
       "t7_hit_level": "high",
@@ -9870,6 +11581,11 @@
         "id": "shaheen_94",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+2,4,D/F": {
@@ -9894,7 +11610,7 @@
         "f+2,4,D/F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_95",
       "t7_command": "f+2, 4, D/F",
       "t7_hit_level": "high, low",
@@ -9924,6 +11640,11 @@
         "mod_damage": "12,13",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+2,4,D/F~t7.shaheen": {
@@ -9948,7 +11669,7 @@
         "f+2,4,D/F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_96",
       "t7_command": "(f+2), 4, D/F",
       "t7_hit_level": "low",
@@ -9971,6 +11692,11 @@
         "mod_damage": "12,13",
         "on_ch": "KND",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+3+4,D/F": {
@@ -9995,7 +11721,7 @@
         "f+3+4,D/F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_97",
       "t7_command": "f+3+4, D/F",
       "t7_hit_level": "mid, mid",
@@ -10025,6 +11751,11 @@
         "wired": true,
         "mod_damage": "14,14",
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+3,D/F": {
@@ -10049,7 +11780,7 @@
         "d+3,D/F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_98",
       "t7_command": "d+3, D/F",
       "t7_hit_level": "low",
@@ -10071,6 +11802,11 @@
         "id": "shaheen_98",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+2,D/F": {
@@ -10095,7 +11831,7 @@
         "d/b+2,D/F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_99",
       "t7_command": "d/b+2, D/F",
       "t7_hit_level": "mid",
@@ -10117,6 +11853,11 @@
         "id": "shaheen_99",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 106,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "SNK.1~t7.shaheen": {
@@ -10141,7 +11882,7 @@
         "SNK.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_100",
       "t7_command": "SNK 1",
       "t7_hit_level": "high",
@@ -10151,7 +11892,12 @@
       "t7_on_hit": "+5",
       "t7_on_ch": "+12",
       "merge_source": "t7:shaheen_100",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SNK.2~t7.shaheen": {
       "name": "Maelstrom",
@@ -10175,7 +11921,7 @@
         "SNK.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_101",
       "t7_command": "SNK 2",
       "t7_hit_level": "mid",
@@ -10186,7 +11932,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:shaheen_101",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SNK.3~t7.shaheen": {
       "name": "Hunting Falcon Dive",
@@ -10210,7 +11961,7 @@
         "SNK.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_102",
       "t7_command": "SNK 3 (close)",
       "t7_hit_level": "mid",
@@ -10229,7 +11980,12 @@
         "total": 18
       },
       "knockdown": true,
-      "input_note": "(close)"
+      "input_note": "(close)",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SNK.3~t7.shaheen.2": {
       "name": "SCIMITAR SNK.3",
@@ -10253,7 +12009,7 @@
         "SNK.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_103",
       "t7_command": "SNK 3 (far)",
       "t7_hit_level": "mid",
@@ -10265,7 +12021,12 @@
       "merge_source": "t7:shaheen_103",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(far)"
+      "input_note": "(far)",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 227,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SNK.3+4": {
       "name": "Low Glide",
@@ -10289,7 +12050,7 @@
         "SNK.3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_104",
       "t7_command": "SNK 3+4",
       "t7_hit_level": "low",
@@ -10300,7 +12061,12 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:shaheen_104",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "SNK.1+2~t7.shaheen": {
       "name": "Assault Tackle",
@@ -10324,7 +12090,7 @@
         "SNK.1+2"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_105",
       "t7_command": "SNK 1+2",
       "t7_hit_level": "mid throw",
@@ -10337,7 +12103,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+4": {
       "name": "Elnath",
@@ -10361,7 +12132,7 @@
         "f,F+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_106",
       "t7_command": "f, F+4",
       "t7_hit_level": "high",
@@ -10384,6 +12155,11 @@
         "id": "shaheen_106",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "R.1+2": {
@@ -10408,7 +12184,7 @@
         "R.1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_107",
       "t7_command": "(During Rage) 1+2",
       "t7_hit_level": "mid",
@@ -10420,7 +12196,12 @@
       "merge_source": "t7:shaheen_107",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Rage)"
+      "input_note": "(During Rage)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "R.d/b+2,4": {
       "name": "SCIMITAR R.d/b+2,4",
@@ -10444,7 +12225,7 @@
         "R.d/b+2,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_108",
       "t7_command": "(During Rage) d/b+2, 4",
       "t7_hit_level": "mid, high",
@@ -10462,7 +12243,12 @@
         ],
         "total": 24
       },
-      "input_note": "(During Rage)"
+      "input_note": "(During Rage)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "R.d/b+2,4~t7.shaheen": {
       "name": "SCIMITAR R.d/b+2,4",
@@ -10486,7 +12272,7 @@
         "R.d/b+2,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_109",
       "t7_command": "(During Rage) (d/b+2), 4",
       "t7_hit_level": "high",
@@ -10497,7 +12283,12 @@
       "t7_on_ch": "S!",
       "merge_source": "t7:shaheen_109",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Rage)"
+      "input_note": "(During Rage)",
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 247,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "R.d/b+2,4,D/F": {
       "name": "Rage Drive",
@@ -10521,7 +12312,7 @@
         "R.d/b+2,4,D/F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_110",
       "t7_command": "(During Rage) d/b+2, 4, D/F",
       "t7_hit_level": "mid, high",
@@ -10539,7 +12330,12 @@
         ],
         "total": 24
       },
-      "input_note": "(During Rage)"
+      "input_note": "(During Rage)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/b+1+2": {
       "name": "Shalua",
@@ -10563,7 +12359,7 @@
         "d/b+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_111",
       "t7_command": "d/b+1+2",
       "t7_hit_level": "mid",
@@ -10587,6 +12383,11 @@
         "id": "shaheen_111",
         "wired": true,
         "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1+3~t7.shaheen": {
@@ -10611,7 +12412,7 @@
         "1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_112",
       "t7_command": "Approach enemy... 1+3",
       "t7_hit_level": "high throw",
@@ -10625,7 +12426,12 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 288,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "2+4~t7.shaheen": {
       "name": "Aldebaran",
@@ -10649,7 +12455,7 @@
         "2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_113",
       "t7_command": "Approach enemy... 2+4",
       "t7_hit_level": "high throw",
@@ -10663,7 +12469,12 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 289,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+1+3": {
       "name": "Desert Fang",
@@ -10687,7 +12498,7 @@
         "f+1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_114",
       "t7_command": "Approach enemy... f+1+3",
       "t7_hit_level": "high throw",
@@ -10701,7 +12512,12 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+2+4~t7.shaheen": {
       "name": "Aldebaran",
@@ -10725,7 +12541,7 @@
         "f+2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_115",
       "t7_command": "Approach enemy... f+2+4",
       "t7_hit_level": "high throw",
@@ -10739,7 +12555,12 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "shaheen",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1+4": {
       "name": "Wezen",
@@ -10763,7 +12584,7 @@
         "d/f+1+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_116",
       "t7_command": "Approach enemy... d/f+1+4",
       "t7_hit_level": "high throw",
@@ -10777,7 +12598,12 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SIDE_L.1+3": {
       "name": "Chasm Drop",
@@ -10801,7 +12627,7 @@
         "SIDE_L.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_117",
       "t7_command": "Approach from left side... 1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -10815,7 +12641,12 @@
       "input_note": "Approach from left side... (or 2+4)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SIDE_R.1+3": {
       "name": "Axel Spinner",
@@ -10839,7 +12670,7 @@
         "SIDE_R.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_118",
       "t7_command": "Approach from right side...  1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -10853,7 +12684,12 @@
       "input_note": "Approach from right side... (or 2+4)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BACK.1+3": {
       "name": "Silent Death",
@@ -10877,7 +12713,7 @@
         "BACK.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_119",
       "t7_command": "Approach from behind... 1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -10891,7 +12727,12 @@
       "input_note": "Approach from behind... (or 2+4)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 288,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "t7.shaheen_120": {
       "name": "SCIMITAR WR f, f, F (Mid Screen)",
@@ -10913,7 +12754,7 @@
       "anim_ref": "t7:shaheen:shaheen_120",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_120",
       "t7_command": "WR f, f, F (Mid Screen)",
       "t7_hit_level": "mid",
@@ -10936,6 +12777,11 @@
         "notation": "WR f, f, F (Mid Screen)",
         "id": "shaheen_120",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "TACKLE.1": {
@@ -10960,7 +12806,7 @@
         "TACKLE.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_121",
       "t7_command": "(During Tackle) 1 (or 2)",
       "t7_hit_level": "-",
@@ -10972,7 +12818,12 @@
       "merge_source": "t7:shaheen_121",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Tackle) (or 2)"
+      "input_note": "(During Tackle) (or 2)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "TACKLE.1,1": {
       "name": "SCIMITAR TACKLE.1,1",
@@ -10996,7 +12847,7 @@
         "TACKLE.1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_122",
       "t7_command": "(During Tackle) 1/2, 1/2",
       "t7_hit_level": "-",
@@ -11015,7 +12866,12 @@
         "total": 10
       },
       "knockdown": true,
-      "input_note": "(During Tackle)"
+      "input_note": "(During Tackle)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "TACKLE.1,1,1": {
       "name": "SCIMITAR TACKLE.1,1,1",
@@ -11039,7 +12895,7 @@
         "TACKLE.1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_123",
       "t7_command": "(During Tackle) 1/2, 1/2, 1/2",
       "t7_hit_level": "-",
@@ -11059,7 +12915,12 @@
         "total": 15
       },
       "knockdown": true,
-      "input_note": "(During Tackle)"
+      "input_note": "(During Tackle)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "TACKLE.1,1,1,1": {
       "name": "SCIMITAR TACKLE.1,1,1,1",
@@ -11083,7 +12944,7 @@
         "TACKLE.1,1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_124",
       "t7_command": "(During Tackle) 1/2, 1/2, 1/2, 1/2",
       "t7_hit_level": "-",
@@ -11104,7 +12965,12 @@
         "total": 30
       },
       "knockdown": true,
-      "input_note": "(During Tackle)"
+      "input_note": "(During Tackle)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "t7.shaheen_125": {
       "name": "Falcon Shield",
@@ -11126,7 +12992,7 @@
       "anim_ref": "t7:shaheen:shaheen_125",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "shaheen_125",
       "t7_command": "Time with enemy punch... b+1+2",
       "t7_hit_level": "-",
@@ -11143,29 +13009,12 @@
         "notation": "Time with enemy punch... b+1+2",
         "id": "shaheen_125",
         "wired": true
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
-    },
-    "3+4": {
-      "name": "Wheel Spin",
-      "input": "3+4",
-      "t8_source": "shaheen",
-      "t8_id": "Shaheen-3+4",
-      "t8_damage": "20",
-      "startup": 0.3,
-      "active": 0.033,
-      "recovery": 0.317,
-      "damage": 20,
-      "limb": "both",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 10,
-      "anim_ref": "UNMAPPED:t7-clip-pending",
-      "input_slots": [
-        "3+4"
-      ],
-      "move_class": "strike",
-      "note": "Mid; on block -9; knockdown on hit",
-      "string_referenced_restore_20261024": true
     }
   },
   "restored_from_sweep_338": {
@@ -132379,9 +134228,9 @@
         "jin 177",
         "jin 231"
       ],
-      "status": "UNMAPPED — left unwired. A string needs a verified sequence clip and no such row exists in-bank. No string ender was rewired to a single-hit row."
+      "status": "UNMAPPED \u2014 left unwired. A string needs a verified sequence clip and no such row exists in-bank. No string ender was rewired to a single-hit row."
     },
-    "legacy_strings_arrays_note": "Legacy `strings` arrays are NOT consumed by fighter.js; single-button hits on chord rows in them (1,2 hit LP1 -> row 184) are left unchanged — do not 'fix' them by guessing a single row.",
+    "legacy_strings_arrays_note": "Legacy `strings` arrays are NOT consumed by fighter.js; single-button hits on chord rows in them (1,2 hit LP1 -> row 184) are left unchanged \u2014 do not 'fix' them by guessing a single row.",
     "other_keys_referencing_unmapped_rows_unchanged": [],
     "runtime_effect_of_unmapped_marking": "Marked entries carry no exact anim_ref/t3_row claim, so the runtime falls to donor/match/generic for those presses and the editor shows them as unmapped (not offered as swap targets) until a verified exact row lands. The former row is kept in t3_unmapped_former_row for audit trail only."
   }

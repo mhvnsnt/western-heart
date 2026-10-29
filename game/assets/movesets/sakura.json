@@ -374,14 +374,14 @@
       "t3_row": 270,
       "damage": 6,
       "throw": false,
-      "fallback": "directional — no motion inputs in T3 bank"
+      "fallback": "directional \u2014 no motion inputs in T3 bank"
     },
     {
       "input": "d+4",
       "t3_row": 371,
       "damage": 2,
       "throw": false,
-      "fallback": "directional — no motion inputs in T3 bank"
+      "fallback": "directional \u2014 no motion inputs in T3 bank"
     },
     {
       "input": "1+2+3+4",
@@ -854,14 +854,19 @@
       "knock": 4.2,
       "soulGain": 12,
       "anim_ref": "wh:sakura:sig:bloom-opening",
-      "community_base": "game/assets/anim/oss/community/88_06.fbx",
-      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "S"
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "Saku - bloom. The desert flower opens: spinning petal kick flurry."
+      "note": "Saku - bloom. The desert flower opens: spinning petal kick flurry.",
+      "community_base": "game/assets/anim/oss/community/88_06.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 222,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "D+P": {
       "name": "You Can't Hit a Song [WH SIGNATURE]",
@@ -875,8 +880,6 @@
       "knock": 4.2,
       "soulGain": 11,
       "anim_ref": "wh:sakura:sig:you-cant-hit-a-song",
-      "community_base": "game/assets/anim/oss/community/144_13.fbx",
-      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "D+P",
         "D",
@@ -884,7 +887,14 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "You can't hit a song. Dodge-sway into a dancing strike that was never where you struck."
+      "note": "You can't hit a song. Dodge-sway into a dancing strike that was never where you struck.",
+      "community_base": "game/assets/anim/oss/community/144_13.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 93,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "P+K": {
       "name": "Called By Name [WH SIGNATURE]",
@@ -908,7 +918,12 @@
       "note": "She remembers everyone's name. A gentle-looking redirect throw that says the old name out loud, once.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true
+      "isGrab": true,
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 270,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Bloom Opening [WH SIGNATURE]",
@@ -922,15 +937,20 @@
       "knock": 4.2,
       "soulGain": 12,
       "anim_ref": "wh:sakura:sig:bloom-opening",
-      "community_base": "game/assets/anim/oss/community/88_06.fbx",
-      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "1+2"
       ],
       "move_class": "signature",
       "wh_original": true,
       "note": "Saku - bloom. The desert flower opens: spinning petal kick flurry.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "community_base": "game/assets/anim/oss/community/88_06.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 314,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "SAKU RA 1+2 (T3 xiaoyu r314)",
@@ -964,15 +984,20 @@
       "knock": 4.2,
       "soulGain": 11,
       "anim_ref": "wh:sakura:sig:you-cant-hit-a-song",
-      "community_base": "game/assets/anim/oss/community/144_13.fbx",
-      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "d+1"
       ],
       "move_class": "signature",
       "wh_original": true,
       "note": "You can't hit a song. Dodge-sway into a dancing strike that was never where you struck.",
-      "input_remapped_from": "D+P"
+      "input_remapped_from": "D+P",
+      "community_base": "game/assets/anim/oss/community/144_13.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 93,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+1__main": {
       "name": "Sunset Fan",
@@ -1001,7 +1026,12 @@
         ],
         "total": 21
       },
-      "note": "Mid, Mid, Mid; on block -5"
+      "note": "Mid, Mid, Mid; on block -5",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+4": {
       "name": "Called By Name [WH SIGNATURE]",
@@ -1025,7 +1055,12 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 232,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+3": {
       "name": "SAKU RA f+3 (T3 xiaoyu r274)",
@@ -1067,7 +1102,12 @@
         "f+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 64,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+4": {
       "name": "SAKU RA f+4 (T3 xiaoyu r309)",
@@ -1109,7 +1149,12 @@
         "f+4"
       ],
       "move_class": "strike",
-      "note": "High; on block +1"
+      "note": "High; on block +1",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 121,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "u+3": {
       "name": "SAKU RA u+3 (T3 xiaoyu r275)",
@@ -1234,7 +1279,12 @@
         "f+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -16"
+      "note": "Mid; on block -16",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 317,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+3+4": {
       "name": "SAKU RA f+3+4 (T3 xiaoyu r335)",
@@ -3635,7 +3685,12 @@
       ],
       "move_class": "strike",
       "note": "Mid; on block -7; knockdown on hit",
-      "t8_input": "1+2"
+      "t8_input": "1+2",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 314,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1,2": {
       "name": "Bayonet",
@@ -3664,7 +3719,12 @@
         ],
         "total": 13
       },
-      "note": "High; on block -3"
+      "note": "High; on block -3",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 185,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1,2,1": {
       "name": "Bayonet Thruster",
@@ -3695,7 +3755,12 @@
         ],
         "total": 33
       },
-      "note": "Mid; on block -9; knockdown on hit"
+      "note": "Mid; on block -9; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 186,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "1+2+3+4": {
       "name": "Ki Charge",
@@ -3715,7 +3780,12 @@
       "input_slots": [
         "1+2+3+4"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 93,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1+3+4": {
       "name": "False Salute",
@@ -3735,7 +3805,12 @@
       "input_slots": [
         "1+3+4"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 93,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1,d+2": {
       "name": "Fan Dance",
@@ -3764,7 +3839,12 @@
         ],
         "total": 15
       },
-      "note": "Mid; on block -3"
+      "note": "Mid; on block -3",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,d+2,1+2": {
       "name": "Birds Flock",
@@ -3795,7 +3875,12 @@
         ],
         "total": 39
       },
-      "note": "Mid; on block -12; knockdown on hit"
+      "note": "Mid; on block -12; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "2,1": {
       "name": "April Showers",
@@ -3824,7 +3909,12 @@
         ],
         "total": 18
       },
-      "note": "Mid; on block -4"
+      "note": "Mid; on block -4",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 201,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "2+3": {
       "name": "Heat Burst",
@@ -3852,7 +3942,12 @@
         ],
         "total": 24
       },
-      "note": "Mid; on block +1"
+      "note": "Mid; on block +1",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "2+3+4": {
       "name": "Greetings",
@@ -3872,7 +3967,12 @@
       "input_slots": [
         "2+3+4"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 93,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "3+4": {
       "name": "Crescent Moon Kick",
@@ -3893,7 +3993,12 @@
         "3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -1c"
+      "note": "Mid; on block -1c",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 64,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "AOP.1": {
       "name": "Move AOP.1 (AOP.1)",
@@ -3914,7 +4019,12 @@
         "AOP.1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -5"
+      "note": "Mid; on block -5",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "AOP.1+2": {
       "name": "Phoenix Cannon",
@@ -3935,7 +4045,12 @@
         "AOP.1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -1; knockdown on hit"
+      "note": "Mid; on block -1; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "AOP.1,2": {
       "name": "Double Serving",
@@ -3964,7 +4079,12 @@
         ],
         "total": 26
       },
-      "note": "High; on block -3"
+      "note": "High; on block -3",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "AOP.1+3": {
       "name": "Feng Huang Zhuan Wu",
@@ -3989,7 +4109,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "AOP.1,4": {
       "name": "Twin Mandarin Blows",
@@ -4018,7 +4143,12 @@
         ],
         "total": 31
       },
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "AOP.2": {
       "name": "Move AOP.2 (AOP.2)",
@@ -4039,7 +4169,12 @@
         "AOP.2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -11"
+      "note": "Mid; on block -11",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "AOP.2,1": {
       "name": "Phoenix Double Palm",
@@ -4068,7 +4203,12 @@
         ],
         "total": 30
       },
-      "note": "Mid; on block -12; knockdown on hit"
+      "note": "Mid; on block -12; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "AOP.3": {
       "name": "Piercing Spear Kick",
@@ -4089,7 +4229,12 @@
         "AOP.3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -16~-11"
+      "note": "Low; on block -16~-11",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 64,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "AOP.3+4": {
       "name": "Sliding Firecracker",
@@ -4110,7 +4255,12 @@
         "AOP.3+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -33"
+      "note": "Low; on block -33",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "AOP.4": {
       "name": "Rising Front Kick",
@@ -4131,7 +4281,12 @@
         "AOP.4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -3"
+      "note": "Mid; on block -3",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "AOP.d": {
       "name": "Butterfly",
@@ -4151,7 +4306,12 @@
       "input_slots": [
         "AOP.d"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 93,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "AOP.d+1": {
       "name": "Phoenix Swipe",
@@ -4172,7 +4332,12 @@
         "AOP.d+1"
       ],
       "move_class": "strike",
-      "note": "Low; on block -12"
+      "note": "Low; on block -12",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "AOP.d+1+2": {
       "name": "Wave Crest",
@@ -4193,7 +4358,12 @@
         "AOP.d+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -8; knockdown on hit"
+      "note": "Mid; on block -8; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "AOP.f+2": {
       "name": "Move AOP.f+2 (AOP.f+2)",
@@ -4214,7 +4384,12 @@
         "AOP.f+2"
       ],
       "move_class": "strike",
-      "note": "Low; on block -8"
+      "note": "Low; on block -8",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "AOP.f+2,1": {
       "name": "Lotus Twist",
@@ -4243,7 +4418,12 @@
         ],
         "total": 18
       },
-      "note": "Low; on block -8"
+      "note": "Low; on block -8",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "AOP.f+3+4": {
       "name": "Roll Ball",
@@ -4263,7 +4443,12 @@
       "input_slots": [
         "AOP.f+3+4"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 93,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "AOP.f+4": {
       "name": "Move AOP.f+4 (AOP.f+4)",
@@ -4284,7 +4469,12 @@
         "AOP.f+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -7"
+      "note": "Low; on block -7",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "AOP.f+4,4": {
       "name": "Flower Garden",
@@ -4313,7 +4503,12 @@
         ],
         "total": 26
       },
-      "note": "Low; on block -6"
+      "note": "Low; on block -6",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "AOP.uf": {
       "name": "Jumping",
@@ -4333,7 +4528,12 @@
       "input_slots": [
         "AOP.uf"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 93,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "AOP.uf+3": {
       "name": "Move AOP.uf+3 (AOP.uf+3)",
@@ -4354,7 +4554,12 @@
         "AOP.uf+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -17; knockdown on hit"
+      "note": "Mid; on block -17; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 64,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "AOP.uf+3,1": {
       "name": "Alley-Oop",
@@ -4376,7 +4581,12 @@
         "AOP.uf+3,1"
       ],
       "move_class": "string",
-      "note": "Mid; on block -4"
+      "note": "Mid; on block -4",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "AOP.uf+3,4": {
       "name": "Double Scissor Kick",
@@ -4405,7 +4615,12 @@
         ],
         "total": 31
       },
-      "note": "Mid; on block -14"
+      "note": "Mid; on block -14",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "AOP.uf+4": {
       "name": "Move AOP.uf+4 (AOP.uf+4)",
@@ -4426,7 +4641,12 @@
         "AOP.uf+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -10"
+      "note": "Mid; on block -10",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "AOP.uf+4,4": {
       "name": "Flower Power",
@@ -4455,7 +4675,12 @@
         ],
         "total": 24
       },
-      "note": "Mid; on block -12"
+      "note": "Mid; on block -12",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "While in the air 3": {
       "name": "Jumping Pirouette",
@@ -4476,7 +4701,12 @@
         "While in the air 3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -2"
+      "note": "Mid; on block -2",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 64,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1": {
       "name": "Great Wall Left",
@@ -4497,7 +4727,12 @@
         "b+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -12"
+      "note": "Mid; on block -12",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 94,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+1+2": {
       "name": "Cross Lifting Palms",
@@ -4525,7 +4760,12 @@
         ],
         "total": 20
       },
-      "note": "Mid, Mid; on block -13; knockdown on hit"
+      "note": "Mid, Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+1+3": {
       "name": "High Mid Parry",
@@ -4545,7 +4785,12 @@
       "input_slots": [
         "b+1+3"
       ],
-      "move_class": "parry"
+      "move_class": "parry",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 93,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+2": {
       "name": "Move b+2 (b+2)",
@@ -4566,7 +4811,12 @@
         "b+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -6"
+      "note": "Mid; on block -6",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 100,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+2,2": {
       "name": "Seven Star Fist",
@@ -4595,7 +4845,12 @@
         ],
         "total": 28
       },
-      "note": "Low; on block -7"
+      "note": "Low; on block -7",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+3": {
       "name": "Peacock Kick",
@@ -4616,7 +4871,12 @@
         "b+3"
       ],
       "move_class": "strike",
-      "note": "High; on block +3"
+      "note": "High; on block +3",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 123,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+3+4": {
       "name": "Rain Dance",
@@ -4636,7 +4896,12 @@
       "input_slots": [
         "b+3+4"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 95,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "b+4": {
       "name": "Move b+4 (b+4)",
@@ -4657,7 +4922,12 @@
         "b+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+4,1": {
       "name": "Moonhare Palm",
@@ -4686,7 +4956,12 @@
         ],
         "total": 30
       },
-      "note": "Mid; on block -14"
+      "note": "Mid; on block -14",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Back Throw": {
       "name": "Crank up",
@@ -4711,7 +4986,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(back to wall).b,b,UB": {
       "name": "Wall Jump Backflip",
@@ -4732,7 +5012,12 @@
         "(back to wall).b,b,UB"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +1"
+      "note": "Mid; on block +1",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "BT.1": {
       "name": "Move BT.1 (BT.1)",
@@ -4753,7 +5038,12 @@
         "BT.1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -5"
+      "note": "Mid; on block -5",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.1+2": {
       "name": "Move BT.1+2 (BT.1+2)",
@@ -4781,7 +5071,12 @@
         ],
         "total": 12
       },
-      "note": "Mid, Mid; on block -6"
+      "note": "Mid, Mid; on block -6",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "BT.1,2": {
       "name": "Waking Prominence",
@@ -4810,7 +5105,12 @@
         ],
         "total": 37
       },
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.1+2,1+2": {
       "name": "Battering Winds",
@@ -4841,7 +5141,12 @@
         ],
         "total": 24
       },
-      "note": "Mid; on block -13"
+      "note": "Mid; on block -13",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "BT.1+2,4": {
       "name": "Battering Storm",
@@ -4871,7 +5176,12 @@
         ],
         "total": 32
       },
-      "note": "High; on block +3; knockdown on hit"
+      "note": "High; on block +3; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.2": {
       "name": "Move BT.2 (BT.2)",
@@ -4892,7 +5202,12 @@
         "BT.2"
       ],
       "move_class": "strike",
-      "note": "High; on block +0"
+      "note": "High; on block +0",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.2,1": {
       "name": "Move 1 (1)",
@@ -4921,7 +5236,12 @@
         ],
         "total": 17
       },
-      "note": "High; on block -1"
+      "note": "High; on block -1",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.2,1,4": {
       "name": "Dark & Stormy",
@@ -4952,7 +5272,12 @@
         ],
         "total": 32
       },
-      "note": "Mid; on block -18; knockdown on hit"
+      "note": "Mid; on block -18; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.2,2": {
       "name": "Move 2 (2)",
@@ -4981,7 +5306,12 @@
         ],
         "total": 21
       },
-      "note": "Mid; on block -7"
+      "note": "Mid; on block -7",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.2,2,1": {
       "name": "Turn of Fortune",
@@ -5014,7 +5344,12 @@
         ],
         "total": 42
       },
-      "note": "Mid, Mid, Mid; on block -11"
+      "note": "Mid, Mid, Mid; on block -11",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.3": {
       "name": "Peg Leg",
@@ -5035,7 +5370,12 @@
         "BT.3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -5"
+      "note": "Mid; on block -5",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 64,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.3+4": {
       "name": "Monkey Kick",
@@ -5056,7 +5396,12 @@
         "BT.3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -16; knockdown on hit"
+      "note": "Mid; on block -16; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "BT.4": {
       "name": "Mistrust",
@@ -5077,7 +5422,12 @@
         "BT.4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -18; knockdown on hit"
+      "note": "Mid; on block -18; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.b+1+2": {
       "name": "Scorched Feather Tackle",
@@ -5098,7 +5448,12 @@
         "BT.b+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -14; knockdown on hit"
+      "note": "Mid; on block -14; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "BT.b+1+3": {
       "name": "High Mid Parry",
@@ -5118,7 +5473,12 @@
       "input_slots": [
         "BT.b+1+3"
       ],
-      "move_class": "parry"
+      "move_class": "parry",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 93,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "BT.d+1+3": {
       "name": "Reverse Low Parry",
@@ -5139,7 +5499,12 @@
         "BT.d+1+3"
       ],
       "move_class": "parry",
-      "note": "knockdown on hit"
+      "note": "knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 93,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "BT.d+3": {
       "name": "Move BT.d+3 (BT.d+3)",
@@ -5160,7 +5525,12 @@
         "BT.d+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -12"
+      "note": "Low; on block -12",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 64,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.d+3+4": {
       "name": "Spin Tornado Up (Down)",
@@ -5180,7 +5550,12 @@
       "input_slots": [
         "BT.d+3+4"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 93,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "BT.d+3,4": {
       "name": "Spinning Crane",
@@ -5209,7 +5584,12 @@
         ],
         "total": 32
       },
-      "note": "High; on block -5; knockdown on hit"
+      "note": "High; on block -5; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.d+4": {
       "name": "Hou Sao Tui",
@@ -5230,7 +5610,12 @@
         "BT.d+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -26"
+      "note": "Low; on block -26",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.db+4": {
       "name": "Reverse Knee Cracker",
@@ -5251,7 +5636,12 @@
         "BT.db+4"
       ],
       "move_class": "special",
-      "note": "Low; on block +2c"
+      "note": "Low; on block +2c",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 222,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.f+1+2": {
       "name": "Spinning Push Hands",
@@ -5272,7 +5662,12 @@
         "BT.f+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -8"
+      "note": "Mid; on block -8",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "BT.f+1+3": {
       "name": "Bei Shen Zhuan Wu",
@@ -5297,7 +5692,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.f+2+3": {
       "name": "Wang's Waning Moon (BT)",
@@ -5322,7 +5722,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT.f+3+4": {
       "name": "Move BT.f+3+4 (BT.f+3+4)",
@@ -5342,7 +5747,12 @@
       "input_slots": [
         "BT.f+3+4"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 93,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "BT.f+3+4,3+4": {
       "name": "Cyclone Left",
@@ -5364,7 +5774,12 @@
         "BT.f+3+4,3+4"
       ],
       "move_class": "string",
-      "note": "Mid; on block -11; knockdown on hit"
+      "note": "Mid; on block -11; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "BT.f,F+3+4": {
       "name": "Back Layout",
@@ -5385,7 +5800,12 @@
         "BT.f,F+3+4"
       ],
       "move_class": "special",
-      "note": "M (t); on block +4; knockdown on hit"
+      "note": "M (t); on block +4; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 93,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "BT.uf+1": {
       "name": "Silver Needle",
@@ -5406,7 +5826,12 @@
         "BT.uf+1"
       ],
       "move_class": "strike",
-      "note": "Low; on block -7"
+      "note": "Low; on block -7",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CH AOP.d+1": {
       "name": "Return to the Nest",
@@ -5431,7 +5856,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 364,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d+1+2": {
       "name": "Phoenix",
@@ -5451,7 +5881,12 @@
       "input_slots": [
         "d+1+2"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 93,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d+2": {
       "name": "Move d+2 (d+2)",
@@ -5472,7 +5907,12 @@
         "d+2"
       ],
       "move_class": "strike",
-      "note": "Special low; on block -4"
+      "note": "Special low; on block -4",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3": {
       "name": "Move d+3 (d+3)",
@@ -5493,7 +5933,12 @@
         "d+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -12"
+      "note": "Low; on block -12",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 142,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d+3+4": {
       "name": "Spinner",
@@ -5514,7 +5959,12 @@
         "d+3+4"
       ],
       "move_class": "special",
-      "note": "special"
+      "note": "special",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 129,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "d+3,4": {
       "name": "Giant Slayer",
@@ -5543,7 +5993,12 @@
         ],
         "total": 33
       },
-      "note": "High; on block +0; knockdown on hit"
+      "note": "High; on block +0; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+1": {
       "name": "Storming Flower",
@@ -5564,7 +6019,12 @@
         "db+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9; knockdown on hit"
+      "note": "Mid; on block -9; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+1+2": {
       "name": "Hypnotist",
@@ -5584,7 +6044,12 @@
       "input_slots": [
         "db+1+2"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 93,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "db+2": {
       "name": "Feathered Fan",
@@ -5605,7 +6070,12 @@
         "db+2"
       ],
       "move_class": "strike",
-      "note": "Low; on block -8"
+      "note": "Low; on block -8",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+3": {
       "name": "Knee Cracker",
@@ -5626,7 +6096,12 @@
         "db+3"
       ],
       "move_class": "special",
-      "note": "Low; on block +2c"
+      "note": "Low; on block +2c",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 0,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "db+4": {
       "name": "Nutcracker",
@@ -5647,7 +6122,12 @@
         "db+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -12"
+      "note": "Low; on block -12",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+1": {
       "name": "Belly Chop",
@@ -5668,7 +6148,12 @@
         "df+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -2"
+      "note": "Mid; on block -2",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+2": {
       "name": "Move df+2 (df+2)",
@@ -5689,7 +6174,12 @@
         "df+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -6"
+      "note": "Mid; on block -6",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+2,1+2": {
       "name": "Moon Scorched Feather Tackle",
@@ -5718,7 +6208,12 @@
         ],
         "total": 40
       },
-      "note": "Mid; on block -14; knockdown on hit"
+      "note": "Mid; on block -14; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "df+2,3": {
       "name": "Moon Swallow",
@@ -5747,7 +6242,12 @@
         ],
         "total": 38
       },
-      "note": "High; on block -1; knockdown on hit"
+      "note": "High; on block -1; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 64,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+2+4": {
       "name": "Dragon Fall",
@@ -5772,7 +6272,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "2"
+      "throw_break": "2",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+3": {
       "name": "Phoenix Tail",
@@ -5793,7 +6298,12 @@
         "df+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -23; knockdown on hit"
+      "note": "Low; on block -23; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 64,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "df+4": {
       "name": "Move df+4 (df+4)",
@@ -5814,7 +6324,12 @@
         "df+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -4"
+      "note": "Mid; on block -4",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+2": {
       "name": "Move f+2 (f+2)",
@@ -5835,7 +6350,12 @@
         "f+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -5"
+      "note": "Mid; on block -5",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 119,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+2,1": {
       "name": "Move 1 (1)",
@@ -5864,7 +6384,12 @@
         ],
         "total": 26
       },
-      "note": "High; on block -6"
+      "note": "High; on block -6",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 103,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+2,1,4": {
       "name": "Bai Yang Zhuan Wu",
@@ -5895,7 +6420,12 @@
         ],
         "total": 46
       },
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+2,1,H.2": {
       "name": "Bai Yang Yan Di Po",
@@ -5926,7 +6456,12 @@
         ],
         "total": 46
       },
-      "note": "Mid; on block +6"
+      "note": "Mid; on block +6",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+2+3": {
       "name": "Wang's Waning Moon",
@@ -5951,7 +6486,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3,1": {
       "name": "Move 1 (1)",
@@ -5980,7 +6520,12 @@
         ],
         "total": 22
       },
-      "note": "Mid; on block -3"
+      "note": "Mid; on block -3",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3,1,1+2": {
       "name": "Wings of Fury",
@@ -6012,7 +6557,12 @@
         ],
         "total": 48
       },
-      "note": "Mid, Mid; on block -12"
+      "note": "Mid, Mid; on block -12",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f+3,1,4": {
       "name": "Talons of Fury",
@@ -6043,7 +6593,12 @@
         ],
         "total": 42
       },
-      "note": "Mid; on block -22; knockdown on hit"
+      "note": "Mid; on block -22; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3+4_t8": {
       "name": "Forward Roll",
@@ -6064,7 +6619,12 @@
         "f+3+4"
       ],
       "move_class": "special",
-      "t8_input": "f+3+4"
+      "t8_input": "f+3+4",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 335,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+3+4,3+4": {
       "name": "Phoenix Talon",
@@ -6094,7 +6654,12 @@
         ],
         "total": 30
       },
-      "note": "Mid, Mid, Mid; on block +8"
+      "note": "Mid, Mid, Mid; on block +8",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "hdb+3+4": {
       "name": "Low Back Turn",
@@ -6114,7 +6679,12 @@
       "input_slots": [
         "hdb+3+4"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 93,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "FC.df+2": {
       "name": "Move FC.df+2 (FC.df+2)",
@@ -6135,7 +6705,12 @@
         "FC.df+2"
       ],
       "move_class": "strike",
-      "note": "Low; on block -8"
+      "note": "Low; on block -8",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.df+2,1": {
       "name": "Lotus Twist",
@@ -6164,7 +6739,12 @@
         ],
         "total": 18
       },
-      "note": "Low; on block -8"
+      "note": "Low; on block -8",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.df+4": {
       "name": "Move FC.df+4 (FC.df+4)",
@@ -6185,7 +6765,12 @@
         "FC.df+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -7"
+      "note": "Low; on block -7",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC.df+4,4": {
       "name": "Flower Garden",
@@ -6214,7 +6799,12 @@
         ],
         "total": 26
       },
-      "note": "Low; on block -6"
+      "note": "Low; on block -6",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+1": {
       "name": "Move f,F+1 (f,F+1)",
@@ -6235,7 +6825,12 @@
         "f,F+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -11"
+      "note": "Mid; on block -11",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+1+2": {
       "name": "Move f,F+1+2 (f,F+1+2)",
@@ -6256,7 +6851,12 @@
         "f,F+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f,F+1+2,1+2": {
       "name": "X Marks the Spot",
@@ -6285,7 +6885,12 @@
         ],
         "total": 32
       },
-      "note": "Mid; on block -8"
+      "note": "Mid; on block -8",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f,F+1,3": {
       "name": "Poison Flower",
@@ -6314,7 +6919,12 @@
         ],
         "total": 33
       },
-      "note": "High; on block -1; knockdown on hit"
+      "note": "High; on block -1; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 64,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+1,4": {
       "name": "Eclipsing Moon",
@@ -6343,7 +6953,12 @@
         ],
         "total": 33
       },
-      "note": "Mid; on block -12"
+      "note": "Mid; on block -12",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+1,H.2": {
       "name": "Bai Lian Yan Di Po",
@@ -6372,7 +6987,12 @@
         ],
         "total": 33
       },
-      "note": "Mid; on block +6"
+      "note": "Mid; on block +6",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+2": {
       "name": "Move f,F+2 (f,F+2)",
@@ -6393,7 +7013,12 @@
         "f,F+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -5"
+      "note": "Mid; on block -5",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+2,1": {
       "name": "Fortune",
@@ -6422,7 +7047,12 @@
         ],
         "total": 32
       },
-      "note": "Mid; on block -12; knockdown on hit"
+      "note": "Mid; on block -12; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+3": {
       "name": "Raccoon Swing",
@@ -6443,7 +7073,12 @@
         "f,F+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -5"
+      "note": "Mid; on block -5",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 64,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+3+4": {
       "name": "Front Layout",
@@ -6464,7 +7099,12 @@
         "f,F+3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -3; knockdown on hit"
+      "note": "Mid; on block -3; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f,F+4": {
       "name": "Soaring Blaze",
@@ -6485,7 +7125,12 @@
         "f,F+4"
       ],
       "move_class": "strike",
-      "note": "High; on block +9"
+      "note": "High; on block +9",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,F+3": {
       "name": "Diving Falcon",
@@ -6506,7 +7151,12 @@
         "f,f,F+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +7g~+14g; knockdown on hit"
+      "note": "Mid; on block +7g~+14g; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 64,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "H.2+3": {
       "name": "Divine Shooting Star",
@@ -6535,7 +7185,12 @@
         ],
         "total": 30
       },
-      "note": "Mid, Mid, Mid, Mid; on block +9"
+      "note": "Mid, Mid, Mid, Mid; on block +9",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "H.BT.2+3": {
       "name": "Innumerable Moons",
@@ -6565,7 +7220,12 @@
         ],
         "total": 51
       },
-      "note": "Mid, Mid, Mid, Mid; on block +9"
+      "note": "Mid, Mid, Mid, Mid; on block +9",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "hFC.1": {
       "name": "Move hFC.1 (hFC.1)",
@@ -6586,7 +7246,12 @@
         "hFC.1"
       ],
       "move_class": "strike",
-      "note": "Special low; on block -5"
+      "note": "Special low; on block -5",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "hFC.2": {
       "name": "Move hFC.2 (hFC.2)",
@@ -6607,7 +7272,12 @@
         "hFC.2"
       ],
       "move_class": "strike",
-      "note": "Special low; on block -4"
+      "note": "Special low; on block -4",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "hFC.3": {
       "name": "Move hFC.3 (hFC.3)",
@@ -6628,7 +7298,12 @@
         "hFC.3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -15"
+      "note": "Low; on block -15",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 64,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "hFC.3,2": {
       "name": "Move 2 (2)",
@@ -6657,7 +7332,12 @@
         ],
         "total": 17
       },
-      "note": "High; on block +0"
+      "note": "High; on block +0",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "hFC.3,2,1": {
       "name": "Move 1 (1)",
@@ -6688,7 +7368,12 @@
         ],
         "total": 23
       },
-      "note": "High; on block -1"
+      "note": "High; on block -1",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "hFC.3,2,1,4": {
       "name": "Fire Dancer",
@@ -6721,7 +7406,12 @@
         ],
         "total": 35
       },
-      "note": "Mid; on block -18; knockdown on hit"
+      "note": "Mid; on block -18; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "hFC.4": {
       "name": "Move hFC.4 (hFC.4)",
@@ -6742,7 +7432,12 @@
         "hFC.4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -15"
+      "note": "Low; on block -15",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HYP.1+2": {
       "name": "Hypnotist",
@@ -6762,7 +7457,12 @@
       "input_slots": [
         "HYP.1+2"
       ],
-      "move_class": "special"
+      "move_class": "special",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 93,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "HYP.2": {
       "name": "Spin Sticker",
@@ -6783,7 +7483,12 @@
         "HYP.2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -4"
+      "note": "Mid; on block -4",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HYP.2+3": {
       "name": "Thunder Strike",
@@ -6804,7 +7509,12 @@
         "HYP.2+3"
       ],
       "move_class": "strike",
-      "note": "m!"
+      "note": "m!",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "HYP.3": {
       "name": "Blue Luan Sweep",
@@ -6825,7 +7535,12 @@
         "HYP.3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -13"
+      "note": "Low; on block -13",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 64,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "HYP.3+4": {
       "name": "Deadly Orchid",
@@ -6846,7 +7561,12 @@
         "HYP.3+4"
       ],
       "move_class": "strike",
-      "note": "High; on block +8; knockdown on hit"
+      "note": "High; on block +8; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "HYP.4": {
       "name": "Falling Tiger Kick",
@@ -6867,7 +7587,12 @@
         "HYP.4"
       ],
       "move_class": "strike",
-      "note": "High; on block -2; knockdown on hit"
+      "note": "High; on block -2; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Left Throw": {
       "name": "Arm Flip",
@@ -6892,7 +7617,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "R.df+1+2": {
       "name": "Wang's Celestial Epic",
@@ -6913,7 +7643,12 @@
         "R.df+1+2"
       ],
       "move_class": "special",
-      "note": "Mid, Throw; on block -18"
+      "note": "Mid, Throw; on block -18",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 93,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "Right Throw": {
       "name": "Dump the Bucket",
@@ -6938,7 +7673,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SS.4": {
       "name": "Street Sweeper",
@@ -6959,7 +7699,12 @@
         "SS.4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -13"
+      "note": "Low; on block -13",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u+1+2": {
       "name": "Move u+1+2 (u+1+2)",
@@ -6987,7 +7732,12 @@
         ],
         "total": 10
       },
-      "note": "Mid, Mid; on block -11"
+      "note": "Mid, Mid; on block -11",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 38,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "u+1+2,2": {
       "name": "Move 2 (2)",
@@ -7017,7 +7767,12 @@
         ],
         "total": 22
       },
-      "note": "Mid; on block -12"
+      "note": "Mid; on block -12",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u+1+2,2,1": {
       "name": "Fortune Cookie",
@@ -7049,7 +7804,12 @@
         ],
         "total": 42
       },
-      "note": "Mid; on block -12; knockdown on hit"
+      "note": "Mid; on block -12; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u+4": {
       "name": "1st Hit",
@@ -7070,7 +7830,12 @@
         "u+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -7"
+      "note": "Mid; on block -7",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u+4,1": {
       "name": "2nd Hit",
@@ -7099,7 +7864,12 @@
         ],
         "total": 24
       },
-      "note": "High; on block -10"
+      "note": "High; on block -10",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u+4,1,2": {
       "name": "3rd Hit",
@@ -7130,7 +7900,12 @@
         ],
         "total": 31
       },
-      "note": "High; on block -10"
+      "note": "High; on block -10",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ub+3": {
       "name": "From the Ashes",
@@ -7151,7 +7926,12 @@
         "ub+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 64,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ub+4": {
       "name": "Born of Fire",
@@ -7172,7 +7952,12 @@
         "ub+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13"
+      "note": "Mid; on block -13",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+1": {
       "name": "Silver Needle",
@@ -7193,7 +7978,12 @@
         "uf+1"
       ],
       "move_class": "strike",
-      "note": "Low; on block -7"
+      "note": "Low; on block -7",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+1+2": {
       "name": "Dislocator",
@@ -7218,7 +8008,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+2": {
       "name": "Phoenix Flight",
@@ -7239,7 +8034,12 @@
         "uf+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +6"
+      "note": "Mid; on block +6",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+3": {
       "name": "Bolting Rabbit",
@@ -7260,7 +8060,12 @@
         "uf+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit"
+      "note": "Mid; on block -13; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 64,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf+3+4": {
       "name": "Shooting Star",
@@ -7289,7 +8094,12 @@
         ],
         "total": 30
       },
-      "note": "Mid, Mid, Mid; on block -1"
+      "note": "Mid, Mid, Mid; on block -1",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "uf+4": {
       "name": "Flare Kick",
@@ -7310,7 +8120,12 @@
         "uf+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -7"
+      "note": "Mid; on block -7",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "uf,n,4": {
       "name": "Delayed Rising Toe Kick",
@@ -7331,7 +8146,12 @@
         "uf,n,4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -18; knockdown on hit"
+      "note": "Mid; on block -18; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "While landing 4": {
       "name": "Crane Kick",
@@ -7352,7 +8172,12 @@
         "While landing 4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -8; knockdown on hit"
+      "note": "Mid; on block -8; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "While landing 3": {
       "name": "Sky Kick",
@@ -7373,7 +8198,12 @@
         "While landing 3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -18; knockdown on hit"
+      "note": "Low; on block -18; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 64,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws1": {
       "name": "Move ws1 (ws1)",
@@ -7394,7 +8224,12 @@
         "ws1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -7"
+      "note": "Mid; on block -7",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws1+2": {
       "name": "Move ws1+2 (ws1+2)",
@@ -7415,7 +8250,12 @@
         "ws1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9"
+      "note": "Mid; on block -9",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "ws1+2,1+2": {
       "name": "X Marks the Spot",
@@ -7444,7 +8284,12 @@
         ],
         "total": 32
       },
-      "note": "Mid; on block -8"
+      "note": "Mid; on block -8",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 46,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "ws1,4": {
       "name": "Whirlwind Cross Kick",
@@ -7473,7 +8318,12 @@
         ],
         "total": 24
       },
-      "note": "Mid; on block -10"
+      "note": "Mid; on block -10",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws2": {
       "name": "Sunflower",
@@ -7494,7 +8344,12 @@
         "ws2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -3"
+      "note": "Mid; on block -3",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws2*": {
       "name": "Jasmine Blossom",
@@ -7515,7 +8370,12 @@
         "ws2*"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -3; knockdown on hit"
+      "note": "Mid; on block -3; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws3": {
       "name": "Rising Axe Kick",
@@ -7536,7 +8396,12 @@
         "ws3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +3"
+      "note": "Mid; on block +3",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 64,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "ws4": {
       "name": "Skyscraper Kick",
@@ -7557,7 +8422,12 @@
         "ws4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -10; knockdown on hit"
+      "note": "Mid; on block -10; knockdown on hit",
+      "anim_t3": {
+        "bank": "xiaoyu",
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1~t8.xiaoyu": {
       "name": "Jab",
@@ -7626,8 +8496,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "same-notation"
+        "row": 380,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "2~t8.xiaoyu": {
@@ -7697,8 +8567,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 361,
-        "match": "same-notation"
+        "row": 381,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "3~t8.xiaoyu": {
@@ -7827,7 +8697,7 @@
         "1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_1",
       "t7_command": "1",
       "t7_hit_level": "high",
@@ -7868,7 +8738,7 @@
         "1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_2",
       "t7_command": "1, 2",
       "t7_hit_level": "high, high",
@@ -7916,7 +8786,7 @@
         "1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_3",
       "t7_command": "(1), 2",
       "t7_hit_level": "high",
@@ -7957,7 +8827,7 @@
         "1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_4",
       "t7_command": "1, 2, 1",
       "t7_hit_level": "high, high, mid",
@@ -8007,7 +8877,7 @@
         "1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_5",
       "t7_command": "(1), 2, 1",
       "t7_hit_level": "high, mid",
@@ -8056,7 +8926,7 @@
         "1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_6",
       "t7_command": "(1), (2), 1",
       "t7_hit_level": "mid",
@@ -8098,7 +8968,7 @@
         "1,d+2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_7",
       "t7_command": "1, d+2, 1+2",
       "t7_hit_level": "high, mid, mid",
@@ -8143,7 +9013,7 @@
         "1,d+2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_8",
       "t7_command": "(1), d+2, 1+2",
       "t7_hit_level": "mid, mid",
@@ -8187,7 +9057,7 @@
         "1,d+2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_9",
       "t7_command": "(1), (d+2), 1+2",
       "t7_hit_level": "mid",
@@ -8224,7 +9094,7 @@
         "1,D+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_10",
       "t7_command": "1, D+2",
       "t7_hit_level": "high, mid",
@@ -8272,7 +9142,7 @@
         "1,D+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_11",
       "t7_command": "(1), D+2",
       "t7_hit_level": "mid",
@@ -8285,8 +9155,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 270,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "mod_damage": "7,10",
       "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
@@ -8313,7 +9183,7 @@
         "1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_12",
       "t7_command": "1+2",
       "t7_hit_level": "mid",
@@ -8355,7 +9225,7 @@
         "2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_13",
       "t7_command": "2",
       "t7_hit_level": "high",
@@ -8396,7 +9266,7 @@
         "2,D/F+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_14",
       "t7_command": "2, D/F+1",
       "t7_hit_level": "high, mid",
@@ -8444,7 +9314,7 @@
         "2,D/F+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_15",
       "t7_command": "(2), D/F+1",
       "t7_hit_level": "mid",
@@ -8485,7 +9355,7 @@
         "3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_16",
       "t7_command": "3",
       "t7_hit_level": "high",
@@ -8527,7 +9397,7 @@
         "4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_17",
       "t7_command": "4",
       "t7_hit_level": "high",
@@ -8569,7 +9439,7 @@
         "4~3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_18",
       "t7_command": "4~3",
       "t7_hit_level": "mid",
@@ -8610,7 +9480,7 @@
         "u+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_19",
       "t7_command": "u+1+2",
       "t7_hit_level": "mid, mid",
@@ -8653,7 +9523,7 @@
         "u+1+2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_20",
       "t7_command": "u+1+2, 2",
       "t7_hit_level": "mid, mid, mid",
@@ -8702,7 +9572,7 @@
         "u+1+2,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_21",
       "t7_command": "u+1+2, 2, 1",
       "t7_hit_level": "mid, mid, mid, mid",
@@ -8753,7 +9623,7 @@
         "u+1+2,3+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_22",
       "t7_command": "u+1+2, 3+4",
       "t7_hit_level": "mid, mid",
@@ -8796,7 +9666,7 @@
         "u/f+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_23",
       "t7_command": "u/f+1+2",
       "t7_hit_level": "mid",
@@ -8837,7 +9707,7 @@
         "u/f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_24",
       "t7_command": "u/f+3",
       "t7_hit_level": "mid",
@@ -8879,7 +9749,7 @@
         "u/f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_25",
       "t7_command": "u/f+4",
       "t7_hit_level": "mid",
@@ -8892,8 +9762,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 92,
-        "match": "same-notation"
+        "row": 293,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       },
       "mod_damage": "23",
       "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
@@ -8920,7 +9790,7 @@
         "u/f+4,D"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_26",
       "t7_command": "u/f+4, D",
       "t7_hit_level": "mid",
@@ -8961,7 +9831,7 @@
         "f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_27",
       "t7_command": "f+2",
       "t7_hit_level": "mid",
@@ -9002,7 +9872,7 @@
         "f+2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_28",
       "t7_command": "f+2, 1",
       "t7_hit_level": "mid, high",
@@ -9045,7 +9915,7 @@
         "f+2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_29",
       "t7_command": "(f+2), 1",
       "t7_hit_level": "high",
@@ -9081,7 +9951,7 @@
         "f+2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_30",
       "t7_command": "f+2, 1, 4",
       "t7_hit_level": "mid, high, mid",
@@ -9131,7 +10001,7 @@
         "f+2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_31",
       "t7_command": "(f+2), 1, 4",
       "t7_hit_level": "high, mid",
@@ -9180,7 +10050,7 @@
         "f+2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_32",
       "t7_command": "(f+2), (1), 4",
       "t7_hit_level": "mid",
@@ -9222,7 +10092,7 @@
         "f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_33",
       "t7_command": "f+3",
       "t7_hit_level": "mid",
@@ -9263,7 +10133,7 @@
         "f+3,1,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_34",
       "t7_command": "f+3, 1, 1+2",
       "t7_hit_level": "mid, mid, mid, mid",
@@ -9308,7 +10178,7 @@
         "f+3,1,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_35",
       "t7_command": "(f+3), 1, 1+2",
       "t7_hit_level": "mid, mid, mid",
@@ -9352,7 +10222,7 @@
         "f+3,1,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_36",
       "t7_command": "(f+3), (1), 1+2",
       "t7_hit_level": "mid, mid",
@@ -9395,7 +10265,7 @@
         "f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_37",
       "t7_command": "f+4",
       "t7_hit_level": "high",
@@ -9437,7 +10307,7 @@
         "f+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_38",
       "t7_command": "f+1+2",
       "t7_hit_level": "mid",
@@ -9479,7 +10349,7 @@
         "f,F+1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_39",
       "t7_command": "f, F+1",
       "t7_hit_level": "mid",
@@ -9520,7 +10390,7 @@
         "f,F+1,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_40",
       "t7_command": "f, F+1, 3",
       "t7_hit_level": "mid, high",
@@ -9569,7 +10439,7 @@
         "f,F+1,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_41",
       "t7_command": "(f, F+1), 3",
       "t7_hit_level": "high",
@@ -9611,7 +10481,7 @@
         "f,F+1,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_42",
       "t7_command": "f, F+1, 4",
       "t7_hit_level": "mid, mid",
@@ -9660,7 +10530,7 @@
         "f,F+1,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_43",
       "t7_command": "(f, F+1), 4",
       "t7_hit_level": "mid",
@@ -9702,7 +10572,7 @@
         "f,F+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_44",
       "t7_command": "f, F+2",
       "t7_hit_level": "mid",
@@ -9743,7 +10613,7 @@
         "f,F+2,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_45",
       "t7_command": "f, F+2, 1",
       "t7_hit_level": "mid, mid",
@@ -9792,7 +10662,7 @@
         "f,F+2,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_46",
       "t7_command": "(f, F+2), 1",
       "t7_hit_level": "mid",
@@ -9806,8 +10676,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 257,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 93,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "mod_damage": "12,20",
       "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
@@ -9834,7 +10704,7 @@
         "f,F+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_47",
       "t7_command": "f, F+4",
       "t7_hit_level": "mid",
@@ -9876,7 +10746,7 @@
         "f,F+4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_48",
       "t7_command": "f, F+4 (while enemy is guarding), 4",
       "t7_hit_level": "mid",
@@ -9916,7 +10786,7 @@
         "f,F+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_49",
       "t7_command": "f, F+1+2",
       "t7_hit_level": "mid",
@@ -9952,7 +10822,7 @@
         "f,F+1+2,1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_50",
       "t7_command": "f, F+1+2, 1+2",
       "t7_hit_level": "mid, mid",
@@ -9995,7 +10865,7 @@
         "f,F+1+2,1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_51",
       "t7_command": "(f, F+1+2), 1+2",
       "t7_hit_level": "mid",
@@ -10031,7 +10901,7 @@
         "D/F+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_52",
       "t7_command": "D/F+1",
       "t7_hit_level": "mid",
@@ -10072,7 +10942,7 @@
         "d/f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_53",
       "t7_command": "d/f+2",
       "t7_hit_level": "mid",
@@ -10113,7 +10983,7 @@
         "d/f+2~1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_54",
       "t7_command": "d/f+2~1",
       "t7_hit_level": "mid, mid",
@@ -10162,7 +11032,7 @@
         "d+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_55",
       "t7_command": "d+1",
       "t7_hit_level": "mid, mid, mid",
@@ -10211,7 +11081,7 @@
         "d+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_56",
       "t7_command": "d+3",
       "t7_hit_level": "low",
@@ -10252,7 +11122,7 @@
         "d+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_57",
       "t7_command": "d+3, 4",
       "t7_hit_level": "low, high",
@@ -10301,7 +11171,7 @@
         "d+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_58",
       "t7_command": "(d+3), 4",
       "t7_hit_level": "high",
@@ -10315,8 +11185,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 91,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "mod_damage": "12,21",
       "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
@@ -10343,7 +11213,7 @@
         "d/b+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_59",
       "t7_command": "d/b+1",
       "t7_hit_level": "mid",
@@ -10385,7 +11255,7 @@
         "d/b+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_60",
       "t7_command": "d/b+3",
       "t7_hit_level": "low",
@@ -10426,7 +11296,7 @@
         "d/b+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_61",
       "t7_command": "d/b+4",
       "t7_hit_level": "low",
@@ -10468,7 +11338,7 @@
         "b+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_62",
       "t7_command": "b+1",
       "t7_hit_level": "mid",
@@ -10509,7 +11379,7 @@
         "b+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_63",
       "t7_command": "b+4",
       "t7_hit_level": "mid",
@@ -10550,7 +11420,7 @@
         "b+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_64",
       "t7_command": "b+4, 4",
       "t7_hit_level": "mid, mid",
@@ -10598,7 +11468,7 @@
         "b+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_65",
       "t7_command": "(b+4), 4",
       "t7_hit_level": "mid",
@@ -10611,8 +11481,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 91,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 79,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "mod_damage": "14,17",
       "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
@@ -10639,7 +11509,7 @@
         "u/b+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_66",
       "t7_command": "u/b+3+4",
       "t7_hit_level": "mid, mid, mid",
@@ -10689,7 +11559,7 @@
         "FC.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_67",
       "t7_command": "FC 1",
       "t7_hit_level": "s. mid",
@@ -10730,7 +11600,7 @@
         "FC.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_68",
       "t7_command": "FC 2",
       "t7_hit_level": "s. mid",
@@ -10769,7 +11639,7 @@
         "FC.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_69",
       "t7_command": "FC 3",
       "t7_hit_level": "low",
@@ -10810,7 +11680,7 @@
         "FC.3,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_70",
       "t7_command": "FC 3, 2, 1",
       "t7_hit_level": "low, high, high",
@@ -10859,7 +11729,7 @@
         "FC.3,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_71",
       "t7_command": "FC (3), 2, 1",
       "t7_hit_level": "high, high",
@@ -10907,7 +11777,7 @@
         "FC.3,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_72",
       "t7_command": "FC (3), (2), 1",
       "t7_hit_level": "high",
@@ -10948,7 +11818,7 @@
         "FC.3,2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_73",
       "t7_command": "FC 3, 2, 1, 4",
       "t7_hit_level": "low, high, high, mid",
@@ -10999,7 +11869,7 @@
         "FC.3,2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_74",
       "t7_command": "FC (3), 2, 1, 4",
       "t7_hit_level": "high, high, mid",
@@ -11049,7 +11919,7 @@
         "FC.3,2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_75",
       "t7_command": "FC (3), (2), 1, 4",
       "t7_hit_level": "high, mid",
@@ -11098,7 +11968,7 @@
         "FC.3,2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_76",
       "t7_command": "FC (3), (2), (1), 4",
       "t7_hit_level": "mid",
@@ -11140,7 +12010,7 @@
         "FC.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_77",
       "t7_command": "FC 4",
       "t7_hit_level": "low",
@@ -11179,7 +12049,7 @@
         "FC.d/f+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_78",
       "t7_command": "FC d/f+2",
       "t7_hit_level": "low",
@@ -11220,7 +12090,7 @@
         "FC.d/f+2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_79",
       "t7_command": "FC d/f+2, 1",
       "t7_hit_level": "low, low",
@@ -11268,7 +12138,7 @@
         "FC.d/f+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_80",
       "t7_command": "FC d/f+4, 4",
       "t7_hit_level": "low, low",
@@ -11316,7 +12186,7 @@
         "SS.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_81",
       "t7_command": "SS 3",
       "t7_hit_level": "low",
@@ -11357,7 +12227,7 @@
         "SS.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_82",
       "t7_command": "SS 4",
       "t7_hit_level": "low",
@@ -11398,7 +12268,7 @@
         "f,f,F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_83",
       "t7_command": "WR f, f, F (Full Screen)",
       "t7_hit_level": "mid",
@@ -11437,7 +12307,7 @@
       "anim_ref": "t7:xiaoyu:xiaoyu_84",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_84",
       "t7_command": "While enemy is on the ground... WR f, f, F (Full Screen)",
       "t7_hit_level": "low",
@@ -11478,7 +12348,7 @@
         "4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_85",
       "t7_command": "WR 4",
       "t7_hit_level": "low",
@@ -11521,7 +12391,7 @@
         "1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_86",
       "t7_command": "WR 1+2",
       "t7_hit_level": "mid",
@@ -11564,7 +12434,7 @@
         "WS.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_87",
       "t7_command": "WS 1",
       "t7_hit_level": "mid",
@@ -11605,7 +12475,7 @@
         "WS.2,b"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_88",
       "t7_command": "WS 2, b (or f)",
       "t7_hit_level": "mid",
@@ -11648,7 +12518,7 @@
         "WS.2*,b"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_89",
       "t7_command": "WS 2*, b (or f)",
       "t7_hit_level": "mid",
@@ -11691,7 +12561,7 @@
         "WS.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_90",
       "t7_command": "WS 3",
       "t7_hit_level": "mid",
@@ -11732,7 +12602,7 @@
         "WS.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_91",
       "t7_command": "WS 4",
       "t7_hit_level": "mid",
@@ -11774,7 +12644,7 @@
         "WS.b+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_92",
       "t7_command": "WS b+4",
       "t7_hit_level": "high",
@@ -11813,7 +12683,7 @@
         "u+4,1,2,1+2,1,3,4,4,4,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_93",
       "t7_command": "u+4, 1, 2, 1+2, 1, 3, 4, 4, 4, 1",
       "t7_hit_level": "-",
@@ -11853,7 +12723,7 @@
         "u+4,1,2,4,4,2,1+2,1,4,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_94",
       "t7_command": "u+4, 1, 2, 4, 4, 2, 1+2, 1, 4, 2",
       "t7_hit_level": "-",
@@ -11891,7 +12761,7 @@
       "anim_ref": "t7:xiaoyu:xiaoyu_95",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_95",
       "t7_command": "Face Up, Feet Towards+3 or (After Rolling Forward)",
       "t7_hit_level": "low",
@@ -11929,7 +12799,7 @@
       "anim_ref": "t7:xiaoyu:xiaoyu_96",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_96",
       "t7_command": "Face Up, Feet Towards+4 or (After Rolling Forward)",
       "t7_hit_level": "mid",
@@ -11970,7 +12840,7 @@
         "FUFT.d+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_97",
       "t7_command": "Face Up, Feet Towards, d+3 (or 4)",
       "t7_hit_level": "low",
@@ -12010,7 +12880,7 @@
         "FUFT.3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_98",
       "t7_command": "Face Up, Feet Towards+3+4",
       "t7_hit_level": "mid",
@@ -12044,7 +12914,7 @@
       "anim_ref": "t7:xiaoyu:xiaoyu_99",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_99",
       "t7_command": "Face Up, Feet Towards, Roll Forward+1+2",
       "t7_hit_level": "mid",
@@ -12085,7 +12955,7 @@
         "FDFA.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_100",
       "t7_command": "Face Down, Feet Away+3",
       "t7_hit_level": "low",
@@ -12125,7 +12995,7 @@
         "FDFA.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_101",
       "t7_command": "Face Down, Feet Away+4 (close)",
       "t7_hit_level": "mid",
@@ -12166,7 +13036,7 @@
         "FDFA.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_102",
       "t7_command": "Face Down, Feet Away+4 (far)",
       "t7_hit_level": "mid",
@@ -12205,7 +13075,7 @@
       "anim_ref": "t7:xiaoyu:xiaoyu_103",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_103",
       "t7_command": "(Upon Landing) f",
       "t7_hit_level": "mid",
@@ -12245,7 +13115,7 @@
         "d/b+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_104",
       "t7_command": "d/b+1+2",
       "t7_hit_level": "-",
@@ -12280,7 +13150,7 @@
         "u/b+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_105",
       "t7_command": "u/b+1+2",
       "t7_hit_level": "-",
@@ -12320,7 +13190,7 @@
         "HYP.1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_106",
       "t7_command": "HYP 1+2",
       "t7_hit_level": "mid",
@@ -12355,7 +13225,7 @@
         "HYP.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_107",
       "t7_command": "HYP 4",
       "t7_hit_level": "high",
@@ -12396,7 +13266,7 @@
         "HYP.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_108",
       "t7_command": "HYP 2",
       "t7_hit_level": "mid",
@@ -12436,7 +13306,7 @@
         "HYP.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_109",
       "t7_command": "HYP 2",
       "t7_hit_level": "mid",
@@ -12476,7 +13346,7 @@
         "HYP.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_110",
       "t7_command": "HYP 2",
       "t7_hit_level": "mid",
@@ -12516,7 +13386,7 @@
         "HYP.1+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_111",
       "t7_command": "HYP 1+4",
       "t7_hit_level": "-",
@@ -12551,7 +13421,7 @@
         "HYP.2+3,b,b"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_112",
       "t7_command": "HYP 2+3, b, b",
       "t7_hit_level": "-",
@@ -12590,7 +13460,7 @@
         "HYP.3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_113",
       "t7_command": "HYP 3+4",
       "t7_hit_level": "high",
@@ -12627,7 +13497,7 @@
         "WALL.b,b,u/b"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_114",
       "t7_command": "Back towards wall... b, b, u/b",
       "t7_hit_level": "mid",
@@ -12668,7 +13538,7 @@
         "b+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_115",
       "t7_command": "b+3+4 (or FC d/b+3+4)",
       "t7_hit_level": "-",
@@ -12704,7 +13574,7 @@
         "AOP.b+3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_116",
       "t7_command": "AOP b+3+4",
       "t7_hit_level": "-",
@@ -12739,7 +13609,7 @@
         "SS.3,B"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_117",
       "t7_command": "SS 3, B",
       "t7_hit_level": "-",
@@ -12779,7 +13649,7 @@
         "1,d+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_118",
       "t7_command": "1, d+2",
       "t7_hit_level": "high, mid",
@@ -12827,7 +13697,7 @@
         "1,d+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_119",
       "t7_command": "(1), d+2",
       "t7_hit_level": "mid",
@@ -12840,8 +13710,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 270,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "mod_damage": "7,10",
       "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
@@ -12868,7 +13738,7 @@
         "2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_120",
       "t7_command": "2, 1",
       "t7_hit_level": "high, mid",
@@ -12916,7 +13786,7 @@
         "2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_121",
       "t7_command": "(2), 1",
       "t7_hit_level": "mid",
@@ -12957,7 +13827,7 @@
         "u+1+2,2,1,B"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_122",
       "t7_command": "u+1+2, 2, 1, B",
       "t7_hit_level": "mid, mid, mid",
@@ -12979,8 +13849,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 270,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "mod_damage": "5,5,12",
       "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
@@ -13007,7 +13877,7 @@
         "u/f+1+2,B"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_123",
       "t7_command": "u/f+1+2, B",
       "t7_hit_level": "mid",
@@ -13048,7 +13918,7 @@
         "u/f+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_124",
       "t7_command": "u/f+3+4",
       "t7_hit_level": "mid, mid, mid",
@@ -13097,7 +13967,7 @@
         "f+3,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_125",
       "t7_command": "f+3, 1",
       "t7_hit_level": "mid, mid",
@@ -13145,7 +14015,7 @@
         "f+3,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_126",
       "t7_command": "(f+3), 1",
       "t7_hit_level": "mid",
@@ -13186,7 +14056,7 @@
         "f,F+2,1,B"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_127",
       "t7_command": "f, F+2, 1, B",
       "t7_hit_level": "mid, mid",
@@ -13234,7 +14104,7 @@
         "f,F+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_128",
       "t7_command": "f, F+3",
       "t7_hit_level": "mid",
@@ -13275,7 +14145,7 @@
         "f,F+3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_129",
       "t7_command": "f, F+3+4",
       "t7_hit_level": "mid",
@@ -13312,7 +14182,7 @@
         "d/f+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_130",
       "t7_command": "d/f+1",
       "t7_hit_level": "mid",
@@ -13353,7 +14223,7 @@
         "b+2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_131",
       "t7_command": "b+2, 2",
       "t7_hit_level": "mid, low",
@@ -13401,7 +14271,7 @@
         "b+2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_132",
       "t7_command": "(b+2), 2",
       "t7_hit_level": "low",
@@ -13442,7 +14312,7 @@
         "b+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_133",
       "t7_command": "b+3",
       "t7_hit_level": "high",
@@ -13484,7 +14354,7 @@
         "FC.3,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_134",
       "t7_command": "FC 3, 2",
       "t7_hit_level": "low, high",
@@ -13532,7 +14402,7 @@
         "FC.3,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_135",
       "t7_command": "FC (3), 2",
       "t7_hit_level": "high",
@@ -13545,8 +14415,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 270,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "mod_damage": "11,6",
       "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
@@ -13573,7 +14443,7 @@
         "FC.d/f+2,D/F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_136",
       "t7_command": "FC d/f+2, D/F",
       "t7_hit_level": "low",
@@ -13586,8 +14456,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 270,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "mod_damage": "10",
       "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
@@ -13614,7 +14484,7 @@
         "FC.d/f+2,1,D/F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_137",
       "t7_command": "FC d/f+2, 1, D/F",
       "t7_hit_level": "low, low",
@@ -13634,8 +14504,8 @@
       },
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 270,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "mod_damage": "10,14",
       "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
@@ -13662,7 +14532,7 @@
         "WS.1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_138",
       "t7_command": "WS 1, 4",
       "t7_hit_level": "mid, mid",
@@ -13708,7 +14578,7 @@
         "WS.1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_139",
       "t7_command": "WS (1), 4",
       "t7_hit_level": "mid",
@@ -13747,7 +14617,7 @@
         "WS.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_140",
       "t7_command": "WS 2",
       "t7_hit_level": "mid",
@@ -13789,7 +14659,7 @@
         "WS.2*"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_141",
       "t7_command": "WS 2*",
       "t7_hit_level": "mid",
@@ -13831,7 +14701,7 @@
         "AOP.1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_142",
       "t7_command": "AOP 1, 2",
       "t7_hit_level": "mid, high",
@@ -13851,8 +14721,8 @@
       },
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 270,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "mod_damage": "11,15",
       "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
@@ -13879,7 +14749,7 @@
         "AOP.1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_143",
       "t7_command": "AOP (1), 2",
       "t7_hit_level": "high",
@@ -13920,7 +14790,7 @@
         "AOP.2,1,B"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_144",
       "t7_command": "AOP 2, 1, B",
       "t7_hit_level": "mid, mid",
@@ -13968,7 +14838,7 @@
         "BT.f+3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_145",
       "t7_command": "BT f+3+4",
       "t7_hit_level": "-",
@@ -14002,7 +14872,7 @@
         "BT.b+3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_146",
       "t7_command": "BT b+3+4",
       "t7_hit_level": "-",
@@ -14036,7 +14906,7 @@
         "BT.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_147",
       "t7_command": "BT 1",
       "t7_hit_level": "mid",
@@ -14049,8 +14919,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 243,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 93,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "BT.2~t7.xiaoyu": {
@@ -14075,7 +14945,7 @@
         "BT.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_148",
       "t7_command": "BT 2",
       "t7_hit_level": "high",
@@ -14114,7 +14984,7 @@
         "BT.2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_149",
       "t7_command": "BT 2, 2",
       "t7_hit_level": "high, mid",
@@ -14160,7 +15030,7 @@
         "BT.2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_150",
       "t7_command": "BT (2), 2",
       "t7_hit_level": "mid",
@@ -14199,7 +15069,7 @@
         "BT.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_151",
       "t7_command": "BT 3",
       "t7_hit_level": "mid",
@@ -14239,7 +15109,7 @@
         "BT.f+3+4,3+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_152",
       "t7_command": "BT f+3+4, 3+4",
       "t7_hit_level": "mid",
@@ -14274,7 +15144,7 @@
         "BT.u/f,f"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_153",
       "t7_command": "BT u/f, f",
       "t7_hit_level": "-",
@@ -14313,7 +15183,7 @@
         "BT.u/f,f,D/F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_154",
       "t7_command": "BT u/f, f, D/F",
       "t7_hit_level": "-",
@@ -14352,7 +15222,7 @@
         "BT.1+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_155",
       "t7_command": "BT 1+4",
       "t7_hit_level": "-",
@@ -14386,7 +15256,7 @@
         "BT.3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_156",
       "t7_command": "BT 3+4 (or d+3+4)",
       "t7_hit_level": "-",
@@ -14421,7 +15291,7 @@
         "BT.d+1+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_157",
       "t7_command": "BT d+1+4",
       "t7_hit_level": "-",
@@ -14455,7 +15325,7 @@
         "BT.1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_158",
       "t7_command": "BT 1, 4",
       "t7_hit_level": "mid, high",
@@ -14502,7 +15372,7 @@
         "BT.1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_159",
       "t7_command": "BT (1), 4",
       "t7_hit_level": "high",
@@ -14542,7 +15412,7 @@
         "BT.2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_160",
       "t7_command": "BT 2, 1",
       "t7_hit_level": "high, high",
@@ -14588,7 +15458,7 @@
         "BT.2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_161",
       "t7_command": "BT (2), 1",
       "t7_hit_level": "high",
@@ -14627,7 +15497,7 @@
         "BT.2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_162",
       "t7_command": "BT 2, 1, 4",
       "t7_hit_level": "high, high, mid",
@@ -14675,7 +15545,7 @@
         "BT.2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_163",
       "t7_command": "BT (2), 1, 4",
       "t7_hit_level": "high, mid",
@@ -14715,7 +15585,7 @@
         "BT.2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_164",
       "t7_command": "BT (2), (1), 4",
       "t7_hit_level": "mid",
@@ -14755,7 +15625,7 @@
         "BT.2,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_165",
       "t7_command": "BT 2, 2, 1",
       "t7_hit_level": "high, mid, mid, mid, mid",
@@ -14804,7 +15674,7 @@
         "BT.2,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_166",
       "t7_command": "BT (2), 2, 1",
       "t7_hit_level": "mid, mid, mid, mid",
@@ -14852,7 +15722,7 @@
         "BT.2,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_167",
       "t7_command": "BT (2), (2), 1",
       "t7_hit_level": "mid, mid, mid",
@@ -14899,7 +15769,7 @@
         "BT.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_168",
       "t7_command": "BT 4",
       "t7_hit_level": "mid",
@@ -14939,7 +15809,7 @@
         "BT.1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_169",
       "t7_command": "BT 1+2",
       "t7_hit_level": "mid, mid",
@@ -14980,7 +15850,7 @@
         "BT.1+2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_170",
       "t7_command": "BT 1+2, 1+2",
       "t7_hit_level": "mid, mid, mid, mid",
@@ -15023,7 +15893,7 @@
         "BT.1+2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_171",
       "t7_command": "BT (1+2), 1+2",
       "t7_hit_level": "mid, mid",
@@ -15064,7 +15934,7 @@
         "BT.f+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_172",
       "t7_command": "BT f+1+2",
       "t7_hit_level": "mid",
@@ -15098,7 +15968,7 @@
         "BT.f,F+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_173",
       "t7_command": "BT f, F+3",
       "t7_hit_level": "mid",
@@ -15138,7 +16008,7 @@
         "BT.d+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_174",
       "t7_command": "BT d+3",
       "t7_hit_level": "low",
@@ -15177,7 +16047,7 @@
         "BT.d+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_175",
       "t7_command": "BT d+3, 4",
       "t7_hit_level": "low, high",
@@ -15224,7 +16094,7 @@
         "BT.d+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_176",
       "t7_command": "BT (d+3), 4",
       "t7_hit_level": "high",
@@ -15264,7 +16134,7 @@
         "BT.d+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_177",
       "t7_command": "BT d+4",
       "t7_hit_level": "low",
@@ -15304,7 +16174,7 @@
         "BT.d/b+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_178",
       "t7_command": "BT d/b+4",
       "t7_hit_level": "low",
@@ -15343,7 +16213,7 @@
         "f+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_179",
       "t7_command": "f+3+4",
       "t7_hit_level": "-",
@@ -15383,7 +16253,7 @@
         "f+3+4,3+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_180",
       "t7_command": "f+3+4, 3+4",
       "t7_hit_level": "mid, mid, mid",
@@ -15428,7 +16298,7 @@
         "d+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_181",
       "t7_command": "d+1+2 (or FC 1+2, BT d+1+2)",
       "t7_hit_level": "-",
@@ -15463,7 +16333,7 @@
         "BT.d/f+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_182",
       "t7_command": "BT d/f+1+2",
       "t7_hit_level": "-",
@@ -15497,7 +16367,7 @@
         "SOMERSAULT.d+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_183",
       "t7_command": "(During Somersault) d+1+2",
       "t7_hit_level": "-",
@@ -15532,7 +16402,7 @@
         "4~3,d+1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_184",
       "t7_command": "4~3, d+1+2",
       "t7_hit_level": "mid",
@@ -15568,7 +16438,7 @@
         "u/f+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_185",
       "t7_command": "u/f+1",
       "t7_hit_level": "low",
@@ -15607,7 +16477,7 @@
         "u/f+4,d+1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_186",
       "t7_command": "u/f+4, d+1+2",
       "t7_hit_level": "mid",
@@ -15643,7 +16513,7 @@
         "f,F+1,D"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_187",
       "t7_command": "f, F+1, D",
       "t7_hit_level": "mid",
@@ -15684,7 +16554,7 @@
         "f,f,f+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_188",
       "t7_command": "f, f, f+3",
       "t7_hit_level": "mid",
@@ -15726,7 +16596,7 @@
         "D+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_189",
       "t7_command": "D+1",
       "t7_hit_level": "mid, mid, mid",
@@ -15775,7 +16645,7 @@
         "u/b+3+4,d+1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_190",
       "t7_command": "u/b+3+4, d+1+2",
       "t7_hit_level": "mid",
@@ -15812,7 +16682,7 @@
         "FC.d/f+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_191",
       "t7_command": "FC d/f+4",
       "t7_hit_level": "low",
@@ -15853,7 +16723,7 @@
         "SS.3,d+1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_192",
       "t7_command": "SS 3, d+1+2",
       "t7_hit_level": "low",
@@ -15889,7 +16759,7 @@
         "BT.2,2,1,D"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_193",
       "t7_command": "BT 2, 2, 1, D",
       "t7_hit_level": "high, mid, mid, mid, mid",
@@ -15938,7 +16808,7 @@
         "BT.u/f+1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_194",
       "t7_command": "BT u/f+1",
       "t7_hit_level": "low",
@@ -15951,8 +16821,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 257,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 93,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "AOP.d/f": {
@@ -15977,7 +16847,7 @@
         "AOP.d/f"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_195",
       "t7_command": "AOP d/f (or f, d/b, b)",
       "t7_hit_level": "-",
@@ -16015,7 +16885,7 @@
       "anim_ref": "t7:xiaoyu:xiaoyu_196",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_196",
       "t7_command": "AOP f, f or b, b",
       "t7_hit_level": "-",
@@ -16055,7 +16925,7 @@
         "AOP.d"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_197",
       "t7_command": "AOP d",
       "t7_hit_level": "-",
@@ -16095,7 +16965,7 @@
         "AOP.f+3+4,d+1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_198",
       "t7_command": "AOP f+3+4, d+1+2",
       "t7_hit_level": "-",
@@ -16129,7 +16999,7 @@
         "AOP.u/f+3,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_199",
       "t7_command": "AOP u/f+3, 1",
       "t7_hit_level": "mid, mid",
@@ -16176,7 +17046,7 @@
         "AOP.u/f,n,3,d+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_200",
       "t7_command": "AOP u/f, n, 3, d+1+2",
       "t7_hit_level": "mid",
@@ -16210,7 +17080,7 @@
         "AOP.f+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_201",
       "t7_command": "AOP f+4",
       "t7_hit_level": "low",
@@ -16251,7 +17121,7 @@
         "AOP.u/b,u"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_202",
       "t7_command": "AOP u/b, u or u/f",
       "t7_hit_level": "-",
@@ -16290,7 +17160,7 @@
         "AOP.f+3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_203",
       "t7_command": "AOP f+3+4",
       "t7_hit_level": "-",
@@ -16325,7 +17195,7 @@
         "AOP.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_204",
       "t7_command": "AOP 1",
       "t7_hit_level": "mid",
@@ -16338,8 +17208,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 243,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 93,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "mod_damage": "11",
       "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
@@ -16366,7 +17236,7 @@
         "AOP.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_205",
       "t7_command": "AOP 2",
       "t7_hit_level": "mid",
@@ -16407,7 +17277,7 @@
         "AOP.2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_206",
       "t7_command": "AOP 2, 1",
       "t7_hit_level": "mid, mid",
@@ -16456,7 +17326,7 @@
         "AOP.2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_207",
       "t7_command": "AOP (2), 1",
       "t7_hit_level": "mid",
@@ -16498,7 +17368,7 @@
         "AOP.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_208",
       "t7_command": "AOP 3",
       "t7_hit_level": "low",
@@ -16539,7 +17409,7 @@
         "AOP.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_209",
       "t7_command": "AOP 4",
       "t7_hit_level": "mid",
@@ -16580,7 +17450,7 @@
         "AOP.4~3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_210",
       "t7_command": "AOP 4~3",
       "t7_hit_level": "low",
@@ -16622,7 +17492,7 @@
         "AOP.1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_211",
       "t7_command": "AOP 1+2",
       "t7_hit_level": "mid",
@@ -16659,7 +17529,7 @@
         "AOP.u/f+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_212",
       "t7_command": "AOP u/f+3",
       "t7_hit_level": "mid",
@@ -16699,7 +17569,7 @@
         "AOP.u/f,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_213",
       "t7_command": "AOP u/f, (while landing) 3",
       "t7_hit_level": "low",
@@ -16739,7 +17609,7 @@
         "AOP.u/f+3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_214",
       "t7_command": "AOP u/f+3, 3",
       "t7_hit_level": "mid, mid",
@@ -16786,7 +17656,7 @@
         "AOP.u/f+3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_215",
       "t7_command": "AOP (u/f+3), 3",
       "t7_hit_level": "mid",
@@ -16826,7 +17696,7 @@
         "AOP.u/f+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_216",
       "t7_command": "AOP u/f+3, 4",
       "t7_hit_level": "mid, mid",
@@ -16873,7 +17743,7 @@
         "AOP.u/f+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_217",
       "t7_command": "AOP (u/f+3), 4",
       "t7_hit_level": "mid",
@@ -16913,7 +17783,7 @@
         "AOP.u/f+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_218",
       "t7_command": "AOP u/f+4",
       "t7_hit_level": "mid",
@@ -16952,7 +17822,7 @@
         "AOP.u/f,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_219",
       "t7_command": "AOP u/f, (while landing) 4",
       "t7_hit_level": "mid",
@@ -16992,7 +17862,7 @@
         "AOP.u/f+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_220",
       "t7_command": "AOP u/f+4, 4",
       "t7_hit_level": "mid, mid",
@@ -17038,7 +17908,7 @@
         "AOP.u/f+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_221",
       "t7_command": "AOP (u/f+4), 4",
       "t7_hit_level": "mid",
@@ -17077,7 +17947,7 @@
         "AOP.u/f,n,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_222",
       "t7_command": "AOP u/f, n, 3",
       "t7_hit_level": "mid",
@@ -17117,7 +17987,7 @@
         "AOP.u/f,n,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_223",
       "t7_command": "AOP u/f, n, 4",
       "t7_hit_level": "mid",
@@ -17156,7 +18026,7 @@
         "AOP.f+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_224",
       "t7_command": "AOP f+4",
       "t7_hit_level": "low",
@@ -17197,7 +18067,7 @@
         "AOP.f+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_225",
       "t7_command": "AOP f+4, 4",
       "t7_hit_level": "low, low",
@@ -17245,7 +18115,7 @@
         "AOP.f+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_226",
       "t7_command": "AOP (f+4), 4",
       "t7_hit_level": "low",
@@ -17286,7 +18156,7 @@
         "AOP.d+1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_227",
       "t7_command": "AOP d+1",
       "t7_hit_level": "low",
@@ -17328,7 +18198,7 @@
         "AOP.d+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_228",
       "t7_command": "AOP d+1+2",
       "t7_hit_level": "mid",
@@ -17365,7 +18235,7 @@
         "d/f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_229",
       "t7_command": "d/f+3",
       "t7_hit_level": "high",
@@ -17407,7 +18277,7 @@
         "R.b+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_230",
       "t7_command": "(During Rage) b+1+2 (or WS b+1+2, AOP b+1+2)",
       "t7_hit_level": "mid",
@@ -17450,7 +18320,7 @@
         "R.BT.d+3,3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_231",
       "t7_command": "(During Rage) BT d+3, 3+4",
       "t7_hit_level": "low, mid",
@@ -17492,7 +18362,7 @@
         "R.BT.d+3,3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_232",
       "t7_command": "(During Rage) BT (d+3), 3+4",
       "t7_hit_level": "mid",
@@ -17525,7 +18395,7 @@
       "anim_ref": "t7:xiaoyu:xiaoyu_233",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_233",
       "t7_command": "HYP 2+3 (b, b to cancel)",
       "t7_hit_level": "mid!",
@@ -17564,7 +18434,7 @@
       "anim_ref": "t7:xiaoyu:xiaoyu_234",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_234",
       "t7_command": "HYP 2+3 (b, b to cancel)",
       "t7_hit_level": "mid!",
@@ -17603,7 +18473,7 @@
       "anim_ref": "t7:xiaoyu:xiaoyu_235",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_235",
       "t7_command": "HYP 2+3 (b, b to cancel)",
       "t7_hit_level": "mid!",
@@ -17644,7 +18514,7 @@
         "1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_236",
       "t7_command": "Approach enemy... 1+3",
       "t7_hit_level": "high throw",
@@ -17661,8 +18531,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "same-notation"
+        "row": 380,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "2+4~t7.xiaoyu": {
@@ -17687,7 +18557,7 @@
         "2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_237",
       "t7_command": "Approach enemy... 2+4",
       "t7_hit_level": "high throw",
@@ -17704,8 +18574,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 361,
-        "match": "same-notation"
+        "row": 381,
+        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f+1+3": {
@@ -17730,7 +18600,7 @@
         "f+1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_238",
       "t7_command": "Approach enemy... f+1+3",
       "t7_hit_level": "high throw",
@@ -17747,8 +18617,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+2+3~t7.xiaoyu": {
@@ -17773,7 +18643,7 @@
         "f+2+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_239",
       "t7_command": "Approach enemy... f+2+3",
       "t7_hit_level": "high throw",
@@ -17790,8 +18660,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+2+4": {
@@ -17816,7 +18686,7 @@
         "f+2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_240",
       "t7_command": "Approach enemy... f+2+4",
       "t7_hit_level": "high throw",
@@ -17833,8 +18703,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+1+2": {
@@ -17859,7 +18729,7 @@
         "d/f+1+2"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_241",
       "t7_command": "Approach enemy... d/f+1+2",
       "t7_hit_level": "high throw",
@@ -17876,8 +18746,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 117,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       },
       "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
@@ -17903,7 +18773,7 @@
         "D/F+2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_242",
       "t7_command": "Approach enemy... D/F+2+4",
       "t7_hit_level": "high throw",
@@ -17920,8 +18790,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "SIDE_L.1+3": {
@@ -17946,7 +18816,7 @@
         "SIDE_L.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_243",
       "t7_command": "Approach from left side... 1+3 or 2+4",
       "t7_hit_level": "high throw",
@@ -17963,8 +18833,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "SIDE_R.1+3": {
@@ -17989,7 +18859,7 @@
         "SIDE_R.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_244",
       "t7_command": "Approach from right side...  1+3 or 2+4",
       "t7_hit_level": "high throw",
@@ -18006,8 +18876,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "BACK.1+3": {
@@ -18032,7 +18902,7 @@
         "BACK.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_245",
       "t7_command": "Approach from behind... 1+3 or 2+4",
       "t7_hit_level": "high throw",
@@ -18049,8 +18919,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "AOP.1+3~t7.xiaoyu": {
@@ -18075,7 +18945,7 @@
         "AOP.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_246",
       "t7_command": "AOP 1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -18092,8 +18962,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       },
       "mod_damage": "35",
       "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
@@ -18120,7 +18990,7 @@
         "BT.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_247",
       "t7_command": "BT 1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -18137,8 +19007,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "BT.f,F+1+3": {
@@ -18163,7 +19033,7 @@
         "BT.f,F+1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_248",
       "t7_command": "BT f, F+1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -18180,8 +19050,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "xiaoyu",
-        "row": 360,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 380,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "BT.f,F+3+4~t7.xiaoyu": {
@@ -18206,7 +19076,7 @@
         "BT.f,F+3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_249",
       "t7_command": "BT f, F+3+4",
       "t7_hit_level": "mid",
@@ -18239,7 +19109,7 @@
       "anim_ref": "t7:xiaoyu:xiaoyu_250",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_250",
       "t7_command": "WR f, f, F (Mid Screen)",
       "t7_hit_level": "mid",
@@ -18280,7 +19150,7 @@
         "TACKLE.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_251",
       "t7_command": "(During Tackle) 1 (or 2)",
       "t7_hit_level": "-",
@@ -18323,7 +19193,7 @@
         "TACKLE.1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_252",
       "t7_command": "(During Tackle) 1/2, 1/2",
       "t7_hit_level": "-",
@@ -18371,7 +19241,7 @@
         "TACKLE.1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_253",
       "t7_command": "(During Tackle) 1/2, 1/2, 1/2",
       "t7_hit_level": "-",
@@ -18420,7 +19290,7 @@
         "TACKLE.1,1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_254",
       "t7_command": "(During Tackle) 1/2, 1/2, 1/2, 1/2",
       "t7_hit_level": "-",
@@ -18470,7 +19340,7 @@
         "u/b,b"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_255",
       "t7_command": "u/b, b",
       "t7_hit_level": "-",
@@ -18509,7 +19379,7 @@
         "1+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_256",
       "t7_command": "1+3+4",
       "t7_hit_level": "-",
@@ -18544,7 +19414,7 @@
         "REV.1+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_257",
       "t7_command": "Time with enemy attack... 1+4",
       "t7_hit_level": "-",
@@ -18579,7 +19449,7 @@
         "2+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_258",
       "t7_command": "2+3+4",
       "t7_hit_level": "-",
@@ -18614,7 +19484,7 @@
         "3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "xiaoyu_259",
       "t7_command": "3+4 (or d+3+4)",
       "t7_hit_level": "-",
@@ -23745,8 +24615,8 @@
   "anim_bank": "xiaoyu",
   "anim_set_lock": {
     "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
-    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
-    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; xiaoyu bank at game/assets/anim/t3/xiaoyu/ (exists; FIGHT/SHOW tagging enforced at intake); must NEVER enter this moveset without the user's explicit approval",
+    "FIGHT": "every move in this file: moveset moves and combat stances \u2014 the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations \u2014 intro/win slots and cutscenes ONLY; xiaoyu bank at game/assets/anim/t3/xiaoyu/ (exists; FIGHT/SHOW tagging enforced at intake); must NEVER enter this moveset without the user's explicit approval",
     "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
   },
   "canon_moves": [

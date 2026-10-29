@@ -82,6 +82,7 @@ const SUBMENUS = {
     { t: 'GALLERY', d: 'Unlocked endings, concept art, arena drafts. The archive of the shrine.', badge: 'live', action: 'mode-gallery' },
     { t: 'JUKEBOX', d: 'Every stage theme, every character motif. The shrine\'s setlist.', badge: 'live', action: 'mode-jukebox' },
     { t: 'REPLAYS', d: 'Save your fights. Study the tape. Steal your own habits back.', badge: 'live', action: 'mode-replays' },
+
   ]},
   options: { title: 'OPTIONS', cards: [
     { t: 'OPTIONS', d: 'Sound, graphics, controls.', badge: 'live', action: 'mode-options' },
@@ -285,7 +286,14 @@ export function initMainMenu() {
   renderTopbar();
   startNews();
   const ver = $('mm-ver');
-  if (ver) ver.textContent = 'WESTERN HEART · BUILD 2026-10-22';
+  if (ver) {
+    // Milestone 1: real build date from the deploy manifest (build_pages.py),
+    // not a hard-coded string, so the live link shows which build it is.
+    ver.textContent = 'WESTERN HEART · DEV BUILD';
+    fetch('../deploy-manifest.json', { cache: 'no-store' }).then(r => (r.ok ? r.json() : null)).then((m) => {
+      if (m && m.built) ver.textContent = `WESTERN HEART · BUILD ${new Date(m.built).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' })} · ${String(m.commit || '').slice(0, 7)}`;
+    }).catch(() => {});
+  }
 
   // Rail items: submenu keys open panels; data-action items ride the
   // existing delegated router; data-mm-forge opens the forge directly.
