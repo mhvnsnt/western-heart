@@ -289,6 +289,9 @@ export function canonNotation(n) {
   if (typeof n !== 'string') return n;
   let s = n.trim().replace(/\s*\((?:first|second|third|\d+(?:st|nd|rd|th)) hits? only\)\s*$/i, ''); // T7 per-hit row annotation, same input
   s = s.replace(/^\((.*)\)$/, '$1').trim();
+  s = s.replace(/(?:\s*\((?:KOFXV|KOF\s*XV|SFV|sfv|SF6|sf6|T7|T8)\))+\s*$/, ''); // source-game tag on imported rows, same input
+  s = s.replace(/^(d(?:\/[fb])?\+[1-4](?:\+[1-4])*)\s*\(crouch(?:ing)?\)$/i, '$1'); // KOF '(crouch)' note on a d+ button, same input
+  s = s.replace(/^fc\s*\+?\s*(?=[1-4udfbnUDFB])/i, 'FC.'); // 'fc+1' / 'FC 1' -> FC.1 (full-crouch state)
   s = s.replace(/^\(During Rage\)\s*/i, 'R.'); // T7 list spelling of the rage state prefix
   s = s.replace(/\b(df|db|uf|ub|DF|DB|UF|UB)(?=\+|,|$|~|:)/g, (m) => _DIAG[m]);
   s = s.replace(/^(ws|WS)\s*(?=[1-4])/, 'WS.');
