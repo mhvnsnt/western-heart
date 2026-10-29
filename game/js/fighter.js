@@ -1644,6 +1644,7 @@ export class Fighter {
       }
       const cont = this.tekken.continuation(name);
       if (cont) { this._queuedNext = cont; this._queuedPressT = this._clock || 0; return true; }
+      if (this.tekken._strPending) { this._stringGraceUntil = Math.max(this._stringGraceUntil || 0, performance.now() + 500); return true; } // extends an open partial string; fires at its full step
       // Chord upgrade: input.js emits the first button at once and the chord when the second
       // lands inside its 140 ms window, so '1' then '1+3' means the player pressed 1+3. If the
       // single that just started is part of this chord, the chord replaces it.
@@ -1688,6 +1689,13 @@ export class Fighter {
       return false;
     }
     if (this.state !== 'attack' || !this.attack) return false;
+    // Same follow-up entered during the grab's own startup/active (before it connects): it
+    // rides on the throw instead of queueing a string hit the throw lock would drop.
+    if (this.attack.isGrab && this.tekken.lastMove && !this._throwFollow) {
+      for (const d of [dir, dir.toUpperCase()]) { const c = `${this.tekken.lastMove},${d}`;
+        if (!resolveMoveKey(this._movesetId, c)) continue;
+        this._throwFollow = c; this.tekken._recordMove(c); this.attackName = c; return true; }
+    }
     const T = this.tekken, ms = this._movesetId;
     const last = (this._queuedAfter && this._queuedAfter.length) ? this._queuedAfter[this._queuedAfter.length - 1] : (this._queuedNext || T.lastMove);
     if (!last) return false;
@@ -1808,6 +1816,8 @@ export class Fighter {
         (typeof performance !== 'undefined' ? performance.now() : 0) < this._stringGraceUntil) {
       const grace = this.tekken.continuation(notation);
       if (grace && this._fireNotation(grace)) return true;
+      // extends an open partial string (no standalone step): consume, keep the grace window open
+      if (!grace && this.tekken._strPending) { this._stringGraceUntil = performance.now() + 500; return true; }
     }
     if (/^[1234]$/.test(notation)) {
       const pathT0 = this.tekken._strPathT;
@@ -1866,6 +1876,7 @@ export class Fighter {
     this._queuedNext = null; this._queuedAfter = null;
     if (/^(R|RD)\./.test(notation)) this._rageUsed = true; // rage art/drive: once per round
     this.stance = null; this.stanceT = 0; this._risingT = 0;
+    this._throwFollow = null;
     this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
     if (name === 'surge') this._auraFlash = 0.7;
     if (move.isGrab || notation === '1+3' || notation === '2+4') this.vx = this.facing * 2.5; // lunge into the grab
