@@ -15,7 +15,7 @@
   const dirKeys = (d) => (d && d.toLowerCase() !== 'n' ? d.toLowerCase().split('/') : []);
   const setDir = (d) => { const want = new Set(dirKeys(d)); for (const k of ['u', 'd', 'f', 'b']) if (!want.has(k)) key(k, 'keyup'); key([...want], 'keydown'); };
   const REACT = /hit|stun|launch|knock|thrown|block|stagger|crumple|fall|air|juggle|down|splat|bound|dizzy|spin|guard/i;
-  const s = (f) => ({ st: f.state, an: f.attackName, mk: f.attack ? f.attack.moveKey : null, clip: f._t3current ? f._t3current.getClip().name : null,
+  const s = (f) => ({ st: f.state, an: f.attackName, mk: f.attack ? f.attack.moveKey : null, ar: f.attack && f.attack.t3row != null ? f.attack.t3source + ':' + f.attack.t3row : null, clip: f._t3current ? f._t3current.getClip().name : null,
     x: +f.root.position.x.toFixed(2), y: +f.root.position.y.toFixed(2), hp: f.hp });
   const step = (n, out) => { for (let i = 0; i < n; i++) { window.__vt += 1000 / 60;
     { const I = g.input; if (I._udDir && !I._udHeld && window.__vt - I._udT >= 200) { clearTimeout(I._udTimer); if (I._udDir === 'up') I.up = true; else I.down = true; I._udHeld = true; } } // input.js 200 ms u/d hold timer, on the sim clock
@@ -304,7 +304,13 @@
       const fired = []; let last = null;
       for (const fr of out) { const a = (fr.p1.st === 'attack' || /throw/.test(fr.p1.st)) ? fr.p1.an : null; if (a && a !== last) fired.push(a); last = a; }
       const keys = fired.map((n) => MS.resolveMoveKey(id, n) || n);
-      const firedIt = cond != null ? out.some((fr) => fr.p1.mk === m.key && (fr.p1.st === 'attack' || /throw/.test(fr.p1.st))) : keys.includes(m.key);
+      // A T3 condition row passes when it is the attacking move (moveKey), or when the fired attack
+      // resolves to this row AND plays this row's own T3 source row (bank:row, the animation it resolves to) - a base move that only
+      // shares the notation (different source row) still fails.
+      const rowRef = mv.t3_row != null ? (mv.t3_source || ms.t3_source) + ':' + mv.t3_row : null;
+      const atk = (fr) => fr.p1.st === 'attack' || /throw/.test(fr.p1.st);
+      const firedIt = cond != null ? out.some((fr) => atk(fr) && (fr.p1.mk === m.key
+        || (rowRef && fr.p1.ar === rowRef && MS.resolveMoveKey(id, fr.p1.an) === m.key))) : keys.includes(m.key);
       const react = [...new Set(out.map((fr) => fr.p2.st))].filter((x) => x !== 'idle' && x !== 'walk');
       const dmg = Math.round((hp0 - Math.min(...out.map((fr) => fr.p2.hp))) * 10) / 10;
       const connected = dmg > 0 || react.some((x) => REACT.test(x));
