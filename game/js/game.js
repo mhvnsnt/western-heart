@@ -526,7 +526,8 @@ export class Game {
           const kofMax = whQueue.includes('1+2+3+4') && this.p1.systemRowOn('1+2+3+4', 'max') && !(this.p1._maxT > 0) && this.p1.meter >= 50;
           if (kofMax) { /* falls through to tryAttack('1+2+3+4') */ }
           else if (this.soul && this.soul.claimRelease(this.p1, this.p2, whQueue)) { rec('nine-soul-release'); }
-          else if (this._whDepth) this._whDepth.onPlayerQueue(this.p1, whQueue, dt);
+          // A directional 1+2+3+4 the fighter owns ('d+1+2+3+4') is that move, not the neutral kindle.
+          else if (this._whDepth && !(whQueue.includes('1+2+3+4') && this.p1.tekken && this.p1.tekken.lastDir && this.p1.tekken.lastDir !== 'n' && this.p1.tekken.resolveKey && this.p1.tekken.resolveKey(this.p1.tekken.lastDir + '+1+2+3+4'))) this._whDepth.onPlayerQueue(this.p1, whQueue, dt);
           for (const act of whQueue) {
           if (act === 'punch' || act === 'kick' || act === 'grab' || act === 'sig' ||
               act === '1' || act === '2' || act === '3' || act === '4' ||
