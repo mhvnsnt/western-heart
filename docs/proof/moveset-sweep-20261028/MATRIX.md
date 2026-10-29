@@ -1,6 +1,6 @@
 # Moveset sweep matrix (2026-10-29)
 
-97/129 fighters ran: 55986 moves, 46920 pass, 7809 fail, 1257 n/a. Full rerun 2026-10-29 (`rerun-20261029/`); 13 fighters re-swept after #1195/#1196 (r11), one result per fighter. Bodies follow the game's default attire (sweep-bodies.md); blockers are listed with their reason.
+97/129 fighters ran: 55986 moves, 47355 pass, 7380 fail, 1251 n/a. Full rerun 2026-10-29 (`rerun-20261029/`); 13 fighters re-swept after #1195/#1196 (r11); 11 fighters re-swept after #1199 (r12), one result per fighter. Bodies follow the game's default attire (sweep-bodies.md); blockers are listed with their reason.
 
 Moveset editor e2e: 128/128 open/edit/save/reload/reset (`editor.json`). Fight shots: `sweep-*.png`.
 
@@ -13,7 +13,7 @@ Moveset editor e2e: 128/128 open/edit/save/reload/reset (`editor.json`). Fight s
 | blanka | 218 | 162 | 54 | 2 | 3/14 | ran |
 | bob | 581 | 536 | 34 | 11 | 45/101 | ran |
 | bruno | 352 | 331 | 2 | 19 | 6/19 | ran |
-| buffalo-bill | 824 | 680 | 134 | 10 | 54/106 | ran |
+| buffalo-bill | 824 | 699 | 115 | 10 | 55/107 | ran |
 | burger-demon | 490 | 456 | 22 | 12 | 43/104 | ran |
 | burger-speed-demon | 478 | 440 | 26 | 12 | 43/101 | ran |
 | burger-the-mouth | 478 | 441 | 26 | 11 | 43/105 | ran |
@@ -29,7 +29,7 @@ Moveset editor e2e: 128/128 open/edit/save/reload/reset (`editor.json`). Fight s
 | deathfang | 146 | 115 | 30 | 1 | 3/12 | ran |
 | demonio-bloodline-ember | 710 | 635 | 60 | 15 | 39/93 | ran |
 | demonio-human | 707 | 633 | 61 | 13 | 10/22 | ran |
-| demonio-winged | 1092 | 941 | 125 | 26 | 32/88 | ran |
+| demonio-winged | 1092 | 966 | 101 | 25 | 32/88 | ran |
 | demonio | 793 | 690 | 87 | 16 | 7/26 | ran |
 | diablo | 685 | 556 | 115 | 14 | 1/23 | ran |
 | dio | 294 | 243 | 33 | 18 | 19/29 | ran |
@@ -48,12 +48,12 @@ Moveset editor e2e: 128/128 open/edit/save/reload/reset (`editor.json`). Fight s
 | dxmmii-patchwork | 189 | 183 | 5 | 1 | 3/12 | ran |
 | dxmmii | 169 | 165 | 3 | 1 | 3/12 | ran |
 | gyou-spirit-body | 590 | 464 | 113 | 13 | 98/168 | ran |
-| gyou | 1033 | 888 | 122 | 23 | 57/88 | ran |
+| gyou | 1033 | 915 | 97 | 21 | 59/94 | ran |
 | hugo | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
 | iori | 215 | 199 | 15 | 1 | 3/12 | ran |
 | jin_soul | 1041 | 819 | 182 | 40 | 73/203 | ran |
-| kai | 906 | 713 | 165 | 28 | 46/128 | ran |
-| kingtyrant | 877 | 725 | 132 | 20 | 22/41 | ran |
+| kai | 906 | 762 | 118 | 26 | 49/146 | ran |
+| kingtyrant | 877 | 738 | 120 | 19 | 22/41 | ran |
 | kinpo | 549 | 504 | 35 | 10 | 72/101 | ran |
 | koreshi | 1109 | 897 | 199 | 13 | 5/29 | ran |
 | kronos-attire2 | 2629 | 1796 | 793 | 40 | 5/78 | ran |
@@ -80,8 +80,8 @@ Moveset editor e2e: 128/128 open/edit/save/reload/reset (`editor.json`). Fight s
 | ryuji-rock | 148 | 137 | 10 | 1 | 3/14 | ran |
 | ryuji | 146 | 136 | 9 | 1 | 3/14 | ran |
 | ryusan | 230 | 185 | 24 | 21 | 6/22 | ran |
-| sakura | 793 | 610 | 168 | 15 | 24/39 | ran |
-| samura1 | 889 | 682 | 192 | 15 | 16/34 | ran |
+| sakura | 793 | 690 | 88 | 15 | 25/41 | ran |
+| samura1 | 889 | 748 | 126 | 15 | 17/35 | ran |
 | scimitar | 385 | 361 | 15 | 9 | 8/20 | ran |
 | sf-akuma | 187 | 165 | 12 | 10 | 77/99 | ran |
 | sf-blanka | 56 | 52 | 4 | 0 | 3/13 | ran |
@@ -95,21 +95,21 @@ Moveset editor e2e: 128/128 open/edit/save/reload/reset (`editor.json`). Fight s
 | sf-sagat | | | | | | BLOCKER: no model on box (source URLs only) |
 | sf-vega | | | | | | BLOCKER: no model on box (source URLs only) |
 | sf-zangief | | | | | | BLOCKER: no model on box (source URLs only) |
-| sha | 814 | 614 | 181 | 19 | 24/39 | ran |
+| sha | 814 | 689 | 106 | 19 | 25/41 | ran |
 | skull | 712 | 652 | 49 | 11 | 11/31 | ran |
 | slice | 510 | 439 | 55 | 16 | 35/63 | ran |
 | star | 937 | 833 | 83 | 21 | 63/130 | ran |
 | sunra | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
 | t3-anna | 772 | 668 | 92 | 12 | 68/173 | ran |
 | t3-bosconovitch | 285 | 243 | 42 | 0 | 0/12 | ran |
-| t3-eddy | 736 | 595 | 120 | 21 | 42/126 | ran |
+| t3-eddy | 736 | 604 | 111 | 21 | 44/129 | ran |
 | t3-forestlaw | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
 | t3-gon | 170 | 150 | 20 | 0 | 3/11 | ran |
 | t3-hwoarang | 752 | 671 | 70 | 11 | 40/78 | ran |
 | t3-julia | 443 | 394 | 40 | 9 | 2/41 | ran |
 | t3-kuma | 554 | 498 | 38 | 18 | 51/112 | ran |
 | t3-law | 716 | 595 | 111 | 10 | 53/103 | ran |
-| t3-lei | 819 | 660 | 149 | 10 | 94/344 | ran |
+| t3-lei | 819 | 718 | 91 | 10 | 106/392 | ran |
 | t3-nina | 783 | 676 | 92 | 15 | 34/137 | ran |
 | t3-ogre | 180 | 162 | 18 | 0 | 3/12 | ran |
 | t3-paul | 520 | 425 | 82 | 13 | 4/147 | ran |
@@ -129,7 +129,7 @@ Moveset editor e2e: 128/128 open/edit/save/reload/reset (`editor.json`). Fight s
 | waterfall | 389 | 366 | 11 | 12 | 14/31 | ran |
 | yukihyo | 584 | 493 | 64 | 27 | 36/65 | ran |
 | zangief | 236 | 185 | 49 | 2 | 3/15 | ran |
-| zen | 668 | 531 | 119 | 18 | 39/87 | ran |
+| zen | 668 | 545 | 105 | 18 | 39/89 | ran |
 | zui | 678 | 588 | 70 | 20 | 31/76 | ran |
 | gashadokuro | 554 | 498 | 38 | 18 | 51/112 | ran |
 | aotsuki | 554 | 496 | 40 | 18 | 5/102 | ran |
