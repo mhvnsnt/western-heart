@@ -21,6 +21,10 @@
     { const I = g.input; if (I._udDir && !I._udHeld && window.__vt - I._udT >= 200) { clearTimeout(I._udTimer); if (I._udDir === 'up') I.up = true; else I.down = true; I._udHeld = true; } } // input.js 200 ms u/d hold timer, on the sim clock
     if (g._hitStop > 0) g._hitStop -= 1 / 60; else g._update(1 / 60); if (out) out.push({ p1: s(g.p1), p2: s(g.p2) }); } };
   const reset = (gap) => {
+    // a launcher/wall hit can break the floor or a wall (stagebreaks.js drops GROUND_Y to the lower
+    // level, -6 m): every later row then played falling through the old floor. Each row starts
+    // on the intact stage, as a new match does (game.js calls the same reset).
+    if (g.stageBreaks && ((g.stageBreaks.broken && g.stageBreaks.broken.size) || g.stageBreaks.groundY)) g.stageBreaks.reset();
     for (const k of [...held]) key(k, 'keyup');
     for (const f of [g.p1, g.p2]) { f.hp = f.maxHp || 100; f._enter('idle'); f.attack = null; f.attackName = null; f._throwPair = null;
       f.stance = null; f.stanceT = 0; f._stanceSpins = 0; f._risingT = 0; f.lockT = 0; f.lockMove = null; f.tekken.lastMove = null; f.tekken._strPath = null;
@@ -259,17 +263,28 @@
       reset(gap); setup(P.pre, f); run(f, P, null);
       let k = 0; while (k++ < 90 && !(g.p2.root.position.y > 0.35)) step(1);
       if (!(g.p2.root.position.y > 0.35)) return { key: r.key, ok: null, why: 'no lift on replay' };
-      let hit = false;
+      let hit = false; const dbg = r.trace ? [] : null;
       for (let t = 0; t < 8 && !hit; t++) {
         // the follow-up 1 must be a fresh move: let the launcher (and any queued string hits) finish
         for (let w = 0; w < 300 && (g.p1.state === 'attack' || g.p1._queuedNext); w++) step(1);
         const hp = g.p2.hp;
-        g.p1.root.position.x = g.p2.root.position.x - 0.85; g.p1.facing = 1;
-        key(['1'], 'keydown'); step(1); key(['1'], 'keyup'); step(18);
-        if (g.p2.hp < hp) hit = true;
+        // aim at where the opponent will be when the jab's active frames arrive: its ballistic
+        // path (fighter.js gravity 22 m/s²) clamped at its landing point, not a fixed spot
+        { const o = g.p2, y = o.root.position.y, vy = o.vy || 0, G = 22;
+          const tLand = (vy + Math.sqrt(vy * vy + 2 * G * Math.max(0, y))) / G;
+          const J = MS.getMove ? MS.getMove(id, '1') : null; const tHit = ((J && J.startup) || 0.15) + 0.02;
+          const t = Math.min(tHit, tLand); const px = o.root.position.x + (o.vx || 0) * t;
+          g.p1.root.position.x = px - 0.85; g.p1.facing = 1; }
+        const st0 = [g.p1.state, +(g.p2.root.position.x - g.p1.root.position.x).toFixed(2), +g.p2.root.position.y.toFixed(2), g.p2.state, +(g.p2.vx || 0).toFixed(2), +(g.p2.vy || 0).toFixed(2)];
+        // the hit counts only if it lands while the opponent is still off the ground (a juggle),
+        // not after it landed and stood up
+        key(['1'], 'keydown'); step(1); key(['1'], 'keyup');
+        let airHit = false; for (let q = 0; q < 18; q++) { const h0 = g.p2.hp, air = !g.p2.onGround || g.p2.root.position.y > 0.05; step(1); if (g.p2.hp < h0 && air) airHit = true; }
+        if (dbg) dbg.push([...st0, '->', g.p1.attackName, g.p1._attackPhase, g.p1.hasHit, +(g.p2.root.position.y).toFixed(2), g.p2.state]);
+        if (airHit) hit = true;
         if (g.p2.onGround && g.p2.root.position.y < 0.05) break;
       }
-      return { key: r.key, ok: hit, why: hit ? '' : 'follow-up 1 never hit the airborne opponent' };
+      return { key: r.key, ok: hit, why: hit ? '' : 'follow-up 1 never hit the airborne opponent', dbg: dbg || undefined };
     } finally { if (r.via === 'equipped via moveset loadout') MS.setLoadoutSlot(id, r.input, null); }
   };
   window.__moveList = () => { const id = g.p1.char.id, ms = MS.playedMoveset(id); const rows = [];
