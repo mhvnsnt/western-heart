@@ -568,6 +568,8 @@ export function motionsFor(fighterId, ms) {
 /* String prefixes of loadout-equipped strings (moveset editor: rush_l3 on '1,1,1'), so their
    intermediate steps open the string cursor like a moveset's own strings do. */
 const _loPrefCache = new Map();
+/** Is `c` the opening part of one of this fighter's strings ('1+2,f' of '1+2,f,f')? */
+export function hasStrPrefix(fighterId, c) { const ms = playedMoveset(fighterId); return !!(ms && strPrefixesHas(fighterId, ms, c)); }
 export function strPrefixesHas(fighterId, ms, c) {
   if (ms._strPrefixes && ms._strPrefixes.has(c)) return true;
   const lo = getLoadout(fighterId);
