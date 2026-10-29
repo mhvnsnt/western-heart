@@ -170,6 +170,20 @@ export async function ensureMovesets(ids) {
 export function getMovesetIndex() { return _index; }
 
 /** Synchronous accessor: the FULL moveset (null until ensureMovesets/registerMoveset). */
+/** Chain-throw stage tag (Tekken multi-part throws, e.g. King's Arm Breaker chain).
+ *  A throw named 'Arm Breaker (AB1)' opens stage AB1; its follow-ups are keyed 'AB1.<buttons>'.
+ *  A T7 throw without a code ('Arm Breaker') opens ARM_BREAKER ('(During Arm Breaker) 1+2,1+2'). */
+export function throwStageTag(name) {
+  const n = String(name || ''); const m = /\(([A-Z]+\d+[a-z]?)\)/.exec(n);
+  return m ? m[1] : n.toUpperCase().replace(/[^A-Z0-9]+/g, '_').replace(/^_+|_+$/g, '') || null;
+}
+/** Moveset keys of one chain-throw stage ('AB1.1,1+2', ...). */
+export function throwStageKeys(fighterId, tag) {
+  const ms = getFighterMoveset(fighterId); if (!ms || !tag) return [];
+  const c = ms._stageKeys || (ms._stageKeys = {});
+  return c[tag] || (c[tag] = Object.keys(ms.moves).filter((k) => k.startsWith(tag + '.')));
+}
+
 export function getFighterMoveset(fighterId) {
   const m = _movesets[fighterId] || _g.WH_MOVESETS?.[fighterId] || null;
   return m && m.moves ? m : null;
