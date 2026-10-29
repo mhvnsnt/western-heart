@@ -147,7 +147,8 @@ ITCH_BUNDLED_MODELS = (
 
 CORE_DROP_REASONS = {"parts-converted media", "parts media", "decal-library (customization only)",
                      "reskin-library (customization only)", "suite demo mp4", "docs", "model renders",
-                     "tests", "ai-pass compare images", "sunra preview media"}
+                     "tests", "ai-pass compare images", "sunra preview media",
+                     "unused anim", "sound-bank (no callers)", "zui ui portraits"}
 
 
 def itch_drop_reason(f):

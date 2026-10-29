@@ -1482,21 +1482,6 @@ window.__startFight = (p1, p2, opts) => startFight(p1, p2, opts || {}); // QA ho
   setTimeout(() => { startFight(q.p1, p2, { stage }).catch(e => console.error('[quick]', e)); }, 0);
 })();
 
-/* Milestone 1: build stamp so the live link shows which build it is.
-   deploy-manifest.json is written by tools/deploy/build_pages.py. */
-(function buildStamp() {
-  const el = document.createElement('div');
-  el.id = 'build-stamp';
-  el.style.cssText = 'position:fixed;left:6px;bottom:4px;z-index:99999;font:11px/1.2 monospace;color:#fff;opacity:.55;pointer-events:none;text-shadow:0 0 2px #000';
-  el.textContent = 'build: dev';
-  document.body.appendChild(el);
-  fetch('../deploy-manifest.json', { cache: 'no-store' }).then(r => (r.ok ? r.json() : null)).then((m) => {
-    if (!m) return;
-    const d = m.built ? new Date(m.built) : null;
-    const when = d && !isNaN(d) ? d.toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' }) : '?';
-    el.textContent = `build ${when} \u00b7 ${String(m.commit || '').slice(0, 7)}`;
-  }).catch(() => {});
-})();
 window.__ui = ui;
 window.__stages = STAGES;
 

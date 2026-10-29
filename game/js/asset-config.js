@@ -64,10 +64,15 @@ export const SHELL_BUNDLED_MODELS = [
   'roster/demonio/attires/attire1/model.glb',
   'roster/demonio/attires/winged-devil/model-rigged.glb',
   'roster/demonio/attires/human/model-rerig.glb',
-  'game/assets/models/cyborg-x.glb',
+  'roster/cyborg-x/attires/attire1/model-rigged.glb', // cyborgx fight model (cape-jones-attire1)
   'roster/burger/attires/attire1/model-rigged.glb',
+  'roster/burger/attires/attire6/model.glb', // form: speed demon
+  'roster/burger/attires/attire7/model.glb', // form: the mouth
+  'roster/burger/attires/attire1/model.glb', // form: demon
   'roster/rahkasa/attires/attire1/model-rigged-textured.glb',
   'roster/deathfang/attires/attire1/model.glb',
+  'roster/deathfang/attires/attire2/model.glb', // form: werewolf
+  'roster/pantera/attires/leomon/model.glb', // select-pane attire 1
   'roster/dio/attires/attire1/source/dio-a1-jade-god-rigged.glb',
 ];
 
