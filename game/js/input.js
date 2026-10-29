@@ -39,6 +39,10 @@ import { stickToDir } from './combat-core.js';
    this window does not apply to them. Test: test/input-timing.test.mjs. */
 export const CHORD_WINDOW_MS = 50;
 
+// Sidestep tap grace: 3 frames for the next motion step to arrive (key-by-key d,f rolls
+// release d before f goes down). Tekken reads a u/d tap that rolls into f/b as the motion.
+const SS_GRACE_MS = 50;
+
 export class InputManager {
   constructor() {
     this.axisX = 0;
@@ -78,7 +82,7 @@ export class InputManager {
 
   reset() {
     this.axisX = 0; this.axisY = 0; this.joyY = 0;
-    this.up = false; this.down = false; this.held.block = false; for (const b of '1234') this.held[b] = false; this._queue.length = 0;
+    this.up = false; this.down = false; this.held.block = false; for (const b of '1234') this.held[b] = false; this._queue.length = 0; this._ssPending = null;
     this._keys = {};
     this._lastPunchT = 0; this._lastKickT = 0;
     this._lastT = { '1': 0, '2': 0, '3': 0, '4': 0 };
@@ -86,7 +90,17 @@ export class InputManager {
     this._resetJoyKnob();
   }
 
-  consume() { const q = this._queue.slice(); this._queue.length = 0; return q; }
+  consume() {
+    // Pending sidestep tap (see _udRelease): a horizontal arriving inside the grace window means
+    // the u/d tap was a step of a motion in progress (d/b,d,f / qcf rolled key-by-key), so the
+    // motion wins and no sidestep fires; otherwise the sidestep is emitted once the window ends.
+    const ss = this._ssPending;
+    if (ss) {
+      if (this.axisX !== 0) this._ssPending = null;
+      else if (performance.now() - ss.t >= SS_GRACE_MS) { this._ssPending = null; this._push(ss.act); }
+    }
+    const q = this._queue.slice(); this._queue.length = 0; return q;
+  }
 
   _push(action) {
     if (!this.enabled) return;
@@ -271,7 +285,7 @@ export class InputManager {
     // stick is still forward/back when u/d lets go, so no sidestep (a fast qcf used to sidestep).
     const rolled = this.axisX !== 0;
     if (this.up || this.down) { this.up = false; this.down = false; }
-    else if (!held && !used && !rolled) this._push(dir === 'up' ? 'ss-up' : 'ss-down');
+    else if (!held && !used && !rolled) this._ssPending = { act: dir === 'up' ? 'ss-up' : 'ss-down', t: performance.now() };
   }
 
   /* ---------------- Keyboard ---------------- */
