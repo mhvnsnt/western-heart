@@ -277,6 +277,9 @@
     // move window. Those rows are n/a WITH the missing state named, never a pass.
     { const t = `${m.key} ${m.input || ''}`; const NA = [[/\bWR\b/, 'running (WR)'], [/Face (Up|Down)|Roll(ing)? Forward/i, 'face-up/face-down ground'],
         [/During Tackle/i, 'tackle mount'], [/Upon Landing/i, 'jump-landing window']];
+      // batch 9: a '(wolf)' row is the transformed form's move: transforming swaps the played
+      // moveset (fighter._movesetId -> the form's own set), so the base set never plays it
+      if (/\(wolf\)\s*$/i.test(m.input || '') && (MS.playedMoveset(g.p1.char.id) || {}).transform) return { key: m.key, input: m.input, ok: null, why: 'n/a: transformed-form row (plays from the transform moveset once transformed)', via: 'transform form' };
       for (const [re, st] of NA) if (re.test(t)) return { key: m.key, input: m.input, ok: null, why: `n/a: game has no ${st} state`, via: 'not wired' }; }
     const f = g.p1, o = g.p2, id = f.char.id, ms = MS.playedMoveset(id) || {}; const mv = (ms.moves || {})[m.key] || {};
     { const sr = MS.systemRows && MS.systemRows(id).find((r) => r.key === m.key); if (sr) return sysCheck(m, sr); }
