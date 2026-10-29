@@ -378,6 +378,11 @@
       /* opening step through the first button: 'f,n,1' of 'f,n,1,2' */ const firstStep = (/^(?:[^,~:1-4]*[,~:])*?[^,~:]*?[1-4][^,~:]*/.exec(notation) || [notation.split(/[,~:]/)[0]])[0]; const openerOnly = !MS.resolveMoveKey(id, firstStep);
       const strOk = nHits > 1 ? (fired.length >= Math.min(nHits, 2) || openerOnly) && firedIt : true;
       const ok = firedIt && strOk && (!needHit || connected) && throwOk !== false;
+      /* Two rows on the same physical input ('qcf+1' and 'n,d,d/f,f+1', 'f,f+1+2' and 'n,f,n,f+1+2'):
+         only one can ever play, so the other is a data duplicate, not an engine failure. */
+      const normIn = (k) => String(k).replace(/\bqcf/g, 'd,d/f,f').replace(/\bqcb/g, 'd,d/b,b').replace(/\bhcf/g, 'b,d/b,d,d/f,f').replace(/\bhcb/g, 'f,d/f,d,d/b,b').replace(/(^|,)n,/g, '$1').replace(/\/|\s/g, '').toLowerCase();
+      const dupOf = !firedIt ? fired.find((f) => f !== m.key && normIn(f) === normIn(notation)) : null;
+      if (dupOf) return { key: m.key, input: notation, via, setup: how, ok: null, why: `duplicate input: same physical input as row '${dupOf}' (fires that row)`, fired };
       const why = !firedIt ? `fired ${JSON.stringify(fired)} (keys ${JSON.stringify(keys)}) not '${m.key}'` : !strOk ? `string fired ${JSON.stringify(fired)}` :
         (needHit && !connected) ? 'fired but did not connect' + missCause(out, x0) : throwOk === false ? 'throw did not reach exec with victim clip' : '';
       return { trace: m.trace ? out.filter((_, i) => i % 3 === 0) : undefined, key: m.key, input: notation, via, setup: how, ok, why, fired, dmg, react: react.slice(0, 6), launch: out.some((fr) => fr.p2.y > 0.35), isThrow, throwOk,

@@ -41,7 +41,7 @@ import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK, T3_BANKS,
   loadT3ReactionClip, getT3ReactionPackScale, loadReactionPack, getReactionPack, getReactionClip } from './t3anims.js';
 import { selectThrow, resolveThrowClips, throwBreaks, throwDamageTimeSec, throwPairDurationSec,
   escapePairFor, anchorAt, sharedFramePos, throwQuadrant, attemptRowForInput, hexSlot, bankDirOf } from './t3-throw.js';
-import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove, resolveMoveKey, variantBase, throwStageTag, throwStageKeys, systemRows, systemTagOf } from './movesets.js';
+import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove, resolveMoveKey, hasStrPrefix, variantBase, throwStageTag, throwStageKeys, systemRows, systemTagOf } from './movesets.js';
 import { TransformCinematic } from './transform-cinematic.js';
 import { V, vskillFor, vtriggerEnhance, vreversalMove } from './v-system.js';
 import { JiggleRig } from './jiggle.js';
@@ -1206,7 +1206,19 @@ export class Fighter {
   }
 
   /* Facing-relative stick direction this frame ('f','b','u','d','d/f','d/b','u/f','u/b','n'). */
-  setStick(dir) { this._stickDir = dir || 'n'; }
+  setStick(dir) { this._stickDir = dir || 'n'; this._dirHoldUpgrade(); }
+  /* Held direction ending ('SS.2,U' vs 'SS.2:u', TekkenDocs: capital = hold): a direction
+     follow-up resolves to the tapped spelling first; still held 6f later it becomes the held row. */
+  _dirHoldUpgrade() {
+    const dq = this._dirFollowQ; if (!dq || dq.held || this._stickDir !== dq.d) return;
+    if ((this._clock || 0) - dq.t < 0.1) return;
+    const D = dq.d.toUpperCase(); if (D === dq.d || dq.c.endsWith(D)) return;
+    const up = [',', '~', ':'].map((s) => `${dq.b}${s}${D}`).find((k) => resolveMoveKey(this._movesetId, k));
+    dq.held = true; if (!up) return;
+    const q = this._queuedAfter && this._queuedAfter.length ? this._queuedAfter : null;
+    if ((q ? q[q.length - 1] : this._queuedNext) !== dq.c) return;
+    if (q) q[q.length - 1] = up; else this._queuedNext = up; dq.c = up;
+  }
 
   /* Tekken crouch: hold down. Releasing it opens the while-standing (WS.) window. */
   tryCrouch(on) {
@@ -1810,14 +1822,22 @@ export class Fighter {
     const last = (this._queuedAfter && this._queuedAfter.length) ? this._queuedAfter[this._queuedAfter.length - 1] : (this._queuedNext || T.lastMove);
     if (!last) return false;
     const bases = [last]; const t = last.indexOf('~'); if (t > 0) bases.push(last.slice(0, t));
-    for (const b of bases) for (const sep of [',', '~', ':']) for (const d of [dir, dir.toUpperCase()]) {
+    /* Direction-only endings over several taps ('1+2,f,f', 'd/f+1,2,f,F', TekkenDocs): a tap that
+       only opens the tail ('1+2,f') is kept as a pending path; the next tap completes it. */
+    const dp = this._dirPath;
+    if (dp && dp.from === last && (this._clock || 0) - dp.t < 0.4) bases.unshift(dp.p);
+    // Lowercase (tapped) spelling first across all separators, then the held capital ('SS.2:u' before 'SS.2,U').
+    for (const b of bases) for (const d of [dir, dir.toUpperCase()]) for (const sep of [',', '~', ':']) {
       const c = `${b}${sep}${d}`;
       if (!resolveMoveKey(ms, c)) continue;
+      this._dirPath = null;
       if (this._queuedNext) (this._queuedAfter || (this._queuedAfter = [])).push(c); else this._queuedNext = c;
       this._queuedPressT = this._clock || 0;
       this._dirFollowQ = { c, b, sep, d: dir, t: this._clock || 0 };
       return true;
     }
+    for (const b of bases) for (const d of [dir, dir.toUpperCase()]) { const c = `${b},${d}`;
+      if (hasStrPrefix(ms, c)) { this._dirPath = { p: c, from: last, t: this._clock || 0 }; return true; } }
     return false;
   }
   /* Held-button moves (moveset sweep 2026-10-28): 'd/b+1*' / 'SAV.1+2*' = keep the limb(s)
