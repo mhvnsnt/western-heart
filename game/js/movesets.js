@@ -256,8 +256,9 @@ export function parseMotion(n) {
   const lm = /^(?:(qcf|qcb|hcf|hcb|d\/f|d\/b|u\/f|u\/b|f|b|u|d|D\/F|D\/B|U\/F|U\/B|F|B|U|D)\+)?([1-4](?:\+[1-4])*)\*?$/.exec(last);
   if (!lm) return null;
   const head = parts.slice(0, -1);
-  if (head.some(p => !DIR_TOKEN.test(p))) return null; // a button earlier = string, not motion
-  let dirs = head.map(d => d.toLowerCase());
+  // KOF/SF heads may chain named motions ('hcb,f+1', 'qcf,qcf+1', 'qcb,qcf+3'): expand them.
+  if (head.some(p => !DIR_TOKEN.test(p) && !MOTION_DIRS[p])) return null; // a button earlier = string, not motion
+  let dirs = [].concat(...head.map(d => MOTION_DIRS[d] || [d.toLowerCase()]));
   // 'f,n,2': the stick returns to neutral and the button comes with NO direction. 'd/b,n,f+2':
   // the n is a real step between directions — T3's sequences carry explicit neutral steps
   // (n,d/f,n,d/f = tap d/f twice), so inner n's stay; only leading/trailing ones go.
@@ -292,7 +293,26 @@ export function canonNotation(n) {
   s = s.replace(/(?:\s*\((?:KOFXV|KOF\s*XV|SFV|sfv|SF6|sf6|T7|T8)\))+\s*$/, ''); // source-game tag on imported rows, same input
   s = s.replace(/^(d(?:\/[fb])?\+[1-4](?:\+[1-4])*)\s*\(crouch(?:ing)?\)$/i, '$1'); // KOF '(crouch)' note on a d+ button, same input
   s = s.replace(/^fc\s*\+?\s*(?=[1-4udfbnUDFB])/i, 'FC.'); // 'fc+1' / 'FC 1' -> FC.1 (full-crouch state)
-  s = s.replace(/^\(During Rage\)\s*/i, 'R.'); // T7 list spelling of the rage state prefix
+  s = s.replace(/^\(During Rage\)\s*/i, 'R.');
+  /* KOF context notes on imported rows (moveset sweep 2026-10-29, ryuji-rock): the input is the
+     same, the note is a distance / auto-combo / opponent-state condition. 'far 1', '1 (close)',
+     '1 (Rush)', 'hop u/f+1', 'hcb,hcb+1+2 near', 'f,n,d,d/f+1 downed' -> the bare input;
+     'qcb+3 hold' -> 'qcb+3*' (button held). */
+  s = s.replace(/^(?:far|close|cl\.?|st\.?|hop|jump|j\.)\s+(?=[udfbnUDFB1-4])/i, '');
+  s = s.replace(/\s*\((?:close|far|rush|near|hop|downed|grounded|air|midair)\)\s*$/i, '');
+  s = s.replace(/\s+(?:near|close|far|downed|grounded|on downed opponent|rush)$/i, '');
+  s = s.replace(/^(?:grounded|downed)\s+(?=[udfbnUDFB1-4])/i, '');
+  s = s.replace(/^(.*[1-4])\s+hold$/i, '$1*');
+  s = s.replace(/^(.*[1-4])\s*\((?:hold|held|keep)\)$/i, '$1*');
+  s = s.replace(/^\((BT|FC|WS|SS)\)\s*(?=[udfbnUDFB1-4])/, '$1.'); // '(BT) 2' -> BT.2
+  s = s.replace(/^\((?:grounded|downed|ground)\)\s*/i, '');
+  // KOF mash follow-up: 'hcb,hcb+1+2 (near), tap 1x3' -> 'hcb,hcb+1+2,1,1,1'
+  s = s.replace(/,\s*tap\s+([1-4](?:\+[1-4])*)(?:\s*x\s*(\d))?$/i, (m, btn, n) => ','.concat(Array(+(n || 1)).fill(btn).join(',')));
+  // T7 stance list spelling: 'JGS, 1' / 'JGS* (3 spins), 1' -> 'JGS.1' (press from the stance;
+  // the spin count is a repeat of the stance entry, same input)
+  s = s.replace(/^([A-Z][A-Z0-9_]{1,})\*?(?:\s*\(\d+\s*spins?\))?\s*,\s*(?=[udfbUDFB]?(?:\/[udfbUDFB])?\+?[1-4])/, '$1.');
+  // descriptive note words in parentheses after a button: '(guard)', '(knife)', '(gedan)', '(max)'...
+  s = s.replace(/([1-4*])\s*\((?:near|far|close|rush|knife|gedan|max|MAX|tap|guard|ground|blowback|Irish-whip variant|throw escape|taunt)\)/g, '$1'); // T7 list spelling of the rage state prefix
   s = s.replace(/\b(df|db|uf|ub|DF|DB|UF|UB)(?=\+|,|$|~|:)/g, (m) => _DIAG[m]);
   s = s.replace(/^(ws|WS)\s*(?=[1-4])/, 'WS.');
   s = s.replace(/^([A-Z][A-Z0-9_]{1,})\s+(?=[1-4udfbnUDFB(])/, '$1.');
@@ -324,6 +344,45 @@ function _prepare(ms) {
     for (const j of cuts) pre.add(n.slice(0, j));
   }
   ms._strPrefixes = pre;
+}
+
+/* Motion inputs this fighter can perform: the moveset's own slots plus every motion notation
+   the moveset editor's loadout equipped (moveset sweep 2026-10-29: loadout slots like
+   'qcf+3+4' / 'hcb+1' / 'd/b,d/b+1+2' resolved but were never in _motions, so the buffer
+   could not perform them and the plain button fired instead). Cached per loadout object. */
+const _loMotionCache = new WeakMap();
+export function motionsFor(fighterId, ms) {
+  const lo = getLoadout(fighterId);
+  const keys = Object.keys(lo).filter(n => n !== '__base' && !(ms._slots && n in ms._slots));
+  if (!keys.length) return ms._motions;
+  let per = _loMotionCache.get(ms); if (!per) _loMotionCache.set(ms, per = new Map());
+  const sig = fighterId + '|' + keys.join('\u0001');
+  let out = per.get(sig);
+  if (!out) {
+    out = ms._motions.slice();
+    for (const n of keys) { const m = parseMotion(n); if (m) out.push({ n, ...m }); }
+    out.sort((a, b) => b.dirs.length - a.dirs.length);
+    per.clear(); per.set(sig, out);
+  }
+  return out;
+}
+
+/* String prefixes of loadout-equipped strings (moveset editor: rush_l3 on '1,1,1'), so their
+   intermediate steps open the string cursor like a moveset's own strings do. */
+const _loPrefCache = new Map();
+export function strPrefixesHas(fighterId, ms, c) {
+  if (ms._strPrefixes && ms._strPrefixes.has(c)) return true;
+  const lo = getLoadout(fighterId);
+  const keys = Object.keys(lo).filter(n => n !== '__base' && /[,~:]/.test(n));
+  if (!keys.length) return false;
+  const sig = fighterId + '|' + keys.join('\u0001');
+  let set = _loPrefCache.get(fighterId);
+  if (!set || set.sig !== sig) {
+    set = new Set(); set.sig = sig;
+    for (const n of keys) for (let j = 0; j < n.length; j++) if (',~:'.includes(n[j])) set.add(n.slice(0, j));
+    _loPrefCache.set(fighterId, set);
+  }
+  return set.has(c);
 }
 
 /* Player loadouts from the moveset editor: localStorage wh_moveset_loadout_v1
@@ -591,12 +650,12 @@ export class TekkenBuffer {
       for (const sep of [',', '~', ':']) {
         const cands = dir ? [`${base}${sep}${withDir}`, `${base}${sep}${holdDir}`] : [`${base}${sep}${input}`];
         for (const c of cands) if (has(c)) { this._strPath = null; return this._recordMove(c); }
-        for (const c of cands) if (ms._strPrefixes && ms._strPrefixes.has(c)) { this._strPath = c; this._strPathT = now; return null; }
+        for (const c of cands) if (strPrefixesHas(this.fighterId, ms, c)) { this._strPath = c; this._strPathT = now; return null; }
       }
     }
     this._strPath = null;
     // Opening step of a string that has no standalone move: open the string cursor, fire nothing.
-    const opener = (c) => (ms._strPrefixes && ms._strPrefixes.has(c) ? (this._strPath = c, this._strPathT = now, true) : false);
+    const opener = (c) => (strPrefixesHas(this.fighterId, ms, c) ? (this._strPath = c, this._strPathT = now, true) : false);
     const prefixes = [];
     for (const sp of ctx.soulStates || []) prefixes.push(sp + '.'); // pt217u soul systems
     if (ctx.stance) prefixes.push(ctx.stance + '.');
@@ -613,7 +672,7 @@ export class TekkenBuffer {
       // final tap the lowercase one (f,f,f+3); each still falls back to the other.
       const capFirst = this._heldFrames() >= MOTION_HOLD;
       const cap = (mo) => /[A-Z]/.test(mo.n.split(',').pop().split('+')[0]);
-      const motions = ms._motions.slice().sort((a, b) => (b.dirs.length - a.dirs.length) || ((cap(b) === capFirst) - (cap(a) === capFirst)));
+      const motions = motionsFor(this.fighterId, ms).slice().sort((a, b) => (b.dirs.length - a.dirs.length) || ((cap(b) === capFirst) - (cap(a) === capFirst)));
       for (const mo of motions) {
         if (mo.prefix !== p || mo.btn !== input) continue;
         // neutral-ending motions ('f,n,2') need the stick released; the rest need the last
@@ -725,7 +784,7 @@ export class TekkenBuffer {
     prefixes.push('');
     for (const p of prefixes) {
       // 2) motion inputs on this button, longest first
-      for (const mo of ms._motions) {
+      for (const mo of motionsFor(this.fighterId, ms)) {
         if (mo.prefix !== p || mo.btn !== input) continue;
         if (mo.neutral && dir) continue; // 'f,n,2' wants the stick back in neutral
         if (this._motionHeld(mo.dirs) && has(mo.n)) return this._recordMove(mo.n);
@@ -818,7 +877,7 @@ export class TekkenBuffer {
       for (const sep of [',', '~', ':']) {
         const cands = [dir ? `${base}${sep}${dir}+${input}` : null, `${base}${sep}${input}`];
         for (const c of cands) if (c && resolveMoveKey(this.fighterId, c)) { this._strPath = null; return c; }
-        for (const c of cands) if (c && ms && ms._strPrefixes && ms._strPrefixes.has(c)) {
+        for (const c of cands) if (c && ms && strPrefixesHas(this.fighterId, ms, c)) {
           this._strPath = c; this._strPathT = now; this._strPending = true; return null;
         }
       }
