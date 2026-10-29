@@ -1,0 +1,24 @@
+[warning] [WH] No custom fighter found in either suite slot
+[log] [WH] stage loaded: SHRINE OF THE BLADE (shrine)
+[log] [WH] Real T3 movesets loaded for 36 fighters (7 T3 sources)
+[log] [WH] Per-fighter movesets wired: 78 fighters
+[error] Failed to load resource: the server responded with a status of 404 (File not found)
+[log] [WH-T3] bank 'king': 176 move-row clips
+[log] [WH-T3] bank 'king': loaded 198 real T3 clips
+[log] [WH-T3] bank 'heihachi': 136 move-row clips
+[log] [WH-T3] bank 'heihachi': loaded 158 real T3 clips
+[log] [WH] Fighter pantera: 22 real T3 actions from bank 'king' (retargeted onto pantera)
+[log] [WH] Fighter diablo: 22 real T3 actions from bank 'heihachi' (retargeted onto steve-fox)
+[log] [WH] stage loaded: SHRINE OF THE BLADE (shrine)
+STATE 0 {"p1":{"id":"pantera","model":"pantera","st":"walk","atk":null,"hipsY":0.98,"headY":1.48,"t3":22,"cur":"t3_king_walkFwd@pantera"},"p2":{"id":"diablo","model":"steve-fox","st":"jump","atk":null,"hipsY":2.23,"headY":2.73,"t3":22,"cur":"t3_heihachi_jumpFwd@steve-fox"},"round":"fight"}
+STATE 1 {"p1":{"id":"pantera","model":"pantera","st":"walk","atk":null,"hipsY":0.98,"headY":1.48,"t3":22,"cur":"t3_king_walkFwd@pantera"},"p2":{"id":"diablo","model":"steve-fox","st":"jump","atk":null,"hipsY":2.46,"headY":2.95,"t3":22,"cur":"t3_heihachi_jumpFwd@steve-fox"},"round":"fight"}
+STATE 2 {"p1":{"id":"pantera","model":"pantera","st":"walk","atk":null,"hipsY":1.02,"headY":1.52,"t3":22,"cur":"t3_king_walkFwd@pantera"},"p2":{"id":"diablo","model":"steve-fox","st":"walk","atk":null,"hipsY":0.94,"headY":1.42,"t3":22,"cur":"t3_heihachi_walkFwd@steve-fox"},"round":"fight"}
+STATE 3 {"p1":{"id":"pantera","model":"pantera","st":"walk","atk":null,"hipsY":1,"headY":1.5,"t3":22,"cur":"t3_king_walkFwd@pantera"},"p2":{"id":"diablo","model":"steve-fox","st":"attack","atk":"1","hipsY":0.99,"headY":1.46,"t3":23,"cur":"t3_heihachi_row46@steve-fox"},"round":"fight"}
+STATE 4 {"p1":{"id":"pantera","model":"pantera","st":"walk","atk":null,"hipsY":1.01,"headY":1.51,"t3":22,"cur":"t3_king_walkFwd@pantera"},"p2":{"id":"diablo","model":"steve-fox","st":"attack","atk":"1","hipsY":1,"headY":1.5,"t3":23,"cur":"t3_heihachi_row46@steve-fox"},"round":"fight"}
+STATE 5 {"p1":{"id":"pantera","model":"pantera","st":"attack","atk":"4","hipsY":1,"headY":1.5,"t3":23,"cur":"t3_king_row216@pantera"},"p2":{"id":"diablo","model":"steve-fox","st":"block","atk":null,"hipsY":0.99,"headY":1.49,"t3":23,"cur":"t3_heihachi_block@steve-fox"},"round":"fight"}
+STATE 6 {"p1":{"id":"pantera","model":"pantera","st":"attack","atk":"4","hipsY":1.05,"headY":1.42,"t3":23,"cur":"t3_king_row216@pantera"},"p2":{"id":"diablo","model":"steve-fox","st":"block","atk":null,"hipsY":1,"headY":1.51,"t3":23,"cur":"t3_heihachi_block@steve-fox"},"round":"fight"}
+STATE 7 {"p1":{"id":"pantera","model":"pantera","st":"attack","atk":"4","hipsY":1.04,"headY":1.48,"t3":23,"cur":"t3_king_row216@pantera"},"p2":{"id":"diablo","model":"steve-fox","st":"attack","atk":"4","hipsY":1.47,"headY":1.9,"t3":24,"cur":"t3_heihachi_row74@steve-fox"},"round":"fight"}
+STATE 8 {"p1":{"id":"pantera","model":"pantera","st":"attack","atk":"4","hipsY":1.04,"headY":1.55,"t3":23,"cur":"t3_king_row216@pantera"},"p2":{"id":"diablo","model":"steve-fox","st":"attack","atk":"4","hipsY":1,"headY":1.47,"t3":24,"cur":"t3_heihachi_row74@steve-fox"},"round":"fight"}
+STATE 9 {"p1":{"id":"pantera","model":"pantera","st":"attack","atk":"4","hipsY":1.04,"headY":1.55,"t3":23,"cur":"t3_king_row216@pantera"},"p2":{"id":"diablo","model":"steve-fox","st":"attack","atk":"4","hipsY":1.02,"headY":1.52,"t3":24,"cur":"t3_heihachi_row74@steve-fox"},"round":"fight"}
+STATE 10 {"p1":{"id":"pantera","model":"pantera","st":"idle","atk":null,"hipsY":0.98,"headY":1.48,"t3":23,"cur":"t3_king_stance@pantera"},"p2":{"id":"diablo","model":"steve-fox","st":"idle","atk":null,"hipsY":1.01,"headY":1.52,"t3":24,"cur":"t3_heihachi_stance@steve-fox"},"round":"fight"}
+STATE 11 {"p1":{"id":"pantera","model":"pantera","st":"attack","atk":"4","hipsY":1.02,"headY":1.5,"t3":23,"cur":"t3_king_row216@pantera"},"p2":{"id":"diablo","model":"steve-fox","st":"sidestep","atk":null,"hipsY":0.92,"headY":1.4,"t3":24,"cur":"t3_heihachi_sidestepA@steve-fox"},"round":"fight"}

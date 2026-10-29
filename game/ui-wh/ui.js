@@ -27,8 +27,13 @@ const MODES = [
 // Settings > Dev Sandbox: the physics / model / animation workbench (mhvnsnt/physics-playground-pwa).
 // Its test models (Scarlett, Madelyn) live only in the sandbox and are not roster fighters.
 const SANDBOX_URL = "https://physics-playground-pwa.pages.dev/";
+// worker 22 (2026-10-22): rollback netplay demo (game/netplay/) — proven
+// GGPO-style P2P versus. Opens in a new tab; full combat-sim port is
+// tracked in docs/research/OPEN-SOURCE-WAVE-2026-10-22.md §netplay.
+const NETPLAY_URL = "netplay/demo/index.html";
 const OPTIONS = [
   ["DEV SANDBOX", "開発", "Physics, rigs, jiggle, soft body, face and visemes, movesets, fights and AI tests: the dev workbench."],
+  ["NETPLAY (BETA)", "対戦", "Rollback netplay vs a friend — P2P WebRTC, GGPO-style. Opens the netplay demo in a new tab."],
   ["BACK", "戻る", "Return to the main menu."],
 ];
 const nav = (el, items, render) => { el.innerHTML = items.map(render).join(""); };
@@ -111,7 +116,11 @@ function startVs(attire1, attire2) { go("vs"); if (EMBED) setTimeout(() => post(
 const bind = (sel, fn) => document.querySelectorAll(sel).forEach((el, i) => el.addEventListener("click", () => fn(i)));
 document.querySelector('section[data-screen="title"]').addEventListener("click", () => go("menu"));
 bind("#menu-list a", (i) => { if (i === 0 || i === 1) go("modes"); else if (i === 2) { P2 = P1; go("select"); } else if (i === 5) go("options"); });
-bind("#opt-list a", (i) => go(i === 0 ? "devsandbox" : "menu"));
+bind("#opt-list a", (i) => {
+  if (i === 0) go("devsandbox");
+  else if (i === 1) (window.top || window).open(NETPLAY_URL, "_blank", "noopener");
+  else go("menu");
+});
 document.querySelectorAll("#opt-list a").forEach((a, i) => a.addEventListener("mouseenter", () => { $("#opt-blurb").textContent = OPTIONS[i][2]; }));
 $("#ds-back").addEventListener("click", () => go("options"));
 bind("#mode-cards .card", () => go("select"));
@@ -123,6 +132,8 @@ function hud(d) {
     const pct = Math.max(0, (f.hp / f.maxHp) * 100);
     const bar = document.querySelector(`.plate.${side} .bar`);
     bar.querySelector("i").style.width = pct + "%";
+    // COMBAT SYSTEMS 2026-10-24: white recoverable segment (b).
+    const b = bar.querySelector("b"); if (b) b.style.width = Math.min(100, pct + Math.max(0, ((f.recoverable || 0) / f.maxHp) * 100)) + "%";
     const u = bar.querySelector("u"); if (parseFloat(u.style.width) < pct || !u.dataset.t) u.style.width = pct + "%";
     clearTimeout(u._t); u._t = setTimeout(() => { u.style.width = pct + "%"; }, 600); u.dataset.t = 1;
     document.getElementById(side === "l" ? "hud-s1" : "hud-s2").innerHTML = souls(Math.floor((f.meter / f.maxMeter) * 9 + 1e-3));

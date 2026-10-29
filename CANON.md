@@ -5,6 +5,16 @@
 
 ---
 
+## THE NORTH STAR — THE CREATIVE PRINCIPLE OF THIS UNIVERSE
+
+*Owner directive, 2026-10-20. This is the game's stated creative principle — its soul and north star. Every character, layer, and story added to Western Heart is measured against it. Full record: `docs/NORTH-STAR.md`.*
+
+The owner, in his own words: "we're mixing a lot of different folklore, mythology, different ontologies, religions, different viewpoints and perspectives, the Oni and Yokai thing, along with the whole Eastern Mind, Tong-Nou thing, all for what is creating the Western mind universe and canon."
+
+Tong-Nou is the cosmology — the souls, the vessels, the trial, the giant head holding it all — and every tradition layered in plugs into that frame as the contents of a soul. The layers land where they already rhyme: Heihachi carries storm-god arrogance in his bones, so Raijin's drum ring isn't a costume on him, it's a recognition. Akuma was already a demon walking — the oni layer just names what he is in this universe's language. The Abel brothers bring wrestling's own mythology in the same way, Serena rides inside Nightwolf. It's the same move as the game itself: Tekken supplies the grammar, and every torn-down world donates its bodies, its moves, its gods. Western Heart isn't a crossover — it's one universe that digests the others.
+
+---
+
 ## 1. THE WORLD
 
 ### Tong-Nou
@@ -432,6 +442,8 @@ Each soul has a **nature** — a kanji, a meaning, a way of moving through the w
 
 **On the twelve:** Not every fighter in the Western Heart carries one of the nine. The trial called the nine — but the head-world is larger than the call. The twelve are: **vessels** (Awa Pop, Star — splinters of SHA and KAI), **the palace-claimed** (Burger — the Appetite room's), **the marketplace-born** (Scimitar — the Trader's vizier), **the spirit-walker** (Nightwolf — came deliberately), **the built** (Cyborg X — GYOU's splinter, trapped), **mortal lost souls** (Michiko, Purple Rain, Bruno — not of the nine, lost the ordinary way), **intruders** (Dio, N3GATIV0 — tore their way in from outside the metaphysics), and **the loyal** (Torch — followed her sister through the membrane). The trial purifies the lost. It is still deciding what to do with the rest.
 
+**On the Ashlane arrivals:** Bannon, El Toro de Oro, Pablo, and Finxsse are mortal lost souls — not of the nine, and not of this head. They crossed from the Bannon sub-universe, a world the call reached the way it reaches every world with fighting in it. They arrived as themselves: the Engine's nucleus, the Golden Bull, the painted bull, the grudge with a cross. The trial purifies the lost. It is still deciding what the Engine was.
+
 **The Nine-Soul Meter:** In combat, a fighter can invoke a **Soul Surge** — channeling one of the *other* eight souls for ten seconds, borrowing its signature techniques. This is not a mechanic layered onto the fiction. It *is* the fiction: the nine are fragments of one being, and in the surge, the fighter remembers.
 
 ---
@@ -511,6 +523,10 @@ Not every soul fights for the katana:
 - **Cyborg X** fights because her diagnostics say to. She's still looking for the manifest.
 - **Bruno** fights because it's better than thinking. The fists are quieter than the heart.
 - **N3GΔTIV0** isn't fighting for the katana. He's working. The bounty is still out there.
+- **Bannon** fights to prove loyalty outlasts control — the trial is another ring, the katana another statement.
+- **El Toro de Oro** fights for the biggest stage. The call sounded like a crowd. He hasn't learned it wasn't.
+- **Pablo** fights for the spotlight. The paint is the act; the trial keeps asking about the painter.
+- **Finxsse** fights to settle it with Bannon. The call delivers souls, not feuds. He hasn't learned that either.
 
 They all climb the same ladder. They all reach the same shrine. They all face themselves.
 
@@ -671,6 +687,8 @@ She is the only fighter who knows what the Reincarnation is *for*. She explains 
 
 **Owner-locked:** Name NIGHTWOLF. Native American spirit warrior, full commitment. Julia Chang base.
 
+**Tribute (owner-locked, real-world).** Nightwolf is the tribute to **Serena Misae Brown**. In the owner's words: "This game is for that game of Mortal Kombat me and Serena never got to play before she died in that car accident in Tulsa. For Serena, Serena Misae Brown, Nightwolf." One night Serena wanted to come over and stay the night at his and his wife's apartment, and play Mortal Kombat with him, on a night he was up late alone. He didn't invite her over. He carries that. Nightwolf — and this game — is for the match they never got to play. She heads the game's credits dedications (see `docs/CREDITS.md`).
+
 ---
 
 ### MICHIKO — The Outlaw Soul
@@ -700,6 +718,8 @@ She wanders the five lands, picking fights, owing nothing, belonging nowhere. Th
 **Signature detail.** She flips a coin before every fight — heads she fights clean, tails she doesn't. The coin always lands on its edge. She's stopped questioning it.
 
 **Owner-locked:** Name MICHIKO. Michiko Malandro × Tier Harribel — free-spirited outlaw × regal composed power. Dangerous but magnetic. Katarina Alves base.
+
+**Attires (owner 2026-10-21, Tripo-first ladder).** Attire 1 — her Tripo original: "bone goddess amazonian M rated nude attire with bone accessories" (owner's description, verbatim). Attire 2 — her Tripo original: "biker chick" (owner's description, verbatim). The Katarina-based model ladders back behind both as the fallback attire. Slot provenance: roster/michiko/ATTIRE-SLOTS.md.
 
 ---
 
@@ -761,6 +781,10 @@ She is not lost. She is *loyal*. The trial doesn't know what to do with that.
 
 **Owner-locked:** Name TORCH. Ruthless elegant assassin — Nina's sister with the darker edge. Sister rivalry with Awa Pop. Anna Williams base.
 
+**Attire 1 — "Valkyrie of Flame" (Tripo original, owner 2026-10-21).** Owner's description, verbatim: "fully nude and blue skin but controls fire that is normal colored and can control different colors of fire too, red windswept hair and Valkyrie helm, blue furry nude crotch and little hairs flaring off her fat hips and glutes". This settles her appearance: blue skin, red windswept hair, Valkyrie helm; her fire runs normal-colored and multiple flame colors. Tripo: https://studio.tripo3d.ai/3d-model/300d0c63-c7c8-4972-b08e-b2e9c169254f — raw pull archived in release `torch-a1-tripo-20261021`; auto-rigged model `game/assets/models/torch-tripo-a1.glb` (key `torch-tripo-a1`) is her default. The Anna Williams base model ladders behind it as the fallback attire. Slots: `roster/torch/ATTIRE-SLOTS.md`.
+
+**Attire 2 — "Red demon" (Tripo original, owner 2026-10-21).** Owner's description, verbatim: "with mileena from mortal Kombat style teeth on this attire and red skin, still full nude". Tripo: https://studio.tripo3d.ai/3d-model/7f8c7874-de2a-438f-a84f-744d1eef21e9 — raw pull archived in release `torch-a2-tripo-20261021`; auto-rigged model `game/assets/models/torch-tripo-a2.glb` (key `torch-tripo-a2`) is Attire 2 in her picker ladder. The Anna Williams base model ladders behind both Tripo attires as the fallback. Slots: `roster/torch/ATTIRE-SLOTS.md`.
+
 ---
 
 ### DIO — The Demon That Is
@@ -790,7 +814,7 @@ The shrine stones don't go silent on him, the way they do for SAM-UR-A1. They *c
 
 **Signature detail.** He has no win pose. He has a crime scene. The trial's cleaners refuse to work his arena.
 
-**Owner-locked:** Name DIO. Street Fighter's Akuma as he appears in Tekken 7 (not Kuma the bear — the bear, if ever pulled, is URSA). Master of the Satsui no Hado. Pure destructive force. Akuma base.
+**Owner-locked:** Name DIO. Street Fighter's Akuma as he appears in Tekken 7 (not Kuma the bear — the bear's name is locked: GASHADOKURO, owner name lock 2026-10-22). Master of the Satsui no Hado. Pure destructive force. Akuma base.
 
 ---
 
@@ -931,8 +955,10 @@ She was never called. She *came*. Tong-Nou didn't summon her; she followed the p
 
 ---
 
-### BAEK — The Master Soul
+### KEVIN — The Master Soul
 **Not one of the nine. The teacher.**
+
+*(Owner 2026-10-20: the fighter IS Kevin. Baek's model is Kevin's A2 attire; the Master's White reskin is PARKED. The Master Soul's story — the teacher who came on purpose — is Kevin's now.)*
 
 **Backstory.** Baek Doo San — taekwondo master, the man who taught Hwoarang everything the boy refused to learn gently. In the old world he was lost at sea, taken, broken, rebuilt; he came back anyway, because students don't stop needing teachers just because the teacher drowns.
 
@@ -1251,3 +1277,376 @@ Cain Elias walks in where Vain Abel Elias walked out — the brother who stayed 
 **Models (owner-made Tripo pulls, wired 2026-10-19):** Attire 1 (biker): https://studio.tripo3d.ai/3d-model/6aeaaffd-e7d5-45ba-8026-3f0c7b357d86 — `roster/cain-elias/attires/attire1/model.glb`. Attire 2 (fight gear): https://studio.tripo3d.ai/3d-model/752ad786-5076-4469-aaf7-39048f283624 — `roster/cain-elias/attires/attire2/model.glb`. Renders: `docs/tpose-refs/cain-elias/a1_front.png`, `a2_front.png` (own-eyes verified).
 
 *Owner-directed 2026-10-19 (naming, design, attires). Wired into repo 2026-10-19 (gap-audit stream). Moveset pick owned by the moveset lane.*
+
+### DEATHFANG — The Chained Soul (Bonus)
+
+**Owner's words (2026-10-20):** the human form is an emo loner, really misunderstood — people look at him and think "this dude can't be who they say he is." The werewolf is the monster that terrorizes towns, bloodlust — that is why he got put in prison. When people see the wolf form: "oh shit... we get it."
+
+DEATHFANG — all caps, one word, everywhere — is a proprietary fighter built on Iori Yagami: he keeps Iori's moves, stance and animations in BOTH forms. He is a prisoner to his own grief and his own emotions, chained and shackled — collar, wrist and ankle irons, chains hanging off him — with the words **NO FUTURE** tattooed on his face. The chain runs under his knees the way Iori's own does: even his walk is a sentence.
+
+The man does not read as dangerous. Quiet, emo, alone — the kind of prisoner the other prisoners leave alone because they cannot place him. The wolf is the placement. What the town watch found in the morning, what the blood on the road meant: that is the other form, and it is why the chains are not a costume. Mid-fight, on a full nine-soul meter, the chains stop being a restraint and become a warning: WEREWOLF UNLEASHED. The wolf still stands and moves like Iori — the grief never changes its stance — but its attacks go beast: lunge, maul, bite, the rising moonclaw.
+
+Research threads the owner pointed at: Iori Yagami's design already carries the werewolf in it (SNK's own lineage for the character runs through wolf imagery and the blood-moon riot of his bloodline), and Free of *Soul Eater* — the werewolf, the immortal prisoner, caged for centuries for what he is — is the second parent of this character. DEATHFANG is what those two bloodlines make in the head-world: a man nobody believes is the monster, and the monster that proves them wrong.
+
+**Models (owner-made Tripo pulls, wired 2026-10-20):** Attire 1 — the Chained Prisoner (human): https://studio.tripo3d.ai/3d-model/6486151e-acfe-49fe-b0a1-503dc3ff202b — `roster/deathfang/attires/attire1/model.glb`. Attire 2 — the Chained Prisoner Werewolf (transform form, also selectable): https://studio.tripo3d.ai/3d-model/b4094ecf-df5a-4255-a26c-6c49734fcc3a — `roster/deathfang/attires/attire2/model.glb`. The Attire 1 model's open eye shipped from Tripo with no eyeball painted (a closed, skin-pink eyelid in the atlas); it was repaired through the game's customization eye library (real iris + sclera composited at the verified UV island) — see `customization/parts/deathfang-eyes/`. The PR #368 Iori reskin is preserved at `roster/deathfang/attires/attire3/model.glb` as a legacy skin, superseded as canon by the owner's own models.
+
+*Owner-directed 2026-10-19 (naming + concept), 2026-10-20 (character, models, eye repair). Wired into repo 2026-10-20.*
+
+### CORNERSTONE — The Obnoxious One (Bonus)
+
+**Owner's words, verbatim (2026-10-21):** "I told u how ryuji character will be mixed with the rock from WWE and do the uranage/rock bottom, he will also get the rock bottom from king and from WWE all stars, and some animations of the rock from the WWE teardown games, and kings jumping diving elbow attack, mixed with ryuji yamazakis stance and taunts and moveset and antics mixed with the rock persona from early attitude era WWE. And his name will be CornerStone"
+
+**The foundation (owner 2026-10-19, already on record before the name):** "Ryuji Yamazaki version… black shirt, blonde top hair. Version based on The Rock (Dwayne Johnson) mixed with Ryuji Yamazaki — obnoxious like Ryuji, sticks his tongue out, personality mixed with The Rock." His moveset was set the same night: Ryuji base + The Rock's moves (Rock Bottom — King has it in Tekken, pull from there) + wrestling moves from Urban Reign, Tekken, and the other teardown games.
+
+CORNERSTONE is the name the owner locked on 2026-10-21 for the Ryuji Yamazaki × The Rock hybrid who first entered the roster as RYUJI ROCK. He is not one of the nine souls and carries no vessel — he is a bonus fighter, a collision of two personas: Yamazaki's menace underneath, The Rock's early-Attitude-Era showmanship on top.
+
+**Who he is.** Ryuji Yamazaki of the Hakkesshu — KOF/Fatal Fury's sadistic bad guy, black shirt, blonde top of hair — fused with Dwayne "The Rock" Johnson at his most obnoxious: the raised eyebrow, the smack talk, the people's showman. He is obnoxious like Ryuji and sticks his tongue out like Ryuji (the Sadomazo tongue-taunt is his signature antic), then plays to a crowd that isn't there, like The Rock. The menace is real; so is the show.
+
+**How he fights.**
+- **Base layer — Yamazaki:** his stance, his taunts (tongue-stick-out taunts AND tongue attacks), his full moveset and his antics: Serpent Slash (Hebi Tsukai), Sand Kick (Suna Kake), Knife Slash, Bai Gaeshi, Bakudan Pachiki, Todome, the Guillotine, Pit Viper, and the Drill climax.
+- **The uranage / ROCK BOTTOM — taken from every source the owner named:** King's version from Tekken; the WWE All Stars version; and The Rock's own animations out of the WWE teardown games (the No Mercy / WrestleMania XIX holdings). Plus the People's Elbow, the Sharpshooter, the Brahma Bull Lariat, Layin' the Smackdown.
+- **King's jumping diving elbow attack** — Tekken King's High Elbow Drop (u/f+2) is his diving elbow: the People's Elbow delivered off the jump, King-sourced.
+- **Second inspiration — Younger Toguro (Yu Yu Hakusho):** the fingernail blast, and whatever else of Toguro's the files give up, when a Yu Yu Hakusho teardown source is in hand. (Design intent recorded 2026-10-21; no YYH game is in the teardown holdings yet — the blast wires in when the source exists, never invented.)
+
+**Names and plumbing.** Canon/display name: **CORNERSTONE**. Source names are retained in RENAME-MAP.md (Ryuji Yamazaki + The Rock; prior WH working name RYUJI ROCK). The internal fighter id and moveset key stay `ryuji-rock` — the plumbing does not change hands, only the name the player sees. The pure-Yamazaki roster entry (`ryuji`, carrying the full KOF set) is untouched and stays in the repo.
+
+*Owner-directed 2026-10-19 (concept, persona, moveset foundation) and 2026-10-21 (the name CORNERSTONE + the full multi-source design drop).*
+
+---
+
+## 8. THE HEAD-WORLD, AS THE TRIAL FOUND IT
+
+*Eastern Mind wiring + canon conversion, 2026-10-20. This section is additive: it extends the world of §1, the souls of §4, and the story of §5 without altering them. Every place, system, and beat below is converted from the Eastern Mind teardown (`teardown/eastern-mind/`); the full source-to-canon log is `teardown/eastern-mind/CANON-CONVERSION.md`, the file checklist is `teardown/eastern-mind/WIRING-INVENTORY.md`, and the machine-readable stage registry is `game/assets/stages/eastern-mind/stages.json`.*
+
+### The Shape of the Head
+
+The head is not a metaphor and it is not a container. It is a body, and the lands are its organs.
+
+Outside is the dark — not night, not space, just the dark the head floats in, the dark Diablo and Dio tore through and the dark N3GΔTIV0 camps at the edge of. Inside, the dark continues, but it learns shapes: a tree, a plain, a mountain, a palace, another palace, a market. The sky inside the head is the inside of the head — dark, vast, veined — and the fighters who look up for too long stop looking up.
+
+The lands are joined by **tunnels**. Every land keeps one: narrow passages in the head's own flesh, older than the trial, that open where a land ends and close where the next begins. Nobody maintains the tunnels. Nobody built them. A soul walks into the tunnel under the Tree of Life and walks out under a burning sky, and the distance between those two places is not a distance anyone can measure. The tunnels are why the trial can be a ladder: without them, the lands are islands, and islands do not climb.
+
+Each land also keeps a **King**. Not a ruler — the Western Heart has no government — but a resident power: the figure a land grew around itself, the way a pearl grows around grit. The King of the scorched plains is not the King of the dreaming palace, and neither of them answers to the shrine. To walk a land, a soul meets its King. To claim a land's force, a soul settles with its King. What "settles" means is different in every land, and every land thinks its way is the obvious one.
+
+### The Two Laws of Death
+
+The trial runs on two laws of death, and every fighter learns both in their bones.
+
+**In Versus, death is only death.** Two souls meet, one falls, the matter ends. No return, no new face, no lesson carried. This is why the veterans prefer Versus for settling things: what happens there stays ended. The head does not interfere. The head is not interested in endings. It is interested in returns.
+
+**In the Story — the career of a soul walking the Trial — death is the mechanism.** Lose, and you do not continue. You *return*: reborn into a new vessel, chosen the way the Reincarnation has always chosen — from what you did. The soul that grabbed and held is offered vessels built for the hold. The soul that was never where the blow landed is offered vessels that move wrong. The soul that kept reaching for the other eight souls mid-fight is offered vessels that reach back. Your actions influence who you become next. That is not a feature of the game. That is the entire game.
+
+Three details the shrine stones insist on:
+
+- **The old vessel is gone.** A soul never returns to the body it died in. Grief has an address; it is not that one.
+- **The face is chosen in pieces.** Three pairs of eyes, three noses, three mouths — the returning soul assembles the face it will be judged by, and the face is not cosmetic. Sharper eyes, faster hands. A heavier nose, heavier hits. The Reincarnation is the only character creator the Western Heart has ever needed.
+- **The intruder waits for the third death.** Diablo cannot be chosen, offered, or inherited until a soul has died three times. Then — and the stones are silent about why — he may take an interest. The membrane let him in. Dying keeps letting him closer.
+
+Nightwolf walks the newly dead through all of this. She is the only guide the Reincarnation has. She burns sage over the new faces. The faces do not thank her. She does it anyway.
+
+### The Lands As Places
+
+The five lands are arenas in §5. They are also *places*, and a soul walking the ladder lives in them longer than it fights in them.
+
+**The Tree of Life** is entered through its field — open ground under the colossal tree, where glowing souls hang like fruit too high to pick and too bright to ignore. Deeper in is the forest proper, then the inner tree: hollow, warm, grown around a silence. Something large keeps a clearing in the Tree's country — the fighters call it the Ogre's clearing, and they lower their voices there, and none of them can say why. The Sha-mo Desert begins where the roots end. Saku Ra's home ground. Where souls begin is also where souls are *kept* — the fruit does not fall until the trial calls it.
+
+**The Plains of Chi-U** are a field of confrontation under a burning sky, and the field is the honest part. The land's argument stands at its center: the **Fire Tower of Time**, which burns and never collapses, climbed in three reaches, each one hotter and more certain than the last. Time does not pass on the plains the way it passes elsewhere; it *accumulates*, like heat. Fighters who stay too long start finishing each other's sentences. Fighters who stay longer stop needing to.
+
+**The Helix Palace** is approached the way desire is approached: through an entrance that flatters, up past a roof that reflects, around a boulder that should not be balanced where it is balanced, beneath palms and beside a flower that the palace gardeners — there are no gardeners — keep perfect. Inside, beside the castle-heart of the palace, are the five glowing rooms of §1: Greed, Appetite, Immortality, Sexual Desire, Destruction. The rooms are not locked. That is the palace's whole method. What the rooms claim, they keep: Burger belongs to Appetite, Scimitar's heart belongs to Greed whether he signs for it or not, Skull's violence has an address in Destruction, and the Immortality room is Doc Frank's, as far as he's concerned. The palace also keeps the souls it has reflected longest in side-chambers the ladder does not visit — a Buddha-quiet room, a Sha-quiet room — because desire keeps souvenirs of everything it has ever wanted, including stillness.
+
+**The Palace of Dreaming** will not stay still, and its geography is the proof. It keeps two lakes that are one lake on different days. It keeps a palace in two aspects — the aspect that receives you and the aspect that receives who you were about to be. And it keeps *rooms for the souls*: a room wearing KAI's rhythm, a room wearing SHA's patience, rooms for the drowned and the ill and the eye that watches, a room with a map of a palace that is not this one. A soul sleeping in the Palace of Dreaming does not dream its own dreams. It dreams the room's. Waterfall's tears fall upward here, once a year, for one hour. She has stopped apologizing for it.
+
+**The Phantom Marketplace** is the smallest land and the only one that is a *verb*. Under the Eyeball Mountains — which watch, which have always watched, which are the trial's only reliable audience — the Trader's people keep the stalls, the scales, and the ledger. Nothing here is real, but the prices are. The marketplace is neutral ground the way a knife is neutral: it cuts for whoever holds it. N3GΔTIV0 camps here for the sightlines. King Tyrant performs here for the crowd. Scimitar was born here, which the marketplace counts as its finest product and its worst mistake.
+
+**The Octagonal Shrine Par-fang** sits on the Central Mountain, and the mountain is climbed by stairs that count the climber back. The shrine keeps two rooms before the last room: a room for arriving and a room for being weighed, though the stones will not say which is which. The last room is the smallest place in the Western Heart and the only one that matters — eight-sided, ancient, still — where the Assembled Soul waits, wearing every style the climber has ever survived, including the climber's own. The sky above the last room is the inside of the head at its thinnest. Winning there is not an explosion. It is an absorption, fragment by fragment, until one fighter is standing where two stood, and the mountain is quiet, and the quiet has a heartbeat in it.
+
+### The Threshold
+
+Before the first fight, and after the last one, every soul passes the same country. The trial calls it nothing. The fighters call it the Threshold, when they call it anything.
+
+The Threshold keeps a **Face** — all the faces, hung like masks in a green room: the faces the dead wore, the faces the unborn will. A soul entering the trial sees the face it is about to wear before it wears it. A soul leaving sees every face it ever wore, in a row, watching. It keeps a **Book** — the illustrated record of the head-world, written in a hand that changes whenever it is read, in which every fighter in this bible has a page and no fighter has ever found their own page while looking for it. It keeps a **Mirror** that shows the soul its vessel from the soul's side — the only view no fighter is built to survive comfortably — and a **Sea**, because every crossing in the Western Heart is a water crossing in the end, and a **Rock**, because one thing in the Threshold does not change, and the trial points at it whenever a soul claims nothing stays the same. And it keeps the sumi-e dark: the ink-wash black from which the green head itself is painted, visible only at the Threshold, where the painting is thin.
+
+The Threshold is also where the trial keeps its **ending**. Not a place — a condition. The absorbed soul does not go anywhere. The head simply stops hurting in that shape. What the ending looks like from inside is the one thing this bible does not describe, because the only witnesses are whole, and the whole do not come back to file reports. The last text card stands as written in §5. In the deadpan the head-world reserves for the truth:
+
+*"You are whole. Rest now."*
+
+### The Incarnations
+
+The shrine keeps an incarnation record for every soul of the nine — a face, a portrait, a voice, a way the soul looked when the head first dreamed it. RIN's record is the plainest and the oldest. BYOU's record twitches in its frame. TOU's record is mostly impact damage. SHA's record is three records that insist they are one. KAI's record is wet. JIN's record is kept sharp. RETSU's record is kept behind the others, by the shrine's choice. ZEN has two records — the stillness, and the stillness again, identical, filed separately, because the shrine does not argue with ZEN. GYOU has two records as well, and both of them are blurred, and the second one is blurred *differently*.
+
+The records are not archives. They are *doors*. The Reincarnation works because the shrine can open the record of a soul and let the soul wear what the record remembers. This is why the newly dead are offered vessels their actions earned: the records lean toward the living soul that resembles them. A soul that fights like battle itself finds TOU's door already open. This is also why Waterfall feels all nine: the records are kept in the same wall, and the wall is thin, and grief goes through thin walls the way water goes through everything.
+
+SAM-UR-A1 has no record. The shrine has built him an empty frame, out of something like respect and something like curiosity, and the frame hangs with the others. What the frame will hold, if it ever holds anything, is the experiment of §2. The GYOU splinter in Cyborg X hums through the wall at night. The records of ZEN do not object. The records of ZEN have never objected to anything. That is what makes them frightening.
+
+### Colour Is Law
+
+The head-world runs on one palette the way a body runs on one blood. Every land draws its colours from that single shared spectrum — the deep greens of the head itself, the winter blue-whites of RIN's record, the desert ochres of SHA's country, the abyssal blues of KAI's water, the charcoal and molten crack of the Destruction room — and then each soul, each character, each face keeps a palette of its own inside the shared one. This is why a fighter reborn in a new face is still recognisable across the arena: the body changes, the colours testify.
+
+Colour is how the trial tells the truth when words would lie. A land whose force has been claimed does not announce it. Its colours *settle* — the burning sky of Chi-U cools a fraction, the Dreaming palace's reflections clear — and the souls who live there feel the settling before they can name it. Tong-Nou is healing or it is not, and the palette is the chart on the hospital wall. Read the colours. They have never once been decorative.
+
+### The Music of the Head-World
+
+The head has a pulse, and the pulse has a theme. The trial's music is not scored to the fights; it is *under* them, the way a heartbeat is under a conversation — the head-world's theme, long and patient, that the fighters stop hearing after their first death and start hearing again before their last one.
+
+For the ending there is the transmigration music: the sound of a soul crossing the Threshold in the leaving direction, played once per soul, never repeated, never hurried. And for the long walks between the lands — the tunnels, the stairs, the desert — there is the esoteric mix: the theme taken apart and put back together wrong on purpose, hours of it, the head humming to itself in the dark it floats in. A soul that hums along is not mocked for it. Half the roster hums. The head does not mind. The head started it.
+
+### Soul Progression, or What the Ladder Does to a Soul
+
+Claiming a force is not collecting a prize. It is a permanent change in the claiming soul, and §5 names them plainly: reach, bite, solidity, renewal, speed. What the ladder does *between* the claims matters as much:
+
+- **A claimed force cannot be unclaimed — only traded.** The Trader exists because the generating cycle is a circle, not a staircase: sometimes becoming whole means letting go of the fire you fought hardest for, and the marketplace is where a soul learns what its own strength costs.
+- **The Soul Surge is memory, not magic.** When a fighter channels one of the other eight souls, the borrowed techniques arrive with the borrowed *nature* attached — TOU's surge has no brakes, BYOU's surge cannot be read because it cannot read itself — and when the ten seconds end, the fighter keeps a splinter of having been someone else. Fighters who surge often start finishing each other's sentences, the way the plains teach. The nine were one being. The surge is the scar tissue remembering.
+- **Grief is progression too.** Every death on the ladder passes through Waterfall. A soul that has died often carries her attention the way a veteran carries weather in a wound — and she, alone, can read a soul's whole career at a glance: not the wins, the *returns*. Who you kept becoming is who you are. The trial grades on the returns.
+
+The Assembled Soul is the sum of all of it: every force claimed, every vessel worn, every surge borrowed, every death returned from — assembled, and waiting in the last room, and patient, because it has already waited exactly as long as you have.
+---
+
+## 9. THE ASHLANE ARRIVALS
+
+*Canon bridge, 2026-10-22. The Bannon universe — the Ashlane/Brutal Fist fighting world of rings and engines — is a sub-universe of the Western Heart multiverse (owner directive 2026-10-22). Its fighters keep their existing bios and backstories from their repos; what follows is the bridge: how four of them heard the call and crossed into the Western Heart. They are mortal lost souls — not vessels of the nine, lost the ordinary way — and the trial is purifying them like all the lost. Moveset bases are technical (Owner-locked lines only). No outside identity exists in canon.*
+
+### BANNON — The Engine Soul
+**Mortal lost soul. Crossed from the Bannon sub-universe.**
+
+**Backstory.** In the Bannon sub-universe, Bannon was the physical nucleus and absolute force of the Bannon Engine — raw physics, unmatched grit. A redeemed anti-hero who shed control and found true loyalty. He fought to prove that authentic expression and loyalty are stronger than corporate control. Quiet. Intensely focused on philosophy and numerology. He hated pretense the way other fighters hate losing.
+
+The call found him between rounds. Not a bell — the Engine had bells. This was quieter: the pull every lost soul feels, drawing toward the Octagonal Shrine Par-fang at the Central Mountain. He had spent his career shedding control. The call asked him to shed the floor under his feet.
+
+He arrived in the Western Heart with the Engine's physics still in his hands and none of its machinery. The trial did not recruit him. It recognized him.
+
+**Personality.** He does not do promos. When Finxsse cuts one on him, Bannon waits until it is over, nods once, and fights. The nod is the whole promo.
+
+**Fighting philosophy.** "Force is honest. Control is the lie."
+
+**Relationships.**
+- **Finxsse:** Calls him a corporate sell-out — to his face, on every mic, in every land. Bannon has never answered. Not once. The silence is not contempt. He already proved what he needed to prove, and proving it again would be control.
+- **Pantera:** Two forces that do not negotiate. Pantera fights because fighting is what he is; Bannon fights because loyalty is what he chose. Mutual recognition, no warmth. The mat shakes the same for both.
+- **SAM-UR-A1:** A machine that fights because it was instructed to. Bannon was the nucleus of an engine and walked away from it. He watches the machine the way you watch a road you used to live on.
+
+**Element.** Earth — the Octagonal Shrine Par-fang, the Source. The physical nucleus belongs where everything is still and everything holds. He does not chase the fight across the lands. He stands at the center and lets it come.
+
+**Body / Mind / Soul.** BODY: the Engine's physics made flesh — explosive grapples, heavy strikes, high-impact throws, every movement carrying the weight of machinery that isn't there anymore. MIND: a quiet philosopher who hates pretense and seeks authentic connection — every match a statement. SOUL: a mortal lost soul, redeemed — one that already shed control once. The friction: the body is still the Engine's nucleus. The mind has renounced the Engine. The soul walks between them, loyal to something neither can name — and the trial keeps asking what it is.
+
+**Why Bannon thinks he's here.** He thinks the trial is another ring and the katana is another statement: proof that loyalty outlasts control. He has not considered that the trial is not a stage but a medicine — that shedding control was the first lesson, not the last, and the shrine is still teaching. The idea that something is purifying him would sound, to him, like corporate language. He would hate it. That is why it is working.
+
+**Being purified of:** Control. The last of it. The Engine's nucleus still believes it has to *be* the force. The trial is teaching him to set it down.
+
+**Signature detail.** Between rounds he counts his knuckles — one through ten, then starts over. No one has ever seen him reach a number that satisfied him.
+
+**Owner-locked:** Ashlane canon: mhvnsnt/brutalfistgrokversiontenpointfive, `src/data/bannonRoster.ts` (id `bannon`); Bannon universe = sub-universe of the WH multiverse (owner 2026-10-22). Models: BANNON.glb, BANNON_rigged.glb, BANNON_muscular_skinned.glb (`public/models/`). VF5 moveset base: Jeffry McWild (technical only — never in canon). Ashlane kit: AWE (Rebel), payback 'Beast Mode'.
+
+---
+
+### EL TORO DE ORO — The Golden Bull Soul
+**Mortal lost soul. Crossed from the Bannon sub-universe.**
+
+**Backstory.** The Golden Bull of the ring. Luchador athleticism stacked on raw power — spectacular aerial attacks and crushing power moves. Proud and honorable. He fought with passion and flair, and the crowd loved him for it. The crowd's love was the point. Or half of it.
+
+The call found him mid-flight. He swears he heard it clearest at the top of a dive, where the arena noise falls away and there is only air. The pull toward the shrine. He thought it was a bigger crowd calling.
+
+He arrived under the burning sky of the Plains of Chi-U and understood the mistake. The crowd here is souls. The gold still shines. The charge still lands. But nobody watches the way he needs them to — and he has started to wonder whether the gold was ever the point.
+
+**Personality.** He scrapes one foot before he charges — once, always once. A matador's courtesy, offered to no one. It is the only part of the Golden Goring that isn't violence.
+
+**Fighting philosophy.** "The gold is paint. The charge is real."
+
+**Relationships.**
+- **Pablo:** Two bulls. One gold, one painted. El Toro does not look at Pablo's paint too long — the blackreign especially. Bulls know when another bull is carrying something heavier than horns.
+- **King Tyrant:** Fellow showmen. The tide respects the bull's theater; the bull respects the tide's timing. They have an unspoken agreement about entrances. Neither has said it aloud. Both honor it.
+- **Skull:** El Toro offered him respect once, formally, the way luchadores do. Skull didn't answer — punishment doesn't do courtesy. El Toro has not offered again. He has not withdrawn it either.
+
+**Element.** Fire — the Plains of Chi-U. Confrontation lives here, under the burning sky. The Golden Goring was made for this land: a charge with nowhere to hide and no reason to.
+
+**Body / Mind / Soul.** BODY: luchador grace on a heavyweight frame — the top rope and the powerbomb in one body, aerial one second, devastating the next. MIND: proud, honorable, a performer — he fights for the crowd's love as much as the win. SOUL: a mortal lost soul, the Golden Bull, drawn by a call he mistook for applause. The friction: the body can fly and can gore, and the mind has never decided which one the crowd came for — so it does both, every match, and calls it honor.
+
+**Why El Toro thinks he's here.** He believes the trial is the biggest stage — that the call was the crowd, finally, calling his name across worlds. He has not understood that the souls in the stands are not an audience but a diagnosis. The idea that the gold might be what gets burned off, not what gets crowned, has not occurred to him. When it does, the charge will mean something different.
+
+**Being purified of:** The spectacle. The need to be seen golden. The trial is burning the paint off the bull to find out what charges underneath.
+
+**Signature detail.** His mask's horns are real horn — polished, golden. When he charges, the light catches them a half-second before he arrives. Opponents swear the horns get there first.
+
+**Owner-locked:** Ashlane canon: mhvnsnt/brutalfistgrokversiontenpointfive, `src/data/bannonRoster.ts` (id `el_toro_de_oro`). Model: EL_TORO_DE_ORO.glb. VF5 moveset base: Wolf Hawkfield (technical only — never in canon). Ashlane kit: Independent, payback 'Golden Goring'.
+
+---
+
+### PABLO — The Painted Soul
+**Mortal lost soul. Crossed from the Bannon sub-universe.**
+
+**Backstory.** A mythic powerhouse who channels the spirit of the bull — unstoppable force of nature, raw power, resilience. Minotaur-painted and theatrical to the bone. Proud and fierce, deeply connected to his cultural heritage. The paint was the celebration: every match a festival, every entrance a ritual. And he wanted to *fly* — the big man attempting lucha moves anyway, the comedy and the heart of it, the crowd laughing with him and then gasping when he actually left the ground.
+
+Then the blackreign. The same paint, darker. The same man, but the festival stopped and something else started. He doesn't talk about when the paint changed. The call found him wearing the dark paint — or the dark paint found him first, and the call just followed it in.
+
+He arrived in the Western Heart and the Helix Palace opened its doors. Everything reflects there. Nothing is what it seems. The Palace feeds on want, and Pablo wants the spotlight the way other fighters want air. He performs in all five rooms now. One of them is watching back.
+
+**Personality.** He plays to the crowd between rounds — bows, flourishes, a wink at the cheapest seats. The wink is always the same eye. The other eye doesn't wink. Fighters who've noticed don't mention it.
+
+**Fighting philosophy.** "The mask flies higher than the man."
+
+**Relationships.**
+- **El Toro de Oro:** The other bull. El Toro is gold; Pablo is paint. El Toro doesn't look too long at the blackreign. Pablo performs harder when El Toro watches — and lands worse.
+- **King Tyrant:** The Showman Soul adores Pablo's entrances — the theater, the timing, the commitment. He has never asked about the dark paint. Showmen know not to ask about other showmen's paint. He is afraid of the answer anyway.
+- **Waterfall:** She weeps for what's under the mask — the one grief in the trial Pablo can't perform through. When she cries during his matches, he plays to the crowd louder. The louder he plays, the harder she weeps.
+
+**Element.** Metal — the Helix Palace, the Land of Desire. The Palace has five rooms, and Pablo has started visiting all of them. The spotlight he wants and the darkness he wears are both on the menu here.
+
+**Body / Mind / Soul.** BODY: a big, fat powerhouse — mass as presence, every step a small earthquake, the Bull Rush an unstoppable charge. MIND: wants to fly — attempts the lucha moves anyway, comedy and heart, the show must go *up*. SOUL: a mortal lost soul wearing the blackreign — the disturbed dark underneath the paint, the thing the mask is holding back. The friction: the body is too heavy to fly, the mind refuses to stay grounded, and the soul is darker than either will admit. He goes for the top rope anyway. The crowd holds its breath. Something else does too.
+
+**Why Pablo thinks he's here.** He thinks the trial is an audience — the biggest crowd, the brightest lights, the paint finally seen by everyone. He has not considered that the trial is not watching the performance. It is watching the painter. The mask was supposed to be the act. The trial keeps asking what it's covering, and Pablo keeps adding another coat.
+
+**Being purified of:** The mask. Not the paint — the hiding. Whatever the blackreign is holding back, the trial is patiently, round by round, asking it to come out.
+
+**Signature detail.** The paint sweats off in the third round, but only on one side. He never wipes it. No one has ever seen both faces at once.
+
+**Owner-locked:** Ashlane canon: mhvnsnt/brutalfistgrokversiontenpointfive, `src/data/bannonRoster.ts` (id `pablo`). Models: PABLO.glb (Minotaur Painted), PABLO_blackreign.glb (Black Reign — the disturbed masked dark), PABLO_goldenbull.glb (Golden Bull). VF5 moveset base: El Blaze (technical only — never in canon). User-locked 2026-10-22: big/fat powerhouse who TRIES to be aerial; Goldust theatricality mixed with Black Reign/Abyss/Mankind darkness underneath. Ashlane kit: Independent, payback 'Bull Rush'.
+
+---
+
+### NPC FINXSSE — The Grudge Soul
+**Mortal lost soul. Crossed from the Bannon sub-universe.** Pronounced "N-P-C Finesse."
+
+**Backstory.** NPC Finxsse — pronounced N-P-C Finesse. A direct showman from the books: heavyweight power, cruiserweight agility, a rapper's charisma, promo-heavy. He never hides the grudge.
+
+He wore the gold jeweled diamond cross — stolen, everyone knew it was stolen, he never pretended otherwise. It marked the alliance and the feud: his side, and Bannon, who he called a corporate sell-out to his face, on the mic, every week.
+
+The call found him mid-promo. He tells it different every time — the only story he won't tell straight. The pull toward the shrine. He says he came to settle it with Bannon. The cross came with him. Stolen things cross membranes fine. They just gain interest.
+
+He arrived in the Western Heart and went looking for Bannon first, the trial second. The Trader found him before either. The Trader had questions about the cross. The Trader always has questions about gold that isn't yours.
+
+**Personality.** He cuts promos on everyone — opponents, the shrine stones, the tunnel walls. The promos are good. The grudges are better. He has never once talked trash about the Trader. Nobody's that direct.
+
+**Fighting philosophy.** "I told you what I was going to do."
+
+**Relationships.**
+- **Bannon:** The feud. Finxsse calls him a corporate sell-out — to his face, on every mic, in every land. Bannon answers with a nod and fights. The nod infuriates Finxsse more than any insult could. You can't promo against a nod.
+- **The Trader:** The cross is stolen gold, and the Marketplace trades in exactly that kind of value. The Trader has priced it — twice, out loud, where Finxsse could hear. Finxsse still wears it. The debt is compounding. Neither of them is in a hurry.
+- **Purple Rain:** Showmen recognize each other. Purple Rain performs; Finxsse promos. Mutual respect, different stages. Purple Rain once asked to borrow the cross for an entrance. Finxsse said no faster than he's ever moved in the ring.
+
+**Element.** Water — the Palace of Dreaming. Change is the only law there, and Finxsse has never been one thing: power one second, agility the next, promo always. The walls ripple. He ripples back.
+
+**Body / Mind / Soul.** BODY: the hybrid — heavyweight power that moves like a cruiserweight, the Chainsnatcher from nowhere, the Getbackk that ends arguments. MIND: direct to the bone — charisma, promos, the grudge always on the mic, never behind it. SOUL: a mortal lost soul carrying a stolen cross and a live feud. The friction: he calls Bannon a corporate sell-out, but he walked straight into the most structured system in the head — a ladder, a ledger, an inscription in stone. He hates control. He's climbing it anyway, one promo at a time, because Bannon is climbing it too.
+
+**Why Finxsse thinks he's here.** He thinks he followed Bannon through the membrane to settle it — the Getbackk, live and in person. No cameras. No script. He has not considered that the call doesn't deliver feuds; it delivers souls. Bannon is here for the trial. Finxsse is here for Bannon. The trial is purifying one of them. It hasn't said which.
+
+**Being purified of:** The grudge. The Getbackk that never lands clean. The trial keeps putting Bannon in front of him and asking what he'd be without the feud — and Finxsse keeps cutting a promo instead of answering.
+
+**Signature detail.** The gold jeweled diamond cross never leaves his neck — not in the ring, not between rounds, not in the tunnels. He touches it before the Getbackk. It was never his. The light doesn't care.
+
+**Owner-locked:** Ashlane canon: mhvnsnt/brutalfistgrokversiontenpointfive, `src/data/bannonRoster.ts` (id `finxsse`); pronounced "N-P-C Finesse"; model NPC_FINXSSE.glb (NPC attire). VF5 moveset base: Lei-Fei (technical only — never in canon). Ashlane kit: Street / Stick-Up Alliance; signature Chainsnatcher (jumping double-knee backstabber); finisher Getbackk (fireman-carry tornado slam).
+
+---
+
+## APPENDIX (2026-10-20) — TEKKEN 3 / iron-legacy WIRING & CONVERSION
+
+*Added by the Tekken 3 full-wiring lane (owner order 2026-10-20 ~08:06 CDT). Append-only;
+the per-game source of truth is `teardown/tekken3/CANON-CONVERSION.md`, the checklist is
+`teardown/tekken3/WIRING-INVENTORY.md` (19,477 files audited).*
+
+Tekken 3's universe name in Western Heart is **iron-legacy**. As of 2026-10-20, all 20
+character motion banks present on the owner's disc image (types 0–20) plus the common bank
+are extracted from TEKKEN3.BNS and SHA-256-verified, and full movesets (frame data) exist
+for all 20 — the original 7 (King, Yoshimitsu, Xiaoyu, Jin, Bryan, Heihachi, Gun Jack) plus
+13 extracted that day (Paul, Law, Lei, Nina, Hwoarang, Eddy, Julia, Kuma/Panda, Ogre, Anna,
+Dr. Bosconovitch, Gon, Forest Law; 5,663 additional move rows). Type 15 (Mokujin) has no
+bank on this disc image (BNS record 295 is size 0).
+
+The canon identities of the T3 sources are the ones already established in this bible and
+the roster: King→PANTERA, Jin→DEMONIO (soul RIN), Yoshimitsu→PHANTOM, Heihachi→DIABLO,
+Bryan→SKULL, Gun Jack→SAM-UR-A1, Xiaoyu→SAKU RA, Paul→TOU, Eddy→KING TYRANT (soul KAI),
+Hwoarang→GYOU, Julia→NIGHTWOLF / soul ZEN (a three-way doc conflict is flagged in the
+conversion record, unresolved), Lei→soul BYOU (vessel name pending the owner's Lei naming
+decision, as noted in §4 of this bible), Nina→AWA POP, Anna→TORCH, Dr. Bosconovitch→DOC
+FRANK. Law, Ogre, Gon, Panda, and Mokujin have **no** Western Heart mapping in canon —
+flagged for the owner's decision, never invented. The bear's name is now locked: GASHADOKURO (owner name lock 2026-10-22; internal ID remains `kuma` — plumbing only, never renamed; the game layer resolves the display name).
+
+Diablo is the one T3-sourced member of the Seven whose real animation bank is not yet
+decoded into the game: Heihachi's KMD carries empty vertex rows for parts 2/9/13 in both
+costume records, which blocks the shared bake pipeline at its part-2 pivot step (full
+evidence in the conversion record §5). His moveset is fully wired; his motion is the gap.
+
+<!-- BEGIN WMXIX / MAT-LEGENDS SECTION (WMXIX wiring lane, 2026-10-20 — coordinator reconciles at merge) -->
+
+## MAT-LEGENDS (WWE WrestleMania XIX) — wired 2026-10-20
+
+The `mat-legends` universe is Western Heart's wrestling-mechanics donor: its grappling system, arena bones, and create-a-wrestler part library, converted to WH canon. Per-game source of truth: `teardown/wmxix/CANON-CONVERSION.md`. Full inventory + reconciliation of both teardown folders: `teardown/wmxix/WIRING-INVENTORY.md`.
+
+- **Moves/animations:** all 170 decoded YANM clips carry canon IDs (`ML-<CLIP>`) in `moveset-library/animations/WMXIX-CLIP-INDEX.json`; 169 are registered as library moves in `moveset-library/movesets/WMXIX-MOVES.json`, wired to Tekken-style throw inputs (federation rule: wrestling moves enter only on Tekken inputs/structure). Per-clip move names are NOT canon yet — the clip-semantics decode is open and no names were invented.
+- **Arenas → canon stages:** the conversions authored in `teardown/wmxix/ARENA-UNIVERSE-MAP.md` are wired as data in `game/assets/stages/mat-legends/stages.json` (arena 00 → Helix Palace, 01 → Octagonal Shrine Par-Fang, 02 → Phantom Marketplace, Hell-cell → The Drill Wound, backstage sets → Helix Palace interiors / Wrestling Mode areas). Arena geometry is decoded point clouds; face reconstruction is open, so no WMXIX geometry is playable in the build yet.
+- **CAW parts:** the 2,690-part XIX create-a-wrestler library is indexed for the Creation Suite in `customization/mat-legends-caw.json` (catalog: `teardown/wmxix/caw-parts/files.tsv`).
+- **Characters:** wrestler slot → WH character assignment is the owner's and remains PENDING (`teardown/wwe-wrestlemania-xix/WRESTLER-IDENTITY-MAP.md`); the models themselves live in the wrestling repos per the federation rule. Nothing was assigned or invented by this lane.
+- **Revenge Mode:** XIX's out-of-ring traversal mode has no canon name or implementation yet — flagged, not invented. Its stage data is registered in `stages.json` as `backstage_traversal` / `open_traversal`.
+
+<!-- END WMXIX / MAT-LEGENDS SECTION -->
+<!-- BEGIN No Mercy / mat-kings section (wiring lane 2026-10-20; source of truth: teardown/wwf-no-mercy/CANON-CONVERSION.md) -->
+## mat-kings — the No Mercy stratum (added 2026-10-20)
+
+`mat-kings` is Western Heart's wrestling stratum, converted from the WWF No Mercy
+teardown (universe name per RENAME-MAP.md). What Western Heart takes from it is
+systems and motion, authored into this world — never its wrestler characters
+(federated design, CHIMERA-ARCHITECTURE.md; the wrestler models live in the
+wrestling repos).
+
+- **Grappling library.** All 4,409 move clips + 1,353 system clips are catalogued
+  in `moveset-library/movesets/mat-kings-move-database.json` under MK-#### canon
+  IDs, each wired to a Tekken-style input and MOVE-SLOTS slot eligibility
+  (federation rule: wrestling moves enter as Tekken-input moves). Pantera's
+  grappling canon (above, §Pantera) is the flagship consumer; his Scoop Slam is
+  MK-0125 (`anim_339F.npy`, corrected 2026-10-20).
+- **Creation lineage.** The Creation Suite's modular body/attire system descends
+  from No Mercy's CAW: 220 body-type meshes, face/hair meshes, weapons and
+  attire parts are wired in `customization/parts/no-mercy/` (682 indexed parts,
+  `customization/PARTS-REGISTRY.json` library `no-mercy`).
+- **Stages.** The 17 mat-kings arenas/backstage areas are playable stages
+  (`game/js/stages.js` ids `nm-*`; GLB layer in PR #345). Their display names
+  still carry the source game's event names — WH canon stage names are
+  AWAITING OWNER (conversion table in CANON-CONVERSION.md §4). No names were
+  invented by the wiring lane.
+- **Characters.** No mat-kings-native fighters are defined yet. The 42 source
+  wrestler identities (`teardown/wwf-no-mercy/docs/wrestler-id-table.json`)
+  have no WH mappings in RENAME-MAP.md — owner decision, flagged, not invented.
+<!-- END No Mercy / mat-kings section -->
+
+<!-- BEGIN Shrine体系 section (owner-directed 2026-10-24; in-universe only) -->
+## Shrine体系 — the shrine terminal (added 2026-10-24)
+
+`Shrine体系` (Shrine + 体系, "system") is the sacred computer-system
+kept in the Octagonal Shrine Par-fang at the Central Mountain —
+the Source, element Earth, where the trial ends. It lives in the
+shrine's room for arriving: the room where arriving souls are read
+before they are weighed. The weighing happens elsewhere; the
+terminal does not judge. It records, and it reads.
+
+The machine is deliberately narrow. It sees the world in sixteen
+colors and speaks with one voice at a time — that is not a
+limitation the shrine apologizes for, it is the shape of the
+shrine's attention: sixteen colors, one voice, three words.
+
+The Oracle is its oldest function. A soul consults the terminal
+and the terminal draws three words — from the kanji of the Nine
+Souls (凛病闘沙海刃烈禅行), from the trial inscription carved in
+stone (Fight. Die. Return. Claim the forces. Forge the katana.
+Become whole.), from the five lands and their elements. A reading
+is not a command and not a verdict. It is three words to carry.
+
+The terminal also keeps pastimes. On festival days, souls gather
+at the shrine machine and play: a descent game, dodging what the
+mountain puts in the way on the stairs that count the climber
+back; a drawing board in sixteen colors; hymns in a single voice.
+These are pastimes of the head-world, the way the other side
+games are — souls at play between trials, not trials themselves.
+
+In the Heart and Mind Within, the terminal appears at the Still
+Point: the last thing a descending soul meets before facing its
+shadow self is the shrine machine, reading it three words. The
+shadow is already listening.
+
+Nothing in the shrine is bought or sold. The terminal keeps no
+prices and takes no payment; the Phantom Marketplace is where
+trade happens, and the shrine is not the marketplace.
+
+Anchors (no prior canon contradicted): §1 Octagonal Shrine
+Par-fang, Central Mountain, Earth, the Source; §1 the trial
+inscription; §1 the shrine's rooms for arriving and being
+weighed; §4 the Nine Souls and their kanji; §1 the five lands.
+This section is additive connective tissue, per the canon rule:
+expand it, don't contradict it.
+<!-- END Shrine体系 section -->

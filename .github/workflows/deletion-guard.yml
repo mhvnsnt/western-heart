@@ -9,6 +9,8 @@ on:
     types: [opened, synchronize, reopened, labeled, unlabeled]
   push:
     branches: [main]
+  merge_group:
+    types: [checks_requested]
 # CI minute diet (Plan B): superseded PR runs are cancelled, not billed.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -19,12 +21,32 @@ permissions:
 jobs:
   deletion-guard:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          # Fast path: only the two commits under test, no other branches/tags.
+          # (fetch-depth: 0 pulled every branch and timed out at 10 min.)
+          ref: ${{ github.event.pull_request.head.sha || github.event.merge_group.head_sha || github.sha }}
+          fetch-depth: 1
           filter: blob:none
+          sparse-checkout: .github
+          sparse-checkout-cone-mode: true
+      - name: Fetch base and head (shallow, deepen until merge-base exists; fail closed)
+        env:
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          if [ -z "$BASE" ] || [ "$BASE" = "0000000000000000000000000000000000000000" ]; then echo "No base"; exit 0; fi
+          git fetch -q --no-tags --filter=blob:none --depth=1 origin "$BASE" "$HEAD"
+          for d in 50 200 1000 5000; do
+            git merge-base "$BASE" "$HEAD" >/dev/null 2>&1 && break
+            git fetch -q --no-tags --filter=blob:none --deepen=$d origin "$BASE" "$HEAD"
+          done
+          git merge-base "$BASE" "$HEAD" >/dev/null 2>&1 || git fetch -q --no-tags --filter=blob:none --unshallow origin "$BASE" "$HEAD"
+          # Fail closed: if no merge-base, the diff step below must not run on a guess.
+          git merge-base "$BASE" "$HEAD"
       - name: Check deletions
         env:
           GH_TOKEN: ${{ github.token }}

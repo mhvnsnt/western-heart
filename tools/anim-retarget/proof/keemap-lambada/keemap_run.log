@@ -1,0 +1,968 @@
+multiple addons with the same name:
+  '/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/DragonFF/__init__.py'
+  '/home/hatch/.config/blender/4.0/scripts/addons/DragonFF/__init__.py'
+multiple addons with the same name:
+  '/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/SourceIO/__init__.py'
+  '/home/hatch/.config/blender/4.0/scripts/addons/SourceIO/__init__.py'
+multiple addons with the same name:
+  '/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/fspy_blender/__init__.py'
+  '/home/hatch/.config/blender/4.0/scripts/addons/fspy_blender/__init__.py'
+KEEMAP loaded: operators wm.perform_animation_transfer / wm.calc_correct_all_bones available
+	parsing bvh '/home/hatch/workspace/anim-fix-work/lambada_55_02.bvh'...	zero length node found: Hips
+0.8960
+	importing to blender...	zero length bone found: Spine1
+	zero length bone found: LeftHand
+	zero length bone found: RightHand
+Done in 8.4315
+
+source lambada_55_02: frames 1..2181 @ 120fps, 31 bones
+leg lengths src=17.5986 tgt=0.4145 source object scale=0.023554
+bone map: 29 pairs from /home/hatch/workspace/_wh-work/wireup-keemap/tools/anim-retarget/bone_maps/cmu_to_scarlett_keemap.json
+bone map reordered parents-first: 29 entries
+root position transfer: True (Hips -> DEF-spine)
+Hips -> DEF-spine
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=1.5708, y=-0.0000, z=0.0000), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.5708, y=-0.0000, z=-0.0000), order='XYZ'>
+Difference between before and After modification
+<Euler (x=-0.0000, y=0.0000, z=-0.0000), order='XYZ'>
+-1.0403375630715715e-29
+1.0502878558003729e-06
+-6.066426623274835e-21
+<Quaternion (w=1.0000, x=0.0000, y=0.0000, z=-0.0000)>
+<Quaternion (w=1.0000, x=0.0000, y=0.0000, z=0.0000)>
+Calc location offsets:
+Source Bone:  Hips
+Source Bone Position WS:  <Vector (0.0697, 0.6376, 0.4064)>
+Destination Bone:  DEF-spine
+Dest Bone Position WS:  <Vector (0.0000, -0.0078, -0.0897)>
+Source Bone Pose Space:  <Vector (0.0697, 0.6376, 0.4064)>
+Pose Space of  DEF-spine  before move:  <Vector (0.0000, 0.0000, 0.0000)>
+Pose Space of  DEF-spine  after moved to source position:  <Vector (0.0697, 0.4962, -0.6454)>
+Pose Space Delta of  DEF-spine  :  <Vector (-0.0697, -0.4962, 0.6454)>
+LowerBack -> DEF-spine.001
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=1.5416, y=-0.0000, z=-0.0000), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.5143, y=0.0014, z=-0.0000), order='XYZ'>
+Difference between before and After modification
+<Euler (x=0.0274, y=-0.0000, z=0.0014), order='XYZ'>
+1.5674668360936905
+-0.0023015017350090533
+0.08103895386237159
+<Quaternion (w=0.9999, x=0.0137, y=-0.0000, z=0.0007)>
+<Quaternion (w=1.0000, x=0.0000, y=0.0000, z=0.0000)>
+Calc location offsets:
+Source Bone:  LowerBack
+Source Bone Position WS:  <Vector (0.0697, 0.6376, 0.4064)>
+Destination Bone:  DEF-spine.001
+Dest Bone Position WS:  <Vector (-0.0000, -0.0078, -0.0193)>
+Source Bone Pose Space:  <Vector (0.0697, 0.6376, 0.4064)>
+Pose Space of  DEF-spine.001  before move:  <Vector (0.0000, -0.0000, 0.0000)>
+Pose Space of  DEF-spine.001  after moved to source position:  <Vector (0.0697, 0.4444, -0.6327)>
+Pose Space Delta of  DEF-spine.001  :  <Vector (-0.0697, -0.4444, 0.6327)>
+Spine -> DEF-spine.002
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=1.4932, y=0.0014, z=-0.0000), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.5744, y=0.0125, z=0.0000), order='XYZ'>
+Difference between before and After modification
+<Euler (x=-0.0812, y=-0.0000, z=0.0111), order='XYZ'>
+-4.652248456918078
+-0.00128724073799031
+0.6360033098494923
+<Quaternion (w=0.9992, x=-0.0406, y=-0.0002, z=0.0055)>
+<Quaternion (w=1.0000, x=0.0000, y=0.0000, z=0.0000)>
+Calc location offsets:
+Source Bone:  Spine
+Source Bone Position WS:  <Vector (0.0698, 0.6407, 0.4606)>
+Destination Bone:  DEF-spine.002
+Dest Bone Position WS:  <Vector (0.0001, -0.0054, 0.0231)>
+Source Bone Pose Space:  <Vector (0.0698, 0.6407, 0.4606)>
+Pose Space of  DEF-spine.002  before move:  <Vector (0.0000, 0.0000, 0.0000)>
+Pose Space of  DEF-spine.002  after moved to source position:  <Vector (0.0691, 0.4864, -0.6102)>
+Pose Space Delta of  DEF-spine.002  :  <Vector (-0.0691, -0.4864, 0.6102)>
+Hips -> ORG-spine
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=1.5708, y=0.0000, z=0.0000), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.5708, y=0.0000, z=0.0000), order='XYZ'>
+Difference between before and After modification
+<Euler (x=-0.0000, y=0.0000, z=-0.0000), order='XYZ'>
+-4.7811330703865246e-05
+1.305010592463176e-06
+-9.801439109310035e-13
+<Quaternion (w=1.0000, x=-0.0000, y=0.0000, z=-0.0000)>
+<Quaternion (w=1.0000, x=0.0000, y=0.0000, z=0.0000)>
+Calc location offsets:
+Source Bone:  Hips
+Source Bone Position WS:  <Vector (0.0697, 0.6376, 0.4064)>
+Destination Bone:  ORG-spine
+Dest Bone Position WS:  <Vector (0.0000, -0.0078, -0.0897)>
+Source Bone Pose Space:  <Vector (0.0697, 0.6376, 0.4064)>
+Pose Space of  ORG-spine  before move:  <Vector (0.0000, 0.0000, 0.0000)>
+Pose Space of  ORG-spine  after moved to source position:  <Vector (0.0697, 0.4962, -0.6454)>
+Pose Space Delta of  ORG-spine  :  <Vector (-0.0697, -0.4962, 0.6454)>
+Spine1 -> DEF-spine.004
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=1.5426, y=0.0125, z=0.0000), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.5744, y=0.0125, z=0.0000), order='XYZ'>
+Difference between before and After modification
+<Euler (x=-0.0318, y=0.0000, z=0.0000), order='XYZ'>
+-1.8209736827286507
+3.9278867143011295e-06
+3.378336074886266e-07
+<Quaternion (w=0.9999, x=-0.0159, y=0.0000, z=0.0000)>
+<Quaternion (w=1.0000, x=-0.0000, y=0.0000, z=-0.0000)>
+Calc location offsets:
+Source Bone:  Spine1
+Source Bone Position WS:  <Vector (0.0705, 0.6405, 0.5150)>
+Destination Bone:  DEF-spine.004
+Dest Bone Position WS:  <Vector (0.0012, 0.0069, 0.1136)>
+Source Bone Pose Space:  <Vector (0.0705, 0.6405, 0.5150)>
+Pose Space of  DEF-spine.004  before move:  <Vector (0.0000, -0.0000, -0.0000)>
+Pose Space of  DEF-spine.004  after moved to source position:  <Vector (0.0643, 0.4199, -0.6220)>
+Pose Space Delta of  DEF-spine.004  :  <Vector (-0.0643, -0.4199, 0.6220)>
+LeftUpLeg -> DEF-thigh.L
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=-1.5362, y=-0.0500, z=0.0829), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.5708, y=-3.1241, z=0.0000), order='XYZ'>
+Difference between before and After modification
+<Euler (x=0.0387, y=3.0588, z=0.0676), order='XYZ'>
+2.218801252587217
+175.2538431584979
+3.8736154292730864
+<Quaternion (w=0.0420, x=-0.0330, y=0.9984, z=-0.0179)>
+<Quaternion (w=1.0000, x=0.0000, y=0.0000, z=-0.0000)>
+Calc location offsets:
+Source Bone:  LeftUpLeg
+Source Bone Position WS:  <Vector (0.1090, 0.6196, 0.3633)>
+Destination Bone:  DEF-thigh.L
+Dest Bone Position WS:  <Vector (0.0313, -0.0014, -0.0610)>
+Source Bone Pose Space:  <Vector (0.1090, 0.6196, 0.3633)>
+Pose Space of  DEF-thigh.L  before move:  <Vector (-0.0000, -0.0000, -0.0000)>
+Pose Space of  DEF-thigh.L  after moved to source position:  <Vector (0.1499, -0.3959, 0.6265)>
+Pose Space Delta of  DEF-thigh.L  :  <Vector (-0.1499, 0.3959, -0.6265)>
+RightUpLeg -> DEF-thigh.R
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=-1.5362, y=0.0500, z=-0.0829), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.5708, y=3.1241, z=-0.0000), order='XYZ'>
+Difference between before and After modification
+<Euler (x=0.0387, y=-3.0588, z=-0.0676), order='XYZ'>
+2.2186334860657286
+-175.25441689438816
+-3.874223742996041
+<Quaternion (w=0.0420, x=-0.0330, y=-0.9984, z=0.0179)>
+<Quaternion (w=1.0000, x=0.0000, y=0.0000, z=0.0000)>
+Calc location offsets:
+Source Bone:  RightUpLeg
+Source Bone Position WS:  <Vector (0.0312, 0.6196, 0.3633)>
+Destination Bone:  DEF-thigh.R
+Dest Bone Position WS:  <Vector (-0.0313, -0.0014, -0.0610)>
+Source Bone Pose Space:  <Vector (0.0312, 0.6196, 0.3633)>
+Pose Space of  DEF-thigh.R  before move:  <Vector (-0.0000, -0.0000, 0.0000)>
+Pose Space of  DEF-thigh.R  after moved to source position:  <Vector (-0.0104, -0.4025, 0.6384)>
+Pose Space Delta of  DEF-thigh.R  :  <Vector (0.0104, 0.4025, -0.6384)>
+Neck -> DEF-spine.006
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=1.6887, y=0.0125, z=0.0000), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.2950, y=0.0738, z=-0.0210), order='XYZ'>
+Difference between before and After modification
+<Euler (x=0.3929, y=0.0036, z=0.0647), order='XYZ'>
+22.510821353312135
+0.20526388650583796
+3.708201907953718
+<Quaternion (w=0.9803, x=0.1950, y=0.0081, z=0.0314)>
+<Quaternion (w=1.0000, x=-0.0000, y=-0.0000, z=0.0000)>
+Calc location offsets:
+Source Bone:  Neck
+Source Bone Position WS:  <Vector (0.0705, 0.6405, 0.5150)>
+Destination Bone:  DEF-spine.006
+Dest Bone Position WS:  <Vector (0.0023, -0.0030, 0.2053)>
+Source Bone Pose Space:  <Vector (0.0705, 0.6405, 0.5150)>
+Pose Space of  DEF-spine.006  before move:  <Vector (-0.0000, 0.0000, -0.0000)>
+Pose Space of  DEF-spine.006  after moved to source position:  <Vector (0.0643, 0.2327, -0.6756)>
+Pose Space Delta of  DEF-spine.006  :  <Vector (-0.0643, -0.2327, 0.6756)>
+Neck1 -> DEF-spine.007
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=1.5260, y=0.0738, z=-0.0210), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.5631, y=-0.1441, z=-0.0057), order='XYZ'>
+Difference between before and After modification
+<Euler (x=-0.0361, y=-0.0136, z=-0.2180), order='XYZ'>
+-2.0710913681531093
+-0.7788742187000571
+-12.490474510681745
+<Quaternion (w=0.9939, x=-0.0187, y=-0.0048, z=-0.1089)>
+<Quaternion (w=1.0000, x=0.0000, y=-0.0000, z=-0.0000)>
+Calc location offsets:
+Source Bone:  Neck1
+Source Bone Position WS:  <Vector (0.0735, 0.6513, 0.5531)>
+Destination Bone:  DEF-spine.007
+Dest Bone Position WS:  <Vector (0.0040, 0.0027, 0.2255)>
+Source Bone Pose Space:  <Vector (0.0735, 0.6513, 0.5531)>
+Pose Space of  DEF-spine.007  before move:  <Vector (0.0000, -0.0000, 0.0000)>
+Pose Space of  DEF-spine.007  after moved to source position:  <Vector (0.0316, 0.3596, -0.6344)>
+Pose Space Delta of  DEF-spine.007  :  <Vector (-0.0316, -0.3596, 0.6344)>
+LeftLeg -> DEF-shin.L
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=-1.5388, y=-0.0148, z=-3.0623), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.5708, y=-3.1241, z=0.0000), order='XYZ'>
+Difference between before and After modification
+<Euler (x=0.0332, y=-0.0793, z=0.0026), order='XYZ'>
+1.9003987509355555
+-4.542223074012457
+0.15142869565355446
+<Quaternion (w=0.9991, x=0.0166, y=-0.0396, z=0.0020)>
+<Quaternion (w=1.0000, x=0.0000, y=-0.0000, z=0.0000)>
+Calc location offsets:
+Source Bone:  LeftLeg
+Source Bone Position WS:  <Vector (0.1061, 0.6196, 0.1969)>
+Destination Bone:  DEF-shin.L
+Dest Bone Position WS:  <Vector (0.0281, -0.0014, -0.2451)>
+Source Bone Pose Space:  <Vector (0.1061, 0.6196, 0.1969)>
+Pose Space of  DEF-shin.L  before move:  <Vector (0.0000, -0.0000, -0.0000)>
+Pose Space of  DEF-shin.L  after moved to source position:  <Vector (-0.1204, -0.4632, -0.5984)>
+Pose Space Delta of  DEF-shin.L  :  <Vector (0.1204, 0.4632, 0.5984)>
+RightLeg -> DEF-shin.R
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=-1.5388, y=0.0148, z=3.0623), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.5708, y=3.1241, z=-0.0000), order='XYZ'>
+Difference between before and After modification
+<Euler (x=0.0332, y=0.0793, z=-0.0027), order='XYZ'>
+1.900825851202093
+4.542469814596225
+-0.1520268041133934
+<Quaternion (w=0.9991, x=0.0166, y=0.0396, z=-0.0020)>
+<Quaternion (w=1.0000, x=0.0000, y=-0.0000, z=0.0000)>
+Calc location offsets:
+Source Bone:  RightLeg
+Source Bone Position WS:  <Vector (0.0341, 0.6196, 0.1977)>
+Destination Bone:  DEF-shin.R
+Dest Bone Position WS:  <Vector (-0.0281, -0.0014, -0.2451)>
+Source Bone Pose Space:  <Vector (0.0341, 0.6196, 0.1977)>
+Pose Space of  DEF-shin.R  before move:  <Vector (0.0000, -0.0000, 0.0000)>
+Pose Space of  DEF-shin.R  after moved to source position:  <Vector (-0.0193, -0.4623, -0.6095)>
+Pose Space Delta of  DEF-shin.R  :  <Vector (0.0193, 0.4623, 0.6095)>
+LeftFoot -> DEF-foot.L
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=1.1294, y=3.0991, z=0.1624), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=-3.0025, y=0.4096, z=0.0535), order='XYZ'>
+Difference between before and After modification
+<Euler (x=-1.8122, y=-2.7135, z=-0.1856), order='XYZ'>
+-103.82910017738132
+-155.46988603885413
+-10.632575971526359
+<Quaternion (w=0.0592, x=-0.2223, y=-0.5847, z=-0.7780)>
+<Quaternion (w=1.0000, x=-0.0000, y=0.0000, z=-0.0000)>
+Calc location offsets:
+Source Bone:  LeftFoot
+Source Bone Position WS:  <Vector (0.1028, 0.6196, 0.0099)>
+Destination Bone:  DEF-foot.L
+Dest Bone Position WS:  <Vector (0.0248, -0.0014, -0.4325)>
+Source Bone Pose Space:  <Vector (0.1028, 0.6196, 0.0099)>
+Pose Space of  DEF-foot.L  before move:  <Vector (-0.0000, -0.0000, 0.0000)>
+Pose Space of  DEF-foot.L  after moved to source position:  <Vector (-0.1960, -0.1364, -0.7283)>
+Pose Space Delta of  DEF-foot.L  :  <Vector (0.1960, 0.1364, 0.7283)>
+RightFoot -> DEF-foot.R
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=1.1294, y=-3.0991, z=-0.1625), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=-2.8854, y=-0.4430, z=-0.1077), order='XYZ'>
+Difference between before and After modification
+<Euler (x=-1.7006, y=2.6894, z=0.1913), order='XYZ'>
+-97.43971775602286
+154.09104843034697
+10.95820694775401
+<Quaternion (w=0.0773, x=-0.2291, y=0.6239, z=0.7431)>
+<Quaternion (w=1.0000, x=0.0000, y=0.0000, z=0.0000)>
+Calc location offsets:
+Source Bone:  RightFoot
+Source Bone Position WS:  <Vector (0.0373, 0.6196, 0.0095)>
+Destination Bone:  DEF-foot.R
+Dest Bone Position WS:  <Vector (-0.0248, -0.0014, -0.4325)>
+Source Bone Pose Space:  <Vector (0.0373, 0.6196, 0.0095)>
+Pose Space of  DEF-foot.R  before move:  <Vector (0.0000, -0.0000, 0.0000)>
+Pose Space of  DEF-foot.R  after moved to source position:  <Vector (0.0578, -0.1317, -0.7512)>
+Pose Space Delta of  DEF-foot.R  :  <Vector (-0.0578, 0.1317, 0.7512)>
+LeftToeBase -> DEF-toe.L
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=0.8183, y=-0.3644, z=-3.1347), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=3.1416, y=0.3665, z=-0.0000), order='XYZ'>
+Difference between before and After modification
+<Euler (x=0.8207, y=-3.1394, z=-0.0065), order='XYZ'>
+47.02509769963451
+-179.87696598124774
+-0.3710815095641482
+<Quaternion (w=0.0023, x=-0.0025, y=-0.9170, z=0.3989)>
+<Quaternion (w=1.0000, x=0.0000, y=-0.0000, z=-0.0000)>
+Calc location offsets:
+Source Bone:  LeftToeBase
+Source Bone Position WS:  <Vector (0.1027, 0.5766, 0.0044)>
+Destination Bone:  DEF-toe.L
+Dest Bone Position WS:  <Vector (0.0247, -0.0558, -0.4394)>
+Source Bone Pose Space:  <Vector (0.1027, 0.5766, 0.0044)>
+Pose Space of  DEF-toe.L  before move:  <Vector (0.0000, -0.0000, 0.0000)>
+Pose Space of  DEF-toe.L  after moved to source position:  <Vector (0.0812, -0.1078, 0.7647)>
+Pose Space Delta of  DEF-toe.L  :  <Vector (-0.0812, 0.1078, -0.7647)>
+RightToeBase -> DEF-toe.R
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=0.7052, y=0.4030, z=3.0865), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=3.1416, y=-0.3665, z=0.0000), order='XYZ'>
+Difference between before and After modification
+<Euler (x=0.7249, y=-3.1046, z=0.0507), order='XYZ'>
+41.536204003355934
+-177.87891708296556
+2.9037674138321803
+<Quaternion (w=0.0083, x=0.0302, y=-0.9344, z=0.3549)>
+<Quaternion (w=1.0000, x=0.0000, y=-0.0000, z=-0.0000)>
+Calc location offsets:
+Source Bone:  RightToeBase
+Source Bone Position WS:  <Vector (0.0375, 0.5741, -0.0012)>
+Destination Bone:  DEF-toe.R
+Dest Bone Position WS:  <Vector (-0.0246, -0.0547, -0.4450)>
+Source Bone Pose Space:  <Vector (0.0375, 0.5741, -0.0012)>
+Pose Space of  DEF-toe.R  before move:  <Vector (-0.0000, 0.0000, -0.0000)>
+Pose Space of  DEF-toe.R  after moved to source position:  <Vector (-0.1993, -0.2230, 0.7119)>
+Pose Space Delta of  DEF-toe.R  :  <Vector (0.1993, 0.2230, -0.7119)>
+Spine1 -> ORG-shoulder.L
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=-0.0382, y=-0.2866, z=-2.9206), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.5744, y=0.0125, z=0.0000), order='XYZ'>
+Difference between before and After modification
+<Euler (x=1.5996, y=-0.2108, z=2.8601), order='XYZ'>
+91.6500942456832
+-12.080757075582069
+163.8691745668939
+<Quaternion (w=0.0225, x=0.1727, y=0.6959, z=0.6967)>
+<Quaternion (w=1.0000, x=0.0000, y=0.0000, z=0.0000)>
+Calc location offsets:
+Source Bone:  Spine1
+Source Bone Position WS:  <Vector (0.0705, 0.6405, 0.5150)>
+Destination Bone:  ORG-shoulder.L
+Dest Bone Position WS:  <Vector (-0.0250, -0.0600, 0.2550)>
+Source Bone Pose Space:  <Vector (0.0705, 0.6405, 0.5150)>
+Pose Space of  ORG-shoulder.L  before move:  <Vector (-0.0000, -0.0000, 0.0000)>
+Pose Space of  ORG-shoulder.L  after moved to source position:  <Vector (-0.1632, -0.6742, 0.2936)>
+Pose Space Delta of  ORG-shoulder.L  :  <Vector (0.1632, 0.6742, -0.2936)>
+Spine1 -> ORG-shoulder.R
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=-0.0367, y=-0.0607, z=-0.2080), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.5744, y=0.0125, z=0.0000), order='XYZ'>
+Difference between before and After modification
+<Euler (x=-1.6240, y=-0.2074, z=0.0753), order='XYZ'>
+-93.04687476113999
+-11.881284815966431
+4.316600154498957
+<Quaternion (w=0.6867, x=-0.7186, y=-0.0983, z=-0.0493)>
+<Quaternion (w=1.0000, x=0.0000, y=0.0000, z=0.0000)>
+Calc location offsets:
+Source Bone:  Spine1
+Source Bone Position WS:  <Vector (0.0705, 0.6405, 0.5150)>
+Destination Bone:  ORG-shoulder.R
+Dest Bone Position WS:  <Vector (-0.0240, 0.0600, 0.2550)>
+Source Bone Pose Space:  <Vector (0.0705, 0.6405, 0.5150)>
+Pose Space of  ORG-shoulder.R  before move:  <Vector (0.0000, -0.0000, -0.0000)>
+Pose Space of  ORG-shoulder.R  after moved to source position:  <Vector (-0.0116, 0.5775, 0.2825)>
+Pose Space Delta of  ORG-shoulder.R  :  <Vector (0.0116, -0.5775, -0.2825)>
+Spine1 -> MCH-breast.L
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=-2.9463, y=-0.1660, z=0.3099), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.5744, y=0.0125, z=0.0000), order='XYZ'>
+Difference between before and After modification
+<Euler (x=1.8152, y=0.3061, z=0.1856), order='XYZ'>
+104.00542834099437
+17.54070101506354
+10.63276294795489
+<Quaternion (w=0.6169, x=0.7668, y=0.1656, z=-0.0633)>
+<Quaternion (w=1.0000, x=0.0000, y=-0.0000, z=0.0000)>
+Calc location offsets:
+Source Bone:  Spine1
+Source Bone Position WS:  <Vector (0.0705, 0.6405, 0.5150)>
+Destination Bone:  MCH-breast.L
+Dest Bone Position WS:  <Vector (0.0134, 0.0319, 0.0944)>
+Source Bone Pose Space:  <Vector (0.0705, 0.6405, 0.5150)>
+Pose Space of  MCH-breast.L  before move:  <Vector (0.0000, 0.0000, 0.0000)>
+Pose Space of  MCH-breast.L  after moved to source position:  <Vector (0.3062, -0.6243, -0.2589)>
+Pose Space Delta of  MCH-breast.L  :  <Vector (-0.3062, 0.6243, 0.2589)>
+Spine1 -> MCH-breast.R
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=-2.9463, y=0.1660, z=-0.3099), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.5744, y=0.0125, z=0.0000), order='XYZ'>
+Difference between before and After modification
+<Euler (x=1.8152, y=-0.3061, z=-0.1605), order='XYZ'>
+104.00490924661746
+-17.53814823186125
+-9.198504330748605
+<Quaternion (w=0.6161, x=0.7688, y=-0.1560, z=0.0710)>
+<Quaternion (w=1.0000, x=0.0000, y=0.0000, z=0.0000)>
+Calc location offsets:
+Source Bone:  Spine1
+Source Bone Position WS:  <Vector (0.0705, 0.6405, 0.5150)>
+Destination Bone:  MCH-breast.R
+Dest Bone Position WS:  <Vector (-0.0134, 0.0319, 0.0944)>
+Source Bone Pose Space:  <Vector (0.0705, 0.6405, 0.5150)>
+Pose Space of  MCH-breast.R  before move:  <Vector (-0.0000, -0.0000, 0.0000)>
+Pose Space of  MCH-breast.R  after moved to source position:  <Vector (-0.1738, -0.6708, -0.2723)>
+Pose Space Delta of  MCH-breast.R  :  <Vector (0.1738, 0.6708, 0.2723)>
+Neck1 -> MCH-ROT-head
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=-0.0000, y=0.0000, z=-0.0000), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.5631, y=-0.1441, z=-0.0057), order='XYZ'>
+Difference between before and After modification
+<Euler (x=-1.5632, y=0.0068, z=-0.1440), order='XYZ'>
+-89.5652746241852
+0.3922998924271895
+-8.251237347590584
+<Quaternion (w=0.7081, x=-0.7024, y=0.0531, z=-0.0487)>
+<Quaternion (w=1.0000, x=-0.0000, y=0.0000, z=0.0000)>
+Calc location offsets:
+Source Bone:  Neck1
+Source Bone Position WS:  <Vector (0.0735, 0.6513, 0.5531)>
+Destination Bone:  MCH-ROT-head
+Dest Bone Position WS:  <Vector (-0.0000, 0.0079, 0.2262)>
+Source Bone Pose Space:  <Vector (0.0735, 0.6513, 0.5531)>
+Pose Space of  MCH-ROT-head  before move:  <Vector (-0.0000, 0.0000, 0.0000)>
+Pose Space of  MCH-ROT-head  after moved to source position:  <Vector (0.0735, 0.6434, 0.3270)>
+Pose Space Delta of  MCH-ROT-head  :  <Vector (-0.0735, -0.6434, -0.3270)>
+Head -> head
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=3.1339, y=-0.1441, z=-0.0057), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.8131, y=-0.0521, z=-0.0139), order='XYZ'>
+Difference between before and After modification
+<Euler (x=1.3229, y=0.0299, z=0.0873), order='XYZ'>
+75.79906250297034
+1.711797911322757
+5.0039997840791495
+<Quaternion (w=0.7886, x=0.6131, y=0.0386, z=0.0253)>
+<Quaternion (w=1.0000, x=0.0000, y=-0.0000, z=0.0000)>
+Calc location offsets:
+Source Bone:  Head
+Source Bone Position WS:  <Vector (0.0678, 0.6516, 0.5927)>
+Destination Bone:  head
+Dest Bone Position WS:  <Vector (-0.0015, -0.1659, 0.2296)>
+Source Bone Pose Space:  <Vector (0.0678, 0.6516, 0.5927)>
+Pose Space of  head  before move:  <Vector (-0.0000, -0.0000, -0.0000)>
+Pose Space of  head  after moved to source position:  <Vector (0.1161, -0.8152, -0.3563)>
+Pose Space Delta of  head  :  <Vector (-0.1161, 0.8152, 0.3563)>
+LeftShoulder -> DEF-shoulder.L
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=1.5744, y=0.0125, z=0.0000), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.5628, y=1.3619, z=-0.0065), order='XYZ'>
+Difference between before and After modification
+<Euler (x=0.0053, y=-0.0013, z=1.3493), order='XYZ'>
+0.30311907292968504
+-0.07401263020745236
+77.31184695129062
+<Quaternion (w=0.7809, x=0.0025, y=0.0011, z=0.6246)>
+<Quaternion (w=1.0000, x=0.0000, y=0.0000, z=0.0000)>
+Calc location offsets:
+Source Bone:  LeftShoulder
+Source Bone Position WS:  <Vector (0.0705, 0.6405, 0.5150)>
+Destination Bone:  DEF-shoulder.L
+Dest Bone Position WS:  <Vector (-0.0250, -0.0600, 0.2550)>
+Source Bone Pose Space:  <Vector (0.0705, 0.6405, 0.5150)>
+Pose Space of  DEF-shoulder.L  before move:  <Vector (0.0000, 0.0000, 0.0000)>
+Pose Space of  DEF-shoulder.L  after moved to source position:  <Vector (0.0922, 0.2586, -0.7014)>
+Pose Space Delta of  DEF-shoulder.L  :  <Vector (-0.0922, -0.2586, 0.7014)>
+LeftArm -> DEF-upper_arm.L
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=1.8066, y=0.0569, z=1.3864), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.5708, y=1.7104, z=0.0000), order='XYZ'>
+Difference between before and After modification
+<Euler (x=-0.0602, y=1.3779, z=1.4091), order='XYZ'>
+-3.4491462796700625
+78.94915940855857
+80.73780153707732
+<Quaternion (w=0.5754, x=-0.4293, y=0.4691, z=0.5143)>
+<Quaternion (w=1.0000, x=-0.0000, y=0.0000, z=-0.0000)>
+Calc location offsets:
+Source Bone:  LeftArm
+Source Bone Position WS:  <Vector (0.1478, 0.6406, 0.5314)>
+Destination Bone:  DEF-upper_arm.L
+Dest Bone Position WS:  <Vector (-0.0311, -0.0566, 0.2563)>
+Source Bone Pose Space:  <Vector (0.1478, 0.6406, 0.5314)>
+Pose Space of  DEF-upper_arm.L  before move:  <Vector (0.0000, 0.0000, 0.0000)>
+Pose Space of  DEF-upper_arm.L  after moved to source position:  <Vector (0.7014, 0.3179, -0.0271)>
+Pose Space Delta of  DEF-upper_arm.L  :  <Vector (-0.7014, -0.3179, 0.0271)>
+RightShoulder -> DEF-shoulder.R
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=1.5744, y=0.0125, z=0.0000), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.7849, y=-1.3798, z=-0.1769), order='XYZ'>
+Difference between before and After modification
+<Euler (x=-0.0363, y=-0.0339, z=-1.3952), order='XYZ'>
+-2.082142827673602
+-1.9421696265784147
+-79.93961880048046
+<Quaternion (w=0.7659, x=-0.0248, y=-0.0013, z=-0.6424)>
+<Quaternion (w=1.0000, x=-0.0000, y=0.0000, z=-0.0000)>
+Calc location offsets:
+Source Bone:  RightShoulder
+Source Bone Position WS:  <Vector (0.0705, 0.6405, 0.5150)>
+Destination Bone:  DEF-shoulder.R
+Dest Bone Position WS:  <Vector (-0.0240, 0.0600, 0.2550)>
+Source Bone Pose Space:  <Vector (0.0705, 0.6405, 0.5150)>
+Pose Space of  DEF-shoulder.R  before move:  <Vector (0.0000, 0.0000, 0.0000)>
+Pose Space of  DEF-shoulder.R  after moved to source position:  <Vector (0.0912, 0.2590, -0.5814)>
+Pose Space Delta of  DEF-shoulder.R  :  <Vector (-0.0912, -0.2590, 0.5814)>
+RightArm -> DEF-upper_arm.R
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=1.6193, y=0.2111, z=-2.5980), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.5708, y=-1.7104, z=-0.0000), order='XYZ'>
+Difference between before and After modification
+<Euler (x=-0.0775, y=-2.6114, z=-1.4651), order='XYZ'>
+-4.4387324745952474
+-149.62145459976065
+-83.94378988064375
+<Quaternion (w=0.1697, x=-0.6525, y=-0.7102, z=-0.2029)>
+<Quaternion (w=1.0000, x=-0.0000, y=-0.0000, z=-0.0000)>
+Calc location offsets:
+Source Bone:  RightArm
+Source Bone Position WS:  <Vector (-0.0098, 0.6372, 0.5302)>
+Destination Bone:  DEF-upper_arm.R
+Dest Bone Position WS:  <Vector (-0.0204, 0.0652, 0.2560)>
+Source Bone Pose Space:  <Vector (-0.0098, 0.6372, 0.5302)>
+Pose Space of  DEF-upper_arm.R  before move:  <Vector (0.0000, 0.0000, -0.0000)>
+Pose Space of  DEF-upper_arm.R  after moved to source position:  <Vector (-0.3555, 0.2274, 0.4736)>
+Pose Space Delta of  DEF-upper_arm.R  :  <Vector (0.3555, -0.2274, -0.4736)>
+LeftForeArm -> DEF-forearm.L
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=1.9952, y=1.7241, z=0.4288), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.5708, y=1.7104, z=0.0000), order='XYZ'>
+Difference between before and After modification
+<Euler (x=0.0000, y=-0.0635, z=-0.0000), order='XYZ'>
+2.4213683905504023e-05
+-3.640840447924936
+-9.311630859609138e-06
+<Quaternion (w=0.9995, x=0.0000, y=-0.0318, z=-0.0000)>
+<Quaternion (w=1.0000, x=-0.0000, y=0.0000, z=0.0000)>
+Calc location offsets:
+Source Bone:  LeftForeArm
+Source Bone Position WS:  <Vector (0.2809, 0.6406, 0.5127)>
+Destination Bone:  DEF-forearm.L
+Dest Bone Position WS:  <Vector (0.1423, -0.0566, 0.2320)>
+Source Bone Pose Space:  <Vector (0.2809, 0.6406, 0.5127)>
+Pose Space of  DEF-forearm.L  before move:  <Vector (0.0000, 0.0000, -0.0000)>
+Pose Space of  DEF-forearm.L  after moved to source position:  <Vector (-0.3409, 0.0982, -0.6770)>
+Pose Space Delta of  DEF-forearm.L  :  <Vector (0.3409, -0.0982, 0.6770)>
+RightForeArm -> DEF-forearm.R
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=1.9952, y=-1.7241, z=-0.4288), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.5708, y=-1.7104, z=-0.0000), order='XYZ'>
+Difference between before and After modification
+<Euler (x=0.0000, y=0.0635, z=0.0000), order='XYZ'>
+2.7633948800200585e-05
+3.6407495210316103
+9.420314840406863e-06
+<Quaternion (w=0.9995, x=0.0000, y=0.0318, z=0.0000)>
+<Quaternion (w=1.0000, x=0.0000, y=-0.0000, z=-0.0000)>
+Calc location offsets:
+Source Bone:  RightForeArm
+Source Bone Position WS:  <Vector (-0.1470, 0.6372, 0.5109)>
+Destination Bone:  DEF-forearm.R
+Dest Bone Position WS:  <Vector (-0.1937, 0.0652, 0.2316)>
+Source Bone Pose Space:  <Vector (-0.1470, 0.6372, 0.5109)>
+Pose Space of  DEF-forearm.R  before move:  <Vector (-0.0000, -0.0000, 0.0000)>
+Pose Space of  DEF-forearm.R  after moved to source position:  <Vector (0.3058, -0.0851, -0.5537)>
+Pose Space Delta of  DEF-forearm.R  :  <Vector (-0.3058, 0.0851, 0.5537)>
+LeftHand -> DEF-hand.L
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=1.6646, y=1.7110, z=0.0948), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.5708, y=1.7104, z=0.0000), order='XYZ'>
+Difference between before and After modification
+<Euler (x=-0.0000, y=-0.0132, z=-0.0000), order='XYZ'>
+-6.81934129032734e-06
+-0.757954896737042
+-1.6624778657782266e-06
+<Quaternion (w=1.0000, x=-0.0000, y=-0.0066, z=-0.0000)>
+<Quaternion (w=1.0000, x=0.0000, y=0.0000, z=0.0000)>
+Calc location offsets:
+Source Bone:  LeftHand
+Source Bone Position WS:  <Vector (0.3586, 0.6406, 0.5017)>
+Destination Bone:  DEF-hand.L
+Dest Bone Position WS:  <Vector (0.3156, -0.0566, 0.2076)>
+Source Bone Pose Space:  <Vector (0.3586, 0.6406, 0.5017)>
+Pose Space of  DEF-hand.L  before move:  <Vector (0.0000, 0.0000, 0.0000)>
+Pose Space of  DEF-hand.L  after moved to source position:  <Vector (-0.3065, 0.0017, -0.6933)>
+Pose Space Delta of  DEF-hand.L  :  <Vector (0.3065, -0.0017, 0.6933)>
+RightHand -> DEF-hand.R
+
+Calc Pressed:
+Destination Bone Starting WS
+<Euler (x=1.6642, y=-1.7110, z=-0.0944), order='XYZ'>
+Destination Bone After Modifying WS
+<Euler (x=1.5708, y=-1.7104, z=-0.0000), order='XYZ'>
+Difference between before and After modification
+<Euler (x=-0.0000, y=0.0132, z=-0.0000), order='XYZ'>
+-1.7110321626565736e-05
+0.7546610913706562
+-5.235437272288485e-06
+<Quaternion (w=1.0000, x=-0.0000, y=0.0066, z=-0.0000)>
+<Quaternion (w=1.0000, x=0.0000, y=-0.0000, z=-0.0000)>
+Calc location offsets:
+Source Bone:  RightHand
+Source Bone Position WS:  <Vector (-0.2236, 0.6372, 0.5001)>
+Destination Bone:  DEF-hand.R
+Dest Bone Position WS:  <Vector (-0.3670, 0.0652, 0.2073)>
+Source Bone Pose Space:  <Vector (-0.2236, 0.6372, 0.5001)>
+Pose Space of  DEF-hand.R  before move:  <Vector (-0.0000, 0.0000, -0.0000)>
+Pose Space of  DEF-hand.R  after moved to source position:  <Vector (0.2775, -0.1828, -0.5684)>
+Pose Space Delta of  DEF-hand.R  :  <Vector (-0.2775, 0.1828, 0.5684)>
+calibration done (wm.calc_correct_all_bones @ frame 1 )
+  corr Hips -> DEF-spine: quat=(1.0000,0.0000,0.0000,-0.0000) pos_corr=(-0.0697, -0.4962, 0.6454)
+  corr LowerBack -> DEF-spine.001: quat=(0.9999,0.0137,-0.0000,0.0007) pos_corr=(-0.0697, -0.4444, 0.6327)
+  corr Spine -> DEF-spine.002: quat=(0.9992,-0.0406,-0.0002,0.0055) pos_corr=(-0.0691, -0.4864, 0.6102)
+  corr Hips -> ORG-spine: quat=(1.0000,-0.0000,0.0000,-0.0000) pos_corr=(-0.0697, -0.4962, 0.6454)
+JSON Encoded and Saved
+calibrated bone map saved: /home/hatch/workspace/anim-fix-work/keemap-proof/run1/cmu_to_scarlett_keemap_calibrated.json
+transfer: start=1261 num=356 every=5 mode=QUATERNION
+
+Starting Transfer:
+
+Transferring to Rig: : [----------------------------------------] 0.0%Transferring to Rig: : [#---------------------------------------] 1.4%Transferring to Rig: : [#---------------------------------------] 2.81%Transferring to Rig: : [##--------------------------------------] 4.21%Transferring to Rig: : [##--------------------------------------] 5.62%Transferring to Rig: : [###-------------------------------------] 7.02%Transferring to Rig: : [###-------------------------------------] 8.43%Transferring to Rig: : [####------------------------------------] 9.83%Transferring to Rig: : [####------------------------------------] 11.24%Transferring to Rig: : [#####-----------------------------------] 12.64%Transferring to Rig: : [######----------------------------------] 14.04%Transferring to Rig: : [######----------------------------------] 15.45%Transferring to Rig: : [#######---------------------------------] 16.85%Transferring to Rig: : [#######---------------------------------] 18.26%Transferring to Rig: : [########--------------------------------] 19.66%Transferring to Rig: : [########--------------------------------] 21.07%Transferring to Rig: : [#########-------------------------------] 22.47%Transferring to Rig: : [##########------------------------------] 23.88%Transferring to Rig: : [##########------------------------------] 25.28%Transferring to Rig: : [###########-----------------------------] 26.69%Transferring to Rig: : [###########-----------------------------] 28.09%Transferring to Rig: : [############----------------------------] 29.49%Transferring to Rig: : [############----------------------------] 30.9%Transferring to Rig: : [#############---------------------------] 32.3%Transferring to Rig: : [#############---------------------------] 33.71%Transferring to Rig: : [##############--------------------------] 35.11%Transferring to Rig: : [###############-------------------------] 36.52%Transferring to Rig: : [###############-------------------------] 37.92%Transferring to Rig: : [################------------------------] 39.33%Transferring to Rig: : [################------------------------] 40.73%Transferring to Rig: : [#################-----------------------] 42.13%Transferring to Rig: : [#################-----------------------] 43.54%Transferring to Rig: : [##################----------------------] 44.94%Transferring to Rig: : [###################---------------------] 46.35%Transferring to Rig: : [###################---------------------] 47.75%Transferring to Rig: : [####################--------------------] 49.16%Transferring to Rig: : [####################--------------------] 50.56%Transferring to Rig: : [#####################-------------------] 51.97%Transferring to Rig: : [#####################-------------------] 53.37%Transferring to Rig: : [######################------------------] 54.78%Transferring to Rig: : [######################------------------] 56.18%Transferring to Rig: : [#######################-----------------] 57.58%Transferring to Rig: : [########################----------------] 58.99%Transferring to Rig: : [########################----------------] 60.39%Transferring to Rig: : [#########################---------------] 61.8%Transferring to Rig: : [#########################---------------] 63.2%Transferring to Rig: : [##########################--------------] 64.61%Transferring to Rig: : [##########################--------------] 66.01%Transferring to Rig: : [###########################-------------] 67.42%Transferring to Rig: : [############################------------] 68.82%Transferring to Rig: : [############################------------] 70.22%Transferring to Rig: : [#############################-----------] 71.63%Transferring to Rig: : [#############################-----------] 73.03%Transferring to Rig: : [##############################----------] 74.44%Transferring to Rig: : [##############################----------] 75.84%Transferring to Rig: : [###############################---------] 77.25%Transferring to Rig: : [###############################---------] 78.65%Transferring to Rig: : [################################--------] 80.06%Transferring to Rig: : [#################################-------] 81.46%Transferring to Rig: : [#################################-------] 82.87%Transferring to Rig: : [##################################------] 84.27%Transferring to Rig: : [##################################------] 85.67%Transferring to Rig: : [###################################-----] 87.08%Transferring to Rig: : [###################################-----] 88.48%Transferring to Rig: : [####################################----] 89.89%Transferring to Rig: : [#####################################---] 91.29%Transferring to Rig: : [#####################################---] 92.7%Transferring to Rig: : [######################################--] 94.1%Transferring to Rig: : [######################################--] 95.51%Transferring to Rig: : [#######################################-] 96.91%Transferring to Rig: : [#######################################-] 98.31%Transferring to Rig: : [########################################] 99.72%Transferring to Rig: : [########################################] 100% DONE
+Blender 4.0.2 (hash 9be62e85b727 built 2023-12-05 08:48:50)
+Read prefs: "/home/hatch/.config/blender/4.0/config/userpref.blend"
+Read blend: "/home/hatch/workspace/anim-fix-work/scarlett_base.blend"
+Info: Total files 0 | Changed 0 | Failed 0
+transfer done (wm.perform_animation_transfer)
+target action RIG-SCARLETTAction: frames 1261..1616, fcurves=119
+normalized: clip frames 1..72 @ 24fps (72 key steps, time factor 0.2)
+Info: Saved "scarlett_keemap_lambada.blend"
+SAVED /home/hatch/workspace/anim-fix-work/keemap-proof/run1/scarlett_keemap_lambada.blend
+14:03:27 | INFO: Draco mesh compression is available, use library at /home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/python/lib/python3.10/site-packages/libextern_draco.so
+14:03:27 | INFO: Starting glTF 2.0 export
+14:03:28 | INFO: Extracting primitive: Genesis9.004
+14:03:28 | INFO: Primitives created: 1
+14:03:28 | INFO: Extracting primitive: Tiny Eye 1.042
+14:03:28 | INFO: Primitives created: 2
+14:03:28 | INFO: Extracting primitive: BézierCurve.001
+14:03:28 | INFO: Primitives created: 1
+14:03:29 | INFO: Extracting primitive: BézierCurve.038
+14:03:34 | INFO: Primitives created: 1
+14:03:34 | INFO: Extracting primitive: Genesis9.003
+14:03:34 | INFO: Primitives created: 1
+14:03:34 | INFO: Extracting primitive: Genesis9Mouth
+14:03:36 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+14:03:36 | INFO: Primitives created: 1
+14:03:36 | INFO: Extracting primitive: Genesis8Female
+14:03:49 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+14:03:50 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+14:03:50 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+14:03:51 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+14:03:51 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+14:03:53 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+14:03:53 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+14:03:54 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+14:03:54 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+14:03:56 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+14:03:56 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+14:04:09 | INFO: Primitives created: 7
+14:04:11 | INFO: Extracting primitive: Tongue
+14:04:12 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+14:04:13 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+14:04:13 | INFO: Primitives created: 1
+14:04:13 | WARNING: Animation target pose.bones["Hips"] not found
+14:04:13 | WARNING: Animation target pose.bones["Hips"] not found
+14:04:13 | WARNING: Animation target pose.bones["Hips"] not found
+14:04:13 | WARNING: Animation target pose.bones["Hips"] not found
+14:04:13 | WARNING: Animation target pose.bones["Hips"] not found
+14:04:13 | WARNING: Animation target pose.bones["Hips"] not found
+14:04:13 | WARNING: Animation target pose.bones["LHipJoint"] not found
+14:04:13 | WARNING: Animation target pose.bones["LHipJoint"] not found
+14:04:13 | WARNING: Animation target pose.bones["LHipJoint"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftUpLeg"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftUpLeg"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftUpLeg"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftLeg"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftLeg"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftLeg"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftFoot"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftFoot"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftFoot"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftToeBase"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftToeBase"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftToeBase"] not found
+14:04:13 | WARNING: Animation target pose.bones["RHipJoint"] not found
+14:04:13 | WARNING: Animation target pose.bones["RHipJoint"] not found
+14:04:13 | WARNING: Animation target pose.bones["RHipJoint"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightUpLeg"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightUpLeg"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightUpLeg"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightLeg"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightLeg"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightLeg"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightFoot"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightFoot"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightFoot"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightToeBase"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightToeBase"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightToeBase"] not found
+14:04:13 | WARNING: Animation target pose.bones["LowerBack"] not found
+14:04:13 | WARNING: Animation target pose.bones["LowerBack"] not found
+14:04:13 | WARNING: Animation target pose.bones["LowerBack"] not found
+14:04:13 | WARNING: Animation target pose.bones["Spine"] not found
+14:04:13 | WARNING: Animation target pose.bones["Spine"] not found
+14:04:13 | WARNING: Animation target pose.bones["Spine"] not found
+14:04:13 | WARNING: Animation target pose.bones["Spine1"] not found
+14:04:13 | WARNING: Animation target pose.bones["Spine1"] not found
+14:04:13 | WARNING: Animation target pose.bones["Spine1"] not found
+14:04:13 | WARNING: Animation target pose.bones["Neck"] not found
+14:04:13 | WARNING: Animation target pose.bones["Neck"] not found
+14:04:13 | WARNING: Animation target pose.bones["Neck"] not found
+14:04:13 | WARNING: Animation target pose.bones["Neck1"] not found
+14:04:13 | WARNING: Animation target pose.bones["Neck1"] not found
+14:04:13 | WARNING: Animation target pose.bones["Neck1"] not found
+14:04:13 | WARNING: Animation target pose.bones["Head"] not found
+14:04:13 | WARNING: Animation target pose.bones["Head"] not found
+14:04:13 | WARNING: Animation target pose.bones["Head"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftShoulder"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftShoulder"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftShoulder"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftArm"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftArm"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftArm"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftForeArm"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftForeArm"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftForeArm"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftHand"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftHand"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftHand"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftFingerBase"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftFingerBase"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftFingerBase"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftHandIndex1"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftHandIndex1"] not found
+14:04:13 | WARNING: Animation target pose.bones["LeftHandIndex1"] not found
+14:04:13 | WARNING: Animation target pose.bones["LThumb"] not found
+14:04:13 | WARNING: Animation target pose.bones["LThumb"] not found
+14:04:13 | WARNING: Animation target pose.bones["LThumb"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightShoulder"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightShoulder"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightShoulder"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightArm"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightArm"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightArm"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightForeArm"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightForeArm"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightForeArm"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightHand"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightHand"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightHand"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightFingerBase"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightFingerBase"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightFingerBase"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightHandIndex1"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightHandIndex1"] not found
+14:04:13 | WARNING: Animation target pose.bones["RightHandIndex1"] not found
+14:04:13 | WARNING: Animation target pose.bones["RThumb"] not found
+14:04:13 | WARNING: Animation target pose.bones["RThumb"] not found
+14:04:13 | WARNING: Animation target pose.bones["RThumb"] not found
+14:04:52 | WARNING: Animation target pose.bones["Hips"] not found
+14:04:52 | WARNING: Animation target pose.bones["Hips"] not found
+14:04:52 | WARNING: Animation target pose.bones["Hips"] not found
+14:04:52 | WARNING: Animation target pose.bones["Hips"] not found
+14:04:52 | WARNING: Animation target pose.bones["Hips"] not found
+14:04:52 | WARNING: Animation target pose.bones["Hips"] not found
+14:04:52 | WARNING: Animation target pose.bones["LHipJoint"] not found
+14:04:52 | WARNING: Animation target pose.bones["LHipJoint"] not found
+14:04:52 | WARNING: Animation target pose.bones["LHipJoint"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftUpLeg"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftUpLeg"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftUpLeg"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftLeg"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftLeg"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftLeg"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftFoot"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftFoot"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftFoot"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftToeBase"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftToeBase"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftToeBase"] not found
+14:04:52 | WARNING: Animation target pose.bones["RHipJoint"] not found
+14:04:52 | WARNING: Animation target pose.bones["RHipJoint"] not found
+14:04:52 | WARNING: Animation target pose.bones["RHipJoint"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightUpLeg"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightUpLeg"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightUpLeg"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightLeg"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightLeg"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightLeg"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightFoot"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightFoot"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightFoot"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightToeBase"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightToeBase"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightToeBase"] not found
+14:04:52 | WARNING: Animation target pose.bones["LowerBack"] not found
+14:04:52 | WARNING: Animation target pose.bones["LowerBack"] not found
+14:04:52 | WARNING: Animation target pose.bones["LowerBack"] not found
+14:04:52 | WARNING: Animation target pose.bones["Spine"] not found
+14:04:52 | WARNING: Animation target pose.bones["Spine"] not found
+14:04:52 | WARNING: Animation target pose.bones["Spine"] not found
+14:04:52 | WARNING: Animation target pose.bones["Spine1"] not found
+14:04:52 | WARNING: Animation target pose.bones["Spine1"] not found
+14:04:52 | WARNING: Animation target pose.bones["Spine1"] not found
+14:04:52 | WARNING: Animation target pose.bones["Neck"] not found
+14:04:52 | WARNING: Animation target pose.bones["Neck"] not found
+14:04:52 | WARNING: Animation target pose.bones["Neck"] not found
+14:04:52 | WARNING: Animation target pose.bones["Neck1"] not found
+14:04:52 | WARNING: Animation target pose.bones["Neck1"] not found
+14:04:52 | WARNING: Animation target pose.bones["Neck1"] not found
+14:04:52 | WARNING: Animation target pose.bones["Head"] not found
+14:04:52 | WARNING: Animation target pose.bones["Head"] not found
+14:04:52 | WARNING: Animation target pose.bones["Head"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftShoulder"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftShoulder"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftShoulder"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftArm"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftArm"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftArm"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftForeArm"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftForeArm"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftForeArm"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftHand"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftHand"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftHand"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftFingerBase"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftFingerBase"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftFingerBase"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftHandIndex1"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftHandIndex1"] not found
+14:04:52 | WARNING: Animation target pose.bones["LeftHandIndex1"] not found
+14:04:52 | WARNING: Animation target pose.bones["LThumb"] not found
+14:04:52 | WARNING: Animation target pose.bones["LThumb"] not found
+14:04:52 | WARNING: Animation target pose.bones["LThumb"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightShoulder"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightShoulder"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightShoulder"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightArm"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightArm"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightArm"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightForeArm"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightForeArm"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightForeArm"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightHand"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightHand"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightHand"] not found
+Traceback (most recent call last):
+  File "/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/io_scene_gltf2/__init__.py", line 915, in execute
+    return gltf2_blender_export.save(context, export_settings)
+  File "/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/io_scene_gltf2/blender/exp/gltf2_blender_export.py", line 41, in save
+    __write_file(json, buffer, export_settings)
+  File "/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/io_scene_gltf2/blender/exp/gltf2_blender_export.py", line 134, in __write_file
+    gltf2_io_export.save_gltf(
+  File "/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/io_scene_gltf2/io/exp/gltf2_io_export.py", line 105, in save_gltf
+    file.write(gltf_data)
+PermissionError: [Errno 1] Operation not permitted
+Traceback (most recent call last):
+  File "/home/hatch/workspace/_wh-work/wireup-keemap/tools/anim-retarget/keemap_retarget.py", line 306, in <module>
+    main()
+  File "/home/hatch/workspace/_wh-work/wireup-keemap/tools/anim-retarget/keemap_retarget.py", line 298, in main
+    bpy.ops.export_scene.gltf(
+  File "/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/modules/bpy/ops.py", line 109, in __call__
+    ret = _op_call(self.idname_py(), kw)
+RuntimeError: Error: Python: Traceback (most recent call last):
+  File "/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/io_scene_gltf2/blender/exp/gltf2_blender_export.py", line 134, in __write_file
+    gltf2_io_export.save_gltf(
+  File "/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/io_scene_gltf2/io/exp/gltf2_io_export.py", line 105, in save_gltf
+    file.write(gltf_data)
+PermissionError: [Errno 1] Operation not permitted
+Location: /home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/modules/bpy/ops.py:109
+
+14:04:52 | WARNING: Animation target pose.bones["RightFingerBase"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightFingerBase"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightFingerBase"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightHandIndex1"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightHandIndex1"] not found
+14:04:52 | WARNING: Animation target pose.bones["RightHandIndex1"] not found
+14:04:52 | WARNING: Animation target pose.bones["RThumb"] not found
+14:04:52 | WARNING: Animation target pose.bones["RThumb"] not found
+14:04:52 | WARNING: Animation target pose.bones["RThumb"] not found
+Error: Python: Traceback (most recent call last):
+  File "/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/io_scene_gltf2/blender/exp/gltf2_blender_export.py", line 134, in __write_file
+    gltf2_io_export.save_gltf(
+  File "/home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/addons/io_scene_gltf2/io/exp/gltf2_io_export.py", line 105, in save_gltf
+    file.write(gltf_data)
+PermissionError: [Errno 1] Operation not permitted
+Location: /home/hatch/workspace/tools/blender/blender-4.0.2-linux-x64/4.0/scripts/modules/bpy/ops.py:109
+
+Blender quit

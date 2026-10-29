@@ -41,7 +41,7 @@ Every fighter has the **same 176 slots**. What makes Pantera different from Demo
 |---|---|---|---|
 | WWF No Mercy | 5,787 | NPY int16 (nframes, 26, 3), AKI 26-joint | `teardown/wwf-no-mercy/animations/clips/` |
 | WWE WrestleMania XIX | 170 | JSON per clip, Yukes 70-bone | `teardown/wmxix/animations/` |
-| Tekken 3 | 7 banks | divmot (types 0-20, 99) | `teardown/tekken3/animations/` |
+| Tekken 3 | 20 character banks + common | divmot (types 0-20, 99; type 15 absent from local disc image) | `teardown/tekken3/animations/` |
 | Tekken 6 | — | Locked (PSP encryption) | 46 endings extracted |
 | Urban Reign | motion pools | PPK/GYU | `teardown/urban-reign/ppks/` |
 
@@ -99,3 +99,20 @@ All reverse-engineered from real game data (chimera build method):
 - Tekken 3: `TEKKEN3.BNS` via n0madic parser
 - Tekken 6: PSP ISO, customization documented from public sources (models encrypted)
 - Urban Reign: ISO via GitHub Release, PPK format probed in-house
+
+---
+
+## mat-kings move database (added 2026-10-20, No Mercy wiring lane)
+
+`movesets/mat-kings-move-database.json` is the full No Mercy (mat-kings) library:
+4,409 move clips + 1,353 system clips + 25 previously unmanifested clips, joined
+from `teardown/wwf-no-mercy/animations/manifest.json`, the FileTableDB labels in
+`teardown/wwf-no-mercy/tools/NoMercy-FileTableDB.txt`, and the power tables in
+`teardown/wwf-no-mercy/re-docs/docs/moves/move-database.md` (507 entries carry
+Power/KO/Bleed). Canon IDs are `MK-####`. Every move carries a Tekken-style
+`tekken_input` and, where its category matches a slot group, `slot_eligibility`
+into MOVE-SLOTS.json. Note: the category buckets in `animations/ANIMATION-INDEX.json`
+are contiguous range chunks and overlap (they sum to 5,932 against 5,787 real
+clips) — for No Mercy, prefer the label-true categories in the mat-kings database.
+Per-game record: `teardown/wwf-no-mercy/CANON-CONVERSION.md`; full checklist:
+`teardown/wwf-no-mercy/WIRING-INVENTORY.md`.
