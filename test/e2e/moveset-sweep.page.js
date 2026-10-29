@@ -17,6 +17,7 @@
   const s = (f) => ({ st: f.state, an: f.attackName, clip: f._t3current ? f._t3current.getClip().name : null,
     x: +f.root.position.x.toFixed(2), y: +f.root.position.y.toFixed(2), hp: f.hp });
   const step = (n, out) => { for (let i = 0; i < n; i++) { window.__vt += 1000 / 60;
+    { const I = g.input; if (I._udDir && !I._udHeld && window.__vt - I._udT >= 200) { clearTimeout(I._udTimer); if (I._udDir === 'up') I.up = true; else I.down = true; I._udHeld = true; } } // input.js 200 ms u/d hold timer, on the sim clock
     if (g._hitStop > 0) g._hitStop -= 1 / 60; else g._update(1 / 60); if (out) out.push({ p1: s(g.p1), p2: s(g.p2) }); } };
   const reset = (gap) => {
     for (const k of [...held]) key(k, 'keyup');
@@ -94,7 +95,7 @@
   function t3cmd(c) { if (!c) return null; const parts = String(c).split('+'); let dir = ''; const b = [];
     for (const p of parts) { if (BTN[p]) b.push(BTN[p]); else if (/^[1-9](\/[1-9])?$/.test(p) && NUM[p[0]]) dir = NUM[p[0]]; else return null; }
     return b.length ? (dir ? dir + '+' : '') + b.sort().join('+') : null; }
-  window.__sweepMove = (m, gap = 1.1) => {
+  const sweepOne = (m, gap = 1.1) => {
     const f = g.p1, o = g.p2, id = f.char.id, ms = MS.playedMoveset(id) || {}; const mv = (ms.moves || {})[m.key] || {};
     // A move on its own notation is pressed as-is; an alternate on an input another move owns
     // is equipped on that input through the loadout (what the moveset editor writes), pressed,
@@ -102,10 +103,12 @@
     let notation = m.key, via = 'own input';
     const alias = MS.legacyAlias && MS.legacyAlias(m.key);
     const ok = (n) => n && !parse(n).err && !parse(n).motionOnly;
-    if (alias && parse(m.key).err && MS.resolveMoveKey(id, alias) === m.key) { notation = alias; via = 'legacy P/K alias'; }
+    if (MS.canonNotation && parse(m.key).err && MS.canonNotation(m.key) !== m.key && ok(MS.canonNotation(m.key)) && MS.resolveMoveKey(id, MS.canonNotation(m.key)) === m.key) { notation = MS.canonNotation(m.key); via = 'canonical spelling'; }
+    else if (alias && parse(m.key).err && MS.resolveMoveKey(id, alias) === m.key) { notation = alias; via = 'legacy P/K alias'; }
     else if (!m.slotted || !parse(m.key).hits) {
       // the editor equips a move on one of its input_slots (or its legacy alias / own input)
-      const cands = [alias, ...(mv.input_slots || []), m.input, t3cmd(mv.t3_command)].filter(ok);
+      const cn = MS.canonNotation || ((x) => x);
+      const cands = [alias, ...(mv.input_slots || []), m.input, cn(m.input), cn(m.key), t3cmd(mv.t3_command)].filter(ok);
       notation = cands[0] || m.input; via = 'equipped via moveset loadout'; }
     const P = parse(notation);
     if (P.err) return { key: m.key, input: notation, ok: false, why: 'unparsed: ' + P.err, via };
@@ -141,6 +144,11 @@
         vClip: [...new Set(out.filter((x) => /thrown/.test(x.p2.st)).map((x) => x.p2.clip))].slice(0, 3) };
     } finally { if (via === 'equipped via moveset loadout') MS.setLoadoutSlot(id, notation, null); }
   };
+  // A whiff at the default 1.1 m spacing is retried at closer ranges (short-reach jabs/elbows
+  // connect point-blank in a real fight); the row keeps the gap it connected at.
+  window.__sweepMove = (m) => { let r = sweepOne(m, 1.1);
+    for (const gp of [0.8, 0.55]) { if (r.ok || r.why !== 'fired but did not connect') break; const r2 = sweepOne(m, gp); r2.gap = gp; if (r2.ok || r2.why !== 'fired but did not connect') r = r2; }
+    return r; };
   // Juggle: replay a launcher that lifted the opponent, then a 1 while they are airborne must hit.
   window.__juggle = (r, gap = 1.1) => {
     const f = g.p1, id = f.char.id; const P = parse(r.input);
@@ -164,5 +172,6 @@
   window.__moveList = () => { const id = g.p1.char.id, ms = MS.playedMoveset(id); const rows = [];
     for (const [k, mv] of Object.entries(ms.moves || {})) rows.push({ key: k, input: mv.input || k, slotted: MS.resolveMoveKey(id, k) === k });
     return rows; };
+  window.__sw = { reset, step, setDir, key, parse }; // debug hooks
   window.__sweepReady = true;
 })();

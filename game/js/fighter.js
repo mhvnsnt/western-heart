@@ -1109,14 +1109,20 @@ export class Fighter {
       // First frame this attack's plan is visible (_animate builds the
       // plan after _physics on frame 1): anchor on the clip's frame 0
       // and apply the travel so far in this same call, so nothing is lost.
-      prev = { id: this._attackId, name: p.name, ...rootMotionSample(rt, raw.fps || 30, 0) };
+      prev = { id: this._attackId, name: p.name, ...rootMotionSample(rt, raw.fps || 30, 0) }; prev.lat0 = prev.lat;
     }
+    // LATERAL CLAMP (moveset sweep 2026-10-28): some decoded T3 rows carry a metre-scale
+    // sideways root track (bad frame-0 anchor in the source), which threw the attacker
+    // off the fight line (|dz| > 0.75) so the strike whiffed every time. Tekken attacks
+    // drift sideways a few cm at most; cap the total lateral travel per attack.
+    const LAT_MAX = 0.3, cl = (v) => Math.max(-LAT_MAX, Math.min(LAT_MAX, v));
+    cur.lat = cl(cur.lat - (prev.lat0 ?? prev.lat)) + (prev.lat0 ?? prev.lat);
     const df = cur.fwd - prev.fwd, dl = cur.lat - prev.lat;
     if (df || dl) {
       this.root.position.x += this.facing * df;   // source forward (+Z) -> facing direction
       this.root.position.z += -this.facing * dl;  // source left (+X) -> world -z when facing +x
     }
-    this._rmPrev = { id: this._attackId, name: p.name, fwd: cur.fwd, lat: cur.lat };
+    this._rmPrev = { id: this._attackId, name: p.name, fwd: cur.fwd, lat: cur.lat, lat0: prev.lat0 ?? prev.lat };
   }
 
   _rowDonor(move) {

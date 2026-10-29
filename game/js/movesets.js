@@ -276,6 +276,21 @@ export function legacyAlias(key) {
   const m = /^((?:qcf|qcb|hcf|hcb|dp|[udfbUDFB](?:\/[udfbUDFB])?)\+)?([PK])$/.exec(key);
   return m ? (m[1] || '') + (m[2] === 'P' ? '1' : '4') : null;
 }
+/* Display spellings the input buffer never emits ('df+1', 'ws1', 'WS 1', 'SAV b+2', 'FC 1',
+   '(d/f+1)', 'uf+4') -> the canonical notation it does ('d/f+1', 'WS.1', 'SAV.b+2', ...). Moves
+   keyed in those spellings were unreachable in a fight; _prepare slots them on the canonical
+   input too (when nothing else owns it). Returns the input unchanged if nothing applies. */
+const _DIAG = { df: 'd/f', db: 'd/b', uf: 'u/f', ub: 'u/b', DF: 'D/F', DB: 'D/B', UF: 'U/F', UB: 'U/B' };
+export function canonNotation(n) {
+  if (typeof n !== 'string') return n;
+  let s = n.trim().replace(/^\((.*)\)$/, '$1').trim();
+  s = s.replace(/\b(df|db|uf|ub|DF|DB|UF|UB)(?=\+|,|$|~|:)/g, (m) => _DIAG[m]);
+  s = s.replace(/^(ws|WS)\s*(?=[1-4])/, 'WS.');
+  s = s.replace(/^([A-Z][A-Z0-9_]{1,})\s+(?=[1-4udfbnUDFB(])/, '$1.');
+  s = s.replace(/\(([^()]*)\)/g, '$1');
+  s = s.replace(/\s*([,~:+])\s*/g, '$1');
+  return s;
+}
 function _prepare(ms) {
   if (!ms || !ms.moves || ms._slots) return;
   const slots = Object.assign({}, ms.slots || {});
@@ -283,6 +298,7 @@ function _prepare(ms) {
   /* WH legacy letter notation (P = punch, K = kick): a move keyed 'u+P' / 'd/f+K' / 'qcf+P'
      is also reachable on the numeric input (P -> 1, K -> 4) when no other move owns it. */
   for (const k of Object.keys(ms.moves)) { const a = legacyAlias(k); if (a && !(a in slots)) slots[a] = k; }
+  for (const k of Object.keys(ms.moves)) { const c = canonNotation(k); if (c && c !== k && !(c in slots)) slots[c] = k; }
   ms._slots = slots;
   const motions = [];
   for (const n of Object.keys(slots)) {
