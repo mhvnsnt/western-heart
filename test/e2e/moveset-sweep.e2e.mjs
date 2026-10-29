@@ -27,6 +27,11 @@ const PAGE_LIB = fs.readFileSync(new URL('./moveset-sweep.page.js', import.meta.
 async function fight(P1, body) {
   const p = await b.newPage({ viewport: { width: 960, height: 540 } });
   p.errs = []; p.on('pageerror', (e) => p.errs.push(String(e).slice(0, 300)));
+  if (process.env.WH_SWEEP_DEBUG) p.on('console', (m) => console.log('   [page]', m.text().slice(0, 200)));
+  // Soft-body tissue (softbody.js) recomputes vertex normals every step on heavy bodies (blanka, bob,
+  // burgers, chargers): with the sweep's thousands of synthetic steps on SwiftShader that ran past 5 min.
+  // Tissue jiggle is cosmetic and not part of move correctness, so the sweep plays with it off.
+  await p.addInitScript(() => { try { localStorage.setItem('wh_softbody_v1', 'off'); } catch {} });
   await p.goto(BASE + '/game/index.html');
   await p.waitForFunction(() => window.__startFight, null, { timeout: 120000 });
   // Moveset ids that are not roster ids play on their mapped WH roster body (bodies.mjs):
@@ -38,6 +43,7 @@ async function fight(P1, body) {
     return window.__startFight(a, c, { playerChar: { ...e, id: a, model: bd.model, modelPending: false } });
   }, [P1, OPP, body]);
   await p.waitForFunction(() => { const g = window.__game; return g && g.roundState === 'fight' && g.p1 && g.p2; }, null, { timeout: 400000, polling: 500 });
+  if (process.env.WH_SWEEP_DEBUG) console.log(`.. ${P1}: in fight`);
   await p.evaluate(PAGE_LIB);
   await p.waitForFunction(() => window.__sweepReady, null, { timeout: 60000 });
   return p;
@@ -62,10 +68,12 @@ for (const id of FIGHTERS) {
   let list = await p.evaluate(() => window.__moveList());
   if (LIMIT) list = list.slice(0, LIMIT);
   const rows = [];
-  for (let i = 0; i < list.length; i += 20) {
+  const CH = process.env.WH_SWEEP_DEBUG ? 1 : 20;
+  for (let i = 0; i < list.length; i += CH) {
+    if (process.env.WH_SWEEP_DEBUG) console.log(`.. ${id} move ${i} ${list[i].key} ${list[i].input}`);
     const part = await p.evaluate((chunk) => chunk.map((m) => { try {
       return Object.assign(window.__sweepMove(m), { slotted: m.slotted, owner: m.owner });
-    } catch (e) { return { key: m.key, input: m.input, ok: false, why: 'harness error ' + String(e).slice(0, 160) + ' @ ' + String((e && e.stack) || '').split('\n').slice(1, 3).join(' | ').replace(/https?:\/\/[^/]+/g, '').slice(0, 200) }; } }), list.slice(i, i + 20));
+    } catch (e) { return { key: m.key, input: m.input, ok: false, why: 'harness error ' + String(e).slice(0, 160) + ' @ ' + String((e && e.stack) || '').split('\n').slice(1, 3).join(' | ').replace(/https?:\/\/[^/]+/g, '').slice(0, 200) }; } }), list.slice(i, i + CH));
     rows.push(...part);
   }
   const jug = [];
