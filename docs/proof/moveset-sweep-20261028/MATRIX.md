@@ -1,6 +1,6 @@
 # Moveset sweep matrix (2026-10-29)
 
-97/129 fighters ran: 55986 moves, 49297 pass, 5286 fail, 1403 n/a. Full rerun 2026-10-29 (`rerun-20261029/`); 97 fighters re-swept after #1195/#1196 (r11); 97 fighters re-swept after #1195/#1196 (r11); whole roster re-swept after #1199/#1200/#1201 (r13, all 129: 97 ran, 32 blocked with no model on box), whole roster re-swept after #1202/#1203/#1204 (r14, all 129: 97 ran, 32 blocked; kronos 4 throw rows flaked in batch, pass solo), whole roster re-swept after #1205 batch 3 (r15, all 129: 97 ran, 32 blocked; batch 3 regressed throw-opener string follow-ups on dorowani/pantera/samura1, fixed in #1213), one result per fighter; per-fighter failing rows in `r15-failing.json` (r14 in `r14-failing.json`). Bodies follow the game's default attire (sweep-bodies.md); blockers are listed with their reason.
+97/129 fighters ran: 55986 moves, 49403 pass, 5171 fail, 1412 n/a. Full rerun 2026-10-29 (`rerun-20261029/`); 97 fighters re-swept after #1195/#1196 (r11); 97 fighters re-swept after #1195/#1196 (r11); whole roster re-swept after #1199/#1200/#1201 (r13, all 129: 97 ran, 32 blocked with no model on box), whole roster re-swept after #1202/#1203/#1204 (r14, all 129: 97 ran, 32 blocked; kronos 4 throw rows flaked in batch, pass solo), whole roster re-swept after #1205 batch 3 (r15, all 129: 97 ran, 32 blocked; batch 3 regressed throw-opener string follow-ups on dorowani/pantera/samura1, fixed in #1213), core 8 (bruno pantera demonio cyborgx burger chatur deathfang dio) re-swept after #1219-#1222/#1224 batches 8-12 (r16; per-fighter failing rows in `docs/proof/moveset-sweep-20261028/r16-core8-failing.json`), one result per fighter; per-fighter failing rows in `r15-failing.json` (r14 in `r14-failing.json`). Bodies follow the game's default attire (sweep-bodies.md); blockers are listed with their reason.
 
 Moveset editor e2e: 128/128 open/edit/save/reload/reset (`editor.json`). Fight shots: `sweep-*.png`.
 
@@ -12,27 +12,27 @@ Moveset editor e2e: 128/128 open/edit/save/reload/reset (`editor.json`). Fight s
 | baek | 130 | 130 | 0 | 0 | 3/12 | ran |
 | blanka | 218 | 171 | 44 | 3 | 3/14 | ran |
 | bob | 581 | 557 | 13 | 11 | 46/107 | ran |
-| bruno | 352 | 333 | 0 | 19 | 6/19 | ran |
+| bruno | 352 | 333 | 0 | 19 | 6/9 | ran (core-8 r16) |
 | buffalo-bill | 824 | 722 | 92 | 10 | 56/110 | ran |
 | burger-demon | 490 | 465 | 13 | 12 | 44/110 | ran |
 | burger-speed-demon | 478 | 453 | 13 | 12 | 44/107 | ran |
 | burger-the-mouth | 478 | 454 | 13 | 11 | 44/111 | ran |
-| burger | 576 | 548 | 18 | 10 | 8/29 | ran |
+| burger | 576 | 555 | 11 | 10 | 11/21 | ran (core-8 r16) |
 | byou | 757 | 641 | 110 | 6 | 33/72 | ran |
 | cainelias | 65 | 63 | 2 | 0 | 3/12 | ran |
 | charger-attire2 | 218 | 171 | 44 | 3 | 3/14 | ran |
 | charger | 222 | 175 | 44 | 3 | 3/15 | ran |
-| chatur | 300 | 274 | 26 | 0 | 3/12 | ran |
+| chatur | 300 | 293 | 7 | 0 | 3/6 | ran (core-8 r16) |
 | chordz | 492 | 458 | 17 | 17 | 11/53 | ran |
-| cyborgx | 648 | 595 | 33 | 20 | 96/110 | ran |
+| cyborgx | 648 | 607 | 21 | 20 | 104/108 | ran (core-8 r16) |
 | deathfang-werewolf | 146 | 128 | 18 | 0 | 3/12 | ran |
-| deathfang | 146 | 128 | 17 | 1 | 3/12 | ran |
+| deathfang | 146 | 128 | 9 | 9 | 3/6 | ran (core-8 r16) |
 | demonio-bloodline-ember | 710 | 662 | 34 | 14 | 40/100 | ran |
 | demonio-human | 707 | 665 | 28 | 14 | 10/28 | ran |
 | demonio-winged | 1092 | 990 | 75 | 27 | 35/105 | ran |
-| demonio | 793 | 721 | 54 | 18 | 8/35 | ran |
+| demonio | 793 | 744 | 31 | 18 | 13/18 | ran (core-8 r16) |
 | diablo | 685 | 599 | 69 | 17 | 1/29 | ran |
-| dio | 294 | 245 | 31 | 18 | 19/29 | ran |
+| dio | 294 | 257 | 18 | 19 | 21/23 | ran (core-8 r16) |
 | doa-ayane | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
 | doa-bass | 41 | 41 | 0 | 0 | 3/14 | ran |
 | doa-hayabusa | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
@@ -68,7 +68,7 @@ Moveset editor e2e: 128/128 open/edit/save/reload/reset (`editor.json`). Fight s
 | michiko | 368 | 344 | 4 | 20 | 4/15 | ran |
 | negativo | 311 | 289 | 6 | 16 | 4/15 | ran |
 | nightwolf | 591 | 560 | 22 | 9 | 14/59 | ran |
-| pantera | 903 | 785 | 103 | 15 | 13/58 | ran |
+| pantera | 903 | 818 | 70 | 15 | 13/19 | ran (core-8 r16) |
 | phantom | 1048 | 855 | 154 | 39 | 24/57 | ran |
 | pond | 644 | 553 | 59 | 32 | 58/139 | ran |
 | purplerain | 593 | 503 | 72 | 18 | 8/22 | ran |
