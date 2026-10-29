@@ -287,7 +287,8 @@ export function legacyAlias(key) {
 const _DIAG = { df: 'd/f', db: 'd/b', uf: 'u/f', ub: 'u/b', DF: 'D/F', DB: 'D/B', UF: 'U/F', UB: 'U/B' };
 export function canonNotation(n) {
   if (typeof n !== 'string') return n;
-  let s = n.trim().replace(/^\((.*)\)$/, '$1').trim();
+  let s = n.trim().replace(/\s*\((?:first|second|third|\d+(?:st|nd|rd|th)) hits? only\)\s*$/i, ''); // T7 per-hit row annotation, same input
+  s = s.replace(/^\((.*)\)$/, '$1').trim();
   s = s.replace(/^\(During Rage\)\s*/i, 'R.'); // T7 list spelling of the rage state prefix
   s = s.replace(/\b(df|db|uf|ub|DF|DB|UF|UB)(?=\+|,|$|~|:)/g, (m) => _DIAG[m]);
   s = s.replace(/^(ws|WS)\s*(?=[1-4])/, 'WS.');
@@ -798,13 +799,24 @@ export class TekkenBuffer {
     // and '1~t8.king,2' never exists — the chain broke at step 1 and the user
     // could only do 1-2 (two separate jabs, never the '1,2' string). Try the
     // stripped base too, so '1' + '2' -> '1,2' and '1,2' + '1' -> '1,2,1'.
-    const bases = [this.lastMove];
+    // Moveset sweep 2026-10-29: a pending partial string (an intermediate step with no
+    // standalone move, e.g. 'WS.1+2,4' of 'WS 1+2,4,1,...') is the base while it is open,
+    // exactly as in _pressV2; a press that only extends the partial keeps it open
+    // (this._strPending = true) and fires nothing.
+    this._strPending = false;
+    const now = performance.now();
+    const bases = [];
+    if (this._strPath && now - this._strPathT < STRING_PENDING) bases.push(this._strPath);
+    bases.push(this.lastMove);
     const tilde = this.lastMove.indexOf('~');
     if (tilde > 0) bases.push(this.lastMove.slice(0, tilde));
+    const ms = playedMoveset(this.fighterId);
     for (const base of bases) {
       for (const sep of [',', '~', ':']) {
-        for (const c of [dir ? `${base}${sep}${dir}+${input}` : null, `${base}${sep}${input}`]) {
-          if (c && resolveMoveKey(this.fighterId, c)) return c;
+        const cands = [dir ? `${base}${sep}${dir}+${input}` : null, `${base}${sep}${input}`];
+        for (const c of cands) if (c && resolveMoveKey(this.fighterId, c)) { this._strPath = null; return c; }
+        for (const c of cands) if (c && ms && ms._strPrefixes && ms._strPrefixes.has(c)) {
+          this._strPath = c; this._strPathT = now; this._strPending = true; return null;
         }
       }
     }
