@@ -1220,6 +1220,22 @@ export class Fighter {
   }
 
   /* Context the input buffer resolves notations against (WS./FC./SS./BT./R./stance codes). */
+  // Where this fighter stands relative to the opponent's facing: 'L' / 'R' (their left/right
+  // side, well off their line in z — source left maps to world -z when facing +x), 'B' (behind them),
+  // null in front.
+  _foeFlank() {
+    const o = this._opp;
+    if (!o || !o.root || !this.root) return null;
+    // a sidestep keeps its SS. moves; a foe in a hit reaction is not set up for a side/back throw
+    if (this.state === 'sidestep' || /hit|stun|knock|launch|juggle|air|down|thrown/i.test(o.state || '')) return null;
+    const dx = this.root.position.x - o.root.position.x, dz = this.root.position.z - o.root.position.z;
+    // facing is ±x only, and grounded bodies keep 1.45 m of x apart while |dz| < 0.9, so a
+    // sidestep that ends 0.6 m+ off the opponent's line (at least 0.4 of the x gap) is at their side
+    if (Math.abs(dz) >= 0.6 && Math.abs(dz) >= 0.4 * Math.abs(dx)) return dz * -(o.facing || 1) > 0 ? 'L' : 'R';
+    if (dx * (o.facing || 1) < 0) return 'B';
+    return null;
+  }
+
   _inputCtx() {
     const st = this.stance;
     return {
@@ -1236,6 +1252,7 @@ export class Fighter {
       // close/far normals (KOF/SF) pick by root distance; stance spin variants by re-entries
       dist: this._opp && this._opp.root && this.root ? Math.hypot(this._opp.root.position.x - this.root.position.x, this._opp.root.position.z - this.root.position.z) : null,
       stanceSpins: this.stance ? (this._stanceSpins || 1) : 0,
+      foeFlank: this._foeFlank(), // batch 8: 'L' / 'R' / 'B' when at the opponent's side or back
       soulStates: soulStates(this), // pt217u: 魂 ACTION / KESSHOU / 九魂解放 / 霊放 / 試練の封 gates
     };
   }
@@ -2030,6 +2047,13 @@ export class Fighter {
     this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
     if (name === 'surge') this._auraFlash = 0.7;
     if (move.isGrab || notation === '1+3' || notation === '2+4') this.vx = this.facing * 2.5; // lunge into the grab
+    // batch 11: a side / back throw (FLANK_L/R/B, T7 'Left throw' / 'Back throw') is taken from
+    // off the fight line: turn at the opponent and close the z gap through the grab (the
+    // sidestep re-align path), lunging at them rather than along our own facing.
+    if (/^FLANK_[LRB]\./.test(notation) && this._opp && this._opp.root) {
+      this._ssAlign = true;
+      this.vx = (Math.sign(this._opp.root.position.x - this.root.position.x) || this.facing) * 2.5;
+    }
     return true;
   }
   /* Chain throws (2026-10-29): a throw whose name carries a stage tag ('Arm Breaker (AB1)')
