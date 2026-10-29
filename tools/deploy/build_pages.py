@@ -276,9 +276,15 @@ def blob_sizes(sha):
             # 7 MB); when it does, descend one level and list each subtree.
             try:
                 t = git("rev-parse", f"{sha}:{path}").strip()
-                out = subprocess.run(["gh", "api", f"repos/{REPO}/git/trees/{t}?recursive=1"],
-                                     capture_output=True, text=True)
-                d = json.loads(out.stdout)
+                d = None
+                for _ in range(4):  # the API call is retried: a flaky fetch must not zero sizes
+                    out = subprocess.run(["gh", "api", f"repos/{REPO}/git/trees/{t}?recursive=1"],
+                                         capture_output=True, text=True)
+                    if out.returncode == 0:
+                        d = json.loads(out.stdout)
+                        break
+                if d is None:
+                    return
             except Exception:
                 return
             for e in d.get("tree", []):
