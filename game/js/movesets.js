@@ -249,6 +249,11 @@ export function splitNotation(n) {
 }
 
 /** 'f,F+2' -> {prefix:'', dirs:['f','f'], btn:'2', neutral:false}; null if not a motion input. */
+/* KOF/SF close-normal range (m, root to root): a plain button within it fires the close normal,
+   beyond it the far normal. Standing bodies never get nearer than 1.45 m (fighter.js push
+   minDist); KOF close range is a short step past body contact, inside far-jab reach. */
+export const CLOSE_RANGE = 1.65;
+
 export function parseMotion(n) {
   const { prefix, body } = splitNotation(n);
   const parts = body.split(',');
@@ -328,6 +333,26 @@ function _prepare(ms) {
      is also reachable on the numeric input (P -> 1, K -> 4) when no other move owns it. */
   for (const k of Object.keys(ms.moves)) { const a = legacyAlias(k); if (a && !(a in slots)) slots[a] = k; }
   for (const k of Object.keys(ms.moves)) { const c = canonNotation(k); if (c && c !== k && !(c in slots)) slots[c] = k; }
+  /* Variants (2026-10-29): KOF/SF close and far normals ('1 (close)' / 'far 1') and T7 stance
+     spin counts ('JGS* (3 spins), 1') share the plain input; press() picks them by the fight
+     context (distance, spins). Other name-keyed moves (rush_l2 '1,1 (Rush)', hop_1 'hop u/f+1')
+     are slotted on their canonical input when no other move owns it. */
+  const variants = {};
+  for (const [k, mv] of Object.entries(ms.moves)) {
+    const raw = mv && mv.input;
+    if (typeof raw !== 'string' || raw === k) continue;
+    const c = canonNotation(raw);
+    if (!c) continue;
+    let kind = null, n = 0;
+    if (/^far\s+/i.test(raw) || /\(far\)/i.test(raw)) kind = 'far';
+    else if (/^(?:close|cl\.?)\s+/i.test(raw) || /\(close\)/i.test(raw)) kind = 'close';
+    else { const sm = /^[A-Z][A-Z0-9_]*\*\s*\((\d+)\s*spins?\)/.exec(raw); if (sm) { kind = 'spins'; n = +sm[1]; } }
+    if (kind) (variants[c] = variants[c] || []).push({ key: k, kind, n });
+    else if (!(c in slots) && !(ms.slots && k in ms.slots) && /^[a-z][a-z0-9]*_/i.test(k) && !/[,~:+.]/.test(k)) slots[c] = k;
+  }
+  ms._variants = variants;
+  ms._variantBase = {};
+  for (const [n, list] of Object.entries(variants)) for (const x of list) ms._variantBase[x.key] = n;
   ms._slots = slots;
   const motions = [];
   for (const n of Object.keys(slots)) {
@@ -397,6 +422,12 @@ function _allLoadouts() {
 if (typeof window !== 'undefined' && window.addEventListener) {
   window.addEventListener('storage', (e) => { if (e.key === LOADOUT_KEY) _loadouts = null; }); // editor in another tab
 }
+/** The plain notation a close/far or spin variant key fires from ('far_1' → '1'), else null. */
+export function variantBase(fighterId, key) {
+  const ms = playedMoveset(fighterId);
+  return (ms && ms._variantBase && ms._variantBase[key]) || null;
+}
+
 export function getLoadout(fighterId) {
   return _allLoadouts()[fighterId] || {};
 }
@@ -607,8 +638,26 @@ export class TekkenBuffer {
     const ms = playedMoveset(this.fighterId);
     if (!ms || !ms.moves) return input; // no data — raw passthrough
     _prepare(ms);
-    if (inputResolverV2()) return this._pressV2(input, ctx, ms);
-    return this._pressLegacy(input, ctx, ms);
+    const r = inputResolverV2() ? this._pressV2(input, ctx, ms) : this._pressLegacy(input, ctx, ms);
+    return this._variant(r, ctx, ms);
+  }
+
+  /* Close/far normals and stance spin counts (see _prepare variants). The returned move KEY is
+     fired; lastMove keeps the plain notation so strings continue from it ('1' then ',2'). A
+     moveset-editor loadout entry on the notation always wins (the player chose that move). */
+  _variant(r, ctx, ms) {
+    const v = r && ms._variants && ms._variants[r];
+    if (!v || getLoadout(this.fighterId)[r]) return r;
+    if (ctx.stanceSpins >= 2) {
+      const sp = v.filter(x => x.kind === 'spins' && x.n <= ctx.stanceSpins).sort((a, b) => b.n - a.n)[0];
+      if (sp) return sp.key;
+    }
+    if (ctx.dist != null) {
+      const want = ctx.dist <= CLOSE_RANGE ? 'close' : 'far';
+      const hit = v.find(x => x.kind === want);
+      if (hit) return hit.key;
+    }
+    return r;
   }
 
   /* INPUT RESOLVER V2 (owner t116u, 2026-10-23 — "presses give random moves, neutral 3 fires a
