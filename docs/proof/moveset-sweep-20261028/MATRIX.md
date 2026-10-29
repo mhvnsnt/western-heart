@@ -1,8 +1,8 @@
-# Moveset sweep matrix (2026-10-29, partial: run in progress)
+# Moveset sweep matrix (2026-10-29)
 
-Moveset editor e2e: 128/128 open/edit/save/reload/reset (`editor.json`).
-Ran fighters total: 13830 moves, 10733 pass, 2300 fail, 797 n/a.
+84/128 fighters ran: 48741 moves, 35595 pass, 11625 fail, 1521 n/a. Latest result per fighter across passes; some predate the pass-6 notation fix.
 
+Moveset editor e2e: 128/128 open/edit/save/reload/reset (`editor.json`). Fight shots: `sweep-*.png`.
 
 | fighter | moves | pass | fail | n/a | juggles | status |
 |---|---|---|---|---|---|---|
@@ -10,88 +10,88 @@ Ran fighters total: 13830 moves, 10733 pass, 2300 fail, 797 n/a.
 | awapop | 938 | 721 | 107 | 110 | 27/48 | ran |
 | baek-master-white | 310 | 207 | 103 | 0 | 5/12 | ran |
 | baek | 130 | 110 | 0 | 20 | 5/12 | ran |
-| blanka | | | | | | sweep hung (>300 s), investigating |
-| bob | | | | | | sweep hung (>300 s), investigating |
+| blanka | 218 | 132 | 84 | 2 | 5/12 | ran |
+| bob | 581 | 507 | 62 | 12 | 45/99 | ran |
 | bruno | 352 | 331 | 2 | 19 | 8/19 | ran |
 | buffalo-bill | 824 | 635 | 179 | 10 | 65/107 | ran |
-| burger-demon | | | | | | sweep hung (>300 s), investigating |
-| burger-speed-demon | | | | | | not yet run this pass |
-| burger-the-mouth | | | | | | not yet run this pass |
-| burger | | | | | | not yet run this pass |
-| byou | | | | | | not yet run this pass |
-| cainelias | | | | | | not yet run this pass |
-| charger-attire2 | | | | | | not yet run this pass |
-| charger | | | | | | not yet run this pass |
-| chatur | | | | | | not yet run this pass |
-| chordz | | | | | | not yet run this pass |
-| cyborgx | | | | | | not yet run this pass |
-| deathfang-werewolf | | | | | | not yet run this pass |
-| deathfang | | | | | | not yet run this pass |
-| demonio-bloodline-ember | | | | | | not yet run this pass |
-| demonio-human | | | | | | not yet run this pass |
-| demonio-winged | | | | | | not yet run this pass |
-| demonio | | | | | | not yet run this pass |
-| diablo | | | | | | not yet run this pass |
-| dio | | | | | | not yet run this pass |
-| doa-ayane | | | | | | not yet run this pass |
-| doa-bass | | | | | | not yet run this pass |
-| doa-hayabusa | | | | | | not yet run this pass |
-| doa-jannlee | | | | | | not yet run this pass |
-| doa-kasumi | | | | | | not yet run this pass |
-| doa-tina | | | | | | not yet run this pass |
-| doc-frank-frankenstein | | | | | | not yet run this pass |
-| doc-frank-hood | | | | | | not yet run this pass |
-| doc-frank-machine-shop | | | | | | not yet run this pass |
-| doc-frank-wowomomo | | | | | | not yet run this pass |
-| docfrank | | | | | | not yet run this pass |
-| dorowani | | | | | | not yet run this pass |
-| dxmmii-patchwork | | | | | | not yet run this pass |
-| dxmmii | | | | | | not yet run this pass |
-| gyou-spirit-body | | | | | | not yet run this pass |
-| gyou | | | | | | not yet run this pass |
+| burger-demon | 490 | 440 | 38 | 12 | 44/102 | ran |
+| burger-speed-demon | 478 | 429 | 37 | 12 | 44/99 | ran |
+| burger-the-mouth | 478 | 430 | 37 | 11 | 46/103 | ran |
+| burger | 576 | 529 | 38 | 9 | 10/29 | ran |
+| byou | 757 | 551 | 199 | 7 | 40/70 | ran |
+| cainelias | 65 | 62 | 3 | 0 | 5/12 | ran |
+| charger-attire2 | 218 | 139 | 77 | 2 | 5/12 | ran |
+| charger | 222 | 141 | 79 | 2 | 5/12 | ran |
+| chatur | 300 | 243 | 57 | 0 | 8/14 | ran |
+| chordz | 492 | 427 | 47 | 18 | 17/52 | ran |
+| cyborgx | 648 | 533 | 96 | 19 | 68/102 | ran |
+| deathfang-werewolf | 146 | 46 | 100 | 0 | 5/12 | ran |
+| deathfang | 146 | 42 | 103 | 1 | 6/12 | ran |
+| demonio-bloodline-ember | 710 | 584 | 111 | 15 | 30/88 | ran |
+| demonio-human | 707 | 585 | 109 | 13 | 16/24 | ran |
+| demonio-winged | 1092 | 892 | 174 | 26 | 43/89 | ran |
+| demonio | | | | | | harness: game loaded model 'demonio-a1', not 'demonio' |
+| diablo | 685 | 523 | 148 | 14 | 16/24 | ran |
+| dio | 294 | 238 | 38 | 18 | 12/23 | ran |
+| doa-ayane | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
+| doa-bass | 41 | 41 | 0 | 0 | 8/14 | ran |
+| doa-hayabusa | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
+| doa-jannlee | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
+| doa-kasumi | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
+| doa-tina | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
+| doc-frank-frankenstein | 817 | 438 | 358 | 21 | 0/22 | ran |
+| doc-frank-hood | 921 | 473 | 422 | 26 | 0/22 | ran |
+| doc-frank-machine-shop | 962 | 519 | 417 | 26 | 0/22 | ran |
+| doc-frank-wowomomo | 921 | 473 | 422 | 26 | 0/22 | ran |
+| docfrank | 404 | 238 | 160 | 6 | 9/17 | ran |
+| dorowani | 194 | 150 | 43 | 1 | 8/14 | ran |
+| dxmmii-patchwork | 189 | 167 | 21 | 1 | 4/12 | ran |
+| dxmmii | 169 | 149 | 19 | 1 | 4/12 | ran |
+| gyou-spirit-body | 590 | 416 | 164 | 10 | 105/169 | ran |
+| gyou | 1033 | 839 | 173 | 21 | 21/92 | ran |
 | hugo | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
-| iori | 215 | 97 | 93 | 25 | 6/12 | ran |
+| iori | 215 | 136 | 78 | 1 | 6/12 | ran |
 | jin_soul | 1041 | 657 | 275 | 109 | 62/175 | ran |
 | kai | | | | | | BLOCKER: roster fighter is modelPending; no file in roster/, teardown/ (T3/T7), or GRE pulls |
 | kingtyrant | 877 | 719 | 138 | 20 | 10/42 | ran |
 | kinpo | 549 | 479 | 29 | 41 | 75/101 | ran |
-| koreshi | | | | | | not yet run this pass |
-| kronos-attire2 | | | | | | not yet run this pass |
-| kronos | | | | | | not yet run this pass |
-| kutz | | | | | | not yet run this pass |
-| lili | | | | | | not yet run this pass |
-| marduk | | | | | | not yet run this pass |
-| mariposa-monarch | | | | | | not yet run this pass |
-| mariposa | | | | | | not yet run this pass |
-| megami | | | | | | not yet run this pass |
-| menajerii | | | | | | not yet run this pass |
-| michiko | | | | | | not yet run this pass |
-| negativo | | | | | | not yet run this pass |
-| nightwolf | | | | | | not yet run this pass |
-| pantera | | | | | | not yet run this pass |
-| phantom | | | | | | not yet run this pass |
-| pond | | | | | | not yet run this pass |
-| purplerain | | | | | | not yet run this pass |
-| raiden | | | | | | not yet run this pass |
-| rave | | | | | | not yet run this pass |
-| realizzt | | | | | | not yet run this pass |
-| retsu | | | | | | not yet run this pass |
-| rin | | | | | | not yet run this pass |
-| ryuji-rock | | | | | | not yet run this pass |
-| ryuji | | | | | | not yet run this pass |
-| ryusan | | | | | | not yet run this pass |
-| sakura | | | | | | not yet run this pass |
-| samura1 | | | | | | not yet run this pass |
-| scimitar | | | | | | not yet run this pass |
-| sf-akuma | | | | | | not yet run this pass |
-| sf-blanka | | | | | | not yet run this pass |
-| sf-cammy | | | | | | not yet run this pass |
-| sf-chunli | | | | | | not yet run this pass |
-| sf-dhalsim | | | | | | not yet run this pass |
-| sf-guile | | | | | | not yet run this pass |
-| sf-ken | | | | | | not yet run this pass |
-| sf-mbison | | | | | | not yet run this pass |
-| sf-ryu | | | | | | not yet run this pass |
+| koreshi | 1109 | 652 | 444 | 13 | 7/24 | ran |
+| kronos-attire2 | 2629 | 927 | 1662 | 40 | 8/18 | ran |
+| kronos | 929 | 407 | 510 | 12 | 8/18 | ran |
+| kutz | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
+| lili | 532 | 466 | 45 | 21 | 24/80 | ran |
+| marduk | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
+| mariposa-monarch | 542 | 500 | 20 | 22 | 43/108 | ran |
+| mariposa | 396 | 355 | 19 | 22 | 45/107 | ran |
+| megami | | | | | | harness: game loaded 'zen' |
+| menajerii | | | | | | harness: game loaded 'zen' |
+| michiko | 368 | 317 | 31 | 20 | 7/15 | ran |
+| negativo | | | | | | harness: game loaded model 'negativo-attire1', not 'n3g4tiv0' |
+| nightwolf | 591 | 496 | 86 | 9 | 26/45 | ran |
+| pantera | 903 | 598 | 291 | 14 | 14/28 | ran |
+| phantom | 1048 | 677 | 333 | 38 | 17/43 | ran |
+| pond | 644 | 536 | 83 | 25 | 31/132 | ran |
+| purplerain | 593 | 480 | 96 | 17 | 14/22 | ran |
+| raiden | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
+| rave | 1115 | 830 | 271 | 14 | 30/70 | ran |
+| realizzt | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
+| retsu | 768 | 621 | 137 | 10 | 41/112 | ran |
+| rin | 739 | 614 | 110 | 15 | 24/83 | ran |
+| ryuji-rock | 148 | 59 | 88 | 1 | 6/14 | ran |
+| ryuji | 146 | 63 | 82 | 1 | 6/14 | ran |
+| ryusan | 230 | 179 | 30 | 21 | 12/22 | ran |
+| sakura | 793 | 642 | 136 | 15 | 7/40 | ran |
+| samura1 | 889 | 648 | 227 | 14 | 18/35 | ran |
+| scimitar | 385 | 343 | 32 | 10 | 9/20 | ran |
+| sf-akuma | 187 | 161 | 16 | 10 | 70/98 | ran |
+| sf-blanka | 56 | 49 | 7 | 0 | 5/12 | ran |
+| sf-cammy | | | | | | BLOCKER: no model on box (source URLs only) |
+| sf-chunli | | | | | | BLOCKER: no model on box (source URLs only) |
+| sf-dhalsim | | | | | | BLOCKER: no model on box (source URLs only) |
+| sf-guile | | | | | | BLOCKER: no model on box (source URLs only) |
+| sf-ken | | | | | | BLOCKER: no model on box (source URLs only) |
+| sf-mbison | | | | | | BLOCKER: no model on box (source URLs only) |
+| sf-ryu | | | | | | BLOCKER: no model on box (source URLs only) |
 | sf-sagat | | | | | | BLOCKER: no model on box (source URLs only) |
 | sf-vega | | | | | | BLOCKER: no model on box (source URLs only) |
 | sf-zangief | | | | | | BLOCKER: no model on box (source URLs only) |
@@ -109,28 +109,28 @@ Ran fighters total: 13830 moves, 10733 pass, 2300 fail, 797 n/a.
 | t3-julia | 443 | 352 | 82 | 9 | 5/41 | ran |
 | t3-kuma | 554 | 460 | 38 | 56 | 32/112 | ran |
 | t3-law | 716 | 546 | 97 | 73 | 64/103 | ran |
-| t3-lei | | | | | | not yet run this pass |
+| t3-lei | 819 | 592 | 217 | 10 | 197/323 | ran |
 | t3-nina | 783 | 605 | 167 | 11 | 55/139 | ran |
 | t3-ogre | 180 | 141 | 39 | 0 | 6/12 | ran |
 | t3-paul | 520 | 378 | 132 | 10 | 51/148 | ran |
-| thor | | | | | | not yet run this pass |
-| tobi | | | | | | not yet run this pass |
-| torch | | | | | | not yet run this pass |
-| tou | | | | | | not yet run this pass |
-| vainabel | | | | | | not yet run this pass |
-| vega | | | | | | not yet run this pass |
-| vf-akira | | | | | | not yet run this pass |
-| vf-elblaze | | | | | | not yet run this pass |
-| vf-jeffry | | | | | | not yet run this pass |
-| vf-kage | | | | | | not yet run this pass |
-| vf-leifei | | | | | | not yet run this pass |
-| vf-sarah | | | | | | not yet run this pass |
-| vf-wolf | | | | | | not yet run this pass |
-| waterfall | | | | | | not yet run this pass |
-| yukihyo | | | | | | not yet run this pass |
-| zangief | | | | | | not yet run this pass |
-| zen | | | | | | not yet run this pass |
-| zui | | | | | | not yet run this pass |
-| gashadokuro | | | | | | not yet run this pass |
-| aotsuki | | | | | | not yet run this pass |
-| silvertongue | | | | | | not yet run this pass |
+| thor | 346 | 264 | 78 | 4 | 13/25 | ran |
+| tobi | 758 | 625 | 120 | 13 | 43/81 | ran |
+| torch | 921 | 745 | 166 | 10 | 50/137 | ran |
+| tou | 704 | 524 | 165 | 15 | 100/170 | ran |
+| vainabel | 79 | 77 | 2 | 0 | 5/12 | ran |
+| vega | | | | | | not yet run |
+| vf-akira | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
+| vf-elblaze | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
+| vf-jeffry | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
+| vf-kage | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
+| vf-leifei | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
+| vf-sarah | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
+| vf-wolf | | | | | | BLOCKER: no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls |
+| waterfall | | | | | | not yet run |
+| yukihyo | | | | | | not yet run |
+| zangief | | | | | | not yet run |
+| zen | | | | | | not yet run |
+| zui | | | | | | not yet run |
+| gashadokuro | | | | | | not yet run |
+| aotsuki | | | | | | not yet run |
+| silvertongue | | | | | | not yet run |
