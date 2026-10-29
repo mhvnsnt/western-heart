@@ -1230,6 +1230,7 @@ class AssetManager {
     const LOAD_TIMEOUT_MS = 90000;
     const attempt = async () => {
       const signal = _anySignal([ctrl.signal, _timeoutSignal(LOAD_TIMEOUT_MS)]);
+      let firstErr = null;
       let lastErr = null;
       for (const cand of candidates) {
         // Lane 5: persistent-cache hit — report full byte progress once
@@ -1249,11 +1250,13 @@ class AssetManager {
           res = await fetch(cand, { signal });
         } catch (e) {
           if (e && e.name === 'AbortError') throw e;
+          if (!firstErr) firstErr = e;
           lastErr = e;
           continue;
         }
         if (!res.ok) {
           lastErr = new Error(`HTTP ${res.status} loading ${id} from ${cand}`);
+          if (!firstErr) firstErr = lastErr;
           continue;
         }
         const totalBytes = Number(res.headers.get('content-length')) || 0;
@@ -1288,6 +1291,13 @@ class AssetManager {
         // The candidate URL string is the parse base, so external .bin /
         // texture references resolve against the host that served the GLB.
         return _sharedGLTFLoader().parseAsync(buf, cand);
+      }
+      // Name the FIRST (primary/local) failure, not only the last
+      // fallback's: a local 404 followed by an unreachable CDN used to
+      // surface as a bare "Failed to fetch", hiding the asset that is
+      // actually missing (2026-10-24 P0 error-surface intent).
+      if (firstErr && lastErr && firstErr !== lastErr) {
+        throw new Error(`${firstErr.message || firstErr} (fallback also failed: ${lastErr.message || lastErr})`);
       }
       throw lastErr || new Error(`no candidate loaded for ${id}`);
     };
