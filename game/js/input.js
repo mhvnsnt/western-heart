@@ -230,6 +230,12 @@ export class InputManager {
     for (const [pair, name] of pairs) {
       if (now - this._lastT[pair] < CHORD_WINDOW_MS) {
         this._lastT[pair] = 0; this._lastT[btn] = 0;
+        // Moveset sweep 2026-10-29: the partner limb was already queued as a single. If it
+        // has not been consumed yet (both limbs landed in the same frame), the chord replaces
+        // it; before, the frame fired the single AND the chord ('d/f+1+2' came out as
+        // 'd/f+1' then the string 'd/f+1,1+2').
+        const j = this._queue.lastIndexOf(pair);
+        if (j >= 0) this._queue.splice(j, 1);
         this._push(name);
         this._chord = { btns: name.split('+'), t: now, name };
         return;
