@@ -269,7 +269,7 @@
     const DON = /^donor\.[a-z0-9-]+\.(.+)$/i.exec(m.key) || /^(.+)~donor\.[a-z0-9-]+(?:\.\d+)?$/i.exec(m.key);
     const donBase = DON && (MS.canonNotation || ((x) => x))(DON[1]);
     if (DON && ok(donBase)) { notation = donBase; via = 'equipped via moveset loadout'; }
-    else if (MS.canonNotation && parse(m.key).err && MS.canonNotation(m.key) !== m.key && ok(MS.canonNotation(m.key)) && MS.resolveMoveKey(id, MS.canonNotation(m.key)) === m.key) { notation = MS.canonNotation(m.key); via = 'canonical spelling'; }
+    else if (MS.canonNotation && parse(m.key).err && MS.canonNotation(m.key) !== m.key && !parse(MS.canonNotation(m.key)).err && MS.resolveMoveKey(id, MS.canonNotation(m.key)) === m.key) { notation = MS.canonNotation(m.key); via = 'canonical spelling'; }
     else if (parse(m.key).err && MS.t3CommandNotations && MS.t3CommandNotations(mv.t3_command).some((c) => ok(c) && MS.resolveMoveKey(id, c) === m.key)) {
       notation = MS.t3CommandNotations(mv.t3_command).find((c) => ok(c) && MS.resolveMoveKey(id, c) === m.key); via = `T3 source command ${mv.t3_command}`; }
     else if (alias && parse(m.key).err && MS.resolveMoveKey(id, alias) === m.key) { notation = alias; via = 'legacy P/K alias'; }
@@ -279,7 +279,7 @@
       // the editor equips a move on one of its input_slots (or its legacy alias / own input)
       const cn = MS.canonNotation || ((x) => x);
       const cands = [alias, ...(mv.input_slots || []), m.input, cn(m.input), cn(m.key), t3cmd(mv.t3_command), ...(MS.t3CommandNotations ? MS.t3CommandNotations(mv.t3_command) : [])].filter(ok);
-      notation = cands[0] || m.input; via = 'equipped via moveset loadout'; }
+      notation = cands[0] || [cn(m.input), cn(m.key)].find((c) => c && !parse(c).err) || m.input; via = 'equipped via moveset loadout'; } // a movement-only row in FGC spelling ('f,n,d,df') reads as movement
     const P = parse(notation);
     if (P.err) return { key: m.key, input: notation, ok: false, why: 'unparsed: ' + P.err, via };
     if (P.motionOnly) return { key: m.key, input: notation, ok: null, why: 'movement input (no button)', via };
