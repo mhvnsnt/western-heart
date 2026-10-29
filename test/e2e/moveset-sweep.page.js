@@ -23,7 +23,7 @@
   const reset = (gap) => {
     for (const k of [...held]) key(k, 'keyup');
     for (const f of [g.p1, g.p2]) { f.hp = f.maxHp || 100; f._enter('idle'); f.attack = null; f.attackName = null; f._throwPair = null;
-      f.stance = null; f.stanceT = 0; f._risingT = 0; f.lockT = 0; f.lockMove = null; f.tekken.lastMove = null; f.tekken._strPath = null;
+      f.stance = null; f.stanceT = 0; f._stanceSpins = 0; f._risingT = 0; f.lockT = 0; f.lockMove = null; f.tekken.lastMove = null; f.tekken._strPath = null;
       f._stringGraceUntil = 0; f._queuedNext = null; f._queuedAfter = []; f._urgeOn = false; f._urgeT = 0; f._urgeUsed = false;
       f.lastCounterHit = false; f._t3Contact = null; f._t3Whiff = 0; f._faceDown = false; f.ssDir = 0;
       f._rageUsed = false; f._soulUses = 0; f._rageActive = false; f._nearObject = false; f._soulReleaseReady = false;
@@ -172,10 +172,18 @@
     // is equipped on that input through the loadout (what the moveset editor writes), pressed,
     // then the loadout entry is removed.
     let notation = m.key, via = 'own input';
+    // close/far normals and stance spin variants (movesets.js _variant) fire on the plain input
+    // from the fight context: close within MS.CLOSE_RANGE, far beyond it, spins after N real
+    // stance entries. A base row sharing that input is what the editor equips there.
+    const V = ms._variants || {}; let vrow = null;
+    for (const [n, list] of Object.entries(V)) { const h = list.find((x) => x.key === m.key); if (h) { vrow = { note: n, key: h.key, kind: h.kind, spinN: h.n }; break; } }
+    const vBase = !vrow && V[m.key] && !(MS.getLoadout(id) || {})[m.key];
     const alias = MS.legacyAlias && MS.legacyAlias(m.key);
     const ok = (n) => n && !parse(n).err && !parse(n).motionOnly;
     if (MS.canonNotation && parse(m.key).err && MS.canonNotation(m.key) !== m.key && ok(MS.canonNotation(m.key)) && MS.resolveMoveKey(id, MS.canonNotation(m.key)) === m.key) { notation = MS.canonNotation(m.key); via = 'canonical spelling'; }
     else if (alias && parse(m.key).err && MS.resolveMoveKey(id, alias) === m.key) { notation = alias; via = 'legacy P/K alias'; }
+    else if (vrow && ok(vrow.note)) { notation = vrow.note; via = vrow.kind === 'spins' ? `stance spin variant (${vrow.note} after ${vrow.spinN} stance entries)` : `${vrow.kind} normal by distance`; if (vrow.kind === 'close') gap = Math.min(gap, MS.CLOSE_RANGE - 0.3); else if (vrow.kind === 'far') gap = Math.max(gap, MS.CLOSE_RANGE + 0.05); }
+    else if (vBase) { via = 'equipped via moveset loadout'; }
     else if (!m.slotted || !parse(m.key).hits) {
       // the editor equips a move on one of its input_slots (or its legacy alias / own input)
       const cn = MS.canonNotation || ((x) => x);
@@ -199,6 +207,12 @@
         if ((mv.damage || 0) > 0 && !mv.throw && !(W & 2)) {
           if (W & 1) { o._enter('crouch'); how += ' · foe crouching (row hits crouchers only)'; }
           else if (W & 4) { o._enter('knockdown'); o.onGround = true; o.stun = 5; how += ' · foe downed (ground hit)'; } } }
+      if (vrow && vrow.kind === 'spins') { // real stance re-entries: fire the stance's entry move N times
+        const st = vrow.note.split(/[.,\s]/)[0]; f.stance = null; f.stanceT = 0; f._stanceSpins = 0; // spins come only from the real entries below
+        const entry = Object.keys(ms.stance_after || {}).find((k) => ms.stance_after[k] === st && !/^[A-Z]+\./.test(k));
+        for (let i = 0; entry && i < vrow.spinN; i++) { f.tryAttack(entry); for (let w = 0; w < 120 && f.state === 'attack'; w++) step(1); }
+        how += ` · ${entry} ×${vrow.spinN} → ${f.stance} spins=${f._stanceSpins}`; }
+      if (vrow && vrow.kind !== 'spins') how += ` · range ${f._inputCtx().dist?.toFixed(2)} m (close ≤ ${MS.CLOSE_RANGE} m)`;
       condGap = gap;
       if (cond != null) { const r = condSetup(cond, f, o, notation); how += ' · T3 cond 0x' + cond.toString(16) + ': ' + r + (T3.t3ConditionHolds(cond, f, o, notation) ? ' (holds)' : ' (NOT holding)'); }
       const out = []; const hp0 = o.hp;

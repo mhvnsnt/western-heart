@@ -41,7 +41,7 @@ import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK, T3_BANKS,
   loadT3ReactionClip, getT3ReactionPackScale, loadReactionPack, getReactionPack, getReactionClip } from './t3anims.js';
 import { selectThrow, resolveThrowClips, throwBreaks, throwDamageTimeSec, throwPairDurationSec,
   escapePairFor, anchorAt, sharedFramePos, throwQuadrant, attemptRowForInput, hexSlot, bankDirOf } from './t3-throw.js';
-import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove, resolveMoveKey } from './movesets.js';
+import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove, resolveMoveKey, variantBase } from './movesets.js';
 import { TransformCinematic } from './transform-cinematic.js';
 import { V, vskillFor, vtriggerEnhance, vreversalMove } from './v-system.js';
 import { JiggleRig } from './jiggle.js';
@@ -1202,6 +1202,9 @@ export class Fighter {
       urgeOn: !!this._urgeOn,
       urgeAvailable: !this._urgeUsed && !this._urgeOn && this.hp > 0,
       inMove: this.state === 'attack',
+      // close/far normals (KOF/SF) pick by root distance; stance spin variants by re-entries
+      dist: this._opp && this._opp.root && this.root ? Math.hypot(this._opp.root.position.x - this.root.position.x, this._opp.root.position.z - this.root.position.z) : null,
+      stanceSpins: this.stance ? (this._stanceSpins || 1) : 0,
       soulStates: soulStates(this), // pt217u: 魂 ACTION / KESSHOU / 九魂解放 / 霊放 / 試練の封 gates
     };
   }
@@ -1669,7 +1672,7 @@ export class Fighter {
       // lands inside its 140 ms window, so '1' then '1+3' means the player pressed 1+3. If the
       // single that just started is part of this chord, the chord replaces it.
       if (name.includes('+') && this.stateT <= 0.14 && this._attackPhase === 'startup' && !this.hasHit) {
-        const single = String(this.attackName || '').split(/[,.]/).pop();
+        const single = String(variantBase(this._movesetId, this.attackName) || this.attackName || '').split(/[,.]/).pop(); // close/far normal: its plain button
         const btn = single.split('+').pop();
         if (/^[1234]$/.test(btn) && name.split('+').includes(btn)) {
           this.tekken.lastMove = this._chordBase || null;
@@ -1901,6 +1904,8 @@ export class Fighter {
     this._attackId = (this._attackId || 0) + 1;
     this._queuedNext = null; this._queuedAfter = null;
     if (/^(R|RD)\./.test(notation)) this._rageUsed = true; // rage art/drive: once per round
+    // stance spin count (T7 JGS* (N spins)): re-entering the stance the move started from adds a spin
+    this._spinNext = move.stanceAfter && this.stance === move.stanceAfter ? (this._stanceSpins || 1) + 1 : 1;
     this.stance = null; this.stanceT = 0; this._risingT = 0;
     this._throwFollow = null;
     this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
@@ -1912,7 +1917,7 @@ export class Fighter {
     const c = this._throwFollow; this._throwFollow = null; if (!c) return;
     const m = getRealMove(this._movesetId, c), after = m && m.stanceAfter;
     if (after === 'FC') { this._enter('crouch'); this.stance = 'FC'; this.stanceT = 0.5; }
-    else if (after) { this.stance = after; this.stanceT = 0.8; }
+    else if (after) { this._stanceSpins = this._spinNext || 1; this.stance = after; this.stanceT = 0.8; }
   }
   /* Start the move for an already-resolved notation (buffered string hits). */
   _fireNotation(notation) {
@@ -2166,7 +2171,7 @@ export class Fighter {
         this._enter('wallsplat');
       }
     }
-    this.stance = null;
+    this.stance = null; this._stanceSpins = 0;
     // Soft-body hit injection: dent the muscle volume at the impact point.
     if (this._softbody) {
       try {
@@ -2488,7 +2493,7 @@ export class Fighter {
     if (this._vbreakT > 0) this._vbreakT -= dt;
     if (this._vparryT > 0) this._vparryT -= dt;
     if (this._risingT > 0) this._risingT -= dt;
-    if (this.stanceT > 0) { this.stanceT -= dt; if (this.stanceT <= 0) this.stance = null; }
+    if (this.stanceT > 0) { this.stanceT -= dt; if (this.stanceT <= 0) { this.stance = null; this._stanceSpins = 0; } }
     // GAP-FILL LANE 1: combo ends when the victim recovers to
     // neutral on the ground — juggle count AND the single
     // extender slot both clear here, never mid-combo.
@@ -2604,7 +2609,7 @@ export class Fighter {
           if (!m.isGrab) this._stringGraceUntil = (typeof performance !== 'undefined' ? performance.now() : 0) + 500;
           // Source notes "Transition to X": the move ends in that stance (FC = crouch).
           if (after === 'FC') { this._enter('crouch'); this.stance = 'FC'; this.stanceT = 0.5; }
-          else if (after) { this.stance = after; this.stanceT = 0.8; }
+          else if (after) { this._stanceSpins = this._spinNext || 1; this.stance = after; this.stanceT = 0.8; }
         }
         // Buffered string hit fires once this hit's active frames are over.
         if (this._queuedNext && this.state === 'attack' && this._attackPhase === 'recovery') {
