@@ -1,0 +1,3808 @@
+{
+ "fighter": "t3-gon",
+ "body": {
+  "rosterId": "dorowani",
+  "model": "dorowani",
+  "how": "roster base 'Gon'",
+  "file": "../roster/dorowani/attires/attire1/source/dorowani-a1-crimson-cheeks-rigged.glb"
+ },
+ "moves": 170,
+ "pass": 150,
+ "fail": 20,
+ "na": 0,
+ "juggles": 11,
+ "jugglePass": 3,
+ "pageErrors": [],
+ "secs": 89,
+ "rows": [
+  {
+   "key": "1",
+   "input": "1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1"
+   ],
+   "dmg": 9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3",
+   "input": "3",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "4",
+   "input": "4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "4"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1_c51",
+   "input": "1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x33: close (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1"
+   ],
+   "dmg": 4.9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1_c24",
+   "input": "1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x18: close (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1"
+   ],
+   "dmg": 14.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1_c55",
+   "input": "1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x37: opponent down (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1"
+   ],
+   "dmg": 6.5,
+   "react": [
+    "knockdown",
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/b",
+   "input": "d/b+3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/b+3"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3_r24",
+   "input": "3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/b_r26",
+   "input": "d/b+4",
+   "via": "T3 source command 1/2/3+RK",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/b+4"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "b+2",
+   "input": "b+2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "b+2"
+   ],
+   "dmg": 4.9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "b_c36",
+   "input": "b+1+2",
+   "via": "T3 source command 4/6/7/8/9+LP+RP",
+   "setup": "neutral · T3 cond 0x24: own back turned (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "b+1+2"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "f+2",
+   "input": "f+2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+2"
+   ],
+   "dmg": 5.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "b",
+   "input": "b+3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "b+3"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/b_c37_r32",
+   "input": "d+1",
+   "via": "T3 source command 1/2/3+LP",
+   "setup": "neutral · T3 cond 0x25: own back turned (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d+1"
+   ],
+   "dmg": 4.9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/b_c36_r33",
+   "input": "d/b+1+2",
+   "via": "T3 source command 1/2/3+LP+RP",
+   "setup": "neutral · T3 cond 0x24: own back turned (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/b+1+2"
+   ],
+   "dmg": 4.9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/b_c38",
+   "input": "d+1+2",
+   "via": "T3 source command 1/2/3+LP+RP",
+   "setup": "neutral · T3 cond 0x26: own back turned (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d+1+2"
+   ],
+   "dmg": 4.9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3_r35",
+   "input": "3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3"
+   ],
+   "dmg": 5.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/f+3",
+   "input": "d/f+3",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/f+3"
+   ],
+   "dmg": 5.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/f+4",
+   "input": "d/f+4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/f+4"
+   ],
+   "dmg": 4.9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/b+3",
+   "input": "d/b+3",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/b+3"
+   ],
+   "dmg": 5.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/f+3_r40",
+   "input": "d/f+3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/f+3"
+   ],
+   "dmg": 8.1,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "b_r43",
+   "input": "b+4",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "b+4"
+   ],
+   "dmg": 10.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "b,4",
+   "input": "b,4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "b,4"
+   ],
+   "dmg": 10.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "f+2,1",
+   "input": "f+2,1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+2",
+    "f+2,1"
+   ],
+   "dmg": 10.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "b,4,1",
+   "input": "b,4,1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "b,4",
+    "b,4,1"
+   ],
+   "dmg": 13.9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "b,4,1,4",
+   "input": "b,4,1,4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "b,4",
+    "b,4,1",
+    "b,4,1,4"
+   ],
+   "dmg": 13.9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1+3",
+   "input": "1+3",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1+3"
+   ],
+   "dmg": 17.1,
+   "react": [
+    "thrown",
+    "thrownExec"
+   ],
+   "launch": false,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    "t3_gon_row55@dorowani",
+    "t3_react_2795@dorowani"
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_react_3935@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "2+4",
+   "input": "2+4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "2+4"
+   ],
+   "dmg": 17.1,
+   "react": [
+    "thrown",
+    "thrownExec"
+   ],
+   "launch": false,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    "t3_gon_row56@dorowani",
+    "t3_react_2797@dorowani"
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_react_3935@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "d/b+1+3_r4",
+   "input": "d/b+1+3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/b+1+3"
+   ],
+   "dmg": 17.1,
+   "react": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    "t3_gon_row57@dorowani",
+    "t3_gon_grab@dorowani"
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "d/b+2+4_r4",
+   "input": "d/b+2+4",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/b+2+4"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    "t3_gon_row58@dorowani",
+    "t3_gon_grab@dorowani"
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "1+3_c36_r59",
+   "input": "BT.1+3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x24: own back turned (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "BT.1+3"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    "t3_gon_row59@dorowani",
+    "t3_gon_grab@dorowani"
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "2+4_c36_r60",
+   "input": "BT.2+4",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x24: own back turned (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "BT.2+4"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    "t3_gon_row60@dorowani",
+    "t3_gon_grab@dorowani"
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "d+4",
+   "input": "d+4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d+4"
+   ],
+   "dmg": 3.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "f+1+2_c39",
+   "input": "f+1+2",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x27: neutral (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+1+2"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u+1,2",
+   "input": "u+1,2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+1",
+    "u+1,2"
+   ],
+   "dmg": 18.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1_r110",
+   "input": "1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1"
+   ],
+   "dmg": 9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1_r111",
+   "input": "1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1"
+   ],
+   "dmg": 9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "b+3",
+   "input": "b+3",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "b+3"
+   ],
+   "dmg": 8.1,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "f+4",
+   "input": "f+4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+4"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "b_c37_r117",
+   "input": "BT.b+1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x25: own back turned (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "BT.b+1"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "b_c38_r118",
+   "input": "BT.b+1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x26: own back turned (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "BT.b+1"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/f+1",
+   "input": "u/f+1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u/f+1"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u+1",
+   "input": "u+1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+1"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/b+1",
+   "input": "u/b+1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u/b+1"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/f+1,f_c36",
+   "input": "BT.u/f+1,f",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x24: own back turned (holds)",
+   "ok": false,
+   "why": "fired [] (keys []) not 'u/f+1,f_c36'",
+   "fired": [],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/f+1,1+2_c36",
+   "input": "BT.u/f+1,1+2",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x24: own back turned (holds)",
+   "ok": false,
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'u/f+1,1+2_c36'",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/f+1,b_c36",
+   "input": "BT.u/f+1,b",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x24: own back turned (holds)",
+   "ok": false,
+   "why": "fired [] (keys []) not 'u/f+1,b_c36'",
+   "fired": [],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1+2",
+   "input": "1+2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1+2,1",
+   "input": "1+2,1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1+2",
+    "1+2,1"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1+2,1+2",
+   "input": "1+2,1+2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1+2",
+    "1+2,1+2"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1+2,1+2,1",
+   "input": "1+2,1+2,1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1+2",
+    "1+2,1+2",
+    "1+2,1+2,1"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/f+4_r129",
+   "input": "d/f+4",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/f+4"
+   ],
+   "dmg": 10.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "b+4",
+   "input": "b+4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "b+4"
+   ],
+   "dmg": 4.9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1+2_r107_r131",
+   "input": "1+2",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1+2,1_r107_r132",
+   "input": "1+2,1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1+2",
+    "1+2,1"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1+3,1_c36",
+   "input": "BT.1+3,1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x24: own back turned (holds)",
+   "ok": false,
+   "why": "fired [\"1\"] (keys [\"1\"]) not '1+3,1_c36'",
+   "fired": [
+    "1"
+   ],
+   "dmg": 9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1+3,1_c2",
+   "input": "1+3,1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x2: jab connected @0.75m · situation 2 (holds)",
+   "ok": false,
+   "why": "fired [\"1+3\"] (keys [\"1+3\"]) not '1+3,1_c2'",
+   "fired": [
+    "1+3"
+   ],
+   "dmg": 17.1,
+   "react": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [
+    "t3_gon_row55@dorowani",
+    "t3_react_2795@dorowani"
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_react_3935@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "1+3,1_c5",
+   "input": "1+3,1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x5: jab connected @0.75m · situation 5 (holds)",
+   "ok": false,
+   "why": "fired [\"1+3\"] (keys [\"1+3\"]) not '1+3,1_c5'",
+   "fired": [
+    "1+3"
+   ],
+   "dmg": 17.1,
+   "react": [
+    "sidestep",
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [
+    "t3_gon_row55@dorowani",
+    "t3_react_2795@dorowani"
+   ],
+   "vClip": [
+    "t3_king_sidestepB@kronos",
+    "t3_react_3935@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "1+3,1_c3",
+   "input": "1+3,1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x3: jab connected @0.75m · situation 3 (holds)",
+   "ok": false,
+   "why": "fired [\"1+3\"] (keys [\"1+3\"]) not '1+3,1_c3'",
+   "fired": [
+    "1+3"
+   ],
+   "dmg": 17.1,
+   "react": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [
+    "t3_gon_row55@dorowani",
+    "t3_react_2795@dorowani"
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_react_3935@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "f+1",
+   "input": "f+1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+1"
+   ],
+   "dmg": 2.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "f+1,1",
+   "input": "f+1,1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+1",
+    "f+1,1"
+   ],
+   "dmg": 6.5,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "f+1,1,1",
+   "input": "f+1,1,1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+1",
+    "f+1,1",
+    "f+1,1,1"
+   ],
+   "dmg": 6.5,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "b+1",
+   "input": "b+1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "b+1"
+   ],
+   "dmg": 14.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "4,4,4,4,4,4,4,3",
+   "input": "4,4,4,4,4,4,4,3",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "4",
+    "4,4",
+    "4,4,4",
+    "4,4,4,4",
+    "4,4,4,4,4",
+    "4,4,4,4,4,4",
+    "4,4,4,4,4,4,4",
+    "4,4,4,4,4,4,4,3"
+   ],
+   "dmg": 22,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "4_r146",
+   "input": "4",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "4"
+   ],
+   "dmg": 4.9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "4,4",
+   "input": "4,4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "4",
+    "4,4"
+   ],
+   "dmg": 17.1,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "4,4,4",
+   "input": "4,4,4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "4",
+    "4,4",
+    "4,4,4"
+   ],
+   "dmg": 22,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "4,4,4,4",
+   "input": "4,4,4,4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "4",
+    "4,4",
+    "4,4,4",
+    "4,4,4,4"
+   ],
+   "dmg": 22,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "4,4,4,4,4",
+   "input": "4,4,4,4,4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "4",
+    "4,4",
+    "4,4,4",
+    "4,4,4,4",
+    "4,4,4,4,4"
+   ],
+   "dmg": 22,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "4,4,4,4,4,4",
+   "input": "4,4,4,4,4,4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "4",
+    "4,4",
+    "4,4,4",
+    "4,4,4,4",
+    "4,4,4,4,4",
+    "4,4,4,4,4,4"
+   ],
+   "dmg": 22,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "4,4,4,4,4,4,4",
+   "input": "4,4,4,4,4,4,4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "4",
+    "4,4",
+    "4,4,4",
+    "4,4,4,4",
+    "4,4,4,4,4",
+    "4,4,4,4,4,4",
+    "4,4,4,4,4,4,4"
+   ],
+   "dmg": 22,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "f+3",
+   "input": "f+3",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+3"
+   ],
+   "dmg": 5.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "f+3,3",
+   "input": "f+3,3",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+3",
+    "f+3,3"
+   ],
+   "dmg": 5.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "f+3,3_r158",
+   "input": "f+3,3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+3",
+    "f+3,3"
+   ],
+   "dmg": 11.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "f+3,3_c27",
+   "input": "f+3,3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x1b: jab guarded @0.75m (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+3",
+    "f+3,3"
+   ],
+   "dmg": 1.4,
+   "react": [
+    "block"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "f+3,3_c26_r159",
+   "input": "f+3,3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x1a: jab connected @0.75m (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+3",
+    "f+3,3"
+   ],
+   "dmg": 13.9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1_r163",
+   "input": "1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1,1",
+   "input": "1,1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1",
+    "1,1"
+   ],
+   "dmg": 9,
+   "react": [
+    "hitstun",
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    "t3_gon_row165@dorowani",
+    "t3_gon_grab@dorowani"
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "1_r171",
+   "input": "1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1_r173",
+   "input": "1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1_r177",
+   "input": "1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1,2",
+   "input": "1,2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1",
+    "1,2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1,2,2",
+   "input": "1,2,2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1",
+    "1,2",
+    "1,2,2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1,2,2,2",
+   "input": "1,2,2,2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1",
+    "1,2",
+    "1,2,2",
+    "1,2,2,2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1,2,2,2,2",
+   "input": "1,2,2,2,2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1",
+    "1,2",
+    "1,2,2",
+    "1,2,2,2",
+    "1,2,2,2,2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1_r189",
+   "input": "1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1"
+   ],
+   "dmg": 48.1,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1,1_c26_r190",
+   "input": "1,1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x1a: jab connected @0.75m (holds)",
+   "ok": false,
+   "why": "string fired [\"1,1\"]",
+   "fired": [
+    "1,1"
+   ],
+   "dmg": 0.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/f+3+4",
+   "input": "u/f+3+4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u/f+3+4"
+   ],
+   "dmg": 4.9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/f+3+4,1",
+   "input": "u/f+3+4,1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u/f+3+4",
+    "u/f+3+4,1"
+   ],
+   "dmg": 4.9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u+1+2",
+   "input": "u+1+2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+1+2"
+   ],
+   "dmg": 17.1,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/f+1+2",
+   "input": "u/f+1+2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u/f+1+2"
+   ],
+   "dmg": 17.1,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/b+1+2",
+   "input": "u/b+1+2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u/b+1+2"
+   ],
+   "dmg": 17.1,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/f+3+4_r107",
+   "input": "d/f+3+4",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/f+3+4"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "f+3+4_r2",
+   "input": "f+3+4",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+3+4"
+   ],
+   "dmg": 19.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "f+1+2",
+   "input": "f+1+2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+1+2"
+   ],
+   "dmg": 3.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "f+1+2,1+2",
+   "input": "f+1+2,1+2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+1+2",
+    "f+1+2,1+2"
+   ],
+   "dmg": 3.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "f+1+2,1+2,1",
+   "input": "f+1+2,1+2,1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+1+2",
+    "f+1+2,1+2",
+    "f+1+2,1+2,1"
+   ],
+   "dmg": 3.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "f+1+2,1+2,1,1+2",
+   "input": "f+1+2,1+2,1,1+2",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+1+2",
+    "f+1+2,1+2",
+    "f+1+2,1+2,1",
+    "f+1+2,1+2,1,1+2"
+   ],
+   "dmg": 3.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "f+1+2,1+2,1,1+2,1",
+   "input": "f+1+2,1+2,1,1+2,1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+1+2",
+    "f+1+2,1+2",
+    "f+1+2,1+2,1",
+    "f+1+2,1+2,1,1+2",
+    "f+1+2,1+2,1,1+2,1"
+   ],
+   "dmg": 3.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1+2_r210",
+   "input": "1+2",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "f+2+3",
+   "input": "f+2+3",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+2+3"
+   ],
+   "dmg": 19.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "f+1+2_r213",
+   "input": "f+1+2",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+1+2"
+   ],
+   "dmg": 13,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/b+1",
+   "input": "d/b+1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/b+1"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/f+1",
+   "input": "d/f+1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/f+1"
+   ],
+   "dmg": 4.1,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "b_r218",
+   "input": "b+1+2",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "b+1+2"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "b_r219",
+   "input": "b+3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "b+3"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "b_r220",
+   "input": "b+4",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "b+4"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "b_r221",
+   "input": "b+3+4",
+   "via": "T3 source command 4/6+LK+RK",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "b+3+4"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "b_c36_r222",
+   "input": "f+3+4",
+   "via": "T3 source command 4/6/7/8/9+LK+RK",
+   "setup": "neutral · T3 cond 0x24: own back turned (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+3+4"
+   ],
+   "dmg": 10.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "b_c37",
+   "input": "u/b+3+4",
+   "via": "T3 source command 4/6/7/8/9+LK+RK",
+   "setup": "neutral · T3 cond 0x25: own back turned (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u/b+3+4"
+   ],
+   "dmg": 10.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "b_c38",
+   "input": "u+3+4",
+   "via": "T3 source command 4/6/7/8/9+LK+RK",
+   "setup": "neutral · T3 cond 0x26: own back turned (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+3+4"
+   ],
+   "dmg": 10.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/b_c36_r223",
+   "input": "d/b+3+4",
+   "via": "T3 source command 1/2/3+LK+RK",
+   "setup": "neutral · T3 cond 0x24: own back turned (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d/b+3+4"
+   ],
+   "dmg": 10.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/b_c37",
+   "input": "d+3+4",
+   "via": "T3 source command 1/2/3+LK+RK",
+   "setup": "neutral · T3 cond 0x25: own back turned (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "d+3+4"
+   ],
+   "dmg": 10.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3_r224",
+   "input": "3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3,1_c36",
+   "input": "BT.3,1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x24: own back turned (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "BT.3,1"
+   ],
+   "dmg": 10.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3_r226",
+   "input": "3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3"
+   ],
+   "dmg": 10.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3_r227",
+   "input": "3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d+4_c36_r228",
+   "input": "BT.d+4",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x24: own back turned (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "BT.d+4"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3+4",
+   "input": "3+4",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired but did not connect",
+   "fired": [
+    "3+4"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1_r234",
+   "input": "1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1_r235",
+   "input": "1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1_r236",
+   "input": "1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/f+1,3+4_c36",
+   "input": "BT.u/f+1,3+4",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x24: own back turned (holds)",
+   "ok": false,
+   "why": "fired [\"3+4\"] (keys [\"3+4\"]) not 'u/f+1,3+4_c36'",
+   "fired": [
+    "3+4"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1_r240",
+   "input": "1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1_r241",
+   "input": "1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1"
+   ],
+   "dmg": 5.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "1_r242",
+   "input": "1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1"
+   ],
+   "dmg": 5.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u+3",
+   "input": "u+3",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+3"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/f+3",
+   "input": "u/f+3",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u/f+3"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "u/b+3",
+   "input": "u/b+3",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u/b+3"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3_r246",
+   "input": "3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3_r247",
+   "input": "3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3,1_c28",
+   "input": "3,1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x1c: jab whiffed (NOT holding)",
+   "ok": false,
+   "why": "fired [\"3\"] (keys [\"3\"]) not '3,1_c28'",
+   "fired": [
+    "3"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3_r249",
+   "input": "3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3_r251",
+   "input": "3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3_r253",
+   "input": "3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3_r255",
+   "input": "3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3_r257",
+   "input": "3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3_r260",
+   "input": "3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3_r261",
+   "input": "3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3_r262",
+   "input": "3",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3+4_r263",
+   "input": "3+4",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3+4"
+   ],
+   "dmg": 4.9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3+4,1",
+   "input": "3+4,1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired but did not connect",
+   "fired": [
+    "3+4",
+    "3+4,1"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3+4,1,1",
+   "input": "3+4,1,1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired but did not connect",
+   "fired": [
+    "3+4",
+    "3+4,1",
+    "3+4,1,1"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "3+4,1,1,1",
+   "input": "3+4,1,1,1",
+   "via": "own input",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired but did not connect",
+   "fired": [
+    "3+4",
+    "3+4,1",
+    "3+4,1,1",
+    "3+4,1,1,1"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/b+1+3,1_c11",
+   "input": "d/b+1+3,1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0xb: jab connected @0.75m · situation 11 (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1,1",
+    "d/b+1+3,1"
+   ],
+   "dmg": 0,
+   "react": [
+    "knockdown"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/b+2+4,1_c10",
+   "input": "d/b+2+4,1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0xa: jab connected @0.75m · situation 10 (holds)",
+   "ok": false,
+   "why": "fired [\"1,2\"] (keys [\"1,2\"]) not 'd/b+2+4,1_c10'",
+   "fired": [
+    "1,2"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "knockdown",
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/b+2+4,d/b+1_c10",
+   "input": "d/b+2+4,d/b+1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0xa: jab connected @0.75m · situation 10 (holds)",
+   "ok": false,
+   "why": "fired [\"1,2\"] (keys [\"1,2\"]) not 'd/b+2+4,d/b+1_c10'",
+   "fired": [
+    "1,2"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "knockdown",
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/b+1+3,1_c15",
+   "input": "d/b+1+3,1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0xf: jab connected @0.75m · situation 15 (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1,1",
+    "d/b+1+3,1"
+   ],
+   "dmg": 0,
+   "react": [
+    "knockdown"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/b+1+3,1_c14",
+   "input": "d/b+1+3,1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0xe: jab connected @0.75m · situation 14 (holds)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "1,1",
+    "d/b+1+3,1"
+   ],
+   "dmg": 0,
+   "react": [
+    "knockdown"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "d/b+1+3,1_c17",
+   "input": "d/b+1+3,1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x11: jab connected @0.75m · situation 17 (NOT holding)",
+   "ok": false,
+   "why": "fired [\"1,1\"] (keys [\"1,1\"]) not 'd/b+1+3,1_c17'",
+   "fired": [
+    "1,1"
+   ],
+   "dmg": 0,
+   "react": [
+    "sidestep",
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [
+    "t3_gon_row165@dorowani",
+    "t3_gon_grab@dorowani"
+   ],
+   "vClip": [
+    "t3_king_sidestepB@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "d/b+1+3,1_c16",
+   "input": "d/b+1+3,1",
+   "via": "equipped via moveset loadout",
+   "setup": "neutral · T3 cond 0x10: jab connected @0.75m · situation 16 (NOT holding)",
+   "ok": false,
+   "why": "fired [\"1,1\"] (keys [\"1,1\"]) not 'd/b+1+3,1_c16'",
+   "fired": [
+    "1,1"
+   ],
+   "dmg": 0,
+   "react": [
+    "sidestep",
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [
+    "t3_gon_row165@dorowani",
+    "t3_gon_grab@dorowani"
+   ],
+   "vClip": [
+    "t3_king_sidestepA@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
+   "slotted": true
+  },
+  {
+   "key": "wh_spirit_1",
+   "input": "SPIRIT.1+2",
+   "via": "equipped via moveset loadout",
+   "setup": "near object",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "SPIRIT.1+2"
+   ],
+   "dmg": 31,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_spirit_2",
+   "input": "SPIRIT.3+4",
+   "via": "equipped via moveset loadout",
+   "setup": "near object",
+   "ok": false,
+   "why": "fired but did not connect",
+   "fired": [
+    "SPIRIT.3+4"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_spirit_3",
+   "input": "SPIRIT.2+3",
+   "via": "equipped via moveset loadout",
+   "setup": "near object",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "SPIRIT.2+3"
+   ],
+   "dmg": 35.9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_kesshou_1",
+   "input": "KESSHOU.1+2",
+   "via": "equipped via moveset loadout",
+   "setup": "opp 12%, rage spent",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "KESSHOU.1+2"
+   ],
+   "dmg": 12,
+   "react": [
+    "ko"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_kesshou_2",
+   "input": "KESSHOU.3+4",
+   "via": "equipped via moveset loadout",
+   "setup": "opp 12%, rage spent",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "KESSHOU.3+4"
+   ],
+   "dmg": 12,
+   "react": [
+    "ko"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_kesshou_3",
+   "input": "KESSHOU.2+3",
+   "via": "equipped via moveset loadout",
+   "setup": "opp 12%, rage spent",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "KESSHOU.2+3"
+   ],
+   "dmg": 12,
+   "react": [
+    "ko"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_soul9_1",
+   "input": "SOUL9.1+2",
+   "via": "equipped via moveset loadout",
+   "setup": "soul release ready",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "SOUL9.1+2"
+   ],
+   "dmg": 39.1,
+   "react": [
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_soul9_2",
+   "input": "SOUL9.3+4",
+   "via": "equipped via moveset loadout",
+   "setup": "soul release ready",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "SOUL9.3+4"
+   ],
+   "dmg": 42.4,
+   "react": [
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_soul9_3",
+   "input": "SOUL9.2+3",
+   "via": "equipped via moveset loadout",
+   "setup": "soul release ready",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "SOUL9.2+3"
+   ],
+   "dmg": 45.6,
+   "react": [
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_reihou_1",
+   "input": "REIHOU.1+2",
+   "via": "equipped via moveset loadout",
+   "setup": "opponent raging",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "REIHOU.1+2"
+   ],
+   "dmg": 24.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_reihou_2",
+   "input": "REIHOU.3+4",
+   "via": "equipped via moveset loadout",
+   "setup": "opponent raging",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "REIHOU.3+4"
+   ],
+   "dmg": 26.1,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_reihou_3",
+   "input": "REIHOU.2+3",
+   "via": "equipped via moveset loadout",
+   "setup": "opponent raging",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "REIHOU.2+3"
+   ],
+   "dmg": 28.5,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_seal_1",
+   "input": "SEAL.1+2",
+   "via": "equipped via moveset loadout",
+   "setup": "final round, opp 18%, rage spent",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "SEAL.1+2"
+   ],
+   "dmg": 18,
+   "react": [
+    "ko"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_seal_2",
+   "input": "SEAL.3+4",
+   "via": "equipped via moveset loadout",
+   "setup": "final round, opp 18%, rage spent",
+   "ok": false,
+   "why": "fired but did not connect",
+   "fired": [
+    "SEAL.3+4"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "wh_seal_3",
+   "input": "SEAL.2+3",
+   "via": "equipped via moveset loadout",
+   "setup": "final round, opp 18%, rage spent",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "SEAL.2+3"
+   ],
+   "dmg": 18,
+   "react": [
+    "ko"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "R.1+2",
+   "input": "R.1+2",
+   "via": "own input",
+   "setup": "rage (hp 20%)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "R.1+2"
+   ],
+   "dmg": 26.1,
+   "react": [
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "RD.3+4",
+   "input": "RD.3+4",
+   "via": "own input",
+   "setup": "rage (hp 20%)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "RD.3+4"
+   ],
+   "dmg": 19.6,
+   "react": [
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "UB.2+3",
+   "input": "UB.2+3",
+   "via": "own input",
+   "setup": "urge available",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "UB.2+3"
+   ],
+   "dmg": 11.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  },
+  {
+   "key": "US.2+3",
+   "input": "US.2+3",
+   "via": "own input",
+   "setup": "soul urge on",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "US.2+3"
+   ],
+   "dmg": 24.4,
+   "react": [
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
+   "slotted": true
+  }
+ ],
+ "juggle": [
+  {
+   "key": "wh_kesshou_1",
+   "ok": false,
+   "why": "follow-up 1 never hit the airborne opponent"
+  },
+  {
+   "key": "wh_kesshou_2",
+   "ok": false,
+   "why": "follow-up 1 never hit the airborne opponent"
+  },
+  {
+   "key": "wh_kesshou_3",
+   "ok": false,
+   "why": "follow-up 1 never hit the airborne opponent"
+  },
+  {
+   "key": "wh_soul9_1",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "key": "wh_soul9_2",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "key": "wh_soul9_3",
+   "ok": true,
+   "why": ""
+  },
+  {
+   "key": "wh_seal_1",
+   "ok": false,
+   "why": "follow-up 1 never hit the airborne opponent"
+  },
+  {
+   "key": "wh_seal_3",
+   "ok": false,
+   "why": "follow-up 1 never hit the airborne opponent"
+  },
+  {
+   "key": "R.1+2",
+   "ok": false,
+   "why": "follow-up 1 never hit the airborne opponent"
+  },
+  {
+   "key": "RD.3+4",
+   "ok": false,
+   "why": "follow-up 1 never hit the airborne opponent"
+  },
+  {
+   "key": "US.2+3",
+   "ok": false,
+   "why": "follow-up 1 never hit the airborne opponent"
+  }
+ ]
+}
