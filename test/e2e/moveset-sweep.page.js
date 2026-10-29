@@ -258,13 +258,15 @@
     const alias = MS.legacyAlias && MS.legacyAlias(m.key);
     const ok = (n) => n && !parse(n).err && !parse(n).motionOnly;
     if (MS.canonNotation && parse(m.key).err && MS.canonNotation(m.key) !== m.key && ok(MS.canonNotation(m.key)) && MS.resolveMoveKey(id, MS.canonNotation(m.key)) === m.key) { notation = MS.canonNotation(m.key); via = 'canonical spelling'; }
+    else if (parse(m.key).err && MS.t3CommandNotations && MS.t3CommandNotations(mv.t3_command).some((c) => ok(c) && MS.resolveMoveKey(id, c) === m.key)) {
+      notation = MS.t3CommandNotations(mv.t3_command).find((c) => ok(c) && MS.resolveMoveKey(id, c) === m.key); via = `T3 source command ${mv.t3_command}`; }
     else if (alias && parse(m.key).err && MS.resolveMoveKey(id, alias) === m.key) { notation = alias; via = 'legacy P/K alias'; }
     else if (vrow && ok(vrow.note)) { notation = vrow.note; via = vrow.kind === 'spins' ? `stance spin variant (${vrow.note} after ${vrow.spinN} stance entries)` : `${vrow.kind} normal by distance`; if (vrow.kind === 'close') gap = Math.min(gap, MS.CLOSE_RANGE - 0.3); else if (vrow.kind === 'far') gap = Math.max(gap, MS.CLOSE_RANGE + 0.05); }
     else if (vBase) { via = 'equipped via moveset loadout'; }
     else if (!m.slotted || !parse(m.key).hits) {
       // the editor equips a move on one of its input_slots (or its legacy alias / own input)
       const cn = MS.canonNotation || ((x) => x);
-      const cands = [alias, ...(mv.input_slots || []), m.input, cn(m.input), cn(m.key), t3cmd(mv.t3_command)].filter(ok);
+      const cands = [alias, ...(mv.input_slots || []), m.input, cn(m.input), cn(m.key), t3cmd(mv.t3_command), ...(MS.t3CommandNotations ? MS.t3CommandNotations(mv.t3_command) : [])].filter(ok);
       notation = cands[0] || m.input; via = 'equipped via moveset loadout'; }
     const P = parse(notation);
     if (P.err) return { key: m.key, input: notation, ok: false, why: 'unparsed: ' + P.err, via };
