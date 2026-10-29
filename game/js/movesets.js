@@ -952,8 +952,12 @@ export class TekkenBuffer {
       // Tekken '~' (wavu wiki / TekkenDocs: "immediately after"): a press inside the first
       // TILDE_WINDOW of the hit takes the tilde branch before the ',' string ('f+2,1~2' vs 'f+2,1,2').
       const seps = ctx.attackT != null && ctx.attackT <= TILDE_WINDOW ? ['~', ',', ':'] : [',', '~', ':'];
+      /* Mid-string state (Tekken notation '1,NSS.1', 'f+2,R.1+2'; TekkenDocs / wavu wiki): the next
+         hit is pressed from the stance the string put the fighter in, or while raging. Before
+         (sweep 2026-10-29), the plain ',1' continuation always won and the stance hit never came out. */
+      const mid = [ctx.stance, ctx.rage ? 'R' : null].filter(Boolean);
       for (const sep of seps) {
-        for (const c of [`${this.lastMove}${sep}${withDir}`, `${this.lastMove}${sep}${input}`]) {
+        for (const c of [...mid.map((m) => `${this.lastMove}${sep}${m}.${withDir}`), ...mid.map((m) => `${this.lastMove}${sep}${m}.${input}`), `${this.lastMove}${sep}${withDir}`, `${this.lastMove}${sep}${input}`]) {
           if (has(c)) return this._recordMove(c);
         }
       }
@@ -1040,7 +1044,7 @@ export class TekkenBuffer {
   }
 
   /** Would `input` continue the current string? (lets a press during a move buffer the next hit) */
-  continuation(input) {
+  continuation(input, ctx = {}) {
     if (!this.lastMove) return null;
     const dir = this.lastDir && this.lastDir !== 'n' ? this.lastDir : '';
     // BATCH STRING FIX (2026-10-24): slots redirect singles to ~shadow keys
@@ -1062,7 +1066,8 @@ export class TekkenBuffer {
     const ms = playedMoveset(this.fighterId);
     for (const base of bases) {
       for (const sep of [',', '~', ':']) {
-        const cands = [dir ? `${base}${sep}${dir}+${input}` : null, `${base}${sep}${input}`];
+        const mid = [ctx.stance, ctx.rage ? 'R' : null].filter(Boolean); // mid-string state ('1,NSS.1'), see _pressV2
+        const cands = [...mid.flatMap((m) => [dir ? `${base}${sep}${m}.${dir}+${input}` : null, `${base}${sep}${m}.${input}`]), dir ? `${base}${sep}${dir}+${input}` : null, `${base}${sep}${input}`];
         for (const c of cands) if (c && resolveMoveKey(this.fighterId, c)) { this._strPath = null; return c; }
         for (const c of cands) if (c && ms && strPrefixesHas(this.fighterId, ms, c)) {
           this._strPath = c; this._strPathT = now; this._strPending = true; return null;

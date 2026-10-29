@@ -116,6 +116,10 @@
     for (let i = 0; i < P.hits.length; i++) {
       const h = P.hits[i];
       if (i) step(h.sep === '~' ? 2 : h.sep === ':' ? 6 : 9, out);
+      // A throw's follow-up ('2+4,2') is entered once the throw has grabbed, as played.
+      if (i && f.attack && (f.attack.isGrab || f.attack.throw || f.attack.move_class === 'throw')) {
+        for (let k = 0; k < 90 && f.state === 'attack'; k++) step(1, out);
+        if (/throw/.test(f.state)) step(6, out); }
       pressHit(h, f, out, P.pre === 'FC' && i === 0);
     }
     setDir('n');

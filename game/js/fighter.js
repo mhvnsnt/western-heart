@@ -1677,6 +1677,17 @@ export class Fighter {
       // A hit already queued is the string's next step: a further press chains on from
       // it (2,1 then 2 -> 2,1,2), never re-resolves against the move still playing,
       // which overwrote the queue (2 -> 2,2) and dropped 3+ hit strings.
+      // '3,d+1+2' (TekkenDocs: direction and button pressed together): the stick lands a
+      // frame or two before the buttons, so a dir-only follow-up ('3,d') queued just now is
+      // the first half of the dir+button step. Sweep 2026-10-29: the dir-only key stole it.
+      const dq = this._dirFollowQ;
+      if (dq && this._queuedNext && (this._clock || 0) - dq.t < 0.1) {
+        const up = [`${dq.b}${dq.sep}${dq.d}+${name}`, `${dq.b}${dq.sep}${dq.d.toUpperCase()}+${name}`].find((k) => resolveMoveKey(this._movesetId, k));
+        const q = this._queuedAfter && this._queuedAfter.length ? this._queuedAfter : null;
+        if (up && (q ? q[q.length - 1] : this._queuedNext) === dq.c) {
+          if (q) q[q.length - 1] = up; else this._queuedNext = up;
+          this._dirFollowQ = null; return true; }
+      }
       if (this._queuedNext) {
         const chain = this._queuedAfter || (this._queuedAfter = []);
         const saved = this.tekken.lastMove;
@@ -1688,13 +1699,13 @@ export class Fighter {
           if (/^[1234]$/.test(single) && name.split('+').includes(single) &&
               (this._clock || 0) - (this._queuedPressT || -1) < 0.06) {
             this.tekken.lastMove = chain.length > 1 ? chain[chain.length - 2] : chain.length ? this._queuedNext : saved;
-            const up = this.tekken.continuation(name);
+            const up = this.tekken.continuation(name, this._inputCtx());
             this.tekken.lastMove = saved;
             if (up) { if (chain.length) chain[chain.length - 1] = up; else this._queuedNext = up; return true; }
           }
         }
         this.tekken.lastMove = chain.length ? chain[chain.length - 1] : this._queuedNext;
-        let after = this.tekken.continuation(name);
+        let after = this.tekken.continuation(name, this._inputCtx());
         if (!after) {
           // '1' after f+2 resolved as 'f+2,1', but the list's 3-hit route is 'f+2~1,1+2':
           // re-route the queued tail through its other separator when only that one continues.
@@ -1704,7 +1715,7 @@ export class Fighter {
             const alt = tail.slice(0, cut) + sep + tail.slice(cut + 1);
             if (!resolveMoveKey(this.tekken.fighterId, alt)) continue;
             this.tekken.lastMove = alt;
-            const via = this.tekken.continuation(name);
+            const via = this.tekken.continuation(name, this._inputCtx());
             if (via) { if (chain.length) chain[chain.length - 1] = alt; else this._queuedNext = alt; after = via; break; }
           }
         }
@@ -1712,7 +1723,7 @@ export class Fighter {
         if (after) { chain.push(after); this._queuedPressT = this._clock || 0; }
         return true;
       }
-      const cont = this.tekken.continuation(name);
+      const cont = this.tekken.continuation(name, this._inputCtx());
       if (cont) { this._queuedNext = cont; this._queuedPressT = this._clock || 0; return true; }
       if (this.tekken._strPending) { this._stringGraceUntil = Math.max(this._stringGraceUntil || 0, performance.now() + 500); return true; } // extends an open partial string; fires at its full step
       // Chord upgrade: input.js emits the first button at once and the chord when the second
@@ -1784,6 +1795,7 @@ export class Fighter {
       if (!resolveMoveKey(ms, c)) continue;
       if (this._queuedNext) (this._queuedAfter || (this._queuedAfter = [])).push(c); else this._queuedNext = c;
       this._queuedPressT = this._clock || 0;
+      this._dirFollowQ = { c, b, sep, d: dir, t: this._clock || 0 };
       return true;
     }
     return false;
@@ -2029,23 +2041,47 @@ export class Fighter {
     const ms = getFighterMoveset(this._movesetId);
     const an = this._chainFrom || this.attackName;
     const cur = ms && (ms.moves[resolveMoveKey(this._movesetId, an) || an] || ms.moves[an]);
-    const tag = cur && throwStageTag(cur.name); const keys = tag ? throwStageKeys(this._movesetId, tag) : [];
-    if (!keys.length || this._chainNext) return false;
+    const tag = cur && throwStageTag(cur.name); let keys = tag ? throwStageKeys(this._movesetId, tag) : [];
+    /* Throw follow-ups written as a plain string ('2+4,2', '2+4,1,2,1', '1+3,1'; TekkenDocs / wavu
+       wiki notation) have no stage tag: the throw's own key is the stage. Before (moveset sweep
+       2026-10-29), only tagged chain throws ('AB1.1,1+2') could be continued, so every untagged
+       throw follow-up in every fighter's list stopped at the throw. A tag with no stage rows
+       (a named throw that only has plain follow-ups) is the same case. */
+    if (!keys.length || !(this._chainSeq || []).length) {
+      // Played through the string resolver (continuation): same lists, T7/T8 copies,
+      // partial steps and alias spellings as a string off a normal hit.
+      if (this.state !== 'throwing' && this.state !== 'throwExec') return false;
+      const saved = this.tekken.lastMove;
+      if (this._chainNext) this.tekken.lastMove = this._chainNext;
+      const c = this.tekken.continuation(name, this._inputCtx());
+      // a tagged chain throw whose own key also has plain follow-ups: the plain string
+      // wins when it exists, else the press falls through to the stage rows below
+      if (!c && this.tekken._strPending) { this.tekken.lastMove = saved; return true; }
+      if (!c) { this.tekken.lastMove = saved; if (!keys.length) return false; } else {
+      this._chainNext = c; this.tekken.lastMove = c;
+      // a longer tagged stage on the same press ('SLEEPER.1,1,1+2' vs 'DMD.2,1') keeps listening;
+      // the stage replaces the plain follow-up once its next press arrives
+      this._chainOpen = keys.some((k) => k.startsWith(`${tag}.${name},`) || k.startsWith(`${tag}.${name}+`));
+      if (this._chainOpen) { this._chainSeq = [name]; this._chainPressT = this._clock || 0; }
+      return true; }
+    }
+    const pre = `${tag}.`;
+    if (this._chainNext && !this._chainOpen) return false;
     const now = this._clock || 0; let seq = this._chainSeq || [];
     const tail = seq[seq.length - 1];
     // input.js emits '1' then '1+2' for one chord press: the chord replaces its single.
     if (name.includes('+') && tail && /^[1234]$/.test(tail) && name.split('+').includes(tail) && now - (this._chainPressT || -1) < 0.06) seq = seq.slice(0, -1);
     this._chainPressT = now;
     for (const s of [[...seq, name], [name]]) {
-      const k = `${tag}.${s.join(',')}`;
-      if (keys.includes(k)) { this._chainNext = k; this._chainSeq = []; return true; }
+      const k = `${pre}${s.join(',')}`;
+      if (keys.includes(k)) { this._chainNext = k; this._chainSeq = []; this._chainOpen = false; return true; }
       // ',' = more presses follow; '+' = this single is the first half of a chord press
       if (keys.some((x) => x.startsWith(k + ',') || x.startsWith(k + '+'))) { this._chainSeq = s; return true; }
     }
-    this._chainSeq = []; return false;
+    this._chainSeq = []; const open = this._chainOpen; this._chainOpen = false; return !!open;
   }
   _startThrowChain(victim) {
-    const key = this._chainNext; this._chainNext = null; this._chainSeq = [];
+    const key = this._chainNext; this._chainNext = null; this._chainSeq = []; this._chainOpen = false;
     const m = key && getRealMove(this._movesetId, key);
     if (!m || !victim || victim.dead || this.dead) return false;
     victim._throwPair = null; victim._throwPairT = 0; victim._throwAttacker = null; victim._throwMove = null;
@@ -2083,7 +2119,17 @@ export class Fighter {
     this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
     return true;
   }
-  _enter(state) { this.state = state; this.stateT = 0; }
+  _enter(state) {
+    // A move out of a sidestep (SS.X, or any attack cancelling the step) is aimed at the
+    // opponent: Tekken re-aligns the fight axis on the step (TekkenDocs / wavu wiki
+    // 'SS' moves). Moveset sweep 2026-10-29: the body kept its pre-step yaw, so every SS.*
+    // row in the roster swung past the opponent's side.
+    if (state === 'attack' && this.state === 'sidestep' && this._opp && this._opp.root && !this.brawler) {
+      this.vz = 0; this._ssAlign = true;
+    }
+    if (state !== 'attack') this._ssAlign = false;
+    this.state = state; this.stateT = 0;
+  }
 
   /* ---------------- defense / damage ---------------- */
   isBlocking() { return this.state === 'block'; }
@@ -2931,7 +2977,12 @@ export class Fighter {
       // sidestep so both fighters are back on one line. Our camera axis is
       // fixed, so a fighter in neutral drifts back to the line (z=0). Before
       // this, one sidestep left |dz| > 0.75 forever and every strike whiffed.
-      if (this.canAct() && this.onGround && this.vz === 0) {
+      if (this._ssAlign && this.state === 'attack' && this.onGround && opponent) {
+        // the step's re-aligned axis: back onto the fight line through the move, body
+        // turned at the opponent the whole way (see _enter)
+        this.root.position.z += (opponent.root.position.z - this.root.position.z) * (1 - Math.pow(1e-5, dt));
+        this._faceYaw = Math.atan2(opponent.root.position.x - this.root.position.x, opponent.root.position.z - this.root.position.z);
+      } else if (this.canAct() && this.onGround && this.vz === 0) {
         this.root.position.z *= Math.pow(0.004, dt);
         if (Math.abs(this.root.position.z) < 0.01) this.root.position.z = 0;
       }
