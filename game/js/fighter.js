@@ -1677,6 +1677,17 @@ export class Fighter {
       // A hit already queued is the string's next step: a further press chains on from
       // it (2,1 then 2 -> 2,1,2), never re-resolves against the move still playing,
       // which overwrote the queue (2 -> 2,2) and dropped 3+ hit strings.
+      // '3,d+1+2' (TekkenDocs: direction and button pressed together): the stick lands a
+      // frame or two before the buttons, so a dir-only follow-up ('3,d') queued just now is
+      // the first half of the dir+button step. Sweep 2026-10-29: the dir-only key stole it.
+      const dq = this._dirFollowQ;
+      if (dq && this._queuedNext && (this._clock || 0) - dq.t < 0.1) {
+        const up = [`${dq.b}${dq.sep}${dq.d}+${name}`, `${dq.b}${dq.sep}${dq.d.toUpperCase()}+${name}`].find((k) => resolveMoveKey(this._movesetId, k));
+        const q = this._queuedAfter && this._queuedAfter.length ? this._queuedAfter : null;
+        if (up && (q ? q[q.length - 1] : this._queuedNext) === dq.c) {
+          if (q) q[q.length - 1] = up; else this._queuedNext = up;
+          this._dirFollowQ = null; return true; }
+      }
       if (this._queuedNext) {
         const chain = this._queuedAfter || (this._queuedAfter = []);
         const saved = this.tekken.lastMove;
@@ -1784,6 +1795,7 @@ export class Fighter {
       if (!resolveMoveKey(ms, c)) continue;
       if (this._queuedNext) (this._queuedAfter || (this._queuedAfter = [])).push(c); else this._queuedNext = c;
       this._queuedPressT = this._clock || 0;
+      this._dirFollowQ = { c, b, sep, d: dir, t: this._clock || 0 };
       return true;
     }
     return false;
@@ -2035,18 +2047,21 @@ export class Fighter {
        2026-10-29), only tagged chain throws ('AB1.1,1+2') could be continued, so every untagged
        throw follow-up in every fighter's list stopped at the throw. A tag with no stage rows
        (a named throw that only has plain follow-ups) is the same case. */
-    if (!keys.length) {
+    if (!keys.length || !(this._chainSeq || []).length) {
       // Played through the string resolver (continuation): same lists, T7/T8 copies,
       // partial steps and alias spellings as a string off a normal hit.
       if (this.state !== 'throwing' && this.state !== 'throwExec') return false;
       const saved = this.tekken.lastMove;
       if (this._chainNext) this.tekken.lastMove = this._chainNext;
       const c = this.tekken.continuation(name, this._inputCtx());
-      if (!c) { this.tekken.lastMove = saved; return !!this.tekken._strPending; }
-      this._chainNext = c; this.tekken.lastMove = c; return true;
+      // a tagged chain throw whose own key also has plain follow-ups: the plain string
+      // wins when it exists, else the press falls through to the stage rows below
+      if (!c && this.tekken._strPending) { this.tekken.lastMove = saved; return true; }
+      if (!c) { this.tekken.lastMove = saved; if (!keys.length) return false; } else {
+      this._chainNext = c; this.tekken.lastMove = c; return true; }
     }
-    let pre = `${tag}.`;
-    if (!keys.length || this._chainNext) return false;
+    const pre = `${tag}.`;
+    if (this._chainNext) return false;
     const now = this._clock || 0; let seq = this._chainSeq || [];
     const tail = seq[seq.length - 1];
     // input.js emits '1' then '1+2' for one chord press: the chord replaces its single.
