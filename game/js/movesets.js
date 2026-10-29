@@ -184,6 +184,31 @@ export function throwStageKeys(fighterId, tag) {
   return c[tag] || (c[tag] = Object.keys(ms.moves).filter((k) => k.startsWith(tag + '.')));
 }
 
+/* KOF XV system actions (moveset sweep 2026-10-29): the row's qualifier names the engine
+   system that owns it. Dream Cancel wiki, KOF XV Defense / Offense / Meters pages. */
+export function systemTagOf(input) {
+  const s = String(input || '');
+  if (/\(guard\)/i.test(s)) return 'guard';
+  if (/\(MAX\)/.test(s)) return 'max';
+  if (/\(taunt\)/i.test(s)) return 'taunt';
+  if (/\(throw escape\)/i.test(s)) return 'throw_escape';
+  if (/\(roll\)/i.test(s)) return 'roll';
+  if (/\(backdash\)/i.test(s)) return 'backdash';
+  if (/\(dash\)/i.test(s)) return 'dash';
+  return null;
+}
+/** This fighter's system rows: [{ key, sys, input (canonical) }]. Cached. */
+export function systemRows(fighterId) {
+  const ms = getFighterMoveset(fighterId);
+  if (!ms || !ms.moves) return [];
+  if (ms._sysRows) return ms._sysRows;
+  const out = [];
+  for (const [k, mv] of Object.entries(ms.moves)) {
+    const sys = mv && systemTagOf(mv.input);
+    if (sys) { mv.system = sys; out.push({ key: k, sys, input: canonNotation(mv.input) }); }
+  }
+  return (ms._sysRows = out);
+}
 export function getFighterMoveset(fighterId) {
   const m = _movesets[fighterId] || _g.WH_MOVESETS?.[fighterId] || null;
   return m && m.moves ? m : null;
@@ -332,6 +357,7 @@ export function canonNotation(n) {
   s = s.replace(/^([A-Z][A-Z0-9_]{1,})\*?(?:\s*\(\d+\s*spins?\))?\s*,\s*(?=[udfbUDFB]?(?:\/[udfbUDFB])?\+?[1-4])/, '$1.');
   // descriptive note words in parentheses after a button: '(guard)', '(knife)', '(gedan)', '(max)'...
   s = s.replace(/([1-4*])\s*\((?:near|far|close|rush|knife|gedan|max|MAX|tap|guard|ground|blowback|Irish-whip variant|throw escape|taunt)\)/g, '$1'); // T7 list spelling of the rage state prefix
+  s = s.replace(/^([fb]),\1\s*\((?:roll|dash|backdash)\)$/i, '$1,$1'); // KOF system rows: double tap
   s = s.replace(/\b(df|db|uf|ub|DF|DB|UF|UB)(?=\+|,|$|~|:)/g, (m) => _DIAG[m]);
   s = s.replace(/^(ws|WS)\s*(?=[1-4])/, 'WS.');
   s = s.replace(/^([A-Z][A-Z0-9_]{1,})\s+(?=[1-4udfbnUDFB(])/, '$1.');
@@ -354,6 +380,7 @@ function _prepare(ms) {
   const variants = {};
   for (const [k, mv] of Object.entries(ms.moves)) {
     const raw = mv && mv.input;
+    { const sys = systemTagOf(raw); if (sys) mv.system = sys; }
     if (typeof raw !== 'string' || raw === k) continue;
     const c = canonNotation(raw);
     if (!c) continue;
@@ -362,7 +389,7 @@ function _prepare(ms) {
     else if (/^(?:close|cl\.?)\s+/i.test(raw) || /\(close\)/i.test(raw)) kind = 'close';
     else { const sm = /^[A-Z][A-Z0-9_]*\*\s*\((\d+)\s*spins?\)/.exec(raw); if (sm) { kind = 'spins'; n = +sm[1]; } }
     if (kind) (variants[c] = variants[c] || []).push({ key: k, kind, n });
-    else if (!(c in slots) && !(ms.slots && k in ms.slots) && /^[a-z][a-z0-9]*_/i.test(k) && !/[,~:+.]/.test(k)) slots[c] = k;
+    else if (!(c in slots) && (systemTagOf(raw) || (!(ms.slots && k in ms.slots) && /^[a-z][a-z0-9]*_/i.test(k))) && !/[,~:+.]/.test(k)) slots[c] = k; // KOF system rows (maxmode, taunt) too
   }
   ms._variants = variants;
   ms._variantBase = {};

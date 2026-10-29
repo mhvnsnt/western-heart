@@ -41,7 +41,7 @@ import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK, T3_BANKS,
   loadT3ReactionClip, getT3ReactionPackScale, loadReactionPack, getReactionPack, getReactionClip } from './t3anims.js';
 import { selectThrow, resolveThrowClips, throwBreaks, throwDamageTimeSec, throwPairDurationSec,
   escapePairFor, anchorAt, sharedFramePos, throwQuadrant, attemptRowForInput, hexSlot, bankDirOf } from './t3-throw.js';
-import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove, resolveMoveKey, variantBase, throwStageTag, throwStageKeys } from './movesets.js';
+import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove, resolveMoveKey, variantBase, throwStageTag, throwStageKeys, systemRows, systemTagOf } from './movesets.js';
 import { TransformCinematic } from './transform-cinematic.js';
 import { V, vskillFor, vtriggerEnhance, vreversalMove } from './v-system.js';
 import { JiggleRig } from './jiggle.js';
@@ -286,6 +286,7 @@ export function getRealMove(charId, moveType, opts) {
           // thrower/victim exec clips).
           isGrab: !!mv.isGrab || mv.move_class === 'throw' || (mv.t3_condition >= 2 && mv.t3_condition <= 0x17),
           tekkenInput: tekken, moveKey: key,
+          system: systemTagOf(mv.input), // KOF XV system row (fighter.js KOF)
           // T3 branch-row condition (t3-conditions.js): the row only fires while it holds
           t3Condition: mv.t3_condition ?? null,
           t3row: mv.t3_row, t3source: mv.t3_source || (mv.t3_row != null ? ms.t3_source : null), moveName: mv.name,
@@ -419,6 +420,19 @@ export function rootMotionSample(root_t, fps, t) {
   return { fwd: Number.isFinite(fwd) ? fwd : 0, lat: Number.isFinite(lat) ? lat : 0 };
 }
 
+/* KOF XV system actions (Dream Cancel wiki, KOF XV Defense / Offense / Meters and Gauges).
+   WH gauge = 100 souls; one KOF power stock = 25 souls (XV first character holds 3-5 stocks). */
+export const KOF = {
+  STOCK: 25,
+  GC_COST: 1,            // guard cancel roll (GCAB) and blowback (GCCD): 1 stock, blockstun only
+  MAX_COST: 2,           // MAX Mode (raw): 2 stocks
+  MAX_DMG: 1.25,         // +25% damage on normals, throws, command and special moves
+  MAX_SECONDS: 10,       // APPROXIMATE: XV's MAX gauge is 1000 pts; its drain rate is not public
+  ROLL_INVULN: 24 / 60,  // rolls last 33f, invulnerable 1-24 (strikes), 9f recovery
+  ROLL_TOTAL: 33 / 60,
+  TAUNT_LOCK: 49 / 60,   // taunt cannot be cancelled for 49f; no gauge effect in XV
+  ESCAPE_WINDOW: 11 / 60 // normal throw break: first 11 frames of the throw
+};
 export class Fighter {
   constructor(charData, startX, facing, isPlayer) {
     this.char = charData;
@@ -1548,10 +1562,13 @@ export class Fighter {
       return true;
     }
     if (this.state !== 'thrown' || !this.lockMove) return false;
-    const want = this.lockMove.throw_break || '1';
+    // KOF XV throw escape row: its own input breaks during the first 11 frames of the throw.
+    const esc = systemRows(this._movesetId).find((r) => r.sys === 'throw_escape' && r.input === btn);
+    if (esc && (this.stateT || 0) > KOF.ESCAPE_WINDOW) return false;
+    const want = esc ? btn : (this.lockMove.throw_break || '1');
     const got = (btn === '3+4') ? '1+2' : btn; // mobile: both-kicks = both-punches
     // T8 tables: 'none' = unbreakable, '1|2' = either punch breaks.
-    if (want === 'none' || !want.split('|').includes(got)) return false;
+    if (!esc && (want === 'none' || !want.split('|').includes(got))) return false;
     // ESCAPED — both fighters reset, attacker eats whiff recovery
     const attacker = this.lockPartner;
     this.lockT = 0; this.lockMove = null; this.lockPartner = null;
@@ -1619,6 +1636,7 @@ export class Fighter {
     if (!attacker || !move || this._throwHitDone) return null;
     this._throwHitDone = true;
     let dmg = move.damage * attacker.stats.power / this.stats.defense;
+    if (attacker._maxT > 0) dmg *= KOF.MAX_DMG; // KOF XV MAX Mode
     this.hp = Math.max(0, this.hp - dmg);
     if (this.hp <= 0) {
       this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing);
@@ -1627,6 +1645,8 @@ export class Fighter {
     return 'throw';
   }
   tryAttack(name) {
+    // KOF XV system rows (guard cancel from blockstun only; throw escape only while thrown).
+    if (/^[1234](\+[1234])*$/.test(name)) { const r = this._systemPress(name); if (r !== undefined) return r; }
     // Chain throws: buttons during a throw pick the next stage (Tekken multi-part throws).
     if ((this.state === 'throwing' || this.state === 'throwExec') && /^[1234](\+[1234])*$/.test(name)) return this._throwChainPress(name);
     // A press during a string-capable move buffers the next hit (Tekken input buffer):
@@ -1809,6 +1829,49 @@ export class Fighter {
     this._enter('dash');
     return true;
   }
+  /** KOF system row on this press, if one applies in the current state; undefined = not a system press. */
+  _systemPress(name) {
+    const rows = systemRows(this._movesetId); if (!rows.length) return undefined;
+    const d = this.tekken && this.tekken.lastDir; const dn = d && d !== 'n' ? d + '+' + name : name;
+    const row = rows.find((r) => (r.sys === 'guard' || r.sys === 'throw_escape') && (r.input === dn || r.input === name));
+    if (!row) return undefined;
+    if (row.sys === 'throw_escape') return this.state === 'thrown' ? this.tryThrowBreak(name) : undefined;
+    if (!(this.state === 'block' && this.stun > 0.05 && this.onGround)) return undefined;
+    if (this.meter < KOF.GC_COST * KOF.STOCK) return false;
+    const ms = getFighterMoveset(this._movesetId); const mv = ms && ms.moves[row.key]; if (!mv) return false;
+    this.meter -= KOF.GC_COST * KOF.STOCK;
+    this.stun = 0;
+    this._startSystemMove(row.key, mv);
+    // GC roll: invulnerable through the whole roll, delay included; GCCD: strike-invulnerable to its active end
+    this.invuln = mv.damage > 0 ? (mv.startup || 0) + (mv.active || 0) : (mv.startup || 0) + (mv.active || 0) + (mv.recovery || 0);
+    if (!(mv.damage > 0)) this.vx = (/^b/.test(row.input) ? -1 : 1) * this.facing * 6;
+    return true;
+  }
+  /** Does this fighter's moveset own `input` as a KOF system row (optionally of `sys`)? */
+  systemRowOn(input, sys) { return systemRows(this._movesetId).find((r) => r.input === input && (!sys || r.sys === sys)) || null; }
+  _startSystemMove(key, move) {
+    this._preAtk = { state: this.state, stance: this.stance, stanceT: this.stanceT, risingT: this._risingT };
+    this.attack = move; this.attackName = key; this.hasHit = false; this._prevHitPoint = null;
+    this._attackId = (this._attackId || 0) + 1;
+    this._queuedNext = null; this._queuedAfter = null; this.stance = null; this.stanceT = 0;
+    this._throwFollow = null; this._chainFrom = null; this._chainNext = null; this._chainSeq = [];
+    this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
+  }
+  /** Double tap f/b (input buffer dash latch): the fighter's dash / backdash row, or its roll
+      row when no dash row owns that direction. */
+  trySystemMotion(dir) {
+    if (!this.canAct() || !this.onGround) return false;
+    const rows = systemRows(this._movesetId); const dd = dir + ',' + dir;
+    const want = dir === 'f' ? 'dash' : 'backdash';
+    const row = rows.find((r) => r.sys === want && r.input === dd) || rows.find((r) => r.sys === 'roll' && r.input === dd);
+    if (!row) return false;
+    const ms = getFighterMoveset(this._movesetId); const mv = ms && ms.moves[row.key]; if (!mv) return false;
+    this._startSystemMove(row.key, mv);
+    const sgn = dir === 'f' ? 1 : -1;
+    if (row.sys === 'roll') { this.invuln = KOF.ROLL_INVULN; this._sysVx = sgn * this.facing * 2.6 / KOF.ROLL_TOTAL; }
+    else this._sysVx = sgn * this.facing * (row.sys === 'dash' ? 7 : 6);
+    return true;
+  }
   _tryAttackFresh(name) {
     if (!this.canAct() && !this.sidestepCancelable) return false;
     // Tekken notation resolution: strings (1,2), motion specials (qcf+2),
@@ -1904,6 +1967,14 @@ export class Fighter {
     }
     if (move.cost > 0 && this.meter < move.cost) return false;
     if (move.cost > 0) this.meter = Math.max(0, this.meter - move.cost);
+    // KOF system rows off their state: guard cancels need blockstun, throw escape needs a throw.
+    if (move.system === 'guard' || move.system === 'throw_escape') return false;
+    if (move.system === 'max') {
+      if (this._maxT > 0 || this.meter < KOF.MAX_COST * KOF.STOCK) return false;
+      this.meter -= KOF.MAX_COST * KOF.STOCK; this._maxT = KOF.MAX_SECONDS; this._auraFlash = 1.0;
+    }
+    if (move.system === 'taunt') { const t = (move.startup || 0) + (move.active || 0);
+      move = { ...move, recovery: Math.max(move.recovery || 0, KOF.TAUNT_LOCK - t) }; } // 49f uncancellable
     this._preAtk = { state: this.state, stance: this.stance, stanceT: this.stanceT, risingT: this._risingT };
     this.attack = move; this.attackName = notation; this.hasHit = false; this._prevHitPoint = null;
     this._attackId = (this._attackId || 0) + 1;
@@ -2081,6 +2152,7 @@ export class Fighter {
       return 'block';
     }
     let dmg = move.damage * attacker.stats.power / this.stats.defense;
+    if (attacker._maxT > 0) dmg *= KOF.MAX_DMG; // KOF XV MAX Mode
     // FIGHTER DEPTH (worker 34): soul kindle — the kindled fighter takes
     // +10% damage while kindled (Tekken 7 ki charge).
     if (this.kindle) dmg *= this.kindle.damageTakenMult();
@@ -2542,6 +2614,9 @@ export class Fighter {
     if (this.lockT > 0) this.lockT -= dt; // throw-break window
     // V-System timers.
     if (this._vtriggerT > 0) this._vtriggerT -= dt;
+    if (this._maxT > 0) this._maxT = Math.max(0, this._maxT - dt);
+    if (this._sysVx && this.state === 'attack' && this.attack && this.attack.system) this.vx = this._sysVx;
+    else this._sysVx = 0;
     if (this._vbreakT > 0) this._vbreakT -= dt;
     if (this._vparryT > 0) this._vparryT -= dt;
     if (this._risingT > 0) this._risingT -= dt;

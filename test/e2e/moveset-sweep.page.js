@@ -173,6 +173,61 @@
       default: return 'neutral';
     }
   }
+  /* KOF XV system rows (fighter.js KOF / _systemPress / trySystemMotion): each is checked
+     against its system's rule, not just "a move fired". */
+  const sysCheck = (m, sr) => {
+    const f = g.p1, o = g.p2, K = f.constructor.KOF || window.__KOF; const out = [];
+    const fires = (o2) => o2.some((fr) => fr.p1.an && (fr.p1.an === m.key || MS.resolveMoveKey(f.char.id, fr.p1.an) === m.key));
+    const press = (n) => { const P = parse(n); run(f, P, out); };
+    const res = (ok, why, how) => ({ key: m.key, input: sr.input, via: 'KOF system: ' + sr.sys, setup: how, ok, why, fired: [...new Set(out.map((x) => x.p1.an).filter(Boolean))] });
+    reset(1.1); f.meter = 100;
+    if (sr.sys === 'dash' || sr.sys === 'backdash' || sr.sys === 'roll') {
+      const d = sr.input[0], x0 = f.root.position.x; let inv = 0;
+      setDir(d); step(3, out); setDir('n'); step(3, out); setDir(d); step(2, out); setDir('n');
+      for (let i = 0; i < 40; i++) { step(1, out); if (f.invuln > 0 && f.attackName === m.key) inv++; }
+      const dx = (f.root.position.x - x0) * f.facing; const dirOk = d === 'f' ? dx > 0.3 : dx < -0.3;
+      if (!fires(out)) return res(false, `double tap ${d},${d} did not start '${m.key}'`, 'neutral double tap');
+      if (!dirOk) return res(false, `moved ${dx.toFixed(2)} m, wrong way`, 'neutral double tap');
+      if (sr.sys === 'roll' && inv < 20) return res(false, `roll invulnerable only ${inv}f (KOF XV: 24f)`, 'neutral double tap');
+      return res(true, '', `double tap ${d},${d} · moved ${dx.toFixed(2)} m` + (sr.sys === 'roll' ? ` · invulnerable ${inv}f` : ''));
+    }
+    if (sr.sys === 'guard') {
+      press(sr.input); step(30, out);
+      if (fires(out)) return res(false, 'guard cancel fired from neutral (KOF: blockstun only)', 'neutral');
+      reset(1.1); out.length = 0; f.meter = 100; g.input.held.block = true; step(2); f.stun = 0.3; const m0 = f.meter;
+      try { press(sr.input); step(40, out); } finally { g.input.held.block = false; }
+      if (!fires(out)) return res(false, 'did not fire from blockstun', 'blockstun');
+      const sg = (MS.playedMoveset(f.char.id).moves[m.key] || {}).soulGain || 0;
+      if (!(m0 - f.meter + sg >= 25 - 1e-6)) return res(false, `cost ${m0 - f.meter + sg} souls, not 1 stock (25)`, 'blockstun');
+      return res(true, '', 'neutral: no fire · blockstun: fired, 1 stock spent');
+    }
+    if (sr.sys === 'max') {
+      f.meter = 0; press(sr.input); step(40, out);
+      if (f._maxT > 0) return res(false, 'MAX started with an empty gauge', 'meter 0');
+      reset(1.1); out.length = 0; f.meter = 100; press(sr.input); step(2, out);
+      const t0 = f._maxT || 0; step(60, out); const t1 = f._maxT || 0;
+      if (!(t0 > 0)) return res(false, 'MAX timer did not start', 'meter 100');
+      if (!(t1 < t0 - 0.5)) return res(false, `MAX timer not running (${t0} -> ${t1})`, 'meter 100');
+      if (!(f.meter <= 50 + 1e-6)) return res(false, 'MAX did not spend 2 stocks', 'meter 100');
+      return res(true, '', `meter 0: refused · meter 100: 2 stocks spent, timer ${t0.toFixed(2)} s -> ${t1.toFixed(2)} s after 1 s`);
+    }
+    if (sr.sys === 'taunt') {
+      f._urgeUsed = true; press(sr.input); let n = 0; for (let i = 0; i < 90; i++) { step(1, out); if (f.state === 'attack' && f.attackName && MS.resolveMoveKey(f.char.id, f.attackName) === m.key) n++; }
+      if (!fires(out)) return res(false, 'taunt did not fire', 'neutral');
+      if (n < 46) return res(false, `taunt committed only ${n}f (KOF XV: 49f)`, 'neutral');
+      return res(true, '', `fired · committed ${n}f`);
+    }
+    if (sr.sys === 'throw_escape') {
+      press(sr.input); step(30, out);
+      if (fires(out)) return res(false, 'throw escape fired as a move in neutral', 'neutral');
+      reset(0.7); out.length = 0; o.tryAttack('1+3');
+      for (let i = 0; i < 30 && f.state !== 'thrown'; i++) step(1, out);
+      if (f.state !== 'thrown') return res(null, 'n/a: opponent throw did not grab', 'opponent 1+3');
+      const ok = f.tryThrowBreak(sr.input);
+      return ok ? res(true, '', 'neutral: no fire · thrown: escaped in window') : res(false, 'escape input did not break the throw', 'thrown');
+    }
+    return res(false, 'unknown system ' + sr.sys, '');
+  };
   const sweepOne = (m, gap = 1.1) => {
     // States the game does not have (checked in fighter.js / game.js 2026-10-28): no running
     // state (WR), no face-up / face-down ground orientation moves, no tackle mount, no jump-landing
@@ -181,6 +236,7 @@
         [/During Tackle/i, 'tackle mount'], [/Upon Landing/i, 'jump-landing window']];
       for (const [re, st] of NA) if (re.test(t)) return { key: m.key, input: m.input, ok: null, why: `n/a: game has no ${st} state`, via: 'not wired' }; }
     const f = g.p1, o = g.p2, id = f.char.id, ms = MS.playedMoveset(id) || {}; const mv = (ms.moves || {})[m.key] || {};
+    { const sr = MS.systemRows && MS.systemRows(id).find((r) => r.key === m.key); if (sr) return sysCheck(m, sr); }
     // T3 branch-condition rows (gen-movesets-t3.py t3_condition, decoded in game/js/t3-conditions.js):
     // the row fires only while its condition holds, so the condition's state is played first.
     const cond = mv.t3_condition ?? null;
