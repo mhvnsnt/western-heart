@@ -410,6 +410,9 @@
       reset(gap); setup(P.pre, f); run(f, P, null);
       let k = 0; while (k++ < 90 && !(g.p2.root.position.y > 0.35)) step(1);
       if (!(g.p2.root.position.y > 0.35)) return { key: r.key, ok: null, why: 'no lift on replay' };
+      // batch 11: a throw's lift is the paired throw animation (victim in thrown / thrownExec), not a
+      // launch; a juggle there is not a Tekken juggle (TekkenDocs: throws are not juggle starters)
+      if (/thrown/.test(g.p2.state)) return { key: r.key, ok: null, why: 'n/a: throw animation lift, not a launcher' };
       let hit = false; const dbg = r.trace ? [] : null;
       for (let t = 0; t < 8 && !hit; t++) {
         // the follow-up 1 must be a fresh move: let the launcher (and any queued string hits) finish
@@ -421,10 +424,18 @@
           const tLand = (vy + Math.sqrt(vy * vy + 2 * G * Math.max(0, y))) / G;
           const J = MS.getMove ? MS.getMove(id, '1') : null; const tHit = ((J && J.startup) || 0.15) + 0.02;
           const t = Math.min(tHit, tLand); const px = o.root.position.x + (o.vx || 0) * t;
-          g.p1.root.position.x = px - 0.85; g.p1.facing = 1; }
+          // batch 11: a knockback carrying the opponent along +x passed the attacker placed at
+          // px - 0.85 (it ended behind a jab facing away, dx < 0). Stand on the side it travels
+          // toward, facing it, so the jab meets the ballistic path (vx 0: the old placement).
+          const sd = Math.abs(o.vx || 0) > 0.5 ? Math.sign(o.vx) : -1;
+          g.p1.root.position.x = px + 0.85 * sd; g.p1.facing = -sd; }
         const st0 = [g.p1.state, +(g.p2.root.position.x - g.p1.root.position.x).toFixed(2), +g.p2.root.position.y.toFixed(2), g.p2.state, +(g.p2.vx || 0).toFixed(2), +(g.p2.vy || 0).toFixed(2)];
         // the hit counts only if it lands while the opponent is still off the ground (a juggle),
         // not after it landed and stood up
+        // batch 11: the post-move string grace is wall-clock (500 ms of performance.now), and the
+        // sweep steps frames faster than real time: the 'fresh' 1 came out as the launcher's string
+        // follow-up ('d+3+4,1'). In game time the window has passed, so close it.
+        g.p1._stringGraceUntil = 0;
         key(['1'], 'keydown'); step(1); key(['1'], 'keyup');
         let airHit = false; for (let q = 0; q < 18; q++) { const h0 = g.p2.hp, air = !g.p2.onGround || g.p2.root.position.y > 0.05; step(1); if (g.p2.hp < h0 && air) airHit = true; }
         if (dbg) dbg.push([...st0, '->', g.p1.attackName, g.p1._attackPhase, g.p1.hasHit, +(g.p2.root.position.y).toFixed(2), g.p2.state]);
