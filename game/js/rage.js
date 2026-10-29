@@ -105,7 +105,9 @@ export function ensureRageMoves(fighterId, msApi) {
   // register into the notation slots (works even if _prepare already ran)
   if (ms._slots) { ms._slots[artKey] = artKey; ms._slots[driveKey] = driveKey; }
   else {
-    ms.slots = ms.slots || {};
+    // a slotless moveset keys its moves by notation: seed them, or ai.js / the move list
+    // (which read ms.slots when present) would only see these two moves
+    ms.slots = ms.slots || Object.fromEntries(Object.keys(ms.moves).map(k => [k, k]));
     ms.slots[artKey] = artKey; ms.slots[driveKey] = driveKey;
   }
   return true;
@@ -138,7 +140,7 @@ export class RageSystem {
     if (ui && ui.setRage) { ui.setRage('p1', false); ui.setRage('p2', false); }
   }
 
-  /** Per fixed-step: announce rage when it starts, clear when it ends. */
+  /** Per fixed-step: apply rage aura + health-bar tag when it starts, clear when it ends. No center-screen text — Tekken shows rage via red aura + red lifebar only (2026-10-24). */
   update() {
     const ui = this.game.ui;
     const pairs = [[this.game.p1, 'p1'], [this.game.p2, 'p2']];
@@ -149,7 +151,6 @@ export class RageSystem {
         f._rageOn = true;
         f.setRageAura(true);
         if (ui && ui.setRage) ui.setRage(id, true);
-        if (ui && ui.banner) ui.banner('RAGE');
         try { audio.rage(); } catch (e) { /* audio unlocks on user gesture */ }
       } else if (!on && f._rageOn) {
         f._rageOn = false;
@@ -189,7 +190,6 @@ export class RageSystem {
     this.slowMoT = Math.max(this.slowMoT, 0.55);
     const ui = g.ui;
     if (ui && ui.rageArtFlash) ui.rageArtFlash();
-    if (ui && ui.banner) ui.banner('RAGE ART');
   }
 
   get timeScale() { return this.slowMoT > 0 ? RAGE_SLOWMO_SCALE : 1; }

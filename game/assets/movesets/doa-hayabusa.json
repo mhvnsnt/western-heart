@@ -327,6 +327,8 @@
       "knock": 6.5,
       "soulGain": 12,
       "anim_ref": "wh:doa-hayabusa:sig:falcons-perch",
+      "community_base": "game/assets/anim/oss/community/90_05.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "u+4"
       ],
@@ -366,6 +368,8 @@
       "knock": 6.5,
       "soulGain": 12,
       "anim_ref": "wh:doa-hayabusa:sig:falcons-perch",
+      "community_base": "game/assets/anim/oss/community/90_05.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "u+K",
         "u",
@@ -433,5 +437,61 @@
   "hit_words": {
     "1+3": 2048
   },
-  "stance_after": {}
+  "stance_after": {},
+  "canon_moves": [
+    {
+      "name": "Dragon's Shadow",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:doa-hayabusa:sig:dragons-shadow",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 18,
+      "startup_frames": 17,
+      "canon": true,
+      "canon_owner": "DOA-HAYABUSA",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Falcon's Perch",
+      "input": "u+4",
+      "display_input": "u+RK4",
+      "input_original": "`u+4`",
+      "anim_ref": "wh:doa-hayabusa:sig:falcons-perch",
+      "community_base": "game/assets/anim/oss/community/90_05.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "legR",
+      "damage": 17,
+      "startup_frames": 18,
+      "canon": true,
+      "canon_owner": "DOA-HAYABUSA",
+      "properties": {
+        "stance": "jumping",
+        "direction": "u",
+        "type": "strike",
+        "limb": "legR",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  }
 }

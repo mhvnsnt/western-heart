@@ -9,6 +9,14 @@
    episodes.js / owner voice canon. Beats beyond established canon are
    marked [NEEDS-OWNER-REVIEW]; pairs whose fighter is not in the game
    yet are marked [AWAITING-FIGHTER] — data first, playable on arrival.
+   System-name rule (Lane 6, 2026-10-24): banter uses PROPRIETARY
+   system names only (Soul Urge, KESSHOU, Nine-Soul Release, Reihou,
+   Trial's Seal, Soul Surge) — never Tekken names in spoken lines.
+   Systems with NO proprietary name yet (Rage, Rage Art, Rage Drive,
+   Power Crush, Screw, Tornado, Bound, Wall/Floor/Balcony Break, Tag)
+   are NOT named in banter until the owner picks: see
+   docs/story/PROPRIETARY-NAMES-AUDIT-2026-10-24.md. Tekken names
+   stay in technical files only, never in in-universe writing.
    The canon web (owner 2026-10-22):
      Jotei → Ryusan → Tobi → Pond → Dorowani → Chatur → Megami →
      Menajerii → Zen

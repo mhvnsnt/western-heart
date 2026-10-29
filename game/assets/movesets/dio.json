@@ -139,14 +139,14 @@
       "t3_row": 179,
       "damage": 15,
       "throw": false,
-      "fallback": "directional — no motion inputs in T3 bank"
+      "fallback": "directional \u2014 no motion inputs in T3 bank"
     },
     {
       "input": "u/f+4",
       "t3_row": 86,
       "damage": 15,
       "throw": false,
-      "fallback": "directional — no motion inputs in T3 bank"
+      "fallback": "directional \u2014 no motion inputs in T3 bank"
     }
   ],
   "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
@@ -160,7 +160,7 @@
     "note": "Full T3 bank depth merged over curated base; curated moves preserved verbatim. 383 rows, 215 attacks."
   },
   "t7_base": "akuma",
-  "t7_dataset": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+  "t7_dataset": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
   "t7_import_note": "Full T7 movelist imported from genuine T7 frame data; existing moves kept verbatim, new moves appended and deduped by input. Heat/rage mechanics unchanged; no T8 data used.",
   "forward_merge": {
     "date": "2026-10-20",
@@ -416,7 +416,14 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "He has no win pose. He has a crime scene. The Satsui no Hado made audible."
+      "note": "He has no win pose. He has a crime scene. The Satsui no Hado made audible.",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 100,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "P+K": {
       "name": "Hunger Wears a Mind [WH SIGNATURE]",
@@ -440,7 +447,14 @@
       "note": "Not a mind but a hunger wearing a mind's shape. The Raging Demon collects.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true
+      "isGrab": true,
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 100,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Crime Scene [WH SIGNATURE]",
@@ -460,7 +474,14 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "He has no win pose. He has a crime scene. The Satsui no Hado made audible.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 105,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "DIO 1+2 (T3 heihachi r37)",
@@ -504,7 +525,14 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 100,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+2": {
       "name": "DIO b+2 (T3 heihachi r207)",
@@ -530,7 +558,7 @@
     "b+2__main": {
       "name": "Danretto",
       "input": "b+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_38",
       "t7_command": "b+2",
       "t7_hit_level": "mid",
@@ -552,7 +580,14 @@
         "b+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -9 / on hit +8 / CH STUN"
+      "note": "T7 [mid] on block -9 / on hit +8 / CH STUN",
+      "mod_damage": "21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 96,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d+1": {
       "name": "DIO d+1 (T3 heihachi r123)",
@@ -661,7 +696,7 @@
     "f+3__main": {
       "name": "Ryujinkyaku",
       "input": "f+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_11",
       "t7_command": "f+3",
       "t7_hit_level": "mid",
@@ -683,7 +718,14 @@
         "f+3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -4 / on hit +7 / CH '+7"
+      "note": "T7 [mid] on block -4 / on hit +7 / CH '+7",
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+4": {
       "name": "DIO f+4 (T3 heihachi r136)",
@@ -792,7 +834,7 @@
     "d/f+1__main": {
       "name": "DIO d/f+1",
       "input": "d/f+1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_21",
       "t7_command": "d/f+1",
       "t7_hit_level": "mid",
@@ -814,7 +856,14 @@
         "d/f+1"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -4 / on hit +7 / CH +7 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -4 / on hit +7 / CH +7 | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 173,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d/f+3": {
       "name": "DIO d/f+3 (T3 heihachi r181)",
@@ -840,7 +889,7 @@
     "d/f+3__main": {
       "name": "Yokogeri",
       "input": "d/f+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_35",
       "t7_command": "d/f+3",
       "t7_hit_level": "mid",
@@ -862,7 +911,14 @@
         "d/f+3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -9 / on hit +1 / CH +1"
+      "note": "T7 [mid] on block -9 / on hit +1 / CH +1",
+      "mod_damage": "14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 181,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d/f+4": {
       "name": "DIO d/f+4 (T3 heihachi r184)",
@@ -888,7 +944,7 @@
     "d/f+4__main": {
       "name": "Kitotsukyaku",
       "input": "d/f+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_36",
       "t7_command": "d/f+4",
       "t7_hit_level": "mid",
@@ -910,7 +966,14 @@
         "d/f+4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -16 / on hit KND / CH KND"
+      "note": "T7 [mid] on block -16 / on hit KND / CH KND",
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 186,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "u/b+1": {
       "name": "DIO u/b+1 (T3 heihachi r51)",
@@ -1041,7 +1104,7 @@
     "d/f+1+2__main": {
       "name": "Gokumonkai",
       "input": "d/f+1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_117",
       "t7_command": "d/f+1+2",
       "t7_hit_level": "mid",
@@ -1063,7 +1126,12 @@
         "d/f+1+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -14 / on hit KND / CH KND"
+      "note": "T7 [mid] on block -14 / on hit KND / CH KND",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 110,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "u/b+1+2": {
       "name": "DIO u/b+1+2 (T3 heihachi r39)",
@@ -3275,7 +3343,7 @@
     "1,1": {
       "name": "Kimon Rendan",
       "input": "1,1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_2",
       "t7_command": "1, 1",
       "t7_hit_level": "high, high",
@@ -3305,12 +3373,19 @@
           7
         ],
         "total": 14
+      },
+      "mod_damage": "7,7",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),1": {
       "name": "DIO (1),1",
       "input": "(1),1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_3",
       "t7_command": "(1), 1",
       "t7_hit_level": "high",
@@ -3333,12 +3408,19 @@
         "(1),1"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -3 / on hit +4 / CH +4 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [high] on block -3 / on hit +4 / CH +4 | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "7,7",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2": {
       "name": "Kimon Rentotsu",
       "input": "1,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_4",
       "t7_command": "1, 2",
       "t7_hit_level": "high, mid",
@@ -3368,12 +3450,19 @@
           20
         ],
         "total": 27
+      },
+      "mod_damage": "7,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),2": {
       "name": "DIO (1),2",
       "input": "(1),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_5",
       "t7_command": "(1), 2",
       "t7_hit_level": "mid",
@@ -3396,12 +3485,19 @@
         "(1),2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -17 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -17 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "7,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,3": {
       "name": "Kikoku Renzan",
       "input": "4,3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_9",
       "t7_command": "4, 3",
       "t7_hit_level": "high, high",
@@ -3431,12 +3527,19 @@
           17
         ],
         "total": 29
+      },
+      "mod_damage": "12,17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(4),3": {
       "name": "DIO (4),3",
       "input": "(4),3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_10",
       "t7_command": "(4), 3",
       "t7_hit_level": "high",
@@ -3459,12 +3562,19 @@
         "(4),3"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -5 / on hit +19 / CH S! | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [high] on block -5 / on hit +19 / CH S! | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "12,17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+4_t7": {
       "name": "Onikubigari",
       "input": "f+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_12",
       "t7_command": "f+4",
       "t7_hit_level": "high",
@@ -3487,12 +3597,19 @@
       ],
       "move_class": "strike",
       "note": "T7 [high] on block -5 / on hit KND / CH STUN",
-      "t7_input": "f+4"
+      "t7_input": "f+4",
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 156,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+1+2": {
       "name": "Zugaihasatsu",
       "input": "f+1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_13",
       "t7_command": "f+1+2",
       "t7_hit_level": "mid, mid",
@@ -3514,12 +3631,19 @@
         "f+1+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid, mid] on block -8 / on hit +7 (OC) / CH -"
+      "note": "T7 [mid, mid] on block -8 / on hit +7 (OC) / CH -",
+      "mod_damage": "5,15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 107,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+1+2 (second hit only)": {
       "name": "DIO f+1+2 (second hit only)",
       "input": "f+1+2 (second hit only)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_14",
       "t7_command": "f+1+2 (second hit only)",
       "t7_hit_level": "mid",
@@ -3541,12 +3665,19 @@
         "f+1+2 (second hit only)"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -8 / on hit +7 (OC) / CH +7 (OC) | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -8 / on hit +7 (OC) / CH +7 (OC) | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "5,15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3+4": {
       "name": "Hisenkyaku",
       "input": "f+3+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_15",
       "t7_command": "f+3+4",
       "t7_hit_level": "mid",
@@ -3568,12 +3699,19 @@
         "f+3+4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -9 / on hit +2 / CH +2 | TJ 9f"
+      "note": "T7 [mid] on block -9 / on hit +2 / CH +2 | TJ 9f",
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 335,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f,F+2": {
       "name": "DIO f,F+2",
       "input": "f,F+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_16",
       "t7_command": "f, F+2",
       "t7_hit_level": "mid",
@@ -3596,12 +3734,19 @@
         "f,F+2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -14 / on hit -2 / CH -2 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -14 / on hit -2 / CH -2 | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+2:1": {
       "name": "Shakunetsu Messho",
       "input": "f,F+2:1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_17",
       "t7_command": "f, F+2:1",
       "t7_hit_level": "mid, mid",
@@ -3631,12 +3776,19 @@
           20
         ],
         "total": 34
+      },
+      "mod_damage": "14,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,F+4": {
       "name": "Ganretsuzan",
       "input": "f,F+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_18",
       "t7_command": "f, F+4",
       "t7_hit_level": "mid",
@@ -3659,12 +3811,19 @@
         "f,F+4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block 0 / on hit +2 (OC) / CH FLOOR BOUND"
+      "note": "T7 [mid] on block 0 / on hit +2 (OC) / CH FLOOR BOUND",
+      "mod_damage": "23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,f+1": {
       "name": "Shunjinkaida",
       "input": "f,f,f+1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_19",
       "t7_command": "f, f, f+1",
       "t7_hit_level": "high",
@@ -3688,12 +3847,19 @@
         "f,f,f+1"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block +1 / on hit KND / CH KND"
+      "note": "T7 [high] on block +1 / on hit KND / CH KND",
+      "mod_damage": "30",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,f+3": {
       "name": "Tenmakuretsukyaku",
       "input": "f,f,f+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_20",
       "t7_command": "f, f, f+3 (or WR 3)",
       "t7_hit_level": "mid",
@@ -3717,12 +3883,19 @@
         "f,f,f+3"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block +4 / on hit KND / CH KND | TJ 5f"
+      "note": "T7 [mid] on block +4 / on hit KND / CH KND | TJ 5f",
+      "mod_damage": "30",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1,1": {
       "name": "Gokumonsyo",
       "input": "d/f+1,1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_22",
       "t7_command": "d/f+1, 1",
       "t7_hit_level": "mid, high",
@@ -3752,12 +3925,19 @@
           7
         ],
         "total": 17
+      },
+      "mod_damage": "10,7",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d/f+1),1": {
       "name": "DIO (d/f+1),1",
       "input": "(d/f+1),1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_23",
       "t7_command": "(d/f+1), 1",
       "t7_hit_level": "high",
@@ -3780,12 +3960,19 @@
         "(d/f+1),1"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -3 / on hit +6 / CH +6 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [high] on block -3 / on hit +6 / CH +6 | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "10,7",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1,2": {
       "name": "Zugaigohasatsu",
       "input": "d/f+1,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_24",
       "t7_command": "d/f+1, 2",
       "t7_hit_level": "mid, mid, mid",
@@ -3816,12 +4003,19 @@
           10
         ],
         "total": 25
+      },
+      "mod_damage": "10,5,15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d/f+1),2": {
       "name": "DIO (d/f+1),2",
       "input": "(d/f+1),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_25",
       "t7_command": "(d/f+1), 2",
       "t7_hit_level": "mid, mid",
@@ -3851,12 +4045,19 @@
           10
         ],
         "total": 15
+      },
+      "mod_damage": "10,5,15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d/f+1),2 (second hit only)": {
       "name": "DIO (d/f+1),2 (second hit only)",
       "input": "(d/f+1),2 (second hit only)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_26",
       "t7_command": "(d/f+1), 2 (second hit only)",
       "t7_hit_level": "mid",
@@ -3879,12 +4080,17 @@
         "(d/f+1),2 (second hit only)"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -13 (OC) / on hit +7 (OC) / CH +7 (OC) | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -13 (OC) / on hit +7 (OC) / CH +7 (OC) | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+2,1": {
       "name": "Dohatsu Tensho",
       "input": "d/f+2,1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_28",
       "t7_command": "d/f+2, 1",
       "t7_hit_level": "mid, mid",
@@ -3914,12 +4120,19 @@
           10
         ],
         "total": 20
+      },
+      "mod_damage": "10,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d/f+2),1": {
       "name": "DIO (d/f+2),1",
       "input": "(d/f+2),1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_29",
       "t7_command": "(d/f+2), 1",
       "t7_hit_level": "mid",
@@ -3942,12 +4155,19 @@
         "(d/f+2),1"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -18 / on hit LAUNCH / CH LAUNCH | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -18 / on hit LAUNCH / CH LAUNCH | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "10,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+2,4": {
       "name": "Gokusatsu Gotenshu (chain)",
       "input": "d/f+2,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_30",
       "t7_command": "d/f+2, 4",
       "t7_hit_level": "mid, mid",
@@ -3978,12 +4198,19 @@
           13
         ],
         "total": 33
+      },
+      "mod_damage": "12,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d/f+2),4": {
       "name": "Gokusatsu Gotenshu (chain)",
       "input": "(d/f+2),4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_31",
       "t7_command": "(d/f+2), 4",
       "t7_hit_level": "mid",
@@ -4006,12 +4233,19 @@
         "(d/f+2),4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -11 / on hit 0 / CH 0 | t7chicken lists no separate move name; labeled from its named T7 string family"
+      "note": "T7 [mid] on block -11 / on hit 0 / CH 0 | t7chicken lists no separate move name; labeled from its named T7 string family",
+      "mod_damage": "12,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+2,4,3": {
       "name": "Gokusatsu Gotenshu",
       "input": "d/f+2,4,3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_32",
       "t7_command": "d/f+2, 4, 3",
       "t7_hit_level": "mid, mid, mid",
@@ -4043,12 +4277,19 @@
           23
         ],
         "total": 46
+      },
+      "mod_damage": "12,13,23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d/f+2),4,3": {
       "name": "DIO (d/f+2),4,3",
       "input": "(d/f+2),4,3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_33",
       "t7_command": "(d/f+2), 4, 3",
       "t7_hit_level": "mid, mid",
@@ -4079,12 +4320,19 @@
           23
         ],
         "total": 36
+      },
+      "mod_damage": "12,13,23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d/f+2),(4),3": {
       "name": "DIO (d/f+2),(4),3",
       "input": "(d/f+2),(4),3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_34",
       "t7_command": "(d/f+2), (4), 3",
       "t7_hit_level": "mid",
@@ -4108,12 +4356,19 @@
         "(d/f+2),(4),3"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -17 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -17 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "12,13,23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+1": {
       "name": "Gaikaiken",
       "input": "b+1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_37",
       "t7_command": "b+1",
       "t7_hit_level": "high",
@@ -4135,12 +4390,19 @@
         "b+1"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block -14 / on hit KND / CH KND"
+      "note": "T7 [high] on block -14 / on hit KND / CH KND",
+      "mod_damage": "17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 90,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+4": {
       "name": "Taizankyaku",
       "input": "b+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_39",
       "t7_command": "b+4",
       "t7_hit_level": "low",
@@ -4162,12 +4424,19 @@
         "b+4"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -13 / on hit +1 / CH +1"
+      "note": "T7 [low] on block -13 / on hit +1 / CH +1",
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC 1": {
       "name": "Fukusengeki",
       "input": "FC 1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_40",
       "t7_command": "FC 1",
       "t7_hit_level": "s. mid",
@@ -4189,12 +4458,19 @@
         "FC 1"
       ],
       "move_class": "strike",
-      "note": "T7 [s. mid] on block -5 / on hit +6 / CH +6 | TC 4f"
+      "note": "T7 [s. mid] on block -5 / on hit +6 / CH +6 | TC 4f",
+      "mod_damage": "5",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC 1,2": {
       "name": "Fkusenshotei",
       "input": "FC 1,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_41",
       "t7_command": "FC 1, 2",
       "t7_hit_level": "s. mid, s. mid",
@@ -4224,12 +4500,19 @@
           6
         ],
         "total": 11
+      },
+      "mod_damage": "5,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "FC (1),2": {
       "name": "Fkusenshotei",
       "input": "FC (1),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_42",
       "t7_command": "FC (1), 2",
       "t7_hit_level": "s. mid",
@@ -4252,12 +4535,19 @@
         "FC (1),2"
       ],
       "move_class": "string",
-      "note": "T7 [s. mid] on block -13 / on hit -2 / CH -2"
+      "note": "T7 [s. mid] on block -13 / on hit -2 / CH -2",
+      "mod_damage": "5,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC 2": {
       "name": "Shotei",
       "input": "FC 2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_43",
       "t7_command": "FC 2",
       "t7_hit_level": "s. mid",
@@ -4279,12 +4569,19 @@
         "FC 2"
       ],
       "move_class": "strike",
-      "note": "T7 [s. mid] on block -4 / on hit +7 / CH +7 | TC 4f"
+      "note": "T7 [s. mid] on block -4 / on hit +7 / CH +7 | TC 4f",
+      "mod_damage": "6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC 3 (close)": {
       "name": "Kurubushi Kick",
       "input": "FC 3 (close)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_44",
       "t7_command": "FC 3 (close)",
       "t7_hit_level": "low",
@@ -4306,12 +4603,19 @@
         "FC 3 (close)"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -11 / on hit -2 / CH -2 | TC 6f"
+      "note": "T7 [low] on block -11 / on hit -2 / CH -2 | TC 6f",
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC 3 (far)": {
       "name": "DIO FC 3 (far)",
       "input": "FC 3 (far)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_45",
       "t7_command": "FC 3 (far)",
       "t7_hit_level": "low",
@@ -4333,12 +4637,19 @@
         "FC 3 (far)"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -11 / on hit -2 / CH -2 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -11 / on hit -2 / CH -2 | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC 4": {
       "name": "Ashibarai",
       "input": "FC 4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_46",
       "t7_command": "FC 4",
       "t7_hit_level": "low",
@@ -4360,12 +4671,19 @@
         "FC 4"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -27 / on hit KND / CH KND | TC 6f"
+      "note": "T7 [low] on block -27 / on hit KND / CH KND | TC 6f",
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WR f,f,F (Full Screen)": {
       "name": "DIO WR f,f,F (Full Screen)",
       "input": "WR f,f,F (Full Screen)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_47",
       "t7_command": "WR f, f, F (Full Screen)",
       "t7_hit_level": "mid",
@@ -4389,12 +4707,17 @@
         "WR f,f,F (Full Screen)"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block +13 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block +13 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "WR f,f,F (Full Screen) (On Grounded Opponent)": {
       "name": "DIO WR f,f,F (Full Screen) (On Grounded Opponent)",
       "input": "WR f,f,F (Full Screen) (On Grounded Opponent)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_48",
       "t7_command": "WR f, f, F (Full Screen) (On Grounded Opponent)",
       "t7_hit_level": "low",
@@ -4418,12 +4741,17 @@
         "WR f,f,F (Full Screen) (On Grounded Opponent)"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block - / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block - / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "WR 4": {
       "name": "Shunjingozan",
       "input": "WR 4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_49",
       "t7_command": "WR 4 ",
       "t7_hit_level": "low",
@@ -4445,12 +4773,17 @@
         "WR 4"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -24 / on hit KND / CH KND"
+      "note": "T7 [low] on block -24 / on hit KND / CH KND",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WR 1+2": {
       "name": "DIO WR 1+2",
       "input": "WR 1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_50",
       "t7_command": "WR 1+2",
       "t7_hit_level": "mid",
@@ -4472,12 +4805,17 @@
         "WR 1+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block 0 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block 0 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS 1": {
       "name": "Hijiuchi",
       "input": "WS 1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_51",
       "t7_command": "WS 1",
       "t7_hit_level": "high",
@@ -4499,12 +4837,19 @@
         "WS 1"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block -5 / on hit +6 / CH +6"
+      "note": "T7 [high] on block -5 / on hit +6 / CH +6",
+      "mod_damage": "12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS 2": {
       "name": "Sotensho",
       "input": "WS 2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_52",
       "t7_command": "WS 2",
       "t7_hit_level": "mid",
@@ -4526,12 +4871,19 @@
         "WS 2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -15 / on hit LAUNCH / CH LAUNCH"
+      "note": "T7 [mid] on block -15 / on hit LAUNCH / CH LAUNCH",
+      "mod_damage": "17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS 3": {
       "name": "Totsuhizageri",
       "input": "WS 3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_53",
       "t7_command": "WS 3",
       "t7_hit_level": "mid",
@@ -4553,12 +4905,19 @@
         "WS 3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -10 / on hit +2 / CH STUN"
+      "note": "T7 [mid] on block -10 / on hit +2 / CH STUN",
+      "mod_damage": "17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS 4": {
       "name": "DIO WS 4",
       "input": "WS 4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_54",
       "t7_command": "WS 4",
       "t7_hit_level": "mid",
@@ -4580,12 +4939,19 @@
         "WS 4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -9 / on hit +2 / CH +2 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -9 / on hit +2 / CH +2 | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS 4,4": {
       "name": "Shizan",
       "input": "WS 4,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_55",
       "t7_command": "WS 4, 4",
       "t7_hit_level": "mid, mid",
@@ -4615,12 +4981,19 @@
           20
         ],
         "total": 30
+      },
+      "mod_damage": "10,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS (4),4": {
       "name": "DIO WS (4),4",
       "input": "WS (4),4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_56",
       "t7_command": "WS (4), 4",
       "t7_hit_level": "mid",
@@ -4643,12 +5016,19 @@
         "WS (4),4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -15 / on hit -5 (OC) / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -15 / on hit -5 (OC) / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "10,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Vertical Jump) 1": {
       "name": "Hijitoshi",
       "input": "(During Vertical Jump) 1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_57",
       "t7_command": "(During Vertical Jump) 1",
       "t7_hit_level": "mid",
@@ -4670,12 +5050,19 @@
         "(During Vertical Jump) 1"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -25 ~ +2 / on hit -15 ~ +12 / CH -15 ~ +12 | TJ 9f"
+      "note": "T7 [mid] on block -25 ~ +2 / on hit -15 ~ +12 / CH -15 ~ +12 | TJ 9f",
+      "mod_damage": "7",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Vertical Jump) 2": {
       "name": "Gokusengeki",
       "input": "(During Vertical Jump) 2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_58",
       "t7_command": "(During Vertical Jump) 2",
       "t7_hit_level": "mid",
@@ -4697,12 +5084,19 @@
         "(During Vertical Jump) 2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -18 ~ +7 / on hit -8 ~ +17 / CH -8 ~ +17 | TJ 9f"
+      "note": "T7 [mid] on block -18 ~ +7 / on hit -8 ~ +17 / CH -8 ~ +17 | TJ 9f",
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Vertical Jump) 3": {
       "name": "Maegeri",
       "input": "(During Vertical Jump) 3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_59",
       "t7_command": "(During Vertical Jump) 3",
       "t7_hit_level": "mid",
@@ -4724,12 +5118,19 @@
         "(During Vertical Jump) 3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -25 ~ +2 / on hit -15 ~ +12 / CH -15 ~ +12 | TJ 9f"
+      "note": "T7 [mid] on block -25 ~ +2 / on hit -15 ~ +12 / CH -15 ~ +12 | TJ 9f",
+      "mod_damage": "14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Vertical Jump) 4": {
       "name": "Onikubigiri",
       "input": "(During Vertical Jump) 4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_60",
       "t7_command": "(During Vertical Jump) 4",
       "t7_hit_level": "mid",
@@ -4751,12 +5152,19 @@
         "(During Vertical Jump) 4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -18 ~ +7 / on hit -8 ~ +17 / CH -8 ~ +17 | TJ 9f"
+      "note": "T7 [mid] on block -18 ~ +7 / on hit -8 ~ +17 / CH -8 ~ +17 | TJ 9f",
+      "mod_damage": "12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Forward or Backward Jump) 1": {
       "name": "Gokuken",
       "input": "(During Forward or Backward Jump) 1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_61",
       "t7_command": "(During Forward or Backward Jump) 1",
       "t7_hit_level": "mid",
@@ -4778,12 +5186,19 @@
         "(During Forward or Backward Jump) 1"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -22 ~ +4 / on hit -11 ~ +14 / CH -11 ~ +14 | TJ 5f"
+      "note": "T7 [mid] on block -22 ~ +4 / on hit -11 ~ +14 / CH -11 ~ +14 | TJ 5f",
+      "mod_damage": "7",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Forward or Backward Jump) 2": {
       "name": "Gokugeki",
       "input": "(During Forward or Backward Jump) 2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_62",
       "t7_command": "(During Forward or Backward Jump) 2",
       "t7_hit_level": "mid",
@@ -4805,12 +5220,19 @@
         "(During Forward or Backward Jump) 2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -17 ~ +9 / on hit -7 ~ +19 / CH -7 ~ +19 | TJ 5f"
+      "note": "T7 [mid] on block -17 ~ +9 / on hit -7 ~ +19 / CH -7 ~ +19 | TJ 5f",
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Forward or Backward Jump) 3": {
       "name": "Rakusaishu",
       "input": "(During Forward or Backward Jump) 3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_63",
       "t7_command": "(During Forward or Backward Jump) 3",
       "t7_hit_level": "mid",
@@ -4832,12 +5254,19 @@
         "(During Forward or Backward Jump) 3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -26 ~ +2 / on hit -16 ~ +12 / CH -16 ~ +12 | TJ 5f"
+      "note": "T7 [mid] on block -26 ~ +2 / on hit -16 ~ +12 / CH -16 ~ +12 | TJ 5f",
+      "mod_damage": "14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Forward or Backward Jump) 4": {
       "name": "Tobisokuto",
       "input": "(During Forward or Backward Jump) 4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_64",
       "t7_command": "(During Forward or Backward Jump) 4",
       "t7_hit_level": "mid",
@@ -4859,12 +5288,19 @@
         "(During Forward or Backward Jump) 4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -20 ~ +9 / on hit -9 ~ +19 / CH -9 ~ +19 | TJ 5f"
+      "note": "T7 [mid] on block -20 ~ +9 / on hit -9 ~ +19 / CH -9 ~ +19 | TJ 5f",
+      "mod_damage": "12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Forward Jump Peak) d+3": {
       "name": "Tenmakujinkyaku",
       "input": "(During Forward Jump Peak) d+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_65",
       "t7_command": "(During Forward Jump Peak) d+3",
       "t7_hit_level": "mid",
@@ -4886,12 +5322,17 @@
         "(During Forward Jump Peak) d+3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -6 ~ 0 / on hit +9 ~ +15 / CH +9 ~ +15"
+      "note": "T7 [mid] on block -6 ~ 0 / on hit +9 ~ +15 / CH +9 ~ +15",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Face Up,Feet Towards+3 or (After Rolling Forward)": {
       "name": "DIO Face Up,Feet Towards+3 or (After Rolling Forward)",
       "input": "Face Up,Feet Towards+3 or (After Rolling Forward)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_66",
       "t7_command": "Face Up, Feet Towards+3 or (After Rolling Forward)",
       "t7_hit_level": "low",
@@ -4914,12 +5355,17 @@
         "Face Up,Feet Towards+3 or (After Rolling Forward)"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -12 / on hit +5 / CH LAUNCH | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -12 / on hit +5 / CH LAUNCH | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Face Up,Feet Towards+4 or (After Rolling Forward)": {
       "name": "DIO Face Up,Feet Towards+4 or (After Rolling Forward)",
       "input": "Face Up,Feet Towards+4 or (After Rolling Forward)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_67",
       "t7_command": "Face Up, Feet Towards+4 or (After Rolling Forward)",
       "t7_hit_level": "mid",
@@ -4942,12 +5388,17 @@
         "Face Up,Feet Towards+4 or (After Rolling Forward)"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -12 / on hit +5 / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -12 / on hit +5 / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Face Up,Feet Towards,d+3": {
       "name": "DIO Face Up,Feet Towards,d+3",
       "input": "Face Up,Feet Towards,d+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_68",
       "t7_command": "Face Up, Feet Towards, d+3 (or 4)",
       "t7_hit_level": "low",
@@ -4971,12 +5422,17 @@
         "Face Up,Feet Towards,d+3"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -20 / on hit -3 / CH -3 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -20 / on hit -3 / CH -3 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Face Up,Feet Towards+3+4": {
       "name": "DIO Face Up,Feet Towards+3+4",
       "input": "Face Up,Feet Towards+3+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_69",
       "t7_command": "Face Up, Feet Towards+3+4",
       "t7_hit_level": "mid",
@@ -4999,12 +5455,17 @@
         "Face Up,Feet Towards+3+4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -12 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -12 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Face Up,Feet Towards,Roll Forward+1+2": {
       "name": "DIO Face Up,Feet Towards,Roll Forward+1+2",
       "input": "Face Up,Feet Towards,Roll Forward+1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_70",
       "t7_command": "Face Up, Feet Towards, Roll Forward+1+2",
       "t7_hit_level": "mid",
@@ -5028,12 +5489,17 @@
         "Face Up,Feet Towards,Roll Forward+1+2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block +2 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block +2 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Face Down,Feet Away+3": {
       "name": "DIO Face Down,Feet Away+3",
       "input": "Face Down,Feet Away+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_71",
       "t7_command": "Face Down, Feet Away+3",
       "t7_hit_level": "low",
@@ -5056,12 +5522,17 @@
         "Face Down,Feet Away+3"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -20 / on hit +1 / CH LAUNCH | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -20 / on hit +1 / CH LAUNCH | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Face Down,Feet Away+4": {
       "name": "DIO Face Down,Feet Away+4",
       "input": "Face Down,Feet Away+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_72",
       "t7_command": "Face Down, Feet Away+4",
       "t7_hit_level": "mid",
@@ -5084,12 +5555,17 @@
         "Face Down,Feet Away+4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -19 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -19 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(Upon Landing) f": {
       "name": "DIO (Upon Landing) f",
       "input": "(Upon Landing) f",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_73",
       "t7_command": "(Upon Landing) f",
       "t7_hit_level": "mid",
@@ -5111,12 +5587,17 @@
         "(Upon Landing) f"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -2 / on hit +3 / CH +3 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -2 / on hit +3 / CH +3 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f,d,d/f+1": {
       "name": "Goshoryuken",
       "input": "f,d,d/f+1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_74",
       "t7_command": "f, d, d/f+1",
       "t7_hit_level": "s. mid",
@@ -5140,12 +5621,19 @@
         "f,d,d/f+1"
       ],
       "move_class": "string",
-      "note": "T7 [s. mid] on block -25 / on hit KND / CH KND | TC 6f"
+      "note": "T7 [s. mid] on block -25 / on hit KND / CH KND | TC 6f",
+      "mod_damage": "14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,d,d/f+2": {
       "name": "Goshoryuken",
       "input": "f,d,d/f+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_75",
       "t7_command": "f, d, d/f+2",
       "t7_hit_level": "s. mid, s. mid, s. mid",
@@ -5177,12 +5665,19 @@
           14
         ],
         "total": 26
+      },
+      "mod_damage": "6,6,20?",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,d,d/f+2 (second and third hits only)": {
       "name": "DIO f,d,d/f+2 (second and third hits only)",
       "input": "f,d,d/f+2 (second and third hits only)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_76",
       "t7_command": "f, d, d/f+2 (second and third hits only)",
       "t7_hit_level": "s. mid, s. mid",
@@ -5213,12 +5708,19 @@
           14
         ],
         "total": 20
+      },
+      "mod_damage": "6,6,20?",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,d,d/f+2 (third hit only)": {
       "name": "DIO f,d,d/f+2 (third hit only)",
       "input": "f,d,d/f+2 (third hit only)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_77",
       "t7_command": "f, d, d/f+2 (third hit only)",
       "t7_hit_level": "s. mid",
@@ -5242,12 +5744,19 @@
         "f,d,d/f+2 (third hit only)"
       ],
       "move_class": "string",
-      "note": "T7 [s. mid] on block -36 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [s. mid] on block -36 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "6,6,20?",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,d,d/f+2,1+2,f,f (first hit only)": {
       "name": "DIO f,d,d/f+2,1+2,f,f (first hit only)",
       "input": "f,d,d/f+2,1+2,f,f (first hit only)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_78",
       "t7_command": "f, d, d/f+2, 1+2, f, f (first hit only)",
       "t7_hit_level": "s. mid",
@@ -5274,12 +5783,17 @@
         "f,d,d/f+2,1+2,f,f (first hit only)"
       ],
       "move_class": "string",
-      "note": "T7 [s. mid] on block 0 / on hit +14 / CH +14 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [s. mid] on block 0 / on hit +14 / CH +14 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,d,d/f+2,1+2,f,f (first and second hits only)": {
       "name": "DIO f,d,d/f+2,1+2,f,f (first and second hits only)",
       "input": "f,d,d/f+2,1+2,f,f (first and second hits only)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_79",
       "t7_command": "f, d, d/f+2, 1+2, f, f (first and second hits only)",
       "t7_hit_level": "s. mid, s. mid",
@@ -5313,12 +5827,17 @@
           6
         ],
         "total": 12
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,d,d/f+3": {
       "name": "Hyakkishu",
       "input": "f,d,d/f+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_80",
       "t7_command": "f, d, d/f+3 (or 4)",
       "t7_hit_level": "-",
@@ -5342,12 +5861,18 @@
         "f,d,d/f+3"
       ],
       "move_class": "string",
-      "note": "T7 [-] on block - / on hit - / CH - | TC 5f, inputting 4 goes further"
+      "note": "T7 [-] on block - / on hit - / CH - | TC 5f, inputting 4 goes further",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DFLIP N": {
       "name": "Hyakkigozan",
       "input": "DFLIP N",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_81",
       "t7_command": "DFLIP N",
       "t7_hit_level": "low",
@@ -5369,12 +5894,18 @@
         "DFLIP N"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -24 / on hit KND / CH KND"
+      "note": "T7 [low] on block -24 / on hit KND / CH KND",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "DFLIP 1": {
       "name": "Hyakkigosho",
       "input": "DFLIP 1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_82",
       "t7_command": "DFLIP 1",
       "t7_hit_level": "high",
@@ -5396,12 +5927,19 @@
         "DFLIP 1"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block -1 / on hit KND / CH KND"
+      "note": "T7 [high] on block -1 / on hit KND / CH KND",
+      "mod_damage": "14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DFLIP 2": {
       "name": "Hyakkigohasatsu",
       "input": "DFLIP 2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_83",
       "t7_command": "DFLIP 2",
       "t7_hit_level": "mid",
@@ -5423,12 +5961,19 @@
         "DFLIP 2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -9 ~ -6 (OC) / on hit KND / CH KND"
+      "note": "T7 [mid] on block -9 ~ -6 (OC) / on hit KND / CH KND",
+      "mod_damage": "27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DFLIP 3": {
       "name": "Hyakkigosen",
       "input": "DFLIP 3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_84",
       "t7_command": "DFLIP 3",
       "t7_hit_level": "mid",
@@ -5450,12 +5995,19 @@
         "DFLIP 3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -10 ~ +1 / on hit +24 ~ +33 / CH S!"
+      "note": "T7 [mid] on block -10 ~ +1 / on hit +24 ~ +33 / CH S!",
+      "mod_damage": "23",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DFLIP 4": {
       "name": "Hyakkigojin",
       "input": "DFLIP 4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_85",
       "t7_command": "DFLIP 4",
       "t7_hit_level": "s. mid",
@@ -5477,12 +6029,19 @@
         "DFLIP 4"
       ],
       "move_class": "strike",
-      "note": "T7 [s. mid] on block +4 ~ +10 (OC)  / on hit +16 ~ +22 (OC) / CH +16 ~ +22 (OC)"
+      "note": "T7 [s. mid] on block +4 ~ +10 (OC)  / on hit +16 ~ +22 (OC) / CH +16 ~ +22 (OC)",
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "DFLIP 1+3": {
       "name": "Hyakkigosai",
       "input": "DFLIP 1+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_86",
       "t7_command": "DFLIP 1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -5504,12 +6063,18 @@
         "DFLIP 1+3"
       ],
       "move_class": "strike",
-      "note": "T7 [high throw] on block - / on hit KND / CH KND"
+      "note": "T7 [high throw] on block - / on hit KND / CH KND",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,d,d/f+3+4": {
       "name": "Ashura Senku",
       "input": "f,d,d/f+3+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_87",
       "t7_command": "f, d, d/f+3+4 (or b, d, d/b+3+4)",
       "t7_hit_level": "-",
@@ -5533,12 +6098,18 @@
         "f,d,d/f+3+4"
       ],
       "move_class": "string",
-      "note": "T7 [-] on block - / on hit - / CH - | invinciblity 5f"
+      "note": "T7 [-] on block - / on hit - / CH - | invinciblity 5f",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "hcb+1": {
       "name": "Shakunetsu Hadoken",
       "input": "hcb+1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_88",
       "t7_command": "hcb+1",
       "t7_hit_level": "s. mid",
@@ -5560,12 +6131,19 @@
         "hcb+1"
       ],
       "move_class": "strike",
-      "note": "T7 [s. mid] on block -9 / on hit -1 / CH -1"
+      "note": "T7 [s. mid] on block -9 / on hit -1 / CH -1",
+      "mod_damage": "17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "hcb+2": {
       "name": "Shakunetsu Hadoken",
       "input": "hcb+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_89",
       "t7_command": "hcb+2",
       "t7_hit_level": "s. mid, s. mid, s. mid",
@@ -5587,12 +6165,19 @@
         "hcb+2"
       ],
       "move_class": "strike",
-      "note": "T7 [s. mid, s. mid, s. mid] on block -1 / on hit KND / CH KND"
+      "note": "T7 [s. mid, s. mid, s. mid] on block -1 / on hit KND / CH KND",
+      "mod_damage": "8,8,8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "qcf+1": {
       "name": "Gohadoken",
       "input": "qcf+1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_90",
       "t7_command": "qcf+1 (or 2)",
       "t7_hit_level": "s. mid",
@@ -5614,12 +6199,19 @@
         "qcf+1"
       ],
       "move_class": "strike",
-      "note": "T7 [s. mid] on block -13 / on hit -5 / CH -5"
+      "note": "T7 [s. mid] on block -13 / on hit -5 / CH -5",
+      "mod_damage": "14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "qcb+3": {
       "name": "Tatsumaki Zankukyaku",
       "input": "qcb+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_91",
       "t7_command": "qcb+3",
       "t7_hit_level": "high",
@@ -5641,12 +6233,18 @@
         "qcb+3"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block -15 / on hit KND / CH KND | TJ 9f"
+      "note": "T7 [high] on block -15 / on hit KND / CH KND | TJ 9f",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "qcb+4": {
       "name": "Tatsumaki Zankukyaku",
       "input": "qcb+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_92",
       "t7_command": "qcb+4",
       "t7_hit_level": "s. mid, high, high, (high)",
@@ -5668,12 +6266,19 @@
         "qcb+4"
       ],
       "move_class": "strike",
-      "note": "T7 [s. mid, high, high, (high)] on block -14 / on hit KND / CH KND"
+      "note": "T7 [s. mid, high, high, (high)] on block -14 / on hit KND / CH KND",
+      "mod_damage": "13,6,6,",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "qcb+4 (second and third hits only)": {
       "name": "DIO qcb+4 (second and third hits only)",
       "input": "qcb+4 (second and third hits only)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_93",
       "t7_command": "qcb+4 (second and third hits only)",
       "t7_hit_level": "high, high",
@@ -5695,12 +6300,19 @@
         "qcb+4 (second and third hits only)"
       ],
       "move_class": "strike",
-      "note": "T7 [high, high] on block -14 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [high, high] on block -14 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "13,6,6,",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "qcb+4 (third hit only)": {
       "name": "DIO qcb+4 (third hit only)",
       "input": "qcb+4 (third hit only)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_94",
       "t7_command": "qcb+4 (third hit only)",
       "t7_hit_level": "high",
@@ -5722,12 +6334,19 @@
         "qcb+4 (third hit only)"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block -14 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [high] on block -14 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "13,6,6,",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Jump) qcf+1": {
       "name": "Zanku Hadoken",
       "input": "(During Jump) qcf+1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_95",
       "t7_command": "(During Jump) qcf+1 (or 2)",
       "t7_hit_level": "s. mid",
@@ -5749,12 +6368,19 @@
         "(During Jump) qcf+1"
       ],
       "move_class": "strike",
-      "note": "T7 [s. mid] on block - / on hit - / CH -"
+      "note": "T7 [s. mid] on block - / on hit - / CH -",
+      "mod_damage": "14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Jump) qcb+3": {
       "name": "Airborne Tatsumaki Zankukyaku",
       "input": "(During Jump) qcb+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_96",
       "t7_command": "(During Jump) qcb+3 (or 4)",
       "t7_hit_level": "s. mid",
@@ -5776,12 +6402,18 @@
         "(During Jump) qcb+3"
       ],
       "move_class": "strike",
-      "note": "T7 [s. mid] on block -10 ~ +2 / on hit KND / CH KND"
+      "note": "T7 [s. mid] on block -10 ~ +2 / on hit KND / CH KND",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,d,d/f+1+2": {
       "name": "EX Goshoryuken",
       "input": "f,d,d/f+1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_97",
       "t7_command": "f, d, d/f+1+2",
       "t7_hit_level": "s. mid, s. mid, s. mid",
@@ -5813,12 +6445,19 @@
           16
         ],
         "total": 28
+      },
+      "mod_damage": ",,",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,d,d/f+1+2 (second and third hits only)": {
       "name": "DIO f,d,d/f+1+2 (second and third hits only)",
       "input": "f,d,d/f+1+2 (second and third hits only)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_98",
       "t7_command": "f, d, d/f+1+2 (second and third hits only)",
       "t7_hit_level": "s. mid, s. mid",
@@ -5849,12 +6488,19 @@
           16
         ],
         "total": 22
+      },
+      "mod_damage": ",,",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f,d,d/f+1+2 (third hit only)": {
       "name": "DIO f,d,d/f+1+2 (third hit only)",
       "input": "f,d,d/f+1+2 (third hit only)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_99",
       "t7_command": "f, d, d/f+1+2 (third hit only)",
       "t7_hit_level": "s. mid",
@@ -5878,12 +6524,19 @@
         "f,d,d/f+1+2 (third hit only)"
       ],
       "move_class": "string",
-      "note": "T7 [s. mid] on block -36 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [s. mid] on block -36 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": ",,",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CH f,d,d/f+1+2": {
       "name": "Messatsu Goshoryu",
       "input": "CH f,d,d/f+1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_100",
       "t7_command": "CH f, d, d/f+1+2",
       "t7_hit_level": "s. mid",
@@ -5917,12 +6570,17 @@
           9
         ],
         "total": 42
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "hcb+1+2": {
       "name": "EX Shakunetsu Hadoken",
       "input": "hcb+1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_101",
       "t7_command": "hcb+1+2",
       "t7_hit_level": "s. mid, s. mid, s. mid",
@@ -5944,12 +6602,19 @@
         "hcb+1+2"
       ],
       "move_class": "strike",
-      "note": "T7 [s. mid, s. mid, s. mid] on block +9 / on hit KND / CH KND"
+      "note": "T7 [s. mid, s. mid, s. mid] on block +9 / on hit KND / CH KND",
+      "mod_damage": ",,",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "qcf+1+2": {
       "name": "EX Gohadoken",
       "input": "qcf+1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_102",
       "t7_command": "qcf+1+2",
       "t7_hit_level": "s. mid, s. mid",
@@ -5971,12 +6636,19 @@
         "qcf+1+2"
       ],
       "move_class": "strike",
-      "note": "T7 [s. mid, s. mid] on block +1 / on hit KND / CH KND"
+      "note": "T7 [s. mid, s. mid] on block +1 / on hit KND / CH KND",
+      "mod_damage": "10,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "qcb+3+4": {
       "name": "EX Tatsumaki Zankukyaku",
       "input": "qcb+3+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_103",
       "t7_command": "qcb+3+4",
       "t7_hit_level": "s. mid, s. mid, s. mid, s. mid",
@@ -5998,12 +6670,19 @@
         "qcb+3+4"
       ],
       "move_class": "strike",
-      "note": "T7 [s. mid, s. mid, s. mid, s. mid] on block -22 / on hit S! / CH S!"
+      "note": "T7 [s. mid, s. mid, s. mid, s. mid] on block -22 / on hit S! / CH S!",
+      "mod_damage": ",,,",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "qcb+3+4 (second,third and fourth hits only)": {
       "name": "DIO qcb+3+4 (second,third and fourth hits only)",
       "input": "qcb+3+4 (second,third and fourth hits only)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_104",
       "t7_command": "qcb+3+4 (second, third and fourth hits only)",
       "t7_hit_level": "s. mid, s. mid, s. mid",
@@ -6034,12 +6713,19 @@
           10
         ],
         "total": 20
+      },
+      "mod_damage": ",,,",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "qcb+3+4 (third hit only)": {
       "name": "DIO qcb+3+4 (third hit only)",
       "input": "qcb+3+4 (third hit only)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_105",
       "t7_command": "qcb+3+4 (third hit only)",
       "t7_hit_level": "s. mid",
@@ -6061,12 +6747,19 @@
         "qcb+3+4 (third hit only)"
       ],
       "move_class": "strike",
-      "note": "T7 [s. mid] on block -15 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [s. mid] on block -15 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": ",,,",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Hisenkyaku) qcf+1+2": {
       "name": "Hisenkyaku to EX Zanku Hadoken",
       "input": "(During Hisenkyaku) qcf+1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_106",
       "t7_command": "(During Hisenkyaku) qcf+1+2",
       "t7_hit_level": "mid, s. mid, s. mid",
@@ -6088,12 +6781,19 @@
         "(During Hisenkyaku) qcf+1+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid, s. mid, s. mid] on block +3 / on hit +20 / CH +20 | delayable 7f"
+      "note": "T7 [mid, s. mid, s. mid] on block +3 / on hit +20 / CH +20 | delayable 7f",
+      "mod_damage": "10,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Hisenkyaku) qcb+3+4": {
       "name": "Hisenkyaku to EX Airborne Tatsumaki Zankukyaku",
       "input": "(During Hisenkyaku) qcb+3+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_107",
       "t7_command": "(During Hisenkyaku) qcb+3+4",
       "t7_hit_level": "mid, s. mid, s. mid, s. mid",
@@ -6115,12 +6815,19 @@
         "(During Hisenkyaku) qcb+3+4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid, s. mid, s. mid, s. mid] on block -35 / on hit S! / CH S! | delayable 7f"
+      "note": "T7 [mid, s. mid, s. mid, s. mid] on block -35 / on hit S! / CH S! | delayable 7f",
+      "mod_damage": ",,,",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Jump) qcf+1+2": {
       "name": "EX Zanku Hadoken",
       "input": "(During Jump) qcf+1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_108",
       "t7_command": "(During Jump) qcf+1+2",
       "t7_hit_level": "s. mid, s. mid",
@@ -6142,12 +6849,19 @@
         "(During Jump) qcf+1+2"
       ],
       "move_class": "strike",
-      "note": "T7 [s. mid, s. mid] on block - / on hit - / CH -"
+      "note": "T7 [s. mid, s. mid] on block - / on hit - / CH -",
+      "mod_damage": "10,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Jump) qcb+3+4": {
       "name": "EX Airborne Tatsumaki Zankukyaku",
       "input": "(During Jump) qcb+3+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_109",
       "t7_command": "(During Jump) qcb+3+4",
       "t7_hit_level": "s. mid",
@@ -6169,12 +6883,19 @@
         "(During Jump) qcb+3+4"
       ],
       "move_class": "strike",
-      "note": "T7 [s. mid] on block -4 ~ +11 / on hit KND / CH KND"
+      "note": "T7 [s. mid] on block -4 ~ +11 / on hit KND / CH KND",
+      "mod_damage": ",,,",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "qcf,qcf+1+2": {
       "name": "Messatsu Gohado",
       "input": "qcf,qcf+1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_110",
       "t7_command": "qcf, qcf+1+2",
       "t7_hit_level": "s. mid, s. mid, s. mid, s. mid, s. mid",
@@ -6207,12 +6928,19 @@
           6
         ],
         "total": 62
+      },
+      "mod_damage": ",,,,",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+2_t7": {
       "name": "Level 1 Focus Attack",
       "input": "1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_111",
       "t7_command": "1+2 (or WS 1+2)",
       "t7_hit_level": "high",
@@ -6235,12 +6963,19 @@
       ],
       "move_class": "strike",
       "note": "T7 [high] on block -20 / on hit -8 / CH -8 | PC 8f",
-      "t7_input": "1+2"
+      "t7_input": "1+2",
+      "mod_damage": "14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2,f,f": {
       "name": "DIO 1+2,f,f",
       "input": "1+2,f,f",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_112",
       "t7_command": "1+2, f, f",
       "t7_hit_level": "high",
@@ -6264,12 +6999,19 @@
         "1+2,f,f"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -5 / on hit +7 / CH +7 | PC 8f | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [high] on block -5 / on hit +7 / CH +7 | PC 8f | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2,b,b": {
       "name": "DIO 1+2,b,b",
       "input": "1+2,b,b",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_113",
       "t7_command": "1+2, b, b",
       "t7_hit_level": "high",
@@ -6293,12 +7035,17 @@
         "1+2,b,b"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -15 / on hit -3 / CH -3 | PC 8f | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [high] on block -15 / on hit -3 / CH -3 | PC 8f | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2* (40f)": {
       "name": "Level 2 Focus Attack",
       "input": "1+2* (40f)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_114",
       "t7_command": "1+2* (40f)",
       "t7_hit_level": "high",
@@ -6320,12 +7067,17 @@
         "1+2* (40f)"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block -11 / on hit STUN / CH STUN | PC 8f"
+      "note": "T7 [high] on block -11 / on hit STUN / CH STUN | PC 8f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2* (40f),f,f": {
       "name": "DIO 1+2* (40f),f,f",
       "input": "1+2* (40f),f,f",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_115",
       "t7_command": "1+2* (40f), f, f",
       "t7_hit_level": "high",
@@ -6349,12 +7101,17 @@
         "1+2* (40f),f,f"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block +4 / on hit STUN / CH STUN | PC 8f | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [high] on block +4 / on hit STUN / CH STUN | PC 8f | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2* (40f),b,b": {
       "name": "DIO 1+2* (40f),b,b",
       "input": "1+2* (40f),b,b",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_116",
       "t7_command": "1+2* (40f), b, b",
       "t7_hit_level": "high",
@@ -6378,12 +7135,17 @@
         "1+2* (40f),b,b"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -6 / on hit STUN / CH STUN | PC 8f | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [high] on block -6 / on hit STUN / CH STUN | PC 8f | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Rage) 1,1,f,3,2": {
       "name": "Wrath of the Raging Demon",
       "input": "(During Rage) 1,1,f,3,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_118",
       "t7_command": "(During Rage) 1, 1, f, 3, 2",
       "t7_hit_level": "high throw",
@@ -6409,12 +7171,17 @@
         "(During Rage) 1,1,f,3,2"
       ],
       "move_class": "string",
-      "note": "T7 [high throw] on block ! / on hit KND / CH KND"
+      "note": "T7 [high throw] on block ! / on hit KND / CH KND",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2* (65f)": {
       "name": "Level 3 Focus Attack",
       "input": "1+2* (65f)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_119",
       "t7_command": "1+2* (65f)",
       "t7_hit_level": "high",
@@ -6436,12 +7203,17 @@
         "1+2* (65f)"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block ! / on hit STUN / CH STUN"
+      "note": "T7 [high] on block ! / on hit STUN / CH STUN",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2* (65f),f,f": {
       "name": "DIO 1+2* (65f),f,f",
       "input": "1+2* (65f),f,f",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_120",
       "t7_command": "1+2* (65f), f, f",
       "t7_hit_level": "high",
@@ -6465,12 +7237,17 @@
         "1+2* (65f),f,f"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block - / on hit STUN / CH STUN | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [high] on block - / on hit STUN / CH STUN | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2* (65f),b,b": {
       "name": "DIO 1+2* (65f),b,b",
       "input": "1+2* (65f),b,b",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_121",
       "t7_command": "1+2* (65f), b, b",
       "t7_hit_level": "high",
@@ -6494,12 +7271,17 @@
         "1+2* (65f),b,b"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block - / on hit STUN / CH STUN | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [high] on block - / on hit STUN / CH STUN | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+1+3": {
       "name": "Goshoha",
       "input": "f+1+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_124",
       "t7_command": "Approach enemy... f+1+3",
       "t7_hit_level": "high",
@@ -6525,12 +7307,17 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 201,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+2+4": {
       "name": "Syuretto",
       "input": "f+2+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_125",
       "t7_command": "Approach enemy... f+2+4",
       "t7_hit_level": "high",
@@ -6556,12 +7343,17 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "2"
+      "throw_break": "2",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 241,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WR f,f,F (Mid Screen)": {
       "name": "DIO WR f,f,F (Mid Screen)",
       "input": "WR f,f,F (Mid Screen)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_129",
       "t7_command": "WR f, f, F (Mid Screen)",
       "t7_hit_level": "mid",
@@ -6585,12 +7377,17 @@
         "WR f,f,F (Mid Screen)"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -5 (BT) / on hit KND / CH - | 2 BREAK | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -5 (BT) / on hit KND / CH - | 2 BREAK | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "(During Tackle) 1": {
       "name": "DIO (During Tackle) 1",
       "input": "(During Tackle) 1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_130",
       "t7_command": "(During Tackle) 1 (or 2)",
       "t7_hit_level": "-",
@@ -6612,12 +7409,19 @@
         "(During Tackle) 1"
       ],
       "move_class": "strike",
-      "note": "T7 [-] on block 0 / on hit KND / CH - | 1 BREAK | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [-] on block 0 / on hit KND / CH - | 1 BREAK | t7chicken lists no name for this move; labeled by T7 command",
+      "mod_damage": "7",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Tackle) 1/2,1/2": {
       "name": "DIO (During Tackle) 1/2,1/2",
       "input": "(During Tackle) 1/2,1/2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_131",
       "t7_command": "(During Tackle) 1/2, 1/2",
       "t7_hit_level": "-",
@@ -6647,12 +7451,17 @@
           5
         ],
         "total": 10
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(During Tackle) 1/2,1/2,1/2": {
       "name": "DIO (During Tackle) 1/2,1/2,1/2",
       "input": "(During Tackle) 1/2,1/2,1/2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_132",
       "t7_command": "(During Tackle) 1/2, 1/2, 1/2",
       "t7_hit_level": "-",
@@ -6684,12 +7493,17 @@
           5
         ],
         "total": 15
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(During Tackle) 1/2,1/2,1/2,1/2": {
       "name": "DIO (During Tackle) 1/2,1/2,1/2,1/2",
       "input": "(During Tackle) 1/2,1/2,1/2,1/2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_133",
       "t7_command": "(During Tackle) 1/2, 1/2, 1/2, 1/2",
       "t7_hit_level": "-",
@@ -6723,12 +7537,17 @@
           15
         ],
         "total": 30
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+2+3+4": {
       "name": "DIO 1+2+3+4",
       "input": "1+2+3+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_134",
       "t7_command": "1+2+3+4",
       "t7_hit_level": "-",
@@ -6750,12 +7569,17 @@
         "1+2+3+4"
       ],
       "move_class": "strike",
-      "note": "T7 [-] on block - / on hit - / CH - | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [-] on block - / on hit - / CH - | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "U": {
       "name": "DIO U",
       "input": "U",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_135",
       "t7_command": "U",
       "t7_hit_level": "-",
@@ -6777,12 +7601,17 @@
         "U"
       ],
       "move_class": "strike",
-      "note": "T7 [-] on block - / on hit - / CH - | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [-] on block - / on hit - / CH - | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "U/F or U/B": {
       "name": "DIO U/F or U/B",
       "input": "U/F or U/B",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_136",
       "t7_command": "U/F or U/B",
       "t7_hit_level": "-",
@@ -6804,7 +7633,12 @@
         "U/F or U/B"
       ],
       "move_class": "strike",
-      "note": "T7 [-] on block - / on hit - / CH - | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [-] on block - / on hit - / CH - | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1~t7.akuma": {
       "name": "Sengeki",
@@ -6828,7 +7662,7 @@
         "1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_1",
       "t7_command": "1",
       "t7_hit_level": "high",
@@ -6839,7 +7673,14 @@
       "t7_on_ch": "+8",
       "merge_source": "t7:akuma_1",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true
+      "launch": true,
+      "mod_damage": "7",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "akuma",
+        "row": 40,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "2~t7.akuma": {
       "name": "Roppu Tubushi",
@@ -6863,7 +7704,7 @@
         "2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_6",
       "t7_command": "2",
       "t7_hit_level": "s. mid",
@@ -6874,7 +7715,14 @@
       "t7_on_ch": "0",
       "merge_source": "t7:akuma_6",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true
+      "launch": true,
+      "mod_damage": "15",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "akuma",
+        "row": 52,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "3~t7.akuma": {
       "name": "DIO 3",
@@ -6898,7 +7746,7 @@
         "3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_7",
       "t7_command": "3",
       "t7_hit_level": "high",
@@ -6909,7 +7757,14 @@
       "t7_on_ch": "+3",
       "merge_source": "t7:akuma_7",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true
+      "launch": true,
+      "mod_damage": "14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "akuma",
+        "row": 62,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "4~t7.akuma": {
       "name": "DIO 4",
@@ -6933,7 +7788,7 @@
         "4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_8",
       "t7_command": "4",
       "t7_hit_level": "high",
@@ -6944,7 +7799,14 @@
       "t7_on_ch": "+2",
       "merge_source": "t7:akuma_8",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true
+      "launch": true,
+      "mod_damage": "12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "akuma",
+        "row": 72,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d/f+2~t7.akuma": {
       "name": "DIO d/f+2",
@@ -6968,7 +7830,7 @@
         "d/f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_27",
       "t7_command": "d/f+2",
       "t7_hit_level": "mid",
@@ -6978,7 +7840,14 @@
       "t7_on_hit": "+3",
       "t7_on_ch": "+3",
       "merge_source": "t7:akuma_27",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "akuma",
+        "row": 179,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "1+3~t7.akuma": {
       "name": "Goshoha",
@@ -7002,7 +7871,7 @@
         "1+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_122",
       "t7_command": "Approach enemy... 1+3",
       "t7_hit_level": "high",
@@ -7015,7 +7884,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
       "note": "1 BREAK",
-      "input_note": "Approach enemy..."
+      "input_note": "Approach enemy...",
+      "anim_t3": {
+        "bank": "akuma",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "2+4~t7.akuma": {
       "name": "Syuretto",
@@ -7039,7 +7913,7 @@
         "2+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_123",
       "t7_command": "Approach enemy... 2+4",
       "t7_hit_level": "high",
@@ -7052,7 +7926,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
       "note": "2 BREAK",
-      "input_note": "Approach enemy..."
+      "input_note": "Approach enemy...",
+      "anim_t3": {
+        "bank": "akuma",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "SIDE_L.1+3": {
       "name": "Syuretto",
@@ -7076,7 +7955,7 @@
         "SIDE_L.1+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_126",
       "t7_command": "Approach from left side... 1+3 (or 2+4)",
       "t7_hit_level": "high",
@@ -7089,7 +7968,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
       "note": "1 BREAK",
-      "input_note": "Approach from left side... (or 2+4)"
+      "input_note": "Approach from left side... (or 2+4)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "SIDE_R.1+3": {
       "name": "Goshoha",
@@ -7113,7 +7997,7 @@
         "SIDE_R.1+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_127",
       "t7_command": "Approach from right side... 1+3 (or 2+4)",
       "t7_hit_level": "high",
@@ -7126,7 +8010,12 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
       "note": "2 BREAK",
-      "input_note": "Approach from right side... (or 2+4)"
+      "input_note": "Approach from right side... (or 2+4)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "BACK.1+3": {
       "name": "Goshoha",
@@ -7150,7 +8039,7 @@
         "BACK.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "akuma_128",
       "t7_command": "Approach from behind... 1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -7164,7 +8053,12 @@
       "input_note": "Approach from behind... (or 2+4)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 241,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     }
   },
   "restored_from_sweep_338": {
@@ -7324,7 +8218,19 @@
     "exclude_proxy": false,
     "moves_before": 275,
     "moves_after": 275,
-    "added": {},
+    "added": {
+      "akuma_pull_20261023": {
+        "date": "2026-10-23",
+        "by": "batch6 pull worker (T8 wavu + T7 t7chicken frame-data diff; T7-only for dio/rave)",
+        "moves_before": 275,
+        "moves_after": 275,
+        "added": [],
+        "sources": [
+          "docs/t7t8-reference/frame-data-t7/akuma.json"
+        ],
+        "show_lock": "2026-10-23: all 0 moves tagged set=FIGHT per SHOW-ANIMATION LOCK (owner standing law); file-level anim_set_lock added"
+      }
+    },
     "slots": 134,
     "slots_by_priority": {
       "signature": 2,
@@ -7601,5 +8507,70 @@
     "SIDE_R.1+3": 1042,
     "BACK.1+3": 2048
   },
-  "stance_after": {}
+  "stance_after": {},
+  "anim_set_lock": {
+    "DIO": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances \u2014 the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations \u2014 intro/win slots and cutscenes ONLY; tracked in docs/anim/AKUMA-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
+  },
+  "canon_moves": [
+    {
+      "name": "Crime Scene",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:dio:sig:crime-scene",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 22,
+      "startup_frames": 23,
+      "canon": true,
+      "canon_owner": "DIO",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Hunger Wears a Mind",
+      "input": "1+4",
+      "display_input": "LP1+RK4",
+      "input_original": "`1+4`",
+      "anim_ref": "wh:dio:sig:hunger-wears-a-mind",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 23,
+      "startup_frames": 19,
+      "canon": true,
+      "canon_owner": "DIO",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "system_note": "System note: LP1+RK4 is also Reihou, but ONLY while the foe is in RAGE (otherwise the moveset LP1+RK4 plays). No in-game conflict outside foe-RAGE.",
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  }
 }

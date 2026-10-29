@@ -443,7 +443,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "Tag team of the underground. The basement venue surges - a crowd-surf slam off the surge."
+      "note": "Tag team of the underground. The basement venue surges - a crowd-surf slam off the surge.",
+      "anim_t3": {
+        "bank": "king",
+        "row": 586,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "P+K": {
       "name": "Doesn't-Care Drop [WH SIGNATURE]",
@@ -467,7 +472,12 @@
       "note": "Slumped doesn't-care energy. A grab thrown like he couldn't be bothered - which is exactly why it lands.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true
+      "isGrab": true,
+      "anim_t3": {
+        "bank": "king",
+        "row": 586,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Moshpit [WH SIGNATURE]",
@@ -487,7 +497,12 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "Tag team of the underground. The basement venue surges - a crowd-surf slam off the surge.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "anim_t3": {
+        "bank": "king",
+        "row": 101,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "KUTZ 1+2 (T3 king r35)",
@@ -531,7 +546,12 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "king",
+        "row": 232,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "d+1+2": {
       "name": "KUTZ d+1+2 (T3 king r97)",
@@ -3784,5 +3804,60 @@
     "1_c58": 2048,
     "1_c59": 2048
   },
-  "stance_after": {}
+  "stance_after": {},
+  "canon_moves": [
+    {
+      "name": "Doesn't-Care Drop",
+      "input": "1+4",
+      "display_input": "LP1+RK4",
+      "input_original": "`1+4`",
+      "anim_ref": "wh:kutz:sig:doesnt-care-drop",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 21,
+      "startup_frames": 19,
+      "canon": true,
+      "canon_owner": "KUTZ",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "system_note": "System note: LP1+RK4 is also Reihou, but ONLY while the foe is in RAGE (otherwise the moveset LP1+RK4 plays). No in-game conflict outside foe-RAGE.",
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Moshpit",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:kutz:sig:moshpit",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 19,
+      "startup_frames": 18,
+      "canon": true,
+      "canon_owner": "KUTZ",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  }
 }

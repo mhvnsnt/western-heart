@@ -16,16 +16,50 @@
        scaled T3 170HP -> WH 100HP. See game/assets/*_moves.json.
    Hitboxes vs hurtboxes, blocking w/ 12% chip + blockstun,
    hitstop, knockback, launchers, camera shake.
+   GAP-FILL LANE 1 (2026-10-24, combat systems): Power Crush
+   absorb (mid/high only), Screw (T7) + Tornado (T8) as the
+   single once-per-combo extender, wall splat as a distinct
+   state (3 hits, then drop), T8 recoverable pool from chip
+   (attack-only restore, never over time), Soul Urge wiring
+   completion (Burst on block, Dash as recovery cancel, 2+3
+   Burst/Smash routing), item-gated moves, per-move hitbox
+   lookup with honest UNMAPPED fallback. PROPRIETARY NAMES:
+   NEEDS NAME for Power Crush / Screw / Tornado / wall splat /
+   recoverable / item moves (owner names them); only Soul Urge
+   is user-locked. Tekken names in this file are technical
+   references only, never canon. Buttons: LP1/RP2/LK3/RK4.
+   CORRECTION to the gap doc: no Bound state machine exists
+   in this file (its "bound" hits are throw-pair / anim-bank
+   binding) and no low-parry system exists either — so Screw
+   was added without removing anything, and low-parry Bound
+   is open follow-up work, not a preserved behavior.
    ============================================================ */
 import * as THREE from 'three';
 import { assets } from './assets.js';
-import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK } from './t3anims.js';
-import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove } from './movesets.js';
+import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK, T3_BANKS,
+  clipStrikeProfile, clipHitWindow, bankAttackPool, attackLevelOfWord, attackClipTime, clipIsThrow, BUTTON_LIMB,
+  loadT3ReactionClip, getT3ReactionPackScale, loadReactionPack, getReactionPack, getReactionClip } from './t3anims.js';
+import { selectThrow, resolveThrowClips, throwBreaks, throwDamageTimeSec, throwPairDurationSec,
+  escapePairFor, anchorAt, sharedFramePos, throwQuadrant, attemptRowForInput, hexSlot, bankDirOf } from './t3-throw.js';
+import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove, resolveMoveKey, variantBase, throwStageTag, throwStageKeys, systemRows, systemTagOf } from './movesets.js';
 import { TransformCinematic } from './transform-cinematic.js';
 import { V, vskillFor, vtriggerEnhance, vreversalMove } from './v-system.js';
 import { JiggleRig } from './jiggle.js';
+import { SoftBody } from './softbody.js';
+import { MpmTissue } from './mpm-tissue.js';
 import { FaceRig } from './faceRig.js';
 import { HandPoseBlender } from './handPoses.js';
+import { canonRootScale } from './canon-sizing.js';
+import { t8Frame, stunFromAdvantage } from './frame-tables.js';
+import { hitWordFor, attackPhase, moveReach, PressBuffer,
+  isPowerCrushMove, powerCrushAbsorbs, extenderKind, SCREW_SLUMP_STUN,
+  TORNADO_BOUND_STUN, EXTENDER_LAND_STUN_FLOOR, WALL_SPLAT_MAX_HITS,
+  WALL_SPLAT_STUN, nextWallSplatState, itemGate,
+  resolvePerMoveHitbox, resolvePerMoveHurtbox } from './combat-core.js';
+import { HURT_SEGMENTS, WEAPON_SEGMENTS, LIMB_RADIUS, fallbackHurts } from './hitbox.js';
+import { selectReactionSlot, reactionSlotBank } from './t3-reaction-select.js';
+import { soulStates } from './full-movelist.js';
+import { t3ConditionHolds } from './t3-conditions.js';
 
 // ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
 // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO in Western Heart. The 'jin' moveset family is now 'demonio'.
@@ -47,7 +81,7 @@ let MOVES = {
 const MOVESET_MAP = {
   // THE NINE SOULS
   rin: 'demonio', byou: 'demonio', tou: 'heihachi', sha: 'xiaoyu', kai: 'demonio',
-  jin_soul: 'yoshimitsu', retsu: 'bryan', zen: 'heihachi', gyou: 'demonio',
+  jin_soul: 'yoshimitsu', retsu: 'bryan', zen: 'heihachi', gyou: 'demonio', // zen 'heihachi' here is INTERIM frame-data provenance ONLY (his 639 interim rows) — his BANK is UNMAPPED (see FIGHTER_BANK), NOT Heihachi as a base.
   // MAIN ROSTER
   pantera: 'king', demonio: 'demonio', phantom: 'yoshimitsu', diablo: 'heihachi',
   skull: 'bryan', samura1: 'gunjack', sakura: 'xiaoyu',
@@ -113,7 +147,7 @@ export function bankIdFor(charId, movesetId) {
   //   tou        -> paul     (nine-souls appendix: TOU's vessel base = Paul)
   //   byou       -> lei      (nine-souls appendix: BYOU's vessel base = Lei)
   //   gyou       -> hwoarang (nine-souls appendix: GYOU's vessel base = Hwoarang)
-  //   zen        -> julia    (nine-souls appendix: ZEN's vessel base = Julia)
+  //   zen        -> UNMAPPED (owner decision 2026-10-24: Zen is NEITHER Heihachi NOR Julia — see FIGHTER_BANK note)
   //   rave       -> lei      (CANON: Rave base = Lei Wulong)
   //   yukihyo    -> armorking (CANON: Yukihyo base = Armor King; same
   //                 rationale as the armor-king override above — the 'king'
@@ -129,17 +163,50 @@ export function bankIdFor(charId, movesetId) {
   //                 revert is deleting this one line.)
   // byou -> lei REMOVED 2026-10-21 (owner: "Lei wulong is not byou, he is Rave/Kiko tanaka, that's
   // been clarified"). Byou keeps its own moveset's bank until the owner names Byou's base.
-  // zen -> julia kept as the anim-bank lane set it; CANON.md appendix lists Julia -> NIGHTWOLF /
-  // soul ZEN as an unresolved three-way conflict while roster-full.js says Zen = Heihachi —
-  // put to the owner, not decided here.
+  // ZEN CONFLICT RESOLVED 2026-10-24 (owner decision, docs/decisions/2026-10-24-zen-base-decision.md):
+  // Zen is NEITHER Heihachi NOR Julia. Heihachi is Diablo's base; Julia is Nightwolf's base
+  // (CANON.md appendix: Julia -> NIGHTWOLF / soul ZEN). Zen's base chain is Eleven/Twelve
+  // (Street Fighter, 2D concept) -> Dural (Virtua Fighter 5, 3D implementation: the closest
+  // 3D thing to Eleven/Twelve) -> Zen's own canon moves on top, with X.COPY as ONE super.
+  // No Dural bank exists in the repo (no game/assets/anim/vf5/, no 'dural' in SOURCE_TO_BANK)
+  // and no Twelve 2D->3D conversion exists, so zen maps to null (UNMAPPED) here: bankIdFor
+  // returns null and Zen falls back to embedded locomotion + procedural combat — never
+  // another character's clips. When VF5 Dural motion lands, bind 'dural' here.
   const FIGHTER_BANK = {
+    // zen: null = UNMAPPED (owner decision 2026-10-24). A null value is intentional:
+    // hasOwnProperty('zen') is true, so bankIdFor returns null before any Heihachi/Julia
+    // fallback can bind. Do NOT restore 'julia' or 'heihachi' here without a new owner decision.
     awapop: 'nina', torch: 'anna', kingtyrant: 'eddy', kai: 'eddy',
-    tou: 'paul', gyou: 'hwoarang', zen: 'julia', rave: 'lei',
+    tou: 'paul', gyou: 'hwoarang', zen: null, rave: 'lei',
     yukihyo: 'armorking', nightwolf: 'julia',
     // 2026-10-23 (Claude session): the last decoded T3 banks (tools/anim/t3_bake_bank.py). These movesets
     // name their source as a teardown path or not at all, so bind each to its base's own bank here.
     chatur: 'ogre', dorowani: 'gon', menajerii: 'kuma',
+    // 2026-10-23 (landing wave 3): the bear-bank successors + Silvertongue.
+    // Their index entries name the bank (anim_bank/t3_source), but the
+    // portrait-capture page resolves banks without the moveset index
+    // loaded, so bind them here like the 2026-10-23 additions above.
+    //   gashadokuro -> kuma (CANON: his base is the Kuma bank)
+    //   aotsuki     -> kuma (CANON: Panda shares Kuma's T3 bank)
+    //   silvertongue -> xiaoyu (her kit's T3 bank, per lili.json t3_source)
+    gashadokuro: 'kuma', aotsuki: 'kuma', silvertongue: 'xiaoyu',
+    // 2026-10-24 (stance fix lane; owner: "too many are sharing them"):
+    // these three fighters' Tekken bases have decoded T3 banks on disk,
+    // but they were falling back to a shared moveset bank (docfrank) or
+    // to no bank at all (tobi, buffalo-bill). Each now binds its own base's
+    // bank, so its stance is distinct, not shared.
+    //   docfrank    -> bosconovitch (CANON: Doc Frank base = Bosconovitch;
+    //                 bank exists on disk; was incorrectly on gunjack bank)
+    //   tobi        -> hwoarang (CANON: Tobi base = Hwoarang; bank exists;
+    //                 was returning null — no bank, CMU fallback shared)
+    //   buffalo-bill -> law (CANON: Buffalo Bill base = Marshall Law;
+    //                 bank exists; was returning null — no bank, CMU fallback)
+    docfrank: 'bosconovitch', tobi: 'hwoarang', 'buffalo-bill': 'law',
   };
+  // 2026-10-28: Zen binds the VF5 Dural bank (T3_BANKS.dural) only in a private build — the
+  // decoded VF5 motion lives in the private game-reverse-engineering repo and is copied to
+  // game/assets/private/anim/vf5/dural/. Public builds keep zen UNMAPPED (null) as before.
+  if (charId === 'zen' && T3_BANKS.dural) return 'dural';
   if (Object.prototype.hasOwnProperty.call(FIGHTER_BANK, charId)) return FIGHTER_BANK[charId];
   let src = null;
   try {
@@ -180,11 +247,22 @@ export async function loadRealMovesets() {
 }
 
 // Legacy action names -> Tekken notation (AI + old UI keep working)
+/* Donor keys, most to least specific, for borrowing an animated row:
+   exact command, last segment, dir+last button, last button, limb. */
+export function rowDonorKeys(input, limb) {
+  const n = String(input).replace(/^[A-Z_]+\./, '').trim();
+  const last = n.split(',').pop().trim();
+  const m = last.match(/^(d\/f|d\/b|u\/f|u\/b|f|b|u|d)?\+?([1-4](?:\+[1-4])*)/i);
+  const keys = ['c:' + n, 's:' + last];
+  if (m) { keys.push('db:' + (m[1] || 'n').toLowerCase() + '+' + m[2]); keys.push('b:' + m[2]); keys.push('b:' + m[2].split('+').pop()); }
+  if (limb) keys.push('l:' + limb);
+  return keys;
+}
 const LEGACY_TO_TEKKEN = { punch: '1', kick: '4', grab: '1+3' };
 
-export function getRealMove(charId, moveType) {
+export function getRealMove(charId, moveType, opts) {
   const tekken = LEGACY_TO_TEKKEN[moveType] || moveType;
-  const res = resolveMove(charId, tekken);
+  const res = resolveMove(charId, tekken, opts);
   const ms = (res && res.ms) || getFighterMoveset(charId) || window.WH_MOVESETS?.[charId];
   if (ms) {
     // New shape: per-fighter moveset { moves: { key: {...} }, slots: { notation: key } }.
@@ -200,18 +278,57 @@ export function getRealMove(charId, moveType) {
           damage: mv.damage, knock: mv.knock ?? 2.2,
           soulGain: mv.soulGain ?? 8, cost: 0,
           limb: mv.limb || 'armR', heavy: !!mv.heavy,
-          unblockable: !!mv.unblockable, isGrab: !!mv.isGrab,
+          unblockable: !!mv.unblockable,
+          // T3 throw-situation rows (branch conditions 2-0x17) are the throw executions a
+          // connecting grab branches into by the opponent's posture / side (moves.md SituationClassify)
+          // moveset sweep 2026-10-29: a move the moveset classes as a throw (move_class 'throw',
+          // e.g. pantera d/f+1+2) is a grab too; before, it played as a strike (knockdown, no
+          // thrower/victim exec clips).
+          isGrab: !!mv.isGrab || mv.move_class === 'throw' || (mv.t3_condition >= 2 && mv.t3_condition <= 0x17),
           tekkenInput: tekken, moveKey: key,
+          system: systemTagOf(mv.input), // KOF XV system row (fighter.js KOF)
+          // T3 branch-row condition (t3-conditions.js): the row only fires while it holds
+          t3Condition: mv.t3_condition ?? null,
           t3row: mv.t3_row, t3source: mv.t3_source || (mv.t3_row != null ? ms.t3_source : null), moveName: mv.name,
           animBank: anim ? anim.bank : null, animRow: anim ? anim.row : null,
           // decoded T3 attack word (high 0x412 / mid 0x217 / low 0x10F / s.mid 0x31F / unblockable 0x607)
-          hitWord: ms.hit_words ? ms.hit_words[key] : undefined,
+          // T7 '[mid throw]' tackles are blockable mids that are NOT grabs: the
+          // decoded throw word (0x800, no posture bits) would make them whiff
+          // every posture, so they take the mid word.
+          // SWEEP 2026-10-29: the same applies to ANY non-grab strike whose
+          // decoded word carries no posture bits (T3 cross-character rows such
+          // as jin_soul b+3+4 from yoshimitsu r194 = 0x800): it could never
+          // connect, so it takes the mid word too.
+          hitWord: (!mv.isGrab && ms.hit_words && ms.hit_words[key] != null && !(ms.hit_words[key] & 7)) ? 0x217
+            : (!mv.isGrab && /\[mid throw\]/.test(mv.note || '') && !((ms.hit_words && ms.hit_words[key]) & 7)) ? 0x217
+            : (ms.hit_words && ms.hit_words[key] != null) ? ms.hit_words[key] : hitWordFor(mv),
+          hitLevel: mv.hit_level,
+          // T3 situation follow-ups engage on contact: reach covers own hit + pushback.
+          reach: (Number(mv.reach) > 0) ? mv.reach : (mv.t3_condition >= 2 && mv.t3_condition <= 0x17) ? 2.0 : mv.reach,
           stanceAfter: ms.stance_after ? ms.stance_after[key] : undefined,
           launch: !!mv.launch, knockdown: !!mv.knockdown,
+          // T8 launcher frame advantage on hit, e.g. '+34a (+24)' (airborne): sets the juggle airtime
+          launchAdv: (() => { const m = /\+(\d+)a/.exec(String(mv.on_hit || '')); return m ? +m[1] : null; })(),
           armor: !!mv.armor,
           rageArt: !!mv.rageArt, rageDrive: !!mv.rageDrive,
           urgeEngager: !!mv.urgeEngager,
           urgeBurst: !!mv.urgeBurst, urgeSmash: !!mv.urgeSmash,
+          // GAP-FILL LANE 1 (2026-10-24): combat-system flags, read
+          // from the move record only — never invented here. No WH
+          // moveset carries these flags yet (moveset lane owns the
+          // data); until it does, every move reads UNMAPPED/false
+          // and the engine falls back to the pre-existing behavior.
+          // PROPRIETARY NAMES: NEEDS NAME (owner names them).
+          powerCrush: isPowerCrushMove(mv),
+          screw: !!mv.screw || !!mv.tailspin || !!(mv.t7 && mv.t7.screw),
+          tornado: !!mv.tornado || !!(mv.t8 && mv.t8.tornado),
+          requiresItem: mv.requiresItem || mv.requiredItem || mv.item || null,
+          itemMove: !!mv.itemMove || !!(mv.requiresItem || mv.requiredItem || mv.item),
+          hitbox: mv.hitbox ?? (mv.t7 && mv.t7.hitbox) ?? (mv.t8 && mv.t8.hitbox) ?? null,
+          hurtbox: mv.hurtbox ?? (mv.t7 && mv.t7.hurtbox) ?? (mv.t8 && mv.t8.hurtbox) ?? null,
+          // T8 frame tables (wavu.wiki CC0): block/hit/CH advantage + throw break.
+          t8: t8Frame(ms, tekken),
+          throw_break: mv.throw_break || (t8Frame(ms, tekken) || {}).brk || undefined,
         };
       }
     } else {
@@ -233,6 +350,7 @@ export function getRealMove(charId, moveType) {
 }
 
 const GROUND_Y_DEFAULT = 0;
+const JUGGLE_PEAK = 1.2; // m: launcher pop height (juggle airtime comes from the move's frame data)
 let GROUND_Y = 0; // stage-break lane: floor/balcony breaks drop the fighting level
 export function setGroundY(v) { GROUND_Y = v; }
 export function getGroundY() { return GROUND_Y; }
@@ -263,6 +381,58 @@ const _ikT = new THREE.Vector3();
 const _ikV1 = new THREE.Vector3(), _ikV2 = new THREE.Vector3(), _ikV3 = new THREE.Vector3();
 const _ikQ1 = new THREE.Quaternion(), _ikQ2 = new THREE.Quaternion(), _ikQ3 = new THREE.Quaternion();
 
+/* ============================================================
+   ROOT MOTION (2026-10-24) — why attacks were stuck in place.
+   The decoded T3 clips DO carry travel: every clip's raw root_t
+   (t3anims.js jsonToClip / decodePackRow, in metres, canonical
+   source frame: forward = +Z, character-left = +X, already turned
+   180 deg for the banks baked facing -Z) is the root bone's
+   trajectory. But the game never read it horizontally:
+   t3anims.js retargetT3Clips keeps ONLY the vertical (y) part of
+   root_t for the Hips.position track, and fighter.js _physics
+   decays vx to ~0 during attacks, so every attack played in place.
+   The only attack travel before this was the authored grab lunge
+   (vx = facing * 2.5 in _tryAttackFresh) and frame-data reach
+   (combat-core.js moveReach), which decides CONTACT, not position.
+   rootMotionSample returns a clip's horizontal displacement from
+   its own frame 0 at clip time t (seconds), linearly interpolated
+   between the decoded frames (fps, usually 30). Vertical (y) is
+   deliberately NOT returned: hip height already rides the retargeted
+   Hips.position track, and gravity/vy owns root.position.y — applying
+   y here would double-apply it and sink/lift the fighter through
+   the floor. Pure: no THREE, no game state, unit-testable.
+   Mapping to game axes (see _rootMotionApply): forward (source +Z)
+   -> world x * facing; lateral (source +X, character-left) -> world
+   z * -facing (character-left is world -z when facing +x, as the
+   sidestep comment in _animate already records).
+   Whiff vs hit is irrelevant here on purpose: this is animation
+   time, not hit detection — a whiffed lunge travels exactly as far
+   as a connected one, as in Tekken. */
+export function rootMotionSample(root_t, fps, t) {
+  if (!root_t || root_t.length < 2 || !(fps > 0) || !Number.isFinite(t)) return { fwd: 0, lat: 0 };
+  const n = root_t.length;
+  const f = Math.max(0, Math.min(n - 1, t * fps));
+  const i = Math.floor(f), k = Math.min(n - 1, i + 1), a = f - i;
+  const r0 = root_t[0], ra = root_t[i], rb = root_t[k];
+  // Displacement from frame 0 (ra/rb are absolute source positions).
+  const fwd = ((ra[2] + (rb[2] - ra[2]) * a) - r0[2]);
+  const lat = ((ra[0] + (rb[0] - ra[0]) * a) - r0[0]);
+  return { fwd: Number.isFinite(fwd) ? fwd : 0, lat: Number.isFinite(lat) ? lat : 0 };
+}
+
+/* KOF XV system actions (Dream Cancel wiki, KOF XV Defense / Offense / Meters and Gauges).
+   WH gauge = 100 souls; one KOF power stock = 25 souls (XV first character holds 3-5 stocks). */
+export const KOF = {
+  STOCK: 25,
+  GC_COST: 1,            // guard cancel roll (GCAB) and blowback (GCCD): 1 stock, blockstun only
+  MAX_COST: 2,           // MAX Mode (raw): 2 stocks
+  MAX_DMG: 1.25,         // +25% damage on normals, throws, command and special moves
+  MAX_SECONDS: 10,       // APPROXIMATE: XV's MAX gauge is 1000 pts; its drain rate is not public
+  ROLL_INVULN: 24 / 60,  // rolls last 33f, invulnerable 1-24 (strikes), 9f recovery
+  ROLL_TOTAL: 33 / 60,
+  TAUNT_LOCK: 49 / 60,   // taunt cannot be cancelled for 49f; no gauge effect in XV
+  ESCAPE_WINDOW: 11 / 60 // normal throw break: first 11 frames of the throw
+};
 export class Fighter {
   constructor(charData, startX, facing, isPlayer) {
     this.char = charData;
@@ -278,6 +448,9 @@ export class Fighter {
     // vitals
     this.maxHp = 100; this.hp = 100;
     this.meter = 0; this.maxMeter = 100; // NINE-SOUL METER
+    // SOUL-SPIRIT TOGGLE (worker 83, owner directive 2026-10-22 ~23:02 CDT):
+    // a vessel-matched soul feeds its vessel faster meter gain.
+    this.soulMeterMult = charData.soulMeterMult || 1;
 
     // physics
     this.vx = 0; this.vy = 0; this.onGround = true;
@@ -287,7 +460,8 @@ export class Fighter {
     // state machine
     this.state = 'idle'; this.stateT = 0;
     this.attack = null; this.attackName = null; this._attackPhase = 'startup';
-    this.hasHit = false; this.stun = 0; this.invuln = 0; this.dodgeDir = 0;
+    this._rmPrev = null; // root-motion cursor for the current attack (see _rootMotionApply)
+    this.hasHit = false; this._prevHitPoint = null; this._reactionSel = null; this._reactLoading = null; this._reactChainDepth = 0; this.stun = 0; this.invuln = 0; this.dodgeDir = 0;
     this.dead = false; this.combo = 0; this._comboTimer = 0;
     this.tekken = new TekkenBuffer(charData.id); // strings / motion specials / directionals
     // Tekken states (2026-10-21, decoded T3 rules — see _guardBits/canBeHitBy):
@@ -295,10 +469,29 @@ export class Fighter {
     // (moveset stance_after), rising = while-standing window after leaving a crouch,
     // stick = facing-relative direction (guard + posture), juggle = hits taken airborne.
     this.stance = null; this.stanceT = 0; this._risingT = 0; this._stickDir = 'n';
-    this._juggle = 0; this._rageUsed = false; this._queuedNext = null;
+    this._juggle = 0; this._rageUsed = false; this._queuedNext = null; this._queuedAfter = null;
+    this._stringGraceUntil = 0; // wall-clock end of the post-move string window (see _tryAttackFresh)
     this._rageOn = false;
     this._urgeOn = false; this._urgeUsed = false; this._urgeT = 0; this._urgePips = 0;
     this._urgeDashT = 0;
+
+    // GAP-FILL LANE 1 (2026-10-24): combo-extender / wall / recoverable
+    // / item state. _extenderUsed is the single once-per-combo slot
+    // shared by Screw (T7) and Tornado (T8); it clears when the
+    // victim recovers to neutral (see update()), never mid-combo.
+    // PROPRIETARY NAMES: NEEDS NAME (owner names them).
+    this._extenderUsed = false; this._extenderKind = null;
+    this._inScrew = false; this._inTornado = false;
+    this._wallSplatHits = 0; this._wallSplatArmed = false;
+    // T8 recoverable pool (white gauge): chip damage taken lands
+    // here instead of vanishing; landing hits / forcing blocks
+    // heals it back (see _recoverOnAttack). Per-round: cleared by
+    // SoulUrge.resetRound() alongside the per-round urge gauge.
+    this._recoverable = 0;
+    // Item-move loadout: equipped customization item ids, set by
+    // the customization lane via setEquippedItems(). Empty = no
+    // item-gated move can fire (itemGate in combat-core.js).
+    this.equippedItems = [];
 
     // Stream 6: throw-lock (throw break window). When a throw connects,
     // attacker enters 'throwing' and victim 'thrown' for THROW_LOCK_T;
@@ -317,6 +510,20 @@ export class Fighter {
     this._locoIdle = 1; this._locoWalk = 0; this._locoRun = 0;
     this._auraFlash = 0;
 
+    /* ---- HEART AND MIND WITHIN: 3D brawler mode (worker 20, 2026-10-22) ----
+       When brawler=true, the fighter runs in free-3D: `yaw` (world-space
+       radians) drives the visual facing, movement uses vx+vz, and
+       knockback/guard resolve in 3D. Versus logic is untouched when
+       brawler=false. */
+    this.brawler = false;
+    this.yaw = 0;
+    // Soul Surge form: the Devil Within devil-form analog. Timed powered
+    // state (stat boosts + aura), entered at full meter via the transform
+    // input in brawler mode; drains meter while active.
+    this.surgeForm = false;
+    this._surgeT = 0;
+    this._surgeBaseStats = null;
+
     // MID-MATCH TRANSFORMATION (Roshi-style, owner 2026-10-19).
     // Fighters with charData.transform (single) or charData.forms (multi-form
     // map keyed by current model key) swap models mid-fight.
@@ -325,6 +532,7 @@ export class Fighter {
     //   bodyScale, moveset }, 'model-key': { up: {...}, down: {...} } }.
     this._forms = null;
     this.formKey = charData.model;
+    this._canonSizeTick = 0;
     if (charData.forms) {
       this._forms = charData.forms;
     } else if (charData.transform) {
@@ -350,9 +558,10 @@ export class Fighter {
     // char.tintStrength ?? 0.45 default washed both fighters in a constant
     // suit color; real texture colors now render for the whole fight.)
     const inst = assets.createInstance(
-      this.char.model || 'pantera',
+      this.char.model,
       this.char.colors.suit, this.char.colors.trim,
-      this.char.colorize ? (this.char.tintStrength ?? 0.3) : 0
+      this.char.colorize ? (this.char.tintStrength ?? 0.3) : 0,
+      this.char.eyeGlow // per-attire emissive eyes (owner 2026-10-22; attires.js slot config)
     );
     this.bones = inst.bones;
     this.mixer = inst.mixer;
@@ -471,6 +680,46 @@ export class Fighter {
     });
     const jiggleIntensity = this.char.jiggleIntensity || 'natural';
     if (this._jiggle) this._jiggle.setIntensity(jiggleIntensity);
+    // Soft-body muscle volume (tissue backend lane, 2026-10-23): Jolt XPBD
+    // torso volume for muscle deformation on hit + volume-grounded jiggle.
+    // Same pattern as jiggle: inert until the backend is ready, every call
+    // guarded, never crashes the fight. char.softbody === false opts out.
+    //
+    // NEXTGEN-2026-10-23 tissue backends (see
+    // docs/research/SOFTBODY-NEXTGEN-2026-10-23.md):
+    //   'jolt'  (default) — Jolt XPBD lattice (game/js/softbody.js)
+    //   'mpm'             — CPU MPM-lite, SurRoL-inspired (game/js/mpm-tissue.js)
+    //   'femfx'           — FEMFX WASM w/ Jolt fallback (game/js/femfx-adapter.js)
+    // Pick with window.WH_PHYSICS_BACKEND or per-character
+    // char.softbodyBackend. All three share the integration contract and
+    // the 'wh_softbody_v1' quality store, so switching never changes the
+    // visual mapping — only the solver.
+    this._softbody = null;
+    const softSpec = SoftBody.anatomyFor(this.char);
+    if (softSpec) {
+      const backend = (typeof window !== 'undefined' && window.WH_PHYSICS_BACKEND)
+        || this.char.softbodyBackend || 'jolt';
+      this.root.traverse(o => {
+        if (!this._softbody && o.isSkinnedMesh) {
+          try {
+            if (backend === 'mpm') {
+              this._softbody = MpmTissue.fromMesh(o, softSpec);
+            } else if (backend === 'femfx') {
+              // FEMFX WASM is async; the adapter falls back to Jolt when
+              // the module is missing. Import lazily so the default path
+              // pays zero cost.
+              import('./femfx-adapter.js').then((m) => {
+                if (!this._softbody && !this._disposed) {
+                  try { this._softbody = m.FemfxBody.fromMesh(o, softSpec); } catch (e) {}
+                }
+              }).catch(() => {});
+            } else {
+              this._softbody = SoftBody.fromMesh(o, softSpec);
+            }
+          } catch (e) {}
+        }
+      });
+    }
     // Face rig: morph driver + blink timer
     this._face = FaceRig.attach(this.root);
     // Hand poses: fist default, blended per state
@@ -478,6 +727,13 @@ export class Fighter {
   }
 
   /* ---------------- combat intents ---------------- */
+  _hasGroundMoves(p = 'FUFT') {
+    if (this._groundMovesFor !== this._movesetId) { this._groundMovesFor = this._movesetId; this._groundMoves = {}; }
+    if (this._groundMoves[p] == null) {
+      this._groundMoves[p] = ['3', '4', '3,3', '1', '2', '1+2', '3+4'].some((b) => !!resolveMoveKey(this._movesetId, p + '.' + b));
+    }
+    return this._groundMoves[p];
+  }
   canAct() {
     // Mid-cinematic: rooted, cannot act (but still vulnerable — damage
     // applies separately). Owner spec: vulnerable during transform.
@@ -492,6 +748,34 @@ export class Fighter {
   }
   canTransform(direction='up') {
     return !!(this._resolveTransform(direction) && this.canAct());
+  }
+
+  /* SOUL SURGE FORM — the Devil Within devil-form analog for the brawler.
+     Full nine-soul meter + transform input: a TIMED powered state with no
+     model swap — the fighter keeps their own moveset and model, boosted
+     stats, and their surge aura burning for the duration. Any WH character
+     can surge (character select, not forced Jin). Manual re-trigger ends it
+     early; the meter drain ends it when empty. */
+  startSurgeForm() {
+    if (this.surgeForm) { this.endSurgeForm(); return true; }
+    if (this.meter < this.maxMeter || !this.canAct()) return false;
+    this.surgeForm = true;
+    this._surgeT = 25; // seconds of devil time
+    this._surgeBaseStats = { ...this.stats };
+    this.stats = {
+      ...this.stats,
+      power: this.stats.power * 1.45,
+      speed: Math.min(3.8, this.stats.speed * 1.15),
+      defense: this.stats.defense * 1.2,
+    };
+    this._auraFlash = 1.0;
+    return true;
+  }
+  endSurgeForm() {
+    if (!this.surgeForm) return;
+    this.surgeForm = false;
+    this._surgeT = 0;
+    if (this._surgeBaseStats) { this.stats = this._surgeBaseStats; this._surgeBaseStats = null; }
   }
 
   /* Mid-match transformation (Roshi-style power-up, owner 2026-10-19).
@@ -531,7 +815,8 @@ export class Fighter {
       inst = assets.createInstance(
         t.target,
         this.char.colors.suit, this.char.colors.trim,
-        this.char.colorize ? (this.char.tintStrength ?? 0.3) : 0 // TINT FIX: real texture colors unless explicitly colorized
+        this.char.colorize ? (this.char.tintStrength ?? 0.3) : 0, // TINT FIX: real texture colors unless explicitly colorized
+        this.char.eyeGlow // per-attire emissive eyes ride along on transforms (owner 2026-10-22)
       );
     } catch (e) {
       console.error(`[WH] transform failed — unknown model ${t.target}:`, e.message || e);
@@ -587,44 +872,332 @@ export class Fighter {
       return;
     }
     this.t3actions = createT3Actions(this.mixer, clips, THREE);
+    // Reaction pack prefetch (hit-reaction lane): the JSON arrives
+    // in the background so the first hit's slot is usually decoded
+    // already; decoding itself stays on demand, one slot at a time.
+    try { loadReactionPack(THREE, bank); } catch (e) {}
     // Move rows retarget lazily on first use (same captured rest pose).
-    this._t3 = { bank, clips: t3clips, model, modelKey };
+    // dir is the reactions.json banks key (the T3_BANKS folder name).
+    this._t3 = { bank, clips: t3clips, model, modelKey, dir: bankDirOf(T3_BANKS[bank]) };
     console.log(`[WH] Fighter ${this.char.id}: ${Object.keys(this.t3actions).length} real T3 actions from bank '${bank}' (retargeted onto ${modelKey})`);
   }
 
-  /* The move's OWN decoded T3 animation (its t3_row in this fighter's
-     bank, tools/anim/t3_row_bake.py), retargeted on first use and
-     time-scaled so the clip spans the move's startup+active+recovery.
-     Returns the action name, or null when the move has no row clip. */
-  _moveRowAction(move) {
-    if (!this._t3 || !move) return null;
-    let row = move.t3row;
-    let ok = false;
-    if (row != null) {
-      const srcBank = move.t3source ? SOURCE_TO_BANK[move.t3source] : this._t3.bank;
-      // king/armorking family (anim-bank wiring lane, 2026-10-20): the
-      // 'armorking' bank is the SAME divmot03_king motion stream baked on
-      // King's own rig (PR #405), and its rows.pack carries the king-row
-      // clips — so king-sourced move rows are native to the armorking bank,
-      // not foreign clips. Every other source/bank mismatch still blocks.
-      const kingFamily = srcBank === 'king' && this._t3.bank === 'armorking';
-      ok = srcBank === this._t3.bank || kingFamily;
+  /* ATTACK CLIP SELECTION (lane D, 2026-10-24; owner: "the different move inputs from the move
+     lists ... aren't working ... just random stuff is happening"). Before this, every move with no
+     row clip played the bank's generic light/medium/heavy (Skull: 205 of 293 inputs), so different
+     inputs looked the same, and those clips ran at timeScale 1, unsynced to the move's startup.
+     The move that resolved now plays a clip of the fighter's OWN bank, first match wins (never
+     another character's per-move clips; docs/RULES_NO_GUESSING.md — nothing authored):
+       own       the move's decoded T3 row: t3_row (a string's list names one row per hit; the key
+                 fires the last), when its t3_source maps to the bound bank
+       notation  the decoded T3 row (own t3_row) of the move this fighter's moveset binds to the SAME
+                 input — the T3 copy of the move a merged T7/T8 move replaced in its slot (Skull's
+                 T3 '1' = row 50, the i10 jab, for the T8 Jab)
+       anim      anim_t3 {bank,row} 'same-notation' (tools/moveset-merge: the first T3 move found with
+                 that notation, any stance) — merge-time guess, so after notation. anim_t3 'nearest'
+                 (approximate) is tried only after match: it disagrees with the pressed button 43%.
+       match     the bank's decoded attack row (hit_frames.json) started by the SAME buttons (decoded
+                 branch command; 1/2/3/4 = L/R punch, L/R kick), then the same limb, at the move's
+                 height (decoded attack word / T8 / T7 hit level), nearest decoded hit frame to its
+                 startup — closest real clip of the same character, flagged 'match'
+       generic   the bank's light/medium/heavy (grab for throws) striking with that limb (measured)
+     STRIKE vs THROW (owner: "pressing 1 ... can show a THROW"): every candidate's decoded row type
+     (hit_frames.json throw flag) must agree with the move — a strike never plays a throw row, a throw
+     (isGrab / throw level / 1+3 / 2+4, as the game treats it) never plays a strike row. A conflicting
+     row is skipped and logged in plan.rejected (moveset data to fix), e.g. Pantera's T8 Jab, whose
+     anim_t3 'same-notation' row 290 is King's decoded throw attempt. Throws without a throw row of
+     their own match the bank's decoded throw-attempt rows instead of the strike pool.
+     Returns { name, kind, why, limb, level, timing, rejected } or null (no bank: procedural).
+     timing = clip hit window -> move active frames (see _applyAttackWarp). Pure: no actions made. */
+  static attackLimb(move, attackName) {
+    const L = move && move.limb;
+    if (L === 'armL' || L === 'armR' || L === 'legL' || L === 'legR') return L;
+    const hit = String(attackName || (move && move.tekkenInput) || '').split(/[,.]/).pop();
+    const b = (hit.match(/[1-4]/) || [])[0];
+    return { 1: 'armL', 2: 'armR', 3: 'legL', 4: 'legR' }[b] || (L === 'both' && /[34]/.test(hit) ? 'legR' : 'armR');
+  }
+  /* Button mask of the hit a notation fires (its last hit, after any stance prefix):
+     1 LP, 2 RP, 4 LK, 8 RK (the T3 command bits); else the move's limb as one button; 0 unknown. */
+  static attackButtons(move, attackName) {
+    const hit = String(attackName || (move && move.tekkenInput) || '').split(/[,.~:]/).pop();
+    let m = 0;
+    for (const b of hit.match(/(?<![a-z/])[1-4](?![0-9])/gi) || []) m |= 1 << (+b - 1);
+    if (m) return m;
+    return { armL: 1, armR: 2, legL: 4, legR: 8 }[move && move.limb] || 0;
+  }
+  static attackLevel(move, raw) {
+    if (move && move.hitWord != null) { const l = attackLevelOfWord(move.hitWord); if (l) return l; }
+    const lab = (move && move.t8 && move.t8.tgt) || (raw && (raw.hit_level || (raw.t7 && raw.t7.hit_level))) || '';
+    const tok = String(lab).split(',').map(s => s.trim()).filter(Boolean).pop() || '';
+    const t = tok.toLowerCase().replace(/[!()\s.]/g, '');
+    if (!t || t === '-') return null;
+    if (/throw|^th|^t/.test(t)) return 't';
+    if (/^s(m|mid)/.test(t)) return 's';
+    return { h: 'h', m: 'm', l: 'l' }[t[0]] || ({ high: 'h', mid: 'm', low: 'l' })[t] || (t.startsWith('sl') ? 'l' : null);
+  }
+  _attackRowIndex() {
+    // This fighter's own decoded T3 rows (t3_row in the bound bank) by input, from its moveset:
+    // a move keyed by the notation first, then the slots table, then the moves' input fields.
+    const t3 = this._t3, msId = this._movesetId;
+    if (t3.rowIdx && t3.rowIdx.ms === msId) return t3.rowIdx;
+    const idx = { ms: msId, byInput: new Map() };
+    const ms = getFighterMoveset(msId);
+    if (ms && ms.moves) {
+      const add = (n, name) => { if (!n) return; const l = idx.byInput.get(n) || []; if (!l.includes(name)) l.push(name); idx.byInput.set(n, l); };
+      const keyRow = {};
+      for (const [k, m] of Object.entries(ms.moves)) {
+        const r = m && this._ownRow({ t3row: m.t3_row, t3source: m.t3_source || (m.t3_row != null ? ms.t3_source : null) }, 'own');
+        if (r) keyRow[k] = r.name;
+      }
+      for (const [k, name] of Object.entries(keyRow)) add(k, name);
+      for (const [n, k] of Object.entries(ms.slots || {})) if (keyRow[k]) add(n, keyRow[k]);
+      for (const [k, name] of Object.entries(keyRow)) add(ms.moves[k].input, name);
     }
-    if (!ok && move.animRow != null && (SOURCE_TO_BANK[move.animBank] || move.animBank) === this._t3.bank) {
-      row = move.animRow; ok = true; // T7/T8 move: its base character's decoded T3 row (anim_t3)
+    t3.rowIdx = idx;
+    return idx;
+  }
+  _ownRow(move, which = null) {
+    const t3 = this._t3, clips = t3.clips;
+    const last = (r) => (Array.isArray(r) ? r[r.length - 1] : r);
+    // king/armorking family (anim-bank wiring lane, 2026-10-20): the 'armorking' bank is the SAME
+    // divmot03_king motion stream baked on King's own rig (PR #405), so king rows are native to it.
+    const same = (b) => b === t3.bank || (b === 'king' && t3.bank === 'armorking');
+    if (which !== 'anim' && move.t3row != null) {
+      const r = last(move.t3row);
+      if (same(move.t3source ? SOURCE_TO_BANK[move.t3source] : t3.bank) && clips['row:' + r]) return { name: 'row:' + r, kind: 'own' };
     }
-    if (!ok) return null;
-    const name = 'row:' + row;
-    if (!this.t3actions[name]) {
-      if (!this._t3.clips[name]) return null;
+    if (which !== 'own' && move.animRow != null) {
+      const r = last(move.animRow);
+      if (same(SOURCE_TO_BANK[move.animBank] || move.animBank) && clips['row:' + r]) return { name: 'row:' + r, kind: 'anim' };
+    }
+    return null;
+  }
+  _attackClipPlan(move, attackName) {
+    if (!this._t3 || !this._t3.clips) return null;
+    const { bank, clips } = this._t3;
+    const ms = getFighterMoveset(this._movesetId);
+    const raw = move && move.moveKey && ms && ms.moves ? ms.moves[move.moveKey] : null;
+    const limb = Fighter.attackLimb(move, attackName);
+    const level = Fighter.attackLevel(move, raw);
+    // Throw as the game treats it (_tryAttackFresh lunge / getHitbox grab sphere / canBeHitBy).
+    const grab = !!(move && move.isGrab) || /^(grab|1\+3|2\+4)$/.test(String(attackName || '')) || level === 't';
+    const S = move && Number.isFinite(move.startup) ? move.startup : 0;
+    const rejected = [];
+    // A row whose decoded type disagrees with the move is skipped (strike <-> throw).
+    const fits = (c) => {
+      if (!c || !clips[c.name]) return null;
+      const thr = clipIsThrow(clips[c.name]), atk = !!(clips[c.name].userData.hit && clips[c.name].userData.hit[0] > 0);
+      if (grab ? thr : !thr) return c;
+      if (grab && !atk) return c; // a throw on a non-attack row (no decoded hit at all): nothing contradicts it
+      rejected.push(`${c.kind} ${c.name} is a ${thr ? 'throw' : 'strike'} row`);
+      return null;
+    };
+    let pick = move ? fits(this._ownRow(move, 'own')) : null;
+    if (!pick) {
+      const idx = this._attackRowIndex();
+      for (const n of [move && move.tekkenInput, attackName, raw && raw.input]) {
+        for (const name of (n && idx.byInput.get(n)) || []) {
+          pick = fits({ name, kind: 'notation', why: `same input '${n}'` });
+          if (pick) break;
+        }
+        if (pick) break;
+      }
+    }
+    // anim_t3 'nearest' rows (merge-time limb/class/startup guess, flagged approximate) show a
+    // different button than the input on 43% of slots (measured 2026-10-24); they come after match.
+    const animNearest = !!(raw && raw.anim_t3 && /nearest/.test(String(raw.anim_t3.match || '')));
+    if (!pick && move && !animNearest) pick = fits(this._ownRow(move, 'anim'));
+    // Main's animated-row donor (combat pt198u, kept): the decoded row of the closest animated move in the SAME
+    // moveset (same command, else same direction+button, else same button/limb), strike/throw-checked like the rest.
+    if (!pick && move) { const d = this._rowDonor(move); if (d != null) pick = fits({ name: 'row:' + d, kind: 'donor', why: `donor row ${d}` }); }
+    // The move's buttons (last hit of its notation: 1 LP, 2 RP, 3 LK, 4 RK) and the limb they name.
+    const btn = Fighter.attackButtons(move, attackName);
+    const btnLimb = BUTTON_LIMB[btn] || limb;
+    if (!pick) {
+      // Same buttons first, then the same limb, each at the move's height then any height;
+      // nearest decoded hit frame to the move's startup inside the first tier that has rows.
+      const NEAR = { h: ['h', 'm'], m: ['m', 's', 'u'], s: ['s', 'l', 'm'], l: ['l', 's'], u: ['u', 'm'] };
+      const all = bankAttackPool(bank, { throws: grab });
+      const tiers = [];
+      for (const pool of [btn ? all.filter(c => c.btn === btn) : [], all.filter(c => c.limb === btnLimb)]) {
+        if (!grab && level && NEAR[level]) for (const l of NEAR[level]) tiers.push(pool.filter(c => c.level === l));
+        tiers.push(pool);
+      }
+      if (grab) tiers.push(all); // throw reach: any decoded throw attempt of this character
+      for (const tier of tiers) {
+        if (!tier.length) continue;
+        let best = tier[0];
+        for (const c of tier) if (Math.abs(c.t0 - S) < Math.abs(best.t0 - S)) best = c;
+        pick = { name: best.name, kind: 'match', why: `${grab ? 'throw ' : ''}btn ${best.btn || '?'} ${best.limb}${best.limbSrc === 'measured' ? '(measured)' : ''} ${best.level || '?'}${level && best.level !== level ? ` (move ${level})` : ''} hit@${Math.round(best.t0 * 60)}f` };
+        break;
+      }
+    }
+    if (!pick && move && animNearest) pick = fits(this._ownRow(move, 'anim'));
+    if (!pick) {
+      // Generic action clips, by the button of the row each one plays (decoded), else measured limb.
+      const cands = (grab ? ['grab'] : []).concat(['light', 'medium', 'heavy']).filter(n => clips[n] && clipIsThrow(clips[n]) === grab);
+      const limbOf = (n) => { const h = clips[n].userData.hit; const p = clipStrikeProfile(bank, clips[n]); return BUTTON_LIMB[h && h[5]] || (p && p.dominant); };
+      const arm = (l) => l && l.startsWith('arm');
+      let best = grab && clips.grab && clipIsThrow(clips.grab) ? 'grab' : null;
+      for (const want of [(d) => d === btnLimb, (d) => arm(d) === arm(btnLimb)]) {
+        if (best) break;
+        for (const n of cands) if (want(limbOf(n))) { best = n; break; }
+      }
+      // Last resort (a bank with no decoded throw row baked): the bank's own grab action, flagged.
+      best = best || (grab ? 'grab' : arm(btnLimb) ? 'light' : 'medium');
+      if (clips[best]) pick = { name: best, kind: 'generic', why: `generic ${best} for ${btnLimb}${grab && !clipIsThrow(clips[best]) ? ' (NOT a throw row)' : ''}` };
+    }
+    if (!pick) return null;
+    // Timing: the clip's hit window (decoded T3 active frames, else the measured extension peak of
+    // the move's limb) is placed on the move's active frames; recovery fills the move's total.
+    const src = clips[pick.name];
+    const A = move && Number.isFinite(move.active) ? move.active : 0;
+    const R = move && Number.isFinite(move.recovery) ? move.recovery : 0;
+    let timing = null;
+    if (src && S + A + R > 0.05) {
+      const w = clipHitWindow(bank, src, limb);
+      const D = src.duration;
+      const t0 = w ? Math.min(w.t0, D) : D * S / (S + A + R);
+      const t1 = w ? Math.min(Math.max(w.t1, t0), D) : D * (S + A) / (S + A + R);
+      timing = { S, A, R, t0, t1, D, src: w ? w.src : 'proportional' };
+    }
+    return { ...pick, limb, level, grab, timing, rejected };
+  }
+
+  /* The action for the current attack (plan cached per attack id; row clips retarget lazily on
+     first use, same captured rest pose). */
+  _attackClip(move, attackName) {
+    if (!this._t3) return null;
+    const p = this._atkPlan;
+    if (p && p.id === this._attackId && p.move === move) return p.name;
+    const plan = this._attackClipPlan(move, attackName);
+    let name = plan ? plan.name : null;
+    if (name && !this.t3actions[name] && name.startsWith('row:')) {
       const rc = retargetT3Clips(this._t3.clips, this._t3.bank, this._t3.model, THREE, this._t3.modelKey, [name]);
-      if (!rc || !rc[name]) return null;
-      Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
+      if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
     }
-    const a = this.t3actions[name];
-    const total = (move.startup || 0) + (move.active || 0) + (move.recovery || 0);
-    a.timeScale = total > 0.05 ? a.getClip().duration / total : 1;
+    if (name && !this.t3actions[name]) name = null;
+    this._atkPlan = { id: this._attackId, move, name, kind: plan && plan.kind, why: plan && plan.why,
+      limb: plan && plan.limb, timing: plan && plan.timing, rejected: plan && plan.rejected };
     return name;
+  }
+
+  /* Drive the attack clip's time from the move's own clock (stateT), before the mixer samples:
+     clip hit window -> the move's active frames (attackClipTime). The clip is held at timeScale 0
+     while warped; released (timeScale 1) when the attack ends or another clip takes over. */
+  _applyAttackWarp() {
+    const w = this._atkWarp;
+    const attacking = this.state === 'attack' || this.state === 'vskill' || this.state === 'vreversal';
+    if (w && (!attacking || w.id !== this._attackId || this._t3current !== w.action)) {
+      w.action.timeScale = 1;
+      this._atkWarp = null;
+    }
+    const p = this._atkPlan;
+    if (!attacking || !p || p.id !== this._attackId || !p.name || !p.timing) return;
+    const a = this.t3actions[p.name];
+    if (!a || this._t3current !== a) return; // starts in this frame's state switch
+    if (!this._atkWarp) this._atkWarp = { id: p.id, action: a };
+    a.timeScale = 0;
+    a.time = attackClipTime(p.timing, this.stateT);
+  }
+
+  /* ROOT MOTION application (2026-10-24). Runs from _physics, once per
+     frame, during attack / vskill / vreversal ONLY — never during block,
+     sidestep, dodge, jump, throw execution, hitstun or knockdown, whose
+     positions are already driven (procedural vx/vz, gravity, or the
+     throw lift/slam in _tickState). The clip is the one _attackClipPlan
+     already chose for this attack (own row, notation, donor, match —
+     never another character's), read from this._t3.clips, the SOURCE
+     clips that still carry userData.raw.root_t (the retargeted
+     t3actions copies drop raw, so they cannot be used here).
+     Clip time follows the SAME warp as the visible animation
+     (_applyAttackWarp: attackClipTime(plan.timing, stateT)), so the
+     body arrives exactly when the animated limbs do; without a timing
+     (tiny/degenerate move) it follows the action's own time. The
+     displacement is applied INCREMENTALLY (this frame's sample minus
+     the previous frame's), so a clip that steps forward and settles
+     back (e.g. a dash row peaking mid-clip) moves the fighter back
+     too, and a string's next hit starts from where the last hit left
+     the fighter — never a snap-back to the move's start, never a
+     double-count. facing is frozen during attacks (update() only
+     re-faces when canAct()), so the facing captured per frame is the
+     attack's facing throughout.
+     SCOPE GUARDS (no guessing, per docs/RULES_NO_GUESSING):
+     - Row clips only (plan.name 'row:*'): decoded move rows whose
+       travel IS the move's travel. Generic light/medium/heavy/grab
+       fallbacks are excluded — light/medium travel 0, but heavy/grab
+       are the row-230 throw-execution clip (2.63 m forward), whose
+       travel belongs to throwExec, not to an attack attempt. A move
+       with no row clip and no raw root_t gets NO root motion (today's
+       in-place behaviour), marked UNMAPPED in docs — never an
+       invented distance.
+     - Horizontal only (see rootMotionSample): y stays with gravity
+       and the retargeted hip-height track.
+     - No hit dependence: hasHit / hit detection are never read. */
+  _rootMotionApply() {
+    const attacking = this.state === 'attack' || this.state === 'vskill' || this.state === 'vreversal';
+    if (!attacking) { this._rmPrev = null; return; }
+    const p = this._atkPlan;
+    if (!p || p.id !== this._attackId || !p.name || !String(p.name).startsWith('row:')) { this._rmPrev = null; return; }
+    // T3 throw-situation rows (conditions 2-0x17) are throw executions: like the row-230
+    // clip, their travel positions the thrown pair and belongs to the throw, not the attempt.
+    const tc = this.attack && this.attack.t3Condition;
+    if (tc >= 2 && tc <= 0x17) { this._rmPrev = null; return; }
+    const clip = this._t3 && this._t3.clips ? this._t3.clips[p.name] : null;
+    const raw = clip && clip.userData && clip.userData.raw;
+    const rt = raw && raw.root_t;
+    if (!rt || rt.length < 2) { this._rmPrev = null; return; }
+    let clipTime = null;
+    if (p.timing) clipTime = attackClipTime(p.timing, this.stateT);
+    else { const a = this.t3actions && this.t3actions[p.name]; if (a) clipTime = a.time; }
+    if (!Number.isFinite(clipTime)) { this._rmPrev = null; return; }
+    const cur = rootMotionSample(rt, raw.fps || 30, clipTime);
+    let prev = this._rmPrev;
+    if (!prev || prev.id !== this._attackId || prev.name !== p.name) {
+      // First frame this attack's plan is visible (_animate builds the
+      // plan after _physics on frame 1): anchor on the clip's frame 0
+      // and apply the travel so far in this same call, so nothing is lost.
+      prev = { id: this._attackId, name: p.name, ...rootMotionSample(rt, raw.fps || 30, 0) }; prev.lat0 = prev.lat; prev.fwd0 = prev.fwd;
+    }
+    // LATERAL CLAMP (moveset sweep 2026-10-28): some decoded T3 rows carry a metre-scale
+    // sideways root track (bad frame-0 anchor in the source), which threw the attacker
+    // off the fight line (|dz| > 0.75) so the strike whiffed every time. Tekken attacks
+    // drift sideways well under 0.5 m (Beast Elbow ~0.40 m); cap the total lateral travel per attack inside the 0.75 m reach band.
+    const LAT_MAX = 0.45, cl = (v) => Math.max(-LAT_MAX, Math.min(LAT_MAX, v));
+    cur.lat = cl(cur.lat - (prev.lat0 ?? prev.lat)) + (prev.lat0 ?? prev.lat);
+    // BACKWARD CLAMP (moveset sweep 2026-10-29): donor rows retargeted from another bank
+    // (e.g. lili 2 on xiaoyu@silvertongue) can carry a backward root track that slid the
+    // attacker 0.75 m away during startup, so a point-blank jab whiffed. Cap total
+    // backward travel per attack; forward travel (lunges) is untouched.
+    const BACK_MAX = 0.3, f0 = prev.fwd0 ?? prev.fwd;
+    cur.fwd = Math.max(f0 - BACK_MAX, cur.fwd);
+    const df = cur.fwd - prev.fwd, dl = cur.lat - prev.lat;
+    if (df || dl) {
+      this.root.position.x += this.facing * df;   // source forward (+Z) -> facing direction
+      this.root.position.z += -this.facing * dl;  // source left (+X) -> world -z when facing +x
+    }
+    this._rmPrev = { id: this._attackId, name: p.name, fwd: cur.fwd, lat: cur.lat, lat0: prev.lat0 ?? prev.lat, fwd0: prev.fwd0 ?? prev.fwd };
+  }
+
+  _rowDonor(move) {
+    const ms = getFighterMoveset(this._movesetId);
+    if (!ms || !ms.moves || !this._t3) return null;
+    if (!this._donorIdx || this._donorIdx.ms !== ms) {
+      const idx = new Map();
+      const bank = this._t3.bank;
+      for (const mv of Object.values(ms.moves)) {
+        if (mv.t3_row == null) continue;
+        const src = mv.t3_source || ms.t3_source;
+        if ((SOURCE_TO_BANK[src] || src) !== bank && !(src === 'king' && bank === 'armorking')) continue;
+        for (const k of rowDonorKeys(mv.input || '', mv.limb)) if (!idx.has(k)) idx.set(k, mv.t3_row);
+      }
+      this._donorIdx = { ms, idx };
+    }
+    for (const k of rowDonorKeys(move.tekkenInput || '', move.limb)) {
+      const r = this._donorIdx.idx.get(k);
+      if (r != null && this._t3.clips['row:' + r]) return r;
+    }
+    return null;
   }
 
   tryMove(dir) {
@@ -647,6 +1220,22 @@ export class Fighter {
   }
 
   /* Context the input buffer resolves notations against (WS./FC./SS./BT./R./stance codes). */
+  // Where this fighter stands relative to the opponent's facing: 'L' / 'R' (their left/right
+  // side, well off their line in z — source left maps to world -z when facing +x), 'B' (behind them),
+  // null in front.
+  _foeFlank() {
+    const o = this._opp;
+    if (!o || !o.root || !this.root) return null;
+    // a sidestep keeps its SS. moves; a foe in a hit reaction is not set up for a side/back throw
+    if (this.state === 'sidestep' || /hit|stun|knock|launch|juggle|air|down|thrown/i.test(o.state || '')) return null;
+    const dx = this.root.position.x - o.root.position.x, dz = this.root.position.z - o.root.position.z;
+    // facing is ±x only, and grounded bodies keep 1.45 m of x apart while |dz| < 0.9, so a
+    // sidestep that ends 0.6 m+ off the opponent's line (at least 0.4 of the x gap) is at their side
+    if (Math.abs(dz) >= 0.6 && Math.abs(dz) >= 0.4 * Math.abs(dx)) return dz * -(o.facing || 1) > 0 ? 'L' : 'R';
+    if (dx * (o.facing || 1) < 0) return 'B';
+    return null;
+  }
+
   _inputCtx() {
     const st = this.stance;
     return {
@@ -659,6 +1248,12 @@ export class Fighter {
       urgeOn: !!this._urgeOn,
       urgeAvailable: !this._urgeUsed && !this._urgeOn && this.hp > 0,
       inMove: this.state === 'attack',
+      attackT: this.state === 'attack' ? this.stateT : null, // time into the current hit ('~' window)
+      // close/far normals (KOF/SF) pick by root distance; stance spin variants by re-entries
+      dist: this._opp && this._opp.root && this.root ? Math.hypot(this._opp.root.position.x - this.root.position.x, this._opp.root.position.z - this.root.position.z) : null,
+      stanceSpins: this.stance ? (this._stanceSpins || 1) : 0,
+      foeFlank: this._foeFlank(), // batch 8: 'L' / 'R' / 'B' when at the opponent's side or back
+      soulStates: soulStates(this), // pt217u: 魂 ACTION / KESSHOU / 九魂解放 / 霊放 / 試練の封 gates
     };
   }
 
@@ -719,17 +1314,24 @@ export class Fighter {
     if (!this.canAct() || !this.onGround) return;
     this._enter('dodge'); this.invuln = 0.34; this.dodgeDir = -this.facing;
     this._dodgeId = (this._dodgeId || 0) + 1;
-    this.vx = this.dodgeDir * this.stats.speed * 1.7;
+    if (this.brawler) {
+      // BRAWLER: hop straight back along the facing yaw (3D).
+      const s = this.stats.speed * 1.7;
+      this.vx = -Math.sin(this.yaw) * s;
+      this.vz = -Math.cos(this.yaw) * s;
+    } else {
+      this.vx = this.dodgeDir * this.stats.speed * 1.7;
+    }
   }
 
   /* ---------------- V-System (owner 2026-10-22) ----------------
      One input ('vskill': KeyV / V button), three context moves —
      Tekken-ified from SFV's V-Skill / V-Trigger / V-Reversal, plus
-     V-Shift on block double-tap. Names «TBD» pending user approval. */
+     V-Shift on block double-tap. Canon name unassigned (NEEDS NAME) — no name text is shown in-game. */
   _startVAttack(move, state, name) {
-    this.attack = move; this.attackName = name; this.hasHit = false;
+    this.attack = move; this.attackName = name; this.hasHit = false; this._prevHitPoint = null;
     this._attackId = (this._attackId || 0) + 1;
-    this._queuedNext = null;
+    this._queuedNext = null; this._queuedAfter = null;
     this.vx = 0; this._enter(state); this._attackPhase = 'startup';
     return true;
   }
@@ -803,13 +1405,37 @@ export class Fighter {
        1+2/3+4/chains -> '1+2' (both punches; '3+4' accepted on mobile)
      Read the attacker's lead arm: left arm = break 1, right arm = break 2,
      both arms = break 1+2. Wrong input or timeout = full throw damage. */
+  /* TEKKEN GRAPPLE (2026-10-24, t3-throw.js + docs/anim/T3-REACTIONS.md):
+     On connect, the file's throw pair replaces the legacy lock.
+     The attempt clip already played (attack state); now, with no
+     further button press, the thrower and victim play the paired
+     slot clips in sync on the shared root frame, the break window
+     is the first frames of those same clips, and damage lands at
+     the file's damage_frames. When the file has no pair for this
+     throw (or its clips are not loaded), this falls through to
+     the legacy 0.3 s lock below — UNMAPPED, never an invented
+     pairing. game.js's lock-resolution loop skips paired
+     fighters (lockMove is null), so completeThrow() never fires
+     for a pair; _tickState advances the pair instead. */
   startThrowLock(move, attacker) {
+    const pair = attacker && attacker._throwPairFor(move, this);
+    if (pair && pair.pair && attacker._bindThrowPair(pair.pair, this)) {
+      attacker._startThrowPair(pair.pair, this);
+      return;
+    }
+    if (pair && pair.reason) console.log(`[WH-THROW] ${attacker.char.id} vs ${this.char.id}: no file pair (${pair.reason}) — legacy lock`);
     this.state = 'thrown'; this.stateT = 0;
     this.lockT = 0.3; this.lockMove = move; this.lockPartner = attacker;
     this.vx = 0; this.vz = 0;
     // face the attacker during the lock
-    const want = Math.sign(attacker.root.position.x - this.root.position.x) || 1;
-    this.facing = want;
+    if (this.brawler) {
+      const ax = attacker.root.position.x - this.root.position.x;
+      const az = attacker.root.position.z - this.root.position.z;
+      this.yaw = Math.atan2(ax, az);
+    } else {
+      const want = Math.sign(attacker.root.position.x - this.root.position.x) || 1;
+      this.facing = want;
+    }
   }
   startThrowing(victim) {
     this.state = 'throwing'; this.stateT = 0;
@@ -817,12 +1443,163 @@ export class Fighter {
     this.vx = this.facing * 1.2; // step in with the grab
     this._breakCueT = 0;
   }
-  get throwBreakInput() { return this.lockMove && this.lockMove.throw_break; }
+  /* Resolve the file's throw pair for a grab that just connected.
+     Attempt row priority: (1) the attempt clip plan's own row
+     ('row:<n>' — the file row the reach actually played), else
+     (2) the file's throw_inputs row for an exact LP1+LK3 /
+     RP2+RK4 chord. A generic 'grab' action has no row of its own
+     and is NOT mapped through throw_inputs — its chord is
+     ambiguous, and guessing it would wire the wrong attempt. */
+  _throwPairFor(move, victim) {
+    const R = globalThis.WH_T3_REACTIONS;
+    if (!R) return { pair: null, reason: 'throw tables not loaded' };
+    const aDir = this._t3 && this._t3.dir, vDir = victim._t3 && victim._t3.dir;
+    if (!aDir) return { pair: null, reason: `no T3 bank for ${this.char.id} (UNMAPPED)` };
+    if (!vDir) return { pair: null, reason: `no T3 bank for ${victim.char.id} (UNMAPPED)` };
+    let attemptRow = null;
+    const planName = this._atkPlan && this._atkPlan.name;
+    if (planName && planName.startsWith('row:')) attemptRow = parseInt(planName.slice(4), 10);
+    if (attemptRow == null && (this.attackName === '1+3' || this.attackName === '2+4')) {
+      attemptRow = attemptRowForInput(R, aDir, this.attackName, this.stance === 'FC', false);
+    }
+    if (attemptRow == null || Number.isNaN(attemptRow)) {
+      return { pair: null, reason: `no T3 attempt row for '${this.attackName}' (UNMAPPED)` };
+    }
+    const dx = victim.root.position.x - this.root.position.x;
+    const dz = victim.root.position.z - this.root.position.z;
+    const posture = victim.state === 'crouch' ? 'crouching' : victim.state === 'knockdown' ? 'lying' : 'standing';
+    const quadrant = throwQuadrant(this.root.position, victim.root.position, victim.facing);
+    const rp = getReactionPack(this._t3.bank);
+    const sel = selectThrow(R, aDir, attemptRow, { posture, quadrant,
+      distanceM: Math.hypot(dx, dz), anchorScale: rp ? rp.pack.anchor_mm_to_rig_m : 0 });
+    if (!sel.throw) return { pair: null, reason: sel.reason };
+    const clips = resolveThrowClips(R, sel.throw, aDir, vDir);
+    if (!clips.throwerBank || !clips.victimBank) return { pair: null, reason: clips.note || 'unresolved clip bank (UNMAPPED)' };
+    return { pair: { throw: sel.throw, branch: sel.branch, code: sel.code, clips,
+      breaks: throwBreaks(sel.throw), damageTimeSec: throwDamageTimeSec(sel.throw),
+      durationSec: throwPairDurationSec(sel.throw), whMove: move, isEscape: false, hitDone: false }, reason: null };
+  }
+  /* Bank key (t3anims.js T3_BANKS key) for a reactions.json dir. */
+  _bankIdForDir(dir) {
+    for (const [k, v] of Object.entries(T3_BANKS)) if (bankDirOf(v) === dir) return k;
+    return null;
+  }
+  /* Retarget one reaction-pack slot clip onto this fighter's rig
+     as action `name`. Returns the action name or null. */
+  _reactionAction(bankId, slot, name) {
+    if (!bankId || !this._t3 || this.t3actions[name]) return this.t3actions[name] ? name : null;
+    const canonical = getReactionClip(bankId, slot, THREE);
+    if (!canonical) return null;
+    const rc = retargetT3Clips({ [name]: canonical }, bankId, this._t3.model, THREE, this._t3.modelKey, [name]);
+    if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
+    return this.t3actions[name] ? name : null;
+  }
+  /* Bind both clips of a pair (thrower on `thrower`, victim on
+     `victim`; this method is called on the thrower). Also records
+     the pack rows the shared-frame drive reads anchors from, and
+     the thrower's anchor scale (used for both clips, per doc).
+     Returns false when either clip is unavailable — the caller
+     then keeps the legacy lock instead of a half pair. */
+  _bindThrowPair(pair, victim) {
+    const thrower = this;
+    const tBank = thrower._bankIdForDir(pair.clips.throwerBank);
+    const vBank = victim._bankIdForDir(pair.clips.victimBank);
+    const tRp = tBank && getReactionPack(tBank);
+    const vRp = vBank && getReactionPack(vBank);
+    if (!tRp || !vRp) return false;
+    pair.throwerPackRow = tRp.pack.rows[hexSlot(pair.clips.throwerSlot)];
+    pair.victimPackRow = vRp.pack.rows[hexSlot(pair.clips.victimSlot)];
+    if (!pair.throwerPackRow || !pair.victimPackRow) return false;
+    pair.anchorScale = tRp.pack.anchor_mm_to_rig_m;
+    pair.throwerAction = thrower._reactionAction(tBank, pair.clips.throwerSlot, 'throw:' + hexSlot(pair.clips.throwerSlot));
+    pair.victimAction = victim._reactionAction(vBank, pair.clips.victimSlot, 'victim:' + hexSlot(pair.clips.victimSlot));
+    return !!(pair.throwerAction && pair.victimAction);
+  }
+  /* Start a bound pair: shared root frame anchored at the
+     victim's root, H = victim heading turned 180 deg (doc:
+     H_yaw = -victim.facing * PI/2). Both fighters' pair clocks
+     (_throwPairT) run from this moment; the clips themselves
+     are NOT restarted on the throwing -> throwExec transition,
+     so the pair stays in sync. */
+  _startThrowPair(pair, victim) {
+    const thrower = this;
+    pair.thrower = thrower; pair.victim = victim;
+    pair.anchor = { x: victim.root.position.x, z: victim.root.position.z };
+    pair.hYaw = -victim.facing * Math.PI / 2;
+    for (const [f, row] of [[thrower, pair.throwerPackRow], [victim, pair.victimPackRow]]) {
+      f._throwPair = pair; f._throwPairT = 0;
+      f.lockT = 0; f.lockMove = null;
+      f.vx = 0; f.vz = 0; f.vy = 0;
+      f._faceYaw = pair.hYaw + (row.yaw0 || 0);
+    }
+    thrower.lockVictim = victim;
+    victim.lockPartner = thrower;
+    thrower.state = 'throwing'; thrower.stateT = 0;
+    victim.state = 'thrown'; victim.stateT = 0;
+  }
+  /* Damage for a paired throw, at the file's damage time.
+     Main pair: the WH move's own damage (MOD decision). Escape
+     pair: not a WH move — the file damage scaled T3 170 -> WH 100. */
+  _throwPairDamage() {
+    const pair = this._throwPair, attacker = pair && pair.thrower;
+    if (!pair || !attacker || pair.hitDone) return null;
+    pair.hitDone = true;
+    const base = pair.isEscape ? pair.throw.damage * 100 / 170 : (pair.whMove && pair.whMove.damage) || 0;
+    const dmg = base * attacker.stats.power / this.stats.defense;
+    this.hp = Math.max(0, this.hp - dmg);
+    if (this.hp <= 0) {
+      this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing);
+      return 'ko';
+    }
+    return 'throw';
+  }
+  get throwBreakInput() {
+    if (this._throwPair && this._throwPair.breaks && this._throwPair.breaks[0]) return this._throwPair.breaks[0].input;
+    return this.lockMove && this.lockMove.throw_break;
+  }
   tryThrowBreak(btn) {
+    if (this.state === 'thrown' && this._throwPair) {
+      // File pair break: input must match AND the pair clock must
+      // be inside the file's break window (first frames of the
+      // same clips). A correct input outside the window does not
+      // break — the throw lands. On break, the file's escape pair
+      // starts with roles swapped; if it cannot bind, fall back
+      // to the legacy escape (both idle, attacker punishable).
+      const pair = this._throwPair, brk = pair.breaks && pair.breaks[0];
+      if (!brk) return false;
+      const got = (btn === '3+4') ? '1+2' : btn;
+      if (got !== brk.input) return false;
+      const t = this._throwPairT || 0;
+      if (t < brk.windowSec[0] || t > brk.windowSec[1]) return false;
+      const attacker = pair.thrower;
+      const R = globalThis.WH_T3_REACTIONS;
+      const esc = R && escapePairFor(R, pair.throw, pair.breaks, attacker._t3.dir, this._t3.dir);
+      this._throwPair = null; if (attacker) attacker._throwPair = null;
+      if (esc) {
+        const newPair = { throw: esc.throw, branch: null, code: null, clips: esc.clips,
+          breaks: throwBreaks(esc.throw), damageTimeSec: throwDamageTimeSec(esc.throw),
+          durationSec: throwPairDurationSec(esc.throw), whMove: null, isEscape: true, hitDone: false };
+        if (this._bindThrowPair(newPair, attacker)) { this._startThrowPair(newPair, attacker); this._throwEscaped = true; return true; }
+      }
+      this._enter('idle');
+      this.vx = -this.facing * 2.0;
+      if (attacker) {
+        attacker.lockT = 0; attacker.lockVictim = null; attacker.lockMove = null;
+        attacker._enter('idle');
+        attacker.stun = Math.max(attacker.stun, 0.3);
+        attacker.vx = 0;
+      }
+      this._throwEscaped = true;
+      return true;
+    }
     if (this.state !== 'thrown' || !this.lockMove) return false;
-    const want = this.lockMove.throw_break || '1';
+    // KOF XV throw escape row: its own input breaks during the first 11 frames of the throw.
+    const esc = systemRows(this._movesetId).find((r) => r.sys === 'throw_escape' && r.input === btn);
+    if (esc && (this.stateT || 0) > KOF.ESCAPE_WINDOW) return false;
+    const want = esc ? btn : (this.lockMove.throw_break || '1');
     const got = (btn === '3+4') ? '1+2' : btn; // mobile: both-kicks = both-punches
-    if (got !== want) return false;
+    // T8 tables: 'none' = unbreakable, '1|2' = either punch breaks.
+    if (!esc && (want === 'none' || !want.split('|').includes(got))) return false;
     // ESCAPED — both fighters reset, attacker eats whiff recovery
     const attacker = this.lockPartner;
     this.lockT = 0; this.lockMove = null; this.lockPartner = null;
@@ -838,8 +1615,14 @@ export class Fighter {
     return true;
   }
   completeThrow() {
-    // Break window expired — the throw lands for real. Clears both sides of
-    // the lock, then routes through the normal receiveHit path.
+    // Paired throws never route here: their break window is the
+    // first frames of the pair clips and _tickState advances the
+    // pair to throwExec/thrownExec when it ends (see below).
+    if (this._throwPair) return null;
+    // Break window expired — the throw lands for real. Both fighters enter
+    // the throw execution: attacker lifts and slams, victim is thrown.
+    // (Owner playtest bug 2026-10-23: was routing through receiveHit, which
+    // launched the victim across the room with no throw animation.)
     const throwing = this.state === 'throwing';
     const attacker = throwing ? this : this.lockPartner;
     const victim = throwing ? this.lockVictim : this;
@@ -850,34 +1633,211 @@ export class Fighter {
       f.lockT = 0; f.lockMove = null; f.lockPartner = null; f.lockVictim = null;
     }
     if (attacker && victim && move && inLock) {
-      attacker._enter('idle'); attacker.vx = 0; attacker.vz = 0;
-      return victim.receiveHit(move, attacker);
+      attacker._enterThrowExec(victim, move);
+      const result = victim._enterThrownExec(attacker, move);
+      return result; // 'throw' or 'ko'
     }
     if (inLock) this._enter('idle');
     return null;
   }
+  /* Throw execution (Tekken): after the break window, the attacker performs
+     the throw — lift (0-0.45s), slam (0.45-0.6s), recover (0.6-0.9s).
+     Damage lands at the slam. The victim stays near the attacker; no launch. */
+  _enterThrowExec(victim, move) {
+    this.state = 'throwExec'; this.stateT = 0;
+    this._throwVictim = victim; this._throwMove = move;
+    this._throwHitDone = false;
+    this.vx = 0; this.vz = 0; this.vy = 0;
+    const want = Math.sign(victim.root.position.x - this.root.position.x) || this.facing;
+    this.facing = want;
+  }
+  _enterThrownExec(attacker, move) {
+    this.state = 'thrownExec'; this.stateT = 0;
+    this._throwAttacker = attacker; this._throwMove = move;
+    this.vx = 0; this.vz = 0; this.vy = 0;
+    this.onGround = false; // lifted during the throw
+    const want = Math.sign(attacker.root.position.x - this.root.position.x) || this.facing;
+    this.facing = want;
+    this.meter = Math.min(this.maxMeter, this.meter + 6); // +6 soul on taking damage
+    return 'throw';
+  }
+  _throwSlamDamage() {
+    // Damage at the slam moment, from the attacker's stored throw.
+    const attacker = this._throwAttacker, move = this._throwMove;
+    if (!attacker || !move || this._throwHitDone) return null;
+    this._throwHitDone = true;
+    let dmg = move.damage * attacker.stats.power / this.stats.defense;
+    if (attacker._maxT > 0) dmg *= KOF.MAX_DMG; // KOF XV MAX Mode
+    this.hp = Math.max(0, this.hp - dmg);
+    if (this.hp <= 0) {
+      this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing);
+      return 'ko';
+    }
+    return 'throw';
+  }
   tryAttack(name) {
+    // KOF XV system rows (guard cancel from blockstun only; throw escape only while thrown).
+    if (/^[1234](\+[1234])*$/.test(name)) { const r = this._systemPress(name); if (r !== undefined) return r; }
+    // KOF run / backstep: a button during the dash row is the dash move (f,f+2), so the press
+    // cancels the system dash; if nothing resolves, the dash keeps going.
+    if (this.state === 'attack' && this.attack && (this.attack.system === 'dash' || this.attack.system === 'backdash') && /^[1234](\+[1234])*$/.test(name)) {
+      const sv = { state: this.state, stateT: this.stateT, attack: this.attack, attackName: this.attackName, _attackPhase: this._attackPhase, _prevAtkT: this._prevAtkT, _sysVx: this._sysVx };
+      this.state = 'idle'; this.attack = null;
+      if (this._tryAttackFresh(name)) return true;
+      Object.assign(this, sv);
+    }
+    // Chain throws: buttons during a throw pick the next stage (Tekken multi-part throws).
+    if ((this.state === 'throwing' || this.state === 'throwExec') && /^[1234](\+[1234])*$/.test(name)) return this._throwChainPress(name);
     // A press during a string-capable move buffers the next hit (Tekken input buffer):
     // it fires when the current hit's active frames end.
     if (this.state === 'attack' && this.attack && /^[1234](\+[1234])*$/.test(name)) {
-      const cont = this.tekken.continuation(name);
-      if (cont) { this._queuedNext = cont; return true; }
+      // A hit already queued is the string's next step: a further press chains on from
+      // it (2,1 then 2 -> 2,1,2), never re-resolves against the move still playing,
+      // which overwrote the queue (2 -> 2,2) and dropped 3+ hit strings.
+      // '3,d+1+2' (TekkenDocs: direction and button pressed together): the stick lands a
+      // frame or two before the buttons, so a dir-only follow-up ('3,d') queued just now is
+      // the first half of the dir+button step. Sweep 2026-10-29: the dir-only key stole it.
+      const dq = this._dirFollowQ;
+      if (dq && this._queuedNext && (this._clock || 0) - dq.t < 0.1) {
+        const up = [`${dq.b}${dq.sep}${dq.d}+${name}`, `${dq.b}${dq.sep}${dq.d.toUpperCase()}+${name}`].find((k) => resolveMoveKey(this._movesetId, k));
+        const q = this._queuedAfter && this._queuedAfter.length ? this._queuedAfter : null;
+        if (up && (q ? q[q.length - 1] : this._queuedNext) === dq.c) {
+          if (q) q[q.length - 1] = up; else this._queuedNext = up;
+          this._dirFollowQ = null; return true; }
+      }
+      if (this._queuedNext) {
+        const chain = this._queuedAfter || (this._queuedAfter = []);
+        const saved = this.tekken.lastMove;
+        // Chord upgrade on a queued hit: input.js emits '1' then '1+2' for one 1+2 press,
+        // so a queued '...,1' whose button is in the chord becomes '...,1+2' (f+2~1+2).
+        if (name.includes('+')) {
+          const tail = chain.length ? chain[chain.length - 1] : this._queuedNext;
+          const single = tail.split(/[,~:]/).pop();
+          if (/^[1234]$/.test(single) && name.split('+').includes(single) &&
+              (this._clock || 0) - (this._queuedPressT || -1) < 0.06) {
+            this.tekken.lastMove = chain.length > 1 ? chain[chain.length - 2] : chain.length ? this._queuedNext : saved;
+            const up = this.tekken.continuation(name, this._inputCtx());
+            this.tekken.lastMove = saved;
+            if (up) { if (chain.length) chain[chain.length - 1] = up; else this._queuedNext = up; return true; }
+          }
+        }
+        this.tekken.lastMove = chain.length ? chain[chain.length - 1] : this._queuedNext;
+        let after = this.tekken.continuation(name, this._inputCtx());
+        if (!after) {
+          // '1' after f+2 resolved as 'f+2,1', but the list's 3-hit route is 'f+2~1,1+2':
+          // re-route the queued tail through its other separator when only that one continues.
+          const tail = this.tekken.lastMove, cut = Math.max(tail.lastIndexOf(','), tail.lastIndexOf('~'));
+          for (const sep of [',', '~']) {
+            if (cut <= 0 || tail[cut] === sep) continue;
+            const alt = tail.slice(0, cut) + sep + tail.slice(cut + 1);
+            if (!resolveMoveKey(this.tekken.fighterId, alt)) continue;
+            this.tekken.lastMove = alt;
+            const via = this.tekken.continuation(name, this._inputCtx());
+            if (via) { if (chain.length) chain[chain.length - 1] = alt; else this._queuedNext = alt; after = via; break; }
+          }
+        }
+        this.tekken.lastMove = saved;
+        if (after) { chain.push(after); this._queuedPressT = this._clock || 0; }
+        return true;
+      }
+      const cont = this.tekken.continuation(name, this._inputCtx());
+      if (cont) { this._queuedNext = cont; this._queuedPressT = this._clock || 0; return true; }
+      if (this.tekken._strPending) { this._stringGraceUntil = Math.max(this._stringGraceUntil || 0, performance.now() + 500); return true; } // extends an open partial string; fires at its full step
       // Chord upgrade: input.js emits the first button at once and the chord when the second
       // lands inside its 140 ms window, so '1' then '1+3' means the player pressed 1+3. If the
       // single that just started is part of this chord, the chord replaces it.
       if (name.includes('+') && this.stateT <= 0.14 && this._attackPhase === 'startup' && !this.hasHit) {
-        const single = String(this.attackName || '').split(/[,.]/).pop();
+        // Tekken '~' (wavu wiki: "immediately after"): '3~4' is 4 pressed a frame or two after 3,
+        // which input.js reports as the chord 3+4. When the move has a tilde follow-up for the
+        // later button(s) and they came after the first frame, it is the tilde, not the chord.
+        if (this.stateT > 0 && this.tekken && this.tekken.lastMove) {
+          const first = String(this.attackName || '').split('+').pop().slice(-1);
+          const rest = name.split('+').filter((b) => b !== first).join('+');
+          const tk = rest && `${this.tekken.lastMove}~${rest}`;
+          if (tk && resolveMoveKey(this.tekken.fighterId, tk)) { this._queuedNext = this.tekken._recordMove(tk); this._queuedPressT = this._clock || 0; return true; }
+        }
+        const single = String(variantBase(this._movesetId, this.attackName) || this.attackName || '').split(/[,.]/).pop(); // close/far normal: its plain button
         const btn = single.split('+').pop();
         if (/^[1234]$/.test(btn) && name.split('+').includes(btn)) {
           this.tekken.lastMove = this._chordBase || null;
-          const saved = { state: this.state, attack: this.attack, attackName: this.attackName, stateT: this.stateT };
-          this.state = 'idle';
+          const saved = { state: this.state, attack: this.attack, attackName: this.attackName, stateT: this.stateT,
+            stance: this.stance, stanceT: this.stanceT, _risingT: this._risingT };
+          // Moveset sweep 2026-10-28: re-resolve the chord in the state the single was pressed
+          // from (stance / crouch / while-rising), not plain idle — SAV.1+2, WS.1+2, FC.1+2 and
+          // stance throws (SIDE_L.1+3) came out as the neutral chord.
+          const pre = this._preAtk || {};
+          this.state = pre.state === 'crouch' ? 'crouch' : 'idle';
+          this.stance = pre.stance || null; this.stanceT = pre.stanceT || 0; this._risingT = pre.risingT || 0;
           if (this._tryAttackFresh(name)) return true;
           Object.assign(this, saved);
         }
       }
     }
-    return this._tryAttackFresh(name);
+    if (this._tryAttackFresh(name)) { this._pressBuf && this._pressBuf.clear(); return true; }
+    // Tekken input buffer: a press made while still recovering / in
+    // hitstun is held ~10 frames and fires on the first actionable frame.
+    if (/^[1234](\+[1234])*$/.test(name) && !this.dead) {
+      (this._pressBuf ||= new PressBuffer(10)).push(name, this._clock || 0);
+    }
+    return false;
+  }
+  /* Direction-only string follow-ups (moveset sweep 2026-10-28): rows like 'f+4,u' or
+     'f+3,d/f' end (or continue) on a bare stick step, a stance/cancel transition in Tekken.
+     Only buttons reached tryAttack, so these were unreachable. A fresh stick direction
+     during a string-capable move queues the follow-up exactly like a buffered button. */
+  tryDirFollow(dir) {
+    if (!dir || dir === 'n') return false;
+    // Throw follow-ups ('d/f+1+2,F' = throw, then Savage Stance): the stick during the throw
+    // picks the row; its stance applies when the throw ends (_endThrowFollow).
+    if ((this.state === 'throwing' || this.state === 'throwExec') && this.tekken.lastMove && !this._throwFollow) {
+      for (const d of [dir, dir.toUpperCase()]) { const c = `${this.tekken.lastMove},${d}`;
+        if (!resolveMoveKey(this._movesetId, c)) continue;
+        this._throwFollow = c; this.tekken._recordMove(c); this.attackName = c; return true; }
+      return false;
+    }
+    if (this.state !== 'attack' || !this.attack) return false;
+    // Same follow-up entered during the grab's own startup/active (before it connects): it
+    // rides on the throw instead of queueing a string hit the throw lock would drop.
+    if (this.attack.isGrab && this.tekken.lastMove && !this._throwFollow) {
+      for (const d of [dir, dir.toUpperCase()]) { const c = `${this.tekken.lastMove},${d}`;
+        if (!resolveMoveKey(this._movesetId, c)) continue;
+        this._throwFollow = c; this.tekken._recordMove(c); this.attackName = c; return true; }
+    }
+    const T = this.tekken, ms = this._movesetId;
+    const last = (this._queuedAfter && this._queuedAfter.length) ? this._queuedAfter[this._queuedAfter.length - 1] : (this._queuedNext || T.lastMove);
+    if (!last) return false;
+    const bases = [last]; const t = last.indexOf('~'); if (t > 0) bases.push(last.slice(0, t));
+    for (const b of bases) for (const sep of [',', '~', ':']) for (const d of [dir, dir.toUpperCase()]) {
+      const c = `${b}${sep}${d}`;
+      if (!resolveMoveKey(ms, c)) continue;
+      if (this._queuedNext) (this._queuedAfter || (this._queuedAfter = [])).push(c); else this._queuedNext = c;
+      this._queuedPressT = this._clock || 0;
+      this._dirFollowQ = { c, b, sep, d: dir, t: this._clock || 0 };
+      return true;
+    }
+    return false;
+  }
+  /* Held-button moves (moveset sweep 2026-10-28): 'd/b+1*' / 'SAV.1+2*' = keep the limb(s)
+     down. The press starts the tap version; still held after HOLD_UPGRADE_S of startup, the
+     move becomes its held version. Before, '*' rows were reachable only with no tap version. */
+  tryHoldUpgrade(held) {
+    if (this.state !== 'attack' || this._attackPhase !== 'startup' || !held) return false;
+    const n = this.attackName || '';
+    if (!n || n.endsWith('*') || this.stateT < 0.15) return false;
+    const btns = (n.split(/[,~:]/).pop().match(/[1-4](?:\+[1-4])*$/) || [''])[0].split('+').filter(Boolean);
+    if (!btns.length || !btns.every((b) => held[b])) return false;
+    const base = n.indexOf('~') > 0 && !resolveMoveKey(this._movesetId, n + '*') ? n.slice(0, n.indexOf('~')) : n;
+    const k = base + '*';
+    if (!resolveMoveKey(this._movesetId, k)) return false;
+    return this._fireNotation(k);
+  }
+  /* Retry a buffered press once the fighter can act (called each update). */
+  _drainPressBuffer() {
+    if (!this._pressBuf || !this.canAct()) return;
+    const name = this._pressBuf.take(this._clock || 0);
+    if (!name) return;
+    this._pressBuf.clear();
+    this._tryAttackFresh(name);
   }
   setRageAura(on) {
     this._rageAura = !!on;
@@ -889,14 +1849,87 @@ export class Fighter {
     if (this.aura && this.aura.material && !this._rageAura) this.aura.material.color.set(on ? 0x3aa8ff : 0xffffff);
     if (this.auraLight && !this._rageAura) this.auraLight.color.set(on ? 0x3aa8ff : 0xffffff);
   }
+  /* GAP-FILL LANE 1: item-move loadout (T7 item-gated attacks). */
+  setEquippedItems(list) { this.equippedItems = Array.isArray(list) ? [...list] : []; }
+  equipItem(id) { if (id && !this.equippedItems.includes(id)) this.equippedItems.push(id); }
+  unequipItem(id) { this.equippedItems = this.equippedItems.filter((e) => e !== id); }
+  hasItem(id) { return this.equippedItems.includes(id); }
+
+  /* GAP-FILL LANE 1: recoverable pool (T8 white gauge, verified
+     absent before this lane — WH chip was permanent loss).
+     Pool accrues ONLY from chip actually lost on block (see
+     receiveHit); aerial/grounded recoverable fractions are NOT
+     implemented because no verified T8 fraction was found in
+     this lane's sources — inventing one would break the
+     no-guesses rule. Attacking recovers: landing a hit or
+     forcing a block heals up to the damage forced, capped by
+     the pool and by max HP. Never recovers over time. */
+  _addRecoverable(amount) {
+    if (amount > 0) this._recoverable = Math.min(this.maxHp, (this._recoverable || 0) + amount);
+  }
+  _recoverOnAttack(amount) {
+    const pool = this._recoverable || 0;
+    if (pool <= 0 || !(amount > 0)) return 0;
+    const healed = Math.min(pool, amount, Math.max(0, this.maxHp - this.hp));
+    if (healed > 0) { this.hp += healed; this._recoverable = pool - healed; }
+    return healed;
+  }
   tryUrgeDash() {
-    if (!this._urgeOn || this._urgePips < 1 || !this.canAct()) return false;
+    // GAP-FILL LANE 1 (Soul Urge completeness): T8 Heat Dash is a
+    // CANCEL, not just a neutral input — it may also fire from an
+    // attack's recovery, cancelling the tail of the move.
+    const cancel = this.state === 'attack' && this._attackPhase === 'recovery';
+    if (!this._urgeOn || this._urgePips < 1 || (!this.canAct() && !cancel)) return false;
     const g = this.game;
     if (g && g.soulurge) g.soulurge.spendPip(this);
     else this._urgePips -= 1;
+    if (cancel) { this.attack = null; this.attackName = null; }
     this._urgeDashT = 0.45;
     this.vx = this.facing * 9;
     this._enter('dash');
+    return true;
+  }
+  /** KOF system row on this press, if one applies in the current state; undefined = not a system press. */
+  _systemPress(name) {
+    const rows = systemRows(this._movesetId); if (!rows.length) return undefined;
+    const d = this.tekken && this.tekken.lastDir; const dn = d && d !== 'n' ? d + '+' + name : name;
+    const row = rows.find((r) => (r.sys === 'guard' || r.sys === 'throw_escape') && (r.input === dn || r.input === name));
+    if (!row) return undefined;
+    if (row.sys === 'throw_escape') return this.state === 'thrown' ? this.tryThrowBreak(name) : undefined;
+    if (!(this.state === 'block' && this.stun > 0.05 && this.onGround)) return undefined;
+    if (this.meter < KOF.GC_COST * KOF.STOCK) return false;
+    const ms = getFighterMoveset(this._movesetId); const mv = ms && ms.moves[row.key]; if (!mv) return false;
+    this.meter -= KOF.GC_COST * KOF.STOCK;
+    this.stun = 0;
+    this._startSystemMove(row.key, mv);
+    // GC roll: invulnerable through the whole roll, delay included; GCCD: strike-invulnerable to its active end
+    this.invuln = mv.damage > 0 ? (mv.startup || 0) + (mv.active || 0) : (mv.startup || 0) + (mv.active || 0) + (mv.recovery || 0);
+    if (!(mv.damage > 0)) this.vx = (/^b/.test(row.input) ? -1 : 1) * this.facing * 6;
+    return true;
+  }
+  /** Does this fighter's moveset own `input` as a KOF system row (optionally of `sys`)? */
+  systemRowOn(input, sys) { return systemRows(this._movesetId).find((r) => r.input === input && (!sys || r.sys === sys)) || null; }
+  _startSystemMove(key, move) {
+    this._preAtk = { state: this.state, stance: this.stance, stanceT: this.stanceT, risingT: this._risingT };
+    this.attack = move; this.attackName = key; this.hasHit = false; this._prevHitPoint = null;
+    this._attackId = (this._attackId || 0) + 1;
+    this._queuedNext = null; this._queuedAfter = null; this.stance = null; this.stanceT = 0;
+    this._throwFollow = null; this._chainFrom = null; this._chainNext = null; this._chainSeq = [];
+    this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
+  }
+  /** Double tap f/b (input buffer dash latch): the fighter's dash / backdash row, or its roll
+      row when no dash row owns that direction. */
+  trySystemMotion(dir) {
+    if (!this.canAct() || !this.onGround) return false;
+    const rows = systemRows(this._movesetId); const dd = dir + ',' + dir;
+    const want = dir === 'f' ? 'dash' : 'backdash';
+    const row = rows.find((r) => r.sys === want && r.input === dd) || rows.find((r) => r.sys === 'roll' && r.input === dd);
+    if (!row) return false;
+    const ms = getFighterMoveset(this._movesetId); const mv = ms && ms.moves[row.key]; if (!mv) return false;
+    this._startSystemMove(row.key, mv);
+    const sgn = dir === 'f' ? 1 : -1;
+    if (row.sys === 'roll') { this.invuln = KOF.ROLL_INVULN; this._sysVx = sgn * this.facing * 2.6 / KOF.ROLL_TOTAL; }
+    else this._sysVx = sgn * this.facing * (row.sys === 'dash' ? 7 : 6);
     return true;
   }
   _tryAttackFresh(name) {
@@ -906,20 +1939,74 @@ export class Fighter {
     // via the fighter's TekkenBuffer + its moveset's notation table.
     let notation = LEGACY_TO_TEKKEN[name] || name;
     const ctx = this._inputCtx();
+    /* WH legacy buttons (moveset sweep 2026-10-28): signature moves keyed 'S' / 'b+S' / 'D+S'
+       fire on the 'sig' action, and a fighter's own 'P+K' move fires on the grab action
+       (U / J+K) instead of the generic 1+3 throw. Resolved with the held stick like any button. */
+    if (name === 'sig' || (name === 'grab' && resolveMoveKey(this._movesetId, 'P+K'))) {
+      const btn = name === 'sig' ? 'S' : 'P+K';
+      const r = this.tekken.press(btn, ctx);
+      if (!r || !getRealMove(this._movesetId, r)) return false;
+      notation = r; name = r;
+    }
     this._chordBase = this.tekken.lastMove;
+    // GAP-FILL LANE 1 (Soul Urge completeness): Urge Dash as a
+    // recovery cancel — reachable even though canAct() is false
+    // mid-attack. tryUrgeDash() itself enforces the cancel window.
+    if (notation === '1+2' && ctx.urgeOn && !ctx.rage &&
+        this.state === 'attack' && this._attackPhase === 'recovery') {
+      return this.tryUrgeDash();
+    }
+    // String grace (2026-10-24, Pantera string fix; batch 2026-10-24: 200 -> 500 ms
+    // for touch cadence): a tap landing just after the previous hit fully
+    // recovered still continues the string — 500 ms past move end. The window
+    // is set in _tickState when
+    // a non-grab attack completes and cleared on hitstun/knockdown/KO, so
+    // getting hit kills it and a throw never chains. canAct-only: it must
+    // not chain out of a sidestep-cancel.
+    if (this.canAct() && /^[1234](\+[1234])*$/.test(notation) &&
+        (typeof performance !== 'undefined' ? performance.now() : 0) < this._stringGraceUntil) {
+      const grace = this.tekken.continuation(notation);
+      if (grace && this._fireNotation(grace)) return true;
+      // extends an open partial string (no standalone step): consume, keep the grace window open
+      if (!grace && this.tekken._strPending) { this._stringGraceUntil = performance.now() + 500; return true; }
+    }
     if (/^[1234]$/.test(notation)) {
+      const pathT0 = this.tekken._strPathT;
       const resolved = this.tekken.pressButton(notation, ctx);
+      // Moveset sweep 2026-10-28: the press opened a string whose first step has no standalone
+      // move ('u+1' of 'u+1,1'). The resolver deliberately fires nothing and waits for the next
+      // hit; falling back to the plain button here fired '1' and the string was unreachable.
+      if (!resolved && this.tekken._strPath && this.tekken._strPathT !== pathT0) return true;
       // Stream 6: if the fighter has no move on this limb, keep the raw
       // notation so the base-move fallback below still fires (no dead buttons).
       if (resolved) notation = resolved;
     } else if (/^[1234](\+[1234])+$/.test(notation)) {
       if (notation === '1+2' && ctx.urgeOn && !ctx.rage) return this.tryUrgeDash();
+      // GAP-FILL LANE 1 (Soul Urge completeness): LP1+RP2 is the
+      // dash (above); LK3+RK4-adjacent chord 2+3 is Burst/Smash.
+      // Buttons here are Tekken numbers per the file convention;
+      // user-facing text uses LP1/RP2/LK3/RK4. During Soul Urge,
+      // 2+3 fires the synthesized Urge Smash; with Soul Urge
+      // available but not active, 2+3 fires Urge Burst. If neither
+      // synthesized move exists (moveset not yet injected), fall
+      // through to normal chord resolution instead of dead input.
+      if (notation === '2+3' && (!this.tekken.lastDir || this.tekken.lastDir === 'n')
+        && !(ctx.soulStates || []).some((sp) => resolveMoveKey(this.tekken.fighterId, sp + '.2+3'))) { // soul-state finisher outranks urge
+        if (ctx.urgeOn && this._fireNotation('US.2+3')) return true;
+        if (ctx.urgeAvailable && this._fireNotation('UB.2+3')) return true;
+      }
       const resolved = this.tekken.pressChord(notation, ctx);
       if (!resolved) return false; // chord with no matching move: whiff, no action
       notation = resolved;
     }
     // Use REAL per-fighter T3 moveset data when available, fallback to base MOVES
+    if (this.state === 'attack' && this.attack && !this.hasHit) this._t3Whiff = this._clock || 0;
     let move = getRealMove(this._movesetId, notation) || MOVES[name] || MOVES[notation];
+    // A T3 branch-condition row (equipped via the moveset editor) fires only while its condition
+    // holds; otherwise the input plays the fighter's default move for that notation.
+    if (move && move.t3Condition != null && !t3ConditionHolds(move.t3Condition, this, this._opp, notation)) {
+      move = getRealMove(this._movesetId, notation, { noLoadout: true }) || MOVES[name] || MOVES[notation];
+    }
     if (!move) {
       // Last resort: moveset JSONs failed to load - map Tekken buttons to base moves
       const fb = { '1': 'punch', '2': 'punch', '3': 'kick', '4': 'kick',
@@ -927,6 +2014,11 @@ export class Fighter {
       if (fb) move = MOVES[fb];
     }
     if (!move) return false;
+    // GAP-FILL LANE 1 (item moves): a move gated by an item the
+    // fighter has not equipped does not fire at all — no fallback
+    // to a generic strike, so an unequipped item move is never
+    // silently replaced by a different move.
+    if (itemGate(move, this.equippedItems).blocked) return false;
     // Preserve WH-specific properties (grab unblockable, surge cost)
     if (MOVES[name]) {
       move = { ...move, ...Object.fromEntries(
@@ -935,34 +2027,157 @@ export class Fighter {
     }
     if (move.cost > 0 && this.meter < move.cost) return false;
     if (move.cost > 0) this.meter = Math.max(0, this.meter - move.cost);
-    this.attack = move; this.attackName = notation; this.hasHit = false;
+    // KOF system rows off their state: guard cancels need blockstun, throw escape needs a throw.
+    if (move.system === 'guard' || move.system === 'throw_escape') return false;
+    if (move.system === 'max') {
+      if (this._maxT > 0 || this.meter < KOF.MAX_COST * KOF.STOCK) return false;
+      this.meter -= KOF.MAX_COST * KOF.STOCK; this._maxT = KOF.MAX_SECONDS; this._auraFlash = 1.0;
+    }
+    if (move.system === 'taunt') { const t = (move.startup || 0) + (move.active || 0);
+      move = { ...move, recovery: Math.max(move.recovery || 0, KOF.TAUNT_LOCK - t) }; } // 49f uncancellable
+    this._preAtk = { state: this.state, stance: this.stance, stanceT: this.stanceT, risingT: this._risingT };
+    this.attack = move; this.attackName = notation; this.hasHit = false; this._prevHitPoint = null;
     this._attackId = (this._attackId || 0) + 1;
-    this._queuedNext = null;
+    this._queuedNext = null; this._queuedAfter = null;
     if (/^(R|RD)\./.test(notation)) this._rageUsed = true; // rage art/drive: once per round
+    // stance spin count (T7 JGS* (N spins)): re-entering the stance the move started from adds a spin
+    this._spinNext = move.stanceAfter && this.stance === move.stanceAfter ? (this._stanceSpins || 1) + 1 : 1;
     this.stance = null; this.stanceT = 0; this._risingT = 0;
-    this.vx = 0; this._enter('attack'); this._attackPhase = 'startup';
+    this._throwFollow = null; this._chainFrom = null; this._chainNext = null; this._chainSeq = [];
+    this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
     if (name === 'surge') this._auraFlash = 0.7;
     if (move.isGrab || notation === '1+3' || notation === '2+4') this.vx = this.facing * 2.5; // lunge into the grab
+    // batch 11: a side / back throw (FLANK_L/R/B, T7 'Left throw' / 'Back throw') is taken from
+    // off the fight line: turn at the opponent and close the z gap through the grab (the
+    // sidestep re-align path), lunging at them rather than along our own facing.
+    if (/^FLANK_[LRB]\./.test(notation) && this._opp && this._opp.root) {
+      this._ssAlign = true;
+      this.vx = (Math.sign(this._opp.root.position.x - this.root.position.x) || this.facing) * 2.5;
+    }
     return true;
+  }
+  /* Chain throws (2026-10-29): a throw whose name carries a stage tag ('Arm Breaker (AB1)')
+     takes the stage's follow-up rows ('AB1.1,1+2') as button sequences entered while it
+     plays. A full match queues that row; when the current throw part ends, the row starts
+     on the same victim (still locked, still on its feet in Tekken's chain), so each part
+     plays its own clip and damage. A prefix match keeps listening; anything else resets. */
+  _throwChainPress(name) {
+    const ms = getFighterMoveset(this._movesetId);
+    const an = this._chainFrom || this.attackName;
+    const cur = ms && (ms.moves[resolveMoveKey(this._movesetId, an) || an] || ms.moves[an]);
+    const tag = cur && throwStageTag(cur.name); let keys = tag ? throwStageKeys(this._movesetId, tag) : [];
+    /* Throw follow-ups written as a plain string ('2+4,2', '2+4,1,2,1', '1+3,1'; TekkenDocs / wavu
+       wiki notation) have no stage tag: the throw's own key is the stage. Before (moveset sweep
+       2026-10-29), only tagged chain throws ('AB1.1,1+2') could be continued, so every untagged
+       throw follow-up in every fighter's list stopped at the throw. A tag with no stage rows
+       (a named throw that only has plain follow-ups) is the same case. */
+    if (!keys.length || !(this._chainSeq || []).length) {
+      // Played through the string resolver (continuation): same lists, T7/T8 copies,
+      // partial steps and alias spellings as a string off a normal hit.
+      if (this.state !== 'throwing' && this.state !== 'throwExec') return false;
+      const saved = this.tekken.lastMove;
+      if (this._chainNext) this.tekken.lastMove = this._chainNext;
+      const c = this.tekken.continuation(name, this._inputCtx());
+      // a tagged chain throw whose own key also has plain follow-ups: the plain string
+      // wins when it exists, else the press falls through to the stage rows below
+      if (!c && this.tekken._strPending) { this.tekken.lastMove = saved; return true; }
+      if (!c) { this.tekken.lastMove = saved; if (!keys.length) return false; } else {
+      this._chainNext = c; this.tekken.lastMove = c;
+      // a longer tagged stage on the same press ('SLEEPER.1,1,1+2' vs 'DMD.2,1') keeps listening;
+      // the stage replaces the plain follow-up once its next press arrives
+      this._chainOpen = keys.some((k) => k.startsWith(`${tag}.${name},`) || k.startsWith(`${tag}.${name}+`));
+      if (this._chainOpen) { this._chainSeq = [name]; this._chainPressT = this._clock || 0; }
+      return true; }
+    }
+    const pre = `${tag}.`;
+    if (this._chainNext && !this._chainOpen) return false;
+    const now = this._clock || 0; let seq = this._chainSeq || [];
+    const tail = seq[seq.length - 1];
+    // input.js emits '1' then '1+2' for one chord press: the chord replaces its single.
+    if (name.includes('+') && tail && /^[1234]$/.test(tail) && name.split('+').includes(tail) && now - (this._chainPressT || -1) < 0.06) seq = seq.slice(0, -1);
+    this._chainPressT = now;
+    for (const s of [[...seq, name], [name]]) {
+      const k = `${pre}${s.join(',')}`;
+      if (keys.includes(k)) { this._chainNext = k; this._chainSeq = []; this._chainOpen = false; return true; }
+      // ',' = more presses follow; '+' = this single is the first half of a chord press
+      if (keys.some((x) => x.startsWith(k + ',') || x.startsWith(k + '+'))) { this._chainSeq = s; return true; }
+    }
+    this._chainSeq = []; const open = this._chainOpen; this._chainOpen = false; return !!open;
+  }
+  _startThrowChain(victim) {
+    const key = this._chainNext; this._chainNext = null; this._chainSeq = []; this._chainOpen = false;
+    const m = key && getRealMove(this._movesetId, key);
+    if (!m || !victim || victim.dead || this.dead) return false;
+    victim._throwPair = null; victim._throwPairT = 0; victim._throwAttacker = null; victim._throwMove = null;
+    victim.stun = 0; victim.vy = 0; victim.onGround = true; victim.root.position.y = GROUND_Y; victim.state = 'idle';
+    this._throwPair = null; this._throwPairT = 0; this._throwVictim = null; this._throwMove = null;
+    this.attack = { ...m, isGrab: true }; this.attackName = key; this._chainFrom = key; this.hasHit = true;
+    this.tekken._recordMove(key);
+    victim.startThrowLock(this.attack, this);
+    if (!this._throwPair) this.startThrowing(victim);
+    return true;
+  }
+  _endThrowFollow() {
+    const c = this._throwFollow; this._throwFollow = null; if (!c) return;
+    const m = getRealMove(this._movesetId, c), after = m && m.stanceAfter;
+    if (after === 'FC') { this._enter('crouch'); this.stance = 'FC'; this.stanceT = 0.5; }
+    else if (after) { this._stanceSpins = this._spinNext || 1; this.stance = after; this.stanceT = 0.8; }
   }
   /* Start the move for an already-resolved notation (buffered string hits). */
   _fireNotation(notation) {
-    const move = getRealMove(this._movesetId, notation);
+    let move = getRealMove(this._movesetId, notation);
+    if (move && move.t3Condition != null && !t3ConditionHolds(move.t3Condition, this, this._opp, notation)) {
+      move = getRealMove(this._movesetId, notation, { noLoadout: true });
+    }
     if (!move) return false;
+    // GAP-FILL LANE 1: item gate applies to string continuations
+    // exactly as to fresh inputs (an item move mid-string with
+    // the item unequipped ends the string, it does not swap).
+    if (itemGate(move, this.equippedItems).blocked) return false;
     this.tekken._recordMove(notation);
-    this.attack = move; this.attackName = notation; this.hasHit = false;
+    this.attack = move; this.attackName = notation; this.hasHit = false; this._prevHitPoint = null;
     this._attackId = (this._attackId || 0) + 1;
-    this._queuedNext = null;
-    this.vx = 0; this._enter('attack'); this._attackPhase = 'startup';
+    // A hit pressed while this one was still queued chains on from it.
+    this._queuedNext = (this._queuedAfter && this._queuedAfter.shift()) || null;
+    if (this._queuedAfter && !this._queuedAfter.length) this._queuedAfter = null;
+    this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
     return true;
   }
-  _enter(state) { this.state = state; this.stateT = 0; }
+  _enter(state) {
+    // A move out of a sidestep (SS.X, or any attack cancelling the step) is aimed at the
+    // opponent: Tekken re-aligns the fight axis on the step (TekkenDocs / wavu wiki
+    // 'SS' moves). Moveset sweep 2026-10-29: the body kept its pre-step yaw, so every SS.*
+    // row in the roster swung past the opponent's side.
+    if (state === 'attack' && this.state === 'sidestep' && this._opp && this._opp.root && !this.brawler) {
+      this.vz = 0; this._ssAlign = true;
+    }
+    if (state !== 'attack') this._ssAlign = false;
+    this.state = state; this.stateT = 0;
+  }
 
   /* ---------------- defense / damage ---------------- */
   isBlocking() { return this.state === 'block'; }
 
+  /* Normalized world-space vector pointing AWAY from `attacker` on the
+     ground plane (brawler knockback direction). */
+  _awayFrom(attacker) {
+    const dx = this.root.position.x - attacker.root.position.x;
+    const dz = this.root.position.z - attacker.root.position.z;
+    const d = Math.hypot(dx, dz) || 1;
+    return [dx / d, dz / d];
+  }
+
   receiveHit(move, attacker) {
     if (this.dead || this.invuln > 0) return 'dodge';
+    // Posture snapshot for the T3 reaction pick below (the state is
+    // overwritten by _enter('hitstun'/'knockdown') before we return).
+    const _wasCrouch = this.state === 'crouch' || this.stance === 'FC';
+    const _wasAirborne = !this.onGround;
+    const _wasDown = this.state === 'knockdown' && this.onGround;
+    // GAP-FILL LANE 1: wall-splat follow-up counting (one count per
+    // landed hit on a splatted victim; the 3-hit drop lives below).
+    const _wasWallSplat = this.state === 'wallsplat';
+    if (_wasWallSplat) this._wallSplatHits++;
     // V-System: an armored V-Skill absorbs the hit outright (no damage,
     // no stun) while it isn't in recovery. game.js shows the spark.
     if (this.state === 'vskill' && this.attack && this.attack.armor &&
@@ -973,28 +2188,72 @@ export class Fighter {
     // hit — damage applies, but the move is never interrupted mid-swing.
     const armored = !!(this.attack && this.attack.armor && this._attackPhase !== 'recovery'
       && !move.unblockable && !move.isGrab);
-    const facingAttacker = Math.sign(attacker.root.position.x - this.root.position.x) === this.facing;
-    // T3 HitClassify: guarded when (guard & attack word) != 0 and the defender faces the
+    // GAP-FILL LANE 1: Power Crush (T7) is NOT the generic armor
+    // above. Generic armor absorbs everything except grabs; a
+    // Power Crush absorbs only mid/high strikes (lows, throws,
+    // unblockables and Rage Arts break it — combat-core.js).
+    const crushActive = (this.state === 'attack' || this.state === 'vskill' || this.state === 'vreversal') &&
+      powerCrushAbsorbs(this.attack, this._attackPhase, this.stateT, move);
+    // BRAWLER: guard requires the defender's facing yaw to be within ~110°
+    // of the direction to the attacker (3D); versus keeps the x-sign rule.
+    let facingAttacker;
+    if (this.brawler) {
+      const ax = attacker.root.position.x - this.root.position.x;
+      const az = attacker.root.position.z - this.root.position.z;
+      const wantYaw = Math.atan2(ax, az);
+      const dy = Math.atan2(Math.sin(wantYaw - this.yaw), Math.cos(wantYaw - this.yaw));
+      facingAttacker = Math.abs(dy) < 1.92;
+    } else {
+      facingAttacker = Math.sign(attacker.root.position.x - this.root.position.x) === this.facing;
+    }    // T3 HitClassify: guarded when (guard & attack word) != 0 and the defender faces the
     // attacker. Standing guard blocks highs/mids, crouching guard blocks lows; throws and
     // unblockables carry no guard bits.
     const word = move.hitWord ?? Fighter.defaultWord(move);
     const guarded = !move.unblockable && !move.isGrab && facingAttacker && (this._guardBits() & word) !== 0;
+    if (attacker) attacker._t3Contact = { t: attacker._clock || 0, guarded }; // T3 conditions 1 / 0x1A / 0x1B / situations
     if (guarded) {
-      // FIRE force (modes lane): strikes chip through guard — chipMult on attacker stats.
-      let chip = move.damage * attacker.stats.power * 0.12 * (attacker.stats.chipMult || 1) / this.stats.defense;
-      // V-System: V-Trigger install — EVERYTHING chips through guard.
-      if (attacker._vtriggerT > 0 && !move.isGrab) {
-        chip += move.damage * V.TRIGGER_CHIP_MULT * attacker.stats.power / this.stats.defense;
+      // GAME OPTION / VERSUS SETUP: GUARD DAMAGE OFF = no chip at all.
+      // (V-Trigger chip is part of guard damage too.)
+      let chip = 0;
+      if (!this.game || this.game.guardDamage !== false) {
+        // FIRE force (modes lane): strikes chip through guard — chipMult on attacker stats.
+        chip = move.damage * attacker.stats.power * 0.12 * (attacker.stats.chipMult || 1) / this.stats.defense;
+        // V-System: V-Trigger install — EVERYTHING chips through guard.
+        if (attacker._vtriggerT > 0 && !move.isGrab) {
+          chip += move.damage * V.TRIGGER_CHIP_MULT * attacker.stats.power / this.stats.defense;
+        }
       }
       // Soul Urge lane (T8 Heat): block chip can never kill — floor at 1 HP.
+      const _hpBeforeBlock = this.hp;
       this.hp = attacker._urgeOn ? Math.max(1, this.hp - chip) : Math.max(0, this.hp - chip);
-      this.stun = 0.18 + move.damage * 0.01;
-      this.vx = Math.sign(this.root.position.x - attacker.root.position.x) * move.knock * 0.5;
-      this.meter = Math.min(this.maxMeter, this.meter + 4); // +4 soul on block
-      if (this.hp <= 0) { this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || 1); return 'ko'; }
+      // GAP-FILL LANE 1: recoverable pool (T8 white gauge, verified
+      // absent before this lane). Chip actually lost becomes the
+      // pool; the attacker forcing the block recovers from their
+      // own pool up to the chip forced. Urge Burst activates on
+      // block too (T8) — soulurge.onBlockedHit already existed
+      // but had no fighter-side caller for the block path.
+      this._addRecoverable(_hpBeforeBlock - this.hp);
+      if (attacker && typeof attacker._recoverOnAttack === 'function') attacker._recoverOnAttack(chip);
+      if (move.urgeBurst && this.game && this.game.soulurge &&
+          typeof this.game.soulurge.onBlockedHit === 'function') {
+        this.game.soulurge.onBlockedHit(attacker, move);
+      }
+      this.stun = (move.t8 && move.t8.blk != null) ? stunFromAdvantage(move.t8.blk, move)
+        : 0.18 + move.damage * 0.01;
+      if (this.brawler) {
+        const [nx, nz] = this._awayFrom(attacker);
+        this.vx = nx * move.knock * 0.5;
+        this.vz = nz * move.knock * 0.5;
+      } else {
+        this.vx = Math.sign(this.root.position.x - attacker.root.position.x) * move.knock * 0.5;
+      }
+      this.meter = Math.min(this.maxMeter, this.meter + 4 * this.soulMeterMult); // +4 soul on block      if (this.hp <= 0) { this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || 1); return 'ko'; }
+      this._reactionSel = this._pickReaction(move, attacker, { guarded: true, counter: false,
+        crouch: _wasCrouch, airborne: false, down: false, forState: 'block' });
       return 'block';
     }
     let dmg = move.damage * attacker.stats.power / this.stats.defense;
+    if (attacker._maxT > 0) dmg *= KOF.MAX_DMG; // KOF XV MAX Mode
     // FIGHTER DEPTH (worker 34): soul kindle — the kindled fighter takes
     // +10% damage while kindled (Tekken 7 ki charge).
     if (this.kindle) dmg *= this.kindle.damageTakenMult();
@@ -1025,6 +2284,31 @@ export class Fighter {
     if (!this.onGround && !move.isGrab) { dmg *= this._juggle === 0 ? 0.8 : 0.5; this._juggle++; }
     this.lastCounterHit = counter;
     this.hp = Math.max(0, this.hp - dmg);
+    // GAP-FILL LANE 1: the attacker recovers from their own
+    // recoverable pool whenever they land damage (T8: recover
+    // only by attacking — never over time). Applies to crush-,
+    // armor- and normal-path hits alike: damage did land.
+    if (attacker && typeof attacker._recoverOnAttack === 'function') attacker._recoverOnAttack(dmg);
+    if (crushActive) {
+      // T7 Power Crush absorb: full damage lands (see above),
+      // but the swing is never interrupted — no hitstun, no
+      // knockdown, no reaction clip. The absorbed hit stalls
+      // the swing a few frames (T7 behavior), it does not cancel
+      // it. A killing absorbed hit still KOs (armor is not
+      // invulnerability — same rule as the rage-art armor path).
+      this.meter = Math.min(this.maxMeter, this.meter + 6);
+      // COMBAT SYSTEMS 2026-10-24 (delta on GAP-FILL LANE 1):
+      // T8 rule — damage absorbed by a Power Crush becomes
+      // RECOVERABLE (wavu King Muscle Armor note), capped so
+      // hp + pool never exceeds maxHp.
+      this._addRecoverable(Math.max(0, Math.min(dmg, this.maxHp - this.hp - (this._recoverable || 0))));
+      if (this.hp <= 0) {
+        this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing);
+        return 'ko';
+      }
+      this.stateT = Math.max(0, this.stateT - 0.05);
+      return 'hit';
+    }
     if (armored) {
       // Rage lane (T7): armor absorbs — damage lands, the swing continues.
       this.meter = Math.min(this.maxMeter, this.meter + 6);
@@ -1034,26 +2318,301 @@ export class Fighter {
       }
       return 'hit';
     }
-    this.meter = Math.min(this.maxMeter, this.meter + 6); // +6 soul on taking damage
+    this.meter = Math.min(this.maxMeter, this.meter + 6 * this.soulMeterMult); // +6 soul on taking damage
+
     const dir = Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing;
-    this.vx = dir * move.knock;
+    if (this.brawler) {
+      // BRAWLER: knockback radiates away from the attacker on the ground
+      // plane (Devil Within enemies fly away from Jin, not along x).
+      const [nx, nz] = this._awayFrom(attacker);
+      const k = move.knock;
+      this.vx = nx * k;
+      this.vz = nz * k;
+    } else {
+      this.vx = dir * move.knock;
+    }
     if (this.hp <= 0) { this._knockout(dir); return 'ko'; }
     if (move.isGrab || move.knock >= 6 || move.launch || (counter && move.knockdown)) {
-      this.vy = move.isGrab ? 5.2 : 4.6; this.onGround = false; this.stun = 0.55; this._enter('knockdown');
-    } else { this.stun = 0.2 + move.damage * 0.012 + (counter ? 0.12 : 0); this._enter('hitstun'); }
-    this.stance = null;
+      this.vy = move.isGrab ? 5.2 : 4.6; this.onGround = false; this.stun = 0.55;
+      this._juggleG = 0;
+      /* Juggle airtime (moveset sweep 2026-10-29): a launcher keeps the victim airborne for the
+         rest of the attacker's move plus its T8 on-hit advantage (default +30f), as in Tekken, so
+         a follow-up can juggle. The pop peaks at JUGGLE_PEAK m and gravity is set from that airtime
+         (a floatier arc, not a higher one). Plain knockdowns keep the 4.6 m/s pop and 22 m/s² fall. */
+      if (move.launch && !move.isGrab) {
+        const left = Math.max(0, (move.startup || 0) + (move.active || 0.05) + (move.recovery || 0.4) - (attacker.stateT || 0));
+        const T = Math.min(1.6, Math.max(0.42, left + (move.launchAdv != null ? move.launchAdv : 30) / 60));
+        this.vy = 4 * JUGGLE_PEAK / T; this._juggleG = 8 * JUGGLE_PEAK / (T * T);
+      }
+      this._queuedNext = null; this._queuedAfter = null; this._stringGraceUntil = 0; // getting hit kills your string
+      // Hit in the back (BT) the victim falls forward past its feet: it lands head towards the attacker.
+      this._kdHeadTowards = this.stance === 'BT';
+      this._enter('knockdown');
+    } else {
+      const t8adv = move.t8 ? (counter && move.t8.ch != null ? move.t8.ch : move.t8.hit) : null;
+      this.stun = t8adv != null ? stunFromAdvantage(t8adv, move)
+        : 0.2 + move.damage * 0.012 + (counter ? 0.12 : 0);
+      this._queuedNext = null; this._queuedAfter = null; this._stringGraceUntil = 0; // getting hit kills your string
+      this._enter('hitstun');
+    }
+    // GAP-FILL LANE 1: this unguarded, non-armor, non-grab hit
+    // arms the next wall splat (fighter knocked back toward a
+    // wall) and may fire the combo extender. Grabs do not arm
+    // it — throw victims travel by cinematic, not knockback.
+    if (!move.isGrab) this._wallSplatArmed = true;
+    // Combo extender (T7 Screw / T8 Tornado): airborne victim,
+    // slot still free, one slot per combo. Screw = spin into a
+    // slump (long window, low pop); Tornado = flip into a
+    // ground-bound state (higher pop). A grounded connect, a
+    // second extender in the same combo, or an Urge Burst (T8
+    // pseudo-bound, which does NOT consume the slot) all fall
+    // through to the normal path above. Bound is NOT touched
+    // here: no Bound state machine exists in fighter.js (the
+    // "bound" hits in this file are throw-pair / anim-bank
+    // binding), so there is nothing to preserve — low-parry
+    // Bound is flagged as follow-up work, not claimed.
+    const _ek = extenderKind(move);
+    if (_ek && _wasAirborne && !this._extenderUsed && !move.isGrab) {
+      this._extenderUsed = true; this._extenderKind = _ek;
+      if (_ek === 'screw') {
+        this._inScrew = true; this.vy = 2.0;
+        this.stun = Math.max(this.stun, SCREW_SLUMP_STUN);
+      } else {
+        this._inTornado = true; this.vy = 3.0;
+        this.stun = Math.max(this.stun, TORNADO_BOUND_STUN);
+      }
+      this.vx = dir * (move.knock || 2) * 0.5; this.onGround = false;
+      this._kdHeadTowards = true; // screw/tornado spins the body round: lands head towards
+      this._enter('knockdown');
+    }
+    // Wall-splat follow-up (distinct from wall break): a splatted
+    // victim stays stuck to the wall for WALL_SPLAT_MAX_HITS
+    // hits, then drops fast (knockdown). The splat state itself
+    // is entered by _physics() when knockback reaches the wall.
+    if (_wasWallSplat && this.hp > 0) {
+      if (this._wallSplatHits >= WALL_SPLAT_MAX_HITS) {
+        this._wallSplatHits = 0;
+        this.vx = dir * (move.knock || 2);
+        this._kdHeadTowards = true; // slides down the wall head-first towards the attacker
+        this._enter('knockdown');
+      } else {
+        this.vx = 0; this.vy = 0; this.stun = WALL_SPLAT_STUN;
+        this._enter('wallsplat');
+      }
+    }
+    this.stance = null; this._stanceSpins = 0;
+    // Soft-body hit injection: dent the muscle volume at the impact point.
+    if (this._softbody) {
+      try {
+        const hb = attacker && attacker.getHitbox ? attacker.getHitbox() : null;
+        if (hb) { _v1.set(hb.x, hb.y, hb.z); this._softbody.hit(_v1, dir, move.damage || 8); }
+      } catch (e) {}
+    }
+    this._reactionSel = this._pickReaction(move, attacker, { guarded, counter,
+      crouch: _wasCrouch, airborne: _wasAirborne, down: _wasDown,
+      forState: this.state === 'knockdown' ? 'knockdown' : 'hitstun' });
     return counter ? 'counter' : 'hit';
   }
+  /* T3 reaction pick (PR #1003 data, t3-reaction-select.js; playback
+     wired by the hit-reaction lane, 2026-10-24). Runs only when a
+     loader has set globalThis.WH_T3_REACTIONS (parsed
+     reactions.json, fetched with the bank load in t3anims.js);
+     without it returns null and the generic 'hit' clip plays, as
+     before. The slot itself plays through _reactionActionName,
+     which resolves it defender-bank-first from the packs.
+     UNMAPPED here (existing fallback kept, never a guessed clip):
+     - wall splat: the decoded records carry no wall field or slot
+       (record_fields has no wall entry), so a wall hit keeps the
+       existing knockback; no wall reaction is invented.
+     - downOther (lying the other way, state 0x200): WH has no such
+       state, so downOther is always false in this pick.
+     - close-range reactions when the defender's reaction pack has
+       not loaded yet: the close distance is in T3 units and only
+       the pack's anchor scale converts it, so close stays false
+       until a pack is cached (packs prefetch at _bindT3).
+     - air kind 1 (slam, needs hitDirY) and kind 5 (launch-branch
+       only): WH move data carries neither, so they are never
+       picked here; kinds 0/2/3/4 below are the file's rules. */
+  _pickReaction(move, attacker, o) {
+    try {
+      const R = globalThis.WH_T3_REACTIONS;
+      const rowKey = move && move.t3row;
+      if (!R || rowKey == null || !attacker) return null;
+      const dirOf = (f) => { const b = f && f._t3 && f._t3.bank; const base = b && T3_BANKS[b];
+        return base ? base.split('/').filter(Boolean).pop() : null; };
+      const aDir = dirOf(attacker), vDir = dirOf(this);
+      const bankRows = aDir && R.banks[aDir] ? R.banks[aDir].rows : null;
+      const row = (bankRows && bankRows[rowKey]) || (R.common_rows && R.common_rows[rowKey]) || null;
+      if (!row) return null;
+      const dx = attacker.root.position.x - this.root.position.x;
+      const dz = attacker.root.position.z - this.root.position.z;
+      const quadrant = Math.abs(dz) > Math.abs(dx) ? (dz > 0 ? 1 : 3) : (dx * this.facing > 0 ? 0 : 2);
+      // Close-range substitution (docs/anim/T3-REACTIONS.md): the
+      // fighters must be closer than close_reactions[closeIdx][1]
+      // T3 units, converted with the defender pack's anchor scale.
+      let close = false;
+      const closeIdx = row[1];
+      if (closeIdx && R.close_reactions && R.close_reactions[closeIdx]) {
+        const vBank = vDir ? this._bankIdForDir(vDir) : null;
+        const scale = vBank ? getT3ReactionPackScale(vBank) : null;
+        if (scale) close = Math.hypot(dx, dz) < R.close_reactions[closeIdx][1] * scale;
+      }
+      // Air kind (AirReactionKind): stick in kind 2 when already in
+      // an air reaction (kind 2 itself, or kinds 3/4 past frame 18
+      // at 30 fps ~ 0.6 s of state time); else the quadrant side
+      // kinds; else kind 0. Kind 1/5 are UNMAPPED (see header).
+      let airKind = 0;
+      if (o.airborne && R.air_kinds) {
+        const prev = this._reactionSel;
+        const airSlots = R.air_kinds.map((k) => k[1]);
+        if (prev && airSlots.includes(prev.slot) && (prev.slot === 3426 || this.stateT > 0.6)) airKind = 2;
+        else if (quadrant === 1) airKind = 4;
+        else if (quadrant === 3) airKind = 3;
+      }
+      const sel = selectReactionSlot(R, row, { guarded: !!o.guarded, crouch: !!o.crouch, counter: !!o.counter,
+        airborne: !!o.airborne, down: !!o.down, quadrant, close, airKind });
+      if (!sel) return null;
+      this._reactChainDepth = 0;
+      return { ...sel, bank: vDir, defenderDir: vDir, attackerDir: aDir, forState: o.forState || null };
+    } catch (e) { return null; }
+  }
+
+  /* Reaction playback (hit-reaction wiring lane, 2026-10-24).
+     _ensureReactionAction fetches the owning bank's pack (once)
+     and retargets ONLY the picked slot into a 'react:<slot>' action
+     — defender bank first, attacker bank second, exactly as the
+     file's DivmotMergeSharedSlots lookup orders it. A slot no pack
+     defines returns null from the loader and the caller keeps its
+     generic fallback (UNMAPPED, never guessed). */
+  _ensureReactionAction() {
+    const rs = this._reactionSel;
+    if (!rs || !this._t3 || !this._t3.model) return;
+    const name = 'react:' + rs.slot;
+    if (this.t3actions[name] || this._reactLoading === name) return;
+    const R = globalThis.WH_T3_REACTIONS;
+    if (!R) return;
+    const ownerDir = reactionSlotBank(R, rs.defenderDir, rs.attackerDir, rs.slot);
+    const bankId = ownerDir ? this._bankIdForDir(ownerDir) : null;
+    if (!bankId) return; // UNMAPPED: owning bank has no pack path (forestlaw_on_law)
+    this._reactLoading = name;
+    loadT3ReactionClip(THREE, bankId, rs.slot, { noRise: rs.code === 0x24 })
+      .then((clip) => {
+        this._reactLoading = null;
+        if (!clip) return;
+        const rc = retargetT3Clips({ [name]: clip }, bankId, this._t3.model, THREE, this._t3.modelKey, [name]);
+        if (rc && rc[name]) Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
+      })
+      .catch(() => { this._reactLoading = null; });
+  }
+
+  /* The reaction action to play this frame, or null for the caller's
+     generic fallback. Follows the file's continuation chain
+     (bank slots[].next) when a clip finishes, until a slot whose
+     next is itself — then the finished pose is held (_chainDone)
+     instead of replaying a generic clip. Block is the exception:
+     a finished guard reaction falls back to the block loop. */
+  _reactionActionName() {
+    const rs = this._reactionSel;
+    // A 'block' pick also matches while its blockstun runs, because
+    // receiveHit never _enters 'block': guarded hits land in idle,
+    // walk or crouch when the defender is holding back.
+    const stateMatch = rs && (rs.forState === this.state ||
+      (rs.forState === 'block' && this.stun > 0 &&
+        (this.state === 'idle' || this.state === 'walk' || this.state === 'crouch')));
+    if (!rs || !stateMatch) return null;
+    this._ensureReactionAction();
+    const name = 'react:' + rs.slot;
+    const a = this.t3actions[name];
+    if (!a) return null;
+    if (this._t3current === a) {
+      if (a.isRunning()) return name;
+      const R = globalThis.WH_T3_REACTIONS;
+      const ownerDir = R ? reactionSlotBank(R, rs.defenderDir, rs.attackerDir, rs.slot) : null;
+      const plan = ownerDir && R.banks[ownerDir] && R.banks[ownerDir].slots
+        ? R.banks[ownerDir].slots['0x' + (rs.slot & 0xffff).toString(16)] : null;
+      const next = plan ? plan.next : null;
+      if (next == null || next === rs.slot || this._reactChainDepth >= 8) {
+        if (this.state === 'block') return null;
+        this._reactionSel = { ...rs, _chainDone: true };
+        return null;
+      }
+      this._reactChainDepth++;
+      this._reactionSel = { ...rs, slot: next, field: 'chain' };
+      this._ensureReactionAction();
+      const nextName = 'react:' + next;
+      return this.t3actions[nextName] ? nextName : null;
+    }
+    return name;
+  }
+
+  /* Guard reaction override for locomotion states: a guarded hit
+     does not change state, so idle/walk/crouch check for a live
+     guard reaction before playing their locomotion clip. */
+  _guardReactionName() {
+    const rs = this._reactionSel;
+    if (!rs || rs.code !== 0x23 || this.stun <= 0) return null;
+    return this._reactionActionName();
+  }
+
   _knockout(dir) {
     this.dead = true; this.vx = dir * 5.5; this.vy = 6; this.onGround = false;
+    if (this.brawler) {
+      // BRAWLER: keep the 3D knockback velocity receiveHit computed,
+      // boosted to KO strength — the body flies away from the attacker.
+      const s = Math.hypot(this.vx, this.vz);
+      if (s > 0.01) {
+        const k = 7.5 / s;
+        this.vx *= k; this.vz *= k;
+      } else { this.vx = dir * 5.5; this.vz = 0; }
+    }
+    // KO collapse (docs/anim/T3-REACTIONS.md): a KO'd fighter plays
+    // the collapse slot 0xD66 from the file, not the generic ko clip,
+    // when the tables are loaded; otherwise the ko fallback below.
+    try {
+      const R = globalThis.WH_T3_REACTIONS;
+      const b = this._t3 && this._t3.bank, base = b && T3_BANKS[b];
+      const vDir = base ? base.split('/').filter(Boolean).pop() : null;
+      this._reactionSel = (R && R.collapse_slot != null)
+        ? { record: 0, field: 'ko', slot: R.collapse_slot, code: 0, push: null, angle: null,
+            bank: vDir, defenderDir: vDir, attackerDir: null, forState: 'ko' } : null;
+      this._reactChainDepth = 0;
+    } catch (e) { this._reactionSel = null; }
+    this._queuedNext = null; this._queuedAfter = null; this._stringGraceUntil = 0; // getting hit kills your string
     this._enter('ko'); this.stun = 999;
   }
   victory() { if (!this.dead) this._enter('victory'); }
-  addMeter(v) { this.meter = Math.min(this.maxMeter, this.meter + v); }
+  addMeter(v) { this.meter = Math.min(this.maxMeter, this.meter + v * this.soulMeterMult); }
 
-  /* ---------------- hit / hurt queries (world-space spheres) ---------------- */
-  _weaponBone() {
+  /* ---------------- hit / hurt queries (swept capsules, hitbox.js) ----------------
+     HITBOX LANE 2026-10-24 (owner playtest: "contacts not being made"):
+     - Hitbox = the weapon limb's SEGMENT (elbow->fist, knee->foot)
+       at this frame + the weapon point's TRAVEL segment (previous
+       frame -> this frame), so a fast limb cannot step past a hurt
+       capsule between 120 Hz ticks. 'both'-limb moves sweep BOTH
+       arms (the old code swept only the right hand).
+     - Hurtbox = 14 capsules over the LIVE posed bones (hitbox.js
+       HURT_SEGMENTS). A rig missing a bone falls back to the
+       root-anchored twin for that segment; a rig missing the core
+       bones falls back to all 14 root-anchored capsules — a live,
+       hittable defender NEVER returns [] any more (the old
+       Spine1+Head-only shape returned [] for foreign rigs, which
+       silently disabled game.js's range fallback too, since that
+       fallback requires hurts.length > 0).
+     - x/y/z/r on the returned hitbox stay the weapon endpoint +
+       radius, so existing readers (game.js FX, soft-body, xray)
+       keep working; segments/travel/limb are additive. */
+  _weaponSegments() {
     // Tekken notation: 3/4 are kicks -> foot; throws/specials use the move's limb
+    const limb = this.attack?.limb || '';
+    let key = 'armR';
+    if (limb === 'both') key = 'both';
+    else if (limb.startsWith('leg') || this.attackName === 'kick' || this.attackName === '3' || this.attackName === '4') {
+      key = limb === 'legL' ? 'legL' : 'legR';
+    } else if (limb === 'armL') key = 'armL';
+    return WEAPON_SEGMENTS[key];
+  }
+  _weaponBone() {
+    // Kept for any external reader: the endpoint of the first weapon segment.
     const limb = this.attack?.limb || '';
     if (limb.startsWith('leg') || this.attackName === 'kick' || this.attackName === '3' || this.attackName === '4') {
       return limb === 'legL' ? this.bones.LeftFoot : this.bones.RightFoot;
@@ -1067,20 +2626,75 @@ export class Fighter {
     if ((this.state !== 'attack' && this.state !== 'vskill' && this.state !== 'vreversal') ||
         this._attackPhase !== 'active' || this.hasHit) return null;
     if (this.attack && this.attack.noHitbox) return null;
-    const node = this._weaponBone(); if (!node) return null;
-    node.getWorldPosition(_v1);
-    let r = this.attackName === 'surge' ? 1.0 : 0.5;
-    if (this.attack?.isGrab || this.attackName === 'grab' || this.attackName === '1+3' || this.attackName === '2+4') r = 0.95; // generous grab sphere
-    r *= (this.stats.reachMult || 1); // WOOD force (modes lane): reach extends
-    return { x: _v1.x, y: _v1.y, z: _v1.z, r, move: this.attack };
+    const isGrab = !!(this.attack?.isGrab || this.attackName === 'grab' || this.attackName === '1+3' || this.attackName === '2+4');
+    // GAP-FILL LANE 1 (per-move hitbox, ENGINE side): when the
+    // moveset lane has authored per-move geometry, its radius /
+    // reach replace the generic capsule values; when absent
+    // (UNMAPPED — the current state of every WH moveset), the
+    // generic values below stand, honestly, with no invented box.
+    const _pm = resolvePerMoveHitbox(this.attack);
+    let r = (this.attackName === 'surge' ? LIMB_RADIUS.surge : isGrab ? LIMB_RADIUS.grab : LIMB_RADIUS.strike)
+      * (this.stats.reachMult || 1); // WOOD force (modes lane): reach extends
+    if (_pm.mapped && _pm.radius != null) r = _pm.radius * (this.stats.reachMult || 1);
+    const segments = [];
+    let end = null;
+    for (const seg of this._weaponSegments()) {
+      const na = this.bones[seg.a], nb = this.bones[seg.b];
+      if (na && nb) {
+        na.getWorldPosition(_v1); nb.getWorldPosition(_v2);
+        segments.push({ ax: _v1.x, ay: _v1.y, az: _v1.z, bx: _v2.x, by: _v2.y, bz: _v2.z });
+        end = { x: _v2.x, y: _v2.y, z: _v2.z };
+      }
+    }
+    if (!segments.length) {
+      // No rig bone (T-pose/procedural): frame-data box, as before.
+      end = { x: this.root.position.x + this.facing * 0.8, y: this.root.position.y + 1.2, z: this.root.position.z };
+      segments.push({ ax: end.x, ay: end.y, az: end.z, bx: end.x, by: end.y, bz: end.z });
+    }
+    // Swept travel: previous frame's weapon point -> this frame's.
+    let travel = null;
+    if (this._prevHitPoint && end) {
+      travel = { ax: this._prevHitPoint.x, ay: this._prevHitPoint.y, az: this._prevHitPoint.z,
+                 bx: end.x, by: end.y, bz: end.z };
+    }
+    this._prevHitPoint = end;
+    return { x: end.x, y: end.y, z: end.z, r, move: this.attack, segments, travel,
+             limb: this.attack?.limb || null, perMoveHitbox: _pm,
+             reach: ((_pm.mapped && _pm.reach != null) ? _pm.reach
+               : moveReach(this.attack, String(this.attackName || ''))) * (this.stats.reachMult || 1) };
   }
   getHurtboxes() {
     if (this.invuln > 0 || this.dead) return [];
     // Throw cinematic: both locked fighters are committed, not hittable.
-    if (this.state === 'thrown' || this.state === 'throwing') return [];
+    if (this.state === 'thrown' || this.state === 'throwing' ||
+        this.state === 'thrownExec' || this.state === 'throwExec') return [];
     const out = [];
-    if (this.bones.Spine1) { this.bones.Spine1.getWorldPosition(_v1); out.push({ x: _v1.x, y: _v1.y, z: _v1.z, r: 0.58 }); }
-    if (this.bones.Head) { this.bones.Head.getWorldPosition(_v1); out.push({ x: _v1.x, y: _v1.y, z: _v1.z, r: 0.34 }); }
+    let fbById = null;
+    for (const def of HURT_SEGMENTS) {
+      const na = this.bones[def.a], nb = this.bones[def.b];
+      if (na && nb) {
+        na.getWorldPosition(_v1); nb.getWorldPosition(_v2);
+        out.push({ id: def.id, band: def.band, r: def.r,
+          x1: _v1.x, y1: _v1.y, z1: _v1.z, x2: _v2.x, y2: _v2.y, z2: _v2.z,
+          x: (_v1.x + _v2.x) / 2, y: (_v1.y + _v2.y) / 2, z: (_v1.z + _v2.z) / 2 });
+      } else {
+        // Missing bone: the root-anchored twin, never a dropped segment.
+        // Built lazily, only when a rig actually lacks a bone.
+        if (!fbById) {
+          const crouch = this.state === 'crouch' || this.stance === 'FC';
+          fbById = new Map(fallbackHurts(this.root.position, this.facing, crouch).map((s) => [s.id, s]));
+        }
+        out.push(fbById.get(def.id));
+      }
+    }
+    // GAP-FILL LANE 1 (per-move hurtbox, ENGINE side): only when
+    // the defender's current move itself authors a radiusScale
+    // does it scale these capsules; otherwise they stand exactly
+    // as before. No scale is ever guessed from limb or class.
+    const _ph = resolvePerMoveHurtbox(this.attack);
+    if (_ph.mapped && _ph.radiusScale != null) {
+      for (const h of out) if (h) h.r = h.r * _ph.radiusScale;
+    }
     return out;
   }
   registerHit() { this.hasHit = true; this.addMeter(this.attack.soulGain); }
@@ -1088,7 +2702,9 @@ export class Fighter {
 
   /* ---------------- per-frame update ---------------- */
   update(dt, opponent) {
+    this._opp = opponent;
     this.stateT += dt;
+    this._clock = (this._clock || 0) + dt;
     // Drive the transformation cinematic timeline.
     if (this._cinematic && !this._cinematic.done) {
       this._cinematic.update(dt);
@@ -1103,11 +2719,22 @@ export class Fighter {
     if (this.lockT > 0) this.lockT -= dt; // throw-break window
     // V-System timers.
     if (this._vtriggerT > 0) this._vtriggerT -= dt;
+    if (this._maxT > 0) this._maxT = Math.max(0, this._maxT - dt);
+    if (this._sysVx && this.state === 'attack' && this.attack && this.attack.system) this.vx = this._sysVx;
+    else this._sysVx = 0;
     if (this._vbreakT > 0) this._vbreakT -= dt;
     if (this._vparryT > 0) this._vparryT -= dt;
     if (this._risingT > 0) this._risingT -= dt;
-    if (this.stanceT > 0) { this.stanceT -= dt; if (this.stanceT <= 0) this.stance = null; }
-    if (this.onGround && this.state !== 'knockdown') this._juggle = 0;
+    if (this.stanceT > 0) { this.stanceT -= dt; if (this.stanceT <= 0) { this.stance = null; this._stanceSpins = 0; } }
+    // GAP-FILL LANE 1: combo ends when the victim recovers to
+    // neutral on the ground — juggle count AND the single
+    // extender slot both clear here, never mid-combo.
+    if (this.onGround && this.state !== 'knockdown') {
+      this._juggle = 0;
+      this._extenderUsed = false; this._extenderKind = null;
+      this._inScrew = false; this._inTornado = false;
+      if (this.state !== 'wallsplat') this._wallSplatArmed = false;
+    }
     if (this._comboTimer > 0) { this._comboTimer -= dt; if (this._comboTimer <= 0) this.combo = 0; }
     if (this._auraFlash > 0) this._auraFlash -= dt;
     if (this._urgeDashT > 0) {
@@ -1115,19 +2742,37 @@ export class Fighter {
       if (this.onGround && this.state === 'dash') this.vx = this.facing * 9;
       if (this._urgeDashT <= 0 && this.state === 'dash') { this._enter('idle'); this.vx = 0; }
     }
-
-    if (opponent && this.canAct()) {
-      const want = opponent.root.position.x >= this.root.position.x ? 1 : -1;
-      if (want !== this.facing) this.facing = want;
+    // SOUL SURGE FORM (brawler devil-form analog): timed — drains meter.
+    if (this.surgeForm) {
+      this._surgeT -= dt;
+      this.meter = Math.max(0, this.meter - 4 * dt);
+      if (this._surgeT <= 0 || this.meter <= 0) this.endSurgeForm();
     }
 
-    this._tickState();
+    // BRAWLER: facing is yaw-driven by the brawler controller (free 3D) —
+    // never x-snap toward a single opponent.
+    if (opponent && this.canAct() && !this.brawler) {
+      const want = opponent.root.position.x >= this.root.position.x ? 1 : -1;
+      if (want !== this.facing) this.facing = want;
+      // QA 2026-10-23 targeting fix (T7 tracking): in neutral a fighter turns to
+      // face the opponent in 3D, not just along x, so after a sidestep the
+      // body and the next attack point at the opponent.
+      this._faceYaw = Math.atan2(opponent.root.position.x - this.root.position.x,
+        opponent.root.position.z - this.root.position.z);
+    }
+
+    this._tickState(dt);
+    this._drainPressBuffer();
     this._physics(dt, opponent);
     this._animate(dt);
 
     // Secondary systems update (after animation, before render)
     if (this._jiggle) {
       try { this._jiggle.update(dt); } catch (e) {}
+    }
+    // Soft-body AFTER jiggle: volume deformation rides on the posed mesh.
+    if (this._softbody) {
+      try { this._softbody.update(dt); } catch (e) {}
     }
     if (this._face) {
       // Face expression by state
@@ -1149,20 +2794,57 @@ export class Fighter {
     }
   }
 
-  _tickState() {
+  /* Shared-root-frame drive for a paired throw (doc formula):
+     each fighter's root follows its own clip's ax/az anchor
+     around the pair anchor P, at the thrower's anchor scale,
+     with lean yaw H + the clip's yaw0. Frame = pair clock at
+     30 fps (the packs' fps), clamped to the clip length. */
+  _driveThrowPair() {
+    const pair = this._throwPair;
+    if (!pair) return;
+    const isThrower = pair.thrower === this;
+    const row = isThrower ? pair.throwerPackRow : pair.victimPackRow;
+    if (!row) return;
+    const f = Math.floor((this._throwPairT || 0) * 30);
+    const a = anchorAt(row, f);
+    const pos = sharedFramePos(pair.anchor, pair.hYaw, a, pair.anchorScale || 0);
+    this.root.position.x = pos.x;
+    this.root.position.z = pos.z;
+    this._faceYaw = pair.hYaw + (row.yaw0 || 0);
+  }
+  _tickState(dt) {
     switch (this.state) {
       // V-System: vskill/vreversal run the same attack timing as 'attack'.
       case 'attack': case 'vskill': case 'vreversal': {
         const m = this.attack, t = this.stateT;
-        if (t < m.startup) this._attackPhase = 'startup';
-        else if (t < m.startup + m.active) this._attackPhase = 'active';
-        else if (t < m.startup + m.active + m.recovery) this._attackPhase = 'recovery';
+        // combat-core: >=3-frame active floor + swept check, so a 30 fps
+        // tick can no longer step over a 1-frame active window (whiffs).
+        const ph = attackPhase(m, t, this._prevAtkT ?? 0);
+        this._prevAtkT = t;
+        if (ph !== 'done') this._attackPhase = ph;
         else {
           const after = m.stanceAfter;
-          this.attack = null; this.attackName = null; this._enter('idle');
+          // BATCH STRING FIX (2026-10-24): a string hit queued during this move
+          // fires on completion, not just during recovery — short moves can jump
+          // active->done in one tick, skipping recovery and dropping the queued
+          // hit, which broke 3+ hit strings (user: longest combo was 1-2).
+          if (this._queuedNext) {
+            const next = this._queuedNext; this._queuedNext = null;
+            this.attack = null; this.attackName = null;
+            if (this._fireNotation(next)) break;
+            this._enter('idle');
+          } else {
+            // T3 condition 0x1C (own whiff): an attack that recovers without hitting counts as a
+            // whiff for the branch pressed within CONTACT_WINDOW after it, not only a cancelled one.
+            if (!this.hasHit) this._t3Whiff = this._clock || 0;
+            this.attack = null; this.attackName = null; this._enter('idle');
+          }
+          // String grace starts when a non-grab attack completes (see _tryAttackFresh).
+          // BATCH: 200 -> 500 ms for touch cadence (phone taps are slower than stick).
+          if (!m.isGrab) this._stringGraceUntil = (typeof performance !== 'undefined' ? performance.now() : 0) + 500;
           // Source notes "Transition to X": the move ends in that stance (FC = crouch).
           if (after === 'FC') { this._enter('crouch'); this.stance = 'FC'; this.stanceT = 0.5; }
-          else if (after) { this.stance = after; this.stanceT = 0.8; }
+          else if (after) { this._stanceSpins = this._spinNext || 1; this.stance = after; this.stanceT = 0.8; }
         }
         // Buffered string hit fires once this hit's active frames are over.
         if (this._queuedNext && this.state === 'attack' && this._attackPhase === 'recovery') {
@@ -1175,7 +2857,20 @@ export class Fighter {
       case 'crouch': break;
       case 'jump': if (this.onGround) this._enter('idle'); break;
       case 'hitstun': if (this.stun <= 0) this._enter('idle'); break;
-      case 'knockdown': if (this.onGround && this.stun <= 0) this._enter('idle'); break;
+      case 'knockdown': if (this.onGround && this.stun <= 0) {
+        this._enter('idle');
+        /* Tekken ground state (sweep 2026-10-29): leaving a knockdown the fighter is still on
+           its back for a short window; moves listed 'while on back[, feet towards opponent]'
+           (FUFT.) are pressed from it, like any stance prefix. Only when the moveset has them. */
+        const gs = this._kdHeadTowards && this._hasGroundMoves('FUHT') ? 'FUHT' : 'FUFT';
+        if (this._hasGroundMoves(gs)) { this.stance = gs; this.stanceT = 0.6; }
+        this._kdHeadTowards = false;
+      } break;
+      // GAP-FILL LANE 1: wall splat sticks the victim to the
+      // wall for its stun window; expiry returns to neutral and
+      // clears the splat hit count (the 3-hit drop is in
+      // receiveHit, not here — expiry is not a hit).
+      case 'wallsplat': if (this.stun <= 0) { this._wallSplatHits = 0; this._enter('idle'); } break;
       case 'dodge': if (this.stateT > 0.34) { this.vx = 0; this._enter('idle'); } break;
       case 'vshift':
         // V-Shift: invulnerable backshift; game.js may proc the evade.
@@ -1185,18 +2880,115 @@ export class Fighter {
         if (this.stateT > 0.55) { this.vz = 0; this._enter('idle'); }
         break;
       case 'thrown':
-      case 'throwing':
+      case 'throwing': {
+        if (this._throwPair) {
+          // Paired throw: shared-root-frame drive + pair clock.
+          // Both clips started on the same frame; the break window
+          // ends -> both fighters move to the exec states WITHOUT
+          // restarting the clips (mixer time is the pair clock's
+          // twin; _throwPairT is the logic clock and is NOT reset
+          // by _enter, so damage/end timing survives the switch).
+          this._throwPairT = (this._throwPairT || 0) + dt;
+          this._driveThrowPair();
+          const brk = this._throwPair.breaks && this._throwPair.breaks[0];
+          const winEnd = brk ? brk.windowSec[1] : 0;
+          if (this._throwPairT > winEnd) {
+            this._enter(this.state === 'throwing' ? 'throwExec' : 'thrownExec');
+          }
+          break;
+        }
         // Throw-lock: game.js resolves the lock when the break window
         // (lockT) expires, so hit feedback stays in one place.
         break;
+      }
+      case 'throwExec': {
+        if (this._throwPair) {
+          this._throwPairT = (this._throwPairT || 0) + dt;
+          this._driveThrowPair();
+          if (this._throwPairT >= this._throwPair.durationSec) {
+            if (this._chainNext && this._startThrowChain(this._throwPair.victim)) break;
+            this._throwPair = null; this._throwPairT = 0;
+            this._throwVictim = null; this._throwMove = null; this._chainFrom = null; this._chainSeq = [];
+            this._enter('idle'); this._endThrowFollow();
+          }
+          break;
+        }
+        // Attacker performing the throw: lift, slam, recover (0.9s total).
+        // Damage lands at the slam (t=0.55s) via the victim's _throwSlamDamage.
+        if (this.stateT >= 0.9) {
+          if (this._chainNext && this._startThrowChain(this._throwVictim)) break;
+          this._throwVictim = null; this._throwMove = null; this._chainFrom = null; this._chainSeq = [];
+          this._enter('idle'); this._endThrowFollow();
+        }
+        break;
+      }
+      case 'thrownExec': {
+        if (this._throwPair) {
+          this._throwPairT = (this._throwPairT || 0) + dt;
+          this._driveThrowPair();
+          const pair = this._throwPair;
+          if (pair.damageTimeSec != null && !pair.hitDone && this._throwPairT >= pair.damageTimeSec) this._throwPairDamage();
+          if (this._throwPairT >= pair.durationSec) {
+            if (!pair.hitDone) this._throwPairDamage();
+            const dead = this.dead;
+            this._throwPair = null; this._throwPairT = 0;
+            this._throwAttacker = null; this._throwMove = null;
+            if (!dead) { this.stun = 0.55; this._enter('knockdown'); }
+            // dead: _throwPairDamage already _knockout'd into 'ko'; do not override it.
+          }
+          break;
+        }
+        // Victim being thrown: lifted by the attacker, then slammed down
+        // in front of them. Stays near the attacker — no launch across the room.
+        const t = this.stateT, attacker = this._throwAttacker;
+        if (attacker) {
+          const dir = Math.sign(this.root.position.x - attacker.root.position.x) || 1;
+          const ax = attacker.root.position.x;
+          if (t < 0.45) {
+            // Lift phase: rise up in the attacker's grip
+            const k = t / 0.45;
+            this.root.position.y = GROUND_Y + Math.sin(k * Math.PI * 0.5) * 1.3;
+            this.root.position.x = ax + dir * 0.85;
+            this.root.position.z = attacker.root.position.z;
+          } else if (t < 0.6) {
+            // Slam phase: driven down in front of the attacker
+            const k = (t - 0.45) / 0.15;
+            this.root.position.y = GROUND_Y + 1.3 * (1 - k);
+            this.root.position.x = ax + dir * (0.85 + k * 0.75);
+            this.root.position.z = attacker.root.position.z;
+            if (!this._throwHitDone && k >= 0.9) this._throwSlamDamage();
+          } else {
+            // On the ground, recovering
+            this.root.position.y = GROUND_Y;
+            this.onGround = true;
+          }
+        }
+        if (t >= 0.9) {
+          const res = this._throwHitDone ? null : this._throwSlamDamage();
+          this._throwAttacker = null; this._throwMove = null;
+          // KO'd by the slam: _throwSlamDamage already ran _knockout.
+          if (!this.dead) {
+            this.stun = 0.55;
+            this._enter('knockdown');
+          }
+          break;
+        }
+        break;
+      }
       case 'idle': case 'walk':
-        this.state = (Math.abs(this.vx) > 0.4 && this.onGround) ? 'walk' : 'idle';
+        // BRAWLER: walk on 2D ground speed, not the 1v1 x-axis.
+        this.state = ((this.brawler ? Math.hypot(this.vx, this.vz) : Math.abs(this.vx)) > 0.4 && this.onGround) ? 'walk' : 'idle';
         break;
     }
   }
 
   _physics(dt, opponent) {
-    if (!this.onGround) this.vy -= 22 * dt;
+    // Throw execution: positions are driven by _tickState (lift/slam),
+    // so physics must not integrate velocity or gravity here.
+    const inThrowAnim = this.state === 'throwExec' || this.state === 'thrownExec';
+    if (!inThrowAnim) {
+      if (!this.onGround) this.vy -= ((this._juggleG && this.state === 'knockdown') ? this._juggleG : 22) * dt;
+    }
     if (this.onGround && this.state !== 'walk' && this.state !== 'dodge' && this.state !== 'sidestep' && !(this.state === 'attack' && this.attackName === 'grab')) {
       this.vx *= Math.pow(0.0001, dt);
       if (Math.abs(this.vx) < 0.05) this.vx = 0;
@@ -1205,35 +2997,103 @@ export class Fighter {
     if (this.state !== 'sidestep') {
       this.vz *= Math.pow(0.0001, dt);
       if (Math.abs(this.vz) < 0.05) this.vz = 0;
+      // QA 2026-10-23 targeting fix: T7 rotates the fight axis after a
+      // sidestep so both fighters are back on one line. Our camera axis is
+      // fixed, so a fighter in neutral drifts back to the line (z=0). Before
+      // this, one sidestep left |dz| > 0.75 forever and every strike whiffed.
+      if (this._ssAlign && this.state === 'attack' && this.onGround && opponent) {
+        // the step's re-aligned axis: back onto the fight line through the move, body
+        // turned at the opponent the whole way (see _enter)
+        this.root.position.z += (opponent.root.position.z - this.root.position.z) * (1 - Math.pow(1e-5, dt));
+        this._faceYaw = Math.atan2(opponent.root.position.x - this.root.position.x, opponent.root.position.z - this.root.position.z);
+      } else if (this.canAct() && this.onGround && this.vz === 0) {
+        this.root.position.z *= Math.pow(0.004, dt);
+        if (Math.abs(this.root.position.z) < 0.01) this.root.position.z = 0;
+      }
     }
-    this.root.position.x += this.vx * dt;
-    this.root.position.y += this.vy * dt;
-    this.root.position.z += this.vz * dt;
+    if (!inThrowAnim) {
+      this.root.position.x += this.vx * dt;
+      this.root.position.y += this.vy * dt;
+      this.root.position.z += this.vz * dt;
+    }
+    // ROOT MOTION (2026-10-24): attack-clip travel, applied here so the
+    // arena clamp and body-vs-body pushout below see it this same frame
+    // (wall: clamped to ARENA_LIMIT; opponent: pushed apart, never passed
+    // through). Does not touch y; does not run for block/sidestep/jump.
+    this._rootMotionApply();
     // Sidestep range: about one body width into the background/foreground.
-    this.root.position.z = Math.max(-2.4, Math.min(2.4, this.root.position.z));
+    // BRAWLER: free 3D — clamp to the arena bounds instead.
+    const zLim = this.brawler ? ARENA_LIMIT : 2.4;
+    this.root.position.z = Math.max(-zLim, Math.min(zLim, this.root.position.z));
 
     if (this.root.position.y <= GROUND_Y) {
-      this.root.position.y = GROUND_Y; this.vy = 0;
-      if (!this.onGround) { this.onGround = true; if (this.state === 'knockdown') this.stun = Math.max(this.stun, 0.4); }
+      this.root.position.y = GROUND_Y; this.vy = 0; this._juggleG = 0;
+      if (!this.onGround) {
+        this.onGround = true;
+        if (this.state === 'knockdown') {
+          // GAP-FILL LANE 1: a Screw slump / Tornado bound keeps
+          // its follow-up window on landing instead of collapsing
+          // to the generic 0.4 s knockdown floor.
+          this.stun = Math.max(this.stun, (this._inScrew || this._inTornado) ? EXTENDER_LAND_STUN_FLOOR : 0.4);
+        }
+      }
     }
     this.root.position.x = Math.max(-ARENA_LIMIT, Math.min(ARENA_LIMIT, this.root.position.x));
 
-    // Body-vs-body pushout — fighters NEVER interpenetrate (x and z).
-    if (opponent) {
+    // GAP-FILL LANE 1: wall splat (DISTINCT from wall break).
+    // A knockback victim armed by a landed hit (see receiveHit)
+    // who reaches the arena wall sticks to it in 'wallsplat'
+    // instead of sliding along it. Breaks do not false-trigger
+    // this: stagebreaks.checkHit() runs before the next physics
+    // tick and extends ARENA_LIMIT on a break, so a broken wall
+    // is no longer at the limit by the time this check runs.
+    // PROPRIETARY NAME for this state: NEEDS NAME (owner names).
+    if (this._wallSplatArmed && (this.state === 'hitstun' || this.state === 'knockdown') &&
+        Math.abs(this.root.position.x) >= ARENA_LIMIT - 0.01) {
+      this._wallSplatArmed = false;
+      this.vx = 0; this.vy = 0; this.stun = Math.max(this.stun, WALL_SPLAT_STUN);
+      this._wallSplatHits = 0;
+      this._enter('wallsplat');
+      if (this.game && this.game.stageBreaks && typeof this.game.stageBreaks.noteSplat === 'function') {
+        try { this.game.stageBreaks.noteSplat(opponent, this); } catch (e) { /* record-only hook */ }
+      }
+    }
+
+    // Body-vs-body pushout, T7/T8 style (owner bug 2026-10-23: cross-ups impossible).
+    // Tekken pushboxes are ground collision cylinders: while airborne the box
+    // shrinks and is off above the opponent's waist, so a jump arc can pass
+    // over and land on the far side (facing re-resolves on landing). Ground
+    // push is split between both bodies; when one is against the stage wall
+    // the remaining push goes to the other body, so nobody leaves the stage.
+    if (opponent && !this._throwPair) {
       const dx = this.root.position.x - opponent.root.position.x;
       const dz = this.root.position.z - opponent.root.position.z;
-      const minDist = 1.45;
-      if (Math.abs(this.root.position.y - opponent.root.position.y) < 1.8) {
-        if (Math.abs(dx) < minDist && Math.abs(dz) < 0.9) {
-          const push = (minDist - Math.abs(dx)) / 2 * (dx >= 0 ? 1 : -1);
-          this.root.position.x += push; opponent.root.position.x -= push;
-        }
-        // lateral separation after sidesteps
-        if (Math.abs(dz) < 0.7 && Math.abs(dx) < minDist) {
-          const zp = (0.7 - Math.abs(dz)) / 2 * (dz >= 0 ? 1 : -1);
-          this.root.position.z += zp; opponent.root.position.z -= zp;
-        }
+      const air = Math.max(this.root.position.y, opponent.root.position.y) - GROUND_Y;
+      const airborne = !this.onGround || !opponent.onGround;
+      // ground: 1.45 wide; airborne: 0.55 low, none once over the waist (0.85)
+      const minDist = !airborne ? 1.45 : (air < 0.85 ? 0.55 : 0);
+      if (minDist > 0 && Math.abs(dx) < minDist && Math.abs(dz) < 0.9) {
+        // side from x, or from travel direction when perfectly stacked
+        const side = dx !== 0 ? Math.sign(dx) : (Math.sign(this.vx - opponent.vx) || this.facing * -1);
+        const total = minDist - Math.abs(dx);
+        let a = total / 2, b = total / 2;
+        const L = ARENA_LIMIT;
+        const roomA = side > 0 ? L - this.root.position.x : this.root.position.x + L;
+        const roomB = side > 0 ? opponent.root.position.x + L : L - opponent.root.position.x;
+        if (a > roomA) { b += a - roomA; a = roomA; }
+        if (b > roomB) { a += b - roomB; b = roomB; }
+        this.root.position.x += side * a; opponent.root.position.x -= side * b;
       }
+      // lateral separation after sidesteps (grounded only)
+      // (contact fix: this used to fire at every touching distance (<1.45),
+      // pushing both fighters 0.7 m off-line so strikes whiffed past the
+      // body; now only when bodies are stacked after a sidestep.)
+      if (!airborne && Math.abs(dz) < 0.7 && Math.abs(dx) < 0.6) {
+        const zp = (0.7 - Math.abs(dz)) / 2 * (dz >= 0 ? 1 : -1);
+        this.root.position.z += zp; opponent.root.position.z -= zp;
+      }
+      this.root.position.x = Math.max(-ARENA_LIMIT, Math.min(ARENA_LIMIT, this.root.position.x));
+      opponent.root.position.x = Math.max(-ARENA_LIMIT, Math.min(ARENA_LIMIT, opponent.root.position.x));
     }
 
     const h = this.root.position.y;
@@ -1298,8 +3158,12 @@ export class Fighter {
 
   /* ---------------- animation ---------------- */
   _animate(dt) {
-    // 1) Facing
-    this.lean.rotation.y = this.facing * Math.PI / 2;
+    // 1) Facing (3D yaw toward the opponent when known; sign convention kept)
+    // BRAWLER: yaw drives the facing directly in free 3D (brawler.js updates
+    // f.yaw per frame); sync it into _faceYaw so the facing line below stays
+    // the single source of truth in both modes.
+    if (this.brawler) this._faceYaw = this.yaw;
+    this.lean.rotation.y = (typeof this._faceYaw === 'number') ? this._faceYaw : this.facing * Math.PI / 2;
 
     // 2) Which REAL T3 clip owns this state? (FROZEN-IDLE FIX 2026-10-20:
     // the bank's animated stance/walk clips existed but were NEVER played
@@ -1308,19 +3172,22 @@ export class Fighter {
     // at load. Headless diag on the old code: t3 stance t=0 w=0 while the
     // mixer advanced the embedded Idle at w=1; bone movement over 2 s
     // measured 0.0-1.0 deg on every bone.)
-    const T3_ATTACK_MAP = { punch: 'light', kick: 'medium', grab: 'grab', surge: 'heavy', heavy: 'heavy',
-      '1': 'light', '2': 'light', '3': 'medium', '4': 'medium', '1+3': 'grab', '2+4': 'grab' };
-    const attackClipFor = () => {
-      let n = T3_ATTACK_MAP[this.attackName];
-      if (!n && typeof this.attackName === 'string') {
-        const lastBtn = this.attackName.split(',').pop().split('+').pop();
-        n = T3_ATTACK_MAP[lastBtn] || 'heavy'; // strings -> last hit's clip; specials -> heavy
-      }
-      return n;
-    };
+    // Attacks: the resolved move's own clip, else the closest real clip of this bank
+    // (_attackClipPlan, lane D 2026-10-24 — replaces the T3_ATTACK_MAP button -> light/medium/heavy map).
+    const attackClipFor = () => this._attackClip(this.attack, this.attackName);
     // Reverse the walk cycle when backing away so retreating reads
     // as a back-step instead of a moonwalk.
-    const dirSign = Math.abs(this.vx) > 0.05 ? (Math.sign(this.vx) === this.facing ? 1 : -1) : 1;
+    // BRAWLER: velocity is 2D (vx+vz) — compare its heading against the
+    // facing yaw instead of the 1v1 x-axis sign.
+    const _bSpd = this.brawler ? Math.hypot(this.vx, this.vz) : 0;
+    let dirSign;
+    if (this.brawler && _bSpd > 0.05) {
+      const _va = Math.atan2(this.vx, this.vz);
+      const _dd = Math.atan2(Math.sin(_va - this.yaw), Math.cos(_va - this.yaw));
+      dirSign = Math.abs(_dd) > Math.PI / 2 ? -1 : 1;
+    } else {
+      dirSign = Math.abs(this.vx) > 0.05 ? (Math.sign(this.vx) === this.facing ? 1 : -1) : 1;
+    }
     let t3Wanted = null;
     switch (this.state) {
       case 'idle': t3Wanted = 'stance'; break;
@@ -1344,10 +3211,11 @@ export class Fighter {
     // itself is re-applied before every mixer.update).
     let tIdle = 1, tWalk = 0, tRun = 0;
     if (this.state === 'walk') {
-      const fast = Math.abs(this.vx) > this.stats.speed * 0.9;
+      const _spdNow = this.brawler ? Math.hypot(this.vx, this.vz) : Math.abs(this.vx);
+      const fast = _spdNow > this.stats.speed * 0.9;
       tIdle = 0; tWalk = fast ? 0 : 1; tRun = fast ? 1 : 0;
     } else if (this.state === 'dodge') { tIdle = 0; tRun = 1; }
-    if (t3Active) { tIdle = 0; tWalk = 0; tRun = 0; }
+    if (t3Active || this._throwPair) { tIdle = 0; tWalk = 0; tRun = 0; }
     const rate = 1 - Math.exp(-dt / 0.12);
     this._locoIdle += (tIdle - this._locoIdle) * rate;
     this._locoWalk += (tWalk - this._locoWalk) * rate;
@@ -1358,8 +3226,25 @@ export class Fighter {
     if (this.actions.Walk) this.actions.Walk.timeScale = dirSign;
     if (this.actions.Run) this.actions.Run.timeScale = dirSign;
 
-    // 4) Advance clips (writes the posed skeleton into bones)
+    // 4) Advance clips (writes the posed skeleton into bones). The attack clip's time is set from
+    // the move clock first, so its hit frame lands on the move's active frames (lane D).
+    this._applyAttackWarp();
     this.mixer.update(dt);
+
+    // 4b) CANON SIZING (game/data/canon-sizing.js): once per model/form, after
+    // the stance has posed a couple of frames, scale the root so the stance
+    // height matches this version's canon height (+ girth). No mesh is cut.
+    if (this._canonSizedKey !== this.formKey && ++this._canonSizeTick > 2) {
+      this._canonSizedKey = this.formKey; this._canonSizeTick = 0;
+      try {
+        const cs = canonRootScale(this.formKey, this.model, this.root);
+        if (cs) {
+          this.root.scale.set(cs.w, cs.h, cs.w);
+          this.canonSize = { key: this.formKey, h: cs.h, w: cs.w, measured: cs.measured, height_cm: cs.entry.height_cm, girth: cs.entry.girth };
+          console.log(`[SIZE] ${this.formKey} stance=${cs.measured.toFixed(3)} -> ${cs.entry.height_cm}cm scale h=${cs.h.toFixed(3)} w=${cs.w.toFixed(3)}`);
+        }
+      } catch (e) { /* sizing is cosmetic: never break the fight */ }
+    }
 
     // 5) Refresh world matrices so IK reads the posed skeleton
     this.root.updateWorldMatrix(true, true);
@@ -1370,15 +3255,19 @@ export class Fighter {
     // REAL T3 clips per state (falls back to procedural if unavailable)
     switch (this.state) {
       case 'idle':
-      case 'walk':
+      case 'walk': {
+        // Guard reaction during blockstun overrides locomotion.
+        const grn = this._guardReactionName();
+        if (grn) { this._playT3Once(grn, 'react:' + this._reactionSel.slot); break; }
         // Animated bank stance / walk cycle — the living fighting idle.
         if (t3Active) this._playT3(t3Wanted, { loop: true });
         else this._stopT3();
         break;
+      }
       case 'attack': case 'vskill': case 'vreversal': {
-        // Main's move-row mapping first (PR #338), then the attackName fallback.
+        // The move's own row / closest real clip (_attackClipPlan), time-warped onto its frames.
         // V-Skill / V-Reversal ride the same attack presentation.
-        const t3name = this._moveRowAction(this.attack) || attackClipFor();
+        const t3name = attackClipFor();
         if (t3name && this._playT3Once(t3name, 'atk:' + this.attackName + ':' + this._attackId)) {
           // Real T3 clip playing; add slight lean for body english
           this._leanT.x = -0.1;
@@ -1387,25 +3276,53 @@ export class Fighter {
         }
         break;
       }
-      case 'block':
-        if (!this._playT3('block', { loop: true })) this._animBlock();
+      case 'block': {
+        // Guard reaction (record guard field, code 0x23) when the
+        // pack has it; otherwise the block loop, as before. When
+        // the guard clip finishes, the block loop resumes.
+        const rn = (this._reactionSel && this._reactionSel.code === 0x23) ? this._reactionActionName() : null;
+        if (rn) this._playT3Once(rn, 'react:' + this._reactionSel.slot);
+        else if (!this._playT3('block', { loop: true })) this._animBlock();
         break;
-      case 'crouch':
+      }
+      case 'crouch': {
+        // Guard reaction during blockstun overrides the crouch hold.
+        const grn = this._guardReactionName();
+        if (grn) { this._playT3Once(grn, 'react:' + this._reactionSel.slot); break; }
         // Bank crouch hold (T3 crouching stance, slot 40) — the posture lows/FC moves use.
         if (!(t3Active && this._playT3(t3Wanted, { loop: true, fade: 0.08 }))) { this._leanT.x = 0.25; this._stopT3(); }
         break;
-      case 'hitstun':
+      }
+      case 'hitstun': {
         this._leanT.x = 0.28;
-        this._playT3Once('hit', 'hit:' + Math.floor(this.stateT * 10));
+        // File reaction clip (stagger / crumple chain / counter
+        // reaction, per the picked record field) when its pack slot
+        // has loaded; otherwise the generic 'hit' clip (UNMAPPED
+        // fallback — the pairing is never guessed).
+        const rn = this._reactionActionName();
+        if (rn) this._playT3Once(rn, 'react:' + this._reactionSel.slot);
+        else if (!this._reactionSel || !this._reactionSel._chainDone) this._playT3Once('hit', 'hit:' + Math.floor(this.stateT * 10));
         break;
-      case 'knockdown':
+      }
+      case 'knockdown': {
         this._leanT.x = Math.min(0.9, this.stateT * 3.0);
-        this._playT3Once('launch', 'kd:' + Math.floor(this.stateT * 10));
+        // Launch / air / down reaction when the hit that caused
+        // this knockdown picked one; throw knockdowns stay generic
+        // here (the grapple lane owns throw victim playback).
+        const rn = this._throwAttacker ? null : this._reactionActionName();
+        if (rn) this._playT3Once(rn, 'react:' + this._reactionSel.slot);
+        else if (!this._reactionSel || !this._reactionSel._chainDone) this._playT3Once('launch', 'kd:' + Math.floor(this.stateT * 10));
         break;
-      case 'ko':
+      }
+      case 'ko': {
         this._leanT.x = Math.min(0.9, this.stateT * 3.0);
-        this._playT3Once('ko', 'ko:' + Math.floor(this.stateT * 10));
+        // Collapse slot 0xD66 + its file get-up chain when loaded;
+        // otherwise the generic 'ko' clip.
+        const rn = this._reactionActionName();
+        if (rn) this._playT3Once(rn, 'react:' + this._reactionSel.slot);
+        else if (!this._reactionSel || !this._reactionSel._chainDone) this._playT3Once('ko', 'ko:' + Math.floor(this.stateT * 10));
         break;
+      }
       case 'victory':
         this._playT3('win', { loop: true });
         break;
@@ -1431,6 +3348,21 @@ export class Fighter {
         break;
       }
       case 'throwing': {
+        // Paired throw: the thrower's slot clip (NOT the grab action).
+        // _playT3 does not restart an already-running action, so this
+        // same action continues into throwExec below, in sync with
+        // the victim's clip. Break cue comes from the file's break
+        // input, not from the WH move's throw_break.
+        if (this._throwPair) {
+          this._leanT.x = 0;
+          this._playT3(this._throwPair.throwerAction, { loop: false });
+          const brk = this._throwPair.breaks && this._throwPair.breaks[0] ? this._throwPair.breaks[0].input : null;
+          const pulse = 0.55 + 0.45 * Math.sin(performance.now() * 0.03);
+          if (brk === '1') this._showTrail(this.bones.LeftHand, pulse);
+          else if (brk === '2') this._showTrail(this.bones.RightHand, pulse);
+          else { this._showTrail(this.bones.RightHand, pulse); this._showTrail(this.bones.LeftHand, pulse * 0.9); }
+          break;
+        }
         // Hold the double-arm snatch; flash the LEAD arm as the break cue
         // (Tekken: left arm forward = break 1, right arm = break 2, both = 1+2).
         const brk = this.lockMove && this.lockMove.throw_break;
@@ -1445,10 +3377,46 @@ export class Fighter {
         break;
       }
       case 'thrown':
+        // Paired throw: the victim's slot clip (the receiver clip),
+        // same action continuing into thrownExec below.
+        if (this._throwPair) {
+          this._leanT.x = 0;
+          if (!this._playT3(this._throwPair.victimAction, { loop: false })) this._stopT3();
+          break;
+        }
         // Victim caught: rocked back, arms up (T3 hit reaction when bound).
         this._leanT.x = 0.3;
         if (!this._playT3Once('hit', 'thrown')) this._stopT3();
         break;
+      case 'throwExec': {
+        if (this._throwPair) {
+          this._leanT.x = 0;
+          if (!this._playT3(this._throwPair.throwerAction, { loop: false })) this._stopT3();
+          break;
+        }
+        // Attacker performing the throw: heave back to lift (0-0.45s),
+        // drive forward for the slam (0.45-0.6s), settle (0.6-0.9s).
+        const t = this.stateT;
+        if (t < 0.45) this._leanT.x = -0.35 * (t / 0.45); // lean back, lifting
+        else if (t < 0.6) this._leanT.x = -0.35 + 0.75 * ((t - 0.45) / 0.15); // slam forward
+        else this._leanT.x = 0.4 * (1 - (t - 0.6) / 0.3); // settle
+        // Keep the grab clip if bound; otherwise the procedural snatch pose.
+        if (this.t3actions.grab) this._playT3('grab', { loop: false });
+        else this._animThrowExec(t);
+        break;
+      }
+      case 'thrownExec': {
+        if (this._throwPair) {
+          this._leanT.x = 0;
+          if (!this._playT3(this._throwPair.victimAction, { loop: false })) this._stopT3();
+          break;
+        }
+        // Victim being thrown: lifted, then slammed. T3 launch clip sells
+        // the airborne part; the position is driven by _tickState.
+        this._leanT.x = 0.25;
+        if (!this._playT3Once('launch', 'thrownExec')) this._stopT3();
+        break;
+      }
       case 'jump': {
         const jn = Math.abs(this.vx) < 0.4 ? 'jumpUp' : (Math.sign(this.vx) === this.facing ? 'jumpFwd' : 'jumpBack');
         if (!this._playT3Once(this.t3actions[jn] ? jn : 'jumpUp', 'jump')) { this._animJump(); this._stopT3(); }
@@ -1474,7 +3442,7 @@ export class Fighter {
     this.lean.rotation.z = this._lean.z;
 
     // 8) Aura + trail visuals — particles rise and flicker around the body
-    const auraOn = (this.attackName === 'surge') || this._auraFlash > 0 || this._rageAura || this._urgeAura;
+    const auraOn = (this.attackName === 'surge') || this._auraFlash > 0 || this._rageAura || this._urgeAura || this.surgeForm;
     const am = this.aura.material;
     am.opacity += ((auraOn ? 0.95 : 0) - am.opacity) * Math.min(1, dt * 10);
     this.auraLight.intensity += ((auraOn ? 14 : 0) - this.auraLight.intensity) * Math.min(1, dt * 10);
@@ -1496,6 +3464,13 @@ export class Fighter {
     }
   }
 
+  /* World-space forward vector (brawler: from yaw; versus: from x-facing).
+     Used by the procedural combat layer so strikes aim where the body faces. */
+  fwdVec(out) {
+    if (this.brawler) return out.set(Math.sin(this.yaw), 0, Math.cos(this.yaw));
+    return out.set(this.facing, 0, 0);
+  }
+
   _attackProgress() {
     const m = this.attack, t = this.stateT;
     const extendEnd = m.startup + m.active;
@@ -1505,8 +3480,12 @@ export class Fighter {
   }
 
   _animAttack() {
+    // Rigs without Hips/Spine2 (e.g. cainelias) skip the procedural
+    // attack lean — the authored clip still plays; this used to throw
+    // every frame and abort the attack.
+    if (!this.bones || !this.bones.Hips || !this.bones.Spine2) return;
     const e = this._attackProgress();
-    const fwd = _v3.set(this.facing, 0, 0); // world forward
+    const fwd = this.fwdVec(_v3); // world forward (yaw-aware in brawler mode)
     const name = this.attackName;
 
     const isKick = name === 'kick' || name === '3' || name === '4' || this.attack?.limb?.startsWith('leg');
@@ -1544,16 +3523,34 @@ export class Fighter {
   }
 
   _animBlock() {
+    if (!this.bones || !this.bones.Hips || !this.bones.Spine2) return; // non-standard rig: clip only
     this._blendW = Math.min(0.9, (this._blendW || 0) + 0.18);
     this._leanT.x = 0.06;
     this.bones.Spine2.getWorldPosition(_v1);
-    const fwd = _v3.set(this.facing, 0, 0);
+    const fwd = this.fwdVec(_v3);
     _v2.copy(_v1).addScaledVector(fwd, 0.42); _v2.y = _v1.y + 0.35;
     this._ik(['RightArm', 'RightForeArm'], 'RightHand', _v2, this._blendW);
     _v2.copy(_v1).addScaledVector(fwd, 0.42); _v2.y = _v1.y + 0.2;
     this._ik(['LeftArm', 'LeftForeArm'], 'LeftHand', _v2, this._blendW);
   }
+  /* Procedural throw execution (no T3 throw clip bound): arms haul the
+     victim up overhead during the lift, then drive down for the slam. */
+  _animThrowExec(t) {
+    if (!this.bones || !this.bones.Hips || !this.bones.Spine2) return; // non-standard rig: clip only
+    const fwd = _v3.set(this.facing, 0, 0);
+    this.bones.Spine2.getWorldPosition(_v1);
+    let lift, push;
+    if (t < 0.45) { const k = t / 0.45; lift = k; push = 0.3 + k * 0.3; }
+    else if (t < 0.6) { const k = (t - 0.45) / 0.15; lift = 1 - k * 0.9; push = 0.6 + k * 0.6; }
+    else { lift = 0.1; push = 1.2 * (1 - (t - 0.6) / 0.3); }
+    _v2.copy(_v1).addScaledVector(fwd, push); _v2.y = _v1.y + 0.2 + lift * 0.9;
+    this._ik(['RightArm', 'RightForeArm'], 'RightHand', _v2, 0.95);
+    _v2.copy(_v1).addScaledVector(fwd, push * 0.92); _v2.y = _v1.y + 0.1 + lift * 0.85;
+    this._ik(['LeftArm', 'LeftForeArm'], 'LeftHand', _v2, 0.95);
+    this._showTrail(this.bones.RightHand, Math.min(1, lift + 0.3));
+  }
   _animJump() {
+    if (!this.bones || !this.bones.Hips || !this.bones.Spine2) return; // non-standard rig: clip only
     this.bones.Hips.getWorldPosition(_v1);
     _v2.copy(_v1); _v2.y -= 0.35; _v2.addScaledVector(_v3.set(this.facing, 0, 0), 0.25);
     this._ik(['RightUpLeg', 'RightLeg'], 'RightFoot', _v2, 0.7);

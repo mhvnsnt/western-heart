@@ -1070,7 +1070,14 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "TOU is battle itself. No motive, no prize - the fight is the whole sentence."
+      "note": "TOU is battle itself. No motive, no prize - the fight is the whole sentence.",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 100,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "P+K": {
       "name": "No Motive [WH SIGNATURE]",
@@ -1094,7 +1101,12 @@
       "note": "Battle without motive. The most honest grab in the trial - it wants nothing from you but the hold.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true
+      "isGrab": true,
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 100,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Exists to Fight [WH SIGNATURE]",
@@ -1114,7 +1126,14 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "TOU is battle itself. No motive, no prize - the fight is the whole sentence.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 105,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "TOU 1+2 (T3 heihachi r37)",
@@ -1158,7 +1177,12 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 100,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+2": {
       "name": "TOU b+2 (T3 heihachi r207)",
@@ -3892,12 +3916,7 @@
       "t8_input": "1+2*",
       "merge_source": "t8:Paul-1+2*",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "1+2**": {
       "name": "Burning Fist",
@@ -3927,12 +3946,7 @@
       "t8_input": "1+2**",
       "merge_source": "t8:Paul-1+2**",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "1,2": {
       "name": "Left Right Combo",
@@ -4028,12 +4042,7 @@
       "t8_id": "Paul-1+2+3+4",
       "t8_damage": null,
       "t8_input": "1+2+3+4",
-      "merge_source": "t8:Paul-1+2+3+4",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "merge_source": "t8:Paul-1+2+3+4"
     },
     "1+3~t8.paul": {
       "name": "Over The Shoulder",
@@ -4166,12 +4175,7 @@
       "t8_damage": "12",
       "t8_input": "2+3",
       "merge_source": "t8:Paul-2+3",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Burst",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Burst"
     },
     "2,3": {
       "name": "Goodnight",
@@ -4519,8 +4523,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
       "anim_t3": {
         "bank": "paul",
-        "row": 208,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+1+3": {
@@ -4551,12 +4555,7 @@
       "t8_input": "b+1+3",
       "merge_source": "t8:Paul-b+1+3",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Parry; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Parry; &lt;/div&gt"
     },
     "b+1+4": {
       "name": "Foot Launch",
@@ -4973,12 +4972,7 @@
       "merge_source": "t8:Paul-CS.1+2",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Cancel to t41 FC with B; &lt;/div&gt",
-      "t8_alias": "qcf+1+2",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "qcf+1+2"
     },
     "CS.2": {
       "name": "Phoenix Smasher",
@@ -5081,12 +5075,7 @@
       "merge_source": "t8:Paul-CS.3+4",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
-      "t8_alias": "qcf+3+4",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "qcf+3+4"
     },
     "d+1~t8.paul": {
       "name": "Hammer Punch",
@@ -5404,8 +5393,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Elbow&lt;/div",
       "anim_t3": {
         "bank": "paul",
-        "row": 185,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+4,2,1+2": {
@@ -5437,12 +5426,7 @@
       "merge_source": "t8:Paul-d+4,2,1+2",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "t8_alias": "Demoman",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "Demoman"
     },
     "d+4,2:1+2": {
       "name": "Demolition Man (Perfect Input)",
@@ -5472,12 +5456,7 @@
       "t8_input": "d+4,2:1+2",
       "merge_source": "t8:Paul-d+4,2:1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "d/b+1": {
       "name": "Dickjab",
@@ -5541,12 +5520,7 @@
       "t8_input": "db+1+2",
       "merge_source": "t8:Paul-db+1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Shoulder&lt;/",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "same-notation"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Shoulder&lt;/"
     },
     "d/b+2": {
       "name": "Shoot the Moon",
@@ -6315,12 +6289,7 @@
       },
       "knockdown": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Effective minimum startup 28f; t112 on hit; Deals recoverable damage to self; &lt;/div&gt",
-      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* DPD.3+4\n* DD.3+4\n&lt;/div&gt;",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* DPD.3+4\n* DD.3+4\n&lt;/div&gt;"
     },
     "DPD.d/f+4": {
       "name": "Eigetsu",
@@ -6424,8 +6393,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 116,
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       }
     },
     "f+1+4~t8.paul": {
@@ -6455,12 +6424,7 @@
       "t8_damage": "25",
       "t8_input": "f+1+4",
       "merge_source": "t8:Paul-f+1+4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "f+2~t8.paul": {
       "name": "Phoenix Hook, Tiger Claw",
@@ -6499,12 +6463,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple &quot;; &gt;Heat Engager +",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 115,
-        "match": "same-notation"
-      }
+      "unblockable": true
     },
     "f+3~t8.paul": {
       "name": "TOU f+3",
@@ -6606,8 +6565,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "paul",
-        "row": 208,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+3+4": {
@@ -6950,12 +6909,7 @@
       "t8_input": "f,F+2,H.1+2",
       "merge_source": "t8:Paul-f,F+2,H.1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "f,F+3": {
       "name": "TOU f,F+3",
@@ -7237,12 +7191,7 @@
       "t8_input": "H.1+2",
       "merge_source": "t8:Paul-H.1+2",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "H.1+2*": {
       "name": "Half-Step Phoenix Smasher (Hold)",
@@ -7272,12 +7221,7 @@
       "t8_input": "H.1+2*",
       "merge_source": "t8:Paul-H.1+2*",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "H.1+2**": {
       "name": "Burning Fist",
@@ -7307,12 +7251,7 @@
       "t8_input": "H.1+2**",
       "merge_source": "t8:Paul-H.1+2**",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "H.2+3": {
       "name": "Demolition Ball",
@@ -7603,12 +7542,7 @@
       "t8_input": "H.f+1+2*",
       "merge_source": "t8:Paul-H.f+1+2*",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "hFC.1+2": {
       "name": "Ultimate Tackle",
@@ -7965,12 +7899,7 @@
       "merge_source": "t8:Paul-SWA.1+2",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
-      "t8_alias": "qcb+1+2",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "t8_alias": "qcb+1+2"
     },
     "SWA.2": {
       "name": "Rubber Band Attack",
@@ -8434,12 +8363,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow spike&quot;; &gt;Spike&lt;",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 44,
-        "match": "same-notation"
-      }
+      "unblockable": true
     },
     "u/f+2": {
       "name": "Moonfall",
@@ -8681,8 +8605,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Move can be delayed 10f; Input can be delayed 10f; Combo from 1st CH with 10f delay; Transition to t59 r19 SWA +1 +14g +15 from 39~44f with b; &lt;/div&gt",
       "anim_t3": {
         "bank": "paul",
-        "row": 208,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS.1,2~b": {
@@ -8819,8 +8743,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "paul",
-        "row": 185,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS.4": {
@@ -8879,7 +8803,7 @@
         "WALL.b,b,u/b"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_1",
       "t7_command": "Back towards wall... b, b, u/b",
       "t7_hit_level": "mid",
@@ -8920,7 +8844,7 @@
         "1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_2",
       "t7_command": "1",
       "t7_hit_level": "high",
@@ -8936,7 +8860,9 @@
         "bank": "paul",
         "row": 187,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2~t7.paul": {
       "name": "Left Right Combo",
@@ -8960,7 +8886,7 @@
         "1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_3",
       "t7_command": "1, 2",
       "t7_hit_level": "high, high",
@@ -8983,7 +8909,9 @@
         "bank": "paul",
         "row": 106,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9,1",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2~t7.paul.2": {
       "name": "TOU 1,2",
@@ -9007,7 +8935,7 @@
         "1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_4",
       "t7_command": "(1), 2",
       "t7_hit_level": "high",
@@ -9023,7 +8951,9 @@
         "bank": "paul",
         "row": 106,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9,1",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,4~t7.paul": {
       "name": "Reverse PDK Combo",
@@ -9047,7 +8977,7 @@
         "1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_5",
       "t7_command": "1, 4",
       "t7_hit_level": "high, low",
@@ -9070,7 +9000,9 @@
         "bank": "paul",
         "row": 111,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,4~t7.paul.2": {
       "name": "TOU 1,4",
@@ -9094,7 +9026,7 @@
         "1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_6",
       "t7_command": "(1), 4",
       "t7_hit_level": "low",
@@ -9110,7 +9042,9 @@
         "bank": "paul",
         "row": 220,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2~t7.paul": {
       "name": "TOU 2",
@@ -9134,7 +9068,7 @@
         "2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_7",
       "t7_command": "2",
       "t7_hit_level": "high",
@@ -9150,7 +9084,9 @@
         "bank": "paul",
         "row": 204,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,3~t7.paul": {
       "name": "Jab Roundhouse",
@@ -9174,7 +9110,7 @@
         "2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_8",
       "t7_command": "2, 3",
       "t7_hit_level": "high, high",
@@ -9197,7 +9133,9 @@
         "bank": "paul",
         "row": 74,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,3~t7.paul.2": {
       "name": "TOU 2,3",
@@ -9221,7 +9159,7 @@
         "2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_9",
       "t7_command": "(2), 3",
       "t7_hit_level": "high",
@@ -9237,7 +9175,9 @@
         "bank": "paul",
         "row": 214,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,d+3": {
       "name": "Jab Sweep",
@@ -9261,7 +9201,7 @@
         "2,d+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_10",
       "t7_command": "2, d+3",
       "t7_hit_level": "high, low",
@@ -9284,7 +9224,9 @@
         "bank": "paul",
         "row": 74,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,d+3~t7.paul": {
       "name": "TOU 2,d+3",
@@ -9308,7 +9250,7 @@
         "2,d+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_11",
       "t7_command": "(2), d+3",
       "t7_hit_level": "low",
@@ -9324,7 +9266,9 @@
         "bank": "paul",
         "row": 214,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,14",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3~t7.paul": {
       "name": "TOU 3",
@@ -9348,7 +9292,7 @@
         "3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_12",
       "t7_command": "3",
       "t7_hit_level": "mid",
@@ -9364,7 +9308,9 @@
         "bank": "paul",
         "row": 210,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,2~t7.paul": {
       "name": "Piston Fire",
@@ -9388,7 +9334,7 @@
         "3,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_13",
       "t7_command": "3, 2",
       "t7_hit_level": "mid, high",
@@ -9411,7 +9357,9 @@
         "bank": "paul",
         "row": 198,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,2~t7.paul.2": {
       "name": "TOU 3,2",
@@ -9435,7 +9383,7 @@
         "3,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_14",
       "t7_command": "(3), 2",
       "t7_hit_level": "high",
@@ -9451,7 +9399,9 @@
         "bank": "paul",
         "row": 206,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4~t7.paul": {
       "name": "TOU 4",
@@ -9475,7 +9425,7 @@
         "4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_15",
       "t7_command": "4",
       "t7_hit_level": "high",
@@ -9491,7 +9441,9 @@
         "bank": "paul",
         "row": 126,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2~t7.paul": {
       "name": "TOU f+2",
@@ -9515,7 +9467,7 @@
         "f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_16",
       "t7_command": "f+2",
       "t7_hit_level": "high",
@@ -9531,7 +9483,9 @@
         "bank": "paul",
         "row": 115,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,3": {
       "name": "TOU f+2,3",
@@ -9555,7 +9509,7 @@
         "f+2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_17",
       "t7_command": "f+2, 3",
       "t7_hit_level": "high, high",
@@ -9578,7 +9532,9 @@
         "bank": "paul",
         "row": 209,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "13,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,3~t7.paul": {
       "name": "TOU f+2,3",
@@ -9602,7 +9558,7 @@
         "f+2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_18",
       "t7_command": "(f+2), 3",
       "t7_hit_level": "high",
@@ -9618,7 +9574,9 @@
         "bank": "paul",
         "row": 209,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "13,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,3,1": {
       "name": "Quick PK Smash",
@@ -9642,7 +9600,7 @@
         "f+2,3,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_19",
       "t7_command": "f+2, 3, 1",
       "t7_hit_level": "high, high, high",
@@ -9666,7 +9624,9 @@
         "bank": "paul",
         "row": 140,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,21,29",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,3,1~t7.paul": {
       "name": "TOU f+2,3,1",
@@ -9690,7 +9650,7 @@
         "f+2,3,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_20",
       "t7_command": "(f+2), 3, 1",
       "t7_hit_level": "high, high",
@@ -9713,7 +9673,9 @@
         "bank": "paul",
         "row": 116,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,21,29",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+2,3,1~t7.paul.2": {
       "name": "TOU f+2,3,1",
@@ -9737,7 +9699,7 @@
         "f+2,3,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_21",
       "t7_command": "(f+2), (3), 1",
       "t7_hit_level": "high",
@@ -9753,7 +9715,9 @@
         "bank": "paul",
         "row": 187,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,21,29",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+3~t7.paul": {
       "name": "TOU f+3",
@@ -9777,7 +9741,7 @@
         "f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_22",
       "t7_command": "f+3",
       "t7_hit_level": "high",
@@ -9793,7 +9757,9 @@
         "bank": "paul",
         "row": 109,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "40",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+1+2~t7.paul": {
       "name": "Hammer of the Gods",
@@ -9817,7 +9783,7 @@
         "f+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_23",
       "t7_command": "f+1+2",
       "t7_hit_level": "mid",
@@ -9833,7 +9799,9 @@
         "bank": "paul",
         "row": 116,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "29",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f+1+4~t7.paul": {
       "name": "Shoulder Tackle",
@@ -9857,7 +9825,7 @@
         "f+1+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_24",
       "t7_command": "f+1+4",
       "t7_hit_level": "mid",
@@ -9869,11 +9837,8 @@
       "merge_source": "t7:paul_24",
       "recovery_from": "same-notation T8 recv",
       "launch": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 242,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "35",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1~t7.paul": {
       "name": "TOU d/f+1",
@@ -9897,7 +9862,7 @@
         "d/f+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_25",
       "t7_command": "d/f+1",
       "t7_hit_level": "mid",
@@ -9913,7 +9878,9 @@
         "bank": "paul",
         "row": 68,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1,1~t7.paul": {
       "name": "TOU d/f+1,1",
@@ -9937,7 +9904,7 @@
         "d/f+1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_26",
       "t7_command": "d/f+1, 1",
       "t7_hit_level": "mid, high",
@@ -9960,7 +9927,9 @@
         "bank": "paul",
         "row": 68,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "17,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1,1~t7.paul.2": {
       "name": "TOU d/f+1,1",
@@ -9984,7 +9953,7 @@
         "d/f+1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_27",
       "t7_command": "(d/f+1), 1",
       "t7_hit_level": "high",
@@ -10000,7 +9969,9 @@
         "bank": "paul",
         "row": 116,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "17,12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1,1,2~t7.paul": {
       "name": "Lion's Roar",
@@ -10024,7 +9995,7 @@
         "d/f+1,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_28",
       "t7_command": "d/f+1, 1, 2",
       "t7_hit_level": "mid, high, mid",
@@ -10048,7 +10019,9 @@
         "bank": "paul",
         "row": 141,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "17,12,29",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1,1,2~t7.paul.2": {
       "name": "TOU d/f+1,1,2",
@@ -10072,7 +10045,7 @@
         "d/f+1,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_29",
       "t7_command": "(d/f+1), 1, 2",
       "t7_hit_level": "mid, high",
@@ -10093,9 +10066,11 @@
       "launch": true,
       "anim_t3": {
         "bank": "paul",
-        "row": 208,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      },
+      "mod_damage": "17,12,29",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1,1,2~t7.paul.3": {
       "name": "TOU d/f+1,1,2",
@@ -10119,7 +10094,7 @@
         "d/f+1,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_30",
       "t7_command": "(d/f+1), (1), 2",
       "t7_hit_level": "high",
@@ -10135,7 +10110,9 @@
         "bank": "paul",
         "row": 206,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "17,12,29",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+2~t7.paul": {
       "name": "TOU d/f+2",
@@ -10159,7 +10136,7 @@
         "d/f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_31",
       "t7_command": "d/f+2",
       "t7_hit_level": "mid",
@@ -10175,7 +10152,9 @@
         "bank": "paul",
         "row": 121,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3~t7.paul": {
       "name": "TOU d/f+3",
@@ -10199,7 +10178,7 @@
         "d/f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_32",
       "t7_command": "d/f+3",
       "t7_hit_level": "mid",
@@ -10215,7 +10194,9 @@
         "bank": "paul",
         "row": 109,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,4~t7.paul": {
       "name": "Phoenix Wings",
@@ -10239,7 +10220,7 @@
         "d/f+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_33",
       "t7_command": "d/f+3, 4",
       "t7_hit_level": "mid",
@@ -10262,7 +10243,9 @@
         "bank": "paul",
         "row": 77,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,4~t7.paul.2": {
       "name": "TOU d/f+3,4",
@@ -10286,7 +10269,7 @@
         "d/f+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_34",
       "t7_command": "(d/f+3), 4",
       "t7_hit_level": "mid",
@@ -10302,7 +10285,9 @@
         "bank": "paul",
         "row": 220,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,4*": {
       "name": "TOU d/f+3,4*",
@@ -10326,7 +10311,7 @@
         "d/f+3,4*"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_35",
       "t7_command": "d/f+3, 4*",
       "t7_hit_level": "mid",
@@ -10342,7 +10327,9 @@
         "bank": "paul",
         "row": 77,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,4*~t7.paul": {
       "name": "TOU d/f+3,4*",
@@ -10366,7 +10353,7 @@
         "d/f+3,4*"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_36",
       "t7_command": "(d/f+3), 4*",
       "t7_hit_level": "mid",
@@ -10382,7 +10369,9 @@
         "bank": "paul",
         "row": 77,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+4~t7.paul": {
       "name": "The Boot",
@@ -10406,7 +10395,7 @@
         "d/f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_37",
       "t7_command": "d/f+4",
       "t7_hit_level": "mid",
@@ -10422,7 +10411,9 @@
         "bank": "paul",
         "row": 133,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "32",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+1~t7.paul": {
       "name": "Hammer Punch",
@@ -10446,7 +10437,7 @@
         "d+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_38",
       "t7_command": "d+1",
       "t7_hit_level": "mid",
@@ -10461,7 +10452,9 @@
         "bank": "paul",
         "row": 135,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+1,D": {
       "name": "TOU d+1,D",
@@ -10485,7 +10478,7 @@
         "d+1,D"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_39",
       "t7_command": "d+1, D",
       "t7_hit_level": "mid",
@@ -10500,7 +10493,9 @@
         "bank": "paul",
         "row": 141,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+1,2~t7.paul": {
       "name": "Hammer Punch to Power Punch",
@@ -10524,7 +10519,7 @@
         "d+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_40",
       "t7_command": "d+1, 2",
       "t7_hit_level": "mid",
@@ -10547,7 +10542,9 @@
         "bank": "paul",
         "row": 194,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "21,35",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+1,2~t7.paul.2": {
       "name": "TOU d+1,2",
@@ -10571,7 +10568,7 @@
         "d+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_41",
       "t7_command": "(d+1), 2",
       "t7_hit_level": "mid",
@@ -10587,7 +10584,9 @@
         "bank": "paul",
         "row": 194,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "21,35",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+1,2*~t7.paul": {
       "name": "TOU d+1,2*",
@@ -10611,7 +10610,7 @@
         "d+1,2*"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_42",
       "t7_command": "d+1, 2*",
       "t7_hit_level": "mid",
@@ -10651,7 +10650,7 @@
         "d+1,2*"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_43",
       "t7_command": "(d+1), 2*",
       "t7_hit_level": "mid",
@@ -10691,7 +10690,7 @@
         "d+1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_44",
       "t7_command": "d+1, 4",
       "t7_hit_level": "mid, low",
@@ -10713,7 +10712,9 @@
         "bank": "paul",
         "row": 212,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "21,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+1,4~t7.paul.2": {
       "name": "TOU d+1,4",
@@ -10737,7 +10738,7 @@
         "d+1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_45",
       "t7_command": "(d+1), 4",
       "t7_hit_level": "low",
@@ -10753,7 +10754,9 @@
         "bank": "paul",
         "row": 212,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "21,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+1,4,2~t7.paul": {
       "name": "Hang Over",
@@ -10777,7 +10780,7 @@
         "d+1,4,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_46",
       "t7_command": "d+1, 4, 2",
       "t7_hit_level": "mid, low, mid",
@@ -10801,7 +10804,9 @@
         "bank": "paul",
         "row": 197,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "21,20,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+1,4,2~t7.paul.2": {
       "name": "TOU d+1,4,2",
@@ -10825,7 +10830,7 @@
         "d+1,4,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_47",
       "t7_command": "(d+1), 4, 2",
       "t7_hit_level": "low, mid",
@@ -10848,7 +10853,9 @@
         "bank": "paul",
         "row": 197,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "21,20,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+1,4,2~t7.paul.3": {
       "name": "TOU d+1,4,2",
@@ -10872,7 +10879,7 @@
         "d+1,4,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_48",
       "t7_command": "(d+1), (4), 2",
       "t7_hit_level": "mid",
@@ -10888,7 +10895,9 @@
         "bank": "paul",
         "row": 197,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "21,20,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+4~t7.paul": {
       "name": "TOU d+4",
@@ -10912,7 +10921,7 @@
         "d+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_49",
       "t7_command": "d+4 (Close)",
       "t7_hit_level": "low",
@@ -10929,7 +10938,9 @@
         "bank": "paul",
         "row": 77,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+4~t7.paul.2": {
       "name": "TOU d+4",
@@ -10953,7 +10964,7 @@
         "d+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_50",
       "t7_command": "d+4 (Far)",
       "t7_hit_level": "low",
@@ -10970,7 +10981,9 @@
         "bank": "paul",
         "row": 77,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+4,2~t7.paul": {
       "name": "Bone Breaker",
@@ -10994,7 +11007,7 @@
         "d+4,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_51",
       "t7_command": "d+4, 2",
       "t7_hit_level": "low, mid",
@@ -11017,7 +11030,9 @@
         "bank": "paul",
         "row": 198,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+4,2~t7.paul.2": {
       "name": "TOU d+4,2",
@@ -11041,7 +11056,7 @@
         "d+4,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_52",
       "t7_command": "(d+4), 2",
       "t7_hit_level": "mid",
@@ -11057,7 +11072,9 @@
         "bank": "paul",
         "row": 198,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+4,2,1+2~t7.paul": {
       "name": "Demolition Man",
@@ -11081,7 +11098,7 @@
         "d+4,2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_53",
       "t7_command": "d+4, 2, 1+2",
       "t7_hit_level": "low, mid, mid",
@@ -11100,12 +11117,7 @@
         ],
         "total": 40
       },
-      "launch": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "launch": true
     },
     "d+4,2,1+2~t7.paul.2": {
       "name": "TOU d+4,2,1+2",
@@ -11129,7 +11141,7 @@
         "d+4,2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_54",
       "t7_command": "(d+4), 2, 1+2",
       "t7_hit_level": "mid, mid",
@@ -11147,12 +11159,7 @@
         ],
         "total": 45
       },
-      "launch": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "launch": true
     },
     "d+4,2,1+2~t7.paul.3": {
       "name": "TOU d+4,2,1+2",
@@ -11176,7 +11183,7 @@
         "d+4,2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_55",
       "t7_command": "(d+4), (2), 1+2",
       "t7_hit_level": "mid",
@@ -11187,12 +11194,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:paul_55",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "launch": true
     },
     "d+4,2:1+2~t7.paul": {
       "name": "TOU d+4,2:1+2",
@@ -11216,7 +11218,7 @@
         "d+4,2:1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_56",
       "t7_command": "d+4, 2:1+2",
       "t7_hit_level": "mid",
@@ -11227,12 +11229,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:paul_56",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "launch": true
     },
     "d+4,2:1+2~t7.paul.2": {
       "name": "TOU d+4,2:1+2",
@@ -11256,7 +11253,7 @@
         "d+4,2:1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_57",
       "t7_command": "(d+4), (2):1+2",
       "t7_hit_level": "mid",
@@ -11267,12 +11264,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:paul_57",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "launch": true
     },
     "d+1+2~t7.paul": {
       "name": "Shoulder Smash",
@@ -11296,7 +11288,7 @@
         "d+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_58",
       "t7_command": "d+1+2",
       "t7_hit_level": "mid",
@@ -11312,7 +11304,9 @@
         "bank": "paul",
         "row": 134,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "40",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+2~t7.paul": {
       "name": "Shoot the Moon",
@@ -11336,7 +11330,7 @@
         "d/b+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_59",
       "t7_command": "d/b+2",
       "t7_hit_level": "mid",
@@ -11352,7 +11346,8 @@
         "bank": "paul",
         "row": 137,
         "match": "same-notation"
-      }
+      },
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1~t7.paul": {
       "name": "TOU b+1",
@@ -11376,7 +11371,7 @@
         "b+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_60",
       "t7_command": "b+1",
       "t7_hit_level": "high",
@@ -11392,7 +11387,8 @@
         "bank": "paul",
         "row": 140,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1,2~t7.paul": {
       "name": "Double Axe Swing",
@@ -11416,7 +11412,7 @@
         "b+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_61",
       "t7_command": "b+1, 2",
       "t7_hit_level": "high, high",
@@ -11438,7 +11434,9 @@
         "bank": "paul",
         "row": 115,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": ",",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1,2~t7.paul.2": {
       "name": "TOU b+1,2",
@@ -11462,7 +11460,7 @@
         "b+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_62",
       "t7_command": "(b+1), 2",
       "t7_hit_level": "high",
@@ -11475,9 +11473,11 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "paul",
-        "row": 208,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      },
+      "mod_damage": ",",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2~t7.paul": {
       "name": "TOU b+2",
@@ -11501,7 +11501,7 @@
         "b+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_63",
       "t7_command": "b+2",
       "t7_hit_level": "mid",
@@ -11516,7 +11516,8 @@
         "bank": "paul",
         "row": 106,
         "match": "same-notation"
-      }
+      },
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,1~t7.paul": {
       "name": "Crushing Wind",
@@ -11540,7 +11541,7 @@
         "b+2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_64",
       "t7_command": "b+2, 1",
       "t7_hit_level": "mid, mid",
@@ -11562,7 +11563,9 @@
         "bank": "paul",
         "row": 43,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": ",",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,1~t7.paul.2": {
       "name": "TOU b+2,1",
@@ -11586,7 +11589,7 @@
         "b+2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_65",
       "t7_command": "(b+2), 1",
       "t7_hit_level": "mid",
@@ -11601,7 +11604,9 @@
         "bank": "paul",
         "row": 124,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": ",",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,1*~t7.paul": {
       "name": "TOU b+2,1*",
@@ -11625,7 +11630,7 @@
         "b+2,1*"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_66",
       "t7_command": "b+2, 1*",
       "t7_hit_level": "mid",
@@ -11640,7 +11645,9 @@
         "bank": "paul",
         "row": 43,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": ",",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2,1*~t7.paul.2": {
       "name": "TOU b+2,1*",
@@ -11664,7 +11671,7 @@
         "b+2,1*"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_67",
       "t7_command": "(b+2), 1*",
       "t7_hit_level": "mid",
@@ -11679,7 +11686,9 @@
         "bank": "paul",
         "row": 119,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": ",",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+3~t7.paul": {
       "name": "Lights Out",
@@ -11703,7 +11712,7 @@
         "b+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_68",
       "t7_command": "b+3",
       "t7_hit_level": "high",
@@ -11719,7 +11728,9 @@
         "bank": "paul",
         "row": 211,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+4~t7.paul": {
       "name": "Leg Sweep",
@@ -11743,7 +11754,7 @@
         "b+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_69",
       "t7_command": "b+4",
       "t7_hit_level": "low",
@@ -11759,7 +11770,9 @@
         "bank": "paul",
         "row": 111,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/b+2~t7.paul": {
       "name": "Wrecking Ball",
@@ -11783,7 +11796,7 @@
         "u/b+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_70",
       "t7_command": "u/b+2",
       "t7_hit_level": "mid",
@@ -11799,7 +11812,9 @@
         "bank": "paul",
         "row": 206,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "32",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+2~t7.paul": {
       "name": "Mortar Punch",
@@ -11823,7 +11838,7 @@
         "u/f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_71",
       "t7_command": "u/f+2",
       "t7_hit_level": "mid",
@@ -11839,7 +11854,9 @@
         "bank": "paul",
         "row": 180,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "47",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3~t7.paul": {
       "name": "TOU u/f+3",
@@ -11863,7 +11880,7 @@
         "u/f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_72",
       "t7_command": "u/f+3",
       "t7_hit_level": "mid",
@@ -11879,7 +11896,9 @@
         "bank": "paul",
         "row": 74,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3,4~t7.paul": {
       "name": "Shredder",
@@ -11903,7 +11922,7 @@
         "u/f+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_73",
       "t7_command": "u/f+3, 4",
       "t7_hit_level": "mid, mid",
@@ -11926,7 +11945,9 @@
         "bank": "paul",
         "row": 77,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3,4~t7.paul.2": {
       "name": "TOU u/f+3,4",
@@ -11950,7 +11971,7 @@
         "u/f+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_74",
       "t7_command": "(u/f+3), 4",
       "t7_hit_level": "mid",
@@ -11966,7 +11987,9 @@
         "bank": "paul",
         "row": 139,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+2~t7.paul": {
       "name": "TOU f,F+2",
@@ -11990,7 +12013,7 @@
         "f,F+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_75",
       "t7_command": "f, F+2 (or FC d/f+2)",
       "t7_hit_level": "mid",
@@ -12007,7 +12030,9 @@
         "bank": "paul",
         "row": 208,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+2,1~t7.paul": {
       "name": "Juggernaut",
@@ -12031,7 +12056,7 @@
         "f,F+2,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_76",
       "t7_command": "f, F+2, 1 (or FC d/f+2, 1)",
       "t7_hit_level": "mid",
@@ -12055,7 +12080,9 @@
         "bank": "paul",
         "row": 66,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "t7.paul_77": {
       "name": "TOU (f, F+2), 1 (or FC (d/f+2), 1)",
@@ -12077,7 +12104,7 @@
       "anim_ref": "t7:paul:paul_77",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_77",
       "t7_command": "(f, F+2), 1 (or FC (d/f+2), 1)",
       "t7_hit_level": "mid",
@@ -12118,7 +12145,7 @@
         "f,F+2,1,B"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_78",
       "t7_command": "f, F+2, 1, B (or FC d/f+2, 1, B)",
       "t7_hit_level": "mid",
@@ -12135,7 +12162,9 @@
         "bank": "paul",
         "row": 208,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+2:1~t7.paul": {
       "name": "Phoenix Bone Breaker",
@@ -12159,7 +12188,7 @@
         "f,F+2:1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_79",
       "t7_command": "f, F+2:1 (or FC d/f+2:1)",
       "t7_hit_level": "mid, high",
@@ -12183,7 +12212,9 @@
         "bank": "paul",
         "row": 66,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,32",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+2,2~t7.paul": {
       "name": "Bulldozer",
@@ -12207,7 +12238,7 @@
         "f,F+2,2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_80",
       "t7_command": "f, F+2, 2 (or FC d/f+2, 2)",
       "t7_hit_level": "mid, low",
@@ -12231,7 +12262,9 @@
         "bank": "paul",
         "row": 208,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "t7.paul_81": {
       "name": "TOU (f, F+2), 2 (or FC (d/f+2), 2)",
@@ -12253,7 +12286,7 @@
       "anim_ref": "t7:paul:paul_81",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_81",
       "t7_command": "(f, F+2), 2 (or FC (d/f+2), 2)",
       "t7_hit_level": "mid, low",
@@ -12294,7 +12327,7 @@
         "f,F+2,2,B"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_82",
       "t7_command": "f, F+2, 2, B (or FC d/f+2, 2, B)",
       "t7_hit_level": "mid",
@@ -12311,7 +12344,9 @@
         "bank": "paul",
         "row": 208,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+3~t7.paul": {
       "name": "TOU f,F+3",
@@ -12335,7 +12370,7 @@
         "f,F+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_83",
       "t7_command": "f, F+3",
       "t7_hit_level": "mid",
@@ -12351,7 +12386,9 @@
         "bank": "paul",
         "row": 215,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+3,4~t7.paul": {
       "name": "TOU f,F+3,4",
@@ -12375,7 +12412,7 @@
         "f,F+3,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_84",
       "t7_command": "f, F+3, 4",
       "t7_hit_level": "mid, mid",
@@ -12398,7 +12435,9 @@
         "bank": "paul",
         "row": 195,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "22,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+3,4~t7.paul.2": {
       "name": "TOU f,F+3,4",
@@ -12422,7 +12461,7 @@
         "f,F+3,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_85",
       "t7_command": "(f, F+3), 4",
       "t7_hit_level": "mid",
@@ -12438,7 +12477,9 @@
         "bank": "paul",
         "row": 195,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "22,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+3,4,4~t7.paul": {
       "name": "Double Hop Kick High",
@@ -12462,7 +12503,7 @@
         "f,F+3,4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_86",
       "t7_command": "f, F+3, 4, 4",
       "t7_hit_level": "mid, mid, high",
@@ -12485,7 +12526,9 @@
         "bank": "paul",
         "row": 195,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "22,20,33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+3,4,4~t7.paul.2": {
       "name": "TOU f,F+3,4,4",
@@ -12509,7 +12552,7 @@
         "f,F+3,4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_87",
       "t7_command": "(f, F+3), 4, 4",
       "t7_hit_level": "mid, high",
@@ -12525,7 +12568,9 @@
         "bank": "paul",
         "row": 195,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "22,20,33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+3,4,4~t7.paul.3": {
       "name": "TOU f,F+3,4,4",
@@ -12549,7 +12594,7 @@
         "f,F+3,4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_88",
       "t7_command": "(f, F+3), (4), 4",
       "t7_hit_level": "high",
@@ -12564,7 +12609,9 @@
         "bank": "paul",
         "row": 195,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "22,20,33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+3,4,f+4~t7.paul": {
       "name": "Triple Kick Combo",
@@ -12588,7 +12635,7 @@
         "f,F+3,4,f+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_89",
       "t7_command": "f, F+3, 4, f+4",
       "t7_hit_level": "mid, mid, mid",
@@ -12635,7 +12682,7 @@
         "f,F+3,4,f+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_90",
       "t7_command": "(f, F+3), 4, f+4",
       "t7_hit_level": "mid, mid",
@@ -12675,7 +12722,7 @@
         "f,F+3,4,f+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_91",
       "t7_command": "(f, F+3), (4), f+4",
       "t7_hit_level": "mid",
@@ -12715,7 +12762,7 @@
         "f,F+3,4,d+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_92",
       "t7_command": "f, F+3, 4, d+4",
       "t7_hit_level": "mid, mid, low",
@@ -12762,7 +12809,7 @@
         "f,F+3,4,d+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_93",
       "t7_command": "(f, F+3), 4, d+4",
       "t7_hit_level": "mid, low",
@@ -12802,7 +12849,7 @@
         "f,F+3,4,d+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_94",
       "t7_command": "(f, F+3), (4), d+4",
       "t7_hit_level": "low",
@@ -12842,7 +12889,7 @@
         "f,F+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_95",
       "t7_command": "f, F+4",
       "t7_hit_level": "mid",
@@ -12858,7 +12905,9 @@
         "bank": "paul",
         "row": 195,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b,f+1": {
       "name": "Burning Spear",
@@ -12882,7 +12931,7 @@
         "b,f+1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_96",
       "t7_command": "b, f+1",
       "t7_hit_level": "high",
@@ -12898,7 +12947,9 @@
         "bank": "paul",
         "row": 66,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "40",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b,B+1+2,u,u": {
       "name": "Burning Fist Cancel",
@@ -12922,7 +12973,7 @@
         "b,B+1+2,u,u"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_97",
       "t7_command": "b, B+1+2, u, u",
       "t7_hit_level": "-",
@@ -12961,7 +13012,7 @@
         "qcf+1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_98",
       "t7_command": "qcf+1",
       "t7_hit_level": "high",
@@ -12977,7 +13028,9 @@
         "bank": "paul",
         "row": 66,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcf+2": {
       "name": "Phoenix Smasher",
@@ -13001,7 +13054,7 @@
         "qcf+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_99",
       "t7_command": "qcf+2 (close)",
       "t7_hit_level": "mid",
@@ -13018,7 +13071,9 @@
         "bank": "paul",
         "row": 208,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "64",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcf+2~t7.paul": {
       "name": "TOU qcf+2",
@@ -13042,7 +13097,7 @@
         "qcf+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_100",
       "t7_command": "qcf+2 (far)",
       "t7_hit_level": "mid",
@@ -13059,7 +13114,9 @@
         "bank": "paul",
         "row": 208,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "43",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcf+3": {
       "name": "Gengetsu",
@@ -13083,7 +13140,7 @@
         "qcf+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_101",
       "t7_command": "qcf+3",
       "t7_hit_level": "low",
@@ -13099,7 +13156,9 @@
         "bank": "paul",
         "row": 215,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcf+3+4": {
       "name": "Mountain Raze",
@@ -13123,7 +13182,7 @@
         "qcf+3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_102",
       "t7_command": "qcf+3+4",
       "t7_hit_level": "mid",
@@ -13135,11 +13194,8 @@
       "merge_source": "t7:paul_102",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "40",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcb+1": {
       "name": "God Hammer Punch",
@@ -13163,7 +13219,7 @@
         "qcb+1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_103",
       "t7_command": "qcb+1",
       "t7_hit_level": "mid",
@@ -13179,7 +13235,9 @@
         "bank": "paul",
         "row": 66,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "32",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcb+2": {
       "name": "Rubber Band Attack",
@@ -13203,7 +13261,7 @@
         "qcb+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_104",
       "t7_command": "qcb+2",
       "t7_hit_level": "mid",
@@ -13219,7 +13277,9 @@
         "bank": "paul",
         "row": 208,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "28(41)",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcb+3": {
       "name": "Sway and Low Kick",
@@ -13243,7 +13303,7 @@
         "qcb+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_105",
       "t7_command": "qcb+3",
       "t7_hit_level": "low",
@@ -13259,7 +13319,9 @@
         "bank": "paul",
         "row": 215,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcb+3,2": {
       "name": "TOU qcb+3,2",
@@ -13283,7 +13345,7 @@
         "qcb+3,2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_106",
       "t7_command": "qcb+3, 2",
       "t7_hit_level": "low, mid",
@@ -13305,7 +13367,9 @@
         "bank": "paul",
         "row": 208,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcb+3,2~t7.paul": {
       "name": "TOU qcb+3,2",
@@ -13329,7 +13393,7 @@
         "qcb+3,2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_107",
       "t7_command": "(qcb+3), 2",
       "t7_hit_level": "mid",
@@ -13344,7 +13408,9 @@
         "bank": "paul",
         "row": 207,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcb+3,2,1": {
       "name": "Rapid Fire to Phoenix Smasher",
@@ -13368,7 +13434,7 @@
         "qcb+3,2,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_108",
       "t7_command": "qcb+3, 2, 1",
       "t7_hit_level": "low, mid, high",
@@ -13392,7 +13458,9 @@
         "bank": "paul",
         "row": 66,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,27,33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcb+3,2,1~t7.paul": {
       "name": "TOU qcb+3,2,1",
@@ -13416,7 +13484,7 @@
         "qcb+3,2,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_109",
       "t7_command": "(qcb+3), 2, 1",
       "t7_hit_level": "mid, high",
@@ -13439,7 +13507,9 @@
         "bank": "paul",
         "row": 66,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,27,33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcb+3,2,1~t7.paul.2": {
       "name": "TOU qcb+3,2,1",
@@ -13463,7 +13533,7 @@
         "qcb+3,2,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_110",
       "t7_command": "(qcb+3), (2), 1",
       "t7_hit_level": "high",
@@ -13479,7 +13549,9 @@
         "bank": "paul",
         "row": 66,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,27,33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcb+3,2,3": {
       "name": "Rapid Fire to Lightning Bolt",
@@ -13503,7 +13575,7 @@
         "qcb+3,2,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_111",
       "t7_command": "qcb+3, 2, 3",
       "t7_hit_level": "low, mid, mid",
@@ -13527,7 +13599,9 @@
         "bank": "paul",
         "row": 215,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,27,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcb+3,2,3~t7.paul": {
       "name": "TOU qcb+3,2,3",
@@ -13551,7 +13625,7 @@
         "qcb+3,2,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_112",
       "t7_command": "(qcb+3), 2, 3",
       "t7_hit_level": "mid, mid",
@@ -13574,7 +13648,9 @@
         "bank": "paul",
         "row": 215,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,27,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcb+3,2,3~t7.paul.2": {
       "name": "TOU qcb+3,2,3",
@@ -13598,7 +13674,7 @@
         "qcb+3,2,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_113",
       "t7_command": "(qcb+3), (2), 3",
       "t7_hit_level": "mid",
@@ -13614,7 +13690,9 @@
         "bank": "paul",
         "row": 215,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,27,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcb+4": {
       "name": "Kawaragoma",
@@ -13638,7 +13716,7 @@
         "qcb+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_114",
       "t7_command": "qcb+4",
       "t7_hit_level": "high",
@@ -13654,7 +13732,9 @@
         "bank": "paul",
         "row": 195,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "37",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcb+1+2": {
       "name": "Higaku",
@@ -13678,7 +13758,7 @@
         "qcb+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_115",
       "t7_command": "qcb+1+2",
       "t7_hit_level": "mid",
@@ -13690,11 +13770,8 @@
       "merge_source": "t7:paul_115",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "29",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "BT.1": {
       "name": "TOU BT.1",
@@ -13718,7 +13795,7 @@
         "BT.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_116",
       "t7_command": "BT 1 (or 2)",
       "t7_hit_level": "high",
@@ -13735,7 +13812,9 @@
         "bank": "paul",
         "row": 81,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "BT.3": {
       "name": "TOU BT.3",
@@ -13759,7 +13838,7 @@
         "BT.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_117",
       "t7_command": "BT 3 (or 4)",
       "t7_hit_level": "high",
@@ -13776,7 +13855,9 @@
         "bank": "paul",
         "row": 215,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.1": {
       "name": "TOU FC.1",
@@ -13800,7 +13881,7 @@
         "FC.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_118",
       "t7_command": "FC 1",
       "t7_hit_level": "s. mid",
@@ -13816,7 +13897,9 @@
         "bank": "paul",
         "row": 47,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "6",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.2": {
       "name": "TOU FC.2",
@@ -13840,7 +13923,7 @@
         "FC.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_119",
       "t7_command": "FC 2",
       "t7_hit_level": "s. mid",
@@ -13880,7 +13963,7 @@
         "FC.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_120",
       "t7_command": "FC 3",
       "t7_hit_level": "low",
@@ -13896,7 +13979,9 @@
         "bank": "paul",
         "row": 215,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.4": {
       "name": "TOU FC.4",
@@ -13920,7 +14005,7 @@
         "FC.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_121",
       "t7_command": "FC 4",
       "t7_hit_level": "low",
@@ -13936,7 +14021,9 @@
         "bank": "paul",
         "row": 195,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.D*,u+3+4": {
       "name": "Incomplete Somersault",
@@ -13960,7 +14047,7 @@
         "FC.D*,u+3+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_122",
       "t7_command": "FC D* (60f), u+3+4",
       "t7_hit_level": "mid",
@@ -13972,12 +14059,7 @@
       "merge_source": "t7:paul_122",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(60f)",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(60f)"
     },
     "FC.d/f+1+2": {
       "name": "Gunba",
@@ -14001,7 +14083,7 @@
         "FC.d/f+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_123",
       "t7_command": "FC d/f+1+2",
       "t7_hit_level": "low",
@@ -14013,11 +14095,8 @@
       "merge_source": "t7:paul_123",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "mod_damage": "27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.d/f+1+2,B": {
       "name": "TOU FC.d/f+1+2,B",
@@ -14041,7 +14120,7 @@
         "FC.d/f+1+2,B"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_124",
       "t7_command": "FC d/f+1+2, B",
       "t7_hit_level": "low",
@@ -14080,7 +14159,7 @@
         "SS.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_125",
       "t7_command": "SS 1",
       "t7_hit_level": "high",
@@ -14096,7 +14175,9 @@
         "bank": "paul",
         "row": 66,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "31",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "SS.3~t7.paul": {
       "name": "Pump in Pedal",
@@ -14120,7 +14201,7 @@
         "SS.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_126",
       "t7_command": "SS 3",
       "t7_hit_level": "low",
@@ -14136,7 +14217,9 @@
         "bank": "paul",
         "row": 215,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,f,F": {
       "name": "TOU f,f,F",
@@ -14160,7 +14243,7 @@
         "f,f,F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_127",
       "t7_command": "WR f, f, F (Full Screen)",
       "t7_hit_level": "mid",
@@ -14201,7 +14284,7 @@
         "f,f,F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_128",
       "t7_command": "WR f, f, F (Full Screen) (On Grounded Opponent)",
       "t7_hit_level": "low",
@@ -14242,7 +14325,7 @@
         "4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_129",
       "t7_command": "WR 4",
       "t7_hit_level": "low",
@@ -14259,7 +14342,9 @@
         "bank": "paul",
         "row": 126,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1+2~t7.paul": {
       "name": "TOU 1+2",
@@ -14283,7 +14368,7 @@
         "1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_130",
       "t7_command": "WR 1+2",
       "t7_hit_level": "mid",
@@ -14324,7 +14409,7 @@
         "WS.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_131",
       "t7_command": "WS 1",
       "t7_hit_level": "mid",
@@ -14340,7 +14425,9 @@
         "bank": "paul",
         "row": 47,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.2~t7.paul": {
       "name": "TOU WS.2",
@@ -14364,7 +14451,7 @@
         "WS.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_132",
       "t7_command": "WS 2",
       "t7_hit_level": "mid",
@@ -14380,7 +14467,9 @@
         "bank": "paul",
         "row": 208,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.3~t7.paul": {
       "name": "TOU WS.3",
@@ -14404,7 +14493,7 @@
         "WS.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_133",
       "t7_command": "WS 3",
       "t7_hit_level": "mid",
@@ -14420,7 +14509,9 @@
         "bank": "paul",
         "row": 215,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.3,2~t7.paul": {
       "name": "Shioh",
@@ -14444,7 +14535,7 @@
         "WS.3,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_134",
       "t7_command": "WS 3, 2",
       "t7_hit_level": "mid, high",
@@ -14467,7 +14558,9 @@
         "bank": "paul",
         "row": 92,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "21,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.3,2~t7.paul.2": {
       "name": "TOU WS.3,2",
@@ -14491,7 +14584,7 @@
         "WS.3,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_135",
       "t7_command": "WS (3), 2",
       "t7_hit_level": "high",
@@ -14505,9 +14598,11 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "paul",
-        "row": 185,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      },
+      "mod_damage": "21,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "WS.4~t7.paul": {
       "name": "TOU WS.4",
@@ -14531,7 +14626,7 @@
         "WS.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_136",
       "t7_command": "WS 4",
       "t7_hit_level": "mid",
@@ -14547,7 +14642,9 @@
         "bank": "paul",
         "row": 195,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+2~t7.paul": {
       "name": "Down Strike",
@@ -14571,7 +14668,7 @@
         "d+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_137",
       "t7_command": "(While enemy is down) d+2",
       "t7_hit_level": "low",
@@ -14588,7 +14685,9 @@
         "bank": "paul",
         "row": 201,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,3,2,1,2,1,4,2,1": {
       "name": "10 Hit Combo 1",
@@ -14612,7 +14711,7 @@
         "1,2,3,2,1,2,1,4,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_138",
       "t7_command": "1, 2, 3, 2, 1, 2, 1, 4, 2, 1",
       "t7_hit_level": "-",
@@ -14652,7 +14751,7 @@
         "1,2,3,2,4,2,1,4,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_139",
       "t7_command": "1, 2, 3, 2, 4, 2, 1, 4, 2, 1",
       "t7_hit_level": "-",
@@ -14692,7 +14791,7 @@
         "1,2,3,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_140",
       "t7_command": "1, 2, 3, 1, 2 ",
       "t7_hit_level": "-",
@@ -14730,7 +14829,7 @@
       "anim_ref": "t7:paul:paul_141",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_141",
       "t7_command": "Face Up, Feet Towards+3 or (After Rolling Forward)",
       "t7_hit_level": "low",
@@ -14769,7 +14868,7 @@
       "anim_ref": "t7:paul:paul_142",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_142",
       "t7_command": "Face Up, Feet Towards+4 or (After Rolling Forward)",
       "t7_hit_level": "mid",
@@ -14810,7 +14909,7 @@
         "FUFT.d+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_143",
       "t7_command": "Face Up, Feet Towards, d+3 (or 4)",
       "t7_hit_level": "low",
@@ -14851,7 +14950,7 @@
         "FUFT.3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_144",
       "t7_command": "Face Up, Feet Towards+3+4",
       "t7_hit_level": "mid",
@@ -14863,12 +14962,7 @@
       "merge_source": "t7:paul_144",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "Face Up, Feet Towards+",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "Face Up, Feet Towards+"
     },
     "t7.paul_145": {
       "name": "TOU Face Up, Feet Towards, Roll Forward+1+2",
@@ -14890,7 +14984,7 @@
       "anim_ref": "t7:paul:paul_145",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_145",
       "t7_command": "Face Up, Feet Towards, Roll Forward+1+2",
       "t7_hit_level": "mid",
@@ -14931,7 +15025,7 @@
         "FDFA.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_146",
       "t7_command": "Face Down, Feet Away+3",
       "t7_hit_level": "low",
@@ -14972,7 +15066,7 @@
         "FDFA.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_147",
       "t7_command": "Face Down, Feet Away+4 (close)",
       "t7_hit_level": "mid",
@@ -15013,7 +15107,7 @@
         "FDFA.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_148",
       "t7_command": "Face Down, Feet Away+4 (far)",
       "t7_hit_level": "mid",
@@ -15052,7 +15146,7 @@
       "anim_ref": "t7:paul:paul_149",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_149",
       "t7_command": "(Upon Landing) f",
       "t7_hit_level": "low",
@@ -15093,7 +15187,7 @@
         "qcb"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_150",
       "t7_command": "qcb",
       "t7_hit_level": "-",
@@ -15108,7 +15202,8 @@
         "bank": "paul",
         "row": 208,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,2,B": {
       "name": "Piston Fire to Sway",
@@ -15132,7 +15227,7 @@
         "3,2,B"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_151",
       "t7_command": "3, 2, B",
       "t7_hit_level": "mid, high",
@@ -15179,7 +15274,7 @@
         "d/f+1,B"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_152",
       "t7_command": "d/f+1, B",
       "t7_hit_level": "mid",
@@ -15195,7 +15290,9 @@
         "bank": "paul",
         "row": 141,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+1+2~t7.paul": {
       "name": "Hassou Strike",
@@ -15219,7 +15316,7 @@
         "b+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_153",
       "t7_command": "b+1+2",
       "t7_hit_level": "high",
@@ -15235,7 +15332,9 @@
         "bank": "paul",
         "row": 119,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "47",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "R.1+2": {
       "name": "Rage Art",
@@ -15259,7 +15358,7 @@
         "R.1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_154",
       "t7_command": "(During Rage) 1+2",
       "t7_hit_level": "mid",
@@ -15271,12 +15370,7 @@
       "merge_source": "t7:paul_154",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Rage)"
     },
     "R.1+2,B": {
       "name": "TOU R.1+2,B",
@@ -15300,7 +15394,7 @@
         "R.1+2,B"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_155",
       "t7_command": "(During Rage) 1+2, B",
       "t7_hit_level": "mid",
@@ -15340,7 +15434,7 @@
         "R.qcf+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_156",
       "t7_command": "(During Rage) qcf+1+2 (close)",
       "t7_hit_level": "mid",
@@ -15352,12 +15446,7 @@
       "merge_source": "t7:paul_156",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "(During Rage) (close)",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Rage) (close)"
     },
     "R.qcf+1+2~t7.paul": {
       "name": "TOU R.qcf+1+2",
@@ -15381,7 +15470,7 @@
         "R.qcf+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_157",
       "t7_command": "(During Rage) qcf+1+2 (far)",
       "t7_hit_level": "mid",
@@ -15393,12 +15482,7 @@
       "merge_source": "t7:paul_157",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "(During Rage) (far)",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Rage) (far)"
     },
     "t7.paul_158": {
       "name": "Burning Fist",
@@ -15420,7 +15504,7 @@
       "anim_ref": "t7:paul:paul_158",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_158",
       "t7_command": "b, B+1+2 (u, u to cancel)",
       "t7_hit_level": "mid",
@@ -15437,7 +15521,9 @@
         "bank": "paul",
         "row": 202,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "67",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1+3~t7.paul": {
       "name": "Over The Shoulder",
@@ -15461,7 +15547,7 @@
         "1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_159",
       "t7_command": "Approach enemy... 1+3",
       "t7_hit_level": "high throw",
@@ -15504,7 +15590,7 @@
         "2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_160",
       "t7_command": "Approach enemy... 2+4",
       "t7_hit_level": "high throw",
@@ -15547,7 +15633,7 @@
         "f+1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_161",
       "t7_command": "Approach enemy... f+1+3",
       "t7_hit_level": "high throw",
@@ -15561,12 +15647,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 339,
-        "match": "same-notation"
-      }
+      "unblockable": true
     },
     "f+2+4": {
       "name": "Shoulder Pop",
@@ -15590,7 +15671,7 @@
         "f+2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_162",
       "t7_command": "Approach enemy... f+2+4",
       "t7_hit_level": "high throw",
@@ -15604,12 +15685,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 342,
-        "match": "same-notation"
-      }
+      "unblockable": true
     },
     "SIDE_L.1+3~t7.paul": {
       "name": "Dragon Screw",
@@ -15633,7 +15709,7 @@
         "SIDE_L.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_163",
       "t7_command": "Approach from left side... 1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -15676,7 +15752,7 @@
         "SIDE_R.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_164",
       "t7_command": "Approach from right side...  1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -15719,7 +15795,7 @@
         "BACK.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_165",
       "t7_command": "Approach from behind... 1+3 (or f+1+3)",
       "t7_hit_level": "high throw",
@@ -15762,7 +15838,7 @@
         "BACK.2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_166",
       "t7_command": "Approach from behind... 2+4 (or f+2+4)",
       "t7_hit_level": "high throw",
@@ -15805,7 +15881,7 @@
         "2+4,B"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_167",
       "t7_command": "Approach enemy... 2+4, B",
       "t7_hit_level": "high throw",
@@ -15848,7 +15924,7 @@
         "d/f+1+2"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_168",
       "t7_command": "Approach enemy... d/f+1+2",
       "t7_hit_level": "high throw",
@@ -15862,12 +15938,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 120,
-        "match": "same-notation"
-      }
+      "unblockable": true
     },
     "d/f+1+3~t7.paul": {
       "name": "Kongo Blast",
@@ -15891,7 +15962,7 @@
         "d/f+1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_169",
       "t7_command": "Approach enemy... d/f+1+3",
       "t7_hit_level": "high throw",
@@ -15934,7 +16005,7 @@
         "d/f+1+3,qcf+2"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_170",
       "t7_command": "Approach enemy... d/f+1+3, qcf+2",
       "t7_hit_level": "high throw",
@@ -15977,7 +16048,7 @@
         "d/f+1+3,qcf+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_171",
       "t7_command": "Approach enemy... (d/f+1+3), qcf+2",
       "t7_hit_level": "mid",
@@ -16025,7 +16096,7 @@
         "b+1+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_172",
       "t7_command": "Approach enemy... b+1+4",
       "t7_hit_level": "high throw",
@@ -16068,7 +16139,7 @@
         "f,F+1+2"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_173",
       "t7_command": "Approach enemy... f, F+1+2",
       "t7_hit_level": "high throw",
@@ -16111,7 +16182,7 @@
         "d/b+1+2"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_174",
       "t7_command": "d/b+1+2",
       "t7_hit_level": "mid throw",
@@ -16151,7 +16222,7 @@
       "anim_ref": "t7:paul:paul_175",
       "input_slots": [],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_175",
       "t7_command": "WR f, f, F (Mid Screen)",
       "t7_hit_level": "mid throw",
@@ -16194,7 +16265,7 @@
         "TACKLE.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_176",
       "t7_command": "(During Tackle) 1 (or 2)",
       "t7_hit_level": "-",
@@ -16211,7 +16282,9 @@
         "bank": "paul",
         "row": 47,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "TACKLE.1,1": {
       "name": "TOU TACKLE.1,1",
@@ -16235,7 +16308,7 @@
         "TACKLE.1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_177",
       "t7_command": "(During Tackle) 1/2, 1/2",
       "t7_hit_level": "-",
@@ -16283,7 +16356,7 @@
         "TACKLE.1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_178",
       "t7_command": "(During Tackle) 1/2, 1/2, 1/2",
       "t7_hit_level": "-",
@@ -16332,7 +16405,7 @@
         "TACKLE.1,1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_179",
       "t7_command": "(During Tackle) 1/2, 1/2, 1/2, 1/2",
       "t7_hit_level": "-",
@@ -16382,7 +16455,7 @@
         "TACKLE.2,1,2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_180",
       "t7_command": "(During Tackle) 2, 1, 2, 1+2",
       "t7_hit_level": "-",
@@ -16403,12 +16476,7 @@
         "total": 40
       },
       "knockdown": true,
-      "input_note": "(During Tackle)",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Tackle)"
     },
     "TACKLE.2,d+1,1,n,4,1,1+2": {
       "name": "Ultimate Punishment",
@@ -16432,7 +16500,7 @@
         "TACKLE.2,d+1,1,n,4,1,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_181",
       "t7_command": "(During Tackle) 2, d+1, 1, n, 4, 1, 1+2",
       "t7_hit_level": "-",
@@ -16453,12 +16521,7 @@
         "total": 56
       },
       "knockdown": true,
-      "input_note": "(During Tackle)",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Tackle)"
     },
     "TACKLE.1+2": {
       "name": "Arm Breaker",
@@ -16482,7 +16545,7 @@
         "TACKLE.1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_182",
       "t7_command": "(During Tackle) 1+2",
       "t7_hit_level": "-",
@@ -16494,12 +16557,7 @@
       "merge_source": "t7:paul_182",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Tackle)",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Tackle)"
     },
     "t7.paul_183": {
       "name": "TOU D (Hold for 160f)",
@@ -16521,7 +16579,7 @@
       "anim_ref": "t7:paul:paul_183",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_183",
       "t7_command": "D (Hold for 160f)",
       "t7_hit_level": "-",
@@ -16537,7 +16595,8 @@
         "bank": "paul",
         "row": 208,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "qcf~t7.paul": {
       "name": "TOU qcf",
@@ -16561,7 +16620,7 @@
         "qcf"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_184",
       "t7_command": "qcf",
       "t7_hit_level": "-",
@@ -16576,7 +16635,8 @@
         "bank": "paul",
         "row": 208,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "REV.b+1+3": {
       "name": "Attack Reversal",
@@ -16600,7 +16660,7 @@
         "REV.b+1+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "paul_185",
       "t7_command": "Time with enemy attack... b+1+3 or b+2+4",
       "t7_hit_level": "-",
@@ -16612,12 +16672,7 @@
       "merge_source": "t7:paul_185",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Time with enemy attack...",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 244,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "Time with enemy attack..."
     },
     "u+1+2": {
       "name": "PAUL u+1+2 (T3 paul r43)",
@@ -20271,6 +20326,1632 @@
       "t3_condition": 75,
       "t3_restriction": 10,
       "merge_source": "t3:paul:row:360"
+    },
+    "3,2,~b": {
+      "name": "TOU 3,2,~b",
+      "input": "3,2,~b",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.317,
+      "damage": 0,
+      "damage_raw": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": null,
+      "on_block": "+4",
+      "on_hit": "+14g",
+      "on_ch": "+57a",
+      "crush": null,
+      "anim_ref": "t8:paul:Paul-3,2~b",
+      "input_slots": [
+        "3,2,~b"
+      ],
+      "move_class": "special",
+      "t8_source": "paul",
+      "t8_id": "Paul-3,2~b",
+      "t8_damage": "",
+      "t8_input": "3,2,~b",
+      "merge_source": "t8:Paul-3,2~b",
+      "set": "FIGHT",
+      "note": "startup absent in T8 source; Sidestep u can be buffered from 45f * SWA attacks can be buffered from 54f * Transition to cs1~ r9 -13 +4 +47a [[Paul_movelist#DPD_(Deep Dive)|DPD]] from 61f with df",
+      "anim_t3": {
+        "bank": "paul",
+        "row": 185,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "d,df": {
+      "name": "Crouch Dash",
+      "input": "d,df",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 0,
+      "damage_raw": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": null,
+      "on_block": null,
+      "on_hit": null,
+      "on_ch": null,
+      "crush": "cs1~21",
+      "anim_ref": "t8:paul:Paul-cd",
+      "input_slots": [
+        "d,df"
+      ],
+      "move_class": "special",
+      "t8_source": "paul",
+      "t8_id": "Paul-cd",
+      "t8_damage": "",
+      "t8_input": "d,df",
+      "merge_source": "t8:Paul-cd",
+      "set": "FIGHT",
+      "note": "startup absent in T8 source; Cannot be buffered * 1.12 movement over 20f * Transition to [[Paul_movelist#Paul-qcf|CS]] from 2f with f * Transition to r9 [[Paul_movelist#DPD_(Deep_Dive)|DPD]] from 3~19f with df * Transition to r6? hFC with alternate",
+      "anim_t3": {
+        "bank": "paul",
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "df+1,~b": {
+      "name": "TOU df+1,~b",
+      "input": "df+1,~b",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.25,
+      "damage": 0,
+      "damage_raw": 0,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": null,
+      "on_block": "+3",
+      "on_hit": "+9",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t8:paul:Paul-df+1~b",
+      "input_slots": [
+        "df+1,~b"
+      ],
+      "move_class": "special",
+      "t8_source": "paul",
+      "t8_id": "Paul-df+1~b",
+      "t8_damage": "",
+      "t8_input": "df+1,~b",
+      "merge_source": "t8:Paul-df+1~b",
+      "set": "FIGHT",
+      "note": "startup absent in T8 source; Sidestep u can be buffered from 16f * SWA attacks can be buffered from 24f * Transition to cs1~ r9 -1 -12 [[Paul_movelist#DPD_(Deep Dive)|DPD]] from 32f with df",
+      "anim_t3": {
+        "bank": "paul",
+        "row": 47,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "CD.df": {
+      "name": "Deep Dive",
+      "input": "CD.df",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.15,
+      "damage": 0,
+      "damage_raw": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": null,
+      "on_block": null,
+      "on_hit": null,
+      "on_ch": null,
+      "crush": "cs1~30",
+      "anim_ref": "t8:paul:Paul-DPD",
+      "input_slots": [
+        "CD.df"
+      ],
+      "move_class": "special",
+      "t8_source": "paul",
+      "t8_id": "Paul-DPD",
+      "t8_damage": "",
+      "t8_input": "CD.df",
+      "merge_source": "t8:Paul-DPD",
+      "set": "FIGHT",
+      "note": "startup absent in T8 source; Buffer window 2~9f (3~9f from SWA) * Sidestep can be buffered with u * DPD attacks can be buffered * While standing attacks can be buffered * Cancel to r1 block from 10f with b",
+      "anim_t3": {
+        "bank": "paul",
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "b+2,H.1*": {
+      "name": "Crushing Wind (Hold)",
+      "input": "b+2,H.1*",
+      "startup": 1.0,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 19,
+      "damage_raw": 35,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "hit_level": "m",
+      "on_block": "+12",
+      "on_hit": "+56a",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t8:paul:Paul-H.b+2,1*",
+      "input_slots": [
+        "b+2,H.1*"
+      ],
+      "move_class": "string",
+      "t8_source": "paul",
+      "t8_id": "Paul-H.b+2,1*",
+      "t8_damage": "35",
+      "t8_input": "b+2,H.1*",
+      "merge_source": "t8:Paul-H.b+2,1*",
+      "set": "FIGHT",
+      "note": "Balcony Break * Guard Break * Consumes Heat * Chip damage (13) * Charge begins on frame 18 * Requires 42f charge * Interrupt with i29 WS from 1st block * Interrupt with i20 WS from 1st hit * Whiffs vs SSR, SW from 1st bl",
+      "anim_t3": {
+        "bank": "paul",
+        "row": 43,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "d+1,H.2": {
+      "name": "Phoenix Smasher",
+      "input": "d+1,H.2",
+      "startup": 0.483,
+      "active": 0.017,
+      "recovery": 0.617,
+      "damage": 17,
+      "damage_raw": 32,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "hit_level": "m",
+      "on_block": "-13",
+      "on_hit": "+29d (-7) FDFA",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t8:paul:Paul-H.d+1,2",
+      "input_slots": [
+        "d+1,H.2"
+      ],
+      "move_class": "string",
+      "t8_source": "paul",
+      "t8_id": "Paul-H.d+1,2",
+      "t8_damage": "32",
+      "t8_input": "d+1,H.2",
+      "merge_source": "t8:Paul-H.d+1,2",
+      "set": "FIGHT",
+      "note": "Balcony Break * Reversal Break * Consumes Heat * Move can be delayed 14f (i43) * Charge begins on frame 16 * Requires 0~26f charge * Delayed startup from 1~26f charge * Combo from 1st CH with 0~6f charge * Interrupt with",
+      "anim_t3": {
+        "bank": "paul",
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "d+1,H.2*": {
+      "name": "Phoenix Smasher (Hold)",
+      "input": "d+1,H.2*",
+      "startup": 0.717,
+      "active": 0.017,
+      "recovery": 0.833,
+      "damage": 24,
+      "damage_raw": 45,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "hit_level": "m",
+      "on_block": "+12",
+      "on_hit": "+30d (-6) FDFA",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t8:paul:Paul-H.d+1,2*",
+      "input_slots": [
+        "d+1,H.2*"
+      ],
+      "move_class": "string",
+      "t8_source": "paul",
+      "t8_id": "Paul-H.d+1,2*",
+      "t8_damage": "45",
+      "t8_input": "d+1,H.2*",
+      "merge_source": "t8:Paul-H.d+1,2*",
+      "set": "FIGHT",
+      "note": "Balcony Break * Guard Break * Reversal Break * Consumes Heat * Chip damage (13) * Charge begins on frame 16 * Requires 27f charge * Interrupt with i24 from 1st block * Interrupt with i13 from 1st hit * Interrupt with i9 ",
+      "anim_t3": {
+        "bank": "paul",
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "df+1+3,H.qcf+2": {
+      "name": "Phoenix Smasher",
+      "input": "df+1+3,H.qcf+2",
+      "startup": 0.217,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 11,
+      "damage_raw": 21,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 8,
+      "hit_level": "m",
+      "on_block": null,
+      "on_hit": "+16d (-20) FDFA",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t8:paul:Paul-H.df+1+3,qcf+2",
+      "input_slots": [
+        "df+1+3,H.qcf+2"
+      ],
+      "move_class": "string",
+      "t8_source": "paul",
+      "t8_id": "Paul-H.df+1+3,qcf+2",
+      "t8_damage": "21",
+      "t8_input": "df+1+3,H.qcf+2",
+      "merge_source": "t8:Paul-H.df+1+3,qcf+2",
+      "set": "FIGHT",
+      "note": "Balcony Break * Consumes Heat * Strict qcf input required (d,F does not work) * Perfect input window 55-56f",
+      "anim_t3": {
+        "bank": "paul",
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "df+1+3,:H.qcf+2": {
+      "name": "Phoenix Smasher (Perfect Input)",
+      "input": "df+1+3,:H.qcf+2",
+      "startup": 0.217,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 14,
+      "damage_raw": 26,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "hit_level": "m",
+      "on_block": null,
+      "on_hit": "+16d (-20) FDFA",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t8:paul:Paul-H.df+1+3:qcf+2",
+      "input_slots": [
+        "df+1+3,:H.qcf+2"
+      ],
+      "move_class": "string",
+      "t8_source": "paul",
+      "t8_id": "Paul-H.df+1+3:qcf+2",
+      "t8_damage": "26",
+      "t8_input": "df+1+3,:H.qcf+2",
+      "merge_source": "t8:Paul-H.df+1+3:qcf+2",
+      "set": "FIGHT",
+      "note": "Balcony Break * Consumes Heat * Strict qcf input required (d,F does not work) * Perfect input window 55-56f * Perfect input increases damage, wall carry",
+      "anim_t3": {
+        "bank": "paul",
+        "row": 92,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "LeftThrow": {
+      "name": "Dragon Screw",
+      "input": "LeftThrow",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 24,
+      "damage_raw": 45,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "hit_level": "t",
+      "on_block": "-3",
+      "on_hit": "+1d FUFA",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t8:paul:Paul-Left Throw",
+      "input_slots": [
+        "LeftThrow"
+      ],
+      "move_class": "throw",
+      "t8_source": "paul",
+      "t8_id": "Paul-Left Throw",
+      "t8_damage": "45",
+      "t8_input": "LeftThrow",
+      "merge_source": "t8:Paul-Left Throw",
+      "set": "FIGHT",
+      "note": "Throw break 1",
+      "throw": true,
+      "isGrab": true,
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "paul",
+        "row": 130,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "d,df,f": {
+      "name": "Cormorant Step",
+      "input": "d,df,f",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 0,
+      "damage_raw": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": null,
+      "on_block": null,
+      "on_hit": null,
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t8:paul:Paul-qcf",
+      "input_slots": [
+        "d,df,f"
+      ],
+      "move_class": "special",
+      "t8_source": "paul",
+      "t8_id": "Paul-qcf",
+      "t8_damage": "",
+      "t8_input": "d,df,f",
+      "merge_source": "t8:Paul-qcf",
+      "set": "FIGHT",
+      "note": "startup absent in T8 source; Cannot be buffered * t35 from 1+2~f * Exits crouching state on frame 1 * 1.63 movement over 25f (includes CD) * 1.98 movement over 35f from 1+2 cancel * Transition to r9 [[Paul_movelist#DPD_(Deep Dive)|DPD]] from 2f with",
+      "anim_t3": {
+        "bank": "paul",
+        "row": 47,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "RightThrow": {
+      "name": "Fall Away",
+      "input": "RightThrow",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 22,
+      "damage_raw": 40,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "hit_level": "t",
+      "on_block": "-3",
+      "on_hit": "-2d FUFA",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t8:paul:Paul-Right Throw",
+      "input_slots": [
+        "RightThrow"
+      ],
+      "move_class": "throw",
+      "t8_source": "paul",
+      "t8_id": "Paul-Right Throw",
+      "t8_damage": "40",
+      "t8_input": "RightThrow",
+      "merge_source": "t8:Paul-Right Throw",
+      "set": "FIGHT",
+      "note": "Throw break 2 * Side switch",
+      "throw": true,
+      "isGrab": true,
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "paul",
+        "row": 130,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "HFC.1+2,1+2,1+2": {
+      "name": "Arm Breaker",
+      "input": "HFC.1+2,1+2,1+2",
+      "startup": 0.433,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 14,
+      "damage_raw": 25,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 10,
+      "hit_level": "t",
+      "on_block": "-9",
+      "on_hit": "+1d",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t8:paul:Paul-Takedown.1+2,1+2",
+      "input_slots": [
+        "HFC.1+2,1+2,1+2"
+      ],
+      "move_class": "throw",
+      "t8_source": "paul",
+      "t8_id": "Paul-Takedown.1+2,1+2",
+      "t8_damage": "25",
+      "t8_input": "HFC.1+2,1+2,1+2",
+      "merge_source": "t8:Paul-Takedown.1+2,1+2",
+      "set": "FIGHT",
+      "note": "Throw break 1+2",
+      "throw": true,
+      "isGrab": true,
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "paul",
+        "row": 130,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "HFC.1+2,2,1,2,1": {
+      "name": "Ultimate Punch",
+      "input": "HFC.1+2,2,1,2,1",
+      "startup": 0.433,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 16,
+      "damage_raw": 30,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 12,
+      "hit_level": "t",
+      "on_block": null,
+      "on_hit": "+0d",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t8:paul:Paul-Takedown.1+2,2,1,2,1",
+      "input_slots": [
+        "HFC.1+2,2,1,2,1"
+      ],
+      "move_class": "throw",
+      "t8_source": "paul",
+      "t8_id": "Paul-Takedown.1+2,2,1,2,1",
+      "t8_damage": "30",
+      "t8_input": "HFC.1+2,2,1,2,1",
+      "merge_source": "t8:Paul-Takedown.1+2,2,1,2,1",
+      "set": "FIGHT",
+      "note": "Throw break 1 or 2 * Alternate input 1,2,1,2",
+      "throw": true,
+      "isGrab": true,
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "paul",
+        "row": 130,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "HFC.1+2,2,d+1,1,1+2": {
+      "name": "Ultimate Punishment",
+      "input": "HFC.1+2,2,d+1,1,1+2",
+      "startup": 0.433,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 27,
+      "damage_raw": 50,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "hit_level": "t",
+      "on_block": null,
+      "on_hit": "+0d FDFA",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t8:paul:Paul-Takedown.1+2,2,d+1,1,1+2",
+      "input_slots": [
+        "HFC.1+2,2,d+1,1,1+2"
+      ],
+      "move_class": "throw",
+      "t8_source": "paul",
+      "t8_id": "Paul-Takedown.1+2,2,d+1,1,1+2",
+      "t8_damage": "50",
+      "t8_input": "HFC.1+2,2,d+1,1,1+2",
+      "merge_source": "t8:Paul-Takedown.1+2,2,d+1,1,1+2",
+      "set": "FIGHT",
+      "note": "Throw break 1 * Transition to Arm Breaker with 1+2 after third hit",
+      "throw": true,
+      "isGrab": true,
+      "unblockable": true,
+      "anim_t3": {
+        "bank": "paul",
+        "row": 130,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "WS.1,2,~b": {
+      "name": "TOU WS.1,2,~b",
+      "input": "WS.1,2,~b",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.317,
+      "damage": 0,
+      "damage_raw": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": null,
+      "on_block": "+1",
+      "on_hit": "+14g",
+      "on_ch": "+15",
+      "crush": null,
+      "anim_ref": "t8:paul:Paul-ws1,2~b",
+      "input_slots": [
+        "WS.1,2,~b"
+      ],
+      "move_class": "special",
+      "t8_source": "paul",
+      "t8_id": "Paul-ws1,2~b",
+      "t8_damage": "",
+      "t8_input": "WS.1,2,~b",
+      "merge_source": "t8:Paul-ws1,2~b",
+      "set": "FIGHT",
+      "note": "startup absent in T8 source; Sidestep u can be buffered from 44f * SWA attacks can be buffered from 51f * Transition to cs1~ r9 -10 +4 +5 [[Paul_movelist#DPD_(Deep Dive)|DPD]] from 60f with df",
+      "anim_t3": {
+        "bank": "paul",
+        "row": 185,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "FC.D*(60f),u+3+4": {
+      "name": "Incomplete Somersault",
+      "input": "FC.D*(60f),u+3+4",
+      "startup": 0.217,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 29,
+      "damage_raw": 48,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "hit_level": "mid",
+      "on_block": "-49",
+      "on_hit": "KND",
+      "on_ch": "KND",
+      "crush": null,
+      "anim_ref": "t7:paul:paul_122",
+      "input_slots": [
+        "FC.D*(60f),u+3+4"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_122",
+      "t7_command": "FC D* (60f), u+3+4",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "48",
+      "t7_startup_frames": "13",
+      "t7_on_block": "-49",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:paul_122",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "WR.f,f,F(FullScreen)": {
+      "name": "TOU WR.f,f,F(FullScreen)",
+      "input": "WR.f,f,F(FullScreen)",
+      "startup": 0.133,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 18,
+      "damage_raw": 30,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "hit_level": "mid",
+      "on_block": "+13",
+      "on_hit": "KND",
+      "on_ch": "KND",
+      "crush": null,
+      "anim_ref": "t7:paul:paul_127",
+      "input_slots": [
+        "WR.f,f,F(FullScreen)"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_127",
+      "t7_command": "WR f, f, F (Full Screen)",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "30 [36]",
+      "t7_startup_frames": "8",
+      "t7_on_block": "+13",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:paul_127",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "WR.f,f,F(FullScreen)(OnGroundedOpponent)": {
+      "name": "TOU WR.f,f,F(FullScreen)(OnGroundedOpponent)",
+      "input": "WR.f,f,F(FullScreen)(OnGroundedOpponent)",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 5,
+      "damage_raw": 8,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "low",
+      "on_block": null,
+      "on_hit": "KND",
+      "on_ch": "KND",
+      "crush": null,
+      "anim_ref": "t7:paul:paul_128",
+      "input_slots": [
+        "WR.f,f,F(FullScreen)(OnGroundedOpponent)"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_128",
+      "t7_command": "WR f, f, F (Full Screen) (On Grounded Opponent)",
+      "t7_hit_level": "low",
+      "t7_damage_raw": "8 [9]",
+      "t7_startup_frames": "12",
+      "t7_on_block": "-",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:paul_128",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "WR.4": {
+      "name": "TOU WR.4",
+      "input": "WR.4",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 10,
+      "damage_raw": 17,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 8,
+      "hit_level": "low",
+      "on_block": "-40",
+      "on_hit": "KND",
+      "on_ch": "KND",
+      "crush": "high",
+      "anim_ref": "t7:paul:paul_129",
+      "input_slots": [
+        "WR.4"
+      ],
+      "move_class": "strike",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_129",
+      "t7_command": "WR 4",
+      "t7_hit_level": "low",
+      "t7_damage_raw": "17 [20]",
+      "t7_startup_frames": "14",
+      "t7_on_block": "-40",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:paul_129",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "WR.1+2": {
+      "name": "TOU WR.1+2",
+      "input": "WR.1+2",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 14,
+      "damage_raw": 24,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "hit_level": "mid",
+      "on_block": "0",
+      "on_hit": "KND",
+      "on_ch": "KND",
+      "crush": "high",
+      "anim_ref": "t7:paul:paul_130",
+      "input_slots": [
+        "WR.1+2"
+      ],
+      "move_class": "strike",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_130",
+      "t7_command": "WR 1+2",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "24 [28]",
+      "t7_startup_frames": "18",
+      "t7_on_block": "0",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:paul_130",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "FaceUp,FeetTowards+3or(AfterRollingForward)": {
+      "name": "TOU FaceUp,FeetTowards+3or(AfterRollingForward)",
+      "input": "FaceUp,FeetTowards+3or(AfterRollingForward)",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 6,
+      "damage_raw": 10,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "low",
+      "on_block": "-12",
+      "on_hit": "+5",
+      "on_ch": "STUN",
+      "crush": "high",
+      "anim_ref": "t7:paul:paul_141",
+      "input_slots": [
+        "FaceUp,FeetTowards+3or(AfterRollingForward)"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_141",
+      "t7_command": "Face Up, Feet Towards+3 or (After Rolling Forward)",
+      "t7_hit_level": "low",
+      "t7_damage_raw": "10 [12]",
+      "t7_startup_frames": "22",
+      "t7_on_block": "-12",
+      "t7_on_hit": "+5",
+      "t7_on_ch": "STUN",
+      "merge_source": "t7:paul_141",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "FaceUp,FeetTowards+4or(AfterRollingForward)": {
+      "name": "TOU FaceUp,FeetTowards+4or(AfterRollingForward)",
+      "input": "FaceUp,FeetTowards+4or(AfterRollingForward)",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 11,
+      "damage_raw": 18,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 8,
+      "hit_level": "mid",
+      "on_block": "-12",
+      "on_hit": "+5",
+      "on_ch": "KND",
+      "crush": null,
+      "anim_ref": "t7:paul:paul_142",
+      "input_slots": [
+        "FaceUp,FeetTowards+4or(AfterRollingForward)"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_142",
+      "t7_command": "Face Up, Feet Towards+4 or (After Rolling Forward)",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "18 [21]",
+      "t7_startup_frames": "22",
+      "t7_on_block": "-12",
+      "t7_on_hit": "+5",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:paul_142",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "FaceUp,FeetTowards,d+3(or4)": {
+      "name": "TOU FaceUp,FeetTowards,d+3(or4)",
+      "input": "FaceUp,FeetTowards,d+3(or4)",
+      "startup": 0.217,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 3,
+      "damage_raw": 5,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "low",
+      "on_block": "-18",
+      "on_hit": "-3",
+      "on_ch": "-3",
+      "crush": "high",
+      "anim_ref": "t7:paul:paul_143",
+      "input_slots": [
+        "FaceUp,FeetTowards,d+3(or4)"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_143",
+      "t7_command": "Face Up, Feet Towards, d+3 (or 4)",
+      "t7_hit_level": "low",
+      "t7_damage_raw": "5 [6]",
+      "t7_startup_frames": "13",
+      "t7_on_block": "-18",
+      "t7_on_hit": "-3",
+      "t7_on_ch": "-3",
+      "merge_source": "t7:paul_143",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "FaceUp,FeetTowards+3+4": {
+      "name": "TOU FaceUp,FeetTowards+3+4",
+      "input": "FaceUp,FeetTowards+3+4",
+      "startup": 0.8,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 12,
+      "damage_raw": 20,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 9,
+      "hit_level": "mid",
+      "on_block": "+10",
+      "on_hit": "KND",
+      "on_ch": "KND",
+      "crush": null,
+      "anim_ref": "t7:paul:paul_144",
+      "input_slots": [
+        "FaceUp,FeetTowards+3+4"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_144",
+      "t7_command": "Face Up, Feet Towards+3+4",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "20 [24]",
+      "t7_startup_frames": "48",
+      "t7_on_block": "+10",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:paul_144",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "FaceUp,FeetTowards,RollForward+1+2": {
+      "name": "TOU FaceUp,FeetTowards,RollForward+1+2",
+      "input": "FaceUp,FeetTowards,RollForward+1+2",
+      "startup": 0.317,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 9,
+      "damage_raw": 15,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 7,
+      "hit_level": "mid",
+      "on_block": "+2",
+      "on_hit": "KND",
+      "on_ch": "KND",
+      "crush": "high",
+      "anim_ref": "t7:paul:paul_145",
+      "input_slots": [
+        "FaceUp,FeetTowards,RollForward+1+2"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_145",
+      "t7_command": "Face Up, Feet Towards, Roll Forward+1+2",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "15 [18]",
+      "t7_startup_frames": "19",
+      "t7_on_block": "+2",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:paul_145",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "FaceDown,FeetAway+3": {
+      "name": "TOU FaceDown,FeetAway+3",
+      "input": "FaceDown,FeetAway+3",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 6,
+      "damage_raw": 10,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "low",
+      "on_block": "-20",
+      "on_hit": "+1",
+      "on_ch": "STUN",
+      "crush": "high",
+      "anim_ref": "t7:paul:paul_146",
+      "input_slots": [
+        "FaceDown,FeetAway+3"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_146",
+      "t7_command": "Face Down, Feet Away+3",
+      "t7_hit_level": "low",
+      "t7_damage_raw": "10 [12]",
+      "t7_startup_frames": "21",
+      "t7_on_block": "-20",
+      "t7_on_hit": "+1",
+      "t7_on_ch": "STUN",
+      "merge_source": "t7:paul_146",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "FaceDown,FeetAway+4(close)": {
+      "name": "TOU FaceDown,FeetAway+4(close)",
+      "input": "FaceDown,FeetAway+4(close)",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 9,
+      "damage_raw": 15,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 7,
+      "hit_level": "mid",
+      "on_block": "-19",
+      "on_hit": "KND",
+      "on_ch": "KND",
+      "crush": null,
+      "anim_ref": "t7:paul:paul_147",
+      "input_slots": [
+        "FaceDown,FeetAway+4(close)"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_147",
+      "t7_command": "Face Down, Feet Away+4 (close)",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "15 [18]",
+      "t7_startup_frames": "21",
+      "t7_on_block": "-19",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:paul_147",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "FaceDown,FeetAway+4(far)": {
+      "name": "TOU FaceDown,FeetAway+4(far)",
+      "input": "FaceDown,FeetAway+4(far)",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 6,
+      "damage_raw": 10,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "mid",
+      "on_block": "-19",
+      "on_hit": "-10",
+      "on_ch": "KND",
+      "crush": null,
+      "anim_ref": "t7:paul:paul_148",
+      "input_slots": [
+        "FaceDown,FeetAway+4(far)"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_148",
+      "t7_command": "Face Down, Feet Away+4 (far)",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "10 [12]",
+      "t7_startup_frames": "21",
+      "t7_on_block": "-19",
+      "t7_on_hit": "-10",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:paul_148",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "(DuringRage)1+2,B": {
+      "name": "TOU (DuringRage)1+2,B",
+      "input": "(DuringRage)1+2,B",
+      "startup": 0.333,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 12,
+      "damage_raw": 20,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 9,
+      "hit_level": "mid",
+      "on_block": "-22",
+      "on_hit": "GROUND BOUNCE",
+      "on_ch": "GROUND BOUNCE",
+      "crush": null,
+      "anim_ref": "t7:paul:paul_155",
+      "input_slots": [
+        "(DuringRage)1+2,B"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_155",
+      "t7_command": "(During Rage) 1+2, B",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "20 [24]",
+      "t7_startup_frames": "20",
+      "t7_on_block": "-22",
+      "t7_on_hit": "GROUND BOUNCE",
+      "t7_on_ch": "GROUND BOUNCE",
+      "merge_source": "t7:paul_155",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "(DuringRage)qcf+1+2(close)": {
+      "name": "Rage Drive",
+      "input": "(DuringRage)qcf+1+2(close)",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 36,
+      "damage_raw": 60,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "hit_level": "mid",
+      "on_block": "+3",
+      "on_hit": "KND",
+      "on_ch": "KND",
+      "crush": null,
+      "anim_ref": "t7:paul:paul_156",
+      "input_slots": [
+        "(DuringRage)qcf+1+2(close)"
+      ],
+      "move_class": "strike",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_156",
+      "t7_command": "(During Rage) qcf+1+2 (close)",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "60 [72]",
+      "t7_startup_frames": "12",
+      "t7_on_block": "+3",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:paul_156",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "(DuringRage)qcf+1+2(far)": {
+      "name": "TOU (DuringRage)qcf+1+2(far)",
+      "input": "(DuringRage)qcf+1+2(far)",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 24,
+      "damage_raw": 40,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "hit_level": "mid",
+      "on_block": "+3",
+      "on_hit": "KND",
+      "on_ch": "KND",
+      "crush": null,
+      "anim_ref": "t7:paul:paul_157",
+      "input_slots": [
+        "(DuringRage)qcf+1+2(far)"
+      ],
+      "move_class": "strike",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_157",
+      "t7_command": "(During Rage) qcf+1+2 (far)",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "40 [48]",
+      "t7_startup_frames": "12",
+      "t7_on_block": "+3",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:paul_157",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "b,B+1+2(u,utocancel)": {
+      "name": "Burning Fist",
+      "input": "b,B+1+2(u,utocancel)",
+      "startup": 1.05,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 48,
+      "damage_raw": 80,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "hit_level": "mid",
+      "on_block": "!",
+      "on_hit": "KND",
+      "on_ch": "KND",
+      "crush": null,
+      "anim_ref": "t7:paul:paul_158",
+      "input_slots": [
+        "b,B+1+2(u,utocancel)"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_158",
+      "t7_command": "b, B+1+2 (u, u to cancel)",
+      "t7_hit_level": "mid",
+      "t7_damage_raw": "80 [96]",
+      "t7_startup_frames": "63",
+      "t7_on_block": "!",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:paul_158",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "67",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "WR.f,f,F(MidScreen)": {
+      "name": "TOU WR.f,f,F(MidScreen)",
+      "input": "WR.f,f,F(MidScreen)",
+      "startup": 0.267,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 3,
+      "damage_raw": 5,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "mid throw",
+      "on_block": "-5 (BT)",
+      "on_hit": "KND",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t7:paul:paul_175",
+      "input_slots": [
+        "WR.f,f,F(MidScreen)"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_175",
+      "t7_command": "WR f, f, F (Mid Screen)",
+      "t7_hit_level": "mid throw",
+      "t7_damage_raw": "5",
+      "t7_startup_frames": "16",
+      "t7_on_block": "-5 (BT)",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "-",
+      "merge_source": "t7:paul_175",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "(DuringTackle)1/2,1/2": {
+      "name": "TOU (DuringTackle)1/2,1/2",
+      "input": "(DuringTackle)1/2,1/2",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 6,
+      "damage_raw": 10,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "-",
+      "on_block": null,
+      "on_hit": "KND",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t7:paul:paul_177",
+      "input_slots": [
+        "(DuringTackle)1/2,1/2"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_177",
+      "t7_command": "(During Tackle) 1/2, 1/2",
+      "t7_hit_level": "-",
+      "t7_damage_raw": "5, 5",
+      "t7_startup_frames": "-",
+      "t7_on_block": "-",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "-",
+      "merge_source": "t7:paul_177",
+      "set": "FIGHT",
+      "multi_hit": {
+        "hits": [
+          5,
+          5
+        ],
+        "total": 10
+      },
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "note": "startup absent in T7 source",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "(DuringTackle)1/2,1/2,1/2": {
+      "name": "TOU (DuringTackle)1/2,1/2,1/2",
+      "input": "(DuringTackle)1/2,1/2,1/2",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 9,
+      "damage_raw": 15,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 7,
+      "hit_level": "-",
+      "on_block": null,
+      "on_hit": "KND",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t7:paul:paul_178",
+      "input_slots": [
+        "(DuringTackle)1/2,1/2,1/2"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_178",
+      "t7_command": "(During Tackle) 1/2, 1/2, 1/2",
+      "t7_hit_level": "-",
+      "t7_damage_raw": "5, 5, 5",
+      "t7_startup_frames": "-",
+      "t7_on_block": "-",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "-",
+      "merge_source": "t7:paul_178",
+      "set": "FIGHT",
+      "multi_hit": {
+        "hits": [
+          5,
+          5,
+          5
+        ],
+        "total": 15
+      },
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "note": "startup absent in T7 source",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "(DuringTackle)1/2,1/2,1/2,1/2": {
+      "name": "Ultimate Punch",
+      "input": "(DuringTackle)1/2,1/2,1/2,1/2",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 18,
+      "damage_raw": 30,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "hit_level": "-",
+      "on_block": null,
+      "on_hit": "KND",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t7:paul:paul_179",
+      "input_slots": [
+        "(DuringTackle)1/2,1/2,1/2,1/2"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_179",
+      "t7_command": "(During Tackle) 1/2, 1/2, 1/2, 1/2",
+      "t7_hit_level": "-",
+      "t7_damage_raw": "5, 5, 5, 15",
+      "t7_startup_frames": "-",
+      "t7_on_block": "-",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "-",
+      "merge_source": "t7:paul_179",
+      "set": "FIGHT",
+      "multi_hit": {
+        "hits": [
+          5,
+          5,
+          5,
+          15
+        ],
+        "total": 30
+      },
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "note": "startup absent in T7 source",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "(DuringTackle)2,1,2,1+2": {
+      "name": "Ultimate Punch to Arm Breaker",
+      "input": "(DuringTackle)2,1,2,1+2",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 24,
+      "damage_raw": 40,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "hit_level": "-",
+      "on_block": null,
+      "on_hit": "KND",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t7:paul:paul_180",
+      "input_slots": [
+        "(DuringTackle)2,1,2,1+2"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_180",
+      "t7_command": "(During Tackle) 2, 1, 2, 1+2",
+      "t7_hit_level": "-",
+      "t7_damage_raw": "5, 5, 5, 25",
+      "t7_startup_frames": "-",
+      "t7_on_block": "-",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "-",
+      "merge_source": "t7:paul_180",
+      "set": "FIGHT",
+      "multi_hit": {
+        "hits": [
+          5,
+          5,
+          5,
+          25
+        ],
+        "total": 40
+      },
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "note": "startup absent in T7 source",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "(DuringTackle)2,d+1,1,n,4,1,1+2": {
+      "name": "Ultimate Punishment",
+      "input": "(DuringTackle)2,d+1,1,n,4,1,1+2",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 34,
+      "damage_raw": 56,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "hit_level": "-",
+      "on_block": null,
+      "on_hit": "KND",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t7:paul:paul_181",
+      "input_slots": [
+        "(DuringTackle)2,d+1,1,n,4,1,1+2"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_181",
+      "t7_command": "(During Tackle) 2, d+1, 1, n, 4, 1, 1+2",
+      "t7_hit_level": "-",
+      "t7_damage_raw": "5, 8, 8, 35",
+      "t7_startup_frames": "-",
+      "t7_on_block": "-",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "-",
+      "merge_source": "t7:paul_181",
+      "set": "FIGHT",
+      "multi_hit": {
+        "hits": [
+          5,
+          8,
+          8,
+          35
+        ],
+        "total": 56
+      },
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "note": "startup absent in T7 source",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "D(Holdfor160f)": {
+      "name": "TOU D(Holdfor160f)",
+      "input": "D(Holdfor160f)",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 0,
+      "damage_raw": 0,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "hit_level": "-",
+      "on_block": null,
+      "on_hit": null,
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t7:paul:paul_183",
+      "input_slots": [
+        "D(Holdfor160f)"
+      ],
+      "move_class": "special",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_183",
+      "t7_command": "D (Hold for 160f)",
+      "t7_hit_level": "-",
+      "t7_damage_raw": "-",
+      "t7_startup_frames": "-",
+      "t7_on_block": "-",
+      "t7_on_hit": "-",
+      "t7_on_ch": "-",
+      "merge_source": "t7:paul_183",
+      "set": "FIGHT",
+      "note": "startup absent in T7 source",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 73,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "Timewithenemyattack...b+1+3orb+2+4": {
+      "name": "Attack Reversal",
+      "input": "Timewithenemyattack...b+1+3orb+2+4",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 15,
+      "damage_raw": 25,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "hit_level": "-",
+      "on_block": null,
+      "on_hit": "KND",
+      "on_ch": null,
+      "crush": null,
+      "anim_ref": "t7:paul:paul_185",
+      "input_slots": [
+        "Timewithenemyattack...b+1+3orb+2+4"
+      ],
+      "move_class": "strike",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "paul_185",
+      "t7_command": "Time with enemy attack... b+1+3 or b+2+4",
+      "t7_hit_level": "-",
+      "t7_damage_raw": "25",
+      "t7_startup_frames": "-",
+      "t7_on_block": "-",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "-",
+      "merge_source": "t7:paul_185",
+      "set": "FIGHT",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "note": "startup absent in T7 source",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     }
   },
   "restored_from_sweep_338": {
@@ -20586,7 +22267,62 @@
     "exclude_proxy": false,
     "moves_before": 640,
     "moves_after": 640,
-    "added": {},
+    "added": {
+      "paul_pull_20261023": {
+        "date": "2026-10-23",
+        "by": "batch6 pull worker (T8 wavu + T7 t7chicken frame-data diff; T7-only for dio/rave)",
+        "moves_before": 640,
+        "moves_after": 681,
+        "added": [
+          "3,2,~b",
+          "d,df",
+          "df+1,~b",
+          "CD.df",
+          "b+2,H.1*",
+          "d+1,H.2",
+          "d+1,H.2*",
+          "df+1+3,H.qcf+2",
+          "df+1+3,:H.qcf+2",
+          "LeftThrow",
+          "d,df,f",
+          "RightThrow",
+          "HFC.1+2,1+2,1+2",
+          "HFC.1+2,2,1,2,1",
+          "HFC.1+2,2,d+1,1,1+2",
+          "WS.1,2,~b",
+          "FC.D*(60f),u+3+4",
+          "WR.f,f,F(FullScreen)",
+          "WR.f,f,F(FullScreen)(OnGroundedOpponent)",
+          "WR.4",
+          "WR.1+2",
+          "FaceUp,FeetTowards+3or(AfterRollingForward)",
+          "FaceUp,FeetTowards+4or(AfterRollingForward)",
+          "FaceUp,FeetTowards,d+3(or4)",
+          "FaceUp,FeetTowards+3+4",
+          "FaceUp,FeetTowards,RollForward+1+2",
+          "FaceDown,FeetAway+3",
+          "FaceDown,FeetAway+4(close)",
+          "FaceDown,FeetAway+4(far)",
+          "(DuringRage)1+2,B",
+          "(DuringRage)qcf+1+2(close)",
+          "(DuringRage)qcf+1+2(far)",
+          "b,B+1+2(u,utocancel)",
+          "WR.f,f,F(MidScreen)",
+          "(DuringTackle)1/2,1/2",
+          "(DuringTackle)1/2,1/2,1/2",
+          "(DuringTackle)1/2,1/2,1/2,1/2",
+          "(DuringTackle)2,1,2,1+2",
+          "(DuringTackle)2,d+1,1,n,4,1,1+2",
+          "D(Holdfor160f)",
+          "Timewithenemyattack...b+1+3orb+2+4"
+        ],
+        "sources": [
+          "docs/t7t8-reference/frame-data-t7/paul.json",
+          "docs/t7t8-reference/frame-data-t8-full/paul.json"
+        ],
+        "show_lock": "2026-10-23: all 41 moves tagged set=FIGHT per SHOW-ANIMATION LOCK (owner standing law); file-level anim_set_lock added"
+      }
+    },
     "slots": 284,
     "slots_by_priority": {
       "signature": 2,
@@ -21220,5 +22956,68 @@
     "f+3+4": "CS",
     "qcf": "DPD"
   },
-  "anim_bank": "paul"
+  "anim_bank": "paul",
+  "anim_set_lock": {
+    "TOU": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances \u2014 the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations \u2014 intro/win slots and cutscenes ONLY; tracked in docs/anim/PAUL-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
+  },
+  "canon_moves": [
+    {
+      "name": "Exists to Fight",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:tou:sig:exists-to-fight",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 19,
+      "startup_frames": 18,
+      "canon": true,
+      "canon_owner": "TOU",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "No Motive",
+      "input": "1+4",
+      "display_input": "LP1+RK4",
+      "input_original": "`1+4`",
+      "anim_ref": "wh:tou:sig:no-motive",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "armR",
+      "damage": 21,
+      "startup_frames": 18,
+      "canon": true,
+      "canon_owner": "TOU",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "system_note": "System note: LP1+RK4 is also Reihou, but ONLY while the foe is in RAGE (otherwise the moveset LP1+RK4 plays). No in-game conflict outside foe-RAGE.",
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
+  }
 }
