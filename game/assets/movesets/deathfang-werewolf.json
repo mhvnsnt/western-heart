@@ -1,2663 +1,3461 @@
 {
- "fighter": "deathfang-werewolf",
- "display": "DEATHFANG — CHAINED PRISONER WEREWOLF",
- "tekken_base": "Iori Yagami (KOF)",
- "t3_source": "heihachi",
- "proxy": true,
- "proxy_note": "DEATHFANG (owner 2026-10-19): proprietary character based on Iori Yagami — keeps Iori's moves, stance and animations. Reskin: prisoner/slave to his own grief and emotions, chained/shackled, emo, with the Soul Eater 'NO FUTURE' face tattoo. Transforms into a chained prisoner werewolf (attire 2 / transform form; Free the werewolf of Soul Eater folds into that canon, as he did for Iori's own inspirations). Iori (KOF) has no T3 bank — Heihachi proxy (power), same bank as iori.json.",
- "variant": "werewolf transform form (owner Tripo b4094ecf)",
- "base_fighter": "iori",
- "moves": {
-  "1": {
-   "name": "DEATHFANG — TSUME — CLAW JAB",
-   "input": "1",
-   "t3_source": "heihachi",
-   "t3_row": 43,
-   "t3_command": "LP",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 11,
-   "t3_damage": 18,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "t3:heihachi:row:43",
-   "input_slots": [
-    "1"
-   ],
-   "move_class": "strike"
-  },
-  "2": {
-   "name": "DEATHFANG — HONO KOBUSHI — FLAME FIST",
-   "input": "2",
-   "t3_source": "heihachi",
-   "t3_row": 48,
-   "t3_command": "RP",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 12,
-   "t3_damage": 20,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "t3:heihachi:row:48",
-   "input_slots": [
-    "2"
-   ],
-   "move_class": "strike"
-  },
-  "3": {
-   "name": "DEATHFANG — LOW FANG — CROUCH HEEL",
-   "input": "3",
-   "t3_source": "heihachi",
-   "t3_row": 54,
-   "t3_command": "LK",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 13,
-   "t3_damage": 22,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "t3:heihachi:row:54",
-   "input_slots": [
-    "3"
-   ],
-   "move_class": "strike"
-  },
-  "4": {
-   "name": "DEATHFANG — SPIN FANG — ROUNDHOUSE",
-   "input": "4",
-   "t3_source": "heihachi",
-   "t3_row": 60,
-   "t3_command": "RK",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 11,
-   "t3_damage": 18,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "t3:heihachi:row:60",
-   "input_slots": [
-    "4"
-   ],
-   "move_class": "strike"
-  },
-  "5": {
-   "name": "DEATHFANG — GESHIKI: GOU FU IN",
-   "input": "f+1",
-   "t3_source": "heihachi",
-   "t3_row": 66,
-   "t3_command": "f+LP",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 14,
-   "t3_damage": 23,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "t3:heihachi:row:66",
-   "input_slots": [
-    "f+1"
-   ],
-   "move_class": "strike"
-  },
-  "6": {
-   "name": "DEATHFANG — TSUKI AGE — RISING CLAW",
-   "input": "f+2",
-   "t3_source": "heihachi",
-   "t3_row": 72,
-   "t3_command": "f+RP",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 12,
-   "t3_damage": 20,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "t3:heihachi:row:72",
-   "input_slots": [
-    "f+2"
-   ],
-   "move_class": "strike"
-  },
-  "7": {
-   "name": "DEATHFANG — SHACKLE SWEEP — CROUCH CLAW",
-   "input": "d+1",
-   "t3_source": "heihachi",
-   "t3_row": 78,
-   "t3_command": "d+LP",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 15,
-   "t3_damage": 25,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "t3:heihachi:row:78",
-   "input_slots": [
-    "d+1"
-   ],
-   "move_class": "strike"
-  },
-  "8": {
-   "name": "DEATHFANG — GRIEF UPPER — CROUCH FIST",
-   "input": "d+2",
-   "t3_source": "heihachi",
-   "t3_row": 84,
-   "t3_command": "d+RP",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 13,
-   "t3_damage": 22,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "t3:heihachi:row:84",
-   "input_slots": [
-    "d+2"
-   ],
-   "move_class": "strike"
-  },
-  "9": {
-   "name": "DEATHFANG — GESHIKI: YUME BIKI",
-   "input": "b+1",
-   "t3_source": "heihachi",
-   "t3_row": 90,
-   "t3_command": "b+LP",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 14,
-   "t3_damage": 23,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "t3:heihachi:row:90",
-   "input_slots": [
-    "b+1"
-   ],
-   "move_class": "strike"
-  },
-  "10": {
-   "name": "DEATHFANG — CHAIN STRIKE",
-   "input": "b+2",
-   "t3_source": "heihachi",
-   "t3_row": 96,
-   "t3_command": "b+RP",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 16,
-   "t3_damage": 27,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "t3:heihachi:row:96",
-   "input_slots": [
-    "b+2"
-   ],
-   "move_class": "strike"
-  },
-  "11": {
-   "name": "MAIDEN MASHER",
-   "input": "qcf+1+2",
-   "t3_source": "heihachi",
-   "t3_row": 0,
-   "t3_command": "qcf+1+2",
-   "startup": 0.3,
-   "active": 0.05,
-   "recovery": 0.8,
-   "damage": 26,
-   "t3_damage": 44,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 3.5,
-   "soulGain": 15,
-   "anim_ref": "wh:deathfang:sig:1",
-   "input_slots": [
-    "qcf+1+2"
-   ],
-   "move_class": "special",
-   "wh_signature": true,
-   "wh_note": "WH signature: DEATHFANG (Iori's) flame combo super."
-  },
-  "12": {
-   "name": "108 SHIKI YAMIBARAI",
-   "input": "qcf+1",
-   "t3_source": "heihachi",
-   "t3_row": 0,
-   "t3_command": "qcf+1",
-   "startup": 0.3,
-   "active": 0.05,
-   "recovery": 0.8,
-   "damage": 16,
-   "t3_damage": 27,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 3.5,
-   "soulGain": 15,
-   "anim_ref": "wh:deathfang:sig:2",
-   "input_slots": [
-    "qcf+1"
-   ],
-   "move_class": "projectile",
-   "wh_signature": true,
-   "wh_note": "WH signature: DEATHFANG (Iori's) purple flame projectile."
-  },
-  "13": {
-   "name": "100 SHIKI: ONIYAKI",
-   "input": "f,d,df+2",
-   "t3_source": "heihachi",
-   "t3_row": 43,
-   "t3_command": "f,d,df+2",
-   "startup": 0.3,
-   "active": 0.05,
-   "recovery": 0.7,
-   "damage": 18,
-   "t3_damage": 31,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 3.5,
-   "soulGain": 12,
-   "anim_ref": "wh:deathfang:sig:13",
-   "input_slots": [
-    "f,d,df+2"
-   ],
-   "move_class": "special",
-   "wh_signature": true,
-   "wh_note": "DEATHFANG (Iori's) leaping flame uppercut — the chains whip up with the rise."
-  },
-  "14": {
-   "name": "212 SHIKI: KOTOTSUKI IN",
-   "input": "hcb+1+2",
-   "t3_source": "heihachi",
-   "t3_row": 43,
-   "t3_command": "hcb+1+2",
-   "startup": 0.3,
-   "active": 0.05,
-   "recovery": 0.7,
-   "damage": 20,
-   "t3_damage": 34,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 3.5,
-   "soulGain": 14,
-   "anim_ref": "wh:deathfang:sig:14",
-   "input_slots": [
-    "hcb+1+2"
-   ],
-   "move_class": "special",
-   "wh_signature": true,
-   "wh_note": "Rushing double-elbow; shackles clang on impact."
-  },
-  "15": {
-   "name": "127 SHIKI: AOI HANA (1)",
-   "input": "qcb+1",
-   "t3_source": "heihachi",
-   "t3_row": 43,
-   "t3_command": "qcb+1",
-   "startup": 0.3,
-   "active": 0.05,
-   "recovery": 0.7,
-   "damage": 12,
-   "t3_damage": 20,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 3.5,
-   "soulGain": 10,
-   "anim_ref": "wh:deathfang:sig:15",
-   "input_slots": [
-    "qcb+1"
-   ],
-   "move_class": "string",
-   "wh_signature": true,
-   "wh_note": "Rekka claw swipe one — grief given claws."
-  },
-  "16": {
-   "name": "127 SHIKI: AOI HANA (2)",
-   "input": "qcb+1,1",
-   "t3_source": "heihachi",
-   "t3_row": 43,
-   "t3_command": "qcb+1,1",
-   "startup": 0.3,
-   "active": 0.05,
-   "recovery": 0.7,
-   "damage": 12,
-   "t3_damage": 20,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 3.5,
-   "soulGain": 10,
-   "anim_ref": "wh:deathfang:sig:16",
-   "input_slots": [
-    "qcb+1,1"
-   ],
-   "move_class": "string",
-   "wh_signature": true,
-   "wh_note": "Rekka claw swipe two."
-  },
-  "17": {
-   "name": "127 SHIKI: AOI HANA (3)",
-   "input": "qcb+1,1,1",
-   "t3_source": "heihachi",
-   "t3_row": 43,
-   "t3_command": "qcb+1,1,1",
-   "startup": 0.3,
-   "active": 0.05,
-   "recovery": 0.7,
-   "damage": 16,
-   "t3_damage": 27,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 3.5,
-   "soulGain": 12,
-   "anim_ref": "wh:deathfang:sig:17",
-   "input_slots": [
-    "qcb+1,1,1"
-   ],
-   "move_class": "string",
-   "wh_signature": true,
-   "wh_note": "Rekka finisher — overhead smash, chain links scatter sparks."
-  },
-  "18": {
-   "name": "115 SHIKI: DOKUGAMI",
-   "input": "f+1,2",
-   "t3_source": "heihachi",
-   "t3_row": 43,
-   "t3_command": "f+1,2",
-   "startup": 0.3,
-   "active": 0.05,
-   "recovery": 0.7,
-   "damage": 14,
-   "t3_damage": 24,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 3.5,
-   "soulGain": 10,
-   "anim_ref": "wh:deathfang:sig:18",
-   "input_slots": [
-    "f+1,2"
-   ],
-   "move_class": "string",
-   "wh_signature": true,
-   "wh_note": "Poison-bite chain starter into flame claw."
-  },
-  "19": {
-   "name": "401 SHIKI: TSUMAGUSHI",
-   "input": "qcb+3",
-   "t3_source": "heihachi",
-   "t3_row": 43,
-   "t3_command": "qcb+3",
-   "startup": 0.3,
-   "active": 0.05,
-   "recovery": 0.7,
-   "damage": 15,
-   "t3_damage": 26,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 3.5,
-   "soulGain": 10,
-   "anim_ref": "wh:deathfang:sig:19",
-   "input_slots": [
-    "qcb+3"
-   ],
-   "move_class": "special",
-   "wh_signature": true,
-   "wh_note": "Spinning heel fang — the ankle chain whips around the kick."
-  },
-  "20": {
-   "name": "KIN 1211 SHIKI: YA OTOME",
-   "input": "qcf,hcb+1+2",
-   "t3_source": "heihachi",
-   "t3_row": 43,
-   "t3_command": "qcf,hcb+1+2",
-   "startup": 0.3,
-   "active": 0.05,
-   "recovery": 0.7,
-   "damage": 30,
-   "t3_damage": 51,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 3.5,
-   "soulGain": 20,
-   "anim_ref": "wh:deathfang:sig:20",
-   "input_slots": [
-    "qcf,hcb+1+2"
-   ],
-   "move_class": "special",
-   "wh_signature": true,
-   "wh_note": "DEATHFANG super: eight grief-torn claw slashes ending in the violet flame burst. The Maiden Masher lineage."
-  },
-  "21": {
-   "name": "SAKE SAKA — CLAW THROW",
-   "input": "1+3",
-   "t3_source": "heihachi",
-   "t3_row": 43,
-   "t3_command": "1+3",
-   "startup": 0.3,
-   "active": 0.05,
-   "recovery": 0.7,
-   "damage": 16,
-   "t3_damage": 27,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 3.5,
-   "soulGain": 10,
-   "anim_ref": "wh:deathfang:sig:21",
-   "input_slots": [
-    "1+3"
-   ],
-   "move_class": "throw",
-   "wh_signature": true,
-   "wh_note": "Forward throw: claws rake, then the shackle slams the opponent down."
-  },
-  "22": {
-   "name": "GRIEF PILEDRIVER — BACK THROW",
-   "input": "2+4",
-   "t3_source": "heihachi",
-   "t3_row": 43,
-   "t3_command": "2+4",
-   "startup": 0.3,
-   "active": 0.05,
-   "recovery": 0.7,
-   "damage": 17,
-   "t3_damage": 29,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 3.5,
-   "soulGain": 10,
-   "anim_ref": "wh:deathfang:sig:22",
-   "input_slots": [
-    "2+4"
-   ],
-   "move_class": "throw",
-   "wh_signature": true,
-   "wh_note": "Backward throw: chained arms lock and drive the opponent into the floor."
-  },
-  "23": {
-   "name": "TRANSFORM: CHAINED PRISONER WEREWOLF",
-   "input": "1+2+3+4",
-   "t3_source": "heihachi",
-   "t3_row": 43,
-   "t3_command": "1+2+3+4",
-   "startup": 0.5,
-   "active": 0.05,
-   "recovery": 0.7,
-   "damage": 0,
-   "t3_damage": 0,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 0,
-   "soulGain": 0,
-   "anim_ref": "wh:deathfang:sig:23",
-   "input_slots": [
-    "1+2+3+4"
-   ],
-   "move_class": "special",
-   "wh_signature": true,
-   "wh_note": "TRANSFORM — DEATHFANG breaks into his chained prisoner werewolf form (Free, Soul Eater, folded into Iori's own inspiration). Uses the werewolf form moveset/attire while transformed."
-  },
-  "24": {
-   "name": "NO FUTURE",
-   "input": "qcf+3+4",
-   "t3_source": "heihachi",
-   "t3_row": 43,
-   "t3_command": "qcf+3+4",
-   "startup": 0.3,
-   "active": 0.05,
-   "recovery": 0.7,
-   "damage": 22,
-   "t3_damage": 37,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 3.5,
-   "soulGain": 18,
-   "anim_ref": "wh:deathfang:sig:24",
-   "input_slots": [
-    "qcf+3+4"
-   ],
-   "move_class": "special",
-   "wh_signature": true,
-   "wh_note": "DEATHFANG signature: a grief-flame dashing fang rush named for the tattoo on his face — no future, only the fight."
-  },
-  "far_1": {
-   "name": "DEATHFANG — Standing LP (Far)",
-   "input": "far 1",
-   "kof_motion": "5A (far)",
-   "startup": 0.083,
-   "active": 0.033,
-   "recovery": 0.267,
-   "damage": 2,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:far_1",
-   "input_slots": [
-    "far 1"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Standing LP (Far) — shackled-chained reskin, NO FUTURE face tattoo. ",
-   "base_fighter": "iori"
-  },
-  "far_2": {
-   "name": "DEATHFANG — Standing RP (Far)",
-   "input": "far 2",
-   "kof_motion": "5B (far)",
-   "startup": 0.083,
-   "active": 0.033,
-   "recovery": 0.267,
-   "damage": 2,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:far_2",
-   "input_slots": [
-    "far 2"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Standing RP (Far) — shackled-chained reskin, NO FUTURE face tattoo. ",
-   "base_fighter": "iori"
-  },
-  "far_3": {
-   "name": "DEATHFANG — Standing LK (Far)",
-   "input": "far 3",
-   "kof_motion": "5C (far)",
-   "startup": 0.083,
-   "active": 0.033,
-   "recovery": 0.267,
-   "damage": 2,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:far_3",
-   "input_slots": [
-    "far 3"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Standing LK (Far) — shackled-chained reskin, NO FUTURE face tattoo. ",
-   "base_fighter": "iori"
-  },
-  "far_4": {
-   "name": "DEATHFANG — Standing RK (Far)",
-   "input": "far 4",
-   "kof_motion": "5D (far)",
-   "startup": 0.083,
-   "active": 0.033,
-   "recovery": 0.267,
-   "damage": 2,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:far_4",
-   "input_slots": [
-    "far 4"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Standing RK (Far) — shackled-chained reskin, NO FUTURE face tattoo. ",
-   "base_fighter": "iori"
-  },
-  "close_1": {
-   "name": "DEATHFANG — Standing LP (Close)",
-   "input": "1 (close)",
-   "kof_motion": "cl.A",
-   "startup": 0.083,
-   "active": 0.033,
-   "recovery": 0.267,
-   "damage": 2,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:close_1",
-   "input_slots": [
-    "1 (close)"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Standing LP (Close) — shackled-chained reskin, NO FUTURE face tattoo. ",
-   "base_fighter": "iori"
-  },
-  "close_2": {
-   "name": "DEATHFANG — Standing RP (Close)",
-   "input": "2 (close)",
-   "kof_motion": "cl.B",
-   "startup": 0.15,
-   "active": 0.033,
-   "recovery": 0.267,
-   "damage": 2,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:close_2",
-   "input_slots": [
-    "2 (close)"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Standing RP (Close) — shackled-chained reskin, NO FUTURE face tattoo. ",
-   "base_fighter": "iori"
-  },
-  "close_3": {
-   "name": "DEATHFANG — Standing LK (Close)",
-   "input": "3 (close)",
-   "kof_motion": "cl.C",
-   "startup": 0.083,
-   "active": 0.033,
-   "recovery": 0.267,
-   "damage": 2,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:close_3",
-   "input_slots": [
-    "3 (close)"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Standing LK (Close) — shackled-chained reskin, NO FUTURE face tattoo. ",
-   "base_fighter": "iori"
-  },
-  "close_4": {
-   "name": "DEATHFANG — Standing RK (Close)",
-   "input": "4 (close)",
-   "kof_motion": "cl.D",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.267,
-   "damage": 2,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:close_4",
-   "input_slots": [
-    "4 (close)"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Standing RK (Close) — shackled-chained reskin, NO FUTURE face tattoo. ",
-   "base_fighter": "iori"
-  },
-  "cr_1": {
-   "name": "DEATHFANG — Crouching LP",
-   "input": "d+1 (crouch)",
-   "kof_motion": "2A",
-   "startup": 0.083,
-   "active": 0.033,
-   "recovery": 0.267,
-   "damage": 2,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:crouch_1",
-   "input_slots": [
-    "d+1 (crouch)"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Crouching LP — shackled-chained reskin, NO FUTURE face tattoo. ",
-   "base_fighter": "iori"
-  },
-  "cr_2": {
-   "name": "DEATHFANG — Crouching RP",
-   "input": "d+2 (crouch)",
-   "kof_motion": "2B",
-   "startup": 0.083,
-   "active": 0.033,
-   "recovery": 0.267,
-   "damage": 2,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:crouch_2",
-   "input_slots": [
-    "d+2 (crouch)"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Crouching RP — shackled-chained reskin, NO FUTURE face tattoo. ",
-   "base_fighter": "iori"
-  },
-  "cr_3": {
-   "name": "DEATHFANG — Crouching LK",
-   "input": "d+3 (crouch)",
-   "kof_motion": "2C",
-   "startup": 0.083,
-   "active": 0.033,
-   "recovery": 0.267,
-   "damage": 2,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:crouch_3",
-   "input_slots": [
-    "d+3 (crouch)"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Crouching LK — shackled-chained reskin, NO FUTURE face tattoo. Low",
-   "base_fighter": "iori"
-  },
-  "cr_4": {
-   "name": "DEATHFANG — Crouching RK",
-   "input": "d+4 (crouch)",
-   "kof_motion": "2D",
-   "startup": 0.083,
-   "active": 0.033,
-   "recovery": 0.267,
-   "damage": 2,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:crouch_4",
-   "input_slots": [
-    "d+4 (crouch)"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Crouching RK — shackled-chained reskin, NO FUTURE face tattoo. Low",
-   "base_fighter": "iori"
-  },
-  "jump_1": {
-   "name": "DEATHFANG — Jumping LP",
-   "input": "u/f+1",
-   "kof_motion": "j.A (jumping)",
-   "startup": 0.133,
-   "active": 0.05,
-   "recovery": 0.233,
-   "damage": 2,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:jump_1",
-   "input_slots": [
-    "u/f+1"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Jumping LP — shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
-   "base_fighter": "iori"
-  },
-  "jump_2": {
-   "name": "DEATHFANG — Jumping RP",
-   "input": "u/f+2",
-   "kof_motion": "j.B (jumping)",
-   "startup": 0.133,
-   "active": 0.05,
-   "recovery": 0.233,
-   "damage": 2,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:jump_2",
-   "input_slots": [
-    "u/f+2"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Jumping RP — shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
-   "base_fighter": "iori"
-  },
-  "jump_3": {
-   "name": "DEATHFANG — Jumping LK",
-   "input": "u/f+3",
-   "kof_motion": "j.C (jumping)",
-   "startup": 0.133,
-   "active": 0.05,
-   "recovery": 0.233,
-   "damage": 2,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:jump_3",
-   "input_slots": [
-    "u/f+3"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Jumping LK — shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
-   "base_fighter": "iori"
-  },
-  "jump_4": {
-   "name": "DEATHFANG — Jumping RK",
-   "input": "u/f+4",
-   "kof_motion": "j.D (jumping)",
-   "startup": 0.133,
-   "active": 0.05,
-   "recovery": 0.233,
-   "damage": 2,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:jump_4",
-   "input_slots": [
-    "u/f+4"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Jumping RK — shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
-   "base_fighter": "iori"
-  },
-  "njump_1": {
-   "name": "DEATHFANG — Neutral Jump LP",
-   "input": "u+1",
-   "kof_motion": "j.A (neutral jump)",
-   "startup": 0.133,
-   "active": 0.05,
-   "recovery": 0.233,
-   "damage": 2,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:njump_1",
-   "input_slots": [
-    "u+1"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Neutral Jump LP — shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
-   "base_fighter": "iori"
-  },
-  "njump_2": {
-   "name": "DEATHFANG — Neutral Jump RP",
-   "input": "u+2",
-   "kof_motion": "j.B (neutral jump)",
-   "startup": 0.133,
-   "active": 0.05,
-   "recovery": 0.233,
-   "damage": 2,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:njump_2",
-   "input_slots": [
-    "u+2"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Neutral Jump RP — shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
-   "base_fighter": "iori"
-  },
-  "njump_3": {
-   "name": "DEATHFANG — Neutral Jump LK",
-   "input": "u+3",
-   "kof_motion": "j.C (neutral jump)",
-   "startup": 0.133,
-   "active": 0.05,
-   "recovery": 0.233,
-   "damage": 2,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:njump_3",
-   "input_slots": [
-    "u+3"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Neutral Jump LK — shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
-   "base_fighter": "iori"
-  },
-  "njump_4": {
-   "name": "DEATHFANG — Neutral Jump RK",
-   "input": "u+4",
-   "kof_motion": "j.D (neutral jump)",
-   "startup": 0.133,
-   "active": 0.05,
-   "recovery": 0.233,
-   "damage": 2,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:njump_4",
-   "input_slots": [
-    "u+4"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Neutral Jump RK — shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
-   "base_fighter": "iori"
-  },
-  "hop_1": {
-   "name": "DEATHFANG — Hop LP",
-   "input": "hop u/f+1",
-   "kof_motion": "j.A (hop)",
-   "startup": 0.133,
-   "active": 0.05,
-   "recovery": 0.233,
-   "damage": 2,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:hop_1",
-   "input_slots": [
-    "hop u/f+1"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Hop LP — shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
-   "base_fighter": "iori"
-  },
-  "hop_2": {
-   "name": "DEATHFANG — Hop RP",
-   "input": "hop u/f+2",
-   "kof_motion": "j.B (hop)",
-   "startup": 0.133,
-   "active": 0.05,
-   "recovery": 0.233,
-   "damage": 2,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:hop_2",
-   "input_slots": [
-    "hop u/f+2"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Hop RP — shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
-   "base_fighter": "iori"
-  },
-  "hop_3": {
-   "name": "DEATHFANG — Hop LK",
-   "input": "hop u/f+3",
-   "kof_motion": "j.C (hop)",
-   "startup": 0.133,
-   "active": 0.05,
-   "recovery": 0.233,
-   "damage": 2,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:hop_3",
-   "input_slots": [
-    "hop u/f+3"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Hop LK — shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
-   "base_fighter": "iori"
-  },
-  "hop_4": {
-   "name": "DEATHFANG — Hop RK",
-   "input": "hop u/f+4",
-   "kof_motion": "j.D (hop)",
-   "startup": 0.133,
-   "active": 0.05,
-   "recovery": 0.233,
-   "damage": 2,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:hop_4",
-   "input_slots": [
-    "hop u/f+4"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Hop RK — shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
-   "base_fighter": "iori"
-  },
-  "nhop_1": {
-   "name": "DEATHFANG — Neutral Hop LP",
-   "input": "hop u+1",
-   "kof_motion": "j.A (neutral hop)",
-   "startup": 0.133,
-   "active": 0.05,
-   "recovery": 0.233,
-   "damage": 2,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:nhop_1",
-   "input_slots": [
-    "hop u+1"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Neutral Hop LP — shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
-   "base_fighter": "iori"
-  },
-  "nhop_2": {
-   "name": "DEATHFANG — Neutral Hop RP",
-   "input": "hop u+2",
-   "kof_motion": "j.B (neutral hop)",
-   "startup": 0.133,
-   "active": 0.05,
-   "recovery": 0.233,
-   "damage": 2,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:nhop_2",
-   "input_slots": [
-    "hop u+2"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Neutral Hop RP — shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
-   "base_fighter": "iori"
-  },
-  "nhop_3": {
-   "name": "DEATHFANG — Neutral Hop LK",
-   "input": "hop u+3",
-   "kof_motion": "j.C (neutral hop)",
-   "startup": 0.133,
-   "active": 0.05,
-   "recovery": 0.233,
-   "damage": 2,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:nhop_3",
-   "input_slots": [
-    "hop u+3"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Neutral Hop LK — shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
-   "base_fighter": "iori"
-  },
-  "nhop_4": {
-   "name": "DEATHFANG — Neutral Hop RK",
-   "input": "hop u+4",
-   "kof_motion": "j.D (neutral hop)",
-   "startup": 0.133,
-   "active": 0.05,
-   "recovery": 0.233,
-   "damage": 2,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:nhop_4",
-   "input_slots": [
-    "hop u+4"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Neutral Hop RK — shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
-   "base_fighter": "iori"
-  },
-  "cd_stand": {
-   "name": "DEATHFANG — Blowback Attack",
-   "input": "3+4 (blowback)",
-   "kof_motion": "C+D",
-   "startup": 0.233,
-   "active": 0.067,
-   "recovery": 0.467,
-   "damage": 2,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:blowback",
-   "input_slots": [
-    "3+4 (blowback)"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Blowback Attack — shackled-chained reskin, NO FUTURE face tattoo. Soft knockdown; special-cancelable",
-   "base_fighter": "iori"
-  },
-  "cd_jump": {
-   "name": "DEATHFANG — Jumping Blowback Attack",
-   "input": "u/f+3+4",
-   "kof_motion": "j.C+D",
-   "startup": 0.167,
-   "active": 0.067,
-   "recovery": 0.3,
-   "damage": 3,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 2,
-   "anim_ref": "kofxv:deathfang:jump_blowback",
-   "input_slots": [
-    "u/f+3+4"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Jumping Blowback Attack — shackled-chained reskin, NO FUTURE face tattoo. Overhead (air); soft knockdown",
-   "base_fighter": "iori"
-  },
-  "cd_hop": {
-   "name": "DEATHFANG — Hop Blowback Attack",
-   "input": "hop u/f+3+4",
-   "kof_motion": "hop j.C+D",
-   "startup": 0.167,
-   "active": 0.067,
-   "recovery": 0.3,
-   "damage": 2,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:hop_blowback",
-   "input_slots": [
-    "hop u/f+3+4"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Hop Blowback Attack — shackled-chained reskin, NO FUTURE face tattoo. Overhead (air); soft knockdown",
-   "base_fighter": "iori"
-  },
-  "evade_fwd": {
-   "name": "DEATHFANG — Emergency Evasion (Forward)",
-   "input": "f,f (roll)",
-   "kof_motion": "A+B",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.333,
-   "damage": 0,
-   "limb": "both",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "kofxv:deathfang:evade_fwd",
-   "input_slots": [
-    "f,f (roll)"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Emergency Evasion (Forward) — shackled-chained reskin, NO FUTURE face tattoo. Forward roll; invulnerable startup (KOF XV system)",
-   "base_fighter": "iori"
-  },
-  "evade_back": {
-   "name": "DEATHFANG — Emergency Evasion (Back)",
-   "input": "b,b (roll)",
-   "kof_motion": "b+A+B",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.333,
-   "damage": 0,
-   "limb": "both",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "kofxv:deathfang:evade_back",
-   "input_slots": [
-    "b,b (roll)"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Emergency Evasion (Back) — shackled-chained reskin, NO FUTURE face tattoo. Back roll (KOF XV system)",
-   "base_fighter": "iori"
-  },
-  "gc_blowback": {
-   "name": "DEATHFANG — Guard Cancel Blowback",
-   "input": "b+1+2 (guard)",
-   "kof_motion": "b+C+D (guard)",
-   "startup": 0.233,
-   "active": 0.033,
-   "recovery": 0.333,
-   "damage": 2,
-   "limb": "both",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:gc_blowback",
-   "input_slots": [
-    "b+1+2 (guard)"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Guard Cancel Blowback — shackled-chained reskin, NO FUTURE face tattoo. Guard-cancel blowback; costs 1 stock (KOF XV system)",
-   "base_fighter": "iori"
-  },
-  "gc_roll_fwd": {
-   "name": "DEATHFANG — Guard Cancel Evasion (Forward)",
-   "input": "f+1+2 (guard)",
-   "kof_motion": "A+B (guard)",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.333,
-   "damage": 0,
-   "limb": "both",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "kofxv:deathfang:gc_roll_fwd",
-   "input_slots": [
-    "f+1+2 (guard)"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Guard Cancel Evasion (Forward) — shackled-chained reskin, NO FUTURE face tattoo. Guard-cancel roll forward; costs 1 stock (KOF XV system)",
-   "base_fighter": "iori"
-  },
-  "gc_roll_back": {
-   "name": "DEATHFANG — Guard Cancel Evasion (Back)",
-   "input": "b+3+4 (guard)",
-   "kof_motion": "b+A+B (guard)",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.333,
-   "damage": 0,
-   "limb": "both",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "kofxv:deathfang:gc_roll_back",
-   "input_slots": [
-    "b+3+4 (guard)"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Guard Cancel Evasion (Back) — shackled-chained reskin, NO FUTURE face tattoo. Guard-cancel roll back; costs 1 stock (KOF XV system)",
-   "base_fighter": "iori"
-  },
-  "shatter": {
-   "name": "DEATHFANG — Shatter Strike",
-   "input": "qcf+3+4 (DF)",
-   "kof_motion": "236+C+D",
-   "startup": 0.333,
-   "active": 0.033,
-   "recovery": 0.333,
-   "damage": 2,
-   "limb": "both",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:shatter",
-   "input_slots": [
-    "qcf+3+4 (DF)"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Shatter Strike — shackled-chained reskin, NO FUTURE face tattoo. KOF XV Shatter Strike; guard point, crumple on counter hit",
-   "base_fighter": "iori"
-  },
-  "maxmode": {
-   "name": "DEATHFANG — MAX Mode",
-   "input": "1+2+3+4 (MAX)",
-   "kof_motion": "B+C (MAX Mode)",
-   "startup": 0.5,
-   "active": 0.033,
-   "recovery": 0.333,
-   "damage": 0,
-   "limb": "both",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "kofxv:deathfang:maxmode",
-   "input_slots": [
-    "1+2+3+4 (MAX)"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's MAX Mode — shackled-chained reskin, NO FUTURE face tattoo. KOF XV MAX Mode activation; +damage, EX access",
-   "base_fighter": "iori"
-  },
-  "taunt": {
-   "name": "DEATHFANG — Taunt",
-   "input": "2+3 (taunt)",
-   "kof_motion": "Start (taunt)",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.333,
-   "damage": 0,
-   "limb": "both",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "kofxv:deathfang:taunt",
-   "input_slots": [
-    "2+3 (taunt)"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Taunt — shackled-chained reskin, NO FUTURE face tattoo. Taunt",
-   "base_fighter": "iori"
-  },
-  "fallbreaker": {
-   "name": "DEATHFANG — Fallbreaker (Recovery Roll)",
-   "input": "1+2 (grounded)",
-   "kof_motion": "any button (downed)",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.333,
-   "damage": 0,
-   "limb": "both",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "kofxv:deathfang:fallbreaker",
-   "input_slots": [
-    "1+2 (grounded)"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Fallbreaker (Recovery Roll) — shackled-chained reskin, NO FUTURE face tattoo. Recovery roll on knockdown (KOF system)",
-   "base_fighter": "iori"
-  },
-  "throw_escape": {
-   "name": "DEATHFANG — Throw Escape",
-   "input": "3+4 (throw escape)",
-   "kof_motion": "C+D (on throw)",
-   "startup": 0.083,
-   "active": 0.033,
-   "recovery": 0.333,
-   "damage": 0,
-   "limb": "both",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "kofxv:deathfang:throw_escape",
-   "input_slots": [
-    "3+4 (throw escape)"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Throw Escape — shackled-chained reskin, NO FUTURE face tattoo. Throw tech (KOF system)",
-   "base_fighter": "iori"
-  },
-  "dash": {
-   "name": "DEATHFANG — Forward Dash",
-   "input": "f,f (dash)",
-   "kof_motion": "f,f",
-   "startup": 0.083,
-   "active": 0.033,
-   "recovery": 0.333,
-   "damage": 0,
-   "limb": "both",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "kofxv:deathfang:dash",
-   "input_slots": [
-    "f,f (dash)"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Forward Dash — shackled-chained reskin, NO FUTURE face tattoo. KOF run/dash step",
-   "base_fighter": "iori"
-  },
-  "backdash": {
-   "name": "DEATHFANG — Backdash",
-   "input": "b,b (backdash)",
-   "kof_motion": "b,b",
-   "startup": 0.083,
-   "active": 0.033,
-   "recovery": 0.333,
-   "damage": 0,
-   "limb": "both",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "kofxv:deathfang:backdash",
-   "input_slots": [
-    "b,b (backdash)"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Backdash — shackled-chained reskin, NO FUTURE face tattoo. KOF backstep",
-   "base_fighter": "iori"
-  },
-  "rush_l1": {
-   "name": "DEATHFANG — Light Rush 1",
-   "input": "1 (Rush)",
-   "kof_motion": "A x1 (Rush)",
-   "startup": 0.083,
-   "active": 0.033,
-   "recovery": 0.267,
-   "damage": 2,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:rush_l1",
-   "input_slots": [
-    "1 (Rush)"
-   ],
-   "move_class": "string",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Light Rush 1 — shackled-chained reskin, NO FUTURE face tattoo. KOF XV Rush auto-combo (light chain)",
-   "base_fighter": "iori"
-  },
-  "rush_l2": {
-   "name": "DEATHFANG — Light Rush 2",
-   "input": "1,1 (Rush)",
-   "kof_motion": "A x2 (Rush)",
-   "startup": 0.083,
-   "active": 0.033,
-   "recovery": 0.267,
-   "damage": 2,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:rush_l2",
-   "input_slots": [
-    "1,1 (Rush)"
-   ],
-   "move_class": "string",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Light Rush 2 — shackled-chained reskin, NO FUTURE face tattoo. KOF XV Rush auto-combo (light chain)",
-   "base_fighter": "iori"
-  },
-  "rush_l3": {
-   "name": "DEATHFANG — Light Rush 3",
-   "input": "1,1,1 (Rush)",
-   "kof_motion": "A x3 (Rush)",
-   "startup": 0.083,
-   "active": 0.033,
-   "recovery": 0.267,
-   "damage": 2,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:rush_l3",
-   "input_slots": [
-    "1,1,1 (Rush)"
-   ],
-   "move_class": "string",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Light Rush 3 — shackled-chained reskin, NO FUTURE face tattoo. KOF XV Rush auto-combo (light chain)",
-   "base_fighter": "iori"
-  },
-  "rush_l4": {
-   "name": "DEATHFANG — Light Rush 4",
-   "input": "1,1,1,1 (Rush)",
-   "kof_motion": "A x4 (Rush)",
-   "startup": 0.083,
-   "active": 0.033,
-   "recovery": 0.267,
-   "damage": 2,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:rush_l4",
-   "input_slots": [
-    "1,1,1,1 (Rush)"
-   ],
-   "move_class": "string",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Light Rush 4 — shackled-chained reskin, NO FUTURE face tattoo. KOF XV Rush auto-combo (light chain)",
-   "base_fighter": "iori"
-  },
-  "rush_h1": {
-   "name": "DEATHFANG — Heavy Rush 1",
-   "input": "2 (Rush)",
-   "kof_motion": "C x1 (Rush)",
-   "startup": 0.15,
-   "active": 0.033,
-   "recovery": 0.333,
-   "damage": 2,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:rush_h1",
-   "input_slots": [
-    "2 (Rush)"
-   ],
-   "move_class": "string",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Heavy Rush 1 — shackled-chained reskin, NO FUTURE face tattoo. KOF XV Rush auto-combo (heavy chain)",
-   "base_fighter": "iori"
-  },
-  "rush_h2": {
-   "name": "DEATHFANG — Heavy Rush 2",
-   "input": "2,2 (Rush)",
-   "kof_motion": "C x2 (Rush)",
-   "startup": 0.15,
-   "active": 0.033,
-   "recovery": 0.333,
-   "damage": 2,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:rush_h2",
-   "input_slots": [
-    "2,2 (Rush)"
-   ],
-   "move_class": "string",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Heavy Rush 2 — shackled-chained reskin, NO FUTURE face tattoo. KOF XV Rush auto-combo (heavy chain)",
-   "base_fighter": "iori"
-  },
-  "rush_h3": {
-   "name": "DEATHFANG — Heavy Rush 3",
-   "input": "2,2,2 (Rush)",
-   "kof_motion": "C x3 (Rush)",
-   "startup": 0.15,
-   "active": 0.033,
-   "recovery": 0.333,
-   "damage": 3,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 2,
-   "anim_ref": "kofxv:deathfang:rush_h3",
-   "input_slots": [
-    "2,2,2 (Rush)"
-   ],
-   "move_class": "string",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Heavy Rush 3 — shackled-chained reskin, NO FUTURE face tattoo. KOF XV Rush auto-combo (heavy chain)",
-   "base_fighter": "iori"
-  },
-  "rush_h4": {
-   "name": "DEATHFANG — Heavy Rush 4",
-   "input": "2,2,2,2 (Rush)",
-   "kof_motion": "C x4 (Rush)",
-   "startup": 0.15,
-   "active": 0.033,
-   "recovery": 0.333,
-   "damage": 3,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 2,
-   "anim_ref": "kofxv:deathfang:rush_h4",
-   "input_slots": [
-    "2,2,2,2 (Rush)"
-   ],
-   "move_class": "string",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Heavy Rush 4 — shackled-chained reskin, NO FUTURE face tattoo. KOF XV Rush auto-combo (heavy chain)",
-   "base_fighter": "iori"
-  },
-  "yumebiki_1": {
-   "name": "DEATHFANG — Geshiki: Yumebiki (1st)",
-   "input": "f+1 (DF)",
-   "kof_motion": "6+A",
-   "startup": 0.183,
-   "active": 0.05,
-   "recovery": 0.233,
-   "damage": 2,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:yumebiki_1",
-   "input_slots": [
-    "f+1 (DF)"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Geshiki: Yumebiki (1st) — shackled-chained reskin, NO FUTURE face tattoo. Command normal; special-cancelable. Original KOF motion: f+A",
-   "base_fighter": "iori"
-  },
-  "yumebiki_2": {
-   "name": "DEATHFANG — Geshiki: Yumebiki (2nd)",
-   "input": "f+1,1",
-   "kof_motion": "6+A,A",
-   "startup": 0.183,
-   "active": 0.05,
-   "recovery": 0.25,
-   "damage": 2,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:yumebiki_2",
-   "input_slots": [
-    "f+1,1"
-   ],
-   "move_class": "string",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Geshiki: Yumebiki (2nd) — shackled-chained reskin, NO FUTURE face tattoo. Overhead 2nd hit. Original KOF motion: f+A,A",
-   "base_fighter": "iori"
-  },
-  "goufu_in": {
-   "name": "DEATHFANG — Geshiki: Goufu In \"Shinigami\"",
-   "input": "f+3",
-   "kof_motion": "6+B",
-   "startup": 0.283,
-   "active": 0.05,
-   "recovery": 0.283,
-   "damage": 2,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:goufu_in",
-   "input_slots": [
-    "f+3"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Geshiki: Goufu In \"Shinigami\" — shackled-chained reskin, NO FUTURE face tattoo. Overhead command normal. Original KOF motion: f+B",
-   "base_fighter": "iori"
-  },
-  "yuri_ori": {
-   "name": "DEATHFANG — Geshiki: Yuri Ori",
-   "input": "u/b+3 (air)",
-   "kof_motion": "b+B (air)",
-   "startup": 0.15,
-   "active": 0.05,
-   "recovery": 0.233,
-   "damage": 2,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:yuri_ori",
-   "input_slots": [
-    "u/b+3 (air)"
-   ],
-   "move_class": "strike",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Geshiki: Yuri Ori — shackled-chained reskin, NO FUTURE face tattoo. Air command normal; cross-up. Original KOF motion: b+B in air",
-   "base_fighter": "iori"
-  },
-  "sakahagi_f": {
-   "name": "DEATHFANG — Sakahagi",
-   "input": "1+3 (DF)",
-   "kof_motion": "f+C/D (close)",
-   "startup": 0.083,
-   "active": 0.033,
-   "recovery": 0.333,
-   "damage": 3,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 2,
-   "anim_ref": "kofxv:deathfang:sakahagi_f",
-   "input_slots": [
-    "1+3 (DF)"
-   ],
-   "move_class": "throw",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Sakahagi — shackled-chained reskin, NO FUTURE face tattoo. Forward throw. Original KOF motion: b/f+C or D",
-   "throw": true,
-   "throw_break": "1",
-   "unblockable": true,
-   "isGrab": true,
-   "base_fighter": "iori"
-  },
-  "sakahagi_b": {
-   "name": "DEATHFANG — Sakahagi (Back)",
-   "input": "2+4 (DF)",
-   "kof_motion": "b+C/D (close)",
-   "startup": 0.083,
-   "active": 0.033,
-   "recovery": 0.333,
-   "damage": 3,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 2,
-   "anim_ref": "kofxv:deathfang:sakahagi_b",
-   "input_slots": [
-    "2+4 (DF)"
-   ],
-   "move_class": "throw",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Sakahagi (Back) — shackled-chained reskin, NO FUTURE face tattoo. Backward throw. Original KOF motion: b/f+C or D",
-   "throw": true,
-   "throw_break": "2",
-   "unblockable": true,
-   "isGrab": true,
-   "base_fighter": "iori"
-  },
-  "yamibarai_c": {
-   "name": "DEATHFANG — 108 SHIKI: Yami Barai (Heavy)",
-   "input": "qcf+2",
-   "kof_motion": "236+C",
-   "startup": 0.233,
-   "active": 0.067,
-   "recovery": 0.5,
-   "damage": 2,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:yamibarai_c",
-   "input_slots": [
-    "qcf+2"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's 108 SHIKI: Yami Barai (Heavy) — shackled-chained reskin, NO FUTURE face tattoo. Ground-travelling purple flame projectile, heavy version. Original KOF motion: 236+P",
-   "base_fighter": "iori"
-  },
-  "oniyaki_a": {
-   "name": "DEATHFANG — 100 Shiki: Oniyaki (Light)",
-   "input": "f,n,d,d/f+1",
-   "kof_motion": "623+A",
-   "startup": 0.083,
-   "active": 0.1,
-   "recovery": 0.65,
-   "damage": 2,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:oniyaki_a",
-   "input_slots": [
-    "f,n,d,d/f+1"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's 100 Shiki: Oniyaki (Light) — shackled-chained reskin, NO FUTURE face tattoo. Rising flame uppercut; anti-air invuln. Original KOF motion: 623+P",
-   "base_fighter": "iori"
-  },
-  "oniyaki_c": {
-   "name": "DEATHFANG — 100 Shiki: Oniyaki (Heavy)",
-   "input": "f,n,d,d/f+2",
-   "kof_motion": "623+C",
-   "startup": 0.1,
-   "active": 0.133,
-   "recovery": 0.767,
-   "damage": 4,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 2,
-   "anim_ref": "kofxv:deathfang:oniyaki_c",
-   "input_slots": [
-    "f,n,d,d/f+2"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's 100 Shiki: Oniyaki (Heavy) — shackled-chained reskin, NO FUTURE face tattoo. Two-hit rising flame uppercut. Original KOF motion: 623+P",
-   "base_fighter": "iori"
-  },
-  "oniyaki_ex": {
-   "name": "DEATHFANG — 100 Shiki: Oniyaki (EX)",
-   "input": "f,n,d,d/f+1+2",
-   "kof_motion": "623+A+C",
-   "startup": 0.083,
-   "active": 0.167,
-   "recovery": 0.667,
-   "damage": 8,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 4,
-   "anim_ref": "kofxv:deathfang:oniyaki_ex",
-   "input_slots": [
-    "f,n,d,d/f+1+2"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's 100 Shiki: Oniyaki (EX) — shackled-chained reskin, NO FUTURE face tattoo. EX: multi-hit rising flame uppercut. Original KOF motion: 623+AC",
-   "base_fighter": "iori"
-  },
-  "aoihana_a1": {
-   "name": "DEATHFANG — 127 Shiki: Aoi Hana (1) [Light]",
-   "input": "qcb+1 (DF)",
-   "kof_motion": "214+A",
-   "startup": 0.25,
-   "active": 0.05,
-   "recovery": 0.4,
-   "damage": 2,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:aoihana_a1",
-   "input_slots": [
-    "qcb+1 (DF)"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's 127 Shiki: Aoi Hana (1) [Light] — shackled-chained reskin, NO FUTURE face tattoo. Rekka stage 1. Original KOF motion: 214+P x3",
-   "base_fighter": "iori"
-  },
-  "aoihana_a2": {
-   "name": "DEATHFANG — 127 Shiki: Aoi Hana (2) [Light]",
-   "input": "qcb+1,1 (DF)",
-   "kof_motion": "214+A x2",
-   "startup": 0.2,
-   "active": 0.05,
-   "recovery": 0.4,
-   "damage": 2,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:aoihana_a2",
-   "input_slots": [
-    "qcb+1,1 (DF)"
-   ],
-   "move_class": "string",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's 127 Shiki: Aoi Hana (2) [Light] — shackled-chained reskin, NO FUTURE face tattoo. Rekka stage 2. Original KOF motion: 214+P x3",
-   "base_fighter": "iori"
-  },
-  "aoihana_a3": {
-   "name": "DEATHFANG — 127 Shiki: Aoi Hana (3) [Light]",
-   "input": "qcb+1,1,1 (DF)",
-   "kof_motion": "214+A x3",
-   "startup": 0.233,
-   "active": 0.05,
-   "recovery": 0.5,
-   "damage": 3,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 2,
-   "anim_ref": "kofxv:deathfang:aoihana_a3",
-   "input_slots": [
-    "qcb+1,1,1 (DF)"
-   ],
-   "move_class": "string",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's 127 Shiki: Aoi Hana (3) [Light] — shackled-chained reskin, NO FUTURE face tattoo. Rekka stage 3; overhead finisher, hard knockdown. Original KOF motion: 214+P x3",
-   "base_fighter": "iori"
-  },
-  "aoihana_c1": {
-   "name": "DEATHFANG — 127 Shiki: Aoi Hana (1) [Heavy]",
-   "input": "qcb+2",
-   "kof_motion": "214+C",
-   "startup": 0.25,
-   "active": 0.05,
-   "recovery": 0.4,
-   "damage": 2,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:aoihana_c1",
-   "input_slots": [
-    "qcb+2"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's 127 Shiki: Aoi Hana (1) [Heavy] — shackled-chained reskin, NO FUTURE face tattoo. Rekka stage 1. Original KOF motion: 214+P x3",
-   "base_fighter": "iori"
-  },
-  "aoihana_c2": {
-   "name": "DEATHFANG — 127 Shiki: Aoi Hana (2) [Heavy]",
-   "input": "qcb+2,2",
-   "kof_motion": "214+C x2",
-   "startup": 0.2,
-   "active": 0.05,
-   "recovery": 0.4,
-   "damage": 2,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:aoihana_c2",
-   "input_slots": [
-    "qcb+2,2"
-   ],
-   "move_class": "string",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's 127 Shiki: Aoi Hana (2) [Heavy] — shackled-chained reskin, NO FUTURE face tattoo. Rekka stage 2. Original KOF motion: 214+P x3",
-   "base_fighter": "iori"
-  },
-  "aoihana_c3": {
-   "name": "DEATHFANG — 127 Shiki: Aoi Hana (3) [Heavy]",
-   "input": "qcb+2,2,2",
-   "kof_motion": "214+C x3",
-   "startup": 0.233,
-   "active": 0.05,
-   "recovery": 0.5,
-   "damage": 3,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 2,
-   "anim_ref": "kofxv:deathfang:aoihana_c3",
-   "input_slots": [
-    "qcb+2,2,2"
-   ],
-   "move_class": "string",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's 127 Shiki: Aoi Hana (3) [Heavy] — shackled-chained reskin, NO FUTURE face tattoo. Rekka stage 3; overhead finisher, hard knockdown. Original KOF motion: 214+P x3",
-   "base_fighter": "iori"
-  },
-  "aoihana_ex1": {
-   "name": "DEATHFANG — 127 Shiki: Aoi Hana (1) [EX]",
-   "input": "qcb+1+2",
-   "kof_motion": "214+A+C",
-   "startup": 0.217,
-   "active": 0.05,
-   "recovery": 0.367,
-   "damage": 2,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:aoihana_ex1",
-   "input_slots": [
-    "qcb+1+2"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's 127 Shiki: Aoi Hana (1) [EX] — shackled-chained reskin, NO FUTURE face tattoo. EX rekka stage 1. Original KOF motion: 214+AC",
-   "base_fighter": "iori"
-  },
-  "aoihana_ex2": {
-   "name": "DEATHFANG — 127 Shiki: Aoi Hana (2) [EX]",
-   "input": "qcb+1+2,1+2",
-   "kof_motion": "214+A+C x2",
-   "startup": 0.183,
-   "active": 0.05,
-   "recovery": 0.367,
-   "damage": 2,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:aoihana_ex2",
-   "input_slots": [
-    "qcb+1+2,1+2"
-   ],
-   "move_class": "string",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's 127 Shiki: Aoi Hana (2) [EX] — shackled-chained reskin, NO FUTURE face tattoo. EX rekka stage 2",
-   "base_fighter": "iori"
-  },
-  "aoihana_ex3": {
-   "name": "DEATHFANG — 127 Shiki: Aoi Hana (3) [EX]",
-   "input": "qcb+1+2,1+2,1+2",
-   "kof_motion": "214+A+C x3",
-   "startup": 0.217,
-   "active": 0.05,
-   "recovery": 0.467,
-   "damage": 2,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 1,
-   "anim_ref": "kofxv:deathfang:aoihana_ex3",
-   "input_slots": [
-    "qcb+1+2,1+2,1+2"
-   ],
-   "move_class": "string",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's 127 Shiki: Aoi Hana (3) [EX] — shackled-chained reskin, NO FUTURE face tattoo. EX rekka stage 3 finisher",
-   "base_fighter": "iori"
-  },
-  "kototsuki_b": {
-   "name": "DEATHFANG — 212 Shiki: Kototsuki In (Light)",
-   "input": "hcb+3",
-   "kof_motion": "63214+B",
-   "startup": 0.3,
-   "active": 0.067,
-   "recovery": 0.5,
-   "damage": 5,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 2,
-   "anim_ref": "kofxv:deathfang:kototsuki_b",
-   "input_slots": [
-    "hcb+3"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's 212 Shiki: Kototsuki In (Light) — shackled-chained reskin, NO FUTURE face tattoo. Running grab into flame burst. Original KOF motion: 63214+K",
-   "base_fighter": "iori"
-  },
-  "kototsuki_d": {
-   "name": "DEATHFANG — 212 Shiki: Kototsuki In (Heavy)",
-   "input": "hcb+4",
-   "kof_motion": "63214+D",
-   "startup": 0.367,
-   "active": 0.067,
-   "recovery": 0.567,
-   "damage": 5,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 2,
-   "anim_ref": "kofxv:deathfang:kototsuki_d",
-   "input_slots": [
-    "hcb+4"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's 212 Shiki: Kototsuki In (Heavy) — shackled-chained reskin, NO FUTURE face tattoo. Running grab into flame burst, longer run. Original KOF motion: 63214+K",
-   "base_fighter": "iori"
-  },
-  "kototsuki_ex": {
-   "name": "DEATHFANG — 212 Shiki: Kototsuki In (EX)",
-   "input": "hcb+3+4",
-   "kof_motion": "63214+B+D",
-   "startup": 0.267,
-   "active": 0.067,
-   "recovery": 0.5,
-   "damage": 5,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 2,
-   "anim_ref": "kofxv:deathfang:kototsuki_ex",
-   "input_slots": [
-    "hcb+3+4"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's 212 Shiki: Kototsuki In (EX) — shackled-chained reskin, NO FUTURE face tattoo. EX running grab; OTG-capable. Original KOF motion: 63214+BD",
-   "base_fighter": "iori"
-  },
-  "kuzukaze_a": {
-   "name": "DEATHFANG — Kuzukaze (Light)",
-   "input": "hcb,f+1",
-   "kof_motion": "632146+A",
-   "startup": 0.2,
-   "active": 0.033,
-   "recovery": 0.5,
-   "damage": 0,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 10,
-   "anim_ref": "kofxv:deathfang:kuzukaze_a",
-   "input_slots": [
-    "hcb,f+1"
-   ],
-   "move_class": "throw",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Kuzukaze (Light) — shackled-chained reskin, NO FUTURE face tattoo. Command grab; leaves opponent stunned for mix-up. Original KOF motion: 632146+P (near)",
-   "throw": true,
-   "throw_break": "1+2",
-   "unblockable": true,
-   "isGrab": true,
-   "base_fighter": "iori"
-  },
-  "kuzukaze_c": {
-   "name": "DEATHFANG — Kuzukaze (Heavy)",
-   "input": "hcb,f+2",
-   "kof_motion": "632146+C",
-   "startup": 0.267,
-   "active": 0.033,
-   "recovery": 0.567,
-   "damage": 0,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 10,
-   "anim_ref": "kofxv:deathfang:kuzukaze_c",
-   "input_slots": [
-    "hcb,f+2"
-   ],
-   "move_class": "throw",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Kuzukaze (Heavy) — shackled-chained reskin, NO FUTURE face tattoo. Command grab, slower. Original KOF motion: 632146+P (near)",
-   "throw": true,
-   "throw_break": "1+2",
-   "unblockable": true,
-   "isGrab": true,
-   "base_fighter": "iori"
-  },
-  "kuzukaze_ex": {
-   "name": "DEATHFANG — Kuzukaze (EX)",
-   "input": "hcb,f+1+2",
-   "kof_motion": "632146+A+C",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.467,
-   "damage": 0,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 10,
-   "anim_ref": "kofxv:deathfang:kuzukaze_ex",
-   "input_slots": [
-    "hcb,f+1+2"
-   ],
-   "move_class": "throw",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Kuzukaze (EX) — shackled-chained reskin, NO FUTURE face tattoo. EX command grab; faster. Original KOF motion: 632146+AC",
-   "throw": true,
-   "throw_break": "1+2",
-   "unblockable": true,
-   "isGrab": true,
-   "base_fighter": "iori"
-  },
-  "tsumagushi_b": {
-   "name": "DEATHFANG — 311 Shiki: Tsumagushi (Light)",
-   "input": "qcb+3 (DF)",
-   "kof_motion": "214+B",
-   "startup": 0.267,
-   "active": 0.05,
-   "recovery": 0.433,
-   "damage": 3,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 2,
-   "anim_ref": "kofxv:deathfang:tsumagushi_b",
-   "input_slots": [
-    "qcb+3 (DF)"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's 311 Shiki: Tsumagushi (Light) — shackled-chained reskin, NO FUTURE face tattoo. Spinning claw kick (KOF series). Original KOF motion: 214+K",
-   "base_fighter": "iori"
-  },
-  "tsumagushi_d": {
-   "name": "DEATHFANG — 311 Shiki: Tsumagushi (Heavy)",
-   "input": "qcb+4",
-   "kof_motion": "214+D",
-   "startup": 0.3,
-   "active": 0.05,
-   "recovery": 0.5,
-   "damage": 3,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 2,
-   "anim_ref": "kofxv:deathfang:tsumagushi_d",
-   "input_slots": [
-    "qcb+4"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's 311 Shiki: Tsumagushi (Heavy) — shackled-chained reskin, NO FUTURE face tattoo. Spinning claw kick, heavy (KOF series). Original KOF motion: 214+K",
-   "base_fighter": "iori"
-  },
-  "tsumagushi_ex": {
-   "name": "DEATHFANG — 311 Shiki: Tsumagushi (EX)",
-   "input": "qcb+3+4",
-   "kof_motion": "214+B+D",
-   "startup": 0.25,
-   "active": 0.067,
-   "recovery": 0.467,
-   "damage": 4,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 2,
-   "anim_ref": "kofxv:deathfang:tsumagushi_ex",
-   "input_slots": [
-    "qcb+3+4"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's 311 Shiki: Tsumagushi (EX) — shackled-chained reskin, NO FUTURE face tattoo. EX spinning claw kick (KOF series). Original KOF motion: 214+BD",
-   "base_fighter": "iori"
-  },
-  "yaotome_a": {
-   "name": "DEATHFANG — Kin 1211 Shiki: Ya Otome",
-   "input": "qcf,hcb+1",
-   "kof_motion": "236,63214+A",
-   "startup": 0.133,
-   "active": 0.5,
-   "recovery": 1.0,
-   "damage": 6,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 3,
-   "anim_ref": "kofxv:deathfang:ya_otome",
-   "input_slots": [
-    "qcf,hcb+1"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Kin 1211 Shiki: Ya Otome — shackled-chained reskin, NO FUTURE face tattoo. Super: dashing eight-claw rush ending in flame burst (Maiden Masher). Original KOF motion: 23663214+P",
-   "base_fighter": "iori"
-  },
-  "yaotome_c": {
-   "name": "DEATHFANG — Kin 1211 Shiki: Ya Otome (MAX)",
-   "input": "qcf,hcb+2",
-   "kof_motion": "236,63214+C",
-   "startup": 0.133,
-   "active": 0.567,
-   "recovery": 1.033,
-   "damage": 8,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 4,
-   "anim_ref": "kofxv:deathfang:ya_otome_max",
-   "input_slots": [
-    "qcf,hcb+2"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Kin 1211 Shiki: Ya Otome (MAX) — shackled-chained reskin, NO FUTURE face tattoo. MAX super version. Original KOF motion: 23663214+P",
-   "base_fighter": "iori"
-  },
-  "saika": {
-   "name": "DEATHFANG — Ura 316 Shiki: Saika",
-   "input": "during Ya Otome, qcf,qcf,qcf,qcf+1+2",
-   "kof_motion": "Ya Otome, then 236236236236+A+C",
-   "startup": 0.083,
-   "active": 0.167,
-   "recovery": 0.833,
-   "damage": 3,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 2,
-   "anim_ref": "kofxv:deathfang:saika",
-   "input_slots": [
-    "during Ya Otome, qcf,qcf,qcf,qcf+1+2"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Ura 316 Shiki: Saika — shackled-chained reskin, NO FUTURE face tattoo. Follow-up finisher after Ya Otome (KOF XIII). Original KOF motion: during Ya Otome, 236x4+AC",
-   "base_fighter": "iori"
-  },
-  "yamisogi": {
-   "name": "DEATHFANG — Ura 1207 Shiki: Yamisogi",
-   "input": "qcf,qcf+1",
-   "kof_motion": "236236+A",
-   "startup": 0.167,
-   "active": 0.133,
-   "recovery": 0.917,
-   "damage": 7,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 4,
-   "anim_ref": "kofxv:deathfang:yamisogi",
-   "input_slots": [
-    "qcf,qcf+1"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Ura 1207 Shiki: Yamisogi — shackled-chained reskin, NO FUTURE face tattoo. Twin flame pillars super (KOF XIII EX Iori DM, legacy). Original KOF motion: 236236+P",
-   "base_fighter": "iori"
-  },
-  "ya_sakazuki": {
-   "name": "DEATHFANG — Ura 108 SHIKI: Ya Sakazuki",
-   "input": "qcb,hcf+1+2",
-   "kof_motion": "214,632146+A+C",
-   "startup": 0.233,
-   "active": 0.333,
-   "recovery": 1.167,
-   "damage": 14,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 7,
-   "anim_ref": "kofxv:deathfang:ya_sakazuki",
-   "input_slots": [
-    "qcb,hcf+1+2"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Ura 108 SHIKI: Ya Sakazuki — shackled-chained reskin, NO FUTURE face tattoo. CLIMAX: eight wine-cup flame pillars freeze the opponent in place. Original KOF motion: 214632146+AC (KOF XV Climax)",
-   "base_fighter": "iori"
-  },
-  "homurabotogi": {
-   "name": "DEATHFANG — Ura 1029 Shiki: Homurabotogi",
-   "input": "qcb,hcf+1",
-   "kof_motion": "214,632146+A",
-   "startup": 0.2,
-   "active": 0.4,
-   "recovery": 1.167,
-   "damage": 14,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 7,
-   "anim_ref": "kofxv:deathfang:homurabotogi",
-   "input_slots": [
-    "qcb,hcf+1"
-   ],
-   "move_class": "special",
-   "note": "DEATHFANG canon (owner 2026-10-19): Iori's Ura 1029 Shiki: Homurabotogi — shackled-chained reskin, NO FUTURE face tattoo. Legacy NeoMAX (KOF XIII). Original KOF motion: 214632146+AC",
-   "base_fighter": "iori"
-  },
-  "wolf_howl": {
-   "name": "TRANSFORMED: SHACKLE HOWL",
-   "input": "1+2+3+4 (wolf)",
-   "kof_motion": "Start (transformed)",
-   "startup": 0.5,
-   "active": 0.05,
-   "recovery": 0.5,
-   "damage": 0,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 8,
-   "anim_ref": "kofxv:deathfang:wolf_howl",
-   "input_slots": [
-    "1+2+3+4 (wolf)"
-   ],
-   "move_class": "special",
-   "note": "Power-up howl; meter gain while transformed. Owner canon 2026-10-19.",
-   "deathfang_original": true
-  },
-  "wolf_maul": {
-   "name": "WEREWOLF: CHAIN MAUL",
-   "input": "qcf+1 (wolf)",
-   "kof_motion": "236+A (wolf)",
-   "startup": 0.233,
-   "active": 0.05,
-   "recovery": 0.5,
-   "damage": 4,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 2,
-   "anim_ref": "kofxv:deathfang:wolf_maul",
-   "input_slots": [
-    "qcf+1 (wolf)"
-   ],
-   "move_class": "special",
-   "note": "Chained-claw ground swipe in werewolf form. Owner canon 2026-10-19.",
-   "deathfang_original": true
-  },
-  "wolf_rend": {
-   "name": "WEREWOLF: FERAL REND",
-   "input": "qcb+1 (wolf)",
-   "kof_motion": "214+A (wolf)",
-   "startup": 0.267,
-   "active": 0.05,
-   "recovery": 0.5,
-   "damage": 4,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 2,
-   "anim_ref": "kofxv:deathfang:wolf_rend",
-   "input_slots": [
-    "qcb+1 (wolf)"
-   ],
-   "move_class": "special",
-   "note": "Three-claw rending rekka, werewolf form. Owner canon 2026-10-19.",
-   "deathfang_original": true
-  },
-  "wolf_leap": {
-   "name": "WEREWOLF: MOONFANG LEAP",
-   "input": "f,n,d,d/f+2 (wolf)",
-   "kof_motion": "623+C (wolf)",
-   "startup": 0.133,
-   "active": 0.05,
-   "recovery": 0.5,
-   "damage": 5,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 2,
-   "anim_ref": "kofxv:deathfang:wolf_leap",
-   "input_slots": [
-    "f,n,d,d/f+2 (wolf)"
-   ],
-   "move_class": "special",
-   "note": "Leaping chained bite uppercut. Owner canon 2026-10-19.",
-   "deathfang_original": true
-  },
-  "wolf_nofuture": {
-   "name": "WEREWOLF: NO FUTURE SLASH",
-   "input": "qcf,hcb+1+2 (wolf)",
-   "kof_motion": "23663214+A+C (wolf)",
-   "startup": 0.167,
-   "active": 0.05,
-   "recovery": 0.5,
-   "damage": 12,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 6,
-   "anim_ref": "kofxv:deathfang:wolf_nofuture",
-   "input_slots": [
-    "qcf,hcb+1+2 (wolf)"
-   ],
-   "move_class": "special",
-   "note": "Climax: the NO FUTURE tattoo ignites; chained-werewolf eight-slash rush. Owner canon 2026-10-19.",
-   "deathfang_original": true
-  },
-  "wolf_grab": {
-   "name": "WEREWOLF: GRIEF PILEDRIVER",
-   "input": "hcb,f+1+2 (wolf)",
-   "kof_motion": "632146+AC (wolf)",
-   "startup": 0.2,
-   "active": 0.05,
-   "recovery": 0.5,
-   "damage": 6,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 3,
-   "anim_ref": "kofxv:deathfang:wolf_grab",
-   "input_slots": [
-    "hcb,f+1+2 (wolf)"
-   ],
-   "move_class": "throw",
-   "note": "Werewolf command grab; drives opponent down by the chains. Owner canon 2026-10-19.",
-   "deathfang_original": true,
-   "throw": true,
-   "throw_break": "1+2",
-   "unblockable": true,
-   "isGrab": true
-  },
-  "wolf_burst": {
-   "name": "WEREWOLF: GRIEF BURST",
-   "input": "qcb,hcf+1+2 (wolf)",
-   "kof_motion": "214632146+AC (wolf)",
-   "startup": 0.233,
-   "active": 0.05,
-   "recovery": 0.5,
-   "damage": 9,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 4,
-   "anim_ref": "kofxv:deathfang:wolf_burst",
-   "input_slots": [
-    "qcb,hcf+1+2 (wolf)"
-   ],
-   "move_class": "special",
-   "note": "Werewolf flame nova off the shackles. Owner canon 2026-10-19.",
-   "deathfang_original": true
-  },
-  "wolf_lunge": {
-   "name": "WEREWOLF: SHACKLE LUNGE",
-   "input": "f,f+3+4 (wolf)",
-   "kof_motion": "66+B+D (wolf)",
-   "startup": 0.3,
-   "active": 0.05,
-   "recovery": 0.5,
-   "damage": 4,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 2,
-   "anim_ref": "kofxv:deathfang:wolf_lunge",
-   "input_slots": [
-    "f,f+3+4 (wolf)"
-   ],
-   "move_class": "special",
-   "note": "Running shoulder lunge dragging broken chains. Owner canon 2026-10-19.",
-   "deathfang_original": true
-  },
-  "25": {
-   "name": "DEATHFANG 13 — SHACKLED RUSH",
-   "input": "f,f+1",
-   "t3_source": "heihachi",
-   "t3_row": 88,
-   "t3_command": "f,F+LP",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 16,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "t3:heihachi:row:88",
-   "input_slots": [
-    "f,f+1"
-   ],
-   "move_class": "strike",
-   "merged_from": "origin/main deathfang.json (parallel lane) — kept per anti-clobber"
-  },
-  "26": {
-   "name": "DEATHFANG 14 — GRIEF'S BURST",
-   "input": "qcf+2",
-   "t3_source": "heihachi",
-   "t3_row": 100,
-   "t3_command": "qcf+RP",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 22,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "t3:heihachi:row:100",
-   "input_slots": [
-    "qcf+2"
-   ],
-   "move_class": "special",
-   "merged_from": "origin/main deathfang.json (parallel lane) — kept per anti-clobber"
-  },
-  "27": {
-   "name": "DEATHFANG 15 — CHAIN BIND THROW",
-   "input": "f+1+3",
-   "t3_source": "heihachi",
-   "t3_row": 201,
-   "t3_command": "f+LP+LK",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 24,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "t3:heihachi:row:201",
-   "input_slots": [
-    "f+1+3"
-   ],
-   "move_class": "throw",
-   "merged_from": "origin/main deathfang.json (parallel lane) — kept per anti-clobber"
-  },
-  "28": {
-   "name": "DEATHFANG 16 — FULL MOON FRENZY",
-   "input": "1+2",
-   "t3_source": "heihachi",
-   "t3_row": 105,
-   "t3_command": "1+2",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 20,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "t3:heihachi:row:105",
-   "input_slots": [
-    "1+2"
-   ],
-   "move_class": "special",
-   "merged_from": "origin/main deathfang.json (parallel lane) — kept per anti-clobber"
-  },
-  "29": {
-   "name": "DEATHFANG 17 — WEREWOLF MAUL",
-   "input": "d/f+2",
-   "t3_source": "heihachi",
-   "t3_row": 110,
-   "t3_command": "d/f+RP",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 26,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "t3:heihachi:row:110",
-   "input_slots": [
-    "d/f+2"
-   ],
-   "move_class": "strike",
-   "merged_from": "origin/main deathfang.json (parallel lane) — kept per anti-clobber"
-  },
-  "f,f+2": {
-   "name": "DEATHFANG — MOONFANG LUNGE",
-   "input": "f,f+2",
-   "startup": 0.33,
-   "active": 0.08,
-   "recovery": 0.7,
-   "damage": 20,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 3.8,
-   "soulGain": 14,
-   "anim_ref": "wh:deathfang-wolf:sig:moonfang-lunge",
-   "input_slots": [
-    "f,f+2"
-   ],
-   "move_class": "strike",
-   "wolf_mix_in": true,
-   "mix_in_note": "Lunge patterned on KRONOS TIMBERWOLF LUNGE (kronos.json f,f+3+4) frame data."
-  },
-  "qcf+3": {
-   "name": "DEATHFANG — FERAL MAUL",
-   "input": "qcf+3",
-   "startup": 0.28,
-   "active": 0.06,
-   "recovery": 0.75,
-   "damage": 17,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 3.0,
-   "soulGain": 13,
-   "anim_ref": "wh:deathfang-wolf:sig:feral-maul",
-   "input_slots": [
-    "qcf+3"
-   ],
-   "move_class": "strike",
-   "wolf_mix_in": true,
-   "mix_in_note": "Claw rush patterned on Vega ROLLING CLAW (vega.json) frame data."
-  },
-  "d/f+1+2": {
-   "name": "DEATHFANG — GRAVE BITE",
-   "input": "d/f+1+2",
-   "startup": 0.3,
-   "active": 0.05,
-   "recovery": 0.8,
-   "damage": 18,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 2.6,
-   "soulGain": 12,
-   "anim_ref": "wh:deathfang-wolf:sig:grave-bite",
-   "input_slots": [
-    "d/f+1+2"
-   ],
-   "move_class": "strike",
-   "wolf_mix_in": true,
-   "mix_in_note": "Bite: jaw strike delivered at claw range; heavy data patterned on the SF beast cluster (PR #363)."
-  },
-  "b,b+2": {
-   "name": "DEATHFANG — CHAINBREAK RUSH",
-   "input": "b,b+2",
-   "startup": 0.35,
-   "active": 0.07,
-   "recovery": 0.72,
-   "damage": 16,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 4.2,
-   "soulGain": 13,
-   "anim_ref": "wh:deathfang-wolf:sig:chainbreak-rush",
-   "input_slots": [
-    "b,b+2"
-   ],
-   "move_class": "strike",
-   "wolf_mix_in": true,
-   "mix_in_note": "Shoulder lunge through his own chains; knockback-forward variant of the lunge data."
-  },
-  "ws+1+2": {
-   "name": "DEATHFANG — RISING MOONCLAW",
-   "input": "ws+1+2",
-   "startup": 0.25,
-   "active": 0.05,
-   "recovery": 0.78,
-   "damage": 15,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 2.4,
-   "soulGain": 12,
-   "anim_ref": "wh:deathfang-wolf:sig:rising-moonclaw",
-   "input_slots": [
-    "ws+1+2"
-   ],
-   "move_class": "strike",
-   "wolf_mix_in": true,
-   "mix_in_note": "Rising claw grown from DEATHFANG — TSUKI AGE — RISING CLAW (deathfang.json input 6)."
+  "fighter": "deathfang-werewolf",
+  "display": "DEATHFANG \u2014 CHAINED PRISONER WEREWOLF",
+  "tekken_base": "Iori Yagami (KOF)",
+  "t3_source": "heihachi",
+  "proxy": true,
+  "proxy_note": "DEATHFANG (owner 2026-10-19): proprietary character based on Iori Yagami \u2014 keeps Iori's moves, stance and animations. Reskin: prisoner/slave to his own grief and emotions, chained/shackled, emo, with the Soul Eater 'NO FUTURE' face tattoo. Transforms into a chained prisoner werewolf (attire 2 / transform form; Free the werewolf of Soul Eater folds into that canon, as he did for Iori's own inspirations). Iori (KOF) has no T3 bank \u2014 Heihachi proxy (power), same bank as iori.json.",
+  "variant": "werewolf transform form (owner Tripo b4094ecf)",
+  "base_fighter": "iori",
+  "moves": {
+    "1": {
+      "name": "DEATHFANG \u2014 TSUME \u2014 CLAW JAB",
+      "input": "1",
+      "t3_source": "heihachi",
+      "t3_row": 43,
+      "t3_command": "LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:43",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "2": {
+      "name": "DEATHFANG \u2014 HONO KOBUSHI \u2014 FLAME FIST",
+      "input": "2",
+      "t3_source": "heihachi",
+      "t3_row": 48,
+      "t3_command": "RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 12,
+      "t3_damage": 20,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:48",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "3": {
+      "name": "DEATHFANG \u2014 LOW FANG \u2014 CROUCH HEEL",
+      "input": "3",
+      "t3_source": "heihachi",
+      "t3_row": 54,
+      "t3_command": "LK",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 13,
+      "t3_damage": 22,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:54",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "4": {
+      "name": "DEATHFANG \u2014 SPIN FANG \u2014 ROUNDHOUSE",
+      "input": "4",
+      "t3_source": "heihachi",
+      "t3_row": 60,
+      "t3_command": "RK",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:60",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "5": {
+      "name": "DEATHFANG \u2014 GESHIKI: GOU FU IN",
+      "input": "f+1",
+      "t3_source": "heihachi",
+      "t3_row": 66,
+      "t3_command": "f+LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 14,
+      "t3_damage": 23,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:66",
+      "input_slots": [
+        "f+1"
+      ],
+      "move_class": "strike"
+    },
+    "6": {
+      "name": "DEATHFANG \u2014 TSUKI AGE \u2014 RISING CLAW",
+      "input": "f+2",
+      "t3_source": "heihachi",
+      "t3_row": 72,
+      "t3_command": "f+RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 12,
+      "t3_damage": 20,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:72",
+      "input_slots": [
+        "f+2"
+      ],
+      "move_class": "strike"
+    },
+    "7": {
+      "name": "DEATHFANG \u2014 SHACKLE SWEEP \u2014 CROUCH CLAW",
+      "input": "d+1",
+      "t3_source": "heihachi",
+      "t3_row": 78,
+      "t3_command": "d+LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:78",
+      "input_slots": [
+        "d+1"
+      ],
+      "move_class": "strike"
+    },
+    "8": {
+      "name": "DEATHFANG \u2014 GRIEF UPPER \u2014 CROUCH FIST",
+      "input": "d+2",
+      "t3_source": "heihachi",
+      "t3_row": 84,
+      "t3_command": "d+RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 13,
+      "t3_damage": 22,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:84",
+      "input_slots": [
+        "d+2"
+      ],
+      "move_class": "strike"
+    },
+    "9": {
+      "name": "DEATHFANG \u2014 GESHIKI: YUME BIKI",
+      "input": "b+1",
+      "t3_source": "heihachi",
+      "t3_row": 90,
+      "t3_command": "b+LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 14,
+      "t3_damage": 23,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:90",
+      "input_slots": [
+        "b+1"
+      ],
+      "move_class": "strike"
+    },
+    "10": {
+      "name": "DEATHFANG \u2014 CHAIN STRIKE",
+      "input": "b+2",
+      "t3_source": "heihachi",
+      "t3_row": 96,
+      "t3_command": "b+RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 16,
+      "t3_damage": 27,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:96",
+      "input_slots": [
+        "b+2"
+      ],
+      "move_class": "strike"
+    },
+    "11": {
+      "name": "MAIDEN MASHER",
+      "input": "qcf+1+2",
+      "t3_source": "heihachi",
+      "t3_row": 0,
+      "t3_command": "qcf+1+2",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.8,
+      "damage": 26,
+      "t3_damage": 44,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 15,
+      "anim_ref": "wh:deathfang:sig:1",
+      "input_slots": [
+        "qcf+1+2"
+      ],
+      "move_class": "special",
+      "wh_signature": true,
+      "wh_note": "WH signature: DEATHFANG (Iori's) flame combo super."
+    },
+    "12": {
+      "name": "108 SHIKI YAMIBARAI",
+      "input": "qcf+1",
+      "t3_source": "heihachi",
+      "t3_row": 0,
+      "t3_command": "qcf+1",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.8,
+      "damage": 16,
+      "t3_damage": 27,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 15,
+      "anim_ref": "wh:deathfang:sig:2",
+      "input_slots": [
+        "qcf+1"
+      ],
+      "move_class": "projectile",
+      "wh_signature": true,
+      "wh_note": "WH signature: DEATHFANG (Iori's) purple flame projectile."
+    },
+    "13": {
+      "name": "100 SHIKI: ONIYAKI",
+      "input": "f,d,df+2",
+      "t3_source": "heihachi",
+      "t3_row": 43,
+      "t3_command": "f,d,df+2",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.7,
+      "damage": 18,
+      "t3_damage": 31,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 12,
+      "anim_ref": "wh:deathfang:sig:13",
+      "input_slots": [
+        "f,d,df+2"
+      ],
+      "move_class": "special",
+      "wh_signature": true,
+      "wh_note": "DEATHFANG (Iori's) leaping flame uppercut \u2014 the chains whip up with the rise."
+    },
+    "14": {
+      "name": "212 SHIKI: KOTOTSUKI IN",
+      "input": "hcb+1+2",
+      "t3_source": "heihachi",
+      "t3_row": 43,
+      "t3_command": "hcb+1+2",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.7,
+      "damage": 20,
+      "t3_damage": 34,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 14,
+      "anim_ref": "wh:deathfang:sig:14",
+      "input_slots": [
+        "hcb+1+2"
+      ],
+      "move_class": "special",
+      "wh_signature": true,
+      "wh_note": "Rushing double-elbow; shackles clang on impact."
+    },
+    "15": {
+      "name": "127 SHIKI: AOI HANA (1)",
+      "input": "qcb+1",
+      "t3_source": "heihachi",
+      "t3_row": 43,
+      "t3_command": "qcb+1",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.7,
+      "damage": 12,
+      "t3_damage": 20,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 10,
+      "anim_ref": "wh:deathfang:sig:15",
+      "input_slots": [
+        "qcb+1"
+      ],
+      "move_class": "string",
+      "wh_signature": true,
+      "wh_note": "Rekka claw swipe one \u2014 grief given claws."
+    },
+    "16": {
+      "name": "127 SHIKI: AOI HANA (2)",
+      "input": "qcb+1,1",
+      "t3_source": "heihachi",
+      "t3_row": 43,
+      "t3_command": "qcb+1,1",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.7,
+      "damage": 12,
+      "t3_damage": 20,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 10,
+      "anim_ref": "wh:deathfang:sig:16",
+      "input_slots": [
+        "qcb+1,1"
+      ],
+      "move_class": "string",
+      "wh_signature": true,
+      "wh_note": "Rekka claw swipe two."
+    },
+    "17": {
+      "name": "127 SHIKI: AOI HANA (3)",
+      "input": "qcb+1,1,1",
+      "t3_source": "heihachi",
+      "t3_row": 43,
+      "t3_command": "qcb+1,1,1",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.7,
+      "damage": 16,
+      "t3_damage": 27,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 12,
+      "anim_ref": "wh:deathfang:sig:17",
+      "input_slots": [
+        "qcb+1,1,1"
+      ],
+      "move_class": "string",
+      "wh_signature": true,
+      "wh_note": "Rekka finisher \u2014 overhead smash, chain links scatter sparks."
+    },
+    "18": {
+      "name": "115 SHIKI: DOKUGAMI",
+      "input": "f+1,2",
+      "t3_source": "heihachi",
+      "t3_row": 43,
+      "t3_command": "f+1,2",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.7,
+      "damage": 14,
+      "t3_damage": 24,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 10,
+      "anim_ref": "wh:deathfang:sig:18",
+      "input_slots": [
+        "f+1,2"
+      ],
+      "move_class": "string",
+      "wh_signature": true,
+      "wh_note": "Poison-bite chain starter into flame claw."
+    },
+    "19": {
+      "name": "401 SHIKI: TSUMAGUSHI",
+      "input": "qcb+3",
+      "t3_source": "heihachi",
+      "t3_row": 43,
+      "t3_command": "qcb+3",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.7,
+      "damage": 15,
+      "t3_damage": 26,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 10,
+      "anim_ref": "wh:deathfang:sig:19",
+      "input_slots": [
+        "qcb+3"
+      ],
+      "move_class": "special",
+      "wh_signature": true,
+      "wh_note": "Spinning heel fang \u2014 the ankle chain whips around the kick."
+    },
+    "20": {
+      "name": "KIN 1211 SHIKI: YA OTOME",
+      "input": "qcf,hcb+1+2",
+      "t3_source": "heihachi",
+      "t3_row": 43,
+      "t3_command": "qcf,hcb+1+2",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.7,
+      "damage": 30,
+      "t3_damage": 51,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 20,
+      "anim_ref": "wh:deathfang:sig:20",
+      "input_slots": [
+        "qcf,hcb+1+2"
+      ],
+      "move_class": "special",
+      "wh_signature": true,
+      "wh_note": "DEATHFANG super: eight grief-torn claw slashes ending in the violet flame burst. The Maiden Masher lineage."
+    },
+    "21": {
+      "name": "SAKE SAKA \u2014 CLAW THROW",
+      "input": "1+3",
+      "t3_source": "heihachi",
+      "t3_row": 43,
+      "t3_command": "1+3",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.7,
+      "damage": 16,
+      "t3_damage": 27,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 3.5,
+      "soulGain": 10,
+      "anim_ref": "wh:deathfang:sig:21",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "wh_signature": true,
+      "wh_note": "Forward throw: claws rake, then the shackle slams the opponent down."
+    },
+    "22": {
+      "name": "GRIEF PILEDRIVER \u2014 BACK THROW",
+      "input": "2+4",
+      "t3_source": "heihachi",
+      "t3_row": 43,
+      "t3_command": "2+4",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.7,
+      "damage": 17,
+      "t3_damage": 29,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 3.5,
+      "soulGain": 10,
+      "anim_ref": "wh:deathfang:sig:22",
+      "input_slots": [
+        "2+4"
+      ],
+      "move_class": "throw",
+      "wh_signature": true,
+      "wh_note": "Backward throw: chained arms lock and drive the opponent into the floor."
+    },
+    "23": {
+      "name": "TRANSFORM: CHAINED PRISONER WEREWOLF",
+      "input": "1+2+3+4",
+      "t3_source": "heihachi",
+      "t3_row": 43,
+      "t3_command": "1+2+3+4",
+      "startup": 0.5,
+      "active": 0.05,
+      "recovery": 0.7,
+      "damage": 0,
+      "t3_damage": 0,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 0,
+      "soulGain": 0,
+      "anim_ref": "wh:deathfang:sig:23",
+      "input_slots": [
+        "1+2+3+4"
+      ],
+      "move_class": "special",
+      "wh_signature": true,
+      "wh_note": "TRANSFORM \u2014 DEATHFANG breaks into his chained prisoner werewolf form (Free, Soul Eater, folded into Iori's own inspiration). Uses the werewolf form moveset/attire while transformed."
+    },
+    "24": {
+      "name": "NO FUTURE",
+      "input": "qcf+3+4",
+      "t3_source": "heihachi",
+      "t3_row": 43,
+      "t3_command": "qcf+3+4",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.7,
+      "damage": 22,
+      "t3_damage": 37,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 18,
+      "anim_ref": "wh:deathfang:sig:24",
+      "input_slots": [
+        "qcf+3+4"
+      ],
+      "move_class": "special",
+      "wh_signature": true,
+      "wh_note": "DEATHFANG signature: a grief-flame dashing fang rush named for the tattoo on his face \u2014 no future, only the fight."
+    },
+    "far_1": {
+      "name": "DEATHFANG \u2014 Standing LP (Far)",
+      "input": "far 1",
+      "kof_motion": "5A (far)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:far_1",
+      "input_slots": [
+        "far 1"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Standing LP (Far) \u2014 shackled-chained reskin, NO FUTURE face tattoo. ",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "far_2": {
+      "name": "DEATHFANG \u2014 Standing RP (Far)",
+      "input": "far 2",
+      "kof_motion": "5B (far)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:far_2",
+      "input_slots": [
+        "far 2"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Standing RP (Far) \u2014 shackled-chained reskin, NO FUTURE face tattoo. ",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "far_3": {
+      "name": "DEATHFANG \u2014 Standing LK (Far)",
+      "input": "far 3",
+      "kof_motion": "5C (far)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:far_3",
+      "input_slots": [
+        "far 3"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Standing LK (Far) \u2014 shackled-chained reskin, NO FUTURE face tattoo. ",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "far_4": {
+      "name": "DEATHFANG \u2014 Standing RK (Far)",
+      "input": "far 4",
+      "kof_motion": "5D (far)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:far_4",
+      "input_slots": [
+        "far 4"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Standing RK (Far) \u2014 shackled-chained reskin, NO FUTURE face tattoo. ",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "close_1": {
+      "name": "DEATHFANG \u2014 Standing LP (Close)",
+      "input": "1 (close)",
+      "kof_motion": "cl.A",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:close_1",
+      "input_slots": [
+        "1 (close)"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Standing LP (Close) \u2014 shackled-chained reskin, NO FUTURE face tattoo. ",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "close_2": {
+      "name": "DEATHFANG \u2014 Standing RP (Close)",
+      "input": "2 (close)",
+      "kof_motion": "cl.B",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:close_2",
+      "input_slots": [
+        "2 (close)"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Standing RP (Close) \u2014 shackled-chained reskin, NO FUTURE face tattoo. ",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "close_3": {
+      "name": "DEATHFANG \u2014 Standing LK (Close)",
+      "input": "3 (close)",
+      "kof_motion": "cl.C",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:close_3",
+      "input_slots": [
+        "3 (close)"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Standing LK (Close) \u2014 shackled-chained reskin, NO FUTURE face tattoo. ",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "close_4": {
+      "name": "DEATHFANG \u2014 Standing RK (Close)",
+      "input": "4 (close)",
+      "kof_motion": "cl.D",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:close_4",
+      "input_slots": [
+        "4 (close)"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Standing RK (Close) \u2014 shackled-chained reskin, NO FUTURE face tattoo. ",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "cr_1": {
+      "name": "DEATHFANG \u2014 Crouching LP",
+      "input": "d+1 (crouch)",
+      "kof_motion": "2A",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:crouch_1",
+      "input_slots": [
+        "d+1 (crouch)"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Crouching LP \u2014 shackled-chained reskin, NO FUTURE face tattoo. ",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "cr_2": {
+      "name": "DEATHFANG \u2014 Crouching RP",
+      "input": "d+2 (crouch)",
+      "kof_motion": "2B",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:crouch_2",
+      "input_slots": [
+        "d+2 (crouch)"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Crouching RP \u2014 shackled-chained reskin, NO FUTURE face tattoo. ",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "cr_3": {
+      "name": "DEATHFANG \u2014 Crouching LK",
+      "input": "d+3 (crouch)",
+      "kof_motion": "2C",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:crouch_3",
+      "input_slots": [
+        "d+3 (crouch)"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Crouching LK \u2014 shackled-chained reskin, NO FUTURE face tattoo. Low",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "cr_4": {
+      "name": "DEATHFANG \u2014 Crouching RK",
+      "input": "d+4 (crouch)",
+      "kof_motion": "2D",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:crouch_4",
+      "input_slots": [
+        "d+4 (crouch)"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Crouching RK \u2014 shackled-chained reskin, NO FUTURE face tattoo. Low",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "jump_1": {
+      "name": "DEATHFANG \u2014 Jumping LP",
+      "input": "u/f+1",
+      "kof_motion": "j.A (jumping)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:jump_1",
+      "input_slots": [
+        "u/f+1"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Jumping LP \u2014 shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "jump_2": {
+      "name": "DEATHFANG \u2014 Jumping RP",
+      "input": "u/f+2",
+      "kof_motion": "j.B (jumping)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:jump_2",
+      "input_slots": [
+        "u/f+2"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Jumping RP \u2014 shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "jump_3": {
+      "name": "DEATHFANG \u2014 Jumping LK",
+      "input": "u/f+3",
+      "kof_motion": "j.C (jumping)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:jump_3",
+      "input_slots": [
+        "u/f+3"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Jumping LK \u2014 shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "jump_4": {
+      "name": "DEATHFANG \u2014 Jumping RK",
+      "input": "u/f+4",
+      "kof_motion": "j.D (jumping)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:jump_4",
+      "input_slots": [
+        "u/f+4"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Jumping RK \u2014 shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "njump_1": {
+      "name": "DEATHFANG \u2014 Neutral Jump LP",
+      "input": "u+1",
+      "kof_motion": "j.A (neutral jump)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:njump_1",
+      "input_slots": [
+        "u+1"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Neutral Jump LP \u2014 shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "njump_2": {
+      "name": "DEATHFANG \u2014 Neutral Jump RP",
+      "input": "u+2",
+      "kof_motion": "j.B (neutral jump)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:njump_2",
+      "input_slots": [
+        "u+2"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Neutral Jump RP \u2014 shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "njump_3": {
+      "name": "DEATHFANG \u2014 Neutral Jump LK",
+      "input": "u+3",
+      "kof_motion": "j.C (neutral jump)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:njump_3",
+      "input_slots": [
+        "u+3"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Neutral Jump LK \u2014 shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "njump_4": {
+      "name": "DEATHFANG \u2014 Neutral Jump RK",
+      "input": "u+4",
+      "kof_motion": "j.D (neutral jump)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:njump_4",
+      "input_slots": [
+        "u+4"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Neutral Jump RK \u2014 shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "hop_1": {
+      "name": "DEATHFANG \u2014 Hop LP",
+      "input": "hop u/f+1",
+      "kof_motion": "j.A (hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:hop_1",
+      "input_slots": [
+        "hop u/f+1"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Hop LP \u2014 shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "hop_2": {
+      "name": "DEATHFANG \u2014 Hop RP",
+      "input": "hop u/f+2",
+      "kof_motion": "j.B (hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:hop_2",
+      "input_slots": [
+        "hop u/f+2"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Hop RP \u2014 shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "hop_3": {
+      "name": "DEATHFANG \u2014 Hop LK",
+      "input": "hop u/f+3",
+      "kof_motion": "j.C (hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:hop_3",
+      "input_slots": [
+        "hop u/f+3"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Hop LK \u2014 shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "hop_4": {
+      "name": "DEATHFANG \u2014 Hop RK",
+      "input": "hop u/f+4",
+      "kof_motion": "j.D (hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:hop_4",
+      "input_slots": [
+        "hop u/f+4"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Hop RK \u2014 shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "nhop_1": {
+      "name": "DEATHFANG \u2014 Neutral Hop LP",
+      "input": "hop u+1",
+      "kof_motion": "j.A (neutral hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:nhop_1",
+      "input_slots": [
+        "hop u+1"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Neutral Hop LP \u2014 shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "nhop_2": {
+      "name": "DEATHFANG \u2014 Neutral Hop RP",
+      "input": "hop u+2",
+      "kof_motion": "j.B (neutral hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:nhop_2",
+      "input_slots": [
+        "hop u+2"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Neutral Hop RP \u2014 shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "nhop_3": {
+      "name": "DEATHFANG \u2014 Neutral Hop LK",
+      "input": "hop u+3",
+      "kof_motion": "j.C (neutral hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:nhop_3",
+      "input_slots": [
+        "hop u+3"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Neutral Hop LK \u2014 shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "nhop_4": {
+      "name": "DEATHFANG \u2014 Neutral Hop RK",
+      "input": "hop u+4",
+      "kof_motion": "j.D (neutral hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:nhop_4",
+      "input_slots": [
+        "hop u+4"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Neutral Hop RK \u2014 shackled-chained reskin, NO FUTURE face tattoo. Overhead (air)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "cd_stand": {
+      "name": "DEATHFANG \u2014 Blowback Attack",
+      "input": "3+4 (blowback)",
+      "kof_motion": "C+D",
+      "startup": 0.233,
+      "active": 0.067,
+      "recovery": 0.467,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:blowback",
+      "input_slots": [
+        "3+4 (blowback)"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Blowback Attack \u2014 shackled-chained reskin, NO FUTURE face tattoo. Soft knockdown; special-cancelable",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "cd_jump": {
+      "name": "DEATHFANG \u2014 Jumping Blowback Attack",
+      "input": "u/f+3+4",
+      "kof_motion": "j.C+D",
+      "startup": 0.167,
+      "active": 0.067,
+      "recovery": 0.3,
+      "damage": 3,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 2,
+      "anim_ref": "kofxv:deathfang:jump_blowback",
+      "input_slots": [
+        "u/f+3+4"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Jumping Blowback Attack \u2014 shackled-chained reskin, NO FUTURE face tattoo. Overhead (air); soft knockdown",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "cd_hop": {
+      "name": "DEATHFANG \u2014 Hop Blowback Attack",
+      "input": "hop u/f+3+4",
+      "kof_motion": "hop j.C+D",
+      "startup": 0.167,
+      "active": 0.067,
+      "recovery": 0.3,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:hop_blowback",
+      "input_slots": [
+        "hop u/f+3+4"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Hop Blowback Attack \u2014 shackled-chained reskin, NO FUTURE face tattoo. Overhead (air); soft knockdown",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 72,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "evade_fwd": {
+      "name": "DEATHFANG \u2014 Emergency Evasion (Forward)",
+      "input": "f,f (roll)",
+      "kof_motion": "A+B",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:deathfang:evade_fwd",
+      "input_slots": [
+        "f,f (roll)"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Emergency Evasion (Forward) \u2014 shackled-chained reskin, NO FUTURE face tattoo. Forward roll; invulnerable startup (KOF XV system)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "evade_back": {
+      "name": "DEATHFANG \u2014 Emergency Evasion (Back)",
+      "input": "b,b (roll)",
+      "kof_motion": "b+A+B",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:deathfang:evade_back",
+      "input_slots": [
+        "b,b (roll)"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Emergency Evasion (Back) \u2014 shackled-chained reskin, NO FUTURE face tattoo. Back roll (KOF XV system)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "gc_blowback": {
+      "name": "DEATHFANG \u2014 Guard Cancel Blowback",
+      "input": "b+1+2 (guard)",
+      "kof_motion": "b+C+D (guard)",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 2,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:gc_blowback",
+      "input_slots": [
+        "b+1+2 (guard)"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Guard Cancel Blowback \u2014 shackled-chained reskin, NO FUTURE face tattoo. Guard-cancel blowback; costs 1 stock (KOF XV system)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 37,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "gc_roll_fwd": {
+      "name": "DEATHFANG \u2014 Guard Cancel Evasion (Forward)",
+      "input": "f+1+2 (guard)",
+      "kof_motion": "A+B (guard)",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:deathfang:gc_roll_fwd",
+      "input_slots": [
+        "f+1+2 (guard)"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Guard Cancel Evasion (Forward) \u2014 shackled-chained reskin, NO FUTURE face tattoo. Guard-cancel roll forward; costs 1 stock (KOF XV system)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "gc_roll_back": {
+      "name": "DEATHFANG \u2014 Guard Cancel Evasion (Back)",
+      "input": "b+3+4 (guard)",
+      "kof_motion": "b+A+B (guard)",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:deathfang:gc_roll_back",
+      "input_slots": [
+        "b+3+4 (guard)"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Guard Cancel Evasion (Back) \u2014 shackled-chained reskin, NO FUTURE face tattoo. Guard-cancel roll back; costs 1 stock (KOF XV system)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "shatter": {
+      "name": "DEATHFANG \u2014 Shatter Strike",
+      "input": "qcf+3+4 (DF)",
+      "kof_motion": "236+C+D",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 2,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:shatter",
+      "input_slots": [
+        "qcf+3+4 (DF)"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Shatter Strike \u2014 shackled-chained reskin, NO FUTURE face tattoo. KOF XV Shatter Strike; guard point, crumple on counter hit",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "maxmode": {
+      "name": "DEATHFANG \u2014 MAX Mode",
+      "input": "1+2+3+4 (MAX)",
+      "kof_motion": "B+C (MAX Mode)",
+      "startup": 0.5,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:deathfang:maxmode",
+      "input_slots": [
+        "1+2+3+4 (MAX)"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's MAX Mode \u2014 shackled-chained reskin, NO FUTURE face tattoo. KOF XV MAX Mode activation; +damage, EX access",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "taunt": {
+      "name": "DEATHFANG \u2014 Taunt",
+      "input": "2+3 (taunt)",
+      "kof_motion": "Start (taunt)",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:deathfang:taunt",
+      "input_slots": [
+        "2+3 (taunt)"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Taunt \u2014 shackled-chained reskin, NO FUTURE face tattoo. Taunt",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "fallbreaker": {
+      "name": "DEATHFANG \u2014 Fallbreaker (Recovery Roll)",
+      "input": "1+2 (grounded)",
+      "kof_motion": "any button (downed)",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:deathfang:fallbreaker",
+      "input_slots": [
+        "1+2 (grounded)"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Fallbreaker (Recovery Roll) \u2014 shackled-chained reskin, NO FUTURE face tattoo. Recovery roll on knockdown (KOF system)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "throw_escape": {
+      "name": "DEATHFANG \u2014 Throw Escape",
+      "input": "3+4 (throw escape)",
+      "kof_motion": "C+D (on throw)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:deathfang:throw_escape",
+      "input_slots": [
+        "3+4 (throw escape)"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Throw Escape \u2014 shackled-chained reskin, NO FUTURE face tattoo. Throw tech (KOF system)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "dash": {
+      "name": "DEATHFANG \u2014 Forward Dash",
+      "input": "f,f (dash)",
+      "kof_motion": "f,f",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:deathfang:dash",
+      "input_slots": [
+        "f,f (dash)"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Forward Dash \u2014 shackled-chained reskin, NO FUTURE face tattoo. KOF run/dash step",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "backdash": {
+      "name": "DEATHFANG \u2014 Backdash",
+      "input": "b,b (backdash)",
+      "kof_motion": "b,b",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:deathfang:backdash",
+      "input_slots": [
+        "b,b (backdash)"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Backdash \u2014 shackled-chained reskin, NO FUTURE face tattoo. KOF backstep",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "rush_l1": {
+      "name": "DEATHFANG \u2014 Light Rush 1",
+      "input": "1 (Rush)",
+      "kof_motion": "A x1 (Rush)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:rush_l1",
+      "input_slots": [
+        "1 (Rush)"
+      ],
+      "move_class": "string",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Light Rush 1 \u2014 shackled-chained reskin, NO FUTURE face tattoo. KOF XV Rush auto-combo (light chain)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "rush_l2": {
+      "name": "DEATHFANG \u2014 Light Rush 2",
+      "input": "1,1 (Rush)",
+      "kof_motion": "A x2 (Rush)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:rush_l2",
+      "input_slots": [
+        "1,1 (Rush)"
+      ],
+      "move_class": "string",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Light Rush 2 \u2014 shackled-chained reskin, NO FUTURE face tattoo. KOF XV Rush auto-combo (light chain)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "rush_l3": {
+      "name": "DEATHFANG \u2014 Light Rush 3",
+      "input": "1,1,1 (Rush)",
+      "kof_motion": "A x3 (Rush)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:rush_l3",
+      "input_slots": [
+        "1,1,1 (Rush)"
+      ],
+      "move_class": "string",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Light Rush 3 \u2014 shackled-chained reskin, NO FUTURE face tattoo. KOF XV Rush auto-combo (light chain)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "rush_l4": {
+      "name": "DEATHFANG \u2014 Light Rush 4",
+      "input": "1,1,1,1 (Rush)",
+      "kof_motion": "A x4 (Rush)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:rush_l4",
+      "input_slots": [
+        "1,1,1,1 (Rush)"
+      ],
+      "move_class": "string",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Light Rush 4 \u2014 shackled-chained reskin, NO FUTURE face tattoo. KOF XV Rush auto-combo (light chain)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "rush_h1": {
+      "name": "DEATHFANG \u2014 Heavy Rush 1",
+      "input": "2 (Rush)",
+      "kof_motion": "C x1 (Rush)",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:rush_h1",
+      "input_slots": [
+        "2 (Rush)"
+      ],
+      "move_class": "string",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Heavy Rush 1 \u2014 shackled-chained reskin, NO FUTURE face tattoo. KOF XV Rush auto-combo (heavy chain)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "rush_h2": {
+      "name": "DEATHFANG \u2014 Heavy Rush 2",
+      "input": "2,2 (Rush)",
+      "kof_motion": "C x2 (Rush)",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:rush_h2",
+      "input_slots": [
+        "2,2 (Rush)"
+      ],
+      "move_class": "string",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Heavy Rush 2 \u2014 shackled-chained reskin, NO FUTURE face tattoo. KOF XV Rush auto-combo (heavy chain)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "rush_h3": {
+      "name": "DEATHFANG \u2014 Heavy Rush 3",
+      "input": "2,2,2 (Rush)",
+      "kof_motion": "C x3 (Rush)",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 3,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 2,
+      "anim_ref": "kofxv:deathfang:rush_h3",
+      "input_slots": [
+        "2,2,2 (Rush)"
+      ],
+      "move_class": "string",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Heavy Rush 3 \u2014 shackled-chained reskin, NO FUTURE face tattoo. KOF XV Rush auto-combo (heavy chain)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "rush_h4": {
+      "name": "DEATHFANG \u2014 Heavy Rush 4",
+      "input": "2,2,2,2 (Rush)",
+      "kof_motion": "C x4 (Rush)",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 3,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 2,
+      "anim_ref": "kofxv:deathfang:rush_h4",
+      "input_slots": [
+        "2,2,2,2 (Rush)"
+      ],
+      "move_class": "string",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Heavy Rush 4 \u2014 shackled-chained reskin, NO FUTURE face tattoo. KOF XV Rush auto-combo (heavy chain)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "yumebiki_1": {
+      "name": "DEATHFANG \u2014 Geshiki: Yumebiki (1st)",
+      "input": "f+1 (DF)",
+      "kof_motion": "6+A",
+      "startup": 0.183,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:yumebiki_1",
+      "input_slots": [
+        "f+1 (DF)"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Geshiki: Yumebiki (1st) \u2014 shackled-chained reskin, NO FUTURE face tattoo. Command normal; special-cancelable. Original KOF motion: f+A",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "yumebiki_2": {
+      "name": "DEATHFANG \u2014 Geshiki: Yumebiki (2nd)",
+      "input": "f+1,1",
+      "kof_motion": "6+A,A",
+      "startup": 0.183,
+      "active": 0.05,
+      "recovery": 0.25,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:yumebiki_2",
+      "input_slots": [
+        "f+1,1"
+      ],
+      "move_class": "string",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Geshiki: Yumebiki (2nd) \u2014 shackled-chained reskin, NO FUTURE face tattoo. Overhead 2nd hit. Original KOF motion: f+A,A",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "goufu_in": {
+      "name": "DEATHFANG \u2014 Geshiki: Goufu In \"Shinigami\"",
+      "input": "f+3",
+      "kof_motion": "6+B",
+      "startup": 0.283,
+      "active": 0.05,
+      "recovery": 0.283,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:goufu_in",
+      "input_slots": [
+        "f+3"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Geshiki: Goufu In \"Shinigami\" \u2014 shackled-chained reskin, NO FUTURE face tattoo. Overhead command normal. Original KOF motion: f+B",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "yuri_ori": {
+      "name": "DEATHFANG \u2014 Geshiki: Yuri Ori",
+      "input": "u/b+3 (air)",
+      "kof_motion": "b+B (air)",
+      "startup": 0.15,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:yuri_ori",
+      "input_slots": [
+        "u/b+3 (air)"
+      ],
+      "move_class": "strike",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Geshiki: Yuri Ori \u2014 shackled-chained reskin, NO FUTURE face tattoo. Air command normal; cross-up. Original KOF motion: b+B in air",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "sakahagi_f": {
+      "name": "DEATHFANG \u2014 Sakahagi",
+      "input": "1+3 (DF)",
+      "kof_motion": "f+C/D (close)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 3,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:deathfang:sakahagi_f",
+      "input_slots": [
+        "1+3 (DF)"
+      ],
+      "move_class": "throw",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Sakahagi \u2014 shackled-chained reskin, NO FUTURE face tattoo. Forward throw. Original KOF motion: b/f+C or D",
+      "throw": true,
+      "throw_break": "1",
+      "unblockable": true,
+      "isGrab": true,
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 241,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "sakahagi_b": {
+      "name": "DEATHFANG \u2014 Sakahagi (Back)",
+      "input": "2+4 (DF)",
+      "kof_motion": "b+C/D (close)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 3,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:deathfang:sakahagi_b",
+      "input_slots": [
+        "2+4 (DF)"
+      ],
+      "move_class": "throw",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Sakahagi (Back) \u2014 shackled-chained reskin, NO FUTURE face tattoo. Backward throw. Original KOF motion: b/f+C or D",
+      "throw": true,
+      "throw_break": "2",
+      "unblockable": true,
+      "isGrab": true,
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 241,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "yamibarai_c": {
+      "name": "DEATHFANG \u2014 108 SHIKI: Yami Barai (Heavy)",
+      "input": "qcf+2",
+      "kof_motion": "236+C",
+      "startup": 0.233,
+      "active": 0.067,
+      "recovery": 0.5,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:yamibarai_c",
+      "input_slots": [
+        "qcf+2"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's 108 SHIKI: Yami Barai (Heavy) \u2014 shackled-chained reskin, NO FUTURE face tattoo. Ground-travelling purple flame projectile, heavy version. Original KOF motion: 236+P",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 100,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "oniyaki_a": {
+      "name": "DEATHFANG \u2014 100 Shiki: Oniyaki (Light)",
+      "input": "f,n,d,d/f+1",
+      "kof_motion": "623+A",
+      "startup": 0.083,
+      "active": 0.1,
+      "recovery": 0.65,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:oniyaki_a",
+      "input_slots": [
+        "f,n,d,d/f+1"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's 100 Shiki: Oniyaki (Light) \u2014 shackled-chained reskin, NO FUTURE face tattoo. Rising flame uppercut; anti-air invuln. Original KOF motion: 623+P",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "oniyaki_c": {
+      "name": "DEATHFANG \u2014 100 Shiki: Oniyaki (Heavy)",
+      "input": "f,n,d,d/f+2",
+      "kof_motion": "623+C",
+      "startup": 0.1,
+      "active": 0.133,
+      "recovery": 0.767,
+      "damage": 4,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:deathfang:oniyaki_c",
+      "input_slots": [
+        "f,n,d,d/f+2"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's 100 Shiki: Oniyaki (Heavy) \u2014 shackled-chained reskin, NO FUTURE face tattoo. Two-hit rising flame uppercut. Original KOF motion: 623+P",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 100,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "oniyaki_ex": {
+      "name": "DEATHFANG \u2014 100 Shiki: Oniyaki (EX)",
+      "input": "f,n,d,d/f+1+2",
+      "kof_motion": "623+A+C",
+      "startup": 0.083,
+      "active": 0.167,
+      "recovery": 0.667,
+      "damage": 8,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 4,
+      "anim_ref": "kofxv:deathfang:oniyaki_ex",
+      "input_slots": [
+        "f,n,d,d/f+1+2"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's 100 Shiki: Oniyaki (EX) \u2014 shackled-chained reskin, NO FUTURE face tattoo. EX: multi-hit rising flame uppercut. Original KOF motion: 623+AC",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "aoihana_a1": {
+      "name": "DEATHFANG \u2014 127 Shiki: Aoi Hana (1) [Light]",
+      "input": "qcb+1 (DF)",
+      "kof_motion": "214+A",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.4,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:aoihana_a1",
+      "input_slots": [
+        "qcb+1 (DF)"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's 127 Shiki: Aoi Hana (1) [Light] \u2014 shackled-chained reskin, NO FUTURE face tattoo. Rekka stage 1. Original KOF motion: 214+P x3",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "aoihana_a2": {
+      "name": "DEATHFANG \u2014 127 Shiki: Aoi Hana (2) [Light]",
+      "input": "qcb+1,1 (DF)",
+      "kof_motion": "214+A x2",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.4,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:aoihana_a2",
+      "input_slots": [
+        "qcb+1,1 (DF)"
+      ],
+      "move_class": "string",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's 127 Shiki: Aoi Hana (2) [Light] \u2014 shackled-chained reskin, NO FUTURE face tattoo. Rekka stage 2. Original KOF motion: 214+P x3",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "aoihana_a3": {
+      "name": "DEATHFANG \u2014 127 Shiki: Aoi Hana (3) [Light]",
+      "input": "qcb+1,1,1 (DF)",
+      "kof_motion": "214+A x3",
+      "startup": 0.233,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 3,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 2,
+      "anim_ref": "kofxv:deathfang:aoihana_a3",
+      "input_slots": [
+        "qcb+1,1,1 (DF)"
+      ],
+      "move_class": "string",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's 127 Shiki: Aoi Hana (3) [Light] \u2014 shackled-chained reskin, NO FUTURE face tattoo. Rekka stage 3; overhead finisher, hard knockdown. Original KOF motion: 214+P x3",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "aoihana_c1": {
+      "name": "DEATHFANG \u2014 127 Shiki: Aoi Hana (1) [Heavy]",
+      "input": "qcb+2",
+      "kof_motion": "214+C",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.4,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:aoihana_c1",
+      "input_slots": [
+        "qcb+2"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's 127 Shiki: Aoi Hana (1) [Heavy] \u2014 shackled-chained reskin, NO FUTURE face tattoo. Rekka stage 1. Original KOF motion: 214+P x3",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "aoihana_c2": {
+      "name": "DEATHFANG \u2014 127 Shiki: Aoi Hana (2) [Heavy]",
+      "input": "qcb+2,2",
+      "kof_motion": "214+C x2",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.4,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:aoihana_c2",
+      "input_slots": [
+        "qcb+2,2"
+      ],
+      "move_class": "string",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's 127 Shiki: Aoi Hana (2) [Heavy] \u2014 shackled-chained reskin, NO FUTURE face tattoo. Rekka stage 2. Original KOF motion: 214+P x3",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "aoihana_c3": {
+      "name": "DEATHFANG \u2014 127 Shiki: Aoi Hana (3) [Heavy]",
+      "input": "qcb+2,2,2",
+      "kof_motion": "214+C x3",
+      "startup": 0.233,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 3,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 2,
+      "anim_ref": "kofxv:deathfang:aoihana_c3",
+      "input_slots": [
+        "qcb+2,2,2"
+      ],
+      "move_class": "string",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's 127 Shiki: Aoi Hana (3) [Heavy] \u2014 shackled-chained reskin, NO FUTURE face tattoo. Rekka stage 3; overhead finisher, hard knockdown. Original KOF motion: 214+P x3",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "aoihana_ex1": {
+      "name": "DEATHFANG \u2014 127 Shiki: Aoi Hana (1) [EX]",
+      "input": "qcb+1+2",
+      "kof_motion": "214+A+C",
+      "startup": 0.217,
+      "active": 0.05,
+      "recovery": 0.367,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:aoihana_ex1",
+      "input_slots": [
+        "qcb+1+2"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's 127 Shiki: Aoi Hana (1) [EX] \u2014 shackled-chained reskin, NO FUTURE face tattoo. EX rekka stage 1. Original KOF motion: 214+AC",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "aoihana_ex2": {
+      "name": "DEATHFANG \u2014 127 Shiki: Aoi Hana (2) [EX]",
+      "input": "qcb+1+2,1+2",
+      "kof_motion": "214+A+C x2",
+      "startup": 0.183,
+      "active": 0.05,
+      "recovery": 0.367,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:aoihana_ex2",
+      "input_slots": [
+        "qcb+1+2,1+2"
+      ],
+      "move_class": "string",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's 127 Shiki: Aoi Hana (2) [EX] \u2014 shackled-chained reskin, NO FUTURE face tattoo. EX rekka stage 2",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "aoihana_ex3": {
+      "name": "DEATHFANG \u2014 127 Shiki: Aoi Hana (3) [EX]",
+      "input": "qcb+1+2,1+2,1+2",
+      "kof_motion": "214+A+C x3",
+      "startup": 0.217,
+      "active": 0.05,
+      "recovery": 0.467,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:deathfang:aoihana_ex3",
+      "input_slots": [
+        "qcb+1+2,1+2,1+2"
+      ],
+      "move_class": "string",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's 127 Shiki: Aoi Hana (3) [EX] \u2014 shackled-chained reskin, NO FUTURE face tattoo. EX rekka stage 3 finisher",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "kototsuki_b": {
+      "name": "DEATHFANG \u2014 212 Shiki: Kototsuki In (Light)",
+      "input": "hcb+3",
+      "kof_motion": "63214+B",
+      "startup": 0.3,
+      "active": 0.067,
+      "recovery": 0.5,
+      "damage": 5,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:deathfang:kototsuki_b",
+      "input_slots": [
+        "hcb+3"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's 212 Shiki: Kototsuki In (Light) \u2014 shackled-chained reskin, NO FUTURE face tattoo. Running grab into flame burst. Original KOF motion: 63214+K",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 226,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "kototsuki_d": {
+      "name": "DEATHFANG \u2014 212 Shiki: Kototsuki In (Heavy)",
+      "input": "hcb+4",
+      "kof_motion": "63214+D",
+      "startup": 0.367,
+      "active": 0.067,
+      "recovery": 0.567,
+      "damage": 5,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:deathfang:kototsuki_d",
+      "input_slots": [
+        "hcb+4"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's 212 Shiki: Kototsuki In (Heavy) \u2014 shackled-chained reskin, NO FUTURE face tattoo. Running grab into flame burst, longer run. Original KOF motion: 63214+K",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 194,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "kototsuki_ex": {
+      "name": "DEATHFANG \u2014 212 Shiki: Kototsuki In (EX)",
+      "input": "hcb+3+4",
+      "kof_motion": "63214+B+D",
+      "startup": 0.267,
+      "active": 0.067,
+      "recovery": 0.5,
+      "damage": 5,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:deathfang:kototsuki_ex",
+      "input_slots": [
+        "hcb+3+4"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's 212 Shiki: Kototsuki In (EX) \u2014 shackled-chained reskin, NO FUTURE face tattoo. EX running grab; OTG-capable. Original KOF motion: 63214+BD",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "kuzukaze_a": {
+      "name": "DEATHFANG \u2014 Kuzukaze (Light)",
+      "input": "hcb,f+1",
+      "kof_motion": "632146+A",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 0,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "kofxv:deathfang:kuzukaze_a",
+      "input_slots": [
+        "hcb,f+1"
+      ],
+      "move_class": "throw",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Kuzukaze (Light) \u2014 shackled-chained reskin, NO FUTURE face tattoo. Command grab; leaves opponent stunned for mix-up. Original KOF motion: 632146+P (near)",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true,
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 241,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "kuzukaze_c": {
+      "name": "DEATHFANG \u2014 Kuzukaze (Heavy)",
+      "input": "hcb,f+2",
+      "kof_motion": "632146+C",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 0,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "kofxv:deathfang:kuzukaze_c",
+      "input_slots": [
+        "hcb,f+2"
+      ],
+      "move_class": "throw",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Kuzukaze (Heavy) \u2014 shackled-chained reskin, NO FUTURE face tattoo. Command grab, slower. Original KOF motion: 632146+P (near)",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true,
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 241,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "kuzukaze_ex": {
+      "name": "DEATHFANG \u2014 Kuzukaze (EX)",
+      "input": "hcb,f+1+2",
+      "kof_motion": "632146+A+C",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 0,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "kofxv:deathfang:kuzukaze_ex",
+      "input_slots": [
+        "hcb,f+1+2"
+      ],
+      "move_class": "throw",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Kuzukaze (EX) \u2014 shackled-chained reskin, NO FUTURE face tattoo. EX command grab; faster. Original KOF motion: 632146+AC",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true,
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 241,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "tsumagushi_b": {
+      "name": "DEATHFANG \u2014 311 Shiki: Tsumagushi (Light)",
+      "input": "qcb+3 (DF)",
+      "kof_motion": "214+B",
+      "startup": 0.267,
+      "active": 0.05,
+      "recovery": 0.433,
+      "damage": 3,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:deathfang:tsumagushi_b",
+      "input_slots": [
+        "qcb+3 (DF)"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's 311 Shiki: Tsumagushi (Light) \u2014 shackled-chained reskin, NO FUTURE face tattoo. Spinning claw kick (KOF series). Original KOF motion: 214+K",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 226,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "tsumagushi_d": {
+      "name": "DEATHFANG \u2014 311 Shiki: Tsumagushi (Heavy)",
+      "input": "qcb+4",
+      "kof_motion": "214+D",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 3,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:deathfang:tsumagushi_d",
+      "input_slots": [
+        "qcb+4"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's 311 Shiki: Tsumagushi (Heavy) \u2014 shackled-chained reskin, NO FUTURE face tattoo. Spinning claw kick, heavy (KOF series). Original KOF motion: 214+K",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 194,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "tsumagushi_ex": {
+      "name": "DEATHFANG \u2014 311 Shiki: Tsumagushi (EX)",
+      "input": "qcb+3+4",
+      "kof_motion": "214+B+D",
+      "startup": 0.25,
+      "active": 0.067,
+      "recovery": 0.467,
+      "damage": 4,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:deathfang:tsumagushi_ex",
+      "input_slots": [
+        "qcb+3+4"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's 311 Shiki: Tsumagushi (EX) \u2014 shackled-chained reskin, NO FUTURE face tattoo. EX spinning claw kick (KOF series). Original KOF motion: 214+BD",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "yaotome_a": {
+      "name": "DEATHFANG \u2014 Kin 1211 Shiki: Ya Otome",
+      "input": "qcf,hcb+1",
+      "kof_motion": "236,63214+A",
+      "startup": 0.133,
+      "active": 0.5,
+      "recovery": 1.0,
+      "damage": 6,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 3,
+      "anim_ref": "kofxv:deathfang:ya_otome",
+      "input_slots": [
+        "qcf,hcb+1"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Kin 1211 Shiki: Ya Otome \u2014 shackled-chained reskin, NO FUTURE face tattoo. Super: dashing eight-claw rush ending in flame burst (Maiden Masher). Original KOF motion: 23663214+P",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "yaotome_c": {
+      "name": "DEATHFANG \u2014 Kin 1211 Shiki: Ya Otome (MAX)",
+      "input": "qcf,hcb+2",
+      "kof_motion": "236,63214+C",
+      "startup": 0.133,
+      "active": 0.567,
+      "recovery": 1.033,
+      "damage": 8,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 4,
+      "anim_ref": "kofxv:deathfang:ya_otome_max",
+      "input_slots": [
+        "qcf,hcb+2"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Kin 1211 Shiki: Ya Otome (MAX) \u2014 shackled-chained reskin, NO FUTURE face tattoo. MAX super version. Original KOF motion: 23663214+P",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "saika": {
+      "name": "DEATHFANG \u2014 Ura 316 Shiki: Saika",
+      "input": "during Ya Otome, qcf,qcf,qcf,qcf+1+2",
+      "kof_motion": "Ya Otome, then 236236236236+A+C",
+      "startup": 0.083,
+      "active": 0.167,
+      "recovery": 0.833,
+      "damage": 3,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:deathfang:saika",
+      "input_slots": [
+        "during Ya Otome, qcf,qcf,qcf,qcf+1+2"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Ura 316 Shiki: Saika \u2014 shackled-chained reskin, NO FUTURE face tattoo. Follow-up finisher after Ya Otome (KOF XIII). Original KOF motion: during Ya Otome, 236x4+AC",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "yamisogi": {
+      "name": "DEATHFANG \u2014 Ura 1207 Shiki: Yamisogi",
+      "input": "qcf,qcf+1",
+      "kof_motion": "236236+A",
+      "startup": 0.167,
+      "active": 0.133,
+      "recovery": 0.917,
+      "damage": 7,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 4,
+      "anim_ref": "kofxv:deathfang:yamisogi",
+      "input_slots": [
+        "qcf,qcf+1"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Ura 1207 Shiki: Yamisogi \u2014 shackled-chained reskin, NO FUTURE face tattoo. Twin flame pillars super (KOF XIII EX Iori DM, legacy). Original KOF motion: 236236+P",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 100,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "ya_sakazuki": {
+      "name": "DEATHFANG \u2014 Ura 108 SHIKI: Ya Sakazuki",
+      "input": "qcb,hcf+1+2",
+      "kof_motion": "214,632146+A+C",
+      "startup": 0.233,
+      "active": 0.333,
+      "recovery": 1.167,
+      "damage": 14,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 7,
+      "anim_ref": "kofxv:deathfang:ya_sakazuki",
+      "input_slots": [
+        "qcb,hcf+1+2"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Ura 108 SHIKI: Ya Sakazuki \u2014 shackled-chained reskin, NO FUTURE face tattoo. CLIMAX: eight wine-cup flame pillars freeze the opponent in place. Original KOF motion: 214632146+AC (KOF XV Climax)",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "homurabotogi": {
+      "name": "DEATHFANG \u2014 Ura 1029 Shiki: Homurabotogi",
+      "input": "qcb,hcf+1",
+      "kof_motion": "214,632146+A",
+      "startup": 0.2,
+      "active": 0.4,
+      "recovery": 1.167,
+      "damage": 14,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 7,
+      "anim_ref": "kofxv:deathfang:homurabotogi",
+      "input_slots": [
+        "qcb,hcf+1"
+      ],
+      "move_class": "special",
+      "note": "DEATHFANG canon (owner 2026-10-19): Iori's Ura 1029 Shiki: Homurabotogi \u2014 shackled-chained reskin, NO FUTURE face tattoo. Legacy NeoMAX (KOF XIII). Original KOF motion: 214632146+AC",
+      "base_fighter": "iori",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "wolf_howl": {
+      "name": "TRANSFORMED: SHACKLE HOWL",
+      "input": "1+2+3+4 (wolf)",
+      "kof_motion": "Start (transformed)",
+      "startup": 0.5,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 0,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 8,
+      "anim_ref": "kofxv:deathfang:wolf_howl",
+      "input_slots": [
+        "1+2+3+4 (wolf)"
+      ],
+      "move_class": "special",
+      "note": "Power-up howl; meter gain while transformed. Owner canon 2026-10-19.",
+      "deathfang_original": true,
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "wolf_maul": {
+      "name": "WEREWOLF: CHAIN MAUL",
+      "input": "qcf+1 (wolf)",
+      "kof_motion": "236+A (wolf)",
+      "startup": 0.233,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 4,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:deathfang:wolf_maul",
+      "input_slots": [
+        "qcf+1 (wolf)"
+      ],
+      "move_class": "special",
+      "note": "Chained-claw ground swipe in werewolf form. Owner canon 2026-10-19.",
+      "deathfang_original": true,
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "wolf_rend": {
+      "name": "WEREWOLF: FERAL REND",
+      "input": "qcb+1 (wolf)",
+      "kof_motion": "214+A (wolf)",
+      "startup": 0.267,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 4,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:deathfang:wolf_rend",
+      "input_slots": [
+        "qcb+1 (wolf)"
+      ],
+      "move_class": "special",
+      "note": "Three-claw rending rekka, werewolf form. Owner canon 2026-10-19.",
+      "deathfang_original": true,
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 100,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "wolf_leap": {
+      "name": "WEREWOLF: MOONFANG LEAP",
+      "input": "f,n,d,d/f+2 (wolf)",
+      "kof_motion": "623+C (wolf)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 5,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:deathfang:wolf_leap",
+      "input_slots": [
+        "f,n,d,d/f+2 (wolf)"
+      ],
+      "move_class": "special",
+      "note": "Leaping chained bite uppercut. Owner canon 2026-10-19.",
+      "deathfang_original": true,
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "wolf_nofuture": {
+      "name": "WEREWOLF: NO FUTURE SLASH",
+      "input": "qcf,hcb+1+2 (wolf)",
+      "kof_motion": "23663214+A+C (wolf)",
+      "startup": 0.167,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 12,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 6,
+      "anim_ref": "kofxv:deathfang:wolf_nofuture",
+      "input_slots": [
+        "qcf,hcb+1+2 (wolf)"
+      ],
+      "move_class": "special",
+      "note": "Climax: the NO FUTURE tattoo ignites; chained-werewolf eight-slash rush. Owner canon 2026-10-19.",
+      "deathfang_original": true,
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "wolf_grab": {
+      "name": "WEREWOLF: GRIEF PILEDRIVER",
+      "input": "hcb,f+1+2 (wolf)",
+      "kof_motion": "632146+AC (wolf)",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 6,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 3,
+      "anim_ref": "kofxv:deathfang:wolf_grab",
+      "input_slots": [
+        "hcb,f+1+2 (wolf)"
+      ],
+      "move_class": "throw",
+      "note": "Werewolf command grab; drives opponent down by the chains. Owner canon 2026-10-19.",
+      "deathfang_original": true,
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true,
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 241,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "wolf_burst": {
+      "name": "WEREWOLF: GRIEF BURST",
+      "input": "qcb,hcf+1+2 (wolf)",
+      "kof_motion": "214632146+AC (wolf)",
+      "startup": 0.233,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 9,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 4,
+      "anim_ref": "kofxv:deathfang:wolf_burst",
+      "input_slots": [
+        "qcb,hcf+1+2 (wolf)"
+      ],
+      "move_class": "special",
+      "note": "Werewolf flame nova off the shackles. Owner canon 2026-10-19.",
+      "deathfang_original": true,
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "wolf_lunge": {
+      "name": "WEREWOLF: SHACKLE LUNGE",
+      "input": "f,f+3+4 (wolf)",
+      "kof_motion": "66+B+D (wolf)",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 4,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:deathfang:wolf_lunge",
+      "input_slots": [
+        "f,f+3+4 (wolf)"
+      ],
+      "move_class": "special",
+      "note": "Running shoulder lunge dragging broken chains. Owner canon 2026-10-19.",
+      "deathfang_original": true,
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "25": {
+      "name": "DEATHFANG 13 \u2014 SHACKLED RUSH",
+      "input": "f,f+1",
+      "t3_source": "heihachi",
+      "t3_row": 88,
+      "t3_command": "f,F+LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 16,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:88",
+      "input_slots": [
+        "f,f+1"
+      ],
+      "move_class": "strike",
+      "merged_from": "origin/main deathfang.json (parallel lane) \u2014 kept per anti-clobber"
+    },
+    "26": {
+      "name": "DEATHFANG 14 \u2014 GRIEF'S BURST",
+      "input": "qcf+2",
+      "t3_source": "heihachi",
+      "t3_row": 100,
+      "t3_command": "qcf+RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 22,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:100",
+      "input_slots": [
+        "qcf+2"
+      ],
+      "move_class": "special",
+      "merged_from": "origin/main deathfang.json (parallel lane) \u2014 kept per anti-clobber"
+    },
+    "27": {
+      "name": "DEATHFANG 15 \u2014 CHAIN BIND THROW",
+      "input": "f+1+3",
+      "t3_source": "heihachi",
+      "t3_row": 201,
+      "t3_command": "f+LP+LK",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 24,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:201",
+      "input_slots": [
+        "f+1+3"
+      ],
+      "move_class": "throw",
+      "merged_from": "origin/main deathfang.json (parallel lane) \u2014 kept per anti-clobber"
+    },
+    "28": {
+      "name": "DEATHFANG 16 \u2014 FULL MOON FRENZY",
+      "input": "1+2",
+      "t3_source": "heihachi",
+      "t3_row": 105,
+      "t3_command": "1+2",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 20,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:105",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "special",
+      "merged_from": "origin/main deathfang.json (parallel lane) \u2014 kept per anti-clobber"
+    },
+    "29": {
+      "name": "DEATHFANG 17 \u2014 WEREWOLF MAUL",
+      "input": "d/f+2",
+      "t3_source": "heihachi",
+      "t3_row": 110,
+      "t3_command": "d/f+RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 26,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:110",
+      "input_slots": [
+        "d/f+2"
+      ],
+      "move_class": "strike",
+      "merged_from": "origin/main deathfang.json (parallel lane) \u2014 kept per anti-clobber"
+    },
+    "f,f+2": {
+      "name": "DEATHFANG \u2014 MOONFANG LUNGE",
+      "input": "f,f+2",
+      "startup": 0.33,
+      "active": 0.08,
+      "recovery": 0.7,
+      "damage": 20,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.8,
+      "soulGain": 14,
+      "anim_ref": "wh:deathfang-wolf:sig:moonfang-lunge",
+      "input_slots": [
+        "f,f+2"
+      ],
+      "move_class": "strike",
+      "wolf_mix_in": true,
+      "mix_in_note": "Lunge patterned on KRONOS TIMBERWOLF LUNGE (kronos.json f,f+3+4) frame data.",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "qcf+3": {
+      "name": "DEATHFANG \u2014 FERAL MAUL",
+      "input": "qcf+3",
+      "startup": 0.28,
+      "active": 0.06,
+      "recovery": 0.75,
+      "damage": 17,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 3.0,
+      "soulGain": 13,
+      "anim_ref": "wh:deathfang-wolf:sig:feral-maul",
+      "input_slots": [
+        "qcf+3"
+      ],
+      "move_class": "strike",
+      "wolf_mix_in": true,
+      "mix_in_note": "Claw rush patterned on Vega ROLLING CLAW (vega.json) frame data.",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "d/f+1+2": {
+      "name": "DEATHFANG \u2014 GRAVE BITE",
+      "input": "d/f+1+2",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.8,
+      "damage": 18,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.6,
+      "soulGain": 12,
+      "anim_ref": "wh:deathfang-wolf:sig:grave-bite",
+      "input_slots": [
+        "d/f+1+2"
+      ],
+      "move_class": "strike",
+      "wolf_mix_in": true,
+      "mix_in_note": "Bite: jaw strike delivered at claw range; heavy data patterned on the SF beast cluster (PR #363).",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 110,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
+    },
+    "b,b+2": {
+      "name": "DEATHFANG \u2014 CHAINBREAK RUSH",
+      "input": "b,b+2",
+      "startup": 0.35,
+      "active": 0.07,
+      "recovery": 0.72,
+      "damage": 16,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 13,
+      "anim_ref": "wh:deathfang-wolf:sig:chainbreak-rush",
+      "input_slots": [
+        "b,b+2"
+      ],
+      "move_class": "strike",
+      "wolf_mix_in": true,
+      "mix_in_note": "Shoulder lunge through his own chains; knockback-forward variant of the lunge data.",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 37,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "ws+1+2": {
+      "name": "DEATHFANG \u2014 RISING MOONCLAW",
+      "input": "ws+1+2",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.78,
+      "damage": 15,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.4,
+      "soulGain": 12,
+      "anim_ref": "wh:deathfang-wolf:sig:rising-moonclaw",
+      "input_slots": [
+        "ws+1+2"
+      ],
+      "move_class": "strike",
+      "wolf_mix_in": true,
+      "mix_in_note": "Rising claw grown from DEATHFANG \u2014 TSUKI AGE \u2014 RISING CLAW (deathfang.json input 6).",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 52,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    }
+  },
+  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+  "schema_version": 2,
+  "transform": {
+    "form": "CHAINED PRISONER WEREWOLF",
+    "attire": "attire2",
+    "note": "Werewolf transform form (owner 2026-10-19). Free the werewolf (Soul Eater) is one of Iori's own inspirations and folds into this form's canon."
+  },
+  "canon_note": "Werewolf form: the FULL DEATHFANG set (122 moves + CRIMSON HOWL) carried over unchanged \u2014 stance and normal locomotion stay Iori's in this form too (owner's werewolf stance rule, 2026-10-20). Beast flavor lives ONLY in the wolf_mix_in attacks added below (claw/bite/lunge), patterned on real teardown-library entries (KRONOS Timberwolf Lunge, Vega Rolling Claw).",
+  "specials": [
+    {
+      "input": "qcb,hcf+1",
+      "t3_row": 100,
+      "damage": 30,
+      "name": "CRIMSON HOWL (werewolf super)"
+    }
+  ],
+  "forward_merge": {
+    "date": "2026-10-20",
+    "pr": 355,
+    "method": "semantic union (PR #363 playbook)",
+    "branch_moves": 117,
+    "main_moves": 29,
+    "merged_moves": 122,
+    "shared_keys": 24,
+    "rekeys": [],
+    "note": "Every entry from both versions verified present; shared input keys were byte-identical, so no rekeys were needed.",
+    "carried_branch_keys": {},
+    "superseded_branch_scalars": {
+      "frame_convention": {
+        "branch": "KOF XV 60fps -> seconds; damage = round(KOF dmg x 0.03), caps: normals 20 / specials+throws 25 / supers+climax 45; soulGain ~= dmg/2 cap 15. Frame values converted from KOF frame-data norms (dreamcancel / SNK wiki).",
+        "main": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP"
+      }
+    }
+  },
+  "base_moveset": "deathfang",
+  "canon_moves": [
+    {
+      "name": "DEATHFANG \u2014 CHAINBREAK RUSH",
+      "input": "b,b+2",
+      "display_input": "b,b+RP2",
+      "input_original": "`b,b+2`",
+      "anim_ref": "wh:deathfang-wolf:sig:chainbreak-rush",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "strike",
+      "limb": "armL",
+      "damage": 16,
+      "startup_frames": 21,
+      "canon": true,
+      "canon_owner": "DEATHFANG-WOLF",
+      "properties": {
+        "stance": "standing",
+        "direction": "b",
+        "type": "strike",
+        "limb": null,
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "DEATHFANG \u2014 FERAL MAUL",
+      "input": "qcf+3",
+      "display_input": "qcf+LK3",
+      "input_original": "`qcf+3`",
+      "anim_ref": "wh:deathfang-wolf:sig:feral-maul",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "strike",
+      "limb": "armL",
+      "damage": 17,
+      "startup_frames": 17,
+      "canon": true,
+      "canon_owner": "DEATHFANG-WOLF",
+      "properties": {
+        "stance": "standing",
+        "direction": "qcf",
+        "type": "strike",
+        "limb": "legL",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "DEATHFANG \u2014 GRAVE BITE",
+      "input": "d/f+1+2",
+      "display_input": "d/f+LP1+RP2",
+      "input_original": "`d/f+1+2`",
+      "anim_ref": "wh:deathfang-wolf:sig:grave-bite",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "strike",
+      "limb": "armR",
+      "damage": 18,
+      "startup_frames": 18,
+      "canon": true,
+      "canon_owner": "DEATHFANG-WOLF",
+      "properties": {
+        "stance": "crouching",
+        "direction": "d/f",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "DEATHFANG \u2014 MOONFANG LUNGE",
+      "input": "f,f+2",
+      "display_input": "f,f+RP2",
+      "input_original": "`f,f+2`",
+      "anim_ref": "wh:deathfang-wolf:sig:moonfang-lunge",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "strike",
+      "limb": "armR",
+      "damage": 20,
+      "startup_frames": 20,
+      "canon": true,
+      "canon_owner": "DEATHFANG-WOLF",
+      "properties": {
+        "stance": "standing",
+        "direction": "f",
+        "type": "strike",
+        "limb": null,
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "DEATHFANG \u2014 RISING MOONCLAW",
+      "input": "ws+1+2",
+      "display_input": "ws+LP1+RP2",
+      "input_original": "`ws+1+2`",
+      "anim_ref": "wh:deathfang-wolf:sig:rising-moonclaw",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "strike",
+      "limb": "armR",
+      "damage": 15,
+      "startup_frames": 15,
+      "canon": true,
+      "canon_owner": "DEATHFANG-WOLF",
+      "properties": {
+        "stance": "standing",
+        "direction": "ws",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "TRANSFORMED: SHACKLE HOWL",
+      "input": "1+2+3+4",
+      "display_input": "LP1+RP2+LK3+RK4 (wolf)",
+      "anim_ref": "made:deathfang-werewolf:transformed-shackle-howl",
+      "method": "ADAPT",
+      "source": "ADAPT from KOF XV motion Start (transformed) filed in deathfang-werewolf.json; clip NOT yet authored",
+      "move_class": "special",
+      "limb": "both",
+      "damage": 0,
+      "startup_frames": 30,
+      "form": "wolf",
+      "canon": true,
+      "canon_owner": "DEATHFANG-WOLF",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "system_note": "System collision: LP1+RP2+LK3+RK4 is also Nine-Soul Release at full meter (system super). Canon move is stance/form-gated where noted; resolver precedence is the canon file open question Q5 \u2014 owner decision needed before in-game wiring.",
+      "wiring": "existing entry"
+    },
+    {
+      "name": "WEREWOLF: CHAIN MAUL",
+      "input": "qcf+1",
+      "display_input": "qcf+LP1 (wolf)",
+      "anim_ref": "made:deathfang-werewolf:werewolf-chain-maul",
+      "method": "ADAPT",
+      "source": "ADAPT from KOF XV motion 236+A (wolf) filed in deathfang-werewolf.json; clip NOT yet authored",
+      "move_class": "special",
+      "limb": "armL",
+      "damage": 4,
+      "startup_frames": 14,
+      "form": "wolf",
+      "canon": true,
+      "canon_owner": "DEATHFANG-WOLF",
+      "properties": {
+        "stance": "standing",
+        "direction": "qcf",
+        "type": "strike",
+        "limb": "armL",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "WEREWOLF: FERAL REND",
+      "input": "qcb+1",
+      "display_input": "qcb+LP1 (wolf)",
+      "anim_ref": "made:deathfang-werewolf:werewolf-feral-rend",
+      "method": "ADAPT",
+      "source": "ADAPT from KOF XV motion 214+A (wolf) filed in deathfang-werewolf.json; clip NOT yet authored",
+      "move_class": "special",
+      "limb": "armR",
+      "damage": 4,
+      "startup_frames": 16,
+      "form": "wolf",
+      "canon": true,
+      "canon_owner": "DEATHFANG-WOLF",
+      "properties": {
+        "stance": "standing",
+        "direction": "qcb",
+        "type": "strike",
+        "limb": "armL",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "WEREWOLF: MOONFANG LEAP",
+      "input": "f,n,d,d/f+2",
+      "display_input": "f,n,d,d/f+RP2 (wolf)",
+      "anim_ref": "made:deathfang-werewolf:werewolf-moonfang-leap",
+      "method": "ADAPT",
+      "source": "ADAPT from KOF XV motion 623+C (wolf) filed in deathfang-werewolf.json; clip NOT yet authored",
+      "move_class": "special",
+      "limb": "both",
+      "damage": 5,
+      "startup_frames": 8,
+      "form": "wolf",
+      "canon": true,
+      "canon_owner": "DEATHFANG-WOLF",
+      "properties": {
+        "stance": "standing",
+        "direction": "f",
+        "type": "strike",
+        "limb": null,
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "WEREWOLF: NO FUTURE SLASH",
+      "input": "qcf,hcb+1+2",
+      "display_input": "qcf,hcb+LP1+RP2 (wolf)",
+      "anim_ref": "made:deathfang-werewolf:werewolf-no-future-slash",
+      "method": "ADAPT",
+      "source": "ADAPT from KOF XV motion 23663214+A+C (wolf) filed in deathfang-werewolf.json; clip NOT yet authored",
+      "move_class": "special",
+      "limb": "both",
+      "damage": 12,
+      "startup_frames": 10,
+      "form": "wolf",
+      "canon": true,
+      "canon_owner": "DEATHFANG-WOLF",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": null,
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "WEREWOLF: GRIEF PILEDRIVER",
+      "input": "hcb,f+1+2",
+      "display_input": "hcb,f+LP1+RP2 (wolf)",
+      "anim_ref": "made:deathfang-werewolf:werewolf-grief-piledriver",
+      "method": "ADAPT",
+      "source": "ADAPT from KOF XV motion 632146+AC (wolf) filed in deathfang-werewolf.json; clip NOT yet authored",
+      "move_class": "throw",
+      "limb": "both",
+      "damage": 6,
+      "startup_frames": 12,
+      "form": "wolf",
+      "canon": true,
+      "canon_owner": "DEATHFANG-WOLF",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "grapple",
+        "limb": null,
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "WEREWOLF: GRIEF BURST",
+      "input": "qcb,hcf+1+2",
+      "display_input": "qcb,hcf+LP1+RP2 (wolf)",
+      "anim_ref": "made:deathfang-werewolf:werewolf-grief-burst",
+      "method": "ADAPT",
+      "source": "ADAPT from KOF XV motion 214632146+AC (wolf) filed in deathfang-werewolf.json; clip NOT yet authored",
+      "move_class": "special",
+      "limb": "both",
+      "damage": 9,
+      "startup_frames": 14,
+      "form": "wolf",
+      "canon": true,
+      "canon_owner": "DEATHFANG-WOLF",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": null,
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "WEREWOLF: SHACKLE LUNGE",
+      "input": "f,f+3+4",
+      "display_input": "f,f+LK3+RK4 (wolf)",
+      "anim_ref": "made:deathfang-werewolf:werewolf-shackle-lunge",
+      "method": "ADAPT",
+      "source": "ADAPT from KOF XV motion 66+B+D (wolf) filed in deathfang-werewolf.json; clip NOT yet authored",
+      "move_class": "special",
+      "limb": "both",
+      "damage": 4,
+      "startup_frames": 18,
+      "form": "wolf",
+      "canon": true,
+      "canon_owner": "DEATHFANG-WOLF",
+      "properties": {
+        "stance": "standing",
+        "direction": "f",
+        "type": "strike",
+        "limb": null,
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
   }
- },
- "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
- "schema_version": 2,
- "transform": {
-  "form": "CHAINED PRISONER WEREWOLF",
-  "attire": "attire2",
-  "note": "Werewolf transform form (owner 2026-10-19). Free the werewolf (Soul Eater) is one of Iori's own inspirations and folds into this form's canon."
- },
- "canon_note": "Werewolf form: the FULL DEATHFANG set (122 moves + CRIMSON HOWL) carried over unchanged — stance and normal locomotion stay Iori's in this form too (owner's werewolf stance rule, 2026-10-20). Beast flavor lives ONLY in the wolf_mix_in attacks added below (claw/bite/lunge), patterned on real teardown-library entries (KRONOS Timberwolf Lunge, Vega Rolling Claw).",
- "specials": [
-  {
-   "input": "qcb,hcf+1",
-   "t3_row": 100,
-   "damage": 30,
-   "name": "CRIMSON HOWL (werewolf super)"
-  }
- ],
- "forward_merge": {
-  "date": "2026-10-20",
-  "pr": 355,
-  "method": "semantic union (PR #363 playbook)",
-  "branch_moves": 117,
-  "main_moves": 29,
-  "merged_moves": 122,
-  "shared_keys": 24,
-  "rekeys": [],
-  "note": "Every entry from both versions verified present; shared input keys were byte-identical, so no rekeys were needed.",
-  "carried_branch_keys": {},
-  "superseded_branch_scalars": {
-   "frame_convention": {
-    "branch": "KOF XV 60fps -> seconds; damage = round(KOF dmg x 0.03), caps: normals 20 / specials+throws 25 / supers+climax 45; soulGain ~= dmg/2 cap 15. Frame values converted from KOF frame-data norms (dreamcancel / SNK wiki).",
-    "main": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP"
-   }
-  }
- },
- "base_moveset": "deathfang"
 }

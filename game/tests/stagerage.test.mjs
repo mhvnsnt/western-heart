@@ -33,7 +33,7 @@ def wchunk(d, data):
 def wcp(s, d):
     wchunk(d, open(s, 'rb').read())
     time.sleep(0.1)
-for fn in ['movesets.js', 'rage.js', 'audio.js', 'soulurge.js']:
+for fn in ['movesets.js', 'full-movelist.js', 'canon-names.js', 'rage.js', 'audio.js', 'soulurge.js', 'destruction.js']:
     wcp(os.path.join(src, fn), os.path.join(dst, fn))
 wchunk(os.path.join(dst, 'three-stub.js'), '''__THREESTUB__''')
 wchunk(os.path.join(dst, 'fighter-stub.js'),
@@ -47,14 +47,20 @@ wchunk(os.path.join(dst, 'package.json'), '{"type":"module"}')
 print('staged ok')
 `;
 const THREE_STUB = `
-export class Group { constructor(){ this.children = []; this.parent = null; this.name=''; }
+export class _Rot { constructor(){ this.x=0; this.y=0; this.z=0; }
+  set(x,y,z){ this.x=x; this.y=y; this.z=z; return this; } }
+export class Group { constructor(){ this.children = []; this.parent = null; this.name='';
+    this.position = new Vector3(); this.rotation = new _Rot(); }
   add(...o){ for (const x of o){ x.parent = this; this.children.push(x); } }
   remove(x){ this.children = this.children.filter(c => c !== x); }
   clear(){ this.children = []; } }
-export class Mesh { constructor(g=null, m=null){ this.geometry=g; this.material=m||{opacity:1}; this.position=new Vector3(); this.rotation={x:0,y:0,z:0}; this.scale={setScalar(){}}; this.visible=true; this.castShadow=false; this.receiveShadow=false; } }
+export class Mesh { constructor(g=null, m=null){ this.geometry=g; this.material=m||{opacity:1}; this.position=new Vector3(); this.rotation=new _Rot(); this.scale={setScalar(){}}; this.visible=true; this.castShadow=false; this.receiveShadow=false; } }
 export class PlaneGeometry { constructor(){} }
 export class BoxGeometry { constructor(){} }
 export class CircleGeometry { constructor(){} }
+export class Vector2 { constructor(x=0,y=0){ this.x=x; this.y=y; } }
+export class Shape { constructor(pts=[]){ this.points=pts; } }
+export class ExtrudeGeometry { constructor(){} translate(){ return this; } dispose(){} }
 export class MeshBasicMaterial { constructor(o={}){ Object.assign(this, o); if (this.opacity===undefined) this.opacity=1; } }
 export class MeshStandardMaterial { constructor(o={}){ Object.assign(this, o); if (this.opacity===undefined) this.opacity=1; } }
 export class CanvasTexture { constructor(){ this.colorSpace=''; } }
@@ -248,7 +254,7 @@ test('StageBreaks: wall break on heavy slam at the bound', () => {
   assert.equal(sbk.broken.size, 1, 'wall broken');
   assert.deepEqual(fighterStubMod.calls.arenaLimit, [12.9], 'bounds extended past the breach');
   assert.equal(def.hp, 92, 'wall-break bonus damage applied');
-  assert.ok(banners.includes('WALL BREAK'));
+  assert.ok(!banners.includes('WALL BREAK'), 'no on-screen break text: Tekken shows breaks via destruction + camera (UI immersion fix 2026-10-24)');
   // once per match: no double-break
   sbk.checkHit(atk, def, { knock: 5 }, 'hit');
   assert.equal(sbk.broken.size, 1);
@@ -295,7 +301,7 @@ test('StageBreaks: floor break drops the level on a slam in the zone', () => {
   const gyCalls = fighterStubMod.calls.groundY;
   assert.equal(gyCalls[gyCalls.length - 1], -6, 'setGroundY(-6) called last');
   assert.equal(def.hp, 88, 'floor-break slam bonus applied');
-  assert.ok(banners.includes('FLOOR BREAK'));
+  assert.ok(!banners.includes('FLOOR BREAK'), 'no on-screen break text: Tekken shows breaks via destruction + camera (UI immersion fix 2026-10-24)');
   // outside the zone: no break
   const def2 = { root: { position: { x: 6, z: 0 } }, hp: 100, dead: false, _knockout(){} };
   const sbk2 = new StageBreaks(game);

@@ -1,6 +1,6 @@
 # TEARDOWN COVERAGE MATRIX
 
-**Generated:** 2026-10-22 (teardown-tooling lane)
+**Generated:** 2026-10-22 (teardown-tooling lane); Tekken 5 row updated 2026-10-23 (T5 extraction lane)
 **Grounding:** `teardown/TEARDOWN-STATUS.md` (updated 2026-10-13 — flagged STALE where
 newer lane work exists), per-game `teardown/<game>/` dirs, `docs/MOVESET-COVERAGE.md`
 (regenerated 2026-10-21: 85 fighter files, 7,294 base moves), `tools/re/QUEUE.md`.
@@ -19,7 +19,7 @@ Scores are teardown completeness (extraction + decode + wiring), not game-ship q
 | Tekken 6 (PSP) | ~10% — NDPP bounding volumes only; DATA401 models encrypted | ~10% — videos (46 endings) done, motion data locked in DATA401 | ~20% — 40-fighter roster mapped, no per-fighter moves | ~10% — structure mapped | ~30% — videos extracted | ~20% | **~30%** | DATA401.IDX + 384MB region encrypted (see `teardown/tekken6/T6-KEYHUNT-REPORT-2026-10-22.md`) |
 | Tekken Tag 2 (X360) | ~5% — 26/26 chunks on release, STFS not extracted | 0% | 0% (TKMovesets supports TTT2 gameId 2 — extractor ready, needs data) | 0% — 29 stages documented, none extracted | 0% | 0% | **~15%** | STFS extraction; **NEW unblock:** TTT2-PC static-recomp port (`TTT2-PC-PORT-ASSESSMENT.md`) |
 | Tekken 8 (PC) | ~15% — King T8 base/S2 variants pulled as reference only | 0% | ~10% — wavu frame data 41 chars/6,284 moves (reference, not extraction) | 0% | 0% | 0% | **~10%** | binary not acquired |
-| Tekken 5 / REV | 0% | 0% | 0% (TKMovesets gameIds 3/5 supported — extractor ready) | 0% | 0% | 0% | **0%** | not started |
+| Tekken 5 / REV | 0% | 0% (498 motion files mapped, romD format queued) | 0% (roster mapped; TKMovesets gameIds 3/5 structs ready) | 0% (16 versus + 5 DW stages documented) | 0% (inventoried) | 0% (inventoried) | **~15%** | ISO acquired+surveyed 2026-10-23; DW anim files located; model/anim/moveset decode → RE bench |
 
 ## Other games (owner vision: folded in the same way after Tekken)
 

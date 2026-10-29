@@ -14,9 +14,25 @@ import { clone as skeletonClone } from 'three/addons/utils/SkeletonUtils.js';
 // saku-ra-main, purple-rain-main, kiko-tanaka*). Vendored locally —
 // the game ships with no CDN (see index.html importmap).
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
+// Clothing layer system (worker 64, 2026-10-22): per-mesh visibility
+// toggles over GLB mesh names, data-driven via data/clothing-layers.json.
+// No import cycle: clothing-layers.js imports nothing from this module.
+import { applyClothingToInstance } from './clothing-layers.js';
 // Creation Suite Pass: generated registry of baked customization overrides
 // (customization/tools/apply_customization.py). Empty map = exact no-op.
 import { ATTIRE_CUSTOMIZATIONS } from './attire-customizations.js';
+// Material gate (every model, every load): game/js/material-runtime.js.
+import { resolveModelMaterials, assertModelUsable } from './material-runtime.js';
+// Lane 5: persistent Cache API for model bytes (see asset-cache.js).
+// A cache hit skips the network entirely; a miss stores the bytes
+// after a successful download. Never changes parse/ingest behavior.
+import { getCachedBuffer, putCachedBuffer } from './asset-cache.js';
+// Split hosting (owner decision 2026-10-26: Pages shell + GLBs on R2).
+// resolveAssetCandidates maps one MODEL_URLS entry to its fetch order:
+// bundled models stay local; everything else tries the remote asset
+// base first (R2 once the bucket exists), then jsDelivr. One config
+// line in asset-config.js moves the base — no per-model changes.
+import { resolveAssetCandidates } from './asset-config.js';
 
 export const MODEL_URLS = {
   pantera: 'assets/models/pantera.glb',
@@ -99,7 +115,7 @@ export const MODEL_URLS = {
   // copying the GLB into roster/kronos/attires/attire1/model.glb is a follow-up.
   kronos: '../roster/kronos/attires/attire1/model-rerig.glb',
   // SAM-UR-A1 Attire 1 (owner 2026-10-19): Tripo pull replaces the fan-rip placeholder.
-  'sam-ur-a1': '../roster/sam-ur-a1/attires/attire1/model-rigged.glb',
+  'sam-ur-a1': '../roster/sam-ur-a1/attires/attire1/model-rerig.glb',
   // SAKU RA (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   'saku-ra': '../roster/sakura/attires/attire1/model-rerig.glb',
@@ -178,6 +194,12 @@ export const MODEL_URLS = {
   'dxmmii-tripo': '../roster/dxmmii/attires/attire1/model-rigged.glb',
   'cyborg-x': 'assets/models/cyborg-x.glb',
   'cape-jones': 'assets/models/cape-jones.glb',
+  // CAPE JONES Attire 1 (rig QA 2026-10-23, muse/cape-jones-fight): the
+  // auto-rigged Round-2 build (49 bones, -Z facing, sides/knees OK), staged
+  // under his roster dir per convention. Byte-identical to
+  // assets/models/cape-jones.glb — no re-rig needed. See
+  // roster/cyborg-x/ATTIRE-SLOTS.md.
+  'cape-jones-attire1': '../roster/cyborg-x/attires/attire1/model-rigged.glb',
   // Bonus / music fighters and name-pending models (loadable, unassigned).
   mariposa: 'assets/models/mariposa.glb',
   // Mariposa Slot 1 — Butterfly Default (dedup 2026-10-22): owner-designated
@@ -326,6 +348,14 @@ export const MODEL_URLS = {
   'michiko-attire2': '../roster/michiko/attires/attire2/model-rigged.glb',
   dio: 'assets/models/dio.glb',
   bruno: 'assets/models/bruno.glb',
+  // T3 cast with no WH roster body (moveset sweep 2026-10-29): their T3 teardown rigs,
+  // re-exported as skinned GLBs in lab/ (private: not in the --shell-only Pages set).
+  't3-anna': '../lab/game/assets/t3_anna_t3real.glb',
+  't3-bosconovitch': '../lab/game/assets/t3_bosconovitch_t3real.glb',
+  't3-julia': '../lab/game/assets/t3_julia_t3real.glb',
+  't3-nina': '../lab/game/assets/t3_nina_t3real.glb',
+  't3-ogre': '../lab/game/assets/t3_ogre_t3real.glb',
+  't3-paul': '../lab/game/assets/t3_paul_t3real.glb',
   yukihyo: 'assets/models/yukihyo.glb',
   // SCIMITAR (2026-10-21, lane 4 rig batch 1): unrigged static -> auto-rigged via
   // tools/auto_rig knn backend (donor pantera.glb); owner's original stays untouched.
@@ -361,12 +391,12 @@ export const MODEL_URLS = {
   // Unrigged static (1 mesh; rig widgets live in the .blend); k-NN auto-rig
   // from donor is the planned path.
   // Rigged 2026-10-23 (PR #780, 52-joint canonical skeleton, verified).
-  chatur: '../roster/rahkasa/attires/attire1/model-rigged.glb',
+  chatur: '../roster/rahkasa/attires/attire1/model-rigged-textured.glb',
   // POND (owner 2026-10-23): Raven's WH replacement — swamp boundary watcher,
   // found Dorowani as an egg. SmutBase intake (roster/tsuyu-asui/). Unrigged
   // static (9 meshes, clothing separate); k-NN auto-rig from donor is the planned path.
   // Rigged 2026-10-23 (PR #780, 52-joint canonical skeleton, verified).
-  pond: '../roster/tsuyu-asui/attires/attire1/model-rigged.glb',
+  pond: '../roster/tsuyu-asui/attires/attire1/model-rigged-textured.glb',
   // CHARGER Attire 2 (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   'charger-attire2': '../roster/charger/attires/attire2/model-rigged.glb',
@@ -420,7 +450,9 @@ export const MODEL_URLS = {
   vainabel: '../roster/vainabel/attires/attire1/model-rigged.glb',
   // CHORDZ (owner 2026-10-15: Lars -> Chordz, emo guitarist). His Tripo sits
   // archived as an unrigged static under attires/attire1/source/.
-  chordz: '../roster/chordz/attires/attire1/source/chordz-a1-rigged.glb',
+  // Two rigs of the same Tripo static exist: source/chordz-a1-rigged.glb (crew, Wave 2 B1) and
+  // model-rigged.glb (Claude, same GameRig pipeline + limb isolation; same stance in game, 2026-10-23).
+  chordz: '../roster/chordz/attires/attire1/model-rigged.glb',
   // GASHADOKURO + AOTSUKI (OBSOLETE-ORIGINALS rule, docs/OBSOLETE-ORIGINALS-
   // RULE.md): the Kuma/Panda models ARE the proprietary successors now — the
   // keys are the successors' names; there is no 'kuma'/'panda' fighter key.
@@ -431,17 +463,17 @@ export const MODEL_URLS = {
   // attires-unwired set). Ladder placement lives in game/js/attires.js:
   // successor's own attires first, source-game originals late (slots 5+).
   'bruno-attire1': '../roster/bruno/attires/attire1/source/bruno-a1.glb',
-  'bruno-attire2': '../roster/bruno/attires/attire2/source/bruno-a2-sail-the-sea.glb',
+  'bruno-attire2': '../roster/bruno/attires/attire2/source/bruno-a2-sail-the-sea-rigged.glb',
   'dio-attire1': '../roster/dio/attires/attire1/source/dio-a1-jade-god-rigged.glb',
   'koreshi-attire1': '../roster/koreshi/attires/attire1/model.glb',
-  'negativo-attire1': '../roster/negativo/attires/attire1/source/negativo-a1.glb',
-  'negativo-attire2': '../roster/negativo/attires/attire2/source/negativo-a2.glb',
+  'negativo-attire1': '../roster/negativo/attires/attire1/source/negativo-a1-rigged.glb',
+  'negativo-attire2': '../roster/negativo/attires/attire2/source/negativo-a2-rigged.glb',
   'skull-tripo': '../roster/skull/attires/attire1/model.glb',
   'skull-base': 'assets/models/skull.glb',
   'waterfall-attire1': '../roster/waterfall/attires/attire1/model.glb',
-  'yukihyo-attire1': '../roster/yukihyo/attires/attire1/source/yukihyo-a1.glb',
-  'yukihyo-attire2': '../roster/yukihyo/attires/attire2/source/yukihyo-a2-bobcat-pride.glb',
-  'yukihyo-attire3': '../roster/yukihyo/attires/attire3/source/yukihyo-a3-tiger-king.glb',
+  'yukihyo-attire1': '../roster/yukihyo/attires/attire1/source/yukihyo-a1-rigged.glb',
+  'yukihyo-attire2': '../roster/yukihyo/attires/attire2/source/yukihyo-a2-bobcat-pride-rigged.glb',
+  'yukihyo-attire3': '../roster/yukihyo/attires/attire3/source/yukihyo-a3-tiger-king-rigged.glb',
   'armor-king-attire1': '../roster/armor-king/attires/attire1/model.glb',
   'zangief-attire1': '../roster/zangief/attires/attire1/model.glb',
   // RYUSAN (owner 2026-10-23): SmutBase Mina Ashido intake — WH name RYUSAN,
@@ -456,8 +488,8 @@ export const MODEL_URLS = {
   // TOBI, the Escape Soul. Attire 1 = the SmutBase GLB (unrigged static; rig queued).
   // NOTE: roster/miruko/attires/attire1/model-rigged.glb landed on main
   // 2026-10-23 (PR #781, wave-1 rigging) — repoint key after rig validation (same finding as Ryusan).
-  tobi: '../roster/miruko/attires/attire1/model-rerig.glb',
-  'tobi-attire1': '../roster/miruko/attires/attire1/model-rerig.glb',
+  tobi: '../roster/miruko/attires/attire1/model-rerig-textured.glb',
+  'tobi-attire1': '../roster/miruko/attires/attire1/model-rerig-textured.glb',
 };
 
 /* ============================================================
@@ -847,8 +879,62 @@ const SLICE_T3_BONE_REMAP = {
    numerically from the GLB).
    Returns true when the full scheme signature matched and the
    remap was applied; false (no-op) for every other model. */
+/* TEKKEN-SKELETON RE-RIGS (2026-10-23, docs/tech/ROSTER-MODEL-AUDIT.md).
+   Fighters whose own mesh was re-rigged onto a real Tekken 7 skeleton
+   (232-bone T7 layout, same joint names as Slice's). Tekken skeleton data
+   is a Bandai Namco asset, so the GLBs live ONLY in the private
+   mhvnsnt/game-reverse-engineering repo (rigs/<id>/attire1/model-t7.glb);
+   a private build copies them to game/assets/private/rigs/ and sets
+   globalThis.__WH_PRIVATE_ASSETS = true. The public build keeps the
+   fighter's existing own-model URL. These URLs share Slice's T7 -> T3
+   remap (same signature guard: every T7 source name present, no T3 name). */
+const PRIVATE_T7_RIGS = {
+  burger: 'assets/private/rigs/burger/attire1/model-t7.glb',
+};
+const T7_RIG_URLS = new Set([SLICE_MODEL_URL]);
+if (globalThis.__WH_PRIVATE_ASSETS) {
+  for (const [id, url] of Object.entries(PRIVATE_T7_RIGS)) {
+    MODEL_URLS[id] = url;
+    T7_RIG_URLS.add(url);
+  }
+}
+
+/* PRIVATE T7 skin textures (Yukihyo). Yukihyo's materials are T7
+   MI_CH_malebody_<part>_02_skin, which share the generic T7 male body UVs.
+   The diffuse maps (T_CH_male_<part>_D) are Bandai Namco assets kept ONLY in
+   the private game-reverse-engineering repo (teardown/pakchunk0/textures/
+   Character/Common/shader/Texture/skin/male/); a private build copies them to
+   game/assets/private/textures/t7-skin/male/. Public builds skip this and the
+   fighter stays quarantined. The King-face (MI_CH_knk_*) maps were not found
+   in any private pull, so the material gate still decides usability. */
+const PRIVATE_SKIN_TEXTURES = {
+  yukihyo: {
+    base: 'assets/private/textures/t7-skin/male/',
+    match: /^MI_CH_malebody_(arm|body|foot|hand|head|leg|neck)_02_skin/i,
+    file: (part) => `T_CH_male_${part}_D.webp`,
+  },
+};
+async function applyPrivateSkinTextures(id, gltf) {
+  const spec = globalThis.__WH_PRIVATE_ASSETS && PRIVATE_SKIN_TEXTURES[id];
+  if (!spec) return;
+  const loader = new THREE.TextureLoader();
+  const cache = new Map();
+  const mats = [];
+  gltf.scene.traverse((o) => { if (o.isMesh) mats.push(...[].concat(o.material)); });
+  for (const m of mats) {
+    const hit = m && spec.match.exec(m.name || '');
+    if (!hit || m.map) continue;
+    const url = spec.base + spec.file(hit[1].toLowerCase());
+    if (!cache.has(url)) cache.set(url, loader.loadAsync(url).catch(() => null));
+    const tex = await cache.get(url);
+    if (!tex) continue;
+    tex.flipY = false; tex.colorSpace = THREE.SRGBColorSpace;
+    m.map = tex; m.color && m.color.set(0xffffff); m.needsUpdate = true;
+  }
+}
+
 function remapSliceBones(fighterId, model) {
-  if (MODEL_URLS[fighterId] !== SLICE_MODEL_URL) return false;
+  if (!T7_RIG_URLS.has(MODEL_URLS[fighterId])) return false;
   const byName = {};
   model.traverse((o) => { if (o.isBone) byName[o.name] = o; });
   // Scheme signature: ALL T7 source names must be present, and
@@ -913,6 +999,23 @@ function remapSliceBones(fighterId, model) {
   for (const { node } of driven) {
     desiredPos.set(node, node.getWorldPosition(new THREE.Vector3()));
   }
+  // Original bind relation per skin joint, captured BEFORE any frame
+  // edit: B_i = boneWorld_i * IBM_i (the authored mesh-to-bone bind).
+  // It is identity only when the mesh was bound in the skeleton's own
+  // space (Slice's old export). Blender re-rigs (Burger onto Bob,
+  // 2026-10-23) bind a mesh whose space differs from the bones' (B_i
+  // carries the export's offset/scale), and recomputing IBMs as the
+  // plain inverse of the edited bone worlds threw that relation away:
+  // the bind pose still drew (every bone matrix = I) but every clip
+  // delta pivoted in the wrong space and the body collapsed in fights.
+  // The re-solve below keeps B_i exactly: IBM'_i = inverse(W'_i) * B_i.
+  const bindRel = [];
+  model.traverse((o) => {
+    if (o.isSkinnedMesh && o.skeleton && !bindRel.some(e => e.sk === o.skeleton)) {
+      const sk = o.skeleton;
+      bindRel.push({ sk, B: sk.bones.map((b, i) => new THREE.Matrix4().multiplyMatrices(b.matrixWorld, sk.boneInverses[i])) });
+    }
+  });
 
   // (a) Cancel the wrapper rotations at the model root.
   model.quaternion.premultiply(correction);
@@ -943,13 +1046,13 @@ function remapSliceBones(fighterId, model) {
     node.position.copy(desiredPos.get(node).sub(_pw).applyQuaternion(_pq.clone().invert()));
   }
   model.updateMatrixWorld(true);
-  const seenSkeletons = new Set();
-  model.traverse((o) => {
-    if (o.isSkinnedMesh && o.skeleton && !seenSkeletons.has(o.skeleton)) {
-      seenSkeletons.add(o.skeleton);
-      o.skeleton.calculateInverses();
-    }
-  });
+  // Re-solve the inverse binds, preserving each joint's authored bind
+  // relation B_i (see bindRel above): IBM'_i = inverse(W'_i) * B_i.
+  for (const { sk, B } of bindRel) {
+    sk.bones.forEach((b, i) => {
+      sk.boneInverses[i].copy(b.matrixWorld).invert().multiply(B[i]);
+    });
+  }
   // ORIGIN LIFT: kept generic — this rig is authored with its
   // origin at its FEET, so this is a safety no-op; a re-export
   // with a pelvic origin would be lifted until the bind pose's
@@ -1120,39 +1223,83 @@ class AssetManager {
       else opts.signal.addEventListener('abort', () => ctrl.abort(opts.signal.reason), { once: true });
     }
     const url = MODEL_URLS[id];
+    assertModelUsable(id); // quarantined (broken materials) never loads into select or a fight
+    // Split hosting: bundled models load from Pages exactly as before;
+    // every other model tries the remote asset base first, then jsDelivr.
+    const candidates = resolveAssetCandidates(url);
     const LOAD_TIMEOUT_MS = 90000;
     const attempt = async () => {
       const signal = _anySignal([ctrl.signal, _timeoutSignal(LOAD_TIMEOUT_MS)]);
-      const res = await fetch(url, { signal });
-      if (!res.ok) throw new Error(`HTTP ${res.status} loading ${id}`);
-      const totalBytes = Number(res.headers.get('content-length')) || 0;
-      let buf;
-      try {
-        // Manual read loop: byte-level progress for the MB readout, and
-        // the read itself stays abort-aware.
-        const reader = res.body.getReader();
-        const chunks = [];
-        let loaded = 0;
-        for (;;) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          chunks.push(value);
-          loaded += value.byteLength;
-          if (onProgress && totalBytes > 0) {
-            onProgress(Math.min(loaded / totalBytes / Math.max(total, 1), 1), loaded, totalBytes, id);
+      let firstErr = null;
+      let lastErr = null;
+      for (const cand of candidates) {
+        // Lane 5: persistent-cache hit — report full byte progress once
+        // (the bar must move on real bytes, not stall), then parse the
+        // cached buffer on the identical path as a network download.
+        // Cross-origin remote URLs are not cacheable (asset-cache.js),
+        // so remote loads skip this and go to the network every session.
+        if (!signal.aborted) {
+          const cached = await getCachedBuffer(cand);
+          if (cached && !signal.aborted) {
+            if (onProgress) onProgress(1, cached.byteLength, cached.byteLength, id);
+            return _sharedGLTFLoader().parseAsync(cached, cand);
           }
         }
-        const merged = new Uint8Array(loaded);
-        let off = 0;
-        for (const c of chunks) { merged.set(c, off); off += c.byteLength; }
-        buf = merged.buffer;
-      } catch (e) {
-        if (e && e.name === 'AbortError') throw e;
-        buf = await res.arrayBuffer(); // no reader progress on very old browsers
+        let res;
+        try {
+          res = await fetch(cand, { signal });
+        } catch (e) {
+          if (e && e.name === 'AbortError') throw e;
+          if (!firstErr) firstErr = e;
+          lastErr = e;
+          continue;
+        }
+        if (!res.ok) {
+          lastErr = new Error(`HTTP ${res.status} loading ${id} from ${cand}`);
+          if (!firstErr) firstErr = lastErr;
+          continue;
+        }
+        const totalBytes = Number(res.headers.get('content-length')) || 0;
+        let buf;
+        try {
+          // Manual read loop: byte-level progress for the MB readout, and
+          // the read itself stays abort-aware.
+          const reader = res.body.getReader();
+          const chunks = [];
+          let loaded = 0;
+          for (;;) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            chunks.push(value);
+            loaded += value.byteLength;
+            if (onProgress && totalBytes > 0) {
+              onProgress(Math.min(loaded / totalBytes / Math.max(total, 1), 1), loaded, totalBytes, id);
+            }
+          }
+          const merged = new Uint8Array(loaded);
+          let off = 0;
+          for (const c of chunks) { merged.set(c, off); off += c.byteLength; }
+          buf = merged.buffer;
+        } catch (e) {
+          if (e && e.name === 'AbortError') throw e;
+          buf = await res.arrayBuffer(); // no reader progress on very old browsers
+        }
+        // Lane 5: persist the downloaded bytes for the next session.
+        // Fire-and-forget (never blocks the parse); a failed store is
+        // a silent no-op inside putCachedBuffer.
+        if (buf) putCachedBuffer(cand, buf);
+        // The candidate URL string is the parse base, so external .bin /
+        // texture references resolve against the host that served the GLB.
+        return _sharedGLTFLoader().parseAsync(buf, cand);
       }
-      // Same URL string the old loader.load() used, so external .bin /
-      // texture references resolve exactly as before.
-      return _sharedGLTFLoader().parseAsync(buf, url);
+      // Name the FIRST (primary/local) failure, not only the last
+      // fallback's: a local 404 followed by an unreachable CDN used to
+      // surface as a bare "Failed to fetch", hiding the asset that is
+      // actually missing (2026-10-24 P0 error-surface intent).
+      if (firstErr && lastErr && firstErr !== lastErr) {
+        throw new Error(`${firstErr.message || firstErr} (fallback also failed: ${lastErr.message || lastErr})`);
+      }
+      throw lastErr || new Error(`no candidate loaded for ${id}`);
     };
     const run = (async () => {
       let gltf;
@@ -1177,6 +1324,13 @@ class AssetManager {
      did (clip pinning, shadow flags, grounding, facing) — factored out so
      fetch+parse shares the identical path. */
   async _ingest(id, gltf) {
+    // Material resolve + verdict before anything can instance this model.
+    this.materialReport = this.materialReport || {};
+    await applyPrivateSkinTextures(id, gltf);
+    this.materialReport[id] = await resolveModelMaterials(id, gltf, async (d) => {
+      await this.loadModels([d], null, { lane: 'user' }); return this.gltfs[d];
+    });
+    if (!this.materialReport[id].usable) throw new Error(`model ${id} blocked by material gate`);
     this.gltfs[id] = gltf;
     this.clips[id] = {};
     // Bind-pose Hips position (Z-up skeleton): animations must return
@@ -1266,7 +1420,7 @@ class AssetManager {
      'custom' only warms when a custom fighter actually exists (main.js
      passes hasCustom) — 2.2MB most sessions never need. */
   preloadBaseIdle(hasCustom = false) {
-    const ids = ['pantera', 'steve-fox', 'demonio'];
+    const ids = ['pantera', 'demonio']; // steve-fox removed: no fighter falls back to it (owner 2026-10-23)
     if (hasCustom) ids.push('custom');
     const ric = (typeof window !== 'undefined' && window.requestIdleCallback)
       ? window.requestIdleCallback.bind(window)
@@ -1297,7 +1451,7 @@ class AssetManager {
      colored layer over their skin? fix that"). Only an explicitly
      colorized fighter (the Create-a-Fighter skin tone, `colorize: true`)
      passes a tint. */
-  createInstance(fighterId, suitColor, trimColor, tintStrength = 0) {
+  createInstance(fighterId, suitColor, trimColor, tintStrength = 0, eyeGlow = null) {
     const gltf = this.gltfs[fighterId];
     if (!gltf) throw new Error('unknown fighter model: ' + fighterId);
     // The instance root is a wrapper whose space always has the mesh facing
@@ -1346,6 +1500,18 @@ class AssetManager {
           o.material.transparent = false;
           o.material.opacity = 1;
         }
+        // EYE GLOW (owner 2026-10-22): per-attire emissive eyes, data-driven.
+        // The attire slot's eyeGlow config (attires.js) names the eye meshes
+        // as identified from the model (e.g. Negativo's ModelEyes_Material028)
+        // plus the emissive color/intensity for THAT attire — never hardcoded
+        // here. Applied after any tint so the glow color always wins. Runs in
+        // fight (fighter.js) and preview (select-screen.js): both call sites
+        // pass the resolved slot config through createInstance.
+        if (eyeGlow && Array.isArray(eyeGlow.materials) &&
+            (eyeGlow.materials.includes(o.material.name) || eyeGlow.materials.includes(o.name))) {
+          o.material.emissive = new THREE.Color(eyeGlow.color ?? 0xff2222);
+          o.material.emissiveIntensity = eyeGlow.intensity ?? 2.0;
+        }
       }
     });
     if (skinnedCount === 0) {
@@ -1386,6 +1552,12 @@ class AssetManager {
         actions[name].play();
         actions[name].setEffectiveWeight(name === 'Idle' ? 1 : 0);
       }
+    }
+    // CLOTHING LAYERS (worker 64): apply the player's saved per-attire
+    // clothing visibility to this instance. Guarded + fire-and-forget: a
+    // missing config or error here must never break instance creation.
+    try { applyClothingToInstance(model, fighterId); } catch (e) {
+      console.warn('[WH] clothing hook failed:', (e && e.message) || e);
     }
     return { model, bones, mixer, actions, scale: 1.0 };
   }
