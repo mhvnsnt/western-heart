@@ -122,7 +122,7 @@
       const h = P.hits[i];
       if (i) step(h.sep === '~' ? 2 : h.sep === ':' ? 6 : 9, out);
       // A throw's follow-up ('2+4,2') is entered once the throw has grabbed, as played.
-      if (i && f.attack && (f.attack.isGrab || f.attack.throw || f.attack.move_class === 'throw')) {
+      if (i && f.attack && (f.attack.isGrab || f.attack.throw || f.attack.move_class === 'throw') && (THREW = true) && !NO_THROW_WAIT) {
         for (let k = 0; k < 90 && f.state === 'attack'; k++) step(1, out);
         if (/throw/.test(f.state)) step(6, out); }
       pressHit(h, f, out, P.pre === 'FC' && i === 0);
@@ -247,7 +247,18 @@
     }
     return res(false, 'unknown system ' + sr.sys, '');
   };
+  /* Batch 6: a follow-up after a throw-class opener is either the throw's own follow-up (entered
+     once the grab lands - awapop '2+4,1') or a string off the opener's attack frames (dorowani
+     'd/b+1+3,1', samura1 '1+4,1'). The row data does not say which, so a row that fails with the
+     grab wait is retried once entering the follow-up during the opener, as a player would. */
+  let THREW = false, NO_THROW_WAIT = false;
   const sweepOne = (m, gap = 1.1) => {
+    THREW = false; NO_THROW_WAIT = false; const r = sweepOnce(m, gap);
+    if (r.ok !== false || !THREW) return r;
+    NO_THROW_WAIT = true; let r2; try { r2 = sweepOnce(m, gap); } finally { NO_THROW_WAIT = false; }
+    if (r2.ok) { r2.setup = (r2.setup || '') + ' · follow-up entered during the throw-class opener'; return r2; }
+    return r; };
+  const sweepOnce = (m, gap = 1.1) => {
     // States the game does not have (checked in fighter.js / game.js 2026-10-28): no running
     // state (WR), no face-up / face-down ground orientation moves, no tackle mount, no jump-landing
     // move window. Those rows are n/a WITH the missing state named, never a pass.
