@@ -102,6 +102,11 @@
     else if (h.motion.length) { setDir('n'); step(1, out); }
     else setDir(crouch ? 'd' : 'n');
     key(h.btn, 'keydown'); step(h.hold ? 24 : 1, out); key(h.btn, 'keyup');
+    /* Batch 7: a press that lands inside a hit stop is queued until the freeze ends, and the
+       game reads the stick on that frame. Releasing the stick inside the freeze turned
+       '1,d+3' into '1,3' (mid-string d/f/b lost). A player still holds it, so hold the stick
+       until the freeze is over. */
+    if (h.dir && g._hitStop > 0) { for (let k = 0; k < 40 && g._hitStop > 0; k++) step(1, out); step(1, out); }
   }
   // Chain throws: 'AB1.1,1+2' is entered during the throw that opens stage AB1 ('Arm Breaker (AB1)').
   function stageParent(pre) {
