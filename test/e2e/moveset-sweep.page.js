@@ -16,7 +16,11 @@
   const setDir = (d) => { const want = new Set(dirKeys(d)); for (const k of ['u', 'd', 'f', 'b']) if (!want.has(k)) key(k, 'keyup'); key([...want], 'keydown'); };
   const REACT = /hit|stun|launch|knock|thrown|block|stagger|crumple|fall|air|juggle|down|splat|bound|dizzy|spin|guard/i;
   const s = (f) => ({ st: f.state, an: f.attackName, mk: f.attack ? f.attack.moveKey : null, ar: f.attack && f.attack.t3row != null ? f.attack.t3source + ':' + f.attack.t3row : null, clip: f._t3current ? f._t3current.getClip().name : null,
-    x: +f.root.position.x.toFixed(2), y: +f.root.position.y.toFixed(2), hp: f.hp });
+    x: +f.root.position.x.toFixed(2), y: +f.root.position.y.toFixed(2), hp: f.hp,
+    // contact diagnostics (sweep 2026-10-29): attack phase, and whether the other fighter's
+    // posture accepts this attack (canBeHitBy) - classifies 'fired but did not connect'
+    ph: f.attack ? f._attackPhase : null, cb: f.attack && f._opp && f._opp.canBeHitBy ? f._opp.canBeHitBy(f.attack) : null,
+    rm: f.attack && f.attack.reach ? +f.attack.reach : null });
   const step = (n, out) => { for (let i = 0; i < n; i++) { window.__vt += 1000 / 60;
     { const I = g.input; if (I._udDir && !I._udHeld && window.__vt - I._udT >= 200) { clearTimeout(I._udTimer); if (I._udDir === 'up') I.up = true; else I.down = true; I._udHeld = true; } } // input.js 200 ms u/d hold timer, on the sim clock
     if (g._hitStop > 0) g._hitStop -= 1 / 60; else g._update(1 / 60); if (out) out.push({ p1: s(g.p1), p2: s(g.p2) }); } };
@@ -303,6 +307,7 @@
       // long string spends its fixed tail inside hit-stop and dropped its last hits).
       for (let k = 0; k < 360 && (f.state === 'attack' || f._queuedNext); k++) step(1, out);
       step(tail, out);
+      const x0 = out.length ? Math.abs(out[0].p2.x - out[0].p1.x) : null;
       const fired = []; let last = null;
       for (const fr of out) { const a = (fr.p1.st === 'attack' || /throw/.test(fr.p1.st)) ? fr.p1.an : null; if (a && a !== last) fired.push(a); last = a; }
       const keys = fired.map((n) => MS.resolveMoveKey(id, n) || n);
@@ -327,7 +332,7 @@
       const strOk = nHits > 1 ? (fired.length >= Math.min(nHits, 2) || openerOnly) && firedIt : true;
       const ok = firedIt && strOk && (!needHit || connected) && throwOk !== false;
       const why = !firedIt ? `fired ${JSON.stringify(fired)} (keys ${JSON.stringify(keys)}) not '${m.key}'` : !strOk ? `string fired ${JSON.stringify(fired)}` :
-        (needHit && !connected) ? 'fired but did not connect' : throwOk === false ? 'throw did not reach exec with victim clip' : '';
+        (needHit && !connected) ? 'fired but did not connect' + missCause(out, x0) : throwOk === false ? 'throw did not reach exec with victim clip' : '';
       return { trace: m.trace ? out.filter((_, i) => i % 3 === 0) : undefined, key: m.key, input: notation, via, setup: how, ok, why, fired, dmg, react: react.slice(0, 6), launch: out.some((fr) => fr.p2.y > 0.35), isThrow, throwOk,
         tClip: [...new Set(out.filter((x) => /throw/.test(x.p1.st)).map((x) => x.p1.clip))].slice(0, 3),
         vClip: [...new Set(out.filter((x) => /thrown/.test(x.p2.st)).map((x) => x.p2.clip))].slice(0, 3) };
@@ -335,8 +340,21 @@
   };
   // A whiff at the default 1.1 m spacing is retried at closer ranges (short-reach jabs/elbows
   // connect point-blank in a real fight); the row keeps the gap it connected at.
+  /* Why a fired strike did not connect: never reached its active frames (active window), was
+     active only while the opponent's posture rejects it (posture: highs over a croucher, lows
+     vs airborne, down-only words), or was active out of range - split by whether the attacker's
+     root moved away from its start spacing during the move (root motion) or not (range). */
+  function missCause(out, x0) {
+    const act = out.filter((fr) => fr.p1.ph === 'active');
+    if (!act.length) return ' (active window: never active)';
+    if (act.every((fr) => fr.p1.cb === false)) return ' (posture: opponent posture rejects the hit word)';
+    const dx = Math.min(...act.map((fr) => Math.abs(fr.p2.x - fr.p1.x)));
+    if (x0 != null && dx > x0 + 0.15) return ` (root motion: active at ${dx.toFixed(2)} m, started ${x0.toFixed(2)} m)`;
+    if (Math.abs(act[0].p2.y - act[0].p1.y) > 0.6) return ` (height: opponent ${act[0].p2.y > act[0].p1.y ? 'above' : 'below'} during active)`;
+    return ` (range: closest ${dx.toFixed(2)} m during ${act.length} active frames)`;
+  }
   window.__sweepMove = (m) => { let r = sweepOne(m, 1.1);
-    for (const gp of [0.8, 0.55]) { if (r.ok || r.why !== 'fired but did not connect') break; const r2 = sweepOne(m, gp); r2.gap = gp; if (r2.ok || r2.why !== 'fired but did not connect') r = r2; }
+    for (const gp of [0.8, 0.55]) { if (r.ok || !/^fired but did not connect/.test(r.why)) break; const r2 = sweepOne(m, gp); r2.gap = gp; if (r2.ok || !/^fired but did not connect/.test(r2.why)) r = r2; }
     return r; };
   // Juggle: replay a launcher that lifted the opponent, then a 1 while they are airborne must hit.
   window.__juggle = (r, gap = 1.1) => {
