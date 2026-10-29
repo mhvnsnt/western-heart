@@ -88,6 +88,9 @@ SHELL_BUNDLED_MODELS = (
 # the remote base serves it instead. 25 MiB matches the Cloudflare Pages
 # per-file cap, so the same shell could also deploy there unchanged.
 SHELL_MAX_FILE_BYTES = 25 * 1024 * 1024
+# Models named in SHELL_BUNDLED_MODELS may exceed the 25 MiB soft cap up to
+# GitHub Pages' hard 100 MB per-file limit (Milestone 1 core 8, 2026-10-29).
+PAGES_MAX_FILE_BYTES = 100 * 1000 * 1000
 # Itch.io HTML5 caps (verified live 2026-10-25/26, agent-ops PR #161):
 # <=1,000 files, <=500 MB extracted, <=200 MB per file, filenames <=240 chars.
 # --itch trims the shell-only set to the bundled fighters' playable scope.
@@ -140,6 +143,12 @@ ITCH_BUNDLED_MODELS = (
     "roster/awa-pop/attires/attire2/model-rigged.glb",
     "roster/pantera/attires/leomon/model.glb",
 )
+
+
+CORE_DROP_REASONS = {"parts-converted media", "parts media", "decal-library (customization only)",
+                     "reskin-library (customization only)", "suite demo mp4", "docs", "model renders",
+                     "tests", "ai-pass compare images", "sunra preview media",
+                     "unused anim", "sound-bank (no callers)", "zui ui portraits"}
 
 
 def itch_drop_reason(f):
@@ -234,6 +243,12 @@ REPO = os.environ.get("WH_REPO", "mhvnsnt/western-heart")
 STR = re.compile(r"""["'`]([^"'`\s<>{}$|*?]+\.[A-Za-z0-9]{2,5})(?:[?#][^"'`\s]*)?["'`]""")
 
 
+def _built_iso():
+    """Deploy time (UTC ISO) for the in-game build stamp (game/js/main.js)."""
+    import datetime
+    return datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
 def git(*args, binary=False):
     r = subprocess.run(["git", *args], capture_output=True)
     if r.returncode:
@@ -268,16 +283,31 @@ def blob_sizes(sha):
             by_oid[a] = int(b)
     need = {o for o in uniq if o not in by_oid}
     if need:
-        for top in sorted({p.split("/", 1)[0] for p, o in oids.items() if o in need and "/" in p}):
+        def walk(path, depth=0):
+            # The trees API truncates big recursive listings (~100k entries /
+            # 7 MB); when it does, descend one level and list each subtree.
             try:
-                t = git("rev-parse", f"{sha}:{top}").strip()
-                out = subprocess.run(["gh", "api", f"repos/{REPO}/git/trees/{t}?recursive=1"],
-                                     capture_output=True, text=True)
-                for e in json.loads(out.stdout).get("tree", []):
-                    if e.get("type") == "blob":
-                        by_oid[e["sha"]] = e.get("size", 0)
+                t = git("rev-parse", f"{sha}:{path}").strip()
+                d = None
+                for _ in range(4):  # the API call is retried: a flaky fetch must not zero sizes
+                    out = subprocess.run(["gh", "api", f"repos/{REPO}/git/trees/{t}?recursive=1"],
+                                         capture_output=True, text=True)
+                    if out.returncode == 0:
+                        d = json.loads(out.stdout)
+                        break
+                if d is None:
+                    return
             except Exception:
-                pass
+                return
+            for e in d.get("tree", []):
+                if e.get("type") == "blob":
+                    by_oid[e["sha"]] = e.get("size", 0)
+            if d.get("truncated") and depth < 4:
+                for e in d.get("tree", []):
+                    if e.get("type") == "tree" and "/" not in e["path"]:
+                        walk(f"{path}/{e['path']}", depth + 1)
+        for top in sorted({p.split("/", 1)[0] for p, o in oids.items() if o in need and "/" in p}):
+            walk(top)
     unknown = sum(1 for o in uniq if o not in by_oid)
     if unknown:
         print(f"note: {unknown} blob sizes unknown (API truncated); counted as 0 MB in the report")
@@ -317,7 +347,7 @@ def shell_bundled_models(sha):
 
 
 def compute_deploy_files(sha, sizes, oids, follow_all=False, shell_only=False,
-                         itch_only=False, itch_reasons=None):
+                         itch_only=False, itch_reasons=None, core_trim=False):
     """Reference closure over ROOTS, as a sorted file list.
 
     Shared by main() and tools/deploy/r2-upload-manifest.py so the R2 manifest
@@ -365,10 +395,22 @@ def compute_deploy_files(sha, sizes, oids, follow_all=False, shell_only=False,
     for f in files:
         if f.lower().endswith((".glb", ".gltf")) and f not in bundled:
             excluded.append(f)
-        elif sizes[f] > SHELL_MAX_FILE_BYTES:
+        elif sizes[f] > (PAGES_MAX_FILE_BYTES if f in bundled else SHELL_MAX_FILE_BYTES):
             excluded.append(f)
         else:
             kept.append(f)
+    if core_trim:
+        # --core (Milestone 1): drop only media that no fight path loads
+        # (same verified rules as --itch), keeping every fighter's data so
+        # ?roster=all still works with the remote base. Keeps the shell
+        # well under the 1 GB Pages cap with the core 8 models bundled.
+        trimmed = []
+        for f in kept:
+            if itch_drop_reason(f) in CORE_DROP_REASONS:
+                excluded.append(f)
+            else:
+                trimmed.append(f)
+        kept = trimmed
     if not itch_only:
         return kept, sorted(excluded)
     # The bundled fighters' fight models (ITCH_BUNDLED_MODELS) were just
@@ -405,6 +447,11 @@ def main():
     ap.add_argument("--out", default=None)
     ap.add_argument("--onto", default=None, help="plumbing mode: parent gh-pages ref (e.g. origin/gh-pages)")
     ap.add_argument("--branch", default="gh-pages")
+    ap.add_argument("--core", action="store_true",
+                    help="shell-only plus the Milestone 1 media trim (CORE_DROP_REASONS)")
+    ap.add_argument("--orphan", action="store_true",
+                    help="plumbing mode with no parent: a fresh deploy commit on --branch "
+                         "holding ONLY the deploy set (new branch; nothing is deleted anywhere)")
     ap.add_argument("--push", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--follow-all", action="store_true")
@@ -417,6 +464,8 @@ def main():
                          "fighters (see itch_drop_reason); fails if over itch.io's hard "
                          "caps (1,000 files / 500 MB extracted / 200 MB per file)")
     a = ap.parse_args()
+    if a.core:
+        a.shell_only = True
     if a.itch:
         a.shell_only = True
     sha = git("rev-parse", a.ref).strip()
@@ -424,7 +473,7 @@ def main():
     prefetch_text(oids)
     itch_reasons = {} if a.itch else None
     files, excluded = compute_deploy_files(sha, sizes, oids, a.follow_all, a.shell_only,
-                                           a.itch, itch_reasons)
+                                           a.itch, itch_reasons, core_trim=a.core)
     total = sum(sizes[f] for f in files)
     by_top = {}
     for f in files:
@@ -470,7 +519,7 @@ def main():
             print(f"  {n:5d}  {reason}")
     if a.dry_run:
         return
-    if a.onto:
+    if a.onto or a.orphan:
         return plumbing(a, sha, files, sizes, total)
     for f in files:
         dst = os.path.join(a.out, f)
@@ -483,7 +532,7 @@ def main():
         with open(dst, "wb") as fh:
             fh.write(data)
     man = {"format": "wh-pages-deploy/1", "ref": a.ref, "commit": sha, "files": len(files),
-           "bytes": total, "tool": "tools/deploy/build_pages.py", "mode": mode}
+           "bytes": total, "built": _built_iso(), "tool": "tools/deploy/build_pages.py", "mode": mode}
     if excluded:
         man["excluded_files"] = len(excluded)
         man["excluded_bytes"] = sum(sizes[f] for f in excluded)
@@ -512,7 +561,7 @@ def plumbing(a, sha, files, sizes, total):
         mode, kind, obj = meta.split()
         if kind == "blob":
             blob[path] = (mode, obj)
-    parent = git("rev-parse", a.onto).strip()
+    parent = None if a.orphan else git("rev-parse", a.onto).strip()
     idx = tempfile.mktemp(prefix="wh-pages-index-")
     env = dict(os.environ, GIT_INDEX_FILE=idx)
     def g(*args, inp=None):
@@ -520,7 +569,10 @@ def plumbing(a, sha, files, sizes, total):
         if r.returncode:
             sys.exit(r.stderr.decode()[:2000])
         return r.stdout.decode()
-    g("read-tree", parent)
+    if parent:
+        g("read-tree", parent)
+    else:
+        g("read-tree", "--empty")
     before = {l.split("\t", 1)[1]: l.split()[1] for l in g("ls-files", "-s", "-z").split("\0") if l}
     lines, changed = [], 0
     for f in files:
@@ -530,8 +582,21 @@ def plumbing(a, sha, files, sizes, total):
         lines.append(f"{mode} {obj}\t{f}")
     g("update-index", "--index-info", inp=("\n".join(lines) + "\n").encode())
     man = json.dumps({"format": "wh-pages-deploy/1", "ref": a.ref, "commit": sha, "files": len(files),
-                      "bytes": total, "tool": "tools/deploy/build_pages.py",
+                      "bytes": total, "built": _built_iso(), "tool": "tools/deploy/build_pages.py",
                       "mode": "itch" if a.itch else ("shell-only" if a.shell_only else "full")}, indent=1).encode()
+    if not parent:
+        # Fresh (orphan) deploy: the two root files the old gh-pages carried
+        # by hand — .nojekyll (no Jekyll pass over 2k+ files, keeps _dirs)
+        # and the root redirect into game/ (query string kept, so
+        # /western-heart/?quick=... reaches the game).
+        root_index = ("<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n"
+                      "<title>WESTERN HEART</title>\n<meta http-equiv=\"refresh\" content=\"0; url=game/\" />\n"
+                      "<script>location.replace('game/' + location.search + location.hash);</script>\n"
+                      "</head>\n<body>\n<p><a href=\"game/\">Enter WESTERN HEART</a></p>\n</body>\n</html>\n")
+        for name, body in ((".nojekyll", b""), ("index.html", root_index.encode())):
+            if name not in files:
+                o = g("hash-object", "-w", "--stdin", inp=body).strip()
+                g("update-index", "--add", "--cacheinfo", f"100644,{o},{name}")
     mobj = g("hash-object", "-w", "--stdin", inp=man).strip()
     g("update-index", "--add", "--cacheinfo", f"100644,{mobj},deploy-manifest.json")
     after = set(l.split("\t", 1)[1] for l in g("ls-files", "-s", "-z").split("\0") if l)
@@ -539,7 +604,7 @@ def plumbing(a, sha, files, sizes, total):
     if missing:
         sys.exit(f"refusing: {len(missing)} entries would be removed")
     tree = g("write-tree").strip()
-    if tree == git("rev-parse", parent + "^{tree}").strip():
+    if parent and tree == git("rev-parse", parent + "^{tree}").strip():
         print("gh-pages already matches", a.ref, "- nothing to deploy")
         os.remove(idx)
         return
@@ -548,7 +613,7 @@ def plumbing(a, sha, files, sizes, total):
            f"{', shell-only' if a.shell_only else ''}); "
            f"0 removed.\n")
     commit = g("-c", "user.name=wh-deploy", "-c", "user.email=noreply@github.com",
-               "commit-tree", tree, "-p", parent, inp=msg.encode()).strip()
+               "commit-tree", tree, *(["-p", parent] if parent else []), inp=msg.encode()).strip()
     os.remove(idx)
     print("new", a.branch, "commit", commit, f"({changed} files changed vs {a.onto})")
     if a.push:
