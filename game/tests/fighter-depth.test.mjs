@@ -269,16 +269,22 @@ registerMoveset('test-fighter', { moves: {
   '2,1': { name: 'String', input: '2,1', damage: 14, startup: 0.2, move_class: 'string' },
   '1+2': { name: 'Power', input: '1+2', damage: 25, startup: 0.35, move_class: 'special' },
 }});
+// pt217u: the list = every base move (a slotless moveset keeps all of them) + the soul-system
+// additions; names are canon display names (imported names never reach the UI).
 t('movelist: rows built from moveset', () => {
   const rows = movelistRows('test-fighter');
-  eq(rows.length, 3);
+  const base = rows.filter(r => r.origin !== 'added');
+  eq(base.length, 3);
+  ok(rows.length > base.length, 'soul-system additions listed after the base moves');
   eq(rows.find(r => r.notation === '1').startupF, 7);
 });
 t('movelist: filter + sort', () => {
   const rows = movelistRows('test-fighter');
+  const base = rows.filter(r => r.origin !== 'added');
   eq(filterMovelist(rows, { cls: 'strike' }).length, 1);
-  eq(filterMovelist(rows, { sort: 'damage' })[0].notation, '1+2');
-  eq(filterMovelist(rows, { query: 'jab' }).length, 1);
+  eq(filterMovelist(base, { sort: 'damage' })[0].notation, '1+2');
+  const jab = rows.find(r => r.notation === '1').name;
+  eq(filterMovelist(rows, { query: jab.toLowerCase() }).length, 1);
 });
 t('movelist: unknown fighter -> empty', () => { eq(movelistRows('nope').length, 0); });
 

@@ -1,0 +1,1402 @@
+{
+  "version": 1,
+  "engine": "game/js/music.js (MusicEngine)",
+  "attribution": "Tracks by Kevin MacLeod are CC BY 4.0 \u2014 credit line in each track's `credit` field. Tong-Nou tracks are the owner's original music.",
+  "howToSwap": "Drop a replacement file into game/assets/music/ with the SAME filename, or edit this JSON: change `file` / `remote`, retag `moods`/`stages`/`modes`. No code changes. See docs/MUSIC-PIPELINE.md.",
+  "themes": {
+    "cape-jones": "cape-jones-ghost-surf-rock",
+    "cape-jones-arena-main": "cape-jones-ghost-surf-rock"
+  },
+  "tracks": [
+    {
+      "id": "title-meditation",
+      "file": "assets/music/title-meditation.mp3",
+      "remote": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Meditation%20Impromptu%2001.mp3",
+      "title": "Meditation Impromptu 01",
+      "artist": "Kevin MacLeod",
+      "license": "CC-BY-4.0",
+      "credit": "Meditation Impromptu 01 \u2014 Kevin MacLeod (incompetech.com) \u2014 Licensed under Creative Commons: By Attribution 4.0 License (https://creativecommons.org/licenses/by/4.0/)",
+      "moods": [
+        "calm"
+      ],
+      "modes": [],
+      "stages": [],
+      "loop": true,
+      "gain": 0.9
+    },
+    {
+      "id": "select-exhilarate",
+      "file": "assets/music/select-exhilarate.mp3",
+      "remote": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Exhilarate.mp3",
+      "title": "Exhilarate",
+      "artist": "Kevin MacLeod",
+      "license": "CC-BY-4.0",
+      "credit": "Exhilarate \u2014 Kevin MacLeod (incompetech.com) \u2014 Licensed under Creative Commons: By Attribution 4.0 License (https://creativecommons.org/licenses/by/4.0/)",
+      "moods": [
+        "driving"
+      ],
+      "modes": [
+        "select"
+      ],
+      "stages": [
+        "plains-of-chi-u"
+      ],
+      "loop": true,
+      "gain": 1.0
+    },
+    {
+      "id": "battle-volatile",
+      "file": "assets/music/battle-volatile.mp3",
+      "remote": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Volatile%20Reaction.mp3",
+      "title": "Volatile Reaction",
+      "artist": "Kevin MacLeod",
+      "license": "CC-BY-4.0",
+      "credit": "Volatile Reaction \u2014 Kevin MacLeod (incompetech.com) \u2014 Licensed under Creative Commons: By Attribution 4.0 License (https://creativecommons.org/licenses/by/4.0/)",
+      "moods": [
+        "aggressive"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [
+        "shrine"
+      ],
+      "loop": true,
+      "gain": 1.0
+    },
+    {
+      "id": "battle-cannery",
+      "file": "assets/music/battle-cannery.mp3",
+      "remote": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/The%20Cannery.mp3",
+      "title": "The Cannery",
+      "artist": "Kevin MacLeod",
+      "license": "CC-BY-4.0",
+      "credit": "The Cannery \u2014 Kevin MacLeod (incompetech.com) \u2014 Licensed under Creative Commons: By Attribution 4.0 License (https://creativecommons.org/licenses/by/4.0/)",
+      "moods": [
+        "driving",
+        "aggressive"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [
+        "palace-of-dreaming"
+      ],
+      "loop": true,
+      "gain": 1.0
+    },
+    {
+      "id": "battle-implosion",
+      "file": "assets/music/battle-implosion.mp3",
+      "remote": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Basic%20Implosion.mp3",
+      "title": "Basic Implosion",
+      "artist": "Kevin MacLeod",
+      "license": "CC-BY-4.0",
+      "credit": "Basic Implosion \u2014 Kevin MacLeod (incompetech.com) \u2014 Licensed under Creative Commons: By Attribution 4.0 License (https://creativecommons.org/licenses/by/4.0/)",
+      "moods": [
+        "dark",
+        "aggressive"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [
+        "helix-palace"
+      ],
+      "loop": true,
+      "gain": 1.0
+    },
+    {
+      "id": "battle-five-armies",
+      "file": "assets/music/battle-five-armies.mp3",
+      "remote": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Five%20Armies.mp3",
+      "title": "Five Armies",
+      "artist": "Kevin MacLeod",
+      "license": "CC-BY-4.0",
+      "credit": "Five Armies \u2014 Kevin MacLeod (incompetech.com) \u2014 Licensed under Creative Commons: By Attribution 4.0 License (https://creativecommons.org/licenses/by/4.0/)",
+      "moods": [
+        "epic"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [
+        "tree-of-life",
+        "sunra"
+      ],
+      "loop": true,
+      "gain": 1.0
+    },
+    {
+      "id": "battle-hitman",
+      "file": "assets/music/battle-hitman.mp3",
+      "remote": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Hitman.mp3",
+      "title": "Hitman",
+      "artist": "Kevin MacLeod",
+      "license": "CC-BY-4.0",
+      "credit": "Hitman \u2014 Kevin MacLeod (incompetech.com) \u2014 Licensed under Creative Commons: By Attribution 4.0 License (https://creativecommons.org/licenses/by/4.0/)",
+      "moods": [
+        "aggressive",
+        "dark"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [
+        "phantom-marketplace"
+      ],
+      "loop": true,
+      "gain": 1.0
+    },
+    {
+      "id": "battle-mechanolith",
+      "file": "assets/music/battle-mechanolith.mp3",
+      "remote": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Mechanolith.mp3",
+      "title": "Mechanolith",
+      "artist": "Kevin MacLeod",
+      "license": "CC-BY-4.0",
+      "credit": "Mechanolith \u2014 Kevin MacLeod (incompetech.com) \u2014 Licensed under Creative Commons: By Attribution 4.0 License (https://creativecommons.org/licenses/by/4.0/)",
+      "moods": [
+        "mechanical"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [
+        "octagonal-shrine"
+      ],
+      "loop": true,
+      "gain": 1.0
+    },
+    {
+      "id": "victory-fanfare",
+      "file": "assets/music/victory-fanfare.mp3",
+      "remote": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Fanfare%20for%20Space.mp3",
+      "title": "Fanfare for Space",
+      "artist": "Kevin MacLeod",
+      "license": "CC-BY-4.0",
+      "credit": "Fanfare for Space \u2014 Kevin MacLeod (incompetech.com) \u2014 Licensed under Creative Commons: By Attribution 4.0 License (https://creativecommons.org/licenses/by/4.0/)",
+      "moods": [
+        "triumphant"
+      ],
+      "modes": [
+        "victory"
+      ],
+      "stages": [],
+      "loop": true,
+      "gain": 1.0
+    },
+    {
+      "id": "menu-deliberate",
+      "file": "assets/music/menu-deliberate.mp3",
+      "remote": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Deliberate%20Thought.mp3",
+      "title": "Deliberate Thought",
+      "artist": "Kevin MacLeod",
+      "license": "CC-BY-4.0",
+      "credit": "Deliberate Thought \u2014 Kevin MacLeod (incompetech.com) \u2014 Licensed under Creative Commons: By Attribution 4.0 License (https://creativecommons.org/licenses/by/4.0/)",
+      "moods": [
+        "calm",
+        "tense"
+      ],
+      "modes": [],
+      "stages": [],
+      "loop": true,
+      "gain": 0.9
+    },
+    {
+      "id": "tong-nou-theme",
+      "file": "assets/music/tong-nou-theme.ogg",
+      "remote": null,
+      "title": "Tong-Nou Theme (CDA)",
+      "artist": "Eastern Mind OST (owner's own game)",
+      "license": "owner-original",
+      "credit": "Tong-Nou Theme (CDA) \u2014 original music from the owner's Eastern Mind (Tong-Nou).",
+      "moods": [
+        "mystical",
+        "epic"
+      ],
+      "modes": [
+        "title",
+        "battle"
+      ],
+      "stages": [
+        "tong-nou"
+      ],
+      "loop": true,
+      "gain": 1.0
+    },
+    {
+      "id": "tong-nou-esoteric",
+      "file": "assets/music/tong-nou-esoteric.ogg",
+      "remote": null,
+      "title": "Tong-Nou Esoteric Mix (CDA)",
+      "artist": "Eastern Mind OST (owner's own game)",
+      "license": "owner-original",
+      "credit": "Tong-Nou Esoteric Mix (CDA) \u2014 original music from the owner's Eastern Mind (Tong-Nou).",
+      "moods": [
+        "mystical",
+        "dark"
+      ],
+      "modes": [
+        "versus"
+      ],
+      "stages": [],
+      "loop": true,
+      "gain": 0.95
+    },
+    {
+      "id": "transmigration-ending",
+      "file": "assets/music/transmigration-ending.ogg",
+      "remote": null,
+      "title": "Transmigration Ending (CDA)",
+      "artist": "Eastern Mind OST (owner's own game)",
+      "license": "owner-original",
+      "credit": "Transmigration Ending (CDA) \u2014 original music from the owner's Eastern Mind (Tong-Nou).",
+      "moods": [
+        "calm",
+        "epic"
+      ],
+      "modes": [
+        "credits"
+      ],
+      "stages": [],
+      "loop": true,
+      "gain": 0.9
+    },
+    {
+      "id": "ending-theme",
+      "file": "assets/music/ending-theme.ogg",
+      "remote": null,
+      "title": "Ending Theme",
+      "artist": "Eastern Mind OST (owner's own game)",
+      "license": "owner-original",
+      "credit": "Ending Theme \u2014 original music from the owner's Eastern Mind (Tong-Nou).",
+      "moods": [
+        "calm"
+      ],
+      "modes": [
+        "results"
+      ],
+      "stages": [],
+      "loop": true,
+      "gain": 0.9
+    },
+    {
+      "id": "nos-t01",
+      "file": "assets/music/nosferatu-t01-opening-credits.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Opening credits \u2014 0:00\u20133:31",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Opening credits \u2014 0:00\u20133:31. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "epic",
+        "aggressive"
+      ],
+      "modes": [
+        "battle",
+        "title",
+        "credits"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.112426303854875,
+      "loopEnd": 208.93514739229025,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          0,
+          211
+        ],
+        "m4_piece": "P01",
+        "mean_rms": 0.0352,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t02",
+      "file": "assets/music/nosferatu-t02-destiny-warning.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Destiny warning \u2014 3:31\u20136:07",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Destiny warning \u2014 3:31\u20136:07. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "tense"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.230612244897959,
+      "loopEnd": 152.92761904761906,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          211,
+          367
+        ],
+        "m4_piece": "P02",
+        "mean_rms": 0.0324,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t03",
+      "file": "assets/music/nosferatu-t03-destiny-warning-part2.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Destiny warning \u2014 6:07\u20139:09",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Destiny warning \u2014 6:07\u20139:09. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "tense",
+        "aggressive"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.2487528344671204,
+      "loopEnd": 179.7682993197279,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          367,
+          549
+        ],
+        "m4_piece": "P02",
+        "mean_rms": 0.0342,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t04",
+      "file": "assets/music/nosferatu-t04-hutter-nina-home.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Hutter and Nina at home \u2014 9:09\u201311:37",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Hutter and Nina at home \u2014 9:09\u201311:37. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "calm",
+        "tense"
+      ],
+      "modes": [
+        "battle",
+        "select"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.392199546485261,
+      "loopEnd": 145.56485260770975,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          549,
+          697
+        ],
+        "m4_piece": "P03",
+        "mean_rms": 0.0327,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t05",
+      "file": "assets/music/nosferatu-t05-hutter-nina-home-part2.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Hutter and Nina at home \u2014 11:37\u201315:55",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Hutter and Nina at home \u2014 11:37\u201315:55. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "calm",
+        "tense"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.044489795918367,
+      "loopEnd": 253.8861224489796,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          697,
+          955
+        ],
+        "m4_piece": "P03",
+        "mean_rms": 0.0309,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t06",
+      "file": "assets/music/nosferatu-t06-mountain-road.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Mountain road \u2014 15:55\u201319:18",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Mountain road \u2014 15:55\u201319:18. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "tense",
+        "aggressive"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.229795918367347,
+      "loopEnd": 200.8277551020408,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          955,
+          1158
+        ],
+        "m4_piece": "P04",
+        "mean_rms": 0.0345,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t07",
+      "file": "assets/music/nosferatu-t07-coach-ride-negative.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Coach ride, negative footage \u2014 19:18\u201321:43",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Coach ride, negative footage \u2014 19:18\u201321:43. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "dark",
+        "calm"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.5992743764172337,
+      "loopEnd": 140.20326530612246,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          1158,
+          1303
+        ],
+        "m4_piece": "P05",
+        "mean_rms": 0.0274,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t08",
+      "file": "assets/music/nosferatu-t08-the-inn.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 The inn \u2014 21:43\u201325:55",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 The inn \u2014 21:43\u201325:55. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "calm",
+        "tense"
+      ],
+      "modes": [
+        "battle",
+        "select"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.4161451247165533,
+      "loopEnd": 249.4724263038549,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          1303,
+          1555
+        ],
+        "m4_piece": "P06",
+        "mean_rms": 0.0328,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t09",
+      "file": "assets/music/nosferatu-t09-at-the-castle.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 At the castle \u2014 25:55\u201328:54",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 At the castle \u2014 25:55\u201328:54. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "tense"
+      ],
+      "modes": [
+        "battle",
+        "versus"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.019047619047619,
+      "loopEnd": 176.91278911564626,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          1555,
+          1734
+        ],
+        "m4_piece": "P07",
+        "mean_rms": 0.0325,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t10",
+      "file": "assets/music/nosferatu-t10-castle-night.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Castle night \u2014 28:54\u201332:27",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Castle night \u2014 28:54\u201332:27. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "dark",
+        "tense"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.0417233560090704,
+      "loopEnd": 210.7685260770975,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          1734,
+          1947
+        ],
+        "m4_piece": "P08",
+        "mean_rms": 0.0315,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t11",
+      "file": "assets/music/nosferatu-t11-nosferatus-shadow.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Nosferatu's shadow over Hutter \u2014 32:27\u201334:33",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Nosferatu's shadow over Hutter \u2014 32:27\u201334:33. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "dark",
+        "tense"
+      ],
+      "modes": [
+        "battle",
+        "versus"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.067437641723356,
+      "loopEnd": 123.87736961451247,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          1947,
+          2073
+        ],
+        "m4_piece": "P09",
+        "mean_rms": 0.0319,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t12",
+      "file": "assets/music/nosferatu-t12-nosferatus-shadow-part2.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Nosferatu's shadow over Hutter \u2014 34:33\u201338:45",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Nosferatu's shadow over Hutter \u2014 34:33\u201338:45. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "dark",
+        "aggressive"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.2309750566893425,
+      "loopEnd": 249.54281179138323,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          2073,
+          2325
+        ],
+        "m4_piece": "P09",
+        "mean_rms": 0.0349,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t13",
+      "file": "assets/music/nosferatu-t13-nosferatus-shadow-part3.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Nosferatu's shadow over Hutter \u2014 38:45\u201340:38",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Nosferatu's shadow over Hutter \u2014 38:45\u201340:38. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "dark",
+        "aggressive"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.02,
+      "loopEnd": 110.89732426303856,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          2325,
+          2438
+        ],
+        "m4_piece": "P09",
+        "mean_rms": 0.0339,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t14",
+      "file": "assets/music/nosferatu-t14-wisborg-household.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Wisborg interior, the household gathers \u2014 40:38\u201342:39",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Wisborg interior, the household gathers \u2014 40:38\u201342:39. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "calm",
+        "aggressive"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.203718820861678,
+      "loopEnd": 118.97873015873016,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          2438,
+          2559
+        ],
+        "m4_piece": "P10",
+        "mean_rms": 0.0334,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t15",
+      "file": "assets/music/nosferatu-t15-wisborg-household-part2.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Wisborg interior, the household gathers \u2014 42:39\u201347:00",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Wisborg interior, the household gathers \u2014 42:39\u201347:00. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "calm",
+        "aggressive"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.4411791383219956,
+      "loopEnd": 258.90199546485263,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          2559,
+          2820
+        ],
+        "m4_piece": "P10",
+        "mean_rms": 0.0348,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t16",
+      "file": "assets/music/nosferatu-t16-renfield-cell.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Renfield in his cell \u2014 47:00\u201351:22",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Renfield in his cell \u2014 47:00\u201351:22. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "dark",
+        "aggressive"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.4814965986394557,
+      "loopEnd": 259.8548299319728,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          2820,
+          3082
+        ],
+        "m4_piece": "P11",
+        "mean_rms": 0.0332,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t17",
+      "file": "assets/music/nosferatu-t17-ship-hold.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Aboard the ship, the hold \u2014 51:22\u201354:17",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Aboard the ship, the hold \u2014 51:22\u201354:17. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "dark",
+        "tense"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.134784580498866,
+      "loopEnd": 171.57369614512473,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          3082,
+          3257
+        ],
+        "m4_piece": "P12",
+        "mean_rms": 0.0327,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t18",
+      "file": "assets/music/nosferatu-t18-ship-hold-part2.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Aboard the ship, the hold \u2014 54:17\u201358:49",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Aboard the ship, the hold \u2014 54:17\u201358:49. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "dark",
+        "calm"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.2778684807256235,
+      "loopEnd": 269.9101133786848,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          3257,
+          3529
+        ],
+        "m4_piece": "P12",
+        "mean_rms": 0.0245,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t19",
+      "file": "assets/music/nosferatu-t19-wisborg-by-night.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Wisborg by night, the empty house \u2014 58:49\u201362:27",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Wisborg by night, the empty house \u2014 58:49\u201362:27. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "dark",
+        "tense"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.022176870748299,
+      "loopEnd": 215.3629931972789,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          3529,
+          3747
+        ],
+        "m4_piece": "P13",
+        "mean_rms": 0.0306,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t20",
+      "file": "assets/music/nosferatu-t20-wisborg-by-night-part2.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Wisborg by night, the empty house \u2014 62:27\u201364:15",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Wisborg by night, the empty house \u2014 62:27\u201364:15. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "dark",
+        "calm"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.202721088435374,
+      "loopEnd": 105.90621315192743,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          3747,
+          3855
+        ],
+        "m4_piece": "P13",
+        "mean_rms": 0.0271,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t21",
+      "file": "assets/music/nosferatu-t21-plague-dead.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 The plague dead, townsmen gather \u2014 64:15\u201367:32",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 The plague dead, townsmen gather \u2014 64:15\u201367:32. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "dark",
+        "tense"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.18281179138322,
+      "loopEnd": 194.85918367346937,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          3855,
+          4052
+        ],
+        "m4_piece": "P14",
+        "mean_rms": 0.0291,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t22",
+      "file": "assets/music/nosferatu-t22-wisborg-street.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Wisborg street, the house \u2014 67:32\u201370:13",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Wisborg street, the house \u2014 67:32\u201370:13. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "tense",
+        "calm"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.2490702947845804,
+      "loopEnd": 158.5921088435374,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          4052,
+          4213
+        ],
+        "m4_piece": "P15",
+        "mean_rms": 0.026,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t23",
+      "file": "assets/music/nosferatu-t23-hutter-returned.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Hutter returned, the warning \u2014 70:13\u201373:43",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Hutter returned, the warning \u2014 70:13\u201373:43. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "tense"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.461950113378685,
+      "loopEnd": 207.37555555555556,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          4213,
+          4423
+        ],
+        "m4_piece": "P16",
+        "mean_rms": 0.0301,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t24",
+      "file": "assets/music/nosferatu-t24-ninas-vigil.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Nina's vigil \u2014 73:43\u201381:46",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Nina's vigil \u2014 73:43\u201381:46. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "dramatic",
+        "tense"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.135374149659864,
+      "loopEnd": 480.4890702947846,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          4423,
+          4906
+        ],
+        "m4_piece": "P17",
+        "mean_rms": 0.0318,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "nos-t25",
+      "file": "assets/music/nosferatu-t25-finale-dawn.mp3",
+      "remote": null,
+      "title": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Finale, dawn at the window \u2014 81:46\u201384:27",
+      "artist": "Anonymous 1980s VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print)",
+      "license": "unknown-uncredited \u2014 VHS synth score copyright status UNKNOWN; do NOT label public domain; use-basis decision pending (cue-sheet license flag)",
+      "credit": "Nosferatu (1922) \u2014 VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print) \u2014 Finale, dawn at the window \u2014 81:46\u201384:27. Source: owner's video audio, waveform-matched to Internet Archive Nosferatu1922VHS (r\u22480.997\u20130.998). No composer credit exists in any documented source; none invented.",
+      "moods": [
+        "triumphant",
+        "tense"
+      ],
+      "modes": [
+        "battle",
+        "victory",
+        "results",
+        "credits"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": 2.1598639455782314,
+      "loopEnd": 156.96698412698413,
+      "gain": 1.0,
+      "source": {
+        "score": "nosferatu-exact.mp3",
+        "range_sec": [
+          4906,
+          5067
+        ],
+        "m4_piece": "P18",
+        "mean_rms": 0.0298,
+        "status": "cut-pending-kaggle-run"
+      }
+    },
+    {
+      "id": "t7-dojo-1st",
+      "file": null,
+      "remote": null,
+      "title": "Mishima Dojo \u2014 Round 1 (Tekken 7)",
+      "artist": "BANDAI NAMCO Entertainment (Tekken 7 OST)",
+      "license": "tekken-pending",
+      "credit": "Tekken 7 stage theme for t7-mishima-dojo. Audio bytes PENDING browser download (TekkenMods BGM mods / T7 OST); slot is data-only until then and the engine skips it.",
+      "moods": [
+        "aggressive"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [
+        "t7-mishima-dojo"
+      ],
+      "loop": true,
+      "loopStart": null,
+      "loopEnd": null,
+      "gain": 1.0,
+      "finalRound": "t7-dojo-final",
+      "status": "pending-download"
+    },
+    {
+      "id": "t7-dojo-final",
+      "file": null,
+      "remote": null,
+      "title": "Mishima Dojo \u2014 Final Round (Tekken 7)",
+      "artist": "BANDAI NAMCO Entertainment (Tekken 7 OST)",
+      "license": "tekken-pending",
+      "credit": "Tekken 7 Final Round (match-point) variant for t7-mishima-dojo. Audio bytes PENDING browser download; slot is data-only until then.",
+      "moods": [
+        "aggressive"
+      ],
+      "modes": [
+        "battle"
+      ],
+      "stages": [
+        "t7-mishima-dojo"
+      ],
+      "loop": true,
+      "loopStart": null,
+      "loopEnd": null,
+      "gain": 1.0,
+      "status": "pending-download"
+    },
+    {
+      "id": "t7-title",
+      "file": null,
+      "remote": null,
+      "title": "New World Order (Tekken 7 main menu)",
+      "artist": "BANDAI NAMCO Entertainment (Tekken 7 OST)",
+      "license": "tekken-pending",
+      "credit": "Tekken 7 main menu theme. Audio bytes PENDING browser download; slot is data-only until then.",
+      "moods": [
+        "epic"
+      ],
+      "modes": [
+        "title"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": null,
+      "loopEnd": null,
+      "gain": 1.0,
+      "status": "pending-download"
+    },
+    {
+      "id": "t7-select",
+      "file": null,
+      "remote": null,
+      "title": "Blood, Sweat, and Fists (Tekken 7 character select)",
+      "artist": "BANDAI NAMCO Entertainment (Tekken 7 OST)",
+      "license": "tekken-pending",
+      "credit": "Tekken 7 character select theme. Audio bytes PENDING browser download; slot is data-only until then.",
+      "moods": [
+        "aggressive"
+      ],
+      "modes": [
+        "select"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": null,
+      "loopEnd": null,
+      "gain": 1.0,
+      "status": "pending-download"
+    },
+    {
+      "id": "t7-online",
+      "file": null,
+      "remote": null,
+      "title": "Kodama Starship (Tekken 7 online menu)",
+      "artist": "BANDAI NAMCO Entertainment (Tekken 7 OST)",
+      "license": "tekken-pending",
+      "credit": "Tekken 7 online menu theme. Audio bytes PENDING browser download; slot is data-only until then.",
+      "moods": [
+        "epic"
+      ],
+      "modes": [
+        "online"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": null,
+      "loopEnd": null,
+      "gain": 1.0,
+      "status": "pending-download"
+    },
+    {
+      "id": "cape-jones-ghost-surf-rock",
+      "file": "assets/music/cape-jones-ghost-surf-rock.mp3",
+      "source": "https://freemusicarchive.org/music/Loyalty_Freak_Music/WITCHY_BATTY_SPOOKY_HALLOWEEN_IN_SEPTEMBER_/Ghost_Surf_Rock",
+      "title": "Ghost Surf Rock",
+      "artist": "Loyalty Freak Music",
+      "license": "CC0-1.0",
+      "credit": "Ghost Surf Rock \u2014 Loyalty Freak Music \u2014 CC0 1.0 Universal \u2014 CAPE JONES THEME SONG: main track for the future Cape Jones arena, with interchanging tracks rotating around it.",
+      "moods": [
+        "spooky",
+        "surf",
+        "halloween",
+        "ghost",
+        "fun"
+      ],
+      "modes": [],
+      "stages": [
+        "cape-jones-arena"
+      ],
+      "loop": true,
+      "gain": 1.0
+    },
+    {
+      "id": "cape-jones-ghost-waltz",
+      "file": "assets/music/cape-jones-ghost-waltz.mp3",
+      "source": "https://freemusicarchive.org/music/Loyalty_Freak_Music/WITCHY_BATTY_SPOOKY_HALLOWEEN_IN_SEPTEMBER_/A_ghost_Waltz/",
+      "title": "A ghost Waltz",
+      "artist": "Loyalty Freak Music",
+      "license": "CC0-1.0",
+      "credit": "A ghost Waltz \u2014 Loyalty Freak Music \u2014 CC0 1.0 Universal \u2014 Cape Jones arena interchanging track.",
+      "moods": [
+        "spooky",
+        "ghost",
+        "calm"
+      ],
+      "modes": [],
+      "stages": [
+        "cape-jones-arena"
+      ],
+      "loop": true,
+      "gain": 1.0
+    },
+    {
+      "id": "cape-jones-hello-regan",
+      "file": "assets/music/cape-jones-hello-regan.mp3",
+      "source": "http://freemusicarchive.org/music/Loyalty_Freak_Music/WITCHY_BATTY_SPOOKY_HALLOWEEN_IN_SEPTEMBER_/Hello_Regan_",
+      "title": "Hello Regan !",
+      "artist": "Loyalty Freak Music",
+      "license": "CC0-1.0",
+      "credit": "Hello Regan ! \u2014 Loyalty Freak Music \u2014 CC0 1.0 Universal \u2014 Cape Jones arena interchanging track.",
+      "moods": [
+        "spooky",
+        "halloween",
+        "dark"
+      ],
+      "modes": [],
+      "stages": [
+        "cape-jones-arena"
+      ],
+      "loop": true,
+      "gain": 1.0
+    },
+    {
+      "id": "cape-jones-dark-alley",
+      "file": "assets/music/cape-jones-dark-alley.mp3",
+      "source": "https://freemusicarchive.org/music/Loyalty_Freak_Music/WITCHY_BATTY_SPOOKY_HALLOWEEN_IN_SEPTEMBER_/A_really_dark_alley",
+      "title": "A really dark alley",
+      "artist": "Loyalty Freak Music",
+      "license": "CC0-1.0",
+      "credit": "A really dark alley \u2014 Loyalty Freak Music \u2014 CC0 1.0 Universal \u2014 Cape Jones arena interchanging track.",
+      "moods": [
+        "dark",
+        "spooky"
+      ],
+      "modes": [],
+      "stages": [
+        "cape-jones-arena"
+      ],
+      "loop": true,
+      "gain": 1.0
+    },
+    {
+      "id": "cape-jones-graveyard",
+      "file": "assets/music/cape-jones-graveyard.mp3",
+      "source": "https://freemusicarchive.org/index.php/music/Loyalty_Freak_Music/WITCHY_BATTY_SPOOKY_HALLOWEEN_IN_SEPTEMBER_/The_graveyard/",
+      "title": "The graveyard",
+      "artist": "Loyalty Freak Music",
+      "license": "CC0-1.0",
+      "credit": "The graveyard \u2014 Loyalty Freak Music \u2014 CC0 1.0 Universal \u2014 Cape Jones arena interchanging track.",
+      "moods": [
+        "spooky",
+        "dark"
+      ],
+      "modes": [],
+      "stages": [
+        "cape-jones-arena"
+      ],
+      "loop": true,
+      "gain": 1.0
+    },
+    {
+      "id": "cape-jones-old-witch-place",
+      "file": "assets/music/cape-jones-old-witch-place.mp3",
+      "source": "https://freemusicarchive.org/music/Loyalty_Freak_Music/WITCHY_BATTY_SPOOKY_HALLOWEEN_IN_SEPTEMBER_/The_Old_Witch_Place/",
+      "title": "The Old Witch Place",
+      "artist": "Loyalty Freak Music",
+      "license": "CC0-1.0",
+      "credit": "The Old Witch Place \u2014 Loyalty Freak Music \u2014 CC0 1.0 Universal \u2014 Cape Jones arena interchanging track.",
+      "moods": [
+        "spooky",
+        "witchy"
+      ],
+      "modes": [],
+      "stages": [
+        "cape-jones-arena"
+      ],
+      "loop": true,
+      "gain": 1.0
+    },
+    {
+      "id": "cape-jones-witch-magical",
+      "file": "assets/music/cape-jones-witch-magical.mp3",
+      "source": "https://freemusicarchive.org/music/Loyalty_Freak_Music/WITCHY_BATTY_SPOOKY_HALLOWEEN_IN_SEPTEMBER_/The_Witch_Are_Going_Magical/",
+      "title": "The Witch Are Going Magical",
+      "artist": "Loyalty Freak Music",
+      "license": "CC0-1.0",
+      "credit": "The Witch Are Going Magical \u2014 Loyalty Freak Music \u2014 CC0 1.0 Universal \u2014 Cape Jones arena interchanging track.",
+      "moods": [
+        "spooky",
+        "witchy",
+        "fun"
+      ],
+      "modes": [],
+      "stages": [
+        "cape-jones-arena"
+      ],
+      "loop": true,
+      "gain": 1.0
+    },
+    {
+      "id": "cape-jones-sweat-time",
+      "file": "assets/music/cape-jones-sweat-time.mp3",
+      "source": "https://freemusicarchive.org/music/Loyalty_Freak_Music/ROLLER_DISCO_DANCE_DANCE/Loyalty_Freak_Music_-_ROLLER_DISCO_DANCE_DANCE_-_07_Sweat_Time_/",
+      "title": "Sweat Time !",
+      "artist": "Loyalty Freak Music",
+      "license": "CC0-1.0",
+      "credit": "Sweat Time ! \u2014 Loyalty Freak Music \u2014 CC0 1.0 Universal \u2014 Cape Jones arena interchanging track (surf energy).",
+      "moods": [
+        "surf",
+        "disco",
+        "fun",
+        "driving"
+      ],
+      "modes": [],
+      "stages": [
+        "cape-jones-arena"
+      ],
+      "loop": true,
+      "gain": 1.0
+    },
+    {
+      "id": "loyalty-freak-everyone",
+      "file": null,
+      "remote": null,
+      "title": "Everyone",
+      "artist": "Loyalty Freak Music",
+      "license": "CC0-1.0",
+      "credit": "Everyone \u2014 Loyalty Freak Music \u2014 CC0 1.0 Universal (https://freemusicarchive.org/music/Loyalty_Freak_Music/Best_Of__Pick_Your_Player/Loyalty_Freak_Music_-_Best_Of_-_Pick_Your_Player_-_06_Everyone/)",
+      "moods": [
+        "rock",
+        "experimental",
+        "fun"
+      ],
+      "modes": [
+        "cape-jones-theme"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": null,
+      "loopEnd": null,
+      "gain": 0.9,
+      "status": "pending-download",
+      "filePending": "assets/music/loyalty-freak-everyone.mp3",
+      "source": "https://freemusicarchive.org/music/Loyalty_Freak_Music/Best_Of__Pick_Your_Player/Loyalty_Freak_Music_-_Best_Of_-_Pick_Your_Player_-_06_Everyone/"
+    },
+    {
+      "id": "loyalty-freak-untitled",
+      "file": null,
+      "remote": null,
+      "title": "Untitled",
+      "artist": "Loyalty Freak Music",
+      "license": "CC0-1.0",
+      "credit": "Untitled \u2014 Loyalty Freak Music \u2014 CC0 1.0 Universal (https://freemusicarchive.org/music/Loyalty_Freak_Music/MELODIES_WITH_A_BEAT/Loyalty_Freak_Music_-_MELODIES_WITH_A_BEAT_-_12_Untitled/)",
+      "moods": [
+        "lofi",
+        "chill",
+        "fun"
+      ],
+      "modes": [
+        "cape-jones-theme"
+      ],
+      "stages": [],
+      "loop": true,
+      "loopStart": null,
+      "loopEnd": null,
+      "gain": 0.9,
+      "status": "pending-download",
+      "filePending": "assets/music/loyalty-freak-untitled.mp3",
+      "source": "https://freemusicarchive.org/music/Loyalty_Freak_Music/MELODIES_WITH_A_BEAT/Loyalty_Freak_Music_-_MELODIES_WITH_A_BEAT_-_12_Untitled/"
+    }
+  ],
+  "rotation": {
+    "mode": "sequential"
+  },
+  "sequences": {
+    "ep01-fight": [
+      "nos-t07",
+      "nos-t09",
+      "nos-t04",
+      "nos-t05",
+      "nos-t24",
+      "nos-t11",
+      "nos-t12",
+      "nos-t13",
+      "nos-t25"
+    ]
+  }
+}
