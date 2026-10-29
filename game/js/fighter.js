@@ -291,7 +291,12 @@ export function getRealMove(charId, moveType, opts) {
           // T7 '[mid throw]' tackles are blockable mids that are NOT grabs: the
           // decoded throw word (0x800, no posture bits) would make them whiff
           // every posture, so they take the mid word.
-          hitWord: (!mv.isGrab && /\[mid throw\]/.test(mv.note || '') && !((ms.hit_words && ms.hit_words[key]) & 7)) ? 0x217
+          // SWEEP 2026-10-29: the same applies to ANY non-grab strike whose
+          // decoded word carries no posture bits (T3 cross-character rows such
+          // as jin_soul b+3+4 from yoshimitsu r194 = 0x800): it could never
+          // connect, so it takes the mid word too.
+          hitWord: (!mv.isGrab && ms.hit_words && ms.hit_words[key] != null && !(ms.hit_words[key] & 7)) ? 0x217
+            : (!mv.isGrab && /\[mid throw\]/.test(mv.note || '') && !((ms.hit_words && ms.hit_words[key]) & 7)) ? 0x217
             : (ms.hit_words && ms.hit_words[key] != null) ? ms.hit_words[key] : hitWordFor(mv),
           hitLevel: mv.hit_level,
           // T3 situation follow-ups engage on contact: reach covers own hit + pushback.
