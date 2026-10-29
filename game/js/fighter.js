@@ -1157,7 +1157,7 @@ export class Fighter {
       // First frame this attack's plan is visible (_animate builds the
       // plan after _physics on frame 1): anchor on the clip's frame 0
       // and apply the travel so far in this same call, so nothing is lost.
-      prev = { id: this._attackId, name: p.name, ...rootMotionSample(rt, raw.fps || 30, 0) }; prev.lat0 = prev.lat;
+      prev = { id: this._attackId, name: p.name, ...rootMotionSample(rt, raw.fps || 30, 0) }; prev.lat0 = prev.lat; prev.fwd0 = prev.fwd;
     }
     // LATERAL CLAMP (moveset sweep 2026-10-28): some decoded T3 rows carry a metre-scale
     // sideways root track (bad frame-0 anchor in the source), which threw the attacker
@@ -1165,12 +1165,18 @@ export class Fighter {
     // drift sideways well under 0.5 m (Beast Elbow ~0.40 m); cap the total lateral travel per attack inside the 0.75 m reach band.
     const LAT_MAX = 0.45, cl = (v) => Math.max(-LAT_MAX, Math.min(LAT_MAX, v));
     cur.lat = cl(cur.lat - (prev.lat0 ?? prev.lat)) + (prev.lat0 ?? prev.lat);
+    // BACKWARD CLAMP (moveset sweep 2026-10-29): donor rows retargeted from another bank
+    // (e.g. lili 2 on xiaoyu@silvertongue) can carry a backward root track that slid the
+    // attacker 0.75 m away during startup, so a point-blank jab whiffed. Cap total
+    // backward travel per attack; forward travel (lunges) is untouched.
+    const BACK_MAX = 0.3, f0 = prev.fwd0 ?? prev.fwd;
+    cur.fwd = Math.max(f0 - BACK_MAX, cur.fwd);
     const df = cur.fwd - prev.fwd, dl = cur.lat - prev.lat;
     if (df || dl) {
       this.root.position.x += this.facing * df;   // source forward (+Z) -> facing direction
       this.root.position.z += -this.facing * dl;  // source left (+X) -> world -z when facing +x
     }
-    this._rmPrev = { id: this._attackId, name: p.name, fwd: cur.fwd, lat: cur.lat, lat0: prev.lat0 ?? prev.lat };
+    this._rmPrev = { id: this._attackId, name: p.name, fwd: cur.fwd, lat: cur.lat, lat0: prev.lat0 ?? prev.lat, fwd0: prev.fwd0 ?? prev.fwd };
   }
 
   _rowDonor(move) {
