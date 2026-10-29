@@ -88,6 +88,9 @@ SHELL_BUNDLED_MODELS = (
 # the remote base serves it instead. 25 MiB matches the Cloudflare Pages
 # per-file cap, so the same shell could also deploy there unchanged.
 SHELL_MAX_FILE_BYTES = 25 * 1024 * 1024
+# Models named in SHELL_BUNDLED_MODELS may exceed the 25 MiB soft cap up to
+# GitHub Pages' hard 100 MB per-file limit (Milestone 1 core 8, 2026-10-29).
+PAGES_MAX_FILE_BYTES = 100 * 1000 * 1000
 # Itch.io HTML5 caps (verified live 2026-10-25/26, agent-ops PR #161):
 # <=1,000 files, <=500 MB extracted, <=200 MB per file, filenames <=240 chars.
 # --itch trims the shell-only set to the bundled fighters' playable scope.
@@ -365,7 +368,7 @@ def compute_deploy_files(sha, sizes, oids, follow_all=False, shell_only=False,
     for f in files:
         if f.lower().endswith((".glb", ".gltf")) and f not in bundled:
             excluded.append(f)
-        elif sizes[f] > SHELL_MAX_FILE_BYTES:
+        elif sizes[f] > (PAGES_MAX_FILE_BYTES if f in bundled else SHELL_MAX_FILE_BYTES):
             excluded.append(f)
         else:
             kept.append(f)
@@ -405,6 +408,9 @@ def main():
     ap.add_argument("--out", default=None)
     ap.add_argument("--onto", default=None, help="plumbing mode: parent gh-pages ref (e.g. origin/gh-pages)")
     ap.add_argument("--branch", default="gh-pages")
+    ap.add_argument("--orphan", action="store_true",
+                    help="plumbing mode with no parent: a fresh deploy commit on --branch "
+                         "holding ONLY the deploy set (new branch; nothing is deleted anywhere)")
     ap.add_argument("--push", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--follow-all", action="store_true")
@@ -470,7 +476,7 @@ def main():
             print(f"  {n:5d}  {reason}")
     if a.dry_run:
         return
-    if a.onto:
+    if a.onto or a.orphan:
         return plumbing(a, sha, files, sizes, total)
     for f in files:
         dst = os.path.join(a.out, f)
@@ -483,7 +489,7 @@ def main():
         with open(dst, "wb") as fh:
             fh.write(data)
     man = {"format": "wh-pages-deploy/1", "ref": a.ref, "commit": sha, "files": len(files),
-           "bytes": total, "tool": "tools/deploy/build_pages.py", "mode": mode}
+           "bytes": total, "built": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).strftime("%Y-%m-%d %H:%M UTC"), "tool": "tools/deploy/build_pages.py", "mode": mode}
     if excluded:
         man["excluded_files"] = len(excluded)
         man["excluded_bytes"] = sum(sizes[f] for f in excluded)
@@ -512,7 +518,7 @@ def plumbing(a, sha, files, sizes, total):
         mode, kind, obj = meta.split()
         if kind == "blob":
             blob[path] = (mode, obj)
-    parent = git("rev-parse", a.onto).strip()
+    parent = None if a.orphan else git("rev-parse", a.onto).strip()
     idx = tempfile.mktemp(prefix="wh-pages-index-")
     env = dict(os.environ, GIT_INDEX_FILE=idx)
     def g(*args, inp=None):
@@ -520,7 +526,10 @@ def plumbing(a, sha, files, sizes, total):
         if r.returncode:
             sys.exit(r.stderr.decode()[:2000])
         return r.stdout.decode()
-    g("read-tree", parent)
+    if parent:
+        g("read-tree", parent)
+    else:
+        g("read-tree", "--empty")
     before = {l.split("\t", 1)[1]: l.split()[1] for l in g("ls-files", "-s", "-z").split("\0") if l}
     lines, changed = [], 0
     for f in files:
@@ -539,7 +548,7 @@ def plumbing(a, sha, files, sizes, total):
     if missing:
         sys.exit(f"refusing: {len(missing)} entries would be removed")
     tree = g("write-tree").strip()
-    if tree == git("rev-parse", parent + "^{tree}").strip():
+    if parent and tree == git("rev-parse", parent + "^{tree}").strip():
         print("gh-pages already matches", a.ref, "- nothing to deploy")
         os.remove(idx)
         return
@@ -548,7 +557,7 @@ def plumbing(a, sha, files, sizes, total):
            f"{', shell-only' if a.shell_only else ''}); "
            f"0 removed.\n")
     commit = g("-c", "user.name=wh-deploy", "-c", "user.email=noreply@github.com",
-               "commit-tree", tree, "-p", parent, inp=msg.encode()).strip()
+               "commit-tree", tree, *(["-p", parent] if parent else []), inp=msg.encode()).strip()
     os.remove(idx)
     print("new", a.branch, "commit", commit, f"({changed} files changed vs {a.onto})")
     if a.push:

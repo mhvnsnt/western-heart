@@ -28,6 +28,7 @@
    (fighter.js: { speed: 2.8, jump: 7.2, power: 1.1,
    defense: 1.05 }, speed clamped to 3.5).
    ============================================================ */
+import { selectVisible } from './core-set.js';
 import * as THREE from 'three';
 import { assets } from './assets.js';
 import { loadGuardStance, createAimStance } from './stance-aim.js';
@@ -415,7 +416,9 @@ export function createSelectScreen(deps) {
     'ryuji', 'doc-frank-machine-shop',
 
   ]);
-  const selectRoster = () => deps.roster().filter(c => !SELECT_HIDDEN.has(c.id));
+  // Milestone 1 (2026-10-29): core 8 by default, model-less 31 always hidden;
+  // ?roster=all shows the rest (game/js/core-set.js). Nothing is deleted.
+  const selectRoster = () => deps.roster().filter(c => !SELECT_HIDDEN.has(c.id) && selectVisible(c.id));
 
   function build() {
     if (!strip) return;

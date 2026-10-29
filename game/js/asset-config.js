@@ -56,6 +56,19 @@ export const SHELL_BUNDLED_MODELS = [
   'game/assets/models/pantera.glb', // 7.6 MB — play-verify pair
   'game/assets/models/awa-pop.glb', // 0.4 MB
   'game/assets/models/baek.glb', // 0.4 MB
+  // Milestone 1 core 8 (game/js/core-set.js): each fighter's FIGHT model
+  // (roster model / first attire), so every core pick loads on the shell
+  // while the R2 base is still a placeholder. Over 25 MB is fine on
+  // GitHub Pages (100 MB per-file cap); build_pages.py enforces that.
+  'roster/bruno/attires/attire2/source/bruno-a2-sail-the-sea-rigged.glb',
+  'roster/demonio/attires/attire1/model.glb',
+  'roster/demonio/attires/winged-devil/model-rigged.glb',
+  'roster/demonio/attires/human/model-rerig.glb',
+  'game/assets/models/cyborg-x.glb',
+  'roster/burger/attires/attire1/model-rigged.glb',
+  'roster/rahkasa/attires/attire1/model-rigged-textured.glb',
+  'roster/deathfang/attires/attire1/model.glb',
+  'roster/dio/attires/attire1/source/dio-a1-jade-god-rigged.glb',
 ];
 
 export function isRemoteReady() {
