@@ -343,6 +343,7 @@ export function legacyAlias(key) {
 const _DIAG = { df: 'd/f', db: 'd/b', uf: 'u/f', ub: 'u/b', DF: 'D/F', DB: 'D/B', UF: 'U/F', UB: 'U/B' };
 /** Named move state ('Bad Stomach') -> stance code ('BAD_STOMACH'). */
 export function stateCode(name) { return String(name).trim().toUpperCase().replace(/[^A-Z0-9]+/g, '_').replace(/^_|_$/g, ''); }
+const TILDE_WINDOW = 0.1; // s (6 frames): '~' = pressed immediately after the previous input
 export function canonNotation(n) {
   if (typeof n !== 'string') return n;
   let s = n.trim().replace(/\s*\((?:first|second|third|\d+(?:st|nd|rd|th)) hits? only\)\s*$/i, ''); // T7 per-hit row annotation, same input
@@ -942,7 +943,10 @@ export class TekkenBuffer {
     //    without ctx (tests) keep the old 800 ms window.
     const contOk = ctx.inMove !== undefined ? ctx.inMove : (performance.now() - this.lastMoveT < STRING_PENDING);
     if (this.lastMove && contOk) {
-      for (const sep of [',', '~', ':']) {
+      // Tekken '~' (wavu wiki / TekkenDocs: "immediately after"): a press inside the first
+      // TILDE_WINDOW of the hit takes the tilde branch before the ',' string ('f+2,1~2' vs 'f+2,1,2').
+      const seps = ctx.attackT != null && ctx.attackT <= TILDE_WINDOW ? ['~', ',', ':'] : [',', '~', ':'];
+      for (const sep of seps) {
         for (const c of [`${this.lastMove}${sep}${withDir}`, `${this.lastMove}${sep}${input}`]) {
           if (has(c)) return this._recordMove(c);
         }

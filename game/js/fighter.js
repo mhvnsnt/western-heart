@@ -1232,6 +1232,7 @@ export class Fighter {
       urgeOn: !!this._urgeOn,
       urgeAvailable: !this._urgeUsed && !this._urgeOn && this.hp > 0,
       inMove: this.state === 'attack',
+      attackT: this.state === 'attack' ? this.stateT : null, // time into the current hit ('~' window)
       // close/far normals (KOF/SF) pick by root distance; stance spin variants by re-entries
       dist: this._opp && this._opp.root && this.root ? Math.hypot(this._opp.root.position.x - this.root.position.x, this._opp.root.position.z - this.root.position.z) : null,
       stanceSpins: this.stance ? (this._stanceSpins || 1) : 0,
@@ -1718,6 +1719,15 @@ export class Fighter {
       // lands inside its 140 ms window, so '1' then '1+3' means the player pressed 1+3. If the
       // single that just started is part of this chord, the chord replaces it.
       if (name.includes('+') && this.stateT <= 0.14 && this._attackPhase === 'startup' && !this.hasHit) {
+        // Tekken '~' (wavu wiki: "immediately after"): '3~4' is 4 pressed a frame or two after 3,
+        // which input.js reports as the chord 3+4. When the move has a tilde follow-up for the
+        // later button(s) and they came after the first frame, it is the tilde, not the chord.
+        if (this.stateT > 0 && this.tekken && this.tekken.lastMove) {
+          const first = String(this.attackName || '').split('+').pop().slice(-1);
+          const rest = name.split('+').filter((b) => b !== first).join('+');
+          const tk = rest && `${this.tekken.lastMove}~${rest}`;
+          if (tk && resolveMoveKey(this.tekken.fighterId, tk)) { this._queuedNext = this.tekken._recordMove(tk); this._queuedPressT = this._clock || 0; return true; }
+        }
         const single = String(variantBase(this._movesetId, this.attackName) || this.attackName || '').split(/[,.]/).pop(); // close/far normal: its plain button
         const btn = single.split('+').pop();
         if (/^[1234]$/.test(btn) && name.split('+').includes(btn)) {
