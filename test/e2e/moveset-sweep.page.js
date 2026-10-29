@@ -108,7 +108,9 @@
       if (prev && prev.toLowerCase() === h.dir.toLowerCase()) { setDir('n'); step(2, out); }
       setDir(h.dir); step(cap(h.dir) ? 12 : 2, out); }
     else if (h.motion.length) { setDir('n'); step(1, out); }
-    else setDir(crouch ? 'd' : 'n');
+    // batch 10: a set with both FC.d+N and FC.N (T7 lists) — d held is FC.d+N, so FC.N is
+    // entered from the guard crouch (d/b held, TekkenDocs: crouch jab d/b+1), as a player does
+    else setDir(crouch ? (((MS.playedMoveset(g.p1.char.id) || {}).moves || {})['FC.d+' + h.btn.join('+')] ? 'd/b' : 'd') : 'n');
     key(h.btn, 'keydown'); step(h.hold ? 24 : 1, out); key(h.btn, 'keyup');
     /* Batch 7: a press that lands inside a hit stop is queued until the freeze ends, and the
        game reads the stick on that frame. Releasing the stick inside the freeze turned

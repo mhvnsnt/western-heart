@@ -2047,6 +2047,13 @@ export class Fighter {
     this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
     if (name === 'surge') this._auraFlash = 0.7;
     if (move.isGrab || notation === '1+3' || notation === '2+4') this.vx = this.facing * 2.5; // lunge into the grab
+    // batch 11: a side / back throw (FLANK_L/R/B, T7 'Left throw' / 'Back throw') is taken from
+    // off the fight line: turn at the opponent and close the z gap through the grab (the
+    // sidestep re-align path), lunging at them rather than along our own facing.
+    if (/^FLANK_[LRB]\./.test(notation) && this._opp && this._opp.root) {
+      this._ssAlign = true;
+      this.vx = (Math.sign(this._opp.root.position.x - this.root.position.x) || this.facing) * 2.5;
+    }
     return true;
   }
   /* Chain throws (2026-10-29): a throw whose name carries a stage tag ('Arm Breaker (AB1)')
