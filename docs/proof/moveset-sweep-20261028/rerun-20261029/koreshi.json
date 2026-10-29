@@ -7,13 +7,13 @@
   "file": "../roster/koreshi/attires/attire1/model-rigged.glb"
  },
  "moves": 1109,
- "pass": 696,
- "fail": 400,
+ "pass": 807,
+ "fail": 289,
  "na": 13,
  "juggles": 29,
  "jugglePass": 5,
  "pageErrors": [],
- "secs": 59,
+ "secs": 653,
  "rows": [
   {
    "key": "1",
@@ -9236,50 +9236,128 @@
   },
   {
    "key": "donor.vega.n+1 (nc)",
-   "input": "n+1 (nc)",
+   "input": "donor.vega.n+1",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'n+1 (nc)' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"1\"] (keys [\"1\"]) not 'donor.vega.n+1 (nc)'",
+   "fired": [
+    "1"
+   ],
+   "dmg": 9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.n+1 (claw)",
-   "input": "n+1 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'n+1 (claw)' is not a stick/button input",
+   "input": "n+1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1\"] (keys [\"1\"]) not 'donor.vega.n+1 (claw)'",
+   "fired": [
+    "1"
+   ],
+   "dmg": 9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.n+2 (nc)",
-   "input": "n+2 (nc)",
+   "input": "donor.vega.n+2",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'n+2 (nc)' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"2\"] (keys [\"2\"]) not 'donor.vega.n+2 (nc)'",
+   "fired": [
+    "2"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.n+2 (claw)",
-   "input": "n+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'n+2 (claw)' is not a stick/button input",
+   "input": "n+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"2\"] (keys [\"2\"]) not 'donor.vega.n+2 (claw)'",
+   "fired": [
+    "2"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.n+1+2 (nc)",
-   "input": "n+1+2 (nc)",
+   "input": "donor.vega.n+1+2",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'n+1+2 (nc)' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'donor.vega.n+1+2 (nc)'",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.n+1+2 (claw)",
-   "input": "n+1+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'n+1+2 (claw)' is not a stick/button input",
+   "input": "n+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'donor.vega.n+1+2 (claw)'",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -9347,50 +9425,128 @@
   },
   {
    "key": "donor.vega.fc+1 (nc)",
-   "input": "fc+1 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'fc+1 (nc)' is not a stick/button input",
+   "input": "FC.1",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.1"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.fc+1 (claw)",
-   "input": "fc+1 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'fc+1 (claw)' is not a stick/button input",
+   "input": "FC.1",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.1"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.fc+2 (nc)",
-   "input": "fc+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'fc+2 (nc)' is not a stick/button input",
+   "input": "FC.2",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.2"
+   ],
+   "dmg": 14.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.fc+2 (claw)",
-   "input": "fc+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'fc+2 (claw)' is not a stick/button input",
+   "input": "FC.2",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.2"
+   ],
+   "dmg": 14.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.fc+1+2 (nc)",
-   "input": "fc+1+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'fc+1+2 (nc)' is not a stick/button input",
+   "input": "FC.1+2",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.1+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.fc+1+2 (claw)",
-   "input": "fc+1+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'fc+1+2 (claw)' is not a stick/button input",
+   "input": "FC.1+2",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.1+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -9458,50 +9614,128 @@
   },
   {
    "key": "donor.vega.u+1 (nc)",
-   "input": "u+1 (nc)",
+   "input": "donor.vega.u+1",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'u+1 (nc)' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"u+1\"] (keys [\"u+1\"]) not 'donor.vega.u+1 (nc)'",
+   "fired": [
+    "u+1"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.u+1 (claw)",
-   "input": "u+1 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'u+1 (claw)' is not a stick/button input",
+   "input": "u+1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+1"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.u+2 (nc)",
-   "input": "u+2 (nc)",
+   "input": "donor.vega.u+2",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'u+2 (nc)' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"u+2\"] (keys [\"u+2\"]) not 'donor.vega.u+2 (nc)'",
+   "fired": [
+    "u+2"
+   ],
+   "dmg": 6.5,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.u+2 (claw)",
-   "input": "u+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'u+2 (claw)' is not a stick/button input",
+   "input": "u+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.u+1+2 (nc)",
-   "input": "u+1+2 (nc)",
+   "input": "donor.vega.u+1+2",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'u+1+2 (nc)' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"u+1+2\"] (keys [\"u+1+2\"]) not 'donor.vega.u+1+2 (nc)'",
+   "fired": [
+    "u+1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.u+1+2 (claw)",
-   "input": "u+1+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'u+1+2 (claw)' is not a stick/button input",
+   "input": "u+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+1+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -9611,34 +9845,88 @@
   },
   {
    "key": "donor.vega.n+1+2 (claw),1+2",
-   "input": "n+1+2 (claw),1+2",
+   "input": "donor.vega.n+1+2,1+2",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'n+1+2 (claw)' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'donor.vega.n+1+2 (claw),1+2'",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.n+1+2 (claw),1+2,2+4",
-   "input": "n+1+2 (claw),1+2,2+4",
+   "input": "donor.vega.n+1+2,1+2,2+4",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'n+1+2 (claw)' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'donor.vega.n+1+2 (claw),1+2,2+4'",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.n+2 (nc),3+4",
-   "input": "n+2 (nc),3+4",
+   "input": "donor.vega.n+2,3+4",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'n+2 (nc)' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"2\",\"2,3\"] (keys [\"2\",\"2,3\"]) not 'donor.vega.n+2 (nc),3+4'",
+   "fired": [
+    "2",
+    "2,3"
+   ],
+   "dmg": 37.5,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.n+2 (nc),3+4,2+4",
-   "input": "n+2 (nc),3+4,2+4",
+   "input": "donor.vega.n+2,3+4,2+4",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'n+2 (nc)' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"2\",\"2,3\"] (keys [\"2\",\"2,3\"]) not 'donor.vega.n+2 (nc),3+4,2+4'",
+   "fired": [
+    "2",
+    "2,3"
+   ],
+   "dmg": 37.5,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -9809,10 +10097,23 @@
   },
   {
    "key": "donor.vega.f,n,d,d/f+3+4_od",
-   "input": "f,n,d,d/f+3+4_od",
+   "input": "donor.vega.f,n,d,d/f+3+4",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'd/f+3+4_od' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"f,n,d,d/f+3+4\"] (keys [\"f,n,d,d/f+3+4\"]) not 'donor.vega.f,n,d,d/f+3+4_od'",
+   "fired": [
+    "f,n,d,d/f+3+4"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -9861,18 +10162,46 @@
   },
   {
    "key": "donor.vega.f,n,d,d/f+3+4_od,1",
-   "input": "f,n,d,d/f+3+4_od,1",
+   "input": "donor.vega.f,n,d,d/f+3+4,1",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'd/f+3+4_od' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"f,n,d,d/f+3+4\",\"f,n,d,d/f+3+4,1\"] (keys [\"f,n,d,d/f+3+4\",\"f,n,d,d/f+3+4,1\"]) not 'donor.vega.f,n,d,d/f+3+4_od,1'",
+   "fired": [
+    "f,n,d,d/f+3+4",
+    "f,n,d,d/f+3+4,1"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.f,n,d,d/f+3+4_od,1 (claw)",
-   "input": "f,n,d,d/f+3+4_od,1 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'd/f+3+4_od' is not a stick/button input",
+   "input": "f,n,d,d/f+3+4,1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f,n,d,d/f+3+4",
+    "f,n,d,d/f+3+4,1"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -9907,10 +10236,24 @@
   },
   {
    "key": "donor.vega.f,n,d,d/f+3+4_od,1+3",
-   "input": "f,n,d,d/f+3+4_od,1+3",
+   "input": "donor.vega.f,n,d,d/f+3+4,1+3",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'd/f+3+4_od' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"f,n,d,d/f+3+4\",\"f,n,d,d/f+3+4,1\"] (keys [\"f,n,d,d/f+3+4\",\"f,n,d,d/f+3+4,1\"]) not 'donor.vega.f,n,d,d/f+3+4_od,1+3'",
+   "fired": [
+    "f,n,d,d/f+3+4",
+    "f,n,d,d/f+3+4,1"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": true,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -10005,10 +10348,32 @@
   },
   {
    "key": "donor.vega.hcb+1+2_od",
-   "input": "hcb+1+2_od",
+   "input": "donor.vega.hcb+1+2",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'hcb+1+2_od' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"hcb+1+2\"] (keys [\"hcb+1+2\"]) not 'donor.vega.hcb+1+2_od'",
+   "fired": [
+    "hcb+1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": null,
+   "tClip": [
+    "t3_heihachi_row201@koreshi",
+    "t3_heihachi_grab@koreshi"
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
    "slotted": true
   },
   {
@@ -10076,10 +10441,23 @@
   },
   {
    "key": "donor.vega.qcf+3+4_od",
-   "input": "qcf+3+4_od",
+   "input": "donor.vega.qcf+3+4",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'qcf+3+4_od' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"qcf+3+4\"] (keys [\"qcf+3+4\"]) not 'donor.vega.qcf+3+4_od'",
+   "fired": [
+    "qcf+3+4"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -10147,26 +10525,65 @@
   },
   {
    "key": "donor.vega.qcb+1+2_od",
-   "input": "qcb+1+2_od",
+   "input": "donor.vega.qcb+1+2",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'qcb+1+2_od' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"qcb+1+2\"] (keys [\"qcb+1+2\"]) not 'donor.vega.qcb+1+2_od'",
+   "fired": [
+    "qcb+1+2"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.charge_d,u+1+2",
-   "input": "charge_d,u+1+2",
+   "input": "donor.vega.charge_d,u+1+2",
+   "via": "own input",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"d,u+1+2\"] (keys [\"d,u+1+2\"]) not 'donor.vega.charge_d,u+1+2'",
+   "fired": [
+    "d,u+1+2"
+   ],
+   "dmg": 13,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.charge_d,u+1+2_od",
-   "input": "charge_d,u+1+2_od",
-   "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
+   "input": "charge_d,u+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d,u+1+2\"] (keys [\"d,u+1+2\"]) not 'donor.vega.charge_d,u+1+2_od'",
+   "fired": [
+    "d,u+1+2"
+   ],
+   "dmg": 13,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -10280,18 +10697,58 @@
   },
   {
    "key": "donor.vega.2+4 (vs2)",
-   "input": "2+4 (vs2)",
+   "input": "donor.vega.2+4",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token '2+4 (vs2)' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"2+4\"] (keys [\"2+4\"]) not 'donor.vega.2+4 (vs2)'",
+   "fired": [
+    "2+4"
+   ],
+   "dmg": 0,
+   "react": [
+    "thrown",
+    "thrownExec"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [
+    "t3_heihachi_row242@koreshi",
+    "t3_react_2797@koreshi"
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_react_3054@kronos"
+   ],
    "slotted": true
   },
   {
    "key": "donor.vega.2+4 (vs2),4",
-   "input": "2+4 (vs2),4",
+   "input": "donor.vega.2+4,4",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token '2+4 (vs2)' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"2+4\"] (keys [\"2+4\"]) not 'donor.vega.2+4 (vs2),4'",
+   "fired": [
+    "2+4"
+   ],
+   "dmg": 28.5,
+   "react": [
+    "thrown",
+    "thrownExec"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [
+    "t3_heihachi_row242@koreshi",
+    "t3_react_2797@koreshi"
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_react_3054@kronos"
+   ],
    "slotted": true
   },
   {
@@ -10352,114 +10809,290 @@
   },
   {
    "key": "donor.vega.3+4 (vshift)",
-   "input": "3+4 (vshift)",
+   "input": "donor.vega.3+4",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token '3+4 (vshift)' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"3+4\"] (keys [\"3+4\"]) not 'donor.vega.3+4 (vshift)'",
+   "fired": [
+    "3+4"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.3+4 (vshift, break)",
-   "input": "3+4 (vshift, break)",
-   "ok": false,
-   "why": "unparsed: token '3+4 (vshift' is not a stick/button input",
+   "input": "3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3+4"
+   ],
+   "dmg": 14.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.f+1+2+3 (vrev)",
-   "input": "f+1+2+3 (vrev)",
+   "input": "donor.vega.f+1+2+3",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'f+1+2+3 (vrev)' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"1+2+3\"] (keys [\"1+2+3\"]) not 'donor.vega.f+1+2+3 (vrev)'",
+   "fired": [
+    "1+2+3"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.f+3+4 (vrev)",
-   "input": "f+3+4 (vrev)",
+   "input": "donor.vega.f+3+4",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'f+3+4 (vrev)' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"f+3+4\"] (keys [\"f+3+4\"]) not 'donor.vega.f+3+4 (vrev)'",
+   "fired": [
+    "f+3+4"
+   ],
+   "dmg": 22,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.charge_b,f+1+2",
-   "input": "charge_b,f+1+2",
+   "input": "donor.vega.charge_b,f+1+2",
+   "via": "own input",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'charge_b' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"b,f+1+2\"] (keys [\"b,f+1+2\"]) not 'donor.vega.charge_b,f+1+2'",
+   "fired": [
+    "b,f+1+2"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.charge_b,f+1+2_od",
-   "input": "charge_b,f+1+2_od",
-   "ok": false,
-   "why": "unparsed: token 'charge_b' is not a stick/button input",
+   "input": "charge_b,f+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"b,f+1+2\"] (keys [\"b,f+1+2\"]) not 'donor.vega.charge_b,f+1+2_od'",
+   "fired": [
+    "b,f+1+2"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.charge_db,f+3",
-   "input": "charge_db,f+3",
+   "input": "donor.vega.charge_db,f+3",
+   "via": "own input",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"f+3\"] (keys [\"f+3\"]) not 'donor.vega.charge_db,f+3'",
+   "fired": [
+    "f+3"
+   ],
+   "dmg": 19.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.charge_db,f+4",
-   "input": "charge_db,f+4",
+   "input": "donor.vega.charge_db,f+4",
+   "via": "own input",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"f+4\"] (keys [\"f+4\"]) not 'donor.vega.charge_db,f+4'",
+   "fired": [
+    "f+4"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.charge_db,f+3+4",
-   "input": "charge_db,f+3+4",
+   "input": "donor.vega.charge_db,f+3+4",
+   "via": "own input",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"d/b,f+3+4\"] (keys [\"d/b,f+3+4\"]) not 'donor.vega.charge_db,f+3+4'",
+   "fired": [
+    "d/b,f+3+4"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.charge_db,f+3+4_od",
-   "input": "charge_db,f+3+4_od",
-   "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
+   "input": "charge_db,f+3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d/b,f+3+4\"] (keys [\"d/b,f+3+4\"]) not 'donor.vega.charge_db,f+3+4_od'",
+   "fired": [
+    "d/b,f+3+4"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.charge_d,u+3,1",
-   "input": "charge_d,u+3,1",
+   "input": "donor.vega.charge_d,u+3,1",
+   "via": "own input",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"d,u+3\"] (keys [\"d,u+3\"]) not 'donor.vega.charge_d,u+3,1'",
+   "fired": [
+    "d,u+3"
+   ],
+   "dmg": 19.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.charge_d,u+3+4_od,1",
-   "input": "charge_d,u+3+4_od,1",
+   "input": "donor.vega.charge_d,u+3+4,1",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"d,u+3+4\"] (keys [\"d,u+3+4\"]) not 'donor.vega.charge_d,u+3+4_od,1'",
+   "fired": [
+    "d,u+3+4"
+   ],
+   "dmg": 13.9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.charge_d,u+3,f+1+3",
-   "input": "charge_d,u+3,f+1+3",
+   "input": "donor.vega.charge_d,u+3,f+1+3",
+   "via": "own input",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"d,u+3\"] (keys [\"d,u+3\"]) not 'donor.vega.charge_d,u+3,f+1+3'",
+   "fired": [
+    "d,u+3"
+   ],
+   "dmg": 19.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": true,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "donor.vega.charge_db,df,db,u+3",
-   "input": "charge_db,df,db,u+3",
+   "input": "donor.vega.charge_db,d/f,d/b,u+3",
+   "via": "canonical spelling",
+   "setup": "stance donor",
    "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
-   "via": "equipped via moveset loadout",
+   "why": "fired [\"u+3\"] (keys [\"u+3\"]) not 'donor.vega.charge_db,df,db,u+3'",
+   "fired": [
+    "u+3"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -11260,50 +11893,128 @@
   },
   {
    "key": "None~donor.vega.2",
-   "input": "n+1 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'n+1 (nc)' is not a stick/button input",
+   "input": "n+1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1\"] (keys [\"1\"]) not 'None~donor.vega.2'",
+   "fired": [
+    "1"
+   ],
+   "dmg": 9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.3",
-   "input": "n+1 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'n+1 (claw)' is not a stick/button input",
+   "input": "n+1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1\"] (keys [\"1\"]) not 'None~donor.vega.3'",
+   "fired": [
+    "1"
+   ],
+   "dmg": 9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.4",
-   "input": "n+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'n+2 (nc)' is not a stick/button input",
+   "input": "n+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"2\"] (keys [\"2\"]) not 'None~donor.vega.4'",
+   "fired": [
+    "2"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.5",
-   "input": "n+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'n+2 (claw)' is not a stick/button input",
+   "input": "n+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"2\"] (keys [\"2\"]) not 'None~donor.vega.5'",
+   "fired": [
+    "2"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.6",
-   "input": "n+1+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'n+1+2 (nc)' is not a stick/button input",
+   "input": "n+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'None~donor.vega.6'",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.7",
-   "input": "n+1+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'n+1+2 (claw)' is not a stick/button input",
+   "input": "n+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'None~donor.vega.7'",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -11371,50 +12082,128 @@
   },
   {
    "key": "None~donor.vega.8",
-   "input": "fc+1 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'fc+1 (nc)' is not a stick/button input",
+   "input": "FC.1",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.1"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.9",
-   "input": "fc+1 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'fc+1 (claw)' is not a stick/button input",
+   "input": "FC.1",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.1"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.10",
-   "input": "fc+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'fc+2 (nc)' is not a stick/button input",
+   "input": "FC.2",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.2"
+   ],
+   "dmg": 14.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.11",
-   "input": "fc+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'fc+2 (claw)' is not a stick/button input",
+   "input": "FC.2",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.2"
+   ],
+   "dmg": 14.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.12",
-   "input": "fc+1+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'fc+1+2 (nc)' is not a stick/button input",
+   "input": "FC.1+2",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.1+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.13",
-   "input": "fc+1+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'fc+1+2 (claw)' is not a stick/button input",
+   "input": "FC.1+2",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.1+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -11482,50 +12271,128 @@
   },
   {
    "key": "None~donor.vega.14",
-   "input": "u+1 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'u+1 (nc)' is not a stick/button input",
+   "input": "u+1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+1"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.15",
-   "input": "u+1 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'u+1 (claw)' is not a stick/button input",
+   "input": "u+1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+1"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.16",
-   "input": "u+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'u+2 (nc)' is not a stick/button input",
+   "input": "u+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.17",
-   "input": "u+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'u+2 (claw)' is not a stick/button input",
+   "input": "u+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.18",
-   "input": "u+1+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'u+1+2 (nc)' is not a stick/button input",
+   "input": "u+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+1+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.19",
-   "input": "u+1+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'u+1+2 (claw)' is not a stick/button input",
+   "input": "u+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+1+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -11635,34 +12502,88 @@
   },
   {
    "key": "None~donor.vega.20",
-   "input": "n+1+2 (claw),1+2",
-   "ok": false,
-   "why": "unparsed: token 'n+1+2 (claw)' is not a stick/button input",
+   "input": "n+1+2,1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'None~donor.vega.20'",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.21",
-   "input": "n+1+2 (claw),1+2,2+4",
-   "ok": false,
-   "why": "unparsed: token 'n+1+2 (claw)' is not a stick/button input",
+   "input": "n+1+2,1+2,2+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'None~donor.vega.21'",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.22",
-   "input": "n+2 (nc),3+4",
-   "ok": false,
-   "why": "unparsed: token 'n+2 (nc)' is not a stick/button input",
+   "input": "n+2,3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"2\",\"2,3\"] (keys [\"2\",\"2,3\"]) not 'None~donor.vega.22'",
+   "fired": [
+    "2",
+    "2,3"
+   ],
+   "dmg": 37.5,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.23",
-   "input": "n+2 (nc),3+4,2+4",
-   "ok": false,
-   "why": "unparsed: token 'n+2 (nc)' is not a stick/button input",
+   "input": "n+2,3+4,2+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"2\",\"2,3\"] (keys [\"2\",\"2,3\"]) not 'None~donor.vega.23'",
+   "fired": [
+    "2",
+    "2,3"
+   ],
+   "dmg": 37.5,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -11833,10 +12754,23 @@
   },
   {
    "key": "None~donor.vega.24",
-   "input": "f,n,d,d/f+3+4_od",
-   "ok": false,
-   "why": "unparsed: token 'd/f+3+4_od' is not a stick/button input",
+   "input": "f,n,d,d/f+3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f,n,d,d/f+3+4"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -11885,18 +12819,46 @@
   },
   {
    "key": "None~donor.vega.25",
-   "input": "f,n,d,d/f+3+4_od,1",
-   "ok": false,
-   "why": "unparsed: token 'd/f+3+4_od' is not a stick/button input",
+   "input": "f,n,d,d/f+3+4,1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f,n,d,d/f+3+4",
+    "f,n,d,d/f+3+4,1"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.26",
-   "input": "f,n,d,d/f+3+4_od,1 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'd/f+3+4_od' is not a stick/button input",
+   "input": "f,n,d,d/f+3+4,1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f,n,d,d/f+3+4",
+    "f,n,d,d/f+3+4,1"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -11931,10 +12893,32 @@
   },
   {
    "key": "None~donor.vega.27",
-   "input": "f,n,d,d/f+3+4_od,1+3",
-   "ok": false,
-   "why": "unparsed: token 'd/f+3+4_od' is not a stick/button input",
+   "input": "f,n,d,d/f+3+4,1+3",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f,n,d,d/f+3+4",
+    "f,n,d,d/f+3+4,1+3"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun",
+    "thrown",
+    "thrownExec"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    "t3_heihachi_row201@koreshi",
+    "t3_heihachi_grab@koreshi"
+   ],
+   "vClip": [
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
    "slotted": true
   },
   {
@@ -12027,10 +13011,31 @@
   },
   {
    "key": "None~donor.vega.28",
-   "input": "hcb+1+2_od",
-   "ok": false,
-   "why": "unparsed: token 'hcb+1+2_od' is not a stick/button input",
+   "input": "hcb+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "hcb+1+2"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": false,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    "t3_heihachi_row247@koreshi",
+    "t3_react_2909@koreshi"
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_react_3183@kronos"
+   ],
    "slotted": true
   },
   {
@@ -12098,10 +13103,23 @@
   },
   {
    "key": "None~donor.vega.29",
-   "input": "qcf+3+4_od",
-   "ok": false,
-   "why": "unparsed: token 'qcf+3+4_od' is not a stick/button input",
+   "input": "qcf+3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "qcf+3+4"
+   ],
+   "dmg": 19.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -12169,26 +13187,65 @@
   },
   {
    "key": "None~donor.vega.30",
-   "input": "qcb+1+2_od",
-   "ok": false,
-   "why": "unparsed: token 'qcb+1+2_od' is not a stick/button input",
+   "input": "qcb+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "qcb+1+2"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.31",
    "input": "charge_d,u+1+2",
-   "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d,u+1+2\"] (keys [\"d,u+1+2\"]) not 'None~donor.vega.31'",
+   "fired": [
+    "d,u+1+2"
+   ],
+   "dmg": 13,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.32",
-   "input": "charge_d,u+1+2_od",
-   "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
+   "input": "charge_d,u+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d,u+1+2\"] (keys [\"d,u+1+2\"]) not 'None~donor.vega.32'",
+   "fired": [
+    "d,u+1+2"
+   ],
+   "dmg": 13,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -12302,18 +13359,52 @@
   },
   {
    "key": "None~donor.vega.34",
-   "input": "2+4 (vs2)",
-   "ok": false,
-   "why": "unparsed: token '2+4 (vs2)' is not a stick/button input",
+   "input": "2+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "2+4"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.35",
-   "input": "2+4 (vs2),4",
-   "ok": false,
-   "why": "unparsed: token '2+4 (vs2)' is not a stick/button input",
+   "input": "2+4,4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"2+4\"] (keys [\"2+4\"]) not 'None~donor.vega.35'",
+   "fired": [
+    "2+4"
+   ],
+   "dmg": 28.5,
+   "react": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [
+    "t3_heihachi_row242@koreshi",
+    "t3_react_2797@koreshi"
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_react_3054@kronos"
+   ],
    "slotted": true
   },
   {
@@ -12374,114 +13465,288 @@
   },
   {
    "key": "None~donor.vega.43",
-   "input": "3+4 (vshift)",
-   "ok": false,
-   "why": "unparsed: token '3+4 (vshift)' is not a stick/button input",
+   "input": "3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3+4"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.44",
-   "input": "3+4 (vshift, break)",
-   "ok": false,
-   "why": "unparsed: token '3+4 (vshift' is not a stick/button input",
+   "input": "3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3+4"
+   ],
+   "dmg": 14.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.45",
-   "input": "f+1+2+3 (vrev)",
-   "ok": false,
-   "why": "unparsed: token 'f+1+2+3 (vrev)' is not a stick/button input",
+   "input": "f+1+2+3",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+1+2+3"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.46",
-   "input": "f+3+4 (vrev)",
-   "ok": false,
-   "why": "unparsed: token 'f+3+4 (vrev)' is not a stick/button input",
+   "input": "f+3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+3+4"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.47",
    "input": "charge_b,f+1+2",
-   "ok": false,
-   "why": "unparsed: token 'charge_b' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"b,f+1+2\"] (keys [\"b,f+1+2\"]) not 'None~donor.vega.47'",
+   "fired": [
+    "b,f+1+2"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.48",
-   "input": "charge_b,f+1+2_od",
-   "ok": false,
-   "why": "unparsed: token 'charge_b' is not a stick/button input",
+   "input": "charge_b,f+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"b,f+1+2\"] (keys [\"b,f+1+2\"]) not 'None~donor.vega.48'",
+   "fired": [
+    "b,f+1+2"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.49",
    "input": "charge_db,f+3",
-   "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "charge_db,f+3"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.50",
    "input": "charge_db,f+4",
-   "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired but did not connect",
+   "fired": [
+    "charge_db,f+4"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.51",
    "input": "charge_db,f+3+4",
-   "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d/b,f+3+4\"] (keys [\"d/b,f+3+4\"]) not 'None~donor.vega.51'",
+   "fired": [
+    "d/b,f+3+4"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.52",
-   "input": "charge_db,f+3+4_od",
-   "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
+   "input": "charge_db,f+3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d/b,f+3+4\"] (keys [\"d/b,f+3+4\"]) not 'None~donor.vega.52'",
+   "fired": [
+    "d/b,f+3+4"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.53",
    "input": "charge_d,u+3,1",
-   "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d,u+3\"] (keys [\"d,u+3\"]) not 'None~donor.vega.53'",
+   "fired": [
+    "d,u+3"
+   ],
+   "dmg": 19.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.54",
-   "input": "charge_d,u+3+4_od,1",
-   "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
+   "input": "charge_d,u+3+4,1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d,u+3+4\"] (keys [\"d,u+3+4\"]) not 'None~donor.vega.54'",
+   "fired": [
+    "d,u+3+4"
+   ],
+   "dmg": 13.9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.55",
    "input": "charge_d,u+3,f+1+3",
-   "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d,u+3\"] (keys [\"d,u+3\"]) not 'None~donor.vega.55'",
+   "fired": [
+    "d,u+3"
+   ],
+   "dmg": 19.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": true,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.56",
-   "input": "charge_db,df,db,u+3",
-   "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
+   "input": "charge_db,d/f,d/b,u+3",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"u+3\"] (keys [\"u+3\"]) not 'None~donor.vega.56'",
+   "fired": [
+    "u+3"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -13281,50 +14546,128 @@
   },
   {
    "key": "None~donor.vega.57",
-   "input": "n+1 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'n+1 (nc)' is not a stick/button input",
+   "input": "n+1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1\"] (keys [\"1\"]) not 'None~donor.vega.57'",
+   "fired": [
+    "1"
+   ],
+   "dmg": 9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.58",
-   "input": "n+1 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'n+1 (claw)' is not a stick/button input",
+   "input": "n+1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1\"] (keys [\"1\"]) not 'None~donor.vega.58'",
+   "fired": [
+    "1"
+   ],
+   "dmg": 9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.59",
-   "input": "n+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'n+2 (nc)' is not a stick/button input",
+   "input": "n+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"2\"] (keys [\"2\"]) not 'None~donor.vega.59'",
+   "fired": [
+    "2"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.60",
-   "input": "n+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'n+2 (claw)' is not a stick/button input",
+   "input": "n+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"2\"] (keys [\"2\"]) not 'None~donor.vega.60'",
+   "fired": [
+    "2"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.61",
-   "input": "n+1+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'n+1+2 (nc)' is not a stick/button input",
+   "input": "n+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'None~donor.vega.61'",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.62",
-   "input": "n+1+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'n+1+2 (claw)' is not a stick/button input",
+   "input": "n+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'None~donor.vega.62'",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -13392,50 +14735,128 @@
   },
   {
    "key": "None~donor.vega.63",
-   "input": "fc+1 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'fc+1 (nc)' is not a stick/button input",
+   "input": "FC.1",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.1"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.64",
-   "input": "fc+1 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'fc+1 (claw)' is not a stick/button input",
+   "input": "FC.1",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.1"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.65",
-   "input": "fc+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'fc+2 (nc)' is not a stick/button input",
+   "input": "FC.2",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.2"
+   ],
+   "dmg": 14.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.66",
-   "input": "fc+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'fc+2 (claw)' is not a stick/button input",
+   "input": "FC.2",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.2"
+   ],
+   "dmg": 14.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.67",
-   "input": "fc+1+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'fc+1+2 (nc)' is not a stick/button input",
+   "input": "FC.1+2",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.1+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.68",
-   "input": "fc+1+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'fc+1+2 (claw)' is not a stick/button input",
+   "input": "FC.1+2",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.1+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -13503,50 +14924,128 @@
   },
   {
    "key": "None~donor.vega.69",
-   "input": "u+1 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'u+1 (nc)' is not a stick/button input",
+   "input": "u+1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+1"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.70",
-   "input": "u+1 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'u+1 (claw)' is not a stick/button input",
+   "input": "u+1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+1"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.71",
-   "input": "u+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'u+2 (nc)' is not a stick/button input",
+   "input": "u+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.72",
-   "input": "u+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'u+2 (claw)' is not a stick/button input",
+   "input": "u+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.73",
-   "input": "u+1+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'u+1+2 (nc)' is not a stick/button input",
+   "input": "u+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+1+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.74",
-   "input": "u+1+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'u+1+2 (claw)' is not a stick/button input",
+   "input": "u+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+1+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -13656,34 +15155,88 @@
   },
   {
    "key": "None~donor.vega.75",
-   "input": "n+1+2 (claw),1+2",
-   "ok": false,
-   "why": "unparsed: token 'n+1+2 (claw)' is not a stick/button input",
+   "input": "n+1+2,1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'None~donor.vega.75'",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.76",
-   "input": "n+1+2 (claw),1+2,2+4",
-   "ok": false,
-   "why": "unparsed: token 'n+1+2 (claw)' is not a stick/button input",
+   "input": "n+1+2,1+2,2+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'None~donor.vega.76'",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.77",
-   "input": "n+2 (nc),3+4",
-   "ok": false,
-   "why": "unparsed: token 'n+2 (nc)' is not a stick/button input",
+   "input": "n+2,3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"2\",\"2,3\"] (keys [\"2\",\"2,3\"]) not 'None~donor.vega.77'",
+   "fired": [
+    "2",
+    "2,3"
+   ],
+   "dmg": 37.5,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.78",
-   "input": "n+2 (nc),3+4,2+4",
-   "ok": false,
-   "why": "unparsed: token 'n+2 (nc)' is not a stick/button input",
+   "input": "n+2,3+4,2+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"2\",\"2,3\"] (keys [\"2\",\"2,3\"]) not 'None~donor.vega.78'",
+   "fired": [
+    "2",
+    "2,3"
+   ],
+   "dmg": 37.5,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -13854,10 +15407,23 @@
   },
   {
    "key": "None~donor.vega.79",
-   "input": "f,n,d,d/f+3+4_od",
-   "ok": false,
-   "why": "unparsed: token 'd/f+3+4_od' is not a stick/button input",
+   "input": "f,n,d,d/f+3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f,n,d,d/f+3+4"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -13906,18 +15472,46 @@
   },
   {
    "key": "None~donor.vega.80",
-   "input": "f,n,d,d/f+3+4_od,1",
-   "ok": false,
-   "why": "unparsed: token 'd/f+3+4_od' is not a stick/button input",
+   "input": "f,n,d,d/f+3+4,1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f,n,d,d/f+3+4",
+    "f,n,d,d/f+3+4,1"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.81",
-   "input": "f,n,d,d/f+3+4_od,1 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'd/f+3+4_od' is not a stick/button input",
+   "input": "f,n,d,d/f+3+4,1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f,n,d,d/f+3+4",
+    "f,n,d,d/f+3+4,1"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -13952,10 +15546,32 @@
   },
   {
    "key": "None~donor.vega.82",
-   "input": "f,n,d,d/f+3+4_od,1+3",
-   "ok": false,
-   "why": "unparsed: token 'd/f+3+4_od' is not a stick/button input",
+   "input": "f,n,d,d/f+3+4,1+3",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f,n,d,d/f+3+4",
+    "f,n,d,d/f+3+4,1+3"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun",
+    "thrown",
+    "thrownExec"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    "t3_heihachi_row201@koreshi",
+    "t3_heihachi_grab@koreshi"
+   ],
+   "vClip": [
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
    "slotted": true
   },
   {
@@ -14048,10 +15664,31 @@
   },
   {
    "key": "None~donor.vega.83",
-   "input": "hcb+1+2_od",
-   "ok": false,
-   "why": "unparsed: token 'hcb+1+2_od' is not a stick/button input",
+   "input": "hcb+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "hcb+1+2"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": false,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    "t3_heihachi_row247@koreshi",
+    "t3_react_2909@koreshi"
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_react_3183@kronos"
+   ],
    "slotted": true
   },
   {
@@ -14119,10 +15756,23 @@
   },
   {
    "key": "None~donor.vega.84",
-   "input": "qcf+3+4_od",
-   "ok": false,
-   "why": "unparsed: token 'qcf+3+4_od' is not a stick/button input",
+   "input": "qcf+3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "qcf+3+4"
+   ],
+   "dmg": 19.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -14190,26 +15840,65 @@
   },
   {
    "key": "None~donor.vega.85",
-   "input": "qcb+1+2_od",
-   "ok": false,
-   "why": "unparsed: token 'qcb+1+2_od' is not a stick/button input",
+   "input": "qcb+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "qcb+1+2"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.86",
    "input": "charge_d,u+1+2",
-   "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d,u+1+2\"] (keys [\"d,u+1+2\"]) not 'None~donor.vega.86'",
+   "fired": [
+    "d,u+1+2"
+   ],
+   "dmg": 13,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.87",
-   "input": "charge_d,u+1+2_od",
-   "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
+   "input": "charge_d,u+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d,u+1+2\"] (keys [\"d,u+1+2\"]) not 'None~donor.vega.87'",
+   "fired": [
+    "d,u+1+2"
+   ],
+   "dmg": 13,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -14323,18 +16012,52 @@
   },
   {
    "key": "None~donor.vega.89",
-   "input": "2+4 (vs2)",
-   "ok": false,
-   "why": "unparsed: token '2+4 (vs2)' is not a stick/button input",
+   "input": "2+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "2+4"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.90",
-   "input": "2+4 (vs2),4",
-   "ok": false,
-   "why": "unparsed: token '2+4 (vs2)' is not a stick/button input",
+   "input": "2+4,4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"2+4\"] (keys [\"2+4\"]) not 'None~donor.vega.90'",
+   "fired": [
+    "2+4"
+   ],
+   "dmg": 28.5,
+   "react": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [
+    "t3_heihachi_row242@koreshi",
+    "t3_react_2797@koreshi"
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_react_3054@kronos"
+   ],
    "slotted": true
   },
   {
@@ -14395,114 +16118,288 @@
   },
   {
    "key": "None~donor.vega.98",
-   "input": "3+4 (vshift)",
-   "ok": false,
-   "why": "unparsed: token '3+4 (vshift)' is not a stick/button input",
+   "input": "3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3+4"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.99",
-   "input": "3+4 (vshift, break)",
-   "ok": false,
-   "why": "unparsed: token '3+4 (vshift' is not a stick/button input",
+   "input": "3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3+4"
+   ],
+   "dmg": 14.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.100",
-   "input": "f+1+2+3 (vrev)",
-   "ok": false,
-   "why": "unparsed: token 'f+1+2+3 (vrev)' is not a stick/button input",
+   "input": "f+1+2+3",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+1+2+3"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.101",
-   "input": "f+3+4 (vrev)",
-   "ok": false,
-   "why": "unparsed: token 'f+3+4 (vrev)' is not a stick/button input",
+   "input": "f+3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+3+4"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.102",
    "input": "charge_b,f+1+2",
-   "ok": false,
-   "why": "unparsed: token 'charge_b' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"b,f+1+2\"] (keys [\"b,f+1+2\"]) not 'None~donor.vega.102'",
+   "fired": [
+    "b,f+1+2"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.103",
-   "input": "charge_b,f+1+2_od",
-   "ok": false,
-   "why": "unparsed: token 'charge_b' is not a stick/button input",
+   "input": "charge_b,f+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"b,f+1+2\"] (keys [\"b,f+1+2\"]) not 'None~donor.vega.103'",
+   "fired": [
+    "b,f+1+2"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.104",
    "input": "charge_db,f+3",
-   "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "charge_db,f+3"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.105",
    "input": "charge_db,f+4",
-   "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired but did not connect",
+   "fired": [
+    "charge_db,f+4"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.106",
    "input": "charge_db,f+3+4",
-   "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d/b,f+3+4\"] (keys [\"d/b,f+3+4\"]) not 'None~donor.vega.106'",
+   "fired": [
+    "d/b,f+3+4"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.107",
-   "input": "charge_db,f+3+4_od",
-   "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
+   "input": "charge_db,f+3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d/b,f+3+4\"] (keys [\"d/b,f+3+4\"]) not 'None~donor.vega.107'",
+   "fired": [
+    "d/b,f+3+4"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.108",
    "input": "charge_d,u+3,1",
-   "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d,u+3\"] (keys [\"d,u+3\"]) not 'None~donor.vega.108'",
+   "fired": [
+    "d,u+3"
+   ],
+   "dmg": 19.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.109",
-   "input": "charge_d,u+3+4_od,1",
-   "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
+   "input": "charge_d,u+3+4,1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d,u+3+4\"] (keys [\"d,u+3+4\"]) not 'None~donor.vega.109'",
+   "fired": [
+    "d,u+3+4"
+   ],
+   "dmg": 13.9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.110",
    "input": "charge_d,u+3,f+1+3",
-   "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d,u+3\"] (keys [\"d,u+3\"]) not 'None~donor.vega.110'",
+   "fired": [
+    "d,u+3"
+   ],
+   "dmg": 19.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": true,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.111",
-   "input": "charge_db,df,db,u+3",
-   "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
+   "input": "charge_db,d/f,d/b,u+3",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"u+3\"] (keys [\"u+3\"]) not 'None~donor.vega.111'",
+   "fired": [
+    "u+3"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -15302,50 +17199,128 @@
   },
   {
    "key": "None~donor.vega.112",
-   "input": "n+1 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'n+1 (nc)' is not a stick/button input",
+   "input": "n+1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1\"] (keys [\"1\"]) not 'None~donor.vega.112'",
+   "fired": [
+    "1"
+   ],
+   "dmg": 9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.113",
-   "input": "n+1 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'n+1 (claw)' is not a stick/button input",
+   "input": "n+1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1\"] (keys [\"1\"]) not 'None~donor.vega.113'",
+   "fired": [
+    "1"
+   ],
+   "dmg": 9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.114",
-   "input": "n+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'n+2 (nc)' is not a stick/button input",
+   "input": "n+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"2\"] (keys [\"2\"]) not 'None~donor.vega.114'",
+   "fired": [
+    "2"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.115",
-   "input": "n+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'n+2 (claw)' is not a stick/button input",
+   "input": "n+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"2\"] (keys [\"2\"]) not 'None~donor.vega.115'",
+   "fired": [
+    "2"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.116",
-   "input": "n+1+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'n+1+2 (nc)' is not a stick/button input",
+   "input": "n+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'None~donor.vega.116'",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.117",
-   "input": "n+1+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'n+1+2 (claw)' is not a stick/button input",
+   "input": "n+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'None~donor.vega.117'",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -15413,50 +17388,128 @@
   },
   {
    "key": "None~donor.vega.118",
-   "input": "fc+1 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'fc+1 (nc)' is not a stick/button input",
+   "input": "FC.1",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.1"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.119",
-   "input": "fc+1 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'fc+1 (claw)' is not a stick/button input",
+   "input": "FC.1",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.1"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.120",
-   "input": "fc+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'fc+2 (nc)' is not a stick/button input",
+   "input": "FC.2",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.2"
+   ],
+   "dmg": 14.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.121",
-   "input": "fc+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'fc+2 (claw)' is not a stick/button input",
+   "input": "FC.2",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.2"
+   ],
+   "dmg": 14.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.122",
-   "input": "fc+1+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'fc+1+2 (nc)' is not a stick/button input",
+   "input": "FC.1+2",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.1+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.123",
-   "input": "fc+1+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'fc+1+2 (claw)' is not a stick/button input",
+   "input": "FC.1+2",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.1+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -15524,50 +17577,128 @@
   },
   {
    "key": "None~donor.vega.124",
-   "input": "u+1 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'u+1 (nc)' is not a stick/button input",
+   "input": "u+1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+1"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.125",
-   "input": "u+1 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'u+1 (claw)' is not a stick/button input",
+   "input": "u+1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+1"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.126",
-   "input": "u+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'u+2 (nc)' is not a stick/button input",
+   "input": "u+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.127",
-   "input": "u+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'u+2 (claw)' is not a stick/button input",
+   "input": "u+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.128",
-   "input": "u+1+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'u+1+2 (nc)' is not a stick/button input",
+   "input": "u+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+1+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.129",
-   "input": "u+1+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'u+1+2 (claw)' is not a stick/button input",
+   "input": "u+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+1+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -15677,34 +17808,88 @@
   },
   {
    "key": "None~donor.vega.130",
-   "input": "n+1+2 (claw),1+2",
-   "ok": false,
-   "why": "unparsed: token 'n+1+2 (claw)' is not a stick/button input",
+   "input": "n+1+2,1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'None~donor.vega.130'",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.131",
-   "input": "n+1+2 (claw),1+2,2+4",
-   "ok": false,
-   "why": "unparsed: token 'n+1+2 (claw)' is not a stick/button input",
+   "input": "n+1+2,1+2,2+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'None~donor.vega.131'",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.132",
-   "input": "n+2 (nc),3+4",
-   "ok": false,
-   "why": "unparsed: token 'n+2 (nc)' is not a stick/button input",
+   "input": "n+2,3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"2\",\"2,3\"] (keys [\"2\",\"2,3\"]) not 'None~donor.vega.132'",
+   "fired": [
+    "2",
+    "2,3"
+   ],
+   "dmg": 37.5,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.133",
-   "input": "n+2 (nc),3+4,2+4",
-   "ok": false,
-   "why": "unparsed: token 'n+2 (nc)' is not a stick/button input",
+   "input": "n+2,3+4,2+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"2\",\"2,3\"] (keys [\"2\",\"2,3\"]) not 'None~donor.vega.133'",
+   "fired": [
+    "2",
+    "2,3"
+   ],
+   "dmg": 37.5,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -15875,10 +18060,23 @@
   },
   {
    "key": "None~donor.vega.134",
-   "input": "f,n,d,d/f+3+4_od",
-   "ok": false,
-   "why": "unparsed: token 'd/f+3+4_od' is not a stick/button input",
+   "input": "f,n,d,d/f+3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f,n,d,d/f+3+4"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -15927,18 +18125,46 @@
   },
   {
    "key": "None~donor.vega.135",
-   "input": "f,n,d,d/f+3+4_od,1",
-   "ok": false,
-   "why": "unparsed: token 'd/f+3+4_od' is not a stick/button input",
+   "input": "f,n,d,d/f+3+4,1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f,n,d,d/f+3+4",
+    "f,n,d,d/f+3+4,1"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.136",
-   "input": "f,n,d,d/f+3+4_od,1 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'd/f+3+4_od' is not a stick/button input",
+   "input": "f,n,d,d/f+3+4,1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f,n,d,d/f+3+4",
+    "f,n,d,d/f+3+4,1"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -15973,10 +18199,32 @@
   },
   {
    "key": "None~donor.vega.137",
-   "input": "f,n,d,d/f+3+4_od,1+3",
-   "ok": false,
-   "why": "unparsed: token 'd/f+3+4_od' is not a stick/button input",
+   "input": "f,n,d,d/f+3+4,1+3",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f,n,d,d/f+3+4",
+    "f,n,d,d/f+3+4,1+3"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun",
+    "thrown",
+    "thrownExec"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    "t3_heihachi_row201@koreshi",
+    "t3_heihachi_grab@koreshi"
+   ],
+   "vClip": [
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
    "slotted": true
   },
   {
@@ -16069,10 +18317,31 @@
   },
   {
    "key": "None~donor.vega.138",
-   "input": "hcb+1+2_od",
-   "ok": false,
-   "why": "unparsed: token 'hcb+1+2_od' is not a stick/button input",
+   "input": "hcb+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "hcb+1+2"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": false,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    "t3_heihachi_row247@koreshi",
+    "t3_react_2909@koreshi"
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_react_3183@kronos"
+   ],
    "slotted": true
   },
   {
@@ -16140,10 +18409,23 @@
   },
   {
    "key": "None~donor.vega.139",
-   "input": "qcf+3+4_od",
-   "ok": false,
-   "why": "unparsed: token 'qcf+3+4_od' is not a stick/button input",
+   "input": "qcf+3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "qcf+3+4"
+   ],
+   "dmg": 19.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -16211,26 +18493,65 @@
   },
   {
    "key": "None~donor.vega.140",
-   "input": "qcb+1+2_od",
-   "ok": false,
-   "why": "unparsed: token 'qcb+1+2_od' is not a stick/button input",
+   "input": "qcb+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "qcb+1+2"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.141",
    "input": "charge_d,u+1+2",
-   "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d,u+1+2\"] (keys [\"d,u+1+2\"]) not 'None~donor.vega.141'",
+   "fired": [
+    "d,u+1+2"
+   ],
+   "dmg": 13,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.142",
-   "input": "charge_d,u+1+2_od",
-   "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
+   "input": "charge_d,u+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d,u+1+2\"] (keys [\"d,u+1+2\"]) not 'None~donor.vega.142'",
+   "fired": [
+    "d,u+1+2"
+   ],
+   "dmg": 13,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -16344,18 +18665,52 @@
   },
   {
    "key": "None~donor.vega.144",
-   "input": "2+4 (vs2)",
-   "ok": false,
-   "why": "unparsed: token '2+4 (vs2)' is not a stick/button input",
+   "input": "2+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "2+4"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.145",
-   "input": "2+4 (vs2),4",
-   "ok": false,
-   "why": "unparsed: token '2+4 (vs2)' is not a stick/button input",
+   "input": "2+4,4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"2+4\"] (keys [\"2+4\"]) not 'None~donor.vega.145'",
+   "fired": [
+    "2+4"
+   ],
+   "dmg": 28.5,
+   "react": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [
+    "t3_heihachi_row242@koreshi",
+    "t3_react_2797@koreshi"
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_react_3054@kronos"
+   ],
    "slotted": true
   },
   {
@@ -16416,114 +18771,288 @@
   },
   {
    "key": "None~donor.vega.153",
-   "input": "3+4 (vshift)",
-   "ok": false,
-   "why": "unparsed: token '3+4 (vshift)' is not a stick/button input",
+   "input": "3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3+4"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.154",
-   "input": "3+4 (vshift, break)",
-   "ok": false,
-   "why": "unparsed: token '3+4 (vshift' is not a stick/button input",
+   "input": "3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3+4"
+   ],
+   "dmg": 14.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.155",
-   "input": "f+1+2+3 (vrev)",
-   "ok": false,
-   "why": "unparsed: token 'f+1+2+3 (vrev)' is not a stick/button input",
+   "input": "f+1+2+3",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+1+2+3"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.156",
-   "input": "f+3+4 (vrev)",
-   "ok": false,
-   "why": "unparsed: token 'f+3+4 (vrev)' is not a stick/button input",
+   "input": "f+3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+3+4"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.157",
    "input": "charge_b,f+1+2",
-   "ok": false,
-   "why": "unparsed: token 'charge_b' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"b,f+1+2\"] (keys [\"b,f+1+2\"]) not 'None~donor.vega.157'",
+   "fired": [
+    "b,f+1+2"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.158",
-   "input": "charge_b,f+1+2_od",
-   "ok": false,
-   "why": "unparsed: token 'charge_b' is not a stick/button input",
+   "input": "charge_b,f+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"b,f+1+2\"] (keys [\"b,f+1+2\"]) not 'None~donor.vega.158'",
+   "fired": [
+    "b,f+1+2"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.159",
    "input": "charge_db,f+3",
-   "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "charge_db,f+3"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.160",
    "input": "charge_db,f+4",
-   "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired but did not connect",
+   "fired": [
+    "charge_db,f+4"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.161",
    "input": "charge_db,f+3+4",
-   "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d/b,f+3+4\"] (keys [\"d/b,f+3+4\"]) not 'None~donor.vega.161'",
+   "fired": [
+    "d/b,f+3+4"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.162",
-   "input": "charge_db,f+3+4_od",
-   "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
+   "input": "charge_db,f+3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d/b,f+3+4\"] (keys [\"d/b,f+3+4\"]) not 'None~donor.vega.162'",
+   "fired": [
+    "d/b,f+3+4"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.163",
    "input": "charge_d,u+3,1",
-   "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d,u+3\"] (keys [\"d,u+3\"]) not 'None~donor.vega.163'",
+   "fired": [
+    "d,u+3"
+   ],
+   "dmg": 19.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.164",
-   "input": "charge_d,u+3+4_od,1",
-   "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
+   "input": "charge_d,u+3+4,1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d,u+3+4\"] (keys [\"d,u+3+4\"]) not 'None~donor.vega.164'",
+   "fired": [
+    "d,u+3+4"
+   ],
+   "dmg": 13.9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.165",
    "input": "charge_d,u+3,f+1+3",
-   "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d,u+3\"] (keys [\"d,u+3\"]) not 'None~donor.vega.165'",
+   "fired": [
+    "d,u+3"
+   ],
+   "dmg": 19.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": true,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.166",
-   "input": "charge_db,df,db,u+3",
-   "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
+   "input": "charge_db,d/f,d/b,u+3",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"u+3\"] (keys [\"u+3\"]) not 'None~donor.vega.166'",
+   "fired": [
+    "u+3"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -17323,50 +19852,128 @@
   },
   {
    "key": "None~donor.vega.167",
-   "input": "n+1 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'n+1 (nc)' is not a stick/button input",
+   "input": "n+1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1\"] (keys [\"1\"]) not 'None~donor.vega.167'",
+   "fired": [
+    "1"
+   ],
+   "dmg": 9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.168",
-   "input": "n+1 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'n+1 (claw)' is not a stick/button input",
+   "input": "n+1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1\"] (keys [\"1\"]) not 'None~donor.vega.168'",
+   "fired": [
+    "1"
+   ],
+   "dmg": 9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.169",
-   "input": "n+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'n+2 (nc)' is not a stick/button input",
+   "input": "n+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"2\"] (keys [\"2\"]) not 'None~donor.vega.169'",
+   "fired": [
+    "2"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.170",
-   "input": "n+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'n+2 (claw)' is not a stick/button input",
+   "input": "n+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"2\"] (keys [\"2\"]) not 'None~donor.vega.170'",
+   "fired": [
+    "2"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.171",
-   "input": "n+1+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'n+1+2 (nc)' is not a stick/button input",
+   "input": "n+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'None~donor.vega.171'",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.172",
-   "input": "n+1+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'n+1+2 (claw)' is not a stick/button input",
+   "input": "n+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'None~donor.vega.172'",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -17434,50 +20041,128 @@
   },
   {
    "key": "None~donor.vega.173",
-   "input": "fc+1 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'fc+1 (nc)' is not a stick/button input",
+   "input": "FC.1",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.1"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.174",
-   "input": "fc+1 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'fc+1 (claw)' is not a stick/button input",
+   "input": "FC.1",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.1"
+   ],
+   "dmg": 7.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.175",
-   "input": "fc+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'fc+2 (nc)' is not a stick/button input",
+   "input": "FC.2",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.2"
+   ],
+   "dmg": 14.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.176",
-   "input": "fc+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'fc+2 (claw)' is not a stick/button input",
+   "input": "FC.2",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.2"
+   ],
+   "dmg": 14.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.177",
-   "input": "fc+1+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'fc+1+2 (nc)' is not a stick/button input",
+   "input": "FC.1+2",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.1+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.178",
-   "input": "fc+1+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'fc+1+2 (claw)' is not a stick/button input",
+   "input": "FC.1+2",
    "via": "equipped via moveset loadout",
+   "setup": "held d (full crouch)",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "FC.1+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -17545,50 +20230,128 @@
   },
   {
    "key": "None~donor.vega.179",
-   "input": "u+1 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'u+1 (nc)' is not a stick/button input",
+   "input": "u+1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+1"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.180",
-   "input": "u+1 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'u+1 (claw)' is not a stick/button input",
+   "input": "u+1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+1"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.181",
-   "input": "u+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'u+2 (nc)' is not a stick/button input",
+   "input": "u+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.182",
-   "input": "u+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'u+2 (claw)' is not a stick/button input",
+   "input": "u+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.183",
-   "input": "u+1+2 (nc)",
-   "ok": false,
-   "why": "unparsed: token 'u+1+2 (nc)' is not a stick/button input",
+   "input": "u+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+1+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.184",
-   "input": "u+1+2 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'u+1+2 (claw)' is not a stick/button input",
+   "input": "u+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "u+1+2"
+   ],
+   "dmg": 16.3,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -17698,34 +20461,88 @@
   },
   {
    "key": "None~donor.vega.185",
-   "input": "n+1+2 (claw),1+2",
-   "ok": false,
-   "why": "unparsed: token 'n+1+2 (claw)' is not a stick/button input",
+   "input": "n+1+2,1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'None~donor.vega.185'",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.186",
-   "input": "n+1+2 (claw),1+2,2+4",
-   "ok": false,
-   "why": "unparsed: token 'n+1+2 (claw)' is not a stick/button input",
+   "input": "n+1+2,1+2,2+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"1+2\"] (keys [\"1+2\"]) not 'None~donor.vega.186'",
+   "fired": [
+    "1+2"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.187",
-   "input": "n+2 (nc),3+4",
-   "ok": false,
-   "why": "unparsed: token 'n+2 (nc)' is not a stick/button input",
+   "input": "n+2,3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"2\",\"2,3\"] (keys [\"2\",\"2,3\"]) not 'None~donor.vega.187'",
+   "fired": [
+    "2",
+    "2,3"
+   ],
+   "dmg": 37.5,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.188",
-   "input": "n+2 (nc),3+4,2+4",
-   "ok": false,
-   "why": "unparsed: token 'n+2 (nc)' is not a stick/button input",
+   "input": "n+2,3+4,2+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"2\",\"2,3\"] (keys [\"2\",\"2,3\"]) not 'None~donor.vega.188'",
+   "fired": [
+    "2",
+    "2,3"
+   ],
+   "dmg": 37.5,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -17896,10 +20713,23 @@
   },
   {
    "key": "None~donor.vega.189",
-   "input": "f,n,d,d/f+3+4_od",
-   "ok": false,
-   "why": "unparsed: token 'd/f+3+4_od' is not a stick/button input",
+   "input": "f,n,d,d/f+3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f,n,d,d/f+3+4"
+   ],
+   "dmg": 9.8,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -17948,18 +20778,46 @@
   },
   {
    "key": "None~donor.vega.190",
-   "input": "f,n,d,d/f+3+4_od,1",
-   "ok": false,
-   "why": "unparsed: token 'd/f+3+4_od' is not a stick/button input",
+   "input": "f,n,d,d/f+3+4,1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f,n,d,d/f+3+4",
+    "f,n,d,d/f+3+4,1"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.191",
-   "input": "f,n,d,d/f+3+4_od,1 (claw)",
-   "ok": false,
-   "why": "unparsed: token 'd/f+3+4_od' is not a stick/button input",
+   "input": "f,n,d,d/f+3+4,1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f,n,d,d/f+3+4",
+    "f,n,d,d/f+3+4,1"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -17994,10 +20852,32 @@
   },
   {
    "key": "None~donor.vega.192",
-   "input": "f,n,d,d/f+3+4_od,1+3",
-   "ok": false,
-   "why": "unparsed: token 'd/f+3+4_od' is not a stick/button input",
+   "input": "f,n,d,d/f+3+4,1+3",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f,n,d,d/f+3+4",
+    "f,n,d,d/f+3+4,1+3"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun",
+    "thrown",
+    "thrownExec"
+   ],
+   "launch": true,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    "t3_heihachi_row201@koreshi",
+    "t3_heihachi_grab@koreshi"
+   ],
+   "vClip": [
+    "t3_king_hit@kronos",
+    "t3_king_launch@kronos"
+   ],
    "slotted": true
   },
   {
@@ -18090,10 +20970,31 @@
   },
   {
    "key": "None~donor.vega.193",
-   "input": "hcb+1+2_od",
-   "ok": false,
-   "why": "unparsed: token 'hcb+1+2_od' is not a stick/button input",
+   "input": "hcb+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "hcb+1+2"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": false,
+   "isThrow": true,
+   "throwOk": true,
+   "tClip": [
+    "t3_heihachi_row247@koreshi",
+    "t3_react_2909@koreshi"
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_react_3183@kronos"
+   ],
    "slotted": true
   },
   {
@@ -18161,10 +21062,23 @@
   },
   {
    "key": "None~donor.vega.194",
-   "input": "qcf+3+4_od",
-   "ok": false,
-   "why": "unparsed: token 'qcf+3+4_od' is not a stick/button input",
+   "input": "qcf+3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "qcf+3+4"
+   ],
+   "dmg": 19.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -18232,26 +21146,65 @@
   },
   {
    "key": "None~donor.vega.195",
-   "input": "qcb+1+2_od",
-   "ok": false,
-   "why": "unparsed: token 'qcb+1+2_od' is not a stick/button input",
+   "input": "qcb+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "qcb+1+2"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.196",
    "input": "charge_d,u+1+2",
-   "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d,u+1+2\"] (keys [\"d,u+1+2\"]) not 'None~donor.vega.196'",
+   "fired": [
+    "d,u+1+2"
+   ],
+   "dmg": 13,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.197",
-   "input": "charge_d,u+1+2_od",
-   "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
+   "input": "charge_d,u+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d,u+1+2\"] (keys [\"d,u+1+2\"]) not 'None~donor.vega.197'",
+   "fired": [
+    "d,u+1+2"
+   ],
+   "dmg": 13,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
@@ -18365,18 +21318,52 @@
   },
   {
    "key": "None~donor.vega.199",
-   "input": "2+4 (vs2)",
-   "ok": false,
-   "why": "unparsed: token '2+4 (vs2)' is not a stick/button input",
+   "input": "2+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "2+4"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.200",
-   "input": "2+4 (vs2),4",
-   "ok": false,
-   "why": "unparsed: token '2+4 (vs2)' is not a stick/button input",
+   "input": "2+4,4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"2+4\"] (keys [\"2+4\"]) not 'None~donor.vega.200'",
+   "fired": [
+    "2+4"
+   ],
+   "dmg": 28.5,
+   "react": [
+    "thrown",
+    "thrownExec",
+    "knockdown"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [
+    "t3_heihachi_row242@koreshi",
+    "t3_react_2797@koreshi"
+   ],
+   "vClip": [
+    "t3_king_stance@kronos",
+    "t3_react_3054@kronos"
+   ],
    "slotted": true
   },
   {
@@ -18437,114 +21424,288 @@
   },
   {
    "key": "None~donor.vega.208",
-   "input": "3+4 (vshift)",
-   "ok": false,
-   "why": "unparsed: token '3+4 (vshift)' is not a stick/button input",
+   "input": "3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3+4"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.209",
-   "input": "3+4 (vshift, break)",
-   "ok": false,
-   "why": "unparsed: token '3+4 (vshift' is not a stick/button input",
+   "input": "3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "3+4"
+   ],
+   "dmg": 14.7,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.210",
-   "input": "f+1+2+3 (vrev)",
-   "ok": false,
-   "why": "unparsed: token 'f+1+2+3 (vrev)' is not a stick/button input",
+   "input": "f+1+2+3",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+1+2+3"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.211",
-   "input": "f+3+4 (vrev)",
-   "ok": false,
-   "why": "unparsed: token 'f+3+4 (vrev)' is not a stick/button input",
+   "input": "f+3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "f+3+4"
+   ],
+   "dmg": 0,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.212",
    "input": "charge_b,f+1+2",
-   "ok": false,
-   "why": "unparsed: token 'charge_b' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"b,f+1+2\"] (keys [\"b,f+1+2\"]) not 'None~donor.vega.212'",
+   "fired": [
+    "b,f+1+2"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.213",
-   "input": "charge_b,f+1+2_od",
-   "ok": false,
-   "why": "unparsed: token 'charge_b' is not a stick/button input",
+   "input": "charge_b,f+1+2",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"b,f+1+2\"] (keys [\"b,f+1+2\"]) not 'None~donor.vega.213'",
+   "fired": [
+    "b,f+1+2"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.214",
    "input": "charge_db,f+3",
-   "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": true,
+   "why": "",
+   "fired": [
+    "charge_db,f+3"
+   ],
+   "dmg": 20.4,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.215",
    "input": "charge_db,f+4",
-   "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired but did not connect",
+   "fired": [
+    "charge_db,f+4"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.216",
    "input": "charge_db,f+3+4",
-   "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d/b,f+3+4\"] (keys [\"d/b,f+3+4\"]) not 'None~donor.vega.216'",
+   "fired": [
+    "d/b,f+3+4"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.217",
-   "input": "charge_db,f+3+4_od",
-   "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
+   "input": "charge_db,f+3+4",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d/b,f+3+4\"] (keys [\"d/b,f+3+4\"]) not 'None~donor.vega.217'",
+   "fired": [
+    "d/b,f+3+4"
+   ],
+   "dmg": 12.2,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.218",
    "input": "charge_d,u+3,1",
-   "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d,u+3\"] (keys [\"d,u+3\"]) not 'None~donor.vega.218'",
+   "fired": [
+    "d,u+3"
+   ],
+   "dmg": 19.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.219",
-   "input": "charge_d,u+3+4_od,1",
-   "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
+   "input": "charge_d,u+3+4,1",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d,u+3+4\"] (keys [\"d,u+3+4\"]) not 'None~donor.vega.219'",
+   "fired": [
+    "d,u+3+4"
+   ],
+   "dmg": 13.9,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.220",
    "input": "charge_d,u+3,f+1+3",
-   "ok": false,
-   "why": "unparsed: token 'charge_d' is not a stick/button input",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"d,u+3\"] (keys [\"d,u+3\"]) not 'None~donor.vega.220'",
+   "fired": [
+    "d,u+3"
+   ],
+   "dmg": 19.6,
+   "react": [
+    "hitstun"
+   ],
+   "launch": false,
+   "isThrow": true,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
    "key": "None~donor.vega.221",
-   "input": "charge_db,df,db,u+3",
-   "ok": false,
-   "why": "unparsed: token 'charge_db' is not a stick/button input",
+   "input": "charge_db,d/f,d/b,u+3",
    "via": "equipped via moveset loadout",
+   "setup": "neutral",
+   "ok": false,
+   "why": "fired [\"u+3\"] (keys [\"u+3\"]) not 'None~donor.vega.221'",
+   "fired": [
+    "u+3"
+   ],
+   "dmg": 0,
+   "react": [],
+   "launch": false,
+   "isThrow": false,
+   "throwOk": null,
+   "tClip": [],
+   "vClip": [],
    "slotted": true
   },
   {
