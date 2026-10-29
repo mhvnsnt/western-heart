@@ -252,6 +252,8 @@ const INPUT_FPS = 60;      // T3 frames per second: the unit of every frame cons
 let DOUBLE_TAP_BUDGET = 0x13;
 let DASH_FRAMES = { 'f,f': 30, 'b,b': 32 }; // decoded: every bank's dash row is 30 frames, backdash 30-35
 const HIST_FRAMES = 60;    // history span in frames (fight_sim HISTORY)
+const CHARGE_FRAMES = 40;  // charge motions: frames held in the charge direction (APPROXIMATE, SF/KOF ~40-45f)
+const CHARGE_RELEASE = 10; // frames allowed between leaving the charge and the motion's last step
 const HIST_LEN = 512;      // ring entries: HIST_FRAMES of time at any tick rate up to ~500 Hz
 const T_EPS = 1e-6;        // float slack when summing entry lengths
 const MOTION_HOLD = 4; // v2: final motion step held this long = capital spelling (f,f,F)
@@ -300,6 +302,12 @@ export function parseMotion(n) {
   const lm = /^(?:(qcf|qcb|hcf|hcb|d\/f|d\/b|u\/f|u\/b|f|b|u|d|D\/F|D\/B|U\/F|U\/B|F|B|U|D)\+)?([1-4](?:\+[1-4])*)\*?$/.exec(last);
   if (!lm) return null;
   const head = parts.slice(0, -1);
+  /* SF/KOF charge motions ('charge_b,f+1', 'charge_d,u+3', 'charge_db,f+3'): hold the charge
+     direction CHARGE_FRAMES, then the rest of the motion. Before (moveset sweep 2026-10-29)
+     'charge_X' was no direction token, so these moves were unreachable in a fight. */
+  let charge = null;
+  const cm = head.length ? /^charge_(b|d|db|d\/b|u|f)$/i.exec(head[0]) : null;
+  if (cm) { charge = _DIAG[cm[1].toLowerCase()] || cm[1].toLowerCase(); head.shift(); }
   // KOF/SF heads may chain named motions ('hcb,f+1', 'qcf,qcf+1', 'qcb,qcf+3'): expand them.
   if (head.some(p => !DIR_TOKEN.test(p) && !MOTION_DIRS[p])) return null; // a button earlier = string, not motion
   let dirs = [].concat(...head.map(d => MOTION_DIRS[d] || [d.toLowerCase()]));
@@ -316,6 +324,7 @@ export function parseMotion(n) {
   // 'b,3' / 'd,1' (moveset sweep 2026-10-28): ONE direction tap, release, then the bare
   // button. Returned as a neutral-ending motion so V2 matches tap -> neutral -> press;
   // before, it was dropped here as a 'plain directional' and only the plain 3 ever fired.
+  if (charge) return dirs.length ? { prefix, dirs, btn: lm[2], neutral, charge } : null;
   if (!lm[1] && head.length === 1 && dirs.length === 1 && dirs[0] !== 'n') return { prefix, dirs, btn: lm[2], neutral: true };
   if (dirs.filter(d => d !== 'n').length < 2 && !(lm[1] && MOTION_DIRS[lm[1]])) return null; // plain directional
   return { prefix, dirs, btn: lm[2], neutral };
@@ -771,7 +780,7 @@ export class TekkenBuffer {
         // so a released stick reaches it and a held one still gets b+1 / d+1 first.
         const tapRel = !mo.neutral && !dir && /,[1-4](?:\+[1-4])*\*?$/.test(mo.n) && !/^(f|b)(,\1)+$/i.test(mo.dirs.join(','));
         if (!tapRel && (mo.neutral ? dir : dir !== mo.dirs[mo.dirs.length - 1])) continue;
-        if (this._motionHeldV2(mo) && has(mo.n)) return this._recordMove(mo.n);
+        if (this._motionHeldV2(mo) && (!mo.charge || this._chargeHeld(mo)) && has(mo.n)) return this._recordMove(mo.n);
       }
       if (dir) {
         // Held spelling ('D/F+2') when the direction has been held >= HOLD_FRAMES, tap otherwise.
@@ -805,6 +814,19 @@ export class TekkenBuffer {
   /** V2 motion match: like _seqMatch, but two identical consecutive steps ('d/f,d/f', 'f,f,F')
       need the stick to leave that direction in between (a real second tap) — the legacy match
       let one long hold satisfy every repeated step, so a held d/f+1 came out as d/f,d/f+1. */
+  /** Charge motion: within the motion's window (+ CHARGE_RELEASE) before the newest entry, the
+      stick sat in the charge direction (its diagonals count: b = b, d/b, u/b) for CHARGE_FRAMES
+      in a row. APPROXIMATE: SF/KOF charge is ~40-45f depending on the game; 40f here. */
+  _chargeHeld(mo) {
+    const set = { b: ['b', 'd/b', 'u/b'], f: ['f', 'd/f', 'u/f'], d: ['d', 'd/b', 'd/f'], u: ['u', 'u/b', 'u/f'], 'd/b': ['d/b'] }[mo.charge] || [mo.charge];
+    const h = this.hist, limit = motionWindow(mo.dirs) + CHARGE_RELEASE;
+    let pos = this.hi, t = 0;
+    while (!set.includes(h[pos])) { t += this.hdur[pos]; pos = this._prev(pos); if (t > limit + T_EPS || pos === this.hi) return false; }
+    let held = 0;
+    for (let n = 0; n < HIST_LEN && set.includes(h[pos]); n++) { held += this.hdur[pos]; if (held >= CHARGE_FRAMES - T_EPS) return true; pos = this._prev(pos); }
+    return false;
+  }
+
   _motionHeldV2(mo) {
     const steps = mo.dirs; // inner n's are real steps (d/b,n,f != d/b,f); leading/trailing were stripped
     const h = this.hist; let pos = this.hi;
@@ -877,7 +899,7 @@ export class TekkenBuffer {
       for (const mo of motionsFor(this.fighterId, ms)) {
         if (mo.prefix !== p || mo.btn !== input) continue;
         if (mo.neutral && dir) continue; // 'f,n,2' wants the stick back in neutral
-        if (this._motionHeld(mo.dirs) && has(mo.n)) return this._recordMove(mo.n);
+        if (this._motionHeld(mo.dirs) && (!mo.charge || this._chargeHeld(mo)) && has(mo.n)) return this._recordMove(mo.n);
       }
       // 3) direction + button (tap, then hold spelling 'D/B+2'), 4) button
       if (dir && has(p + withDir)) return this._recordMove(p + withDir);
