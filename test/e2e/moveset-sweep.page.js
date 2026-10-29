@@ -147,6 +147,9 @@
     const swap = () => { const x = f.root.position.x; f.root.position.x = o.root.position.x; o.root.position.x = x; f.facing = -1; o.facing = 1; };
     if (c >= 2 && c <= 0x17) { const code = c <= 0x13 ? c : [2, 3, 4, 5][c - 0x14];
       const r = contactFirst(f, o); o._enter('idle'); o.attack = null; o.stun = 0;
+      // A throw situation is positional, not a string: let the jab's 500 ms string window lapse
+      // (as it would before a player walks into the situation) so the press reads the situation row, not '1,1'.
+      f._stringGraceUntil = 0; f._queuedNext = null; f._queuedAfter = null; if (f.tekken) f.tekken._strPending = null;
       const q = (code - 2) % 4, base = code >= 18 ? 18 : code >= 14 ? 14 : code >= 10 ? 10 : code >= 6 ? 6 : 2;
       if (base === 6) o._enter('crouch'); if (base >= 10 && base < 18) { o._enter('knockdown'); o.onGround = true; o.stun = 5; o._faceDown = base === 14; }
       if (base === 18) { back(); if (code === 19) o.facing = 1; return r + ' · own back turned'; }
