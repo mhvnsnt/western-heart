@@ -47,6 +47,7 @@
       if (!t) return { err: `empty token in '${n}'` };
       const sub = /^([A-Za-z_]+)\.(.+)$/.exec(t); let sp = null; if (sub && !DIR.test(sub[1])) { sp = sub[1]; t = sub[2]; }
       if (DIR.test(t)) { mot.push(t); continue; }
+      const ch = /^charge_(b|d|db|d\/b|u|f)$/i.exec(t); if (ch) { mot.push('CH:' + ({ db: 'd/b' }[ch[1].toLowerCase()] || ch[1].toLowerCase())); continue; } // hold the charge 48f
       if (MOT[t]) { mot.push(...MOT[t]); continue; } // named motion as its own step ('hcb,f+1', 'qcf,qcf+1')
       const hm = /^(?:(qcf|qcb|hcf|hcb|dp|[udfbnUDFBN](?:\/[udfbUDFB])?)\+)?([1-4](?:\+[1-4])*|S|P\+K)(\*)?$/.exec(t);
       if (!hm) return { err: `token '${t}' is not a stick/button input` };
@@ -83,6 +84,7 @@
     if (h.dirOnly) { for (let k = 0; k < 40 && g._hitStop > 0; k++) step(1, out); setDir('n'); step(2, out); setDir(h.dir); for (let k = 0; k < 40 && g._hitStop > 0; k++) step(1, out); step(4, out); setDir('n'); step(1, out); return; }
     const cap = (d) => /[A-Z]/.test(d);
     for (let i = 0; i < h.motion.length; i++) { const d = h.motion[i];
+      if (d.startsWith('CH:')) { setDir(d.slice(3)); step(48, out); continue; }
       if (i && h.motion[i - 1].toLowerCase() === d.toLowerCase()) { setDir('n'); step(2, out); }
       setDir(d); step(cap(d) && d.toLowerCase() !== 'n' ? 8 : 3, out); }
     if (h.dir) { const prev = h.motion[h.motion.length - 1];
