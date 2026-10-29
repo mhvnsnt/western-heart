@@ -18,12 +18,24 @@ const ROSTER_ALIAS = { jin_soul: 'phantom' }; // JIN folded into Phantom's ladde
 // which is what the game loads (e.g. kingtyrant -> king-tyrant-attire1, baek-master-white -> kevin-tripo).
 const RMAP = JSON.parse(fs.readFileSync(new URL('game/data/roster_map.json', root), 'utf8'));
 const A1 = {}; for (const f of (Array.isArray(RMAP) ? RMAP : RMAP.fighters || [])) { const a = (f.attires || []).find((x) => x.slot === 1); if (a && a.model) A1[f.id] = a.model; }
+// The game's own default attire (attires.js selectableAttires()[0], no saved pick) is the body a
+// fight loads, e.g. negativo -> negativo-attire1 (OWNER-MODEL-FIRST), not roster_map's n3g4tiv0.
+const { selectableAttires } = await import(new URL('game/js/attires.js', root));
+const { MATERIAL_STATUS } = await import(new URL('game/js/material-status.js', root));
+const QUAR = MATERIAL_STATUS.quarantine || {};
 const M = (model, how, rosterId = null) => ({ rosterId, model, how, ok: onDisk(model), file: URLS[model] || null });
 export function bodyFor(id, meta = {}) {
   const names = [meta.tekken_base, meta.display, meta.name].filter(Boolean);
   const has = (f) => f && f.model && onDisk(f.model);
   const exact = FULL_ROSTER.find((f) => f.id === id);
   if (MODEL_ALIAS[id]) return M(MODEL_ALIAS[id], `roster/${id.split('-')[0]} spirit model`, exact ? id : null);
+  if (exact && exact.model && !exact.modelPending) {
+    const game = selectableAttires(exact);
+    if (game.length && onDisk(game[0].model)) return M(game[0].model, 'game default attire (attires.js)', id);
+    // Material gate hides the fighter (attiresFor -> []): the fight would load another body.
+    const q = [...new Set([exact.model, `${exact.model}-attire1`, A1[id]])].filter((k) => k && QUAR[k]);
+    if (!game.length && q.length) return { rosterId: id, model: null, ok: false, how: `material gate quarantine: ${q.map((k) => `${k} (${QUAR[k]})`).join(', ')}`, file: 'game/js/material-status.js' };
+  }
   if (exact && A1[id] && onDisk(A1[id])) return M(A1[id], 'roster attire 1', id);
   if (has(exact)) return M(exact.model, 'roster id', id);
   // A roster fighter with no model never plays on another fighter's body (main.js MODEL PENDING rule).
