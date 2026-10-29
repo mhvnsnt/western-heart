@@ -159,7 +159,7 @@
     switch (c) {
       case 1: case 0x1A: return contactFirst(f, o);
       case 0x1B: return contactFirst(f, o, true);
-      case 0x1C: f.root.position.x = o.root.position.x - 3; f.tryAttack('1'); for (let i = 0; i < 60 && f.state === 'attack'; i++) step(1); f.root.position.x = o.root.position.x - 1.1; return 'jab whiffed';
+      case 0x1C: f.root.position.x = o.root.position.x - 3; f.tryAttack('1'); /* the press is buffered: wait for the jab to start, then to recover */ for (let i = 0; i < 20 && f.state !== 'attack'; i++) step(1); for (let i = 0; i < 90 && f.state === 'attack'; i++) step(1); /* past the 500 ms string grace (else the press is the jab's own 1,1 string), inside the 1.5 s whiff window */ step(36); f.root.position.x = o.root.position.x - 1.1; return 'jab whiffed';
       case 0x18: case 0x33: case 0x34: f.root.position.x = o.root.position.x - 0.7; return 'close';
       case 0x19: f.root.position.x = o.root.position.x - 2.0; return 'far';
       case 0x1E: case 0x1F: case 0x45: case 0x4A: case 0x4B: case 0x47: return 'opponent attacking ' + oppAttack(o, c === 0x47 ? 'mid' : null);

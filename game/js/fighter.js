@@ -2754,6 +2754,9 @@ export class Fighter {
             if (this._fireNotation(next)) break;
             this._enter('idle');
           } else {
+            // T3 condition 0x1C (own whiff): an attack that recovers without hitting counts as a
+            // whiff for the branch pressed within CONTACT_WINDOW after it, not only a cancelled one.
+            if (!this.hasHit) this._t3Whiff = this._clock || 0;
             this.attack = null; this.attackName = null; this._enter('idle');
           }
           // String grace starts when a non-grab attack completes (see _tryAttackFresh).
