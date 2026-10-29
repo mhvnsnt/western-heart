@@ -92,6 +92,20 @@
     else setDir(crouch ? 'd' : 'n');
     key(h.btn, 'keydown'); step(h.hold ? 24 : 1, out); key(h.btn, 'keyup');
   }
+  // Chain throws: 'AB1.1,1+2' is entered during the throw that opens stage AB1 ('Arm Breaker (AB1)').
+  function stageParent(pre) {
+    if (!pre || !MS.throwStageTag) return null; const M = (MS.playedMoveset(g.p1.char.id) || {}).moves || {};
+    const VAR = /~t\d+\.[a-z0-9_]+(\.\d+)?$/i; // a T7/T8 copy is equipped on its base input
+    return Object.keys(M).find((k) => M[k] && M[k].move_class === 'throw' && !k.startsWith(pre + '.') && MS.throwStageTag(M[k].name) === pre && !parse(k.replace(VAR, '')).err) || null;
+  }
+  function stageInput(k) { const b = k.replace(/~t\d+\.[a-z0-9_]+(\.\d+)?$/i, ''); if (b !== k) MS.setLoadoutSlot(g.p1.char.id, b, k); return b; }
+  function runStage(f, P, out) {
+    const par = stageParent(P.pre), PP = parse(stageInput(par)); PP.key = par;
+    if (PP.pre && stageParent(PP.pre)) runStage(f, PP, out); else { setup(PP.pre, f); run(f, PP, out); }
+    for (let k = 0; k < 400 && !((f.attackName === par || MS.resolveMoveKey(g.p1.char.id, f.attackName) === par) && /throw/.test(f.state)); k++) step(1, out);
+    for (const h of P.hits) { step(6, out); key(h.btn, 'keydown'); step(1, out); key(h.btn, 'keyup'); }
+    for (let k = 0; k < 600 && /throw/.test(f.state) && f.attackName !== P.key; k++) step(1, out);
+  }
   function run(f, P, out) {
     for (let i = 0; i < P.hits.length; i++) {
       const h = P.hits[i];
@@ -204,7 +218,8 @@
       reset(gap);
       // neutral 2+3 is the Urge Burst while urge is live (T8 Heat); the fighter's own 2+3 is tested with urge spent
       const urgeSpent = /^2\+3(\D|$)/.test(notation) && !/^U[BS]\./.test(m.key); if (urgeSpent) f._urgeUsed = true;
-      let how = (setup(P.pre, f) || '') + (urgeSpent ? ' · urge spent' : '');
+      const stg = stageParent(P.pre); if (stg) P.key = notation;
+      let how = (stg ? `chain throw: during ${stg}` : (setup(P.pre, f) || '')) + (urgeSpent ? ' · urge spent' : '');
       // decoded T3 hit word: a row that cannot hit a STANDING foe (ground hits, crouch-only
       // rows) is tested against the posture it does hit — never forced through a standing foe
       { const RM = MS.getMove ? MS.getMove(id, notation) : null; const W = (RM && RM.hitWord) ?? mv.hitWord ?? (f.constructor.defaultWord ? f.constructor.defaultWord(RM || mv) : 2);
@@ -220,7 +235,8 @@
       condGap = gap;
       if (cond != null) { const r = condSetup(cond, f, o, notation); how += ' · T3 cond 0x' + cond.toString(16) + ': ' + r + (T3.t3ConditionHolds(cond, f, o, notation) ? ' (holds)' : ' (NOT holding)'); }
       const out = []; const hp0 = o.hp;
-      run(f, P, out);
+      if (stg) runStage(f, P, out); else run(f, P, out);
+      for (let k = 0; stg && k < 400 && /throw/.test(f.state); k++) step(1, out);
       const tail = Math.min(150, Math.round(((mv.startup || 0.2) + (mv.active || 0.05) + (mv.recovery || 0.5)) * 60) + 40);
       // Queued string hits fire after hit-stop; drain them before the tail (a connecting
       // long string spends its fixed tail inside hit-stop and dropped its last hits).

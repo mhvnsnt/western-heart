@@ -41,7 +41,7 @@ import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK, T3_BANKS,
   loadT3ReactionClip, getT3ReactionPackScale, loadReactionPack, getReactionPack, getReactionClip } from './t3anims.js';
 import { selectThrow, resolveThrowClips, throwBreaks, throwDamageTimeSec, throwPairDurationSec,
   escapePairFor, anchorAt, sharedFramePos, throwQuadrant, attemptRowForInput, hexSlot, bankDirOf } from './t3-throw.js';
-import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove, resolveMoveKey, variantBase } from './movesets.js';
+import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove, resolveMoveKey, variantBase, throwStageTag, throwStageKeys } from './movesets.js';
 import { TransformCinematic } from './transform-cinematic.js';
 import { V, vskillFor, vtriggerEnhance, vreversalMove } from './v-system.js';
 import { JiggleRig } from './jiggle.js';
@@ -1627,6 +1627,8 @@ export class Fighter {
     return 'throw';
   }
   tryAttack(name) {
+    // Chain throws: buttons during a throw pick the next stage (Tekken multi-part throws).
+    if ((this.state === 'throwing' || this.state === 'throwExec') && /^[1234](\+[1234])*$/.test(name)) return this._throwChainPress(name);
     // A press during a string-capable move buffers the next hit (Tekken input buffer):
     // it fires when the current hit's active frames end.
     if (this.state === 'attack' && this.attack && /^[1234](\+[1234])*$/.test(name)) {
@@ -1910,10 +1912,47 @@ export class Fighter {
     // stance spin count (T7 JGS* (N spins)): re-entering the stance the move started from adds a spin
     this._spinNext = move.stanceAfter && this.stance === move.stanceAfter ? (this._stanceSpins || 1) + 1 : 1;
     this.stance = null; this.stanceT = 0; this._risingT = 0;
-    this._throwFollow = null;
+    this._throwFollow = null; this._chainFrom = null; this._chainNext = null; this._chainSeq = [];
     this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
     if (name === 'surge') this._auraFlash = 0.7;
     if (move.isGrab || notation === '1+3' || notation === '2+4') this.vx = this.facing * 2.5; // lunge into the grab
+    return true;
+  }
+  /* Chain throws (2026-10-29): a throw whose name carries a stage tag ('Arm Breaker (AB1)')
+     takes the stage's follow-up rows ('AB1.1,1+2') as button sequences entered while it
+     plays. A full match queues that row; when the current throw part ends, the row starts
+     on the same victim (still locked, still on its feet in Tekken's chain), so each part
+     plays its own clip and damage. A prefix match keeps listening; anything else resets. */
+  _throwChainPress(name) {
+    const ms = getFighterMoveset(this._movesetId);
+    const an = this._chainFrom || this.attackName;
+    const cur = ms && (ms.moves[resolveMoveKey(this._movesetId, an) || an] || ms.moves[an]);
+    const tag = cur && throwStageTag(cur.name); const keys = tag ? throwStageKeys(this._movesetId, tag) : [];
+    if (!keys.length || this._chainNext) return false;
+    const now = this._clock || 0; let seq = this._chainSeq || [];
+    const tail = seq[seq.length - 1];
+    // input.js emits '1' then '1+2' for one chord press: the chord replaces its single.
+    if (name.includes('+') && tail && /^[1234]$/.test(tail) && name.split('+').includes(tail) && now - (this._chainPressT || -1) < 0.06) seq = seq.slice(0, -1);
+    this._chainPressT = now;
+    for (const s of [[...seq, name], [name]]) {
+      const k = `${tag}.${s.join(',')}`;
+      if (keys.includes(k)) { this._chainNext = k; this._chainSeq = []; return true; }
+      // ',' = more presses follow; '+' = this single is the first half of a chord press
+      if (keys.some((x) => x.startsWith(k + ',') || x.startsWith(k + '+'))) { this._chainSeq = s; return true; }
+    }
+    this._chainSeq = []; return false;
+  }
+  _startThrowChain(victim) {
+    const key = this._chainNext; this._chainNext = null; this._chainSeq = [];
+    const m = key && getRealMove(this._movesetId, key);
+    if (!m || !victim || victim.dead || this.dead) return false;
+    victim._throwPair = null; victim._throwPairT = 0; victim._throwAttacker = null; victim._throwMove = null;
+    victim.stun = 0; victim.vy = 0; victim.onGround = true; victim.root.position.y = GROUND_Y; victim.state = 'idle';
+    this._throwPair = null; this._throwPairT = 0; this._throwVictim = null; this._throwMove = null;
+    this.attack = { ...m, isGrab: true }; this.attackName = key; this._chainFrom = key; this.hasHit = true;
+    this.tekken._recordMove(key);
+    victim.startThrowLock(this.attack, this);
+    if (!this._throwPair) this.startThrowing(victim);
     return true;
   }
   _endThrowFollow() {
@@ -2676,8 +2715,9 @@ export class Fighter {
           this._throwPairT = (this._throwPairT || 0) + dt;
           this._driveThrowPair();
           if (this._throwPairT >= this._throwPair.durationSec) {
+            if (this._chainNext && this._startThrowChain(this._throwPair.victim)) break;
             this._throwPair = null; this._throwPairT = 0;
-            this._throwVictim = null; this._throwMove = null;
+            this._throwVictim = null; this._throwMove = null; this._chainFrom = null; this._chainSeq = [];
             this._enter('idle'); this._endThrowFollow();
           }
           break;
@@ -2685,7 +2725,8 @@ export class Fighter {
         // Attacker performing the throw: lift, slam, recover (0.9s total).
         // Damage lands at the slam (t=0.55s) via the victim's _throwSlamDamage.
         if (this.stateT >= 0.9) {
-          this._throwVictim = null; this._throwMove = null;
+          if (this._chainNext && this._startThrowChain(this._throwVictim)) break;
+          this._throwVictim = null; this._throwMove = null; this._chainFrom = null; this._chainSeq = [];
           this._enter('idle'); this._endThrowFollow();
         }
         break;
