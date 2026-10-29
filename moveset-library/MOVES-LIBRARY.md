@@ -116,28 +116,3 @@ are contiguous range chunks and overlap (they sum to 5,932 against 5,787 real
 clips) — for No Mercy, prefer the label-true categories in the mat-kings database.
 Per-game record: `teardown/wwf-no-mercy/CANON-CONVERSION.md`; full checklist:
 `teardown/wwf-no-mercy/WIRING-INVENTORY.md`.
-
----
-
-## Street Reign (Urban Reign) — wired 2026-10-21
-
-- **Fighters:** all 72 Urban Reign character PPKs decoded to skinned GLBs
-  (western-heart PR #429; completion gates G1–G5 pass — see
-  `docs/urban-reign/URBAN-REIGN-GATES.md`), copied to
-  `game/assets/models/street-reign/charNNN.glb` and registered in
-  `game/js/assets.js` (`MODEL_URLS` keys `ur-char001`..`ur-char072`) and
-  `game/js/roster-full.js` (bonus tier, ids `ur-char001`..`ur-char072`).
-- **Game moveset today:** `game/assets/movesets/street-reign.json`
-  (schema v2, `proxy: true`) — the WH engine base set whose values are
-  copied from `game/js/fighter.js` built-ins. It is a placeholder for
-  the UR-native movelists, labeled as such in the file itself.
-- **Animation data:** indexed under source `urban_reign` in
-  `animations/ANIMATION-INDEX.json` (status block `status_2026_10_21`):
-  the .gyu sampler is cracked (SLUS_212.09 FUN_00292670/FUN_00299130,
-  dequant tables at ELF 0x663ac0/0x663cc0/0x663ec8), `general_normal.gyu`
-  holds 342 motions; conversion of the motion banks into game
-  animation banks is the open follow-on, flagged per file in
-  `teardown/urban-reign/WIRING-INVENTORY.md`.
-- **Canon:** no per-fighter WH vessel mapping exists in canon for the
-  UR roster — see `teardown/urban-reign/CANON-CONVERSION.md` (flagged,
-  never invented). Universe name: `street-reign` (root `RENAME-MAP.md`).

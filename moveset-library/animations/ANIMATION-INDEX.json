@@ -52,13 +52,7 @@
   "urban_reign": {
    "path": "teardown/urban-reign/ppks/",
    "format": "PPK motion pools (general_normal/30frame/weapon.gyu + gyuindex.bin)",
-   "note": "Inner Namco chunk decode needs binary RE.",
-   "status_2026_10_21": {
-    "models": "DONE: all 72 character PPKs decoded to skinned GLBs (western-heart PR #429, completion gates G1-G5 pass, docs/urban-reign/URBAN-REIGN-GATES.md). Fighters are selectable in game/ as street-reign guests (game/assets/models/street-reign/, roster ids ur-char001..ur-char072).",
-    "animation_sampler": "CRACKED (static): FUN_00292670 in SLUS_212.09 is the .gyu sampler; track getter FUN_00299130 (track = *(anim+0x10) + *(*(anim+0x0C) + bone*4)); dequant tables at ELF 0x663ac0/0x663cc0/0x663ec8. Cross-checked against urban-reign-recomp (GPL-3.0): char-select idles are 4 anims x 21 bones x 90 frames.",
-    "motion_pools": "general_normal.gyu holds 342 motions; per-file/per-character banks not yet converted to game animation banks. 024_BONES.gyu = 744B, 14 x 44B facial records.",
-    "game_moveset_today": "game/assets/movesets/street-reign.json (proxy: true) — WH engine base set from game/js/fighter.js; UR-native movelists replace it when the .gyu->bank conversion lands. No UR move data is invented in the proxy."
-   }
+   "note": "Inner Namco chunk decode needs binary RE."
   }
  },
  "categories": {

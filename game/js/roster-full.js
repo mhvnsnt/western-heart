@@ -1,29 +1,58 @@
 /* ============================================================
-   WESTERN HEART — Full Roster (36 named fighters)
+   WESTERN HEART — Full Roster (48 selectable fighters)
    Every fighter traces to a real Tekken/model source.
    Models wired from teardown extractions; stats from CANON.md
    and ROSTER.md. No invented fighters.
+   Attire-variants ladder into their fighter's ATTIRE_VARIANTS
+   (game/js/attires.js) and never stand alone as selectable cards
+   (owner rule 2026-10-22).
    ============================================================ */
 
 export const FULL_ROSTER = [
   // ——— THE NINE SOULS ———
-  { id: 'rin', name: 'RIN', title: 'The Protagonist Soul', base: 'Jin Kazama', moveset: 'demonio', model: 'steve-fox', tintStrength: 0.6,
+  { id: 'rin', name: 'RIN', title: 'The Protagonist Soul', base: 'Jin Kazama', moveset: 'demonio', model: null, modelPending: true, tintStrength: 0.6,
     colors: { suit: 0x1a3a6b, trim: 0x9fd8ff }, style: 'Mishima Karate', archetype: 'Balanced' },
-  { id: 'byou', name: 'BYOU', title: 'The Sick Soul', base: 'Lei Wulong', moveset: 'demonio', model: 'steve-fox', tintStrength: 0.6,
+  { id: 'byou', name: 'BYOU', title: 'The Sick Soul', base: 'Lei Wulong', moveset: 'demonio', model: null, modelPending: true, tintStrength: 0.6,
     colors: { suit: 0x4a5a1a, trim: 0x8a9a3a }, style: 'Five Animals', archetype: 'Trickster' },
-  { id: 'tou', name: 'TOU', title: 'The Fighting Soul', base: 'Paul Phoenix', moveset: 'heihachi', model: 'pantera', tintStrength: 0.25,
+  { id: 'tou', name: 'TOU', title: 'The Fighting Soul', base: 'Paul Phoenix', moveset: 'heihachi', model: null, modelPending: true, tintStrength: 0.25,
     colors: { suit: 0x8a1a1a, trim: 0xcc4400 }, style: 'Power Karate', archetype: 'Power' },
-  { id: 'sha', name: 'SHA', title: 'The Sand Soul', base: 'Xiaoyu', moveset: 'xiaoyu', model: 'steve-fox', tintStrength: 0.6,
+  { id: 'sha', name: 'SHA', title: 'The Sand Soul', base: 'Xiaoyu', moveset: 'xiaoyu', model: null, modelPending: true, tintStrength: 0.6,
     colors: { suit: 0xc2a36b, trim: 0x8a6a3a }, style: 'Hakkesho', archetype: 'Evasive' },
-  { id: 'kai', name: 'KAI', title: 'The Sea Soul', base: 'Eddy Gordo', moveset: 'demonio', model: 'pantera', tintStrength: 0.25,
+  { id: 'kai', name: 'KAI', title: 'The Sea Soul', base: 'Eddy Gordo', moveset: 'demonio', model: null, modelPending: true, tintStrength: 0.25,
     colors: { suit: 0x1a4a6b, trim: 0x3a8acc }, style: 'Capoeira', archetype: 'Rushdown' },
-  { id: 'jin_soul', name: 'JIN', title: 'The Blade Soul', base: 'Yoshimitsu', moveset: 'yoshimitsu', model: 'steve-fox', tintStrength: 0.6,
-    colors: { suit: 0x2a2a3a, trim: 0x8a2be2 }, style: 'Sword Style', archetype: 'Tricky' },
-  { id: 'retsu', name: 'RETSU', title: 'The Violent Soul', base: 'Bryan Fury', moveset: 'bryan', model: 'pantera', tintStrength: 0.25,
+  { id: 'retsu', name: 'RETSU', title: 'The Violent Soul', base: 'Bryan Fury', moveset: 'bryan', model: null, modelPending: true, tintStrength: 0.25,
     colors: { suit: 0x3a1a1a, trim: 0xcc2222 }, style: 'Kickboxing', archetype: 'Rushdown' },
-  { id: 'zen', name: 'ZEN', title: 'The Still Soul', base: 'Heihachi', moveset: 'heihachi', model: 'steve-fox', tintStrength: 0.6,
-    colors: { suit: 0xd0d0d0, trim: 0x8a8a8a }, style: 'Mishima', archetype: 'Defensive' },
-  { id: 'gyou', name: 'GYOU', title: 'The Moving Soul', base: 'Hwoarang', moveset: 'demonio', model: 'pantera', tintStrength: 0.25,
+  { id: 'zen', name: 'ZEN', title: 'The Still Soul', base: 'Heihachi', moveset: 'heihachi', model: 'zen', tintStrength: 0.6,
+    colors: { suit: 0xd0d0d0, trim: 0x8a8a8a }, style: 'Mishima', archetype: 'Defensive',
+    // ZEN TRANSFORMATION MODES (owner canon 2026-10-21, roster/zen/CANON.md):
+    // ALL of Zen's versions are modes WITHIN Attire 1 — not separate
+    // attires. Spiritual/celestial class (Oversoul/Susanoo x JoJo Stand).
+    // Chain: spirit body -> TENTACLE MODE (9460095d: the clothing tentacle
+    // imagery becomes REAL tentacles busting out of him; NO Oversoul head;
+    // his spirit entity rides higher + further back) -> OVERSOUL (2bbc8e88:
+    // the spirit docks at the head position, TAKES THE HEAD'S PLACE, and
+    // the combined form manifests; body tentacles stay imagery). TRANSFORM
+    // touch button + full nine-soul meter, both directions. His moveset
+    // stays his own ('zen') in every stage — the tentacle pastel-blast
+    // specials are a moveset-stage design requirement (RIG-NOTES.md), not
+    // a moveset key that exists yet. Keyed on BOTH 'zen' and 'zen-attire1'
+    // like Demonio: the player-side formKey can resolve to either.
+    forms: {
+      'zen': {
+        up: { target: 'zen-tentacle', label: 'TENTACLE MANIFESTATION', powerMult: 1.15, speedMult: 1.0, defenseMult: 1.05, moveset: 'zen' },
+      },
+      'zen-attire1': {
+        up: { target: 'zen-tentacle', label: 'TENTACLE MANIFESTATION', powerMult: 1.15, speedMult: 1.0, defenseMult: 1.05, moveset: 'zen' },
+      },
+      'zen-tentacle': {
+        up: { target: 'zen-oversoul', label: 'OVERSOUL', powerMult: 1.25, speedMult: 1.05, defenseMult: 1.15, moveset: 'zen' },
+        down: { target: 'zen-attire1', label: 'WITHDRAW', powerMult: 0.87, speedMult: 1.0, defenseMult: 0.95, moveset: 'zen' },
+      },
+      'zen-oversoul': {
+        down: { target: 'zen-tentacle', label: 'OVERSOUL RELEASE', powerMult: 0.8, speedMult: 0.95, defenseMult: 0.87, moveset: 'zen' },
+      },
+    } },
+  { id: 'gyou', name: 'GYOU', title: 'The Moving Soul', base: 'Hwoarang', moveset: 'demonio', model: null, modelPending: true, tintStrength: 0.25,
     colors: { suit: 0x1a5a3a, trim: 0x3acc6a }, style: 'Tae Kwon Do', archetype: 'Pressure' },
 
   // ——— MAIN ROSTER ———
@@ -101,7 +130,7 @@ export const FULL_ROSTER = [
         down: { target: 'burger-the-mouth', label: 'POWER DOWN', powerMult: 0.81, speedMult: 0.94, defenseMult: 0.85, bodyScale: 0.88, moveset: 'burger-the-mouth' },
       },
     } },
-  { id: 'awapop', name: 'AWA POP', title: 'Bubbles', base: 'Nina', moveset: 'demonio', model: 'awa-pop', tintStrength: 0.6,
+  { id: 'awapop', name: 'AWA POP', title: 'Bubbles', base: 'Nina', moveset: 'demonio', model: 'awa-pop-attire2', tintStrength: 0.6,
     colors: { suit: 0xff9dcc, trim: 0xffffff }, style: 'Assassin', archetype: 'Rushdown' },
   { id: 'scimitar', name: 'SCIMITAR', title: 'Desert Blade', base: 'Shaheen', moveset: 'demonio', model: 'scimitar', tintStrength: 0.6,
     colors: { suit: 0x2a2a3a, trim: 0xc2a36b }, style: 'Military', archetype: 'Balanced' },
@@ -109,75 +138,86 @@ export const FULL_ROSTER = [
     colors: { suit: 0x6b2d8f, trim: 0xff00ff }, style: 'Martial Arts', archetype: 'Stylish' },
   { id: 'nightwolf', name: 'NIGHTWOLF', title: 'Storm Shadow', base: 'Julia', moveset: 'xiaoyu', model: 'nightwolf', tintStrength: 0.6,
     colors: { suit: 0x1a3a5a, trim: 0x6accff }, style: 'Xinyi Liuhe', archetype: 'Balanced' },
-  { id: 'dio', name: 'DIO', title: 'Raging Demon', base: 'Akuma', moveset: 'heihachi', model: 'dio', tintStrength: 0.6,
+  { id: 'dio', name: 'DIO', title: 'Raging Demon', base: 'Akuma', moveset: 'heihachi', model: 'dio-attire1', tintStrength: 0.6,
     colors: { suit: 0x1a1a1a, trim: 0xff0000 }, style: 'Satsui no Hado', archetype: 'Shoto' },
-  { id: 'cyborgx', name: 'CYBORG X', title: 'GYOU Splinter', base: 'Alisa', moveset: 'gunjack', model: 'cape-jones', tintStrength: 0.6,
+  // CAPE JONES is the display name (owner 2026-10-23: "Start calling cyborg x as cape Jones
+  // but leave cyborg x in the deep canon for him"). 'Cyborg X' stays as his deep-canon identity.
+  { id: 'cyborgx', name: 'CAPE JONES', title: 'GYOU Splinter', base: 'Alisa', moveset: 'gunjack', model: 'cyborg-x', tintStrength: 0.6,
+    // owner pt128u 2026-10-23: always the rig with the most bones -> cyborg-x.glb (160 joints incl. full
+    // Mixamo-named core) over cape-jones.glb (49). Stance = CMU 13_17 boxing guard (CMU license, commercial-safe).
+    stanceClip: 'assets/anim/oss/cyborgx/stance.glb',
     colors: { suit: 0xcccccc, trim: 0x00ffcc }, style: 'Robot Combat', archetype: 'Zoner' },
   { id: 'michiko', name: 'MICHIKO', title: 'Savate Queen', base: 'Katarina', moveset: 'demonio', model: 'michiko', tintStrength: 0.6,
     colors: { suit: 0x8a1a4a, trim: 0xff6b9d }, style: 'Savate', archetype: 'Rushdown' },
   { id: 'star', name: 'STAR', title: 'KAI Splinter', base: 'Christie', moveset: 'xiaoyu', model: 'star', tintStrength: 0.25,
     colors: { suit: 0xffd700, trim: 0xff6b00 }, style: 'Capoeira', archetype: 'Rushdown' },
-  { id: 'torch', name: 'TORCH', title: 'Fire Assassin', base: 'Anna', moveset: 'demonio', model: 'torch', tintStrength: 0.6,
+  { id: 'torch', name: 'TORCH', title: 'Fire Assassin', base: 'Anna', moveset: 'demonio', model: 'torch-tripo-a1', tintStrength: 0.6,
+    // Main entry model = ATTIRE 1 'Valkyrie of Flame' (owner ladder rule
+    // 2026-10-21: the Tripo original at the forefront; the Anna base model
+    // ('torch') ladders back as the fallback attire — see attires.js and
+    // roster/torch/ATTIRE-SLOTS.md).
     colors: { suit: 0x8a1a1a, trim: 0xff8800 }, style: 'Assassin', archetype: 'Tricky' },
-  { id: 'bruno', name: 'BRUNO', title: 'Matador', base: 'Miguel', moveset: 'bryan', model: 'bruno', tintStrength: 0.25,
+  { id: 'bruno', name: 'BRUNO', title: 'Matador', base: 'Miguel', moveset: 'bryan', model: 'bruno-attire2', tintStrength: 0.25,
     colors: { suit: 0x5a1a1a, trim: 0xcc3333 }, style: 'Brawler', archetype: 'Power' },
-  { id: 'negativo', name: 'N3GΔTIV0', title: 'Galactic Bounty Hunter', base: 'Negan', moveset: 'bryan', model: 'n3g4tiv0', tintStrength: 0.25,
-    colors: { suit: 0x0a0a0a, trim: 0x00ff00 }, style: 'Brawler', archetype: 'Intimidation' },
+  { id: 'negativo', name: 'N3GΔTIV0', title: 'Galactic Bounty Hunter', base: 'Negan', moveset: 'bryan', model: 'negativo-attire1', tintStrength: 0.25,
+    colors: { suit: 0x0a0a0a, trim: 0x00ff00 }, style: 'Brawler', archetype: 'Intimidation',
+    // EYE GLOW (owner 2026-10-22): per-attire emissive eyes, configured on the
+    // 'negativo' ladder in game/js/attires.js — Attire 1 red, Attire 2 (before
+    // the trials) white. See roster/negativo/README.md.
+  },
   { id: 'thor', name: 'THOR', title: 'Norse God', base: 'Ganryu', moveset: 'bryan', model: 'thor', tintStrength: 0.25,
     colors: { suit: 0x4a3a2a, trim: 0xffd700 }, style: 'Sumo', archetype: 'Power' },
-  { id: 'yukihyo', name: 'YUKIHYŌ', title: 'Snow Leopard Ninja', base: 'Armor King', moveset: 'king', model: 'yukihyo', tintStrength: 0.25,
+  { id: 'yukihyo', name: 'YUKIHYŌ', title: 'Snow Leopard Ninja', base: 'Armor King', moveset: 'king', model: 'yukihyo-attire1', tintStrength: 0.25,
     colors: { suit: 0xd0d0d0, trim: 0x6accff }, style: 'Grappler', archetype: 'Ninja' },
   { id: 'slice', name: 'SLICE', title: 'Maniacal Agent', base: 'Dragunov', moveset: 'bryan', model: 'slice', tintStrength: 0.6,
     colors: { suit: 0x2a2a2a, trim: 0xcc0000 }, style: 'Commando Sambo', archetype: 'Grappler' },
-  { id: 'docfrank', name: 'DOC FRANK', title: 'Father of Machines', base: 'Bosconovitch', moveset: 'gunjack', model: 'doc-frank-machine-shop', tintStrength: 0.6,
+  { id: 'docfrank', name: 'DOC FRANK', title: 'Father of Machines', base: 'Bosconovitch', moveset: 'gunjack', model: 'doc-frank-big', tintStrength: 0.6,
     colors: { suit: 0x6a6a7a, trim: 0x00ffcc }, style: 'Inventor', archetype: 'Tricky',
-    // Mid-match Roshi-style transformation (owner 2026-10-19):
-    // old-man Attire 1 -> bigger Tripo form (2c6cff79, the true transform target). TRANSFORM touch button.
-    transform: { targetModel: 'doc-frank-big', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 } },
-  // ——— RESKIN WAVE (2026-10-19): first custom attires as selectable fighters ———
-  { id: 'demonio-bloodline-ember', name: 'DEMONIO', title: 'Bloodline Ember', base: 'Jin Kazama', moveset: 'demonio', model: 'demonio-bloodline-ember', tintStrength: 0.25,
-    colors: { suit: 0x8a1a0a, trim: 0xff4400 }, style: 'Mishima Karate', archetype: 'Balanced' },
-  // ——— WAVE 2 (2026-10-19): Demonio forms (dual access) + Doc Frank attires ———
-  { id: 'demonio-winged', name: 'DEMONIO', title: 'Devil Ascendant', base: 'Jin Kazama', moveset: 'demonio-winged', model: 'demonio-winged', tintStrength: 0.25,
-    colors: { suit: 0x2a0a2a, trim: 0xff00ff }, style: 'Devil Mishima', archetype: 'Boss',
+    // Main entry model = Attire 1's Tripo bigger form (owner override
+    // 2026-10-21: "show the Tripo 3D models I made for him" — Tripo models
+    // lead, Tekken-based models ladder back). Matches the picker default
+    // (ATTIRE_VARIANTS 'docfrank' slot 1).
+    // Mid-match Roshi-style transformation (owner 2026-10-19): TRANSFORM touch
+    // button. Per-attire targets (dedup 2026-10-22): each folded attire card
+    // keeps its own old transform target, keyed by model — Fighter resolves
+    // via formKey = the selected attire's model. 'doc-frank-big' default:
+    // big->big no-op, exactly the old main-card behavior.
     forms: {
-      'demonio-winged': {
-        down: { target: 'demonio-a1', label: 'REVERT', powerMult: 0.67, speedMult: 0.95, defenseMult: 0.83, bodyScale: 0.82, moveset: 'demonio' },
-      },
+      'doc-frank-a1': { target: 'doc-frank-big', label: 'TRANSFORM', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 },
+      'doc-frank-big': { target: 'doc-frank-big', label: 'TRANSFORM', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 },
+      'doc-frank-wowomomo': { target: 'doc-frank-wowomomo-big', label: 'TRANSFORM', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 },
+      'doc-frank-hood': { target: 'doc-frank-hood-big', label: 'TRANSFORM', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 },
+      'doc-frank-frankenstein': { target: 'doc-frank-frankenstein-big', label: 'TRANSFORM', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 },
     } },
-  { id: 'demonio-human', name: 'DEMONIO', title: 'The Possessed', base: 'Jin Kazama', moveset: 'demonio', model: 'demonio-human', tintStrength: 0.25,
-    colors: { suit: 0x3a3a3a, trim: 0x9fd8ff }, style: 'Mishima Karate', archetype: 'Balanced',
-    forms: {
-      'demonio-human': {
-        up: { target: 'demonio-a1', label: 'REPOWER', powerMult: 1.43, speedMult: 0.91, defenseMult: 1.11, bodyScale: 1.05, moveset: 'demonio' },
-      },
-    } },
-  { id: 'doc-frank-wowomomo', name: 'DOC FRANK', title: 'Wowomomo', base: 'Bosconovitch', moveset: 'gunjack', model: 'doc-frank-wowomomo', tintStrength: 0.25,
-    colors: { suit: 0x4a4a5a, trim: 0xff8800 }, style: 'Inventor', archetype: 'Tricky',
-    // Attire 2 "Wowomomo" (owner 2026-10-19): Dr gero meets mojo Jojo meets bosconovitch meets Dr wierd.
-    transform: { targetModel: 'doc-frank-wowomomo-big', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 } },
-  { id: 'doc-frank-hood', name: 'DOC FRANK', title: 'Hood Scientist', base: 'Bosconovitch', moveset: 'gunjack', model: 'doc-frank-hood', tintStrength: 0.25,
-    colors: { suit: 0x2a2a3a, trim: 0xcccccc }, style: 'Inventor', archetype: 'Tricky',
-    // Attire 3 "Hood scientist" (owner 2026-10-19): old mob boss scientist, club night.
-    transform: { targetModel: 'doc-frank-hood-big', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 } },
-  { id: 'doc-frank-frankenstein', name: 'DOC FRANK', title: "Frankenstein's Cyborg", base: 'Bosconovitch', moveset: 'gunjack', model: 'doc-frank-frankenstein', tintStrength: 0.25,
-    colors: { suit: 0x3a4a3a, trim: 0x88cc88 }, style: 'Inventor', archetype: 'Tricky',
-    // Attire 4 "Frankenstein's Cyborg" (owner 2026-10-19): two-form transform attire.
-    transform: { targetModel: 'doc-frank-frankenstein-big', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 } },
-  { id: 'doc-frank-machine-shop', name: 'DOC FRANK', title: 'Machine Shop', base: 'Bosconovitch', moveset: 'gunjack', model: 'doc-frank-machine-shop', tintStrength: 0.25,
-    colors: { suit: 0x4a4a5a, trim: 0xff8800 }, style: 'Inventor', archetype: 'Tricky' },
+  // ——— DEDUP 2026-10-22: the RESKIN WAVE / WAVE 2 standalone cards below were
+  // folded into their fighters' ATTIRE_VARIANTS ladders (owner rule: an attire
+  // must not stand alone as a selectable model). demonio-bloodline-ember,
+  // demonio-winged, demonio-human -> 'demonio' ladder; doc-frank-wowomomo,
+  // doc-frank-hood, doc-frank-frankenstein, doc-frank-machine-shop ->
+  // 'docfrank' ladder. Models preserved, just re-homed.
   { id: 'baek-master-white', name: 'KEVIN', title: "The Master Soul", base: 'Kevin', moveset: 'bryan', model: 'baek', tintStrength: 0.25,
     colors: { suit: 0xf0f0f0, trim: 0x8a1a1a }, style: 'Tae Kwon Do', archetype: 'Pressure' },
-  { id: 'mariposa-monarch', name: 'MARIPOSA', title: 'Monarch', base: 'Zafina', moveset: 'xiaoyu', model: 'mariposa-monarch', tintStrength: 0.25,
+  { id: 'mariposa-monarch', name: 'MARIPOSA', title: 'Monarch', base: 'Zafina', moveset: 'xiaoyu', model: 'mariposa-butterfly-default', tintStrength: 0.25,
     colors: { suit: 0x2a1a3a, trim: 0xff8800 }, style: 'Azazel Arts', archetype: 'Tricky' },
-  { id: 'dxmmii-patchwork', name: 'DXMMII', title: 'Patchwork DJ', base: 'Mokujin', moveset: 'demonio', model: 'dxmmii-patchwork', tintStrength: 0.25,
+  // DEDUP (2026-10-22): default model = her owner-designated Slot 1
+  // (Butterfly Default, owner 2026-10-19 exception to the Tripo-first law).
+  // Entry id kept: EPISODES, HEARTMIND_STORIES, MOVESET_MAP, moveset files
+  // and the portrait are keyed by it.
+  { id: 'dxmmii-patchwork', name: 'DXMMII', title: 'Patchwork DJ', base: 'Mokujin', moveset: 'demonio', model: 'dxmmii-tripo', tintStrength: 0.25,
     colors: { suit: 0x3a2a5a, trim: 0x00ffcc }, style: 'Mimicry', archetype: 'Trickster' },
-  // Sketchfab intake (owner 2026-10-19): working names, WH names pending owner pick.
-  // Licenses: Zangief CC-BY (johnny136), Blanka Free Standard (allanromanreyes),
-  // Vega CC-BY (pierodsoto01), Iori CC-BY (0xo), Armor King CC-BY (theamazingdonovan207).
-  { id: 'zangief', name: 'ZANGIEF', title: 'The Red Cyclone', base: 'Zangief', moveset: 'zangief', model: 'zangief', tintStrength: 0.25,
-    colors: { suit: 0x8a1a1a, trim: 0x000000 }, style: 'Grappler', archetype: 'Power',
-    surge: { name: "CYCLONE'S WRATH", color: 0xcc2222, accent: 0xff8800 } },
+  // DEDUP (2026-10-22): default model = his Slot 1 Tripo Default
+  // (roster/dxmmii/ATTIRE-SLOTS.md, owner 2026-10-19). Entry id kept
+  // (MOVESET_MAP, moveset files, portrait keyed by it).
+  // Sketchfab intake models (owner 2026-10-19). Licenses: Zangief CC-BY
+  // (johnny136), Blanka Free Standard (allanromanreyes), Vega CC-BY
+  // (pierodsoto01), Iori CC-BY (0xo), Armor King CC-BY (theamazingdonovan207).
+  // OBSOLETE-ORIGINALS rule (owner 2026-10-23, docs/OBSOLETE-ORIGINALS-RULE.md):
+  // Zangief, Vega, Iori and Armor King are NOT fighters in this universe and
+  // get NO select entry — their movesets and identities became KRONOS,
+  // KORESHI, DEATHFANG and YUKIHYŌ. Their standalone entries were removed
+  // 2026-10-23 (landing wave 1); the models stay in the repo and ladder as
+  // late attires of their successors (game/js/attires.js). Blanka never had
+  // an entry; his model ladders behind CHARGER.
   // CHARGER (owner 2026-10-20): proprietary Blanka REPLACEMENT — "his name is
   // charger cause of blankas attacks and movesets will be attach to him but he's
   // got powers of ice and electricity". Blanka's roster slot is his now; his full
@@ -189,35 +229,69 @@ export const FULL_ROSTER = [
     colors: { suit: 0x9fd8e8, trim: 0xffd23f }, style: 'Ice/Electric Beast', archetype: 'Rushdown',
     surge: { name: 'ABSOLUTE ZERO SURGE', color: 0x66ccff, accent: 0xffff66 },
     stats: { speed: 5.0, jump: 7.0, power: 1.2, defense: 1.05 },
-    ai: { aggression: 0.8, grabBias: 0.45, reaction: 0.55 },
-    attires: ['charger', 'charger-attire2'] },
-  { id: 'charger-attire2', name: 'CHARGER', title: 'The Wild Current', base: 'Blanka', moveset: 'charger', model: 'charger-attire2', tintStrength: 0.25,
-    colors: { suit: 0x2a8a2a, trim: 0xff3333 }, style: 'Ice/Electric Beast', archetype: 'Rushdown',
-    surge: { name: 'ABSOLUTE ZERO SURGE', color: 0x66ccff, accent: 0xffff66 },
-    stats: { speed: 5.2, jump: 7.2, power: 1.18, defense: 1.0 },
-    ai: { aggression: 0.85, grabBias: 0.45, reaction: 0.55 } },
-  { id: 'vega', name: 'VEGA', title: 'The Claw', base: 'Vega', moveset: 'vega', model: 'vega', tintStrength: 0.25,
-    colors: { suit: 0x8a2a6b, trim: 0xffd700 }, style: 'Claw', archetype: 'Evasive',
-    surge: { name: "MATADOR'S FURY", color: 0xcc2288, accent: 0xffffff } },
-  { id: 'iori', name: 'IORI', title: 'The Flame', base: 'Iori Yagami', moveset: 'iori', model: 'iori', tintStrength: 0.25,
-    colors: { suit: 0x6b1a8a, trim: 0xff2222 }, style: 'Flames', archetype: 'Rushdown',
-    surge: { name: 'CRIMSON INFERNO', color: 0xaa22ff, accent: 0xff4400 } },
-  { id: 'armor-king', name: 'ARMOR KING', title: 'The Chain', base: 'Armor King', moveset: 'armor-king', model: 'armor-king', tintStrength: 0.25,
-    colors: { suit: 0x1a1a2a, trim: 0xccaa00 }, style: 'Grappler', archetype: 'Power',
-    surge: { name: "JAGUAR'S GRIP", color: 0x888800, accent: 0xffcc00 } },
+    ai: { aggression: 0.8, grabBias: 0.45, reaction: 0.55 } },
+  // DOROWANI (owner 2026-10-22): Gon's WH replacement — mud-croc kappa-yokai.
+  // Small, fast, goofy, fire breath. Moveset: Gon's Tekken 3 kit (dorowani.json).
+  // Voice: barks Japanese words, never sentences ("Konnichiwa arigato Ichiban Bankai").
+  { id: 'dorowani', name: 'DOROWANI', title: 'The Mud-Croc Trickster', base: 'Gon', moveset: 'dorowani', model: 'dorowani', tintStrength: 0.25,
+    colors: { suit: 0x2a7ac2, trim: 0xc22a2a }, style: 'Beast Brawler', archetype: 'Rushdown',
+    surge: { name: 'DINO BREATH SURGE', color: 0xff6a00, accent: 0xffd23f },
+    stats: { speed: 5.5, jump: 7.5, power: 1.1, defense: 0.95 },
+    ai: { aggression: 0.85, grabBias: 0.35, reaction: 0.6 } },
+  // CHATUR (owner 2026-10-23): True Ogre's WH replacement — four-armed Oversoul
+  // spirit, temple dancer who refused to die. Anchors the spirit realm, GYOU-touched.
+  // Moveset: True Ogre's Tekken 3 kit (chatur.json). "Stopping is dying. I already did that once."
+  { id: 'chatur', name: 'CHATUR', title: 'The Bridge Soul', base: 'True Ogre', moveset: 'chatur', model: 'chatur', tintStrength: 0.25,
+    colors: { suit: 0x3a2a5a, trim: 0xd8b46a }, style: 'Temple Dance / Oversoul', archetype: 'Power',
+    surge: { name: 'FOURFOLD MUDRA SURGE', color: 0x8a5adf, accent: 0xffe9b0 },
+    stats: { speed: 3.8, jump: 6.0, power: 1.45, defense: 1.15 },
+    ai: { aggression: 0.7, grabBias: 0.4, reaction: 0.55 } },
+  // POND (owner 2026-10-23): Raven's WH replacement — swamp boundary watcher,
+  // found Dorowani as an egg. Moveset: Raven's Tekken 7 kit (pond.json). "The pond does not chase."
+  { id: 'pond', name: 'POND', title: 'The Still Water Soul', base: 'Raven', moveset: 'pond', model: 'pond', tintStrength: 0.25,
+    colors: { suit: 0x1a4a3a, trim: 0x7ad8b0 }, style: 'Ninjutsu / Still Water', archetype: 'Evasive',
+    surge: { name: 'STILL WATER SURGE', color: 0x2a8a6a, accent: 0xb0ffe0 },
+    stats: { speed: 5.2, jump: 7.2, power: 1.0, defense: 1.0 },
+    ai: { aggression: 0.6, grabBias: 0.35, reaction: 0.7 } },
+  // RYUSAN (owner 2026-10-23): Lucky Chloe's WH replacement — the Corrosion Soul,
+  // acid punk mortal lost soul, sweats solvent and laughs about it. Jotei family crimes
+  // survivor. Moveset: Lucky Chloe's Tekken 7 kit (ryusan.json). "You don't get to tell me to calm down."
+  { id: 'ryusan', name: 'RYUSAN', title: 'The Corrosion Soul', base: 'Lucky Chloe', moveset: 'ryusan', model: 'ryusan', tintStrength: 0.25,
+    colors: { suit: 0x7ac22a, trim: 0xe8ff4d }, style: 'Acid Punk Brawler', archetype: 'Rushdown',
+    surge: { name: 'VITRIOL SURGE', color: 0x9dff00, accent: 0xfff200 },
+    stats: { speed: 5.4, jump: 7.4, power: 1.05, defense: 0.95 },
+    ai: { aggression: 0.85, grabBias: 0.3, reaction: 0.65 } },
+  // TOBI (owner 2026-10-23): Hwoarang's WH replacement — the Escape Soul, rabbit
+  // courier, fastest in the roster. Carries one letter she never delivered — left hand
+  // never leaves the satchel strap. Moveset: Hwoarang's Tekken 3 kit (tobi.json). "Don't wait for it. Be already gone."
+  { id: 'tobi', name: 'TOBI', title: 'The Escape Soul', base: 'Hwoarang', moveset: 'tobi', model: 'tobi', tintStrength: 0.25,
+    colors: { suit: 0xe8e8f0, trim: 0xff6a9a }, style: 'Tae Kwon Do / Courier', archetype: 'Rushdown',
+    surge: { name: 'LONGLEAP SURGE', color: 0xffffff, accent: 0xff6a9a },
+    stats: { speed: 6.0, jump: 8.0, power: 0.95, defense: 0.9 },
+    ai: { aggression: 0.75, grabBias: 0.25, reaction: 0.8 } },
+  // MEGAMI (owner 2026-10-23): Jun Kazama's WH replacement — the Shrine Soul,
+  // guardian of a sealed door that never opened. Trained Chatur. Moveset: Jun Kazama's
+  // TTT2 kit + sealed-door canon forms (megami.json). "The shrine was here before you. It will be here after."
+  { id: 'megami', name: 'MEGAMI', title: 'The Shrine Soul', base: 'Jun Kazama', moveset: 'megami', model: 'megami', tintStrength: 0.25,
+    colors: { suit: 0xc22a2a, trim: 0xf0e8d8 }, style: 'Temple Guardian', archetype: 'Defensive',
+    surge: { name: 'SEALED DOOR SURGE', color: 0xcc2222, accent: 0xffe9b0 },
+    stats: { speed: 4.5, jump: 6.5, power: 1.1, defense: 1.2 },
+    ai: { aggression: 0.55, grabBias: 0.4, reaction: 0.75 } },
+  // MENAJERII (owner 2026-10-23, Japanese rendering owner's choice): Roger Jr.'s WH
+  // replacement — the Menagerie Soul, spirit-walker carrying beast spirits; her shadow
+  // doesn't always match her body. Moveset: Roger Jr.'s TTT2 kit + beast moves (menajerii.json).
+  // "The herd decides. I just run."
+  { id: 'menajerii', name: 'MENAJERII', title: 'The Menagerie Soul', base: 'Roger Jr.', moveset: 'menajerii', model: 'menajerii', tintStrength: 0.25,
+    colors: { suit: 0x5a3a1a, trim: 0x8ad82a }, style: 'Beast Instinct / Spirit-Walk', archetype: 'Trickster',
+    surge: { name: 'MENAGERIE SURGE', color: 0x7ac22a, accent: 0xffd23f },
+    stats: { speed: 5.0, jump: 7.0, power: 1.15, defense: 1.0 },
+    ai: { aggression: 0.7, grabBias: 0.45, reaction: 0.65 } },
   // Custom fighters (owner 2026-10-19): KRONOS + DEATHFANG + Ryuji/Rock hybrid.
   { id: 'kronos', name: 'KRONOS', title: 'The Titan Cyclone', base: 'Zangief + Golem', moveset: 'kronos', model: 'kronos', tintStrength: 0.25,
     colors: { suit: 0x8a1a1a, trim: 0xccaa00 }, style: 'Grappler/Wrestler', archetype: 'Power',
     surge: { name: "TITAN'S WRATH", color: 0xcc2222, accent: 0xffd700 },
     stats: { speed: 3.2, jump: 5.5, power: 1.5, defense: 1.35 },
-    ai: { aggression: 0.7, grabBias: 0.6, reaction: 0.5 },
-    // Attire 2 "TimberWolf" (Wolverine inspired) — selectable via attires list.
-    attires: ['kronos', 'kronos-attire2'] },
-  { id: 'kronos-attire2', name: 'KRONOS', title: 'TimberWolf', base: 'Zangief + Golem', moveset: 'kronos', model: 'kronos-attire2', tintStrength: 0.25,
-    colors: { suit: 0x3a4a5a, trim: 0xffcc00 }, style: 'Grappler/Wrestler', archetype: 'Power',
-    surge: { name: "TIMBERWOLF RAGE", color: 0x4466aa, accent: 0xffcc00 },
-    stats: { speed: 3.6, jump: 6.0, power: 1.45, defense: 1.3 },
-    ai: { aggression: 0.8, grabBias: 0.55, reaction: 0.55 } },
+    ai: { aggression: 0.7, grabBias: 0.6, reaction: 0.5 } },
   // DEATHFANG (owner 2026-10-19): proprietary character based on Iori Yagami — keeps Iori's
   // moves, stance and animations. Prisoner/slave to his own grief and emotions: chained and
   // shackled, emo styling, NO FUTURE face tattoo (Soul Eater). Transforms into a chained
@@ -226,12 +300,24 @@ export const FULL_ROSTER = [
   { id: 'deathfang', name: 'DEATHFANG', title: 'The Chained Prisoner', base: 'Iori Yagami', moveset: 'deathfang', model: 'deathfang', tintStrength: 0.25,
     colors: { suit: 0x0a0a0f, trim: 0x8a0f1a }, style: 'Grief Flames', archetype: 'Rushdown',
     surge: { name: 'NO FUTURE', color: 0x5a0f8a, accent: 0xff2222 },
+    // Werewolf transform (owner 2026-10-20): Attire 2 = his real Tripo werewolf model
+    // (b4094ecf). TRANSFORM touch button + full nine-soul meter, both directions
+    // (tap while crouching = revert). The wolf keeps Iori's stance + locomotion and the
+    // FULL DEATHFANG kit; beast flavor is attack-only (deathfang-werewolf.json mix-ins).
+    forms: {
+      'deathfang': {
+        up: { target: 'deathfang-werewolf', label: 'WEREWOLF UNLEASHED', powerMult: 1.35, speedMult: 1.08, defenseMult: 1.15, bodyScale: 1.12, moveset: 'deathfang-werewolf' },
+      },
+      'deathfang-werewolf': {
+        down: { target: 'deathfang', label: 'CHAINED AGAIN', powerMult: 0.74, speedMult: 0.93, defenseMult: 0.87, bodyScale: 0.89, moveset: 'deathfang' },
+      },
+    },
     stats: { speed: 5.2, jump: 7.8, power: 1.15, defense: 0.95 },
     ai: { aggression: 0.85, grabBias: 0.3, reaction: 0.6 } },
-  { id: 'ryuji', name: 'RYUJI', title: 'The Wicked Heretic', base: 'Ryuji Yamazaki', moveset: 'ryuji', model: 'steve-fox', tintStrength: 0.25,
+  { id: 'ryuji', name: 'RYUJI', title: 'The Wicked Heretic', base: 'Ryuji Yamazaki', moveset: 'ryuji-rock', model: null, modelPending: true, tintStrength: 0.25,
     colors: { suit: 0x111111, trim: 0xd8b25a }, style: 'Hebi Tsukai / Wrestling', archetype: 'Zoner/Grappler',
     surge: { name: 'SERPENT DRILL', color: 0x224411, accent: 0xffcc00 } },
-  { id: 'ryuji-rock', name: 'RYUJI ROCK', title: 'The Obnoxious One', base: 'Ryuji Yamazaki + The Rock', moveset: 'ryuji-rock', model: 'ryuji-rock', tintStrength: 0.25,
+  { id: 'ryuji-rock', name: 'CORNERSTONE', title: 'The Obnoxious One', base: 'Ryuji Yamazaki + The Rock', moveset: 'ryuji-rock', model: 'ryuji-rock', tintStrength: 0.25,
     colors: { suit: 0x1a1a1a, trim: 0xffd700 }, style: 'Wrestler/Brawler', archetype: 'Power',
     surge: { name: "PEOPLE'S CHAMPION", color: 0xffd700, accent: 0xffffff },
     stats: { speed: 4.0, jump: 6.5, power: 1.35, defense: 1.2 },
@@ -241,164 +327,89 @@ export const FULL_ROSTER = [
     surge: { name: 'SHARINGAN AWAKENING', color: 0xcc2222, accent: 0xffffff },
     stats: { speed: 5.5, jump: 8.0, power: 1.1, defense: 0.95 },
     ai: { aggression: 0.7, grabBias: 0.25, reaction: 0.7 } },
-  // ——— STREET REIGN GUESTS (Urban Reign, PR #429 decode) ———
-  // Source identities are the game's own PPK ids: no WH canon
-  // vessel mapping exists in canon for them yet (flagged in
-  // teardown/urban-reign/CANON-CONVERSION.md, never invented).
-  { id: 'ur-char001', name: 'CHAR001', title: 'Street Reign Guest', base: 'Urban Reign char001', moveset: 'street-reign', model: 'ur-char001', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char002', name: 'CHAR002', title: 'Street Reign Guest', base: 'Urban Reign char002', moveset: 'street-reign', model: 'ur-char002', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char003', name: 'CHAR003', title: 'Street Reign Guest', base: 'Urban Reign char003', moveset: 'street-reign', model: 'ur-char003', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char004', name: 'CHAR004', title: 'Street Reign Guest', base: 'Urban Reign char004', moveset: 'street-reign', model: 'ur-char004', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char005', name: 'CHAR005', title: 'Street Reign Guest', base: 'Urban Reign char005', moveset: 'street-reign', model: 'ur-char005', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char006', name: 'CHAR006', title: 'Street Reign Guest', base: 'Urban Reign char006', moveset: 'street-reign', model: 'ur-char006', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char007', name: 'CHAR007', title: 'Street Reign Guest', base: 'Urban Reign char007', moveset: 'street-reign', model: 'ur-char007', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char008', name: 'CHAR008', title: 'Street Reign Guest', base: 'Urban Reign char008', moveset: 'street-reign', model: 'ur-char008', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char009', name: 'CHAR009', title: 'Street Reign Guest', base: 'Urban Reign char009', moveset: 'street-reign', model: 'ur-char009', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char010', name: 'CHAR010', title: 'Street Reign Guest', base: 'Urban Reign char010', moveset: 'street-reign', model: 'ur-char010', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char011', name: 'CHAR011', title: 'Street Reign Guest', base: 'Urban Reign char011', moveset: 'street-reign', model: 'ur-char011', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char012', name: 'CHAR012', title: 'Street Reign Guest', base: 'Urban Reign char012', moveset: 'street-reign', model: 'ur-char012', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char013', name: 'CHAR013', title: 'Street Reign Guest', base: 'Urban Reign char013', moveset: 'street-reign', model: 'ur-char013', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char014', name: 'CHAR014', title: 'Street Reign Guest', base: 'Urban Reign char014', moveset: 'street-reign', model: 'ur-char014', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char015', name: 'CHAR015', title: 'Street Reign Guest', base: 'Urban Reign char015', moveset: 'street-reign', model: 'ur-char015', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char016', name: 'CHAR016', title: 'Street Reign Guest', base: 'Urban Reign char016', moveset: 'street-reign', model: 'ur-char016', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char017', name: 'CHAR017', title: 'Street Reign Guest', base: 'Urban Reign char017', moveset: 'street-reign', model: 'ur-char017', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char018', name: 'CHAR018', title: 'Street Reign Guest', base: 'Urban Reign char018', moveset: 'street-reign', model: 'ur-char018', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char019', name: 'CHAR019', title: 'Street Reign Guest', base: 'Urban Reign char019', moveset: 'street-reign', model: 'ur-char019', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char020', name: 'CHAR020', title: 'Street Reign Guest', base: 'Urban Reign char020', moveset: 'street-reign', model: 'ur-char020', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char021', name: 'CHAR021', title: 'Street Reign Guest', base: 'Urban Reign char021', moveset: 'street-reign', model: 'ur-char021', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char022', name: 'CHAR022', title: 'Street Reign Guest', base: 'Urban Reign char022', moveset: 'street-reign', model: 'ur-char022', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char023', name: 'CHAR023', title: 'Street Reign Guest', base: 'Urban Reign char023', moveset: 'street-reign', model: 'ur-char023', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char024', name: 'CHAR024', title: 'Street Reign Guest', base: 'Urban Reign char024', moveset: 'street-reign', model: 'ur-char024', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char025', name: 'CHAR025', title: 'Street Reign Guest', base: 'Urban Reign char025', moveset: 'street-reign', model: 'ur-char025', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char026', name: 'CHAR026', title: 'Street Reign Guest', base: 'Urban Reign char026', moveset: 'street-reign', model: 'ur-char026', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char027', name: 'CHAR027', title: 'Street Reign Guest', base: 'Urban Reign char027', moveset: 'street-reign', model: 'ur-char027', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char028', name: 'CHAR028', title: 'Street Reign Guest', base: 'Urban Reign char028', moveset: 'street-reign', model: 'ur-char028', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char029', name: 'CHAR029', title: 'Street Reign Guest', base: 'Urban Reign char029', moveset: 'street-reign', model: 'ur-char029', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char030', name: 'CHAR030', title: 'Street Reign Guest', base: 'Urban Reign char030', moveset: 'street-reign', model: 'ur-char030', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char031', name: 'CHAR031', title: 'Street Reign Guest', base: 'Urban Reign char031', moveset: 'street-reign', model: 'ur-char031', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char032', name: 'CHAR032', title: 'Street Reign Guest', base: 'Urban Reign char032', moveset: 'street-reign', model: 'ur-char032', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char033', name: 'CHAR033', title: 'Street Reign Guest', base: 'Urban Reign char033', moveset: 'street-reign', model: 'ur-char033', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char034', name: 'CHAR034', title: 'Street Reign Guest', base: 'Urban Reign char034', moveset: 'street-reign', model: 'ur-char034', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char035', name: 'CHAR035', title: 'Street Reign Guest', base: 'Urban Reign char035', moveset: 'street-reign', model: 'ur-char035', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char036', name: 'CHAR036', title: 'Street Reign Guest', base: 'Urban Reign char036', moveset: 'street-reign', model: 'ur-char036', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char037', name: 'CHAR037', title: 'Street Reign Guest', base: 'Urban Reign char037', moveset: 'street-reign', model: 'ur-char037', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char038', name: 'CHAR038', title: 'Street Reign Guest', base: 'Urban Reign char038', moveset: 'street-reign', model: 'ur-char038', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char039', name: 'CHAR039', title: 'Street Reign Guest', base: 'Urban Reign char039', moveset: 'street-reign', model: 'ur-char039', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char040', name: 'CHAR040', title: 'Street Reign Guest', base: 'Urban Reign char040', moveset: 'street-reign', model: 'ur-char040', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char041', name: 'CHAR041', title: 'Street Reign Guest', base: 'Urban Reign char041', moveset: 'street-reign', model: 'ur-char041', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char042', name: 'CHAR042', title: 'Street Reign Guest', base: 'Urban Reign char042', moveset: 'street-reign', model: 'ur-char042', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char043', name: 'CHAR043', title: 'Street Reign Guest', base: 'Urban Reign char043', moveset: 'street-reign', model: 'ur-char043', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char044', name: 'CHAR044', title: 'Street Reign Guest', base: 'Urban Reign char044', moveset: 'street-reign', model: 'ur-char044', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char045', name: 'CHAR045', title: 'Street Reign Guest', base: 'Urban Reign char045', moveset: 'street-reign', model: 'ur-char045', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char046', name: 'CHAR046', title: 'Street Reign Guest', base: 'Urban Reign char046', moveset: 'street-reign', model: 'ur-char046', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char047', name: 'CHAR047', title: 'Street Reign Guest', base: 'Urban Reign char047', moveset: 'street-reign', model: 'ur-char047', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char048', name: 'CHAR048', title: 'Street Reign Guest', base: 'Urban Reign char048', moveset: 'street-reign', model: 'ur-char048', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char049', name: 'CHAR049', title: 'Street Reign Guest', base: 'Urban Reign char049', moveset: 'street-reign', model: 'ur-char049', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char050', name: 'CHAR050', title: 'Street Reign Guest', base: 'Urban Reign char050', moveset: 'street-reign', model: 'ur-char050', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char051', name: 'CHAR051', title: 'Street Reign Guest', base: 'Urban Reign char051', moveset: 'street-reign', model: 'ur-char051', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char052', name: 'CHAR052', title: 'Street Reign Guest', base: 'Urban Reign char052', moveset: 'street-reign', model: 'ur-char052', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char053', name: 'CHAR053', title: 'Street Reign Guest', base: 'Urban Reign char053', moveset: 'street-reign', model: 'ur-char053', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char054', name: 'CHAR054', title: 'Street Reign Guest', base: 'Urban Reign char054', moveset: 'street-reign', model: 'ur-char054', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char055', name: 'CHAR055', title: 'Street Reign Guest', base: 'Urban Reign char055', moveset: 'street-reign', model: 'ur-char055', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char056', name: 'CHAR056', title: 'Street Reign Guest', base: 'Urban Reign char056', moveset: 'street-reign', model: 'ur-char056', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char057', name: 'CHAR057', title: 'Street Reign Guest', base: 'Urban Reign char057', moveset: 'street-reign', model: 'ur-char057', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char058', name: 'CHAR058', title: 'Street Reign Guest', base: 'Urban Reign char058', moveset: 'street-reign', model: 'ur-char058', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char059', name: 'CHAR059', title: 'Street Reign Guest', base: 'Urban Reign char059', moveset: 'street-reign', model: 'ur-char059', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char060', name: 'CHAR060', title: 'Street Reign Guest', base: 'Urban Reign char060', moveset: 'street-reign', model: 'ur-char060', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char061', name: 'CHAR061', title: 'Street Reign Guest', base: 'Urban Reign char061', moveset: 'street-reign', model: 'ur-char061', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char062', name: 'CHAR062', title: 'Street Reign Guest', base: 'Urban Reign char062', moveset: 'street-reign', model: 'ur-char062', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char063', name: 'CHAR063', title: 'Street Reign Guest', base: 'Urban Reign char063', moveset: 'street-reign', model: 'ur-char063', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char064', name: 'CHAR064', title: 'Street Reign Guest', base: 'Urban Reign char064', moveset: 'street-reign', model: 'ur-char064', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char065', name: 'CHAR065', title: 'Street Reign Guest', base: 'Urban Reign char065', moveset: 'street-reign', model: 'ur-char065', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char066', name: 'CHAR066', title: 'Street Reign Guest', base: 'Urban Reign char066', moveset: 'street-reign', model: 'ur-char066', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char067', name: 'CHAR067', title: 'Street Reign Guest', base: 'Urban Reign char067', moveset: 'street-reign', model: 'ur-char067', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char068', name: 'CHAR068', title: 'Street Reign Guest', base: 'Urban Reign char068', moveset: 'street-reign', model: 'ur-char068', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char069', name: 'CHAR069', title: 'Street Reign Guest', base: 'Urban Reign char069', moveset: 'street-reign', model: 'ur-char069', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char070', name: 'CHAR070', title: 'Street Reign Guest', base: 'Urban Reign char070', moveset: 'street-reign', model: 'ur-char070', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char071', name: 'CHAR071', title: 'Street Reign Guest', base: 'Urban Reign char071', moveset: 'street-reign', model: 'ur-char071', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
-  { id: 'ur-char072', name: 'CHAR072', title: 'Street Reign Guest', base: 'Urban Reign char072', moveset: 'street-reign', model: 'ur-char072', tintStrength: 0,
-    colors: { suit: 0x8a8f98, trim: 0x3a3f46 }, style: 'Street Reign Brawler', archetype: 'Guest' },
+  // RAVE = KIKO TANAKA = GHOST in Western Heart (owner 2026-10-19 / 2026-10-21: "Lei wulong is not byou, he is
+  // Rave/Kiko tanaka ... rave already takes over leis character and slot and moves and personality").
+  // RAVE is his MAIN game/display name (owner 2026-10-23). Kiko, Ghost, and Kiko Tanaka are all the
+  // same person — all four names documented in repo/canon. Never split into separate fighters.
+  // Model: his rigged Tripo pull (roster/TRIPO-REGISTRY.md: A1 hooded, A2 unrobed "ghost Tanaka",
+  // A3+ rave.glb). Moves: game/assets/movesets/rave.json (Lei T7 + Lei T3 + Byou). Style from
+  // roster/rave/CONCEPT.md; colors = the Great Muta red/green paint the concept names.
+  { id: 'rave', name: 'RAVE', title: 'The Painted Soul', base: 'Lei Wulong', moveset: 'rave', model: 'kiko-tanaka',
+    colors: { suit: 0x1f5e2c, trim: 0xc62828 }, style: 'Five Animals', archetype: 'Trickster' },
+  // ——— LANDING WAVE 1 (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md): fighters
+  // whose models + movesets were already on main but who had no select entry.
+  // BUFFALO BILL (owner canon: The Horned Messenger; Marshall/Forest Law base
+  // moveset, game/assets/movesets/buffalo-bill.json). His only on-main model
+  // is Attire 3 "Ashes" (roster/buffalo-bill/CANON.md) — the base model key
+  // points there until his A1/A2 sources land in the repo.
+  { id: 'buffalo-bill', name: 'BUFFALO BILL', title: 'The Horned Messenger', base: 'Marshall Law', moveset: 'buffalo-bill', model: 'buffalo-bill', tintStrength: 0.25,
+    colors: { suit: 0x7a1220, trim: 0x4a2a7a }, style: 'Street Brawler', archetype: 'Balanced' },
+  // VAIN ABEL ELIAS (owner canon: "The Brother", Cain Elias's brother; Bass
+  // Armstrong base — game/assets/movesets/vainabel.json). Attire 1 Tripo is
+  // not on disk (roster/TRIPO-REGISTRY.md); base model key = Attire 2.
+  { id: 'vainabel', name: 'VAIN ABEL', title: 'The Brother', base: 'Bass Armstrong', moveset: 'vainabel', model: 'vainabel', tintStrength: 0.25,
+    colors: { suit: 0x1a0f24, trim: 0x7a2bd8 }, style: 'Grappler', archetype: 'Power' },
+  // CAIN ELIAS (owner 2026-10-19: Vain Abel's brother, the Deadman; moveset
+  // id 'cainelias' per the shipped file + loader lists, model keys under
+  // 'cain-elias'). Model + moveset + loader listing existed; only the
+  // select entry was missing.
+  { id: 'cainelias', name: 'CAIN ELIAS', title: 'The Deadman', base: 'Undertaker (WWE)', moveset: 'cainelias', model: 'cain-elias', tintStrength: 0.25,
+    colors: { suit: 0x14141c, trim: 0x5a2a8a }, style: 'Grappler', archetype: 'Power' },
+  // CHORDZ (owner 2026-10-15: Lars -> Chordz, the emo guitarist; moveset
+  // file + loader listing existed, model sat in attires/attire1/source/).
+  { id: 'chordz', name: 'CHORDZ', title: 'The Emo Guitarist', base: 'Lars', moveset: 'chordz', model: 'chordz', tintStrength: 0.25,
+    colors: { suit: 0x1a1a2a, trim: 0x8a2a6b }, style: 'Emo Guitarist', archetype: 'Tricky' },
+  // ——— LANDING WAVE 3 (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md): the
+  // bear-bank successors + Silvertongue. Models were wired (wave 1) and
+  // rigged (wave 2); their movesets land this wave
+  // (game/assets/movesets/{id}.json + MOVESET_IDS + index.json), so the
+  // select entries land now that every piece is on main.
+  // GASHADOKURO (owner canon law 2026-10-23, roster/kuma/CANON.md): the
+  // starved-dead giant skeleton, Kuma's proprietary successor. Kuma is
+  // obsolete in canon and never stands alone on this list — the bear bank
+  // is scaffolding only. Moveset: gashadokuro.json (T3 Kuma bank, 530).
+  { id: 'gashadokuro', name: 'GASHADOKURO', title: 'The Starved Dead', base: 'Kuma', moveset: 'gashadokuro', model: 'gashadokuro', tintStrength: 0.25,
+    colors: { suit: 0xe8e0cc, trim: 0x8a1a1a }, style: 'Beast Grappler', archetype: 'Power' },
+  // AOTSUKI (owner canon law 2026-10-23, roster/panda/CANON.md): the blue
+  // moon, Panda's proprietary successor. Panda is obsolete in canon and
+  // never stands alone on this list. Moveset: aotsuki.json (T3 bear bank —
+  // Panda shares Kuma's T3 bank; proxy-flagged in the file).
+  { id: 'aotsuki', name: 'AOTSUKI', title: 'The Blue Moon', base: 'Panda', moveset: 'aotsuki', model: 'aotsuki', tintStrength: 0.25,
+    colors: { suit: 0x2a4a8a, trim: 0xbcd8ff }, style: 'Beast Grappler', archetype: 'Power' },
+  // SILVERTONGUE (owner canon law 2026-10-23, roster/silvertongue/CANON.md):
+  // "The Heiress Soul", the tourist — Lili re-owned; the source name is
+  // retired in this universe and she never appears under it. Moveset:
+  // silvertongue.json (her full kit, authored as her own file this wave).
+  { id: 'silvertongue', name: 'SILVERTONGUE', title: 'The Heiress Soul', base: 'Lili', moveset: 'silvertongue', model: 'silvertongue', tintStrength: 0.25,
+    colors: { suit: 0xf0e8f0, trim: 0xc0a062 }, style: 'Acrobatic Elegance', archetype: 'Stylish' },
 ];
 
+/* Unknown / missing id -> a MODEL PENDING soul (no body, kept out of fights),
+   never another fighter's body (owner law t183u: no wrong model anywhere). */
+export function modelPendingFighter(id) {
+  return { id: String(id || 'unknown'), name: String(id || 'UNKNOWN').toUpperCase(), title: 'Model pending',
+    base: null, moveset: null, model: null, modelPending: true, tintStrength: 0,
+    colors: { suit: 0x555555, trim: 0x999999 }, style: '', archetype: '' };
+}
 export function getFighter(id) {
-  return FULL_ROSTER.find(f => f.id === id) || FULL_ROSTER[9]; // default Pantera
+  return FULL_ROSTER.find(f => f.id === id) || modelPendingFighter(id);
 }
 
+/* Tier membership (dedup 2026-10-22): explicit id lists, not positional
+   slices — folding attire-cards out of FULL_ROSTER must not shift fighters
+   between tiers. SOUL_IDS = the Nine Souls minus JIN (folded into Phantom's
+   attire ladder per owner directive 2026-10-22: "Yoshimitsu is supposed to
+   ladder into Phantom's attires, not stand alone"). MAIN_IDS = the original
+   main-roster block. Everything else is bonus. */
+export const SOUL_IDS = ['rin', 'byou', 'tou', 'sha', 'kai', 'retsu', 'zen', 'gyou'];
+export const MAIN_IDS = ['pantera', 'demonio', 'phantom', 'diablo', 'skull', 'samura1', 'sakura'];
+
 export function getRosterByTier() {
+  const byId = new Map(FULL_ROSTER.map(f => [f.id, f]));
+  const inTier = new Set([...SOUL_IDS, ...MAIN_IDS]);
   return {
-    souls: FULL_ROSTER.slice(0, 9),
-    main: FULL_ROSTER.slice(9, 16),
-    bonus: FULL_ROSTER.slice(16),
+    souls: SOUL_IDS.map(id => byId.get(id)).filter(Boolean),
+    main: MAIN_IDS.map(id => byId.get(id)).filter(Boolean),
+    bonus: FULL_ROSTER.filter(f => !inTier.has(f.id)),
   };
 }

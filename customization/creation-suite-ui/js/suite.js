@@ -2,13 +2,16 @@
    Laws: tap slot → scroll library → tap to assign. NO drag-and-drop anywhere. Phone-first.
    Menu trees verbatim from teardown games (see menu-data.js + UI-EXTRACTION-LOG.md). */
 import { SuiteViewer } from './viewer3d.js';
-import { ATTIRE_TREE, BODY_TREE, PARTS_TREE, JIGGLE_AREAS, JIGGLE_PARAMS, JIGGLE_FAMILIES, PLACE_AXES, MENU_SRC } from './menu-data.js';
+import { ATTIRE_TREE, BODY_TREE, PARTS_TREE, JIGGLE_AREAS, JIGGLE_PARAMS, JIGGLE_FAMILIES, PLACE_AXES, MENU_SRC, WWE_ATTIRE_TREE } from './menu-data.js';
 /* Real morph catalog + DNA/body engine from packages/creation-suite
    (importmap: wh-creation-suite/ -> ../../packages/creation-suite/src/).
    Thin adapter below maps morph ids onto DNA sliders — logic is NOT forked. */
 import { BODY_MORPHS, FACE_SHAPE_MORPHS, applyMorphProxies } from 'wh-creation-suite/morphs.js';
 import { SLIDERS as DNA_SLIDERS } from 'wh-creation-suite/dna.js';
 import { applySliders as applyBodySliders } from 'wh-creation-suite/body.js';
+/* The game's own moveset engine (same module the fight runs): notation tables, slots, loadouts. */
+import * as MS from '../../../game/js/movesets.js';
+MS.setMovesetBase('../../game/assets/movesets/');
 
 const LS_KEY = 'wh_creation_suite_v1';
 const START_MONEY = 12400;
@@ -31,7 +34,7 @@ const TITLE_B=['BEAST','PANTHER','KING','GHOST','STORM','WOLF','TIGER','DEMON'];
 const SLOT2CAT = { mask:'3', eye_lenses:'6', cowl:'3', gauntlets:'H', hair:'2',
   decal_logo:'8', eye:'EYES', tights:'11', pants:'11', top:'9', outfit:'9', scarf:'12', face:'8',
   upper_body:'9', lower_body:'11', gloves:'H', shoes:'F', gear:'12', accessory:'12', attire:'10',
-  eyebrows:'6' };
+  eyebrows:'6', fullbody:'11' };
 /* suite_slot -> fallback 3D socket for texture-part markers (registry has no placement block for texture parts) */
 const SLOT2SOCKET = { eye:'face', face:'face', decal_logo:'chest', top:'chest', outfit:'chest',
   scarf:'chest', tights:'waist', pants:'waist', hair:'head', mask:'face', eye_lenses:'face', cowl:'head', gauntlets:'hands' };
@@ -61,8 +64,9 @@ let PARTS = [];       // parts-catalog.json parts[] (unified catalog v2)
 let PARTS_META = null; // parts-catalog.json header (counts/sources)
 let ROSTER = null;    // data/roster-attires.json (build_roster_attires.py)
 let JIGGLE = null;    // jiggle-schema.json
+let FPARTS = null;    // data/fighter-parts.json (Phase 1: SmutBase-6 own-mesh parts)
 let viewer = null;
-let ui = { tab:'body', attireCat:null, partsCat:null, selPart:null, wardSel:0, nudgeStep:0.001, page:0, query:'' };
+let ui = { tab:'body', attireMode:'tekken', attireCat:null, partsCat:null, selPart:null, wardSel:0, nudgeStep:0.001, page:0, query:'' };
 
 const attire = ()=>F.attires[F.attireIndex];
 
@@ -158,12 +162,20 @@ function customizationRecord(){
     }
   }
   const morphs={}; for(const [k,v] of Object.entries(F.morphs||{})) if(v) morphs[k]=v;
+  // Phase 1: per-part toggles on the fighter's own meshes (OUTFIT tab)
+  const part_states={};
+  for(const [pid, st] of Object.entries(a.partStates||{})){
+    if(!st) continue;
+    if((st.mode&&st.mode!=='shown')||st.color||st.swap)
+      part_states[pid]={ mesh:st.mesh||null, label:st.label||pid, category:st.category||null,
+        mode:st.mode||'shown', color:st.color||null, swap:st.swap||null };
+  }
   return { version:1, app:'wh-creation-suite',
     fighter: F.mode==='roster' ? F.rosterRef.fighter : 'blank',
     attire: F.mode==='roster' ? F.rosterRef.attire : `attire${F.attireIndex+1}`,
     base_glb: F.baseGlb, out_glb: null,
     body:{ body_type:F.body.body_type, skin_tone:F.body.skin_tone },
-    morphs, parts, textures,
+    morphs, parts, textures, part_states,
     colors:{ hair:(a.colors&&a.colors.hair)||null, skin:F.body.skin_tone } };
 }
 function applyCustomizationRecord(rec){
@@ -184,6 +196,8 @@ function applyCustomizationRecord(rec){
     a.equipped[(p&&p.suite_slot)||'face']=t.part_id;
   }
   if(rec.colors && rec.colors.hair){ a.colors=a.colors||{}; a.colors.hair=rec.colors.hair; }
+  // Phase 1: per-part toggles on the fighter's own meshes (OUTFIT tab)
+  a.partStates = rec.part_states ? JSON.parse(JSON.stringify(rec.part_states)) : {};
 }
 function saveToAttire(){
   stashCurrent(); persistQuiet();
@@ -271,7 +285,8 @@ function syncParts3D(){
     else
       viewer.updatePlacement(partId, place);
   }
-  for(const pid of [...viewer.parts.keys()]) if(!seen.has(pid)) viewer.detachPart(pid);
+  for(const pid of [...viewer.parts.keys()])
+    if(!seen.has(pid) && !pid.startsWith('swap:')) viewer.detachPart(pid); // swap: keys are owned by applyPartStates3D
 }
 function syncPreview(){
   if(!viewer) return;
@@ -300,6 +315,159 @@ function syncPreview(){
   for(const key of [...viewer.markers.keys()]) if(!texSeen.has(key)) viewer.clearMarker(key);
   if(viewer.texSwaps) for(const id of [...viewer.texSwaps.keys()])
     if(!Object.values(attire().equipped).includes(id)) viewer.restoreTexture(id);
+  applyPartStates3D();
+}
+
+/* ================= OUTFIT — the fighter's own parts (Phase 1) =================
+   Per-part toggles for the SmutBase-6 fighters' own modeled meshes
+   (data/fighter-parts.json, built from each roster dir's PARTS.md — every
+   mesh name verified against the fighter's model.glb):
+     show/hide · invisible (hidden but the slot stays occupied, for layering)
+     · recolor (per-part color override) · delete (removed from this attire's
+     config) · swap (compatible unified-catalog part replaces it).
+   State is per attire: attire().partStates[partId] = {mesh,label,category,
+   mode,color,swap}. Saved per attire via customizationRecord().part_states
+   (customization.json v1) and applied in-fight by
+   game/js/customization-consumer.js. */
+const fpartsForCurrent = () =>
+  (F.mode==='roster' && F.rosterRef && FPARTS && FPARTS.fighters[F.rosterRef.fighter]) || null;
+const fpartDef = pid => { const fp=fpartsForCurrent(); return fp && fp.parts.find(p=>p.id===pid); };
+const fpartState = pid => (attire().partStates||{})[pid] || { mode:'shown', color:null, swap:null };
+function setFpartState(pid, patch){
+  const a = attire(); a.partStates = a.partStates || {};
+  const def = fpartDef(pid) || {};
+  const cur = a.partStates[pid] || { mesh:def.mesh, label:def.label, category:def.category, mode:'shown', color:null, swap:null };
+  if(def.mesh && !cur.mesh){ cur.mesh=def.mesh; cur.label=def.label; cur.category=def.category; }
+  a.partStates[pid] = Object.assign(cur, patch);
+  applyPartStates3D(); persistQuiet();
+}
+const OUTFIT_SWAP_SOCKET = { hair:'hair', headwear:'head', face:'face', tops:'torso', bottoms:'legs',
+  fullbody:'torso', underwear:'legs', hosiery:'legs', gloves:'hands', footwear:'feet', accessories:'accessory' };
+function swapCandidates(fp){
+  const slots = (FPARTS.swap_slots||{})[fp.category] || [];
+  return PARTS.filter(p=>p.part_class==='mesh_part' && p.glb && slots.includes(p.suite_slot));
+}
+function applyPartStates3D(){
+  if(!viewer || !viewer.ready) return;
+  const fp = fpartsForCurrent();
+  const states = (fp && attire().partStates) || {};
+  const seenSwap = new Set();
+  for(const part of (fp?fp.parts:[])){
+    const st = states[part.id];
+    if(!st){ viewer.setBaseMeshMode(part.mesh,'shown'); viewer.setBaseMeshColor(part.mesh,null); continue; }
+    viewer.setBaseMeshMode(part.mesh, st.mode||'shown');
+    viewer.setBaseMeshColor(part.mesh, st.color||null);
+    if(st.swap && st.swap.glb && (st.mode||'shown')==='shown'){
+      const key='swap:'+part.id; seenSwap.add(key);
+      if(!viewer.parts.has(key))
+        viewer.attachPart(key, '../../'+st.swap.glb, { socket: st.swap.socket || OUTFIT_SWAP_SOCKET[part.category] || 'accessory' },
+          st.swap.placement||{px:0,py:0,pz:0,rx:0,ry:0,rz:0,s:1}).catch(()=>{});
+    }
+  }
+  for(const k of [...viewer.parts.keys()])
+    if(k.startsWith('swap:') && !seenSwap.has(k)) viewer.detachPart(k);
+}
+function renderOutfit(el){
+  const fp = fpartsForCurrent();
+  if(!fp){
+    $('#panel-sub').textContent='Fighter parts — own-mesh toggles';
+    el.innerHTML=`<div class="note">🧥 <b>OUTFIT</b> lists the fighter's <b>own modeled meshes</b>
+      (labeled per <span class="chip">roster/*/PARTS.md</span>) with per-part toggles:
+      👁 show/hide · 👻 invisible (slot stays occupied, for layering) · 🎨 recolor ·
+      🗑 delete from this attire · 🔀 swap with a compatible catalog part.<br><br>
+      ${F.mode!=='roster'
+        ? 'Pick a roster fighter first: <b>🧍 FIGHTER SELECT</b> below, then choose one of the SmutBase 6 — <b>Ryusan, Tobi, Chatur, Pond, Megami, Menajerii</b>.'
+        : `No parts inventory for <b>${esc(F.rosterRef.fighter)}</b> yet — Phase 1 covers the SmutBase 6; the full roster lands in Phase 5.`}
+      <br><br>Toggles apply live to the 3D preview and save into this attire's record (PROFILE → SAVE TO ATTIRE).</div>`;
+    return;
+  }
+  const fname = fp.fighter_name || (F.rosterRef&&F.rosterRef.fighter) || '';
+  $('#panel-sub').textContent=`${fname} — ${fp.parts.length} labeled parts · toggles save per attire`;
+  const cats = (FPARTS.categories||[]).filter(c=>fp.parts.some(p=>p.category===c.key));
+  el.innerHTML = `<div class="note">🧥 Every mesh <b>${esc(fname)}</b> shipped with, labeled per
+      <span class="chip">PARTS.md</span>. Tap a toggle — the 3D preview updates live.
+      States save per attire (PROFILE → <b>SAVE TO ATTIRE</b>) and apply in-fight.</div>` +
+    cats.map(c=>`<div class="sect">${c.icon} ${c.label}</div><div id="of-${c.key}"></div>`).join('');
+  for(const c of cats){
+    const host = el.querySelector('#of-'+c.key);
+    fp.parts.filter(p=>p.category===c.key).forEach(p=>host.appendChild(outfitRow(p)));
+  }
+}
+function outfitRow(p){
+  const st = fpartState(p.id);
+  const d = document.createElement('div');
+  d.className='of-row'; d.id='ofrow-'+p.id.replace(/[^a-z0-9]+/gi,'-');
+  const modeLabel = {shown:'SHOWN',hidden:'HIDDEN',invisible:'INVISIBLE',deleted:'DELETED'}[st.mode||'shown'];
+  d.innerHTML=`
+    <div class="of-main">
+      <div class="of-name">${esc(p.label)}${p.signature?' <span class="chip" title="canon signature part — delete blocked">⭐ signature</span>':''}${p.base?' <span class="chip">base</span>':''}</div>
+      <div class="of-mesh">${esc(p.mesh)}</div>
+      <div class="of-state"><span class="chip of-${st.mode||'shown'}">${modeLabel}</span>${st.swap?` <span class="chip">🔀 ${esc(st.swap.name||st.swap.part_id||'')}</span>`:''}${st.color?` <span class="chip">🎨 <i style="display:inline-block;width:10px;height:10px;background:${st.color};border-radius:2px"></i></span>`:''}</div>
+      ${p.notes?`<div class="of-notes">${esc(p.notes)}</div>`:''}
+    </div>
+    <div class="of-ctl"></div>`;
+  const ctl = d.querySelector('.of-ctl');
+  if(p.base){
+    ctl.innerHTML=`<div class="note" style="margin:0">🔒 base mesh — never removed</div>`;
+    return d;
+  }
+  const bVis=document.createElement('button'); bVis.className='btn btn-sm';
+  bVis.textContent=(st.mode==='hidden'||st.mode==='invisible')?'👁 SHOW':'👁 HIDE';
+  bVis.onclick=()=>{ const cur=fpartState(p.id).mode||'shown';
+    setFpartState(p.id,{mode:(cur==='hidden'||cur==='invisible')?'shown':'hidden'}); renderPanel(); };
+  const bInv=document.createElement('button'); bInv.className='btn btn-sm'; bInv.textContent='👻 INVISIBLE';
+  bInv.title='Hidden, but the slot stays occupied (layering)';
+  bInv.onclick=()=>{ const cur=fpartState(p.id).mode||'shown';
+    setFpartState(p.id,{mode:cur==='invisible'?'shown':'invisible'}); renderPanel(); };
+  const bCol=document.createElement('label'); bCol.className='btn btn-sm'; bCol.textContent='🎨';
+  bCol.title='Recolor this part'; bCol.style.position='relative'; bCol.style.overflow='hidden';
+  const inp=document.createElement('input'); inp.type='color'; inp.value=st.color||'#ffffff'; inp.setAttribute('aria-label','Recolor '+p.label);
+  inp.style.cssText='position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer';
+  inp.oninput=()=>{ setFpartState(p.id,{color:inp.value}); };
+  inp.onchange=()=>{ renderPanel(); };
+  bCol.appendChild(inp);
+  const bColX=document.createElement('button'); bColX.className='btn btn-sm'; bColX.textContent='🎨✕'; bColX.title='Clear recolor';
+  bColX.onclick=()=>{ setFpartState(p.id,{color:null}); renderPanel(); };
+  const bDel=document.createElement('button');
+  bDel.className='btn btn-sm '+((st.mode==='deleted')?'btn-green':'btn-red');
+  const canDelete = p.swappable && !p.signature;
+  bDel.textContent = st.mode==='deleted' ? '↩ RESTORE' : '🗑 DELETE';
+  bDel.disabled = !canDelete && st.mode!=='deleted';
+  bDel.title = p.signature ? 'Signature part — canon: never removed' : (p.swappable?'Remove from this attire':'Not separable — hide/recolor only');
+  bDel.onclick=()=>{ const cur=fpartState(p.id).mode||'shown';
+    setFpartState(p.id,{mode:cur==='deleted'?'shown':'deleted'}); renderPanel(); };
+  const bSwap=document.createElement('button'); bSwap.className='btn btn-sm btn-blue';
+  bSwap.textContent = st.swap ? '🔀 SWAPPED ✓' : '🔀 SWAP';
+  bSwap.disabled = !p.swappable;
+  bSwap.title = p.swappable ? 'Replace with a compatible catalog part' : 'Not swappable';
+  bSwap.onclick=()=>openSwapLibrary(p);
+  [bVis,bInv,bCol,bColX,bDel,bSwap].forEach(b=>ctl.appendChild(b));
+  return d;
+}
+function openSwapLibrary(p){
+  const cands = swapCandidates(p);
+  const st = fpartState(p.id);
+  const rows = cands.slice(0,120).map(c=>`
+    <button class="ms-row" data-id="${esc(c.id)}">
+      <span class="ms-in">${esc(c.suite_slot||'')}</span>
+      <span class="ms-name">${esc(c.name)}</span>
+      <span class="ms-tag">${esc(c.source||'')}</span>
+    </button>`).join('');
+  modal(`SWAP — ${p.label}`,
+    `<div class="note">Replace <b>${esc(p.label)}</b> (<span class="chip">${esc(p.mesh)}</span>) with a compatible catalog part.
+     The original mesh hides; the swap saves into this attire.</div>
+     ${st.swap?`<div class="btn-row"><button class="btn btn-red" id="swap-clear">REMOVE SWAP — restore ${esc(p.label)}</button></div>`:''}
+     <div class="note">${cands.length} compatible parts${cands.length>120?' (first 120 — use the PARTS tab search to narrow)':''}.</div>
+     <div class="ms-lib">${rows||'<div class="note">No compatible catalog parts with meshes yet.</div>'}</div>`,
+    [{label:'CLOSE'}]);
+  const mb=$('#modal-body');
+  mb.querySelectorAll('.ms-row').forEach(b=>b.onclick=()=>{
+    const c=PARTS.find(x=>x.id===b.dataset.id); if(!c) return;
+    setFpartState(p.id,{mode:'shown', swap:{part_id:c.id, name:c.name, glb:c.glb, socket:partSocket(c), placement:defaultPlacement(c)}});
+    closeModal(); renderPanel(); toast('Swapped ✓');
+  });
+  const clr=mb.querySelector('#swap-clear');
+  if(clr) clr.onclick=()=>{ setFpartState(p.id,{swap:null}); closeModal(); renderPanel(); toast('Swap removed ✓'); };
 }
 
 /* ---------- topbar ---------- */
@@ -334,7 +502,7 @@ function renderPanel(){
   const body=$('#panel-body');
   $('#panel-title').textContent=ui.tab.toUpperCase(); $('#panel-sub').textContent='';
   body.innerHTML='';
-  ({body:renderBody,attire:renderAttire,parts:renderParts,jiggle:renderJiggle,
+  ({body:renderBody,attire:renderAttire,parts:renderParts,outfit:renderOutfit,jiggle:renderJiggle,
     wardrobe:renderWardrobe,profile:renderProfile,moveset:renderMoveset,dome:renderDome})[ui.tab](body);
 }
 
@@ -388,10 +556,20 @@ function partsForCat(slotKey){
 }
 function renderAttire(el){
   if(!ui.attireCat){
-    $('#panel-sub').textContent='Tekken item shop — pick a category (T7 slots verbatim)';
+    const mode = ui.attireMode||'tekken';
+    $('#panel-sub').textContent = mode==='wwe'
+      ? 'WWE CAW clothing — region → garment type (2K22)'
+      : 'Tekken item shop — pick a category (T7 slots verbatim)';
     el.innerHTML=`<div class="note">Buy → Equip loop · hover try-on · conflict Replace/Cancel · 5 color channels.
-      Categories are Tekken 7's real 17 slot IDs + T6 subdivisions (see UI-EXTRACTION-LOG.md).</div><div id="cats"></div>`;
+      Browse the same catalog two ways — WWE runs the creator's internal hierarchy (owner division 2026-10-22).</div>
+      <div class="btn-row" id="attire-mode-row">
+        <button class="btn btn-sm ${mode==='tekken'?'btn-gold':''}" id="am-tekken">TEKKEN SLOTS</button>
+        <button class="btn btn-sm ${mode==='wwe'?'btn-gold':''}" id="am-wwe">WWE REGIONS</button>
+      </div><div id="cats"></div>`;
+    el.querySelector('#am-tekken').onclick=()=>{ ui.attireMode='tekken'; renderAll(); };
+    el.querySelector('#am-wwe').onclick=()=>{ ui.attireMode='wwe'; renderAll(); };
     const host=el.querySelector('#cats');
+    if(mode==='wwe'){ renderWweRegions(host); return; }
     ATTIRE_TREE.forEach(c=>{
       const b=document.createElement('button');
       b.className='subcat'+(attire().equipped[c.slot]?' equipped':'');
@@ -411,7 +589,30 @@ function renderAttire(el){
     });
     return;
   }
-  renderPartGrid(el, ui.attireCat, partsForCat(ui.attireCat.slot), 'attireCat');
+  const cat = ui.attireCat;
+  renderPartGrid(el, cat, cat.wweRegion ? partsForWwe(cat) : partsForCat(cat.slot), 'attireCat');
+}
+
+/* ---- WWE region browse: union of the region's T7 slots, deduped.
+   Equipping files each part under its NATURAL T7 slot (via cat.slotFor),
+   so the Tekken view and WWE view stay consistent. ---- */
+function partsForWwe(cat){
+  const seen=new Set(); const out=[];
+  (cat.slots||[]).forEach(s=>partsForCat(s).forEach(p=>{ if(!seen.has(p.id)){ seen.add(p.id); out.push(p); } }));
+  return out;
+}
+function renderWweRegions(host){
+  WWE_ATTIRE_TREE.forEach(r=>{
+    const n=partsForWwe(r).length;
+    const eqd=(r.slots||[]).some(s=>attire().equipped[s]);
+    const b=document.createElement('button');
+    b.className='subcat'+(eqd?' equipped':''); b.id='wcat-'+r.key;
+    b.innerHTML=`<span class="sc-ico">${r.icon}</span><span>${r.label}${eqd?'<br><small style="color:var(--green)">✓ equipped</small>':''}<br><small style="color:var(--dim)">${r.sub}</small></span><span class="sc-count">${n} parts</span>`;
+    b.onclick=()=>{ ui.attireCat={ key:'wwe-'+r.key, label:r.label+' · WWE', wweRegion:true, slots:r.slots,
+      slotFor:(p)=>p.t7_slot||SLOT2CAT[p.suite_slot]||r.slots[0] };
+      ui.selPart=null; ui.page=0; ui.query=''; renderAll(); };
+    host.appendChild(b);
+  });
 }
 
 /* ================= PARTS (wired libraries) ================= */
@@ -505,7 +706,8 @@ function renderPartGrid(el, cat, list, backKey){
     d.onclick=()=>{ ui.selPart=p; renderPanel(); renderTopbar(); };
     grid.appendChild(d);
   });
-  if(ui.selPart && list.includes(ui.selPart)) renderPartDetail(el.querySelector('#pdetail'), ui.selPart, slotKey);
+  if(ui.selPart && list.includes(ui.selPart)) renderPartDetail(el.querySelector('#pdetail'), ui.selPart,
+    (cat.slotFor && ui.selPart) ? cat.slotFor(ui.selPart) : slotKey);
 }
 function renderPartDetail(el, p, slotKey){
   const owned = attire().owned.includes(p.id);
@@ -711,17 +913,139 @@ function renderProfile(el){
   const rk=el.querySelector('#prof-rec-key'); if(rk) rk.textContent=currentKey();
   const ps=el.querySelector('#prof-save-attire'); if(ps) ps.onclick=saveToAttire;
 }
-function renderMoveset(el){
-  $('#panel-sub').textContent='Tap slot → scroll library → tap to assign';
-  el.innerHTML=`<div class="note">🥊 The moveset editor lives in <span class="chip">moveset-library/</span>
-    (WWE 2K slot-first flow + MDickie tap grammar + Tekken inputs — see MOVESET-EDITOR-RESEARCH.md).
-    Full 176-slot editor wires into this tab next; the tap-to-assign law already governs every picker in this suite.</div>
-    <div class="btn-row"><button class="btn btn-blue" id="ms-open">OPEN MOVESET EDITOR DOC</button></div>`;
-  el.querySelector('#ms-open').onclick=()=>modal('MOVESET EDITOR',
-    `<p><b>Law (verbatim):</b> TAP a move slot → SCROLL the move library → TAP the move to assign it. NO drag-and-drop anywhere. Phone-first.</p>
-     <p>WWE 2K is the editor model (slot-first, positional categories, strict eligibility). Tekken is the fighting (inputs/playstyle). MDickie is the phone reference.</p>
-     <p>Research: <span class="chip">moveset-library/MOVESET-EDITOR-RESEARCH.md</span></p>`,
-    [{label:'GOT IT',cls:'btn-gold'}]);
+/* ---------- MOVESET EDITOR (WWE 2K slot-first flow over Tekken inputs) ----------
+   Every input (notation) of the fighter is a slot. TAP a slot -> the move library opens:
+   SAME INPUT (every source's version of that input: T8 / T7 / T3 / history / donors),
+   ALL MOVES of this fighter, or any OTHER FIGHTER's moves. TAP a move -> assigned.
+   Saved in localStorage wh_moveset_loadout_v1 — the exact table the fight engine reads
+   (game/js/movesets.js resolveMove), so the next fight plays it. No drag-and-drop. */
+const MS_CATS = [['all','ALL'],['stand','STANDING'],['string','STRINGS'],['crouch','CROUCH / WS'],['stance','STANCES'],
+  ['motion','MOTIONS'],['throw','THROWS'],['rage','RAGE / HEAT'],['sig','SIGNATURE'],['edited','EDITED']];
+const ROSTER2GAME = { 'kiko-tanaka':'rave', 'jin':'jin_soul', 'doc-frank':'docfrank', 'sam-ur-a1':'samura1', 'saku-ra':'sakura' };
+const msUi = { fid:null, cat:'all', q:'', page:0 };
+function gameIdFor(rosterId){
+  const idx = (MS.getMovesetIndex()||{}).fighters || {};
+  for (const c of [ROSTER2GAME[rosterId], rosterId, String(rosterId||'').replace(/-/g,''), String(rosterId||'').replace(/-/g,'_')])
+    if (c && idx[c]) return c;
+  return null;
+}
+const WORD_NAME = {0x412:'high',0x217:'mid',0x10f:'low',0x31f:'s.mid',0x607:'unblk',0x706:'unblk',0x800:'throw'};
+function msSrc(m){
+  if(!m) return '';
+  if(m.wh_original || m.move_class==='signature') return 'WH';
+  const s=m.merge_source||'';
+  if(m.t8_id || s.startsWith('t8')) return 'T8';
+  if(m.t7_move_id || s.startsWith('t7')) return 'T7';
+  if(s.startsWith('donor')) return 'DONOR';
+  if(m.t3_source) return 'T3';
+  for(const k of Object.keys(m)) if(/^(sf6|sfv|sf4|doa|ur|vf|nomercy)_/.test(k)) return k.split('_')[0].toUpperCase();
+  return 'WH';
+}
+function msInfo(ms, key, m){
+  const w = ms && ms.hit_words ? ms.hit_words[key] : undefined;
+  const f = Math.round((m.startup||0)*60);
+  return `i${f} · ${WORD_NAME[w]||'—'} · ${Math.round(m.damage||0)} dmg`;
+}
+function msCat(n, m){
+  if(!m) return 'stand';
+  if(m.wh_original || m.move_class==='signature') return 'sig';
+  if(m.move_class==='throw' || m.isGrab) return 'throw';
+  if(/^(R|H)\./.test(n)) return 'rage';
+  if(/^(FC|WS)\./.test(n) || /^d\+/.test(n)) return 'crouch';
+  if(/^[A-Za-z_][A-Za-z0-9_]*\./.test(n)) return 'stance';
+  if(MS.parseMotion(n)) return 'motion';
+  if(n.includes(',')) return 'string';
+  return 'stand';
+}
+function msNotations(ms){
+  if(ms.slots) return Object.keys(ms.slots);
+  return Object.keys(ms.moves).filter(k=>/^[A-Za-z0-9_./+,~:*]+$/.test(k) && !/__|~|_t\d$|_r\d|_c\d/.test(k));
+}
+function msAlternates(ms, n){
+  const out=[];
+  for(const [k,m] of Object.entries(ms.moves)){
+    const base=k.split(/__|~|_t\d$|_r\d|_c\d/)[0];
+    if(k===n || base===n || m.input===n) out.push([k,m]);
+  }
+  return out;
+}
+async function renderMoveset(el){
+  $('#panel-sub').textContent='Tap an input → tap a move to assign · saved for the fight';
+  if(!MS.getMovesetIndex()) { el.innerHTML='<div class="note">Loading move lists…</div>'; await MS.loadFighterMovesets(); }
+  const idx=(MS.getMovesetIndex()||{}).fighters||{};
+  const ids=Object.keys(idx).sort();
+  const custom = F.mode!=='roster';
+  if(!msUi.fid) msUi.fid = custom ? 'custom' : (gameIdFor(F.rosterRef && F.rosterRef.fighter) || ids[0]);
+  const fid=msUi.fid;
+  const lo=MS.getLoadout(fid);
+  if(fid==='custom' && !lo.__base){ MS.setLoadoutSlot('custom','__base','demonio'); }
+  await MS.ensureMovesets([fid]);
+  const ms=MS.playedMoveset(fid);
+  const opt=(id,sel)=>`<option value="${id}" ${id===sel?'selected':''}>${esc((idx[id]||{}).display||id)} — ${esc((idx[id]||{}).tekken_base||'')}</option>`;
+  el.innerHTML=`<div class="field"><label>FIGHTER</label><select id="ms-fid">${custom?`<option value="custom" ${fid==='custom'?'selected':''}>YOUR CREATED FIGHTER</option>`:''}${ids.map(i=>opt(i,fid)).join('')}</select></div>
+    ${fid==='custom'?`<div class="field"><label>BASE MOVESET</label><select id="ms-base">${ids.map(i=>opt(i,MS.getLoadout('custom').__base)).join('')}</select></div>`:''}
+    <div class="ms-cats">${MS_CATS.map(([k,l])=>`<button class="chip ms-cat ${msUi.cat===k?'on':''}" data-c="${k}">${l}</button>`).join('')}</div>
+    <div class="field"><input id="ms-q" type="search" placeholder="search input or move name" value="${esc(msUi.q)}"></div>
+    <div class="note" id="ms-count"></div>
+    <div id="ms-list"></div>
+    <div class="btn-row"><button class="btn" id="ms-more">MORE</button><button class="btn btn-red" id="ms-reset">RESET ALL EDITS</button></div>`;
+  el.querySelector('#ms-fid').onchange=e=>{ msUi.fid=e.target.value; msUi.page=0; renderPanel(); };
+  const bs=el.querySelector('#ms-base'); if(bs) bs.onchange=async e=>{ MS.setLoadoutSlot('custom','__base',e.target.value); await MS.ensureMovesets([e.target.value]); renderPanel(); toast('Base moveset set ✓'); };
+  el.querySelectorAll('.ms-cat').forEach(b=>b.onclick=()=>{ msUi.cat=b.dataset.c; msUi.page=0; renderPanel(); });
+  const q=el.querySelector('#ms-q'); q.oninput=()=>{ msUi.q=q.value; msUi.page=0; drawList(); };
+  el.querySelector('#ms-more').onclick=()=>{ msUi.page++; drawList(); };
+  el.querySelector('#ms-reset').onclick=()=>modal('RESET ALL EDITS',`<p>Every input of <b>${esc((idx[fid]||{}).display||fid)}</b> goes back to its default move.</p>`,
+    [{label:'CANCEL'},{label:'RESET',cls:'btn-red',fn:()=>{ for(const n of Object.keys(MS.getLoadout(fid))) if(n!=='__base') MS.setLoadoutSlot(fid,n,null); renderPanel(); toast('Defaults restored ✓'); }}]);
+  function drawList(){
+    const list=el.querySelector('#ms-list'); if(!ms){ list.innerHTML='<div class="note">No moveset for this fighter yet.</div>'; return; }
+    const lo=MS.getLoadout(fid), ql=msUi.q.toLowerCase();
+    const rows=[];
+    for(const n of msNotations(ms)){
+      const r=MS.resolveMove(fid,n); if(!r) continue;
+      const edited = !!lo[n];
+      const cat = msCat(n, r.move);
+      if(msUi.cat==='edited' ? !edited : (msUi.cat!=='all' && cat!==msUi.cat)) continue;
+      if(ql && !n.toLowerCase().includes(ql) && !String(r.move.name||'').toLowerCase().includes(ql)) continue;
+      rows.push([n,r,edited]);
+    }
+    el.querySelector('#ms-count').textContent=`${rows.length} inputs · ${Object.keys(ms.moves).length} moves in ${esc((idx[fid]||{}).display||fid)}'s library`;
+    const N=40*(msUi.page+1);
+    list.innerHTML=rows.slice(0,N).map(([n,r,ed],i)=>`<button class="ms-row ${ed?'edited':''}" data-n="${esc(n)}">
+      <span class="ms-in">${esc(n)}</span><span class="ms-name">${esc(r.move.name||'')}${r.from!==fid?` <i>(${esc(r.from)})</i>`:''}</span>
+      <span class="ms-tag">${msSrc(r.move)}</span><span class="ms-fd">${msInfo(r.ms,r.key,r.move)}</span></button>`).join('');
+    el.querySelector('#ms-more').hidden = rows.length<=N;
+    list.querySelectorAll('.ms-row').forEach(b=>b.onclick=()=>openMoveLibrary(fid, b.dataset.n));
+  }
+  drawList();
+}
+async function openMoveLibrary(fid, n, tab='same', other=null, q=''){
+  const ms=MS.playedMoveset(fid), idx=(MS.getMovesetIndex()||{}).fighters||{};
+  const cur=MS.resolveMove(fid,n);
+  let src=ms, srcId=fid, rows=[];
+  if(tab==='same') rows=msAlternates(ms,n);
+  else if(tab==='all') rows=Object.entries(ms.moves);
+  else { srcId=other||Object.keys(idx).find(i=>i!==fid); await MS.ensureMovesets([srcId]); src=MS.getFighterMoveset(srcId); rows=src?Object.entries(src.moves):[]; }
+  const ql=q.toLowerCase();
+  if(ql) rows=rows.filter(([k,m])=>k.toLowerCase().includes(ql)||String(m.name||'').toLowerCase().includes(ql));
+  const shown=rows.slice(0,120);
+  const tabs=[['same','SAME INPUT'],['all','ALL MOVES'],['other','OTHER FIGHTER']];
+  const body=`<div class="kv"><span>Input</span><b>${esc(n)}</b></div>
+    <div class="kv"><span>Now</span><b>${esc(cur?cur.move.name||cur.key:'—')} ${cur?`· ${msSrc(cur.move)} · ${msInfo(cur.ms,cur.key,cur.move)}`:''}</b></div>
+    <div class="ms-cats">${tabs.map(([k,l])=>`<button class="chip ms-tab ${tab===k?'on':''}" data-t="${k}">${l}</button>`).join('')}</div>
+    ${tab==='other'?`<div class="field"><select id="lib-fid">${Object.keys(idx).sort().map(i=>`<option value="${i}" ${i===srcId?'selected':''}>${esc((idx[i]||{}).display||i)} — ${esc((idx[i]||{}).tekken_base||'')}</option>`).join('')}</select></div>`:''}
+    <div class="field"><input id="lib-q" type="search" placeholder="search" value="${esc(q)}"></div>
+    <div class="note">${rows.length} moves${rows.length>shown.length?` (first ${shown.length}; search to narrow)`:''}. Tap one to assign it to <b>${esc(n)}</b>.</div>
+    <div class="ms-lib">${shown.map(([k,m])=>`<button class="ms-row" data-k="${esc(k)}"><span class="ms-in">${esc(m.input||k)}</span>
+      <span class="ms-name">${esc(m.name||k)}</span><span class="ms-tag">${msSrc(m)}</span><span class="ms-fd">${msInfo(src,k,m)}</span></button>`).join('')}</div>`;
+  modal(`MOVE LIBRARY — ${esc(n)}`, body, [{label:'RESET TO DEFAULT',cls:'btn-red',fn:()=>{ MS.setLoadoutSlot(fid,n,null); renderPanel(); toast('Default restored ✓'); }},{label:'CLOSE'}]);
+  const mb=$('#modal-body');
+  mb.querySelectorAll('.ms-tab').forEach(b=>b.onclick=()=>openMoveLibrary(fid,n,b.dataset.t,null,''));
+  const lf=mb.querySelector('#lib-fid'); if(lf) lf.onchange=()=>openMoveLibrary(fid,n,'other',lf.value,'');
+  const lq=mb.querySelector('#lib-q'); if(lq) lq.onchange=()=>openMoveLibrary(fid,n,tab,srcId,lq.value);
+  mb.querySelectorAll('.ms-row').forEach(b=>b.onclick=()=>{
+    const k=b.dataset.k; MS.setLoadoutSlot(fid, n, srcId===fid ? k : `${srcId}::${k}`);
+    closeModal(); renderPanel(); toast(`${n} → ${(src.moves[k]||{}).name||k} ✓`);
+  });
 }
 
 /* ================= DOME (Doc Frank Wowomomo — owner edits it himself) =================
@@ -827,7 +1151,7 @@ $('#btn-roster').onclick=()=>{
 $('#btn-save').onclick=persist;
 { const bsa=$('#btn-save-attire'); if(bsa) bsa.onclick=saveToAttire; }
 /* Stream 4: in-game wiring — back to the game menu (saves first). */
-{ const bg=$('#btn-back-game'); if(bg) bg.onclick=()=>{ persistQuiet(); window.location.href='../../game/index.html'; } }
+{ const bg=$('#btn-back-game'); if(bg) bg.onclick=()=>{ persistQuiet(); window.location.href='../../index.html'; } }
 $('#btn-export').onclick=()=>{
   const blob=new Blob([JSON.stringify(F,null,2)],{type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
@@ -838,10 +1162,11 @@ $('#btn-export').onclick=()=>{
 async function boot(){
   try{ const s=localStorage.getItem(LS_KEY); if(s) F=Object.assign(blankFighter(), JSON.parse(s)); }catch(e){}
   try{
-    const [parts, jig, roster] = await Promise.all([
+    const [parts, jig, roster, fparts] = await Promise.all([
       fetch('data/parts-catalog.json').then(r=>r.json()),
       fetch('data/jiggle-schema.json').then(r=>r.json()),
       fetch('data/roster-attires.json').then(r=>r.ok?r.json():null).catch(()=>null),
+      fetch('data/fighter-parts.json').then(r=>r.ok?r.json():null).catch(()=>null),
     ]);
     PARTS = Array.isArray(parts) ? parts : (parts.parts||[]);
     PARTS_META = Array.isArray(parts) ? null : parts;
@@ -849,14 +1174,14 @@ async function boot(){
     PARTS.forEach(p=>{ if(!p.asset) p.asset=p.glb||null; if(!p.source) p.source=p.library||'curated';
       if(!p.t7_slot) p.t7_slot=SLOT2CAT[p.suite_slot]||null;
       if(p.geometry_pending===undefined) p.geometry_pending=!!p.geometryPending; });
-    JIGGLE=jig; ROSTER=roster;
+    JIGGLE=jig; ROSTER=roster; FPARTS=fparts;
   }catch(e){
     $('#loader').innerHTML='<div>DATA LOAD FAILED — serve over http</div>'; return;
   }
   if(!Array.isArray(F.records)) F.records = F.records||{};
   if(F.mode==='roster' && (!F.rosterRef || !rosterAttire(F.rosterRef.fighter, F.rosterRef.attire))){ F.mode='blank'; F.rosterRef=null; F.baseGlb=BLANK_GLB; }
   viewer=new SuiteViewer($('#stage3d'));
-  window.__suite={ viewer, get F(){return F;}, ui, setTab, selectRosterAttire, customizationRecord, currentKey, get ROSTER(){return ROSTER;}, get PARTS(){return PARTS;} };
+  window.__suite={ viewer, get F(){return F;}, ui, setTab, selectRosterAttire, customizationRecord, currentKey, get ROSTER(){return ROSTER;}, get PARTS(){return PARTS;}, get FPARTS(){return FPARTS;} };
   viewer.onReady=()=>{ renderAll(); };
   await loadBaseModel();
   renderAll();
@@ -865,3 +1190,4 @@ async function boot(){
   if(!localStorage.getItem(LS_KEY)) toast('Tap PARTS → Masks → tap the mask to equip it');
 }
 boot();
+

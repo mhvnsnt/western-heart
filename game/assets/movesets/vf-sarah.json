@@ -250,6 +250,8 @@
       "knock": 4.2,
       "soulGain": 11,
       "anim_ref": "wh:vf-sarah:sig:bryant-intercept",
+      "community_base": "game/assets/anim/oss/community/144_09.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "b+4"
       ],
@@ -289,6 +291,8 @@
       "knock": 4.2,
       "soulGain": 11,
       "anim_ref": "wh:vf-sarah:sig:bryant-intercept",
+      "community_base": "game/assets/anim/oss/community/144_09.fbx",
+      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "b+K",
         "b",
@@ -350,5 +354,66 @@
       "b+K"
     ],
     "era_note": "final set era census: T8/WH-newest=4, T6/other-teardown=10; additions selected newest-era first (T8/T7/TTT2/T6+other teardowns), T3 payloads used only where no newer expression exists; union-first, no-loss absolute"
+  },
+  "hit_words": {
+    "1+3": 2048,
+    "b+1+3": 2048
+  },
+  "stance_after": {},
+  "canon_moves": [
+    {
+      "name": "Bryant Intercept",
+      "input": "b+4",
+      "display_input": "b+RK4",
+      "input_original": "`b+4`",
+      "anim_ref": "wh:vf-sarah:sig:bryant-intercept",
+      "community_base": "game/assets/anim/oss/community/144_09.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "method": "ADAPT",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "legL",
+      "damage": 15,
+      "startup_frames": 14,
+      "canon": true,
+      "canon_owner": "VF-SARAH",
+      "properties": {
+        "stance": "standing",
+        "direction": "b",
+        "type": "strike",
+        "limb": "legR",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    },
+    {
+      "name": "Flamingo's Answer",
+      "input": "1+2",
+      "display_input": "LP1+RP2",
+      "input_original": "`1+2`",
+      "anim_ref": "wh:vf-sarah:sig:flamingos-answer",
+      "method": "BUILD",
+      "source": "WH canon (wh: placeholder ref = animation NOT yet authored, per canon file header)",
+      "move_class": "signature",
+      "limb": "legR",
+      "damage": 18,
+      "startup_frames": 17,
+      "canon": true,
+      "canon_owner": "VF-SARAH",
+      "properties": {
+        "stance": "standing",
+        "direction": "none",
+        "type": "strike",
+        "limb": "both",
+        "source": "canon"
+      },
+      "wiring": "existing entry"
+    }
+  ],
+  "canon_wiring": {
+    "wired": "2026-10-24",
+    "note": "Additive canon wiring for the Move List Creator. canon_moves entries are NEW entries; no Tekken moves entry was replaced or overwritten. Existing entries gained only an anim_ref field where one was missing. wh: refs are placeholders for animations not yet authored (see canon file header); made: refs are wiring labels pending the sibling animation lane clips. NOT play-verified.",
+    "editor": "packages/creation-suite/src/movelist-editor.js (canon_moves + canon properties support)",
+    "source_doc": "docs/canon-movelist-wiring-2026-10-24.md"
   }
 }

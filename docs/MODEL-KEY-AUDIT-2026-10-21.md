@@ -141,3 +141,36 @@ The audit listed SLICE as one of two fighters with no model in the repo (he rode
 | SLICE (`slice`) | `slice` (no ATTIRE_VARIANTS entry -> roster `model:` fallback) | `slice` | `slice` | `../roster/slice/attires/attire1/model.glb` | (a) OWN |
 
 Source: Tekken 7 Dragunov teardown model — `dragunov-t7-rig.blend` from release `tekken-models-batch-2` (sha256 `214dc98fcc364245cd75dc52b3538d463c21ed28e45b907c78803feb714e5efd`), the T7 default costume (beret configuration), converted to GLB on the T7 game skeleton (198 joints). `roster-full.js` `model:` changed `steve-fox` -> `slice`; `MODEL_URLS` gained `slice` + `slice-attire1`; the guard's OWNERSHIP table now lists `slice: own [slice, slice-attire1]`. Canon gap (not a defect): Slice's skull mask is a Tekken 7 customization part that is **not present in our teardown holdings** — see `roster/slice/ATTIRE-SLOTS.md`.
+
+## Follow-up (2026-10-21) — SLICE Attire 1 is now the owner's Tripo; Dragunov build laddered to Attire 2
+
+The owner dropped his own Tripo for Slice (2026-10-21 ~08:42 CDT) and named it his **main default Attire 1**: "undead warrior 3d model" by tzflo312 (cf9cf660-1673-4585-ac1b-ce4fc92f1550), pulled via `tools/tripo-pull` and archived on release `slice-tripo-pulls-20261021` (18,884,292 B, sha256 `6cddd2c9697aead7abb4a7c61dd36e9f003bafad14fd9fd6d0e49ff851074337`, digest-verified; glTF 2.0 meshopt, 1 mesh / 1 material / 3 textures, **static — no skin**; rig at the rig stage, see `roster/slice/RIG-NOTES.md`). Canon per the owner: jagged chrome arm blades (Baraka/Wolverine prototype mix), skull mask blending into the back of the head, scars all over, blades on the belt buckle and the side of the shoe.
+
+The PR #433 Dragunov build **laddered back to Attire 2 byte-identical** (sha256 `af51f6473e7764ac6f832d19a3e6a38ef89f924e3a1511f43c3b7531a01d94b0` verified before and after the move; its T-pose refs moved to `docs/tpose-refs/slice/a2_front.png` / `a2_back.png`). It stays wired and selectable — the owner: "you can keep making your version of slice."
+
+| Fighter | Player/select path | Enemy/raw path | Resolved key | Resolved URL | Class |
+|---|---|---|---|---|---|
+| SLICE (`slice`) | `slice` → `slice-attire1` (ATTIRE_VARIANTS default) | `slice` | `slice` / `slice-attire1` | `../roster/slice/attires/attire1/model.glb` | (a) OWN |
+| SLICE Attire 2 (`slice-attire2`) | `slice-attire2` (ATTIRE_VARIANTS) | `slice-attire2` | `slice-attire2` | `../roster/slice/attires/attire2/model.glb` | (a) OWN |
+
+`MODEL_URLS` gained `slice-attire2`; `slice` + `slice-attire1` still point at `attire1/model.glb` (now the Tripo file); `ATTIRE_VARIANTS['slice']` added (A1 Tripo default, A2 Dragunov build); the guard's OWNERSHIP table now lists `slice: own [slice, slice-attire1, slice-attire2]`. Proof: `node --test game/tests/model-key-guard.test.mjs` — resolution tests pass (Slice → his Tripo on both paths, Dragunov build on its own slot); renders `docs/tpose-refs/slice/a1_front.png` + `a1_back.png` own-eyes verified against the owner's description. The skull-mask note in the earlier SLICE addendum is superseded for his default look: the owner's Tripo models the mask on. The T7 generic customization skull-mask part remains a Creation Suite piece goal (see `roster/slice/ATTIRE-SLOTS.md`).
+
+---
+
+## Addendum 2026-10-21 — ZEN resolved
+
+The audit's table recorded ZEN riding the `steve-fox` fallback (guard OWNERSHIP: `zen: base steve-fox`). Resolved the same day with the owner's own models — Zen is unvesseled (canon ruling 2026-10-21), so his main model is his own SPIRIT BODY (owner Tripo), and his legacy body ladders back unmodified:
+
+| Fighter | Player/select path | Enemy/raw path | Resolved key | Resolved URL | Class |
+|---|---|---|---|---|---|
+| ZEN (`zen`) | `zen` (ATTIRE_VARIANTS['zen'] first entry `zen-attire1`) | `zen` | `zen` / `zen-attire1` | `../roster/zen/attires/attire1/model.glb` | (a) OWN |
+
+Sources: spirit body = owner Tripo 8c46e379-a51c-4741-b4a3-2132ca89078f (raw meshopt 19,574,656 B, sha256 `9eee938f05857b63dbefc6fc6d793ad1c1c449865e926dd979f122e0ea537b74`, archived in release `zen-tripo-pulls-20261021`; wired copy decompressed, 57,367,520 B). `roster-full.js` `model:` changed `steve-fox` -> `zen`; `MODEL_URLS` gained `zen` + `zen-attire1`; `ATTIRE_VARIANTS['zen']` created (Attire 1 Spirit Body default, Attire 2 legacy `zen-body`); the guard's OWNERSHIP table now lists `zen: own [zen, zen-attire1]`. The legacy `game/assets/models/zen-body.glb` file was not moved or modified. Zen's animation bank (`zen → julia`) is untouched.
+
+Also wired, outside the attire system: ZEN'S SPIRIT FORM — Zen himself as a spirit (his stand form), owner Tripo 803f4cf1-35a5-4126-8971-a3a89aee114b (raw 17,279,708 B, sha256 `4814781faa239ad604b5c54543209970b9eed143c30f1ff9c46bc2d1c5d55cfe`, same release), at `roster/zen/spirit/model.glb` under MODEL_URLS key `zen-spirit`. It is a separate model entity tied to Zen's fighter record — not an attire, not a roster fighter — and does not affect the resolution rows above. Behavior spec: `roster/zen/RIG-NOTES.md`.
+
+## ADDENDUM (2026-10-21, CornerStone build) — RYUJI ROCK pending drop-in RESOLVED
+
+The documented pending drop-in flagged in this audit ("RYUJI ROCK: resolves to his own key `ryuji-rock`, but `roster/ryuji-rock/attires/attire1/model.glb` does not exist on main yet") landed on 2026-10-21: the owner delivered his Tripo (https://studio.tripo3d.ai/3d-model/20c1fd2e-40d0-4500-9be6-50f6494ab5e1, "tattooed man 3d model", 18,872,720 B, sha256 `658848674696b6c4e47c55f773d2c55e07359595e51e57ce273704dc4871049d`), pulled via `tools/tripo-pull`, archived on release `cornerstone-tripo-pulls-20261021`, and dropped at `roster/ryuji-rock/attires/attire1/model.glb`. The fighter's canon name is now **CORNERSTONE** (owner 2026-10-21; internal id stays `ryuji-rock`, display name updated in roster-full.js). The guard's OWNERSHIP entry for `ryuji-rock` no longer carries `pending: true`, so test 3 (file-exists) now covers him. The separate `ryuji` entry remains a NO OWN MODEL fallback rider — unchanged by this build.
+
+UPDATE (2026-10-24, rebase of this PR): the `ryuji` entry is no longer a rider. Restoring the `ryuji-rock` roster entry made `ryuji`'s `model: 'ryuji-rock'` a wrong-body violation under the no-wrong-body gate (owner order 2026-10-23, issue #866: no fighter may load another fighter's model key), so `ryuji` is now `model: null, modelPending: true` — the gate's prescribed state for a fighter with no own model yet; he keeps his full KOF moveset (`ryuji-rock` moveset key) and stays in the repo. The "fallback rider" sentence above is superseded by this update.
