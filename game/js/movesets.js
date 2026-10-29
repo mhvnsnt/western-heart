@@ -339,10 +339,21 @@ export function legacyAlias(key) {
    keyed in those spellings were unreachable in a fight; _prepare slots them on the canonical
    input too (when nothing else owns it). Returns the input unchanged if nothing applies. */
 const _DIAG = { df: 'd/f', db: 'd/b', uf: 'u/f', ub: 'u/b', DF: 'D/F', DB: 'D/B', UF: 'U/F', UB: 'U/B' };
+/** Named move state ('Bad Stomach') -> stance code ('BAD_STOMACH'). */
+export function stateCode(name) { return String(name).trim().toUpperCase().replace(/[^A-Z0-9]+/g, '_').replace(/^_|_$/g, ''); }
 export function canonNotation(n) {
   if (typeof n !== 'string') return n;
   let s = n.trim().replace(/\s*\((?:first|second|third|\d+(?:st|nd|rd|th)) hits? only\)\s*$/i, ''); // T7 per-hit row annotation, same input
   s = s.replace(/^\((.*)\)$/, '$1').trim();
+  /* State-gated rows (sweep 2026-10-29): Tekken ground states and named custom states become
+     stance prefixes the input buffer already resolves. 'while on back, feet towards opponent, 3'
+     -> 'FUFT.3' (face up, feet towards; plain 'while on back' is the same lying state),
+     'while on back, head towards opponent, 4' -> 'FUHT.4'; 'during Bad Stomach, 1+2' /
+     'during Elbow Drop 1+4' -> 'BAD_STOMACH.1+2' / 'ELBOW_DROP.1+4' (stateCode). _prepare maps
+     the move that enters the state (same name) to it in stance_after. */
+  s = s.replace(/^while on back(?:\s*,\s*(feet|head) towards opponent)?\s*,\s*(?=[udfbnUDFB1-4](?:[\/+,]|\s*,|$))/i,
+    (m, w) => (w && w.toLowerCase() === 'head' ? 'FUHT.' : 'FUFT.'));
+  s = s.replace(/^during\s+([A-Za-z][A-Za-z' ]*?[A-Za-z](?: \d(?=\s*,))?)\s*,?\s*(?=[udfbnUDFB]?(?:\/[fbFB])?\+?[1-4](?:[+,~:]|$))/, (m, name) => stateCode(name) + '.');
   s = s.replace(/(?:\s*\((?:KOFXV|KOF\s*XV|SFV|sfv|SF6|sf6|T7|T8)\))+\s*$/, ''); // source-game tag on imported rows, same input
   s = s.replace(/^(d(?:\/[fb])?\+[1-4](?:\+[1-4])*)\s*\(crouch(?:ing)?\)$/i, '$1'); // KOF '(crouch)' note on a d+ button, same input
   s = s.replace(/^fc\s*\+?\s*(?=[1-4udfbnUDFB])/i, 'FC.'); // 'fc+1' / 'FC 1' -> FC.1 (full-crouch state)
@@ -432,6 +443,19 @@ function _prepare(ms) {
     if (!/^[udfbn](?:\/[fb])?(?:_[rc]\d+)+$/i.test(k)) continue;
     for (const c of t3CommandNotations(ms.moves[k] && ms.moves[k].t3_command)) if (!(c in slots)) { slots[c] = k; break; }
   }
+  /* State entries: a 'during <Name>, X' row is pressed from stance <NAME> (canonNotation); the
+     move named <Name> that is not itself a state row enters it. Existing stance_after kept. */
+  { const byName = {};
+    for (const [k, mv] of Object.entries(ms.moves)) if (mv && mv.name && !/^(?:during|while)\s/i.test(mv.input || '')) (byName[stateCode(mv.name)] ||= k);
+    for (const [k, mv] of Object.entries(ms.moves)) {
+      if (!mv || typeof mv.input !== 'string' || !/^(?:during\s|while on back\b)/i.test(mv.input)) continue;
+      const c = canonNotation(mv.input), m = /^([A-Z][A-Z0-9_]+)\./.exec(c || '');
+      if (!m) continue;
+      if (!(c in slots)) slots[c] = k; // the state row on its prefixed input, never over a slot
+      if (!byName[m[1]]) continue;
+      ms.stance_after = ms.stance_after || {};
+      if (!(byName[m[1]] in ms.stance_after)) ms.stance_after[byName[m[1]]] = m[1];
+    } }
   ms._slots = slots;
   const motions = [];
   for (const n of Object.keys(slots)) {

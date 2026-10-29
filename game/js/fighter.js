@@ -727,6 +727,13 @@ export class Fighter {
   }
 
   /* ---------------- combat intents ---------------- */
+  _hasGroundMoves() {
+    if (this._groundMovesFor !== this._movesetId) {
+      this._groundMovesFor = this._movesetId;
+      this._groundMoves = !!resolveMoveKey(this._movesetId, 'FUFT.3') || !!resolveMoveKey(this._movesetId, 'FUFT.4') || !!resolveMoveKey(this._movesetId, 'FUFT.3,3');
+    }
+    return this._groundMoves;
+  }
   canAct() {
     // Mid-cinematic: rooted, cannot act (but still vulnerable — damage
     // applies separately). Owner spec: vulnerable during transform.
@@ -2763,7 +2770,13 @@ export class Fighter {
       case 'crouch': break;
       case 'jump': if (this.onGround) this._enter('idle'); break;
       case 'hitstun': if (this.stun <= 0) this._enter('idle'); break;
-      case 'knockdown': if (this.onGround && this.stun <= 0) this._enter('idle'); break;
+      case 'knockdown': if (this.onGround && this.stun <= 0) {
+        this._enter('idle');
+        /* Tekken ground state (sweep 2026-10-29): leaving a knockdown the fighter is still on
+           its back for a short window; moves listed 'while on back[, feet towards opponent]'
+           (FUFT.) are pressed from it, like any stance prefix. Only when the moveset has them. */
+        if (this._hasGroundMoves()) { this.stance = 'FUFT'; this.stanceT = 0.6; }
+      } break;
       // GAP-FILL LANE 1: wall splat sticks the victim to the
       // wall for its stun window; expiry returns to neutral and
       // clears the splat hit count (the 3-hit drop is in
