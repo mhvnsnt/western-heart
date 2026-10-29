@@ -42,6 +42,7 @@ export function bodyFor(id, meta = {}) {
   const t3 = meta.t3_source && [`lab/game/assets/t3_${meta.t3_source}_t3real.glb`, `lab/game/assets/t3_${meta.t3_source}.glb`].find((q) => fs.existsSync(new URL(q, root)));
   const own = id.replace(/^(t3|sf|doa|vf)-/, '');
   const pose = fs.existsSync(new URL(`teardown/tekken3/renders/pose-check/${own}_stance75.obj`, root)) ? `teardown/tekken3/renders/pose-check/${own}_stance75.obj` : null;
+  if (id.startsWith('t3-') && onDisk(id)) return M(id, 'T3 teardown rig GLB (private lab/)');
   if (pose || (t3 && id.startsWith('t3-'))) return { rosterId: exact ? id : null, model: null, ok: false, how: 'needs rescan/GLB (T3 teardown source only, no rigged game model)', file: [t3, pose].filter(Boolean).join(' + ') };
   if (/^sf-/.test(id)) return { rosterId: null, model: null, ok: false, how: 'no model on box (source URLs only)', file: 'teardown/street-fighter-5/CAST-STATUS.md' };
   return { rosterId: exact ? id : null, model: null, ok: false, how: exact ? 'roster fighter is modelPending; no file in roster/, teardown/ (T3/T7), or GRE pulls' : 'no model found in roster/, MODEL_URLS, teardown/ (T3/T7), or GRE pulls', file: t3 ? `moveset bakes from ${t3}` : null };
