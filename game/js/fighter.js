@@ -281,7 +281,10 @@ export function getRealMove(charId, moveType, opts) {
           unblockable: !!mv.unblockable,
           // T3 throw-situation rows (branch conditions 2-0x17) are the throw executions a
           // connecting grab branches into by the opponent's posture / side (moves.md SituationClassify)
-          isGrab: !!mv.isGrab || (mv.t3_condition >= 2 && mv.t3_condition <= 0x17),
+          // moveset sweep 2026-10-29: a move the moveset classes as a throw (move_class 'throw',
+          // e.g. pantera d/f+1+2) is a grab too; before, it played as a strike (knockdown, no
+          // thrower/victim exec clips).
+          isGrab: !!mv.isGrab || mv.move_class === 'throw' || (mv.t3_condition >= 2 && mv.t3_condition <= 0x17),
           tekkenInput: tekken, moveKey: key,
           // T3 branch-row condition (t3-conditions.js): the row only fires while it holds
           t3Condition: mv.t3_condition ?? null,
