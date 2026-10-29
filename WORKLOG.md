@@ -3649,3 +3649,15 @@ No bucket exists yet — nothing uploaded to R2, no account created.
 - Verification: resolver unit test rewritten for the new order, 12/12 pass;
   `node --check` clean; `preload.test.mjs` green. menu-touch-e2e is the
   arbiter — it must pass on the re-run before merge.
+
+## 2026-10-29 5:50 PM CT — moveset sweep batch 13 (Grok, PR #1227)
+- Done: multi-tap direction-only endings ('1+2,f,f', 'd/f+1,2,f,F') keep a pending path in
+  `tryDirFollow`; tapped spelling resolves before held; duplicate-input rows (qcf+1 vs
+  n,d,d/f,f+1 etc.) reported n/a naming the row they share input with.
+- Core-8 sweep b20 (pass/fail): Bruno 333/0, Pantera 818/55, Demonio 746/23, Cyborg X 607/21,
+  Burger 555/11, Chatur 293/5, Deathfang 128/9, Dio 263/12. Failing rows by name:
+  docs/proof/moveset-sweep-20261028/r17-core8-failing.json.
+- Open: Demonio SS.2,U (held-U upgrade not reached; sweep holds U ~3f), alternate copies
+  (~tN / _cNN_rNNN), FC vs f,n,d,D/F, DES.BT, KOF system rows, u/b+1 root motion.
+- #1096 stack handed to Muse. WIP main-merge (no donor rows; only fighter.js conflicted,
+  union-resolved) parked on branch grok/1096-merge-main-wip (ae5f5df), not merged.
