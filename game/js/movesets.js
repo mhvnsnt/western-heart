@@ -860,6 +860,10 @@ export class TekkenBuffer {
         // so a released stick reaches it and a held one still gets b+1 / d+1 first.
         const tapRel = !mo.neutral && !dir && /,[1-4](?:\+[1-4])*\*?$/.test(mo.n) && !/^(f|b)(,\1)+$/i.test(mo.dirs.join(','));
         if (!tapRel && (mo.neutral ? dir : dir !== mo.dirs[mo.dirs.length - 1])) continue;
+        // Batch 7 (sweep 2026-10-29): rising from a crouch IS a released d tap, so the tap-release
+        // motion 'd,4' matched every while-standing press: WS.4 came out as d,4. Tekken gives the
+        // WS move there (TekkenDocs/wavu: while standing = rising from crouch).
+        if ((tapRel || mo.neutral) && ctx.rising && /^d/.test(mo.dirs[mo.dirs.length - 1]) && (has('WS.' + input) || has('WS.' + input + '*'))) continue;
         if (this._motionHeldV2(mo) && (!mo.charge || this._chargeHeld(mo))) {
           if (has(mo.n)) return this._recordMove(mo.n);
           if (mo.opener && opener(mo.n)) return null;
