@@ -250,6 +250,10 @@ const MOTION_DIRS = {
    dt is one whole frame (tests / tools feed the history frame by frame). */
 const INPUT_FPS = 60;      // T3 frames per second: the unit of every frame constant here
 let DOUBLE_TAP_BUDGET = 0x13;
+/* Running state (Tekken WR / 'while running'; TekkenDocs, wavu wiki): a forward dash that keeps
+   the stick held forward for RUN_HOLD_FRAMES, or a third forward tap inside the dash, turns into a
+   run. Releasing forward leaves RUN_GRACE_FRAMES to press the running move. */
+const RUN_HOLD_FRAMES = 15, RUN_GRACE_FRAMES = 8;
 let DASH_FRAMES = { 'f,f': 30, 'b,b': 32 }; // decoded: every bank's dash row is 30 frames, backdash 30-35
 const HIST_FRAMES = 60;    // history span in frames (fight_sim HISTORY)
 const CHARGE_FRAMES = 40;  // charge motions: frames held in the charge direction (APPROXIMATE, SF/KOF ~40-45f)
@@ -344,6 +348,8 @@ const _DIAG = { df: 'd/f', db: 'd/b', uf: 'u/f', ub: 'u/b', DF: 'D/F', DB: 'D/B'
 /** Named move state ('Bad Stomach') -> stance code ('BAD_STOMACH'). */
 export function stateCode(name) { return String(name).trim().toUpperCase().replace(/[^A-Z0-9]+/g, '_').replace(/^_|_$/g, ''); }
 const TILDE_WINDOW = 0.1; // s (6 frames): '~' = pressed immediately after the previous input
+// Separator order for a follow-up: inside TILDE_WINDOW the '~' branch wins over ',' (wavu wiki).
+const sepOrder = (ctx) => (ctx && ctx.attackT != null && ctx.attackT <= TILDE_WINDOW ? ['~', ',', ':'] : [',', '~', ':']);
 export function canonNotation(n) {
   if (typeof n !== 'string') return n;
   let s = n.trim().replace(/\s*\((?:first|second|third|\d+(?:st|nd|rd|th)) hits? only\)\s*$/i, ''); // T7 per-hit row annotation, same input
@@ -354,6 +360,10 @@ export function canonNotation(n) {
   s = s.replace(/(^|[.,~:])(df|db|uf|ub|DF|DB|UF|UB)(?=$|[,+~:#])/g, (m, p, t) => p + _DIAG[t]);
   // Tekken 'back to opponent, X' (TekkenDocs / wavu wiki: BT X) -> BT.X
   s = s.replace(/^back to (?:the )?opponent\s*,\s*/i, 'BT.');
+  /* Running moves (TekkenDocs / wavu wiki 'WR', 'while running'): 'WR+2', 'WR 2', 'while running 2'
+     -> 'WR.2'. T3's running rows carry the command '4/6+X' (any horizontal while in the run),
+     imported as 'b/f+X' — never a real stick direction — so they are WR rows too (True Ogre / Chatur). */
+  s = s.replace(/^(?:WR|wr)\s*[.+]?\s*(?=[1-4])/, 'WR.').replace(/^\(?while[- ]running\)?\s*,?\s*(?=[1-4])/i, 'WR.').replace(/^b\/f\+(?=[1-4])/, 'WR.');
   // 'n+1' / 'n+1+2' (stick explicitly neutral) is the plain button: the input buffer reads a
   // neutral press as '1', so a move slotted on 'n+1' could never be pressed (sweep 2026-10-29, donor banks).
   s = s.replace(/(^|\.)n\+(?=[1-4])/i, "$1");
@@ -705,8 +715,14 @@ export class TekkenBuffer {
     // plain f+1 presses (input-fidelity bug, 2026-10-22).
     const _now = performance.now();
     if (this._dash && _now >= this._dash.until) this._dash = null;
-    if (this._doubleTap('f')) this._dash = { dir: 'f', until: _now + DASH_FRAMES['f,f'] / 60 * 1000 };
+    if (this._doubleTap('f')) {
+      if (this._dash && this._dash.dir === 'f') this._runNow = true; // third tap: f,f,f
+      this._runStart = _now;
+      this._dash = { dir: 'f', until: _now + DASH_FRAMES['f,f'] / 60 * 1000 };
+    }
     else if (this._doubleTap('b')) this._dash = { dir: 'b', until: _now + DASH_FRAMES['b,b'] * 1000 / 60 };
+    if (dir === 'f' && this._runStart && (this._runNow || _now - this._runStart >= RUN_HOLD_FRAMES / 60 * 1000)) { this._runNow = true; this._runUntil = _now + RUN_GRACE_FRAMES / 60 * 1000; }
+    else if (dir !== 'f') { this._runStart = 0; this._runNow = false; }
     if (dir === this.lastDir) return;
     this.lastDir = dir;
     if (dir === 'n') return;
@@ -714,6 +730,11 @@ export class TekkenBuffer {
     this.dirEvents.push({ dir, t: now });
     if (this.dirEvents.length > 24) this.dirEvents.shift();
   }
+
+  /** Tekken running state (WR): see RUN_HOLD_FRAMES. */
+  running() { return !!this._runUntil && performance.now() < this._runUntil; }
+  /** This fighter's move key for a notation, if it owns one. */
+  resolveKey(k) { return resolveMoveKey(this.fighterId, k); }
 
   _prev(i) { return i > 0 ? i - 1 : HIST_LEN - 1; }
 
@@ -838,7 +859,7 @@ export class TekkenBuffer {
     // Soul Urge lane (T8 Heat), as in _pressLegacy: while the urge gauge is live, 2+3 is the
     // Urge Burst (fresh gauge) or the Urge Smash (urging) before any normal move on the chord.
     // Neutral 2+3 only (T8 Heat Burst is neutral) — b+2+3 / d/f+2+3 stay the fighter's own moves.
-    if (input === '2+3' && (!this.lastDir || this.lastDir === 'n')) {
+    if (input === '2+3' && (!this.lastDir || this.lastDir === 'n') && !(ctx.running && has('WR.2+3'))) { // a running 2+3 (WR.2+3) outranks the urge
       // a live soul-state finisher on 2+3 (SPIRIT / SOUL9 / REIHOU / SEAL / KESSHOU) outranks the urge
       for (const sp of ctx.soulStates || []) { const k = has(sp + '.2+3'); if (k) return this._recordMove(k); }
       if (ctx.urgeOn) { const sm = has('US.2+3'); if (sm) return this._recordMove(sm); }
@@ -859,7 +880,7 @@ export class TekkenBuffer {
     if (pendingOk) { bases.push(this._strPath); const s = strip(this._strPath); if (s) bases.push(s); }
     if (this.lastMove && contOk) { bases.push(this.lastMove); const s = strip(this.lastMove); if (s) bases.push(s); }
     for (const base of bases) {
-      for (const sep of [',', '~', ':']) {
+      for (const sep of sepOrder(ctx)) {
         const cands = dir ? [`${base}${sep}${withDir}`, `${base}${sep}${holdDir}`] : [`${base}${sep}${input}`];
         for (const c of cands) if (has(c)) { this._strPath = null; return this._recordMove(c); }
         for (const c of cands) if (strPrefixesHas(this.fighterId, ms, c)) { this._strPath = c; this._strPathT = now; return null; }
@@ -879,6 +900,7 @@ export class TekkenBuffer {
     // Opening step of a string that has no standalone move: open the string cursor, fire nothing.
     const opener = (c) => (strPrefixesHas(this.fighterId, ms, c) ? (this._strPath = c, this._strPathT = now, true) : false);
     const prefixes = [];
+    if (ctx.running) prefixes.push('WR.'); // Tekken while running
     for (const sp of ctx.soulStates || []) prefixes.push(sp + '.'); // pt217u soul systems
     if (ctx.stance) prefixes.push(ctx.stance + '.');
     if (ctx.rage) prefixes.push('R.');
@@ -992,7 +1014,7 @@ export class TekkenBuffer {
     // reserved — the Urge Burst (fresh gauge) or the Urge Smash (urging)
     // wins over any normal move on the chord, exactly like T8 Heat.
     // Neutral 2+3 only (T8 Heat Burst is neutral) — b+2+3 / d/f+2+3 stay the fighter's own moves.
-    if (input === '2+3' && (!this.lastDir || this.lastDir === 'n')) {
+    if (input === '2+3' && (!this.lastDir || this.lastDir === 'n') && !(ctx.running && has('WR.2+3'))) { // a running 2+3 (WR.2+3) outranks the urge
       // a live soul-state finisher on 2+3 (SPIRIT / SOUL9 / REIHOU / SEAL / KESSHOU) outranks the urge
       for (const sp of ctx.soulStates || []) { const k = has(sp + '.2+3'); if (k) return this._recordMove(k); }
       if (ctx.urgeOn) { const sm = has('US.2+3'); if (sm) return this._recordMove(sm); }
@@ -1009,7 +1031,7 @@ export class TekkenBuffer {
     if (this.lastMove && contOk) {
       // Tekken '~' (wavu wiki / TekkenDocs: "immediately after"): a press inside the first
       // TILDE_WINDOW of the hit takes the tilde branch before the ',' string ('f+2,1~2' vs 'f+2,1,2').
-      const seps = ctx.attackT != null && ctx.attackT <= TILDE_WINDOW ? ['~', ',', ':'] : [',', '~', ':'];
+      const seps = sepOrder(ctx);
       /* Mid-string state (Tekken notation '1,NSS.1', 'f+2,R.1+2'; TekkenDocs / wavu wiki): the next
          hit is pressed from the stance the string put the fighter in, or while raging. Before
          (sweep 2026-10-29), the plain ',1' continuation always won and the stance hit never came out. */
@@ -1021,6 +1043,7 @@ export class TekkenBuffer {
       }
     }
     const prefixes = [];
+    if (ctx.running) prefixes.push('WR.'); // Tekken while running
     for (const sp of ctx.soulStates || []) prefixes.push(sp + '.'); // pt217u soul systems
     if (ctx.stance) prefixes.push(ctx.stance + '.');
     if (ctx.rage) prefixes.push('R.');
@@ -1123,7 +1146,7 @@ export class TekkenBuffer {
     if (tilde > 0) bases.push(this.lastMove.slice(0, tilde));
     const ms = playedMoveset(this.fighterId);
     for (const base of bases) {
-      for (const sep of [',', '~', ':']) {
+      for (const sep of sepOrder(ctx)) {
         const mid = [ctx.stance, ctx.rage ? 'R' : null].filter(Boolean); // mid-string state ('1,NSS.1'), see _pressV2
         const cands = [...mid.flatMap((m) => [dir ? `${base}${sep}${m}.${dir}+${input}` : null, `${base}${sep}${m}.${input}`]), dir ? `${base}${sep}${dir}+${input}` : null, `${base}${sep}${input}`];
         for (const c of cands) if (c && resolveMoveKey(this.fighterId, c)) { this._strPath = null; return c; }

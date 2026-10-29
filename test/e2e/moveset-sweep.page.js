@@ -71,6 +71,7 @@
       case 'FC': setDir('d'); step(20); return 'held d (full crouch)';
       case 'WS': setDir('d'); step(20); setDir('n'); step(2); return 'crouch then release (while standing)';
       case 'SS': f.trySidestep(-1); step(12); return 'sidestep';
+      case 'WR': setDir('f'); step(3); setDir('n'); step(3); setDir('f'); step(24); return 'running (f,f then hold f)';
       case 'BT': f.stance = 'BT'; f.stanceT = 0; return 'back turned';
       // batch 8: side / back throws — stand off the opponent's line at their left / right (z), or
       // behind them facing their back, so fighter._foeFlank() reports L / R / B
@@ -307,7 +308,7 @@
     const DON = /^donor\.[a-z0-9-]+\.(.+)$/i.exec(m.key) || /^(.+)~donor\.[a-z0-9-]+(?:\.\d+)?$/i.exec(m.key);
     const donBase = DON && (MS.canonNotation || ((x) => x))(DON[1]);
     if (DON && ok(donBase)) { notation = donBase; via = 'equipped via moveset loadout'; }
-    else if (MS.canonNotation && parse(m.key).err && MS.canonNotation(m.key) !== m.key && !parse(MS.canonNotation(m.key)).err && MS.resolveMoveKey(id, MS.canonNotation(m.key)) === m.key) { notation = MS.canonNotation(m.key); via = 'canonical spelling'; }
+    else if (MS.canonNotation && (parse(m.key).err || /^WR\./.test(MS.canonNotation(m.key))) && MS.canonNotation(m.key) !== m.key && !parse(MS.canonNotation(m.key)).err && MS.resolveMoveKey(id, MS.canonNotation(m.key)) === m.key) { notation = MS.canonNotation(m.key); via = 'canonical spelling'; }
     else if (parse(m.key).err && MS.t3CommandNotations && MS.t3CommandNotations(mv.t3_command).some((c) => ok(c) && MS.resolveMoveKey(id, c) === m.key)) {
       notation = MS.t3CommandNotations(mv.t3_command).find((c) => ok(c) && MS.resolveMoveKey(id, c) === m.key); via = `T3 source command ${mv.t3_command}`; }
     else if (alias && parse(m.key).err && MS.resolveMoveKey(id, alias) === m.key) { notation = alias; via = 'legacy P/K alias'; }
