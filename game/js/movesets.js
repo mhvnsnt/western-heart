@@ -363,9 +363,9 @@ export function playedMoveset(fighterId) {
 }
 
 /** notation -> { move, key, ms, from } this fighter fires (loadout > default slots > exact key). */
-export function resolveMove(fighterId, notation) {
+export function resolveMove(fighterId, notation, opts) {
   if (!notation) return null;
-  const custom = getLoadout(fighterId)[notation];
+  const custom = opts && opts.noLoadout ? null : getLoadout(fighterId)[notation];
   if (custom) {
     const [from, key] = custom.includes('::') ? custom.split('::') : [fighterId, custom];
     const src = from === fighterId ? playedMoveset(fighterId) : getFighterMoveset(from);

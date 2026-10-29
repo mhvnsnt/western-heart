@@ -14,12 +14,17 @@ const norm = (s) => String(s || '').toLowerCase().replace(/\(.*?\)/g, '').replac
 const onDisk = (k) => !!URLS[k] && fs.existsSync(new URL('game/' + URLS[k].replace(/^\.\//, ''), root));
 const MODEL_ALIAS = { gyou: 'gyou-spirit', 'gyou-spirit-body': 'gyou-spirit' }; // roster/gyou spirit form
 const ROSTER_ALIAS = { jin_soul: 'phantom' }; // JIN folded into Phantom's ladder (roster-full.js tier note)
+// Owner rule: a roster fighter plays on its attire-1 model (roster_map.json attires slot 1),
+// which is what the game loads (e.g. kingtyrant -> king-tyrant-attire1, baek-master-white -> kevin-tripo).
+const RMAP = JSON.parse(fs.readFileSync(new URL('game/data/roster_map.json', root), 'utf8'));
+const A1 = {}; for (const f of (Array.isArray(RMAP) ? RMAP : RMAP.fighters || [])) { const a = (f.attires || []).find((x) => x.slot === 1); if (a && a.model) A1[f.id] = a.model; }
 const M = (model, how, rosterId = null) => ({ rosterId, model, how, ok: onDisk(model), file: URLS[model] || null });
 export function bodyFor(id, meta = {}) {
   const names = [meta.tekken_base, meta.display, meta.name].filter(Boolean);
   const has = (f) => f && f.model && onDisk(f.model);
   const exact = FULL_ROSTER.find((f) => f.id === id);
   if (MODEL_ALIAS[id]) return M(MODEL_ALIAS[id], `roster/${id.split('-')[0]} spirit model`, exact ? id : null);
+  if (exact && A1[id] && onDisk(A1[id])) return M(A1[id], 'roster attire 1', id);
   if (has(exact)) return M(exact.model, 'roster id', id);
   // A roster fighter with no model never plays on another fighter's body (main.js MODEL PENDING rule).
   if (exact) return { rosterId: id, model: null, ok: false, how: 'roster fighter is modelPending; no file in roster/, teardown/ (T3/T7), or GRE pulls', file: null };
