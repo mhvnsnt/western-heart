@@ -91,7 +91,16 @@ The roster list is the Pokkén Tournament DX roster as published. Verify it agai
 - Unlock = base game at 100% (all completion flags). PROPOSAL: Sun Rā's eyes open over the title screen when it unlocks.
 - Build order: only after the base game ships at 100%. This doc reserves the plan; no build work is scheduled.
 
-## 7. Open questions for the owner
+## 7. Decisions (t341u: the owner asked us to stop asking; each item is "filled in by MoneyManBusch", PROPOSAL)
+
+1. **Mappings:** the §1 table stands as the plan. Mewtwo → Goddgachuu is OWNER-APPROVED. Pikachu slot: **Ratchetta** (lead pick in §1a).
+2. **Extraction source:** only the owner's own Pokkén Tournament DX copy, with the tools logged in docs/CREDITS.md. Assets stay private (__WH_PRIVATE_ASSETS).
+3. **Rules:** keep Pokkén's Field/Duel phases and counter triangle as a pack-only rule layer. Base WH combat stays unchanged.
+4. **Support Pokémon:** out for v1, mapped later as Mochiichao assists if wanted.
+5. **Chao-Rangers:** Pantera, Yukihyō, Sun Rā and Demonio join as Mochiichao-form alternates. Diablo's is unlocked by clearing the pack (his secret Mochiichao self, Mochiichao t339u).
+
+Superseded list of questions (kept for history):
+
 
 1. Approve or replace each §1 mapping. Pikachu slot: pick from §1a. (Mewtwo → Goddgachuu: APPROVED t339u.)
 2. Which Pokkén source copy and tools are approved for extraction?
