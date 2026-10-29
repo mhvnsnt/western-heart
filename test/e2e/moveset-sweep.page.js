@@ -203,6 +203,9 @@
       const out = []; const hp0 = o.hp;
       run(f, P, out);
       const tail = Math.min(150, Math.round(((mv.startup || 0.2) + (mv.active || 0.05) + (mv.recovery || 0.5)) * 60) + 40);
+      // Queued string hits fire after hit-stop; drain them before the tail (a connecting
+      // long string spends its fixed tail inside hit-stop and dropped its last hits).
+      for (let k = 0; k < 360 && (f.state === 'attack' || f._queuedNext); k++) step(1, out);
       step(tail, out);
       const fired = []; let last = null;
       for (const fr of out) { const a = (fr.p1.st === 'attack' || /throw/.test(fr.p1.st)) ? fr.p1.an : null; if (a && a !== last) fired.push(a); last = a; }
@@ -243,7 +246,8 @@
       if (!(g.p2.root.position.y > 0.35)) return { key: r.key, ok: null, why: 'no lift on replay' };
       let hit = false;
       for (let t = 0; t < 8 && !hit; t++) {
-        while (g.p1.state === 'attack' && k++ < 260) step(1);
+        // the follow-up 1 must be a fresh move: let the launcher (and any queued string hits) finish
+        for (let w = 0; w < 300 && (g.p1.state === 'attack' || g.p1._queuedNext); w++) step(1);
         const hp = g.p2.hp;
         g.p1.root.position.x = g.p2.root.position.x - 0.85; g.p1.facing = 1;
         key(['1'], 'keydown'); step(1); key(['1'], 'keyup'); step(18);
