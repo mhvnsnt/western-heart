@@ -541,7 +541,10 @@ export class TekkenBuffer {
     const has = (n) => (resolveMoveKey(this.fighterId, n) ? n : null);
     // Soul Urge lane (T8 Heat), as in _pressLegacy: while the urge gauge is live, 2+3 is the
     // Urge Burst (fresh gauge) or the Urge Smash (urging) before any normal move on the chord.
-    if (input === '2+3') {
+    // Neutral 2+3 only (T8 Heat Burst is neutral) — b+2+3 / d/f+2+3 stay the fighter's own moves.
+    if (input === '2+3' && (!this.lastDir || this.lastDir === 'n')) {
+      // a live soul-state finisher on 2+3 (SPIRIT / SOUL9 / REIHOU / SEAL / KESSHOU) outranks the urge
+      for (const sp of ctx.soulStates || []) { const k = has(sp + '.2+3'); if (k) return this._recordMove(k); }
       if (ctx.urgeOn) { const sm = has('US.2+3'); if (sm) return this._recordMove(sm); }
       else if (ctx.urgeAvailable) { const bu = has('UB.2+3'); if (bu) return this._recordMove(bu); }
     }
@@ -656,7 +659,10 @@ export class TekkenBuffer {
     // Soul Urge lane (T8 Heat): while the urge gauge is live, 2+3 is
     // reserved — the Urge Burst (fresh gauge) or the Urge Smash (urging)
     // wins over any normal move on the chord, exactly like T8 Heat.
-    if (input === '2+3') {
+    // Neutral 2+3 only (T8 Heat Burst is neutral) — b+2+3 / d/f+2+3 stay the fighter's own moves.
+    if (input === '2+3' && (!this.lastDir || this.lastDir === 'n')) {
+      // a live soul-state finisher on 2+3 (SPIRIT / SOUL9 / REIHOU / SEAL / KESSHOU) outranks the urge
+      for (const sp of ctx.soulStates || []) { const k = has(sp + '.2+3'); if (k) return this._recordMove(k); }
       if (ctx.urgeOn) { const sm = has('US.2+3'); if (sm) return this._recordMove(sm); }
       else if (ctx.urgeAvailable) { const bu = has('UB.2+3'); if (bu) return this._recordMove(bu); }
     }

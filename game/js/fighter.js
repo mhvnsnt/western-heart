@@ -1762,7 +1762,8 @@ export class Fighter {
       // available but not active, 2+3 fires Urge Burst. If neither
       // synthesized move exists (moveset not yet injected), fall
       // through to normal chord resolution instead of dead input.
-      if (notation === '2+3') {
+      if (notation === '2+3' && (!this.tekken.lastDir || this.tekken.lastDir === 'n')
+        && !(ctx.soulStates || []).some((sp) => resolveMoveKey(this.tekken.fighterId, sp + '.2+3'))) { // soul-state finisher outranks urge
         if (ctx.urgeOn && this._fireNotation('US.2+3')) return true;
         if (ctx.urgeAvailable && this._fireNotation('UB.2+3')) return true;
       }
@@ -3108,6 +3109,10 @@ export class Fighter {
   }
 
   _animAttack() {
+    // Rigs without Hips/Spine2 (e.g. cainelias) skip the procedural
+    // attack lean — the authored clip still plays; this used to throw
+    // every frame and abort the attack.
+    if (!this.bones || !this.bones.Hips || !this.bones.Spine2) return;
     const e = this._attackProgress();
     const fwd = this.fwdVec(_v3); // world forward (yaw-aware in brawler mode)
     const name = this.attackName;
@@ -3147,6 +3152,7 @@ export class Fighter {
   }
 
   _animBlock() {
+    if (!this.bones || !this.bones.Hips || !this.bones.Spine2) return; // non-standard rig: clip only
     this._blendW = Math.min(0.9, (this._blendW || 0) + 0.18);
     this._leanT.x = 0.06;
     this.bones.Spine2.getWorldPosition(_v1);
@@ -3159,6 +3165,7 @@ export class Fighter {
   /* Procedural throw execution (no T3 throw clip bound): arms haul the
      victim up overhead during the lift, then drive down for the slam. */
   _animThrowExec(t) {
+    if (!this.bones || !this.bones.Hips || !this.bones.Spine2) return; // non-standard rig: clip only
     const fwd = _v3.set(this.facing, 0, 0);
     this.bones.Spine2.getWorldPosition(_v1);
     let lift, push;
@@ -3172,6 +3179,7 @@ export class Fighter {
     this._showTrail(this.bones.RightHand, Math.min(1, lift + 0.3));
   }
   _animJump() {
+    if (!this.bones || !this.bones.Hips || !this.bones.Spine2) return; // non-standard rig: clip only
     this.bones.Hips.getWorldPosition(_v1);
     _v2.copy(_v1); _v2.y -= 0.35; _v2.addScaledVector(_v3.set(this.facing, 0, 0), 0.25);
     this._ik(['RightUpLeg', 'RightLeg'], 'RightFoot', _v2, 0.7);

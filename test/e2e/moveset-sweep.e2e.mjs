@@ -16,9 +16,11 @@ const LIMIT = +(process.env.WH_SWEEP_LIMIT || 0); // dev: moves per fighter
 fs.mkdirSync(OUT, { recursive: true });
 const idx = JSON.parse(fs.readFileSync(new URL('../../game/assets/movesets/index.json', import.meta.url), 'utf8'));
 let FIGHTERS = process.argv.slice(3);
+const SKIP_DONE = process.env.WH_SWEEP_SKIP_DONE === '1';
 if (!FIGHTERS.length) FIGHTERS = Object.keys(idx.fighters);
-const b = await chromium.launch({ executablePath: process.env.CHROME || undefined,
+const launch = () => chromium.launch({ executablePath: process.env.CHROME || undefined,
   args: ['--use-gl=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
+let b = await launch();
 const PAGE_LIB = fs.readFileSync(new URL('./moveset-sweep.page.js', import.meta.url), 'utf8');
 
 async function fight(P1) {
@@ -34,9 +36,12 @@ async function fight(P1) {
 }
 
 for (const id of FIGHTERS) {
+  if (SKIP_DONE && fs.existsSync(`${OUT}/${id}.json`) && !JSON.parse(fs.readFileSync(`${OUT}/${id}.json`, 'utf8')).error) continue;
   const t0 = Date.now();
   let p;
-  try { p = await fight(id); } catch (e) { fs.writeFileSync(`${OUT}/${id}.json`, JSON.stringify({ fighter: id, error: 'fight did not load: ' + String(e).slice(0, 200) })); console.log(`== ${id}: LOAD FAIL`); continue; }
+  // a crashed renderer / browser is relaunched and the fighter retried once
+  try { p = await fight(id); } catch (e0) { try { if (!b.isConnected()) b = await launch(); p = await fight(id); } catch (e) { p = null; e0 = e; }
+    if (!p) { const e = e0; fs.writeFileSync(`${OUT}/${id}.json`, JSON.stringify({ fighter: id, error: 'fight did not load: ' + String(e).slice(0, 200) })); console.log(`== ${id}: LOAD FAIL`); if (!b.isConnected()) b = await launch(); continue; } }
   const got = await p.evaluate(() => window.__game.p1.char.id);
   if (got !== id) { fs.writeFileSync(`${OUT}/${id}.json`, JSON.stringify({ fighter: id, error: `game loaded '${got}'` })); console.log(`== ${id}: loaded ${got}`); await p.close(); continue; }
   let list = await p.evaluate(() => window.__moveList());
@@ -45,7 +50,7 @@ for (const id of FIGHTERS) {
   for (let i = 0; i < list.length; i += 20) {
     const part = await p.evaluate((chunk) => chunk.map((m) => { try {
       return Object.assign(window.__sweepMove(m), { slotted: m.slotted, owner: m.owner });
-    } catch (e) { return { key: m.key, input: m.input, ok: false, why: 'harness error ' + String(e).slice(0, 160) }; } }), list.slice(i, i + 20));
+    } catch (e) { return { key: m.key, input: m.input, ok: false, why: 'harness error ' + String(e).slice(0, 160) + ' @ ' + String((e && e.stack) || '').split('\n').slice(1, 3).join(' | ').replace(/https?:\/\/[^/]+/g, '').slice(0, 200) }; } }), list.slice(i, i + 20));
     rows.push(...part);
   }
   const jug = [];

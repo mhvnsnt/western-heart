@@ -2,6 +2,8 @@
 (async () => {
   const MS = await import('./js/movesets.js');
   const g = window.__game; g.running = false; g.ai.update = () => {}; g.timer = 9999; g._hitStop = 0;
+  // sweep is headless logic: skip GPU draws (swiftshader), keep the scene-graph update hitboxes need
+  if (g.arena && g.arena.renderer) g.arena.renderer.render = (sc) => { if (sc && sc.updateMatrixWorld) sc.updateMatrixWorld(); };
   window.__vt = 1e6; g.input._pressT = () => window.__vt;
   performance.now = () => window.__vt; // page clock = sim clock (string / dash / motion windows)
   const KEY = { 1: 'Digit1', 2: 'Digit2', 3: 'Digit3', 4: 'Digit4', S: 'KeyO', G: 'KeyU', f: 'KeyD', b: 'KeyA', u: 'KeyW', d: 'KeyS' };
@@ -21,9 +23,10 @@
     for (const f of [g.p1, g.p2]) { f.hp = f.maxHp || 100; f._enter('idle'); f.attack = null; f.attackName = null; f._throwPair = null;
       f.stance = null; f.stanceT = 0; f._risingT = 0; f.lockT = 0; f.lockMove = null; f.tekken.lastMove = null; f.tekken._strPath = null;
       f._stringGraceUntil = 0; f._queuedNext = null; f._queuedAfter = []; f._urgeOn = false; f._urgeT = 0; f._urgeUsed = false;
-      f._rageUsed = false; f._rageActive = false; f._nearObject = false; f._soulReleaseReady = false;
+      f._rageUsed = false; f._soulUses = 0; f._rageActive = false; f._nearObject = false; f._soulReleaseReady = false;
       f.vx = 0; f.vy = 0; f.stun = 0; f.invuln = 0; f._pressBuf && f._pressBuf.clear(); f.root.position.y = 0; f.onGround = true; f.dead = false; }
     g.p1.root.position.set(-gap / 2, 0, 0); g.p2.root.position.set(gap / 2, 0, 0); g.finalRound = false;
+    g.input.enabled = true; g._roundLockT = 0; // a KO'ing finisher (KESSHOU / SEAL) leaves the round over
     g.roundState = 'fight'; g.timer = 9999; g.input._queue.length = 0; g.p1.facing = 1; g.p2.facing = -1; step(30); window.__vt += 1000; };
   // notation -> hits. 'X.' prefix = state X; hits split on , ~ : ; pure-direction tokens are
   // motion steps of the next hit; capital direction = held; '*' = held button.
@@ -60,8 +63,8 @@
       case 'SPIRIT': f._nearObject = true; return 'near object';
       case 'SOUL9': f._soulReleaseReady = true; return 'soul release ready';
       case 'REIHOU': o._rageActive = true; return 'opponent raging';
-      case 'SEAL': o.hp = o.maxHp * 0.18; g.finalRound = true; return 'final round, opp 18%';
-      case 'KESSHOU': o.hp = o.maxHp * 0.12; return 'opp 12%';
+      case 'SEAL': o._rageUsed = true; o.hp = o.maxHp * 0.18; g.finalRound = true; return 'final round, opp 18%, rage spent';
+      case 'KESSHOU': o._rageUsed = true; o.hp = o.maxHp * 0.12; return 'opp 12%, rage spent';
       default: f.stance = pre; f.stanceT = 0; return `stance ${pre}`;
     }
   }
@@ -109,7 +112,10 @@
     if (P.motionOnly) return { key: m.key, input: notation, ok: null, why: 'movement input (no button)', via };
     if (via === 'equipped via moveset loadout') MS.setLoadoutSlot(id, notation, m.key);
     try {
-      reset(gap); const how = setup(P.pre, f); const out = []; const hp0 = o.hp;
+      reset(gap);
+      // neutral 2+3 is the Urge Burst while urge is live (T8 Heat); the fighter's own 2+3 is tested with urge spent
+      const urgeSpent = /^2\+3(\D|$)/.test(notation) && !/^U[BS]\./.test(m.key); if (urgeSpent) f._urgeUsed = true;
+      const how = (setup(P.pre, f) || '') + (urgeSpent ? ' · urge spent' : ''); const out = []; const hp0 = o.hp;
       run(f, P, out);
       const tail = Math.min(150, Math.round(((mv.startup || 0.2) + (mv.active || 0.05) + (mv.recovery || 0.5)) * 60) + 40);
       step(tail, out);
