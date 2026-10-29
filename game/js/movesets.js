@@ -416,6 +416,35 @@ export function canonNotation(n) {
   s = s.replace(/,:/g, ':');
   s = s.replace(/([1-4])>(?=[udfbUDFB]?(?:\/[udfbUDFB])?\+?[1-4])/g, '$1,');
   s = s.replace(/^([A-Z][A-Z0-9_]{1,})\s+(?=[1-4udfbnUDFB(])/, '$1.');
+  /* Batch 8 (core 8, TekkenDocs / wavu / T7 list spellings, sweep 2026-10-29):
+     - positional throws: 'Left throw' / '(Left side throw)' / 'Right Throw' / 'Back throw' /
+       '(Behind 2 throw)' / 'Back Throw.2+4' are the throw chord pressed from the opponent's
+       side or back -> 'FLANK_L.1+3', 'FLANK_R.2+4', 'FLANK_B.1+3' / 'FLANK_B.2+4' (the input
+       buffer resolves the FLANK_ prefix from where the opponent is facing, fighter._inputCtx).
+     - alternatives: '1+3_2+4' / '1_2' (T7 data: either), 'AIR.1+3 / AIR.f+1+3', '(or 2)',
+       'U/F or U/B', 'd/b+1/2/3' -> the first listed input.
+     - cancel notes '(hold B to cancel)' / '(b, b to cancel)' and per-hit notes
+       '(second and third hits only)' are notes on the same input.
+     - '(During Hisenkyaku) qcf+1+2' -> 'HISENKYAKU.qcf+1+2' (as 'during X, ...');
+       'While Down (Facing Up) 1+2' -> 'FUFT.1+2'; 'ss2' / 'bt1' -> 'SS.2' / 'BT.1';
+       a stray '+' after a state ('FUFT.+3+4') and a doubled hold mark ('1+2**') are dropped. */
+  {
+    const th = /^\(?\s*(left|right)(?:\s+side)?\s+throw\s*\)?$/i.exec(s);
+    if (th) return th[1].toLowerCase() === 'left' ? 'FLANK_L.1+3' : 'FLANK_R.2+4';
+    const tb = /^\(?\s*(?:back|behind)(?:\s+([12]))?\s+throw\s*\)?(?:\s*[.,]\s*(1\+3|2\+4))?$/i.exec(s);
+    if (tb) return 'FLANK_B.' + (tb[2] || (tb[1] === '2' ? '2+4' : '1+3'));
+  }
+  s = s.replace(/\s*\((?:hold\s+)?[^()]*\bto cancel\)\s*$/i, '');
+  s = s.replace(/\s*\((?:(?:first|second|third|fourth|fifth|\d+(?:st|nd|rd|th))\s*(?:,|and)?\s*)+hits?\s+only\)\s*$/i, '');
+  s = s.replace(/\s*\(or [^()]*\)/gi, '');
+  s = s.replace(/\s*\/\s+.*$/, '').replace(/\s+or\s+.*$/i, '');
+  s = s.replace(/([1-4](?:\+[1-4])*)_[1-4](?:\+[1-4])*(?![\w])/g, '$1');
+  s = s.replace(/^(.*\+)([1-4])(?:\/[1-4])+$/, '$1$2');
+  s = s.replace(/^\(during\s+([A-Za-z][A-Za-z' ]*[A-Za-z])\)\s*(?=[udfbnUDFB1-4qh])/i, (m, name) => (/jump/i.test(name) ? m : stateCode(name) + '.'));
+  s = s.replace(/^while down\s*\(?facing up\)?\s*/i, 'FUFT.');
+  s = s.replace(/^(ss|bt|fc)(?=[1-4])/i, (m) => m.toUpperCase() + '.');
+  s = s.replace(/^([A-Z][A-Z0-9_]*)\.\+(?=[1-4])/, '$1.');
+  s = s.replace(/\*\*$/, '*');
   s = s.replace(/\(([^()]*)\)/g, '$1');
   s = s.replace(/\s*([,~:+])\s*/g, '$1');
   return s;
@@ -833,6 +862,16 @@ export class TekkenBuffer {
       }
     }
     this._strPath = null;
+    // Batch 8: a throw chord pressed at the opponent's side or back is that fighter's side/back
+    // throw (TekkenDocs 'Left throw' / 'Back throw'); canonNotation keys them FLANK_L/R/B.
+    // A copy the player equipped in the moveset editor on the chord or a string opened by it
+    // (a T3 situation row on 2+4,1) keeps the chord: its own condition decides.
+    const eqChord = Object.keys(getLoadout(this.fighterId) || {}).some((n) => n === input || n.startsWith(input + ','));
+    if (ctx.foeFlank && !dir && (input === '1+3' || input === '2+4') && !eqChord) {
+      const fl = 'FLANK_' + ctx.foeFlank + '.';
+      const k = has(fl + input) || has(fl + (input === '1+3' ? '2+4' : '1+3'));
+      if (k) return this._recordMove(k);
+    }
     // Opening step of a string that has no standalone move: open the string cursor, fire nothing.
     const opener = (c) => (strPrefixesHas(this.fighterId, ms, c) ? (this._strPath = c, this._strPathT = now, true) : false);
     const prefixes = [];

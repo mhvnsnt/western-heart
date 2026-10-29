@@ -72,6 +72,14 @@
       case 'WS': setDir('d'); step(20); setDir('n'); step(2); return 'crouch then release (while standing)';
       case 'SS': f.trySidestep(-1); step(12); return 'sidestep';
       case 'BT': f.stance = 'BT'; f.stanceT = 0; return 'back turned';
+      // batch 8: side / back throws — stand off the opponent's line at their left / right (z), or
+      // behind them facing their back, so fighter._foeFlank() reports L / R / B
+      case 'FLANK_L': case 'FLANK_R': {
+        const side = (pre === 'FLANK_L' ? 1 : -1) * -(o.facing || 1);
+        f.root.position.x = o.root.position.x + 1.3 * (o.facing || 1); f.root.position.z = o.root.position.z + 0.75 * side;
+        return `at opponent's ${pre === 'FLANK_L' ? 'left' : 'right'} side`;
+      }
+      case 'FLANK_B': f.root.position.x = o.root.position.x - 0.45 * (o.facing || 1); f.root.position.z = o.root.position.z; f.facing = o.facing || 1; return 'behind the opponent';
       case 'R': case 'RD': f.hp = f.maxHp * 0.2; return 'rage (hp 20%)';
       case 'UB': return 'urge available';
       case 'US': f._urgeOn = true; f._urgeT = 5; f._urgePips = 3; return 'soul urge on';
