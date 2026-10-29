@@ -348,6 +348,12 @@ export function canonNotation(n) {
   if (typeof n !== 'string') return n;
   let s = n.trim().replace(/\s*\((?:first|second|third|\d+(?:st|nd|rd|th)) hits? only\)\s*$/i, ''); // T7 per-hit row annotation, same input
   s = s.replace(/^\((.*)\)$/, '$1').trim();
+  /* FGC numpad-letter shorthand (moveset sweep 2026-10-29): 'df' / 'db' / 'UF' as a step of the
+     input are Tekken's d/f / d/b / U/F ('f,n,d,df' crouch dash, 'f,f,db', 'FLE.db'). Before, the
+     whole row was unparseable for every fighter that carries one. */
+  s = s.replace(/(^|[.,~:])(df|db|uf|ub|DF|DB|UF|UB)(?=$|[,+~:#])/g, (m, p, t) => p + _DIAG[t]);
+  // Tekken 'back to opponent, X' (TekkenDocs / wavu wiki: BT X) -> BT.X
+  s = s.replace(/^back to (?:the )?opponent\s*,\s*/i, 'BT.');
   // 'n+1' / 'n+1+2' (stick explicitly neutral) is the plain button: the input buffer reads a
   // neutral press as '1', so a move slotted on 'n+1' could never be pressed (sweep 2026-10-29, donor banks).
   s = s.replace(/(^|\.)n\+(?=[1-4])/i, "$1");
