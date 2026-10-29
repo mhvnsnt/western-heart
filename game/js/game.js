@@ -501,6 +501,8 @@ export class Game {
         // Pass the tick length: the buffer's windows are T3 frames of 1/60 s and it
         // weighs each entry by dt, so they stay real-time at FIXED_DT = 1/120 (or any rate).
         this.p1.tekken.noteDirection(stick, dt);
+        if (this.p1.tryHoldUpgrade) this.p1.tryHoldUpgrade(inp.held);
+        if (stick !== this._p1StickWas) { this._p1StickWas = stick; if (this.p1.tryDirFollow) this.p1.tryDirFollow(stick); }
         if (ms && this.p1.isBlocking()) ms.blockTime += dt;
         if (ms) ms.time += dt;
         // Stream 6: while caught in a throw, limb inputs are break attempts.

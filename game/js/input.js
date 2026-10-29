@@ -78,7 +78,7 @@ export class InputManager {
 
   reset() {
     this.axisX = 0; this.axisY = 0; this.joyY = 0;
-    this.up = false; this.down = false; this.held.block = false; this._queue.length = 0;
+    this.up = false; this.down = false; this.held.block = false; for (const b of '1234') this.held[b] = false; this._queue.length = 0;
     this._keys = {};
     this._lastPunchT = 0; this._lastKickT = 0;
     this._lastT = { '1': 0, '2': 0, '3': 0, '4': 0 };
@@ -297,10 +297,10 @@ export class InputManager {
         case 'KeyL': this._push('surge'); break;
         case 'KeyT': this._push('transform'); break; // brawler: Soul Surge form
         // e.timeStamp = when the key went down (chord gap; see _pressT)
-        case 'Digit1': this._tekken('1', e.timeStamp); break;
-        case 'Digit2': this._tekken('2', e.timeStamp); break;
-        case 'Digit3': this._tekken('3', e.timeStamp); break;
-        case 'Digit4': this._tekken('4', e.timeStamp); break;
+        case 'Digit1': this.held['1'] = true; this._tekken('1', e.timeStamp); break;
+        case 'Digit2': this.held['2'] = true; this._tekken('2', e.timeStamp); break;
+        case 'Digit3': this.held['3'] = true; this._tekken('3', e.timeStamp); break;
+        case 'Digit4': this.held['4'] = true; this._tekken('4', e.timeStamp); break;
         case 'Space': this.held.block = true; e.preventDefault(); break;
         case 'ShiftLeft': case 'ShiftRight': this._push('dodge'); break;
         case 'KeyV': this._push('vskill'); break; // V-System (owner 2026-10-22)
@@ -323,6 +323,8 @@ export class InputManager {
           }
           this._udRelease(); break;
         case 'Space': this.held.block = false; break;
+        // held limbs: Tekken 'button held' moves (d/b+1*), see Fighter.tryHoldUpgrade
+        case 'Digit1': case 'Digit2': case 'Digit3': case 'Digit4': this.held[this._remapCode(e.code).slice(5)] = false; break;
       }
     });
   }

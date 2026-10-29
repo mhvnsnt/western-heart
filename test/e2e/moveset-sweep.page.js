@@ -48,6 +48,8 @@
       hits.push({ sep, sub: sp, motion: dirs, dir: last, btn: hm[2] === 'P+K' ? ['G'] : hm[2].split('+'), hold: !!hm[3] });
     }
     if (mot.length && !hits.length) return { motionOnly: mot, pre };
+    // trailing bare stick step ('f+4,u', 'f+3,d/f'): a direction-only string follow-up
+    if (mot.length) for (const d of mot) hits.push({ sep: ',', sub: null, motion: [], dir: d, btn: [], hold: false, dirOnly: true });
     return { pre, hits };
   }
   function setup(pre, f) {
@@ -71,6 +73,7 @@
   }
   function pressHit(h, f, out, crouch) {
     if (h.sub && h.sub !== 'H') setup(h.sub, f);
+    if (h.dirOnly) { for (let k = 0; k < 40 && g._hitStop > 0; k++) step(1, out); setDir('n'); step(2, out); setDir(h.dir); for (let k = 0; k < 40 && g._hitStop > 0; k++) step(1, out); step(4, out); setDir('n'); step(1, out); return; }
     const cap = (d) => /[A-Z]/.test(d);
     for (let i = 0; i < h.motion.length; i++) { const d = h.motion[i];
       if (i && h.motion[i - 1].toLowerCase() === d.toLowerCase()) { setDir('n'); step(2, out); }
@@ -96,7 +99,17 @@
     for (const p of parts) { if (BTN[p]) b.push(BTN[p]); else if (/^[1-9](\/[1-9])?$/.test(p) && NUM[p[0]]) dir = NUM[p[0]]; else return null; }
     return b.length ? (dir ? dir + '+' : '') + b.sort().join('+') : null; }
   const sweepOne = (m, gap = 1.1) => {
+    // States the game does not have (checked in fighter.js / game.js 2026-10-28): no running
+    // state (WR), no face-up / face-down ground orientation moves, no tackle mount, no jump-landing
+    // move window. Those rows are n/a WITH the missing state named, never a pass.
+    { const t = `${m.key} ${m.input || ''}`; const NA = [[/\bWR\b/, 'running (WR)'], [/Face (Up|Down)|Roll(ing)? Forward/i, 'face-up/face-down ground'],
+        [/During Tackle/i, 'tackle mount'], [/Upon Landing/i, 'jump-landing window']];
+      for (const [re, st] of NA) if (re.test(t)) return { key: m.key, input: m.input, ok: null, why: `n/a: game has no ${st} state`, via: 'not wired' }; }
     const f = g.p1, o = g.p2, id = f.char.id, ms = MS.playedMoveset(id) || {}; const mv = (ms.moves || {})[m.key] || {};
+    // T3 branch-condition rows (gen-movesets-t3.py t3_condition): the T3 row only fires while engine
+    // condition N holds. WH has no T3 branch-condition state (tekken3recompiled convert_jun_moves.py
+    // CONDITIONS is a bare numeric remap, semantics undecoded), so the row is n/a with that named.
+    if (mv.t3_condition != null) return { key: m.key, input: m.input, ok: null, why: `n/a: game has no T3 branch condition ${mv.t3_condition} state (undecoded)`, via: 'not wired' };
     // A move on its own notation is pressed as-is; an alternate on an input another move owns
     // is equipped on that input through the loadout (what the moveset editor writes), pressed,
     // then the loadout entry is removed.
@@ -118,7 +131,14 @@
       reset(gap);
       // neutral 2+3 is the Urge Burst while urge is live (T8 Heat); the fighter's own 2+3 is tested with urge spent
       const urgeSpent = /^2\+3(\D|$)/.test(notation) && !/^U[BS]\./.test(m.key); if (urgeSpent) f._urgeUsed = true;
-      const how = (setup(P.pre, f) || '') + (urgeSpent ? ' · urge spent' : ''); const out = []; const hp0 = o.hp;
+      let how = (setup(P.pre, f) || '') + (urgeSpent ? ' · urge spent' : '');
+      // decoded T3 hit word: a row that cannot hit a STANDING foe (ground hits, crouch-only
+      // rows) is tested against the posture it does hit — never forced through a standing foe
+      { const RM = MS.getMove ? MS.getMove(id, notation) : null; const W = (RM && RM.hitWord) ?? mv.hitWord ?? (f.constructor.defaultWord ? f.constructor.defaultWord(RM || mv) : 2);
+        if ((mv.damage || 0) > 0 && !mv.throw && !(W & 2)) {
+          if (W & 1) { o._enter('crouch'); how += ' · foe crouching (row hits crouchers only)'; }
+          else if (W & 4) { o._enter('knockdown'); o.onGround = true; o.stun = 5; how += ' · foe downed (ground hit)'; } } }
+      const out = []; const hp0 = o.hp;
       run(f, P, out);
       const tail = Math.min(150, Math.round(((mv.startup || 0.2) + (mv.active || 0.05) + (mv.recovery || 0.5)) * 60) + 40);
       step(tail, out);
@@ -135,7 +155,9 @@
       if (isThrow && firedIt) { const p1s = new Set(out.map((x) => x.p1.st)), p2s = new Set(out.map((x) => x.p2.st));
         throwOk = p1s.has('throwExec') && p2s.has('thrownExec') && out.filter((x) => x.p2.st === 'thrownExec').every((x) => x.p2.clip); }
       const nHits = P.hits.length;
-      const strOk = nHits > 1 ? fired.length >= Math.min(nHits, 2) && firedIt : true;
+      // a string whose opening step has no standalone move fires as one move (opener path)
+      const firstStep = notation.split(/[,~:]/)[0]; const openerOnly = !MS.resolveMoveKey(id, firstStep);
+      const strOk = nHits > 1 ? (fired.length >= Math.min(nHits, 2) || openerOnly) && firedIt : true;
       const ok = firedIt && strOk && (!needHit || connected) && throwOk !== false;
       const why = !firedIt ? `fired ${JSON.stringify(fired)} (keys ${JSON.stringify(keys)}) not '${m.key}'` : !strOk ? `string fired ${JSON.stringify(fired)}` :
         (needHit && !connected) ? 'fired but did not connect' : throwOk === false ? 'throw did not reach exec with victim clip' : '';

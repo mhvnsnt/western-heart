@@ -282,7 +282,11 @@ export function getRealMove(charId, moveType) {
           t3row: mv.t3_row, t3source: mv.t3_source || (mv.t3_row != null ? ms.t3_source : null), moveName: mv.name,
           animBank: anim ? anim.bank : null, animRow: anim ? anim.row : null,
           // decoded T3 attack word (high 0x412 / mid 0x217 / low 0x10F / s.mid 0x31F / unblockable 0x607)
-          hitWord: (ms.hit_words && ms.hit_words[key] != null) ? ms.hit_words[key] : hitWordFor(mv),
+          // T7 '[mid throw]' tackles are blockable mids that are NOT grabs: the
+          // decoded throw word (0x800, no posture bits) would make them whiff
+          // every posture, so they take the mid word.
+          hitWord: (!mv.isGrab && /\[mid throw\]/.test(mv.note || '') && !((ms.hit_words && ms.hit_words[key]) & 7)) ? 0x217
+            : (ms.hit_words && ms.hit_words[key] != null) ? ms.hit_words[key] : hitWordFor(mv),
           hitLevel: mv.hit_level, reach: mv.reach,
           stanceAfter: ms.stance_after ? ms.stance_after[key] : undefined,
           launch: !!mv.launch, knockdown: !!mv.knockdown,
@@ -1114,8 +1118,8 @@ export class Fighter {
     // LATERAL CLAMP (moveset sweep 2026-10-28): some decoded T3 rows carry a metre-scale
     // sideways root track (bad frame-0 anchor in the source), which threw the attacker
     // off the fight line (|dz| > 0.75) so the strike whiffed every time. Tekken attacks
-    // drift sideways a few cm at most; cap the total lateral travel per attack.
-    const LAT_MAX = 0.3, cl = (v) => Math.max(-LAT_MAX, Math.min(LAT_MAX, v));
+    // drift sideways well under 0.5 m (Beast Elbow ~0.40 m); cap the total lateral travel per attack inside the 0.75 m reach band.
+    const LAT_MAX = 0.45, cl = (v) => Math.max(-LAT_MAX, Math.min(LAT_MAX, v));
     cur.lat = cl(cur.lat - (prev.lat0 ?? prev.lat)) + (prev.lat0 ?? prev.lat);
     const df = cur.fwd - prev.fwd, dl = cur.lat - prev.lat;
     if (df || dl) {
@@ -1648,8 +1652,14 @@ export class Fighter {
         const btn = single.split('+').pop();
         if (/^[1234]$/.test(btn) && name.split('+').includes(btn)) {
           this.tekken.lastMove = this._chordBase || null;
-          const saved = { state: this.state, attack: this.attack, attackName: this.attackName, stateT: this.stateT };
-          this.state = 'idle';
+          const saved = { state: this.state, attack: this.attack, attackName: this.attackName, stateT: this.stateT,
+            stance: this.stance, stanceT: this.stanceT, _risingT: this._risingT };
+          // Moveset sweep 2026-10-28: re-resolve the chord in the state the single was pressed
+          // from (stance / crouch / while-rising), not plain idle — SAV.1+2, WS.1+2, FC.1+2 and
+          // stance throws (SIDE_L.1+3) came out as the neutral chord.
+          const pre = this._preAtk || {};
+          this.state = pre.state === 'crouch' ? 'crouch' : 'idle';
+          this.stance = pre.stance || null; this.stanceT = pre.stanceT || 0; this._risingT = pre.risingT || 0;
           if (this._tryAttackFresh(name)) return true;
           Object.assign(this, saved);
         }
@@ -1662,6 +1672,48 @@ export class Fighter {
       (this._pressBuf ||= new PressBuffer(10)).push(name, this._clock || 0);
     }
     return false;
+  }
+  /* Direction-only string follow-ups (moveset sweep 2026-10-28): rows like 'f+4,u' or
+     'f+3,d/f' end (or continue) on a bare stick step, a stance/cancel transition in Tekken.
+     Only buttons reached tryAttack, so these were unreachable. A fresh stick direction
+     during a string-capable move queues the follow-up exactly like a buffered button. */
+  tryDirFollow(dir) {
+    if (!dir || dir === 'n') return false;
+    // Throw follow-ups ('d/f+1+2,F' = throw, then Savage Stance): the stick during the throw
+    // picks the row; its stance applies when the throw ends (_endThrowFollow).
+    if ((this.state === 'throwing' || this.state === 'throwExec') && this.tekken.lastMove && !this._throwFollow) {
+      for (const d of [dir, dir.toUpperCase()]) { const c = `${this.tekken.lastMove},${d}`;
+        if (!resolveMoveKey(this._movesetId, c)) continue;
+        this._throwFollow = c; this.tekken._recordMove(c); this.attackName = c; return true; }
+      return false;
+    }
+    if (this.state !== 'attack' || !this.attack) return false;
+    const T = this.tekken, ms = this._movesetId;
+    const last = (this._queuedAfter && this._queuedAfter.length) ? this._queuedAfter[this._queuedAfter.length - 1] : (this._queuedNext || T.lastMove);
+    if (!last) return false;
+    const bases = [last]; const t = last.indexOf('~'); if (t > 0) bases.push(last.slice(0, t));
+    for (const b of bases) for (const sep of [',', '~', ':']) for (const d of [dir, dir.toUpperCase()]) {
+      const c = `${b}${sep}${d}`;
+      if (!resolveMoveKey(ms, c)) continue;
+      if (this._queuedNext) (this._queuedAfter || (this._queuedAfter = [])).push(c); else this._queuedNext = c;
+      this._queuedPressT = this._clock || 0;
+      return true;
+    }
+    return false;
+  }
+  /* Held-button moves (moveset sweep 2026-10-28): 'd/b+1*' / 'SAV.1+2*' = keep the limb(s)
+     down. The press starts the tap version; still held after HOLD_UPGRADE_S of startup, the
+     move becomes its held version. Before, '*' rows were reachable only with no tap version. */
+  tryHoldUpgrade(held) {
+    if (this.state !== 'attack' || this._attackPhase !== 'startup' || !held) return false;
+    const n = this.attackName || '';
+    if (!n || n.endsWith('*') || this.stateT < 0.15) return false;
+    const btns = (n.split(/[,~:]/).pop().match(/[1-4](?:\+[1-4])*$/) || [''])[0].split('+').filter(Boolean);
+    if (!btns.length || !btns.every((b) => held[b])) return false;
+    const base = n.indexOf('~') > 0 && !resolveMoveKey(this._movesetId, n + '*') ? n.slice(0, n.indexOf('~')) : n;
+    const k = base + '*';
+    if (!resolveMoveKey(this._movesetId, k)) return false;
+    return this._fireNotation(k);
   }
   /* Retry a buffered press once the fighter can act (called each update). */
   _drainPressBuffer() {
@@ -1758,7 +1810,12 @@ export class Fighter {
       if (grace && this._fireNotation(grace)) return true;
     }
     if (/^[1234]$/.test(notation)) {
+      const pathT0 = this.tekken._strPathT;
       const resolved = this.tekken.pressButton(notation, ctx);
+      // Moveset sweep 2026-10-28: the press opened a string whose first step has no standalone
+      // move ('u+1' of 'u+1,1'). The resolver deliberately fires nothing and waits for the next
+      // hit; falling back to the plain button here fired '1' and the string was unreachable.
+      if (!resolved && this.tekken._strPath && this.tekken._strPathT !== pathT0) return true;
       // Stream 6: if the fighter has no move on this limb, keep the raw
       // notation so the base-move fallback below still fires (no dead buttons).
       if (resolved) notation = resolved;
@@ -1803,6 +1860,7 @@ export class Fighter {
     }
     if (move.cost > 0 && this.meter < move.cost) return false;
     if (move.cost > 0) this.meter = Math.max(0, this.meter - move.cost);
+    this._preAtk = { state: this.state, stance: this.stance, stanceT: this.stanceT, risingT: this._risingT };
     this.attack = move; this.attackName = notation; this.hasHit = false; this._prevHitPoint = null;
     this._attackId = (this._attackId || 0) + 1;
     this._queuedNext = null; this._queuedAfter = null;
@@ -1812,6 +1870,12 @@ export class Fighter {
     if (name === 'surge') this._auraFlash = 0.7;
     if (move.isGrab || notation === '1+3' || notation === '2+4') this.vx = this.facing * 2.5; // lunge into the grab
     return true;
+  }
+  _endThrowFollow() {
+    const c = this._throwFollow; this._throwFollow = null; if (!c) return;
+    const m = getRealMove(this._movesetId, c), after = m && m.stanceAfter;
+    if (after === 'FC') { this._enter('crouch'); this.stance = 'FC'; this.stanceT = 0.5; }
+    else if (after) { this.stance = after; this.stanceT = 0.8; }
   }
   /* Start the move for an already-resolved notation (buffered string hits). */
   _fireNotation(notation) {
@@ -2554,7 +2618,7 @@ export class Fighter {
           if (this._throwPairT >= this._throwPair.durationSec) {
             this._throwPair = null; this._throwPairT = 0;
             this._throwVictim = null; this._throwMove = null;
-            this._enter('idle');
+            this._enter('idle'); this._endThrowFollow();
           }
           break;
         }
@@ -2562,7 +2626,7 @@ export class Fighter {
         // Damage lands at the slam (t=0.55s) via the victim's _throwSlamDamage.
         if (this.stateT >= 0.9) {
           this._throwVictim = null; this._throwMove = null;
-          this._enter('idle');
+          this._enter('idle'); this._endThrowFollow();
         }
         break;
       }

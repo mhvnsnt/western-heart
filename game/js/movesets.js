@@ -268,6 +268,10 @@ export function parseMotion(n) {
     if (MOTION_DIRS[lm[1]]) dirs = dirs.concat(MOTION_DIRS[lm[1]]);
     else dirs.push(lm[1].toLowerCase());
   }
+  // 'b,3' / 'd,1' (moveset sweep 2026-10-28): ONE direction tap, release, then the bare
+  // button. Returned as a neutral-ending motion so V2 matches tap -> neutral -> press;
+  // before, it was dropped here as a 'plain directional' and only the plain 3 ever fired.
+  if (!lm[1] && head.length === 1 && dirs.length === 1 && dirs[0] !== 'n') return { prefix, dirs, btn: lm[2], neutral: true };
   if (dirs.filter(d => d !== 'n').length < 2 && !(lm[1] && MOTION_DIRS[lm[1]])) return null; // plain directional
   return { prefix, dirs, btn: lm[2], neutral };
 }
@@ -284,6 +288,7 @@ const _DIAG = { df: 'd/f', db: 'd/b', uf: 'u/f', ub: 'u/b', DF: 'D/F', DB: 'D/B'
 export function canonNotation(n) {
   if (typeof n !== 'string') return n;
   let s = n.trim().replace(/^\((.*)\)$/, '$1').trim();
+  s = s.replace(/^\(During Rage\)\s*/i, 'R.'); // T7 list spelling of the rage state prefix
   s = s.replace(/\b(df|db|uf|ub|DF|DB|UF|UB)(?=\+|,|$|~|:)/g, (m) => _DIAG[m]);
   s = s.replace(/^(ws|WS)\s*(?=[1-4])/, 'WS.');
   s = s.replace(/^([A-Z][A-Z0-9_]{1,})\s+(?=[1-4udfbnUDFB(])/, '$1.');
@@ -621,6 +626,12 @@ export class TekkenBuffer {
         const order = held ? [p + holdDir, p + withDir] : [p + withDir, p + holdDir];
         for (const c of order) if (has(c)) return this._recordMove(c);
         for (const c of order) if (opener(c)) return null;
+        // Full crouch holds d / d/b: in Tekken a button there is the FC move (FC.2 = crouch
+        // jab), not the standing d+2 (moveset sweep 2026-10-28: FC 2/3/4/1+2 fired d+2...).
+        if (p === 'FC.' && (dir === 'd' || dir === 'd/b')) {
+          if (has('FC.' + input)) return this._recordMove('FC.' + input);
+          if (opener('FC.' + input)) return null;
+        }
       }
     }
     for (const p of prefixes) {
