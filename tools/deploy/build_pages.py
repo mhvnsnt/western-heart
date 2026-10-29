@@ -145,6 +145,11 @@ ITCH_BUNDLED_MODELS = (
 )
 
 
+CORE_DROP_REASONS = {"parts-converted media", "parts media", "decal-library (customization only)",
+                     "reskin-library (customization only)", "suite demo mp4", "docs", "model renders",
+                     "tests", "ai-pass compare images", "sunra preview media"}
+
+
 def itch_drop_reason(f):
     """Reason to drop f from the itch build, or None to keep it.
 
@@ -335,7 +340,7 @@ def shell_bundled_models(sha):
 
 
 def compute_deploy_files(sha, sizes, oids, follow_all=False, shell_only=False,
-                         itch_only=False, itch_reasons=None):
+                         itch_only=False, itch_reasons=None, core_trim=False):
     """Reference closure over ROOTS, as a sorted file list.
 
     Shared by main() and tools/deploy/r2-upload-manifest.py so the R2 manifest
@@ -387,6 +392,18 @@ def compute_deploy_files(sha, sizes, oids, follow_all=False, shell_only=False,
             excluded.append(f)
         else:
             kept.append(f)
+    if core_trim:
+        # --core (Milestone 1): drop only media that no fight path loads
+        # (same verified rules as --itch), keeping every fighter's data so
+        # ?roster=all still works with the remote base. Keeps the shell
+        # well under the 1 GB Pages cap with the core 8 models bundled.
+        trimmed = []
+        for f in kept:
+            if itch_drop_reason(f) in CORE_DROP_REASONS:
+                excluded.append(f)
+            else:
+                trimmed.append(f)
+        kept = trimmed
     if not itch_only:
         return kept, sorted(excluded)
     # The bundled fighters' fight models (ITCH_BUNDLED_MODELS) were just
@@ -423,6 +440,8 @@ def main():
     ap.add_argument("--out", default=None)
     ap.add_argument("--onto", default=None, help="plumbing mode: parent gh-pages ref (e.g. origin/gh-pages)")
     ap.add_argument("--branch", default="gh-pages")
+    ap.add_argument("--core", action="store_true",
+                    help="shell-only plus the Milestone 1 media trim (CORE_DROP_REASONS)")
     ap.add_argument("--orphan", action="store_true",
                     help="plumbing mode with no parent: a fresh deploy commit on --branch "
                          "holding ONLY the deploy set (new branch; nothing is deleted anywhere)")
@@ -438,6 +457,8 @@ def main():
                          "fighters (see itch_drop_reason); fails if over itch.io's hard "
                          "caps (1,000 files / 500 MB extracted / 200 MB per file)")
     a = ap.parse_args()
+    if a.core:
+        a.shell_only = True
     if a.itch:
         a.shell_only = True
     sha = git("rev-parse", a.ref).strip()
@@ -445,7 +466,7 @@ def main():
     prefetch_text(oids)
     itch_reasons = {} if a.itch else None
     files, excluded = compute_deploy_files(sha, sizes, oids, a.follow_all, a.shell_only,
-                                           a.itch, itch_reasons)
+                                           a.itch, itch_reasons, core_trim=a.core)
     total = sum(sizes[f] for f in files)
     by_top = {}
     for f in files:
