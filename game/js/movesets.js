@@ -272,10 +272,17 @@ export function parseMotion(n) {
   return { prefix, dirs, btn: lm[2], neutral };
 }
 
+export function legacyAlias(key) {
+  const m = /^((?:qcf|qcb|hcf|hcb|dp|[udfbUDFB](?:\/[udfbUDFB])?)\+)?([PK])$/.exec(key);
+  return m ? (m[1] || '') + (m[2] === 'P' ? '1' : '4') : null;
+}
 function _prepare(ms) {
   if (!ms || !ms.moves || ms._slots) return;
   const slots = Object.assign({}, ms.slots || {});
   for (const k of Object.keys(ms.moves)) if (!(k in slots)) slots[k] = k;
+  /* WH legacy letter notation (P = punch, K = kick): a move keyed 'u+P' / 'd/f+K' / 'qcf+P'
+     is also reachable on the numeric input (P -> 1, K -> 4) when no other move owns it. */
+  for (const k of Object.keys(ms.moves)) { const a = legacyAlias(k); if (a && !(a in slots)) slots[a] = k; }
   ms._slots = slots;
   const motions = [];
   for (const n of Object.keys(slots)) {

@@ -23,6 +23,7 @@
    background/foreground; HOLD u/d (>=200ms) = jump/crouch. The game waits
    out the tap window before committing to jump/crouch — exactly like Tekken.
    COMMAND GRAB (legacy): press P+K together (touch) or J+K together / U (keyboard).
+   SIGNATURE 'S' (WH signature moves, moveset keys S / b+S / D+S): O (keyboard).
    ============================================================ */
 
 import { stickToDir } from './combat-core.js';
@@ -200,10 +201,23 @@ export class InputManager {
                 : btn === '2' ? [['4', '2+4'], ['1', '1+2'], ['3', '2+3']]
                 : btn === '3' ? [['1', '1+3'], ['4', '3+4'], ['2', '2+3']]
                 : [['2', '2+4'], ['3', '3+4'], ['1', '1+4']];
+    /* 3- and 4-limb chords (moveset sweep 2026-10-28: 1+2+3 / 2+3+4 / 1+2+3+4 came out as the
+       first two limbs only). A limb landing inside the window of a chord just made joins it: the
+       queued chord is upgraded in place (or the bigger chord is queued if it was already read). */
+    const ch = this._chord;
+    if (ch && now - ch.t < CHORD_WINDOW_MS && !ch.btns.includes(btn)) {
+      const name = ch.btns.concat(btn).sort().join('+');
+      const i = this._queue.lastIndexOf(ch.name);
+      if (i >= 0) this._queue[i] = name; else this._push(name);
+      this._chord = { btns: ch.btns.concat(btn), t: ch.t, name };
+      this._lastT[btn] = 0;
+      return;
+    }
     for (const [pair, name] of pairs) {
       if (now - this._lastT[pair] < CHORD_WINDOW_MS) {
         this._lastT[pair] = 0; this._lastT[btn] = 0;
         this._push(name);
+        this._chord = { btns: name.split('+'), t: now, name };
         return;
       }
     }
@@ -279,6 +293,7 @@ export class InputManager {
         case 'KeyJ': this._strike('punch', e.timeStamp); break;
         case 'KeyK': this._strike('kick', e.timeStamp); break;
         case 'KeyU': this._push('grab'); break;
+        case 'KeyO': this._push('sig'); break; // WH SIGNATURE button 'S' (moveset key S / b+S / D+S)
         case 'KeyL': this._push('surge'); break;
         case 'KeyT': this._push('transform'); break; // brawler: Soul Surge form
         // e.timeStamp = when the key went down (chord gap; see _pressT)

@@ -522,10 +522,10 @@ export class Game {
           if (this.soul && this.soul.claimRelease(this.p1, this.p2, whQueue)) { rec('nine-soul-release'); }
           else if (this._whDepth) this._whDepth.onPlayerQueue(this.p1, whQueue, dt);
           for (const act of whQueue) {
-          if (act === 'punch' || act === 'kick' || act === 'grab' ||
+          if (act === 'punch' || act === 'kick' || act === 'grab' || act === 'sig' ||
               act === '1' || act === '2' || act === '3' || act === '4' ||
               act === '1+3' || act === '2+4' || act === '1+2' || act === '3+4' ||
-              act === '1+4' || act === '2+3') {
+              act === '1+4' || act === '2+3' || /^[1-4](\+[1-4]){2,3}$/.test(act)) {
             // 魂 ACTION: 2+3 while the URGE/HEAT gauge is on + a context trigger.
             if (act === '2+3' && this.p1._urgeOn && this._spiritCheck(this.p1, this.p2)) { rec('spirit'); continue; }
             // SOUL-SYSTEMS: 霊放 Reihou on 1+4 only while the foe is raging.

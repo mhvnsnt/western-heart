@@ -4,7 +4,7 @@
   const g = window.__game; g.running = false; g.ai.update = () => {}; g.timer = 9999; g._hitStop = 0;
   window.__vt = 1e6; g.input._pressT = () => window.__vt;
   performance.now = () => window.__vt; // page clock = sim clock (string / dash / motion windows)
-  const KEY = { 1: 'Digit1', 2: 'Digit2', 3: 'Digit3', 4: 'Digit4', f: 'KeyD', b: 'KeyA', u: 'KeyW', d: 'KeyS' };
+  const KEY = { 1: 'Digit1', 2: 'Digit2', 3: 'Digit3', 4: 'Digit4', S: 'KeyO', G: 'KeyU', f: 'KeyD', b: 'KeyA', u: 'KeyW', d: 'KeyS' };
   const held = new Set();
   const key = (codes, type) => { for (const c of [].concat(codes)) {
     if (type === 'keydown') { if (held.has(c)) continue; held.add(c); } else { if (!held.has(c)) continue; held.delete(c); }
@@ -37,11 +37,11 @@
       if (!t) return { err: `empty token in '${n}'` };
       const sub = /^([A-Za-z_]+)\.(.+)$/.exec(t); let sp = null; if (sub && !DIR.test(sub[1])) { sp = sub[1]; t = sub[2]; }
       if (DIR.test(t)) { mot.push(t); continue; }
-      const hm = /^(?:(qcf|qcb|hcf|hcb|dp|[udfbnUDFBN](?:\/[udfbUDFB])?)\+)?([1-4](?:\+[1-4])*)(\*)?$/.exec(t);
+      const hm = /^(?:(qcf|qcb|hcf|hcb|dp|[udfbnUDFBN](?:\/[udfbUDFB])?)\+)?([1-4](?:\+[1-4])*|S|P\+K)(\*)?$/.exec(t);
       if (!hm) return { err: `token '${t}' is not a stick/button input` };
       let dirs = mot; mot = []; let last = hm[1] || null;
       if (last && MOT[last]) { dirs = dirs.concat(MOT[last].slice(0, -1)); last = MOT[last].slice(-1)[0]; }
-      hits.push({ sep, sub: sp, motion: dirs, dir: last, btn: hm[2].split('+'), hold: !!hm[3] });
+      hits.push({ sep, sub: sp, motion: dirs, dir: last, btn: hm[2] === 'P+K' ? ['G'] : hm[2].split('+'), hold: !!hm[3] });
     }
     if (mot.length && !hits.length) return { motionOnly: mot, pre };
     return { pre, hits };
@@ -86,17 +86,28 @@
     }
     setDir('n');
   }
+  // T3 row command ('6/9+LP', 'LK+RK', '2+RP') -> Tekken notation ('f+1', '3+4', 'd+2').
+  const NUM = { 6: 'f', 4: 'b', 2: 'd', 8: 'u', 3: 'd/f', 1: 'd/b', 9: 'u/f', 7: 'u/b' }, BTN = { LP: '1', RP: '2', LK: '3', RK: '4' };
+  function t3cmd(c) { if (!c) return null; const parts = String(c).split('+'); let dir = ''; const b = [];
+    for (const p of parts) { if (BTN[p]) b.push(BTN[p]); else if (/^[1-9](\/[1-9])?$/.test(p) && NUM[p[0]]) dir = NUM[p[0]]; else return null; }
+    return b.length ? (dir ? dir + '+' : '') + b.sort().join('+') : null; }
   window.__sweepMove = (m, gap = 1.1) => {
     const f = g.p1, o = g.p2, id = f.char.id, ms = MS.playedMoveset(id) || {}; const mv = (ms.moves || {})[m.key] || {};
     // A move on its own notation is pressed as-is; an alternate on an input another move owns
     // is equipped on that input through the loadout (what the moveset editor writes), pressed,
     // then the loadout entry is removed.
     let notation = m.key, via = 'own input';
-    if (!m.slotted || !parse(m.key).hits) { notation = m.input; via = 'equipped via moveset loadout'; }
+    const alias = MS.legacyAlias && MS.legacyAlias(m.key);
+    const ok = (n) => n && !parse(n).err && !parse(n).motionOnly;
+    if (alias && parse(m.key).err && MS.resolveMoveKey(id, alias) === m.key) { notation = alias; via = 'legacy P/K alias'; }
+    else if (!m.slotted || !parse(m.key).hits) {
+      // the editor equips a move on one of its input_slots (or its legacy alias / own input)
+      const cands = [alias, ...(mv.input_slots || []), m.input, t3cmd(mv.t3_command)].filter(ok);
+      notation = cands[0] || m.input; via = 'equipped via moveset loadout'; }
     const P = parse(notation);
     if (P.err) return { key: m.key, input: notation, ok: false, why: 'unparsed: ' + P.err, via };
     if (P.motionOnly) return { key: m.key, input: notation, ok: null, why: 'movement input (no button)', via };
-    if (via !== 'own input') MS.setLoadoutSlot(id, notation, m.key);
+    if (via === 'equipped via moveset loadout') MS.setLoadoutSlot(id, notation, m.key);
     try {
       reset(gap); const how = setup(P.pre, f); const out = []; const hp0 = o.hp;
       run(f, P, out);
@@ -122,12 +133,12 @@
       return { trace: m.trace ? out.filter((_, i) => i % 3 === 0) : undefined, key: m.key, input: notation, via, setup: how, ok, why, fired, dmg, react: react.slice(0, 6), launch: out.some((fr) => fr.p2.y > 0.35), isThrow, throwOk,
         tClip: [...new Set(out.filter((x) => /throw/.test(x.p1.st)).map((x) => x.p1.clip))].slice(0, 3),
         vClip: [...new Set(out.filter((x) => /thrown/.test(x.p2.st)).map((x) => x.p2.clip))].slice(0, 3) };
-    } finally { if (via !== 'own input') MS.setLoadoutSlot(id, notation, null); }
+    } finally { if (via === 'equipped via moveset loadout') MS.setLoadoutSlot(id, notation, null); }
   };
   // Juggle: replay a launcher that lifted the opponent, then a 1 while they are airborne must hit.
   window.__juggle = (r, gap = 1.1) => {
     const f = g.p1, id = f.char.id; const P = parse(r.input);
-    if (r.via !== 'own input') MS.setLoadoutSlot(id, r.input, r.key);
+    if (r.via === 'equipped via moveset loadout') MS.setLoadoutSlot(id, r.input, r.key);
     try {
       reset(gap); setup(P.pre, f); run(f, P, null);
       let k = 0; while (k++ < 90 && !(g.p2.root.position.y > 0.35)) step(1);
@@ -142,7 +153,7 @@
         if (g.p2.onGround && g.p2.root.position.y < 0.05) break;
       }
       return { key: r.key, ok: hit, why: hit ? '' : 'follow-up 1 never hit the airborne opponent' };
-    } finally { if (r.via !== 'own input') MS.setLoadoutSlot(id, r.input, null); }
+    } finally { if (r.via === 'equipped via moveset loadout') MS.setLoadoutSlot(id, r.input, null); }
   };
   window.__moveList = () => { const id = g.p1.char.id, ms = MS.playedMoveset(id); const rows = [];
     for (const [k, mv] of Object.entries(ms.moves || {})) rows.push({ key: k, input: mv.input || k, slotted: MS.resolveMoveKey(id, k) === k });

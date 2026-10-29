@@ -1718,6 +1718,15 @@ export class Fighter {
     // via the fighter's TekkenBuffer + its moveset's notation table.
     let notation = LEGACY_TO_TEKKEN[name] || name;
     const ctx = this._inputCtx();
+    /* WH legacy buttons (moveset sweep 2026-10-28): signature moves keyed 'S' / 'b+S' / 'D+S'
+       fire on the 'sig' action, and a fighter's own 'P+K' move fires on the grab action
+       (U / J+K) instead of the generic 1+3 throw. Resolved with the held stick like any button. */
+    if (name === 'sig' || (name === 'grab' && resolveMoveKey(this._movesetId, 'P+K'))) {
+      const btn = name === 'sig' ? 'S' : 'P+K';
+      const r = this.tekken.press(btn, ctx);
+      if (!r || !getRealMove(this._movesetId, r)) return false;
+      notation = r; name = r;
+    }
     this._chordBase = this.tekken.lastMove;
     // GAP-FILL LANE 1 (Soul Urge completeness): Urge Dash as a
     // recovery cancel — reachable even though canAct() is false
