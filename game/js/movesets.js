@@ -442,6 +442,10 @@ export function canonNotation(n) {
   s = s.replace(/^(.*\+)([1-4])(?:\/[1-4])+$/, '$1$2');
   s = s.replace(/^\(during\s+([A-Za-z][A-Za-z' ]*[A-Za-z])\)\s*(?=[udfbnUDFB1-4qh])/i, (m, name) => (/jump/i.test(name) ? m : stateCode(name) + '.'));
   s = s.replace(/^while down\s*\(?facing up\)?\s*/i, 'FUFT.');
+  // T7 list jump attacks: '(During Vertical Jump) 1' is u+1 (Tekken jumps attack on the jump input)
+  s = s.replace(/^\(?during vertical jump\)?\s*(?=[1-4])/i, 'u+');
+  // leading stance token then comma ('JGS, 1+4' T7 king list) -> 'JGS.1+4'
+  s = s.replace(/^([A-Z]{2,5}),\s*(?=[udfbUDF1-4(])/, (m, st) => (/^(?:[UDFB]|UF|UB|DF|DB|WS|FC|SS|BT)$/.test(st) ? m : st + '.'));
   s = s.replace(/^(ss|bt|fc)(?=[1-4])/i, (m) => m.toUpperCase() + '.');
   s = s.replace(/^([A-Z][A-Z0-9_]*)\.\+(?=[1-4])/, '$1.');
   s = s.replace(/\*\*$/, '*');
