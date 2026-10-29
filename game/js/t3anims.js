@@ -350,6 +350,87 @@ function turnData(data) {
 }
 export function getT3BankFacing(bankId) { return _t3facing[bankId] || null; }
 
+/* PER-CLIP HEADING (moveset sweep 2026-10-29). The bank turn above is decided
+   on the stance/walk/crouch/block clips only. Some banks' attack rows are
+   baked facing the other way from those (yoshimitsu: 69 of its row clips start
+   ~180° from its stance; bryan/jin: 0). Played as-is the body spins round
+   and its root_t carries it AWAY from the foe — jin_soul f+2 (yoshimitsu
+   row 125): heading 172° off the stance in game, gap 1.45 -> 2.36 m, whiff.
+   Measured, not assumed: a clip's frame-0 front is where its knees point
+   (same test as bankFacing). A row more than 135° from the stance heading
+   is turned 180° about Y (root-child rotations q -> qY(pi)·q, root_t
+   rotated about frame 0). Rows within 135° are untouched, and so are rows
+   any moveset using them plays under a T3 facing condition 0x24-0x2E
+   (own back turned, turned away; t3-conditions.js): those start turned
+   on purpose (yoshimitsu r65-r75, r97-r102, r207, r209, r329-r334). */
+async function facingCondRows(base, bankId, rowData) {
+  const ids = new Set();
+  for (const r of Object.values(rowData)) for (const u of (r.rec && r.rec.used_by) || []) ids.add(u);
+  const keep = new Set();
+  await Promise.all([...ids].map(async (id) => {
+    try {
+      const res = await fetch(new URL(`../../../movesets/${id}.json`, new URL(base, location.href)));
+      if (!res.ok) return;
+      const m = await res.json();
+      for (const mv of Object.values(m.moves || {})) {
+        if (mv && mv.t3_source === bankId && mv.t3_row != null && mv.t3_condition >= 0x24 && mv.t3_condition <= 0x2E) keep.add(+mv.t3_row);
+      }
+    } catch (e) {}
+  }));
+  return keep;
+}
+function clipHeading(skel, data, f = 0) {
+  if (!data || !data.rot_xyzw) return null;
+  const P = {}, par = {}, order = skel.joints.map(j => j.name);
+  for (const j of skel.joints) { P[j.name] = j.rest; par[j.name] = j.parent; }
+  const G = {}, X = {};
+  for (const j of order) {
+    const r = data.rot_xyzw[j];
+    const q = r && r.length ? r[Math.min(f, r.length - 1)] : [0, 0, 0, 1];
+    const p = par[j];
+    if (p && G[p]) {
+      G[j] = _qmul(G[p], q);
+      const o = _qrot(G[p], [P[j][0] - P[p][0], P[j][1] - P[p][1], P[j][2] - P[p][2]]);
+      X[j] = [X[p][0] + o[0], X[p][1] + o[1], X[p][2] + o[2]];
+    } else { G[j] = q; X[j] = P[j].slice(); }
+  }
+  if (!G.Hips) return null;
+  const hx = _qrot(G.Hips, [1, 0, 0]);
+  let fx = -hx[2], fz = hx[0];
+  const fl = Math.hypot(fx, fz);
+  if (fl < 1e-6) return null;
+  fx /= fl; fz /= fl;
+  let s = 0;
+  for (const side of ['Left', 'Right']) {
+    const a = X[side + 'UpLeg'], k = X[side + 'Leg'], e = X[side + 'Foot'];
+    if (a && k && e) s += (k[0] - (a[0] + e[0]) / 2) * fx + (k[2] - (a[2] + e[2]) / 2) * fz;
+  }
+  if (Math.abs(s) < 0.01) return null; // knees too straight to tell
+  const sg = s >= 0 ? 1 : -1;
+  return Math.atan2(fx * sg, fz * sg);
+}
+function yawData180(skel, data) {
+  const roots = new Set(skel.joints.filter(j => !j.parent).map(j => j.name));
+  const kids = skel.joints.filter(j => j.parent && roots.has(j.parent)).map(j => j.name);
+  const qy = [0, 1, 0, 0];
+  for (const b of kids) { const arr = data.rot_xyzw[b]; if (arr) data.rot_xyzw[b] = arr.map(q => _qmul(qy, q)); }
+  if (data.root_t && data.root_t.length) { const r0 = data.root_t[0]; data.root_t = data.root_t.map(t => [2 * r0[0] - t[0], t[1], 2 * r0[2] - t[2]]); }
+}
+export function alignRowHeadings(skel, actionData, rowData, keepRows = new Set()) {
+  const hs = FACING_CLIPS.map(a => clipHeading(skel, actionData[a])).filter(h => h != null);
+  if (!hs.length) return [];
+  const ref = Math.atan2(hs.reduce((a, h) => a + Math.sin(h), 0), hs.reduce((a, h) => a + Math.cos(h), 0));
+  const fixed = [];
+  for (const [row, r] of Object.entries(rowData)) {
+    if (keepRows.has(+row)) continue; // played under a facing condition (back turned): baked turn is right
+    const h = clipHeading(skel, r.data);
+    if (h == null) continue;
+    const d = Math.atan2(Math.sin(h - ref), Math.cos(h - ref));
+    if (Math.abs(d) > 135 * Math.PI / 180) { yawData180(skel, r.data); fixed.push(+row); }
+  }
+  return fixed;
+}
+
 /* STANDING IDLE (2026-10-21). The 'stance' action loops move-index slot 3.
    On the bosconovitch bank slot 3 (row 237) is a 15-frame fall onto his
    back (root 0.45 -> -0.45 m; slot 1 is him lying still, slot 0 getting
@@ -451,6 +532,8 @@ export async function loadT3Clips(THREE, bankId = 'king') {
         for (const r of Object.values(rowData)) turnData(r.data);
         console.log(`[WH-T3] bank '${bankId}': baked facing -Z (knees ${facing.kneeDeg.toFixed(1)}° from hips forward) — turned 180° to +Z, Left/Right relabelled`);
       }
+      const flipped = alignRowHeadings(skel, actionData, rowData, await facingCondRows(base, bankId, rowData));
+      if (flipped.length) console.log(`[WH-T3] bank '${bankId}': ${flipped.length} row clips baked >135° from the stance heading — turned 180° to match`);
       const idle = standingIdle(actionData, skel);
       if (idle) {
         actionData.stance = idle;
