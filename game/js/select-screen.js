@@ -416,8 +416,9 @@ export function createSelectScreen(deps) {
     'ryuji', 'doc-frank-machine-shop',
 
   ]);
-  // Milestone 1 (2026-10-29): core 8 by default, model-less 31 always hidden;
-  // ?roster=all shows the rest (game/js/core-set.js). Nothing is deleted.
+  // Milestone 1 (2026-10-29) showed the core 8 by default; the owner
+  // reversed that the same day — all fighters are back on select
+  // (game/js/core-set.js). Only SELECT_HIDDEN above still filters.
   const selectRoster = () => deps.roster().filter(c => !SELECT_HIDDEN.has(c.id) && selectVisible(c.id));
 
   function build() {

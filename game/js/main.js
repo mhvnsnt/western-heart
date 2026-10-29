@@ -26,7 +26,7 @@ import { resolveFighterAttire } from './attires.js';
 import { createSelectScreen } from './select-screen.js';
 import { applySoulSpirit } from './soul-spirit.js';
 import { STAGES, STAGE_TIERS, getStage, randomStageId, preloadStage } from './stages.js';
-import { stageVisible, CORE_STAGES, CORE_FIGHTERS, SHOW_ALL, quickFightParams } from './core-set.js';
+import { stageVisible, CORE_STAGES, CORE_FIGHTERS, quickFightParams } from './core-set.js';
 // LOADSPEED: stages.js (82KB data) stays static — buildStageSelect runs in
 // the versus flow and getStage is needed by startFight; its parse cost is
 // small next to the deferred modules. Stage THUMBS are the real cost there
@@ -932,7 +932,9 @@ document.getElementById('confirm-stage').addEventListener('click', confirmStageF
 
 document.getElementById('random-stage').addEventListener('click', () => {
   audio.uiClick();
-  selectedStage = SHOW_ALL ? randomStageId() : CORE_STAGES[(Math.random() * CORE_STAGES.length) | 0];
+  // All arenas are back on the stage select list (owner order
+  // 2026-10-29), so RANDOM picks from the full stage list again.
+  selectedStage = randomStageId();
   const s = getStage(selectedStage);
   const card = document.querySelector(`.stage-card[data-id="${s.id}"]`);
   if (card) {

@@ -3661,3 +3661,33 @@ No bucket exists yet — nothing uploaded to R2, no account created.
   (~tN / _cNN_rNNN), FC vs f,n,d,D/F, DES.BT, KOF system rows, u/b+1 root motion.
 - #1096 stack handed to Muse. WIP main-merge (no donor rows; only fighter.js conflicted,
   union-resolved) parked on branch grok/1096-merge-main-wip (ae5f5df), not merged.
+
+## 2026-10-29 ~6:40 PM CT — Tekken 7 health 180 + full select restore (Doro)
+- Owner orders (this lane): health to Tekken 7's 180 per round with move
+  damage unchanged ("move damage is happening correct maybe health and hp
+  is too low"); all fighters back on the fighter select screen; all
+  arenas back on the stage select list (reversing the Milestone 1
+  core-8 / 3-stage default from earlier the same day).
+- Health: `game/js/fighter.js` Fighter vitals maxHp/hp 100 -> 180. That
+  is the only versus HP definition in the game — every other system
+  (HUD bars in main.js, team-battle red health, survival/team carries)
+  already works in hp/maxHp percentages, so the bar drop per hit scales
+  with no further changes. Move damage values untouched.
+- Select: `game/js/core-set.js` selectVisible/stageVisible now return
+  true for everyone; CORE_FIGHTERS/CORE_STAGES/MODELLESS_HIDDEN kept as
+  data (shell bundling + ?quick= defaults + the no-model record).
+  `game/js/main.js` stage RANDOM again picks from the full stage list.
+  `game/js/select-screen.js` comment updated; its SELECT_HIDDEN set
+  (nine souls + ryuji + doc-frank-machine-shop, owner law 2026-10-22)
+  is unchanged — those were never standalone cards on the deployable
+  version either.
+- Proof: node --check clean on all four changed JS files; a node import
+  test of core-set.js shows core, model-less and crossover fighters and
+  canon/Tekken/No Mercy stages all visible. CI game checks + the
+  menu-touch e2e are the arbiter before merge (repo rule). Deletions:
+  none.
+- Still open after this PR (named, not hidden): Demonio SS.2,U (batch 13
+  regression — held-U upgrade not reached, sweep holds U ~3f); Dio's 12
+  remaining sweep failures (mostly During-Jump air moves); Pantera's 55
+  (chain-throw / ~t3 transition classes). Lists:
+  docs/proof/moveset-sweep-20261028/r17-core8-failing.json.
