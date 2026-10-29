@@ -242,6 +242,12 @@ REPO = os.environ.get("WH_REPO", "mhvnsnt/western-heart")
 STR = re.compile(r"""["'`]([^"'`\s<>{}$|*?]+\.[A-Za-z0-9]{2,5})(?:[?#][^"'`\s]*)?["'`]""")
 
 
+def _built_iso():
+    """Deploy time (UTC ISO) for the in-game build stamp (game/js/main.js)."""
+    import datetime
+    return datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
 def git(*args, binary=False):
     r = subprocess.run(["git", *args], capture_output=True)
     if r.returncode:
@@ -525,7 +531,7 @@ def main():
         with open(dst, "wb") as fh:
             fh.write(data)
     man = {"format": "wh-pages-deploy/1", "ref": a.ref, "commit": sha, "files": len(files),
-           "bytes": total, "built": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).strftime("%Y-%m-%d %H:%M UTC"), "tool": "tools/deploy/build_pages.py", "mode": mode}
+           "bytes": total, "built": _built_iso(), "tool": "tools/deploy/build_pages.py", "mode": mode}
     if excluded:
         man["excluded_files"] = len(excluded)
         man["excluded_bytes"] = sum(sizes[f] for f in excluded)
@@ -575,7 +581,7 @@ def plumbing(a, sha, files, sizes, total):
         lines.append(f"{mode} {obj}\t{f}")
     g("update-index", "--index-info", inp=("\n".join(lines) + "\n").encode())
     man = json.dumps({"format": "wh-pages-deploy/1", "ref": a.ref, "commit": sha, "files": len(files),
-                      "bytes": total, "tool": "tools/deploy/build_pages.py",
+                      "bytes": total, "built": _built_iso(), "tool": "tools/deploy/build_pages.py",
                       "mode": "itch" if a.itch else ("shell-only" if a.shell_only else "full")}, indent=1).encode()
     if not parent:
         # Fresh (orphan) deploy: the two root files the old gh-pages carried

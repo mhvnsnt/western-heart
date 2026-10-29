@@ -1491,7 +1491,10 @@ window.__startFight = (p1, p2, opts) => startFight(p1, p2, opts || {}); // QA ho
   el.textContent = 'build: dev';
   document.body.appendChild(el);
   fetch('../deploy-manifest.json', { cache: 'no-store' }).then(r => (r.ok ? r.json() : null)).then((m) => {
-    if (m) el.textContent = `build ${m.built || '?'} \u00b7 ${String(m.commit || '').slice(0, 7)}`;
+    if (!m) return;
+    const d = m.built ? new Date(m.built) : null;
+    const when = d && !isNaN(d) ? d.toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' }) : '?';
+    el.textContent = `build ${when} \u00b7 ${String(m.commit || '').slice(0, 7)}`;
   }).catch(() => {});
 })();
 window.__ui = ui;
