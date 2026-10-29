@@ -386,6 +386,16 @@ export function canonNotation(n) {
   s = s.replace(/\s*([,~:+])\s*/g, '$1');
   return s;
 }
+const _NUMPAD = { 1: 'd/b', 2: 'd', 3: 'd/f', 4: 'b', 5: 'n', 6: 'f', 7: 'u/b', 8: 'u', 9: 'u/f' };
+const _T3BTN = { LP: '1', RP: '2', LK: '3', RK: '4' };
+/** T3 source command ('6/9+LK+RK', '2/1/3+LP') -> playable notations, one per listed direction,
+ *  in source order ('f+3+4', 'u/f+3+4'). Commands with 'any' buttons give none. */
+export function t3CommandNotations(cmd) {
+  const m = /^([1-9](?:\/[1-9])*)((?:\+(?:LP|RP|LK|RK))+)$/.exec(String(cmd || '').trim());
+  if (!m) return [];
+  const btn = m[2].slice(1).split('+').map((b) => _T3BTN[b]).sort().join('+');
+  return m[1].split('/').map((d) => (d === '5' ? btn : `${_NUMPAD[d]}+${btn}`));
+}
 function _prepare(ms) {
   if (!ms || !ms.moves || ms._slots) return;
   const slots = Object.assign({}, ms.slots || {});
@@ -415,6 +425,13 @@ function _prepare(ms) {
   ms._variants = variants;
   ms._variantBase = {};
   for (const [n, list] of Object.entries(variants)) for (const x of list) ms._variantBase[x.key] = n;
+  /* T3 clip-variant rows (sweep 2026-10-29): raw direction keys like 'b_c36_r46' carry no button;
+     the source command (t3_command '4/7+LP') does. Slot the first free spelling of it
+     ('b+1', then 'u/b+1'), never overwriting an existing slot. */
+  for (const k of Object.keys(ms.moves)) {
+    if (!/^[udfbn](?:\/[fb])?(?:_[rc]\d+)+$/i.test(k)) continue;
+    for (const c of t3CommandNotations(ms.moves[k] && ms.moves[k].t3_command)) if (!(c in slots)) { slots[c] = k; break; }
+  }
   ms._slots = slots;
   const motions = [];
   for (const n of Object.keys(slots)) {
