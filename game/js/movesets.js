@@ -375,7 +375,7 @@ export function canonNotation(n) {
      the move that enters the state (same name) to it in stance_after. */
   s = s.replace(/^while on back(?:\s*,\s*(feet|head) towards opponent)?\s*,\s*(?=[udfbnUDFB1-4](?:[\/+,]|\s*,|$))/i,
     (m, w) => (w && w.toLowerCase() === 'head' ? 'FUHT.' : 'FUFT.'));
-  s = s.replace(/^during\s+([A-Za-z][A-Za-z' ]*?[A-Za-z](?: \d(?=\s*,))?)\s*,?\s*(?=[udfbnUDFB]?(?:\/[fbFB])?\+?[1-4](?:[+,~:]|$))/, (m, name) => stateCode(name) + '.');
+  s = s.replace(/^during\s+([A-Za-z][A-Za-z' ]*?[A-Za-z](?: \d(?=\s*,))?)\s*,?\s*(?=[udfbnUDFB]?(?:\/[fbFB])?\+?[1-4](?:[+,~:]|$))/, (m, name) => (/vertical/i.test(name) ? m : /^(forward or backward jump|forward jump peak|forward jump|jump)$/i.test(name) ? 'AIR.' : stateCode(name) + '.'));
   s = s.replace(/(?:\s*\((?:KOFXV|KOF\s*XV|SFV|sfv|SF6|sf6|T7|T8)\))+\s*$/, ''); // source-game tag on imported rows, same input
   s = s.replace(/^(d(?:\/[fb])?\+[1-4](?:\+[1-4])*)\s*\(crouch(?:ing)?\)$/i, '$1'); // KOF '(crouch)' note on a d+ button, same input
   s = s.replace(/^fc\s*\+?\s*(?=[1-4udfbnUDFB])/i, 'FC.'); // 'fc+1' / 'FC 1' -> FC.1 (full-crouch state)
@@ -446,11 +446,22 @@ export function canonNotation(n) {
   }
   s = s.replace(/\s*\((?:hold\s+)?[^()]*\bto cancel\)\s*$/i, '');
   s = s.replace(/\s*\((?:(?:first|second|third|fourth|fifth|\d+(?:st|nd|rd|th))\s*(?:,|and)?\s*)+hits?\s+only\)\s*$/i, '');
+  /* Jump contexts come BEFORE the alternatives rule below: the 'or' in '(During Forward
+     or Backward Jump)' is part of the context name, not an either/or input list — the
+     alternatives rule would otherwise cut the row to '(During Forward'. Vertical jump is
+     excluded here so the u+ rule below still claims it. */
+  s = s.replace(/^\(during\s+(forward or backward jump|forward jump peak|forward jump|jump)\)\s*(?=[udfbnUDFB1-4qh])/i, 'AIR.');
   s = s.replace(/\s*\(or [^()]*\)/gi, '');
   s = s.replace(/\s*\/\s+.*$/, '').replace(/\s+or\s+.*$/i, '');
   s = s.replace(/([1-4](?:\+[1-4])*)_[1-4](?:\+[1-4])*(?![\w])/g, '$1');
   s = s.replace(/^(.*\+)([1-4])(?:\/[1-4])+$/, '$1$2');
-  s = s.replace(/^\(during\s+([A-Za-z][A-Za-z' ]*[A-Za-z])\)\s*(?=[udfbnUDFB1-4qh])/i, (m, name) => (/jump/i.test(name) ? m : stateCode(name) + '.'));
+  /* T7 jump attacks (moveset sweep 2026-10-29, Dio's 12): '(During Jump) qcf+1',
+     '(During Forward or Backward Jump) 1', '(During Forward Jump Peak) d+3' are the
+     attack pressed while airborne — Tekken's jump direction does not change the move, so
+     they canonicalise to the AIR. prefix the input buffer resolves from ctx.airborne
+     (same pattern as R. for rage, FC./WS./SS./BT. for their states). The vertical-jump
+     form is left alone here so the u+ rule below still claims it (those rows pass). */
+  s = s.replace(/^\(during\s+([A-Za-z][A-Za-z' ]*[A-Za-z])\)\s*(?=[udfbnUDFB1-4qh])/i, (m, name) => (/vertical/i.test(name) ? m : /^(forward or backward jump|forward jump peak|forward jump|jump)$/i.test(name) ? 'AIR.' : stateCode(name) + '.'));
   s = s.replace(/^while down\s*\(?facing up\)?\s*/i, 'FUFT.');
   // T7 list jump attacks: '(During Vertical Jump) 1' is u+1 (Tekken jumps attack on the jump input)
   s = s.replace(/^\(?during vertical jump\)?\s*(?=[1-4])/i, 'u+');
@@ -815,9 +826,9 @@ export class TekkenBuffer {
   /**
    * Resolve a button ('1'..'4') or chord ('1+2', '1+3' ...) to the Tekken notation this
    * fighter fires, from its moveset's notation table (slots / loadout) — no per-move code.
-   * `ctx` (Fighter._inputCtx): { stance, crouching, rising, sidestep, backturned, rage }.
+   * `ctx` (Fighter._inputCtx): { stance, crouching, rising, sidestep, backturned, rage, airborne }.
    * Order (Tekken): string continuation > state/stance prefix (stance code, R. rage art,
-   * BT., SS., FC., WS.) > motion (qcf, f,F, b,f, d,d/f,f ...) > direction+button > button.
+   * BT., SS., FC., WS., AIR. while airborne) > motion (qcf, f,F, b,f, d,d/f,f ...) > direction+button > button.
    * Returns the notation, or null if this fighter has nothing on that input.
    */
   press(input, ctx = {}) {
@@ -912,6 +923,7 @@ export class TekkenBuffer {
     if (ctx.sidestep) prefixes.push('SS.');
     if (ctx.crouching) prefixes.push('FC.');
     if (ctx.rising) prefixes.push('WS.');
+    if (ctx.airborne) prefixes.push('AIR.'); // Tekken jump attacks: an AIR. move outranks its ground namesake while airborne
     prefixes.push('');
     for (const p of prefixes) {
       // Final step HELD (>= MOTION_HOLD frames) prefers the capital spelling (f,f,F+3), a quick
@@ -1055,6 +1067,7 @@ export class TekkenBuffer {
     if (ctx.sidestep) prefixes.push('SS.');
     if (ctx.crouching) prefixes.push('FC.');
     if (ctx.rising) prefixes.push('WS.');
+    if (ctx.airborne) prefixes.push('AIR.'); // Tekken jump attacks: an AIR. move outranks its ground namesake while airborne
     prefixes.push('');
     for (const p of prefixes) {
       // 2) motion inputs on this button, longest first
