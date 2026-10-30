@@ -78,6 +78,21 @@
       // has closed in, so the sweep plays exactly that situation (foe crouching, close
       // at the contactFirst 0.7 m spacing), not a neutral press.
       case 'CROUCHFOE': o._enter('crouch'); f.root.position.x = o.root.position.x - 0.7; return 'foe crouching, approached (close)';
+      // Timing throws (sweep 2026-10-30, Pantera t7.king_295-297): Tekken reversal
+      // throws, pressed while the foe is attacking with the stated limb. Close to the
+      // 0.7 m contactFirst spacing, then start the foe's matching attack (2 = right
+      // punch, 3 = left kick, 4 = right kick, per the Tekken button map in movesets.js)
+      // and press immediately, inside the reversal window, the way condSetup's
+      // oppAttack already plays an attacking opponent for T3 condition rows. A canon
+      // strip alone would have been wrong: it would attempt reversal throws against a
+      // standing, non-attacking foe.
+      case 'TIMERP': case 'TIMELK': case 'TIMERK': {
+        const mv = pre === 'TIMERP' ? '2' : pre === 'TIMELK' ? '3' : '4';
+        f.root.position.x = o.root.position.x - 0.7;
+        o._enter('idle'); o.attack = null;
+        const ok = o.tryAttack(mv) && o.state === 'attack';
+        return ok ? ('opponent attacking with ' + mv + ' (timed ' + (pre === 'TIMERP' ? 'right punch' : pre === 'TIMELK' ? 'left kick' : 'right kick') + ')') : ('opponent ' + mv + ' did not start');
+      }
       // AIR. rows: Tekken jump attacks are pressed while airborne, so jump first (hold u
       // past the 200 ms tap/sidestep window in input.js) and press only once airborne.
       // The peak of a forward jump is not a state the engine models: a peak row is

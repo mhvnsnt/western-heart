@@ -407,6 +407,20 @@ export function canonNotation(n) {
      row ('During enemy wall stun...') are deliberately NOT covered: they need a
      timed-opponent-attack setup and a wall-stun state respectively, different chunks. */
   s = s.replace(/^approach crouching enemy\.\.\.\s*(?=[udfbnUDFB1-4])/i, 'CROUCHFOE.');
+  /* Timing throws (sweep 2026-10-30, Pantera t7.king_295-297): Tekken reversal throws,
+     pressed while the foe is attacking with the stated limb — 'Time with enemy right
+     punch... b+1+3' (Arm Whip) -> 'TIMERP.b+1+3', 'Time with enemy left kick... b+2+4'
+     (Spinning Heel Hold) -> 'TIMELK.b+2+4', 'Time with enemy right kick... b+2+4' (Leg
+     Screw) -> 'TIMERK.b+2+4'. The sweep's setup() plays exactly that situation (foe
+     attacking with 2/3/4, close), the way condSetup already plays an attacking opponent
+     for T3 condition rows — not an n/a, because the attacking-foe state exists and is
+     playable, and not a canon strip, which would attempt reversal throws against a
+     standing, non-attacking foe. Limb-anchored, so the generic 'Time with enemy
+     attack...' prose on Cyborg X / Demonio REV rows (which lives only in
+     t7_command/input_note, never in the input field) is untouched, as is the wall-stun
+     row ('During enemy wall stun...'). Button map 1 = left punch, 2 = right punch,
+     3 = left kick, 4 = right kick, per this file's Tekken input language header. */
+  s = s.replace(/^time with enemy (right punch|left kick|right kick)\.\.\.\s*(?=[udfbnUDFB1-4])/i, (m, limb) => ({ 'right punch': 'TIMERP.', 'left kick': 'TIMELK.', 'right kick': 'TIMERK.' })[limb.toLowerCase()]);
   /* Running moves (TekkenDocs / wavu wiki 'WR', 'while running'): 'WR+2', 'WR 2', 'while running 2'
      -> 'WR.2'. T3's running rows carry the command '4/6+X' (any horizontal while in the run),
      imported as 'b/f+X' — never a real stick direction — so they are WR rows too (True Ogre / Chatur). */
