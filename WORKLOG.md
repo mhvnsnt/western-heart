@@ -3691,3 +3691,28 @@ No bucket exists yet — nothing uploaded to R2, no account created.
   remaining sweep failures (mostly During-Jump air moves); Pantera's 55
   (chain-throw / ~t3 transition classes). Lists:
   docs/proof/moveset-sweep-20261028/r17-core8-failing.json.
+
+## 2026-10-29 — Demonio SS.2,U: headless proof test for the 12f capital hold (PR #1234)
+- What: `test/ss2u-dir-hold.test.mjs` proves the mechanism behind the sweep-page fix
+  (capital direction-only steps held 12f instead of a flat 4f) without a full 3D fight load:
+  it drives the REAL `Fighter._dirHoldUpgrade` in `game/js/fighter.js` frame by frame
+  through the real `setStick` entry point, against the REAL Demonio rows
+  (`SS.2:u` tapped, `SS.2,U` held) from `game/assets/movesets/demonio.json`, and it
+  checks the sweep-page contract in `test/e2e/moveset-sweep.page.js` (capital 12f,
+  lowercase 4f) against the fighter's 0.08 s threshold read from the same tree.
+- Why: the full-fight sweep trace could not be produced in this environment across
+  several runs (page-load stalls; see LOOP-STATE.md run records). The staging law
+  (owner, 2026-10-29) closes the local scratch-sweep route, so proof moves to a repo
+  test that GitHub Actions runs against the real tree (game-unit-tests job).
+- Result claimed: 4f of held stick never upgrades the queued row (4/60 = 0.067 s <
+  0.08 s); 12f upgrades it by frame 5 (5/60 = 0.083 s) and the held flag/queue retarget
+  to the held row. CI result on the proof head 96b21368 (job 123886459298,
+  2026-10-30T04:10:40Z): game-unit-tests SUCCESS, and all 13 check-runs green on
+  that head (instruction-gate, menu-touch-e2e, ui-sources, material-gate, all
+  guards). The per-test log lines were not retrievable (job-log download returned
+  401 on the storage redirect), so the proof record is the job's success on this
+  exact head plus the job's loop over test/*.test.mjs, which necessarily includes
+  the new file — stated here rather than overstated.
+- Still open, stated plainly: a live full-fight sweep trace for SS.2,U is the final
+  end-to-end confirmation and has not been produced; this test proves the upgrade
+  mechanism + hold duration, not a rendered fight. Deletions: none.

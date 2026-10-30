@@ -94,7 +94,12 @@
   }
   function pressHit(h, f, out, crouch) {
     if (h.sub && h.sub !== 'H') setup(h.sub, f);
-    if (h.dirOnly) { for (let k = 0; k < 40 && g._hitStop > 0; k++) step(1, out); setDir('n'); step(2, out); setDir(h.dir); for (let k = 0; k < 40 && g._hitStop > 0; k++) step(1, out); step(4, out); setDir('n'); step(1, out); return; }
+    // Capital (held) direction-only steps ('SS.2,U', TekkenDocs: capital = hold) are held 12f,
+    // like the sweep's other capital directions (final-dir path below holds cap 12f):
+    // fighter.js _dirHoldUpgrade only swaps the queued tapped row for the held row once
+    // the stick has been held >= 0.08 s (~5f), and the old flat 4f hold gave it only ~3
+    // upgrade frames (0.05 s), so held rows never resolved. Lowercase steps stay 4f.
+    if (h.dirOnly) { for (let k = 0; k < 40 && g._hitStop > 0; k++) step(1, out); setDir('n'); step(2, out); setDir(h.dir); for (let k = 0; k < 40 && g._hitStop > 0; k++) step(1, out); step(/[A-Z]/.test(h.dir) ? 12 : 4, out); setDir('n'); step(1, out); return; }
     /* Batch 5: the game pauses _update (input queue included) during hit stop, so a stick step
        the harness pressed and released inside the freeze never reached the buffer: 'f,F+3,4,d+4'
        came out as '...,4'. A player holds the stick through the freeze; wait it out before the
