@@ -4071,7 +4071,7 @@ downstream witness/resolution, not canon). Deletions: none.
   front hit is what that sweep reports. NOT in this chunk: king_150 'low*' (data gap),
   king_158 'JGS, N' (stance+neutral, unclear), alisa_186 '(Clockwork Spring Middle) B'
   (phase-entry data not established).
-## 2026-10-30 — Pantera stance-neutral row leaves the failing list as movement (PR #TBD)
+## 2026-10-30 — Pantera stance-neutral row leaves the failing list as movement (PR #1250)
 - Pantera t7.king_158 'JGS, N' (name '*', damage 0, hit level '-') left the r17 failing
   list as a parse error: the leading-stance-comma canon rule required a button after
   the comma, so 'JGS, N' fell through to 'JGS,N', which the sweep parse() rejects.
