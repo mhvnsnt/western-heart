@@ -28,7 +28,7 @@ LOCK = threading.Lock()
 
 def tool_registry():
     reg = []
-    for tool in ["mb-lab", "gnm", "mpfb2-live", "gamerig"]:
+    for tool in ["mb-lab", "gnm", "mpfb2-live", "gamerig", "mesh-edit"]:
         mod, err = run_job.load_runner(tool)
         reg.append({"tool": tool, "runnable": err is None,
                     "detail": err or f"{mod.__name__} loaded"})
