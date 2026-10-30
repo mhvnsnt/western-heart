@@ -73,6 +73,11 @@
       case 'SS': f.trySidestep(-1); step(12); return 'sidestep';
       case 'WR': setDir('f'); step(3); setDir('n'); step(3); setDir('f'); step(24); return 'running (f,f then hold f)';
       case 'BT': f.stance = 'BT'; f.stanceT = 0; return 'back turned';
+      // Approach-crouching rows (sweep 2026-10-30, Pantera t7.king_229/230/268):
+      // Tekken crouch throws — pressed only when the foe is crouching and the attacker
+      // has closed in, so the sweep plays exactly that situation (foe crouching, close
+      // at the contactFirst 0.7 m spacing), not a neutral press.
+      case 'CROUCHFOE': o._enter('crouch'); f.root.position.x = o.root.position.x - 0.7; return 'foe crouching, approached (close)';
       // AIR. rows: Tekken jump attacks are pressed while airborne, so jump first (hold u
       // past the 200 ms tap/sidestep window in input.js) and press only once airborne.
       // The peak of a forward jump is not a state the engine models: a peak row is
