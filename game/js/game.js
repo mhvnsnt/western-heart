@@ -8,8 +8,9 @@
    Demo mode: open with ?demo=1 and P1 is also CPU-driven —
    good for watching AI-vs-AI or unattended verification.
    ============================================================ */
-import { inReach, moveReach } from './combat-core.js';
+import { inReach, moveReach, attackPhase } from './combat-core.js';
 import { testSweptHit } from './hitbox.js';
+import { reactionFor, feelFor, emit as emitCombat } from './combat-systems.js';
 import * as THREE from 'three';
 import { Arena } from './scene.js';
 // LOADSPEED (2026-10-22): fighter.js (rigs, T3 wiring, movesets) is fight-only —
@@ -52,10 +53,74 @@ import { HitFX } from './hitfx.js';
 // character-vs-stage lighting separation + bible soul glow. Fail-silent.
 import { attachCharacterRig } from './lighting-rig.js';
 import { getRules } from './rules.js';
+// NINE SOULS REDESIGN (worker 83): soul-spirit toggle data.
+import { soulById } from './soul-spirit.js';
 
 const ROUND_TIME = 60;
 const ROUNDS_TO_WIN = 2;   // best of 3
 const FIXED_DT = 1 / 120;
+
+/* ============================================================
+   SOUL-SPIRIT TOGGLE — floating spirit placeholder (worker 83)
+   Owner directive 2026-10-22 ~23:02 CDT. The owner makes the
+   spirit versions themselves; this is the ATTACH POINT plus a
+   soft aura placeholder so the toggle reads in-game today.
+   Never an AI-generated stand-in: when the owner's spirit GLBs
+   land, swap the sprite for the real model loader and keep the
+   same attach contract (fighter.lean child, behind at
+   upper-body height, flips with facing). Fail-silent.
+   ============================================================ */
+let _soulGlowTex = null;
+function _soulGlowTexture() {
+  if (_soulGlowTex) return _soulGlowTex;
+  const c = document.createElement('canvas');
+  c.width = c.height = 128;
+  const g = c.getContext('2d');
+  const grad = g.createRadialGradient(64, 64, 4, 64, 64, 64);
+  grad.addColorStop(0, 'rgba(255,255,255,0.95)');
+  grad.addColorStop(0.35, 'rgba(255,255,255,0.45)');
+  grad.addColorStop(1, 'rgba(255,255,255,0)');
+  g.fillStyle = grad;
+  g.fillRect(0, 0, 128, 128);
+  _soulGlowTex = new THREE.CanvasTexture(c);
+  return _soulGlowTex;
+}
+
+/* `mark` is charEntry.soulSpirit = { soulId, matched } (or null). */
+function attachSoulSpirit(fighter, mark) {
+  try {
+    if (!fighter || !fighter.lean || !mark || !mark.soulId) return;
+    const soul = soulById(mark.soulId);
+    if (!soul) return;
+    const mat = new THREE.SpriteMaterial({
+      map: _soulGlowTexture(),
+      color: soul.color,
+      transparent: true,
+      opacity: mark.matched ? 0.85 : 0.5,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+    });
+    const sprite = new THREE.Sprite(mat);
+    const s = mark.matched ? 2.1 : 1.6; // vessel match burns brighter
+    sprite.scale.set(s, s, 1);
+    // lean-local: behind at upper-body height; lean flips with facing,
+    // so the spirit stays behind through side-switches.
+    sprite.position.set(0, 1.75, -0.95);
+    sprite.renderOrder = 5;
+    fighter.lean.add(sprite);
+    fighter._soulSpirit = { sprite, phase: Math.random() * Math.PI * 2, matched: !!mark.matched };
+  } catch (e) {
+    console.warn('[WH] soul-spirit attach failed (non-fatal):', e && e.message);
+  }
+}
+
+function updateSoulSpirit(fighter, dt) {
+  const ss = fighter && fighter._soulSpirit;
+  if (!ss || !ss.sprite) return;
+  ss.phase += dt * 2.2;
+  ss.sprite.position.y = 1.75 + Math.sin(ss.phase) * 0.12;
+  ss.sprite.material.opacity = (ss.matched ? 0.85 : 0.5) + Math.sin(ss.phase * 1.7) * 0.08;
+}
 
 export class Game {
   constructor(canvas, input, ui) {
@@ -109,6 +174,12 @@ export class Game {
     /* Injected module APIs (from lazy.js, set in startMatch). */
     this._stageFx = null;
     this._msApi = null;
+    /* ---- HEART AND MIND WITHIN brawler (worker 20, 2026-10-22) ----
+       When set, the brawler owns the simulation: _loop drives
+       brawler.frame(dt) instead of the versus fixed-step. The arena's
+       camOverride (scene.js) gives it the third-person camera. Null =
+       classic versus flow. */
+    this.brawler = null;
 
     this._loop = this._loop.bind(this);
     requestAnimationFrame(this._loop);
@@ -183,6 +254,15 @@ export class Game {
     // luminous sources). No-op-safe; never blocks a match.
     attachCharacterRig(this.p1, stage);
     attachCharacterRig(this.p2, stage);
+    // SOUL-SPIRIT TOGGLE (owner directive 2026-10-22 ~23:02 CDT): the
+    // floating spirit behind the fighter. PLACEHOLDER RENDER ONLY — the
+    // owner makes the spirit versions themselves; this soft aura marks
+    // the attach point (fighter.lean, behind at upper-body height) until
+    // their models land. Never ship an AI-generated stand-in as the
+    // spirit: when the owner's GLBs arrive, swap _makeSoulSpiritSprite
+    // for the real model loader and keep the same attach contract.
+    attachSoulSpirit(this.p1, playerChar.soulSpirit);
+    attachSoulSpirit(this.p2, enemyChar.soulSpirit);
     // FIGHT LAB · GUNGAKU (軍楽): the programmable dummy replaces the
     // passive AI when the mode requests it (enemyChar.ai.gungaku).
     if (enemyChar.ai && enemyChar.ai.gungaku) {
@@ -193,6 +273,18 @@ export class Game {
     }
     this.soul = new SoulSystems(this); loadVariants(); // SOUL-SYSTEMS.md
     this.ai1 = this.demo ? new AIController(this.p1, personalityForChar(playerChar)) : null;
+
+    // TTT2 TAG BATTLE (worker 24): benched partners + tag mechanics.
+    // game.p1/game.p2 always point at the ACTIVE fighters; TagMatch swaps
+    // which Fighter objects those references (and the scene) point at.
+    this.tagMatch = null;
+    if (opts.tagTeamEntries && opts.tagTeamEntries.p1.length === 2 && opts.tagTeamEntries.p2.length === 2) {
+      try {
+        const { TagMatch } = await import('./team-battle.js');
+        this.tagMatch = new TagMatch(this, opts.tagTeamEntries);
+        await this.tagMatch.build();
+      } catch (e) { console.warn('[WH] tag battle setup failed:', e?.message || e); this.tagMatch = null; }
+    }
 
     this.wins = { p1: 0, p2: 0 };
     this.round = 1;
@@ -232,6 +324,9 @@ export class Game {
     if (this.p2) { this.arena.scene.remove(this.p2.root); this.p2 = null; }
     this.ai = null;
     this.ai1 = null;
+    // A live brawler never survives a state reset — stop it first so its
+    // fighters, camera override and HUD are torn down cleanly.
+    if (this.brawler) { const b = this.brawler; this.brawler = null; try { b.stop(); } catch (e) { /* already torn down */ } }
     // Reset all match state
     this.wins = { p1: 0, p2: 0 };
     this.round = 1;
@@ -302,6 +397,8 @@ export class Game {
     this.ui.banner(`ROUND ${this.round}`);
     this.ui.updateHP(this.p1, this.p2);
     this.ui.updateMeter(this.p1, this.p2);
+    // TTT2: tag-match round reset (re-park benched partners, clear rage).
+    if (this.tagMatch) this.tagMatch.onRoundStart();
     setTimeout(() => {
       if (this.roundState !== 'intro') return;
       this.ui.banner('FIGHT!');
@@ -337,10 +434,23 @@ export class Game {
       }
     }
 
+    // HEART AND MIND WITHIN brawler: the mode owns the sim (its own
+    // fixed-step + hitstop live in brawler.frame). Versus stays untouched.
+    if (this.brawler && !this.paused) {
+      try {
+        this.brawler.frame(frameDt);
+      } catch (e) {
+        console.error('[WH] brawler frame failed:', e);
+        this.brawler = null;
+      }
+    }
     // Tekken hitstop freezes EVERYTHING (hitfx 2026-10-22): the effect stack
     // gets dt=0 while the sim is frozen, so the spark holds then bursts.
     this.hitfx.update(this._hitStop > 0 ? 0 : frameDt);
-    this.arena.update(frameDt, this.p1, this.p2);
+    this.arena.update(frameDt, this.p1, this.p2,
+      // fight camera follows the fighting level: floor/balcony breaks
+      // drop stageBreaks.groundY below 0 (owner 2026-10-25).
+      this.stageBreaks ? this.stageBreaks.groundY : 0);
     // X-ray: camera + anatomy-layer overlay, AFTER the fight camera so the
     // zoom wins for this frame. Rendering only — no animation clips.
     if (this.xray) this.xray.update(realDt);
@@ -390,7 +500,10 @@ export class Game {
         // (drives motion specials qcf/f,F and directional attacks f+1).
         // Pass the tick length: the buffer's windows are T3 frames of 1/60 s and it
         // weighs each entry by dt, so they stay real-time at FIXED_DT = 1/120 (or any rate).
-        this.p1.tekken.noteDirection(stick, dt);
+        { const had = this.p1.tekken._dash; this.p1.tekken.noteDirection(stick, dt);
+          const dl = this.p1.tekken._dash; if (dl && dl !== had) this.p1.trySystemMotion(dl.dir); } // KOF dash/backdash/roll rows
+        if (this.p1.tryHoldUpgrade) this.p1.tryHoldUpgrade(inp.held);
+        if (stick !== this._p1StickWas) { this._p1StickWas = stick; if (this.p1.tryDirFollow) this.p1.tryDirFollow(stick); }
         if (ms && this.p1.isBlocking()) ms.blockTime += dt;
         if (ms) ms.time += dt;
         // Stream 6: while caught in a throw, limb inputs are break attempts.
@@ -409,15 +522,19 @@ export class Game {
           // FIGHTER DEPTH (worker 34): soul kindle (ki charge) watches the
           // raw queue for the 1+2+3+4 press.
           // SOUL-SYSTEMS: 九魂解放 at a full meter claims the 1+2+3+4 press before soul kindle.
-          if (this.soul && this.soul.claimRelease(this.p1, this.p2, whQueue)) { rec('nine-soul-release'); }
-          else if (this._whDepth) this._whDepth.onPlayerQueue(this.p1, whQueue, dt);
+          // KOF MAX Mode row on 1+2+3+4 (with 2 stocks, not already in MAX) outranks the 1+2+3+4 claims.
+          const kofMax = whQueue.includes('1+2+3+4') && this.p1.systemRowOn('1+2+3+4', 'max') && !(this.p1._maxT > 0) && this.p1.meter >= 50;
+          if (kofMax) { /* falls through to tryAttack('1+2+3+4') */ }
+          else if (this.soul && this.soul.claimRelease(this.p1, this.p2, whQueue)) { rec('nine-soul-release'); }
+          // A directional 1+2+3+4 the fighter owns ('d+1+2+3+4') is that move, not the neutral kindle.
+          else if (this._whDepth && !(whQueue.includes('1+2+3+4') && this.p1.tekken && this.p1.tekken.lastDir && this.p1.tekken.lastDir !== 'n' && this.p1.tekken.resolveKey && this.p1.tekken.resolveKey(this.p1.tekken.lastDir + '+1+2+3+4'))) this._whDepth.onPlayerQueue(this.p1, whQueue, dt);
           for (const act of whQueue) {
-          if (act === 'punch' || act === 'kick' || act === 'grab' ||
+          if (act === 'punch' || act === 'kick' || act === 'grab' || act === 'sig' ||
               act === '1' || act === '2' || act === '3' || act === '4' ||
               act === '1+3' || act === '2+4' || act === '1+2' || act === '3+4' ||
-              act === '1+4' || act === '2+3') {
+              act === '1+4' || act === '2+3' || /^[1-4](\+[1-4]){2,3}$/.test(act)) {
             // 魂 ACTION: 2+3 while the URGE/HEAT gauge is on + a context trigger.
-            if (act === '2+3' && this.p1._urgeOn && this._spiritCheck(this.p1, this.p2)) { rec('spirit'); continue; }
+            if (act === '2+3' && this.p1._urgeOn && !this.p1.systemRowOn('2+3', 'taunt') && this._spiritCheck(this.p1, this.p2)) { rec('spirit'); continue; }
             // SOUL-SYSTEMS: 霊放 Reihou on 1+4 only while the foe is raging.
             if (act === '1+4' && this.soul && this.soul.tryReihou(this.p1, this.p2)) { rec('reihou'); continue; }
             if (this.p1.tryAttack(act)) { audio.whiff(); rec(act); }
@@ -439,6 +556,8 @@ export class Game {
           else if (act === 'transform-down') {
             if (this.p1.tryTransform('down')) { audio.soulSurge(this.p1.char.id); rec('transform-down'); }
           }
+          // TTT2: TAG button / T key — swap the active fighter with the benched partner.
+          else if (act === 'tag') { if (this.tagMatch) this.tagMatch.requestTag('p1', 'manual'); }
           } // end for (const act of whQueue) — fighter-depth wire
         }
       }
@@ -453,6 +572,8 @@ export class Game {
       // --- Advance fighters ---
       this.p1.update(dt, this.p2);
       this.p2.update(dt, this.p1);
+      // TTT2: red-health regen, rage watch, CPU auto-tag, tag-assault timer.
+      if (this.tagMatch) this.tagMatch.onUpdate(dt);
 
       // --- Stream 6: throw-lock resolution (break window expired) ---
       for (const atk of [this.p1, this.p2]) {
@@ -519,6 +640,9 @@ export class Game {
       this.p2.update(dt, this.p1);
       if (this._roundLockT <= 0) this._afterRound();
     }
+    // SOUL-SPIRIT TOGGLE (worker 83): drift/bob the placeholder aura.
+    updateSoulSpirit(this.p1, dt);
+    updateSoulSpirit(this.p2, dt);
   }
 
   /* Facing-relative Tekken direction from input state: f/b/u/d + diagonals. */
@@ -696,6 +820,17 @@ export class Game {
             (isCounter ? 0.5 : isGrab ? 0.45 : isHeavy ? 0.4 : 0.22) * this.feel.shake,
             (isCounter ? 0.3 : isGrab ? 0.28 : 0.2) * this.feel.shake);
           this._hitStop = (isCounter ? 0.14 : isGrab ? 0.1 : isHeavy ? 0.11 : 0.08) * this.feel.hitstop;
+          // pt217u: Tekken reaction table (stagger/crumple/launch/screw/wall splat/floor bound/
+          // knockdown, counter-hit) -> defender._reaction + spark/sound hook bus (combat-systems.js).
+          try {
+            const reaction = reactionFor(hb.move, { counter: !!isCounter, airborne: !defender.onGround, crouching: defender.state === 'crouch',
+              nearWall: !!(this.arena && this.arena.nearWall && this.arena.nearWall(defender)), juggleHits: attacker.combo || 0 });
+            const fx = feelFor(reaction, { counter: !!isCounter });
+            this._hitStop = Math.max(this._hitStop, fx.stopSec * this.feel.hitstop);
+            defender._reaction = reaction;
+            if (hb.move.purgeRage) { defender._rageUsed = true; if (defender.setRageAura) defender.setRageAura(false); } // 霊放 purifies rage
+            emitCombat({ type: 'hit', reaction, counter: !!isCounter, spark: fx.spark, sound: fx.sound, attacker: attacker.char && attacker.char.id, move: attacker.attackName });
+          } catch (e) { /* reaction layer is advisory; never break a hit */ }
           // Tekken hit-condition presentation (hitfx.js): gold spark on hit,
           // red-orange on counter, ring on heavies, character surge color kept.
           const fxType = isSurge ? 'surge' : isCounter ? 'counter' : isGrab ? 'grab' : isHeavy ? 'heavy' : 'hit';
@@ -741,7 +876,14 @@ export class Game {
 
   /* ---------------- Round flow ---------------- */
   _timeOut() {
-    if (this.p1.hp > this.p2.hp) this.p2.hp = 0;
+    // TTT2 tag: timeout compares TOTAL team HP (active + benched), not
+    // just the fighters in the ring.
+    if (this.tagMatch) {
+      const t1 = this.tagMatch.teamHp('p1'), t2 = this.tagMatch.teamHp('p2');
+      if (t1 > t2) this.p2.hp = 0; else if (t2 > t1) this.p1.hp = 0;
+      else { this.p1.hp = this.p2.hp = 0; }
+    }
+    else if (this.p1.hp > this.p2.hp) this.p2.hp = 0;
     else if (this.p2.hp > this.p1.hp) this.p1.hp = 0;
     else { this.p1.hp = this.p2.hp = 0; }
     this._endRound();
@@ -771,7 +913,7 @@ export class Game {
       this.wins = { p1: 0, p2: 0 };
       this.ui.setRounds(this.wins, this.roundsToWin);
       this.round = 1;
-      this.ui.banner('RESET — DUMMY RESTORED');
+      this.ui.hudNote('RESET — DUMMY RESTORED');
       this._startRound();
       return;
     }

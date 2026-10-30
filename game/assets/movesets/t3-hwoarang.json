@@ -5149,9 +5149,9 @@
         "match": "nearest limb/class/startup (approximate)"
       }
     },
-    "t8.Hwoarang-(Back to wall).b,​b,​UB": {
+    "t8.Hwoarang-(Back to wall).b,\u200bb,\u200bUB": {
       "name": "[[Wall Jump Attack]]",
-      "input": "(Back to wall).b,​b,​UB",
+      "input": "(Back to wall).b,\u200bb,\u200bUB",
       "startup": 0.6,
       "active": 0.05,
       "recovery": 0.5,
@@ -5166,16 +5166,16 @@
       "on_hit": "+8a",
       "on_ch": null,
       "crush": "&lt;div class=&quot;plainlist&quot;&gt;\n* js14?~32?&lt;/div&gt;",
-      "anim_ref": "t8:hwoarang:hwoarang-(back to wall).b,​b,​ub",
+      "anim_ref": "t8:hwoarang:hwoarang-(back to wall).b,\u200bb,\u200bub",
       "input_slots": [],
       "move_class": "special",
       "t8_source": "hwoarang",
-      "t8_id": "Hwoarang-(Back to wall).b,​b,​UB",
+      "t8_id": "Hwoarang-(Back to wall).b,\u200bb,\u200bUB",
       "t8_damage": "21",
-      "t8_input": "(Back to wall).b,​b,​UB",
-      "merge_source": "t8:Hwoarang-(Back to wall).b,​b,​UB",
+      "t8_input": "(Back to wall).b,\u200bb,\u200bUB",
+      "merge_source": "t8:Hwoarang-(Back to wall).b,\u200bb,\u200bUB",
       "launch": true,
-      "input_note": "(Back to wall). unparsed: ​b",
+      "input_note": "(Back to wall). unparsed: \u200bb",
       "anim_t3": {
         "bank": "hwoarang",
         "row": 288,
@@ -5723,8 +5723,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st CH; &lt;/div&gt",
       "anim_t3": {
         "bank": "hwoarang",
-        "row": 200,
-        "match": "same-notation"
+        "row": 95,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+1~t8.hwoarang": {
@@ -10573,8 +10573,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Available on hit or block only; Jail from 1st block; Combo from 1st hit; Also possible during RFF; Transition to RFS; &lt;/div&gt",
       "anim_t3": {
         "bank": "hwoarang",
-        "row": 144,
-        "match": "same-notation"
+        "row": 95,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+3,4,3": {
@@ -11110,7 +11110,7 @@
         "WALL.b,b,u/b"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_1",
       "t7_command": "Back towards wall... b, b, u/b",
       "t7_hit_level": "mid",
@@ -11151,7 +11151,7 @@
         "1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_2",
       "t7_command": "1",
       "t7_hit_level": "high",
@@ -11166,7 +11166,9 @@
         "bank": "hwoarang",
         "row": 203,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,1~t7.hwoarang": {
       "name": "HWOARANG 1,1",
@@ -11190,7 +11192,7 @@
         "1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_3",
       "t7_command": "1, 1",
       "t7_hit_level": "high, high",
@@ -11212,7 +11214,9 @@
         "bank": "hwoarang",
         "row": 204,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "9,9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,1~t7.hwoarang.2": {
       "name": "HWOARANG 1,1",
@@ -11236,7 +11240,7 @@
         "1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_4",
       "t7_command": "(1), 1",
       "t7_hit_level": "high",
@@ -11275,7 +11279,7 @@
         "1,1,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_5",
       "t7_command": "1, 1, 3",
       "t7_hit_level": "high, high, low",
@@ -11298,7 +11302,9 @@
         "bank": "hwoarang",
         "row": 220,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9,10,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,1,3~t7.hwoarang.2": {
       "name": "HWOARANG 1,1,3",
@@ -11322,7 +11328,7 @@
         "1,1,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_6",
       "t7_command": "(1), 1, 3",
       "t7_hit_level": "high, low",
@@ -11368,7 +11374,7 @@
         "1,1,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_7",
       "t7_command": "(1), (1), 3",
       "t7_hit_level": "low",
@@ -11407,7 +11413,7 @@
         "1,1,3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_8",
       "t7_command": "1, 1, 3, 3",
       "t7_hit_level": "high, high, low, high",
@@ -11431,7 +11437,9 @@
         "bank": "hwoarang",
         "row": 220,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9,10,13,24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,1,3,3~t7.hwoarang.2": {
       "name": "HWOARANG 1,1,3,3",
@@ -11455,7 +11463,7 @@
         "1,1,3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_9",
       "t7_command": "(1), 1, 3, 3",
       "t7_hit_level": "high, low, high",
@@ -11502,7 +11510,7 @@
         "1,1,3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_10",
       "t7_command": "(1), (1), 3, 3",
       "t7_hit_level": "low, high",
@@ -11548,7 +11556,7 @@
         "1,1,3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_11",
       "t7_command": "(1), (1), (3), 3",
       "t7_hit_level": "high",
@@ -11587,7 +11595,7 @@
         "1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_12",
       "t7_command": "1, 2",
       "t7_hit_level": "high, high",
@@ -11609,7 +11617,9 @@
         "bank": "hwoarang",
         "row": 285,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "9,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2~t7.hwoarang.2": {
       "name": "HWOARANG 1,2",
@@ -11633,7 +11643,7 @@
         "1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_13",
       "t7_command": "(1), 2",
       "t7_hit_level": "high",
@@ -11672,7 +11682,7 @@
         "1,2,f+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_14",
       "t7_command": "1, 2, f+3",
       "t7_hit_level": "high, high, mid",
@@ -11695,7 +11705,9 @@
         "bank": "hwoarang",
         "row": 220,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9,13,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,f+3~t7.hwoarang.2": {
       "name": "HWOARANG 1,2,f+3",
@@ -11719,7 +11731,7 @@
         "1,2,f+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_15",
       "t7_command": "(1), 2, f+3",
       "t7_hit_level": "high, mid",
@@ -11765,7 +11777,7 @@
         "1,2,f+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_16",
       "t7_command": "(1), (2), f+3",
       "t7_hit_level": "mid",
@@ -11804,7 +11816,7 @@
         "1,2,f+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_17",
       "t7_command": "1, 2, f+4 (close)",
       "t7_hit_level": "high, high, mid",
@@ -11829,7 +11841,9 @@
         "bank": "hwoarang",
         "row": 95,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "8,12,44",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,f+4~t7.hwoarang.2": {
       "name": "Rejection",
@@ -11853,7 +11867,7 @@
         "1,2,f+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_18",
       "t7_command": "1, 2, f+4 (far)",
       "t7_hit_level": "high, high, mid",
@@ -11878,7 +11892,9 @@
         "bank": "hwoarang",
         "row": 95,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "8,12,33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,f+4~t7.hwoarang.3": {
       "name": "HWOARANG 1,2,f+4",
@@ -11902,7 +11918,7 @@
         "1,2,f+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_19",
       "t7_command": "(1), 2, f+4 (close)",
       "t7_hit_level": "high, mid",
@@ -11950,7 +11966,7 @@
         "1,2,f+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_20",
       "t7_command": "(1), 2, f+4 (far)",
       "t7_hit_level": "high, mid",
@@ -11998,7 +12014,7 @@
         "1,2,f+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_21",
       "t7_command": "(1), (2), f+4 (close)",
       "t7_hit_level": "mid",
@@ -12039,7 +12055,7 @@
         "1,2,f+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_22",
       "t7_command": "(1), (2), f+4 (far)",
       "t7_hit_level": "mid",
@@ -12080,7 +12096,7 @@
         "2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_23",
       "t7_command": "2",
       "t7_hit_level": "high",
@@ -12095,7 +12111,9 @@
         "bank": "hwoarang",
         "row": 91,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,f+3~t7.hwoarang": {
       "name": "Right Jab Side Kick",
@@ -12119,7 +12137,7 @@
         "2,f+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_24",
       "t7_command": "2, f+3",
       "t7_hit_level": "high, mid",
@@ -12141,7 +12159,9 @@
         "bank": "hwoarang",
         "row": 220,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,f+3~t7.hwoarang.2": {
       "name": "HWOARANG 2,f+3",
@@ -12165,7 +12185,7 @@
         "2,f+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_25",
       "t7_command": "(2), f+3",
       "t7_hit_level": "mid",
@@ -12204,7 +12224,7 @@
         "2,f+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_26",
       "t7_command": "2, f+4 (close)",
       "t7_hit_level": "high, mid",
@@ -12228,7 +12248,9 @@
         "bank": "hwoarang",
         "row": 95,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,49",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,f+4~t7.hwoarang.2": {
       "name": "Right Jab to Spinning Back Kick",
@@ -12252,7 +12274,7 @@
         "2,f+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_27",
       "t7_command": "2, f+4 (far)",
       "t7_hit_level": "high, mid",
@@ -12276,7 +12298,9 @@
         "bank": "hwoarang",
         "row": 95,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "12,33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "2,f+4~t7.hwoarang.3": {
       "name": "HWOARANG 2,f+4",
@@ -12300,7 +12324,7 @@
         "2,f+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_28",
       "t7_command": "(2), f+4 (close)",
       "t7_hit_level": "mid",
@@ -12341,7 +12365,7 @@
         "2,f+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_29",
       "t7_command": "(2), f+4 (far)",
       "t7_hit_level": "mid",
@@ -12382,7 +12406,7 @@
         "3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_30",
       "t7_command": "3",
       "t7_hit_level": "high",
@@ -12397,7 +12421,9 @@
         "bank": "hwoarang",
         "row": 207,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,3~t7.hwoarang": {
       "name": "HWOARANG 3,3",
@@ -12421,7 +12447,7 @@
         "3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_31",
       "t7_command": "3, 3",
       "t7_hit_level": "high, mid",
@@ -12443,7 +12469,9 @@
         "bank": "hwoarang",
         "row": 228,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "20,16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,3~t7.hwoarang.2": {
       "name": "HWOARANG 3,3",
@@ -12467,7 +12495,7 @@
         "3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_32",
       "t7_command": "(3), 3",
       "t7_hit_level": "mid",
@@ -12506,7 +12534,7 @@
         "3,3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_33",
       "t7_command": "3, 3, 3",
       "t7_hit_level": "high, mid, mid",
@@ -12530,7 +12558,9 @@
         "bank": "hwoarang",
         "row": 229,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "20,16,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,3,3~t7.hwoarang.2": {
       "name": "HWOARANG 3,3,3",
@@ -12554,7 +12584,7 @@
         "3,3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_34",
       "t7_command": "(3), 3, 3",
       "t7_hit_level": "mid, mid",
@@ -12601,7 +12631,7 @@
         "3,3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_35",
       "t7_command": "(3), (3), 3",
       "t7_hit_level": "mid",
@@ -12641,7 +12671,7 @@
         "3,3,f+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_36",
       "t7_command": "3, 3, f+4",
       "t7_hit_level": "high, mid, high",
@@ -12689,7 +12719,7 @@
         "3,3,f+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_37",
       "t7_command": "(3), 3, f+4",
       "t7_hit_level": "mid, high",
@@ -12736,7 +12766,7 @@
         "3,3,f+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_38",
       "t7_command": "(3), (3), f+4",
       "t7_hit_level": "high",
@@ -12776,7 +12806,7 @@
         "3~4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_39",
       "t7_command": "3~4",
       "t7_hit_level": "mid, mid",
@@ -12799,7 +12829,9 @@
         "bank": "hwoarang",
         "row": 273,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "14,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4~t7.hwoarang": {
       "name": "HWOARANG 4",
@@ -12823,7 +12855,7 @@
         "4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_40",
       "t7_command": "4",
       "t7_hit_level": "high",
@@ -12838,7 +12870,9 @@
         "bank": "hwoarang",
         "row": 95,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,3~t7.hwoarang": {
       "name": "Right Left Kick Combo",
@@ -12862,7 +12896,7 @@
         "4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_41",
       "t7_command": "4, 3",
       "t7_hit_level": "high, mid",
@@ -12884,7 +12918,9 @@
         "bank": "hwoarang",
         "row": 235,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "18,16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,3~t7.hwoarang.2": {
       "name": "HWOARANG 4,3",
@@ -12908,7 +12944,7 @@
         "4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_42",
       "t7_command": "(4), 3",
       "t7_hit_level": "mid",
@@ -12947,7 +12983,7 @@
         "4,4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_43",
       "t7_command": "4, 4, 3",
       "t7_hit_level": "high, high, mid",
@@ -12971,7 +13007,9 @@
         "bank": "hwoarang",
         "row": 214,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,13,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,4,3~t7.hwoarang.2": {
       "name": "HWOARANG 4,4,3",
@@ -12995,7 +13033,7 @@
         "4,4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_44",
       "t7_command": "(4), 4, 3",
       "t7_hit_level": "high, mid",
@@ -13042,7 +13080,7 @@
         "4,4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_45",
       "t7_command": "(4), (4), 3",
       "t7_hit_level": "mid",
@@ -13082,7 +13120,7 @@
         "4,4,4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_46",
       "t7_command": "4, 4, 4, 3",
       "t7_hit_level": "high, high, high, mid",
@@ -13107,7 +13145,9 @@
         "bank": "hwoarang",
         "row": 238,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "18,13,13,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,4,4,3~t7.hwoarang.2": {
       "name": "HWOARANG 4,4,4,3",
@@ -13131,7 +13171,7 @@
         "4,4,4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_47",
       "t7_command": "(4), 4, 4, 3",
       "t7_hit_level": "high, high, mid",
@@ -13179,7 +13219,7 @@
         "4,4,4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_48",
       "t7_command": "(4), (4), 4, 3",
       "t7_hit_level": "high, mid",
@@ -13226,7 +13266,7 @@
         "4,4,4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_49",
       "t7_command": "(4), (4), (4), 3",
       "t7_hit_level": "mid",
@@ -13266,7 +13306,7 @@
         "u+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_50",
       "t7_command": "u+3+4",
       "t7_hit_level": "mid",
@@ -13276,7 +13316,9 @@
       "t7_on_hit": "STUN",
       "t7_on_ch": "STUN",
       "merge_source": "t7:hwoarang_50",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+2~t7.hwoarang": {
       "name": "Bone Stinger",
@@ -13300,7 +13342,7 @@
         "u/f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_51",
       "t7_command": "u/f+2",
       "t7_hit_level": "mid",
@@ -13316,7 +13358,9 @@
         "bank": "hwoarang",
         "row": 274,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "29",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3~t7.hwoarang": {
       "name": "HWOARANG u/f+3",
@@ -13340,7 +13384,7 @@
         "u/f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_52",
       "t7_command": "u/f+3",
       "t7_hit_level": "mid",
@@ -13356,7 +13400,9 @@
         "bank": "hwoarang",
         "row": 62,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3,4~t7.hwoarang": {
       "name": "HWOARANG u/f+3,4",
@@ -13380,7 +13426,7 @@
         "u/f+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_53",
       "t7_command": "u/f+3, 4",
       "t7_hit_level": "mid, mid",
@@ -13401,9 +13447,11 @@
       "launch": true,
       "anim_t3": {
         "bank": "hwoarang",
-        "row": 144,
-        "match": "same-notation"
-      }
+        "row": 95,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      },
+      "mod_damage": "20,18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3,4,3~t7.hwoarang": {
       "name": "Hunting Hawk",
@@ -13427,7 +13475,7 @@
         "u/f+3,4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_54",
       "t7_command": "u/f+3, 4, 3",
       "t7_hit_level": "mid, mid, mid",
@@ -13451,7 +13499,9 @@
         "bank": "hwoarang",
         "row": 62,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20,18,33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3+4~t7.hwoarang": {
       "name": "HWOARANG u/f+3+4",
@@ -13475,7 +13525,7 @@
         "u/f+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_55",
       "t7_command": "u/f+3+4",
       "t7_hit_level": "mid, mid",
@@ -13497,7 +13547,9 @@
         "bank": "hwoarang",
         "row": 77,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "13,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3+4~t7.hwoarang.2": {
       "name": "HWOARANG u/f+3+4",
@@ -13521,7 +13573,7 @@
         "u/f+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_56",
       "t7_command": "u/f+3+4 (second hit only)",
       "t7_hit_level": "mid",
@@ -13537,7 +13589,9 @@
         "bank": "hwoarang",
         "row": 77,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "13,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3+4,4~t7.hwoarang": {
       "name": "Flashing Trident",
@@ -13561,7 +13615,7 @@
         "u/f+3+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_57",
       "t7_command": "u/f+3+4, 4",
       "t7_hit_level": "mid, mid, mid",
@@ -13584,7 +13638,9 @@
         "bank": "hwoarang",
         "row": 253,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,10,17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3+4,4~t7.hwoarang.2": {
       "name": "HWOARANG u/f+3+4,4",
@@ -13608,7 +13664,7 @@
         "u/f+3+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_58",
       "t7_command": "u/f+3+4 (second hit only), 4",
       "t7_hit_level": "mid, mid",
@@ -13631,7 +13687,9 @@
         "bank": "hwoarang",
         "row": 279,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,10,17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+3+4,4~t7.hwoarang.3": {
       "name": "HWOARANG u/f+3+4,4",
@@ -13655,7 +13713,7 @@
         "u/f+3+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_59",
       "t7_command": "(u/f+3+4), 4",
       "t7_hit_level": "mid",
@@ -13694,7 +13752,7 @@
         "f+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_60",
       "t7_command": "f+1+2",
       "t7_hit_level": "mid",
@@ -13704,7 +13762,9 @@
       "t7_on_hit": "+2",
       "t7_on_ch": "STUN",
       "merge_source": "t7:hwoarang_60",
-      "recovery_from": "same-notation T8 recv"
+      "recovery_from": "same-notation T8 recv",
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,f,f+3": {
       "name": "Flying Nerichagi",
@@ -13728,7 +13788,7 @@
         "f,f,f+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_61",
       "t7_command": "f, f, f+3 (or WR+3)",
       "t7_hit_level": "mid",
@@ -13745,7 +13805,9 @@
         "bank": "hwoarang",
         "row": 230,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "37",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,n,d,d/f+4": {
       "name": "Sky Rocket",
@@ -13769,7 +13831,7 @@
         "f,n,d,d/f+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_62",
       "t7_command": "f, n, d, d/f+4",
       "t7_hit_level": "mid",
@@ -13785,7 +13847,9 @@
         "bank": "hwoarang",
         "row": 266,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "25?",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,n,d,d/f:4": {
       "name": "HWOARANG f,n,d,d/f:4",
@@ -13809,7 +13873,7 @@
         "f,n,d,d/f:4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_63",
       "t7_command": "f, n, d, d/f:4",
       "t7_hit_level": "mid",
@@ -13849,7 +13913,7 @@
         "d/f+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_64",
       "t7_command": "d/f+1",
       "t7_hit_level": "mid",
@@ -13864,7 +13928,9 @@
         "bank": "hwoarang",
         "row": 119,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+2~t7.hwoarang": {
       "name": "HWOARANG d/f+2",
@@ -13888,7 +13954,7 @@
         "d/f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_65",
       "t7_command": "d/f+2",
       "t7_hit_level": "mid",
@@ -13904,7 +13970,9 @@
         "bank": "hwoarang",
         "row": 105,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,4~t7.hwoarang": {
       "name": "HWOARANG d/f+3,4",
@@ -13928,7 +13996,7 @@
         "d/f+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_66",
       "t7_command": "(d/f+3), 4",
       "t7_hit_level": "mid",
@@ -13968,7 +14036,7 @@
         "d/f+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_67",
       "t7_command": "d/f+1+2",
       "t7_hit_level": "mid",
@@ -13983,7 +14051,9 @@
         "bank": "hwoarang",
         "row": 104,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3+4~t7.hwoarang": {
       "name": "Double Claymore",
@@ -14007,7 +14077,7 @@
         "d/f+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_68",
       "t7_command": "d/f+3+4",
       "t7_hit_level": "mid",
@@ -14022,7 +14092,9 @@
         "bank": "hwoarang",
         "row": 112,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "10(,5,7)",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+3~t7.hwoarang": {
       "name": "HWOARANG d+3",
@@ -14046,7 +14118,7 @@
         "d+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_69",
       "t7_command": "d+3",
       "t7_hit_level": "low",
@@ -14061,7 +14133,9 @@
         "bank": "hwoarang",
         "row": 116,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+4~t7.hwoarang": {
       "name": "HWOARANG d+4",
@@ -14085,7 +14159,7 @@
         "d+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_70",
       "t7_command": "d+4",
       "t7_hit_level": "low",
@@ -14100,7 +14174,9 @@
         "bank": "hwoarang",
         "row": 117,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+4,4~t7.hwoarang": {
       "name": "Firecracker",
@@ -14124,7 +14200,7 @@
         "d+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_71",
       "t7_command": "d+4, 4",
       "t7_hit_level": "low, mid",
@@ -14147,7 +14223,9 @@
         "bank": "hwoarang",
         "row": 262,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "9,29",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+4,4~t7.hwoarang.2": {
       "name": "HWOARANG d+4,4",
@@ -14171,7 +14249,7 @@
         "d+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_72",
       "t7_command": "(d+4), 4",
       "t7_hit_level": "mid",
@@ -14211,7 +14289,7 @@
         "d/b+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_73",
       "t7_command": "d/b+3",
       "t7_hit_level": "low",
@@ -14226,7 +14304,9 @@
         "bank": "hwoarang",
         "row": 63,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+4~t7.hwoarang": {
       "name": "HWOARANG d/b+4",
@@ -14250,7 +14330,7 @@
         "d/b+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_74",
       "t7_command": "d/b+4",
       "t7_hit_level": "low",
@@ -14265,7 +14345,9 @@
         "bank": "hwoarang",
         "row": 123,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+4,4~t7.hwoarang": {
       "name": "Ankle Biter to Crescent Kick",
@@ -14289,7 +14371,7 @@
         "d/b+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_75",
       "t7_command": "d/b+4, 4",
       "t7_hit_level": "low, high",
@@ -14310,9 +14392,11 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "hwoarang",
-        "row": 200,
-        "match": "same-notation"
-      }
+        "row": 95,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      },
+      "mod_damage": "16,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/b+4,4~t7.hwoarang.2": {
       "name": "HWOARANG d/b+4,4",
@@ -14336,7 +14420,7 @@
         "d/b+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_76",
       "t7_command": "(d/b+4), 4",
       "t7_hit_level": "high",
@@ -14350,8 +14434,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "hwoarang",
-        "row": 200,
-        "match": "same-notation"
+        "row": 95,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+3+4,b,b": {
@@ -14376,7 +14460,7 @@
         "d/b+3+4,b,b"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_77",
       "t7_command": "d/b+3+4, b, b",
       "t7_hit_level": "-",
@@ -14415,7 +14499,7 @@
         "b+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_78",
       "t7_command": "b+1",
       "t7_hit_level": "mid",
@@ -14430,7 +14514,9 @@
         "bank": "hwoarang",
         "row": 89,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+2~t7.hwoarang": {
       "name": "Bolt Cut",
@@ -14454,7 +14540,7 @@
         "b+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_79",
       "t7_command": "b+2",
       "t7_hit_level": "high",
@@ -14469,7 +14555,9 @@
         "bank": "hwoarang",
         "row": 102,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+3~t7.hwoarang": {
       "name": "Left Plasma Blade",
@@ -14493,7 +14581,7 @@
         "b+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_80",
       "t7_command": "b+3",
       "t7_hit_level": "mid",
@@ -14509,7 +14597,9 @@
         "bank": "hwoarang",
         "row": 94,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/b+3~t7.hwoarang": {
       "name": "HWOARANG u/b+3",
@@ -14533,7 +14623,7 @@
         "u/b+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_81",
       "t7_command": "u/b+3",
       "t7_hit_level": "mid",
@@ -14572,7 +14662,7 @@
         "u/b+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_82",
       "t7_command": "u/b+4",
       "t7_hit_level": "mid",
@@ -14587,7 +14677,9 @@
         "bank": "hwoarang",
         "row": 101,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "FC.1": {
       "name": "HWOARANG FC.1",
@@ -14611,7 +14703,7 @@
         "FC.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_83",
       "t7_command": "FC 1",
       "t7_hit_level": "s. mid",
@@ -14650,7 +14742,7 @@
         "FC.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_84",
       "t7_command": "FC 2",
       "t7_hit_level": "s. mid",
@@ -14689,7 +14781,7 @@
         "FC.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_85",
       "t7_command": "FC 3",
       "t7_hit_level": "low",
@@ -14728,7 +14820,7 @@
         "FC.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_86",
       "t7_command": "FC 4",
       "t7_hit_level": "low",
@@ -14767,7 +14859,7 @@
         "SS.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_87",
       "t7_command": "SS 3",
       "t7_hit_level": "mid",
@@ -14806,7 +14898,7 @@
         "f,f,F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_88",
       "t7_command": "WR f, f, F (Full Screen)",
       "t7_hit_level": "mid",
@@ -14847,7 +14939,7 @@
         "f,f,F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_89",
       "t7_command": "WR f, f, F (Full Screen) (On Grounded Opponent)",
       "t7_hit_level": "low",
@@ -14888,7 +14980,7 @@
         "WS.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_90",
       "t7_command": "WS 1",
       "t7_hit_level": "mid",
@@ -14927,7 +15019,7 @@
         "WS.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_91",
       "t7_command": "WS 2",
       "t7_hit_level": "mid",
@@ -14967,7 +15059,7 @@
         "WS.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_92",
       "t7_command": "WS 3",
       "t7_hit_level": "mid",
@@ -15007,7 +15099,7 @@
         "WS.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_93",
       "t7_command": "WS 4",
       "t7_hit_level": "mid",
@@ -15044,7 +15136,7 @@
       "anim_ref": "t7:hwoarang:hwoarang_94",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_94",
       "t7_command": "Face Up, Feet Towards+3 or (After Rolling Forward)",
       "t7_hit_level": "low",
@@ -15082,7 +15174,7 @@
       "anim_ref": "t7:hwoarang:hwoarang_95",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_95",
       "t7_command": "Face Up, Feet Towards+4 or (After Rolling Forward)",
       "t7_hit_level": "mid",
@@ -15123,7 +15215,7 @@
         "FUFT.d+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_96",
       "t7_command": "Face Up, Feet Towards, d+3 (or 4)",
       "t7_hit_level": "low",
@@ -15163,7 +15255,7 @@
         "FUFT.3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_97",
       "t7_command": "Face Up, Feet Towards+3+4",
       "t7_hit_level": "mid",
@@ -15197,7 +15289,7 @@
       "anim_ref": "t7:hwoarang:hwoarang_98",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_98",
       "t7_command": "Face Up, Feet Towards, Roll Forward+1+2",
       "t7_hit_level": "mid",
@@ -15238,7 +15330,7 @@
         "FDFA.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_99",
       "t7_command": "Face Down, Feet Away+3",
       "t7_hit_level": "low",
@@ -15278,7 +15370,7 @@
         "FDFA.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_100",
       "t7_command": "Face Down, Feet Away+4 (close)",
       "t7_hit_level": "mid",
@@ -15319,7 +15411,7 @@
         "FDFA.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_101",
       "t7_command": "Face Down, Feet Away+4 (far)",
       "t7_hit_level": "mid",
@@ -15358,7 +15450,7 @@
       "anim_ref": "t7:hwoarang:hwoarang_102",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_102",
       "t7_command": "(Upon Landing) f",
       "t7_hit_level": "mid",
@@ -15398,7 +15490,7 @@
         "f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_103",
       "t7_command": "f+3",
       "t7_hit_level": "-",
@@ -15437,7 +15529,7 @@
         "1,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_104",
       "t7_command": "1, 2, 3",
       "t7_hit_level": "high, high",
@@ -15459,7 +15551,9 @@
         "bank": "hwoarang",
         "row": 220,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,3~t7.hwoarang": {
       "name": "HWOARANG 1,2,3",
@@ -15483,7 +15577,7 @@
         "1,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_105",
       "t7_command": "(1), 2, 3",
       "t7_hit_level": "high",
@@ -15522,7 +15616,7 @@
         "2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_106",
       "t7_command": "2, 3",
       "t7_hit_level": "high",
@@ -15537,7 +15631,9 @@
         "bank": "hwoarang",
         "row": 241,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,3,F": {
       "name": "Left Kicks to Left Flamingo",
@@ -15561,7 +15657,7 @@
         "3,3,F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_107",
       "t7_command": "3, 3, F",
       "t7_hit_level": "high, mid",
@@ -15583,7 +15679,9 @@
         "bank": "hwoarang",
         "row": 120,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20,16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,3,F~t7.hwoarang": {
       "name": "HWOARANG 3,3,F",
@@ -15607,7 +15705,7 @@
         "3,3,F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_108",
       "t7_command": "(3), 3, F",
       "t7_hit_level": "mid",
@@ -15646,7 +15744,7 @@
         "4,3,F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_109",
       "t7_command": "4, 3, F",
       "t7_hit_level": "high, mid",
@@ -15668,7 +15766,9 @@
         "bank": "hwoarang",
         "row": 91,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u+3~t7.hwoarang": {
       "name": "Jump Kick to Left Flamingo",
@@ -15692,7 +15792,7 @@
         "u+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_110",
       "t7_command": "u+3",
       "t7_hit_level": "high",
@@ -15707,7 +15807,9 @@
         "bank": "hwoarang",
         "row": 63,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+1,3~t7.hwoarang": {
       "name": "Left Uppercut & Middle Kick to Left Flamingo",
@@ -15731,7 +15833,7 @@
         "d/f+1,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_111",
       "t7_command": "d/f+1, 3",
       "t7_hit_level": "mid, mid",
@@ -15777,7 +15879,7 @@
         "d/f+1,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_112",
       "t7_command": "(d/f+1), 3",
       "t7_hit_level": "mid",
@@ -15816,7 +15918,7 @@
         "d/f+3,F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_113",
       "t7_command": "d/f+3, F",
       "t7_hit_level": "-",
@@ -15855,7 +15957,7 @@
         "u/b+3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_114",
       "t7_command": "u/b+3, 3",
       "t7_hit_level": "mid, high",
@@ -15877,7 +15979,9 @@
         "bank": "hwoarang",
         "row": 112,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": ",",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/b+3,3~t7.hwoarang": {
       "name": "HWOARANG u/b+3,3",
@@ -15901,7 +16005,7 @@
         "u/b+3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_115",
       "t7_command": "(u/b+3), 3",
       "t7_hit_level": "high",
@@ -15940,7 +16044,7 @@
         "f,n,d,d/f+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_116",
       "t7_command": "f, n, d, d/f+3",
       "t7_hit_level": "mid",
@@ -15956,7 +16060,9 @@
         "bank": "hwoarang",
         "row": 272,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "36",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "SS.3,3~t7.hwoarang": {
       "name": "Eruption to Left Flamingo",
@@ -15980,7 +16086,7 @@
         "SS.3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_117",
       "t7_command": "SS 3, 3",
       "t7_hit_level": "mid, high",
@@ -16026,7 +16132,7 @@
         "SS.3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_118",
       "t7_command": "(SS 3), 3",
       "t7_hit_level": "high",
@@ -16065,7 +16171,7 @@
         "LFS.3,F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_119",
       "t7_command": " LFS 3, F",
       "t7_hit_level": "mid",
@@ -16080,7 +16186,9 @@
         "bank": "hwoarang",
         "row": 120,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.d/f+3,F": {
       "name": "HWOARANG LFS.d/f+3,F",
@@ -16104,7 +16212,7 @@
         "LFS.d/f+3,F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_120",
       "t7_command": " LFS d/f+3, F",
       "t7_hit_level": "-",
@@ -16143,7 +16251,7 @@
         "RFS.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_121",
       "t7_command": "RFS 3",
       "t7_hit_level": "mid",
@@ -16159,7 +16267,9 @@
         "bank": "hwoarang",
         "row": 272,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "32",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.f+3~t7.hwoarang": {
       "name": "Cheap Shot to Left Flamingo",
@@ -16183,7 +16293,7 @@
         "RFF.f+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_122",
       "t7_command": "RFF f+3",
       "t7_hit_level": "high",
@@ -16198,7 +16308,9 @@
         "bank": "hwoarang",
         "row": 272,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.U": {
       "name": "HWOARANG LFS.U",
@@ -16222,7 +16334,7 @@
         "LFS.U"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_123",
       "t7_command": " LFS U (or F, D, B)",
       "t7_hit_level": "-",
@@ -16262,7 +16374,7 @@
         "LFS.3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_124",
       "t7_command": " LFS 3+4",
       "t7_hit_level": "-",
@@ -16296,7 +16408,7 @@
         "LFS.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_125",
       "t7_command": "LFS 1",
       "t7_hit_level": "high",
@@ -16311,7 +16423,9 @@
         "bank": "hwoarang",
         "row": 57,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "t7.hwoarang_126": {
       "name": "Cheap Shot Snap Kick",
@@ -16333,7 +16447,7 @@
       "anim_ref": "t7:hwoarang:hwoarang_126",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_126",
       "t7_command": "  LFS~n~3",
       "t7_hit_level": "mid",
@@ -16374,7 +16488,7 @@
         "LFS.3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_127",
       "t7_command": "LFS 3, 3",
       "t7_hit_level": "mid, mid",
@@ -16397,7 +16511,9 @@
         "bank": "hwoarang",
         "row": 94,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.3,3~t7.hwoarang.2": {
       "name": "HWOARANG LFS.3,3",
@@ -16421,7 +16537,7 @@
         "LFS.3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_128",
       "t7_command": " LFS (3), 3",
       "t7_hit_level": "mid",
@@ -16461,7 +16577,7 @@
         "LFS.3,f+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_129",
       "t7_command": " LFS 3, f+4",
       "t7_hit_level": "mid, high",
@@ -16508,7 +16624,7 @@
         "LFS.3,f+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_130",
       "t7_command": "LFS (3), f+4",
       "t7_hit_level": "high",
@@ -16548,7 +16664,7 @@
         "LFS.1+4,b,b"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_131",
       "t7_command": "LFS 1+4, b, b",
       "t7_hit_level": "-",
@@ -16587,7 +16703,7 @@
         "LFS.f+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_132",
       "t7_command": " LFS f+3",
       "t7_hit_level": "mid",
@@ -16603,7 +16719,9 @@
         "bank": "hwoarang",
         "row": 272,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.d/f+3,4~t7.hwoarang": {
       "name": "HWOARANG LFS.d/f+3,4",
@@ -16627,7 +16745,7 @@
         "LFS.d/f+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_133",
       "t7_command": " LFS (d/f+3), 4",
       "t7_hit_level": "mid",
@@ -16667,7 +16785,7 @@
         "LFS.d+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_134",
       "t7_command": "LFS d+3",
       "t7_hit_level": "low",
@@ -16682,7 +16800,9 @@
         "bank": "hwoarang",
         "row": 272,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.b+1~t7.hwoarang": {
       "name": "Stealth Needle",
@@ -16706,7 +16826,7 @@
         "LFS.b+1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_135",
       "t7_command": " LFS b+1",
       "t7_hit_level": "mid",
@@ -16721,7 +16841,9 @@
         "bank": "hwoarang",
         "row": 54,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.d+4~t7.hwoarang": {
       "name": "Cutter Right",
@@ -16745,7 +16867,7 @@
         "LFS.d+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_136",
       "t7_command": " LFS d+4",
       "t7_hit_level": "low",
@@ -16784,7 +16906,7 @@
         "LFS.u/f+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_137",
       "t7_command": " LFS u/f+3",
       "t7_hit_level": "mid",
@@ -16800,7 +16922,9 @@
         "bank": "hwoarang",
         "row": 144,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.u/f+3,4~t7.hwoarang": {
       "name": "HWOARANG LFS.u/f+3,4",
@@ -16824,7 +16948,7 @@
         "LFS.u/f+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_138",
       "t7_command": " LFS u/f+3, 4",
       "t7_hit_level": "mid, mid",
@@ -16847,7 +16971,9 @@
         "bank": "hwoarang",
         "row": 279,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "17,16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.u/f+3,4,3~t7.hwoarang": {
       "name": "Flamingo Hunting Hawk",
@@ -16871,7 +16997,7 @@
         "LFS.u/f+3,4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_139",
       "t7_command": " LFS u/f+3, 4, 3",
       "t7_hit_level": "mid, mid, mid",
@@ -16895,7 +17021,9 @@
         "bank": "hwoarang",
         "row": 62,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "17,16,29",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.u/f+4~t7.hwoarang": {
       "name": "Switch Plasma Blade",
@@ -16919,7 +17047,7 @@
         "LFS.u/f+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_140",
       "t7_command": " LFS u/f+4",
       "t7_hit_level": "mid",
@@ -16935,7 +17063,9 @@
         "bank": "hwoarang",
         "row": 269,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.u/f+3+4~t7.hwoarang": {
       "name": "HWOARANG LFS.u/f+3+4",
@@ -16959,7 +17089,7 @@
         "LFS.u/f+3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_141",
       "t7_command": " LFS u/f+3+4",
       "t7_hit_level": "mid, mid",
@@ -16976,7 +17106,9 @@
           8
         ],
         "total": 18
-      }
+      },
+      "mod_damage": "13,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.u/f+3+4~t7.hwoarang.2": {
       "name": "HWOARANG LFS.u/f+3+4",
@@ -17000,7 +17132,7 @@
         "LFS.u/f+3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_142",
       "t7_command": " LFS u/f+3+4 (second hit only)",
       "t7_hit_level": "mid",
@@ -17011,7 +17143,9 @@
       "t7_on_ch": "+1",
       "merge_source": "t7:hwoarang_142",
       "recovery_from": "same-notation T8 recv",
-      "input_note": "(second hit only)"
+      "input_note": "(second hit only)",
+      "mod_damage": "13,10",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.u/f+3+4,4~t7.hwoarang": {
       "name": "Flamingo Flashing Trident",
@@ -17035,7 +17169,7 @@
         "LFS.u/f+3+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_143",
       "t7_command": " LFS u/f+3+4, 4",
       "t7_hit_level": "mid, mid, mid",
@@ -17058,7 +17192,9 @@
         "bank": "hwoarang",
         "row": 253,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,10,17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.u/f+3+4,4~t7.hwoarang.2": {
       "name": "HWOARANG LFS.u/f+3+4,4",
@@ -17082,7 +17218,7 @@
         "LFS.u/f+3+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_144",
       "t7_command": "LFS u/f+3+4 (second hit only), 4",
       "t7_hit_level": "mid, mid",
@@ -17105,7 +17241,9 @@
         "bank": "hwoarang",
         "row": 279,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,10,17",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.u/f+3+4,4~t7.hwoarang.3": {
       "name": "HWOARANG LFS.u/f+3+4,4",
@@ -17129,7 +17267,7 @@
         "LFS.u/f+3+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_145",
       "t7_command": " LFS (u/f+3+4), 4",
       "t7_hit_level": "mid",
@@ -17168,7 +17306,7 @@
         "LFS.2,2,3,4,3,4,4,4,4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_146",
       "t7_command": " LFS 2, 2, 3, 4, 3, 4, 4, 4, 4, 3",
       "t7_hit_level": "-",
@@ -17208,7 +17346,7 @@
         "f,n,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_147",
       "t7_command": "f, n, 4",
       "t7_hit_level": "-",
@@ -17247,7 +17385,7 @@
         "1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_148",
       "t7_command": "1, 2, 4",
       "t7_hit_level": "high, high",
@@ -17269,7 +17407,9 @@
         "bank": "hwoarang",
         "row": 95,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1,2,4~t7.hwoarang": {
       "name": "HWOARANG 1,2,4",
@@ -17293,7 +17433,7 @@
         "1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_149",
       "t7_command": "(1), 2, 4",
       "t7_hit_level": "high",
@@ -17332,7 +17472,7 @@
         "2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_150",
       "t7_command": "2, 4",
       "t7_hit_level": "high",
@@ -17347,7 +17487,9 @@
         "bank": "hwoarang",
         "row": 274,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "12",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,3,4~t7.hwoarang": {
       "name": "Left Kicks to Right Hook Kick",
@@ -17371,7 +17513,7 @@
         "3,3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_151",
       "t7_command": "3, 3, 4",
       "t7_hit_level": "high, mid, high",
@@ -17394,7 +17536,9 @@
         "bank": "hwoarang",
         "row": 253,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20,16,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "3,3,4~t7.hwoarang.2": {
       "name": "HWOARANG 3,3,4",
@@ -17418,7 +17562,7 @@
         "3,3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_152",
       "t7_command": "(3), 3, 4",
       "t7_hit_level": "mid, high",
@@ -17464,7 +17608,7 @@
         "3,3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_153",
       "t7_command": "(3), (3), 4",
       "t7_hit_level": "high",
@@ -17503,7 +17647,7 @@
         "4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_154",
       "t7_command": "4, 4",
       "t7_hit_level": "high, high",
@@ -17525,7 +17669,9 @@
         "bank": "hwoarang",
         "row": 263,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "18,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,4~t7.hwoarang.2": {
       "name": "HWOARANG 4,4",
@@ -17549,7 +17695,7 @@
         "4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_155",
       "t7_command": "(4), 4",
       "t7_hit_level": "high",
@@ -17588,7 +17734,7 @@
         "4,4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_156",
       "t7_command": "4, 4, 4",
       "t7_hit_level": "high, high, high",
@@ -17611,7 +17757,9 @@
         "bank": "hwoarang",
         "row": 267,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "18,13,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,4,4~t7.hwoarang.2": {
       "name": "HWOARANG 4,4,4",
@@ -17635,7 +17783,7 @@
         "4,4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_157",
       "t7_command": "(4), 4, 4",
       "t7_hit_level": "high, high",
@@ -17681,7 +17829,7 @@
         "4,4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_158",
       "t7_command": "(4), (4), 4",
       "t7_hit_level": "high",
@@ -17720,7 +17868,7 @@
         "u+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_159",
       "t7_command": "u+4",
       "t7_hit_level": "mid",
@@ -17735,7 +17883,9 @@
         "bank": "hwoarang",
         "row": 250,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+4,F": {
       "name": "HWOARANG u/f+4,F",
@@ -17759,7 +17909,7 @@
         "u/f+4,F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_160",
       "t7_command": "u/f+4, F",
       "t7_hit_level": "high",
@@ -17798,7 +17948,7 @@
         "u/f+4,4,F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_161",
       "t7_command": "u/f+4, 4, F",
       "t7_hit_level": "high, mid",
@@ -17844,7 +17994,7 @@
         "u/f+4,4,F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_162",
       "t7_command": "(u/f+4), 4, F",
       "t7_hit_level": "mid",
@@ -17883,7 +18033,7 @@
         "u/f+4,4,4,F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_163",
       "t7_command": "u/f+4, 4, 4, F",
       "t7_hit_level": "high, mid, low",
@@ -17930,7 +18080,7 @@
         "u/f+4,4,4,F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_164",
       "t7_command": "(u/f+4), 4, 4, F",
       "t7_hit_level": "mid, low",
@@ -17976,7 +18126,7 @@
         "u/f+4,4,4,F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_165",
       "t7_command": "(u/f+4), (4), 4, F",
       "t7_hit_level": "low",
@@ -18015,7 +18165,7 @@
         "f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_166",
       "t7_command": "f+4",
       "t7_hit_level": "high",
@@ -18030,7 +18180,9 @@
         "bank": "hwoarang",
         "row": 101,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+3,4~t7.hwoarang": {
       "name": "Smash Low Right to Right Flamingo",
@@ -18054,7 +18206,7 @@
         "d+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_167",
       "t7_command": "d+3, 4",
       "t7_hit_level": "low, high",
@@ -18076,7 +18228,9 @@
         "bank": "hwoarang",
         "row": 101,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d+3,4~t7.hwoarang.2": {
       "name": "HWOARANG d+3,4",
@@ -18100,7 +18254,7 @@
         "d+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_168",
       "t7_command": "(d+3), 4",
       "t7_hit_level": "high",
@@ -18139,7 +18293,7 @@
         "d/b+4,F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_169",
       "t7_command": "d/b+4, F",
       "t7_hit_level": "low",
@@ -18154,7 +18308,9 @@
         "bank": "hwoarang",
         "row": 225,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/b+3,4": {
       "name": "Riffle Shuffle to RIght Flamingo",
@@ -18178,7 +18334,7 @@
         "u/b+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_170",
       "t7_command": "u/b+3, 4",
       "t7_hit_level": "mid, mid",
@@ -18200,7 +18356,9 @@
         "bank": "hwoarang",
         "row": 250,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": ",",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/b+3,4~t7.hwoarang": {
       "name": "HWOARANG u/b+3,4",
@@ -18224,7 +18382,7 @@
         "u/b+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_171",
       "t7_command": "(u/b+3), 4",
       "t7_hit_level": "mid",
@@ -18263,7 +18421,7 @@
         "LFS.3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_172",
       "t7_command": " LFS 3, 4",
       "t7_hit_level": "mid, high",
@@ -18285,7 +18443,9 @@
         "bank": "hwoarang",
         "row": 253,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.3,4~t7.hwoarang.2": {
       "name": "HWOARANG LFS.3,4",
@@ -18309,7 +18469,7 @@
         "LFS.3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_173",
       "t7_command": " LFS (3), 4",
       "t7_hit_level": "high",
@@ -18348,7 +18508,7 @@
         "LFS.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_174",
       "t7_command": " LFS 4",
       "t7_hit_level": "high",
@@ -18364,7 +18524,9 @@
         "bank": "hwoarang",
         "row": 266,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "32",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.d+3,4~t7.hwoarang": {
       "name": "Flamingo Low to Right Hook Kick",
@@ -18388,7 +18550,7 @@
         "LFS.d+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_175",
       "t7_command": " LFS d+3, 4",
       "t7_hit_level": "low, mid",
@@ -18410,7 +18572,9 @@
         "bank": "hwoarang",
         "row": 250,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.d+3,4~t7.hwoarang.2": {
       "name": "HWOARANG LFS.d+3,4",
@@ -18434,7 +18598,7 @@
         "LFS.d+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_176",
       "t7_command": " LFS (d+3), 4",
       "t7_hit_level": "mid",
@@ -18473,7 +18637,7 @@
         "RFF.2,4,U"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_177",
       "t7_command": "RFF 2, 4, U (or F, D, B)",
       "t7_hit_level": "high, high",
@@ -18520,7 +18684,7 @@
         "RFF.2,4,U"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_178",
       "t7_command": "RFF (2), 4, U (or F, D, B)",
       "t7_hit_level": "high",
@@ -18560,7 +18724,7 @@
         "RFF.3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_179",
       "t7_command": "RFF 3, 4",
       "t7_hit_level": "mid, high",
@@ -18582,7 +18746,9 @@
         "bank": "hwoarang",
         "row": 250,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.3,4~t7.hwoarang.2": {
       "name": "HWOARANG RFF.3,4",
@@ -18606,7 +18772,7 @@
         "RFF.3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_180",
       "t7_command": "RFF (3), 4",
       "t7_hit_level": "high",
@@ -18645,7 +18811,7 @@
         "RFF.3,4,F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_181",
       "t7_command": "RFF 3, 4, F",
       "t7_hit_level": "",
@@ -18684,7 +18850,7 @@
         "RFF.4,U"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_182",
       "t7_command": "RFF 4, U (or F, D, B)",
       "t7_hit_level": "high",
@@ -18724,7 +18890,7 @@
         "RFF.f+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_183",
       "t7_command": "RFF f+4",
       "t7_hit_level": "-",
@@ -18763,7 +18929,7 @@
         "RFS.U"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_184",
       "t7_command": " RFS U (or F, D, B)",
       "t7_hit_level": "-",
@@ -18803,7 +18969,7 @@
         "RFS.3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_185",
       "t7_command": " RFS 3+4",
       "t7_hit_level": "-",
@@ -18837,7 +19003,7 @@
         "RFS.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_186",
       "t7_command": " RFS 1",
       "t7_hit_level": "mid",
@@ -18852,7 +19018,9 @@
         "bank": "hwoarang",
         "row": 54,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFS.2~t7.hwoarang": {
       "name": "HWOARANG RFS.2",
@@ -18876,7 +19044,7 @@
         "RFS.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_187",
       "t7_command": " RFS 2",
       "t7_hit_level": "high",
@@ -18891,7 +19059,9 @@
         "bank": "hwoarang",
         "row": 224,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFS.3~t7.hwoarang.2": {
       "name": "HWOARANG RFS.3",
@@ -18915,7 +19085,7 @@
         "RFS.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_188",
       "t7_command": " RFS 3",
       "t7_hit_level": "high",
@@ -18931,7 +19101,9 @@
         "bank": "hwoarang",
         "row": 272,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "32",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFS.4~t7.hwoarang": {
       "name": "Right Kick",
@@ -18955,7 +19127,7 @@
         "RFS.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_189",
       "t7_command": " RFS 4",
       "t7_hit_level": "mid",
@@ -18971,7 +19143,9 @@
         "bank": "hwoarang",
         "row": 266,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFS.f+3~t7.hwoarang": {
       "name": "HWOARANG RFS.f+3",
@@ -18995,7 +19169,7 @@
         "RFS.f+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_190",
       "t7_command": "RFS f+3",
       "t7_hit_level": "mid",
@@ -19010,7 +19184,9 @@
         "bank": "hwoarang",
         "row": 272,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFS.f+3,4": {
       "name": "Fire Storm Right",
@@ -19034,7 +19210,7 @@
         "RFS.f+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_191",
       "t7_command": " RFS f+3, 4",
       "t7_hit_level": "mid, high",
@@ -19057,7 +19233,9 @@
         "bank": "hwoarang",
         "row": 250,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "22,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFS.f+3,4~t7.hwoarang": {
       "name": "HWOARANG RFS.f+3,4",
@@ -19081,7 +19259,7 @@
         "RFS.f+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_192",
       "t7_command": " RFS (f+3), 4",
       "t7_hit_level": "high",
@@ -19121,7 +19299,7 @@
         "RFS.d/f+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_193",
       "t7_command": " RFS d/f+4",
       "t7_hit_level": "mid",
@@ -19136,7 +19314,9 @@
         "bank": "hwoarang",
         "row": 200,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFS.d+3~t7.hwoarang": {
       "name": "Cutter Left",
@@ -19160,7 +19340,7 @@
         "RFS.d+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_194",
       "t7_command": " RFS d+3",
       "t7_hit_level": "low",
@@ -19199,7 +19379,7 @@
         "RFS.d+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_195",
       "t7_command": " RFS d+4",
       "t7_hit_level": "low",
@@ -19214,7 +19394,9 @@
         "bank": "hwoarang",
         "row": 269,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFS.d+4,3~t7.hwoarang": {
       "name": "Cactus Shot",
@@ -19238,7 +19420,7 @@
         "RFS.d+4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_196",
       "t7_command": " RFS d+4, 3",
       "t7_hit_level": "low, mid",
@@ -19261,7 +19443,9 @@
         "bank": "hwoarang",
         "row": 63,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "21,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFS.d+4,3~t7.hwoarang.2": {
       "name": "HWOARANG RFS.d+4,3",
@@ -19285,7 +19469,7 @@
         "RFS.d+4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_197",
       "t7_command": " RFS (d+4), 3",
       "t7_hit_level": "mid",
@@ -19325,7 +19509,7 @@
         "RFS.b+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_198",
       "t7_command": " RFS b+3",
       "t7_hit_level": "mid",
@@ -19341,7 +19525,9 @@
         "bank": "hwoarang",
         "row": 272,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFS.1,2,3,4,3,4,4,4,4,3": {
       "name": "10 Hit Combo 2",
@@ -19365,7 +19551,7 @@
         "RFS.1,2,3,4,3,4,4,4,4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_199",
       "t7_command": " RFS 1, 2, 3, 4, 3, 4, 4, 4, 4, 3",
       "t7_hit_level": "-",
@@ -19405,7 +19591,7 @@
         "RFF.1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_200",
       "t7_command": "RFF 1+2",
       "t7_hit_level": "-",
@@ -19415,7 +19601,9 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:hwoarang_200",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "mod_damage": "B",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,f,f+4": {
       "name": "Torpedo Kick to Left Stance",
@@ -19439,7 +19627,7 @@
         "f,f,f+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_201",
       "t7_command": "f, f, f+4 (or WR+4)",
       "t7_hit_level": "mid",
@@ -19456,7 +19644,9 @@
         "bank": "hwoarang",
         "row": 200,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "37",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "t7.hwoarang_202": {
       "name": "HWOARANG BT LFF 1 (or 2)",
@@ -19478,7 +19668,7 @@
       "anim_ref": "t7:hwoarang:hwoarang_202",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_202",
       "t7_command": "BT LFF 1 (or 2)",
       "t7_hit_level": "high",
@@ -19516,7 +19706,7 @@
       "anim_ref": "t7:hwoarang:hwoarang_203",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_203",
       "t7_command": "BT LFF 3",
       "t7_hit_level": "high",
@@ -19557,7 +19747,7 @@
         "3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_204",
       "t7_command": "3+4",
       "t7_hit_level": "-",
@@ -19591,7 +19781,7 @@
         "4,4,4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_205",
       "t7_command": "4, 4, 4, 4",
       "t7_hit_level": "high, high, high, high",
@@ -19616,7 +19806,9 @@
         "bank": "hwoarang",
         "row": 270,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "18,13,13,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,4,4,4~t7.hwoarang.2": {
       "name": "HWOARANG 4,4,4,4",
@@ -19640,7 +19832,7 @@
         "4,4,4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_206",
       "t7_command": "(4), 4, 4, 4",
       "t7_hit_level": "high, high, high",
@@ -19688,7 +19880,7 @@
         "4,4,4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_207",
       "t7_command": "(4), (4), 4, 4",
       "t7_hit_level": "high, high",
@@ -19735,7 +19927,7 @@
         "4,4,4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_208",
       "t7_command": "(4), (4), (4), 4",
       "t7_hit_level": "high",
@@ -19775,7 +19967,7 @@
         "4,f+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_209",
       "t7_command": "4, f+4",
       "t7_hit_level": "high, high",
@@ -19797,7 +19989,9 @@
         "bank": "hwoarang",
         "row": 95,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,f+4~t7.hwoarang": {
       "name": "HWOARANG 4,f+4",
@@ -19821,7 +20015,7 @@
         "4,f+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_210",
       "t7_command": "(4), f+4",
       "t7_hit_level": "high",
@@ -19860,7 +20054,7 @@
         "4,4,f+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_211",
       "t7_command": "4, 4, f+4",
       "t7_hit_level": "high, high, high",
@@ -19883,7 +20077,9 @@
         "bank": "hwoarang",
         "row": 95,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,13,33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "4,4,f+4~t7.hwoarang": {
       "name": "HWOARANG 4,4,f+4",
@@ -19907,7 +20103,7 @@
         "4,4,f+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_212",
       "t7_command": "(4), 4, f+4",
       "t7_hit_level": "high, high",
@@ -19953,7 +20149,7 @@
         "4,4,f+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_213",
       "t7_command": "(4), (4), f+4",
       "t7_hit_level": "high",
@@ -19992,7 +20188,7 @@
         "u/f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_214",
       "t7_command": "u/f+4",
       "t7_hit_level": "high",
@@ -20007,7 +20203,9 @@
         "bank": "hwoarang",
         "row": 273,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+4,4~t7.hwoarang": {
       "name": "HWOARANG u/f+4,4",
@@ -20031,7 +20229,7 @@
         "u/f+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_215",
       "t7_command": "u/f+4, 4",
       "t7_hit_level": "high, high",
@@ -20053,7 +20251,9 @@
         "bank": "hwoarang",
         "row": 273,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16,16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+4,4~t7.hwoarang.2": {
       "name": "HWOARANG u/f+4,4",
@@ -20077,7 +20277,7 @@
         "u/f+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_216",
       "t7_command": "(u/f+4), 4",
       "t7_hit_level": "high",
@@ -20116,7 +20316,7 @@
         "u/f+4,4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_217",
       "t7_command": "u/f+4, 4, 4",
       "t7_hit_level": "high, high, high",
@@ -20139,7 +20339,9 @@
         "bank": "hwoarang",
         "row": 273,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16,16,20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "u/f+4,4,4~t7.hwoarang.2": {
       "name": "HWOARANG u/f+4,4,4",
@@ -20163,7 +20365,7 @@
         "u/f+4,4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_218",
       "t7_command": "(u/f+4), 4, 4",
       "t7_hit_level": "high, high",
@@ -20209,7 +20411,7 @@
         "u/f+4,4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_219",
       "t7_command": "(u/f+4), (4), 4",
       "t7_hit_level": "high",
@@ -20248,7 +20450,7 @@
         "f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_220",
       "t7_command": "f+2",
       "t7_hit_level": "mid",
@@ -20263,7 +20465,9 @@
         "bank": "hwoarang",
         "row": 99,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+3~t7.hwoarang": {
       "name": "Spinning Axe Kick",
@@ -20287,7 +20491,7 @@
         "f,F+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_221",
       "t7_command": "f, F+3",
       "t7_hit_level": "mid",
@@ -20302,7 +20506,9 @@
         "bank": "hwoarang",
         "row": 230,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "32",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "f,F+4~t7.hwoarang": {
       "name": "Peacekeeper",
@@ -20326,7 +20532,7 @@
         "f,F+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_222",
       "t7_command": "f, F+4",
       "t7_hit_level": "mid",
@@ -20366,7 +20572,7 @@
         "d/f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_223",
       "t7_command": "d/f+4",
       "t7_hit_level": "mid",
@@ -20382,7 +20588,9 @@
         "bank": "hwoarang",
         "row": 113,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "b+4~t7.hwoarang": {
       "name": "Nose Bleeder to Right Stance",
@@ -20406,7 +20614,7 @@
         "b+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_224",
       "t7_command": "b+4",
       "t7_hit_level": "high",
@@ -20421,7 +20629,9 @@
         "bank": "hwoarang",
         "row": 103,
         "match": "same-notation"
-      }
+      },
+      "mod_damage": "25",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "SS.4~t7.hwoarang": {
       "name": "Spinning Trip Kick to Right Stance",
@@ -20445,7 +20655,7 @@
         "SS.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_225",
       "t7_command": "SS 4",
       "t7_hit_level": "low",
@@ -20485,7 +20695,7 @@
         "WS.4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_226",
       "t7_command": "WS 4, 4",
       "t7_hit_level": "mid, mid",
@@ -20531,7 +20741,7 @@
         "WS.4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_227",
       "t7_command": "(WS 4), 4",
       "t7_hit_level": "mid",
@@ -20570,7 +20780,7 @@
         "LFS.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_228",
       "t7_command": " LFS 2",
       "t7_hit_level": "mid",
@@ -20585,7 +20795,9 @@
         "bank": "hwoarang",
         "row": 225,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.f+4~t7.hwoarang": {
       "name": "HWOARANG LFS.f+4",
@@ -20609,7 +20821,7 @@
         "LFS.f+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_229",
       "t7_command": "LFS f+4",
       "t7_hit_level": "mid",
@@ -20624,7 +20836,9 @@
         "bank": "hwoarang",
         "row": 266,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.f+4,3": {
       "name": "Fire Storm Left to Right Stance",
@@ -20648,7 +20862,7 @@
         "LFS.f+4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_230",
       "t7_command": " LFS f+4, 3",
       "t7_hit_level": "mid, high",
@@ -20671,7 +20885,9 @@
         "bank": "hwoarang",
         "row": 112,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "22,28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.f+4,3~t7.hwoarang": {
       "name": "HWOARANG LFS.f+4,3",
@@ -20695,7 +20911,7 @@
         "LFS.f+4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_231",
       "t7_command": "(LFS f+4), 3",
       "t7_hit_level": "high",
@@ -20735,7 +20951,7 @@
         "LFS.d/b+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_232",
       "t7_command": " LFS d/b+4",
       "t7_hit_level": "low",
@@ -20751,7 +20967,9 @@
         "bank": "hwoarang",
         "row": 269,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.b+4~t7.hwoarang": {
       "name": "Combat Middle",
@@ -20775,7 +20993,7 @@
         "LFS.b+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_233",
       "t7_command": " LFS b+4",
       "t7_hit_level": "mid",
@@ -20790,7 +21008,9 @@
         "bank": "hwoarang",
         "row": 266,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFS.2~t7.hwoarang.2": {
       "name": "Right Punch to Right Stance",
@@ -20814,7 +21034,7 @@
         "RFS.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_234",
       "t7_command": " RFS 2",
       "t7_hit_level": "high",
@@ -20829,7 +21049,9 @@
         "bank": "hwoarang",
         "row": 224,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFS.f+4~t7.hwoarang": {
       "name": "HWOARANG RFS.f+4",
@@ -20853,7 +21075,7 @@
         "RFS.f+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_235",
       "t7_command": "RFS f+4",
       "t7_hit_level": "high, high",
@@ -20875,7 +21097,9 @@
         "bank": "hwoarang",
         "row": 266,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFS.f+4,4~t7.hwoarang": {
       "name": "Right Viper Combo to Right Sword",
@@ -20899,7 +21123,7 @@
         "RFS.f+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_236",
       "t7_command": " RFS f+4, 4",
       "t7_hit_level": "high, high, high",
@@ -20923,7 +21147,9 @@
         "bank": "hwoarang",
         "row": 264,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "10,13,16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFS.f+4,4~t7.hwoarang.2": {
       "name": "HWOARANG RFS.f+4,4",
@@ -20947,7 +21173,7 @@
         "RFS.f+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_237",
       "t7_command": "(RFS f+4), 4",
       "t7_hit_level": "high",
@@ -20985,7 +21211,7 @@
       "anim_ref": "t7:hwoarang:hwoarang_238",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_238",
       "t7_command": "BT LFF 4",
       "t7_hit_level": "mid",
@@ -21026,7 +21252,7 @@
         "RFF.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_239",
       "t7_command": "RFF 1",
       "t7_hit_level": "high",
@@ -21041,7 +21267,9 @@
         "bank": "hwoarang",
         "row": 35,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.2~t7.hwoarang": {
       "name": "HWOARANG RFF.2",
@@ -21065,7 +21293,7 @@
         "RFF.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_240",
       "t7_command": "RFF 2",
       "t7_hit_level": "high",
@@ -21080,7 +21308,9 @@
         "bank": "hwoarang",
         "row": 91,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "8",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.2,1~t7.hwoarang": {
       "name": "HWOARANG RFF.2,1",
@@ -21104,7 +21334,7 @@
         "RFF.2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_241",
       "t7_command": "RFF 2, 1",
       "t7_hit_level": "high, high",
@@ -21126,7 +21356,9 @@
         "bank": "hwoarang",
         "row": 89,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "8,13",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.2,1~t7.hwoarang.2": {
       "name": "HWOARANG RFF.2,1",
@@ -21150,7 +21382,7 @@
         "RFF.2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_242",
       "t7_command": "RFF (2), 1",
       "t7_hit_level": "high",
@@ -21189,7 +21421,7 @@
         "RFF.2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_243",
       "t7_command": "RFF 2, 4",
       "t7_hit_level": "high, high",
@@ -21211,7 +21443,9 @@
         "bank": "hwoarang",
         "row": 95,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "8,16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.2,4~t7.hwoarang.2": {
       "name": "HWOARANG RFF.2,4",
@@ -21235,7 +21469,7 @@
         "RFF.2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_244",
       "t7_command": "RFF (2), 4",
       "t7_hit_level": "high",
@@ -21274,7 +21508,7 @@
         "RFF.2,4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_245",
       "t7_command": "RFF 2, 4, 3",
       "t7_hit_level": "high, high, mid",
@@ -21298,7 +21532,9 @@
         "bank": "hwoarang",
         "row": 220,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "8,16,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.2,4,3~t7.hwoarang.2": {
       "name": "HWOARANG RFF.2,4,3",
@@ -21322,7 +21558,7 @@
         "RFF.2,4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_246",
       "t7_command": "RFF (2), 4, 3",
       "t7_hit_level": "high, mid",
@@ -21369,7 +21605,7 @@
         "RFF.2,4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_247",
       "t7_command": "RFF (2), (4), 3",
       "t7_hit_level": "mid",
@@ -21409,7 +21645,7 @@
         "RFF.3,f+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_248",
       "t7_command": "RFF 3, f+4",
       "t7_hit_level": "mid, high",
@@ -21431,7 +21667,9 @@
         "bank": "hwoarang",
         "row": 250,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18,21",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.3,f+4~t7.hwoarang": {
       "name": "HWOARANG RFF.3,f+4",
@@ -21455,7 +21693,7 @@
         "RFF.3,f+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_249",
       "t7_command": "RFF (3), f+4",
       "t7_hit_level": "high",
@@ -21494,7 +21732,7 @@
         "RFF.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_250",
       "t7_command": "RFF 4",
       "t7_hit_level": "high",
@@ -21509,7 +21747,9 @@
         "bank": "hwoarang",
         "row": 266,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.4,3~t7.hwoarang": {
       "name": "Chainsaw Kick",
@@ -21533,7 +21773,7 @@
         "RFF.4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_251",
       "t7_command": "RFF 4, 3",
       "t7_hit_level": "high, mid",
@@ -21556,7 +21796,9 @@
         "bank": "hwoarang",
         "row": 214,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.4,3~t7.hwoarang.2": {
       "name": "HWOARANG RFF.4,3",
@@ -21580,7 +21822,7 @@
         "RFF.4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_252",
       "t7_command": "RFF (4), 3",
       "t7_hit_level": "mid",
@@ -21620,7 +21862,7 @@
         "RFF.f+4~4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_253",
       "t7_command": "RFF f+4~4",
       "t7_hit_level": "-",
@@ -21636,7 +21878,9 @@
         "bank": "hwoarang",
         "row": 208,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.d/f+4~t7.hwoarang": {
       "name": "Right Sidekick",
@@ -21660,7 +21904,7 @@
         "RFF.d/f+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_254",
       "t7_command": "RFF d/f+4",
       "t7_hit_level": "mid",
@@ -21675,7 +21919,9 @@
         "bank": "hwoarang",
         "row": 266,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.d+4": {
       "name": "Heel Screw",
@@ -21699,7 +21945,7 @@
         "RFF.d+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_255",
       "t7_command": "RFF d+4",
       "t7_hit_level": "low",
@@ -21714,7 +21960,9 @@
         "bank": "hwoarang",
         "row": 269,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.d/b+3": {
       "name": "HWOARANG RFF.d/b+3",
@@ -21738,7 +21986,7 @@
         "RFF.d/b+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_256",
       "t7_command": "RFF d/b+3",
       "t7_hit_level": "low",
@@ -21753,7 +22001,9 @@
         "bank": "hwoarang",
         "row": 272,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.b+2~t7.hwoarang": {
       "name": "Blast Fist",
@@ -21777,7 +22027,7 @@
         "RFF.b+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_257",
       "t7_command": "RFF b+2",
       "t7_hit_level": "mid",
@@ -21793,7 +22043,9 @@
         "bank": "hwoarang",
         "row": 225,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.f,F+4": {
       "name": "HWOARANG RFF.f,F+4",
@@ -21817,7 +22069,7 @@
         "RFF.f,F+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_258",
       "t7_command": "RFF f, F+4",
       "t7_hit_level": "mid",
@@ -21832,7 +22084,9 @@
         "bank": "hwoarang",
         "row": 234,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.f,F+4,3": {
       "name": "Screw Kick",
@@ -21856,7 +22110,7 @@
         "RFF.f,F+4,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_259",
       "t7_command": "RFF f, F+4, 3",
       "t7_hit_level": "mid, high",
@@ -21879,7 +22133,9 @@
         "bank": "hwoarang",
         "row": 230,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "24,27",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.f,F+4,3~t7.hwoarang": {
       "name": "HWOARANG RFF.f,F+4,3",
@@ -21903,7 +22159,7 @@
         "RFF.f,F+4,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_260",
       "t7_command": "RFF (f, F+4), 3",
       "t7_hit_level": "high",
@@ -21943,7 +22199,7 @@
         "RFF.3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_261",
       "t7_command": "RFF 3+4",
       "t7_hit_level": "-",
@@ -21977,7 +22233,7 @@
         "RFF.1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_262",
       "t7_command": "RFF 1, 1",
       "t7_hit_level": "high, mid",
@@ -21999,7 +22255,9 @@
         "bank": "hwoarang",
         "row": 89,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "13,16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.1,1~t7.hwoarang.2": {
       "name": "HWOARANG RFF.1,1",
@@ -22023,7 +22281,7 @@
         "RFF.1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_263",
       "t7_command": "RFF (1), 1",
       "t7_hit_level": "mid",
@@ -22062,7 +22320,7 @@
         "RFF.2,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_264",
       "t7_command": "RFF 2, 1, 1",
       "t7_hit_level": "high, high, mid",
@@ -22085,7 +22343,9 @@
         "bank": "hwoarang",
         "row": 89,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "8,13,16",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.2,1,1~t7.hwoarang.2": {
       "name": "HWOARANG RFF.2,1,1",
@@ -22109,7 +22369,7 @@
         "RFF.2,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_265",
       "t7_command": "RFF (2), 1, 1",
       "t7_hit_level": "high, mid",
@@ -22155,7 +22415,7 @@
         "RFF.2,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_266",
       "t7_command": "RFF (2), (1), 1",
       "t7_hit_level": "mid",
@@ -22194,7 +22454,7 @@
         "RFF.2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_267",
       "t7_command": "RFF 2, 3",
       "t7_hit_level": "high, high",
@@ -22216,7 +22476,9 @@
         "bank": "hwoarang",
         "row": 220,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "8,31",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.2,3~t7.hwoarang.2": {
       "name": "HWOARANG RFF.2,3",
@@ -22240,7 +22502,7 @@
         "RFF.2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_268",
       "t7_command": "RFF (2), 3",
       "t7_hit_level": "high",
@@ -22279,7 +22541,7 @@
         "RFF.2,4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_269",
       "t7_command": "RFF 2, 4, 4",
       "t7_hit_level": "high, high, high",
@@ -22302,7 +22564,9 @@
         "bank": "hwoarang",
         "row": 95,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "8,16,32",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.2,4,4~t7.hwoarang.2": {
       "name": "HWOARANG RFF.2,4,4",
@@ -22326,7 +22590,7 @@
         "RFF.2,4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_270",
       "t7_command": "RFF (2), 4, 4",
       "t7_hit_level": "high, high",
@@ -22372,7 +22636,7 @@
         "RFF.2,4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_271",
       "t7_command": "RFF (2), (4), 4",
       "t7_hit_level": "high",
@@ -22411,7 +22675,7 @@
         "RFF.2,b+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_272",
       "t7_command": "RFF 2, b+4",
       "t7_hit_level": "high, high",
@@ -22433,7 +22697,9 @@
         "bank": "hwoarang",
         "row": 95,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "8,36",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.2,b+4~t7.hwoarang": {
       "name": "HWOARANG RFF.2,b+4",
@@ -22457,7 +22723,7 @@
         "RFF.2,b+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_273",
       "t7_command": "RFF (2), b+4",
       "t7_hit_level": "high",
@@ -22496,7 +22762,7 @@
         "RFF.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_274",
       "t7_command": "RFF 3",
       "t7_hit_level": "mid",
@@ -22511,7 +22777,9 @@
         "bank": "hwoarang",
         "row": 272,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.4,4~t7.hwoarang": {
       "name": "Right Reverse Kick",
@@ -22535,7 +22803,7 @@
         "RFF.4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_275",
       "t7_command": "RFF 4, 4",
       "t7_hit_level": "high, high",
@@ -22557,7 +22825,9 @@
         "bank": "hwoarang",
         "row": 208,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "16,32",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.4,4~t7.hwoarang.2": {
       "name": "HWOARANG RFF.4,4",
@@ -22581,7 +22851,7 @@
         "RFF.4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_276",
       "t7_command": "RFF (4), 4",
       "t7_hit_level": "high",
@@ -22620,7 +22890,7 @@
         "RFF.d/f+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_277",
       "t7_command": "RFF d/f+3",
       "t7_hit_level": "mid",
@@ -22636,7 +22906,9 @@
         "bank": "hwoarang",
         "row": 272,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "33",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.d/b+3,3": {
       "name": "Teaser",
@@ -22660,7 +22932,7 @@
         "RFF.d/b+3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_278",
       "t7_command": "RFF d/b+3, 3",
       "t7_hit_level": "low, high",
@@ -22682,7 +22954,9 @@
         "bank": "hwoarang",
         "row": 116,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20,54",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.d/b+3,3~t7.hwoarang": {
       "name": "HWOARANG RFF.d/b+3,3",
@@ -22706,7 +22980,7 @@
         "RFF.d/b+3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_279",
       "t7_command": "RFF (d/b+3), 3",
       "t7_hit_level": "high",
@@ -22745,7 +23019,7 @@
         "RFF.b+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_280",
       "t7_command": "RFF b+3",
       "t7_hit_level": "high",
@@ -22760,7 +23034,9 @@
         "bank": "hwoarang",
         "row": 272,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "31",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.b+4~t7.hwoarang": {
       "name": "Spin Kick",
@@ -22784,7 +23060,7 @@
         "RFF.b+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_281",
       "t7_command": "RFF b+4",
       "t7_hit_level": "high",
@@ -22799,7 +23075,9 @@
         "bank": "hwoarang",
         "row": 200,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "36",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.f,F+3~t7.hwoarang": {
       "name": "Hunting Heel",
@@ -22823,7 +23101,7 @@
         "RFF.f,F+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_282",
       "t7_command": "RFF f, F+3",
       "t7_hit_level": "mid",
@@ -22839,7 +23117,9 @@
         "bank": "hwoarang",
         "row": 230,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "29",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.f,F+4~t7.hwoarang": {
       "name": "HWOARANG RFF.f,F+4",
@@ -22863,7 +23143,7 @@
         "RFF.f,F+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_283",
       "t7_command": "RFF f, F+4",
       "t7_hit_level": "mid",
@@ -22878,7 +23158,9 @@
         "bank": "hwoarang",
         "row": 234,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "24",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.f+3,B": {
       "name": "HWOARANG RFF.f+3,B",
@@ -22902,7 +23184,7 @@
         "RFF.f+3,B"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_284",
       "t7_command": "RFF f+3, B",
       "t7_hit_level": "high",
@@ -22917,7 +23199,9 @@
         "bank": "hwoarang",
         "row": 120,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "28",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "BT_RFF.4": {
       "name": "HWOARANG BT_RFF.4",
@@ -22941,7 +23225,7 @@
         "BT_RFF.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_285",
       "t7_command": "(During BT RFF) 4",
       "t7_hit_level": "mid",
@@ -22957,7 +23241,9 @@
         "bank": "hwoarang",
         "row": 269,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "18",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "BT_RFF.1": {
       "name": "HWOARANG BT_RFF.1",
@@ -22981,7 +23267,7 @@
         "BT_RFF.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_286",
       "t7_command": "(During BT RFF) 1 or 2",
       "t7_hit_level": "high",
@@ -23021,7 +23307,7 @@
         "BT_RFF.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_287",
       "t7_command": "(During BT RFF) 3",
       "t7_hit_level": "mid",
@@ -23038,7 +23324,9 @@
         "bank": "hwoarang",
         "row": 272,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "20",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "BT_RFF.BT.4,3": {
       "name": "Spinning Scythe to Axe Heel",
@@ -23062,7 +23350,7 @@
         "BT_RFF.BT.4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_288",
       "t7_command": "(During BT RFF) BT 4, 3",
       "t7_hit_level": "mid, mid",
@@ -23109,7 +23397,7 @@
         "BT_RFF.BT.4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_289",
       "t7_command": "(During BT RFF) BT (4), 3",
       "t7_hit_level": "mid",
@@ -23150,7 +23438,7 @@
         "BT_RFF.BT.d+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_290",
       "t7_command": "(During BT RFF) BT d+3",
       "t7_hit_level": "low",
@@ -23191,7 +23479,7 @@
         "d/f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_291",
       "t7_command": "d/f+3",
       "t7_hit_level": "mid",
@@ -23206,7 +23494,9 @@
         "bank": "hwoarang",
         "row": 247,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "d/f+3,4~t7.hwoarang.2": {
       "name": "HWOARANG d/f+3,4",
@@ -23230,7 +23520,7 @@
         "d/f+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_292",
       "t7_command": "d/f+3, 4",
       "t7_hit_level": "mid, mid",
@@ -23253,7 +23543,9 @@
         "bank": "hwoarang",
         "row": 273,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "22,32",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.d/f+3~t7.hwoarang": {
       "name": "HWOARANG LFS.d/f+3",
@@ -23277,7 +23569,7 @@
         "LFS.d/f+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_293",
       "t7_command": " LFS d/f+3",
       "t7_hit_level": "mid",
@@ -23292,7 +23584,9 @@
         "bank": "hwoarang",
         "row": 230,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "22",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.d/f+3,4~t7.hwoarang.2": {
       "name": "Flamingo Double Claymore",
@@ -23316,7 +23610,7 @@
         "LFS.d/f+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_294",
       "t7_command": " LFS d/f+3, 4",
       "t7_hit_level": "mid, mid",
@@ -23339,7 +23633,9 @@
         "bank": "hwoarang",
         "row": 273,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "22,32",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "LFS.b+3~t7.hwoarang": {
       "name": "Left Thunderbolt to Right Stance",
@@ -23363,7 +23659,7 @@
         "LFS.b+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_295",
       "t7_command": " LFS b+3",
       "t7_hit_level": "mid",
@@ -23378,7 +23674,9 @@
         "bank": "hwoarang",
         "row": 272,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "31",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFS.b+4~t7.hwoarang": {
       "name": "Right Thunderbolt",
@@ -23402,7 +23700,7 @@
         "RFS.b+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_296",
       "t7_command": " RFS b+4",
       "t7_hit_level": "mid",
@@ -23417,7 +23715,9 @@
         "bank": "hwoarang",
         "row": 269,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "31",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "RFF.3~4~t7.hwoarang": {
       "name": "Backlash",
@@ -23441,7 +23741,7 @@
         "RFF.3~4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_297",
       "t7_command": "RFF 3~4",
       "t7_hit_level": "high",
@@ -23456,7 +23756,9 @@
         "bank": "hwoarang",
         "row": 279,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "50?",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "R.FS.d+3+4": {
       "name": "Rage Art",
@@ -23480,7 +23782,7 @@
         "R.FS.d+3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_298",
       "t7_command": "(During Rage) FS d+3+4",
       "t7_hit_level": "mid",
@@ -23516,7 +23818,7 @@
         "R.d+3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_299",
       "t7_command": "(During Rage) d+3+4",
       "t7_hit_level": "low, mid",
@@ -23558,7 +23860,7 @@
         "R.d+3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_300",
       "t7_command": "(During Rage) d+3+4 (second hit only)",
       "t7_hit_level": "mid",
@@ -23593,7 +23895,7 @@
         "R.d+3+4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_301",
       "t7_command": "(During Rage) d+3+4, 4",
       "t7_hit_level": "low, mid, mid",
@@ -23642,7 +23944,7 @@
         "R.d+3+4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_302",
       "t7_command": "(During Rage) d+3+4 (second hit only), 4",
       "t7_hit_level": "mid, mid",
@@ -23690,7 +23992,7 @@
         "R.d+3+4,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_303",
       "t7_command": "(During Rage) (d+3+4), 4",
       "t7_hit_level": "mid",
@@ -23731,7 +24033,7 @@
         "R.u/f+3,4,3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_304",
       "t7_command": "(During Rage) u/f+3, 4, 3+4",
       "t7_hit_level": "mid, mid, high, high",
@@ -23775,7 +24077,7 @@
         "R.LFS.u/f+3,4,3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_305",
       "t7_command": "(During Rage) LFS u/f+3, 4, 3+4",
       "t7_hit_level": "mid, mid, high, high",
@@ -23817,7 +24119,7 @@
       "anim_ref": "t7:hwoarang:hwoarang_306",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_306",
       "t7_command": "d/b+3+4 (b, b to cancel)",
       "t7_hit_level": "mid!",
@@ -23834,7 +24136,9 @@
         "bank": "hwoarang",
         "row": 288,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "54",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "t7.hwoarang_307": {
       "name": "Power Blast",
@@ -23856,7 +24160,7 @@
       "anim_ref": "t7:hwoarang:hwoarang_307",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_307",
       "t7_command": "LFS 1+4 (b, b to cancel)",
       "t7_hit_level": "mid!",
@@ -23873,7 +24177,9 @@
         "bank": "hwoarang",
         "row": 288,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "80?",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "1+3~t7.hwoarang": {
       "name": "Pickpocket",
@@ -23897,7 +24203,7 @@
         "1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_308",
       "t7_command": "Approach enemy... 1+3",
       "t7_hit_level": "high throw",
@@ -23940,7 +24246,7 @@
         "2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_309",
       "t7_command": "Approach enemy... 2+4",
       "t7_hit_level": "high throw",
@@ -23983,7 +24289,7 @@
         "2+4,B"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_310",
       "t7_command": "Approach enemy... 2+4, B",
       "t7_hit_level": "high throw",
@@ -24026,7 +24332,7 @@
         "f+1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_311",
       "t7_command": "Approach enemy... f+1+3",
       "t7_hit_level": "high throw",
@@ -24069,7 +24375,7 @@
         "f+2+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_312",
       "t7_command": "Approach enemy... f+2+3",
       "t7_hit_level": "high throw",
@@ -24112,7 +24418,7 @@
         "f+2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_313",
       "t7_command": "Approach enemy... f+2+4",
       "t7_hit_level": "high throw",
@@ -24155,7 +24461,7 @@
         "qcb+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_314",
       "t7_command": "Approach enemy... qcb+3",
       "t7_hit_level": "high throw",
@@ -24198,7 +24504,7 @@
         "d/b+1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_315",
       "t7_command": "Approach enemy... d/b+1+3",
       "t7_hit_level": "high throw",
@@ -24241,7 +24547,7 @@
         "SIDE_L.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_316",
       "t7_command": "Approach from left side... 1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -24284,7 +24590,7 @@
         "SIDE_R.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_317",
       "t7_command": "Approach from right side... 1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -24327,7 +24633,7 @@
         "BACK.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_318",
       "t7_command": "Approach from behind... 1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -24370,7 +24676,7 @@
         "AIR.d/f+3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_319",
       "t7_command": "Approach mid-air enemy... d/f+3+4",
       "t7_hit_level": "mid",
@@ -24412,7 +24718,7 @@
       "anim_ref": "t7:hwoarang:hwoarang_320",
       "input_slots": [],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_320",
       "t7_command": "RFF Approach enemy... 1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -24453,7 +24759,7 @@
       "anim_ref": "t7:hwoarang:hwoarang_321",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_321",
       "t7_command": "WR f, f, F (Mid Screen)",
       "t7_hit_level": "mid",
@@ -24494,7 +24800,7 @@
         "TACKLE.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_322",
       "t7_command": "(During Tackle) 1 (or 2)",
       "t7_hit_level": "-",
@@ -24511,7 +24817,9 @@
         "bank": "hwoarang",
         "row": 35,
         "match": "nearest limb/class/startup (approximate)"
-      }
+      },
+      "mod_damage": "9",
+      "mod_source": "TheBigTuna/Tekken-7-Frame-Data"
     },
     "TACKLE.1,1": {
       "name": "HWOARANG TACKLE.1,1",
@@ -24535,7 +24843,7 @@
         "TACKLE.1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_323",
       "t7_command": "(During Tackle) 1/2, 1/2",
       "t7_hit_level": "-",
@@ -24583,7 +24891,7 @@
         "TACKLE.1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_324",
       "t7_command": "(During Tackle) 1/2, 1/2, 1/2",
       "t7_hit_level": "-",
@@ -24632,7 +24940,7 @@
         "TACKLE.1,1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_325",
       "t7_command": "(During Tackle) 1/2, 1/2, 1/2, 1/2",
       "t7_hit_level": "-",
@@ -24680,7 +24988,7 @@
       "anim_ref": "t7:hwoarang:hwoarang_326",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "hwoarang_326",
       "t7_command": "Timed with enemy punch... b+1+2",
       "t7_hit_level": "-",
@@ -26891,7 +27199,7 @@
     "b+3~t8.hwoarang": 535,
     "b+4~t8.hwoarang": 1042,
     "BACK.1+3": 2048,
-    "t8.Hwoarang-(Back to wall).b,​b,​UB": 535,
+    "t8.Hwoarang-(Back to wall).b,\u200bb,\u200bUB": 535,
     "b,B+2+3": 1543,
     "BT.3": 535,
     "BT.4": 535,
