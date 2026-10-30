@@ -444,3 +444,28 @@ row get their correct clips from #988 Step 2 (original T8 refs), never
 from a T3 row recorded as correct. Diablo string coverage is now COMPLETE:
 201 canonical comma keys = 66 Batch 1 + 11 Batch 2 + 22 Batch 3 + 102
 Batch 4, uncovered [] extra [].
+
+## Kinpo Batch 1 fallback (LP1/RP2-only strings, 2026-10-25)
+Verified rows 92/93/183/220/221/222/223 are FALLBACK (T3 jin rows, bank
+jin / divmot09 on the jin rig), to be re-matched to T7 Asuka rows when
+extraction lands. Rejected rows are NOT fallback — rejected evidence, not
+wired or held. Jin-bank rules, per-bank evidence (documented in
+docs/movesets/KINPO-BATCH1-STEP-PLANS-2026-10-25.md): row 35 EXISTS in this
+bank (hit_frames [11,12,39,535,0,1], Job 1 stance starts-airborne) — NOT
+blanket-banned by number, but the stance gate rejects it for ground steps;
+kinpo's own LP1 move 1 carries t3_row 35 and is ALSO ROW-CHANGED 35->None
+(#1096 vs current main), so the 2 1-family step 1s are SUSPENDED-DRIFT —
+never wired on stale data. Row 220 is a STANDING RP2 row here, NOT king's
+jumping chord row, NOT bryan's button-0 row, NOT heihachi's jump RK4 row;
+jin row 216 is a JUMP row, NOT king row 216's dash Konvict Kick. Kinpo's
+T7/T8 base IS Asuka, but Asuka has NO T3 bank in this repo (no asuka dir
+under t3/), so the file's T3 fallback bank is jin — the burger pattern.
+Standing rows verified for crouch-context steps (d+1+2 family rows 92/93/
+183) follow the demonio Batch 1 precedent: the gate flags crouch rows for
+non-crouch steps, not standing rows for crouch steps. Job 3 fill wired: 1
+(b+2,1+2 last step <- row 92, exact+FULL). Canonicalization is the
+CORRECTED rule (strip only a trailing ~t[378] source-variant suffix):
+kinpo Batch 1 contains ZERO input-~ canonicals; the file's only
+old-vs-corrected diff is 3~4,D/F, outside Batch 1 scope. T8-sourced
+prefixes with no T3 row get their correct clips from #988 Step 2 (original
+T8 refs), never from a T3 row recorded as correct.
