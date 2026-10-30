@@ -20,6 +20,15 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 // separation, soul glow, grade hooks. See game/js/lighting-rig.js for the
 // T7/SFV/DOA6/T8 teardown audit.
 import { buildStageLightRig } from './lighting-rig.js';
+// Lane 5: stage level geometry (pure data) + persistent asset cache.
+// stage-levels.js owns NOTHING about break state — that is the combat
+// lane's stagebreaks.js; it only derives level destinations from defs.
+export { resolveStageLevels, levelAfterBreak, composeLevel, WALL_BREAK_EXTEND } from './stage-levels.js';
+import { getCachedBuffer, putCachedBuffer } from './asset-cache.js';
+// Split hosting (owner decision 2026-10-26: Pages shell + GLBs on R2).
+// Stage GLBs load through the same candidate order as fighters
+// (remote base first, jsDelivr fallback) — see asset-config.js.
+import { loadGlbCandidates, resolveAssetCandidates } from './asset-config.js';
 
 /* ---------------- minimal OBJ loader ----------------
    Tekken 3 panoramas use v / vt / f (triangles, 1-indexed, faces as
@@ -63,11 +72,73 @@ export function parseStageOBJ(text) {
 const _objCache = {};
 export async function fetchStageOBJ(path) {
   if (_objCache[path]) return _objCache[path].clone();
+  // Lane 5: persistent cache first — a warmed stage OBJ must not be
+  // re-downloaded every session. Cache misses fall through to the
+  // exact network path below; a corrupt/empty cache entry is ignored.
+  const cached = await getCachedBuffer(path);
+  if (cached) {
+    try {
+      const geo = parseStageOBJ(new TextDecoder().decode(cached));
+      _objCache[path] = geo;
+      return geo.clone();
+    } catch { /* fall through to network */ }
+  }
   const res = await fetch(path);
   if (!res.ok) throw new Error(`stage OBJ missing: ${path}`);
-  const geo = parseStageOBJ(await res.text());
+  const buf = await res.arrayBuffer();
+  putCachedBuffer(path, buf);
+  const geo = parseStageOBJ(new TextDecoder().decode(buf));
   _objCache[path] = geo;
   return geo.clone();
+}
+
+/* Lane 5: screen-to-screen stage preload (geometry side only).
+   Warms every fetchable asset a stage def names — its OBJ panorama,
+   its GLB (fetched + cached, NOT parsed: parsing stays the builder's
+   job at fight start), its texture atlas / pano — so the stage is
+   already on disk when FIGHT is pressed. Never throws: a missing
+   asset (e.g. the private-build T7 GLB, absent from the public
+   repo) lands in `failed` and the builder's blockout fallback
+   still applies. In-flight calls for one stage share one promise.
+   Callers: main.js startFight (non-blocking, in parallel with the
+   fighter loads) and the stage screen's show path. Reports the
+   warmed fraction to load-progress.js when it is present, so the
+   bar reflects real stage bytes instead of freezing on fighters. */
+const _stagePreloadInflight = new Map();
+export async function preloadStage(stageId) {
+  const def = typeof stageId === 'string' ? getStage(stageId) : stageId;
+  if (!def || !def.id) return { stage: null, warmed: [], failed: [] };
+  if (_stagePreloadInflight.has(def.id)) return _stagePreloadInflight.get(def.id);
+  const run = (async () => {
+    const warmed = [], failed = [];
+    const warm = async (kind, fn) => {
+      try { await fn(); warmed.push(kind); }
+      catch (e) { failed.push(kind); console.warn(`[WH] stage preload ${def.id} ${kind} failed:`, e.message || e); }
+    };
+    const warmFetch = async (url) => {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
+      putCachedBuffer(url, await res.arrayBuffer());
+    };
+    await Promise.all([
+      def.obj ? warm('obj', () => fetchStageOBJ(def.obj)) : Promise.resolve(),
+      def.glb ? warm('glb', () => warmFetch(resolveAssetCandidates(def.glb)[0])) : Promise.resolve(),
+      def.map ? warm('map', () => warmFetch(def.map)) : Promise.resolve(),
+      def.pano ? warm('pano', () => warmFetch(def.pano)) : Promise.resolve(),
+    ]);
+    const out = { stage: def.id, warmed, failed };
+    if (typeof window !== 'undefined') {
+      window.__whStagePreload = out;
+      const total = warmed.length + failed.length;
+      if (total && typeof window.__whStageProgress === 'function') {
+        window.__whStageProgress(def.id, warmed.length / total);
+      }
+    }
+    return out;
+  })();
+  _stagePreloadInflight.set(def.id, run);
+  run.finally(() => { if (_stagePreloadInflight.get(def.id) === run) _stagePreloadInflight.delete(def.id); });
+  return run;
 }
 
 /* ---------------- shared procedural textures ---------------- */
@@ -253,10 +324,8 @@ export const STAGES = [
     floor: { kind: 'sand', tint: '#c09a68', repeat: 26, platformTint: '#d0aa74', platformRepeat: 6 },
     swatch: ['#0a1a2a', '#ffca7a'],
     builder: 'treelife',
-    pano: 'assets/stages/eastern-mind/tree-of-life/pano.png', // real Eastern Mind background art
-    // The source bitmap's top ~12 rows are near-white cloud (rows 0-9 avg >210/255);
-    // under exposure 1.5 + bloom they blew out into a white band. Crop them and
-    // pull the backdrop under the grade (owner playtest, Oct 23 2026).
+    pano: 'assets/stages/eastern-mind/tree-of-life/pano-wh.png', // WH canon pass: Sato DNA + Wood palette/soul-gold (see docs/research/eastern-mind-ai-pass.md)
+    music: { land: 'life', palette: 'jungle greens + soul-gold', em: 'stage.intro.tree-of-life' },
     panoCropTop: 0.1, panoTint: '#b8b8b8',
     associatedFighters: ['saku-ra'],
   },
@@ -284,7 +353,8 @@ export const STAGES = [
     floor: { kind: 'scorched', tint: '#8a5a48', repeat: 24, platformTint: '#9a6a50', platformRepeat: 6 },
     swatch: ['#1a0608', '#ff6a2a'],
     builder: 'chiu',
-    pano: 'assets/stages/eastern-mind/plains-of-chi-u/pano.png', // real Eastern Mind background art
+    pano: 'assets/stages/eastern-mind/plains-of-chi-u/pano-wh.png', // WH canon pass: Sato DNA + Fire palette/flame aureoles
+    music: { land: 'time', palette: 'ember red + burning gold', em: 'stage.intro.plains-of-chi-u' },
     associatedFighters: ['michiko'],
     // Stage-break lane: scorched weak crust off-center — heavy slams break
     // through to the ember hollow below.
@@ -314,7 +384,8 @@ export const STAGES = [
     floor: { kind: 'stone', tint: '#8a8492', repeat: 26, platformTint: '#9a94a2', platformRepeat: 6, octagon: true },
     swatch: ['#0a0810', '#c0a080'],
     builder: 'parfang',
-    pano: 'assets/stages/eastern-mind/octagonal-shrine/pano.png', // real Eastern Mind background art
+    pano: 'assets/stages/eastern-mind/octagonal-shrine/pano-wh.png', // WH canon pass: Sato DNA + Earth palette/octagon geometry
+    music: { land: 'source', palette: 'lantern gold + vermilion', em: 'stage.intro.octagonal-shrine' },
     associatedFighters: ['pantera'],
   },
   {
@@ -341,11 +412,8 @@ export const STAGES = [
     floor: { kind: 'metal', tint: '#a0a8b8', repeat: 20, platformTint: '#b0b8c8', platformRepeat: 5 },
     swatch: ['#0a0a18', '#ff6ad0'],
     builder: 'helix',
-    pano: 'assets/stages/eastern-mind/helix-palace/pano.png', // real Eastern Mind background art
-    // Arena upgrade pipeline, Stage 3 (detail pass): the Pink Narwhal club
-    // interior (SmutBase Virt-A-Mate scene; see
-    // tools/stage-arena-pull/convert_pinknarwhal.py) replaces the procedural
-    // spiral blockout. The club carries its own fighting surface.
+    pano: 'assets/stages/eastern-mind/helix-palace/pano-wh.png', // WH canon pass: Sato DNA + Metal palette/prismatic refraction
+    music: { land: 'desire', palette: 'mirror silver + deep violet', em: 'stage.intro.helix-palace' },
     glb: 'assets/stages/pink-narwhal/pink-narwhal.glb',
     hidePlatform: true,
     associatedFighters: ['purple-rain'],
@@ -377,7 +445,9 @@ export const STAGES = [
     floor: { kind: 'dream', tint: '#8a90c8', repeat: 18, platformTint: '#9aa0d8', platformRepeat: 5 },
     swatch: ['#0a1030', '#4ae0ff'],
     builder: 'dreaming',
-    pano: 'assets/stages/eastern-mind/palace-of-dreaming/pano.png', // real Eastern Mind background art
+    pano: 'assets/stages/eastern-mind/palace-of-dreaming/pano-wh.png', // WH canon pass: Sato DNA + Water palette/bioluminescent drift
+    introVideo: '../teardown/eastern-mind/stage-3-palace-of-dreaming/video/W_RMEYE.mp4', // the land's own room film
+    music: { land: 'dreaming', palette: 'indigo + ripple cyan', em: 'stage.intro.palace-of-dreaming' },
     associatedFighters: ['waterfall'],
   },
   {
@@ -404,8 +474,98 @@ export const STAGES = [
     floor: { kind: 'stone', tint: '#7a6a80', repeat: 26, platformTint: '#8a7a90', platformRepeat: 6 },
     swatch: ['#0c0a20', '#b06ae0'],
     builder: 'marketplace',
-    pano: 'assets/stages/eastern-mind/phantom-marketplace/pano.png', // real Eastern Mind background art
+    pano: 'assets/stages/eastern-mind/phantom-marketplace/pano-wh.png', // WH canon pass: Sato DNA + Trader gold/Malakor thread
+    music: { land: 'liminal', palette: 'trader gold + sigil violet', em: 'stage.intro.phantom-marketplace' },
     associatedFighters: ['skull'],
+  },
+  /* ---------------- CAPE JONES ARENAS (2026-10-24 owner directives 20:35 + 20:38 CDT) ----------------
+     Two Cape Jones show arenas, tier 'CAPE JONES', wired into stage select
+     by the STAGE_TIERS loop in main.js (no main.js change needed).
+     Stage ids are coordinated with the music-wiring lane: 'cape-jones-arena'
+     is the id the Cape Jones music pool already tags (PR #1037 library:
+     Ghost Surf Rock + 7 interchange tracks); 'cape-jones-halloween-beach'
+     is the new id the music lane must tag with the same rotation set.
+     Neither def names an obj/glb/pano/map asset in v1, so Lane 5's
+     preloadStage warms nothing and fight-load has no arena-asset 404
+     surface. The v1 set is built by the builders below in the established
+     canon-stage style (buildBase sky/floor/lighting + set dressing);
+     the REAL-ASSET upgrades are tracked per element in
+     docs/arenas/cape-jones-arenas.md and are NOT claimed as shipped here:
+     house GLB = cape-jones living_room.blend export (pending),
+     beach prop GLBs = open-source beach pack (pending download).
+     When a real GLB lands, a follow-up PR adds the glb field and switches
+     the builder to the GLB-with-fallback pattern (buildHelix precedent).
+     No breakables are declared on either def, so Lane 5's stage-levels.js
+     gives both the generic treatment (upper + wall-broken 8.4 -> 12.9)
+     once PR #1061 merges. ARENA COLOR/LOCK: the beach sky stops, fog and
+     grade below are LOCKED — dark purple, lean-colored, heavy/thick/dirty
+     purple, thick atmosphere. Do not brighten or clean them up; any later
+     change needs the user explicitly saying so. */
+  {
+    id: 'cape-jones-arena', name: 'CAPE JONES ARENA', tier: 'CAPE JONES',
+    universe: "Cape Jones's house (home turf)", element: 'Spirit',
+    description: "Cape Jones's home turf — the living room from his show, where he flies in through the TV. CRT portal glows, LED wash hums, recliner stays empty.",
+    dims: { width: 16.8, depth: 6.0, wallDistance: 8.4 },
+    spawns: { p1: -3.5, p2: 3.5 },
+    lighting: {
+      sky: [[0.0, '#0a0812'], [0.5, '#1c1226'], [0.8, '#3a2030'], [1.0, '#120a14']],
+      fog: ['#120a14', 18, 60],
+      hemi: ['#8a7a6a', '#241a12', 1.5],
+      sun: ['#ffc890', 2.0, [-8, 7, 5]],
+      rim: ['#7a6ac0', 0.5, [8, 6, -7]],
+      fill: ['#ffe0c0', 0.9, [0, 4, 10]],
+      rig: {
+        charKey: ['#ffe0b8', 20, 7], rimBoost: 1.1,
+        motes: { color: '#FFC85C', count: 120, size: 0.05, opacity: 0.5 },
+      },
+      grade: { exposure: 1.4, bloom: 0.6 },
+    },
+    floor: { kind: 'dark', tint: '#5a3a24', repeat: 24, platformTint: '#6a452a', platformRepeat: 6 },
+    swatch: ['#1c1226', '#ffc890'],
+    builder: 'capehouse',
+    associatedFighters: ['cyborgx'],
+    // Music coordination (music lane owns game/data/music-library.json):
+    // pool id the Ghost Surf Rock rotation set is tagged with.
+    musicStageId: 'cape-jones-arena',
+    // House-reading caveat (correctable): the directive says the arena is
+    // "like / set at Cape Jones's house". This def plays the fight in the
+    // house set at standard WH bounds; the canon room scale in
+    // stages/cape-house/STAGE-SPEC.md is 7.0 x 6.0 m (show-room scale).
+    // If the user corrects the reading to literal room bounds, dims is a
+    // one-line change — the set dressing does not move.
+    source: { show: 'Cape Jones 3D show', spec: 'stages/cape-house/STAGE-SPEC.md', blend: 'mhvnsnt/cape-jones:3d-assets/living_room.blend', glbPending: 'stages/cape-house/living-room.glb' },
+  },
+  {
+    id: 'cape-jones-halloween-beach', name: 'HALLOWEEN BEACH', tier: 'CAPE JONES',
+    universe: 'Cape Jones show location (Halloween beach)', element: 'Spirit',
+    description: 'A Halloween beach under a dark purple lean-colored sky. Hooded figures watch from the dunes, eyes float over the surf, jack-o-lanterns grin from the sand. Spooky-fun, Scooby-Doo mystery — not grimdark. A Cape Jones show location.',
+    dims: { width: 16.8, depth: 6.0, wallDistance: 8.4 },
+    spawns: { p1: -3.5, p2: 3.5 },
+    lighting: {
+      // LOCKED SKY (arena color/lock law): dark purple, lean-colored,
+      // heavy, thick, dirty purple. Every stop is dark and muted; the
+      // lightest stop (#4a2444) is still murky. Never brighten this.
+      sky: [[0.0, '#0d0716'], [0.45, '#241038'], [0.72, '#3d1c4e'], [0.88, '#4a2444'], [1.0, '#160a1e']],
+      fog: ['#1c0f2a', 14, 55],
+      hemi: ['#4a3560', '#140a1c', 1.2],
+      sun: ['#9a7aaa', 1.1, [-8, 9, 4]],
+      rim: ['#5a4a9a', 0.7, [8, 6, -7]],
+      fill: ['#7a5a8a', 0.5, [0, 4, 10]],
+      rig: {
+        charKey: ['#c0a0d0', 16, 7], rimBoost: 1.1,
+        motes: { color: '#8A5AC0', count: 120, size: 0.05, opacity: 0.5 },
+      },
+      grade: { exposure: 1.1, bloom: 0.6 },
+    },
+    floor: { kind: 'sand', tint: '#7a6278', repeat: 26, platformTint: '#8a7088', platformRepeat: 6 },
+    swatch: ['#241038', '#ff8a3a'],
+    builder: 'capebeach',
+    associatedFighters: ['cyborgx'],
+    // Music coordination: NEW id the music lane must tag with the same
+    // Ghost Surf Rock rotation set (Ghost Surf Rock first, interchange
+    // tracks rotating around it) + modes ['battle'] for fight rotation.
+    musicStageId: 'cape-jones-halloween-beach',
+    source: { reference: 'Malakor dark fantasy (TikTok visual reference: hooded figures, floating eyes, medieval mysticism, cosmic horror, deep purple + blue palettes, alchemical/occult symbols)', pack: 'reodesuxz Low Poly Beach Lifeguard & Boardwalk Pack (itch.io, GLB, free for commercial use, no attribution required)' },
   },
 ];
 
@@ -1094,7 +1254,7 @@ async function buildHelix(g, def, api) {
   let detailed = false;
   if (def.glb) {
     try {
-      const gltf = await new GLTFLoader().loadAsync(def.glb);
+      const gltf = await loadGlbCandidates(new GLTFLoader(), def.glb);
       const club = gltf.scene;
       club.traverse((o) => {
         if (o.isMesh) {
@@ -1294,7 +1454,7 @@ async function buildNoMercy(g, def, api) {
   if (def.glb) {
     // GLB arena family (arena-pull lane): real N64 arena GLB + ring furniture.
       try {
-        const gltf = await new GLTFLoader().loadAsync(def.glb);
+        const gltf = await loadGlbCandidates(new GLTFLoader(), def.glb);
         const arena = gltf.scene;
         arena.traverse((o) => {
           if (o.isMesh) {
@@ -1417,7 +1577,7 @@ async function buildNoMercy(g, def, api) {
 async function buildT7Glb(g, def, api) {
   const { updaters, skyTex, fog } = buildBase(g, def, api);
   try {
-    const gltf = await new GLTFLoader().loadAsync(def.glb);
+    const gltf = await loadGlbCandidates(new GLTFLoader(), def.glb);
     gltf.scene.traverse((o) => {
       if (!o.isMesh) return;
       // exported without normals to fit phones; rebuild them here
@@ -1435,11 +1595,173 @@ async function buildT7Glb(g, def, api) {
   return { updaters, skyTex, fog };
 }
 
+/* ---- CAPE JONES ARENA: the house set (home turf) ----
+   v1 set dressing in the canon-stage style. Source of truth is
+   stages/cape-house/STAGE-SPEC.md: variant 1 living-room, closed walls
+   (wall-splat walls), furniture pushed to the edges for fight space.
+   The CRT TV is the portal prop; the recliner stays EMPTY per the
+   canon .blend constraint (SCENE-CANON.md: recliner stays empty until
+   the light-flicker gag rig lands) — no figure is ever seated there.
+   Real geometry upgrade: cape-jones living_room.blend export to
+   stages/cape-house/living-room.glb (pending; see design doc). */
+function buildCapeHouse(g, def, api) {
+  const { updaters, skyTex, fog } = buildBase(g, def, api);
+  const wallMat = new THREE.MeshStandardMaterial({ color: 0x2a1e2e, roughness: 0.95 });
+  const backWall = new THREE.Mesh(new THREE.BoxGeometry(30, 7, 0.6), wallMat);
+  backWall.position.set(0, 3.5, -9); g.add(backWall);
+  for (const sx of [-1, 1]) {
+    const side = new THREE.Mesh(new THREE.BoxGeometry(0.6, 7, 14), wallMat);
+    side.position.set(sx * 12, 3.5, -2); g.add(side);
+  }
+  const sofaMat = new THREE.MeshStandardMaterial({ color: 0x4a2a3a, roughness: 1 });
+  const sofa = new THREE.Mesh(new THREE.BoxGeometry(5, 1.1, 2), sofaMat);
+  sofa.position.set(-8.5, 0.55, -7.2); g.add(sofa);
+  const sofaBack = new THREE.Mesh(new THREE.BoxGeometry(5, 1.4, 0.5), sofaMat);
+  sofaBack.position.set(-8.5, 1.4, -8.1); g.add(sofaBack);
+  const tableMat = new THREE.MeshStandardMaterial({ color: 0x3a2418, roughness: 0.9 });
+  const table = new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.15, 1.2), tableMat);
+  table.position.set(-8.5, 0.55, -5.4); g.add(table);
+  // CRT TV portal prop (cape-jones tools/crt-tv/ reference): dark shell,
+  // glowing screen that flickers — the way in through the TV.
+  const tvMat = new THREE.MeshStandardMaterial({ color: 0x1a1a20, roughness: 0.6 });
+  const tv = new THREE.Mesh(new THREE.BoxGeometry(2.6, 2.0, 1.4), tvMat);
+  tv.position.set(8.5, 1.4, -7.6); g.add(tv);
+  const screenMat = new THREE.MeshBasicMaterial({ color: 0x9a7aff });
+  const screen = new THREE.Mesh(new THREE.PlaneGeometry(2.1, 1.5), screenMat);
+  screen.position.set(8.5, 1.45, -6.88); g.add(screen);
+  const tvLight = new THREE.PointLight(0x9a7aff, 14, 16, 2);
+  tvLight.position.set(8.5, 1.6, -6); g.add(tvLight);
+  // LED wash strip along the back wall (canon living-room LED wash).
+  const ledMat = new THREE.MeshBasicMaterial({ color: 0x7a4aff });
+  const led = new THREE.Mesh(new THREE.BoxGeometry(20, 0.12, 0.12), ledMat);
+  led.position.set(0, 5.6, -8.65); g.add(led);
+  const ledLight = new THREE.PointLight(0x7a4aff, 10, 22, 2);
+  ledLight.position.set(0, 4.5, -6); g.add(ledLight);
+  // Recliner: EMPTY, stage-right edge. Never seat a figure here.
+  const recMat = new THREE.MeshStandardMaterial({ color: 0x5a3a22, roughness: 1 });
+  const recliner = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.9, 1.4), recMat);
+  recliner.position.set(10.5, 0.45, -4.5); recliner.rotation.y = -0.5; g.add(recliner);
+  const recBack = new THREE.Mesh(new THREE.BoxGeometry(1.6, 1.3, 0.4), recMat);
+  recBack.position.set(10.8, 1.0, -5.1); recBack.rotation.y = -0.5; g.add(recBack);
+  updaters.push((dt, t) => {
+    const fl = 0.8 + Math.sin(t * 9) * 0.12 + Math.sin(t * 23) * 0.08;
+    tvLight.intensity = 14 * fl;
+    screenMat.color.setHex(0x9a7aff).multiplyScalar(fl);
+    ledLight.intensity = 10 * (0.85 + Math.sin(t * 1.4) * 0.15);
+  });
+  return { updaters, skyTex, fog };
+}
+
+/* ---- HALLOWEEN BEACH: Malakor-style, Scooby-Doo spooky-fun ----
+   Dark purple lean-colored sky comes from the def (LOCKED). Set: surf
+   water at the back, dunes, palm silhouettes, surfboards stuck in the
+   sand, a sandcastle, grinning jack-o-lanterns, hooded Malakor figures
+   watching from the dunes, floating eyes drifting over the surf, and a
+   sigil ring on the sand. Spooky-fun mystery, NOT grimdark: bright surf
+   accents + grinning lanterns carry the fun against the dark sky.
+   Real-asset upgrade: open-source beach prop GLBs (see design doc);
+   the eye texture is the game's own makeEyeTexture (marketplace eyes). */
+function buildCapeBeach(g, def, api) {
+  const { updaters, skyTex, fog } = buildBase(g, def, api);
+  const waterMat = new THREE.MeshStandardMaterial({ color: 0x1a1440, roughness: 0.25, metalness: 0.1 });
+  const water = new THREE.Mesh(new THREE.PlaneGeometry(90, 16), waterMat);
+  water.rotation.x = -Math.PI / 2; water.position.set(0, 0.02, -20); g.add(water);
+  const foamMat = new THREE.MeshBasicMaterial({ color: 0x8a7ac0, transparent: true, opacity: 0.5 });
+  const foam = new THREE.Mesh(new THREE.PlaneGeometry(90, 0.8), foamMat);
+  foam.rotation.x = -Math.PI / 2; foam.position.set(0, 0.04, -12.2); g.add(foam);
+  const duneMat = new THREE.MeshStandardMaterial({ color: 0x4a3a52, roughness: 1 });
+  for (let i = 0; i < 5; i++) {
+    const d = new THREE.Mesh(new THREE.SphereGeometry(5 + (i % 3), 12, 8, 0, Math.PI * 2, 0, Math.PI / 2), duneMat);
+    const a = Math.PI + (i / 4 - 0.5) * 2.4;
+    d.position.set(Math.sin(a) * 34, -0.3, -Math.cos(a) * 30);
+    d.scale.y = 0.4; g.add(d);
+  }
+  const palmMat = new THREE.MeshStandardMaterial({ color: 0x1c1226, roughness: 1 });
+  const palmAt = (x, z, s) => {
+    const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.22 * s, 0.34 * s, 6 * s, 7), palmMat);
+    trunk.position.set(x, 3 * s, z); trunk.rotation.z = 0.18; g.add(trunk);
+    for (let i = 0; i < 5; i++) {
+      const frond = new THREE.Mesh(new THREE.ConeGeometry(0.3 * s, 2.6 * s, 4), palmMat);
+      const a = (i / 5) * Math.PI * 2;
+      frond.position.set(x + Math.cos(a) * 1.1 * s + 0.5, 6 * s, z + Math.sin(a) * 1.1 * s);
+      frond.rotation.set(Math.sin(a) * 1.1, 0, -Math.cos(a) * 1.1); g.add(frond);
+    }
+  };
+  palmAt(-13, -10, 1.1); palmAt(14, -11, 0.9); palmAt(-20, -6, 0.8);
+  const boardCols = [0xff7a3a, 0x2ac0c0, 0xa05ae0];
+  boardCols.forEach((c, i) => {
+    const b = new THREE.Mesh(new THREE.BoxGeometry(0.5, 2.6, 0.12),
+      new THREE.MeshStandardMaterial({ color: c, roughness: 0.5 }));
+    b.position.set(-6 + i * 6, 1.1, -6.5 - (i % 2) * 0.8);
+    b.rotation.set(-0.25, (i - 1) * 0.3, 0.12); g.add(b);
+  });
+  const castleMat = new THREE.MeshStandardMaterial({ color: 0x5a4666, roughness: 1 });
+  const castle = new THREE.Mesh(new THREE.CylinderGeometry(1.1, 1.3, 1.4, 8), castleMat);
+  castle.position.set(7.5, 0.7, -4.5); g.add(castle);
+  const castleTop = new THREE.Mesh(new THREE.ConeGeometry(1.1, 1.0, 8), castleMat);
+  castleTop.position.set(7.5, 1.9, -4.5); g.add(castleTop);
+  // Jack-o-lanterns: grinning orange, flickering — the Halloween fun.
+  const lampMat = new THREE.MeshStandardMaterial({ color: 0xff7a1a, emissive: 0xff5a00, emissiveIntensity: 1.4, roughness: 0.8 });
+  const lamps = [];
+  for (const [x, z] of [[-4, -5], [3, -6.5], [10, -3.5]]) {
+    const lamp = new THREE.Mesh(new THREE.SphereGeometry(0.45, 12, 10), lampMat);
+    lamp.position.set(x, 0.45, z); g.add(lamp); lamps.push(lamp);
+  }
+  const lampLight = new THREE.PointLight(0xff7a1a, 16, 18, 2);
+  lampLight.position.set(3, 1.2, -5); g.add(lampLight);
+  // Hooded Malakor figures: dark silhouettes watching from the dunes.
+  const hoodMat = new THREE.MeshStandardMaterial({ color: 0x120a1e, roughness: 1 });
+  for (const [x, z, s] of [[-17, -13, 1.2], [18, -14, 1.0], [0, -17, 1.4]]) {
+    const robe = new THREE.Mesh(new THREE.ConeGeometry(1.0 * s, 3.2 * s, 8), hoodMat);
+    robe.position.set(x, 1.6 * s, z); g.add(robe);
+    const hood = new THREE.Mesh(new THREE.SphereGeometry(0.5 * s, 10, 8), hoodMat);
+    hood.position.set(x, 3.3 * s, z); g.add(hood);
+  }
+  // Floating eyes over the surf (game's own eye texture).
+  const eyeTex = makeEyeTexture();
+  const eyeMat = new THREE.MeshStandardMaterial({ map: eyeTex, roughness: 0.25 });
+  const eyes = [];
+  for (const [x, y, z] of [[-8, 5, -14], [6, 6.5, -16], [14, 4.5, -13]]) {
+    const e = new THREE.Mesh(new THREE.SphereGeometry(0.8, 16, 12), eyeMat);
+    e.position.set(x, y, z); g.add(e); eyes.push({ m: e, x, y, z, ph: Math.random() * 10 });
+  }
+  // Alchemical/occult sigil ring on the sand (Malakor reference).
+  const sigil = new THREE.Mesh(new THREE.TorusGeometry(5.5, 0.08, 8, 48),
+    new THREE.MeshBasicMaterial({ color: 0x8a5ac0 }));
+  sigil.rotation.x = Math.PI / 2; sigil.position.set(0, 0.06, 1.5); g.add(sigil);
+  // Bats: spooky-fun, flapping over the beach.
+  const batMat = new THREE.MeshBasicMaterial({ color: 0x0d0716, side: THREE.DoubleSide });
+  const batN = api.isMobile ? 3 : 6;
+  const bats = [];
+  for (let i = 0; i < batN; i++) {
+    const bat = new THREE.Group();
+    for (const sx of [-1, 1]) {
+      const wing = new THREE.Mesh(new THREE.PlaneGeometry(0.7, 0.35), batMat);
+      wing.position.x = sx * 0.35; bat.add(wing);
+    }
+    bat.position.set(-12 + i * 5, 7 + (i % 3), -10 - (i % 2) * 3);
+    g.add(bat); bats.push({ g: bat, ph: Math.random() * 10 });
+  }
+  updaters.push((dt, t) => {
+    foam.position.z = -12.2 + Math.sin(t * 0.7) * 0.35;
+    lampLight.intensity = 16 * (0.85 + Math.sin(t * 9) * 0.1 + Math.sin(t * 17) * 0.05);
+    for (const e of eyes) {
+      e.m.position.set(e.x + Math.sin(t * 0.5 + e.ph) * 1.2, e.y + Math.sin(t * 0.8 + e.ph) * 0.4, e.z);
+    }
+    for (const b of bats) {
+      b.g.position.y += Math.sin(t * 2 + b.ph) * 0.002;
+      b.g.children.forEach((w, wi) => { w.rotation.y = (wi === 0 ? 1 : -1) * (0.3 + Math.sin(t * 10 + b.ph) * 0.5); });
+    }
+  });
+  return { updaters, skyTex, fog };
+}
+
 const BUILDERS = {
   shrine: buildShrine, tongnou: buildTongNou, treelife: buildTreeLife,
   chiu: buildChiU, parfang: buildParFang, helix: buildHelix,
   dreaming: buildDreaming, marketplace: buildMarketplace, t3retro: buildT3Retro,
   sunra: buildSunRa, nomercy: buildNoMercy, t7glb: buildT7Glb,
+  capehouse: buildCapeHouse, capebeach: buildCapeBeach,
 };
 
 /* Build a stage into a fresh group. Returns { group, update, def, skyTex, fog }.
@@ -1471,7 +1793,7 @@ export function disposeStage(group) {
 }
 
 /* Tier order for the stage-select screen. */
-export const STAGE_TIERS = ['CANON LANDS', 'TEKKEN RETRO', 'WWF NO MERCY', 'WRESTLING', 'BOSS STAGES'];
+export const STAGE_TIERS = ['CANON LANDS', 'CAPE JONES', 'TEKKEN RETRO', 'WWF NO MERCY', 'WRESTLING', 'BOSS STAGES'];
 
 /* ---------------- SUN RĀ — THE STARING SKY ----------------
    Boss stage. Kevin's home base (he takes Baek's roster slot; can fight
@@ -1600,7 +1922,7 @@ async function buildSunRa(g, def, api) {
   const eyeLight = new THREE.PointLight(0xff3a22, 25, 40, 2);
   eyeLight.position.set(0, 31.75, -40.4); // owner 2026-10-19: raised 25% on Y with the glow g.add(eyeLight);
   try {
-    const gltf = await new GLTFLoader().loadAsync('assets/stages/sunra/mars-sky.glb');
+    const gltf = await loadGlbCandidates(new GLTFLoader(), 'assets/stages/sunra/mars-sky.glb');
     marsHead = gltf.scene;
     // normalize: fit head height to ~11 units, center it on MARS_POS
     const bbox = new THREE.Box3().setFromObject(marsHead);

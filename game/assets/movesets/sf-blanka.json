@@ -1,851 +1,1036 @@
 {
- "fighter": "sf-blanka",
- "display": "BLANKA (SF EX)",
- "tekken_base": "Blanka (SF)",
- "t3_source": "bryan",
- "proxy": false,
- "proxy_note": "Real SF move data (names/commands). anim_ref uses the Tekken-bank proxy until SF animations are decoded from PL/*.PAC; frame data estimated from archetype.",
- "schema_version": 2,
- "sf_translation_contract": "1=LP, 2=MP, 1+2=HP, 3=LK, 4=MK, 3+4=HK; 3P(all punches)=1+2, 3K(all kicks)=3+4; motions preserved: qcf/dp/qcb/hcb/charge/360/720; Akuma-in-T7 pattern",
- "sf_move_provenance": "SFEX move data: EX+alpha specials from period guides; EX2 Plus supers/meteor from SuperCombo Wiki verbatim. EX2+ entries flagged. EX+alpha-era Shout of Earth kept.",
- "frame_convention": "SFEX 60fps -> seconds; damage scaled SFEX 144HP -> WH 100HP (x0.69)",
- "moves": {
-  "1": {
-   "name": "BLANKA Standing Jab (LP)",
-   "input": "1",
-   "sf_move": "Standing Jab (LP)",
-   "sf_input": "standard 6-button",
-   "sf_category": "normal",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:canon-6-button-layout",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.35,
-   "damage": 5,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "1"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
+  "fighter": "sf-blanka",
+  "display": "BLANKA (SF EX)",
+  "tekken_base": "Blanka (SF)",
+  "t3_source": "bryan",
+  "proxy": false,
+  "proxy_note": "Real SF move data (names/commands). anim_ref uses the Tekken-bank proxy until SF animations are decoded from PL/*.PAC; frame data estimated from archetype.",
+  "schema_version": 2,
+  "sf_translation_contract": "1=LP, 2=MP, 1+2=HP, 3=LK, 4=MK, 3+4=HK; 3P(all punches)=1+2, 3K(all kicks)=3+4; motions preserved: qcf/dp/qcb/hcb/charge/360/720; Akuma-in-T7 pattern",
+  "sf_move_provenance": "SFEX move data: EX+alpha specials from period guides; EX2 Plus supers/meteor from SuperCombo Wiki verbatim. EX2+ entries flagged. EX+alpha-era Shout of Earth kept.",
+  "frame_convention": "SFEX 60fps -> seconds; damage scaled SFEX 144HP -> WH 100HP (x0.69)",
+  "moves": {
+    "1": {
+      "name": "BLANKA Standing Jab (LP)",
+      "input": "1",
+      "sf_move": "Standing Jab (LP)",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.35,
+      "damage": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 44,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "2": {
+      "name": "BLANKA Standing Strong (MP)",
+      "input": "2",
+      "sf_move": "Standing Strong (MP)",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.4,
+      "damage": 8,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 56,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "1+2": {
+      "name": "BLANKA Standing Fierce (HP)",
+      "input": "1+2",
+      "sf_move": "Standing Fierce (HP)",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.45,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 41,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
+    },
+    "3": {
+      "name": "BLANKA Standing Short (LK)",
+      "input": "3",
+      "sf_move": "Standing Short (LK)",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.4,
+      "damage": 6,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 66,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "4": {
+      "name": "BLANKA Standing Forward (MK)",
+      "input": "4",
+      "sf_move": "Standing Forward (MK)",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.45,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 76,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "3+4": {
+      "name": "BLANKA Standing Roundhouse (HK)",
+      "input": "3+4",
+      "sf_move": "Standing Roundhouse (HK)",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.217,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 13,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "3+4"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 60,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
+    },
+    "d/f+1": {
+      "name": "BLANKA Crouching Jab",
+      "input": "d/f+1",
+      "sf_move": "Crouching Jab",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.33,
+      "damage": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "d/f+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 148,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "d/f+2": {
+      "name": "BLANKA Crouching Strong",
+      "input": "d/f+2",
+      "sf_move": "Crouching Strong",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.4,
+      "damage": 8,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "d/f+2"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 114,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "d/f+1+2": {
+      "name": "BLANKA Amazon River Run (slide)",
+      "input": "d/f+1+2",
+      "sf_move": "Amazon River Run",
+      "sf_input": "df + HP",
+      "sf_category": "command-normal",
+      "sf_game": "sfex2plus",
+      "sf_source": "guide:scwiki",
+      "startup": 0.217,
+      "active": 0.067,
+      "recovery": 0.5,
+      "damage": 11,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.6,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "d/f+1+2"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 113,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
+    },
+    "d/f+3": {
+      "name": "BLANKA Crouching Short",
+      "input": "d/f+3",
+      "sf_move": "Crouching Short",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.33,
+      "damage": 6,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "d/f+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 189,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "d/f+4": {
+      "name": "BLANKA Crouching Forward",
+      "input": "d/f+4",
+      "sf_move": "Crouching Forward",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.183,
+      "active": 0.05,
+      "recovery": 0.42,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "d/f+4"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 124,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "d/f+3+4": {
+      "name": "BLANKA Crouching Roundhouse",
+      "input": "d/f+3+4",
+      "sf_move": "Crouching Roundhouse",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.217,
+      "active": 0.05,
+      "recovery": 0.53,
+      "damage": 14,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "d/f+3+4"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 103,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
+    },
+    "u+1": {
+      "name": "BLANKA Jumping Jab",
+      "input": "u+1",
+      "sf_move": "Jumping Jab",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.15,
+      "active": 0.067,
+      "recovery": 0.3,
+      "damage": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "u+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 41,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "u+2": {
+      "name": "BLANKA Jumping Strong",
+      "input": "u+2",
+      "sf_move": "Jumping Strong",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.167,
+      "active": 0.067,
+      "recovery": 0.33,
+      "damage": 8,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "u+2"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "u+1+2": {
+      "name": "BLANKA Jumping Fierce",
+      "input": "u+1+2",
+      "sf_move": "Jumping Fierce",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.183,
+      "active": 0.067,
+      "recovery": 0.38,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "u+1+2"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "u+3": {
+      "name": "BLANKA Jumping Short",
+      "input": "u+3",
+      "sf_move": "Jumping Short",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.15,
+      "active": 0.067,
+      "recovery": 0.3,
+      "damage": 6,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "u+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "u+4": {
+      "name": "BLANKA Jumping Forward",
+      "input": "u+4",
+      "sf_move": "Jumping Forward",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.167,
+      "active": 0.067,
+      "recovery": 0.35,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "u+4"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "u+3+4": {
+      "name": "BLANKA Jumping Roundhouse",
+      "input": "u+3+4",
+      "sf_move": "Jumping Roundhouse",
+      "sf_input": "standard 6-button",
+      "sf_category": "normal",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:canon-6-button-layout",
+      "startup": 0.183,
+      "active": 0.067,
+      "recovery": 0.4,
+      "damage": 13,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "u+3+4"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
+    },
+    "f+2": {
+      "name": "BLANKA Rock Crush",
+      "input": "f+2",
+      "sf_move": "Rock Crush",
+      "sf_input": "f + MP",
+      "sf_category": "command-normal",
+      "sf_game": "sfex2plus",
+      "sf_source": "guide:scwiki",
+      "startup": 0.183,
+      "active": 0.05,
+      "recovery": 0.42,
+      "damage": 9,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.4,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "f+2"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 150,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "1+3": {
+      "name": "BLANKA Wild Fang (throw)",
+      "input": "1+3",
+      "sf_move": "Wild Fang",
+      "sf_input": "When close, b/f + HP",
+      "sf_category": "throw",
+      "sf_game": "sfex2plus",
+      "sf_source": "guide:scwiki",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 14,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 138,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
+    },
+    "mash+1": {
+      "name": "BLANKA Electric Thunder (mash P)",
+      "input": "mash+1",
+      "sf_move": "Electric Thunder",
+      "sf_input": "Tap P rapidly",
+      "sf_category": "special",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:scwiki / guide:25th",
+      "startup": 0.117,
+      "active": 0.217,
+      "recovery": 0.45,
+      "damage": 18,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "mash+1"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "d,u+3+4": {
+      "name": "BLANKA Vertical Rolling (charge)",
+      "input": "d,u+3+4",
+      "sf_move": "Vertical Rolling",
+      "sf_input": "Charge d,u + K",
+      "sf_category": "special",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:scwiki / guide:25th",
+      "startup": 0.117,
+      "active": 0.117,
+      "recovery": 0.55,
+      "damage": 16,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "d,u+3+4"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c); charge: hold d, then u+K",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "b,f+1+2": {
+      "name": "BLANKA Rolling Attack (charge)",
+      "input": "b,f+1+2",
+      "sf_move": "Rolling Attack",
+      "sf_input": "Charge b,f + P",
+      "sf_category": "special",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:scwiki / guide:25th",
+      "startup": 0.117,
+      "active": 0.117,
+      "recovery": 0.55,
+      "damage": 16,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "b,f+1+2"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c); charge: hold b, then f+P",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "b,f+3+4": {
+      "name": "BLANKA Backstep Rolling (charge)",
+      "input": "b,f+3+4",
+      "sf_move": "Backstep Rolling",
+      "sf_input": "Charge b,f + K (press P to abort)",
+      "sf_category": "special",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:scwiki / guide:25th",
+      "startup": 0.15,
+      "active": 0.133,
+      "recovery": 0.55,
+      "damage": 14,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 3.8,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "b,f+3+4"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c); charge: hold b, then f+K",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "f+3+4": {
+      "name": "BLANKA Surprise Forward (hop)",
+      "input": "f+3+4",
+      "sf_move": "Surprise Forward",
+      "sf_input": "Press KKK (f+KKK)",
+      "sf_category": "special",
+      "sf_game": "sfex2plus",
+      "sf_source": "guide:scwiki",
+      "startup": 0.1,
+      "active": 0.25,
+      "recovery": 0.3,
+      "damage": 0,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "f+3+4"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c); evasive hop, no damage",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 109,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
+    },
+    "b+3+4": {
+      "name": "BLANKA Surprise Back (hop)",
+      "input": "b+3+4",
+      "sf_move": "Surprise Back",
+      "sf_input": "Press ub~db + KKK",
+      "sf_category": "special",
+      "sf_game": "sfex2plus",
+      "sf_source": "guide:scwiki",
+      "startup": 0.1,
+      "active": 0.25,
+      "recovery": 0.3,
+      "damage": 0,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "b+3+4"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c); evasive hop, no damage",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 199,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
+    },
+    "b,f,b,f+1+2": {
+      "name": "BLANKA Ground Shave Rolling (Lv1+)",
+      "input": "b,f,b,f+1+2",
+      "sf_move": "Ground Shave Rolling",
+      "sf_input": "Charge b,f,b,f + P",
+      "sf_category": "super",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:scwiki / guide:25th",
+      "startup": 0.1,
+      "active": 0.283,
+      "recovery": 0.65,
+      "damage": 26,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "b,f,b,f+1+2"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c); hold P after landing to delay roll",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "db,df,db,uf+1+2": {
+      "name": "BLANKA Shout of Earth (Lv1+) [EX+alpha]",
+      "input": "db,df,db,uf+1+2",
+      "sf_move": "Shout of Earth",
+      "sf_input": "Charge db,df,db,uf + P",
+      "sf_category": "super",
+      "sf_game": "sfex+alpha",
+      "sf_source": "guide:25th-era canon",
+      "startup": 0.15,
+      "active": 0.333,
+      "recovery": 0.7,
+      "damage": 28,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.5,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "db,df,db,uf+1+2"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c); EX+alpha-era super per period movelists",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "b,f,b,f+3+4": {
+      "name": "BLANKA Jungle Beat (Lv1+) [EX2+]",
+      "input": "b,f,b,f+3+4",
+      "sf_move": "Jungle Beat",
+      "sf_input": "Charge b,f,b,f + K",
+      "sf_category": "super",
+      "sf_game": "sfex2plus",
+      "sf_source": "guide:scwiki",
+      "startup": 0.117,
+      "active": 0.267,
+      "recovery": 0.65,
+      "damage": 26,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "b,f,b,f+3+4"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "u,qcf,qcf+1+2": {
+      "name": "BLANKA Beast Hurricane (air Lv1+) [EX2+]",
+      "input": "u,qcf,qcf+1+2",
+      "sf_move": "Beast Hurricane",
+      "sf_input": "In air, qcf,qcf + P",
+      "sf_category": "super",
+      "sf_game": "sfex2plus",
+      "sf_source": "guide:scwiki",
+      "startup": 0.167,
+      "active": 0.283,
+      "recovery": 0.55,
+      "damage": 27,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "u,qcf,qcf+1+2"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "qcf,qcf+3+4": {
+      "name": "BLANKA Super Electric Thunder (Meteor, Lv3) [EX2+]",
+      "input": "qcf,qcf+3+4",
+      "sf_move": "Super Electric Thunder",
+      "sf_input": "qcf,qcf + KKK",
+      "sf_category": "meteor",
+      "sf_game": "sfex2plus",
+      "sf_source": "guide:scwiki",
+      "startup": 0.083,
+      "active": 0.45,
+      "recovery": 0.75,
+      "damage": 38,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan",
+      "input_slots": [
+        "qcf,qcf+3+4"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "b+1": {
+      "name": "Rock Crusher",
+      "input": "b+1",
+      "sf_move": "Rock Crusher",
+      "sf_command": "b+LP",
+      "startup": 0.15,
+      "active": 0.05,
+      "recovery": 0.4,
+      "damage": 10,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 3.0,
+      "soulGain": 10,
+      "anim_ref": "sf:b-1",
+      "input_slots": [
+        "b+1"
+      ],
+      "move_class": "strike",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 90,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    },
+    "1,1,1,1": {
+      "name": "Electric Thunder",
+      "input": "1,1,1,1",
+      "sf_move": "Electric Thunder",
+      "sf_command": "rapid PPP",
+      "startup": 0.2,
+      "active": 0.4,
+      "recovery": 0.5,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 3.2,
+      "soulGain": 15,
+      "anim_ref": "sf:blanka:electric-thunder",
+      "input_slots": [
+        "1,1,1,1"
+      ],
+      "move_class": "special",
+      "wh_note": "Body-wide shock field; anti-rushdown. Tekken translation: multi-hit pressure string.",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "b~f+2": {
+      "name": "Rolling Attack",
+      "input": "b~f+2",
+      "sf_move": "Rolling Attack",
+      "sf_command": "[b]f+P",
+      "startup": 0.183,
+      "active": 0.15,
+      "recovery": 0.5,
+      "damage": 15,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 15,
+      "anim_ref": "sf:blanka:rolling-attack",
+      "input_slots": [
+        "b~f+2"
+      ],
+      "move_class": "special",
+      "wh_note": "Charge move: horizontal cannonball.",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "d~u+4": {
+      "name": "Vertical Roll",
+      "input": "d~u+4",
+      "sf_move": "Vertical Roll",
+      "sf_command": "[d]u+K",
+      "startup": 0.2,
+      "active": 0.15,
+      "recovery": 0.5,
+      "damage": 14,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 3.8,
+      "soulGain": 12,
+      "anim_ref": "sf:blanka:vertical-roll",
+      "input_slots": [
+        "d~u+4"
+      ],
+      "move_class": "special",
+      "wh_note": "Charge move: rising arc, anti-air.",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "qcb+2": {
+      "name": "Backstep Roll",
+      "input": "qcb+2",
+      "sf_move": "Backstep Roll",
+      "sf_command": "214+P",
+      "startup": 0.25,
+      "active": 0.1,
+      "recovery": 0.45,
+      "damage": 13,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 3.2,
+      "soulGain": 12,
+      "anim_ref": "sf:blanka:backstep-roll",
+      "input_slots": [
+        "qcb+2"
+      ],
+      "move_class": "special",
+      "wh_note": "Evasive roll into hop strike; cancellable.",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
+    },
+    "b+1+2": {
+      "name": "Ground Shave Rolling",
+      "input": "b+1+2",
+      "sf_move": "Ground Shave Rolling",
+      "sf_command": "[b]f+PPP (super)",
+      "startup": 0.3,
+      "active": 0.3,
+      "recovery": 0.7,
+      "damage": 28,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.5,
+      "soulGain": 25,
+      "anim_ref": "sf:blanka:ground-shave",
+      "input_slots": [
+        "b+1+2"
+      ],
+      "move_class": "special",
+      "wh_note": "Super: full-screen rolling charge.",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 167,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
+    }
   },
-  "2": {
-   "name": "BLANKA Standing Strong (MP)",
-   "input": "2",
-   "sf_move": "Standing Strong (MP)",
-   "sf_input": "standard 6-button",
-   "sf_category": "normal",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:canon-6-button-layout",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.4,
-   "damage": 8,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "2"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "1+2": {
-   "name": "BLANKA Standing Fierce (HP)",
-   "input": "1+2",
-   "sf_move": "Standing Fierce (HP)",
-   "sf_input": "standard 6-button",
-   "sf_category": "normal",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:canon-6-button-layout",
-   "startup": 0.2,
-   "active": 0.05,
-   "recovery": 0.45,
-   "damage": 12,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 2.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "1+2"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "3": {
-   "name": "BLANKA Standing Short (LK)",
-   "input": "3",
-   "sf_move": "Standing Short (LK)",
-   "sf_input": "standard 6-button",
-   "sf_category": "normal",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:canon-6-button-layout",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.4,
-   "damage": 6,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 2.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "3"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "4": {
-   "name": "BLANKA Standing Forward (MK)",
-   "input": "4",
-   "sf_move": "Standing Forward (MK)",
-   "sf_input": "standard 6-button",
-   "sf_category": "normal",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:canon-6-button-layout",
-   "startup": 0.2,
-   "active": 0.05,
-   "recovery": 0.45,
-   "damage": 9,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 2.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "4"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "3+4": {
-   "name": "BLANKA Standing Roundhouse (HK)",
-   "input": "3+4",
-   "sf_move": "Standing Roundhouse (HK)",
-   "sf_input": "standard 6-button",
-   "sf_category": "normal",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:canon-6-button-layout",
-   "startup": 0.217,
-   "active": 0.05,
-   "recovery": 0.5,
-   "damage": 13,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 2.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "3+4"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "d/f+1": {
-   "name": "BLANKA Crouching Jab",
-   "input": "d/f+1",
-   "sf_move": "Crouching Jab",
-   "sf_input": "standard 6-button",
-   "sf_category": "normal",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:canon-6-button-layout",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.33,
-   "damage": 5,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "d/f+1"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "d/f+2": {
-   "name": "BLANKA Crouching Strong",
-   "input": "d/f+2",
-   "sf_move": "Crouching Strong",
-   "sf_input": "standard 6-button",
-   "sf_category": "normal",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:canon-6-button-layout",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.4,
-   "damage": 8,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "d/f+2"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "d/f+1+2": {
-   "name": "BLANKA Amazon River Run (slide)",
-   "input": "d/f+1+2",
-   "sf_move": "Amazon River Run",
-   "sf_input": "df + HP",
-   "sf_category": "command-normal",
-   "sf_game": "sfex2plus",
-   "sf_source": "guide:scwiki",
-   "startup": 0.217,
-   "active": 0.067,
-   "recovery": 0.5,
-   "damage": 11,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.6,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "d/f+1+2"
-   ],
-   "move_class": "special",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "d/f+3": {
-   "name": "BLANKA Crouching Short",
-   "input": "d/f+3",
-   "sf_move": "Crouching Short",
-   "sf_input": "standard 6-button",
-   "sf_category": "normal",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:canon-6-button-layout",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.33,
-   "damage": 6,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 2.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "d/f+3"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "d/f+4": {
-   "name": "BLANKA Crouching Forward",
-   "input": "d/f+4",
-   "sf_move": "Crouching Forward",
-   "sf_input": "standard 6-button",
-   "sf_category": "normal",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:canon-6-button-layout",
-   "startup": 0.183,
-   "active": 0.05,
-   "recovery": 0.42,
-   "damage": 9,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 2.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "d/f+4"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "d/f+3+4": {
-   "name": "BLANKA Crouching Roundhouse",
-   "input": "d/f+3+4",
-   "sf_move": "Crouching Roundhouse",
-   "sf_input": "standard 6-button",
-   "sf_category": "normal",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:canon-6-button-layout",
-   "startup": 0.217,
-   "active": 0.05,
-   "recovery": 0.53,
-   "damage": 14,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 2.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "d/f+3+4"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "u+1": {
-   "name": "BLANKA Jumping Jab",
-   "input": "u+1",
-   "sf_move": "Jumping Jab",
-   "sf_input": "standard 6-button",
-   "sf_category": "normal",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:canon-6-button-layout",
-   "startup": 0.15,
-   "active": 0.067,
-   "recovery": 0.3,
-   "damage": 5,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "u+1"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "u+2": {
-   "name": "BLANKA Jumping Strong",
-   "input": "u+2",
-   "sf_move": "Jumping Strong",
-   "sf_input": "standard 6-button",
-   "sf_category": "normal",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:canon-6-button-layout",
-   "startup": 0.167,
-   "active": 0.067,
-   "recovery": 0.33,
-   "damage": 8,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "u+2"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "u+1+2": {
-   "name": "BLANKA Jumping Fierce",
-   "input": "u+1+2",
-   "sf_move": "Jumping Fierce",
-   "sf_input": "standard 6-button",
-   "sf_category": "normal",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:canon-6-button-layout",
-   "startup": 0.183,
-   "active": 0.067,
-   "recovery": 0.38,
-   "damage": 12,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 2.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "u+1+2"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "u+3": {
-   "name": "BLANKA Jumping Short",
-   "input": "u+3",
-   "sf_move": "Jumping Short",
-   "sf_input": "standard 6-button",
-   "sf_category": "normal",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:canon-6-button-layout",
-   "startup": 0.15,
-   "active": 0.067,
-   "recovery": 0.3,
-   "damage": 6,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 2.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "u+3"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "u+4": {
-   "name": "BLANKA Jumping Forward",
-   "input": "u+4",
-   "sf_move": "Jumping Forward",
-   "sf_input": "standard 6-button",
-   "sf_category": "normal",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:canon-6-button-layout",
-   "startup": 0.167,
-   "active": 0.067,
-   "recovery": 0.35,
-   "damage": 9,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 2.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "u+4"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "u+3+4": {
-   "name": "BLANKA Jumping Roundhouse",
-   "input": "u+3+4",
-   "sf_move": "Jumping Roundhouse",
-   "sf_input": "standard 6-button",
-   "sf_category": "normal",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:canon-6-button-layout",
-   "startup": 0.183,
-   "active": 0.067,
-   "recovery": 0.4,
-   "damage": 13,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 2.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "u+3+4"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "f+2": {
-   "name": "BLANKA Rock Crush",
-   "input": "f+2",
-   "sf_move": "Rock Crush",
-   "sf_input": "f + MP",
-   "sf_category": "command-normal",
-   "sf_game": "sfex2plus",
-   "sf_source": "guide:scwiki",
-   "startup": 0.183,
-   "active": 0.05,
-   "recovery": 0.42,
-   "damage": 9,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.4,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "f+2"
-   ],
-   "move_class": "special",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "1+3": {
-   "name": "BLANKA Wild Fang (throw)",
-   "input": "1+3",
-   "sf_move": "Wild Fang",
-   "sf_input": "When close, b/f + HP",
-   "sf_category": "throw",
-   "sf_game": "sfex2plus",
-   "sf_source": "guide:scwiki",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.5,
-   "damage": 14,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 3.5,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "1+3"
-   ],
-   "move_class": "throw",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "mash+1": {
-   "name": "BLANKA Electric Thunder (mash P)",
-   "input": "mash+1",
-   "sf_move": "Electric Thunder",
-   "sf_input": "Tap P rapidly",
-   "sf_category": "special",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:scwiki / guide:25th",
-   "startup": 0.117,
-   "active": 0.217,
-   "recovery": 0.45,
-   "damage": 18,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 3.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "mash+1"
-   ],
-   "move_class": "special",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "d,u+3+4": {
-   "name": "BLANKA Vertical Rolling (charge)",
-   "input": "d,u+3+4",
-   "sf_move": "Vertical Rolling",
-   "sf_input": "Charge d,u + K",
-   "sf_category": "special",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:scwiki / guide:25th",
-   "startup": 0.117,
-   "active": 0.117,
-   "recovery": 0.55,
-   "damage": 16,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 4.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "d,u+3+4"
-   ],
-   "move_class": "special",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c); charge: hold d, then u+K"
-  },
-  "b,f+1+2": {
-   "name": "BLANKA Rolling Attack (charge)",
-   "input": "b,f+1+2",
-   "sf_move": "Rolling Attack",
-   "sf_input": "Charge b,f + P",
-   "sf_category": "special",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:scwiki / guide:25th",
-   "startup": 0.117,
-   "active": 0.117,
-   "recovery": 0.55,
-   "damage": 16,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 4.2,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "b,f+1+2"
-   ],
-   "move_class": "special",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c); charge: hold b, then f+P"
-  },
-  "b,f+3+4": {
-   "name": "BLANKA Backstep Rolling (charge)",
-   "input": "b,f+3+4",
-   "sf_move": "Backstep Rolling",
-   "sf_input": "Charge b,f + K (press P to abort)",
-   "sf_category": "special",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:scwiki / guide:25th",
-   "startup": 0.15,
-   "active": 0.133,
-   "recovery": 0.55,
-   "damage": 14,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 3.8,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "b,f+3+4"
-   ],
-   "move_class": "special",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c); charge: hold b, then f+K"
-  },
-  "f+3+4": {
-   "name": "BLANKA Surprise Forward (hop)",
-   "input": "f+3+4",
-   "sf_move": "Surprise Forward",
-   "sf_input": "Press KKK (f+KKK)",
-   "sf_category": "special",
-   "sf_game": "sfex2plus",
-   "sf_source": "guide:scwiki",
-   "startup": 0.1,
-   "active": 0.25,
-   "recovery": 0.3,
-   "damage": 0,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 0.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "f+3+4"
-   ],
-   "move_class": "special",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c); evasive hop, no damage"
-  },
-  "b+3+4": {
-   "name": "BLANKA Surprise Back (hop)",
-   "input": "b+3+4",
-   "sf_move": "Surprise Back",
-   "sf_input": "Press ub~db + KKK",
-   "sf_category": "special",
-   "sf_game": "sfex2plus",
-   "sf_source": "guide:scwiki",
-   "startup": 0.1,
-   "active": 0.25,
-   "recovery": 0.3,
-   "damage": 0,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 0.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "b+3+4"
-   ],
-   "move_class": "special",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c); evasive hop, no damage"
-  },
-  "b,f,b,f+1+2": {
-   "name": "BLANKA Ground Shave Rolling (Lv1+)",
-   "input": "b,f,b,f+1+2",
-   "sf_move": "Ground Shave Rolling",
-   "sf_input": "Charge b,f,b,f + P",
-   "sf_category": "super",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:scwiki / guide:25th",
-   "startup": 0.1,
-   "active": 0.283,
-   "recovery": 0.65,
-   "damage": 26,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "b,f,b,f+1+2"
-   ],
-   "move_class": "special",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c); hold P after landing to delay roll"
-  },
-  "db,df,db,uf+1+2": {
-   "name": "BLANKA Shout of Earth (Lv1+) [EX+alpha]",
-   "input": "db,df,db,uf+1+2",
-   "sf_move": "Shout of Earth",
-   "sf_input": "Charge db,df,db,uf + P",
-   "sf_category": "super",
-   "sf_game": "sfex+alpha",
-   "sf_source": "guide:25th-era canon",
-   "startup": 0.15,
-   "active": 0.333,
-   "recovery": 0.7,
-   "damage": 28,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 5.5,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "db,df,db,uf+1+2"
-   ],
-   "move_class": "special",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c); EX+alpha-era super per period movelists"
-  },
-  "b,f,b,f+3+4": {
-   "name": "BLANKA Jungle Beat (Lv1+) [EX2+]",
-   "input": "b,f,b,f+3+4",
-   "sf_move": "Jungle Beat",
-   "sf_input": "Charge b,f,b,f + K",
-   "sf_category": "super",
-   "sf_game": "sfex2plus",
-   "sf_source": "guide:scwiki",
-   "startup": 0.117,
-   "active": 0.267,
-   "recovery": 0.65,
-   "damage": 26,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "b,f,b,f+3+4"
-   ],
-   "move_class": "special",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "u,qcf,qcf+1+2": {
-   "name": "BLANKA Beast Hurricane (air Lv1+) [EX2+]",
-   "input": "u,qcf,qcf+1+2",
-   "sf_move": "Beast Hurricane",
-   "sf_input": "In air, qcf,qcf + P",
-   "sf_category": "super",
-   "sf_game": "sfex2plus",
-   "sf_source": "guide:scwiki",
-   "startup": 0.167,
-   "active": 0.283,
-   "recovery": 0.55,
-   "damage": 27,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 5.2,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "u,qcf,qcf+1+2"
-   ],
-   "move_class": "special",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "qcf,qcf+3+4": {
-   "name": "BLANKA Super Electric Thunder (Meteor, Lv3) [EX2+]",
-   "input": "qcf,qcf+3+4",
-   "sf_move": "Super Electric Thunder",
-   "sf_input": "qcf,qcf + KKK",
-   "sf_category": "meteor",
-   "sf_game": "sfex2plus",
-   "sf_source": "guide:scwiki",
-   "startup": 0.083,
-   "active": 0.45,
-   "recovery": 0.75,
-   "damage": 38,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 6.5,
-   "soulGain": 8,
-   "anim_ref": "t3:bryan",
-   "input_slots": [
-    "qcf,qcf+3+4"
-   ],
-   "move_class": "special",
-   "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
-  },
-  "b+1": {
-   "name": "Rock Crusher",
-   "input": "b+1",
-   "sf_move": "Rock Crusher",
-   "sf_command": "b+LP",
-   "startup": 0.15,
-   "active": 0.05,
-   "recovery": 0.4,
-   "damage": 10,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 3.0,
-   "soulGain": 10,
-   "anim_ref": "sf:b-1",
-   "input_slots": [
-    "b+1"
-   ],
-   "move_class": "strike"
-  },
-  "1,1,1,1": {
-   "name": "Electric Thunder",
-   "input": "1,1,1,1",
-   "sf_move": "Electric Thunder",
-   "sf_command": "rapid PPP",
-   "startup": 0.2,
-   "active": 0.4,
-   "recovery": 0.5,
-   "damage": 12,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 3.2,
-   "soulGain": 15,
-   "anim_ref": "sf:blanka:electric-thunder",
-   "input_slots": [
-    "1,1,1,1"
-   ],
-   "move_class": "special",
-   "wh_note": "Body-wide shock field; anti-rushdown. Tekken translation: multi-hit pressure string."
-  },
-  "b~f+2": {
-   "name": "Rolling Attack",
-   "input": "b~f+2",
-   "sf_move": "Rolling Attack",
-   "sf_command": "[b]f+P",
-   "startup": 0.183,
-   "active": 0.15,
-   "recovery": 0.5,
-   "damage": 15,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 4.0,
-   "soulGain": 15,
-   "anim_ref": "sf:blanka:rolling-attack",
-   "input_slots": [
-    "b~f+2"
-   ],
-   "move_class": "special",
-   "wh_note": "Charge move: horizontal cannonball."
-  },
-  "d~u+4": {
-   "name": "Vertical Roll",
-   "input": "d~u+4",
-   "sf_move": "Vertical Roll",
-   "sf_command": "[d]u+K",
-   "startup": 0.2,
-   "active": 0.15,
-   "recovery": 0.5,
-   "damage": 14,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 3.8,
-   "soulGain": 12,
-   "anim_ref": "sf:blanka:vertical-roll",
-   "input_slots": [
-    "d~u+4"
-   ],
-   "move_class": "special",
-   "wh_note": "Charge move: rising arc, anti-air."
-  },
-  "qcb+2": {
-   "name": "Backstep Roll",
-   "input": "qcb+2",
-   "sf_move": "Backstep Roll",
-   "sf_command": "214+P",
-   "startup": 0.25,
-   "active": 0.1,
-   "recovery": 0.45,
-   "damage": 13,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 3.2,
-   "soulGain": 12,
-   "anim_ref": "sf:blanka:backstep-roll",
-   "input_slots": [
-    "qcb+2"
-   ],
-   "move_class": "special",
-   "wh_note": "Evasive roll into hop strike; cancellable."
-  },
-  "b+1+2": {
-   "name": "Ground Shave Rolling",
-   "input": "b+1+2",
-   "sf_move": "Ground Shave Rolling",
-   "sf_command": "[b]f+PPP (super)",
-   "startup": 0.3,
-   "active": 0.3,
-   "recovery": 0.7,
-   "damage": 28,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 4.5,
-   "soulGain": 25,
-   "anim_ref": "sf:blanka:ground-shave",
-   "input_slots": [
-    "b+1+2"
-   ],
-   "move_class": "special",
-   "wh_note": "Super: full-screen rolling charge."
-  }
- },
- "sf_authentic": true,
- "variant": 1,
- "sf_lane_note": "Content-merged 2026-10-20: lane sf/teardown-moves-20261019 (PR #354, 11 moves) + this lane's game-verified set (31 moves). Union by input key; collisions kept the game-verified variant. See SF-TEARDOWN-STATUS.md.",
- "hit_words": {},
- "stance_after": {}
+  "sf_authentic": true,
+  "variant": 1,
+  "sf_lane_note": "Content-merged 2026-10-20: lane sf/teardown-moves-20261019 (PR #354, 11 moves) + this lane's game-verified set (31 moves). Union by input key; collisions kept the game-verified variant. See SF-TEARDOWN-STATUS.md.",
+  "hit_words": {},
+  "stance_after": {}
 }

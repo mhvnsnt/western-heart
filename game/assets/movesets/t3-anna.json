@@ -5179,8 +5179,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Jail from 1st block with no delay; Combo from 1st hit with 2f delay; Move can be delayed 2f; &lt;/div&gt",
       "anim_t3": {
         "bank": "anna",
-        "row": 373,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2+4~t8.anna": {
@@ -6201,8 +6201,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit; -31 from 1st block; &lt;/div&gt",
       "anim_t3": {
         "bank": "anna",
-        "row": 179,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "CJM.d/f": {
@@ -7099,8 +7099,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "anna",
-        "row": 189,
-        "match": "same-notation"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+4": {
@@ -7235,8 +7235,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
       "anim_t3": {
         "bank": "anna",
-        "row": 190,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+1,2,4": {
@@ -7373,8 +7373,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st CH; Move can be delayed by 10F; Interrupt with i11 from 1st block; Cancel to CJM -15 -4 -3 r33 with B on frame 14; Cancel to SS -10 +1 +2 r37 with U_D on frame 28; ",
       "anim_t3": {
         "bank": "anna",
-        "row": 346,
-        "match": "same-notation"
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,1": {
@@ -7443,8 +7443,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "anna",
-        "row": 170,
-        "match": "same-notation"
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,4~t8.anna": {
@@ -7477,8 +7477,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st CH; Combo from 2nd hit with 10f delay; Input can be delayed 10f; Move can be delayed 8f; Jail from 2nd attack; &lt;/div&gt",
       "anim_t3": {
         "bank": "anna",
-        "row": 387,
-        "match": "same-notation"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,2~t8.anna": {
@@ -7511,8 +7511,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit with 10f delay; Input can be delayed 10f; Enter HAM -2 +4 +10 r21 with F; &lt;/div&gt",
       "anim_t3": {
         "bank": "anna",
-        "row": 353,
-        "match": "same-notation"
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,2,1": {
@@ -8157,7 +8157,7 @@
       }
     },
     "FC.d/f+2,H.1": {
-      "name": "Leanán Sith&#039;s Grail",
+      "name": "Lean\u00e1n Sith&#039;s Grail",
       "input": "FC.d/f+2,H.1",
       "startup": 0.45,
       "active": 0.4,
@@ -8685,7 +8685,7 @@
       }
     },
     "H.2+3": {
-      "name": "From Éire with Love",
+      "name": "From \u00c9ire with Love",
       "input": "H.2+3",
       "startup": 0.217,
       "active": 0.433,
@@ -9891,8 +9891,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Jail from 1st block with 4F delay; Combo from 1st CH with 12f delay; Input can be delayed 12f; Move can be delayed 11f; &lt;/div&gt",
       "anim_t3": {
         "bank": "anna",
-        "row": 52,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+1,3,3+4": {
@@ -10371,7 +10371,7 @@
         "WALL.b,b,u/b"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_1",
       "t7_command": "Back towards wall... b, b, u/b",
       "t7_hit_level": "mid",
@@ -10413,7 +10413,7 @@
         "1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_2",
       "t7_command": "1",
       "t7_hit_level": "high",
@@ -10453,7 +10453,7 @@
         "1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_3",
       "t7_command": "1, 2",
       "t7_hit_level": "high, high",
@@ -10499,7 +10499,7 @@
         "1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_4",
       "t7_command": "(1), 2",
       "t7_hit_level": "high",
@@ -10539,7 +10539,7 @@
         "1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_5",
       "t7_command": "1, 2, 1",
       "t7_hit_level": "high, high, high",
@@ -10586,7 +10586,7 @@
         "1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_6",
       "t7_command": "(1), 2, 1",
       "t7_hit_level": "high, high",
@@ -10632,7 +10632,7 @@
         "1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_7",
       "t7_command": "(1), (2), 1",
       "t7_hit_level": "high",
@@ -10672,7 +10672,7 @@
         "1,2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_8",
       "t7_command": "1, 2, 1, 4",
       "t7_hit_level": "high, high, high, high",
@@ -10721,7 +10721,7 @@
         "1,2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_9",
       "t7_command": "(1), 2, 1, 4",
       "t7_hit_level": "high, high, high",
@@ -10769,7 +10769,7 @@
         "1,2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_10",
       "t7_command": "(1), (2), 1, 4",
       "t7_hit_level": "high, high",
@@ -10816,7 +10816,7 @@
         "1,2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_11",
       "t7_command": "(1), (2), (1), 4",
       "t7_hit_level": "high",
@@ -10856,7 +10856,7 @@
         "1,2,1,d+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_12",
       "t7_command": "1, 2, 1, d+4",
       "t7_hit_level": "high, high, high, low",
@@ -10904,7 +10904,7 @@
         "1,2,1,d+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_13",
       "t7_command": "(1), 2, 1, d+4",
       "t7_hit_level": "high, high, low",
@@ -10951,7 +10951,7 @@
         "1,2,1,d+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_14",
       "t7_command": "(1), (2), 1, d+4",
       "t7_hit_level": "high, low",
@@ -10997,7 +10997,7 @@
         "1,2,1,d+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_15",
       "t7_command": "(1), (2), (1), d+4",
       "t7_hit_level": "low",
@@ -11037,7 +11037,7 @@
         "1,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_16",
       "t7_command": "1, 2, 3",
       "t7_hit_level": "high, high, low",
@@ -11084,7 +11084,7 @@
         "1,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_17",
       "t7_command": "(1), 2, 3",
       "t7_hit_level": "high, low",
@@ -11130,7 +11130,7 @@
         "1,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_18",
       "t7_command": "(1), (2), 3",
       "t7_hit_level": "low",
@@ -11144,8 +11144,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 179,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,4~t7.anna": {
@@ -11170,7 +11170,7 @@
         "1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_19",
       "t7_command": "1, 2, 4",
       "t7_hit_level": "high, high, high",
@@ -11218,7 +11218,7 @@
         "1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_20",
       "t7_command": "(1), 2, 4",
       "t7_hit_level": "high, high",
@@ -11265,7 +11265,7 @@
         "1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_21",
       "t7_command": "(1), (2), 4",
       "t7_hit_level": "high",
@@ -11305,7 +11305,7 @@
         "1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_22",
       "t7_command": "1, 4",
       "t7_hit_level": "high, low",
@@ -11351,7 +11351,7 @@
         "1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_23",
       "t7_command": "(1), 4",
       "t7_hit_level": "low",
@@ -11391,7 +11391,7 @@
         "2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_24",
       "t7_command": "2",
       "t7_hit_level": "high",
@@ -11431,7 +11431,7 @@
         "2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_25",
       "t7_command": "2, 1",
       "t7_hit_level": "high, high",
@@ -11477,7 +11477,7 @@
         "2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_26",
       "t7_command": "(2), 1",
       "t7_hit_level": "high",
@@ -11517,7 +11517,7 @@
         "2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_27",
       "t7_command": "2, 1, 4",
       "t7_hit_level": "high, high, high",
@@ -11565,7 +11565,7 @@
         "2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_28",
       "t7_command": "(2), 1, 4",
       "t7_hit_level": "high, high",
@@ -11612,7 +11612,7 @@
         "2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_29",
       "t7_command": "(2), (1), 4",
       "t7_hit_level": "high",
@@ -11652,7 +11652,7 @@
         "2,1,d+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_30",
       "t7_command": "2, 1, d+4",
       "t7_hit_level": "high, high, low",
@@ -11699,7 +11699,7 @@
         "2,1,d+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_31",
       "t7_command": "(2), 1, d+4",
       "t7_hit_level": "high, low",
@@ -11745,7 +11745,7 @@
         "2,1,d+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_32",
       "t7_command": "(2), (1), d+4",
       "t7_hit_level": "low",
@@ -11785,7 +11785,7 @@
         "2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_33",
       "t7_command": "2, 3",
       "t7_hit_level": "high, mid",
@@ -11832,7 +11832,7 @@
         "2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_34",
       "t7_command": "(2), 3",
       "t7_hit_level": "mid",
@@ -11846,8 +11846,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 373,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,4~t7.anna": {
@@ -11872,7 +11872,7 @@
         "2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_35",
       "t7_command": "2, 4",
       "t7_hit_level": "high, high",
@@ -11920,7 +11920,7 @@
         "2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_36",
       "t7_command": "(2), 4",
       "t7_hit_level": "high",
@@ -11960,7 +11960,7 @@
         "2,d+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_37",
       "t7_command": "2, d+3",
       "t7_hit_level": "high, low",
@@ -12007,7 +12007,7 @@
         "2,d+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_38",
       "t7_command": "(2), d+3",
       "t7_hit_level": "low",
@@ -12021,8 +12021,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 179,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3~t7.anna": {
@@ -12047,7 +12047,7 @@
         "3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_39",
       "t7_command": "3",
       "t7_hit_level": "high",
@@ -12087,7 +12087,7 @@
         "3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_40",
       "t7_command": "3, 3",
       "t7_hit_level": "high, low",
@@ -12133,7 +12133,7 @@
         "3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_41",
       "t7_command": "(3), 3",
       "t7_hit_level": "low",
@@ -12147,8 +12147,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 190,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3,3,2": {
@@ -12173,7 +12173,7 @@
         "3,3,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_42",
       "t7_command": "3, 3, 2",
       "t7_hit_level": "high, low, mid",
@@ -12221,7 +12221,7 @@
         "3,3,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_43",
       "t7_command": "(3), 3, 2",
       "t7_hit_level": "low, mid",
@@ -12268,7 +12268,7 @@
         "3,3,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_44",
       "t7_command": " (3), (3), 2",
       "t7_hit_level": "mid",
@@ -12308,7 +12308,7 @@
         "3,3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_45",
       "t7_command": "3, 3, 4",
       "t7_hit_level": "high, low, high",
@@ -12355,7 +12355,7 @@
         "3,3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_46",
       "t7_command": "(3), 3, 4",
       "t7_hit_level": "low, high",
@@ -12401,7 +12401,7 @@
         "3,3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_47",
       "t7_command": "(3), (3), 4",
       "t7_hit_level": "high",
@@ -12441,7 +12441,7 @@
         "3,3,4,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_48",
       "t7_command": "3, 3, 4, 1",
       "t7_hit_level": "high, low, high, mid",
@@ -12489,7 +12489,7 @@
         "3,3,4,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_49",
       "t7_command": "(3), 3, 4, 1",
       "t7_hit_level": "low, high, mid",
@@ -12536,7 +12536,7 @@
         "3,3,4,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_50",
       "t7_command": "(3), (3), 4, 1",
       "t7_hit_level": "high, mid",
@@ -12582,7 +12582,7 @@
         "3,3,4,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_51",
       "t7_command": "(3), (3), (4), 1",
       "t7_hit_level": "mid",
@@ -12622,7 +12622,7 @@
         "3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_52",
       "t7_command": "3, 4",
       "t7_hit_level": "high, high",
@@ -12670,7 +12670,7 @@
         "3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_53",
       "t7_command": "(3), 4",
       "t7_hit_level": "high",
@@ -12710,7 +12710,7 @@
         "4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_54",
       "t7_command": "4",
       "t7_hit_level": "high",
@@ -12750,7 +12750,7 @@
         "4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_55",
       "t7_command": "4, 3",
       "t7_hit_level": "high, low",
@@ -12796,7 +12796,7 @@
         "4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_56",
       "t7_command": "(4), 3",
       "t7_hit_level": "low",
@@ -12836,7 +12836,7 @@
         "u+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_57",
       "t7_command": "u+3",
       "t7_hit_level": "mid",
@@ -12877,7 +12877,7 @@
         "U+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_58",
       "t7_command": "U+4",
       "t7_hit_level": "mid",
@@ -12917,7 +12917,7 @@
         "U+4,D"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_59",
       "t7_command": "U+4, D",
       "t7_hit_level": "-",
@@ -12956,7 +12956,7 @@
         "u/f+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_60",
       "t7_command": "u/f+1",
       "t7_hit_level": "high",
@@ -12996,7 +12996,7 @@
         "u/f+1,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_61",
       "t7_command": "u/f+1, 3",
       "t7_hit_level": "high, mid",
@@ -13017,8 +13017,8 @@
       "note": "delayable 12f, combo delayable 12f from CH",
       "anim_t3": {
         "bank": "anna",
-        "row": 52,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+1,3~t7.anna.2": {
@@ -13043,7 +13043,7 @@
         "u/f+1,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_62",
       "t7_command": "(u/f+1), 3",
       "t7_hit_level": "mid",
@@ -13057,8 +13057,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 52,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+1,3,3+4~t7.anna": {
@@ -13083,7 +13083,7 @@
         "u/f+1,3,3+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_63",
       "t7_command": "u/f+1, 3, 3+4",
       "t7_hit_level": "high, mid, mid, mid",
@@ -13127,7 +13127,7 @@
         "u/f+1,3,3+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_64",
       "t7_command": "(u/f+1), 3, 3+4",
       "t7_hit_level": "mid, mid, mid",
@@ -13170,7 +13170,7 @@
         "u/f+1,3,3+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_65",
       "t7_command": "(u/f+1), (3), 3+4",
       "t7_hit_level": "mid, mid",
@@ -13212,7 +13212,7 @@
         "u/f+1,3,3+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_66",
       "t7_command": "(u/f+1), (3), 3+4 (second hit only)",
       "t7_hit_level": "mid",
@@ -13248,7 +13248,7 @@
         "u/f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_67",
       "t7_command": "u/f+2",
       "t7_hit_level": "high",
@@ -13287,7 +13287,7 @@
         "u/f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_68",
       "t7_command": "u/f+3",
       "t7_hit_level": "mid",
@@ -13328,7 +13328,7 @@
         "u/f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_69",
       "t7_command": "u/f+4",
       "t7_hit_level": "high",
@@ -13369,7 +13369,7 @@
         "u/f+4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_70",
       "t7_command": "u/f+4, 3",
       "t7_hit_level": "high, low",
@@ -13415,7 +13415,7 @@
         "u/f+4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_71",
       "t7_command": "(u/f+4), 3",
       "t7_hit_level": "low",
@@ -13429,8 +13429,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 180,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+4,3,4": {
@@ -13455,7 +13455,7 @@
         "u/f+4,3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_72",
       "t7_command": "u/f+4, 3, 4",
       "t7_hit_level": "high, low, high",
@@ -13502,7 +13502,7 @@
         "u/f+4,3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_73",
       "t7_command": "(u/f+4), 3, 4",
       "t7_hit_level": "low, high",
@@ -13548,7 +13548,7 @@
         "u/f+4,3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_74",
       "t7_command": "(u/f+4), (3), 4",
       "t7_hit_level": "high",
@@ -13588,7 +13588,7 @@
         "u/f+4,3,4,U"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_75",
       "t7_command": "u/f+4, 3, 4, U (or D)",
       "t7_hit_level": "-",
@@ -13628,7 +13628,7 @@
         "U/F+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_76",
       "t7_command": "U/F+4",
       "t7_hit_level": "mid",
@@ -13669,7 +13669,7 @@
         "U/F+4,D"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_77",
       "t7_command": "U/F+4, D",
       "t7_hit_level": "-",
@@ -13708,7 +13708,7 @@
         "u/f+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_78",
       "t7_command": "u/f+3+4",
       "t7_hit_level": "mid, mid",
@@ -13748,7 +13748,7 @@
         "u/f+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_79",
       "t7_command": "u/f+3+4 (second hit only)",
       "t7_hit_level": "mid",
@@ -13789,7 +13789,7 @@
         "f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_80",
       "t7_command": "f+2",
       "t7_hit_level": "high",
@@ -13828,7 +13828,7 @@
         "f+2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_81",
       "t7_command": "f+2, 3",
       "t7_hit_level": "high, high",
@@ -13875,7 +13875,7 @@
         "f+2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_82",
       "t7_command": "(f+2), 3",
       "t7_hit_level": "high",
@@ -13914,7 +13914,7 @@
         "f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_83",
       "t7_command": "f+3",
       "t7_hit_level": "mid",
@@ -13955,7 +13955,7 @@
         "f+3,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_84",
       "t7_command": "f+3, 2",
       "t7_hit_level": "mid, mid",
@@ -14002,7 +14002,7 @@
         "f+3,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_85",
       "t7_command": "(f+3), 2",
       "t7_hit_level": "mid",
@@ -14042,7 +14042,7 @@
         "f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_86",
       "t7_command": "f+4",
       "t7_hit_level": "mid",
@@ -14083,7 +14083,7 @@
         "f+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_87",
       "t7_command": "f+1+2",
       "t7_hit_level": "mid",
@@ -14123,7 +14123,7 @@
         "f+2+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_88",
       "t7_command": "f+2+3",
       "t7_hit_level": "mid",
@@ -14158,7 +14158,7 @@
         "f,F+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_89",
       "t7_command": "f, F+2",
       "t7_hit_level": "high",
@@ -14198,7 +14198,7 @@
         "f,F+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_90",
       "t7_command": "f, F+3",
       "t7_hit_level": "mid",
@@ -14239,7 +14239,7 @@
         "f,F+3,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_91",
       "t7_command": "f, F+3, 4",
       "t7_hit_level": "mid, mid",
@@ -14286,7 +14286,7 @@
         "f,F+3,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_92",
       "t7_command": "(f, F+3), 4",
       "t7_hit_level": "mid",
@@ -14326,7 +14326,7 @@
         "f,F+3,4,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_93",
       "t7_command": "f, F+3, 4, 3",
       "t7_hit_level": "mid, mid, mid",
@@ -14374,7 +14374,7 @@
         "f,F+3,4,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_94",
       "t7_command": "(f, F+3), 4, 3",
       "t7_hit_level": "mid, mid",
@@ -14421,7 +14421,7 @@
         "f,F+3,4,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_95",
       "t7_command": "(f, F+3), (4), 3",
       "t7_hit_level": "mid",
@@ -14461,7 +14461,7 @@
         "f,F+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_96",
       "t7_command": "f, F+4",
       "t7_hit_level": "mid",
@@ -14502,7 +14502,7 @@
         "f,F+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_97",
       "t7_command": "f, F+1+2",
       "t7_hit_level": "mid",
@@ -14537,7 +14537,7 @@
         "f,f,f+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_98",
       "t7_command": "f, f, f+2",
       "t7_hit_level": "mid",
@@ -14577,7 +14577,7 @@
         "f,f,f+2,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_99",
       "t7_command": "f, f, f+2, 3",
       "t7_hit_level": "mid, mid",
@@ -14624,7 +14624,7 @@
         "f,f,f+2,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_100",
       "t7_command": "f, f, f+(2), 3",
       "t7_hit_level": "mid, mid",
@@ -14664,7 +14664,7 @@
         "f,f,f+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_101",
       "t7_command": "f, f, f+3",
       "t7_hit_level": "mid",
@@ -14705,7 +14705,7 @@
         "d/f+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_102",
       "t7_command": "d/f+1",
       "t7_hit_level": "mid",
@@ -14745,7 +14745,7 @@
         "d/f+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_103",
       "t7_command": "d/f+1, 2",
       "t7_hit_level": "mid, high",
@@ -14791,7 +14791,7 @@
         "d/f+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_104",
       "t7_command": "(d/f+1), 2",
       "t7_hit_level": "high",
@@ -14830,7 +14830,7 @@
         "d/f+1,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_105",
       "t7_command": "d/f+1, 2, 3",
       "t7_hit_level": "mid, high, mid",
@@ -14879,7 +14879,7 @@
         "d/f+1,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_106",
       "t7_command": "(d/f+1), 2, 3",
       "t7_hit_level": "high, mid",
@@ -14927,7 +14927,7 @@
         "d/f+1,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_107",
       "t7_command": "(d/f+1), (2), 3",
       "t7_hit_level": "mid",
@@ -14941,8 +14941,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 190,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+1,2,4~t7.anna": {
@@ -14967,7 +14967,7 @@
         "d/f+1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_108",
       "t7_command": "d/f+1, 2, 4",
       "t7_hit_level": "mid, high, high",
@@ -15015,7 +15015,7 @@
         "d/f+1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_109",
       "t7_command": "(d/f+1), 2, 4",
       "t7_hit_level": "high, high",
@@ -15062,7 +15062,7 @@
         "d/f+1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_110",
       "t7_command": "(d/f+1), (2), 4",
       "t7_hit_level": "high",
@@ -15102,7 +15102,7 @@
         "d/f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_111",
       "t7_command": "d/f+2",
       "t7_hit_level": "mid",
@@ -15142,7 +15142,7 @@
         "d/f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_112",
       "t7_command": "d/f+3",
       "t7_hit_level": "mid",
@@ -15182,7 +15182,7 @@
         "d/f+3,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_113",
       "t7_command": "d/f+3, 1",
       "t7_hit_level": "mid, high",
@@ -15203,8 +15203,8 @@
       "note": "delayable",
       "anim_t3": {
         "bank": "anna",
-        "row": 346,
-        "match": "same-notation"
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1~t7.anna.2": {
@@ -15229,7 +15229,7 @@
         "d/f+3,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_114",
       "t7_command": "(d/f+3), 1",
       "t7_hit_level": "high",
@@ -15243,8 +15243,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 346,
-        "match": "same-notation"
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,U": {
@@ -15269,7 +15269,7 @@
         "d/f+3,1,U"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_115",
       "t7_command": "d/f+3, 1, U (or D)",
       "t7_hit_level": "mid",
@@ -15310,7 +15310,7 @@
         "d/f+3,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_116",
       "t7_command": "d/f+3, 1, 2",
       "t7_hit_level": "mid, high, high",
@@ -15331,8 +15331,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 170,
-        "match": "same-notation"
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,2~t7.anna.2": {
@@ -15357,7 +15357,7 @@
         "d/f+3,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_117",
       "t7_command": "(d/f+3), 1, 2",
       "t7_hit_level": "high, high",
@@ -15377,8 +15377,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 170,
-        "match": "same-notation"
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,2~t7.anna.3": {
@@ -15403,7 +15403,7 @@
         "d/f+3,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_118",
       "t7_command": "(d/f+3), (1), 2",
       "t7_hit_level": "high",
@@ -15417,8 +15417,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 170,
-        "match": "same-notation"
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,4~t7.anna": {
@@ -15443,7 +15443,7 @@
         "d/f+3,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_119",
       "t7_command": "d/f+3, 1, 4",
       "t7_hit_level": "mid, high, high",
@@ -15464,8 +15464,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 387,
-        "match": "same-notation"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,4~t7.anna.2": {
@@ -15490,7 +15490,7 @@
         "d/f+3,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_120",
       "t7_command": "(d/f+3), 1, 4",
       "t7_hit_level": "high, high",
@@ -15510,8 +15510,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 387,
-        "match": "same-notation"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,4~t7.anna.3": {
@@ -15536,7 +15536,7 @@
         "d/f+3,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_121",
       "t7_command": "(d/f+3), (1), 4",
       "t7_hit_level": "high",
@@ -15550,8 +15550,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 387,
-        "match": "same-notation"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,4,2~t7.anna": {
@@ -15576,7 +15576,7 @@
         "d/f+3,1,4,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_122",
       "t7_command": "d/f+3, 1, 4, 2",
       "t7_hit_level": "mid, high, high, high",
@@ -15599,8 +15599,8 @@
       "note": "delayable",
       "anim_t3": {
         "bank": "anna",
-        "row": 388,
-        "match": "same-notation"
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,4,2~t7.anna.2": {
@@ -15625,7 +15625,7 @@
         "d/f+3,1,4,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_123",
       "t7_command": "(d/f+3), 1, 4, 2",
       "t7_hit_level": "high, high, high",
@@ -15646,8 +15646,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 388,
-        "match": "same-notation"
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,4,2~t7.anna.3": {
@@ -15672,7 +15672,7 @@
         "d/f+3,1,4,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_124",
       "t7_command": "(d/f+3), (1), 4, 2",
       "t7_hit_level": "high, high",
@@ -15692,8 +15692,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 388,
-        "match": "same-notation"
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,4,2~t7.anna.4": {
@@ -15718,7 +15718,7 @@
         "d/f+3,1,4,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_125",
       "t7_command": "(d/f+3), (1), (4), 2",
       "t7_hit_level": "high",
@@ -15732,8 +15732,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 388,
-        "match": "same-notation"
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,4,2,U": {
@@ -15758,7 +15758,7 @@
         "d/f+3,1,4,2,U"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_126",
       "t7_command": "d/f+3, 1, 4, 2, U (or D)",
       "t7_hit_level": "mid, high, high, high",
@@ -15807,7 +15807,7 @@
         "d/f+3,1,4,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_127",
       "t7_command": "d/f+3, 1, 4, 2, 3",
       "t7_hit_level": "mid, high, high, high, high",
@@ -15831,8 +15831,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 392,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,4,2,3~t7.anna.2": {
@@ -15857,7 +15857,7 @@
         "d/f+3,1,4,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_128",
       "t7_command": "(d/f+3), 1, 4, 2, 3",
       "t7_hit_level": "high, high, high, high",
@@ -15880,8 +15880,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 392,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,4,2,3~t7.anna.3": {
@@ -15906,7 +15906,7 @@
         "d/f+3,1,4,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_129",
       "t7_command": "(d/f+3), (1), 4, 2, 3",
       "t7_hit_level": "high, high, high",
@@ -15928,8 +15928,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 392,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,4,2,3~t7.anna.4": {
@@ -15954,7 +15954,7 @@
         "d/f+3,1,4,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_130",
       "t7_command": "(d/f+3), (1), (4), 2, 3",
       "t7_hit_level": "high, high",
@@ -15975,8 +15975,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 392,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,4,2,3~t7.anna.5": {
@@ -16001,7 +16001,7 @@
         "d/f+3,1,4,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_131",
       "t7_command": "(d/f+3), (1), (4), (2), 3",
       "t7_hit_level": "high",
@@ -16015,8 +16015,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 392,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,4,2,u/f+3": {
@@ -16041,7 +16041,7 @@
         "d/f+3,1,4,2,u/f+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_132",
       "t7_command": "d/f+3, 1, 4, 2, u/f+3",
       "t7_hit_level": "mid, high, high, high, mid",
@@ -16091,7 +16091,7 @@
         "d/f+3,1,4,2,u/f+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_133",
       "t7_command": "(d/f+3), 1, 4, 2, u/f+3",
       "t7_hit_level": "high, high, high, mid",
@@ -16114,8 +16114,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 170,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,4,2,u/f+3~t7.anna.2": {
@@ -16140,7 +16140,7 @@
         "d/f+3,1,4,2,u/f+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_134",
       "t7_command": "(d/f+3), (1), 4, 2, u/f+3",
       "t7_hit_level": "high, high, mid",
@@ -16162,8 +16162,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 387,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,4,2,u/f+3~t7.anna.3": {
@@ -16188,7 +16188,7 @@
         "d/f+3,1,4,2,u/f+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_135",
       "t7_command": "(d/f+3), (1), (4), 2, u/f+3",
       "t7_hit_level": "high, mid",
@@ -16209,8 +16209,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 173,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,4,2,u/f+3~t7.anna.4": {
@@ -16235,7 +16235,7 @@
         "d/f+3,1,4,2,u/f+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_136",
       "t7_command": "(d/f+3), (1), (4), (2), u/f+3",
       "t7_hit_level": "mid",
@@ -16249,8 +16249,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 173,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,1,4,2,1+2": {
@@ -16275,7 +16275,7 @@
         "d/f+3,1,4,2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_137",
       "t7_command": "d/f+3, 1, 4, 2, 1+2",
       "t7_hit_level": "mid, high, high, high, mid",
@@ -16320,7 +16320,7 @@
         "d/f+3,1,4,2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_138",
       "t7_command": "(d/f+3), 1, 4, 2, 1+2",
       "t7_hit_level": "high, high, high, mid",
@@ -16364,7 +16364,7 @@
         "d/f+3,1,4,2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_139",
       "t7_command": "(d/f+3), (1), 4, 2, 1+2",
       "t7_hit_level": "high, high, mid",
@@ -16407,7 +16407,7 @@
         "d/f+3,1,4,2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_140",
       "t7_command": "(d/f+3), (1), (4), 2, 1+2",
       "t7_hit_level": "high, mid",
@@ -16449,7 +16449,7 @@
         "d/f+3,1,4,2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_141",
       "t7_command": "(d/f+3), (1), (4), (2), 1+2",
       "t7_hit_level": "mid",
@@ -16484,7 +16484,7 @@
         "d/f+3,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_142",
       "t7_command": "d/f+3, 2",
       "t7_hit_level": "mid, high",
@@ -16504,8 +16504,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 353,
-        "match": "same-notation"
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,2~t7.anna.2": {
@@ -16530,7 +16530,7 @@
         "d/f+3,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_143",
       "t7_command": "(d/f+3), 2",
       "t7_hit_level": "high",
@@ -16544,8 +16544,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 353,
-        "match": "same-notation"
+        "row": 89,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,2,U": {
@@ -16570,7 +16570,7 @@
         "d/f+3,2,U"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_144",
       "t7_command": "d/f+(3), (2), U (or D)",
       "t7_hit_level": "-",
@@ -16610,7 +16610,7 @@
         "d/f+3,2,D/F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_145",
       "t7_command": "d/f+3, 2, D/F",
       "t7_hit_level": "mid, high",
@@ -16656,7 +16656,7 @@
         "d/f+3,2,D/F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_146",
       "t7_command": "(d/f+3), 2, D/F",
       "t7_hit_level": "high",
@@ -16695,7 +16695,7 @@
         "d/f+3,2,D/F"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_147",
       "t7_command": "(d/f+3), (2), D/F",
       "t7_hit_level": "-",
@@ -16734,7 +16734,7 @@
         "d/f+3,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_148",
       "t7_command": "d/f+3, 2, 1",
       "t7_hit_level": "mid, high, high",
@@ -16782,7 +16782,7 @@
         "d/f+3,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_149",
       "t7_command": "(d/f+3), 2, 1",
       "t7_hit_level": "high, high",
@@ -16828,7 +16828,7 @@
         "d/f+3,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_150",
       "t7_command": "(d/f+3), (2), 1",
       "t7_hit_level": "high",
@@ -16868,7 +16868,7 @@
         "d/f+3,2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_151",
       "t7_command": "d/f+3, 2, 1, 4",
       "t7_hit_level": "mid, high, high, high",
@@ -16917,7 +16917,7 @@
         "d/f+3,2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_152",
       "t7_command": "(d/f+3), 2, 1, 4",
       "t7_hit_level": "high, high, high",
@@ -16965,7 +16965,7 @@
         "d/f+3,2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_153",
       "t7_command": "(d/f+3), (2), 1, 4",
       "t7_hit_level": "high, high",
@@ -17012,7 +17012,7 @@
         "d/f+3,2,1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_154",
       "t7_command": "(d/f+3), (2), (1), 4",
       "t7_hit_level": "high",
@@ -17052,7 +17052,7 @@
         "d/f+3,2,1,d+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_155",
       "t7_command": "d/f+3, 2, 1, d+4",
       "t7_hit_level": "mid, high, high, low",
@@ -17101,7 +17101,7 @@
         "d/f+3,2,1,d+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_156",
       "t7_command": "(d/f+3), 2, 1, d+4",
       "t7_hit_level": "high, high, low",
@@ -17148,7 +17148,7 @@
         "d/f+3,2,1,d+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_157",
       "t7_command": "(d/f+3), (2), 1, d+4",
       "t7_hit_level": "high, low",
@@ -17194,7 +17194,7 @@
         "d/f+3,2,1,d+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_158",
       "t7_command": "(d/f+3), (2), (1), d+4",
       "t7_hit_level": "low",
@@ -17234,7 +17234,7 @@
         "d/f+3,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_159",
       "t7_command": "d/f+3, 2, 4",
       "t7_hit_level": "mid, high, high",
@@ -17282,7 +17282,7 @@
         "d/f+3,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_160",
       "t7_command": "(d/f+3), 2, 4",
       "t7_hit_level": "high, high",
@@ -17329,7 +17329,7 @@
         "d/f+3,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_161",
       "t7_command": "(d/f+3), (2), 4",
       "t7_hit_level": "high",
@@ -17369,7 +17369,7 @@
         "d/f+3,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_162",
       "t7_command": "d/f+3, 2, 3",
       "t7_hit_level": "mid, high, high",
@@ -17416,7 +17416,7 @@
         "d/f+3,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_163",
       "t7_command": "(d/f+3), 2, 3",
       "t7_hit_level": "high, high",
@@ -17436,8 +17436,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 373,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,2,3~t7.anna.2": {
@@ -17462,7 +17462,7 @@
         "d/f+3,2,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_164",
       "t7_command": "(d/f+3), (2), 3",
       "t7_hit_level": "high",
@@ -17502,7 +17502,7 @@
         "d/f+3,2,d+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_165",
       "t7_command": "d/f+3, 2, d+3",
       "t7_hit_level": "mid, high, low",
@@ -17549,7 +17549,7 @@
         "d/f+3,2,d+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_166",
       "t7_command": "(d/f+3), 2, d+3",
       "t7_hit_level": "high, low",
@@ -17569,8 +17569,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 373,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,2,d+3~t7.anna.2": {
@@ -17595,7 +17595,7 @@
         "d/f+3,2,d+3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_167",
       "t7_command": "(d/f+3), (2), d+3",
       "t7_hit_level": "low",
@@ -17609,8 +17609,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 179,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,3~t7.anna": {
@@ -17635,7 +17635,7 @@
         "d/f+3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_168",
       "t7_command": "d/f+3, 3",
       "t7_hit_level": "mid, high",
@@ -17656,8 +17656,8 @@
       "note": "delayable 10f, combo delayable from 10f",
       "anim_t3": {
         "bank": "anna",
-        "row": 179,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,3~t7.anna.2": {
@@ -17682,7 +17682,7 @@
         "d/f+3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_169",
       "t7_command": "(d/f+3), 3",
       "t7_hit_level": "high",
@@ -17696,8 +17696,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 179,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,3,3~t7.anna": {
@@ -17722,7 +17722,7 @@
         "d/f+3,3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_170",
       "t7_command": "d/f+3, 3, 3",
       "t7_hit_level": "mid, high, high",
@@ -17744,8 +17744,8 @@
       "note": "delayable 10f",
       "anim_t3": {
         "bank": "anna",
-        "row": 350,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,3,3~t7.anna.2": {
@@ -17770,7 +17770,7 @@
         "d/f+3,3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_171",
       "t7_command": "(d/f+3), 3, 3",
       "t7_hit_level": "high, high",
@@ -17790,8 +17790,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 350,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,3,3~t7.anna.3": {
@@ -17816,7 +17816,7 @@
         "d/f+3,3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_172",
       "t7_command": "(d/f+3), (3), 3",
       "t7_hit_level": "high",
@@ -17830,8 +17830,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 350,
-        "match": "same-notation"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,3,3,1~t7.anna": {
@@ -17856,7 +17856,7 @@
         "d/f+3,3,3,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_173",
       "t7_command": "d/f+3, 3, 3, 1",
       "t7_hit_level": "mid, high, high, high",
@@ -17878,8 +17878,8 @@
       "note": "delayable 17f, combo delayable 14f from CH",
       "anim_t3": {
         "bank": "anna",
-        "row": 407,
-        "match": "same-notation"
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,3,3,1~t7.anna.2": {
@@ -17904,7 +17904,7 @@
         "d/f+3,3,3,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_174",
       "t7_command": "(d/f+3), 3, 3, 1",
       "t7_hit_level": "high, high, high",
@@ -17926,8 +17926,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 407,
-        "match": "same-notation"
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,3,3,1~t7.anna.3": {
@@ -17952,7 +17952,7 @@
         "d/f+3,3,3,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_175",
       "t7_command": "(d/f+3), (3), 3, 1",
       "t7_hit_level": "high, high",
@@ -17973,8 +17973,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 407,
-        "match": "same-notation"
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,3,3,1~t7.anna.4": {
@@ -17999,7 +17999,7 @@
         "d/f+3,3,3,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_176",
       "t7_command": "(d/f+3), (3), (3), 1",
       "t7_hit_level": "high",
@@ -18013,8 +18013,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 407,
-        "match": "same-notation"
+        "row": 29,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,3,3,4": {
@@ -18039,7 +18039,7 @@
         "d/f+3,3,3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_177",
       "t7_command": "d/f+3, 3, 3, 4",
       "t7_hit_level": "mid, high, high, high",
@@ -18089,7 +18089,7 @@
         "d/f+3,3,3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_178",
       "t7_command": "(d/f+3), 3, 3, 4",
       "t7_hit_level": "high, high, high",
@@ -18137,7 +18137,7 @@
         "d/f+3,3,3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_179",
       "t7_command": "(d/f+3), (3), 3, 4",
       "t7_hit_level": "high, high",
@@ -18184,7 +18184,7 @@
         "d/f+3,3,3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_180",
       "t7_command": "(d/f+3), (3), (3), 4",
       "t7_hit_level": "high",
@@ -18224,7 +18224,7 @@
         "d/f+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_181",
       "t7_command": "d/f+3, 4",
       "t7_hit_level": "mid, high",
@@ -18246,8 +18246,8 @@
       "note": "delayable",
       "anim_t3": {
         "bank": "anna",
-        "row": 190,
-        "match": "same-notation"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,4~t7.anna.2": {
@@ -18272,7 +18272,7 @@
         "d/f+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_182",
       "t7_command": "(d/f+3), 4",
       "t7_hit_level": "high",
@@ -18286,8 +18286,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 190,
-        "match": "same-notation"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+4~t7.anna": {
@@ -18312,7 +18312,7 @@
         "d/f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_183",
       "t7_command": "d/f+4",
       "t7_hit_level": "low",
@@ -18352,7 +18352,7 @@
         "d/f+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_184",
       "t7_command": "d/f+1+2",
       "t7_hit_level": "mid",
@@ -18392,7 +18392,7 @@
         "d+1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_185",
       "t7_command": "d+1, 4 (or FC 1, 4)",
       "t7_hit_level": "s. mid, mid",
@@ -18437,7 +18437,7 @@
       "anim_ref": "t7:anna:anna_186",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_186",
       "t7_command": "(d+1), 4 (or FC (1), 4)",
       "t7_hit_level": "mid",
@@ -18478,7 +18478,7 @@
         "d+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_187",
       "t7_command": "d+2",
       "t7_hit_level": "mid",
@@ -18518,7 +18518,7 @@
         "d+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_188",
       "t7_command": "d+3",
       "t7_hit_level": "low",
@@ -18559,7 +18559,7 @@
         "d+3,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_189",
       "t7_command": "d+3, 2 (or FC 3, 2)",
       "t7_hit_level": "low, mid",
@@ -18605,7 +18605,7 @@
       "anim_ref": "t7:anna:anna_190",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_190",
       "t7_command": "(d+3), 2 (or FC (3), 2)",
       "t7_hit_level": "mid",
@@ -18646,7 +18646,7 @@
         "d+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_191",
       "t7_command": "d+3, 4 (or FC 3, 4)",
       "t7_hit_level": "low, high",
@@ -18691,7 +18691,7 @@
       "anim_ref": "t7:anna:anna_192",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_192",
       "t7_command": "(d+3), 4 (or FC (3). 4)",
       "t7_hit_level": "high",
@@ -18732,7 +18732,7 @@
         "d+3,4,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_193",
       "t7_command": "d+3, 4, 1 (or FC 3, 4, 1)",
       "t7_hit_level": "low, high, mid",
@@ -18778,7 +18778,7 @@
       "anim_ref": "t7:anna:anna_194",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_194",
       "t7_command": "(d+3), 4, 1 (or FC (3), 4, 1)",
       "t7_hit_level": "high, mid",
@@ -18823,7 +18823,7 @@
       "anim_ref": "t7:anna:anna_195",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_195",
       "t7_command": "(d+3), (4), 1 (or FC (3), (4), 1)",
       "t7_hit_level": "mid",
@@ -18863,7 +18863,7 @@
         "d+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_196",
       "t7_command": "d+4",
       "t7_hit_level": "low",
@@ -18904,7 +18904,7 @@
         "d+4,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_197",
       "t7_command": "d+4, 1 (or FC 4, 1)",
       "t7_hit_level": "low, high",
@@ -18949,7 +18949,7 @@
       "anim_ref": "t7:anna:anna_198",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_198",
       "t7_command": "(d+4), 1 (or FC (4), 1)",
       "t7_hit_level": "high",
@@ -18988,7 +18988,7 @@
       "anim_ref": "t7:anna:anna_199",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_199",
       "t7_command": "d+(4), (1), U (or D) (or FC (4), (1), U (or D))",
       "t7_hit_level": "-",
@@ -19028,7 +19028,7 @@
         "qcf+1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_200",
       "t7_command": "qcf+1",
       "t7_hit_level": "high",
@@ -19068,7 +19068,7 @@
         "qcf+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_201",
       "t7_command": "qcf+2",
       "t7_hit_level": "mid",
@@ -19108,7 +19108,7 @@
         "qcf+2,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_202",
       "t7_command": "qcf+2, 1",
       "t7_hit_level": "mid, mid",
@@ -19156,7 +19156,7 @@
         "qcf+2,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_203",
       "t7_command": "(qcf+2), 1",
       "t7_hit_level": "mid",
@@ -19196,7 +19196,7 @@
         "qcf+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_204",
       "t7_command": "qcf+3",
       "t7_hit_level": "mid",
@@ -19236,7 +19236,7 @@
         "qcf+3,2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_205",
       "t7_command": "qcf+3, 2",
       "t7_hit_level": "mid, high",
@@ -19284,7 +19284,7 @@
         "qcf+3,2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_206",
       "t7_command": "(qcf+3), 2",
       "t7_hit_level": "high",
@@ -19324,7 +19324,7 @@
         "qcf+3,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_207",
       "t7_command": "qcf+3, 3",
       "t7_hit_level": "mid, high",
@@ -19371,7 +19371,7 @@
         "qcf+3,3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_208",
       "t7_command": "(qcf+3), 3",
       "t7_hit_level": "high",
@@ -19411,7 +19411,7 @@
         "qcf+3,3,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_209",
       "t7_command": "qcf+3, 3, 1",
       "t7_hit_level": "mid, high, high",
@@ -19459,7 +19459,7 @@
         "qcf+3,3,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_210",
       "t7_command": "(qcf+3), 3, 1",
       "t7_hit_level": "high, high",
@@ -19505,7 +19505,7 @@
         "qcf+3,3,1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_211",
       "t7_command": "(qcf+3), (3), 1",
       "t7_hit_level": "high",
@@ -19545,7 +19545,7 @@
         "qcf+3,3,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_212",
       "t7_command": "qcf+3, 3, 4",
       "t7_hit_level": "mid, high, high",
@@ -19594,7 +19594,7 @@
         "qcf+3,3,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_213",
       "t7_command": "(qcf+3), 3, 4",
       "t7_hit_level": "high, high",
@@ -19641,7 +19641,7 @@
         "qcf+3,3,4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_214",
       "t7_command": "(qcf+3), (3), 4",
       "t7_hit_level": "high",
@@ -19681,7 +19681,7 @@
         "qcf+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_215",
       "t7_command": "qcf+4",
       "t7_hit_level": "mid, mid",
@@ -19728,7 +19728,7 @@
         "d/b+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_216",
       "t7_command": "d/b+1",
       "t7_hit_level": "mid",
@@ -19767,7 +19767,7 @@
         "d/b+1,D"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_217",
       "t7_command": "d/b+1, D",
       "t7_hit_level": "mid",
@@ -19806,7 +19806,7 @@
         "d/b+1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_218",
       "t7_command": "d/b+1, 4",
       "t7_hit_level": "mid, mid",
@@ -19853,7 +19853,7 @@
         "d/b+1,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_219",
       "t7_command": "(d/b+1), 4",
       "t7_hit_level": "mid",
@@ -19893,7 +19893,7 @@
         "d/b+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_220",
       "t7_command": "d/b+2",
       "t7_hit_level": "s. mid",
@@ -19934,7 +19934,7 @@
         "d/b+2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_221",
       "t7_command": "d/b+2, 4 (or FC 2, 4)",
       "t7_hit_level": "s. mid, mid",
@@ -19955,8 +19955,8 @@
       "input_note": "(or FC 2, 4)",
       "anim_t3": {
         "bank": "anna",
-        "row": 188,
-        "match": "same-notation"
+        "row": 74,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "t7.anna_222": {
@@ -19979,7 +19979,7 @@
       "anim_ref": "t7:anna:anna_222",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_222",
       "t7_command": "(d/b+2), 4 (or FC (2), 4)",
       "t7_hit_level": "mid",
@@ -20020,7 +20020,7 @@
         "d/b+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_223",
       "t7_command": "d/b+3",
       "t7_hit_level": "low",
@@ -20061,7 +20061,7 @@
         "d/b+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_224",
       "t7_command": "d/b+4",
       "t7_hit_level": "low",
@@ -20102,7 +20102,7 @@
         "d/b+4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_225",
       "t7_command": "d/b+4, 3",
       "t7_hit_level": "low, low",
@@ -20123,8 +20123,8 @@
       "note": "delayable 13f",
       "anim_t3": {
         "bank": "anna",
-        "row": 173,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+4,3~t7.anna": {
@@ -20149,7 +20149,7 @@
         "d/b+4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_226",
       "t7_command": "(d/b+4), 3",
       "t7_hit_level": "low",
@@ -20163,8 +20163,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 170,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+4,4": {
@@ -20189,7 +20189,7 @@
         "d/b+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_227",
       "t7_command": "d/b+4, 4",
       "t7_hit_level": "low, mid",
@@ -20236,7 +20236,7 @@
         "d/b+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_228",
       "t7_command": "(d/b+4), 4",
       "t7_hit_level": "mid",
@@ -20273,7 +20273,7 @@
       "anim_ref": "t7:anna:anna_229",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_229",
       "t7_command": "d/b+3+4 (clean hit)",
       "t7_hit_level": "low",
@@ -20315,7 +20315,7 @@
         "d/b+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_230",
       "t7_command": "d/b+3+4 (far)",
       "t7_hit_level": "low",
@@ -20356,7 +20356,7 @@
         "d/b+3+4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_231",
       "t7_command": "d/b+3+4, 3",
       "t7_hit_level": "low, high",
@@ -20377,8 +20377,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 190,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+3+4,3~t7.anna": {
@@ -20403,7 +20403,7 @@
         "d/b+3+4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_232",
       "t7_command": "(d/b+3+4), 3",
       "t7_hit_level": "high",
@@ -20417,8 +20417,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "anna",
-        "row": 170,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+1~t7.anna": {
@@ -20443,7 +20443,7 @@
         "b+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_233",
       "t7_command": "b+1",
       "t7_hit_level": "mid",
@@ -20483,7 +20483,7 @@
         "b+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_234",
       "t7_command": "b+1, 2",
       "t7_hit_level": "mid, high",
@@ -20529,7 +20529,7 @@
         "b+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_235",
       "t7_command": "(b+1), 2",
       "t7_hit_level": "high",
@@ -20569,7 +20569,7 @@
         "b+1,2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_236",
       "t7_command": "b+1, 2, 2",
       "t7_hit_level": "mid, high, mid",
@@ -20618,7 +20618,7 @@
         "b+1,2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_237",
       "t7_command": "(b+1), 2, 2",
       "t7_hit_level": "high, mid",
@@ -20665,7 +20665,7 @@
         "b+1,2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_238",
       "t7_command": "(b+1), (2), 2",
       "t7_hit_level": "mid",
@@ -20705,7 +20705,7 @@
         "b+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_239",
       "t7_command": "b+2",
       "t7_hit_level": "high",
@@ -20746,7 +20746,7 @@
         "b+2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_240",
       "t7_command": "b+2, 2",
       "t7_hit_level": "high, high",
@@ -20793,7 +20793,7 @@
         "b+2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_241",
       "t7_command": "(b+2), 2",
       "t7_hit_level": "high",
@@ -20833,7 +20833,7 @@
         "b+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_242",
       "t7_command": "b+4",
       "t7_hit_level": "mid",
@@ -20873,7 +20873,7 @@
         "u/b+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_243",
       "t7_command": "u/b+3",
       "t7_hit_level": "mid",
@@ -20914,7 +20914,7 @@
         "U/B+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_244",
       "t7_command": "U/B+4",
       "t7_hit_level": "mid",
@@ -20954,7 +20954,7 @@
         "U/B+4,D"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_245",
       "t7_command": "U/B+4, D",
       "t7_hit_level": "mid",
@@ -20993,7 +20993,7 @@
         "BT.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_246",
       "t7_command": "BT 1 (or 2)",
       "t7_hit_level": "high",
@@ -21034,7 +21034,7 @@
         "BT.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_247",
       "t7_command": "BT 3 (or 4)",
       "t7_hit_level": "high",
@@ -21075,7 +21075,7 @@
         "BT.d+1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_248",
       "t7_command": "BT d+1 (or d+2)",
       "t7_hit_level": "s. mid",
@@ -21117,7 +21117,7 @@
         "BT.d+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_249",
       "t7_command": "BT d+3 (or d+4)",
       "t7_hit_level": "low",
@@ -21159,7 +21159,7 @@
         "FC.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_250",
       "t7_command": "FC 1",
       "t7_hit_level": "s. mid",
@@ -21200,7 +21200,7 @@
         "FC.f+1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_251",
       "t7_command": "FC f+1",
       "t7_hit_level": "mid",
@@ -21240,7 +21240,7 @@
         "FC.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_252",
       "t7_command": "FC 2",
       "t7_hit_level": "s. mid",
@@ -21281,7 +21281,7 @@
         "FC.d/f+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_253",
       "t7_command": "FC d/f+2",
       "t7_hit_level": "low",
@@ -21322,7 +21322,7 @@
         "FC.d/f+2:1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_254",
       "t7_command": "FC d/f+2:1",
       "t7_hit_level": "low",
@@ -21363,7 +21363,7 @@
         "FC.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_255",
       "t7_command": "FC 3",
       "t7_hit_level": "low",
@@ -21404,7 +21404,7 @@
         "FC.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_256",
       "t7_command": "FC 4",
       "t7_hit_level": "low",
@@ -21445,7 +21445,7 @@
         "FC.u+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_257",
       "t7_command": "FC u+4",
       "t7_hit_level": "mid",
@@ -21486,7 +21486,7 @@
         "FC.u+4,D"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_258",
       "t7_command": "FC u+4, D",
       "t7_hit_level": "-",
@@ -21525,7 +21525,7 @@
         "FC.U+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_259",
       "t7_command": "FC U+4",
       "t7_hit_level": "mid",
@@ -21566,7 +21566,7 @@
         "FC.U+4,D"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_260",
       "t7_command": "FC U+4, D",
       "t7_hit_level": "-",
@@ -21605,7 +21605,7 @@
         "FC.u/f+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_261",
       "t7_command": "FC u/f+4",
       "t7_hit_level": "mid",
@@ -21646,7 +21646,7 @@
         "FC.u/f+4,D"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_262",
       "t7_command": "FC u/f+4, D",
       "t7_hit_level": "-",
@@ -21685,7 +21685,7 @@
         "FC.U/F+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_263",
       "t7_command": "FC U/F+4",
       "t7_hit_level": "mid",
@@ -21726,7 +21726,7 @@
         "FC.U/F+4,D"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_264",
       "t7_command": "FC U/F+4, D",
       "t7_hit_level": "-",
@@ -21765,7 +21765,7 @@
         "FC.u/b+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_265",
       "t7_command": "FC u/b+4",
       "t7_hit_level": "mid",
@@ -21806,7 +21806,7 @@
         "FC.u/b+4,D"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_266",
       "t7_command": "FC u/b+4, D",
       "t7_hit_level": "-",
@@ -21845,7 +21845,7 @@
         "FC.U/B+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_267",
       "t7_command": "FC U/B+4",
       "t7_hit_level": "mid",
@@ -21886,7 +21886,7 @@
         "FC.U/B+4,D"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_268",
       "t7_command": "FC U/B+4, D",
       "t7_hit_level": "-",
@@ -21925,7 +21925,7 @@
         "SS.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_269",
       "t7_command": "SS 2",
       "t7_hit_level": "low",
@@ -21966,7 +21966,7 @@
         "SS.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_270",
       "t7_command": "SS 3",
       "t7_hit_level": "mid",
@@ -22006,7 +22006,7 @@
         "SS.1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_271",
       "t7_command": "SS 1+2",
       "t7_hit_level": "mid, mid",
@@ -22048,7 +22048,7 @@
         "SS.1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_272",
       "t7_command": "SS 1+2 (first hit only)",
       "t7_hit_level": "mid",
@@ -22084,7 +22084,7 @@
         "SS.1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_273",
       "t7_command": "SS 1+2 (second hit only)",
       "t7_hit_level": "mid",
@@ -22120,7 +22120,7 @@
         "f,f,F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_274",
       "t7_command": "WR f, f, F (Full Screen)",
       "t7_hit_level": "mid",
@@ -22159,7 +22159,7 @@
       "anim_ref": "t7:anna:anna_275",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_275",
       "t7_command": "While enemy is on the ground... WR f, f, F (Full Screen)",
       "t7_hit_level": "low",
@@ -22200,7 +22200,7 @@
         "WS.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_276",
       "t7_command": "WS 1",
       "t7_hit_level": "mid",
@@ -22240,7 +22240,7 @@
         "WS.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_277",
       "t7_command": "WS 2",
       "t7_hit_level": "mid",
@@ -22280,7 +22280,7 @@
         "WS.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_278",
       "t7_command": "WS 3",
       "t7_hit_level": "mid",
@@ -22320,7 +22320,7 @@
         "WS.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_279",
       "t7_command": "WS 4",
       "t7_hit_level": "mid",
@@ -22360,7 +22360,7 @@
         "d+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_280",
       "t7_command": "(While enemy is down) d+3+4",
       "t7_hit_level": "low",
@@ -22395,7 +22395,7 @@
         "1,2,1,2,3,3,2,1,2,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_281",
       "t7_command": "1, 2, 1, 2, 3, 3, 2, 1, 2, 4",
       "t7_hit_level": "-",
@@ -22435,7 +22435,7 @@
         "1,2,1,2,4,1,2,2,3+4,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_282",
       "t7_command": "1, 2, 1, 2, 4, 1, 2, 2, 3+4, 2",
       "t7_hit_level": "-",
@@ -22475,7 +22475,7 @@
         "FUFT.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_283",
       "t7_command": "Face Up, Feet Towards+3 (or After Rolling Forward)",
       "t7_hit_level": "low",
@@ -22516,7 +22516,7 @@
         "FUFT.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_284",
       "t7_command": "Face Up, Feet Towards+4 (or After Rolling Forward)",
       "t7_hit_level": "mid",
@@ -22557,7 +22557,7 @@
         "FUFT.d+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_285",
       "t7_command": "Face Up, Feet Towards, d+3 (or 4)",
       "t7_hit_level": "low",
@@ -22598,7 +22598,7 @@
         "FUFT.3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_286",
       "t7_command": "Face Up, Feet Towards+3+4",
       "t7_hit_level": "mid",
@@ -22632,7 +22632,7 @@
       "anim_ref": "t7:anna:anna_287",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_287",
       "t7_command": "Face Up, Feet Towards, Roll Forward+1+2",
       "t7_hit_level": "mid",
@@ -22673,7 +22673,7 @@
         "FDFA.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_288",
       "t7_command": "Face Down, Feet Away+3",
       "t7_hit_level": "low",
@@ -22714,7 +22714,7 @@
         "FDFA.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_289",
       "t7_command": "Face Down, Feet Away+4 (close)",
       "t7_hit_level": "mid",
@@ -22755,7 +22755,7 @@
         "FDFA.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_290",
       "t7_command": "Face Down, Feet Away+4 (far)",
       "t7_hit_level": "mid",
@@ -22794,7 +22794,7 @@
       "anim_ref": "t7:anna:anna_291",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_291",
       "t7_command": "(Upon Landing) f",
       "t7_hit_level": "mid",
@@ -22835,7 +22835,7 @@
         "b+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_292",
       "t7_command": "b+3",
       "t7_hit_level": "-",
@@ -22875,7 +22875,7 @@
         "2,3,B"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_293",
       "t7_command": "2, 3, B",
       "t7_hit_level": "high, mid",
@@ -22922,7 +22922,7 @@
         "f+3,B"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_294",
       "t7_command": "f+3, B",
       "t7_hit_level": "mid",
@@ -22961,7 +22961,7 @@
         "d/f+1,2,3,B"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_295",
       "t7_command": "d/f+1, 2, 3, B",
       "t7_hit_level": "mid, high, mid",
@@ -23007,7 +23007,7 @@
         "d/f+3,1,B"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_296",
       "t7_command": "d/f+3, 1, B",
       "t7_hit_level": "mid, high",
@@ -23046,7 +23046,7 @@
         "d+4,1,B"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_297",
       "t7_command": "d+4, 1, B",
       "t7_hit_level": "low, high",
@@ -23085,7 +23085,7 @@
         "f,F+3,4,B+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_298",
       "t7_command": "f, F+3, 4, B+3",
       "t7_hit_level": "mid, mid",
@@ -23132,7 +23132,7 @@
         "f,F+4,B"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_299",
       "t7_command": "f, F+4, B",
       "t7_hit_level": "mid",
@@ -23172,7 +23172,7 @@
         "qcf+2,1,B"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_300",
       "t7_command": "qcf+2, 1, B",
       "t7_hit_level": "mid, mid",
@@ -23211,7 +23211,7 @@
         "WS.3,B"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_301",
       "t7_command": "WS 3, B",
       "t7_hit_level": "mid",
@@ -23250,7 +23250,7 @@
         "1,2,1,2,4,B"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_302",
       "t7_command": "1, 2, 1, 2, 4, B",
       "t7_hit_level": "high, high, high, high, mid",
@@ -23299,7 +23299,7 @@
         "CJM.d/f"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_303",
       "t7_command": "CJM d/f",
       "t7_hit_level": "-",
@@ -23338,7 +23338,7 @@
         "CJM.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_304",
       "t7_command": "CJM 1",
       "t7_hit_level": "high",
@@ -23378,7 +23378,7 @@
         "CJM.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_305",
       "t7_command": "CJM 2",
       "t7_hit_level": "high, mid",
@@ -23418,7 +23418,7 @@
         "CJM.2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_306",
       "t7_command": "CJM 2, 1",
       "t7_hit_level": "high, mid",
@@ -23465,7 +23465,7 @@
         "CJM.2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_307",
       "t7_command": "CJM (2), 1",
       "t7_hit_level": "mid",
@@ -23505,7 +23505,7 @@
         "CJM.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_308",
       "t7_command": "CJM 3",
       "t7_hit_level": "mid",
@@ -23545,7 +23545,7 @@
         "CJM.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_309",
       "t7_command": "CJM 4",
       "t7_hit_level": "low",
@@ -23586,7 +23586,7 @@
         "CJM.1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_310",
       "t7_command": "CJM 1+2",
       "t7_hit_level": "mid",
@@ -23620,7 +23620,7 @@
         "CJM.2+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_311",
       "t7_command": "CJM 2+3",
       "t7_hit_level": "mid",
@@ -23655,7 +23655,7 @@
         "CJM.u+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_312",
       "t7_command": "CJM u+4",
       "t7_hit_level": "mid",
@@ -23696,7 +23696,7 @@
         "CJM.u/f+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_313",
       "t7_command": "CJM u/f+4",
       "t7_hit_level": "mid",
@@ -23737,7 +23737,7 @@
         "CJM.f,F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_314",
       "t7_command": "CJM f, F",
       "t7_hit_level": "-",
@@ -23776,7 +23776,7 @@
         "CJM.f,F+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_315",
       "t7_command": "CJM f, F+3",
       "t7_hit_level": "mid",
@@ -23816,7 +23816,7 @@
         "CJM.f,F+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_316",
       "t7_command": "CJM f, F+4",
       "t7_hit_level": "high",
@@ -23856,7 +23856,7 @@
         "CJM.d/f+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_317",
       "t7_command": "CJM d/f+1+2",
       "t7_hit_level": "mid",
@@ -23891,7 +23891,7 @@
         "CJM.d/b+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_318",
       "t7_command": "CJM d/b+3",
       "t7_hit_level": "low",
@@ -23931,7 +23931,7 @@
         "CJM.d/b+3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_319",
       "t7_command": "CJM d/b+3, 3",
       "t7_hit_level": "low, high",
@@ -23951,8 +23951,8 @@
       },
       "anim_t3": {
         "bank": "anna",
-        "row": 387,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "CJM.d/b+3,3~t7.anna": {
@@ -23977,7 +23977,7 @@
         "CJM.d/b+3,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_320",
       "t7_command": "CJM (d/b+3), 3",
       "t7_hit_level": "high",
@@ -23990,8 +23990,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "anna",
-        "row": 179,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "CJM.u/b+4": {
@@ -24016,7 +24016,7 @@
         "CJM.u/b+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_321",
       "t7_command": "CJM u/b+4",
       "t7_hit_level": "mid",
@@ -24057,7 +24057,7 @@
         "d/b+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_322",
       "t7_command": "d/b+1+2",
       "t7_hit_level": "mid",
@@ -24093,7 +24093,7 @@
         "FC.f+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_323",
       "t7_command": "FC f+2",
       "t7_hit_level": "mid",
@@ -24134,7 +24134,7 @@
         "R.b+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_324",
       "t7_command": "(During Rage) b+1+2",
       "t7_hit_level": "high",
@@ -24171,7 +24171,7 @@
         "R.qcf+2+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_325",
       "t7_command": "(During Rage) qcf+2+3",
       "t7_hit_level": "mid, high",
@@ -24214,7 +24214,7 @@
         "R.qcf+2+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_326",
       "t7_command": "(During Rage) qcf+2+3 (second hit only)",
       "t7_hit_level": "high",
@@ -24250,7 +24250,7 @@
         "d+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_327",
       "t7_command": "d+1+2",
       "t7_hit_level": "mid",
@@ -24290,7 +24290,7 @@
         "1+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_328",
       "t7_command": "Approach enemy... 1+3",
       "t7_hit_level": "high",
@@ -24327,7 +24327,7 @@
         "2+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_329",
       "t7_command": "Approach enemy... 2+4",
       "t7_hit_level": "high",
@@ -24364,7 +24364,7 @@
         "u/f+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_330",
       "t7_command": "Approach enemy... u/f+1+2",
       "t7_hit_level": "high",
@@ -24400,7 +24400,7 @@
         "f+1+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_331",
       "t7_command": "Approach enemy... f+1+3",
       "t7_hit_level": "high",
@@ -24442,7 +24442,7 @@
         "f+2+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_332",
       "t7_command": "Approach enemy... f+2+4",
       "t7_hit_level": "high",
@@ -24484,7 +24484,7 @@
         "d/f,d/f+1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_333",
       "t7_command": "Approach enemy... d/f, d/f+1",
       "t7_hit_level": "high",
@@ -24525,7 +24525,7 @@
         "qcf+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_334",
       "t7_command": "Approach enemy... qcf+1+2",
       "t7_hit_level": "high",
@@ -24561,7 +24561,7 @@
         "SIDE_L.1+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_335",
       "t7_command": "Approach from left side... 1+3 or 2+4",
       "t7_hit_level": "high",
@@ -24597,7 +24597,7 @@
         "SIDE_R.1+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_336",
       "t7_command": "Approach from right side...  1+3 or 2+4",
       "t7_hit_level": "high",
@@ -24633,7 +24633,7 @@
         "BACK.1+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_337",
       "t7_command": "Approach from behind... 1+3 or 2+4",
       "t7_hit_level": "high",
@@ -24667,7 +24667,7 @@
       "anim_ref": "t7:anna:anna_338",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_338",
       "t7_command": "WR f, f, F (Mid Screen)",
       "t7_hit_level": "mid",
@@ -24709,7 +24709,7 @@
         "CHIN_BASH.1,3,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_339",
       "t7_command": "(During Chin Bash) 1, 3, 2, 1",
       "t7_hit_level": "-",
@@ -24751,7 +24751,7 @@
         "CHIN_BASH.3,4,3,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_340",
       "t7_command": "(During Chin Bash) 3, 4, 3, 1+2",
       "t7_hit_level": "-",
@@ -24788,7 +24788,7 @@
         "CHIN_BASH.4,3,4,3+4,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_341",
       "t7_command": "(During Chin Bash) 4, 3, 4, 3+4, 1+2",
       "t7_hit_level": "-",
@@ -24825,7 +24825,7 @@
         "CHIN_BASH.1+2,4,3,1+2,1+2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_342",
       "t7_command": "(During Chin Bash) 1+2, 4, 3, 1+2, 1+2, 1+2",
       "t7_hit_level": "-",
@@ -24862,7 +24862,7 @@
         "CHIN_BASH.1+3,4,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_343",
       "t7_command": "(During Chin Bash) 1+3, 4, 1+2",
       "t7_hit_level": "-",
@@ -24899,7 +24899,7 @@
         "REVERSE_ARM_LOCK.3,1,4,1+2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_344",
       "t7_command": "(During Reverse Arm Lock) 3, 1, 4, 1+2, 1+2",
       "t7_hit_level": "-",
@@ -24936,7 +24936,7 @@
         "REVERSE_ARM_LOCK.2,1,3,4,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_345",
       "t7_command": "(During Reverse Arm Lock) 2, 1, 3, 4, 1+2",
       "t7_hit_level": "-",
@@ -24973,7 +24973,7 @@
         "REVERSE_ARM_LOCK.2,3,1+2,3+4,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_346",
       "t7_command": "(During Reverse Arm Lock) 2, 3, 1+2, 3+4, 1+2",
       "t7_hit_level": "-",
@@ -25010,7 +25010,7 @@
         "TACKLE.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_347",
       "t7_command": "(During Tackle) 1 (or 2)",
       "t7_hit_level": "-",
@@ -25051,7 +25051,7 @@
         "TACKLE.1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_348",
       "t7_command": "(During Tackle) 1/2, 1/2",
       "t7_hit_level": "-",
@@ -25099,7 +25099,7 @@
         "TACKLE.1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_349",
       "t7_command": "(During Tackle) 1/2, 1/2, 1/2",
       "t7_hit_level": "-",
@@ -25148,7 +25148,7 @@
         "TACKLE.1,1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_350",
       "t7_command": "(During Tackle) 1/2, 1/2, 1/2, 1/2",
       "t7_hit_level": "-",
@@ -25198,7 +25198,7 @@
         "u/b,b"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_351",
       "t7_command": "u/b, b",
       "t7_hit_level": "-",
@@ -25237,7 +25237,7 @@
         "qcf"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_352",
       "t7_command": "qcf",
       "t7_hit_level": "-",
@@ -25276,7 +25276,7 @@
         "1+2+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_353",
       "t7_command": "1+2+3+4",
       "t7_hit_level": "-",
@@ -25310,7 +25310,7 @@
         "REV.b+1+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "anna_354",
       "t7_command": "Time with enemy attack... b+1+3 (or b+2+4)",
       "t7_hit_level": "-",
