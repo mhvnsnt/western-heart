@@ -1,0 +1,22 @@
+{
+ "game": "Drunken Wrestlers 2",
+ "ownership_basis": "Steam snapshot: owned, 7.5h",
+ "status": "spec-only — no game files were accessible from this VM (phone-only user, Steam remote download unreachable); this pack is the teardown path + conversion/wire schema, NOT extracted commercial assets",
+ "teardown_toolchain": [
+  "Physics/ragdoll pattern reference only — same active-ragdoll family as Gang Beasts (see gang-beasts pack); no asset extraction proposed"
+ ],
+ "extractable": [
+  "Drunken-physics grapple/clinch feel → WH party/side-mode physics variant"
+ ],
+ "wh_wire": {
+  "combat": "Side-mode physics variant only — never the Tekken base",
+  "creation": "UNMAPPED",
+  "stages": "UNMAPPED",
+  "audio": "UNMAPPED",
+  "systems": "Ragdoll-pattern reference"
+ },
+ "blocker": "No local game install is reachable from this VM and no game files were supplied with this task. Steam remote download previously reported 'Unable to reach your PC'; user rule is phone-only, no PC paths.",
+ "unblock": "Pattern-only wire; no game files needed for the design reference.",
+ "canon_rule": "Anything brought in with another game's name is renamed to Eastern Mind / Western Heart canon in user-facing writing. Tekken/proprietary names stay in technical files only. Game ships with NO famous names. All characters adults. User's own models (Tripo + SmutBase) display FIRST; Tekken models are back-slot attires. Sole exception: Pantera Attire 1 (user-customized King reskin).",
+ "combat_inputs": "LP1=Left Punch=Tekken 1, RP2=Right Punch=Tekken 2, LK3=Left Kick=Tekken 3, RK4=Right Kick=Tekken 4. Frame data / MOD damage: UNMAPPED unless a source file in this pack contains it — never estimated as measured."
+}
