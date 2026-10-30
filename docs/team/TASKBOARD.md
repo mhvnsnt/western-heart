@@ -18,3 +18,6 @@ Status: `open` · `claimed` · `paused (limit)` · `in review` · `done`. Seeded
 | 10 | Wave 2 auto-rigs (Chordz, Vain Abel A2-A4, Aotsuki, Dio Jade God) | in review | — | #837 |
 | 11 | Claude autosave hook (`.claude/settings.json`, `CLAUDE.md`) | claimed | Grok | — |
 | 12 | agent-ops CI blocked by Actions billing: owner raises spending limit / go public / self-hosted runner | open (owner) | — | — |
+| 13 | Roster integrity test (`test/roster-integrity.test.mjs`): ids unique, referenced files exist | claimed | Jules | session [11272083988152511701](https://jules.google.com/session/11272083988152511701) |
+| 14 | Docs link-check CI gate (`tools/docs-links/`, fail only on new broken links) | claimed | Jules | session [7284020919156373839](https://jules.google.com/session/7284020919156373839) |
+| 15 | `tools/TOOLS-INDEX.md` completeness check + fill missing entries from tool READMEs | claimed | Jules | session [10362622652159135005](https://jules.google.com/session/10362622652159135005) |
