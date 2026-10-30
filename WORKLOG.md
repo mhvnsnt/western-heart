@@ -3808,3 +3808,43 @@ No bucket exists yet — nothing uploaded to R2, no account created.
   ('DEATHFANG_KIN_1211_SHIKI_YA_OTOME'), not 'YA_OTOME', so pressing Ya Otome itself does
   not set the YA_OTOME stance in real play — the sweep sets the stance directly. The
   real-play entry mapping is a follow-up, not hidden. Deletions: none.
+## 2026-10-30 — Cyborg X trailing spin-count annotations -> bare input (PR #1241)
+
+**Why:** Three Cyborg X rows in docs/proof/moveset-sweep-20261028/r17-core8-failing.json
+were 'unparsed' in the sweep because their inputs end in a spin-count note in
+parentheses: t7.alisa_141 'WS 1+2* (one spin)', t7.alisa_142 'WS 1+2 (two spins)',
+t7.alisa_185 '(During Clockwork) 3 (more than a single spin)'. canonNotation's
+final paren rule turned the note into bare words ('WS.1+2* one spin'), which the
+sweep's parse() rejects, so the rows never reached a press.
+
+**What (shared canon code only, no fighter data touched):** one rule in
+game/js/movesets.js canonNotation, placed before the whole-string paren rule: a
+trailing parenthetical containing the word spin/spins is stripped. The placement
+matters: '(During Clockwork) 3 (more than a single spin)' both starts with '('
+and ends with ')', so the whole-string rule's greedy capture would otherwise eat
+the outer parens and the during rule would never fire; with the strip first it
+canonicalises to 'CLOCKWORK.3'. The spin count is an animation descriptor, not
+an extra input: the two WS rows stay distinct after stripping via the hold mark
+('WS.1+2*' vs 'WS.1+2', 14 damage/-4 on block vs 16 damage/0), the same pattern
+as the JGS spin rule's own comment ('the spin count is a repeat of the stance
+entry, same input') and the existing trailing-note strips ('(close)', '(rush)').
+New test test/spin-annotation.test.mjs pins all three rows plus guards.
+
+**Proof (local, against the exact files in this PR, plus CI as arbiter):** new
+test 2/2 pass; the three inputs run through the real current-main sweep-page
+parse() all return OK (WS.1+2* / WS.1+2 / CLOCKWORK.3, one hit each); re-running
+the r17 key classification with the edited canon changes NO key canon (the edit
+touches input strings, not keys); a grep across all six core-8 movesets confirms
+the trailing-spin pattern hits exactly these three rows repo-wide in the core-8
+(Pantera's JGS spin rows are non-trailing and handled by their own rule).
+CI's game-unit-tests run on this PR head is the proof arbiter for the new test.
+
+**Residuals, stated plainly:** this moves the three rows from 'unparsed' to
+pressable; the next sweep still has to witness them in a fight (WS state for the
+WS rows, CLOCKWORK stance entry for the Clockwork row), and that trace is a
+follow-up, not claimed here. Deliberately untouched: 'CLK(Two spins).3' — its
+spin note is mid-string, not trailing, and it is a different row from 'CLK.3'
+(22 damage/+0 vs 20 damage/-9) with no CLK entry in stance_after, so collapsing
+it would witness the wrong row; Pantera's 'ss2+4,b/db' row, whose '/db' is
+ambiguous (alternatives 'b' vs sequence 'b,d/b' — the T8 id hints 'b' but does
+not settle it), is deferred, not guessed. Deletions: none.
