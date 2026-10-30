@@ -3691,3 +3691,23 @@ No bucket exists yet — nothing uploaded to R2, no account created.
   remaining sweep failures (mostly During-Jump air moves); Pantera's 55
   (chain-throw / ~t3 transition classes). Lists:
   docs/proof/moveset-sweep-20261028/r17-core8-failing.json.
+
+## 2026-10-29 — Demonio SS.2,U: headless proof test for the 12f capital hold (PR #1234)
+- What: `test/ss2u-dir-hold.test.mjs` proves the mechanism behind the sweep-page fix
+  (capital direction-only steps held 12f instead of a flat 4f) without a full 3D fight load:
+  it drives the REAL `Fighter._dirHoldUpgrade` in `game/js/fighter.js` frame by frame
+  through the real `setStick` entry point, against the REAL Demonio rows
+  (`SS.2:u` tapped, `SS.2,U` held) from `game/assets/movesets/demonio.json`, and it
+  checks the sweep-page contract in `test/e2e/moveset-sweep.page.js` (capital 12f,
+  lowercase 4f) against the fighter's 0.08 s threshold read from the same tree.
+- Why: the full-fight sweep trace could not be produced in this environment across
+  several runs (page-load stalls; see LOOP-STATE.md run records). The staging law
+  (owner, 2026-10-29) closes the local scratch-sweep route, so proof moves to a repo
+  test that GitHub Actions runs against the real tree (game-unit-tests job).
+- Result claimed: 4f of held stick never upgrades the queued row (4/60 = 0.067 s <
+  0.08 s); 12f upgrades it by frame 5 (5/60 = 0.083 s) and the held flag/queue retarget
+  to the held row. CI's game-unit-tests run on this head is the arbiter — this entry
+  is updated with that run's result before any merge.
+- Still open, stated plainly: a live full-fight sweep trace for SS.2,U is the final
+  end-to-end confirmation and has not been produced; this test proves the upgrade
+  mechanism + hold duration, not a rendered fight. Deletions: none.
