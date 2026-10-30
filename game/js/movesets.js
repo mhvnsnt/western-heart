@@ -642,9 +642,21 @@ function _prepare(ms) {
       const c = canonNotation(mv.input), m = /^([A-Z][A-Z0-9_]+)\./.exec(c || '');
       if (!m) continue;
       if (!(c in slots)) slots[c] = k; // the state row on its prefixed input, never over a slot
-      if (!byName[m[1]]) continue;
       ms.stance_after = ms.stance_after || {};
-      if (!(byName[m[1]] in ms.stance_after)) ms.stance_after[byName[m[1]]] = m[1];
+      if (byName[m[1]]) {
+        if (!(byName[m[1]] in ms.stance_after)) ms.stance_after[byName[m[1]]] = m[1];
+      } else {
+        // Suffix fallback (sweep 2026-10-30, Deathfang saika): the during-row's prefix is a
+        // short state name ('YA_OTOME') while the entering move's name carries its full KOF
+        // title ('DEATHFANG — Kin 1211 Shiki: Ya Otome' -> stateCode ends '_YA_OTOME'), so no
+        // exact byName entry exists and pressing Ya Otome itself never set the YA_OTOME stance
+        // in real play (the sweep sets the stance directly, which hid it). Every move whose
+        // stateCode ends with '_' + prefix enters that state; existing stance_after entries
+        // are kept, and a prefix with no suffix match (e.g. WALLSTUN, a sweep setup, not a
+        // stance) gains nothing.
+        for (const [sc, ek] of Object.entries(byName))
+          if (sc.endsWith('_' + m[1]) && !(ek in ms.stance_after)) ms.stance_after[ek] = m[1];
+      }
     } }
   ms._slots = slots;
   const motions = [];
