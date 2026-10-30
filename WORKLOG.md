@@ -3906,3 +3906,25 @@ downstream witness/resolution, not canon). Deletions: none.
   sweep's DES.BT stance setup is the same downstream question as DES.BT.1.
 - Proof: test/des-bt.test.mjs (2/2 local against the edited canon) + CI
   game-unit-tests on the PR head.
+## 2026-10-30 — Enemy-on-back ground throws n/a (PR #TBD)
+- Pantera t7.king_231-235 '(Enemy on back) by the feet/head/side... d/b+1+3 (or d/b+2+4)'
+  (Swing Away, Head Bomber, Figure Four Leg Lock, Shoulder Cracker, Turn Over) are ground
+  throws on a downed opponent lying on their back (face up) — the face-up mirror of
+  king_236-239 '(Enemy face down)...', which the sweep already n/a's via its Face (Up|Down)
+  pattern. The game has no face-up/face-down ground-orientation move state (the sweep
+  page's own comment above the n/a list), so the sweep page's n/a list gains the
+  parenthesised '(Enemy on back)' pattern with the same 'face-up/face-down ground' label.
+  A canon strip was deliberately NOT used: it would make the sweep attempt these throws
+  standing, where they cannot fire. Blast radius across held core-8 movesets: exactly
+  these 5 rows contain 'on back' (Pantera file verified identical to main's blob).
+- Residual, stated plainly: n/a reclassification, not a witnessed pass — the next sweep
+  moves the 5 rows from the failing list to n/a, and a ground-orientation throw witness
+  remains a follow-up, not claimed here. Deliberately untouched: the remaining t7
+  prose-condition sub-classes — approach/timing/wall-stun rows (need sweep opponent-state
+  setup, not a canon-only or n/a-only chunk), trailing-condition king_110 (condition
+  meaning unclear, not stripped), 'low*' king_150 (no input at all — data gap),
+  'JGS, N' king_158 (N input unclear, not invented), Clockwork-phase king_186
+  (phase-entry data not established) — and Dio's 3 trace-needed rows.
+- Proof: test/enemy-on-back.test.mjs (local against the exact branch page file, plus CI
+  game-unit-tests on the PR head). Test-only change: test/e2e/moveset-sweep.page.js +
+  test/enemy-on-back.test.mjs + WORKLOG entry. No game/ change, so no Pages deploy follows.
