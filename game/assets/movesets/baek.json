@@ -368,14 +368,19 @@
       "knock": 4.2,
       "soulGain": 12,
       "anim_ref": "wh:baek:sig:kick-is-the-question",
-      "community_base": "game/assets/anim/oss/community/144_05.fbx",
-      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "S"
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot."
+      "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
+      "community_base": "game/assets/anim/oss/community/144_05.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "P+K": {
       "name": "Homework [WH SIGNATURE]",
@@ -399,7 +404,12 @@
       "note": "Every fight is a lesson; every loss is homework. A teaching throw with corrections.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true
+      "isGrab": true,
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Kick Is the Question [WH SIGNATURE]",
@@ -413,15 +423,20 @@
       "knock": 4.2,
       "soulGain": 12,
       "anim_ref": "wh:baek:sig:kick-is-the-question",
-      "community_base": "game/assets/anim/oss/community/144_05.fbx",
-      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "1+2"
       ],
       "move_class": "signature",
       "wh_original": true,
       "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "community_base": "game/assets/anim/oss/community/144_05.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 41,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "BAEK 1+2 (T3 bryan r41)",
@@ -465,7 +480,12 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "b+2": {
       "name": "BAEK b+2 (T3 bryan r158)",

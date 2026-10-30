@@ -1,0 +1,24 @@
+{
+ "game": "Nioh 2 – The Complete Edition",
+ "ownership_basis": "Steam snapshot: owned, 23 min",
+ "status": "spec-only — no game files were accessible from this VM (phone-only user, Steam remote download unreachable); this pack is the teardown path + conversion/wire schema, NOT extracted commercial assets",
+ "teardown_toolchain": [
+  "Same path as Nioh 1 (see nioh/pull.json); Nioh 2 adds Yokai Shift / Burst Counter as additional system references — format confirmation still required from a local install"
+ ],
+ "extractable": [
+  "Yokai abilities + Burst Counter (timed counter window) → WH counter/parry reference",
+  "Expanded weapon set (switchglaive, splitstaff, fists, hatchets) → creation-suite weapon templates",
+  "Stance + Ki Pulse as in Nioh 1"
+ ],
+ "wh_wire": {
+  "combat": "Burst Counter → timed counter window inside Tekken guard/counter rules; Yokai Shift → rare transformation-state reference (KESSHOU lethal-variant gating pattern)",
+  "creation": "Additional weapon templates",
+  "stages": "UNMAPPED",
+  "audio": "UNMAPPED",
+  "systems": "Same Ki/stance economy as Nioh 1"
+ },
+ "blocker": "No local game install is reachable from this VM and no game files were supplied with this task. Steam remote download previously reported 'Unable to reach your PC'; user rule is phone-only, no PC paths.",
+ "unblock": "On a machine with the owned game installed: run the toolchain below against the installed files, export to the WH schema in this pack, and drop converted (non-commercial-name) data under game/assets/pulls/<slug>/ as a follow-up PR. Raw commercial files go ONLY in the PRIVATE game-reverse-engineering repo, never in public western-heart.",
+ "canon_rule": "Anything brought in with another game's name is renamed to Eastern Mind / Western Heart canon in user-facing writing. Tekken/proprietary names stay in technical files only. Game ships with NO famous names. All characters adults. User's own models (Tripo + SmutBase) display FIRST; Tekken models are back-slot attires. Sole exception: Pantera Attire 1 (user-customized King reskin).",
+ "combat_inputs": "LP1=Left Punch=Tekken 1, RP2=Right Punch=Tekken 2, LK3=Left Kick=Tekken 3, RK4=Right Kick=Tekken 4. Frame data / MOD damage: UNMAPPED unless a source file in this pack contains it — never estimated as measured."
+}
