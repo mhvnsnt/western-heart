@@ -429,6 +429,13 @@ selectScreen.build();
    Mind lands + 15 Tekken 3 retro arenas (real teardown geometry). */
 let selectedStage = 'shrine';
 
+/* Classic result-screen REMATCH (2026-10-30): a fight started outside
+   modes (quick fight, QA hook, direct startMatch) ends on the classic
+   result screen with modes.mode falsy, so the rematch handler falls back
+   to bare startFight(). Record the resolved pairing + stage here so
+   that fallback replays the fight just played, not a random enemy. */
+let lastFight = null;
+
 /* LOADSPEED: stage-thumb atlas (Urban Reign VGS lesson — Namco packs each
    menu screen into ONE tiled texture instead of dozens of files). The 41
    thumbs used to be 41 separate PNG requests on stage-select open; now one
@@ -815,7 +822,7 @@ document.addEventListener('click', (e) => {
       show('select');
     }
     else if (a === 'rematch') {
-      getModes().then(m => { if (m.mode) m.rematch(); else startFight(); });
+      getModes().then(m => { if (m.mode) m.rematch(); else if (lastFight) startFight(lastFight.p1, lastFight.p2, { stage: lastFight.stage }); else startFight(); });
     }
   }
 });
@@ -1215,6 +1222,10 @@ async function startFight(playerId, enemyId, opts = {}) {
   let enemy = opts.enemyChar ||
     (typeof enemyId === 'string' && enemyId !== player.id ? resolveFighterAttire(getCharacterWithCustom(enemyId)) : randomEnemy(player.id));
   if (!enemy || enemy.modelPending || !enemy.model) enemy = randomEnemy(player.id);
+  // Classic REMATCH record: the resolved pairing + stage, set BEFORE any
+  // await so a rematch from the result screen replays this exact fight.
+  // (Modes fights rematch through modes.rematch(), never through this.)
+  lastFight = { p1: player.id, p2: enemy.id, stage: selectedStage };
   // NINE SOULS REDESIGN (owner directive 2026-10-22 ~23:02 CDT): the
   // select-screen soul-spirit toggle. Each side's locked pick applies to
   // that side's entry — a vessel match empowers the fighter (buff baked
