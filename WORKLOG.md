@@ -1019,7 +1019,7 @@ Validation:
 
 Owner directive (verbatim): "As soon as a Tripo model comes in you need to get it rigged automatically ASAP to the character rig that it goes to."
 
-Built the intake the owner asked for (PR #TBD):
+Built the intake the owner asked for (PR #1255):
 
 - tools/tripo-intake/intake.py — orchestrator. `inbox/<fighter>/attire<N>.glb`
   (+ optional `attire<N>.json` sidecar) → env check → claim (fighter id must be
@@ -4187,7 +4187,7 @@ downstream witness/resolution, not canon). Deletions: none.
 - Residual, stated plainly: parse + loadout attempt, not a witnessed frame-perfect just-frame pass — the ':' cadence is the codebase's existing just-frame representation, not a frame-perfect timing gate; the next sweep reports whether the rows fire. This chunk takes the CD.df# item the #1253 WORKLOG entry listed as untouched; it does not touch the ':' rows' own failures, which are downstream.
 - Deliberately untouched: Dio's 'DFLIP N' (space form, real strike, entry input not established), CLK(Two spins).3 (a different row from CLK.3, deliberately not collapsed), king_150 'low*' (data gap), and the ~t3/t7 prose-condition classes (sweep opponent-state setup, not canon-only).
 - Deletions: none.
-## 2026-10-30 — Classic result-screen REMATCH replays the fight just played (PR #TBD)
+## 2026-10-30 — Classic result-screen REMATCH replays the fight just played (PR #1255)
 - What: `game/js/main.js` records the resolved pairing + stage in `startFight()` (after fighter resolution, before any await) as `lastFight`, and the result-screen REMATCH handler's no-mode fallback replays that recorded fight (`startFight(lastFight.p1, lastFight.p2, { stage: lastFight.stage })`) instead of bare `startFight()`. Bare `startFight()` replays `selectedChar` vs a random enemy.
 - Why: a fight started outside modes (the `?quick=p1,p2,stage` fight, the `__startFight` QA hook, any direct `startMatch` path) ends on the classic result screen with `modes.mode` falsy (`game.js` shows `ui.matchOver` when `onMatchEnd` is null), so REMATCH changed the enemy. Versus/team/arcade/story/training/survival/etc. end through modes (mode set, `_lastVersus`/`_lastTeamDraft`, or `_modeWin` retry buttons) and are untouched; rank battle uses its own modewin screen (NEXT BATTLE), not this button.
 - Proof: `node --check` syntax on the edited `main.js`; CI's game-unit-tests + menu-touch-e2e runs on the PR head (regression + boot-to-fight); after merge, Pages redeploy + live `main.js` read-back.
