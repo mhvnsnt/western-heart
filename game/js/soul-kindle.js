@@ -35,7 +35,7 @@ export function detectKindlePress(queue, nowMs = (typeof performance !== 'undefi
     const s = String(a);
     if (s === '1' || s === '2' || s === '3' || s === '4') limbs.add(s);
     // chords count their limbs too (1+2 covers 1 and 2)
-    if (/^[1-4]\+[1-4]$/.test(s)) { limbs.add(s[0]); limbs.add(s[2]); }
+    if (/^[1-4](\+[1-4])+$/.test(s)) for (const c of s.split('+')) limbs.add(c); // 3- and 4-limb chords too
   }
   return limbs.size === 4;
 }
