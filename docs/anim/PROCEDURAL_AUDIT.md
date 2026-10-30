@@ -869,3 +869,30 @@ contains ZERO input-~ canonicals, and skull is INERT file-wide on this axis —
 every ~ in the file is a trailing source-variant suffix. T8-sourced prefixes
 with no T3 row get their correct clips from #988 Step 2 (original T8 refs),
 never from a T3 row recorded as correct.
+
+## Skull Batch 2 fallback (LK3/RK4-only strings, 2026-10-25)
+Verified rows 103/104/193/194/199 are FALLBACK
+(T3 bryan rows, bank bryan / NATIVE bank: skull's T7/T8 base is Bryan Fury,
+which debuted in Tekken 3, so a native bryan dir exists under t3/ - same bank
+as burger's fallback, but here it is the character's own T3 bank, and its row
+identities were re-derived from the files, not copied from burger), to be
+re-matched to T7 Bryan rows when extraction lands. Rejected/review rows are
+NOT fallback - review evidence (rows 192/200) and suspended evidence (stale
+row 63) are not wired or held as playable. Bryan-bank rules, per-bank
+evidence (documented in docs/movesets/SKULL-BATCH2-STEP-PLANS-2026-10-25.md):
+row 35 does NOT EXIST in this bank (absent from hit_frames AND Job 1); row 220
+EXISTS in hit_frames ([25,26,65,271,0,0], button 0) but is ABSENT from Job 1 -
+it fails every single-button gate; row 216 EXISTS in
+hit_frames ([20,21,30,271,0,0], button 0) but is ABSENT from Job 1 - same
+treatment. Skull's own RK4 move 4 carries t3_row 104 both files (standing
+RK4 row); LK3 move 3 is ROW-CHANGED 63->None on main, so the two step-1s
+with prefix move 3 are SUSPENDED (stale jump row 63 documented, never wired).
+Standing row 103 verified for a crouch-context step (d/f+3+4,3 step 1) follows
+the demonio Batch 1 precedent: the gate flags crouch rows for non-crouch
+steps, not standing rows for crouch steps. Job 3 fills wired: 0 (8 log lines,
+each with an empty pass-all list; no full-provenance pass-all candidate).
+Job 4: 1 join (row 200), 0 promotions, 0 orphans. Canonicalization is the
+CORRECTED rule (strip only a trailing ~t[378] source-variant suffix): skull
+Batch 2 contains ZERO input-~ canonicals in scope. T8-sourced prefixes
+with no T3 row get their correct clips from #988 Step 2 (original T8 refs),
+never from a T3 row recorded as correct.
