@@ -4001,3 +4001,8 @@ downstream witness/resolution, not canon). Deletions: none.
   fires and connects there, and whether the engine resolves the reversal catch at all
   (fighter.js surfaces no reversal-window logic for these move_class 'special' rows),
   is what that sweep reports.
+- Follow-up in this PR: CI's first game-unit-tests run failed on a stale guard in
+  test/approach-crouch.test.mjs, which asserted the timing prose stays untouched — true
+  when #1245 landed, false now that this chunk covers it. That guard now asserts the new
+  TIMERP/TIMELK mappings (wall-stun guard unchanged); no other canon test mentions the
+  timing prose (scanned all canon-related test files on the branch head).
