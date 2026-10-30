@@ -59,6 +59,7 @@ export function createState({ fighter = 'custom', attire = 'attire1', name = 'CU
     item_colors: {},                  // suite_slot -> [hex, ...<=5]
     finishes: {},                     // suite_slot -> { roughness, metalness, tint }
     mirrored: {},                     // suite_slot -> true
+    clothing: {},                     // worker 64: clothing label -> true (hidden) for this attire
     title: ['', ''],
     fighting_style: { archetype: 'Balanced', aggression: 5 },
     parameters: { arms_offense: 50, body_defense: 50 },
@@ -148,6 +149,18 @@ export function removeRegionSwap(s, region) {
   s.region_swaps = s.region_swaps.filter((r) => r.region !== region); return s;
 }
 export function setHideBaseHair(s, on) { s.hide_base_hair = !!on; return s; }
+
+// Clothing layers (worker 64): per-attire hidden-set of clothing labels.
+// Labels follow docs/CLOTHING-ACCESSORY-LABELING-STANDARD.md
+// (<category>_<item>_<variant>). Additive on the v1 record: serialized as
+// clothing_layers.hidden, read by the game engine (game/js/clothing-layers.js)
+// and persisted per attire like everything else.
+export function setClothingHidden(s, label, hidden) {
+  if (!label) throw new Error('clothing layer needs a label');
+  if (hidden) s.clothing[label] = true; else delete s.clothing[label];
+  return s;
+}
+export function isClothingHidden(s, label) { return !!s.clothing[label]; }
 export function setItemColors(s, spine, colors) {
   const cur = s.equipped[spine]; if (!cur) throw new Error(`nothing equipped at ${spine}`);
   const list = (colors || []).filter((c) => HEX.test(c)).slice(0, 5);
@@ -186,6 +199,7 @@ function lookOf(s) {
     body: s.body, morphs: s.morphs, equipped: s.equipped, textures: s.textures,
     colors: s.colors, item_colors: s.item_colors, finishes: s.finishes, mirrored: s.mirrored,
     region_swaps: s.region_swaps, hide_base_hair: s.hide_base_hair,
+    clothing: s.clothing,
   });
 }
 export function saveSnapshot(s, n) {
@@ -213,6 +227,9 @@ export function toCustomizationJson(s) {
   if (Object.keys(s.item_colors).length) out.item_colors = clone(s.item_colors);
   if (Object.keys(s.finishes).length) out.finishes = clone(s.finishes);
   if (Object.keys(s.mirrored).length) out.mirrored = clone(s.mirrored);
+  // worker 64: clothing layers (additive v1 key) — the game engine and the
+  // in-game pause sheet read this; the suite record below carries it too.
+  if (Object.keys(s.clothing).length) out.clothing_layers = { hidden: Object.keys(s.clothing).sort() };
   if (s.title.some(Boolean) || Object.keys(s.wardrobe).length) {
     out.wardrobe = { title: [...s.title], snapshots: clone(s.wardrobe) };
   }
@@ -238,6 +255,9 @@ export function fromSuiteRecord(rec) {
   s.morphs = { ...(rec.morphs || {}) };
   s.region_swaps = clone(rec.region_swaps || []);
   s.hide_base_hair = Array.isArray(rec.hide_meshes) && rec.hide_meshes.some((p) => String(p).toLowerCase() === 'hair');
+  // worker 64: clothing layers round-trip (v1 additive key).
+  s.clothing = {};
+  for (const l of (rec.clothing_layers?.hidden || [])) if (l) s.clothing[l] = true;
   s.textures = clone(rec.textures || []);
   s.colors = { ...(rec.colors || {}) };
   s.item_colors = clone(rec.item_colors || {});
