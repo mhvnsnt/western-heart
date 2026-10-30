@@ -3960,3 +3960,49 @@ downstream witness/resolution, not canon). Deletions: none.
 - Residual, stated plainly: mechanism proof, not a witnessed full-fight pass — the next
   sweep attempts these 3 rows against a crouching foe at close range, and whether each
   fires and connects there is what that sweep reports.
+
+## 2026-10-30 — Pantera timing throws get a sweep setup (PR #1246)
+
+- What: Pantera t7.king_295 'Time with enemy right punch... b+1+3' (Arm Whip), t7.king_296
+  'Time with enemy left kick... b+2+4' (Spinning Heel Hold), t7.king_297 'Time with enemy
+  right kick... b+2+4' (Leg Screw) — the last t7 prose-condition rows that were parse-ERRs
+  for a missing context, not for a missing input. Canon maps 'Time with enemy right
+  punch/left kick/right kick... <input>' to 'TIMERP/TIMELK/TIMERK.<input>' in
+  game/js/movesets.js, and the sweep page's setup() gains TIMERP/TIMELK/TIMERK cases that
+  play exactly the stated situation: close to the 0.7 m contactFirst spacing, then the foe
+  attacking with the matching limb (2 = right punch, 3 = left kick, 4 = right kick, per
+  the Tekken button map in movesets.js), pressed immediately, inside the reversal window.
+  No fighter data touched; shared canon code + sweep page only. Blast radius: exactly
+  these 3 rows — the limb-specific prose appears in no other core-8 input field (Cyborg X
+  and Demonio generic 'Time with enemy attack...' prose lives only in t7_command/input_note
+  of the already-REV-keyed row, never in the input field, so the limb-anchored rule cannot
+  touch it; dio/burger/chatur/deathfang carry no 'Time with enemy' rows; bruno has no r17
+  failures). Full Pantera input set through the real sweep parse: OK 597 -> 600,
+  ERR 277 -> 274, exactly the 3 rows changed.
+- Why this is a setup, not an n/a: the #1244 enemy-on-back n/a was honest because the
+  engine has no face-up/face-down ground-orientation state at all. An attacking foe IS a
+  state the sweep already plays (condSetup's oppAttack starts foe attacks for T3 condition
+  rows), so these rows get attempted in their situation instead of being excused from it.
+  A canon strip alone would have been wrong: it would make the sweep attempt reversal
+  throws against a standing, non-attacking foe.
+- Deliberately untouched, different chunks: wall-stun row t7.king_247 ('During enemy wall
+  stun...' — wall-stun state not established), trailing-condition king_110, 'low*'
+  king_150, 'JGS, N' king_158, Clockwork-phase king_186, generic 'Time with enemy
+  attack...' timing (Cyborg X / Demonio REV rows — a generic-attack setup, not a
+  limb-specific one), and Dio's 3 trace-needed rows.
+- Proof: test/timing-attack.test.mjs (local against the exact edited files, 4/4;
+  2/4 fail on the unedited files — the canon and setup tests — so the test is not
+  vacuous), plus CI game-unit-tests on the PR head. Shared-code change:
+  game/js/movesets.js + test/e2e/moveset-sweep.page.js + test/timing-attack.test.mjs
+  + WORKLOG entry. A game/ change, so a Pages redeploy of game/js/movesets.js follows
+  any merge.
+- Residual, stated plainly: mechanism proof, not a witnessed full-fight pass — the next
+  sweep attempts these 3 rows against an attacking foe at close range, and whether each
+  fires and connects there, and whether the engine resolves the reversal catch at all
+  (fighter.js surfaces no reversal-window logic for these move_class 'special' rows),
+  is what that sweep reports.
+- Follow-up in this PR: CI's first game-unit-tests run failed on a stale guard in
+  test/approach-crouch.test.mjs, which asserted the timing prose stays untouched — true
+  when #1245 landed, false now that this chunk covers it. That guard now asserts the new
+  TIMERP/TIMELK mappings (wall-stun guard unchanged); no other canon test mentions the
+  timing prose (scanned all canon-related test files on the branch head).
