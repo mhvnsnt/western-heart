@@ -46,10 +46,41 @@ def import_fighter(kmd_path, stance_path, out, palette="king"):
     pivots[0] = pivots[2].copy()  # root = pelvis pivot
     P = {p: conv(v) for p, v in pivots.items()}
     V = {p: conv(v) for p, v in verts.items()}
-    # facing: lateral = shoulder line; forward chosen so the head mesh (muzzle) leads
-    lat = P[9] - P[13]; lat[1] = 0; lat /= np.linalg.norm(lat)
-    fwd = np.cross(lat, [0, 1, 0]); fwd /= np.linalg.norm(fwd)
-    if np.dot(V[17].mean(0) - P[17], fwd) < 0: fwd = -fwd
+    # facing: lateral = shoulder line (hip line fallback); forward = the way the
+    # knees bend. Knees are anatomical and never lie. The old head-mesh-centroid
+    # heuristic ("muzzle leads") flipped on big-haired heads and baked 5 of 17
+    # banks facing -Z (2026-10-22 facing fix; validated on all KMDs against
+    # tools/anim/t3_bank_facing.py, which is the offline twin of the runtime's
+    # bankFacing knee check in game/js/t3anims.js).
+    def _lateral():
+        for _a, _b in ((9, 13), (3, 6)):
+            if _a in P and _b in P:
+                _v = P[_a] - P[_b]; _v[1] = 0
+                _n = np.linalg.norm(_v)
+                if _n > 1e-9:
+                    return _v / _n
+        return None
+    def _knee_score(_f):
+        _s = 0.0
+        for _up, _kn, _ft in ((3, 4, 5), (6, 7, 8)):  # (UpLeg, Leg, Foot) parts
+            if _up in P and _kn in P and _ft in P:
+                _o = P[_kn] - (P[_up] + P[_ft]) / 2; _o[1] = 0
+                _s += float(np.dot(_o, _f))
+        return _s
+    _lat = _lateral()
+    fwd = None
+    if _lat is not None:
+        _f0 = np.cross(_lat, [0, 1, 0]); _f0 /= np.linalg.norm(_f0)
+        _sp, _sn = _knee_score(_f0), _knee_score(-_f0)
+        if abs(_sp) + abs(_sn) > 1e-9:
+            fwd = _f0 if _sp >= _sn else -_f0
+    if fwd is None and _lat is not None and 17 in V and 17 in P:
+        # fallback: head mesh leads (old heuristic, only when knees give no signal)
+        fwd = np.cross(_lat, [0, 1, 0]); fwd /= np.linalg.norm(fwd)
+        if np.dot(V[17].mean(0) - P[17], fwd) < 0:
+            fwd = -fwd
+    if fwd is None:
+        raise SystemExit("t3_to_gltf: cannot determine mesh facing")
     ang = math.atan2(fwd[0], fwd[2])  # rotate so fwd -> +Z
     c, s = math.cos(-ang), math.sin(-ang); Ry = np.array([[c, 0, s], [0, 1, 0], [-s, 0, c]])
     allv = np.concatenate(list(V.values()))

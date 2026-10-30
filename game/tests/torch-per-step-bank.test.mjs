@@ -86,7 +86,7 @@ test('fixture is verbatim Batch 1 evidence for 2,1 (guards fixture drift)', () =
 
 test('single-bank regression: pantera plans (real #1096 file) resolve byte-identically to #1096', () => {
   const plans = pantera.string_step_plans.plans;
-  assert.equal(Object.keys(plans).length, 60);
+  assert.equal(Object.keys(plans).length, 208);
   let steps = 0;
   for (const plan of Object.values(plans)) {
     for (const s of plan.steps) {
@@ -97,7 +97,7 @@ test('single-bank regression: pantera plans (real #1096 file) resolve byte-ident
       assert.equal(stepActionName(effectiveStepPlay(s, 'king'), 'king'), oldRulePlay(s, 'king') ? `row:${oldRulePlay(s, 'king').row}` : null);
     }
   }
-  assert.equal(steps, 137);
+  assert.equal(steps, 626);
 });
 
 test('single-bank regression: synthetic bank-null/absent plans are untouched by the new path', () => {
