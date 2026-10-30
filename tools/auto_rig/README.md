@@ -106,3 +106,47 @@ python3 tools/auto_rig/validate.py --in MODEL.glb --clips CLIPS_DIR
 
 Tests: `tools/auto_rig/tests/test_anim_check.py` (synthetic GLB fixtures,
 one per failure mode).
+
+## Skin audit + automatic weight repair (rigfix.py, 2026-10-29)
+
+Stretch gates alone shipped deformed models before (Leopard King
+#448: passed p99.9 stretch, legs folded to spine — rest-rotation and
+weight-domain defects no stretch number can see). The repair lane
+measures and fixes the weight domain directly:
+
+    # one command: audit -> cleanup -> re-audit -> playable gate
+    python3 rigfix.py --in MODEL.glb --out MODEL_rigfixed.glb \
+        --report REPORT.json        # exit 0 only on a full pass
+
+- `backends/skin_audit.py` — the measuring instrument. Weight sums,
+  unweighted verts, JOINTS_1 overflow, **dead major joints** (a body
+  joint carrying zero weight), **cross-body contamination** (weight
+  on a joint whose bone segment is far from the vertex vs its nearest
+  segment — bind-space, computed from inverse bind matrices),
+  skeleton proportions vs `backends/skeleton_template.json`, folded
+  rest chains, joints outside the mesh volume, feet planted.
+- `backends/weight_cleanup.py` — the fix: prune contaminated slots,
+  **revive globally dead major joints** by proximity reassignment to
+  their anatomical territory (a dead Hand's finger-dominated verts get
+  real Hand weight again), fill unweighted verts, edge-Laplacian
+  smoothing with duplicate-safe accumulation, a post-smoothing
+  far-prune, prune-to-4 + exact renormalization. Input never modified.
+- `backends/surface_heat.py` + `vendor/surface-heat-diffuse/` — full
+  re-skin by surface heat diffusion (MIT, meshonline; helper built
+  from vendored C++ with g++, driven headlessly through the add-on's
+  own write/run/read pipeline). Use when weights must be recomputed
+  wholesale; falls back to `blender_heat.py` when unavailable.
+- `proof_pose.py` — Blender posed proof renders (named bones at fixed
+  angles) so a revival can be checked by eye, not just by numbers.
+- `tests/test_skin_fixes.py` — synthetic GLB with a planted dead joint
+  + planted contamination; audit must flag both, cleanup must fix both.
+
+Proof on the in-game Baek model (`game/assets/models/baek.glb`,
+2026-10-29): audit BEFORE failed with dead `LeftHand`/`RightHand`
+(the model's hand verts were 100% finger-weighted) and 0.087%
+contaminated weight mass; cleanup pruned 128 contaminated slots,
+revived 707 verts, filled 7 unweighted; audit AFTER passes all 10
+checks (contamination 0.003%). Rest and posed renders before/after
+are unchanged in envelope — no new tearing; two pre-existing defects
+were noted, not hidden: a wrist seam gap under hard bends and a stray
+flat bar prim at belt height, both present in the shipped original.

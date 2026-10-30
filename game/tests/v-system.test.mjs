@@ -50,7 +50,9 @@ test('vskillFor: every fighter gets a skill, default when unlisted', () => {
   const d = vs.vskillFor('some-unknown-fighter');
   assert.equal(d.kind, 'strike');
   assert.ok(d.damage > 0 && d.startup > 0 && d.recovery > 0);
-  assert.match(d.name, /name TBD/); // placeholder flagged, per owner directive
+  // popup fix 2026-10-24: no 'name TBD' marker anywhere; names are technical data only, never shown mid-fight
+  assert.equal(typeof d.name, 'string');
+  assert.doesNotMatch(d.name, /TBD/);
 });
 
 test('vskillFor: per-character kits differ (identity, not wallpaper)', () => {
@@ -62,7 +64,7 @@ test('vskillFor: per-character kits differ (identity, not wallpaper)', () => {
   assert.equal(phantom.kind, 'parry'); // swordsman's parry, not a strike
   assert.equal(phantom.noHitbox, true);
   for (const id of ['pantera', 'dio', 'ryusan', 'phantom']) {
-    assert.match(vs.vskillFor(id).name, /name TBD/, `${id} name flagged TBD`);
+    assert.doesNotMatch(vs.vskillFor(id).name, /TBD/, `${id}: no TBD marker (popup fix 2026-10-24)`);
   }
 });
 
@@ -72,7 +74,7 @@ test('vtriggerEnhance: EX skill hits harder and gains armor', () => {
   assert.ok(ex.damage > base.damage);
   assert.ok(ex.knock > base.knock);
   assert.equal(ex.armor, true);
-  assert.match(ex.name, /name TBD/);
+  assert.doesNotMatch(ex.name, /TBD/);
   // base untouched (no mutation of the catalog)
   assert.equal(base.armor, undefined);
 });
@@ -82,7 +84,7 @@ test('vreversalMove: a real guard-cancel counter template', () => {
   assert.ok(m.damage > 0 && m.knock >= 6); // knocks them off you
   assert.equal(m.isGrab, false);
   assert.equal(m.unblockable, false);
-  assert.match(m.name, /name TBD/);
+  assert.doesNotMatch(m.name, /TBD/);
 });
 
 test('vshiftTap: double-tap block window', () => {

@@ -67,6 +67,10 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
 import { loadCatalog, mergeCatalogs, resolveProfileParts } from '../../packages/creation-suite/src/catalogs.js';
 import { applyPart } from '../../packages/creation-suite/src/parts.js';
+// Split hosting (owner decision 2026-10-26: Pages shell + GLBs on R2).
+// Part GLBs load through the same candidate order as fighters
+// (remote base first, jsDelivr fallback) — see asset-config.js.
+import { loadGlbCandidates } from './asset-config.js';
 
 const ROOT = new URL('../../', import.meta.url);
 const LS_KEY_SUITE = 'wh_creation_suite_v1';
@@ -132,8 +136,9 @@ function gltfLoader() {
 }
 async function loadPartScene(glbPath) {
   if (_sceneCache.has(glbPath)) return _sceneCache.get(glbPath);
-  const url = new URL(glbPath, ROOT).href;
-  const gltf = await gltfLoader().loadAsync(url);
+  // Split hosting: try the remote asset base first, then jsDelivr;
+  // relative candidates resolve against the repo root exactly as before.
+  const gltf = await loadGlbCandidates(gltfLoader(), glbPath, ROOT);
   _sceneCache.set(glbPath, gltf.scene);
   return gltf.scene;
 }
