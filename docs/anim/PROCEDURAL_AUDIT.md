@@ -840,3 +840,32 @@ T8-sourced prefixes with no T3 row get their correct clips from #988 Step 2
 (original T8 refs), never from a T3 row recorded as correct.
 COVERAGE COMPLETE: all 74 canonical comma keys = B1 14 + B2 12 + B3 11 +
 B4 37, pairwise overlaps 0, uncovered [] extra [].
+
+## Skull Batch 1 fallback (LP1/RP2-only strings, 2026-10-25)
+Verified rows 44/45/46/56/57/58/113/145/146/147/148/149/150/151/152/153/172/173 are FALLBACK
+(T3 bryan rows, bank bryan / NATIVE bank: skull's T7/T8 base is Bryan Fury,
+which debuted in Tekken 3, so a native bryan dir exists under t3/ — same bank
+as burger's fallback, but here it is the character's own T3 bank, and its row
+identities were re-derived from the files, not copied from burger), to be
+re-matched to T7 Bryan rows when extraction lands. Rejected rows are NOT
+fallback — rejected evidence, not wired or held. Bryan-bank rules, per-bank
+evidence (documented in docs/movesets/SKULL-BATCH1-STEP-PLANS-2026-10-25.md):
+row 35 does NOT EXIST in this bank (absent from hit_frames AND Job 1); row 220
+EXISTS in hit_frames ([25,26,65,271,0,0], button 0) but is ABSENT from Job 1 —
+it fails every single-button gate, and is NOT jin's standing RP2 row 220, NOT
+king's jumping chord row, NOT heihachi's jump RK4 row; row 216 EXISTS in
+hit_frames ([20,21,30,271,0,0], button 0) but is ABSENT from Job 1 — same
+treatment. Skull's own LP1 move 1 carries t3_row 172 (standing LP1 row) and
+RP2 move 2 carries t3_row 100 (standing RP2 row) on #1096 — BOTH unchanged on
+current main (damage-only drift 11->9 and 12->13), NOT suspending, so
+suspended-drift steps are 0 (the file's row-changed moves are 3, 3_c36,
+u+1,3 — all 63->None, none a Batch 1 step prefix). Standing rows verified for
+crouch-context steps (d/f+1+2 family rows 146/147/148/149) follow the demonio
+Batch 1 precedent: the gate flags crouch rows for non-crouch steps, not
+standing rows for crouch steps. Job 3 fills wired: 0 (all Job 3 candidates are
+ROW-ONLY or soft, documented never wired). Canonicalization is the CORRECTED
+rule (strip only a trailing ~t[378] source-variant suffix): skull Batch 1
+contains ZERO input-~ canonicals, and skull is INERT file-wide on this axis —
+every ~ in the file is a trailing source-variant suffix. T8-sourced prefixes
+with no T3 row get their correct clips from #988 Step 2 (original T8 refs),
+never from a T3 row recorded as correct.
