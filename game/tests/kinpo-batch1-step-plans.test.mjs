@@ -37,6 +37,13 @@
  * Batch 1 scope (LK3 cancel + buttonless direction step). Spelling quirks
  * kept: df+1,2 (throw, CSV-only) vs d/f+1,2 (planned), db+1,2 vs d/b+1,2,
  * WS.2,1 vs ws2,1 (both ws context) are distinct canonicals, never merged.
+ * CUMULATIVE UPDATE (Kinpo Batch 2, 2026-10-25): this file is the Batch 1 test
+ * with ONLY counts / extra-keys / header notes changed for the cumulative
+ * block (total 67 = 47 Batch 1 + 20 Batch 2; extra keys exactly the Batch 2
+ * keys). Every Batch 1 CONTENT assertion below is preserved verbatim — the
+ * Batch 1 flagships, verified-row checks, CSV-only absences, and
+ * verified-last-step set are asserted over the Batch 1 keys only and are
+ * unchanged. The Batch 2 keys are asserted in kinpo-batch2-step-plans.test.mjs.
  * Rules asserted here (all data-level, no THREE needed):
  *   1. kinpo.json still has 525 moves / 101 strings entries (plans are additive only).
  *   2. string_step_plans has exactly 47 keys (27 planned canonicals + 20 twins).
@@ -92,14 +99,15 @@ function stepBits(step) {
 test('kinpo move/string counts unchanged by the additive plans block', () => {
   assert.equal(Object.keys(kinpo.moves).length, 525);
   assert.equal(kinpo.strings.length, 101);
-  assert.equal(Object.keys(plans).length, 47);
+  assert.equal(Object.keys(plans).length, 67); // 47 Batch 1 + 20 Batch 2 (cumulative)
 });
 
-test('Batch 1 keys are exactly the documented 47', () => {
+test('Batch 1 keys present; extra keys are exactly the documented Batch 2 keys (cumulative)', () => {
   assert.equal(B1.length, 47);
   for (const key of B1) assert.ok(plans[key], `Batch 1 key ${key} missing`);
   const extra = Object.keys(plans).filter((k) => !B1.includes(k));
-  assert.deepEqual(extra, []);
+  const B2 = ["FC.3+4,3", "FC.3+4,3~t7.asuka", "FC.3+4,3~t7.asuka.2", "FC.3+4,3~t7.asuka.3", "b+3,4", "b+3,4~t7.asuka", "b+3,4~t7.asuka.2", "d/b+4,4", "d/b+4,4,4", "d/b+4,4,4~t7.asuka", "d/b+4,4,4~t7.asuka.2", "d/b+4,4~t7.asuka", "d/f+4,4", "db+4,3", "db+4,4", "db+4,4,4", "u/f+4,3", "u/f+4,4", "u/f+4,4,4", "u/f+4,4,4,4"];
+  assert.deepEqual(extra.sort(), B2.sort());
 });
 
 test('Batch 1 verified steps carry rows (button == step bits, throw 0, never row 35 on ground); review/unmapped carry row null; no soft flags', () => {
