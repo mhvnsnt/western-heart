@@ -3848,3 +3848,47 @@ spin note is mid-string, not trailing, and it is a different row from 'CLK.3'
 it would witness the wrong row; Pantera's 'ss2+4,b/db' row, whose '/db' is
 ambiguous (alternatives 'b' vs sequence 'b,d/b' — the T8 id hints 'b' but does
 not settle it), is deferred, not guessed. Deletions: none.
+## 2026-10-30 — Pantera ss2+4,b/db direction alternative -> first direction (PR #TBD)
+
+**Why:** Pantera's 'ss2+4,b/db' row in docs/proof/moveset-sweep-20261028/r17-core8-failing.json
+was 'unparsed' in the sweep: canonNotation's diagonal rule turned the 'db' in the 'b/db'
+step into 'd/b', giving the unparseable step 'b/d/b'.
+
+**What (shared canon code only, no fighter data touched):** one rule in
+game/js/movesets.js canonNotation, placed before the diagonal expansions: a step written
+'<cardinal>/<diagonal>' ('b/db', 'f/df') is a direction alternative for one step, and
+resolves to the first listed direction — the same first-listed rule the alternatives rule
+already applies to '1+3_2+4', 'd/b+1/2/3' and 'U/F or U/B'. The row's own T8 id settles
+the reading: the move (name 'Reverse Special Stretch Bomb (Cancel)') carries t8_id
+'King-ss2+4,b', and T8 ids in this moveset are 'King-' + the full T8 input with commas
+preserved (e.g. 'King-1,2,1,d+2+4'), so a sequence reading 'b,d/b' would have read
+'King-ss2+4,b,d/b'. The row canonicalises to 'SS.2+4,b'. A lone diagonal ('d/f', 'u/b')
+has a single letter after the slash and is untouched, as is 'b/f+X' (WR. rule). New test
+test/dir-alternatives.test.mjs pins the row plus guards.
+
+**Proof (local, against the exact files in this PR, plus CI as arbiter):** new test 2/2
+pass; the real sweep-page parse() over 'SS.2+4,b' returns OK (was: parse error on
+'b/d/b'); re-running the r17 key classification with the edited canon changes exactly
+one row (84 OK / 3 motion / 49 ERR -> 85 OK / 3 motion / 48 ERR); a grep across all
+eight core-8 movesets (keys, inputs, input_slots) confirms the cardinal/diagonal step
+pattern hits exactly this one row repo-wide in the core-8, so the blast radius is one
+row. Neighbouring landed canon tests (wall-context, spin-annotation, saika-during,
+dio-air-moves) still pass against the edited file. CI's game-unit-tests run on this PR
+head is the proof arbiter for the new test.
+
+**Residuals, stated plainly:** this moves the row from 'unparsed' to pressable; the next
+sweep still has to witness it in a fight (sidestep throw cancel timing), and that trace
+is a follow-up, not claimed here. Deliberately untouched: the remaining r17 parse-error
+classes — '~t3'/'~t7' suffix rows (their input_slots carry the base input, e.g.
+'u/b+1,1~t3.king.3' slots 'u/b+1,1', and the sweep's loadout path equips them there, so
+their r17 failures are downstream, not canon); '1_cNN_rNNN' condition rows (slots carry
+the base input, e.g. '1_c26_r235' slots '1' with t3_condition 26, and the sweep's
+condSetup already establishes their conditions, so their failures are downstream);
+'t7.king_NNN'/'t7.alisa_NNN' bare ids (their inputs are prose condition strings —
+'Approach crouching enemy...', 'Time with enemy right punch...', 'Face Up, Feet
+Towards...' — a multi-class follow-up, not one canon rule; the sweep already n/a's the
+face-up/face-down and Upon Landing rows); 'CD.df#1/#2' ('#' meaning unknown, not
+invented); 'DFLIP N' (unclear, not invented); 'CLK(Two spins).3' (mid-string spin note,
+a different row from 'CLK.3'); and the Deathfang name-key rows (their playable inputs
+live in the moveset data, e.g. 'yaotome_a' -> 'qcf,hcb+1', so their failures are
+downstream witness/resolution, not canon). Deletions: none.
