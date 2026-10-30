@@ -13,13 +13,17 @@
  * belongs to #1096's merge, not this PR.
  * Rules asserted here (all data-level, no THREE needed):
  *   1. burger.json still has 552 moves / 107 strings entries (plans are additive only).
- *   2. string_step_plans has exactly 204 keys (88 Batch 1 preserved + 67 Batch 2 + 49 Batch 3).
+ *   2. string_step_plans has exactly 219 keys (88 Batch 1 preserved + 67 Batch 2 + 49 Batch 3 + 15 Batch 4).
  *      (Batch 3 update: this file's exact-155 / no-extra-keys assertions were
  *      replaced by cumulative assertions below. Every Batch 2 CONTENT assertion
  *      — flagships, verified-last-step set, row/button checks — is preserved
  *      verbatim; only the total and the extra-keys set changed, because
  *      Batch 3 keys now legitimately exist. See docs/movesets/
  *      BURGER-BATCH3-STEP-PLANS-2026-10-25.md, test-evolution note.)
+ *      (Batch 4 update: the total is now 219 and the extra-keys set is
+ *      Batch 4's 15. Every Batch 2 CONTENT assertion is still preserved
+ *      verbatim; only the total and the extra-keys set changed. See
+ *      docs/movesets/BURGER-BATCH4-STEP-PLANS-2026-10-25.md, test-evolution note.)
  *   3. Batch 2 verified steps always carry a row, and no verified row is 35 or 220;
  *      review/unmapped steps carry row null. No Batch 2 step carries a soft flag
  *      (Batch 2 wires zero SOFT fills).
@@ -57,19 +61,22 @@ const VERIFIED_BUTTONS = {"61": 12, "87": 8, "104": 8, "183": 8, "191": 4};
 test('burger move/string counts unchanged by the additive plans block', () => {
   assert.equal(Object.keys(burger.moves).length, 552);
   assert.equal(burger.strings.length, 107);
-  assert.equal(Object.keys(plans).length, 204);
+  assert.equal(Object.keys(plans).length, 219);
 });
 
-test('Batch 2 keys are exactly the documented 67; Batch 1 keys all present; extra keys exactly the documented Batch 3 49', () => {
+test('Batch 2 keys are exactly the documented 67; Batch 1 keys all present; extra keys exactly the documented Batch 3 49 + Batch 4 15', () => {
   assert.equal(B2.length, 67);
   for (const key of B2) assert.ok(plans[key], `Batch 2 key ${key} missing`);
   for (const key of B1) assert.ok(plans[key], `Batch 1 key ${key} missing (Batch 1 plans must be preserved)`);
   const B3 = ["1,3", "1,3~t7.bob", "1,3,3", "1,3,3~t7.bob", "1,3,3~t7.bob.2", "1,4", "1,4~t7.bob", "1,4~t7.bob.2", "1,d+4", "1,d+4~t7.bob", "1,d+4~t7.bob.2", "2,4", "3,1", "3,1,1", "3,2", "BAL.1,H.4", "FC.d/f+2,4", "FC.d/f+2,4~t7.bob", "WS.1,3", "WS.1,3~t7.bob", "b+2,2,4", "b+2,2,4~t7.bob", "b+2,2,4~t7.bob.2", "b+2,2,4~t7.bob.3", "b+2,2,4,4", "b+2,2,4,4~t7.bob", "b+2,2,4,4~t7.bob.2", "b+2,2,4,4~t7.bob.3", "b+2,2,4,4~t7.bob.4", "b+4,1", "b+4,1~t7.bob", "d+2,3", "d+2,3~t7.bob", "d+2,3~t7.bob.2", "d+2,4", "d+2,4~t7.bob", "d+2,4~t7.bob.2", "d/f+3,1", "d/f+3,1~t7.bob", "d/f+3,1,1", "d/f+3,1,1~t7.bob", "d/f+3,1,1~t7.bob.2", "d/f+3,2", "d/f+3,2~t7.bob", "f+2,3", "f+2,3~t7.bob", "f+2,3~t7.bob.2", "ub+4,1", "ws1,3"];
   assert.equal(B3.length, 49);
   for (const key of B3) assert.ok(plans[key], `Batch 3 key ${key} missing`);
-  const extra = Object.keys(plans).filter((k) => !B2.includes(k) && !B1.includes(k));
-  assert.equal(extra.length, 49);
-  for (const key of B3) assert.ok(extra.includes(key), `Batch 3 key ${key} not in extra set`);
+  const B4 = ["1+2+3+4,1+2", "1+2+3+4,4", "2,1,4", "2,1,4~t7.bob", "2,1,4~t7.bob.2", "2,1,4~t7.bob.3", "3+4,4,2", "FC.d/f+2,4,1+2", "FC.d/f+2,4,1+2~t7.bob", "FC.d/f+2,4,1+2~t7.bob.2", "u+1+2,4", "u/f+1+2,4", "u/f+1+2,4~t7.bob", "u/f+2,1,2,2,1,1+2,3,1,2,3+4", "u/f+2,3,3+4,4"];
+  assert.equal(B4.length, 15);
+  for (const key of B4) assert.ok(plans[key], `Batch 4 key ${key} missing`);
+  const extra = Object.keys(plans).filter((k) => !B2.includes(k) && !B1.includes(k) && !B3.includes(k));
+  assert.equal(extra.length, 15);
+  for (const key of B4) assert.ok(extra.includes(key), `Batch 4 key ${key} not in extra set`);
 });
 
 test('Batch 2 verified steps carry rows (never 35/220); review/unmapped carry row null; no soft flags', () => {
