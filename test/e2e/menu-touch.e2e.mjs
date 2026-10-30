@@ -16,7 +16,9 @@ async function page(breakModule) {
   const ctx = await b.newContext({ ...devices['iPhone 13'], viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
   const p = await ctx.newPage();
   if (breakModule) await p.route('**/packages/creation-suite/src/parts.js', r => r.fulfill({ status: 404, body: '' }));
-  await p.goto(BASE + '/game/index.html');
+  // M1 core roster hides CI's checked-out light fighters; ?roster=all keeps
+  // the same cards this test has always tapped (core-set.js).
+  await p.goto(BASE + '/game/index.html?roster=all');
   await p.waitForSelector('#screen-menu [data-mm]', { state: 'visible', timeout: 30000 });
   await p.waitForTimeout(5000); // past the tap-hint and failsafe timers
   // Diagnostic: record every delegated data-action click so a dead tap can be

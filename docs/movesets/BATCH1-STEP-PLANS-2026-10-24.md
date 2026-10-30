@@ -312,3 +312,40 @@ Until this pass completes, Batch 1 is wired + re-audited, NOT play-verified, and
 - All HARD moves beyond Batch 1's scope (LK3/RK4 Batch 2, mixed pairs, rest) — same pipeline, later PRs.
 - Grapple-chain + TACKLE CSV rows (10) — separate grapple systems, not Batch 1.
 
+
+## 2026-10-29 update — real-moves correctness lane (supersedes PR #1096)
+
+Owner ruling (2026-10-29): "Get the real moves and animations and rows and combo strings and correct the
+incorrect animations." Neither earlier option is the end state — unmapped steps are filled with verified
+real rows where they exist; steps with no real row anywhere stay UNMAPPED and are reported by name.
+
+- Switch-criteria item 1 is now CLOSED: the T3 King branch graph exists in the repos — GRE
+  `tekken3/movesets/moveset_king.json` (bank `divmot03_king.bin`, 652 moves, `branches[]` + 4,023-entry
+  `move_index`), same extraction as this repo's `teardown/tekken3/movesets/`. It reproduces every
+  already-verified Batch 1 chain link exactly (97→98, 98→198, 110 jab, 203 RP).
+- All 98 unmapped/review step occurrences were researched against it (plus hit_frames HARD gates and
+  same-notation `~t3.king`/`~t7.king` records): 57 occurrences have a real row (HARD gates pass) and are
+  now recorded as REVIEW candidates with `candidate_source: t3-branch-graph` — they play only after the
+  FK soft gate + play-verify promote them to verified. 41 occurrences have no real row in any searched
+  source and stay UNMAPPED (named in `docs/movesets/REAL-MOVES-AUDIT-2026-10-29.md`).
+- Last-step status over the 60 keys is now: verified 11 / review 25 / unmapped 24 (was 11 / 4 / 45).
+  The 11 verified keys are unchanged; no new step was promoted to verified in this pass.
+- `2,1` step 2 stays UNMAPPED: the branch graph proves row 220 IS T3's real LP follow-up from row 203,
+  and it still fails the HARD gates (button 3 != LP1 bits 1; airborne) — real but not playable for a
+  standing string step under the standing law.
+- This doc's historical "NOT LANDED" checklist text above describes PR #1096 as opened in 2026-10-24;
+  the step plans land via the 2026-10-29 real-moves PR that carries this update. Still NOT play-verified.
+
+## 2026-10-30 update — step-plan dependents wave (#1097 fills landed on top of #1232)
+
+The Batch 1 follow-up fills above were landed on top of the 2026-10-29 real-moves
+pass (#1232/#1233), which had already recorded the `b+2,1+2` step-2 row 97 as a
+REVIEW candidate. Per the flagged reconciliation, the follow-up's VERIFIED record
+wins: `b+2,1+2` + both twins now carry step 2 as verified row 97, and the `u/b+1`
+first steps of `u/b+1,1` / `u/b+1,2` carry the SOFT row 49 fill (soft flags intact,
+never verified-exact, still pending the owner's play-verify). One interaction:
+`b+2,1+2` step 1 (`b+2`) keeps the real-moves pass's REVIEW candidate instead of
+the follow-up's older UNMAPPED record — the candidate is branch-graph research
+from 2026-10-29 and is not erased by the older assertion. Merged tallies over the
+60 plan keys: steps 44 verified (42 exact + 2 soft) / 54 review / 39 unmapped;
+last-step 14 verified / 22 review / 24 unmapped. Still NOT play-verified.

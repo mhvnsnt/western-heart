@@ -1,0 +1,34 @@
+== bruno (loaded bruno) vs kronos
+  grab 1+3: thrownExec 139 frames, max victim distance 1.69 m
+  grab 1+3: thrower clips ["t3_bryan_row210@bruno-attire2","t3_react_2797@bruno-attire2"] victim clips ["t3_king_stance@kronos","t3_react_3042@kronos"]
+  grab 2+4: thrownExec 135 frames, max victim distance 1.1199999999999999 m
+  grab 2+4: thrower clips ["t3_bryan_row211@bruno-attire2","t3_react_2830@bruno-attire2"] victim clips ["t3_king_stance@kronos","t3_react_3033@kronos"]
+  stick: held {"down":"down","latched":true,"ground":true,"st":"crouch"} released {"down":null,"dir":"n","axisX":0,"st":"idle"}
+== zen (loaded zen) vs kronos
+  skip zen string 1,2,4*: hit '4*' is not a button press (resolver test covers it)
+  skip zen string b:2*: hit 'b' is not a button press (resolver test covers it)
+  skip zen string d/f+1,2*: hit '2*' is not a button press (resolver test covers it)
+  skip zen string d/f+1:2*: hit '2*' is not a button press (resolver test covers it)
+  skip zen string FUJ.1,1: stance-entry string (resolver test covers it)
+  skip zen string FUJ.1,2: stance-entry string (resolver test covers it)
+  skip zen string FUJ.3,4: stance-entry string (resolver test covers it)
+  skip zen string WS.3,1+2: stance-entry string (resolver test covers it)
+  skip zen string WS.4,4: stance-entry string (resolver test covers it)
+  skip zen string 1,2,2~1+2,u: hit 'u' is not a button press (resolver test covers it)
+  skip zen string 2,2~1+2,u: hit 'u' is not a button press (resolver test covers it)
+  skip zen string f+2~1+2,u: hit 'u' is not a button press (resolver test covers it)
+  skip zen string d+1,D: hit 'D' is not a button press (resolver test covers it)
+  skip zen string b+1,2~1+2,u: hit 'u' is not a button press (resolver test covers it)
+  skip zen string SS.2,1: stance-entry string (resolver test covers it)
+  skip zen string RAI.2,1: stance-entry string (resolver test covers it)
+  skip zen string TACKLE.1,1: stance-entry string (resolver test covers it)
+  skip zen string TACKLE.1,1,1: stance-entry string (resolver test covers it)
+  skip zen string TACKLE.1,1,1,1: stance-entry string (resolver test covers it)
+  grab 1+3: thrownExec 61 frames, max victim distance 1.52 m
+  grab 1+3: thrower clips [null] victim clips ["t3_king_stance@kronos","t3_king_hit@kronos","t3_king_launch@kronos"]
+  grab 2+4: thrownExec 61 frames, max victim distance 1.52 m
+  grab 2+4: thrower clips [null] victim clips ["t3_king_stance@kronos","t3_king_hit@kronos","t3_king_launch@kronos"]
+  stick: held {"down":"down","latched":true,"ground":true,"st":"crouch"} released {"down":null,"dir":"n","axisX":0,"st":"idle"}
+  [WH-THROW] zen vs kronos: no file pair (no T3 bank for zen (UNMAPPED)) — legacy lock
+96 passed, 0 failed
+exit=0

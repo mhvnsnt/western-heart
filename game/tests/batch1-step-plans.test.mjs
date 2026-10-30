@@ -86,7 +86,7 @@ test('Fill 1 (follow-up): b+2,1+2 family last step verified row 97', () => {
     assert.equal(p.last_step_status, 'verified');
     assert.equal(p.last_step_row, 97);
     assert.equal(p.string_status, 'partial');
-    assert.equal(p.steps[0].status, 'unmapped', `${key} step b+2 stays unmapped`);
+    assert.equal(p.steps[0].status, 'review', `${key} step b+2 carries the 2026-10-29 branch-graph REVIEW candidate (not the follow-up's older unmapped record)`);
   }
   // Row 97 is a standing LP1+RP2 chord row, never a jumping row.
   const row97 = hf['97'];

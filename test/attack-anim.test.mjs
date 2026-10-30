@@ -82,7 +82,11 @@ test('every bound fighter: non-throw moves never fall back to a generic clip whe
     for (const n of Object.keys(ms.slots || ms.moves)) {
       const mv = F.getRealMove(id, n);
       const p = f._attackClipPlan(mv, n);
-      assert.ok(p && p.name && f._t3.clips[p.name], `${id} ${n}: no clip`);
+      // Owner contract (2026-10-29, real-moves lane): a step-planned string whose
+      // steps have no VERIFIED real row plays NO bank row (kind 'step-plan', name
+      // null, unmapped steps listed) - never a donor/match/generic row. That is a
+      // pass here, distinct from an unplanned move resolving to nothing.
+      assert.ok(p && ((p.name && f._t3.clips[p.name]) || (p.kind === 'step-plan' && p.name === null && Array.isArray(p.unmapped) && p.unmapped.length > 0)), `${id} ${n}: no clip`);
       if (p.kind === 'generic' && !(mv && mv.isGrab) && p.level !== 't' && !/^(1\+3|2\+4)$/.test(n))
         assert.ok(!pool.some(c => c.limb === p.limb), `${id} ${n}: generic ${p.name} though the bank has ${p.limb} rows`);
     }
@@ -139,6 +143,7 @@ test('every bound fighter: no strike plays a throw row and no throw plays a stri
       const mv = F.getRealMove(id, n);
       if (!mv) continue;
       const p = f._attackClipPlan(mv, n);
+      if (!p || !p.name) continue; // step-planned step with no verified row plays no clip: nothing to mismatch
       const c = f._t3.clips[p.name], h = c.userData.hit;
       if (!p.grab && T.clipIsThrow(c)) bad.push(`${id} ${n}: strike -> throw ${p.name}`);
       if (p.grab && h && h[0] > 0 && !h[4]) bad.push(`${id} ${n}: throw -> strike ${p.name}`);
