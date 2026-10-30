@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="submenus.css" />
   <link rel="stylesheet" href="t7-skin.css" />
   <link rel="stylesheet" href="menu-t7.css" />
+  <link rel="stylesheet" href="ui-gaps.css" />
   <!-- Worker 35: colorblind-safe HUD palettes (worker-35 identity lane) -->
   <link rel="stylesheet" href="css/colorblind.css" />
   <!-- MENU FALLBACK CSS (2026-10-22, PR #676 rebase): if every stylesheet
@@ -248,6 +249,7 @@
       </div>
       <p class="howto-note">Light hits grant +8 soul, heavy +11, taking damage +6, blocking +4.
         Fill all 9 souls, then unleash your Soul Surge.</p>
+      <div class="howto-setting"><b>Sound</b><span><button id="opt-audio" class="btn-ghost" type="button" aria-label="Toggle sound">ON</button></span></div>
       <button class="btn-primary" data-action="back-menu">BACK</button>
     </div>
   </section>
@@ -366,10 +368,12 @@
   <!-- ====================== ROUND BANNER ====================== -->
   <div id="round-banner" class="banner"></div>
 
+  <!-- ====================== HUD NOTE (replaces mid-fight banners) ====================== -->
+  <div id="hud-note" class="hud-note"></div>
+
   <!-- ====================== SOUL SURGE FLASH ====================== -->
   <div id="surge-flash" class="surge-flash"></div>
   <div id="rage-flash" class="rage-flash"></div>
-  <div id="surge-name" class="surge-name"></div>
 
   <!-- ====================== IN-GAME HUD ====================== -->
   <section id="hud" class="screen hud">
@@ -377,11 +381,15 @@
     <div id="mode-badge" class="mode-badge" style="display:none"></div>
     <button id="training-quit" class="training-quit" style="display:none">✕ QUIT</button>
     <button id="movelist-btn" class="training-quit" style="display:none">☰ MOVES</button>
+    <!-- Worker 29: Gungaku fight lab toggle (training mode) -->
+    <button id="gungaku-btn" class="training-quit" style="display:none">⚙ LAB</button>
+    <!-- Worker 29: replay badge (replay viewer) -->
+    <div id="replay-badge" class="mode-badge" style="display:none">▶ REPLAY</div>
     <div class="hud-top">
       <!-- Player health -->
       <div class="fighter-status left">
         <div class="hp-wrap"><div class="hp-damage" id="p1-hp-dmg"></div><div class="hp-fill" id="p1-hp"></div></div>
-        <div class="rage-tag" id="p1-rage">RAGE</div>
+        <div class="rage-tag" id="p1-rage"></div>
         <div class="urge-wrap" id="p1-urge-wrap"><div class="urge-fill" id="p1-urge"></div><span class="urge-label">SOUL URGE</span></div>
         <div class="soul-label">NINE-SOUL METER</div>
         <div class="meter-wrap" id="p1-meter"></div>
@@ -400,7 +408,7 @@
       <!-- Enemy health -->
       <div class="fighter-status right">
         <div class="hp-wrap"><div class="hp-damage" id="p2-hp-dmg"></div><div class="hp-fill" id="p2-hp"></div></div>
-        <div class="rage-tag" id="p2-rage">RAGE</div>
+        <div class="rage-tag" id="p2-rage"></div>
         <div class="urge-wrap" id="p2-urge-wrap"><div class="urge-fill" id="p2-urge"></div><span class="urge-label">SOUL URGE</span></div>
         <div class="soul-label">NINE-SOUL METER</div>
         <div class="meter-wrap" id="p2-meter"></div>
@@ -410,6 +418,10 @@
 
     <!-- Combo popup -->
     <div id="combo-pop" class="combo-pop"><b id="combo-num">0</b><span>HITS</span></div>
+
+    <!-- HEART AND MIND WITHIN brawler status (worker 20, 2026-10-22):
+         stage / zone / foe readout for the Devil Within descent. -->
+    <div id="brawler-status" class="brawler-status" style="display:none;position:fixed;top:64px;left:50%;transform:translateX(-50%);z-index:60;color:#ffd76a;font:600 13px/1.4 system-ui,sans-serif;letter-spacing:0.12em;text-shadow:0 2px 8px #000;background:rgba(10,6,20,0.55);padding:6px 14px;border:1px solid rgba(255,215,106,0.35);border-radius:20px;pointer-events:none"></div>
 
     <!-- Control hints (desktop keys + touch). Fades after 6s. -->
     <div id="control-hints" class="control-hints">
@@ -443,7 +455,12 @@
         <button class="act-btn dodge" data-btn="dodge">D</button>
         <!-- V-System (owner 2026-10-22): V-Skill / V-Trigger / V-Reversal -->
         <button class="act-btn vskill" data-btn="vskill">V</button>
+        <!-- T8 shortcuts (owner pt134u): Heat Burst = 2+3, Rage Art = 1+2 while in rage (R.1+2 resolver prefix) -->
+        <button class="act-btn heat" data-btn="2+3">HEAT</button>
+        <button class="act-btn rage" data-btn="1+2">RAGE</button>
 <button class="act-btn transform" data-btn="transform" style="display:none">T</button>
+        <!-- TTT2 (worker 24): TAG button — visible only in tag battles. -->
+        <button id="tag-btn" class="act-btn tag" data-btn="tag" hidden>TAG</button>
       </div>
     </div>
   </section>
@@ -456,9 +473,61 @@
     <div class="panel movelist-panel">
       <h2 id="movelist-title">MOVE LIST</h2>
       <p id="movelist-sub" class="stage-sub"></p>
+      <p class="ml-legend">startup / active / recovery — frames @60fps</p>
       <div id="movelist-groups" class="movelist-groups"></div>
       <div class="menu-buttons">
         <button class="btn-primary" data-action="close-movelist">BACK</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Worker 29: GUNGAKU 軍楽 fight lab panel (training mode) -->
+  <div id="gungaku" class="gungaku" style="display:none">
+    <div class="gk-title">GUNGAKU 軍楽 · FIGHT LAB</div>
+    <div class="gk-row"><span class="gk-label">DUMMY</span>
+      <button data-dummy="stand" class="on">STAND</button>
+      <button data-dummy="crouch">CROUCH</button>
+      <button data-dummy="block">BLOCK</button>
+      <button data-dummy="jump">JUMP</button>
+    </div>
+    <div class="gk-row"><span class="gk-label">RECORD</span>
+      <button id="gk-rec">● REC</button>
+      <button id="gk-play">▶ PLAY</button>
+      <button id="gk-stop">■ STOP</button>
+    </div>
+    <div class="gk-row">
+      <button id="gk-hitbox">HITBOX: OFF</button>
+      <button id="gk-cam">CAM: FIGHT</button>
+      <button id="gk-reset">RESET POS</button>
+    </div>
+    <div class="gk-framedata" id="gk-framedata"></div>
+    <div class="gk-hint">T panel · V hitbox · R reset</div>
+  </div>
+
+  <!-- Worker 29: replay viewer transport -->
+  <div id="replay-bar" class="replay-bar" style="display:none">
+    <button id="rp-play" title="play/pause (Space)">⏸</button>
+    <button data-speed="0.25" title="quarter speed">0.25×</button>
+    <button data-speed="0.5" title="half speed">0.5×</button>
+    <button data-speed="1" class="on" title="normal speed">1×</button>
+    <button data-speed="2" title="double speed">2×</button>
+    <button id="rp-back" title="step back 1 frame (,)">−1F</button>
+    <button id="rp-step" title="step forward 1 frame (.)">+1F</button>
+    <button id="rp-restart" title="restart replay">↺</button>
+    <button id="rp-cam" title="free camera (C)">CAM: FIGHT</button>
+    <input id="rp-seek" type="range" min="0" max="100" value="0" title="scrub round" />
+    <span id="rp-time">R1/1 0:00 / 0:00</span>
+    <button id="rp-exit" title="exit replay (Esc)">✕ EXIT</button>
+  </div>
+
+  <!-- Worker 29: replay theater (library) -->
+  <section id="screen-replays" class="screen">
+    <div class="panel replay-panel">
+      <h2>REPLAY THEATER</h2>
+      <p class="stage-sub">Every versus &amp; arcade fight is recorded — inputs + snapshots, not video. Watch in slow-mo, step frame-by-frame, orbit the camera.</p>
+      <div id="replay-list" class="replay-list"></div>
+      <div class="menu-buttons">
+        <button class="btn-ghost" data-action="back-menu">MAIN MENU</button>
       </div>
     </div>
   </section>
@@ -485,6 +554,9 @@
       <p id="reinc-deaths" class="stage-kicker"></p>
       <h2>DEATH IS NOT THE END</h2>
       <p id="reinc-flavor" class="stage-sub"></p>
+      <!-- Eastern Mind face assembly: the returning soul's new face,
+           built from the original game's own eyes / nose / mouth art. -->
+      <div id="reinc-face" class="reinc-face"></div>
       <div id="reinc-cards" class="reinc-cards"></div>
       <p id="reinc-forces" class="stage-forces"></p>
     </div>
@@ -523,6 +595,9 @@
       <p id="result-sub"></p>
       <div class="menu-buttons">
         <button class="btn-primary" data-action="rematch">REMATCH</button>
+        <button class="btn-ghost" data-action="back-select">CHANGE FIGHTER</button>
+<button class="btn-ghost" data-action="replays">REPLAYS</button>
+
         <button class="btn-ghost" data-action="back-menu">MAIN MENU</button>
       </div>
     </div>
