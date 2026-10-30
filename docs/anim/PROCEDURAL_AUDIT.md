@@ -333,3 +333,31 @@ correct clips from #988 Step 2 (original T8 refs), never from a T3 row
 recorded as correct. Rest keys (95) and the throw triple-quad
 u/f+3+4,H.1+2 get NO plan — CSV-audited only; their donor clips
 stand, not fixed, pending engine support for non-attack prefix steps.
+
+## Diablo Batch 1 fallback (LP1/RP2-only strings, 2026-10-25)
+Verified rows 157/158/159/160/98/99/147/149/110/204/123/146/40/41/42/52/53/54
+and review candidates 224/207/216/240/178 are FALLBACK (T3 heihachi rows,
+bank heihachi_on_jin / divmot13 on the jin rig), to be re-matched to T7
+Heihachi rows when extraction lands. Rejected rows are NOT fallback —
+rejected evidence, not wired or held. Heihachi-bank rules, per-bank
+evidence (documented in docs/movesets/DIABLO-BATCH1-STEP-PLANS-2026-10-25.md):
+row 35 does NOT EXIST in this bank (absent from hit_frames and Job 1), so
+no row-35 rule applies; row 220 is a JUMP RK4 row here, gate-adjudicated
+like any row, NOT jin's standing RP2 row, NOT king's jumping chord row,
+NOT bryan's button-0 row; heihachi_on_jin row 216 is a DUCK-DIP row, NOT
+jin row 216's jump row and NOT king row 216's dash Konvict Kick. Diablo's
+own LP1 move carries t3_row 46, and Job 1 row 46 is STARTS-AIRBORNE, so
+every ground-context step with candidate row 46 fails the stance gate;
+prefix move 1 is ALSO ROW-CHANGED 46->None (#1096 vs current main), so all
+13 1-family step 1s are SUSPENDED-DRIFT — never wired on stale data.
+Standing rows verified for crouch-context steps (d+1,2 / d+1,2__main step 1
+row 123, d/f+1+2,2 step 1 row 110) follow the demonio Batch 1 precedent:
+the gate flags crouch rows for non-crouch steps, not standing rows for
+crouch steps. Canonicalization is the CORRECTED rule (strip only a
+trailing ~t[378] source-variant suffix): diablo DOES contain input-~
+cancel-notation canonicals (6 own canonicals), unlike Pantera/burger whose
+inventories were provably inert — under the old rule this batch would
+have had 61 canonicals including a bogus single 'f+2'. No verified row is
+affected by the correction. T8-sourced prefixes with no T3 row get their
+correct clips from #988 Step 2 (original T8 refs), never from a T3 row
+recorded as correct.
