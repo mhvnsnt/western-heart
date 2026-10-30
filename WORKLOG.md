@@ -3961,7 +3961,7 @@ downstream witness/resolution, not canon). Deletions: none.
   sweep attempts these 3 rows against a crouching foe at close range, and whether each
   fires and connects there is what that sweep reports.
 
-## 2026-10-30 — Pantera timing throws get a sweep setup (PR #TBD)
+## 2026-10-30 — Pantera timing throws get a sweep setup (PR #1246)
 
 - What: Pantera t7.king_295 'Time with enemy right punch... b+1+3' (Arm Whip), t7.king_296
   'Time with enemy left kick... b+2+4' (Spinning Heel Hold), t7.king_297 'Time with enemy
