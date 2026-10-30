@@ -3848,7 +3848,7 @@ spin note is mid-string, not trailing, and it is a different row from 'CLK.3'
 it would witness the wrong row; Pantera's 'ss2+4,b/db' row, whose '/db' is
 ambiguous (alternatives 'b' vs sequence 'b,d/b' — the T8 id hints 'b' but does
 not settle it), is deferred, not guessed. Deletions: none.
-## 2026-10-30 — Pantera ss2+4,b/db direction alternative -> first direction (PR #TBD)
+## 2026-10-30 — Pantera ss2+4,b/db direction alternative -> first direction (PR #1242)
 
 **Why:** Pantera's 'ss2+4,b/db' row in docs/proof/moveset-sweep-20261028/r17-core8-failing.json
 was 'unparsed' in the sweep: canonNotation's diagonal rule turned the 'db' in the 'b/db'
