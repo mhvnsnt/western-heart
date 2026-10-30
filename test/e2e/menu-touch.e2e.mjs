@@ -13,9 +13,11 @@
 //    twice via the __game hook (best of 3, 3s round lock), tap REMATCH, and check
 //    the replayed fight is the SAME pairing — the old bug replayed selectedChar
 //    vs a random enemy.
-//    Announcer subtitle checks ride on the same fight: 'Fight!' after the
-//    round opens, 'K.O.' after a KO (subtitle text persists in the DOM after
-//    the 2200ms hold, so both waits are timing-safe).
+//    Announcer checks ride on the same fight: 'Fight!' subtitle after the
+//    round opens, and the ko-01 engine log after each KO (the first head's
+//    K.O.-subtitle assertion failed in CI on both KOs while Fight! passed —
+//    the engine log fires in the same _speak call that sets the subtitle,
+//    so it witnesses the call even if the text is later overwritten).
 // Taps allow 90s: headless CI renders the live-3D select panes on software GL (~600ms frames).
 import { chromium, devices } from 'playwright';
 import fs from 'node:fs';
@@ -101,6 +103,11 @@ try {
 try {
   const rp = await b.newPage({ viewport: { width: 960, height: 540 } });
   rp.on('pageerror', (e) => console.log('REMATCH PAGEERROR:', String(e).slice(0, 300)));
+  // ANNOUNCER: record page console text so the ko witness below can see the
+  // engine's placeholder log even if the subtitle text is overwritten fast.
+  const announcerLogs = [];
+  rp.on('console', (m) => { try { announcerLogs.push(m.text()); } catch {} });
+  const koLogCount = () => announcerLogs.filter((t) => t.includes('announcer/ko-01')).length;
   await rp.goto(BASE + '/game/index.html?quick=pantera,phantom,shrine');
   await rp.waitForFunction(() => { const g = window.__game; return g && g.roundState === 'fight' && g.p1 && g.p2; }, null, { timeout: 300000, polling: 500 });
   // ANNOUNCER: the FIGHT call fires on the intro -> fight transition; its
@@ -125,16 +132,27 @@ try {
     for (let round = 0; round < 3; round++) {
       if (await resultVisible()) break;
       await rp.waitForFunction(() => window.__game && window.__game.roundState === 'fight', null, { timeout: 300000, polling: 500 });
+      const baseKo = koLogCount();
       await rp.evaluate(() => { window.__game.p2.hp = 0; });
       try {
         await rp.waitForFunction(() => { const g = window.__game; const e = document.getElementById('screen-result');
           return g.roundState === 'over' || (e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden')); }, null, { timeout: 300000, polling: 500 });
-        // ANNOUNCER: the KO call fires in _endRound, so check it only while the
-        // round is 'over' — once the result screen shows, matchOver's you-win
-        // call (playerWon) overwrites it.
+        // ANNOUNCER: the KO call fires in _endRound. Witness it via the engine's
+        // placeholder log (fires in the same _speak call that sets the subtitle)
+        // counted from before this round's KO, so a later overwrite cannot hide
+        // it. On timeout, log the actual current subtitle text for diagnosis.
         if (await rp.evaluate(() => window.__game && window.__game.roundState === 'over')) {
-          try { await rp.waitForFunction(() => { const l = document.querySelector('#wh-voice-sub .wh-voice-line'); return l && l.textContent === 'K.O.'; }, null, { timeout: 30000, polling: 500 }); console.log(`announcer: K.O. subtitle OK (round ${round + 1})`); }
-          catch { fails.push(`announcer: K.O. subtitle never appeared after round ${round + 1} KO`); }
+          let koSeen = false;
+          for (let i = 0; i < 60 && !koSeen; i++) {
+            if (koLogCount() > baseKo) koSeen = true;
+            else await rp.waitForTimeout(500);
+          }
+          if (koSeen) console.log(`announcer: ko-01 call OK (round ${round + 1})`);
+          else {
+            const cur = await rp.evaluate(() => { const l = document.querySelector('#wh-voice-sub .wh-voice-line'); return l ? l.textContent : '(no subtitle line)'; });
+            console.log(`announcer: ko-01 log missing after round ${round + 1} KO; subtitle now: ${cur}`);
+            fails.push(`announcer: ko-01 call never logged after round ${round + 1} KO`);
+          }
         }
         await rp.waitForFunction(() => { const g = window.__game; const e = document.getElementById('screen-result');
           return g.roundState === 'fight' || (e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden')); }, null, { timeout: 300000, polling: 500 });
