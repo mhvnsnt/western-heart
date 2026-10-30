@@ -1,0 +1,97 @@
+{
+ "version": 1,
+ "engine": "game/js/jukebox-eras.js",
+ "structureNote": "T7's Jukebox browses by game (T1-T6/TTT2). Western Heart browses by collection/era instead, because its soundtrack is WH's own: no Tekken audio files are claimed or shipped here. The tekken-data-only era lists the 5 data-only library slots for transparency and is never playable.",
+ "eras": [
+  {
+   "id": "wh-originals",
+   "name": "WESTERN HEART ORIGINALS",
+   "description": "The shipped WH soundtrack before the Nosferatu and Cape Jones sets: Kevin MacLeod royalty-free tracks (CC-BY-4.0) plus the owner's own Eastern Mind (Tong-Nou) originals (owner-original).",
+   "trackIds": [
+    "title-meditation",
+    "select-exhilarate",
+    "battle-volatile",
+    "battle-cannery",
+    "battle-implosion",
+    "battle-five-armies",
+    "battle-hitman",
+    "battle-mechanolith",
+    "victory-fanfare",
+    "menu-deliberate",
+    "tong-nou-theme",
+    "tong-nou-esoteric",
+    "transmigration-ending",
+    "ending-theme"
+   ],
+   "mainTrackId": null,
+   "playable": true
+  },
+  {
+   "id": "nosferatu",
+   "name": "NOSFERATU",
+   "description": "The correct Nosferatu (1922) VHS synth score (Nosferatu1922VHS transfer, MoMA 1947 print), cut into 25 standalone tracks (PR #1030, merged 8579c6df). Track bytes are pending the Kaggle GPU cut job; until they land the engine falls back to its procedural loop.",
+   "trackIds": [
+    "nos-t01",
+    "nos-t02",
+    "nos-t03",
+    "nos-t04",
+    "nos-t05",
+    "nos-t06",
+    "nos-t07",
+    "nos-t08",
+    "nos-t09",
+    "nos-t10",
+    "nos-t11",
+    "nos-t12",
+    "nos-t13",
+    "nos-t14",
+    "nos-t15",
+    "nos-t16",
+    "nos-t17",
+    "nos-t18",
+    "nos-t19",
+    "nos-t20",
+    "nos-t21",
+    "nos-t22",
+    "nos-t23",
+    "nos-t24",
+    "nos-t25"
+   ],
+   "mainTrackId": null,
+   "playable": true,
+   "bytesStatus": "pending-cut — see game/data/audio-download-manifest.json"
+  },
+  {
+   "id": "cape-jones",
+   "name": "CAPE JONES",
+   "description": "Cape Jones set: 8 Loyalty Freak Music tracks, all CC0 1.0, vibe surf rock + spooky + witchy + batty + Halloween. Ghost Surf Rock is the MAIN track (user directive 2026-10-24 19:41 CDT, LOCKED): it leads every rotation cycle, the other 7 interchange around it. The Cape Jones arena does not exist yet; the era is selectable now and activates for stage id cape-jones-arena when it lands.",
+   "trackIds": [
+    "cape-jones-ghost-surf-rock",
+    "cape-jones-ghost-waltz",
+    "cape-jones-hello-regan",
+    "cape-jones-dark-alley",
+    "cape-jones-graveyard",
+    "cape-jones-old-witch-place",
+    "cape-jones-witch-magical",
+    "cape-jones-sweat-time"
+   ],
+   "mainTrackId": "cape-jones-ghost-surf-rock",
+   "playable": true,
+   "bytesStatus": "pending-file — MP3s not in repo yet; see game/data/audio-download-manifest.json"
+  },
+  {
+   "id": "tekken-data-only",
+   "name": "TEKKEN DATA ONLY",
+   "description": "5 Tekken 7 library slots (Mishima Dojo Round 1 + Final Round variant, New World Order, Blood Sweat and Fists, Kodama Starship). Data-only: file null, status pending-download. Listed so the Jukebox is honest about what exists; the engine NEVER plays these — resolveEraTrack returns null for this era and music.js excludes status pending-download from every pick.",
+   "trackIds": [
+    "t7-dojo-1st",
+    "t7-dojo-final",
+    "t7-title",
+    "t7-select",
+    "t7-online"
+   ],
+   "mainTrackId": null,
+   "playable": false
+  }
+ ]
+}

@@ -105,7 +105,9 @@ export function ensureRageMoves(fighterId, msApi) {
   // register into the notation slots (works even if _prepare already ran)
   if (ms._slots) { ms._slots[artKey] = artKey; ms._slots[driveKey] = driveKey; }
   else {
-    ms.slots = ms.slots || {};
+    // a slotless moveset keys its moves by notation: seed them, or ai.js / the move list
+    // (which read ms.slots when present) would only see these two moves
+    ms.slots = ms.slots || Object.fromEntries(Object.keys(ms.moves).map(k => [k, k]));
     ms.slots[artKey] = artKey; ms.slots[driveKey] = driveKey;
   }
   return true;
