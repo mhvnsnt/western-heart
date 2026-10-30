@@ -354,6 +354,21 @@ export function canonNotation(n) {
   if (typeof n !== 'string') return n;
   let s = n.trim().replace(/\s*\((?:first|second|third|\d+(?:st|nd|rd|th)) hits? only\)\s*$/i, ''); // T7 per-hit row annotation, same input
   s = s.replace(/[\u200B\u200C\u200D\uFEFF]/g, ''); // scraped-list invisible separators (cyborgx back-to-wall key carries \u200b between steps); they carry no notation meaning
+  /* Trailing spin-count annotations (sweep 2026-10-30, Cyborg X t7 rows): 'WS 1+2*
+     (one spin)' / 'WS 1+2 (two spins)' / '(During Clockwork) 3 (more than a single
+     spin)' carry the spin count as an animation descriptor, not an extra input — the
+     two WS rows stay distinct after stripping via the hold mark ('WS.1+2*' vs
+     'WS.1+2', 14 dmg/-4 vs 16 dmg/0), the same pattern as the JGS spin rule's
+     comment ('the spin count is a repeat of the stance entry, same input') and the
+     trailing-note strips below ('(close)', '(rush)'). This MUST run before the
+     whole-string paren rule below: '(During Clockwork) 3 (more than a single spin)'
+     both starts with '(' and ends with ')', so that rule's greedy capture would eat
+     the outer parens and the during rule would never fire. Without this strip, the
+     final paren rule turns the note into bare words ('WS.1+2* one spin') and
+     parse() rejects the row as 'unparsed'. TRAILING-ONLY: a spin paren mid-string
+     ('CLK(Two spins).3') is a different row from 'CLK.3' (22 dmg/+0 vs 20 dmg/-9)
+     and is left untouched, as are the non-trailing JGS spin rows. */
+  s = s.replace(/\s*\([^()]*\bspins?\b[^()]*\)\s*$/i, '');
   s = s.replace(/^\((.*)\)$/, '$1').trim();
   /* FGC numpad-letter shorthand (moveset sweep 2026-10-29): 'df' / 'db' / 'UF' as a step of the
      input are Tekken's d/f / d/b / U/F ('f,n,d,df' crouch dash, 'f,f,db', 'FLE.db'). Before, the
