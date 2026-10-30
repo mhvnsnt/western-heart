@@ -4037,7 +4037,7 @@ downstream witness/resolution, not canon). Deletions: none.
   king_158 'JGS, N' (stance+neutral, unclear), alisa_186 '(Clockwork Spring Middle) B'
   (phase-entry data not established), and the generic 'Time with enemy attack...' REV
   rows (input field already REV.b+1+3, absent from the r17 failing list).
-## 2026-10-30 — Pantera hit-from-front string gets a canon strip (PR #TBD)
+## 2026-10-30 — Pantera hit-from-front string gets a canon strip (PR #1249)
 - Pantera t7.king_110 'b+2, 4 (only during hit from front)' (Chupacabra to Olympia Slam)
   left the r17 failing list as a parse error: canon stripped the parens to bare words
   ('b+2,4 only during hit from front', via the final paren-to-words rule), so the sweep
