@@ -404,8 +404,9 @@ export function canonNotation(n) {
      condSetup already plays a crouching foe for T3 condition rows — not an n/a, because
      the crouching-foe state exists and is playable, unlike the ground-orientation state
      behind the enemy-on-back n/a. Timing rows ('Time with enemy...') and the wall-stun
-     row ('During enemy wall stun...') are deliberately NOT covered: they need a
-     timed-opponent-attack setup and a wall-stun state respectively, different chunks. */
+     row ('During enemy wall stun...') were deliberately NOT covered here: they needed a
+     timed-opponent-attack setup and a wall-stun state respectively, and each got its own
+     chunk after this one (TIMERP/TIMELK/TIMERK, then WALLSTUN). */
   s = s.replace(/^approach crouching enemy\.\.\.\s*(?=[udfbnUDFB1-4])/i, 'CROUCHFOE.');
   /* Timing throws (sweep 2026-10-30, Pantera t7.king_295-297): Tekken reversal throws,
      pressed while the foe is attacking with the stated limb — 'Time with enemy right
@@ -417,10 +418,21 @@ export function canonNotation(n) {
      playable, and not a canon strip, which would attempt reversal throws against a
      standing, non-attacking foe. Limb-anchored, so the generic 'Time with enemy
      attack...' prose on Cyborg X / Demonio REV rows (which lives only in
-     t7_command/input_note, never in the input field) is untouched, as is the wall-stun
-     row ('During enemy wall stun...'). Button map 1 = left punch, 2 = right punch,
+     t7_command/input_note, never in the input field) is untouched. The wall-stun
+     row ('During enemy wall stun...') is covered by the WALLSTUN rule below, its own
+     chunk. Button map 1 = left punch, 2 = right punch,
      3 = left kick, 4 = right kick, per this file's Tekken input language header. */
   s = s.replace(/^time with enemy (right punch|left kick|right kick)\.\.\.\s*(?=[udfbnUDFB1-4])/i, (m, limb) => ({ 'right punch': 'TIMERP.', 'left kick': 'TIMELK.', 'right kick': 'TIMERK.' })[limb.toLowerCase()]);
+  /* Wall-stun row (sweep 2026-10-30, Pantera t7.king_247): Tekken wall-splat throw,
+     pressed while the foe is stuck to the wall — 'During enemy wall stun... f, hcf+1'
+     (Shining Torpedo) -> 'WALLSTUN.f,hcf+1'. The sweep's setup() plays exactly that
+     situation (foe in the engine's 'wallsplat' state with the WALL_SPLAT_STUN window,
+     close), the way setup('CROUCHFOE') plays a crouching foe and setup('TIMER*') plays
+     an attacking foe — not an n/a, because the wallsplat state exists in fighter.js
+     (entered at the arena wall, 0.55 s stun), and not a canon strip, which would
+     attempt a wall throw against a standing foe. Blast radius: exactly this one row
+     across the core-8 movesets (the rule is anchored to the literal prose prefix). */
+  s = s.replace(/^during enemy wall stun\.\.\.\s*(?=[udfbnUDFB1-4])/i, 'WALLSTUN.');
   /* Running moves (TekkenDocs / wavu wiki 'WR', 'while running'): 'WR+2', 'WR 2', 'while running 2'
      -> 'WR.2'. T3's running rows carry the command '4/6+X' (any horizontal while in the run),
      imported as 'b/f+X' — never a real stick direction — so they are WR rows too (True Ogre / Chatur). */
