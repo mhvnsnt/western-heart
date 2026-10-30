@@ -4099,3 +4099,41 @@ downstream witness/resolution, not canon). Deletions: none.
   entry input is not established, so it stays open and this rule deliberately does
   not touch the space form; king_150 'low*' (data gap); alisa_186 '(Clockwork
   Spring Middle) B' (phase-entry data not established).
+
+## 2026-10-30 — Cyborg X Clockwork back step leaves the failing list as movement (PR #TBD)
+- Cyborg X t7.alisa_186 '(Clockwork Spring Middle) B' left the r17 failing
+  list as a parse error: the final paren-to-words rule turned the move name
+  into bare words ('Clockwork Spring Middle B'), which the sweep parse()
+  rejects. The honest treatment is the sweep's own movement class, not a
+  pass and not a new setup: Tekken's B is a held-back direction, not a
+  button (buttons are 1-4), and the row carries no attack to witness
+  (t7 damage 0, hit level '-').
+- game/js/movesets.js: one narrow rule, placed before the final paren rule,
+  mapping the literal phrase '(Clockwork Spring Middle)' to the CLOCKWORK.
+  prefix, so the row canonicalises to 'CLOCKWORK.B'. The prefix is the one
+  the t7 Clockwork rows already use ('(During Clockwork) 3' ->
+  'CLOCKWORK.3'), 'Clockwork Spring Middle' is the name of the CLOCKWORK.3
+  row in this same moveset, and the row is the t7-dataset twin of the
+  existing 'CLK.B' Clockwork Cancel row. Blast radius across the fresh-main
+  core-8 movesets (keys, inputs, input_slots) is exactly this one row.
+- Proof: new test/clockwork-back.test.mjs (canon mapping, the real sweep
+  page parse() reconstructed from test/e2e/moveset-sweep.page.js proving
+  'CLOCKWORK.B' is motion-only with pre CLOCKWORK, guards proving
+  neighbouring Clockwork forms and the DFLIP exclusion below are
+  unchanged). Local: new test 3/3 against the exact edited files, fails on
+  unedited files (not vacuous), and 12 neighbouring canon tests pass
+  against the edited files. CI game-unit-tests on the PR head is the
+  proof record.
+- Residual, stated plainly: mechanism proof (canon + parse), not a witnessed
+  full-fight pass — the next sweep reports alisa_186 as movement, and what
+  holding back during Spring Middle actually does in play
+  (cancel/transition) and entering Clockwork itself are not witnessed by
+  this chunk. This supersedes the #1250 entry's open note on alisa_186
+  only as a failing-list classification: phase-entry data for the row is
+  still not established, which is why the row is movement rather than a
+  witnessed entry. NOT in this chunk: Dio's 'DFLIP N' (space form,
+  Hyakkigozan, 23 dmg / low / KND) is a real strike whose entry input is
+  not established, so it stays open and this rule deliberately touches
+  only the literal Clockwork Spring Middle phrase; king_150 'low*' (data
+  gap); CLK(Two spins).3 (a different row from CLK.3, 22 dmg/+0 vs
+  20 dmg/-9, deliberately untouched).
