@@ -14,10 +14,12 @@
 // setup + parse path), not a witnessed full-fight pass — the next sweep attempts
 // these rows against an attacking foe, and whether each fires and connects there, and
 // whether the engine resolves the reversal catch at all, is what that sweep reports.
-// king_110, king_150, king_158, king_186 are deliberately NOT covered: different
-// chunks. The wall-stun row t7.king_247 is now covered by the wall-stun chunk
-// (WALLSTUN. canon + sweep setup); the guard test below was updated in that chunk
-// to assert the new mapping.
+// king_150, king_158, king_186 are deliberately NOT covered: different chunks.
+// The wall-stun row t7.king_247 is now covered by the wall-stun chunk (WALLSTUN.
+// canon + sweep setup); the guard test below was updated in that chunk to assert
+// the new mapping. The hit-from-front row t7.king_110 is now covered by the
+// hit-from-front chunk (trailing-condition canon strip to 'b+2,4'); the
+// approach-crouch guard test was updated in that chunk to assert the new mapping.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';

@@ -353,6 +353,7 @@ const sepOrder = (ctx) => (ctx && ctx.attackT != null && ctx.attackT <= TILDE_WI
 export function canonNotation(n) {
   if (typeof n !== 'string') return n;
   let s = n.trim().replace(/\s*\((?:first|second|third|\d+(?:st|nd|rd|th)) hits? only\)\s*$/i, ''); // T7 per-hit row annotation, same input
+  s = s.replace(/\s*\(only during hit from front\)\s*$/i, ''); // T7 hit-condition annotation (sweep 2026-10-30, Pantera t7.king_110 'b+2, 4 (only during hit from front)'): the 4 follow-up fires only when b+2 hits the foe from the front — and the sweep's default setup IS front-facing (foe standing facing the attacker), so the bare input 'b+2,4' is the stated situation, not a strip that changes the input. TRAILING-ONLY, anchored to the literal phrase, and placed here before the final paren-to-words rule below, which would otherwise turn the note into bare words parse() rejects.
   s = s.replace(/[\u200B\u200C\u200D\uFEFF]/g, ''); // scraped-list invisible separators (cyborgx back-to-wall key carries \u200b between steps); they carry no notation meaning
   /* Trailing spin-count annotations (sweep 2026-10-30, Cyborg X t7 rows): 'WS 1+2*
      (one spin)' / 'WS 1+2 (two spins)' / '(During Clockwork) 3 (more than a single

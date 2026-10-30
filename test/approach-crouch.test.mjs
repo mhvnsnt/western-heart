@@ -51,10 +51,10 @@ test('sweep plays the prefix setup before pressing the row', () => {
   assert.ok(setupCall !== -1 && pressCall !== -1 && setupCall < pressCall, 'prefix setup must run before the press inside sweepOnce');
 });
 
-test('guards: wall-stun prose now maps to WALLSTUN. (wall-stun chunk); timing prose maps to TIMERP/TIMELK (timing-attack chunk)', () => {
+test('guards: wall-stun prose now maps to WALLSTUN. (wall-stun chunk); timing prose maps to TIMERP/TIMELK (timing-attack chunk); hit-from-front prose now maps to the bare string (hit-from-front chunk)', () => {
   assert.equal(canonNotation('Time with enemy right punch... b+1+3'), 'TIMERP.b+1+3');
   assert.equal(canonNotation('Time with enemy left kick... b+2+4'), 'TIMELK.b+2+4');
   assert.equal(canonNotation('During enemy wall stun... f, hcf+1'), 'WALLSTUN.f,hcf+1');
-  assert.equal(canonNotation('b+2, 4 (only during hit from front)'), 'b+2,4 only during hit from front');
+  assert.equal(canonNotation('b+2, 4 (only during hit from front)'), 'b+2,4');
   assert.equal(canonNotation('CROUCHFOE.d+1+3'), 'CROUCHFOE.d+1+3');
 });
