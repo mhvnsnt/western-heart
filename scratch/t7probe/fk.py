@@ -24,6 +24,7 @@ ORDER = ['MODEL_00', 'BODY_SCALE__group', 'BASE', 'Spine1', 'Spine2', 'Neck', 'H
          'R_ForeArm', 'R_Hand', 'L_Shoulder', 'L_Arm', 'L_ForeArm', 'L_Hand', 'Hip', 'R_UpLeg', 'R_Leg', 'R_Foot',
          'L_UpLeg', 'L_Leg', 'L_Foot']
 BIND = {b: qmat(SK[b]['r']) for b in ORDER}
+NOBASE = '--nobase' in sys.argv
 T = {b: np.array(SK[b]['t'], float) for b in ORDER}
 
 def euler(order, e, signs=(1, 1, 1)):
@@ -41,10 +42,7 @@ def fk(frame, mode, order, signs=(1, 1, 1)):
         R_local = BIND[b]
         if b in BONE_SLOT:
             s = BONE_SLOT[b]; e = frame[3*s:3*s+3]
-            if b == 'BASE' and mode != 'none':
-                Re = euler(order, e, signs)
-            else:
-                Re = euler(order, e, signs)
+            Re = np.eye(3) if (b == 'BASE' and NOBASE) else euler(order, e, signs)
             if mode == 'bind*R': R_local = BIND[b] @ Re
             elif mode == 'R*bind': R_local = Re @ BIND[b]
             elif mode == 'R': R_local = Re
@@ -61,7 +59,7 @@ def score(pos):
     y = lambda b: pos[b][1]
     bad = 0.0
     feet = [y('R_Foot'), y('L_Foot')]
-    lowest = min(y(b) for b in pos if b not in ('MODEL_00',))
+    lowest = min(y(b) for b in pos if b not in ('MODEL_00', 'BODY_SCALE__group'))
     bad += max(0, min(feet) - lowest - 0.05)             # a foot should be the lowest point
     bad += max(0, y('Hip') - y('Head'))                  # head above hip
     bad += max(0, y('R_Leg') - y('Hip') + 0.1) + max(0, y('L_Leg') - y('Hip') + 0.1)  # knees below hips
