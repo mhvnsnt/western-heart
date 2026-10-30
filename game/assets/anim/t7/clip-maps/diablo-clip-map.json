@@ -1,0 +1,5646 @@
+{
+ "schema": "wh-t7-clip-map/1",
+ "fighter": "diablo",
+ "base_code": "hei",
+ "sources": {
+  "mapping": "worker-b/diablo-mapping.json",
+  "char_index": "clips-all/hei_index.json",
+  "common_index": "clips-all/common_index.json"
+ },
+ "stats": {
+  "mapped_clip_resolved": 39,
+  "mapped_bank0_noclip": 8,
+  "unmapped": 33
+ },
+ "moves": [
+  {
+   "wh_key": "b+2__main",
+   "wh_name": "Rashomon",
+   "wh_input": "b+2",
+   "t7_id": "heihachi_97",
+   "t7_notation": "b+2",
+   "status": "mapped",
+   "motbin_move_id": 1627,
+   "motbin_move_name": "He_rp00B",
+   "anim_name": "hess_urahara(DVD)",
+   "anim_id": 16737,
+   "bank_index": 353,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation b+2"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 22,
+   "motbin_damage": 20,
+   "mvl_row": 35,
+   "mvl_name": "Rashomon",
+   "mvl_notation": "b+2",
+   "motbin_candidates": [
+    {
+     "id": 1578,
+     "name": "He_SHINJYUKU",
+     "anim": "nkhe_o_rp01psxb2(DVD)",
+     "anim_id": 16698
+    },
+    {
+     "id": 1627,
+     "name": "He_rp00B",
+     "anim": "hess_urahara(DVD)",
+     "anim_id": 16737
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 353,
+    "rel_offset": 2734860,
+    "size": 4416,
+    "format_word": 100,
+    "sha256": "923bb32a9422f3d010c935b1ba55702a748faae140233ca2427d36e84e221160",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "d+1__main",
+   "wh_name": "Hammer Punch",
+   "wh_input": "d+1",
+   "t7_id": "heihachi_82",
+   "t7_notation": "d+1",
+   "status": "mapped",
+   "motbin_move_id": 1684,
+   "motbin_move_name": "He_kawara",
+   "anim_name": "hess_s4_2lp16",
+   "anim_id": 115,
+   "bank_index": 115,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation d+1"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x0",
+   "motbin_startup": 16,
+   "motbin_damage": 16,
+   "mvl_row": 26,
+   "mvl_name": "Hammer Punch",
+   "mvl_notation": "d+1",
+   "motbin_candidates": [
+    {
+     "id": 1684,
+     "name": "He_kawara",
+     "anim": "hess_s4_2lp16",
+     "anim_id": 115
+    }
+   ],
+   "clip": {
+    "status": "bank0-file-not-located",
+    "bank": "0x0000",
+    "entry": 115
+   }
+  },
+  {
+   "wh_key": "f+3__main",
+   "wh_name": "Lightning Crush",
+   "wh_input": "f+3",
+   "t7_id": "heihachi_47",
+   "t7_notation": "f+3",
+   "status": "mapped",
+   "motbin_move_id": 1609,
+   "motbin_move_name": "He_lk00F",
+   "anim_name": "kohe_lhiza(DVD)",
+   "anim_id": 16721,
+   "bank_index": 337,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation f+3"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 18,
+   "motbin_damage": 20,
+   "mvl_row": 16,
+   "mvl_name": "Lightning Crush",
+   "mvl_notation": "f+3",
+   "motbin_candidates": [
+    {
+     "id": 1609,
+     "name": "He_lk00F",
+     "anim": "kohe_lhiza(DVD)",
+     "anim_id": 16721
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 337,
+    "rel_offset": 2697192,
+    "size": 3348,
+    "format_word": 100,
+    "sha256": "a5b321a5868b6e751ca03a49707f7e8d1fe293b97c46cb4680b3b7c7125b7ad9",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "b+1+2__main",
+   "wh_name": "Heaven's Merciless Wrath",
+   "wh_input": "b+1+2",
+   "t7_id": "heihachi_102",
+   "t7_notation": "b+1+2",
+   "status": "mapped",
+   "motbin_move_id": 1630,
+   "motbin_move_name": "He_yamazuki",
+   "anim_name": "hekb_s3_yamazuki",
+   "anim_id": 103,
+   "bank_index": 103,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x0",
+   "motbin_startup": 17,
+   "motbin_damage": 18,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1630,
+     "name": "He_yamazuki",
+     "anim": "hekb_s3_yamazuki",
+     "anim_id": 103
+    },
+    {
+     "id": 1636,
+     "name": "He_44LRP",
+     "anim": "hess_s3_44wp",
+     "anim_id": 104
+    }
+   ],
+   "clip": {
+    "status": "bank0-file-not-located",
+    "bank": "0x0000",
+    "entry": 103
+   }
+  },
+  {
+   "wh_key": "d+1+4__main",
+   "wh_name": "Lightning Hammer",
+   "wh_input": "d+1+4",
+   "t7_id": "heihachi_163",
+   "t7_notation": "d+1+4",
+   "status": "mapped",
+   "motbin_move_id": 1769,
+   "motbin_move_name": "He_ohgawara",
+   "anim_name": "Ehe_PSgawara(DVD)",
+   "anim_id": 16855,
+   "bank_index": 471,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 1 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation d+1+4"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 60,
+   "motbin_damage": 50,
+   "mvl_row": 29,
+   "mvl_name": "Lightning Hammer",
+   "mvl_notation": "d+1+4",
+   "motbin_candidates": [
+    {
+     "id": 1769,
+     "name": "He_ohgawara",
+     "anim": "Ehe_PSgawara(DVD)",
+     "anim_id": 16855
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 471,
+    "rel_offset": 2954532,
+    "size": 4940,
+    "format_word": 100,
+    "sha256": "6c27f21682b7f7930d4fa34af655c94f5ddabf52e32342f12c6ea9b92b1d0cd9",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "f+1+2__main",
+   "wh_name": "Chrome Dome",
+   "wh_input": "f+1+2",
+   "t7_id": "heihachi_49",
+   "t7_notation": "f+1+2",
+   "status": "mapped",
+   "motbin_move_id": 1607,
+   "motbin_move_name": "He_zutuki",
+   "anim_name": "hess_hdbt(DVD)",
+   "anim_id": 16720,
+   "bank_index": 336,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation f+1+2"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 12,
+   "motbin_damage": 15,
+   "mvl_row": 18,
+   "mvl_name": "Chrome Dome",
+   "mvl_notation": "f+1+2",
+   "motbin_candidates": [
+    {
+     "id": 1607,
+     "name": "He_zutuki",
+     "anim": "hess_hdbt(DVD)",
+     "anim_id": 16720
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 336,
+    "rel_offset": 2693612,
+    "size": 3580,
+    "format_word": 100,
+    "sha256": "1628994cfed15eed41eee1bc4e3198c37aa1302ce9eeee2ad2054c0ab259ddeb",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "d+1,2__main",
+   "wh_name": "Hammer Beating",
+   "wh_input": "d+1,2",
+   "t7_id": "heihachi_84",
+   "t7_notation": "d+1, 2",
+   "status": "mapped",
+   "motbin_move_id": 1685,
+   "motbin_move_name": "He_2lprp",
+   "anim_name": "hekb_2lprp_75(DVD)",
+   "anim_id": 16779,
+   "bank_index": 395,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation d+1,2"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 27,
+   "motbin_damage": 17,
+   "mvl_row": 27,
+   "mvl_name": "Hammer Beating",
+   "mvl_notation": "d+1,2",
+   "motbin_candidates": [
+    {
+     "id": 1685,
+     "name": "He_2lprp",
+     "anim": "hekb_2lprp_75(DVD)",
+     "anim_id": 16779
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 395,
+    "rel_offset": 2823800,
+    "size": 5196,
+    "format_word": 100,
+    "sha256": "48300a571708c0b6c97accee1eea71bf6605da3299b0232e37e1fecb643999bd",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "1,1",
+   "wh_name": "Jab (1)",
+   "wh_input": "1,1",
+   "t7_id": "heihachi_3",
+   "t7_notation": "1, 1",
+   "status": "mapped",
+   "motbin_move_id": 1570,
+   "motbin_move_name": "He_lpf",
+   "anim_name": "m_rpf(DVD)",
+   "anim_id": 16690,
+   "bank_index": 306,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 15,
+   "motbin_damage": 6,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1570,
+     "name": "He_lpf",
+     "anim": "m_rpf(DVD)",
+     "anim_id": 16690
+    },
+    {
+     "id": 1590,
+     "name": "He_Gosyouha",
+     "anim": "kohe_ahohsog(DVD)",
+     "anim_id": 16708
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 306,
+    "rel_offset": 2621792,
+    "size": 2008,
+    "format_word": 100,
+    "sha256": "d6daf4bdaaef72bc63e6cccecc52e23f583d32c4b47dccd036c9c85504c269c5",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "1,1,2",
+   "wh_name": "Flash Punch Combo",
+   "wh_input": "1,1,2",
+   "t7_id": "heihachi_5",
+   "t7_notation": "1, 1, 2",
+   "status": "mapped",
+   "motbin_move_id": 1571,
+   "motbin_move_name": "He_rp1",
+   "anim_name": "kohe_lplprp(DVD)",
+   "anim_id": 16691,
+   "bank_index": 307,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: 2 attack-class terminals at tier 0, all share anim_id 16691 (clip-unambiguous); first listed as representative"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 13,
+   "motbin_damage": 12,
+   "mvl_row": 3,
+   "mvl_name": "Flash Punch Combo",
+   "mvl_notation": "1,1,2",
+   "motbin_candidates": [
+    {
+     "id": 1571,
+     "name": "He_rp1",
+     "anim": "kohe_lplprp(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1640,
+     "name": "He_rk00B",
+     "anim": "kohe_qrk(DVD)",
+     "anim_id": 16745
+    },
+    {
+     "id": 2278,
+     "name": "He_rp1_7CS",
+     "anim": "kohe_lplprp(DVD)",
+     "anim_id": 16691
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 307,
+    "rel_offset": 2623800,
+    "size": 2896,
+    "format_word": 100,
+    "sha256": "52a5d70fb337585401132d7217b29e1ef77ed4d820b81c890977665653a94d84",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "1+2_t8",
+   "wh_name": "Demon Breath",
+   "wh_input": "1+2",
+   "t7_id": "heihachi_38",
+   "t7_notation": "1+2",
+   "status": "mapped",
+   "motbin_move_id": 1590,
+   "motbin_move_name": "He_Gosyouha",
+   "anim_name": "kohe_ahohsog(DVD)",
+   "anim_id": 16708,
+   "bank_index": 324,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: 2 terminals at tier 0 with distinct anims; unique top combined score 5: chain rooted at dispatcher/movement move He_sKAM00_; GROUP-rooted chain"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 12,
+   "motbin_damage": 25,
+   "mvl_row": 13,
+   "mvl_name": "Demon Breath",
+   "mvl_notation": "1+2",
+   "motbin_candidates": [
+    {
+     "id": 62,
+     "name": "Co_runchop",
+     "anim": "Bco_PSrunchop(DVD)",
+     "anim_id": 32817
+    },
+    {
+     "id": 186,
+     "name": "Co_Fcross",
+     "anim": "Mco_fc02xg(DVD)",
+     "anim_id": 33062
+    },
+    {
+     "id": 187,
+     "name": "Co_Bcross",
+     "anim": "Mco_fcs(DVD)",
+     "anim_id": 33063
+    },
+    {
+     "id": 1498,
+     "name": "Co_jplp00",
+     "anim": "Bco_sjplp_n(DVD)",
+     "anim_id": 16628
+    },
+    {
+     "id": 1499,
+     "name": "Co_jplp00F",
+     "anim": "Bco_sjplp_n(DVD)",
+     "anim_id": 16628
+    },
+    {
+     "id": 1500,
+     "name": "Co_jplp00B",
+     "anim": "Bco_sjplp_n(DVD)",
+     "anim_id": 16628
+    },
+    {
+     "id": 1579,
+     "name": "He_SHINJYUKU_y",
+     "anim": "nkhe_o_rp01psxb2(DVD)",
+     "anim_id": 16698
+    },
+    {
+     "id": 1590,
+     "name": "He_Gosyouha",
+     "anim": "kohe_ahohsog(DVD)",
+     "anim_id": 16708
+    },
+    {
+     "id": 1623,
+     "name": "He_WK00F_Genkotu",
+     "anim": "kohe_fer2genko(DVD)",
+     "anim_id": 16733
+    },
+    {
+     "id": 1628,
+     "name": "He_rp00BEX_y",
+     "anim": "hess_urahara(DVD)",
+     "anim_id": 16737
+    },
+    {
+     "id": 1635,
+     "name": "He_yamaChop",
+     "anim": "ozhe_wtyop(DVD)",
+     "anim_id": 16741
+    },
+    {
+     "id": 1641,
+     "name": "He_s_tlp00",
+     "anim": "hess_s4_stlp13",
+     "anim_id": 108
+    },
+    {
+     "id": 1646,
+     "name": "He_s_tlkwp",
+     "anim": "hekb_s3_stlkwp",
+     "anim_id": 111
+    },
+    {
+     "id": 1667,
+     "name": "He_m_p02",
+     "anim": "he_up02xk(DVD)",
+     "anim_id": 16763
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 324,
+    "rel_offset": 2661244,
+    "size": 2800,
+    "format_word": 100,
+    "sha256": "b0b3db234c3693f83ab8761c655823992830dfa4e0e3ec873157a2a3b44eb502",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "1,2",
+   "wh_name": "One Two Strike",
+   "wh_input": "1,2",
+   "t7_id": "heihachi_8",
+   "t7_notation": "1, 2",
+   "status": "mapped",
+   "motbin_move_id": 1572,
+   "motbin_move_name": "He_lprpF",
+   "anim_name": "rplp2f(DVD)",
+   "anim_id": 16692,
+   "bank_index": 308,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 10,
+   "motbin_damage": 8,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1571,
+     "name": "He_rp1",
+     "anim": "kohe_lplprp(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1572,
+     "name": "He_lprpF",
+     "anim": "rplp2f(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1640,
+     "name": "He_rk00B",
+     "anim": "kohe_qrk(DVD)",
+     "anim_id": 16745
+    },
+    {
+     "id": 2278,
+     "name": "He_rp1_7CS",
+     "anim": "kohe_lplprp(DVD)",
+     "anim_id": 16691
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 308,
+    "rel_offset": 2626696,
+    "size": 1972,
+    "format_word": 100,
+    "sha256": "baf340e690301094e0f124f6dcc125f326fa3f22308cacfdf462113d0f16d3dd",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "1,2,2",
+   "wh_name": "Back Fist Combo",
+   "wh_input": "1,2,2",
+   "t7_id": "heihachi_10",
+   "t7_notation": "1, 2, 2",
+   "status": "mapped",
+   "motbin_move_id": 1573,
+   "motbin_move_name": "He_rprp01",
+   "anim_name": "Ckz_PSlplp01(DVD)",
+   "anim_id": 16693,
+   "bank_index": 309,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 17,
+   "motbin_damage": 12,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1573,
+     "name": "He_rprp01",
+     "anim": "Ckz_PSlplp01(DVD)",
+     "anim_id": 16693
+    },
+    {
+     "id": 1640,
+     "name": "He_rk00B",
+     "anim": "kohe_qrk(DVD)",
+     "anim_id": 16745
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 309,
+    "rel_offset": 2628668,
+    "size": 3024,
+    "format_word": 100,
+    "sha256": "e5159ef253b6cbc5de0c1228d2e08a653a7b17b381c6af5325d7cbc5e76b6d5b",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "1+2+3+4",
+   "wh_name": "Ki Charge",
+   "wh_input": "1+2+3+4",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 2171,
+   "motbin_move_name": "He_SUPER_0",
+   "anim_name": "K_charge01(DVD)",
+   "anim_id": 32952,
+   "bank_index": 184,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH input (no t7_notation in WH data)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x8000",
+   "motbin_startup": null,
+   "motbin_damage": 0,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 680,
+     "name": "Mo_SUPER_0",
+     "anim": "yomk_it_kiai(DVD)",
+     "anim_id": 33469
+    },
+    {
+     "id": 1817,
+     "name": "He_hp2Esc_y",
+     "anim": "Kco_y_snap40(DVD)",
+     "anim_id": 33487
+    },
+    {
+     "id": 1822,
+     "name": "He_hp3Esc_y",
+     "anim": "Kco_y_snap40(DVD)",
+     "anim_id": 33487
+    },
+    {
+     "id": 2171,
+     "name": "He_SUPER_0",
+     "anim": "K_charge01(DVD)",
+     "anim_id": 32952
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x8000",
+    "source": "common.arc",
+    "section": 0,
+    "entry": 184,
+    "rel_offset": 839824,
+    "size": 2620,
+    "format_word": 100,
+    "sha256": "fe496f3ffcba9db1fe26c85a74f3d001f780b82c8039deace2d3c95d8994a0f1",
+    "blob_file": "common_clips.bin"
+   }
+  },
+  {
+   "wh_key": "1,2,4",
+   "wh_name": "Wailing Demon Otoko Geri",
+   "wh_input": "1,2,4",
+   "t7_id": "heihachi_17",
+   "t7_notation": "1, 2, 4",
+   "status": "mapped",
+   "motbin_move_id": 1576,
+   "motbin_move_name": "He_lprpFrk",
+   "anim_name": "rplp2f(DVD)",
+   "anim_id": 16692,
+   "bank_index": 308,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 10,
+   "motbin_damage": 8,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1576,
+     "name": "He_lprpFrk",
+     "anim": "rplp2f(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1673,
+     "name": "He_s_lprk",
+     "anim": "ozhe_1ckj66a(DVD)",
+     "anim_id": 16769
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 308,
+    "rel_offset": 2626696,
+    "size": 1972,
+    "format_word": 100,
+    "sha256": "baf340e690301094e0f124f6dcc125f326fa3f22308cacfdf462113d0f16d3dd",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "1,2,4*",
+   "wh_name": "Wailing Demon Otoko Geri (charged)",
+   "wh_input": "1,2,4*",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1576,
+   "motbin_move_name": "He_lprpFrk",
+   "anim_name": "rplp2f(DVD)",
+   "anim_id": 16692,
+   "bank_index": 308,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH input (no t7_notation in WH data)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 10,
+   "motbin_damage": 8,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1576,
+     "name": "He_lprpFrk",
+     "anim": "rplp2f(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1673,
+     "name": "He_s_lprk",
+     "anim": "ozhe_1ckj66a(DVD)",
+     "anim_id": 16769
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 308,
+    "rel_offset": 2626696,
+    "size": 1972,
+    "format_word": 100,
+    "sha256": "baf340e690301094e0f124f6dcc125f326fa3f22308cacfdf462113d0f16d3dd",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "1,b+2",
+   "wh_name": "Jab (b+2)",
+   "wh_input": "1,b+2",
+   "t7_id": "heihachi_20",
+   "t7_notation": "1, b+2",
+   "status": "mapped",
+   "motbin_move_id": 1578,
+   "motbin_move_name": "He_SHINJYUKU",
+   "anim_name": "nkhe_o_rp01psxb2(DVD)",
+   "anim_id": 16698,
+   "bank_index": 314,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 22,
+   "motbin_damage": 21,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1578,
+     "name": "He_SHINJYUKU",
+     "anim": "nkhe_o_rp01psxb2(DVD)",
+     "anim_id": 16698
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 314,
+    "rel_offset": 2637620,
+    "size": 2952,
+    "format_word": 100,
+    "sha256": "3863f409240558748055b71b633ce5b05af911d984a6675b54cda60b3bbab76f",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "1,b+2,1",
+   "wh_name": "Demon Massacre",
+   "wh_input": "1,b+2,1",
+   "t7_id": "heihachi_22",
+   "t7_notation": "1, b+2, 1",
+   "status": "mapped",
+   "motbin_move_id": 1580,
+   "motbin_move_name": "He_lp4rplp",
+   "anim_name": "yohe_o_lpdsrpxb(DVD)",
+   "anim_id": 16699,
+   "bank_index": 315,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation 1,b+2,1"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 35,
+   "motbin_damage": 20,
+   "mvl_row": 7,
+   "mvl_name": "Demon Massacre",
+   "mvl_notation": "1,b+2,1",
+   "motbin_candidates": [
+    {
+     "id": 1580,
+     "name": "He_lp4rplp",
+     "anim": "yohe_o_lpdsrpxb(DVD)",
+     "anim_id": 16699
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 315,
+    "rel_offset": 2640572,
+    "size": 4072,
+    "format_word": 100,
+    "sha256": "bc120aabed19f91aee5683cd5162f33ffcee2d9d39b634557556432ffdc5fa09",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "1,b+2,4",
+   "wh_name": "Demon Lair",
+   "wh_input": "1,b+2,4",
+   "t7_id": "heihachi_25",
+   "t7_notation": "1, b+2, 4",
+   "status": "mapped",
+   "motbin_move_id": 1581,
+   "motbin_move_name": "He_SHINJYUK3",
+   "anim_name": "o_lpsjklxb2(DVD)",
+   "anim_id": 16700,
+   "bank_index": 316,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation 1,b+2,4"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 39,
+   "motbin_damage": 30,
+   "mvl_row": 8,
+   "mvl_name": "Demon Lair",
+   "mvl_notation": "1,b+2,4",
+   "motbin_candidates": [
+    {
+     "id": 1581,
+     "name": "He_SHINJYUK3",
+     "anim": "o_lpsjklxb2(DVD)",
+     "anim_id": 16700
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 316,
+    "rel_offset": 2644644,
+    "size": 4236,
+    "format_word": 100,
+    "sha256": "4d96483937ffd14a8961c6a7cdb2e870774e40c23f67cd4456b81de7fdabd988",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "2,2",
+   "wh_name": "Dogenkotsu",
+   "wh_input": "2,2",
+   "t7_id": "heihachi_29",
+   "t7_notation": "2, 2",
+   "status": "mapped",
+   "motbin_move_id": 1583,
+   "motbin_move_name": "He_rprp00",
+   "anim_name": "Ckz_PSlplp01(DVD)",
+   "anim_id": 16693,
+   "bank_index": 309,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 17,
+   "motbin_damage": 18,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1573,
+     "name": "He_rprp01",
+     "anim": "Ckz_PSlplp01(DVD)",
+     "anim_id": 16693
+    },
+    {
+     "id": 1583,
+     "name": "He_rprp00",
+     "anim": "Ckz_PSlplp01(DVD)",
+     "anim_id": 16693
+    },
+    {
+     "id": 1640,
+     "name": "He_rk00B",
+     "anim": "kohe_qrk(DVD)",
+     "anim_id": 16745
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 309,
+    "rel_offset": 2628668,
+    "size": 3024,
+    "format_word": 100,
+    "sha256": "e5159ef253b6cbc5de0c1228d2e08a653a7b17b381c6af5325d7cbc5e76b6d5b",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "2+3+4",
+   "wh_name": "Auger",
+   "wh_input": "2+3+4",
+   "t7_id": "heihachi_182",
+   "t7_notation": "2+3+4",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "MVL row matched (MVL name+notation exact) but no attack-class motbin terminal found via cancel graph for notation '2+3+4' \u2014 graph gap (requirement-gated entry not decoded)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": 63,
+   "mvl_name": "Auger",
+   "mvl_notation": "2+3+4",
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "4*",
+   "wh_name": "Otoko Geri (charged)",
+   "wh_input": "4*",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "motbin graph candidate exists but no MVL corroboration and/or non-unique \u2014 held as unmapped per no-guess rule",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 115,
+     "name": "Co_AOzenKiD",
+     "anim": "Mco_aozen(DVD)",
+     "anim_id": 32990
+    },
+    {
+     "id": 118,
+     "name": "Co_UTzenKiD",
+     "anim": "Mco_utzen(DVD)",
+     "anim_id": 32993
+    },
+    {
+     "id": 131,
+     "name": "Co_AOkouKiD",
+     "anim": "Mco_aokou(DVD)",
+     "anim_id": 33006
+    },
+    {
+     "id": 134,
+     "name": "Co_UTkouKiD",
+     "anim": "Mco_utkou(DVD)",
+     "anim_id": 33009
+    },
+    {
+     "id": 192,
+     "name": "Co_Uokirk00",
+     "anim": "msco_utsoki(DVD)",
+     "anim_id": 16399
+    },
+    {
+     "id": 200,
+     "name": "Co_UokirkR0",
+     "anim": "msco_utsoki(DVD)",
+     "anim_id": 16399
+    },
+    {
+     "id": 571,
+     "name": "___________",
+     "anim": "nab6_guard(DVD)",
+     "anim_id": 33363
+    },
+    {
+     "id": 1615,
+     "name": "He_WK00F",
+     "anim": "kohe_fer(DVD)",
+     "anim_id": 16725
+    }
+   ]
+  },
+  {
+   "wh_key": "4~3",
+   "wh_name": "Demon Scissors",
+   "wh_input": "4~3",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1659,
+   "motbin_move_name": "Co_syalk00",
+   "anim_name": "new_syrk(DVD)",
+   "anim_id": 32863,
+   "bank_index": 95,
+   "evidence": [
+    "MVL name+notation exact (variant: '~' slide step read as two successive inputs)",
+    "motbin cancel-graph: 3 terminals at tier 0 with distinct anims; unique top combined score 5: chain rooted at dispatcher/movement move sJUMP_00_SF; GROUP-rooted chain",
+    "notation variant used: '~' slide step read as combined input"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x8000",
+   "motbin_startup": 16,
+   "motbin_damage": 12,
+   "mvl_row": 12,
+   "mvl_name": "Demon Scissors",
+   "mvl_notation": "4,3",
+   "motbin_candidates": [
+    {
+     "id": 168,
+     "name": "Co_Aokilk00",
+     "anim": "naco_aolowk1(DVD)",
+     "anim_id": 33044
+    },
+    {
+     "id": 170,
+     "name": "Co_AokilkL0",
+     "anim": "naco_aotlk1(DVD)",
+     "anim_id": 33046
+    },
+    {
+     "id": 172,
+     "name": "Co_ADwSlk00",
+     "anim": "Mco_aolok2(DVD)",
+     "anim_id": 33048
+    },
+    {
+     "id": 174,
+     "name": "Co_ADwSlkR0",
+     "anim": "Mco_aoTlk3(DVD)",
+     "anim_id": 33050
+    },
+    {
+     "id": 175,
+     "name": "Co_ADwSlkR1",
+     "anim": "Mco_aoTlk4(DVD)",
+     "anim_id": 33051
+    },
+    {
+     "id": 178,
+     "name": "Co_FRollk00",
+     "anim": "naco_Flk1(DVD)",
+     "anim_id": 33054
+    },
+    {
+     "id": 180,
+     "name": "Co_FRollkL0",
+     "anim": "naco_FTlk1(DVD)",
+     "anim_id": 33056
+    },
+    {
+     "id": 182,
+     "name": "Co_BRollk00",
+     "anim": "naco_Blk1(DVD)",
+     "anim_id": 33058
+    },
+    {
+     "id": 184,
+     "name": "Co_BRollkL0",
+     "anim": "naco_BTlk1(DVD)",
+     "anim_id": 33060
+    },
+    {
+     "id": 188,
+     "name": "Co_Rol_lrk",
+     "anim": "Mco_grshoper(DVD)",
+     "anim_id": 16400
+    },
+    {
+     "id": 191,
+     "name": "Co_Uokilk01",
+     "anim": "naco_utlk1(DVD)",
+     "anim_id": 33065
+    },
+    {
+     "id": 195,
+     "name": "Co_UokilkR1",
+     "anim": "coyt_ut_okigeri_l(DVD)",
+     "anim_id": 33067
+    },
+    {
+     "id": 1520,
+     "name": "Co_jplk00",
+     "anim": "sjprki10(DVD)",
+     "anim_id": 16650
+    },
+    {
+     "id": 1521,
+     "name": "Co_jplk00B",
+     "anim": "sjprki10(DVD)",
+     "anim_id": 16650
+    },
+    {
+     "id": 1522,
+     "name": "Co_jpRlk00",
+     "anim": "Bco_sjpk_r(DVD)",
+     "anim_id": 16652
+    },
+    {
+     "id": 1523,
+     "name": "Co_jpRlk00F",
+     "anim": "Bco_sjpk_r(DVD)",
+     "anim_id": 16652
+    },
+    {
+     "id": 1524,
+     "name": "Co_jpRlk00B",
+     "anim": "Bco_sjpk_r(DVD)",
+     "anim_id": 16652
+    },
+    {
+     "id": 1525,
+     "name": "Co_jplk01",
+     "anim": "Bco_jplk01n(DVD)",
+     "anim_id": 16655
+    },
+    {
+     "id": 1526,
+     "name": "Co_jplk01F",
+     "anim": "Bco_jplk01n(DVD)",
+     "anim_id": 16655
+    },
+    {
+     "id": 1527,
+     "name": "Co_jplk01B",
+     "anim": "Bco_jplk01n(DVD)",
+     "anim_id": 16655
+    },
+    {
+     "id": 1528,
+     "name": "Co_jplk02",
+     "anim": "Bco_jplk02n(DVD)",
+     "anim_id": 16658
+    },
+    {
+     "id": 1529,
+     "name": "Co_jplk02F",
+     "anim": "Bco_jplk02n(DVD)",
+     "anim_id": 16658
+    },
+    {
+     "id": 1530,
+     "name": "Co_jplk02B",
+     "anim": "Bco_jplk02n(DVD)",
+     "anim_id": 16658
+    },
+    {
+     "id": 1531,
+     "name": "Co_jplk04",
+     "anim": "Bco_jplk04n(DVD)",
+     "anim_id": 16661
+    },
+    {
+     "id": 1532,
+     "name": "Co_jplk04F",
+     "anim": "Bco_jplk04n(DVD)",
+     "anim_id": 16661
+    },
+    {
+     "id": 1533,
+     "name": "Co_jplk04B",
+     "anim": "Bco_jplk04n(DVD)",
+     "anim_id": 16661
+    },
+    {
+     "id": 1534,
+     "name": "He_jplk00F",
+     "anim": "hei_rsk02(DVD)",
+     "anim_id": 16664
+    },
+    {
+     "id": 1558,
+     "name": "Co_sjplk11F",
+     "anim": "sjprki11(DVD)",
+     "anim_id": 16684
+    },
+    {
+     "id": 1559,
+     "name": "Co_sjplk12F",
+     "anim": "sjprki12(DVD)",
+     "anim_id": 16685
+    },
+    {
+     "id": 1560,
+     "name": "Co_sjplk13F",
+     "anim": "sjprki13(DVD)",
+     "anim_id": 16686
+    },
+    {
+     "id": 1594,
+     "name": "He_lk00",
+     "anim": "kohe_lk(DVD)",
+     "anim_id": 16709
+    },
+    {
+     "id": 1597,
+     "name": "He_hasai",
+     "anim": "Bmt_hasai(DVD)",
+     "anim_id": 16712
+    },
+    {
+     "id": 1600,
+     "name": "Co_R_lk00L",
+     "anim": "naco_lfurik(DVD)",
+     "anim_id": 16714
+    },
+    {
+     "id": 1601,
+     "name": "Co_R_rk00R",
+     "anim": "naco_rfurik(DVD)",
+     "anim_id": 32810
+    },
+    {
+     "id": 1604,
+     "name": "He_6rplk",
+     "anim": "hekb_hizarenkei_mox(DVD)",
+     "anim_id": 16717
+    },
+    {
+     "id": 1611,
+     "name": "He_kakatA",
+     "anim": "Ukz_PSkakat(DVD)",
+     "anim_id": 16722
+    },
+    {
+     "id": 1639,
+     "name": "He_lk02B",
+     "anim": "hekw_s4_4lklk",
+     "anim_id": 107
+    },
+    {
+     "id": 1645,
+     "name": "He_s_tlk00",
+     "anim": "hekb_s3_stlk",
+     "anim_id": 110
+    },
+    {
+     "id": 1659,
+     "name": "Co_syalk00",
+     "anim": "new_syrk(DVD)",
+     "anim_id": 32863
+    },
+    {
+     "id": 1711,
+     "name": "He_sjk01",
+     "anim": "hei_sjk02(DVD)",
+     "anim_id": 16802
+    },
+    {
+     "id": 1712,
+     "name": "He_sjk02",
+     "anim": "hei_sjk01(DVD)",
+     "anim_id": 16803
+    },
+    {
+     "id": 1753,
+     "name": "He_tk5com_04",
+     "anim": "hess_el2qulk(DVD)",
+     "anim_id": 16839
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x8000",
+    "source": "common.arc",
+    "section": 0,
+    "entry": 95,
+    "rel_offset": 588772,
+    "size": 2768,
+    "format_word": 100,
+    "sha256": "70ccd1358809602bce546a2f024a7cefd5aea13945b68812a6919d86a5f1a7e3",
+    "blob_file": "common_clips.bin"
+   }
+  },
+  {
+   "wh_key": "b+1",
+   "wh_name": "Move b+1 (b+1)",
+   "wh_input": "b+1",
+   "t7_id": "heihachi_91",
+   "t7_notation": "b+1",
+   "status": "mapped",
+   "motbin_move_id": 1625,
+   "motbin_move_name": "He_binkiri",
+   "anim_name": "yohe_beercut(DVD)",
+   "anim_id": 16735,
+   "bank_index": 351,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 15,
+   "motbin_damage": 14,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1625,
+     "name": "He_binkiri",
+     "anim": "yohe_beercut(DVD)",
+     "anim_id": 16735
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 351,
+    "rel_offset": 2728444,
+    "size": 3312,
+    "format_word": 100,
+    "sha256": "d85e68e297b2a611c2c9bd9721571080f6d691628bdc680210ea2772c313606e",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "b+2*",
+   "wh_name": "True Rashomon",
+   "wh_input": "b+2*",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1627,
+   "motbin_move_name": "He_rp00B",
+   "anim_name": "hess_urahara(DVD)",
+   "anim_id": 16737,
+   "bank_index": 353,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH input (no t7_notation in WH data)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 22,
+   "motbin_damage": 20,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1578,
+     "name": "He_SHINJYUKU",
+     "anim": "nkhe_o_rp01psxb2(DVD)",
+     "anim_id": 16698
+    },
+    {
+     "id": 1627,
+     "name": "He_rp00B",
+     "anim": "hess_urahara(DVD)",
+     "anim_id": 16737
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 353,
+    "rel_offset": 2734860,
+    "size": 4416,
+    "format_word": 100,
+    "sha256": "923bb32a9422f3d010c935b1ba55702a748faae140233ca2427d36e84e221160",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "b+3",
+   "wh_name": "Move b+3 (b+3)",
+   "wh_input": "b+3",
+   "t7_id": "heihachi_98",
+   "t7_notation": "b+3",
+   "status": "mapped",
+   "motbin_move_id": 1637,
+   "motbin_move_name": "He_lk01B",
+   "anim_name": "hekw_s4_4lk",
+   "anim_id": 105,
+   "bank_index": 105,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x0",
+   "motbin_startup": 14,
+   "motbin_damage": 14,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1600,
+     "name": "Co_R_lk00L",
+     "anim": "naco_lfurik(DVD)",
+     "anim_id": 16714
+    },
+    {
+     "id": 1637,
+     "name": "He_lk01B",
+     "anim": "hekw_s4_4lk",
+     "anim_id": 105
+    }
+   ],
+   "clip": {
+    "status": "bank0-file-not-located",
+    "bank": "0x0000",
+    "entry": 105
+   }
+  },
+  {
+   "wh_key": "b+3,2",
+   "wh_name": "Hooking Crescent Thrust",
+   "wh_input": "b+3,2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1638,
+   "motbin_move_name": "He_4lkrp",
+   "anim_name": "hekw_s4_4lkrp",
+   "anim_id": 106,
+   "bank_index": 106,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation b+3,2"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x0",
+   "motbin_startup": 20,
+   "motbin_damage": 20,
+   "mvl_row": 36,
+   "mvl_name": "Hooking Crescent Thrust",
+   "mvl_notation": "b+3,2",
+   "motbin_candidates": [
+    {
+     "id": 1638,
+     "name": "He_4lkrp",
+     "anim": "hekw_s4_4lkrp",
+     "anim_id": 106
+    }
+   ],
+   "clip": {
+    "status": "bank0-file-not-located",
+    "bank": "0x0000",
+    "entry": 106
+   }
+  },
+  {
+   "wh_key": "b+3,3",
+   "wh_name": "Hooking Crescent Kick",
+   "wh_input": "b+3,3",
+   "t7_id": "heihachi_99",
+   "t7_notation": "b+3, 3",
+   "status": "mapped",
+   "motbin_move_id": 1639,
+   "motbin_move_name": "He_lk02B",
+   "anim_name": "hekw_s4_4lklk",
+   "anim_id": 107,
+   "bank_index": 107,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation b+3,3"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x0",
+   "motbin_startup": 22,
+   "motbin_damage": 25,
+   "mvl_row": 37,
+   "mvl_name": "Hooking Crescent Kick",
+   "mvl_notation": "b+3,3",
+   "motbin_candidates": [
+    {
+     "id": 1639,
+     "name": "He_lk02B",
+     "anim": "hekw_s4_4lklk",
+     "anim_id": 107
+    }
+   ],
+   "clip": {
+    "status": "bank0-file-not-located",
+    "bank": "0x0000",
+    "entry": 107
+   }
+  },
+  {
+   "wh_key": "b+4",
+   "wh_name": "Indra's Kick",
+   "wh_input": "b+4",
+   "t7_id": "heihachi_101",
+   "t7_notation": "b+4",
+   "status": "mapped",
+   "motbin_move_id": 1640,
+   "motbin_move_name": "He_rk00B",
+   "anim_name": "kohe_qrk(DVD)",
+   "anim_id": 16745,
+   "bank_index": 361,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 18,
+   "motbin_damage": 20,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1640,
+     "name": "He_rk00B",
+     "anim": "kohe_qrk(DVD)",
+     "anim_id": 16745
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 361,
+    "rel_offset": 2760640,
+    "size": 3076,
+    "format_word": 100,
+    "sha256": "fbbcce7d063390d747fc862fcc69a2321ede978e294027dd2909b90f0aafbe8e",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "d+1+2",
+   "wh_name": "Fujin",
+   "wh_input": "d+1+2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1684,
+   "motbin_move_name": "He_kawara",
+   "anim_name": "hess_s4_2lp16",
+   "anim_id": 115,
+   "bank_index": 115,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH input (no t7_notation in WH data)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x0",
+   "motbin_startup": 16,
+   "motbin_damage": 16,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1684,
+     "name": "He_kawara",
+     "anim": "hess_s4_2lp16",
+     "anim_id": 115
+    }
+   ],
+   "clip": {
+    "status": "bank0-file-not-located",
+    "bank": "0x0000",
+    "entry": 115
+   }
+  },
+  {
+   "wh_key": "d+3",
+   "wh_name": "Jichinsai",
+   "wh_input": "d+3",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1691,
+   "motbin_move_name": "He_t_slk00",
+   "anim_name": "mbhe_2lk(DVD)",
+   "anim_id": 16783,
+   "bank_index": 399,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation d+3"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 22,
+   "motbin_damage": 25,
+   "mvl_row": 28,
+   "mvl_name": "Jichinsai",
+   "mvl_notation": "d+3",
+   "motbin_candidates": [
+    {
+     "id": 162,
+     "name": "Co_Dwn_rk00",
+     "anim": "Tco_PSdwrkA(DVD)",
+     "anim_id": 33038
+    },
+    {
+     "id": 170,
+     "name": "Co_AokilkL0",
+     "anim": "naco_aotlk1(DVD)",
+     "anim_id": 33046
+    },
+    {
+     "id": 1691,
+     "name": "He_t_slk00",
+     "anim": "mbhe_2lk(DVD)",
+     "anim_id": 16783
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 399,
+    "rel_offset": 2839268,
+    "size": 3656,
+    "format_word": 100,
+    "sha256": "952f333366c51510c41e9782609ef2544258d21ac03dbcc22ed565fb9e2a9d53",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "db+2",
+   "wh_name": "Eishomon",
+   "wh_input": "db+2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1678,
+   "motbin_move_name": "He_t_srp00",
+   "anim_name": "nahe_sprot(DVD)",
+   "anim_id": 16774,
+   "bank_index": 390,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation d/b+2"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 23,
+   "motbin_damage": 25,
+   "mvl_row": 31,
+   "mvl_name": "Eishomon",
+   "mvl_notation": "d/b+2",
+   "motbin_candidates": [
+    {
+     "id": 1678,
+     "name": "He_t_srp00",
+     "anim": "nahe_sprot(DVD)",
+     "anim_id": 16774
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 390,
+    "rel_offset": 2813400,
+    "size": 3296,
+    "format_word": 100,
+    "sha256": "f6a0258bcbf1f25f300f7c05abafb7bc45d021c57f249051a913bc62097e1272",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "db+3",
+   "wh_name": "Sacred Tree Fell",
+   "wh_input": "db+3",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1682,
+   "motbin_move_name": "Co_t_slk00B",
+   "anim_name": "Bco_tslk00(DVD)",
+   "anim_id": 32878,
+   "bank_index": 110,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH input (no t7_notation in WH data)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x8000",
+   "motbin_startup": 15,
+   "motbin_damage": 12,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1682,
+     "name": "Co_t_slk00B",
+     "anim": "Bco_tslk00(DVD)",
+     "anim_id": 32878
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x8000",
+    "source": "common.arc",
+    "section": 0,
+    "entry": 110,
+    "rel_offset": 640728,
+    "size": 2732,
+    "format_word": 100,
+    "sha256": "3636aa892a0464ebaedc80694d7b666afff9df4358055fc7e95c340fc3e1f324",
+    "blob_file": "common_clips.bin"
+   }
+  },
+  {
+   "wh_key": "df+1",
+   "wh_name": "Move df+1 (df+1)",
+   "wh_input": "df+1",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "motbin graph candidate exists but no MVL corroboration and/or non-unique \u2014 held as unmapped per no-guess rule",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1654,
+     "name": "Co_syalp00",
+     "anim": "kzco_sylp01_10f(DVD)",
+     "anim_id": 16755
+    },
+    {
+     "id": 1663,
+     "name": "He_m_p01",
+     "anim": "hess_s4_3lp",
+     "anim_id": 113
+    },
+    {
+     "id": 1703,
+     "name": "He_dslp_SH",
+     "anim": "Bkz_newdsrp(DVD)",
+     "anim_id": 16793
+    },
+    {
+     "id": 1706,
+     "name": "He_dslp",
+     "anim": "Bkz_newdsrp(DVD)",
+     "anim_id": 16793
+    }
+   ]
+  },
+  {
+   "wh_key": "df+1,1",
+   "wh_name": "Muso Palm Strike",
+   "wh_input": "df+1,1",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1664,
+   "motbin_move_name": "He_3lplpRev",
+   "anim_name": "hess_s4_3lp",
+   "anim_id": 114,
+   "bank_index": 114,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH input (no t7_notation in WH data)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x0",
+   "motbin_startup": 13,
+   "motbin_damage": 10,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1664,
+     "name": "He_3lplpRev",
+     "anim": "hess_s4_3lp",
+     "anim_id": 114
+    }
+   ],
+   "clip": {
+    "status": "bank0-file-not-located",
+    "bank": "0x0000",
+    "entry": 114
+   }
+  },
+  {
+   "wh_key": "df+1,2",
+   "wh_name": "Muso Tekken",
+   "wh_input": "df+1,2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1666,
+   "motbin_move_name": "He_musou03",
+   "anim_name": "kohe_newmuso(DVD)",
+   "anim_id": 16762,
+   "bank_index": 378,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH input (no t7_notation in WH data)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 21,
+   "motbin_damage": 24,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1666,
+     "name": "He_musou03",
+     "anim": "kohe_newmuso(DVD)",
+     "anim_id": 16762
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 378,
+    "rel_offset": 2795360,
+    "size": 3520,
+    "format_word": 100,
+    "sha256": "7e9f366970899a7594c5dffbbc4ed46039a6773197559cffeb4683e93593c51d",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "df+1,2*",
+   "wh_name": "True Muso Tekken",
+   "wh_input": "df+1,2*",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1666,
+   "motbin_move_name": "He_musou03",
+   "anim_name": "kohe_newmuso(DVD)",
+   "anim_id": 16762,
+   "bank_index": 378,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH input (no t7_notation in WH data)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 21,
+   "motbin_damage": 24,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1666,
+     "name": "He_musou03",
+     "anim": "kohe_newmuso(DVD)",
+     "anim_id": 16762
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 378,
+    "rel_offset": 2795360,
+    "size": 3520,
+    "format_word": 100,
+    "sha256": "7e9f366970899a7594c5dffbbc4ed46039a6773197559cffeb4683e93593c51d",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "df+2",
+   "wh_name": "Move df+2 (df+2)",
+   "wh_input": "df+2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "motbin graph candidate exists but no MVL corroboration and/or non-unique \u2014 held as unmapped per no-guess rule",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1656,
+     "name": "Co_syarp00",
+     "anim": "naco_syrp(DVD)",
+     "anim_id": 16757
+    },
+    {
+     "id": 1672,
+     "name": "He_m_p00",
+     "anim": "ythe_m_p00(DVD)",
+     "anim_id": 16768
+    },
+    {
+     "id": 1707,
+     "name": "He_shoryu_S",
+     "anim": "shoryu24(DVD)",
+     "anim_id": 16797
+    },
+    {
+     "id": 1806,
+     "name": "Thrmv_B2_09",
+     "anim": "msco_rtukami(DVD)",
+     "anim_id": 16887
+    }
+   ]
+  },
+  {
+   "wh_key": "df+3",
+   "wh_name": "Move df+3 (df+3)",
+   "wh_input": "df+3",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "motbin graph candidate exists but no MVL corroboration and/or non-unique \u2014 held as unmapped per no-guess rule",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1651,
+     "name": "Co_syalkF",
+     "anim": "new_syrkf(DVD)",
+     "anim_id": 32857
+    },
+    {
+     "id": 1675,
+     "name": "He_t_slkF",
+     "anim": "kohe_3lk(DVD)",
+     "anim_id": 16771
+    },
+    {
+     "id": 1711,
+     "name": "He_sjk01",
+     "anim": "hei_sjk02(DVD)",
+     "anim_id": 16802
+    },
+    {
+     "id": 1806,
+     "name": "Thrmv_B2_09",
+     "anim": "msco_rtukami(DVD)",
+     "anim_id": 16887
+    }
+   ]
+  },
+  {
+   "wh_key": "df+4",
+   "wh_name": "Move df+4 (df+4)",
+   "wh_input": "df+4",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1653,
+   "motbin_move_name": "He_syarkF",
+   "anim_name": "Yco_syrkf(DVD)",
+   "anim_id": 32852,
+   "bank_index": 84,
+   "evidence": [
+    "MVL notation exact, WH name generic",
+    "motbin cancel-graph: 2 terminals at tier 0 with distinct anims; unique top combined score 5: chain rooted at dispatcher/movement move sJUMP_00_SF; GROUP-rooted chain"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x8000",
+   "motbin_startup": 12,
+   "motbin_damage": 10,
+   "mvl_row": 60,
+   "mvl_name": "Crouching Dragon Kick",
+   "mvl_notation": "d/f+4",
+   "motbin_candidates": [
+    {
+     "id": 1652,
+     "name": "He_t_srk00F",
+     "anim": "ozhe_1ckj28k(DVD)",
+     "anim_id": 16754
+    },
+    {
+     "id": 1653,
+     "name": "He_syarkF",
+     "anim": "Yco_syrkf(DVD)",
+     "anim_id": 32852
+    },
+    {
+     "id": 1676,
+     "name": "He_t_srkF",
+     "anim": "Zpe_PStalki11(DVD)",
+     "anim_id": 16772
+    },
+    {
+     "id": 1719,
+     "name": "He_m_k00",
+     "anim": "m_k00(DVD)",
+     "anim_id": 16804
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x8000",
+    "source": "common.arc",
+    "section": 0,
+    "entry": 84,
+    "rel_offset": 547200,
+    "size": 2232,
+    "format_word": 100,
+    "sha256": "1bbd976a322c3c7b154a95bec9145e892bdea3ea025d4cab4e94181643e17b93",
+    "blob_file": "common_clips.bin"
+   }
+  },
+  {
+   "wh_key": "f+2_t8",
+   "wh_name": "Move f+2 (f+2)",
+   "wh_input": "f+2",
+   "t7_id": "heihachi_42",
+   "t7_notation": "f+2",
+   "status": "mapped",
+   "motbin_move_id": 1603,
+   "motbin_move_name": "He_rp00F",
+   "anim_name": "hekb_uraken_mox(DVD)",
+   "anim_id": 16716,
+   "bank_index": 332,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 15,
+   "motbin_damage": 13,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1603,
+     "name": "He_rp00F",
+     "anim": "hekb_uraken_mox(DVD)",
+     "anim_id": 16716
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 332,
+    "rel_offset": 2681212,
+    "size": 4692,
+    "format_word": 100,
+    "sha256": "7c1e66f23a35e3c2f73748d96a5de91cf44e85bb2b83f2d5b3cd10551102c363",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "f+2~1,1+2",
+   "wh_name": "Demon Shout Volley",
+   "wh_input": "f+2~1,1+2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "f+2,2",
+   "wh_name": "Tensu Gekishin",
+   "wh_input": "f+2,2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "f+3+4",
+   "wh_name": "Thunder God's Kamae",
+   "wh_input": "f+3+4",
+   "t7_id": "heihachi_150",
+   "t7_notation": "f+3+4",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "f+4_t8",
+   "wh_name": "Right Splits Kick",
+   "wh_input": "f+4",
+   "t7_id": "heihachi_48",
+   "t7_notation": "f+4",
+   "status": "mapped",
+   "motbin_move_id": 1613,
+   "motbin_move_name": "He_mrk",
+   "anim_name": "Zpe_PSlk(DVD)",
+   "anim_id": 16724,
+   "bank_index": 340,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation f+4"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 19,
+   "motbin_damage": 20,
+   "mvl_row": 17,
+   "mvl_name": "Right Splits Kick",
+   "mvl_notation": "f+4",
+   "motbin_candidates": [
+    {
+     "id": 1613,
+     "name": "He_mrk",
+     "anim": "Zpe_PSlk(DVD)",
+     "anim_id": 16724
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 340,
+    "rel_offset": 2703508,
+    "size": 2844,
+    "format_word": 100,
+    "sha256": "2a848fba60396cf2232d0202cbb73ea9bc17fbed340f690616d8bde2e28af6b1",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "FC.df+2",
+   "wh_name": "Ascension Upper",
+   "wh_input": "FC.df+2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "motbin graph candidate exists but no MVL corroboration and/or non-unique \u2014 held as unmapped per no-guess rule",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1656,
+     "name": "Co_syarp00",
+     "anim": "naco_syrp(DVD)",
+     "anim_id": 16757
+    },
+    {
+     "id": 1672,
+     "name": "He_m_p00",
+     "anim": "ythe_m_p00(DVD)",
+     "anim_id": 16768
+    },
+    {
+     "id": 1707,
+     "name": "He_shoryu_S",
+     "anim": "shoryu24(DVD)",
+     "anim_id": 16797
+    },
+    {
+     "id": 1806,
+     "name": "Thrmv_B2_09",
+     "anim": "msco_rtukami(DVD)",
+     "anim_id": 16887
+    }
+   ]
+  },
+  {
+   "wh_key": "FC.df+4",
+   "wh_name": "Crouching Dragon Kick",
+   "wh_input": "FC.df+4",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1652,
+   "motbin_move_name": "He_t_srk00F",
+   "anim_name": "ozhe_1ckj28k(DVD)",
+   "anim_id": 16754,
+   "bank_index": 370,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 2 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation d/f+4"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 19,
+   "motbin_damage": 20,
+   "mvl_row": 60,
+   "mvl_name": "Crouching Dragon Kick",
+   "mvl_notation": "d/f+4",
+   "motbin_candidates": [
+    {
+     "id": 1652,
+     "name": "He_t_srk00F",
+     "anim": "ozhe_1ckj28k(DVD)",
+     "anim_id": 16754
+    },
+    {
+     "id": 1653,
+     "name": "He_syarkF",
+     "anim": "Yco_syrkf(DVD)",
+     "anim_id": 32852
+    },
+    {
+     "id": 1676,
+     "name": "He_t_srkF",
+     "anim": "Zpe_PStalki11(DVD)",
+     "anim_id": 16772
+    },
+    {
+     "id": 1719,
+     "name": "He_m_k00",
+     "anim": "m_k00(DVD)",
+     "anim_id": 16804
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 370,
+    "rel_offset": 2780700,
+    "size": 3284,
+    "format_word": 100,
+    "sha256": "f78f1f8915789c5600f072ae25e81987ad0d30ab7256cc5ae39108f7c78c2902",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "f,F+1+2",
+   "wh_name": "Raoh Thrust",
+   "wh_input": "f,F+1+2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1607,
+   "motbin_move_name": "He_zutuki",
+   "anim_name": "hess_hdbt(DVD)",
+   "anim_id": 16720,
+   "bank_index": 336,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH input (no t7_notation in WH data)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 12,
+   "motbin_damage": 15,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1607,
+     "name": "He_zutuki",
+     "anim": "hess_hdbt(DVD)",
+     "anim_id": 16720
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 336,
+    "rel_offset": 2693612,
+    "size": 3580,
+    "format_word": 100,
+    "sha256": "1628994cfed15eed41eee1bc4e3198c37aa1302ce9eeee2ad2054c0ab259ddeb",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "f,F+2",
+   "wh_name": "Demon God Fist",
+   "wh_input": "f,F+2",
+   "t7_id": "heihachi_50",
+   "t7_notation": "f, F+2",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "f,F+3",
+   "wh_name": "Left Splits Kick",
+   "wh_input": "f,F+3",
+   "t7_id": "heihachi_51",
+   "t7_notation": "f, F+3",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "MVL row matched (MVL name+notation exact) but no attack-class motbin terminal found via cancel graph for notation 'f,F+3' \u2014 graph gap (requirement-gated entry not decoded)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": 43,
+   "mvl_name": "Left Splits Kick",
+   "mvl_notation": "f,F+3",
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "f,f,F+1+2",
+   "wh_name": "Roaring Stonehead",
+   "wh_input": "f,f,F+1+2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "f,f,F+3",
+   "wh_name": "Leaping Side Kick",
+   "wh_input": "f,f,F+3",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "MVL row matched (MVL name+notation exact (variant: hold-direction case-insensitive match (f,F+3 in WH = f,f,f+3 in MVL glyphs; same physical input))) but no attack-class motbin terminal found via cancel graph for notation 'f,f,F+3' \u2014 graph gap (requirement-gated entry not decoded)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": 55,
+   "mvl_name": "Leaping Side Kick",
+   "mvl_notation": "f,f,f+3",
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "f,n,d,df",
+   "wh_name": "Wind God Step",
+   "wh_input": "f,n,d,df",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "f,n,d,df+1",
+   "wh_name": "Thunder God Fist",
+   "wh_input": "f,n,d,df+1",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1703,
+   "motbin_move_name": "He_dslp_SH",
+   "anim_name": "Bkz_newdsrp(DVD)",
+   "anim_id": 16793,
+   "bank_index": 409,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH input (no t7_notation in WH data)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 19,
+   "motbin_damage": 35,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1703,
+     "name": "He_dslp_SH",
+     "anim": "Bkz_newdsrp(DVD)",
+     "anim_id": 16793
+    },
+    {
+     "id": 1706,
+     "name": "He_dslp",
+     "anim": "Bkz_newdsrp(DVD)",
+     "anim_id": 16793
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 409,
+    "rel_offset": 2854144,
+    "size": 3080,
+    "format_word": 100,
+    "sha256": "eba7337494fa813e7e25f9e75a8f200a3f0c4e7d735519ca55038e45f4231594",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "f,n,d,df+2",
+   "wh_name": "Wind God Fist",
+   "wh_input": "f,n,d,df+2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "motbin graph candidate exists but no MVL corroboration and/or non-unique \u2014 held as unmapped per no-guess rule",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1707,
+     "name": "He_shoryu_S",
+     "anim": "shoryu24(DVD)",
+     "anim_id": 16797
+    }
+   ]
+  },
+  {
+   "wh_key": "f,n,d,df+3",
+   "wh_name": "Bone Splinter Kick",
+   "wh_input": "f,n,d,df+3",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "motbin graph candidate exists but no MVL corroboration and/or non-unique \u2014 held as unmapped per no-guess rule",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1711,
+     "name": "He_sjk01",
+     "anim": "hei_sjk02(DVD)",
+     "anim_id": 16802
+    }
+   ]
+  },
+  {
+   "wh_key": "f,n,d,DF+4",
+   "wh_name": "Move f,n,d,DF+4 (f,n,d,DF+4)",
+   "wh_input": "f,n,d,DF+4",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "f,n,d,DF+4,4",
+   "wh_name": "Move 4 (4)",
+   "wh_input": "f,n,d,DF+4,4",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "f,n,d,DF+4,4,4",
+   "wh_name": "Spinning Demon",
+   "wh_input": "f,n,d,DF+4,4,4",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "MVL name match (Spinning Demon) but notation differs: T7 MVL 'f,n,d,D/F+4,4,4' vs WH 'f,n,d,DF+4,4,4'/t7_notation 'None' \u2014 not mapped (possible T8 notation change)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "qcf+2",
+   "wh_name": "Iron Hand",
+   "wh_input": "qcf+2",
+   "t7_id": "heihachi_114",
+   "t7_notation": "qcf+2",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "MVL row matched (MVL name+notation exact) but no attack-class motbin terminal found via cancel graph for notation 'd,d/f,f+2' \u2014 graph gap (requirement-gated entry not decoded)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": 54,
+   "mvl_name": "Iron Hand",
+   "mvl_notation": "d,d/f,f+2",
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "SS.2",
+   "wh_name": "Nail Beating",
+   "wh_input": "SS.2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "multiple motbin terminals at tier 2 with distinct anims and no decisive discriminator: [(1640, 'He_rk00B', 16745), (1587, 'He_s_rp', 16706)]",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 229,
+     "name": "Co_sJP_RP",
+     "anim": "naco_9rp(DVD)",
+     "anim_id": 32851
+    },
+    {
+     "id": 1516,
+     "name": "Co_jprp03",
+     "anim": "Bco_jprp03n(DVD)",
+     "anim_id": 16646
+    },
+    {
+     "id": 1517,
+     "name": "Co_jprp03F",
+     "anim": "Bco_jprp03n(DVD)",
+     "anim_id": 16646
+    },
+    {
+     "id": 1518,
+     "name": "Co_jprp03B",
+     "anim": "Bco_jprp03n(DVD)",
+     "anim_id": 16646
+    },
+    {
+     "id": 1556,
+     "name": "Co_sjprp03F",
+     "anim": "sjplpu03(DVD)",
+     "anim_id": 32839
+    },
+    {
+     "id": 1571,
+     "name": "He_rp1",
+     "anim": "kohe_lplprp(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1572,
+     "name": "He_lprpF",
+     "anim": "rplp2f(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1573,
+     "name": "He_rprp01",
+     "anim": "Ckz_PSlplp01(DVD)",
+     "anim_id": 16693
+    },
+    {
+     "id": 1582,
+     "name": "He_rp00",
+     "anim": "new_lp2(DVD)",
+     "anim_id": 16701
+    },
+    {
+     "id": 1583,
+     "name": "He_rprp00",
+     "anim": "Ckz_PSlplp01(DVD)",
+     "anim_id": 16693
+    },
+    {
+     "id": 1587,
+     "name": "He_s_rp",
+     "anim": "ozhe_1csusyutou(DVD)",
+     "anim_id": 16706
+    },
+    {
+     "id": 1605,
+     "name": "He_up00",
+     "anim": "hei_up00(DVD)",
+     "anim_id": 16718
+    },
+    {
+     "id": 1620,
+     "name": "He_WK00F_RP",
+     "anim": "kohe_fer2zun(DVD)",
+     "anim_id": 16730
+    },
+    {
+     "id": 1626,
+     "name": "He_binkiriura",
+     "anim": "kohe_bc2urap(DVD)",
+     "anim_id": 16736
+    },
+    {
+     "id": 1638,
+     "name": "He_4lkrp",
+     "anim": "hekw_s4_4lkrp",
+     "anim_id": 106
+    },
+    {
+     "id": 1640,
+     "name": "He_rk00B",
+     "anim": "kohe_qrk(DVD)",
+     "anim_id": 16745
+    },
+    {
+     "id": 1643,
+     "name": "He_s_trp00",
+     "anim": "Khe_yoke01(DVD)",
+     "anim_id": 16750
+    },
+    {
+     "id": 1656,
+     "name": "Co_syarp00",
+     "anim": "naco_syrp(DVD)",
+     "anim_id": 16757
+    },
+    {
+     "id": 1666,
+     "name": "He_musou03",
+     "anim": "kohe_newmuso(DVD)",
+     "anim_id": 16762
+    },
+    {
+     "id": 1685,
+     "name": "He_2lprp",
+     "anim": "hekb_2lprp_75(DVD)",
+     "anim_id": 16779
+    },
+    {
+     "id": 1707,
+     "name": "He_shoryu_S",
+     "anim": "shoryu24(DVD)",
+     "anim_id": 16797
+    },
+    {
+     "id": 1708,
+     "name": "He_shoryu_N",
+     "anim": "shoryu24(DVD)",
+     "anim_id": 16797
+    },
+    {
+     "id": 1752,
+     "name": "He_tk5com_02",
+     "anim": "yohe_46RPRP(DVD)",
+     "anim_id": 16838
+    },
+    {
+     "id": 2278,
+     "name": "He_rp1_7CS",
+     "anim": "kohe_lplprp(DVD)",
+     "anim_id": 16691
+    }
+   ]
+  },
+  {
+   "wh_key": "uf+3",
+   "wh_name": "Move uf+3 (uf+3)",
+   "wh_input": "uf+3",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1534,
+   "motbin_move_name": "He_jplk00F",
+   "anim_name": "hei_rsk02(DVD)",
+   "anim_id": 16664,
+   "bank_index": 280,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH input (no t7_notation in WH data)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 28,
+   "motbin_damage": 17,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1534,
+     "name": "He_jplk00F",
+     "anim": "hei_rsk02(DVD)",
+     "anim_id": 16664
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 280,
+    "rel_offset": 2566632,
+    "size": 3436,
+    "format_word": 100,
+    "sha256": "74cd0a071c1db71c34d4b01616060bfc1952b6b25f7799bb6afb2ff578201d64",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "uf+3,4",
+   "wh_name": "Hell Axle",
+   "wh_input": "uf+3,4",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1537, 'He_rsk01', 16667), (1535, 'He_jplk00FD', 16664)]",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": 40,
+   "mvl_name": "Hell Axle",
+   "mvl_notation": "u/f+3,4",
+   "motbin_candidates": [
+    {
+     "id": 1535,
+     "name": "He_jplk00FD",
+     "anim": "hei_rsk02(DVD)",
+     "anim_id": 16664
+    },
+    {
+     "id": 1537,
+     "name": "He_rsk01",
+     "anim": "hei_rsk01(DVD)",
+     "anim_id": 16667
+    }
+   ]
+  },
+  {
+   "wh_key": "uf+4",
+   "wh_name": "Wind Slicer",
+   "wh_input": "uf+4",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1552,
+   "motbin_move_name": "He_jprk00F",
+   "anim_name": "yohe_jmprk(DVD)",
+   "anim_id": 16682,
+   "bank_index": 298,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation u/f+4"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 24,
+   "motbin_damage": 25,
+   "mvl_row": 41,
+   "mvl_name": "Wind Slicer",
+   "mvl_notation": "u/f+4",
+   "motbin_candidates": [
+    {
+     "id": 1552,
+     "name": "He_jprk00F",
+     "anim": "yohe_jmprk(DVD)",
+     "anim_id": 16682
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 298,
+    "rel_offset": 2590928,
+    "size": 3516,
+    "format_word": 100,
+    "sha256": "08d4a60a678c45debbf60cf18742fe2e1ce847d2705235c3c0daca578c374007",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "WAR.f,F+2",
+   "wh_name": "Ultimate Demon God Fist",
+   "wh_input": "WAR.f,F+2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "WAR.f,F+3",
+   "wh_name": "Ultimate Splits Kick",
+   "wh_input": "WAR.f,F+3",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "WAR.f,f,F+1+2",
+   "wh_name": "Ultimate Roaring Stonehead",
+   "wh_input": "WAR.f,f,F+1+2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "WAR.f,n,d,DF+4",
+   "wh_name": "Ultimate Spinning Demon",
+   "wh_input": "WAR.f,n,d,DF+4",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "ws1",
+   "wh_name": "Quick Iron Fist",
+   "wh_input": "ws1",
+   "t7_id": "heihachi_129",
+   "t7_notation": "WS 1",
+   "status": "mapped",
+   "motbin_move_id": 1654,
+   "motbin_move_name": "Co_syalp00",
+   "anim_name": "kzco_sylp01_10f(DVD)",
+   "anim_id": 16755,
+   "bank_index": 371,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: 3 terminals at tier 0 with distinct anims; unique top combined score 5: chain rooted at dispatcher/movement move sJUMP_00_SF; GROUP-rooted chain"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 10,
+   "motbin_damage": 5,
+   "mvl_row": 56,
+   "mvl_name": "Quick Iron Fist",
+   "mvl_notation": "1",
+   "motbin_candidates": [
+    {
+     "id": 1498,
+     "name": "Co_jplp00",
+     "anim": "Bco_sjplp_n(DVD)",
+     "anim_id": 16628
+    },
+    {
+     "id": 1499,
+     "name": "Co_jplp00F",
+     "anim": "Bco_sjplp_n(DVD)",
+     "anim_id": 16628
+    },
+    {
+     "id": 1500,
+     "name": "Co_jplp00B",
+     "anim": "Bco_sjplp_n(DVD)",
+     "anim_id": 16628
+    },
+    {
+     "id": 1501,
+     "name": "Co_jplp01",
+     "anim": "Bco_jplp01n(DVD)",
+     "anim_id": 16631
+    },
+    {
+     "id": 1502,
+     "name": "Co_jplp01F",
+     "anim": "Bco_jplp01n(DVD)",
+     "anim_id": 16631
+    },
+    {
+     "id": 1503,
+     "name": "Co_jplp01B",
+     "anim": "Bco_jplp01n(DVD)",
+     "anim_id": 16631
+    },
+    {
+     "id": 1504,
+     "name": "Co_jplp02",
+     "anim": "Bco_jplp02n(DVD)",
+     "anim_id": 16634
+    },
+    {
+     "id": 1505,
+     "name": "Co_jplp02F",
+     "anim": "Bco_jplp02n(DVD)",
+     "anim_id": 16634
+    },
+    {
+     "id": 1506,
+     "name": "Co_jplp02B",
+     "anim": "Bco_jplp02n(DVD)",
+     "anim_id": 16634
+    },
+    {
+     "id": 1507,
+     "name": "Co_jplp03",
+     "anim": "Bco_jplp03n(DVD)",
+     "anim_id": 16637
+    },
+    {
+     "id": 1508,
+     "name": "Co_jplp03F",
+     "anim": "Bco_jplp03n(DVD)",
+     "anim_id": 16637
+    },
+    {
+     "id": 1509,
+     "name": "Co_jplp03B",
+     "anim": "Bco_jplp03n(DVD)",
+     "anim_id": 16637
+    },
+    {
+     "id": 1510,
+     "name": "Co_jpRlp00",
+     "anim": "Bco_sjplp_rn(DVD)",
+     "anim_id": 16640
+    },
+    {
+     "id": 1511,
+     "name": "Co_jpRlp00F",
+     "anim": "Bco_sjplp_rn(DVD)",
+     "anim_id": 16640
+    },
+    {
+     "id": 1512,
+     "name": "Co_jpRlp00B",
+     "anim": "Bco_sjplp_rn(DVD)",
+     "anim_id": 16640
+    },
+    {
+     "id": 1553,
+     "name": "Co_sjplp01F",
+     "anim": "sjprpu01(DVD)",
+     "anim_id": 32823
+    },
+    {
+     "id": 1554,
+     "name": "Co_sjplp02F",
+     "anim": "sjprpu02(DVD)",
+     "anim_id": 32824
+    },
+    {
+     "id": 1555,
+     "name": "Co_sjplp03F",
+     "anim": "sjprpu03(DVD)",
+     "anim_id": 32825
+    },
+    {
+     "id": 1570,
+     "name": "He_lpf",
+     "anim": "m_rpf(DVD)",
+     "anim_id": 16690
+    },
+    {
+     "id": 1575,
+     "name": "He_Gosyouh1",
+     "anim": "Yhe_gohsyo(DVD)",
+     "anim_id": 16695
+    },
+    {
+     "id": 1580,
+     "name": "He_lp4rplp",
+     "anim": "yohe_o_lpdsrpxb(DVD)",
+     "anim_id": 16699
+    },
+    {
+     "id": 1584,
+     "name": "He_Gosyouh2",
+     "anim": "Yhe_gohsyo(DVD)",
+     "anim_id": 16695
+    },
+    {
+     "id": 1588,
+     "name": "He_s_rplp",
+     "anim": "nahe_28rp2lp(DVD)",
+     "anim_id": 16707
+    },
+    {
+     "id": 1590,
+     "name": "He_Gosyouha",
+     "anim": "kohe_ahohsog(DVD)",
+     "anim_id": 16708
+    },
+    {
+     "id": 1602,
+     "name": "He_lp00F",
+     "anim": "hess_s4_lp",
+     "anim_id": 101
+    },
+    {
+     "id": 1605,
+     "name": "He_up00",
+     "anim": "hei_up00(DVD)",
+     "anim_id": 16718
+    },
+    {
+     "id": 1619,
+     "name": "He_WK00F_LP",
+     "anim": "hess_s4_fer2boon",
+     "anim_id": 102
+    },
+    {
+     "id": 1621,
+     "name": "He_WK00F_RP01",
+     "anim": "kohe_fer2zun(DVD)",
+     "anim_id": 16730
+    },
+    {
+     "id": 1622,
+     "name": "He_WK00F_RP2",
+     "anim": "kohe_fer2zunzun(DVD)",
+     "anim_id": 16732
+    },
+    {
+     "id": 1641,
+     "name": "He_s_tlp00",
+     "anim": "hess_s4_stlp13",
+     "anim_id": 108
+    },
+    {
+     "id": 1654,
+     "name": "Co_syalp00",
+     "anim": "kzco_sylp01_10f(DVD)",
+     "anim_id": 16755
+    },
+    {
+     "id": 1664,
+     "name": "He_3lplpRev",
+     "anim": "hess_s4_3lp",
+     "anim_id": 114
+    },
+    {
+     "id": 1673,
+     "name": "He_s_lprk",
+     "anim": "ozhe_1ckj66a(DVD)",
+     "anim_id": 16769
+    },
+    {
+     "id": 1707,
+     "name": "He_shoryu_S",
+     "anim": "shoryu24(DVD)",
+     "anim_id": 16797
+    },
+    {
+     "id": 1724,
+     "name": "He_m_k00AG",
+     "anim": "m_k00(DVD)",
+     "anim_id": 16804
+    },
+    {
+     "id": 1729,
+     "name": "He_dslpZ",
+     "anim": "hekb_s3_nar2rai",
+     "anim_id": 116
+    },
+    {
+     "id": 1731,
+     "name": "He_m_k01MAG",
+     "anim": "m_k01(DVD)",
+     "anim_id": 16805
+    },
+    {
+     "id": 1735,
+     "name": "He_dslp30",
+     "anim": "hekb_s3_nar2rai",
+     "anim_id": 118
+    },
+    {
+     "id": 1736,
+     "name": "He_m_k02HAG",
+     "anim": "m_k01(DVD)",
+     "anim_id": 16805
+    },
+    {
+     "id": 1739,
+     "name": "He_m_k02MAG",
+     "anim": "m_k01(DVD)",
+     "anim_id": 16805
+    },
+    {
+     "id": 1743,
+     "name": "He_m_k01AG",
+     "anim": "m_k01(DVD)",
+     "anim_id": 16805
+    },
+    {
+     "id": 1746,
+     "name": "He_m_k02AG",
+     "anim": "m_k01(DVD)",
+     "anim_id": 16805
+    },
+    {
+     "id": 1751,
+     "name": "He_tk5com_03",
+     "anim": "nahe_mr2lp(DVD)",
+     "anim_id": 16837
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 371,
+    "rel_offset": 2783984,
+    "size": 2136,
+    "format_word": 100,
+    "sha256": "a9b2f6401458dd1d24dbb46ccba3d89c0ea1cae8a3cb6f33c724e372b75b7481",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "ws2",
+   "wh_name": "Dark Thrust",
+   "wh_input": "ws2",
+   "t7_id": "heihachi_130",
+   "t7_notation": "WS 2",
+   "status": "mapped",
+   "motbin_move_id": 1656,
+   "motbin_move_name": "Co_syarp00",
+   "anim_name": "naco_syrp(DVD)",
+   "anim_id": 16757,
+   "bank_index": 373,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: 3 terminals at tier 0 with distinct anims; unique top combined score 5: chain rooted at dispatcher/movement move sJUMP_00_SF; GROUP-rooted chain"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 11,
+   "motbin_damage": 8,
+   "mvl_row": 57,
+   "mvl_name": "Dark Thrust",
+   "mvl_notation": "2",
+   "motbin_candidates": [
+    {
+     "id": 229,
+     "name": "Co_sJP_RP",
+     "anim": "naco_9rp(DVD)",
+     "anim_id": 32851
+    },
+    {
+     "id": 1516,
+     "name": "Co_jprp03",
+     "anim": "Bco_jprp03n(DVD)",
+     "anim_id": 16646
+    },
+    {
+     "id": 1517,
+     "name": "Co_jprp03F",
+     "anim": "Bco_jprp03n(DVD)",
+     "anim_id": 16646
+    },
+    {
+     "id": 1518,
+     "name": "Co_jprp03B",
+     "anim": "Bco_jprp03n(DVD)",
+     "anim_id": 16646
+    },
+    {
+     "id": 1556,
+     "name": "Co_sjprp03F",
+     "anim": "sjplpu03(DVD)",
+     "anim_id": 32839
+    },
+    {
+     "id": 1571,
+     "name": "He_rp1",
+     "anim": "kohe_lplprp(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1572,
+     "name": "He_lprpF",
+     "anim": "rplp2f(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1573,
+     "name": "He_rprp01",
+     "anim": "Ckz_PSlplp01(DVD)",
+     "anim_id": 16693
+    },
+    {
+     "id": 1582,
+     "name": "He_rp00",
+     "anim": "new_lp2(DVD)",
+     "anim_id": 16701
+    },
+    {
+     "id": 1583,
+     "name": "He_rprp00",
+     "anim": "Ckz_PSlplp01(DVD)",
+     "anim_id": 16693
+    },
+    {
+     "id": 1587,
+     "name": "He_s_rp",
+     "anim": "ozhe_1csusyutou(DVD)",
+     "anim_id": 16706
+    },
+    {
+     "id": 1605,
+     "name": "He_up00",
+     "anim": "hei_up00(DVD)",
+     "anim_id": 16718
+    },
+    {
+     "id": 1620,
+     "name": "He_WK00F_RP",
+     "anim": "kohe_fer2zun(DVD)",
+     "anim_id": 16730
+    },
+    {
+     "id": 1626,
+     "name": "He_binkiriura",
+     "anim": "kohe_bc2urap(DVD)",
+     "anim_id": 16736
+    },
+    {
+     "id": 1638,
+     "name": "He_4lkrp",
+     "anim": "hekw_s4_4lkrp",
+     "anim_id": 106
+    },
+    {
+     "id": 1640,
+     "name": "He_rk00B",
+     "anim": "kohe_qrk(DVD)",
+     "anim_id": 16745
+    },
+    {
+     "id": 1643,
+     "name": "He_s_trp00",
+     "anim": "Khe_yoke01(DVD)",
+     "anim_id": 16750
+    },
+    {
+     "id": 1656,
+     "name": "Co_syarp00",
+     "anim": "naco_syrp(DVD)",
+     "anim_id": 16757
+    },
+    {
+     "id": 1666,
+     "name": "He_musou03",
+     "anim": "kohe_newmuso(DVD)",
+     "anim_id": 16762
+    },
+    {
+     "id": 1685,
+     "name": "He_2lprp",
+     "anim": "hekb_2lprp_75(DVD)",
+     "anim_id": 16779
+    },
+    {
+     "id": 1707,
+     "name": "He_shoryu_S",
+     "anim": "shoryu24(DVD)",
+     "anim_id": 16797
+    },
+    {
+     "id": 1708,
+     "name": "He_shoryu_N",
+     "anim": "shoryu24(DVD)",
+     "anim_id": 16797
+    },
+    {
+     "id": 1752,
+     "name": "He_tk5com_02",
+     "anim": "yohe_46RPRP(DVD)",
+     "anim_id": 16838
+    },
+    {
+     "id": 2278,
+     "name": "He_rp1_7CS",
+     "anim": "kohe_lplprp(DVD)",
+     "anim_id": 16691
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 373,
+    "rel_offset": 2786120,
+    "size": 2284,
+    "format_word": 100,
+    "sha256": "327dcf0bceebd1010eb934ac7e6fdb0392de5b390920e24feabc6444d640bdae",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "ws3",
+   "wh_name": "Move ws3 (ws3)",
+   "wh_input": "ws3",
+   "t7_id": "heihachi_131",
+   "t7_notation": "WS 3",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "multiple motbin terminals at tier 2 with distinct anims and no decisive discriminator: [(170, 'Co_AokilkL0', 33046), (168, 'Co_Aokilk00', 33044)]",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 168,
+     "name": "Co_Aokilk00",
+     "anim": "naco_aolowk1(DVD)",
+     "anim_id": 33044
+    },
+    {
+     "id": 170,
+     "name": "Co_AokilkL0",
+     "anim": "naco_aotlk1(DVD)",
+     "anim_id": 33046
+    },
+    {
+     "id": 172,
+     "name": "Co_ADwSlk00",
+     "anim": "Mco_aolok2(DVD)",
+     "anim_id": 33048
+    },
+    {
+     "id": 174,
+     "name": "Co_ADwSlkR0",
+     "anim": "Mco_aoTlk3(DVD)",
+     "anim_id": 33050
+    },
+    {
+     "id": 175,
+     "name": "Co_ADwSlkR1",
+     "anim": "Mco_aoTlk4(DVD)",
+     "anim_id": 33051
+    },
+    {
+     "id": 178,
+     "name": "Co_FRollk00",
+     "anim": "naco_Flk1(DVD)",
+     "anim_id": 33054
+    },
+    {
+     "id": 180,
+     "name": "Co_FRollkL0",
+     "anim": "naco_FTlk1(DVD)",
+     "anim_id": 33056
+    },
+    {
+     "id": 182,
+     "name": "Co_BRollk00",
+     "anim": "naco_Blk1(DVD)",
+     "anim_id": 33058
+    },
+    {
+     "id": 184,
+     "name": "Co_BRollkL0",
+     "anim": "naco_BTlk1(DVD)",
+     "anim_id": 33060
+    },
+    {
+     "id": 188,
+     "name": "Co_Rol_lrk",
+     "anim": "Mco_grshoper(DVD)",
+     "anim_id": 16400
+    },
+    {
+     "id": 191,
+     "name": "Co_Uokilk01",
+     "anim": "naco_utlk1(DVD)",
+     "anim_id": 33065
+    },
+    {
+     "id": 195,
+     "name": "Co_UokilkR1",
+     "anim": "coyt_ut_okigeri_l(DVD)",
+     "anim_id": 33067
+    },
+    {
+     "id": 1520,
+     "name": "Co_jplk00",
+     "anim": "sjprki10(DVD)",
+     "anim_id": 16650
+    },
+    {
+     "id": 1521,
+     "name": "Co_jplk00B",
+     "anim": "sjprki10(DVD)",
+     "anim_id": 16650
+    },
+    {
+     "id": 1522,
+     "name": "Co_jpRlk00",
+     "anim": "Bco_sjpk_r(DVD)",
+     "anim_id": 16652
+    },
+    {
+     "id": 1523,
+     "name": "Co_jpRlk00F",
+     "anim": "Bco_sjpk_r(DVD)",
+     "anim_id": 16652
+    },
+    {
+     "id": 1524,
+     "name": "Co_jpRlk00B",
+     "anim": "Bco_sjpk_r(DVD)",
+     "anim_id": 16652
+    },
+    {
+     "id": 1525,
+     "name": "Co_jplk01",
+     "anim": "Bco_jplk01n(DVD)",
+     "anim_id": 16655
+    },
+    {
+     "id": 1526,
+     "name": "Co_jplk01F",
+     "anim": "Bco_jplk01n(DVD)",
+     "anim_id": 16655
+    },
+    {
+     "id": 1527,
+     "name": "Co_jplk01B",
+     "anim": "Bco_jplk01n(DVD)",
+     "anim_id": 16655
+    },
+    {
+     "id": 1528,
+     "name": "Co_jplk02",
+     "anim": "Bco_jplk02n(DVD)",
+     "anim_id": 16658
+    },
+    {
+     "id": 1529,
+     "name": "Co_jplk02F",
+     "anim": "Bco_jplk02n(DVD)",
+     "anim_id": 16658
+    },
+    {
+     "id": 1530,
+     "name": "Co_jplk02B",
+     "anim": "Bco_jplk02n(DVD)",
+     "anim_id": 16658
+    },
+    {
+     "id": 1531,
+     "name": "Co_jplk04",
+     "anim": "Bco_jplk04n(DVD)",
+     "anim_id": 16661
+    },
+    {
+     "id": 1532,
+     "name": "Co_jplk04F",
+     "anim": "Bco_jplk04n(DVD)",
+     "anim_id": 16661
+    },
+    {
+     "id": 1533,
+     "name": "Co_jplk04B",
+     "anim": "Bco_jplk04n(DVD)",
+     "anim_id": 16661
+    },
+    {
+     "id": 1534,
+     "name": "He_jplk00F",
+     "anim": "hei_rsk02(DVD)",
+     "anim_id": 16664
+    },
+    {
+     "id": 1558,
+     "name": "Co_sjplk11F",
+     "anim": "sjprki11(DVD)",
+     "anim_id": 16684
+    },
+    {
+     "id": 1559,
+     "name": "Co_sjplk12F",
+     "anim": "sjprki12(DVD)",
+     "anim_id": 16685
+    },
+    {
+     "id": 1560,
+     "name": "Co_sjplk13F",
+     "anim": "sjprki13(DVD)",
+     "anim_id": 16686
+    },
+    {
+     "id": 1594,
+     "name": "He_lk00",
+     "anim": "kohe_lk(DVD)",
+     "anim_id": 16709
+    },
+    {
+     "id": 1597,
+     "name": "He_hasai",
+     "anim": "Bmt_hasai(DVD)",
+     "anim_id": 16712
+    },
+    {
+     "id": 1600,
+     "name": "Co_R_lk00L",
+     "anim": "naco_lfurik(DVD)",
+     "anim_id": 16714
+    },
+    {
+     "id": 1601,
+     "name": "Co_R_rk00R",
+     "anim": "naco_rfurik(DVD)",
+     "anim_id": 32810
+    },
+    {
+     "id": 1604,
+     "name": "He_6rplk",
+     "anim": "hekb_hizarenkei_mox(DVD)",
+     "anim_id": 16717
+    },
+    {
+     "id": 1611,
+     "name": "He_kakatA",
+     "anim": "Ukz_PSkakat(DVD)",
+     "anim_id": 16722
+    },
+    {
+     "id": 1639,
+     "name": "He_lk02B",
+     "anim": "hekw_s4_4lklk",
+     "anim_id": 107
+    },
+    {
+     "id": 1645,
+     "name": "He_s_tlk00",
+     "anim": "hekb_s3_stlk",
+     "anim_id": 110
+    },
+    {
+     "id": 1659,
+     "name": "Co_syalk00",
+     "anim": "new_syrk(DVD)",
+     "anim_id": 32863
+    },
+    {
+     "id": 1711,
+     "name": "He_sjk01",
+     "anim": "hei_sjk02(DVD)",
+     "anim_id": 16802
+    },
+    {
+     "id": 1712,
+     "name": "He_sjk02",
+     "anim": "hei_sjk01(DVD)",
+     "anim_id": 16803
+    },
+    {
+     "id": 1753,
+     "name": "He_tk5com_04",
+     "anim": "hess_el2qulk(DVD)",
+     "anim_id": 16839
+    }
+   ]
+  },
+  {
+   "wh_key": "ws3,1+2",
+   "wh_name": "Holy Demon Cross",
+   "wh_input": "ws3,1+2",
+   "t7_id": "heihachi_132",
+   "t7_notation": "WS 3, 1+2",
+   "status": "mapped",
+   "motbin_move_id": 1646,
+   "motbin_move_name": "He_s_tlkwp",
+   "anim_name": "hekb_s3_stlkwp",
+   "anim_id": 111,
+   "bank_index": 111,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation 3,1+2"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x0",
+   "motbin_startup": 22,
+   "motbin_damage": 20,
+   "mvl_row": 58,
+   "mvl_name": "Holy Demon Cross",
+   "mvl_notation": "3,1+2",
+   "motbin_candidates": [
+    {
+     "id": 1623,
+     "name": "He_WK00F_Genkotu",
+     "anim": "kohe_fer2genko(DVD)",
+     "anim_id": 16733
+    },
+    {
+     "id": 1646,
+     "name": "He_s_tlkwp",
+     "anim": "hekb_s3_stlkwp",
+     "anim_id": 111
+    }
+   ],
+   "clip": {
+    "status": "bank0-file-not-located",
+    "bank": "0x0000",
+    "entry": 111
+   }
+  },
+  {
+   "wh_key": "ws4",
+   "wh_name": "Move ws4 (ws4)",
+   "wh_input": "ws4",
+   "t7_id": "heihachi_134",
+   "t7_notation": "WS 4",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "multiple motbin terminals at tier 2 with distinct anims and no decisive discriminator: [(171, 'Co_AokirkL0', 33047), (169, 'Co_Aokirk00', 33045)]",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 169,
+     "name": "Co_Aokirk00",
+     "anim": "naco_aomk1(DVD)",
+     "anim_id": 33045
+    },
+    {
+     "id": 171,
+     "name": "Co_AokirkL0",
+     "anim": "naco_aotmk1(DVD)",
+     "anim_id": 33047
+    },
+    {
+     "id": 173,
+     "name": "Co_ADwSrk00",
+     "anim": "Mco_aomk2(DVD)",
+     "anim_id": 33049
+    },
+    {
+     "id": 176,
+     "name": "Co_ADwSrkR0",
+     "anim": "Mco_aoTmk3(DVD)",
+     "anim_id": 33052
+    },
+    {
+     "id": 177,
+     "name": "Co_ADwSrkR1",
+     "anim": "Mco_aoTmk4(DVD)",
+     "anim_id": 33053
+    },
+    {
+     "id": 179,
+     "name": "Co_FRolrk00",
+     "anim": "naco_Fmk1(DVD)",
+     "anim_id": 33055
+    },
+    {
+     "id": 180,
+     "name": "Co_FRollkL0",
+     "anim": "naco_FTlk1(DVD)",
+     "anim_id": 33056
+    },
+    {
+     "id": 181,
+     "name": "Co_FRolrkL0",
+     "anim": "naco_FTmk1(DVD)",
+     "anim_id": 33057
+    },
+    {
+     "id": 183,
+     "name": "Co_BRolrk00",
+     "anim": "naco_Bmk1(DVD)",
+     "anim_id": 33059
+    },
+    {
+     "id": 185,
+     "name": "Co_BRolrkL0",
+     "anim": "naco_BTmk1(DVD)",
+     "anim_id": 33061
+    },
+    {
+     "id": 188,
+     "name": "Co_Rol_lrk",
+     "anim": "Mco_grshoper(DVD)",
+     "anim_id": 16400
+    },
+    {
+     "id": 193,
+     "name": "Co_Uokirk01",
+     "anim": "naco_utmk1(DVD)",
+     "anim_id": 33066
+    },
+    {
+     "id": 201,
+     "name": "Co_UokirkR1",
+     "anim": "naco_utTmk1(DVD)",
+     "anim_id": 33072
+    },
+    {
+     "id": 1535,
+     "name": "He_jplk00FD",
+     "anim": "hei_rsk02(DVD)",
+     "anim_id": 16664
+    },
+    {
+     "id": 1537,
+     "name": "He_rsk01",
+     "anim": "hei_rsk01(DVD)",
+     "anim_id": 16667
+    },
+    {
+     "id": 1538,
+     "name": "Co_jprk00",
+     "anim": "sjplki00(DVD)",
+     "anim_id": 16668
+    },
+    {
+     "id": 1539,
+     "name": "Co_jprk00B",
+     "anim": "sjplki00(DVD)",
+     "anim_id": 16668
+    },
+    {
+     "id": 1540,
+     "name": "Co_jprk01",
+     "anim": "Bco_jprk01n(DVD)",
+     "anim_id": 16670
+    },
+    {
+     "id": 1541,
+     "name": "Co_jprk01F",
+     "anim": "Bco_jprk01n(DVD)",
+     "anim_id": 16670
+    },
+    {
+     "id": 1542,
+     "name": "Co_jprk01B",
+     "anim": "Bco_jprk01n(DVD)",
+     "anim_id": 16670
+    },
+    {
+     "id": 1543,
+     "name": "Co_jprk02",
+     "anim": "Bco_jprk02n(DVD)",
+     "anim_id": 16673
+    },
+    {
+     "id": 1544,
+     "name": "Co_jprk02F",
+     "anim": "Bco_jprk02n(DVD)",
+     "anim_id": 16673
+    },
+    {
+     "id": 1545,
+     "name": "Co_jprk02B",
+     "anim": "Bco_jprk02n(DVD)",
+     "anim_id": 16673
+    },
+    {
+     "id": 1546,
+     "name": "Co_jprk04",
+     "anim": "Bco_jprk04n(DVD)",
+     "anim_id": 16676
+    },
+    {
+     "id": 1547,
+     "name": "Co_jprk04F",
+     "anim": "Bco_jprk04n(DVD)",
+     "anim_id": 16676
+    },
+    {
+     "id": 1548,
+     "name": "Co_jprk04B",
+     "anim": "Bco_jprk04n(DVD)",
+     "anim_id": 16676
+    },
+    {
+     "id": 1549,
+     "name": "Co_jpRrk00",
+     "anim": "Bco_sjprk_r(DVD)",
+     "anim_id": 16679
+    },
+    {
+     "id": 1550,
+     "name": "Co_jpRrk00F",
+     "anim": "Bco_sjprk_r(DVD)",
+     "anim_id": 16679
+    },
+    {
+     "id": 1551,
+     "name": "Co_jpRrk00B",
+     "anim": "Bco_sjprk_r(DVD)",
+     "anim_id": 16679
+    },
+    {
+     "id": 1552,
+     "name": "He_jprk00F",
+     "anim": "yohe_jmprk(DVD)",
+     "anim_id": 16682
+    },
+    {
+     "id": 1561,
+     "name": "Co_sjprk11F",
+     "anim": "sjplki11(DVD)",
+     "anim_id": 16687
+    },
+    {
+     "id": 1562,
+     "name": "Co_sjprk12F",
+     "anim": "sjplki12(DVD)",
+     "anim_id": 16688
+    },
+    {
+     "id": 1563,
+     "name": "Co_sjprk13F",
+     "anim": "sjplki13(DVD)",
+     "anim_id": 16689
+    },
+    {
+     "id": 1576,
+     "name": "He_lprpFrk",
+     "anim": "rplp2f(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1581,
+     "name": "He_SHINJYUK3",
+     "anim": "o_lpsjklxb2(DVD)",
+     "anim_id": 16700
+    },
+    {
+     "id": 1595,
+     "name": "He_lkrk00",
+     "anim": "mbhe_lkrk(DVD)",
+     "anim_id": 16710
+    },
+    {
+     "id": 1596,
+     "name": "He_rk00",
+     "anim": "Ukz_PSlk4f(DVD)",
+     "anim_id": 16711
+    },
+    {
+     "id": 1600,
+     "name": "Co_R_lk00L",
+     "anim": "naco_lfurik(DVD)",
+     "anim_id": 16714
+    },
+    {
+     "id": 1601,
+     "name": "Co_R_rk00R",
+     "anim": "naco_rfurik(DVD)",
+     "anim_id": 32810
+    },
+    {
+     "id": 1648,
+     "name": "He_s_trk",
+     "anim": "new_stlk(DVD)",
+     "anim_id": 32862
+    },
+    {
+     "id": 1649,
+     "name": "He_s_trk01",
+     "anim": "kz_syllk(DVD)",
+     "anim_id": 16753
+    },
+    {
+     "id": 1660,
+     "name": "He_syark00",
+     "anim": "ygco_syrk(DVD)",
+     "anim_id": 32858
+    },
+    {
+     "id": 1673,
+     "name": "He_s_lprk",
+     "anim": "ozhe_1ckj66a(DVD)",
+     "anim_id": 16769
+    },
+    {
+     "id": 1726,
+     "name": "He_m_k00DG",
+     "anim": "m_k00(DVD)",
+     "anim_id": 16804
+    },
+    {
+     "id": 1732,
+     "name": "He_m_k01MDG",
+     "anim": "m_k01(DVD)",
+     "anim_id": 16805
+    },
+    {
+     "id": 1737,
+     "name": "He_m_k02HDG",
+     "anim": "m_k01(DVD)",
+     "anim_id": 16805
+    },
+    {
+     "id": 1740,
+     "name": "He_m_k02MDG",
+     "anim": "m_k01(DVD)",
+     "anim_id": 16805
+    },
+    {
+     "id": 1744,
+     "name": "He_m_k01DG",
+     "anim": "m_k01(DVD)",
+     "anim_id": 16805
+    },
+    {
+     "id": 1747,
+     "name": "He_m_k02DG",
+     "anim": "m_k01(DVD)",
+     "anim_id": 16805
+    },
+    {
+     "id": 1748,
+     "name": "He_k00",
+     "anim": "hei_k00(DVD)",
+     "anim_id": 16834
+    },
+    {
+     "id": 1749,
+     "name": "He_syrrk",
+     "anim": "kz_syllkX(DVD)",
+     "anim_id": 16835
+    },
+    {
+     "id": 2174,
+     "name": "He_jplk00FDS",
+     "anim": "hei_rsk02(DVD)",
+     "anim_id": 16664
+    },
+    {
+     "id": 2275,
+     "name": "He_lkrk00_7CS",
+     "anim": "mbhe_lkrk(DVD)",
+     "anim_id": 16710
+    }
+   ]
+  },
+  {
+   "wh_key": "ws4,4",
+   "wh_name": "Tsunami Kick",
+   "wh_input": "ws4,4",
+   "t7_id": "heihachi_135",
+   "t7_notation": "WS 4, 4",
+   "status": "mapped",
+   "motbin_move_id": 1649,
+   "motbin_move_name": "He_s_trk01",
+   "anim_name": "kz_syllk(DVD)",
+   "anim_id": 16753,
+   "bank_index": 369,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation 4,4"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 15,
+   "motbin_damage": 16,
+   "mvl_row": 59,
+   "mvl_name": "Tsunami Kick",
+   "mvl_notation": "4,4",
+   "motbin_candidates": [
+    {
+     "id": 1649,
+     "name": "He_s_trk01",
+     "anim": "kz_syllk(DVD)",
+     "anim_id": 16753
+    },
+    {
+     "id": 1749,
+     "name": "He_syrrk",
+     "anim": "kz_syllkX(DVD)",
+     "anim_id": 16835
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 369,
+    "rel_offset": 2778472,
+    "size": 2228,
+    "format_word": 100,
+    "sha256": "2f725dd4d5d9b8d5807b291735af4c15b8ba6898d8e481e5c465590d8b260d6b",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "1~t8.heihachi",
+   "wh_name": "Jab",
+   "wh_input": "1",
+   "t7_id": "heihachi_2",
+   "t7_notation": "1",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "motbin graph candidate exists but no MVL corroboration and/or non-unique \u2014 held as unmapped per no-guess rule",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1498,
+     "name": "Co_jplp00",
+     "anim": "Bco_sjplp_n(DVD)",
+     "anim_id": 16628
+    },
+    {
+     "id": 1499,
+     "name": "Co_jplp00F",
+     "anim": "Bco_sjplp_n(DVD)",
+     "anim_id": 16628
+    },
+    {
+     "id": 1500,
+     "name": "Co_jplp00B",
+     "anim": "Bco_sjplp_n(DVD)",
+     "anim_id": 16628
+    },
+    {
+     "id": 1501,
+     "name": "Co_jplp01",
+     "anim": "Bco_jplp01n(DVD)",
+     "anim_id": 16631
+    },
+    {
+     "id": 1502,
+     "name": "Co_jplp01F",
+     "anim": "Bco_jplp01n(DVD)",
+     "anim_id": 16631
+    },
+    {
+     "id": 1503,
+     "name": "Co_jplp01B",
+     "anim": "Bco_jplp01n(DVD)",
+     "anim_id": 16631
+    },
+    {
+     "id": 1504,
+     "name": "Co_jplp02",
+     "anim": "Bco_jplp02n(DVD)",
+     "anim_id": 16634
+    },
+    {
+     "id": 1505,
+     "name": "Co_jplp02F",
+     "anim": "Bco_jplp02n(DVD)",
+     "anim_id": 16634
+    },
+    {
+     "id": 1506,
+     "name": "Co_jplp02B",
+     "anim": "Bco_jplp02n(DVD)",
+     "anim_id": 16634
+    },
+    {
+     "id": 1507,
+     "name": "Co_jplp03",
+     "anim": "Bco_jplp03n(DVD)",
+     "anim_id": 16637
+    },
+    {
+     "id": 1508,
+     "name": "Co_jplp03F",
+     "anim": "Bco_jplp03n(DVD)",
+     "anim_id": 16637
+    },
+    {
+     "id": 1509,
+     "name": "Co_jplp03B",
+     "anim": "Bco_jplp03n(DVD)",
+     "anim_id": 16637
+    },
+    {
+     "id": 1510,
+     "name": "Co_jpRlp00",
+     "anim": "Bco_sjplp_rn(DVD)",
+     "anim_id": 16640
+    },
+    {
+     "id": 1511,
+     "name": "Co_jpRlp00F",
+     "anim": "Bco_sjplp_rn(DVD)",
+     "anim_id": 16640
+    },
+    {
+     "id": 1512,
+     "name": "Co_jpRlp00B",
+     "anim": "Bco_sjplp_rn(DVD)",
+     "anim_id": 16640
+    },
+    {
+     "id": 1553,
+     "name": "Co_sjplp01F",
+     "anim": "sjprpu01(DVD)",
+     "anim_id": 32823
+    },
+    {
+     "id": 1554,
+     "name": "Co_sjplp02F",
+     "anim": "sjprpu02(DVD)",
+     "anim_id": 32824
+    },
+    {
+     "id": 1555,
+     "name": "Co_sjplp03F",
+     "anim": "sjprpu03(DVD)",
+     "anim_id": 32825
+    },
+    {
+     "id": 1570,
+     "name": "He_lpf",
+     "anim": "m_rpf(DVD)",
+     "anim_id": 16690
+    },
+    {
+     "id": 1575,
+     "name": "He_Gosyouh1",
+     "anim": "Yhe_gohsyo(DVD)",
+     "anim_id": 16695
+    },
+    {
+     "id": 1580,
+     "name": "He_lp4rplp",
+     "anim": "yohe_o_lpdsrpxb(DVD)",
+     "anim_id": 16699
+    },
+    {
+     "id": 1584,
+     "name": "He_Gosyouh2",
+     "anim": "Yhe_gohsyo(DVD)",
+     "anim_id": 16695
+    },
+    {
+     "id": 1588,
+     "name": "He_s_rplp",
+     "anim": "nahe_28rp2lp(DVD)",
+     "anim_id": 16707
+    },
+    {
+     "id": 1590,
+     "name": "He_Gosyouha",
+     "anim": "kohe_ahohsog(DVD)",
+     "anim_id": 16708
+    },
+    {
+     "id": 1602,
+     "name": "He_lp00F",
+     "anim": "hess_s4_lp",
+     "anim_id": 101
+    },
+    {
+     "id": 1605,
+     "name": "He_up00",
+     "anim": "hei_up00(DVD)",
+     "anim_id": 16718
+    },
+    {
+     "id": 1619,
+     "name": "He_WK00F_LP",
+     "anim": "hess_s4_fer2boon",
+     "anim_id": 102
+    },
+    {
+     "id": 1621,
+     "name": "He_WK00F_RP01",
+     "anim": "kohe_fer2zun(DVD)",
+     "anim_id": 16730
+    },
+    {
+     "id": 1622,
+     "name": "He_WK00F_RP2",
+     "anim": "kohe_fer2zunzun(DVD)",
+     "anim_id": 16732
+    },
+    {
+     "id": 1641,
+     "name": "He_s_tlp00",
+     "anim": "hess_s4_stlp13",
+     "anim_id": 108
+    },
+    {
+     "id": 1654,
+     "name": "Co_syalp00",
+     "anim": "kzco_sylp01_10f(DVD)",
+     "anim_id": 16755
+    },
+    {
+     "id": 1664,
+     "name": "He_3lplpRev",
+     "anim": "hess_s4_3lp",
+     "anim_id": 114
+    },
+    {
+     "id": 1673,
+     "name": "He_s_lprk",
+     "anim": "ozhe_1ckj66a(DVD)",
+     "anim_id": 16769
+    },
+    {
+     "id": 1707,
+     "name": "He_shoryu_S",
+     "anim": "shoryu24(DVD)",
+     "anim_id": 16797
+    },
+    {
+     "id": 1724,
+     "name": "He_m_k00AG",
+     "anim": "m_k00(DVD)",
+     "anim_id": 16804
+    },
+    {
+     "id": 1729,
+     "name": "He_dslpZ",
+     "anim": "hekb_s3_nar2rai",
+     "anim_id": 116
+    },
+    {
+     "id": 1731,
+     "name": "He_m_k01MAG",
+     "anim": "m_k01(DVD)",
+     "anim_id": 16805
+    },
+    {
+     "id": 1735,
+     "name": "He_dslp30",
+     "anim": "hekb_s3_nar2rai",
+     "anim_id": 118
+    },
+    {
+     "id": 1736,
+     "name": "He_m_k02HAG",
+     "anim": "m_k01(DVD)",
+     "anim_id": 16805
+    },
+    {
+     "id": 1739,
+     "name": "He_m_k02MAG",
+     "anim": "m_k01(DVD)",
+     "anim_id": 16805
+    },
+    {
+     "id": 1743,
+     "name": "He_m_k01AG",
+     "anim": "m_k01(DVD)",
+     "anim_id": 16805
+    },
+    {
+     "id": 1746,
+     "name": "He_m_k02AG",
+     "anim": "m_k01(DVD)",
+     "anim_id": 16805
+    },
+    {
+     "id": 1751,
+     "name": "He_tk5com_03",
+     "anim": "nahe_mr2lp(DVD)",
+     "anim_id": 16837
+    }
+   ]
+  },
+  {
+   "wh_key": "1+3~t8.heihachi",
+   "wh_name": "Neck Breaker",
+   "wh_input": "1+3",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1801,
+   "motbin_move_name": "ThrmvLB2_00",
+   "anim_name": "naco_tukami2l(DVD)",
+   "anim_id": 33477,
+   "bank_index": 709,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation 1+3"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x8000",
+   "motbin_startup": 12,
+   "motbin_damage": 16384,
+   "mvl_row": 67,
+   "mvl_name": "Neck Breaker",
+   "mvl_notation": "1+3",
+   "motbin_candidates": [
+    {
+     "id": 770,
+     "name": "ThrmvLB2_00i",
+     "anim": "naco_tukami2l(DVD)",
+     "anim_id": 33477
+    },
+    {
+     "id": 772,
+     "name": "ThrmvBB2_L0i",
+     "anim": "Yco_BcatchS(DVD)",
+     "anim_id": 33479
+    },
+    {
+     "id": 1801,
+     "name": "ThrmvLB2_00",
+     "anim": "naco_tukami2l(DVD)",
+     "anim_id": 33477
+    },
+    {
+     "id": 1807,
+     "name": "ThrmvBB2_L0",
+     "anim": "Yco_BcatchS(DVD)",
+     "anim_id": 33479
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x8000",
+    "source": "common.arc",
+    "section": 0,
+    "entry": 709,
+    "rel_offset": 3523552,
+    "size": 2176,
+    "format_word": 100,
+    "sha256": "2d57080bd30ef0c00900c403fc03108b0222c3a964c27df36116b1f9745d58a7",
+    "blob_file": "common_clips.bin"
+   }
+  },
+  {
+   "wh_key": "2~t8.heihachi",
+   "wh_name": "DIABLO 2",
+   "wh_input": "2",
+   "t7_id": "heihachi_28",
+   "t7_notation": "2",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "motbin graph candidate exists but no MVL corroboration and/or non-unique \u2014 held as unmapped per no-guess rule",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 229,
+     "name": "Co_sJP_RP",
+     "anim": "naco_9rp(DVD)",
+     "anim_id": 32851
+    },
+    {
+     "id": 1516,
+     "name": "Co_jprp03",
+     "anim": "Bco_jprp03n(DVD)",
+     "anim_id": 16646
+    },
+    {
+     "id": 1517,
+     "name": "Co_jprp03F",
+     "anim": "Bco_jprp03n(DVD)",
+     "anim_id": 16646
+    },
+    {
+     "id": 1518,
+     "name": "Co_jprp03B",
+     "anim": "Bco_jprp03n(DVD)",
+     "anim_id": 16646
+    },
+    {
+     "id": 1556,
+     "name": "Co_sjprp03F",
+     "anim": "sjplpu03(DVD)",
+     "anim_id": 32839
+    },
+    {
+     "id": 1571,
+     "name": "He_rp1",
+     "anim": "kohe_lplprp(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1572,
+     "name": "He_lprpF",
+     "anim": "rplp2f(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1573,
+     "name": "He_rprp01",
+     "anim": "Ckz_PSlplp01(DVD)",
+     "anim_id": 16693
+    },
+    {
+     "id": 1582,
+     "name": "He_rp00",
+     "anim": "new_lp2(DVD)",
+     "anim_id": 16701
+    },
+    {
+     "id": 1583,
+     "name": "He_rprp00",
+     "anim": "Ckz_PSlplp01(DVD)",
+     "anim_id": 16693
+    },
+    {
+     "id": 1587,
+     "name": "He_s_rp",
+     "anim": "ozhe_1csusyutou(DVD)",
+     "anim_id": 16706
+    },
+    {
+     "id": 1605,
+     "name": "He_up00",
+     "anim": "hei_up00(DVD)",
+     "anim_id": 16718
+    },
+    {
+     "id": 1620,
+     "name": "He_WK00F_RP",
+     "anim": "kohe_fer2zun(DVD)",
+     "anim_id": 16730
+    },
+    {
+     "id": 1626,
+     "name": "He_binkiriura",
+     "anim": "kohe_bc2urap(DVD)",
+     "anim_id": 16736
+    },
+    {
+     "id": 1638,
+     "name": "He_4lkrp",
+     "anim": "hekw_s4_4lkrp",
+     "anim_id": 106
+    },
+    {
+     "id": 1640,
+     "name": "He_rk00B",
+     "anim": "kohe_qrk(DVD)",
+     "anim_id": 16745
+    },
+    {
+     "id": 1643,
+     "name": "He_s_trp00",
+     "anim": "Khe_yoke01(DVD)",
+     "anim_id": 16750
+    },
+    {
+     "id": 1656,
+     "name": "Co_syarp00",
+     "anim": "naco_syrp(DVD)",
+     "anim_id": 16757
+    },
+    {
+     "id": 1666,
+     "name": "He_musou03",
+     "anim": "kohe_newmuso(DVD)",
+     "anim_id": 16762
+    },
+    {
+     "id": 1685,
+     "name": "He_2lprp",
+     "anim": "hekb_2lprp_75(DVD)",
+     "anim_id": 16779
+    },
+    {
+     "id": 1707,
+     "name": "He_shoryu_S",
+     "anim": "shoryu24(DVD)",
+     "anim_id": 16797
+    },
+    {
+     "id": 1708,
+     "name": "He_shoryu_N",
+     "anim": "shoryu24(DVD)",
+     "anim_id": 16797
+    },
+    {
+     "id": 1752,
+     "name": "He_tk5com_02",
+     "anim": "yohe_46RPRP(DVD)",
+     "anim_id": 16838
+    },
+    {
+     "id": 2278,
+     "name": "He_rp1_7CS",
+     "anim": "kohe_lplprp(DVD)",
+     "anim_id": 16691
+    }
+   ]
+  },
+  {
+   "wh_key": "2+4~t8.heihachi",
+   "wh_name": "Jumping Powerbomb",
+   "wh_input": "2+4",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1803,
+   "motbin_move_name": "ThrmvRB2_00",
+   "anim_name": "msco_rtukami(DVD)",
+   "anim_id": 16887,
+   "bank_index": 503,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation 2+4"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 12,
+   "motbin_damage": 16384,
+   "mvl_row": 69,
+   "mvl_name": "Jumping Powerbomb",
+   "mvl_notation": "2+4",
+   "motbin_candidates": [
+    {
+     "id": 1803,
+     "name": "ThrmvRB2_00",
+     "anim": "msco_rtukami(DVD)",
+     "anim_id": 16887
+    },
+    {
+     "id": 1808,
+     "name": "ThrmvBB2_R0",
+     "anim": "Yco_BcatchS(DVD)",
+     "anim_id": 33479
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "heirotsm.arc",
+    "section": 0,
+    "entry": 503,
+    "rel_offset": 3044020,
+    "size": 2152,
+    "format_word": 100,
+    "sha256": "955128cb324a5f0fd65352096ae812134ff51db2493f8a6f3cb34d6a60fd7de0",
+    "blob_file": "hei_clips.bin"
+   }
+  },
+  {
+   "wh_key": "3~t8.heihachi",
+   "wh_name": "DIABLO 3",
+   "wh_input": "3",
+   "t7_id": "heihachi_34",
+   "t7_notation": "3",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "motbin graph candidate exists but no MVL corroboration and/or non-unique \u2014 held as unmapped per no-guess rule",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 168,
+     "name": "Co_Aokilk00",
+     "anim": "naco_aolowk1(DVD)",
+     "anim_id": 33044
+    },
+    {
+     "id": 170,
+     "name": "Co_AokilkL0",
+     "anim": "naco_aotlk1(DVD)",
+     "anim_id": 33046
+    },
+    {
+     "id": 172,
+     "name": "Co_ADwSlk00",
+     "anim": "Mco_aolok2(DVD)",
+     "anim_id": 33048
+    },
+    {
+     "id": 174,
+     "name": "Co_ADwSlkR0",
+     "anim": "Mco_aoTlk3(DVD)",
+     "anim_id": 33050
+    },
+    {
+     "id": 175,
+     "name": "Co_ADwSlkR1",
+     "anim": "Mco_aoTlk4(DVD)",
+     "anim_id": 33051
+    },
+    {
+     "id": 178,
+     "name": "Co_FRollk00",
+     "anim": "naco_Flk1(DVD)",
+     "anim_id": 33054
+    },
+    {
+     "id": 180,
+     "name": "Co_FRollkL0",
+     "anim": "naco_FTlk1(DVD)",
+     "anim_id": 33056
+    },
+    {
+     "id": 182,
+     "name": "Co_BRollk00",
+     "anim": "naco_Blk1(DVD)",
+     "anim_id": 33058
+    },
+    {
+     "id": 184,
+     "name": "Co_BRollkL0",
+     "anim": "naco_BTlk1(DVD)",
+     "anim_id": 33060
+    },
+    {
+     "id": 188,
+     "name": "Co_Rol_lrk",
+     "anim": "Mco_grshoper(DVD)",
+     "anim_id": 16400
+    },
+    {
+     "id": 191,
+     "name": "Co_Uokilk01",
+     "anim": "naco_utlk1(DVD)",
+     "anim_id": 33065
+    },
+    {
+     "id": 195,
+     "name": "Co_UokilkR1",
+     "anim": "coyt_ut_okigeri_l(DVD)",
+     "anim_id": 33067
+    },
+    {
+     "id": 1520,
+     "name": "Co_jplk00",
+     "anim": "sjprki10(DVD)",
+     "anim_id": 16650
+    },
+    {
+     "id": 1521,
+     "name": "Co_jplk00B",
+     "anim": "sjprki10(DVD)",
+     "anim_id": 16650
+    },
+    {
+     "id": 1522,
+     "name": "Co_jpRlk00",
+     "anim": "Bco_sjpk_r(DVD)",
+     "anim_id": 16652
+    },
+    {
+     "id": 1523,
+     "name": "Co_jpRlk00F",
+     "anim": "Bco_sjpk_r(DVD)",
+     "anim_id": 16652
+    },
+    {
+     "id": 1524,
+     "name": "Co_jpRlk00B",
+     "anim": "Bco_sjpk_r(DVD)",
+     "anim_id": 16652
+    },
+    {
+     "id": 1525,
+     "name": "Co_jplk01",
+     "anim": "Bco_jplk01n(DVD)",
+     "anim_id": 16655
+    },
+    {
+     "id": 1526,
+     "name": "Co_jplk01F",
+     "anim": "Bco_jplk01n(DVD)",
+     "anim_id": 16655
+    },
+    {
+     "id": 1527,
+     "name": "Co_jplk01B",
+     "anim": "Bco_jplk01n(DVD)",
+     "anim_id": 16655
+    },
+    {
+     "id": 1528,
+     "name": "Co_jplk02",
+     "anim": "Bco_jplk02n(DVD)",
+     "anim_id": 16658
+    },
+    {
+     "id": 1529,
+     "name": "Co_jplk02F",
+     "anim": "Bco_jplk02n(DVD)",
+     "anim_id": 16658
+    },
+    {
+     "id": 1530,
+     "name": "Co_jplk02B",
+     "anim": "Bco_jplk02n(DVD)",
+     "anim_id": 16658
+    },
+    {
+     "id": 1531,
+     "name": "Co_jplk04",
+     "anim": "Bco_jplk04n(DVD)",
+     "anim_id": 16661
+    },
+    {
+     "id": 1532,
+     "name": "Co_jplk04F",
+     "anim": "Bco_jplk04n(DVD)",
+     "anim_id": 16661
+    },
+    {
+     "id": 1533,
+     "name": "Co_jplk04B",
+     "anim": "Bco_jplk04n(DVD)",
+     "anim_id": 16661
+    },
+    {
+     "id": 1534,
+     "name": "He_jplk00F",
+     "anim": "hei_rsk02(DVD)",
+     "anim_id": 16664
+    },
+    {
+     "id": 1558,
+     "name": "Co_sjplk11F",
+     "anim": "sjprki11(DVD)",
+     "anim_id": 16684
+    },
+    {
+     "id": 1559,
+     "name": "Co_sjplk12F",
+     "anim": "sjprki12(DVD)",
+     "anim_id": 16685
+    },
+    {
+     "id": 1560,
+     "name": "Co_sjplk13F",
+     "anim": "sjprki13(DVD)",
+     "anim_id": 16686
+    },
+    {
+     "id": 1594,
+     "name": "He_lk00",
+     "anim": "kohe_lk(DVD)",
+     "anim_id": 16709
+    },
+    {
+     "id": 1597,
+     "name": "He_hasai",
+     "anim": "Bmt_hasai(DVD)",
+     "anim_id": 16712
+    },
+    {
+     "id": 1600,
+     "name": "Co_R_lk00L",
+     "anim": "naco_lfurik(DVD)",
+     "anim_id": 16714
+    },
+    {
+     "id": 1601,
+     "name": "Co_R_rk00R",
+     "anim": "naco_rfurik(DVD)",
+     "anim_id": 32810
+    },
+    {
+     "id": 1604,
+     "name": "He_6rplk",
+     "anim": "hekb_hizarenkei_mox(DVD)",
+     "anim_id": 16717
+    },
+    {
+     "id": 1611,
+     "name": "He_kakatA",
+     "anim": "Ukz_PSkakat(DVD)",
+     "anim_id": 16722
+    },
+    {
+     "id": 1639,
+     "name": "He_lk02B",
+     "anim": "hekw_s4_4lklk",
+     "anim_id": 107
+    },
+    {
+     "id": 1645,
+     "name": "He_s_tlk00",
+     "anim": "hekb_s3_stlk",
+     "anim_id": 110
+    },
+    {
+     "id": 1659,
+     "name": "Co_syalk00",
+     "anim": "new_syrk(DVD)",
+     "anim_id": 32863
+    },
+    {
+     "id": 1711,
+     "name": "He_sjk01",
+     "anim": "hei_sjk02(DVD)",
+     "anim_id": 16802
+    },
+    {
+     "id": 1712,
+     "name": "He_sjk02",
+     "anim": "hei_sjk01(DVD)",
+     "anim_id": 16803
+    },
+    {
+     "id": 1753,
+     "name": "He_tk5com_04",
+     "anim": "hess_el2qulk(DVD)",
+     "anim_id": 16839
+    }
+   ]
+  },
+  {
+   "wh_key": "4~t8.heihachi",
+   "wh_name": "Otoko Geri",
+   "wh_input": "4",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "motbin graph candidate exists but no MVL corroboration and/or non-unique \u2014 held as unmapped per no-guess rule",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 169,
+     "name": "Co_Aokirk00",
+     "anim": "naco_aomk1(DVD)",
+     "anim_id": 33045
+    },
+    {
+     "id": 171,
+     "name": "Co_AokirkL0",
+     "anim": "naco_aotmk1(DVD)",
+     "anim_id": 33047
+    },
+    {
+     "id": 173,
+     "name": "Co_ADwSrk00",
+     "anim": "Mco_aomk2(DVD)",
+     "anim_id": 33049
+    },
+    {
+     "id": 176,
+     "name": "Co_ADwSrkR0",
+     "anim": "Mco_aoTmk3(DVD)",
+     "anim_id": 33052
+    },
+    {
+     "id": 177,
+     "name": "Co_ADwSrkR1",
+     "anim": "Mco_aoTmk4(DVD)",
+     "anim_id": 33053
+    },
+    {
+     "id": 179,
+     "name": "Co_FRolrk00",
+     "anim": "naco_Fmk1(DVD)",
+     "anim_id": 33055
+    },
+    {
+     "id": 180,
+     "name": "Co_FRollkL0",
+     "anim": "naco_FTlk1(DVD)",
+     "anim_id": 33056
+    },
+    {
+     "id": 181,
+     "name": "Co_FRolrkL0",
+     "anim": "naco_FTmk1(DVD)",
+     "anim_id": 33057
+    },
+    {
+     "id": 183,
+     "name": "Co_BRolrk00",
+     "anim": "naco_Bmk1(DVD)",
+     "anim_id": 33059
+    },
+    {
+     "id": 185,
+     "name": "Co_BRolrkL0",
+     "anim": "naco_BTmk1(DVD)",
+     "anim_id": 33061
+    },
+    {
+     "id": 188,
+     "name": "Co_Rol_lrk",
+     "anim": "Mco_grshoper(DVD)",
+     "anim_id": 16400
+    },
+    {
+     "id": 193,
+     "name": "Co_Uokirk01",
+     "anim": "naco_utmk1(DVD)",
+     "anim_id": 33066
+    },
+    {
+     "id": 201,
+     "name": "Co_UokirkR1",
+     "anim": "naco_utTmk1(DVD)",
+     "anim_id": 33072
+    },
+    {
+     "id": 1535,
+     "name": "He_jplk00FD",
+     "anim": "hei_rsk02(DVD)",
+     "anim_id": 16664
+    },
+    {
+     "id": 1537,
+     "name": "He_rsk01",
+     "anim": "hei_rsk01(DVD)",
+     "anim_id": 16667
+    },
+    {
+     "id": 1538,
+     "name": "Co_jprk00",
+     "anim": "sjplki00(DVD)",
+     "anim_id": 16668
+    },
+    {
+     "id": 1539,
+     "name": "Co_jprk00B",
+     "anim": "sjplki00(DVD)",
+     "anim_id": 16668
+    },
+    {
+     "id": 1540,
+     "name": "Co_jprk01",
+     "anim": "Bco_jprk01n(DVD)",
+     "anim_id": 16670
+    },
+    {
+     "id": 1541,
+     "name": "Co_jprk01F",
+     "anim": "Bco_jprk01n(DVD)",
+     "anim_id": 16670
+    },
+    {
+     "id": 1542,
+     "name": "Co_jprk01B",
+     "anim": "Bco_jprk01n(DVD)",
+     "anim_id": 16670
+    },
+    {
+     "id": 1543,
+     "name": "Co_jprk02",
+     "anim": "Bco_jprk02n(DVD)",
+     "anim_id": 16673
+    },
+    {
+     "id": 1544,
+     "name": "Co_jprk02F",
+     "anim": "Bco_jprk02n(DVD)",
+     "anim_id": 16673
+    },
+    {
+     "id": 1545,
+     "name": "Co_jprk02B",
+     "anim": "Bco_jprk02n(DVD)",
+     "anim_id": 16673
+    },
+    {
+     "id": 1546,
+     "name": "Co_jprk04",
+     "anim": "Bco_jprk04n(DVD)",
+     "anim_id": 16676
+    },
+    {
+     "id": 1547,
+     "name": "Co_jprk04F",
+     "anim": "Bco_jprk04n(DVD)",
+     "anim_id": 16676
+    },
+    {
+     "id": 1548,
+     "name": "Co_jprk04B",
+     "anim": "Bco_jprk04n(DVD)",
+     "anim_id": 16676
+    },
+    {
+     "id": 1549,
+     "name": "Co_jpRrk00",
+     "anim": "Bco_sjprk_r(DVD)",
+     "anim_id": 16679
+    },
+    {
+     "id": 1550,
+     "name": "Co_jpRrk00F",
+     "anim": "Bco_sjprk_r(DVD)",
+     "anim_id": 16679
+    },
+    {
+     "id": 1551,
+     "name": "Co_jpRrk00B",
+     "anim": "Bco_sjprk_r(DVD)",
+     "anim_id": 16679
+    },
+    {
+     "id": 1552,
+     "name": "He_jprk00F",
+     "anim": "yohe_jmprk(DVD)",
+     "anim_id": 16682
+    },
+    {
+     "id": 1561,
+     "name": "Co_sjprk11F",
+     "anim": "sjplki11(DVD)",
+     "anim_id": 16687
+    },
+    {
+     "id": 1562,
+     "name": "Co_sjprk12F",
+     "anim": "sjplki12(DVD)",
+     "anim_id": 16688
+    },
+    {
+     "id": 1563,
+     "name": "Co_sjprk13F",
+     "anim": "sjplki13(DVD)",
+     "anim_id": 16689
+    },
+    {
+     "id": 1576,
+     "name": "He_lprpFrk",
+     "anim": "rplp2f(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1581,
+     "name": "He_SHINJYUK3",
+     "anim": "o_lpsjklxb2(DVD)",
+     "anim_id": 16700
+    },
+    {
+     "id": 1595,
+     "name": "He_lkrk00",
+     "anim": "mbhe_lkrk(DVD)",
+     "anim_id": 16710
+    },
+    {
+     "id": 1596,
+     "name": "He_rk00",
+     "anim": "Ukz_PSlk4f(DVD)",
+     "anim_id": 16711
+    },
+    {
+     "id": 1600,
+     "name": "Co_R_lk00L",
+     "anim": "naco_lfurik(DVD)",
+     "anim_id": 16714
+    },
+    {
+     "id": 1601,
+     "name": "Co_R_rk00R",
+     "anim": "naco_rfurik(DVD)",
+     "anim_id": 32810
+    },
+    {
+     "id": 1648,
+     "name": "He_s_trk",
+     "anim": "new_stlk(DVD)",
+     "anim_id": 32862
+    },
+    {
+     "id": 1649,
+     "name": "He_s_trk01",
+     "anim": "kz_syllk(DVD)",
+     "anim_id": 16753
+    },
+    {
+     "id": 1660,
+     "name": "He_syark00",
+     "anim": "ygco_syrk(DVD)",
+     "anim_id": 32858
+    },
+    {
+     "id": 1673,
+     "name": "He_s_lprk",
+     "anim": "ozhe_1ckj66a(DVD)",
+     "anim_id": 16769
+    },
+    {
+     "id": 1726,
+     "name": "He_m_k00DG",
+     "anim": "m_k00(DVD)",
+     "anim_id": 16804
+    },
+    {
+     "id": 1732,
+     "name": "He_m_k01MDG",
+     "anim": "m_k01(DVD)",
+     "anim_id": 16805
+    },
+    {
+     "id": 1737,
+     "name": "He_m_k02HDG",
+     "anim": "m_k01(DVD)",
+     "anim_id": 16805
+    },
+    {
+     "id": 1740,
+     "name": "He_m_k02MDG",
+     "anim": "m_k01(DVD)",
+     "anim_id": 16805
+    },
+    {
+     "id": 1744,
+     "name": "He_m_k01DG",
+     "anim": "m_k01(DVD)",
+     "anim_id": 16805
+    },
+    {
+     "id": 1747,
+     "name": "He_m_k02DG",
+     "anim": "m_k01(DVD)",
+     "anim_id": 16805
+    },
+    {
+     "id": 1748,
+     "name": "He_k00",
+     "anim": "hei_k00(DVD)",
+     "anim_id": 16834
+    },
+    {
+     "id": 1749,
+     "name": "He_syrrk",
+     "anim": "kz_syllkX(DVD)",
+     "anim_id": 16835
+    },
+    {
+     "id": 2174,
+     "name": "He_jplk00FDS",
+     "anim": "hei_rsk02(DVD)",
+     "anim_id": 16664
+    },
+    {
+     "id": 2275,
+     "name": "He_lkrk00_7CS",
+     "anim": "mbhe_lkrk(DVD)",
+     "anim_id": 16710
+    }
+   ]
+  },
+  {
+   "wh_key": "f,n,d,D/F+3",
+   "wh_name": "Earth Scraper Kick",
+   "wh_input": "f,n,d,D/F+3",
+   "t7_id": "heihachi_57",
+   "t7_notation": "f, n, d, d/f+3",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "motbin graph candidate exists but no MVL corroboration and/or non-unique \u2014 held as unmapped per no-guess rule",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1711,
+     "name": "He_sjk01",
+     "anim": "hei_sjk02(DVD)",
+     "anim_id": 16802
+    }
+   ]
+  }
+ ]
+}
