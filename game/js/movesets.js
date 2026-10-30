@@ -26,6 +26,7 @@
    ============================================================ */
 
 // All fighter ids with a wired moveset file (36 playable + 9 staged for lane 2)
+import { installAddedMoves } from './full-movelist.js';
 export const MOVESET_IDS = [
   'pantera', 'demonio', 'phantom', 'diablo', 'skull', 'samura1', 'sakura',
   'rin', 'byou', 'tou', 'sha', 'kai', 'jin_soul', 'retsu', 'zen', 'gyou',
@@ -169,6 +170,45 @@ export async function ensureMovesets(ids) {
 export function getMovesetIndex() { return _index; }
 
 /** Synchronous accessor: the FULL moveset (null until ensureMovesets/registerMoveset). */
+/** Chain-throw stage tag (Tekken multi-part throws, e.g. King's Arm Breaker chain).
+ *  A throw named 'Arm Breaker (AB1)' opens stage AB1; its follow-ups are keyed 'AB1.<buttons>'.
+ *  A T7 throw without a code ('Arm Breaker') opens ARM_BREAKER ('(During Arm Breaker) 1+2,1+2'). */
+export function throwStageTag(name) {
+  const n = String(name || ''); const m = /\(([A-Z]+\d+[a-z]?)\)/.exec(n);
+  return m ? m[1] : n.toUpperCase().replace(/[^A-Z0-9]+/g, '_').replace(/^_+|_+$/g, '') || null;
+}
+/** Moveset keys of one chain-throw stage ('AB1.1,1+2', ...). */
+export function throwStageKeys(fighterId, tag) {
+  const ms = getFighterMoveset(fighterId); if (!ms || !tag) return [];
+  const c = ms._stageKeys || (ms._stageKeys = {});
+  return c[tag] || (c[tag] = Object.keys(ms.moves).filter((k) => k.startsWith(tag + '.')));
+}
+
+/* KOF XV system actions (moveset sweep 2026-10-29): the row's qualifier names the engine
+   system that owns it. Dream Cancel wiki, KOF XV Defense / Offense / Meters pages. */
+export function systemTagOf(input) {
+  const s = String(input || '');
+  if (/\(guard\)/i.test(s)) return 'guard';
+  if (/\(MAX\)/.test(s)) return 'max';
+  if (/\(taunt\)/i.test(s)) return 'taunt';
+  if (/\(throw escape\)/i.test(s)) return 'throw_escape';
+  if (/\(roll\)/i.test(s)) return 'roll';
+  if (/\(backdash\)/i.test(s)) return 'backdash';
+  if (/\(dash\)/i.test(s)) return 'dash';
+  return null;
+}
+/** This fighter's system rows: [{ key, sys, input (canonical) }]. Cached. */
+export function systemRows(fighterId) {
+  const ms = getFighterMoveset(fighterId);
+  if (!ms || !ms.moves) return [];
+  if (ms._sysRows) return ms._sysRows;
+  const out = [];
+  for (const [k, mv] of Object.entries(ms.moves)) {
+    const sys = mv && systemTagOf(mv.input);
+    if (sys) { mv.system = sys; out.push({ key: k, sys, input: canonNotation(mv.input) }); }
+  }
+  return (ms._sysRows = out);
+}
 export function getFighterMoveset(fighterId) {
   const m = _movesets[fighterId] || _g.WH_MOVESETS?.[fighterId] || null;
   return m && m.moves ? m : null;
@@ -181,6 +221,7 @@ export function getMovesetInfo(fighterId) {
 
 /** Register a moveset object directly (fetch path + Node test harness). */
 export function registerMoveset(fighterId, data) {
+  installAddedMoves(fighterId, data); // pt217u: EMWH additions (additive, never overwrites a slot)
   _prepare(data);
   _movesets[fighterId] = data;
   _g.WH_MOVESETS = _g.WH_MOVESETS || {};
@@ -209,8 +250,14 @@ const MOTION_DIRS = {
    dt is one whole frame (tests / tools feed the history frame by frame). */
 const INPUT_FPS = 60;      // T3 frames per second: the unit of every frame constant here
 let DOUBLE_TAP_BUDGET = 0x13;
+/* Running state (Tekken WR / 'while running'; TekkenDocs, wavu wiki): a forward dash that keeps
+   the stick held forward for RUN_HOLD_FRAMES, or a third forward tap inside the dash, turns into a
+   run. Releasing forward leaves RUN_GRACE_FRAMES to press the running move. */
+const RUN_HOLD_FRAMES = 15, RUN_GRACE_FRAMES = 8;
 let DASH_FRAMES = { 'f,f': 30, 'b,b': 32 }; // decoded: every bank's dash row is 30 frames, backdash 30-35
 const HIST_FRAMES = 60;    // history span in frames (fight_sim HISTORY)
+const CHARGE_FRAMES = 40;  // charge motions: frames held in the charge direction (APPROXIMATE, SF/KOF ~40-45f)
+const CHARGE_RELEASE = 10; // frames allowed between leaving the charge and the motion's last step
 const HIST_LEN = 512;      // ring entries: HIST_FRAMES of time at any tick rate up to ~500 Hz
 const T_EPS = 1e-6;        // float slack when summing entry lengths
 const MOTION_HOLD = 4; // v2: final motion step held this long = capital spelling (f,f,F)
@@ -247,6 +294,11 @@ export function splitNotation(n) {
 }
 
 /** 'f,F+2' -> {prefix:'', dirs:['f','f'], btn:'2', neutral:false}; null if not a motion input. */
+/* KOF/SF close-normal range (m, root to root): a plain button within it fires the close normal,
+   beyond it the far normal. Standing bodies never get nearer than 1.45 m (fighter.js push
+   minDist); KOF close range is a short step past body contact, inside far-jab reach. */
+export const CLOSE_RANGE = 1.65;
+
 export function parseMotion(n) {
   const { prefix, body } = splitNotation(n);
   const parts = body.split(',');
@@ -254,8 +306,15 @@ export function parseMotion(n) {
   const lm = /^(?:(qcf|qcb|hcf|hcb|d\/f|d\/b|u\/f|u\/b|f|b|u|d|D\/F|D\/B|U\/F|U\/B|F|B|U|D)\+)?([1-4](?:\+[1-4])*)\*?$/.exec(last);
   if (!lm) return null;
   const head = parts.slice(0, -1);
-  if (head.some(p => !DIR_TOKEN.test(p))) return null; // a button earlier = string, not motion
-  let dirs = head.map(d => d.toLowerCase());
+  /* SF/KOF charge motions ('charge_b,f+1', 'charge_d,u+3', 'charge_db,f+3'): hold the charge
+     direction CHARGE_FRAMES, then the rest of the motion. Before (moveset sweep 2026-10-29)
+     'charge_X' was no direction token, so these moves were unreachable in a fight. */
+  let charge = null;
+  const cm = head.length ? /^charge_(b|d|db|d\/b|u|f)$/i.exec(head[0]) : null;
+  if (cm) { charge = _DIAG[cm[1].toLowerCase()] || cm[1].toLowerCase(); head.shift(); }
+  // KOF/SF heads may chain named motions ('hcb,f+1', 'qcf,qcf+1', 'qcb,qcf+3'): expand them.
+  if (head.some(p => !DIR_TOKEN.test(p) && !MOTION_DIRS[p])) return null; // a button earlier = string, not motion
+  let dirs = [].concat(...head.map(d => MOTION_DIRS[d] || [d.toLowerCase()]));
   // 'f,n,2': the stick returns to neutral and the button comes with NO direction. 'd/b,n,f+2':
   // the n is a real step between directions — T3's sequences carry explicit neutral steps
   // (n,d/f,n,d/f = tap d/f twice), so inner n's stay; only leading/trailing ones go.
@@ -266,14 +325,214 @@ export function parseMotion(n) {
     if (MOTION_DIRS[lm[1]]) dirs = dirs.concat(MOTION_DIRS[lm[1]]);
     else dirs.push(lm[1].toLowerCase());
   }
+  // 'b,3' / 'd,1' (moveset sweep 2026-10-28): ONE direction tap, release, then the bare
+  // button. Returned as a neutral-ending motion so V2 matches tap -> neutral -> press;
+  // before, it was dropped here as a 'plain directional' and only the plain 3 ever fired.
+  if (charge) return dirs.length ? { prefix, dirs, btn: lm[2], neutral, charge } : null;
+  // 'f,n,1' / 'u/f,n,4' are the same tap with the release written out (sweep 2026-10-29: 427 rows
+  // fired the plain button because the explicit n made head.length 2).
+  if (!lm[1] && dirs.length === 1 && dirs[0] !== 'n' && head.filter(p => p.toLowerCase() !== 'n').length === 1) return { prefix, dirs, btn: lm[2], neutral: true };
   if (dirs.filter(d => d !== 'n').length < 2 && !(lm[1] && MOTION_DIRS[lm[1]])) return null; // plain directional
   return { prefix, dirs, btn: lm[2], neutral };
 }
 
+export function legacyAlias(key) {
+  const m = /^((?:qcf|qcb|hcf|hcb|dp|[udfbUDFB](?:\/[udfbUDFB])?)\+)?([PK])$/.exec(key);
+  return m ? (m[1] || '') + (m[2] === 'P' ? '1' : '4') : null;
+}
+/* Display spellings the input buffer never emits ('df+1', 'ws1', 'WS 1', 'SAV b+2', 'FC 1',
+   '(d/f+1)', 'uf+4') -> the canonical notation it does ('d/f+1', 'WS.1', 'SAV.b+2', ...). Moves
+   keyed in those spellings were unreachable in a fight; _prepare slots them on the canonical
+   input too (when nothing else owns it). Returns the input unchanged if nothing applies. */
+const _DIAG = { df: 'd/f', db: 'd/b', uf: 'u/f', ub: 'u/b', DF: 'D/F', DB: 'D/B', UF: 'U/F', UB: 'U/B' };
+/** Named move state ('Bad Stomach') -> stance code ('BAD_STOMACH'). */
+export function stateCode(name) { return String(name).trim().toUpperCase().replace(/[^A-Z0-9]+/g, '_').replace(/^_|_$/g, ''); }
+const TILDE_WINDOW = 0.1; // s (6 frames): '~' = pressed immediately after the previous input
+// Separator order for a follow-up: inside TILDE_WINDOW the '~' branch wins over ',' (wavu wiki).
+const sepOrder = (ctx) => (ctx && ctx.attackT != null && ctx.attackT <= TILDE_WINDOW ? ['~', ',', ':'] : [',', '~', ':']);
+export function canonNotation(n) {
+  if (typeof n !== 'string') return n;
+  let s = n.trim().replace(/\s*\((?:first|second|third|\d+(?:st|nd|rd|th)) hits? only\)\s*$/i, ''); // T7 per-hit row annotation, same input
+  s = s.replace(/^\((.*)\)$/, '$1').trim();
+  /* FGC numpad-letter shorthand (moveset sweep 2026-10-29): 'df' / 'db' / 'UF' as a step of the
+     input are Tekken's d/f / d/b / U/F ('f,n,d,df' crouch dash, 'f,f,db', 'FLE.db'). Before, the
+     whole row was unparseable for every fighter that carries one. */
+  s = s.replace(/(^|[.,~:])(df|db|uf|ub|DF|DB|UF|UB)(?=$|[,+~:#])/g, (m, p, t) => p + _DIAG[t]);
+  // Tekken 'back to opponent, X' (TekkenDocs / wavu wiki: BT X) -> BT.X
+  s = s.replace(/^back to (?:the )?opponent\s*,\s*/i, 'BT.');
+  /* Running moves (TekkenDocs / wavu wiki 'WR', 'while running'): 'WR+2', 'WR 2', 'while running 2'
+     -> 'WR.2'. T3's running rows carry the command '4/6+X' (any horizontal while in the run),
+     imported as 'b/f+X' — never a real stick direction — so they are WR rows too (True Ogre / Chatur). */
+  s = s.replace(/^(?:WR|wr)\s*[.+]?\s*(?=[1-4])/, 'WR.').replace(/^\(?while[- ]running\)?\s*,?\s*(?=[1-4])/i, 'WR.').replace(/^b\/f\+(?=[1-4])/, 'WR.');
+  // 'n+1' / 'n+1+2' (stick explicitly neutral) is the plain button: the input buffer reads a
+  // neutral press as '1', so a move slotted on 'n+1' could never be pressed (sweep 2026-10-29, donor banks).
+  s = s.replace(/(^|\.)n\+(?=[1-4])/i, "$1");
+  /* State-gated rows (sweep 2026-10-29): Tekken ground states and named custom states become
+     stance prefixes the input buffer already resolves. 'while on back, feet towards opponent, 3'
+     -> 'FUFT.3' (face up, feet towards; plain 'while on back' is the same lying state),
+     'while on back, head towards opponent, 4' -> 'FUHT.4'; 'during Bad Stomach, 1+2' /
+     'during Elbow Drop 1+4' -> 'BAD_STOMACH.1+2' / 'ELBOW_DROP.1+4' (stateCode). _prepare maps
+     the move that enters the state (same name) to it in stance_after. */
+  s = s.replace(/^while on back(?:\s*,\s*(feet|head) towards opponent)?\s*,\s*(?=[udfbnUDFB1-4](?:[\/+,]|\s*,|$))/i,
+    (m, w) => (w && w.toLowerCase() === 'head' ? 'FUHT.' : 'FUFT.'));
+  s = s.replace(/^during\s+([A-Za-z][A-Za-z' ]*?[A-Za-z](?: \d(?=\s*,))?)\s*,?\s*(?=[udfbnUDFB]?(?:\/[fbFB])?\+?[1-4](?:[+,~:]|$))/, (m, name) => (/vertical/i.test(name) ? m : /^(forward or backward jump|forward jump peak|forward jump|jump)$/i.test(name) ? 'AIR.' : stateCode(name) + '.'));
+  s = s.replace(/(?:\s*\((?:KOFXV|KOF\s*XV|SFV|sfv|SF6|sf6|T7|T8)\))+\s*$/, ''); // source-game tag on imported rows, same input
+  s = s.replace(/^(d(?:\/[fb])?\+[1-4](?:\+[1-4])*)\s*\(crouch(?:ing)?\)$/i, '$1'); // KOF '(crouch)' note on a d+ button, same input
+  s = s.replace(/^fc\s*\+?\s*(?=[1-4udfbnUDFB])/i, 'FC.'); // 'fc+1' / 'FC 1' -> FC.1 (full-crouch state)
+  s = s.replace(/^\(During Rage\)\s*/i, 'R.');
+  /* KOF context notes on imported rows (moveset sweep 2026-10-29, ryuji-rock): the input is the
+     same, the note is a distance / auto-combo / opponent-state condition. 'far 1', '1 (close)',
+     '1 (Rush)', 'hop u/f+1', 'hcb,hcb+1+2 near', 'f,n,d,d/f+1 downed' -> the bare input;
+     'qcb+3 hold' -> 'qcb+3*' (button held). */
+  s = s.replace(/^(?:far|close|cl\.?|st\.?|hop|jump|j\.)\s+(?=[udfbnUDFB1-4])/i, '');
+  s = s.replace(/\s*\((?:close|far|rush|near|hop|downed|grounded|air|midair)\)\s*$/i, '');
+  s = s.replace(/\s+(?:near|close|far|downed|grounded|on downed opponent|rush)$/i, '');
+  s = s.replace(/^(?:grounded|downed)\s+(?=[udfbnUDFB1-4])/i, '');
+  s = s.replace(/^(.*[1-4])\s+hold$/i, '$1*');
+  s = s.replace(/^(.*[1-4])\s*\((?:hold|held|keep)\)$/i, '$1*');
+  s = s.replace(/^\((BT|FC|WS|SS)\)\s*(?=[udfbnUDFB1-4])/, '$1.'); // '(BT) 2' -> BT.2
+  s = s.replace(/^\((?:grounded|downed|ground)\)\s*/i, '');
+  // KOF mash follow-up: 'hcb,hcb+1+2 (near), tap 1x3' -> 'hcb,hcb+1+2,1,1,1'
+  s = s.replace(/,\s*tap\s+([1-4](?:\+[1-4])*)(?:\s*x\s*(\d))?$/i, (m, btn, n) => ','.concat(Array(+(n || 1)).fill(btn).join(',')));
+  // T7 stance list spelling: 'JGS, 1' / 'JGS* (3 spins), 1' -> 'JGS.1' (press from the stance;
+  // the spin count is a repeat of the stance entry, same input)
+  s = s.replace(/^([A-Z][A-Z0-9_]{1,})\*?(?:\s*\(\d+\s*spins?\))?\s*,\s*(?=[udfbUDFB]?(?:\/[udfbUDFB])?\+?[1-4])/, '$1.');
+  // descriptive note words in parentheses after a button: '(guard)', '(knife)', '(gedan)', '(max)'...
+  s = s.replace(/([1-4*])\s*\((?:near|far|close|rush|knife|gedan|max|MAX|tap|guard|ground|blowback|Irish-whip variant|throw escape|taunt)\)/g, '$1'); // T7 list spelling of the rage state prefix
+  s = s.replace(/^([fb]),\1\s*\((?:roll|dash|backdash)\)$/i, '$1,$1'); // KOF system rows: double tap
+  /* Annotated notations (sweep class 2, 2026-10-29): the note is a mode / variant / meter tag on
+     the same input. '3+4 (cyclone1)', 'n+1+2 (claw)', 'n+1 (nc)', '2+4 (vs2)', '3+4 (vshift, break)',
+     '1 (DF)' -> the bare input; a ', hold' / '(charge)' note means the button is held -> '*'.
+     '1+2_od' (SF6 OD / KOF EX version on the same buttons) -> '1+2'.  'air_charge_b,f+1' -> 'charge_b,f+1'
+     (air is the context, the motion is the same). '360+2' -> 'f,d,b,u+2' (full circle, any start).
+     'fc,f+1+3' -> 'FC.f+1+3'. */
+  s = s.replace(/\s*\((?:cyclone\d*|claw|nc|vs\d|vshift|vrev|vt\d|gsr|neutral|DF|sfv|parry|break|charge|hold)(?:\s*,\s*(?:hold|break|charge))*\)/gi,
+    (m) => (/(?:hold|charge)\s*\)$/i.test(m) ? '*' : ''));
+  s = s.replace(/([1-4])_od\b/gi, '$1');
+  s = s.replace(/^air_(?=charge_)/i, '');
+  s = s.replace(/^360\+(?=[1-4])/, 'f,d,b,u+');
+  s = s.replace(/^fc\s*,\s*(?=[udfbUDFB])/i, 'FC.');
+  s = s.replace(/\b(df|db|uf|ub|DF|DB|UF|UB)(?=\+|,|$|~|:)/g, (m) => _DIAG[m]);
+  s = s.replace(/^(ws|WS)\s*(?=[1-4])/, 'WS.');
+  /* Batch 4 (FGC / TekkenDocs list spellings, moveset sweep 2026-10-29): 'ws+2' / 'WS+1,3' /
+     'BT+1' / 'FC+3' / 'SS+1+2' write the state as a direction-like prefix; the input is the
+     state's press -> 'WS.2', 'BT.1', 'FC.3', 'SS.1+2'. '3,4>3' ('>' = next hit with no delay,
+     RBNorway/T7 lists) is the same string press -> '3,4,3'. HTML-escaped separators from scraped
+     lists ('df+1,&amp;#58;2*') decode to their character; a frame-count note on a hold
+     ('1+2* (40f)') is the same held input. */
+  s = s.replace(/&amp;/g, '&').replace(/&#(\d+);/g, (m, c) => String.fromCharCode(+c));
+  s = s.replace(/^(ws|WS|fc|FC|bt|BT|ss|SS)\+(?=[1-4udfbUDFB])/, (m, st) => st.toUpperCase() + '.');
+  s = s.replace(/([1-4*])\s*\(\d+\s*f\)/gi, '$1');
+  s = s.replace(/,:/g, ':');
+  s = s.replace(/([1-4])>(?=[udfbUDFB]?(?:\/[udfbUDFB])?\+?[1-4])/g, '$1,');
+  s = s.replace(/^([A-Z][A-Z0-9_]{1,})\s+(?=[1-4udfbnUDFB(])/, '$1.');
+  /* Batch 8 (core 8, TekkenDocs / wavu / T7 list spellings, sweep 2026-10-29):
+     - positional throws: 'Left throw' / '(Left side throw)' / 'Right Throw' / 'Back throw' /
+       '(Behind 2 throw)' / 'Back Throw.2+4' are the throw chord pressed from the opponent's
+       side or back -> 'FLANK_L.1+3', 'FLANK_R.2+4', 'FLANK_B.1+3' / 'FLANK_B.2+4' (the input
+       buffer resolves the FLANK_ prefix from where the opponent is facing, fighter._inputCtx).
+     - alternatives: '1+3_2+4' / '1_2' (T7 data: either), 'AIR.1+3 / AIR.f+1+3', '(or 2)',
+       'U/F or U/B', 'd/b+1/2/3' -> the first listed input.
+     - cancel notes '(hold B to cancel)' / '(b, b to cancel)' and per-hit notes
+       '(second and third hits only)' are notes on the same input.
+     - '(During Hisenkyaku) qcf+1+2' -> 'HISENKYAKU.qcf+1+2' (as 'during X, ...');
+       'While Down (Facing Up) 1+2' -> 'FUFT.1+2'; 'ss2' / 'bt1' -> 'SS.2' / 'BT.1';
+       a stray '+' after a state ('FUFT.+3+4') and a doubled hold mark ('1+2**') are dropped. */
+  {
+    const th = /^\(?\s*(left|right)(?:\s+side)?\s+throw\s*\)?$/i.exec(s);
+    if (th) return th[1].toLowerCase() === 'left' ? 'FLANK_L.1+3' : 'FLANK_R.2+4';
+    const tb = /^\(?\s*(?:back|behind)(?:\s+([12]))?\s+throw\s*\)?(?:\s*[.,]\s*(1\+3|2\+4))?$/i.exec(s);
+    if (tb) return 'FLANK_B.' + (tb[2] || (tb[1] === '2' ? '2+4' : '1+3'));
+  }
+  s = s.replace(/\s*\((?:hold\s+)?[^()]*\bto cancel\)\s*$/i, '');
+  s = s.replace(/\s*\((?:(?:first|second|third|fourth|fifth|\d+(?:st|nd|rd|th))\s*(?:,|and)?\s*)+hits?\s+only\)\s*$/i, '');
+  /* Jump contexts come BEFORE the alternatives rule below: the 'or' in '(During Forward
+     or Backward Jump)' is part of the context name, not an either/or input list — the
+     alternatives rule would otherwise cut the row to '(During Forward'. Vertical jump is
+     excluded here so the u+ rule below still claims it. */
+  s = s.replace(/^\(during\s+(forward or backward jump|forward jump peak|forward jump|jump)\)\s*(?=[udfbnUDFB1-4qh])/i, 'AIR.');
+  s = s.replace(/\s*\(or [^()]*\)/gi, '');
+  s = s.replace(/\s*\/\s+.*$/, '').replace(/\s+or\s+.*$/i, '');
+  s = s.replace(/([1-4](?:\+[1-4])*)_[1-4](?:\+[1-4])*(?![\w])/g, '$1');
+  s = s.replace(/^(.*\+)([1-4])(?:\/[1-4])+$/, '$1$2');
+  /* T7 jump attacks (moveset sweep 2026-10-29, Dio's 12): '(During Jump) qcf+1',
+     '(During Forward or Backward Jump) 1', '(During Forward Jump Peak) d+3' are the
+     attack pressed while airborne — Tekken's jump direction does not change the move, so
+     they canonicalise to the AIR. prefix the input buffer resolves from ctx.airborne
+     (same pattern as R. for rage, FC./WS./SS./BT. for their states). The vertical-jump
+     form is left alone here so the u+ rule below still claims it (those rows pass). */
+  s = s.replace(/^\(during\s+([A-Za-z][A-Za-z' ]*[A-Za-z])\)\s*(?=[udfbnUDFB1-4qh])/i, (m, name) => (/vertical/i.test(name) ? m : /^(forward or backward jump|forward jump peak|forward jump|jump)$/i.test(name) ? 'AIR.' : stateCode(name) + '.'));
+  s = s.replace(/^while down\s*\(?facing up\)?\s*/i, 'FUFT.');
+  // T7 list jump attacks: '(During Vertical Jump) 1' is u+1 (Tekken jumps attack on the jump input)
+  s = s.replace(/^\(?during vertical jump\)?\s*(?=[1-4])/i, 'u+');
+  // leading stance token then comma ('JGS, 1+4' T7 king list) -> 'JGS.1+4'
+  s = s.replace(/^([A-Z]{2,5}),\s*(?=[udfbUDF1-4(])/, (m, st) => (/^(?:[UDFB]|UF|UB|DF|DB|WS|FC|SS|BT)$/.test(st) ? m : st + '.'));
+  s = s.replace(/^(ss|bt|fc)(?=[1-4])/i, (m) => m.toUpperCase() + '.');
+  s = s.replace(/^([A-Z][A-Z0-9_]*)\.\+(?=[1-4])/, '$1.');
+  s = s.replace(/\*\*$/, '*');
+  s = s.replace(/\(([^()]*)\)/g, '$1');
+  s = s.replace(/\s*([,~:+])\s*/g, '$1');
+  return s;
+}
+const _NUMPAD = { 1: 'd/b', 2: 'd', 3: 'd/f', 4: 'b', 5: 'n', 6: 'f', 7: 'u/b', 8: 'u', 9: 'u/f' };
+const _T3BTN = { LP: '1', RP: '2', LK: '3', RK: '4' };
+/** T3 source command ('6/9+LK+RK', '2/1/3+LP') -> playable notations, one per listed direction,
+ *  in source order ('f+3+4', 'u/f+3+4'). Commands with 'any' buttons give none. */
+export function t3CommandNotations(cmd) {
+  const m = /^([1-9](?:\/[1-9])*)((?:\+(?:LP|RP|LK|RK))+)$/.exec(String(cmd || '').trim());
+  if (!m) return [];
+  const btn = m[2].slice(1).split('+').map((b) => _T3BTN[b]).sort().join('+');
+  return m[1].split('/').map((d) => (d === '5' ? btn : `${_NUMPAD[d]}+${btn}`));
+}
 function _prepare(ms) {
   if (!ms || !ms.moves || ms._slots) return;
   const slots = Object.assign({}, ms.slots || {});
   for (const k of Object.keys(ms.moves)) if (!(k in slots)) slots[k] = k;
+  /* WH legacy letter notation (P = punch, K = kick): a move keyed 'u+P' / 'd/f+K' / 'qcf+P'
+     is also reachable on the numeric input (P -> 1, K -> 4) when no other move owns it. */
+  for (const k of Object.keys(ms.moves)) { const a = legacyAlias(k); if (a && !(a in slots)) slots[a] = k; }
+  for (const k of Object.keys(ms.moves)) { const c = canonNotation(k); if (c && c !== k && !(c in slots)) slots[c] = k; }
+  /* Variants (2026-10-29): KOF/SF close and far normals ('1 (close)' / 'far 1') and T7 stance
+     spin counts ('JGS* (3 spins), 1') share the plain input; press() picks them by the fight
+     context (distance, spins). Other name-keyed moves (rush_l2 '1,1 (Rush)', hop_1 'hop u/f+1')
+     are slotted on their canonical input when no other move owns it. */
+  const variants = {};
+  for (const [k, mv] of Object.entries(ms.moves)) {
+    const raw = mv && mv.input;
+    { const sys = systemTagOf(raw); if (sys) mv.system = sys; }
+    if (typeof raw !== 'string' || raw === k) continue;
+    const c = canonNotation(raw);
+    if (!c) continue;
+    let kind = null, n = 0;
+    if (/^far\s+/i.test(raw) || /\(far\)/i.test(raw)) kind = 'far';
+    else if (/^(?:close|cl\.?)\s+/i.test(raw) || /\(close\)/i.test(raw)) kind = 'close';
+    else { const sm = /^[A-Z][A-Z0-9_]*\*\s*\((\d+)\s*spins?\)/.exec(raw); if (sm) { kind = 'spins'; n = +sm[1]; } }
+    if (kind) (variants[c] = variants[c] || []).push({ key: k, kind, n });
+    else if (!(c in slots) && (systemTagOf(raw) || (!(ms.slots && k in ms.slots && ms.slots[k] !== k) && /^(?:[a-z][a-z0-9]*_|\d+$)/i.test(k))) && !/[,~:+.]/.test(k)) slots[c] = k; // KOF system rows (maxmode, taunt) too; numeric/name keys whose only slot is themselves (string heads like qcb+1 -> '15')
+  }
+  ms._variants = variants;
+  ms._variantBase = {};
+  for (const [n, list] of Object.entries(variants)) for (const x of list) ms._variantBase[x.key] = n;
+  /* T3 clip-variant rows (sweep 2026-10-29): raw direction keys like 'b_c36_r46' carry no button;
+     the source command (t3_command '4/7+LP') does. Slot the first free spelling of it
+     ('b+1', then 'u/b+1'), never overwriting an existing slot. */
+  for (const k of Object.keys(ms.moves)) {
+    if (!/^[udfbn](?:\/[fb])?(?:_[rc]\d+)+$/i.test(k)) continue;
+    for (const c of t3CommandNotations(ms.moves[k] && ms.moves[k].t3_command)) if (!(c in slots)) { slots[c] = k; break; }
+  }
+  /* State entries: a 'during <Name>, X' row is pressed from stance <NAME> (canonNotation); the
+     move named <Name> that is not itself a state row enters it. Existing stance_after kept. */
+  { const byName = {};
+    for (const [k, mv] of Object.entries(ms.moves)) if (mv && mv.name && !/^(?:during|while)\s/i.test(mv.input || '')) (byName[stateCode(mv.name)] ||= k);
+    for (const [k, mv] of Object.entries(ms.moves)) {
+      if (!mv || typeof mv.input !== 'string' || !/^(?:during\s|while on back\b)/i.test(mv.input)) continue;
+      const c = canonNotation(mv.input), m = /^([A-Z][A-Z0-9_]+)\./.exec(c || '');
+      if (!m) continue;
+      if (!(c in slots)) slots[c] = k; // the state row on its prefixed input, never over a slot
+      if (!byName[m[1]]) continue;
+      ms.stance_after = ms.stance_after || {};
+      if (!(byName[m[1]] in ms.stance_after)) ms.stance_after[byName[m[1]]] = m[1];
+    } }
   ms._slots = slots;
   const motions = [];
   for (const n of Object.keys(slots)) {
@@ -290,6 +549,51 @@ function _prepare(ms) {
     for (const j of cuts) pre.add(n.slice(0, j));
   }
   ms._strPrefixes = pre;
+  // A string whose opening step is a motion with no standalone move ('f,n,1' of 'f,n,1,2,1,2,3'):
+  // the motion opens the string cursor (sweep 2026-10-29: it fired the plain '1' string instead).
+  for (const n of pre) if (!(n in slots)) { const m = parseMotion(n); if (m) motions.push({ n, ...m, opener: true }); }
+  motions.sort((a, b) => b.dirs.length - a.dirs.length);
+}
+
+/* Motion inputs this fighter can perform: the moveset's own slots plus every motion notation
+   the moveset editor's loadout equipped (moveset sweep 2026-10-29: loadout slots like
+   'qcf+3+4' / 'hcb+1' / 'd/b,d/b+1+2' resolved but were never in _motions, so the buffer
+   could not perform them and the plain button fired instead). Cached per loadout object. */
+const _loMotionCache = new WeakMap();
+export function motionsFor(fighterId, ms) {
+  const lo = getLoadout(fighterId);
+  const keys = Object.keys(lo).filter(n => n !== '__base' && !(ms._slots && n in ms._slots));
+  if (!keys.length) return ms._motions;
+  let per = _loMotionCache.get(ms); if (!per) _loMotionCache.set(ms, per = new Map());
+  const sig = fighterId + '|' + keys.join('\u0001');
+  let out = per.get(sig);
+  if (!out) {
+    out = ms._motions.slice();
+    for (const n of keys) { const m = parseMotion(n); if (m) out.push({ n, ...m }); }
+    out.sort((a, b) => b.dirs.length - a.dirs.length);
+    per.clear(); per.set(sig, out);
+  }
+  return out;
+}
+
+/* String prefixes of loadout-equipped strings (moveset editor: rush_l3 on '1,1,1'), so their
+   intermediate steps open the string cursor like a moveset's own strings do. */
+const _loPrefCache = new Map();
+/** Is `c` the opening part of one of this fighter's strings ('1+2,f' of '1+2,f,f')? */
+export function hasStrPrefix(fighterId, c) { const ms = playedMoveset(fighterId); return !!(ms && strPrefixesHas(fighterId, ms, c)); }
+export function strPrefixesHas(fighterId, ms, c) {
+  if (ms._strPrefixes && ms._strPrefixes.has(c)) return true;
+  const lo = getLoadout(fighterId);
+  const keys = Object.keys(lo).filter(n => n !== '__base' && /[,~:]/.test(n));
+  if (!keys.length) return false;
+  const sig = fighterId + '|' + keys.join('\u0001');
+  let set = _loPrefCache.get(fighterId);
+  if (!set || set.sig !== sig) {
+    set = new Set(); set.sig = sig;
+    for (const n of keys) for (let j = 0; j < n.length; j++) if (',~:'.includes(n[j])) set.add(n.slice(0, j));
+    _loPrefCache.set(fighterId, set);
+  }
+  return set.has(c);
 }
 
 /* Player loadouts from the moveset editor: localStorage wh_moveset_loadout_v1
@@ -304,6 +608,12 @@ function _allLoadouts() {
 if (typeof window !== 'undefined' && window.addEventListener) {
   window.addEventListener('storage', (e) => { if (e.key === LOADOUT_KEY) _loadouts = null; }); // editor in another tab
 }
+/** The plain notation a close/far or spin variant key fires from ('far_1' → '1'), else null. */
+export function variantBase(fighterId, key) {
+  const ms = playedMoveset(fighterId);
+  return (ms && ms._variantBase && ms._variantBase[key]) || null;
+}
+
 export function getLoadout(fighterId) {
   return _allLoadouts()[fighterId] || {};
 }
@@ -332,9 +642,9 @@ export function playedMoveset(fighterId) {
 }
 
 /** notation -> { move, key, ms, from } this fighter fires (loadout > default slots > exact key). */
-export function resolveMove(fighterId, notation) {
+export function resolveMove(fighterId, notation, opts) {
   if (!notation) return null;
-  const custom = getLoadout(fighterId)[notation];
+  const custom = opts && opts.noLoadout ? null : getLoadout(fighterId)[notation];
   if (custom) {
     const [from, key] = custom.includes('::') ? custom.split('::') : [fighterId, custom];
     const src = from === fighterId ? playedMoveset(fighterId) : getFighterMoveset(from);
@@ -418,8 +728,14 @@ export class TekkenBuffer {
     // plain f+1 presses (input-fidelity bug, 2026-10-22).
     const _now = performance.now();
     if (this._dash && _now >= this._dash.until) this._dash = null;
-    if (this._doubleTap('f')) this._dash = { dir: 'f', until: _now + DASH_FRAMES['f,f'] / 60 * 1000 };
+    if (this._doubleTap('f')) {
+      if (this._dash && this._dash.dir === 'f') this._runNow = true; // third tap: f,f,f
+      this._runStart = _now;
+      this._dash = { dir: 'f', until: _now + DASH_FRAMES['f,f'] / 60 * 1000 };
+    }
     else if (this._doubleTap('b')) this._dash = { dir: 'b', until: _now + DASH_FRAMES['b,b'] * 1000 / 60 };
+    if (dir === 'f' && this._runStart && (this._runNow || _now - this._runStart >= RUN_HOLD_FRAMES / 60 * 1000)) { this._runNow = true; this._runUntil = _now + RUN_GRACE_FRAMES / 60 * 1000; }
+    else if (dir !== 'f') { this._runStart = 0; this._runNow = false; }
     if (dir === this.lastDir) return;
     this.lastDir = dir;
     if (dir === 'n') return;
@@ -427,6 +743,11 @@ export class TekkenBuffer {
     this.dirEvents.push({ dir, t: now });
     if (this.dirEvents.length > 24) this.dirEvents.shift();
   }
+
+  /** Tekken running state (WR): see RUN_HOLD_FRAMES. */
+  running() { return !!this._runUntil && performance.now() < this._runUntil; }
+  /** This fighter's move key for a notation, if it owns one. */
+  resolveKey(k) { return resolveMoveKey(this.fighterId, k); }
 
   _prev(i) { return i > 0 ? i - 1 : HIST_LEN - 1; }
 
@@ -505,17 +826,35 @@ export class TekkenBuffer {
   /**
    * Resolve a button ('1'..'4') or chord ('1+2', '1+3' ...) to the Tekken notation this
    * fighter fires, from its moveset's notation table (slots / loadout) — no per-move code.
-   * `ctx` (Fighter._inputCtx): { stance, crouching, rising, sidestep, backturned, rage }.
+   * `ctx` (Fighter._inputCtx): { stance, crouching, rising, sidestep, backturned, rage, airborne }.
    * Order (Tekken): string continuation > state/stance prefix (stance code, R. rage art,
-   * BT., SS., FC., WS.) > motion (qcf, f,F, b,f, d,d/f,f ...) > direction+button > button.
+   * BT., SS., FC., WS., AIR. while airborne) > motion (qcf, f,F, b,f, d,d/f,f ...) > direction+button > button.
    * Returns the notation, or null if this fighter has nothing on that input.
    */
   press(input, ctx = {}) {
     const ms = playedMoveset(this.fighterId);
     if (!ms || !ms.moves) return input; // no data — raw passthrough
     _prepare(ms);
-    if (inputResolverV2()) return this._pressV2(input, ctx, ms);
-    return this._pressLegacy(input, ctx, ms);
+    const r = inputResolverV2() ? this._pressV2(input, ctx, ms) : this._pressLegacy(input, ctx, ms);
+    return this._variant(r, ctx, ms);
+  }
+
+  /* Close/far normals and stance spin counts (see _prepare variants). The returned move KEY is
+     fired; lastMove keeps the plain notation so strings continue from it ('1' then ',2'). A
+     moveset-editor loadout entry on the notation always wins (the player chose that move). */
+  _variant(r, ctx, ms) {
+    const v = r && ms._variants && ms._variants[r];
+    if (!v || getLoadout(this.fighterId)[r]) return r;
+    if (ctx.stanceSpins >= 2) {
+      const sp = v.filter(x => x.kind === 'spins' && x.n <= ctx.stanceSpins).sort((a, b) => b.n - a.n)[0];
+      if (sp) return sp.key;
+    }
+    if (ctx.dist != null) {
+      const want = ctx.dist <= CLOSE_RANGE ? 'close' : 'far';
+      const hit = v.find(x => x.kind === want);
+      if (hit) return hit.key;
+    }
+    return r;
   }
 
   /* INPUT RESOLVER V2 (owner t116u, 2026-10-23 — "presses give random moves, neutral 3 fires a
@@ -530,6 +869,15 @@ export class TekkenBuffer {
      window.WH_INPUT_RESOLVER='legacy'. Test: test/input-determinism.test.mjs (CI). */
   _pressV2(input, ctx, ms) {
     const has = (n) => (resolveMoveKey(this.fighterId, n) ? n : null);
+    // Soul Urge lane (T8 Heat), as in _pressLegacy: while the urge gauge is live, 2+3 is the
+    // Urge Burst (fresh gauge) or the Urge Smash (urging) before any normal move on the chord.
+    // Neutral 2+3 only (T8 Heat Burst is neutral) — b+2+3 / d/f+2+3 stay the fighter's own moves.
+    if (input === '2+3' && (!this.lastDir || this.lastDir === 'n') && !(ctx.running && has('WR.2+3'))) { // a running 2+3 (WR.2+3) outranks the urge
+      // a live soul-state finisher on 2+3 (SPIRIT / SOUL9 / REIHOU / SEAL / KESSHOU) outranks the urge
+      for (const sp of ctx.soulStates || []) { const k = has(sp + '.2+3'); if (k) return this._recordMove(k); }
+      if (ctx.urgeOn) { const sm = has('US.2+3'); if (sm) return this._recordMove(sm); }
+      else if (ctx.urgeAvailable) { const bu = has('UB.2+3'); if (bu) return this._recordMove(bu); }
+    }
     const dir = this.lastDir && this.lastDir !== 'n' ? this.lastDir : '';
     const withDir = dir ? `${dir}+${input}` : input;
     const holdDir = dir ? `${dir.toUpperCase()}+${input}` : null;
@@ -545,35 +893,60 @@ export class TekkenBuffer {
     if (pendingOk) { bases.push(this._strPath); const s = strip(this._strPath); if (s) bases.push(s); }
     if (this.lastMove && contOk) { bases.push(this.lastMove); const s = strip(this.lastMove); if (s) bases.push(s); }
     for (const base of bases) {
-      for (const sep of [',', '~', ':']) {
+      for (const sep of sepOrder(ctx)) {
         const cands = dir ? [`${base}${sep}${withDir}`, `${base}${sep}${holdDir}`] : [`${base}${sep}${input}`];
         for (const c of cands) if (has(c)) { this._strPath = null; return this._recordMove(c); }
-        for (const c of cands) if (ms._strPrefixes && ms._strPrefixes.has(c)) { this._strPath = c; this._strPathT = now; return null; }
+        for (const c of cands) if (strPrefixesHas(this.fighterId, ms, c)) { this._strPath = c; this._strPathT = now; return null; }
       }
     }
     this._strPath = null;
+    // Batch 8: a throw chord pressed at the opponent's side or back is that fighter's side/back
+    // throw (TekkenDocs 'Left throw' / 'Back throw'); canonNotation keys them FLANK_L/R/B.
+    // A copy the player equipped in the moveset editor on the chord or a string opened by it
+    // (a T3 situation row on 2+4,1) keeps the chord: its own condition decides.
+    const eqChord = Object.keys(getLoadout(this.fighterId) || {}).some((n) => n === input || n.startsWith(input + ','));
+    if (ctx.foeFlank && !dir && (input === '1+3' || input === '2+4') && !eqChord) {
+      const fl = 'FLANK_' + ctx.foeFlank + '.';
+      const k = has(fl + input) || has(fl + (input === '1+3' ? '2+4' : '1+3'));
+      if (k) return this._recordMove(k);
+    }
     // Opening step of a string that has no standalone move: open the string cursor, fire nothing.
-    const opener = (c) => (ms._strPrefixes && ms._strPrefixes.has(c) ? (this._strPath = c, this._strPathT = now, true) : false);
+    const opener = (c) => (strPrefixesHas(this.fighterId, ms, c) ? (this._strPath = c, this._strPathT = now, true) : false);
     const prefixes = [];
+    if (ctx.running) prefixes.push('WR.'); // Tekken while running
+    for (const sp of ctx.soulStates || []) prefixes.push(sp + '.'); // pt217u soul systems
     if (ctx.stance) prefixes.push(ctx.stance + '.');
     if (ctx.rage) prefixes.push('R.');
+    // Rage lane (T7), as in _pressLegacy: the rage drive lives on 3+4 while raging (synthesized RD.).
+    if (ctx.rage) prefixes.push('RD.');
     if (ctx.backturned) prefixes.push('BT.');
     if (ctx.sidestep) prefixes.push('SS.');
     if (ctx.crouching) prefixes.push('FC.');
     if (ctx.rising) prefixes.push('WS.');
+    if (ctx.airborne) prefixes.push('AIR.'); // Tekken jump attacks: an AIR. move outranks its ground namesake while airborne
     prefixes.push('');
     for (const p of prefixes) {
       // Final step HELD (>= MOTION_HOLD frames) prefers the capital spelling (f,f,F+3), a quick
       // final tap the lowercase one (f,f,f+3); each still falls back to the other.
       const capFirst = this._heldFrames() >= MOTION_HOLD;
       const cap = (mo) => /[A-Z]/.test(mo.n.split(',').pop().split('+')[0]);
-      const motions = ms._motions.slice().sort((a, b) => (b.dirs.length - a.dirs.length) || ((cap(b) === capFirst) - (cap(a) === capFirst)));
+      const motions = motionsFor(this.fighterId, ms).slice().sort((a, b) => (b.dirs.length - a.dirs.length) || ((cap(b) === capFirst) - (cap(a) === capFirst)));
       for (const mo of motions) {
         if (mo.prefix !== p || mo.btn !== input) continue;
         // neutral-ending motions ('f,n,2') need the stick released; the rest need the last
         // step still held at the press (f,F+2 = f held).
-        if (mo.neutral ? dir : dir !== mo.dirs[mo.dirs.length - 1]) continue;
-        if (this._motionHeldV2(mo) && has(mo.n)) return this._recordMove(mo.n);
+        // pt217u: 'b,1' / 'd,1' (comma, then a bare button) = tap the direction, RELEASE, press —
+        // so a released stick reaches it and a held one still gets b+1 / d+1 first.
+        const tapRel = !mo.neutral && !dir && /,[1-4](?:\+[1-4])*\*?$/.test(mo.n) && !/^(f|b)(,\1)+$/i.test(mo.dirs.join(','));
+        if (!tapRel && (mo.neutral ? dir : dir !== mo.dirs[mo.dirs.length - 1])) continue;
+        // Batch 7 (sweep 2026-10-29): rising from a crouch IS a released d tap, so the tap-release
+        // motion 'd,4' matched every while-standing press: WS.4 came out as d,4. Tekken gives the
+        // WS move there (TekkenDocs/wavu: while standing = rising from crouch).
+        if ((tapRel || mo.neutral) && ctx.rising && /^d/.test(mo.dirs[mo.dirs.length - 1]) && (has('WS.' + input) || has('WS.' + input + '*'))) continue;
+        if (this._motionHeldV2(mo) && (!mo.charge || this._chargeHeld(mo))) {
+          if (has(mo.n)) return this._recordMove(mo.n);
+          if (mo.opener && opener(mo.n)) return null;
+        }
       }
       if (dir) {
         // Held spelling ('D/F+2') when the direction has been held >= HOLD_FRAMES, tap otherwise.
@@ -581,6 +954,12 @@ export class TekkenBuffer {
         const order = held ? [p + holdDir, p + withDir] : [p + withDir, p + holdDir];
         for (const c of order) if (has(c)) return this._recordMove(c);
         for (const c of order) if (opener(c)) return null;
+        // Full crouch holds d / d/b: in Tekken a button there is the FC move (FC.2 = crouch
+        // jab), not the standing d+2 (moveset sweep 2026-10-28: FC 2/3/4/1+2 fired d+2...).
+        if (p === 'FC.' && (dir === 'd' || dir === 'd/b')) {
+          if (has('FC.' + input)) return this._recordMove('FC.' + input);
+          if (opener('FC.' + input)) return null;
+        }
       }
     }
     for (const p of prefixes) {
@@ -601,6 +980,19 @@ export class TekkenBuffer {
   /** V2 motion match: like _seqMatch, but two identical consecutive steps ('d/f,d/f', 'f,f,F')
       need the stick to leave that direction in between (a real second tap) — the legacy match
       let one long hold satisfy every repeated step, so a held d/f+1 came out as d/f,d/f+1. */
+  /** Charge motion: within the motion's window (+ CHARGE_RELEASE) before the newest entry, the
+      stick sat in the charge direction (its diagonals count: b = b, d/b, u/b) for CHARGE_FRAMES
+      in a row. APPROXIMATE: SF/KOF charge is ~40-45f depending on the game; 40f here. */
+  _chargeHeld(mo) {
+    const set = { b: ['b', 'd/b', 'u/b'], f: ['f', 'd/f', 'u/f'], d: ['d', 'd/b', 'd/f'], u: ['u', 'u/b', 'u/f'], 'd/b': ['d/b'] }[mo.charge] || [mo.charge];
+    const h = this.hist, limit = motionWindow(mo.dirs) + CHARGE_RELEASE;
+    let pos = this.hi, t = 0;
+    while (!set.includes(h[pos])) { t += this.hdur[pos]; pos = this._prev(pos); if (t > limit + T_EPS || pos === this.hi) return false; }
+    let held = 0;
+    for (let n = 0; n < HIST_LEN && set.includes(h[pos]); n++) { held += this.hdur[pos]; if (held >= CHARGE_FRAMES - T_EPS) return true; pos = this._prev(pos); }
+    return false;
+  }
+
   _motionHeldV2(mo) {
     const steps = mo.dirs; // inner n's are real steps (d/b,n,f != d/b,f); leading/trailing were stripped
     const h = this.hist; let pos = this.hi;
@@ -635,7 +1027,10 @@ export class TekkenBuffer {
     // Soul Urge lane (T8 Heat): while the urge gauge is live, 2+3 is
     // reserved — the Urge Burst (fresh gauge) or the Urge Smash (urging)
     // wins over any normal move on the chord, exactly like T8 Heat.
-    if (input === '2+3') {
+    // Neutral 2+3 only (T8 Heat Burst is neutral) — b+2+3 / d/f+2+3 stay the fighter's own moves.
+    if (input === '2+3' && (!this.lastDir || this.lastDir === 'n') && !(ctx.running && has('WR.2+3'))) { // a running 2+3 (WR.2+3) outranks the urge
+      // a live soul-state finisher on 2+3 (SPIRIT / SOUL9 / REIHOU / SEAL / KESSHOU) outranks the urge
+      for (const sp of ctx.soulStates || []) { const k = has(sp + '.2+3'); if (k) return this._recordMove(k); }
       if (ctx.urgeOn) { const sm = has('US.2+3'); if (sm) return this._recordMove(sm); }
       else if (ctx.urgeAvailable) { const bu = has('UB.2+3'); if (bu) return this._recordMove(bu); }
     }
@@ -648,13 +1043,22 @@ export class TekkenBuffer {
     //    without ctx (tests) keep the old 800 ms window.
     const contOk = ctx.inMove !== undefined ? ctx.inMove : (performance.now() - this.lastMoveT < STRING_PENDING);
     if (this.lastMove && contOk) {
-      for (const sep of [',', '~', ':']) {
-        for (const c of [`${this.lastMove}${sep}${withDir}`, `${this.lastMove}${sep}${input}`]) {
+      // Tekken '~' (wavu wiki / TekkenDocs: "immediately after"): a press inside the first
+      // TILDE_WINDOW of the hit takes the tilde branch before the ',' string ('f+2,1~2' vs 'f+2,1,2').
+      const seps = sepOrder(ctx);
+      /* Mid-string state (Tekken notation '1,NSS.1', 'f+2,R.1+2'; TekkenDocs / wavu wiki): the next
+         hit is pressed from the stance the string put the fighter in, or while raging. Before
+         (sweep 2026-10-29), the plain ',1' continuation always won and the stance hit never came out. */
+      const mid = [ctx.stance, ctx.rage ? 'R' : null].filter(Boolean);
+      for (const sep of seps) {
+        for (const c of [...mid.map((m) => `${this.lastMove}${sep}${m}.${withDir}`), ...mid.map((m) => `${this.lastMove}${sep}${m}.${input}`), `${this.lastMove}${sep}${withDir}`, `${this.lastMove}${sep}${input}`]) {
           if (has(c)) return this._recordMove(c);
         }
       }
     }
     const prefixes = [];
+    if (ctx.running) prefixes.push('WR.'); // Tekken while running
+    for (const sp of ctx.soulStates || []) prefixes.push(sp + '.'); // pt217u soul systems
     if (ctx.stance) prefixes.push(ctx.stance + '.');
     if (ctx.rage) prefixes.push('R.');
     // Rage lane (T7): rage drive lives on 3+4 while raging (synthesized RD.).
@@ -663,13 +1067,14 @@ export class TekkenBuffer {
     if (ctx.sidestep) prefixes.push('SS.');
     if (ctx.crouching) prefixes.push('FC.');
     if (ctx.rising) prefixes.push('WS.');
+    if (ctx.airborne) prefixes.push('AIR.'); // Tekken jump attacks: an AIR. move outranks its ground namesake while airborne
     prefixes.push('');
     for (const p of prefixes) {
       // 2) motion inputs on this button, longest first
-      for (const mo of ms._motions) {
+      for (const mo of motionsFor(this.fighterId, ms)) {
         if (mo.prefix !== p || mo.btn !== input) continue;
         if (mo.neutral && dir) continue; // 'f,n,2' wants the stick back in neutral
-        if (this._motionHeld(mo.dirs) && has(mo.n)) return this._recordMove(mo.n);
+        if (this._motionHeld(mo.dirs) && (!mo.charge || this._chargeHeld(mo)) && has(mo.n)) return this._recordMove(mo.n);
       }
       // 3) direction + button (tap, then hold spelling 'D/B+2'), 4) button
       if (dir && has(p + withDir)) return this._recordMove(p + withDir);
@@ -735,7 +1140,7 @@ export class TekkenBuffer {
   }
 
   /** Would `input` continue the current string? (lets a press during a move buffer the next hit) */
-  continuation(input) {
+  continuation(input, ctx = {}) {
     if (!this.lastMove) return null;
     const dir = this.lastDir && this.lastDir !== 'n' ? this.lastDir : '';
     // BATCH STRING FIX (2026-10-24): slots redirect singles to ~shadow keys
@@ -743,13 +1148,25 @@ export class TekkenBuffer {
     // and '1~t8.king,2' never exists — the chain broke at step 1 and the user
     // could only do 1-2 (two separate jabs, never the '1,2' string). Try the
     // stripped base too, so '1' + '2' -> '1,2' and '1,2' + '1' -> '1,2,1'.
-    const bases = [this.lastMove];
+    // Moveset sweep 2026-10-29: a pending partial string (an intermediate step with no
+    // standalone move, e.g. 'WS.1+2,4' of 'WS 1+2,4,1,...') is the base while it is open,
+    // exactly as in _pressV2; a press that only extends the partial keeps it open
+    // (this._strPending = true) and fires nothing.
+    this._strPending = false;
+    const now = performance.now();
+    const bases = [];
+    if (this._strPath && now - this._strPathT < STRING_PENDING) bases.push(this._strPath);
+    bases.push(this.lastMove);
     const tilde = this.lastMove.indexOf('~');
     if (tilde > 0) bases.push(this.lastMove.slice(0, tilde));
+    const ms = playedMoveset(this.fighterId);
     for (const base of bases) {
-      for (const sep of [',', '~', ':']) {
-        for (const c of [dir ? `${base}${sep}${dir}+${input}` : null, `${base}${sep}${input}`]) {
-          if (c && resolveMoveKey(this.fighterId, c)) return c;
+      for (const sep of sepOrder(ctx)) {
+        const mid = [ctx.stance, ctx.rage ? 'R' : null].filter(Boolean); // mid-string state ('1,NSS.1'), see _pressV2
+        const cands = [...mid.flatMap((m) => [dir ? `${base}${sep}${m}.${dir}+${input}` : null, `${base}${sep}${m}.${input}`]), dir ? `${base}${sep}${dir}+${input}` : null, `${base}${sep}${input}`];
+        for (const c of cands) if (c && resolveMoveKey(this.fighterId, c)) { this._strPath = null; return c; }
+        for (const c of cands) if (c && ms && strPrefixesHas(this.fighterId, ms, c)) {
+          this._strPath = c; this._strPathT = now; this._strPending = true; return null;
         }
       }
     }

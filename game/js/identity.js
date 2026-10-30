@@ -110,7 +110,7 @@
   };
   /* Touch buttons: .act-btn cluster (NOT the joystick). */
   var TOUCH_BUTTONS = ['1', '2', '3', '4', 'punch', 'kick', 'surge', 'block', 'dodge'];
-  var TOUCH_LABELS = { '1': 'LP', '2': 'RP', '3': 'LK', '4': 'RK', punch: 'P', kick: 'K', surge: 'S', block: 'B', dodge: 'D', '2+3': 'HEAT', '1+2': 'RAGE' };
+  var TOUCH_LABELS = { '1': 'LP', '2': 'RP', '3': 'LK', '4': 'RK', punch: 'P', kick: 'K', surge: 'SURGE', block: 'BLOCK', dodge: 'DODGE', vskill: 'V', transform: 'T', '2+3': 'HEAT', '1+2': 'RAGE' };
 
   /* ---------- Colorblind presets (Okabe–Ito safe pairs) ---------- */
   var COLORBLIND = [

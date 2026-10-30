@@ -47,6 +47,13 @@ From No Mercy / WMXIX (re-docs `edit-a-superstar.md`):
 - **Weapons** (`teardown/wwf-no-mercy/models/weapon/`) — 34 weapon models
 - **WMXIX edit_data:** 2,690 files cataloged (`teardown/wmxix/caw-parts/CATALOG.md`) — 1,470 textures, 1,200 meshes
 
+### Model Edit (hand-tooling)
+- **In-suite 3D editor** (`customization/create-fighter/js/meshedit.js`) — the user never opens Blender. The suite viewport becomes the editor: tap-to-select meshes, touch gizmo (move/rotate/scale), part list with hide/show/delete, numeric nudge sliders (fat-finger-safe, Prisma3D-style).
+- **Two layers:** (1) instant edit manifest — visibility, soft-delete, staged transforms; reversible, phone-instant, no Blender needed; (2) Blender-baked ops through the suite job queue (`tool: "mesh-edit"` → `tools/mesh-edit/`): hard delete, baked transforms, duplicate/mirror, part import (interchange/add from the suite parts catalog), sculpt strokes, remesh/subdivide/decimate.
+- **Backend:** `tools/mesh-edit/mesh_edit.py` (headless Blender 4.0.2 op driver, `blender -b --factory-startup --python`) + `tools/mesh-edit/run_mesh-edit_job.py` (suite-jobs runner). Jobs show in the JOBS tab with live status; results load via LOAD GLB IN PREVIEW.
+- **Menu home:** TOOLS tab → MODEL EDIT (unified system, layer 1) + per-op menus (layer 2); nests under Appearance → Attire Parts in the WWE flow (INTEGRATION LAW — no parallel editor).
+- **Safety:** source GLBs are immutable (jobs write new files; `out_glb == source_glb` is refused); geometry-changing ops flag a re-weight pass + validation gate; unproven bakes are badged `bake_pending`, never finished.
+
 ### Tekken Customization Layer (Tekken 6/7 system)
 
 From `teardown/tekken6/TEARDOWN.md` — Tekken uses a **4-slot layered system** on top of the base model:
