@@ -182,6 +182,6 @@ export function bracketView(bracket) {
  * describeMatch(m) -> human line, e.g. "PANTERA vs CPU RIVAL — QUARTERFINAL".
  */
 export function describeMatch(m) {
-  const n = (p) => (p ? p.name : 'TBD');
+  const n = (p) => (p ? p.name : '—');
   return `${n(m.p1)} vs ${n(m.p2)} — ${m.roundName}`;
 }

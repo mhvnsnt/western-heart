@@ -33,7 +33,7 @@ def wchunk(d, data):
 def wcp(s, d):
     wchunk(d, open(s, 'rb').read())
     time.sleep(0.1)
-for fn in ['movesets.js', 'rage.js', 'audio.js', 'soulurge.js', 'destruction.js']:
+for fn in ['movesets.js', 'full-movelist.js', 'canon-names.js', 'rage.js', 'audio.js', 'soulurge.js', 'destruction.js']:
     wcp(os.path.join(src, fn), os.path.join(dst, fn))
 wchunk(os.path.join(dst, 'three-stub.js'), '''__THREESTUB__''')
 wchunk(os.path.join(dst, 'fighter-stub.js'),
@@ -254,7 +254,7 @@ test('StageBreaks: wall break on heavy slam at the bound', () => {
   assert.equal(sbk.broken.size, 1, 'wall broken');
   assert.deepEqual(fighterStubMod.calls.arenaLimit, [12.9], 'bounds extended past the breach');
   assert.equal(def.hp, 92, 'wall-break bonus damage applied');
-  assert.ok(banners.includes('WALL BREAK'));
+  assert.ok(!banners.includes('WALL BREAK'), 'no on-screen break text: Tekken shows breaks via destruction + camera (UI immersion fix 2026-10-24)');
   // once per match: no double-break
   sbk.checkHit(atk, def, { knock: 5 }, 'hit');
   assert.equal(sbk.broken.size, 1);
@@ -301,7 +301,7 @@ test('StageBreaks: floor break drops the level on a slam in the zone', () => {
   const gyCalls = fighterStubMod.calls.groundY;
   assert.equal(gyCalls[gyCalls.length - 1], -6, 'setGroundY(-6) called last');
   assert.equal(def.hp, 88, 'floor-break slam bonus applied');
-  assert.ok(banners.includes('FLOOR BREAK'));
+  assert.ok(!banners.includes('FLOOR BREAK'), 'no on-screen break text: Tekken shows breaks via destruction + camera (UI immersion fix 2026-10-24)');
   // outside the zone: no break
   const def2 = { root: { position: { x: 6, z: 0 } }, hp: 100, dead: false, _knockout(){} };
   const sbk2 = new StageBreaks(game);

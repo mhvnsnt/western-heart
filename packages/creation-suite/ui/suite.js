@@ -35,6 +35,12 @@ let ENTRIES = [], COUNTS = null;
 let attireNo = 1;
 const attires = {};                 // 1..4 -> profile state
 let S = null;                       // active profile state
+// worker 64: clothing layer config (game/data/clothing-layers.json) —
+// per-attire own-mesh layers with convention labels, for the ATTIRE tab's
+// CLOTHING LAYERS section. Null until the boot fetch resolves.
+const CLOTHING_URL = '../../../game/data/clothing-layers.json';
+const LS_CLOTHING = 'wh_clothing_v1'; // the game engine's per-attire store
+let CLOTHING = null;
 const ui = { tab: 'body', cat: null, search: '', src: 'all', inkPick: false, inkEntry: null, inkRect: [0.1, 0.1, 0.3, 0.3], swapRegion: null, swapSearch: '' };
 let SWAP_SOURCES = [];
 const REGION_LABEL = { head: 'HEAD', torso: 'TORSO', arm_l: 'ARM · LEFT', arm_r: 'ARM · RIGHT', legs: 'LEGS' };
@@ -57,8 +63,30 @@ function stash() {
 function save() {
   stash();
   try { localStorage.setItem(LS_SUITE, JSON.stringify(P.toSuiteRecord(S))); } catch { /* see stash */ }
+  mirrorClothingToGame();
   toast(`Saved ${S.name} · ${S.attire} — the game reads this profile`);
   renderAll();
+}
+
+// worker 64: mirror this attire's clothing hidden-set into the game
+// engine's wh_clothing_v1 store (keyed by clothing-config model key) so a
+// choice made in the suite is live in game and in previews without a bake.
+function mirrorClothingToGame() {
+  const k = clothingModelKey();
+  if (!k) return;
+  try {
+    const raw = localStorage.getItem(LS_CLOTHING);
+    const all = raw ? JSON.parse(raw) : {};
+    const hidden = Object.keys(S.clothing || {});
+    if (hidden.length) {
+      const per = {};
+      for (const l of hidden) per[l] = true;
+      all[k] = per;
+    } else {
+      delete all[k];
+    }
+    localStorage.setItem(LS_CLOTHING, JSON.stringify(all));
+  } catch { /* storage full/blocked: suite record still carries it */ }
 }
 
 /* ---------------- top bar + stage ---------------- */
@@ -152,10 +180,45 @@ function renderFace() {
     <p class="note">Hairstyles are parts: ATTIRE → Hairstyle (${COUNTS?.per.hair.ready ?? 0} ready today). Hair color is on the BODY tab.</p>`;
 }
 
+/* ---------------- CLOTHING LAYERS (worker 64) ----------------
+   The attire's OWN clothing meshes as toggleable layers — nested inside
+   the ATTIRE tab per the integration law (Tekken flow, not a parallel
+   system). Labels follow docs/CLOTHING-ACCESSORY-LABELING-STANDARD.md;
+   raw GLB mesh names never reach the user. */
+// Resolve the clothing-config model key for the active suite state:
+// exact model-key match, else the config entry whose `fighter` is this state.
+function clothingModelKey() {
+  if (!CLOTHING || !CLOTHING.models) return null;
+  const f = S && S.fighter;
+  if (f && CLOTHING.models[f]) return f;
+  for (const [k, v] of Object.entries(CLOTHING.models)) {
+    if (v && v.fighter === f) return k;
+  }
+  return null;
+}
+function clothingLayers() {
+  const k = clothingModelKey();
+  return k ? (CLOTHING.models[k].layers || []) : [];
+}
+function renderClothingLayers() {
+  const layers = clothingLayers();
+  if (!layers.length) return '';
+  const rows = layers.map((l) => {
+    const hidden = P.isClothingHidden(S, l.label);
+    return `<div class="item"><span class="nm">${esc(l.display || l.label)}<span class="id">${esc(l.label)}${l.review ? ' · verify in suite' : ''}</span></span>` +
+      `<span class="badge src">${esc((l.category || '').toUpperCase())}</span>` +
+      `<button type="button" class="pick ${hidden ? '' : 'on'}" data-action="clothing-toggle" data-label="${esc(l.label)}">${hidden ? 'SHOW' : 'HIDE'}</button></div>`;
+  }).join('');
+  return `<h2>CLOTHING LAYERS — THIS ATTIRE'S OWN MESHES</h2>
+    <p class="note">Tekken-style: every clothing piece on this model is its own layer. HIDE takes it off, SHOW puts it back — saved with this attire and applied in game too. Labels follow the library standard, not the source file's mesh names.</p>
+    <div class="item-list">${rows}</div>`;
+}
+
 /* ---------------- ATTIRE ---------------- */
 function renderAttire() {
   if (!ui.cat) {
-    $('#sheet').innerHTML = `<h2>ATTIRE — TEKKEN SLOT SPINE</h2>
+    $('#sheet').innerHTML = `${renderClothingLayers()}
+      <h2>ATTIRE — TEKKEN SLOT SPINE</h2>
       <p class="note">Tekken's 16 slots in menu order, T6 sub-slots restored, every teardown source mixed in. Tap a slot to browse its real catalog parts.</p>
       <div class="cat-list">${SPINE.map((sp) => {
         const c = COUNTS.per[sp.id];
@@ -438,6 +501,17 @@ document.addEventListener('click', (ev) => {
     else if (a === 'ward-load') { P.loadSnapshot(S, Number(b.dataset.n)); toast(`Look ${b.dataset.n} loaded`); renderAll(); }
     else if (a === 'ward-clear') { delete S.wardrobe[b.dataset.n]; renderAll(); }
     else if (a === 'save') save();
+    // worker 64: clothing layer toggle — flips the hidden flag in profile
+    // state, mirrors it to the game engine's wh_clothing_v1 store so the
+    // choice is live in game/preview too, then re-renders the sheet.
+    else if (a === 'clothing-toggle') {
+      const label = b.dataset.label;
+      const hidden = !P.isClothingHidden(S, label);
+      P.setClothingHidden(S, label, hidden);
+      mirrorClothingToGame();
+      toast(`${label} ${hidden ? 'hidden — saved with this attire' : 'visible again'}`);
+      renderSheetKeepScroll();
+    }
     else if (a === 'export') {
       const blob = new Blob([JSON.stringify(P.toCustomizationJson(S), null, 1)], { type: 'application/json' });
       const aEl = document.createElement('a');
@@ -501,6 +575,10 @@ $('#saveBtn').addEventListener('click', save);
       const rs = await fetch('../../../customization/region-sources.json');
       if (rs.ok) SWAP_SOURCES = (await rs.json()).sources || [];
     } catch { /* swaps tab explains itself when the index is missing */ }
+    try {
+      const rc = await fetch(CLOTHING_URL);
+      if (rc.ok) CLOTHING = await rc.json();
+    } catch { /* clothing section explains itself when the config is missing */ }
     COUNTS = spineCounts(ENTRIES);
     let stashRecs = null;
     try { stashRecs = JSON.parse(localStorage.getItem(LS_STASH) || 'null'); } catch { /* fresh */ }
