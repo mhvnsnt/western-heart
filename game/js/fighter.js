@@ -891,7 +891,13 @@ export class Fighter {
     try {
       const msB = getFighterMoveset(movesetId);
       for (const b of stepPlanBanksFor(msB, bank)) {
-        if (!getT3Clips(b)) { const pr = loadT3Clips(THREE, b); if (pr && pr.catch) pr.catch(() => {}); }
+        const pre = getT3Clips(b);
+        if (pre) { (this._stepBankClips || (this._stepBankClips = {}))[b] = pre; }
+        else {
+          const pr = loadT3Clips(THREE, b);
+          if (pr && pr.then) pr.then((cl) => { if (cl) (this._stepBankClips || (this._stepBankClips = {}))[b] = cl; }).catch(() => {});
+          else if (pr && pr.catch) pr.catch(() => {});
+        }
       }
     } catch (e) {}
     // Move rows retarget lazily on first use (same captured rest pose).
@@ -1020,10 +1026,16 @@ export class Fighter {
     const plans = ms.string_step_plans.plans;
     const bound = this._t3 && this._t3.bank;
     // Clip existence is checked in the PLAY bank's own cached clips:
-    // the bound bank's clips for bound steps, getT3Clips(bank) for an
-    // override step. A missing/unloaded override bank fails safe here.
+    // the bound bank's clips for bound steps; for an override step,
+    // THIS FIGHTER's per-step-bank cache (_stepBankClips, filled by
+    // the _bindT3 preload) — never the process-global bank cache, so
+    // one fighter's loaded bank can never make another fighter's
+    // BANK-BLOCKED step "playable" with a namespaced action name the
+    // bound bank's clip map cannot resolve. A bank this fighter has
+    // not preloaded fails safe here: the step is UNMAPPED.
     const hasClip = (bank, row) => {
-      const c = (bank === bound) ? (this._t3 && this._t3.clips) : getT3Clips(bank);
+      const c = (bank === bound) ? (this._t3 && this._t3.clips)
+        : (this._stepBankClips && this._stepBankClips[bank]);
       return !!(c && c['row:' + row]);
     };
     const resolve = (step, why) => {
@@ -1031,7 +1043,11 @@ export class Fighter {
       return { playBank: play ? play.bank : (step && step.bank) || bound, playRow: play ? play.row : null,
         playName: play ? stepActionName(play, bound) : null, why };
     };
-    const unmappedFor = (steps) => steps.filter(s => !effectiveStepPlay(s, bound)).map(s => s.prefix);
+    // Unmapped means "plays no row for this fighter right now": the
+    // same playability gate playback uses, so a BANK-BLOCKED step
+    // whose bank this fighter has not cached is reported unmapped
+    // (the step-plan contract), not silently dropped from the list.
+    const unmappedFor = (steps) => steps.filter(s => !playableStepPlay(s, bound, hasClip)).map(s => s.prefix);
     // Chain-active step: the prefix currently playing in a whole-string chain.
     const ch = this._stepChain;
     if (ch && ch.steps && ch.idx < ch.steps.length && move && move.moveKey === ch.steps[ch.idx].prefix) {
