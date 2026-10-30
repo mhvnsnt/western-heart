@@ -97,6 +97,15 @@ export const SEPARATE_TOOLS = [
     ],
     command:'node tools/anim/gltf_codec.mjs encode --in <glb> --out <glb> --codec <meshopt|draco>',
     spec:'export' },
+  { id:'meshedit', name:'Mesh Edit (Blender)', icon:'🛠️', status:'repo',
+    desc:'In-suite hand-tooling: hide/show/delete/duplicate meshes, bake transforms, import parts (interchange/add), sculpt, remodel. Headless Blender 4.0.2 backend via the suite job queue (tool: mesh-edit).',
+    params:[
+      ['fighter','Fighter','text',''],
+      ['source_glb','Source GLB','text','roster/<fighter>/attires/attire1/model.glb'],
+      ['ops','Ops (JSON list)','text','[{"op":"mesh_list"}]'],
+    ],
+    command:'python3 tools/suite-jobs/run_job.py --spec <spec.json>  # {"tool":"mesh-edit","params":{"fighter":..,"source_glb":..,"ops":[..]}}',
+    spec:'meshedit' },
 ];
 /* Layer 1 — unified per-domain systems (genuinely merged, not a launcher). */
 export const UNIFIED_SYSTEMS = [
@@ -118,6 +127,9 @@ export const UNIFIED_SYSTEMS = [
   { id:'export-system', name:'EXPORT', icon:'📦',
     desc:'Unified export: fighter JSON + GLB via glTF-Transform/meshoptimizer. One export, compressed and playable.',
     tools:['export'] },
+  { id:'model-edit-system', name:'MODEL EDIT', icon:'🛠️',
+    desc:'Unified hand-tooling: the suite viewport becomes the editor (tap-select, touch gizmo, hide/show/delete), Blender bakes the heavy ops through the suite job queue. One model pipeline — preview live, bake in Blender.',
+    tools:['meshedit'] },
 ];
 export function toolById(id){ return SEPARATE_TOOLS.find(t=>t.id===id); }
 
@@ -338,6 +350,12 @@ function unifiedActions(ctx, sysId){
       { label:'⤓ EXPORT GLB (glTF-Transform)', cls:'btn-gold',
         fn: spec('export', { codec:'meshopt', quantize:true, fighter:F.profile.name }) },
       { label:'⤓ EXPORT fighter JSON', fn:()=>document.querySelector('#btn-export').click() },
+    ];
+    case 'model-edit-system': return [
+      { label:'🛠️ ENTER MODEL EDIT (hand-tooling)', cls:'btn-gold',
+        fn:()=>import('./meshedit.js').then(m=>m.enterMeshEdit(ctx)).catch(e=>ctx.toast('Model edit failed to load: '+e.message)) },
+      { label:'⤓ MESH-EDIT job spec', fn: spec('meshedit', { fighter:F.profile?.name||'<fighter>', ops:[{op:'mesh_list'}] }) },
+      { label:'JOBS tab (live Blender status) →', fn:()=>ctx.setTab('jobs') },
     ];
     default: return [];
   }
