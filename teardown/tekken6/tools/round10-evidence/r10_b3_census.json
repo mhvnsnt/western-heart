@@ -1,0 +1,20 @@
+{
+ "source": "round7-evidence/r7_census.json (5,470 containers, entry-87 slice)",
+ "classes": {
+  "A: full-character pattern (BONE body + NDPP head/body + BONE head)": 28,
+  "B-texture": 1432,
+  "A: boned part (BONE present, not full-character pattern)": 3002,
+  "A: stage/object pattern (624B node + large slot9)": 236,
+  "A: rigid NDPP part/item (no BONE)": 436,
+  "dir-other": 336
+ },
+ "examples": {
+  "A: full-character pattern (BONE body + NDPP head/body + BONE head)": 0,
+  "B-texture": 1,
+  "A: boned part (BONE present, not full-character pattern)": 2,
+  "A: stage/object pattern (624B node + large slot9)": 104,
+  "A: rigid NDPP part/item (no BONE)": 105,
+  "dir-other": 131
+ },
+ "note": "Pattern classes from slot maps only (magic+size per slot). Per-character assignment of slice packages is NOT proven (needs DATA401 index-order analysis); classes state structure, not ownership."
+}
