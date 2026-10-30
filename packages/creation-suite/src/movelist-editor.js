@@ -102,9 +102,112 @@ export const LIMB_TO_BUTTON = {
   legL: 'LK3',
   legR: 'RK4',
 };
+// ---------------------------------------------------------------------------
+// WWE 2K22 CAW slot grid (docs/research/wwe-2k22-caw-editor.md).
+// ---------------------------------------------------------------------------
+// Slot counts are integers ONLY where a public 2K22 source states them.
+// Every other group carries slot_count: null. "Confirmed" below means a
+// public source names the category/grid; it does NOT mean the per-slot
+// move pool is known. Behind-grapple rows are INFERRED mirrors and must
+// never be presented as confirmed 2K22 parity.
+// Button names: LP1 = Left Punch = Tekken 1, RP2 = Right Punch = Tekken 2,
+// LK3 = Left Kick = Tekken 3, RK4 = Right Kick = Tekken 4. WH grapple
+// translations use the editor's own 1+3 / 2+4 convention (LP1+LK3 / RP2+RK4).
+export const WWE_CATEGORIES = [
+  'Standing', 'Ground', 'Corner', 'Rope', 'Irish Whip', 'Holds',
+  'Finisher', 'Signature',
+];
+
+export const WWE_SUBCATEGORIES = {
+  Standing: ['Light Attack', 'Heavy Attack', 'Light Grapple', 'Heavy Grapple', 'Running'],
+  Ground: ['Supine', 'Prone', 'Kneeling', 'Seated'],
+  Corner: ['Leaning', 'Top Rope', 'Seated', 'Tree of Woe'],
+  Rope: ['Leaning', 'Middle Rope'],
+  'Irish Whip': ['Rebound Attack', 'Pull-Back Attack'],
+  Holds: ['Submission'],
+  Finisher: ['In-Ring', 'Ringside', 'Tag Team'],
+  Signature: ['In-Ring', 'Ringside'],
+};
+
+// Confirmed 10-slot standing grapple grid: 2 strengths x 5 stick positions.
+// Source: SmackDown Hotel 2K22 controls tips ("10 different attacks").
+export const WWE_GRAPPLE_GRID = [
+  { id: 'standing_grapple_front.light.neutral', strength: 'light', stick: 'neutral', wh_input: 'LP1+LK3' },
+  { id: 'standing_grapple_front.light.up', strength: 'light', stick: 'up', wh_input: 'u+LP1+LK3' },
+  { id: 'standing_grapple_front.light.down', strength: 'light', stick: 'down', wh_input: 'd+LP1+LK3' },
+  { id: 'standing_grapple_front.light.left', strength: 'light', stick: 'left', wh_input: 'b+LP1+LK3' },
+  { id: 'standing_grapple_front.light.right', strength: 'light', stick: 'right', wh_input: 'f+LP1+LK3' },
+  { id: 'standing_grapple_front.heavy.neutral', strength: 'heavy', stick: 'neutral', wh_input: 'RP2+RK4' },
+  { id: 'standing_grapple_front.heavy.up', strength: 'heavy', stick: 'up', wh_input: 'u+RP2+RK4' },
+  { id: 'standing_grapple_front.heavy.down', strength: 'heavy', stick: 'down', wh_input: 'd+RP2+RK4' },
+  { id: 'standing_grapple_front.heavy.left', strength: 'heavy', stick: 'left', wh_input: 'b+RP2+RK4' },
+  { id: 'standing_grapple_front.heavy.right', strength: 'heavy', stick: 'right', wh_input: 'f+RP2+RK4' },
+];
+
+export const WWE_COMBO_RULES = {
+  total_most: 30,
+  total_powerhouse_3hit: 18,
+  chains: ['towards', 'away', 'neutral'],
+  min_length: 2,
+  max_length: 4,
+  must_start: 'light', // every 2K22 combo starts with a Light Attack
+  ender_types: ['light', 'heavy', 'grapple'],
+  per_chain_count: null, // UNKNOWN: do not assume 10/10/10
+};
+
+export const WWE_GLOBAL_LIMITS = {
+  caw_slots: 100,
+  total_moves_bracket: '3000+',
+  payback_max: 1,
+  special_stock_max: 3,
+  finishers_stored_max: 3, // "stored", NOT a finisher-slot count
+};
+
+// Group editor entries by WWE category for the move-list UI. Entries
+// without wwe_category fall under 'Uncategorised (Tekken)' so no existing
+// row is ever hidden by the new grouping.
+export function groupEntriesByWweCategory(entries) {
+  const groups = {};
+  for (const category of WWE_CATEGORIES) groups[category] = [];
+  groups['Uncategorised (Tekken)'] = [];
+  for (const entry of entries || []) {
+    const key = entry && WWE_CATEGORIES.includes(entry.wwe_category)
+      ? entry.wwe_category
+      : 'Uncategorised (Tekken)';
+    groups[key].push(entry);
+  }
+  return groups;
+}
+
+// Position key for a WWE slot: opponent_state + attacker location.
+// A move whose wwe_position does not equal its slot's wwe_position
+// must not be assigned there, even if its limb/stance checks pass.
+export function wwePositionKey(position) {
+  if (!position || typeof position !== 'object') return 'standing:mid-ring';
+  return `${position.opponent_state || 'standing'}:${position.location || 'mid-ring'}`;
+}
+
+export function validateWwePosition(slotPosition, candidatePosition) {
+  if (!slotPosition) return { allowed: true, reason: 'slot has no WWE position gate' };
+  const ok = wwePositionKey(slotPosition) === wwePositionKey(candidatePosition);
+  return ok
+    ? { allowed: true, reason: '' }
+    : { allowed: false, reason: `WWE position mismatch: slot is ${wwePositionKey(slotPosition)}, move is ${wwePositionKey(candidatePosition)}.` };
+}
+
 
 // Mapping statuses shown in the list. Exactly these four values.
 export const MAPPING_STATUSES = ['correct', 'wrong', 'approximate', 'unmapped'];
+// WWE slot provenance. 'confirmed' = a public 2K22 source names the
+// category/grid. Anything else must render with its status visible in
+// the UI, never as confirmed 2K22 parity.
+export const WWE_SLOT_STATUSES = [
+  'confirmed',
+  'gameplay-confirmed, editor-tab-unconfirmed',
+  'inferred-mirror, unconfirmed',
+  'unknown',
+];
+
 
 // Named stance prefixes seen at the front of Tekken inputs, before the
 // first ".". Only prefixes in this table get a stance from the prefix;
@@ -329,6 +432,7 @@ export function deriveSlotContext(tekkenInput, hint = {}) {
   return {
     input: tekkenInput,
     displayInput: toDisplayInput(tekkenInput),
+    wwe_position: hint.wwe_position || null,
     stance,
     direction: firstHit.direction,
     kind,
@@ -491,6 +595,7 @@ export function validateAssignment(slotContext, candidate) {
 export function computeMappingStatus(entry, hint = {}) {
   const slotContext = deriveSlotContext(entry?.input || '', {
     kind: slotKindHint(entry) ?? hint.kind,
+    wwe_position: entry?.wwe_position || hint.wwe_position || null,
   });
   return { slotContext, ...validateAssignment(slotContext, entry) };
 }
@@ -500,7 +605,9 @@ export function computeMappingStatus(entry, hint = {}) {
 // but they are NOT offered as swap targets.
 export function eligibleCandidates(slotContext, library) {
   return (library || []).filter(
-    (candidate) => validateAssignment(slotContext, candidate).allowed,
+    (candidate) =>
+      validateAssignment(slotContext, candidate).allowed &&
+      validateWwePosition(slotContext.wwe_position, candidate.wwe_position).allowed,
   );
 }
 
@@ -576,6 +683,14 @@ export function fromMovesetFile(moveset) {
       move_class: move.move_class || null,
       limb: move.limb || null,
       throw: move.move_class === 'throw' || move.throw === true || false,
+      wwe_category: move.wwe_category || null,
+      wwe_subcategory: move.wwe_subcategory || null,
+      wwe_position: move.wwe_position || null,
+      wwe_input: move.wwe_input || null,
+      wwe_status: move.wwe_status || null,
+      slot_count_status: move.slot_count_status || null,
+      slot_id: move.slot_id || null,
+      nullable: move.nullable || false,
       properties: deriveCandidateProperties(move),
       sourceMove: move,
     });
@@ -606,6 +721,14 @@ export function fromMovesetFile(moveset) {
       t3_row: special.t3_row ?? null,
       category: special.throw ? 'grappling' : 'special',
       move_class: special.throw ? 'throw' : 'special',
+      wwe_category: special.wwe_category || null,
+      wwe_subcategory: special.wwe_subcategory || null,
+      wwe_position: special.wwe_position || null,
+      wwe_input: special.wwe_input || null,
+      wwe_status: special.wwe_status || null,
+      slot_count_status: special.slot_count_status || null,
+      slot_id: special.slot_id || null,
+      nullable: special.nullable || false,
       limb: null,
       throw: special.throw === true,
       properties: deriveCandidateProperties({
@@ -641,6 +764,14 @@ export function fromMovesetFile(moveset) {
       t3_bank: null,
       t3_row: null,
       category: canon.move_class === 'throw' ? 'grappling' : (canon.move_class === 'stance' ? 'stance' : 'special'),
+      wwe_category: canon.wwe_category || null,
+      wwe_subcategory: canon.wwe_subcategory || null,
+      wwe_position: canon.wwe_position || null,
+      wwe_input: canon.wwe_input || null,
+      wwe_status: canon.wwe_status || null,
+      slot_count_status: canon.slot_count_status || null,
+      slot_id: canon.slot_id || null,
+      nullable: canon.nullable || false,
       move_class: canon.move_class || 'special',
       limb: canon.limb || null,
       throw: canon.move_class === 'throw',
@@ -681,6 +812,14 @@ export function fromMovesetFile(moveset) {
         t3_bank: null,
         t3_row: null,
         category: move.category || categoryForEntry(move, context),
+        wwe_category: move.wwe_category || null,
+        wwe_subcategory: move.wwe_subcategory || null,
+        wwe_position: move.wwe_position || null,
+        wwe_input: move.wwe_input || null,
+        wwe_status: move.wwe_status || null,
+        slot_count_status: move.slot_count_status || null,
+        slot_id: move.slot_id || null,
+        nullable: move.nullable || false,
         move_class: move.move_class || null,
         limb: move.limb || null,
         throw: move.move_class === 'throw' || false,
@@ -780,6 +919,14 @@ export function listAllMoves(editor) {
       category: entry.category,
       move_class: entry.move_class,
       limb: entry.limb,
+      wwe_category: entry.wwe_category || null,
+      wwe_subcategory: entry.wwe_subcategory || null,
+      wwe_position: entry.wwe_position || null,
+      wwe_input: entry.wwe_input || null,
+      wwe_status: entry.wwe_status || (entry.slot_id ? entry.status || null : null),
+      slot_count_status: entry.slot_count_status || null,
+      slot_id: entry.slot_id || null,
+      nullable: entry.nullable || false,
       status: checked.status,
       verification: checked.verification,
       reasons: checked.reasons,
@@ -807,13 +954,49 @@ export function swapMove(editor, entryId, candidateId, options = {}) {
     return { ok: false, error: `No move row with id ${entryId}.` };
   }
   if (!candidate) {
+    if (candidateId == null && slotEntry.nullable === true) {
+      const previousCleared = { entryId: String(slotEntry.id), anim_ref: slotEntry.anim_ref || null };
+      const clearedEntry = {
+        ...slotEntry,
+        anim_ref: null,
+        t3_row: null,
+        wwe_cleared: true,
+      };
+      editor.byId.set(String(entryId), clearedEntry);
+      editor.entries = editor.entries.map((entry) =>
+        String(entry.id) === String(entryId) ? clearedEntry : entry,
+      );
+      editor.edits.push({
+        type: 'swap',
+        slot: String(entryId),
+        slotInput: slotEntry.input,
+        displaySlot: toDisplayInput(slotEntry.input),
+        from: previousCleared,
+        to: { entryId: null, anim_ref: null },
+        status: 'unmapped',
+        mode,
+        reasons: ['Slot cleared: nullable springboard slot, "None" is a valid 2K22 choice.'],
+      });
+      editor.dirty = true;
+      return { ok: true, status: 'unmapped', reasons: ['Slot cleared: nullable springboard slot.'], entry: clearedEntry };
+    }
     return { ok: false, error: `No library move with id ${candidateId}.` };
   }
   const slotInput = slotEntry.input;
   const slotContext = deriveSlotContext(slotInput, {
     kind: slotKindHint(slotEntry),
+    wwe_position: slotEntry.wwe_position || null,
   });
   const check = validateAssignment(slotContext, candidate);
+  const positionCheck = validateWwePosition(slotEntry.wwe_position, candidate.wwe_position);
+  if (!positionCheck.allowed && mode === 'block') {
+    return {
+      ok: false,
+      error: `Blocked: ${candidate.name} (${candidate.displayInput}) does not fit slot ${slotContext.displayInput}: ${positionCheck.reason}`,
+      status: check.status,
+      reasons: [...check.reasons, positionCheck.reason],
+    };
+  }
   if (!check.allowed && mode === 'block') {
     return {
       ok: false,
@@ -1029,6 +1212,13 @@ export function serializeMoveset(editor) {
       limb: candidate.limb || original.limb || null,
       input: edit.slotInput || original.input || edit.slot,
     };
+    for (const field of ['wwe_category', 'wwe_subcategory', 'wwe_position', 'wwe_input', 'wwe_status', 'slot_count_status', 'slot_id']) {
+      if (candidate[field] != null) out.moves[edit.slot][field] = candidate[field];
+    }
+    if (candidate.wwe_cleared === true) {
+      out.moves[edit.slot].anim_ref = null;
+      out.moves[edit.slot].t3_row = null;
+    }
   }
   // Custom / changed combos: replace the matching string entry, or
   // append when the input is new. Object strings keep their other
@@ -1052,6 +1242,22 @@ export function serializeMoveset(editor) {
       else out.strings.push(entry);
     }
   }
+  // WWE slot grid: a separate wwe_slots array. The file's existing
+  // slots index is intentionally NOT rewritten (see the serialize
+  // header comment); the game's moveset loader rebuilds it from moves.
+  const wweSlots = (editor.entries || [])
+    .filter((entry) => entry && entry.slot_id)
+    .map((entry) => ({
+      slot_id: entry.slot_id,
+      wwe_category: entry.wwe_category || null,
+      wwe_subcategory: entry.wwe_subcategory || null,
+      wwe_position: entry.wwe_position || null,
+      wwe_input: entry.wwe_input || null,
+      wwe_status: entry.wwe_status || entry.status || null,
+      move_id: entry.move_id ?? null,
+      nullable: entry.nullable || false,
+    }));
+  if (wweSlots.length > 0) out.wwe_slots = wweSlots;
   out.movelist_editor = {
     edited: true,
     fighter: editor.fighter,
@@ -1108,7 +1314,7 @@ export function renderEntryRow(row) {
     + `<td data-status="${escapeHtml(row.status)}">${escapeHtml(row.status)}`
     + (row.verification === 'clip' ? ' (clip-verified)' : row.verification === 'canon' ? ' (canon wiring, verify by playing)' : ' (input, verify by playing)')
     + `</td>`
-    + `<td>${escapeHtml(row.reasons.join(' ') || '')}</td></tr>`;
+    + `<td>${escapeHtml(row.reasons.join(' ') || '')}${row.wwe_status ? ` (WWE status: ${escapeHtml(row.wwe_status)})` : ''}</td></tr>`;
 }
 
 export function renderEditorHTML(editor) {
@@ -1118,13 +1324,59 @@ export function renderEditorHTML(editor) {
   const comboRows = editor.combos
     .map((combo) => `<li>${escapeHtml(combo.displayInput)} (${combo.hits.length} hits${combo.custom ? ', custom' : ''})</li>`)
     .join('');
+  const tableFor = (groupRows) => `<table><thead><tr><th>Move name</th><th>Button input (LP1/RP2/LK3/RK4)</th><th>Exact animation</th><th>Mapping status</th><th>Notes</th></tr></thead>`
+    + `<tbody>${groupRows.map(renderEntryRow).join('')}</tbody></table>`;
+  // WWE grouping: only when at least one row carries a WWE category.
+  // Tekken-only editors render exactly the single table they rendered
+  // before. WWE rows whose category is not one of the 8 (Payback,
+  // Combos, Diving / Springboard / Apron from the 2K22 data module)
+  // render under their own category heading, never mislabelled as
+  // Tekken rows; Uncategorised (Tekken) renders last.
+  let bodyHtml;
+  if (!rows.some((row) => row.wwe_category)) {
+    bodyHtml = tableFor(rows);
+  } else {
+    const groups = groupEntriesByWweCategory(rows);
+    const extraGroups = {};
+    for (const row of rows) {
+      if (row.wwe_category && !WWE_CATEGORIES.includes(row.wwe_category)) {
+        (extraGroups[row.wwe_category] = extraGroups[row.wwe_category] || []).push(row);
+      }
+    }
+    const sections = [];
+    for (const category of WWE_CATEGORIES) {
+      if (groups[category].length > 0) {
+        sections.push(`<h3>${escapeHtml(category)}</h3>` + tableFor(groups[category]));
+      }
+    }
+    for (const [category, groupRows] of Object.entries(extraGroups)) {
+      sections.push(`<h3>${escapeHtml(category)}</h3>` + tableFor(groupRows));
+    }
+    // Uncategorised here means ONLY rows with no WWE category at all:
+    // rows already rendered under an extra WWE heading above must not
+    // render a second time under Uncategorised (Tekken).
+    const uncategorisedRows = groups['Uncategorised (Tekken)'].filter((row) => !row.wwe_category);
+    if (uncategorisedRows.length > 0) {
+      sections.push('<h3>Uncategorised (Tekken)</h3>' + tableFor(uncategorisedRows));
+    }
+    bodyHtml = sections.join('');
+  }
+  // WWE 2K22 combo-chain section: only when the host passed WWE combo
+  // rows. Values come from WWE_COMBO_RULES, never hardcoded twice.
+  // Per-chain counts stay "unknown" until measured by playing 2K22.
+  const hasWweCombos = (editor.entries || []).some(
+    (entry) => entry && (entry.wwe_category === 'Combos' || String(entry.slot_id || '').startsWith('combos.')),
+  );
+  const wweComboHtml = hasWweCombos
+    ? `<h3>WWE 2K22 combo chains</h3><p>Chains: ${escapeHtml(WWE_COMBO_RULES.chains.join(', '))}. Total: ${WWE_COMBO_RULES.total_most} combos (${WWE_COMBO_RULES.total_powerhouse_3hit} for 3-hit powerhouse characters). Every combo starts with a ${escapeHtml(WWE_COMBO_RULES.must_start)} attack; ${WWE_COMBO_RULES.min_length}–${WWE_COMBO_RULES.max_length} hits; ender type (${escapeHtml(WWE_COMBO_RULES.ender_types.join(', '))}) is the combo type. Per-chain counts: ${WWE_COMBO_RULES.per_chain_count == null ? 'unknown' : WWE_COMBO_RULES.per_chain_count}.</p>`
+    : '';
   return `<section class="movelist-editor" data-fighter="${escapeHtml(editor.fighter)}">`
     + `<h2>Create-A-Move List: ${escapeHtml(editor.display)}</h2>`
     + `<p>All moves, including wrongly mapped ones. Swap a move only to a slot whose context it matches: jumping slots take only jumping animations, crouching slots only crouching animations, standing slots only standing animations, grapple slots only grapple animations, and directional slots only animations matching that direction.</p>`
     + `<p>Status counts: ${Object.entries(counts).map(([status, count]) => `${escapeHtml(status)}: ${count}`).join(', ')}</p>`
-    + `<table><thead><tr><th>Move name</th><th>Button input (LP1/RP2/LK3/RK4)</th><th>Exact animation</th><th>Mapping status</th><th>Notes</th></tr></thead>`
-    + `<tbody>${rows.map(renderEntryRow).join('')}</tbody></table>`
+    + bodyHtml
     + `<h3>Combos</h3><ul>${comboRows}</ul>`
+    + wweComboHtml
     + `<p class="movelist-editor-save-note">Save writes ${escapeHtml(`game/assets/movesets/${editor.fighter}.json`)} through the GitHub API on a feature-branch PR. Changes persist: fix it, save it, it stays fixed.</p>`
     + `</section>`;
 }
@@ -1139,14 +1391,15 @@ export function mount(element, editor, options = {}) {
   const onSave = options.onSave || (() => {});
   const render = () => {
     element.innerHTML = renderEditorHTML(editor);
-    const table = element.querySelector('table tbody');
-    if (table) {
+    const bodies = element.querySelectorAll('table tbody');
+    for (const table of bodies) {
       for (const rowEl of table.querySelectorAll('tr')) {
         const moveId = rowEl.getAttribute('data-move-id');
         const entry = editor.byId.get(moveId);
         if (!entry) continue;
         const slotContext = deriveSlotContext(entry.input, {
           kind: slotKindHint(entry),
+          wwe_position: entry.wwe_position || null,
         });
         const eligible = eligibleCandidates(slotContext, editor.entries);
         const cell = document.createElement('td');

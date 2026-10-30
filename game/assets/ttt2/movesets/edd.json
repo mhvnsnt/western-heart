@@ -1,0 +1,3106 @@
+{
+ "schema": "ttt2-moveset-v1",
+ "source_game": "Tekken Tag Tournament 2",
+ "character": "Eddy Gordo",
+ "bxml_prefix": "edd",
+ "bxml_doc": 33,
+ "mvlt_list": 34,
+ "provenance": {
+  "source_archive": "release ttt2-7z-v1 (mhvnsnt/western-heart)",
+  "pull_tool": "tools/ttt2_virtual_god.py --pull",
+  "pulled_file": "data018.bin",
+  "pulled_bytes": 557332,
+  "pulled_sha256": "7e06ad5336374973bf8f637b898c975585226fc7a260a730ad981365b2056db4",
+  "decoded_file": "decoded-data018.bin",
+  "decoded_bytes": 3027808,
+  "decoded_sha256": "54db09ebc63ee1a05a7b1c00cc2d7b5528d0d97c6ed1949da805daac7709293e",
+  "parser": "teardown/tekken-tag-tournament-2 tools: parse_mvlt_v4.py (authoritative; v1/v2/v3 superseded)",
+  "converter": "convert_mvlt_notation.py (empirical glyph map; see MVLT-GLYPH-MAP-20261030.md)",
+  "note": "Derived data only. No game binaries committed (western-heart AGENTS.md rule 8). Bins stay reproducible from release ttt2-7z-v1."
+ },
+ "counts": {
+  "records": 174,
+  "moves": 164,
+  "sample_combos": 7,
+  "separators": 3
+ },
+ "records": [
+  {
+   "row": 0,
+   "name": "One Two Elbows",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2",
+   "notation_std": "1, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:edd:row:0",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 0
+  },
+  {
+   "row": 1,
+   "name": "Combo Jilar",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2, 4",
+   "notation_std": "1, 2, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:1",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 1
+  },
+  {
+   "row": 2,
+   "name": "Left Jab to Island Mirage",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 3",
+   "notation_std": "1, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:2",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 2
+  },
+  {
+   "row": 3,
+   "name": "Left Jab Island Mirage to Negativa",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 3, D",
+   "notation_std": "1, 3, d",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe018",
+    "0xe009"
+   ],
+   "anim_ref": "ttt2:edd:row:3",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 3
+  },
+  {
+   "row": 4,
+   "name": "Gancho Chibata",
+   "kind": "move",
+   "section": null,
+   "notation": "3, 4",
+   "notation_std": "3, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:4",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 4
+  },
+  {
+   "row": 5,
+   "name": "Slippery Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "3, 4",
+   "notation_std": "3, 4",
+   "condition_text": "【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:5",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 5
+  },
+  {
+   "row": 6,
+   "name": "Slippery Kick to Handstand",
+   "kind": "move",
+   "section": null,
+   "notation": "3, 4, B",
+   "notation_std": "3, 4, b",
+   "condition_text": "【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe01c",
+    "0xe00b"
+   ],
+   "anim_ref": "ttt2:edd:row:6",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 6
+  },
+  {
+   "row": 7,
+   "name": "Slippery Kick to Heran Bago",
+   "kind": "move",
+   "section": null,
+   "notation": "3, 4, 3",
+   "notation_std": "3, 4, 3",
+   "condition_text": "【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:7",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 7
+  },
+  {
+   "row": 8,
+   "name": "Slippery Kick to Side Flop",
+   "kind": "move",
+   "section": null,
+   "notation": "3, 4, 4",
+   "notation_std": "3, 4, 4",
+   "condition_text": "【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:8",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 8
+  },
+  {
+   "row": 9,
+   "name": "Slippery Kick to Front Stinger",
+   "kind": "move",
+   "section": null,
+   "notation": "3, 4, 3+4",
+   "notation_std": "3, 4, 3+4",
+   "condition_text": "【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe01c",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:9",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 9
+  },
+  {
+   "row": 10,
+   "name": "Satellite Moon",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 3",
+   "notation_std": "4, 3",
+   "condition_text": "【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:10",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 10
+  },
+  {
+   "row": 11,
+   "name": "Satellite Moon Hot Plate Special",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 3, 3",
+   "notation_std": "4, 3, 3",
+   "condition_text": "【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:11",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 11
+  },
+  {
+   "row": 12,
+   "name": "Satellite Moon Roundhouse",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 3, 4",
+   "notation_std": "4, 3, 4",
+   "condition_text": "【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:12",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 12
+  },
+  {
+   "row": 13,
+   "name": "Handslaps",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:edd:row:13",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 13
+  },
+  {
+   "row": 14,
+   "name": "Handslaps Island Mirage",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2, 3",
+   "notation_std": "1+2, 3",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:14",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 14
+  },
+  {
+   "row": 15,
+   "name": "Handslaps Island Mirage to Negativa",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2, 3, D",
+   "notation_std": "1+2, 3, d",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe018",
+    "0xe009"
+   ],
+   "anim_ref": "ttt2:edd:row:15",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 15
+  },
+  {
+   "row": 16,
+   "name": "Handslaps Mirage",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2, 3",
+   "notation_std": "1+2, 3",
+   "condition_text": "【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:16",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 16
+  },
+  {
+   "row": 17,
+   "name": "Back Handspring",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:17",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 17
+  },
+  {
+   "row": 18,
+   "name": "Back Handspring to Handstand Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4, 3",
+   "notation_std": "3+4, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:18",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 18
+  },
+  {
+   "row": 19,
+   "name": "Shin Cutter Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "f+2, 1, 4",
+   "notation_std": "f+2, 1, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe016",
+    "0xe015",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:19",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 19
+  },
+  {
+   "row": 20,
+   "name": "Handstand Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3",
+   "notation_std": "f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:20",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 20
+  },
+  {
+   "row": 21,
+   "name": "Samba",
+   "kind": "move",
+   "section": null,
+   "notation": "f+4",
+   "notation_std": "f+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:21",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 21
+  },
+  {
+   "row": 22,
+   "name": "Samba Handstand",
+   "kind": "move",
+   "section": null,
+   "notation": "f+4, B",
+   "notation_std": "f+4, b",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01c",
+    "0xe00b"
+   ],
+   "anim_ref": "ttt2:edd:row:22",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 22
+  },
+  {
+   "row": 23,
+   "name": "Au de Sol",
+   "kind": "move",
+   "section": null,
+   "notation": "f+4, 3, 3+4",
+   "notation_std": "f+4, 3, 3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01c",
+    "0xe018",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:23",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 23
+  },
+  {
+   "row": 24,
+   "name": "Samba Slippery Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f+4, 3+4",
+   "notation_std": "f+4, 3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01c",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:24",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 24
+  },
+  {
+   "row": 25,
+   "name": "Reversao",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3+4",
+   "notation_std": "f+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:25",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 25
+  },
+  {
+   "row": 26,
+   "name": "Mao Esquerda",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1",
+   "notation_std": "d/f+1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:edd:row:26",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 26
+  },
+  {
+   "row": 27,
+   "name": "Mao Esquerda to Handstand",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1, F",
+   "notation_std": "d/f+1, f",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015",
+    "0xe00c"
+   ],
+   "anim_ref": "ttt2:edd:row:27",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 27
+  },
+  {
+   "row": 28,
+   "name": "Conbinaso Mao",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1, 1",
+   "notation_std": "d/f+1, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:edd:row:28",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 28
+  },
+  {
+   "row": 29,
+   "name": "Elbow Uppercut",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+2",
+   "notation_std": "d/f+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:edd:row:29",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 29
+  },
+  {
+   "row": 30,
+   "name": "Island Mirage",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+3",
+   "notation_std": "d/f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:30",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 30
+  },
+  {
+   "row": 31,
+   "name": "Island Mirage to Negativa",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+3, D",
+   "notation_std": "d/f+3, d",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe018",
+    "0xe009"
+   ],
+   "anim_ref": "ttt2:edd:row:31",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 31
+  },
+  {
+   "row": 32,
+   "name": "Kneecap Crusher",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+4",
+   "notation_std": "d/f+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:32",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 32
+  },
+  {
+   "row": 33,
+   "name": "Mirage",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+3+4",
+   "notation_std": "d/f+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:33",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 33
+  },
+  {
+   "row": 34,
+   "name": "Palmares Giro",
+   "kind": "move",
+   "section": null,
+   "notation": "d+2, 3",
+   "notation_std": "d+2, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe016",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:34",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 34
+  },
+  {
+   "row": 35,
+   "name": "Heran Bago",
+   "kind": "move",
+   "section": null,
+   "notation": "d+3, 3",
+   "notation_std": "d+3, 3",
+   "condition_text": "【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe018",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:35",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 35
+  },
+  {
+   "row": 36,
+   "name": "Relogio",
+   "kind": "move",
+   "section": null,
+   "notation": "d+3, 4",
+   "notation_std": "d+3, 4",
+   "condition_text": "【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:36",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 36
+  },
+  {
+   "row": 37,
+   "name": "Au de Bico",
+   "kind": "move",
+   "section": null,
+   "notation": "d+4, 3",
+   "notation_std": "d+4, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:37",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 37
+  },
+  {
+   "row": 38,
+   "name": "Twister Mirage",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+2, 3",
+   "notation_std": "d/b+2, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe016",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:38",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 38
+  },
+  {
+   "row": 39,
+   "name": "Rasteila",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+3",
+   "notation_std": "d/b+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:39",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 39
+  },
+  {
+   "row": 40,
+   "name": "Rasteila to Handstand",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+3, B",
+   "notation_std": "d/b+3, b",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe018",
+    "0xe00b"
+   ],
+   "anim_ref": "ttt2:edd:row:40",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 40
+  },
+  {
+   "row": 41,
+   "name": "Rasteila Chibata",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+3, 3",
+   "notation_std": "d/b+3, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe018",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:41",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 41
+  },
+  {
+   "row": 42,
+   "name": "Rasteila Hot Plate Special",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+3, 3",
+   "notation_std": "d/b+3, 3",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe018",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:42",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 42
+  },
+  {
+   "row": 43,
+   "name": "Rasteila to Circle Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+3, 4",
+   "notation_std": "d/b+3, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:43",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 43
+  },
+  {
+   "row": 44,
+   "name": "Rasteila to Low Kick 2",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+3, d/b+4",
+   "notation_std": "d/b+3, d/b+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe018",
+    "0xe000",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:44",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 44
+  },
+  {
+   "row": 45,
+   "name": "Thong Bikini to Low Kick 2",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+3, d/b+4, 4",
+   "notation_std": "d/b+3, d/b+4, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe018",
+    "0xe000",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:45",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 45
+  },
+  {
+   "row": 46,
+   "name": "Rasteila to Heran Bago",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+3, d/b+4, 3",
+   "notation_std": "d/b+3, d/b+4, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe018",
+    "0xe000",
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:46",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 46
+  },
+  {
+   "row": 47,
+   "name": "Rasteila to Crying Needle",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+3, d/b+4, 1+2",
+   "notation_std": "d/b+3, d/b+4, 1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe018",
+    "0xe000",
+    "0xe01c",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:edd:row:47",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 47
+  },
+  {
+   "row": 48,
+   "name": "Barbed Wire",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+4, 4, 4",
+   "notation_std": "d/b+4, 4, 4",
+   "condition_text": "・・・",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe01c",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:48",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 48
+  },
+  {
+   "row": 49,
+   "name": "Barbed Wire Infinite Upside Down Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+4, b+4",
+   "notation_std": "d/b+4, b+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe01c",
+    "0xe003",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:49",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 49
+  },
+  {
+   "row": 50,
+   "name": "Double Arm Stinger",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+1+2",
+   "notation_std": "d/b+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:edd:row:50",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 50
+  },
+  {
+   "row": 51,
+   "name": "Meia-Lua de Compasso",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+3+4, 4, 3",
+   "notation_std": "d/b+3+4, 4, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe020",
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:51",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 51
+  },
+  {
+   "row": 52,
+   "name": "Gato to Au Batido",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1, 4",
+   "notation_std": "b+1, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe015",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:52",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 52
+  },
+  {
+   "row": 53,
+   "name": "Gato to Au Batido to Handstand",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1, 4, B",
+   "notation_std": "b+1, 4, b",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe015",
+    "0xe01c",
+    "0xe00b"
+   ],
+   "anim_ref": "ttt2:edd:row:53",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 53
+  },
+  {
+   "row": 54,
+   "name": "Asfixiante",
+   "kind": "move",
+   "section": null,
+   "notation": "b+2",
+   "notation_std": "b+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:edd:row:54",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 54
+  },
+  {
+   "row": 55,
+   "name": "Knee Thruster",
+   "kind": "move",
+   "section": null,
+   "notation": "b+3",
+   "notation_std": "b+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:55",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 55
+  },
+  {
+   "row": 56,
+   "name": "Knee Thruster to Heran Bago",
+   "kind": "move",
+   "section": null,
+   "notation": "b+3, 3",
+   "notation_std": "b+3, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe018",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:56",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 56
+  },
+  {
+   "row": 57,
+   "name": "Bencao Fake-out",
+   "kind": "move",
+   "section": null,
+   "notation": "b+3, f",
+   "notation_std": "b+3, f",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe018",
+    "0xe004"
+   ],
+   "anim_ref": "ttt2:edd:row:57",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 57
+  },
+  {
+   "row": 58,
+   "name": "Armada",
+   "kind": "move",
+   "section": null,
+   "notation": "b+4",
+   "notation_std": "b+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:58",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 58
+  },
+  {
+   "row": 59,
+   "name": "Armada to Rasteila",
+   "kind": "move",
+   "section": null,
+   "notation": "b+4, 3",
+   "notation_std": "b+4, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:59",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 59
+  },
+  {
+   "row": 60,
+   "name": "Armada to Macaco",
+   "kind": "move",
+   "section": null,
+   "notation": "b+4, 4",
+   "notation_std": "b+4, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:60",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 60
+  },
+  {
+   "row": 61,
+   "name": "Armada to Macaco to Negativa",
+   "kind": "move",
+   "section": null,
+   "notation": "b+4, 4, D",
+   "notation_std": "b+4, 4, d",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe01c",
+    "0xe01c",
+    "0xe009"
+   ],
+   "anim_ref": "ttt2:edd:row:61",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 61
+  },
+  {
+   "row": 62,
+   "name": "Leg Whip Mars Attack Flip",
+   "kind": "move",
+   "section": null,
+   "notation": "b+4, 4, 3+4",
+   "notation_std": "b+4, 4, 3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe01c",
+    "0xe01c",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:62",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 62
+  },
+  {
+   "row": 63,
+   "name": "Queixada",
+   "kind": "move",
+   "section": null,
+   "notation": "b+3+4",
+   "notation_std": "b+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:63",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 63
+  },
+  {
+   "row": 64,
+   "name": "Acrobacia",
+   "kind": "move",
+   "section": null,
+   "notation": "u+3",
+   "notation_std": "u+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe006",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:64",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 64
+  },
+  {
+   "row": 65,
+   "name": "Back Summy",
+   "kind": "move",
+   "section": null,
+   "notation": "u+4",
+   "notation_std": "u+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe006",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:65",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 65
+  },
+  {
+   "row": 66,
+   "name": "Back Summy to Firekick",
+   "kind": "move",
+   "section": null,
+   "notation": "u+4, 3",
+   "notation_std": "u+4, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe006",
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:66",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 66
+  },
+  {
+   "row": 67,
+   "name": "Back Summy to Scoot Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "u+4, 4",
+   "notation_std": "u+4, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe006",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:67",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 67
+  },
+  {
+   "row": 68,
+   "name": "Firekick",
+   "kind": "move",
+   "section": null,
+   "notation": "u+3+4",
+   "notation_std": "u+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe006",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:68",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 68
+  },
+  {
+   "row": 69,
+   "name": "Firekick to Negativa",
+   "kind": "move",
+   "section": null,
+   "notation": "u+3+4, D",
+   "notation_std": "u+3+4, d",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe006",
+    "0xe020",
+    "0xe009"
+   ],
+   "anim_ref": "ttt2:edd:row:69",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 69
+  },
+  {
+   "row": 70,
+   "name": "Jumping Jacks",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3",
+   "notation_std": "u/f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:70",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 70
+  },
+  {
+   "row": 71,
+   "name": "Jumping Jacks to Negativa",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3, D",
+   "notation_std": "u/f+3, d",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe018",
+    "0xe009"
+   ],
+   "anim_ref": "ttt2:edd:row:71",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 71
+  },
+  {
+   "row": 72,
+   "name": "Jumping Jacks Mirage",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3, 3",
+   "notation_std": "u/f+3, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe018",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:72",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 72
+  },
+  {
+   "row": 73,
+   "name": "Jumping Jacks Evil Stinger",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3, 3+4",
+   "notation_std": "u/f+3, 3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe018",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:73",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 73
+  },
+  {
+   "row": 74,
+   "name": "Roundhouse",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+4",
+   "notation_std": "u/f+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:74",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 74
+  },
+  {
+   "row": 75,
+   "name": "Vasuuna",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+1+2",
+   "notation_std": "u/f+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:edd:row:75",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 75
+  },
+  {
+   "row": 76,
+   "name": "Meia-Lua Pulando",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3+4",
+   "notation_std": "u/f+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:76",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 76
+  },
+  {
+   "row": 77,
+   "name": "Derecho Batuque",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+2, 3",
+   "notation_std": "f, f+2, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe016",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:77",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 77
+  },
+  {
+   "row": 78,
+   "name": "Lunging Brush Fire",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+3",
+   "notation_std": "f, f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:78",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 78
+  },
+  {
+   "row": 79,
+   "name": "Lunging Brush Fire to Negativa",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+3, D",
+   "notation_std": "f, f+3, d",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe018",
+    "0xe009"
+   ],
+   "anim_ref": "ttt2:edd:row:79",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 79
+  },
+  {
+   "row": 80,
+   "name": "Lunging Brush Fire to Handstand",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+3, B",
+   "notation_std": "f, f+3, b",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe018",
+    "0xe00b"
+   ],
+   "anim_ref": "ttt2:edd:row:80",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 80
+  },
+  {
+   "row": 81,
+   "name": "Lunging Brush Fire to Perch Flop Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+3, B+3+4",
+   "notation_std": "f, f+3, b+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe018",
+    "0xe00b",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:81",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 81
+  },
+  {
+   "row": 82,
+   "name": "Folha Ataque",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+4",
+   "notation_std": "f, f+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:82",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 82
+  },
+  {
+   "row": 83,
+   "name": "Boomerang",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+3+4",
+   "notation_std": "f, f+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:83",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 83
+  },
+  {
+   "row": 84,
+   "name": "Fruit Picker",
+   "kind": "move",
+   "section": null,
+   "notation": "b, B+3+4, b, b",
+   "notation_std": "b, b+3+4, b, b",
+   "condition_text": "( to cancel)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe00b",
+    "0xe020",
+    "0xe003",
+    "0xe003"
+   ],
+   "anim_ref": "ttt2:edd:row:84",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 84
+  },
+  {
+   "row": 85,
+   "name": "Tarjeta Roja",
+   "kind": "move",
+   "section": null,
+   "notation": "f, f, f+3",
+   "notation_std": "f, f, f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe004",
+    "0xe004",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:85",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 85
+  },
+  {
+   "row": 86,
+   "name": "Cotovelo to Ponteira",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 3",
+   "notation_std": "1, 3",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:86",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 86
+  },
+  {
+   "row": 87,
+   "name": "Rising Batida",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:edd:row:87",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 87
+  },
+  {
+   "row": 88,
+   "name": "Martelo",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:88",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 88
+  },
+  {
+   "row": 89,
+   "name": "Circle Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "4",
+   "notation_std": "4",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:89",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 89
+  },
+  {
+   "row": 90,
+   "name": "Crying Needle",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:edd:row:90",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 90
+  },
+  {
+   "row": 91,
+   "name": "Crying Needle Impact",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2, 1+2",
+   "notation_std": "1+2, 1+2",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:edd:row:91",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 91
+  },
+  {
+   "row": 92,
+   "name": "Front Stinger",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:92",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 92
+  },
+  {
+   "row": 93,
+   "name": "Front Stinger to Negativa",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4, D",
+   "notation_std": "3+4, d",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe009"
+   ],
+   "anim_ref": "ttt2:edd:row:93",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 93
+  },
+  {
+   "row": 94,
+   "name": "Front Stinger to Handstand",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4, B",
+   "notation_std": "3+4, b",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe00b"
+   ],
+   "anim_ref": "ttt2:edd:row:94",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 94
+  },
+  {
+   "row": 95,
+   "name": "Bananeira Rolar",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+4",
+   "notation_std": "d/f+4",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:95",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 95
+  },
+  {
+   "row": 96,
+   "name": "Haule",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+4",
+   "notation_std": "d/b+4",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:96",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 96
+  },
+  {
+   "row": 97,
+   "name": "Atras Passo",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "Back towards enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:97",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 97
+  },
+  {
+   "row": 98,
+   "name": "■ Commands during side step ■",
+   "kind": "separator"
+  },
+  {
+   "row": 99,
+   "name": "Queda de Escorpion",
+   "kind": "move",
+   "section": "■ Commands during side step ■",
+   "notation": "2, 4",
+   "notation_std": "2, 4",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:99",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 99
+  },
+  {
+   "row": 100,
+   "name": "Hot Plate Special",
+   "kind": "move",
+   "section": "■ Commands during side step ■",
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:100",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 100
+  },
+  {
+   "row": 101,
+   "name": "Hot Plate Special Cancel to Negativa",
+   "kind": "move",
+   "section": "■ Commands during side step ■",
+   "notation": "3, D",
+   "notation_std": "3, d",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe009"
+   ],
+   "anim_ref": "ttt2:edd:row:101",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 101
+  },
+  {
+   "row": 102,
+   "name": "Hot Plate Special Cancel to Handstand",
+   "kind": "move",
+   "section": "■ Commands during side step ■",
+   "notation": "3, B",
+   "notation_std": "3, b",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe00b"
+   ],
+   "anim_ref": "ttt2:edd:row:102",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 102
+  },
+  {
+   "row": 103,
+   "name": "Hot Plate Special to Handstand",
+   "kind": "move",
+   "section": "■ Commands during side step ■",
+   "notation": "3, B",
+   "notation_std": "3, b",
+   "condition_text": "During side step ☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe00b"
+   ],
+   "anim_ref": "ttt2:edd:row:103",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 103
+  },
+  {
+   "row": 104,
+   "name": "Hot Plate Special to Perch Flop Kick",
+   "kind": "move",
+   "section": "■ Commands during side step ■",
+   "notation": "3, B+3+4",
+   "notation_std": "3, b+3+4",
+   "condition_text": "During side step ☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe00b",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:104",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 104
+  },
+  {
+   "row": 105,
+   "name": "Twister",
+   "kind": "move",
+   "section": "■ Commands during side step ■",
+   "notation": "4",
+   "notation_std": "4",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:105",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 105
+  },
+  {
+   "row": 106,
+   "name": "Twister to Handstand",
+   "kind": "move",
+   "section": "■ Commands during side step ■",
+   "notation": "4, B",
+   "notation_std": "4, b",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe00b"
+   ],
+   "anim_ref": "ttt2:edd:row:106",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 106
+  },
+  {
+   "row": 107,
+   "name": "Twister Sweep",
+   "kind": "move",
+   "section": "■ Commands during side step ■",
+   "notation": "4, 3",
+   "notation_std": "4, 3",
+   "condition_text": "During side step ☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:107",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 107
+  },
+  {
+   "row": 108,
+   "name": "Twister Sweep to Handstand",
+   "kind": "move",
+   "section": "■ Commands during side step ■",
+   "notation": "4, 3, B",
+   "notation_std": "4, 3, b",
+   "condition_text": "During side step ☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018",
+    "0xe00b"
+   ],
+   "anim_ref": "ttt2:edd:row:108",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 108
+  },
+  {
+   "row": 109,
+   "name": "Dos Sole",
+   "kind": "move",
+   "section": "■ Commands during side step ■",
+   "notation": "4, 3",
+   "notation_std": "4, 3",
+   "condition_text": "During side step 【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:109",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 109
+  },
+  {
+   "row": 110,
+   "name": "Dos Sole to Handstand",
+   "kind": "move",
+   "section": "■ Commands during side step ■",
+   "notation": "4, 3, B",
+   "notation_std": "4, 3, b",
+   "condition_text": "During side step 【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018",
+    "0xe00b"
+   ],
+   "anim_ref": "ttt2:edd:row:110",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 110
+  },
+  {
+   "row": 111,
+   "name": "Twister Front Stinger",
+   "kind": "move",
+   "section": "■ Commands during side step ■",
+   "notation": "4, 3+4",
+   "notation_std": "4, 3+4",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:111",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 111
+  },
+  {
+   "row": 112,
+   "name": "Twister Front Stinger to Negativa",
+   "kind": "move",
+   "section": "■ Commands during side step ■",
+   "notation": "4, 3+4, D",
+   "notation_std": "4, 3+4, d",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe020",
+    "0xe009"
+   ],
+   "anim_ref": "ttt2:edd:row:112",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 112
+  },
+  {
+   "row": 113,
+   "name": "Twister Front Stinger to Handstand",
+   "kind": "move",
+   "section": "■ Commands during side step ■",
+   "notation": "4, 3+4, B",
+   "notation_std": "4, 3+4, b",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe020",
+    "0xe00b"
+   ],
+   "anim_ref": "ttt2:edd:row:113",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 113
+  },
+  {
+   "row": 114,
+   "name": "Wheel Kicks",
+   "kind": "move",
+   "section": "■ Commands during side step ■",
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:114",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 114
+  },
+  {
+   "row": 115,
+   "name": "Wheel Kicks Sao Paulo Special",
+   "kind": "move",
+   "section": "■ Commands during side step ■",
+   "notation": "3+4, 3+4, 3+4, u/f+3+4",
+   "notation_std": "3+4, 3+4, 3+4, u/f+3+4",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe020",
+    "0xe020",
+    "0xe007",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:115",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 115
+  },
+  {
+   "row": 116,
+   "name": "Banda",
+   "kind": "move",
+   "section": "■ Commands during side step ■",
+   "notation": "1+4",
+   "notation_std": "1+4",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01d"
+   ],
+   "anim_ref": "ttt2:edd:row:116",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 116
+  },
+  {
+   "row": 117,
+   "name": "■ Commands during Handstand ■",
+   "kind": "separator"
+  },
+  {
+   "row": 118,
+   "name": "Handstand",
+   "kind": "move",
+   "section": "■ Commands during Handstand ■",
+   "notation": "f+1+2",
+   "notation_std": "f+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:edd:row:118",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 118
+  },
+  {
+   "row": 119,
+   "name": "Crouch to Handstand",
+   "kind": "move",
+   "section": "■ Commands during Handstand ■",
+   "notation": "d/f+1+2",
+   "notation_std": "d/f+1+2",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:edd:row:119",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 119
+  },
+  {
+   "row": 120,
+   "name": "Down to Handstand",
+   "kind": "move",
+   "section": "■ Commands during Handstand ■",
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "While down (facing up)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:edd:row:120",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 120
+  },
+  {
+   "row": 121,
+   "name": "Faisão",
+   "kind": "move",
+   "section": "■ Commands during Handstand ■",
+   "notation": "1",
+   "notation_std": "1",
+   "condition_text": "During Handstand",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:edd:row:121",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 121
+  },
+  {
+   "row": 122,
+   "name": "Flop Right",
+   "kind": "move",
+   "section": "■ Commands during Handstand ■",
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "During Handstand",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:edd:row:122",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 122
+  },
+  {
+   "row": 123,
+   "name": "Circus",
+   "kind": "move",
+   "section": "■ Commands during Handstand ■",
+   "notation": "2, 4",
+   "notation_std": "2, 4",
+   "condition_text": "During Handstand",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:123",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 123
+  },
+  {
+   "row": 124,
+   "name": "Hot Plate Special",
+   "kind": "move",
+   "section": "■ Commands during Handstand ■",
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "During Handstand",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:124",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 124
+  },
+  {
+   "row": 125,
+   "name": "Slippery Kick",
+   "kind": "move",
+   "section": "■ Commands during Handstand ■",
+   "notation": "3, 4",
+   "notation_std": "3, 4",
+   "condition_text": "During Handstand 【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:125",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 125
+  },
+  {
+   "row": 126,
+   "name": "Helicopter",
+   "kind": "move",
+   "section": "■ Commands during Handstand ■",
+   "notation": "4",
+   "notation_std": "4",
+   "condition_text": "During Handstand",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:126",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 126
+  },
+  {
+   "row": 127,
+   "name": "Helicopter to Slippery Kick",
+   "kind": "move",
+   "section": "■ Commands during Handstand ■",
+   "notation": "4, 3+4",
+   "notation_std": "4, 3+4",
+   "condition_text": "During Handstand",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:127",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 127
+  },
+  {
+   "row": 128,
+   "name": "Batucada",
+   "kind": "move",
+   "section": "■ Commands during Handstand ■",
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "During Handstand",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:128",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 128
+  },
+  {
+   "row": 129,
+   "name": "Quick Jab",
+   "kind": "move",
+   "section": "■ Commands during Handstand ■",
+   "notation": "f+1",
+   "notation_std": "f+1",
+   "condition_text": "During Handstand",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:edd:row:129",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 129
+  },
+  {
+   "row": 130,
+   "name": "Vermelho Mola",
+   "kind": "move",
+   "section": "■ Commands during Handstand ■",
+   "notation": "f+3+4",
+   "notation_std": "f+3+4",
+   "condition_text": "During Handstand",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:130",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 130
+  },
+  {
+   "row": 131,
+   "name": "Perch",
+   "kind": "move",
+   "section": "■ Commands during Handstand ■",
+   "notation": "D",
+   "notation_std": "d",
+   "condition_text": "During Handstand",
+   "multi_part": false,
+   "glyphs": [
+    "0xe009"
+   ],
+   "anim_ref": "ttt2:edd:row:131",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 131
+  },
+  {
+   "row": 132,
+   "name": "Perch Flop Kick",
+   "kind": "move",
+   "section": "■ Commands during Handstand ■",
+   "notation": "D+3+4",
+   "notation_std": "d+3+4",
+   "condition_text": "During Handstand",
+   "multi_part": false,
+   "glyphs": [
+    "0xe009",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:132",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 132
+  },
+  {
+   "row": 133,
+   "name": "Scoot Kick",
+   "kind": "move",
+   "section": "■ Commands during Handstand ■",
+   "notation": "b+3",
+   "notation_std": "b+3",
+   "condition_text": "During Handstand",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:133",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 133
+  },
+  {
+   "row": 134,
+   "name": "Handstand Tilt",
+   "kind": "move",
+   "section": "■ Commands during Handstand ■",
+   "notation": "u, d",
+   "notation_std": "u, d",
+   "condition_text": "During Handstand ☆ (or ☆)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe006",
+    "0xe001"
+   ],
+   "anim_ref": "ttt2:edd:row:134",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 134
+  },
+  {
+   "row": 135,
+   "name": "Drop Kick",
+   "kind": "move",
+   "section": "■ Commands during Handstand ■",
+   "notation": "u+3, u+4",
+   "notation_std": "u+3, u+4",
+   "condition_text": "During Handstand ☆ (or ☆)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe006",
+    "0xe018",
+    "0xe006",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:135",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 135
+  },
+  {
+   "row": 136,
+   "name": "Straight Flop",
+   "kind": "move",
+   "section": "■ Commands during Handstand ■",
+   "notation": "u+3, u+4",
+   "notation_std": "u+3, u+4",
+   "condition_text": "During Handstand (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe006",
+    "0xe018",
+    "0xe006",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:136",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 136
+  },
+  {
+   "row": 137,
+   "name": "Tilt Twist Sweep",
+   "kind": "move",
+   "section": "■ Commands during Handstand ■",
+   "notation": "u+3, D, u+4, D",
+   "notation_std": "u+3, d, u+4, d",
+   "condition_text": "During Handstand (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe006",
+    "0xe018",
+    "0xe009",
+    "0xe006",
+    "0xe01c",
+    "0xe009"
+   ],
+   "anim_ref": "ttt2:edd:row:137",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 137
+  },
+  {
+   "row": 138,
+   "name": "■ Commands during Negativa ■",
+   "kind": "separator"
+  },
+  {
+   "row": 139,
+   "name": "Negativa",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "d+3+4",
+   "notation_std": "d+3+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:139",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 139
+  },
+  {
+   "row": 140,
+   "name": "Negativa to Meia-lua Combo",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "1, 3",
+   "notation_std": "1, 3",
+   "condition_text": "During Negativa",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:140",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 140
+  },
+  {
+   "row": 141,
+   "name": "Negativa to Armada Combo",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "1, 4",
+   "notation_std": "1, 4",
+   "condition_text": "During Negativa",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:141",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 141
+  },
+  {
+   "row": 142,
+   "name": "Negativa to Flare Combo",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "2, 3",
+   "notation_std": "2, 3",
+   "condition_text": "During Negativa",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:142",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 142
+  },
+  {
+   "row": 143,
+   "name": "Negativa to Lunging Brush Fire Combo",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "2, f+3",
+   "notation_std": "2, f+3",
+   "condition_text": "During Negativa",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe004",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:143",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 143
+  },
+  {
+   "row": 144,
+   "name": "Negativa to Au Batido",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "2, 4",
+   "notation_std": "2, 4",
+   "condition_text": "During Negativa",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:144",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 144
+  },
+  {
+   "row": 145,
+   "name": "Rio Delight Knee Slicer",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "3, 4",
+   "notation_std": "3, 4",
+   "condition_text": "During Negativa ☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:145",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 145
+  },
+  {
+   "row": 146,
+   "name": "S-Dobrado",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "3, 4",
+   "notation_std": "3, 4",
+   "condition_text": "During Negativa 【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:146",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 146
+  },
+  {
+   "row": 147,
+   "name": "Knee Slicer Low Front Stinger",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "4, 3+4",
+   "notation_std": "4, 3+4",
+   "condition_text": "During Negativa",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:147",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 147
+  },
+  {
+   "row": 148,
+   "name": "Ipanema Wings",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "4, 3",
+   "notation_std": "4, 3",
+   "condition_text": "During Negativa 【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:148",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 148
+  },
+  {
+   "row": 149,
+   "name": "Ipanema Wings to Slippery Kick",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "4, 3, 3+4",
+   "notation_std": "4, 3, 3+4",
+   "condition_text": "During Negativa 【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:149",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 149
+  },
+  {
+   "row": 150,
+   "name": "Low Front Stinger",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "During Negativa",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:150",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 150
+  },
+  {
+   "row": 151,
+   "name": "Low Front Stinger Cancel",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "3+4, 3",
+   "notation_std": "3+4, 3",
+   "condition_text": "During Negativa",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:151",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 151
+  },
+  {
+   "row": 152,
+   "name": "Vermelho Mola",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "f+3+4",
+   "notation_std": "f+3+4",
+   "condition_text": "During Negativa",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:152",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 152
+  },
+  {
+   "row": 153,
+   "name": "Headspring to Handstand",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "b+1+2",
+   "notation_std": "b+1+2",
+   "condition_text": "During Negativa",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:edd:row:153",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 153
+  },
+  {
+   "row": 154,
+   "name": "Side Roll to Sit",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "U, D",
+   "notation_std": "u, d",
+   "condition_text": "During Negativa (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe00e",
+    "0xe009"
+   ],
+   "anim_ref": "ttt2:edd:row:154",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 154
+  },
+  {
+   "row": 155,
+   "name": "10 Hit Combo 1",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "4, 3, 4, 2, 4, 4, 3+4, 3+4, 3+4, d/b+3+4, u/f+3+4",
+   "notation_std": "4, 3, 4, 2, 4, 4, 3+4, 3+4, 3+4, d/b+3+4, u/f+3+4",
+   "condition_text": "【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018",
+    "0xe01c",
+    "0xe016",
+    "0xe01c",
+    "0xe01c",
+    "0xe020",
+    "0xe020",
+    "0xe020",
+    "0xe000",
+    "0xe020",
+    "0xe007",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:155",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 155
+  },
+  {
+   "row": 156,
+   "name": "10 Hit Combo 2",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "4, 3, 4, 2, 4, 3",
+   "notation_std": "4, 3, 4, 2, 4, 3",
+   "condition_text": "【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018",
+    "0xe01c",
+    "0xe016",
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:156",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 156
+  },
+  {
+   "row": 157,
+   "name": "Rio Deal",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "1+3",
+   "notation_std": "1+3",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:edd:row:157",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 157
+  },
+  {
+   "row": 158,
+   "name": "Rio Deal",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "f+1+3",
+   "notation_std": "f+1+3",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:edd:row:158",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 158
+  },
+  {
+   "row": 159,
+   "name": "Rio Special",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "2+4",
+   "notation_std": "2+4",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:edd:row:159",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 159
+  },
+  {
+   "row": 160,
+   "name": "Rio Special",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "f+2+4",
+   "notation_std": "f+2+4",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:edd:row:160",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 160
+  },
+  {
+   "row": 161,
+   "name": "Missile Launcher",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from left side (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:edd:row:161",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 161
+  },
+  {
+   "row": 162,
+   "name": "Shadow Dancer",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from right side (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:edd:row:162",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 162
+  },
+  {
+   "row": 163,
+   "name": "Back Rodeo Spin",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from behind (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:edd:row:163",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 163
+  },
+  {
+   "row": 164,
+   "name": "Cabra Macaco Throw",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "d/f+1+2",
+   "notation_std": "d/f+1+2",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:edd:row:164",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 164
+  },
+  {
+   "row": 165,
+   "name": "Rodeo Spin",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "b, d/b, d, d/f, f+1+2",
+   "notation_std": "b, d/b, d, d/f, f+1+2",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe000",
+    "0xe001",
+    "0xe002",
+    "0xe004",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:edd:row:165",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 165
+  },
+  {
+   "row": 166,
+   "name": "Adeus",
+   "kind": "move",
+   "section": "■ Commands during Negativa ■",
+   "notation": "d+1+3, d+2+4",
+   "notation_std": "d+1+3, d+2+4",
+   "condition_text": "Approach (crouching enemy) (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe019",
+    "0xe001",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:edd:row:166",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 166
+  },
+  {
+   "row": 167,
+   "name": "Sample Combo 1",
+   "kind": "sample_combo",
+   "section": "■ Commands during Negativa ■",
+   "notation": "d/b+1+2, 3, 4",
+   "notation_std": "d/b+1+2, 3, 4",
+   "condition_text": "",
+   "multi_part": true,
+   "glyphs": [
+    "0xe000",
+    "0xe017",
+    "0xe063",
+    "0xe018",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:edd:row:167",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 167
+  },
+  {
+   "row": 168,
+   "name": "Sample Combo 2",
+   "kind": "sample_combo",
+   "section": "■ Commands during Negativa ■",
+   "notation": "2, d/b+2, 3",
+   "notation_std": "2, d/b+2, 3",
+   "condition_text": "While rising",
+   "multi_part": true,
+   "glyphs": [
+    "0xe016",
+    "0xe063",
+    "0xe000",
+    "0xe016",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:168",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 168
+  },
+  {
+   "row": 169,
+   "name": "Sample Combo 3",
+   "kind": "sample_combo",
+   "section": "■ Commands during Negativa ■",
+   "notation": "d/f+3+4, d/f+1, 1, u/f+1+2, u/f+3+4",
+   "notation_std": "d/f+3+4, d/f+1, 1, u/f+1+2, u/f+3+4",
+   "condition_text": "",
+   "multi_part": true,
+   "glyphs": [
+    "0xe002",
+    "0xe020",
+    "0xe063",
+    "0xe002",
+    "0xe015",
+    "0xe015",
+    "0xe063",
+    "0xe007",
+    "0xe017",
+    "0xe063",
+    "0xe007",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:edd:row:169",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 169
+  },
+  {
+   "row": 170,
+   "name": "Sample Combo 4",
+   "kind": "sample_combo",
+   "section": "■ Commands during Negativa ■",
+   "notation": "1, 3, 2, d+2, 3",
+   "notation_std": "1, 3, 2, d+2, 3",
+   "condition_text": "While rising During Negativa",
+   "multi_part": true,
+   "glyphs": [
+    "0xe015",
+    "0xe018",
+    "0xe063",
+    "0xe016",
+    "0xe063",
+    "0xe001",
+    "0xe016",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:170",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 170
+  },
+  {
+   "row": 171,
+   "name": "Sample Combo 5",
+   "kind": "sample_combo",
+   "section": "■ Commands during Negativa ■",
+   "notation": "f+4, 3+4, 3+4, D, 2, 3, b+3, 3",
+   "notation_std": "f+4, 3+4, 3+4, d, 2, 3, b+3, 3",
+   "condition_text": "During Negativa",
+   "multi_part": true,
+   "glyphs": [
+    "0xe004",
+    "0xe01c",
+    "0xe020",
+    "0xe020",
+    "0xe009",
+    "0xe063",
+    "0xe016",
+    "0xe018",
+    "0xe063",
+    "0xe003",
+    "0xe018",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:171",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 171
+  },
+  {
+   "row": 172,
+   "name": "Sample Combo 6",
+   "kind": "sample_combo",
+   "section": "■ Commands during Negativa ■",
+   "notation": "d/f+3+4, b+3, 3, 2, 4, B, 2, 4, 3",
+   "notation_std": "d/f+3+4, b+3, 3, 2, 4, b, 2, 4, 3",
+   "condition_text": "During Negativa During Handstand",
+   "multi_part": true,
+   "glyphs": [
+    "0xe002",
+    "0xe020",
+    "0xe063",
+    "0xe003",
+    "0xe018",
+    "0xe018",
+    "0xe063",
+    "0xe016",
+    "0xe01c",
+    "0xe00b",
+    "0xe063",
+    "0xe016",
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:172",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 172
+  },
+  {
+   "row": 173,
+   "name": "Sample Combo 7",
+   "kind": "sample_combo",
+   "section": "■ Commands during Negativa ■",
+   "notation": "f, F+4, 2, 1, 3, 2, 4, B, f, 2, f+3",
+   "notation_std": "f, f+4, 2, 1, 3, 2, 4, b, f, 2, f+3",
+   "condition_text": "During Handstand While rising During Negativa During Handstand During Negativa",
+   "multi_part": true,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe01c",
+    "0xe063",
+    "0xe016",
+    "0xe063",
+    "0xe015",
+    "0xe018",
+    "0xe063",
+    "0xe016",
+    "0xe01c",
+    "0xe00b",
+    "0xe063",
+    "0xe004",
+    "0xe063",
+    "0xe016",
+    "0xe004",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:edd:row:173",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 173
+  }
+ ]
+}

@@ -1,6 +1,6 @@
 {
   "fighter": "sunra",
-  "display": "SUN RĀ",
+  "display": "SUN R\u0100",
   "tekken_base": "Pac-Man",
   "t3_source": "heihachi",
   "proxy": false,
@@ -161,14 +161,14 @@
       "t3_row": 179,
       "damage": 15,
       "throw": false,
-      "fallback": "directional — no motion inputs in T3 bank"
+      "fallback": "directional \u2014 no motion inputs in T3 bank"
     },
     {
       "input": "u/f+4",
       "t3_row": 86,
       "damage": 15,
       "throw": false,
-      "fallback": "directional — no motion inputs in T3 bank"
+      "fallback": "directional \u2014 no motion inputs in T3 bank"
     }
   ],
   "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
@@ -193,7 +193,7 @@
   },
   "moves": {
     "1": {
-      "name": "SUN RĀ 1 (T3 heihachi r44)",
+      "name": "SUN R\u0100 1 (T3 heihachi r44)",
       "input": "1",
       "t3_source": "heihachi",
       "t3_row": 44,
@@ -214,7 +214,7 @@
       "move_class": "strike"
     },
     "2": {
-      "name": "SUN RĀ 2 (T3 heihachi r157)",
+      "name": "SUN R\u0100 2 (T3 heihachi r157)",
       "input": "2",
       "t3_source": "heihachi",
       "t3_row": 157,
@@ -235,7 +235,7 @@
       "move_class": "strike"
     },
     "2,1": {
-      "name": "SUN RĀ 2,1 (T3 heihachi r158)",
+      "name": "SUN R\u0100 2,1 (T3 heihachi r158)",
       "input": "2,1",
       "t3_source": "heihachi",
       "t3_row": 158,
@@ -259,7 +259,7 @@
       "move_class": "string"
     },
     "2,1,2": {
-      "name": "SUN RĀ 2,1,2 (T3 heihachi r159)",
+      "name": "SUN R\u0100 2,1,2 (T3 heihachi r159)",
       "input": "2,1,2",
       "t3_source": "heihachi",
       "t3_row": 159,
@@ -284,7 +284,7 @@
       "move_class": "string"
     },
     "3": {
-      "name": "SUN RĀ 3 (T3 heihachi r153)",
+      "name": "SUN R\u0100 3 (T3 heihachi r153)",
       "input": "3",
       "t3_source": "heihachi",
       "t3_row": 153,
@@ -305,7 +305,7 @@
       "move_class": "strike"
     },
     "4": {
-      "name": "SUN RĀ 4 (T3 heihachi r84)",
+      "name": "SUN R\u0100 4 (T3 heihachi r84)",
       "input": "4",
       "t3_source": "heihachi",
       "t3_row": 84,
@@ -326,7 +326,7 @@
       "move_class": "strike"
     },
     "1+3": {
-      "name": "SUN RĀ 1+3 throw (T3 heihachi r243)",
+      "name": "SUN R\u0100 1+3 throw (T3 heihachi r243)",
       "input": "1+3",
       "t3_source": "heihachi",
       "t3_row": 243,
@@ -352,7 +352,7 @@
       "throw_break": "1"
     },
     "2+4": {
-      "name": "SUN RĀ 2+4 throw (T3 heihachi r244)",
+      "name": "SUN R\u0100 2+4 throw (T3 heihachi r244)",
       "input": "2+4",
       "t3_source": "heihachi",
       "t3_row": 244,
@@ -378,7 +378,7 @@
       "throw_break": "2"
     },
     "d/f+2": {
-      "name": "SUN RĀ d/f+2 (T3 heihachi r179)",
+      "name": "SUN R\u0100 d/f+2 (T3 heihachi r179)",
       "input": "d/f+2",
       "t3_source": "heihachi",
       "t3_row": 179,
@@ -399,7 +399,7 @@
       "move_class": "special"
     },
     "u/f+4": {
-      "name": "SUN RĀ u/f+4 (T3 heihachi r86)",
+      "name": "SUN R\u0100 u/f+4 (T3 heihachi r86)",
       "input": "u/f+4",
       "t3_source": "heihachi",
       "t3_row": 86,
@@ -436,7 +436,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "Only he gets the English version. Everyone else says fushi kwonbatto. The soul-eating sun's proclamation burst."
+      "note": "Only he gets the English version. Everyone else says fushi kwonbatto. The soul-eating sun's proclamation burst.",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 100,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+S": {
       "name": "The Stare [WH SIGNATURE]",
@@ -457,7 +462,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "His eyes never close. He is cursed to stare and watch forever - that is WHY he makes the souls fight. A gaze counter."
+      "note": "His eyes never close. He is cursed to stare and watch forever - that is WHY he makes the souls fight. A gaze counter.",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Immortal Qombat [WH SIGNATURE]",
@@ -477,10 +487,15 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "Only he gets the English version. Everyone else says fushi kwonbatto. The soul-eating sun's proclamation burst.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 105,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
-      "name": "SUN RĀ 1+2 (T3 heihachi r37)",
+      "name": "SUN R\u0100 1+2 (T3 heihachi r37)",
       "input": "1+2",
       "t3_source": "heihachi",
       "t3_row": 37,
@@ -517,10 +532,15 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "His eyes never close. He is cursed to stare and watch forever - that is WHY he makes the souls fight. A gaze counter.",
-      "input_remapped_from": "b+S"
+      "input_remapped_from": "b+S",
+      "anim_t3": {
+        "bank": "heihachi",
+        "row": 73,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+2": {
-      "name": "SUN RĀ b+2 (T3 heihachi r207)",
+      "name": "SUN R\u0100 b+2 (T3 heihachi r207)",
       "input": "b+2",
       "t3_source": "heihachi",
       "t3_row": 207,
@@ -541,7 +561,7 @@
       "move_class": "strike"
     },
     "d+1": {
-      "name": "SUN RĀ d+1 (T3 heihachi r123)",
+      "name": "SUN R\u0100 d+1 (T3 heihachi r123)",
       "input": "d+1",
       "t3_source": "heihachi",
       "t3_row": 123,
@@ -562,7 +582,7 @@
       "move_class": "strike"
     },
     "f+1": {
-      "name": "SUN RĀ f+1 (T3 heihachi r133)",
+      "name": "SUN R\u0100 f+1 (T3 heihachi r133)",
       "input": "f+1",
       "t3_source": "heihachi",
       "t3_row": 133,
@@ -583,7 +603,7 @@
       "move_class": "strike"
     },
     "f+2": {
-      "name": "SUN RĀ f+2 (T3 heihachi r178)",
+      "name": "SUN R\u0100 f+2 (T3 heihachi r178)",
       "input": "f+2",
       "t3_source": "heihachi",
       "t3_row": 178,
@@ -604,7 +624,7 @@
       "move_class": "strike"
     },
     "f+2__main": {
-      "name": "SUN RĀ f+2 (T3 heihachi r178)",
+      "name": "SUN R\u0100 f+2 (T3 heihachi r178)",
       "input": "f+2",
       "t3_source": "heihachi",
       "t3_row": 178,
@@ -624,7 +644,7 @@
       "move_class": "strike"
     },
     "f+3": {
-      "name": "SUN RĀ f+3 (T3 heihachi r135)",
+      "name": "SUN R\u0100 f+3 (T3 heihachi r135)",
       "input": "f+3",
       "t3_source": "heihachi",
       "t3_row": 135,
@@ -645,7 +665,7 @@
       "move_class": "strike"
     },
     "f+4": {
-      "name": "SUN RĀ f+4 (T3 heihachi r156)",
+      "name": "SUN R\u0100 f+4 (T3 heihachi r156)",
       "input": "f+4",
       "t3_source": "heihachi",
       "t3_row": 156,
@@ -666,7 +686,7 @@
       "move_class": "strike"
     },
     "f+4__main": {
-      "name": "SUN RĀ f+4 (T3 heihachi r156)",
+      "name": "SUN R\u0100 f+4 (T3 heihachi r156)",
       "input": "f+4",
       "t3_source": "heihachi",
       "t3_row": 156,
@@ -686,7 +706,7 @@
       "move_class": "strike"
     },
     "d+1+2": {
-      "name": "SUN RĀ d+1+2 (T3 heihachi r98)",
+      "name": "SUN R\u0100 d+1+2 (T3 heihachi r98)",
       "input": "d+1+2",
       "t3_source": "heihachi",
       "t3_row": 98,
@@ -707,7 +727,7 @@
       "move_class": "strike"
     },
     "d+1+4": {
-      "name": "SUN RĀ d+1+4 (T3 heihachi r198)",
+      "name": "SUN R\u0100 d+1+4 (T3 heihachi r198)",
       "input": "d+1+4",
       "t3_source": "heihachi",
       "t3_row": 198,
@@ -728,7 +748,7 @@
       "move_class": "strike"
     },
     "d/f+1": {
-      "name": "SUN RĀ d/f+1 (T3 heihachi r173)",
+      "name": "SUN R\u0100 d/f+1 (T3 heihachi r173)",
       "input": "d/f+1",
       "t3_source": "heihachi",
       "t3_row": 173,
@@ -749,7 +769,7 @@
       "move_class": "strike"
     },
     "d/f+3": {
-      "name": "SUN RĀ d/f+3 (T3 heihachi r181)",
+      "name": "SUN R\u0100 d/f+3 (T3 heihachi r181)",
       "input": "d/f+3",
       "t3_source": "heihachi",
       "t3_row": 181,
@@ -770,7 +790,7 @@
       "move_class": "strike"
     },
     "d/f+4": {
-      "name": "SUN RĀ d/f+4 (T3 heihachi r186)",
+      "name": "SUN R\u0100 d/f+4 (T3 heihachi r186)",
       "input": "d/f+4",
       "t3_source": "heihachi",
       "t3_row": 186,
@@ -791,7 +811,7 @@
       "move_class": "strike"
     },
     "f+1+2": {
-      "name": "SUN RĀ f+1+2 (T3 heihachi r223)",
+      "name": "SUN R\u0100 f+1+2 (T3 heihachi r223)",
       "input": "f+1+2",
       "t3_source": "heihachi",
       "t3_row": 223,
@@ -812,7 +832,7 @@
       "move_class": "strike"
     },
     "u/b+1": {
-      "name": "SUN RĀ u/b+1 (T3 heihachi r39)",
+      "name": "SUN R\u0100 u/b+1 (T3 heihachi r39)",
       "input": "u/b+1",
       "t3_source": "heihachi",
       "t3_row": 39,
@@ -833,7 +853,7 @@
       "move_class": "strike"
     },
     "u/b+3": {
-      "name": "SUN RĀ u/b+3 (T3 heihachi r61)",
+      "name": "SUN R\u0100 u/b+3 (T3 heihachi r61)",
       "input": "u/b+3",
       "t3_source": "heihachi",
       "t3_row": 61,
@@ -854,7 +874,7 @@
       "move_class": "strike"
     },
     "u/b+4": {
-      "name": "SUN RĀ u/b+4 (T3 heihachi r85)",
+      "name": "SUN R\u0100 u/b+4 (T3 heihachi r85)",
       "input": "u/b+4",
       "t3_source": "heihachi",
       "t3_row": 85,
@@ -875,7 +895,7 @@
       "move_class": "strike"
     },
     "u/f+1": {
-      "name": "SUN RĀ u/f+1 (T3 heihachi r38)",
+      "name": "SUN R\u0100 u/f+1 (T3 heihachi r38)",
       "input": "u/f+1",
       "t3_source": "heihachi",
       "t3_row": 38,
@@ -896,7 +916,7 @@
       "move_class": "strike"
     },
     "u/f+3": {
-      "name": "SUN RĀ u/f+3 (T3 heihachi r60)",
+      "name": "SUN R\u0100 u/f+3 (T3 heihachi r60)",
       "input": "u/f+3",
       "t3_source": "heihachi",
       "t3_row": 60,
@@ -917,7 +937,7 @@
       "move_class": "strike"
     },
     "d/f+1+2": {
-      "name": "SUN RĀ d/f+1+2 (T3 heihachi r110)",
+      "name": "SUN R\u0100 d/f+1+2 (T3 heihachi r110)",
       "input": "d/f+1+2",
       "t3_source": "heihachi",
       "t3_row": 110,
@@ -938,7 +958,7 @@
       "move_class": "strike"
     },
     "u/b+3+4": {
-      "name": "SUN RĀ u/b+3+4 (T3 heihachi r58)",
+      "name": "SUN R\u0100 u/b+3+4 (T3 heihachi r58)",
       "input": "u/b+3+4",
       "t3_source": "heihachi",
       "t3_row": 58,
@@ -959,7 +979,7 @@
       "move_class": "strike"
     },
     "u/f+3+4": {
-      "name": "SUN RĀ u/f+3+4 (T3 heihachi r57)",
+      "name": "SUN R\u0100 u/f+3+4 (T3 heihachi r57)",
       "input": "u/f+3+4",
       "t3_source": "heihachi",
       "t3_row": 57,
@@ -980,7 +1000,7 @@
       "move_class": "strike"
     },
     "f+1+4": {
-      "name": "SUN RĀ f+1+4 throw (T3 heihachi r246)",
+      "name": "SUN R\u0100 f+1+4 throw (T3 heihachi r246)",
       "input": "f+1+4",
       "t3_source": "heihachi",
       "t3_row": 246,
@@ -1006,7 +1026,7 @@
       "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
     },
     "2,1,2,2": {
-      "name": "SUN RĀ 2,1,2,2 (T3 heihachi r160)",
+      "name": "SUN R\u0100 2,1,2,2 (T3 heihachi r160)",
       "input": "2,1,2,2",
       "t3_source": "heihachi",
       "t3_row": 160,
@@ -1032,7 +1052,7 @@
       "string_hit": "2,1,2"
     },
     "b+2,4": {
-      "name": "SUN RĀ b+2,4 (T3 heihachi r214)",
+      "name": "SUN R\u0100 b+2,4 (T3 heihachi r214)",
       "input": "b+2,4",
       "t3_source": "heihachi",
       "t3_row": 214,
@@ -1056,7 +1076,7 @@
       "string_hit": "b+2"
     },
     "b+2,1": {
-      "name": "SUN RĀ b+2,1 (T3 heihachi r216)",
+      "name": "SUN R\u0100 b+2,1 (T3 heihachi r216)",
       "input": "b+2,1",
       "t3_source": "heihachi",
       "t3_row": 216,
@@ -1080,7 +1100,7 @@
       "string_hit": "b+2"
     },
     "d+1,2": {
-      "name": "SUN RĀ d+1,2 (T3 heihachi r240)",
+      "name": "SUN R\u0100 d+1,2 (T3 heihachi r240)",
       "input": "d+1,2",
       "t3_source": "heihachi",
       "t3_row": 240,
@@ -1104,7 +1124,7 @@
       "string_hit": "d+1"
     },
     "d+1+2,1": {
-      "name": "SUN RĀ d+1+2,1 (T3 heihachi r145)",
+      "name": "SUN R\u0100 d+1+2,1 (T3 heihachi r145)",
       "input": "d+1+2,1",
       "t3_source": "heihachi",
       "t3_row": 145,
@@ -1128,7 +1148,7 @@
       "string_hit": "d+1+2"
     },
     "d+1+2,2": {
-      "name": "SUN RĀ d+1+2,2 (T3 heihachi r99)",
+      "name": "SUN R\u0100 d+1+2,2 (T3 heihachi r99)",
       "input": "d+1+2,2",
       "t3_source": "heihachi",
       "t3_row": 99,
@@ -1152,7 +1172,7 @@
       "string_hit": "d+1+2"
     },
     "2,1,2,2,3": {
-      "name": "SUN RĀ 2,1,2,2,3 (T3 heihachi r161)",
+      "name": "SUN R\u0100 2,1,2,2,3 (T3 heihachi r161)",
       "input": "2,1,2,2,3",
       "t3_source": "heihachi",
       "t3_row": 161,
@@ -1179,7 +1199,7 @@
       "string_hit": "2,1,2,2"
     },
     "d+1+2,1,2": {
-      "name": "SUN RĀ d+1+2,1,2 (T3 heihachi r149)",
+      "name": "SUN R\u0100 d+1+2,1,2 (T3 heihachi r149)",
       "input": "d+1+2,1,2",
       "t3_source": "heihachi",
       "t3_row": 149,
@@ -1204,7 +1224,7 @@
       "string_hit": "d+1+2,1"
     },
     "d+1+2,2,2": {
-      "name": "SUN RĀ d+1+2,2,2 (T3 heihachi r147)",
+      "name": "SUN R\u0100 d+1+2,2,2 (T3 heihachi r147)",
       "input": "d+1+2,2,2",
       "t3_source": "heihachi",
       "t3_row": 147,
@@ -1229,7 +1249,7 @@
       "string_hit": "d+1+2,2"
     },
     "2,1,2,2,3,4": {
-      "name": "SUN RĀ 2,1,2,2,3,4 (T3 heihachi r162)",
+      "name": "SUN R\u0100 2,1,2,2,3,4 (T3 heihachi r162)",
       "input": "2,1,2,2,3,4",
       "t3_source": "heihachi",
       "t3_row": 162,
@@ -1257,7 +1277,7 @@
       "string_hit": "2,1,2,2,3"
     },
     "d+1+2,2,2,1": {
-      "name": "SUN RĀ d+1+2,2,2,1 (T3 heihachi r224)",
+      "name": "SUN R\u0100 d+1+2,2,2,1 (T3 heihachi r224)",
       "input": "d+1+2,2,2,1",
       "t3_source": "heihachi",
       "t3_row": 224,
@@ -1283,7 +1303,7 @@
       "string_hit": "d+1+2,2,2"
     },
     "f": {
-      "name": "SUN RĀ f (T3 heihachi r38)",
+      "name": "SUN R\u0100 f (T3 heihachi r38)",
       "input": "f",
       "t3_source": "heihachi",
       "t3_row": 38,
@@ -1303,7 +1323,7 @@
       "move_class": "strike"
     },
     "b": {
-      "name": "SUN RĀ b (T3 heihachi r39)",
+      "name": "SUN R\u0100 b (T3 heihachi r39)",
       "input": "b",
       "t3_source": "heihachi",
       "t3_row": 39,
@@ -1323,7 +1343,7 @@
       "move_class": "strike"
     },
     "1_r41": {
-      "name": "SUN RĀ 1_r41 (T3 heihachi r41)",
+      "name": "SUN R\u0100 1_r41 (T3 heihachi r41)",
       "input": "1_r41",
       "t3_source": "heihachi",
       "t3_row": 41,
@@ -1343,7 +1363,7 @@
       "move_class": "strike"
     },
     "1_r42": {
-      "name": "SUN RĀ 1_r42 (T3 heihachi r42)",
+      "name": "SUN R\u0100 1_r42 (T3 heihachi r42)",
       "input": "1_r42",
       "t3_source": "heihachi",
       "t3_row": 42,
@@ -1363,7 +1383,7 @@
       "move_class": "strike"
     },
     "1_r43": {
-      "name": "SUN RĀ 1_r43 (T3 heihachi r43)",
+      "name": "SUN R\u0100 1_r43 (T3 heihachi r43)",
       "input": "1_r43",
       "t3_source": "heihachi",
       "t3_row": 43,
@@ -1383,7 +1403,7 @@
       "move_class": "strike"
     },
     "1_r44": {
-      "name": "SUN RĀ 1_r44 (T3 heihachi r44)",
+      "name": "SUN R\u0100 1_r44 (T3 heihachi r44)",
       "input": "1_r44",
       "t3_source": "heihachi",
       "t3_row": 44,
@@ -1403,7 +1423,7 @@
       "move_class": "strike"
     },
     "1_r45": {
-      "name": "SUN RĀ 1_r45 (T3 heihachi r45)",
+      "name": "SUN R\u0100 1_r45 (T3 heihachi r45)",
       "input": "1_r45",
       "t3_source": "heihachi",
       "t3_row": 45,
@@ -1423,7 +1443,7 @@
       "move_class": "strike"
     },
     "1_r46": {
-      "name": "SUN RĀ 1_r46 (T3 heihachi r46)",
+      "name": "SUN R\u0100 1_r46 (T3 heihachi r46)",
       "input": "1_r46",
       "t3_source": "heihachi",
       "t3_row": 46,
@@ -1443,7 +1463,7 @@
       "move_class": "strike"
     },
     "1_r47": {
-      "name": "SUN RĀ 1_r47 (T3 heihachi r47)",
+      "name": "SUN R\u0100 1_r47 (T3 heihachi r47)",
       "input": "1_r47",
       "t3_source": "heihachi",
       "t3_row": 47,
@@ -1463,7 +1483,7 @@
       "move_class": "strike"
     },
     "1_r48": {
-      "name": "SUN RĀ 1_r48 (T3 heihachi r48)",
+      "name": "SUN R\u0100 1_r48 (T3 heihachi r48)",
       "input": "1_r48",
       "t3_source": "heihachi",
       "t3_row": 48,
@@ -1483,7 +1503,7 @@
       "move_class": "strike"
     },
     "1_c36_r49": {
-      "name": "SUN RĀ 1_c36_r49 (T3 heihachi r49)",
+      "name": "SUN R\u0100 1_c36_r49 (T3 heihachi r49)",
       "input": "1_c36_r49",
       "t3_source": "heihachi",
       "t3_row": 49,
@@ -1504,7 +1524,7 @@
       "t3_condition": 36
     },
     "f_c36_r50": {
-      "name": "SUN RĀ f_c36_r50 (T3 heihachi r50)",
+      "name": "SUN R\u0100 f_c36_r50 (T3 heihachi r50)",
       "input": "f_c36_r50",
       "t3_source": "heihachi",
       "t3_row": 50,
@@ -1525,7 +1545,7 @@
       "t3_condition": 36
     },
     "b_c36_r51": {
-      "name": "SUN RĀ b_c36_r51 (T3 heihachi r51)",
+      "name": "SUN R\u0100 b_c36_r51 (T3 heihachi r51)",
       "input": "b_c36_r51",
       "t3_source": "heihachi",
       "t3_row": 51,
@@ -1546,7 +1566,7 @@
       "t3_condition": 36
     },
     "2_r53": {
-      "name": "SUN RĀ 2_r53 (T3 heihachi r53)",
+      "name": "SUN R\u0100 2_r53 (T3 heihachi r53)",
       "input": "2_r53",
       "t3_source": "heihachi",
       "t3_row": 53,
@@ -1566,7 +1586,7 @@
       "move_class": "strike"
     },
     "2_r54": {
-      "name": "SUN RĀ 2_r54 (T3 heihachi r54)",
+      "name": "SUN R\u0100 2_r54 (T3 heihachi r54)",
       "input": "2_r54",
       "t3_source": "heihachi",
       "t3_row": 54,
@@ -1586,7 +1606,7 @@
       "move_class": "strike"
     },
     "3+4_r107": {
-      "name": "SUN RĀ 3+4_r107 (T3 heihachi r56)",
+      "name": "SUN R\u0100 3+4_r107 (T3 heihachi r56)",
       "input": "3+4_r107",
       "t3_source": "heihachi",
       "t3_row": 56,
@@ -1607,7 +1627,7 @@
       "t3_restriction": 107
     },
     "f_r57": {
-      "name": "SUN RĀ f_r57 (T3 heihachi r57)",
+      "name": "SUN R\u0100 f_r57 (T3 heihachi r57)",
       "input": "f_r57",
       "t3_source": "heihachi",
       "t3_row": 57,
@@ -1627,7 +1647,7 @@
       "move_class": "strike"
     },
     "b_r58": {
-      "name": "SUN RĀ b_r58 (T3 heihachi r58)",
+      "name": "SUN R\u0100 b_r58 (T3 heihachi r58)",
       "input": "b_r58",
       "t3_source": "heihachi",
       "t3_row": 58,
@@ -1647,7 +1667,7 @@
       "move_class": "strike"
     },
     "3_c36": {
-      "name": "SUN RĀ 3_c36 (T3 heihachi r59)",
+      "name": "SUN R\u0100 3_c36 (T3 heihachi r59)",
       "input": "3_c36",
       "t3_source": "heihachi",
       "t3_row": 59,
@@ -1668,7 +1688,7 @@
       "t3_condition": 36
     },
     "f_c36_r60": {
-      "name": "SUN RĀ f_c36_r60 (T3 heihachi r60)",
+      "name": "SUN R\u0100 f_c36_r60 (T3 heihachi r60)",
       "input": "f_c36_r60",
       "t3_source": "heihachi",
       "t3_row": 60,
@@ -1689,7 +1709,7 @@
       "t3_condition": 36
     },
     "b_c36_r61": {
-      "name": "SUN RĀ b_c36_r61 (T3 heihachi r61)",
+      "name": "SUN R\u0100 b_c36_r61 (T3 heihachi r61)",
       "input": "b_c36_r61",
       "t3_source": "heihachi",
       "t3_row": 61,
@@ -1710,7 +1730,7 @@
       "t3_condition": 36
     },
     "3_r63": {
-      "name": "SUN RĀ 3_r63 (T3 heihachi r63)",
+      "name": "SUN R\u0100 3_r63 (T3 heihachi r63)",
       "input": "3_r63",
       "t3_source": "heihachi",
       "t3_row": 63,
@@ -1730,7 +1750,7 @@
       "move_class": "strike"
     },
     "3_r64": {
-      "name": "SUN RĀ 3_r64 (T3 heihachi r64)",
+      "name": "SUN R\u0100 3_r64 (T3 heihachi r64)",
       "input": "3_r64",
       "t3_source": "heihachi",
       "t3_row": 64,
@@ -1750,7 +1770,7 @@
       "move_class": "strike"
     },
     "3_r65": {
-      "name": "SUN RĀ 3_r65 (T3 heihachi r65)",
+      "name": "SUN R\u0100 3_r65 (T3 heihachi r65)",
       "input": "3_r65",
       "t3_source": "heihachi",
       "t3_row": 65,
@@ -1770,7 +1790,7 @@
       "move_class": "strike"
     },
     "3_r66": {
-      "name": "SUN RĀ 3_r66 (T3 heihachi r66)",
+      "name": "SUN R\u0100 3_r66 (T3 heihachi r66)",
       "input": "3_r66",
       "t3_source": "heihachi",
       "t3_row": 66,
@@ -1790,7 +1810,7 @@
       "move_class": "strike"
     },
     "3_r67": {
-      "name": "SUN RĀ 3_r67 (T3 heihachi r67)",
+      "name": "SUN R\u0100 3_r67 (T3 heihachi r67)",
       "input": "3_r67",
       "t3_source": "heihachi",
       "t3_row": 67,
@@ -1810,7 +1830,7 @@
       "move_class": "strike"
     },
     "3_r68": {
-      "name": "SUN RĀ 3_r68 (T3 heihachi r68)",
+      "name": "SUN R\u0100 3_r68 (T3 heihachi r68)",
       "input": "3_r68",
       "t3_source": "heihachi",
       "t3_row": 68,
@@ -1830,7 +1850,7 @@
       "move_class": "strike"
     },
     "3_r69": {
-      "name": "SUN RĀ 3_r69 (T3 heihachi r69)",
+      "name": "SUN R\u0100 3_r69 (T3 heihachi r69)",
       "input": "3_r69",
       "t3_source": "heihachi",
       "t3_row": 69,
@@ -1850,7 +1870,7 @@
       "move_class": "strike"
     },
     "3_r70": {
-      "name": "SUN RĀ 3_r70 (T3 heihachi r70)",
+      "name": "SUN R\u0100 3_r70 (T3 heihachi r70)",
       "input": "3_r70",
       "t3_source": "heihachi",
       "t3_row": 70,
@@ -1870,7 +1890,7 @@
       "move_class": "strike"
     },
     "b_r73": {
-      "name": "SUN RĀ b_r73 (T3 heihachi r73)",
+      "name": "SUN R\u0100 b_r73 (T3 heihachi r73)",
       "input": "b_r73",
       "t3_source": "heihachi",
       "t3_row": 73,
@@ -1890,7 +1910,7 @@
       "move_class": "strike"
     },
     "b_c36": {
-      "name": "SUN RĀ b_c36 (T3 heihachi r73)",
+      "name": "SUN R\u0100 b_c36 (T3 heihachi r73)",
       "input": "b_c36",
       "t3_source": "heihachi",
       "t3_row": 73,
@@ -1911,7 +1931,7 @@
       "t3_condition": 36
     },
     "4_r74": {
-      "name": "SUN RĀ 4_r74 (T3 heihachi r74)",
+      "name": "SUN R\u0100 4_r74 (T3 heihachi r74)",
       "input": "4_r74",
       "t3_source": "heihachi",
       "t3_row": 74,
@@ -1931,7 +1951,7 @@
       "move_class": "strike"
     },
     "4_r75": {
-      "name": "SUN RĀ 4_r75 (T3 heihachi r75)",
+      "name": "SUN R\u0100 4_r75 (T3 heihachi r75)",
       "input": "4_r75",
       "t3_source": "heihachi",
       "t3_row": 75,
@@ -1951,7 +1971,7 @@
       "move_class": "strike"
     },
     "4_r76": {
-      "name": "SUN RĀ 4_r76 (T3 heihachi r76)",
+      "name": "SUN R\u0100 4_r76 (T3 heihachi r76)",
       "input": "4_r76",
       "t3_source": "heihachi",
       "t3_row": 76,
@@ -1971,7 +1991,7 @@
       "move_class": "strike"
     },
     "4_r77": {
-      "name": "SUN RĀ 4_r77 (T3 heihachi r77)",
+      "name": "SUN R\u0100 4_r77 (T3 heihachi r77)",
       "input": "4_r77",
       "t3_source": "heihachi",
       "t3_row": 77,
@@ -1991,7 +2011,7 @@
       "move_class": "strike"
     },
     "4_r78": {
-      "name": "SUN RĀ 4_r78 (T3 heihachi r78)",
+      "name": "SUN R\u0100 4_r78 (T3 heihachi r78)",
       "input": "4_r78",
       "t3_source": "heihachi",
       "t3_row": 78,
@@ -2011,7 +2031,7 @@
       "move_class": "strike"
     },
     "4_r79": {
-      "name": "SUN RĀ 4_r79 (T3 heihachi r79)",
+      "name": "SUN R\u0100 4_r79 (T3 heihachi r79)",
       "input": "4_r79",
       "t3_source": "heihachi",
       "t3_row": 79,
@@ -2031,7 +2051,7 @@
       "move_class": "strike"
     },
     "4_r80": {
-      "name": "SUN RĀ 4_r80 (T3 heihachi r80)",
+      "name": "SUN R\u0100 4_r80 (T3 heihachi r80)",
       "input": "4_r80",
       "t3_source": "heihachi",
       "t3_row": 80,
@@ -2051,7 +2071,7 @@
       "move_class": "strike"
     },
     "4_r81": {
-      "name": "SUN RĀ 4_r81 (T3 heihachi r81)",
+      "name": "SUN R\u0100 4_r81 (T3 heihachi r81)",
       "input": "4_r81",
       "t3_source": "heihachi",
       "t3_row": 81,
@@ -2071,7 +2091,7 @@
       "move_class": "strike"
     },
     "4_r82": {
-      "name": "SUN RĀ 4_r82 (T3 heihachi r82)",
+      "name": "SUN R\u0100 4_r82 (T3 heihachi r82)",
       "input": "4_r82",
       "t3_source": "heihachi",
       "t3_row": 82,
@@ -2091,7 +2111,7 @@
       "move_class": "strike"
     },
     "4_c36_r83": {
-      "name": "SUN RĀ 4_c36_r83 (T3 heihachi r83)",
+      "name": "SUN R\u0100 4_c36_r83 (T3 heihachi r83)",
       "input": "4_c36_r83",
       "t3_source": "heihachi",
       "t3_row": 83,
@@ -2112,7 +2132,7 @@
       "t3_condition": 36
     },
     "f_c36_r84": {
-      "name": "SUN RĀ f_c36_r84 (T3 heihachi r84)",
+      "name": "SUN R\u0100 f_c36_r84 (T3 heihachi r84)",
       "input": "f_c36_r84",
       "t3_source": "heihachi",
       "t3_row": 84,
@@ -2133,7 +2153,7 @@
       "t3_condition": 36
     },
     "b_c36_r85": {
-      "name": "SUN RĀ b_c36_r85 (T3 heihachi r85)",
+      "name": "SUN R\u0100 b_c36_r85 (T3 heihachi r85)",
       "input": "b_c36_r85",
       "t3_source": "heihachi",
       "t3_row": 85,
@@ -2154,7 +2174,7 @@
       "t3_condition": 36
     },
     "d/f+1+2_r17": {
-      "name": "SUN RĀ d/f+1+2_r17 (T3 heihachi r110)",
+      "name": "SUN R\u0100 d/f+1+2_r17 (T3 heihachi r110)",
       "input": "d/f+1+2_r17",
       "t3_source": "heihachi",
       "t3_row": 110,
@@ -2175,7 +2195,7 @@
       "t3_restriction": 17
     },
     "3_r107_r125": {
-      "name": "SUN RĀ 3_r107_r125 (T3 heihachi r125)",
+      "name": "SUN R\u0100 3_r107_r125 (T3 heihachi r125)",
       "input": "3_r107_r125",
       "t3_source": "heihachi",
       "t3_row": 125,
@@ -2196,7 +2216,7 @@
       "t3_restriction": 107
     },
     "b_r133": {
-      "name": "SUN RĀ b_r133 (T3 heihachi r133)",
+      "name": "SUN R\u0100 b_r133 (T3 heihachi r133)",
       "input": "b_r133",
       "t3_source": "heihachi",
       "t3_row": 133,
@@ -2216,7 +2236,7 @@
       "move_class": "strike"
     },
     "b_r134": {
-      "name": "SUN RĀ b_r134 (T3 heihachi r134)",
+      "name": "SUN R\u0100 b_r134 (T3 heihachi r134)",
       "input": "b_r134",
       "t3_source": "heihachi",
       "t3_row": 134,
@@ -2236,7 +2256,7 @@
       "move_class": "strike"
     },
     "b_r135": {
-      "name": "SUN RĀ b_r135 (T3 heihachi r135)",
+      "name": "SUN R\u0100 b_r135 (T3 heihachi r135)",
       "input": "b_r135",
       "t3_source": "heihachi",
       "t3_row": 135,
@@ -2256,7 +2276,7 @@
       "move_class": "strike"
     },
     "2_r146": {
-      "name": "SUN RĀ 2_r146 (T3 heihachi r146)",
+      "name": "SUN R\u0100 2_r146 (T3 heihachi r146)",
       "input": "2_r146",
       "t3_source": "heihachi",
       "t3_row": 146,
@@ -2276,7 +2296,7 @@
       "move_class": "strike"
     },
     "2_r149": {
-      "name": "SUN RĀ 2_r149 (T3 heihachi r149)",
+      "name": "SUN R\u0100 2_r149 (T3 heihachi r149)",
       "input": "2_r149",
       "t3_source": "heihachi",
       "t3_row": 149,
@@ -2296,7 +2316,7 @@
       "move_class": "strike"
     },
     "3_r153": {
-      "name": "SUN RĀ 3_r153 (T3 heihachi r153)",
+      "name": "SUN R\u0100 3_r153 (T3 heihachi r153)",
       "input": "3_r153",
       "t3_source": "heihachi",
       "t3_row": 153,
@@ -2316,7 +2336,7 @@
       "move_class": "strike"
     },
     "3_r154": {
-      "name": "SUN RĀ 3_r154 (T3 heihachi r154)",
+      "name": "SUN R\u0100 3_r154 (T3 heihachi r154)",
       "input": "3_r154",
       "t3_source": "heihachi",
       "t3_row": 154,
@@ -2336,7 +2356,7 @@
       "move_class": "strike"
     },
     "4_r155": {
-      "name": "SUN RĀ 4_r155 (T3 heihachi r155)",
+      "name": "SUN R\u0100 4_r155 (T3 heihachi r155)",
       "input": "4_r155",
       "t3_source": "heihachi",
       "t3_row": 155,
@@ -2356,7 +2376,7 @@
       "move_class": "strike"
     },
     "1_r166": {
-      "name": "SUN RĀ 1_r166 (T3 heihachi r166)",
+      "name": "SUN R\u0100 1_r166 (T3 heihachi r166)",
       "input": "1_r166",
       "t3_source": "heihachi",
       "t3_row": 166,
@@ -2376,7 +2396,7 @@
       "move_class": "strike"
     },
     "1_r175": {
-      "name": "SUN RĀ 1_r175 (T3 heihachi r175)",
+      "name": "SUN R\u0100 1_r175 (T3 heihachi r175)",
       "input": "1_r175",
       "t3_source": "heihachi",
       "t3_row": 175,
@@ -2396,7 +2416,7 @@
       "move_class": "strike"
     },
     "1_r176": {
-      "name": "SUN RĀ 1_r176 (T3 heihachi r176)",
+      "name": "SUN R\u0100 1_r176 (T3 heihachi r176)",
       "input": "1_r176",
       "t3_source": "heihachi",
       "t3_row": 176,
@@ -2416,7 +2436,7 @@
       "move_class": "strike"
     },
     "1_r177": {
-      "name": "SUN RĀ 1_r177 (T3 heihachi r177)",
+      "name": "SUN R\u0100 1_r177 (T3 heihachi r177)",
       "input": "1_r177",
       "t3_source": "heihachi",
       "t3_row": 177,
@@ -2436,7 +2456,7 @@
       "move_class": "strike"
     },
     "d/f+2_r30": {
-      "name": "SUN RĀ d/f+2_r30 (T3 heihachi r179)",
+      "name": "SUN R\u0100 d/f+2_r30 (T3 heihachi r179)",
       "input": "d/f+2_r30",
       "t3_source": "heihachi",
       "t3_row": 179,
@@ -2457,7 +2477,7 @@
       "t3_restriction": 30
     },
     "3_r182": {
-      "name": "SUN RĀ 3_r182 (T3 heihachi r182)",
+      "name": "SUN R\u0100 3_r182 (T3 heihachi r182)",
       "input": "3_r182",
       "t3_source": "heihachi",
       "t3_row": 182,
@@ -2477,7 +2497,7 @@
       "move_class": "strike"
     },
     "4_r191": {
-      "name": "SUN RĀ 4_r191 (T3 heihachi r191)",
+      "name": "SUN R\u0100 4_r191 (T3 heihachi r191)",
       "input": "4_r191",
       "t3_source": "heihachi",
       "t3_row": 191,
@@ -2497,7 +2517,7 @@
       "move_class": "strike"
     },
     "1_c53_r192": {
-      "name": "SUN RĀ 1_c53_r192 (T3 heihachi r192)",
+      "name": "SUN R\u0100 1_c53_r192 (T3 heihachi r192)",
       "input": "1_c53_r192",
       "t3_source": "heihachi",
       "t3_row": 192,
@@ -2518,7 +2538,7 @@
       "t3_condition": 53
     },
     "4_r193": {
-      "name": "SUN RĀ 4_r193 (T3 heihachi r193)",
+      "name": "SUN R\u0100 4_r193 (T3 heihachi r193)",
       "input": "4_r193",
       "t3_source": "heihachi",
       "t3_row": 193,
@@ -2538,7 +2558,7 @@
       "move_class": "strike"
     },
     "4_c26_r194": {
-      "name": "SUN RĀ 4_c26_r194 (T3 heihachi r194)",
+      "name": "SUN R\u0100 4_c26_r194 (T3 heihachi r194)",
       "input": "4_c26_r194",
       "t3_source": "heihachi",
       "t3_row": 194,
@@ -2559,7 +2579,7 @@
       "t3_condition": 26
     },
     "4_c27": {
-      "name": "SUN RĀ 4_c27 (T3 heihachi r194)",
+      "name": "SUN R\u0100 4_c27 (T3 heihachi r194)",
       "input": "4_c27",
       "t3_source": "heihachi",
       "t3_row": 194,
@@ -2580,7 +2600,7 @@
       "t3_condition": 27
     },
     "4_r14_r195": {
-      "name": "SUN RĀ 4_r14_r195 (T3 heihachi r195)",
+      "name": "SUN R\u0100 4_r14_r195 (T3 heihachi r195)",
       "input": "4_r14_r195",
       "t3_source": "heihachi",
       "t3_row": 195,
@@ -2601,7 +2621,7 @@
       "t3_restriction": 14
     },
     "1_r200": {
-      "name": "SUN RĀ 1_r200 (T3 heihachi r200)",
+      "name": "SUN R\u0100 1_r200 (T3 heihachi r200)",
       "input": "1_r200",
       "t3_source": "heihachi",
       "t3_row": 200,
@@ -2621,7 +2641,7 @@
       "move_class": "strike"
     },
     "1_c26_r215": {
-      "name": "SUN RĀ 1_c26_r215 (T3 heihachi r215)",
+      "name": "SUN R\u0100 1_c26_r215 (T3 heihachi r215)",
       "input": "1_c26_r215",
       "t3_source": "heihachi",
       "t3_row": 215,
@@ -2642,7 +2662,7 @@
       "t3_condition": 26
     },
     "1_r219": {
-      "name": "SUN RĀ 1_r219 (T3 heihachi r219)",
+      "name": "SUN R\u0100 1_r219 (T3 heihachi r219)",
       "input": "1_r219",
       "t3_source": "heihachi",
       "t3_row": 219,
@@ -2662,7 +2682,7 @@
       "move_class": "strike"
     },
     "4_r220": {
-      "name": "SUN RĀ 4_r220 (T3 heihachi r220)",
+      "name": "SUN R\u0100 4_r220 (T3 heihachi r220)",
       "input": "4_r220",
       "t3_source": "heihachi",
       "t3_row": 220,
@@ -2682,7 +2702,7 @@
       "move_class": "strike"
     },
     "1+2_r223": {
-      "name": "SUN RĀ 1+2_r223 (T3 heihachi r223)",
+      "name": "SUN R\u0100 1+2_r223 (T3 heihachi r223)",
       "input": "1+2_r223",
       "t3_source": "heihachi",
       "t3_row": 223,
@@ -2702,7 +2722,7 @@
       "move_class": "strike"
     },
     "1_r224": {
-      "name": "SUN RĀ 1_r224 (T3 heihachi r224)",
+      "name": "SUN R\u0100 1_r224 (T3 heihachi r224)",
       "input": "1_r224",
       "t3_source": "heihachi",
       "t3_row": 224,
@@ -2722,7 +2742,7 @@
       "move_class": "strike"
     },
     "2_r225": {
-      "name": "SUN RĀ 2_r225 (T3 heihachi r225)",
+      "name": "SUN R\u0100 2_r225 (T3 heihachi r225)",
       "input": "2_r225",
       "t3_source": "heihachi",
       "t3_row": 225,
@@ -2742,7 +2762,7 @@
       "move_class": "strike"
     },
     "4_r234": {
-      "name": "SUN RĀ 4_r234 (T3 heihachi r234)",
+      "name": "SUN R\u0100 4_r234 (T3 heihachi r234)",
       "input": "4_r234",
       "t3_source": "heihachi",
       "t3_row": 234,
@@ -2762,7 +2782,7 @@
       "move_class": "strike"
     },
     "1_r238": {
-      "name": "SUN RĀ 1_r238 (T3 heihachi r238)",
+      "name": "SUN R\u0100 1_r238 (T3 heihachi r238)",
       "input": "1_r238",
       "t3_source": "heihachi",
       "t3_row": 238,
@@ -2782,7 +2802,7 @@
       "move_class": "strike"
     },
     "1_r239": {
-      "name": "SUN RĀ 1_r239 (T3 heihachi r239)",
+      "name": "SUN R\u0100 1_r239 (T3 heihachi r239)",
       "input": "1_r239",
       "t3_source": "heihachi",
       "t3_row": 239,
@@ -2802,7 +2822,7 @@
       "move_class": "strike"
     },
     "2_r240": {
-      "name": "SUN RĀ 2_r240 (T3 heihachi r240)",
+      "name": "SUN R\u0100 2_r240 (T3 heihachi r240)",
       "input": "2_r240",
       "t3_source": "heihachi",
       "t3_row": 240,
@@ -2822,7 +2842,7 @@
       "move_class": "strike"
     },
     "1_c36_r260": {
-      "name": "SUN RĀ 1_c36_r260 (T3 heihachi r260)",
+      "name": "SUN R\u0100 1_c36_r260 (T3 heihachi r260)",
       "input": "1_c36_r260",
       "t3_source": "heihachi",
       "t3_row": 260,
@@ -2843,7 +2863,7 @@
       "t3_condition": 36
     },
     "1_c36_r261": {
-      "name": "SUN RĀ 1_c36_r261 (T3 heihachi r261)",
+      "name": "SUN R\u0100 1_c36_r261 (T3 heihachi r261)",
       "input": "1_c36_r261",
       "t3_source": "heihachi",
       "t3_row": 261,
@@ -2864,7 +2884,7 @@
       "t3_condition": 36
     },
     "1_c36_r264": {
-      "name": "SUN RĀ 1_c36_r264 (T3 heihachi r264)",
+      "name": "SUN R\u0100 1_c36_r264 (T3 heihachi r264)",
       "input": "1_c36_r264",
       "t3_source": "heihachi",
       "t3_row": 264,
@@ -2885,7 +2905,7 @@
       "t3_condition": 36
     },
     "1_c36_r265": {
-      "name": "SUN RĀ 1_c36_r265 (T3 heihachi r265)",
+      "name": "SUN R\u0100 1_c36_r265 (T3 heihachi r265)",
       "input": "1_c36_r265",
       "t3_source": "heihachi",
       "t3_row": 265,
@@ -2906,7 +2926,7 @@
       "t3_condition": 36
     },
     "1_c2_r340": {
-      "name": "SUN RĀ 1_c2_r340 (T3 heihachi r340)",
+      "name": "SUN R\u0100 1_c2_r340 (T3 heihachi r340)",
       "input": "1_c2_r340",
       "t3_source": "heihachi",
       "t3_row": 340,
@@ -2927,7 +2947,7 @@
       "t3_condition": 2
     },
     "1_c2_r342": {
-      "name": "SUN RĀ 1_c2_r342 (T3 heihachi r342)",
+      "name": "SUN R\u0100 1_c2_r342 (T3 heihachi r342)",
       "input": "1_c2_r342",
       "t3_source": "heihachi",
       "t3_row": 342,
@@ -2948,7 +2968,7 @@
       "t3_condition": 2
     },
     "1_c4_r344": {
-      "name": "SUN RĀ 1_c4_r344 (T3 heihachi r344)",
+      "name": "SUN R\u0100 1_c4_r344 (T3 heihachi r344)",
       "input": "1_c4_r344",
       "t3_source": "heihachi",
       "t3_row": 344,
@@ -2969,7 +2989,7 @@
       "t3_condition": 4
     },
     "1_c5_r346": {
-      "name": "SUN RĀ 1_c5_r346 (T3 heihachi r346)",
+      "name": "SUN R\u0100 1_c5_r346 (T3 heihachi r346)",
       "input": "1_c5_r346",
       "t3_source": "heihachi",
       "t3_row": 346,
@@ -2990,7 +3010,7 @@
       "t3_condition": 5
     },
     "1_c3_r348": {
-      "name": "SUN RĀ 1_c3_r348 (T3 heihachi r348)",
+      "name": "SUN R\u0100 1_c3_r348 (T3 heihachi r348)",
       "input": "1_c3_r348",
       "t3_source": "heihachi",
       "t3_row": 348,
@@ -3011,7 +3031,7 @@
       "t3_condition": 3
     },
     "1_r352": {
-      "name": "SUN RĀ 1_r352 (T3 heihachi r352)",
+      "name": "SUN R\u0100 1_r352 (T3 heihachi r352)",
       "input": "1_r352",
       "t3_source": "heihachi",
       "t3_row": 352,
@@ -3031,7 +3051,7 @@
       "move_class": "strike"
     },
     "1_c2_r355": {
-      "name": "SUN RĀ 1_c2_r355 (T3 heihachi r355)",
+      "name": "SUN R\u0100 1_c2_r355 (T3 heihachi r355)",
       "input": "1_c2_r355",
       "t3_source": "heihachi",
       "t3_row": 355,
@@ -3052,7 +3072,7 @@
       "t3_condition": 2
     },
     "1_r358": {
-      "name": "SUN RĀ 1_r358 (T3 heihachi r358)",
+      "name": "SUN R\u0100 1_r358 (T3 heihachi r358)",
       "input": "1_r358",
       "t3_source": "heihachi",
       "t3_row": 358,
@@ -3072,7 +3092,7 @@
       "move_class": "strike"
     },
     "1_r365": {
-      "name": "SUN RĀ 1_r365 (T3 heihachi r365)",
+      "name": "SUN R\u0100 1_r365 (T3 heihachi r365)",
       "input": "1_r365",
       "t3_source": "heihachi",
       "t3_row": 365,
@@ -3092,7 +3112,7 @@
       "move_class": "strike"
     },
     "1_r369": {
-      "name": "SUN RĀ 1_r369 (T3 heihachi r369)",
+      "name": "SUN R\u0100 1_r369 (T3 heihachi r369)",
       "input": "1_r369",
       "t3_source": "heihachi",
       "t3_row": 369,
