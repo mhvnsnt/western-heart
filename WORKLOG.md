@@ -3928,3 +3928,35 @@ downstream witness/resolution, not canon). Deletions: none.
 - Proof: test/enemy-on-back.test.mjs (local against the exact branch page file, plus CI
   game-unit-tests on the PR head). Test-only change: test/e2e/moveset-sweep.page.js +
   test/enemy-on-back.test.mjs + WORKLOG entry. No game/ change, so no Pages deploy follows.
+
+## 2026-10-30 — Pantera approach-crouching throws get a sweep setup (PR #TBD)
+
+- What: Pantera t7.king_229 'Approach crouching enemy... d+1+3' (Iron Lariat), t7.king_230
+  '... d+2+4' (V Driver), t7.king_268 '... d/f, D/F+1+3 (or 2+4)' (Reverse Special Stretch
+  Bomb) — the last t7 prose-condition rows that were parse-ERRs for a missing context,
+  not for a missing input. Canon maps 'Approach crouching enemy... <input>' to
+  'CROUCHFOE.<input>' in game/js/movesets.js, and the sweep page's setup() gains a
+  CROUCHFOE case that plays exactly the stated situation: the foe crouching, the
+  attacker closed to the 0.7 m contactFirst spacing. No fighter data touched; shared
+  canon code + sweep page only. Blast radius across held core-8 movesets: only Pantera
+  carries 'Approach crouching' inputs, and the rule is anchored to that literal prose.
+- Why this is a setup, not an n/a: the #1244 enemy-on-back n/a was honest because the
+  engine has no face-up/face-down ground-orientation state at all. A crouching foe IS a
+  state the sweep already plays (T3 condition setup, the hit-word crouch branch), so
+  these rows get attempted in their situation instead of being excused from it. A canon
+  strip alone would have been wrong: it would make the sweep attempt crouch throws
+  against a standing foe.
+- Deliberately untouched, different chunks: timing rows t7.king_295-297 ('Time with
+  enemy right punch/left kick/right kick...' — the foe must be attacking, needs a
+  timed-opponent-attack setup), wall-stun row t7.king_247 ('During enemy wall stun...'
+  — wall-stun state not established), trailing-condition king_110, 'low*' king_150,
+  'JGS, N' king_158, Clockwork-phase king_186, and Dio's 3 trace-needed rows.
+- Proof: test/approach-crouch.test.mjs (local against the exact edited files, 4/4;
+  2/4 fail on the unedited files — the canon and setup tests — so the test is not
+  vacuous), plus CI game-unit-tests on the PR head. Test-only + shared-code change:
+  game/js/movesets.js + test/e2e/moveset-sweep.page.js + test/approach-crouch.test.mjs
+  + WORKLOG entry. A game/ change, so a Pages redeploy of game/js/movesets.js follows
+  any merge.
+- Residual, stated plainly: mechanism proof, not a witnessed full-fight pass — the next
+  sweep attempts these 3 rows against a crouching foe at close range, and whether each
+  fires and connects there is what that sweep reports.
