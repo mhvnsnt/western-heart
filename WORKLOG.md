@@ -4100,7 +4100,7 @@ downstream witness/resolution, not canon). Deletions: none.
   not touch the space form; king_150 'low*' (data gap); alisa_186 '(Clockwork
   Spring Middle) B' (phase-entry data not established).
 
-## 2026-10-30 — Cyborg X Clockwork back step leaves the failing list as movement (PR #TBD)
+## 2026-10-30 — Cyborg X Clockwork back step leaves the failing list as movement (PR #1251)
 - Cyborg X t7.alisa_186 '(Clockwork Spring Middle) B' left the r17 failing
   list as a parse error: the final paren-to-words rule turned the move name
   into bare words ('Clockwork Spring Middle B'), which the sweep parse()
