@@ -655,7 +655,7 @@
     }
   ],
   "string_step_plans":   {
-    "law": "Batch 1 step plans (Pantera LP1/RP2-only strings, 2026-10-24). Engine: fighter.js _attackClipPlan step-plan branch. A step plays its row ONLY when status is verified (button bitmask + stance + throw gates pass). review/unmapped steps play NO bank row - never a donor/generic row - and are flagged in _atkPlan.unmapped. T3 rows here are FALLBACK (see docs/anim/PROCEDURAL_AUDIT.md Batch-1 entry): T7 King clip bytes for 0x8000 moves are unresolved, so T3 step rows stand in until T7 extraction lands, then re-match. Rows 35/220 are NEVER verified for standing-context steps. Full gate evidence (hit_frames + FK peaks) in docs/movesets/BATCH1-STEP-PLANS-2026-10-24.md.\n\nBatch 2 step plans (Pantera LK3/RK4-only strings, 2026-10-25). Same engine branch, same gates as Batch 1, plus: SOFT limb-peak gate uses the Job 1 peakF proxy (window = stream active window / 2, +/-2 frames), validated 13/13 on Batch 1 verified steps; the proxy is conservative (a max peak outside the window can hide a secondary peak inside, so proxy-fail means review, never a false verify); SOFT gate waived for jumping-context strings as in Batch 1. Stance gate: jump/starts-airborne rows fail ground-context steps and pass jump-context steps; crouch rows pass only crouch-context steps; ground rows fail all; ws-context steps matched to standing rows are review (ws->standing soft-stance). Job 3 fills wired ONLY on exact level + FULL provenance + step HARD gates (Batch 2 has none: all 11 Batch 2 Job 3 targets have empty pass-all lists); SOFT and ROW-ONLY candidates are documented, never wired. Job 4 joins never promote a step. T3 rows here are FALLBACK (see docs/anim/PROCEDURAL_AUDIT.md Batch-2 entry). Full gate evidence in docs/movesets/BATCH2-STEP-PLANS-2026-10-25.md.",
+    "law": "Batch 1 step plans (Pantera LP1/RP2-only strings, 2026-10-24). Engine: fighter.js _attackClipPlan step-plan branch. A step plays its row ONLY when status is verified (button bitmask + stance + throw gates pass). review/unmapped steps play NO bank row - never a donor/generic row - and are flagged in _atkPlan.unmapped. T3 rows here are FALLBACK (see docs/anim/PROCEDURAL_AUDIT.md Batch-1 entry): T7 King clip bytes for 0x8000 moves are unresolved, so T3 step rows stand in until T7 extraction lands, then re-match. Rows 35/220 are NEVER verified for standing-context steps. Full gate evidence (hit_frames + FK peaks) in docs/movesets/BATCH1-STEP-PLANS-2026-10-24.md.\n\nBatch 2 step plans (Pantera LK3/RK4-only strings, 2026-10-25). Same engine branch, same gates as Batch 1, plus: SOFT limb-peak gate uses the Job 1 peakF proxy (window = stream active window / 2, +/-2 frames), validated 13/13 on Batch 1 verified steps; the proxy is conservative (a max peak outside the window can hide a secondary peak inside, so proxy-fail means review, never a false verify); SOFT gate waived for jumping-context strings as in Batch 1. Stance gate: jump/starts-airborne rows fail ground-context steps and pass jump-context steps; crouch rows pass only crouch-context steps; ground rows fail all; ws-context steps matched to standing rows are review (ws->standing soft-stance). Job 3 fills wired ONLY on exact level + FULL provenance + step HARD gates (Batch 2 has none: all 11 Batch 2 Job 3 targets have empty pass-all lists); SOFT and ROW-ONLY candidates are documented, never wired. Job 4 joins never promote a step. T3 rows here are FALLBACK (see docs/anim/PROCEDURAL_AUDIT.md Batch-2 entry). Full gate evidence in docs/movesets/BATCH2-STEP-PLANS-2026-10-25.md.\n\nBatch 3 step plans (Pantera mixed-pair strings, 2026-10-25). Same engine branch, same gates as Batches 1-2, plus: step limbs generalised (LP1=armL, RP2=armR, LK3=legL, RK4=legR; chord steps carry both limbs, SOFT proxy passes on at least one limb peak in window); SOFT gate waived for jumping-context strings as in Batch 1 (all 6 jump canonicals verify with the waiver noted in their reasons). Grapple-label rule refined: only the Batch 1 known grapple-chain set {PILE_DRIVER, ARM_BREAKER, TACKLE} counts as a grapple label \u2014 JGS (Jaguar Step, a stance) in JGS.3,2+3 is planned, not CSV-only; Batch 2 had no labeled strings so no Batch 2 result changes. Job 3 fills wired ONLY on exact level + FULL provenance + step HARD gates (Batch 3 has none: 9 pantera Job 3 targets, 8 with empty pass-all lists, 1 (u/b+1) with 4 SOFT-filed FULL candidates documented, never wired \u2014 no SOFT fill is inherited from #1097, whose row-49 fill is still unapproved). Job 4 joins never promote a step (6 joins, all rejected). T3 rows here are FALLBACK (see docs/anim/PROCEDURAL_AUDIT.md Batch-3 entry). Full gate evidence in docs/movesets/BATCH3-STEP-PLANS-2026-10-25.md.",
     "plans": {
       "1+2,1": {
         "steps": [
@@ -3846,6 +3846,1681 @@
         "jumping_context": false,
         "last_step_row": null,
         "last_step_status": "unmapped"
+      },
+      "1+3,1": {
+        "steps": [
+          {
+            "step": "1+3",
+            "prefix": "1+3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 127,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 3 != step bits 5",
+              "throw flag 1 (row is a throw row)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "1+3,1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 415,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1",
+              "throw flag 1 (row is a throw row)",
+              "airborne row (stance jump; y0 0.899 ymax 1.331 vs standingY 0.892)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "1+3,1~t3.king": {
+        "steps": [
+          {
+            "step": "1+3",
+            "prefix": "1+3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 127,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 3 != step bits 5",
+              "throw flag 1 (row is a throw row)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "1+3,1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 415,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1",
+              "throw flag 1 (row is a throw row)",
+              "airborne row (stance jump; y0 0.899 ymax 1.331 vs standingY 0.892)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "1+3,1",
+        "twin_move_class": "special"
+      },
+      "1+4,1": {
+        "steps": [
+          {
+            "step": "1+4",
+            "prefix": "1+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "1+4,1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 233,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1",
+              "airborne row (stance jump; y0 0.944 ymax 1.832 vs standingY 0.892)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "1+4,1~t3.king": {
+        "steps": [
+          {
+            "step": "1+4",
+            "prefix": "1+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "1+4,1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 233,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1",
+              "airborne row (stance jump; y0 0.944 ymax 1.832 vs standingY 0.892)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "1+4,1",
+        "twin_move_class": "strike"
+      },
+      "1+4,1~t3.king.2": {
+        "steps": [
+          {
+            "step": "1+4",
+            "prefix": "1+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "1+4,1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 233,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1",
+              "airborne row (stance jump; y0 0.944 ymax 1.832 vs standingY 0.892)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "1+4,1",
+        "twin_move_class": "strike"
+      },
+      "1+4,1~t3.king.3": {
+        "steps": [
+          {
+            "step": "1+4",
+            "prefix": "1+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "1+4,1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 233,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1",
+              "airborne row (stance jump; y0 0.944 ymax 1.832 vs standingY 0.892)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "1+4,1",
+        "twin_move_class": "special"
+      },
+      "1+4,1~t3.king.4": {
+        "steps": [
+          {
+            "step": "1+4",
+            "prefix": "1+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "1+4,1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 233,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1",
+              "airborne row (stance jump; y0 0.944 ymax 1.832 vs standingY 0.892)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "1+4,1",
+        "twin_move_class": "strike"
+      },
+      "1+4,1,1": {
+        "steps": [
+          {
+            "step": "1+4",
+            "prefix": "1+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "1+4,1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 233,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1",
+              "airborne row (stance jump; y0 0.944 ymax 1.832 vs standingY 0.892)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "1+4,1,1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 234,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1",
+              "airborne row (stance jump; y0 0.944 ymax 1.832 vs standingY 0.892)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "1+4,1,1~t3.king": {
+        "steps": [
+          {
+            "step": "1+4",
+            "prefix": "1+4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "1+4,1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 233,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1",
+              "airborne row (stance jump; y0 0.944 ymax 1.832 vs standingY 0.892)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "1+4,1,1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 234,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1",
+              "airborne row (stance jump; y0 0.944 ymax 1.832 vs standingY 0.892)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "1+4,1,1",
+        "twin_move_class": "strike"
+      },
+      "3,2": {
+        "steps": [
+          {
+            "step": "3",
+            "prefix": "3",
+            "row": 264,
+            "status": "verified",
+            "candidate_row": 264,
+            "candidate_source": "prefix-move",
+            "reasons": []
+          },
+          {
+            "step": "2",
+            "prefix": "3,2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "3,2,2": {
+        "steps": [
+          {
+            "step": "3",
+            "prefix": "3",
+            "row": 264,
+            "status": "verified",
+            "candidate_row": 264,
+            "candidate_source": "prefix-move",
+            "reasons": []
+          },
+          {
+            "step": "2",
+            "prefix": "3,2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "3,2,2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "3,2,2*": {
+        "steps": [
+          {
+            "step": "3",
+            "prefix": "3",
+            "row": 264,
+            "status": "verified",
+            "candidate_row": 264,
+            "candidate_source": "prefix-move",
+            "reasons": []
+          },
+          {
+            "step": "2",
+            "prefix": "3,2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "3,2,2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "3,2,2",
+        "twin_move_class": "string"
+      },
+      "JGS.3,2+3": {
+        "steps": [
+          {
+            "step": "JGS.3",
+            "prefix": "JGS.3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "2+3",
+            "prefix": "JGS.3,2+3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "b+1,4": {
+        "steps": [
+          {
+            "step": "b+1",
+            "prefix": "b+1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "b+1,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "b+1,4~t7.king": {
+        "steps": [
+          {
+            "step": "b+1",
+            "prefix": "b+1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "b+1,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "b+1,4",
+        "twin_move_class": "string"
+      },
+      "b+1,4~t7.king.2": {
+        "steps": [
+          {
+            "step": "b+1",
+            "prefix": "b+1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "b+1,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "b+1,4",
+        "twin_move_class": "string"
+      },
+      "b+2,4": {
+        "steps": [
+          {
+            "step": "b+2",
+            "prefix": "b+2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "b+2,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "b+2,4~t7.king": {
+        "steps": [
+          {
+            "step": "b+2",
+            "prefix": "b+2",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "b+2,4",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "b+2,4",
+        "twin_move_class": "string"
+      },
+      "d+1+3,1": {
+        "steps": [
+          {
+            "step": "d+1+3",
+            "prefix": "d+1+3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "d+1+3,1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 478,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1",
+              "throw flag 1 (row is a throw row)",
+              "airborne row (stance jump; y0 0.717 ymax 1.761 vs standingY 0.892)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "d/b+1+3,1": {
+        "steps": [
+          {
+            "step": "d/b+1+3",
+            "prefix": "d/b+1+3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 277,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "throw flag 1 (row is a throw row)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "d/b+1+3,1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 482,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1",
+              "throw flag 1 (row is a throw row)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped"
+      },
+      "d/b+1+3,1~t3.king": {
+        "steps": [
+          {
+            "step": "d/b+1+3",
+            "prefix": "d/b+1+3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 277,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "throw flag 1 (row is a throw row)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "d/b+1+3,1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 482,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1",
+              "throw flag 1 (row is a throw row)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "d/b+1+3,1",
+        "twin_move_class": "special"
+      },
+      "d/b+1+3,1~t3.king.2": {
+        "steps": [
+          {
+            "step": "d/b+1+3",
+            "prefix": "d/b+1+3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 277,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "throw flag 1 (row is a throw row)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "d/b+1+3,1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 482,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1",
+              "throw flag 1 (row is a throw row)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "d/b+1+3,1",
+        "twin_move_class": "special"
+      },
+      "d/b+1+3,1~t3.king.3": {
+        "steps": [
+          {
+            "step": "d/b+1+3",
+            "prefix": "d/b+1+3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 277,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "throw flag 1 (row is a throw row)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "d/b+1+3,1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 482,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1",
+              "throw flag 1 (row is a throw row)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "d/b+1+3,1",
+        "twin_move_class": "special"
+      },
+      "d/b+1+3,1~t3.king.4": {
+        "steps": [
+          {
+            "step": "d/b+1+3",
+            "prefix": "d/b+1+3",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 277,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "throw flag 1 (row is a throw row)"
+            ]
+          },
+          {
+            "step": "1",
+            "prefix": "d/b+1+3,1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 482,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 0 != step bits 1",
+              "throw flag 1 (row is a throw row)"
+            ]
+          }
+        ],
+        "string_status": "unmapped-all",
+        "triage": "NO-ROW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "unmapped",
+        "twin_of": "d/b+1+3,1",
+        "twin_move_class": "special"
+      },
+      "d/f+4,2": {
+        "steps": [
+          {
+            "step": "d/f+4",
+            "prefix": "d/f+4",
+            "row": null,
+            "status": "review",
+            "candidate_row": 135,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT limb-peak proxy fail: window [6.0,10.0] peaks {'legR': 4}"
+            ]
+          },
+          {
+            "step": "2",
+            "prefix": "d/f+4,2",
+            "row": null,
+            "status": "review",
+            "candidate_row": 196,
+            "candidate_source": "recorded-dest",
+            "reasons": [
+              "SOFT limb-peak proxy fail: window [1.0,5.0] peaks {'armR': 0}"
+            ]
+          }
+        ],
+        "string_status": "review-only",
+        "triage": "REVIEW",
+        "jumping_context": false,
+        "last_step_row": null,
+        "last_step_status": "review"
+      },
+      "u+1,3": {
+        "steps": [
+          {
+            "step": "u+1",
+            "prefix": "u+1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "u+1,3",
+            "row": 54,
+            "status": "verified",
+            "candidate_row": 54,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 54,
+        "last_step_status": "verified"
+      },
+      "u+1,3~t3.king": {
+        "steps": [
+          {
+            "step": "u+1",
+            "prefix": "u+1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "u+1,3",
+            "row": 54,
+            "status": "verified",
+            "candidate_row": 54,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 54,
+        "last_step_status": "verified",
+        "twin_of": "u+1,3",
+        "twin_move_class": "strike"
+      },
+      "u+1,3~t3.king.2": {
+        "steps": [
+          {
+            "step": "u+1",
+            "prefix": "u+1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "u+1,3",
+            "row": 54,
+            "status": "verified",
+            "candidate_row": 54,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 54,
+        "last_step_status": "verified",
+        "twin_of": "u+1,3",
+        "twin_move_class": "strike"
+      },
+      "u+1,3~t3.king.3": {
+        "steps": [
+          {
+            "step": "u+1",
+            "prefix": "u+1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "u+1,3",
+            "row": 54,
+            "status": "verified",
+            "candidate_row": 54,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 54,
+        "last_step_status": "verified",
+        "twin_of": "u+1,3",
+        "twin_move_class": "strike"
+      },
+      "u+1,4": {
+        "steps": [
+          {
+            "step": "u+1",
+            "prefix": "u+1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "u+1,4",
+            "row": 72,
+            "status": "verified",
+            "candidate_row": 72,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 72,
+        "last_step_status": "verified"
+      },
+      "u+1,4~t3.king": {
+        "steps": [
+          {
+            "step": "u+1",
+            "prefix": "u+1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "u+1,4",
+            "row": 72,
+            "status": "verified",
+            "candidate_row": 72,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 72,
+        "last_step_status": "verified",
+        "twin_of": "u+1,4",
+        "twin_move_class": "strike"
+      },
+      "u+1,4~t3.king.2": {
+        "steps": [
+          {
+            "step": "u+1",
+            "prefix": "u+1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "u+1,4",
+            "row": 72,
+            "status": "verified",
+            "candidate_row": 72,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 72,
+        "last_step_status": "verified",
+        "twin_of": "u+1,4",
+        "twin_move_class": "strike"
+      },
+      "u+1,4~t3.king.3": {
+        "steps": [
+          {
+            "step": "u+1",
+            "prefix": "u+1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": null,
+            "candidate_source": null,
+            "reasons": [
+              "no candidate row (recorded path + prefix move both absent)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "u+1,4",
+            "row": 72,
+            "status": "verified",
+            "candidate_row": 72,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 72,
+        "last_step_status": "verified",
+        "twin_of": "u+1,4",
+        "twin_move_class": "strike"
+      },
+      "u/b+1,3": {
+        "steps": [
+          {
+            "step": "u/b+1",
+            "prefix": "u/b+1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 37,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 3 != step bits 1",
+              "Job 3 candidate row 36 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 47 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 48 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 49 NOT wired (soft-filed, FULL, target u/b+1)"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "u/b+1,3",
+            "row": 56,
+            "status": "verified",
+            "candidate_row": 56,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 56,
+        "last_step_status": "verified"
+      },
+      "u/b+1,3~t3.king": {
+        "steps": [
+          {
+            "step": "u/b+1",
+            "prefix": "u/b+1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 37,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 3 != step bits 1",
+              "Job 3 candidate row 36 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 47 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 48 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 49 NOT wired (soft-filed, FULL, target u/b+1)"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "u/b+1,3",
+            "row": 56,
+            "status": "verified",
+            "candidate_row": 56,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 56,
+        "last_step_status": "verified",
+        "twin_of": "u/b+1,3",
+        "twin_move_class": "special"
+      },
+      "u/b+1,3~t3.king.2": {
+        "steps": [
+          {
+            "step": "u/b+1",
+            "prefix": "u/b+1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 37,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 3 != step bits 1",
+              "Job 3 candidate row 36 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 47 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 48 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 49 NOT wired (soft-filed, FULL, target u/b+1)"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "u/b+1,3",
+            "row": 56,
+            "status": "verified",
+            "candidate_row": 56,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 56,
+        "last_step_status": "verified",
+        "twin_of": "u/b+1,3",
+        "twin_move_class": "special"
+      },
+      "u/b+1,3~t3.king.3": {
+        "steps": [
+          {
+            "step": "u/b+1",
+            "prefix": "u/b+1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 37,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 3 != step bits 1",
+              "Job 3 candidate row 36 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 47 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 48 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 49 NOT wired (soft-filed, FULL, target u/b+1)"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "u/b+1,3",
+            "row": 56,
+            "status": "verified",
+            "candidate_row": 56,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 56,
+        "last_step_status": "verified",
+        "twin_of": "u/b+1,3",
+        "twin_move_class": "special"
+      },
+      "u/b+1,4": {
+        "steps": [
+          {
+            "step": "u/b+1",
+            "prefix": "u/b+1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 37,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 3 != step bits 1",
+              "Job 3 candidate row 36 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 47 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 48 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 49 NOT wired (soft-filed, FULL, target u/b+1)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "u/b+1,4",
+            "row": 74,
+            "status": "verified",
+            "candidate_row": 74,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 74,
+        "last_step_status": "verified"
+      },
+      "u/b+1,4~t3.king": {
+        "steps": [
+          {
+            "step": "u/b+1",
+            "prefix": "u/b+1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 37,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 3 != step bits 1",
+              "Job 3 candidate row 36 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 47 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 48 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 49 NOT wired (soft-filed, FULL, target u/b+1)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "u/b+1,4",
+            "row": 74,
+            "status": "verified",
+            "candidate_row": 74,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 74,
+        "last_step_status": "verified",
+        "twin_of": "u/b+1,4",
+        "twin_move_class": "special"
+      },
+      "u/b+1,4~t3.king.2": {
+        "steps": [
+          {
+            "step": "u/b+1",
+            "prefix": "u/b+1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 37,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 3 != step bits 1",
+              "Job 3 candidate row 36 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 47 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 48 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 49 NOT wired (soft-filed, FULL, target u/b+1)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "u/b+1,4",
+            "row": 74,
+            "status": "verified",
+            "candidate_row": 74,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 74,
+        "last_step_status": "verified",
+        "twin_of": "u/b+1,4",
+        "twin_move_class": "special"
+      },
+      "u/b+1,4~t3.king.3": {
+        "steps": [
+          {
+            "step": "u/b+1",
+            "prefix": "u/b+1",
+            "row": null,
+            "status": "unmapped",
+            "candidate_row": 37,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "button 3 != step bits 1",
+              "Job 3 candidate row 36 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 47 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 48 NOT wired (soft-filed, FULL, target u/b+1)",
+              "Job 3 candidate row 49 NOT wired (soft-filed, FULL, target u/b+1)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "u/b+1,4",
+            "row": 74,
+            "status": "verified",
+            "candidate_row": 74,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "partial",
+        "triage": "REVIEW",
+        "jumping_context": true,
+        "last_step_row": 74,
+        "last_step_status": "verified",
+        "twin_of": "u/b+1,4",
+        "twin_move_class": "special"
+      },
+      "u/f+1,3": {
+        "steps": [
+          {
+            "step": "u/f+1",
+            "prefix": "u/f+1",
+            "row": 36,
+            "status": "verified",
+            "candidate_row": 36,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "u/f+1,3",
+            "row": 55,
+            "status": "verified",
+            "candidate_row": 55,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "verified-all",
+        "triage": "PASS",
+        "jumping_context": true,
+        "last_step_row": 55,
+        "last_step_status": "verified"
+      },
+      "u/f+1,3~t3.king": {
+        "steps": [
+          {
+            "step": "u/f+1",
+            "prefix": "u/f+1",
+            "row": 36,
+            "status": "verified",
+            "candidate_row": 36,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "u/f+1,3",
+            "row": 55,
+            "status": "verified",
+            "candidate_row": 55,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "verified-all",
+        "triage": "PASS",
+        "jumping_context": true,
+        "last_step_row": 55,
+        "last_step_status": "verified",
+        "twin_of": "u/f+1,3",
+        "twin_move_class": "special"
+      },
+      "u/f+1,3~t3.king.2": {
+        "steps": [
+          {
+            "step": "u/f+1",
+            "prefix": "u/f+1",
+            "row": 36,
+            "status": "verified",
+            "candidate_row": 36,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "u/f+1,3",
+            "row": 55,
+            "status": "verified",
+            "candidate_row": 55,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "verified-all",
+        "triage": "PASS",
+        "jumping_context": true,
+        "last_step_row": 55,
+        "last_step_status": "verified",
+        "twin_of": "u/f+1,3",
+        "twin_move_class": "special"
+      },
+      "u/f+1,3~t3.king.3": {
+        "steps": [
+          {
+            "step": "u/f+1",
+            "prefix": "u/f+1",
+            "row": 36,
+            "status": "verified",
+            "candidate_row": 36,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          },
+          {
+            "step": "3",
+            "prefix": "u/f+1,3",
+            "row": 55,
+            "status": "verified",
+            "candidate_row": 55,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "verified-all",
+        "triage": "PASS",
+        "jumping_context": true,
+        "last_step_row": 55,
+        "last_step_status": "verified",
+        "twin_of": "u/f+1,3",
+        "twin_move_class": "special"
+      },
+      "u/f+1,4": {
+        "steps": [
+          {
+            "step": "u/f+1",
+            "prefix": "u/f+1",
+            "row": 36,
+            "status": "verified",
+            "candidate_row": 36,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "u/f+1,4",
+            "row": 73,
+            "status": "verified",
+            "candidate_row": 73,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "verified-all",
+        "triage": "PASS",
+        "jumping_context": true,
+        "last_step_row": 73,
+        "last_step_status": "verified"
+      },
+      "u/f+1,4~t3.king": {
+        "steps": [
+          {
+            "step": "u/f+1",
+            "prefix": "u/f+1",
+            "row": 36,
+            "status": "verified",
+            "candidate_row": 36,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "u/f+1,4",
+            "row": 73,
+            "status": "verified",
+            "candidate_row": 73,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "verified-all",
+        "triage": "PASS",
+        "jumping_context": true,
+        "last_step_row": 73,
+        "last_step_status": "verified",
+        "twin_of": "u/f+1,4",
+        "twin_move_class": "special"
+      },
+      "u/f+1,4~t3.king.2": {
+        "steps": [
+          {
+            "step": "u/f+1",
+            "prefix": "u/f+1",
+            "row": 36,
+            "status": "verified",
+            "candidate_row": 36,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "u/f+1,4",
+            "row": 73,
+            "status": "verified",
+            "candidate_row": 73,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "verified-all",
+        "triage": "PASS",
+        "jumping_context": true,
+        "last_step_row": 73,
+        "last_step_status": "verified",
+        "twin_of": "u/f+1,4",
+        "twin_move_class": "special"
+      },
+      "u/f+1,4~t3.king.3": {
+        "steps": [
+          {
+            "step": "u/f+1",
+            "prefix": "u/f+1",
+            "row": 36,
+            "status": "verified",
+            "candidate_row": 36,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          },
+          {
+            "step": "4",
+            "prefix": "u/f+1,4",
+            "row": 73,
+            "status": "verified",
+            "candidate_row": 73,
+            "candidate_source": "prefix-move",
+            "reasons": [
+              "SOFT gate waived (jump context)"
+            ]
+          }
+        ],
+        "string_status": "verified-all",
+        "triage": "PASS",
+        "jumping_context": true,
+        "last_step_row": 73,
+        "last_step_status": "verified",
+        "twin_of": "u/f+1,4",
+        "twin_move_class": "special"
       }
     }
   },
