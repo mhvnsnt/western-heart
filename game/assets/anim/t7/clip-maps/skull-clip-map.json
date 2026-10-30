@@ -1,0 +1,7661 @@
+{
+ "schema": "wh-t7-clip-map/1",
+ "fighter": "skull",
+ "base_code": "bry",
+ "sources": {
+  "mapping": "worker-b/skull-mapping.json",
+  "char_index": "clips-all/bry_index.json",
+  "common_index": "clips-all/common_index.json"
+ },
+ "stats": {
+  "mapped_clip_resolved": 63,
+  "mapped_bank0_noclip": 6,
+  "unmapped": 45
+ },
+ "moves": [
+  {
+   "wh_key": "f+4__main",
+   "wh_name": "Move f+4 (f+4)",
+   "wh_input": "f+4",
+   "t7_id": "bryan_95",
+   "t7_notation": "f+4",
+   "status": "mapped",
+   "motbin_move_id": 1657,
+   "motbin_move_name": "Bx_rk00F",
+   "anim_name": "kobx_skh30(DVD)",
+   "anim_id": 16745,
+   "bank_index": 361,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 18,
+   "motbin_damage": 10,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1657,
+     "name": "Bx_rk00F",
+     "anim": "kobx_skh30(DVD)",
+     "anim_id": 16745
+    },
+    {
+     "id": 1790,
+     "name": "Bx_4RPRK",
+     "anim": "nabx_4rprk(DVD)",
+     "anim_id": 16841
+    },
+    {
+     "id": 1825,
+     "name": "Bx_hico_RK",
+     "anim": "nabx_rklk2rk(DVD)",
+     "anim_id": 16858
+    },
+    {
+     "id": 1826,
+     "name": "Bx_slash_RK",
+     "anim": "Gbx_machk(DVD)",
+     "anim_id": 16859
+    },
+    {
+     "id": 1851,
+     "name": "Bx_hadoh04",
+     "anim": "mbbx_jetkick(DVD)",
+     "anim_id": 16871
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 361,
+    "rel_offset": 2675552,
+    "size": 3372,
+    "format_word": 100,
+    "sha256": "f419a3745b80626f65c0ccd2b7f27c37ec28f3280c48dd3bb01733cf387f652d",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "d+4__main",
+   "wh_name": "Low Kick",
+   "wh_input": "d+4",
+   "t7_id": "bryan_129",
+   "t7_notation": "d+4",
+   "status": "mapped",
+   "motbin_move_id": 1788,
+   "motbin_move_name": "Bx_t_srk",
+   "anim_name": "nabx_2rk(DVD)",
+   "anim_id": 16839,
+   "bank_index": 455,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation d+4"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 15,
+   "motbin_damage": 13,
+   "mvl_row": 33,
+   "mvl_name": "Low Kick",
+   "mvl_notation": "d+4",
+   "motbin_candidates": [
+    {
+     "id": 162,
+     "name": "Co_Dwn_rk00",
+     "anim": "Tco_PSdwrkA(DVD)",
+     "anim_id": 33038
+    },
+    {
+     "id": 171,
+     "name": "Co_AokirkL0",
+     "anim": "naco_aotmk1(DVD)",
+     "anim_id": 33047
+    },
+    {
+     "id": 1788,
+     "name": "Bx_t_srk",
+     "anim": "nabx_2rk(DVD)",
+     "anim_id": 16839
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 455,
+    "rel_offset": 2870372,
+    "size": 2608,
+    "format_word": 100,
+    "sha256": "f610cd3f6f7246facbe185c0ff4bf55f874eeda47d0649cffbc16eb6212d1771",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "b+2__main",
+   "wh_name": "Move b+2 (b+2)",
+   "wh_input": "b+2",
+   "t7_id": "bryan_145",
+   "t7_notation": "b+2",
+   "status": "mapped",
+   "motbin_move_id": 1722,
+   "motbin_move_name": "Bx_back_RP",
+   "anim_name": "mbbx_4rp(DVD)",
+   "anim_id": 16738,
+   "bank_index": 354,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 17,
+   "motbin_damage": 18,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1722,
+     "name": "Bx_back_RP",
+     "anim": "mbbx_4rp(DVD)",
+     "anim_id": 16738
+    },
+    {
+     "id": 1739,
+     "name": "Bx_hit_RP",
+     "anim": "mbbx_strp(DVD)",
+     "anim_id": 16800
+    },
+    {
+     "id": 1838,
+     "name": "Bx_Sway_RP",
+     "anim": "isbx_blow(DVD)",
+     "anim_id": 16866
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 354,
+    "rel_offset": 2662904,
+    "size": 3032,
+    "format_word": 100,
+    "sha256": "cd9295bcbcb4ada59043a3c2c6c0c0e8e181715bac36e2f9c4b1a4a583138559",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "b+4__main",
+   "wh_name": "Knee Break",
+   "wh_input": "b+4",
+   "t7_id": "bryan_177",
+   "t7_notation": "b+4",
+   "status": "mapped",
+   "motbin_move_id": 1661,
+   "motbin_move_name": "Bx_shk1",
+   "anim_name": "kobx_4rk(DVD)",
+   "anim_id": 16748,
+   "bank_index": 364,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation b+4"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 16,
+   "motbin_damage": 18,
+   "mvl_row": 51,
+   "mvl_name": "Knee Break",
+   "mvl_notation": "b+4",
+   "motbin_candidates": [
+    {
+     "id": 1660,
+     "name": "Bx_rk00D_B",
+     "anim": "Imt_dmkeri(DVD)",
+     "anim_id": 16747
+    },
+    {
+     "id": 1661,
+     "name": "Bx_shk1",
+     "anim": "kobx_4rk(DVD)",
+     "anim_id": 16748
+    },
+    {
+     "id": 1841,
+     "name": "Bx_Sway_RK",
+     "anim": "bxod_s4_sway_rk",
+     "anim_id": 109
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 364,
+    "rel_offset": 2686440,
+    "size": 3120,
+    "format_word": 100,
+    "sha256": "362f2cd08c2bae202a346d53988bac6801bce4900e85adc5620cee3824670d43",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "1+2_t8",
+   "wh_name": "Move 1+2 (1+2)",
+   "wh_input": "1+2",
+   "t7_id": "bryan_81",
+   "t7_notation": "1+2",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "motbin graph candidate exists but no MVL corroboration and/or non-unique \u2014 held as unmapped per no-guess rule",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 62,
+     "name": "Co_runchop",
+     "anim": "Bco_PSrunchop(DVD)",
+     "anim_id": 32817
+    },
+    {
+     "id": 186,
+     "name": "Co_Fcross",
+     "anim": "Mco_fc02xg(DVD)",
+     "anim_id": 33062
+    },
+    {
+     "id": 187,
+     "name": "Co_Bcross",
+     "anim": "Mco_fcs(DVD)",
+     "anim_id": 33063
+    },
+    {
+     "id": 1506,
+     "name": "Co_jplp00",
+     "anim": "Bco_sjplp_n(DVD)",
+     "anim_id": 16630
+    },
+    {
+     "id": 1507,
+     "name": "Co_jplp00F",
+     "anim": "Bco_sjplp_n(DVD)",
+     "anim_id": 16630
+    },
+    {
+     "id": 1573,
+     "name": "Bx_lrp00",
+     "anim": "ambx_wp(DVD)",
+     "anim_id": 16688
+    },
+    {
+     "id": 1586,
+     "name": "Bx_haradadaP",
+     "anim": "ozbx_matrlp_a(DVD)",
+     "anim_id": 16690
+    },
+    {
+     "id": 1694,
+     "name": "Co_s_tlp00",
+     "anim": "Bco_stlp00(DVD)",
+     "anim_id": 32877
+    },
+    {
+     "id": 1855,
+     "name": "Bx_hiziex",
+     "anim": "nabx_wp2hiji(DVD)",
+     "anim_id": 16874
+    },
+    {
+     "id": 1860,
+     "name": "Bx_smklrp",
+     "anim": "nobx_tataki(DVD)",
+     "anim_id": 16879
+    }
+   ]
+  },
+  {
+   "wh_key": "1,2",
+   "wh_name": "Left Right Combo",
+   "wh_input": "1,2",
+   "t7_id": "bryan_3",
+   "t7_notation": "1, 2",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1771, 'Bx_lp00_2FC', 16826), (1770, 'Bx_lp00_3F', 16826), (1769, 'Bx_lp00_2F', 16687)]",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1591,
+     "name": "Bx_haradada_04",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1593,
+     "name": "Bx_haradada_06",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1595,
+     "name": "Bx_haradada_08",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1597,
+     "name": "Bx_haradada_10",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1607,
+     "name": "Bx_haradada_14SP",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1609,
+     "name": "Bx_haradada_16SP",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1611,
+     "name": "Bx_haradada_18SP",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1613,
+     "name": "Bx_haradada_20SP",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1615,
+     "name": "Bx_yasufinish",
+     "anim": "mbbx_machp(DVD)",
+     "anim_id": 16717
+    },
+    {
+     "id": 1657,
+     "name": "Bx_rk00F",
+     "anim": "kobx_skh30(DVD)",
+     "anim_id": 16745
+    },
+    {
+     "id": 1719,
+     "name": "Bx_super2RP",
+     "anim": "mbbx_4rplprp(DVD)",
+     "anim_id": 16783
+    },
+    {
+     "id": 1769,
+     "name": "Bx_lp00_2F",
+     "anim": "mbbx_lp(DVD)",
+     "anim_id": 16687
+    },
+    {
+     "id": 1770,
+     "name": "Bx_lp00_3F",
+     "anim": "ygbx_lprp(DVD)",
+     "anim_id": 16826
+    },
+    {
+     "id": 1771,
+     "name": "Bx_lp00_2FC",
+     "anim": "ygbx_lprp(DVD)",
+     "anim_id": 16826
+    },
+    {
+     "id": 1778,
+     "name": "Bx_lp00_5F",
+     "anim": "nabx_lkrplp2rp(DVD)",
+     "anim_id": 16832
+    },
+    {
+     "id": 1872,
+     "name": "Bx_10hit_04",
+     "anim": "Bbr_fslprp(DVD)",
+     "anim_id": 16888
+    }
+   ]
+  },
+  {
+   "wh_key": "1+2,1",
+   "wh_name": "Snake Bite",
+   "wh_input": "1+2,1",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1575,
+   "motbin_move_name": "Bx_lrplp",
+   "anim_name": "bxkw_s4_wplp",
+   "anim_id": 101,
+   "bank_index": 101,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation 1+2,1"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x0",
+   "motbin_startup": 23,
+   "motbin_damage": 16,
+   "mvl_row": 17,
+   "mvl_name": "Snake Bite",
+   "mvl_notation": "1+2,1",
+   "motbin_candidates": [
+    {
+     "id": 1575,
+     "name": "Bx_lrplp",
+     "anim": "bxkw_s4_wplp",
+     "anim_id": 101
+    }
+   ],
+   "clip": {
+    "status": "bank0-file-not-located",
+    "bank": "0x0000",
+    "entry": 101
+   }
+  },
+  {
+   "wh_key": "1,2,1",
+   "wh_name": "One Two Body Blow",
+   "wh_input": "1,2,1",
+   "t7_id": "bryan_5",
+   "t7_notation": "1, 2, 1",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1775, 'Bx_lprplp', 16831), (1772, 'Bx_lprplpRs', 16826)]",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": 2,
+   "mvl_name": "One Two Body Blow",
+   "mvl_notation": "1,2,1",
+   "motbin_candidates": [
+    {
+     "id": 1592,
+     "name": "Bx_haradada_05",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1594,
+     "name": "Bx_haradada_07",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1596,
+     "name": "Bx_haradada_09",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1598,
+     "name": "Bx_haradada_10SP",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1599,
+     "name": "Bx_haradada_11",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1608,
+     "name": "Bx_haradada_15SP",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1610,
+     "name": "Bx_haradada_17SP",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1612,
+     "name": "Bx_haradada_19SP",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1614,
+     "name": "Bx_haradada_21SP",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1659,
+     "name": "Bx_6rklp",
+     "anim": "kobx_skh2sage20(DVD)",
+     "anim_id": 16746
+    },
+    {
+     "id": 1772,
+     "name": "Bx_lprplpRs",
+     "anim": "ygbx_lprp(DVD)",
+     "anim_id": 16826
+    },
+    {
+     "id": 1775,
+     "name": "Bx_lprplp",
+     "anim": "kobx_12bdy(DVD)",
+     "anim_id": 16831
+    },
+    {
+     "id": 1873,
+     "name": "Bx_10hit_05",
+     "anim": "Hbr_ju04_05(DVD)",
+     "anim_id": 16889
+    }
+   ]
+  },
+  {
+   "wh_key": "1+2,2",
+   "wh_name": "Snake Pit",
+   "wh_input": "1+2,2",
+   "t7_id": "bryan_82",
+   "t7_notation": "1+2, 2",
+   "status": "mapped",
+   "motbin_move_id": 1574,
+   "motbin_move_name": "Bx_lrprp",
+   "anim_name": "nabx_wp2rp(DVD)",
+   "anim_id": 16689,
+   "bank_index": 305,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation 1+2,2"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 26,
+   "motbin_damage": 20,
+   "mvl_row": 18,
+   "mvl_name": "Snake Pit",
+   "mvl_notation": "1+2,2",
+   "motbin_candidates": [
+    {
+     "id": 1574,
+     "name": "Bx_lrprp",
+     "anim": "nabx_wp2rp(DVD)",
+     "anim_id": 16689
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 305,
+    "rel_offset": 2616480,
+    "size": 3564,
+    "format_word": 100,
+    "sha256": "9ad8c0feb66a65e0d181aa090278dddd9b083577c1132a7f189b65afb6a3d855",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "1,2,3",
+   "wh_name": "One Two Low Kick",
+   "wh_input": "1,2,3",
+   "t7_id": "bryan_8",
+   "t7_notation": "1, 2, 3",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1773, 'Bx_lprplk00Rs', 16826), (1707, 'Bx_lprplk00', 16774)]",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": 3,
+   "mvl_name": "One Two Low Kick",
+   "mvl_notation": "1,2,3",
+   "motbin_candidates": [
+    {
+     "id": 1707,
+     "name": "Bx_lprplk00",
+     "anim": "mbbx_lprplk_01(DVD)",
+     "anim_id": 16774
+    },
+    {
+     "id": 1773,
+     "name": "Bx_lprplk00Rs",
+     "anim": "ygbx_lprp(DVD)",
+     "anim_id": 16826
+    }
+   ]
+  },
+  {
+   "wh_key": "1,2,4",
+   "wh_name": "One Two Neck Breaker",
+   "wh_input": "1,2,4",
+   "t7_id": "bryan_11",
+   "t7_notation": "1, 2, 4",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1774, 'Bx_lprkRs', 16826), (1708, 'Bx_lprk', 16775)]",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1708,
+     "name": "Bx_lprk",
+     "anim": "kobx_12spnrk(DVD)",
+     "anim_id": 16775
+    },
+    {
+     "id": 1774,
+     "name": "Bx_lprkRs",
+     "anim": "ygbx_lprp(DVD)",
+     "anim_id": 16826
+    }
+   ]
+  },
+  {
+   "wh_key": "1+3+4",
+   "wh_name": "Taunt",
+   "wh_input": "1+3+4",
+   "t7_id": "bryan_250",
+   "t7_notation": "1+3+4",
+   "status": "mapped",
+   "motbin_move_id": 1451,
+   "motbin_move_name": "Bx_sFUN00E",
+   "anim_name": "chou0b(DVD)",
+   "anim_id": 32891,
+   "bank_index": 123,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 3 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation 1+3+4"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x8000",
+   "motbin_startup": null,
+   "motbin_damage": 0,
+   "mvl_row": 80,
+   "mvl_name": "Taunt",
+   "mvl_notation": "1+3+4",
+   "motbin_candidates": [
+    {
+     "id": 1451,
+     "name": "Bx_sFUN00E",
+     "anim": "chou0b(DVD)",
+     "anim_id": 32891
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x8000",
+    "source": "common.arc",
+    "section": 0,
+    "entry": 123,
+    "rel_offset": 684456,
+    "size": 6796,
+    "format_word": 100,
+    "sha256": "72b4c2479311982af06d18c2780136483051e21ff92c2dfd7691aed291bd1d8b",
+    "blob_file": "common_clips.bin"
+   }
+  },
+  {
+   "wh_key": "1,4",
+   "wh_name": "Jab (4)",
+   "wh_input": "1,4",
+   "t7_id": "bryan_14",
+   "t7_notation": "1, 4",
+   "status": "mapped",
+   "motbin_move_id": 1796,
+   "motbin_move_name": "Bx_rprk_00",
+   "anim_name": "nabx_lp2rk(DVD)",
+   "anim_id": 16847,
+   "bank_index": 463,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 15,
+   "motbin_damage": 14,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1602,
+     "name": "Bx_harafinish",
+     "anim": "ozbx_matrlp_f(DVD)",
+     "anim_id": 16704
+    },
+    {
+     "id": 1633,
+     "name": "Bx_6rplprkRs",
+     "anim": "nabx_6rp(DVD)",
+     "anim_id": 16729
+    },
+    {
+     "id": 1635,
+     "name": "Bx_6rplprkRs2",
+     "anim": "nabx_6rplp(DVD)",
+     "anim_id": 16733
+    },
+    {
+     "id": 1636,
+     "name": "Bx_6rplprk",
+     "anim": "nabx_6rplprk(DVD)",
+     "anim_id": 16735
+    },
+    {
+     "id": 1643,
+     "name": "Bx_New_04",
+     "anim": "ikbx_4rplp_rk(DVD)",
+     "anim_id": 16740
+    },
+    {
+     "id": 1787,
+     "name": "Bx_GatGun04",
+     "anim": "nabx_lkrplp2rk(DVD)",
+     "anim_id": 16838
+    },
+    {
+     "id": 1791,
+     "name": "Bx_4RPLPRK",
+     "anim": "ikbx_4rplp_rk(DVD)",
+     "anim_id": 16740
+    },
+    {
+     "id": 1796,
+     "name": "Bx_rprk_00",
+     "anim": "nabx_lp2rk(DVD)",
+     "anim_id": 16847
+    },
+    {
+     "id": 1874,
+     "name": "Bx_10hit_06",
+     "anim": "nabx_lp2rk(DVD)",
+     "anim_id": 16847
+    },
+    {
+     "id": 1877,
+     "name": "Bx_10hit_09",
+     "anim": "ikbx_4rplp_rk(DVD)",
+     "anim_id": 16740
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 463,
+    "rel_offset": 2886540,
+    "size": 2892,
+    "format_word": 100,
+    "sha256": "cdbb5a7d352741b5a1de1ca184b7a50349360c01dd2059629ada80df0c1ae030",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "1,4,2",
+   "wh_name": "Jab (2)",
+   "wh_input": "1,4,2",
+   "t7_id": "bryan_16",
+   "t7_notation": "1, 4, 2",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1731, 'Bx_rkbRP00', 16795), (1728, 'Bx_rkbRP_3', 16792)]",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1644,
+     "name": "Bx_New_05Rv",
+     "anim": "ikbx_4rplp_rk(DVD)",
+     "anim_id": 16740
+    },
+    {
+     "id": 1657,
+     "name": "Bx_rk00F",
+     "anim": "kobx_skh30(DVD)",
+     "anim_id": 16745
+    },
+    {
+     "id": 1728,
+     "name": "Bx_rkbRP_3",
+     "anim": "mbbx_lprkrp(DVD)",
+     "anim_id": 16792
+    },
+    {
+     "id": 1731,
+     "name": "Bx_rkbRP00",
+     "anim": "mbbx_lprkrp_delay(DVD)",
+     "anim_id": 16795
+    },
+    {
+     "id": 1875,
+     "name": "Bx_10hit_07",
+     "anim": "mbbx_lprkrp(DVD)",
+     "anim_id": 16792
+    },
+    {
+     "id": 1878,
+     "name": "Bx_10hit_10",
+     "anim": "mbbx_machp(DVD)",
+     "anim_id": 16717
+    }
+   ]
+  },
+  {
+   "wh_key": "1,4,2,1",
+   "wh_name": "Jab (1)",
+   "wh_input": "1,4,2,1",
+   "t7_id": "bryan_19",
+   "t7_notation": "1, 4, 2, 1",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1732, 'Bx_rkbRP_3_R_Ad', 16795), (1729, 'Bx_rkbRP_3_R_A', 16792), (1727, 'Bx_back_RP2', 16739)]",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1659,
+     "name": "Bx_6rklp",
+     "anim": "kobx_skh2sage20(DVD)",
+     "anim_id": 16746
+    },
+    {
+     "id": 1727,
+     "name": "Bx_back_RP2",
+     "anim": "mbbx_4rplp(DVD)",
+     "anim_id": 16739
+    },
+    {
+     "id": 1729,
+     "name": "Bx_rkbRP_3_R_A",
+     "anim": "mbbx_lprkrp(DVD)",
+     "anim_id": 16792
+    },
+    {
+     "id": 1732,
+     "name": "Bx_rkbRP_3_R_Ad",
+     "anim": "mbbx_lprkrp_delay(DVD)",
+     "anim_id": 16795
+    },
+    {
+     "id": 1876,
+     "name": "Bx_10hit_08",
+     "anim": "mbbx_4rplp(DVD)",
+     "anim_id": 16739
+    }
+   ]
+  },
+  {
+   "wh_key": "1,4,2,1,2",
+   "wh_name": "Lair's Dance",
+   "wh_input": "1,4,2,1,2",
+   "t7_id": "bryan_25",
+   "t7_notation": "1, 4, 2, 1, 2",
+   "status": "mapped",
+   "motbin_move_id": 1719,
+   "motbin_move_name": "Bx_super2RP",
+   "anim_name": "mbbx_4rplprp(DVD)",
+   "anim_id": 16783,
+   "bank_index": 399,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation 1,4,2,1,2"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 24,
+   "motbin_damage": 22,
+   "mvl_row": 5,
+   "mvl_name": "Lair's Dance",
+   "mvl_notation": "1,4,2,1,2",
+   "motbin_candidates": [
+    {
+     "id": 1657,
+     "name": "Bx_rk00F",
+     "anim": "kobx_skh30(DVD)",
+     "anim_id": 16745
+    },
+    {
+     "id": 1719,
+     "name": "Bx_super2RP",
+     "anim": "mbbx_4rplprp(DVD)",
+     "anim_id": 16783
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 399,
+    "rel_offset": 2755596,
+    "size": 3740,
+    "format_word": 100,
+    "sha256": "b17d063d07780c3eebc05f8646277f9f952023aa568173c111d3b179be77b7ce",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "1,4,2,1,4",
+   "wh_name": "Cremation",
+   "wh_input": "1,4,2,1,4",
+   "t7_id": "bryan_30",
+   "t7_notation": "1, 4, 2, 1, 4",
+   "status": "mapped",
+   "motbin_move_id": 1791,
+   "motbin_move_name": "Bx_4RPLPRK",
+   "anim_name": "ikbx_4rplp_rk(DVD)",
+   "anim_id": 16740,
+   "bank_index": 356,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation 1,4,2,1,4"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 30,
+   "motbin_damage": 21,
+   "mvl_row": 7,
+   "mvl_name": "Cremation",
+   "mvl_notation": "1,4,2,1,4",
+   "motbin_candidates": [
+    {
+     "id": 1791,
+     "name": "Bx_4RPLPRK",
+     "anim": "ikbx_4rplp_rk(DVD)",
+     "anim_id": 16740
+    },
+    {
+     "id": 1877,
+     "name": "Bx_10hit_09",
+     "anim": "ikbx_4rplp_rk(DVD)",
+     "anim_id": 16740
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 356,
+    "rel_offset": 2669032,
+    "size": 3924,
+    "format_word": 100,
+    "sha256": "ff73906b85e12af8d61a6d753c380d7c94ce5ff5d62ce9411e2332f3864d41ba",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "1,4,2,4",
+   "wh_name": "Whipping Fury",
+   "wh_input": "1,4,2,4",
+   "t7_id": "bryan_35",
+   "t7_notation": "1, 4, 2, 4",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1790, 'Bx_4RPRK', 16841), (1733, 'Bx_rkbRP_3_R_Dd', 16795), (1730, 'Bx_rkbRP_3_R_D', 16792)]",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": 6,
+   "mvl_name": "Whipping Fury",
+   "mvl_notation": "1,4,2,4",
+   "motbin_candidates": [
+    {
+     "id": 1730,
+     "name": "Bx_rkbRP_3_R_D",
+     "anim": "mbbx_lprkrp(DVD)",
+     "anim_id": 16792
+    },
+    {
+     "id": 1733,
+     "name": "Bx_rkbRP_3_R_Dd",
+     "anim": "mbbx_lprkrp_delay(DVD)",
+     "anim_id": 16795
+    },
+    {
+     "id": 1790,
+     "name": "Bx_4RPRK",
+     "anim": "nabx_4rprk(DVD)",
+     "anim_id": 16841
+    }
+   ]
+  },
+  {
+   "wh_key": "1,4,3",
+   "wh_name": "Double Spin Kick",
+   "wh_input": "1,4,3",
+   "t7_id": "bryan_39",
+   "t7_notation": "1, 4, 3",
+   "status": "mapped",
+   "motbin_move_id": 1797,
+   "motbin_move_name": "Bx_rklk_00",
+   "anim_name": "nabx_lprk2lk(DVD)",
+   "anim_id": 16848,
+   "bank_index": 464,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 21,
+   "motbin_damage": 15,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1797,
+     "name": "Bx_rklk_00",
+     "anim": "nabx_lprk2lk(DVD)",
+     "anim_id": 16848
+    },
+    {
+     "id": 1879,
+     "name": "Bx_10hit_07_2",
+     "anim": "nabx_lprk2lk(DVD)",
+     "anim_id": 16848
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 464,
+    "rel_offset": 2889432,
+    "size": 2964,
+    "format_word": 100,
+    "sha256": "3df3c8fc2d98046d6b4033b05190060b7999a72a87fe653b1736e0f7e04eef72",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "1,4,3,3",
+   "wh_name": "Running Blind",
+   "wh_input": "1,4,3,3",
+   "t7_id": "bryan_42",
+   "t7_notation": "1, 4, 3, 3",
+   "status": "mapped",
+   "motbin_move_id": 1811,
+   "motbin_move_name": "Bx_midLK_LK",
+   "anim_name": "nabx_lprklk2lk(DVD)",
+   "anim_id": 16853,
+   "bank_index": 469,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation 1,4,3,3"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 23,
+   "motbin_damage": 18,
+   "mvl_row": 9,
+   "mvl_name": "Running Blind",
+   "mvl_notation": "1,4,3,3",
+   "motbin_candidates": [
+    {
+     "id": 1811,
+     "name": "Bx_midLK_LK",
+     "anim": "nabx_lprklk2lk(DVD)",
+     "anim_id": 16853
+    },
+    {
+     "id": 1880,
+     "name": "Bx_10hit_08_2",
+     "anim": "nabx_lprklk2lk(DVD)",
+     "anim_id": 16853
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 469,
+    "rel_offset": 2903996,
+    "size": 3084,
+    "format_word": 100,
+    "sha256": "140355fbd63280351c0c08ed833bb57fbb22fe2ed742d6b447109c79ceee1683",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "2,3",
+   "wh_name": "PK Combination",
+   "wh_input": "2,3",
+   "t7_id": "bryan_47",
+   "t7_notation": "2, 3",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1619, 'Bx_rplkC', 16720), (1618, 'Bx_rplk', 16720), (1617, 'Bx_rp00R', 16718)]",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": 10,
+   "mvl_name": "PK Combination",
+   "mvl_notation": "2,3",
+   "motbin_candidates": [
+    {
+     "id": 1617,
+     "name": "Bx_rp00R",
+     "anim": "ygbx_rp00(DVD)",
+     "anim_id": 16718
+    },
+    {
+     "id": 1618,
+     "name": "Bx_rplk",
+     "anim": "bru_rk2xg(DVD)",
+     "anim_id": 16720
+    },
+    {
+     "id": 1619,
+     "name": "Bx_rplkC",
+     "anim": "bru_rk2xg(DVD)",
+     "anim_id": 16720
+    },
+    {
+     "id": 1707,
+     "name": "Bx_lprplk00",
+     "anim": "mbbx_lprplk_01(DVD)",
+     "anim_id": 16774
+    },
+    {
+     "id": 1735,
+     "name": "Bx_sideRPLK",
+     "anim": "mbbx_bx2kamlk(DVD)",
+     "anim_id": 16799
+    },
+    {
+     "id": 1773,
+     "name": "Bx_lprplk00Rs",
+     "anim": "ygbx_lprp(DVD)",
+     "anim_id": 16826
+    }
+   ]
+  },
+  {
+   "wh_key": "3,2",
+   "wh_name": "Mid Kick (2)",
+   "wh_input": "3,2",
+   "t7_id": "bryan_50",
+   "t7_notation": "3, 2",
+   "status": "mapped",
+   "motbin_move_id": 1763,
+   "motbin_move_name": "Bx_GatGun02",
+   "anim_name": "nabx_lk2rp(DVD)",
+   "anim_id": 16819,
+   "bank_index": 435,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 22,
+   "motbin_damage": 11,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1657,
+     "name": "Bx_rk00F",
+     "anim": "kobx_skh30(DVD)",
+     "anim_id": 16745
+    },
+    {
+     "id": 1763,
+     "name": "Bx_GatGun02",
+     "anim": "nabx_lk2rp(DVD)",
+     "anim_id": 16819
+    },
+    {
+     "id": 1862,
+     "name": "Bx_smkup",
+     "anim": "nobx_stpmup(DVD)",
+     "anim_id": 16881
+    },
+    {
+     "id": 1881,
+     "name": "Bx_10hit_09_2",
+     "anim": "nobx_stpmup(DVD)",
+     "anim_id": 16881
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 435,
+    "rel_offset": 2829664,
+    "size": 2872,
+    "format_word": 100,
+    "sha256": "cbac7532eea7850966fb55c8f5930ebb4a27747f5bb7f11bf2adfc1cc7a530c1",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "3,2,1",
+   "wh_name": "Mid Kick (1)",
+   "wh_input": "3,2,1",
+   "t7_id": "bryan_52",
+   "t7_notation": "3, 2, 1",
+   "status": "mapped",
+   "motbin_move_id": 1764,
+   "motbin_move_name": "Bx_GatGun03",
+   "anim_name": "nabx_lkrp2lp(DVD)",
+   "anim_id": 16820,
+   "bank_index": 436,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 20,
+   "motbin_damage": 10,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1659,
+     "name": "Bx_6rklp",
+     "anim": "kobx_skh2sage20(DVD)",
+     "anim_id": 16746
+    },
+    {
+     "id": 1764,
+     "name": "Bx_GatGun03",
+     "anim": "nabx_lkrp2lp(DVD)",
+     "anim_id": 16820
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 436,
+    "rel_offset": 2832536,
+    "size": 2896,
+    "format_word": 100,
+    "sha256": "e2f5f8110d6e3bdd54377df6fe562899772118be5d3c2b9490bff8d2adf95f2e",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "3,2,1,2",
+   "wh_name": "Rush",
+   "wh_input": "3,2,1,2",
+   "t7_id": "bryan_55",
+   "t7_notation": "3, 2, 1, 2",
+   "status": "mapped",
+   "motbin_move_id": 1778,
+   "motbin_move_name": "Bx_lp00_5F",
+   "anim_name": "nabx_lkrplp2rp(DVD)",
+   "anim_id": 16832,
+   "bank_index": 448,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 19,
+   "motbin_damage": 14,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1657,
+     "name": "Bx_rk00F",
+     "anim": "kobx_skh30(DVD)",
+     "anim_id": 16745
+    },
+    {
+     "id": 1778,
+     "name": "Bx_lp00_5F",
+     "anim": "nabx_lkrplp2rp(DVD)",
+     "anim_id": 16832
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 448,
+    "rel_offset": 2845556,
+    "size": 2984,
+    "format_word": 100,
+    "sha256": "4974bfb99a926a5b33da721863541ac20972e43697e97f0071788927ab4b999b",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "3,2,1,4",
+   "wh_name": "Gatling Combination",
+   "wh_input": "3,2,1,4",
+   "t7_id": "bryan_59",
+   "t7_notation": "3, 2, 1, 4",
+   "status": "mapped",
+   "motbin_move_id": 1787,
+   "motbin_move_name": "Bx_GatGun04",
+   "anim_name": "nabx_lkrplp2rk(DVD)",
+   "anim_id": 16838,
+   "bank_index": 454,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation 3,2,1,4"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 22,
+   "motbin_damage": 12,
+   "mvl_row": 12,
+   "mvl_name": "Gatling Combination",
+   "mvl_notation": "3,2,1,4",
+   "motbin_candidates": [
+    {
+     "id": 1787,
+     "name": "Bx_GatGun04",
+     "anim": "nabx_lkrplp2rk(DVD)",
+     "anim_id": 16838
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 454,
+    "rel_offset": 2867356,
+    "size": 3016,
+    "format_word": 100,
+    "sha256": "d052d45dc468ac1e7532aef28d7a85daf2044187e530c08b4c7368c943564601",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "3,3",
+   "wh_name": "Mid Kick (3)",
+   "wh_input": "3,3",
+   "t7_id": "bryan_63",
+   "t7_notation": "3, 3",
+   "status": "mapped",
+   "motbin_move_id": 1820,
+   "motbin_move_name": "Bx_LK_LK",
+   "anim_name": "nabx_lk2lk(DVD)",
+   "anim_id": 16854,
+   "bank_index": 470,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 23,
+   "motbin_damage": 13,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1811,
+     "name": "Bx_midLK_LK",
+     "anim": "nabx_lprklk2lk(DVD)",
+     "anim_id": 16853
+    },
+    {
+     "id": 1820,
+     "name": "Bx_LK_LK",
+     "anim": "nabx_lk2lk(DVD)",
+     "anim_id": 16854
+    },
+    {
+     "id": 1880,
+     "name": "Bx_10hit_08_2",
+     "anim": "nabx_lprklk2lk(DVD)",
+     "anim_id": 16853
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 470,
+    "rel_offset": 2907080,
+    "size": 3088,
+    "format_word": 100,
+    "sha256": "d06620f71da86998a161246605688f58dc5b5622ac25c0eabc6043fc2b230257",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "3,3,2",
+   "wh_name": "Anaconda Bite",
+   "wh_input": "3,3,2",
+   "t7_id": "bryan_65",
+   "t7_notation": "3, 3, 2",
+   "status": "mapped",
+   "motbin_move_id": 1862,
+   "motbin_move_name": "Bx_smkup",
+   "anim_name": "nobx_stpmup(DVD)",
+   "anim_id": 16881,
+   "bank_index": 497,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation 3,3,2"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 22,
+   "motbin_damage": 20,
+   "mvl_row": 13,
+   "mvl_name": "Anaconda Bite",
+   "mvl_notation": "3,3,2",
+   "motbin_candidates": [
+    {
+     "id": 1657,
+     "name": "Bx_rk00F",
+     "anim": "kobx_skh30(DVD)",
+     "anim_id": 16745
+    },
+    {
+     "id": 1862,
+     "name": "Bx_smkup",
+     "anim": "nobx_stpmup(DVD)",
+     "anim_id": 16881
+    },
+    {
+     "id": 1881,
+     "name": "Bx_10hit_09_2",
+     "anim": "nobx_stpmup(DVD)",
+     "anim_id": 16881
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 497,
+    "rel_offset": 2974552,
+    "size": 3624,
+    "format_word": 100,
+    "sha256": "2f1c2e534ceb6184fa5c786119a5417ccf04228de03f55f947357600f95f6137",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "3,3,4",
+   "wh_name": "Anaconda Rage",
+   "wh_input": "3,3,4",
+   "t7_id": "bryan_68",
+   "t7_notation": "3, 3, 4",
+   "status": "mapped",
+   "motbin_move_id": 1863,
+   "motbin_move_name": "Bx_smklrk",
+   "anim_name": "nabx_lkk2mach(DVD)",
+   "anim_id": 16882,
+   "bank_index": 498,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation 3,3,4"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 28,
+   "motbin_damage": 25,
+   "mvl_row": 14,
+   "mvl_name": "Anaconda Rage",
+   "mvl_notation": "3,3,4",
+   "motbin_candidates": [
+    {
+     "id": 1863,
+     "name": "Bx_smklrk",
+     "anim": "nabx_lkk2mach(DVD)",
+     "anim_id": 16882
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 498,
+    "rel_offset": 2978176,
+    "size": 3992,
+    "format_word": 100,
+    "sha256": "37d515e82bcd7de63f0e22e0364d451c176d91a4dc0ca2a979e895b63eff5984",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "3+4",
+   "wh_name": "Middle Side Kick",
+   "wh_input": "3+4",
+   "t7_id": "bryan_84",
+   "t7_notation": "3+4",
+   "status": "mapped",
+   "motbin_move_id": 1629,
+   "motbin_move_name": "Bx_lk2",
+   "anim_name": "bxss_wk(DVD)",
+   "anim_id": 16728,
+   "bank_index": 344,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: 2 terminals at tier 0 with distinct anims; unique top combined score 5: chain rooted at dispatcher/movement move sRUN__00F; GROUP-rooted chain"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 18,
+   "motbin_damage": 20,
+   "mvl_row": 19,
+   "mvl_name": "Middle Side Kick",
+   "mvl_notation": "3+4",
+   "motbin_candidates": [
+    {
+     "id": 188,
+     "name": "Co_Rol_lrk",
+     "anim": "Mco_grshoper(DVD)",
+     "anim_id": 16400
+    },
+    {
+     "id": 1528,
+     "name": "Co_jplk00",
+     "anim": "sjprki10(DVD)",
+     "anim_id": 16652
+    },
+    {
+     "id": 1529,
+     "name": "Co_jplk00F",
+     "anim": "sjprki10(DVD)",
+     "anim_id": 16652
+    },
+    {
+     "id": 1530,
+     "name": "Co_jplk00B",
+     "anim": "mbbx_sky7lk(DVD)",
+     "anim_id": 16654
+    },
+    {
+     "id": 1627,
+     "name": "Co_R_lk00L",
+     "anim": "naco_lfurik(DVD)",
+     "anim_id": 16727
+    },
+    {
+     "id": 1629,
+     "name": "Bx_lk2",
+     "anim": "bxss_wk(DVD)",
+     "anim_id": 16728
+    },
+    {
+     "id": 1670,
+     "name": "Co_R_clk00L",
+     "anim": "naco_sylrk1(DVD)",
+     "anim_id": 32811
+    },
+    {
+     "id": 1680,
+     "name": "Bx_t_slrk",
+     "anim": "mbbx_2wk(DVD)",
+     "anim_id": 16759
+    },
+    {
+     "id": 1696,
+     "name": "Co_s_tlk00",
+     "anim": "Eco_PSnew_strk(DVD)",
+     "anim_id": 16769
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 344,
+    "rel_offset": 2650412,
+    "size": 4236,
+    "format_word": 100,
+    "sha256": "505adc48d1ba3bf639a8402bfaefbc9d24a79d3790bdb69971ed7235c3dce9b4",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "4,3",
+   "wh_name": "Move 3 (3)",
+   "wh_input": "4,3",
+   "t7_id": "bryan_72",
+   "t7_notation": "4, 3",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1821, 'Bx_hiRK_LK', 16855), (1629, 'Bx_lk2', 16728), (1626, 'Bx_hiRK_LKrv', 104)]",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 188,
+     "name": "Co_Rol_lrk",
+     "anim": "Mco_grshoper(DVD)",
+     "anim_id": 16400
+    },
+    {
+     "id": 1626,
+     "name": "Bx_hiRK_LKrv",
+     "anim": "bxod_s4_rk",
+     "anim_id": 104
+    },
+    {
+     "id": 1629,
+     "name": "Bx_lk2",
+     "anim": "bxss_wk(DVD)",
+     "anim_id": 16728
+    },
+    {
+     "id": 1797,
+     "name": "Bx_rklk_00",
+     "anim": "nabx_lprk2lk(DVD)",
+     "anim_id": 16848
+    },
+    {
+     "id": 1821,
+     "name": "Bx_hiRK_LK",
+     "anim": "mbbx_rklk01(DVD)",
+     "anim_id": 16855
+    },
+    {
+     "id": 1879,
+     "name": "Bx_10hit_07_2",
+     "anim": "nabx_lprk2lk(DVD)",
+     "anim_id": 16848
+    }
+   ]
+  },
+  {
+   "wh_key": "4,3,4",
+   "wh_name": "Double Spin Tomahawk",
+   "wh_input": "4,3,4",
+   "t7_id": "bryan_74",
+   "t7_notation": "4, 3, 4",
+   "status": "mapped",
+   "motbin_move_id": 1823,
+   "motbin_move_name": "Bx_midco_RK",
+   "anim_name": "mbbx_rklkrk(DVD)",
+   "anim_id": 16857,
+   "bank_index": 473,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation 4,3,4"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 25,
+   "motbin_damage": 16,
+   "mvl_row": 15,
+   "mvl_name": "Double Spin Tomahawk",
+   "mvl_notation": "4,3,4",
+   "motbin_candidates": [
+    {
+     "id": 1823,
+     "name": "Bx_midco_RK",
+     "anim": "mbbx_rklkrk(DVD)",
+     "anim_id": 16857
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 473,
+    "rel_offset": 2913372,
+    "size": 3932,
+    "format_word": 100,
+    "sha256": "dd6aa8eaff40853a4d2a65544ea82ef10f46697753d6a207b9c72c6319d9f632",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "4,3,4*",
+   "wh_name": "Double Spin Tomahawk (Hold)",
+   "wh_input": "4,3,4*",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1823,
+   "motbin_move_name": "Bx_midco_RK",
+   "anim_name": "mbbx_rklkrk(DVD)",
+   "anim_id": 16857,
+   "bank_index": 473,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH input (no t7_notation in WH data)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 25,
+   "motbin_damage": 16,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1823,
+     "name": "Bx_midco_RK",
+     "anim": "mbbx_rklkrk(DVD)",
+     "anim_id": 16857
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 473,
+    "rel_offset": 2913372,
+    "size": 3932,
+    "format_word": 100,
+    "sha256": "dd6aa8eaff40853a4d2a65544ea82ef10f46697753d6a207b9c72c6319d9f632",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "4,3,f+4",
+   "wh_name": "Triple Spin Kick",
+   "wh_input": "4,3,f+4",
+   "t7_id": "bryan_78",
+   "t7_notation": "4, 3, f+4",
+   "status": "mapped",
+   "motbin_move_id": 1825,
+   "motbin_move_name": "Bx_hico_RK",
+   "anim_name": "nabx_rklk2rk(DVD)",
+   "anim_id": 16858,
+   "bank_index": 474,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation 4,3,f+4"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 24,
+   "motbin_damage": 18,
+   "mvl_row": 16,
+   "mvl_name": "Triple Spin Kick",
+   "mvl_notation": "4,3,f+4",
+   "motbin_candidates": [
+    {
+     "id": 1825,
+     "name": "Bx_hico_RK",
+     "anim": "nabx_rklk2rk(DVD)",
+     "anim_id": 16858
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 474,
+    "rel_offset": 2917304,
+    "size": 3168,
+    "format_word": 100,
+    "sha256": "de603425b6041d9b382c3c535f0d4ad6e7ca9e6f08faffb1e2b98d94d2cc62a7",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "b+1",
+   "wh_name": "Chopping Elbow",
+   "wh_input": "b+1",
+   "t7_id": "bryan_144",
+   "t7_notation": "b+1",
+   "status": "mapped",
+   "motbin_move_id": 1779,
+   "motbin_move_name": "Bx_sphiji",
+   "anim_name": "Zbx_sphiji(DVD)",
+   "anim_id": 16833,
+   "bank_index": 449,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation b+1"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 20,
+   "motbin_damage": 21,
+   "mvl_row": 42,
+   "mvl_name": "Chopping Elbow",
+   "mvl_notation": "b+1",
+   "motbin_candidates": [
+    {
+     "id": 1779,
+     "name": "Bx_sphiji",
+     "anim": "Zbx_sphiji(DVD)",
+     "anim_id": 16833
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 449,
+    "rel_offset": 2848540,
+    "size": 3592,
+    "format_word": 100,
+    "sha256": "5db72c3e9102f42be20b87d9792914f2301b37f29f611a089568972acbb00cc4",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "b+1+3",
+   "wh_name": "Parry",
+   "wh_input": "b+1+3",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "multiple motbin terminals at tier 1 with distinct anims and no decisive discriminator: [(1924, 'SN_sabaki_0', 16901), (569, '___________', 33363)]",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 569,
+     "name": "___________",
+     "anim": "nab6_guard(DVD)",
+     "anim_id": 33363
+    },
+    {
+     "id": 1924,
+     "name": "SN_sabaki_0",
+     "anim": "Bfu_hsaba_h(DVD)",
+     "anim_id": 16901
+    }
+   ]
+  },
+  {
+   "wh_key": "b+1+4_t8",
+   "wh_name": "Gravity Blow",
+   "wh_input": "b+1+4",
+   "t7_id": "bryan_249",
+   "t7_notation": "b+1+4",
+   "status": "mapped",
+   "motbin_move_id": 1785,
+   "motbin_move_name": "Bx_kill_1",
+   "anim_name": "nabx_moon(DVD)",
+   "anim_id": 16836,
+   "bank_index": 452,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 53,
+   "motbin_damage": 45,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1785,
+     "name": "Bx_kill_1",
+     "anim": "nabx_moon(DVD)",
+     "anim_id": 16836
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 452,
+    "rel_offset": 2859116,
+    "size": 4576,
+    "format_word": 100,
+    "sha256": "20bc272f3f71ffb5db76a938d3b032cf3a5adae3462e6682c00b42c6e31f5b07",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "b+1+4*",
+   "wh_name": "Meteor Smash",
+   "wh_input": "b+1+4*",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1785,
+   "motbin_move_name": "Bx_kill_1",
+   "anim_name": "nabx_moon(DVD)",
+   "anim_id": 16836,
+   "bank_index": 452,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 1 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation b+1+4"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 53,
+   "motbin_damage": 45,
+   "mvl_row": 52,
+   "mvl_name": "Meteor Smash",
+   "mvl_notation": "b+1+4",
+   "motbin_candidates": [
+    {
+     "id": 1785,
+     "name": "Bx_kill_1",
+     "anim": "nabx_moon(DVD)",
+     "anim_id": 16836
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 452,
+    "rel_offset": 2859116,
+    "size": 4576,
+    "format_word": 100,
+    "sha256": "20bc272f3f71ffb5db76a938d3b032cf3a5adae3462e6682c00b42c6e31f5b07",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "b+2,1",
+   "wh_name": "Move 1 (1)",
+   "wh_input": "b+2,1",
+   "t7_id": "bryan_146",
+   "t7_notation": "b+2, 1",
+   "status": "mapped",
+   "motbin_move_id": 1727,
+   "motbin_move_name": "Bx_back_RP2",
+   "anim_name": "mbbx_4rplp(DVD)",
+   "anim_id": 16739,
+   "bank_index": 355,
+   "evidence": [
+    "MVL notation exact, WH name generic",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation b+2,1"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 19,
+   "motbin_damage": 17,
+   "mvl_row": 43,
+   "mvl_name": "Double Back Knuckle",
+   "mvl_notation": "b+2,1",
+   "motbin_candidates": [
+    {
+     "id": 1727,
+     "name": "Bx_back_RP2",
+     "anim": "mbbx_4rplp(DVD)",
+     "anim_id": 16739
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 355,
+    "rel_offset": 2665936,
+    "size": 3096,
+    "format_word": 100,
+    "sha256": "769d97fcc0469680ed58502cb49f6c96ca4be5cc3feec64e4734be844535d7a5",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "b+2,1,2",
+   "wh_name": "Hands of Doom",
+   "wh_input": "b+2,1,2",
+   "t7_id": "bryan_150",
+   "t7_notation": "b+2, 1, 2",
+   "status": "mapped",
+   "motbin_move_id": 1719,
+   "motbin_move_name": "Bx_super2RP",
+   "anim_name": "mbbx_4rplprp(DVD)",
+   "anim_id": 16783,
+   "bank_index": 399,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation b+2,1,2"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 24,
+   "motbin_damage": 22,
+   "mvl_row": 44,
+   "mvl_name": "Hands of Doom",
+   "mvl_notation": "b+2,1,2",
+   "motbin_candidates": [
+    {
+     "id": 1719,
+     "name": "Bx_super2RP",
+     "anim": "mbbx_4rplprp(DVD)",
+     "anim_id": 16783
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 399,
+    "rel_offset": 2755596,
+    "size": 3740,
+    "format_word": 100,
+    "sha256": "b17d063d07780c3eebc05f8646277f9f952023aa568173c111d3b179be77b7ce",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "b+2,1,4",
+   "wh_name": "Kickass Combo",
+   "wh_input": "b+2,1,4",
+   "t7_id": "bryan_153",
+   "t7_notation": "b+2, 1, 4",
+   "status": "mapped",
+   "motbin_move_id": 1791,
+   "motbin_move_name": "Bx_4RPLPRK",
+   "anim_name": "ikbx_4rplp_rk(DVD)",
+   "anim_id": 16740,
+   "bank_index": 356,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 30,
+   "motbin_damage": 21,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1791,
+     "name": "Bx_4RPLPRK",
+     "anim": "ikbx_4rplp_rk(DVD)",
+     "anim_id": 16740
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 356,
+    "rel_offset": 2669032,
+    "size": 3924,
+    "format_word": 100,
+    "sha256": "ff73906b85e12af8d61a6d753c380d7c94ce5ff5d62ce9411e2332f3864d41ba",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "b+2,4",
+   "wh_name": "Wolf Call",
+   "wh_input": "b+2,4",
+   "t7_id": "bryan_156",
+   "t7_notation": "b+2, 4",
+   "status": "mapped",
+   "motbin_move_id": 1790,
+   "motbin_move_name": "Bx_4RPRK",
+   "anim_name": "nabx_4rprk(DVD)",
+   "anim_id": 16841,
+   "bank_index": 457,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation b+2,4"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 30,
+   "motbin_damage": 21,
+   "mvl_row": 45,
+   "mvl_name": "Wolf Call",
+   "mvl_notation": "b+2,4",
+   "motbin_candidates": [
+    {
+     "id": 1790,
+     "name": "Bx_4RPRK",
+     "anim": "nabx_4rprk(DVD)",
+     "anim_id": 16841
+    },
+    {
+     "id": 1840,
+     "name": "Bx_Sway_RPRK",
+     "anim": "mbbx_blow2rk(DVD)",
+     "anim_id": 16867
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 457,
+    "rel_offset": 2876348,
+    "size": 3900,
+    "format_word": 100,
+    "sha256": "a4a72303883fff7bab3348a1110c66f30059cd8c46a0dc2956056511f4481ed1",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "b+3",
+   "wh_name": "Move b+3 (b+3)",
+   "wh_input": "b+3",
+   "t7_id": "bryan_158",
+   "t7_notation": "b+3",
+   "status": "mapped",
+   "motbin_move_id": 1859,
+   "motbin_move_name": "Bx_smk1",
+   "anim_name": "bxss_4lk(DVD)",
+   "anim_id": 16878,
+   "bank_index": 494,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 19,
+   "motbin_damage": 12,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1627,
+     "name": "Co_R_lk00L",
+     "anim": "naco_lfurik(DVD)",
+     "anim_id": 16727
+    },
+    {
+     "id": 1843,
+     "name": "Bx_Sway_LK",
+     "anim": "mbbx_karilow(DVD)",
+     "anim_id": 16870
+    },
+    {
+     "id": 1859,
+     "name": "Bx_smk1",
+     "anim": "bxss_4lk(DVD)",
+     "anim_id": 16878
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 494,
+    "rel_offset": 2966240,
+    "size": 3860,
+    "format_word": 100,
+    "sha256": "8bda3f1dfb023e85fd361dded1665319db010a9d4799c7511097f9743457a747",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "b+3,1+2",
+   "wh_name": "Double Hammer",
+   "wh_input": "b+3,1+2",
+   "t7_id": "bryan_174",
+   "t7_notation": "b+3, 1+2",
+   "status": "mapped",
+   "motbin_move_id": 1860,
+   "motbin_move_name": "Bx_smklrp",
+   "anim_name": "nobx_tataki(DVD)",
+   "anim_id": 16879,
+   "bank_index": 495,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 22,
+   "motbin_damage": 25,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1860,
+     "name": "Bx_smklrp",
+     "anim": "nobx_tataki(DVD)",
+     "anim_id": 16879
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 495,
+    "rel_offset": 2970100,
+    "size": 3140,
+    "format_word": 100,
+    "sha256": "077f0c9e8a4d737c182d3fcc9ef1e79a294c1951beb33da78a4d95edf328a687",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "b+3,2",
+   "wh_name": "Move 2 (2)",
+   "wh_input": "b+3,2",
+   "t7_id": "bryan_159",
+   "t7_notation": "b+3, 2",
+   "status": "mapped",
+   "motbin_move_id": 1766,
+   "motbin_move_name": "Bx_FeSt_RP",
+   "anim_name": "ikbx_smkrp(DVD)",
+   "anim_id": 16822,
+   "bank_index": 438,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 16,
+   "motbin_damage": 12,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1766,
+     "name": "Bx_FeSt_RP",
+     "anim": "ikbx_smkrp(DVD)",
+     "anim_id": 16822
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 438,
+    "rel_offset": 2835432,
+    "size": 2484,
+    "format_word": 100,
+    "sha256": "c3ad9b64fe043e9d082e9c7e07052373d79a42d564eb779b2375c893965393fa",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "b+3,2,1",
+   "wh_name": "Move 1 (1)",
+   "wh_input": "b+3,2,1",
+   "t7_id": "bryan_161",
+   "t7_notation": "b+3, 2, 1",
+   "status": "mapped",
+   "motbin_move_id": 1767,
+   "motbin_move_name": "Bx_FeSt_RPrv",
+   "anim_name": "ikbx_smkrp(DVD)",
+   "anim_id": 16822,
+   "bank_index": 438,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 16,
+   "motbin_damage": 12,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1767,
+     "name": "Bx_FeSt_RPrv",
+     "anim": "ikbx_smkrp(DVD)",
+     "anim_id": 16822
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 438,
+    "rel_offset": 2835432,
+    "size": 2484,
+    "format_word": 100,
+    "sha256": "c3ad9b64fe043e9d082e9c7e07052373d79a42d564eb779b2375c893965393fa",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "b+3,2,1,2",
+   "wh_name": "Rush",
+   "wh_input": "b+3,2,1,2",
+   "t7_id": "bryan_164",
+   "t7_notation": "b+3, 2, 1, 2",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "b+3,2,1,4",
+   "wh_name": "Run for Cover",
+   "wh_input": "b+3,2,1,4",
+   "t7_id": "bryan_168",
+   "t7_notation": "b+3, 2, 1, 4",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "MVL row matched (MVL name+notation exact) but no attack-class motbin terminal found via cancel graph for notation 'b+3,2,1,4' \u2014 graph gap (requirement-gated entry not decoded)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": 49,
+   "mvl_name": "Run for Cover",
+   "mvl_notation": "b+3,2,1,4",
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "b+3,4",
+   "wh_name": "2nd Hit",
+   "wh_input": "b+3,4",
+   "t7_id": "bryan_172",
+   "t7_notation": "b+3, 4",
+   "status": "mapped",
+   "motbin_move_id": 1870,
+   "motbin_move_name": "Bx_10hit_02",
+   "anim_name": "nabx_smk2hiz(DVD)",
+   "anim_id": 16886,
+   "bank_index": 502,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 21,
+   "motbin_damage": 18,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1870,
+     "name": "Bx_10hit_02",
+     "anim": "nabx_smk2hiz(DVD)",
+     "anim_id": 16886
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 502,
+    "rel_offset": 2991160,
+    "size": 3156,
+    "format_word": 100,
+    "sha256": "7cd816f5344c53939a5e888f727c1cfc905fe26ec704fd5ad5e4cbbc6e73b869",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "b+3,4,1,2,1,4,2,1,4,2",
+   "wh_name": "10 Hit Combo",
+   "wh_input": "b+3,4,1,2,1,4,2,1,4,2",
+   "t7_id": "bryan_210",
+   "t7_notation": "b+3, 4, 1, 2, 1, 4, 2, 1, 4, 2",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "b,B+4",
+   "wh_name": "Flying Knee Kick",
+   "wh_input": "b,B+4",
+   "t7_id": "bryan_180",
+   "t7_notation": "b, B+4",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "MVL row matched (MVL name+notation exact) but no attack-class motbin terminal found via cancel graph for notation 'b,B+4' \u2014 graph gap (requirement-gated entry not decoded)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": 61,
+   "mvl_name": "Flying Knee Kick",
+   "mvl_notation": "b,B+4",
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "b,df+4",
+   "wh_name": "Wedge Driver",
+   "wh_input": "b,df+4",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "MVL row matched (MVL name+notation exact) but no attack-class motbin terminal found via cancel graph for notation 'b,d/f+4' \u2014 graph gap (requirement-gated entry not decoded)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": 60,
+   "mvl_name": "Wedge Driver",
+   "mvl_notation": "b,d/f+4",
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "d+1+2",
+   "wh_name": "Move d+1+2 (d+1+2)",
+   "wh_input": "d+1+2",
+   "t7_id": "bryan_130",
+   "t7_notation": "d+1+2",
+   "status": "mapped",
+   "motbin_move_id": 1756,
+   "motbin_move_name": "Bx_2RLpunch",
+   "anim_name": "bxyt_s3_sf",
+   "anim_id": 107,
+   "bank_index": 107,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x0",
+   "motbin_startup": 17,
+   "motbin_damage": 10,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1756,
+     "name": "Bx_2RLpunch",
+     "anim": "bxyt_s3_sf",
+     "anim_id": 107
+    }
+   ],
+   "clip": {
+    "status": "bank0-file-not-located",
+    "bank": "0x0000",
+    "entry": 107
+   }
+  },
+  {
+   "wh_key": "d+1+2~2",
+   "wh_name": "Snake Bomb",
+   "wh_input": "d+1+2~2",
+   "t7_id": "bryan_135",
+   "t7_notation": "d+1+2~2",
+   "status": "mapped",
+   "motbin_move_id": 1866,
+   "motbin_move_name": "Bx_Relbow",
+   "anim_name": "bxkb_relbow",
+   "anim_id": 111,
+   "bank_index": 111,
+   "evidence": [
+    "MVL name+notation exact (variant: '~' slide step read as two successive inputs)",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation d+2",
+    "notation variant used: '~' slide step read as combined input"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x0",
+   "motbin_startup": 14,
+   "motbin_damage": 17,
+   "mvl_row": 37,
+   "mvl_name": "Snake Bomb",
+   "mvl_notation": "d+1+2,2",
+   "motbin_candidates": [
+    {
+     "id": 1866,
+     "name": "Bx_Relbow",
+     "anim": "bxkb_relbow",
+     "anim_id": 111
+    }
+   ],
+   "clip": {
+    "status": "bank0-file-not-located",
+    "bank": "0x0000",
+    "entry": 111
+   }
+  },
+  {
+   "wh_key": "d+1+2,3",
+   "wh_name": "Hammer Driver Hatchet",
+   "wh_input": "d+1+2,3",
+   "t7_id": "bryan_132",
+   "t7_notation": "d+1+2, 3",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "MVL row matched (MVL name+notation exact) but no attack-class motbin terminal found via cancel graph for notation 'd+1+2,3' \u2014 graph gap (requirement-gated entry not decoded)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": 36,
+   "mvl_name": "Hammer Driver Hatchet",
+   "mvl_notation": "d+1+2,3",
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "d+2",
+   "wh_name": "Move d+2 (d+2)",
+   "wh_input": "d+2",
+   "t7_id": "bryan_123",
+   "t7_notation": "d+2",
+   "status": "mapped",
+   "motbin_move_id": 1866,
+   "motbin_move_name": "Bx_Relbow",
+   "anim_name": "bxkb_relbow",
+   "anim_id": 111,
+   "bank_index": 111,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x0",
+   "motbin_startup": 14,
+   "motbin_damage": 17,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1866,
+     "name": "Bx_Relbow",
+     "anim": "bxkb_relbow",
+     "anim_id": 111
+    }
+   ],
+   "clip": {
+    "status": "bank0-file-not-located",
+    "bank": "0x0000",
+    "entry": 111
+   }
+  },
+  {
+   "wh_key": "d+2,3",
+   "wh_name": "Python Crush",
+   "wh_input": "d+2,3",
+   "t7_id": "bryan_124",
+   "t7_notation": "d+2, 3",
+   "status": "mapped",
+   "motbin_move_id": 1869,
+   "motbin_move_name": "Bx_elbowhiza",
+   "anim_name": "kobx_el2knee(DVD)",
+   "anim_id": 16885,
+   "bank_index": 501,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation d+2,3"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 22,
+   "motbin_damage": 21,
+   "mvl_row": 31,
+   "mvl_name": "Python Crush",
+   "mvl_notation": "d+2,3",
+   "motbin_candidates": [
+    {
+     "id": 1869,
+     "name": "Bx_elbowhiza",
+     "anim": "kobx_el2knee(DVD)",
+     "anim_id": 16885
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 501,
+    "rel_offset": 2987576,
+    "size": 3584,
+    "format_word": 100,
+    "sha256": "bc7f2c5683ef108d2fe4be17a3d7604eb206bf99c27a400f1285f3954aa73c62",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "d+3",
+   "wh_name": "Move d+3 (d+3)",
+   "wh_input": "d+3",
+   "t7_id": "bryan_126",
+   "t7_notation": "d+3",
+   "status": "mapped",
+   "motbin_move_id": 1676,
+   "motbin_move_name": "Bx_t_slk",
+   "anim_name": "ambx_rowkickl(DVD)",
+   "anim_id": 16756,
+   "bank_index": 372,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 16,
+   "motbin_damage": 10,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 162,
+     "name": "Co_Dwn_rk00",
+     "anim": "Tco_PSdwrkA(DVD)",
+     "anim_id": 33038
+    },
+    {
+     "id": 170,
+     "name": "Co_AokilkL0",
+     "anim": "naco_aotlk1(DVD)",
+     "anim_id": 33046
+    },
+    {
+     "id": 1676,
+     "name": "Bx_t_slk",
+     "anim": "ambx_rowkickl(DVD)",
+     "anim_id": 16756
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 372,
+    "rel_offset": 2698936,
+    "size": 2912,
+    "format_word": 100,
+    "sha256": "0ff7c8c37ce6ce64018b67723b786fc11dc3a75d7750924fb3ddbd4fc0dd0f10",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "d+3,2",
+   "wh_name": "Snake Eyes",
+   "wh_input": "d+3,2",
+   "t7_id": "bryan_127",
+   "t7_notation": "d+3, 2",
+   "status": "mapped",
+   "motbin_move_id": 1677,
+   "motbin_move_name": "Bx_t_slksmsh",
+   "anim_name": "mbbx_2lkrp(DVD)",
+   "anim_id": 16757,
+   "bank_index": 373,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 21,
+   "motbin_damage": 22,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1677,
+     "name": "Bx_t_slksmsh",
+     "anim": "mbbx_2lkrp(DVD)",
+     "anim_id": 16757
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 373,
+    "rel_offset": 2701848,
+    "size": 3080,
+    "format_word": 100,
+    "sha256": "2c1202c968ff367ece46ef47dec10846d4052ecded8c04c2653b711f15722cde",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "d+3+4",
+   "wh_name": "Move d+3+4 (d+3+4)",
+   "wh_input": "d+3+4",
+   "t7_id": "bryan_136",
+   "t7_notation": "d+3+4",
+   "status": "mapped",
+   "motbin_move_id": 1680,
+   "motbin_move_name": "Bx_t_slrk",
+   "anim_name": "mbbx_2wk(DVD)",
+   "anim_id": 16759,
+   "bank_index": 375,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 19,
+   "motbin_damage": 16,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1680,
+     "name": "Bx_t_slrk",
+     "anim": "mbbx_2wk(DVD)",
+     "anim_id": 16759
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 375,
+    "rel_offset": 2708080,
+    "size": 3132,
+    "format_word": 100,
+    "sha256": "f5e513a72f81c0aaf4fc4e4beadcdf07837b0df7398c93e69dd58a39874e1b28",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "d+3+4,2",
+   "wh_name": "Side Low Knuckle Whip",
+   "wh_input": "d+3+4,2",
+   "t7_id": "bryan_137",
+   "t7_notation": "d+3+4, 2",
+   "status": "mapped",
+   "motbin_move_id": 1681,
+   "motbin_move_name": "Bx_t_slrk_rp",
+   "anim_name": "mbbx_2wkrp(DVD)",
+   "anim_id": 16760,
+   "bank_index": 376,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation d+3+4,2"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 29,
+   "motbin_damage": 25,
+   "mvl_row": 38,
+   "mvl_name": "Side Low Knuckle Whip",
+   "mvl_notation": "d+3+4,2",
+   "motbin_candidates": [
+    {
+     "id": 1681,
+     "name": "Bx_t_slrk_rp",
+     "anim": "mbbx_2wkrp(DVD)",
+     "anim_id": 16760
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 376,
+    "rel_offset": 2711212,
+    "size": 4100,
+    "format_word": 100,
+    "sha256": "52b876bdad2aa4e4c74d1b2457a3f5230dbc401b9ea05e53494d6f9be80ca5b8",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "db+1+2",
+   "wh_name": "Crash Impact",
+   "wh_input": "db+1+2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1754,
+   "motbin_move_name": "Bx_1RLpunch",
+   "anim_name": "bxkb_1lrp_75(DVD)",
+   "anim_id": 16811,
+   "bank_index": 427,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation d/b+1+2"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 15,
+   "motbin_damage": 14,
+   "mvl_row": 41,
+   "mvl_name": "Crash Impact",
+   "mvl_notation": "d/b+1+2",
+   "motbin_candidates": [
+    {
+     "id": 1754,
+     "name": "Bx_1RLpunch",
+     "anim": "bxkb_1lrp_75(DVD)",
+     "anim_id": 16811
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 427,
+    "rel_offset": 2810708,
+    "size": 5428,
+    "format_word": 100,
+    "sha256": "0680d4e8d951c6a075da43e6ff017445523685c296a2fea071078cc1debd4c12",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "db+2",
+   "wh_name": "Stomach Blow",
+   "wh_input": "db+2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1685,
+   "motbin_move_name": "Jz_sorimi00",
+   "anim_name": "Gbx_sorimi(DVD)",
+   "anim_id": 16763,
+   "bank_index": 379,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation d/b+2"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 15,
+   "motbin_damage": 13,
+   "mvl_row": 39,
+   "mvl_name": "Stomach Blow",
+   "mvl_notation": "d/b+2",
+   "motbin_candidates": [
+    {
+     "id": 1685,
+     "name": "Jz_sorimi00",
+     "anim": "Gbx_sorimi(DVD)",
+     "anim_id": 16763
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 379,
+    "rel_offset": 2719416,
+    "size": 2692,
+    "format_word": 100,
+    "sha256": "892aa505582455ff59760e1e99d151cbb708eb00a8ebdc91af6880321810965d",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "db+3",
+   "wh_name": "Sweeper kick",
+   "wh_input": "db+3",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1679,
+   "motbin_move_name": "Bx_t_slk00B",
+   "anim_name": "kobx_lowlk(DVD)",
+   "anim_id": 16758,
+   "bank_index": 374,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation d/b+3"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 16,
+   "motbin_damage": 11,
+   "mvl_row": 40,
+   "mvl_name": "Sweeper Kick",
+   "mvl_notation": "d/b+3",
+   "motbin_candidates": [
+    {
+     "id": 1679,
+     "name": "Bx_t_slk00B",
+     "anim": "kobx_lowlk(DVD)",
+     "anim_id": 16758
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 374,
+    "rel_offset": 2704928,
+    "size": 3152,
+    "format_word": 100,
+    "sha256": "657a8ece27c38af07d4a2b3402c2b1f16d64602e7149f6334514483792c6b081",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "DF+1",
+   "wh_name": "Move DF+1 (DF+1)",
+   "wh_input": "DF+1",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "DF+1,1",
+   "wh_name": "Move 1 (1)",
+   "wh_input": "DF+1,1",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "DF+1,1,1",
+   "wh_name": "Move 1 (1)",
+   "wh_input": "DF+1,1,1",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "DF+1,1,1,1",
+   "wh_name": "Vulcan Cannon",
+   "wh_input": "DF+1,1,1,1",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "MVL name match (Vulcan Cannon) but notation differs: T7 MVL 'D/F+1,1,1,1' vs WH 'DF+1,1,1,1'/t7_notation 'None' \u2014 not mapped (possible T8 notation change)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "DF+1,2",
+   "wh_name": "Double Body Blow",
+   "wh_input": "DF+1,2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "MVL name match (Double Body Blow) but notation differs: T7 MVL 'd/f+1,2' vs WH 'DF+1,2'/t7_notation 'None' \u2014 not mapped (possible T8 notation change)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "df+2",
+   "wh_name": "Move df+2 (df+2)",
+   "wh_input": "df+2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "motbin graph candidate exists but no MVL corroboration and/or non-unique \u2014 held as unmapped per no-guess rule",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1665,
+     "name": "Co_syarp00",
+     "anim": "naco_syrp(DVD)",
+     "anim_id": 16751
+    },
+    {
+     "id": 1686,
+     "name": "Bx_t_srpF",
+     "anim": "nabx_3rp(DVD)",
+     "anim_id": 16764
+    },
+    {
+     "id": 1714,
+     "name": "Bx_midlprp",
+     "anim": "yobx_3lprp(DVD)",
+     "anim_id": 16779
+    },
+    {
+     "id": 1748,
+     "name": "Bx_23rp",
+     "anim": "bxyt_s3_st3grp",
+     "anim_id": 105
+    }
+   ]
+  },
+  {
+   "wh_key": "df+2,1",
+   "wh_name": "Blackout Combo",
+   "wh_input": "df+2,1",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1687,
+   "motbin_move_name": "Bx_t_srpFG15",
+   "anim_name": "nabx_3rp(DVD)",
+   "anim_id": 16764,
+   "bank_index": 380,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation d/f+2,1"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 13,
+   "motbin_damage": 12,
+   "mvl_row": 27,
+   "mvl_name": "Blackout Combo",
+   "mvl_notation": "d/f+2,1",
+   "motbin_candidates": [
+    {
+     "id": 1687,
+     "name": "Bx_t_srpFG15",
+     "anim": "nabx_3rp(DVD)",
+     "anim_id": 16764
+    },
+    {
+     "id": 1753,
+     "name": "Bx_23rplp",
+     "anim": "bxyt_s3_st3grplp",
+     "anim_id": 106
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 380,
+    "rel_offset": 2722108,
+    "size": 2508,
+    "format_word": 100,
+    "sha256": "8aaa483e3146df5ce8eca2eef483cfe5cd15187a8039f3131b32857d0b54b5a1",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "df+2,3",
+   "wh_name": "Blackout Trap",
+   "wh_input": "df+2,3",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1691,
+   "motbin_move_name": "Bx_3rplk",
+   "anim_name": "bxss_3rplk(DVD)",
+   "anim_id": 16766,
+   "bank_index": 382,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation d/f+2,3"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 23,
+   "motbin_damage": 20,
+   "mvl_row": 28,
+   "mvl_name": "Blackout Trap",
+   "mvl_notation": "d/f+2,3",
+   "motbin_candidates": [
+    {
+     "id": 1691,
+     "name": "Bx_3rplk",
+     "anim": "bxss_3rplk(DVD)",
+     "anim_id": 16766
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 382,
+    "rel_offset": 2724616,
+    "size": 4656,
+    "format_word": 100,
+    "sha256": "6b293ecc0c3d6007a0e77d48399021ab5a64a784de7c4e1c28d358300c4e8c8b",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "df+3",
+   "wh_name": "Snake Edge",
+   "wh_input": "df+3",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1672,
+   "motbin_move_name": "Co_syalkF",
+   "anim_name": "new_syrkf(DVD)",
+   "anim_id": 32857,
+   "bank_index": 89,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: 2 terminals at tier 0 with distinct anims; unique top combined score 5: chain rooted at dispatcher/movement move sJUMP_00_SF; GROUP-rooted chain"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x8000",
+   "motbin_startup": 16,
+   "motbin_damage": 12,
+   "mvl_row": 29,
+   "mvl_name": "Snake Edge",
+   "mvl_notation": "d/f+3",
+   "motbin_candidates": [
+    {
+     "id": 1672,
+     "name": "Co_syalkF",
+     "anim": "new_syrkf(DVD)",
+     "anim_id": 32857
+    },
+    {
+     "id": 1798,
+     "name": "Bx_back_LK",
+     "anim": "bxyt_se(DVD)",
+     "anim_id": 16849
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x8000",
+    "source": "common.arc",
+    "section": 0,
+    "entry": 89,
+    "rel_offset": 571568,
+    "size": 2760,
+    "format_word": 100,
+    "sha256": "1c78ba92657c29f97381d1ddf5202278013e14b96d55b58793da2c3a9f7ef323",
+    "blob_file": "common_clips.bin"
+   }
+  },
+  {
+   "wh_key": "df+4",
+   "wh_name": "Wolf's Tail",
+   "wh_input": "df+4",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1673,
+   "motbin_move_name": "Co_syarkF",
+   "anim_name": "Yco_syrkf(DVD)",
+   "anim_id": 32852,
+   "bank_index": 84,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: 2 terminals at tier 0 with distinct anims; unique top combined score 5: chain rooted at dispatcher/movement move sJUMP_00_SF; GROUP-rooted chain"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x8000",
+   "motbin_startup": 12,
+   "motbin_damage": 10,
+   "mvl_row": 30,
+   "mvl_name": "Wolf's Tail",
+   "mvl_notation": "d/f+4",
+   "motbin_candidates": [
+    {
+     "id": 1673,
+     "name": "Co_syarkF",
+     "anim": "Yco_syrkf(DVD)",
+     "anim_id": 32852
+    },
+    {
+     "id": 1789,
+     "name": "Bx_t_srkF",
+     "anim": "Bbr_mkick2(DVD)",
+     "anim_id": 16840
+    },
+    {
+     "id": 1834,
+     "name": "Bx_23RK",
+     "anim": "bxss_stqrk(DVD)",
+     "anim_id": 16863
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x8000",
+    "source": "common.arc",
+    "section": 0,
+    "entry": 84,
+    "rel_offset": 547200,
+    "size": 2232,
+    "format_word": 100,
+    "sha256": "1bbd976a322c3c7b154a95bec9145e892bdea3ea025d4cab4e94181643e17b93",
+    "blob_file": "common_clips.bin"
+   }
+  },
+  {
+   "wh_key": "f+1+2",
+   "wh_name": "Sidestep Elbow",
+   "wh_input": "f+1+2",
+   "t7_id": "bryan_98",
+   "t7_notation": "f+1+2",
+   "status": "mapped",
+   "motbin_move_id": 569,
+   "motbin_move_name": "___________",
+   "anim_name": "nab6_guard(DVD)",
+   "anim_id": 33363,
+   "bank_index": 595,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 2 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation f+1+2"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x8000",
+   "motbin_startup": null,
+   "motbin_damage": 0,
+   "mvl_row": 23,
+   "mvl_name": "Sidestep Elbow",
+   "mvl_notation": "f+1+2",
+   "motbin_candidates": [
+    {
+     "id": 569,
+     "name": "___________",
+     "anim": "nab6_guard(DVD)",
+     "anim_id": 33363
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x8000",
+    "source": "common.arc",
+    "section": 0,
+    "entry": 595,
+    "rel_offset": 3433732,
+    "size": 1328,
+    "format_word": 100,
+    "sha256": "e03bde528baa3be74b1cb2b4e9674acb374b496cc2cfa6c60f67dd73ba7841d6",
+    "blob_file": "common_clips.bin"
+   }
+  },
+  {
+   "wh_key": "f+2_t8",
+   "wh_name": "Move f+2 (f+2)",
+   "wh_input": "f+2",
+   "t7_id": "bryan_88",
+   "t7_notation": "f+2",
+   "status": "mapped",
+   "motbin_move_id": 1630,
+   "motbin_move_name": "Bx_rp00F",
+   "anim_name": "nabx_6rp(DVD)",
+   "anim_id": 16729,
+   "bank_index": 345,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH t7_notation + WH input agree"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 15,
+   "motbin_damage": 10,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1630,
+     "name": "Bx_rp00F",
+     "anim": "nabx_6rp(DVD)",
+     "anim_id": 16729
+    },
+    {
+     "id": 1715,
+     "name": "Bx_super_RPsp",
+     "anim": "mbbx_machp(DVD)",
+     "anim_id": 16717
+    },
+    {
+     "id": 1716,
+     "name": "Bx_super_RP",
+     "anim": "mbbx_machp(DVD)",
+     "anim_id": 16717
+    },
+    {
+     "id": 1737,
+     "name": "Bx_nage_RP02",
+     "anim": "bxhk_hookupper1_mox(DVD)",
+     "anim_id": 16801
+    },
+    {
+     "id": 1739,
+     "name": "Bx_hit_RP",
+     "anim": "mbbx_strp(DVD)",
+     "anim_id": 16800
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 345,
+    "rel_offset": 2654648,
+    "size": 2352,
+    "format_word": 100,
+    "sha256": "fbd35bb4a5eea737780fd45d1456b9800056ee057af169d21e644b03332b41a2",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "f+2,1",
+   "wh_name": "Move 1 (1)",
+   "wh_input": "f+2,1",
+   "t7_id": "bryan_89",
+   "t7_notation": "f+2, 1",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1634, 'Bx_6rplp', 16733), (1632, 'Bx_6rplpRs2', 16729), (1631, 'Bx_6rplpRs', 16729)]",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1631,
+     "name": "Bx_6rplpRs",
+     "anim": "nabx_6rp(DVD)",
+     "anim_id": 16729
+    },
+    {
+     "id": 1632,
+     "name": "Bx_6rplpRs2",
+     "anim": "nabx_6rp(DVD)",
+     "anim_id": 16729
+    },
+    {
+     "id": 1634,
+     "name": "Bx_6rplp",
+     "anim": "nabx_6rplp(DVD)",
+     "anim_id": 16733
+    },
+    {
+     "id": 1738,
+     "name": "Bx_s_trplp",
+     "anim": "bxss_hookupper(DVD)",
+     "anim_id": 16802
+    }
+   ]
+  },
+  {
+   "wh_key": "f+2,1,4",
+   "wh_name": "Snake Eyes",
+   "wh_input": "f+2,1,4",
+   "t7_id": "bryan_91",
+   "t7_notation": "f+2, 1, 4",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "multiple motbin terminals at tier 0 with distinct anims and no decisive discriminator: [(1636, 'Bx_6rplprk', 16735), (1635, 'Bx_6rplprkRs2', 16733), (1633, 'Bx_6rplprkRs', 16729)]",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1633,
+     "name": "Bx_6rplprkRs",
+     "anim": "nabx_6rp(DVD)",
+     "anim_id": 16729
+    },
+    {
+     "id": 1635,
+     "name": "Bx_6rplprkRs2",
+     "anim": "nabx_6rplp(DVD)",
+     "anim_id": 16733
+    },
+    {
+     "id": 1636,
+     "name": "Bx_6rplprk",
+     "anim": "nabx_6rplprk(DVD)",
+     "anim_id": 16735
+    }
+   ]
+  },
+  {
+   "wh_key": "f+3_t8",
+   "wh_name": "Knee Strike",
+   "wh_input": "f+3",
+   "t7_id": "bryan_94",
+   "t7_notation": "f+3",
+   "status": "mapped",
+   "motbin_move_id": 1652,
+   "motbin_move_name": "Bx_lk00F",
+   "anim_name": "nkjz_hizakl(DVD)",
+   "anim_id": 16744,
+   "bank_index": 360,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation f+3"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 16,
+   "motbin_damage": 18,
+   "mvl_row": 21,
+   "mvl_name": "Knee Strike",
+   "mvl_notation": "f+3",
+   "motbin_candidates": [
+    {
+     "id": 1652,
+     "name": "Bx_lk00F",
+     "anim": "nkjz_hizakl(DVD)",
+     "anim_id": 16744
+    },
+    {
+     "id": 1697,
+     "name": "Bx_s_tlk00",
+     "anim": "nabx_st2hiz(DVD)",
+     "anim_id": 16770
+    },
+    {
+     "id": 1806,
+     "name": "Bx_slash_LK",
+     "anim": "mbbx_66lk(DVD)",
+     "anim_id": 16852
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 360,
+    "rel_offset": 2672956,
+    "size": 2596,
+    "format_word": 100,
+    "sha256": "812d22def00d2acf781f48cafc6d4a05a979d15539ed1ae168d7510d2aad15c1",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "f+4,1",
+   "wh_name": "Boa Crusher",
+   "wh_input": "f+4,1",
+   "t7_id": "bryan_96",
+   "t7_notation": "f+4, 1",
+   "status": "mapped",
+   "motbin_move_id": 1659,
+   "motbin_move_name": "Bx_6rklp",
+   "anim_name": "kobx_skh2sage20(DVD)",
+   "anim_id": 16746,
+   "bank_index": 362,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation f+4,1"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 25,
+   "motbin_damage": 10,
+   "mvl_row": 22,
+   "mvl_name": "Boa Crusher",
+   "mvl_notation": "f+4,1",
+   "motbin_candidates": [
+    {
+     "id": 1659,
+     "name": "Bx_6rklp",
+     "anim": "kobx_skh2sage20(DVD)",
+     "anim_id": 16746
+    },
+    {
+     "id": 1852,
+     "name": "Bx_jeturaRv",
+     "anim": "mbbx_jetkick(DVD)",
+     "anim_id": 16871
+    },
+    {
+     "id": 1854,
+     "name": "Bx_jetura",
+     "anim": "mbbx_236rklp(DVD)",
+     "anim_id": 16873
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 362,
+    "rel_offset": 2678924,
+    "size": 3748,
+    "format_word": 100,
+    "sha256": "5465bffde1ea0865a54a9eaa16fd1b111cb7ebf90e97251d995ccd401cb7c2bf",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "FC.db+1+2",
+   "wh_name": "Chains of Misery",
+   "wh_input": "FC.db+1+2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1754,
+   "motbin_move_name": "Bx_1RLpunch",
+   "anim_name": "bxkb_1lrp_75(DVD)",
+   "anim_id": 16811,
+   "bank_index": 427,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH input (no t7_notation in WH data)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 15,
+   "motbin_damage": 14,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1754,
+     "name": "Bx_1RLpunch",
+     "anim": "bxkb_1lrp_75(DVD)",
+     "anim_id": 16811
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 427,
+    "rel_offset": 2810708,
+    "size": 5428,
+    "format_word": 100,
+    "sha256": "0680d4e8d951c6a075da43e6ff017445523685c296a2fea071078cc1debd4c12",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "FC.df+2",
+   "wh_name": "Move FC.df+2 (FC.df+2)",
+   "wh_input": "FC.df+2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1748,
+   "motbin_move_name": "Bx_23rp",
+   "anim_name": "bxyt_s3_st3grp",
+   "anim_id": 105,
+   "bank_index": 105,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH input (no t7_notation in WH data)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x0",
+   "motbin_startup": 13,
+   "motbin_damage": 12,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1665,
+     "name": "Co_syarp00",
+     "anim": "naco_syrp(DVD)",
+     "anim_id": 16751
+    },
+    {
+     "id": 1686,
+     "name": "Bx_t_srpF",
+     "anim": "nabx_3rp(DVD)",
+     "anim_id": 16764
+    },
+    {
+     "id": 1714,
+     "name": "Bx_midlprp",
+     "anim": "yobx_3lprp(DVD)",
+     "anim_id": 16779
+    },
+    {
+     "id": 1748,
+     "name": "Bx_23rp",
+     "anim": "bxyt_s3_st3grp",
+     "anim_id": 105
+    }
+   ],
+   "clip": {
+    "status": "bank0-file-not-located",
+    "bank": "0x0000",
+    "entry": 105
+   }
+  },
+  {
+   "wh_key": "FC.df+2,1",
+   "wh_name": "Snake Rampage",
+   "wh_input": "FC.df+2,1",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1753,
+   "motbin_move_name": "Bx_23rplp",
+   "anim_name": "bxyt_s3_st3grplp",
+   "anim_id": 106,
+   "bank_index": 106,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 2 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation d/f+2,1"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x0",
+   "motbin_startup": 22,
+   "motbin_damage": 25,
+   "mvl_row": 76,
+   "mvl_name": "Snake Rampage",
+   "mvl_notation": "d/f+2,1",
+   "motbin_candidates": [
+    {
+     "id": 1687,
+     "name": "Bx_t_srpFG15",
+     "anim": "nabx_3rp(DVD)",
+     "anim_id": 16764
+    },
+    {
+     "id": 1753,
+     "name": "Bx_23rplp",
+     "anim": "bxyt_s3_st3grplp",
+     "anim_id": 106
+    }
+   ],
+   "clip": {
+    "status": "bank0-file-not-located",
+    "bank": "0x0000",
+    "entry": 106
+   }
+  },
+  {
+   "wh_key": "FC.df+4",
+   "wh_name": "Northern Cross",
+   "wh_input": "FC.df+4",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1834,
+   "motbin_move_name": "Bx_23RK",
+   "anim_name": "bxss_stqrk(DVD)",
+   "anim_id": 16863,
+   "bank_index": 479,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 2 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation d/f+4"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 15,
+   "motbin_damage": 21,
+   "mvl_row": 77,
+   "mvl_name": "Northern Cross",
+   "mvl_notation": "d/f+4",
+   "motbin_candidates": [
+    {
+     "id": 1673,
+     "name": "Co_syarkF",
+     "anim": "Yco_syrkf(DVD)",
+     "anim_id": 32852
+    },
+    {
+     "id": 1789,
+     "name": "Bx_t_srkF",
+     "anim": "Bbr_mkick2(DVD)",
+     "anim_id": 16840
+    },
+    {
+     "id": 1834,
+     "name": "Bx_23RK",
+     "anim": "bxss_stqrk(DVD)",
+     "anim_id": 16863
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 479,
+    "rel_offset": 2929856,
+    "size": 4344,
+    "format_word": 100,
+    "sha256": "891d33fced0e26327bec140a5a503b3becbe7a9fab5ef07961e8bc221aa370fc",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "f,F+2",
+   "wh_name": "Mach Breaker",
+   "wh_input": "f,F+2",
+   "t7_id": "bryan_245",
+   "t7_notation": "f, F+2",
+   "status": "mapped",
+   "motbin_move_id": 1715,
+   "motbin_move_name": "Bx_super_RPsp",
+   "anim_name": "mbbx_machp(DVD)",
+   "anim_id": 16717,
+   "bank_index": 333,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: 2 attack-class terminals at tier 3, all share anim_id 16717 (clip-unambiguous); first listed as representative",
+    "notation variant used: hold-direction case-insensitive match (f,F+3 in WH = f,f,f+3 in MVL glyphs; same physical input)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 13,
+   "motbin_damage": 44,
+   "mvl_row": 56,
+   "mvl_name": "Mach Breaker",
+   "mvl_notation": "f,F+2",
+   "motbin_candidates": [
+    {
+     "id": 1715,
+     "name": "Bx_super_RPsp",
+     "anim": "mbbx_machp(DVD)",
+     "anim_id": 16717
+    },
+    {
+     "id": 1716,
+     "name": "Bx_super_RP",
+     "anim": "mbbx_machp(DVD)",
+     "anim_id": 16717
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 333,
+    "rel_offset": 2631212,
+    "size": 3032,
+    "format_word": 100,
+    "sha256": "fcd1b483ac51495e016127aa533d2d78bbe6a3677bb84df9b406e662c8018cef",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "f,F+3",
+   "wh_name": "Snake Eyes",
+   "wh_input": "f,F+3",
+   "t7_id": "bryan_99",
+   "t7_notation": "f, F+3",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "motbin graph candidate exists but no MVL corroboration and/or non-unique \u2014 held as unmapped per no-guess rule",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1806,
+     "name": "Bx_slash_LK",
+     "anim": "mbbx_66lk(DVD)",
+     "anim_id": 16852
+    }
+   ]
+  },
+  {
+   "wh_key": "f,F+3*",
+   "wh_name": "Move f,F+3* (f,F+3*)",
+   "wh_input": "f,F+3*",
+   "t7_id": "bryan_100",
+   "t7_notation": "f, F+3*",
+   "status": "mapped",
+   "motbin_move_id": 1806,
+   "motbin_move_name": "Bx_slash_LK",
+   "anim_name": "mbbx_66lk(DVD)",
+   "anim_id": 16852,
+   "bank_index": 468,
+   "evidence": [
+    "MVL notation exact, WH name generic",
+    "motbin cancel-graph: unique attack-class terminal at tier 3 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation f,f+3",
+    "notation variant used: hold-direction case-insensitive match (f,F+3 in WH = f,f,f+3 in MVL glyphs; same physical input)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 22,
+   "motbin_damage": 25,
+   "mvl_row": 57,
+   "mvl_name": "Slash Kick",
+   "mvl_notation": "f,F+3",
+   "motbin_candidates": [
+    {
+     "id": 1806,
+     "name": "Bx_slash_LK",
+     "anim": "mbbx_66lk(DVD)",
+     "anim_id": 16852
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 468,
+    "rel_offset": 2900176,
+    "size": 3820,
+    "format_word": 100,
+    "sha256": "ebf9cac22555f6390da76adc180a4cff4620e823d187ffa159a4300dc301674f",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "f,F+4",
+   "wh_name": "Mach Kick",
+   "wh_input": "f,F+4",
+   "t7_id": "bryan_101",
+   "t7_notation": "f, F+4",
+   "status": "mapped",
+   "motbin_move_id": 1826,
+   "motbin_move_name": "Bx_slash_RK",
+   "anim_name": "Gbx_machk(DVD)",
+   "anim_id": 16859,
+   "bank_index": 475,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 3 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation f,f+4",
+    "notation variant used: hold-direction case-insensitive match (f,F+3 in WH = f,f,f+3 in MVL glyphs; same physical input)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 14,
+   "motbin_damage": 0,
+   "mvl_row": 58,
+   "mvl_name": "Mach Kick",
+   "mvl_notation": "f,F+4",
+   "motbin_candidates": [
+    {
+     "id": 1826,
+     "name": "Bx_slash_RK",
+     "anim": "Gbx_machk(DVD)",
+     "anim_id": 16859
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 475,
+    "rel_offset": 2920472,
+    "size": 752,
+    "format_word": 100,
+    "sha256": "a119b407f0c11d83cc162f5916882f1f24c744e51e0352fa1a3a311ca8194081",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "f,f,F+3",
+   "wh_name": "Snake Slash",
+   "wh_input": "f,f,F+3",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1806,
+   "motbin_move_name": "Bx_slash_LK",
+   "anim_name": "mbbx_66lk(DVD)",
+   "anim_id": 16852,
+   "bank_index": 468,
+   "evidence": [
+    "MVL name+notation exact (variant: hold-direction case-insensitive match (f,F+3 in WH = f,f,f+3 in MVL glyphs; same physical input))",
+    "motbin cancel-graph: unique attack-class terminal at tier 3 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation f,f,f+3",
+    "notation variant used: hold-direction case-insensitive match (f,F+3 in WH = f,f,f+3 in MVL glyphs; same physical input)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 22,
+   "motbin_damage": 25,
+   "mvl_row": 70,
+   "mvl_name": "Snake Slash",
+   "mvl_notation": "f,f,f+3",
+   "motbin_candidates": [
+    {
+     "id": 1806,
+     "name": "Bx_slash_LK",
+     "anim": "mbbx_66lk(DVD)",
+     "anim_id": 16852
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 468,
+    "rel_offset": 2900176,
+    "size": 3820,
+    "format_word": 100,
+    "sha256": "ebf9cac22555f6390da76adc180a4cff4620e823d187ffa159a4300dc301674f",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "f,n,b+2",
+   "wh_name": "Jet Uppercut",
+   "wh_input": "f,n,b+2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "MVL row matched (MVL name+notation exact) but no attack-class motbin terminal found via cancel graph for notation 'f,b+2' \u2014 graph gap (requirement-gated entry not decoded)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": 59,
+   "mvl_name": "Jet Uppercut",
+   "mvl_notation": "f,b+2",
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "qcf",
+   "wh_name": "Slither Step (SLS)",
+   "wh_input": "qcf",
+   "t7_id": "bryan_221",
+   "t7_notation": "qcf",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "motbin graph candidate exists but no MVL corroboration and/or non-unique \u2014 held as unmapped per no-guess rule",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1494,
+     "name": "cr2st_00F",
+     "anim": "coyt_sya_taf(DVD)",
+     "anim_id": 32859
+    }
+   ]
+  },
+  {
+   "wh_key": "SNE.f,F+1+2",
+   "wh_name": "Neo Mach Breaker",
+   "wh_input": "SNE.f,F+1+2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1746,
+   "motbin_move_name": "Bx_roll_LP1",
+   "anim_name": "mbbx_6wp(DVD)",
+   "anim_id": 16809,
+   "bank_index": 425,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH input (no t7_notation in WH data)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 22,
+   "motbin_damage": 22,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1746,
+     "name": "Bx_roll_LP1",
+     "anim": "mbbx_6wp(DVD)",
+     "anim_id": 16809
+    },
+    {
+     "id": 1888,
+     "name": "Thrmv_B2_01",
+     "anim": "Tco_ntukami(DVD)",
+     "anim_id": 16899
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 425,
+    "rel_offset": 2802924,
+    "size": 3240,
+    "format_word": 100,
+    "sha256": "50e5d65604be88e60cf92d1f1df3543c04bef5f9635e34bde8d60749ae32e85c",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "SS.1",
+   "wh_name": "Hellraiser",
+   "wh_input": "SS.1",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1695,
+   "motbin_move_name": "Bx_s_tlp00",
+   "anim_name": "Bbr_stlp(DVD)",
+   "anim_id": 16768,
+   "bank_index": 384,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation 1"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 15,
+   "motbin_damage": 20,
+   "mvl_row": 78,
+   "mvl_name": "Hellraiser",
+   "mvl_notation": "1",
+   "motbin_candidates": [
+    {
+     "id": 1506,
+     "name": "Co_jplp00",
+     "anim": "Bco_sjplp_n(DVD)",
+     "anim_id": 16630
+    },
+    {
+     "id": 1507,
+     "name": "Co_jplp00F",
+     "anim": "Bco_sjplp_n(DVD)",
+     "anim_id": 16630
+    },
+    {
+     "id": 1508,
+     "name": "Co_jplp00B",
+     "anim": "Bco_sjplp_n(DVD)",
+     "anim_id": 16630
+    },
+    {
+     "id": 1509,
+     "name": "Co_jplp01",
+     "anim": "Bco_jplp01n(DVD)",
+     "anim_id": 16633
+    },
+    {
+     "id": 1510,
+     "name": "Co_jplp01F",
+     "anim": "Bco_jplp01n(DVD)",
+     "anim_id": 16633
+    },
+    {
+     "id": 1511,
+     "name": "Co_jplp01B",
+     "anim": "Bco_jplp01n(DVD)",
+     "anim_id": 16633
+    },
+    {
+     "id": 1512,
+     "name": "Co_jplp02",
+     "anim": "Bco_jplp02n(DVD)",
+     "anim_id": 16636
+    },
+    {
+     "id": 1513,
+     "name": "Co_jplp02F",
+     "anim": "Bco_jplp02n(DVD)",
+     "anim_id": 16636
+    },
+    {
+     "id": 1514,
+     "name": "Co_jplp02B",
+     "anim": "Bco_jplp02n(DVD)",
+     "anim_id": 16636
+    },
+    {
+     "id": 1515,
+     "name": "Co_jplp03",
+     "anim": "Bco_jplp03n(DVD)",
+     "anim_id": 16639
+    },
+    {
+     "id": 1516,
+     "name": "Co_jplp03F",
+     "anim": "Bco_jplp03n(DVD)",
+     "anim_id": 16639
+    },
+    {
+     "id": 1517,
+     "name": "Co_jplp03B",
+     "anim": "Bco_jplp03n(DVD)",
+     "anim_id": 16639
+    },
+    {
+     "id": 1518,
+     "name": "Co_jpRlp00",
+     "anim": "Bco_sjplp_rn(DVD)",
+     "anim_id": 16642
+    },
+    {
+     "id": 1519,
+     "name": "Co_jpRlp00F",
+     "anim": "Bco_sjplp_rn(DVD)",
+     "anim_id": 16642
+    },
+    {
+     "id": 1520,
+     "name": "Co_jpRlp00B",
+     "anim": "Bco_sjplp_rn(DVD)",
+     "anim_id": 16642
+    },
+    {
+     "id": 1556,
+     "name": "Co_sjplp01F",
+     "anim": "sjprpu01(DVD)",
+     "anim_id": 32823
+    },
+    {
+     "id": 1557,
+     "name": "Co_sjplp02F",
+     "anim": "sjprpu02(DVD)",
+     "anim_id": 32824
+    },
+    {
+     "id": 1558,
+     "name": "Co_sjplp03F",
+     "anim": "sjprpu03(DVD)",
+     "anim_id": 32825
+    },
+    {
+     "id": 1567,
+     "name": "Bx_lp00",
+     "anim": "mbbx_lp(DVD)",
+     "anim_id": 16687
+    },
+    {
+     "id": 1575,
+     "name": "Bx_lrplp",
+     "anim": "bxkw_s4_wplp",
+     "anim_id": 101
+    },
+    {
+     "id": 1589,
+     "name": "Bx_haradada_03",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1592,
+     "name": "Bx_haradada_05",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1594,
+     "name": "Bx_haradada_07",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1596,
+     "name": "Bx_haradada_09",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1598,
+     "name": "Bx_haradada_10SP",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1599,
+     "name": "Bx_haradada_11",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1606,
+     "name": "Bx_haradada_13SP",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1608,
+     "name": "Bx_haradada_15SP",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1610,
+     "name": "Bx_haradada_17SP",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1612,
+     "name": "Bx_haradada_19SP",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1614,
+     "name": "Bx_haradada_21SP",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1631,
+     "name": "Bx_6rplpRs",
+     "anim": "nabx_6rp(DVD)",
+     "anim_id": 16729
+    },
+    {
+     "id": 1632,
+     "name": "Bx_6rplpRs2",
+     "anim": "nabx_6rp(DVD)",
+     "anim_id": 16729
+    },
+    {
+     "id": 1634,
+     "name": "Bx_6rplp",
+     "anim": "nabx_6rplp(DVD)",
+     "anim_id": 16733
+    },
+    {
+     "id": 1642,
+     "name": "Bx_New_03",
+     "anim": "mbbx_4rplp(DVD)",
+     "anim_id": 16739
+    },
+    {
+     "id": 1659,
+     "name": "Bx_6rklp",
+     "anim": "kobx_skh2sage20(DVD)",
+     "anim_id": 16746
+    },
+    {
+     "id": 1663,
+     "name": "Co_syalp00",
+     "anim": "kzco_sylp01_10f(DVD)",
+     "anim_id": 16749
+    },
+    {
+     "id": 1687,
+     "name": "Bx_t_srpFG15",
+     "anim": "nabx_3rp(DVD)",
+     "anim_id": 16764
+    },
+    {
+     "id": 1695,
+     "name": "Bx_s_tlp00",
+     "anim": "Bbr_stlp(DVD)",
+     "anim_id": 16768
+    },
+    {
+     "id": 1727,
+     "name": "Bx_back_RP2",
+     "anim": "mbbx_4rplp(DVD)",
+     "anim_id": 16739
+    },
+    {
+     "id": 1729,
+     "name": "Bx_rkbRP_3_R_A",
+     "anim": "mbbx_lprkrp(DVD)",
+     "anim_id": 16792
+    },
+    {
+     "id": 1732,
+     "name": "Bx_rkbRP_3_R_Ad",
+     "anim": "mbbx_lprkrp_delay(DVD)",
+     "anim_id": 16795
+    },
+    {
+     "id": 1738,
+     "name": "Bx_s_trplp",
+     "anim": "bxss_hookupper(DVD)",
+     "anim_id": 16802
+    },
+    {
+     "id": 1747,
+     "name": "Bx_long_LP1",
+     "anim": "bxsj_yoko_bkblow(DVD)",
+     "anim_id": 16810
+    },
+    {
+     "id": 1753,
+     "name": "Bx_23rplp",
+     "anim": "bxyt_s3_st3grplp",
+     "anim_id": 106
+    },
+    {
+     "id": 1764,
+     "name": "Bx_GatGun03",
+     "anim": "nabx_lkrp2lp(DVD)",
+     "anim_id": 16820
+    },
+    {
+     "id": 1767,
+     "name": "Bx_FeSt_RPrv",
+     "anim": "ikbx_smkrp(DVD)",
+     "anim_id": 16822
+    },
+    {
+     "id": 1768,
+     "name": "Bx_lp00F",
+     "anim": "cbbx_lp00f(DVD)",
+     "anim_id": 16824
+    },
+    {
+     "id": 1772,
+     "name": "Bx_lprplpRs",
+     "anim": "ygbx_lprp(DVD)",
+     "anim_id": 16826
+    },
+    {
+     "id": 1775,
+     "name": "Bx_lprplp",
+     "anim": "kobx_12bdy(DVD)",
+     "anim_id": 16831
+    },
+    {
+     "id": 1852,
+     "name": "Bx_jeturaRv",
+     "anim": "mbbx_jetkick(DVD)",
+     "anim_id": 16871
+    },
+    {
+     "id": 1854,
+     "name": "Bx_jetura",
+     "anim": "mbbx_236rklp(DVD)",
+     "anim_id": 16873
+    },
+    {
+     "id": 1871,
+     "name": "Bx_10hit_03",
+     "anim": "nabx_4lkrk2lp(DVD)",
+     "anim_id": 16887
+    },
+    {
+     "id": 1873,
+     "name": "Bx_10hit_05",
+     "anim": "Hbr_ju04_05(DVD)",
+     "anim_id": 16889
+    },
+    {
+     "id": 1876,
+     "name": "Bx_10hit_08",
+     "anim": "mbbx_4rplp(DVD)",
+     "anim_id": 16739
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 384,
+    "rel_offset": 2731768,
+    "size": 2728,
+    "format_word": 100,
+    "sha256": "25cf806d56268d2e6eb5c71710e7119e8e35fcc2494eb040e76c4a099dceea35",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "SS.2",
+   "wh_name": "Move SS.2 (SS.2)",
+   "wh_input": "SS.2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "multiple motbin terminals at tier 2 with distinct anims and no decisive discriminator: [(1734, 'Bx_sideRP_0', 16798), (1657, 'Bx_rk00F', 16745)]",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": 72,
+   "mvl_name": "Right Upper",
+   "mvl_notation": "2",
+   "motbin_candidates": [
+    {
+     "id": 225,
+     "name": "Co_sJP_RP",
+     "anim": "naco_9rp(DVD)",
+     "anim_id": 32851
+    },
+    {
+     "id": 1524,
+     "name": "Co_jprp03",
+     "anim": "Bco_jprp03n(DVD)",
+     "anim_id": 16648
+    },
+    {
+     "id": 1525,
+     "name": "Co_jprp03F",
+     "anim": "Bco_jprp03n(DVD)",
+     "anim_id": 16648
+    },
+    {
+     "id": 1526,
+     "name": "Co_jprp03B",
+     "anim": "Bco_jprp03n(DVD)",
+     "anim_id": 16648
+    },
+    {
+     "id": 1559,
+     "name": "Co_sjprp03F",
+     "anim": "sjplpu03(DVD)",
+     "anim_id": 32839
+    },
+    {
+     "id": 1574,
+     "name": "Bx_lrprp",
+     "anim": "nabx_wp2rp(DVD)",
+     "anim_id": 16689
+    },
+    {
+     "id": 1591,
+     "name": "Bx_haradada_04",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1593,
+     "name": "Bx_haradada_06",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1595,
+     "name": "Bx_haradada_08",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1597,
+     "name": "Bx_haradada_10",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1605,
+     "name": "Bx_haradada_12SP",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1607,
+     "name": "Bx_haradada_14SP",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1609,
+     "name": "Bx_haradada_16SP",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1611,
+     "name": "Bx_haradada_18SP",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1613,
+     "name": "Bx_haradada_20SP",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1615,
+     "name": "Bx_yasufinish",
+     "anim": "mbbx_machp(DVD)",
+     "anim_id": 16717
+    },
+    {
+     "id": 1616,
+     "name": "Bx_rp00",
+     "anim": "ygbx_rp00(DVD)",
+     "anim_id": 16718
+    },
+    {
+     "id": 1638,
+     "name": "Bx_6rplprk_Neo2",
+     "anim": "nabx_6rplprk(DVD)",
+     "anim_id": 16735
+    },
+    {
+     "id": 1644,
+     "name": "Bx_New_05Rv",
+     "anim": "ikbx_4rplp_rk(DVD)",
+     "anim_id": 16740
+    },
+    {
+     "id": 1657,
+     "name": "Bx_rk00F",
+     "anim": "kobx_skh30(DVD)",
+     "anim_id": 16745
+    },
+    {
+     "id": 1665,
+     "name": "Co_syarp00",
+     "anim": "naco_syrp(DVD)",
+     "anim_id": 16751
+    },
+    {
+     "id": 1677,
+     "name": "Bx_t_slksmsh",
+     "anim": "mbbx_2lkrp(DVD)",
+     "anim_id": 16757
+    },
+    {
+     "id": 1681,
+     "name": "Bx_t_slrk_rp",
+     "anim": "mbbx_2wkrp(DVD)",
+     "anim_id": 16760
+    },
+    {
+     "id": 1714,
+     "name": "Bx_midlprp",
+     "anim": "yobx_3lprp(DVD)",
+     "anim_id": 16779
+    },
+    {
+     "id": 1719,
+     "name": "Bx_super2RP",
+     "anim": "mbbx_4rplprp(DVD)",
+     "anim_id": 16783
+    },
+    {
+     "id": 1720,
+     "name": "Bx_sabaRP1",
+     "anim": "mbbx_machp(DVD)",
+     "anim_id": 16717
+    },
+    {
+     "id": 1721,
+     "name": "Bx_sabaRP2",
+     "anim": "Bbr_fsrp00(DVD)",
+     "anim_id": 16785
+    },
+    {
+     "id": 1728,
+     "name": "Bx_rkbRP_3",
+     "anim": "mbbx_lprkrp(DVD)",
+     "anim_id": 16792
+    },
+    {
+     "id": 1731,
+     "name": "Bx_rkbRP00",
+     "anim": "mbbx_lprkrp_delay(DVD)",
+     "anim_id": 16795
+    },
+    {
+     "id": 1734,
+     "name": "Bx_sideRP_0",
+     "anim": "mbbx_bx2kam(DVD)",
+     "anim_id": 16798
+    },
+    {
+     "id": 1736,
+     "name": "Bx_nage_RP",
+     "anim": "mbbx_strp(DVD)",
+     "anim_id": 16800
+    },
+    {
+     "id": 1737,
+     "name": "Bx_nage_RP02",
+     "anim": "bxhk_hookupper1_mox(DVD)",
+     "anim_id": 16801
+    },
+    {
+     "id": 1760,
+     "name": "Bx_SFcrash",
+     "anim": "mbbx_sfcrash(DVD)",
+     "anim_id": 16817
+    },
+    {
+     "id": 1763,
+     "name": "Bx_GatGun02",
+     "anim": "nabx_lk2rp(DVD)",
+     "anim_id": 16819
+    },
+    {
+     "id": 1766,
+     "name": "Bx_FeSt_RP",
+     "anim": "ikbx_smkrp(DVD)",
+     "anim_id": 16822
+    },
+    {
+     "id": 1769,
+     "name": "Bx_lp00_2F",
+     "anim": "mbbx_lp(DVD)",
+     "anim_id": 16687
+    },
+    {
+     "id": 1770,
+     "name": "Bx_lp00_3F",
+     "anim": "ygbx_lprp(DVD)",
+     "anim_id": 16826
+    },
+    {
+     "id": 1771,
+     "name": "Bx_lp00_2FC",
+     "anim": "ygbx_lprp(DVD)",
+     "anim_id": 16826
+    },
+    {
+     "id": 1778,
+     "name": "Bx_lp00_5F",
+     "anim": "nabx_lkrplp2rp(DVD)",
+     "anim_id": 16832
+    },
+    {
+     "id": 1838,
+     "name": "Bx_Sway_RP",
+     "anim": "isbx_blow(DVD)",
+     "anim_id": 16866
+    },
+    {
+     "id": 1862,
+     "name": "Bx_smkup",
+     "anim": "nobx_stpmup(DVD)",
+     "anim_id": 16881
+    },
+    {
+     "id": 1872,
+     "name": "Bx_10hit_04",
+     "anim": "Bbr_fslprp(DVD)",
+     "anim_id": 16888
+    },
+    {
+     "id": 1875,
+     "name": "Bx_10hit_07",
+     "anim": "mbbx_lprkrp(DVD)",
+     "anim_id": 16792
+    },
+    {
+     "id": 1878,
+     "name": "Bx_10hit_10",
+     "anim": "mbbx_machp(DVD)",
+     "anim_id": 16717
+    },
+    {
+     "id": 1881,
+     "name": "Bx_10hit_09_2",
+     "anim": "nobx_stpmup(DVD)",
+     "anim_id": 16881
+    },
+    {
+     "id": 1946,
+     "name": "Uk_sway_rp",
+     "anim": "ozbo_sway_rp(DVD)",
+     "anim_id": 16923
+    },
+    {
+     "id": 1959,
+     "name": "Bx_sabaRP22",
+     "anim": "Bbr_fsrp00(DVD)",
+     "anim_id": 16785
+    }
+   ]
+  },
+  {
+   "wh_key": "ub+1+2",
+   "wh_name": "Move ub+1+2 (ub+1+2)",
+   "wh_input": "ub+1+2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1586,
+   "motbin_move_name": "Bx_haradadaP",
+   "anim_name": "ozbx_matrlp_a(DVD)",
+   "anim_id": 16690,
+   "bank_index": 306,
+   "evidence": [
+    "no MVL row for this notation (T7 in-game movelist omits this move)",
+    "motbin cancel-graph: unique attack-class terminal at best tier for the notation (join channel c)",
+    "notation source: WH input (no t7_notation in WH data)"
+   ],
+   "confidence": "medium",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 15,
+   "motbin_damage": 5,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1586,
+     "name": "Bx_haradadaP",
+     "anim": "ozbx_matrlp_a(DVD)",
+     "anim_id": 16690
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 306,
+    "rel_offset": 2620044,
+    "size": 3080,
+    "format_word": 100,
+    "sha256": "f300978d9fee38c17b04bd1260bef33ef912ca5e58099e1d70a859c1cb2e1ed8",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "ub+1+2,1",
+   "wh_name": "Move 1 (1)",
+   "wh_input": "ub+1+2,1",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "ub+1+2,1,2",
+   "wh_name": "Move 2 (2)",
+   "wh_input": "ub+1+2,1,2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "ub+1+2,1,2,1",
+   "wh_name": "Move 1 (1)",
+   "wh_input": "ub+1+2,1,2,1",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "ub+1+2,1,2,1,2",
+   "wh_name": "Move 2 (2)",
+   "wh_input": "ub+1+2,1,2,1,2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "ub+1+2,1,2,1,2,1",
+   "wh_name": "Move 1 (1)",
+   "wh_input": "ub+1+2,1,2,1,2,1",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "ub+1+2,1,2,1,2,1,2",
+   "wh_name": "Move 2 (2)",
+   "wh_input": "ub+1+2,1,2,1,2,1,2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "ub+1+2,1,2,1,2,1,2,1",
+   "wh_name": "Move 1 (1)",
+   "wh_input": "ub+1+2,1,2,1,2,1,2,1",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "ub+1+2,1,2,1,2,1,2,1,2",
+   "wh_name": "Move 2 (2)",
+   "wh_input": "ub+1+2,1,2,1,2,1,2,1,2",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "ub+1+2,1,2,1,2,1,2,1,2,1",
+   "wh_name": "Move 1 (1)",
+   "wh_input": "ub+1+2,1,2,1,2,1,2,1,2,1",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "no MVL row and no motbin cancel-graph terminal for this notation \u2014 no T7 counterpart evidence (T8-only candidate)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "ub+1+2,1,2,1,2,1,2,1,2,1,4",
+   "wh_name": "Gatling Rush",
+   "wh_input": "ub+1+2,1,2,1,2,1,2,1,2,1,4",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "MVL row matched (MVL name+notation exact) but no attack-class motbin terminal found via cancel graph for notation 'u/b+1+2,1,2,1,2,1,2,1,2,1,4' \u2014 graph gap (requirement-gated entry not decoded)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": 53,
+   "mvl_name": "Gatling Rush",
+   "mvl_notation": "u/b+1+2,1,2,1,2,1,2,1,2,1,4",
+   "motbin_candidates": []
+  },
+  {
+   "wh_key": "uf+4",
+   "wh_name": "Orbital Heel Kick",
+   "wh_input": "uf+4",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1792,
+   "motbin_move_name": "Bx_jprk00F",
+   "anim_name": "Bbr_jpkkt(DVD)",
+   "anim_id": 16843,
+   "bank_index": 459,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation u/f+4"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 24,
+   "motbin_damage": 22,
+   "mvl_row": 55,
+   "mvl_name": "Orbital Heel Kick",
+   "mvl_notation": "u/f+4",
+   "motbin_candidates": [
+    {
+     "id": 1792,
+     "name": "Bx_jprk00F",
+     "anim": "Bbr_jpkkt(DVD)",
+     "anim_id": 16843
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 459,
+    "rel_offset": 2880248,
+    "size": 2964,
+    "format_word": 100,
+    "sha256": "8b4dd2df562d7339ce0971d06e499da2920ac4b722218f27a12c7f025e4069a9",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "ws2",
+   "wh_name": "Fisherman's Slam",
+   "wh_input": "ws2",
+   "t7_id": "bryan_202",
+   "t7_notation": "WS 2",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "MVL name match (Fisherman's Slam) but notation differs: T7 MVL 'F+2' vs WH 'ws2'/t7_notation 'WS 2' \u2014 not mapped (possible T8 notation change)",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 225,
+     "name": "Co_sJP_RP",
+     "anim": "naco_9rp(DVD)",
+     "anim_id": 32851
+    },
+    {
+     "id": 1524,
+     "name": "Co_jprp03",
+     "anim": "Bco_jprp03n(DVD)",
+     "anim_id": 16648
+    },
+    {
+     "id": 1525,
+     "name": "Co_jprp03F",
+     "anim": "Bco_jprp03n(DVD)",
+     "anim_id": 16648
+    },
+    {
+     "id": 1526,
+     "name": "Co_jprp03B",
+     "anim": "Bco_jprp03n(DVD)",
+     "anim_id": 16648
+    },
+    {
+     "id": 1559,
+     "name": "Co_sjprp03F",
+     "anim": "sjplpu03(DVD)",
+     "anim_id": 32839
+    },
+    {
+     "id": 1574,
+     "name": "Bx_lrprp",
+     "anim": "nabx_wp2rp(DVD)",
+     "anim_id": 16689
+    },
+    {
+     "id": 1591,
+     "name": "Bx_haradada_04",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1593,
+     "name": "Bx_haradada_06",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1595,
+     "name": "Bx_haradada_08",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1597,
+     "name": "Bx_haradada_10",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1605,
+     "name": "Bx_haradada_12SP",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1607,
+     "name": "Bx_haradada_14SP",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1609,
+     "name": "Bx_haradada_16SP",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1611,
+     "name": "Bx_haradada_18SP",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1613,
+     "name": "Bx_haradada_20SP",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1615,
+     "name": "Bx_yasufinish",
+     "anim": "mbbx_machp(DVD)",
+     "anim_id": 16717
+    },
+    {
+     "id": 1616,
+     "name": "Bx_rp00",
+     "anim": "ygbx_rp00(DVD)",
+     "anim_id": 16718
+    },
+    {
+     "id": 1638,
+     "name": "Bx_6rplprk_Neo2",
+     "anim": "nabx_6rplprk(DVD)",
+     "anim_id": 16735
+    },
+    {
+     "id": 1644,
+     "name": "Bx_New_05Rv",
+     "anim": "ikbx_4rplp_rk(DVD)",
+     "anim_id": 16740
+    },
+    {
+     "id": 1657,
+     "name": "Bx_rk00F",
+     "anim": "kobx_skh30(DVD)",
+     "anim_id": 16745
+    },
+    {
+     "id": 1665,
+     "name": "Co_syarp00",
+     "anim": "naco_syrp(DVD)",
+     "anim_id": 16751
+    },
+    {
+     "id": 1677,
+     "name": "Bx_t_slksmsh",
+     "anim": "mbbx_2lkrp(DVD)",
+     "anim_id": 16757
+    },
+    {
+     "id": 1681,
+     "name": "Bx_t_slrk_rp",
+     "anim": "mbbx_2wkrp(DVD)",
+     "anim_id": 16760
+    },
+    {
+     "id": 1714,
+     "name": "Bx_midlprp",
+     "anim": "yobx_3lprp(DVD)",
+     "anim_id": 16779
+    },
+    {
+     "id": 1719,
+     "name": "Bx_super2RP",
+     "anim": "mbbx_4rplprp(DVD)",
+     "anim_id": 16783
+    },
+    {
+     "id": 1720,
+     "name": "Bx_sabaRP1",
+     "anim": "mbbx_machp(DVD)",
+     "anim_id": 16717
+    },
+    {
+     "id": 1721,
+     "name": "Bx_sabaRP2",
+     "anim": "Bbr_fsrp00(DVD)",
+     "anim_id": 16785
+    },
+    {
+     "id": 1728,
+     "name": "Bx_rkbRP_3",
+     "anim": "mbbx_lprkrp(DVD)",
+     "anim_id": 16792
+    },
+    {
+     "id": 1731,
+     "name": "Bx_rkbRP00",
+     "anim": "mbbx_lprkrp_delay(DVD)",
+     "anim_id": 16795
+    },
+    {
+     "id": 1734,
+     "name": "Bx_sideRP_0",
+     "anim": "mbbx_bx2kam(DVD)",
+     "anim_id": 16798
+    },
+    {
+     "id": 1736,
+     "name": "Bx_nage_RP",
+     "anim": "mbbx_strp(DVD)",
+     "anim_id": 16800
+    },
+    {
+     "id": 1737,
+     "name": "Bx_nage_RP02",
+     "anim": "bxhk_hookupper1_mox(DVD)",
+     "anim_id": 16801
+    },
+    {
+     "id": 1760,
+     "name": "Bx_SFcrash",
+     "anim": "mbbx_sfcrash(DVD)",
+     "anim_id": 16817
+    },
+    {
+     "id": 1763,
+     "name": "Bx_GatGun02",
+     "anim": "nabx_lk2rp(DVD)",
+     "anim_id": 16819
+    },
+    {
+     "id": 1766,
+     "name": "Bx_FeSt_RP",
+     "anim": "ikbx_smkrp(DVD)",
+     "anim_id": 16822
+    },
+    {
+     "id": 1769,
+     "name": "Bx_lp00_2F",
+     "anim": "mbbx_lp(DVD)",
+     "anim_id": 16687
+    },
+    {
+     "id": 1770,
+     "name": "Bx_lp00_3F",
+     "anim": "ygbx_lprp(DVD)",
+     "anim_id": 16826
+    },
+    {
+     "id": 1771,
+     "name": "Bx_lp00_2FC",
+     "anim": "ygbx_lprp(DVD)",
+     "anim_id": 16826
+    },
+    {
+     "id": 1778,
+     "name": "Bx_lp00_5F",
+     "anim": "nabx_lkrplp2rp(DVD)",
+     "anim_id": 16832
+    },
+    {
+     "id": 1838,
+     "name": "Bx_Sway_RP",
+     "anim": "isbx_blow(DVD)",
+     "anim_id": 16866
+    },
+    {
+     "id": 1862,
+     "name": "Bx_smkup",
+     "anim": "nobx_stpmup(DVD)",
+     "anim_id": 16881
+    },
+    {
+     "id": 1872,
+     "name": "Bx_10hit_04",
+     "anim": "Bbr_fslprp(DVD)",
+     "anim_id": 16888
+    },
+    {
+     "id": 1875,
+     "name": "Bx_10hit_07",
+     "anim": "mbbx_lprkrp(DVD)",
+     "anim_id": 16792
+    },
+    {
+     "id": 1878,
+     "name": "Bx_10hit_10",
+     "anim": "mbbx_machp(DVD)",
+     "anim_id": 16717
+    },
+    {
+     "id": 1881,
+     "name": "Bx_10hit_09_2",
+     "anim": "nobx_stpmup(DVD)",
+     "anim_id": 16881
+    },
+    {
+     "id": 1946,
+     "name": "Uk_sway_rp",
+     "anim": "ozbo_sway_rp(DVD)",
+     "anim_id": 16923
+    },
+    {
+     "id": 1959,
+     "name": "Bx_sabaRP22",
+     "anim": "Bbr_fsrp00(DVD)",
+     "anim_id": 16785
+    }
+   ]
+  },
+  {
+   "wh_key": "ws3,4",
+   "wh_name": "Double High Knee Kick",
+   "wh_input": "ws3,4",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1629,
+   "motbin_move_name": "Bx_lk2",
+   "anim_name": "bxss_wk(DVD)",
+   "anim_id": 16728,
+   "bank_index": 344,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation 3,4"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 18,
+   "motbin_damage": 20,
+   "mvl_row": 75,
+   "mvl_name": "Double High Knee Kick",
+   "mvl_notation": "3,4",
+   "motbin_candidates": [
+    {
+     "id": 188,
+     "name": "Co_Rol_lrk",
+     "anim": "Mco_grshoper(DVD)",
+     "anim_id": 16400
+    },
+    {
+     "id": 1629,
+     "name": "Bx_lk2",
+     "anim": "bxss_wk(DVD)",
+     "anim_id": 16728
+    },
+    {
+     "id": 1698,
+     "name": "Bx_s_tlk00_R",
+     "anim": "nabx_st2hiz(DVD)",
+     "anim_id": 16770
+    },
+    {
+     "id": 1800,
+     "name": "Bx_neeco_RK",
+     "anim": "nabx_hiz2hiz(DVD)",
+     "anim_id": 16850
+    },
+    {
+     "id": 1823,
+     "name": "Bx_midco_RK",
+     "anim": "mbbx_rklkrk(DVD)",
+     "anim_id": 16857
+    },
+    {
+     "id": 1863,
+     "name": "Bx_smklrk",
+     "anim": "nabx_lkk2mach(DVD)",
+     "anim_id": 16882
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 344,
+    "rel_offset": 2650412,
+    "size": 4236,
+    "format_word": 100,
+    "sha256": "505adc48d1ba3bf639a8402bfaefbc9d24a79d3790bdb69971ed7235c3dce9b4",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "ws4",
+   "wh_name": "Toe Smash",
+   "wh_input": "ws4",
+   "t7_id": "bryan_207",
+   "t7_notation": "WS 4",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "multiple motbin terminals at tier 2 with distinct anims and no decisive discriminator: [(171, 'Co_AokirkL0', 33047), (169, 'Co_Aokirk00', 33045)]",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 169,
+     "name": "Co_Aokirk00",
+     "anim": "naco_aomk1(DVD)",
+     "anim_id": 33045
+    },
+    {
+     "id": 171,
+     "name": "Co_AokirkL0",
+     "anim": "naco_aotmk1(DVD)",
+     "anim_id": 33047
+    },
+    {
+     "id": 173,
+     "name": "Co_ADwSrk00",
+     "anim": "Mco_aomk2(DVD)",
+     "anim_id": 33049
+    },
+    {
+     "id": 176,
+     "name": "Co_ADwSrkR0",
+     "anim": "Mco_aoTmk3(DVD)",
+     "anim_id": 33052
+    },
+    {
+     "id": 177,
+     "name": "Co_ADwSrkR1",
+     "anim": "Mco_aoTmk4(DVD)",
+     "anim_id": 33053
+    },
+    {
+     "id": 179,
+     "name": "Co_FRolrk00",
+     "anim": "naco_Fmk1(DVD)",
+     "anim_id": 33055
+    },
+    {
+     "id": 180,
+     "name": "Co_FRollkL0",
+     "anim": "naco_FTlk1(DVD)",
+     "anim_id": 33056
+    },
+    {
+     "id": 181,
+     "name": "Co_FRolrkL0",
+     "anim": "naco_FTmk1(DVD)",
+     "anim_id": 33057
+    },
+    {
+     "id": 183,
+     "name": "Co_BRolrk00",
+     "anim": "naco_Bmk1(DVD)",
+     "anim_id": 33059
+    },
+    {
+     "id": 185,
+     "name": "Co_BRolrkL0",
+     "anim": "naco_BTmk1(DVD)",
+     "anim_id": 33061
+    },
+    {
+     "id": 188,
+     "name": "Co_Rol_lrk",
+     "anim": "Mco_grshoper(DVD)",
+     "anim_id": 16400
+    },
+    {
+     "id": 193,
+     "name": "Co_Uokirk01",
+     "anim": "naco_utmk1(DVD)",
+     "anim_id": 33066
+    },
+    {
+     "id": 201,
+     "name": "Co_UokirkR1",
+     "anim": "naco_utTmk1(DVD)",
+     "anim_id": 33072
+    },
+    {
+     "id": 1543,
+     "name": "Co_jprk00B",
+     "anim": "sjplki00(DVD)",
+     "anim_id": 16667
+    },
+    {
+     "id": 1544,
+     "name": "Co_jprk01",
+     "anim": "Bco_jprk01n(DVD)",
+     "anim_id": 16668
+    },
+    {
+     "id": 1545,
+     "name": "Co_jprk01F",
+     "anim": "Bco_jprk01n(DVD)",
+     "anim_id": 16668
+    },
+    {
+     "id": 1546,
+     "name": "Co_jprk01B",
+     "anim": "Bco_jprk01n(DVD)",
+     "anim_id": 16668
+    },
+    {
+     "id": 1547,
+     "name": "Co_jprk02",
+     "anim": "Bco_jprk02n(DVD)",
+     "anim_id": 16671
+    },
+    {
+     "id": 1548,
+     "name": "Co_jprk02F",
+     "anim": "Bco_jprk02n(DVD)",
+     "anim_id": 16671
+    },
+    {
+     "id": 1549,
+     "name": "Co_jprk02B",
+     "anim": "Bco_jprk02n(DVD)",
+     "anim_id": 16671
+    },
+    {
+     "id": 1550,
+     "name": "Co_jprk04",
+     "anim": "Bco_jprk04n(DVD)",
+     "anim_id": 16674
+    },
+    {
+     "id": 1551,
+     "name": "Co_jprk04F",
+     "anim": "Bco_jprk04n(DVD)",
+     "anim_id": 16674
+    },
+    {
+     "id": 1552,
+     "name": "Co_jprk04B",
+     "anim": "Bco_jprk04n(DVD)",
+     "anim_id": 16674
+    },
+    {
+     "id": 1553,
+     "name": "Co_jpRrk00",
+     "anim": "Bco_sjprk_r(DVD)",
+     "anim_id": 16677
+    },
+    {
+     "id": 1554,
+     "name": "Co_jpRrk00F",
+     "anim": "Bco_sjprk_r(DVD)",
+     "anim_id": 16677
+    },
+    {
+     "id": 1555,
+     "name": "Co_jpRrk00B",
+     "anim": "Bco_sjprk_r(DVD)",
+     "anim_id": 16677
+    },
+    {
+     "id": 1564,
+     "name": "Co_sjprk01F",
+     "anim": "coss_s4_sjprk01",
+     "anim_id": 98
+    },
+    {
+     "id": 1565,
+     "name": "Co_sjprk02F",
+     "anim": "coss_s4_sjprk02",
+     "anim_id": 99
+    },
+    {
+     "id": 1566,
+     "name": "Co_sjprk03F",
+     "anim": "coss_s4_sjprk03",
+     "anim_id": 100
+    },
+    {
+     "id": 1602,
+     "name": "Bx_harafinish",
+     "anim": "ozbx_matrlp_f(DVD)",
+     "anim_id": 16704
+    },
+    {
+     "id": 1624,
+     "name": "Bx_rk00",
+     "anim": "bxod_s4_rk",
+     "anim_id": 102
+    },
+    {
+     "id": 1627,
+     "name": "Co_R_lk00L",
+     "anim": "naco_lfurik(DVD)",
+     "anim_id": 16727
+    },
+    {
+     "id": 1628,
+     "name": "Co_R_rk00R",
+     "anim": "naco_rfurik(DVD)",
+     "anim_id": 32810
+    },
+    {
+     "id": 1629,
+     "name": "Bx_lk2",
+     "anim": "bxss_wk(DVD)",
+     "anim_id": 16728
+    },
+    {
+     "id": 1633,
+     "name": "Bx_6rplprkRs",
+     "anim": "nabx_6rp(DVD)",
+     "anim_id": 16729
+    },
+    {
+     "id": 1635,
+     "name": "Bx_6rplprkRs2",
+     "anim": "nabx_6rplp(DVD)",
+     "anim_id": 16733
+    },
+    {
+     "id": 1636,
+     "name": "Bx_6rplprk",
+     "anim": "nabx_6rplprk(DVD)",
+     "anim_id": 16735
+    },
+    {
+     "id": 1643,
+     "name": "Bx_New_04",
+     "anim": "ikbx_4rplp_rk(DVD)",
+     "anim_id": 16740
+    },
+    {
+     "id": 1669,
+     "name": "Co_syark00",
+     "anim": "ygco_syrk(DVD)",
+     "anim_id": 32858
+    },
+    {
+     "id": 1698,
+     "name": "Bx_s_tlk00_R",
+     "anim": "nabx_st2hiz(DVD)",
+     "anim_id": 16770
+    },
+    {
+     "id": 1701,
+     "name": "Co_s_trk00",
+     "anim": "new_stlk(DVD)",
+     "anim_id": 32862
+    },
+    {
+     "id": 1708,
+     "name": "Bx_lprk",
+     "anim": "kobx_12spnrk(DVD)",
+     "anim_id": 16775
+    },
+    {
+     "id": 1730,
+     "name": "Bx_rkbRP_3_R_D",
+     "anim": "mbbx_lprkrp(DVD)",
+     "anim_id": 16792
+    },
+    {
+     "id": 1733,
+     "name": "Bx_rkbRP_3_R_Dd",
+     "anim": "mbbx_lprkrp_delay(DVD)",
+     "anim_id": 16795
+    },
+    {
+     "id": 1774,
+     "name": "Bx_lprkRs",
+     "anim": "ygbx_lprp(DVD)",
+     "anim_id": 16826
+    },
+    {
+     "id": 1787,
+     "name": "Bx_GatGun04",
+     "anim": "nabx_lkrplp2rk(DVD)",
+     "anim_id": 16838
+    },
+    {
+     "id": 1790,
+     "name": "Bx_4RPRK",
+     "anim": "nabx_4rprk(DVD)",
+     "anim_id": 16841
+    },
+    {
+     "id": 1791,
+     "name": "Bx_4RPLPRK",
+     "anim": "ikbx_4rplp_rk(DVD)",
+     "anim_id": 16740
+    },
+    {
+     "id": 1792,
+     "name": "Bx_jprk00F",
+     "anim": "Bbr_jpkkt(DVD)",
+     "anim_id": 16843
+    },
+    {
+     "id": 1793,
+     "name": "Bx_jprk00",
+     "anim": "Bbr_jpkkt(DVD)",
+     "anim_id": 16843
+    },
+    {
+     "id": 1796,
+     "name": "Bx_rprk_00",
+     "anim": "nabx_lp2rk(DVD)",
+     "anim_id": 16847
+    },
+    {
+     "id": 1800,
+     "name": "Bx_neeco_RK",
+     "anim": "nabx_hiz2hiz(DVD)",
+     "anim_id": 16850
+    },
+    {
+     "id": 1823,
+     "name": "Bx_midco_RK",
+     "anim": "mbbx_rklkrk(DVD)",
+     "anim_id": 16857
+    },
+    {
+     "id": 1840,
+     "name": "Bx_Sway_RPRK",
+     "anim": "mbbx_blow2rk(DVD)",
+     "anim_id": 16867
+    },
+    {
+     "id": 1841,
+     "name": "Bx_Sway_RK",
+     "anim": "bxod_s4_sway_rk",
+     "anim_id": 109
+    },
+    {
+     "id": 1851,
+     "name": "Bx_hadoh04",
+     "anim": "mbbx_jetkick(DVD)",
+     "anim_id": 16871
+    },
+    {
+     "id": 1863,
+     "name": "Bx_smklrk",
+     "anim": "nabx_lkk2mach(DVD)",
+     "anim_id": 16882
+    },
+    {
+     "id": 1870,
+     "name": "Bx_10hit_02",
+     "anim": "nabx_smk2hiz(DVD)",
+     "anim_id": 16886
+    },
+    {
+     "id": 1874,
+     "name": "Bx_10hit_06",
+     "anim": "nabx_lp2rk(DVD)",
+     "anim_id": 16847
+    },
+    {
+     "id": 1877,
+     "name": "Bx_10hit_09",
+     "anim": "ikbx_4rplp_rk(DVD)",
+     "anim_id": 16740
+    }
+   ]
+  },
+  {
+   "wh_key": "1~t8.bryan",
+   "wh_name": "Jab",
+   "wh_input": "1",
+   "t7_id": "bryan_2",
+   "t7_notation": "1",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "motbin graph candidate exists but no MVL corroboration and/or non-unique \u2014 held as unmapped per no-guess rule",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 1506,
+     "name": "Co_jplp00",
+     "anim": "Bco_sjplp_n(DVD)",
+     "anim_id": 16630
+    },
+    {
+     "id": 1507,
+     "name": "Co_jplp00F",
+     "anim": "Bco_sjplp_n(DVD)",
+     "anim_id": 16630
+    },
+    {
+     "id": 1508,
+     "name": "Co_jplp00B",
+     "anim": "Bco_sjplp_n(DVD)",
+     "anim_id": 16630
+    },
+    {
+     "id": 1509,
+     "name": "Co_jplp01",
+     "anim": "Bco_jplp01n(DVD)",
+     "anim_id": 16633
+    },
+    {
+     "id": 1510,
+     "name": "Co_jplp01F",
+     "anim": "Bco_jplp01n(DVD)",
+     "anim_id": 16633
+    },
+    {
+     "id": 1511,
+     "name": "Co_jplp01B",
+     "anim": "Bco_jplp01n(DVD)",
+     "anim_id": 16633
+    },
+    {
+     "id": 1512,
+     "name": "Co_jplp02",
+     "anim": "Bco_jplp02n(DVD)",
+     "anim_id": 16636
+    },
+    {
+     "id": 1513,
+     "name": "Co_jplp02F",
+     "anim": "Bco_jplp02n(DVD)",
+     "anim_id": 16636
+    },
+    {
+     "id": 1514,
+     "name": "Co_jplp02B",
+     "anim": "Bco_jplp02n(DVD)",
+     "anim_id": 16636
+    },
+    {
+     "id": 1515,
+     "name": "Co_jplp03",
+     "anim": "Bco_jplp03n(DVD)",
+     "anim_id": 16639
+    },
+    {
+     "id": 1516,
+     "name": "Co_jplp03F",
+     "anim": "Bco_jplp03n(DVD)",
+     "anim_id": 16639
+    },
+    {
+     "id": 1517,
+     "name": "Co_jplp03B",
+     "anim": "Bco_jplp03n(DVD)",
+     "anim_id": 16639
+    },
+    {
+     "id": 1518,
+     "name": "Co_jpRlp00",
+     "anim": "Bco_sjplp_rn(DVD)",
+     "anim_id": 16642
+    },
+    {
+     "id": 1519,
+     "name": "Co_jpRlp00F",
+     "anim": "Bco_sjplp_rn(DVD)",
+     "anim_id": 16642
+    },
+    {
+     "id": 1520,
+     "name": "Co_jpRlp00B",
+     "anim": "Bco_sjplp_rn(DVD)",
+     "anim_id": 16642
+    },
+    {
+     "id": 1556,
+     "name": "Co_sjplp01F",
+     "anim": "sjprpu01(DVD)",
+     "anim_id": 32823
+    },
+    {
+     "id": 1557,
+     "name": "Co_sjplp02F",
+     "anim": "sjprpu02(DVD)",
+     "anim_id": 32824
+    },
+    {
+     "id": 1558,
+     "name": "Co_sjplp03F",
+     "anim": "sjprpu03(DVD)",
+     "anim_id": 32825
+    },
+    {
+     "id": 1567,
+     "name": "Bx_lp00",
+     "anim": "mbbx_lp(DVD)",
+     "anim_id": 16687
+    },
+    {
+     "id": 1575,
+     "name": "Bx_lrplp",
+     "anim": "bxkw_s4_wplp",
+     "anim_id": 101
+    },
+    {
+     "id": 1589,
+     "name": "Bx_haradada_03",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1592,
+     "name": "Bx_haradada_05",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1594,
+     "name": "Bx_haradada_07",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1596,
+     "name": "Bx_haradada_09",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1598,
+     "name": "Bx_haradada_10SP",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1599,
+     "name": "Bx_haradada_11",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1606,
+     "name": "Bx_haradada_13SP",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1608,
+     "name": "Bx_haradada_15SP",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1610,
+     "name": "Bx_haradada_17SP",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1612,
+     "name": "Bx_haradada_19SP",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1614,
+     "name": "Bx_haradada_21SP",
+     "anim": "ozbx_matrlp_c(DVD)",
+     "anim_id": 16692
+    },
+    {
+     "id": 1631,
+     "name": "Bx_6rplpRs",
+     "anim": "nabx_6rp(DVD)",
+     "anim_id": 16729
+    },
+    {
+     "id": 1632,
+     "name": "Bx_6rplpRs2",
+     "anim": "nabx_6rp(DVD)",
+     "anim_id": 16729
+    },
+    {
+     "id": 1634,
+     "name": "Bx_6rplp",
+     "anim": "nabx_6rplp(DVD)",
+     "anim_id": 16733
+    },
+    {
+     "id": 1642,
+     "name": "Bx_New_03",
+     "anim": "mbbx_4rplp(DVD)",
+     "anim_id": 16739
+    },
+    {
+     "id": 1659,
+     "name": "Bx_6rklp",
+     "anim": "kobx_skh2sage20(DVD)",
+     "anim_id": 16746
+    },
+    {
+     "id": 1663,
+     "name": "Co_syalp00",
+     "anim": "kzco_sylp01_10f(DVD)",
+     "anim_id": 16749
+    },
+    {
+     "id": 1687,
+     "name": "Bx_t_srpFG15",
+     "anim": "nabx_3rp(DVD)",
+     "anim_id": 16764
+    },
+    {
+     "id": 1695,
+     "name": "Bx_s_tlp00",
+     "anim": "Bbr_stlp(DVD)",
+     "anim_id": 16768
+    },
+    {
+     "id": 1727,
+     "name": "Bx_back_RP2",
+     "anim": "mbbx_4rplp(DVD)",
+     "anim_id": 16739
+    },
+    {
+     "id": 1729,
+     "name": "Bx_rkbRP_3_R_A",
+     "anim": "mbbx_lprkrp(DVD)",
+     "anim_id": 16792
+    },
+    {
+     "id": 1732,
+     "name": "Bx_rkbRP_3_R_Ad",
+     "anim": "mbbx_lprkrp_delay(DVD)",
+     "anim_id": 16795
+    },
+    {
+     "id": 1738,
+     "name": "Bx_s_trplp",
+     "anim": "bxss_hookupper(DVD)",
+     "anim_id": 16802
+    },
+    {
+     "id": 1747,
+     "name": "Bx_long_LP1",
+     "anim": "bxsj_yoko_bkblow(DVD)",
+     "anim_id": 16810
+    },
+    {
+     "id": 1753,
+     "name": "Bx_23rplp",
+     "anim": "bxyt_s3_st3grplp",
+     "anim_id": 106
+    },
+    {
+     "id": 1764,
+     "name": "Bx_GatGun03",
+     "anim": "nabx_lkrp2lp(DVD)",
+     "anim_id": 16820
+    },
+    {
+     "id": 1767,
+     "name": "Bx_FeSt_RPrv",
+     "anim": "ikbx_smkrp(DVD)",
+     "anim_id": 16822
+    },
+    {
+     "id": 1768,
+     "name": "Bx_lp00F",
+     "anim": "cbbx_lp00f(DVD)",
+     "anim_id": 16824
+    },
+    {
+     "id": 1772,
+     "name": "Bx_lprplpRs",
+     "anim": "ygbx_lprp(DVD)",
+     "anim_id": 16826
+    },
+    {
+     "id": 1775,
+     "name": "Bx_lprplp",
+     "anim": "kobx_12bdy(DVD)",
+     "anim_id": 16831
+    },
+    {
+     "id": 1852,
+     "name": "Bx_jeturaRv",
+     "anim": "mbbx_jetkick(DVD)",
+     "anim_id": 16871
+    },
+    {
+     "id": 1854,
+     "name": "Bx_jetura",
+     "anim": "mbbx_236rklp(DVD)",
+     "anim_id": 16873
+    },
+    {
+     "id": 1871,
+     "name": "Bx_10hit_03",
+     "anim": "nabx_4lkrk2lp(DVD)",
+     "anim_id": 16887
+    },
+    {
+     "id": 1873,
+     "name": "Bx_10hit_05",
+     "anim": "Hbr_ju04_05(DVD)",
+     "anim_id": 16889
+    },
+    {
+     "id": 1876,
+     "name": "Bx_10hit_08",
+     "anim": "mbbx_4rplp(DVD)",
+     "anim_id": 16739
+    }
+   ]
+  },
+  {
+   "wh_key": "1+3~t8.bryan",
+   "wh_name": "Gravity Brain Buster",
+   "wh_input": "1+3",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1883,
+   "motbin_move_name": "ThrmvLB2_00",
+   "anim_name": "naco_tukami2l(DVD)",
+   "anim_id": 33477,
+   "bank_index": 709,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation 1+3"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x8000",
+   "motbin_startup": 12,
+   "motbin_damage": 16384,
+   "mvl_row": 83,
+   "mvl_name": "Gravity Brain Buster",
+   "mvl_notation": "1+3",
+   "motbin_candidates": [
+    {
+     "id": 765,
+     "name": "ThrmvLB2_00i",
+     "anim": "naco_tukami2l(DVD)",
+     "anim_id": 33477
+    },
+    {
+     "id": 767,
+     "name": "ThrmvBB2_L0i",
+     "anim": "Yco_BcatchS(DVD)",
+     "anim_id": 33479
+    },
+    {
+     "id": 1883,
+     "name": "ThrmvLB2_00",
+     "anim": "naco_tukami2l(DVD)",
+     "anim_id": 33477
+    },
+    {
+     "id": 1889,
+     "name": "ThrmvBB2_L0",
+     "anim": "Yco_BcatchS(DVD)",
+     "anim_id": 33479
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x8000",
+    "source": "common.arc",
+    "section": 0,
+    "entry": 709,
+    "rel_offset": 3523552,
+    "size": 2176,
+    "format_word": 100,
+    "sha256": "2d57080bd30ef0c00900c403fc03108b0222c3a964c27df36116b1f9745d58a7",
+    "blob_file": "common_clips.bin"
+   }
+  },
+  {
+   "wh_key": "2~t8.bryan",
+   "wh_name": "SKULL 2",
+   "wh_input": "2",
+   "t7_id": "bryan_46",
+   "t7_notation": "2",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "motbin graph candidate exists but no MVL corroboration and/or non-unique \u2014 held as unmapped per no-guess rule",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 225,
+     "name": "Co_sJP_RP",
+     "anim": "naco_9rp(DVD)",
+     "anim_id": 32851
+    },
+    {
+     "id": 1524,
+     "name": "Co_jprp03",
+     "anim": "Bco_jprp03n(DVD)",
+     "anim_id": 16648
+    },
+    {
+     "id": 1525,
+     "name": "Co_jprp03F",
+     "anim": "Bco_jprp03n(DVD)",
+     "anim_id": 16648
+    },
+    {
+     "id": 1526,
+     "name": "Co_jprp03B",
+     "anim": "Bco_jprp03n(DVD)",
+     "anim_id": 16648
+    },
+    {
+     "id": 1559,
+     "name": "Co_sjprp03F",
+     "anim": "sjplpu03(DVD)",
+     "anim_id": 32839
+    },
+    {
+     "id": 1574,
+     "name": "Bx_lrprp",
+     "anim": "nabx_wp2rp(DVD)",
+     "anim_id": 16689
+    },
+    {
+     "id": 1591,
+     "name": "Bx_haradada_04",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1593,
+     "name": "Bx_haradada_06",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1595,
+     "name": "Bx_haradada_08",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1597,
+     "name": "Bx_haradada_10",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1605,
+     "name": "Bx_haradada_12SP",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1607,
+     "name": "Bx_haradada_14SP",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1609,
+     "name": "Bx_haradada_16SP",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1611,
+     "name": "Bx_haradada_18SP",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1613,
+     "name": "Bx_haradada_20SP",
+     "anim": "ozbx_matrlp_b(DVD)",
+     "anim_id": 16691
+    },
+    {
+     "id": 1615,
+     "name": "Bx_yasufinish",
+     "anim": "mbbx_machp(DVD)",
+     "anim_id": 16717
+    },
+    {
+     "id": 1616,
+     "name": "Bx_rp00",
+     "anim": "ygbx_rp00(DVD)",
+     "anim_id": 16718
+    },
+    {
+     "id": 1638,
+     "name": "Bx_6rplprk_Neo2",
+     "anim": "nabx_6rplprk(DVD)",
+     "anim_id": 16735
+    },
+    {
+     "id": 1644,
+     "name": "Bx_New_05Rv",
+     "anim": "ikbx_4rplp_rk(DVD)",
+     "anim_id": 16740
+    },
+    {
+     "id": 1657,
+     "name": "Bx_rk00F",
+     "anim": "kobx_skh30(DVD)",
+     "anim_id": 16745
+    },
+    {
+     "id": 1665,
+     "name": "Co_syarp00",
+     "anim": "naco_syrp(DVD)",
+     "anim_id": 16751
+    },
+    {
+     "id": 1677,
+     "name": "Bx_t_slksmsh",
+     "anim": "mbbx_2lkrp(DVD)",
+     "anim_id": 16757
+    },
+    {
+     "id": 1681,
+     "name": "Bx_t_slrk_rp",
+     "anim": "mbbx_2wkrp(DVD)",
+     "anim_id": 16760
+    },
+    {
+     "id": 1714,
+     "name": "Bx_midlprp",
+     "anim": "yobx_3lprp(DVD)",
+     "anim_id": 16779
+    },
+    {
+     "id": 1719,
+     "name": "Bx_super2RP",
+     "anim": "mbbx_4rplprp(DVD)",
+     "anim_id": 16783
+    },
+    {
+     "id": 1720,
+     "name": "Bx_sabaRP1",
+     "anim": "mbbx_machp(DVD)",
+     "anim_id": 16717
+    },
+    {
+     "id": 1721,
+     "name": "Bx_sabaRP2",
+     "anim": "Bbr_fsrp00(DVD)",
+     "anim_id": 16785
+    },
+    {
+     "id": 1728,
+     "name": "Bx_rkbRP_3",
+     "anim": "mbbx_lprkrp(DVD)",
+     "anim_id": 16792
+    },
+    {
+     "id": 1731,
+     "name": "Bx_rkbRP00",
+     "anim": "mbbx_lprkrp_delay(DVD)",
+     "anim_id": 16795
+    },
+    {
+     "id": 1734,
+     "name": "Bx_sideRP_0",
+     "anim": "mbbx_bx2kam(DVD)",
+     "anim_id": 16798
+    },
+    {
+     "id": 1736,
+     "name": "Bx_nage_RP",
+     "anim": "mbbx_strp(DVD)",
+     "anim_id": 16800
+    },
+    {
+     "id": 1737,
+     "name": "Bx_nage_RP02",
+     "anim": "bxhk_hookupper1_mox(DVD)",
+     "anim_id": 16801
+    },
+    {
+     "id": 1760,
+     "name": "Bx_SFcrash",
+     "anim": "mbbx_sfcrash(DVD)",
+     "anim_id": 16817
+    },
+    {
+     "id": 1763,
+     "name": "Bx_GatGun02",
+     "anim": "nabx_lk2rp(DVD)",
+     "anim_id": 16819
+    },
+    {
+     "id": 1766,
+     "name": "Bx_FeSt_RP",
+     "anim": "ikbx_smkrp(DVD)",
+     "anim_id": 16822
+    },
+    {
+     "id": 1769,
+     "name": "Bx_lp00_2F",
+     "anim": "mbbx_lp(DVD)",
+     "anim_id": 16687
+    },
+    {
+     "id": 1770,
+     "name": "Bx_lp00_3F",
+     "anim": "ygbx_lprp(DVD)",
+     "anim_id": 16826
+    },
+    {
+     "id": 1771,
+     "name": "Bx_lp00_2FC",
+     "anim": "ygbx_lprp(DVD)",
+     "anim_id": 16826
+    },
+    {
+     "id": 1778,
+     "name": "Bx_lp00_5F",
+     "anim": "nabx_lkrplp2rp(DVD)",
+     "anim_id": 16832
+    },
+    {
+     "id": 1838,
+     "name": "Bx_Sway_RP",
+     "anim": "isbx_blow(DVD)",
+     "anim_id": 16866
+    },
+    {
+     "id": 1862,
+     "name": "Bx_smkup",
+     "anim": "nobx_stpmup(DVD)",
+     "anim_id": 16881
+    },
+    {
+     "id": 1872,
+     "name": "Bx_10hit_04",
+     "anim": "Bbr_fslprp(DVD)",
+     "anim_id": 16888
+    },
+    {
+     "id": 1875,
+     "name": "Bx_10hit_07",
+     "anim": "mbbx_lprkrp(DVD)",
+     "anim_id": 16792
+    },
+    {
+     "id": 1878,
+     "name": "Bx_10hit_10",
+     "anim": "mbbx_machp(DVD)",
+     "anim_id": 16717
+    },
+    {
+     "id": 1881,
+     "name": "Bx_10hit_09_2",
+     "anim": "nobx_stpmup(DVD)",
+     "anim_id": 16881
+    },
+    {
+     "id": 1946,
+     "name": "Uk_sway_rp",
+     "anim": "ozbo_sway_rp(DVD)",
+     "anim_id": 16923
+    },
+    {
+     "id": 1959,
+     "name": "Bx_sabaRP22",
+     "anim": "Bbr_fsrp00(DVD)",
+     "anim_id": 16785
+    }
+   ]
+  },
+  {
+   "wh_key": "2+4~t8.bryan",
+   "wh_name": "Guillotine",
+   "wh_input": "2+4",
+   "t7_id": null,
+   "t7_notation": null,
+   "status": "mapped",
+   "motbin_move_id": 1885,
+   "motbin_move_name": "ThrmvRB2_00",
+   "anim_name": "msco_rtukami(DVD)",
+   "anim_id": 16898,
+   "bank_index": 514,
+   "evidence": [
+    "MVL name+notation exact",
+    "motbin cancel-graph: unique attack-class terminal at tier 0 (tier0=GROUP req0 entry, tier1=GROUP or standing-dispatcher req0 entry, tier2=other state-parent entry, tier3=any-parent chain) for notation 2+4"
+   ],
+   "confidence": "high",
+   "reason": null,
+   "bank": "0x4000",
+   "motbin_startup": 12,
+   "motbin_damage": 16384,
+   "mvl_row": 85,
+   "mvl_name": "Guillotine",
+   "mvl_notation": "2+4",
+   "motbin_candidates": [
+    {
+     "id": 1885,
+     "name": "ThrmvRB2_00",
+     "anim": "msco_rtukami(DVD)",
+     "anim_id": 16898
+    },
+    {
+     "id": 1890,
+     "name": "ThrmvBB2_R0",
+     "anim": "Yco_BcatchS(DVD)",
+     "anim_id": 33479
+    }
+   ],
+   "clip": {
+    "status": "resolved",
+    "bank": "0x4000",
+    "source": "bryrotsm.arc",
+    "section": 0,
+    "entry": 514,
+    "rel_offset": 3002408,
+    "size": 2152,
+    "format_word": 100,
+    "sha256": "955128cb324a5f0fd65352096ae812134ff51db2493f8a6f3cb34d6a60fd7de0",
+    "blob_file": "bry_clips.bin"
+   }
+  },
+  {
+   "wh_key": "3~t8.bryan",
+   "wh_name": "Mid Kick",
+   "wh_input": "3",
+   "t7_id": "bryan_49",
+   "t7_notation": "3",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "motbin graph candidate exists but no MVL corroboration and/or non-unique \u2014 held as unmapped per no-guess rule",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 168,
+     "name": "Co_Aokilk00",
+     "anim": "naco_aolowk1(DVD)",
+     "anim_id": 33044
+    },
+    {
+     "id": 170,
+     "name": "Co_AokilkL0",
+     "anim": "naco_aotlk1(DVD)",
+     "anim_id": 33046
+    },
+    {
+     "id": 172,
+     "name": "Co_ADwSlk00",
+     "anim": "Mco_aolok2(DVD)",
+     "anim_id": 33048
+    },
+    {
+     "id": 174,
+     "name": "Co_ADwSlkR0",
+     "anim": "Mco_aoTlk3(DVD)",
+     "anim_id": 33050
+    },
+    {
+     "id": 175,
+     "name": "Co_ADwSlkR1",
+     "anim": "Mco_aoTlk4(DVD)",
+     "anim_id": 33051
+    },
+    {
+     "id": 178,
+     "name": "Co_FRollk00",
+     "anim": "naco_Flk1(DVD)",
+     "anim_id": 33054
+    },
+    {
+     "id": 180,
+     "name": "Co_FRollkL0",
+     "anim": "naco_FTlk1(DVD)",
+     "anim_id": 33056
+    },
+    {
+     "id": 182,
+     "name": "Co_BRollk00",
+     "anim": "naco_Blk1(DVD)",
+     "anim_id": 33058
+    },
+    {
+     "id": 184,
+     "name": "Co_BRollkL0",
+     "anim": "naco_BTlk1(DVD)",
+     "anim_id": 33060
+    },
+    {
+     "id": 188,
+     "name": "Co_Rol_lrk",
+     "anim": "Mco_grshoper(DVD)",
+     "anim_id": 16400
+    },
+    {
+     "id": 191,
+     "name": "Co_Uokilk01",
+     "anim": "naco_utlk1(DVD)",
+     "anim_id": 33065
+    },
+    {
+     "id": 195,
+     "name": "Co_UokilkR1",
+     "anim": "coyt_ut_okigeri_l(DVD)",
+     "anim_id": 33067
+    },
+    {
+     "id": 1530,
+     "name": "Co_jplk00B",
+     "anim": "mbbx_sky7lk(DVD)",
+     "anim_id": 16654
+    },
+    {
+     "id": 1531,
+     "name": "Co_jpRlk00",
+     "anim": "Bco_sjpk_r(DVD)",
+     "anim_id": 16655
+    },
+    {
+     "id": 1532,
+     "name": "Co_jpRlk00F",
+     "anim": "Bco_sjpk_r(DVD)",
+     "anim_id": 16655
+    },
+    {
+     "id": 1533,
+     "name": "Co_jpRlk00B",
+     "anim": "Bco_sjpk_r(DVD)",
+     "anim_id": 16655
+    },
+    {
+     "id": 1534,
+     "name": "Co_jplk01",
+     "anim": "Bco_jplk01n(DVD)",
+     "anim_id": 16658
+    },
+    {
+     "id": 1535,
+     "name": "Co_jplk01F",
+     "anim": "Bco_jplk01n(DVD)",
+     "anim_id": 16658
+    },
+    {
+     "id": 1536,
+     "name": "Co_jplk01B",
+     "anim": "Bco_jplk01n(DVD)",
+     "anim_id": 16658
+    },
+    {
+     "id": 1537,
+     "name": "Co_jplk02",
+     "anim": "Bco_jplk02n(DVD)",
+     "anim_id": 16661
+    },
+    {
+     "id": 1538,
+     "name": "Co_jplk02F",
+     "anim": "Bco_jplk02n(DVD)",
+     "anim_id": 16661
+    },
+    {
+     "id": 1539,
+     "name": "Co_jplk02B",
+     "anim": "Bco_jplk02n(DVD)",
+     "anim_id": 16661
+    },
+    {
+     "id": 1540,
+     "name": "Co_jplk04",
+     "anim": "Bco_jplk04n(DVD)",
+     "anim_id": 16664
+    },
+    {
+     "id": 1541,
+     "name": "Co_jplk04F",
+     "anim": "Bco_jplk04n(DVD)",
+     "anim_id": 16664
+    },
+    {
+     "id": 1542,
+     "name": "Co_jplk04B",
+     "anim": "Bco_jplk04n(DVD)",
+     "anim_id": 16664
+    },
+    {
+     "id": 1561,
+     "name": "Co_sjplk11F",
+     "anim": "sjprki11(DVD)",
+     "anim_id": 16681
+    },
+    {
+     "id": 1562,
+     "name": "Co_sjplk12F",
+     "anim": "sjprki12(DVD)",
+     "anim_id": 16682
+    },
+    {
+     "id": 1563,
+     "name": "Co_sjplk13F",
+     "anim": "sjprki13(DVD)",
+     "anim_id": 16683
+    },
+    {
+     "id": 1617,
+     "name": "Bx_rp00R",
+     "anim": "ygbx_rp00(DVD)",
+     "anim_id": 16718
+    },
+    {
+     "id": 1618,
+     "name": "Bx_rplk",
+     "anim": "bru_rk2xg(DVD)",
+     "anim_id": 16720
+    },
+    {
+     "id": 1619,
+     "name": "Bx_rplkC",
+     "anim": "bru_rk2xg(DVD)",
+     "anim_id": 16720
+    },
+    {
+     "id": 1623,
+     "name": "Bx_lk00",
+     "anim": "mbbx_lk(DVD)",
+     "anim_id": 16723
+    },
+    {
+     "id": 1626,
+     "name": "Bx_hiRK_LKrv",
+     "anim": "bxod_s4_rk",
+     "anim_id": 104
+    },
+    {
+     "id": 1627,
+     "name": "Co_R_lk00L",
+     "anim": "naco_lfurik(DVD)",
+     "anim_id": 16727
+    },
+    {
+     "id": 1628,
+     "name": "Co_R_rk00R",
+     "anim": "naco_rfurik(DVD)",
+     "anim_id": 32810
+    },
+    {
+     "id": 1629,
+     "name": "Bx_lk2",
+     "anim": "bxss_wk(DVD)",
+     "anim_id": 16728
+    },
+    {
+     "id": 1668,
+     "name": "Co_syalk00",
+     "anim": "ygco_sylk(DVD)",
+     "anim_id": 16753
+    },
+    {
+     "id": 1691,
+     "name": "Bx_3rplk",
+     "anim": "bxss_3rplk(DVD)",
+     "anim_id": 16766
+    },
+    {
+     "id": 1697,
+     "name": "Bx_s_tlk00",
+     "anim": "nabx_st2hiz(DVD)",
+     "anim_id": 16770
+    },
+    {
+     "id": 1707,
+     "name": "Bx_lprplk00",
+     "anim": "mbbx_lprplk_01(DVD)",
+     "anim_id": 16774
+    },
+    {
+     "id": 1735,
+     "name": "Bx_sideRPLK",
+     "anim": "mbbx_bx2kamlk(DVD)",
+     "anim_id": 16799
+    },
+    {
+     "id": 1758,
+     "name": "Bx_SFcutlowRv",
+     "anim": "mbbx_sfcross(DVD)",
+     "anim_id": 16814
+    },
+    {
+     "id": 1759,
+     "name": "Bx_SFcutlow",
+     "anim": "mbbx_sfcrosscat(DVD)",
+     "anim_id": 16816
+    },
+    {
+     "id": 1773,
+     "name": "Bx_lprplk00Rs",
+     "anim": "ygbx_lprp(DVD)",
+     "anim_id": 16826
+    },
+    {
+     "id": 1794,
+     "name": "Bx_jplk00",
+     "anim": "Kbr_sjlk(DVD)",
+     "anim_id": 16845
+    },
+    {
+     "id": 1795,
+     "name": "Bx_jplk00F",
+     "anim": "Kbr_sjlk(DVD)",
+     "anim_id": 16845
+    },
+    {
+     "id": 1797,
+     "name": "Bx_rklk_00",
+     "anim": "nabx_lprk2lk(DVD)",
+     "anim_id": 16848
+    },
+    {
+     "id": 1811,
+     "name": "Bx_midLK_LK",
+     "anim": "nabx_lprklk2lk(DVD)",
+     "anim_id": 16853
+    },
+    {
+     "id": 1820,
+     "name": "Bx_LK_LK",
+     "anim": "nabx_lk2lk(DVD)",
+     "anim_id": 16854
+    },
+    {
+     "id": 1821,
+     "name": "Bx_hiRK_LK",
+     "anim": "mbbx_rklk01(DVD)",
+     "anim_id": 16855
+    },
+    {
+     "id": 1843,
+     "name": "Bx_Sway_LK",
+     "anim": "mbbx_karilow(DVD)",
+     "anim_id": 16870
+    },
+    {
+     "id": 1869,
+     "name": "Bx_elbowhiza",
+     "anim": "kobx_el2knee(DVD)",
+     "anim_id": 16885
+    },
+    {
+     "id": 1879,
+     "name": "Bx_10hit_07_2",
+     "anim": "nabx_lprk2lk(DVD)",
+     "anim_id": 16848
+    },
+    {
+     "id": 1880,
+     "name": "Bx_10hit_08_2",
+     "anim": "nabx_lprklk2lk(DVD)",
+     "anim_id": 16853
+    }
+   ]
+  },
+  {
+   "wh_key": "4~t8.bryan",
+   "wh_name": "SKULL 4",
+   "wh_input": "4",
+   "t7_id": "bryan_71",
+   "t7_notation": "4",
+   "status": "unmapped",
+   "motbin_move_id": null,
+   "motbin_move_name": null,
+   "anim_name": null,
+   "anim_id": null,
+   "bank_index": null,
+   "evidence": [],
+   "confidence": null,
+   "reason": "motbin graph candidate exists but no MVL corroboration and/or non-unique \u2014 held as unmapped per no-guess rule",
+   "bank": null,
+   "motbin_startup": null,
+   "motbin_damage": null,
+   "mvl_row": null,
+   "mvl_name": null,
+   "mvl_notation": null,
+   "motbin_candidates": [
+    {
+     "id": 169,
+     "name": "Co_Aokirk00",
+     "anim": "naco_aomk1(DVD)",
+     "anim_id": 33045
+    },
+    {
+     "id": 171,
+     "name": "Co_AokirkL0",
+     "anim": "naco_aotmk1(DVD)",
+     "anim_id": 33047
+    },
+    {
+     "id": 173,
+     "name": "Co_ADwSrk00",
+     "anim": "Mco_aomk2(DVD)",
+     "anim_id": 33049
+    },
+    {
+     "id": 176,
+     "name": "Co_ADwSrkR0",
+     "anim": "Mco_aoTmk3(DVD)",
+     "anim_id": 33052
+    },
+    {
+     "id": 177,
+     "name": "Co_ADwSrkR1",
+     "anim": "Mco_aoTmk4(DVD)",
+     "anim_id": 33053
+    },
+    {
+     "id": 179,
+     "name": "Co_FRolrk00",
+     "anim": "naco_Fmk1(DVD)",
+     "anim_id": 33055
+    },
+    {
+     "id": 180,
+     "name": "Co_FRollkL0",
+     "anim": "naco_FTlk1(DVD)",
+     "anim_id": 33056
+    },
+    {
+     "id": 181,
+     "name": "Co_FRolrkL0",
+     "anim": "naco_FTmk1(DVD)",
+     "anim_id": 33057
+    },
+    {
+     "id": 183,
+     "name": "Co_BRolrk00",
+     "anim": "naco_Bmk1(DVD)",
+     "anim_id": 33059
+    },
+    {
+     "id": 185,
+     "name": "Co_BRolrkL0",
+     "anim": "naco_BTmk1(DVD)",
+     "anim_id": 33061
+    },
+    {
+     "id": 188,
+     "name": "Co_Rol_lrk",
+     "anim": "Mco_grshoper(DVD)",
+     "anim_id": 16400
+    },
+    {
+     "id": 193,
+     "name": "Co_Uokirk01",
+     "anim": "naco_utmk1(DVD)",
+     "anim_id": 33066
+    },
+    {
+     "id": 201,
+     "name": "Co_UokirkR1",
+     "anim": "naco_utTmk1(DVD)",
+     "anim_id": 33072
+    },
+    {
+     "id": 1543,
+     "name": "Co_jprk00B",
+     "anim": "sjplki00(DVD)",
+     "anim_id": 16667
+    },
+    {
+     "id": 1544,
+     "name": "Co_jprk01",
+     "anim": "Bco_jprk01n(DVD)",
+     "anim_id": 16668
+    },
+    {
+     "id": 1545,
+     "name": "Co_jprk01F",
+     "anim": "Bco_jprk01n(DVD)",
+     "anim_id": 16668
+    },
+    {
+     "id": 1546,
+     "name": "Co_jprk01B",
+     "anim": "Bco_jprk01n(DVD)",
+     "anim_id": 16668
+    },
+    {
+     "id": 1547,
+     "name": "Co_jprk02",
+     "anim": "Bco_jprk02n(DVD)",
+     "anim_id": 16671
+    },
+    {
+     "id": 1548,
+     "name": "Co_jprk02F",
+     "anim": "Bco_jprk02n(DVD)",
+     "anim_id": 16671
+    },
+    {
+     "id": 1549,
+     "name": "Co_jprk02B",
+     "anim": "Bco_jprk02n(DVD)",
+     "anim_id": 16671
+    },
+    {
+     "id": 1550,
+     "name": "Co_jprk04",
+     "anim": "Bco_jprk04n(DVD)",
+     "anim_id": 16674
+    },
+    {
+     "id": 1551,
+     "name": "Co_jprk04F",
+     "anim": "Bco_jprk04n(DVD)",
+     "anim_id": 16674
+    },
+    {
+     "id": 1552,
+     "name": "Co_jprk04B",
+     "anim": "Bco_jprk04n(DVD)",
+     "anim_id": 16674
+    },
+    {
+     "id": 1553,
+     "name": "Co_jpRrk00",
+     "anim": "Bco_sjprk_r(DVD)",
+     "anim_id": 16677
+    },
+    {
+     "id": 1554,
+     "name": "Co_jpRrk00F",
+     "anim": "Bco_sjprk_r(DVD)",
+     "anim_id": 16677
+    },
+    {
+     "id": 1555,
+     "name": "Co_jpRrk00B",
+     "anim": "Bco_sjprk_r(DVD)",
+     "anim_id": 16677
+    },
+    {
+     "id": 1564,
+     "name": "Co_sjprk01F",
+     "anim": "coss_s4_sjprk01",
+     "anim_id": 98
+    },
+    {
+     "id": 1565,
+     "name": "Co_sjprk02F",
+     "anim": "coss_s4_sjprk02",
+     "anim_id": 99
+    },
+    {
+     "id": 1566,
+     "name": "Co_sjprk03F",
+     "anim": "coss_s4_sjprk03",
+     "anim_id": 100
+    },
+    {
+     "id": 1602,
+     "name": "Bx_harafinish",
+     "anim": "ozbx_matrlp_f(DVD)",
+     "anim_id": 16704
+    },
+    {
+     "id": 1624,
+     "name": "Bx_rk00",
+     "anim": "bxod_s4_rk",
+     "anim_id": 102
+    },
+    {
+     "id": 1627,
+     "name": "Co_R_lk00L",
+     "anim": "naco_lfurik(DVD)",
+     "anim_id": 16727
+    },
+    {
+     "id": 1628,
+     "name": "Co_R_rk00R",
+     "anim": "naco_rfurik(DVD)",
+     "anim_id": 32810
+    },
+    {
+     "id": 1629,
+     "name": "Bx_lk2",
+     "anim": "bxss_wk(DVD)",
+     "anim_id": 16728
+    },
+    {
+     "id": 1633,
+     "name": "Bx_6rplprkRs",
+     "anim": "nabx_6rp(DVD)",
+     "anim_id": 16729
+    },
+    {
+     "id": 1635,
+     "name": "Bx_6rplprkRs2",
+     "anim": "nabx_6rplp(DVD)",
+     "anim_id": 16733
+    },
+    {
+     "id": 1636,
+     "name": "Bx_6rplprk",
+     "anim": "nabx_6rplprk(DVD)",
+     "anim_id": 16735
+    },
+    {
+     "id": 1643,
+     "name": "Bx_New_04",
+     "anim": "ikbx_4rplp_rk(DVD)",
+     "anim_id": 16740
+    },
+    {
+     "id": 1669,
+     "name": "Co_syark00",
+     "anim": "ygco_syrk(DVD)",
+     "anim_id": 32858
+    },
+    {
+     "id": 1698,
+     "name": "Bx_s_tlk00_R",
+     "anim": "nabx_st2hiz(DVD)",
+     "anim_id": 16770
+    },
+    {
+     "id": 1701,
+     "name": "Co_s_trk00",
+     "anim": "new_stlk(DVD)",
+     "anim_id": 32862
+    },
+    {
+     "id": 1708,
+     "name": "Bx_lprk",
+     "anim": "kobx_12spnrk(DVD)",
+     "anim_id": 16775
+    },
+    {
+     "id": 1730,
+     "name": "Bx_rkbRP_3_R_D",
+     "anim": "mbbx_lprkrp(DVD)",
+     "anim_id": 16792
+    },
+    {
+     "id": 1733,
+     "name": "Bx_rkbRP_3_R_Dd",
+     "anim": "mbbx_lprkrp_delay(DVD)",
+     "anim_id": 16795
+    },
+    {
+     "id": 1774,
+     "name": "Bx_lprkRs",
+     "anim": "ygbx_lprp(DVD)",
+     "anim_id": 16826
+    },
+    {
+     "id": 1787,
+     "name": "Bx_GatGun04",
+     "anim": "nabx_lkrplp2rk(DVD)",
+     "anim_id": 16838
+    },
+    {
+     "id": 1790,
+     "name": "Bx_4RPRK",
+     "anim": "nabx_4rprk(DVD)",
+     "anim_id": 16841
+    },
+    {
+     "id": 1791,
+     "name": "Bx_4RPLPRK",
+     "anim": "ikbx_4rplp_rk(DVD)",
+     "anim_id": 16740
+    },
+    {
+     "id": 1792,
+     "name": "Bx_jprk00F",
+     "anim": "Bbr_jpkkt(DVD)",
+     "anim_id": 16843
+    },
+    {
+     "id": 1793,
+     "name": "Bx_jprk00",
+     "anim": "Bbr_jpkkt(DVD)",
+     "anim_id": 16843
+    },
+    {
+     "id": 1796,
+     "name": "Bx_rprk_00",
+     "anim": "nabx_lp2rk(DVD)",
+     "anim_id": 16847
+    },
+    {
+     "id": 1800,
+     "name": "Bx_neeco_RK",
+     "anim": "nabx_hiz2hiz(DVD)",
+     "anim_id": 16850
+    },
+    {
+     "id": 1823,
+     "name": "Bx_midco_RK",
+     "anim": "mbbx_rklkrk(DVD)",
+     "anim_id": 16857
+    },
+    {
+     "id": 1840,
+     "name": "Bx_Sway_RPRK",
+     "anim": "mbbx_blow2rk(DVD)",
+     "anim_id": 16867
+    },
+    {
+     "id": 1841,
+     "name": "Bx_Sway_RK",
+     "anim": "bxod_s4_sway_rk",
+     "anim_id": 109
+    },
+    {
+     "id": 1851,
+     "name": "Bx_hadoh04",
+     "anim": "mbbx_jetkick(DVD)",
+     "anim_id": 16871
+    },
+    {
+     "id": 1863,
+     "name": "Bx_smklrk",
+     "anim": "nabx_lkk2mach(DVD)",
+     "anim_id": 16882
+    },
+    {
+     "id": 1870,
+     "name": "Bx_10hit_02",
+     "anim": "nabx_smk2hiz(DVD)",
+     "anim_id": 16886
+    },
+    {
+     "id": 1874,
+     "name": "Bx_10hit_06",
+     "anim": "nabx_lp2rk(DVD)",
+     "anim_id": 16847
+    },
+    {
+     "id": 1877,
+     "name": "Bx_10hit_09",
+     "anim": "ikbx_4rplp_rk(DVD)",
+     "anim_id": 16740
+    }
+   ]
+  }
+ ]
+}
