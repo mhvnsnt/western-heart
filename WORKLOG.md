@@ -4006,3 +4006,34 @@ downstream witness/resolution, not canon). Deletions: none.
   when #1245 landed, false now that this chunk covers it. That guard now asserts the new
   TIMERP/TIMELK mappings (wall-stun guard unchanged); no other canon test mentions the
   timing prose (scanned all canon-related test files on the branch head).
+## 2026-10-30 — Pantera wall-stun throw gets a sweep setup (WALLSTUN.) (PR #1247)
+- Pantera t7.king_247 'During enemy wall stun... f, hcf+1' (Shining Torpedo) left the
+  r17 failing list as a parse error: canon left the prose untouched, so the sweep
+  parse-ERRed before any setup ran. The honest treatment is a setup, not an n/a and
+  not a canon strip: the engine HAS the state — fighter.js 'wallsplat', entered at
+  the arena wall with the WALL_SPLAT_STUN window of 0.55 s (game/js/combat-core.js).
+- game/js/movesets.js: canon maps 'During enemy wall stun... <input>' to
+  'WALLSTUN.<input>' (rule anchored to the literal prose prefix; blast radius across
+  the fresh-main core-8 movesets is exactly this one row — dio/burger/chatur/deathfang
+  files hash-match main, cyborgx and demonio fresh, all 0 'wall stun' hits; pantera's
+  hits are all inside king_247's own fields). The CROUCHFOE/TIMER comments that called
+  the wall-stun row 'deliberately NOT covered' are updated to point at this chunk.
+- test/e2e/moveset-sweep.page.js: setup('WALLSTUN') plays the stated situation — foe
+  _enter('wallsplat') with stun 0.55, velocities zeroed, attacker closed to the 0.7 m
+  contactFirst spacing — the way setup('CROUCHFOE') plays a crouching foe and
+  setup('TIMER*') plays an attacking foe. A neutral press could never be a wall throw.
+- Proof: new test/wall-stun.test.mjs (canon mapping, WALLSTUN setup case, setup-before-
+  press order, guards) + updated guards in test/approach-crouch.test.mjs and
+  test/timing-attack.test.mjs, which both asserted the wall-stun prose stayed untouched
+  (found by pre-scanning the other canon tests' guards before pushing, the #1246
+  lesson). Local: new + updated tests 12/12, neighbouring landed canon tests 14/14,
+  new test fails on unedited files (not vacuous), and the real sweep-page parse()
+  accepts 'WALLSTUN.f,hcf+1' (pre WALLSTUN, one hit: motion f,b,d/b,d,d/f + f+1) while
+  rejecting the old prose. CI game-unit-tests on the PR head is the proof record.
+- Residual, stated plainly: mechanism proof (canon + setup + parse), not a witnessed
+  full-fight pass — the next sweep attempts king_247 against a wall-splatted foe, and
+  whether the throw reaches exec there is what that sweep reports. NOT in this chunk:
+  king_110 (trailing hit-condition, meaning unclear), king_150 'low*' (data gap),
+  king_158 'JGS, N' (stance+neutral, unclear), alisa_186 '(Clockwork Spring Middle) B'
+  (phase-entry data not established), and the generic 'Time with enemy attack...' REV
+  rows (input field already REV.b+1+3, absent from the r17 failing list).

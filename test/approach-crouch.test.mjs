@@ -14,8 +14,9 @@
 // timed-opponent-attack setup, a different chunk — and are now covered by the
 // timing-attack chunk (TIMERP/TIMELK/TIMERK + sweep setup); the guard test below
 // was updated in that chunk to assert the new mappings. The wall-stun row
-// ('During enemy wall stun...', t7.king_247) is still a separate chunk: its
-// wall-stun state is not established.
+// ('During enemy wall stun...', t7.king_247) is now covered by the wall-stun chunk
+// (WALLSTUN. canon + sweep setup); the guard test below was updated in that chunk
+// to assert the new mapping.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -50,10 +51,10 @@ test('sweep plays the prefix setup before pressing the row', () => {
   assert.ok(setupCall !== -1 && pressCall !== -1 && setupCall < pressCall, 'prefix setup must run before the press inside sweepOnce');
 });
 
-test('guards: wall-stun prose is untouched by the CROUCHFOE rule; timing prose now maps to TIMERP/TIMELK (timing-attack chunk)', () => {
+test('guards: wall-stun prose now maps to WALLSTUN. (wall-stun chunk); timing prose maps to TIMERP/TIMELK (timing-attack chunk)', () => {
   assert.equal(canonNotation('Time with enemy right punch... b+1+3'), 'TIMERP.b+1+3');
   assert.equal(canonNotation('Time with enemy left kick... b+2+4'), 'TIMELK.b+2+4');
-  assert.equal(canonNotation('During enemy wall stun... f, hcf+1'), 'During enemy wall stun... f,hcf+1');
+  assert.equal(canonNotation('During enemy wall stun... f, hcf+1'), 'WALLSTUN.f,hcf+1');
   assert.equal(canonNotation('b+2, 4 (only during hit from front)'), 'b+2,4 only during hit from front');
   assert.equal(canonNotation('CROUCHFOE.d+1+3'), 'CROUCHFOE.d+1+3');
 });

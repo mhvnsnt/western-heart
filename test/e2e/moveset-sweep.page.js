@@ -93,6 +93,13 @@
         const ok = o.tryAttack(mv) && o.state === 'attack';
         return ok ? ('opponent attacking with ' + mv + ' (timed ' + (pre === 'TIMERP' ? 'right punch' : pre === 'TIMELK' ? 'left kick' : 'right kick') + ')') : ('opponent ' + mv + ' did not start');
       }
+      // Wall-stun row (sweep 2026-10-30, Pantera t7.king_247): Tekken wall-splat throw,
+      // pressed while the foe is stuck to the wall. The engine's 'wallsplat' state
+      // (fighter.js, entered at the arena wall with the WALL_SPLAT_STUN window of
+      // 0.55 s) is exactly that situation, so the sweep plays it directly — foe
+      // wall-splatted with the full stun window, attacker closed to the 0.7 m
+      // contactFirst spacing — not a neutral press, which could never be a wall throw.
+      case 'WALLSTUN': o._enter('wallsplat'); o.stun = 0.55; o.vx = 0; o.vy = 0; f.root.position.x = o.root.position.x - 0.7; return 'foe wall-splatted (wall stun), approached (close)';
       // AIR. rows: Tekken jump attacks are pressed while airborne, so jump first (hold u
       // past the 200 ms tap/sidestep window in input.js) and press only once airborne.
       // The peak of a forward jump is not a state the engine models: a peak row is
