@@ -3760,3 +3760,27 @@ No bucket exists yet — nothing uploaded to R2, no account created.
   `(During Rage) 1,1,f,3,2` (parses to `R.1,1,f,3,2`; failure is downstream and
   needs trace evidence), `f,d,d/f+2,1+2,f,f (first hit only)` (trailing `f,f`
   dir-only tail; needs trace evidence). Deletions: none.
+
+## 2026-10-30 — Back-to-wall sweep rows -> WALL. canon + zero-width hygiene (PR #1239)
+- What: `game/js/movesets.js` canonNotation gains two rules: (1) a '(back to wall)' /
+  '(Back to wall)' prefix maps to 'WALL.' (placed next to the existing 'back to opponent'
+  -> BT. rule, before the generic paren-strip that used to reduce the row to the
+  unparseable 'back to wall.b,b,U/B'); (2) zero-width characters (\u200b/\u200c/\u200d/
+  \ufeff) are stripped at the top of canonNotation — the Cyborg X key carries \u200b
+  separators between its steps, straight from the scraped T8 list. New
+  `test/wall-context.test.mjs` covers both rows plus guards (BT., AIR., plain
+  crouch-dash, H.2+3 unchanged).
+- Why: 3 rows in docs/proof/moveset-sweep-20261028/r17-core8-failing.json were
+  'unparsed' for this one reason (Pantera, Cyborg X, Burger — the Cyborg X row is the
+  T8 Alisa '[[Wall Jump Attack]]'). A wall-jump attack's input has no button, and the
+  sweep's own taxonomy classes buttonless inputs as movement (ok:null, n/a), not
+  failures — so on the next sweep these rows leave the failing list. Stated plainly:
+  this is a reclassification to the sweep's movement class, not a witnessed pass; a
+  wall-position witness (pressing the motion with the back actually at the wall, and
+  checking the wall-jump attack state) is the recorded residual. No fighter data was
+  touched — shared canon code only.
+- Proof: new test 2/2 pass locally against the exact edited movesets.js (node --test);
+  the real sweep-page parse() run over the new canon outputs returns motionOnly for
+  both attested spellings (was: parse error 'token Back to wall.b is not a stick/button
+  input'). CI's game-unit-tests run on the PR head is the merge arbiter, as with
+  PR #1234 / #1238. Deletions: none.
