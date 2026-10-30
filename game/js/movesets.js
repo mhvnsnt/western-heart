@@ -553,8 +553,17 @@ export function canonNotation(n) {
   s = s.replace(/^while down\s*\(?facing up\)?\s*/i, 'FUFT.');
   // T7 list jump attacks: '(During Vertical Jump) 1' is u+1 (Tekken jumps attack on the jump input)
   s = s.replace(/^\(?during vertical jump\)?\s*(?=[1-4])/i, 'u+');
-  // leading stance token then comma ('JGS, 1+4' T7 king list) -> 'JGS.1+4'
-  s = s.replace(/^([A-Z]{2,5}),\s*(?=[udfbUDF1-4(])/, (m, st) => (/^(?:[UDFB]|UF|UB|DF|DB|WS|FC|SS|BT)$/.test(st) ? m : st + '.'));
+  // leading stance token then comma ('JGS, 1+4' T7 king list) -> 'JGS.1+4'.
+  // Neutral follow-up (sweep 2026-10-30, Pantera t7.king_158 'JGS, N'): N (stick at
+  // neutral) joins the lookahead, so the row canonicalises to 'JGS.N' — the sweep's
+  // parse() already treats N as a direction step, so the row reads as motion-only
+  // (no button), the sweep's own movement class, not a failure. The row's own data
+  // confirms it has no attack to witness (name '*', damage 0, hit level '-'), unlike
+  // Dio's 'DFLIP N' (space form, Hyakkigozan, 23 dmg / low / KND), which this rule
+  // deliberately does NOT touch: that row is a real strike whose entry input is not
+  // established, and it stays open. Blast radius across the fresh-main core-8
+  // movesets: exactly this one row — it is the only leading-stance-comma-N input.
+  s = s.replace(/^([A-Z]{2,5}),\s*(?=[udfbUDFN1-4(])/, (m, st) => (/^(?:[UDFB]|UF|UB|DF|DB|WS|FC|SS|BT)$/.test(st) ? m : st + '.'));
   s = s.replace(/^(ss|bt|fc)(?=[1-4])/i, (m) => m.toUpperCase() + '.');
   s = s.replace(/^([A-Z][A-Z0-9_]*)\.\+(?=[1-4])/, '$1.');
   s = s.replace(/\*\*$/, '*');
