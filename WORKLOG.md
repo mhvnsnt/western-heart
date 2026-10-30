@@ -4071,3 +4071,31 @@ downstream witness/resolution, not canon). Deletions: none.
   front hit is what that sweep reports. NOT in this chunk: king_150 'low*' (data gap),
   king_158 'JGS, N' (stance+neutral, unclear), alisa_186 '(Clockwork Spring Middle) B'
   (phase-entry data not established).
+## 2026-10-30 — Pantera stance-neutral row leaves the failing list as movement (PR #1250)
+- Pantera t7.king_158 'JGS, N' (name '*', damage 0, hit level '-') left the r17 failing
+  list as a parse error: the leading-stance-comma canon rule required a button after
+  the comma, so 'JGS, N' fell through to 'JGS,N', which the sweep parse() rejects.
+  The honest treatment is the sweep's own movement class, not a pass and not a new
+  setup: N (stick at neutral) is already a direction step in the sweep's parse(), so
+  the row canonicalises to 'JGS.N' and reads as motion-only (no button) — the same
+  taxonomy as the WALL. rows in #1239. The row's own data confirms it has no attack
+  to witness (name '*', damage 0, hit level '-').
+- game/js/movesets.js: the leading-stance-comma rule's lookahead gains N, plus a
+  comment naming the row, the movement grade, and the exclusion below. Blast radius
+  across the fresh-main core-8 movesets is exactly this one row — it is the only
+  leading-stance-comma-N input (pantera, cyborgx, dio, burger, chatur, deathfang,
+  demonio files hash-match main, bruno fresh, 0 other hits).
+- Proof: new test/stance-neutral.test.mjs (canon mapping, the real sweep page
+  parse() reconstructed from test/e2e/moveset-sweep.page.js proving 'JGS.N' is
+  motion-only with pre JGS, guards proving neighbouring stance-comma forms and the
+  DFLIP exclusion below are unchanged). Local: new test 3/3 against the exact
+  edited files, fails on unedited files (not vacuous), and 33 neighbouring canon
+  tests pass against the edited files. CI game-unit-tests on the PR head is the
+  proof record.
+- Residual, stated plainly: mechanism proof (canon + parse), not a witnessed
+  full-fight pass — the next sweep reports king_158 as movement, and entering
+  Jaguar Step itself is not witnessed by this chunk. NOT in this chunk: Dio's
+  'DFLIP N' (space form, Hyakkigozan, 23 dmg / low / KND) is a real strike whose
+  entry input is not established, so it stays open and this rule deliberately does
+  not touch the space form; king_150 'low*' (data gap); alisa_186 '(Clockwork
+  Spring Middle) B' (phase-entry data not established).
