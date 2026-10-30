@@ -567,6 +567,22 @@ export function canonNotation(n) {
   s = s.replace(/^(ss|bt|fc)(?=[1-4])/i, (m) => m.toUpperCase() + '.');
   s = s.replace(/^([A-Z][A-Z0-9_]*)\.\+(?=[1-4])/, '$1.');
   s = s.replace(/\*\*$/, '*');
+  /* Clockwork back step (sweep 2026-10-30, Cyborg X t7.alisa_186 '(Clockwork Spring Middle) B'):
+     Tekken's B is a held-back direction, not a button (buttons are 1-4) — and this row
+     carries no attack to witness (t7 damage 0, hit level '-'), unlike Dio's 'DFLIP N'
+     (space form, Hyakkigozan, 23 dmg / low / KND, a real strike, deliberately untouched).
+     The paren names the move the step is taken during: 'Clockwork Spring Middle' is the
+     name of the CLOCKWORK.3 row in this same moveset, and the t7 Clockwork rows already
+     use the CLOCKWORK. prefix ('(During Clockwork) 3' -> 'CLOCKWORK.3'), so the row
+     canonicalises to 'CLOCKWORK.B' — the t7-dataset twin of the existing 'CLK.B'
+     Clockwork Cancel row. The sweep's parse() treats B as a direction step, so the row
+     reads as motion-only (no button), the sweep's own movement class, not a failure and
+     not a pass. This MUST run before the final paren-to-words rule below, which would
+     otherwise turn the move name into bare words parse() rejects. Residual, stated
+     plainly: mechanism proof (canon + parse), not a witnessed full-fight pass — what
+     holding back during Spring Middle actually does in play (cancel/transition) is what
+     the next sweep reports, and entering Clockwork itself is not witnessed by this chunk. */
+  s = s.replace(/^\(clockwork spring middle\)\s+(?=[B])/i, 'CLOCKWORK.');
   s = s.replace(/\(([^()]*)\)/g, '$1');
   s = s.replace(/\s*([,~:+])\s*/g, '$1');
   return s;
