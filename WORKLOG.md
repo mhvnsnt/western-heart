@@ -3761,7 +3761,7 @@ No bucket exists yet — nothing uploaded to R2, no account created.
   needs trace evidence), `f,d,d/f+2,1+2,f,f (first hit only)` (trailing `f,f`
   dir-only tail; needs trace evidence). Deletions: none.
 
-## 2026-10-30 — Back-to-wall sweep rows -> WALL. canon + zero-width hygiene (PR #TBD)
+## 2026-10-30 — Back-to-wall sweep rows -> WALL. canon + zero-width hygiene (PR #1239)
 - What: `game/js/movesets.js` canonNotation gains two rules: (1) a '(back to wall)' /
   '(Back to wall)' prefix maps to 'WALL.' (placed next to the existing 'back to opponent'
   -> BT. rule, before the generic paren-strip that used to reduce the row to the
