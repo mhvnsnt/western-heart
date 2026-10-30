@@ -502,6 +502,22 @@ export function canonNotation(n) {
      lists ('df+1,&amp;#58;2*') decode to their character; a frame-count note on a hold
      ('1+2* (40f)') is the same held input. */
   s = s.replace(/&amp;/g, '&').replace(/&#(\d+);/g, (m, c) => String.fromCharCode(+c));
+  /* Just-frame marker (sweep 2026-10-30, Demonio 'CD.df#1' / 'CD.df#2'): '#' between a
+     diagonal direction and a button is Tekken's just-frame mark — the rows' own t8_id
+     spells the same slot '${justFrame}' ('Jin-CD.df${justFrame}1'), and the same move
+     already exists in this moveset in the ':' spelling ('CD.d/f:1', same name, same
+     anim_ref, same on-block -13), where ':' is the codebase's just-frame separator
+     (the sweep's parse() splits on ':' and presses ':' steps on a 6-frame cadence vs
+     9 for ','). So 'CD.df#1' -> 'CD.d/f:1'. This MUST run after the entity decode
+     above: '&amp;#58;' must decode to ':' first, or a '#' rule here would corrupt it
+     into ':58;'. Narrow: only a diagonal direction immediately followed by '#' and a
+     button — prose '#' elsewhere is untouched, and the ':' row keeps its own slot
+     (_prepare only adds a canon slot when not already present), so the sweep equips
+     the # row on its canonical notation through the loadout. Residual, stated plainly:
+     parse + loadout attempt, not a witnessed frame-perfect just-frame pass — the ':'
+     cadence is the codebase's existing just-frame representation, not a frame-perfect
+     timing gate. Blast radius across the core-8 movesets: exactly these two rows. */
+  s = s.replace(/((?:[dD]\/[fFbB]|[uU]\/[fFbB])|(?:df|db|uf|ub|DF|DB|UF|UB))#(?=[1-4])/g, (m, t) => (_DIAG[t] || t) + ':');
   s = s.replace(/^(ws|WS|fc|FC|bt|BT|ss|SS)\+(?=[1-4udfbUDFB])/, (m, st) => st.toUpperCase() + '.');
   s = s.replace(/([1-4*])\s*\(\d+\s*f\)/gi, '$1');
   s = s.replace(/,:/g, ':');
