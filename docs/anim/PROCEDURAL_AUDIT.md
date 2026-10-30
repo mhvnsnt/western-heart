@@ -179,7 +179,791 @@ All T3-baked clips already in the repo are **fallback, to be replaced from T5/6/
 
 | Asset | T3 data | Status | Reason T3 was used (no T5/6/7/8/TTT2 source available) |
 |---|---|---|---|
-| `game/assets/movesets/pantera.json` `string_step_plans` (60 keys: 31 canonical LP1/RP2 strings + 26 twins + 3 spelling variants) + `game/js/fighter.js` step-plan branch | King T3 bank rows for verified steps only (rows 36, 38, 39, 40, 50, 51, 52, 97, 98, 198, 200, 202, 203, 110) | fallback, to be replaced from T7 King extraction when clip bytes land | T7 King (`kinmot.bin`, 2,787 moves) is decoded, but 0x8000-bank clip bytes are not in tkdata (pakchunk/live-memory only) and requirement codes (636/811/80/81/72/217) + the aliases table are unresolved, so no T7 step clip can be wired yet. T3 step rows stand in for verified steps only; review/unmapped steps play no bank row. Re-match against T7 King rows when extraction lands. Rows 35/220 are never used for standing steps. |
+| `game/assets/movesets/pantera.json` `string_step_plans` (60 keys: 31 canonical LP1/RP2 strings + 26 twins + 3 spelling variants) + `game/js/fighter.js` step-plan branch | King T3 bank rows for verified steps only (rows 36, 38, 39, 40, 49, 50, 51, 52, 97, 98, 198, 200, 202, 203, 110) | fallback, to be replaced from T7 King extraction when clip bytes land | T7 King (`kinmot.bin`, 2,787 moves) is decoded, but 0x8000-bank clip bytes are not in tkdata (pakchunk/live-memory only) and requirement codes (636/811/80/81/72/217) + the aliases table are unresolved, so no T7 step clip can be wired yet. T3 step rows stand in for verified steps only; review/unmapped steps play no bank row. Re-match against T7 King rows when extraction lands. Rows 35/220 are never used for standing steps. |
+
+Follow-up (2026-10-25, Batch 1 follow-up PR): rows 97 (reused for `b+2,1+2` step 2, VERIFIED) and 49 (`u/b+1` steps, SOFT-flagged, never verified-exact) are T3 FALLBACK rows under this same gate; re-match to T7 King rows when extraction lands. Job 4 sequence-shape evidence is adjudicated in docs/movesets/BATCH1-STEP-PLANS-2026-10-24.md (follow-up section); no Job 4 join promotes a step by itself.
+### Batch 2 step plans (Pantera LK3/RK4 strings, 2026-10-25, docs/movesets/BATCH2-STEP-PLANS-2026-10-25.md)
+
+| Asset | T3 data | Status | Reason T3 was used (no T5/6/7/8/TTT2 source available) |
+|---|---|---|---|
+| `game/assets/movesets/pantera.json` `string_step_plans` (27 new keys: 15 canonical LK3/RK4 strings + 12 twins/variants; 87 total with Batch 1) | King T3 bank rows for the single verified step (row 197, `d/f+4,4` step 2) + one review candidate held unplayed (row 135, `d/f+4` step 1) | fallback, to be replaced from T7 King extraction when clip bytes land | Same T7-extraction block as Batch 1 (0x8000-bank clip bytes not in tkdata, requirement codes + aliases unresolved), so no T7 step clip can be wired yet. T3 step rows stand in for verified steps only; review/unmapped steps play no bank row. Batch 2 wires zero SOFT fills (all 10 Batch 2 Job 3 targets have empty pass-all lists) and zero Job 4 joins (no Batch 2 step prefix carries a Job 4 king row). Re-match rows 197/135 against T7 King rows when extraction lands. Rows 35/220 appear in no Batch 2 plan step. |
+
+
+### Batch 3 step plans (Pantera mixed-pair strings, 2026-10-25, docs/movesets/BATCH3-STEP-PLANS-2026-10-25.md)
+
+| Asset | T3 data | Status | Reason T3 was used (no T5/6/7/8/TTT2 source available) |
+|---|---|---|---|
+| `game/assets/movesets/pantera.json` `string_step_plans` (49 new keys: 17 planned canonical mixed-pair strings + 32 twins/variants; 136 total with Batches 1–2) | King T3 bank rows for verified steps only (rows 264, 36, 54, 55, 56, 72, 73, 74) + review candidates held unplayed (rows 135, 196) | fallback, to be replaced from T7 King extraction when clip bytes land | Same T7-extraction block as Batches 1–2 (0x8000-bank clip bytes not in tkdata, requirement codes + aliases unresolved), so no T7 step clip can be wired yet. T3 step rows stand in for verified steps only; review/unmapped steps play no bank row. Batch 3 wires zero SOFT fills (9 pantera Job 3 targets: 8 empty pass-all lists, 1 — u/b+1 — with 4 SOFT-filed FULL candidates documented, never wired; nothing inherited from #1097's unapproved row-49 fill) and zero Job 4 promotions (6 joins, all rejected on step gates). Re-match rows 264/36/54/55/56/72/73/74/135/196 against T7 King rows when extraction lands. Rows 35/220 appear in no Batch 3 plan step. |
+## Pantera dash inputs f,F+RP2 / f,F+RK4 — anim_t3 REMOVED, donor stand-ins (2026-10-25, PR #988 revert)
+
+**Status: TEMPORARY fallback, to be superseded. This is a regression-revert, NOT a correctness fix.**
+
+- What was removed and why: PR #988 mapped Pantera `f,F+2` (Beast Elbow, RP2 dash elbow) to T3 king row 0 and `f,F+4` (Konvict Kick, RK4 dash kick) to T3 king row 69. File evidence proved both wrong (dash-row evidence 2026-10-25, `~/workspace/dash-row-evidence/DASH-ROW-EVIDENCE-2026-10-25.md`): row 0 is a **non-strike clip** (Job 1 profile hit null, active null, all limb extensions 0.0, btn 0; harness 0.027 m net / 0.067 m peak — it cannot be a mid elbow strike); row 69 is the **u+4 jump kick in place** (Job 1 stance jump, legR foot lift 1.912 m, hip rise to 1.329 m, travel 0.000 m; mid RK4 active 15–17). CORRECTION: row 69 is the u+4 jump kick, NOT standing 4 (standing 4 rows are 106/124/216). The revert deletes exactly those two `anim_t3` fields (structural diff proves only 2 keys changed in `game/assets/movesets/pantera.json`; move count 874 unchanged; quarantine section untouched; no T8 content touched).
+- What plays now: donor rows **111** (T3 `f+2`, standing armR punch, HIGH, active 10, travel 0.151 m net / 0.301 m peak) for `f,F+2` and **114** (T3 `f+4`, standing legR kick, HIGH, active 14, travel 0.479 m) for `f,F+4`. These are **traveling STAND-INS, never the correct dash mapping**: T7's `f,F+RP2` is mid, 31f; T7's `f,F+RK4` Konvict Kick is mid, 15f; a high kick is duckable, Konvict Kick is mid. Level + name evidence affirmatively rule 111/114 out as the dash rows.
+- Why T3 is used at all (instruction-gate law): no T5/T6/T7/T8/TTT2 animation is decoded for these dash moves — T7 king_49/king_52 motion is not decoded, T6 `DATA401` is encrypted, TTT2 is not extracted, T5/T8 motion is not acquired. The donor stand-ins restore the pre-#988 traveling behavior while the true rows are hunted.
+- Settling evidence owed (in order): (1) a T3 motion-table source for `divmot03_king.bin` giving row numbers for `f,f+2` (K's Flicker, mid) and `f,f+4` (Konvict Kick, mid) — neither row number appears in the wired 355-entry T3 input→row map, and no dash row exists in the playable bank (zero dash inputs in the wired map; full scan of baked king standing strikes with travel ≥ 0.15 m returns only non-dash identities); (2) bake those rows if unbaked (256/652 baked today); (3) profile-verify: mid level, traveling, correct limb (armR / legR), dash-appropriate timing; (4) T7 King kinmot.bin decode (king_49/king_52) for animation identity — the only proof justifying calling a T3 row "the" dash row for the T7 move. Until then, any T3 row for a T7 dash move is a FALLBACK, not a verified mapping.
+- Test honesty: `test/root-motion.test.mjs` passes 9/9 on the reverted file (baseline 7/9 — the two dash tests failed on rows 0/69). The test encodes DONOR behavior (plan row:111/114, kind `donor`, plus travel bounds), so green proves travel restored, NOT that the animation is the dash move. Do not mistake a green test for a correct dash animation.
+- Untouched known-wrong mappings (out of this revert's scope, flagged not hidden): `f,F+2~t7.king` → row 260 (a 10-hit string step); `f,F+4~t7.king` → row 69 (same jump kick); `CH.f,F+4` → row 69 (same jump kick). These still need the same settling evidence.
+
+## Pantera dash inputs — TRUE T3 dash rows 203/216 (settling evidence 2026-10-25, supersedes the donor stand-in revert)
+
+**Status: T3 FALLBACK, to be replaced from T5/6/7/8/TTT2 when T7 king_49/king_52 motion is decoded.** This supersedes the 2026-10-25 donor stand-in revert (rows 111/114) — the stand-ins are retired; the dash inputs now play T3's own dash rows. The rows below are proven T3 dash rows, NOT proven T7 dash animations: until T7 King kinmot.bin decode (king_49/king_52) proves animation identity vs the T3 row, any T3 row for a T7 dash move is a fallback, not a verified mapping.
+
+- Motion-table source (the settling evidence the revert entry called for): `teardown/tekken3/animations/divmot03_king.bin` branch graph, decoded with `teardown/tekken3/tools/local/moveset_extract.py` + the `motion` module (`~/workspace/tools/tekken3remake/tools/research/motion.py`). All f,f branches in the bank (7: from rows 0, 31, 32, 33, 34, 189, 190) target slot 27 → row 3, the dash state. Row 3's branches: RP → row 203 (window 1–20), RK → row 216 (window 1–20). No other row is reachable from dash via RP/RK. Row 4 (run state) also branches RK → 216 (running kick = Konvict Kick).
+- Row 203 = T3 f,f+2 K's Flicker: branch damage 20, attack_word 0x217 = mid, button RP2, limb armR; hit_frames [16,16,58,535,0,2]; Job 1 (king_on_pantera_leoman): stance duck-dip (deep lunge pose, feet grounded — lifts 0.07/0.08 m), dominant armR ext 1.091 at peakF 8, travel 0.936 m; engine harness (_attackClipPlan + _rootMotionApply): 0.847 m forward, 0.864 m peak, −0.399 m lateral. T3 movelist: K's Flicker, f,f+2, 20 dmg, Mid — exact match on damage + level + dash-only access.
+- Row 216 = T3 f,f+4 Konvict Kick: branch damage 30, attack_word 0x217 = mid, button RK4, limb legR; hit_frames [15,15,54,535,0,8]; Job 1: stance standing, legR lift 1.183 m, travel 0.455 m; harness: 0.411 m forward, 0.604 m peak, −0.196 m lateral. T3 movelist: Konvict Kick, f,f+4, 30 dmg, Mid — exact match on damage + level + dash/run access. Harness active 15 also matches T7 Konvict Kick 15f startup (king_52); row 203's T3 active 16 differs from T7 Rolling Elbow 31f, as expected across games — the T3-internal evidence (branch + damage + level + button + limb + travel) is what identifies it.
+- Both rows were already baked in rows.pack.json (256/652 baked) — no bake run needed.
+- Mappings changed (5, all in game/assets/movesets/pantera.json): f,F+2 → 203 (was removed by the revert; donor 111 retired); f,F+4 → 216 (was removed; donor 114 retired); f,F+2~t7.king → 203 (field was row 260, a 10-hit string step); f,F+4~t7.king → 216 (field was row 69, the u+4 jump kick); CH.f,F+4 → 216 (field was row 69). The shadows' old field rows never actually played: their 'nearest' matches defer the anim tier past the donor tier in _attackClipPlan, so baseline playback for all three shadows was donors 111/114 — stand-ins either way. The new 'dash-branch' match label contains no 'nearest', so the anim tier fires before donor and the remapped rows play (proven by the shadow-only mutation run + the updated test). CH.f,F+4's row covers the Konvict Kick first hit; the DDT follow-up is a separate mapping question, not claimed solved here.
+- Why T3 is used at all (instruction-gate law): no T5/T6/T7/T8/TTT2 animation is decoded for these dash moves — T7 king_49/king_52 motion is not decoded, T6 DATA401 is encrypted, TTT2 is not extracted, T5/T8 motion is not acquired. T7/T8 frame data carries timing/level only, no motion bytes.
+- Test honesty: test/root-motion.test.mjs now asserts the TRUE rows (row:203/row:216, kind anim) with measured travel bounds — it no longer encodes donor behavior. Green now proves the dash inputs play their own T3 dash rows and travel; it does NOT prove T7 animation identity (see fallback status above).
+- Flagged, NOT changed (out of this PR's scope, follow-up owed): pantera.json entries "4" and "4_r216" point at row 216 — WRONG for a standing input (the branch graph proves row 216 is reached ONLY from dash row 3 and run row 4, never from standing; the "true-map" matcher mislabeled the dash kick as standing 4). Standing 4's true rows need their own adjudication (the earlier audit listed 106/124 alongside the now-disproven 216; neither 106 nor 124 is verified here); this PR does not touch "4"/"4_r216".
+
+### Real-moves correctness pass (2026-10-29, docs/movesets/REAL-MOVES-AUDIT-2026-10-29.md)
+
+| Asset | Source | Status | Reason |
+|---|---|---|---|
+| `game/assets/movesets/pantera.json` `string_step_plans` candidate fills (57 step occurrences) | T3 King branch graph: GRE `tekken3/movesets/moveset_king.json` `branches[]` + `move_index` (same extraction as `teardown/tekken3/movesets/` in this repo) | candidates recorded as REVIEW (real row identified, HARD gates pass); NOT played until the FK soft gate + play-verify promote them | Owner 2026-10-29: fill unmapped steps with verified real rows only; no T7 King clip bytes are decoded yet (see Batch 1 entry), and the branch graph is the T3 King's own record - T3 is the fallback of record for King step identity until T7 extraction lands. Full audit: `docs/movesets/REAL-MOVES-AUDIT-2026-10-29.md`. |
+
+### Burger Batch 1 step plans (Burger LP1/RP2 strings, 2026-10-25, docs/movesets/BURGER-BATCH1-STEP-PLANS-2026-10-25.md)
+
+| Asset | T3 data | Status | Reason T3 was used (no T5/6/7/8/TTT2 source available) |
+|---|---|---|---|
+| `game/assets/movesets/burger.json` `string_step_plans` (88 keys: 40 planned canonical LP1/RP2 strings + 48 twins/variants) | Bryan T3 bank rows for verified steps only (rows 172, 152, 153, 151, 146, 150, 132) + review candidates held unplayed (rows 167, 158) | fallback, to be replaced from T7 Bob extraction when clip bytes land | Burger's T7 base is Bob; no T7 Bob clip rows are decoded/wired in the repo (T7 animation 0 of 51, T6 encrypted, TTT2 not extracted, T5/T8 motion not acquired). Burger's T3 fallback bank is BRYAN (t3_source bryan, t3_bank moveset_bryan.json) — no bob T3 bank exists in the repo or in Job 1/2/4 data. T3 step rows stand in for verified steps only; review/unmapped steps play no bank row. Batch 1 wires one Job 3 fill (row 132, exact level + FULL provenance + HARD gates + SOFT proxy pass) and zero Job 4 promotions. Re-match rows 172/152/153/151/146/150/132/167/158 against T7 Bob rows when extraction lands. Rows 35/220 appear in no Burger Batch 1 plan step (bryan row 35 is absent from Job 1 + hit_frames; bryan row 220 carries button 0, failing every strike button gate). |
+
+### Burger Batch 2 step plans (Burger LK3/RK4 strings, 2026-10-25, docs/movesets/BURGER-BATCH2-STEP-PLANS-2026-10-25.md)
+
+| Asset | T3 data | Status | Reason T3 was used (no T5/6/7/8/TTT2 source available) |
+|---|---|---|---|
+| `game/assets/movesets/burger.json` `string_step_plans` (67 new keys: 33 planned canonical LK3/RK4 strings + 34 twins/variants; cumulative 155 with Batch 1) | Bryan T3 bank rows for verified steps only (rows 61, 87, 104, 183, 191) + review candidate held unplayed (row 136; gate row 111 rejected) + suspended stale row documented not wired (row 65) | fallback, to be replaced from T7 Bob extraction when clip bytes land | Burger's T7 base is Bob; no T7 Bob clip rows are decoded/wired in the repo (T7 animation 0 of 51, T6 encrypted, TTT2 not extracted, T5/T8 motion not acquired). Burger's T3 fallback bank is BRYAN (t3_source bryan, t3_bank moveset_bryan.json) — no bob T3 bank exists in the repo or in Job 1/2/4 data. T3 step rows stand in for verified steps only; review/unmapped/suspended steps play no bank row. Batch 2 wires zero Job 3 fills (the single exact+FULL candidate, b+4 row 136, is HELD at review on SOFT proxy fail) and zero Job 4 promotions. 2 steps are SUSPENDED-DRIFT (prefix move 3, row 65 -> None between #1096 and current main). Re-match rows 61/87/104/183/191/136/111/65 against T7 Bob rows when extraction lands. Rows 35/220 appear in no Burger Batch 2 plan step (bryan row 35 is absent from Job 1 + hit_frames; bryan row 220 carries button 0, failing every strike button gate). |
+
+### Burger Batch 3 step plans (Burger mixed-pair strings: one punch + one kick pair, 2026-10-25, docs/movesets/BURGER-BATCH3-STEP-PLANS-2026-10-25.md)
+
+| Asset | T3 data | Status | Reason T3 was used (no T5/6/7/8/TTT2 source available) |
+|---|---|---|---|
+| `game/assets/movesets/burger.json` `string_step_plans` (49 new keys: 22 planned canonical mixed-pair strings + 27 twins/variants; cumulative 204 with Batches 1–2) | Bryan T3 bank rows for verified steps only (rows 172, 119, 100, 150, 87) + review candidates held unplayed (rows 182, 158, 136; gate row 111 rejected) + suspended stale row documented not wired (row 65) | fallback, to be replaced from T7 Bob extraction when clip bytes land | Burger's T7 base is Bob; no T7 Bob clip rows are decoded/wired in the repo (T7 animation 0 of 51, T6 encrypted, TTT2 not extracted, T5/T8 motion not acquired). Burger's T3 fallback bank is BRYAN (t3_source bryan, t3_bank moveset_bryan.json) — no bob T3 bank exists in the repo or in Job 1/2/4 data. T3 step rows stand in for verified steps only; review/unmapped/suspended steps play no bank row. Batch 3 wires one Job 3 fill (row 119, exact level + FULL provenance + HARD gates + SOFT proxy pass) and zero Job 4 promotions. 3 steps are SUSPENDED-DRIFT (prefix move 3, row 65 -> None between #1096 and current main). Re-match rows 172/119/100/150/87/182/158/136/111/65 against T7 Bob rows when extraction lands. Rows 35/220 appear in no Burger Batch 3 plan step (bryan row 35 is absent from Job 1 + hit_frames; bryan row 220 carries button 0, failing every strike button gate). |
+
+### Burger Batch 4 step plans (Burger triples/quads/rest strings, 2026-10-25, docs/movesets/BURGER-BATCH4-STEP-PLANS-2026-10-25.md)
+
+| Asset | T3 data | Status | Reason T3 was used (no T5/6/7/8/TTT2 source available) |
+|---|---|---|---|
+| `game/assets/movesets/burger.json` `string_step_plans` (15 new keys: 9 planned canonical triples/quads strings + 6 twins/variants; cumulative 219 with Batches 1–3) | Bryan T3 bank rows for verified steps only (rows 100, 153, 183) | fallback, to be replaced from T7 Bob extraction when clip bytes land | Burger's T7 base is Bob; no T7 Bob clip rows are decoded/wired in the repo (T7 animation 0 of 51, T6 encrypted, TTT2 not extracted, T5/T8 motion not acquired). Burger's T3 fallback bank is BRYAN (t3_source bryan, t3_bank moveset_bryan.json) — no bob T3 bank exists in the repo or in Job 1/2/4 data. T3 step rows stand in for verified steps only; review/unmapped steps play no bank row. Batch 4 wires zero Job 3 fills (the one exact+FULL candidate, row 119 for the rest-key f,n,d,d/f+4 family, is never wired because rest keys get no plan; soft candidates rows 41/42/43 for u/f+1+2 and rows 60/61/62/96 for u/f+2 are soft/row-only and never wired) and zero Job 4 promotions (no Batch 4 prefix carries a bryan Job 4 candidate as an own row). 0 steps are SUSPENDED-DRIFT (no Batch 4 string carries prefix 3 or b_c36_r65). 52 rest canonicals get NO plan at all: their non-attack prefix steps (dash/movement/stance sequences such as f,F+*, f,n,d,*, b,B+*, WALL.b,b,u/b) have no attack row, and planning them needs engine support for non-attack prefix steps (future work, named, not guessed). Re-match rows 100/153/183 against T7 Bob rows when extraction lands. Rows 35/220 appear in no Burger Batch 4 plan step (bryan row 35 is absent from Job 1 + hit_frames; bryan row 220 carries button 0, failing every strike button gate). |
+
+## Demonio Batch 1 fallback (LP1/RP2-only strings, 2026-10-25)
+Verified rows 220/221/222/223/180/92/93/94/181/183/35/36/37/47/48/49 and
+review candidate 129 are FALLBACK (T3 jin rows), to be re-matched to T7 Jin
+rows when extraction lands. Rejected rows are NOT fallback — rejected
+evidence, not wired or held. Jin-bank rule change (documented in
+docs/movesets/DEMONIO-BATCH1-STEP-PLANS-2026-10-25.md): jin row 220 is a
+standing RP2 row, not king's jumping chord row or bryan's button-0 row, so
+it is adjudicated by the normal gates and verifies for the 2,1 family step
+1; jin row 35 is starts-airborne and verifies only in jump context.
+5 steps SUSPENDED-DRIFT (prefix move 1 ROW-CHANGED 41->None) — never wired
+on stale data. T8-sourced prefixes with no T3 row get their correct clips
+from #988 Step 2 (original T8 refs), never from a T3 row recorded as
+correct.
+
+## Demonio Batch 2 fallback (LK3/RK4-only strings, 2026-10-25)
+Verified rows 79/80/193/205/207/209 are FALLBACK (T3 jin rows), to be
+re-matched to T7 Jin rows when extraction lands. Review candidates
+212/214/210/211 are NOT fallback — held evidence, not wired or played.
+Jin-bank rules carried from Batch 1 (documented in
+docs/movesets/DEMONIO-BATCH2-STEP-PLANS-2026-10-25.md): jin row 220 is a
+standing RP2 row (not blanket-banned; unused in this LK3/RK4-only batch)
+and jin row 35 is starts-airborne (unused in this batch; no Batch 2 step
+plays row 35 or row 220). Canonicalization correction vs Batch 1: only a
+trailing source-variant suffix (~t3.jin, ~t7.jin[.N], ~t8.jin) is
+stripped; a "~" inside the input is Tekken cancel notation, so
+"f+3~3,d/f+3" (Heat Seeker) and "d+3,4~4" (Mid Sidekick) are their own
+canonicals, not variants of "f+3" / "d+3,4", and no bogus single-move
+canonicals ("4", "f+3") are created. Batch 1 is provably unaffected;
+Batch 3/4 lanes must use the corrected definition. 0 steps
+SUSPENDED-DRIFT (none of the 3 row-changed moves falls in Batch 2 scope).
+T8-sourced prefixes with no T3 row get their correct clips from #988
+Step 2 (original T8 refs), never from a T3 row recorded as correct.
+
+## Demonio Batch 3 fallback (mixed-pair strings, 2026-10-25)
+Verified rows 220/195/251/252/258/103/54/67/56/69/55/68/80/207 are FALLBACK
+(T3 jin rows), to be re-matched to T7 Jin rows when extraction lands.
+Review candidates 199/257 are NOT fallback — held evidence, not wired or
+played. Rejected rows (208/185/216/184/204/254/256/179/197/34/33) are NOT
+fallback — rejected evidence, not wired or held. Jin-bank rules carried
+from Batch 1 (documented in
+docs/movesets/DEMONIO-BATCH3-STEP-PLANS-2026-10-25.md): jin row 220 is a
+standing RP2 row (not blanket-banned; exercised here — 2,4 step 1
+verifies on it) and jin row 35 is starts-airborne (no Batch 3 step plays
+row 35). Jin row 216 is a jump row on the jin bank (not king row 216
+dash Konvict Kick) — the 1+4,b+1 last-step candidate 216 is rejected on
+button 0 and airborne stance. Canonicalization (corrected rule, carried
+from Batch 2): only a trailing source-variant suffix is stripped, so
+1,3~3, 1,3~3,d/f+3, WS.1,3~3, ws1,3~3, d/f+1,4~4 and df+1,4~4 are all OWN
+Batch 3 canonicals; Batch 4 carry-forwards 2,1,4~4 and 4~3,H.1+2 are
+excluded. 5 steps SUSPENDED-DRIFT (step-1 prefix move 1 ROW-CHANGED
+41->None) — never wired on stale data. T8-sourced prefixes with no T3
+row get their correct clips from #988 Step 2 (original T8 refs), never
+from a T3 row recorded as correct.
+
+## Demonio Batch 4 fallback (triples/quads/rest, 2026-10-25)
+Verified rows 220/221/222/223/224/226/227/228/230/232/233/237/238/239/
+251/252/258/259/186/195/196/94/103/114/170/172 are FALLBACK (T3 jin
+rows), to be re-matched to T7 Jin rows when extraction lands. Row 114
+is the Job 3 fill for 2,1,4,4 step 4 (exact level, FULL provenance,
+SOFT proxy passed) — a verified fill, not a soft fill; the gate
+candidate 231 failed the button gate (button 12 chord row for a
+single-RK4 step) and is superseded, not kept. Review candidates
+199/225/203/214/253/261/241 (SOFT-fail) and 234/235/257 (STANCE-SOFT
+crouch/duck-dip) are NOT fallback — held evidence, not wired or
+played. Rejected rows (187/184/260/240/34/33/171/272/371/229/236/254/
+256/250/262/370 and gate candidate 231) are NOT fallback — rejected
+evidence, not wired or held. Jin-bank rules carried from Batch 1
+(documented in
+docs/movesets/DEMONIO-BATCH4-STEP-PLANS-2026-10-25.md): jin row 220 is
+a standing RP2 row (not blanket-banned; exercised here — 2,1,4 step 1
+verifies on it) and jin row 35 is starts-airborne (no Batch 4 step
+plays row 35). Jin row 216 is a jump row on the jin bank (not king row
+216 dash Konvict Kick) — no Batch 4 verified step plays row 216.
+Canonicalization (corrected rule, carried from Batch 2): only a
+trailing source-variant suffix is stripped, so 2,1,4~4 (union
+{1,2,4}, a TRIPLE — correcting Batch 3's parenthetical calling it a
+quad) and 4~3,H.1+2 (union {1,2,3,4}, a quad) are OWN Batch 4
+canonicals, and 2,1,4__main is its OWN canonical (not a twin of
+2,1,4; partial [220,221,None], does NOT inherit row 230). 8 steps
+SUSPENDED-DRIFT (step-1 prefix move 1 ROW-CHANGED 41->None) — never
+wired on stale data. T8-sourced prefixes with no T3 row get their
+correct clips from #988 Step 2 (original T8 refs), never from a T3 row
+recorded as correct. Rest keys (95) and the throw triple-quad
+u/f+3+4,H.1+2 get NO plan — CSV-audited only; their donor clips
+stand, not fixed, pending engine support for non-attack prefix steps.
+
+## Diablo Batch 1 fallback (LP1/RP2-only strings, 2026-10-25)
+Verified rows 157/158/159/160/98/99/147/149/110/204/123/146/40/41/42/52/53/54
+and review candidates 224/207/216/240/178 are FALLBACK (T3 heihachi rows,
+bank heihachi_on_jin / divmot13 on the jin rig), to be re-matched to T7
+Heihachi rows when extraction lands. Rejected rows are NOT fallback —
+rejected evidence, not wired or held. Heihachi-bank rules, per-bank
+evidence (documented in docs/movesets/DIABLO-BATCH1-STEP-PLANS-2026-10-25.md):
+row 35 does NOT EXIST in this bank (absent from hit_frames and Job 1), so
+no row-35 rule applies; row 220 is a JUMP RK4 row here, gate-adjudicated
+like any row, NOT jin's standing RP2 row, NOT king's jumping chord row,
+NOT bryan's button-0 row; heihachi_on_jin row 216 is a DUCK-DIP row, NOT
+jin row 216's jump row and NOT king row 216's dash Konvict Kick. Diablo's
+own LP1 move carries t3_row 46, and Job 1 row 46 is STARTS-AIRBORNE, so
+every ground-context step with candidate row 46 fails the stance gate;
+prefix move 1 is ALSO ROW-CHANGED 46->None (#1096 vs current main), so all
+13 1-family step 1s are SUSPENDED-DRIFT — never wired on stale data.
+Standing rows verified for crouch-context steps (d+1,2 / d+1,2__main step 1
+row 123, d/f+1+2,2 step 1 row 110) follow the demonio Batch 1 precedent:
+the gate flags crouch rows for non-crouch steps, not standing rows for
+crouch steps. Canonicalization is the CORRECTED rule (strip only a
+trailing ~t[378] source-variant suffix): diablo DOES contain input-~
+cancel-notation canonicals (6 own canonicals), unlike Pantera/burger whose
+inventories were provably inert — under the old rule this batch would
+have had 61 canonicals including a bogus single 'f+2'. No verified row is
+affected by the correction. T8-sourced prefixes with no T3 row get their
+correct clips from #988 Step 2 (original T8 refs), never from a T3 row
+recorded as correct.
+
+## Diablo Batch 2 fallback (LK3/RK4-only strings, 2026-10-25)
+Verified rows 86/150/195/153/183/60/74 and review candidate 191 are FALLBACK
+(T3 heihachi rows, bank heihachi_on_jin / divmot13 on the jin rig), to be
+re-matched to T7 Heihachi rows when extraction lands. Rejected row 190 is
+NOT fallback — rejected evidence (button 12 LK3+RK4 chord row for
+single-RK4 steps), not wired or held. Heihachi-bank rules, per-bank
+evidence (documented in docs/movesets/DIABLO-BATCH2-STEP-PLANS-2026-10-25.md):
+row 35 does NOT EXIST in this bank (absent from hit_frames and Job 1), so
+no row-35 rule applies; row 220 is a JUMP RK4 row here, gate-adjudicated
+like any row, NOT jin's standing RP2 row, NOT king's jumping chord row,
+NOT bryan's button-0 row; heihachi_on_jin row 216 is a DUCK-DIP row, NOT
+jin row 216's jump row and NOT king row 216's dash Konvict Kick. Batch 2
+contains NO input-~ canonicals and NO __main records (unlike Batch 1's 6
+input-~ own canonicals — diablo's cancel notation lives in LP1/RP2 strings,
+not kick strings). Suspended-drift: 0 — none of the 3 row-changed moves
+(1, 1_r46, u+1,1~t3.heihachi.2) is a Batch 2 step prefix. Job 3 fills wired:
+0 (3 Batch 2 prefixes appear in job3.log, ALL with EMPTY pass-all lists).
+Job 4 joins: 4, none promoting. T8-sourced prefixes with no T3 row get
+their correct clips from #988 Step 2 (original T8 refs), never from a T3
+row recorded as correct.
+
+## Diablo Batch 3 fallback (mixed-pair strings, 2026-10-25)
+Verified rows 153/183/225/226/227/59/60/61/74/75/76 and review candidates
+207/214/178 are FALLBACK (T3 heihachi rows, bank heihachi_on_jin /
+divmot13 on the jin rig), to be re-matched to T7 Heihachi rows when
+extraction lands. Rejected rows 137/340/181/175/246/356/358/39/38 are NOT
+fallback — rejected evidence (throw flags, button mismatches, airborne
+rows for ground steps), not wired or held. Standing rows 226/227 verified
+for crouch-context steps (d/f+3,2 step 2, d/f+3,2,2 steps 2-3) follow the
+demonio Batch 1 / diablo Batch 1 precedent: the pipeline stance gate flags
+crouch rows for non-crouch steps, not standing rows for crouch steps; if
+the gate is ever tightened these three steps must be re-adjudicated. Row
+225 (duck-dip) passes for crouch context outright — NOT a gate-note case.
+Heihachi-bank rules, per-bank evidence (documented in
+docs/movesets/DIABLO-BATCH3-STEP-PLANS-2026-10-25.md): row 35 does NOT
+EXIST in this bank (absent from hit_frames and Job 1), so no row-35 rule
+applies; row 220 is a JUMP RK4 row here, gate-adjudicated like any row,
+NOT jin's standing RP2 row, NOT king's jumping chord row, NOT bryan's
+button-0 row; heihachi_on_jin row 216 is a DUCK-DIP row, NOT jin row 216's
+jump row and NOT king row 216's dash Konvict Kick. Batch 3 contains NO
+input-~ canonicals and NO __main records (diablo's cancel notation lives
+in LP1/RP2 strings, not mixed-pair strings). Suspended-drift: 0 — none of
+the 3 row-changed moves (1, 1_r46, u+1,1~t3.heihachi.2) is a Batch 3 step
+prefix. Job 3 fills wired: 0 (one report entry, b+1,4 step b+1: rows 98/107
+exact ROW-ONLY + row 133 soft-filed FULL, none wired under the stricter
+fill rule; zero DISAGREES notes). Job 4 joins: 4, none promoting.
+T8-sourced prefixes with no T3 row get their correct clips from #988 Step
+2 (original T8 refs), never from a T3 row recorded as correct.
+
+## Diablo Batch 4 fallback (triples/quads/rest strings, 2026-10-25 — LAST diablo batch)
+Verified rows 86/150/157/158/159/160/161/163/164/165/223/226/227/228/230/
+231/232/233/235/236/237 and review candidates 229/162/207/214 are FALLBACK
+(T3 heihachi rows, bank heihachi_on_jin / divmot13 on the jin rig), to be
+re-matched to T7 Heihachi rows when extraction lands. Rejected rows
+138/342/166/181/239/215/152 are NOT fallback — rejected evidence (throw
+flags, button mismatches, airborne rows for ground steps), not wired or
+held. Standing rows 226/227/230/231/232/235/236 verified for crouch-context
+steps (d/f+3,2,2,4-family steps) follow the demonio Batch 1 / diablo
+Batch 1 / diablo Batch 3 precedent: the pipeline stance gate flags crouch
+rows for non-crouch steps, not standing rows for crouch steps; if the gate
+is ever tightened these steps must be re-adjudicated. Rows 228 (crouch),
+233 and 237 (duck-dip) pass for crouch context outright — NOT gate-note
+cases. Heihachi-bank rules, per-bank evidence (documented in
+docs/movesets/DIABLO-BATCH4-STEP-PLANS-2026-10-25.md): row 35 does NOT
+EXIST in this bank (absent from hit_frames and Job 1), so no row-35 rule
+applies; row 220 is a JUMP RK4 row here, gate-adjudicated like any row,
+NOT jin's standing RP2 row, NOT king's jumping chord row, NOT bryan's
+button-0 row; heihachi_on_jin row 216 is a DUCK-DIP row, NOT jin row 216's
+jump row and NOT king row 216's dash Konvict Kick. Batch 4 contains 4
+input-~ canonicals, all rest/CSV-only (1,2,2~1+2,u, 2,2~1+2,u, b+1,2~1+2,u,
+f+2~1+2,u), and NO __main records. Suspended-drift: 2 steps — 1,2,4 step 1
+and 1,b+2,4 step 1 (prefix move 1 ROW-CHANGED 46->None; stale candidate
+row 46 documented, never wired). Job 3 fills wired: 0 (4 report entries,
+none wired under the stricter fill rule; one DISAGREES note — f+1+2,b+2,4 and f+1+2,b+2,4,1 step f+1+2: Job 3 exact+FULL candidate row 107 disagrees with wired gate candidate row 223, gate candidate kept (own/recorded row is stronger file evidence). The agreement note fires ONLY for actually-wired gate candidates (demonio Batch 4 fix), and row 223 is wired; no note fires on the suspended 1,2,4 / 1,b+2,4 steps). Job 4
+joins: 30 (23 no-action, 4 CANDIDATE-not-wired, 3 REJECTED), none promoting.
+Rest keys (74 canonicals, 285 steps) get NO plan — planning them needs
+engine support for non-attack prefix steps (future work, named, not
+guessed); their donor clips stand unchanged. T8-sourced prefixes with no T3
+row get their correct clips from #988 Step 2 (original T8 refs), never
+from a T3 row recorded as correct. Diablo string coverage is now COMPLETE:
+201 canonical comma keys = 66 Batch 1 + 11 Batch 2 + 22 Batch 3 + 102
+Batch 4, uncovered [] extra [].
+
+## Kinpo Batch 1 fallback (LP1/RP2-only strings, 2026-10-25)
+Verified rows 92/93/183/220/221/222/223 are FALLBACK (T3 jin rows, bank
+jin / divmot09 on the jin rig), to be re-matched to T7 Asuka rows when
+extraction lands. Rejected rows are NOT fallback — rejected evidence, not
+wired or held. Jin-bank rules, per-bank evidence (documented in
+docs/movesets/KINPO-BATCH1-STEP-PLANS-2026-10-25.md): row 35 EXISTS in this
+bank (hit_frames [11,12,39,535,0,1], Job 1 stance starts-airborne) — NOT
+blanket-banned by number, but the stance gate rejects it for ground steps;
+kinpo's own LP1 move 1 carries t3_row 35 and is ALSO ROW-CHANGED 35->None
+(#1096 vs current main), so the 2 1-family step 1s are SUSPENDED-DRIFT —
+never wired on stale data. Row 220 is a STANDING RP2 row here, NOT king's
+jumping chord row, NOT bryan's button-0 row, NOT heihachi's jump RK4 row;
+jin row 216 is a JUMP row, NOT king row 216's dash Konvict Kick. Kinpo's
+T7/T8 base IS Asuka, but Asuka has NO T3 bank in this repo (no asuka dir
+under t3/), so the file's T3 fallback bank is jin — the burger pattern.
+Standing rows verified for crouch-context steps (d+1+2 family rows 92/93/
+183) follow the demonio Batch 1 precedent: the gate flags crouch rows for
+non-crouch steps, not standing rows for crouch steps. Job 3 fill wired: 1
+(b+2,1+2 last step <- row 92, exact+FULL). Canonicalization is the
+CORRECTED rule (strip only a trailing ~t[378] source-variant suffix):
+kinpo Batch 1 contains ZERO input-~ canonicals; the file's only
+old-vs-corrected diff is 3~4,D/F, outside Batch 1 scope. T8-sourced
+prefixes with no T3 row get their correct clips from #988 Step 2 (original
+T8 refs), never from a T3 row recorded as correct.
+
+## Kinpo Batch 2 step plans (LK3/RK4-only strings, 2026-10-25) — T3 FALLBACK, not the correct mapping
+
+Kinpo Batch 2 wires 20 step-plan keys (12 LK3/RK4-only canonicals + 8 twins) into kinpo.json's
+string_step_plans block (47 Batch 1 keys preserved deep-equal; total 67). Steps: 29 planned,
+9 verified / 4 review / 16 unmapped (all 16 no-candidate + 0 rejected-candidate + 0
+suspended-drift). Verified rows (4 distinct, all baked in main's jin pack): 80, 193, 205, 207.
+u/f+4,3 verified-all [80,193] and u/f+4,4 verified-all [80,207] (jump context, SOFT waived,
+Batch 1 precedent); d/f+4,4 partial [205, review] — step 1 crouch row 205 passes for crouch
+outright (NOT a gate-note case: row 205 Job 1 stance is crouch); step 2 candidate 212 held at
+review (SOFT limb-peak proxy fail, window [4.5,8.5], legR peak 12 — same row, same result as
+demonio Batch 2's d/f+4,4 step 2). u/f+4,4,4 partial [80,207,review] and u/f+4,4,4,4 partial
+[80,207,review,review] — candidates 210/211 are duck-dip rows, STANCE-SOFT for jump-context
+steps, held at review (same rows, same result as demonio Batch 2's u/f+4,4,4 steps 3-4).
+Job 3 fills wired: 0 — no Batch 2 step prefix has a pass-all candidate at all (the 4
+match_search kinpo kick keys all carry EMPTY pass-all lists). Job 4 joins: 4, none promoting
+(rows 193/207 on already-verified steps). Orphans: jin rows 85, 91, 99, 100, 104, 127, 170,
+171, 172, 209, 216, 226, 239, 250, 256, 262 (same set as Batch 1, independently re-derived).
+Suspended-drift: 0 — the file's only row-changed move (1, 35->None) is not a Batch 2 step
+prefix. Jin-bank rules, per-bank evidence (documented in
+docs/movesets/KINPO-BATCH2-STEP-PLANS-2026-10-25.md): row 35 EXISTS in this bank
+(hit_frames [11,12,39,535,0,1], Job 1 stance starts-airborne) — NOT blanket-banned by
+number, but the stance gate rejects it for ground steps; row 220 is a STANDING RP2 row here,
+NOT king's jumping chord row, NOT bryan's button-0 row, NOT heihachi's jump RK4 row; jin
+row 216 is a JUMP row, NOT king row 216's dash Konvict Kick. Kinpo's T7/T8 base IS Asuka,
+but Asuka has NO T3 bank in this repo (no asuka dir under t3/), so the file's T3 fallback
+bank is jin — the burger pattern. Canonicalization is the CORRECTED rule (strip only a
+trailing ~t[378] source-variant suffix): kinpo Batch 2 contains ZERO input-~ canonicals;
+the file's only old-vs-corrected diff, 3~4,D/F, is NOT Batch 2 scope (steps 3~4 + D/F; D/F
+buttonless -> rest/Batch 4 scope). T8-sourced prefixes with no T3 row get their correct
+clips from #988 Step 2 (original T8 refs), never from a T3 row recorded as correct.
+
+## Kinpo Batch 3 (mixed-pair strings, 2026-10-25) — T3 FALLBACK, not the correct mapping
+
+21 canonicals (19 pure + 2 chord-involved: b+1+4,4, db+4,1+4) + 27 twins =
+48 plan keys, added to the existing 67-key block (47 Batch 1 + 20 Batch 2,
+all deep-equal). Pair split: {LP1,LK3} 6, {LP1,RK4} 11, {RP2,LK3} 2,
+{RP2,RK4} 2. Contexts: standing 14, crouch 5, ws 2, jump 0. Provenance: 19
+in main moves, 2 quarantined-only (1,1,3, db+1,4 — live when #988 merges).
+Steps: 44 planned, 2 verified / 1 review / 41 unmapped (3 suspended-drift
++ 6 rejected-candidate + 32 no-candidate). Verified rows (2 distinct, all
+baked in main's jin pack AND the Batch 2 branch pack): 220 (2,3 step 1,
+prefix-move own row, Job 2 CLEAN, standing RP2) and 195 (3,1 step 1,
+prefix-move own row, Job 2 CLEAN, standing LK3). NO verified-last-step
+plan keys — Batch 3 wires first steps only. Review: 4,1 step 1 candidate
+199 held (SOFT limb-peak proxy fail, window [3.5,7.5], legR peak 3).
+Suspended-drift: 1,1,3 / 1,3 / 1,4 step 1 (prefix move 1 ROW-CHANGED
+35->None; stale row 35 documented, never wired). Rejected-candidate: 4,1
+step 2 row 184 (button 9 != step bits 1 — chord row for a single LP1
+step); d/f+1,3 + d/f+1,4 step 1 row 179, d/f+1,3 step 2 row 197, d/f+1,4
+step 2 + df+1,4 step 2 row 204, all airborne jump rows. Job 3 fills wired:
+0 (4 report entries: rows 92/105 exact ROW-ONLY for prefix 1, plus
+suspension blocks fills; rows 92/105 soft-nofiled ROW-ONLY for 3,1 — no
+agreement note fires, since no exact+FULL candidate disagrees with a
+wired gate candidate). Job 4 joins: 4, all REJECTED (rows 179/197/204
+airborne), 0 promoting. Orphans: jin rows 85, 91, 99, 100, 104, 127, 170,
+171, 172, 209, 216, 226, 239, 250, 256, 262 (same set as Batches 1-2).
+Canonicalization is the CORRECTED rule (strip only a trailing
+~t[378] source-variant suffix): kinpo Batch 3 contains ZERO input-~
+canonicals; the file's only old-vs-corrected diff, 3~4,D/F, is NOT Batch
+3 scope (steps 3~4 + D/F; D/F buttonless -> rest/Batch 4 scope).
+T8-sourced prefixes with no T3 row get their correct clips from #988 Step
+2 (original T8 refs), never from a T3 row recorded as correct.
+
+## Kinpo Batch 4 (triples/quads + rest, 2026-10-25) — T3 FALLBACK, not the correct mapping
+
+70 canonicals (29 triples/quads + 41 rest) + 50 twins = 120 CSV rows;
+28 planned canonicals + 34 variants = 62 plan keys, added to the
+existing 115-key block (47 Batch 1 + 20 Batch 2 + 48 Batch 3, all
+deep-equal). Contexts: standing 49, ws 11, crouch 8, jump 2.
+Provenance: 64 in main moves, 6 quarantined-only ((Back to
+wall).b,b,UB; 1+2+3+4,1+2; ws2,1,1,1,2,1+4; ws2,1,1,1,2,1+4,1;
+ws2,1,1,1,2,1,4; ws2,1,1,1,2,1,4,3 — live when #988 merges).
+Steps: 247 = 131 planned + 3 throw-CSV-only + 113 rest. Planned: 27
+verified / 2 review / 102 unmapped (2 suspended-drift + 6
+rejected-candidate + 96 no-candidate). Verified rows (10 distinct, all
+baked in main's jin pack AND the Batch 3 branch pack): 92 (b+2,1+2,4
+step 1+2, the batch's ONLY Job 3 fill — exact + FULL incl.
+moveset_kinpo:d+1+2, HARD + SOFT proxy pass window [3.0,7.0]), 186
+(4,1,2 step 3, recorded-path), 220/221/222/223 (2,1,2,2,3 steps 1-4,
+prefix-move own rows), 224 (2,1,2,2,3 step 5, recorded-dest), 230
+(2,1,4 family step 3, recorded-dest), 232/233 (2,1,4,4,2 / 2,1,4,4,2,4
+last steps, recorded-dest). Verified-all canonicals: 2,1,2,2,3 and
+2,1,4. Verified-last-step keys exactly: 2,1,2,2,3; 2,1,4; 2,1,4,4,2;
+2,1,4,4,2,4; 4,1,2. Review last-step key exactly: 2,1,2,2,3,4.
+Review: 2,1,2,2,3,4 step 4 candidate 225 SOFT limb-peak proxy fail
+(window [16.5,21.5], legR peak 6); 4,1,2 step 1 candidate 199 SOFT fail
+(window [3.5,7.5], legR peak 3 — same row, same result as Batch 3's
+4,1 step 1 hold). Suspended-drift: 1,2,3 / 1,2,4 step 1 (prefix move 1
+ROW-CHANGED 35->None; stale row 35 documented, never wired).
+Rejected-candidate: 2,1,4,4-family step 4 row 231 (button 12 != step
+bits 8 — kick-chord row for a single RK4 step; same row, same result
+as demonio Batch 4's 2,1,4,4 step 4 gate failure); 4,1,2 step 1 row 184
+(button 9 != step bits 1 — chord row for a single LP1 step; same row,
+same result as Batch 3's 4,1 step 2 rejection). No gate-note cases:
+all 27 verified steps are standing-context steps on standing rows.
+Job 3 fills wired: 1 (row 92, above); report entries 13 (other entries:
+rows 92/105 exact ROW-ONLY for targets 1+4,2,1 / 1 / ws2,1, plus
+suspension blocks fills; rows 101/116/131/132 soft-nofiled for the two
+3+4 last steps — documented, never wired; no agreement note fires, the
+only exact+FULL candidate IS the fill; dedupe fires zero times). Job 4
+joins: 2, both no-action on already-verified steps (row 232 on
+2,1,4,4,2 / 2,1,4,4,2,4 step 2), 0 promoting. Orphans: jin rows 85, 91,
+99, 100, 104, 127, 170, 171, 172, 209, 216, 226, 239, 250, 256, 262
+(same set as Batches 1-3). Canonicalization is the CORRECTED rule
+(strip only a trailing ~t[378] source-variant suffix): kinpo Batch 4
+contains EXACTLY ONE input-~ canonical, 3~4,D/F, filed as its own rest
+canonical with NO plan (never a variant of 3; asserted in the Batch 4
+test) — discharging the Batches 2-3 scope rulings. COVERAGE-COMPLETE:
+135 canonical comma keys = 32 (B1) + 12 (B2) + 21 (B3) + 70 (B4),
+uncovered [] extra []; plan keys total 177. Rest keys (41) are
+CSV-audited only — planning them needs engine support for non-attack
+prefix steps. T8-sourced prefixes with no T3 row get their correct
+clips from #988 Step 2 (original T8 refs), never from a T3 row recorded
+as correct.
+
+## Phantom Batch 1 fallback (LP1/RP2-only strings, 2026-10-25)
+Verified rows 55/56/57/58/66/69/70/71/175/223/224/225/226/261 are FALLBACK
+(T3 yoshimitsu rows, bank yoshimitsu / native Yoshimitsu bank — NOT a
+fallback bank: phantom's T7/T8 base IS Yoshimitsu), to be re-matched to T7
+Yoshimitsu rows when extraction lands. Rejected rows are NOT fallback —
+rejected evidence, not wired or held. Yoshimitsu-bank rules, per-bank
+evidence (documented in
+docs/movesets/PHANTOM-BATCH1-STEP-PLANS-2026-10-25.md): rows 35 and 220 do
+NOT EXIST in this bank (absent from hit_frames AND Job 1) — no row-35 or
+row-220 rule applies at all; row 216 is a STANDING LP1 row here, NOT king
+row 216's dash Konvict Kick, NOT jin row 216's jump row; row 243 is a
+CHORD row (button 9 = LP1+RK4) failing every single-button gate.
+Phantom's own LP1 move 1 carries t3_row 62 (starts-airborne) and RP2 move
+2 carries t3_row 307 (crouch) on #1096 — both ALSO ROW-CHANGED on current
+main (62->None, 307->None), so all 10 Batch 1 steps with prefix 1 or 2 are
+SUSPENDED-DRIFT — never wired on stale data. Standing rows verified for
+crouch-context steps (d/f+1 family rows 223/224/225/226) follow the
+demonio Batch 1 precedent: the gate flags crouch rows for non-crouch
+steps, not standing rows for crouch steps. Job 3 fills wired: 0 (two
+exact+FULL row 160 candidates HELD at review under the stricter fill
+rule). Canonicalization is the CORRECTED rule (strip only a trailing
+~t[378] source-variant suffix): phantom Batch 1 contains ZERO input-~
+canonicals; the file's old-vs-corrected diffs are all outside Batch 1
+scope. T8-sourced prefixes with no T3 row get their correct clips from
+#988 Step 2 (original T8 refs), never from a T3 row recorded as correct.
+
+## Phantom Batch 2 fallback (LK3/RK4-only strings, 2026-10-25)
+Verified rows 73/291 are FALLBACK
+(T3 yoshimitsu rows, bank yoshimitsu / native Yoshimitsu bank — NOT a
+fallback bank: phantom's T7/T8 base IS Yoshimitsu), to be re-matched to T7
+Yoshimitsu rows when extraction lands. Rejected rows are NOT fallback —
+rejected evidence, not wired or held. Yoshimitsu-bank rules, per-bank
+evidence (documented in
+docs/movesets/PHANTOM-BATCH2-STEP-PLANS-2026-10-25.md): rows 35 and 220 do
+NOT EXIST in this bank (absent from hit_frames AND Job 1) — no row-35 or
+row-220 rule applies at all; row 216 is a STANDING LP1 row here, NOT king
+row 216's dash Konvict Kick, NOT jin row 216's jump row; row 243 is a
+CHORD row (button 9 = LP1+RK4) failing every single-button gate.
+Phantom's own RK4 move 4 carries t3_row 243 on the Batch 1 branch and is
+ROW-CHANGED on current main (243->None), so both Batch 2 steps with prefix
+4 are SUSPENDED-DRIFT — never wired on stale data. Job 3 fills wired: 0
+(all Job 3 candidates ROW-ONLY or soft, documented never wired).
+Canonicalization is the CORRECTED rule (strip only a trailing ~t[378]
+source-variant suffix): phantom Batch 2 contains ZERO input-~
+canonicals; the file's old-vs-corrected diffs (3~4,U; 4,4,2,2,1,~1;
+4,4,2,2,NSS.1,~1) are all outside Batch 2 scope (rest/Batch 4 keys).
+T8-sourced prefixes with no T3 row get their correct clips from
+#988 Step 2 (original T8 refs), never from a T3 row recorded as correct.
+
+## Phantom Batch 3 fallback (mixed-pair strings, 2026-10-25)
+Verified rows 55/66/73/74/75/88/89/90/123/173/223/301 are FALLBACK
+(T3 yoshimitsu rows, bank yoshimitsu / native Yoshimitsu bank — NOT a
+fallback bank: phantom's T7/T8 base IS Yoshimitsu), to be re-matched to T7
+Yoshimitsu rows when extraction lands. Rejected rows are NOT fallback —
+rejected evidence, not wired or held. Yoshimitsu-bank rules, per-bank
+evidence (documented in
+docs/movesets/PHANTOM-BATCH3-STEP-PLANS-2026-10-25.md): rows 35 and 220 do
+NOT EXIST in this bank (absent from hit_frames AND Job 1) — no row-35 or
+row-220 rule applies at all; row 216 is a STANDING LP1 row here, NOT king
+row 216's dash Konvict Kick, NOT jin row 216's jump row; row 243 is a
+CHORD row (button 9 = LP1+RK4) failing every single-button gate.
+Phantom's own RP2 move 2 carries t3_row 307 on the Batch 2 branch and is
+ROW-CHANGED on current main (307->None), so the three Batch 3 steps with
+prefix 2 (2,2,4; 2,3; 2,d+3 step 1s) are SUSPENDED-DRIFT; phantom's own
+RK4 move 4 carries t3_row 243 and is ROW-CHANGED on current main
+(243->None), so both Batch 3 steps with prefix 4 (4,4,2; 4,4,2,2 step 1s)
+are SUSPENDED-DRIFT — never wired on stale data. Job 3 fills wired: 0
+(all Job 3 candidates ROW-ONLY or soft, documented never wired).
+Canonicalization is the CORRECTED rule (strip only a trailing ~t[378]
+source-variant suffix): phantom Batch 3 contains ZERO input-~
+canonicals; the file's old-vs-corrected diffs (3~4,U; 4,4,2,2,1,~1;
+4,4,2,2,NSS.1,~1) are all outside Batch 3 scope (rest/Batch 4 keys).
+T8-sourced prefixes with no T3 row get their correct clips from
+#988 Step 2 (original T8 refs), never from a T3 row recorded as correct.
+
+## Phantom Batch 4 fallback (triples/quads/rest strings, 2026-10-25)
+Verified rows 123/237/291/294/298/301/306 are FALLBACK
+(T3 yoshimitsu rows, bank yoshimitsu / native Yoshimitsu bank — NOT a
+fallback bank: phantom's T7/T8 base IS Yoshimitsu), to be re-matched to T7
+Yoshimitsu rows when extraction lands. Rows 123/291/301 are Batch 2/3 rows
+re-verified in Batch 4 contexts (row dual-role caution: a row verified for
+one string/context is NOT globally verified — every step gate-checks its
+own row again). Rejected rows are NOT fallback — rejected evidence, not
+wired or held. Yoshimitsu-bank rules, per-bank evidence (documented in
+docs/movesets/PHANTOM-BATCH4-STEP-PLANS-2026-10-25.md): rows 35 and 220 do
+NOT EXIST in this bank (absent from hit_frames AND Job 1) — no row-35 or
+row-220 rule applies at all; row 216 is a STANDING LP1 row here, NOT king
+row 216's dash Konvict Kick, NOT jin row 216's jump row; row 243 is a
+CHORD row (button 9 = LP1+RK4) failing every single-button gate.
+Coverage-complete: ALL 321 canonical comma keys = B1 117 + B2 41 + B3 48 +
+B4 115 (48 triples/quads planned + 67 rest CSV-audited only), overlaps 0,
+uncovered [] extra []. Rest keys get NO plan — planning them needs engine
+support for non-attack prefix steps (future work, named, not guessed).
+All three row-changed moves the Batch 4 brief flagged ARE Batch 4 step
+prefixes: prefix 1 ROW-CHANGED 62->None (1,2,1,4,2,2,2,4,1,1 +
+1,2,1,4,4,4,1,1,1,1 step 1s, stale row 62); prefix 2 ROW-CHANGED 307->None
+(2,2,4,1 + 2,2,4,1,1 step 1s, stale row 307); prefix 4 ROW-CHANGED
+243->None (4,4,2,2,1 + 4,4,2,2,1,~1 + 4,4,2,2,NSS.1 + 4,4,2,2,NSS.1,~1
+step 1s, stale chord row 243) — all SUSPENDED-DRIFT, never wired on stale
+data. Job 3 fills wired: 0 (all Job 3 candidates ROW-ONLY, soft-filed,
+soft-nofiled, or unknown; the one exact+FULL candidate, row 160 for
+4,4,2,2,1 step 5, is HELD at review on SOFT proxy fail under the stricter
+fill rule). Canonicalization is the CORRECTED rule (strip only a trailing
+~t[378] source-variant suffix): phantom Batch 4 contains EXACTLY THREE
+input-~ canonicals, all their own keys — 3~4,U (rest, buttonless U step,
+CSV-audited only, NOT a variant of 3) and 4,4,2,2,1,~1 + 4,4,2,2,NSS.1,~1
+(triples, union {1,2,4}, planned). Corrupted key f,F+2,&amp;#58;2
+(double-escaped colon, diablo Batch 1 df+1,&#58;2 precedent) filed
+verbatim, unmapped — open data-quality follow-up, never fixed here.
+Gap-1: hit_frames identical to the Batch 3 baseline; rows.pack row set
+identical (215 rows, same slots/stream_frames/used_by/source hashes) but
+the blob differs by the 2026-10-22 facing-fix re-bake (L/R bone order
+swapped, quaternion streams re-encoded, mirrored rest pose) — gates use
+hit_frames + Job 1, unaffected. T8-sourced prefixes with no T3 row get
+their correct clips from #988 Step 2 (original T8 refs), never from a T3
+row recorded as correct.
+
+## Scimitar Batch 1 fallback (LP1/RP2-only strings, 2026-10-25)
+Verified rows 92/93/183/186/220/221/222/223 are FALLBACK
+(T3 jin rows, bank jin / FALLBACK bank: scimitar's T7/T8 base is Shaheen,
+which debuted in Tekken 7, so no shaheen dir exists under t3/ — the kinpo
+pattern, Asuka -> jin), to be re-matched to T7 Shaheen rows when extraction
+lands. Rejected rows are NOT fallback — rejected evidence, not wired or
+held. Jin-bank rules, per-bank evidence (documented in
+docs/movesets/SCIMITAR-BATCH1-STEP-PLANS-2026-10-25.md): row 35 EXISTS as a
+starts-airborne LP1 row (hit_frames [11,12,39,535,0,1]) — ground-rejected,
+jump-context only; row 220 is a STANDING RP2 row (hit_frames
+[12,12,41,1042,0,2], Job 1 standing) — NOT king's jumping chord row, NOT
+bryan's button-0 row, NOT heihachi's jump RK4 row; row 216 is a JUMP row
+(hit_frames [63,64,117,1543,0,0], button 0) — it fails every single-button
+gate; row 41 is a starts-airborne LP1 row. Scimitar's own LP1 move 1
+carries t3_row 184 (standing LP1 row) and RP2 move 2 carries t3_row 220
+(the standing RP2 row) on #1096 — but move 1 IS ROW-CHANGED on current
+main (184->None, anim_ref None), so both Batch 1 steps with prefix 1 are
+SUSPENDED-DRIFT — never wired on stale data. The file's ONLY row-changed
+move is 1. Standing rows verified for crouch-context steps (d+1+2 family
+rows 92/93/183) follow the demonio Batch 1 precedent: the gate flags
+crouch rows for non-crouch steps, not standing rows for crouch steps.
+Job 3 fills wired: 0 (all Job 3 candidates are ROW-ONLY or soft, documented
+never wired). Canonicalization is the CORRECTED rule (strip only a trailing
+~t[378] source-variant suffix): scimitar Batch 1 contains ZERO input-~
+canonicals, and scimitar is INERT file-wide on this axis — every ~ in the
+file is a trailing source-variant suffix. T8-sourced prefixes with no T3 row
+get their correct clips from #988 Step 2 (original T8 refs), never from a
+T3 row recorded as correct.
+
+## Scimitar Batch 2 fallback (LK3/RK4-only strings, 2026-10-25)
+Verified rows 80/193/207/205 are FALLBACK
+(T3 jin rows, bank jin / FALLBACK bank: scimitar's T7/T8 base is Shaheen,
+which debuted in Tekken 7, so no shaheen dir exists under t3/ — the kinpo
+pattern, Asuka -> jin), to be re-matched to T7 Shaheen rows when extraction
+lands. Rejected rows are NOT fallback — rejected evidence, not wired or
+held. Jin-bank rules, per-bank evidence (documented in
+docs/movesets/SCIMITAR-BATCH2-STEP-PLANS-2026-10-25.md): row 35 EXISTS as a
+starts-airborne LP1 row (hit_frames [11,12,39,535,0,1]) — ground-rejected,
+jump-context only; row 220 is a STANDING RP2 row (hit_frames
+[12,12,41,1042,0,2], Job 1 standing) — NOT king's jumping chord row, NOT
+bryan's button-0 row, NOT heihachi's jump RK4 row; row 216 is a JUMP row
+(hit_frames [63,64,117,1543,0,0], button 0) — it fails every single-button
+gate; row 41 is a starts-airborne LP1 row. Jin duck-dip rows (16): 123, 189,
+192, 210, 211, 212, 213, 235, 257, 367, 377, 381, 385, 387, 389, 397 —
+handled like crouch: STANCE-SOFT (review) for non-crouch contexts. The
+file's ONLY row-changed move is 1 (184->None) — an LP1 move, NOT a Batch 2
+step prefix (Batch 2 strings are LK3/RK4-only), so Batch 2 has ZERO
+suspended-drift steps. Verified: u/f+4,3 [80,193] and u/f+4,4 [80,207]
+verified-all (jump context, SOFT waived); d/f+4,4 step 1 <- 205 (crouch row
+for crouch context, passes outright). Review holds: 4,3/4,4 step 1 cand 199
+SOFT fail; d/f+4,4 step 2 cand 212 SOFT fail; u/f+4,4,4 step 3 cand 210 +
+u/f+4,4,4,4 steps 3-4 cands 210/211 STANCE-SOFT (duck-dip for jump context).
+Unmapped: 12 steps, ALL no-candidate (zero rejected, zero suspended).
+Job 3: 0 report entries with pass-all rows (the only Batch 2 step prefixes
+with match_search entries — d/b+3,4, u/f+4,4,4, u/f+4,4,4,4 — all carry EMPTY
+pass-all lists); 0 fills wired. Job 4: 4 joins, all no-action, none
+promoting; 15 orphans (same bank-level set as Batch 1). Canonicalization is
+the CORRECTED rule (strip only a trailing ~t[378] source-variant suffix):
+ZERO input-~ canonicals in Batch 2 scope, and scimitar is INERT file-wide on
+this axis — every ~ in the file is a trailing source-variant suffix.
+T8-sourced prefixes with no T3 row get their correct clips from #988 Step 2
+(original T8 refs), never from a T3 row recorded as correct.
+
+## Scimitar Batch 3 fallback (mixed-pair strings, 2026-10-25)
+Verified row 220 is FALLBACK
+(T3 jin row, bank jin / FALLBACK bank: scimitar's T7/T8 base is Shaheen,
+which debuted in Tekken 7, so no shaheen dir exists under t3/ — the kinpo
+pattern, Asuka -> jin), to be re-matched to T7 Shaheen rows when extraction
+lands. Rejected rows are NOT fallback — rejected evidence, not wired or
+held. Jin-bank rules, per-bank evidence (documented in
+docs/movesets/SCIMITAR-BATCH3-STEP-PLANS-2026-10-25.md): row 35 EXISTS as a
+starts-airborne LP1 row (hit_frames [11,12,39,535,0,1]) — ground-rejected,
+jump-context only; row 220 is a STANDING RP2 row (hit_frames
+[12,12,41,1042,0,2], Job 1 standing) — NOT king's jumping chord row, NOT
+bryan's button-0 row, NOT heihachi's jump RK4 row; row 216 is a JUMP row
+(hit_frames [63,64,117,1543,0,0], button 0) — it fails every single-button
+gate; row 41 is a starts-airborne LP1 row. Jin duck-dip rows (16): 123, 189,
+192, 210, 211, 212, 213, 235, 257, 367, 377, 381, 385, 387, 389, 397 —
+handled like crouch: STANCE-SOFT (review) for non-crouch contexts. The
+file's ONLY row-changed move is 1 (184->None) — NOT a Batch 3 step prefix
+(no Batch 3 string starts with plain 1), so Batch 3 has ZERO
+suspended-drift steps. Verified: 2,3 step 1 <- 220 (standing RP2,
+prefix-move, damage-only drift, SOFT window [4.0,8.0] armR peak 6).
+Review hold: 4,1 step 1 cand 199 SOFT fail ([3.5,7.5], legR peak 3 — same
+row/result as kinpo Batch 3's 4,1 hold and scimitar Batch 2's 4,3/4,4
+holds). Rejected: d/f+1,3 steps 1-2 rows 179/197 airborne and d/f+1,4
+steps 1-2 rows 179/204 airborne (same rows as kinpo Batch 3's d/f+1,3 /
+d/f+1,4 rejections, independently re-derived). Unmapped: 21 steps
+(17 no-candidate + 4 rejected-candidate + 0 suspended). Job 3: 1 report
+entry (4,1 rows 92/105 exact ROW-ONLY, not wired); 0 fills wired; no
+agreement note fires (the note fires ONLY for actually-wired gate
+candidates). Dedupe fires zero times. Job 4: 4 joins, all REJECTED
+(rows 179 x2, 197, 204 airborne), none promoting; 15 orphans (same
+bank-level set as Batches 1-2). Canonicalization is the CORRECTED rule
+(strip only a trailing ~t[378] source-variant suffix): ZERO input-~
+canonicals in Batch 3 scope, and scimitar is INERT file-wide on this
+axis — every ~ in the file is a trailing source-variant suffix.
+T8-sourced prefixes with no T3 row get their correct clips from #988 Step 2
+(original T8 refs), never from a T3 row recorded as correct.
+
+## Scimitar Batch 4 fallback (triples/quads/rest, 2026-10-25)
+Verified rows 186, 220, 221, 222, 223, 224, 230, 232, 233 are FALLBACK
+(T3 jin rows, bank jin / FALLBACK bank: scimitar's T7/T8 base is Shaheen,
+which debuted in Tekken 7, so no shaheen dir exists under t3/ — the kinpo
+pattern, Asuka -> jin), to be re-matched to T7 Shaheen rows when extraction
+lands. Rejected/suspended rows are NOT fallback — rejected/suspended
+evidence, not wired or held. Jin-bank rules, per-bank evidence (documented in
+docs/movesets/SCIMITAR-BATCH4-STEP-PLANS-2026-10-25.md): row 35 EXISTS as a
+starts-airborne LP1 row (hit_frames [11,12,39,535,0,1]) — ground-rejected,
+jump-context only; row 220 is a STANDING RP2 row (hit_frames
+[12,12,41,1042,0,2], Job 1 standing) — NOT king's jumping chord row, NOT
+bryan's button-0 row, NOT heihachi's jump RK4 row; row 216 is a JUMP row
+(hit_frames [63,64,117,1543,0,0], button 0) — it fails every single-button
+gate; row 41 is a starts-airborne LP1 row. Jin duck-dip rows (16): 123, 189,
+192, 210, 211, 212, 213, 235, 257, 367, 377, 381, 385, 387, 389, 397 —
+handled like crouch: STANCE-SOFT (review) for non-crouch contexts. The
+file's ONLY row-changed move is 1 (184->None) — and it IS a Batch 4 step
+prefix: 1,2,3 step 1 and 1,2,4 step 1 SUSPEND on drift (stale row 184
+documented, never wired). Verified: 2,1,2,2,3 [220,221,222,223,224]
+verified-all; 2,1,4 [220,221,230] verified-all; 1,2,3 / 1,2,4 step 2 <- 186
+(standing RP2); 2,1,4,4,2 step 5 <- 232 and 2,1,4,4,2,4 steps 5-6 <- 232/233.
+Review hold: 2,1,2,2,3,4 step 6 cand 225 SOFT fail ([16.5,21.5], legR peak 6
+— same row/result as kinpo Batch 4's 2,1,2,2,3,4 hold, independently
+re-derived). Rejected: 2,1,4,4 family step 4 row 231 (button 12 != bits 8 —
+same row/result as demonio Batch 4's and kinpo Batch 4's 2,1,4,4 step-4
+failures). Unmapped planned steps: 16 (11 no-candidate + 3
+rejected-candidate + 2 suspended-drift). Job 3: 6 report entries, 0 fills
+wired; no agreement note fires (the note fires ONLY for actually-wired gate
+candidates). Dedupe fires zero times. Job 4: 3 joins, none promoting (232
+no-action x2; 216 rest-key join not adjudicated); 15 orphans (same
+bank-level set as Batches 1-3). Canonicalization is the CORRECTED rule
+(strip only a trailing ~t[378] source-variant suffix): ZERO input-~
+canonicals in Batch 4 scope, and scimitar is INERT file-wide on this axis —
+every ~ in the file is a trailing source-variant suffix.
+T8-sourced prefixes with no T3 row get their correct clips from #988 Step 2
+(original T8 refs), never from a T3 row recorded as correct.
+COVERAGE COMPLETE: all 74 canonical comma keys = B1 14 + B2 12 + B3 11 +
+B4 37, pairwise overlaps 0, uncovered [] extra [].
+
+## Skull Batch 1 fallback (LP1/RP2-only strings, 2026-10-25)
+Verified rows 44/45/46/56/57/58/113/145/146/147/148/149/150/151/152/153/172/173 are FALLBACK
+(T3 bryan rows, bank bryan / NATIVE bank: skull's T7/T8 base is Bryan Fury,
+which debuted in Tekken 3, so a native bryan dir exists under t3/ — same bank
+as burger's fallback, but here it is the character's own T3 bank, and its row
+identities were re-derived from the files, not copied from burger), to be
+re-matched to T7 Bryan rows when extraction lands. Rejected rows are NOT
+fallback — rejected evidence, not wired or held. Bryan-bank rules, per-bank
+evidence (documented in docs/movesets/SKULL-BATCH1-STEP-PLANS-2026-10-25.md):
+row 35 does NOT EXIST in this bank (absent from hit_frames AND Job 1); row 220
+EXISTS in hit_frames ([25,26,65,271,0,0], button 0) but is ABSENT from Job 1 —
+it fails every single-button gate, and is NOT jin's standing RP2 row 220, NOT
+king's jumping chord row, NOT heihachi's jump RK4 row; row 216 EXISTS in
+hit_frames ([20,21,30,271,0,0], button 0) but is ABSENT from Job 1 — same
+treatment. Skull's own LP1 move 1 carries t3_row 172 (standing LP1 row) and
+RP2 move 2 carries t3_row 100 (standing RP2 row) on #1096 — BOTH unchanged on
+current main (damage-only drift 11->9 and 12->13), NOT suspending, so
+suspended-drift steps are 0 (the file's row-changed moves are 3, 3_c36,
+u+1,3 — all 63->None, none a Batch 1 step prefix). Standing rows verified for
+crouch-context steps (d/f+1+2 family rows 146/147/148/149) follow the demonio
+Batch 1 precedent: the gate flags crouch rows for non-crouch steps, not
+standing rows for crouch steps. Job 3 fills wired: 0 (all Job 3 candidates are
+ROW-ONLY or soft, documented never wired). Canonicalization is the CORRECTED
+rule (strip only a trailing ~t[378] source-variant suffix): skull Batch 1
+contains ZERO input-~ canonicals, and skull is INERT file-wide on this axis —
+every ~ in the file is a trailing source-variant suffix. T8-sourced prefixes
+with no T3 row get their correct clips from #988 Step 2 (original T8 refs),
+never from a T3 row recorded as correct.
+
+## Skull Batch 2 fallback (LK3/RK4-only strings, 2026-10-25)
+Verified rows 103/104/193/194/199 are FALLBACK
+(T3 bryan rows, bank bryan / NATIVE bank: skull's T7/T8 base is Bryan Fury,
+which debuted in Tekken 3, so a native bryan dir exists under t3/ - same bank
+as burger's fallback, but here it is the character's own T3 bank, and its row
+identities were re-derived from the files, not copied from burger), to be
+re-matched to T7 Bryan rows when extraction lands. Rejected/review rows are
+NOT fallback - review evidence (rows 192/200) and suspended evidence (stale
+row 63) are not wired or held as playable. Bryan-bank rules, per-bank
+evidence (documented in docs/movesets/SKULL-BATCH2-STEP-PLANS-2026-10-25.md):
+row 35 does NOT EXIST in this bank (absent from hit_frames AND Job 1); row 220
+EXISTS in hit_frames ([25,26,65,271,0,0], button 0) but is ABSENT from Job 1 -
+it fails every single-button gate; row 216 EXISTS in
+hit_frames ([20,21,30,271,0,0], button 0) but is ABSENT from Job 1 - same
+treatment. Skull's own RK4 move 4 carries t3_row 104 both files (standing
+RK4 row); LK3 move 3 is ROW-CHANGED 63->None on main, so the two step-1s
+with prefix move 3 are SUSPENDED (stale jump row 63 documented, never wired).
+Standing row 103 verified for a crouch-context step (d/f+3+4,3 step 1) follows
+the demonio Batch 1 precedent: the gate flags crouch rows for non-crouch
+steps, not standing rows for crouch steps. Job 3 fills wired: 0 (8 log lines,
+each with an empty pass-all list; no full-provenance pass-all candidate).
+Job 4: 1 join (row 200), 0 promotions, 0 orphans. Canonicalization is the
+CORRECTED rule (strip only a trailing ~t[378] source-variant suffix): skull
+Batch 2 contains ZERO input-~ canonicals in scope. T8-sourced prefixes
+with no T3 row get their correct clips from #988 Step 2 (original T8 refs),
+never from a T3 row recorded as correct.
+
+## Skull Batch 3 fallback (mixed-pair strings, 2026-10-25)
+Verified rows 64/65/76/77/78/100/104/149/172/187 are FALLBACK
+(T3 bryan rows, bank bryan / NATIVE bank: skull's T7/T8 base is Bryan Fury,
+which debuted in Tekken 3, so a native bryan dir exists under t3/ - same bank
+as burger's fallback, but here it is the character's own T3 bank, and its row
+identities were re-derived from the files, not copied from burger), to be
+re-matched to T7 Bryan rows when extraction lands. Rejected/review rows are
+NOT fallback - review evidence (rows 158/182) and suspended evidence (stale
+row 63) are not wired or held as playable. Bryan-bank rules, per-bank
+evidence (documented in docs/movesets/SKULL-BATCH3-STEP-PLANS-2026-10-25.md):
+row 35 does NOT EXIST in this bank (absent from hit_frames AND Job 1); row 220
+EXISTS in hit_frames ([25,26,65,271,0,0], button 0) but is ABSENT from Job 1 -
+it fails every single-button gate; row 216 EXISTS in
+hit_frames ([20,21,30,271,0,0], button 0) but is ABSENT from Job 1 - same
+treatment. Skull's own LP1 move 1 carries t3_row 172 and RP2 move 2 carries
+t3_row 100, both unchanged on main (damage-only drift), NOT suspending.
+LK3 move 3 is ROW-CHANGED 63->None on main, and Batch 3 strings CAN contain
+LK3, so the row-change re-check was run explicitly and it FIRED: the three
+steps whose prefix move is row-changed (3,2 step 1 and 3,3,2 step 1 with
+prefix move 3; u+1,3 step 2 with prefix move u+1,3 itself) are SUSPENDED
+(stale jump row 63 documented, never wired). Standing row 149 verified for
+a crouch-context step (d/f+2,3 step 1) follows the demonio Batch 1
+precedent: the gate flags crouch rows for non-crouch steps, not standing
+rows for crouch steps. Job 3 fills wired: 0 (6 report entries, all
+candidates ROW-ONLY or soft; no exact+FULL candidate exists for any step,
+so no agreement note fires). Job 3 prefix-vs-__main dedupe fires 0 times
+(no Batch 3 step prefix has a __main Job 3 target at all). Job 4: 3 joins
+(351 REJECTED, 182 CANDIDATE-not-wired, 158 CANDIDATE-not-wired), 0 orphans,
+0 promotions. Canonicalization is the CORRECTED rule (strip only a trailing
+~t[378] source-variant suffix): skull Batch 3 contains ZERO input-~
+canonicals in scope. T8-sourced prefixes with no T3 row get their correct
+clips from #988 Step 2 (original T8 refs), never from a T3 row recorded as
+correct.
+
+## Skull Batch 4 fallback (triples/quads/rest strings, 2026-10-25, LAST batch — skull coverage COMPLETE)
+Verified rows 43/76/103/119/150/154/169/170/171/172/176/177/180/187/188/199/201/202/203/204/205/206/208 are FALLBACK
+(T3 bryan rows, bank bryan / NATIVE bank: skull's T7/T8 base is Bryan Fury,
+which debuted in Tekken 3, so a native bryan dir exists under t3/ - same bank
+as burger's fallback, but here it is the character's own T3 bank, and its row
+identities were re-derived from the files, not copied from burger), to be
+re-matched to T7 Bryan rows when extraction lands. Rejected/review rows are
+NOT fallback - review evidence (rows 158/200/207) and suspended evidence (stale
+row 63) are not wired or held as playable. Bryan-bank rules, per-bank
+evidence (documented in docs/movesets/SKULL-BATCH4-STEP-PLANS-2026-10-25.md):
+row 35 does NOT EXIST in this bank (absent from hit_frames AND Job 1); row 220
+EXISTS in hit_frames ([25,26,65,271,0,0], button 0) but is ABSENT from Job 1 -
+it fails every single-button gate; row 216 EXISTS in
+hit_frames ([20,21,30,271,0,0], button 0) but is ABSENT from Job 1 - same
+treatment. LK3 move 3 is ROW-CHANGED 63->None on main, so the three step-1s
+with prefix move 3 are SUSPENDED (3,2,1 / 3,2,1,2 / 3,2,1,4 step 1s; stale jump
+row 63 documented, never wired). Standing rows 103/169/170/177/180 verified
+for crouch-context steps (d/f+3+4,2 family) follow the demonio Batch 1
+precedent: the gate flags crouch rows for non-crouch steps, not standing rows
+for crouch steps. ONE Job 3 fill wired: 3,2,1,4 step 4 <- row 119 (exact level,
+FULL provenance moveset_skull:4~t3.bryan.2(RK), timing 1.33, HARD + SOFT pass
+under the stricter burger fill rule). Job 3: 15 report entries, 1 fill; all
+other candidates ROW-ONLY or soft, never wired; no agreement note fires. Job 4:
+24 joins (8 no-action, 11 CANDIDATE-not-wired, 1 REJECTED row 345, 4 rest-key
+joins documented not adjudicated), 0 orphans, 0 promotions. Canonicalization
+is the CORRECTED rule (strip only a trailing ~t[378] source-variant suffix):
+skull Batch 4 contains ZERO input-~ canonicals in scope. Rest keys (33
+canonicals, >=1 buttonless step) are CSV-audited only, never planned -
+planning needs engine support for non-attack prefix steps (future work, named,
+not guessed). COVERAGE-COMPLETE PROOF: full inventory 188 canonical comma
+keys = B1 57 + B2 12 + B3 31 + B4 88, pairwise overlaps 0, uncovered []
+extra []. T8-sourced prefixes with no T3 row get their correct clips from
+#988 Step 2 (original T8 refs), never from a T3 row recorded as correct.
 
 ## Zui Batch 1 fallback (LP1/RP2-only strings, 2026-10-25)
 Verified rows 92/93/183/221/222/223 are FALLBACK

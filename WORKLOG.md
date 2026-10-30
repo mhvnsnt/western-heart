@@ -3570,3 +3570,439 @@ Live-browser playtest (rendering, combat feel, balance) still needed — delegat
 **Proof:** 27/27 tagtest pass; screenshots: submenu, size picker, slot tray, DONE-draft {p1:[pantera,torch],p2:[demonio,rave]}.
 
 **Status:** PR pushed; merge via git_merge.py when green. NOTE: main has pre-existing broken imports (voice.js/hitfx.js/intro-interactions.js 404) — not from this worker.
+
+## 2026-10-26 — Deploy split wiring: Pages shell + GLBs on R2 (lane)
+
+**Owner decision:** "Split it: Pages shell + GLBs on R2" (2026-10-26 ~19:10 CDT, tapped option).
+Replaces the pending "what gets cut" question — nothing cut from the game, only from the deploy.
+Research: agent-ops PR #161 (`research-friction-20261025/01-deploy-pages-limit.md`).
+
+**What changed:**
+- `tools/deploy/build_pages.py --shell-only` — shell-only deploy (code/UI/text + 4 bundled
+  fighters: demonio, pantera, awa-pop, baek). Bundled list read from
+  `game/js/asset-config.js` on the ref (single source of truth). Also fixed `ls-tree -z`:
+  the script died on main tip because 4 mojibake filenames under `customization/parts*`
+  come back C-quoted.
+- `game/js/asset-config.js` (new) — one-line config: `remoteBase` placeholder
+  `__WH_R2_PUBLIC_URL__` until the R2 bucket exists; R2-only remote base, jsDelivr
+  fallback for small files. Decision recorded with reasons in the file.
+- `game/js/assets.js`, `game/js/stages.js`, `game/js/customization-consumer.js` — all
+  three GLB loaders go through `resolveAssetCandidates()` / `loadGlbCandidates()`.
+  No per-model changes; `MODEL_URLS` and stage defs untouched.
+- `tools/deploy/r2-upload-manifest.py` + `r2-upload-manifest.json` — every model to
+  upload, built from live GitHub (same closure as the deploy script), never local disk.
+- `tools/deploy/DEPLOY-SPLIT.md` — decision record, owner R2 steps, upload runbook,
+  itch.io setup sheet, verification checklist.
+
+**Proof:** `node --check` clean on all 4 touched JS files; resolver unit test 10/10
+(`repoPathForModelUrl` incl. `../roster/` escape, bundled-stays-local,
+non-bundled -> jsDelivr until R2 exists); `preload.test.mjs` 6/6 pass;
+`model-key-guard.test.mjs` 8/9 — the 1 failure is the sparse-checkout artifact
+(every entry "(file missing)": roster/ + game/assets not on disk locally), zero
+key-mismatch failures. Deploy-size verification from the build log: full baseline
+and `--shell-only` dry-runs (see PR body).
+
+**Blocked (owner-only):** Cloudflare R2 signup + bucket (`western-heart-assets`,
+CORS `Access-Control-Allow-Origin: *`) and itch.io account + payout setup.
+No bucket exists yet — nothing uploaded to R2, no account created.
+
+**Verification (2026-10-27, this lane, own-eyes from the build logs):**
+- Full deploy baseline: `build_pages.py --ref origin/main --dry-run` =
+  7,632 files / 6,052.0 MB (roster 4,061.0 MB, game 1,828.8 MB) + WARNING
+  over the Pages 1 GB cap. (Research said 5,969 MB at the Oct 25 ref; main moved.)
+- Shell-only: `--dry-run --shell-only` = 5,394 files / 739.5 MB on main,
+  5,395 files / 739.5 MB on the branch (extra file is asset-config.js itself);
+  excluded 2,238 files / 5,312.5 MB (2,238 models -> remote). The branch run
+  read SHELL_BUNDLED_MODELS from asset-config.js with NO fallback warning —
+  the single-source-of-truth path works.
+- R2 manifest: 2,242 models / 5,329.7 MB (5,312.5 MB remote-only),
+  7 release-matched (6 from `fighter-hunt-r2`, 1 from `leoman-restore-20261020`),
+  fits the R2 free 10 GB tier. 0 bad entries.
+- Shell materialized + itch ZIP built: `wh-itch-shell-20261026.zip`
+  490,419,079 bytes, 739,520,900 bytes extracted, 5,634 entries.
+  **Correction:** does NOT fit itch.io HTML5 (500 MB / 1,000 files) — 239.5 MB
+  and 4,634 entries over. Needs an itch-trim follow-up; ZIP not uploaded
+  anywhere (itch would reject it), shell-out + ZIP cleared off disk after the lane.
+- Resolver unit test 10/10; `node --check` clean on all touched JS;
+  `preload.test.mjs` 6/6; `model-key-guard.test.mjs` 8/9 (1 failure is the
+  sparse-checkout artifact — every entry "(file missing)", zero key mismatches).
+- Branch `split-deploy-pages-r2` built via the Git Data API (NO-SPARSE-COMMIT
+  LAW: never commit from the partial checkout): base_tree = main tree,
+  root-entry check 34 = 34 identical paths before the commit; compare shows
+  1 commit ahead, 8 files, 0 files removed.
+
+**Fix after CI (2026-10-27, this lane): menu-touch-e2e failed on PR #1152**
+- Run 40434489083: all checks green except menu-touch-e2e (fail, 12m0s).
+  The versus flow reached confirm-stage, then the fight HUD never appeared
+  in 60s (`page.waitForFunction: Timeout 60000ms exceeded`). Baseline:
+  rig-guard passed on the previous 6 PR runs, so this PR's change was the
+  cause.
+- Root cause: `resolveAssetCandidates()` returned ONLY the jsDelivr URL for
+  non-bundled models while the R2 placeholder stands — no local fallback.
+  In CI/dev the full repo is served locally, so every non-bundled fighter
+  and stage GLB fetched from jsDelivr instead of disk (slow / >20 MB 403s).
+- Fix (game/js/asset-config.js): candidate order is now R2 first (when
+  ready), then the LOCAL URL, then jsDelivr last. On the Pages shell the
+  local candidate 404s fast (non-bundled GLBs are not in the shell), so
+  production costs nothing. Decision updated in the file header and in
+  DEPLOY-SPLIT.md ("R2 as the remote base, local as the dev/CI fallback").
+- Verification: resolver unit test rewritten for the new order, 12/12 pass;
+  `node --check` clean; `preload.test.mjs` green. menu-touch-e2e is the
+  arbiter — it must pass on the re-run before merge.
+
+## 2026-10-29 5:50 PM CT — moveset sweep batch 13 (Grok, PR #1227)
+- Done: multi-tap direction-only endings ('1+2,f,f', 'd/f+1,2,f,F') keep a pending path in
+  `tryDirFollow`; tapped spelling resolves before held; duplicate-input rows (qcf+1 vs
+  n,d,d/f,f+1 etc.) reported n/a naming the row they share input with.
+- Core-8 sweep b20 (pass/fail): Bruno 333/0, Pantera 818/55, Demonio 746/23, Cyborg X 607/21,
+  Burger 555/11, Chatur 293/5, Deathfang 128/9, Dio 263/12. Failing rows by name:
+  docs/proof/moveset-sweep-20261028/r17-core8-failing.json.
+- Open: Demonio SS.2,U (held-U upgrade not reached; sweep holds U ~3f), alternate copies
+  (~tN / _cNN_rNNN), FC vs f,n,d,D/F, DES.BT, KOF system rows, u/b+1 root motion.
+- #1096 stack handed to Muse. WIP main-merge (no donor rows; only fighter.js conflicted,
+  union-resolved) parked on branch grok/1096-merge-main-wip (ae5f5df), not merged.
+
+## 2026-10-29 ~6:40 PM CT — Tekken 7 health 180 + full select restore (Doro)
+- Owner orders (this lane): health to Tekken 7's 180 per round with move
+  damage unchanged ("move damage is happening correct maybe health and hp
+  is too low"); all fighters back on the fighter select screen; all
+  arenas back on the stage select list (reversing the Milestone 1
+  core-8 / 3-stage default from earlier the same day).
+- Health: `game/js/fighter.js` Fighter vitals maxHp/hp 100 -> 180. That
+  is the only versus HP definition in the game — every other system
+  (HUD bars in main.js, team-battle red health, survival/team carries)
+  already works in hp/maxHp percentages, so the bar drop per hit scales
+  with no further changes. Move damage values untouched.
+- Select: `game/js/core-set.js` selectVisible/stageVisible now return
+  true for everyone; CORE_FIGHTERS/CORE_STAGES/MODELLESS_HIDDEN kept as
+  data (shell bundling + ?quick= defaults + the no-model record).
+  `game/js/main.js` stage RANDOM again picks from the full stage list.
+  `game/js/select-screen.js` comment updated; its SELECT_HIDDEN set
+  (nine souls + ryuji + doc-frank-machine-shop, owner law 2026-10-22)
+  is unchanged — those were never standalone cards on the deployable
+  version either.
+- Proof: node --check clean on all four changed JS files; a node import
+  test of core-set.js shows core, model-less and crossover fighters and
+  canon/Tekken/No Mercy stages all visible. CI game checks + the
+  menu-touch e2e are the arbiter before merge (repo rule). Deletions:
+  none.
+- Still open after this PR (named, not hidden): Demonio SS.2,U (batch 13
+  regression — held-U upgrade not reached, sweep holds U ~3f); Dio's 12
+  remaining sweep failures (mostly During-Jump air moves); Pantera's 55
+  (chain-throw / ~t3 transition classes). Lists:
+  docs/proof/moveset-sweep-20261028/r17-core8-failing.json.
+
+## 2026-10-29 — Demonio SS.2,U: headless proof test for the 12f capital hold (PR #1234)
+- What: `test/ss2u-dir-hold.test.mjs` proves the mechanism behind the sweep-page fix
+  (capital direction-only steps held 12f instead of a flat 4f) without a full 3D fight load:
+  it drives the REAL `Fighter._dirHoldUpgrade` in `game/js/fighter.js` frame by frame
+  through the real `setStick` entry point, against the REAL Demonio rows
+  (`SS.2:u` tapped, `SS.2,U` held) from `game/assets/movesets/demonio.json`, and it
+  checks the sweep-page contract in `test/e2e/moveset-sweep.page.js` (capital 12f,
+  lowercase 4f) against the fighter's 0.08 s threshold read from the same tree.
+- Why: the full-fight sweep trace could not be produced in this environment across
+  several runs (page-load stalls; see LOOP-STATE.md run records). The staging law
+  (owner, 2026-10-29) closes the local scratch-sweep route, so proof moves to a repo
+  test that GitHub Actions runs against the real tree (game-unit-tests job).
+- Result claimed: 4f of held stick never upgrades the queued row (4/60 = 0.067 s <
+  0.08 s); 12f upgrades it by frame 5 (5/60 = 0.083 s) and the held flag/queue retarget
+  to the held row. CI result on the proof head 96b21368 (job 123886459298,
+  2026-10-30T04:10:40Z): game-unit-tests SUCCESS, and all 13 check-runs green on
+  that head (instruction-gate, menu-touch-e2e, ui-sources, material-gate, all
+  guards). The per-test log lines were not retrievable (job-log download returned
+  401 on the storage redirect), so the proof record is the job's success on this
+  exact head plus the job's loop over test/*.test.mjs, which necessarily includes
+  the new file — stated here rather than overstated.
+- Still open, stated plainly: a live full-fight sweep trace for SS.2,U is the final
+  end-to-end confirmation and has not been produced; this test proves the upgrade
+  mechanism + hold duration, not a rendered fight. Deletions: none.
+
+## 2026-10-29 — Dio's 9 During-Jump failures: AIR. airborne prefix (PR #1238)
+- What: T7 jump attacks now canonicalise to an `AIR.` prefix the input buffer resolves
+  only while the fighter is airborne — the same pattern as `R.` for rage and `FC.` /
+  `WS.` / `SS.` / `BT.` for their states. `game/js/movesets.js` canonNotation maps
+  `(During Jump) X`, `(During Forward or Backward Jump) X` and
+  `(During Forward Jump Peak) X` to `AIR.X`; `TekkenBuffer` (`_pressV2` and
+  `_pressLegacy`) tries `AIR.` ahead of the plain input when `ctx.airborne` holds;
+  `game/js/fighter.js` `_inputCtx` now reports `airborne: !this.onGround`.
+  `test/e2e/moveset-sweep.page.js` setup gains an `AIR` case: hold u past input.js's
+  200 ms tap/sidestep window, press only once airborne (with a direct `tryJump`
+  fallback and an honest 'jump did not leave the ground' setup note if it never
+  leaves). `test/input-determinism.test.mjs` maps `AIR.` to `{ airborne: true }`.
+- Why: 9 of Dio's 12 rows in docs/proof/moveset-sweep-20261028/r17-core8-failing.json
+  never parsed — the sweep returned 'unparsed' for every one. Two separate causes
+  were found in the code, not assumed: (1) the alternatives rule in canonNotation
+  (`or` = either/or input list) cut `(During Forward or Backward Jump)` to
+  `(During Forward` before the jump rule ever saw it — the `or` there is part of
+  the context name, so the AIR. mapping now runs BEFORE that rule; (2) the
+  `(during X)` rule deliberately left every jump name unchanged and the final
+  paren-strip then produced `During Jump qcf+1`, which parse() rejects. The AIR.
+  prefix also fixes a real gameplay collision the old spellings hid: Dio's ground
+  qcf+1 Hadoken and his air qcf+1 Zanku Hadoken are the same bare input, told
+  apart only by airborne state — a plain `qcf+1` slot could only ever serve one.
+  Vertical-jump rows (`(During Vertical Jump) 1` -> `u+1`) already passed and are
+  untouched, guarded by a regression assertion in the new test.
+- Proof: new `test/air-moves.test.mjs` — canon outputs for all 9 rows plus the
+  vertical and non-jump guards; `AIR.` slots coexisting with ground slots without
+  overwriting; the resolver picking `AIR.1` / `AIR.qcf+1` only with
+  `{ airborne: true }` and the ground move otherwise. Run locally against the
+  exact edited files (node --test): 4/4 pass; the neighbouring
+  state-gated-notation and annotated-notation tests also pass unchanged (4/4).
+  CI's game-unit-tests run on the PR head is the merge arbiter, as with PR #1234.
+- Still open, stated plainly: (a) a live full-fight sweep trace for the 9 rows is
+  the final end-to-end confirmation and has not been produced — the sweep-page
+  `AIR` setup above is the harness side of it, and the next sweep run is the
+  witness; (b) the forward-jump PEAK is not a state the engine models, so a peak
+  row fires anywhere airborne (the sweep witnesses it airborne; peak-only timing
+  is a documented residual, in the same class as the `near`/`far` notes canon
+  already drops); (c) Dio's other 3 rows are NOT in this PR — `DFLIP N` (no
+  button in the row; its real input is unclear and will not be invented),
+  `(During Rage) 1,1,f,3,2` (parses to `R.1,1,f,3,2`; failure is downstream and
+  needs trace evidence), `f,d,d/f+2,1+2,f,f (first hit only)` (trailing `f,f`
+  dir-only tail; needs trace evidence). Deletions: none.
+
+## 2026-10-30 — Back-to-wall sweep rows -> WALL. canon + zero-width hygiene (PR #1239)
+- What: `game/js/movesets.js` canonNotation gains two rules: (1) a '(back to wall)' /
+  '(Back to wall)' prefix maps to 'WALL.' (placed next to the existing 'back to opponent'
+  -> BT. rule, before the generic paren-strip that used to reduce the row to the
+  unparseable 'back to wall.b,b,U/B'); (2) zero-width characters (\u200b/\u200c/\u200d/
+  \ufeff) are stripped at the top of canonNotation — the Cyborg X key carries \u200b
+  separators between its steps, straight from the scraped T8 list. New
+  `test/wall-context.test.mjs` covers both rows plus guards (BT., AIR., plain
+  crouch-dash, H.2+3 unchanged).
+- Why: 3 rows in docs/proof/moveset-sweep-20261028/r17-core8-failing.json were
+  'unparsed' for this one reason (Pantera, Cyborg X, Burger — the Cyborg X row is the
+  T8 Alisa '[[Wall Jump Attack]]'). A wall-jump attack's input has no button, and the
+  sweep's own taxonomy classes buttonless inputs as movement (ok:null, n/a), not
+  failures — so on the next sweep these rows leave the failing list. Stated plainly:
+  this is a reclassification to the sweep's movement class, not a witnessed pass; a
+  wall-position witness (pressing the motion with the back actually at the wall, and
+  checking the wall-jump attack state) is the recorded residual. No fighter data was
+  touched — shared canon code only.
+- Proof: new test 2/2 pass locally against the exact edited movesets.js (node --test);
+  the real sweep-page parse() run over the new canon outputs returns motionOnly for
+  both attested spellings (was: parse error 'token Back to wall.b is not a stick/button
+  input'). CI's game-unit-tests run on the PR head is the merge arbiter, as with
+  PR #1234 / #1238. Deletions: none.
+
+## 2026-10-30 — Deathfang saika: 'during X' canon accepts motion-start follow-ups (PR #1240)
+- What: `game/js/movesets.js` canonNotation's no-paren 'during X' rule gains motion starts
+  (qcf/qcb/hcf/hcb/dp) in its lookahead, next to the existing direction/button starts.
+  Deathfang's saika input 'during Ya Otome, qcf,qcf,qcf,qcf+1+2' used to fall through that
+  rule and stay 'during Ya Otome,qcf,...' — unparseable, so the sweep listed the row as
+  'unparsed'. It now canonicalises to 'YA_OTOME.qcf,qcf,qcf,qcf+1+2'. New
+  `test/saika-during.test.mjs` covers the saika input, two more motion starts, and guards
+  (BAD_STOMACH, ELBOW_DROP, HISENKYAKU, the '(During Rage)' R. row, a direction-start
+  Ya Otome row, AIR., plain crouch-dash).
+- Why: the sweep's own machinery already plays this pattern — its setup() default case sets
+  f.stance = pre for any prefix, and _prepare slots 'during X' rows on their prefixed
+  input — so the only missing piece was the canon lookahead. No fighter data touched:
+  shared canon code only, same as PR #1239.
+- Proof: new test 2/2 pass locally against the exact edited movesets.js (node --test, in
+  the CI layout game/js + test/); the real sweep-page parse() over the new canon output
+  returns a parseable prefixed row (was: parse error 'token during Ya Otome is not a
+  stick/button input'). CI's game-unit-tests run on the PR head is the merge arbiter, as
+  with PR #1234 / #1238 / #1239. The next sweep run is the witness that saika fires from
+  the Ya Otome stance; this PR moves it from 'unparsed' to pressed-from-stance.
+- Residual, stated plainly: _prepare's byName maps the full KOF move name
+  ('DEATHFANG_KIN_1211_SHIKI_YA_OTOME'), not 'YA_OTOME', so pressing Ya Otome itself does
+  not set the YA_OTOME stance in real play — the sweep sets the stance directly. The
+  real-play entry mapping is a follow-up, not hidden. Deletions: none.
+## 2026-10-30 — Cyborg X trailing spin-count annotations -> bare input (PR #1241)
+
+**Why:** Three Cyborg X rows in docs/proof/moveset-sweep-20261028/r17-core8-failing.json
+were 'unparsed' in the sweep because their inputs end in a spin-count note in
+parentheses: t7.alisa_141 'WS 1+2* (one spin)', t7.alisa_142 'WS 1+2 (two spins)',
+t7.alisa_185 '(During Clockwork) 3 (more than a single spin)'. canonNotation's
+final paren rule turned the note into bare words ('WS.1+2* one spin'), which the
+sweep's parse() rejects, so the rows never reached a press.
+
+**What (shared canon code only, no fighter data touched):** one rule in
+game/js/movesets.js canonNotation, placed before the whole-string paren rule: a
+trailing parenthetical containing the word spin/spins is stripped. The placement
+matters: '(During Clockwork) 3 (more than a single spin)' both starts with '('
+and ends with ')', so the whole-string rule's greedy capture would otherwise eat
+the outer parens and the during rule would never fire; with the strip first it
+canonicalises to 'CLOCKWORK.3'. The spin count is an animation descriptor, not
+an extra input: the two WS rows stay distinct after stripping via the hold mark
+('WS.1+2*' vs 'WS.1+2', 14 damage/-4 on block vs 16 damage/0), the same pattern
+as the JGS spin rule's own comment ('the spin count is a repeat of the stance
+entry, same input') and the existing trailing-note strips ('(close)', '(rush)').
+New test test/spin-annotation.test.mjs pins all three rows plus guards.
+
+**Proof (local, against the exact files in this PR, plus CI as arbiter):** new
+test 2/2 pass; the three inputs run through the real current-main sweep-page
+parse() all return OK (WS.1+2* / WS.1+2 / CLOCKWORK.3, one hit each); re-running
+the r17 key classification with the edited canon changes NO key canon (the edit
+touches input strings, not keys); a grep across all six core-8 movesets confirms
+the trailing-spin pattern hits exactly these three rows repo-wide in the core-8
+(Pantera's JGS spin rows are non-trailing and handled by their own rule).
+CI's game-unit-tests run on this PR head is the proof arbiter for the new test.
+
+**Residuals, stated plainly:** this moves the three rows from 'unparsed' to
+pressable; the next sweep still has to witness them in a fight (WS state for the
+WS rows, CLOCKWORK stance entry for the Clockwork row), and that trace is a
+follow-up, not claimed here. Deliberately untouched: 'CLK(Two spins).3' — its
+spin note is mid-string, not trailing, and it is a different row from 'CLK.3'
+(22 damage/+0 vs 20 damage/-9) with no CLK entry in stance_after, so collapsing
+it would witness the wrong row; Pantera's 'ss2+4,b/db' row, whose '/db' is
+ambiguous (alternatives 'b' vs sequence 'b,d/b' — the T8 id hints 'b' but does
+not settle it), is deferred, not guessed. Deletions: none.
+## 2026-10-30 — Pantera ss2+4,b/db direction alternative -> first direction (PR #1242)
+
+**Why:** Pantera's 'ss2+4,b/db' row in docs/proof/moveset-sweep-20261028/r17-core8-failing.json
+was 'unparsed' in the sweep: canonNotation's diagonal rule turned the 'db' in the 'b/db'
+step into 'd/b', giving the unparseable step 'b/d/b'.
+
+**What (shared canon code only, no fighter data touched):** one rule in
+game/js/movesets.js canonNotation, placed before the diagonal expansions: a step written
+'<cardinal>/<diagonal>' ('b/db', 'f/df') is a direction alternative for one step, and
+resolves to the first listed direction — the same first-listed rule the alternatives rule
+already applies to '1+3_2+4', 'd/b+1/2/3' and 'U/F or U/B'. The row's own T8 id settles
+the reading: the move (name 'Reverse Special Stretch Bomb (Cancel)') carries t8_id
+'King-ss2+4,b', and T8 ids in this moveset are 'King-' + the full T8 input with commas
+preserved (e.g. 'King-1,2,1,d+2+4'), so a sequence reading 'b,d/b' would have read
+'King-ss2+4,b,d/b'. The row canonicalises to 'SS.2+4,b'. A lone diagonal ('d/f', 'u/b')
+has a single letter after the slash and is untouched, as is 'b/f+X' (WR. rule). New test
+test/dir-alternatives.test.mjs pins the row plus guards.
+
+**Proof (local, against the exact files in this PR, plus CI as arbiter):** new test 2/2
+pass; the real sweep-page parse() over 'SS.2+4,b' returns OK (was: parse error on
+'b/d/b'); re-running the r17 key classification with the edited canon changes exactly
+one row (84 OK / 3 motion / 49 ERR -> 85 OK / 3 motion / 48 ERR); a grep across all
+eight core-8 movesets (keys, inputs, input_slots) confirms the cardinal/diagonal step
+pattern hits exactly this one row repo-wide in the core-8, so the blast radius is one
+row. Neighbouring landed canon tests (wall-context, spin-annotation, saika-during,
+dio-air-moves) still pass against the edited file. CI's game-unit-tests run on this PR
+head is the proof arbiter for the new test.
+
+**Residuals, stated plainly:** this moves the row from 'unparsed' to pressable; the next
+sweep still has to witness it in a fight (sidestep throw cancel timing), and that trace
+is a follow-up, not claimed here. Deliberately untouched: the remaining r17 parse-error
+classes — '~t3'/'~t7' suffix rows (their input_slots carry the base input, e.g.
+'u/b+1,1~t3.king.3' slots 'u/b+1,1', and the sweep's loadout path equips them there, so
+their r17 failures are downstream, not canon); '1_cNN_rNNN' condition rows (slots carry
+the base input, e.g. '1_c26_r235' slots '1' with t3_condition 26, and the sweep's
+condSetup already establishes their conditions, so their failures are downstream);
+'t7.king_NNN'/'t7.alisa_NNN' bare ids (their inputs are prose condition strings —
+'Approach crouching enemy...', 'Time with enemy right punch...', 'Face Up, Feet
+Towards...' — a multi-class follow-up, not one canon rule; the sweep already n/a's the
+face-up/face-down and Upon Landing rows); 'CD.df#1/#2' ('#' meaning unknown, not
+invented); 'DFLIP N' (unclear, not invented); 'CLK(Two spins).3' (mid-string spin note,
+a different row from 'CLK.3'); and the Deathfang name-key rows (their playable inputs
+live in the moveset data, e.g. 'yaotome_a' -> 'qcf,hcb+1', so their failures are
+downstream witness/resolution, not canon). Deletions: none.
+## 2026-10-30 — DES.BT two-word stance join (PR #1243)
+- Cyborg X t7.alisa_235 'DES BT 1 (or 2)' canonicalised to 'DES.BT 1' because the
+  stance-space rule dots only the first word, and the sweep parse rejected it.
+  A narrow join after that rule (`/^DES\.BT\s+(?=[1-4])/`) gives 'DES.BT.1',
+  the spelling the existing Hertz Blade - Flare row already carries — so the
+  row leaves the parse-error list on the next sweep. The existing DES.BT.1 row
+  is the same move (6x4 multi-hit, startup 0.317, -9/KND), not a different row:
+  the t7 row's 'damage 14' is the mod-source figure, its damage_raw is 24, and
+  the lone 'DES.BT 1' string in the moveset file is inside this row's own
+  input_note, not a separate row. Blast radius: exactly this one row.
+- Residual, stated plainly: parse reclassification, not a witnessed pass — the
+  sweep's DES.BT stance setup is the same downstream question as DES.BT.1.
+- Proof: test/des-bt.test.mjs (2/2 local against the edited canon) + CI
+  game-unit-tests on the PR head.
+## 2026-10-30 — Enemy-on-back ground throws n/a (PR #1244)
+- Pantera t7.king_231-235 '(Enemy on back) by the feet/head/side... d/b+1+3 (or d/b+2+4)'
+  (Swing Away, Head Bomber, Figure Four Leg Lock, Shoulder Cracker, Turn Over) are ground
+  throws on a downed opponent lying on their back (face up) — the face-up mirror of
+  king_236-239 '(Enemy face down)...', which the sweep already n/a's via its Face (Up|Down)
+  pattern. The game has no face-up/face-down ground-orientation move state (the sweep
+  page's own comment above the n/a list), so the sweep page's n/a list gains the
+  parenthesised '(Enemy on back)' pattern with the same 'face-up/face-down ground' label.
+  A canon strip was deliberately NOT used: it would make the sweep attempt these throws
+  standing, where they cannot fire. Blast radius across held core-8 movesets: exactly
+  these 5 rows contain 'on back' (Pantera file verified identical to main's blob).
+- Residual, stated plainly: n/a reclassification, not a witnessed pass — the next sweep
+  moves the 5 rows from the failing list to n/a, and a ground-orientation throw witness
+  remains a follow-up, not claimed here. Deliberately untouched: the remaining t7
+  prose-condition sub-classes — approach/timing/wall-stun rows (need sweep opponent-state
+  setup, not a canon-only or n/a-only chunk), trailing-condition king_110 (condition
+  meaning unclear, not stripped), 'low*' king_150 (no input at all — data gap),
+  'JGS, N' king_158 (N input unclear, not invented), Clockwork-phase king_186
+  (phase-entry data not established) — and Dio's 3 trace-needed rows.
+- Proof: test/enemy-on-back.test.mjs (local against the exact branch page file, plus CI
+  game-unit-tests on the PR head). Test-only change: test/e2e/moveset-sweep.page.js +
+  test/enemy-on-back.test.mjs + WORKLOG entry. No game/ change, so no Pages deploy follows.
+
+## 2026-10-30 — Pantera approach-crouching throws get a sweep setup (PR #1245)
+
+- What: Pantera t7.king_229 'Approach crouching enemy... d+1+3' (Iron Lariat), t7.king_230
+  '... d+2+4' (V Driver), t7.king_268 '... d/f, D/F+1+3 (or 2+4)' (Reverse Special Stretch
+  Bomb) — the last t7 prose-condition rows that were parse-ERRs for a missing context,
+  not for a missing input. Canon maps 'Approach crouching enemy... <input>' to
+  'CROUCHFOE.<input>' in game/js/movesets.js, and the sweep page's setup() gains a
+  CROUCHFOE case that plays exactly the stated situation: the foe crouching, the
+  attacker closed to the 0.7 m contactFirst spacing. No fighter data touched; shared
+  canon code + sweep page only. Blast radius across held core-8 movesets: only Pantera
+  carries 'Approach crouching' inputs, and the rule is anchored to that literal prose.
+- Why this is a setup, not an n/a: the #1244 enemy-on-back n/a was honest because the
+  engine has no face-up/face-down ground-orientation state at all. A crouching foe IS a
+  state the sweep already plays (T3 condition setup, the hit-word crouch branch), so
+  these rows get attempted in their situation instead of being excused from it. A canon
+  strip alone would have been wrong: it would make the sweep attempt crouch throws
+  against a standing foe.
+- Deliberately untouched, different chunks: timing rows t7.king_295-297 ('Time with
+  enemy right punch/left kick/right kick...' — the foe must be attacking, needs a
+  timed-opponent-attack setup), wall-stun row t7.king_247 ('During enemy wall stun...'
+  — wall-stun state not established), trailing-condition king_110, 'low*' king_150,
+  'JGS, N' king_158, Clockwork-phase king_186, and Dio's 3 trace-needed rows.
+- Proof: test/approach-crouch.test.mjs (local against the exact edited files, 4/4;
+  2/4 fail on the unedited files — the canon and setup tests — so the test is not
+  vacuous), plus CI game-unit-tests on the PR head. Test-only + shared-code change:
+  game/js/movesets.js + test/e2e/moveset-sweep.page.js + test/approach-crouch.test.mjs
+  + WORKLOG entry. A game/ change, so a Pages redeploy of game/js/movesets.js follows
+  any merge.
+- Residual, stated plainly: mechanism proof, not a witnessed full-fight pass — the next
+  sweep attempts these 3 rows against a crouching foe at close range, and whether each
+  fires and connects there is what that sweep reports.
+
+## 2026-10-30 — Pantera timing throws get a sweep setup (PR #1246)
+
+- What: Pantera t7.king_295 'Time with enemy right punch... b+1+3' (Arm Whip), t7.king_296
+  'Time with enemy left kick... b+2+4' (Spinning Heel Hold), t7.king_297 'Time with enemy
+  right kick... b+2+4' (Leg Screw) — the last t7 prose-condition rows that were parse-ERRs
+  for a missing context, not for a missing input. Canon maps 'Time with enemy right
+  punch/left kick/right kick... <input>' to 'TIMERP/TIMELK/TIMERK.<input>' in
+  game/js/movesets.js, and the sweep page's setup() gains TIMERP/TIMELK/TIMERK cases that
+  play exactly the stated situation: close to the 0.7 m contactFirst spacing, then the foe
+  attacking with the matching limb (2 = right punch, 3 = left kick, 4 = right kick, per
+  the Tekken button map in movesets.js), pressed immediately, inside the reversal window.
+  No fighter data touched; shared canon code + sweep page only. Blast radius: exactly
+  these 3 rows — the limb-specific prose appears in no other core-8 input field (Cyborg X
+  and Demonio generic 'Time with enemy attack...' prose lives only in t7_command/input_note
+  of the already-REV-keyed row, never in the input field, so the limb-anchored rule cannot
+  touch it; dio/burger/chatur/deathfang carry no 'Time with enemy' rows; bruno has no r17
+  failures). Full Pantera input set through the real sweep parse: OK 597 -> 600,
+  ERR 277 -> 274, exactly the 3 rows changed.
+- Why this is a setup, not an n/a: the #1244 enemy-on-back n/a was honest because the
+  engine has no face-up/face-down ground-orientation state at all. An attacking foe IS a
+  state the sweep already plays (condSetup's oppAttack starts foe attacks for T3 condition
+  rows), so these rows get attempted in their situation instead of being excused from it.
+  A canon strip alone would have been wrong: it would make the sweep attempt reversal
+  throws against a standing, non-attacking foe.
+- Deliberately untouched, different chunks: wall-stun row t7.king_247 ('During enemy wall
+  stun...' — wall-stun state not established), trailing-condition king_110, 'low*'
+  king_150, 'JGS, N' king_158, Clockwork-phase king_186, generic 'Time with enemy
+  attack...' timing (Cyborg X / Demonio REV rows — a generic-attack setup, not a
+  limb-specific one), and Dio's 3 trace-needed rows.
+- Proof: test/timing-attack.test.mjs (local against the exact edited files, 4/4;
+  2/4 fail on the unedited files — the canon and setup tests — so the test is not
+  vacuous), plus CI game-unit-tests on the PR head. Shared-code change:
+  game/js/movesets.js + test/e2e/moveset-sweep.page.js + test/timing-attack.test.mjs
+  + WORKLOG entry. A game/ change, so a Pages redeploy of game/js/movesets.js follows
+  any merge.
+- Residual, stated plainly: mechanism proof, not a witnessed full-fight pass — the next
+  sweep attempts these 3 rows against an attacking foe at close range, and whether each
+  fires and connects there, and whether the engine resolves the reversal catch at all
+  (fighter.js surfaces no reversal-window logic for these move_class 'special' rows),
+  is what that sweep reports.
+- Follow-up in this PR: CI's first game-unit-tests run failed on a stale guard in
+  test/approach-crouch.test.mjs, which asserted the timing prose stays untouched — true
+  when #1245 landed, false now that this chunk covers it. That guard now asserts the new
+  TIMERP/TIMELK mappings (wall-stun guard unchanged); no other canon test mentions the
+  timing prose (scanned all canon-related test files on the branch head).

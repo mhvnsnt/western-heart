@@ -592,6 +592,15 @@ Rules:
 
 ### Auto-archive note (2026-10-22, worker 71)
 Per the AUTO-ARCHIVE standing directive: no wired auto-archive automation was found in-repo (no tripo-intake doc under docs/, no auto-archive entry in AGENTS.md or docs/owner-directives.md). The Kuma replacement archive was done manually following the dorowani #603 pattern (manifest + immutable-original tag).
+
+## Gyou spirit body (user directive 2026-10-22)
+
+> "Gyou spirit for floats behind this like how zen floats behind his, but gyou moves around more aggressively and sporadic than zen does behind his Spirit body. He is the flame Lord (Flaming Angel) and will have various transformation ls and a giant susanoo form with different levels and transformations too"
+
+- Gyou's spirit floats **behind** his spirit body (same setup as Zen's), but moves **more aggressively and sporadically** than Zen's spirit does.
+- Canon: Gyou = **Flame Lord (Flaming Angel)**.
+- Future roadmap: various transformations + a giant **Susanoo form** with different levels and transformations.
+- Source model (Tripo "fiery humanoid 3d model") archived to `roster/gyou/spirit-body/source/` (worker 84, archive-only, not wired into MODEL_URLs); restore tag `gyou-spirit-body-original` ("Restore point: these bytes never change"). Spec for the future rig/anim lane: `roster/gyou/spirit-body/SPEC.md` (float behavior + transformation roadmap documented, not built).
 ## SHRINE体系 (user directive 2026-10-24)
 - TempleOS-inspired mode, NOT called TempleOS in-game. Name:
   "Shrine" + the kanji for OS. User correction: NOT "trying" —
