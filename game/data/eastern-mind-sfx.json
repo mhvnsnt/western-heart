@@ -1,0 +1,1439 @@
+{
+ "note": "Eastern Mind 229-sound library catalog (acoustic categorization; semantic mapping needs a listening pass). Paths relative to teardown/eastern-mind/.",
+ "slots": {
+  "ui.click": "prologue-ending/sounds/D_FACE/D_FACE_s005.wav",
+  "ui.back": "prologue-ending/sounds/SHARED/SHARED_s007.wav",
+  "reincarn.death": "incarnation-system/sounds/R_JIN/R_JIN_s000.wav",
+  "reincarn.rebirth": "incarnation-system/sounds/R_SHA/R_SHA_s000.wav",
+  "trader.open": "stage-5-phantom-marketplace/sounds/D_MERCHA/D_MERCHA_s000.wav",
+  "stage.intro.tree-of-life": "stage-4-tree-of-life/sounds/L_TONNEL/L_TONNEL_s000.wav",
+  "stage.intro.plains-of-chi-u": "stage-1-plains-of-chi-u/sounds/F_KING/F_KING_s005.wav",
+  "stage.intro.helix-palace": "stage-2-helix-palace/sounds/G_CHIFA2/G_CHIFA2_s001.wav",
+  "stage.intro.palace-of-dreaming": "stage-3-palace-of-dreaming/sounds/W_AUN/W_AUN_s002.wav",
+  "stage.intro.phantom-marketplace": "stage-5-phantom-marketplace/sounds/D_MARKET/D_MARKET_s000.wav",
+  "stage.intro.octagonal-shrine": "stage-6-octagonal-shrine-par-fang/sounds/E_LAST/E_LAST_s000.wav",
+  "shrine.ambient": "stage-6-octagonal-shrine-par-fang/sounds/E_LAST/E_LAST_s000.wav"
+ },
+ "groups": {
+  "incarnation-system": {
+   "count": 18,
+   "sounds": [
+    {
+     "path": "incarnation-system/sounds/R_BYOU/R_BYOU_s000.wav",
+     "duration_s": 4.0,
+     "peak": 1.0,
+     "rms": 0.421
+    },
+    {
+     "path": "incarnation-system/sounds/R_GYOU/R_GYOU_s000.wav",
+     "duration_s": 5.37,
+     "peak": 1.0,
+     "rms": 0.267
+    },
+    {
+     "path": "incarnation-system/sounds/R_GYOU2/R_GYOU2_s000.wav",
+     "duration_s": 5.17,
+     "peak": 1.0,
+     "rms": 0.194
+    },
+    {
+     "path": "incarnation-system/sounds/R_GYOU2/R_GYOU2_s001.wav",
+     "duration_s": 5.37,
+     "peak": 1.0,
+     "rms": 0.267
+    },
+    {
+     "path": "incarnation-system/sounds/R_JIN/R_JIN_s000.wav",
+     "duration_s": 1.39,
+     "peak": 1.0,
+     "rms": 0.369
+    },
+    {
+     "path": "incarnation-system/sounds/R_JIN/R_JIN_s001.wav",
+     "duration_s": 5.33,
+     "peak": 1.0,
+     "rms": 0.232
+    },
+    {
+     "path": "incarnation-system/sounds/R_KAI/R_KAI_s000.wav",
+     "duration_s": 4.81,
+     "peak": 1.0,
+     "rms": 0.283
+    },
+    {
+     "path": "incarnation-system/sounds/R_LETS/R_LETS_s000.wav",
+     "duration_s": 3.69,
+     "peak": 1.0,
+     "rms": 0.318
+    },
+    {
+     "path": "incarnation-system/sounds/R_LETSB/R_LETSB_s000.wav",
+     "duration_s": 4.6,
+     "peak": 1.0,
+     "rms": 0.244
+    },
+    {
+     "path": "incarnation-system/sounds/R_LETSB/R_LETSB_s001.wav",
+     "duration_s": 7.36,
+     "peak": 1.0,
+     "rms": 0.23
+    },
+    {
+     "path": "incarnation-system/sounds/R_LETSB/R_LETSB_s002.wav",
+     "duration_s": 3.69,
+     "peak": 1.0,
+     "rms": 0.318
+    },
+    {
+     "path": "incarnation-system/sounds/R_SHA/R_SHA_s000.wav",
+     "duration_s": 8.0,
+     "peak": 1.0,
+     "rms": 0.327
+    },
+    {
+     "path": "incarnation-system/sounds/R_SYSTEM/R_SYSTEM_s000.wav",
+     "duration_s": 0.43,
+     "peak": 1.0,
+     "rms": 0.369
+    },
+    {
+     "path": "incarnation-system/sounds/R_TOH/R_TOH_s000.wav",
+     "duration_s": 4.31,
+     "peak": 1.0,
+     "rms": 0.296
+    },
+    {
+     "path": "incarnation-system/sounds/R_ZEN/R_ZEN_s000.wav",
+     "duration_s": 4.31,
+     "peak": 1.0,
+     "rms": 0.352
+    },
+    {
+     "path": "incarnation-system/sounds/R_ZEN2/R_ZEN2_s000.wav",
+     "duration_s": 7.28,
+     "peak": 0.922,
+     "rms": 0.178
+    },
+    {
+     "path": "incarnation-system/sounds/R_ZEN2/R_ZEN2_s001.wav",
+     "duration_s": 4.31,
+     "peak": 1.0,
+     "rms": 0.352
+    },
+    {
+     "path": "incarnation-system/sounds/R_ZEN2/R_ZEN2_s002.wav",
+     "duration_s": 0.23,
+     "peak": 1.0,
+     "rms": 0.545
+    }
+   ]
+  },
+  "prologue-ending": {
+   "count": 47,
+   "sounds": [
+    {
+     "path": "prologue-ending/sounds/D_BOOK/D_BOOK_s000.wav",
+     "duration_s": 12.0,
+     "peak": 1.0,
+     "rms": 0.296
+    },
+    {
+     "path": "prologue-ending/sounds/D_FACE/D_FACE_s000.wav",
+     "duration_s": 7.28,
+     "peak": 0.922,
+     "rms": 0.178
+    },
+    {
+     "path": "prologue-ending/sounds/D_FACE/D_FACE_s001.wav",
+     "duration_s": 1.73,
+     "peak": 0.75,
+     "rms": 0.132
+    },
+    {
+     "path": "prologue-ending/sounds/D_FACE/D_FACE_s002.wav",
+     "duration_s": 1.01,
+     "peak": 1.0,
+     "rms": 0.387
+    },
+    {
+     "path": "prologue-ending/sounds/D_FACE/D_FACE_s003.wav",
+     "duration_s": 1.33,
+     "peak": 0.992,
+     "rms": 0.213
+    },
+    {
+     "path": "prologue-ending/sounds/D_FACE/D_FACE_s004.wav",
+     "duration_s": 2.66,
+     "peak": 0.961,
+     "rms": 0.211
+    },
+    {
+     "path": "prologue-ending/sounds/D_FACE/D_FACE_s005.wav",
+     "duration_s": 0.45,
+     "peak": 0.773,
+     "rms": 0.2
+    },
+    {
+     "path": "prologue-ending/sounds/D_FACE/D_FACE_s006.wav",
+     "duration_s": 0.8,
+     "peak": 0.633,
+     "rms": 0.067
+    },
+    {
+     "path": "prologue-ending/sounds/D_FACE/D_FACE_s007.wav",
+     "duration_s": 1.37,
+     "peak": 0.922,
+     "rms": 0.215
+    },
+    {
+     "path": "prologue-ending/sounds/D_FACE/D_FACE_s008.wav",
+     "duration_s": 0.93,
+     "peak": 1.0,
+     "rms": 0.202
+    },
+    {
+     "path": "prologue-ending/sounds/D_FACE/D_FACE_s009.wav",
+     "duration_s": 7.97,
+     "peak": 1.0,
+     "rms": 0.283
+    },
+    {
+     "path": "prologue-ending/sounds/D_FACE/D_FACE_s010.wav",
+     "duration_s": 3.45,
+     "peak": 1.0,
+     "rms": 0.251
+    },
+    {
+     "path": "prologue-ending/sounds/D_FACE/D_FACE_s011.wav",
+     "duration_s": 1.86,
+     "peak": 1.0,
+     "rms": 0.351
+    },
+    {
+     "path": "prologue-ending/sounds/D_FACE/D_FACE_s012.wav",
+     "duration_s": 2.0,
+     "peak": 1.0,
+     "rms": 0.162
+    },
+    {
+     "path": "prologue-ending/sounds/D_FACE/D_FACE_s013.wav",
+     "duration_s": 6.43,
+     "peak": 1.0,
+     "rms": 0.382
+    },
+    {
+     "path": "prologue-ending/sounds/D_MIRROR/D_MIRROR_s000.wav",
+     "duration_s": 4.31,
+     "peak": 1.0,
+     "rms": 0.352
+    },
+    {
+     "path": "prologue-ending/sounds/D_MIRROR/D_MIRROR_s001.wav",
+     "duration_s": 4.81,
+     "peak": 1.0,
+     "rms": 0.283
+    },
+    {
+     "path": "prologue-ending/sounds/D_MIRROR/D_MIRROR_s002.wav",
+     "duration_s": 5.37,
+     "peak": 1.0,
+     "rms": 0.267
+    },
+    {
+     "path": "prologue-ending/sounds/D_MIRROR/D_MIRROR_s003.wav",
+     "duration_s": 4.0,
+     "peak": 1.0,
+     "rms": 0.421
+    },
+    {
+     "path": "prologue-ending/sounds/D_MIRROR/D_MIRROR_s004.wav",
+     "duration_s": 5.33,
+     "peak": 1.0,
+     "rms": 0.232
+    },
+    {
+     "path": "prologue-ending/sounds/D_MIRROR/D_MIRROR_s005.wav",
+     "duration_s": 4.31,
+     "peak": 1.0,
+     "rms": 0.296
+    },
+    {
+     "path": "prologue-ending/sounds/D_MIRROR/D_MIRROR_s006.wav",
+     "duration_s": 3.69,
+     "peak": 1.0,
+     "rms": 0.318
+    },
+    {
+     "path": "prologue-ending/sounds/D_MIRROR/D_MIRROR_s007.wav",
+     "duration_s": 8.0,
+     "peak": 1.0,
+     "rms": 0.327
+    },
+    {
+     "path": "prologue-ending/sounds/D_ROCK/D_ROCK_s000.wav",
+     "duration_s": 5.33,
+     "peak": 1.0,
+     "rms": 0.23
+    },
+    {
+     "path": "prologue-ending/sounds/D_ROCK/D_ROCK_s001.wav",
+     "duration_s": 4.0,
+     "peak": 1.0,
+     "rms": 0.311
+    },
+    {
+     "path": "prologue-ending/sounds/D_SEA/D_SEA_s000.wav",
+     "duration_s": 1.47,
+     "peak": 0.922,
+     "rms": 0.14
+    },
+    {
+     "path": "prologue-ending/sounds/D_SEA/D_SEA_s001.wav",
+     "duration_s": 9.23,
+     "peak": 0.992,
+     "rms": 0.184
+    },
+    {
+     "path": "prologue-ending/sounds/D_SEA/D_SEA_s002.wav",
+     "duration_s": 6.26,
+     "peak": 0.773,
+     "rms": 0.09
+    },
+    {
+     "path": "prologue-ending/sounds/D_SEA/D_SEA_s003.wav",
+     "duration_s": 9.91,
+     "peak": 0.547,
+     "rms": 0.112
+    },
+    {
+     "path": "prologue-ending/sounds/D_SEA/D_SEA_s004.wav",
+     "duration_s": 3.88,
+     "peak": 0.992,
+     "rms": 0.152
+    },
+    {
+     "path": "prologue-ending/sounds/D_SUMIE/D_SUMIE_s000.wav",
+     "duration_s": 16.0,
+     "peak": 0.953,
+     "rms": 0.108
+    },
+    {
+     "path": "prologue-ending/sounds/SHARED/SHARED_s000.wav",
+     "duration_s": 2.76,
+     "peak": 1.0,
+     "rms": 0.108
+    },
+    {
+     "path": "prologue-ending/sounds/SHARED/SHARED_s001.wav",
+     "duration_s": 4.0,
+     "peak": 1.0,
+     "rms": 0.317
+    },
+    {
+     "path": "prologue-ending/sounds/SHARED/SHARED_s002.wav",
+     "duration_s": 1.0,
+     "peak": 0.0,
+     "rms": 0.0
+    },
+    {
+     "path": "prologue-ending/sounds/SHARED/SHARED_s003.wav",
+     "duration_s": 4.79,
+     "peak": 1.0,
+     "rms": 0.272
+    },
+    {
+     "path": "prologue-ending/sounds/SHARED/SHARED_s004.wav",
+     "duration_s": 3.68,
+     "peak": 1.0,
+     "rms": 0.211
+    },
+    {
+     "path": "prologue-ending/sounds/SHARED/SHARED_s005.wav",
+     "duration_s": 3.84,
+     "peak": 1.0,
+     "rms": 0.171
+    },
+    {
+     "path": "prologue-ending/sounds/SHARED/SHARED_s006.wav",
+     "duration_s": 1.42,
+     "peak": 0.961,
+     "rms": 0.226
+    },
+    {
+     "path": "prologue-ending/sounds/SHARED/SHARED_s007.wav",
+     "duration_s": 0.69,
+     "peak": 1.0,
+     "rms": 0.469
+    },
+    {
+     "path": "prologue-ending/sounds/SHARED/SHARED_s008.wav",
+     "duration_s": 8.01,
+     "peak": 1.0,
+     "rms": 0.32
+    },
+    {
+     "path": "prologue-ending/sounds/SHARED/SHARED_s009.wav",
+     "duration_s": 2.83,
+     "peak": 0.578,
+     "rms": 0.204
+    },
+    {
+     "path": "prologue-ending/sounds/SHARED/SHARED_s010.wav",
+     "duration_s": 4.0,
+     "peak": 0.828,
+     "rms": 0.165
+    },
+    {
+     "path": "prologue-ending/sounds/SHARED/SHARED_s011.wav",
+     "duration_s": 1.01,
+     "peak": 0.797,
+     "rms": 0.387
+    },
+    {
+     "path": "prologue-ending/sounds/SHARED/SHARED_s012.wav",
+     "duration_s": 5.12,
+     "peak": 1.0,
+     "rms": 0.144
+    },
+    {
+     "path": "prologue-ending/sounds/SHARED/SHARED_s013.wav",
+     "duration_s": 0.77,
+     "peak": 1.0,
+     "rms": 0.352
+    },
+    {
+     "path": "prologue-ending/sounds/SHARED/SHARED_s014.wav",
+     "duration_s": 4.01,
+     "peak": 0.703,
+     "rms": 0.219
+    },
+    {
+     "path": "prologue-ending/sounds/SHARED/SHARED_s015.wav",
+     "duration_s": 15.75,
+     "peak": 1.0,
+     "rms": 0.228
+    }
+   ]
+  },
+  "stage-1-plains-of-chi-u": {
+   "count": 23,
+   "sounds": [
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_FIELD/F_FIELD_s000.wav",
+     "duration_s": 5.17,
+     "peak": 1.0,
+     "rms": 0.194
+    },
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_FIELD/F_FIELD_s001.wav",
+     "duration_s": 4.81,
+     "peak": 1.0,
+     "rms": 0.283
+    },
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_FIELD/F_FIELD_s002.wav",
+     "duration_s": 7.98,
+     "peak": 1.0,
+     "rms": 0.228
+    },
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_FIELD/F_FIELD_s003.wav",
+     "duration_s": 5.33,
+     "peak": 1.0,
+     "rms": 0.23
+    },
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_FIELD/F_FIELD_s004.wav",
+     "duration_s": 3.5,
+     "peak": 0.516,
+     "rms": 0.163
+    },
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_KING/F_KING_s000.wav",
+     "duration_s": 3.02,
+     "peak": 1.0,
+     "rms": 0.191
+    },
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_KING/F_KING_s001.wav",
+     "duration_s": 2.4,
+     "peak": 1.0,
+     "rms": 0.363
+    },
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_KING/F_KING_s002.wav",
+     "duration_s": 4.81,
+     "peak": 1.0,
+     "rms": 0.283
+    },
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_KING/F_KING_s003.wav",
+     "duration_s": 4.31,
+     "peak": 1.0,
+     "rms": 0.296
+    },
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_KING/F_KING_s004.wav",
+     "duration_s": 5.28,
+     "peak": 1.0,
+     "rms": 0.253
+    },
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_KING/F_KING_s005.wav",
+     "duration_s": 7.99,
+     "peak": 1.0,
+     "rms": 0.163
+    },
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_KING/F_KING_s006.wav",
+     "duration_s": 2.14,
+     "peak": 0.398,
+     "rms": 0.231
+    },
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_KING/F_KING_s007.wav",
+     "duration_s": 3.09,
+     "peak": 1.0,
+     "rms": 0.393
+    },
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_KING/F_KING_s008.wav",
+     "duration_s": 0.1,
+     "peak": 0.602,
+     "rms": 0.262
+    },
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_TONNEL/F_TONNEL_s000.wav",
+     "duration_s": 5.28,
+     "peak": 1.0,
+     "rms": 0.419
+    },
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_TONNEL/F_TONNEL_s001.wav",
+     "duration_s": 2.73,
+     "peak": 1.0,
+     "rms": 0.33
+    },
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_TONNEL/F_TONNEL_s002.wav",
+     "duration_s": 3.5,
+     "peak": 0.516,
+     "rms": 0.163
+    },
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_TOWER1/F_TOWER1_s000.wav",
+     "duration_s": 7.95,
+     "peak": 1.0,
+     "rms": 0.204
+    },
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_TOWER1/F_TOWER1_s001.wav",
+     "duration_s": 0.61,
+     "peak": 1.0,
+     "rms": 0.332
+    },
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_TOWER2/F_TOWER2_s000.wav",
+     "duration_s": 7.95,
+     "peak": 1.0,
+     "rms": 0.204
+    },
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_TOWER2/F_TOWER2_s001.wav",
+     "duration_s": 7.38,
+     "peak": 1.0,
+     "rms": 0.367
+    },
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_TOWER3/F_TOWER3_s000.wav",
+     "duration_s": 7.95,
+     "peak": 1.0,
+     "rms": 0.204
+    },
+    {
+     "path": "stage-1-plains-of-chi-u/sounds/F_TOWER3/F_TOWER3_s001.wav",
+     "duration_s": 0.61,
+     "peak": 1.0,
+     "rms": 0.332
+    }
+   ]
+  },
+  "stage-2-helix-palace": {
+   "count": 59,
+   "sounds": [
+    {
+     "path": "stage-2-helix-palace/sounds/G_BOULDE/G_BOULDE_s000.wav",
+     "duration_s": 3.99,
+     "peak": 1.0,
+     "rms": 0.376
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_CASTLE/G_CASTLE_s000.wav",
+     "duration_s": 4.0,
+     "peak": 1.0,
+     "rms": 0.418
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_CASTLE/G_CASTLE_s001.wav",
+     "duration_s": 3.5,
+     "peak": 0.516,
+     "rms": 0.163
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_CHIFA1/G_CHIFA1_s000.wav",
+     "duration_s": 3.43,
+     "peak": 1.0,
+     "rms": 0.424
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_CHIFA2/G_CHIFA2_s000.wav",
+     "duration_s": 3.43,
+     "peak": 1.0,
+     "rms": 0.424
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_CHIFA2/G_CHIFA2_s001.wav",
+     "duration_s": 11.98,
+     "peak": 1.0,
+     "rms": 0.427
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_CHIFA2/G_CHIFA2_s002.wav",
+     "duration_s": 2.01,
+     "peak": 0.906,
+     "rms": 0.277
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_ENTRAN/G_ENTRAN_s000.wav",
+     "duration_s": 8.0,
+     "peak": 0.352,
+     "rms": 0.098
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_ENTRAN/G_ENTRAN_s001.wav",
+     "duration_s": 3.77,
+     "peak": 1.0,
+     "rms": 0.174
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_ENTRAN/G_ENTRAN_s002.wav",
+     "duration_s": 2.27,
+     "peak": 0.383,
+     "rms": 0.074
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_ENTRAN/G_ENTRAN_s003.wav",
+     "duration_s": 8.49,
+     "peak": 0.992,
+     "rms": 0.265
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_FLOWER/G_FLOWER_s000.wav",
+     "duration_s": 2.52,
+     "peak": 1.0,
+     "rms": 0.225
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_FLOWER/G_FLOWER_s001.wav",
+     "duration_s": 2.37,
+     "peak": 1.0,
+     "rms": 0.197
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_FLOWER/G_FLOWER_s002.wav",
+     "duration_s": 4.0,
+     "peak": 1.0,
+     "rms": 0.2
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_KING/G_KING_s000.wav",
+     "duration_s": 0.57,
+     "peak": 0.297,
+     "rms": 0.136
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_KING/G_KING_s001.wav",
+     "duration_s": 7.99,
+     "peak": 1.0,
+     "rms": 0.163
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_KING/G_KING_s002.wav",
+     "duration_s": 8.0,
+     "peak": 1.0,
+     "rms": 0.24
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_KING/G_KING_s003.wav",
+     "duration_s": 8.0,
+     "peak": 1.0,
+     "rms": 0.327
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_NONFAI/G_NONFAI_s000.wav",
+     "duration_s": 4.5,
+     "peak": 1.0,
+     "rms": 0.69
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_NONFAI/G_NONFAI_s001.wav",
+     "duration_s": 3.15,
+     "peak": 1.0,
+     "rms": 0.489
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_NONFAI/G_NONFAI_s002.wav",
+     "duration_s": 9.06,
+     "peak": 1.0,
+     "rms": 0.296
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_NONFAI/G_NONFAI_s003.wav",
+     "duration_s": 8.24,
+     "peak": 1.0,
+     "rms": 0.372
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_NONFAI/G_NONFAI_s004.wav",
+     "duration_s": 1.29,
+     "peak": 1.0,
+     "rms": 0.443
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_NONFAI/G_NONFAI_s005.wav",
+     "duration_s": 1.81,
+     "peak": 1.0,
+     "rms": 0.466
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_PALACE/G_PALACE_s000.wav",
+     "duration_s": 7.36,
+     "peak": 1.0,
+     "rms": 0.23
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_PALACE/G_PALACE_s001.wav",
+     "duration_s": 7.93,
+     "peak": 1.0,
+     "rms": 0.331
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_PALACE/G_PALACE_s002.wav",
+     "duration_s": 1.18,
+     "peak": 0.859,
+     "rms": 0.126
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_PALACE/G_PALACE_s003.wav",
+     "duration_s": 5.33,
+     "peak": 1.0,
+     "rms": 0.23
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_PALACE/G_PALACE_s004.wav",
+     "duration_s": 7.98,
+     "peak": 1.0,
+     "rms": 0.228
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_PALACE/G_PALACE_s005.wav",
+     "duration_s": 8.0,
+     "peak": 1.0,
+     "rms": 0.327
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_PALM/G_PALM_s000.wav",
+     "duration_s": 7.99,
+     "peak": 1.0,
+     "rms": 0.163
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_PALM/G_PALM_s001.wav",
+     "duration_s": 4.0,
+     "peak": 1.0,
+     "rms": 0.418
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_PURYAO/G_PURYAO_s000.wav",
+     "duration_s": 2.01,
+     "peak": 0.906,
+     "rms": 0.277
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_PURYAO/G_PURYAO_s001.wav",
+     "duration_s": 3.92,
+     "peak": 1.0,
+     "rms": 0.43
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_PURYAO/G_PURYAO_s002.wav",
+     "duration_s": 4.06,
+     "peak": 1.0,
+     "rms": 0.243
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_PURYAO/G_PURYAO_s003.wav",
+     "duration_s": 3.96,
+     "peak": 1.0,
+     "rms": 0.43
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_RMBUD/G_RMBUD_s000.wav",
+     "duration_s": 4.0,
+     "peak": 1.0,
+     "rms": 0.2
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_RMBUD/G_RMBUD_s001.wav",
+     "duration_s": 2.4,
+     "peak": 1.0,
+     "rms": 0.363
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_RMSHA/G_RMSHA_s000.wav",
+     "duration_s": 8.0,
+     "peak": 1.0,
+     "rms": 0.327
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_RMSHA/G_RMSHA_s001.wav",
+     "duration_s": 8.0,
+     "peak": 1.0,
+     "rms": 0.24
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_ROOF/G_ROOF_s000.wav",
+     "duration_s": 7.98,
+     "peak": 1.0,
+     "rms": 0.414
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_ROOF/G_ROOF_s001.wav",
+     "duration_s": 7.38,
+     "peak": 1.0,
+     "rms": 0.367
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_SHOWMI/G_SHOWMI_s000.wav",
+     "duration_s": 3.97,
+     "peak": 1.0,
+     "rms": 0.336
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_SHOWMI/G_SHOWMI_s001.wav",
+     "duration_s": 2.2,
+     "peak": 0.367,
+     "rms": 0.058
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_SHOWMI/G_SHOWMI_s002.wav",
+     "duration_s": 2.01,
+     "peak": 0.906,
+     "rms": 0.277
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_SHOWMI/G_SHOWMI_s003.wav",
+     "duration_s": 1.0,
+     "peak": 0.273,
+     "rms": 0.052
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_SHOWMI/G_SHOWMI_s004.wav",
+     "duration_s": 2.64,
+     "peak": 0.375,
+     "rms": 0.059
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_SHOWMI/G_SHOWMI_s005.wav",
+     "duration_s": 5.95,
+     "peak": 1.0,
+     "rms": 0.304
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_SHOWMI/G_SHOWMI_s006.wav",
+     "duration_s": 2.2,
+     "peak": 0.367,
+     "rms": 0.058
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_SSAVER/G_SSAVER_s000.wav",
+     "duration_s": 4.06,
+     "peak": 1.0,
+     "rms": 0.243
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_TONGSI/G_TONGSI_s000.wav",
+     "duration_s": 0.37,
+     "peak": 0.93,
+     "rms": 0.232
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_TONGSI/G_TONGSI_s001.wav",
+     "duration_s": 4.01,
+     "peak": 1.0,
+     "rms": 0.255
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_TONGSI/G_TONGSI_s002.wav",
+     "duration_s": 0.25,
+     "peak": 1.0,
+     "rms": 0.345
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_TONNEL/G_TONNEL_s000.wav",
+     "duration_s": 4.62,
+     "peak": 0.961,
+     "rms": 0.155
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_TONNEL/G_TONNEL_s001.wav",
+     "duration_s": 1.42,
+     "peak": 0.32,
+     "rms": 0.059
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_TONNEL/G_TONNEL_s002.wav",
+     "duration_s": 2.14,
+     "peak": 1.0,
+     "rms": 0.191
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_TONNEL/G_TONNEL_s003.wav",
+     "duration_s": 0.67,
+     "peak": 0.531,
+     "rms": 0.143
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_TONNEL/G_TONNEL_s004.wav",
+     "duration_s": 3.5,
+     "peak": 0.516,
+     "rms": 0.163
+    },
+    {
+     "path": "stage-2-helix-palace/sounds/G_TONNEL/G_TONNEL_s005.wav",
+     "duration_s": 7.97,
+     "peak": 1.0,
+     "rms": 0.283
+    }
+   ]
+  },
+  "stage-3-palace-of-dreaming": {
+   "count": 40,
+   "sounds": [
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_AUN/W_AUN_s000.wav",
+     "duration_s": 7.36,
+     "peak": 1.0,
+     "rms": 0.23
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_AUN/W_AUN_s001.wav",
+     "duration_s": 3.99,
+     "peak": 1.0,
+     "rms": 0.37
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_AUN/W_AUN_s002.wav",
+     "duration_s": 8.0,
+     "peak": 1.0,
+     "rms": 0.547
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_KING/W_KING_s000.wav",
+     "duration_s": 4.04,
+     "peak": 1.0,
+     "rms": 0.406
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_KING/W_KING_s001.wav",
+     "duration_s": 4.0,
+     "peak": 1.0,
+     "rms": 0.421
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_LAKE1/W_LAKE1_s000.wav",
+     "duration_s": 3.99,
+     "peak": 1.0,
+     "rms": 0.37
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_LAKE1/W_LAKE1_s001.wav",
+     "duration_s": 7.38,
+     "peak": 1.0,
+     "rms": 0.367
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_LAKE2/W_LAKE2_s000.wav",
+     "duration_s": 3.99,
+     "peak": 1.0,
+     "rms": 0.37
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_PALAC1/W_PALAC1_s000.wav",
+     "duration_s": 3.99,
+     "peak": 1.0,
+     "rms": 0.37
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_PALAC1/W_PALAC1_s001.wav",
+     "duration_s": 7.98,
+     "peak": 1.0,
+     "rms": 0.228
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_PALAC1/W_PALAC1_s002.wav",
+     "duration_s": 3.5,
+     "peak": 0.516,
+     "rms": 0.163
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_PALAC1/W_PALAC1_s003.wav",
+     "duration_s": 0.25,
+     "peak": 1.0,
+     "rms": 0.345
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RM1/W_RM1_s000.wav",
+     "duration_s": 2.41,
+     "peak": 1.0,
+     "rms": 0.292
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RM1/W_RM1_s001.wav",
+     "duration_s": 3.5,
+     "peak": 0.516,
+     "rms": 0.163
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RM2/W_RM2_s000.wav",
+     "duration_s": 4.8,
+     "peak": 1.0,
+     "rms": 0.225
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RM3/W_RM3_s000.wav",
+     "duration_s": 4.81,
+     "peak": 1.0,
+     "rms": 0.301
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RM4/W_RM4_s000.wav",
+     "duration_s": 4.8,
+     "peak": 1.0,
+     "rms": 0.299
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RM5/W_RM5_s000.wav",
+     "duration_s": 4.8,
+     "peak": 1.0,
+     "rms": 0.397
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RM6/W_RM6_s000.wav",
+     "duration_s": 4.8,
+     "peak": 1.0,
+     "rms": 0.272
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RM7/W_RM7_s000.wav",
+     "duration_s": 4.76,
+     "peak": 1.0,
+     "rms": 0.173
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RMAUN/W_RMAUN_s000.wav",
+     "duration_s": 8.0,
+     "peak": 1.0,
+     "rms": 0.547
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RMDUMP/W_RMDUMP_s000.wav",
+     "duration_s": 4.59,
+     "peak": 1.0,
+     "rms": 0.306
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RMEYE/W_RMEYE_s000.wav",
+     "duration_s": 5.33,
+     "peak": 1.0,
+     "rms": 0.23
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RMEYE/W_RMEYE_s001.wav",
+     "duration_s": 4.0,
+     "peak": 1.0,
+     "rms": 0.311
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RMILL/W_RMILL_s000.wav",
+     "duration_s": 4.07,
+     "peak": 1.0,
+     "rms": 0.306
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RMILL/W_RMILL_s001.wav",
+     "duration_s": 2.01,
+     "peak": 0.906,
+     "rms": 0.277
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RMKAI/W_RMKAI_s000.wav",
+     "duration_s": 4.81,
+     "peak": 1.0,
+     "rms": 0.283
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RMMAGA/W_RMMAGA_s000.wav",
+     "duration_s": 0.23,
+     "peak": 1.0,
+     "rms": 0.545
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RMMAGA/W_RMMAGA_s001.wav",
+     "duration_s": 4.81,
+     "peak": 1.0,
+     "rms": 0.392
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RMMAP/W_RMMAP_s000.wav",
+     "duration_s": 3.69,
+     "peak": 1.0,
+     "rms": 0.336
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RMMIN/W_RMMIN_s000.wav",
+     "duration_s": 5.28,
+     "peak": 1.0,
+     "rms": 0.253
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RMMIN/W_RMMIN_s001.wav",
+     "duration_s": 5.34,
+     "peak": 1.0,
+     "rms": 0.299
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RMSHA/W_RMSHA_s000.wav",
+     "duration_s": 8.0,
+     "peak": 1.0,
+     "rms": 0.327
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RMYUI/W_RMYUI_s000.wav",
+     "duration_s": 7.99,
+     "peak": 1.0,
+     "rms": 0.163
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_RMYUI/W_RMYUI_s001.wav",
+     "duration_s": 7.93,
+     "peak": 1.0,
+     "rms": 0.331
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_TONNEL/W_TONNEL_s000.wav",
+     "duration_s": 3.99,
+     "peak": 1.0,
+     "rms": 0.37
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_TONNEL/W_TONNEL_s001.wav",
+     "duration_s": 0.23,
+     "peak": 1.0,
+     "rms": 0.545
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_TONNEL/W_TONNEL_s002.wav",
+     "duration_s": 4.31,
+     "peak": 1.0,
+     "rms": 0.352
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_TONNEL/W_TONNEL_s003.wav",
+     "duration_s": 7.28,
+     "peak": 0.922,
+     "rms": 0.178
+    },
+    {
+     "path": "stage-3-palace-of-dreaming/sounds/W_TONNEL/W_TONNEL_s004.wav",
+     "duration_s": 3.5,
+     "peak": 0.516,
+     "rms": 0.163
+    }
+   ]
+  },
+  "stage-4-tree-of-life": {
+   "count": 27,
+   "sounds": [
+    {
+     "path": "stage-4-tree-of-life/sounds/L_FIELD/L_FIELD_s000.wav",
+     "duration_s": 9.59,
+     "peak": 1.0,
+     "rms": 0.255
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_FIELD/L_FIELD_s001.wav",
+     "duration_s": 5.33,
+     "peak": 1.0,
+     "rms": 0.23
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_FIELD/L_FIELD_s002.wav",
+     "duration_s": 7.98,
+     "peak": 1.0,
+     "rms": 0.228
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_FIELD/L_FIELD_s003.wav",
+     "duration_s": 7.38,
+     "peak": 1.0,
+     "rms": 0.367
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_FOREST/L_FOREST_s000.wav",
+     "duration_s": 5.34,
+     "peak": 1.0,
+     "rms": 0.299
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_FOREST/L_FOREST_s001.wav",
+     "duration_s": 4.01,
+     "peak": 1.0,
+     "rms": 0.294
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_FOREST/L_FOREST_s002.wav",
+     "duration_s": 3.5,
+     "peak": 0.516,
+     "rms": 0.163
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_FOREST/L_FOREST_s003.wav",
+     "duration_s": 8.0,
+     "peak": 1.0,
+     "rms": 0.327
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_INNER/L_INNER_s000.wav",
+     "duration_s": 4.0,
+     "peak": 1.0,
+     "rms": 0.421
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_INNER/L_INNER_s001.wav",
+     "duration_s": 3.63,
+     "peak": 1.0,
+     "rms": 0.405
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_INNER/L_INNER_s002.wav",
+     "duration_s": 5.28,
+     "peak": 1.0,
+     "rms": 0.253
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_KING/L_KING_s000.wav",
+     "duration_s": 3.63,
+     "peak": 1.0,
+     "rms": 0.405
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_KING/L_KING_s001.wav",
+     "duration_s": 4.31,
+     "peak": 1.0,
+     "rms": 0.296
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_KING/L_KING_s002.wav",
+     "duration_s": 5.28,
+     "peak": 1.0,
+     "rms": 0.253
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_KING/L_KING_s003.wav",
+     "duration_s": 4.6,
+     "peak": 1.0,
+     "rms": 0.244
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_KING/L_KING_s004.wav",
+     "duration_s": 7.36,
+     "peak": 1.0,
+     "rms": 0.23
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_OGRE/L_OGRE_s000.wav",
+     "duration_s": 2.29,
+     "peak": 1.0,
+     "rms": 0.361
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_OGRE/L_OGRE_s001.wav",
+     "duration_s": 5.28,
+     "peak": 1.0,
+     "rms": 0.226
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_OGRE/L_OGRE_s002.wav",
+     "duration_s": 4.0,
+     "peak": 1.0,
+     "rms": 0.255
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_TONNEL/L_TONNEL_s000.wav",
+     "duration_s": 10.68,
+     "peak": 1.0,
+     "rms": 0.165
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_TONNEL/L_TONNEL_s001.wav",
+     "duration_s": 7.97,
+     "peak": 1.0,
+     "rms": 0.283
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_TONNEL/L_TONNEL_s002.wav",
+     "duration_s": 3.5,
+     "peak": 0.516,
+     "rms": 0.163
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_WOOD/L_WOOD_s000.wav",
+     "duration_s": 4.79,
+     "peak": 1.0,
+     "rms": 0.272
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_WOOD/L_WOOD_s001.wav",
+     "duration_s": 2.4,
+     "peak": 1.0,
+     "rms": 0.363
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_WOOD/L_WOOD_s002.wav",
+     "duration_s": 8.24,
+     "peak": 1.0,
+     "rms": 0.372
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_WOOD/L_WOOD_s003.wav",
+     "duration_s": 3.69,
+     "peak": 1.0,
+     "rms": 0.318
+    },
+    {
+     "path": "stage-4-tree-of-life/sounds/L_WTOR/L_WTOR_s000.wav",
+     "duration_s": 4.0,
+     "peak": 1.0,
+     "rms": 0.421
+    }
+   ]
+  },
+  "stage-5-phantom-marketplace": {
+   "count": 2,
+   "sounds": [
+    {
+     "path": "stage-5-phantom-marketplace/sounds/D_MARKET/D_MARKET_s000.wav",
+     "duration_s": 7.99,
+     "peak": 1.0,
+     "rms": 0.294
+    },
+    {
+     "path": "stage-5-phantom-marketplace/sounds/D_MERCHA/D_MERCHA_s000.wav",
+     "duration_s": 9.6,
+     "peak": 1.0,
+     "rms": 0.332
+    }
+   ]
+  },
+  "stage-6-octagonal-shrine-par-fang": {
+   "count": 10,
+   "sounds": [
+    {
+     "path": "stage-6-octagonal-shrine-par-fang/sounds/E_LAST/E_LAST_s000.wav",
+     "duration_s": 301.58,
+     "peak": 1.0,
+     "rms": 0.411
+    },
+    {
+     "path": "stage-6-octagonal-shrine-par-fang/sounds/E_MOUNT/E_MOUNT_s000.wav",
+     "duration_s": 7.38,
+     "peak": 1.0,
+     "rms": 0.367
+    },
+    {
+     "path": "stage-6-octagonal-shrine-par-fang/sounds/E_MOUNT/E_MOUNT_s001.wav",
+     "duration_s": 8.0,
+     "peak": 1.0,
+     "rms": 0.186
+    },
+    {
+     "path": "stage-6-octagonal-shrine-par-fang/sounds/E_MOUNT/E_MOUNT_s002.wav",
+     "duration_s": 23.73,
+     "peak": 1.0,
+     "rms": 0.244
+    },
+    {
+     "path": "stage-6-octagonal-shrine-par-fang/sounds/E_RM1/E_RM1_s000.wav",
+     "duration_s": 8.0,
+     "peak": 1.0,
+     "rms": 0.369
+    },
+    {
+     "path": "stage-6-octagonal-shrine-par-fang/sounds/E_RM1/E_RM1_s001.wav",
+     "duration_s": 4.0,
+     "peak": 1.0,
+     "rms": 0.256
+    },
+    {
+     "path": "stage-6-octagonal-shrine-par-fang/sounds/E_RM1/E_RM1_s002.wav",
+     "duration_s": 2.0,
+     "peak": 1.0,
+     "rms": 0.18
+    },
+    {
+     "path": "stage-6-octagonal-shrine-par-fang/sounds/E_RM2/E_RM2_s000.wav",
+     "duration_s": 2.0,
+     "peak": 1.0,
+     "rms": 0.18
+    },
+    {
+     "path": "stage-6-octagonal-shrine-par-fang/sounds/E_STAIRS/E_STAIRS_s000.wav",
+     "duration_s": 23.73,
+     "peak": 1.0,
+     "rms": 0.244
+    },
+    {
+     "path": "stage-6-octagonal-shrine-par-fang/sounds/E_STAIRS/E_STAIRS_s001.wav",
+     "duration_s": 7.98,
+     "peak": 1.0,
+     "rms": 0.228
+    }
+   ]
+  },
+  "transcript-promo": {
+   "count": 3,
+   "sounds": [
+    {
+     "path": "transcript-promo/sounds/AUTODEMO/AUTODEMO_s000.wav",
+     "duration_s": 3.88,
+     "peak": 0.992,
+     "rms": 0.152
+    },
+    {
+     "path": "transcript-promo/sounds/AUTODEMO/AUTODEMO_s001.wav",
+     "duration_s": 0.57,
+     "peak": 0.508,
+     "rms": 0.229
+    },
+    {
+     "path": "transcript-promo/sounds/AUTODEMO/AUTODEMO_s002.wav",
+     "duration_s": 0.69,
+     "peak": 1.0,
+     "rms": 0.469
+    }
+   ]
+  }
+ },
+ "total": 229
+}

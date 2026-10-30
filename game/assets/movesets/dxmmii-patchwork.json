@@ -6,12 +6,6 @@
   "proxy": false,
   "proxy_note": null,
   "variant": 13,
-  "anim_set_lock": {
-    "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
-    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
-    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; tracked in docs/anim/DXMMII-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
-    "note": "per-move 'set' tags stamp the lock state (batch10-special-pull 2026-10-23); taunt entries tagged SHOW"
-  },
   "strings": [
     {
       "input": "1,2",
@@ -693,15 +687,20 @@
       "knock": 4.2,
       "soulGain": 12,
       "anim_ref": "wh:dxmmii-patchwork:sig:crooked-patch",
-      "community_base": "game/assets/anim/oss/community/144_20.fbx",
-      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "S"
       ],
       "move_class": "signature",
       "wh_original": true,
       "note": "Doc Frank wants to fix him. The patches stay crooked. The patches are the point.",
-      "set": "FIGHT"
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "P+K": {
       "name": "Hidden Toolbox [WH SIGNATURE]",
@@ -726,7 +725,12 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Crooked Patch [WH SIGNATURE]",
@@ -740,8 +744,6 @@
       "knock": 4.2,
       "soulGain": 12,
       "anim_ref": "wh:dxmmii-patchwork:sig:crooked-patch",
-      "community_base": "game/assets/anim/oss/community/144_20.fbx",
-      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "1+2"
       ],
@@ -749,7 +751,14 @@
       "wh_original": true,
       "note": "Doc Frank wants to fix him. The patches stay crooked. The patches are the point.",
       "input_remapped_from": "S",
-      "set": "FIGHT"
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
       "name": "DXMMII PATCHWORK DJ 1+2 (T3 jin r32)",
@@ -795,7 +804,12 @@
       "isGrab": true,
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "jin",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "f+2": {
       "name": "DXMMII PATCHWORK DJ f+2 (T3 jin r220)",
@@ -3766,7 +3780,12 @@
       "input_remapped_from": "S",
       "merge_source": "donor:dxmmii:1+2",
       "donor_fighter": "dxmmii",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.dxmmii": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -3793,7 +3812,12 @@
       "throw_break": "1+2",
       "merge_source": "donor:dxmmii:1+4",
       "donor_fighter": "dxmmii",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.dxmmii.2": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -3815,7 +3839,12 @@
       "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
       "merge_source": "donor:dxmmii:S",
       "donor_fighter": "dxmmii",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.dxmmii.3": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -3842,7 +3871,12 @@
       "isGrab": true,
       "merge_source": "donor:dxmmii:P+K",
       "donor_fighter": "dxmmii",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.dxmmii.2": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -3865,7 +3899,12 @@
       "input_remapped_from": "S",
       "merge_source": "donor:dxmmii:1+2",
       "donor_fighter": "dxmmii",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.dxmmii.2": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -3892,7 +3931,12 @@
       "throw_break": "1+2",
       "merge_source": "donor:dxmmii:1+4",
       "donor_fighter": "dxmmii",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.dxmmii.4": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -3914,7 +3958,12 @@
       "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
       "merge_source": "donor:dxmmii:S",
       "donor_fighter": "dxmmii",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.dxmmii.5": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -3941,7 +3990,12 @@
       "isGrab": true,
       "merge_source": "donor:dxmmii:P+K",
       "donor_fighter": "dxmmii",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.dxmmii.3": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -3964,7 +4018,12 @@
       "input_remapped_from": "S",
       "merge_source": "donor:dxmmii:1+2",
       "donor_fighter": "dxmmii",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.dxmmii.3": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -3991,7 +4050,12 @@
       "throw_break": "1+2",
       "merge_source": "donor:dxmmii:1+4",
       "donor_fighter": "dxmmii",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.dxmmii.6": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -4013,7 +4077,12 @@
       "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
       "merge_source": "donor:dxmmii:S",
       "donor_fighter": "dxmmii",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.dxmmii.7": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -4040,7 +4109,12 @@
       "isGrab": true,
       "merge_source": "donor:dxmmii:P+K",
       "donor_fighter": "dxmmii",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.dxmmii.4": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -4063,7 +4137,12 @@
       "input_remapped_from": "S",
       "merge_source": "donor:dxmmii:1+2",
       "donor_fighter": "dxmmii",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.dxmmii.4": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -4090,7 +4169,12 @@
       "throw_break": "1+2",
       "merge_source": "donor:dxmmii:1+4",
       "donor_fighter": "dxmmii",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.dxmmii.8": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -4112,7 +4196,12 @@
       "note": "Tongue out, you're entertainment. Tongue in, run. Four-arm gyro-brawler flurry.",
       "merge_source": "donor:dxmmii:S",
       "donor_fighter": "dxmmii",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "None~donor.dxmmii.9": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -4139,7 +4228,12 @@
       "isGrab": true,
       "merge_source": "donor:dxmmii:P+K",
       "donor_fighter": "dxmmii",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 162,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2~donor.dxmmii.5": {
       "name": "Tongue In, Run [WH SIGNATURE]",
@@ -4162,7 +4256,12 @@
       "input_remapped_from": "S",
       "merge_source": "donor:dxmmii:1+2",
       "donor_fighter": "dxmmii",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 32,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+4~donor.dxmmii.5": {
       "name": "Everybody's Sample [WH SIGNATURE]",
@@ -4189,7 +4288,12 @@
       "throw_break": "1+2",
       "merge_source": "donor:dxmmii:1+4",
       "donor_fighter": "dxmmii",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "dxmmii",
+        "row": 215,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     }
   },
   "restored_from_sweep_338": {
@@ -4445,8 +4549,14 @@
     "1+4~donor.dxmmii.5": 2048
   },
   "stance_after": {},
+  "anim_set_lock": {
+    "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances \u2014 the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations \u2014 intro/win slots and cutscenes ONLY; tracked in docs/anim/DXMMII-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp the lock state (batch10-special-pull 2026-10-23); taunt entries tagged SHOW"
+  },
   "mimic": {
-    "design": "Mokujin slot: DXMMII has no fixed moveset by design — he copies another fighter's moveset (Tekken Mokujin rule).",
+    "design": "Mokujin slot: DXMMII has no fixed moveset by design \u2014 he copies another fighter's moveset (Tekken Mokujin rule).",
     "current_wiring": "roster-full.js maps dxmmii-patchwork -> moveset 'demonio' (static). This file loads via MOVESET_IDS but the roster does not play it.",
     "mechanic_status": "No per-round/per-match random-moveset mechanic exists for DXMMII as a roster fighter. Closest existing mechanism: Trader's Mimic mode (game/js/modes.js traderFoe(playerChar, bout, randomMoveset)).",
     "handoff": "Game-code lane: implement Tekken-style mimic selection (random roster moveset per round/match) for dxmmii-patchwork; this file then serves as the fallback bank. Gap doc: docs/anim/DXMMII-ANIM-GAP-20261023.md.",

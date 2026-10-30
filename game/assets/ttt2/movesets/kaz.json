@@ -1,0 +1,1839 @@
+{
+ "schema": "ttt2-moveset-v1",
+ "source_game": "Tekken Tag Tournament 2",
+ "character": "Kazuya Mishima",
+ "bxml_prefix": "kaz",
+ "bxml_doc": 14,
+ "mvlt_list": 15,
+ "provenance": {
+  "source_archive": "release ttt2-7z-v1 (mhvnsnt/western-heart)",
+  "pull_tool": "tools/ttt2_virtual_god.py --pull",
+  "pulled_file": "data018.bin",
+  "pulled_bytes": 557332,
+  "pulled_sha256": "7e06ad5336374973bf8f637b898c975585226fc7a260a730ad981365b2056db4",
+  "decoded_file": "decoded-data018.bin",
+  "decoded_bytes": 3027808,
+  "decoded_sha256": "54db09ebc63ee1a05a7b1c00cc2d7b5528d0d97c6ed1949da805daac7709293e",
+  "parser": "teardown/tekken-tag-tournament-2 tools: parse_mvlt_v4.py (authoritative; v1/v2/v3 superseded)",
+  "converter": "convert_mvlt_notation.py (empirical glyph map; see MVLT-GLYPH-MAP-20261030.md)",
+  "note": "Derived data only. No game binaries committed (western-heart AGENTS.md rule 8). Bins stay reproducible from release ttt2-7z-v1."
+ },
+ "counts": {
+  "records": 96,
+  "moves": 89,
+  "sample_combos": 7,
+  "separators": 0
+ },
+ "records": [
+  {
+   "row": 0,
+   "name": "Flash Punch Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 1, 2",
+   "notation_std": "1, 1, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:0",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 0
+  },
+  {
+   "row": 1,
+   "name": "Left Right Combo",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2",
+   "notation_std": "1, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:1",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 1
+  },
+  {
+   "row": 2,
+   "name": "Demon Slayer",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2, 2",
+   "notation_std": "1, 2, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:2",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 2
+  },
+  {
+   "row": 3,
+   "name": "Twin Fang Stature Smash",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2, 4",
+   "notation_std": "1, 2, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kaz:row:3",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 3
+  },
+  {
+   "row": 4,
+   "name": "Twin Fang Double Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2, 4, 3",
+   "notation_std": "1, 2, 4, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kaz:row:4",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 4
+  },
+  {
+   "row": 5,
+   "name": "Double Back Fist",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 2",
+   "notation_std": "2, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:5",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 5
+  },
+  {
+   "row": 6,
+   "name": "Senshinto",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 4",
+   "notation_std": "2, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kaz:row:6",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 6
+  },
+  {
+   "row": 7,
+   "name": "Agony Spear",
+   "kind": "move",
+   "section": null,
+   "notation": "3, 1, 4",
+   "notation_std": "3, 1, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018",
+    "0xe015",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kaz:row:7",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 7
+  },
+  {
+   "row": 8,
+   "name": "Roundhouse",
+   "kind": "move",
+   "section": null,
+   "notation": "4",
+   "notation_std": "4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kaz:row:8",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 8
+  },
+  {
+   "row": 9,
+   "name": "Demon Scissors",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 3",
+   "notation_std": "4, 3",
+   "condition_text": "【】",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kaz:row:9",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 9
+  },
+  {
+   "row": 10,
+   "name": "Acute Pain",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kaz:row:10",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 10
+  },
+  {
+   "row": 11,
+   "name": "Soul Thrust",
+   "kind": "move",
+   "section": null,
+   "notation": "f+2",
+   "notation_std": "f+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:11",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 11
+  },
+  {
+   "row": 12,
+   "name": "Oni Front Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f+3",
+   "notation_std": "f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kaz:row:12",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 12
+  },
+  {
+   "row": 13,
+   "name": "Right Splits Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f+4",
+   "notation_std": "f+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kaz:row:13",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 13
+  },
+  {
+   "row": 14,
+   "name": "Glorious Demon God Fist",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1+2",
+   "notation_std": "f+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kaz:row:14",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 14
+  },
+  {
+   "row": 15,
+   "name": "Soul Annihilator",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1+2, 2",
+   "notation_std": "f+1+2, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe017",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:15",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 15
+  },
+  {
+   "row": 16,
+   "name": "Entrails Smash",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1",
+   "notation_std": "d/f+1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kaz:row:16",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 16
+  },
+  {
+   "row": 17,
+   "name": "Slaughter Hook",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1, 2",
+   "notation_std": "d/f+1, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:17",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 17
+  },
+  {
+   "row": 18,
+   "name": "Slaughter High Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1, 4",
+   "notation_std": "d/f+1, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kaz:row:18",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 18
+  },
+  {
+   "row": 19,
+   "name": "Devastator",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1, f+2",
+   "notation_std": "d/f+1, f+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015",
+    "0xe004",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:19",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 19
+  },
+  {
+   "row": 20,
+   "name": "Abolishing Fist",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+2",
+   "notation_std": "d/f+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:20",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 20
+  },
+  {
+   "row": 21,
+   "name": "Impaling Knee",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+3",
+   "notation_std": "d/f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kaz:row:21",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 21
+  },
+  {
+   "row": 22,
+   "name": "Impaling Knee to Uppercut",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+3, 2",
+   "notation_std": "d/f+3, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe018",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:22",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 22
+  },
+  {
+   "row": 23,
+   "name": "Impaling Knee Twin Thrust",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+3, 2, 1",
+   "notation_std": "d/f+3, 2, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe018",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kaz:row:23",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 23
+  },
+  {
+   "row": 24,
+   "name": "Tsunami Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+4, 4",
+   "notation_std": "d/f+4, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kaz:row:24",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 24
+  },
+  {
+   "row": 25,
+   "name": "Nejiri Uraken",
+   "kind": "move",
+   "section": null,
+   "notation": "d+1+2",
+   "notation_std": "d+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kaz:row:25",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 25
+  },
+  {
+   "row": 26,
+   "name": "Lion Slayer",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+2",
+   "notation_std": "d/b+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:26",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 26
+  },
+  {
+   "row": 27,
+   "name": "Sliding Low Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+3",
+   "notation_std": "d/b+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kaz:row:27",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 27
+  },
+  {
+   "row": 28,
+   "name": "Stature Smash",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+4",
+   "notation_std": "d/b+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kaz:row:28",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 28
+  },
+  {
+   "row": 29,
+   "name": "Sokushitsu Goda",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1, 2",
+   "notation_std": "b+1, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:29",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 29
+  },
+  {
+   "row": 30,
+   "name": "Rampaging Demon",
+   "kind": "move",
+   "section": null,
+   "notation": "b+2, 4, 1",
+   "notation_std": "b+2, 4, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe016",
+    "0xe01c",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kaz:row:30",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 30
+  },
+  {
+   "row": 31,
+   "name": "Demon's Wrath",
+   "kind": "move",
+   "section": null,
+   "notation": "b+3, 1, 4, 1",
+   "notation_std": "b+3, 1, 4, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe018",
+    "0xe015",
+    "0xe01c",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kaz:row:31",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 31
+  },
+  {
+   "row": 32,
+   "name": "Reign of Terror",
+   "kind": "move",
+   "section": null,
+   "notation": "b+3, 1, 4, 3",
+   "notation_std": "b+3, 1, 4, 3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe018",
+    "0xe015",
+    "0xe01c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kaz:row:32",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 32
+  },
+  {
+   "row": 33,
+   "name": "Hanetoguro",
+   "kind": "move",
+   "section": null,
+   "notation": "b+4, 1",
+   "notation_std": "b+4, 1",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe01c",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kaz:row:33",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 33
+  },
+  {
+   "row": 34,
+   "name": "Kumo Kiri",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1+2",
+   "notation_std": "b+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kaz:row:34",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 34
+  },
+  {
+   "row": 35,
+   "name": "Lightning Uppercut",
+   "kind": "move",
+   "section": null,
+   "notation": "b+1+4",
+   "notation_std": "b+1+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe003",
+    "0xe01d"
+   ],
+   "anim_ref": "ttt2:kaz:row:35",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 35
+  },
+  {
+   "row": 36,
+   "name": "Lightning Screw Uppercut",
+   "kind": "move",
+   "section": null,
+   "notation": "B+1+4",
+   "notation_std": "b+1+4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe00b",
+    "0xe01d"
+   ],
+   "anim_ref": "ttt2:kaz:row:36",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 36
+  },
+  {
+   "row": 37,
+   "name": "Devil Transformation",
+   "kind": "move",
+   "section": null,
+   "notation": "u/b+1+2",
+   "notation_std": "u/b+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe005",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kaz:row:37",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 37
+  },
+  {
+   "row": 38,
+   "name": "Inferno",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "While in Devil Transformation",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kaz:row:38",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 38
+  },
+  {
+   "row": 39,
+   "name": "Devil Blaster",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4",
+   "notation_std": "3+4",
+   "condition_text": "While in Devil Transformation",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:kaz:row:39",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 39
+  },
+  {
+   "row": 40,
+   "name": "Reverse Devil Blaster",
+   "kind": "move",
+   "section": null,
+   "notation": "3+4, 3+4",
+   "notation_std": "3+4, 3+4",
+   "condition_text": "While in Devil Transformation",
+   "multi_part": false,
+   "glyphs": [
+    "0xe020",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:kaz:row:40",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 40
+  },
+  {
+   "row": 41,
+   "name": "Twin Pistons",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+1, 2",
+   "notation_std": "d/f+1, 2",
+   "condition_text": "While in Devil Transformation",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:41",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 41
+  },
+  {
+   "row": 42,
+   "name": "Air Inferno",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+1+2",
+   "notation_std": "u/f+1+2",
+   "condition_text": "While in Devil Transformation",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kaz:row:42",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 42
+  },
+  {
+   "row": 43,
+   "name": "Devil Fist",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+2",
+   "notation_std": "f, f+2",
+   "condition_text": "While in Devil Transformation",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:43",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 43
+  },
+  {
+   "row": 44,
+   "name": "Heaven's Door",
+   "kind": "move",
+   "section": null,
+   "notation": "f, d, d/f+1, U/F",
+   "notation_std": "f, d, d/f+1, u/f",
+   "condition_text": "While in Devil Transformation ☆ (must hit)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe001",
+    "0xe002",
+    "0xe015",
+    "0xe00f"
+   ],
+   "anim_ref": "ttt2:kaz:row:44",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 44
+  },
+  {
+   "row": 45,
+   "name": "Devil Twister",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "While in Devil Transformation (during side step)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:45",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 45
+  },
+  {
+   "row": 46,
+   "name": "Sorai Zanba",
+   "kind": "move",
+   "section": null,
+   "notation": "d+1+2",
+   "notation_std": "d+1+2",
+   "condition_text": "While in Devil Transformation (while enemy is down)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kaz:row:46",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 46
+  },
+  {
+   "row": 47,
+   "name": "Spinning Backfists",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+2, 2",
+   "notation_std": "u/f+2, 2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe016",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:47",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 47
+  },
+  {
+   "row": 48,
+   "name": "Searing Edge",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+3",
+   "notation_std": "u/f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kaz:row:48",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 48
+  },
+  {
+   "row": 49,
+   "name": "Rising Sun",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+4, 4",
+   "notation_std": "u/f+4, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kaz:row:49",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 49
+  },
+  {
+   "row": 50,
+   "name": "Roundhouse to Triple Spin Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "u/f+4, 4, 4, 4",
+   "notation_std": "u/f+4, 4, 4, 4",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe007",
+    "0xe01c",
+    "0xe01c",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kaz:row:50",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 50
+  },
+  {
+   "row": 51,
+   "name": "Zankyosho",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+2",
+   "notation_std": "f, f+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:51",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 51
+  },
+  {
+   "row": 52,
+   "name": "Left Splits Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+3",
+   "notation_std": "f, f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kaz:row:52",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 52
+  },
+  {
+   "row": 53,
+   "name": "Mist Step",
+   "kind": "move",
+   "section": null,
+   "notation": "f",
+   "notation_std": "f",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004"
+   ],
+   "anim_ref": "ttt2:kaz:row:53",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 53
+  },
+  {
+   "row": 54,
+   "name": "Dragon Uppercut",
+   "kind": "move",
+   "section": null,
+   "notation": "f, d/f+1",
+   "notation_std": "f, d/f+1",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe002",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kaz:row:54",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 54
+  },
+  {
+   "row": 55,
+   "name": "Wind God Fist",
+   "kind": "move",
+   "section": null,
+   "notation": "f, d/f+2",
+   "notation_std": "f, d/f+2",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe002",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:55",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 55
+  },
+  {
+   "row": 56,
+   "name": "Hell Lancer",
+   "kind": "move",
+   "section": null,
+   "notation": "f, d/f+3",
+   "notation_std": "f, d/f+3",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe002",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kaz:row:56",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 56
+  },
+  {
+   "row": 57,
+   "name": "Spinning Demon to Left Hook",
+   "kind": "move",
+   "section": null,
+   "notation": "f, d/f+4, 1",
+   "notation_std": "f, d/f+4, 1",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe002",
+    "0xe01c",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kaz:row:57",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 57
+  },
+  {
+   "row": 58,
+   "name": "Spinning Demon",
+   "kind": "move",
+   "section": null,
+   "notation": "f, d/f+4, 4",
+   "notation_std": "f, d/f+4, 4",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe002",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kaz:row:58",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 58
+  },
+  {
+   "row": 59,
+   "name": "Dragon Uppercut",
+   "kind": "move",
+   "section": null,
+   "notation": "f, d, d/f+1",
+   "notation_std": "f, d, d/f+1",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe001",
+    "0xe002",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kaz:row:59",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 59
+  },
+  {
+   "row": 60,
+   "name": "Dragon Uppercut to Middle Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f, d, d/f, f, d/f+1, 3",
+   "notation_std": "f, d, d/f, f, d/f+1, 3",
+   "condition_text": "☆ (or ☆)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe001",
+    "0xe002",
+    "0xe004",
+    "0xe002",
+    "0xe015",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kaz:row:60",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 60
+  },
+  {
+   "row": 61,
+   "name": "Dragon Uppercut to Spinning Low Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f, d, d/f, f, d/f+1, 4",
+   "notation_std": "f, d, d/f, f, d/f+1, 4",
+   "condition_text": "☆ (or ☆)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe001",
+    "0xe002",
+    "0xe004",
+    "0xe002",
+    "0xe015",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kaz:row:61",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 61
+  },
+  {
+   "row": 62,
+   "name": "Wind God Fist",
+   "kind": "move",
+   "section": null,
+   "notation": "f, d, d/f+2",
+   "notation_std": "f, d, d/f+2",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe001",
+    "0xe002",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:62",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 62
+  },
+  {
+   "row": 63,
+   "name": "Hell Lancer",
+   "kind": "move",
+   "section": null,
+   "notation": "f, d, d/f+3",
+   "notation_std": "f, d, d/f+3",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe001",
+    "0xe002",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kaz:row:63",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 63
+  },
+  {
+   "row": 64,
+   "name": "Spinning Demon to Left Hook",
+   "kind": "move",
+   "section": null,
+   "notation": "f, d, d/f+4, 1",
+   "notation_std": "f, d, d/f+4, 1",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe001",
+    "0xe002",
+    "0xe01c",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kaz:row:64",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 64
+  },
+  {
+   "row": 65,
+   "name": "Spinning Demon",
+   "kind": "move",
+   "section": null,
+   "notation": "f, d, d/f+4, 4",
+   "notation_std": "f, d, d/f+4, 4",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe001",
+    "0xe002",
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kaz:row:65",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 65
+  },
+  {
+   "row": 66,
+   "name": "Leaping Sidekick",
+   "kind": "move",
+   "section": null,
+   "notation": "f, f, f+3",
+   "notation_std": "f, f, f+3",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe004",
+    "0xe004",
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kaz:row:66",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 66
+  },
+  {
+   "row": 67,
+   "name": "Twin Pistons",
+   "kind": "move",
+   "section": null,
+   "notation": "1, 2",
+   "notation_std": "1, 2",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe015",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:67",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 67
+  },
+  {
+   "row": 68,
+   "name": "Demon God Fist",
+   "kind": "move",
+   "section": null,
+   "notation": "2",
+   "notation_std": "2",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:68",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 68
+  },
+  {
+   "row": 69,
+   "name": "Engetsusen",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kaz:row:69",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 69
+  },
+  {
+   "row": 70,
+   "name": "Tsunami Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "4, 4",
+   "notation_std": "4, 4",
+   "condition_text": "While rising",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01c",
+    "0xe01c"
+   ],
+   "anim_ref": "ttt2:kaz:row:70",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 70
+  },
+  {
+   "row": 71,
+   "name": "Tombstone Crusher",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f+3+4",
+   "notation_std": "d/f+3+4",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:kaz:row:71",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 71
+  },
+  {
+   "row": 72,
+   "name": "Shattered Spine",
+   "kind": "move",
+   "section": null,
+   "notation": "3",
+   "notation_std": "3",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe018"
+   ],
+   "anim_ref": "ttt2:kaz:row:72",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 72
+  },
+  {
+   "row": 73,
+   "name": "Jaw Breaker",
+   "kind": "move",
+   "section": null,
+   "notation": "1+2",
+   "notation_std": "1+2",
+   "condition_text": "During side step",
+   "multi_part": false,
+   "glyphs": [
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kaz:row:73",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 73
+  },
+  {
+   "row": 74,
+   "name": "Oni Stomp",
+   "kind": "move",
+   "section": null,
+   "notation": "d+3+4",
+   "notation_std": "d+3+4",
+   "condition_text": "(While enemy is down)",
+   "multi_part": false,
+   "glyphs": [
+    "0xe001",
+    "0xe020"
+   ],
+   "anim_ref": "ttt2:kaz:row:74",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 74
+  },
+  {
+   "row": 75,
+   "name": "10 Hit Combo 1",
+   "kind": "move",
+   "section": null,
+   "notation": "f, f+2, 1, 2, 2, 3, 4, 4, 1, 2, 1",
+   "notation_std": "f, f+2, 1, 2, 2, 3, 4, 4, 1, 2, 1",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe004",
+    "0xe016",
+    "0xe015",
+    "0xe016",
+    "0xe016",
+    "0xe018",
+    "0xe01c",
+    "0xe01c",
+    "0xe015",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kaz:row:75",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 75
+  },
+  {
+   "row": 76,
+   "name": "10 Hit Combo 2",
+   "kind": "move",
+   "section": null,
+   "notation": "f, f+2, 1, 2, 2, 3, 4, 4, 3, 2, 1",
+   "notation_std": "f, f+2, 1, 2, 2, 3, 4, 4, 3, 2, 1",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe004",
+    "0xe016",
+    "0xe015",
+    "0xe016",
+    "0xe016",
+    "0xe018",
+    "0xe01c",
+    "0xe01c",
+    "0xe018",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kaz:row:76",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 76
+  },
+  {
+   "row": 77,
+   "name": "10 Hit Combo 3",
+   "kind": "move",
+   "section": null,
+   "notation": "f, f+2, 1, 4, 4, 2, 4, 3, 2, 1",
+   "notation_std": "f, f+2, 1, 4, 4, 2, 4, 3, 2, 1",
+   "condition_text": "☆",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe004",
+    "0xe016",
+    "0xe015",
+    "0xe01c",
+    "0xe01c",
+    "0xe016",
+    "0xe01c",
+    "0xe018",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kaz:row:77",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 77
+  },
+  {
+   "row": 78,
+   "name": "Double Face Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3",
+   "notation_std": "1+3",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:kaz:row:78",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 78
+  },
+  {
+   "row": 79,
+   "name": "Double Face Kick",
+   "kind": "move",
+   "section": null,
+   "notation": "f+1+3",
+   "notation_std": "f+1+3",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe019"
+   ],
+   "anim_ref": "ttt2:kaz:row:79",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 79
+  },
+  {
+   "row": 80,
+   "name": "Hip Throw",
+   "kind": "move",
+   "section": null,
+   "notation": "2+4",
+   "notation_std": "2+4",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kaz:row:80",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 80
+  },
+  {
+   "row": 81,
+   "name": "Hip Throw",
+   "kind": "move",
+   "section": null,
+   "notation": "f+2+4",
+   "notation_std": "f+2+4",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kaz:row:81",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 81
+  },
+  {
+   "row": 82,
+   "name": "Steel Pedal Drop",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from left side (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kaz:row:82",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 82
+  },
+  {
+   "row": 83,
+   "name": "Skull Smash",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from right side (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kaz:row:83",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 83
+  },
+  {
+   "row": 84,
+   "name": "Reverse Neck Throw",
+   "kind": "move",
+   "section": null,
+   "notation": "1+3 or 2+4",
+   "notation_std": "1+3 or 2+4",
+   "condition_text": "Approach from behind (or )",
+   "multi_part": false,
+   "glyphs": [
+    "0xe019",
+    "0xe01e"
+   ],
+   "anim_ref": "ttt2:kaz:row:84",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 84
+  },
+  {
+   "row": 85,
+   "name": "Stonehead",
+   "kind": "move",
+   "section": null,
+   "notation": "f, F+1+2",
+   "notation_std": "f, f+1+2",
+   "condition_text": "Approach enemy",
+   "multi_part": false,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kaz:row:85",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 85
+  },
+  {
+   "row": 86,
+   "name": "Ultimate Tackle",
+   "kind": "move",
+   "section": null,
+   "notation": "d/b+1+2",
+   "notation_std": "d/b+1+2",
+   "condition_text": "",
+   "multi_part": false,
+   "glyphs": [
+    "0xe000",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kaz:row:86",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 86
+  },
+  {
+   "row": 87,
+   "name": "Ultimate Punch",
+   "kind": "move",
+   "section": null,
+   "notation": "2, 1, 2, 1",
+   "notation_std": "2, 1, 2, 1",
+   "condition_text": "During tackle",
+   "multi_part": false,
+   "glyphs": [
+    "0xe016",
+    "0xe015",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kaz:row:87",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 87
+  },
+  {
+   "row": 88,
+   "name": "Gates of Hell",
+   "kind": "move",
+   "section": null,
+   "notation": "d/f, d, d/f+1+2",
+   "notation_std": "d/f, d, d/f+1+2",
+   "condition_text": "While crouching",
+   "multi_part": false,
+   "glyphs": [
+    "0xe002",
+    "0xe001",
+    "0xe002",
+    "0xe017"
+   ],
+   "anim_ref": "ttt2:kaz:row:88",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 88
+  },
+  {
+   "row": 89,
+   "name": "Sample Combo 1",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "1, 2, f+1, b+4, 1",
+   "notation_std": "1, 2, f+1, b+4, 1",
+   "condition_text": "While rising",
+   "multi_part": true,
+   "glyphs": [
+    "0xe015",
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe015",
+    "0xe063",
+    "0xe003",
+    "0xe01c",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kaz:row:89",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 89
+  },
+  {
+   "row": 90,
+   "name": "Sample Combo 2",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "3, d/b+2, b+2, 4, 1",
+   "notation_std": "3, d/b+2, b+2, 4, 1",
+   "condition_text": "During side step",
+   "multi_part": true,
+   "glyphs": [
+    "0xe018",
+    "0xe063",
+    "0xe000",
+    "0xe016",
+    "0xe063",
+    "0xe003",
+    "0xe016",
+    "0xe01c",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kaz:row:90",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 90
+  },
+  {
+   "row": 91,
+   "name": "Sample Combo 3",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "d/f+1, 4, d/f+1, 2, d/f+3, 2, 1",
+   "notation_std": "d/f+1, 4, d/f+1, 2, d/f+3, 2, 1",
+   "condition_text": "",
+   "multi_part": true,
+   "glyphs": [
+    "0xe002",
+    "0xe015",
+    "0xe01c",
+    "0xe063",
+    "0xe002",
+    "0xe015",
+    "0xe016",
+    "0xe063",
+    "0xe002",
+    "0xe018",
+    "0xe016",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kaz:row:91",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 91
+  },
+  {
+   "row": 92,
+   "name": "Sample Combo 4",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "d/f+2, 1, 2, 4, 3, d/b+2, d/f+1, f+2",
+   "notation_std": "d/f+2, 1, 2, 4, 3, d/b+2, d/f+1, f+2",
+   "condition_text": "(Counter)",
+   "multi_part": true,
+   "glyphs": [
+    "0xe002",
+    "0xe016",
+    "0xe063",
+    "0xe015",
+    "0xe016",
+    "0xe01c",
+    "0xe018",
+    "0xe063",
+    "0xe000",
+    "0xe016",
+    "0xe063",
+    "0xe002",
+    "0xe015",
+    "0xe004",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:92",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 92
+  },
+  {
+   "row": 93,
+   "name": "Sample Combo 5",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "f, F+3, b+2, 4, d/b+2, 3, 1, f, F+2",
+   "notation_std": "f, f+3, b+2, 4, d/b+2, 3, 1, f, f+2",
+   "condition_text": "",
+   "multi_part": true,
+   "glyphs": [
+    "0xe004",
+    "0xe00c",
+    "0xe018",
+    "0xe063",
+    "0xe003",
+    "0xe016",
+    "0xe01c",
+    "0xe063",
+    "0xe000",
+    "0xe016",
+    "0xe063",
+    "0xe018",
+    "0xe015",
+    "0xe063",
+    "0xe004",
+    "0xe00c",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:93",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 93
+  },
+  {
+   "row": 94,
+   "name": "Sample Combo 6",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "2, 3, 1, 4, f+1, d/f+1, 2, f, d, d/f+4, 1",
+   "notation_std": "2, 3, 1, 4, f+1, d/f+1, 2, f, d, d/f+4, 1",
+   "condition_text": "While rising ☆",
+   "multi_part": true,
+   "glyphs": [
+    "0xe016",
+    "0xe063",
+    "0xe018",
+    "0xe015",
+    "0xe01c",
+    "0xe063",
+    "0xe004",
+    "0xe015",
+    "0xe063",
+    "0xe002",
+    "0xe015",
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe001",
+    "0xe002",
+    "0xe01c",
+    "0xe015"
+   ],
+   "anim_ref": "ttt2:kaz:row:94",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 94
+  },
+  {
+   "row": 95,
+   "name": "Sample Combo 7",
+   "kind": "sample_combo",
+   "section": null,
+   "notation": "f, d, d/f+2, f, d, d/f+2, f+4, 1, 2, 4, 3, f, d, d/f+2",
+   "notation_std": "f, d, d/f+2, f, d, d/f+2, f+4, 1, 2, 4, 3, f, d, d/f+2",
+   "condition_text": "☆☆☆",
+   "multi_part": true,
+   "glyphs": [
+    "0xe004",
+    "0xe001",
+    "0xe002",
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe001",
+    "0xe002",
+    "0xe016",
+    "0xe063",
+    "0xe004",
+    "0xe01c",
+    "0xe063",
+    "0xe015",
+    "0xe016",
+    "0xe01c",
+    "0xe018",
+    "0xe063",
+    "0xe004",
+    "0xe001",
+    "0xe002",
+    "0xe016"
+   ],
+   "anim_ref": "ttt2:kaz:row:95",
+   "ttt2_source": "data018.bin",
+   "ttt2_row": 95
+  }
+ ]
+}
