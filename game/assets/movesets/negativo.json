@@ -1,6 +1,6 @@
 {
   "fighter": "negativo",
-  "display": "N3GΔTIV0",
+  "display": "N3G\u0394TIV0",
   "tekken_base": "Negan",
   "t3_source": "bryan",
   "proxy": false,
@@ -8,8 +8,8 @@
   "variant": 4,
   "anim_set_lock": {
     "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
-    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
-    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; tracked in docs/anim/NEGAN-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
+    "FIGHT": "every move in this file: moveset moves and combat stances \u2014 the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations \u2014 intro/win slots and cutscenes ONLY; tracked in docs/anim/NEGAN-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
     "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
   },
   "strings": [
@@ -63,33 +63,33 @@
       "t3_row": 149,
       "damage": 9,
       "throw": false,
-      "fallback": "directional — no motion inputs in T3 bank"
+      "fallback": "directional \u2014 no motion inputs in T3 bank"
     },
     {
       "input": "u/f+4",
       "t3_row": 183,
       "damage": 13,
       "throw": false,
-      "fallback": "directional — no motion inputs in T3 bank"
+      "fallback": "directional \u2014 no motion inputs in T3 bank"
     },
     {
       "input": "WS.4",
-      "name": "N3GΔTIV0 WS.4",
+      "name": "N3G\u0394TIV0 WS.4",
       "merge_source": "t7:negan_rbn_007"
     },
     {
       "input": "SS.2",
-      "name": "N3GΔTIV0 SS.2",
+      "name": "N3G\u0394TIV0 SS.2",
       "merge_source": "t7:negan_rbn_008"
     },
     {
       "input": "BT.d+1",
-      "name": "N3GΔTIV0 BT.d+1",
+      "name": "N3G\u0394TIV0 BT.d+1",
       "merge_source": "t7:negan_rbn_009"
     },
     {
       "input": "BT.d+3",
-      "name": "N3GΔTIV0 BT.d+3",
+      "name": "N3G\u0394TIV0 BT.d+3",
       "merge_source": "t7:negan_rbn_010"
     }
   ],
@@ -104,7 +104,7 @@
     "note": "Full T3 bank depth merged over curated base; curated moves preserved verbatim. Smallest T3 bank (365 rows, 188 attacks); 79 attack rows have no per-character input in the extracted data (common-bank / reaction rows). Unique playable inputs top out at ~90-97 per fighter."
   },
   "t7_base": "negan",
-  "t7_dataset": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+  "t7_dataset": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
   "t7_import_note": "Full T7 movelist imported from genuine T7 frame data (t7chicken, 173 rows); existing moves kept verbatim, new moves appended and deduped by input. Batch7 (2026-10-23) verified 0 missing ids and appended 10 genuinely-missing rows from rbnorway T7 frame data (verified absent from t7chicken: d/b+2, WS+4, SS+2, BT basics, jump moves). Heat/rage mechanics unchanged; no T8 data used.",
   "forward_merge": {
     "date": "2026-10-20",
@@ -143,7 +143,7 @@
   },
   "moves": {
     "1": {
-      "name": "N3GΔTIV0 1 (T3 bryan r48)",
+      "name": "N3G\u0394TIV0 1 (T3 bryan r48)",
       "input": "1",
       "t3_source": "bryan",
       "t3_row": 48,
@@ -164,7 +164,7 @@
       "move_class": "strike"
     },
     "2": {
-      "name": "N3GΔTIV0 2 (T3 bryan r152)",
+      "name": "N3G\u0394TIV0 2 (T3 bryan r152)",
       "input": "2",
       "t3_source": "bryan",
       "t3_row": 152,
@@ -185,7 +185,7 @@
       "move_class": "strike"
     },
     "2,1": {
-      "name": "N3GΔTIV0 2,1 (T3 bryan r153)",
+      "name": "N3G\u0394TIV0 2,1 (T3 bryan r153)",
       "input": "2,1",
       "t3_source": "bryan",
       "t3_row": 153,
@@ -209,7 +209,7 @@
       "move_class": "string"
     },
     "2,1,2": {
-      "name": "N3GΔTIV0 2,1,2 (T3 bryan r151)",
+      "name": "N3G\u0394TIV0 2,1,2 (T3 bryan r151)",
       "input": "2,1,2",
       "t3_source": "bryan",
       "t3_row": 151,
@@ -234,7 +234,7 @@
       "move_class": "string"
     },
     "3": {
-      "name": "N3GΔTIV0 3 (T3 bryan r70)",
+      "name": "N3G\u0394TIV0 3 (T3 bryan r70)",
       "input": "3",
       "t3_source": "bryan",
       "t3_row": 70,
@@ -255,7 +255,7 @@
       "move_class": "strike"
     },
     "4": {
-      "name": "N3GΔTIV0 4 (T3 bryan r86)",
+      "name": "N3G\u0394TIV0 4 (T3 bryan r86)",
       "input": "4",
       "t3_source": "bryan",
       "t3_row": 86,
@@ -276,7 +276,7 @@
       "move_class": "strike"
     },
     "1+3": {
-      "name": "N3GΔTIV0 1+3 throw (T3 bryan r211)",
+      "name": "N3G\u0394TIV0 1+3 throw (T3 bryan r211)",
       "input": "1+3",
       "t3_source": "bryan",
       "t3_row": 211,
@@ -302,7 +302,7 @@
       "throw_break": "1"
     },
     "2+4": {
-      "name": "N3GΔTIV0 2+4 throw (T3 bryan r212)",
+      "name": "N3G\u0394TIV0 2+4 throw (T3 bryan r212)",
       "input": "2+4",
       "t3_source": "bryan",
       "t3_row": 212,
@@ -328,7 +328,7 @@
       "throw_break": "2"
     },
     "d/f+2": {
-      "name": "N3GΔTIV0 d/f+2 (T3 bryan r149)",
+      "name": "N3G\u0394TIV0 d/f+2 (T3 bryan r149)",
       "input": "d/f+2",
       "t3_source": "bryan",
       "t3_row": 149,
@@ -349,7 +349,7 @@
       "move_class": "special"
     },
     "u/f+4": {
-      "name": "N3GΔTIV0 u/f+4 (T3 bryan r183)",
+      "name": "N3G\u0394TIV0 u/f+4 (T3 bryan r183)",
       "input": "u/f+4",
       "t3_source": "bryan",
       "t3_row": 183,
@@ -381,8 +381,6 @@
       "knock": 6.5,
       "soulGain": 13,
       "anim_ref": "wh:negativo:sig:bounty-or-fun",
-      "community_base": "game/assets/anim/oss/community/144_20.fbx",
-      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "P+K",
         "P",
@@ -393,7 +391,14 @@
       "note": "Before every match he offers the choice. No one knows what the difference is. No one wants to find out.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true
+      "isGrab": true,
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "S": {
       "name": "Running Out of Room [WH SIGNATURE]",
@@ -412,7 +417,12 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "The kill-count is carved into the bat's handle. He's running out of room. Barbed-wire bat finisher."
+      "note": "The kill-count is carved into the bat's handle. He's running out of room. Barbed-wire bat finisher.",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1+4": {
       "name": "Bounty or Fun [WH SIGNATURE]",
@@ -426,8 +436,6 @@
       "knock": 6.5,
       "soulGain": 13,
       "anim_ref": "wh:negativo:sig:bounty-or-fun",
-      "community_base": "game/assets/anim/oss/community/144_20.fbx",
-      "community_base_status": "pending-gpu-retarget",
       "input_slots": [
         "1+4"
       ],
@@ -438,7 +446,14 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "community_base": "game/assets/anim/oss/community/144_20.fbx",
+      "community_base_status": "pending-gpu-retarget",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1+2": {
       "name": "Running Out of Room [WH SIGNATURE]",
@@ -458,10 +473,15 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "The kill-count is carved into the bat's handle. He's running out of room. Barbed-wire bat finisher.",
-      "input_remapped_from": "S"
+      "input_remapped_from": "S",
+      "anim_t3": {
+        "bank": "bryan",
+        "row": 41,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2__main": {
-      "name": "N3GΔTIV0 1+2 (T3 bryan r41)",
+      "name": "N3G\u0394TIV0 1+2 (T3 bryan r41)",
       "input": "1+2",
       "t3_source": "bryan",
       "t3_row": 41,
@@ -481,7 +501,7 @@
       "move_class": "strike"
     },
     "b+2": {
-      "name": "N3GΔTIV0 b+2 (T3 bryan r158)",
+      "name": "N3G\u0394TIV0 b+2 (T3 bryan r158)",
       "input": "b+2",
       "t3_source": "bryan",
       "t3_row": 158,
@@ -504,7 +524,7 @@
     "b+2__main": {
       "name": "NEGAN b+2",
       "input": "b+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_83",
       "t7_command": "b+2",
       "t7_hit_level": "high",
@@ -526,10 +546,15 @@
         "b+2"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block -9 / on hit -3 / CH -3 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [high] on block -9 / on hit -3 / CH -3 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 158,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+4": {
-      "name": "N3GΔTIV0 b+4 (T3 bryan r111)",
+      "name": "N3G\u0394TIV0 b+4 (T3 bryan r111)",
       "input": "b+4",
       "t3_source": "bryan",
       "t3_row": 111,
@@ -552,7 +577,7 @@
     "b+4__main": {
       "name": "Concussion Kick",
       "input": "b+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_89",
       "t7_command": "b+4",
       "t7_hit_level": "mid",
@@ -574,10 +599,15 @@
         "b+4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -9 / on hit +2 / CH STUN"
+      "note": "T7 [mid] on block -9 / on hit +2 / CH STUN",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 111,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+2": {
-      "name": "N3GΔTIV0 f+2 (T3 bryan r150)",
+      "name": "N3G\u0394TIV0 f+2 (T3 bryan r150)",
       "input": "f+2",
       "t3_source": "bryan",
       "t3_row": 150,
@@ -598,7 +628,7 @@
       "move_class": "strike"
     },
     "f+2__main": {
-      "name": "N3GΔTIV0 f+2 (T3 bryan r150)",
+      "name": "N3G\u0394TIV0 f+2 (T3 bryan r150)",
       "input": "f+2",
       "t3_source": "bryan",
       "t3_row": 150,
@@ -618,7 +648,7 @@
       "move_class": "strike"
     },
     "f+3": {
-      "name": "N3GΔTIV0 f+3 (T3 bryan r191)",
+      "name": "N3G\u0394TIV0 f+3 (T3 bryan r191)",
       "input": "f+3",
       "t3_source": "bryan",
       "t3_row": 191,
@@ -639,7 +669,7 @@
       "move_class": "strike"
     },
     "f+3__main": {
-      "name": "N3GΔTIV0 f+3 (T3 bryan r191)",
+      "name": "N3G\u0394TIV0 f+3 (T3 bryan r191)",
       "input": "f+3",
       "t3_source": "bryan",
       "t3_row": 191,
@@ -659,7 +689,7 @@
       "move_class": "strike"
     },
     "b+1+2": {
-      "name": "N3GΔTIV0 b+1+2 (T3 bryan r167)",
+      "name": "N3G\u0394TIV0 b+1+2 (T3 bryan r167)",
       "input": "b+1+2",
       "t3_source": "bryan",
       "t3_row": 167,
@@ -682,7 +712,7 @@
     "b+1+2__main": {
       "name": "Wretched Hammer",
       "input": "b+1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_90",
       "t7_command": "b+1+2",
       "t7_hit_level": "mid",
@@ -704,10 +734,15 @@
         "b+1+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block +4 / on hit KND / CH GROUND BOUNCE"
+      "note": "T7 [mid] on block +4 / on hit KND / CH GROUND BOUNCE",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 167,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+1+4": {
-      "name": "N3GΔTIV0 b+1+4 (T3 bryan r178)",
+      "name": "N3G\u0394TIV0 b+1+4 (T3 bryan r178)",
       "input": "b+1+4",
       "t3_source": "bryan",
       "t3_row": 178,
@@ -728,7 +763,7 @@
       "move_class": "strike"
     },
     "b+1+4__main": {
-      "name": "N3GΔTIV0 b+1+4 (T3 bryan r178)",
+      "name": "N3G\u0394TIV0 b+1+4 (T3 bryan r178)",
       "input": "b+1+4",
       "t3_source": "bryan",
       "t3_row": 178,
@@ -748,7 +783,7 @@
       "move_class": "strike"
     },
     "d/f+1": {
-      "name": "N3GΔTIV0 d/f+1 (T3 bryan r146)",
+      "name": "N3G\u0394TIV0 d/f+1 (T3 bryan r146)",
       "input": "d/f+1",
       "t3_source": "bryan",
       "t3_row": 146,
@@ -771,7 +806,7 @@
     "d/f+1__main": {
       "name": "NEGAN d/f+1",
       "input": "d/f+1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_50",
       "t7_command": "d/f+1",
       "t7_hit_level": "mid",
@@ -793,10 +828,15 @@
         "d/f+1"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -3 / on hit +4 / CH +4 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -3 / on hit +4 / CH +4 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 148,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+1+4": {
-      "name": "N3GΔTIV0 f+1+4 (T3 bryan r179)",
+      "name": "N3G\u0394TIV0 f+1+4 (T3 bryan r179)",
       "input": "f+1+4",
       "t3_source": "bryan",
       "t3_row": 179,
@@ -817,7 +857,7 @@
       "move_class": "strike"
     },
     "f+1+4__main": {
-      "name": "N3GΔTIV0 f+1+4 (T3 bryan r179)",
+      "name": "N3G\u0394TIV0 f+1+4 (T3 bryan r179)",
       "input": "f+1+4",
       "t3_source": "bryan",
       "t3_row": 179,
@@ -837,7 +877,7 @@
       "move_class": "strike"
     },
     "u/b+1": {
-      "name": "N3GΔTIV0 u/b+1 (T3 bryan r43)",
+      "name": "N3G\u0394TIV0 u/b+1 (T3 bryan r43)",
       "input": "u/b+1",
       "t3_source": "bryan",
       "t3_row": 43,
@@ -858,7 +898,7 @@
       "move_class": "strike"
     },
     "u/b+3": {
-      "name": "N3GΔTIV0 u/b+3 (T3 bryan r65)",
+      "name": "N3G\u0394TIV0 u/b+3 (T3 bryan r65)",
       "input": "u/b+3",
       "t3_source": "bryan",
       "t3_row": 65,
@@ -879,7 +919,7 @@
       "move_class": "strike"
     },
     "u/b+4": {
-      "name": "N3GΔTIV0 u/b+4 (T3 bryan r87)",
+      "name": "N3G\u0394TIV0 u/b+4 (T3 bryan r87)",
       "input": "u/b+4",
       "t3_source": "bryan",
       "t3_row": 87,
@@ -900,7 +940,7 @@
       "move_class": "strike"
     },
     "u/f+1": {
-      "name": "N3GΔTIV0 u/f+1 (T3 bryan r42)",
+      "name": "N3G\u0394TIV0 u/f+1 (T3 bryan r42)",
       "input": "u/f+1",
       "t3_source": "bryan",
       "t3_row": 42,
@@ -921,7 +961,7 @@
       "move_class": "strike"
     },
     "u/f+3": {
-      "name": "N3GΔTIV0 u/f+3 (T3 bryan r64)",
+      "name": "N3G\u0394TIV0 u/f+3 (T3 bryan r64)",
       "input": "u/f+3",
       "t3_source": "bryan",
       "t3_row": 64,
@@ -944,7 +984,7 @@
     "u/f+3__main": {
       "name": "Raging Bull",
       "input": "u/f+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_93",
       "t7_command": "u/f+3",
       "t7_hit_level": "mid",
@@ -966,10 +1006,15 @@
         "u/f+3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -9 / on hit KND / CH KND"
+      "note": "T7 [mid] on block -9 / on hit KND / CH KND",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1+2": {
-      "name": "N3GΔTIV0 d/f+1+2 (T3 bryan r113)",
+      "name": "N3G\u0394TIV0 d/f+1+2 (T3 bryan r113)",
       "input": "d/f+1+2",
       "t3_source": "bryan",
       "t3_row": 113,
@@ -992,7 +1037,7 @@
     "d/f+1+2__main": {
       "name": "No Exceptions",
       "input": "d/f+1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_73",
       "t7_command": "d/f+1+2",
       "t7_hit_level": "mid, mid",
@@ -1014,10 +1059,15 @@
         "d/f+1+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid, mid] on block -14 / on hit KND / CH -"
+      "note": "T7 [mid, mid] on block -14 / on hit KND / CH -",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 113,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "u/b+3+4": {
-      "name": "N3GΔTIV0 u/b+3+4 (T3 bryan r62)",
+      "name": "N3G\u0394TIV0 u/b+3+4 (T3 bryan r62)",
       "input": "u/b+3+4",
       "t3_source": "bryan",
       "t3_row": 62,
@@ -1038,7 +1088,7 @@
       "move_class": "strike"
     },
     "u/f+3+4": {
-      "name": "N3GΔTIV0 u/f+3+4 (T3 bryan r61)",
+      "name": "N3G\u0394TIV0 u/f+3+4 (T3 bryan r61)",
       "input": "u/f+3+4",
       "t3_source": "bryan",
       "t3_row": 61,
@@ -1059,7 +1109,7 @@
       "move_class": "strike"
     },
     "2,4": {
-      "name": "N3GΔTIV0 2,4 (T3 bryan r182)",
+      "name": "N3G\u0394TIV0 2,4 (T3 bryan r182)",
       "input": "2,4",
       "t3_source": "bryan",
       "t3_row": 182,
@@ -1083,7 +1133,7 @@
       "string_hit": "2"
     },
     "f": {
-      "name": "N3GΔTIV0 f (T3 bryan r42)",
+      "name": "N3G\u0394TIV0 f (T3 bryan r42)",
       "input": "f",
       "t3_source": "bryan",
       "t3_row": 42,
@@ -1103,7 +1153,7 @@
       "move_class": "strike"
     },
     "b": {
-      "name": "N3GΔTIV0 b (T3 bryan r43)",
+      "name": "N3G\u0394TIV0 b (T3 bryan r43)",
       "input": "b",
       "t3_source": "bryan",
       "t3_row": 43,
@@ -1123,7 +1173,7 @@
       "move_class": "strike"
     },
     "1_r45": {
-      "name": "N3GΔTIV0 1_r45 (T3 bryan r45)",
+      "name": "N3G\u0394TIV0 1_r45 (T3 bryan r45)",
       "input": "1_r45",
       "t3_source": "bryan",
       "t3_row": 45,
@@ -1143,7 +1193,7 @@
       "move_class": "strike"
     },
     "1_r46": {
-      "name": "N3GΔTIV0 1_r46 (T3 bryan r46)",
+      "name": "N3G\u0394TIV0 1_r46 (T3 bryan r46)",
       "input": "1_r46",
       "t3_source": "bryan",
       "t3_row": 46,
@@ -1163,7 +1213,7 @@
       "move_class": "strike"
     },
     "1_r47": {
-      "name": "N3GΔTIV0 1_r47 (T3 bryan r47)",
+      "name": "N3G\u0394TIV0 1_r47 (T3 bryan r47)",
       "input": "1_r47",
       "t3_source": "bryan",
       "t3_row": 47,
@@ -1183,7 +1233,7 @@
       "move_class": "strike"
     },
     "1_r48": {
-      "name": "N3GΔTIV0 1_r48 (T3 bryan r48)",
+      "name": "N3G\u0394TIV0 1_r48 (T3 bryan r48)",
       "input": "1_r48",
       "t3_source": "bryan",
       "t3_row": 48,
@@ -1203,7 +1253,7 @@
       "move_class": "strike"
     },
     "1_r49": {
-      "name": "N3GΔTIV0 1_r49 (T3 bryan r49)",
+      "name": "N3G\u0394TIV0 1_r49 (T3 bryan r49)",
       "input": "1_r49",
       "t3_source": "bryan",
       "t3_row": 49,
@@ -1223,7 +1273,7 @@
       "move_class": "strike"
     },
     "1_r50": {
-      "name": "N3GΔTIV0 1_r50 (T3 bryan r50)",
+      "name": "N3G\u0394TIV0 1_r50 (T3 bryan r50)",
       "input": "1_r50",
       "t3_source": "bryan",
       "t3_row": 50,
@@ -1243,7 +1293,7 @@
       "move_class": "strike"
     },
     "1_r51": {
-      "name": "N3GΔTIV0 1_r51 (T3 bryan r51)",
+      "name": "N3G\u0394TIV0 1_r51 (T3 bryan r51)",
       "input": "1_r51",
       "t3_source": "bryan",
       "t3_row": 51,
@@ -1263,7 +1313,7 @@
       "move_class": "strike"
     },
     "1_r52": {
-      "name": "N3GΔTIV0 1_r52 (T3 bryan r52)",
+      "name": "N3G\u0394TIV0 1_r52 (T3 bryan r52)",
       "input": "1_r52",
       "t3_source": "bryan",
       "t3_row": 52,
@@ -1283,7 +1333,7 @@
       "move_class": "strike"
     },
     "1_c36_r53": {
-      "name": "N3GΔTIV0 1_c36_r53 (T3 bryan r53)",
+      "name": "N3G\u0394TIV0 1_c36_r53 (T3 bryan r53)",
       "input": "1_c36_r53",
       "t3_source": "bryan",
       "t3_row": 53,
@@ -1304,7 +1354,7 @@
       "t3_condition": 36
     },
     "f_c36_r54": {
-      "name": "N3GΔTIV0 f_c36_r54 (T3 bryan r54)",
+      "name": "N3G\u0394TIV0 f_c36_r54 (T3 bryan r54)",
       "input": "f_c36_r54",
       "t3_source": "bryan",
       "t3_row": 54,
@@ -1325,7 +1375,7 @@
       "t3_condition": 36
     },
     "b_c36_r55": {
-      "name": "N3GΔTIV0 b_c36_r55 (T3 bryan r55)",
+      "name": "N3G\u0394TIV0 b_c36_r55 (T3 bryan r55)",
       "input": "b_c36_r55",
       "t3_source": "bryan",
       "t3_row": 55,
@@ -1346,7 +1396,7 @@
       "t3_condition": 36
     },
     "2_r57": {
-      "name": "N3GΔTIV0 2_r57 (T3 bryan r57)",
+      "name": "N3G\u0394TIV0 2_r57 (T3 bryan r57)",
       "input": "2_r57",
       "t3_source": "bryan",
       "t3_row": 57,
@@ -1366,7 +1416,7 @@
       "move_class": "strike"
     },
     "2_r58": {
-      "name": "N3GΔTIV0 2_r58 (T3 bryan r58)",
+      "name": "N3G\u0394TIV0 2_r58 (T3 bryan r58)",
       "input": "2_r58",
       "t3_source": "bryan",
       "t3_row": 58,
@@ -1386,7 +1436,7 @@
       "move_class": "strike"
     },
     "3+4_r107": {
-      "name": "N3GΔTIV0 3+4_r107 (T3 bryan r60)",
+      "name": "N3G\u0394TIV0 3+4_r107 (T3 bryan r60)",
       "input": "3+4_r107",
       "t3_source": "bryan",
       "t3_row": 60,
@@ -1407,7 +1457,7 @@
       "t3_restriction": 107
     },
     "f_r61": {
-      "name": "N3GΔTIV0 f_r61 (T3 bryan r61)",
+      "name": "N3G\u0394TIV0 f_r61 (T3 bryan r61)",
       "input": "f_r61",
       "t3_source": "bryan",
       "t3_row": 61,
@@ -1427,7 +1477,7 @@
       "move_class": "strike"
     },
     "b_r62": {
-      "name": "N3GΔTIV0 b_r62 (T3 bryan r62)",
+      "name": "N3G\u0394TIV0 b_r62 (T3 bryan r62)",
       "input": "b_r62",
       "t3_source": "bryan",
       "t3_row": 62,
@@ -1447,7 +1497,7 @@
       "move_class": "strike"
     },
     "3_c36": {
-      "name": "N3GΔTIV0 3_c36 (T3 bryan r63)",
+      "name": "N3G\u0394TIV0 3_c36 (T3 bryan r63)",
       "input": "3_c36",
       "t3_source": "bryan",
       "t3_row": 63,
@@ -1468,7 +1518,7 @@
       "t3_condition": 36
     },
     "f_c36_r64": {
-      "name": "N3GΔTIV0 f_c36_r64 (T3 bryan r64)",
+      "name": "N3G\u0394TIV0 f_c36_r64 (T3 bryan r64)",
       "input": "f_c36_r64",
       "t3_source": "bryan",
       "t3_row": 64,
@@ -1489,7 +1539,7 @@
       "t3_condition": 36
     },
     "b_c36_r65": {
-      "name": "N3GΔTIV0 b_c36_r65 (T3 bryan r65)",
+      "name": "N3G\u0394TIV0 b_c36_r65 (T3 bryan r65)",
       "input": "b_c36_r65",
       "t3_source": "bryan",
       "t3_row": 65,
@@ -1510,7 +1560,7 @@
       "t3_condition": 36
     },
     "3_r67": {
-      "name": "N3GΔTIV0 3_r67 (T3 bryan r67)",
+      "name": "N3G\u0394TIV0 3_r67 (T3 bryan r67)",
       "input": "3_r67",
       "t3_source": "bryan",
       "t3_row": 67,
@@ -1530,7 +1580,7 @@
       "move_class": "strike"
     },
     "3_r68": {
-      "name": "N3GΔTIV0 3_r68 (T3 bryan r68)",
+      "name": "N3G\u0394TIV0 3_r68 (T3 bryan r68)",
       "input": "3_r68",
       "t3_source": "bryan",
       "t3_row": 68,
@@ -1550,7 +1600,7 @@
       "move_class": "strike"
     },
     "3_r69": {
-      "name": "N3GΔTIV0 3_r69 (T3 bryan r69)",
+      "name": "N3G\u0394TIV0 3_r69 (T3 bryan r69)",
       "input": "3_r69",
       "t3_source": "bryan",
       "t3_row": 69,
@@ -1570,7 +1620,7 @@
       "move_class": "strike"
     },
     "3_r70": {
-      "name": "N3GΔTIV0 3_r70 (T3 bryan r70)",
+      "name": "N3G\u0394TIV0 3_r70 (T3 bryan r70)",
       "input": "3_r70",
       "t3_source": "bryan",
       "t3_row": 70,
@@ -1590,7 +1640,7 @@
       "move_class": "strike"
     },
     "3_r71": {
-      "name": "N3GΔTIV0 3_r71 (T3 bryan r71)",
+      "name": "N3G\u0394TIV0 3_r71 (T3 bryan r71)",
       "input": "3_r71",
       "t3_source": "bryan",
       "t3_row": 71,
@@ -1610,7 +1660,7 @@
       "move_class": "strike"
     },
     "3_r72": {
-      "name": "N3GΔTIV0 3_r72 (T3 bryan r72)",
+      "name": "N3G\u0394TIV0 3_r72 (T3 bryan r72)",
       "input": "3_r72",
       "t3_source": "bryan",
       "t3_row": 72,
@@ -1630,7 +1680,7 @@
       "move_class": "strike"
     },
     "3_r73": {
-      "name": "N3GΔTIV0 3_r73 (T3 bryan r73)",
+      "name": "N3G\u0394TIV0 3_r73 (T3 bryan r73)",
       "input": "3_r73",
       "t3_source": "bryan",
       "t3_row": 73,
@@ -1650,7 +1700,7 @@
       "move_class": "strike"
     },
     "3_r74": {
-      "name": "N3GΔTIV0 3_r74 (T3 bryan r74)",
+      "name": "N3G\u0394TIV0 3_r74 (T3 bryan r74)",
       "input": "3_r74",
       "t3_source": "bryan",
       "t3_row": 74,
@@ -1670,7 +1720,7 @@
       "move_class": "strike"
     },
     "b_r75": {
-      "name": "N3GΔTIV0 b_r75 (T3 bryan r75)",
+      "name": "N3G\u0394TIV0 b_r75 (T3 bryan r75)",
       "input": "b_r75",
       "t3_source": "bryan",
       "t3_row": 75,
@@ -1690,7 +1740,7 @@
       "move_class": "strike"
     },
     "b_c36": {
-      "name": "N3GΔTIV0 b_c36 (T3 bryan r75)",
+      "name": "N3G\u0394TIV0 b_c36 (T3 bryan r75)",
       "input": "b_c36",
       "t3_source": "bryan",
       "t3_row": 75,
@@ -1711,7 +1761,7 @@
       "t3_condition": 36
     },
     "4_r77": {
-      "name": "N3GΔTIV0 4_r77 (T3 bryan r77)",
+      "name": "N3G\u0394TIV0 4_r77 (T3 bryan r77)",
       "input": "4_r77",
       "t3_source": "bryan",
       "t3_row": 77,
@@ -1731,7 +1781,7 @@
       "move_class": "strike"
     },
     "4_r78": {
-      "name": "N3GΔTIV0 4_r78 (T3 bryan r78)",
+      "name": "N3G\u0394TIV0 4_r78 (T3 bryan r78)",
       "input": "4_r78",
       "t3_source": "bryan",
       "t3_row": 78,
@@ -1751,7 +1801,7 @@
       "move_class": "strike"
     },
     "4_r79": {
-      "name": "N3GΔTIV0 4_r79 (T3 bryan r79)",
+      "name": "N3G\u0394TIV0 4_r79 (T3 bryan r79)",
       "input": "4_r79",
       "t3_source": "bryan",
       "t3_row": 79,
@@ -1771,7 +1821,7 @@
       "move_class": "strike"
     },
     "4_r80": {
-      "name": "N3GΔTIV0 4_r80 (T3 bryan r80)",
+      "name": "N3G\u0394TIV0 4_r80 (T3 bryan r80)",
       "input": "4_r80",
       "t3_source": "bryan",
       "t3_row": 80,
@@ -1791,7 +1841,7 @@
       "move_class": "strike"
     },
     "4_r81": {
-      "name": "N3GΔTIV0 4_r81 (T3 bryan r81)",
+      "name": "N3G\u0394TIV0 4_r81 (T3 bryan r81)",
       "input": "4_r81",
       "t3_source": "bryan",
       "t3_row": 81,
@@ -1811,7 +1861,7 @@
       "move_class": "strike"
     },
     "4_r82": {
-      "name": "N3GΔTIV0 4_r82 (T3 bryan r82)",
+      "name": "N3G\u0394TIV0 4_r82 (T3 bryan r82)",
       "input": "4_r82",
       "t3_source": "bryan",
       "t3_row": 82,
@@ -1831,7 +1881,7 @@
       "move_class": "strike"
     },
     "4_r83": {
-      "name": "N3GΔTIV0 4_r83 (T3 bryan r83)",
+      "name": "N3G\u0394TIV0 4_r83 (T3 bryan r83)",
       "input": "4_r83",
       "t3_source": "bryan",
       "t3_row": 83,
@@ -1851,7 +1901,7 @@
       "move_class": "strike"
     },
     "4_r84": {
-      "name": "N3GΔTIV0 4_r84 (T3 bryan r84)",
+      "name": "N3G\u0394TIV0 4_r84 (T3 bryan r84)",
       "input": "4_r84",
       "t3_source": "bryan",
       "t3_row": 84,
@@ -1871,7 +1921,7 @@
       "move_class": "strike"
     },
     "4_c36_r85": {
-      "name": "N3GΔTIV0 4_c36_r85 (T3 bryan r85)",
+      "name": "N3G\u0394TIV0 4_c36_r85 (T3 bryan r85)",
       "input": "4_c36_r85",
       "t3_source": "bryan",
       "t3_row": 85,
@@ -1892,7 +1942,7 @@
       "t3_condition": 36
     },
     "f_c36_r86": {
-      "name": "N3GΔTIV0 f_c36_r86 (T3 bryan r86)",
+      "name": "N3G\u0394TIV0 f_c36_r86 (T3 bryan r86)",
       "input": "f_c36_r86",
       "t3_source": "bryan",
       "t3_row": 86,
@@ -1913,7 +1963,7 @@
       "t3_condition": 36
     },
     "b_c36_r87": {
-      "name": "N3GΔTIV0 b_c36_r87 (T3 bryan r87)",
+      "name": "N3G\u0394TIV0 b_c36_r87 (T3 bryan r87)",
       "input": "b_c36_r87",
       "t3_source": "bryan",
       "t3_row": 87,
@@ -1934,7 +1984,7 @@
       "t3_condition": 36
     },
     "3+4_r8": {
-      "name": "N3GΔTIV0 3+4_r8 (T3 bryan r107)",
+      "name": "N3G\u0394TIV0 3+4_r8 (T3 bryan r107)",
       "input": "3+4_r8",
       "t3_source": "bryan",
       "t3_row": 107,
@@ -1955,7 +2005,7 @@
       "t3_restriction": 8
     },
     "b+4_r13": {
-      "name": "N3GΔTIV0 b+4_r13 (T3 bryan r111)",
+      "name": "N3G\u0394TIV0 b+4_r13 (T3 bryan r111)",
       "input": "b+4_r13",
       "t3_source": "bryan",
       "t3_row": 111,
@@ -1976,7 +2026,7 @@
       "t3_restriction": 13
     },
     "d/f+1+2_r17": {
-      "name": "N3GΔTIV0 d/f+1+2_r17 (T3 bryan r113)",
+      "name": "N3G\u0394TIV0 d/f+1+2_r17 (T3 bryan r113)",
       "input": "d/f+1+2_r17",
       "t3_source": "bryan",
       "t3_row": 113,
@@ -1997,7 +2047,7 @@
       "t3_restriction": 17
     },
     "3_r127": {
-      "name": "N3GΔTIV0 3_r127 (T3 bryan r127)",
+      "name": "N3G\u0394TIV0 3_r127 (T3 bryan r127)",
       "input": "3_r127",
       "t3_source": "bryan",
       "t3_row": 127,
@@ -2017,7 +2067,7 @@
       "move_class": "strike"
     },
     "2_r149": {
-      "name": "N3GΔTIV0 2_r149 (T3 bryan r149)",
+      "name": "N3G\u0394TIV0 2_r149 (T3 bryan r149)",
       "input": "2_r149",
       "t3_source": "bryan",
       "t3_row": 149,
@@ -2037,7 +2087,7 @@
       "move_class": "strike"
     },
     "2_r151": {
-      "name": "N3GΔTIV0 2_r151 (T3 bryan r151)",
+      "name": "N3G\u0394TIV0 2_r151 (T3 bryan r151)",
       "input": "2_r151",
       "t3_source": "bryan",
       "t3_row": 151,
@@ -2057,7 +2107,7 @@
       "move_class": "strike"
     },
     "2_r13_r156": {
-      "name": "N3GΔTIV0 2_r13_r156 (T3 bryan r156)",
+      "name": "N3G\u0394TIV0 2_r13_r156 (T3 bryan r156)",
       "input": "2_r13_r156",
       "t3_source": "bryan",
       "t3_row": 156,
@@ -2078,7 +2128,7 @@
       "t3_restriction": 13
     },
     "1_c2_r160": {
-      "name": "N3GΔTIV0 1_c2_r160 (T3 bryan r160)",
+      "name": "N3G\u0394TIV0 1_c2_r160 (T3 bryan r160)",
       "input": "1_c2_r160",
       "t3_source": "bryan",
       "t3_row": 160,
@@ -2099,7 +2149,7 @@
       "t3_condition": 2
     },
     "2_r166": {
-      "name": "N3GΔTIV0 2_r166 (T3 bryan r166)",
+      "name": "N3G\u0394TIV0 2_r166 (T3 bryan r166)",
       "input": "2_r166",
       "t3_source": "bryan",
       "t3_row": 166,
@@ -2119,7 +2169,7 @@
       "move_class": "strike"
     },
     "1_r168": {
-      "name": "N3GΔTIV0 1_r168 (T3 bryan r168)",
+      "name": "N3G\u0394TIV0 1_r168 (T3 bryan r168)",
       "input": "1_r168",
       "t3_source": "bryan",
       "t3_row": 168,
@@ -2139,7 +2189,7 @@
       "move_class": "strike"
     },
     "2_r177": {
-      "name": "N3GΔTIV0 2_r177 (T3 bryan r177)",
+      "name": "N3G\u0394TIV0 2_r177 (T3 bryan r177)",
       "input": "2_r177",
       "t3_source": "bryan",
       "t3_row": 177,
@@ -2159,7 +2209,7 @@
       "move_class": "strike"
     },
     "4_r180": {
-      "name": "N3GΔTIV0 4_r180 (T3 bryan r180)",
+      "name": "N3G\u0394TIV0 4_r180 (T3 bryan r180)",
       "input": "4_r180",
       "t3_source": "bryan",
       "t3_row": 180,
@@ -2179,7 +2229,7 @@
       "move_class": "strike"
     },
     "4_r13_r182": {
-      "name": "N3GΔTIV0 4_r13_r182 (T3 bryan r182)",
+      "name": "N3G\u0394TIV0 4_r13_r182 (T3 bryan r182)",
       "input": "4_r13_r182",
       "t3_source": "bryan",
       "t3_row": 182,
@@ -2200,7 +2250,7 @@
       "t3_restriction": 13
     },
     "f_r183": {
-      "name": "N3GΔTIV0 f_r183 (T3 bryan r183)",
+      "name": "N3G\u0394TIV0 f_r183 (T3 bryan r183)",
       "input": "f_r183",
       "t3_source": "bryan",
       "t3_row": 183,
@@ -2220,7 +2270,7 @@
       "move_class": "strike"
     },
     "4_r184": {
-      "name": "N3GΔTIV0 4_r184 (T3 bryan r184)",
+      "name": "N3G\u0394TIV0 4_r184 (T3 bryan r184)",
       "input": "4_r184",
       "t3_source": "bryan",
       "t3_row": 184,
@@ -2240,7 +2290,7 @@
       "move_class": "strike"
     },
     "3_r185": {
-      "name": "N3GΔTIV0 3_r185 (T3 bryan r185)",
+      "name": "N3G\u0394TIV0 3_r185 (T3 bryan r185)",
       "input": "3_r185",
       "t3_source": "bryan",
       "t3_row": 185,
@@ -2260,7 +2310,7 @@
       "move_class": "strike"
     },
     "f_r186": {
-      "name": "N3GΔTIV0 f_r186 (T3 bryan r186)",
+      "name": "N3G\u0394TIV0 f_r186 (T3 bryan r186)",
       "input": "f_r186",
       "t3_source": "bryan",
       "t3_row": 186,
@@ -2280,7 +2330,7 @@
       "move_class": "strike"
     },
     "4_r190": {
-      "name": "N3GΔTIV0 4_r190 (T3 bryan r190)",
+      "name": "N3G\u0394TIV0 4_r190 (T3 bryan r190)",
       "input": "4_r190",
       "t3_source": "bryan",
       "t3_row": 190,
@@ -2300,7 +2350,7 @@
       "move_class": "strike"
     },
     "3_r192": {
-      "name": "N3GΔTIV0 3_r192 (T3 bryan r192)",
+      "name": "N3G\u0394TIV0 3_r192 (T3 bryan r192)",
       "input": "3_r192",
       "t3_source": "bryan",
       "t3_row": 192,
@@ -2320,7 +2370,7 @@
       "move_class": "strike"
     },
     "4_r194": {
-      "name": "N3GΔTIV0 4_r194 (T3 bryan r194)",
+      "name": "N3G\u0394TIV0 4_r194 (T3 bryan r194)",
       "input": "4_r194",
       "t3_source": "bryan",
       "t3_row": 194,
@@ -2340,7 +2390,7 @@
       "move_class": "strike"
     },
     "2_r195": {
-      "name": "N3GΔTIV0 2_r195 (T3 bryan r195)",
+      "name": "N3G\u0394TIV0 2_r195 (T3 bryan r195)",
       "input": "2_r195",
       "t3_source": "bryan",
       "t3_row": 195,
@@ -2360,7 +2410,7 @@
       "move_class": "strike"
     },
     "2_r208": {
-      "name": "N3GΔTIV0 2_r208 (T3 bryan r208)",
+      "name": "N3G\u0394TIV0 2_r208 (T3 bryan r208)",
       "input": "2_r208",
       "t3_source": "bryan",
       "t3_row": 208,
@@ -2380,7 +2430,7 @@
       "move_class": "strike"
     },
     "1_c36_r224": {
-      "name": "N3GΔTIV0 1_c36_r224 (T3 bryan r224)",
+      "name": "N3G\u0394TIV0 1_c36_r224 (T3 bryan r224)",
       "input": "1_c36_r224",
       "t3_source": "bryan",
       "t3_row": 224,
@@ -2401,7 +2451,7 @@
       "t3_condition": 36
     },
     "1_c36_r225": {
-      "name": "N3GΔTIV0 1_c36_r225 (T3 bryan r225)",
+      "name": "N3G\u0394TIV0 1_c36_r225 (T3 bryan r225)",
       "input": "1_c36_r225",
       "t3_source": "bryan",
       "t3_row": 225,
@@ -2422,7 +2472,7 @@
       "t3_condition": 36
     },
     "1_c36_r228": {
-      "name": "N3GΔTIV0 1_c36_r228 (T3 bryan r228)",
+      "name": "N3G\u0394TIV0 1_c36_r228 (T3 bryan r228)",
       "input": "1_c36_r228",
       "t3_source": "bryan",
       "t3_row": 228,
@@ -2443,7 +2493,7 @@
       "t3_condition": 36
     },
     "1_c36_r229": {
-      "name": "N3GΔTIV0 1_c36_r229 (T3 bryan r229)",
+      "name": "N3G\u0394TIV0 1_c36_r229 (T3 bryan r229)",
       "input": "1_c36_r229",
       "t3_source": "bryan",
       "t3_row": 229,
@@ -2464,7 +2514,7 @@
       "t3_condition": 36
     },
     "1_c2_r343": {
-      "name": "N3GΔTIV0 1_c2_r343 (T3 bryan r343)",
+      "name": "N3G\u0394TIV0 1_c2_r343 (T3 bryan r343)",
       "input": "1_c2_r343",
       "t3_source": "bryan",
       "t3_row": 343,
@@ -2485,7 +2535,7 @@
       "t3_condition": 2
     },
     "1_c2_r345": {
-      "name": "N3GΔTIV0 1_c2_r345 (T3 bryan r345)",
+      "name": "N3G\u0394TIV0 1_c2_r345 (T3 bryan r345)",
       "input": "1_c2_r345",
       "t3_source": "bryan",
       "t3_row": 345,
@@ -2506,7 +2556,7 @@
       "t3_condition": 2
     },
     "1_c4_r347": {
-      "name": "N3GΔTIV0 1_c4_r347 (T3 bryan r347)",
+      "name": "N3G\u0394TIV0 1_c4_r347 (T3 bryan r347)",
       "input": "1_c4_r347",
       "t3_source": "bryan",
       "t3_row": 347,
@@ -2527,7 +2577,7 @@
       "t3_condition": 4
     },
     "1_c5_r349": {
-      "name": "N3GΔTIV0 1_c5_r349 (T3 bryan r349)",
+      "name": "N3G\u0394TIV0 1_c5_r349 (T3 bryan r349)",
       "input": "1_c5_r349",
       "t3_source": "bryan",
       "t3_row": 349,
@@ -2548,7 +2598,7 @@
       "t3_condition": 5
     },
     "1_c3_r351": {
-      "name": "N3GΔTIV0 1_c3_r351 (T3 bryan r351)",
+      "name": "N3G\u0394TIV0 1_c3_r351 (T3 bryan r351)",
       "input": "1_c3_r351",
       "t3_source": "bryan",
       "t3_row": 351,
@@ -2571,7 +2621,7 @@
     "b,b,u/b": {
       "name": "NEGAN Back towards wall... b,b,u/b",
       "input": "b,b,u/b",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_1",
       "t7_command": "Back towards wall... b, b, u/b",
       "t7_hit_level": "mid",
@@ -2595,12 +2645,17 @@
         "btw:b,b,u/b"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block 0 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block 0 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 41,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "1,1": {
       "name": "Sadistic Combination (chain)",
       "input": "1,1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_3",
       "t7_command": "1, 1",
       "t7_hit_level": "high, high",
@@ -2630,12 +2685,17 @@
           9
         ],
         "total": 16
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 41,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),1": {
       "name": "Sadistic Combination (chain)",
       "input": "(1),1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_4",
       "t7_command": "(1), 1",
       "t7_hit_level": "high",
@@ -2658,12 +2718,17 @@
         "(1),1"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -3 / on hit +8 / CH +8 | t7chicken lists no separate move name; labeled from its named T7 string family"
+      "note": "T7 [high] on block -3 / on hit +8 / CH +8 | t7chicken lists no separate move name; labeled from its named T7 string family",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 41,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,1,2": {
       "name": "Sadistic Combination",
       "input": "1,1,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_5",
       "t7_command": "1, 1, 2",
       "t7_hit_level": "high, high, mid",
@@ -2695,12 +2760,17 @@
           17
         ],
         "total": 33
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),1,2": {
       "name": "NEGAN (1),1,2",
       "input": "(1),1,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_6",
       "t7_command": "(1), 1, 2",
       "t7_hit_level": "high, mid",
@@ -2731,12 +2801,17 @@
           17
         ],
         "total": 26
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),(1),2": {
       "name": "NEGAN (1),(1),2",
       "input": "(1),(1),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_7",
       "t7_command": "(1), (1), 2",
       "t7_hit_level": "mid",
@@ -2760,12 +2835,17 @@
         "(1),(1),2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -9 / on hit +5 / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -9 / on hit +5 / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2": {
       "name": "Heavy Rain (chain)",
       "input": "1,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_8",
       "t7_command": "1, 2",
       "t7_hit_level": "high, high",
@@ -2795,12 +2875,17 @@
           9
         ],
         "total": 16
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),2": {
       "name": "Heavy Rain (chain)",
       "input": "(1),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_9",
       "t7_command": "(1), 2",
       "t7_hit_level": "high",
@@ -2823,12 +2908,17 @@
         "(1),2"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -8 / on hit +3 / CH +3 | t7chicken lists no separate move name; labeled from its named T7 string family"
+      "note": "T7 [high] on block -8 / on hit +3 / CH +3 | t7chicken lists no separate move name; labeled from its named T7 string family",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,2": {
       "name": "Heavy Rain",
       "input": "1,2,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_10",
       "t7_command": "1, 2, 2",
       "t7_hit_level": "high, high, mid",
@@ -2860,12 +2950,17 @@
           22
         ],
         "total": 38
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),2,2": {
       "name": "NEGAN (1),2,2",
       "input": "(1),2,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_11",
       "t7_command": "(1), 2, 2",
       "t7_hit_level": "high, mid",
@@ -2896,12 +2991,17 @@
           22
         ],
         "total": 31
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),(2),2": {
       "name": "NEGAN (1),(2),2",
       "input": "(1),(2),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_12",
       "t7_command": "(1), (2), 2",
       "t7_hit_level": "mid",
@@ -2925,12 +3025,17 @@
         "(1),(2),2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block +4 / on hit GROUND BOUNCE / CH GROUND BOUNCE | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block +4 / on hit GROUND BOUNCE / CH GROUND BOUNCE | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,2,4": {
       "name": "Dark Night Combination",
       "input": "1,2,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_13",
       "t7_command": "1, 2, 4",
       "t7_hit_level": "high, high, high",
@@ -2962,12 +3067,17 @@
           13
         ],
         "total": 29
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),2,4": {
       "name": "NEGAN (1),2,4",
       "input": "(1),2,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_14",
       "t7_command": "(1), 2, 4",
       "t7_hit_level": "high, high",
@@ -2998,12 +3108,17 @@
           13
         ],
         "total": 22
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),(2),4": {
       "name": "NEGAN (1),(2),4",
       "input": "(1),(2),4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_15",
       "t7_command": "(1), (2), 4",
       "t7_hit_level": "high",
@@ -3027,12 +3142,17 @@
         "(1),(2),4"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -9 / on hit +1 / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [high] on block -9 / on hit +1 / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,4": {
       "name": "Triple Head Shot (chain)",
       "input": "1,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_16",
       "t7_command": "1, 4",
       "t7_hit_level": "high, high",
@@ -3062,12 +3182,17 @@
           17
         ],
         "total": 24
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),4": {
       "name": "Triple Head Shot (chain)",
       "input": "(1),4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_17",
       "t7_command": "(1), 4",
       "t7_hit_level": "high",
@@ -3090,12 +3215,17 @@
         "(1),4"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -6 / on hit +3 / CH +3 | t7chicken lists no separate move name; labeled from its named T7 string family"
+      "note": "T7 [high] on block -6 / on hit +3 / CH +3 | t7chicken lists no separate move name; labeled from its named T7 string family",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1,4,2": {
       "name": "Triple Head Shot",
       "input": "1,4,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_18",
       "t7_command": "1, 4, 2",
       "t7_hit_level": "high, high, mid",
@@ -3127,12 +3257,17 @@
           20
         ],
         "total": 44
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),4,2": {
       "name": "NEGAN (1),4,2",
       "input": "(1),4,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_19",
       "t7_command": "(1), 4, 2",
       "t7_hit_level": "high, mid",
@@ -3163,12 +3298,17 @@
           20
         ],
         "total": 37
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),(4),2": {
       "name": "NEGAN (1),(4),2",
       "input": "(1),(4),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_20",
       "t7_command": "(1), (4), 2",
       "t7_hit_level": "mid",
@@ -3192,12 +3332,17 @@
         "(1),(4),2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -5 / on hit +6 (OC) / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -5 / on hit +6 (OC) / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(2),1": {
       "name": "Shin Smasher (chain)",
       "input": "(2),1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_23",
       "t7_command": "(2), 1",
       "t7_hit_level": "high",
@@ -3220,12 +3365,17 @@
         "(2),1"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -7 / on hit +4 / CH +4 | t7chicken lists no separate move name; labeled from its named T7 string family"
+      "note": "T7 [high] on block -7 / on hit +4 / CH +4 | t7chicken lists no separate move name; labeled from its named T7 string family",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 41,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,1,4": {
       "name": "Shin Smasher",
       "input": "2,1,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_24",
       "t7_command": "2, 1, 4",
       "t7_hit_level": "high, high, low",
@@ -3257,12 +3407,17 @@
           15
         ],
         "total": 36
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(2),1,4": {
       "name": "NEGAN (2),1,4",
       "input": "(2),1,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_25",
       "t7_command": "(2), 1, 4",
       "t7_hit_level": "high, low",
@@ -3293,12 +3448,17 @@
           15
         ],
         "total": 27
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(2),(1),4": {
       "name": "NEGAN (2),(1),4",
       "input": "(2),(1),4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_26",
       "t7_command": "(2), (1), 4",
       "t7_hit_level": "low",
@@ -3322,12 +3482,17 @@
         "(2),(1),4"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -12 / on hit +3 (OC) / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -12 / on hit +3 (OC) / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,2": {
       "name": "Executioner Rush (chain)",
       "input": "2,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_27",
       "t7_command": "2, 2",
       "t7_hit_level": "high, mid",
@@ -3357,12 +3522,17 @@
           17
         ],
         "total": 26
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(2),2": {
       "name": "Executioner Rush (chain)",
       "input": "(2),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_28",
       "t7_command": "(2), 2",
       "t7_hit_level": "mid",
@@ -3385,12 +3555,17 @@
         "(2),2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -14 / on hit +1 (OC) / CH +1 (OC) | t7chicken lists no separate move name; labeled from its named T7 string family"
+      "note": "T7 [mid] on block -14 / on hit +1 (OC) / CH +1 (OC) | t7chicken lists no separate move name; labeled from its named T7 string family",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,2,2": {
       "name": "Executioner Rush (chain)",
       "input": "2,2,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_29",
       "t7_command": "2, 2, 2",
       "t7_hit_level": "high, mid, mid",
@@ -3422,12 +3597,17 @@
           17
         ],
         "total": 43
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(2),2,2": {
       "name": "Executioner Rush (chain)",
       "input": "(2),2,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_30",
       "t7_command": "(2), 2, 2",
       "t7_hit_level": "mid, mid",
@@ -3458,12 +3638,17 @@
           17
         ],
         "total": 34
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(2),(2),2": {
       "name": "Executioner Rush (chain)",
       "input": "(2),(2),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_31",
       "t7_command": "(2), (2), 2",
       "t7_hit_level": "mid",
@@ -3487,12 +3672,17 @@
         "(2),(2),2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -14 / on hit +1 (OC) / CH +1 (OC) | t7chicken lists no separate move name; labeled from its named T7 string family"
+      "note": "T7 [mid] on block -14 / on hit +1 (OC) / CH +1 (OC) | t7chicken lists no separate move name; labeled from its named T7 string family",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2,2,2,2": {
       "name": "Executioner Rush",
       "input": "2,2,2,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_32",
       "t7_command": "2, 2, 2, 2",
       "t7_hit_level": "high, mid, mid, mid",
@@ -3526,12 +3716,17 @@
           20
         ],
         "total": 63
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(2),2,2,2": {
       "name": "NEGAN (2),2,2,2",
       "input": "(2),2,2,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_33",
       "t7_command": "(2), 2, 2, 2",
       "t7_hit_level": "mid, mid, mid",
@@ -3564,12 +3759,17 @@
           20
         ],
         "total": 54
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(2),(2),2,2": {
       "name": "NEGAN (2),(2),2,2",
       "input": "(2),(2),2,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_34",
       "t7_command": "(2), (2), 2, 2",
       "t7_hit_level": "mid, mid",
@@ -3601,12 +3801,17 @@
           20
         ],
         "total": 37
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(2),(2),(2),2": {
       "name": "NEGAN (2),(2),(2),2",
       "input": "(2),(2),(2),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_35",
       "t7_command": "(2), (2), (2), 2",
       "t7_hit_level": "mid",
@@ -3631,12 +3836,17 @@
         "(2),(2),(2),2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -14 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -14 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "4,2": {
       "name": "Double Head Shot",
       "input": "4,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_38",
       "t7_command": "4, 2",
       "t7_hit_level": "high, mid",
@@ -3666,12 +3876,17 @@
           20
         ],
         "total": 37
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(4),2": {
       "name": "NEGAN (4),2",
       "input": "(4),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_39",
       "t7_command": "(4), 2",
       "t7_hit_level": "mid",
@@ -3694,12 +3909,17 @@
         "(4),2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -5 / on hit +6 (OC) / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -5 / on hit +6 (OC) / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+2_t7": {
       "name": "Switch Hitter",
       "input": "1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_40",
       "t7_command": "1+2",
       "t7_hit_level": "high, mid",
@@ -3722,12 +3942,17 @@
       ],
       "move_class": "strike",
       "note": "T7 [high, mid] on block -14 / on hit KND / CH KND",
-      "t7_input": "1+2"
+      "t7_input": "1+2",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 41,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1+2 (second hit only)": {
       "name": "NEGAN 1+2 (second hit only)",
       "input": "1+2 (second hit only)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_41",
       "t7_command": "1+2 (second hit only)",
       "t7_hit_level": "mid",
@@ -3749,12 +3974,17 @@
         "1+2 (second hit only)"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -14 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -14 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2+3": {
       "name": "Shove",
       "input": "2+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_42",
       "t7_command": "2+3",
       "t7_hit_level": "mid",
@@ -3776,12 +4006,17 @@
         "2+3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -7 / on hit +2 / CH +14"
+      "note": "T7 [mid] on block -7 / on hit +2 / CH +14",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+2_t7": {
       "name": "NEGAN f+2",
       "input": "f+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_43",
       "t7_command": "f+2",
       "t7_hit_level": "high",
@@ -3804,12 +4039,17 @@
       ],
       "move_class": "strike",
       "note": "T7 [high] on block -7 / on hit +4 / CH +4 | t7chicken lists no name for this move; labeled by T7 command",
-      "t7_input": "f+2"
+      "t7_input": "f+2",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 150,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+2,2 (only during hit from front)": {
       "name": "Face Grinder",
       "input": "f+2,2 (only during hit from front)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_44",
       "t7_command": "f+2, 2 (only during hit from front)",
       "t7_hit_level": "high, mid",
@@ -3832,12 +4072,17 @@
         "f+2,2 (only during hit from front)"
       ],
       "move_class": "string",
-      "note": "T7 [high, mid] on block -14 / on hit KND / CH -"
+      "note": "T7 [high, mid] on block -14 / on hit KND / CH -",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(f+2),2": {
       "name": "NEGAN (f+2),2",
       "input": "(f+2),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_45",
       "t7_command": "(f+2), 2",
       "t7_hit_level": "mid",
@@ -3860,12 +4105,17 @@
         "(f+2),2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -14 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -14 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+3_t7": {
       "name": "NEGAN f+3",
       "input": "f+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_46",
       "t7_command": "f+3",
       "t7_hit_level": "mid",
@@ -3888,12 +4138,17 @@
       ],
       "move_class": "strike",
       "note": "T7 [mid] on block -7 / on hit +9 / CH +9 | t7chicken lists no name for this move; labeled by T7 command",
-      "t7_input": "f+3"
+      "t7_input": "f+3",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 191,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "f+3,2": {
       "name": "Shock and Awe",
       "input": "f+3,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_47",
       "t7_command": "f+3, 2",
       "t7_hit_level": "mid, mid",
@@ -3923,12 +4178,17 @@
           20
         ],
         "total": 33
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(f+3),2": {
       "name": "NEGAN (f+3),2",
       "input": "(f+3),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_48",
       "t7_command": "(f+3), 2",
       "t7_hit_level": "mid",
@@ -3951,12 +4211,17 @@
         "(f+3),2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -19 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -19 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+2+3": {
       "name": "Tripwire",
       "input": "f+2+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_49",
       "t7_command": "f+2+3",
       "t7_hit_level": "low",
@@ -3978,12 +4243,17 @@
         "f+2+3"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -12 / on hit +6 / CH +6"
+      "note": "T7 [low] on block -12 / on hit +6 / CH +6",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1,1": {
       "name": "Side Swipe Smash (chain)",
       "input": "d/f+1,1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_51",
       "t7_command": "d/f+1, 1",
       "t7_hit_level": "mid, high",
@@ -4013,12 +4283,17 @@
           9
         ],
         "total": 22
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 41,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d/f+1),1": {
       "name": "Side Swipe Smash (chain)",
       "input": "(d/f+1),1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_52",
       "t7_command": "(d/f+1), 1",
       "t7_hit_level": "high",
@@ -4041,12 +4316,17 @@
         "(d/f+1),1"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -4 / on hit +7 / CH +7 | t7chicken lists no separate move name; labeled from its named T7 string family"
+      "note": "T7 [high] on block -4 / on hit +7 / CH +7 | t7chicken lists no separate move name; labeled from its named T7 string family",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 41,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1,1,2": {
       "name": "Side Swipe Smash",
       "input": "d/f+1,1,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_53",
       "t7_command": "d/f+1, 1, 2",
       "t7_hit_level": "mid, high, mid",
@@ -4078,12 +4358,17 @@
           21
         ],
         "total": 43
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d/f+1),1,2": {
       "name": "NEGAN (d/f+1),1,2",
       "input": "(d/f+1),1,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_54",
       "t7_command": "(d/f+1), 1, 2",
       "t7_hit_level": "high, mid",
@@ -4114,12 +4399,17 @@
           21
         ],
         "total": 30
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d/f+1),(1),2": {
       "name": "NEGAN (d/f+1),(1),2",
       "input": "(d/f+1),(1),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_55",
       "t7_command": "(d/f+1), (1), 2",
       "t7_hit_level": "mid",
@@ -4143,12 +4433,17 @@
         "(d/f+1),(1),2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -13 / on hit KND / CH S! | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -13 / on hit KND / CH S! | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1,2": {
       "name": "Tenderizer",
       "input": "d/f+1,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_56",
       "t7_command": "d/f+1, 2",
       "t7_hit_level": "mid, mid",
@@ -4178,12 +4473,17 @@
           20
         ],
         "total": 33
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d/f+1),2": {
       "name": "NEGAN (d/f+1),2",
       "input": "(d/f+1),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_57",
       "t7_command": "(d/f+1), 2",
       "t7_hit_level": "mid",
@@ -4206,12 +4506,17 @@
         "(d/f+1),2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -11 / on hit +7 / CH +7 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -11 / on hit +7 / CH +7 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+3": {
       "name": "NEGAN d/f+3",
       "input": "d/f+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_59",
       "t7_command": "d/f+3",
       "t7_hit_level": "mid",
@@ -4233,12 +4538,17 @@
         "d/f+3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -7 / on hit +4 / CH +4 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -7 / on hit +4 / CH +4 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 189,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d/f+3,1": {
       "name": "Scottish Maiden (chain)",
       "input": "d/f+3,1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_60",
       "t7_command": "d/f+3, 1",
       "t7_hit_level": "mid, high",
@@ -4268,12 +4578,17 @@
           12
         ],
         "total": 25
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 41,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d/f+3),1": {
       "name": "Scottish Maiden (chain)",
       "input": "(d/f+3),1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_61",
       "t7_command": "(d/f+3), 1",
       "t7_hit_level": "high",
@@ -4296,12 +4611,17 @@
         "(d/f+3),1"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -2 / on hit +9 / CH +9 | t7chicken lists no separate move name; labeled from its named T7 string family"
+      "note": "T7 [high] on block -2 / on hit +9 / CH +9 | t7chicken lists no separate move name; labeled from its named T7 string family",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 41,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+3,1,2": {
       "name": "Scottish Maiden",
       "input": "d/f+3,1,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_62",
       "t7_command": "d/f+3, 1, 2",
       "t7_hit_level": "mid, high, mid",
@@ -4333,12 +4653,17 @@
           20
         ],
         "total": 45
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d/f+3),1,2": {
       "name": "NEGAN (d/f+3),1,2",
       "input": "(d/f+3),1,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_63",
       "t7_command": "(d/f+3), 1, 2",
       "t7_hit_level": "high, mid",
@@ -4369,12 +4694,17 @@
           20
         ],
         "total": 32
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d/f+3),(1),2": {
       "name": "NEGAN (d/f+3),(1),2",
       "input": "(d/f+3),(1),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_64",
       "t7_command": "(d/f+3), (1), 2",
       "t7_hit_level": "mid",
@@ -4398,12 +4728,17 @@
         "(d/f+3),(1),2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -11 / on hit +4 (OC) / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -11 / on hit +4 (OC) / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+3,1,4": {
       "name": "Iron Maiden",
       "input": "d/f+3,1,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_65",
       "t7_command": "d/f+3, 1, 4",
       "t7_hit_level": "mid, high, mid",
@@ -4435,12 +4770,17 @@
           23
         ],
         "total": 48
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d/f+3),1,4": {
       "name": "NEGAN (d/f+3),1,4",
       "input": "(d/f+3),1,4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_66",
       "t7_command": "(d/f+3), 1, 4",
       "t7_hit_level": "high, mid",
@@ -4471,12 +4811,17 @@
           23
         ],
         "total": 35
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d/f+3),(1),4": {
       "name": "NEGAN (d/f+3),(1),4",
       "input": "(d/f+3),(1),4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_67",
       "t7_command": "(d/f+3), (1), 4",
       "t7_hit_level": "mid",
@@ -4500,12 +4845,17 @@
         "(d/f+3),(1),4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -14 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -14 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+4": {
       "name": "NEGAN d/f+4",
       "input": "d/f+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_68",
       "t7_command": "d/f+4",
       "t7_hit_level": "mid",
@@ -4527,12 +4877,17 @@
         "d/f+4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -7 / on hit +4 / CH +4 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -7 / on hit +4 / CH +4 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 124,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d/f+4,2": {
       "name": "Front Kick to Temple Smash",
       "input": "d/f+4,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_69",
       "t7_command": "d/f+4, 2",
       "t7_hit_level": "mid, high",
@@ -4562,12 +4917,17 @@
           20
         ],
         "total": 35
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d/f+4),2": {
       "name": "NEGAN (d/f+4),2",
       "input": "(d/f+4),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_70",
       "t7_command": "(d/f+4), 2",
       "t7_hit_level": "high",
@@ -4590,12 +4950,17 @@
         "(d/f+4),2"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block +1 / on hit +6 / CH +6 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [high] on block +1 / on hit +6 / CH +6 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+4,3": {
       "name": "Front Kick to Knee Lift",
       "input": "d/f+4,3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_71",
       "t7_command": "d/f+4, 3",
       "t7_hit_level": "mid, mid",
@@ -4625,12 +4990,17 @@
           18
         ],
         "total": 33
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d/f+4),3": {
       "name": "NEGAN (d/f+4),3",
       "input": "(d/f+4),3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_72",
       "t7_command": "(d/f+4), 3",
       "t7_hit_level": "mid",
@@ -4653,12 +5023,17 @@
         "(d/f+4),3"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -9 / on hit +7 / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -9 / on hit +7 / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1+2 (second hit only)": {
       "name": "NEGAN d/f+1+2 (second hit only)",
       "input": "d/f+1+2 (second hit only)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_74",
       "t7_command": "d/f+1+2 (second hit only)",
       "t7_hit_level": "mid",
@@ -4680,12 +5055,17 @@
         "d/f+1+2 (second hit only)"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -14 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -14 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+2": {
       "name": "Bad Break",
       "input": "d+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_75",
       "t7_command": "d+2",
       "t7_hit_level": "mid",
@@ -4707,12 +5087,17 @@
         "d+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -9 / on hit +2 (OC) / CH -"
+      "note": "T7 [mid] on block -9 / on hit +2 (OC) / CH -",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CH d+2": {
       "name": "Death Penalty",
       "input": "CH d+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_76",
       "t7_command": "CH d+2",
       "t7_hit_level": "mid",
@@ -4734,12 +5119,17 @@
         "CH d+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -9 / on hit - / CH KND"
+      "note": "T7 [mid] on block -9 / on hit - / CH KND",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3": {
       "name": "Kneecapper",
       "input": "d+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_77",
       "t7_command": "d+3",
       "t7_hit_level": "low",
@@ -4761,12 +5151,17 @@
         "d+3"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -12 / on hit -1 / CH -1"
+      "note": "T7 [low] on block -12 / on hit -1 / CH -1",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/b+4": {
       "name": "Low Sweep",
       "input": "d/b+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_78",
       "t7_command": "d/b+4",
       "t7_hit_level": "low",
@@ -4788,12 +5183,17 @@
         "d/b+4"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -15 / on hit -4 / CH -4"
+      "note": "T7 [low] on block -15 / on hit -4 / CH -4",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 131,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d/b+1+2": {
       "name": "Violent Siege",
       "input": "d/b+1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_79",
       "t7_command": "d/b+1+2",
       "t7_hit_level": "high",
@@ -4815,12 +5215,17 @@
         "d/b+1+2"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block -8 / on hit +11 / CH STUN"
+      "note": "T7 [high] on block -8 / on hit +11 / CH STUN",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 125,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "b+1": {
       "name": "NEGAN b+1",
       "input": "b+1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_80",
       "t7_command": "b+1",
       "t7_hit_level": "mid",
@@ -4842,12 +5247,17 @@
         "b+1"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -9 / on hit +2 / CH +2 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -9 / on hit +2 / CH +2 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 90,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "b+1,2": {
       "name": "Molotov Cocktail",
       "input": "b+1,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_81",
       "t7_command": "b+1, 2",
       "t7_hit_level": "mid, mid",
@@ -4877,12 +5287,17 @@
           23
         ],
         "total": 35
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 145,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "(b+1),2": {
       "name": "NEGAN (b+1),2",
       "input": "(b+1),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_82",
       "t7_command": "(b+1), 2",
       "t7_hit_level": "mid",
@@ -4905,12 +5320,17 @@
         "(b+1),2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -10 / on hit KND / CH S! | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -10 / on hit KND / CH S! | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+2,2 (only during hit from front)": {
       "name": "Back Swing Brain Bash to Death Penalty",
       "input": "b+2,2 (only during hit from front)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_84",
       "t7_command": "b+2, 2 (only during hit from front)",
       "t7_hit_level": "high, mid",
@@ -4933,12 +5353,17 @@
         "b+2,2 (only during hit from front)"
       ],
       "move_class": "string",
-      "note": "T7 [high, mid] on block -11 / on hit KND / CH -"
+      "note": "T7 [high, mid] on block -11 / on hit KND / CH -",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(b+2),2": {
       "name": "NEGAN (b+2),2",
       "input": "(b+2),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_85",
       "t7_command": "(b+2), 2",
       "t7_hit_level": "mid",
@@ -4961,12 +5386,17 @@
         "(b+2),2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -11 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -11 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+2,3": {
       "name": "Back Swing Funeral",
       "input": "b+2,3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_86",
       "t7_command": "b+2, 3",
       "t7_hit_level": "high, mid",
@@ -4996,12 +5426,17 @@
           20
         ],
         "total": 35
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(b+2),3": {
       "name": "NEGAN (b+2),3",
       "input": "(b+2),3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_87",
       "t7_command": "(b+2), 3",
       "t7_hit_level": "mid",
@@ -5024,12 +5459,17 @@
         "(b+2),3"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -6 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -6 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "b+3": {
       "name": "Murder Stomp",
       "input": "b+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_88",
       "t7_command": "b+3",
       "t7_hit_level": "low",
@@ -5051,12 +5491,17 @@
         "b+3"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -12 / on hit +5 / CH +11"
+      "note": "T7 [low] on block -12 / on hit +5 / CH +11",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/b+2": {
       "name": "Matador",
       "input": "u/b+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_91",
       "t7_command": "u/b+2",
       "t7_hit_level": "mid",
@@ -5078,12 +5523,17 @@
         "u/b+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -20 / on hit KND / CH KND"
+      "note": "T7 [mid] on block -20 / on hit KND / CH KND",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/f+2": {
       "name": "Nightmare Slice",
       "input": "u/f+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_92",
       "t7_command": "u/f+2",
       "t7_hit_level": "high",
@@ -5105,12 +5555,17 @@
         "u/f+2"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block -9 / on hit KND / CH KND"
+      "note": "T7 [high] on block -9 / on hit KND / CH KND",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+2": {
       "name": "Justice Served",
       "input": "f,F+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_95",
       "t7_command": "f, F+2",
       "t7_hit_level": "mid",
@@ -5133,12 +5588,17 @@
         "f,F+2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -9 / on hit KND / CH KND"
+      "note": "T7 [mid] on block -9 / on hit KND / CH KND",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+3": {
       "name": "Death Scream (chain)",
       "input": "f,F+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_96",
       "t7_command": "f, F+3",
       "t7_hit_level": "mid",
@@ -5161,12 +5621,17 @@
         "f,F+3"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -4 / on hit +8 / CH +8 | t7chicken lists no separate move name; labeled from its named T7 string family"
+      "note": "T7 [mid] on block -4 / on hit +8 / CH +8 | t7chicken lists no separate move name; labeled from its named T7 string family",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+3,2": {
       "name": "Death Scream",
       "input": "f,F+3,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_97",
       "t7_command": "f, F+3, 2",
       "t7_hit_level": "mid, mid",
@@ -5197,12 +5662,17 @@
           23
         ],
         "total": 36
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(f,F+3),2": {
       "name": "NEGAN (f,F+3),2",
       "input": "(f,F+3),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_98",
       "t7_command": "(f, F+3), 2",
       "t7_hit_level": "mid",
@@ -5226,12 +5696,17 @@
         "(f,F+3),2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -20 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -20 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+4": {
       "name": "Savior Spike",
       "input": "f,F+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_99",
       "t7_command": "f, F+4",
       "t7_hit_level": "mid",
@@ -5254,12 +5729,17 @@
         "f,F+4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block +4 / on hit KND / CH KND"
+      "note": "T7 [mid] on block +4 / on hit KND / CH KND",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,F+1+2": {
       "name": "Gutless",
       "input": "f,F+1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_100",
       "t7_command": "f, F+1+2",
       "t7_hit_level": "mid",
@@ -5282,12 +5762,17 @@
         "f,F+1+2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -6 / on hit STUN / CH STUN"
+      "note": "T7 [mid] on block -6 / on hit STUN / CH STUN",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "qcf+1": {
       "name": "Secret Weapon",
       "input": "qcf+1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_101",
       "t7_command": "qcf+1",
       "t7_hit_level": "mid",
@@ -5309,12 +5794,17 @@
         "qcf+1"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -19 / on hit KND / CH KND"
+      "note": "T7 [mid] on block -19 / on hit KND / CH KND",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 41,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f,f,f+2": {
       "name": "Rush Down",
       "input": "f,f,f+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_102",
       "t7_command": "f, f, f+2 (or WR 2)",
       "t7_hit_level": "mid",
@@ -5338,12 +5828,17 @@
         "f,f,f+2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -9 / on hit KND / CH KND"
+      "note": "T7 [mid] on block -9 / on hit KND / CH KND",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT 1": {
       "name": "NEGAN BT 1",
       "input": "BT 1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_103",
       "t7_command": "BT 1",
       "t7_hit_level": "high",
@@ -5365,12 +5860,17 @@
         "BT 1"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block -8 / on hit +3 / CH +3 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [high] on block -8 / on hit +3 / CH +3 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 41,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT 2": {
       "name": "No Look Swing",
       "input": "BT 2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_104",
       "t7_command": "BT 2",
       "t7_hit_level": "mid",
@@ -5392,12 +5892,17 @@
         "BT 2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -10 / on hit KND / CH KND"
+      "note": "T7 [mid] on block -10 / on hit KND / CH KND",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "BT 3": {
       "name": "NEGAN BT 3",
       "input": "BT 3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_105",
       "t7_command": "BT 3 (or 4)",
       "t7_hit_level": "high",
@@ -5419,12 +5924,17 @@
         "BT 3"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block -8 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [high] on block -8 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC 1": {
       "name": "NEGAN FC 1",
       "input": "FC 1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_106",
       "t7_command": "FC 1",
       "t7_hit_level": "s. mid",
@@ -5446,12 +5956,17 @@
         "FC 1"
       ],
       "move_class": "strike",
-      "note": "T7 [s. mid] on block -5 / on hit +6 / CH +6 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [s. mid] on block -5 / on hit +6 / CH +6 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 41,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC 2": {
       "name": "NEGAN FC 2",
       "input": "FC 2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_107",
       "t7_command": "FC 2",
       "t7_hit_level": "s. mid",
@@ -5473,12 +5988,17 @@
         "FC 2"
       ],
       "move_class": "strike",
-      "note": "T7 [s. mid] on block -7 / on hit +4 / CH +4 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [s. mid] on block -7 / on hit +4 / CH +4 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC 3": {
       "name": "NEGAN FC 3",
       "input": "FC 3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_108",
       "t7_command": "FC 3",
       "t7_hit_level": "low",
@@ -5500,12 +6020,17 @@
         "FC 3"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -15 / on hit -4 / CH -4 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -15 / on hit -4 / CH -4 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC 4": {
       "name": "NEGAN FC 4",
       "input": "FC 4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_109",
       "t7_command": "FC 4",
       "t7_hit_level": "low",
@@ -5527,12 +6052,17 @@
         "FC 4"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -15 / on hit -4 / CH -4 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -15 / on hit -4 / CH -4 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "FC d/f+2": {
       "name": "Sneaky",
       "input": "FC d/f+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_110",
       "t7_command": "FC d/f+2",
       "t7_hit_level": "low",
@@ -5554,12 +6084,17 @@
         "FC d/f+2"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -13 / on hit +3 (OC) / CH KND"
+      "note": "T7 [low] on block -13 / on hit +3 (OC) / CH KND",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SSL 2": {
       "name": "Full Swing Left",
       "input": "SSL 2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_111",
       "t7_command": "SSL 2",
       "t7_hit_level": "high",
@@ -5581,12 +6116,17 @@
         "SSL 2"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block -8 / on hit STUN / CH STUN"
+      "note": "T7 [high] on block -8 / on hit STUN / CH STUN",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "SSR 2": {
       "name": "Full Swing Right",
       "input": "SSR 2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_112",
       "t7_command": "SSR 2",
       "t7_hit_level": "high",
@@ -5608,12 +6148,17 @@
         "SSR 2"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block -8 / on hit STUN / CH STUN"
+      "note": "T7 [high] on block -8 / on hit STUN / CH STUN",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WR f,f,F (Full Screen)": {
       "name": "NEGAN WR f,f,F (Full Screen)",
       "input": "WR f,f,F (Full Screen)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_113",
       "t7_command": "WR f, f, F (Full Screen)",
       "t7_hit_level": "mid",
@@ -5637,12 +6182,17 @@
         "WR f,f,F (Full Screen)"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block +13 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block +13 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 41,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "WR f,f,F (Full Screen) (On Grounded Opponent)": {
       "name": "NEGAN WR f,f,F (Full Screen) (On Grounded Opponent)",
       "input": "WR f,f,F (Full Screen) (On Grounded Opponent)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_114",
       "t7_command": "WR f, f, F (Full Screen) (On Grounded Opponent)",
       "t7_hit_level": "low",
@@ -5666,12 +6216,17 @@
         "WR f,f,F (Full Screen) (On Grounded Opponent)"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block +6 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block +6 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 41,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "WR 4": {
       "name": "NEGAN WR 4",
       "input": "WR 4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_115",
       "t7_command": "WR 4",
       "t7_hit_level": "low",
@@ -5693,12 +6248,17 @@
         "WR 4"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -40 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -40 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WR 1+2": {
       "name": "NEGAN WR 1+2",
       "input": "WR 1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_116",
       "t7_command": "WR 1+2",
       "t7_hit_level": "mid",
@@ -5720,12 +6280,17 @@
         "WR 1+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block 0 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block 0 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS 1": {
       "name": "NEGAN WS 1",
       "input": "WS 1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_117",
       "t7_command": "WS 1",
       "t7_hit_level": "mid",
@@ -5747,12 +6312,17 @@
         "WS 1"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -3 / on hit +8 / CH +8 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -3 / on hit +8 / CH +8 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 41,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS 1,2": {
       "name": "Quick Tenderizer",
       "input": "WS 1,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_118",
       "t7_command": "WS 1, 2",
       "t7_hit_level": "mid, mid",
@@ -5782,12 +6352,17 @@
           20
         ],
         "total": 31
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS (1),2": {
       "name": "NEGAN WS (1),2",
       "input": "WS (1),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_119",
       "t7_command": "WS (1), 2",
       "t7_hit_level": "mid",
@@ -5810,12 +6385,17 @@
         "WS (1),2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -11 / on hit +7 / CH +7 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -11 / on hit +7 / CH +7 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS 2": {
       "name": "Malice Impact",
       "input": "WS 2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_120",
       "t7_command": "WS 2",
       "t7_hit_level": "mid",
@@ -5837,12 +6417,17 @@
         "WS 2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -16 / on hit STUN / CH STUN"
+      "note": "T7 [mid] on block -16 / on hit STUN / CH STUN",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS 3": {
       "name": "NEGAN WS 3",
       "input": "WS 3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_121",
       "t7_command": "WS 3",
       "t7_hit_level": "mid",
@@ -5864,12 +6449,17 @@
         "WS 3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -7 / on hit +9 / CH +9 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -7 / on hit +9 / CH +9 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS 3,2": {
       "name": "Shock and Awe",
       "input": "WS 3,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_122",
       "t7_command": "WS 3, 2",
       "t7_hit_level": "mid, mid",
@@ -5899,12 +6489,17 @@
           20
         ],
         "total": 33
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS (3),2": {
       "name": "NEGAN WS (3),2",
       "input": "WS (3),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_123",
       "t7_command": "WS (3), 2",
       "t7_hit_level": "mid",
@@ -5927,12 +6522,17 @@
         "WS (3),2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -19 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -19 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+3+4": {
       "name": "NEGAN (While enemy is down) d+3+4",
       "input": "d+3+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_124",
       "t7_command": "(While enemy is down) d+3+4",
       "t7_hit_level": "low",
@@ -5954,12 +6554,17 @@
         "gnd:d+3+4"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -20 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -20 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 128,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "Face Up,Feet Towards+3 or (After Rolling Forward)": {
       "name": "NEGAN Face Up,Feet Towards+3 or (After Rolling Forward)",
       "input": "Face Up,Feet Towards+3 or (After Rolling Forward)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_125",
       "t7_command": "Face Up, Feet Towards+3 or (After Rolling Forward)",
       "t7_hit_level": "low",
@@ -5982,12 +6587,17 @@
         "Face Up,Feet Towards+3 or (After Rolling Forward)"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -12 / on hit +5 / CH STUN | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -12 / on hit +5 / CH STUN | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Face Up,Feet Towards+4 or (After Rolling Forward)": {
       "name": "NEGAN Face Up,Feet Towards+4 or (After Rolling Forward)",
       "input": "Face Up,Feet Towards+4 or (After Rolling Forward)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_126",
       "t7_command": "Face Up, Feet Towards+4 or (After Rolling Forward)",
       "t7_hit_level": "mid",
@@ -6010,12 +6620,17 @@
         "Face Up,Feet Towards+4 or (After Rolling Forward)"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -12 / on hit +5 / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -12 / on hit +5 / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Face Up,Feet Towards,d+3": {
       "name": "NEGAN Face Up,Feet Towards,d+3",
       "input": "Face Up,Feet Towards,d+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_127",
       "t7_command": "Face Up, Feet Towards, d+3 (or 4)",
       "t7_hit_level": "low",
@@ -6039,12 +6654,17 @@
         "Face Up,Feet Towards,d+3"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -18 / on hit -3 / CH -3 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -18 / on hit -3 / CH -3 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Face Up,Feet Towards+3+4": {
       "name": "NEGAN Face Up,Feet Towards+3+4",
       "input": "Face Up,Feet Towards+3+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_128",
       "t7_command": "Face Up, Feet Towards+3+4",
       "t7_hit_level": "mid",
@@ -6067,12 +6687,17 @@
         "Face Up,Feet Towards+3+4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -21 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -21 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Face Up,Feet Towards,Roll Forward+1+2": {
       "name": "NEGAN Face Up,Feet Towards,Roll Forward+1+2",
       "input": "Face Up,Feet Towards,Roll Forward+1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_129",
       "t7_command": "Face Up, Feet Towards, Roll Forward+1+2",
       "t7_hit_level": "mid",
@@ -6096,12 +6721,17 @@
         "Face Up,Feet Towards,Roll Forward+1+2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block +2 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block +2 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Face Down,Feet Away+3": {
       "name": "NEGAN Face Down,Feet Away+3",
       "input": "Face Down,Feet Away+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_130",
       "t7_command": "Face Down, Feet Away+3",
       "t7_hit_level": "low",
@@ -6124,12 +6754,17 @@
         "Face Down,Feet Away+3"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -20 / on hit +1 / CH STUN | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [low] on block -20 / on hit +1 / CH STUN | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Face Down,Feet Away+4 (close)": {
       "name": "NEGAN Face Down,Feet Away+4 (close)",
       "input": "Face Down,Feet Away+4 (close)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_131",
       "t7_command": "Face Down, Feet Away+4 (close)",
       "t7_hit_level": "mid",
@@ -6152,12 +6787,17 @@
         "Face Down,Feet Away+4 (close)"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -19 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -19 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "Face Down,Feet Away+4 (far)": {
       "name": "NEGAN Face Down,Feet Away+4 (far)",
       "input": "Face Down,Feet Away+4 (far)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_132",
       "t7_command": "Face Down, Feet Away+4 (far)",
       "t7_hit_level": "mid",
@@ -6180,12 +6820,17 @@
         "Face Down,Feet Away+4 (far)"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -19 / on hit -10 / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -19 / on hit -10 / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(Upon Landing) f": {
       "name": "NEGAN (Upon Landing) f",
       "input": "(Upon Landing) f",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_133",
       "t7_command": "(Upon Landing) f",
       "t7_hit_level": "mid",
@@ -6207,12 +6852,17 @@
         "(Upon Landing) f"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -2 / on hit +3 / CH +3 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -2 / on hit +3 / CH +3 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 41,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "3+4": {
       "name": "Intimidation",
       "input": "3+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_134",
       "t7_command": "3+4",
       "t7_hit_level": "-",
@@ -6234,12 +6884,17 @@
         "3+4"
       ],
       "move_class": "strike",
-      "note": "T7 [-] on block - / on hit - / CH -"
+      "note": "T7 [-] on block - / on hit - / CH -",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "1,2*": {
       "name": "NEGAN 1,2*",
       "input": "1,2*",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_135",
       "t7_command": "1, 2*",
       "t7_hit_level": "high, high",
@@ -6269,12 +6924,17 @@
           9
         ],
         "total": 16
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "INT 3": {
       "name": "Push Kick to Intimidation",
       "input": "INT 3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_136",
       "t7_command": "INT 3",
       "t7_hit_level": "mid",
@@ -6296,12 +6956,17 @@
         "INT 3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -7 / on hit STUN / CH STUN"
+      "note": "T7 [mid] on block -7 / on hit STUN / CH STUN",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "INT 4": {
       "name": "Corpse Kick to Intimidation",
       "input": "INT 4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_137",
       "t7_command": "INT 4",
       "t7_hit_level": "mid",
@@ -6323,12 +6988,17 @@
         "INT 4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -7 / on hit KND / CH STUN"
+      "note": "T7 [mid] on block -7 / on hit KND / CH STUN",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "CH 2+3": {
       "name": "Shove to Intimidation",
       "input": "CH 2+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_138",
       "t7_command": "CH 2+3",
       "t7_hit_level": "mid",
@@ -6350,12 +7020,17 @@
         "CH 2+3"
       ],
       "move_class": "special",
-      "note": "T7 [mid] on block -7 / on hit - / CH STUN"
+      "note": "T7 [mid] on block -7 / on hit - / CH STUN",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 169,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+1,2*": {
       "name": "Tenderizer to Intimidation",
       "input": "d/f+1,2*",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_139",
       "t7_command": "d/f+1, 2*",
       "t7_hit_level": "mid, mid",
@@ -6385,12 +7060,17 @@
           20
         ],
         "total": 33
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+2*": {
       "name": "Blood Moon to Intimidation",
       "input": "d/f+2*",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_140",
       "t7_command": "d/f+2*",
       "t7_hit_level": "mid",
@@ -6412,12 +7092,17 @@
         "d/f+2*"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -14 / on hit LAUNCH / CH LAUNCH"
+      "note": "T7 [mid] on block -14 / on hit LAUNCH / CH LAUNCH",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/f+4,2*": {
       "name": "Front Kick to Temple Smash to Intimidation",
       "input": "d/f+4,2*",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_141",
       "t7_command": "d/f+4, 2*",
       "t7_hit_level": "mid, high",
@@ -6447,12 +7132,17 @@
           20
         ],
         "total": 35
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+2 (must hit)": {
       "name": "Agony to Intimidation",
       "input": "d/b+2 (must hit)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_142",
       "t7_command": "d/b+2 (must hit)",
       "t7_hit_level": "low",
@@ -6474,12 +7164,17 @@
         "d/b+2 (must hit)"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -15 / on hit +2 / CH +2"
+      "note": "T7 [low] on block -15 / on hit +2 / CH +2",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS 1,2*": {
       "name": "Quick Tenderizer to Intimidation",
       "input": "WS 1,2*",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_143",
       "t7_command": "WS 1, 2*",
       "t7_hit_level": "mid",
@@ -6509,12 +7204,17 @@
           20
         ],
         "total": 31
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS 2*": {
       "name": "Malice Impact to Intimidation",
       "input": "WS 2*",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_144",
       "t7_command": "WS 2*",
       "t7_hit_level": "mid",
@@ -6536,12 +7236,17 @@
         "WS 2*"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -16 / on hit STUN / CH STUN"
+      "note": "T7 [mid] on block -16 / on hit STUN / CH STUN",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "INT 1": {
       "name": "NEGAN INT 1",
       "input": "INT 1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_145",
       "t7_command": "INT 1",
       "t7_hit_level": "mid",
@@ -6563,12 +7268,17 @@
         "INT 1"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -4 / on hit +8 / CH +8 | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -4 / on hit +8 / CH +8 | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 41,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "INT 1,2": {
       "name": "Slaughter Strike",
       "input": "INT 1,2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_146",
       "t7_command": "INT 1, 2",
       "t7_hit_level": "mid, mid",
@@ -6598,12 +7308,17 @@
           20
         ],
         "total": 35
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "INT (1),2": {
       "name": "NEGAN INT (1),2",
       "input": "INT (1),2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_147",
       "t7_command": "INT (1), 2",
       "t7_hit_level": "mid",
@@ -6626,12 +7341,17 @@
         "INT (1),2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -11 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -11 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "INT 2": {
       "name": "Beatdown",
       "input": "INT 2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_148",
       "t7_command": "INT 2",
       "t7_hit_level": "mid",
@@ -6653,12 +7373,17 @@
         "INT 2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -14 / on hit KND / CH KND"
+      "note": "T7 [mid] on block -14 / on hit KND / CH KND",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "INT d/f+2": {
       "name": "Blast Off",
       "input": "INT d/f+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_149",
       "t7_command": "INT d/f+2",
       "t7_hit_level": "mid",
@@ -6680,12 +7405,17 @@
         "INT d/f+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -20 / on hit LAUNCH / CH LAUNCH"
+      "note": "T7 [mid] on block -20 / on hit LAUNCH / CH LAUNCH",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "INT d+2": {
       "name": "Terrible Pain",
       "input": "INT d+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_150",
       "t7_command": "INT d+2",
       "t7_hit_level": "low",
@@ -6707,12 +7437,17 @@
         "INT d+2"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -13 / on hit +3 / CH +13"
+      "note": "T7 [low] on block -13 / on hit +3 / CH +13",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "2+3+4": {
       "name": "Let Me In",
       "input": "2+3+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_151",
       "t7_command": "2+3+4",
       "t7_hit_level": "-",
@@ -6734,12 +7469,17 @@
         "2+3+4"
       ],
       "move_class": "strike",
-      "note": "T7 [-] on block - / on hit - / CH -"
+      "note": "T7 [-] on block - / on hit - / CH -",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "f+1+2": {
       "name": "Walker Maker",
       "input": "f+1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_152",
       "t7_command": "f+1+2",
       "t7_hit_level": "mid",
@@ -6761,12 +7501,17 @@
         "f+1+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -15 / on hit LAUNCH / CH LAUNCH"
+      "note": "T7 [mid] on block -15 / on hit LAUNCH / CH LAUNCH",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 108,
+        "match": "true-map input+class (anim-fix 2026-10-23)"
+      }
     },
     "INT 1+2": {
       "name": "Grand Slam",
       "input": "INT 1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_153",
       "t7_command": "INT 1+2",
       "t7_hit_level": "high",
@@ -6788,12 +7533,17 @@
         "INT 1+2"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block -9 / on hit S! / CH S!"
+      "note": "T7 [high] on block -9 / on hit S! / CH S!",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Rage) d+1+2": {
       "name": "Rage Art",
       "input": "(During Rage) d+1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_154",
       "t7_command": "(During Rage) d+1+2",
       "t7_hit_level": "mid",
@@ -6815,12 +7565,17 @@
         "(During Rage) d+1+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -22 / on hit KND / CH KND"
+      "note": "T7 [mid] on block -22 / on hit KND / CH KND",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Rage) b+2+3": {
       "name": "Rage Drive 1",
       "input": "(During Rage) b+2+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_155",
       "t7_command": "(During Rage) b+2+3",
       "t7_hit_level": "mid, mid",
@@ -6842,12 +7597,17 @@
         "(During Rage) b+2+3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid, mid] on block +8 (OC) / on hit STUN / CH -"
+      "note": "T7 [mid, mid] on block +8 (OC) / on hit STUN / CH -",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Rage) b+2+3 (second hit only)": {
       "name": "NEGAN (During Rage) b+2+3 (second hit only)",
       "input": "(During Rage) b+2+3 (second hit only)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_156",
       "t7_command": "(During Rage) b+2+3 (second hit only)",
       "t7_hit_level": "mid",
@@ -6869,12 +7629,17 @@
         "(During Rage) b+2+3 (second hit only)"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block +8 (OC) / on hit STUN / CH STUN | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block +8 (OC) / on hit STUN / CH STUN | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Rage) b+2+3,F": {
       "name": "Rage Drive 2",
       "input": "(During Rage) b+2+3,F",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_157",
       "t7_command": "(During Rage) b+2+3, F",
       "t7_hit_level": "mid, mid",
@@ -6904,12 +7669,17 @@
           10
         ],
         "total": 20
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(During Rage) b+2+3,F (second hit only)": {
       "name": "NEGAN (During Rage) b+2+3,F (second hit only)",
       "input": "(During Rage) b+2+3,F (second hit only)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_158",
       "t7_command": "(During Rage) b+2+3, F (second hit only)",
       "t7_hit_level": "mid",
@@ -6932,12 +7702,17 @@
         "(During Rage) b+2+3,F (second hit only)"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block +6 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block +6 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "(During Rage) b+2+3,B": {
       "name": "Rage Drive 3",
       "input": "(During Rage) b+2+3,B",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_159",
       "t7_command": "(During Rage) b+2+3, B",
       "t7_hit_level": "mid, mid",
@@ -6967,12 +7742,17 @@
           10
         ],
         "total": 20
+      },
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(During Rage) b+2+3,B (second hit only)": {
       "name": "NEGAN (During Rage) b+2+3,B (second hit only)",
       "input": "(During Rage) b+2+3,B (second hit only)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_160",
       "t7_command": "(During Rage) b+2+3, B (second hit only)",
       "t7_hit_level": "mid",
@@ -6995,12 +7775,17 @@
         "(During Rage) b+2+3,B (second hit only)"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -8 / on hit LAUNCH / CH LAUNCH | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -8 / on hit LAUNCH / CH LAUNCH | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d/b+1+2*": {
       "name": "Violent Siege to Intimidation",
       "input": "d/b+1+2*",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_161",
       "t7_command": "d/b+1+2*",
       "t7_hit_level": "high",
@@ -7022,12 +7807,17 @@
         "d/b+1+2*"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block ! / on hit +11 / CH STUN"
+      "note": "T7 [high] on block ! / on hit +11 / CH STUN",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "INT 2+3 (B to cancel)": {
       "name": "Punishment",
       "input": "INT 2+3 (B to cancel)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_162",
       "t7_command": "INT 2+3 (B to cancel)",
       "t7_hit_level": "mid",
@@ -7049,12 +7839,17 @@
         "INT 2+3 (B to cancel)"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block ! / on hit KND / CH KND"
+      "note": "T7 [mid] on block ! / on hit KND / CH KND",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/f+1+2": {
       "name": "No Mercy",
       "input": "u/f+1+2",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_165",
       "t7_command": "Approach enemy... u/f+1+2",
       "t7_hit_level": "high",
@@ -7080,12 +7875,17 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2"
+      "throw_break": "1+2",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 138,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f+1+3": {
       "name": "Dirty Tactics",
       "input": "f+1+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_166",
       "t7_command": "Approach enemy... f+1+3",
       "t7_hit_level": "high",
@@ -7111,12 +7911,17 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 138,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "f+2+4": {
       "name": "Into the Fire",
       "input": "f+2+4",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_167",
       "t7_command": "Approach enemy... f+2+4",
       "t7_hit_level": "high",
@@ -7142,12 +7947,17 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "2"
+      "throw_break": "2",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 138,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "INT 1+3": {
       "name": "Crowbar",
       "input": "INT 1+3",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_171",
       "t7_command": "INT 1+3",
       "t7_hit_level": "high",
@@ -7169,12 +7979,17 @@
         "INT 1+3"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block -15 / on hit KND / CH -"
+      "note": "T7 [high] on block -15 / on hit KND / CH -",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WR f,f,F (Mid Screen)": {
       "name": "NEGAN WR f,f,F (Mid Screen)",
       "input": "WR f,f,F (Mid Screen)",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_172",
       "t7_command": "WR f, f, F (Mid Screen)",
       "t7_hit_level": "mid",
@@ -7198,12 +8013,17 @@
         "WR f,f,F (Mid Screen)"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -5 (BT) / on hit KND / CH - | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [mid] on block -5 (BT) / on hit KND / CH - | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 41,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "(During Tackle) 1": {
       "name": "NEGAN (During Tackle) 1",
       "input": "(During Tackle) 1",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_173",
       "t7_command": "(During Tackle) 1 (or 2)",
       "t7_hit_level": "-",
@@ -7225,10 +8045,15 @@
         "(During Tackle) 1"
       ],
       "move_class": "strike",
-      "note": "T7 [-] on block - / on hit KND / CH - | t7chicken lists no name for this move; labeled by T7 command"
+      "note": "T7 [-] on block - / on hit KND / CH - | t7chicken lists no name for this move; labeled by T7 command",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 41,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1~t7.negan": {
-      "name": "N3GΔTIV0 1",
+      "name": "N3G\u0394TIV0 1",
       "input": "1",
       "startup": 0.167,
       "active": 0.017,
@@ -7249,7 +8074,7 @@
         "1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_2",
       "t7_command": "1",
       "t7_hit_level": "high",
@@ -7259,10 +8084,15 @@
       "t7_on_hit": "+8",
       "t7_on_ch": "+8",
       "merge_source": "t7:negan_2",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "negan",
+        "row": 44,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "2~t7.negan": {
-      "name": "N3GΔTIV0 2",
+      "name": "N3G\u0394TIV0 2",
       "input": "2",
       "startup": 0.183,
       "active": 0.017,
@@ -7283,7 +8113,7 @@
         "2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_21",
       "t7_command": "2",
       "t7_hit_level": "high",
@@ -7293,10 +8123,15 @@
       "t7_on_hit": "+3",
       "t7_on_ch": "+3",
       "merge_source": "t7:negan_21",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "negan",
+        "row": 56,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "2,1~t7.negan": {
-      "name": "N3GΔTIV0 2,1",
+      "name": "N3G\u0394TIV0 2,1",
       "input": "2,1",
       "startup": 0.183,
       "active": 0.017,
@@ -7317,7 +8152,7 @@
         "2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_22",
       "t7_command": "2, 1",
       "t7_hit_level": "high, high",
@@ -7334,10 +8169,15 @@
           12
         ],
         "total": 21
+      },
+      "anim_t3": {
+        "bank": "negan",
+        "row": 41,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3~t7.negan": {
-      "name": "N3GΔTIV0 3",
+      "name": "N3G\u0394TIV0 3",
       "input": "3",
       "startup": 0.217,
       "active": 0.017,
@@ -7358,7 +8198,7 @@
         "3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_36",
       "t7_command": "3",
       "t7_hit_level": "high",
@@ -7368,10 +8208,15 @@
       "t7_on_hit": "+2",
       "t7_on_ch": "+2",
       "merge_source": "t7:negan_36",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "negan",
+        "row": 66,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "4~t7.negan": {
-      "name": "N3GΔTIV0 4",
+      "name": "N3G\u0394TIV0 4",
       "input": "4",
       "startup": 0.2,
       "active": 0.017,
@@ -7392,7 +8237,7 @@
         "4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_37",
       "t7_command": "4",
       "t7_hit_level": "high",
@@ -7402,7 +8247,12 @@
       "t7_on_hit": "+3",
       "t7_on_ch": "+3",
       "merge_source": "t7:negan_37",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "negan",
+        "row": 76,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d/f+2~t7.negan": {
       "name": "Blood Moon",
@@ -7426,7 +8276,7 @@
         "d/f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_58",
       "t7_command": "d/f+2",
       "t7_hit_level": "mid",
@@ -7437,7 +8287,12 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:negan_58",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true
+      "launch": true,
+      "anim_t3": {
+        "bank": "negan",
+        "row": 114,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "u/f+4~t7.negan": {
       "name": "Blunt Force",
@@ -7461,7 +8316,7 @@
         "u/f+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_94",
       "t7_command": "u/f+4",
       "t7_hit_level": "mid",
@@ -7471,7 +8326,12 @@
       "t7_on_hit": "+5",
       "t7_on_ch": "STUN",
       "merge_source": "t7:negan_94",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "anim_t3": {
+        "bank": "negan",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "1+3~t7.negan": {
       "name": "Dirty Tactics",
@@ -7495,7 +8355,7 @@
         "1+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_163",
       "t7_command": "Approach enemy... 1+3",
       "t7_hit_level": "high",
@@ -7507,7 +8367,12 @@
       "merge_source": "t7:negan_163",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Approach enemy..."
+      "input_note": "Approach enemy...",
+      "anim_t3": {
+        "bank": "negan",
+        "row": 41,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "2+4~t7.negan": {
       "name": "Into the Fire",
@@ -7531,7 +8396,7 @@
         "2+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_164",
       "t7_command": "Approach enemy... 2+4",
       "t7_hit_level": "high",
@@ -7543,7 +8408,12 @@
       "merge_source": "t7:negan_164",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Approach enemy..."
+      "input_note": "Approach enemy...",
+      "anim_t3": {
+        "bank": "negan",
+        "row": 41,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "SIDE_L.1+3": {
       "name": "Dirty Tactics",
@@ -7567,7 +8437,7 @@
         "SIDE_L.1+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_168",
       "t7_command": "Approach from left side... 1+3 (or 2+4)",
       "t7_hit_level": "high",
@@ -7579,7 +8449,12 @@
       "merge_source": "t7:negan_168",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Approach from left side... (or 2+4)"
+      "input_note": "Approach from left side... (or 2+4)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "SIDE_R.1+3": {
       "name": "Into the Fire",
@@ -7603,7 +8478,7 @@
         "SIDE_R.1+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_169",
       "t7_command": "Approach from right side... 1+3 (or 2+4)",
       "t7_hit_level": "high",
@@ -7615,7 +8490,12 @@
       "merge_source": "t7:negan_169",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Approach from right side... (or 2+4)"
+      "input_note": "Approach from right side... (or 2+4)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "BACK.1+3": {
       "name": "The End",
@@ -7639,7 +8519,7 @@
         "BACK.1+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "negan_170",
       "t7_command": "Approach from behind... 1+3 (or 2+4)",
       "t7_hit_level": "high",
@@ -7651,10 +8531,15 @@
       "merge_source": "t7:negan_170",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Approach from behind... (or 2+4)"
+      "input_note": "Approach from behind... (or 2+4)",
+      "anim_t3": {
+        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "d/b+1": {
-      "name": "N3GΔTIV0 d/b+1",
+      "name": "N3G\u0394TIV0 d/b+1",
       "input": "d/b+1",
       "startup": 0.167,
       "active": 0.017,
@@ -7676,7 +8561,7 @@
         "d+1"
       ],
       "move_class": "strike",
-      "t7_source": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
+      "t7_source": "rbnorway (tekken-7-frame-data \u2014 T7 community frame data, csv)",
       "t7_move_id": "negan_rbn_001",
       "t7_command": "d/b or d+1",
       "t7_hit_level": "sm",
@@ -7687,10 +8572,15 @@
       "t7_on_ch": "+6",
       "merge_source": "t7:negan_rbn_001",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "rbnorway (tekken-7-frame-data \u2014 T7 community frame data, csv)",
+        "row": 41,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "d+4": {
-      "name": "N3GΔTIV0 d+4",
+      "name": "N3G\u0394TIV0 d+4",
       "input": "d+4",
       "startup": 0.2,
       "active": 0.017,
@@ -7711,7 +8601,7 @@
         "d+4"
       ],
       "move_class": "strike",
-      "t7_source": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
+      "t7_source": "rbnorway (tekken-7-frame-data \u2014 T7 community frame data, csv)",
       "t7_move_id": "negan_rbn_002",
       "t7_command": "d+4",
       "t7_hit_level": "l (TC)",
@@ -7722,10 +8612,15 @@
       "t7_on_ch": "-2",
       "merge_source": "t7:negan_rbn_002",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "rbnorway (tekken-7-frame-data \u2014 T7 community frame data, csv)",
+        "row": 181,
+        "match": "true-map exact (anim-fix 2026-10-23)"
+      }
     },
     "d/b+3": {
-      "name": "N3GΔTIV0 d/b+3",
+      "name": "N3G\u0394TIV0 d/b+3",
       "input": "d/b+3",
       "startup": 0.267,
       "active": 0.017,
@@ -7746,7 +8641,7 @@
         "d/b+3"
       ],
       "move_class": "strike",
-      "t7_source": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
+      "t7_source": "rbnorway (tekken-7-frame-data \u2014 T7 community frame data, csv)",
       "t7_move_id": "negan_rbn_003",
       "t7_command": "d/b+3",
       "t7_hit_level": "l (TC)",
@@ -7757,10 +8652,15 @@
       "t7_on_ch": "-4",
       "merge_source": "t7:negan_rbn_003",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "rbnorway (tekken-7-frame-data \u2014 T7 community frame data, csv)",
+        "row": 60,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/b+1+2": {
-      "name": "N3GΔTIV0 u/b+1+2",
+      "name": "N3G\u0394TIV0 u/b+1+2",
       "input": "u/b+1+2",
       "startup": 0.3,
       "active": 0.017,
@@ -7783,7 +8683,7 @@
         "u/f+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
+      "t7_source": "rbnorway (tekken-7-frame-data \u2014 T7 community frame data, csv)",
       "t7_move_id": "negan_rbn_004",
       "t7_command": "u/b or u or u/f+1+2",
       "t7_hit_level": "m (TJ)",
@@ -7794,10 +8694,15 @@
       "t7_on_ch": "-1",
       "merge_source": "t7:negan_rbn_004",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "rbnorway (tekken-7-frame-data \u2014 T7 community frame data, csv)",
+        "row": 41,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "u+2": {
-      "name": "N3GΔTIV0 u+2",
+      "name": "N3G\u0394TIV0 u+2",
       "input": "u+2",
       "startup": 0.4,
       "active": 0.017,
@@ -7818,7 +8723,7 @@
         "u+2"
       ],
       "move_class": "strike",
-      "t7_source": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
+      "t7_source": "rbnorway (tekken-7-frame-data \u2014 T7 community frame data, csv)",
       "t7_move_id": "negan_rbn_005",
       "t7_command": "u+2",
       "t7_hit_level": "h",
@@ -7830,10 +8735,15 @@
       "merge_source": "t7:negan_rbn_005",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "rbnorway (tekken-7-frame-data \u2014 T7 community frame data, csv)",
+        "row": 56,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "u/f,N,4": {
-      "name": "N3GΔTIV0 u/f,N,4",
+      "name": "N3G\u0394TIV0 u/f,N,4",
       "input": "u/f,N,4",
       "startup": 0.383,
       "active": 0.017,
@@ -7854,7 +8764,7 @@
         "u/f,N,4"
       ],
       "move_class": "string",
-      "t7_source": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
+      "t7_source": "rbnorway (tekken-7-frame-data \u2014 T7 community frame data, csv)",
       "t7_move_id": "negan_rbn_006",
       "t7_command": "u/f, N, 4",
       "t7_hit_level": "m (TJ)",
@@ -7866,10 +8776,15 @@
       "merge_source": "t7:negan_rbn_006",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "rbnorway (tekken-7-frame-data \u2014 T7 community frame data, csv)",
+        "row": 76,
+        "match": "true-map class+limb (anim-fix 2026-10-23)"
+      }
     },
     "WS.4": {
-      "name": "N3GΔTIV0 WS.4",
+      "name": "N3G\u0394TIV0 WS.4",
       "input": "WS.4",
       "startup": 0.183,
       "active": 0.017,
@@ -7890,7 +8805,7 @@
         "WS.4"
       ],
       "move_class": "special",
-      "t7_source": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
+      "t7_source": "rbnorway (tekken-7-frame-data \u2014 T7 community frame data, csv)",
       "t7_move_id": "negan_rbn_007",
       "t7_command": "WS+4",
       "t7_hit_level": "m",
@@ -7901,10 +8816,15 @@
       "t7_on_ch": "+6",
       "merge_source": "t7:negan_rbn_007",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "rbnorway (tekken-7-frame-data \u2014 T7 community frame data, csv)",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "SS.2": {
-      "name": "N3GΔTIV0 SS.2",
+      "name": "N3G\u0394TIV0 SS.2",
       "input": "SS.2",
       "startup": 0.333,
       "active": 0.017,
@@ -7925,7 +8845,7 @@
         "SS.2"
       ],
       "move_class": "special",
-      "t7_source": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
+      "t7_source": "rbnorway (tekken-7-frame-data \u2014 T7 community frame data, csv)",
       "t7_move_id": "negan_rbn_008",
       "t7_command": "SS+2",
       "t7_hit_level": "h",
@@ -7936,10 +8856,15 @@
       "t7_on_ch": "CS",
       "merge_source": "t7:negan_rbn_008",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "rbnorway (tekken-7-frame-data \u2014 T7 community frame data, csv)",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "BT.d+1": {
-      "name": "N3GΔTIV0 BT.d+1",
+      "name": "N3G\u0394TIV0 BT.d+1",
       "input": "BT.d+1",
       "startup": 0.167,
       "active": 0.017,
@@ -7961,7 +8886,7 @@
         "BT.d+2"
       ],
       "move_class": "special",
-      "t7_source": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
+      "t7_source": "rbnorway (tekken-7-frame-data \u2014 T7 community frame data, csv)",
       "t7_move_id": "negan_rbn_009",
       "t7_command": "BT d+1 or d+2",
       "t7_hit_level": "sm",
@@ -7972,10 +8897,15 @@
       "t7_on_ch": "+9",
       "merge_source": "t7:negan_rbn_009",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "rbnorway (tekken-7-frame-data \u2014 T7 community frame data, csv)",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     },
     "BT.d+3": {
-      "name": "N3GΔTIV0 BT.d+3",
+      "name": "N3G\u0394TIV0 BT.d+3",
       "input": "BT.d+3",
       "startup": 0.167,
       "active": 0.017,
@@ -7997,7 +8927,7 @@
         "BT.d+4"
       ],
       "move_class": "special",
-      "t7_source": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
+      "t7_source": "rbnorway (tekken-7-frame-data \u2014 T7 community frame data, csv)",
       "t7_move_id": "negan_rbn_010",
       "t7_command": "BT d+3 or d+4",
       "t7_hit_level": "l",
@@ -8008,7 +8938,12 @@
       "t7_on_ch": "+3",
       "merge_source": "t7:negan_rbn_010",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT"
+      "set": "FIGHT",
+      "anim_t3": {
+        "bank": "rbnorway (tekken-7-frame-data \u2014 T7 community frame data, csv)",
+        "row": 75,
+        "match": "true-map class-only (anim-fix 2026-10-23)"
+      }
     }
   },
   "restored_from_sweep_338": {

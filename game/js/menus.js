@@ -17,6 +17,9 @@ import { lazy, preloadNextFight } from './lazy.js';
 import { voice } from './voice.js';
 import { initMainMenu } from './mainmenu.js';
 import { initVersusSetup } from './versus-setup.js';
+// Clothing layer system (worker 64): per-mesh clothing toggles, in-game.
+import { loadClothingConfig, getLayers, setLayerVisible, isLayerVisible, CLOTHING_CATEGORIES } from './clothing-layers.js';
+
 
 /* ---------------- Settings ---------------- */
 const SETTINGS_KEY = 'wh_settings_v1';
@@ -24,6 +27,9 @@ export const DEFAULT_SETTINGS = {
   master: 0.9, music: 0.28, sfx: 0.85,
   muted: false, quality: 'high', hints: true,
   soundOn: true, jukebox: 'default',
+  // Lane 3 UI gaps (Gap 14 / Gap 21): T7 5.10 tournament lock +
+  // streaming mode toggles, in-fight frame overlay toggle.
+  frameOverlay: false, tournamentLock: false, streamingMode: false,
 };
 export function getSettings() {
   try {
@@ -127,6 +133,44 @@ export function showVs(pChar, eChar, stageName, modeLabel) {
     o.querySelector('.wh-vs-inner').after(st);
   }
   st.textContent = stageName || '';
+  // Lane 3 UI gaps (Gap 15): rank / W-L / connection meta under the
+  // VS cards. Rank resolves async via lazy.ranks (same store mainmenu
+  // reads); W-L is the versusWL record modes.js writes on every
+  // versus bout. Local bouts show LOCAL BOUT — no bars invented.
+  let meta = o.querySelector('.wh-vs-meta');
+  if (!meta) { meta = document.createElement('div'); meta.className = 'wh-vs-meta'; o.appendChild(meta); }
+  meta.textContent = '';
+  (async () => {
+    try {
+      const { vsMetaLines, readVersusWL } = await import('./ui-gaps.js');
+      const rec = JSON.parse(localStorage.getItem('wh_records') || '{}');
+      let rankName = null;
+      try {
+        const r = await lazy.ranks(); await r.initRanks();
+        const store = JSON.parse(localStorage.getItem('wh_ranks') || '{}');
+        let best = -1;
+        for (const track of ['offline', 'online']) {
+          const tt = store[track] || {};
+          for (const id of Object.keys(tt)) { const fr = tt[id]; if (fr && fr.tierId) best = Math.max(best, r.tierIndexById(fr.tierId)); }
+        }
+        if (best >= 0) rankName = r.displayName(r.tierAt(best));
+      } catch { /* rank stays blank */ }
+      const wl = readVersusWL(rec);
+      meta.textContent = vsMetaLines({ rankName, wins: wl ? wl.w : null, losses: wl ? wl.l : null, connection: null }).join(' · ');
+      // Lane 3 UI gaps (Gap 15, versus-banter UI side): banter data
+      // existed (versus-banter.js) but no screen rendered it. The VS
+      // screen now shows the picked exchange under the cards.
+      try {
+        const vb = await import('./versus-banter.js');
+        const pick = await vb.pickVersusBanter(pChar && pChar.id, eChar && eChar.id);
+        if (pick && pick.kind === 'banter' && pick.variant && pick.variant.beats) {
+          let ban = o.querySelector('.wh-vs-banter');
+          if (!ban) { ban = document.createElement('div'); ban.className = 'wh-vs-banter'; o.appendChild(ban); }
+          ban.textContent = pick.variant.beats.map((b) => `${String(b.speaker || '').toUpperCase()}: ${b.line}`).join('  ·  ');
+        }
+      } catch { /* banter stays blank, VS screen still works */ }
+    } catch { /* meta stays blank, VS screen still works */ }
+  })();
   o.classList.remove('hide');
   o.classList.add('show');
 }
@@ -140,7 +184,10 @@ export function hideVs() {
 /* ---------------- Pause ---------------- */
 export function pauseGame() {
   const g = window.__game;
-  if (!g || !g.running || g.paused) return;
+  if (!g || g.paused) return;
+  // Brawler (worker 20): the descent pauses too (game.running is false
+  // while the brawler owns the sim).
+  if (!g.running && !g.brawler) return;
   g.pause(true);
   const o = document.getElementById('wh-pause');
   if (o) o.classList.add('show');
@@ -150,7 +197,7 @@ export function resumeGame() {
   const g = window.__game;
   const o = document.getElementById('wh-pause');
   if (o) o.classList.remove('show');
-  if (g && g.running) g.pause(false);
+  if (g && (g.running || g.brawler)) g.pause(false);
   audio.uiClick && audio.uiClick();
 }
 export function quitToMenu() {
@@ -228,11 +275,73 @@ export function openOptions() {
   sheet.insertBefore(segRow('JUKEBOX', 'jukebox',
     [['default', 'STAGE ROTATION'], ['cape-jones', 'CAPE JONES'], ['nosferatu', 'NOSFERATU']]), back);
   sheet.insertBefore(toggleRow('CONTROL HINTS', 'hints'), back);
+  // Lane 3 UI gaps (Gap 14 / Gap 21).
+  sheet.insertBefore(toggleRow('FRAME DATA OVERLAY (IN FIGHT)', 'frameOverlay'), back);
+  sheet.insertBefore(toggleRow('TOURNAMENT LOCK (NO FAVORITES / ATTIRE)', 'tournamentLock'), back);
+  sheet.insertBefore(toggleRow('STREAMING MODE (FIGHTER NAME, NO PLAYER ID)', 'streamingMode'), back);
   o.classList.add('show');
   audio.uiClick && audio.uiClick();
 }
 export function closeOptions() {
   const o = document.getElementById('wh-options');
+  if (o) o.classList.remove('show');
+}
+
+/* ---------------- Clothing (worker 64) ----------------
+   In-game clothing layers: nested in the pause menu per the integration
+   law (no new screen — a sheet like OPTIONS). Lists P1/P2's registered
+   clothing layers with live toggles; choices persist per attire
+   (wh_clothing_v1) and apply to the live fight instances immediately. */
+function clothingModelKeyOf(fighter) {
+  return (fighter && fighter.char && fighter.char.model) || 'pantera';
+}
+export async function openClothing() {
+  const o = document.getElementById('wh-clothing');
+  if (!o) return;
+  const list = o.querySelector('.wh-clothing-list');
+  list.innerHTML = '<div class="wh-sub">loading layers…</div>';
+  const g = window.__game;
+  const fighters = g && g.p1 && g.p2 ? [g.p1, g.p2] : [];
+  await loadClothingConfig();
+  list.innerHTML = '';
+  if (!fighters.length) {
+    list.innerHTML = '<div class="wh-sub">No fight running.</div>';
+  }
+  for (const f of fighters) {
+    const key = clothingModelKeyOf(f);
+    const layers = getLayers(key);
+    const name = (f.char && (f.char.name || f.char.id) || key).toUpperCase();
+    const head = el('div', 'wh-sub', `<b>${esc(name)}</b>`);
+    head.style.marginTop = '10px';
+    list.appendChild(head);
+    if (!layers.length) {
+      list.appendChild(el('div', 'wh-sub', 'No clothing layers registered for this attire yet.'));
+      continue;
+    }
+    for (const l of layers) {
+      const cat = CLOTHING_CATEGORIES[l.category] || (l.category || '').toUpperCase();
+      const vis = isLayerVisible(f.model, key, l.label);
+      const row = el('div', 'wh-toggle' + (vis ? ' on' : ''),
+        `<span>${esc(l.display || l.label)}<small> · ${esc(cat)} · ${esc(l.label)}</small></span><span class="pill"></span>`);
+      row.setAttribute('role', 'switch');
+      row.setAttribute('aria-checked', vis ? 'true' : 'false');
+      row.addEventListener('click', () => {
+        audio.uiClick && audio.uiClick();
+        const now = !row.classList.contains('on');
+        const res = setLayerVisible(f.model, key, l.label, now);
+        if (res.error) { console.warn('[WH] clothing toggle:', res.error); return; }
+        row.classList.toggle('on', now);
+        row.setAttribute('aria-checked', now ? 'true' : 'false');
+      });
+      list.appendChild(row);
+    }
+  }
+  document.getElementById('wh-pause').classList.remove('show');
+  o.classList.add('show');
+  audio.uiClick && audio.uiClick();
+}
+export function closeClothing() {
+  const o = document.getElementById('wh-clothing');
   if (o) o.classList.remove('show');
 }
 
@@ -329,8 +438,17 @@ function buildOverlays() {
         <h2>PAUSED</h2>
         <div class="wh-sub">The shrine holds its breath.</div>
         <button class="btn-primary" data-wh="resume">RESUME</button>
+        <button class="btn-ghost" data-wh="pause-clothing">CLOTHING</button>
         <button class="btn-ghost" data-wh="pause-options">OPTIONS</button>
         <button class="btn-ghost" data-wh="quit">QUIT TO MENU</button>
+      </div>
+    </div>
+    <div id="wh-clothing" role="dialog" aria-label="Clothing">
+      <div class="wh-sheet">
+        <h2>CLOTHING</h2>
+        <div class="wh-sub">Take off / put on each fighter's layers — live, saved per attire</div>
+        <div class="wh-clothing-list"></div>
+        <button class="btn-primary" data-wh="back" style="width:100%;margin-top:14px;min-height:48px;">BACK</button>
       </div>
     </div>
     <div id="wh-options" role="dialog" aria-label="Options">
@@ -377,17 +495,18 @@ function buildOverlays() {
   // Overlay button wiring
   document.querySelector('[data-wh="resume"]').addEventListener('click', resumeGame);
   document.querySelector('[data-wh="quit"]').addEventListener('click', quitToMenu);
+  document.querySelector('[data-wh="pause-clothing"]').addEventListener('click', openClothing);
   document.querySelector('[data-wh="pause-options"]').addEventListener('click', () => {
     document.getElementById('wh-pause').classList.remove('show');
     openOptions();
   });
-  document.querySelectorAll('#wh-options [data-wh="back"], #wh-records [data-wh="back"]')
+  document.querySelectorAll('#wh-options [data-wh="back"], #wh-records [data-wh="back"], #wh-clothing [data-wh="back"]')
     .forEach((b) => b.addEventListener('click', () => {
       audio.uiClick && audio.uiClick();
-      closeOptions(); closeRecords();
+      closeOptions(); closeRecords(); closeClothing();
       // If we came from pause, go back to pause.
       const g = window.__game;
-      if (g && g.running && g.paused && !document.getElementById('wh-pause').classList.contains('show')) {
+      if (g && (g.running || g.brawler) && g.paused && !document.getElementById('wh-pause').classList.contains('show')) {
         document.getElementById('wh-pause').classList.add('show');
       }
     }));
@@ -632,6 +751,9 @@ export function initMenus(deps = {}) {
     const h = document.getElementById('control-hints');
     if (h) h.classList.add('fade');
   }
+  // Lane 3 UI gaps: favorites bar, frame overlay, gallery/jukebox/
+  // replay screens (dynamic import — never blocks menu boot).
+  import('./ui-gaps.js').then((m) => m.initUiGaps()).catch(() => {});
 }
 
 /* Track char-card taps (capture phase) so standalone modes know the pick.
