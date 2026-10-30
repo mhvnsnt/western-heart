@@ -280,3 +280,24 @@ Batch 3/4 lanes must use the corrected definition. 0 steps
 SUSPENDED-DRIFT (none of the 3 row-changed moves falls in Batch 2 scope).
 T8-sourced prefixes with no T3 row get their correct clips from #988
 Step 2 (original T8 refs), never from a T3 row recorded as correct.
+
+## Demonio Batch 3 fallback (mixed-pair strings, 2026-10-25)
+Verified rows 220/195/251/252/258/103/54/67/56/69/55/68/80/207 are FALLBACK
+(T3 jin rows), to be re-matched to T7 Jin rows when extraction lands.
+Review candidates 199/257 are NOT fallback — held evidence, not wired or
+played. Rejected rows (208/185/216/184/204/254/256/179/197/34/33) are NOT
+fallback — rejected evidence, not wired or held. Jin-bank rules carried
+from Batch 1 (documented in
+docs/movesets/DEMONIO-BATCH3-STEP-PLANS-2026-10-25.md): jin row 220 is a
+standing RP2 row (not blanket-banned; exercised here — 2,4 step 1
+verifies on it) and jin row 35 is starts-airborne (no Batch 3 step plays
+row 35). Jin row 216 is a jump row on the jin bank (not king row 216
+dash Konvict Kick) — the 1+4,b+1 last-step candidate 216 is rejected on
+button 0 and airborne stance. Canonicalization (corrected rule, carried
+from Batch 2): only a trailing source-variant suffix is stripped, so
+1,3~3, 1,3~3,d/f+3, WS.1,3~3, ws1,3~3, d/f+1,4~4 and df+1,4~4 are all OWN
+Batch 3 canonicals; Batch 4 carry-forwards 2,1,4~4 and 4~3,H.1+2 are
+excluded. 5 steps SUSPENDED-DRIFT (step-1 prefix move 1 ROW-CHANGED
+41->None) — never wired on stale data. T8-sourced prefixes with no T3
+row get their correct clips from #988 Step 2 (original T8 refs), never
+from a T3 row recorded as correct.
