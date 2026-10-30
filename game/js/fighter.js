@@ -1321,6 +1321,7 @@ export class Fighter {
       sidestep: this.state === 'sidestep',
       crouching: this.state === 'crouch' || st === 'FC',
       rising: this._risingT > 0,
+      airborne: !this.onGround, // Tekken jump attacks resolve from AIR. while this holds
       rage: !this._rageUsed && this.hp > 0 && this.hp <= this.maxHp * 0.25,
       urgeOn: !!this._urgeOn,
       urgeAvailable: !this._urgeUsed && !this._urgeOn && this.hp > 0,

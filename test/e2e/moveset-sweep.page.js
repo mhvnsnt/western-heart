@@ -73,6 +73,13 @@
       case 'SS': f.trySidestep(-1); step(12); return 'sidestep';
       case 'WR': setDir('f'); step(3); setDir('n'); step(3); setDir('f'); step(24); return 'running (f,f then hold f)';
       case 'BT': f.stance = 'BT'; f.stanceT = 0; return 'back turned';
+      // AIR. rows: Tekken jump attacks are pressed while airborne, so jump first (hold u
+      // past the 200 ms tap/sidestep window in input.js) and press only once airborne.
+      // The peak of a forward jump is not a state the engine models: a peak row is
+      // witnessed airborne, and that residual is written in the WORKLOG, not hidden.
+      case 'AIR': setDir('u'); { let k = 0; while (k++ < 60 && (f.onGround || f.state !== 'jump')) step(1); }
+        if (f.onGround) { f.tryJump(); step(2); }
+        return f.onGround ? 'jump did not leave the ground' : 'jumped (airborne)';
       // batch 8: side / back throws — stand off the opponent's line at their left / right (z), or
       // behind them facing their back, so fighter._foeFlank() reports L / R / B
       case 'FLANK_L': case 'FLANK_R': {

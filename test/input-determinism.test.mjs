@@ -21,7 +21,7 @@ try { M.setInputTables(JSON.parse(readFileSync(join(msDir, 't3_input_tables.json
 
 const BTN = /^[1-4](?:\+[1-4])*$/;
 const DIR = /^(d\/f|d\/b|u\/f|u\/b|f|b|u|d)$/i;
-const CTX = { 'FC.': { crouching: true }, 'WS.': { rising: true }, 'SS.': { sidestep: true }, 'BT.': { backturned: true }, 'R.': { rage: true } };
+const CTX = { 'FC.': { crouching: true }, 'WS.': { rising: true }, 'SS.': { sidestep: true }, 'BT.': { backturned: true }, 'R.': { rage: true }, 'AIR.': { airborne: true } };
 
 function feed(buf, dir, frames = 4) { for (let i = 0; i < frames; i++) buf.noteDirection(dir); }
 function fire(buf, btn, ctx) { return BTN.test(btn) && btn.includes('+') ? buf.pressChord(btn, ctx) : buf.press(btn, ctx); }

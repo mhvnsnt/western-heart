@@ -3716,3 +3716,47 @@ No bucket exists yet — nothing uploaded to R2, no account created.
 - Still open, stated plainly: a live full-fight sweep trace for SS.2,U is the final
   end-to-end confirmation and has not been produced; this test proves the upgrade
   mechanism + hold duration, not a rendered fight. Deletions: none.
+
+## 2026-10-29 — Dio's 9 During-Jump failures: AIR. airborne prefix
+- What: T7 jump attacks now canonicalise to an `AIR.` prefix the input buffer resolves
+  only while the fighter is airborne — the same pattern as `R.` for rage and `FC.` /
+  `WS.` / `SS.` / `BT.` for their states. `game/js/movesets.js` canonNotation maps
+  `(During Jump) X`, `(During Forward or Backward Jump) X` and
+  `(During Forward Jump Peak) X` to `AIR.X`; `TekkenBuffer` (`_pressV2` and
+  `_pressLegacy`) tries `AIR.` ahead of the plain input when `ctx.airborne` holds;
+  `game/js/fighter.js` `_inputCtx` now reports `airborne: !this.onGround`.
+  `test/e2e/moveset-sweep.page.js` setup gains an `AIR` case: hold u past input.js's
+  200 ms tap/sidestep window, press only once airborne (with a direct `tryJump`
+  fallback and an honest 'jump did not leave the ground' setup note if it never
+  leaves). `test/input-determinism.test.mjs` maps `AIR.` to `{ airborne: true }`.
+- Why: 9 of Dio's 12 rows in docs/proof/moveset-sweep-20261028/r17-core8-failing.json
+  never parsed — the sweep returned 'unparsed' for every one. Two separate causes
+  were found in the code, not assumed: (1) the alternatives rule in canonNotation
+  (`or` = either/or input list) cut `(During Forward or Backward Jump)` to
+  `(During Forward` before the jump rule ever saw it — the `or` there is part of
+  the context name, so the AIR. mapping now runs BEFORE that rule; (2) the
+  `(during X)` rule deliberately left every jump name unchanged and the final
+  paren-strip then produced `During Jump qcf+1`, which parse() rejects. The AIR.
+  prefix also fixes a real gameplay collision the old spellings hid: Dio's ground
+  qcf+1 Hadoken and his air qcf+1 Zanku Hadoken are the same bare input, told
+  apart only by airborne state — a plain `qcf+1` slot could only ever serve one.
+  Vertical-jump rows (`(During Vertical Jump) 1` -> `u+1`) already passed and are
+  untouched, guarded by a regression assertion in the new test.
+- Proof: new `test/air-moves.test.mjs` — canon outputs for all 9 rows plus the
+  vertical and non-jump guards; `AIR.` slots coexisting with ground slots without
+  overwriting; the resolver picking `AIR.1` / `AIR.qcf+1` only with
+  `{ airborne: true }` and the ground move otherwise. Run locally against the
+  exact edited files (node --test): 4/4 pass; the neighbouring
+  state-gated-notation and annotated-notation tests also pass unchanged (4/4).
+  CI's game-unit-tests run on the PR head is the merge arbiter, as with PR #1234.
+- Still open, stated plainly: (a) a live full-fight sweep trace for the 9 rows is
+  the final end-to-end confirmation and has not been produced — the sweep-page
+  `AIR` setup above is the harness side of it, and the next sweep run is the
+  witness; (b) the forward-jump PEAK is not a state the engine models, so a peak
+  row fires anywhere airborne (the sweep witnesses it airborne; peak-only timing
+  is a documented residual, in the same class as the `near`/`far` notes canon
+  already drops); (c) Dio's other 3 rows are NOT in this PR — `DFLIP N` (no
+  button in the row; its real input is unclear and will not be invented),
+  `(During Rage) 1,1,f,3,2` (parses to `R.1,1,f,3,2`; failure is downstream and
+  needs trace evidence), `f,d,d/f+2,1+2,f,f (first hit only)` (trailing `f,f`
+  dir-only tail; needs trace evidence). Deletions: none.
