@@ -7,7 +7,7 @@
 //     label is assigned to any clip (the bank carries slot IDs, not names).
 //  2. WHAudio postEvent slices cue ranges and no-ops on missing banks.
 //  3. Jukebox pools: Cape Jones cycle [main, ...battle pool], Nosferatu
-//     id order, default delegates (null), pending flags present.
+//     id order, default delegates (null), pending-stage flag present (arena).
 //  4. Announcer manifest covers all 11 round/fight calls, all
 //     subtitle-only placeholders (NEEDS RECORDING — no audio invented).
 //  5. Text checks on the surgical edits: SOUND toggle + JUKEBOX row +
@@ -108,7 +108,8 @@ const nos = pools.pools.find((p) => p.id === 'nosferatu');
 ok(cape && cape.mainTrack.id === 'ghost-surf-rock', 'cape-jones main track is Ghost Surf Rock');
 ok(cape.mainTrack.license === 'CC0-1.0' && cape.mainTrack.durationSeconds === 247, 'ghost track: CC0, 247 s (04:07, Free Music Archive)');
 ok(cape.stage === 'cape-jones-arena' && /pending-stage/.test(cape.stageStatus), 'cape arena stage flagged pending-stage (no such stage on main)');
-ok(/pending-file/.test(cape.mainTrack.status), 'ghost track file flagged pending-file (bytes not in repo)');
+ok(!/pending-file/.test(cape.mainTrack.status) && cape.mainTrack.file === 'assets/music/ghost-surf-rock.mp3',
+  'ghost track file landed at assets/music/ghost-surf-rock.mp3 (pool resolves to the real file, no pending-file fallback)');
 ok(nos && nos.trackIds.length === 25 && nos.trackIds[0] === 'nos-t01' && nos.trackIds[24] === 'nos-t25',
   'nosferatu pool references nos-t01..nos-t25 (PR #1030), nothing duplicated');
 const lib = [

@@ -2,6 +2,8 @@
 # publish directory (game/), which is where Netlify reads redirect/rewrites
 # for post-processing — the matching [[redirects]] in game/netlify.toml are
 # kept in sync as the base-dir copy.
+# /stages/* (2026-10-24, Cape Jones arenas): mirrors the netlify.toml rule
+# so the future stages/cape-house/living-room.glb resolves on Netlify.
 # The Netlify site publishes game/ as its root, but fighter models and other
 # runtime files live outside game/ on the gh-pages layout (roster/,
 # customization/, packages/, game/ refs). These 200 proxy rewrites make those
@@ -11,3 +13,4 @@
 /customization/*  https://mhvnsnt.github.io/western-heart/customization/:splat  200
 /packages/*  https://mhvnsnt.github.io/western-heart/packages/:splat  200
 /game/*  https://mhvnsnt.github.io/western-heart/game/:splat  200
+/stages/*  https://mhvnsnt.github.io/western-heart/stages/:splat  200
