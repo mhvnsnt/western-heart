@@ -1,0 +1,33 @@
+name: build-itch-zip
+# Builds the itch.io trimmed HTML5 zip from current main and stores it
+# on the wh-itch-trimmed-v2 release, so the deployable itch build never
+# depends on a local machine. See tools/deploy/REPUBLISH.md.
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  itch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build itch tree (caps enforced by the builder)
+        run: python3 tools/deploy/build_pages.py --ref HEAD --itch --out itch-out
+      - name: Zip the trimmed build
+        run: |
+          (command -v zip >/dev/null || (sudo apt-get update && sudo apt-get install -y zip))
+          cd itch-out && zip -r ../wh-itch-trimmed.zip . -x deploy-manifest.json .deploy-files.txt
+      - name: Measure
+        run: |
+          ls -la wh-itch-trimmed.zip
+          sha256sum wh-itch-trimmed.zip | tee wh-itch-trimmed.zip.sha256
+      - name: Upload to release wh-itch-trimmed-v2
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create wh-itch-trimmed-v2 \
+            --title "Western Heart itch trimmed build v2" \
+            --notes "Trimmed HTML5 build for the itch.io draft project, built by the build-itch-zip workflow from main. See tools/deploy/REPUBLISH.md." \
+            || true
+          gh release upload wh-itch-trimmed-v2 wh-itch-trimmed.zip wh-itch-trimmed.zip.sha256 --clobber
