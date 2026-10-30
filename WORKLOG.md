@@ -3785,7 +3785,7 @@ No bucket exists yet — nothing uploaded to R2, no account created.
   input'). CI's game-unit-tests run on the PR head is the merge arbiter, as with
   PR #1234 / #1238. Deletions: none.
 
-## 2026-10-30 — Deathfang saika: 'during X' canon accepts motion-start follow-ups (PR #TBD)
+## 2026-10-30 — Deathfang saika: 'during X' canon accepts motion-start follow-ups (PR #1240)
 - What: `game/js/movesets.js` canonNotation's no-paren 'during X' rule gains motion starts
   (qcf/qcb/hcf/hcb/dp) in its lookahead, next to the existing direction/button starts.
   Deathfang's saika input 'during Ya Otome, qcf,qcf,qcf,qcf+1+2' used to fall through that
