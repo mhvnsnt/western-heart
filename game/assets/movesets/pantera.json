@@ -654,7 +654,7 @@
       "input_lp": "TACKLE.LP1,LP1,LP1,LP1"
     }
   ],
-  "string_step_plans": {
+  "string_step_plans":   {
     "law": "Batch 1 step plans (Pantera LP1/RP2-only strings, 2026-10-24). Engine: fighter.js _attackClipPlan step-plan branch. A step plays its row ONLY when status is verified (button bitmask + stance + throw gates pass). review/unmapped steps play NO bank row - never a donor/generic row - and are flagged in _atkPlan.unmapped. T3 rows here are FALLBACK (see docs/anim/PROCEDURAL_AUDIT.md Batch-1 entry): T7 King clip bytes for 0x8000 moves are unresolved, so T3 step rows stand in until T7 extraction lands, then re-match. Rows 35/220 are NEVER verified for standing-context steps. Full gate evidence (hit_frames + FK peaks) in docs/movesets/BATCH1-STEP-PLANS-2026-10-24.md.",
     "plans": {
       "1+2,1": {
@@ -663,30 +663,34 @@
             "step": "1+2",
             "prefix": "1+2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 223,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 223 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
             "step": "1",
             "prefix": "1+2,1",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 209,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 209 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           }
         ],
-        "string_status": "unmapped-all",
+        "string_status": "review-only",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
-        "last_step_status": "unmapped"
+        "last_step_status": "review"
       },
       "1,1": {
         "steps": [
@@ -734,11 +738,13 @@
             "step": "2",
             "prefix": "1,2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 98,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 98 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           }
         ],
@@ -746,7 +752,7 @@
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
-        "last_step_status": "unmapped"
+        "last_step_status": "review"
       },
       "1,2,1": {
         "steps": [
@@ -763,22 +769,26 @@
             "step": "2",
             "prefix": "1,2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 98,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 98 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
             "step": "1",
             "prefix": "1,2,1",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 198,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 198 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           }
         ],
@@ -786,7 +796,7 @@
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
-        "last_step_status": "unmapped"
+        "last_step_status": "review"
       },
       "2,1": {
         "steps": [
@@ -833,11 +843,13 @@
             "step": "2",
             "prefix": "1,2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 98,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 98 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           }
         ],
@@ -845,7 +857,7 @@
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
-        "last_step_status": "unmapped"
+        "last_step_status": "review"
       },
       "WS.2,2": {
         "steps": [
@@ -975,30 +987,34 @@
             "step": "b+2",
             "prefix": "b+2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 99,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 99 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
             "step": "1",
             "prefix": "b+2,1",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 199,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 199 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           }
         ],
-        "string_status": "unmapped-all",
+        "string_status": "review-only",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
-        "last_step_status": "unmapped"
+        "last_step_status": "review"
       },
       "b+2,1+2": {
         "steps": [
@@ -1006,30 +1022,32 @@
             "step": "b+2",
             "prefix": "b+2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 99,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 99 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
             "step": "1+2",
             "prefix": "b+2,1+2",
-            "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "row": 97,
+            "status": "verified",
+            "candidate_row": 97,
+            "candidate_source": "job3-match_search",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "Job 3 match_search (GPU jobs 1-6 ingest 2026-10-25): king row 97, EXACT level (filed h, played h), standing->standing, FULL provenance. Provenance caveat: row 97's visible provenance string is moveset_pantera:d+1+2(2+LP+RP) - a different chord input (d+1+2, not b+2,1+2), matching by button class (LP1+RP2 chord) per the match_search provenance rule. Step identity rests on the target key (b+2,1+2) matching the step prefix exactly, not on the provenance input. Also-ran king row 143 SOFT-filed loses on exact-level priority. T3 FALLBACK row (docs/anim/PROCEDURAL_AUDIT.md); re-match to T7 King row when extraction lands."
             ]
           }
         ],
-        "string_status": "unmapped-all",
+        "string_status": "partial",
         "triage": "NO-ROW",
         "jumping_context": false,
-        "last_step_row": null,
-        "last_step_status": "unmapped"
+        "last_step_row": 97,
+        "last_step_status": "verified"
       },
       "d+1+2,2": {
         "steps": [
@@ -1129,9 +1147,10 @@
             "row": null,
             "status": "review",
             "candidate_row": 257,
-            "candidate_source": "recorded-dest",
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no in-window peak on ['armL'] in approx npz window [11,15] (peaks {'armL': [], 'armR': [6, 13], 'legL': [], 'legR': []})"
+              "identity branch-proven: GRE tekken3/movesets/moveset_king.json branch graph (see research doc)",
+              "FK soft gate already run by Batch 1 and failed narrowly - stays REVIEW until adjudication + play-verify"
             ]
           }
         ],
@@ -1176,9 +1195,10 @@
             "row": null,
             "status": "review",
             "candidate_row": 257,
-            "candidate_source": "prefix-move",
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no in-window peak on ['armL'] in approx npz window [11,15] (peaks {'armL': [], 'armR': [6, 13], 'legL': [], 'legR': []})"
+              "identity branch-proven: GRE tekken3/movesets/moveset_king.json branch graph (see research doc)",
+              "FK soft gate already run by Batch 1 and failed narrowly - stays REVIEW until adjudication + play-verify"
             ]
           },
           {
@@ -1187,9 +1207,10 @@
             "row": null,
             "status": "review",
             "candidate_row": 258,
-            "candidate_source": "recorded-dest",
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no in-window peak on ['armR'] in approx npz window [6,11] (peaks {'armL': [], 'armR': [5], 'legL': [22], 'legR': []})"
+              "identity branch-proven: GRE tekken3/movesets/moveset_king.json branch graph (see research doc)",
+              "FK soft gate already run by Batch 1 and failed narrowly - stays REVIEW until adjudication + play-verify"
             ]
           }
         ],
@@ -1236,11 +1257,13 @@
             "step": "d/b+1+2",
             "prefix": "d/b+1+2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": 286,
-            "candidate_source": "prefix-move",
+            "status": "review",
+            "candidate_row": 131,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "throw flag 1 (row 286)"
+              "real row found via T3 King branch graph: row 131 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
@@ -1267,9 +1290,10 @@
             "row": null,
             "status": "review",
             "candidate_row": 117,
-            "candidate_source": "prefix-move",
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no in-window peak on ['armL'] in approx npz window [13,18] (peaks {'armL': [12], 'armR': [9], 'legL': [], 'legR': []})"
+              "identity branch-proven: GRE tekken3/movesets/moveset_king.json branch graph (see research doc)",
+              "FK soft gate already run by Batch 1 and failed narrowly - stays REVIEW until adjudication + play-verify"
             ]
           },
           {
@@ -1325,30 +1349,34 @@
             "step": "f+2",
             "prefix": "f+2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 111,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 111 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
             "step": "1",
             "prefix": "f+2,1",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 198,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 198 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           }
         ],
-        "string_status": "unmapped-all",
+        "string_status": "review-only",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
-        "last_step_status": "unmapped"
+        "last_step_status": "review"
       },
       "f+2,1,1": {
         "steps": [
@@ -1356,22 +1384,26 @@
             "step": "f+2",
             "prefix": "f+2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 111,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 111 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
             "step": "1",
             "prefix": "f+2,1",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 198,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 198 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
@@ -1380,9 +1412,10 @@
             "row": null,
             "status": "review",
             "candidate_row": 257,
-            "candidate_source": "prefix-move",
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no in-window peak on ['armL'] in approx npz window [11,15] (peaks {'armL': [], 'armR': [6, 13], 'legL': [], 'legR': []})"
+              "identity branch-proven: GRE tekken3/movesets/moveset_king.json branch graph (see research doc)",
+              "FK soft gate already run by Batch 1 and failed narrowly - stays REVIEW until adjudication + play-verify"
             ]
           }
         ],
@@ -1398,22 +1431,26 @@
             "step": "f+2",
             "prefix": "f+2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 111,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 111 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
             "step": "1",
             "prefix": "f+2,1",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 198,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 198 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
@@ -1422,9 +1459,10 @@
             "row": null,
             "status": "review",
             "candidate_row": 257,
-            "candidate_source": "prefix-move",
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no in-window peak on ['armL'] in approx npz window [11,15] (peaks {'armL': [], 'armR': [6, 13], 'legL': [], 'legR': []})"
+              "identity branch-proven: GRE tekken3/movesets/moveset_king.json branch graph (see research doc)",
+              "FK soft gate already run by Batch 1 and failed narrowly - stays REVIEW until adjudication + play-verify"
             ]
           },
           {
@@ -1433,9 +1471,10 @@
             "row": null,
             "status": "review",
             "candidate_row": 258,
-            "candidate_source": "prefix-move",
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no in-window peak on ['armR'] in approx npz window [6,11] (peaks {'armL': [], 'armR': [5], 'legL': [22], 'legR': []})"
+              "identity branch-proven: GRE tekken3/movesets/moveset_king.json branch graph (see research doc)",
+              "FK soft gate already run by Batch 1 and failed narrowly - stays REVIEW until adjudication + play-verify"
             ]
           }
         ],
@@ -1451,11 +1490,13 @@
             "step": "f+2",
             "prefix": "f+2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 111,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 111 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
@@ -1470,7 +1511,7 @@
             ]
           }
         ],
-        "string_status": "unmapped-all",
+        "string_status": "review-only",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
@@ -1482,11 +1523,13 @@
             "step": "f+2",
             "prefix": "f+2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 111,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 111 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
@@ -1512,7 +1555,7 @@
             ]
           }
         ],
-        "string_status": "unmapped-all",
+        "string_status": "review-only",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
@@ -1584,13 +1627,16 @@
           {
             "step": "u/b+1",
             "prefix": "u/b+1",
-            "row": null,
-            "status": "unmapped",
-            "candidate_row": 37,
-            "candidate_source": "prefix-move",
+            "row": 49,
+            "status": "verified",
+            "candidate_row": 49,
+            "candidate_source": "job3-match_search",
             "reasons": [
-              "button 3 != step bits 1"
-            ]
+              "SOFT fill, never verified-exact: Job 3 match_search 4-way SOFT tie (king rows 36/47/48/49, all filed h / played m, jump->jump, FULL provenance). Row 49 recommended: strongest provenance (u/b+1,1~t3.king.3 - a move with u/b+1 as first step); rows 47/48 cite different directionals (u+1, u/f+1), row 36 cites u/f+1 and f. T3 FALLBACK row; re-match to T7 King row when extraction lands. Reverts to UNMAPPED if play-verify fails.",
+              "Prior rejected candidate: row 37 (prefix-move), button 3 != step bits 1."
+            ],
+            "soft": true,
+            "soft_note": "SOFT: filed h / played m; 4-way tie broken on provenance only; not verified-exact. Reverts to UNMAPPED if play-verify fails."
           },
           {
             "step": "1",
@@ -1605,7 +1651,7 @@
             ]
           }
         ],
-        "string_status": "partial",
+        "string_status": "verified-all",
         "triage": "REVIEW",
         "jumping_context": true,
         "last_step_row": 40,
@@ -1616,13 +1662,16 @@
           {
             "step": "u/b+1",
             "prefix": "u/b+1",
-            "row": null,
-            "status": "unmapped",
-            "candidate_row": 37,
-            "candidate_source": "prefix-move",
+            "row": 49,
+            "status": "verified",
+            "candidate_row": 49,
+            "candidate_source": "job3-match_search",
             "reasons": [
-              "button 3 != step bits 1"
-            ]
+              "SOFT fill, never verified-exact: Job 3 match_search 4-way SOFT tie (king rows 36/47/48/49, all filed h / played m, jump->jump, FULL provenance). Row 49 recommended: strongest provenance (u/b+1,1~t3.king.3 - a move with u/b+1 as first step); rows 47/48 cite different directionals (u+1, u/f+1), row 36 cites u/f+1 and f. T3 FALLBACK row; re-match to T7 King row when extraction lands. Reverts to UNMAPPED if play-verify fails.",
+              "Prior rejected candidate: row 37 (prefix-move), button 3 != step bits 1."
+            ],
+            "soft": true,
+            "soft_note": "SOFT: filed h / played m; 4-way tie broken on provenance only; not verified-exact. Reverts to UNMAPPED if play-verify fails."
           },
           {
             "step": "2",
@@ -1634,7 +1683,7 @@
             "reasons": []
           }
         ],
-        "string_status": "partial",
+        "string_status": "verified-all",
         "triage": "REVIEW",
         "jumping_context": true,
         "last_step_row": 52,
@@ -1744,11 +1793,13 @@
             "step": "2",
             "prefix": "1,2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 98,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 98 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           }
         ],
@@ -1756,7 +1807,7 @@
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
-        "last_step_status": "unmapped",
+        "last_step_status": "review",
         "twin_of": "1,2",
         "twin_move_class": "string"
       },
@@ -1775,11 +1826,13 @@
             "step": "2",
             "prefix": "1,2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 98,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 98 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           }
         ],
@@ -1787,7 +1840,7 @@
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
-        "last_step_status": "unmapped",
+        "last_step_status": "review",
         "twin_of": "1,2",
         "twin_move_class": "string"
       },
@@ -1806,22 +1859,26 @@
             "step": "2",
             "prefix": "1,2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 98,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 98 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
             "step": "1",
             "prefix": "1,2,1",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 198,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 198 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           }
         ],
@@ -1829,7 +1886,7 @@
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
-        "last_step_status": "unmapped",
+        "last_step_status": "review",
         "twin_of": "1,2,1",
         "twin_move_class": "string"
       },
@@ -1848,22 +1905,26 @@
             "step": "2",
             "prefix": "1,2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 98,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 98 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
             "step": "1",
             "prefix": "1,2,1",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 198,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 198 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           }
         ],
@@ -1871,7 +1932,7 @@
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
-        "last_step_status": "unmapped",
+        "last_step_status": "review",
         "twin_of": "1,2,1",
         "twin_move_class": "string"
       },
@@ -1890,22 +1951,26 @@
             "step": "2",
             "prefix": "1,2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 98,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 98 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
             "step": "1",
             "prefix": "1,2,1",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 198,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 198 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           }
         ],
@@ -1913,7 +1978,7 @@
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
-        "last_step_status": "unmapped",
+        "last_step_status": "review",
         "twin_of": "1,2,1",
         "twin_move_class": "string"
       },
@@ -1987,30 +2052,34 @@
             "step": "1+2",
             "prefix": "1+2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 223,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 223 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
             "step": "1",
             "prefix": "1+2,1",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 209,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 209 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           }
         ],
-        "string_status": "unmapped-all",
+        "string_status": "review-only",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
-        "last_step_status": "unmapped",
+        "last_step_status": "review",
         "twin_of": "1+2,1",
         "twin_move_class": "string"
       },
@@ -2020,30 +2089,34 @@
             "step": "1+2",
             "prefix": "1+2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 223,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 223 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
             "step": "1",
             "prefix": "1+2,1",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 209,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 209 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           }
         ],
-        "string_status": "unmapped-all",
+        "string_status": "review-only",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
-        "last_step_status": "unmapped",
+        "last_step_status": "review",
         "twin_of": "1+2,1",
         "twin_move_class": "string"
       },
@@ -2053,30 +2126,34 @@
             "step": "f+2",
             "prefix": "f+2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 111,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 111 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
             "step": "1",
             "prefix": "f+2,1",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 198,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 198 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           }
         ],
-        "string_status": "unmapped-all",
+        "string_status": "review-only",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
-        "last_step_status": "unmapped",
+        "last_step_status": "review",
         "twin_of": "f+2,1",
         "twin_move_class": "string"
       },
@@ -2086,30 +2163,34 @@
             "step": "f+2",
             "prefix": "f+2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 111,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 111 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
             "step": "1",
             "prefix": "f+2,1",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 198,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 198 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           }
         ],
-        "string_status": "unmapped-all",
+        "string_status": "review-only",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
-        "last_step_status": "unmapped",
+        "last_step_status": "review",
         "twin_of": "f+2,1",
         "twin_move_class": "string"
       },
@@ -2119,11 +2200,13 @@
             "step": "f+2",
             "prefix": "f+2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 111,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 111 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
@@ -2149,7 +2232,7 @@
             ]
           }
         ],
-        "string_status": "unmapped-all",
+        "string_status": "review-only",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
@@ -2163,11 +2246,13 @@
             "step": "f+2",
             "prefix": "f+2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 111,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 111 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
@@ -2193,7 +2278,7 @@
             ]
           }
         ],
-        "string_status": "unmapped-all",
+        "string_status": "review-only",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
@@ -2207,11 +2292,13 @@
             "step": "f+2",
             "prefix": "f+2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 111,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 111 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
@@ -2237,7 +2324,7 @@
             ]
           }
         ],
-        "string_status": "unmapped-all",
+        "string_status": "review-only",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
@@ -2253,9 +2340,10 @@
             "row": null,
             "status": "review",
             "candidate_row": 117,
-            "candidate_source": "prefix-move",
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no in-window peak on ['armL'] in approx npz window [13,18] (peaks {'armL': [12], 'armR': [9], 'legL': [], 'legR': []})"
+              "identity branch-proven: GRE tekken3/movesets/moveset_king.json branch graph (see research doc)",
+              "FK soft gate already run by Batch 1 and failed narrowly - stays REVIEW until adjudication + play-verify"
             ]
           },
           {
@@ -2270,7 +2358,7 @@
             ]
           }
         ],
-        "string_status": "unmapped-all",
+        "string_status": "review-only",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
@@ -2381,30 +2469,34 @@
             "step": "b+2",
             "prefix": "b+2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 99,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 99 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
             "step": "1",
             "prefix": "b+2,1",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 199,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 199 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           }
         ],
-        "string_status": "unmapped-all",
+        "string_status": "review-only",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
-        "last_step_status": "unmapped",
+        "last_step_status": "review",
         "twin_of": "b+2,1",
         "twin_move_class": "string"
       },
@@ -2414,30 +2506,34 @@
             "step": "b+2",
             "prefix": "b+2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 99,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 99 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
             "step": "1",
             "prefix": "b+2,1",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 199,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 199 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           }
         ],
-        "string_status": "unmapped-all",
+        "string_status": "review-only",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
-        "last_step_status": "unmapped",
+        "last_step_status": "review",
         "twin_of": "b+2,1",
         "twin_move_class": "string"
       },
@@ -2447,30 +2543,32 @@
             "step": "b+2",
             "prefix": "b+2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 99,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 99 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
             "step": "1+2",
             "prefix": "b+2,1+2",
-            "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "row": 97,
+            "status": "verified",
+            "candidate_row": 97,
+            "candidate_source": "job3-match_search",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "Job 3 match_search (GPU jobs 1-6 ingest 2026-10-25): king row 97, EXACT level (filed h, played h), standing->standing, FULL provenance. Provenance caveat: row 97's visible provenance string is moveset_pantera:d+1+2(2+LP+RP) - a different chord input (d+1+2, not b+2,1+2), matching by button class (LP1+RP2 chord) per the match_search provenance rule. Step identity rests on the target key (b+2,1+2) matching the step prefix exactly, not on the provenance input. Also-ran king row 143 SOFT-filed loses on exact-level priority. T3 FALLBACK row (docs/anim/PROCEDURAL_AUDIT.md); re-match to T7 King row when extraction lands."
             ]
           }
         ],
-        "string_status": "unmapped-all",
+        "string_status": "partial",
         "triage": "NO-ROW",
         "jumping_context": false,
-        "last_step_row": null,
-        "last_step_status": "unmapped",
+        "last_step_row": 97,
+        "last_step_status": "verified",
         "twin_of": "b+2,1+2",
         "twin_move_class": "string"
       },
@@ -2480,30 +2578,32 @@
             "step": "b+2",
             "prefix": "b+2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 99,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 99 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
             "step": "1+2",
             "prefix": "b+2,1+2",
-            "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "row": 97,
+            "status": "verified",
+            "candidate_row": 97,
+            "candidate_source": "job3-match_search",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "Job 3 match_search (GPU jobs 1-6 ingest 2026-10-25): king row 97, EXACT level (filed h, played h), standing->standing, FULL provenance. Provenance caveat: row 97's visible provenance string is moveset_pantera:d+1+2(2+LP+RP) - a different chord input (d+1+2, not b+2,1+2), matching by button class (LP1+RP2 chord) per the match_search provenance rule. Step identity rests on the target key (b+2,1+2) matching the step prefix exactly, not on the provenance input. Also-ran king row 143 SOFT-filed loses on exact-level priority. T3 FALLBACK row (docs/anim/PROCEDURAL_AUDIT.md); re-match to T7 King row when extraction lands."
             ]
           }
         ],
-        "string_status": "unmapped-all",
+        "string_status": "partial",
         "triage": "NO-ROW",
         "jumping_context": false,
-        "last_step_row": null,
-        "last_step_status": "unmapped",
+        "last_step_row": 97,
+        "last_step_status": "verified",
         "twin_of": "b+2,1+2",
         "twin_move_class": "string"
       },
@@ -2522,11 +2622,13 @@
             "step": "2",
             "prefix": "1,2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 98,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 98 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           }
         ],
@@ -2534,7 +2636,7 @@
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
-        "last_step_status": "unmapped",
+        "last_step_status": "review",
         "twin_of": "FC.1,2",
         "twin_move_class": "string"
       },
@@ -2577,11 +2679,13 @@
             "step": "f+2",
             "prefix": "f+2",
             "row": null,
-            "status": "unmapped",
-            "candidate_row": null,
-            "candidate_source": null,
+            "status": "review",
+            "candidate_row": 111,
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no candidate row (recorded path + prefix move both absent)"
+              "real row found via T3 King branch graph: row 111 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
+              "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
             ]
           },
           {
@@ -2610,9 +2714,10 @@
             "row": null,
             "status": "review",
             "candidate_row": 117,
-            "candidate_source": "prefix-move",
+            "candidate_source": "t3-branch-graph",
             "reasons": [
-              "no in-window peak on ['armL'] in approx npz window [13,18] (peaks {'armL': [12], 'armR': [9], 'legL': [], 'legR': []})"
+              "identity branch-proven: GRE tekken3/movesets/moveset_king.json branch graph (see research doc)",
+              "FK soft gate already run by Batch 1 and failed narrowly - stays REVIEW until adjudication + play-verify"
             ]
           },
           {
@@ -14823,6 +14928,7 @@
       }
     },
     "1,2,1,2+4~t7.king": {
+      "reach": 2.3,
       "name": "Palm Upper to Suplex",
       "input": "1,2,1,2+4",
       "startup": 0.1667,
@@ -14869,8 +14975,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "king",
-        "row": 280,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 127,
+        "match": "true-map class+limb, same clip as base 1,2,1,2+4 (2026-10-29)"
       },
       "t7": {
         "damage": 9,
@@ -14886,6 +14992,7 @@
       }
     },
     "1,2,1,2+4~t7.king.2": {
+      "reach": 2.3,
       "name": "PANTERA 1,2,1,2+4",
       "input": "1,2,1,2+4",
       "startup": 0.1667,
@@ -14931,8 +15038,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 127,
+        "match": "true-map class+limb, same clip as base 1,2,1,2+4 (2026-10-29)"
       },
       "t7": {
         "damage": 9,
@@ -14948,6 +15055,7 @@
       }
     },
     "1,2,1,2+4~t7.king.3": {
+      "reach": 2.3,
       "name": "PANTERA 1,2,1,2+4",
       "input": "1,2,1,2+4",
       "startup": 0.1667,
@@ -14993,7 +15101,7 @@
       "anim_t3": {
         "bank": "king",
         "row": 127,
-        "match": "nearest limb/class/startup (approximate)"
+        "match": "true-map class+limb, same clip as base 1,2,1,2+4 (2026-10-29)"
       },
       "t7": {
         "damage": 9,
@@ -15009,6 +15117,7 @@
       }
     },
     "1,2,1,2+4~t7.king.4": {
+      "reach": 2.3,
       "name": "PANTERA 1,2,1,2+4",
       "input": "1,2,1,2+4",
       "startup": 0.1667,
@@ -15047,7 +15156,7 @@
       "anim_t3": {
         "bank": "king",
         "row": 127,
-        "match": "nearest limb/class/startup (approximate)"
+        "match": "true-map class+limb, same clip as base 1,2,1,2+4 (2026-10-29)"
       },
       "t7": {
         "damage": 9,
@@ -33790,7 +33899,9 @@
   },
   "stance_after": {
     "b+1+2__main": "JGR",
-    "b+1+2,1+2": "JGR"
+    "b+1+2,1+2": "JGR",
+    "3+4_t8": "JGS",
+    "b+3+4": "JGS"
   },
   "string_fix_20261024": {
     "rule": "WH fires each string STEP as its own attack, so a step move's runtime damage = T7 MOD damage of that step's hit (last hit of the MOD row), not the running total. Singles that fire via slots use MOD damage. T8 multi_hit.total values are left untouched as source records.",

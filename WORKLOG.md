@@ -3570,3 +3570,124 @@ Live-browser playtest (rendering, combat feel, balance) still needed — delegat
 **Proof:** 27/27 tagtest pass; screenshots: submenu, size picker, slot tray, DONE-draft {p1:[pantera,torch],p2:[demonio,rave]}.
 
 **Status:** PR pushed; merge via git_merge.py when green. NOTE: main has pre-existing broken imports (voice.js/hitfx.js/intro-interactions.js 404) — not from this worker.
+
+## 2026-10-26 — Deploy split wiring: Pages shell + GLBs on R2 (lane)
+
+**Owner decision:** "Split it: Pages shell + GLBs on R2" (2026-10-26 ~19:10 CDT, tapped option).
+Replaces the pending "what gets cut" question — nothing cut from the game, only from the deploy.
+Research: agent-ops PR #161 (`research-friction-20261025/01-deploy-pages-limit.md`).
+
+**What changed:**
+- `tools/deploy/build_pages.py --shell-only` — shell-only deploy (code/UI/text + 4 bundled
+  fighters: demonio, pantera, awa-pop, baek). Bundled list read from
+  `game/js/asset-config.js` on the ref (single source of truth). Also fixed `ls-tree -z`:
+  the script died on main tip because 4 mojibake filenames under `customization/parts*`
+  come back C-quoted.
+- `game/js/asset-config.js` (new) — one-line config: `remoteBase` placeholder
+  `__WH_R2_PUBLIC_URL__` until the R2 bucket exists; R2-only remote base, jsDelivr
+  fallback for small files. Decision recorded with reasons in the file.
+- `game/js/assets.js`, `game/js/stages.js`, `game/js/customization-consumer.js` — all
+  three GLB loaders go through `resolveAssetCandidates()` / `loadGlbCandidates()`.
+  No per-model changes; `MODEL_URLS` and stage defs untouched.
+- `tools/deploy/r2-upload-manifest.py` + `r2-upload-manifest.json` — every model to
+  upload, built from live GitHub (same closure as the deploy script), never local disk.
+- `tools/deploy/DEPLOY-SPLIT.md` — decision record, owner R2 steps, upload runbook,
+  itch.io setup sheet, verification checklist.
+
+**Proof:** `node --check` clean on all 4 touched JS files; resolver unit test 10/10
+(`repoPathForModelUrl` incl. `../roster/` escape, bundled-stays-local,
+non-bundled -> jsDelivr until R2 exists); `preload.test.mjs` 6/6 pass;
+`model-key-guard.test.mjs` 8/9 — the 1 failure is the sparse-checkout artifact
+(every entry "(file missing)": roster/ + game/assets not on disk locally), zero
+key-mismatch failures. Deploy-size verification from the build log: full baseline
+and `--shell-only` dry-runs (see PR body).
+
+**Blocked (owner-only):** Cloudflare R2 signup + bucket (`western-heart-assets`,
+CORS `Access-Control-Allow-Origin: *`) and itch.io account + payout setup.
+No bucket exists yet — nothing uploaded to R2, no account created.
+
+**Verification (2026-10-27, this lane, own-eyes from the build logs):**
+- Full deploy baseline: `build_pages.py --ref origin/main --dry-run` =
+  7,632 files / 6,052.0 MB (roster 4,061.0 MB, game 1,828.8 MB) + WARNING
+  over the Pages 1 GB cap. (Research said 5,969 MB at the Oct 25 ref; main moved.)
+- Shell-only: `--dry-run --shell-only` = 5,394 files / 739.5 MB on main,
+  5,395 files / 739.5 MB on the branch (extra file is asset-config.js itself);
+  excluded 2,238 files / 5,312.5 MB (2,238 models -> remote). The branch run
+  read SHELL_BUNDLED_MODELS from asset-config.js with NO fallback warning —
+  the single-source-of-truth path works.
+- R2 manifest: 2,242 models / 5,329.7 MB (5,312.5 MB remote-only),
+  7 release-matched (6 from `fighter-hunt-r2`, 1 from `leoman-restore-20261020`),
+  fits the R2 free 10 GB tier. 0 bad entries.
+- Shell materialized + itch ZIP built: `wh-itch-shell-20261026.zip`
+  490,419,079 bytes, 739,520,900 bytes extracted, 5,634 entries.
+  **Correction:** does NOT fit itch.io HTML5 (500 MB / 1,000 files) — 239.5 MB
+  and 4,634 entries over. Needs an itch-trim follow-up; ZIP not uploaded
+  anywhere (itch would reject it), shell-out + ZIP cleared off disk after the lane.
+- Resolver unit test 10/10; `node --check` clean on all touched JS;
+  `preload.test.mjs` 6/6; `model-key-guard.test.mjs` 8/9 (1 failure is the
+  sparse-checkout artifact — every entry "(file missing)", zero key mismatches).
+- Branch `split-deploy-pages-r2` built via the Git Data API (NO-SPARSE-COMMIT
+  LAW: never commit from the partial checkout): base_tree = main tree,
+  root-entry check 34 = 34 identical paths before the commit; compare shows
+  1 commit ahead, 8 files, 0 files removed.
+
+**Fix after CI (2026-10-27, this lane): menu-touch-e2e failed on PR #1152**
+- Run 40434489083: all checks green except menu-touch-e2e (fail, 12m0s).
+  The versus flow reached confirm-stage, then the fight HUD never appeared
+  in 60s (`page.waitForFunction: Timeout 60000ms exceeded`). Baseline:
+  rig-guard passed on the previous 6 PR runs, so this PR's change was the
+  cause.
+- Root cause: `resolveAssetCandidates()` returned ONLY the jsDelivr URL for
+  non-bundled models while the R2 placeholder stands — no local fallback.
+  In CI/dev the full repo is served locally, so every non-bundled fighter
+  and stage GLB fetched from jsDelivr instead of disk (slow / >20 MB 403s).
+- Fix (game/js/asset-config.js): candidate order is now R2 first (when
+  ready), then the LOCAL URL, then jsDelivr last. On the Pages shell the
+  local candidate 404s fast (non-bundled GLBs are not in the shell), so
+  production costs nothing. Decision updated in the file header and in
+  DEPLOY-SPLIT.md ("R2 as the remote base, local as the dev/CI fallback").
+- Verification: resolver unit test rewritten for the new order, 12/12 pass;
+  `node --check` clean; `preload.test.mjs` green. menu-touch-e2e is the
+  arbiter — it must pass on the re-run before merge.
+
+## 2026-10-29 5:50 PM CT — moveset sweep batch 13 (Grok, PR #1227)
+- Done: multi-tap direction-only endings ('1+2,f,f', 'd/f+1,2,f,F') keep a pending path in
+  `tryDirFollow`; tapped spelling resolves before held; duplicate-input rows (qcf+1 vs
+  n,d,d/f,f+1 etc.) reported n/a naming the row they share input with.
+- Core-8 sweep b20 (pass/fail): Bruno 333/0, Pantera 818/55, Demonio 746/23, Cyborg X 607/21,
+  Burger 555/11, Chatur 293/5, Deathfang 128/9, Dio 263/12. Failing rows by name:
+  docs/proof/moveset-sweep-20261028/r17-core8-failing.json.
+- Open: Demonio SS.2,U (held-U upgrade not reached; sweep holds U ~3f), alternate copies
+  (~tN / _cNN_rNNN), FC vs f,n,d,D/F, DES.BT, KOF system rows, u/b+1 root motion.
+- #1096 stack handed to Muse. WIP main-merge (no donor rows; only fighter.js conflicted,
+  union-resolved) parked on branch grok/1096-merge-main-wip (ae5f5df), not merged.
+
+## 2026-10-29 ~6:40 PM CT — Tekken 7 health 180 + full select restore (Doro)
+- Owner orders (this lane): health to Tekken 7's 180 per round with move
+  damage unchanged ("move damage is happening correct maybe health and hp
+  is too low"); all fighters back on the fighter select screen; all
+  arenas back on the stage select list (reversing the Milestone 1
+  core-8 / 3-stage default from earlier the same day).
+- Health: `game/js/fighter.js` Fighter vitals maxHp/hp 100 -> 180. That
+  is the only versus HP definition in the game — every other system
+  (HUD bars in main.js, team-battle red health, survival/team carries)
+  already works in hp/maxHp percentages, so the bar drop per hit scales
+  with no further changes. Move damage values untouched.
+- Select: `game/js/core-set.js` selectVisible/stageVisible now return
+  true for everyone; CORE_FIGHTERS/CORE_STAGES/MODELLESS_HIDDEN kept as
+  data (shell bundling + ?quick= defaults + the no-model record).
+  `game/js/main.js` stage RANDOM again picks from the full stage list.
+  `game/js/select-screen.js` comment updated; its SELECT_HIDDEN set
+  (nine souls + ryuji + doc-frank-machine-shop, owner law 2026-10-22)
+  is unchanged — those were never standalone cards on the deployable
+  version either.
+- Proof: node --check clean on all four changed JS files; a node import
+  test of core-set.js shows core, model-less and crossover fighters and
+  canon/Tekken/No Mercy stages all visible. CI game checks + the
+  menu-touch e2e are the arbiter before merge (repo rule). Deletions:
+  none.
+- Still open after this PR (named, not hidden): Demonio SS.2,U (batch 13
+  regression — held-U upgrade not reached, sweep holds U ~3f); Dio's 12
+  remaining sweep failures (mostly During-Jump air moves); Pantera's 55
+  (chain-throw / ~t3 transition classes). Lists:
+  docs/proof/moveset-sweep-20261028/r17-core8-failing.json.
