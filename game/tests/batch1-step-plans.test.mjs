@@ -16,6 +16,12 @@
  *      provenance; d+1+2 caveat in the doc).
  *   8. Follow-up Fill 2: u/b+1 steps verified-SOFT row 49 (soft flag + soft_note required;
  *      the soft-verified set is exactly these two steps, never verified-exact).
+ *   9. FK promotion (2026-10-30): branch-graph REVIEW steps 98/99/111/199/209/223 promoted
+ *      to verified by the bank-row FK soft-gate re-run (see test/pantera-fk-promotion.test.mjs);
+ *      the verified-last-step set grows 14 -> 25 and the b+2,1+2 family first step is
+ *      verified row 99 (no longer review). Later batches appended plan keys beyond the
+ *      original 60, so Batch1 assertions below scope to the 60 Batch1 keys explicitly
+ *      instead of asserting the total plan count.
  * Run: node --test game/tests/batch1-step-plans.test.mjs   (from repo root)
  */
 import test from 'node:test';
@@ -31,6 +37,7 @@ const hfPath = join(ROOT, 'game/assets/anim/t3/king_on_pantera_leoman/hit_frames
 const hf = JSON.parse(readFileSync(hfPath, 'utf8')).rows;
 
 const plans = pantera.string_step_plans.plans;
+const BATCH1 = ["1+2,1", "1,1", "1,2", "1,2,1", "2,1", "FC.1,2", "WS.2,2", "b+1+2,1+2", "b+1+2,2", "b+1,2", "b+2,1", "b+2,1+2", "d+1+2,2", "d+1+2,2,1", "d+1+2,2,1,1", "d+1+2,2,1,1,2", "d+1,2", "d/b+1+2,2", "d/f+1,2", "d/f+2,1", "f+2,1", "f+2,1,1", "f+2,1,1,2", "f+2,d+1", "f+2,d+1,2", "u+1,1", "u+1,2", "u/b+1,1", "u/b+1,2", "u/f+1,1", "u/f+1,2", "2,1~t8.king", "1,2~t7.king", "1,2~t7.king.2", "1,2,1~t7.king", "1,2,1~t7.king.2", "1,2,1~t7.king.3", "2,1~t7.king", "2,1~t7.king.2", "1+2,1~t7.king", "1+2,1~t7.king.2", "f+2,1~t7.king", "f+2,1~t7.king.2", "f+2,d+1,2~t7.king", "f+2,d+1,2~t7.king.2", "f+2,d+1,2~t7.king.3", "d/f+1,2~t7.king", "d/f+2,1~t7.king", "b+1,2~t7.king", "b+1,2~t7.king.2", "b+2,1~t7.king", "b+2,1~t7.king.2", "b+2,1+2~t7.king", "b+2,1+2~t7.king.2", "FC.1,2~t7.king", "WS.2,2~t7.king", "f+2,1~t3.king", "df+1,2", "df+2,1", "ws2,2"];
 const BIT = (s) => {
   // Spelling variants use df+/ws2 forms; normalise to d/f+/WS. before stripping.
   const norm = String(s).replace(/^df\+/, 'd/f+').replace(/^ws/i, 'WS.');
@@ -42,7 +49,7 @@ const BIT = (s) => {
 test('pantera move/string counts unchanged by the additive plans block', () => {
   assert.equal(Object.keys(pantera.moves).length, 874);
   assert.equal(pantera.strings.length, 81);
-  assert.equal(Object.keys(plans).length, 60);
+  for (const k of BATCH1) assert.ok(k in plans, `Batch1 key ${k} missing from plans`);
 });
 
 test('verified steps always carry a row, and no verified row is 35 or 220', () => {
@@ -71,9 +78,9 @@ test('2,1 flagship: step 1 verified row 203, step 2 unmapped with rejected candi
   }
 });
 
-test('verified-last-step keys are exactly the documented 14', () => {
-  const got = Object.keys(plans).filter((k) => plans[k].last_step_status === 'verified').sort();
-  const want = ['b+1+2,2', 'b+2,1+2', 'b+2,1+2~t7.king', 'b+2,1+2~t7.king.2', 'd+1+2,2', 'd+1+2,2,1', 'd/b+1+2,2', 'f+2,1~t3.king', 'u+1,1', 'u+1,2', 'u/b+1,1', 'u/b+1,2', 'u/f+1,1', 'u/f+1,2'].sort();
+test('verified-last-step keys are exactly the documented 25 (14 + 11 FK promotions)', () => {
+  const got = BATCH1.filter((k) => plans[k].last_step_status === 'verified').sort();
+  const want = ['1+2,1', '1+2,1~t7.king', '1+2,1~t7.king.2', '1,2', '1,2~t7.king', '1,2~t7.king.2', 'FC.1,2', 'FC.1,2~t7.king', 'b+1+2,2', 'b+2,1', 'b+2,1+2', 'b+2,1+2~t7.king', 'b+2,1+2~t7.king.2', 'b+2,1~t7.king', 'b+2,1~t7.king.2', 'd+1+2,2', 'd+1+2,2,1', 'd/b+1+2,2', 'f+2,1~t3.king', 'u+1,1', 'u+1,2', 'u/b+1,1', 'u/b+1,2', 'u/f+1,1', 'u/f+1,2'].sort();
   assert.deepEqual(got, want);
 });
 
@@ -85,8 +92,9 @@ test('Fill 1 (follow-up): b+2,1+2 family last step verified row 97', () => {
     assert.equal(p.steps[1].candidate_source, 'job3-match_search');
     assert.equal(p.last_step_status, 'verified');
     assert.equal(p.last_step_row, 97);
-    assert.equal(p.string_status, 'partial');
-    assert.equal(p.steps[0].status, 'review', `${key} step b+2 carries the 2026-10-29 branch-graph REVIEW candidate (not the follow-up's older unmapped record)`);
+    assert.equal(p.string_status, 'verified-all');
+    assert.equal(p.steps[0].status, 'verified', `${key} step b+2 promoted 2026-10-30 by the bank-row FK gate (row 99)`);
+    assert.equal(p.steps[0].row, 99, `${key} step b+2 must play row 99`);
   }
   // Row 97 is a standing LP1+RP2 chord row, never a jumping row.
   const row97 = hf['97'];

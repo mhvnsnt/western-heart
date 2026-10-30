@@ -662,35 +662,37 @@
           {
             "step": "1+2",
             "prefix": "1+2",
-            "row": null,
-            "status": "review",
+            "row": 223,
+            "status": "verified",
             "candidate_row": 223,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 223 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 223 + skeleton.json + hit_frames.json (active stream [18, 20], pack window [9, 10], 14 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.242 m = 89% of global clip peak 0.271 m; other limbs in-window max 0.114 m (correct limb dominant; 1+2 chord secondary armL +0.114 m in-window, same shape as control chord row 97); hit_frames button 3, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
             "step": "1",
             "prefix": "1+2,1",
-            "row": null,
-            "status": "review",
+            "row": 209,
+            "status": "verified",
             "candidate_row": 209,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 209 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 209 + skeleton.json + hit_frames.json (active stream [22, 23], pack window [11, 12], 30 frames). Chest-to-LeftHand (LP1) extension delta vs frame 0: in-window peak 0.171 m = 100% of global clip peak 0.171 m; other limbs in-window max 0.061 m (correct limb dominant); hit_frames button 1, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           }
         ],
-        "string_status": "review-only",
+        "string_status": "verified-all",
         "triage": "NO-ROW",
         "jumping_context": false,
-        "last_step_row": null,
-        "last_step_status": "review"
+        "last_step_row": 209,
+        "last_step_status": "verified"
       },
       "1,1": {
         "steps": [
@@ -737,22 +739,23 @@
           {
             "step": "2",
             "prefix": "1,2",
-            "row": null,
-            "status": "review",
+            "row": 98,
+            "status": "verified",
             "candidate_row": 98,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 98 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 98 + skeleton.json + hit_frames.json (active stream [12, 12], pack window [6, 6], 21 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.429 m = 99% of global clip peak 0.433 m; other limbs in-window max 0.016 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           }
         ],
-        "string_status": "partial",
+        "string_status": "verified-all",
         "triage": "NO-ROW",
         "jumping_context": false,
-        "last_step_row": null,
-        "last_step_status": "review"
+        "last_step_row": 98,
+        "last_step_status": "verified"
       },
       "1,2,1": {
         "steps": [
@@ -768,14 +771,15 @@
           {
             "step": "2",
             "prefix": "1,2",
-            "row": null,
-            "status": "review",
+            "row": 98,
+            "status": "verified",
             "candidate_row": 98,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 98 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 98 + skeleton.json + hit_frames.json (active stream [12, 12], pack window [6, 6], 21 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.429 m = 99% of global clip peak 0.433 m; other limbs in-window max 0.016 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
@@ -842,22 +846,23 @@
           {
             "step": "2",
             "prefix": "1,2",
-            "row": null,
-            "status": "review",
+            "row": 98,
+            "status": "verified",
             "candidate_row": 98,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 98 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 98 + skeleton.json + hit_frames.json (active stream [12, 12], pack window [6, 6], 21 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.429 m = 99% of global clip peak 0.433 m; other limbs in-window max 0.016 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           }
         ],
-        "string_status": "partial",
+        "string_status": "verified-all",
         "triage": "NO-ROW",
         "jumping_context": false,
-        "last_step_row": null,
-        "last_step_status": "review"
+        "last_step_row": 98,
+        "last_step_status": "verified"
       },
       "WS.2,2": {
         "steps": [
@@ -986,49 +991,52 @@
           {
             "step": "b+2",
             "prefix": "b+2",
-            "row": null,
-            "status": "review",
+            "row": 99,
+            "status": "verified",
             "candidate_row": 99,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 99 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 99 + skeleton.json + hit_frames.json (active stream [10, 10], pack window [5, 5], 20 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.531 m = 100% of global clip peak 0.531 m; other limbs in-window max 0.002 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
             "step": "1",
             "prefix": "b+2,1",
-            "row": null,
-            "status": "review",
+            "row": 199,
+            "status": "verified",
             "candidate_row": 199,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 199 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 199 + skeleton.json + hit_frames.json (active stream [23, 24], pack window [11, 12], 29 frames). Chest-to-LeftHand (LP1) extension delta vs frame 0: in-window peak 0.396 m = 97% of global clip peak 0.408 m; other limbs in-window max -0.044 m (correct limb dominant); hit_frames button 1, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           }
         ],
-        "string_status": "review-only",
+        "string_status": "verified-all",
         "triage": "NO-ROW",
         "jumping_context": false,
-        "last_step_row": null,
-        "last_step_status": "review"
+        "last_step_row": 199,
+        "last_step_status": "verified"
       },
       "b+2,1+2": {
         "steps": [
           {
             "step": "b+2",
             "prefix": "b+2",
-            "row": null,
-            "status": "review",
+            "row": 99,
+            "status": "verified",
             "candidate_row": 99,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 99 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 99 + skeleton.json + hit_frames.json (active stream [10, 10], pack window [5, 5], 20 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.531 m = 100% of global clip peak 0.531 m; other limbs in-window max 0.002 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
@@ -1043,7 +1051,7 @@
             ]
           }
         ],
-        "string_status": "partial",
+        "string_status": "verified-all",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": 97,
@@ -1348,14 +1356,15 @@
           {
             "step": "f+2",
             "prefix": "f+2",
-            "row": null,
-            "status": "review",
+            "row": 111,
+            "status": "verified",
             "candidate_row": 111,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 111 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 111 + skeleton.json + hit_frames.json (active stream [10, 10], pack window [5, 5], 20 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.531 m = 100% of global clip peak 0.531 m; other limbs in-window max 0.002 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
@@ -1372,7 +1381,7 @@
             ]
           }
         ],
-        "string_status": "review-only",
+        "string_status": "partial",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
@@ -1383,14 +1392,15 @@
           {
             "step": "f+2",
             "prefix": "f+2",
-            "row": null,
-            "status": "review",
+            "row": 111,
+            "status": "verified",
             "candidate_row": 111,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 111 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 111 + skeleton.json + hit_frames.json (active stream [10, 10], pack window [5, 5], 20 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.531 m = 100% of global clip peak 0.531 m; other limbs in-window max 0.002 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
@@ -1419,7 +1429,7 @@
             ]
           }
         ],
-        "string_status": "review-only",
+        "string_status": "partial",
         "triage": "PASS",
         "jumping_context": false,
         "last_step_row": null,
@@ -1430,14 +1440,15 @@
           {
             "step": "f+2",
             "prefix": "f+2",
-            "row": null,
-            "status": "review",
+            "row": 111,
+            "status": "verified",
             "candidate_row": 111,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 111 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 111 + skeleton.json + hit_frames.json (active stream [10, 10], pack window [5, 5], 20 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.531 m = 100% of global clip peak 0.531 m; other limbs in-window max 0.002 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
@@ -1478,7 +1489,7 @@
             ]
           }
         ],
-        "string_status": "review-only",
+        "string_status": "partial",
         "triage": "PASS",
         "jumping_context": false,
         "last_step_row": null,
@@ -1489,14 +1500,15 @@
           {
             "step": "f+2",
             "prefix": "f+2",
-            "row": null,
-            "status": "review",
+            "row": 111,
+            "status": "verified",
             "candidate_row": 111,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 111 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 111 + skeleton.json + hit_frames.json (active stream [10, 10], pack window [5, 5], 20 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.531 m = 100% of global clip peak 0.531 m; other limbs in-window max 0.002 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
@@ -1511,7 +1523,7 @@
             ]
           }
         ],
-        "string_status": "review-only",
+        "string_status": "partial",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
@@ -1522,14 +1534,15 @@
           {
             "step": "f+2",
             "prefix": "f+2",
-            "row": null,
-            "status": "review",
+            "row": 111,
+            "status": "verified",
             "candidate_row": 111,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 111 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 111 + skeleton.json + hit_frames.json (active stream [10, 10], pack window [5, 5], 20 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.531 m = 100% of global clip peak 0.531 m; other limbs in-window max 0.002 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
@@ -1555,7 +1568,7 @@
             ]
           }
         ],
-        "string_status": "review-only",
+        "string_status": "partial",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
@@ -1792,22 +1805,23 @@
           {
             "step": "2",
             "prefix": "1,2",
-            "row": null,
-            "status": "review",
+            "row": 98,
+            "status": "verified",
             "candidate_row": 98,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 98 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 98 + skeleton.json + hit_frames.json (active stream [12, 12], pack window [6, 6], 21 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.429 m = 99% of global clip peak 0.433 m; other limbs in-window max 0.016 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           }
         ],
-        "string_status": "partial",
+        "string_status": "verified-all",
         "triage": "NO-ROW",
         "jumping_context": false,
-        "last_step_row": null,
-        "last_step_status": "review",
+        "last_step_row": 98,
+        "last_step_status": "verified",
         "twin_of": "1,2",
         "twin_move_class": "string"
       },
@@ -1825,22 +1839,23 @@
           {
             "step": "2",
             "prefix": "1,2",
-            "row": null,
-            "status": "review",
+            "row": 98,
+            "status": "verified",
             "candidate_row": 98,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 98 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 98 + skeleton.json + hit_frames.json (active stream [12, 12], pack window [6, 6], 21 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.429 m = 99% of global clip peak 0.433 m; other limbs in-window max 0.016 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           }
         ],
-        "string_status": "partial",
+        "string_status": "verified-all",
         "triage": "NO-ROW",
         "jumping_context": false,
-        "last_step_row": null,
-        "last_step_status": "review",
+        "last_step_row": 98,
+        "last_step_status": "verified",
         "twin_of": "1,2",
         "twin_move_class": "string"
       },
@@ -1858,14 +1873,15 @@
           {
             "step": "2",
             "prefix": "1,2",
-            "row": null,
-            "status": "review",
+            "row": 98,
+            "status": "verified",
             "candidate_row": 98,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 98 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 98 + skeleton.json + hit_frames.json (active stream [12, 12], pack window [6, 6], 21 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.429 m = 99% of global clip peak 0.433 m; other limbs in-window max 0.016 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
@@ -1904,14 +1920,15 @@
           {
             "step": "2",
             "prefix": "1,2",
-            "row": null,
-            "status": "review",
+            "row": 98,
+            "status": "verified",
             "candidate_row": 98,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 98 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 98 + skeleton.json + hit_frames.json (active stream [12, 12], pack window [6, 6], 21 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.429 m = 99% of global clip peak 0.433 m; other limbs in-window max 0.016 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
@@ -1950,14 +1967,15 @@
           {
             "step": "2",
             "prefix": "1,2",
-            "row": null,
-            "status": "review",
+            "row": 98,
+            "status": "verified",
             "candidate_row": 98,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 98 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 98 + skeleton.json + hit_frames.json (active stream [12, 12], pack window [6, 6], 21 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.429 m = 99% of global clip peak 0.433 m; other limbs in-window max 0.016 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
@@ -2051,35 +2069,37 @@
           {
             "step": "1+2",
             "prefix": "1+2",
-            "row": null,
-            "status": "review",
+            "row": 223,
+            "status": "verified",
             "candidate_row": 223,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 223 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 223 + skeleton.json + hit_frames.json (active stream [18, 20], pack window [9, 10], 14 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.242 m = 89% of global clip peak 0.271 m; other limbs in-window max 0.114 m (correct limb dominant; 1+2 chord secondary armL +0.114 m in-window, same shape as control chord row 97); hit_frames button 3, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
             "step": "1",
             "prefix": "1+2,1",
-            "row": null,
-            "status": "review",
+            "row": 209,
+            "status": "verified",
             "candidate_row": 209,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 209 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 209 + skeleton.json + hit_frames.json (active stream [22, 23], pack window [11, 12], 30 frames). Chest-to-LeftHand (LP1) extension delta vs frame 0: in-window peak 0.171 m = 100% of global clip peak 0.171 m; other limbs in-window max 0.061 m (correct limb dominant); hit_frames button 1, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           }
         ],
-        "string_status": "review-only",
+        "string_status": "verified-all",
         "triage": "NO-ROW",
         "jumping_context": false,
-        "last_step_row": null,
-        "last_step_status": "review",
+        "last_step_row": 209,
+        "last_step_status": "verified",
         "twin_of": "1+2,1",
         "twin_move_class": "string"
       },
@@ -2088,35 +2108,37 @@
           {
             "step": "1+2",
             "prefix": "1+2",
-            "row": null,
-            "status": "review",
+            "row": 223,
+            "status": "verified",
             "candidate_row": 223,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 223 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 223 + skeleton.json + hit_frames.json (active stream [18, 20], pack window [9, 10], 14 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.242 m = 89% of global clip peak 0.271 m; other limbs in-window max 0.114 m (correct limb dominant; 1+2 chord secondary armL +0.114 m in-window, same shape as control chord row 97); hit_frames button 3, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
             "step": "1",
             "prefix": "1+2,1",
-            "row": null,
-            "status": "review",
+            "row": 209,
+            "status": "verified",
             "candidate_row": 209,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 209 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 209 + skeleton.json + hit_frames.json (active stream [22, 23], pack window [11, 12], 30 frames). Chest-to-LeftHand (LP1) extension delta vs frame 0: in-window peak 0.171 m = 100% of global clip peak 0.171 m; other limbs in-window max 0.061 m (correct limb dominant); hit_frames button 1, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           }
         ],
-        "string_status": "review-only",
+        "string_status": "verified-all",
         "triage": "NO-ROW",
         "jumping_context": false,
-        "last_step_row": null,
-        "last_step_status": "review",
+        "last_step_row": 209,
+        "last_step_status": "verified",
         "twin_of": "1+2,1",
         "twin_move_class": "string"
       },
@@ -2125,14 +2147,15 @@
           {
             "step": "f+2",
             "prefix": "f+2",
-            "row": null,
-            "status": "review",
+            "row": 111,
+            "status": "verified",
             "candidate_row": 111,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 111 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 111 + skeleton.json + hit_frames.json (active stream [10, 10], pack window [5, 5], 20 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.531 m = 100% of global clip peak 0.531 m; other limbs in-window max 0.002 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
@@ -2149,7 +2172,7 @@
             ]
           }
         ],
-        "string_status": "review-only",
+        "string_status": "partial",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
@@ -2162,14 +2185,15 @@
           {
             "step": "f+2",
             "prefix": "f+2",
-            "row": null,
-            "status": "review",
+            "row": 111,
+            "status": "verified",
             "candidate_row": 111,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 111 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 111 + skeleton.json + hit_frames.json (active stream [10, 10], pack window [5, 5], 20 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.531 m = 100% of global clip peak 0.531 m; other limbs in-window max 0.002 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
@@ -2186,7 +2210,7 @@
             ]
           }
         ],
-        "string_status": "review-only",
+        "string_status": "partial",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
@@ -2199,14 +2223,15 @@
           {
             "step": "f+2",
             "prefix": "f+2",
-            "row": null,
-            "status": "review",
+            "row": 111,
+            "status": "verified",
             "candidate_row": 111,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 111 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 111 + skeleton.json + hit_frames.json (active stream [10, 10], pack window [5, 5], 20 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.531 m = 100% of global clip peak 0.531 m; other limbs in-window max 0.002 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
@@ -2232,7 +2257,7 @@
             ]
           }
         ],
-        "string_status": "review-only",
+        "string_status": "partial",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
@@ -2245,14 +2270,15 @@
           {
             "step": "f+2",
             "prefix": "f+2",
-            "row": null,
-            "status": "review",
+            "row": 111,
+            "status": "verified",
             "candidate_row": 111,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 111 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 111 + skeleton.json + hit_frames.json (active stream [10, 10], pack window [5, 5], 20 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.531 m = 100% of global clip peak 0.531 m; other limbs in-window max 0.002 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
@@ -2278,7 +2304,7 @@
             ]
           }
         ],
-        "string_status": "review-only",
+        "string_status": "partial",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
@@ -2291,14 +2317,15 @@
           {
             "step": "f+2",
             "prefix": "f+2",
-            "row": null,
-            "status": "review",
+            "row": 111,
+            "status": "verified",
             "candidate_row": 111,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 111 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 111 + skeleton.json + hit_frames.json (active stream [10, 10], pack window [5, 5], 20 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.531 m = 100% of global clip peak 0.531 m; other limbs in-window max 0.002 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
@@ -2324,7 +2351,7 @@
             ]
           }
         ],
-        "string_status": "review-only",
+        "string_status": "partial",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": null,
@@ -2468,35 +2495,37 @@
           {
             "step": "b+2",
             "prefix": "b+2",
-            "row": null,
-            "status": "review",
+            "row": 99,
+            "status": "verified",
             "candidate_row": 99,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 99 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 99 + skeleton.json + hit_frames.json (active stream [10, 10], pack window [5, 5], 20 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.531 m = 100% of global clip peak 0.531 m; other limbs in-window max 0.002 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
             "step": "1",
             "prefix": "b+2,1",
-            "row": null,
-            "status": "review",
+            "row": 199,
+            "status": "verified",
             "candidate_row": 199,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 199 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 199 + skeleton.json + hit_frames.json (active stream [23, 24], pack window [11, 12], 29 frames). Chest-to-LeftHand (LP1) extension delta vs frame 0: in-window peak 0.396 m = 97% of global clip peak 0.408 m; other limbs in-window max -0.044 m (correct limb dominant); hit_frames button 1, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           }
         ],
-        "string_status": "review-only",
+        "string_status": "verified-all",
         "triage": "NO-ROW",
         "jumping_context": false,
-        "last_step_row": null,
-        "last_step_status": "review",
+        "last_step_row": 199,
+        "last_step_status": "verified",
         "twin_of": "b+2,1",
         "twin_move_class": "string"
       },
@@ -2505,35 +2534,37 @@
           {
             "step": "b+2",
             "prefix": "b+2",
-            "row": null,
-            "status": "review",
+            "row": 99,
+            "status": "verified",
             "candidate_row": 99,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 99 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 99 + skeleton.json + hit_frames.json (active stream [10, 10], pack window [5, 5], 20 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.531 m = 100% of global clip peak 0.531 m; other limbs in-window max 0.002 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
             "step": "1",
             "prefix": "b+2,1",
-            "row": null,
-            "status": "review",
+            "row": 199,
+            "status": "verified",
             "candidate_row": 199,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 199 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 199 + skeleton.json + hit_frames.json (active stream [23, 24], pack window [11, 12], 29 frames). Chest-to-LeftHand (LP1) extension delta vs frame 0: in-window peak 0.396 m = 97% of global clip peak 0.408 m; other limbs in-window max -0.044 m (correct limb dominant); hit_frames button 1, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           }
         ],
-        "string_status": "review-only",
+        "string_status": "verified-all",
         "triage": "NO-ROW",
         "jumping_context": false,
-        "last_step_row": null,
-        "last_step_status": "review",
+        "last_step_row": 199,
+        "last_step_status": "verified",
         "twin_of": "b+2,1",
         "twin_move_class": "string"
       },
@@ -2542,14 +2573,15 @@
           {
             "step": "b+2",
             "prefix": "b+2",
-            "row": null,
-            "status": "review",
+            "row": 99,
+            "status": "verified",
             "candidate_row": 99,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 99 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 99 + skeleton.json + hit_frames.json (active stream [10, 10], pack window [5, 5], 20 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.531 m = 100% of global clip peak 0.531 m; other limbs in-window max 0.002 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
@@ -2564,7 +2596,7 @@
             ]
           }
         ],
-        "string_status": "partial",
+        "string_status": "verified-all",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": 97,
@@ -2577,14 +2609,15 @@
           {
             "step": "b+2",
             "prefix": "b+2",
-            "row": null,
-            "status": "review",
+            "row": 99,
+            "status": "verified",
             "candidate_row": 99,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 99 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 99 + skeleton.json + hit_frames.json (active stream [10, 10], pack window [5, 5], 20 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.531 m = 100% of global clip peak 0.531 m; other limbs in-window max 0.002 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
@@ -2599,7 +2632,7 @@
             ]
           }
         ],
-        "string_status": "partial",
+        "string_status": "verified-all",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": 97,
@@ -2621,22 +2654,23 @@
           {
             "step": "2",
             "prefix": "1,2",
-            "row": null,
-            "status": "review",
+            "row": 98,
+            "status": "verified",
             "candidate_row": 98,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 98 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 98 + skeleton.json + hit_frames.json (active stream [12, 12], pack window [6, 6], 21 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.429 m = 99% of global clip peak 0.433 m; other limbs in-window max 0.016 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           }
         ],
-        "string_status": "partial",
+        "string_status": "verified-all",
         "triage": "NO-ROW",
         "jumping_context": false,
-        "last_step_row": null,
-        "last_step_status": "review",
+        "last_step_row": 98,
+        "last_step_status": "verified",
         "twin_of": "FC.1,2",
         "twin_move_class": "string"
       },
@@ -2678,14 +2712,15 @@
           {
             "step": "f+2",
             "prefix": "f+2",
-            "row": null,
-            "status": "review",
+            "row": 111,
+            "status": "verified",
             "candidate_row": 111,
             "candidate_source": "t3-branch-graph",
             "reasons": [
               "real row found via T3 King branch graph: row 111 (GRE tekken3/movesets/moveset_king.json branches/move_index; cross-checked in research doc)",
               "HARD gates pass per research (hit_frames button bits == step bits, throw flag 0, grounded window)",
-              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified"
+              "SOFT gate (FK in-window limb-extension peak) + play-verify pending - NOT played until promoted to verified",
+              "FK PROMOTION 2026-10-30 (bank-row FK, repo data only): game/assets/anim/t3/king_on_pantera_leoman/rows.pack.json row 111 + skeleton.json + hit_frames.json (active stream [10, 10], pack window [5, 5], 20 frames). Chest-to-RightHand (RP2) extension delta vs frame 0: in-window peak 0.531 m = 100% of global clip peak 0.531 m; other limbs in-window max 0.002 m (correct limb dominant); hit_frames button 2, throw 0. Play-verify remains the residual, as for all verified steps."
             ]
           },
           {
@@ -2698,7 +2733,7 @@
             "reasons": []
           }
         ],
-        "string_status": "partial",
+        "string_status": "verified-all",
         "triage": "NO-ROW",
         "jumping_context": false,
         "last_step_row": 198,
