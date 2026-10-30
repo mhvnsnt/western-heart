@@ -383,7 +383,14 @@ export function canonNotation(n) {
      the move that enters the state (same name) to it in stance_after. */
   s = s.replace(/^while on back(?:\s*,\s*(feet|head) towards opponent)?\s*,\s*(?=[udfbnUDFB1-4](?:[\/+,]|\s*,|$))/i,
     (m, w) => (w && w.toLowerCase() === 'head' ? 'FUHT.' : 'FUFT.'));
-  s = s.replace(/^during\s+([A-Za-z][A-Za-z' ]*?[A-Za-z](?: \d(?=\s*,))?)\s*,?\s*(?=[udfbnUDFB]?(?:\/[fbFB])?\+?[1-4](?:[+,~:]|$))/, (m, name) => (/vertical/i.test(name) ? m : /^(forward or backward jump|forward jump peak|forward jump|jump)$/i.test(name) ? 'AIR.' : stateCode(name) + '.'));
+  /* 'during X' rows whose follow-up starts with a motion (sweep 2026-10-30, Deathfang
+     saika): 'during Ya Otome, qcf,qcf,qcf,qcf+1+2' used to fall through this rule because
+     its lookahead accepted only direction/button starts, leaving an unparseable
+     'during Ya Otome,qcf,...' row. Motion starts (qcf/qcb/hcf/hcb/dp) now qualify, so
+     the row canonicalises to 'YA_OTOME.qcf,qcf,qcf,qcf+1+2' — the same stance-prefix
+     pattern the sweep's setup() already plays (default case sets f.stance = pre) and
+     _prepare already slots on its prefixed input. Direction/button starts unchanged. */
+  s = s.replace(/^during\s+([A-Za-z][A-Za-z' ]*?[A-Za-z](?: \d(?=\s*,))?)\s*,?\s*(?=(?:qcf|qcb|hcf|hcb|dp)(?:[+,~:]|$)|[udfbnUDFB]?(?:\/[fbFB])?\+?[1-4](?:[+,~:]|$))/, (m, name) => (/vertical/i.test(name) ? m : /^(forward or backward jump|forward jump peak|forward jump|jump)$/i.test(name) ? 'AIR.' : stateCode(name) + '.'));
   s = s.replace(/(?:\s*\((?:KOFXV|KOF\s*XV|SFV|sfv|SF6|sf6|T7|T8)\))+\s*$/, ''); // source-game tag on imported rows, same input
   s = s.replace(/^(d(?:\/[fb])?\+[1-4](?:\+[1-4])*)\s*\(crouch(?:ing)?\)$/i, '$1'); // KOF '(crouch)' note on a d+ button, same input
   s = s.replace(/^fc\s*\+?\s*(?=[1-4udfbnUDFB])/i, 'FC.'); // 'fc+1' / 'FC 1' -> FC.1 (full-crouch state)

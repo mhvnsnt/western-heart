@@ -3784,3 +3784,27 @@ No bucket exists yet — nothing uploaded to R2, no account created.
   both attested spellings (was: parse error 'token Back to wall.b is not a stick/button
   input'). CI's game-unit-tests run on the PR head is the merge arbiter, as with
   PR #1234 / #1238. Deletions: none.
+
+## 2026-10-30 — Deathfang saika: 'during X' canon accepts motion-start follow-ups (PR #TBD)
+- What: `game/js/movesets.js` canonNotation's no-paren 'during X' rule gains motion starts
+  (qcf/qcb/hcf/hcb/dp) in its lookahead, next to the existing direction/button starts.
+  Deathfang's saika input 'during Ya Otome, qcf,qcf,qcf,qcf+1+2' used to fall through that
+  rule and stay 'during Ya Otome,qcf,...' — unparseable, so the sweep listed the row as
+  'unparsed'. It now canonicalises to 'YA_OTOME.qcf,qcf,qcf,qcf+1+2'. New
+  `test/saika-during.test.mjs` covers the saika input, two more motion starts, and guards
+  (BAD_STOMACH, ELBOW_DROP, HISENKYAKU, the '(During Rage)' R. row, a direction-start
+  Ya Otome row, AIR., plain crouch-dash).
+- Why: the sweep's own machinery already plays this pattern — its setup() default case sets
+  f.stance = pre for any prefix, and _prepare slots 'during X' rows on their prefixed
+  input — so the only missing piece was the canon lookahead. No fighter data touched:
+  shared canon code only, same as PR #1239.
+- Proof: new test 2/2 pass locally against the exact edited movesets.js (node --test, in
+  the CI layout game/js + test/); the real sweep-page parse() over the new canon output
+  returns a parseable prefixed row (was: parse error 'token during Ya Otome is not a
+  stick/button input'). CI's game-unit-tests run on the PR head is the merge arbiter, as
+  with PR #1234 / #1238 / #1239. The next sweep run is the witness that saika fires from
+  the Ya Otome stance; this PR moves it from 'unparsed' to pressed-from-stance.
+- Residual, stated plainly: _prepare's byName maps the full KOF move name
+  ('DEATHFANG_KIN_1211_SHIKI_YA_OTOME'), not 'YA_OTOME', so pressing Ya Otome itself does
+  not set the YA_OTOME stance in real play — the sweep sets the stance directly. The
+  real-play entry mapping is a follow-up, not hidden. Deletions: none.
