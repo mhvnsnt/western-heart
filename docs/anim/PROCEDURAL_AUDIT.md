@@ -964,3 +964,89 @@ not guessed). COVERAGE-COMPLETE PROOF: full inventory 188 canonical comma
 keys = B1 57 + B2 12 + B3 31 + B4 88, pairwise overlaps 0, uncovered []
 extra []. T8-sourced prefixes with no T3 row get their correct clips from
 #988 Step 2 (original T8 refs), never from a T3 row recorded as correct.
+
+## Zui Batch 1 fallback (LP1/RP2-only strings, 2026-10-25)
+Verified rows 92/93/183/221/222/223 are FALLBACK
+(T3 jin rows, bank jin / BOUND bank: zui's in-game bank is jin per
+file-level t3_source jin + t3_bank moveset_jin.json on BOTH #1096 and
+main; zui has NO FIGHTER_BANK override in fighter.js #1096, so the
+engine falls back to anim_bank || t3_source = jin), to be re-matched
+to T7 Steve rows when extraction lands. Zui is a SINGLE-bank fighter:
+its T3 moves carry t3_source jin only (152 moves; the other 502 carry
+no t3_source), and every step adjudicates against the jin bank —
+file-level t3_source is never assumed for a move that names another
+bank, because no zui move names one. There is NO bank-blocked category
+for zui (that was torch's dual-bank variant): jin gate-verified steps
+wire directly, and no step plays a row from another bank.
+Rejected rows are NOT fallback - rejected evidence, not wired or held:
+jin row 177 (button 12 != LP1 bits 1, for the d+1+2,1 step-2 LP1 in two
+strings) and jin row 221 for the f+2,1_r221 step (button 1 != step bits
+3 — the bits-3 reading comes from the _r221 row-suffix digits in the
+key, not from the LP1 input; documented, not fixed in this lane).
+Jin-bank rules, per-bank evidence (documented in
+docs/movesets/ZUI-BATCH1-STEP-PLANS-2026-10-25.md): row 35 EXISTS
+(starts-airborne, btn 1) - airborne, fails ground steps; row 220 EXISTS
+(standing RP2, btn 2); row 216 EXISTS (jump, btn 0) - fails every
+single-button gate; row 41 EXISTS (starts-airborne, btn 1). None of
+rows 35/220/216 is wired in Batch 1. Zui basics DIFFER from torch
+(verified in-lane): LP1 move 1 (damage 7), RP2 move 2 (damage 12), LK3
+move 3 (damage 0, special Ducking Left), RK4 move 4 (damage 0, special
+Ducking Right) are T7-sourced with NO t3_row on either file — zui's
+basics carry no T3 row at all. Re-baseline moves + strings deep-equal,
+row-changed 0, damage-only 0, so suspended-drift steps are 0. Zui was
+NEVER quarantined (t8_quarantine_20261024 key ABSENT on both files) —
+no #988 dependency; the T8 layer is KEPT (mix_20261024 counts_keys
+t8:126). MIX (PR #1017, per canon): Zui = Steve Fox T7 base + Lei
+Wulong drunken fist (Tekken 6 / TTT2) + 2 WH-original canon moves; the
+hands-up drunken stagger stance is UNCHANGED by this lane. Gap-1 (jin
+bank): hit_frames + skeleton IDENTICAL, rows.pack ADDITIVE-ONLY drift
+(220 b1096 rows unchanged on main, main adds 6 rows 89/112/247/288/
+339/357, 0 changed, 0 removed - affected fills 0; no Batch 1 candidate
+is a main-only row). GATE-ONLY batch: Job 2 zui entries 0, Job 3 zui
+entries 0 - Job 3 fills 0 and Job 4 joins 0 by data absence (bank-level
+Job 4 candidates jin 47 cannot join without Job 2 zui entries; a join
+never promotes anyway). SINGLE-BANK-FALLBACK (1 step, lane decision
+flagged for the coordinator): f+2,1 step 2 (row 221) — bank resolved to
+jin from the file-level bank because zui is verified single-bank
+(distinct move t3_source values {None, jin} only; all 35 recorded
+strings-list rows + all 152 move rows exist in jin hit_frames / Job 1
+jin profiles); the row is independently proven jin by the sibling
+variant f+2,1_r221 (t3_source jin, anim_ref t3:jin:row:221). Standing
+rows verified for crouch-context steps (the whole d+1+2 family: rows
+92/93/183) follow the demonio Batch 1 precedent: the gate flags crouch
+rows for non-crouch steps, not standing rows for crouch steps.
+Canonicalization is the CORRECTED rule (strip only a trailing
+~t[378] source-variant suffix): Zui Batch 1 contains 23 input-~
+canonicals (kept as own keys) and 19 ~t8.steve twin variants.
+T8/T7-sourced prefixes with no T3 row get their correct clips from
+#988 Step 2 (original T8 refs) or future extraction, never from a T3
+row recorded as correct. Formatter note: zui-1096.json is NOT
+json.dumps-canonical (7 hand-formatted lines: a separator comma on its
+own line before "canon_moves", triple-space colons on "canon_moves" /
+"canon_wiring"), so this lane inserts the plans block as raw text
+after the opening brace; every other byte is untouched and the
+committed diff is exactly 1 addition.
+
+## Pantera dash inputs f,F+RP2 / f,F+RK4 — anim_t3 REMOVED, donor stand-ins (2026-10-25, PR #988 revert)
+
+**Status: TEMPORARY fallback, to be superseded. This is a regression-revert, NOT a correctness fix.**
+
+- What was removed and why: PR #988 mapped Pantera `f,F+2` (Beast Elbow, RP2 dash elbow) to T3 king row 0 and `f,F+4` (Konvict Kick, RK4 dash kick) to T3 king row 69. File evidence proved both wrong (dash-row evidence 2026-10-25, `~/workspace/dash-row-evidence/DASH-ROW-EVIDENCE-2026-10-25.md`): row 0 is a **non-strike clip** (Job 1 profile hit null, active null, all limb extensions 0.0, btn 0; harness 0.027 m net / 0.067 m peak — it cannot be a mid elbow strike); row 69 is the **u+4 jump kick in place** (Job 1 stance jump, legR foot lift 1.912 m, hip rise to 1.329 m, travel 0.000 m; mid RK4 active 15–17). CORRECTION: row 69 is the u+4 jump kick, NOT standing 4 (standing 4 rows are 106/124/216). The revert deletes exactly those two `anim_t3` fields (structural diff proves only 2 keys changed in `game/assets/movesets/pantera.json`; move count 874 unchanged; quarantine section untouched; no T8 content touched).
+- What plays now: donor rows **111** (T3 `f+2`, standing armR punch, HIGH, active 10, travel 0.151 m net / 0.301 m peak) for `f,F+2` and **114** (T3 `f+4`, standing legR kick, HIGH, active 14, travel 0.479 m) for `f,F+4`. These are **traveling STAND-INS, never the correct dash mapping**: T7's `f,F+RP2` is mid, 31f; T7's `f,F+RK4` Konvict Kick is mid, 15f; a high kick is duckable, Konvict Kick is mid. Level + name evidence affirmatively rule 111/114 out as the dash rows.
+- Why T3 is used at all (instruction-gate law): no T5/T6/T7/T8/TTT2 animation is decoded for these dash moves — T7 king_49/king_52 motion is not decoded, T6 `DATA401` is encrypted, TTT2 is not extracted, T5/T8 motion is not acquired. The donor stand-ins restore the pre-#988 traveling behavior while the true rows are hunted.
+- Settling evidence owed (in order): (1) a T3 motion-table source for `divmot03_king.bin` giving row numbers for `f,f+2` (K's Flicker, mid) and `f,f+4` (Konvict Kick, mid) — neither row number appears in the wired 355-entry T3 input→row map, and no dash row exists in the playable bank (zero dash inputs in the wired map; full scan of baked king standing strikes with travel ≥ 0.15 m returns only non-dash identities); (2) bake those rows if unbaked (256/652 baked today); (3) profile-verify: mid level, traveling, correct limb (armR / legR), dash-appropriate timing; (4) T7 King kinmot.bin decode (king_49/king_52) for animation identity — the only proof justifying calling a T3 row "the" dash row for the T7 move. Until then, any T3 row for a T7 dash move is a FALLBACK, not a verified mapping.
+- Test honesty: `test/root-motion.test.mjs` passes 9/9 on the reverted file (baseline 7/9 — the two dash tests failed on rows 0/69). The test encodes DONOR behavior (plan row:111/114, kind `donor`, plus travel bounds), so green proves travel restored, NOT that the animation is the dash move. Do not mistake a green test for a correct dash animation.
+- Untouched known-wrong mappings (out of this revert's scope, flagged not hidden): `f,F+2~t7.king` → row 260 (a 10-hit string step); `f,F+4~t7.king` → row 69 (same jump kick); `CH.f,F+4` → row 69 (same jump kick). These still need the same settling evidence.
+
+## Pantera dash inputs — TRUE T3 dash rows 203/216 (settling evidence 2026-10-25, supersedes the donor stand-in revert)
+
+**Status: T3 FALLBACK, to be replaced from T5/6/7/8/TTT2 when T7 king_49/king_52 motion is decoded.** This supersedes the 2026-10-25 donor stand-in revert (rows 111/114) — the stand-ins are retired; the dash inputs now play T3's own dash rows. The rows below are proven T3 dash rows, NOT proven T7 dash animations: until T7 King kinmot.bin decode (king_49/king_52) proves animation identity vs the T3 row, any T3 row for a T7 dash move is a fallback, not a verified mapping.
+
+- Motion-table source (the settling evidence the revert entry called for): `teardown/tekken3/animations/divmot03_king.bin` branch graph, decoded with `teardown/tekken3/tools/local/moveset_extract.py` + the `motion` module (`~/workspace/tools/tekken3remake/tools/research/motion.py`). All f,f branches in the bank (7: from rows 0, 31, 32, 33, 34, 189, 190) target slot 27 → row 3, the dash state. Row 3's branches: RP → row 203 (window 1–20), RK → row 216 (window 1–20). No other row is reachable from dash via RP/RK. Row 4 (run state) also branches RK → 216 (running kick = Konvict Kick).
+- Row 203 = T3 f,f+2 K's Flicker: branch damage 20, attack_word 0x217 = mid, button RP2, limb armR; hit_frames [16,16,58,535,0,2]; Job 1 (king_on_pantera_leoman): stance duck-dip (deep lunge pose, feet grounded — lifts 0.07/0.08 m), dominant armR ext 1.091 at peakF 8, travel 0.936 m; engine harness (_attackClipPlan + _rootMotionApply): 0.847 m forward, 0.864 m peak, −0.399 m lateral. T3 movelist: K's Flicker, f,f+2, 20 dmg, Mid — exact match on damage + level + dash-only access.
+- Row 216 = T3 f,f+4 Konvict Kick: branch damage 30, attack_word 0x217 = mid, button RK4, limb legR; hit_frames [15,15,54,535,0,8]; Job 1: stance standing, legR lift 1.183 m, travel 0.455 m; harness: 0.411 m forward, 0.604 m peak, −0.196 m lateral. T3 movelist: Konvict Kick, f,f+4, 30 dmg, Mid — exact match on damage + level + dash/run access. Harness active 15 also matches T7 Konvict Kick 15f startup (king_52); row 203's T3 active 16 differs from T7 Rolling Elbow 31f, as expected across games — the T3-internal evidence (branch + damage + level + button + limb + travel) is what identifies it.
+- Both rows were already baked in rows.pack.json (256/652 baked) — no bake run needed.
+- Mappings changed (5, all in game/assets/movesets/pantera.json): f,F+2 → 203 (was removed by the revert; donor 111 retired); f,F+4 → 216 (was removed; donor 114 retired); f,F+2~t7.king → 203 (field was row 260, a 10-hit string step); f,F+4~t7.king → 216 (field was row 69, the u+4 jump kick); CH.f,F+4 → 216 (field was row 69). The shadows' old field rows never actually played: their 'nearest' matches defer the anim tier past the donor tier in _attackClipPlan, so baseline playback for all three shadows was donors 111/114 — stand-ins either way. The new 'dash-branch' match label contains no 'nearest', so the anim tier fires before donor and the remapped rows play (proven by the shadow-only mutation run + the updated test). CH.f,F+4's row covers the Konvict Kick first hit; the DDT follow-up is a separate mapping question, not claimed solved here.
+- Why T3 is used at all (instruction-gate law): no T5/T6/T7/T8/TTT2 animation is decoded for these dash moves — T7 king_49/king_52 motion is not decoded, T6 DATA401 is encrypted, TTT2 is not extracted, T5/T8 motion is not acquired. T7/T8 frame data carries timing/level only, no motion bytes.
+- Test honesty: test/root-motion.test.mjs now asserts the TRUE rows (row:203/row:216, kind anim) with measured travel bounds — it no longer encodes donor behavior. Green now proves the dash inputs play their own T3 dash rows and travel; it does NOT prove T7 animation identity (see fallback status above).
+- Flagged, NOT changed (out of this PR's scope, follow-up owed): pantera.json entries "4" and "4_r216" point at row 216 — WRONG for a standing input (the branch graph proves row 216 is reached ONLY from dash row 3 and run row 4, never from standing; the "true-map" matcher mislabeled the dash kick as standing 4). Standing 4's true rows need their own adjudication (the earlier audit listed 106/124 alongside the now-disproven 216; neither 106 nor 124 is verified here); this PR does not touch "4"/"4_r216".
