@@ -14,8 +14,10 @@
 // setup + parse path), not a witnessed full-fight pass — the next sweep attempts
 // these rows against an attacking foe, and whether each fires and connects there, and
 // whether the engine resolves the reversal catch at all, is what that sweep reports.
-// Wall-stun row t7.king_247, king_110, king_150, king_158, king_186 are deliberately
-// NOT covered: different chunks.
+// king_110, king_150, king_158, king_186 are deliberately NOT covered: different
+// chunks. The wall-stun row t7.king_247 is now covered by the wall-stun chunk
+// (WALLSTUN. canon + sweep setup); the guard test below was updated in that chunk
+// to assert the new mapping.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -56,8 +58,8 @@ test('sweep plays the prefix setup before pressing the row', () => {
   assert.ok(setupCall !== -1 && pressCall !== -1 && setupCall < pressCall, 'prefix setup must run before the press inside sweepOnce');
 });
 
-test('guards: wall-stun, approach-crouch, and generic-attack prose are untouched', () => {
-  assert.equal(canonNotation('During enemy wall stun... f, hcf+1'), 'During enemy wall stun... f,hcf+1');
+test('guards: wall-stun prose now maps to WALLSTUN. (wall-stun chunk); approach-crouch and generic-attack prose are untouched', () => {
+  assert.equal(canonNotation('During enemy wall stun... f, hcf+1'), 'WALLSTUN.f,hcf+1');
   assert.equal(canonNotation('Approach crouching enemy... d+1+3'), 'CROUCHFOE.d+1+3');
   assert.equal(canonNotation('Time with enemy attack... b+1+3 (or b+2+4)'), 'Time with enemy attack... b+1+3');
   assert.equal(canonNotation('TIMERP.b+1+3'), 'TIMERP.b+1+3');
