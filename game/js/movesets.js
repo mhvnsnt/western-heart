@@ -353,6 +353,7 @@ const sepOrder = (ctx) => (ctx && ctx.attackT != null && ctx.attackT <= TILDE_WI
 export function canonNotation(n) {
   if (typeof n !== 'string') return n;
   let s = n.trim().replace(/\s*\((?:first|second|third|\d+(?:st|nd|rd|th)) hits? only\)\s*$/i, ''); // T7 per-hit row annotation, same input
+  s = s.replace(/[\u200B\u200C\u200D\uFEFF]/g, ''); // scraped-list invisible separators (cyborgx back-to-wall key carries \u200b between steps); they carry no notation meaning
   s = s.replace(/^\((.*)\)$/, '$1').trim();
   /* FGC numpad-letter shorthand (moveset sweep 2026-10-29): 'df' / 'db' / 'UF' as a step of the
      input are Tekken's d/f / d/b / U/F ('f,n,d,df' crouch dash, 'f,f,db', 'FLE.db'). Before, the
@@ -360,6 +361,13 @@ export function canonNotation(n) {
   s = s.replace(/(^|[.,~:])(df|db|uf|ub|DF|DB|UF|UB)(?=$|[,+~:#])/g, (m, p, t) => p + _DIAG[t]);
   // Tekken 'back to opponent, X' (TekkenDocs / wavu wiki: BT X) -> BT.X
   s = s.replace(/^back to (?:the )?opponent\s*,\s*/i, 'BT.');
+  /* Back-to-wall rows (sweep 2026-10-30, r17 core-8): '(back to wall).b,b,UB' /
+     '(Back to wall).b,b,UB' (Pantera / Cyborg X / Burger) are wall-jump attacks whose
+     input has no button — the sweep's own taxonomy classes buttonless inputs as movement
+     (n/a), not failures, so the context becomes the WALL. prefix and the row leaves the
+     failing list on the next sweep. Wall-position witnessing (press the motion with the
+     back actually at the wall) is the recorded residual, not hidden. */
+  s = s.replace(/^\(?back to wall\)?\s*\.\s*/i, 'WALL.');
   /* Running moves (TekkenDocs / wavu wiki 'WR', 'while running'): 'WR+2', 'WR 2', 'while running 2'
      -> 'WR.2'. T3's running rows carry the command '4/6+X' (any horizontal while in the run),
      imported as 'b/f+X' — never a real stick direction — so they are WR rows too (True Ogre / Chatur). */
