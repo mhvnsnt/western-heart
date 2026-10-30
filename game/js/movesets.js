@@ -370,6 +370,20 @@ export function canonNotation(n) {
      and is left untouched, as are the non-trailing JGS spin rows. */
   s = s.replace(/\s*\([^()]*\bspins?\b[^()]*\)\s*$/i, '');
   s = s.replace(/^\((.*)\)$/, '$1').trim();
+  /* Direction alternatives in a single step (sweep 2026-10-30, Pantera 'ss2+4,b/db'):
+     a step written '<cardinal>/<diagonal>' ('b/db', 'f/df') lists two directions for one
+     step — the first listed is the playable one, the same first-listed rule the alternatives
+     rule below already applies to '1+3_2+4' / 'd/b+1/2/3' / 'U/F or U/B'. This MUST run
+     before the diagonal expansions below: without it the later diagonal rule turns 'db'
+     into 'd/b' and the step becomes the unparseable 'b/d/b'. The row's own T8 id settles
+     which alternative is first: the move (name 'Reverse Special Stretch Bomb (Cancel)')
+     carries t8_id 'King-ss2+4,b', and T8 ids in this moveset are 'King-' + the full T8
+     input with commas preserved (e.g. 'King-1,2,1,d+2+4'), so a sequence reading 'b,d/b'
+     would have read 'King-ss2+4,b,d/b'. NOT a diagonal: a lone diagonal ('d/f', 'u/b')
+     has a single letter after the slash and is untouched, as is 'b/f+X' (WR. rule below).
+     Blast radius in the core-8 movesets: exactly this one row (key, input and slot are
+     the same string). */
+  s = s.replace(/(^|[.,~:])([bBfFuUdD])\/(df|db|uf|ub|DF|DB|UF|UB)(?=$|[,+~:])/g, '$1$2');
   /* FGC numpad-letter shorthand (moveset sweep 2026-10-29): 'df' / 'db' / 'UF' as a step of the
      input are Tekken's d/f / d/b / U/F ('f,n,d,df' crouch dash, 'f,f,db', 'FLE.db'). Before, the
      whole row was unparseable for every fighter that carries one. */
